@@ -10,6 +10,7 @@
 
 @protocol ODRServerProtocol <NSObject>
 - (void)beginODRSessionWithBundleURL:(NSURL *)arg1 completionHandler:(void (^)(NSDictionary *))arg2;
+- (void)beginWithBundleURL:(NSURL *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)conditionallyPinTags:(NSSet *)arg1 inBundle:(NSURL *)arg2 completionHandler:(void (^)(BOOL, NSDictionary *))arg3;
 - (void)hello:(void (^)(void))arg1;
 - (void)okToPurgeAssetPacks:(NSArray *)arg1;
