@@ -90,6 +90,7 @@
 + (void)initializeFiltering;
 + (id)predicateForActivationRule:(id)arg1;
 - (id)_bareExtensionServiceConnection;
+- (BOOL)_beginUsingAndCreateExtensionAssertion:(id *)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (void)_cancelRequestWithError:(id)arg1 forExtensionContextWithUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_completeRequestReturningItems:(id)arg1 forExtensionContextWithUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_didCreateExtensionContext:(id)arg1;
@@ -136,7 +137,6 @@
 - (id)extensionContexts;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
-- (id)newAssertionToBeginUsingPluginWithOptions:(unsigned long long)arg1 error:(id *)arg2;
 - (id)objectForInfoDictionaryKey:(id)arg1;
 - (int)pidForRequestIdentifier:(id)arg1;
 
