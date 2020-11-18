@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (double)barHeight;
 - (struct UIEdgeInsets)buttonContentEdgeInsets;
+- (id)buttonFontForStyle:(long long)arg1;
 - (double)buttonHeight;
 - (double)buttonImagePadding;
 - (double)interItemSpace;

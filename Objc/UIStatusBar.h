@@ -10,7 +10,7 @@
 #import <UIKit/UIStatusBarStateObserver-Protocol.h>
 
 @class NSMutableArray, NSMutableSet, NSNumber, NSString, UIColor, UILabel, UIStatusBarBackgroundView, UIStatusBarForegroundView, UIStatusBarServer, UIStatusBarStyleAnimationParameters, UIStatusBarStyleAttributes, UIStatusBarStyleRequest, UIStatusBarWindow, UIView;
-@protocol UIStatusBarStateProvider, UIStatusBarStyleDelegate;
+@protocol UIStatusBarStateProvider, UIStatusBarStyleDelegate, UIViewControllerTransitionCoordinator;
 
 @interface UIStatusBar : _UIScrollsToTopInitiatorView <UIStatusBarServerClient, UIStatusBarStateObserver>
 {
@@ -22,7 +22,7 @@
     UILabel *_doubleHeightLabel;
     UIView *_doubleHeightLabelContainer;
     NSString *_currentDoubleHeightText;
-    CDStruct_7953f186 _currentRawData;
+    CDStruct_996e841e _currentRawData;
     NSMutableArray *_interruptedAnimationCompositeViews;
     UIStatusBarBackgroundView *_newStyleBackgroundView;
     UIStatusBarForegroundView *_newStyleForegroundView;
@@ -41,7 +41,7 @@
     double _translucentBackgroundAlpha;
     BOOL _showOnlyCenterItems;
     BOOL _foregroundViewShouldIgnoreStatusBarDataDuringAnimation;
-    CDStruct_603bf4be *_localDataOverrides;
+    CDStruct_2d0a2756 *_localDataOverrides;
     UIColor *_tintColor;
     UIColor *_lastUsedBackgroundColor;
     UIStatusBarStyleAnimationParameters *_nextTintTransition;
@@ -53,10 +53,12 @@
     BOOL _homeItemsDisabled;
     UIStatusBarWindow *_statusBarWindow;
     id<UIStatusBarStyleDelegate> _styleDelegate;
+    id<UIViewControllerTransitionCoordinator> __transitionCoordinator;
     UIColor *_foregroundColor;
     long long _legibilityStyle;
 }
 
+@property (weak, nonatomic) id<UIViewControllerTransitionCoordinator> _transitionCoordinator; // @synthesize _transitionCoordinator=__transitionCoordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
@@ -78,6 +80,7 @@
 + (struct CGRect)_frameInSceneReferenceSpaceForStyleAttributes:(id)arg1 orientation:(long long)arg2 inSceneWithReferenceSize:(struct CGSize)arg3;
 + (BOOL)_isLightContentStyle:(long long)arg1;
 + (id)_newStyleAttributesForRequest:(id)arg1;
++ (void)_setDeviceUserInterfaceLayoutDirection:(long long)arg1;
 + (id)_styleAttributesForRequest:(id)arg1;
 + (id)_styleAttributesForStatusBarStyle:(long long)arg1 legacy:(BOOL)arg2;
 + (int)cornerStyleForRequestedStyle:(long long)arg1 effectiveStyle:(long long)arg2 alignment:(int)arg3;
@@ -86,7 +89,7 @@
 + (long long)defaultStyleForRequestedStyle:(long long)arg1 styleOverrides:(int)arg2;
 + (long long)deviceUserInterfaceLayoutDirection;
 + (void)enumerateStatusBarStyleOverridesWithBlock:(CDUnknownBlockType)arg1;
-+ (void)getData:(CDStruct_7953f186 *)arg1 forRequestedData:(const CDStruct_7953f186 *)arg2 withOverrides:(const CDStruct_603bf4be *)arg3;
++ (void)getData:(CDStruct_996e841e *)arg1 forRequestedData:(const CDStruct_996e841e *)arg2 withOverrides:(const CDStruct_2d0a2756 *)arg3;
 + (double)heightForStyle:(long long)arg1 orientation:(long long)arg2;
 + (long long)lowBatteryLevel;
 + (id)navBarTintColorFromStatusBarTintColor:(id)arg1;
@@ -160,7 +163,7 @@
 - (void)forceUpdateDoubleHeightStatus;
 - (void)forceUpdateGlowAnimation;
 - (void)forceUpdateStyleOverrides:(BOOL)arg1;
-- (void)forceUpdateToData:(const CDStruct_7953f186 *)arg1 animated:(BOOL)arg2;
+- (void)forceUpdateToData:(const CDStruct_996e841e *)arg1 animated:(BOOL)arg2;
 - (void)forgetEitherSideHistory;
 - (struct CGRect)frameForOrientation:(long long)arg1;
 - (double)heightForOrientation:(long long)arg1;
@@ -185,7 +188,7 @@
 - (void)setHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setHidden:(BOOL)arg1 animationParameters:(id)arg2;
 - (void)setLegibilityStyle:(long long)arg1 animationParameters:(id)arg2;
-- (void)setLocalDataOverrides:(CDStruct_603bf4be *)arg1;
+- (void)setLocalDataOverrides:(CDStruct_2d0a2756 *)arg1;
 - (void)setOrientation:(long long)arg1;
 - (void)setShowsOnlyCenterItems:(BOOL)arg1;
 - (void)setStyleRequest:(id)arg1 animationParameters:(id)arg2;
@@ -196,10 +199,10 @@
 - (BOOL)showsContentsOnScreen;
 - (void)statusBarServer:(id)arg1 didReceiveDoubleHeightStatusString:(id)arg2 forStyle:(long long)arg3;
 - (void)statusBarServer:(id)arg1 didReceiveGlowAnimationState:(BOOL)arg2 forStyle:(long long)arg3;
-- (void)statusBarServer:(id)arg1 didReceiveStatusBarData:(const CDStruct_7953f186 *)arg2 withActions:(int)arg3;
+- (void)statusBarServer:(id)arg1 didReceiveStatusBarData:(const CDStruct_996e841e *)arg2 withActions:(int)arg3;
 - (void)statusBarServer:(id)arg1 didReceiveStyleOverrides:(int)arg2;
 - (void)statusBarStateProvider:(id)arg1 didChangeDoubleHeightStatusStringForStyle:(long long)arg2;
-- (void)statusBarStateProvider:(id)arg1 didPostStatusBarData:(const CDStruct_7953f186 *)arg2 withActions:(int)arg3;
+- (void)statusBarStateProvider:(id)arg1 didPostStatusBarData:(const CDStruct_996e841e *)arg2 withActions:(int)arg3;
 - (long long)styleForRequestedStyle:(long long)arg1;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 

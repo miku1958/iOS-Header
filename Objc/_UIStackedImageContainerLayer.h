@@ -6,12 +6,12 @@
 
 #import <QuartzCore/CALayer.h>
 
-@class NSArray, NSString, UIView, _UIStackedImageConfiguration, _UIStackedImageLayerDelegate;
+@class CATransformLayer, NSArray, NSString, UIView, _UIStackedImageConfiguration, _UIStackedImageLayerDelegate;
 @protocol UINamedLayerStack;
 
 @interface _UIStackedImageContainerLayer : CALayer
 {
-    BOOL _animatingSelection;
+    BOOL _animatingToNormalState;
     double _selectionStartTime;
     double _selectionDuration;
     long long _selectionStyle;
@@ -21,6 +21,7 @@
     double _scale;
     NSString *_imageStackContentsGravity;
     double _radiosityRequestTime;
+    double _animationDelay;
     double _rotationAmount;
     struct CGPoint _translationOffset;
     double _maximumParallaxDepth;
@@ -43,6 +44,13 @@
     CALayer *_overlayContainerLayer;
     CALayer *_unmaskedOverlayLayer;
     CALayer *_unmaskedOverlayContainerLayer;
+    CATransformLayer *_imagePerspectiveTransformLayer;
+    CATransformLayer *_imageRotationTransformLayer;
+    CATransformLayer *_maskPerspectiveTransformLayer;
+    CATransformLayer *_maskRotationTransformLayer;
+    CATransformLayer *_cursorRotationTransformLayer;
+    CALayer *_frontmostPerspectiveTransformLayer;
+    CATransformLayer *_frontmostRotationTransformLayer;
     _UIStackedImageLayerDelegate *_layoutDelegate;
     UIView *_animationView;
     _UIStackedImageConfiguration *_configuration;
@@ -66,6 +74,7 @@
 - (void)_applyFocusDirectionTransformHighQualityGraphicsWithAnimationCoordinator:(id)arg1;
 - (void)_applyFocusDirectionTransformLowQualityGraphicsWithAnimationCoordinator:(id)arg1;
 - (void)_applyFocusDirectionTransformWithAnimationCoordinator:(id)arg1;
+- (struct CGRect)_cursorBounds;
 - (void)_deselect;
 - (struct CGRect)_displayFrameForModelFrame:(struct CGRect)arg1;
 - (id)_flatLayer;
@@ -83,13 +92,17 @@
 - (BOOL)_isSelected;
 - (id)_layerBelowTitles;
 - (struct CGPoint)_layerStackToDisplayScaleFactor;
+- (void)_layoutRadiosityLayer;
 - (id)_parallaxLayerDepths;
+- (struct CATransform3D)_perspectiveTransformForCurrentState;
 - (struct CGRect)_positionAndSizeForLayerImage:(id)arg1;
 - (id)_preferredLayoutDelegateForLayer:(id)arg1;
 - (unsigned long long)_primaryControlStateForState:(unsigned long long)arg1;
 - (BOOL)_radiosityEnabled;
 - (id)_randomImage;
-- (void)_resetAnimatingSelection;
+- (void)_resetAnimatingToNormalState;
+- (struct CATransform3D)_rotationTransformForCurrentFocusDirection;
+- (struct CATransform3D)_scaleTransformForCurrentState;
 - (struct CGSize)_scaledSizeForCurrentState;
 - (long long)_selectionStyle;
 - (void)_setControlState:(unsigned long long)arg1 animated:(BOOL)arg2 focusAnimationCoordinator:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -103,18 +116,26 @@
 - (void)_setParallaxLayerDepths:(id)arg1;
 - (void)_setSelectionStyle:(long long)arg1;
 - (void)_setUnmaskedOverlayLayer:(id)arg1;
+- (void)_setupFrontmostTransformLayers;
 - (id)_shadowLayer;
+- (void)_showImageLayers;
 - (double)_unfocusedShadowRadius;
 - (void)_updateCornerRadiusFromConfig;
+- (void)_updateFocusKeylineStroke:(struct CGPoint)arg1;
+- (void)_updateFullBleedImageLayers;
 - (void)_updateImageLayerFilterChains;
 - (void)_updateLayerForSelection;
 - (void)_updateLayerForSelectionHighQualityGraphicsWithAnimationCoordinator:(id)arg1;
 - (void)_updateLayerForSelectionLowQualityGraphicsWithAnimationCoordinator:(id)arg1;
 - (void)_updateLayerForSelectionWithAnimationCoordinator:(id)arg1;
+- (void)_updateNormalImageLayers;
+- (void)_updatePerspective;
 - (void)_updateRadiosityFromLayerStack;
+- (void)_updateRotationAndTranslation:(id)arg1;
 - (void)_updateShadowBounds;
 - (void)_updateShadowHighQualityGraphicsWithAnimationCoordinator:(id)arg1;
 - (void)_updateShadowPositionWithOffset:(struct CGPoint)arg1;
+- (void)_updateSpecularLayerContentsRect;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)dealloc;
 - (id)init;

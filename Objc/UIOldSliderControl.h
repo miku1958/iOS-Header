@@ -43,6 +43,7 @@
     struct CGPoint _idleTrackingPoint;
 }
 
++ (BOOL)_allowActionsToQueue;
 - (void)_controlTouchBegan:(id)arg1 withEvent:(id)arg2;
 - (void)_controlTouchEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_controlTouchMoved:(id)arg1 withEvent:(id)arg2;

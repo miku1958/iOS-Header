@@ -461,6 +461,7 @@
 - (BOOL)_delegateImplementsTitleWidthForHeaderInSection;
 - (BOOL)_delegateImplementsViewForFooterInSection;
 - (BOOL)_delegateImplementsViewForHeaderInSection;
+- (id)_delegatePreferredIndexPath;
 - (id)_delegateViewForFooterInSection:(long long)arg1;
 - (id)_delegateViewForHeaderInSection:(long long)arg1;
 - (BOOL)_delegateWantsCustomFooterForSection:(long long)arg1;

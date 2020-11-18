@@ -9,7 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface UITextFieldLabel : UILabel
 {
+    BOOL _shouldRenderWithoutTextField;
 }
+
+@property (nonatomic) BOOL shouldRenderWithoutTextField; // @synthesize shouldRenderWithoutTextField=_shouldRenderWithoutTextField;
 
 + (id)_defaultAttributes;
 + (id)defaultFont;

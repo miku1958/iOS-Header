@@ -15,7 +15,6 @@
     NSMutableArray *_gestureRecognizers;
     NSMutableArray *_forwardingRecord;
     BOOL _abandonForwardingRecord;
-    BOOL __synthetic;
     BOOL _isDelayed;
     BOOL _sentPressesEnded;
     double _timestamp;
@@ -24,20 +23,23 @@
     UIWindow *_window;
     UIResponder *_responder;
     double _force;
+    unsigned long long _source;
+    unsigned long long _gameControllerComponent;
 }
 
 @property (nonatomic, setter=_setForwardablePhase:) long long _forwardablePhase;
 @property (strong, nonatomic, setter=_setResponder:) UIResponder *_responder;
-@property (nonatomic, getter=_isSynthetic, setter=_setSynthetic:) BOOL _synthetic; // @synthesize _synthetic=__synthetic;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double force; // @synthesize force=_force;
+@property (nonatomic, getter=_gameControllerComponent, setter=_setGameControllerComponent:) unsigned long long gameControllerComponent; // @synthesize gameControllerComponent=_gameControllerComponent;
 @property (copy, nonatomic) NSArray *gestureRecognizers;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isDelayed; // @synthesize isDelayed=_isDelayed;
 @property (nonatomic) long long phase; // @synthesize phase=_phase;
 @property (strong, nonatomic) UIResponder *responder; // @synthesize responder=_responder;
 @property (nonatomic) BOOL sentPressesEnded; // @synthesize sentPressesEnded=_sentPressesEnded;
+@property (nonatomic, getter=_source, setter=_setSource:) unsigned long long source; // @synthesize source=_source;
 @property (readonly) Class superclass;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) long long type; // @synthesize type=_type;
@@ -48,7 +50,9 @@
 - (id)_forwardingRecord;
 - (BOOL)_isAbandoningForwardingRecord;
 - (BOOL)_isDirectionalPress;
+- (BOOL)_isSynthetic;
 - (void)_loadStateFromPress:(id)arg1;
+- (void)_loadStateFromPressInfo:(id)arg1;
 - (id)_mutableForwardingRecord;
 - (id)_phaseDescription;
 - (void)_removeGestureRecognizer:(id)arg1;

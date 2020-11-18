@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateSupplementaryIndexPaths:(id)arg1;
 - (id)knownDecorationElementKinds;
 - (id)knownSupplementaryElementKinds;
+- (id)layoutAttributesForCellsInRect:(struct CGRect)arg1 validateLayout:(BOOL)arg2;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForElementsInSection:(long long)arg1;

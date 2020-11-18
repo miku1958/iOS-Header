@@ -22,10 +22,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property long long style; // @synthesize style=_style;
+@property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_configureViewsWithStyle:(long long)arg1;
 - (id)_dimmingKnockoutBackgroundColorForBackdropStyle:(long long)arg1;
 - (id)_filterForBackdropStyle:(long long)arg1;
 - (id)_visualEffectForStyle:(long long)arg1;

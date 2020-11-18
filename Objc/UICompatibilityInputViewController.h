@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     UIKeyboard *_deferredSystemView;
     UIKeyboardInputMode *_incomingExtensionInputMode;
     double _incomingExtensionInputModeTime;
+    double _lastSuspendedTime;
     BOOL _shouldRegenerateSizingConstraints;
     BOOL _shouldSuppressRemoteInputController;
     UIViewController *_inputController;

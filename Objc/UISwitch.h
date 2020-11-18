@@ -82,6 +82,7 @@
 - (void)setEnabled:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setOn:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setSemanticContentAttribute:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

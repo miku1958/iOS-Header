@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (double)buttonCharge;
 - (long long)buttonType;
 - (id)contentsImage;
 - (double)extraRightPadding;

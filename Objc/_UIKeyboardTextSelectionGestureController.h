@@ -9,7 +9,7 @@
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKit/_UIPanOrFlickGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UIDelayedAction, _UIKeyboardTextSelectionController;
+@class NSMutableArray, NSString, UIDelayedAction, UITextMagnifierTimeWeightedPoint, _UIKeyboardTextSelectionController;
 @protocol _UIKeyboardTextSelectionGestureControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -26,11 +26,13 @@ __attribute__((visibility("hidden")))
     int _previousForcePressCount;
     id<_UIKeyboardTextSelectionGestureControllerDelegate> _delegate;
     double _lastPressTimestamp;
+    UITextMagnifierTimeWeightedPoint *_weightedPoint;
     double _twoFingerTapTimestamp;
     long long _previousRepeatedGranularity;
     long long _panGestureState;
     NSMutableArray *_activeGestures;
     UIDelayedAction *_tapLogTimer;
+    UIDelayedAction *_longForcePressAction;
     struct CGPoint _lastPanTranslation;
     struct CGPoint _accumulatedAcceleration;
     struct CGPoint _accumulatedBounding;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isPanning; // @synthesize isPanning=_isPanning;
 @property (nonatomic) struct CGPoint lastPanTranslation; // @synthesize lastPanTranslation=_lastPanTranslation;
 @property (nonatomic) double lastPressTimestamp; // @synthesize lastPressTimestamp=_lastPressTimestamp;
+@property (strong, nonatomic) UIDelayedAction *longForcePressAction; // @synthesize longForcePressAction=_longForcePressAction;
 @property (nonatomic) long long panGestureState; // @synthesize panGestureState=_panGestureState;
 @property (nonatomic) int previousForcePressCount; // @synthesize previousForcePressCount=_previousForcePressCount;
 @property (nonatomic) long long previousRepeatedGranularity; // @synthesize previousRepeatedGranularity=_previousRepeatedGranularity;
@@ -59,15 +62,19 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double twoFingerTapTimestamp; // @synthesize twoFingerTapTimestamp=_twoFingerTapTimestamp;
 @property (nonatomic) BOOL wasNestedPinchingDisabled; // @synthesize wasNestedPinchingDisabled=_wasNestedPinchingDisabled;
 @property (nonatomic) BOOL wasScrollingEnabled; // @synthesize wasScrollingEnabled=_wasScrollingEnabled;
+@property (strong, nonatomic) UITextMagnifierTimeWeightedPoint *weightedPoint; // @synthesize weightedPoint=_weightedPoint;
 
 + (id)sharedInstance;
+- (void)_beginLongForcePressTimerForGesture:(id)arg1;
+- (void)_cancelLongForcePressTimer;
 - (void)_cleanupDeadGesturesIfNecessary;
 - (void)_didEndIndirectSelectionGesture:(id)arg1;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (void)_granularityExpandingGestureWithTimeInterval:(double)arg1 timeGranularity:(double)arg2 isMidPan:(BOOL)arg3;
 - (void)_logTapCounts:(id)arg1;
+- (void)_longForcePressDetected:(id)arg1;
 - (void)_willBeginIndirectSelectionGesture:(id)arg1;
-- (struct CGPoint)acceleratedTranslation:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
+- (struct CGPoint)acceleratedTranslation:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2 final:(BOOL)arg3;
 - (id)addOneFingerForcePressRecognizerToView:(id)arg1;
 - (id)addOneFingerTextSelectionGesturesToView:(id)arg1;
 - (id)addTwoFingerPanRecognizerToView:(id)arg1;
@@ -108,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (void)indirectCursorPanGestureWithState:(long long)arg1 withTranslation:(struct CGPoint)arg2 withFlickDirection:(unsigned long long)arg3;
 - (void)indirectPanGestureWithState:(long long)arg1 withTranslation:(struct CGPoint)arg2 withFlickDirection:(unsigned long long)arg3;
 - (id)init;
+- (BOOL)isPlacedCarefully;
 - (long long)layoutDirectionFromFlickDirection:(unsigned long long)arg1;
 - (void)oneFingerForcePan:(id)arg1;
 - (void)oneFingerForcePress:(id)arg1;

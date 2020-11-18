@@ -100,6 +100,7 @@ __attribute__((visibility("hidden")))
 - (struct CGColor *)_wellColorOn:(BOOL)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setSendAction:(BOOL)arg1;
 
 @end

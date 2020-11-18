@@ -9,7 +9,7 @@
 #import <UIKit/UIKeyboardInput-Protocol.h>
 #import <UIKit/UITextInputPrivate-Protocol.h>
 
-@class NSDictionary, NSString, UIColor, UIImage, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange;
+@class NSDictionary, NSIndexSet, NSString, UIColor, UIImage, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange;
 @protocol UITextInputDelegate, UITextInputTokenizer;
 
 @interface UIDefaultKeyboardInput : UIView <UIKeyboardInput, UITextInputPrivate>
@@ -17,6 +17,7 @@
     UITextInputTraits *m_traits;
 }
 
+@property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
 @property (nonatomic) BOOL acceptsEmoji; // @dynamic acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
@@ -29,6 +30,7 @@
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disablePrediction;
+@property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
 @property (nonatomic) int emptyContentReturnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
@@ -69,6 +71,7 @@
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet; // @dynamic textTrimmingSet;
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
+@property (nonatomic) struct _NSRange validTextRange;
 
 - (long long)baseWritingDirectionForPosition:(id)arg1 inDirection:(long long)arg2;
 - (BOOL)becomesEditableWithGestures;

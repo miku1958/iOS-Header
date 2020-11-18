@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
     BOOL _shift;
     BOOL _autoshift;
     BOOL _settingShift;
+    BOOL _holdingShift;
     BOOL _didLongPress;
     NSString *_preTouchKeyplaneName;
     BOOL _revertKeyplaneAfterTouch;
@@ -102,6 +103,8 @@ __attribute__((visibility("hidden")))
     _UIKeyboardTypingSpeedLogger *_typingSpeedLogger;
     UIKBRenderConfig *_passcodeRenderConfig;
     long long _setKeyplaneViewCount;
+    BOOL _inputTraitsPreventInitialReuse;
+    BOOL _muteNextKeyClickSound;
     int playKeyClickSoundOn;
     UIKBRenderConfig *_renderConfig;
     UIView *_modalDisplayView;
@@ -123,6 +126,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *localizedInputKey; // @synthesize localizedInputKey=_localizedInputKey;
 @property (readonly, nonatomic) NSString *localizedInputMode;
 @property (strong, nonatomic) UIView *modalDisplayView; // @synthesize modalDisplayView=_modalDisplayView;
+@property (nonatomic) BOOL muteNextKeyClickSound; // @synthesize muteNextKeyClickSound=_muteNextKeyClickSound;
 @property (nonatomic) int playKeyClickSoundOn; // @synthesize playKeyClickSoundOn;
 @property (copy, nonatomic) NSString *preTouchKeyplaneName; // @synthesize preTouchKeyplaneName=_preTouchKeyplaneName;
 @property (strong, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
@@ -155,13 +159,14 @@ __attribute__((visibility("hidden")))
 - (id)cacheIdentifierForKeyplaneNamed:(id)arg1;
 - (id)cacheTokenForKeyplane:(id)arg1 caseAlternates:(BOOL)arg2;
 - (struct CGImage *)cachedCompositeImageWithCacheKey:(id)arg1;
-- (BOOL)canForceTouchCommit:(id)arg1;
+- (BOOL)canForceTouchUUIDCommit:(id)arg1 inWindow:(id)arg2;
 - (BOOL)canMultitap;
 - (BOOL)canProduceString:(id)arg1;
 - (BOOL)canReuseKeyplaneView;
 - (void)cancelDelayedCentroidUpdate;
 - (void)cancelMultitapTimer;
 - (void)cancelTouchIfNecessaryForInfo:(id)arg1;
+- (void)cancelTouchesForTwoFingerTapGesture:(id)arg1;
 - (id)candidateList;
 - (void)changeToKeyplane:(id)arg1;
 - (void)cleanupPreviousKeyboardWithNewInputTraits:(id)arg1;
@@ -223,6 +228,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)globeKeyDisplaysAsEmojiKey;
+- (BOOL)handRestRecognizerShouldNeverIgnoreTouchState:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3 whenResting:(BOOL)arg4 otherRestedTouchLocations:(id)arg5;
+- (CDUnknownBlockType)handRestRecognizerSilenceNextTouchDown;
+- (struct CGSize)handRestRecognizerStandardKeyPixelSize;
 - (void)handleDelayedCentroidUpdate;
 - (void)handleDismissFlickView;
 - (void)handleDismissFlickView:(id)arg1;
@@ -330,6 +338,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldAllowCurrentKeyplaneReload;
 - (BOOL)shouldAllowSelectionGestures:(BOOL)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
 - (BOOL)shouldCommitPrecedingTouchesForTouchDownWithActions:(unsigned long long)arg1;
+- (BOOL)shouldDeactivateWithoutWindow;
 - (BOOL)shouldHitTestKey:(id)arg1;
 - (BOOL)shouldMatchCaseForDomainKeys;
 - (BOOL)shouldMergeKey:(id)arg1;
@@ -342,6 +351,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldShowDictationKey;
 - (BOOL)shouldShowIndicator;
 - (BOOL)shouldSkipResponseToGlobeKey:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (BOOL)shouldUseDefaultShiftStateFromLayout;
 - (BOOL)shouldYieldToControlCenterForFlickWithInitialPoint:(struct CGPoint)arg1 finalPoint:(struct CGPoint)arg2;
 - (void)showFlickView:(int)arg1 withKey:(id)arg2 flickString:(id)arg3;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;

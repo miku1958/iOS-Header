@@ -10,7 +10,7 @@
 #import <UIKit/UITextInputTraits-Protocol.h>
 #import <UIKit/UITextInputTraits_Private-Protocol.h>
 
-@class NSString, UIColor, UIImage;
+@class NSIndexSet, NSString, UIColor, UIImage;
 
 @interface UITextInputTraits : NSObject <UITextInputTraits, UITextInputTraits_Private, NSCopying>
 {
@@ -51,8 +51,12 @@
     BOOL disablePrediction;
     BOOL isCarPlayIdiom;
     NSString *recentInputIdentifier;
+    struct _NSRange validTextRange;
+    BOOL displaySecureEditsUsingPlainText;
+    NSIndexSet *PINEntrySeparatorIndexes;
 }
 
+@property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes; // @synthesize PINEntrySeparatorIndexes;
 @property (nonatomic) BOOL acceptsEmoji; // @synthesize acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard; // @synthesize acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard; // @synthesize acceptsSplitKeyboard;
@@ -64,6 +68,7 @@
 @property (nonatomic) BOOL deferBecomingResponder; // @synthesize deferBecomingResponder;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disablePrediction; // @synthesize disablePrediction;
+@property (nonatomic) BOOL displaySecureEditsUsingPlainText; // @synthesize displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText; // @synthesize displaySecureTextUsingPlainText;
 @property (nonatomic) int emptyContentReturnKeyType; // @synthesize emptyContentReturnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically; // @synthesize enablesReturnKeyAutomatically;
@@ -94,6 +99,7 @@
 @property (nonatomic) id textSuggestionDelegate; // @dynamic textSuggestionDelegate;
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet; // @dynamic textTrimmingSet;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization; // @synthesize useInterfaceLanguageForLocalization;
+@property (nonatomic) struct _NSRange validTextRange; // @synthesize validTextRange;
 
 + (long long)accessibleAppearanceForAppearance:(long long)arg1;
 + (long long)configuredAppearanceForAppearance:(long long)arg1 withTraitEnvironment:(id)arg2;

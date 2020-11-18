@@ -47,6 +47,7 @@
     double _saturationDeltaFactor;
     double _filterMaskAlpha;
     UIImage *_filterMaskImage;
+    double _extendedRangeClamp;
     UIColor *_legibleColor;
     UIColor *_combinedTintColor;
     double _scale;
@@ -95,6 +96,7 @@
 @property (nonatomic, setter=setDesignMode:) BOOL designMode; // @synthesize designMode=_designMode;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL explicitlySetGraphicsQuality; // @synthesize explicitlySetGraphicsQuality=_explicitlySetGraphicsQuality;
+@property (nonatomic) double extendedRangeClamp; // @synthesize extendedRangeClamp=_extendedRangeClamp;
 @property (nonatomic) double filterMaskAlpha; // @synthesize filterMaskAlpha=_filterMaskAlpha;
 @property (strong, nonatomic) UIImage *filterMaskImage; // @synthesize filterMaskImage=_filterMaskImage;
 @property (nonatomic) long long graphicsQuality; // @synthesize graphicsQuality=_graphicsQuality;
@@ -135,6 +137,7 @@
 - (void)addKeyPathObserver:(id)arg1;
 - (void)clearRunLoopObserver;
 - (void)computeOutputSettingsUsingModel:(id)arg1;
+- (void)copyAdditionalSettingsFromSettings:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)init;

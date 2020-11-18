@@ -110,6 +110,7 @@
 - (void)_adjustPopoverForNewContentSizeFromViewController:(id)arg1 allowShrink:(BOOL)arg2;
 - (BOOL)_alwaysAdaptToFullscreenForTraitCollection:(id)arg1;
 - (BOOL)_attemptsToAvoidKeyboard;
+- (id)_backgroundView;
 - (struct UIEdgeInsets)_baseContentInsets;
 - (struct CGPoint)_centerPointForScale:(double)arg1 frame:(struct CGRect)arg2 anchor:(struct CGPoint)arg3;
 - (void)_commonPresentPopoverFromRect:(struct CGRect)arg1 inView:(id)arg2 permittedArrowDirections:(unsigned long long)arg3 animated:(BOOL)arg4;

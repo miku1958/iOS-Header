@@ -71,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setUnselectedTintColor:(id)arg1 forceLabelToConform:(BOOL)arg2;
 - (void)_setUpSelectedIndicatorViewIfNeeded;
+- (BOOL)_shouldBeVibrant;
 - (void)_showSelectedIndicator:(BOOL)arg1 changeSelection:(BOOL)arg2;
 - (id)_swappableImageView;
 - (id)_tabBar;

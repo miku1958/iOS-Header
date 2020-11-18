@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     NSArray *_keyplaneKeys;
     long long _selectedKeyIndex;
     long long _savedSelectedKeyIndex;
-    BOOL _useDirectionalSelection;
     BOOL _ignoreEventsUntilPressEnds;
     UILexicon *_recentInputs;
     BOOL _disableTouchInput;
@@ -26,13 +25,17 @@ __attribute__((visibility("hidden")))
     UIKBTree *_cachedMultitapKeyplane;
     BOOL _cachedCanMultitap;
     UIAlertController *_recentInputsAlert;
+    NSString *_keyplaneBeforeDictation;
+    long long _selectedKeyBeforeDictation;
 }
 
 @property (readonly, nonatomic) UIKBTree *currentKey;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSString *keyplaneBeforeDictation; // @synthesize keyplaneBeforeDictation=_keyplaneBeforeDictation;
 @property (strong, nonatomic) UIAlertController *recentInputsAlert; // @synthesize recentInputsAlert=_recentInputsAlert;
+@property (nonatomic) long long selectedKeyBeforeDictation; // @synthesize selectedKeyBeforeDictation=_selectedKeyBeforeDictation;
 @property (readonly) Class superclass;
 
 + (id)carKeyboardNameForKeyboard:(id)arg1 screenTraits:(id)arg2;
@@ -43,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_handlePhysicalKeyDownWithEvent:(id)arg1;
 - (BOOL)_handleRemoteControlReceivedWithEvent:(id)arg1;
 - (BOOL)_handleWheelChangedWithEvent:(id)arg1;
+- (BOOL)_isDirectionalHeading:(unsigned long long)arg1;
 - (id)_keyplaneForKeyplaneProperties;
 - (BOOL)_menuTapShouldExitVariants;
 - (void)_moveWithEvent:(id)arg1;
@@ -94,16 +98,20 @@ __attribute__((visibility("hidden")))
 - (void)setSelectedKeyIndex:(long long)arg1;
 - (BOOL)shouldAddHandRestRecognizer;
 - (BOOL)shouldAllowCurrentKeyplaneReload;
+- (BOOL)shouldDeactivateWithoutWindow;
 - (BOOL)shouldMatchCaseForDomainKeys;
 - (BOOL)shouldMergeKey:(id)arg1;
 - (BOOL)shouldPreventInputManagerHitTestingForKey:(id)arg1;
 - (BOOL)shouldRetestKey:(id)arg1 withKeyplane:(id)arg2;
+- (BOOL)shouldShowDictationKey;
 - (BOOL)shouldToggleKeyplaneWithName:(id)arg1;
+- (BOOL)shouldUseDefaultShiftStateFromLayout;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
 - (void)showRecentInputsAlert;
 - (int)stateForCandidateListKey:(id)arg1;
 - (int)stateForKeyplaneSwitchKey:(id)arg1;
 - (BOOL)supportsEmoji;
+- (void)switchToDictationKeyplane;
 - (void)takeKeyAction:(id)arg1;
 - (unsigned long long)targetEdgesForScreenGestureRecognition;
 - (long long)targetKeyIndexAtOffset:(struct CGPoint)arg1 fromKey:(id)arg2;

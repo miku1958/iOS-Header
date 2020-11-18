@@ -146,6 +146,7 @@
         unsigned int interruptingDeceleration:1;
         unsigned int delegateScrollViewAdjustedOffset:1;
         unsigned int disableUpdateOffsetOnCancelTracking:1;
+        unsigned int needToIncrementScrollBounceStatistic:1;
     } _scrollViewFlags;
     BOOL _useContentDimensionVariablesForConstraintLowering;
     id _scrollTestParameters;
@@ -241,6 +242,7 @@
 - (void)_attemptToDragParent:(id)arg1 forNewBounds:(struct CGRect)arg2 oldBounds:(struct CGRect)arg3;
 - (id)_backgroundShadowForSlideAnimation;
 - (BOOL)_beginTrackingWithEvent:(id)arg1;
+- (BOOL)_bounceForLowFidelityPanIfNecessary;
 - (BOOL)_canCancelContentTouches:(id)arg1;
 - (BOOL)_canScrollX;
 - (BOOL)_canScrollY;
@@ -249,6 +251,8 @@
 - (void)_clearContentOffsetAnimation;
 - (void)_clearContentOffsetAnimation:(id)arg1;
 - (void)_clearParentAdjustment;
+- (void)_clearScrollBounceStatisticsTrackingState;
+- (void)_commitScrollBounceStatisticsTrackingState;
 - (BOOL)_constraintAffectsContentSize:(id)arg1;
 - (id)_constraintsFromContentSize;
 - (double)_contentOffsetAnimationDuration;
@@ -283,6 +287,7 @@
 - (void)_getStandardDecelerationOffset:(double *)arg1 forTimeInterval:(double)arg2 min:(double)arg3 max:(double)arg4 decelerationFactor:(double)arg5 decelerationLnFactor:(double)arg6 velocity:(double *)arg7;
 - (struct UIEdgeInsets)_gradientMaskInsets;
 - (void)_handleDirectionalPress:(id)arg1;
+- (void)_handleDirectionalScrollToOffset:(struct CGPoint)arg1 clampingToBounds:(BOOL)arg2;
 - (void)_handleLowFidelitySwipe:(id)arg1;
 - (void)_handleSwipe:(id)arg1;
 - (void)_hideScrollIndicators;
@@ -331,6 +336,7 @@
 - (void)_reenableImplicitAnimationsAfterScrollTest;
 - (void)_registerAsScrollToTopViewIfPossible;
 - (void)_registerForRotation:(BOOL)arg1 ofWindow:(id)arg2;
+- (void)_registerForSpringBoardBlankedScreenNotification;
 - (void)_removeScrollNotificationView:(id)arg1;
 - (BOOL)_resetScrollingForGestureEvent:(id)arg1;
 - (void)_resetScrollingWithUIEvent:(id)arg1;
@@ -344,6 +350,8 @@
 - (void)_scrollToTopFromTouchAtScreenLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_scrollViewAnimationEnded:(id)arg1 finished:(BOOL)arg2;
 - (void)_scrollViewDidEndDecelerating;
+- (void)_scrollViewDidEndDeceleratingForDelegate;
+- (void)_scrollViewDidEndDraggingForDelegateWithDeceleration:(BOOL)arg1;
 - (void)_scrollViewDidEndDraggingWithDeceleration:(BOOL)arg1;
 - (void)_scrollViewDidEndZooming;
 - (id)_scrollViewTouchDelayGesture;
@@ -385,14 +393,13 @@
 - (BOOL)_showsBackgroundShadow;
 - (void)_skipNextStartOffsetAdjustment;
 - (void)_smoothScrollDisplayLink:(id)arg1;
-- (void)_smoothScrollIntoBounds;
 - (void)_smoothScrollTimer:(id)arg1;
 - (void)_smoothScrollWithUpdateTime:(double)arg1;
+- (void)_springBoardBlankedScreenNotification:(id)arg1;
 - (BOOL)_startBeingDraggedByChild:(id)arg1;
 - (void)_startDraggingParent:(id)arg1;
 - (void)_startTimer:(BOOL)arg1;
 - (void)_staticScrollBar:(id)arg1 didScrollInDirection:(struct CGPoint)arg2;
-- (void)_staticScrollBarScrollAnimationEnded;
 - (BOOL)_staysCenteredDuringPinch;
 - (BOOL)_stopBeingDraggedByChild:(id)arg1;
 - (void)_stopDraggingParent:(id)arg1;
@@ -411,6 +418,7 @@
 - (struct CGPoint)_touchPositionForTouches:(id)arg1;
 - (id)_touchesDelayedGestureRecognizer;
 - (BOOL)_transfersScrollToContainer;
+- (void)_unregisterForSpringBoardBlankedScreenNotification;
 - (void)_updateContentFitDisableScrolling;
 - (void)_updateForChangedScrollRelatedInsets;
 - (void)_updateGradientMaskView;
@@ -419,6 +427,7 @@
 - (void)_updatePanGestureConfiguration;
 - (void)_updatePinchGesture;
 - (void)_updatePinchGestureForState:(long long)arg1;
+- (void)_updateRubberbandingStatisticTrackingState;
 - (void)_updateScrollAnimationForChangedTargetOffset:(struct CGPoint)arg1;
 - (void)_updateScrollGestureRecognizersEnabled;
 - (void)_updateUsesStaticScrollBar;

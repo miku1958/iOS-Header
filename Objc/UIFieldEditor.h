@@ -36,6 +36,7 @@
     struct UIEdgeInsets _padding;
     _UIFieldEditorContentView *_contentView;
     struct _NSRange _unobscuredSecureRange;
+    unsigned long long _obscuredSecureLength;
     NSTimer *_obscureAllTextTimer;
     struct CGPoint _textContainerOrigin;
     double _contentWidth;
@@ -171,6 +172,7 @@
 - (void)setAttributedText:(id)arg1 andSetCaretSelectionAfterText:(BOOL)arg2;
 - (void)setBaseWritingDirection:(long long)arg1 forRange:(id)arg2;
 - (void)setConstrainedFrameSize:(struct CGSize)arg1;
+- (void)setDisplaySecureEditsUsingPlainText:(BOOL)arg1;
 - (void)setFont:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setLayoutOrientation:(long long)arg1;

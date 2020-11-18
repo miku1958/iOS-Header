@@ -141,7 +141,6 @@
 - (BOOL)_shouldAdjustContentViewFrameForOffscreenFocus:(id)arg1 adjustedTabBarFrame:(struct CGRect)arg2;
 - (BOOL)_shouldPersistViewWhenCoding;
 - (BOOL)_shouldSynthesizeSupportedOrientations;
-- (BOOL)_shouldUpdateFocusInContext:(id)arg1 position:(long long)arg2 heading:(unsigned long long)arg3;
 - (BOOL)_shouldUseOnePartRotation;
 - (void)_showBarWithTransition:(int)arg1 isExplicit:(BOOL)arg2;
 - (void)_tabBarItemClicked:(id)arg1;

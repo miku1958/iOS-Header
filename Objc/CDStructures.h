@@ -219,6 +219,14 @@ typedef struct {
 } CDStruct_8bdd0ba6;
 
 typedef struct {
+    unsigned long long senderID;
+    double controllerState[16];
+    double normalizedLeftStickState[4];
+    double normalizedRightStickState[4];
+    double normalizedShoulderButtonState[4];
+} CDStruct_a7a14e3b;
+
+typedef struct {
     unsigned long long _field1;
     id *_field2;
     unsigned long long *_field3;
@@ -226,17 +234,7 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    double controllerState[16];
-    double normalizedLeftStickState[4];
-    double normalizedShoulderButtonState[4];
-    BOOL didSendEvent;
-    BOOL dPadActive;
-    BOOL leftStickActive;
-    BOOL shoulderButtonActive;
-} CDStruct_a6e7b6a4;
-
-typedef struct {
-    BOOL itemIsEnabled[27];
+    BOOL itemIsEnabled[29];
     char timeString[64];
     int gsmSignalStrengthRaw;
     int gsmSignalStrengthBars;
@@ -264,9 +262,11 @@ typedef struct {
     unsigned int quietModeInactive:1;
     unsigned int tetheringConnectionCount;
     unsigned int batterySaverModeActive:1;
+    unsigned int deviceIsRTL:1;
     char breadcrumbTitle[256];
     char breadcrumbSecondaryTitle[256];
-} CDStruct_7953f186;
+    char personName[100];
+} CDStruct_996e841e;
 
 typedef struct {
     unsigned int val[8];
@@ -379,7 +379,7 @@ typedef struct {
 } CDStruct_0ba2c6ed;
 
 typedef struct {
-    BOOL overrideItemIsEnabled[27];
+    BOOL overrideItemIsEnabled[29];
     unsigned int overrideTimeString:1;
     unsigned int overrideGsmSignalStrengthRaw:1;
     unsigned int overrideGsmSignalStrengthBars:1;
@@ -402,8 +402,9 @@ typedef struct {
     unsigned int overrideBreadcrumb:1;
     unsigned int overrideDisplayRawGSMSignal:1;
     unsigned int overrideDisplayRawWifiSignal:1;
-    CDStruct_7953f186 values;
-} CDStruct_603bf4be;
+    unsigned int overridePersonName:1;
+    CDStruct_996e841e values;
+} CDStruct_2d0a2756;
 
 typedef struct {
     CDStruct_73524d89 _field1[4];

@@ -60,6 +60,7 @@
 @property (strong, nonatomic) UIColor *thumbTintColor; // @synthesize thumbTintColor=_thumbTintColor;
 @property (nonatomic) float value; // @dynamic value;
 
++ (BOOL)_allowActionsToQueue;
 - (void).cxx_destruct;
 - (BOOL)_alwaysHandleScrollerMouseEvent;
 - (void)_buildTrackArtwork;

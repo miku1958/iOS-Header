@@ -6,15 +6,12 @@
 
 #import <UIKit/UIStatusBarItemView.h>
 
-@class NSString, _UILegibilityImageSet;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarServiceItemView : UIStatusBarItemView
 {
     NSString *_serviceString;
-    _UILegibilityImageSet *_serviceImage;
-    double _serviceImageWidth;
-    double _serviceImageLetterSpacing;
     NSString *_crossfadeString;
     unsigned long long _crossfadeStep;
     double _maxWidth;

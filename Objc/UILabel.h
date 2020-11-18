@@ -106,6 +106,8 @@
 - (void)_accessibilityButtonShapesChangedNotification:(id)arg1;
 - (void)_accessibilityButtonShapesParametersDidChange;
 - (double)_actualScaleFactor;
+- (void)_applicationDidBecomeActiveNotification:(id)arg1;
+- (void)_applicationWillResignActiveNotification:(id)arg1;
 - (id)_associatedScalingLabel;
 - (BOOL)_attributedStringHasAttributesNotCoveredByPrimitives;
 - (double)_baselineOffsetFromBottom;

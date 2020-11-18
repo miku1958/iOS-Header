@@ -21,6 +21,8 @@
     UITouch *_touches[2];
     double _hysteresis;
     id _transformAnalyzer;
+    unsigned int _loggedPinchStatistic:1;
+    unsigned int _loggedZoomStatistic:1;
     unsigned int _endsOnSingleTouch:1;
     BOOL __enableNestedHysteresis;
 }
@@ -36,6 +38,7 @@
 + (BOOL)_shouldDefaultToTouches;
 - (void).cxx_destruct;
 - (BOOL)_endsOnSingleTouch;
+- (void)_logStatisticsForScale:(double)arg1;
 - (void)_resetGestureRecognizer;
 - (void)_setEndsOnSingleTouch:(BOOL)arg1;
 - (id)initWithCoder:(id)arg1;

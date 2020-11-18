@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSConditionLock, NSMutableArray, UIKeyboardTaskExecutionContext;
+@class NSConditionLock, NSMutableArray, UIKeyboardTaskEntry, UIKeyboardTaskExecutionContext;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardTaskQueue : NSObject
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_tasks;
     NSMutableArray *_deferredTasks;
     UIKeyboardTaskExecutionContext *_executionContext;
-    CDUnknownBlockType _mainThreadContinuation;
+    UIKeyboardTaskEntry *_mainThreadContinuation;
 }
 
 @property (strong, nonatomic) UIKeyboardTaskExecutionContext *executionContext; // @synthesize executionContext=_executionContext;

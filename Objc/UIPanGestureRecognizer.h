@@ -40,6 +40,7 @@
 + (void)_setPanGestureRecognizersEnabled:(BOOL)arg1;
 + (BOOL)_shouldDefaultToTouches;
 - (void).cxx_destruct;
+- (id)_activeTouches;
 - (struct CGPoint)_adjustSceneReferenceLocation:(struct CGPoint)arg1;
 - (double)_allowableSeparation;
 - (BOOL)_canPanHorizontally;

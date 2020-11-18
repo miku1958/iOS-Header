@@ -9,7 +9,7 @@
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKit/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIScrollView, _UIPreviewActionSheetItemView;
+@class NSArray, NSString, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIScrollView, _UIDimmingKnockoutBackdropView, _UIPreviewActionSheetItemView;
 @protocol _UIPreviewActionSheetViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -23,10 +23,13 @@ __attribute__((visibility("hidden")))
     UIScrollView *_scrollView;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
+    _UIDimmingKnockoutBackdropView *_backdropView;
+    NSArray *_separatorViews;
     struct UIEdgeInsets _contentInsets;
 }
 
 @property (strong, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+@property (weak, nonatomic) _UIDimmingKnockoutBackdropView *backdropView; // @synthesize backdropView=_backdropView;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property (readonly, copy) NSString *debugDescription;
@@ -37,14 +40,17 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (weak, nonatomic) _UIPreviewActionSheetItemView *selectedActionView; // @synthesize selectedActionView=_selectedActionView;
+@property (strong, nonatomic) NSArray *separatorViews; // @synthesize separatorViews=_separatorViews;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
 - (void)_changeSelectedActionViewWithView:(id)arg1;
 - (void)_fireActionForSelectedView;
+- (BOOL)_isInDarkMode;
 - (void)_longPressDidFire:(id)arg1;
 - (void)_panDidFire:(id)arg1;
+- (id)_separatorColorForDarkMode:(BOOL)arg1;
 - (void)_setupGestureRecognizers;
 - (void)_setupViewHierarchy;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -52,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 title:(id)arg2 items:(id)arg3 contentInsets:(struct UIEdgeInsets)arg4;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

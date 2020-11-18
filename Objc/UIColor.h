@@ -14,6 +14,7 @@
 @interface UIColor : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_systemColorName;
+    NSString *_cachedStyleString;
 }
 
 @property (readonly, nonatomic) struct CGColor *CGColor;

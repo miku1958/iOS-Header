@@ -12,6 +12,7 @@
 {
     double _focusingBaseDuration;
     double _unfocusingBaseDuration;
+    double _focusingDelay;
     unsigned long long _animationOptions;
     double _focusingDurationScaleFactorLowerBound;
     double _focusingDurationScaleFactorUpperBound;
@@ -24,6 +25,7 @@
 
 @property (nonatomic) unsigned long long animationOptions; // @synthesize animationOptions=_animationOptions;
 @property (nonatomic) double focusingBaseDuration; // @synthesize focusingBaseDuration=_focusingBaseDuration;
+@property (nonatomic) double focusingDelay; // @synthesize focusingDelay=_focusingDelay;
 @property (nonatomic) double focusingDurationScaleFactorLowerBound; // @synthesize focusingDurationScaleFactorLowerBound=_focusingDurationScaleFactorLowerBound;
 @property (nonatomic) double focusingDurationScaleFactorUpperBound; // @synthesize focusingDurationScaleFactorUpperBound=_focusingDurationScaleFactorUpperBound;
 @property (nonatomic) double minimumFocusDuration; // @synthesize minimumFocusDuration=_minimumFocusDuration;

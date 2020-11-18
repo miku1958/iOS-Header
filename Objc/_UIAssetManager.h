@@ -43,12 +43,12 @@
 + (void)_dropResourceReferencesForURL:(id)arg1;
 + (void)_saveAssetManager:(id)arg1 forBundle:(id)arg2 lock:(BOOL)arg3;
 + (long long)_userInterfaceIdiomForDeviceClass:(unsigned long long)arg1;
++ (BOOL)_validStackImageData:(id)arg1;
 + (double)_watchScreenScale;
 + (id)assetManagerForBundle:(id)arg1;
 + (id)newAssetNamed:(id)arg1 fromBundle:(id)arg2;
 + (id)sharedRuntimeAssetMap;
 + (id)sharedRuntimeCatalog;
-+ (BOOL)validStackImageData:(id)arg1;
 + (BOOL)validStackImageFile:(id)arg1;
 - (id)_assetForName:(id)arg1 shouldCreateWhenNotPresent:(BOOL)arg2;
 - (id)_assetFromMapForName:(id)arg1;

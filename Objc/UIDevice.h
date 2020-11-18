@@ -50,6 +50,7 @@
 + (long long)currentDeviceOrientationAllowingAmbiguous:(BOOL)arg1;
 + (id)modelSpecificLocalizedStringKeyForKey:(id)arg1;
 - (void)_clearGraphicsQualityOverride;
+- (id)_defaultSimulatorName;
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
 - (void)_enableDeviceOrientationEvents:(BOOL)arg1;
 - (long long)_graphicsQuality;

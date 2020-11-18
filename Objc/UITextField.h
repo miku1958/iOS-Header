@@ -16,7 +16,7 @@
 #import <UIKit/_UIFloatingContentViewDelegate-Protocol.h>
 #import <UIKit/_UILayoutBaselineUpdating-Protocol.h>
 
-@class NSAttributedString, NSDictionary, NSLayoutConstraint, NSString, UIButton, UIColor, UIFont, UIImage, UIImageView, UILabel, UISystemInputViewController, UITapGestureRecognizer, UITextFieldAtomBackgroundView, UITextFieldBackgroundView, UITextFieldBorderView, UITextFieldLabel, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIVisualEffectView, _UIBaselineLayoutStrut, _UICascadingTextStorage, _UIDetachedFieldEditorBackgroundView, _UIFloatingContentView;
+@class NSAttributedString, NSDictionary, NSIndexSet, NSLayoutConstraint, NSString, UIButton, UIColor, UIFont, UIImage, UIImageView, UILabel, UISystemInputViewController, UITapGestureRecognizer, UITextFieldAtomBackgroundView, UITextFieldBackgroundView, UITextFieldBorderView, UITextFieldLabel, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIVisualEffectView, _UIBaselineLayoutStrut, _UICascadingTextStorage, _UIDetachedFieldEditorBackgroundView, _UIFloatingContentView;
 @protocol UITextFieldDelegate, UITextInputDelegate, UITextInputTokenizer;
 
 @interface UITextField : UIControl <UIKeyboardInput, _UILayoutBaselineUpdating, _UIFloatingContentViewDelegate, UIGestureRecognizerDelegate, UIKeyInputPrivate, UITextInputTraits_Private, UIPopoverControllerDelegate, UITextInput, NSCoding>
@@ -53,6 +53,7 @@
     UIVisualEffectView *_fieldEditorEffectView;
     UITextFieldLabel *_displayLabel;
     UITextFieldLabel *_placeholderLabel;
+    UITextFieldLabel *_dictationLabel;
     UITextFieldLabel *_suffixLabel;
     UITextFieldLabel *_prefixLabel;
     UIImageView *_iconView;
@@ -88,17 +89,23 @@
         unsigned int shouldResignWithoutUpdate:1;
         unsigned int blurEnabled:1;
         unsigned int disableFocus:1;
+        unsigned int disableRemoteTextEditing:1;
     } _textFieldFlags;
     BOOL _deferringBecomeFirstResponder;
     BOOL _avoidBecomeFirstResponder;
     BOOL _setSelectionRangeAfterFieldEditorIsAttached;
     BOOL _animateNextHighlightChange;
+    BOOL _tvUseVibrancy;
     NSLayoutConstraint *_baselineLayoutConstraint;
     _UIBaselineLayoutStrut *_baselineLayoutLabel;
+    UIColor *_tvCustomTextColor;
 }
 
+@property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
 @property (strong, nonatomic, setter=_setBaselineLayoutConstraint:) NSLayoutConstraint *_baselineLayoutConstraint; // @synthesize _baselineLayoutConstraint;
 @property (strong, nonatomic, setter=_setBaselineLayoutLabel:) _UIBaselineLayoutStrut *_baselineLayoutLabel; // @synthesize _baselineLayoutLabel;
+@property (strong, nonatomic) UIColor *_tvCustomTextColor; // @synthesize _tvCustomTextColor;
+@property (nonatomic) BOOL _tvUseVibrancy; // @synthesize _tvUseVibrancy;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
@@ -123,7 +130,8 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disablePrediction;
 @property (strong, nonatomic) UIImage *disabledBackground; // @synthesize disabledBackground=_disabledBackground;
-@property (nonatomic) BOOL displaySecureTextUsingPlainText;
+@property (nonatomic) BOOL displaySecureEditsUsingPlainText; // @dynamic displaySecureEditsUsingPlainText;
+@property (nonatomic) BOOL displaySecureTextUsingPlainText; // @dynamic displaySecureTextUsingPlainText;
 @property (readonly, nonatomic, getter=isEditing) BOOL editing;
 @property (nonatomic) int emptyContentReturnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
@@ -175,6 +183,7 @@
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 @property (copy, nonatomic) NSDictionary *typingAttributes;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
+@property (nonatomic) struct _NSRange validTextRange;
 
 + (BOOL)_isCompatibilityTextField;
 + (BOOL)_isDisplayingShortcutViewController;
@@ -218,6 +227,7 @@
 - (BOOL)_fieldEditorAttached;
 - (BOOL)_finishResignFirstResponder;
 - (id)_floatingContentView;
+- (void)_forceObscureAllText;
 - (struct CGRect)_frameForLabel:(id)arg1 inTextRect:(struct CGRect)arg2;
 - (BOOL)_hasContent;
 - (BOOL)_hasSuffixField;
@@ -227,6 +237,7 @@
 - (void)_initialScrollDidFinish:(id)arg1;
 - (id)_inputController;
 - (void)_insertAttributedTextWithoutClosingTyping:(id)arg1;
+- (id)_insertDictationResultPlaceholderOverlay;
 - (void)_installSelectGestureRecognizer;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_invalidateBaselineLayoutConstraints;
@@ -291,6 +302,7 @@
 - (void)_setRightViewOffset:(struct CGSize)arg1;
 - (void)_setSuffix:(id)arg1 withColor:(id)arg2;
 - (void)_setSystemBackgroundViewActive:(BOOL)arg1;
+- (void)_setTextColor:(id)arg1 focusStateChange:(BOOL)arg2;
 - (void)_setUpBaselineLayoutConstraintsForBounds:(struct CGRect)arg1;
 - (void)_share:(id)arg1;
 - (BOOL)_shouldEndEditing;
@@ -386,6 +398,7 @@
 - (void)disableClearsOnInsertion;
 - (id)documentFragmentForPasteboardItemAtIndex:(long long)arg1;
 - (void)drawBorder:(struct CGRect)arg1;
+- (void)drawDictationLabelInRect:(struct CGRect)arg1;
 - (void)drawPlaceholderInRect:(struct CGRect)arg1;
 - (void)drawPrefixInRect:(struct CGRect)arg1;
 - (void)drawRect:(struct CGRect)arg1;

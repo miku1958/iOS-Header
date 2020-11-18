@@ -22,6 +22,7 @@
     long long m_idiom;
     BOOL m_hasExplicitOrientation;
     BOOL m_disableTouchInput;
+    BOOL m_useRecentsAlert;
     NSMutableDictionary *m_focusGuides;
     struct UIEdgeInsets m_unfocusedFocusGuideOutsets;
     BOOL _hasImpendingCursorLocation;
@@ -85,9 +86,11 @@
 - (void)_setRenderConfig:(id)arg1;
 - (void)_setSplit:(BOOL)arg1;
 - (void)_setUndocked:(BOOL)arg1;
+- (void)_setUseRecentsAlert:(BOOL)arg1;
 - (id)_touchPoint:(struct CGPoint)arg1;
 - (BOOL)_touchesInsideShouldHideCalloutBar;
 - (id)_typeCharacter:(id)arg1 withError:(struct CGPoint)arg2 shouldTypeVariants:(BOOL)arg3 baseKeyForVariants:(BOOL)arg4;
+- (BOOL)_useRecentsAlert;
 - (void)_wheelChangedWithEvent:(id)arg1;
 - (void)acceptAutocorrection;
 - (void)activate;

@@ -16,7 +16,7 @@
 #import <UIKit/_UILayoutBaselineUpdating-Protocol.h>
 #import <UIKit/_UIMultilineTextContentSizing-Protocol.h>
 
-@class NSAttributedString, NSDictionary, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIFont, UIImage, UILabel, UITextInputController, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UISiriStreamingManager, _UITextContainerView, _UITextViewRestorableScrollPosition;
+@class NSAttributedString, NSDictionary, NSIndexSet, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIFont, UIImage, UILabel, UITextInputController, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UISiriStreamingManager, _UITextContainerView, _UITextViewRestorableScrollPosition;
 @protocol UITextInputDelegate, UITextInputTokenizer, UITextViewDelegate;
 
 @interface UITextView : UIScrollView <UITextLinkInteraction, UIPreviewItemDelegate, UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, _UIMultilineTextContentSizing, _UILayoutBaselineUpdating, UITextInput>
@@ -45,6 +45,7 @@
         unsigned int interactiveSelectionDisabled:1;
         unsigned int selectable:1;
         unsigned int shouldPresentSheetsInAWindowLayeredAboveTheKeyboard:1;
+        unsigned int shouldAutoscrollAboveBottom:1;
     } _tvFlags;
     long long _contentSizeUpdateSeqNo;
     _UITextViewRestorableScrollPosition *_scrollTarget;
@@ -66,6 +67,7 @@
     UIView *_inputView;
 }
 
+@property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
 @property (nonatomic, setter=_setDrawsDebugBaselines:) BOOL _drawsDebugBaselines;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
@@ -86,6 +88,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disablePrediction;
+@property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
 @property (nonatomic, getter=isEditable) BOOL editable;
 @property (nonatomic) int emptyContentReturnKeyType;
@@ -141,6 +144,7 @@
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 @property (copy, nonatomic) NSDictionary *typingAttributes;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
+@property (nonatomic) struct _NSRange validTextRange;
 
 + (id)_bestInterpretationForDictationResult:(id)arg1;
 + (BOOL)_isCompatibilityTextView;
@@ -215,8 +219,10 @@
 - (void)_resyncContainerFrameForNonAutolayout;
 - (void)_resyncContainerFrameForNonAutolayoutDeferringSizeToFit:(BOOL)arg1;
 - (void)_scrollRangeToVisible:(struct _NSRange)arg1 animated:(BOOL)arg2;
+- (void)_scrollRect:(struct CGRect)arg1 toVisibleInContainingScrollView:(BOOL)arg2;
 - (void)_scrollSelectionToVisibleInContainingScrollView;
 - (void)_scrollSelectionToVisibleInContainingScrollView:(BOOL)arg1;
+- (void)_scrollToCaretIfNeeded;
 - (void)_scrollToSelectionIfNeeded;
 - (void)_scrollViewAnimationEnded:(id)arg1 finished:(BOOL)arg2;
 - (void)_selectionMayChange:(id)arg1;
@@ -346,9 +352,11 @@
 - (void)setMarginTop:(unsigned long long)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)setScrollEnabled:(BOOL)arg1;
+- (void)setShouldAutoscrollAboveBottom:(BOOL)arg1;
 - (void)setShouldPresentSheetsInAWindowLayeredAboveTheKeyboard:(BOOL)arg1;
 - (void)setTiledViewsDrawAsynchronously:(BOOL)arg1;
 - (void)setUsesTiledViews:(BOOL)arg1;
+- (BOOL)shouldAutoscrollAboveBottom;
 - (BOOL)shouldPresentSheetsInAWindowLayeredAboveTheKeyboard;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)startAutoscroll:(struct CGPoint)arg1;
@@ -370,6 +378,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)undoManager;
 - (void)unmarkText;
+- (void)updateAutoscrollAboveBottom;
 - (void)updateConstraints;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)updateInteractionWithLinkAtPoint:(struct CGPoint)arg1;

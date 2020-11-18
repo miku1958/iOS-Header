@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (double)defaultFocusedHorizontalOutsetForTableView:(id)arg1;
 - (double)defaultFocusedShadowRadiusForTableView:(id)arg1;
 - (id)defaultFooterBackgroundColorForView:(id)arg1 inTableView:(id)arg2;
+- (double)defaultFooterBottomPaddingForTableView:(id)arg1 section:(unsigned long long)arg2;
 - (id)defaultFooterFontForTableViewStyle:(long long)arg1;
 - (id)defaultFooterFontForView:(id)arg1 inTableView:(id)arg2;
 - (id)defaultFooterTextColorForTableViewStyle:(long long)arg1;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultHeaderFontForView:(id)arg1 inTableView:(id)arg2;
 - (id)defaultHeaderTextColorForTableViewStyle:(long long)arg1;
 - (id)defaultHeaderTextColorForView:(id)arg1 inTableView:(id)arg2;
+- (double)defaultHeaderTopPaddingForTableView:(id)arg1 section:(unsigned long long)arg2;
 - (id)defaultInsertImageForCell:(id)arg1 inTableView:(id)arg2;
 - (struct UIEdgeInsets)defaultLayoutMarginsForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultMarginWidthForTableView:(id)arg1;

@@ -7,7 +7,7 @@
 #import <UIKit/_UIStatistics.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIStatisticsScaler : _UIStatistics
+@interface _UIStatisticsScalar : _UIStatistics
 {
 }
 

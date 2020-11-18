@@ -33,6 +33,7 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)_actionGroupWithPreviewMenuItemWithSubactions:(id)arg1;
++ (id)_actionGroupWithTitle:(id)arg1 style:(long long)arg2 color:(id)arg3 actions:(id)arg4;
 + (id)actionGroupWithTitle:(id)arg1 style:(long long)arg2 actions:(id)arg3;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
