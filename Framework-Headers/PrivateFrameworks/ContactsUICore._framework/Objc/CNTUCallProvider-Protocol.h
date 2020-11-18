@@ -17,6 +17,6 @@
 @property (readonly, nonatomic) BOOL supportsAudio;
 @property (readonly, nonatomic) BOOL supportsVideo;
 
-- (id<CNTUDialRequest>)dialRequestForDestinationID:(NSString *)arg1 contact:(CNContact *)arg2 video:(BOOL)arg3;
+- (id<CNTUDialRequest>)dialRequestForDestinationID:(NSString *)arg1 customIdentifier:(NSString *)arg2 contact:(CNContact *)arg3 video:(BOOL)arg4;
 @end
 

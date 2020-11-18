@@ -12,7 +12,7 @@
 - (void)setRouteSummaryWithActiveRouteDetailsData:(NSData *)arg1;
 - (void)setRouteSummaryWithGuidanceStateData:(NSData *)arg1;
 - (void)setRouteSummaryWithNavigationRouteSummaryData:(NSData *)arg1;
-- (void)setRouteSummaryWithSelectedRideOptionData:(NSData *)arg1;
+- (void)setRouteSummaryWithRideSelectionsData:(NSData *)arg1;
 - (void)setRouteSummaryWithStepIndexData:(NSData *)arg1;
 - (void)setRouteSummaryWithTransitSummaryData:(NSData *)arg1;
 @end

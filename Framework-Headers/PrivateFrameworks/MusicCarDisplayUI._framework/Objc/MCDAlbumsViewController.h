@@ -6,20 +6,28 @@
 
 #import <MusicCarDisplayUI/MCDTableViewController.h>
 
-@class MPMediaPredicate;
+@class MPMediaPredicate, NSString;
 
 @interface MCDAlbumsViewController : MCDTableViewController
 {
     MPMediaPredicate *_compilationPredicate;
+    BOOL _artistMode;
     BOOL _alwaysShowRecents;
+    NSString *_artistAlbumSortSetting;
+    NSString *_albumSortSetting;
 }
 
+@property (strong, nonatomic) NSString *albumSortSetting; // @synthesize albumSortSetting=_albumSortSetting;
 @property (nonatomic) BOOL alwaysShowRecents; // @synthesize alwaysShowRecents=_alwaysShowRecents;
+@property (strong, nonatomic) NSString *artistAlbumSortSetting; // @synthesize artistAlbumSortSetting=_artistAlbumSortSetting;
+@property (nonatomic, getter=isArtistMode) BOOL artistMode; // @synthesize artistMode=_artistMode;
 
 + (id)actionCellConfigurationClassesForLocation:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_limitedUIDidChange;
 - (void)_updateQuery;
+- (void)_userDefaultsDidChange:(id)arg1;
+- (id)initWithDataSource:(id)arg1 cellConfigurationClass:(Class)arg2;
 - (void)reloadData;
 - (void)shouldShowHeadersAndFooters:(BOOL)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

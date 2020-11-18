@@ -37,6 +37,7 @@
 - (id)matchResponse:(id)arg1 requestedCapabilities:(id)arg2;
 - (void)postDidReceiveRemoteMessageWithNoListenerFromDevice:(id)arg1;
 - (id)remoteMessageFromMessage:(id)arg1;
+- (void)start;
 
 @end
 

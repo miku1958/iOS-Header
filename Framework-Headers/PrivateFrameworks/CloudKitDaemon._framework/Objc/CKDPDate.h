@@ -8,7 +8,6 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface CKDPDate : PBCodable <NSCopying>
 {
     double _time;
@@ -20,7 +19,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasTime;
 @property (nonatomic) double time; // @synthesize time=_time;
 
-- (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

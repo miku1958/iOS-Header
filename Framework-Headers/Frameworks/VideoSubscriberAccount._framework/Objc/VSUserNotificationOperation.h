@@ -8,6 +8,7 @@
 
 @class NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface VSUserNotificationOperation : NSOperation
 {
     struct __CFUserNotification *_notification;

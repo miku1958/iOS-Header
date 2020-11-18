@@ -8,6 +8,7 @@
 
 @class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface VSIdentityProviderFilter : NSObject
 {
     BOOL _shouldExcludeUnsupportedProviders;

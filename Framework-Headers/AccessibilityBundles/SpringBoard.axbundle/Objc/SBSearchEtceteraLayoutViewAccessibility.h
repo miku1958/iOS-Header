@@ -13,9 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (void)_addPageControl;
-- (void)_axPageChanged:(id)arg1;
 - (BOOL)accessibilityScroll:(long long)arg1;
 
 @end

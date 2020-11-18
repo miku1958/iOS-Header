@@ -11,8 +11,8 @@
 
 @protocol INRideDriverExport <NSObject, JSExport>
 
-@property (readonly, copy, nonatomic) NSString *phoneNumber;
-@property (readonly, copy, nonatomic) NSString *rating;
+@property (copy, nonatomic) NSString *phoneNumber;
+@property (copy, nonatomic) NSString *rating;
 
 - (id)init;
 @end

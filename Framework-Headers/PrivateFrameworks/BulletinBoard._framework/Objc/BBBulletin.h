@@ -20,7 +20,6 @@
     BOOL _wantsFullscreenPresentation;
     BOOL _ignoresQuietMode;
     BOOL _expiresOnPublisherDeath;
-    BOOL _hasPrivateContent;
     BOOL _usesExternalSync;
     BOOL _loading;
     NSString *_sectionID;
@@ -64,6 +63,7 @@
     NSHashTable *_observers;
     NSString *_parentSectionID;
     NSString *_universalSectionID;
+    long long _contentPreviewSetting;
     unsigned long long realertCount_deprecated;
     NSSet *alertSuppressionAppIDs_deprecated;
 }
@@ -90,6 +90,7 @@
 @property (nonatomic) BOOL clearable; // @synthesize clearable=_clearable;
 @property (readonly, nonatomic) BOOL coalescesWhenLocked;
 @property (strong, nonatomic) BBContent *content; // @synthesize content=_content;
+@property (nonatomic) long long contentPreviewSetting; // @synthesize contentPreviewSetting=_contentPreviewSetting;
 @property (strong, nonatomic) NSDictionary *context; // @synthesize context=_context;
 @property (nonatomic) unsigned long long counter; // @synthesize counter=_counter;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
@@ -105,7 +106,7 @@
 @property (readonly, nonatomic) NSString *fullAlternateActionLabel;
 @property (readonly, nonatomic) NSString *fullUnlockActionLabel;
 @property (nonatomic) BOOL hasEventDate; // @synthesize hasEventDate=_hasEventDate;
-@property (nonatomic) BOOL hasPrivateContent; // @synthesize hasPrivateContent=_hasPrivateContent;
+@property (nonatomic) BOOL hasPrivateContent; // @dynamic hasPrivateContent;
 @property (readonly, nonatomic) long long iPodOutAlertType;
 @property (strong, nonatomic) BBSectionIcon *icon; // @synthesize icon=_icon;
 @property (nonatomic) BOOL ignoresQuietMode; // @synthesize ignoresQuietMode=_ignoresQuietMode;

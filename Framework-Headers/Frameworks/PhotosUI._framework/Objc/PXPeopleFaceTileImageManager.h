@@ -18,11 +18,15 @@
     NSObject<OS_dispatch_queue> *_requestLookupIsolationQueue;
     NSObject<OS_dispatch_queue> *_cropCacheQueue;
     NSMapTable *_faceTileRequestByRequestID;
+    NSMapTable *_highPriorityCachedIdentifiers;
+    NSObject<OS_dispatch_queue> *_highPriorityCachedIdentifiersQueue;
     BOOL _concurrencyEnabled;
     PXLRUMemoryCache *_memoryCache;
     id<NSObject> _memoryWarningObserver;
+    id<NSObject> _backgroundEntraceObserver;
 }
 
+@property (strong, nonatomic) id<NSObject> backgroundEntraceObserver; // @synthesize backgroundEntraceObserver=_backgroundEntraceObserver;
 @property (nonatomic, getter=isConcurrencyEnabled) BOOL concurrencyEnabled; // @synthesize concurrencyEnabled=_concurrencyEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,29 +39,38 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_addRequestResult:(id)arg1 forIdentifier:(id)arg2;
+- (struct CGRect)_boundedCropRectForRect:(struct CGRect)arg1 inRect:(struct CGRect)arg2 withTargetAspectRatio:(double)arg3;
 - (id)_cachedResultForIdentifier:(id)arg1 params:(struct PXFaceTileImageParams)arg2 allowVeryLowQuality:(BOOL)arg3 isLowResResult:(BOOL *)arg4;
 - (id)_cachedResultForIdentifier:(id)arg1 params:(struct PXFaceTileImageParams)arg2 isLowResResult:(BOOL *)arg3;
-- (void)_cropImage:(id)arg1 cacheResult:(BOOL)arg2 isDegraded:(BOOL)arg3 forRequest:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)_cropImage:(id)arg1 cacheResult:(BOOL)arg2 isDegraded:(BOOL)arg3 forRequest:(id)arg4 didCallFastBlock:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (BOOL)_deliverCachedResultIfPossibleForRequest:(id)arg1 allowDegradedDelivery:(BOOL)arg2 allowVeryLowQuality:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (BOOL)_deliverCachedResultIfPossibleForRequest:(id)arg1 allowDegradedDelivery:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_doesChange:(id)arg1 containVisibleChangesToPHAssetWithOID:(id)arg2;
+- (id)_fetchAssetFromFace:(id)arg1;
 - (id)_fetchKeyFaceFromFaceCollection:(id)arg1 error:(id *)arg2;
 - (id)_fetchKeyFaceFromPerson:(id)arg1 error:(id *)arg2;
+- (void)_handleMemoryClearRequest;
 - (struct CGRect)_imageFaceRectForFace:(id)arg1;
-- (void)_requestFaceTileImageFromFace:(id)arg1 fromPHObject:(id)arg2 faceImageRequest:(id)arg3 cacheResult:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)_requestFaceTileImageFromFace:(id)arg1 fromPHObject:(id)arg2 imageRequest:(id)arg3 faceImageRequest:(id)arg4 cacheResult:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6 fastDisplayBlock:(CDUnknownBlockType)arg7;
+- (int)_requestFaceTileImageFromRequest:(id)arg1 withTargetSize:(struct CGSize)arg2 cropFactor:(unsigned long long)arg3 round:(BOOL)arg4 cacheResult:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6 fastDisplayBlock:(CDUnknownBlockType)arg7;
 - (void)_startListeningForChanges;
 - (void)_stopListeningForChanges;
+- (void)addHighPriorityCachedItemIdentifier:(id)arg1 forOwner:(id)arg2;
 - (void)cancelRequest:(int)arg1;
 - (void)clearMemoryCache;
 - (void)dealloc;
 - (id)init;
 - (void)invalidateCacheForPerson:(id)arg1;
+- (BOOL)isActiveRequestWithRequestID:(int)arg1;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
+- (void)removeHighPriorityCachedItemIdentifier:(id)arg1 forOwner:(id)arg2;
 - (int)requestFaceTileImageFromFace:(id)arg1 withTargetSize:(struct CGSize)arg2 cropFactor:(unsigned long long)arg3 round:(BOOL)arg4 cacheResult:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (int)requestFaceTileImageFromFace:(id)arg1 withTargetSize:(struct CGSize)arg2 cropFactor:(unsigned long long)arg3 round:(BOOL)arg4 cacheResult:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6 fastDisplayBlock:(CDUnknownBlockType)arg7;
 - (int)requestFaceTileImageFromFace:(id)arg1 withTargetSize:(struct CGSize)arg2 cropFactor:(unsigned long long)arg3 round:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (int)requestFaceTileImageFromFaceCollection:(id)arg1 withTargetSize:(struct CGSize)arg2 cropFactor:(unsigned long long)arg3 round:(BOOL)arg4 cacheResult:(BOOL)arg5 boundFaceRect:(BOOL)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (int)requestFaceTileImageFromPerson:(id)arg1 withTargetSize:(struct CGSize)arg2 cropFactor:(unsigned long long)arg3 round:(BOOL)arg4 cacheResult:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (int)requestFaceTileImageFromPerson:(id)arg1 withTargetSize:(struct CGSize)arg2 cropFactor:(unsigned long long)arg3 round:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (int)requestFastFaceTileImageFromRequest:(id)arg1 withTargetSize:(struct CGSize)arg2 cropFactor:(unsigned long long)arg3 round:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5 fastDisplayBlock:(CDUnknownBlockType)arg6;
 
 @end
 

@@ -15,7 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)handwritingPresentationControllerDidShowHandwriting:(id)arg1;
 - (void)handwritingPresentationControllerWillHideHandwriting:(id)arg1;
-- (void)switcherViewController:(id)arg1 willShowSelectionViewWithAnimations:(CDUnknownBlockType *)arg2 completion:(CDUnknownBlockType *)arg3;
 
 @end
 

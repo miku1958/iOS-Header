@@ -49,6 +49,7 @@
 - (id)init;
 - (id)initWithChangedIdentifiers:(id)arg1 unknownMergeEvent:(BOOL)arg2;
 - (id)insertedObjectIDs;
+- (BOOL)keyFaceChangedForPersonOID:(id)arg1;
 - (void)preloadChangeDetailsForFetchResults:(id)arg1 inManagedObjectContext:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)preloadSimulatedChangeDetailsForManualFetchResults:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)trashedStateChangedForPHAssetOID:(id)arg1;

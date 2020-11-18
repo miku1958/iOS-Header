@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @protocol OS_dispatch_queue, VCConnectionManagerDelegate, VCConnectionProtocol;
 
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface VCConnectionManager : NSObject
 {
     unsigned int _callID;
+    int _relayServerProvider;
     NSObject<OS_dispatch_queue> *_stateQueue;
     struct _opaque_pthread_rwlock_t _stateRWlock;
     id<VCConnectionProtocol> _primaryConnection;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) int mediaExcessiveCellularTxBytes; // @synthesize mediaExcessiveCellularTxBytes=_mediaExcessiveCellularTxBytes;
 @property int preferredLocalInterfaceForDuplication; // @synthesize preferredLocalInterfaceForDuplication=_preferredLocalInterfaceForDuplication;
 @property (strong, nonatomic) id<VCConnectionProtocol> primaryConnection; // @synthesize primaryConnection=_primaryConnection;
+@property int relayServerProvider; // @synthesize relayServerProvider=_relayServerProvider;
 @property (strong, nonatomic) id<VCConnectionProtocol> secondaryConnection; // @synthesize secondaryConnection=_secondaryConnection;
 @property (readonly) int signalingExcessiveCellularRxBytes; // @synthesize signalingExcessiveCellularRxBytes=_signalingExcessiveCellularRxBytes;
 @property (readonly) int signalingExcessiveCellularTxBytes; // @synthesize signalingExcessiveCellularTxBytes=_signalingExcessiveCellularTxBytes;

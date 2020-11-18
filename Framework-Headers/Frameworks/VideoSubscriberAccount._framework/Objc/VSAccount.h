@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString, VSAccountStore, VSKeychainGenericPassword;
+@protocol VSAuthenticationToken;
 
 @interface VSAccount : NSObject
 {
@@ -16,13 +17,13 @@
     NSString *_identityProviderDisplayName;
     NSString *_identityProviderID;
     NSString *_username;
-    NSString *_authenticationToken;
+    id<VSAuthenticationToken> _authenticationToken;
 }
 
 @property (copy, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
 @property (weak, nonatomic) VSAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (copy, nonatomic) NSString *accountTypeDescription; // @synthesize accountTypeDescription=_accountTypeDescription;
-@property (copy, nonatomic) NSString *authenticationToken; // @synthesize authenticationToken=_authenticationToken;
+@property (strong, nonatomic) id<VSAuthenticationToken> authenticationToken; // @synthesize authenticationToken=_authenticationToken;
 @property (copy, nonatomic) NSString *identityProviderDisplayName; // @synthesize identityProviderDisplayName=_identityProviderDisplayName;
 @property (copy, nonatomic) NSString *identityProviderID; // @synthesize identityProviderID=_identityProviderID;
 @property (strong, nonatomic) VSKeychainGenericPassword *keychainItem;

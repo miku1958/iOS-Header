@@ -8,8 +8,8 @@
 
 #import <iTunesStore/SSURLSessionManagerDelegate-Protocol.h>
 
-@class ISDataProvider, ISURLRequestPerformance, NSArray, NSCountedSet, NSData, NSMutableData, NSString, NSURLCache, NSURLRequest, NSURLResponse, NSURLSessionTask, SSAuthenticationContext, SSMutableURLRequestProperties, SSURLRequestProperties, SSURLSessionManager;
-@protocol ISURLOperationDelegate;
+@class ISDataProvider, ISURLRequestPerformance, NSArray, NSCountedSet, NSData, NSMutableData, NSObject, NSString, NSURLCache, NSURLRequest, NSURLResponse, NSURLSessionTask, SSAuthenticationContext, SSMutableURLRequestProperties, SSURLRequestProperties, SSURLSessionManager;
+@protocol ISURLOperationDelegate, OS_dispatch_queue;
 
 @interface ISURLOperation : ISOperation <SSURLSessionManagerDelegate>
 {
@@ -25,6 +25,7 @@
     SSURLSessionManager *_urlSessionManager;
     NSURLSessionTask *_urlSessionTask;
     BOOL _usesPrivateCookieStore;
+    NSObject<OS_dispatch_queue> *_dataBufferAccessQueue;
     ISURLRequestPerformance *_performanceMetrics;
     BOOL _loadsHTTPFailures;
     BOOL _uploadProgressRequested;

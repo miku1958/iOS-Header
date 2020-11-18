@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSSet *_parentIDs;
     NSMutableSet *_appLibraryIDsWithReverseAliases;
     BRCAppLibrary *_appLibrary;
+    NSString *_oldAppLibraryID;
     NSString *_aliasSourceAppLibraryID;
     NSString *_unsaltedBookmarkData;
 }
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isInDocumentScope; // @synthesize isInDocumentScope=_isInDocumentScope;
 @property (readonly, nonatomic) BOOL isInTrashScope; // @synthesize isInTrashScope=_isInTrashScope;
 @property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
+@property (readonly, nonatomic) NSString *oldAppLibraryID; // @synthesize oldAppLibraryID=_oldAppLibraryID;
 @property (readonly, nonatomic) unsigned long long oldParentFileID; // @synthesize oldParentFileID=_oldParentFileID;
 @property (readonly, nonatomic) BRFileObjectID *oldParentFileObjectID;
 @property (readonly, nonatomic) BRFileObjectID *parentFileObjectID;

@@ -9,6 +9,9 @@
 @class CLCircularRegion, NSArray;
 
 @protocol CLSQueryPerformerProtocol <NSObject>
+
+@property (readonly) BOOL isCancelled;
+
 + (unsigned long long)numberOfRegionsPerBatch;
 + (id)queryForRegions:(NSArray *)arg1;
 + (BOOL)shouldQueryItemsForRegion:(CLCircularRegion *)arg1 selectedRegions:(NSArray *)arg2;

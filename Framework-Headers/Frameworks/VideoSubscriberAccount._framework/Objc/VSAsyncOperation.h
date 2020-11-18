@@ -6,6 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
+__attribute__((visibility("hidden")))
 @interface VSAsyncOperation : NSOperation
 {
     int _state;

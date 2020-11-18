@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NotificationsUI/__NCBlockTouchesViewAcessibility_super.h>
+#import "__NCBlockTouchesViewAcessibility_super.h"
 
 @interface NCBlockTouchesViewAcessibility : __NCBlockTouchesViewAcessibility_super
 {

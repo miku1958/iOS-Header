@@ -32,7 +32,6 @@
 @property (copy, nonatomic) NSDate *endDate;
 @property (readonly, nonatomic) NSString *eventIdentifier;
 @property (readonly, nonatomic) BOOL isDetached;
-@property (readonly, nonatomic) unsigned int modifiedProperties;
 @property (readonly, nonatomic) NSDate *occurrenceDate;
 @property (copy, nonatomic) EKCalendarDate *occurrenceEndDate; // @synthesize occurrenceEndDate=_occurrenceEndDate;
 @property (nonatomic) BOOL occurrenceIsAllDay; // @synthesize occurrenceIsAllDay=_occurrenceIsAllDay;
@@ -165,7 +164,6 @@
 - (void)setInvitationStatus:(unsigned long long)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setLocationPredictionState:(long long)arg1;
-- (void)setModifiedProperties:(unsigned int)arg1;
 - (void)setNeedsOccurrenceCacheUpdate:(BOOL)arg1;
 - (void)setParticipationStatus:(long long)arg1;
 - (void)setPredictedLocationFrozen:(BOOL)arg1;
@@ -196,6 +194,7 @@
 - (double)travelTime;
 - (id)uniqueId;
 - (BOOL)updateEventToEvent:(id)arg1;
+- (void)updateWithGeocodedMapItemAndSaveWithCommit:(id)arg1 eventStore:(id)arg2 error:(id *)arg3;
 - (BOOL)validateRecurrenceRule:(id)arg1 error:(id *)arg2;
 - (BOOL)validateWithSpan:(long long)arg1 error:(id *)arg2;
 

@@ -19,6 +19,8 @@
     BRCServerItem *_serverByPath;
     BRCPackageItem *_packageItem;
     BRCItemID *_parentID;
+    BRCLocalItem *_matchByFileIDGlobally;
+    BRCDocumentItem *_matchByDocumentIDGlobally;
     struct {
         unsigned int byFileID:1;
         unsigned int byDocumentID:1;
@@ -31,7 +33,9 @@
 }
 
 @property (strong, nonatomic) BRCDocumentItem *byDocumentID;
+@property (readonly, strong) BRCDocumentItem *byDocumentIDGlobally;
 @property (strong, nonatomic) BRCLocalItem *byFileID;
+@property (readonly, strong) BRCLocalItem *byFileIDGlobally;
 @property (readonly, nonatomic) BRCLocalItem *byPath;
 @property (readonly, nonatomic) BRCItemID *parentID;
 @property (readonly, nonatomic) BRCRelativePath *relpathOfFSEvent; // @synthesize relpathOfFSEvent=_relpathOfFSEvent;
@@ -41,8 +45,8 @@
 + (id)lookupForRelativePath:(id)arg1;
 - (void).cxx_destruct;
 - (id)_byPathWithLastPathComponent:(id)arg1;
-- (BOOL)_fetchByDocumentID;
-- (BOOL)_fetchByFileID;
+- (BOOL)_fetchByDocumentID:(BOOL)arg1;
+- (BOOL)_fetchByFileID:(BOOL)arg1;
 - (BOOL)_fetchByPath;
 - (id)byPathWithLastPathComponent:(id)arg1;
 - (id)description;

@@ -52,6 +52,7 @@
 @property (nonatomic) double personalizationScore;
 @property (nonatomic) unsigned long long placement;
 @property (nonatomic) BOOL preventThumbnailImageScaling;
+@property (nonatomic) BOOL publiclyIndexable;
 @property (copy, nonatomic) NSString *publishDate;
 @property (strong, nonatomic) SFPunchout *punchout;
 @property (nonatomic) unsigned long long queryId;

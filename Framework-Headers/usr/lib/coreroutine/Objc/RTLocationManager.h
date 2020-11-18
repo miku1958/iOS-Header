@@ -96,6 +96,7 @@
 - (void)fetchStoredLocationsWithHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithPersistenceManager:(id)arg1 authorizationManager:(id)arg2 purgeManager:(id)arg3;
+- (void)injectLocations:(id)arg1;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;

@@ -18,7 +18,7 @@
     HDFitnessFriendsCloudKitManager *_cloudKitManager;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_observerQueue;
-    BOOL _allPairedWatchesMeetMinimumVersion;
+    BOOL _currentlyPairedWatchMeetsMinimumVersion;
     NSHashTable *_observers;
 }
 

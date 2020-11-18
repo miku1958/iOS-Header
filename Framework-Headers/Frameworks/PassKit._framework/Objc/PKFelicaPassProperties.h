@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDateComponents, NSNumber, NSString;
+@class NSDateComponents, NSDecimalNumber, NSNumber, NSString;
 
 @interface PKFelicaPassProperties : NSObject <NSCopying, NSSecureCoding>
 {
@@ -22,7 +22,7 @@
     BOOL _hasShinkansenTicket;
     NSString *_currencyCode;
     NSString *_appletFormat;
-    NSNumber *_transitBalance;
+    NSDecimalNumber *_transitBalance;
     NSDateComponents *_shinkansenValidityStartDate;
     NSNumber *_shinkansenValidityTerm;
     NSString *_shinkansenOriginStation;
@@ -76,7 +76,7 @@
 @property (copy, nonatomic) NSString *shinkansenTrainName; // @synthesize shinkansenTrainName=_shinkansenTrainName;
 @property (copy, nonatomic) NSDateComponents *shinkansenValidityStartDate; // @synthesize shinkansenValidityStartDate=_shinkansenValidityStartDate;
 @property (copy, nonatomic) NSNumber *shinkansenValidityTerm; // @synthesize shinkansenValidityTerm=_shinkansenValidityTerm;
-@property (copy, nonatomic) NSNumber *transitBalance; // @synthesize transitBalance=_transitBalance;
+@property (copy, nonatomic) NSDecimalNumber *transitBalance; // @synthesize transitBalance=_transitBalance;
 
 + (id)passPropertiesForPass:(id)arg1;
 + (BOOL)supportsSecureCoding;

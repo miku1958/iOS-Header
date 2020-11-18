@@ -15,7 +15,7 @@
 @property (strong, nonatomic) VKMapModel *mapModel;
 @property (nonatomic) double zoomScale;
 
-- (void)startWithPounce:(BOOL)arg1 pounceCompletionHandler:(void (^)(BOOL))arg2;
+- (void)startWithPounce:(BOOL)arg1 startLocation:(CDStruct_c3b9c2ee)arg2 pounceCompletionHandler:(void (^)(BOOL))arg3;
 - (void)stop;
 @end
 

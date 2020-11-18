@@ -8,16 +8,16 @@
 
 #import <CallKit/CXCallObserverDataSource-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, NSXPCConnection;
-@protocol CXCallObserverDataSourceDelegate, OS_dispatch_queue;
+@class NSDictionary, NSHashTable, NSMutableDictionary, NSString, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CXCallObserverXPCClient : NSObject <CXCallObserverDataSource>
 {
     int _notifyToken;
-    id<CXCallObserverDataSourceDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_concurrentQueue;
     NSMutableDictionary *_mutableCallUUIDToCallMap;
+    NSHashTable *_delegates;
     NSXPCConnection *_connection;
 }
 
@@ -25,24 +25,31 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *concurrentQueue; // @synthesize concurrentQueue=_concurrentQueue;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<CXCallObserverDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *mutableCallUUIDToCallMap; // @synthesize mutableCallUUIDToCallMap=_mutableCallUUIDToCallMap;
 @property (nonatomic) int notifyToken; // @synthesize notifyToken=_notifyToken;
 @property (readonly) Class superclass;
 
++ (void)releaseSharedXPCClient;
++ (id)sharedXPCClient;
++ (id)sharedXPCClientSemaphore;
 - (void).cxx_destruct;
 - (void)_addOrUpdateCall:(id)arg1;
+- (id)_init;
+- (void)_invalidate;
 - (void)_markAllCallsAsEnded;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1 isSynchronous:(BOOL)arg2;
 - (void)_removeCall:(id)arg1;
 - (void)_requestCalls;
+- (void)addDelegate:(id)arg1;
 - (oneway void)addOrUpdateCall:(id)arg1;
 - (void)dealloc;
-- (id)initWithConcurrentQueue:(id)arg1;
+- (id)init;
 - (void)invalidate;
 - (oneway void)removeCall:(id)arg1;
+- (void)removeDelegate:(id)arg1;
 - (void)requestTransaction:(id)arg1 forExtensionIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

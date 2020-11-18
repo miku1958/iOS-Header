@@ -18,9 +18,8 @@
 }
 
 @property (nonatomic, copy) NSString *address; // @synthesize address;
-@property (nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate;
 @property (nonatomic, readonly) BOOL hasKnownSpatialData;
-@property (nonatomic, strong) NSData *mapItemHandle; // @synthesize mapItemHandle;
+@property (nonatomic, copy) NSData *mapItemHandle; // @synthesize mapItemHandle;
 @property (nonatomic, readonly) NSString *shallowDescription;
 @property (nonatomic, copy) NSString *title; // @synthesize title;
 

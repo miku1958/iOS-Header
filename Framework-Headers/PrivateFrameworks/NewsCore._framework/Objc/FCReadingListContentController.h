@@ -10,14 +10,14 @@
 #import <NewsCore/FCNetworkReachabilityObserving-Protocol.h>
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
 
-@class FCCloudContext, FCKeyedOperationQueue, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString;
+@class FCCloudContext, FCKeyedOperationQueue, FCThreadSafeMutableSet, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSSet, NSString;
 @protocol FCOperationThrottler, FCReadingListContentControllerObserving, OS_dispatch_group, OS_dispatch_queue;
 
 @interface FCReadingListContentController : NSObject <FCKeyedOperationQueueDelegate, FCOperationThrottlerDelegate, FCNetworkReachabilityObserving>
 {
     BOOL _hasBeenEnabled;
     id<FCReadingListContentControllerObserving> observer;
-    NSArray *_allSortedArticleIDsInReadingList;
+    NSArray *_articleIDsAvailableForOfflineReading;
     NSArray *_articleIDsOfInterest;
     NSDictionary *_holdInterestTokensByArticleID;
     FCKeyedOperationQueue *_articleContentDownloadKeyQueue;
@@ -28,11 +28,12 @@
     NSObject<OS_dispatch_group> *_articleContentDownloadGroup;
     NSMutableSet *_fetchResults;
     NSOperationQueue *_operationSerialQueue;
+    FCThreadSafeMutableSet *_readingListAvailableForOfflineReading;
 }
 
-@property (copy, nonatomic) NSArray *allSortedArticleIDsInReadingList; // @synthesize allSortedArticleIDsInReadingList=_allSortedArticleIDsInReadingList;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *articleContentDownloadGroup; // @synthesize articleContentDownloadGroup=_articleContentDownloadGroup;
 @property (strong, nonatomic) FCKeyedOperationQueue *articleContentDownloadKeyQueue; // @synthesize articleContentDownloadKeyQueue=_articleContentDownloadKeyQueue;
+@property (copy, nonatomic) NSArray *articleIDsAvailableForOfflineReading; // @synthesize articleIDsAvailableForOfflineReading=_articleIDsAvailableForOfflineReading;
 @property (copy, nonatomic) NSArray *articleIDsOfInterest; // @synthesize articleIDsOfInterest=_articleIDsOfInterest;
 @property (strong, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
@@ -44,6 +45,8 @@
 @property (weak, nonatomic) id<FCReadingListContentControllerObserving> observer; // @synthesize observer;
 @property (strong, nonatomic) NSOperationQueue *operationSerialQueue; // @synthesize operationSerialQueue=_operationSerialQueue;
 @property (strong, nonatomic) NSMutableDictionary *outstandingOperationsByArticleID; // @synthesize outstandingOperationsByArticleID=_outstandingOperationsByArticleID;
+@property (strong, nonatomic) FCThreadSafeMutableSet *readingListAvailableForOfflineReading; // @synthesize readingListAvailableForOfflineReading=_readingListAvailableForOfflineReading;
+@property (readonly, nonatomic) NSSet *readingListForOfflineReading;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *updateHoldInterestTokensQueue; // @synthesize updateHoldInterestTokensQueue=_updateHoldInterestTokensQueue;
 @property (strong, nonatomic) id<FCOperationThrottler> updateHoldInterestTokensThrottler; // @synthesize updateHoldInterestTokensThrottler=_updateHoldInterestTokensThrottler;
@@ -53,6 +56,7 @@
 - (void)_updateInterestsIfNeeded;
 - (void)dealloc;
 - (void)enableDownloadingForOfflineReading;
+- (void)expressInterestInOfflineArticlesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithContext:(id)arg1;
 - (BOOL)isArticleAvailableForOfflineReading:(id)arg1;

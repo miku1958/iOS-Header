@@ -25,9 +25,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<WGWidgetListFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSString *groupName; // @dynamic groupName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutMode; // @synthesize layoutMode=_layoutMode;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property (nonatomic) BOOL shouldBlurContent; // @dynamic shouldBlurContent;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -35,13 +37,10 @@
 - (id)_referenceFont;
 - (void)_updateForContentCategorySizeDidChange;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
-- (id)backgroundView;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)invalidateFooterBackgroundViews;
 - (void)invalidateSubviewGeometery;
 - (void)layoutSubviews;
-- (void)setBackgroundView:(id)arg1;
 - (void)setVisibleWidgetsIDs:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;

@@ -14,10 +14,12 @@
 {
     BOOL _isLastChatItemOfPluginType;
     BOOL _hasSetIsLastChatItemOfPluginType;
-    IMBalloonPluginDataSource *_dataSource;
     IMPluginPayload *_initialPayload;
+    NSString *_bundleIdentifier;
+    IMBalloonPluginDataSource *_dataSource;
 }
 
+@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (strong, nonatomic) IMBalloonPluginDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

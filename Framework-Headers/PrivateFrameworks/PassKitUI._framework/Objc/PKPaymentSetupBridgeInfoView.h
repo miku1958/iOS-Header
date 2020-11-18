@@ -10,7 +10,7 @@
 {
 }
 
-- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2 heroImageController:(id)arg3 hasSupportingHardware:(BOOL)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2 heroImageController:(id)arg3 hasSupportingHardware:(BOOL)arg4 region:(id)arg5;
 - (void)layoutSubviews;
 
 @end

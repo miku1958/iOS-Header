@@ -8,25 +8,31 @@
 
 #import <ITMLKit/IKJSDOMDocument-Protocol.h>
 #import <ITMLKit/IKJSDOMXPathEvaluator-Protocol.h>
-#import <ITMLKit/JSExport-Protocol.h>
+#import <ITMLKit/NSObject-Protocol.h>
+#import <ITMLKit/_IKJSDOMDocument-Protocol.h>
+#import <ITMLKit/_IKJSDOMDocumentProxy-Protocol.h>
 
 @class IKDOMElement, IKDOMImplementation, IKJSNavigationDocument, NSString;
 @protocol IKJSDOMDocumentAppBridge;
 
-@interface IKDOMDocument : IKDOMNode <IKJSDOMDocument, JSExport, IKJSDOMXPathEvaluator>
+@interface IKDOMDocument : IKDOMNode <NSObject, IKJSDOMDocument, _IKJSDOMDocumentProxy, _IKJSDOMDocument, IKJSDOMXPathEvaluator>
 {
     id<IKJSDOMDocumentAppBridge> _appBridge;
     unsigned long long _itmlIDSequence;
 }
 
 @property (weak, nonatomic) id<IKJSDOMDocumentAppBridge> appBridge; // @synthesize appBridge=_appBridge;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) IKDOMElement *documentElement;
 @property (strong, nonatomic) NSString *documentURI;
+@property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) IKDOMImplementation *implementation;
 @property (readonly, strong, nonatomic) NSString *inputEncoding;
 @property (nonatomic) unsigned long long itmlIDSequence; // @synthesize itmlIDSequence=_itmlIDSequence;
 @property (weak, nonatomic) IKJSNavigationDocument *navigationDocument;
 @property (nonatomic) BOOL strictErrorChecking;
+@property (readonly) Class superclass;
 @property (readonly, strong, nonatomic) NSString *xmlEncoding;
 @property (nonatomic) BOOL xmlStandalone;
 @property (strong, nonatomic) NSString *xmlVersion;
@@ -35,6 +41,7 @@
 - (void).cxx_destruct;
 - (void)_updateITMLIDRecursivelyForNodePtr:(struct _xmlNode *)arg1;
 - (id)adoptNode:(id)arg1;
+- (id)asPrivateIKJSDOMDocument;
 - (id)createCDATASection:(id)arg1;
 - (id)createComment:(id)arg1;
 - (id)createDocumentFragment;

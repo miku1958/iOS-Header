@@ -32,6 +32,7 @@
 @property (readonly, nonatomic, getter=_mediaSelectionGroupDictionaries) NSArray *mediaSelectionGroupDictionaries;
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (readonly, nonatomic) int naturalTimeScale;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 overallDurationHint;
 @property (readonly, nonatomic, getter=isPlayable) BOOL playable;
 @property (readonly, nonatomic) float preferredRate;
 @property (readonly, nonatomic) float preferredSoundCheckVolumeNormalization;

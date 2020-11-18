@@ -6,9 +6,12 @@
 
 #import <Foundation/NSProgress.h>
 
+@class NSString;
+
 @interface NSProgress (LSInstallProgressAdditions)
 
 @property (nonatomic) unsigned long long installPhase;
+@property (readonly, nonatomic) NSString *installPhaseString;
 @property (nonatomic) unsigned long long installState;
 
 + (id)childProgressForBundleID:(id)arg1 andPhase:(unsigned long long)arg2;

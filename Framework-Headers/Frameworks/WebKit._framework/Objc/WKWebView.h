@@ -127,6 +127,7 @@
 @property (readonly, nonatomic) NSString *_suggestedFilenameForDisplayedPDF;
 @property (readonly, nonatomic) BOOL _supportsTextZoom;
 @property (nonatomic, setter=_setTextZoomFactor:) double _textZoomFactor;
+@property (readonly, nonatomic) NSArray *_uiTextSelectionRectViews;
 @property (readonly, nonatomic) NSURL *_unreachableURL;
 @property (readonly, nonatomic) NSString *_userAgent;
 @property (nonatomic, setter=_setUserContentExtensionsEnabled:) BOOL _userContentExtensionsEnabled;
@@ -177,11 +178,11 @@
 - (void)_didFinishLoadForMainFrame;
 - (void)_didFinishLoadingDataForCustomContentProviderWithSuggestedFilename:(const struct String *)arg1 data:(id)arg2;
 - (void)_didFinishScrolling;
-- (void)_didFirstVisuallyNonEmptyLayoutForMainFrame;
 - (void)_didInvokeUIScrollViewDelegateCallback;
 - (void)_didRelaunchProcess;
 - (void)_didSameDocumentNavigationForMainFrame:(int)arg1;
 - (void)_didScroll;
+- (void)_disableBackForwardSnapshotVolatilityForTesting;
 - (void)_doAfterNextPresentationUpdate:(CDUnknownBlockType)arg1;
 - (void)_dynamicViewportUpdateChangedTargetToScale:(double)arg1 position:(struct CGPoint)arg2 nextValidLayerTreeTransactionID:(unsigned long long)arg3;
 - (void)_enclosingScrollerScrollingEnded:(id)arg1;
@@ -228,7 +229,6 @@
 - (BOOL)_scrollViewIsRubberBanding;
 - (id)_sessionStateWithFilter:(CDUnknownBlockType)arg1;
 - (void)_setHasCustomContentView:(BOOL)arg1 loadedMIMEType:(const struct String *)arg2;
-- (void)_setIsBlankBeforeFirstNonEmptyLayout:(BOOL)arg1;
 - (void)_setMaximumUnobscuredSizeOverride:(struct CGSize)arg1;
 - (void)_setMinimumLayoutSizeOverride:(struct CGSize)arg1;
 - (void)_setOverlaidAccessoryViewsInset:(struct CGSize)arg1;

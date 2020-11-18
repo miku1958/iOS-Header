@@ -7,9 +7,14 @@
 #import <Foundation/NSObject.h>
 
 @class NSString, NoteContext;
+@protocol OS_dispatch_queue;
 
 @interface DALocalDBHelper : NSObject
 {
+    NSObject<OS_dispatch_queue> *_abDBQueue;
+    NSObject<OS_dispatch_queue> *_calDBQueue;
+    NSObject<OS_dispatch_queue> *_bookmarkDBQueue;
+    NSObject<OS_dispatch_queue> *_noteDBQueue;
     int _abConnectionCount;
     int _calConnectionCount;
     int _bookmarkConnectionCount;
@@ -63,6 +68,7 @@
 - (BOOL)calSaveDBAndFlushCaches;
 - (void)calUnitTestsSetCallbackBlockForSave:(CDUnknownBlockType)arg1;
 - (id)changeTrackingID;
+- (id)init;
 - (BOOL)noteCloseDBAndSave:(BOOL)arg1;
 - (void)noteOpenDB;
 - (BOOL)noteSaveDB;

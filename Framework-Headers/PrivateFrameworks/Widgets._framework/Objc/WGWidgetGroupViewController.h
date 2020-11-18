@@ -20,6 +20,7 @@
     NSArray *_widgetListViewControllers;
     unsigned long long _lastWidgetCount;
     NSMapTable *_transitionCoordinatorToTargetColumnMode;
+    BOOL _shouldBlurContent;
     id<WGWidgetGroupViewControllerDelegate> _delegate;
     unsigned long long _location;
 }
@@ -34,6 +35,7 @@
 @property (nonatomic) unsigned long long location; // @synthesize location=_location;
 @property (readonly, nonatomic) UIScrollView *majorScrollView;
 @property (readonly, nonatomic) UIScrollView *minorScrollView;
+@property (nonatomic) BOOL shouldBlurContent; // @synthesize shouldBlurContent=_shouldBlurContent;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long widgetCount;
@@ -59,9 +61,9 @@
 - (void)editViewWillDisappear:(id)arg1;
 - (id)initWithWidgetDiscoveryController:(id)arg1;
 - (void)invalidateVisibleWidgets;
-- (void)invalidateWidgetBackgroundViews;
 - (BOOL)isWidgetExtensionVisible:(id)arg1;
 - (void)makeVisibleWidgetWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)materialSettingsForWidgetListViewController:(id)arg1;
 - (void)presentEditViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;

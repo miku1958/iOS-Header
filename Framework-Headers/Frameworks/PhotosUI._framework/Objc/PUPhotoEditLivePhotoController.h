@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateRenderedLivePhoto;
 - (void)_photoEditModelDidChange:(id)arg1;
 - (void)_updateRenderedLivePhotoIfNeeded;
+- (void)cancelRendering;
 - (void)dealloc;
 - (id)initWithBaseLivePhoto:(id)arg1 editRenderer:(id)arg2;
 - (void)renderIfNeeded;

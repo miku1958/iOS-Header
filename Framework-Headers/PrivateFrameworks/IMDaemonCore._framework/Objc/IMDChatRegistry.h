@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableDictionary, NSRecursiveLock;
 
@@ -31,6 +31,7 @@
 - (BOOL)_saveChats;
 - (BOOL)_updateDuplicateUnnamedGroupsWithNewGroupIDIfNeeded;
 - (void)addChat:(id)arg1;
+- (void)addChat:(id)arg1 verbose:(BOOL)arg2;
 - (void)addItem:(id)arg1 toChat:(id)arg2;
 - (void)addMessage:(id)arg1 toChat:(id)arg2;
 - (id)allExistingChatsWithIdentifier:(id)arg1 style:(unsigned char)arg2;

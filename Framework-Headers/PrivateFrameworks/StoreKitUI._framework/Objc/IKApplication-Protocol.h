@@ -6,7 +6,7 @@
 
 #import <StoreKitUI/NSObject-Protocol.h>
 
-@class IKAppDocument, NSDictionary, NSString, NSURL;
+@class IKAppDocument, IKViewElementRegistry, NSDictionary, NSString, NSURL;
 @protocol IKAppDataStoring, IKAppUserDefaultsStoring;
 
 @protocol IKApplication <NSObject>
@@ -21,7 +21,11 @@
 @optional
 - (IKAppDocument *)activeDocument;
 - (BOOL)appIsTrusted;
+- (NSURL *)appJSCachePath;
 - (NSDictionary *)appLaunchParams;
+- (NSURL *)appLocalJSURL;
+- (NSDictionary *)appTraitCollection;
 - (BOOL)shouldAllowRemoteInspection;
+- (IKViewElementRegistry *)viewElementRegistry;
 @end
 

@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (void)endTouches;
 - (id)fmfOverlayColor;
 - (id)fmfOverlayColorSatellite;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithDelegate:(id)arg1 mapView:(id)arg2;
 - (CDStruct_90e2a262)mapRectMakeWithRadialDistanceForCoordinate:(struct CLLocationCoordinate2D)arg1 andRadius:(double)arg2;
 - (void)mapView:(id)arg1 didDeselectAnnotationView:(id)arg2;

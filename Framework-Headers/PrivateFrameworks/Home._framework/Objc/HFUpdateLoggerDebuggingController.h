@@ -27,6 +27,7 @@
 - (void)_addRunningLogger:(id)arg1;
 - (id)_historyStrings;
 - (void)_removeRunningLogger:(id)arg1;
+- (id)_runningLoggerStrings;
 - (id)_runningLoggers;
 - (id)init;
 

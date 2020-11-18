@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NotificationsUI/__NCNotificationShortLookViewAccessibility_super.h>
+#import "__NCNotificationShortLookViewAccessibility_super.h"
 
 @interface NCNotificationShortLookViewAccessibility : __NCNotificationShortLookViewAccessibility_super
 {

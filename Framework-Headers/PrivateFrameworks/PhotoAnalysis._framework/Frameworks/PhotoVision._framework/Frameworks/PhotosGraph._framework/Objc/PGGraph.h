@@ -66,6 +66,7 @@
 + (void)enumerateBirthdayCelebrationsForPeople:(id)arg1 betweenLocalDate:(id)arg2 andLocalDate:(id)arg3 enumerationBlock:(CDUnknownBlockType)arg4;
 + (BOOL)graphExistsWithName:(id)arg1 parentDirectoryURL:(id)arg2;
 + (id)graphURLForName:(id)arg1 parentDirectoryURL:(id)arg2;
++ (id)matchingBlasklistedSceneLabels;
 + (id)matchingWeightToDictionary;
 + (Class)nodeClass;
 + (id)socialGroupPeopleSortDescriptorForSocialGroupNode:(id)arg1;
@@ -199,6 +200,7 @@
 - (id)mainUrbanCityNodes;
 - (id)matchEvent:(id)arg1 withEvent:(id)arg2 relatedType:(unsigned long long)arg3 focusOnNodes:(id)arg4 needsKeywords:(BOOL)arg5;
 - (id)matchMomentEvent:(id)arg1 relatedType:(unsigned long long)arg2 focusOnNodes:(id)arg3 sortDescriptors:(id)arg4;
+- (id)matchPeopleNodes:(id)arg1 sortDescriptors:(id)arg2;
 - (id)meNode;
 - (id)momentForMomentNode:(id)arg1;
 - (id)momentNodeForAsset:(id)arg1;

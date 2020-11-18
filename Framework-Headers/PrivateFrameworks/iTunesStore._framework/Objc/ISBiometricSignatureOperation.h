@@ -6,25 +6,27 @@
 
 #import <iTunesStore/ISOperation.h>
 
-@class ISBiometricStore, NSNumber, NSString;
+@class ISBiometricStore, ISTouchIDDialog, NSNumber, NSString;
 
 @interface ISBiometricSignatureOperation : ISOperation
 {
     NSNumber *_accountIdentifier;
+    NSString *_accountName;
     CDUnknownBlockType _outputBlock;
-    NSString *_reason;
     ISBiometricStore *_biometricStore;
     NSString *_challenge;
+    ISTouchIDDialog *_dialog;
 }
 
 @property (copy, nonatomic) NSNumber *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
+@property (copy, nonatomic) NSString *accountName; // @synthesize accountName=_accountName;
 @property (strong, nonatomic) ISBiometricStore *biometricStore; // @synthesize biometricStore=_biometricStore;
 @property (copy, nonatomic) NSString *challenge; // @synthesize challenge=_challenge;
+@property (strong, nonatomic) ISTouchIDDialog *dialog; // @synthesize dialog=_dialog;
 @property (copy) CDUnknownBlockType outputBlock; // @synthesize outputBlock=_outputBlock;
-@property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 
 - (void).cxx_destruct;
-- (id)initWithChallenge:(id)arg1;
+- (id)initWithChallenge:(id)arg1 dialog:(id)arg2;
 - (void)run;
 
 @end

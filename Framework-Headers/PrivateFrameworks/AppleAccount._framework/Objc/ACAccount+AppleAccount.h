@@ -52,6 +52,7 @@
 
 + (id)aa_dataclassesBoundToPrimaryAppleAccount;
 + (id)aa_dataclassesBoundToSingleAppleAccount;
++ (void)load;
 - (id)aa_authTokenWithError:(id *)arg1;
 - (id)aa_hsaTokenWithError:(id *)arg1;
 - (BOOL)aa_isPCSErrorTransient:(struct __CFError *)arg1;

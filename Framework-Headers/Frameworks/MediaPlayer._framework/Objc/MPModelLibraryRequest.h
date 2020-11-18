@@ -7,11 +7,12 @@
 #import <MediaPlayer/MPModelRequest.h>
 
 #import <MediaPlayer/MPMediaLibraryEntityTranslatingContext-Protocol.h>
+#import <MediaPlayer/MPModelPlaybackRequesting-Protocol.h>
 #import <MediaPlayer/MPModelRequestDetailedKeepLocalStatusRequesting-Protocol.h>
 
 @class MPMediaLibrary, NSArray, NSString;
 
-@interface MPModelLibraryRequest : MPModelRequest <MPMediaLibraryEntityTranslatingContext, MPModelRequestDetailedKeepLocalStatusRequesting>
+@interface MPModelLibraryRequest : MPModelRequest <MPMediaLibraryEntityTranslatingContext, MPModelPlaybackRequesting, MPModelRequestDetailedKeepLocalStatusRequesting>
 {
     BOOL _wantsDetailedKeepLocalRequestableResponse;
     MPMediaLibrary *_mediaLibrary;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (readonly, nonatomic, getter=isMultiQuery) BOOL multiQuery;
 @property (copy, nonatomic) NSArray *scopedContainers; // @synthesize scopedContainers=_scopedContainers;
+@property (nonatomic) BOOL shouldExcludeNonShuffleItems;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL wantsDetailedKeepLocalRequestableResponse; // @synthesize wantsDetailedKeepLocalRequestableResponse=_wantsDetailedKeepLocalRequestableResponse;
 
@@ -39,6 +41,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;
+- (void)performWithResponseHandler:(CDUnknownBlockType)arg1;
 
 @end
 

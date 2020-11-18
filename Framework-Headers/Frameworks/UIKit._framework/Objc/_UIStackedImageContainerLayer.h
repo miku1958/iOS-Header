@@ -25,6 +25,7 @@
     NSString *_imageStackContentsGravity;
     double _radiosityRequestTime;
     double _animationDelay;
+    double _animationDelayReference;
     double _rotationAmount;
     struct CGPoint _translationOffset;
     double _maximumParallaxDepth;
@@ -81,6 +82,7 @@
 - (struct CGRect)_cursorBounds;
 - (void)_deselect;
 - (struct CGRect)_displayFrameForModelFrame:(struct CGRect)arg1;
+- (struct CATransform3D)_fixedFrameTransformForDepth:(double)arg1 fudgeFactor:(double)arg2;
 - (id)_flatLayer;
 - (struct CGSize)_focusCursorInsetSizeForSize:(struct CGSize)arg1;
 - (double)_focusedScaleFactorForCurrentBounds;
@@ -131,6 +133,7 @@
 - (void)_updateFocusKeylineStrokeTranslation:(struct CGPoint)arg1;
 - (void)_updateFullBleedImageLayers;
 - (void)_updateImageLayerFilterChains;
+- (void)_updateImageLayerFilterValues;
 - (void)_updateLayerForSelection;
 - (void)_updateLayerForSelectionWithAnimationCoordinator:(id)arg1;
 - (void)_updateNormalImageLayers;

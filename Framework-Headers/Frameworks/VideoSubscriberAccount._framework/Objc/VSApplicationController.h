@@ -9,9 +9,10 @@
 #import <VideoSubscriberAccount/VSAppDocumentControllerDelegate-Protocol.h>
 #import <VideoSubscriberAccount/VSApplicationDelegate-Protocol.h>
 
-@class JSValue, NSOperationQueue, NSString, VSAppDocumentController, VSApplication, VSApplicationControllerRequest, VSApplicationControllerResponseHandler, VSIdentityProvider, VSJSSAMLRequest, VSPreferences;
+@class JSValue, NSOperationQueue, NSString, VSAppDocumentController, VSApplication, VSApplicationControllerRequest, VSApplicationControllerResponseHandler, VSIdentityProvider, VSJSRequest, VSPreferences;
 @protocol VSApplicationControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface VSApplicationController : NSObject <VSAppDocumentControllerDelegate, VSApplicationDelegate>
 {
     BOOL _allowUI;
@@ -20,7 +21,7 @@
     NSOperationQueue *_privateQueue;
     VSApplication *_application;
     VSApplicationControllerRequest *_request;
-    VSJSSAMLRequest *_javascriptRequest;
+    VSJSRequest *_javascriptRequest;
     VSApplicationControllerResponseHandler *_responseHandler;
     VSAppDocumentController *_appDocumentController;
     JSValue *_applicationReadyCallback;
@@ -36,7 +37,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
-@property (strong, nonatomic) VSJSSAMLRequest *javascriptRequest; // @synthesize javascriptRequest=_javascriptRequest;
+@property (strong, nonatomic) VSJSRequest *javascriptRequest; // @synthesize javascriptRequest=_javascriptRequest;
 @property (strong, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (strong, nonatomic) VSApplicationControllerRequest *request; // @synthesize request=_request;
@@ -46,12 +47,13 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (id)_applicationLaunchParams;
-- (void)_applicationReadyWithSuccess:(BOOL)arg1 javascriptError:(id)arg2;
+- (void)_applicationReadyWithSuccess:(BOOL)arg1 javascriptErrorValue:(id)arg2;
+- (void)_beginAuthentication;
 - (id)_bootURL;
 - (void)_cleanUpStoppedApp;
-- (void)_completeRequestWithJavascriptResponse:(id)arg1 javascriptError:(id)arg2;
+- (void)_completeRequestWithJavascriptResponse:(id)arg1 javascriptErrorValue:(id)arg2;
 - (void)_completeRequestWithResult:(id)arg1;
-- (id)_errorForJavascriptError:(id)arg1;
+- (id)_errorForJavascriptErrorValueValue:(id)arg1;
 - (id)_javascriptRequestForRequest:(id)arg1 withVerificationData:(id)arg2;
 - (id)_javascriptShowUserInterfacePurposeForAuthenticationUserInterfacePurpose:(long long)arg1;
 - (id)_makeJavaScriptRequest;

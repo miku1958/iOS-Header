@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_axSetPhoneToMiddleState:(unsigned short)arg1 totalTimeTried:(double)arg2;
-- (id)participantsString;
 - (void)setCurrentState:(unsigned short)arg1 animated:(BOOL)arg2;
 - (void)setMiddleViewState:(unsigned short)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewDidAppear:(BOOL)arg1;

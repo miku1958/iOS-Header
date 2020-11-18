@@ -10,6 +10,7 @@
 {
 }
 
+- (id)_displayValueForCachedValue:(id)arg1 characteristicType:(id)arg2;
 - (id)_subclass_updateWithOptions:(id)arg1;
 
 @end

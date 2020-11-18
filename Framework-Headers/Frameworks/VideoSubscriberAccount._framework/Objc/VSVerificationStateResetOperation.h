@@ -8,6 +8,7 @@
 
 @class NSURLSessionTask, VSFailable, VSStoreURLBag;
 
+__attribute__((visibility("hidden")))
 @interface VSVerificationStateResetOperation : VSAsyncOperation
 {
     VSFailable *_result;

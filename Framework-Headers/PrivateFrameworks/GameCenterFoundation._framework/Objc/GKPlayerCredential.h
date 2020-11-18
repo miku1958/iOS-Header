@@ -17,9 +17,11 @@
     unsigned int _scope;
     NSDate *_scopeModificationDate;
     NSString *_altDSID;
+    NSString *_DSID;
     NSString *_rawPassword;
 }
 
+@property (strong) NSString *DSID; // @synthesize DSID=_DSID;
 @property (strong) NSString *accountName; // @synthesize accountName=_accountName;
 @property (strong) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (strong) NSString *authenticationToken; // @synthesize authenticationToken=_authenticationToken;

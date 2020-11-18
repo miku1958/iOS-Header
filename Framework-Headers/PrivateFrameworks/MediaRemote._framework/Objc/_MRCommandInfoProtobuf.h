@@ -12,11 +12,7 @@
 
 @interface _MRCommandInfoProtobuf : PBCodable <NSCopying>
 {
-    struct {
-        double *list;
-        unsigned long long count;
-        unsigned long long size;
-    } _preferredIntervals;
+    CDStruct_82f37d05 _preferredIntervals;
     struct {
         float *list;
         unsigned long long count;

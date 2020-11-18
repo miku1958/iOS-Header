@@ -20,11 +20,8 @@
     UIImageView *_thumbnailImageView;
     long long _calculatedSecondaryTextNumberOfLines;
     BOOL _adjustsFontForContentSizeCategory;
-    BOOL _showAdditionalMessageLines;
     NSString *_preferredContentSizeCategory;
-    long long _thumbnailViewContentMode;
     UIView *_accessoryView;
-    unsigned long long _messageNumberOfLines;
     UILabel *_primaryLabel;
     UILabel *_outgoingPrimaryLabel;
     UILabel *_primarySubtitleLabel;
@@ -39,7 +36,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *hintText;
-@property (nonatomic) unsigned long long messageNumberOfLines; // @synthesize messageNumberOfLines=_messageNumberOfLines;
+@property (nonatomic) unsigned long long messageNumberOfLines;
 @property (strong, nonatomic, getter=_outgoingPrimaryLabel, setter=_setOutgoingPrimaryLabel:) UILabel *outgoingPrimaryLabel; // @synthesize outgoingPrimaryLabel=_outgoingPrimaryLabel;
 @property (strong, nonatomic, getter=_outgoingPrimarySubtitleLabel, setter=_setOutgoingPrimarySubtitleLabel:) UILabel *outgoingPrimarySubtitleLabel; // @synthesize outgoingPrimarySubtitleLabel=_outgoingPrimarySubtitleLabel;
 @property (strong, nonatomic, getter=_outgoingSecondaryLabel, setter=_setOutgoingSecondaryLabel:) UILabel *outgoingSecondaryLabel; // @synthesize outgoingSecondaryLabel=_outgoingSecondaryLabel;
@@ -50,10 +47,8 @@
 @property (strong, nonatomic) NSString *primaryText;
 @property (strong, nonatomic, getter=_secondaryLabel, setter=_setSecondaryLabel:) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property (strong, nonatomic) NSString *secondaryText;
-@property (nonatomic) BOOL showAdditionalMessageLines; // @synthesize showAdditionalMessageLines=_showAdditionalMessageLines;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImage *thumbnail;
-@property (nonatomic) long long thumbnailViewContentMode; // @synthesize thumbnailViewContentMode=_thumbnailViewContentMode;
 
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)_contentInsets;
@@ -85,7 +80,6 @@
 - (void)_setFontProvider:(id)arg1;
 - (void)_setText:(id)arg1 withFinalLabel:(id)arg2 setter:(CDUnknownBlockType)arg3 andTransitionLabel:(id)arg4 setter:(CDUnknownBlockType)arg5;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2;
-- (void)_tearDownSecondaryLabel;
 - (void)_updateFontForHintTextLabel:(id)arg1 withStyle:(long long)arg2;
 - (void)_updateFontForPrimaryLabel:(id)arg1 withStyle:(long long)arg2;
 - (void)_updateFontForSecondaryLabel:(id)arg1 withStyle:(long long)arg2;

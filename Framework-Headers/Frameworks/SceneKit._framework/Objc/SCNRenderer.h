@@ -97,7 +97,6 @@
 + (id)rendererWithDevice:(id)arg1 options:(id)arg2;
 - (const void *)__CFObject;
 - (unsigned long long)_antialiasingMode;
-- (void)_attachTexture:(id)arg1;
 - (id)_authoringEnvironment;
 - (void)_beginFrame;
 - (void)_clearBuffers;
@@ -107,7 +106,6 @@
 - (void)_createOffscreenFramebufferIfNeeded;
 - (id)_defaultPOVForScene:(id)arg1;
 - (void)_deleteGLFramebuffer;
-- (void)_detachTexture:(id)arg1;
 - (void)_didRenderScene:(id)arg1;
 - (void)_displayLinkStatsTack;
 - (void)_displayLinkStatsTick;

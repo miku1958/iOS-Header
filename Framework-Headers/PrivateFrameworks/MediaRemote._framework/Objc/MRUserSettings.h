@@ -16,15 +16,21 @@
 @property (readonly, nonatomic) double bluetoothDeviceResumeDuration;
 @property (readonly, nonatomic) double broadcastCommandWaitDuration;
 @property (readonly, nonatomic) BOOL hasTelevisionSocketQOSLevelSet;
+@property (readonly, nonatomic) double televisionDisconnectSleepDuration;
+@property (readonly, nonatomic) double televisionDisconnectWaitDuration;
 @property (readonly, nonatomic) double televisionNowPlayingInfoArtworkCoalesceDuration;
 @property (readonly, nonatomic) double televisionNowPlayingInfoCoalesceDuration;
 @property (nonatomic, getter=isTelevisionPairingAllowed) BOOL televisionPairingAllowed;
+@property (readonly, nonatomic) double televisionSleepAssertionOnClientConnectDuration;
 @property (readonly, nonatomic) long long televisionSocketQOSLevel;
 @property (readonly, nonatomic) double televisionTimeoutDuration;
+@property (readonly, nonatomic) BOOL useDebugAVRouteWithoutVolumeControl;
 @property (readonly, nonatomic) BOOL useNoDelayOptionForTelevisionSockets;
 @property (readonly, nonatomic) BOOL usePeerToPeerTelevisionConnections;
 
 + (id)currentSettings;
+- (BOOL)_boolValueForKey:(id)arg1 usingDefaultValue:(BOOL)arg2;
+- (double)_doubleValueForKey:(id)arg1 usingDefaultValue:(BOOL)arg2;
 - (void)dealloc;
 - (id)init;
 

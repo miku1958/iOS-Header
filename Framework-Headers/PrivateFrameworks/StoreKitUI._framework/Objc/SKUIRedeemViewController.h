@@ -6,9 +6,12 @@
 
 #import <UIKit/UINavigationController.h>
 
-@class NSOperationQueue, NSString, SKUIClientContext, SKUIRedeemConfiguration, SKUIRedeemPreflightOperation, SKUIRedeemStepViewController;
+#import <StoreKitUI/SKUIRedeemIdDelegate-Protocol.h>
+#import <StoreKitUI/SKUIRedeemStepDelegate-Protocol.h>
 
-@interface SKUIRedeemViewController : UINavigationController
+@class NSOperationQueue, NSString, SKUIClientContext, SKUIRedeemConfiguration, SKUIRedeemPreflightOperation, SKUIRedeemStepViewController, UIBarButtonItem;
+
+@interface SKUIRedeemViewController : UINavigationController <SKUIRedeemIdDelegate, SKUIRedeemStepDelegate>
 {
     BOOL _attempsAutomaticRedeem;
     BOOL _cameraRedeemEnabled;
@@ -18,26 +21,42 @@
     NSOperationQueue *_operationQueue;
     SKUIRedeemPreflightOperation *_preflightOperation;
     SKUIRedeemConfiguration *_redeemConfiguration;
-    SKUIRedeemStepViewController *_rootViewController;
+    SKUIRedeemStepViewController *_inputViewController;
     long long _initialBarStyle;
+    UIBarButtonItem *_cancelButtonItem;
 }
 
 @property (nonatomic) BOOL attempsAutomaticRedeem; // @synthesize attempsAutomaticRedeem=_attempsAutomaticRedeem;
+@property (strong, nonatomic) UIBarButtonItem *cancelButtonItem; // @synthesize cancelButtonItem=_cancelButtonItem;
 @property (readonly, nonatomic) long long category; // @synthesize category=_category;
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *initialCode; // @synthesize initialCode=_initialCode;
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_attemptAutomaticRedeemWithMetadata:(id)arg1;
 - (void)_cancelButtonAction:(id)arg1;
+- (void)_executeIdValidationOperationWithFields:(id)arg1;
+- (void)_executePreflightOperationForcesAuthentication:(BOOL)arg1;
+- (void)_executeRequiresIdValidationOperation;
 - (void)_finishPreflightWithResult:(id)arg1;
-- (void)_loadRootViewController;
-- (id)_newRootViewController;
-- (void)_showRootViewController;
+- (void)_loadInputViewController;
+- (id)_newInputViewController;
+- (void)_performInitialRedeemOperation;
+- (BOOL)_redeemRequiresNationalId;
+- (void)_showInputViewController;
+- (void)_showNationalIdLoadingPage;
+- (void)_showNationalIdVerificationPage;
 - (id)initWithRedeemCategory:(long long)arg1;
 - (struct CGSize)preferredContentSize;
 - (void)redeemAgainAnimated:(BOOL)arg1;
+- (void)redeemIdViewController:(id)arg1 submittedWithFields:(id)arg2;
+- (void)redeemIdViewControllerDidCancel:(id)arg1;
+- (void)redeemStepViewControllerShouldValidateNationalID:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

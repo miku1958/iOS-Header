@@ -6,16 +6,15 @@
 
 #import <PhotosPlayer/ISCrossfadeChefOperation.h>
 
-@class AVAssetImageGenerator;
+@class ISAVAssetReaderImageDataGenerator;
 
 @interface ISCrossfadeChefA2Operation : ISCrossfadeChefOperation
 {
-    AVAssetImageGenerator *_imageGenerator;
+    ISAVAssetReaderImageDataGenerator *_imageGenerator;
 }
 
 - (void).cxx_destruct;
 - (void)_handleDurationDidLoad;
-- (void)cancel;
 - (void)main;
 
 @end

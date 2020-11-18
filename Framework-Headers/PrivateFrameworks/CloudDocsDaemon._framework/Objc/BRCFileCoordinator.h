@@ -19,8 +19,10 @@
     CDUnknownBlockType _doneHandler;
     BOOL _cancelled;
     BOOL _isUpdateForReconnecting;
+    BOOL _forRead;
 }
 
+@property (readonly, nonatomic) BOOL forRead; // @synthesize forRead=_forRead;
 @property (nonatomic) BOOL isUpdateForReconnecting; // @synthesize isUpdateForReconnecting=_isUpdateForReconnecting;
 
 + (void)itemAtPath:(id)arg1 didBounceToName:(id)arg2;
@@ -33,7 +35,7 @@
 - (void)_willRequestCoordinationWithContext:(id)arg1 url1:(id)arg2 url2:(id)arg3;
 - (void)cancel;
 - (void)cancelAfterDelay:(double)arg1;
-- (id)initWithSession:(id)arg1 doneHandler:(CDUnknownBlockType)arg2;
+- (id)initWithSession:(id)arg1 forRead:(BOOL)arg2 doneHandler:(CDUnknownBlockType)arg3;
 - (void)scheduleDeleteOfItemAtURL:(id)arg1 queue:(id)arg2 taskTracker:(id)arg3 accessor:(CDUnknownBlockType)arg4;
 - (void)scheduleReadOfItemAtURL:(id)arg1 queue:(id)arg2 taskTracker:(id)arg3 accessor:(CDUnknownBlockType)arg4;
 - (void)scheduleRenameOfItemAtURL:(id)arg1 toItemAtURL:(id)arg2 contentUpdate:(BOOL)arg3 queue:(id)arg4 taskTracker:(id)arg5 accessor:(CDUnknownBlockType)arg6;

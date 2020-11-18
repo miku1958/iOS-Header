@@ -11,8 +11,8 @@
 
 @protocol INShowPersonInteractionsIntentExport <NSObject, JSExport>
 
-@property (readonly, copy, nonatomic) NSString *focusItemIdentifier;
-@property (readonly, copy, nonatomic) INPerson *person;
+@property (copy, nonatomic) NSString *focusItemIdentifier;
+@property (copy, nonatomic) INPerson *person;
 
 - (id)init;
 @end

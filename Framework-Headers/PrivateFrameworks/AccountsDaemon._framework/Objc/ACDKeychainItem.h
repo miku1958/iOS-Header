@@ -17,11 +17,11 @@
 
 @property (copy) NSString *accessGroup;
 @property (copy) NSString *accessibility;
+@property (copy) NSString *account;
 @property (copy) NSDictionary *metadata;
 @property (readonly) const struct __CFData *persistentRef; // @synthesize persistentRef=_persistentRef;
 @property (copy) NSString *service;
 @property BOOL synchronizable;
-@property (copy) NSString *username;
 @property long long version;
 
 - (void).cxx_destruct;

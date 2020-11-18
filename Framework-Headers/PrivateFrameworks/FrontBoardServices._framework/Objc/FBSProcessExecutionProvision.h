@@ -35,7 +35,6 @@
 
 - (void).cxx_destruct;
 - (void)_beginMonitoring;
-- (void)_noteReachedProgressMilestone;
 - (void)_noteViolatedWithError:(id)arg1;
 - (void)_performDelegateCallout:(CDUnknownBlockType)arg1;
 - (void)_prepareForReuse;

@@ -21,7 +21,7 @@
 - (void)_call:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)didChangeJobs:(id)arg1;
-- (void)didCompleteJobs:(id)arg1;
+- (void)didCompleteJobs:(id)arg1 finalPhases:(id)arg2;
 - (void)didUpdateProgress:(id)arg1;
 - (void)didUpdateStates:(id)arg1;
 - (id)initWithConnection:(id)arg1 delegate:(id)arg2;

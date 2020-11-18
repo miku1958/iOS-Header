@@ -8,6 +8,7 @@
 
 @class SSURLBag;
 
+__attribute__((visibility("hidden")))
 @interface VSStoreURLBag : NSObject
 {
     SSURLBag *_bag;

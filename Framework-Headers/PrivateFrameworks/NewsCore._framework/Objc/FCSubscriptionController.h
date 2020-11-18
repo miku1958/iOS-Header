@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCSubscriptionListObserving-Protocol.h>
 
-@class FCNotificationController, FCPurchaseController, FCSubscriptionList, FCTagController, FCThreadSafeMutableDictionary, FCThreadSafeMutableSet, NSHashTable, NSString;
+@class FCAppConfiguration, FCNotificationController, FCPurchaseController, FCSubscriptionList, FCTagController, FCThreadSafeMutableDictionary, FCThreadSafeMutableSet, NSHashTable, NSString;
 
 @interface FCSubscriptionController : NSObject <FCSubscriptionListObserving>
 {
@@ -20,8 +20,10 @@
     FCNotificationController *_notificationController;
     FCPurchaseController *_purchaseController;
     long long _notificationEnabledChannelsRefreshFrequency;
+    FCAppConfiguration *_appConfiguration;
 }
 
+@property (strong, nonatomic) FCAppConfiguration *appConfiguration; // @synthesize appConfiguration=_appConfiguration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

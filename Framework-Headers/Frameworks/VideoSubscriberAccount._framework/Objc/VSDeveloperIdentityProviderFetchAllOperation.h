@@ -8,6 +8,7 @@
 
 @class VSDeveloperServiceConnection, VSFailable;
 
+__attribute__((visibility("hidden")))
 @interface VSDeveloperIdentityProviderFetchAllOperation : VSAsyncOperation
 {
     VSFailable *_result;

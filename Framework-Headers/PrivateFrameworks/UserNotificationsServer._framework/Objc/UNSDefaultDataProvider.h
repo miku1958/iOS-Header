@@ -34,7 +34,6 @@
 @property (strong, nonatomic) BBDataProviderProxy *proxy; // @synthesize proxy=_proxy;
 @property (readonly) Class superclass;
 
-+ (struct CGSize)_sizeFromSizeConstraint:(id)arg1 originalSize:(struct CGSize)arg2;
 - (void).cxx_destruct;
 - (long long)_BBActionBehaviorForUNAction:(id)arg1;
 - (id)_BBActionBehaviorParametersForUNAction:(id)arg1;

@@ -88,6 +88,7 @@
 @property (readonly, copy, nonatomic) NSString *displayName;
 @property (readonly, nonatomic) TUCallProvider *displayProvider;
 @property (nonatomic, getter=isDownlinkMuted) BOOL downlinkMuted;
+@property (readonly, nonatomic, getter=isEmergency) BOOL emergency;
 @property (readonly, nonatomic, getter=isEmergencyCall) BOOL emergencyCall;
 @property (readonly, nonatomic) NSString *endedErrorString;
 @property (readonly, nonatomic) NSString *endedReasonString;
@@ -137,6 +138,7 @@
 @property (readonly, nonatomic) BOOL shouldDisplayLocationIfAvailable;
 @property (readonly, nonatomic) BOOL shouldPlayDTMFTone;
 @property (nonatomic) BOOL shouldSuppressRingtone; // @synthesize shouldSuppressRingtone=_shouldSuppressRingtone;
+@property (readonly, nonatomic, getter=isSOS) BOOL sos;
 @property (nonatomic) long long soundRegion; // @synthesize soundRegion=_soundRegion;
 @property (copy, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property (readonly, nonatomic) double startTime;

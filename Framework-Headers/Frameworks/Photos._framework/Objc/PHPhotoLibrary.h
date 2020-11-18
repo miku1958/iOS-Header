@@ -79,11 +79,13 @@
 - (void).cxx_destruct;
 - (void)_addObserver:(id)arg1;
 - (void)_beginTransaction;
+- (void)_cancelTransaction:(CDUnknownBlockType)arg1;
 - (void)_checkForPeopleUIFeatureWithFetchRequest:(id)arg1 comparator:(CDUnknownBlockType)arg2;
 - (void)_commitTransaction:(CDUnknownBlockType)arg1;
 - (void)_processPendingChanges;
 - (void)_removeObserver:(id)arg1;
 - (void)_requestAnalysisProgressWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_unauthorized:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)allSocialGroupsForPersonIdentifier:(id)arg1 error:(id *)arg2;
 - (void)assertTransaction;
 - (id)assetIdentifiersForPersonIdentifiers:(id)arg1 error:(id *)arg2;
@@ -98,6 +100,7 @@
 - (void)enableNamingFlow;
 - (id)exportGraphForPurpose:(id)arg1 error:(id *)arg2;
 - (id)faceClusterSequenceNumbersOfKeyFacesInAlgorithmicFaceGroupsForPerson:(id)arg1 verifiedClusterSequenceNumbers:(id)arg2;
+- (void)faceProcessingStatusForUserInterface:(CDUnknownBlockType)arg1;
 - (id)faceSuggestionsForFaceClusterSequenceNumbers:(id)arg1 excludeFaceLocalIdentifers:(id)arg2;
 - (BOOL)featureEnabledForWorkerType:(short)arg1;
 - (BOOL)featureEnabledForWorkerType:(short)arg1 completion:(CDUnknownBlockType)arg2;
@@ -123,6 +126,8 @@
 - (id)memoryDebugInformationForMemoryWithLocalIdentifier:(id)arg1 precision:(unsigned long long)arg2 error:(id *)arg3;
 - (id)objectFetchingContextForCurrentQueueQoS;
 - (id)objectFetchingManagedObjectContextForObject:(id)arg1 propertySet:(id)arg2;
+- (void)performCancellableChanges:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)performCancellableChangesAndWait:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (void)performChanges:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)performChangesAndWait:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)photoLibraryForCurrentQueueQoS;
@@ -145,6 +150,7 @@
 - (void)requestGraphRebuildProgressWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestGraphRebuildWithProgress:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestPermissionToDownloadFaceResourcesOfCount:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)requestTotalProgressCountsForWorkerType:(short)arg1 states:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestTotalProgressCountsWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)resetPendingAnalysisStatesWithError:(id *)arg1;
 - (BOOL)scheduleFaceProcessingOnAssetsWithLocalIdentifiers:(id)arg1 error:(id *)arg2;

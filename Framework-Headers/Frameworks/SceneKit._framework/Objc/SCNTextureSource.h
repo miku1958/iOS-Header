@@ -21,10 +21,13 @@
 - (void)dealloc;
 - (id)glTextureCache;
 - (double)nextFrameTime;
+- (BOOL)prefersGL3;
 - (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 nextFrameTime:(double *)arg2;
+- (struct __C3DRendererContext *)rendererContextForTextureSourceWithEngineContext:(struct __C3DEngineContext *)arg1;
 - (void)setGlTextureCache:(id)arg1;
 - (void)setMTLTextureCache:(id)arg1;
 - (void)setSize: /* Error: Ran out of types for this method. */;
+- (BOOL)supportsMetal;
 - (MISSING_TYPE *)textureSize;
 - (struct __C3DTexture *)textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 

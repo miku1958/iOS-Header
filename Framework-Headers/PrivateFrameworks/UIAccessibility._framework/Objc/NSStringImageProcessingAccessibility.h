@@ -12,6 +12,8 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityInitContextToLabelMap;
+- (void)_accessibilityLabelContext;
 - (void)drawAtPoint:(struct CGPoint)arg1 withAttributes:(id)arg2;
 - (void)drawInRect:(struct CGRect)arg1 withAttributes:(id)arg2;
 

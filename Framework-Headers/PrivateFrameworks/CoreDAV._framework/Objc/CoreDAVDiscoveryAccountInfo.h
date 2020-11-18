@@ -69,9 +69,11 @@
 - (id)initWithAccountInfoProvider:(id)arg1;
 - (id)oauthInfoProvider;
 - (void)promptUserForNewCoreDAVPasswordWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (BOOL)renewCredential;
 - (BOOL)shouldHandleHTTPCookiesForURL:(id)arg1;
 - (BOOL)shouldRetryUnauthorizedConnection:(id)arg1;
 - (BOOL)shouldSendClientInfoHeaderForURL:(id)arg1;
+- (BOOL)shouldTryRenewingCredential;
 - (BOOL)shouldTurnModalOnBadPassword;
 - (BOOL)shouldUseOpportunisticSockets;
 - (id)url;

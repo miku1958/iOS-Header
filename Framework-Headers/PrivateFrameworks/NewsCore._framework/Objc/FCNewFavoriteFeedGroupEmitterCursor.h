@@ -13,11 +13,9 @@
 
 @interface FCNewFavoriteFeedGroupEmitterCursor : NSObject <NSCopying, NSCoding>
 {
-    BOOL _finished;
     NSSet *_tagIDsReturned;
 }
 
-@property (nonatomic) BOOL finished; // @synthesize finished=_finished;
 @property (copy, nonatomic) NSSet *tagIDsReturned; // @synthesize tagIDsReturned=_tagIDsReturned;
 
 - (void).cxx_destruct;

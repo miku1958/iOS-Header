@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
+
+@class NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface VideoConferenceDefaults : NSObject
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL enableTxBitstreamDump;
 @property (readonly) int enableTxSourceYuvDump;
 @property (readonly) BOOL enableVPBLogging;
+@property (readonly) NSNumber *enableiRATSuggestion;
 @property (readonly) int encodingScore;
 @property (readonly) int extraPayloads;
 @property (readonly) int forceAudioBitrate;

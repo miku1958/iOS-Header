@@ -6,13 +6,6 @@
 
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class IKJSTabBarItem, NSArray;
-
 @protocol IKJSTabBar <JSExport>
-
-@property (strong, nonatomic) IKJSTabBarItem *selectedTab;
-@property (readonly, nonatomic) NSArray *tabs;
-@property (readonly, nonatomic) IKJSTabBarItem *transientTab;
-
 @end
 

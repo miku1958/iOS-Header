@@ -19,6 +19,7 @@
     NSObject<OS_dispatch_queue> *_bagQueue;
     BOOL _active;
     BOOL _cep_sort_of_tophits;
+    BOOL _collectAnonymousData;
     id<PRSSessionController> _client;
     long long _status;
     double _searchRenderTimeout;
@@ -49,6 +50,7 @@
 @property (nonatomic) BOOL cep_sort_of_tophits; // @synthesize cep_sort_of_tophits=_cep_sort_of_tophits;
 @property (nonatomic) double cep_top_hit_threshold; // @synthesize cep_top_hit_threshold=_cep_top_hit_threshold;
 @property (weak) id<PRSSessionController> client; // @synthesize client=_client;
+@property (nonatomic) BOOL collectAnonymousData; // @synthesize collectAnonymousData=_collectAnonymousData;
 @property (strong) NSDictionary *correctionDict; // @synthesize correctionDict=_correctionDict;
 @property (strong) NSURL *correctionDictURL; // @synthesize correctionDictURL=_correctionDictURL;
 @property (strong, nonatomic) NSArray *enabledDomains; // @synthesize enabledDomains=_enabledDomains;

@@ -14,7 +14,9 @@
 
 @interface IMMessageItem : IMItem <NSCoding, NSCopying, IMRemoteObjectCoding>
 {
+    BOOL _blockingRichLinks;
     BOOL _updatingDataSourcePayload;
+    BOOL _backwardsCompatibleVersion;
     unsigned int _error;
     NSString *_subject;
     NSString *_plainBody;
@@ -35,6 +37,8 @@
     NSDictionary *_messageSummaryInfo;
 }
 
+@property (nonatomic) BOOL backwardsCompatibleVersion; // @synthesize backwardsCompatibleVersion=_backwardsCompatibleVersion;
+@property (nonatomic) BOOL blockingRichLinks; // @synthesize blockingRichLinks=_blockingRichLinks;
 @property (strong, nonatomic) NSAttributedString *body; // @synthesize body=_body;
 @property (strong, nonatomic) NSData *bodyData; // @synthesize bodyData=_bodyData;
 @property (readonly, copy, nonatomic) NSAttributedString *breadcrumbText;

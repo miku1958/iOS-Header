@@ -8,11 +8,12 @@
 
 @interface UITableTextAccessibilityElement : UIAccessibilityElement
 {
-    id _attributeDelegate;
     SEL _selector;
     id textDelegate;
+    id attributeDelegate;
 }
 
+@property (weak, nonatomic) id attributeDelegate; // @synthesize attributeDelegate;
 @property (weak, nonatomic) id textDelegate; // @synthesize textDelegate;
 
 - (void).cxx_destruct;
@@ -46,9 +47,7 @@
 - (struct _NSRange)accessibilityRowRange;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
-- (id)attributeDelegate;
 - (id)description;
-- (void)setAttributeDelegate:(id)arg1;
 
 @end
 

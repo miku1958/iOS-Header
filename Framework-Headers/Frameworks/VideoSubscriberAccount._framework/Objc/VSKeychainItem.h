@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, VSKeychainEditingContext, VSKeychainItemKind;
+@class NSData, NSMutableDictionary, VSKeychainEditingContext, VSKeychainItemKind;
 
+__attribute__((visibility("hidden")))
 @interface VSKeychainItem : NSObject
 {
     BOOL _inserted;
     BOOL _updated;
     BOOL _deleted;
+    BOOL _hasFaultForData;
     VSKeychainEditingContext *_editingContext;
     VSKeychainItemKind *_itemKind;
     NSMutableDictionary *_committedValues;
@@ -20,9 +22,11 @@
 }
 
 @property (strong, nonatomic) NSMutableDictionary *committedValues; // @synthesize committedValues=_committedValues;
+@property (copy, nonatomic) NSData *data;
 @property (nonatomic, getter=isDeleted) BOOL deleted; // @synthesize deleted=_deleted;
 @property (weak, nonatomic) VSKeychainEditingContext *editingContext; // @synthesize editingContext=_editingContext;
 @property (readonly, nonatomic) BOOL hasChanges;
+@property (nonatomic) BOOL hasFaultForData; // @synthesize hasFaultForData=_hasFaultForData;
 @property (readonly, nonatomic) BOOL hasPersistentChangedValues;
 @property (nonatomic, getter=isInserted) BOOL inserted; // @synthesize inserted=_inserted;
 @property (readonly, copy, nonatomic) VSKeychainItemKind *itemKind; // @synthesize itemKind=_itemKind;
@@ -34,10 +38,12 @@
 - (id)committedValueForKey:(id)arg1;
 - (id)committedValuesForKeys:(id)arg1;
 - (id)description;
+- (void)didAccessValueForKey:(id)arg1;
 - (id)init;
 - (id)initWithItemKind:(id)arg1 insertIntoEditingContext:(id)arg2;
 - (id)primitiveValueForKey:(id)arg1;
 - (void)setPrimitiveValue:(id)arg1 forKey:(id)arg2;
+- (void)willAccessValueForKey:(id)arg1;
 
 @end
 

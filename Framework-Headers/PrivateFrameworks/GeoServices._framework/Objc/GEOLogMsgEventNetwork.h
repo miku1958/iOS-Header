@@ -14,6 +14,7 @@
 {
     long long _requestErrorCode;
     int _networkService;
+    NSString *_requestAppIdentifier;
     int _requestDataSize;
     NSString *_requestErrorDescription;
     NSString *_requestErrorDomain;
@@ -29,6 +30,7 @@
 }
 
 @property (nonatomic) BOOL hasNetworkService;
+@property (readonly, nonatomic) BOOL hasRequestAppIdentifier;
 @property (nonatomic) BOOL hasRequestDataSize;
 @property (nonatomic) BOOL hasRequestErrorCode;
 @property (readonly, nonatomic) BOOL hasRequestErrorDescription;
@@ -36,6 +38,7 @@
 @property (nonatomic) BOOL hasResponseDataSize;
 @property (nonatomic) BOOL hasResponseTime;
 @property (nonatomic) int networkService; // @synthesize networkService=_networkService;
+@property (strong, nonatomic) NSString *requestAppIdentifier; // @synthesize requestAppIdentifier=_requestAppIdentifier;
 @property (nonatomic) int requestDataSize; // @synthesize requestDataSize=_requestDataSize;
 @property (nonatomic) long long requestErrorCode; // @synthesize requestErrorCode=_requestErrorCode;
 @property (strong, nonatomic) NSString *requestErrorDescription; // @synthesize requestErrorDescription=_requestErrorDescription;

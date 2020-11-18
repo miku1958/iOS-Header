@@ -18,10 +18,6 @@
     unsigned int _databaseRevision;
     unsigned int _basePlaylistContainerID;
     unsigned int _sessionID;
-    unsigned int _interfaceID;
-    unsigned int _controlKey;
-    unsigned int _controlPort;
-    unsigned int _promptID;
     NSURL *_baseURL;
     long long _connectionType;
     long long _connectionState;
@@ -33,14 +29,10 @@
 @property (readonly, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (nonatomic) long long connectionState; // @synthesize connectionState=_connectionState;
 @property (readonly, nonatomic) long long connectionType; // @synthesize connectionType=_connectionType;
-@property (nonatomic) unsigned int controlKey; // @synthesize controlKey=_controlKey;
-@property (nonatomic) unsigned int controlPort; // @synthesize controlPort=_controlPort;
 @property (nonatomic) unsigned int databaseID; // @synthesize databaseID=_databaseID;
 @property (nonatomic) unsigned int databaseRevision; // @synthesize databaseRevision=_databaseRevision;
 @property (strong) HSFairPlayInfo *fairPlayInfo; // @synthesize fairPlayInfo=_fairPlayInfo;
 @property (copy) NSString *homeSharingGroupID; // @synthesize homeSharingGroupID=_homeSharingGroupID;
-@property (nonatomic) unsigned int interfaceID; // @synthesize interfaceID=_interfaceID;
-@property (nonatomic) unsigned int promptID; // @synthesize promptID=_promptID;
 @property (nonatomic) unsigned int sessionID; // @synthesize sessionID=_sessionID;
 
 - (void).cxx_destruct;
@@ -50,14 +42,12 @@
 - (void)_onSerialQueue_sendRequest:(id)arg1 withInternalResponseHandler:(CDUnknownBlockType)arg2;
 - (unsigned int)_sapVersionForConnectionType;
 - (void)_sendRequest:(id)arg1 withInternalResponseHandler:(CDUnknownBlockType)arg2;
-- (void)_setupControlConnectionWithInternalConnectionCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)checkForDatabaseUpdatesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)connectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)disconnect;
 - (id)initWithBaseURL:(id)arg1;
 - (id)initWithBaseURL:(id)arg1 connectionType:(long long)arg2;
-- (id)newControlConnection;
 - (void)sendRequest:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
 - (id)signedRequestFromURLRequest:(id)arg1;
 

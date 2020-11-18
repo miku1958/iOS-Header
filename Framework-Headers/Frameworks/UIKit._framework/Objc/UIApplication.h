@@ -696,6 +696,10 @@
 - (void)didDismissMiniAlert;
 - (void)didReceiveMemoryWarning;
 - (int)doubleHeightMode;
+- (void)emitPPTEndTracePointForSubTestName:(id)arg1 identifier:(unsigned long long)arg2;
+- (void)emitPPTEndTracePointForTestName:(id)arg1 identifier:(unsigned long long)arg2;
+- (void)emitPPTStartTracePointForSubTestName:(id)arg1 identifier:(unsigned long long)arg2 testIdentifier:(unsigned long long)arg3;
+- (void)emitPPTStartTracePointForTestName:(id)arg1 identifier:(unsigned long long)arg2;
 - (void)enableFramebufferStatisticsGathering;
 - (unsigned long long)enabledRemoteNotificationTypes;
 - (void)endBackgroundTask:(unsigned long long)arg1;

@@ -9,6 +9,7 @@
 #import <GeoServices/GEODirectionsError-Protocol.h>
 
 @class GEOAlert, NSString;
+@protocol GEOTransitRoutingIncidentMessage;
 
 __attribute__((visibility("hidden")))
 @interface _GEODirectionsError : NSObject <GEODirectionsError>
@@ -16,9 +17,11 @@ __attribute__((visibility("hidden")))
     GEOAlert *_alert;
     struct GEOProblemDetail *_problemDetails;
     unsigned long long _problemDetailsCount;
+    id<GEOTransitRoutingIncidentMessage> _routingIncidentMessage;
 }
 
 @property (readonly, nonatomic) long long firstDirectionsErrorCode;
+@property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> incidentMessage;
 @property (readonly, nonatomic) NSString *localizedDescription;
 @property (readonly, nonatomic) NSString *localizedTitle;
 

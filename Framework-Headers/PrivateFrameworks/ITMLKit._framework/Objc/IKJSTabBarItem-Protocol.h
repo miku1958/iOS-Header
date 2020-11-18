@@ -6,13 +6,6 @@
 
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class IKJSNavigationDocument, NSString;
-
 @protocol IKJSTabBarItem <JSExport>
-
-@property (readonly, nonatomic) NSString *identifier;
-@property (readonly, nonatomic) IKJSNavigationDocument *navigationDocument;
-@property (readonly, nonatomic) NSString *rootURL;
-
 @end
 

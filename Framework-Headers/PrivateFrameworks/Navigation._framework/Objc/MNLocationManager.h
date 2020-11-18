@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CLHeading *heading; // @synthesize heading=_heading;
 @property (nonatomic) int headingOrientation;
+@property (readonly, nonatomic) BOOL isHeadingServicesAvailable;
 @property (readonly, nonatomic) BOOL isLastLocationStale;
 @property (readonly, nonatomic) MNLocation *lastLocation;
 @property (copy, nonatomic) CDUnknownBlockType locationCorrector; // @synthesize locationCorrector=_locationCorrector;
@@ -69,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)_reportLocationReset;
 - (void)_reportLocationStatus:(SEL)arg1;
 - (void)_reportLocationSuccess;
+- (void)_setLastLocationReceivedFromMaps:(id)arg1;
 - (void)_setTrackingHeading:(BOOL)arg1;
 - (void)_setTrackingLocation:(BOOL)arg1;
 - (void)_startLocationUpdateWithObserver:(id)arg1 desiredAccuracy:(double)arg2;
@@ -77,7 +79,6 @@ __attribute__((visibility("hidden")))
 - (long long)activityType;
 - (void)dealloc;
 - (id)init;
-- (BOOL)isHeadingServicesAvailable;
 - (BOOL)isLocationServicesApproved;
 - (BOOL)isLocationServicesAuthorizationNeeded;
 - (BOOL)isLocationServicesAvailable;

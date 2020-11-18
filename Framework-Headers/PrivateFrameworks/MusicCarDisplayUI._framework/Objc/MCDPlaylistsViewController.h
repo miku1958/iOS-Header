@@ -6,15 +6,24 @@
 
 #import <MusicCarDisplayUI/MCDTableViewController.h>
 
+@class NSString;
+
 @interface MCDPlaylistsViewController : MCDTableViewController
 {
+    NSString *_playlistSortSetting;
 }
 
+@property (strong, nonatomic) NSString *playlistSortSetting; // @synthesize playlistSortSetting=_playlistSortSetting;
+
 + (id)actionCellConfigurationClassesForLocation:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (void)_limitedUIDidChange;
+- (void)_updateQuery;
+- (void)_userDefaultsChanged:(id)arg1;
 - (id)sectionIndexTitlesForTableView:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (void)viewDidLoad;
 
 @end
 

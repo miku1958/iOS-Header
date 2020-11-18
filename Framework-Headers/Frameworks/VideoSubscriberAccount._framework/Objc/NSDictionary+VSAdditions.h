@@ -8,6 +8,7 @@
 
 @interface NSDictionary (VSAdditions)
 - (id)vs_arrayForKey:(id)arg1;
+- (id)vs_arrayOfStringsForKey:(id)arg1;
 - (id)vs_dictionaryForKey:(id)arg1;
 - (id)vs_numberForKey:(id)arg1;
 - (id)vs_objectOfClass:(Class)arg1 forKey:(id)arg2;

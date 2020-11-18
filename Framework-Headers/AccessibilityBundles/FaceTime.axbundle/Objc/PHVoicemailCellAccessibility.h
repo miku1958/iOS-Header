@@ -15,12 +15,14 @@
 + (id)safeCategoryTargetClassName;
 - (double)_accessibilityAllowedGeometryOverlap;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_axIsEditing;
 - (BOOL)_axIsInactive;
 - (void)_updatePlayPauseButton;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setShowingPlayController:(BOOL)arg1 animated:(BOOL)arg2;
 
 @end

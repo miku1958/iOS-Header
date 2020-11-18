@@ -30,6 +30,7 @@
 - (void)broadcastPaused;
 - (void)broadcastResumed;
 - (void)broadcastStartedWithSetupInfo:(id)arg1;
+- (void)finishBroadcastWithError:(id)arg1;
 - (void)processPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 withType:(long long)arg2;
 - (void)updateServiceInfo:(id)arg1;

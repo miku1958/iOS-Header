@@ -8,13 +8,11 @@
 
 #import <MusicCarDisplayUI/MCDErrorViewDelegate-Protocol.h>
 #import <MusicCarDisplayUI/MCDRadioContentManagerDelegate-Protocol.h>
-#import <MusicCarDisplayUI/MCDRadioDataSourceDelegate-Protocol.h>
 
-@class MCDRadioDataSource, MPModelRadioStation, MPWeakTimer, NSArray, NSIndexPath, NSString, UIActivityIndicatorView, UINavigationController, UIView;
+@class MPModelRadioStation, MPWeakTimer, NSArray, NSIndexPath, NSString, UIActivityIndicatorView, UINavigationController, UIView;
 
-@interface MCDRadioViewController : MCD_OLD_TableViewController <MCDRadioContentManagerDelegate, MCDErrorViewDelegate, MCDRadioDataSourceDelegate>
+@interface MCDRadioViewController : MCD_OLD_TableViewController <MCDRadioContentManagerDelegate, MCDErrorViewDelegate>
 {
-    MCDRadioDataSource *_dataSource;
     NSArray *_featuredStations;
     NSArray *_recentStations;
     MPModelRadioStation *_prominentRadioStation;

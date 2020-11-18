@@ -46,7 +46,7 @@
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
 - (void).cxx_destruct;
-- (id)initWithParticipant:(id)arg1;
+- (id)initWithParticipant:(id)arg1 forEvent:(id)arg2;
 
 @end
 

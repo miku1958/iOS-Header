@@ -36,6 +36,8 @@
 @property (nonatomic) BOOL usedBootstrapFallback;
 
 + (id)consumePendingLaunchEvent;
++ (void)createPendingLaunchEvent;
++ (void)load;
 + (double)processStartTime;
 + (void)resetPendingLaunchEventForTesting;
 + (void)withPendingLaunchEvent:(CDUnknownBlockType)arg1;

@@ -29,7 +29,7 @@
 + (id)activityTypeWithHKWorkoutActivityTypeIdentifier:(unsigned long long)arg1 isIndoor:(BOOL)arg2 metadata:(id)arg3;
 + (id)activityTypeWithWorkout:(id)arg1;
 + (id)possibleActivityTypesForIdentifier:(unsigned long long)arg1 locationType:(long long)arg2 swimmingLocationType:(long long)arg3 wheelchairUser:(BOOL)arg4;
-+ (id)supportedActivityTypes;
++ (id)supportedActivityTypesWithIsWheelchairUser:(BOOL)arg1;
 + (id)wheelchairActivityTypes;
 - (void).cxx_destruct;
 - (id)_defaultEnabledMetricsForActivityType:(unsigned long long)arg1;

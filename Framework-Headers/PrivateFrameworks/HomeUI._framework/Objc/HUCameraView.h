@@ -6,15 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class HMCameraSource, HMCameraView, HUCameraBadgeView, HUCameraErrorContent, HUCameraErrorView, HUDecayingTimer, NSArray, NSLayoutConstraint;
+@class HMCameraSource, HMCameraView, HUCameraBadgeView, HUCameraErrorContent, HUCameraErrorView, HUDecayingTimer, HURemoteContextHostingView, NSArray, NSLayoutConstraint;
 @protocol UILayoutSupport;
 
 @interface HUCameraView : UIView
 {
+    unsigned long long _maskedCameraCorners;
     double _badgeInset;
     id<UILayoutSupport> _badgeTopLayoutGuide;
     HUCameraErrorContent *_errorContent;
-    HMCameraView *_cameraView;
+    HURemoteContextHostingView *_cameraContainerView;
     HUCameraBadgeView *_badgeView;
     UIView *_cameraOverlayView;
     UIView *_cameraDimmingView;
@@ -30,27 +31,34 @@
 @property (strong, nonatomic) id<UILayoutSupport> badgeTopLayoutGuide; // @synthesize badgeTopLayoutGuide=_badgeTopLayoutGuide;
 @property (readonly, nonatomic) HUCameraBadgeView *badgeView; // @synthesize badgeView=_badgeView;
 @property (strong, nonatomic) NSLayoutConstraint *cameraAspectRatioConstraint; // @synthesize cameraAspectRatioConstraint=_cameraAspectRatioConstraint;
+@property (readonly, nonatomic) HURemoteContextHostingView *cameraContainerView; // @synthesize cameraContainerView=_cameraContainerView;
 @property (nonatomic) long long cameraContentMode;
 @property (readonly, nonatomic) UIView *cameraContentSnapshot;
 @property (strong, nonatomic) UIView *cameraDimmingView; // @synthesize cameraDimmingView=_cameraDimmingView;
 @property (readonly, nonatomic) UIView *cameraOverlaySnapshot;
 @property (readonly, nonatomic) UIView *cameraOverlayView; // @synthesize cameraOverlayView=_cameraOverlayView;
 @property (strong, nonatomic) HMCameraSource *cameraSource;
-@property (readonly, nonatomic) HMCameraView *cameraView; // @synthesize cameraView=_cameraView;
+@property (readonly, nonatomic) HMCameraView *cameraView;
 @property (strong, nonatomic) HUCameraErrorContent *errorContent; // @synthesize errorContent=_errorContent;
 @property (strong, nonatomic) HUCameraErrorView *errorView; // @synthesize errorView=_errorView;
+@property (nonatomic) unsigned long long maskedCameraCorners; // @synthesize maskedCameraCorners=_maskedCameraCorners;
 @property (strong, nonatomic) HUDecayingTimer *snapshotAgeUpdateTimer; // @synthesize snapshotAgeUpdateTimer=_snapshotAgeUpdateTimer;
 @property (strong, nonatomic) NSArray *staticConstraints; // @synthesize staticConstraints=_staticConstraints;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
+- (double)_continuousCornerRadius;
 - (void)_scheduleNextSnapshotAgeUpdateForCaptureDate:(id)arg1;
+- (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_updateBadgeView;
 - (void)_updateBadgeViewReschedulingTimerIfNecessary:(BOOL)arg1;
 - (void)_updateErrorVisibilityStateAnimated:(BOOL)arg1;
+- (void)_updateMaskedCameraCorners;
 - (void)dealloc;
 - (id)init;
 - (id)initWithBadgeView:(id)arg1;
+- (void)layoutSubviews;
+- (void)setCameraSource:(id)arg1 animated:(BOOL)arg2;
 - (void)setErrorContent:(id)arg1 animated:(BOOL)arg2;
 - (void)updateConstraints;
 

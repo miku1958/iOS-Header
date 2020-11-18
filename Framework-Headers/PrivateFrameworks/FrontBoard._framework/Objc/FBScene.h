@@ -11,7 +11,7 @@
 #import <FrontBoard/FBUISceneUpdater-Protocol.h>
 
 @class FBProcess, FBSDisplay, FBSMutableSceneSettings, FBSSceneClientSettings, FBSSceneDefinition, FBSSceneParameters, FBSSceneSettings, FBSceneHostManager, FBSceneLayerManager, FBWindowContextHostManager, FBWindowContextManager, NSHashTable, NSString;
-@protocol FBSceneClient, FBSceneClientProvider, FBSceneDelegate;
+@protocol BSInvalidatable, FBSceneClient, FBSceneClientProvider, FBSceneDelegate;
 
 @interface FBScene : NSObject <BSDescriptionProviding, FBUISceneUpdater, FBSceneHost>
 {
@@ -33,6 +33,7 @@
     unsigned long long _transactionID;
     BOOL _waitingForResponse;
     BOOL _lockedForMutation;
+    id<BSInvalidatable> _stateCaptureAssertion;
 }
 
 @property (nonatomic, setter=_setLockedForMutation:) BOOL _lockedForMutation; // @synthesize _lockedForMutation;

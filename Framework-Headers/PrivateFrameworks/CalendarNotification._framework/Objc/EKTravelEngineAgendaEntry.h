@@ -55,8 +55,6 @@
 + (void)_accountForLocationEnhancementSuccess;
 + (void)_accountForNoLocationEnhancementNeeded;
 + (double)fuzzyMaximumInitialUpdateIntervalBeforeStartDate;
-+ (double)maximumAllowableTravelTime;
-+ (double)minimumAllowableTravelTime;
 - (void).cxx_destruct;
 - (void)_accountForGeocodedEventEncounter;
 - (void)_accountForMaximumTravelDuration;

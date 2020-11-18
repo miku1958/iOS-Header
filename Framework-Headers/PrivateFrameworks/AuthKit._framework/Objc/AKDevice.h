@@ -45,6 +45,7 @@
 @property (readonly) BOOL isProtectedWithPasscode;
 @property (readonly) BOOL isUnlocked;
 @property (setter=setLinkType:) unsigned long long linkType; // @synthesize linkType=_linkType;
+@property (readonly) NSString *localUserUUID;
 @property (copy) NSLocale *locale; // @synthesize locale=_locale;
 @property (readonly) NSString *mobileEquipmentIdentifier;
 @property (copy) NSString *modelNumber; // @synthesize modelNumber=_modelNumber;

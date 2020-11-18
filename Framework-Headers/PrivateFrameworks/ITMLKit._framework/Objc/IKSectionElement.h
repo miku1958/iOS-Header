@@ -4,20 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ITMLKit/IKViewElement.h>
+#import <ITMLKit/IKDataSourceElement.h>
 
-@class IKHeaderElement, NSArray;
+#import <ITMLKit/IKAppDocumentStyleChangeObserving-Protocol.h>
 
-@interface IKSectionElement : IKViewElement
+@class IKHeaderElement, NSArray, NSString;
+
+@interface IKSectionElement : IKDataSourceElement <IKAppDocumentStyleChangeObserving>
 {
     NSArray *_items;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) IKHeaderElement *header;
 @property (readonly, strong, nonatomic) NSArray *items;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)appDocumentDidMarkStylesDirty;
 - (id)applyUpdatesWithElement:(id)arg1;
+- (id)unboundItemElements;
 
 @end
 

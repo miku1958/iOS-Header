@@ -8,7 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSString, _MRClientUpdatesConfigurationProtobuf, _MRCryptoPairingMessageProtobuf, _MRDeviceInfoMessageProtobuf, _MRGameControllerMessageProtobuf, _MRGameControllerPropertiesMessageProtobuf, _MRGetKeyboardSessionProtobuf, _MRGetPlaybackQueueMessageProtobuf, _MRGetStateMessageProtobuf, _MRGetVoiceInputDevicesMessageProtobuf, _MRGetVoiceInputDevicesResponseMessageProtobuf, _MRKeyboardMessageProtobuf, _MRNotificationMessageProtobuf, _MRPlaybackQueueProtobuf, _MRRegisterForGameControllerEventsMessageProtobuf, _MRRegisterGameControllerMessageProtobuf, _MRRegisterGameControllerResponseMessageProtobuf, _MRRegisterHIDDeviceMessageProtobuf, _MRRegisterHIDDeviceResultMessageProtobuf, _MRRegisterVoiceInputDeviceMessageProtobuf, _MRRegisterVoiceInputDeviceResponseMessageProtobuf, _MRSendButtonEventMessageProtobuf, _MRSendCommandMessageProtobuf, _MRSendCommandResultMessageProtobuf, _MRSendHIDEventMessageProtobuf, _MRSendHIDReportMessageProtobuf, _MRSendVirtualTouchEventMessageProtobuf, _MRSendVoiceInputMessageProtobuf, _MRSetArtworkMessageProtobuf, _MRSetConnectionStateMessageProtobuf, _MRSetHiliteModeMessageProtobuf, _MRSetReadyStateMessageProtobuf, _MRSetRecordingStateMessageProtobuf, _MRSetStateMessageProtobuf, _MRTextInputMessageProtobuf, _MRTransactionMessageProtobuf, _MRUnregisterGameControllerMessageProtobuf, _MRVolumeControlAvailabilityProtobuf, _MRWakeDeviceMessageProtobuf;
+@class NSString, _MRClientUpdatesConfigurationProtobuf, _MRCryptoPairingMessageProtobuf, _MRDeviceInfoMessageProtobuf, _MRGameControllerMessageProtobuf, _MRGameControllerPropertiesMessageProtobuf, _MRGenericMessageProtobuf, _MRGetKeyboardSessionProtobuf, _MRGetPlaybackQueueMessageProtobuf, _MRGetStateMessageProtobuf, _MRGetVoiceInputDevicesMessageProtobuf, _MRGetVoiceInputDevicesResponseMessageProtobuf, _MRKeyboardMessageProtobuf, _MRNotificationMessageProtobuf, _MRPlaybackQueueProtobuf, _MRRegisterForGameControllerEventsMessageProtobuf, _MRRegisterGameControllerMessageProtobuf, _MRRegisterGameControllerResponseMessageProtobuf, _MRRegisterHIDDeviceMessageProtobuf, _MRRegisterHIDDeviceResultMessageProtobuf, _MRRegisterVoiceInputDeviceMessageProtobuf, _MRRegisterVoiceInputDeviceResponseMessageProtobuf, _MRSendButtonEventMessageProtobuf, _MRSendCommandMessageProtobuf, _MRSendCommandResultMessageProtobuf, _MRSendHIDEventMessageProtobuf, _MRSendHIDReportMessageProtobuf, _MRSendVirtualTouchEventMessageProtobuf, _MRSendVoiceInputMessageProtobuf, _MRSetArtworkMessageProtobuf, _MRSetConnectionStateMessageProtobuf, _MRSetHiliteModeMessageProtobuf, _MRSetReadyStateMessageProtobuf, _MRSetRecordingStateMessageProtobuf, _MRSetStateMessageProtobuf, _MRTextInputMessageProtobuf, _MRTransactionMessageProtobuf, _MRUnregisterGameControllerMessageProtobuf, _MRVolumeControlAvailabilityProtobuf, _MRWakeDeviceMessageProtobuf;
 
 @interface _MRMediaRemoteMessageProtobuf : PBCodable <NSCopying>
 {
@@ -22,6 +22,7 @@
     unsigned int _errorCode;
     _MRGameControllerMessageProtobuf *_gameController;
     _MRGameControllerPropertiesMessageProtobuf *_gameControllerProperties;
+    _MRGenericMessageProtobuf *_genericMessage;
     _MRGetKeyboardSessionProtobuf *_getKeyboardMessage;
     _MRGetPlaybackQueueMessageProtobuf *_getPlaybackQueue;
     _MRGetStateMessageProtobuf *_getStateMessage;
@@ -71,6 +72,7 @@
 @property (nonatomic) unsigned int errorCode; // @synthesize errorCode=_errorCode;
 @property (strong, nonatomic) _MRGameControllerMessageProtobuf *gameController; // @synthesize gameController=_gameController;
 @property (strong, nonatomic) _MRGameControllerPropertiesMessageProtobuf *gameControllerProperties; // @synthesize gameControllerProperties=_gameControllerProperties;
+@property (strong, nonatomic) _MRGenericMessageProtobuf *genericMessage; // @synthesize genericMessage=_genericMessage;
 @property (strong, nonatomic) _MRGetKeyboardSessionProtobuf *getKeyboardMessage; // @synthesize getKeyboardMessage=_getKeyboardMessage;
 @property (strong, nonatomic) _MRGetPlaybackQueueMessageProtobuf *getPlaybackQueue; // @synthesize getPlaybackQueue=_getPlaybackQueue;
 @property (strong, nonatomic) _MRGetStateMessageProtobuf *getStateMessage; // @synthesize getStateMessage=_getStateMessage;
@@ -85,6 +87,7 @@
 @property (nonatomic) BOOL hasErrorCode;
 @property (readonly, nonatomic) BOOL hasGameController;
 @property (readonly, nonatomic) BOOL hasGameControllerProperties;
+@property (readonly, nonatomic) BOOL hasGenericMessage;
 @property (readonly, nonatomic) BOOL hasGetKeyboardMessage;
 @property (readonly, nonatomic) BOOL hasGetPlaybackQueue;
 @property (readonly, nonatomic) BOOL hasGetStateMessage;

@@ -8,12 +8,11 @@
 
 #import <GameplayKit/NSSecureCoding-Protocol.h>
 
-@class GKDecisionNode, GKRandomSource, NSArray;
+@class GKDecisionNode, GKRandomSource;
 
 @interface GKDecisionTree : NSObject <NSSecureCoding>
 {
     struct GKCDecisionTree *_decisionTree;
-    NSArray *forest;
     GKDecisionNode *_rootNode;
     GKRandomSource *_randomSource;
 }
@@ -27,7 +26,6 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)findActionForAnswers:(id)arg1;
-- (void)generateForestFromExamples:(id)arg1 andAttributes:(id)arg2;
 - (id)init;
 - (id)initWithAttribute:(id)arg1;
 - (id)initWithCoder:(id)arg1;

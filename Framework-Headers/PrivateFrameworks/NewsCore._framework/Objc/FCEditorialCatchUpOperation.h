@@ -6,30 +6,26 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCCloudContext, NSArray, NSDate, NSDictionary, NSError;
-@protocol FCChannelProviding;
+@class FCCloudContext, NSArray, NSDate, NSError;
 
 @interface FCEditorialCatchUpOperation : FCOperation
 {
     FCCloudContext *_context;
     NSDate *_date;
-    id<FCChannelProviding> _editorialChannel;
-    NSArray *_editorialSections;
-    NSArray *_feedItems;
-    NSDictionary *_feedContextByFeedID;
     NSError *_error;
+    CDUnknownBlockType _catchUpCompletionHandler;
+    NSArray *_sectionGroups;
 }
 
+@property (copy) CDUnknownBlockType catchUpCompletionHandler; // @synthesize catchUpCompletionHandler=_catchUpCompletionHandler;
 @property (strong, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
-@property (copy) id<FCChannelProviding> editorialChannel; // @synthesize editorialChannel=_editorialChannel;
-@property (copy) NSArray *editorialSections; // @synthesize editorialSections=_editorialSections;
 @property (strong) NSError *error; // @synthesize error=_error;
-@property (copy) NSDictionary *feedContextByFeedID; // @synthesize feedContextByFeedID=_feedContextByFeedID;
-@property (copy) NSArray *feedItems; // @synthesize feedItems=_feedItems;
+@property (copy) NSArray *sectionGroups; // @synthesize sectionGroups=_sectionGroups;
 
 - (void).cxx_destruct;
 - (void)_checkShouldShowEditorialWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)enumerateEditorialSectionsByRecencyWithBlock:(CDUnknownBlockType)arg1;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (BOOL)validateOperation;

@@ -34,6 +34,7 @@
 - (BOOL)hasEntitlement;
 - (void)hideApplicationBadgeForPendingUpdates;
 - (id)init;
+- (void)refreshUpdateCountWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)reloadForSettingsFromServerWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)reloadFromServerInBackgroundWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)reloadFromServerWithCompletionBlock:(CDUnknownBlockType)arg1;

@@ -39,6 +39,8 @@
     int _maxActiveTimeSpent;
     float _maxVerticalScrollPositionEnding;
     NSMutableArray *_namedEntities;
+    int _nextArticleAffordanceType;
+    NSString *_nextArticleAffordanceTypeFeedId;
     NSString *_notificationId;
     int _paidSubscriberToFeedType;
     NSString *_parentFeedId;
@@ -92,6 +94,7 @@
         unsigned int groupType:1;
         unsigned int maxActiveTimeSpent:1;
         unsigned int maxVerticalScrollPositionEnding:1;
+        unsigned int nextArticleAffordanceType:1;
         unsigned int paidSubscriberToFeedType:1;
         unsigned int parentFeedType:1;
         unsigned int previousArticleHostViewTypeIfSwipe:1;
@@ -183,6 +186,8 @@
 @property (readonly, nonatomic) BOOL hasLanguage;
 @property (nonatomic) BOOL hasMaxActiveTimeSpent;
 @property (nonatomic) BOOL hasMaxVerticalScrollPositionEnding;
+@property (nonatomic) BOOL hasNextArticleAffordanceType;
+@property (readonly, nonatomic) BOOL hasNextArticleAffordanceTypeFeedId;
 @property (readonly, nonatomic) BOOL hasNotificationId;
 @property (nonatomic) BOOL hasPaidSubscriberToFeedType;
 @property (readonly, nonatomic) BOOL hasParentFeedId;
@@ -221,6 +226,8 @@
 @property (nonatomic) int maxActiveTimeSpent; // @synthesize maxActiveTimeSpent=_maxActiveTimeSpent;
 @property (nonatomic) float maxVerticalScrollPositionEnding; // @synthesize maxVerticalScrollPositionEnding=_maxVerticalScrollPositionEnding;
 @property (strong, nonatomic) NSMutableArray *namedEntities; // @synthesize namedEntities=_namedEntities;
+@property (nonatomic) int nextArticleAffordanceType; // @synthesize nextArticleAffordanceType=_nextArticleAffordanceType;
+@property (strong, nonatomic) NSString *nextArticleAffordanceTypeFeedId; // @synthesize nextArticleAffordanceTypeFeedId=_nextArticleAffordanceTypeFeedId;
 @property (strong, nonatomic) NSString *notificationId; // @synthesize notificationId=_notificationId;
 @property (nonatomic) int paidSubscriberToFeedType; // @synthesize paidSubscriberToFeedType=_paidSubscriberToFeedType;
 @property (strong, nonatomic) NSString *parentFeedId; // @synthesize parentFeedId=_parentFeedId;
@@ -249,6 +256,7 @@
 - (int)StringAsFeedCellHostType:(id)arg1;
 - (int)StringAsFeedPresentationReason:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
+- (int)StringAsNextArticleAffordanceType:(id)arg1;
 - (int)StringAsPaidSubscriberToFeedType:(id)arg1;
 - (int)StringAsParentFeedType:(id)arg1;
 - (void)addNamedEntities:(id)arg1;
@@ -265,6 +273,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)namedEntitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)namedEntitiesCount;
+- (id)nextArticleAffordanceTypeAsString:(int)arg1;
 - (id)paidSubscriberToFeedTypeAsString:(int)arg1;
 - (id)parentFeedTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;

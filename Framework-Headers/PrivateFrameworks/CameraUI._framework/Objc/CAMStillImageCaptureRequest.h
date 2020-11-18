@@ -29,7 +29,7 @@
     long long _irisMode;
     BOOL _wantsPortraitEffect;
     BOOL _usesStillImageStabilization;
-    BOOL _wantsAutoDuoImageFusion;
+    BOOL _wantsAutoDualCameraFusion;
     BOOL _wantsAudioForCapture;
     BOOL _wantsSquareCrop;
     BOOL _wantsHighResolutionStills;
@@ -66,7 +66,7 @@
 @property (readonly, nonatomic) BOOL usesStillImageStabilization; // @synthesize usesStillImageStabilization=_usesStillImageStabilization;
 @property (readonly, copy, nonatomic) NSString *videoPersistenceUUID; // @synthesize videoPersistenceUUID=_videoPersistenceUUID;
 @property (readonly, nonatomic) BOOL wantsAudioForCapture; // @synthesize wantsAudioForCapture=_wantsAudioForCapture;
-@property (readonly, nonatomic) BOOL wantsAutoDuoImageFusion; // @synthesize wantsAutoDuoImageFusion=_wantsAutoDuoImageFusion;
+@property (readonly, nonatomic) BOOL wantsAutoDualCameraFusion; // @synthesize wantsAutoDualCameraFusion=_wantsAutoDualCameraFusion;
 @property (readonly, nonatomic) BOOL wantsHighResolutionStills; // @synthesize wantsHighResolutionStills=_wantsHighResolutionStills;
 @property (readonly, nonatomic) BOOL wantsPortraitEffect; // @synthesize wantsPortraitEffect=_wantsPortraitEffect;
 @property (readonly, nonatomic) BOOL wantsSquareCrop; // @synthesize wantsSquareCrop=_wantsSquareCrop;

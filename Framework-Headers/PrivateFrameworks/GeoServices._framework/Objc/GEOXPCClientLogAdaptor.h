@@ -25,6 +25,7 @@
 - (void)disableLogMsgInstrumentation;
 - (void)enableLogMsgInstrumentation;
 - (void)flushLogs;
+- (void)forceFlushLogs;
 - (id)init;
 - (void)queueLogMessage:(id)arg1;
 - (void)registerLogMsgState:(id)arg1;

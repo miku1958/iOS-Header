@@ -7,13 +7,14 @@
 #import <UIKit/UIViewController.h>
 
 #import <MarkupUI/AKControllerDelegateProtocol-Protocol.h>
+#import <MarkupUI/MUPDFContentViewControllerDelegate-Protocol.h>
 #import <MarkupUI/UINavigationBarDelegate-Protocol.h>
 #import <MarkupUI/UIToolbarDelegate-Protocol.h>
 
 @class AKController, MUCGPDFReader, NSLayoutConstraint, NSString, NSUndoManager, PDFDocument, PDFView, UIBarButtonItem, UIColor, UINavigationBar, UINavigationItem, UIToolbar, UIView;
 @protocol MUContentViewControllerProtocol><MUContentViewControllerAKControllerSubdelegate, MarkupViewControllerDelegate;
 
-@interface MarkupViewController : UIViewController <AKControllerDelegateProtocol, UINavigationBarDelegate, UIToolbarDelegate>
+@interface MarkupViewController : UIViewController <AKControllerDelegateProtocol, MUPDFContentViewControllerDelegate, UINavigationBarDelegate, UIToolbarDelegate>
 {
     UIColor *_backgroundColor;
     UIColor *_toolbarItemTintColor;
@@ -149,6 +150,7 @@
 - (void)cancel:(id)arg1;
 - (id)characterIndexesForQuadPoints:(id)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (void)clearHighlightableSelectionForAnnotationController:(id)arg1;
+- (BOOL)controller:(id)arg1 shouldHandleURL:(id)arg2;
 - (void)controller:(id)arg1 willPlaceSingleShotAnnotation:(id)arg2 onProposedPageModelController:(id *)arg3;
 - (id)controller:(id)arg1 willSetToolbarItems:(id)arg2;
 - (void)controllerDidEnterToolMode:(id)arg1;

@@ -6,17 +6,16 @@
 
 #import <HealthDaemon/HDQueryServer.h>
 
-@class HDListByTypeStatisticsBuilder, NSCalendar, NSDate, NSSet, _HKFilter;
+@class HDListByTypeStatisticsBuilder, NSCalendar, NSDate, _HKFilter;
 
 @interface HDLatestSummariesQueryServer : HDQueryServer
 {
     BOOL _deliversUpdates;
-    BOOL _singleDay;
     HDListByTypeStatisticsBuilder *_statisticsBuilder;
     NSDate *_startDate;
     NSDate *_endDate;
     NSCalendar *_calendar;
-    NSSet *_typeFilters;
+    _HKFilter *_nonSleepStartEndFilter;
     _HKFilter *_sleepStartEndFilter;
     BOOL _initialResultsDelivered;
 }

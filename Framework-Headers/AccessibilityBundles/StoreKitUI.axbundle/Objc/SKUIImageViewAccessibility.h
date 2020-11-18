@@ -13,7 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_axIsImageViewInConnectTab;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;

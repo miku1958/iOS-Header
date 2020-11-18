@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEOTileKeyMap, NSMutableArray, NSMutableSet, NSOperationQueue, NSString;
+@class GEOTileKeyMap, NSMutableArray, NSMutableSet, NSOperationQueue, NSString, NSURLSession;
 
 @interface GEOSimpleTileRequester : GEOTileRequester <NSURLSessionDataDelegate>
 {
@@ -19,6 +19,7 @@
     BOOL _subclassImplementsTileEdition;
     NSMutableArray *_errors;
     NSOperationQueue *_delegateQueue;
+    NSURLSession *_session;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -37,6 +38,7 @@
 - (void)_operationFinished:(id)arg1;
 - (void)_releaseEverything;
 - (void)_reprioritizeKey:(struct _GEOTileKey)arg1 newPriority:(unsigned int)arg2;
+- (id)_runningOperationForTask:(id)arg1;
 - (void)_startNextPendingOperation:(id)arg1;
 - (BOOL)_verifyDataIntegrity:(id)arg1 checksumMethod:(int)arg2;
 - (BOOL)allowsCookies;

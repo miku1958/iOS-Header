@@ -11,15 +11,19 @@
 @interface FCPurchaseLookUpEntry : NSObject
 {
     BOOL _isNewsAppPurchase;
+    BOOL _hasShownRenewalNotice;
     unsigned long long _purchaseType;
     unsigned long long _purchaseValidationState;
     NSDate *_lastVerificationTime;
     NSDate *_lastVerificationFailureTime;
     NSString *_purchaseID;
+    NSDate *_dateOfExpiration;
     NSString *_identifier;
     NSString *_tagID;
 }
 
+@property (copy, nonatomic) NSDate *dateOfExpiration; // @synthesize dateOfExpiration=_dateOfExpiration;
+@property (nonatomic) BOOL hasShownRenewalNotice; // @synthesize hasShownRenewalNotice=_hasShownRenewalNotice;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isNewsAppPurchase; // @synthesize isNewsAppPurchase=_isNewsAppPurchase;
 @property (copy, nonatomic) NSDate *lastVerificationFailureTime; // @synthesize lastVerificationFailureTime=_lastVerificationFailureTime;
@@ -32,7 +36,7 @@
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 - (id)initWithEntryID:(id)arg1 dictionaryRepresentation:(id)arg2;
-- (id)initWithEntryID:(id)arg1 tagID:(id)arg2 purchaseID:(id)arg3 lastVerificationTime:(id)arg4 lastVerificationFailureTime:(id)arg5 purchaseType:(unsigned long long)arg6 purchaseValidationState:(unsigned long long)arg7 isNewsAppPurchase:(BOOL)arg8;
+- (id)initWithEntryID:(id)arg1 tagID:(id)arg2 purchaseID:(id)arg3 lastVerificationTime:(id)arg4 lastVerificationFailureTime:(id)arg5 purchaseType:(unsigned long long)arg6 purchaseValidationState:(unsigned long long)arg7 isNewsAppPurchase:(BOOL)arg8 dateOfExpiration:(id)arg9 hasShownRenewalNotice:(BOOL)arg10;
 
 @end
 

@@ -23,6 +23,7 @@
     BOOL _viewHasAppeared;
     BOOL _controlCenterPageIsVisible;
     MPWeakTimer *_controlCenterPageVisibilityUpdateTimer;
+    MPWeakTimer *_pendingRouteStateTimer;
 }
 
 @property (readonly, nonatomic) struct UIEdgeInsets contentInsets;

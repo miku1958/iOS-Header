@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface VSApplicationControllerResponseHandler : NSObject
 {
 }
 
-- (id)_accountAuthenticationWithAuthNResponseString:(id)arg1 error:(id *)arg2;
+- (id)_accountAuthenticationWithJavascriptResponse:(id)arg1 error:(id *)arg2;
 - (void)_handleJavascriptResponseInternal:(id)arg1 requestType:(long long)arg2 accountAuthentication:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_parseSAMLResponseString:(id)arg1 error:(id *)arg2;
 - (void)handleJavascriptResponse:(id)arg1 requestType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;

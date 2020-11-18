@@ -78,6 +78,7 @@
 
 + (id)_allSyncableFacesInManagedObjectContext:(id)arg1;
 + (void)batchFetchDetectedFacesByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)batchFetchKeyFacesByPersonUUIDWithPersonUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (unsigned long long)countOfHiddenFacesOnAssetsWithObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)detectedFaceWithUUID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)entityInManagedObjectContext:(id)arg1;

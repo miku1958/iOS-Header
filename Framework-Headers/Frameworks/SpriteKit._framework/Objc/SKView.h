@@ -42,6 +42,7 @@
     BOOL _hasRenderedForCurrentUpdate;
     BOOL _disableInput;
     BOOL _mouseIsDown;
+    BOOL _rightMouseIsDown;
     SKTransition *_transition;
     SKScene *_nextScene;
     SKScene *_scene;
@@ -97,9 +98,9 @@
 - (id)_focusedItemRegionContainer;
 - (double)_fps;
 - (unsigned long long)_getEffectivePreferredFramesPerSecond;
-- (id)_getFocusNodesFromScene;
 - (id)_getPerformanceStats;
 - (float)_getViewContentsScale;
+- (BOOL)_isDrawableAvailable;
 - (long long)_preferredFocusMovementStyle;
 - (id)_regionForFocusedItem:(id)arg1 inScreen:(id)arg2;
 - (void)_renderContent;

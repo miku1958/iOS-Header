@@ -64,6 +64,7 @@ struct PXFaceTileImageParams {
     BOOL round;
     BOOL cropBounded;
     BOOL acceptsVeryLowQuality;
+    BOOL wantsNonVisibleFaceCompletion;
 };
 
 struct PXMagazineOrigin {

@@ -60,7 +60,6 @@
 - (void)deprioritizeSubscriptionItemArtworkForPersistentID:(long long)arg1;
 - (void)disableJaliscoGeniusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enableJaliscoGeniusWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)evaluateKeepLocalRulesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)hasProperNetworkConditionsToPlayMedia;
 - (BOOL)hasProperNetworkConditionsToShowCloudMedia;
 - (void)hideItemsWithPurchaseHistoryIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

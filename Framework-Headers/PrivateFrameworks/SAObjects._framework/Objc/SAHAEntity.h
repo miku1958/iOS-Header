@@ -24,6 +24,7 @@
 @property (copy, nonatomic) NSString *sceneType;
 @property (copy, nonatomic) NSString *serviceGroup;
 @property (copy, nonatomic) NSArray *serviceGroupIdentifiers;
+@property (copy, nonatomic) NSString *serviceSubType;
 @property (copy, nonatomic) NSString *serviceType;
 @property (copy, nonatomic) NSArray *targetAttributes;
 @property (copy, nonatomic) NSString *zone;

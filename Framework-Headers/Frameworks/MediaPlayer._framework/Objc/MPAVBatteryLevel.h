@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithRouteDescription:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -54,7 +54,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)CKAssignToContainerWithID:(id)arg1;
-- (id)CKPropertiesToDescribe:(BOOL)arg1;
+- (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (id)ckShortDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

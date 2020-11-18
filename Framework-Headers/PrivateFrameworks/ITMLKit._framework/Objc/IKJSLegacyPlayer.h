@@ -7,20 +7,27 @@
 #import <ITMLKit/IKJSObject.h>
 
 #import <ITMLKit/IKJSLegacyPlayer-Protocol.h>
-#import <ITMLKit/JSExport-Protocol.h>
+#import <ITMLKit/NSObject-Protocol.h>
+#import <ITMLKit/_IKJSLegacyPlayer-Protocol.h>
+#import <ITMLKit/_IKJSLegacyPlayerProxy-Protocol.h>
 
-@class IKDOMElement;
+@class IKDOMElement, NSString;
 @protocol IKJSPlayerAppBridge;
 
-@interface IKJSLegacyPlayer : IKJSObject <IKJSLegacyPlayer, JSExport>
+@interface IKJSLegacyPlayer : IKJSObject <NSObject, IKJSLegacyPlayer, _IKJSLegacyPlayerProxy, _IKJSLegacyPlayer>
 {
     id<IKJSPlayerAppBridge> _appBridge;
 }
 
 @property (weak, nonatomic) id<IKJSPlayerAppBridge> appBridge; // @synthesize appBridge=_appBridge;
 @property (readonly, weak, nonatomic) IKDOMElement *currentAVMediaElement;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)asPrivateIKJSLegacyPlayer;
 
 @end
 

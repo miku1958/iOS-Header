@@ -9,6 +9,7 @@
 @interface UIColor (UIKit_SiriUIFrameworkAdditions)
 + (id)siriui_glyphColor;
 + (id)siriui_highlightColor;
++ (id)siriui_insertionPointColor;
 + (id)siriui_keylineColor;
 + (id)siriui_keylineColorStark;
 + (id)siriui_maskingColor;

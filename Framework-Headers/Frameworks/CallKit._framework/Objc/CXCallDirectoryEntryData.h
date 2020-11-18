@@ -16,9 +16,8 @@
 
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
-- (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;
+- (long long)phoneNumberAtIndex:(unsigned long long)arg1;
 
 @end
 

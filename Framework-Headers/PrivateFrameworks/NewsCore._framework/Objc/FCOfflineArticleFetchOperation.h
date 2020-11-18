@@ -13,6 +13,7 @@
     FCCloudContext *_context;
     NSString *_articleID;
     FCHeadline *_headline;
+    id _thumbnailFetchedObject;
     id _classificationFetchedObject;
     id _contentFetchedObject;
 }
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) id contentFetchedObject; // @synthesize contentFetchedObject=_contentFetchedObject;
 @property (strong, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) FCHeadline *headline; // @synthesize headline=_headline;
+@property (strong, nonatomic) id thumbnailFetchedObject; // @synthesize thumbnailFetchedObject=_thumbnailFetchedObject;
 
 - (void).cxx_destruct;
 - (id)completeFetchOperation;

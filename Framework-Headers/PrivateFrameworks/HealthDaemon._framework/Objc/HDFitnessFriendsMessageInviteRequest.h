@@ -8,10 +8,11 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSString;
+@class HDFitnessFriendsMessageActivityDataPreview, NSString;
 
 @interface HDFitnessFriendsMessageInviteRequest : PBRequest <NSCopying>
 {
+    HDFitnessFriendsMessageActivityDataPreview *_activityDataPreview;
     NSString *_handshakeToken;
     NSString *_inviterBuildNumber;
     NSString *_inviterCallerID;
@@ -22,7 +23,9 @@
     } _has;
 }
 
+@property (strong, nonatomic) HDFitnessFriendsMessageActivityDataPreview *activityDataPreview; // @synthesize activityDataPreview=_activityDataPreview;
 @property (strong, nonatomic) NSString *handshakeToken; // @synthesize handshakeToken=_handshakeToken;
+@property (readonly, nonatomic) BOOL hasActivityDataPreview;
 @property (readonly, nonatomic) BOOL hasHandshakeToken;
 @property (readonly, nonatomic) BOOL hasInviterBuildNumber;
 @property (readonly, nonatomic) BOOL hasInviterCallerID;

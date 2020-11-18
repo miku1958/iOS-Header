@@ -9,9 +9,10 @@
 #import <VideoSubscriberAccount/IKAppContextDelegate-Protocol.h>
 #import <VideoSubscriberAccount/IKApplication-Protocol.h>
 
-@class IKAppContext, NSString, NSURL, VSAppDeviceConfig;
+@class IKAppContext, NSHTTPCookieStorage, NSString, NSURL, VSAppDeviceConfig;
 @protocol VSApplicationDelegate;
 
+__attribute__((visibility("hidden")))
 @interface VSApplication : NSObject <IKAppContextDelegate, IKApplication>
 {
     BOOL _shouldAllowRemoteInspection;
@@ -19,11 +20,13 @@
     IKAppContext *_appContext;
     id<VSApplicationDelegate> _delegate;
     VSAppDeviceConfig *_appDeviceConfig;
+    NSHTTPCookieStorage *_cookieStorage;
 }
 
 @property (strong, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
 @property (strong, nonatomic) VSAppDeviceConfig *appDeviceConfig; // @synthesize appDeviceConfig=_appDeviceConfig;
 @property (readonly, copy, nonatomic) NSURL *bootURL; // @synthesize bootURL=_bootURL;
+@property (strong, nonatomic) NSHTTPCookieStorage *cookieStorage; // @synthesize cookieStorage=_cookieStorage;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VSApplicationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -64,6 +67,7 @@
 - (id)userDefaultsStorage;
 - (id)vendorIdentifier;
 - (id)vendorStorage;
+- (id)xhrSessionConfigurationForContext:(id)arg1;
 
 @end
 

@@ -19,6 +19,9 @@
     PUBrowsingVideoPlayer *_videoPlayer;
     PUBrowsingIrisPlayer *_irisPlayer;
     PUIrisBadgeVisibilityController *_irisBadgeVisibilityController;
+    struct {
+        BOOL videoPlayersLoadingAllowed;
+    } _isValid;
     BOOL _isUserTransformingTile;
     BOOL _isInFocus;
     BOOL _forceBadgesVisible;
@@ -86,10 +89,11 @@
 - (BOOL)_shouldPauseAndRewindVideo;
 - (void)_updateFavoriteState;
 - (void)_updateVideoPlayersIfNeeded;
-- (void)_updateVideoPlayersLoadingAllowed;
+- (void)_updateVideoPlayersLoadingAllowedIfNeeded;
 - (void)_updateWantsIrisBadgeVisible;
 - (void)dealloc;
 - (id)debugDetailedDescription;
+- (void)didPerformChanges;
 - (id)init;
 - (void)irisBadgeTileInfo:(id)arg1 didTransitionToAppearanceState:(unsigned long long)arg2;
 - (id)newViewModelChange;

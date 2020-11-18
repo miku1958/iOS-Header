@@ -22,8 +22,8 @@
 @property (strong, nonatomic) NSString *defaultPaymentPassUniqueIdentifier;
 @property (weak, nonatomic) id<PKPaymentServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasOutstandingExpressActivityTimeout;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long outstandingExpressTransactionState;
 @property (readonly, weak, nonatomic) PKFieldProperties *paymentDeviceFieldProperties;
 @property (strong, nonatomic) PKPaymentWebServiceContext *sharedPaymentWebServiceContext;
 @property (readonly) Class superclass;

@@ -8,6 +8,7 @@
 
 @class VSPrivacyFacade;
 
+__attribute__((visibility("hidden")))
 @interface VSPrivacyInfoCenter : NSObject
 {
     int _registrationToken;

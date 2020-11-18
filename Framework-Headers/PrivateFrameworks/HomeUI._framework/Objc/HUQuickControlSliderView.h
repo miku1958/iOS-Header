@@ -39,7 +39,7 @@
 @property (strong, nonatomic) HUQuickControlSliderValueOverlayView *valueOverlayView; // @synthesize valueOverlayView=_valueOverlayView;
 
 - (void).cxx_destruct;
-- (double)_minDisplayedValue;
+- (CDStruct_c3b9c2ee)_permittedValueRange;
 - (id)initWithProfile:(id)arg1;
 - (void)layoutSubviews;
 

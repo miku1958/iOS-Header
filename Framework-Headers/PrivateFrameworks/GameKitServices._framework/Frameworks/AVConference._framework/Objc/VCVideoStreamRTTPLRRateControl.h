@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <AVConference/VCVideoStreamRateControlProtocol-Protocol.h>
 
@@ -32,6 +32,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double nowrd;
+@property (readonly, nonatomic) double nowrdAcc;
+@property (readonly, nonatomic) double nowrdShort;
 @property (readonly, nonatomic) double owrd;
 @property (nonatomic) double rateControlInterval; // @synthesize rateControlInterval=_rateControlInterval;
 @property (readonly, nonatomic) int state; // @synthesize state=_state;
@@ -39,7 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 
 - (id)className;
-- (void)doRateControlWithTime:(double)arg1 roundTripTime:(double)arg2 packetLossRate:(double)arg3 operatingTierIndex:(unsigned short)arg4 actualBitrate:(unsigned int)arg5;
+- (void)doRateControlWithTime:(double)arg1 roundTripTime:(double)arg2 packetLossRate:(double)arg3 operatingTierIndex:(unsigned short)arg4 averageBitrate:(unsigned int)arg5;
 - (id)init;
 - (void)printRateControlFullInfoWithLogDump:(void *)arg1 time:(double)arg2 videoStall:(BOOL)arg3 videoFrozenDuration:(double)arg4 averageTargetBitrate:(unsigned int)arg5;
 - (unsigned short)rampDownTier;

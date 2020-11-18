@@ -6,7 +6,7 @@
 
 #import <SpriteKit/SKNode.h>
 
-@class SKShader, SKTexture, UIColor;
+@class NSDictionary, SKShader, SKTexture, UIColor;
 
 @interface SKShapeNode : SKNode
 {
@@ -14,6 +14,7 @@
 }
 
 @property (nonatomic, getter=isAntialiased) BOOL antialiased;
+@property (copy, nonatomic) NSDictionary *attributeValues;
 @property (nonatomic) long long blendMode;
 @property (strong, nonatomic) UIColor *fillColor;
 @property (strong, nonatomic) SKShader *fillShader;

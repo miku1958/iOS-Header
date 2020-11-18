@@ -13,13 +13,16 @@
 @interface _INPBContactHandle : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    NSString *_label;
     int _type;
     NSString *_value;
     CDStruct_f953fb60 _has;
 }
 
+@property (readonly, nonatomic) BOOL hasLabel;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasValue;
+@property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSString *value; // @synthesize value=_value;

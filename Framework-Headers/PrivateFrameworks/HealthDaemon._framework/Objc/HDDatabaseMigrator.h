@@ -59,6 +59,10 @@
 - (long long)_clearMenstrualFlowAndSexualActivitySamples:(id *)arg1;
 - (long long)_clearSamplesWithoutSourcesWithError:(id *)arg1;
 - (long long)_clearSourceOrderingWithError:(id *)arg1;
+- (long long)_corry_fixHFDProtectionClassWithError:(id *)arg1;
+- (long long)_corry_rewriteHFDStep1WithError:(id *)arg1;
+- (long long)_corry_rewriteHFDStep2WithError:(id *)arg1;
+- (id)_corry_temporaryHFDURL;
 - (long long)_createAchievementsAndActivityCachesTablesWithError:(id *)arg1;
 - (long long)_createActivityCachesTableWithError:(id *)arg1;
 - (long long)_createCorrelationsObjectIdIndexWithError:(id *)arg1;
@@ -126,6 +130,8 @@
 - (id)boulderUnprotectedMigrationSteps;
 - (id)butlerProtectedMigrationSteps;
 - (id)butlerUnprotectedMigrationSteps;
+- (id)corryProtectedMigrationSteps;
+- (id)corryUnprotectedMigrationSteps;
 - (id)eagleProtectedMigrationSteps;
 - (id)eagleUnprotectedMigrationSteps;
 - (BOOL)executeSQL:(id)arg1 error:(id *)arg2;

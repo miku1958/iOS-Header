@@ -11,15 +11,18 @@
     BOOL _autoCenteringDisabled;
     UIView *_detailsView;
     UIView *_mapView;
+    double _centerMargin;
     struct UIEdgeInsets _backgroundInsets;
 }
 
 @property (nonatomic) BOOL autoCenteringDisabled; // @synthesize autoCenteringDisabled=_autoCenteringDisabled;
 @property (nonatomic) struct UIEdgeInsets backgroundInsets; // @synthesize backgroundInsets=_backgroundInsets;
+@property (nonatomic) double centerMargin; // @synthesize centerMargin=_centerMargin;
 @property (strong, nonatomic) UIView *detailsView; // @synthesize detailsView=_detailsView;
 @property (strong, nonatomic) UIView *mapView; // @synthesize mapView=_mapView;
 
 - (void).cxx_destruct;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 
 @end

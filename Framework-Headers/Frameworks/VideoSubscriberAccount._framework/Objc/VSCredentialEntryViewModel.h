@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideoSubscriberAccount/VSViewModel.h>
+#import <VideoSubscriberAccount/VSCuratedViewModel.h>
 
 @class NSArray, NSString, NSURL;
 
-@interface VSCredentialEntryViewModel : VSViewModel
+__attribute__((visibility("hidden")))
+@interface VSCredentialEntryViewModel : VSCuratedViewModel
 {
     BOOL _needsUpdateValidationButtonState;
     NSArray *_fields;
@@ -25,6 +26,8 @@
 
 - (void).cxx_destruct;
 - (void)_setNeedsUpdateValidationButtonState;
+- (void)_startObservingFields:(id)arg1;
+- (void)_stopObservingFields:(id)arg1;
 - (void)_updateValidationButtonState;
 - (void)dealloc;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

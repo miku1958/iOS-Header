@@ -8,12 +8,14 @@
 
 @interface GKRidgedNoiseSource : GKCoherentNoiseSource
 {
+    double m_weights[30];
 }
 
 + (id)ridgedNoiseSourceWithFrequency:(double)arg1 octaveCount:(long long)arg2 lacunarity:(double)arg3 seed:(int)arg4;
-- (struct Module *)__newModule;
+- (id)cloneModule;
 - (id)init;
 - (id)initWithFrequency:(double)arg1 octaveCount:(long long)arg2 lacunarity:(double)arg3 seed:(int)arg4;
+- (double)valueAt: /* Error: Ran out of types for this method. */;
 
 @end
 

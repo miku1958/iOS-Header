@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
     long long filteringMode;
     struct CGSize size;
     struct CGSize pixelSize;
-    BOOL isLoaded;
     BOOL hasAlpha;
     BOOL isPOT;
     char *pixelData;
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) shared_ptr_bb77cfd9 backingTexture; // @synthesize backingTexture=_backingTexture;
 @property (nonatomic) long long filteringMode; // @synthesize filteringMode;
 @property (nonatomic) BOOL hasAlpha; // @synthesize hasAlpha;
-@property (nonatomic) BOOL isLoaded; // @synthesize isLoaded;
 @property (nonatomic) BOOL isPOT; // @synthesize isPOT;
 @property (readonly, nonatomic, getter=getLock) struct _opaque_pthread_mutex_t *lock;
 @property (nonatomic) char *pixelData; // @synthesize pixelData;

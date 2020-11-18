@@ -14,7 +14,7 @@
 @interface UIPDFAnnotationController : NSObject <UIGestureRecognizerDelegate>
 {
     UIPDFPageView *_pageView;
-    int _lock;
+    struct os_unfair_lock_s _lock;
     struct CGPoint _startPoint;
     BOOL _moving;
     UIPDFMarkupAnnotation *_currentAnnotation;

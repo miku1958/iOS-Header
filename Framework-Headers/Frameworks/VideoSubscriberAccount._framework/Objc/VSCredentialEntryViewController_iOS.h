@@ -8,15 +8,15 @@
 
 #import <VideoSubscriberAccount/VSCredentialEntryViewController-Protocol.h>
 
-@class NSArray, NSString, UIButton, UIProgressHUD, VSCredentialEntryViewModel, VSIdentityProviderLogoView;
-@protocol VSCredentialEntryViewControllerDelegate;
+@class NSArray, NSString, UIButton, UIProgressHUD, VSCredentialEntryViewModel, VSIdentityProviderLogoView, VSViewModel;
+@protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VSCredentialEntryViewController_iOS : ACUIViewController <VSCredentialEntryViewController>
 {
     BOOL _cancellationAllowed;
     VSCredentialEntryViewModel *_viewModel;
-    id<VSCredentialEntryViewControllerDelegate> _delegate;
+    id<VSAuthenticationViewControllerDelegate> _delegate;
     VSIdentityProviderLogoView *_logoView;
     UIButton *_linkButton;
     UIProgressHUD *_deletingAccountHUD;
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isCancellationAllowed) BOOL cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
 @property (strong, nonatomic) NSArray *credentialEntryFieldSpecifiers; // @synthesize credentialEntryFieldSpecifiers=_credentialEntryFieldSpecifiers;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<VSCredentialEntryViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIProgressHUD *deletingAccountHUD; // @synthesize deletingAccountHUD=_deletingAccountHUD;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize preferredLogoSize;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id textFieldTextDidChangeObserver; // @synthesize textFieldTextDidChangeObserver=_textFieldTextDidChangeObserver;
-@property (strong, nonatomic) VSCredentialEntryViewModel *viewModel; // @synthesize viewModel=_viewModel;
+@property (readonly, nonatomic) VSViewModel *viewModel;
 
 - (void).cxx_destruct;
 - (id)_credentialEntryFieldForSpecifier:(id)arg1;
@@ -55,7 +55,9 @@ __attribute__((visibility("hidden")))
 - (void)_showDeletingAccountHUD;
 - (void)_showNavigationBarButtons;
 - (id)_specifierForTextField:(id)arg1;
+- (void)_startObservingViewModel:(id)arg1;
 - (void)_startValidation;
+- (void)_stopObservingViewModel:(id)arg1;
 - (void)_stopValidationAndShowButtons:(BOOL)arg1;
 - (id)_textFieldForSpecifier:(id)arg1;
 - (id)_textForSpecifier:(id)arg1;
@@ -66,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)setViewModel:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

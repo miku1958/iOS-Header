@@ -6,16 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class UILabel;
+@class UILabel, UITapGestureRecognizer;
 
 @interface _WGBrokenWidgetView : UIView
 {
     UILabel *_label;
+    UITapGestureRecognizer *_tapGesture;
 }
 
 + (void)_configureLabelForCurrentGraphicsQuality:(id)arg1;
 - (void).cxx_destruct;
 - (void)_backgroundContrastDidChange:(id)arg1;
+- (void)addTarget:(id)arg1 action:(SEL)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

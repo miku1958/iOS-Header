@@ -6,7 +6,9 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
+@class NSError;
+
 @protocol HMDCameraSnapshotReceiverProtocol <NSObject>
-- (void)snapShotSendFailed;
+- (void)snapShotSendFailed:(NSError *)arg1;
 @end
 

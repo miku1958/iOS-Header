@@ -52,7 +52,8 @@
 + (void)setAirplaneModeEnabled:(BOOL)arg1;
 + (void)setWiFiEnabled:(BOOL)arg1;
 + (id)sharedInstance;
-- (void)_applicationWillEnterForegroundNotification:(id)arg1;
+- (void)_applicationForegroundNotification:(id)arg1;
+- (void)_copyConnectionDataStatus:(CDUnknownBlockType)arg1;
 - (unsigned int)_currentNetworkReachabilityFlags;
 - (id)_dataStatusIndicator;
 - (void)_handleTelephonyNotificationWithName:(struct __CFString *)arg1 userInfo:(struct __CFDictionary *)arg2;
@@ -63,6 +64,7 @@
 - (void)_postTypeChangedNotificationFromValue:(long long)arg1 toValue:(long long)arg2;
 - (void)_postUsageChangedToValue:(BOOL)arg1;
 - (void)_reloadCellularRestriction;
+- (void)_reloadDataStatusIndicator;
 - (void)_reloadNetworkType;
 - (void)_reloadNetworkTypeWithReachabilityFlags:(unsigned int)arg1;
 - (long long)_setNetworkType:(long long)arg1;

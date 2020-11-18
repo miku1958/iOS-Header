@@ -11,5 +11,6 @@
 - (BOOL)mf_addObjectIfAbsent:(id)arg1;
 - (BOOL)mf_addObjectIfAbsentAccordingToEquals:(id)arg1;
 - (void)mf_moveObjectAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
+- (void)mf_reverseObjects;
 @end
 

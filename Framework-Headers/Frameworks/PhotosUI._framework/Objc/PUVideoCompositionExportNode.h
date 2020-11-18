@@ -8,13 +8,15 @@
 
 #import <PhotosUI/PUVideoURLNode-Protocol.h>
 
-@class AVAssetExportSession, NSArray, NSString, NSURL;
-@protocol PUVideoCompositionNode, PXRunNodeDelegate;
+@class AVAssetExportSession, NSArray, NSObject, NSString, NSURL;
+@protocol OS_dispatch_queue, PUVideoCompositionNode, PXRunNodeDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUVideoCompositionExportNode : PXRunNode <PUVideoURLNode>
 {
     AVAssetExportSession *_exportSession;
+    BOOL _beganExport;
+    NSObject<OS_dispatch_queue> *_exportSessionAccessQueue;
     NSURL *_videoURL;
     id<PUVideoCompositionNode> _videoCompositionNode;
     unsigned long long _quality;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSArray *dependencies;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double progress;
 @property (readonly, nonatomic) unsigned long long quality; // @synthesize quality=_quality;
 @property (readonly, getter=isRunning) BOOL running;
 @property (readonly) unsigned long long state;

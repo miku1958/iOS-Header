@@ -20,6 +20,7 @@
 - (BOOL)_axPerformTrailingAction;
 - (void)_axSetupContainerView;
 - (BOOL)_axShowMoreActions:(id)arg1;
+- (id)_axTitleForPreviewAction:(id)arg1;
 - (void)_layoutForRevealTransition;
 - (void)_presentSubActionSheetForPreviewActionGroup:(id)arg1;
 - (void)containerViewWillLayoutSubviews;

@@ -22,6 +22,7 @@
     BOOL _showUIPrompt;
     BOOL _hostOnCurrentDevice;
     BOOL _endpointOnCurrentDevice;
+    BOOL _sos;
     int _callIdentifier;
     TUCallProviderManager *_providerManager;
     NSString *_uniqueProxyIdentifier;
@@ -29,8 +30,11 @@
     long long _dialType;
     TUHandle *_handle;
     NSString *_contactIdentifier;
+    NSString *_providerCustomIdentifier;
     NSString *_audioSourceIdentifier;
     long long _ttyType;
+    CDUnknownBlockType _isEmergencyNumberBlock;
+    CDUnknownBlockType _isEmergencyNumberOrIsWhitelistedBlock;
     long long _originatingUIType;
     struct CGSize _localPortraitAspectRatio;
     struct CGSize _localLandscapeAspectRatio;
@@ -50,15 +54,19 @@
 @property (strong, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hostOnCurrentDevice; // @synthesize hostOnCurrentDevice=_hostOnCurrentDevice;
+@property (copy, nonatomic) CDUnknownBlockType isEmergencyNumberBlock; // @synthesize isEmergencyNumberBlock=_isEmergencyNumberBlock;
+@property (copy, nonatomic) CDUnknownBlockType isEmergencyNumberOrIsWhitelistedBlock; // @synthesize isEmergencyNumberOrIsWhitelistedBlock=_isEmergencyNumberOrIsWhitelistedBlock;
 @property (nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property (nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
 @property (nonatomic) long long originatingUIType; // @synthesize originatingUIType=_originatingUIType;
 @property (nonatomic) BOOL performDialAssist; // @synthesize performDialAssist=_performDialAssist;
 @property (nonatomic) BOOL performLocalDialAssist; // @synthesize performLocalDialAssist=_performLocalDialAssist;
 @property (strong, nonatomic) TUCallProvider *provider; // @synthesize provider=_provider;
+@property (copy, nonatomic) NSString *providerCustomIdentifier; // @synthesize providerCustomIdentifier=_providerCustomIdentifier;
 @property (readonly, nonatomic) TUCallProviderManager *providerManager; // @synthesize providerManager=_providerManager;
 @property (readonly, nonatomic) int service;
 @property (nonatomic) BOOL showUIPrompt; // @synthesize showUIPrompt=_showUIPrompt;
+@property (nonatomic, getter=isSOS, setter=setSOS:) BOOL sos; // @synthesize sos=_sos;
 @property (readonly) Class superclass;
 @property (nonatomic) long long ttyType; // @synthesize ttyType=_ttyType;
 @property (copy, nonatomic) NSString *uniqueProxyIdentifier; // @synthesize uniqueProxyIdentifier=_uniqueProxyIdentifier;
@@ -117,7 +125,9 @@
 - (id)noPromptURLQueryItem;
 - (id)originatingUIURLQueryItem;
 - (id)personHandleForHandle:(id)arg1;
+- (id)providerCustomIdentifierURLQueryItem;
 - (int)serviceFromURLComponents:(id)arg1;
+- (id)sosURLQueryItem;
 - (id)suppressAssistURLQueryItem;
 - (id)ttyTypeURLQueryItem;
 - (id)validityErrorForDestinationIDWithVoicemail;
@@ -125,6 +135,7 @@
 - (id)validityErrorForEndpointNotOnCurrentDeviceForNonRelayableService;
 - (id)validityErrorForNonNormalDialTypeWithoutTelephony;
 - (id)validityErrorForNormalDialTypeWithUnknownDestination;
+- (id)validityErrorForSOS;
 - (id)validityErrorForUnspecifiedProvider;
 - (id)validityErrorForVideoUnsupported;
 

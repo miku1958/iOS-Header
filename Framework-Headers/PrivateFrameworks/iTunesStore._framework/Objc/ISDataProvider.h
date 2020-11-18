@@ -9,6 +9,7 @@
 #import <iTunesStore/NSCopying-Protocol.h>
 
 @class ISBiometricAuthenticationContext, ISOperation, NSNumber, NSString, NSURL, SSAuthenticationContext, SSURLBagContext;
+@protocol ISBiometricSessionDelegate;
 
 @interface ISDataProvider : NSObject <NSCopying>
 {
@@ -22,12 +23,14 @@
     NSURL *_redirectURL;
     ISBiometricAuthenticationContext *_biometricAuthenticationContext;
     long long _errorHandlerResponseType;
+    id<ISBiometricSessionDelegate> _biometricSessionDelegate;
 }
 
 @property (strong) NSNumber *authenticatedAccountDSID; // @synthesize authenticatedAccountDSID=_authenticatedAccountDSID;
 @property (strong) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (strong) SSURLBagContext *bagContext; // @synthesize bagContext=_bagContext;
 @property (strong) ISBiometricAuthenticationContext *biometricAuthenticationContext; // @synthesize biometricAuthenticationContext=_biometricAuthenticationContext;
+@property id<ISBiometricSessionDelegate> biometricSessionDelegate; // @synthesize biometricSessionDelegate=_biometricSessionDelegate;
 @property long long contentLength; // @synthesize contentLength=_contentLength;
 @property (strong) NSString *contentType; // @synthesize contentType=_contentType;
 @property long long errorHandlerResponseType; // @synthesize errorHandlerResponseType=_errorHandlerResponseType;
@@ -37,6 +40,7 @@
 
 + (id)provider;
 - (void).cxx_destruct;
+- (void)_performActionsForButton:(id)arg1 withDialog:(id)arg2;
 - (BOOL)_runServerAuthenticationOperation:(id)arg1 error:(id *)arg2;
 - (BOOL)canStreamContentLength:(long long)arg1 error:(id *)arg2;
 - (id)closeStream;
@@ -49,7 +53,7 @@
 - (void)resetStream;
 - (BOOL)runAuthorizationDialog:(id)arg1 error:(id *)arg2;
 - (BOOL)runSubOperation:(id)arg1 error:(id *)arg2;
-- (BOOL)runTouchIDAuthorizationDialog:(id)arg1 error:(id *)arg2;
+- (BOOL)runTouchIDAuthorizationDialog:(id)arg1 fallbackDialog:(id)arg2 error:(id *)arg3;
 - (void)setup;
 - (void)streamCancelled;
 - (void)streamDidFailWithError:(id)arg1;

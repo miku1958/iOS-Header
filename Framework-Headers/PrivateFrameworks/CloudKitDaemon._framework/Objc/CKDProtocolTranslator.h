@@ -9,7 +9,6 @@
 @class CKDPIdentifier, NSString;
 @protocol CKDProtocolTranslatorIdentityDelegate;
 
-__attribute__((visibility("hidden")))
 @interface CKDProtocolTranslator : NSObject
 {
     BOOL _dontCreateValidatingParentReferences;

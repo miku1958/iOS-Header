@@ -51,7 +51,6 @@ __attribute__((visibility("hidden")))
 + (id)_remoteViewControllerInterface;
 + (id)_urlByResolvingExternalDocumentReferenceForURL:(id)arg1;
 - (void).cxx_destruct;
-- (void)_checkFileStatus;
 - (void)_cloudEnabledStatusDidChange:(id)arg1;
 - (void)_createBookmarkAndDismissWithCloudURL:(id)arg1;
 - (void)_didInstantiateThirdPartyPickerWithDescription:(id)arg1 placeholder:(id)arg2;
@@ -71,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)_setSourceIsManaged:(BOOL)arg1;
 - (void)_setTintColor:(id)arg1;
 - (void)_setUploadURLWrapper:(id)arg1;
+- (BOOL)_shouldWarnForSharing;
 - (void)_showDefaultPicker;
 - (void)_showExistsAlertForFile:(id)arg1 withSourceURL:(id)arg2;
 - (void)_showLocationPopup:(id)arg1;
@@ -81,6 +81,8 @@ __attribute__((visibility("hidden")))
 - (void)_tryExportingFile:(id)arg1 toLocation:(id)arg2;
 - (void)_updateDefaultPicker;
 - (struct CGSize)_updatedContentSizeForPreferredContentSize:(struct CGSize)arg1;
+- (void)_warnSharingForTarget:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_warnSharingPreMove;
 - (void)_willAppearInRemoteViewController;
 - (void)beginDownloadingURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;

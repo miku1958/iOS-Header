@@ -6,7 +6,7 @@
 
 #import <BulletinBoard/BBBulletin.h>
 
-@class BBAccessoryIcon, BBAction, BBAttachmentMetadata, BBContent, BBSectionIcon, BBSound, NSArray, NSDate, NSSet, NSString, NSTimeZone;
+@class BBAccessoryIcon, BBAction, BBAttachmentMetadata, BBContent, BBSectionIcon, BBSound, NSArray, NSDate, NSDictionary, NSSet, NSString, NSTimeZone;
 
 @interface BBBulletinRequest : BBBulletin
 {
@@ -17,12 +17,15 @@
 @property (copy, nonatomic) BBAction *acknowledgeAction; // @dynamic acknowledgeAction;
 @property (copy, nonatomic) NSArray *additionalAttachments; // @dynamic additionalAttachments;
 @property (nonatomic) long long addressBookRecordID; // @dynamic addressBookRecordID;
+@property (copy, nonatomic) NSSet *alertSuppressionAppIDs_deprecated; // @dynamic alertSuppressionAppIDs_deprecated;
 @property (copy, nonatomic) NSSet *alertSuppressionContexts; // @dynamic alertSuppressionContexts;
 @property (copy, nonatomic) BBAction *alternateAction; // @dynamic alternateAction;
 @property (copy, nonatomic) NSString *bulletinID; // @dynamic bulletinID;
 @property (copy, nonatomic) NSArray *buttons; // @dynamic buttons;
 @property (copy, nonatomic) NSString *categoryID; // @dynamic categoryID;
 @property (nonatomic) BOOL clearable; // @dynamic clearable;
+@property (nonatomic) long long contentPreviewSetting; // @dynamic contentPreviewSetting;
+@property (strong, nonatomic) NSDictionary *context; // @dynamic context;
 @property (nonatomic) unsigned long long counter; // @dynamic counter;
 @property (strong, nonatomic) NSDate *date; // @dynamic date;
 @property (nonatomic) long long dateFormatStyle; // @dynamic dateFormatStyle;
@@ -39,15 +42,19 @@
 @property (strong, nonatomic) BBSectionIcon *icon; // @dynamic icon;
 @property (nonatomic) BOOL ignoresQuietMode; // @dynamic ignoresQuietMode;
 @property (copy, nonatomic) NSArray *intentIDs; // @dynamic intentIDs;
+@property (strong, nonatomic) NSDate *lastInterruptDate; // @dynamic lastInterruptDate;
 @property (nonatomic, getter=isLoading) BOOL loading; // @dynamic loading;
 @property (copy, nonatomic) NSString *message; // @dynamic message;
 @property (strong, nonatomic) BBContent *modalAlertContent; // @dynamic modalAlertContent;
+@property (copy, nonatomic) NSString *parentSectionID; // @dynamic parentSectionID;
 @property (copy, nonatomic) NSArray *peopleIDs; // @dynamic peopleIDs;
 @property (copy, nonatomic) BBAttachmentMetadata *primaryAttachment; // @dynamic primaryAttachment;
 @property (nonatomic) long long primaryAttachmentType; // @dynamic primaryAttachmentType;
+@property (strong, nonatomic) NSDate *publicationDate; // @dynamic publicationDate;
 @property (copy, nonatomic) NSString *publisherBulletinID; // @dynamic publisherBulletinID;
 @property (copy, nonatomic) BBAction *raiseAction; // @dynamic raiseAction;
 @property (nonatomic) unsigned long long realertCount;
+@property (nonatomic) unsigned long long realertCount_deprecated; // @dynamic realertCount_deprecated;
 @property (strong, nonatomic) NSDate *recencyDate; // @dynamic recencyDate;
 @property (copy, nonatomic) NSString *recordID; // @dynamic recordID;
 @property (copy, nonatomic) NSString *section; // @dynamic section;
@@ -66,6 +73,8 @@
 @property (strong, nonatomic) NSTimeZone *timeZone; // @dynamic timeZone;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
 @property (nonatomic) BOOL turnsOnDisplay; // @dynamic turnsOnDisplay;
+@property (copy, nonatomic) NSString *universalSectionID; // @dynamic universalSectionID;
+@property (copy, nonatomic) NSString *unlockActionLabelOverride; // @dynamic unlockActionLabelOverride;
 @property (nonatomic) BOOL usesExternalSync; // @dynamic usesExternalSync;
 @property (nonatomic) BOOL wantsFullscreenPresentation; // @dynamic wantsFullscreenPresentation;
 
@@ -73,11 +82,13 @@
 - (void)addAlertSuppressionAppID:(id)arg1;
 - (void)addAttachmentOfType:(long long)arg1;
 - (void)addButton:(id)arg1;
+- (id)awakeAfterUsingCoder:(id)arg1;
 - (void)generateBulletinID;
 - (void)generateNewBulletinID;
 - (BOOL)hasContentModificationsRelativeTo:(id)arg1;
 - (void)publish;
 - (void)publish:(BOOL)arg1;
+- (id)replacementObjectForCoder:(id)arg1;
 - (void)setContextValue:(id)arg1 forKey:(id)arg2;
 - (void)setSupplementaryActions:(id)arg1 forLayout:(long long)arg2;
 - (void)setUnlockActionLabel:(id)arg1;

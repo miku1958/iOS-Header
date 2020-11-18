@@ -11,9 +11,11 @@
 @interface NSDictionary (IMAssocatedMessageItemInfo)
 
 @property (readonly, nonatomic) NSNumber *__im_associatedMessageContentType;
+@property (readonly, nonatomic) NSString *__im_associatedMessagePluginBundleID;
+@property (readonly, nonatomic) NSString *__im_associatedMessagePluginDisplayName;
 @property (readonly, nonatomic) NSString *__im_associatedMessageSummary;
 
-+ (id)dictionaryWithAssociatedMessageSummary:(id)arg1 contentType:(unsigned char)arg2;
++ (id)dictionaryWithAssociatedMessageSummary:(id)arg1 contentType:(unsigned char)arg2 pluginBundleID:(id)arg3 pluginDisplayName:(id)arg4;
 + (id)dictionaryWithMessageSummaryInfoData:(id)arg1;
 @end
 

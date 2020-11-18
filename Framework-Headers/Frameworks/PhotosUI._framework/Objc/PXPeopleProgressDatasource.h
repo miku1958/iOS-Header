@@ -9,7 +9,8 @@
 #import <PhotosUICore/PXPeopleProgressDatasource-Protocol.h>
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSLock, NSString, PHFetchResult;
+@class NSString, PHFetchResult;
+@protocol OS_dispatch_queue;
 
 @interface PXPeopleProgressDatasource : NSObject <PXPhotoLibraryUIChangeObserver, PXPeopleProgressDatasource>
 {
@@ -22,7 +23,7 @@
     PHFetchResult *_homeResult;
     PHFetchResult *_plusResult;
     PHFetchResult *_verifyResult;
-    NSLock *_queryLock;
+    NSObject<OS_dispatch_queue> *_scanningProgressQueue;
 }
 
 @property unsigned long long cachedUnlockValue; // @synthesize cachedUnlockValue=_cachedUnlockValue;
@@ -36,7 +37,7 @@
 @property (nonatomic) unsigned long long pendingCount; // @synthesize pendingCount=_pendingCount;
 @property (strong, nonatomic) PHFetchResult *plusResult; // @synthesize plusResult=_plusResult;
 @property (nonatomic) unsigned long long processedCount; // @synthesize processedCount=_processedCount;
-@property (readonly) NSLock *queryLock; // @synthesize queryLock=_queryLock;
+@property (readonly) NSObject<OS_dispatch_queue> *scanningProgressQueue; // @synthesize scanningProgressQueue=_scanningProgressQueue;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long totalCount; // @synthesize totalCount=_totalCount;
 @property (strong, nonatomic) PHFetchResult *verifyResult; // @synthesize verifyResult=_verifyResult;

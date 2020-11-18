@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)forceUpdateAssetMetadata;
 - (id)initWithQueue:(id)arg1;
 - (void)injectLocationOfInterest:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)injectLocations:(id)arg1;
 - (void)injectVisit:(id)arg1 locationOfInterest:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)printMagicalMomentsModelWithReply:(CDUnknownBlockType)arg1;
 - (void)printRoomAssistModel:(CDUnknownBlockType)arg1;

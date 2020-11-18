@@ -86,7 +86,6 @@
 + (id)applicationOptionsWithLaunchOptions:(id)arg1;
 + (id)configurationPreloader;
 + (void)finishedWithConfigurationPreloader;
-+ (void)load;
 + (void)prepareForLaunch;
 - (void).cxx_destruct;
 - (void)URLResolver:(id)arg1 didFinishWithResult:(BOOL)arg2;

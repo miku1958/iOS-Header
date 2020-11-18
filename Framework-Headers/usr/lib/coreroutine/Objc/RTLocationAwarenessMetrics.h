@@ -8,17 +8,17 @@
 
 #import <coreroutine/NSCopying-Protocol.h>
 
-@class AWDCoreRoutineLocationAwarenessHeartbeatStatistics, AWDCoreRoutineLocationAwarenessIntervalHistogram, AWDCoreRoutineLocationAwarenessLocationTimeHistograms, NSDate;
+@class AWDCoreRoutineLocationAwarenessIntervalHistogram, AWDCoreRoutineLocationAwarenessLocationTimeHistograms, AWDCoreRoutineLocationAwarenessStatistics, NSDate;
 
 @interface RTLocationAwarenessMetrics : NSObject <NSCopying>
 {
     NSDate *_startTimestamp;
-    AWDCoreRoutineLocationAwarenessHeartbeatStatistics *_heartbeatStats;
+    AWDCoreRoutineLocationAwarenessStatistics *_heartbeatStats;
     AWDCoreRoutineLocationAwarenessLocationTimeHistograms *_timeHistograms;
     AWDCoreRoutineLocationAwarenessIntervalHistogram *_intervalHistogram;
 }
 
-@property (strong, nonatomic) AWDCoreRoutineLocationAwarenessHeartbeatStatistics *heartbeatStats; // @synthesize heartbeatStats=_heartbeatStats;
+@property (strong, nonatomic) AWDCoreRoutineLocationAwarenessStatistics *heartbeatStats; // @synthesize heartbeatStats=_heartbeatStats;
 @property (strong, nonatomic) AWDCoreRoutineLocationAwarenessIntervalHistogram *intervalHistogram; // @synthesize intervalHistogram=_intervalHistogram;
 @property (readonly, nonatomic) NSDate *startTimestamp; // @synthesize startTimestamp=_startTimestamp;
 @property (strong, nonatomic) AWDCoreRoutineLocationAwarenessLocationTimeHistograms *timeHistograms; // @synthesize timeHistograms=_timeHistograms;

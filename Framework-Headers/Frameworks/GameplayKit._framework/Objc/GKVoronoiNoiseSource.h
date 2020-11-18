@@ -20,9 +20,10 @@
 @property (nonatomic) int seed; // @synthesize seed=_seed;
 
 + (id)voronoiNoiseWithFrequency:(double)arg1 displacement:(double)arg2 distanceEnabled:(BOOL)arg3 seed:(int)arg4;
-- (struct Module *)__newModule;
+- (id)cloneModule;
 - (id)init;
 - (id)initWithFrequency:(double)arg1 displacement:(double)arg2 distanceEnabled:(BOOL)arg3 seed:(int)arg4;
+- (double)valueAt: /* Error: Ran out of types for this method. */;
 
 @end
 

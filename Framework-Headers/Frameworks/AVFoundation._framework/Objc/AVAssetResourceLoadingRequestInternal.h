@@ -29,6 +29,7 @@
     struct OpaqueFigAssetImageGenerator *figImageGenerator;
     struct OpaqueFigAsset *figAsset;
     CDUnknownBlockType streamingKeyRequestCompletionHandler;
+    struct OpaqueFigCPECryptor *figCryptor;
 }
 
 @end

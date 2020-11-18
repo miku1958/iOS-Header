@@ -146,6 +146,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)initialize;
 - (void)invalidateLayoutTimer;
+- (BOOL)isCurrentlyRotated;
 - (BOOL)isOverlayOnMap:(id)arg1;
 - (BOOL)isValidLocation:(struct CLLocationCoordinate2D)arg1;
 - (void)layoutMapView;

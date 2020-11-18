@@ -30,9 +30,11 @@
 @property (readonly, nonatomic) NSString *utteranceString;
 
 + (id)intentDescription;
++ (void)load;
 + (BOOL)supportsSecureCoding;
 + (id)typeName;
 - (void).cxx_destruct;
+- (id)_dictionaryRepresentation;
 - (id)_impl;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;

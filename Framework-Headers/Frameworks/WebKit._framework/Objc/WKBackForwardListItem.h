@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 @property (readonly, copy) NSString *title;
 
+- (struct CGImage *)_copySnapshotForTesting;
 - (void)dealloc;
 
 @end

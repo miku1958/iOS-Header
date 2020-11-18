@@ -82,6 +82,7 @@
 - (void)persistentProperty:(NSString *)arg1 changedTo:(id)arg2 from:(id)arg3;
 - (void)pinCodeAlertCompleted:(NSString *)arg1 deviceName:(NSString *)arg2 deviceType:(NSString *)arg3 phoneNumber:(NSString *)arg4 responseFromDevice:(BOOL)arg5 wasCancelled:(BOOL)arg6;
 - (void)property:(NSString *)arg1 changedTo:(id)arg2 from:(id)arg3;
+- (void)qosClassWhileServicingRequestsResponse:(unsigned int)arg1 identifier:(NSString *)arg2;
 - (void)setupComplete;
 - (void)setupComplete:(BOOL)arg1 info:(NSDictionary *)arg2;
 - (void)showForgotPasswordNotificationForAccount:(NSString *)arg1;

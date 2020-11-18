@@ -16,6 +16,7 @@
     UIView *_subview;
     double _chevronRightInset;
     double _leftSubviewInset;
+    double _rightSubviewInset;
     long long _keylineType;
 }
 
@@ -23,6 +24,7 @@
 @property (nonatomic) BOOL hasChevron; // @synthesize hasChevron=_hasChevron;
 @property (nonatomic) long long keylineType; // @synthesize keylineType=_keylineType;
 @property (nonatomic) double leftSubviewInset; // @synthesize leftSubviewInset=_leftSubviewInset;
+@property (nonatomic) double rightSubviewInset; // @synthesize rightSubviewInset=_rightSubviewInset;
 @property (strong, nonatomic) UIView *subview; // @synthesize subview=_subview;
 
 - (void).cxx_destruct;

@@ -10,8 +10,7 @@
 
 @interface _HKLatestSummariesQuery : HKQuery
 {
-    NSDate *_startDate;
-    NSDate *_endDate;
+    NSDate *_summaryDate;
     NSCalendar *_calendar;
     NSSet *_typeFilters;
     CDUnknownBlockType _resultsHandler;
@@ -33,7 +32,6 @@
 - (void)deliverSummaries:(id)arg1 forQuery:(id)arg2;
 - (void)deliverUpdatedSummaries:(id)arg1 forQuery:(id)arg2;
 - (id)initWithDate:(id)arg1 calendar:(id)arg2 resultsHandler:(CDUnknownBlockType)arg3;
-- (id)initWithSearchStartDate:(id)arg1 searchEndDate:(id)arg2 calendar:(id)arg3 typeFilters:(id)arg4 resultsHandler:(CDUnknownBlockType)arg5;
 
 @end
 

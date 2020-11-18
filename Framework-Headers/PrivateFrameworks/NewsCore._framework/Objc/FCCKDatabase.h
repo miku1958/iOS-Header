@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCCloudKitCacheClearing-Protocol.h>
 
-@class CKDatabase, NSArray, NSMutableArray, NSString;
+@class CKDatabase, FCNetworkBehaviorMonitor, NSArray, NSMutableArray, NSString;
 @protocol FCCKDatabaseDelegate, OS_dispatch_queue;
 
 @interface FCCKDatabase : NSObject <FCCloudKitCacheClearing>
@@ -19,6 +19,7 @@
     id<FCCKDatabaseDelegate> _delegate;
     CKDatabase *_database;
     NSArray *_middleware;
+    FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
     NSString *_containerIdentifier;
     NSObject<OS_dispatch_queue> *_queue;
     NSArray *_startUpMiddleware;
@@ -38,6 +39,7 @@
 @property (readonly, nonatomic) BOOL hasBeenRateLimited; // @synthesize hasBeenRateLimited=_hasBeenRateLimited;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *middleware; // @synthesize middleware=_middleware;
+@property (strong, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
 @property (strong, nonatomic) NSArray *operationMiddleware; // @synthesize operationMiddleware=_operationMiddleware;
 @property (strong, nonatomic) NSMutableArray *pendingOperations; // @synthesize pendingOperations=_pendingOperations;
 @property BOOL preferAnonymousRequests; // @synthesize preferAnonymousRequests=_preferAnonymousRequests;
@@ -64,7 +66,6 @@
 - (id)_mapRecords:(id)arg1 client:(BOOL)arg2;
 - (void)_performStartUpWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_preflightOperation:(id)arg1;
-- (void)_preflightRecordsInChangesOperation:(id)arg1;
 - (void)_preflightRecordsInFetchOperation:(id)arg1;
 - (void)_preflightRecordsInModifyOperation:(id)arg1;
 - (void)_preflightRecordsInQueryOperation:(id)arg1;
@@ -87,8 +88,8 @@
 - (void)fetchRecordZoneWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchRecordsWithIDs:(id)arg1 desiredKeys:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchRecordsWithIDs:(id)arg1 desiredKeys:(id)arg2 qualityOfService:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)initWithDatabase:(id)arg1 middleware:(id)arg2;
-- (id)initWithDatabase:(id)arg1 middleware:(id)arg2 startUp:(BOOL)arg3;
+- (id)initWithDatabase:(id)arg1 middleware:(id)arg2 networkBehaviorMonitor:(id)arg3;
+- (id)initWithDatabase:(id)arg1 middleware:(id)arg2 networkBehaviorMonitor:(id)arg3 startUp:(BOOL)arg4;
 - (void)operationWasRateLimitedWithError:(id)arg1;
 - (void)performQuery:(id)arg1 desiredKeys:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)performQuery:(id)arg1 desiredKeys:(id)arg2 resultsLimit:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;

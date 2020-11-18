@@ -8,10 +8,10 @@
 
 @interface AXVisualAlertManager : NSObject
 {
-    int _ringerStateNotifyToken;
+    int ringerStateNotifyToken;
 }
 
-@property (nonatomic) int ringerStateNotifyToken; // @synthesize ringerStateNotifyToken=_ringerStateNotifyToken;
+@property (nonatomic) int ringerStateNotifyToken; // @synthesize ringerStateNotifyToken;
 
 + (id)sharedVisualAlertManager;
 - (void)addBulletin:(id)arg1;

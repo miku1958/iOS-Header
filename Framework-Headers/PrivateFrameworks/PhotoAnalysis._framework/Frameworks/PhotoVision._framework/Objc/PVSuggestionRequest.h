@@ -6,27 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class CVMLRequest, NSSet, NSString, PVCanceler;
+@class CVMLRequest, NSArray, NSString, PVCanceler;
 
 __attribute__((visibility("hidden")))
 @interface PVSuggestionRequest : NSObject
 {
     NSString *_requestId;
-    NSSet *_csns;
+    NSArray *_csns;
+    NSArray *_cflags;
     CDUnknownBlockType _updateHandler;
     CVMLRequest *_cvmlRequest;
     PVCanceler *_canceller;
 }
 
 @property (readonly) PVCanceler *canceller; // @synthesize canceller=_canceller;
-@property (readonly) NSSet *csns; // @synthesize csns=_csns;
+@property (readonly) NSArray *cflags; // @synthesize cflags=_cflags;
+@property (readonly) NSArray *csns; // @synthesize csns=_csns;
 @property (strong) CVMLRequest *cvmlRequest; // @synthesize cvmlRequest=_cvmlRequest;
 @property (readonly) NSString *requestId; // @synthesize requestId=_requestId;
 @property (copy) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
-+ (id)requestWithFaceCSNs:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;
++ (id)requestWithFaceCSNs:(id)arg1 withFlags:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-- (id)initWithFaceCSNs:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;
+- (id)initWithFaceCSNs:(id)arg1 withFlags:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;
 
 @end
 

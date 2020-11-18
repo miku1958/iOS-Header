@@ -56,6 +56,7 @@
 - (void)_updateCurrentAmount:(id)arg1;
 - (void)_updateCurrentAmount:(id)arg1 shouldGenerateNewSuggestions:(BOOL)arg2;
 - (void)_updateCurrentBalanceWithUpdatedFelicaProperties;
+- (void)dealloc;
 - (id)init;
 - (id)initWithPass:(id)arg1 action:(id)arg2 paymentDataProvider:(id)arg3;
 - (void)layoutSubviews;

@@ -7,16 +7,18 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface _CLKTreatedImageCache : NSObject
 {
     NSMutableDictionary *_cache;
     NSMutableArray *_recentlyUsedKeys;
+    NSObject<OS_dispatch_queue> *_internalQueue;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_pruneCacheIfNecessary;
+- (void)_queue_pruneCacheIfNecessary;
 - (id)imageForRawImage:(id)arg1 scale:(double)arg2 maskToCircle:(BOOL)arg3;
 - (id)init;
 

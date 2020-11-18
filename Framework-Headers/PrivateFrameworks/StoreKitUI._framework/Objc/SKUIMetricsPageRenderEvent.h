@@ -8,12 +8,13 @@
 
 #import <StoreKitUI/SKUIInspectableObject-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class NSArray, NSDictionary, NSMutableArray, NSString;
 
 @interface SKUIMetricsPageRenderEvent : SSMetricsBaseEvent <SKUIInspectableObject>
 {
     NSMutableArray *_domChanges;
     NSMutableArray *_requests;
+    NSDictionary *_metricsBase;
 }
 
 @property (strong, nonatomic) NSString *clientCorrelationKey;
@@ -22,6 +23,7 @@
 @property (readonly, copy, nonatomic) NSArray *domChanges; // @synthesize domChanges=_domChanges;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *launchCorrelationKey;
+@property (copy, nonatomic) NSDictionary *metricsBase; // @synthesize metricsBase=_metricsBase;
 @property (nonatomic) double pageAppearTime;
 @property (nonatomic) double pageDisappearTime;
 @property (nonatomic) double pageRequestedTime;
@@ -42,6 +44,9 @@
 @property (nonatomic, setter=setXPSamplingPercentageUsers:) double xpSamplingPercentageUsers;
 @property (nonatomic, setter=setXPSessionDuration:) double xpSessionDuration;
 
++ (double)_randomDouble;
++ (id)_sampleWindowStartTime;
++ (void)_setSampleWindowStartTime:(id)arg1;
 + (BOOL)shouldCollectPageRenderData;
 + (BOOL)shouldCollectPageRenderDataForDocument:(id)arg1;
 - (void).cxx_destruct;

@@ -6,13 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class CADisplayLink, EAGLContext, FlameGroup, MISSING_TYPE, NSMutableArray, SUICAudioLevelSmoother, UIColor, UIImage, UIImageView, UIScreen;
+@class CADisplayLink, EAGLContext, FlameGroup, MISSING_TYPE, NSMutableArray, NSMutableSet, SUICAudioLevelSmoother, UIColor, UIImage, UIImageView, UIScreen;
 @protocol SUICFlamesViewDelegate;
 
 @interface SUICFlamesView : UIView
 {
     CADisplayLink *_displayLink;
     EAGLContext *_eaglContext;
+    EAGLContext *_previousContext;
+    long long _currentContextCount;
+    NSMutableSet *_renderingDisabledReasons;
     unsigned int _framebufferHandle;
     unsigned int _renderbufferHandle;
     int _flameProgramHandle;
@@ -62,6 +65,7 @@
 @property (nonatomic) struct CGRect activeFrame; // @synthesize activeFrame=_activeFrame;
 @property (weak, nonatomic) id<SUICFlamesViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIColor *dictationColor; // @synthesize dictationColor=_dictationColor;
+@property (readonly, nonatomic) BOOL isRenderingEnabled;
 @property (nonatomic) int mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) UIImage *overlayImage; // @synthesize overlayImage=_overlayImage;
 @property (nonatomic) BOOL reduceFrameRate; // @synthesize reduceFrameRate=_reduceFrameRate;
@@ -74,6 +78,9 @@
 + (void)prewarmShadersForScreen:(id)arg1 size:(struct CGSize)arg2 fidelity:(int)arg3;
 + (void)prewarmShadersForScreen:(id)arg1 size:(struct CGSize)arg2 fidelity:(int)arg3 prewarmInBackground:(BOOL)arg4;
 - (void).cxx_destruct;
+- (void)_applicationDidBecomeActive:(id)arg1;
+- (void)_applicationWillEnterForeground:(id)arg1;
+- (void)_applicationWillResignActive:(id)arg1;
 - (void)_cleanupGL;
 - (float)_currentMicPowerLevel;
 - (int)_generateIndicesForNumCircleShapes:(int)arg1 withMaxSubdivisionLevel:(float)arg2 startingWithNumSubdivisionLevel:(float)arg3 forIndices:(unsigned int **)arg4 atStartIndex:(int)arg5 withFill:(BOOL)arg6 withCullingForAura:(BOOL)arg7 forVertices:(struct *)arg8;
@@ -83,6 +90,8 @@
 - (void)_prewarmShaders;
 - (void)_reduceMotionStatusChanged:(id)arg1;
 - (BOOL)_resizeFromLayer:(id)arg1;
+- (void)_restoreCurrentContext;
+- (BOOL)_setCurrentContext;
 - (void)_setValuesForFidelity:(int)arg1;
 - (void)_setupDisplayLink;
 - (BOOL)_setupFramebuffer;
@@ -103,6 +112,7 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(BOOL)arg1;
+- (void)setRenderingEnabled:(BOOL)arg1 forReason:(id)arg2;
 - (void)stopRenderingAndCleanupGL;
 
 @end

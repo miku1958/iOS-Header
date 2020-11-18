@@ -8,6 +8,7 @@
 
 @class NSString, VSAccount, VSAccountMetadataRequest, VSAccountStore;
 
+__attribute__((visibility("hidden")))
 @interface VSIdentityProviderRequest : NSObject
 {
     long long _type;

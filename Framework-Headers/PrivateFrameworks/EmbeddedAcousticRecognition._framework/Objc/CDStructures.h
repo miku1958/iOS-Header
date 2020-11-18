@@ -202,16 +202,6 @@ struct shared_ptr<SpeechITN> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<quasar::G2P> {
-    struct G2P *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<quasar::LmeData> {
-    struct LmeData *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
 struct shared_ptr<quasar::LmeDataFactory> {
     struct LmeDataFactory *__ptr_;
     struct __shared_weak_count *__cntrl_;
@@ -247,11 +237,6 @@ struct shared_ptr<quasar::URegularExpressionWrapper> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<sdapi::SdapiTokenizer> {
-    struct SdapiTokenizer *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
 struct unique_ptr<quasar::CommandTagger, std::__1::default_delete<quasar::CommandTagger>> {
     struct __compressed_pair<quasar::CommandTagger *, std::__1::default_delete<quasar::CommandTagger>> {
         struct CommandTagger *__first_;
@@ -264,6 +249,18 @@ struct unique_ptr<quasar::CommandTagging, std::__1::default_delete<quasar::Comma
     } __ptr_;
 };
 
+struct unique_ptr<quasar::G2P, std::__1::default_delete<quasar::G2P>> {
+    struct __compressed_pair<quasar::G2P *, std::__1::default_delete<quasar::G2P>> {
+        struct G2P *__first_;
+    } __ptr_;
+};
+
+struct unique_ptr<quasar::LmeData, std::__1::default_delete<quasar::LmeData>> {
+    struct __compressed_pair<quasar::LmeData *, std::__1::default_delete<quasar::LmeData>> {
+        struct LmeData *__first_;
+    } __ptr_;
+};
+
 struct unique_ptr<quasar::ResultCombiner, std::__1::default_delete<quasar::ResultCombiner>> {
     struct __compressed_pair<quasar::ResultCombiner *, std::__1::default_delete<quasar::ResultCombiner>> {
         struct ResultCombiner *__first_;
@@ -273,6 +270,12 @@ struct unique_ptr<quasar::ResultCombiner, std::__1::default_delete<quasar::Resul
 struct unique_ptr<quasar::SpeechRecognizer, std::__1::default_delete<quasar::SpeechRecognizer>> {
     struct __compressed_pair<quasar::SpeechRecognizer *, std::__1::default_delete<quasar::SpeechRecognizer>> {
         struct SpeechRecognizer *__first_;
+    } __ptr_;
+};
+
+struct unique_ptr<sdapi::SdapiTokenizer, std::__1::default_delete<sdapi::SdapiTokenizer>> {
+    struct __compressed_pair<sdapi::SdapiTokenizer *, std::__1::default_delete<sdapi::SdapiTokenizer>> {
+        struct SdapiTokenizer *__first_;
     } __ptr_;
 };
 

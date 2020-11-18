@@ -48,6 +48,8 @@
 - (void)_performMigration:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_performMigrationWithRecords:(id)arg1;
 - (void)_processNextIncompleteMigrationRecord;
+- (void)abortDueToFatalMigrationErrorRepeated;
+- (void)exitDueToFatalMigrationError;
 - (void)fetchMigrationState:(CDUnknownBlockType)arg1;
 - (id)initWithName:(id)arg1 defaultsManager:(id)arg2 dataProtectionManager:(id)arg3 persistenceAdapter:(id)arg4;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 {
     int __automatic_invalidation_retainCount;
     BOOL __automatic_invalidation_invalidated;
+    NSMutableArray *_deferredToViewDidAppear;
     int _hostPID;
     NSString *_hostBundleID;
     CDStruct_4c969caf _hostAuditToken;

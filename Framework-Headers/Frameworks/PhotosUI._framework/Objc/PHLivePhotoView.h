@@ -24,6 +24,7 @@
     long long _currentPlaybackStyle;
     BOOL _muted;
     BOOL __playingVitality;
+    BOOL __playbackRequested;
     BOOL _shouldApplyTargetReadiness;
     BOOL _showsStatusBorder;
     id<PHLivePhotoViewDelegate> _delegate;
@@ -36,6 +37,7 @@
     struct CGPoint _scaleAnchorOffset;
 }
 
+@property (nonatomic, setter=_setPlaybackRequested:) BOOL _playbackRequested; // @synthesize _playbackRequested=__playbackRequested;
 @property (strong, nonatomic, setter=_setPlayerItem:) ISPlayerItem *_playerItem; // @synthesize _playerItem=__playerItem;
 @property (nonatomic, setter=_setPlayingVitality:) BOOL _playingVitality; // @synthesize _playingVitality=__playingVitality;
 @property (readonly, copy) NSString *debugDescription;
@@ -61,7 +63,7 @@
 - (void)_playerDidBeginHinting;
 - (void)_updateCurrentPlaybackStyle;
 - (void)_updatePlayerAudioEnabled;
-- (void)_updatePlayerItemLoadingTarget;
+- (void)_updatePlayerTargetReadiness;
 - (void)_updatePlayingVitality;
 - (void)_updateStatusBorder;
 - (id)initWithCoder:(id)arg1;

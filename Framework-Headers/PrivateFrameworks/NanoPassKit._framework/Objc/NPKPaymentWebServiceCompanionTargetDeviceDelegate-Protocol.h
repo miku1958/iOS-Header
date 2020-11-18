@@ -18,8 +18,9 @@
 - (void)handlePushToken:(NSString *)arg1;
 - (void)handleRemoveTransactionsWithIdentifiers:(NSArray *)arg1;
 - (void)handleUpdatePaymentPassWithTypeIdentifier:(NSString *)arg1;
+- (void)sendPaymentOptionsDefaultsToWatch;
 - (void)sendWebServiceContextToWatch;
 - (void)setNewAuthRandom:(void (^)(BOOL))arg1;
-- (void)showPaymentSetupForAppDisplayNamea:(NSString *)arg1;
+- (void)showPaymentSetupForAppDisplayName:(NSString *)arg1;
 @end
 

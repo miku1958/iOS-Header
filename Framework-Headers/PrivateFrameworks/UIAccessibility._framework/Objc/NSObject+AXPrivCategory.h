@@ -136,6 +136,8 @@
 - (id)_accessibilityFirstElementForFocus;
 - (id)_accessibilityFirstOpaqueElement;
 - (id)_accessibilityFirstOpaqueElementForFocus;
+- (id)_accessibilityFirstResponderForKeyWindow;
+- (id)_accessibilityFirstResponderForWindow:(id)arg1;
 - (id)_accessibilityFirstVisibleItem;
 - (id)_accessibilityFocusAbsoluteFirstOpaqueElementForTechnology:(id)arg1;
 - (id)_accessibilityFocusAbsoluteLastOpaqueElementForTechnology:(id)arg1;
@@ -327,6 +329,8 @@
 - (BOOL)_accessibilityRepresentsInfiniteCollection;
 - (void)_accessibilityResetContainerElements;
 - (BOOL)_accessibilityRespectsTableScrollEnabledFlag;
+- (id)_accessibilityResponderChainForKeyWindow;
+- (id)_accessibilityResponderChainForWindow:(id)arg1;
 - (id)_accessibilityResponderElement;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (id)_accessibilityRetrieveImagePathLabel:(id)arg1;
@@ -393,6 +397,7 @@
 - (void)_accessibilitySetShoudHitTestFallBackToNearestChild:(BOOL)arg1;
 - (void)_accessibilitySetShouldPreventOpaqueScrolling:(BOOL)arg1;
 - (void)_accessibilitySetSortPriority:(long long)arg1;
+- (void)_accessibilitySetUsesScrollParentForOrdering:(BOOL)arg1;
 - (void)_accessibilitySetValue:(id)arg1;
 - (void)_accessibilitySetVisibleContentInset:(struct UIEdgeInsets)arg1;
 - (void)_accessibilitySetWantsOpaqueElementProviders:(BOOL)arg1;

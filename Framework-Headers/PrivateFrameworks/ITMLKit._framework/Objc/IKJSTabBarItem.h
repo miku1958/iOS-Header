@@ -7,33 +7,38 @@
 #import <ITMLKit/IKJSObject.h>
 
 #import <ITMLKit/IKJSTabBarItem-Protocol.h>
-#import <ITMLKit/JSExport-Protocol.h>
+#import <ITMLKit/NSObject-Protocol.h>
+#import <ITMLKit/_IKJSTabBarItem-Protocol.h>
+#import <ITMLKit/_IKJSTabBarItemProxy-Protocol.h>
 
 @class IKJSNavigationDocument, IKJSTabBar, JSManagedValue, NSString;
 @protocol IKAppNavigationController;
 
-@interface IKJSTabBarItem : IKJSObject <IKJSTabBarItem, JSExport>
+@interface IKJSTabBarItem : IKJSObject <NSObject, IKJSTabBarItem, _IKJSTabBarItemProxy, _IKJSTabBarItem>
 {
     id<IKAppNavigationController> _navigationControllerDelegate;
     NSString *_identifier;
-    NSString *_rootURL;
     IKJSNavigationDocument *_navigationDocument;
     JSManagedValue *_managedNavigationDocument;
     JSManagedValue *_managedSelf;
     IKJSTabBar *_owner;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) JSManagedValue *managedNavigationDocument; // @synthesize managedNavigationDocument=_managedNavigationDocument;
 @property (strong, nonatomic) JSManagedValue *managedSelf; // @synthesize managedSelf=_managedSelf;
 @property (readonly, weak, nonatomic) id<IKAppNavigationController> navigationControllerDelegate; // @synthesize navigationControllerDelegate=_navigationControllerDelegate;
 @property (readonly, nonatomic) IKJSNavigationDocument *navigationDocument; // @synthesize navigationDocument=_navigationDocument;
 @property (weak, nonatomic) IKJSTabBar *owner; // @synthesize owner=_owner;
-@property (readonly, nonatomic) NSString *rootURL; // @synthesize rootURL=_rootURL;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)asPrivateIKJSTabBarItem;
 - (void)dealloc;
-- (id)initWithAppContext:(id)arg1 identifier:(id)arg2 rootURL:(id)arg3 navigationController:(id)arg4 owner:(id)arg5;
+- (id)initWithAppContext:(id)arg1 identifier:(id)arg2 navigationController:(id)arg3 owner:(id)arg4;
 
 @end
 

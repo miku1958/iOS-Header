@@ -6,7 +6,7 @@
 
 #import <SpriteKit/SKNode.h>
 
-@class SKAction, SKKeyframeSequence, SKShader, SKTexture, UIColor;
+@class NSDictionary, SKAction, SKKeyframeSequence, SKShader, SKTexture, UIColor;
 
 @interface SKEmitterNode : SKNode
 {
@@ -23,6 +23,7 @@
     unsigned long long _particleRenderOrder;
 }
 
+@property (copy, nonatomic) NSDictionary *attributeValues;
 @property (nonatomic) double emissionAngle;
 @property (nonatomic) double emissionAngleRange;
 @property (nonatomic) unsigned int fieldBitMask;

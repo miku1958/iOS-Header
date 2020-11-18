@@ -20,7 +20,7 @@
     CDUnknownBlockType _guidanceStateUpdatedHandler;
     CDUnknownBlockType _activeRouteDetailsDataUpdatedHandler;
     CDUnknownBlockType _stepIndexUpdatedHandler;
-    CDUnknownBlockType _selectedRideOptionUpdatedHandler;
+    CDUnknownBlockType _rideSelectionsUpdatedHandler;
     int _navigationStartedToken;
     int _navigationStoppedToken;
 }
@@ -30,8 +30,8 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType guidanceStateUpdatedHandler; // @synthesize guidanceStateUpdatedHandler=_guidanceStateUpdatedHandler;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType rideSelectionsUpdatedHandler; // @synthesize rideSelectionsUpdatedHandler=_rideSelectionsUpdatedHandler;
 @property (copy, nonatomic) CDUnknownBlockType routeSummaryUpdatedHandler; // @synthesize routeSummaryUpdatedHandler=_routeSummaryUpdatedHandler;
-@property (copy, nonatomic) CDUnknownBlockType selectedRideOptionUpdatedHandler; // @synthesize selectedRideOptionUpdatedHandler=_selectedRideOptionUpdatedHandler;
 @property (copy, nonatomic) CDUnknownBlockType stepIndexUpdatedHandler; // @synthesize stepIndexUpdatedHandler=_stepIndexUpdatedHandler;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType transitSummaryUpdatedHandler; // @synthesize transitSummaryUpdatedHandler=_transitSummaryUpdatedHandler;
@@ -43,14 +43,14 @@
 - (id)initWithQueue:(id)arg1;
 - (void)requestActiveRouteDetailsData;
 - (void)requestGuidanceState;
+- (void)requestRideSelections;
 - (void)requestRouteSummary;
-- (void)requestSelectedRideOption;
 - (void)requestStepIndex;
 - (void)requestTransitSummary;
 - (void)routeSummaryUpdatedWithActiveRouteDetailsData:(id)arg1;
 - (void)routeSummaryUpdatedWithGuidanceStateData:(id)arg1;
 - (void)routeSummaryUpdatedWithNavigationRouteSummaryData:(id)arg1;
-- (void)routeSummaryUpdatedWithSelectedRideOptionData:(id)arg1;
+- (void)routeSummaryUpdatedWithRideSelectionData:(id)arg1;
 - (void)routeSummaryUpdatedWithStepIndexData:(id)arg1;
 - (void)routeSummaryUpdatedWithTransitSummaryData:(id)arg1;
 

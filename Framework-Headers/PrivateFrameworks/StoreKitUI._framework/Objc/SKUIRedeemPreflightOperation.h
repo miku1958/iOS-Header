@@ -17,8 +17,10 @@
     CDUnknownBlockType _outputBlock;
     NSString *_redeemCode;
     SKUIRedeemConfiguration *_redeemConfiguration;
+    BOOL _forcesAuthentication;
 }
 
+@property (nonatomic) BOOL forcesAuthentication; // @synthesize forcesAuthentication=_forcesAuthentication;
 @property BOOL loadsRedeemCodeMetadata;
 @property (copy) CDUnknownBlockType outputBlock;
 @property (strong) SKUIRedeemConfiguration *redeemConfiguration;
@@ -28,7 +30,7 @@
 - (id)_initSKUIRedeemPreflightOperation;
 - (id)_redeemCodeMetadataWithClientContext:(id)arg1;
 - (id)init;
-- (id)initWithClientContext:(id)arg1 redeemCode:(id)arg2;
+- (id)initWithClientContext:(id)arg1 redeemCode:(id)arg2 forcesAuthentication:(BOOL)arg3;
 - (void)main;
 
 @end

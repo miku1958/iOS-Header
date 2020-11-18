@@ -10,6 +10,7 @@
 
 @interface LSApplicationWorkspace : NSObject
 {
+    BOOL _enhancedAppValidationEnabled;
     LSApplicationWorkspaceRemoteObserver *_remoteObserver;
     NSMutableDictionary *_createdInstallProgresses;
     LSInstallProgressList *_observedInstallProgresses;
@@ -59,6 +60,7 @@
 - (id)deviceIdentifierForVendor;
 - (id)directionsApplications;
 - (BOOL)downgradeApplicationToPlaceholder:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
+- (BOOL)enhancedAppLoggingEnabled;
 - (void)enumerateApplicationsForSiriWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateApplicationsOfType:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)enumerateApplicationsOfType:(unsigned long long)arg1 legacySPI:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
@@ -70,6 +72,7 @@
 - (BOOL)getClaimedActivityTypes:(id *)arg1 domains:(id *)arg2;
 - (unsigned long long)getInstallTypeForOptions:(id)arg1 andApp:(id)arg2;
 - (void)getKnowledgeUUID:(id *)arg1 andSequenceNumber:(id *)arg2;
+- (id)init;
 - (BOOL)installApplication:(id)arg1 withOptions:(id)arg2;
 - (BOOL)installApplication:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (BOOL)installApplication:(id)arg1 withOptions:(id)arg2 error:(id *)arg3 usingBlock:(CDUnknownBlockType)arg4;

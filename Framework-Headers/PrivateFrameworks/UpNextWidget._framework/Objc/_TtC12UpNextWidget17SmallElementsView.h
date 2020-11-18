@@ -26,7 +26,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (double)lastBaselineOffsetFromBottom;
 - (void)layoutSubviews;
-- (void)refreshWithEvents:(id)arg1 reminders:(id)arg2;
+- (void)refresh:(id)arg1 reminders:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tapped;
 

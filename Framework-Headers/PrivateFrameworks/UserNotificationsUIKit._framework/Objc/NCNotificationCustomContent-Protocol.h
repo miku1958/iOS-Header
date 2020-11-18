@@ -14,11 +14,12 @@
 @property (readonly, nonatomic) NSString *contentExtensionIdentifier;
 @property (weak, nonatomic) id<NCNotificationCustomContentDelegate> delegate;
 @property (weak, nonatomic) NCNotificationAction *presentationSourceAction;
+@property (readonly, copy, nonatomic) NSString *title;
 
 - (BOOL)allowManualDismiss;
 - (unsigned long long)customContentLocation;
 - (BOOL)defaultContentHidden;
-- (void)didReceiveNotificationRequest:(NCNotificationRequest *)arg1;
+- (BOOL)didReceiveNotificationRequest:(NCNotificationRequest *)arg1;
 - (BOOL)performAction:(NCNotificationAction *)arg1 forNotification:(NCNotificationRequest *)arg2;
 - (BOOL)performAction:(NCNotificationAction *)arg1 forNotification:(NCNotificationRequest *)arg2 withUserInfo:(NSDictionary *)arg3;
 

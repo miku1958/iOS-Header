@@ -33,6 +33,7 @@
 @property (weak, nonatomic) NCNotificationAction *presentationSourceAction;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITextField *textField; // @synthesize textField=_textField;
+@property (readonly, copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
 - (id)_attributedPlaceholderForString:(id)arg1;
@@ -40,7 +41,7 @@
 - (BOOL)allowManualDismiss;
 - (unsigned long long)customContentLocation;
 - (BOOL)defaultContentHidden;
-- (void)didReceiveNotificationRequest:(id)arg1;
+- (BOOL)didReceiveNotificationRequest:(id)arg1;
 - (id)initWithNotificationRequest:(id)arg1;
 - (id)initWithNotificationRequest:(id)arg1 notificationAction:(id)arg2;
 - (void)loadView;

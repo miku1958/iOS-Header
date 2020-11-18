@@ -24,11 +24,11 @@
 - (void)_forceCachePersist;
 - (void)_persistCache;
 - (void)_persistCache:(BOOL)arg1;
+- (id)abUniqueID;
 - (long long)cacheSequenceNumber;
 - (id)cachedRecordResultForQuery:(id)arg1 sequenceNumber:(long long)arg2;
 - (void)clearExistingPreferencesCache;
 - (void)clearInMemoryCache;
-- (id)copyABUniqueID;
 - (id)description;
 - (id)filePath;
 - (void)setCacheSequenceNumber:(long long)arg1;

@@ -58,7 +58,7 @@
 - (id)_navigation_routeMatch;
 - (CDStruct_6ac9d495 *)_roadFeature;
 - (id)description;
-- (id)initWithClientLocation:(CDStruct_99cd443b)arg1;
+- (id)initWithClientLocation:(CDStruct_0e8fe709)arg1;
 - (id)initWithLocationDetails:(id)arg1;
 - (id)initWithLocationDetails:(id)arg1 route:(id)arg2;
 - (id)initWithRawLocation:(id)arg1;

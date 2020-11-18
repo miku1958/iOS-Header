@@ -35,6 +35,7 @@
 - (id)initWithName:(id)arg1 scatteringFunction:(id)arg2;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
+- (id)propertiesWithSemantic:(unsigned long long)arg1;
 - (id)propertyNamed:(id)arg1;
 - (id)propertyWithSemantic:(unsigned long long)arg1;
 - (void)removeAllProperties;

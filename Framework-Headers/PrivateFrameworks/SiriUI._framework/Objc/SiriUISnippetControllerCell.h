@@ -17,6 +17,7 @@
     SiriUIContentButton *_snippetPunchOutButton;
     UIView *_snippetBackgroundView;
     UIView *_clippingContainerView;
+    UIView *_cancelledTouchPreventionView;
     UILabel *_cancelledLabel;
     BOOL _cellIsUsingPlatterStyle;
     UICollectionReusableView<SiriUIReusableView> *_headerView;

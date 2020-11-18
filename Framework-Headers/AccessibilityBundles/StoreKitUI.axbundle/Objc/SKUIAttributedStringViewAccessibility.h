@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityLinks;
-- (BOOL)_axIsCollectionViewCellInConnectTab;
 - (id)accessibilityCustomRotorItemsAtIndex:(long long)arg1;
 - (id)accessibilityCustomRotorTitles;
 - (id)accessibilityLabel;

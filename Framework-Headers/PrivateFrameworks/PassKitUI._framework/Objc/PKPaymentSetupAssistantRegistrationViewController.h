@@ -8,13 +8,15 @@
 
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
-@class NSString, UIButton;
-@protocol PKPaymentSetupViewControllerDelegate;
+@class NSObject, NSString, UIButton;
+@protocol OS_dispatch_group, PKPaymentSetupViewControllerDelegate;
 
 @interface PKPaymentSetupAssistantRegistrationViewController : PKPaymentSetupViewController <PKPaymentSetupViewControllerDelegate>
 {
     UIButton *_skipButton;
     id<PKPaymentSetupViewControllerDelegate> _externalDelegate;
+    NSObject<OS_dispatch_group> *_preflightGroup;
+    BOOL _preflightResult;
 }
 
 @property (readonly, copy) NSString *debugDescription;

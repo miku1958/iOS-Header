@@ -40,6 +40,7 @@
 + (id)applePayPaymentMethod;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_dictionaryRepresentation;
 - (id)cacheableObjects;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

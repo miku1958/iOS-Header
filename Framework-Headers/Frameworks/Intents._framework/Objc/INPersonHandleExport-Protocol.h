@@ -11,8 +11,9 @@
 
 @protocol INPersonHandleExport <NSObject, JSExport>
 
-@property (readonly, nonatomic) long long type;
-@property (readonly, copy, nonatomic) NSString *value;
+@property (strong, nonatomic) NSString *label;
+@property (nonatomic) long long type;
+@property (copy, nonatomic) NSString *value;
 
 - (id)init;
 @end

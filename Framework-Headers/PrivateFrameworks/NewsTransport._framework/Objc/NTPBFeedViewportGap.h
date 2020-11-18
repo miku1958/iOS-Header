@@ -12,41 +12,52 @@
 
 @interface NTPBFeedViewportGap : PBCodable <NSCopying>
 {
-    struct {
-        int *list;
-        unsigned long long count;
-        unsigned long long size;
-    } _groupEmitterIDRefs;
+    CDStruct_95bda58d _activeGroupEmitterIDRefs;
+    CDStruct_95bda58d _groupEmitterIDRefs;
     NSMutableArray *_cursors;
     NSString *_identifier;
     NTPBFeedViewportEdition *_lastCompletedEdition;
     NTPBDate *_modificationDate;
+    NSMutableArray *_pendingGroups;
     NTPBDate *_refreshDate;
+    BOOL _isOffline;
     BOOL _reachedEnd;
     struct {
+        unsigned int isOffline:1;
         unsigned int reachedEnd:1;
     } _has;
 }
 
+@property (readonly, nonatomic) int *activeGroupEmitterIDRefs;
+@property (readonly, nonatomic) unsigned long long activeGroupEmitterIDRefsCount;
 @property (strong, nonatomic) NSMutableArray *cursors; // @synthesize cursors=_cursors;
 @property (readonly, nonatomic) int *groupEmitterIDRefs;
 @property (readonly, nonatomic) unsigned long long groupEmitterIDRefsCount;
 @property (readonly, nonatomic) BOOL hasIdentifier;
+@property (nonatomic) BOOL hasIsOffline;
 @property (readonly, nonatomic) BOOL hasLastCompletedEdition;
 @property (readonly, nonatomic) BOOL hasModificationDate;
 @property (nonatomic) BOOL hasReachedEnd;
 @property (readonly, nonatomic) BOOL hasRefreshDate;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL isOffline; // @synthesize isOffline=_isOffline;
 @property (strong, nonatomic) NTPBFeedViewportEdition *lastCompletedEdition; // @synthesize lastCompletedEdition=_lastCompletedEdition;
 @property (strong, nonatomic) NTPBDate *modificationDate; // @synthesize modificationDate=_modificationDate;
+@property (strong, nonatomic) NSMutableArray *pendingGroups; // @synthesize pendingGroups=_pendingGroups;
 @property (nonatomic) BOOL reachedEnd; // @synthesize reachedEnd=_reachedEnd;
 @property (strong, nonatomic) NTPBDate *refreshDate; // @synthesize refreshDate=_refreshDate;
 
 + (Class)cursorsType;
++ (Class)pendingGroupsType;
+- (int)activeGroupEmitterIDRefsAtIndex:(unsigned long long)arg1;
+- (void)addActiveGroupEmitterIDRefs:(int)arg1;
 - (void)addCursors:(id)arg1;
 - (void)addGroupEmitterIDRef:(int)arg1;
+- (void)addPendingGroups:(id)arg1;
+- (void)clearActiveGroupEmitterIDRefs;
 - (void)clearCursors;
 - (void)clearGroupEmitterIDRefs;
+- (void)clearPendingGroups;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)cursorsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)cursorsCount;
@@ -57,7 +68,10 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)pendingGroupsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)pendingGroupsCount;
 - (BOOL)readFrom:(id)arg1;
+- (void)setActiveGroupEmitterIDRefs:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setGroupEmitterIDRefs:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 

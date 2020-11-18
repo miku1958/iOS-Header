@@ -75,6 +75,26 @@ struct SGHistorySharedData {
     id _field8;
 };
 
+struct SGMContactDetailExtractionOutcome_ {
+    unsigned long long _field1;
+};
+
+struct SGMContactDetailType_ {
+    unsigned long long _field1;
+};
+
+struct SGMContactDetailUsedApp_ {
+    unsigned long long _field1;
+};
+
+struct SGMDocumentType_ {
+    unsigned long long _field1;
+};
+
+struct SGMEventICSSourceType_ {
+    unsigned long long _field1;
+};
+
 struct SGMutexSynchronizedObject<SGHistorySharedData> {
     struct SGHistorySharedData *_field1;
     struct _opaque_pthread_mutex_t _field2;

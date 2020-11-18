@@ -14,9 +14,9 @@
     NSString *_predictions;
     float _weight;
     unsigned short _phraseId;
-    BOOL _matchSent;
-    BOOL _matchReceived;
-    BOOL _anchoredAtWordBoundaries;
+    unsigned int _matchSent:1;
+    unsigned int _matchReceived:1;
+    unsigned int _anchoredAtWordBoundaries:1;
     long long _type;
 }
 

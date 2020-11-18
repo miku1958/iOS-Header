@@ -14,15 +14,15 @@
 {
     PBUnknownFields *_unknownFields;
     _INPBIntentMetadata *_intentMetadata;
-    _INPBString *_profileLabel;
+    _INPBString *_profileName;
     _INPBInteger *_profileNumber;
 }
 
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
-@property (readonly, nonatomic) BOOL hasProfileLabel;
+@property (readonly, nonatomic) BOOL hasProfileName;
 @property (readonly, nonatomic) BOOL hasProfileNumber;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-@property (strong, nonatomic) _INPBString *profileLabel; // @synthesize profileLabel=_profileLabel;
+@property (strong, nonatomic) _INPBString *profileName; // @synthesize profileName=_profileName;
 @property (strong, nonatomic) _INPBInteger *profileNumber; // @synthesize profileNumber=_profileNumber;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 

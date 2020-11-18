@@ -17,6 +17,7 @@
 @property (readonly, copy) NSArray *cookies;
 
 + (id)_csff:(id)arg1;
++ (id)_csfi:(id)arg1;
 + (id)_groupContainerCookieStorages;
 + (id)_groupContainerStoragesLock;
 + (void)_setSharedHTTPCookieStorage:(id)arg1;
@@ -33,6 +34,7 @@
 - (id)_initWithIdentifier:(id)arg1 private:(BOOL)arg2;
 - (void)_saveCookies;
 - (void)_setPrivateBrowsingEnabled:(BOOL)arg1;
+- (void)_testingOfStoringOfCookie:(id)arg1;
 - (id)cookieRequestHeaderFieldsForURL:(id)arg1;
 - (id)cookiesForURL:(id)arg1;
 - (void)dealloc;

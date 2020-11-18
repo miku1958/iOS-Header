@@ -51,6 +51,7 @@
 - (void)queryTextReplacementsWithCallback:(CDUnknownBlockType)arg1;
 - (void)queryTextReplacementsWithPredicate:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)queryUpdatedLocalEntries;
+- (void)recordSyncStatus;
 - (void)removeAllEntries;
 - (void)removeAllEntriesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestSyncWithCompletionBlock:(CDUnknownBlockType)arg1;

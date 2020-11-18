@@ -11,7 +11,7 @@
 #import <UserNotificationsServer/FBProcessObserver-Protocol.h>
 
 @class BKSApplicationStateMonitor, NSMutableDictionary, NSMutableSet, NSSet, NSString, UNSApplicationLauncher, UNSAttachmentsService, UNSNotificationRepository, UNSNotificationSettingsService;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, UNSRemoteNotificationServerObserver, UNSSystemStateProviding;
+@protocol OS_dispatch_queue, UNSRemoteNotificationServerObserver, UNSSystemStateProviding;
 
 @interface UNSRemoteNotificationServer : NSObject <APSConnectionDelegate, FBProcessManagerObserver, FBProcessObserver>
 {
@@ -22,7 +22,6 @@
     UNSApplicationLauncher *_applicationLauncher;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_extensionQueue;
-    NSObject<OS_dispatch_semaphore> *_extensionSemaphore;
     NSObject<OS_dispatch_queue> *_apsQueue;
     NSMutableSet *_debuggingBundleIdentifiers;
     NSMutableSet *_foregroundBundleIdentifiers;

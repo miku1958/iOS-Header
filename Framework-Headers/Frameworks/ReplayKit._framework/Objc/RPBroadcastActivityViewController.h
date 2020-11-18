@@ -23,6 +23,7 @@
 @property (strong, nonatomic) UIPopoverPresentationController *popoverPresentationControllerProxy; // @synthesize popoverPresentationControllerProxy=_popoverPresentationControllerProxy;
 
 + (void)loadBroadcastActivityViewControllerWithHandler:(CDUnknownBlockType)arg1;
++ (void)loadBroadcastActivityViewControllerWithHandler:(CDUnknownBlockType)arg1 broadcastActivitiesNotInstalledAlertTitle:(id)arg2 broadcastActivitiesNotInstalledAlertMessage:(id)arg3;
 + (void)viewControllerForExtension:(id)arg1 inputItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

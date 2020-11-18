@@ -968,7 +968,7 @@ struct NavCurrentRoadSign {
         float _field3;
         float _field4;
     } _field4;
-    struct NavLabelPart *_field5;
+    struct unique_ptr<md::NavLabelPart, std::__1::default_delete<md::NavLabelPart>> _field5;
     Mercator2_57ec32b6 _field6;
     Matrix_8746f91e _field7;
     Matrix_8746f91e _field8;
@@ -3647,6 +3647,12 @@ struct unique_ptr<md::LayoutContext, std::__1::default_delete<md::LayoutContext>
     struct __compressed_pair<md::LayoutContext *, std::__1::default_delete<md::LayoutContext>> {
         struct LayoutContext *__first_;
     } __ptr_;
+};
+
+struct unique_ptr<md::NavLabelPart, std::__1::default_delete<md::NavLabelPart>> {
+    struct __compressed_pair<md::NavLabelPart *, std::__1::default_delete<md::NavLabelPart>> {
+        struct NavLabelPart *_field1;
+    } _field1;
 };
 
 struct unique_ptr<md::OffscreenQueue, std::__1::default_delete<md::OffscreenQueue>> {

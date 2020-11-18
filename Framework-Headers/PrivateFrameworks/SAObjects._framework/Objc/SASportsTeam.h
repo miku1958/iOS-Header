@@ -35,6 +35,7 @@
 @property (copy, nonatomic) NSString *location;
 @property (copy, nonatomic) NSString *losses;
 @property (copy, nonatomic) NSString *monogram;
+@property (copy, nonatomic) NSString *netRunRate;
 @property (copy, nonatomic) NSArray *news;
 @property (copy, nonatomic) NSString *overtimeLosses;
 @property (copy, nonatomic) NSString *points;

@@ -12,15 +12,19 @@
 {
     int _faceImageRequestID;
     NSString *_name;
+    NSString *_displayName;
     unsigned long long _photosCount;
     id _modelObject;
     CDUnknownBlockType _faceImageLoadingCompletionBlock;
+    CDUnknownBlockType _fastDisplayBlock;
     UIImage *_faceImage;
 }
 
-@property (strong, nonatomic) UIImage *faceImage; // @synthesize faceImage=_faceImage;
-@property (copy, nonatomic) CDUnknownBlockType faceImageLoadingCompletionBlock; // @synthesize faceImageLoadingCompletionBlock=_faceImageLoadingCompletionBlock;
-@property (nonatomic) int faceImageRequestID; // @synthesize faceImageRequestID=_faceImageRequestID;
+@property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (weak) UIImage *faceImage; // @synthesize faceImage=_faceImage;
+@property (copy) CDUnknownBlockType faceImageLoadingCompletionBlock; // @synthesize faceImageLoadingCompletionBlock=_faceImageLoadingCompletionBlock;
+@property int faceImageRequestID; // @synthesize faceImageRequestID=_faceImageRequestID;
+@property (copy) CDUnknownBlockType fastDisplayBlock; // @synthesize fastDisplayBlock=_fastDisplayBlock;
 @property (strong, nonatomic) id modelObject; // @synthesize modelObject=_modelObject;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned long long photosCount; // @synthesize photosCount=_photosCount;

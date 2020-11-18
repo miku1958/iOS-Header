@@ -208,6 +208,7 @@ __attribute__((visibility("hidden")))
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (struct UIEdgeInsets)preferredPreviewViewInsets;
 - (void)prepareForPopoverPresentation:(id)arg1;
+- (void)prepareForSave;
 - (void)resetToDefaultValueAnimated:(BOOL)arg1;
 - (id)selectedToolbarIcon;
 - (void)setDelegate:(id)arg1;

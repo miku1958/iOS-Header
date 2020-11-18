@@ -6,18 +6,20 @@
 
 #import <Foundation/NSURL.h>
 
+@class NSString;
+
 @interface UNSecurityScopedURL : NSURL
 {
-    CDUnknownBlockType _sandboxExtensionIssuingBlock;
+    NSString *_sandboxExtensionClass;
 }
-
-@property (copy, nonatomic) CDUnknownBlockType sandboxExtensionIssuingBlock; // @synthesize sandboxExtensionIssuingBlock=_sandboxExtensionIssuingBlock;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_allowsDirectEncoding;
+- (id)_issueSandboxExtension;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initFileURLWithPath:(id)arg1 sandboxExtensionClass:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 
 @end

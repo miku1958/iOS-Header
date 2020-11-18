@@ -6,18 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SAMLResponse, VSAccountAuthentication;
+@class NSNumber, NSString, VSAccountAuthentication;
 
+__attribute__((visibility("hidden")))
 @interface VSApplicationControllerResponse : NSObject
 {
-    SAMLResponse *_SAMLResponse;
-    NSString *_SAMLResponseString;
+    NSString *_authenticationScheme;
+    NSString *_responseStatusCode;
+    NSString *_responseString;
+    NSNumber *_expectedAction;
     VSAccountAuthentication *_accountAuthentication;
 }
 
-@property (strong, nonatomic) SAMLResponse *SAMLResponse; // @synthesize SAMLResponse=_SAMLResponse;
-@property (copy, nonatomic) NSString *SAMLResponseString; // @synthesize SAMLResponseString=_SAMLResponseString;
 @property (strong, nonatomic) VSAccountAuthentication *accountAuthentication; // @synthesize accountAuthentication=_accountAuthentication;
+@property (copy, nonatomic) NSString *authenticationScheme; // @synthesize authenticationScheme=_authenticationScheme;
+@property (copy, nonatomic) NSNumber *expectedAction; // @synthesize expectedAction=_expectedAction;
+@property (copy, nonatomic) NSString *responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
+@property (copy, nonatomic) NSString *responseString; // @synthesize responseString=_responseString;
 
 - (void).cxx_destruct;
 - (id)description;

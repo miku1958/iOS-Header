@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol _SGSuggestionsServiceBaseProtocol
+#import <CoreSuggestions/_SGSuggestionsServiceMetricsProtocol-Protocol.h>
+
+@protocol _SGSuggestionsServiceBaseProtocol <_SGSuggestionsServiceMetricsProtocol>
 + (BOOL)isHarvestingSupported;
 - (BOOL)isEnabledWithError:(id *)arg1;
 - (void)keepDirty:(BOOL)arg1;

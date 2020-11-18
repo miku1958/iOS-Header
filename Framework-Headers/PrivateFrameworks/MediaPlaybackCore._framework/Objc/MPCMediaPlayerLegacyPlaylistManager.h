@@ -105,6 +105,7 @@
 - (id)queueCoordinator:(id)arg1 itemToFollowItem:(id)arg2;
 - (void)queueFeeder:(id)arg1 didChangeContentsWithPreferredStartIndex:(unsigned long long)arg2 error:(id)arg3;
 - (void)queueFeeder:(id)arg1 didChangeContentsWithReplacementPlaybackContext:(id)arg2;
+- (void)queueFeederDidInvalidateRealShuffleType:(id)arg1;
 - (void)removeItemAtPlaybackIndex:(long long)arg1;
 - (void)setCurrentIndex:(long long)arg1 selectionDirection:(long long)arg2;
 - (BOOL)setPlaylistFeeder:(id)arg1 startIndex:(long long)arg2 keepPlaying:(BOOL)arg3;

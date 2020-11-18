@@ -29,6 +29,7 @@
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_applyToSettings:(id)arg1;
 - (void)_enumerateSettingsForFlagsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateSettingsForObjectsWithBlock:(CDUnknownBlockType)arg1;

@@ -10,7 +10,6 @@
 
 @class CKDPDate;
 
-__attribute__((visibility("hidden")))
 @interface CKDPDateStatistics : PBCodable <NSCopying>
 {
     CKDPDate *_creation;

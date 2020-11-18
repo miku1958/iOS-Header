@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class PKPaymentSetupInfoView;
+@class NSString, PKPaymentSetupInfoView;
 
 @interface PKPaymentSetupIntroView : UIView
 {
     long long _context;
     BOOL _hasSupportingHardware;
+    NSString *_region;
     PKPaymentSetupInfoView *_infoView;
 }
 
@@ -22,7 +23,7 @@
 - (void)dealloc;
 - (id)initWithContext:(long long)arg1;
 - (id)initWithContext:(long long)arg1 heroImageController:(id)arg2;
-- (id)initWithContext:(long long)arg1 heroImageController:(id)arg2 hasSupportingHardware:(BOOL)arg3;
+- (id)initWithContext:(long long)arg1 heroImageController:(id)arg2 hasSupportingHardware:(BOOL)arg3 region:(id)arg4;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)startAnimation;

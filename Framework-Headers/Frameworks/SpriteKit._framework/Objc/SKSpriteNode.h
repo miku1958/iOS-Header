@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SKWarpable-Protocol.h>
 
-@class MISSING_TYPE, NSString, SKLightNode, SKShader, SKTexture, SKWarpGeometry, UIColor;
+@class MISSING_TYPE, NSDictionary, NSString, SKLightNode, SKShader, SKTexture, SKWarpGeometry, UIColor;
 
 @interface SKSpriteNode : SKNode <SKWarpable>
 {
@@ -18,6 +18,7 @@
 }
 
 @property (nonatomic) struct CGPoint anchorPoint;
+@property (copy, nonatomic) NSDictionary *attributeValues;
 @property (nonatomic) long long blendMode;
 @property (nonatomic) struct CGRect centerRect;
 @property (strong, nonatomic) UIColor *color;

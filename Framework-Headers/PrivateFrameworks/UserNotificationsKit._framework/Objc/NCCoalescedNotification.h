@@ -43,6 +43,7 @@
 - (id)initWithNotificationRequest:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (id)notificationRequestMatchingRequest:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

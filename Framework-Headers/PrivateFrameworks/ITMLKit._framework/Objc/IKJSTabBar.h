@@ -7,27 +7,35 @@
 #import <ITMLKit/IKJSObject.h>
 
 #import <ITMLKit/IKJSTabBar-Protocol.h>
-#import <ITMLKit/JSExport-Protocol.h>
+#import <ITMLKit/NSObject-Protocol.h>
+#import <ITMLKit/_IKJSTabBar-Protocol.h>
+#import <ITMLKit/_IKJSTabBarProxy-Protocol.h>
 
-@class IKAppTabBar, IKJSTabBarItem, NSArray;
+@class IKAppTabBar, IKJSTabBarItem, NSArray, NSString;
 
-@interface IKJSTabBar : IKJSObject <IKJSTabBar, JSExport>
+@interface IKJSTabBar : IKJSObject <NSObject, IKJSTabBar, _IKJSTabBarProxy, _IKJSTabBar>
 {
     IKAppTabBar *_appTabBar;
     NSArray *_tabItems;
 }
 
 @property (readonly, weak, nonatomic) IKAppTabBar *appTabBar; // @synthesize appTabBar=_appTabBar;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) IKJSTabBarItem *selectedTab;
+@property (readonly) Class superclass;
 @property (strong) NSArray *tabItems; // @synthesize tabItems=_tabItems;
 @property (readonly, nonatomic) NSArray *tabs;
-@property (readonly, nonatomic) IKJSTabBarItem *transientTab;
 
 - (void).cxx_destruct;
-- (void)_reload;
+- (void)_onSelectSync;
+- (void)_setSelectedTabNavigationDocumentOnJSContext:(id)arg1;
+- (id)asPrivateIKJSTabBar;
 - (id)initWithAppContext:(id)arg1 appTabBar:(id)arg2;
-- (void)onReload;
 - (void)onSelect;
+- (void)setTabs:(id)arg1;
+- (id)transientTab;
 
 @end
 

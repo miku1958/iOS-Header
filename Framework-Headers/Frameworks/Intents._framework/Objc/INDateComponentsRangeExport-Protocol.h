@@ -11,8 +11,8 @@
 
 @protocol INDateComponentsRangeExport <NSObject, JSExport>
 
-@property (readonly, copy, nonatomic) NSDateComponents *endDateComponents;
-@property (readonly, copy, nonatomic) NSDateComponents *startDateComponents;
+@property (copy, nonatomic) NSDateComponents *endDateComponents;
+@property (copy, nonatomic) NSDateComponents *startDateComponents;
 
 - (id)init;
 @end

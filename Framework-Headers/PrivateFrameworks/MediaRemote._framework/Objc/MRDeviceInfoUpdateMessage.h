@@ -10,7 +10,6 @@
 {
 }
 
-- (BOOL)requiresAuthentication;
 - (unsigned long long)type;
 
 @end

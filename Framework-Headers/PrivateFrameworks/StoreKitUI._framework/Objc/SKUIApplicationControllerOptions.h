@@ -13,6 +13,7 @@
 {
     BOOL _supportsFullApplicationReload;
     long long _tabBarControllerStyle;
+    BOOL _pageRenderMetricsEnabled;
     BOOL _requiresLocalBootstrapScript;
     BOOL _bootstrapScriptFallbackEnabled;
     double _bootstrapScriptFallbackMaximumAge;
@@ -22,6 +23,7 @@
 @property (readonly, nonatomic, getter=isBootstrapScriptFallbackEnabled) BOOL bootstrapScriptFallbackEnabled;
 @property (readonly, nonatomic) double bootstrapScriptFallbackMaximumAge;
 @property (readonly, nonatomic) double bootstrapScriptTimeoutInterval;
+@property (readonly, nonatomic) BOOL pageRenderMetricsEnabled;
 @property (readonly, nonatomic) BOOL requiresLocalBootstrapScript;
 @property (readonly, nonatomic) BOOL supportsFullApplicationReload;
 @property (readonly, nonatomic) long long tabBarControllerStyle;

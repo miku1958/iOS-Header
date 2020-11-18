@@ -10,7 +10,7 @@
 #import <RemoteUI/UIPickerViewDelegate-Protocol.h>
 #import <RemoteUI/UITextFieldDelegate-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSMutableArray, NSString, RUIPage, RemoteUITableViewCell, UIControl, UISwitch, UIView;
+@class NSData, NSDate, NSDateFormatter, NSDictionary, NSMutableArray, NSString, RUIPage, RemoteUITableViewCell, UIControl, UISwitch, UIView;
 @protocol RUITableViewRowDelegate, RUITextFieldChangeObserver;
 
 @interface RUITableViewRow : RUIElement <RUIWebContainerViewDelegate, UIPickerViewDelegate, UITextFieldDelegate>
@@ -27,6 +27,7 @@
     NSDictionary *_deleteAction;
     NSData *_data;
     float _cachedHeight;
+    NSDateFormatter *_datePickerFormatter;
     BOOL _configured;
     BOOL _selected;
     BOOL _showingProgressIndicator;
@@ -76,6 +77,7 @@
 - (void)_updateContentForDisabledState;
 - (void)accessoryImageLoaded;
 - (void)clearCachedHeight;
+- (id)dateFormatterCalendarIdentifier;
 - (void)dealloc;
 - (void)detailLabelActivatedLinkFromCell:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)loadAccessoryImage;

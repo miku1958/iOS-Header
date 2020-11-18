@@ -23,8 +23,10 @@
 @property (readonly, nonatomic) BOOL requiresForYouCatchUpOperation;
 @property (readonly) Class superclass;
 
-- (id)operationToEmitGroupInContext:(id)arg1 withCursor:(id)arg2 toCursor:(id)arg3;
+- (BOOL)canEmitGroupsWithType:(long long)arg1;
+- (id)operationToEmitGroupWithContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (BOOL)wantsToEmitGroupInContext:(id)arg1 withCursor:(id)arg2 toCursor:(id)arg3;
+- (BOOL)wantsToInsertGroup:(id)arg1 withContext:(id)arg2;
 
 @end
 

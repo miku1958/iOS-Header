@@ -18,6 +18,7 @@
     BOOL _featureCandidate;
     BOOL _needsRapidUpdates;
     BOOL _paid;
+    BOOL _canBePurchased;
     NSString *_versionIdentifier;
     NSString *_identifier;
     NSString *_articleID;
@@ -81,6 +82,7 @@
 - (id)articleID;
 - (unsigned long long)backendArticleVersion;
 - (id)blockedStorefrontIDs;
+- (BOOL)canBePurchased;
 - (id)clusterID;
 - (id)contentManifestWithContext:(id)arg1;
 - (unsigned long long)contentType;
@@ -118,6 +120,8 @@
 - (void)setShortExcerpt:(id)arg1;
 - (void)setSourceChannel:(id)arg1;
 - (void)setSourceName:(id)arg1;
+- (void)setStoryStyle:(id)arg1;
+- (void)setStoryType:(unsigned long long)arg1;
 - (void)setThumbnailFocalFrame:(struct CGRect)arg1;
 - (void)setTopicIDs:(id)arg1;
 - (id)shortExcerpt;

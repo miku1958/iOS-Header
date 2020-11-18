@@ -31,7 +31,6 @@
 - (unsigned long long)appendMessages:(id)arg1 unsuccessfulOnes:(id)arg2 newMessageIDs:(id)arg3 newMessages:(id)arg4 flagsToSet:(id)arg5;
 - (id)bestAlternativeForPart:(id)arg1;
 - (BOOL)bodyFetchRequiresNetworkActivity;
-- (BOOL)canDeleteMessage:(id)arg1;
 - (BOOL)canFetchSearchResults;
 - (id)copyOfAllMessagesForBodyLoadingFromRowID:(unsigned int)arg1 limit:(unsigned int)arg2;
 - (id)defaultAlternativeForPart:(id)arg1;
@@ -46,6 +45,7 @@
 - (id)loadMeetingDataForMessage:(id)arg1;
 - (id)loadMeetingExternalIDForMessage:(id)arg1;
 - (id)loadMeetingMetadataForMessage:(id)arg1;
+- (BOOL)messageCanBeTriaged:(id)arg1;
 - (id)messageForRemoteID:(id)arg1;
 - (id)messageForRemoteID:(id)arg1 inMailbox:(id)arg2;
 - (void)purgeMessagesBeyondLimit:(unsigned long long)arg1 keepingMessage:(id)arg2;

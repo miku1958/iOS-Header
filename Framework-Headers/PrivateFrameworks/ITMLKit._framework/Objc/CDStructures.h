@@ -31,11 +31,20 @@ struct IKCornerRadii {
     double _field4;
 };
 
+struct NSDictionary {
+    Class _field1;
+};
+
 struct UIEdgeInsets {
     double top;
     double left;
     double bottom;
     double right;
+};
+
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
 };
 
 struct _xmlDoc {

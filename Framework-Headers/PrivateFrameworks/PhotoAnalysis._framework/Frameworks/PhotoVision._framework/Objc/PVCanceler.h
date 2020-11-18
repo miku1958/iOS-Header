@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface PVCanceler : NSObject
 {
     BOOL _canceled;

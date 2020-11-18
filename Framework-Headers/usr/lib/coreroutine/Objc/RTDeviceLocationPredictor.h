@@ -61,7 +61,6 @@
 - (void)_fetchNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)_fetchPredictedExitDatesFromLocation:(id)arg1 onDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchPredictedLocationsOfInterestBetweenStartDate:(id)arg1 endDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)_onContactStoreDidChange;
 - (void)_onContactStoreMeContactDidChange;
 - (void)_onLocations:(id)arg1;
 - (void)_postNextPredictedLocationsOfInterest:(id)arg1;
@@ -88,7 +87,7 @@
 - (void)fetchPredictedLocationsOfInterestBetweenStartDate:(id)arg1 endDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)fetchPredictedLocationsOfInterestOnDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)fetchRoutineModeFromLocation:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)forceContactStoreDidChange;
+- (void)forceContactStoreMeContactDidChange;
 - (void)forceSequentialClusterIdentification:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)initStateModel:(id)arg1;

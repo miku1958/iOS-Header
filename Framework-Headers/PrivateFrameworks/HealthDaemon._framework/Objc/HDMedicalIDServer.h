@@ -21,6 +21,7 @@
 
 - (void)remote_deleteMedicalIDDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_medicalIDDataCreateIfNecessary:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_medicalIDEmergencyContactsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_updateMedicalIDData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

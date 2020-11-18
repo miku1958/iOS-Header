@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <AccessibilityUIService/UICollisionBehaviorDelegate-Protocol.h>
 #import <AccessibilityUIService/UIDynamicAnimatorDelegate-Protocol.h>

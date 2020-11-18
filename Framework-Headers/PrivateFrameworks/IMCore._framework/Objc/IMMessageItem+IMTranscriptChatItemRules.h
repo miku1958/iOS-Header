@@ -9,6 +9,7 @@
 @interface IMMessageItem (IMTranscriptChatItemRules)
 - (BOOL)_hasMessageChatItem;
 - (id)_newChatItems;
+- (id)_newChatItemsWithFilteredChat:(BOOL)arg1;
 - (id)_service;
 - (BOOL)isExtensibleMessageWithPluginPayload:(id *)arg1;
 @end

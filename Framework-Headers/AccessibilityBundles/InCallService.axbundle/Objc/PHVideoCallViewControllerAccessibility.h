@@ -23,6 +23,7 @@
 - (void)_refreshStatusBarAndPIPAnimated:(BOOL)arg1;
 - (void)toggleLocalCameraType;
 - (void)updateTopBar:(BOOL)arg1 bottomBar:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

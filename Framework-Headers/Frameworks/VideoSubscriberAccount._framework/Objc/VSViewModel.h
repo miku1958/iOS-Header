@@ -6,41 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSItemProvider, NSString, UIImage;
+@class NSError, NSString;
 
+__attribute__((visibility("hidden")))
 @interface VSViewModel : NSObject
 {
-    BOOL _beginValidationButtonEnabled;
-    BOOL _showDeleteAccountButton;
-    BOOL _showFooter;
-    unsigned long long _validationState;
     unsigned long long _viewState;
+    unsigned long long _validationState;
     NSError *_error;
     NSString *_title;
-    NSString *_beginValidationButtonTitle;
     unsigned long long _deleteAccountState;
-    NSString *_identityProviderDisplayName;
-    NSItemProvider *_logoProvider;
-    UIImage *_logo;
-    NSString *_logoAccessibilityLabel;
-    NSString *_message;
-    NSString *_notice;
-    NSString *_footerText;
 }
 
-@property (nonatomic, getter=isBeginValidationButtonEnabled) BOOL beginValidationButtonEnabled; // @synthesize beginValidationButtonEnabled=_beginValidationButtonEnabled;
-@property (copy, nonatomic) NSString *beginValidationButtonTitle; // @synthesize beginValidationButtonTitle=_beginValidationButtonTitle;
 @property (nonatomic) unsigned long long deleteAccountState; // @synthesize deleteAccountState=_deleteAccountState;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
-@property (copy, nonatomic) NSString *footerText; // @synthesize footerText=_footerText;
-@property (copy, nonatomic) NSString *identityProviderDisplayName; // @synthesize identityProviderDisplayName=_identityProviderDisplayName;
-@property (strong, nonatomic) UIImage *logo; // @synthesize logo=_logo;
-@property (copy, nonatomic) NSString *logoAccessibilityLabel; // @synthesize logoAccessibilityLabel=_logoAccessibilityLabel;
-@property (strong, nonatomic) NSItemProvider *logoProvider; // @synthesize logoProvider=_logoProvider;
-@property (copy, nonatomic) NSString *message; // @synthesize message=_message;
-@property (copy, nonatomic) NSString *notice; // @synthesize notice=_notice;
-@property (nonatomic) BOOL showDeleteAccountButton; // @synthesize showDeleteAccountButton=_showDeleteAccountButton;
-@property (nonatomic) BOOL showFooter; // @synthesize showFooter=_showFooter;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) unsigned long long validationState; // @synthesize validationState=_validationState;
 @property (nonatomic) unsigned long long viewState; // @synthesize viewState=_viewState;

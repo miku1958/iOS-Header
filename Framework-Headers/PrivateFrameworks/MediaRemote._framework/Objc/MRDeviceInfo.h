@@ -32,7 +32,7 @@
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (id)_persistentDeviceID;
-+ (id)_persistentDeviceIDFromFile:(id)arg1;
++ (BOOL)_persistentDeviceIDFromFile:(id)arg1 deviceID:(id *)arg2;
 + (id)currentDeviceInfo;
 + (double)processorTimeScale;
 - (id)_copyWithZone:(struct _NSZone *)arg1 usingConcreteClass:(Class)arg2;

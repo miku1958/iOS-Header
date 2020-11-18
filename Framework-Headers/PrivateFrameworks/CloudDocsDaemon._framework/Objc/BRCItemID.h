@@ -34,6 +34,7 @@
 + (BOOL)isDocumentsItemIDWithSQLiteValue:(struct Mem *)arg1;
 + (BOOL)isRootItemIDWithSQLiteValue:(struct Mem *)arg1;
 + (BOOL)migrateItemIDsToVersion5WithDB:(id)arg1 serverTruth:(BOOL)arg2;
++ (BOOL)migrateItemIDsToVersion8WithDB:(id)arg1 serverTruth:(BOOL)arg2;
 + (id)newFromSqliteValue:(struct Mem *)arg1;
 + (id)newItemIDFromEnclosureUUID:(id)arg1 libraryRowID:(id)arg2;
 + (id)parseMangledItemID:(id)arg1 mangledContainerID:(id *)arg2 etag:(id *)arg3 session:(id)arg4;
@@ -43,14 +44,14 @@
 - (id)_initAsLibraryRootWithAppLibraryRowID:(id)arg1 enclosureUUID:(id)arg2;
 - (id)contentsRecordIDInZoneID:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)derivedAliasItemIDWithOwnerName:(id)arg1 libraryRowID:(id)arg2;
+- (id)derivedAliasItemIDWithOwnerName:(id)arg1;
 - (id)directoryReferenceInZoneID:(id)arg1 action:(unsigned long long)arg2;
 - (id)directoryStructureRecordIDInZoneID:(id)arg1;
 - (id)documentStructureRecordIDInZoneID:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initAsDocumentsWithAppLibraryRowID:(id)arg1;
-- (id)initWithAliasUUID:(id)arg1 aliasLibraryRowID:(id)arg2;
+- (id)initWithAliasUUID:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithItemID:(id)arg1;
 - (id)initWithRootObject:(struct RootItemObject *)arg1;

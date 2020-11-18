@@ -147,10 +147,11 @@
 - (void)assetsScene:(id)arg1 willTransitionToDataSource:(id)arg2;
 - (void)checkInTile:(void *)arg1 withIdentifier:(struct PXTileIdentifier)arg2;
 - (void *)checkOutTileForIdentifier:(struct PXTileIdentifier)arg1 layout:(id)arg2;
-- (void)commitPreviewViewController:(struct NSObject *)arg1;
+- (void)commitPreviewViewController:(id)arg1;
 - (BOOL)containsPoint:(struct CGPoint)arg1 forCoordinateSpace:(id)arg2;
 - (id)dataSourceManager;
 - (void)dealloc;
+- (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (double)engineDrivenLayout:(id)arg1 aspectRatioForItemAtIndexPath:(struct PXSimpleIndexPath)arg2;
 - (struct CGRect)engineDrivenLayout:(id)arg1 contentsRectForItemAtIndexPath:(struct PXSimpleIndexPath)arg2 forAspectRatio:(double)arg3;
 - (double)engineDrivenLayout:(id)arg1 zPositionForItemAtIndexPath:(struct PXSimpleIndexPath)arg2;

@@ -17,8 +17,10 @@
     NSSet *_otherClusterIDs;
     NSSet *_mutedChannelTagIDs;
     NSSet *_purchasedTagIDs;
+    NSString *_briefingsTagID;
 }
 
+@property (copy, nonatomic) NSString *briefingsTagID; // @synthesize briefingsTagID=_briefingsTagID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long filterOptions; // @synthesize filterOptions=_filterOptions;
@@ -30,7 +32,7 @@
 @property (readonly) Class superclass;
 
 + (id)transformationWithFilterOptions:(long long)arg1 context:(id)arg2;
-+ (id)transformationWithFilterOptions:(long long)arg1 otherArticleIDs:(id)arg2 otherClusterIDs:(id)arg3 mutedChannelTagIDs:(id)arg4 purchasedTagIDs:(id)arg5;
++ (id)transformationWithFilterOptions:(long long)arg1 otherArticleIDs:(id)arg2 otherClusterIDs:(id)arg3 mutedChannelTagIDs:(id)arg4 purchasedTagIDs:(id)arg5 briefingsTagID:(id)arg6;
 - (void).cxx_destruct;
 - (id)transformFeedItems:(id)arg1;
 - (id)transformHeadlines:(id)arg1;

@@ -76,6 +76,7 @@
 - (void)secureSession:(id)arg1 receivedRequestToSendMessage:(id)arg2;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)shortDescription;
+- (void)start;
 - (void)updateHome:(id)arg1 configurationVersion:(long long)arg2;
 
 @end

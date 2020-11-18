@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) double lastVisitedTimeInterval;
 @property (readonly, nonatomic) NSString *originalURLString;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) long long visitCount;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

@@ -11,6 +11,7 @@
 @class NSMutableDictionary, NSString, NSUUID, VSViewControllerFactory, VSViewServiceRemoteViewController;
 @protocol VSViewServiceHostViewControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface VSViewServiceHostViewController : UIViewController <VSViewServiceRemoteViewControllerDelegate>
 {
     BOOL _hasRetriedOnce;

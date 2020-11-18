@@ -24,7 +24,6 @@
     unsigned long long _lastReminderCount;
     NSArray *_eventNotificationReferences;
     NSArray *_reminderNotificationReferences;
-    BOOL _initialCheck;
     BOOL _shouldInstallPersistentTimer;
     BOOL _useSyncIdleTimer;
     BOOL _loadRecentlyRepliedNotifications;

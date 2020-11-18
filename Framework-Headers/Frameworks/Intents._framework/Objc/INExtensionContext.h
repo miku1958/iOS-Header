@@ -22,7 +22,7 @@
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
-+ (void)initialize;
++ (void)load;
 - (void)_deliverIntent:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_errorHandlingHostProxy;
 - (void)_processIntentResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -171,6 +171,7 @@
 - (double)_availableBoundsWidth;
 - (double)_availableBoundsWidthForSize:(struct CGSize)arg1;
 - (unsigned long long)_backdropStyle;
+- (id)_backgroundBlurEffectForPresentation;
 - (id)_backgroundView;
 - (double)_barHeightForBarMetrics:(long long)arg1;
 - (long long)_barMetricsForOrientation:(long long)arg1;

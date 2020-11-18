@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak, nonatomic) SYService *service; // @synthesize service=_service;
 @property (readonly, nonatomic) PBCodable *stateForLogging;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL targetIsNearby;
 @property (readonly, nonatomic) NSObject<OS_os_activity> *transportActivity; // @synthesize transportActivity=_transportActivity;
 
 - (void).cxx_destruct;

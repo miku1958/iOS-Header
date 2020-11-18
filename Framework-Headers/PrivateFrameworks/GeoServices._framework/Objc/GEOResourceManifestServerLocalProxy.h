@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)_considerChangingActiveTileGroup;
 - (void)_countryProvidersDidChange:(id)arg1;
 - (void)_forceChangeActiveTileGroup:(id)arg1 flushTileCache:(BOOL)arg2 ignoreIdentifier:(BOOL)arg3;
+- (BOOL)_hasAllowableFallbackResourceForResource:(id)arg1;
 - (id)_idealTileGroupToUse;
 - (void)_loadFromDisk;
 - (void)_loadImmediateResources:(id)arg1 conditionalWifiResources:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

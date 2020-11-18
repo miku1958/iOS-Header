@@ -9,7 +9,6 @@
 @interface UIFont (Camera)
 + (id)cui_cameraFontForContentSize:(id)arg1;
 + (id)cui_cameraFontOfSize:(double)arg1;
-+ (id)cui_cameraFontOfSize:(double)arg1 weight:(double)arg2;
 + (id)cui_cameraKerningForFont:(id)arg1;
 + (id)cui_cameraModeDialApproximateFontForContentSize:(id)arg1;
 + (id)cui_cameraModeDialFontForContentSize:(id)arg1;

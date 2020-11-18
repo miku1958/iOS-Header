@@ -6,7 +6,7 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCNotificationRequest, NSArray, NSIndexPath, NSSet, NSString;
+@class NCNotificationRequest, NSArray, NSDate, NSIndexPath, NSSet, NSString;
 @protocol NCNotificationSectionListDelegate;
 
 @protocol NCNotificationSectionList <NSObject>
@@ -17,6 +17,7 @@
 - (NSSet *)allNotificationRequests;
 - (void)clearAllSections;
 - (void)clearSectionWithIdentifier:(NSString *)arg1;
+- (NSDate *)dateForSectionIdentifier:(NSString *)arg1;
 - (void)hideRequestsForNotificationSectionIdentifier:(NSString *)arg1 subSectionIdentifier:(NSString *)arg2;
 - (NSString *)identifierForSectionIndex:(unsigned long long)arg1;
 - (NSIndexPath *)insertNotificationRequest:(NCNotificationRequest *)arg1;

@@ -13,11 +13,13 @@ __attribute__((visibility("hidden")))
 {
     BOOL _engaged;
     BOOL _assisted;
+    int _locationType;
     int _parkingEvents;
     int _engagedParkingEvents;
     int _assistedParkingEvents;
     int _engagements;
     int _assistances;
+    int _suppressedEvents;
     NSDate *_creationDate;
 }
 
@@ -28,7 +30,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL engaged; // @synthesize engaged=_engaged;
 @property (nonatomic) int engagedParkingEvents; // @synthesize engagedParkingEvents=_engagedParkingEvents;
 @property (nonatomic) int engagements; // @synthesize engagements=_engagements;
+@property (nonatomic) int locationType; // @synthesize locationType=_locationType;
 @property (nonatomic) int parkingEvents; // @synthesize parkingEvents=_parkingEvents;
+@property (nonatomic) int suppressedEvents; // @synthesize suppressedEvents=_suppressedEvents;
 
 - (void).cxx_destruct;
 - (void)assistanceEvent;
@@ -36,7 +40,9 @@ __attribute__((visibility("hidden")))
 - (void)copyToMetric:(id)arg1;
 - (void)engagementEvent;
 - (id)init;
+- (id)initWithLocationType:(int)arg1;
 - (void)parkingEvent;
+- (void)suppressedEvent;
 
 @end
 

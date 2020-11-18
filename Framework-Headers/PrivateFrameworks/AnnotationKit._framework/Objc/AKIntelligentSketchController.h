@@ -19,6 +19,8 @@
     BOOL _pressureSensitiveDoodleMode;
     BOOL _ignoreAnnotationAndSelectionKVO;
     BOOL _isShowingOverlay;
+    BOOL _isPreviousCandidateAnnotationUndecided;
+    BOOL _isWaitingToCoalesceStrokes;
     AKPageModelController *_modelControllerToObserveForAnnotationsAndSelections;
     double _veryHighConfidenceLevel;
     AKController *_controller;
@@ -50,7 +52,9 @@
 @property (readonly) unsigned long long hash;
 @property BOOL ignoreAnnotationAndSelectionKVO; // @synthesize ignoreAnnotationAndSelectionKVO=_ignoreAnnotationAndSelectionKVO;
 @property (strong, nonatomic) AKSmoothPathView *intelligentSketchOverlayView; // @synthesize intelligentSketchOverlayView=_intelligentSketchOverlayView;
+@property BOOL isPreviousCandidateAnnotationUndecided; // @synthesize isPreviousCandidateAnnotationUndecided=_isPreviousCandidateAnnotationUndecided;
 @property BOOL isShowingOverlay; // @synthesize isShowingOverlay=_isShowingOverlay;
+@property BOOL isWaitingToCoalesceStrokes; // @synthesize isWaitingToCoalesceStrokes=_isWaitingToCoalesceStrokes;
 @property (strong) CHDrawing *lastDrawing; // @synthesize lastDrawing=_lastDrawing;
 @property (strong, nonatomic) AKPageModelController *modelControllerToObserveForAnnotationsAndSelections; // @synthesize modelControllerToObserveForAnnotationsAndSelections=_modelControllerToObserveForAnnotationsAndSelections;
 @property (copy, nonatomic) CDUnknownBlockType performRecognitionBlock; // @synthesize performRecognitionBlock=_performRecognitionBlock;

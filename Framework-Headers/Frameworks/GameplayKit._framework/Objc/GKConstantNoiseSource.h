@@ -14,9 +14,10 @@
 @property (nonatomic) double value; // @synthesize value=_value;
 
 + (id)constantNoiseWithValue:(double)arg1;
-- (struct Module *)__newModule;
+- (id)cloneModule;
 - (id)init;
 - (id)initWithValue:(double)arg1;
+- (double)valueAt: /* Error: Ran out of types for this method. */;
 
 @end
 

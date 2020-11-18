@@ -71,19 +71,20 @@
 @property (weak, nonatomic) id<PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
 
 - (void).cxx_destruct;
+- (id)_createSnapshotOptions;
 - (long long)_fetchCountOfAssetsWithLocation;
-- (void)_fetchPlacesSnapshotUsingMapType:(unsigned long long)arg1 shouldFetchNearbyAssetCount:(BOOL)arg2;
+- (void)_fetchPlacesSnapshotUsingMapType:(unsigned long long)arg1 fetchResults:(id)arg2 shouldFetchNearbyAssetCount:(BOOL)arg3;
 - (id)_fetchResultsForSections;
 - (id)_firstAsset;
 - (void)_handleSnapshotResponse:(id)arg1 viewPort:(id)arg2 snapshotMapType:(unsigned long long)arg3 shouldFetchNearbyAssetCount:(BOOL)arg4 fetchedImageKey:(id)arg5 error:(id)arg6;
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (BOOL)_hasCachedSnapshotImageForKey:(id)arg1;
 - (id)_imageView;
-- (void)_loadAndUpdateLabelsUsingFirstAsset;
+- (void)_loadAndUpdateLabelsUsingAsset:(id)arg1;
 - (void)_loadContainerView;
-- (id)_localizedGeoDescriptionForFirstAsset;
+- (id)_localizedGeoDescriptionForAsset:(id)arg1;
 - (id)_mapViewControllerWithContentMode:(unsigned long long)arg1;
-- (void)_refreshLabelsUsingFirstAsset;
+- (void)_refreshLabelsUsingAsset:(id)arg1;
 - (void)_setImage:(id)arg1 animated:(BOOL)arg2;
 - (void)_showPlaceholder;
 - (void)_showPlacesWithContentMode:(unsigned long long)arg1;

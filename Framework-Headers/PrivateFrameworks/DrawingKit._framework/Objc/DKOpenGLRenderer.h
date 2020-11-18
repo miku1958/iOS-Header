@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *U_COLOR;
     struct vector<Page, std::__1::allocator<Page>> mPages;
     unsigned int mWetPaintBufferFBO;
-    unsigned int mWetPaintBufferDB;
     unsigned int mWetPaintBufferT;
     MISSING_TYPE *mWetPaintBufferSize;
     unsigned int mPaperTex;
@@ -39,6 +38,14 @@ __attribute__((visibility("hidden")))
     float mTimeWetBecameDirty;
     float mParticleLifespan;
     struct CGRect mDirtyCanvasRegion;
+    int mCompositeProgViewportUniformLocation;
+    int mWetPaintProgTimeUniformLocation;
+    int mWetPaintProgSubtractEndPointsOnlyUniformLocation;
+    int mWetPaintProgLifespanUniformLocation;
+    int mDryPaintProgXCoordOffsetUniformLocation;
+    int mColorProgColorUniformLocation;
+    int mColorProgModelViewProjectionUniformLocation;
+    int mTextureProgModelViewProjectionUniformLocation;
     BOOL _undoEnabled;
     BOOL _ignoreFirstUndoItem;
     BOOL _drawingEnabled;
@@ -91,11 +98,12 @@ __attribute__((visibility("hidden")))
 - (void)redrawEntireDrawingImmediatelyWithLayeredBlending:(BOOL)arg1;
 - (struct CGRect)regionWithVertices:(vector_8a3ef5f6)arg1 withInflationAmount:(float)arg2;
 - (void)removeVertexHistoryElement;
-- (void)renderToComposite;
+- (void)renderToComposite:(BOOL)arg1;
 - (void)renderToDryPaintBuffer;
 - (void)renderToWetPaintBufferWithRange:(struct _NSRange)arg1;
 - (void)resetRendererState;
 - (id)snapshot;
+- (void)teardown;
 - (void)undo;
 - (void)update;
 - (void)updateDryCycleIncludingComposite:(BOOL)arg1;

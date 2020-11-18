@@ -58,11 +58,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int state; // @synthesize state=_state;
 @property (strong, nonatomic) NSMutableArray *transportOptions; // @synthesize transportOptions=_transportOptions;
 
-+ (Class)peersType;
++ (Class)peerType;
 + (Class)transportOptionsType;
 - (void).cxx_destruct;
 - (int)StringAsState:(id)arg1;
-- (void)addPeers:(id)arg1;
+- (void)addPeer:(id)arg1;
 - (void)addTransportOptions:(id)arg1;
 - (void)clearPeers;
 - (void)clearTransportOptions;
@@ -73,7 +73,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (id)peersAtIndex:(unsigned long long)arg1;
+- (id)peerAtIndex:(unsigned long long)arg1;
 - (unsigned long long)peersCount;
 - (BOOL)readFrom:(id)arg1;
 - (id)stateAsString:(int)arg1;

@@ -17,6 +17,7 @@
 @interface HLPHelpTopicViewController : UIViewController <UIGestureRecognizerDelegate, UIWebViewDelegate, HLPHelpTopicViewControllerDelegate, HLPHelpLoadingViewDelegate>
 {
     id _interactivePopGestureRecognizerDelegate;
+    BOOL _canShowTOC;
     BOOL _webViewLoaded;
     BOOL _RTL;
     HLPURLSession *_URLSession;
@@ -77,6 +78,7 @@
 - (void)updateHTMLStringPath:(id)arg1 tag:(id)arg2 attribute:(id)arg3;
 - (void)updateNavigationButtons;
 - (void)updateScrollPositionForCurrentTopicItem;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

@@ -20,6 +20,8 @@
 - (id)init;
 - (id)initWithBoundsSize:(struct CGSize)arg1 requestHandler:(CDUnknownBlockType)arg2;
 - (id)initWithImage:(id)arg1;
+- (id)jpegDataWithSize:(struct CGSize)arg1;
+- (id)pngDataWithSize:(struct CGSize)arg1;
 
 @end
 

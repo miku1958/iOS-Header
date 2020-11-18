@@ -53,6 +53,7 @@
 - (void)markAchievementsAlerted:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)nextScheduledAchievementDefinitionAlertTaskDateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)resetAchievementDefinitionAlertedStates:(BOOL)arg1 availabilityStates:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)runAchievementsFixupAsDryRun:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)serverInterface;
 - (void)setAchievementAssetsServerURL:(id)arg1 completion:(CDUnknownBlockType)arg2;

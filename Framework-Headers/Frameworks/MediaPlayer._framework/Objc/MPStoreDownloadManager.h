@@ -22,6 +22,7 @@
     NSMutableArray *_blockObservers;
     SSDownloadManager *_downloadManager;
     NSMutableArray *_downloads;
+    NSMutableArray *_userDownloads;
     NSMapTable *_downloadIdentifiersToDownloads;
     NSMapTable *_downloadsToObservers;
     NSMapTable *_libraryIdentifiersToDownloads;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) NSArray *downloads;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSArray *userDownloads;
 @property (readonly, nonatomic, getter=isUsingNetwork) BOOL usingNetwork;
 
 + (id)sharedManager;

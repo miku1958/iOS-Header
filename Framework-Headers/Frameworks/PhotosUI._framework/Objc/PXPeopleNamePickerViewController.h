@@ -20,10 +20,8 @@
     id<PXPeopleNamePickerViewControllerDelegate> _delegate;
     PXPeopleNamePickerResultsTableViewController *_resultsController;
     NSArray *_savedRightBarItems;
-    id _appBackgroundedNotificationObserver;
 }
 
-@property (strong, nonatomic) id appBackgroundedNotificationObserver; // @synthesize appBackgroundedNotificationObserver=_appBackgroundedNotificationObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXPeopleNamePickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -34,13 +32,15 @@
 @property (readonly, nonatomic) PXPeopleNamePickerTitleView *titleView; // @synthesize titleView=_titleView;
 
 - (void).cxx_destruct;
+- (void)_applicationDidEnterBackground;
 - (void)_hideResultsView;
+- (void)_keyboardWillChangeFrame:(id)arg1;
+- (void)_refreshResultsViewSizeWithNewKeyboardHeight:(double)arg1;
 - (void)_setupNavigationBarForEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)_shouldPresentResultsInPopover;
 - (void)_showResultsView;
 - (double)_titleViewMaxWidthForEditing:(BOOL)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
-- (void)dealloc;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

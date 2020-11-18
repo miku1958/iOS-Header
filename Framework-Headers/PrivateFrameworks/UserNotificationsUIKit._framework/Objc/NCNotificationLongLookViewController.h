@@ -8,10 +8,11 @@
 
 #import <UserNotificationsUIKit/NCLongLookPresentationControllerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/NCLongLookTransitionDelegateObserver-Protocol.h>
+#import <UserNotificationsUIKit/NCNotificationCustomContentDelegate-Protocol.h>
 
 @class NCLongLookTransitionDelegate, NCNotificationShortLookViewController, NSString;
 
-@interface NCNotificationLongLookViewController : NCNotificationViewController <NCLongLookPresentationControllerDelegate, NCLongLookTransitionDelegateObserver>
+@interface NCNotificationLongLookViewController : NCNotificationViewController <NCLongLookPresentationControllerDelegate, NCLongLookTransitionDelegateObserver, NCNotificationCustomContentDelegate>
 {
     NCNotificationShortLookViewController *_presentingNotificationViewController;
     NCLongLookTransitionDelegate *_longLookTransitionDelegate;
@@ -38,12 +39,14 @@
 - (void)_setPreferredCustomContentSize:(struct CGSize)arg1;
 - (BOOL)_shouldPadScrollViewContentSizeHeight;
 - (double)_translationWithVelocity:(double)arg1 acceleration:(double)arg2;
+- (void)_updateTitleWithProvidedCustomContent;
 - (void)_updateWithProvidedCustomContent;
 - (void)_updateWithProvidedStaticContent;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canResignFirstResponder;
 - (void)contentProviderDismissCustomContent:(id)arg1 animated:(BOOL)arg2;
+- (void)customContentDidUpdateTitle:(id)arg1;
 - (BOOL)dismissPresentedViewControllerAndClearNotification:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)isContentExtensionVisible:(id)arg1;
 - (BOOL)isLookStyleLongLook;

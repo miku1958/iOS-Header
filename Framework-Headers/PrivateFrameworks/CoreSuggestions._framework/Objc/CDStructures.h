@@ -18,6 +18,10 @@ struct SGMBannerExtractionType_ {
     unsigned long long _field1;
 };
 
+struct SGMContactDetailExtractionOutcome_ {
+    unsigned long long _field1;
+};
+
 struct SGMContactDetailType_ {
     unsigned long long _field1;
 };
@@ -27,6 +31,10 @@ struct SGMContactDetailUsedApp_ {
 };
 
 struct SGMDetailExtractionType_ {
+    unsigned long long _field1;
+};
+
+struct SGMDocumentType_ {
     unsigned long long _field1;
 };
 
@@ -43,6 +51,10 @@ struct SGMEventDurationAdj_ {
 };
 
 struct SGMEventExtractionType_ {
+    unsigned long long _field1;
+};
+
+struct SGMEventICSSourceType_ {
     unsigned long long _field1;
 };
 

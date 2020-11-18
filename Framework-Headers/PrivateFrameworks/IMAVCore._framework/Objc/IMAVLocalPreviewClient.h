@@ -25,10 +25,10 @@
 @property (strong, nonatomic) AVConferencePreview *conferencePreview; // @synthesize conferencePreview=_conferencePreview;
 @property (readonly, nonatomic) BOOL isPreviewRunning;
 @property (nonatomic) IMAVCamera *localCamera;
-@property (readonly, nonatomic) struct CGSize localPortraitAspectRatio;
 @property (nonatomic) void *localVideoBackLayer;
 @property (nonatomic) void *localVideoLayer;
 
++ (struct CGSize)localPortraitAspectRatio;
 + (id)sharedInstance;
 - (void)_avDaemonConnected;
 - (BOOL)_shouldPreviewBeRunning;

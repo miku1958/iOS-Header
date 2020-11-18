@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NotificationsUI/__NCNotificationListCellAccessibility_super.h>
+#import "__NCNotificationListCellAccessibility_super.h"
 
 @interface NCNotificationListCellAccessibility : __NCNotificationListCellAccessibility_super
 {

@@ -7,9 +7,11 @@
 #import <ControlCenterUI/NSObject-Protocol.h>
 
 @class CCUIControlCenterButton;
+@protocol CCUIControlCenterSystemAgent;
 
 @protocol CCUIControlCenterButtonDelegate <NSObject>
 - (void)buttonTapped:(CCUIControlCenterButton *)arg1;
+- (id<CCUIControlCenterSystemAgent>)controlCenterSystemAgent;
 - (BOOL)isInternal;
 
 @optional

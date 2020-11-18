@@ -34,8 +34,8 @@
 @property (copy, nonatomic) NSData *archivedRemoteActivityDataShareID; // @synthesize archivedRemoteActivityDataShareID=_archivedRemoteActivityDataShareID;
 @property (copy, nonatomic) NSData *archivedRemoteRelationshipShareID; // @synthesize archivedRemoteRelationshipShareID=_archivedRemoteRelationshipShareID;
 @property (copy, nonatomic) NSString *cloudKitAddress; // @synthesize cloudKitAddress=_cloudKitAddress;
+@property (readonly, nonatomic) NSDate *dateActivityDataBecameVisible;
 @property (readonly, nonatomic) NSDate *dateForLatestDataHidden;
-@property (readonly, nonatomic) NSDate *dateForLatestDataShown;
 @property (readonly, nonatomic) NSDate *dateForLatestOutgoingInviteRequest;
 @property (readonly, nonatomic) NSDate *dateForLatestRelationshipStart;
 @property (readonly, nonatomic) BOOL hasIncomingInviteRequest;
@@ -67,6 +67,7 @@
 - (void)insertEventWithType:(long long)arg1;
 - (void)insertEvents:(id)arg1;
 - (BOOL)isActivityDataVisibleForDate:(id)arg1;
+- (BOOL)isHidingActivityDataForDate:(id)arg1;
 
 @end
 

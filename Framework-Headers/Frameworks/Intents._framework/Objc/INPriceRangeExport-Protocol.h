@@ -11,9 +11,9 @@
 
 @protocol INPriceRangeExport <NSObject, JSExport>
 
-@property (readonly, nonatomic) NSString *currencyCode;
-@property (readonly, nonatomic) NSDecimalNumber *maximumPrice;
-@property (readonly, nonatomic) NSDecimalNumber *minimumPrice;
+@property (strong, nonatomic) NSString *currencyCode;
+@property (strong, nonatomic) NSDecimalNumber *maximumPrice;
+@property (strong, nonatomic) NSDecimalNumber *minimumPrice;
 
 + (id)_priceWithPriceRangeValue:(_INPBPriceRangeValue *)arg1;
 - (id)init;

@@ -6,15 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class CXDatabase, NSURL;
+@class CXDatabase, NSString, NSURL;
 
 @interface CXCallDirectoryStore : NSObject
 {
     BOOL _temporary;
     CXDatabase *_database;
+    long long _lastAddBlockingEntriesCount;
+    NSString *_addBlockingEntriesInsertPhoneNumberBlockingEntrySQL;
+    long long _lastAddIdentificationEntriesCount;
+    NSString *_addIdentificationEntriesInsertLabelsSQL;
+    NSString *_addIdentificationEntriesInsertPhoneNumberIdentificationEntrySQL;
+    long long _lastAddPhoneNumbersCount;
+    NSString *_addPhoneNumbersSQL;
 }
 
+@property (copy, nonatomic) NSString *addBlockingEntriesInsertPhoneNumberBlockingEntrySQL; // @synthesize addBlockingEntriesInsertPhoneNumberBlockingEntrySQL=_addBlockingEntriesInsertPhoneNumberBlockingEntrySQL;
+@property (copy, nonatomic) NSString *addIdentificationEntriesInsertLabelsSQL; // @synthesize addIdentificationEntriesInsertLabelsSQL=_addIdentificationEntriesInsertLabelsSQL;
+@property (copy, nonatomic) NSString *addIdentificationEntriesInsertPhoneNumberIdentificationEntrySQL; // @synthesize addIdentificationEntriesInsertPhoneNumberIdentificationEntrySQL=_addIdentificationEntriesInsertPhoneNumberIdentificationEntrySQL;
+@property (copy, nonatomic) NSString *addPhoneNumbersSQL; // @synthesize addPhoneNumbersSQL=_addPhoneNumbersSQL;
 @property (strong, nonatomic) CXDatabase *database; // @synthesize database=_database;
+@property (nonatomic) long long lastAddBlockingEntriesCount; // @synthesize lastAddBlockingEntriesCount=_lastAddBlockingEntriesCount;
+@property (nonatomic) long long lastAddIdentificationEntriesCount; // @synthesize lastAddIdentificationEntriesCount=_lastAddIdentificationEntriesCount;
+@property (nonatomic) long long lastAddPhoneNumbersCount; // @synthesize lastAddPhoneNumbersCount=_lastAddPhoneNumbersCount;
 @property (readonly, nonatomic) long long schemaVersion;
 @property (nonatomic, getter=isTemporary) BOOL temporary; // @synthesize temporary=_temporary;
 @property (readonly, nonatomic) NSURL *url;
@@ -23,6 +37,9 @@
 + (id)databaseURLUsingTemporaryDirectory:(BOOL)arg1 error:(id *)arg2;
 + (BOOL)initializeDatabaseIfNecessaryWithURL:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (BOOL)_addBlockingEntriesWithData:(id)arg1 startIndex:(unsigned long long)arg2 count:(unsigned long long)arg3 extensionID:(long long)arg4 error:(id *)arg5;
+- (BOOL)_addIdentificationEntriesWithData:(id)arg1 startIndex:(unsigned long long)arg2 count:(unsigned long long)arg3 extensionID:(long long)arg4 error:(id *)arg5;
+- (BOOL)_addPhoneNumbersWithEntryData:(id)arg1 startIndex:(unsigned long long)arg2 count:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)_containsBlockingEntryWithSQL:(id)arg1 bindings:(id)arg2 error:(id *)arg3;
 - (long long)_findOrCreateIDForPhoneNumber:(long long)arg1 error:(id *)arg2;
 - (id)_firstIdentificationEntriesForSQL:(id)arg1 bindings:(id)arg2 error:(id *)arg3;
@@ -51,6 +68,7 @@
 - (id)description;
 - (id)firstIdentificationEntriesForPhoneNumbers:(id)arg1 error:(id *)arg2;
 - (id)firstIdentificationEntryForPhoneNumber:(id)arg1 error:(id *)arg2;
+- (long long)idForExtensionWithIdentifier:(id)arg1 error:(id *)arg2;
 - (long long)idForLabel:(id)arg1 error:(id *)arg2;
 - (long long)idForPhoneNumber:(long long)arg1 error:(id *)arg2;
 - (id)identificationEntriesForPhoneNumber:(id)arg1 error:(id *)arg2;
@@ -60,7 +78,9 @@
 - (id)initReadOnly:(BOOL)arg1 temporary:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)performTransactionWithBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)prioritizedExtensionIdentifiersWithError:(id *)arg1;
+- (BOOL)removeBlockingEntriesForExtensionWithID:(long long)arg1 error:(id *)arg2;
 - (BOOL)removeExtensionWithIdentifier:(id)arg1 error:(id *)arg2;
+- (BOOL)removeIdentificationEntriesForExtensionWithID:(long long)arg1 error:(id *)arg2;
 - (BOOL)removeUnreferencedRecordsWithError:(id *)arg1;
 - (BOOL)setPrioritizedExtensionIdentifiers:(id)arg1 error:(id *)arg2;
 - (BOOL)vacuumWithError:(id *)arg1;

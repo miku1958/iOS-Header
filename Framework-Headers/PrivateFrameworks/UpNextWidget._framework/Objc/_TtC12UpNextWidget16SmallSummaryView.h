@@ -19,7 +19,7 @@
 
 @property (nonatomic) BOOL allHappenToday; // @synthesize allHappenToday;
 @property (nonatomic) BOOL allHappenTomorrow; // @synthesize allHappenTomorrow;
-@property (nonatomic, strong) NSDate *time; // @synthesize time;
+@property (nonatomic, copy) NSDate *time; // @synthesize time;
 
 - (CDUnknownBlockType).cxx_destruct;
 - (double)firstBaselineOffsetFromTop;

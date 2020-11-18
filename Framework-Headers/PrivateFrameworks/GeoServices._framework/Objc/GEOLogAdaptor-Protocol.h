@@ -23,6 +23,7 @@
 - (void)adaptorWillGetRemoved:(id<GEOLogAdaptor>)arg1;
 - (void)disableLogMsgInstrumentation;
 - (void)enableLogMsgInstrumentation;
+- (void)forceFlushLogs;
 - (void)registerLogMsgState:(GEOLogMsgState *)arg1;
 - (void)unregisterLogMsgStateOfType:(int)arg1;
 @end

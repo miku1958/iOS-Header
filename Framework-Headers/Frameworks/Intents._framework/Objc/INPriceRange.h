@@ -30,6 +30,7 @@
 + (id)_priceWithPriceRangeValue:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_dictionaryRepresentation;
 - (id)_formattedStringWithLocale:(id)arg1 componentsFormatString:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

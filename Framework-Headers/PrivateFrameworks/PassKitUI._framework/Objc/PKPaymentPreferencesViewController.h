@@ -12,11 +12,12 @@
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSString, PKPassSnapshotter, UITableView;
+@class NSArray, NSString, PKPassSnapshotter, UITableView, UITextField;
 
 @interface PKPaymentPreferencesViewController : UIViewController <CNContactPickerDelegate, CNPostalAddressEditorDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     PKPassSnapshotter *_passSnapshotter;
+    UITextField *_currentEditingField;
     int _style;
     NSArray *_preferences;
     UITableView *_tableView;
@@ -63,6 +64,7 @@
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
+- (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;

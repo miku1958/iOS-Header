@@ -17,6 +17,7 @@
 - (void)service:(SYService *)arg1 incomingData:(NSData *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)service:(SYService *)arg1 incomingStream:(NSInputStream *)arg2 metadata:(NSDictionary *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)service:(SYService *)arg1 sessionEnded:(SYSession *)arg2 error:(NSError *)arg3;
+- (void)service:(SYService *)arg1 targetDeviceProximityChanged:(BOOL)arg2;
 - (SYSession *)service:(SYService *)arg1 willPreferSession:(SYSession *)arg2 overSession:(SYSession *)arg3;
 - (void)service:(SYService *)arg1 willSwitchFromPairingID:(NSUUID *)arg2 toPairingID:(NSUUID *)arg3;
 - (void)serviceDidPairDevice:(SYService *)arg1;

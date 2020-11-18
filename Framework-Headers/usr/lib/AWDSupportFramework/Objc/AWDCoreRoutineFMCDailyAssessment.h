@@ -16,7 +16,9 @@
     int _duration;
     int _engagedParkingEvents;
     int _engagements;
+    int _locationType;
     int _parkingEvents;
+    int _suppressedParkingEvents;
     struct {
         unsigned int timestamp:1;
         unsigned int assistances:1;
@@ -24,7 +26,9 @@
         unsigned int duration:1;
         unsigned int engagedParkingEvents:1;
         unsigned int engagements:1;
+        unsigned int locationType:1;
         unsigned int parkingEvents:1;
+        unsigned int suppressedParkingEvents:1;
     } _has;
 }
 
@@ -38,9 +42,13 @@
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasEngagedParkingEvents;
 @property (nonatomic) BOOL hasEngagements;
+@property (nonatomic) BOOL hasLocationType;
 @property (nonatomic) BOOL hasParkingEvents;
+@property (nonatomic) BOOL hasSuppressedParkingEvents;
 @property (nonatomic) BOOL hasTimestamp;
+@property (nonatomic) int locationType; // @synthesize locationType=_locationType;
 @property (nonatomic) int parkingEvents; // @synthesize parkingEvents=_parkingEvents;
+@property (nonatomic) int suppressedParkingEvents; // @synthesize suppressedParkingEvents=_suppressedParkingEvents;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
 - (void)copyTo:(id)arg1;

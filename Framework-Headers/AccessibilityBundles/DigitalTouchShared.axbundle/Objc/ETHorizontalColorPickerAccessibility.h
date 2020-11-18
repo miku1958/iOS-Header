@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (long long)accessibilityNavigationStyle;
+- (void)setDimmed:(BOOL)arg1 excludeSelectedColor:(BOOL)arg2 animated:(BOOL)arg3;
 - (BOOL)shouldGroupAccessibilityChildren;
 
 @end

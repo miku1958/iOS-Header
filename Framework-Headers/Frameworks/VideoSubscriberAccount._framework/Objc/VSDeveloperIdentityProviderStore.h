@@ -10,6 +10,7 @@
 
 @class NSString, VSPersistentContainer, VSRemoteNotifier;
 
+__attribute__((visibility("hidden")))
 @interface VSDeveloperIdentityProviderStore : NSObject <VSDeveloperServiceProtocol>
 {
     VSPersistentContainer *_persistentContainer;

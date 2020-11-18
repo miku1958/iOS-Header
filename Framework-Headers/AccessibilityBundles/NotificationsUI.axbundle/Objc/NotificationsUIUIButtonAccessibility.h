@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NotificationsUI/__NotificationsUIUIButtonAccessibility_super.h>
+#import "__NotificationsUIUIButtonAccessibility_super.h"
 
 @interface NotificationsUIUIButtonAccessibility : __NotificationsUIUIButtonAccessibility_super
 {

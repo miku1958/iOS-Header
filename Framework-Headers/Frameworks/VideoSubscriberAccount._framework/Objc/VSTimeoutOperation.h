@@ -8,6 +8,7 @@
 
 @class NSOperation, NSOperationQueue;
 
+__attribute__((visibility("hidden")))
 @interface VSTimeoutOperation : VSAsyncOperation
 {
     NSOperation *_operation;

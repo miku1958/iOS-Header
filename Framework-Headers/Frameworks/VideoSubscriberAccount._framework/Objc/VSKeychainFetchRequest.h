@@ -10,6 +10,7 @@
 
 @class NSArray, NSPredicate, VSKeychainItemKind;
 
+__attribute__((visibility("hidden")))
 @interface VSKeychainFetchRequest : NSObject <NSCopying>
 {
     BOOL _includesDataValues;

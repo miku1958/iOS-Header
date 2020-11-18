@@ -16,8 +16,7 @@
 
 @property (nonatomic) unsigned long long desiredFieldOptions; // @synthesize desiredFieldOptions=_desiredFieldOptions;
 
-+ (unsigned long long)defaultFetchOperationCachePolicy;
-+ (double)defaultFetchOperationMaximumCachedAge;
++ (id)defaultCachePolicy;
 + (unsigned long long)highThresholdDataSizeLimit;
 + (unsigned long long)lowThresholdDataSizeLimit;
 + (id)recordType;

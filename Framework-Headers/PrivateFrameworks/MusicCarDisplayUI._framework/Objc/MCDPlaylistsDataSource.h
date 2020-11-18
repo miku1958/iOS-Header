@@ -11,7 +11,6 @@
 
 @interface MCDPlaylistsDataSource : MCDQueryDataSource
 {
-    BOOL _hasParentPlaylist;
     NSCache *_cachedDurations;
     NSCache *_cachedCounts;
     NSCache *_cachedRepresentativeItems;

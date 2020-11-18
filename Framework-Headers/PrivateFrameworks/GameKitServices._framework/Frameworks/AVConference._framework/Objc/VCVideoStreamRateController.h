@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @protocol OS_dispatch_queue, VCVideoStreamRateControlProtocol;
 
@@ -33,13 +33,16 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) unsigned int maxBitrate; // @synthesize maxBitrate=_maxBitrate;
 @property (readonly, nonatomic) unsigned int minBitrate; // @synthesize minBitrate=_minBitrate;
+@property (readonly, nonatomic) double nowrd;
+@property (readonly, nonatomic) double nowrdAcc;
+@property (readonly, nonatomic) double nowrdShort;
 @property (readonly, nonatomic) double owrd;
 @property (readonly, nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 
 - (id)className;
 - (void)createLogDumpFile;
 - (void)dealloc;
-- (void)doRateControlWithTime:(double)arg1 roundTripTime:(double)arg2 packetLossRate:(double)arg3 operatingBitrate:(unsigned int)arg4 actualBitrate:(unsigned int)arg5;
+- (void)doRateControlWithTime:(double)arg1 roundTripTime:(double)arg2 packetLossRate:(double)arg3 operatingBitrate:(unsigned int)arg4 averageBitrate:(unsigned int)arg5;
 - (id)init;
 - (unsigned short)maxTierIndex:(unsigned int)arg1;
 - (unsigned short)minTierIndex:(unsigned int)arg1;

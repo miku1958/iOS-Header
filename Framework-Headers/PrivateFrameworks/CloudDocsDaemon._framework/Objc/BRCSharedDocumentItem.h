@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *enclosurePathRelativeToRoot;
 @property (readonly, nonatomic) BOOL isShareAcceptationFault;
 
-- (id)aliasItemIDForAppLibrary:(id)arg1;
+- (id)aliasItemID;
 - (id)asSharedDocument;
 - (void)deleteShareAcceptationFault;
 - (BOOL)getPrivateAppLibraryAliasURL:(id *)arg1 aliasContainer:(id *)arg2;

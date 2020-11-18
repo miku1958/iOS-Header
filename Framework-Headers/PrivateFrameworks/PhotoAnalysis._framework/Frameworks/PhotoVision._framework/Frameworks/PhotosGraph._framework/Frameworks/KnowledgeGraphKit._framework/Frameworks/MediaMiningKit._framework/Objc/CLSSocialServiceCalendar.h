@@ -6,11 +6,10 @@
 
 #import <MediaMiningKit/CLSSocialService.h>
 
-@class CLSCalendarEventsCache, CNContact, CNContactStore, EKEventStore, NSMutableSet;
+@class CLSCalendarEventsCache, CNContact, CNContactStore, NSMutableSet;
 
 @interface CLSSocialServiceCalendar : CLSSocialService
 {
-    EKEventStore *_eventStore;
     CNContactStore *_contactStore;
     CNContact *_meContact;
     CLSCalendarEventsCache *_calendarEventsCache;
@@ -26,12 +25,11 @@
 - (BOOL)_hasAlreadyPrefetchedEventsFromUniversalDate:(id)arg1 toUniversalDate:(id)arg2;
 - (BOOL)_isCalendarRelevant:(id)arg1;
 - (BOOL)_sortedAssetCollections:(id)arg1 containsEvent:(id)arg2;
-- (id)eventFromEKEvent:(id)arg1;
+- (id)eventFromProxyEvent:(id)arg1;
 - (id)eventsOperationForClueCollection:(id)arg1;
 - (id)eventsOperationForDates:(id)arg1 inInvestigation:(id)arg2;
 - (id)initWithProxyAtURL:(id)arg1 andIntent:(unsigned long long)arg2;
 - (void)invalidateMemoryCaches;
-- (BOOL)isSyncToDaysEnough;
 - (id)meContact;
 - (void)prefetchEventsFromUniversalDate:(id)arg1 toUniversalDate:(id)arg2 forAssetCollectionsSortedByStartDate:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)relevantCalendarsOperation;

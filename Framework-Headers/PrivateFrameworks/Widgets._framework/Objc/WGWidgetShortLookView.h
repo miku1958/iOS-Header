@@ -39,6 +39,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 andCornerRadius:(double)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)setBackgroundBlurred:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

@@ -19,10 +19,12 @@
     BOOL _recording;
     BOOL _microphoneEnabled;
     BOOL _cameraEnabled;
+    BOOL _broadcasting;
     BOOL _systemRecording;
     BOOL _hasUserConsentForCamera;
     BOOL _hasUserConsentForMicrophone;
     BOOL _paused;
+    int _processIDForAudioCapture;
     id<RPScreenRecorderDelegate> _delegate;
     UIView *_cameraPreviewView;
     unsigned long long _previousAudioSessionOptions;
@@ -40,6 +42,7 @@
 
 @property (strong, nonatomic) RPBroadcastController *activeBroadcastController; // @synthesize activeBroadcastController=_activeBroadcastController;
 @property (nonatomic, getter=isAvailable) BOOL available; // @synthesize available=_available;
+@property (nonatomic) BOOL broadcasting; // @synthesize broadcasting=_broadcasting;
 @property (nonatomic, getter=isCameraEnabled) BOOL cameraEnabled; // @synthesize cameraEnabled=_cameraEnabled;
 @property (strong, nonatomic) UIView *cameraPreviewView; // @synthesize cameraPreviewView=_cameraPreviewView;
 @property (readonly, copy) NSString *debugDescription;
@@ -53,6 +56,7 @@
 @property (strong, nonatomic) RPPipViewController *pipViewController; // @synthesize pipViewController=_pipViewController;
 @property (strong, nonatomic) NSString *previousAudioCategory; // @synthesize previousAudioCategory=_previousAudioCategory;
 @property (nonatomic) unsigned long long previousAudioSessionOptions; // @synthesize previousAudioSessionOptions=_previousAudioSessionOptions;
+@property (nonatomic, setter=updateProcessIDForAudioCapture:) int processIDForAudioCapture; // @synthesize processIDForAudioCapture=_processIDForAudioCapture;
 @property (nonatomic, getter=isRecording) BOOL recording; // @synthesize recording=_recording;
 @property (copy, nonatomic) CDUnknownBlockType saveVideoToCameraRollCompletionBlock; // @synthesize saveVideoToCameraRollCompletionBlock=_saveVideoToCameraRollCompletionBlock;
 @property (readonly) Class superclass;

@@ -24,6 +24,7 @@
 + (id)intentDescription;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

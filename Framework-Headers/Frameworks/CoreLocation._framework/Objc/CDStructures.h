@@ -67,7 +67,8 @@ typedef struct {
     int floor;
     unsigned int integrity;
     int referenceFrame;
-} CDStruct_0aa5cb5c;
+    int rawReferenceFrame;
+} CDStruct_05ee51d2;
 
 typedef struct {
     char identifier[512];

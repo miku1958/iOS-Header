@@ -32,8 +32,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)emojiUsed:(id)arg1;
 - (void)emojiUsed:(id)arg1 language:(id)arg2;
+- (id)emojiWithoutDuplicateRecents:(id)arg1;
+- (BOOL)hasLastUsedVariantForEmojiString:(id)arg1;
 - (id)init;
+- (id)lastUsedVariantEmojiForEmojiString:(id)arg1;
 - (long long)lastVisibleFirstEmojiIndexforCategory:(id)arg1;
+- (id)recentEmojiAtIndex:(long long)arg1 size:(unsigned long long *)arg2;
 - (id)recents;
 - (long long)reloadCategoryForOffsetPercentage:(double)arg1 withSender:(id)arg2;
 - (void)reloadForCategory:(long long)arg1 withSender:(id)arg2;

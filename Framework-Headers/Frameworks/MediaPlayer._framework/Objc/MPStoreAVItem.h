@@ -103,6 +103,7 @@
 - (unsigned long long)discNumber;
 - (id)displayableText;
 - (double)durationFromExternalMetadata;
+- (id)externalContentIdentifier;
 - (id)genre;
 - (void)handlePlaybackFinishedTime:(double)arg1 finishedByHittingEnd:(BOOL)arg2;
 - (BOOL)hasAlternatesForTypes:(unsigned long long)arg1;

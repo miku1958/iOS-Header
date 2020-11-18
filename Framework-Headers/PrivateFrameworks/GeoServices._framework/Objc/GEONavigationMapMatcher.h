@@ -29,7 +29,6 @@
 - (void)resetToLocation:(id)arg1;
 - (int)transportType;
 - (id)updateForReroute:(id)arg1 location:(id)arg2;
-- (void)updateForTunnelProjection:(id)arg1 coord:(CDStruct_c3b9c2ee)arg2;
 
 @end
 

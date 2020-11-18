@@ -18,7 +18,7 @@
 }
 
 @property (nonatomic, strong) UIColor *calendarColor; // @synthesize calendarColor;
-@property (nonatomic, strong) NSDate *startDate; // @synthesize startDate;
+@property (nonatomic, copy) NSDate *startDate; // @synthesize startDate;
 @property (nonatomic, copy) NSString *title; // @synthesize title;
 
 - (CDUnknownBlockType).cxx_destruct;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NotificationsUI/__NCNotificationViewControllerAccessibility_super.h>
+#import "__NCNotificationViewControllerAccessibility_super.h"
 
 @interface NCNotificationViewControllerAccessibility : __NCNotificationViewControllerAccessibility_super
 {

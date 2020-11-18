@@ -52,16 +52,16 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *zip; // @synthesize zip=_zip;
 
-+ (id)_convertLocalizedNumericStringToLatin:(id)arg1 withNumberFormatter:(id)arg2;
 + (id)_importNumberFormatter;
 + (BOOL)_isNumericStringValid:(id)arg1 withLength:(long long)arg2;
 + (void)_loadStateInformationIfNeeded;
-+ (id)_ssnNumberFormatter;
-+ (id)_zipcodeNumberFormatter;
++ (id)convertLocalizedNumericStringToLatin:(id)arg1 withNumberFormatter:(id)arg2;
 + (id)exportDateFormatter;
 + (id)organDonationRegistrantWithDemographicsInformation:(id)arg1;
 + (id)organDonationRegistrantWithJSONDictionary:(id)arg1;
++ (id)ssnNumberFormatter;
 + (BOOL)supportsSecureCoding;
++ (id)zipcodeNumberFormatter;
 - (void).cxx_destruct;
 - (void)_addDataEntryItemIntoArray:(id)arg1 validOnly:(BOOL)arg2 forField:(long long)arg3;
 - (id)_createDateOfBirthEntryItem;

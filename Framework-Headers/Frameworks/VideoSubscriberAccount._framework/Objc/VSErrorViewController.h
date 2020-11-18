@@ -8,6 +8,7 @@
 
 @class NSError, UIButton, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface VSErrorViewController : UIViewController
 {
     BOOL _recoveryDestructive;

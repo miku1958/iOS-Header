@@ -25,7 +25,10 @@
 @property (readonly, nonatomic) double spinnerDelay;
 @property (readonly) Class superclass;
 
++ (BOOL)autoUnlockEnabled:(unsigned int)arg1;
 + (BOOL)autoUnlockSupported;
++ (BOOL)bluetoothAndWiFiEnabled;
++ (void)enableBluetoothAndWiFi;
 - (void).cxx_destruct;
 - (void)attemptAutoUnlock;
 - (void)autoUnlockStateWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -18,7 +18,6 @@
 @property (nonatomic) long long participantStatus;
 @property (nonatomic) long long participantType;
 @property (nonatomic) long long pendingStatus;
-@property (readonly, nonatomic) NSDate *proposedStartDate;
 @property (nonatomic) BOOL proposedStartDateChanged;
 @property (nonatomic) BOOL statusChanged;
 

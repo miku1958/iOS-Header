@@ -27,9 +27,11 @@
     BOOL _clientIsDirectActivating;
     BOOL _clientRecentlyLostElection;
     BOOL _clientLostDueToTrumping;
+    BOOL _clientIsListeningAfterRecentWin;
     _DKKnowledgeStore *_coreDuetStore;
     NSUUID *_designatedSelfID;
     NSDate *_lastSiriActivationTime;
+    unsigned short _lastPHash;
 }
 
 + (void)clearCurrentCoordinator;
@@ -38,7 +40,6 @@
 - (void)_cancelTimer;
 - (void)_handleRecentClientElectionLoss;
 - (void)_initDeviceClassAndAdjustments;
-- (id)_responseObject:(unsigned short)arg1;
 - (BOOL)_shouldContinueFor:(id)arg1;
 - (id)_sortedReplies;
 - (void)_startListenTimer;
@@ -56,6 +57,7 @@
 - (void)logCoreDuetResults:(id)arg1;
 - (unsigned short)recentEventBump;
 - (void)resetReplies;
+- (id)responseObject:(unsigned short)arg1;
 - (void)startAdvertising:(id)arg1 afterDelay:(float)arg2 maxInterval:(float)arg3;
 - (void)startAdvertisingFromDirectTrigger;
 - (void)startAdvertisingFromVoiceTrigger;

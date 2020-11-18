@@ -8,10 +8,13 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
+@class NSMutableArray;
+
 @interface AWDCoreRoutineModelVisitCount : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
     unsigned int _count;
+    NSMutableArray *_visits;
     CDStruct_eca94db9 _has;
 }
 
@@ -19,15 +22,22 @@
 @property (nonatomic) BOOL hasCount;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (strong, nonatomic) NSMutableArray *visits; // @synthesize visits=_visits;
 
++ (Class)visitsType;
+- (void)addVisits:(id)arg1;
+- (void)clearVisits;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)visitsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)visitsCount;
 - (void)writeTo:(id)arg1;
 
 @end

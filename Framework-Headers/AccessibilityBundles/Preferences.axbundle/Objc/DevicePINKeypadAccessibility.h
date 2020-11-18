@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityIsScannerGroup;
+- (int)_accessibilityScannerGroupTraits;
 - (struct CGRect)accessibilityFrame;
 
 @end

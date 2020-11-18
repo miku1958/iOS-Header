@@ -123,6 +123,7 @@
 - (void)_encodePropertiesWithCoder:(id)arg1;
 - (id)_flatImageWithColor:(id)arg1;
 - (id)_flatImageWithWhite:(double)arg1 alpha:(double)arg2;
+- (BOOL)_hasDecompressionInfo;
 - (id)_imageForLegibilitySettings:(id)arg1 strength:(double)arg2;
 - (id)_imageForLegibilityStyle:(long long)arg1;
 - (long long)_imageOrientationConsideringRTL;

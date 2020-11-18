@@ -19,16 +19,20 @@
     NSString *_referringUrl;
     int _userAction;
     NSString *_userActivityType;
+    BOOL _fromPersonalizeNews;
     struct {
         unsigned int countOfNotificationsSelected:1;
         unsigned int onboardingScreenType:1;
         unsigned int previouslyCompletedOnboardingOsVersion:1;
         unsigned int userAction:1;
+        unsigned int fromPersonalizeNews:1;
     } _has;
 }
 
 @property (nonatomic) int countOfNotificationsSelected; // @synthesize countOfNotificationsSelected=_countOfNotificationsSelected;
+@property (nonatomic) BOOL fromPersonalizeNews; // @synthesize fromPersonalizeNews=_fromPersonalizeNews;
 @property (nonatomic) BOOL hasCountOfNotificationsSelected;
+@property (nonatomic) BOOL hasFromPersonalizeNews;
 @property (nonatomic) BOOL hasOnboardingScreenType;
 @property (nonatomic) BOOL hasPreviouslyCompletedOnboardingOsVersion;
 @property (readonly, nonatomic) BOOL hasReferringSourceApplication;

@@ -164,7 +164,7 @@
 - (int)formOfWayAt:(unsigned int)arg1;
 - (void)getFormOfWay:(int *)arg1 roadClass:(int *)arg2 at:(unsigned int)arg3;
 - (id)getHallForStop:(id)arg1;
-- (id)getSnappedPathsForLocation:(CDStruct_c3b9c2ee)arg1 observer:(id)arg2;
+- (id)getSnappedPathsForLocation:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 observer:(id)arg3;
 - (id)getSnappedPathsForVisibleRect:(CDStruct_90e2a262)arg1 rectsToSnap:(CDStruct_90e2a262 *)arg2 rectsToSnapCount:(unsigned long long)arg3 observer:(id)arg4;
 - (id)getStationForHall:(id)arg1;
 - (id)getStationForStop:(id)arg1;
@@ -214,6 +214,7 @@
 - (int)transportTypeForStep:(id)arg1;
 - (void)updateManeuverDisplayEndpointsAtMetersPerPoint:(double)arg1;
 - (void)updateManeuverDisplayEndpointsAtMetersPerPoint:(double)arg1 startOffsetInPoints:(double)arg2 endOffsetInPoints:(double)arg3 roadWidthInPoints:(double)arg4;
+- (void)updateRouteWithRideSelections:(id)arg1;
 - (id)zilchDataFromStepIndex:(unsigned long long)arg1;
 
 @end

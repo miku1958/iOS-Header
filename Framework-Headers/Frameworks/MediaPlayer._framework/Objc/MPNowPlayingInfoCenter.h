@@ -18,9 +18,11 @@
     NSObject<OS_dispatch_queue> *_queue;
     MPNowPlayingPlaybackQueueCache *_playbackQueueCache;
     id<MPNowPlayingPlaybackQueueDataSource> _playbackQueueDataSource;
+    unsigned long long _playbackState;
 }
 
 @property (copy) NSDictionary *nowPlayingInfo;
+@property unsigned long long playbackState; // @synthesize playbackState=_playbackState;
 
 + (id)defaultCenter;
 - (void).cxx_destruct;

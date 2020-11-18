@@ -22,6 +22,7 @@
     double _sampleRate;
     double _samplesSeen;
     unsigned int _frameRate;
+    double _totalSamples;
     double _lastOneShotStartpoint;
     double _lastOneShotEndpoint;
     double _lastRecurrentStartpoint;
@@ -38,6 +39,7 @@
     double _interspeechWaitTime;
     double _endWaitTime;
     long long _style;
+    double _delay;
     double _automaticEndpointingSuspensionEndTime;
     double _minimumDurationForEndpointer;
     id<AFAudioAnalyzerDelegate> _delegate;
@@ -45,6 +47,7 @@
 
 @property (nonatomic) double automaticEndpointingSuspensionEndTime; // @synthesize automaticEndpointingSuspensionEndTime=_automaticEndpointingSuspensionEndTime;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) double delay; // @synthesize delay=_delay;
 @property (weak, nonatomic) id<AFAudioAnalyzerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property double endWaitTime; // @synthesize endWaitTime=_endWaitTime;

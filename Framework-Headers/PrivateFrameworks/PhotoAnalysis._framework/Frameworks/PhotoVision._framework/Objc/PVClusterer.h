@@ -36,6 +36,9 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_outstandingSuggestionRequests;
     PVSuggestionRequest *_currentSuggestionRequest;
     NSLock *_suggestionLock;
+    NSLock *_currentStatusSnapshotLock;
+    CDStruct_56d3ddf4 _currentStatusSnapshot;
+    BOOL _currentStatusSnapshotIsValid;
     PVEventManager *_eventManager;
     long long _state;
 }
@@ -63,12 +66,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)_processingQueuePerformForcedFaceClustering:(BOOL)arg1 withCanceler:(id)arg2;
 - (BOOL)_processingQueueRestoreState:(id *)arg1;
 - (BOOL)_processingQueueSaveState:(id *)arg1;
+- (void)_recordAdditionalPendingFacesCount:(unsigned long long)arg1;
+- (void)_recordClusterRebuildRequired:(BOOL)arg1;
+- (void)_recordClusteringState:(BOOL)arg1;
+- (void)_recordCurrentStatus:(CDStruct_56d3ddf4)arg1;
+- (void)_recordPendingFacesCount:(unsigned long long)arg1;
 - (void)_removeEmptyGroups;
 - (BOOL)_sawBadPersistedClusters;
 - (unsigned long long)_selectRepresentativeFromFaces:(id)arg1 representativenessByCSN:(id)arg2;
 - (void)_syncClustererWithPhotoLibrary:(id)arg1;
 - (void)_transitionToReadyState;
-- (BOOL)_updatePersistedAlgorithmicClusters:(id)arg1 andFaces:(id)arg2 returnFaceGroupsWithoutKeyFace:(id *)arg3 deletedFaceCSNs:(id)arg4 toBeReclusteredFaceIds:(id)arg5 error:(id *)arg6;
+- (BOOL)_updatePersistedAlgorithmicClusters:(id)arg1 andFaces:(id)arg2 withCanceler:(id)arg3 returningPersistedClusters:(id *)arg4 faceGroupsWithoutKeyFace:(id *)arg5 csnsToBeRemovedFromClusterState:(id)arg6 toBeReclusteredFaceIds:(id)arg7 error:(id *)arg8;
 - (BOOL)_updateRepresentativeFacesForClusters:(id)arg1 csnByGroupWithoutKeyFace:(id)arg2 error:(id *)arg3;
 - (BOOL)cancelAllSuggestionRequests;
 - (void)cancelClustering;
@@ -83,10 +91,11 @@ __attribute__((visibility("hidden")))
 - (id)initWithContext:(id)arg1 dataAccessor:(id)arg2 cacheDirectoryUrl:(id)arg3 cvmlIntegration:(id)arg4;
 - (void)performClusteringWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestClusteringWithCompletion:(CDUnknownBlockType)arg1;
-- (id)requestSuggestionsForFaceClusterSequenceNumbers:(id)arg1 updateHandler:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (id)requestSuggestionsForFaceClusterSequenceNumbers:(id)arg1 withClusteringFlags:(id)arg2 updateHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (BOOL)restoreState:(id *)arg1;
 - (BOOL)saveState:(id *)arg1;
 - (void)scheduleClusteringAfterRemovingFaceCSNs:(id)arg1 addingFaceIdStrs:(id)arg2;
+- (id)status;
 - (id)suggestedFaceClusterSequenceNumbersForFaceClusterSequenceNumbersRepresentingClusters:(id)arg1 error:(id *)arg2;
 - (void)terminate;
 

@@ -9,11 +9,13 @@
 #import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary, NSMutableSet, NSString;
+@protocol OS_dispatch_queue;
 
 @interface NTKComplicationSampleData : NSObject <NSSecureCoding>
 {
     NSMutableDictionary *_familyToTemplate;
     NSMutableSet *_supportedFamilies;
+    NSObject<OS_dispatch_queue> *_internalQueue;
     NSString *_clientID;
     NSString *_applicationID;
 }
@@ -23,6 +25,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_commonInit;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSupportedFamilies:(id)arg1;

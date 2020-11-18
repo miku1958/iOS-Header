@@ -24,6 +24,7 @@
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) BOOL hasActions;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) BOOL requiresConfirmationToRun;
 @property (readonly, nonatomic) HMTrigger *trigger;
 
 + (Class)homeKitRepresentationClass;

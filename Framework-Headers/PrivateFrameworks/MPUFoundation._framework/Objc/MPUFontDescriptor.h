@@ -13,6 +13,7 @@
 
 @interface MPUFontDescriptor : NSObject <NSCopying, NSMutableCopying>
 {
+    double _defaultPointSizeAdjustment;
     long long _leadingAdjustment;
     double _systemFontSize;
     long long _textStyle;
@@ -28,6 +29,7 @@
 
 @property (readonly, nonatomic) UIFont *defaultFont;
 @property (readonly, nonatomic) double defaultFontLineHeight;
+@property (readonly, nonatomic) double defaultPointSizeAdjustment; // @synthesize defaultPointSizeAdjustment=_defaultPointSizeAdjustment;
 @property (readonly, nonatomic) long long leadingAdjustment; // @synthesize leadingAdjustment=_leadingAdjustment;
 @property (readonly, nonatomic) UIFont *preferredFont;
 @property (readonly, nonatomic) double preferredFontAscender;
@@ -43,7 +45,7 @@
 
 + (id)_adjustedNativeFontDescriptorWithBaseNativeFontDescriptor:(id)arg1 forCustomTextStyle:(long long)arg2;
 + (id)_baseNativeTextStyleForTextStyle:(long long)arg1;
-+ (id)_fontDescriptorWithTextStyle:(long long)arg1 leadingAdjustment:(long long)arg2 weight:(long long)arg3 systemFontSize:(double)arg4;
++ (id)_fontDescriptorWithTextStyle:(long long)arg1 leadingAdjustment:(long long)arg2 weight:(long long)arg3 systemFontSize:(double)arg4 defaultPointSizeAdjustment:(double)arg5;
 + (id)_fontPointSizeLayoutInterpolatorForTextStyle:(long long)arg1;
 + (void)_getNativeFontDescriptorSymbolicTraits:(unsigned int *)arg1 nativeTextStyleAttribute:(id *)arg2 forWeight:(long long)arg3;
 + (double)_layoutInterpolatorReferenceMetricForContentSizeCategory:(id)arg1;
@@ -56,6 +58,7 @@
 + (id)fontDescriptorWithTextStyle:(long long)arg1;
 + (id)fontDescriptorWithTextStyle:(long long)arg1 leadingAdjustment:(long long)arg2;
 + (id)fontDescriptorWithTextStyle:(long long)arg1 leadingAdjustment:(long long)arg2 weight:(long long)arg3;
++ (id)fontDescriptorWithTextStyle:(long long)arg1 leadingAdjustment:(long long)arg2 weight:(long long)arg3 defaultPointSizeAdjustment:(double)arg4;
 + (id)fontDescriptorWithTextStyle:(long long)arg1 weight:(long long)arg2;
 + (id)invalidationHandler;
 - (void).cxx_destruct;

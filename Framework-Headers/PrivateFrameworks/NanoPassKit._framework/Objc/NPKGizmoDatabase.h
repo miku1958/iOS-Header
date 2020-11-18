@@ -16,6 +16,7 @@
     struct sqlite3_stmt *_insertStatement;
     struct sqlite3_stmt *_insertDiffStatement;
     struct sqlite3_stmt *_selectPassDataStatement;
+    struct sqlite3_stmt *_selectPassAndImageSetsDataStatement;
     struct sqlite3_stmt *_selectPassDiffStatement;
     struct sqlite3_stmt *_updateDeletePendingStatment;
     struct sqlite3_stmt *_selectDeletePendingStatement;
@@ -65,6 +66,7 @@
 @property (readonly) NSArray *passDescriptions;
 @property (readonly) struct sqlite3_stmt *selectFelicaTransitAppletStateForPassStatement;
 @property (readonly) struct sqlite3_stmt *selectLastAddValueAmountForPassStatement;
+@property (readonly) struct sqlite3_stmt *selectPassAndImageSetsDataStatement; // @dynamic selectPassAndImageSetsDataStatement;
 @property (readonly) struct sqlite3_stmt *selectPassDataStatement; // @dynamic selectPassDataStatement;
 @property (readonly) struct sqlite3_stmt *selectPassDiffStatement; // @dynamic selectPassDiffStatement;
 @property (readonly) struct sqlite3_stmt *selectPendingAddValueDateForPassStatement;
@@ -109,7 +111,7 @@
 - (void)_notifyDatabaseChangedWithNoop:(BOOL)arg1 firstUnlock:(BOOL)arg2;
 - (void)_notifyForFirstUnlock;
 - (BOOL)_passDBIsAvailableLocked;
-- (id)_passForUniqueIDLocked:(id)arg1;
+- (id)_passForUniqueIDLocked:(id)arg1 includeImageSets:(BOOL)arg2;
 - (id)_passUniqueIDAssociateToTransactionWithIdentifier:(id)arg1;
 - (id)_pendingAddValueDateForPassWithUniqueIDLocked:(id)arg1;
 - (void)_performTransactionWithBlock:(CDUnknownBlockType)arg1;
@@ -132,6 +134,7 @@
 - (BOOL)_updateDeviceAndPreferredPaymentApplicationsDuringMigration:(id)arg1;
 - (BOOL)_updateDevicePaymentApplicationsDuringMigration:(id)arg1;
 - (BOOL)_updateEffectivePaymentApplicationStateDuringMigration:(id)arg1;
+- (BOOL)_updateEncodedImageSetsDuringMigration:(id)arg1;
 - (BOOL)_updateEncodedPaymentPassDuringMigration:(id)arg1;
 - (BOOL)_updateFrontAndBackFieldBucketsDuringMigration:(id)arg1;
 - (BOOL)_updateHasStoredValueDuringMigration:(id)arg1;
@@ -149,7 +152,7 @@
 - (void)enumerateAllPassesAndDescriptionsWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateAllPassesWithBlock:(CDUnknownBlockType)arg1;
 - (id)felicaTransitAppletStateForPassWithUniqueID:(id)arg1;
-- (id)filteredPassesUsingPassDescriptionPredicate:(id)arg1;
+- (id)filteredPassesUsingPassDescriptionPredicate:(id)arg1 includeImageSets:(BOOL)arg2;
 - (BOOL)hasPassesMatchingPassDescriptionPredicate:(id)arg1;
 - (id)init;
 - (struct sqlite3_stmt *)insertTransactionStatement;

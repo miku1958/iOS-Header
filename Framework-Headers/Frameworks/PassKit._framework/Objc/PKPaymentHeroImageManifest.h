@@ -19,6 +19,7 @@
 + (BOOL)manifestFileExistsForRegion:(id)arg1;
 + (void)removeManifestFileForRegion:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_deviceMeetsRequirementsForNetwork:(id)arg1;
 - (void)_downloadManifestWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_fileNameForNetworkImageOnDisk:(id)arg1;
 - (id)_readManifestDataFromDevice;
@@ -33,6 +34,7 @@
 - (id)initWithWebService:(id)arg1 preferredLanguage:(id)arg2;
 - (id)parseData:(id)arg1;
 - (id)primaryFeaturedNetwork;
+- (id)requirementsForNetwork:(id)arg1;
 - (void)setManifestWithData:(id)arg1;
 - (id)sha1ForNetwork:(id)arg1;
 - (id)urlForNetwork:(id)arg1;

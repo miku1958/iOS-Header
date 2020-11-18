@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 
-@class NSString, PXMemoriesFeedUIViewController, PXMemoriesSpecManager;
+@class NSString, PXMemoriesFeedUIViewController, PXMemoriesSpecManager, UIScrollView;
 
 @interface PXMemoriesFeedTVViewController : UIViewController <PXChangeObserver>
 {
@@ -19,6 +19,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PXMemoriesFeedUIViewController *memoriesFeedController; // @synthesize memoriesFeedController=_memoriesFeedController;
+@property (readonly, nonatomic) UIScrollView *ppt_scrollView;
 @property (readonly, nonatomic) PXMemoriesSpecManager *specManager; // @synthesize specManager=_specManager;
 @property (readonly) Class superclass;
 

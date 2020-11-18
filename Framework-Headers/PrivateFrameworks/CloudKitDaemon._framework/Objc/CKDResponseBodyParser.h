@@ -15,11 +15,9 @@
     NSMutableData *_parserData;
     NSError *_parserError;
     CDUnknownBlockType _objectParsedBlock;
-    CDUnknownBlockType _logParsedObjectBlock;
     long long _qualityOfService;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType logParsedObjectBlock; // @synthesize logParsedObjectBlock=_logParsedObjectBlock;
 @property (copy, nonatomic) CDUnknownBlockType objectParsedBlock; // @synthesize objectParsedBlock=_objectParsedBlock;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *parseQueue;
 @property (strong, nonatomic) NSMutableData *parserData;
@@ -28,7 +26,7 @@
 
 - (void).cxx_destruct;
 - (void)finishWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithRequest:(id)arg1;
+- (id)initWithQoS:(long long)arg1;
 - (void)processData:(id)arg1;
 
 @end

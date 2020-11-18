@@ -18,20 +18,20 @@
     BOOL _securitySessionOpen;
     BOOL _incompatibleUpdate;
     NSNumber *_category;
+    unsigned long long _configNumber;
+    id<HAPAccessoryServerDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
     HAPAccessory *_primaryAccessory;
     NSArray *_accessories;
     NSArray *_associatedAccessories;
     NSArray *_discoveredAccessories;
+    long long _linkType;
     NSHashTable *_internalDelegates;
     NSObject<OS_dispatch_queue> *_internalDelegateQueue;
-    id<HAPAccessoryServerDelegate> _delegate;
     id<HAPAccessoryServerForBridgeDelegate> _bridgeDelegate;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     id<HAPKeyStore> _keyStore;
-    NSString *_pairSetupPassword;
-    NSString *_homeName;
 }
 
 @property (copy, nonatomic) NSArray *accessories; // @synthesize accessories=_accessories;
@@ -39,19 +39,18 @@
 @property (weak) id<HAPAccessoryServerForBridgeDelegate> bridgeDelegate; // @synthesize bridgeDelegate=_bridgeDelegate;
 @property (copy, nonatomic) NSNumber *category; // @synthesize category=_category;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (nonatomic) unsigned long long configNumber; // @synthesize configNumber=_configNumber;
 @property (readonly, weak) id<HAPAccessoryServerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (copy, nonatomic) NSArray *discoveredAccessories; // @synthesize discoveredAccessories=_discoveredAccessories;
 @property (nonatomic) BOOL hasPairings; // @synthesize hasPairings=_hasPairings;
-@property (copy, nonatomic) NSString *homeName; // @synthesize homeName=_homeName;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic, getter=isIncompatibleUpdate) BOOL incompatibleUpdate; // @synthesize incompatibleUpdate=_incompatibleUpdate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *internalDelegateQueue; // @synthesize internalDelegateQueue=_internalDelegateQueue;
 @property (readonly, nonatomic) NSHashTable *internalDelegates; // @synthesize internalDelegates=_internalDelegates;
 @property (readonly, weak, nonatomic) id<HAPKeyStore> keyStore; // @synthesize keyStore=_keyStore;
-@property (readonly, nonatomic) long long linkType;
+@property (readonly, nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (copy, nonatomic) NSString *pairSetupPassword; // @synthesize pairSetupPassword=_pairSetupPassword;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (strong, nonatomic) HAPAccessory *primaryAccessory; // @synthesize primaryAccessory=_primaryAccessory;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
@@ -74,8 +73,8 @@
 - (void)notifyDelegateUpdatedCategory:(id)arg1;
 - (void)notifyDelegateUpdatedHasPairings:(BOOL)arg1;
 - (void)notifyDelegateUpdatedName:(id)arg1;
-- (void)readCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)readValueForCharacteristic:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)reconfirm;
 - (void)removeInternalDelegate:(id)arg1;
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -84,8 +83,7 @@
 - (void)startPairing;
 - (BOOL)stopPairingWithError:(id *)arg1;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
-- (void)writeCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)writeValue:(id)arg1 forCharacteristic:(id)arg2 authorizationData:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

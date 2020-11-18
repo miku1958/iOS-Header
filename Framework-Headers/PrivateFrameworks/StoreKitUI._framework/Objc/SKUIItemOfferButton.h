@@ -27,6 +27,7 @@
     long long _fillStyle;
     UIImage *_image;
     UIImageView *_imageView;
+    UIImageView *_borderedImageView;
     double _progress;
     SKUICircleProgressIndicator *_progressIndicator;
     BOOL _showsConfirmationState;
@@ -40,14 +41,18 @@
     BOOL _downloadRestores;
     NSString *_offerButtonStateDescription;
     BOOL _disabledButSelectable;
+    UIImage *_borderedImage;
     CDUnknownBlockType _centerImageProvider;
     double _borderColorAlphaMultiplier;
     SKUIBuyButtonDescriptor *_buttonDescriptor;
+    NSString *_buyType;
     SKUIButtonViewElement *_element;
 }
 
 @property (nonatomic) double borderColorAlphaMultiplier; // @synthesize borderColorAlphaMultiplier=_borderColorAlphaMultiplier;
+@property (strong, nonatomic) UIImage *borderedImage; // @synthesize borderedImage=_borderedImage;
 @property (strong, nonatomic) SKUIBuyButtonDescriptor *buttonDescriptor; // @synthesize buttonDescriptor=_buttonDescriptor;
+@property (copy, nonatomic) NSString *buyType; // @synthesize buyType=_buyType;
 @property (copy, nonatomic) CDUnknownBlockType centerImageProvider; // @synthesize centerImageProvider=_centerImageProvider;
 @property (copy, nonatomic) UIColor *cloudTintColor; // @synthesize cloudTintColor=_cloudTintColor;
 @property (copy, nonatomic) NSString *confirmationTitle;
@@ -68,6 +73,7 @@
 @property (readonly, nonatomic, getter=isShowingConfirmation) BOOL showingConfirmation;
 @property (nonatomic) BOOL showsConfirmationState; // @synthesize showsConfirmationState=_showsConfirmationState;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsPlayButton;
 @property (copy, nonatomic) NSString *title;
 @property (nonatomic) long long titleStyle; // @synthesize titleStyle=_titleStyle;
 @property (nonatomic, getter=isUniversal) BOOL universal; // @synthesize universal=_universal;
@@ -91,11 +97,13 @@
 + (id)playTintColorForBackgroundColor:(id)arg1;
 - (void).cxx_destruct;
 - (void)_adjustViewOrderingForProperties:(id)arg1;
+- (struct CGRect)_borderedImageViewFrame;
 - (id)_buttonPropertiesForState:(id)arg1;
 - (void)_cancelGestureAction:(id)arg1;
 - (double)_horizontalInsetForTitleStyle:(long long)arg1;
 - (id)_imageForProgressType:(long long)arg1;
 - (void)_insertBorderView;
+- (void)_insertBorderedImageView;
 - (void)_insertCancelGestureRecognizer;
 - (void)_insertImageView;
 - (void)_insertLabel;
@@ -107,6 +115,7 @@
 - (void)_sendDidAnimate;
 - (void)_sendWillAnimate;
 - (BOOL)_touchInBounds:(id)arg1;
+- (void)_transitionFromBorderedImage:(id)arg1 toTitle:(id)arg2 withDuration:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_transitionFromImage:(id)arg1 toImage:(id)arg2 withDuration:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_transitionFromProgress:(id)arg1 toProgress:(id)arg2 withDuration:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_transitionFromProgress:(id)arg1 toTitleOrImage:(id)arg2 withDuration:(double)arg3 completion:(CDUnknownBlockType)arg4;
@@ -121,7 +130,8 @@
 - (void)didMoveToWindow;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (BOOL)hasImage;
+- (BOOL)hasBorderedImage;
+- (BOOL)hasNonBorderedImage;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)layoutSizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

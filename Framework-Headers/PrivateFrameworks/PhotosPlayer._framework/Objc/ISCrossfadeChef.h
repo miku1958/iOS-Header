@@ -25,7 +25,7 @@
 - (void)_removeOperationForRequestID:(long long)arg1;
 - (void)cancelRequestWithID:(long long)arg1;
 - (id)init;
-- (long long)requestCrossfadeItemForVideoAsset:(id)arg1 sourceStartTime:(double)arg2 stillPhoto:(struct CGImage *)arg3 photoEXIFOrientation:(int)arg4 crossfadeDuration:(double)arg5 numberOfFrames:(unsigned long long)arg6 targetSize:(struct CGSize)arg7 videoComposition:(id)arg8 resultHandler:(CDUnknownBlockType)arg9;
+- (long long)requestCrossfadeItemForVideoAsset:(id)arg1 sourceStartTime:(double)arg2 stillPhoto:(struct CGImage *)arg3 photoEXIFOrientation:(int)arg4 crossfadeDuration:(double)arg5 minimumFrameInterval:(float)arg6 targetSize:(struct CGSize)arg7 videoComposition:(id)arg8 resultHandler:(CDUnknownBlockType)arg9;
 - (long long)requestCrossfadeItemForVideoAsset:(id)arg1 stillPhoto:(struct CGImage *)arg2 stillPhotoEXIFOrientation:(int)arg3 sourceStartTime:(double)arg4 targetSize:(struct CGSize)arg5 videoComposition:(id)arg6 resultHandler:(CDUnknownBlockType)arg7;
 
 @end

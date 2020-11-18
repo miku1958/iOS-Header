@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSNumber, NSString, _AXSpringBoardServerInstance;
 
 @protocol AXSpringBoardServerInstanceDelegate <NSObject>
+- (void)activateSOSModeWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (NSArray *)allowedMedusaGesturesWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)areSystemGesturesDisabledByAccessibilityWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)areSystemGesturesDisabledNativelyWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
@@ -32,6 +33,7 @@
 - (BOOL)isMediaPlayingWithServerInstance:(_AXSpringBoardServerInstance *)arg1 forBundleId:(NSString *)arg2;
 - (BOOL)isMultiTaskingActive;
 - (BOOL)isNotificationCenterVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
+- (BOOL)isNotificationVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isOrientationLockedWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isPasscodeRequiredOnLockWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isPurpleBuddyAppFrontmostWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
@@ -42,7 +44,6 @@
 - (BOOL)isSideSwitcherVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isSiriVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isSpeakThisTemporarilyDisabledWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
-- (BOOL)isStickyNotificationVisibleWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isSyncingRestoringResettingOrUpdatingWithServerInstance:(_AXSpringBoardServerInstance *)arg1;
 - (BOOL)isSystemAppFrontmostExcludingSiri:(BOOL)arg1 withServerInstance:(_AXSpringBoardServerInstance *)arg2;
 - (BOOL)isSystemAppShowingAnAlertWithServerInstance:(_AXSpringBoardServerInstance *)arg1;

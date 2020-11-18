@@ -8,18 +8,20 @@
 
 #import <HealthDaemon/HDAchievementAssetObserver-Protocol.h>
 #import <HealthDaemon/HDAchievementDefinitionAlertSuppressorDelegate-Protocol.h>
+#import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class HDBackgroundTaskScheduler, HDProfile, NSDate, NSNumber, NSString;
+@class HDBackgroundTaskScheduler, HDProfile, NSDate, NSString, _HKDelayedOperation;
 @protocol HDAchievementDefinitionAlertNotifier, HDAchievementDefinitionAlertSuppressor, OS_dispatch_queue;
 
-@interface HDAchievementDefinitionAlertManager : NSObject <HDHealthDaemonReadyObserver, HDAchievementDefinitionAlertSuppressorDelegate, HDAchievementAssetObserver>
+@interface HDAchievementDefinitionAlertManager : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDAchievementDefinitionAlertSuppressorDelegate, HDAchievementAssetObserver>
 {
     HDProfile *_profile;
     HDBackgroundTaskScheduler *_backgroundTaskScheduler;
     id<HDAchievementDefinitionAlertSuppressor> _alertSuppressor;
     NSObject<OS_dispatch_queue> *_queue;
-    NSNumber *_waitingToRun;
+    BOOL _waitingToRunAfterFirstUnlock;
+    _HKDelayedOperation *_updateOperation;
     id<HDAchievementDefinitionAlertNotifier> _alertNotifier;
     NSDate *_dateOverride;
 }
@@ -36,26 +38,35 @@
 + (id)_definitionIdentifiersInAlertedState:(unsigned long long)arg1 amongDefinitions:(id)arg2 withProfile:(id)arg3 error:(id *)arg4;
 + (id)_findDefinitionsToAlertWithProfile:(id)arg1 currentDate:(id)arg2 amongDefinitions:(id)arg3 getExpiredDefinitions:(id *)arg4;
 + (id)_findNextDefinitionToScheduleAmongDefinitions:(id)arg1 withCurrentDate:(id)arg2;
++ (BOOL)_resetAlertedStatesWithProfile:(id)arg1 error:(id *)arg2;
++ (BOOL)_resetAvailabilityStatesWithProfile:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (void)_beginObservingDefinitionAvailabilityFactors;
+- (void)_definitionAvailabilityDidChange;
 - (void)_queue_cleanUpIdentifierAvailabilityWithAvailableIdentifiers:(id)arg1;
 - (void)_queue_findAndNotifyAlerts;
 - (BOOL)_queue_markDefinitions:(id)arg1 asAlertedState:(unsigned long long)arg2;
 - (void)_queue_markDefinitionsAvailable:(id)arg1;
-- (void)_queue_rescheduleNewAchievementAlertsWithDefinitions:(id)arg1;
+- (void)_queue_rescheduleBackgroundTaskWithDefinitions:(id)arg1;
+- (void)_queue_rescheduleTaskAndUpdateAlertedStates;
+- (void)_rescheduleTaskAndUpdateAlertedStates;
 - (void)_synthesizeAlert;
+- (void)_timeZoneDidChange:(id)arg1;
+- (void)_unprotectedUserDefaultKeysDidSync:(id)arg1;
 - (void)achievementDefinitionsDidChangeToDefinitions:(id)arg1;
 - (void)alertSuppressionStatusDidChange:(id)arg1;
-- (void)clearBookkeepingKeyValues;
 - (id)currentDate;
 - (void)daemonReady:(id)arg1;
+- (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (id)definitionIdentifiersInAlertedState:(unsigned long long)arg1 withError:(id *)arg2;
 - (id)initWithProfile:(id)arg1 backgroundTaskScheduler:(id)arg2 alertSuppressor:(id)arg3 alertNotifier:(id)arg4;
-- (BOOL)markDefinitionIdentifiers:(id)arg1 asAlertedState:(unsigned long long)arg2 withProfile:(id)arg3 error:(id *)arg4;
-- (BOOL)markDefinitionIdentifiers:(id)arg1 asAvailable:(BOOL)arg2 withProfile:(id)arg3 error:(id *)arg4;
+- (BOOL)markDefinitionIdentifiers:(id)arg1 asAlertedState:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)markDefinitionIdentifiers:(id)arg1 asAvailable:(BOOL)arg2 error:(id *)arg3;
 - (id)nextScheduledTaskDate;
+- (BOOL)resetAlertedStatesWithError:(id *)arg1;
+- (BOOL)resetAvailabilityStatesWithError:(id *)arg1;
 - (id)unviewedDefinitionsWithError:(id *)arg1;
-- (void)updateDefinitionsToAlert;
 - (BOOL)wantsToAlert;
 
 @end

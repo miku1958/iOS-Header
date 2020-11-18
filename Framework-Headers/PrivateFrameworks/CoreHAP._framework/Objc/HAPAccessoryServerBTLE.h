@@ -33,7 +33,7 @@
 - (void).cxx_destruct;
 - (void)handleConnectionWithError:(id)arg1;
 - (void)handleDisconnectionWithError:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(BOOL)arg6 category:(id)arg7 connectionIdleTime:(unsigned char)arg8 browser:(id)arg9 keyStore:(id)arg10;
+- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(BOOL)arg6 configNumber:(id)arg7 category:(id)arg8 connectionIdleTime:(unsigned char)arg9 browser:(id)arg10 keyStore:(id)arg11;
 - (long long)linkType;
 - (void)notifyDelegateUdpatedStateNumber;
 - (void)updateConnectionIdleTime:(unsigned char)arg1;

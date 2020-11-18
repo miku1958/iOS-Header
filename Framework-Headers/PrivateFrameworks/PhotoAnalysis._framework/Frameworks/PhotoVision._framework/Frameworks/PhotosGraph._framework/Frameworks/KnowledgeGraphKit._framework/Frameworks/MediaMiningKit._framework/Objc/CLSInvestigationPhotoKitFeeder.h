@@ -18,6 +18,7 @@
     BOOL _prefetchPersons;
     BOOL _prefetchPersonCount;
     BOOL _prefetchScenes;
+    BOOL _prefetchMediaAnalyses;
     PHAssetCollection *_assetCollection;
 }
 
@@ -31,10 +32,10 @@
 @property (readonly, nonatomic) NSDate *universalEndDate;
 @property (readonly, nonatomic) NSDate *universalStartDate;
 
-+ (id)feederForAssetCollection:(id)arg1 options:(id)arg2 prefetchPersons:(BOOL)arg3 personCountPrefetchOption:(unsigned long long)arg4 scenesPrefetchOption:(unsigned long long)arg5;
++ (id)feederForAssetCollection:(id)arg1 options:(id)arg2 prefetchPersons:(BOOL)arg3 personCountPrefetchOption:(unsigned long long)arg4 scenesPrefetchOption:(unsigned long long)arg5 mediaAnalysesPrefetchOption:(unsigned long long)arg6;
 - (void).cxx_destruct;
 - (id)_allAvailableMetadataKeys;
-- (BOOL)_shouldPrefetchPersonCountAndScenes;
+- (BOOL)_shouldPrefetchCurationInformation;
 - (id)allItems;
 - (id)approximateLocation;
 - (id)endDateComponents;

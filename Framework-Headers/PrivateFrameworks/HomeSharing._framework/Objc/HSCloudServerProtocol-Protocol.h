@@ -29,7 +29,6 @@
 - (void)deprioritizeSubscriptionItemArtworkForPersistentID:(long long)arg1;
 - (void)disableJaliscoGeniusWithCompletion:(void (^)(NSError *))arg1;
 - (void)enableJaliscoGeniusWithCompletion:(void (^)(NSError *))arg1;
-- (void)evaluateKeepLocalRulesWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)hasProperNetworkConditionsToPlayMediaWithCompletion:(void (^)(BOOL))arg1;
 - (void)hasProperNetworkConditionsToShowCloudMediaWithCompletion:(void (^)(BOOL))arg1;
 - (void)hideItemsWithPurchaseHistoryIDs:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;

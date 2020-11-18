@@ -9,7 +9,7 @@
 #import <network/OS_nw_endpoint_flow-Protocol.h>
 
 @class NSString;
-@protocol OS_nw_array, OS_nw_channel, OS_nw_endpoint, OS_nw_path, OS_nw_path_evaluator, OS_nw_read_request, OS_nw_write_request, OS_xpc_object;
+@protocol OS_dispatch_data, OS_nw_array, OS_nw_channel, OS_nw_endpoint, OS_nw_path, OS_nw_path_evaluator, OS_nw_read_request, OS_nw_write_request, OS_xpc_object;
 
 @interface NWConcrete_nw_endpoint_flow : NSObject <OS_nw_endpoint_flow>
 {
@@ -42,6 +42,8 @@
     BOOL servicing_reads;
     BOOL input_finished;
     struct nw_protocol *wrapper_protocol;
+    NSObject<OS_dispatch_data> *final_data;
+    int final_error;
 }
 
 @property (readonly, copy) NSString *debugDescription;

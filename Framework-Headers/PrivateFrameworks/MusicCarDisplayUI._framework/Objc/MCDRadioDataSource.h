@@ -25,7 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MCDRadioDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSArray *featuredStations;
+@property (strong, nonatomic) NSArray *featuredStations; // @synthesize featuredStations=_featuredStations;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isOptedInToRadio) BOOL optedInToRadio;
 @property (strong, nonatomic) MCDRadioPlaybackCoordinator *playbackCoordinator; // @synthesize playbackCoordinator=_playbackCoordinator;

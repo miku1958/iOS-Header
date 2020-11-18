@@ -9,7 +9,7 @@
 #import <Preferences/PSHeaderFooterView-Protocol.h>
 #import <Preferences/UITextViewDelegate-Protocol.h>
 
-@class NSString, NSURL, UITextView;
+@class NSString, NSURL, UIImageView, UITextView;
 
 @interface PSFooterHyperlinkView : UIView <PSHeaderFooterView, UITextViewDelegate>
 {
@@ -19,6 +19,7 @@
     struct _NSRange _linkRange;
     id _target;
     SEL _action;
+    UIImageView *_iconView;
 }
 
 @property (strong) NSURL *URL;
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong) UIImageView *iconView; // @synthesize iconView=_iconView;
 @property struct _NSRange linkRange;
 @property (readonly) Class superclass;
 @property (weak) id target; // @synthesize target=_target;

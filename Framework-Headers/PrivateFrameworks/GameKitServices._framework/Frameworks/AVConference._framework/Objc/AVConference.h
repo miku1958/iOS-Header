@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class AVConferenceXPCClient, CALayer, NSDictionary, NSMutableDictionary, NSTimer;
-@protocol AVConferenceDelegate;
+@protocol AVConferenceDelegate, OS_dispatch_queue;
 
 @interface AVConference : NSObject
 {
@@ -23,6 +23,7 @@
     BOOL _isUsingFrontCamera;
     BOOL _microphoneMuted;
     NSMutableDictionary *_stateCacheForCallID;
+    NSObject<OS_dispatch_queue> *_stateQueue;
     BOOL shouldDisplayNetworkQualityGraph_;
     NSTimer *networkQualityUpdateTimer_;
     CALayer *networkQualityGraphLayer_;
@@ -44,7 +45,6 @@
 @property (nonatomic, getter=isOutputMeteringEnabled) BOOL outputMeteringEnabled;
 @property (nonatomic) BOOL requiresWifi;
 @property BOOL shouldDisplayNetworkQualityGraph; // @synthesize shouldDisplayNetworkQualityGraph=shouldDisplayNetworkQualityGraph_;
-@property (readonly) NSMutableDictionary *stateCacheForCallID; // @synthesize stateCacheForCallID=_stateCacheForCallID;
 @property (getter=isUsingViceroyBlobFormat) BOOL useViceroyBlobFormat;
 
 + (short)addressPointerFromBlob:(id)arg1;
@@ -59,6 +59,7 @@
 + (void)stopAudioSession;
 - (void)addGKSCallEvent:(id)arg1 sessionID:(id)arg2;
 - (id)callMetadataForCallID:(long long)arg1;
+- (id)callStateForCallID:(id)arg1;
 - (void)cancelCallID:(long long)arg1;
 - (id)capabilitiesForCallID:(long long)arg1;
 - (void)cleanupSubLayerFront;
@@ -112,6 +113,7 @@
 - (BOOL)setAudioInputDevice:(id)arg1;
 - (BOOL)setAudioOutputDevice:(id)arg1;
 - (void)setCallReport:(long long)arg1 withReport:(id)arg2;
+- (void)setCallState:(id)arg1 forCallID:(id)arg2;
 - (void)setConferenceState:(unsigned int)arg1 forCallID:(long long)arg2;
 - (void)setConferenceVisualRectangle:(struct CGRect)arg1 forCallID:(long long)arg2;
 - (void)setLastActiveCallID:(long long)arg1;

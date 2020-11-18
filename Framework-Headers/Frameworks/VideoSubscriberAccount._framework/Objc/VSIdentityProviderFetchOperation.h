@@ -8,6 +8,7 @@
 
 @class NSOperationQueue, NSString, VSFailable;
 
+__attribute__((visibility("hidden")))
 @interface VSIdentityProviderFetchOperation : VSAsyncOperation
 {
     NSString *_identityProviderID;

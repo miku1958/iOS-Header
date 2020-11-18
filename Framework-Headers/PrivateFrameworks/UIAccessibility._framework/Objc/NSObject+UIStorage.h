@@ -12,10 +12,12 @@
 - (id)_accessibilityAncestorFocusParcel;
 - (BOOL)_accessibilityCanBecomeNativeFocused;
 - (id)_accessibilityElementsWithSemanticContext:(id)arg1;
+- (unsigned long long)_accessibilityExplorerElementReadPriority;
 - (id)_accessibilityExplorerElements;
 - (id)_accessibilityExtendedLabelForFocusParcelWithLabel:(id)arg1;
 - (unsigned long long)_accessibilityFocusParcelChildrenCount:(unsigned long long)arg1;
 - (id)_accessibilityFrameDelegate;
+- (BOOL)_accessibilityFullscreenVideoViewIsVisible;
 - (BOOL)_accessibilityHandleMagicTap;
 - (BOOL)_accessibilityHandleMagicTapForPronunciation;
 - (BOOL)_accessibilityHasActionBlockForKey:(unsigned int)arg1;
@@ -40,6 +42,7 @@
 - (BOOL)_accessibilityShouldSpeakExplorerElementsAfterFocus;
 - (id)_accessibilitySiriContentElementsWithSemanticContext;
 - (id)_accessibilitySiriContentNativeFocusableElements;
+- (id)_accessibilitySortExplorerElements:(id)arg1;
 - (BOOL)_accessibilitySpeakThisCanBeHighlighted;
 - (id)_accessibilitySpeakThisElementsAndStrings;
 - (unsigned long long)_accessibilitySpeakThisMaximumNumberOfElements;

@@ -16,6 +16,7 @@
 
 @interface HMAccessory : NSObject <NSSecureCoding, HMFMessageReceiver, HMObjectMerge, HMMutableApplicationData>
 {
+    BOOL _firmwareUpdateAvailable;
     BOOL _reachable;
     BOOL _discoveredBridgeableAccessory;
     BOOL _bridgedAccessory;
@@ -31,6 +32,8 @@
     NSString *_manufacturer;
     NSString *_firmwareVersion;
     NSString *_serialNumber;
+    NSString *_bundleID;
+    NSString *_storeID;
     NSArray *_uniqueIdentifiersForBridgedAccessories;
     NSArray *_uniqueIdentifiersForBridgeAccessories;
     HMAccessoryCategory *_category;
@@ -58,6 +61,7 @@
 @property (nonatomic) BOOL bridgeSupportsConfiguration; // @synthesize bridgeSupportsConfiguration=_bridgeSupportsConfiguration;
 @property (readonly, nonatomic, getter=isBridged) BOOL bridged;
 @property (nonatomic) BOOL bridgedAccessory; // @synthesize bridgedAccessory=_bridgedAccessory;
+@property (strong) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (readonly, copy, nonatomic) NSArray *cameraProfiles;
 @property (strong, nonatomic) HMAccessoryCategory *category; // @synthesize category=_category;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
@@ -67,6 +71,7 @@
 @property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL discoveredBridgeableAccessory; // @synthesize discoveredBridgeableAccessory=_discoveredBridgeableAccessory;
+@property (nonatomic) BOOL firmwareUpdateAvailable; // @synthesize firmwareUpdateAvailable=_firmwareUpdateAvailable;
 @property (strong) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMHome *home; // @synthesize home=_home;
@@ -85,6 +90,7 @@
 @property (weak, nonatomic) HMRoom *room; // @synthesize room=_room;
 @property (strong) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (readonly, copy, nonatomic) NSArray *services;
+@property (strong) NSString *storeID; // @synthesize storeID=_storeID;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long transportTypes; // @synthesize transportTypes=_transportTypes;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -136,16 +142,16 @@
 - (void)_updateRoom:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_valueForCharacteristic:(id)arg1 ofService:(id)arg2;
 - (void)_writeValue:(id)arg1 forCharacteristic:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)bundleID;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)identifyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isAdditionalSetupRequired;
+- (BOOL)isFirmwareUpdateAvailable;
 - (void)notifyDelegateOfAppDataUpdateForService:(id)arg1;
 - (void)setApplicationData:(id)arg1;
-- (id)storeID;
+- (void)updateAccessoryInfo:(id)arg1;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateApplicationData:(id)arg1 forService:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

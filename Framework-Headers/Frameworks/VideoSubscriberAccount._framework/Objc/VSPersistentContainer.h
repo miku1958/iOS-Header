@@ -8,6 +8,7 @@
 
 @class NSManagedObjectContext, NSPersistentContainer;
 
+__attribute__((visibility("hidden")))
 @interface VSPersistentContainer : NSObject
 {
     long long _modelVersion;

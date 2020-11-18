@@ -22,7 +22,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)cancelSuggestionForPerson:(id)arg1 withToken:(long long)arg2 error:(id *)arg3;
+- (BOOL)cancelSuggestionForPerson:(id)arg1 withToken:(long long)arg2 error:(id *)arg3;
 - (void)commitSuggestionsForPerson:(id)arg1 withConfirmedSuggestions:(id)arg2 andRejectedSuggestions:(id)arg3;
 - (id)init;
 - (long long)suggestionsForPerson:(id)arg1 withConfirmedSuggestions:(id)arg2 andRejectedSuggestions:(id)arg3 completion:(CDUnknownBlockType)arg4;

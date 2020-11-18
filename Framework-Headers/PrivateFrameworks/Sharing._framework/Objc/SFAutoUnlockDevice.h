@@ -15,6 +15,8 @@
     BOOL _unlockEnabled;
     BOOL _keyExists;
     BOOL _bluetoothCloudPaired;
+    BOOL _placeholder;
+    NSString *_modelDescription;
     NSUUID *_bluetoothID;
     NSUUID *_proxyBluetoothID;
     NSString *_modelName;
@@ -24,7 +26,9 @@
 @property (nonatomic) BOOL bluetoothCloudPaired; // @synthesize bluetoothCloudPaired=_bluetoothCloudPaired;
 @property (strong, nonatomic) NSUUID *bluetoothID; // @synthesize bluetoothID=_bluetoothID;
 @property (nonatomic) BOOL keyExists; // @synthesize keyExists=_keyExists;
+@property (copy, nonatomic) NSString *modelDescription; // @synthesize modelDescription=_modelDescription;
 @property (strong, nonatomic) NSString *modelName; // @synthesize modelName=_modelName;
+@property (nonatomic) BOOL placeholder; // @synthesize placeholder=_placeholder;
 @property (copy, nonatomic) NSUUID *proxyBluetoothID; // @synthesize proxyBluetoothID=_proxyBluetoothID;
 @property (strong, nonatomic) NSDictionary *results; // @synthesize results=_results;
 @property (readonly, nonatomic) long long type;
@@ -34,6 +38,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

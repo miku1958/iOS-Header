@@ -67,6 +67,7 @@
     BOOL _adjustsFontForContentSizeCategory;
     BOOL __textColorFollowsTintColor;
     double _preferredMaxLayoutWidth;
+    double _multilineContextWidth;
 }
 
 @property (readonly, nonatomic) double _capOffsetFromBoundsTop;
@@ -147,6 +148,7 @@
 - (void)_evaluateContentsFormat;
 - (id)_fallbackTextColorForUserInterfaceStyle:(long long)arg1;
 - (double)_firstBaselineOffsetFromTop;
+- (double)_firstLineBaseline;
 - (id)_image;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_invalidateAsNeededForNewSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2 withLinkCheck:(BOOL)arg3;
@@ -160,6 +162,7 @@
 - (double)_maximumMarqueeTextWidth;
 - (long long)_measuredNumberOfLines;
 - (double)_minimumFontSize;
+- (double)_multilineContextWidth;
 - (BOOL)_needsDoubleUpdateConstraintsPass;
 - (void)_noteInstanceCustomizationForAttributedString:(id)arg1 attributes:(id)arg2;
 - (double)_preferredMaxLayoutWidth;
@@ -177,6 +180,7 @@
 - (void)_setFont:(id)arg1;
 - (void)_setLineBreakMode:(long long)arg1;
 - (void)_setMinimumFontSize:(double)arg1;
+- (void)_setMultilineContextWidth:(double)arg1;
 - (void)_setNeedsDisplayForInvalidatedContents;
 - (void)_setNeedsUpdateConstraintsNeedingLayout:(BOOL)arg1;
 - (void)_setShadow:(id)arg1;

@@ -35,6 +35,7 @@
     EKEventDetailItem *_currentEditItem;
     UITableView *_tableView;
     BOOL _didAppear;
+    BOOL _countedAppearance;
     BOOL _viewIsVisible;
     BOOL _autoPop;
     BOOL _allowsSubitems;

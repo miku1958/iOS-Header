@@ -8,7 +8,7 @@
 
 #import <MediaSocial/NSCopying-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class MSCLFacebookPage, NSArray, NSMutableDictionary, NSString;
 
 @interface MSCLAccount : NSObject <NSCopying>
 {
@@ -17,11 +17,12 @@
 
 @property (copy, nonatomic) NSString *authenticationSecret;
 @property (copy, nonatomic) NSString *authenticationToken;
-@property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (copy, nonatomic) NSString *fullName;
+@property (copy, nonatomic) NSArray *pages;
 @property (copy, nonatomic) NSString *password;
+@property (readonly, copy, nonatomic) MSCLFacebookPage *preferredPage;
 @property (copy, nonatomic) NSString *preferredPageIdentifier;
-@property (copy, nonatomic) NSString *serviceIdentifier;
+@property (readonly, copy, nonatomic) NSString *serviceIdentifier;
 @property (copy, nonatomic) NSString *userName;
 
 - (void).cxx_destruct;
@@ -29,13 +30,11 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)init;
-- (id)initWithACAccount:(id)arg1;
+- (id)initWithServiceIdentifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)removeFromKeychain;
 - (BOOL)saveToKeychain;
 - (void)setValue:(id)arg1 forProperty:(id)arg2;
-- (void)updateWithACAccount:(id)arg1;
 - (void)updateWithMSCLAccount:(id)arg1;
 - (id)valueForProperty:(id)arg1;
 

@@ -72,6 +72,7 @@
     BOOL _unfreezingTextContainerSize;
     BOOL _adjustsFontForContentSizeCategory;
     BOOL _clearsOnInsertion;
+    double _multilineContextWidth;
     UIView *_inputView;
 }
 
@@ -218,6 +219,7 @@
 - (void)_layoutPlaceholder;
 - (id)_linkTextAttributesForLink:(id)arg1 forCharacterAtIndex:(unsigned long long)arg2;
 - (BOOL)_mightHaveSelection;
+- (double)_multilineContextWidth;
 - (BOOL)_needsDoubleUpdateConstraintsPass;
 - (void)_observedTextViewDidChange:(id)arg1;
 - (BOOL)_ownsInputAccessoryView;
@@ -257,6 +259,7 @@
 - (void)_setFrameOrBounds:(struct CGRect)arg1 fromOldRect:(struct CGRect)arg2 settingAction:(CDUnknownBlockType)arg3;
 - (void)_setFreezeTextContainerSize:(BOOL)arg1;
 - (void)_setInteractiveTextSelectionDisabled:(BOOL)arg1;
+- (void)_setMultilineContextWidth:(double)arg1;
 - (void)_setPreferredMaxLayoutWidth:(double)arg1;
 - (void)_setTextColor:(id)arg1;
 - (void)_setWhitelistedTypingAttributes:(id)arg1;

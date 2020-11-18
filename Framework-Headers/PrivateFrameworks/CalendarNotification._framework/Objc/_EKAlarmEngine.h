@@ -32,9 +32,6 @@
     NSMutableDictionary *_monitoredRegions;
     BOOL _shouldUpdateWithForceForAlarmTable;
     BOOL _shouldUpdateWithForceForFences;
-    BOOL _shouldUpdateWithForceForVehicleTriggers;
-    BOOL _monitoringForConnections;
-    BOOL _monitoringForDisconnections;
     long long _vehicleConnectionState;
     EKTimedEventStorePurger *_timedEventStorePurger;
 }
@@ -51,7 +48,6 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_adjustFences:(id)arg1;
-- (void)_adjustVehicleTriggersWithEventStore:(id)arg1;
 - (id)_alertInfoAlarmIDFromEKAlarm:(id)arg1;
 - (id)_alertInfoAlarmIDFromSideAlarm:(id)arg1;
 - (BOOL)_allowConservativeEntry;
@@ -68,7 +64,7 @@
 - (void)_killSyncTimer;
 - (void)_killTimer;
 - (void)_locationDaemonDidLaunch;
-- (void)_motionUpdatedWithConnectionState:(long long)arg1 activity:(id)arg2;
+- (void)_motionUpdatedWithConnectionState:(long long)arg1;
 - (void)_notifyAlarmsFired:(id)arg1;
 - (BOOL)_populateAlarmTable:(id)arg1;
 - (void)_populateFinished;
@@ -93,7 +89,7 @@
 - (void)_timeZoneChanged:(id)arg1;
 - (void)_timerFired;
 - (void)_updateRegionMonitoringForRegion:(id)arg1 withLocationOfInterest:(id)arg2 forLocation:(struct CLLocationCoordinate2D)arg3;
-- (void)_updateWithForceForAlarmTable:(BOOL)arg1 forFences:(BOOL)arg2 forVehicleTriggers:(BOOL)arg3;
+- (void)_updateWithForceForAlarmTable:(BOOL)arg1 forFences:(BOOL)arg2;
 - (void)_vehicleTriggerFired:(BOOL)arg1;
 - (void)dealloc;
 - (void)handleBTAJob:(id)arg1 named:(const char *)arg2;

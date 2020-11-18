@@ -240,8 +240,6 @@
 + (id)normalizedInputModesFromPreference;
 + (struct CGPoint)normalizedPersistentOffset;
 + (struct CGPoint)normalizedPersistentOffsetIgnoringState;
-+ (int)persistentDictationTargetZone;
-+ (struct CGPoint)persistentDictationWindowOffset;
 + (struct CGPoint)persistentOffset;
 + (double)persistentSplitProgress;
 + (void)refreshRivenStateWithTraits:(id)arg1 isKeyboard:(BOOL)arg2;
@@ -254,8 +252,6 @@
 + (void)setFloating:(BOOL)arg1;
 + (void)setFloating:(BOOL)arg1 positionedWithLayout:(id)arg2;
 + (void)setParentTestForProfiling:(id)arg1;
-+ (void)setPersistentDictationTargetZone:(int)arg1;
-+ (void)setPersistentDictationWindowOffset:(struct CGPoint)arg1;
 + (void)setPersistentOffset:(struct CGPoint)arg1;
 + (void)setPersistentSplitProgress:(double)arg1;
 + (id)sharedInstance;
@@ -683,6 +679,7 @@
 - (BOOL)shouldGenerateCandidatesAfterSelectionChange;
 - (BOOL)shouldRapidDelete;
 - (BOOL)shouldRapidDeleteWithDelegate;
+- (BOOL)shouldShowCandidateBarIfReceivedCandidatesInCurrentInputMode:(BOOL)arg1;
 - (BOOL)shouldSwitchFromInputManagerMode:(id)arg1 toInputMode:(id)arg2;
 - (BOOL)shouldSwitchInputMode:(id)arg1;
 - (BOOL)shouldUseCarPlayModes;

@@ -7,12 +7,14 @@
 #import <ITMLKit/IKJSObject.h>
 
 #import <ITMLKit/IKJSDeviceSettings-Protocol.h>
-#import <ITMLKit/JSExport-Protocol.h>
+#import <ITMLKit/NSObject-Protocol.h>
+#import <ITMLKit/_IKJSDeviceSettings-Protocol.h>
+#import <ITMLKit/_IKJSDeviceSettingsProxy-Protocol.h>
 
 @class IKJSRestrictions, NSString;
 @protocol IKAppDeviceConfig;
 
-@interface IKJSDeviceSettings : IKJSObject <IKJSDeviceSettings, JSExport>
+@interface IKJSDeviceSettings : IKJSObject <NSObject, IKJSDeviceSettings, _IKJSDeviceSettingsProxy, _IKJSDeviceSettings>
 {
     id _restrictionDidChangeToken;
     id<IKAppDeviceConfig> _deviceConfig;
@@ -20,7 +22,10 @@
 
 @property (readonly, nonatomic) IKJSRestrictions *Restrictions;
 @property (readonly, nonatomic) struct CGSize Screen;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<IKAppDeviceConfig> deviceConfig; // @synthesize deviceConfig=_deviceConfig;
+@property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) NSString *language;
 @property (readonly, strong, nonatomic) NSString *name;
 @property (readonly, strong, nonatomic) NSString *preferredVideoFormat;
@@ -28,10 +33,12 @@
 @property (readonly, nonatomic) IKJSRestrictions *restrictions;
 @property (readonly, nonatomic) struct CGSize screen;
 @property (readonly, strong, nonatomic) NSString *storefrontCountryCode;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_formatStringForVideoFormat:(unsigned long long)arg1;
 - (void)_restrictionsDidChangeNotification:(id)arg1;
+- (id)asPrivateIKJSDeviceSettings;
 - (void)dealloc;
 - (id)initWithAppContext:(id)arg1 deviceConfig:(id)arg2;
 

@@ -38,6 +38,7 @@
 @property (readonly, strong, nonatomic) NSString *displayName;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isActive;
+@property (readonly, nonatomic) BOOL isInTransientRegistrationState;
 @property (readonly, nonatomic) BOOL isUserDisabled;
 @property (strong, nonatomic) NSString *loginID;
 @property (readonly, strong, nonatomic) NSArray *nearbyDevices;

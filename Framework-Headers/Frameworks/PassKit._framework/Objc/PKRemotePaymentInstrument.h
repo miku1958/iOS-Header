@@ -13,6 +13,7 @@
 
 @interface PKRemotePaymentInstrument : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _supportsAutomaticSelection;
     NSString *_passIdentifier;
     NSData *_manifestHash;
     NSString *_displayName;
@@ -33,6 +34,7 @@
 @property (copy, nonatomic) NSString *primaryAccountIdentifier; // @synthesize primaryAccountIdentifier=_primaryAccountIdentifier;
 @property (copy, nonatomic) NSString *primaryAccountNumberSuffix; // @synthesize primaryAccountNumberSuffix=_primaryAccountNumberSuffix;
 @property (strong, nonatomic) PKPaymentApplication *primaryPaymentApplication; // @synthesize primaryPaymentApplication=_primaryPaymentApplication;
+@property (nonatomic) BOOL supportsAutomaticSelection; // @synthesize supportsAutomaticSelection=_supportsAutomaticSelection;
 
 + (id)remotePaymentInstrumentWithProtobuf:(id)arg1;
 + (id)sortDescriptorForDefaultPaymentInstrument:(id)arg1 supportedNetworks:(id)arg2 merchantCapabilities:(unsigned long long)arg3;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSString;
 
@@ -13,6 +13,7 @@
     NSString *_name;
     NSString *_address;
     struct BTDeviceImpl *_device;
+    unsigned int _connectingServiceMask;
 }
 
 - (void)_clearName;
@@ -34,6 +35,7 @@
 - (void)disconnect;
 - (unsigned int)doubleTapAction;
 - (void)endVoiceCommand;
+- (unsigned int)getConnectingServiceMask;
 - (id)getServiceSetting:(unsigned int)arg1 key:(id)arg2;
 - (BOOL)inEarDetectEnabled;
 - (id)initWithDevice:(struct BTDeviceImpl *)arg1 address:(id)arg2;
@@ -49,6 +51,7 @@
 - (BOOL)paired;
 - (unsigned int)productId;
 - (id)scoUID;
+- (void)setConnectingServicemask:(unsigned int)arg1;
 - (void)setDevice:(struct BTDeviceImpl *)arg1;
 - (BOOL)setDoubleTapAction:(unsigned int)arg1;
 - (BOOL)setInEarDetectEnabled:(BOOL)arg1;

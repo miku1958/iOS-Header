@@ -26,6 +26,7 @@
 @property (readonly, nonatomic, getter=isDirty) BOOL dirty;
 @property (readonly, nonatomic) NSSet *dirtyProperties; // @synthesize dirtyProperties=_dirtyProperties;
 @property (strong, nonatomic) NSDate *expirationDate;
+@property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (strong, nonatomic) NSURL *objectID;
 @property (nonatomic, getter=isPersistent) BOOL persistent;
 @property (readonly, nonatomic) NSString *serviceName;

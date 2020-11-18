@@ -12,6 +12,7 @@
 - (void)getUpdatesWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
 - (void)hideApplicationBadgeForPendingUpdates;
 - (void)migrateUpdatesStoreWithCompletionBlock:(void (^)(BOOL, NSError *))arg1;
+- (void)refreshUpdateCountWithCompletionBlock:(void (^)(long long, NSError *))arg1;
 - (void)reloadFromServerInBackgroundWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
 - (void)reloadFromServerWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
 - (void)removeUpdateBulletins;

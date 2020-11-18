@@ -6,13 +6,21 @@
 
 #import <UserNotifications/UNNotificationAttachmentOptions.h>
 
-@interface UNMovieNotificationAttachmentOptions : UNNotificationAttachmentOptions
+#import <UserNotifications/UNNotificationAttachmentThumbnailOptions-Protocol.h>
+
+@class NSString;
+
+@interface UNMovieNotificationAttachmentOptions : UNNotificationAttachmentOptions <UNNotificationAttachmentThumbnailOptions>
 {
     BOOL _thumbnailHidden;
     CDStruct_1b6d18a9 _thumbnailTimestamp;
     struct CGRect _thumbnailClippingRect;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) struct CGRect thumbnailClippingRect; // @synthesize thumbnailClippingRect=_thumbnailClippingRect;
 @property (readonly, nonatomic) BOOL thumbnailHidden; // @synthesize thumbnailHidden=_thumbnailHidden;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 thumbnailTimestamp; // @synthesize thumbnailTimestamp=_thumbnailTimestamp;
@@ -21,7 +29,6 @@
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithThumbnailHidden:(BOOL)arg1 thumbnailClippingRect:(struct CGRect)arg2 thumbnailTimestamp:(CDStruct_1b6d18a9)arg3;
 - (BOOL)isEqual:(id)arg1;

@@ -131,6 +131,7 @@
 - (void)_executeActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_getContainerForAppData:(id)arg1;
 - (void)_handleAccessoryAddedNotification:(id)arg1;
+- (void)_handleAccessoryInfoUpdatedNotification:(id)arg1;
 - (void)_handleAccessoryRemovedNotification:(id)arg1;
 - (void)_handleActionSetAddedNotification:(id)arg1;
 - (void)_handleActionSetRemovedNotification:(id)arg1;

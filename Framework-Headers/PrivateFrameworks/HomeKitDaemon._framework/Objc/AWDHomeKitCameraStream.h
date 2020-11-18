@@ -8,55 +8,92 @@
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class AWDHomeKitVendorInformation, NSMutableArray, NSString;
+@class AWDHomeKitCameraIDSSessionSetup, AWDHomeKitCameraStreamConfigure, AWDHomeKitCameraStreamIDSConnSetup, AWDHomeKitCameraStreamMessaging, AWDHomeKitVendorInformation, NSMutableArray, NSString;
 
 @interface AWDHomeKitCameraStream : PBCodable <NSCopying>
 {
     unsigned long long _duration;
+    unsigned long long _receivedFirstFrame;
     unsigned long long _startupDelay;
     unsigned long long _timestamp;
+    AWDHomeKitCameraStreamMessaging *_controllerMessaging;
     unsigned int _errorCode;
+    AWDHomeKitCameraIDSSessionSetup *_idsSessionSetup;
+    AWDHomeKitCameraStreamConfigure *_initialConfiguration;
+    AWDHomeKitCameraStreamIDSConnSetup *_phoneIDSConnectionSetup;
+    NSMutableArray *_reconfigurations;
+    AWDHomeKitCameraStreamMessaging *_residentMessaging;
     NSMutableArray *_resolutionCounts;
     int _resolutionOnClose;
     NSString *_sessionID;
+    unsigned int _underlyingErrorCode;
+    NSString *_underlyingErrorDomain;
     AWDHomeKitVendorInformation *_vendorDetails;
+    AWDHomeKitCameraStreamIDSConnSetup *_watchIDSConnectionSetup;
+    AWDHomeKitCameraStreamMessaging *_watchMessaging;
     BOOL _isLocal;
     BOOL _isStreamStarted;
     struct {
         unsigned int duration:1;
+        unsigned int receivedFirstFrame:1;
         unsigned int startupDelay:1;
         unsigned int timestamp:1;
         unsigned int errorCode:1;
         unsigned int resolutionOnClose:1;
+        unsigned int underlyingErrorCode:1;
         unsigned int isLocal:1;
         unsigned int isStreamStarted:1;
     } _has;
 }
 
+@property (strong, nonatomic) AWDHomeKitCameraStreamMessaging *controllerMessaging; // @synthesize controllerMessaging=_controllerMessaging;
 @property (nonatomic) unsigned long long duration; // @synthesize duration=_duration;
 @property (nonatomic) unsigned int errorCode; // @synthesize errorCode=_errorCode;
+@property (readonly, nonatomic) BOOL hasControllerMessaging;
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasErrorCode;
+@property (readonly, nonatomic) BOOL hasIdsSessionSetup;
+@property (readonly, nonatomic) BOOL hasInitialConfiguration;
 @property (nonatomic) BOOL hasIsLocal;
 @property (nonatomic) BOOL hasIsStreamStarted;
+@property (readonly, nonatomic) BOOL hasPhoneIDSConnectionSetup;
+@property (nonatomic) BOOL hasReceivedFirstFrame;
+@property (readonly, nonatomic) BOOL hasResidentMessaging;
 @property (nonatomic) BOOL hasResolutionOnClose;
 @property (readonly, nonatomic) BOOL hasSessionID;
 @property (nonatomic) BOOL hasStartupDelay;
 @property (nonatomic) BOOL hasTimestamp;
+@property (nonatomic) BOOL hasUnderlyingErrorCode;
+@property (readonly, nonatomic) BOOL hasUnderlyingErrorDomain;
 @property (readonly, nonatomic) BOOL hasVendorDetails;
+@property (readonly, nonatomic) BOOL hasWatchIDSConnectionSetup;
+@property (readonly, nonatomic) BOOL hasWatchMessaging;
+@property (strong, nonatomic) AWDHomeKitCameraIDSSessionSetup *idsSessionSetup; // @synthesize idsSessionSetup=_idsSessionSetup;
+@property (strong, nonatomic) AWDHomeKitCameraStreamConfigure *initialConfiguration; // @synthesize initialConfiguration=_initialConfiguration;
 @property (nonatomic) BOOL isLocal; // @synthesize isLocal=_isLocal;
 @property (nonatomic) BOOL isStreamStarted; // @synthesize isStreamStarted=_isStreamStarted;
+@property (strong, nonatomic) AWDHomeKitCameraStreamIDSConnSetup *phoneIDSConnectionSetup; // @synthesize phoneIDSConnectionSetup=_phoneIDSConnectionSetup;
+@property (nonatomic) unsigned long long receivedFirstFrame; // @synthesize receivedFirstFrame=_receivedFirstFrame;
+@property (strong, nonatomic) NSMutableArray *reconfigurations; // @synthesize reconfigurations=_reconfigurations;
+@property (strong, nonatomic) AWDHomeKitCameraStreamMessaging *residentMessaging; // @synthesize residentMessaging=_residentMessaging;
 @property (strong, nonatomic) NSMutableArray *resolutionCounts; // @synthesize resolutionCounts=_resolutionCounts;
 @property (nonatomic) int resolutionOnClose; // @synthesize resolutionOnClose=_resolutionOnClose;
 @property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) unsigned long long startupDelay; // @synthesize startupDelay=_startupDelay;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned int underlyingErrorCode; // @synthesize underlyingErrorCode=_underlyingErrorCode;
+@property (strong, nonatomic) NSString *underlyingErrorDomain; // @synthesize underlyingErrorDomain=_underlyingErrorDomain;
 @property (strong, nonatomic) AWDHomeKitVendorInformation *vendorDetails; // @synthesize vendorDetails=_vendorDetails;
+@property (strong, nonatomic) AWDHomeKitCameraStreamIDSConnSetup *watchIDSConnectionSetup; // @synthesize watchIDSConnectionSetup=_watchIDSConnectionSetup;
+@property (strong, nonatomic) AWDHomeKitCameraStreamMessaging *watchMessaging; // @synthesize watchMessaging=_watchMessaging;
 
++ (Class)reconfigurationsType;
 + (Class)resolutionCountType;
 - (void).cxx_destruct;
 - (int)StringAsResolutionOnClose:(id)arg1;
+- (void)addReconfigurations:(id)arg1;
 - (void)addResolutionCount:(id)arg1;
+- (void)clearReconfigurations;
 - (void)clearResolutionCounts;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -66,6 +103,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)reconfigurationsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)reconfigurationsCount;
 - (id)resolutionCountAtIndex:(unsigned long long)arg1;
 - (unsigned long long)resolutionCountsCount;
 - (id)resolutionOnCloseAsString:(int)arg1;

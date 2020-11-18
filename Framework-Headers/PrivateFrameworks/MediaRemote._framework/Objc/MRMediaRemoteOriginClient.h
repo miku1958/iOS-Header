@@ -23,9 +23,14 @@
     struct _MROrigin *_origin;
     NSMutableDictionary *_transactionCallbacks;
     unsigned int _routeDiscoveryMode;
+    NSArray *_applicationPickedRoutes;
     CDUnknownBlockType _playbackQueueCallback;
+    CDUnknownBlockType _videoThumbnailsCallback;
+    CDUnknownBlockType _audioAmplitudeSamplesCallback;
 }
 
+@property (copy, nonatomic) NSArray *applicationPickedRoutes; // @synthesize applicationPickedRoutes=_applicationPickedRoutes;
+@property (copy, nonatomic) CDUnknownBlockType audioAmplitudeSamplesCallback; // @synthesize audioAmplitudeSamplesCallback=_audioAmplitudeSamplesCallback;
 @property (nonatomic) BOOL canBeNowPlayingApp; // @synthesize canBeNowPlayingApp=_canBeNowPlayingApp;
 @property (readonly, copy, nonatomic) NSArray *commandHandlerBlocks;
 @property (nonatomic) BOOL isOverrideApp; // @synthesize isOverrideApp=_isOverrideApp;
@@ -35,6 +40,7 @@
 @property (copy, nonatomic) CDUnknownBlockType playbackQueueCallback; // @synthesize playbackQueueCallback=_playbackQueueCallback;
 @property (nonatomic) unsigned int routeDiscoveryMode; // @synthesize routeDiscoveryMode=_routeDiscoveryMode;
 @property (copy, nonatomic) NSArray *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
+@property (copy, nonatomic) CDUnknownBlockType videoThumbnailsCallback; // @synthesize videoThumbnailsCallback=_videoThumbnailsCallback;
 
 - (void)_avSystemControllerServerConnectionDiedNotification:(id)arg1;
 - (void)_registerDefaultCallbacks;

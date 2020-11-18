@@ -56,6 +56,9 @@
     UIButton *_doneButton;
     UIView *_doneButtonContainer;
     unsigned long long _inputMode;
+    BOOL _preferredBarTintColorIsDark;
+    BOOL _preferredBarTintColorIsGreen;
+    BOOL _preferredBarTintColorIsExtreme;
     BOOL _usesNarrowLayout;
     BOOL _unifiedFieldShowsProgressView;
     BOOL _usingLightControls;
@@ -147,7 +150,6 @@
 - (id)_newNavigationButtonWithImage:(id)arg1 insets:(struct UIEdgeInsets)arg2 action:(SEL)arg3;
 - (id)_placeholderColor;
 - (id)_placeholderText;
-- (BOOL)_preferredTintColorIsSimilarToEVCertLockAndTextColor;
 - (void)_readerAppearanceButtonPressed;
 - (void)_readerButtonTapped:(id)arg1;
 - (void)_reloadButtonLongPressed:(id)arg1;
@@ -163,6 +165,7 @@
 - (void)_updateBackdropFrame;
 - (void)_updateBackdropGroupName;
 - (void)_updateBackdropStyle;
+- (void)_updateBarTintColorMetrics;
 - (void)_updateControlTints;
 - (void)_updateFakeViews;
 - (void)_updateLockIconHasEVCertificateTint;

@@ -18,6 +18,7 @@
     SKUIStyledImageDataConsumer *_newsstandConsumer;
     NSMutableDictionary *_placeholders;
     SKUIProductImageDataConsumer *_posterConsumer;
+    SKUIStyledImageDataConsumer *_messagesIconConsumer;
 }
 
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) SKUIProductImageDataConsumer *generalConsumer; // @synthesize generalConsumer=_generalImageConsumer;
 @property (strong, nonatomic) SKUIStyledImageDataConsumer *iconConsumer; // @synthesize iconConsumer=_iconConsumer;
 @property (strong, nonatomic) SKUIProductImageDataConsumer *letterboxConsumer; // @synthesize letterboxConsumer=_letterboxConsumer;
+@property (strong, nonatomic) SKUIStyledImageDataConsumer *messagesIconConsumer; // @synthesize messagesIconConsumer=_messagesIconConsumer;
 @property (strong, nonatomic) SKUIStyledImageDataConsumer *newsstandConsumer; // @synthesize newsstandConsumer=_newsstandConsumer;
 @property (strong, nonatomic) SKUIProductImageDataConsumer *posterConsumer; // @synthesize posterConsumer=_posterConsumer;
 

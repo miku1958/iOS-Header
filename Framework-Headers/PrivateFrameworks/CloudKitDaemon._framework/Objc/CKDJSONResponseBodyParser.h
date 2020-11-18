@@ -6,7 +6,6 @@
 
 #import <CloudKitDaemon/CKDResponseBodyParser.h>
 
-__attribute__((visibility("hidden")))
 @interface CKDJSONResponseBodyParser : CKDResponseBodyParser
 {
 }

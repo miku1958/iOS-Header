@@ -20,10 +20,10 @@
     BOOL _establishingSecureConnection;
     BOOL _hasTunnelService;
     BOOL _continuingLegacyWACpairing;
+    BOOL _wacStarted;
     NSString *_model;
     NSString *_protocolVersion;
     NSString *_sourceVersion;
-    unsigned long long _configNumber;
     unsigned long long _statusFlags;
     NSDictionary *_bonjourDeviceInfo;
     HAPAccessoryServerBrowserIP *_browser;
@@ -42,7 +42,6 @@
 @property (readonly, nonatomic, getter=isAddingViaWAC) BOOL addingViaWAC;
 @property (strong, nonatomic) NSDictionary *bonjourDeviceInfo; // @synthesize bonjourDeviceInfo=_bonjourDeviceInfo;
 @property (weak, nonatomic) HAPAccessoryServerBrowserIP *browser; // @synthesize browser=_browser;
-@property (nonatomic) unsigned long long configNumber; // @synthesize configNumber=_configNumber;
 @property (nonatomic, getter=isContinuingLegacyWACpairing) BOOL continuingLegacyWACpairing; // @synthesize continuingLegacyWACpairing=_continuingLegacyWACpairing;
 @property (strong, nonatomic) NSString *controllerUsername; // @synthesize controllerUsername=_controllerUsername;
 @property (readonly, copy) NSString *debugDescription;
@@ -67,6 +66,7 @@
 @property (nonatomic, getter=isWacComplete) BOOL wacComplete; // @synthesize wacComplete=_wacComplete;
 @property (readonly, copy, nonatomic) NSDictionary *wacDeviceInfo; // @synthesize wacDeviceInfo=_wacDeviceInfo;
 @property (nonatomic, getter=isWacLegacy) BOOL wacLegacy; // @synthesize wacLegacy=_wacLegacy;
+@property (nonatomic, getter=isWacStarted) BOOL wacStarted; // @synthesize wacStarted=_wacStarted;
 
 + (id)sharedPairOperationQueue;
 - (void).cxx_destruct;
@@ -119,9 +119,9 @@
 - (void)_processQueuedOperationsWithError:(id)arg1;
 - (void)_queueAddPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_queueEnableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
-- (void)_queueReadCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_queueWriteCharacteristicValues:(id)arg1 queue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)_readCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_queueReadCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_queueWriteCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)_readCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_requestResource:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_reset;
@@ -131,7 +131,7 @@
 - (BOOL)_updateAccessories:(id)arg1;
 - (void)_updateWithBonjourDeviceInfo:(id)arg1;
 - (BOOL)_updatewithNewAccessories:(id)arg1 associated:(BOOL)arg2;
-- (void)_writeCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_writeCharacteristicValues:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)addPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)continuePairingAfterAuthPrompt;
 - (void)dealloc;
@@ -148,13 +148,13 @@
 - (id)initCommon:(id)arg1 browser:(id)arg2;
 - (id)initWithBonjourDeviceInfo:(id)arg1 keyStore:(id)arg2 browser:(id)arg3;
 - (id)initWithWACDeviceDictionary:(id)arg1 keyStore:(id)arg2 browser:(id)arg3;
-- (void)invalidate;
+- (void)invalidateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)isSessionEstablised;
 - (long long)linkType;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)primaryAccessory;
-- (void)readCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)readValueForCharacteristic:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)reconfirm;
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)requestResource:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -164,8 +164,7 @@
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)updateWithBonjourDeviceInfo:(id)arg1;
 - (void)updateWithWACDevice:(id)arg1;
-- (void)writeCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)writeValue:(id)arg1 forCharacteristic:(id)arg2 authorizationData:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

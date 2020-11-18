@@ -68,7 +68,6 @@
     NSDateComponents *_defaultExpirationComponents;
     NSDateComponents *_expirationReferenceComponents;
     NSMutableDictionary *_clearedSections;
-    NSMutableDictionary *_dataProviderFactoriesBySection;
     int _serverIsRunningToken;
     int _demo_lockscreen_token;
     BBSyncService *_syncService;
@@ -268,7 +267,7 @@
 - (void)_updateSectionInfoForSectionID:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_updateSectionParametersForDataProvider:(id)arg1;
 - (void)_updateShowsMessagePreviewForBulletin:(id)arg1;
-- (void)_validateExpirationDateForBulletin:(id)arg1;
+- (void)_validateExpirationDateForBulletinRequest:(id)arg1;
 - (BOOL)_verifyBulletinRequest:(id)arg1 forDataProvider:(id)arg2;
 - (void)_writeBehaviorOverrides;
 - (void)_writeClearedSections;

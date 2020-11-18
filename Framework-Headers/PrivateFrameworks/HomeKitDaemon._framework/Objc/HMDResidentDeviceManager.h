@@ -34,6 +34,7 @@
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (nonatomic, getter=isConfirming) BOOL confirming; // @synthesize confirming=_confirming;
+@property (readonly, nonatomic, getter=isCurrentDeviceAvaliableResident) BOOL currentDeviceAvaliableResident;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMDResidentDeviceManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

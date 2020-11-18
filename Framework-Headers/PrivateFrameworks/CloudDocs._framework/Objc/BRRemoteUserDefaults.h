@@ -14,10 +14,11 @@
 }
 
 @property (readonly, nonatomic) NSSet *excludedExtensionsWorthPreserving;
-@property (readonly, nonatomic) NSSet *excludedFilenamesWorthPreserving;
+@property (readonly, nonatomic) NSSet *excludedFilenamesWorthWarningAtLogout;
 
 + (id)defaultExcludedExtensionsWorthPreserving;
 + (id)defaultExcludedFilenamesWorthPreserving;
++ (id)defaultExcludedFilenamesWorthWarningAtLogout;
 + (id)sharedDefaults;
 - (void).cxx_destruct;
 - (id)_init;

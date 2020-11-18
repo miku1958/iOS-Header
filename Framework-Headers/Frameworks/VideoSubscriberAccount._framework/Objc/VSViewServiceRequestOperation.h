@@ -11,6 +11,7 @@
 @class NSString, NSUUID, VSFailable, VSViewServiceHostViewController, VSViewServiceRequest;
 @protocol VSViewServiceRequestOperationDelegate;
 
+__attribute__((visibility("hidden")))
 @interface VSViewServiceRequestOperation : VSAsyncOperation <VSViewServiceHostViewControllerDelegate>
 {
     BOOL _isPresentingViewController;

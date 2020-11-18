@@ -60,6 +60,7 @@
 - (void).cxx_destruct;
 - (void)_didMakeBackingNode;
 - (void)_didMoveToView:(id)arg1;
+- (id)_getFocusNodes;
 - (BOOL)_hasConstraints;
 - (struct SKCNode *)_makeBackingNode;
 - (id)_parentFocusEnvironment;

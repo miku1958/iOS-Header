@@ -49,6 +49,12 @@ typedef struct {
 } CDStruct_9f2792e4;
 
 typedef struct {
+    double *list;
+    unsigned long long count;
+    unsigned long long size;
+} CDStruct_82f37d05;
+
+typedef struct {
     double x;
     double y;
     double z;

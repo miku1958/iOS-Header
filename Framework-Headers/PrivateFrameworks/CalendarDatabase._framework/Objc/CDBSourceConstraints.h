@@ -10,7 +10,7 @@
 {
     int _maxAlarmsAllowed;
     int _maxRecurrencesAllowed;
-    CDStruct_db2ffdc8 _flags;
+    CDStruct_b9f583c3 _flags;
 }
 
 @property (nonatomic) BOOL alarmTriggerIntervalConstrainedToRecurrenceInterval;
@@ -23,7 +23,7 @@
 @property (nonatomic) BOOL deliverySourceOrExternalIDRequiredForResponse;
 @property (nonatomic) BOOL eventAvalabilityLimited;
 @property (nonatomic) BOOL eventDurationConstrainedToRecurrenceInterval;
-@property (nonatomic) CDStruct_db2ffdc8 flags; // @synthesize flags=_flags;
+@property (nonatomic) CDStruct_b9f583c3 flags; // @synthesize flags=_flags;
 @property (nonatomic) BOOL futureStartDateLimitedToOccurrenceCacheBounds;
 @property (nonatomic) BOOL inviteesCanSeeAttendeeStatuses;
 @property (nonatomic) BOOL isFacebook;
@@ -55,6 +55,7 @@
 @property (nonatomic) BOOL supportsAlarmTriggerIntervals;
 @property (nonatomic) BOOL supportsAlarmsTriggeringAfterStartDate;
 @property (nonatomic) BOOL supportsAllDayDueDates;
+@property (nonatomic) BOOL supportsAutoGeocodingStructuredLocations;
 @property (nonatomic) BOOL supportsAvailabilityRequests;
 @property (nonatomic) BOOL supportsEventForwarding;
 @property (nonatomic) BOOL supportsIgnoringEventsInAvailabilityRequests;

@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
+- (id)accessibilityValue;
 - (void)setMirroringSwitchVisible:(BOOL)arg1 animated:(BOOL)arg2;
 
 @end

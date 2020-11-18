@@ -15,8 +15,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
-- (void)widgetActiveDisplayModeDidChangeWithActiveDisplayMode:(long long)arg1 withMaximumSize:(struct CGSize)arg2;
-- (void)widgetPerformUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)widgetActiveDisplayModeDidChange:(long long)arg1 withMaximumSize:(struct CGSize)arg2;
+- (void)widgetPerformUpdate:(CDUnknownBlockType)arg1;
 
 @end
 

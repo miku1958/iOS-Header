@@ -45,7 +45,7 @@
     ETAngerMessage *_currentAnger;
     NSTimer *_angerDurationLimitTimer;
     double _wispDelay;
-    BOOL _sendMessageOnTouchesEndedWithoutDelay;
+    BOOL _sketchDidReachSizeLimit;
     SKScene *_scene;
     DTSSceneView *_sceneView;
     UIImageView *_photoView;
@@ -96,6 +96,7 @@
 - (void)_clearSendMessageTimer;
 - (void)_configureAngerRecognizer;
 - (void)_createSketchViewWithColor:(id)arg1 time:(double)arg2 message:(id)arg3;
+- (void)_doodleEndedWithTouches:(id)arg1 cancelled:(BOOL)arg2;
 - (void)_endMessage:(id)arg1 withSend:(BOOL)arg2;
 - (void)_fastTapAllowableMovementTimerFired;
 - (void)_heartbeatRecognized:(id)arg1;

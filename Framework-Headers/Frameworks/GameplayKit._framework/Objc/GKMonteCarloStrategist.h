@@ -29,7 +29,6 @@
 - (void)dealloc;
 - (id)init;
 - (BOOL)validateGameModel:(id)arg1;
-- (BOOL)validateRandomSource;
 
 @end
 

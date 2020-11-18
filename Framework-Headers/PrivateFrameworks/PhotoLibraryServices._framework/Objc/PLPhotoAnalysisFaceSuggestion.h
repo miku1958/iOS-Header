@@ -6,22 +6,25 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSNumber, NSString;
 
 @interface PLPhotoAnalysisFaceSuggestion : NSObject
 {
+    NSNumber *_clusterSequenceNumber;
     NSString *_faceLocalIdentifier;
     NSArray *_matchingFaceLocalIdentifiers;
     BOOL _isConfirmed;
-    BOOL _confirmed;
 }
 
-@property (readonly, nonatomic, getter=isConfirmed) BOOL confirmed; // @synthesize confirmed=_confirmed;
+@property (readonly, copy, nonatomic) NSNumber *clusterSequenceNumber; // @synthesize clusterSequenceNumber=_clusterSequenceNumber;
+@property (readonly, nonatomic, getter=isConfirmed) BOOL confirmed; // @synthesize confirmed=_isConfirmed;
 @property (readonly, copy, nonatomic) NSString *faceLocalIdentifier; // @synthesize faceLocalIdentifier=_faceLocalIdentifier;
 @property (readonly, copy, nonatomic) NSArray *matchingFaceLocalIdentifiers; // @synthesize matchingFaceLocalIdentifiers=_matchingFaceLocalIdentifiers;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithSuggestionDictionary:(id)arg1;
+- (id)suggestionDictionaryRepresentation;
 
 @end
 

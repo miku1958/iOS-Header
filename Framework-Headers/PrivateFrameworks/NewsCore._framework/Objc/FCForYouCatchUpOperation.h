@@ -6,18 +6,16 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCCoverArticlesCatchUpOperation, FCEditorialCatchUpOperation, FCMutexLock, FCMyArticlesCatchUpOperation, FCSavedStoriesCatchUpOperation, FCTopStoriesCatchUpOperation, FCTrendingCatchUpOperation, NSArray, NSDictionary, NSError, NSHashTable, NSOperationQueue;
+@class FCArticleList, FCCoverArticlesCatchUpOperation, FCEditorialCatchUpOperation, FCMutexLock, FCMyArticlesCatchUpOperation, FCTopStoriesCatchUpOperation, FCTrendingCatchUpOperation, NSArray, NSDictionary, NSError, NSHashTable, NSOperationQueue;
 @protocol FCChannelProviding;
 
 @interface FCForYouCatchUpOperation : FCOperation
 {
-    NSArray *_unreadSavedStories;
     FCMyArticlesCatchUpOperation *_myArticlesOperation;
     FCTopStoriesCatchUpOperation *_topStoriesOperation;
     FCTrendingCatchUpOperation *_trendingOperation;
     FCCoverArticlesCatchUpOperation *_coverArticlesOperation;
     FCEditorialCatchUpOperation *_editorialOperation;
-    FCSavedStoriesCatchUpOperation *_savedStoriesOperation;
     NSOperationQueue *_operationQueue;
     NSHashTable *_conditionWaiters;
     FCMutexLock *_conditionWaitersLock;
@@ -33,15 +31,13 @@
 @property (strong, nonatomic) FCMyArticlesCatchUpOperation *myArticlesOperation; // @synthesize myArticlesOperation=_myArticlesOperation;
 @property (readonly, copy, nonatomic) NSArray *nonEditorialFeedItems;
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property (readonly, copy, nonatomic) NSArray *savedHeadlines;
-@property (strong, nonatomic) FCSavedStoriesCatchUpOperation *savedStoriesOperation; // @synthesize savedStoriesOperation=_savedStoriesOperation;
 @property (readonly, copy, nonatomic) NSArray *supplementalCoverArticleHeadlines;
+@property (readonly, nonatomic) FCArticleList *topStoriesArticleList;
 @property (readonly, copy, nonatomic) id<FCChannelProviding> topStoriesChannel;
-@property (readonly, copy, nonatomic) NSArray *topStoriesFeedItems;
+@property (readonly, copy, nonatomic) NSArray *topStoriesHeadlines;
 @property (strong, nonatomic) FCTopStoriesCatchUpOperation *topStoriesOperation; // @synthesize topStoriesOperation=_topStoriesOperation;
 @property (readonly, copy, nonatomic) NSArray *trendingHeadlines;
 @property (strong, nonatomic) FCTrendingCatchUpOperation *trendingOperation; // @synthesize trendingOperation=_trendingOperation;
-@property (copy, nonatomic) NSArray *unreadSavedStories; // @synthesize unreadSavedStories=_unreadSavedStories;
 
 + (id)sharedCatchUpOperationForEdition:(id)arg1 context:(id)arg2;
 + (id)temporaryBackgroundCatchUpOperationForEdition:(id)arg1 context:(id)arg2;
@@ -53,7 +49,7 @@
 - (void)enumerateEditorialSectionsByRecencyAfterTransformation:(id)arg1 minFamilySize:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 - (id)initWithContext:(id)arg1 dateRange:(id)arg2 background:(BOOL)arg3;
 - (void)operationDidFinishWithError:(id)arg1;
-- (id)orphanedEditorialFeedItemsAfterTransformation:(id)arg1 minFamilySize:(unsigned long long)arg2;
+- (id)orphanedEditorialHeadlinesAfterTransformation:(id)arg1 minFamilySize:(unsigned long long)arg2;
 - (void)performOperation;
 - (BOOL)satisfiesCondition:(id)arg1;
 - (void)waitForCondition:(id)arg1;

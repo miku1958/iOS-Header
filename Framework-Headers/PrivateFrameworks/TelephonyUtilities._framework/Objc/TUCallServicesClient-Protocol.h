@@ -9,7 +9,7 @@
 @class NSArray, NSData, NSDictionary, NSString, TUCall;
 
 @protocol TUCallServicesClient <NSObject>
-- (void)handleCurrentCallsChanged:(NSArray *)arg1 callDisconnected:(TUCall *)arg2 reply:(void (^)(void))arg3;
+- (void)handleCurrentCallsChanged:(NSArray *)arg1 callDisconnected:(TUCall *)arg2;
 - (void)handleFrequencyChangedTo:(NSData *)arg1 inDirection:(int)arg2 forCallsWithUniqueProxyIdentifiers:(NSArray *)arg3;
 - (void)handleNotificationName:(NSString *)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2 userInfo:(NSDictionary *)arg3;
 - (void)resetCallProvisionalStates;

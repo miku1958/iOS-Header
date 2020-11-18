@@ -60,6 +60,7 @@
 - (void)remote_nextScheduledAchievementDefinitionAlertTaskDateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_registerForAchievementDefinitionNotificationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_registerForAchievementNotificationsAndFetchUnalertedCountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remote_resetAchievementDefinitionAlertedStates:(BOOL)arg1 availabilityStates:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_runAchievementsFixupAsDryRun:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_setAchievementAssetsServerURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_setCurrentActivityCacheOverrideDate:(id)arg1 timeZone:(id)arg2 completion:(CDUnknownBlockType)arg3;

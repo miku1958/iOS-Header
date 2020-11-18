@@ -10,10 +10,11 @@
 
 @interface PKPaymentTransactionTableCell : PKTableViewCell
 {
+    BOOL _sizeLabels;
     UILabel *_primaryLabel;
     UILabel *_secondaryLabel;
-    UILabel *_transactionValueLabel;
     UILabel *_tertiaryLabel;
+    UILabel *_transactionValueLabel;
     UIColor *_primaryColor;
     UIColor *_secondaryColor;
     UIColor *_tertiaryColor;

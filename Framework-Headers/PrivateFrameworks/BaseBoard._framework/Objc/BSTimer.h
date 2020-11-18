@@ -12,6 +12,7 @@
 @interface BSTimer : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_callOutQueue;
     CDUnknownBlockType _handler;
     BSDispatchSource *_source;
     double _startTime;
@@ -19,6 +20,7 @@
     double _repeatInterval;
     double _leewayInterval;
     unsigned long long _fireCount;
+    BOOL _oneShot;
     BOOL _scheduled;
 }
 
@@ -29,6 +31,8 @@
 @property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 
 + (id)scheduledTimerWithFireInterval:(double)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_queue_cancel;
+- (void)_queue_noteTimerFired;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithFireInterval:(double)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;

@@ -6,19 +6,23 @@
 
 #import <UserNotificationsUIKit/NCNotificationRequestContentProvider.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface NCNotificationRequestHiddenPreviewContentProvider : NCNotificationRequestContentProvider
 {
+    BOOL _deviceAuthenticated;
+    NSMutableArray *_coalescedNotificationRequests;
     NSString *_topic;
-    unsigned long long _coalesceCount;
 }
 
-@property (nonatomic) unsigned long long coalesceCount; // @synthesize coalesceCount=_coalesceCount;
+@property (readonly, strong, nonatomic) NSMutableArray *coalescedNotificationRequests; // @synthesize coalescedNotificationRequests=_coalescedNotificationRequests;
+@property (nonatomic, getter=isDeviceAuthenticated) BOOL deviceAuthenticated; // @synthesize deviceAuthenticated=_deviceAuthenticated;
 @property (copy, nonatomic) NSString *topic; // @synthesize topic=_topic;
 
 - (void).cxx_destruct;
-- (void)incrementCoalesceCount;
+- (unsigned long long)coalesceCount;
+- (void)coalesceHiddenNotificationRequest:(id)arg1;
+- (id)hintText;
 - (id)init;
 - (id)initWithNotificationRequest:(id)arg1;
 - (id)interfaceActions;

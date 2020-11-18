@@ -6,37 +6,45 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, _UIBackdropView;
+#import <UserNotificationsUIKit/_UISettingsKeyObserver-Protocol.h>
 
-@interface NCMaterialView : UIView
+@class NCMaterialSettings, NSString, _UIBackdropView;
+
+@interface NCMaterialView : UIView <_UISettingsKeyObserver>
 {
     unsigned long long _styleOptions;
     _UIBackdropView *_backdropView;
     UIView *_lightOverlayView;
     UIView *_whiteOverlayView;
     UIView *_cutoutOverlayView;
-    UIView *_colorInfusionView;
-    double _colorInfusionViewAlpha;
+    NCMaterialSettings *_settings;
+    BOOL _cornerRadiusIsContinuous;
     double _subviewsContinuousCornerRadius;
 }
 
-@property (strong, nonatomic) UIView *colorInfusionView; // @synthesize colorInfusionView=_colorInfusionView;
-@property (nonatomic, getter=_colorInfusionViewAlpha, setter=_setColorInfusionViewAlpha:) double colorInfusionViewAlpha; // @synthesize colorInfusionViewAlpha=_colorInfusionViewAlpha;
+@property (nonatomic) double cornerRadius;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) double grayscaleValue;
 @property (copy, nonatomic) NSString *groupName;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=_subviewsContinuousCornerRadius, setter=_setSubviewsContinuousCornerRadius:) double subviewsContinuousCornerRadius; // @synthesize subviewsContinuousCornerRadius=_subviewsContinuousCornerRadius;
+@property (readonly) Class superclass;
 
 + (id)materialViewWithStyleOptions:(unsigned long long)arg1;
++ (id)materialViewWithStyleOptions:(unsigned long long)arg1 materialSettings:(id)arg2;
 - (void).cxx_destruct;
 - (void)_configureBackdropViewIfNecessary;
-- (void)_configureColorInfusionViewIfNecessary;
 - (void)_configureCutoutOverlayViewIfNecessary;
 - (void)_configureIfNecessary;
 - (void)_configureLightOverlayViewIfNecessary;
 - (void)_configureWhiteOverlayViewIfNecessary;
+- (double)_continuousCornerRadius;
 - (void)_reduceTransparencyStatusDidChange;
+- (void)_setContinuousCornerRadius:(double)arg1;
 - (void)dealloc;
-- (id)initWithStyleOptions:(unsigned long long)arg1;
+- (id)initWithStyleOptions:(unsigned long long)arg1 materialSettings:(id)arg2;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 
 @end
 

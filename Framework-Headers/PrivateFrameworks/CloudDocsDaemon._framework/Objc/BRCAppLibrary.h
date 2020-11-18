@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRCForegroundClient-Protocol.h>
 
-@class BRCALRowID, BRCAccountSession, BRCClientZone, BRCFSEventsMonitor, BRCPQLConnection, BRCPrivateAppLibrary, BRCRelativePath, BRCSharedAppLibrary, BRCSyncContext, BRCZoneRowID, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSNumber, NSString, NSURL, brc_task_tracker;
+@class BRCALRowID, BRCAccountSession, BRCClientZone, BRCFSEventsMonitor, BRCPQLConnection, BRCPrivateAppLibrary, BRCRelativePath, BRCSharedAppLibrary, BRCSyncContext, BRCZoneRowID, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL, brc_task_tracker;
 @protocol BRCAppLibraryDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -19,9 +19,7 @@ __attribute__((visibility("hidden")))
     _Atomic unsigned long long _activeAliasQueries;
     long long _maxLostStamp;
     NSNumber *_deepScanStamp;
-    NSMutableIndexSet *_pendingCoordinatedIOs;
-    NSMutableSet *_pendingReadFileCoordinators;
-    NSMutableSet *_pendingWriteFileCoordinators;
+    NSMutableDictionary *_pendingFileCoordinators;
     NSMutableSet *_XPCClientsUsingUbiquity;
     NSString *_mangledID;
     BRCAccountSession *_session;
@@ -63,6 +61,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL hasActiveRecursiveQueries;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) BOOL isCloudDocsAppLibrary;
 @property (readonly, nonatomic) BOOL isForeground;
 @property (readonly, nonatomic) BOOL isGreedy;
 @property (readonly, nonatomic) BOOL isPrivateAppLibrary;
@@ -73,7 +72,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL needsSave; // @synthesize needsSave=_needsSave;
 @property (readonly, nonatomic) NSString *ownerName; // @synthesize ownerName=_ownerName;
 @property (readonly, nonatomic) NSString *pathRelativeToRoot;
-@property (readonly, nonatomic) NSMutableIndexSet *pendingCoordinatedIOs; // @synthesize pendingCoordinatedIOs=_pendingCoordinatedIOs;
 @property (readonly, nonatomic) NSMutableDictionary *plist;
 @property (readonly, nonatomic) BRCRelativePath *root;
 @property (strong, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
@@ -106,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelDeepScan;
 - (void)cancelFileCoordinators;
 - (void)cancelFileProviders;
+- (void)cancelWriteCoordinatorForItem:(id)arg1;
 - (void)clearStateBits:(unsigned int)arg1;
 - (void)close;
 - (void)continueMarkingChildrenLost;
@@ -115,8 +114,6 @@ __attribute__((visibility("hidden")))
 - (void)didCreateDocumentScopedItem;
 - (void)didFindLostItem:(id)arg1 oldAppLibrary:(id)arg2;
 - (void)didReceiveHandoffRequest;
-- (id)directoryItemIDByFileID:(unsigned long long)arg1;
-- (id)directoryItemIDByFileID:(unsigned long long)arg1 db:(id)arg2;
 - (unsigned long long)documentCount;
 - (unsigned long long)documentEvictableSizeUsage;
 - (unsigned long long)documentEvictableSizeUsageWithAccessTimeDelta:(double)arg1;
@@ -132,17 +129,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasUbiquityClientsConnected;
 - (BOOL)includesDataScope;
 - (id)init;
-- (id)initWithName:(id)arg1 ownerName:(id)arg2 dbRowID:(id)arg3 zoneRowID:(id)arg4 db:(id)arg5 plist:(id)arg6 session:(id)arg7 initialCreation:(BOOL)arg8 createdRootOnDisk:(BOOL)arg9 rootFileID:(id)arg10;
-- (BOOL)isCloudDocsAppLibrary;
+- (id)initWithName:(id)arg1 ownerName:(id)arg2 dbRowID:(id)arg3 zoneRowID:(id)arg4 db:(id)arg5 plist:(id)arg6 session:(id)arg7 initialCreation:(BOOL)arg8 createdRootOnDisk:(BOOL)arg9 createdCZMMoved:(BOOL)arg10 rootFileID:(id)arg11;
+- (BOOL)isCoordinationPendingForItem:(id)arg1;
 - (BOOL)isDesktopAppLibrary;
 - (BOOL)isDocumentsAppLibrary;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isStillTargetingAppLibrary:(id)arg1;
 - (BOOL)isiCloudDesktopAppLibrary;
-- (id)itemByDocumentID:(unsigned int)arg1;
-- (id)itemByDocumentID:(unsigned int)arg1 db:(id)arg2;
-- (id)itemByFileID:(unsigned long long)arg1;
-- (id)itemByFileID:(unsigned long long)arg1 db:(id)arg2;
 - (id)itemByRowID:(unsigned long long)arg1;
 - (id)itemByRowID:(unsigned long long)arg1 db:(id)arg2;
 - (id)itemIDByRowID:(unsigned long long)arg1;

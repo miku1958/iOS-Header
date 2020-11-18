@@ -37,6 +37,7 @@
 @property BOOL _allowsResponseMonitoringDuringBodyTranmission; // @dynamic _allowsResponseMonitoringDuringBodyTranmission;
 @property BOOL _allowsRetryForBackgroundDataTasks; // @dynamic _allowsRetryForBackgroundDataTasks;
 @property BOOL _allowsTCPFastOpen; // @dynamic _allowsTCPFastOpen;
+@property BOOL _allowsTLSSessionResumption; // @dynamic _allowsTLSSessionResumption;
 @property BOOL _allowsTLSSessionTickets; // @dynamic _allowsTLSSessionTickets;
 @property (copy) id<NSURLSessionAppleIDContext> _appleIDContext; // @dynamic _appleIDContext;
 @property (copy) NSData *_atsContext; // @dynamic _atsContext;
@@ -47,6 +48,8 @@
 @property double _connectionCachePurgeTimeout; // @dynamic _connectionCachePurgeTimeout;
 @property (copy) NSString *_connectionPoolName; // @dynamic _connectionPoolName;
 @property (copy) NSArray *_contentDispHeadEncFallback; // @dynamic _contentDispHeadEncFallback;
+@property unsigned long long _customReadBufferSize; // @dynamic _customReadBufferSize;
+@property double _customReadBufferTimeout; // @dynamic _customReadBufferTimeout;
 @property (copy) NSURL *_directoryForDownloadedFiles; // @dynamic _directoryForDownloadedFiles;
 @property BOOL _disablesOutOfProcessDirectWiFiUsage; // @dynamic _disablesOutOfProcessDirectWiFiUsage;
 @property BOOL _disablesUseOfProxySession; // @dynamic _disablesUseOfProxySession;

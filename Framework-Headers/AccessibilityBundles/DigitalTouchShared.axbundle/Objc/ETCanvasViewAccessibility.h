@@ -17,6 +17,7 @@
 - (void)_accessibilityFocusChanged:(id)arg1;
 - (void)_accessibilityInvalidateDirectTouchTimerAndReschedule:(BOOL)arg1;
 - (BOOL)_accessibilityIsDirectTouching;
+- (BOOL)_accessibilityServesAsFirstElement;
 - (void)_accessibilitySetDisableDirectTouchTimer:(id)arg1;
 - (void)_accessibilitySetIsDirectTouching:(BOOL)arg1;
 - (void)_checkForIdle;

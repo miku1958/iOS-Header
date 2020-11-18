@@ -24,6 +24,7 @@
     BOOL __shouldPrepareForHintWhenReady;
     ISLivePhotoVitalityFilter *_vitalityFilter;
     long long _currentPlaybackStyle;
+    long long _targetReadiness;
     long long __playbackIdentifier;
     long long __styleToPlayWhenReady;
     NSDate *__vitalityTimeoutDate;
@@ -46,6 +47,7 @@
 @property (readonly, nonatomic) NSSet *playbackFilters;
 @property (nonatomic, getter=isPlayingVitality, setter=_setPlayingVitality:) BOOL playingVitality; // @synthesize playingVitality=_playingVitality;
 @property (readonly) Class superclass;
+@property (nonatomic) long long targetReadiness; // @synthesize targetReadiness=_targetReadiness;
 @property (strong, nonatomic) ISLivePhotoVitalityFilter *vitalityFilter; // @synthesize vitalityFilter=_vitalityFilter;
 
 - (void).cxx_destruct;
@@ -61,8 +63,10 @@
 - (void)_prepareForVitalityIfNeeded;
 - (void)_resetPlaybackFilters;
 - (void)_updateHintingAndVitality;
+- (void)_updatePlayerItemLoadingTarget;
 - (void)activeBehaviorDidChange;
 - (void)addPlaybackFilter:(id)arg1;
+- (void)configurePlayerItem;
 - (id)init;
 - (void)livePhotoPlaybackBehaviorDidFinish:(id)arg1;
 - (void)livePhotoSettleBehaviorDidFinish:(id)arg1;

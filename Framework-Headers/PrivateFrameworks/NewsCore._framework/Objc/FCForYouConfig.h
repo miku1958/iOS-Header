@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsCore/NSCopying-Protocol.h>
+
 @class FCGroupConfig, FCInterestToken, NSArray, NSDate, NSString, NTPBForYouConfigRecord;
 
-@interface FCForYouConfig : NSObject
+@interface FCForYouConfig : NSObject <NSCopying>
 {
     FCGroupConfig *_topStoriesGroupConfig;
     FCGroupConfig *_trendingGroupConfig;
@@ -31,6 +33,7 @@
 @property (strong, nonatomic) FCGroupConfig *trendingGroupConfig; // @synthesize trendingGroupConfig=_trendingGroupConfig;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRecord:(id)arg1 interestToken:(id)arg2;
 
 @end

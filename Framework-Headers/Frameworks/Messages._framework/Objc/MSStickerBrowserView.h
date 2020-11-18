@@ -7,12 +7,13 @@
 #import <UIKit/UIView.h>
 
 #import <Messages/UICollectionViewDataSource-Protocol.h>
+#import <Messages/UICollectionViewDataSourcePrefetching-Protocol.h>
 #import <Messages/UICollectionViewDelegate-Protocol.h>
 
-@class MSStickerBrowserViewLayoutSpec, NSDictionary, NSMutableArray, NSString, NSTimer, UICollectionView, UICollectionViewFlowLayout;
+@class CKDispatchQueue, MSStickerBrowserViewLayoutSpec, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, NSTimer, UICollectionView, UICollectionViewFlowLayout;
 @protocol MSStickerBrowserViewDataSource, MSStickerBrowserViewDisplayDelegate;
 
-@interface MSStickerBrowserView : UIView <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MSStickerBrowserView : UIView <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching>
 {
     BOOL _isRestoringContentOffset;
     BOOL _animating;
@@ -24,6 +25,8 @@
     NSMutableArray *_cellsToAnimate;
     NSTimer *_animationTimer;
     unsigned long long _currentlyAnimatingIndex;
+    NSMutableDictionary *_stickerCache;
+    CKDispatchQueue *_stickerCacheQueue;
     id<MSStickerBrowserViewDisplayDelegate> _displayDelegate;
     struct CGPoint _restoredContentOffset;
     struct CGSize _browserSizeToRestoreFrom;
@@ -47,6 +50,8 @@
 @property (strong, nonatomic) MSStickerBrowserViewLayoutSpec *layoutSpec; // @synthesize layoutSpec=_layoutSpec;
 @property (nonatomic) struct CGPoint restoredContentOffset; // @synthesize restoredContentOffset=_restoredContentOffset;
 @property (readonly, nonatomic) NSDictionary *stateRestorationInfo;
+@property (strong, nonatomic) NSMutableDictionary *stickerCache; // @synthesize stickerCache=_stickerCache;
+@property (strong, nonatomic) CKDispatchQueue *stickerCacheQueue; // @synthesize stickerCacheQueue=_stickerCacheQueue;
 @property (readonly, nonatomic) long long stickerSize; // @synthesize stickerSize=_stickerSize;
 @property (readonly, nonatomic) long long stickerSizeClass;
 @property (readonly) Class superclass;
@@ -60,9 +65,11 @@
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)configureStickerView;
 - (void)dealloc;
+- (void)didMoveToWindow;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 layout:(long long)arg2;

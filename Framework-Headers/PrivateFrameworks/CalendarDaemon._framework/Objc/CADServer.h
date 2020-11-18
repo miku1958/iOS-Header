@@ -45,6 +45,7 @@
 - (void)_registerForIdentityOrphanCleanup;
 - (void)_registerForIdleChangeTrackingClientCleanup;
 - (void)_registerForNotifications;
+- (void)_registerMaintenanceActivities;
 - (void)_setUpSignalHandlers;
 - (void)_startBirthdayManager;
 - (void)_stopBirthdayManager;
@@ -53,6 +54,8 @@
 - (void)_updateOccurrenceCacheTimeZone;
 - (void)clientConnectionDied:(id)arg1;
 - (void)dealloc;
+- (void)identityOrphanCleanupDatabase:(struct CalDatabase *)arg1;
+- (void)idleChangeTrackingClientCleanupDatabase:(struct CalDatabase *)arg1;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)run;

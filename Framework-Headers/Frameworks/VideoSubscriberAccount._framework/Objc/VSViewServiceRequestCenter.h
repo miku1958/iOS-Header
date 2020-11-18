@@ -8,6 +8,7 @@
 
 @class NSOperationQueue;
 
+__attribute__((visibility("hidden")))
 @interface VSViewServiceRequestCenter : NSObject
 {
     NSOperationQueue *_requestQueue;

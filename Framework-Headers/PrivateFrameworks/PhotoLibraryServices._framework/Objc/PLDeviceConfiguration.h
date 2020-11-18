@@ -30,7 +30,7 @@
 
 + (id)defaultDeviceConfiguration;
 - (id)description;
-- (id)initWithLogicalScreenSize:(struct CGSize)arg1 screenScale:(double)arg2 isRidingCrudSnow:(BOOL)arg3 isRidingPowderSnow:(BOOL)arg4;
+- (id)initWithLogicalScreenSize:(struct CGSize)arg1 screenScale:(double)arg2 deviceClass:(void *)arg3 isRidingCrudSnow:(BOOL)arg4 isRidingPowderSnow:(BOOL)arg5;
 
 @end
 

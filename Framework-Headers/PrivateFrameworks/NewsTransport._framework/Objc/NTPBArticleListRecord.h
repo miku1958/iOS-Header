@@ -8,23 +8,30 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray, NTPBRecordBase;
+@class NSMutableArray, NSString, NTPBRecordBase;
 
 @interface NTPBArticleListRecord : PBCodable <NSCopying>
 {
-    NSMutableArray *_articleIds;
+    NSMutableArray *_articleIDs;
     NTPBRecordBase *_base;
+    NSString *_metadata;
+    int _type;
+    CDStruct_f953fb60 _has;
 }
 
-@property (strong, nonatomic) NSMutableArray *articleIds; // @synthesize articleIds=_articleIds;
+@property (strong, nonatomic) NSMutableArray *articleIDs; // @synthesize articleIDs=_articleIDs;
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
 @property (readonly, nonatomic) BOOL hasBase;
+@property (readonly, nonatomic) BOOL hasMetadata;
+@property (nonatomic) BOOL hasType;
+@property (strong, nonatomic) NSString *metadata; // @synthesize metadata=_metadata;
+@property (nonatomic) int type; // @synthesize type=_type;
 
-+ (Class)articleIdsType;
-- (void)addArticleIds:(id)arg1;
-- (id)articleIdsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)articleIdsCount;
-- (void)clearArticleIds;
++ (Class)articleIDsType;
+- (void)addArticleIDs:(id)arg1;
+- (id)articleIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)articleIDsCount;
+- (void)clearArticleIDs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

@@ -6,13 +6,21 @@
 
 #import <CoreSuggestionsInternals/SGPipelineDissector.h>
 
+@class SGAccountsAdapter, SGMEventICSOpportunity;
+
 @interface SGCalendarAttachmentDissector : SGPipelineDissector
 {
+    SGMEventICSOpportunity *_icsOpportunityTracker;
+    SGAccountsAdapter *_accountsAdapter;
 }
 
+- (void).cxx_destruct;
+- (struct SGMEventICSSourceType_)accountTypeFor:(id)arg1;
 - (BOOL)array:(id)arg1 hasIntersectionWith:(id)arg2;
 - (void)dissectInternal:(id)arg1 inContext:(id)arg2;
 - (id)downloadedCalendarAttachmentsFrom:(id)arg1;
+- (BOOL)hasCalendarAccountForOneOf:(id)arg1;
+- (id)init;
 - (BOOL)shouldIgnoreEntity:(id)arg1;
 
 @end

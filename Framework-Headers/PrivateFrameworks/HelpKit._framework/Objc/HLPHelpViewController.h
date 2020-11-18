@@ -16,6 +16,7 @@
 
 @interface HLPHelpViewController : UIViewController <HLPHelpTableOfContentViewControllerDelegate, HLPHelpTopicViewControllerDelegate, HLPReachabilityManagerDelegate, HLPHelpLoadingViewDelegate>
 {
+    BOOL _showingHelpTopic;
     NSString *_helpBookBasePath;
     NSString *_helpbookVersion;
     NSURL *_helpBookURL;
@@ -90,6 +91,7 @@
 - (id)topicIDForTopicName:(id)arg1 locale:(id)arg2;
 - (void)updateDoneButton;
 - (void)updateTOCButton;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

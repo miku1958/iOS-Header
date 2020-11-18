@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NotificationsUI/__NCNotificationListClearButtonAccessibility_super.h>
+#import "__NCNotificationListClearButtonAccessibility_super.h"
 
 @interface NCNotificationListClearButtonAccessibility : __NCNotificationListClearButtonAccessibility_super
 {

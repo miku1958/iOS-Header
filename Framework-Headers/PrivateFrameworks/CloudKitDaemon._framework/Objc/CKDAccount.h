@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     CKDBackingAccount *_backingAccount;
     CKDClientContext *_context;
     NSObject<OS_dispatch_queue> *_authTokenCallbackQueue;
+    NSString *_lastFailedCloudKitAuthToken;
 }
 
 @property (strong, nonatomic) ACAccountType *acAccountType; // @synthesize acAccountType=_acAccountType;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *authTokenQueue;
 @property (readonly, nonatomic) CKDBackingAccount *backingAccount; // @synthesize backingAccount=_backingAccount;
 @property (readonly, nonatomic) BOOL canAccessAccount;
+@property (readonly, nonatomic) BOOL canAuthWithCloudKit;
 @property (readonly, nonatomic) BOOL cloudKitIsEnabled;
 @property (readonly, nonatomic) BOOL cloudPhotosIsEnabled;
 @property (weak, nonatomic) CKDClientContext *context; // @synthesize context=_context;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isAnonymousAccount; // @synthesize isAnonymousAccount=_isAnonymousAccount;
 @property (readonly, nonatomic) BOOL isFakeAccount;
 @property (nonatomic) BOOL isUnitTestingAccount; // @synthesize isUnitTestingAccount=_isUnitTestingAccount;
+@property (copy, nonatomic) NSString *lastFailedCloudKitAuthToken; // @synthesize lastFailedCloudKitAuthToken=_lastFailedCloudKitAuthToken;
 @property (readonly, nonatomic) NSString *primaryEmail;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *username;

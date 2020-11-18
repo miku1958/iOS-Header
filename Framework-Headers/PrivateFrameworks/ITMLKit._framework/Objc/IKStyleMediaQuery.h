@@ -10,12 +10,14 @@
 
 @interface IKStyleMediaQuery : NSObject
 {
+    NSString *_identifier;
     BOOL _isNegated;
     NSString *_mediaType;
     NSDictionary *_featureValues;
 }
 
 @property (readonly, strong, nonatomic) NSDictionary *featureValues; // @synthesize featureValues=_featureValues;
+@property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL isNegated; // @synthesize isNegated=_isNegated;
 @property (readonly, strong, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
 

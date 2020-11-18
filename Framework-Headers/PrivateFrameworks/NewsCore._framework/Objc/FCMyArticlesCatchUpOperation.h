@@ -17,23 +17,30 @@
     NSArray *_feedItems;
     NSDictionary *_feedContextByFeedID;
     NSError *_error;
+    long long _binOverride;
+    CDUnknownBlockType _feedItemCompletionBlock;
+    unsigned long long _maxNumberOfFeedsToQuery;
+    unsigned long long _perFeedLimit;
 }
 
+@property (nonatomic) long long binOverride; // @synthesize binOverride=_binOverride;
 @property (strong, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property (copy, nonatomic) FCDateRange *dateRange; // @synthesize dateRange=_dateRange;
-@property (readonly, copy) NSArray *editorialFeedItems;
 @property (copy) NSError *error; // @synthesize error=_error;
 @property (copy) NSDictionary *feedContextByFeedID; // @synthesize feedContextByFeedID=_feedContextByFeedID;
+@property (copy, nonatomic) CDUnknownBlockType feedItemCompletionBlock; // @synthesize feedItemCompletionBlock=_feedItemCompletionBlock;
 @property (copy) NSArray *feedItems; // @synthesize feedItems=_feedItems;
 @property (copy, nonatomic) CDUnknownBlockType feedItemsChangedHandler; // @synthesize feedItemsChangedHandler=_feedItemsChangedHandler;
+@property (nonatomic) unsigned long long maxNumberOfFeedsToQuery; // @synthesize maxNumberOfFeedsToQuery=_maxNumberOfFeedsToQuery;
 @property (readonly, copy) NSArray *nonEditorialFeedItems;
+@property (nonatomic) unsigned long long perFeedLimit; // @synthesize perFeedLimit=_perFeedLimit;
 @property (nonatomic) BOOL streamFeedItems; // @synthesize streamFeedItems=_streamFeedItems;
-@property (readonly, copy) NSArray *topStoriesFeedItems;
 
 - (void).cxx_destruct;
 - (void)_appendFeedItems:(id)arg1;
 - (void)_fetchTagsForQueryingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (BOOL)validateOperation;
 

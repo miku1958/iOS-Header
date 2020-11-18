@@ -29,6 +29,7 @@
 - (id)getClustersWithOptions:(id)arg1 error:(id *)arg2;
 - (id)initWithOptions:(id)arg1;
 - (id)suggestionsForClusterIds:(id)arg1 affinityThreshold:(float)arg2 error:(id *)arg3;
+- (id)suggestionsForClusterIdsWithFlags:(id)arg1 affinityThreshold:(float)arg2 error:(id *)arg3;
 
 @end
 

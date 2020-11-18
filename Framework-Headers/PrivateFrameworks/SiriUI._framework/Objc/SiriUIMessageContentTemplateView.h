@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) id<SiriUIMessageContentTemplateModel> dataSource; // @dynamic dataSource;
 
+- (struct CGSize)_textBalloonViewBoundingSize;
 - (double)desiredHeight;
 - (id)initWithDataSource:(id)arg1;
 - (void)layoutSubviews;

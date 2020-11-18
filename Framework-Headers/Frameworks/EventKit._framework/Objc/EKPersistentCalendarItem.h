@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasRecurrenceRules;
 @property (copy, nonatomic) NSDate *lastModifiedDate;
 @property (copy, nonatomic) EKPersistentLocation *location;
+@property (nonatomic) unsigned int modifiedProperties;
 @property (copy, nonatomic) NSString *notes;
 @property (strong, nonatomic) EKPersistentOrganizer *organizer;
 @property (strong, nonatomic) EKPersistentCalendarItem *originalItem;

@@ -45,11 +45,14 @@
 - (id)contactFromPersonID:(int)arg1;
 - (id)contactFromPersonID:(int)arg1 keysToFetch:(id)arg2;
 - (id)contactIdentifierFromPersonID:(int)arg1;
+- (id)contactIdentifierWithMatchingDictionary:(id)arg1;
 - (id)contactIdentifiersForFetchRequest:(id)arg1 error:(id *)arg2;
+- (id)contactWithMatchingDictionary:(id)arg1 keysToFetch:(id)arg2;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
 - (id)contactsMatchingPropertiesOfContact:(id)arg1 unifyResults:(BOOL)arg2 keysToFetch:(id)arg3 error:(id *)arg4;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)defaultContainerIdentifier;
+- (id)descriptorForRequiredKeysForMatchingDictionary;
 - (BOOL)enumerateContactsAndMatchInfoWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (BOOL)enumerateContactsWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)executeFetchRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -64,6 +67,7 @@
 - (id)initWithDataLocationName:(id)arg1;
 - (id)initWithEnvironment:(id)arg1;
 - (id)initWithEnvironment:(id)arg1 options:(unsigned long long)arg2;
+- (id)matchingDictionaryForContact:(id)arg1;
 - (id)meContactIdentifierWithError:(id *)arg1;
 - (id)membersOfGroupWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)originForSuggestion:(id)arg1 error:(id *)arg2;

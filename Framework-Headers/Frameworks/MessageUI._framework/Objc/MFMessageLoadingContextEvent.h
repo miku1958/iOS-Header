@@ -31,7 +31,10 @@
 @property (readonly, nonatomic) NSError *smimeError;
 
 - (void).cxx_destruct;
+- (id)_descriptionForDebugging:(BOOL)arg1;
 - (void)dealloc;
+- (id)debugDescription;
+- (id)description;
 
 @end
 

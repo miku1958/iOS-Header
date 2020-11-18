@@ -17,7 +17,7 @@
     NSArray *availablePhotoCodecTypes;
     NSArray *availableRawPhotoPixelFormatTypes;
     BOOL stillImageStabilizationSupported;
-    BOOL bravoImageFusionSupported;
+    BOOL dualCameraFusionSupported;
     NSArray *supportedHDRModes;
     NSArray *supportedFlashModes;
     BOOL highResolutionCaptureEnabled;

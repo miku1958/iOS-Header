@@ -6,12 +6,13 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSError, NSURL, UIImage;
+@class NSError, NSOperationQueue, NSURL, UIImage;
 
 @interface QLThumbnailCreationOperation : NSOperation
 {
     BOOL _finished;
     BOOL _executing;
+    NSOperationQueue *_operationQueue;
     BOOL _generateIfNeeded;
     UIImage *_image;
     NSError *_error;

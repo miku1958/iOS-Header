@@ -15,6 +15,9 @@
     BOOL _shouldCaptureHDREV0;
     BOOL _shouldCaptureOriginalForPortraitEffect;
     BOOL _didAcknowledgePortraitModeDescription;
+    BOOL _preserveEffectFilter;
+    BOOL _preserveCaptureMode;
+    BOOL _preserveLivePhoto;
     BOOL _shouldDisableCameraSwitchingDuringVideoRecording;
     BOOL _lockAsShutterEnabled;
     BOOL _shouldDelayRemotePersistence;
@@ -36,6 +39,9 @@
 @property (readonly, nonatomic, getter=isLockAsShutterEnabled) BOOL lockAsShutterEnabled; // @synthesize lockAsShutterEnabled=_lockAsShutterEnabled;
 @property (readonly, nonatomic) long long overriddenBackCaptureInterval; // @synthesize overriddenBackCaptureInterval=_overriddenBackCaptureInterval;
 @property (readonly, nonatomic) long long overriddenFrontCaptureInterval; // @synthesize overriddenFrontCaptureInterval=_overriddenFrontCaptureInterval;
+@property (readonly, nonatomic) BOOL preserveCaptureMode; // @synthesize preserveCaptureMode=_preserveCaptureMode;
+@property (readonly, nonatomic) BOOL preserveEffectFilter; // @synthesize preserveEffectFilter=_preserveEffectFilter;
+@property (readonly, nonatomic) BOOL preserveLivePhoto; // @synthesize preserveLivePhoto=_preserveLivePhoto;
 @property (nonatomic) long long previewViewAspectMode; // @synthesize previewViewAspectMode=_previewViewAspectMode;
 @property (strong, nonatomic, setter=_setResetTimeoutDate:) NSDate *resetTimeoutDate; // @synthesize resetTimeoutDate=_resetTimeoutDate;
 @property (readonly, nonatomic) BOOL shouldCaptureHDREV0; // @synthesize shouldCaptureHDREV0=_shouldCaptureHDREV0;

@@ -28,12 +28,14 @@
     UIColor *_backgroundColorWhileHosting;
     unsigned long long _hostedLayerTypes;
     BOOL _usingDefaultLayerTypes;
+    BOOL _clippingDisabled;
     id<FBSceneHostViewDelegate> _delegate;
 }
 
 @property (nonatomic) unsigned long long appearanceStyle; // @synthesize appearanceStyle=_appearanceStyle;
 @property (strong, nonatomic) UIColor *backgroundColorWhileHosting;
 @property (strong, nonatomic) UIColor *backgroundColorWhileNotHosting;
+@property (nonatomic, getter=isClippingDisabled) BOOL clippingDisabled; // @synthesize clippingDisabled=_clippingDisabled;
 @property (readonly, nonatomic, getter=isContextHosted) BOOL contextHosted;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<FBSceneHostViewDelegate> delegate; // @synthesize delegate=_delegate;

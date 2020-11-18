@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     SKCloudServiceController *_cloudServiceController;
     NSMapTable *_changeHandlers;
     unsigned long long _capabilities;
+    BOOL _hasUpdatedCapabilities;
     NSString *_storefrontIdentifier;
 }
 

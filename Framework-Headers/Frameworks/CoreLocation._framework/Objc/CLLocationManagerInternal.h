@@ -16,7 +16,7 @@
     double fDistanceFilter;
     double fDesiredAccuracy;
     BOOL fUpdatingLocation;
-    CDStruct_0aa5cb5c fLocation;
+    CDStruct_05ee51d2 fLocation;
     NSString *fLocationEventType;
     BOOL fRequestingLocation;
     struct __CFRunLoopTimer *fLocationRequestTimer;

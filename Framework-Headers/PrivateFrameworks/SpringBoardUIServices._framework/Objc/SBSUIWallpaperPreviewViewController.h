@@ -46,6 +46,7 @@
 - (void)_startDateTimer;
 - (void)_stopDateTimer;
 - (void)_updateDateView;
+- (void)_updateDateViewAlignmentFromOrientation:(long long)arg1;
 - (id)_wallpaperView;
 - (id)_wallpaperViewWithFrame:(struct CGRect)arg1;
 - (id)_wallpaperViewWithFrame:(struct CGRect)arg1 image:(id)arg2 video:(id)arg3 videoURL:(id)arg4 stillTimeInVideo:(double)arg5 supportsCropping:(BOOL)arg6 variant:(long long)arg7;
@@ -66,6 +67,7 @@
 - (void)setColorSamplingEnabled:(BOOL)arg1;
 - (void)setMotionEnabled:(BOOL)arg1 updateParallaxOnWallpaperView:(BOOL)arg2;
 - (void)setWallpaperForLocations:(long long)arg1;
+- (void)statusBarOrientationWillChange:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (id)wallpaperConfigurationManager;

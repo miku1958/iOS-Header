@@ -29,6 +29,7 @@
 - (BOOL)cancelAllSuggestionRequests;
 - (void)cancelFaceClustering;
 - (BOOL)cancelSuggestionRequest:(id)arg1;
+- (id)clusteringStatus;
 - (void)configurePhotoVisionContextWithParams:(id)arg1;
 - (id)context;
 - (void)drawFaceboxes:(id)arg1 inImage:(id)arg2 outputFilename:(id)arg3;
@@ -42,7 +43,7 @@
 - (void)processFaceUpdates:(id)arg1;
 - (BOOL)reclusterFacesWithThreshold:(id)arg1 withContext:(id)arg2 error:(id *)arg3;
 - (void)requestFaceClusteringWithCompletion:(CDUnknownBlockType)arg1;
-- (id)requestSuggestionsForFaceClusterSequenceNumbers:(id)arg1 updateHandler:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (id)requestSuggestionsForFaceClusterSequenceNumbers:(id)arg1 withClusteringFlags:(id)arg2 updateHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (BOOL)resetFaceClusteringStateWithContext:(id)arg1 error:(id *)arg2;
 - (void)start:(CDUnknownBlockType)arg1;
 - (void)stop;

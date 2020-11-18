@@ -70,6 +70,7 @@
 @property long long unlockActionButtonIndex; // @synthesize unlockActionButtonIndex=_unlockActionButtonIndex;
 
 + (long long)displayCountForKey:(id)arg1;
+- (void).cxx_destruct;
 - (long long)_kindForString:(id)arg1;
 - (id)copyUserNotification;
 - (void *)copyValueForCFUserNotificationKey:(struct __CFString *)arg1;

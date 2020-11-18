@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (void)_configureHighlightedValueImagesLikeRegularValueImages;
 - (void)_setTrackImage:(id)arg1;
+- (struct UIEdgeInsets)_thumbHitEdgeInsets;
 - (void)_updateEffects;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
@@ -34,6 +35,7 @@
 - (double)leftValueImageOriginForBounds:(struct CGRect)arg1 andSize:(struct CGSize)arg2;
 - (struct CGRect)maximumValueImageRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)minimumValueImageRectForBounds:(struct CGRect)arg1;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (double)rightValueImageOriginForBounds:(struct CGRect)arg1 andSize:(struct CGSize)arg2;
 - (void)setMaximumValueImage:(id)arg1;
 - (void)setMaximumValueImage:(id)arg1 cacheKey:(id)arg2;

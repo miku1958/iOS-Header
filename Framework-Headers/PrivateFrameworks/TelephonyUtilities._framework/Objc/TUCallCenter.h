@@ -16,6 +16,7 @@
     TUAudioDeviceController *_audioDeviceController;
     CNContactStore *_contactStore;
     TUCallProviderManager *_providerManager;
+    CDUnknownBlockType _disconnectCallPreflight;
     struct CGSize _localLandscapeAspectRatio;
     struct CGSize _localPortraitAspectRatio;
 }
@@ -44,6 +45,7 @@
 @property (readonly, nonatomic) TUCall *currentVideoCall;
 @property (readonly, nonatomic) unsigned long long currentVideoCallCount;
 @property (readonly, copy, nonatomic) NSArray *currentVideoCalls;
+@property (copy, nonatomic) CDUnknownBlockType disconnectCallPreflight; // @synthesize disconnectCallPreflight=_disconnectCallPreflight;
 @property (readonly, copy, nonatomic) NSArray *displayedCalls;
 @property (readonly, nonatomic, getter=isEndAndAnswerAllowed) BOOL endAndAnswerAllowed;
 @property (readonly, nonatomic) BOOL hasCurrentAudioCalls;
@@ -75,6 +77,7 @@
 - (id)_dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_existingCallsAllowDialRequest:(id)arg1 allowVoiceWithData:(BOOL)arg2;
 - (BOOL)_isCallingAvailableOnSecondaryDeviceWithRelayCallingAvailability:(int)arg1 isProviderAvailable:(BOOL)arg2 isRelayAllowed:(BOOL)arg3 shouldUseRelay:(BOOL *)arg4;
+- (void)_preflightDisconnectForCalls:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)allCallsAreOfService:(int)arg1;
 - (BOOL)allCallsPassTest:(CDUnknownBlockType)arg1;
 - (void)answerCall:(id)arg1;
@@ -151,6 +154,7 @@
 - (void)swapCalls;
 - (void)ungroupCall:(id)arg1;
 - (void)unholdCall:(id)arg1;
+- (void)updateCall:(id)arg1 withAnswerRequest:(id)arg2;
 - (id)videoCallWithStatus:(int)arg1;
 
 @end

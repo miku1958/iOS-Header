@@ -11,10 +11,10 @@
 
 @interface NCNotificationPriorityListViewController : NCNotificationListViewController
 {
+    NCNotificationRequest *_notificationRequestWithHintText;
     NCNotificationPriorityList *_notificationRequestList;
     NCAnimationCoordinator *_requestOperationAnimationCoordinator;
     id<UIViewControllerTransitionCoordinator> _lastDismissalTransitionCoordinator;
-    NCNotificationRequest *_notificationRequestWithHintText;
 }
 
 @property (strong, nonatomic) id<UIViewControllerTransitionCoordinator> lastDismissalTransitionCoordinator; // @synthesize lastDismissalTransitionCoordinator=_lastDismissalTransitionCoordinator;
@@ -29,6 +29,7 @@
 - (void)_reloadNotificationViewControllerForHintTextAtIndexPath:(id)arg1;
 - (void)_reloadNotificationViewControllerForHintTextAtIndexPaths:(id)arg1;
 - (void)_updateRaiseToListenRequest;
+- (id)allNotificationRequests;
 - (void)clearAll;
 - (void)clearAllNonPersistent;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
@@ -37,11 +38,13 @@
 - (BOOL)hasContent;
 - (BOOL)hasVisibleContent;
 - (void)hideRequestsForNotificationSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
+- (id)indexPathForNotificationRequest:(id)arg1;
 - (id)init;
 - (BOOL)insertNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
 - (BOOL)modifyNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
 - (id)notificationRequestAtIndexPath:(id)arg1;
 - (void)notificationViewController:(id)arg1 didCommitToLongLookPresentation:(BOOL)arg2 withCoordinator:(id)arg3;
+- (void)notificationViewController:(id)arg1 didDismissLongLook:(BOOL)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)reloadRequestsWithSuppressedContent;
 - (void)removeNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;

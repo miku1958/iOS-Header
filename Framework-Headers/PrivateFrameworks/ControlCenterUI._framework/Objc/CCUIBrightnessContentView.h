@@ -15,6 +15,7 @@
 
 - (struct CGSize)intrinsicContentSize;
 - (struct UIEdgeInsets)layoutMargins;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end
 

@@ -6,16 +6,22 @@
 
 #import <MusicCarDisplayUI/MCDTableViewController.h>
 
+@class NSString;
+
 @interface MCDSongsViewController : MCDTableViewController
 {
     BOOL _playlistMode;
+    NSString *_sortSongsPreferenceValue;
 }
 
 @property (nonatomic, getter=isPlaylistMode) BOOL playlistMode; // @synthesize playlistMode=_playlistMode;
+@property (strong, nonatomic) NSString *sortSongsPreferenceValue; // @synthesize sortSongsPreferenceValue=_sortSongsPreferenceValue;
 
 + (id)actionCellConfigurationClassesForLocation:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (void)_limitedUIDidChange;
 - (void)_updateQuery;
+- (void)_userDefaultsDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithDataSource:(id)arg1 cellConfigurationClass:(Class)arg2;
 - (BOOL)shouldShowActionCellConfiguration:(Class)arg1;

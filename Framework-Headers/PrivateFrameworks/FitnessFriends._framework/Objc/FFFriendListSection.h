@@ -14,6 +14,7 @@
     NSArray *_rows;
 }
 
+@property (readonly, nonatomic) NSDate *endDate;
 @property (strong, nonatomic) NSArray *rows; // @synthesize rows=_rows;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 

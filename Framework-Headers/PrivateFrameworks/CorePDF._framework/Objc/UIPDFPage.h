@@ -14,7 +14,7 @@
     unsigned long long _pageNumber;
     NSString *_stringInReadingOrder;
     UIPDFSelection *_selection;
-    int _lock;
+    struct os_unfair_lock_s _lock;
     UIPDFDocument *_document;
     unsigned long long _pageIndex;
     UIImage *_pageImage;

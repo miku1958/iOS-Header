@@ -10,7 +10,6 @@
 
 @interface PHALibraryChangeDetails : NSObject
 {
-    unsigned long long _changeType;
     NSArray *_inserts;
     NSArray *_deletes;
     NSArray *_updates;
@@ -18,16 +17,15 @@
     PHFetchResult *_changedAssetsFetchResult;
 }
 
+@property (readonly) NSArray *allChangedObjects;
 @property (strong) NSDictionary *changedAssetIdentifierToWorkerFlagsMap; // @synthesize changedAssetIdentifierToWorkerFlagsMap=_changedAssetIdentifierToWorkerFlagsMap;
 @property (strong) PHFetchResult *changedAssetsFetchResult; // @synthesize changedAssetsFetchResult=_changedAssetsFetchResult;
 @property (copy, setter=_setDeletes:) NSArray *deletes; // @synthesize deletes=_deletes;
 @property (copy, setter=_setInserts:) NSArray *inserts; // @synthesize inserts=_inserts;
-@property (readonly) unsigned long long type;
 @property (copy, setter=_setUpdates:) NSArray *updates; // @synthesize updates=_updates;
 
-+ (id)changeDetailsForUpdatedMoments:(id)arg1;
++ (id)changeDetailsForUpdatedObjects:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithType:(unsigned long long)arg1;
 
 @end
 

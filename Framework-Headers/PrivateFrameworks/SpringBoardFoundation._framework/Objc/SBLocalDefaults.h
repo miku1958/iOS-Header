@@ -6,7 +6,7 @@
 
 #import <SpringBoardFoundation/SBAbstractDefaults.h>
 
-@class SBAccessibilityDefaults, SBAppIconForceTouchDefaults, SBAppSwitcherDefaults, SBApplicationDefaults, SBBootDefaults, SBCarPlayDefaults, SBDemoDefaults, SBGestureDefaults, SBHardwareDefaults, SBIconDefaults, SBIdleTimerDefaults, SBLockScreenDefaults, SBMesaDefaults, SBMiscellaneousDefaults, SBMultiUserDefaults, SBNotificationCenterDefaults, SBNotificationDefaults, SBPIPDefaults, SBPowerDefaults, SBPrototypingDefaults, SBRotationDefaults, SBSecurityDefaults, SBSetupDefaults, SBSoftwareUpdateDefaults, SBSoundDefaults, SBStatusBarDefaults, SBThermalDefaults, SBUsageDefaults, SBVoiceControlDefaults, SBWallpaperDefaults, SBWorkspaceDefaults;
+@class SBAccessibilityDefaults, SBAppIconForceTouchDefaults, SBAppSwitcherDefaults, SBApplicationDefaults, SBBootDefaults, SBCarPlayDefaults, SBDemoDefaults, SBGestureDefaults, SBHardwareDefaults, SBIconDefaults, SBIdleTimerDefaults, SBLockScreenDefaults, SBMesaDefaults, SBMiscellaneousDefaults, SBMultiUserDefaults, SBNotificationCenterDefaults, SBNotificationDefaults, SBPIPDefaults, SBPowerDefaults, SBPrototypingDefaults, SBRotationDefaults, SBSOSDefaults, SBSecurityDefaults, SBSetupDefaults, SBSoftwareUpdateDefaults, SBSoundDefaults, SBStatusBarDefaults, SBThermalDefaults, SBUsageDefaults, SBVoiceControlDefaults, SBWallpaperDefaults, SBWorkspaceDefaults;
 
 @interface SBLocalDefaults : SBAbstractDefaults
 {
@@ -41,6 +41,7 @@
     SBVoiceControlDefaults *_lazy_voiceControlDefaults;
     SBWallpaperDefaults *_lazy_wallpaperDefaults;
     SBWorkspaceDefaults *_lazy_workspaceDefaults;
+    SBSOSDefaults *_lazy_sosDefaults;
 }
 
 @property (readonly, strong, nonatomic) SBAccessibilityDefaults *accessibilityDefaults;
@@ -67,6 +68,7 @@
 @property (readonly, strong, nonatomic) SBSecurityDefaults *securityDefaults;
 @property (readonly, strong, nonatomic) SBSetupDefaults *setupDefaults;
 @property (readonly, strong, nonatomic) SBSoftwareUpdateDefaults *softwareUpdateDefaults;
+@property (readonly, strong, nonatomic) SBSOSDefaults *sosDefaults;
 @property (readonly, strong, nonatomic) SBSoundDefaults *soundDefaults;
 @property (readonly, strong, nonatomic) SBStatusBarDefaults *statusBarDefaults;
 @property (readonly, strong, nonatomic) SBThermalDefaults *thermalDefaults;

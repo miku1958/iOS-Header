@@ -24,6 +24,7 @@
 - (id)_performValidation;
 - (id)commitItem;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
+- (BOOL)requiresDeviceUnlock;
 - (BOOL)updateWithActionBuilder:(id)arg1;
 
 @end

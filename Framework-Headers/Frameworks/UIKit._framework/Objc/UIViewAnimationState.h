@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
     unsigned int _layoutSubviews:1;
     unsigned int _hasOuterAnimator:1;
     unsigned int _hasOuterTrackingAnimator:1;
+    unsigned int _disallowCaptureWithinPropertyAnimator:1;
     NSMutableArray *_trackedAnimations;
     NSUUID *_uuid;
     id<_UIBasicAnimationFactory> _animationFactory;

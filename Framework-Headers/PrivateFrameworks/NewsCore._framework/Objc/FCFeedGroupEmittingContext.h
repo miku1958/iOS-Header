@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class FCCloudContext, FCDateRange, FCFeedDescriptor, FCFeedEdition, FCForYouCatchUpOperation, NSArray, NSDate, NSHashTable, NSSet;
+@class FCCloudContext, FCDateRange, FCFeedDescriptor, FCFeedEdition, FCFeedRefreshSession, FCForYouCatchUpOperation, NSArray, NSDate, NSHashTable, NSSet;
 @protocol FCFeedPersonalizing;
 
 @interface FCFeedGroupEmittingContext : NSObject
 {
+    BOOL _isTopOfPage;
     BOOL _isFirstPageInRefreshSession;
-    BOOL _isTopOfRefreshSession;
     BOOL _preferSpeedOverQuality;
+    BOOL _isOffline;
     FCForYouCatchUpOperation *_forYouCatchUpOperation;
     FCCloudContext *_cloudContext;
     id<FCFeedPersonalizing> _personalizer;
@@ -23,10 +24,13 @@
     NSDate *_editionKeyDate;
     FCFeedDescriptor *_feedDescriptor;
     unsigned long long _desiredHeadlineCount;
-    NSHashTable *_groupsFromSession;
-    NSHashTable *_groupsFromPage;
     NSArray *_precedingGroups;
+    NSArray *_pendingGroups;
     NSArray *_followingGroups;
+    NSHashTable *_groupsFromPage;
+    FCFeedRefreshSession *_refreshSession;
+    NSArray *_emitters;
+    NSArray *_remainingEmitters;
     NSSet *_articleIDs;
     NSSet *_clusterIDs;
 }
@@ -38,39 +42,43 @@
 @property (readonly, nonatomic) unsigned long long desiredHeadlineCount; // @synthesize desiredHeadlineCount=_desiredHeadlineCount;
 @property (readonly, copy, nonatomic) FCFeedEdition *edition; // @synthesize edition=_edition;
 @property (readonly, nonatomic) NSDate *editionKeyDate; // @synthesize editionKeyDate=_editionKeyDate;
+@property (strong, nonatomic) NSArray *emitters; // @synthesize emitters=_emitters;
 @property (readonly, copy, nonatomic) FCFeedDescriptor *feedDescriptor; // @synthesize feedDescriptor=_feedDescriptor;
 @property (readonly, copy, nonatomic) NSArray *followingGroups; // @synthesize followingGroups=_followingGroups;
 @property (readonly, nonatomic) FCForYouCatchUpOperation *forYouCatchUpOperation; // @synthesize forYouCatchUpOperation=_forYouCatchUpOperation;
 @property (strong, nonatomic) NSHashTable *groupsFromPage; // @synthesize groupsFromPage=_groupsFromPage;
-@property (strong, nonatomic) NSHashTable *groupsFromSession; // @synthesize groupsFromSession=_groupsFromSession;
 @property (readonly, nonatomic) BOOL isFirstPageInRefreshSession; // @synthesize isFirstPageInRefreshSession=_isFirstPageInRefreshSession;
-@property (readonly, nonatomic) BOOL isTopOfRefreshSession; // @synthesize isTopOfRefreshSession=_isTopOfRefreshSession;
+@property (readonly, nonatomic) BOOL isOffline; // @synthesize isOffline=_isOffline;
+@property (readonly, nonatomic) BOOL isTopOfPage; // @synthesize isTopOfPage=_isTopOfPage;
 @property (readonly, copy, nonatomic) FCDateRange *pageDateRange; // @synthesize pageDateRange=_pageDateRange;
+@property (readonly, copy, nonatomic) NSArray *pendingGroups; // @synthesize pendingGroups=_pendingGroups;
 @property (readonly, nonatomic) id<FCFeedPersonalizing> personalizer; // @synthesize personalizer=_personalizer;
 @property (readonly, nonatomic) long long precedingGroupType;
 @property (readonly, copy, nonatomic) NSArray *precedingGroups; // @synthesize precedingGroups=_precedingGroups;
 @property (readonly, nonatomic) BOOL preferSpeedOverQuality; // @synthesize preferSpeedOverQuality=_preferSpeedOverQuality;
 @property (readonly, nonatomic) FCDateRange *refreshDateRange; // @synthesize refreshDateRange=_refreshDateRange;
+@property (strong, nonatomic) FCFeedRefreshSession *refreshSession; // @synthesize refreshSession=_refreshSession;
+@property (strong, nonatomic) NSArray *remainingEmitters; // @synthesize remainingEmitters=_remainingEmitters;
 
 - (void).cxx_destruct;
-- (void)_aduitGroups:(id)arg1;
 - (id)_filterTransformationWithFilterOptions:(long long)arg1 groupTypes:(id)arg2 includeArticlesFromGroupTypes:(BOOL)arg3;
 - (id)allArticleIDs;
 - (id)articleIDsContainedByGroupType:(long long)arg1;
-- (unsigned long long)countOfFollowingAdjacentGroupsWithType:(long long)arg1;
-- (unsigned long long)countOfPrecedingAdjacentGroupsWithType:(long long)arg1;
+- (id)copyWithRefreshSession:(id)arg1;
+- (unsigned long long)countOfPrecedingAdjacentGroupsWithTypes:(id)arg1;
 - (id)creationDateOfFollowingGroupWithType:(long long)arg1;
 - (id)filterTransformationWithFilterOptions:(long long)arg1;
 - (id)filterTransformationWithFilterOptions:(long long)arg1 considerOutputFrom:(id)arg2;
 - (id)filterTransformationWithFilterOptions:(long long)arg1 ignoringCurrentPageOutputFrom:(id)arg2;
 - (id)filterTransformationWithFilterOptions:(long long)arg1 ignoringOutputFrom:(id)arg2;
 - (id)followingAdjacentHeadlinesFromGroupType:(long long)arg1;
-- (BOOL)hasPrecedingGroupWithType:(long long)arg1;
-- (id)initWithCloudContext:(id)arg1 precedingGroups:(id)arg2 followingGroups:(id)arg3 groupsFromSession:(id)arg4 refreshDateRange:(id)arg5 edition:(id)arg6 feedDescriptor:(id)arg7 desiredHeadlineCount:(unsigned long long)arg8 preferSpeedOverQuality:(BOOL)arg9 forYouCatchUpOperation:(id)arg10;
-- (BOOL)pageHasPrecedingGroupWithType:(long long)arg1;
+- (id)groupFromPageWithType:(long long)arg1;
+- (id)initWithCloudContext:(id)arg1 refreshSession:(id)arg2 refreshDateRange:(id)arg3 edition:(id)arg4 precedingGroups:(id)arg5 followingGroups:(id)arg6 feedDescriptor:(id)arg7 emitters:(id)arg8 desiredHeadlineCount:(unsigned long long)arg9 preferSpeedOverQuality:(BOOL)arg10 forYouCatchUpOperation:(id)arg11;
+- (BOOL)pageHasExhaustedGroupsWithTypes:(id)arg1;
+- (BOOL)pageHasPrecedingGroupWithSourceIdentifier:(id)arg1;
+- (BOOL)pageWillContainGroupWithType:(long long)arg1;
 - (id)precedingAdjacentHeadlinesFromGroupType:(long long)arg1;
 - (id)precedingNewFavoriteTagIDs;
-- (BOOL)sessionHasPrecedingGroupWithSourceIdentifier:(id)arg1;
 
 @end
 

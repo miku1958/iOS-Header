@@ -9,11 +9,10 @@
 #import <UserActivity/SFCompanionAdvertiserDelegate-Protocol.h>
 
 @class CSSearchableItemAttributeSet, NSData, NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSURL, NSUUID, NSUserActivity, SFCompanionAdvertiser, UAUserActivityManager;
-@protocol UAUserActivityDelegate;
+@protocol OS_dispatch_queue, UAUserActivityDelegate;
 
 @interface UAUserActivity : NSObject <SFCompanionAdvertiserDelegate>
 {
-    NSMutableDictionary *_userInfo;
     NSMutableDictionary *_frameworkPayload;
     NSString *_title;
     NSURL *_webpageURL;
@@ -25,6 +24,7 @@
     BOOL _createsNewUUIDIfSaved;
     NSError *_decodeUserInfoError;
     BOOL _needsSave;
+    BOOL _needsSaveValueAtEndOfWillSaveCallback;
     BOOL _dirty;
     BOOL _sendToServerPending;
     BOOL _activityHasBeenSentToServer;
@@ -35,12 +35,9 @@
     BOOL _userActivityWasCreatedSent;
     BOOL _indexInProcess;
     long long _inWillSaveCallback;
-    double _encodedContainsUnsynchronizedCloudDocumentBackoffInterval;
     CSSearchableItemAttributeSet *_contentAttributeSet;
-    NSMutableSet *_keywords;
     NSDate *_expirationDate;
     NSString *_contentUserAction;
-    NSMutableSet *_requiredUserInfoKeys;
     NSString *_teamIdentifier;
     unsigned long long _os_state_handler;
     int _forwardToCoreSpotlightIndexerCount;
@@ -49,8 +46,12 @@
     BOOL _eligibleForReminders;
     BOOL _eligibleForPublicIndexing;
     BOOL _invalidated;
+    BOOL _userInfoContainsFileURLs;
     BOOL _canCreateStreams;
     NSData *_cachedEncodedUserInfo;
+    NSSet *_keywords;
+    NSSet *_requiredUserInfoKeys;
+    NSDictionary *_userInfo;
     id<UAUserActivityDelegate> _delegate;
     UAUserActivityManager *_manager;
     NSString *_typeIdentifier;
@@ -62,10 +63,11 @@
     NSMutableDictionary *_payloadObjects;
     NSMutableDictionary *_payloadUpdateBlocks;
     NSMutableDictionary *_payloadDataCache;
+    NSObject<OS_dispatch_queue> *_willCallSaveSerializationQueue;
 }
 
 @property (readonly) BOOL activityHasBeenSentToServer; // @synthesize activityHasBeenSentToServer=_activityHasBeenSentToServer;
-@property (strong) NSData *cachedEncodedUserInfo; // @synthesize cachedEncodedUserInfo=_cachedEncodedUserInfo;
+@property (copy) NSData *cachedEncodedUserInfo; // @synthesize cachedEncodedUserInfo=_cachedEncodedUserInfo;
 @property BOOL canCreateStreams; // @synthesize canCreateStreams=_canCreateStreams;
 @property (copy) CSSearchableItemAttributeSet *contentAttributeSet; // @dynamic contentAttributeSet;
 @property (copy) NSString *contentIdentifier; // @dynamic contentIdentifier;
@@ -83,7 +85,6 @@
 @property (getter=isEligibleForReminders) BOOL eligibleForReminders; // @dynamic eligibleForReminders;
 @property (getter=isEligibleForSearch) BOOL eligibleForSearch; // @dynamic eligibleForSearch;
 @property BOOL encodedContainsUnsynchronizedCloudDocument; // @synthesize encodedContainsUnsynchronizedCloudDocument=_encodedContainsUnsynchronizedCloudDocument;
-@property double encodedContainsUnsynchronizedCloudDocumentBackoffInterval; // @synthesize encodedContainsUnsynchronizedCloudDocumentBackoffInterval=_encodedContainsUnsynchronizedCloudDocumentBackoffInterval;
 @property BOOL encodedFileProviderURL; // @synthesize encodedFileProviderURL=_encodedFileProviderURL;
 @property (copy) NSDate *expirationDate; // @dynamic expirationDate;
 @property BOOL forceImmediateSendToServer; // @synthesize forceImmediateSendToServer=_forceImmediateSendToServer;
@@ -91,6 +92,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, getter=isInvalidated) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (copy) NSSet *keywords; // @dynamic keywords;
+@property (copy) NSSet *keywords; // @synthesize keywords=_keywords;
 @property (readonly, weak) UAUserActivityManager *manager; // @synthesize manager=_manager;
 @property BOOL needsSave; // @dynamic needsSave;
 @property (copy) NSDictionary *options; // @synthesize options=_options;
@@ -101,6 +103,7 @@
 @property (strong) NSMutableDictionary *payloadObjects; // @synthesize payloadObjects=_payloadObjects;
 @property (strong) NSMutableDictionary *payloadUpdateBlocks; // @synthesize payloadUpdateBlocks=_payloadUpdateBlocks;
 @property (copy) NSSet *requiredUserInfoKeys; // @dynamic requiredUserInfoKeys;
+@property (copy) NSSet *requiredUserInfoKeys; // @synthesize requiredUserInfoKeys=_requiredUserInfoKeys;
 @property BOOL sendToServerPending; // @synthesize sendToServerPending=_sendToServerPending;
 @property (copy) NSData *streamsData;
 @property (copy) NSString *subtitle; // @dynamic subtitle;
@@ -111,8 +114,10 @@
 @property (copy) NSString *title; // @dynamic title;
 @property (copy) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 @property (readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-@property (copy) NSDictionary *userInfo; // @dynamic userInfo;
+@property (copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property BOOL userInfoContainsFileURLs; // @synthesize userInfoContainsFileURLs=_userInfoContainsFileURLs;
 @property (copy) NSURL *webpageURL; // @dynamic webpageURL;
+@property (readonly, strong) NSObject<OS_dispatch_queue> *willCallSaveSerializationQueue; // @synthesize willCallSaveSerializationQueue=_willCallSaveSerializationQueue;
 
 + (id)_decodeFromScanner:(id)arg1;
 + (id)_decodeFromString:(id)arg1;
@@ -147,7 +152,7 @@
 - (void)addKeywordsFromArray:(id)arg1;
 - (void)addUserInfoEntriesFromDictionary:(id)arg1;
 - (void)advertiser:(id)arg1 didReceiveInputStream:(id)arg2 outputStream:(id)arg3;
-- (id)archiveURL:(id)arg1 error:(id *)arg2;
+- (BOOL)archiveURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)archiver:(id)arg1 willEncodeObject:(id)arg2;
 - (void)becomeCurrent;
 - (id)callWillSaveDelegateIfDirtyAndPackageUpData:(BOOL)arg1 clearDirty:(BOOL)arg2;
@@ -163,6 +168,7 @@
 - (void)didSynchronizeUserActivity;
 - (void)displayInDtrace;
 - (id)encodeUserInfo:(id)arg1;
+- (BOOL)encodeUserInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)encodeUserInfo:(id)arg1 error:(id *)arg2;
 - (void)getContinuationStreamsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)indexActivity:(double)arg1 forceIndexing:(BOOL)arg2;
@@ -189,7 +195,6 @@
 - (void)resignCurrent;
 - (void)scheduleSendUserActivityInfoToLSUserActivityd;
 - (void)sendToCoreSpotlightIndexer;
-- (void)sendToServer:(BOOL)arg1;
 - (void)sendUserActivityInfoToLSUserActivityd:(BOOL)arg1 onAsyncQueue:(BOOL)arg2;
 - (void)setContentAttributes:(id)arg1;
 - (void)setContentType:(id)arg1;

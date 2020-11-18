@@ -8,33 +8,33 @@
 
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMAccessoryCategory, HMDHome, HMFMessageDispatcher, NSMutableArray, NSString, NSUUID;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class HMAccessoryCategory, HMFMessageDispatcher, NSMutableArray, NSString, NSUUID;
+@protocol OS_dispatch_queue;
 
 @interface HMDUnpairedAccessory : NSObject <HMFMessageReceiver>
 {
     NSString *_identifier;
     NSString *_name;
     NSUUID *_uuid;
+    NSString *_homeName;
+    NSString *_password;
     HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableArray *_servers;
     HMAccessoryCategory *_category;
-    NSObject<OS_dispatch_source> *_pairingRetryTimer;
-    HMDHome *_home;
 }
 
 @property (strong, nonatomic) HMAccessoryCategory *category; // @synthesize category=_category;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
+@property (copy, nonatomic) NSString *homeName; // @synthesize homeName=_homeName;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (copy, nonatomic, getter=getName) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *pairingRetryTimer; // @synthesize pairingRetryTimer=_pairingRetryTimer;
+@property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (strong, nonatomic) NSMutableArray *servers; // @synthesize servers=_servers;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long transportTypes;
@@ -47,7 +47,6 @@
 - (void)_registerForMessages;
 - (void)_updateCategory:(id)arg1 notifyClients:(BOOL)arg2;
 - (void)_updateName:(id)arg1;
-- (id)accessoryServer;
 - (id)accessoryServers;
 - (void)addAccessoryServer:(id)arg1;
 - (void)dealloc;
@@ -59,7 +58,8 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMessageDispatcher:(id)arg1;
-- (BOOL)removeAccessoryServer:(id)arg1;
+- (id)preferredAccessoryServer;
+- (void)removeAccessoryServer:(id)arg1;
 - (void)updateCategory:(id)arg1;
 - (void)updateName:(id)arg1;
 

@@ -34,6 +34,7 @@
 @property (strong, nonatomic) id<MDLMeshBuffer> vertexCreases; // @synthesize vertexCreases=_vertexCreases;
 
 - (void).cxx_destruct;
+- (id)initWithSubmesh:(id)arg1;
 
 @end
 

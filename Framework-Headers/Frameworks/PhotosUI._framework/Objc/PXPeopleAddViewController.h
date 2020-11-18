@@ -7,12 +7,11 @@
 #import <UIKit/UICollectionViewController.h>
 
 #import <PhotosUICore/PXPeopleDataSourceDelegate-Protocol.h>
-#import <PhotosUICore/UICollectionViewDataSourcePrefetching-Protocol.h>
 #import <PhotosUICore/UICollectionViewDelegateFlowLayout-Protocol.h>
 
 @class NSString, PXPeoplePersonDataSource, UIBarButtonItem;
 
-@interface PXPeopleAddViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, PXPeopleDataSourceDelegate>
+@interface PXPeopleAddViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout, PXPeopleDataSourceDelegate>
 {
     UIBarButtonItem *_cancelItem;
     UIBarButtonItem *_addItem;
@@ -58,8 +57,6 @@
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
-- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)commonInit;
 - (void)contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)dealloc;

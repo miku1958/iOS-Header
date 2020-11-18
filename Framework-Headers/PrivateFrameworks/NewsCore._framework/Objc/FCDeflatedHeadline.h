@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) unsigned long long articleRecordModificationDateMilliseconds;
 @property (readonly, nonatomic) unsigned long long backendArticleVersion;
 @property (readonly, copy, nonatomic) NSArray *blockedStorefrontIDs;
+@property (readonly, nonatomic) BOOL canBePurchased;
 @property (readonly, copy, nonatomic) NSString *clusterID;
 @property (readonly, nonatomic) unsigned long long contentType;
 @property (readonly, copy, nonatomic) NSURL *contentURL;
@@ -31,6 +32,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic, getter=isDeleted) BOOL deleted;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSDate *displayDate;
 @property (readonly, copy, nonatomic) NSArray *endOfArticleTopicIDs;
 @property (readonly, nonatomic, getter=isExplicitContent) BOOL explicitContent;
 @property (readonly, nonatomic, getter=isFeatureCandidate) BOOL featureCandidate;

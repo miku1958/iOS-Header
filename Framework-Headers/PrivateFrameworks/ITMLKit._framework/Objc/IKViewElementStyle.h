@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) long long fillImage;
 @property (readonly, nonatomic) double fontSize;
 @property (readonly, nonatomic) NSString *fontWeight;
+@property (readonly, nonatomic) BOOL hidden;
 @property (readonly, nonatomic) IKColor *ikBackgroundColor;
 @property (readonly, nonatomic) IKColor *ikBorderColor;
 @property (readonly, nonatomic) IKColor *ikColor;
@@ -78,8 +79,10 @@
 + (id)elementStyleWithSelector:(id)arg1 inlineStyleString:(id)arg2 filterBlockedStyles:(BOOL)arg3;
 + (unsigned long long)imageTreatmentFromString:(id)arg1;
 + (void)initialize;
++ (BOOL)isHiddenStyleRegistered;
 + (id)normalizeClassSelectorString:(id)arg1;
 + (unsigned long long)positionFromString:(id)arg1;
++ (void)registerHiddenStyle:(id)arg1;
 + (void)registerStyle:(id)arg1 aliasName:(id)arg2 withType:(unsigned long long)arg3 inherited:(BOOL)arg4;
 + (void)registerStyle:(id)arg1 withType:(unsigned long long)arg2 inherited:(BOOL)arg3;
 + (id)registeredAliases;

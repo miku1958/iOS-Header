@@ -6,21 +6,17 @@
 
 #import <HealthKit/_HKQueryServerDataObject.h>
 
-@class NSCalendar, NSDate, NSSet;
+@class NSCalendar, NSDate;
 
 __attribute__((visibility("hidden")))
 @interface _HKLatestSummariesQueryServerDataObject : _HKQueryServerDataObject
 {
-    NSDate *_startDate;
-    NSDate *_endDate;
+    NSDate *_summaryDate;
     NSCalendar *_calendar;
-    NSSet *_typeFilters;
 }
 
 @property (strong, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
-@property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-@property (strong, nonatomic) NSSet *typeFilters; // @synthesize typeFilters=_typeFilters;
+@property (strong, nonatomic) NSDate *summaryDate; // @synthesize summaryDate=_summaryDate;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

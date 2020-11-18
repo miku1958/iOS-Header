@@ -84,7 +84,7 @@
 - (BOOL)_hasPriorityOverEventType:(id)arg1;
 - (BOOL)_hasPriorityOverEventTypes:(id)arg1;
 - (id)_mealClassificationTypeUsingStartDate:(id)arg1;
-- (void)addEvents:(id)arg1;
+- (void)addEventPatterns:(id)arg1;
 - (id)adjustedEventClassificationTypeWithStartDate:(id)arg1;
 - (id)adjustedEventTitleForMessageUnits:(id)arg1;
 - (id)adjustedEventTitleForMessageUnits:(id)arg1 subject:(id)arg2 isDateInSubject:(BOOL)arg3;
@@ -93,6 +93,7 @@
 - (id)initWithIdentifier:(id)arg1 language:(id)arg2 keywords:(id)arg3 defaultTitle:(id)arg4 defaultStartingTimeHour:(int)arg5 defaultStartingTimeMinutes:(int)arg6 defaultDuration:(double)arg7 parent:(id)arg8 children:(id)arg9 upperPriorityEventTypes:(id)arg10 useForTimeAdjustement:(BOOL)arg11 minutesBeforeDefaultStartingTime:(double)arg12 minutesAfterDefaultStartingTime:(double)arg13 highPriority:(BOOL)arg14 lowPriority:(BOOL)arg15 allDayAllowed:(BOOL)arg16 subjectKeywords:(id)arg17;
 - (BOOL)isDateWithinRange:(id)arg1;
 - (id)properCasedTitleForTitle:(id)arg1 locale:(id)arg2;
+- (BOOL)questionMarkInString:(id)arg1;
 
 @end
 

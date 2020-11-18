@@ -20,7 +20,10 @@
 + (double)dateAlphaProgressForScrollOffset:(double)arg1 withPageBounds:(struct CGRect)arg2;
 + (double)dateBaselineToListY;
 + (id)dateFont;
++ (double)dateOnlyLabelToLunarDateLabelBaselineDifferenceY;
++ (id)dateOnlyLunarDateFont;
 + (unsigned long long)dateTimeLayoutForPage:(unsigned long long)arg1;
++ (id)dateTimeLunarDateFont;
 + (double)dateTimeMinimumInset;
 + (BOOL)layoutCentersContent:(unsigned long long)arg1;
 + (BOOL)layoutHitsMaximumWidth:(unsigned long long)arg1;
@@ -32,7 +35,6 @@
 + (double)listToPageBottomInsetYForPage:(unsigned long long)arg1;
 + (double)listWidthForNotificationCenter;
 + (double)listWidthForPage:(unsigned long long)arg1;
-+ (id)lunarDateFont;
 + (double)searchBarWidth;
 + (double)searchClippingLineMaxY;
 + (BOOL)searchSizeUsesMargins;
@@ -45,7 +47,7 @@
 + (struct CGRect)suggestedFrameForDateTimeViewInScreenCoordinates:(struct CGRect)arg1 centeredX:(BOOL)arg2;
 + (struct CGRect)suggestedFrameForListForPage:(unsigned long long)arg1 pageBounds:(struct CGRect)arg2;
 + (struct CGRect)suggestedFrameForListForPage:(unsigned long long)arg1 pageBounds:(struct CGRect)arg2 insets:(struct UIEdgeInsets)arg3;
-+ (struct CGRect)suggestedFrameForMediaArtworkForControlsFrame:(struct CGRect)arg1 inPageBounds:(struct CGRect)arg2;
++ (struct CGRect)suggestedFrameForMediaArtworkForControlsFrame:(struct CGRect)arg1 bottomInset:(double)arg2 inPageBounds:(struct CGRect)arg3;
 + (struct CGRect)suggestedFrameForMediaControlsForPageBounds:(struct CGRect)arg1;
 + (struct CGRect)suggestedFrameForPageControlForPageBounds:(struct CGRect)arg1 desiredSize:(struct CGSize)arg2;
 + (struct CGRect)suggestedFrameForSearchControllerForPageBounds:(struct CGRect)arg1;

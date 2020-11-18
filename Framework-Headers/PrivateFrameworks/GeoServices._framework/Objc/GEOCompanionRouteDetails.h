@@ -23,6 +23,7 @@
     NSString *_name;
     GEOMapItemStorage *_origin;
     unsigned int _originalDuration;
+    NSData *_originalRouteID;
     GEOTransitSuggestedRoute *_originalSuggestedRoute;
     GEODirectionsRequest *_request;
     GEODirectionsResponse *_response;
@@ -58,6 +59,7 @@
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasOrigin;
 @property (nonatomic) BOOL hasOriginalDuration;
+@property (readonly, nonatomic) BOOL hasOriginalRouteID;
 @property (readonly, nonatomic) BOOL hasOriginalSuggestedRoute;
 @property (readonly, nonatomic) BOOL hasRequest;
 @property (readonly, nonatomic) BOOL hasResponse;
@@ -69,6 +71,7 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) GEOMapItemStorage *origin; // @synthesize origin=_origin;
 @property (nonatomic) unsigned int originalDuration; // @synthesize originalDuration=_originalDuration;
+@property (strong, nonatomic) NSData *originalRouteID; // @synthesize originalRouteID=_originalRouteID;
 @property (strong, nonatomic) GEOTransitSuggestedRoute *originalSuggestedRoute; // @synthesize originalSuggestedRoute=_originalSuggestedRoute;
 @property (strong, nonatomic) GEODirectionsRequest *request; // @synthesize request=_request;
 @property (strong, nonatomic) GEODirectionsResponse *response; // @synthesize response=_response;

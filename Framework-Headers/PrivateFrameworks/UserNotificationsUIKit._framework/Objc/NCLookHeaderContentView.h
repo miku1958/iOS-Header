@@ -15,7 +15,6 @@
 @interface NCLookHeaderContentView : UIView <SBDateLabelDelegate, NCContentSizeCategoryAdjusting>
 {
     NCLookViewFontProvider *_fontProvider;
-    UILabel *_titleLabel;
     UILabel<NCNotificationDateLabel> *_dateLabel;
     UIButton *_iconButton;
     UIButton *_utilityButton;
@@ -28,6 +27,8 @@
     NSTimeZone *_timeZone;
     long long _dateFormatStyle;
     UIView *_utilityView;
+    UILabel *_titleLabel;
+    UILabel *_outgoingTitleLabel;
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
@@ -41,10 +42,12 @@
 @property (strong, nonatomic) UIImage *icon;
 @property (readonly, nonatomic) UIButton *iconButton; // @synthesize iconButton=_iconButton;
 @property (readonly, nonatomic) long long lookStyle; // @synthesize lookStyle=_lookStyle;
+@property (strong, nonatomic, getter=_outgoingTitleLabel, setter=_setOutgoingTitleLabel:) UILabel *outgoingTitleLabel; // @synthesize outgoingTitleLabel=_outgoingTitleLabel;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property (copy, nonatomic) NSString *title;
+@property (strong, nonatomic, getter=_titleLabel, setter=_setTitleLabel:) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (readonly, nonatomic) UIButton *utilityButton;
 @property (strong, nonatomic) UIView *utilityView; // @synthesize utilityView=_utilityView;
 
@@ -55,10 +58,9 @@
 - (void)_configureDateLabelIfNecessary;
 - (void)_configureIconButtonForLongLook;
 - (void)_configureIconButtonIfNecessary;
-- (void)_configureTitleLabelForLongLook;
-- (void)_configureTitleLabelForShortLook;
-- (void)_configureTitleLabelForStyle:(long long)arg1;
-- (void)_configureTitleLabelIfNecessary;
+- (void)_configureTitleLabel:(id)arg1 forStyle:(long long)arg2;
+- (void)_configureTitleLabelForLongLook:(id)arg1;
+- (void)_configureTitleLabelForShortLook:(id)arg1;
 - (void)_configureUtilityButtonIfNecessary;
 - (id)_dateLabel;
 - (void)_fixTitleOverlapIfNecessary;
@@ -75,13 +77,16 @@
 - (void)_layoutTitleLabelForShortLookWithScale:(double)arg1;
 - (void)_layoutTitleLabelForStyle:(long long)arg1 withScale:(double)arg2;
 - (void)_layoutUtilityButtonForStyle:(long long)arg1 withScale:(double)arg2;
+- (id)_lazyOutgoingTitleLabel;
+- (id)_lazyTitleLabel;
+- (id)_newTitleLabel;
 - (void)_recycleDateLabel;
 - (void)_setFontProvider:(id)arg1;
-- (id)_titleLabel;
+- (void)_setText:(id)arg1 withFinalLabel:(id)arg2 setter:(CDUnknownBlockType)arg3 andTransitionLabel:(id)arg4 setter:(CDUnknownBlockType)arg5;
+- (void)_tearDownDateLabel;
 - (double)_titleLabelBaselineOffset;
-- (void)_updateDateLabel;
 - (void)_updateDateLabelFontForShortLook;
-- (void)_updateTitleLabelFontForStyle:(long long)arg1;
+- (void)_updateTitleLabelFont:(id)arg1 forStyle:(long long)arg2;
 - (void)_updateUtilityButtonFont;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (void)dateLabelDidChange:(id)arg1;

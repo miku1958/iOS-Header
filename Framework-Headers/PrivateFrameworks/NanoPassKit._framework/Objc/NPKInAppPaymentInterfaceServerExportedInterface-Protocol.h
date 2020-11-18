@@ -9,7 +9,6 @@
 @class NSNumber, NSString, PKPaymentRequest, PKRemotePaymentRequest;
 
 @protocol NPKInAppPaymentInterfaceServerExportedInterface <NSObject>
-- (void)canPresentPaymentInterfaceWithReply:(void (^)(BOOL))arg1;
 - (void)showInAppInterfaceWithPaymentRequest:(PKPaymentRequest *)arg1 forHostApplicationName:(NSString *)arg2 hostBundleIdentifier:(NSString *)arg3 hostProcessIdentifier:(int)arg4 hostIdentifier:(NSString *)arg5 orientation:(NSNumber *)arg6 activationHandler:(void (^)(BOOL, NSError *))arg7;
 - (void)showInAppInterfaceWithRemotePaymentRequest:(PKRemotePaymentRequest *)arg1 activationHandler:(void (^)(BOOL))arg2;
 @end

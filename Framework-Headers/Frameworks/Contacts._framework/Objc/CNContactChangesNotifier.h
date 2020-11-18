@@ -7,30 +7,40 @@
 #import <Foundation/NSObject.h>
 
 @class CNContactStore, CNMutableMultiDictionary;
+@protocol CNScheduler;
 
 @interface CNContactChangesNotifier : NSObject
 {
     BOOL _observingNotification;
-    CNMutableMultiDictionary *_registeredObservers;
+    id<CNScheduler> _resourceLock;
+    id<CNScheduler> _workQueue;
+    id<CNScheduler> _downstream;
     CNContactStore *_contactStore;
+    CNMutableMultiDictionary *_registeredObservers;
 }
 
-@property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
-@property BOOL observingNotification; // @synthesize observingNotification=_observingNotification;
-@property (strong, nonatomic) CNMutableMultiDictionary *registeredObservers; // @synthesize registeredObservers=_registeredObservers;
+@property (readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (readonly, nonatomic) id<CNScheduler> downstream; // @synthesize downstream=_downstream;
+@property (nonatomic, getter=isObservingNotification) BOOL observingNotification; // @synthesize observingNotification=_observingNotification;
+@property (readonly, nonatomic) CNMutableMultiDictionary *registeredObservers; // @synthesize registeredObservers=_registeredObservers;
+@property (readonly, nonatomic) id<CNScheduler> resourceLock; // @synthesize resourceLock=_resourceLock;
+@property (readonly, nonatomic) id<CNScheduler> workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)createProxyForObserver:(id)arg1 keysToFetch:(id)arg2;
++ (id)preparedContact:(id)arg1 withStore:(id)arg2 keysToFetch:(id)arg3;
 + (id)sharedNotifier;
++ (id)workQueue_createFetchersFromRegisteredObservers:(id)arg1;
 - (void).cxx_destruct;
-- (id)_fetchers;
-- (BOOL)_unregisterObserver:(id)arg1 forIdentifier:(id)arg2;
-- (void)_updateObservers;
-- (void)_updateObserving;
 - (void)contactStoreDidChange:(id)arg1;
 - (id)init;
-- (id)initWithContactStore:(id)arg1;
+- (id)initWithContactStore:(id)arg1 downstreamScheduler:(id)arg2 schedulerProvider:(id)arg3;
 - (void)registerObserver:(id)arg1 forContact:(id)arg2;
 - (void)registerObserver:(id)arg1 forContact:(id)arg2 keysToFetch:(id)arg3;
+- (void)registerProxy:(id)arg1 identifier:(id)arg2;
+- (BOOL)resourceLock_removeProxiesPassingTest:(CDUnknownBlockType)arg1 forIdentifier:(id)arg2;
 - (void)unregisterObserver:(id)arg1 forContact:(id)arg2;
+- (void)workQueue_updateObservers;
+- (void)workQueue_updateObserving;
 
 @end
 

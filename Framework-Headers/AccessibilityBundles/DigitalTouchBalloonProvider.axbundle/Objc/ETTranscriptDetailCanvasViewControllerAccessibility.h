@@ -18,8 +18,9 @@
 - (id)_accessibilityStringForCurrentCameraPosition;
 - (void)_axFocusChanged:(id)arg1;
 - (void)_cameraFlipButtonTapped;
+- (void)_expandColorPickerButtonTapped;
 - (void)_sendButtonTapped;
-- (void)_setShowingCompositionControls:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_setShowingGestureInstructionView:(BOOL)arg1;
 - (void)_startShowCompositionControlsTimer;
 - (BOOL)accessibilityPerformEscape;
 - (void)colorPicker:(id)arg1 requestsDismissColorWheel:(id)arg2;
@@ -30,7 +31,6 @@
 - (void)updateVideoUI;
 - (void)videoControllerDidStartPreview:(id)arg1;
 - (void)videoControllerDidStopPreview:(id)arg1;
-- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

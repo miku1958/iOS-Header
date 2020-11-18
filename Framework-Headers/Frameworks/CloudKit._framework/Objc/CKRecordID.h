@@ -28,9 +28,9 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (id)CKPropertiesDescription;
 - (id)CKPropertiesDescriptionWithProperties:(id)arg1;
-- (id)CKPropertiesToDescribe:(BOOL)arg1;
 - (id)CKXPCSuitableString;
 - (id)ckShortDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;

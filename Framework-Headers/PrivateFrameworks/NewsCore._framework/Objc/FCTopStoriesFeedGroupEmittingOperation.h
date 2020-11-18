@@ -11,6 +11,7 @@
 }
 
 - (id)_feedTransformation;
+- (id)_filterHeadlines:(id)arg1 withArticleList:(id)arg2;
 - (void)performOperation;
 
 @end

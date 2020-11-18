@@ -16,6 +16,7 @@
 {
     NSString *_username;
     NSString *_service;
+    NSString *_userIdentifier;
     NSString *_teamIdentifier;
     NSArray *_bundleIdentifiers;
 }
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) NSString *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
+@property (copy, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
 + (id)instantMessageAddressWithDictionaryRepresentation:(id)arg1;
@@ -39,7 +41,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUsername:(id)arg1 service:(id)arg2;
-- (id)initWithUsername:(id)arg1 service:(id)arg2 teamIdentifier:(id)arg3 bundleIdentifiers:(id)arg4;
+- (id)initWithUsername:(id)arg1 userIdentifier:(id)arg2 service:(id)arg3 teamIdentifier:(id)arg4 bundleIdentifiers:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid:(id *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

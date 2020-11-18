@@ -11,6 +11,7 @@
 @class NSString;
 @protocol VSViewServiceRemoteViewControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface VSViewServiceRemoteViewController : _UIRemoteViewController <VSViewServiceHostProtocol>
 {
     id<VSViewServiceRemoteViewControllerDelegate> _delegate;

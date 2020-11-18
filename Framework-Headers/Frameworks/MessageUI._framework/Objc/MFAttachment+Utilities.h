@@ -32,6 +32,7 @@
 - (struct CGSize)imageDimensionsWithData:(id)arg1;
 - (unsigned long long)imageScalingFlags;
 - (BOOL)isCalendarFile;
+- (BOOL)isCameraRollCompatibleVideo;
 - (BOOL)isContentCompressed;
 - (BOOL)isContentOpenable;
 - (BOOL)isDisplayableByWebKit;

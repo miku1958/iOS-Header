@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <Home/NSCopying-Protocol.h>
+
 @class NSSet;
 
-@interface HFItemProviderReloadResults : NSObject
+@interface HFItemProviderReloadResults : NSObject <NSCopying>
 {
     NSSet *_addedItems;
     NSSet *_removedItems;
@@ -21,6 +23,7 @@
 @property (strong, nonatomic) NSSet *removedItems; // @synthesize removedItems=_removedItems;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)init;
 - (id)initWithAddedItems:(id)arg1 removedItems:(id)arg2 existingItems:(id)arg3;

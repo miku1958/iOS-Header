@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
 @class IDSService, NSArray, NSMutableSet, NSString;
 @protocol HMDWatchManagerDelegate, OS_dispatch_queue;
 
-@interface HMDWatchManager : NSObject <IDSServiceDelegate>
+@interface HMDWatchManager : NSObject <HMFLogging, IDSServiceDelegate>
 {
     NSMutableSet *_connectedWatches;
     BOOL _pairedWithWatch;
@@ -34,15 +35,20 @@
 @property (readonly, copy, nonatomic) NSArray *watches;
 
 + (BOOL)isCompatibleWatchDevice:(id)arg1;
++ (id)logCategory;
++ (id)shortDescription;
 - (void).cxx_destruct;
 - (void)__initializeConnectedDevices;
 - (void)_updateConnectedDevices:(id)arg1;
 - (void)addConnectedWatch:(id)arg1;
+- (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
 - (void)notifyDelegateOfAddedConnectedWatch:(id)arg1;
 - (void)notifyDelegateOfRemovedConnectedWatch:(id)arg1;
 - (void)removeConnectedWatch:(id)arg1;
 - (void)service:(id)arg1 connectedDevicesChanged:(id)arg2;
+- (void)service:(id)arg1 devicesChanged:(id)arg2;
+- (id)shortDescription;
 
 @end
 

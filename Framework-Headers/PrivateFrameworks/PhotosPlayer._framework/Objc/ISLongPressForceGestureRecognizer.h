@@ -21,7 +21,6 @@
 @property (nonatomic) double maximumPressure; // @synthesize maximumPressure=_maximumPressure;
 @property (nonatomic) double minimumPressure; // @synthesize minimumPressure=_minimumPressure;
 
-+ (BOOL)isGlutenFree;
 - (void).cxx_destruct;
 - (void)_updateForce;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;

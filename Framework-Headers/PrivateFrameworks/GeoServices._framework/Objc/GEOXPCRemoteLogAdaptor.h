@@ -24,6 +24,8 @@
     NSObject<OS_dispatch_queue> *_logMessageSendQueue;
     NSString *_adaptorIdentifier;
     NSString *_xpcActivityName;
+    CDUnknownBlockType _shouldDeferXPCActivityBlock;
+    NSLock *_shouldDeferXPCActivityBlockLock;
 }
 
 @property (readonly) NSString *adaptorIdentifier;
@@ -57,6 +59,7 @@
 - (BOOL)_useInMemoryLogMessageCache;
 - (void)dealloc;
 - (void)flushLogs;
+- (void)forceFlushLogs;
 - (void)incrementXpcActivityTriggerCount;
 - (id)initWithRemoteURL:(id)arg1 debugRequestName:(id)arg2 supportedTypes:(id)arg3 supportedSubTypes:(id)arg4;
 - (BOOL)isLogFrameworkAdaptor;

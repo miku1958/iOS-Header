@@ -97,7 +97,7 @@
 + (id)openWithOpenInfo:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)CKPropertiesToDescribe:(BOOL)arg1;
+- (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (id)_initBare;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

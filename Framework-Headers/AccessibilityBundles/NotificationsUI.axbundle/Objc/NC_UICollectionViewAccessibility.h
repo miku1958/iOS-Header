@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NotificationsUI/__NC_UICollectionViewAccessibility_super.h>
+#import "__NC_UICollectionViewAccessibility_super.h"
 
 @interface NC_UICollectionViewAccessibility : __NC_UICollectionViewAccessibility_super
 {

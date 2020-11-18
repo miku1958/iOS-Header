@@ -21,8 +21,9 @@
 
 + (void)registerGEOLogFacility;
 + (id)sharedLogger;
+- (id)_cachedStateOfType:(int)arg1;
 - (void)_captureLogMsgEvent:(id)arg1 withMergedContext:(id)arg2;
-- (id)cachedStateOfType:(int)arg1;
+- (void)cachedStateOfType:(int)arg1 getCachedStateOfTypeBlock:(CDUnknownBlockType)arg2;
 - (void)captureLogMsgEvent:(id)arg1;
 - (void)captureLogMsgEvent:(id)arg1 withLogContext:(id)arg2;
 - (void)dealloc;

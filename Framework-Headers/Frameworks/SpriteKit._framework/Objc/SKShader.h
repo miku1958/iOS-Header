@@ -23,6 +23,7 @@
     BOOL _programWithTransformDirty;
     NSPointerArray *_targetNodes;
     BOOL _usesTimeUniform;
+    BOOL _usesPathLengthUniform;
     BOOL _usesSpriteSizeUniform;
     shared_ptr_394c00aa _backingProgram;
     shared_ptr_394c00aa _backingProgramWithTransform;
@@ -59,6 +60,7 @@
 - (shared_ptr_394c00aa)_makeBackingProgramWithImplementation:(long long)arg1;
 - (void)_removeTargetNode:(id)arg1;
 - (void)_setUniformsDirty;
+- (BOOL)_usesPathLengthUniform;
 - (BOOL)_usesTimeUniform;
 - (void)addUniform:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

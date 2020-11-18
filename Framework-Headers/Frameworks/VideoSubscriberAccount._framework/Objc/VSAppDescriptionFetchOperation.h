@@ -8,6 +8,7 @@
 
 @class NSOperationQueue, NSString, SSLookupRequest, VSFailable;
 
+__attribute__((visibility("hidden")))
 @interface VSAppDescriptionFetchOperation : VSAsyncOperation
 {
     NSString *_appAdamID;

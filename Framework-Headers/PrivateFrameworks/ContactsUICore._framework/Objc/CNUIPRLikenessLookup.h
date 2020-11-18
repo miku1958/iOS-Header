@@ -8,15 +8,15 @@
 
 #import <ContactsUICore/CNUIPRLikenessResolver-Protocol.h>
 
-@class CNContactStore, CNSchedulerProvider, CNUIMeContactMonitor, CNUIPRPersonaStoreObservableProvider, NSString, PRPersonaStore;
-@protocol CNUIPlaceholderProviderFactory;
+@class CNContactStore, CNUIMeContactMonitor, CNUIPRPersonaStoreObservableProvider, NSString, PRPersonaStore;
+@protocol CNSchedulerProvider, CNUIPlaceholderProviderFactory;
 
 @interface CNUIPRLikenessLookup : NSObject <CNUIPRLikenessResolver>
 {
     long long _prohibitedSources;
     CNContactStore *_contactStore;
     PRPersonaStore *_personaStore;
-    CNSchedulerProvider *_schedulerProvider;
+    id<CNSchedulerProvider> _schedulerProvider;
     CNUIPRPersonaStoreObservableProvider *_personaStoreProvider;
     CNUIMeContactMonitor *_meMonitor;
     id<CNUIPlaceholderProviderFactory> _placeholderProviderFactory;
@@ -31,14 +31,14 @@
 @property (strong, nonatomic) CNUIPRPersonaStoreObservableProvider *personaStoreProvider; // @synthesize personaStoreProvider=_personaStoreProvider;
 @property (strong, nonatomic) id<CNUIPlaceholderProviderFactory> placeholderProviderFactory; // @synthesize placeholderProviderFactory=_placeholderProviderFactory;
 @property (nonatomic) long long prohibitedSources; // @synthesize prohibitedSources=_prohibitedSources;
-@property (readonly, nonatomic) CNSchedulerProvider *schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
+@property (readonly, nonatomic) id<CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
 @property (readonly) Class superclass;
 
 + (id)basicMonogramObservableForContactFuture:(id)arg1;
 + (id)contactFuture:(id)arg1 contactStore:(id)arg2 scheduler:(id)arg3;
 + (id)descriptorForRequiredKeys;
 + (id)observableFromLikenessProviderBlock:(CDUnknownBlockType)arg1 withScheduler:(id)arg2;
-+ (id)photoObservableWithPhotoFuture:(id)arg1;
++ (id)photoObservableWithPhotoFuture:(id)arg1 scheduler:(id)arg2;
 - (void).cxx_destruct;
 - (id)basicMonogramObservableWithContactFuture:(id)arg1;
 - (id)blessedPhotoObservableWithFuture:(id)arg1 contact:(id)arg2;
@@ -53,8 +53,8 @@
 - (id)loadingPlaceholderWithPlaceholderProviderFactory:(id)arg1;
 - (BOOL)mayIncludeSource:(long long)arg1;
 - (id)personaLikenessObservableWithContactFuture:(id)arg1;
-- (id)photoFutureForContactFuture:(id)arg1;
 - (id)photoFutureForContactFuture:(id)arg1 photoFuture:(id)arg2 allowingFallbackForMeCard:(BOOL)arg3;
+- (id)photoFutureForContactFuture:(id)arg1 scheduler:(id)arg2;
 - (id)remoteImagesObservableWithContactFuture:(id)arg1;
 - (id)resolveLikenessesForContacts:(id)arg1 withContentHandler:(CDUnknownBlockType)arg2;
 - (id)silhouetteWithPlaceholderProviderFactory:(id)arg1;

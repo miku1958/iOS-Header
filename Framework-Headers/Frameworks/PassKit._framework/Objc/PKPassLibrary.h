@@ -94,12 +94,15 @@
 - (void)hasInAppPaymentPassesForNetworks:(id)arg1 capabilities:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)hasInAppPaymentPassesForNetworks:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)hasInAppPrivateLabelPaymentPassesForApplicationIdentifier:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)hasInAppPrivateLabelPaymentPassesForWebDomain:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (BOOL)hasPassesOfType:(unsigned long long)arg1;
 - (void)hasWebPaymentPassesForNetworks:(id)arg1 capabilities:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (id)inAppPaymentPassesForNetworks:(id)arg1;
 - (id)inAppPaymentPassesForNetworks:(id)arg1 capabilities:(unsigned long long)arg2;
 - (id)inAppPrivateLabelPaymentPassesForApplicationIdentifier:(id)arg1;
 - (void)inAppPrivateLabelPaymentPassesForApplicationIdentifier:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (id)inAppPrivateLabelPaymentPassesForWebDomain:(id)arg1;
+- (void)inAppPrivateLabelPaymentPassesForWebDomain:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithMachServiceName:(id)arg1 resumeNotificationName:(id)arg2 interfaceType:(unsigned long long)arg3;
 - (void)introduceDatabaseIntegrityProblem;

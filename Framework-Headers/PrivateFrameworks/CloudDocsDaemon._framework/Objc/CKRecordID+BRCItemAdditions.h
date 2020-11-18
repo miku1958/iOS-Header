@@ -7,6 +7,7 @@
 #import <CloudKit/CKRecordID.h>
 
 @interface CKRecordID (BRCItemAdditions)
+- (id)_itemIDWithLibraryRowID:(id)arg1 session:(id)arg2;
 - (id)brc_appLibraryDocumentsZoneName;
 - (id)brc_appLibraryRootZoneName;
 - (BOOL)brc_isAppLibraryDocumentsRecordID;

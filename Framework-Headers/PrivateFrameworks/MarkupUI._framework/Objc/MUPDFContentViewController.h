@@ -12,6 +12,7 @@
 #import <MarkupUI/PDFViewDelegatePrivate-Protocol.h>
 
 @class MUCGPDFReader, MUPDFPageLabelView, NSArray, NSLayoutConstraint, NSString, PDFDocument, PDFPage, PDFThumbnailView, PDFView, UIVisualEffectView;
+@protocol MUPDFContentViewControllerDelegate;
 
 @interface MUPDFContentViewController : MUContentViewController <PDFViewDelegatePrivate, PDFPageVisibilityDelegate, MUContentViewControllerProtocol, MUContentViewControllerAKControllerSubdelegate>
 {
@@ -23,6 +24,7 @@
     BOOL _viewIsTransitioningBetweenSizes;
     BOOL _viewTransitionPreviousAutoscalingState;
     BOOL _didSetup;
+    id<MUPDFContentViewControllerDelegate> _delegate;
     NSArray *_sourceContentReplacedAnnotationMaps;
     PDFView *_pdfView;
     PDFThumbnailView *_thumbnailView;
@@ -40,6 +42,7 @@
 @property (nonatomic) BOOL centersIgnoringContentInsets;
 @property BOOL constraintsAreHorizontal; // @synthesize constraintsAreHorizontal=_constraintsAreHorizontal;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) id<MUPDFContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property BOOL didSetup; // @synthesize didSetup=_didSetup;
 @property (readonly, nonatomic) NSString *documentUnlockedWithPassword;
@@ -66,6 +69,7 @@
 @property double viewTransitionPreviousScale; // @synthesize viewTransitionPreviousScale=_viewTransitionPreviousScale;
 
 - (void).cxx_destruct;
+- (BOOL)PDFView:(id)arg1 shouldHandleLink:(id)arg2;
 - (struct CGAffineTransform)_compensatingAffineTransformForPage:(id)arg1;
 - (void)_createPDFView;
 - (void)_installOverlayForPageView:(id)arg1 ofPage:(id)arg2 atIndex:(unsigned long long)arg3;

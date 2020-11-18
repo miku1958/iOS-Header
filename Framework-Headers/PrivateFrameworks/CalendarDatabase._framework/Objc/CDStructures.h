@@ -170,7 +170,8 @@ typedef struct {
     unsigned int prohibitsDetachmentOnCommentChange:1;
     unsigned int allowsProposeNewTime:1;
     unsigned int prohibitsICSImport:1;
-} CDStruct_db2ffdc8;
+    unsigned int supportsAutoGeocodingStructuredLocations:1;
+} CDStruct_b9f583c3;
 
 typedef struct {
     int _field1;

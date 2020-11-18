@@ -104,7 +104,7 @@
 - (void).cxx_destruct;
 - (void)_abortActiveSequence;
 - (void)_attemptReconnectionAfterUnanticipatedDisconnection;
-- (void)_beginRemoteViewControllerAppearanceTransitionIfNecessary:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_beginRemoteViewControllerAppearanceTransitionIfNecessary:(BOOL)arg1 semaphore:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_beginSequenceWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2 updateHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_canInsertRemoteView:(id *)arg1;
 - (id)_cancelTouches;
@@ -126,7 +126,9 @@
 - (BOOL)_hasOutstandingUpdateRequestForSequence:(id)arg1;
 - (void)_initiateNewSequenceIfNecessary;
 - (void)_insertAppropriateContentView;
+- (void)_insertBrokenView;
 - (void)_insertContentProvidingSubview:(id)arg1 sequence:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_insertSnapshotViewIfAppropriate;
 - (void)_insertSnapshotWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_invalidateDisconnectionTimer;
 - (void)_invalidateSnapshotWithForce:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -145,12 +147,14 @@
 - (void)_removeItemAtURL:(id)arg1;
 - (void)_requestInsertionOfRemoteViewAfterViewWillAppearForSequence:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_requestRemoteViewControllerForSequence:(id)arg1 completionHander:(CDUnknownBlockType)arg2;
+- (void)_requestVisibilityStateUpdateForPossiblyAppearing:(BOOL)arg1 sequence:(id)arg2;
 - (void)_rowHeightDidChange:(id)arg1;
 - (void)_scheduleDisconnectionTimerForSequence:(id)arg1 endTransitionBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setLargestAvailableDisplayMode:(long long)arg1;
 - (void)_setSnapshotView:(id)arg1 forLayoutMode:(long long)arg2;
 - (void)_setupRequestQueue;
 - (id)_snapshotIdentifierForLayoutMode:(long long)arg1;
+- (void)_synchronizeGeometryWithSnapshot;
 - (double)_updatePreferredContentSizeWithHeight:(double)arg1;
 - (CDUnknownBlockType)_updateRequestForSequence:(id)arg1;
 - (void)_updateWidgetWithCompletionHandler:(CDUnknownBlockType)arg1;

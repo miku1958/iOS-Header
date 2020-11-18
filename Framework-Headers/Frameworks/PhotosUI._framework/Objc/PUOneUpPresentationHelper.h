@@ -86,7 +86,6 @@
 @property (weak, nonatomic) id<PUOneUpPresentationHelperAssetDisplayDelegate> assetDisplayDelegate; // @synthesize assetDisplayDelegate=_assetDisplayDelegate;
 @property (strong, nonatomic, setter=_setBrowsingSession:) PUBrowsingSession *browsingSession; // @synthesize browsingSession=_browsingSession;
 @property (nonatomic) BOOL cachesScrubberView; // @synthesize cachesScrubberView=_cachesScrubberView;
-@property (readonly, nonatomic) BOOL canPresentOneUpViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUOneUpPresentationHelperDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -124,6 +123,7 @@
 - (void)beginUsingBlackTheme;
 - (id)cameraPreviewTransitionDelegateWithSourceRect:(struct CGRect)arg1 sourceImage:(id)arg2;
 - (BOOL)canDismissOneUpViewController;
+- (BOOL)canPresentOneUpViewControllerAnimated:(BOOL)arg1;
 - (void)cancelCommitTransitionForPreviewViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)commitPreviewViewController:(id)arg1;
 - (void)dealloc;

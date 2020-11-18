@@ -25,6 +25,7 @@
     NSString *_bulletinImagesDirectory;
     NSString *_logID;
     NSMutableSet *_characteristicsList;
+    NSMutableSet *_monitoredCharacteristicsList;
     HMDBulletinBoard *_bulletinBoard;
     HMDNotificationRegistration *_notificationRegistration;
 }
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
+@property (readonly, nonatomic) NSMutableSet *monitoredCharacteristicsList; // @synthesize monitoredCharacteristicsList=_monitoredCharacteristicsList;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
@@ -51,7 +53,7 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_characteristicsUpdated:(id)arg1 modifiedCharacteristics:(id)arg2;
-- (void)_enableNotificationForCharacteristics:(id)arg1;
+- (void)_enableNotificationForCharacteristics:(id)arg1 newMonitoredCharacteristicsList:(id)arg2;
 - (void)_handleAccessoryCharacteristicsChangedNotification:(id)arg1;
 - (void)_handleRemoteNotification:(id)arg1;
 - (void)_handleSnapshotResponse:(id)arg1 cameraSessionID:(id)arg2 changedCharacteristics:(id)arg3 response:(id)arg4 responseTimer:(id)arg5;

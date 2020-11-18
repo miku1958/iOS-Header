@@ -85,6 +85,7 @@
 - (void)requestPendingMessages;
 - (void)requestPendingVCInvites;
 - (void)requestProperty:(NSString *)arg1 ofPerson:(NSString *)arg2 account:(NSString *)arg3;
+- (void)requestQOSClassWhileServicingRequestsWithID:(NSString *)arg1;
 - (void)requestSubscriptionTo:(NSString *)arg1 account:(NSString *)arg2;
 - (void)requestVCWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 account:(NSString *)arg4;
 - (void)respondToVCInvitationWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 account:(NSString *)arg4;

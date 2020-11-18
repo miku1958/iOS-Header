@@ -49,12 +49,12 @@
 - (void)denyTapped:(id)arg1;
 - (id)initWithPerson:(id)arg1;
 - (void)noMoreSuggestionsAvailableForSuggestionManager:(id)arg1;
-- (void)setViewState:(unsigned long long)arg1;
 - (void)suggestionDidDisplay;
 - (void)suggestionManager:(id)arg1 hasNewSuggestionAvailable:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)undoButtonTapped:(id)arg1;
 - (void)updateViewConstraints;
+- (void)updateViewWithViewState:(unsigned long long)arg1;
 - (void)viewDidLoad;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

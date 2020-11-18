@@ -89,6 +89,7 @@
 + (CDUnknownBlockType)activePairedDeviceSelectorBlock;
 + (CDUnknownBlockType)pairedDevicesSelectorBlock;
 + (id)sharedInstance;
++ (BOOL)shouldBoostProcess;
 - (void).cxx_destruct;
 - (void)_addRemoveRecoveryStepBackup:(BOOL)arg1 withPairingDeviceID:(id)arg2;
 - (void)_addRemoveRecoveryStepDeleteAccounts:(BOOL)arg1;
@@ -165,6 +166,7 @@
 - (void)gizmoPasscodeAdvertiseAndPairWithName:(id)arg1 operationHasBegun:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)initNotifyTokens;
+- (id)initWithBoost:(BOOL)arg1;
 - (void)initializeWithShouldMakeEmptyDeviceCollection:(BOOL)arg1;
 - (BOOL)isDaemonIdle;
 - (BOOL)isPaired;

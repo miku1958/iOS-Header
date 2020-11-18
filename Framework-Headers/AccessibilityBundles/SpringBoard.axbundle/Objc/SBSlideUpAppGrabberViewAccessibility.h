@@ -19,6 +19,7 @@
 - (id)accessibilityHint;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
+- (void)setAppStyleGrabberImage:(id)arg1;
 - (void)setGrabberImageFromAppWithBundleIdentifier:(id)arg1 withIconFormat:(int)arg2;
 
 @end

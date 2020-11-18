@@ -485,6 +485,10 @@ struct ControllerImpl {
     int _field106;
     int _field107;
     unsigned long long _field108;
+    BOOL _field109;
+    int _field110;
+    int _field111;
+    struct ZeroRunLog _field112[75];
 };
 
 struct DataSourceDescriptionImpl {
@@ -646,6 +650,11 @@ struct SMPTETime {
 };
 
 struct TEMP_AudioQueueChannelAssignment;
+
+struct ZeroRunLog {
+    int _field1;
+    int _field2;
+};
 
 struct _AVBeatRange {
     double _field1;

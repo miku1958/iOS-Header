@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NotificationsUI/__NCLongLookPresentationControllerAccessibility_super.h>
+#import "__NCLongLookPresentationControllerAccessibility_super.h"
 
 @interface NCLongLookPresentationControllerAccessibility : __NCLongLookPresentationControllerAccessibility_super
 {

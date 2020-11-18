@@ -20,6 +20,7 @@
     BOOL _highTouchMode;
     UIColor *_navbarColor;
     BOOL _navbarHidesShadow;
+    BOOL _handledWillAppear;
     BOOL _titleUpdated;
     MCDTransportControlView *_transportControlView;
     MCDPlayModeControlView *_playModeControlView;
@@ -67,6 +68,7 @@
 - (void)_fastForwardButtonLongPress:(id)arg1;
 - (void)_fastForwardButtonTouchDown:(id)arg1;
 - (void)_fastForwardButtonTouchUp:(id)arg1;
+- (void)_handleWillAppear;
 - (void)_initializeTransportControls;
 - (void)_itemChanged:(id)arg1;
 - (void)_leftButtonLongPress:(id)arg1;
@@ -94,6 +96,8 @@
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)reloadData;
 - (void)updatePlayControlsWithElapsedTime:(double)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

@@ -56,6 +56,7 @@
 @property (strong, nonatomic) GEOPBTransitRoutingIncidentMessage *transitIncidentMessage; // @synthesize transitIncidentMessage=_transitIncidentMessage;
 @property (nonatomic) unsigned int travelTimeAggressiveEstimate; // @synthesize travelTimeAggressiveEstimate=_travelTimeAggressiveEstimate;
 @property (nonatomic) unsigned int travelTimeConservativeEstimate; // @synthesize travelTimeConservativeEstimate=_travelTimeConservativeEstimate;
+@property (readonly, nonatomic, getter=isWalkingOnlyRoute) BOOL walkingOnlyRoute;
 
 + (Class)routePlanningArtworkType;
 + (Class)sectionOptionType;
@@ -79,7 +80,6 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isWalkingOnlyRoute;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)routeBadgeAtIndex:(unsigned long long)arg1;

@@ -46,9 +46,9 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (double)lastBaselineOffsetFromBottom;
 - (void)layoutSubviews;
-- (void)recognizerTriggeredForGutterizedViewWithGestureRecognizer:(id)arg1;
-- (void)recognizerTriggeredForMapViewWithGestureRecognizer:(id)arg1;
-- (void)recognizerTriggeredForTravelAdvisoryViewWithGestureRecognizer:(id)arg1;
+- (void)recognizerTriggeredForGutterizedView:(id)arg1;
+- (void)recognizerTriggeredForMapView:(id)arg1;
+- (void)recognizerTriggeredForTravelAdvisoryView:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

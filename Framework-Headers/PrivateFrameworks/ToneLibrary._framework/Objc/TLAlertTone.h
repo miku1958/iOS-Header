@@ -15,16 +15,14 @@
     TLSystemSound *_actualSound;
     TLSystemSound *_previewSound;
     NSURL *_soundFileURL;
-    NSURL *_vibrationPatternFileURL;
 }
 
 @property (readonly, nonatomic) TLSystemSound *actualSound;
 @property (readonly, nonatomic) TLSystemSound *previewSound;
 @property (readonly, nonatomic) NSURL *soundFileURL; // @synthesize soundFileURL=_soundFileURL;
-@property (readonly, nonatomic) NSURL *vibrationPatternFileURL; // @synthesize vibrationPatternFileURL=_vibrationPatternFileURL;
 
 - (void).cxx_destruct;
-- (id)initWithSoundFileURL:(id)arg1 vibrationPatternFileURL:(id)arg2 actualSoundID:(unsigned int)arg3 previewSoundID:(unsigned int)arg4;
+- (id)initWithSoundFileURL:(id)arg1 actualSoundID:(unsigned int)arg2 previewSoundID:(unsigned int)arg3;
 
 @end
 

@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_updateInDB:(id)arg1 diffs:(unsigned long long)arg2;
 - (BOOL)changedAtRelativePath:(id)arg1 scanPackage:(BOOL)arg2;
 - (BOOL)evictInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
-- (BOOL)fixupItemAfterCrossZoneMovedCreationWithLookup:(id)arg1;
 - (BOOL)hasDeadChildren;
 - (BOOL)hasLiveChildren;
 - (BOOL)hasLostChildren;

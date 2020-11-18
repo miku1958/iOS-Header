@@ -7,32 +7,47 @@
 #import <ITMLKit/IKJSObject.h>
 
 #import <ITMLKit/IKJSDevice-Protocol.h>
-#import <ITMLKit/JSExport-Protocol.h>
+#import <ITMLKit/NSObject-Protocol.h>
+#import <ITMLKit/RadiosPreferencesDelegate-Protocol.h>
+#import <ITMLKit/_IKJSDevice-Protocol.h>
+#import <ITMLKit/_IKJSDeviceProxy-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSNumber, NSString, RadiosPreferences;
 @protocol IKAppDeviceConfig;
 
-@interface IKJSDevice : IKJSObject <IKJSDevice, JSExport>
+@interface IKJSDevice : IKJSObject <RadiosPreferencesDelegate, NSObject, IKJSDevice, _IKJSDeviceProxy, _IKJSDevice>
 {
     id _isNetworkTypeChangedToken;
+    id _networkReachabilityChangedToken;
+    RadiosPreferences *_radioPrefs;
     id<IKAppDeviceConfig> _deviceConfig;
 }
 
 @property (readonly, nonatomic) NSString *appIdentifier;
 @property (readonly, nonatomic) NSString *appVersion;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<IKAppDeviceConfig> deviceConfig; // @synthesize deviceConfig=_deviceConfig;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isInAirplaneMode;
 @property (readonly, nonatomic) BOOL isInRetailDemoMode;
+@property (readonly, nonatomic) BOOL isNetworkReachable;
+@property (readonly, nonatomic) double lastNetworkChangedTime;
 @property (readonly, nonatomic) NSString *model;
+@property (readonly, nonatomic) NSString *networkType;
 @property (readonly, nonatomic) NSNumber *pixelRatio;
 @property (readonly, nonatomic) NSString *productType;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *systemVersion;
 @property (readonly, nonatomic) NSString *vendorID;
 @property (readonly, nonatomic) NSString *vendorIdentifier;
 
 + (id)getMobileGestaltString:(struct __CFString *)arg1;
 - (void).cxx_destruct;
-- (void)_networkTypeDidChangeNotification:(id)arg1;
+- (void)_notifyObservers;
 - (id)advertisingIdentifier;
+- (void)airplaneModeChanged;
+- (id)asPrivateIKJSDevice;
 - (id)capacity:(id)arg1;
 - (void)dealloc;
 - (id)initWithAppContext:(id)arg1 deviceConfig:(id)arg2;

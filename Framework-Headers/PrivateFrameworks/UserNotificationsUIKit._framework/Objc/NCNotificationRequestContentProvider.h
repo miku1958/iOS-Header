@@ -20,7 +20,6 @@
 @property (readonly, copy, nonatomic) CDUnknownBlockType cancelAction;
 @property (readonly, copy, nonatomic) CDUnknownBlockType clearAction;
 @property (readonly, copy, nonatomic) CDUnknownBlockType closeAction;
-@property (readonly, nonatomic) BOOL cropThumbnail;
 @property (readonly, copy, nonatomic) NSDate *date;
 @property (readonly, nonatomic, getter=isDateAllDay) BOOL dateAllDay;
 @property (readonly, copy) NSString *debugDescription;

@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) unsigned long long articleContentType;
 @property (readonly, copy, nonatomic) NSString *articleID;
 @property (readonly, nonatomic) unsigned long long articleRecordModificationDateMilliseconds;
+@property (readonly, nonatomic) BOOL canBePurchased;
 @property (readonly, copy, nonatomic) NSString *clusterID;
 @property (readonly, nonatomic) unsigned long long contentType;
 @property (readonly, copy) NSString *debugDescription;

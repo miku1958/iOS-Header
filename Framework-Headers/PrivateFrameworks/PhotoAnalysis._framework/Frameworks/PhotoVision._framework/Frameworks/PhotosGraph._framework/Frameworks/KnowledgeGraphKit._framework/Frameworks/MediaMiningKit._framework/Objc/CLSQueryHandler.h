@@ -19,14 +19,20 @@
     BOOL _didQueryFinish;
     NSObject<OS_dispatch_queue> *_timerQueue;
     NSObject<OS_os_log> *_loggingConnection;
+    BOOL _simulatesTimeout;
     CDUnknownBlockType _progressBlock;
     CDUnknownBlockType _completionBlock;
     PGGeoServiceThread *_geoServiceThread;
+    double _timeoutInterval;
+    double _numberOfRetries;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (strong, nonatomic) PGGeoServiceThread *geoServiceThread; // @synthesize geoServiceThread=_geoServiceThread;
+@property (nonatomic) double numberOfRetries; // @synthesize numberOfRetries=_numberOfRetries;
 @property (copy, nonatomic) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
+@property (nonatomic, getter=isSimulatingTimeout) BOOL simulatesTimeout; // @synthesize simulatesTimeout=_simulatesTimeout;
+@property (nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 
 - (void).cxx_destruct;
 - (void)_cacheMapItems:(id)arg1;

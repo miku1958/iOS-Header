@@ -7,17 +7,22 @@
 #import <UIKit/UIViewController.h>
 
 @class PXPersonItem, UIImage, UIImageView, UIView;
+@protocol PXPeoplePreviewActionViewControllerDelegate;
 
 @interface PXPeoplePreviewActionViewController : UIViewController
 {
     PXPersonItem *_personItem;
+    long long _localPersonType;
     UIImageView *_imageView;
     UIImage *_image;
     UIView *_placeholderView;
+    id<PXPeoplePreviewActionViewControllerDelegate> _delegate;
 }
 
+@property (weak, nonatomic) id<PXPeoplePreviewActionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (nonatomic) long long localPersonType; // @synthesize localPersonType=_localPersonType;
 @property (strong, nonatomic) PXPersonItem *personItem; // @synthesize personItem=_personItem;
 @property (strong, nonatomic) UIView *placeholderView; // @synthesize placeholderView=_placeholderView;
 
@@ -26,9 +31,11 @@
 - (id)_localizedHideActionTitle;
 - (void)_toggleFaceCollectionFavorited;
 - (void)_toggleFaceCollectionHidden;
+- (void)_toggleForDesiredType:(long long)arg1;
 - (void)_updateImageView;
+- (id)initWithDelegate:(id)arg1;
 - (id)previewActionItems;
-- (void)setPreferredContentSize:(struct CGSize)arg1;
+- (void)setPersonItem:(id)arg1 withLocalType:(long long)arg2;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

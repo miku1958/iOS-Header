@@ -10,6 +10,7 @@
 
 @class NSArray, NSOperationQueue, NSString;
 
+__attribute__((visibility("hidden")))
 @interface VSPrivacyFacade : NSObject <VSPrivacyServiceProtocol>
 {
     NSString *_service;

@@ -14,6 +14,7 @@
 @interface NWConcrete_nw_endpoint_resolver : NSObject <OS_nw_endpoint_resolver>
 {
     NSObject<OS_nw_resolver> *resolver;
+    int last_resolver_status;
     unsigned int next_child_endpoint_index;
     BOOL failed_to_start_next_child;
     NWConcrete_nw_endpoint_handler *connected_child;

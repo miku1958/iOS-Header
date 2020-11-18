@@ -11,13 +11,11 @@
 @interface CXAnswerCallAction : CXCallAction
 {
     NSDate *_dateConnected;
-    struct CGSize _localLandscapeAspectRatio;
     struct CGSize _localPortraitAspectRatio;
+    struct CGSize _localLandscapeAspectRatio;
 }
 
 @property (copy, nonatomic) NSDate *dateConnected; // @synthesize dateConnected=_dateConnected;
-@property (nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
-@property (nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
 
 + (BOOL)supportsSecureCoding;
 + (double)timeout;
@@ -27,6 +25,10 @@
 - (void)fulfill;
 - (void)fulfillWithDateConnected:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (struct CGSize)localLandscapeAspectRatio;
+- (struct CGSize)localPortraitAspectRatio;
+- (void)setLocalLandscapeAspectRatio:(struct CGSize)arg1;
+- (void)setLocalPortraitAspectRatio:(struct CGSize)arg1;
 - (void)updateAsFulfilledWithDateConnected:(id)arg1;
 - (void)updateCopy:(id)arg1 withZone:(struct _NSZone *)arg2;
 - (void)updateSanitizedCopy:(id)arg1 withZone:(struct _NSZone *)arg2;

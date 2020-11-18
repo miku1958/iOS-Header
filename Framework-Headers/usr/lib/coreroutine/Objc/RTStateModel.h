@@ -71,6 +71,7 @@
 - (void)clearArchiveFor:(long long)arg1;
 - (void)consolidateOverlappingLOIs;
 - (id)createNewOneStateWithDepiction:(id)arg1;
+- (BOOL)disambiguateUsingEventKitWithError:(id *)arg1;
 - (BOOL)disambiguateUsingFavoritePlacesWithError:(id *)arg1;
 - (BOOL)disambiguateUsingHistoryEntriesWithError:(id *)arg1;
 - (BOOL)disambiguateWithError:(id *)arg1;
@@ -112,9 +113,8 @@
 - (void)logStateModelDominantPlacesMetric;
 - (void)logStateModelEntryExitsStandardDeviations;
 - (void)logStateModelLengthMetric;
-- (void)logStateModelVisitCount:(long long)arg1;
+- (void)logStateModelVisits:(id)arg1;
 - (void)mergeStateAlpha:(id)arg1 intoBeta:(id)arg2;
-- (void)onContactStoreDidChange;
 - (void)onContactStoreMeContactDidChange;
 - (int)openFileDescriptorFor:(long long)arg1;
 - (BOOL)processMeCardWithError:(id *)arg1;

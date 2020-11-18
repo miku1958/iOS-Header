@@ -69,6 +69,7 @@
 - (void)discoverRemoteDevicesWithProximity:(BOOL)arg1;
 - (BOOL)hasRemoteDevices;
 - (id)init;
+- (id)initWithTargetQueue:(id)arg1;
 - (void)invalidateMessage:(id)arg1;
 - (void)removeDelegate:(id)arg1;
 - (id)requestForIdentifier:(id)arg1;

@@ -41,6 +41,7 @@
 @property (copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
 @property (nonatomic) unsigned long long bulletinCount;
 @property (nonatomic) long long carPlaySetting;
+@property (nonatomic) long long contentPreviewSetting;
 @property (copy, nonatomic) NSArray *dataProviderIDs; // @synthesize dataProviderIDs=_dataProviderIDs;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (nonatomic) BOOL displaysCriticalBulletins; // @synthesize displaysCriticalBulletins=_displaysCriticalBulletins;
@@ -62,7 +63,6 @@
 @property (nonatomic) long long sectionType; // @synthesize sectionType=_sectionType;
 @property (nonatomic) BOOL showsInLockScreen;
 @property (nonatomic) BOOL showsInNotificationCenter;
-@property (nonatomic) BOOL showsMessagePreview;
 @property (nonatomic) BOOL showsOnExternalDevices;
 @property (copy, nonatomic) NSString *subsectionID; // @synthesize subsectionID=_subsectionID;
 @property (nonatomic) long long subsectionPriority; // @synthesize subsectionPriority=_subsectionPriority;
@@ -98,6 +98,8 @@
 - (BOOL)queryAndUseManagedSettings;
 - (BOOL)queryAndUseManagedSettingsForSectionID:(id)arg1;
 - (id)replacementObjectForCoder:(id)arg1;
+- (void)setShowsMessagePreview:(BOOL)arg1;
+- (BOOL)showsMessagePreview;
 - (void)updateWithDefaultFilters:(id)arg1;
 - (void)updateWithDefaultSectionInfo:(id)arg1;
 

@@ -9,10 +9,10 @@
 @class GEOLogContext, GEOLogMsgEvent;
 
 @protocol GEOLogContextDelegate <NSObject>
-- (int)currentMapViewTargetForAnalytics;
-- (int)currentUITargetForAnalytics;
 
 @optional
+- (int)currentMapViewTargetForAnalytics;
+- (int)currentUITargetForAnalytics;
 - (GEOLogContext *)logContextForLogMsgEvent:(GEOLogMsgEvent *)arg1;
 - (int)searchFieldTypeForAnalytics;
 @end

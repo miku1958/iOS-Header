@@ -20,7 +20,7 @@
     CALayer *_owner;
     struct CGRect _box;
     unsigned long long _pageRotation;
-    int _lock;
+    struct os_unfair_lock_s _lock;
     unsigned long long _threadCount;
     BOOL _isCancelled;
 }

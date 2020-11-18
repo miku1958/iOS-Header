@@ -8,6 +8,7 @@
 
 @class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface VSCompoundValueTransformer : NSValueTransformer
 {
     NSArray *_valueTransformers;

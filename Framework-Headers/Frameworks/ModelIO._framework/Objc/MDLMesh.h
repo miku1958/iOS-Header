@@ -23,15 +23,17 @@
 @property (readonly, strong, nonatomic) id<MDLMeshBufferAllocator> allocator; // @synthesize allocator=_allocator;
 @property (readonly, nonatomic) struct boundingBox;
 @property (copy, nonatomic) NSMutableArray *submeshes;
-@property (readonly, strong, nonatomic) NSArray *vertexBuffers;
+@property (strong, nonatomic) NSArray *vertexBuffers;
 @property (nonatomic) unsigned long long vertexCount; // @synthesize vertexCount=_vertexCount;
 @property (copy, nonatomic) MDLVertexDescriptor *vertexDescriptor;
 
 + (id)newBoxWithDimensions:(long long)arg1 segments:(BOOL)arg2 geometryType:(id)arg3 inwardNormals:allocator: /* Error: Ran out of types for this method. */;
++ (id)newCapsuleWithHeight:(float)arg1 radii:(unsigned long long)arg2 radialSegments:(unsigned long long)arg3 verticalSegments:(unsigned long long)arg4 hemisphereSegments:(long long)arg5 geometryType:(BOOL)arg6 inwardNormals:(id)arg7 allocator: /* Error: Ran out of types for this method. */;
 + (id)newCylinderWithHeight:(float)arg1 radii:(unsigned long long)arg2 radialSegments:(unsigned long long)arg3 verticalSegments:(long long)arg4 geometryType:(BOOL)arg5 inwardNormals:(id)arg6 allocator: /* Error: Ran out of types for this method. */;
 + (id)newEllipsoidWithRadii:(unsigned long long)arg1 radialSegments:(unsigned long long)arg2 verticalSegments:(long long)arg3 geometryType:(BOOL)arg4 inwardNormals:(BOOL)arg5 hemisphere:(id)arg6 allocator: /* Error: Ran out of types for this method. */;
 + (id)newEllipticalConeWithHeight:(float)arg1 radii:(unsigned long long)arg2 radialSegments:(unsigned long long)arg3 verticalSegments:(long long)arg4 geometryType:(BOOL)arg5 inwardNormals:(id)arg6 allocator: /* Error: Ran out of types for this method. */;
 + (id)newIcosahedronWithRadius:(float)arg1 inwardNormals:(BOOL)arg2 allocator:(id)arg3;
++ (id)newIcosahedronWithRadius:(float)arg1 inwardNormals:(BOOL)arg2 geometryType:(long long)arg3 allocator:(id)arg4;
 + (id)newPlaneWithDimensions:(long long)arg1 segments:(id)arg2 geometryType:allocator: /* Error: Ran out of types for this method. */;
 + (id)newSubdividedMesh:(id)arg1 submeshIndex:(unsigned long long)arg2 subdivisionLevels:(unsigned long long)arg3;
 - (id).cxx_construct;
@@ -60,7 +62,7 @@
 - (BOOL)generateLightMapTextureWithTextureSize:(id)arg1 lightsToConsider:(id)arg2 objectsToConsider:(id)arg3 vertexAttributeNamed:(id)arg4 materialPropertyNamed: /* Error: Ran out of types for this method. */;
 - (BOOL)generateLightMapVertexColorsWithLightsToConsider:(id)arg1 objectsToConsider:(id)arg2 vertexAttributeNamed:(id)arg3;
 - (id)initBoxWithExtent:(BOOL)arg1 segments:(long long)arg2 inwardNormals:(id)arg3 geometryType:allocator: /* Error: Ran out of types for this method. */;
-- (id)initCapsuleWithExtent:(int)arg1 cylinderSegments:(BOOL)arg2 hemisphereSegments:(long long)arg3 inwardNormals:(id)arg4 geometryType:allocator: /* Error: Ran out of types for this method. */;
+- (id)initCapsuleWithExtent:(unsigned int)arg1 cylinderSegments:(BOOL)arg2 hemisphereSegments:(long long)arg3 inwardNormals:(id)arg4 geometryType:allocator: /* Error: Ran out of types for this method. */;
 - (id)initConeWithExtent:(BOOL)arg1 segments:(BOOL)arg2 inwardNormals:(long long)arg3 cap:(id)arg4 geometryType:allocator: /* Error: Ran out of types for this method. */;
 - (id)initCylinderWithExtent:(BOOL)arg1 segments:(BOOL)arg2 inwardNormals:(BOOL)arg3 topCap:(long long)arg4 bottomCap:(id)arg5 geometryType:allocator: /* Error: Ran out of types for this method. */;
 - (id)initHemisphereWithExtent:(BOOL)arg1 segments:(BOOL)arg2 inwardNormals:(long long)arg3 cap:(id)arg4 geometryType:allocator: /* Error: Ran out of types for this method. */;

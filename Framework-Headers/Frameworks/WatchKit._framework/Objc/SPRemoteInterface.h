@@ -94,6 +94,7 @@
 + (void)updateUserActivity:(id)arg1 userInfo:(id)arg2 webpageURL:(id)arg3 interfaceController:(id)arg4;
 - (void).cxx_destruct;
 - (void)_activateViewController:(id)arg1 clientIdentifier:(id)arg2;
+- (id)_allInterfaceControllers;
 - (void)_callDidDeactivate;
 - (void)_deregisterInterfaceControllerID:(id)arg1;
 - (void)_dumpInterfaceDictionary;
@@ -160,6 +161,7 @@
 - (void)receiveNavigationReply:(id)arg1 clientIdentifier:(id)arg2;
 - (void)receiveProtoData:(id)arg1 fromIdentifier:(id)arg2;
 - (void)recoverFromMissingIntefaceControllerWithID:(id)arg1;
+- (void)releaseViewController:(id)arg1 clientIdentifier:(id)arg2;
 - (void)reloadRootControllersWithNames:(id)arg1 initializationContextIDs:(id)arg2;
 - (void)removeInterfaceControllersForClient:(id)arg1;
 - (void)removePageControllerAtIndexes:(id)arg1;

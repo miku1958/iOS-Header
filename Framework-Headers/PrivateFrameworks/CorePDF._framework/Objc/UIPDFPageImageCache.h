@@ -19,7 +19,7 @@
     unsigned long long _pageCount;
     id *_jobsByPage;
     NSOperationQueue *_renderQueue;
-    int _lock;
+    struct os_unfair_lock_s _lock;
     int jobsComplete;
 }
 

@@ -18,10 +18,14 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     NSString *_peerGenerationID;
     NSString *_peerID;
+    int _serviceType;
     SYLogSessionState *_session;
     SYLogDeviceState *_targetedDevice;
     NSMutableArray *_transportOptions;
     BOOL _sessionQueueRunning;
+    struct {
+        unsigned int serviceType:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSDictionary *cocoaTransportOptions;
@@ -30,11 +34,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasEngine;
 @property (readonly, nonatomic) BOOL hasPeerGenerationID;
 @property (readonly, nonatomic) BOOL hasPeerID;
+@property (nonatomic) BOOL hasServiceType;
 @property (readonly, nonatomic) BOOL hasSession;
 @property (readonly, nonatomic) BOOL hasTargetedDevice;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *peerGenerationID; // @synthesize peerGenerationID=_peerGenerationID;
 @property (strong, nonatomic) NSString *peerID; // @synthesize peerID=_peerID;
+@property (nonatomic) int serviceType; // @synthesize serviceType=_serviceType;
 @property (strong, nonatomic) SYLogSessionState *session; // @synthesize session=_session;
 @property (nonatomic) BOOL sessionQueueRunning; // @synthesize sessionQueueRunning=_sessionQueueRunning;
 @property (strong, nonatomic) SYLogDeviceState *targetedDevice; // @synthesize targetedDevice=_targetedDevice;
@@ -43,6 +49,7 @@ __attribute__((visibility("hidden")))
 + (Class)transportOptionsType;
 - (void).cxx_destruct;
 - (int)StringAsEnqueuedSyncType:(id)arg1;
+- (int)StringAsServiceType:(id)arg1;
 - (void)addTransportOptions:(id)arg1;
 - (void)clearTransportOptions;
 - (void)copyTo:(id)arg1;
@@ -54,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)serviceTypeAsString:(int)arg1;
 - (id)transportOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)transportOptionsCount;
 - (void)writeTo:(id)arg1;

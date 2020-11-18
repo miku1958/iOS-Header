@@ -14,8 +14,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_axCloseVideoPlaybackAction;
+- (BOOL)_axDecrementForThreeFingerScroll;
+- (BOOL)_axIncrementForThreeFingerScroll;
 - (BOOL)_axIsVideoPlayerActivated;
-- (void)_axScrollToAssetReference:(id)arg1 inViewModel:(id)arg2;
+- (void)_axScrollToAssetReference:(id)arg1 inViewModel:(id)arg2 forThreeFingerScroll:(BOOL)arg3;
 - (id)_axShowingType;
 - (id)_axTileControllerForAsset:(id)arg1;
 - (id)_axVideoPlaybackValue;

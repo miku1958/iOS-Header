@@ -13,6 +13,7 @@
     AVCaptureResolvedPhotoSettingsInternal *_internal;
 }
 
+@property (readonly, getter=isDualCameraFusionEnabled) BOOL dualCameraFusionEnabled;
 @property (readonly, getter=isFlashEnabled) BOOL flashEnabled;
 @property (readonly) CDStruct_79c71658 livePhotoMovieDimensions;
 @property (readonly) CDStruct_79c71658 photoDimensions;
@@ -21,8 +22,8 @@
 @property (readonly, getter=isStillImageStabilizationEnabled) BOOL stillImageStabilizationEnabled;
 @property (readonly) long long uniqueID;
 
-+ (id)resolvedSettingsWithUniqueID:(long long)arg1 photoDimensions:(CDStruct_79c71658)arg2 rawPhotoDimensions:(CDStruct_79c71658)arg3 previewDimensions:(CDStruct_79c71658)arg4 livePhotoMovieEnabled:(BOOL)arg5 livePhotoMovieDimensions:(CDStruct_79c71658)arg6 turboModeEnabled:(BOOL)arg7 flashEnabled:(BOOL)arg8 HDREnabled:(BOOL)arg9 shallowDepthOfFieldEffectEnabled:(BOOL)arg10 originalPhotoDeliveryEnabled:(BOOL)arg11 stillImageStabilizationEnabled:(BOOL)arg12 bravoImageFusionEnabled:(BOOL)arg13 squareCropEnabled:(BOOL)arg14;
-- (id)_initWithUniqueID:(long long)arg1 photoDimensions:(CDStruct_79c71658)arg2 rawPhotoDimensions:(CDStruct_79c71658)arg3 previewDimensions:(CDStruct_79c71658)arg4 livePhotoMovieEnabled:(BOOL)arg5 livePhotoMovieDimensions:(CDStruct_79c71658)arg6 turboModeEnabled:(BOOL)arg7 flashEnabled:(BOOL)arg8 HDREnabled:(BOOL)arg9 shallowDepthOfFieldEffectEnabled:(BOOL)arg10 originalPhotoDeliveryEnabled:(BOOL)arg11 stillImageStabilizationEnabled:(BOOL)arg12 bravoImageFusionEnabled:(BOOL)arg13 squareCropEnabled:(BOOL)arg14;
++ (id)resolvedSettingsWithUniqueID:(long long)arg1 photoDimensions:(CDStruct_79c71658)arg2 rawPhotoDimensions:(CDStruct_79c71658)arg3 previewDimensions:(CDStruct_79c71658)arg4 livePhotoMovieEnabled:(BOOL)arg5 livePhotoMovieDimensions:(CDStruct_79c71658)arg6 turboModeEnabled:(BOOL)arg7 flashEnabled:(BOOL)arg8 HDREnabled:(BOOL)arg9 shallowDepthOfFieldEffectEnabled:(BOOL)arg10 originalPhotoDeliveryEnabled:(BOOL)arg11 stillImageStabilizationEnabled:(BOOL)arg12 dualCameraFusionEnabled:(BOOL)arg13 squareCropEnabled:(BOOL)arg14;
+- (id)_initWithUniqueID:(long long)arg1 photoDimensions:(CDStruct_79c71658)arg2 rawPhotoDimensions:(CDStruct_79c71658)arg3 previewDimensions:(CDStruct_79c71658)arg4 livePhotoMovieEnabled:(BOOL)arg5 livePhotoMovieDimensions:(CDStruct_79c71658)arg6 turboModeEnabled:(BOOL)arg7 flashEnabled:(BOOL)arg8 HDREnabled:(BOOL)arg9 shallowDepthOfFieldEffectEnabled:(BOOL)arg10 originalPhotoDeliveryEnabled:(BOOL)arg11 stillImageStabilizationEnabled:(BOOL)arg12 dualCameraFusionEnabled:(BOOL)arg13 squareCropEnabled:(BOOL)arg14;
 - (void)dealloc;
 - (id)description;
 - (BOOL)isBravoImageFusionEnabled;

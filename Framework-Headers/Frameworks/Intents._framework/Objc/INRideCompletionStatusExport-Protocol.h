@@ -12,12 +12,12 @@
 @protocol INRideCompletionStatusExport <NSObject, JSExport>
 
 @property (readonly, nonatomic, getter=isCanceled) BOOL canceled;
-@property (readonly, nonatomic, getter=isCanceledByService) BOOL canceledByService;
-@property (readonly, nonatomic, getter=isCompleted) BOOL completed;
+@property (nonatomic, getter=isCanceledByService) BOOL canceledByService;
+@property (nonatomic, getter=isCompleted) BOOL completed;
 @property (strong, nonatomic) NSUserActivity *completionUserActivity;
-@property (readonly, nonatomic, getter=isMissedPickup) BOOL missedPickup;
-@property (readonly, nonatomic, getter=isOutstanding) BOOL outstanding;
-@property (readonly, nonatomic) INCurrencyAmount *paymentAmount;
+@property (nonatomic, getter=isMissedPickup) BOOL missedPickup;
+@property (nonatomic, getter=isOutstanding) BOOL outstanding;
+@property (strong, nonatomic) INCurrencyAmount *paymentAmount;
 
 + (id)canceledByService;
 + (id)canceledByUser;

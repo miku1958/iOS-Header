@@ -10,7 +10,6 @@
 
 @class CKDPParticipant, CKDPRecordType, NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPShareMetadata : PBCodable <NSCopying>
 {
     CKDPParticipant *_callerParticipant;
@@ -49,9 +48,6 @@ __attribute__((visibility("hidden")))
 - (int)StringAsParticipantPermission:(id)arg1;
 - (int)StringAsParticipantState:(id)arg1;
 - (int)StringAsParticipantType:(id)arg1;
-- (id)_participantPermissionCKLogValue;
-- (id)_participantStateCKLogValue;
-- (id)_participantTypeCKLogValue;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

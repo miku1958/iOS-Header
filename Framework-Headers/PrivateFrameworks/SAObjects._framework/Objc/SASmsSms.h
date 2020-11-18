@@ -24,10 +24,12 @@
 @property (nonatomic) BOOL hasGroupName;
 @property (copy, nonatomic) NSNumber *isAudioMessage;
 @property (copy, nonatomic) NSString *message;
+@property (copy, nonatomic) NSString *messageType;
 @property (copy, nonatomic) NSArray *msgRecipients;
 @property (strong, nonatomic) SAPersonAttribute *msgSender;
 @property (copy, nonatomic) NSNumber *outgoing;
 @property (copy, nonatomic) NSArray *recipients;
+@property (strong, nonatomic) SASmsSms *referencedMessage;
 @property (copy, nonatomic) NSString *sender;
 @property (copy, nonatomic) NSString *subject;
 @property (copy, nonatomic) NSString *timezoneId;

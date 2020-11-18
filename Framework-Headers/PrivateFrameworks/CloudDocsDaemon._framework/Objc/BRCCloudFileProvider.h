@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)__provideItemAtURL:(id)arg1 toReaderWithID:(id)arg2 session:(id)arg3 recursively:(BOOL)arg4 updateAccessTime:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)__provideItemAtURL:(id)arg1 toReaderWithID:(id)arg2 session:(id)arg3 recursively:(BOOL)arg4 readingOptions:(unsigned long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_cancelCallBackForDocID:(id)arg1 key:(id)arg2;
 - (void)_cancelProvidingItemAtURL:(id)arg1 toReaderWithID:(id)arg2;
 - (id)_fileReactorID;
@@ -37,8 +37,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_spaceRequiredForReaders;
 - (void)_triggerImmediateReadOfDocumentAtPath:(id)arg1;
 - (void)_unregisterPresenterForKey:(id)arg1;
-- (void)_waitForDownloadOfDirectory:(id)arg1 key:(id)arg2 updateAccessTime:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_waitForDownloadOfDocument:(id)arg1 key:(id)arg2 requireCurrent:(BOOL)arg3 updateAccessTime:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_waitForDownloadOfDirectory:(id)arg1 key:(id)arg2 readingOptions:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_waitForDownloadOfDocument:(id)arg1 key:(id)arg2 requireCurrent:(BOOL)arg3 readingOptions:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)boostFilePresenterForURL:(id)arg1;
 - (void)cancelAllCoordinationProviders;
 - (void)cancelFileProvidersForPath:(id)arg1;

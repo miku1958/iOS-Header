@@ -8,7 +8,7 @@
 
 #import <ExternalAccessory/EABluetoothAccessoryPickerDelegate-Protocol.h>
 
-@class EABluetoothAccessoryPicker, NSArray, NSMutableArray, NSString, NSTimer;
+@class EABluetoothAccessoryPicker, NSArray, NSMutableArray, NSRecursiveLock, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
 @interface EAAccessoryManager : NSObject <EABluetoothAccessoryPickerDelegate>
@@ -20,7 +20,7 @@
     CDUnknownBlockType _pickerCompletion;
     BOOL _sequesterNewAccessories;
     NSTimer *_pickerTimer;
-    NSObject<OS_dispatch_queue> *_pickerQueue;
+    NSRecursiveLock *_pickerLock;
     NSObject<OS_dispatch_queue> *_connectionQueue;
 }
 
@@ -39,8 +39,8 @@
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_cameraInfoUpdated:(id)arg1;
-- (void)_checkForConnectedAccessories:(BOOL)arg1;
-- (void)_cleanUpForTaskSuspend;
+- (void)_checkForConnectedAccessories:(BOOL)arg1 backgroundTaskIdentifier:(unsigned long long)arg2;
+- (void)_cleanUpForTaskSuspendWithTaskIdentifier:(unsigned long long)arg1;
 - (id)_connectedAccessories;
 - (void)_ephemerisURLAvailable:(id)arg1;
 - (void)_externalAccessoryConnected:(id)arg1;

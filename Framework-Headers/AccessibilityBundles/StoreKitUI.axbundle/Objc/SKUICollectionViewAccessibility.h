@@ -13,11 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityCachedIsCollectionViewInConnectTab;
 - (BOOL)_accessibilityOpaqueElementScrollsContentIntoView;
 - (BOOL)_accessibilityScrollToFrame:(struct CGRect)arg1 forView:(id)arg2;
-- (void)_accessibilitySetCachedIsCollectionViewInConnectTab:(id)arg1;
-- (BOOL)_axIsCollectionViewInFuseConnectTab;
 - (BOOL)accessibilityScrollDownPageSupported;
 - (BOOL)accessibilityScrollUpPageSupported;
 

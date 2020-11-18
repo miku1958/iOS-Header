@@ -29,7 +29,8 @@
 - (void)_fetchFavoritePlaceMapItemsWithHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchFavoritePlacesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchHistoryEntriesWithHandler:(CDUnknownBlockType)arg1;
-- (void)_fetchHistoryEntryMapItemsWithHandler:(CDUnknownBlockType)arg1;
+- (void)_fetchHistoryEntryPlaceDisplayMapItemsWithHandler:(CDUnknownBlockType)arg1;
+- (void)_fetchHistoryEntryRouteMapItemsWithHandler:(CDUnknownBlockType)arg1;
 - (id)_getNextPredictedLocationsOfInterestBackedByFavoritePlaceFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 favorites:(id)arg4;
 - (id)_getNextPredictedLocationsOfInterestBackedByHistortyEntryPlaceDisplayFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 historyEntries:(id)arg4;
 - (id)_getNextPredictedLocationsOfInterestBackedByHistortyEntryRouteFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 historyEntries:(id)arg4;
@@ -38,7 +39,8 @@
 - (void)fetchFavoritePlaceMapItemsWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchFavoritesWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchHistoryEntriesWithHandler:(CDUnknownBlockType)arg1;
-- (void)fetchHistoryEntryMapItemsWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchHistoryEntryPlaceDisplayMapItemsWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchHistoryEntryRouteMapItemsWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (void)logMapsSupportData:(CDUnknownBlockType)arg1;

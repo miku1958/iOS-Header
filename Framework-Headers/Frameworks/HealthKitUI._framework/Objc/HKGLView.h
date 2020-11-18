@@ -6,7 +6,7 @@
 
 #import <GLKit/GLKView.h>
 
-@class CADisplayLink, UIScreen;
+@class BKSProcessAssertion, CADisplayLink, UIScreen;
 
 @interface HKGLView : GLKView
 {
@@ -18,17 +18,21 @@
     double _lastUpdateTime;
     BOOL _needsRender;
     unsigned int _latestDrawErrror;
+    BKSProcessAssertion *_renderingAssertion;
     BOOL _synchronizesWithCA;
+    BOOL _shouldBypassApplicationStateChecking;
     float _preferredFramesPerSecond;
 }
 
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (nonatomic) float preferredFramesPerSecond; // @synthesize preferredFramesPerSecond=_preferredFramesPerSecond;
+@property (nonatomic) BOOL shouldBypassApplicationStateChecking; // @synthesize shouldBypassApplicationStateChecking=_shouldBypassApplicationStateChecking;
 @property (nonatomic) BOOL synchronizesWithCA; // @synthesize synchronizesWithCA=_synchronizesWithCA;
 @property (readonly, nonatomic) double timeSinceLastUpdate;
 
 + (void)_clearCachedProgramForVertexShader:(id)arg1 fragmentShader:(id)arg2;
 - (void).cxx_destruct;
+- (void)_acquireRenderingAssertionIfNeeded;
 - (void)_commonInit;
 - (void)_createDisplayLinkForScreen:(id)arg1;
 - (void)_displayLinkFired;
@@ -36,11 +40,13 @@
 - (BOOL)_isLastUpdateTimeValid;
 - (void)_loadVertexShader:(id)arg1 fragmentShader:(id)arg2 inBundle:(id)arg3 forProgram:(unsigned int *)arg4 cache:(BOOL)arg5;
 - (void)_loadVertexShaderSource:(id)arg1 fragmentShaderSource:(id)arg2 forProgram:(unsigned int *)arg3;
-- (void)_pauseByNotification;
-- (void)_resumeByNotification;
+- (void)_pauseByNotification:(id)arg1;
+- (void)_releaseRenderingAssertion;
+- (void)_resumeByNotification:(id)arg1;
 - (void)_update;
 - (void)_updateGLLayerIsAsynchronous;
 - (void)_updateScreenIfChanged;
+- (void)_willResignActive:(id)arg1;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (unsigned int)drawInRect:(struct CGRect)arg1;

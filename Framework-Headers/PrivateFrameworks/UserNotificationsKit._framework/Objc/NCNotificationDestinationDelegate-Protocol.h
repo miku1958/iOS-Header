@@ -6,7 +6,7 @@
 
 #import <UserNotificationsKit/NCNotificationSectionSettingsProvider-Protocol.h>
 
-@class NCNotificationAction, NCNotificationRequest, NSDictionary, NSSet;
+@class NCNotificationAction, NCNotificationRequest, NSDate, NSDictionary, NSSet;
 @protocol NCNotificationDestination;
 
 @protocol NCNotificationDestinationDelegate <NCNotificationSectionSettingsProvider>
@@ -14,5 +14,7 @@
 - (void)destination:(id<NCNotificationDestination>)arg1 requestPermissionToExecuteAction:(NCNotificationAction *)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withParameters:(NSDictionary *)arg4 completion:(void (^)(BOOL))arg5;
 - (void)destination:(id<NCNotificationDestination>)arg1 requestsClearingNotificationRequests:(NSSet *)arg2;
 - (void)destination:(id<NCNotificationDestination>)arg1 requestsClearingNotificationRequests:(NSSet *)arg2 fromDestinations:(NSSet *)arg3;
+- (void)destination:(id<NCNotificationDestination>)arg1 requestsClearingNotificationRequestsFromDate:(NSDate *)arg2 toDate:(NSDate *)arg3 inSections:(NSSet *)arg4;
+- (void)destination:(id<NCNotificationDestination>)arg1 requestsClearingNotificationRequestsInSections:(NSSet *)arg2;
 @end
 

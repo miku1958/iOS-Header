@@ -12,6 +12,7 @@
 - (void)serviceMediaPickerSetAllowsPickingMultipleItems:(BOOL)arg1;
 - (void)serviceMediaPickerSetMediaTypes:(unsigned long long)arg1;
 - (void)serviceMediaPickerSetPrompt:(NSString *)arg1;
+- (void)serviceMediaPickerSetShouldPreventShowingTextServices:(BOOL)arg1;
 - (void)serviceMediaPickerSetShowsCloudItems:(BOOL)arg1;
 - (void)serviceMediaPickerSetShowsItemsWithProtectedAssets:(BOOL)arg1;
 @end

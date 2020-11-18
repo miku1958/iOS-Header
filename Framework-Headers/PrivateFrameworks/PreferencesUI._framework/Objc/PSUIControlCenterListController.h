@@ -6,10 +6,20 @@
 
 #import <Preferences/PSListController.h>
 
-@interface PSUIControlCenterListController : PSListController
+#import <PreferencesUI/PSListControllerTestableSpecifiers-Protocol.h>
+
+@class NSString;
+
+@interface PSUIControlCenterListController : PSListController <PSListControllerTestableSpecifiers>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)booleanCapabilitiesToTest;
 - (id)allowedWithinApps:(id)arg1;
 - (void)dealloc;
 - (id)enabledInLockScreen:(id)arg1;

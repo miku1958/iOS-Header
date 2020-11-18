@@ -8,11 +8,12 @@
 
 #import <Navigation/NSCopying-Protocol.h>
 
-@class GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEORouteAttributes, NSString;
+@class GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEOLocation, GEORouteAttributes, NSString;
 
 @interface MNRoutePlanningDetails : PBCodable <NSCopying>
 {
     GEOComposedWaypoint *_destination;
+    GEOLocation *_lastLocation;
     int _navigationType;
     GEOComposedWaypoint *_origin;
     GEODirectionsRequest *_request;
@@ -46,6 +47,7 @@
 @property (nonatomic) BOOL hasGuidancePromptsEnabled;
 @property (nonatomic) BOOL hasIsForReconnecting;
 @property (nonatomic) BOOL hasIsTraceRecording;
+@property (readonly, nonatomic) BOOL hasLastLocation;
 @property (nonatomic) BOOL hasNavigationType;
 @property (readonly, nonatomic) BOOL hasOrigin;
 @property (readonly, nonatomic) BOOL hasRequest;
@@ -57,6 +59,7 @@
 @property (nonatomic) BOOL hasTransportType;
 @property (nonatomic) BOOL isForReconnecting; // @synthesize isForReconnecting=_isForReconnecting;
 @property (nonatomic) BOOL isTraceRecording; // @synthesize isTraceRecording=_isTraceRecording;
+@property (strong, nonatomic) GEOLocation *lastLocation; // @synthesize lastLocation=_lastLocation;
 @property (nonatomic) int navigationType; // @synthesize navigationType=_navigationType;
 @property (strong, nonatomic) GEOComposedWaypoint *origin; // @synthesize origin=_origin;
 @property (strong, nonatomic) GEODirectionsRequest *request; // @synthesize request=_request;

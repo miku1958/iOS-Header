@@ -4,37 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <SpringBoardServices/SBSRemoteAlertActivationContext.h>
 
-#import <SpringBoardServices/BSDescriptionProviding-Protocol.h>
-#import <SpringBoardServices/BSSettingDescriptionProvider-Protocol.h>
-#import <SpringBoardServices/BSXPCCoding-Protocol.h>
-
-@class BSMutableSettings, NSString;
-
-@interface SBSRemoteAlertActivationOptions : NSObject <BSDescriptionProviding, BSSettingDescriptionProvider, BSXPCCoding>
+@interface SBSRemoteAlertActivationOptions : SBSRemoteAlertActivationContext
 {
-    BSMutableSettings *_settings;
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *reason;
-@property (readonly) Class superclass;
-
-- (void).cxx_destruct;
-- (id)_initWithSettings:(id)arg1;
-- (void)dealloc;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithXPCDictionary:(id)arg1;
-- (id)init;
-- (id)initWithXPCDictionary:(id)arg1;
-- (id)settings:(id)arg1 keyDescriptionForSetting:(unsigned long long)arg2;
-- (id)settings:(id)arg1 valueDescriptionForFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

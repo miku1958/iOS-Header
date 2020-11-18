@@ -28,7 +28,6 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, setter=_setDominantPhysicalButton:) long long dominantPhysicalButton; // @synthesize dominantPhysicalButton=_dominantPhysicalButton;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) long long interfaceOrientation;
 @property (readonly, nonatomic) long long panoramaCaptureOrientation;
 @property (readonly) Class superclass;
 

@@ -31,6 +31,7 @@
     NSArray *_accumulatedNumberOfRowsForItems;
     NSArray *_organDonationItems;
     BOOL _organDonationSignupAvailable;
+    int _emergencyContactsNotificationToken;
     BOOL _allowsEditing;
     BOOL _showsDismissButton;
     BOOL _showsDeleteButton;
@@ -74,6 +75,7 @@
 - (void)_refreshEmergencyContactsAndReload:(BOOL)arg1;
 - (long long)_rowIndexForTableItem:(id)arg1 atIndexPath:(id)arg2;
 - (BOOL)_shouldShowOrganDonation;
+- (void)_showMedicalIDPreviewAsNext;
 - (id)_tableItemForIndexPath:(id)arg1;
 - (void)_updateMedicalIDNameWithDemographicsInformation:(id)arg1;
 - (void)dealloc;
@@ -89,6 +91,7 @@
 - (void)medicalIDViewControllerDidSave:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)preferredStatusBarStyle;
+- (void)reloadMedicalIDDataAndView;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)tableItem:(id)arg1 heightDidChangeForRowIndex:(long long)arg2 keepRectVisible:(struct CGRect)arg3 inView:(id)arg4;
 - (void)tableItemDidBeginEditing:(id)arg1 keepRectVisible:(struct CGRect)arg2 inView:(id)arg3;

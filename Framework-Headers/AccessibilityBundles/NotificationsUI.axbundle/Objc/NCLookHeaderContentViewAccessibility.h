@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NotificationsUI/__NCLookHeaderContentViewAccessibility_super.h>
+#import "__NCLookHeaderContentViewAccessibility_super.h"
 
 @interface NCLookHeaderContentViewAccessibility : __NCLookHeaderContentViewAccessibility_super
 {

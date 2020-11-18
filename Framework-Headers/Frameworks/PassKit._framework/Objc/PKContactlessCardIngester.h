@@ -20,7 +20,7 @@
     CDUnknownBlockType _disableCardCompletionHandler;
 }
 
-+ (id)_displayableErrorForSPStatusCode:(unsigned long long)arg1;
++ (id)_displayableErrorForSPStatusCode:(unsigned long long)arg1 seldError:(id)arg2;
 + (id)debugDescriptionForStatus:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_cancelCardIngestion;

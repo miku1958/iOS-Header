@@ -6,26 +6,23 @@
 
 #import <CallKit/CXCallDirectoryEntryData.h>
 
-@class NSMutableData, NSMutableDictionary;
+@class NSData;
 
 @interface CXCallDirectoryIdentificationEntryData : CXCallDirectoryEntryData
 {
-    NSMutableData *_phoneNumberData;
-    NSMutableData *_labelData;
-    NSMutableDictionary *_labelToLabelDataOffset;
+    NSData *_phoneNumberData;
+    NSData *_labelData;
 }
 
-@property (strong, nonatomic) NSMutableData *labelData; // @synthesize labelData=_labelData;
-@property (strong, nonatomic) NSMutableDictionary *labelToLabelDataOffset; // @synthesize labelToLabelDataOffset=_labelToLabelDataOffset;
-@property (strong, nonatomic) NSMutableData *phoneNumberData; // @synthesize phoneNumberData=_phoneNumberData;
+@property (strong, nonatomic) NSData *labelData; // @synthesize labelData=_labelData;
+@property (strong, nonatomic) NSData *phoneNumberData; // @synthesize phoneNumberData=_phoneNumberData;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)appendPhoneNumber:(long long)arg1 label:(id)arg2;
 - (unsigned long long)count;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCapacity:(unsigned long long)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (long long)phoneNumberAtIndex:(unsigned long long)arg1;
 - (const char *)utf8LabelAtIndex:(unsigned long long)arg1 length:(out unsigned short *)arg2;

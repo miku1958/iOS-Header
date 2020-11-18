@@ -8,13 +8,12 @@
 
 #import <NanoTimeKitCompanion/NTKCompanionAppLibraryObserver-Protocol.h>
 
-@class NSHashTable, NSMutableArray, NSString, NTKCompanionAppLibrary;
+@class NSArray, NSHashTable, NSMutableArray, NSString, NTKCompanionAppLibrary;
 @protocol OS_dispatch_queue;
 
 @interface NTKCompanionFeaturedComplicationsAppLibrary : NSObject <NTKCompanionAppLibraryObserver>
 {
     NSHashTable *_changeObservers;
-    NSMutableArray *_topGalleryFeaturedComplicationApps;
     NSMutableArray *_allGalleryFeaturedComplicationApps;
     NTKCompanionAppLibrary *_appLibrary;
     NSObject<OS_dispatch_queue> *_internalQueue;
@@ -30,10 +29,11 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *observerCallbackQueue; // @synthesize observerCallbackQueue=_observerCallbackQueue;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSMutableArray *topGalleryFeaturedComplicationApps; // @synthesize topGalleryFeaturedComplicationApps=_topGalleryFeaturedComplicationApps;
+@property (readonly, nonatomic) NSArray *topGalleryFeaturedComplicationApps;
 
 + (id)sharedAppLibrary;
 - (void).cxx_destruct;
+- (void)_iterateObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)_notifyAppAdded:(id)arg1;
 - (void)_notifyAppIconUpdated:(id)arg1;
 - (void)_notifyAppRemoved:(id)arg1;

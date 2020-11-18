@@ -20,7 +20,7 @@
     BOOL shallowDepthOfFieldEffectEnabled;
     BOOL originalPhotoDeliveryEnabled;
     BOOL stillImageStabilizationEnabled;
-    BOOL bravoImageFusionEnabled;
+    BOOL dualCameraFusionEnabled;
     BOOL squareCropEnabled;
 }
 

@@ -24,9 +24,11 @@
     SKUIGiftItemView *_itemView;
     SKUIRedeemResultMessageView *_messageView;
     SKUIRedeemITunesPassLockup *_passbookLockup;
+    unsigned long long _currentItemStateFlag;
 }
 
 @property (strong, nonatomic) UIButton *anotherButton; // @synthesize anotherButton=_anotherButton;
+@property (nonatomic) unsigned long long currentItemStateFlag; // @synthesize currentItemStateFlag=_currentItemStateFlag;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL extendedMessageIsExpanded; // @synthesize extendedMessageIsExpanded=_extendedMessageIsExpanded;

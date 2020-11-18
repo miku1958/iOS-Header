@@ -13,6 +13,8 @@
 {
     NSObject<OS_dispatch_queue> *_ckWorkQueue;
     NSObject<OS_dispatch_queue> *_dataQueue;
+    BOOL _recordZoneOperationInProgress;
+    BOOL _subscriptionOperationInProgress;
     CKContainer *_cloudKitContainer;
     CKDatabase *_cloudKitDatabase;
     CKDatabase *_publicDatabase;
@@ -26,14 +28,15 @@
 @property (strong, nonatomic) CKDatabase *publicDatabase; // @synthesize publicDatabase=_publicDatabase;
 @property (strong, nonatomic) CKRecordZone *recordZone; // @synthesize recordZone=_recordZone;
 @property (strong, nonatomic) NSString *recordZoneKey; // @synthesize recordZoneKey=_recordZoneKey;
+@property (nonatomic) BOOL recordZoneOperationInProgress; // @synthesize recordZoneOperationInProgress=_recordZoneOperationInProgress;
 @property (strong, nonatomic) NSString *subscriptionKey; // @synthesize subscriptionKey=_subscriptionKey;
+@property (nonatomic) BOOL subscriptionOperationInProgress; // @synthesize subscriptionOperationInProgress=_subscriptionOperationInProgress;
 
 - (void).cxx_destruct;
 - (void)_checkAccountStatusWithCompletionHandler:(CDUnknownBlockType)arg1 withRetryCount:(unsigned long long)arg2;
 - (void)_submitFetchRecordsOperation:(id)arg1 withPriority:(unsigned long long)arg2 changeToken:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 retryCount:(unsigned long long)arg5;
 - (void)accountStatusDidChange:(id)arg1;
 - (void)dealloc;
-- (void)didStoreLocalChangesForChangeToken:(id)arg1;
 - (void)fetchPublicRecordsWithNames:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchRecordsWithPriority:(unsigned long long)arg1 changeToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchRecordsWithPriority:(unsigned long long)arg1 changeToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 retryCount:(unsigned long long)arg4;
@@ -45,7 +48,7 @@
 - (id)recordWithName:(id)arg1 type:(id)arg2 attributes:(id)arg3;
 - (id)recordWithName:(id)arg1 type:(id)arg2 cloudData:(id)arg3 attributes:(id)arg4;
 - (id)resolveConflicts:(id)arg1;
-- (void)setup;
+- (void)setupAccountDidChange:(BOOL)arg1;
 - (void)setupRecordZoneWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setupSubscription;
 - (void)updateRecords:(id)arg1 deleteRecordIDs:(id)arg2 withPriority:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;

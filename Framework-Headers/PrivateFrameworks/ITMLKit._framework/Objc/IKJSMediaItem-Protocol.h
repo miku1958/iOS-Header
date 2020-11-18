@@ -6,7 +6,7 @@
 
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @protocol IKJSMediaItem <JSExport>
 
@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSArray *highlightGroups;
 @property (strong, nonatomic) NSArray *interstitials;
 @property (nonatomic) BOOL isExplicit;
+@property (strong, nonatomic) NSDictionary *metadata;
 @property (strong, nonatomic) NSNumber *resumeTime;
 @property (strong, nonatomic) NSString *subtitle;
 @property (strong, nonatomic) NSString *title;

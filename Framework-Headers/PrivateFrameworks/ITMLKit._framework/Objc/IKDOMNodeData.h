@@ -14,12 +14,16 @@
     BOOL _childrenUpdated;
     BOOL _subtreeUpdated;
     BOOL _autoHighlightRead;
+    BOOL _bindingUpdated;
+    BOOL _dataUpdated;
     IKDOMNode *_ownerJSNode;
     NSMutableDictionary *_featuresMap;
 }
 
 @property (nonatomic, getter=isAutoHighlightRead) BOOL autoHighlightRead; // @synthesize autoHighlightRead=_autoHighlightRead;
+@property (nonatomic, getter=isBindingUpdated) BOOL bindingUpdated; // @synthesize bindingUpdated=_bindingUpdated;
 @property (nonatomic, getter=isChildrenUpdated) BOOL childrenUpdated; // @synthesize childrenUpdated=_childrenUpdated;
+@property (nonatomic, getter=isDataUpdated) BOOL dataUpdated; // @synthesize dataUpdated=_dataUpdated;
 @property (strong, nonatomic) NSMutableDictionary *featuresMap; // @synthesize featuresMap=_featuresMap;
 @property (weak, nonatomic) IKDOMNode *ownerJSNode; // @synthesize ownerJSNode=_ownerJSNode;
 @property (nonatomic, getter=isSubtreeUpdated) BOOL subtreeUpdated; // @synthesize subtreeUpdated=_subtreeUpdated;

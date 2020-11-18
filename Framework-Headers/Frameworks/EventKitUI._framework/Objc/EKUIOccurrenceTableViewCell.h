@@ -6,7 +6,8 @@
 
 #import <EventKitUI/EKUITableViewCellWithPrimaryAndSecondaryFonts.h>
 
-@class ColorBarView, EKCalendarDate, EKUIOccurrenceTableViewCellLabel, NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSString, NSTimer, UIColor, UIImageView, UIVisualEffect, UIVisualEffectView;
+@class ColorBarView, EKCalendarDate, EKUIOccurrenceTableViewCellLabel, NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSObject, NSString, UIColor, UIImageView, UIVisualEffect, UIVisualEffectView;
+@protocol OS_dispatch_source;
 
 @interface EKUIOccurrenceTableViewCell : EKUITableViewCellWithPrimaryAndSecondaryFonts
 {
@@ -68,7 +69,7 @@
     BOOL _needsReply;
     BOOL _cancelled;
     BOOL _opaque;
-    NSTimer *_countdownLabelUpdateTimer;
+    NSObject<OS_dispatch_source> *_countdownLabelUpdateTimer;
     BOOL _doesNotUseTemplate;
     BOOL _isTemplateCell;
     BOOL _isFakeInvitation;
@@ -118,21 +119,22 @@
 + (id)tentativeStripeColor;
 + (BOOL)vibrant;
 - (void).cxx_destruct;
-- (void)_countdownTimerFired:(id)arg1;
-- (void)_countdownTimerKill;
-- (void)_countdownTimerStart;
+- (void)_countdownTimerFired;
 - (id)_createParentVisualEffectViewWithVisualEffect:(id)arg1;
 - (void)_createViewsForReuseIdentifier:(id)arg1;
 - (BOOL)_eventIsNow;
+- (void)_installCountdownTimerWithFireDate:(id)arg1;
 - (double)_leftMarginForTimeViewsFromTimeWidth:(double)arg1;
+- (void)_resetCountdownTimerBasedOnCurrentDateForStringGeneration:(id)arg1;
 - (double)_rightMarginForTimeViewsFromTimeWidth:(double)arg1;
 - (id)_selectedBackgroundViewWithColor:(id)arg1;
 - (void)_setUpConstraints;
 - (id)_sharedNumberFormatter;
 - (id)_textForBottomTimeLabel;
-- (id)_textForCountdownLabel;
+- (id)_textForCountdownLabelWithCurrentDate:(id)arg1;
 - (id)_textForDepartureTimeLabel;
 - (id)_textForTopTimeLabel;
+- (void)_uninstallCountdownTimer;
 - (void)_updateAccessoryImage;
 - (void)_updateAngleBackgroundColor;
 - (void)_updateBottomTimeLabel;

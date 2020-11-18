@@ -8,10 +8,7 @@
 
 @interface MSCLFacebookPageTableViewCell : UITableViewCell
 {
-    struct CGSize _imageBoundingSize;
 }
-
-@property (nonatomic) struct CGSize imageBoundingSize; // @synthesize imageBoundingSize=_imageBoundingSize;
 
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;

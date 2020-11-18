@@ -6,21 +6,30 @@
 
 #import <iTunesStore/ISOperation.h>
 
-@class ISBiometricAuthenticationContext, ISDialog;
+@class ISBiometricAuthenticationContext, ISDialog, ISDialogButton, ISTouchIDDialog, NSURL;
 
 @interface ISBiometricTouchIDDialogOperation : ISOperation
 {
     ISBiometricAuthenticationContext *_context;
     ISDialog *_dialog;
+    NSURL *_redirectURL;
+    ISDialogButton *_selectedButton;
+    ISDialog *_fallbackDialog;
+    ISTouchIDDialog *_touchIDDialog;
 }
 
 @property (strong) ISBiometricAuthenticationContext *biometricAuthenticationContext; // @synthesize biometricAuthenticationContext=_context;
-@property (strong) ISDialog *dialog; // @synthesize dialog=_dialog;
+@property (readonly) ISDialog *dialog; // @synthesize dialog=_dialog;
+@property (strong) ISDialog *fallbackDialog; // @synthesize fallbackDialog=_fallbackDialog;
+@property (readonly) NSURL *redirectURL; // @synthesize redirectURL=_redirectURL;
+@property (readonly) ISDialogButton *selectedButton; // @synthesize selectedButton=_selectedButton;
+@property (strong) ISTouchIDDialog *touchIDDialog; // @synthesize touchIDDialog=_touchIDDialog;
 
 - (void).cxx_destruct;
+- (void)_findSelectedButtonForButtons:(id)arg1;
 - (BOOL)_runAuthkitOperationWithError:(id)arg1 returningError:(id *)arg2;
 - (BOOL)_runSignatureOperationReturningError:(id *)arg1;
-- (id)initWithDialog:(id)arg1;
+- (id)initWithTouchIDDialog:(id)arg1 fallbackDialog:(id)arg2;
 - (void)run;
 
 @end

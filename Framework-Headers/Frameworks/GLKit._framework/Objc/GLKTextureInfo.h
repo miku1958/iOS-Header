@@ -20,6 +20,7 @@
     BOOL containsMipmaps;
     unsigned int mimapLevelCount;
     unsigned int arrayLength;
+    BOOL lossyCompressedSource;
 }
 
 @property (readonly) int alphaState; // @synthesize alphaState;
@@ -38,6 +39,7 @@
 - (id)description;
 - (id)initWithTexture:(id)arg1 textureName:(unsigned int)arg2;
 - (id)initWithTextureTXR:(id)arg1 textureName:(unsigned int)arg2;
+- (BOOL)lossyCompressedSource;
 
 @end
 

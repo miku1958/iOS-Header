@@ -30,6 +30,7 @@
     NSNumber *_isAudioValue;
     NSNumber *_isTrashedValue;
     NSNumber *_isHiddenValue;
+    NSNumber *_isBlurryValue;
     NSNumber *_isIncludedInCloudFeeds;
     NSNumber *_originalInputOrder;
     NSNumber *_peopleCount;
@@ -39,6 +40,7 @@
     NSNumber *_clsShareCount;
     NSData *_clsDistanceIdentity;
     NSNumber *_clsVideoScore;
+    NSNumber *_clsSharpnessScore;
     NSNumber *_clsContentScore;
     NSNumber *_duration;
     NSArray *_clsUnprefetchedPeopleNames;
@@ -47,6 +49,8 @@
 @property (readonly, nonatomic) double clsContentScore;
 @property (readonly, nonatomic) NSDate *clsDate;
 @property (readonly, nonatomic) NSData *clsDistanceIdentity;
+@property (readonly, nonatomic) BOOL clsIsHDR;
+@property (readonly, nonatomic) BOOL clsIsSDOF;
 @property (readonly, nonatomic) CLLocation *clsLocation;
 @property (readonly, nonatomic) unsigned long long clsPeopleCount;
 @property (readonly, nonatomic) NSArray *clsPeopleNames;
@@ -60,6 +64,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isBlurry;
 @property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) BOOL isScreenshot;
 @property (readonly, nonatomic) BOOL isUtility;
@@ -75,6 +80,7 @@
 - (void).cxx_destruct;
 - (double)_score;
 - (id)cloudIdentifier;
+- (float)clsSharpnessScore;
 - (float)clsVideoScore;
 - (struct CGImage *)createThumbnailWithResolution:(unsigned long long)arg1 fillMode:(BOOL)arg2 networkAllowed:(BOOL)arg3;
 - (id)creationDate;

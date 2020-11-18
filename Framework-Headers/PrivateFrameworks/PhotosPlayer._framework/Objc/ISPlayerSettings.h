@@ -23,6 +23,7 @@
     BOOL _shouldPauseOnSettle;
     BOOL _variableIntro;
     BOOL _assumeCroppedVideo;
+    float _crossfadeFrameRate;
     long long _maxCrossfadeItemLoadAttempts;
     double _forceTouchTimeoutInterval;
     double _forceTouchTimeoutMinimumProgress;
@@ -47,6 +48,7 @@
 @property (nonatomic) BOOL assumeCroppedVideo; // @synthesize assumeCroppedVideo=_assumeCroppedVideo;
 @property (nonatomic) double audioRampDuration; // @synthesize audioRampDuration=_audioRampDuration;
 @property (nonatomic) double crossfadeDuration; // @synthesize crossfadeDuration=_crossfadeDuration;
+@property (nonatomic) float crossfadeFrameRate; // @synthesize crossfadeFrameRate=_crossfadeFrameRate;
 @property (nonatomic) double crossfadeTargetBlur; // @synthesize crossfadeTargetBlur=_crossfadeTargetBlur;
 @property (nonatomic) double forceScrubMaximumInteractiveRate; // @synthesize forceScrubMaximumInteractiveRate=_forceScrubMaximumInteractiveRate;
 @property (nonatomic) double forceScrubMaximumPressure; // @synthesize forceScrubMaximumPressure=_forceScrubMaximumPressure;

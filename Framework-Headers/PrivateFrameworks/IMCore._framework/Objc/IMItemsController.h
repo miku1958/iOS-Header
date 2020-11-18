@@ -36,6 +36,7 @@
 - (void)_replaceStaleTypingMessage;
 - (BOOL)_trimIfNeeded;
 - (id)_typingMessage;
+- (void)dealloc;
 - (id)init;
 
 @end

@@ -30,10 +30,8 @@
 @property (copy, nonatomic) NSString *primarySubtitleText;
 @property (copy, nonatomic) NSString *primaryText;
 @property (copy, nonatomic) NSString *secondaryText;
-@property (nonatomic) BOOL showAdditionalMessageLines;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImage *thumbnail;
-@property (nonatomic) long long thumbnailViewContentMode;
 @property (copy, nonatomic) NSTimeZone *timeZone;
 @property (copy, nonatomic) NSString *title;
 

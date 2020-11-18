@@ -14,6 +14,7 @@
 @interface TLAlertConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _isFrozen;
+    BOOL _hasCustomRepeatingFlag;
     BOOL _hasCustomAudioVolume;
     BOOL _forPreview;
     BOOL _shouldRepeat;

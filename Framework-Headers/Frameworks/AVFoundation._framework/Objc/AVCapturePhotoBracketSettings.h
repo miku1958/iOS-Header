@@ -17,11 +17,12 @@
 @property (nonatomic, getter=isLensStabilizationEnabled) BOOL lensStabilizationEnabled;
 
 + (id)photoBracketSettingsWithRawPixelFormatType:(unsigned int)arg1 processedFormat:(id)arg2 bracketedSettings:(id)arg3;
-- (id)_initWithFormat:(id)arg1 rawPixelFormatType:(unsigned int)arg2 bracketedSettings:(id)arg3 uniqueID:(long long)arg4;
+- (id)_initWithFormat:(id)arg1 rawPixelFormatType:(unsigned int)arg2 bracketedSettings:(id)arg3 uniqueID:(long long)arg4 exceptionReason:(id *)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)setAutoBravoImageFusionEnabled:(BOOL)arg1;
+- (void)setAutoDualCameraFusionEnabled:(BOOL)arg1;
 - (void)setAutoStillImageStabilizationEnabled:(BOOL)arg1;
 - (void)setFlashMode:(long long)arg1;
 - (void)setHDRMode:(long long)arg1;

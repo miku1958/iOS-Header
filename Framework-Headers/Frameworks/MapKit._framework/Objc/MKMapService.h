@@ -6,15 +6,29 @@
 
 #import <Foundation/NSObject.h>
 
-@interface MKMapService : NSObject
+#import <MapKit/GEOLogContextDelegate-Protocol.h>
+
+@class NSString;
+
+@interface MKMapService : NSObject <GEOLogContextDelegate>
 {
+    CDUnknownBlockType _getLogContextForEventBlock;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType getLogContextForEventBlock; // @synthesize getLogContextForEventBlock=_getLogContextForEventBlock;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)sharedService;
+- (void).cxx_destruct;
 - (void)_mapItemsForResponseData:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)_mk_ticketForSearchQuery:(id)arg1 completionItem:(id)arg2 traits:(id)arg3;
 - (id)_ticketForReverseGeocodeCoordinate:(struct CLLocationCoordinate2D)arg1 includeEntryPoints:(BOOL)arg2 includeETA:(BOOL)arg3 preserveOriginalLocation:(BOOL)arg4 traits:(id)arg5;
-- (void)captureMapLaunchEventWithLaunchUrl:(id)arg1 sourceAppId:(id)arg2 ttlEventTime:(id)arg3 traits:(id)arg4;
+- (void)captureExtensionStateWithIsRideBookingAppsInstalled:(BOOL)arg1 isRideBookingAppsEnabled:(BOOL)arg2;
+- (void)captureExtensionStateWithIsTableBookingAppsInstalled:(BOOL)arg1 isTableBookingAppsEnabled:(BOOL)arg2;
+- (void)captureMapLaunchEventWithLaunchUrl:(id)arg1 sourceAppId:(id)arg2 isLaunchedFromTTL:(BOOL)arg3 ttlEventTime:(id)arg4 traits:(id)arg5;
 - (void)captureMapSettingsWithAvoidHighways:(BOOL)arg1;
 - (void)captureMapSettingsWithAvoidTolls:(BOOL)arg1;
 - (void)captureMapSettingsWithFindMyCarEnabled:(BOOL)arg1;
@@ -31,7 +45,7 @@
 - (void)capturePlaceCardUserAction:(int)arg1 onTarget:(int)arg2 eventValue:(id)arg3 mapItem:(id)arg4 timestamp:(double)arg5 resultIndex:(int)arg6 targetID:(unsigned long long)arg7 providerID:(id)arg8 animationID:(unsigned long long)arg9 actionURL:(id)arg10 photoID:(id)arg11 traits:(id)arg12 placeCardType:(int)arg13 localizedMapItemCategory:(id)arg14 availableActions:(id)arg15 unactionableUIElements:(id)arg16;
 - (void)captureTransitPlaceCardUserAction:(int)arg1 onTarget:(int)arg2 eventValue:(id)arg3 mapItem:(id)arg4 timestamp:(double)arg5 resultIndex:(int)arg6 targetID:(unsigned long long)arg7 providerID:(id)arg8 animationID:(unsigned long long)arg9 transitCardCategory:(int)arg10 transitSystem:(id)arg11 transitDepartureSequence:(id)arg12 transitIncident:(id)arg13 traits:(id)arg14;
 - (void)captureUserAction:(int)arg1 onTarget:(int)arg2 eventValue:(id)arg3 categoriesDisplayed:(id)arg4 categorySelected:(id)arg5 traits:(id)arg6;
-- (void)captureUserAction:(int)arg1 onTarget:(int)arg2 eventValue:(id)arg3 mapRegion:(id)arg4 zoomLevel:(double)arg5 traits:(id)arg6;
+- (void)captureUserAction:(int)arg1 onTarget:(int)arg2 eventValue:(id)arg3 mapRegion:(id)arg4 zoomLevel:(double)arg5 mapType:(int)arg6 traits:(id)arg7;
 - (void)captureUserAction:(int)arg1 onTarget:(int)arg2 eventValue:(id)arg3 placeActionDetails:(id)arg4 traits:(id)arg5;
 - (void)captureUserAction:(int)arg1 onTarget:(int)arg2 eventValue:(id)arg3 routeDetails:(id)arg4 traits:(id)arg5;
 - (void)captureUserAction:(int)arg1 onTarget:(int)arg2 eventValue:(id)arg3 traits:(id)arg4;
@@ -41,6 +55,7 @@
 - (id)defaultTraitsWithTransportType:(unsigned long long)arg1;
 - (void)incrementAGGDInteractedWithPlaceCardKeyWithType:(unsigned long long)arg1 incrementValue:(long long)arg2;
 - (void)incrementAGGDOpenPlaceCardKeyWithType:(unsigned long long)arg1 incrementValue:(long long)arg2;
+- (id)logContextForLogMsgEvent:(id)arg1;
 - (id)mapItemsForPlacesInDetails:(id)arg1;
 - (void)submitUsageForTraits:(id)arg1;
 - (void)submitUsageForTraits:(id)arg1 actionDetails:(id)arg2 routeDetails:(id)arg3;
@@ -60,7 +75,7 @@
 - (void)submitUsageForTraitsWithAction:(int)arg1 mapItem:(id)arg2 providerID:(id)arg3 resultIndex:(int)arg4 targetID:(unsigned long long)arg5 transitCardCategory:(int)arg6 transitSystem:(id)arg7 transitIncident:(id)arg8;
 - (void)submitUsageForTraitsWithAction:(int)arg1 mapItem:(id)arg2 providerID:(id)arg3 targetID:(unsigned long long)arg4;
 - (void)submitUsageForTraitsWithAction:(int)arg1 mapItem:(id)arg2 targetID:(unsigned long long)arg3;
-- (void)submitUsageForTraitsWithAction:(int)arg1 mapRegion:(id)arg2 zoomLevel:(double)arg3;
+- (void)submitUsageForTraitsWithAction:(int)arg1 mapRegion:(id)arg2 zoomLevel:(double)arg3 mapType:(int)arg4;
 - (void)submitUsageForTraitsWithAction:(int)arg1 regionName:(id)arg2;
 - (void)submitUsageForTraitsWithAction:(int)arg1 uiTarget:(int)arg2;
 - (void)submitUserAction:(id)arg1 eventKey:(int)arg2;

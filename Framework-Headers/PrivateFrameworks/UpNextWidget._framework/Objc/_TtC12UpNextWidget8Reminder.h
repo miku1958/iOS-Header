@@ -20,8 +20,8 @@
     MISSING_TYPE *location;
 }
 
-@property (nonatomic, strong) NSDate *dueDate; // @synthesize dueDate;
-@property (nonatomic, strong) NSURL *externalURL; // @synthesize externalURL;
+@property (nonatomic, copy) NSDate *dueDate; // @synthesize dueDate;
+@property (nonatomic, copy) NSURL *externalURL; // @synthesize externalURL;
 @property (nonatomic, strong) struct CGColor *listColor; // @synthesize listColor;
 @property (nonatomic, copy) NSString *location; // @synthesize location;
 @property (nonatomic, copy) NSString *notes; // @synthesize notes;

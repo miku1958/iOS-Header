@@ -20,7 +20,7 @@
     BOOL _badPairSetupCode;
     BOOL _pairing;
     BOOL _supportsMFiPairSetup;
-    BOOL _securitySessionOpening;
+    HAPSecuritySession *_securitySession;
     long long _connectionState;
     CDUnknownBlockType _connectionCompletionHandler;
     HMFTimer *_connectionIdleTimer;
@@ -31,7 +31,6 @@
     CDUnknownBlockType _setupCodeCompletionHandler;
     HAPCharacteristic *_pairingFeaturesCharacteristic;
     HAPCharacteristic *_pairSetupCharacteristic;
-    HAPSecuritySession *_securitySession;
     HAPCharacteristic *_pairVerifyCharacteristic;
     NSOperationQueue *_pairVerifyOperationQueue;
     HAPCharacteristic *_pairingsCharacteristic;
@@ -67,7 +66,6 @@
 @property (readonly, nonatomic) NSMutableArray *pendingResponses; // @synthesize pendingResponses=_pendingResponses;
 @property (readonly, nonatomic) NSOperationQueue *requestOperationQueue; // @synthesize requestOperationQueue=_requestOperationQueue;
 @property (strong, nonatomic) HAPSecuritySession *securitySession; // @synthesize securitySession=_securitySession;
-@property (nonatomic, getter=isSecuritySessionOpening) BOOL securitySessionOpening; // @synthesize securitySessionOpening=_securitySessionOpening;
 @property (copy, nonatomic) CDUnknownBlockType setupCodeCompletionHandler; // @synthesize setupCodeCompletionHandler=_setupCodeCompletionHandler;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsMFiPairSetup; // @synthesize supportsMFiPairSetup=_supportsMFiPairSetup;
@@ -182,8 +180,9 @@
 - (void)handleDisconnectionWithError:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)hapBLEProtocolVersion;
 - (void)identifyWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(BOOL)arg6 category:(id)arg7 connectionIdleTime:(unsigned char)arg8 browser:(id)arg9 keyStore:(id)arg10;
+- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(BOOL)arg6 configNumber:(id)arg7 category:(id)arg8 connectionIdleTime:(unsigned char)arg9 browser:(id)arg10 keyStore:(id)arg11;
 - (BOOL)isHAPCharacteristic:(id)arg1;
+- (BOOL)isSecuritySessionOpen;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)markNotifyingCharacteristicUpdatedforCharacteristic:(id)arg1;
 - (BOOL)pairSetupSession:(id)arg1 didPairWithPeer:(id)arg2 error:(id *)arg3;
@@ -201,8 +200,7 @@
 - (void)peripheral:(id)arg1 didUpdateValueForCharacteristic:(id)arg2 error:(id)arg3;
 - (void)peripheral:(id)arg1 didUpdateValueForDescriptor:(id)arg2 error:(id)arg3;
 - (void)peripheral:(id)arg1 didWriteValueForCharacteristic:(id)arg2 error:(id)arg3;
-- (void)readCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)readValueForCharacteristic:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)securitySession:(id)arg1 didCloseWithError:(id)arg2;
@@ -211,6 +209,7 @@
 - (void)securitySession:(id)arg1 didReceiveSetupExchangeData:(id)arg2;
 - (void)securitySessionDidOpen:(id)arg1;
 - (void)securitySessionIsOpening:(id)arg1;
+- (void)setSecuritySessionOpen:(BOOL)arg1;
 - (id)shortDescription;
 - (BOOL)shouldVerifyHAPCharacteristic:(id)arg1;
 - (BOOL)shouldVerifyHAPService:(id)arg1;
@@ -219,8 +218,7 @@
 - (void)timerDidFire:(id)arg1;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)updateConnectionIdleTime:(unsigned char)arg1;
-- (void)writeCharacteristicValues:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)writeValue:(id)arg1 forCharacteristic:(id)arg2 authorizationData:(id)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

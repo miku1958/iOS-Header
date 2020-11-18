@@ -21,7 +21,7 @@
 @property (nonatomic) double collectionViewHeight; // @synthesize collectionViewHeight=_collectionViewHeight;
 @property (readonly, weak, nonatomic) VideosExtrasContext *context; // @synthesize context=_context;
 @property (weak, nonatomic) UIView *menuBarView; // @synthesize menuBarView=_menuBarView;
-@property (strong, nonatomic) UIViewController *videoPlaybackViewController; // @synthesize videoPlaybackViewController=_videoPlaybackViewController;
+@property (strong, nonatomic) UIViewController<VideosExtrasVideoPlaybackViewController> *videoPlaybackViewController; // @synthesize videoPlaybackViewController=_videoPlaybackViewController;
 
 - (void).cxx_destruct;
 - (void)_menuBarHeightChange:(id)arg1;

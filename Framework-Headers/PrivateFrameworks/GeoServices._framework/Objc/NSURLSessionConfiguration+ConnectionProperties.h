@@ -7,6 +7,7 @@
 #import <Foundation/NSURLSessionConfiguration.h>
 
 @interface NSURLSessionConfiguration (ConnectionProperties)
++ (id)_geo_ephemeralSessionConfiguration;
 - (void)applyNSURLConnectionProperties:(id)arg1;
 @end
 

@@ -53,7 +53,7 @@
 - (BOOL)_persistenceStackInitialized;
 - (id)_persistentStoreURL;
 - (void)_registerForNotifications;
-- (void)_resetPersistentStoreAtURL:(id)arg1;
+- (void)_resetPersistentStoreWithHandler:(CDUnknownBlockType)arg1;
 - (void)_setupPersistenceStack;
 - (void)_setupPersistenceStack:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_setupPersistenceStackForEncryptedDataAvailability:(long long)arg1;
@@ -70,7 +70,7 @@
 - (id)initWithStoreName:(id)arg1 dataProtectionManager:(id)arg2 migrationManager:(id)arg3;
 - (void)onDataProtectionChange:(id)arg1;
 - (void)onMigrationNotification:(id)arg1;
-- (void)resetPersistentStoreAtURL:(id)arg1;
+- (void)resetPersistentStoreWithHandler:(CDUnknownBlockType)arg1;
 - (void)shutdown;
 
 @end

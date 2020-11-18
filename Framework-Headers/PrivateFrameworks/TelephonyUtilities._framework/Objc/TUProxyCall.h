@@ -25,7 +25,8 @@
     BOOL _videoDegraded;
     BOOL _videoPaused;
     BOOL _blocked;
-    BOOL _emergencyCall;
+    BOOL _emergency;
+    BOOL _sos;
     BOOL _usingBaseband;
     BOOL _needsManualInCallSounds;
     BOOL _uplinkMuted;
@@ -78,7 +79,7 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) TUCallDisplayContext *displayContext; // @synthesize displayContext=_displayContext;
 @property (strong, nonatomic) TUCallProvider *displayProvider; // @synthesize displayProvider=_displayProvider;
-@property (nonatomic, getter=isEmergencyCall) BOOL emergencyCall; // @synthesize emergencyCall=_emergencyCall;
+@property (nonatomic, getter=isEmergency) BOOL emergency; // @synthesize emergency=_emergency;
 @property (copy, nonatomic) NSString *endedErrorString; // @synthesize endedErrorString=_endedErrorString;
 @property (copy, nonatomic) NSString *endedReasonString; // @synthesize endedReasonString=_endedReasonString;
 @property (copy, nonatomic) NSDictionary *endedReasonUserInfo; // @synthesize endedReasonUserInfo=_endedReasonUserInfo;
@@ -102,8 +103,10 @@
 @property (strong, nonatomic) AVCRemoteVideoClient *remoteVideo; // @synthesize remoteVideo=_remoteVideo;
 @property (nonatomic) struct CGRect remoteVideoContentRect; // @synthesize remoteVideoContentRect=_remoteVideoContentRect;
 @property (strong, nonatomic) NSMutableDictionary *remoteVideoModeToLayer; // @synthesize remoteVideoModeToLayer=_remoteVideoModeToLayer;
+@property (nonatomic, getter=isSOS, setter=setSOS:) BOOL sos; // @synthesize sos=_sos;
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isThirdPartyVideo) BOOL thirdPartyVideo; // @synthesize thirdPartyVideo=_thirdPartyVideo;
 @property (nonatomic) int ttyType; // @synthesize ttyType=_ttyType;
 @property (nonatomic, getter=isUsingBaseband) BOOL usingBaseband; // @synthesize usingBaseband=_usingBaseband;
 @property (nonatomic, getter=isVideoDegraded) BOOL videoDegraded; // @synthesize videoDegraded=_videoDegraded;
@@ -127,7 +130,6 @@
 - (id)initWithUniqueProxyIdentifier:(id)arg1 endpointOnCurrentDevice:(BOOL)arg2;
 - (BOOL)isDownlinkMuted;
 - (BOOL)isSendingVideo;
-- (BOOL)isThirdPartyVideo;
 - (BOOL)isUplinkMuted;
 - (struct CGSize)localAspectRatioForOrientation:(long long)arg1;
 - (void)playDTMFToneForKey:(unsigned char)arg1;

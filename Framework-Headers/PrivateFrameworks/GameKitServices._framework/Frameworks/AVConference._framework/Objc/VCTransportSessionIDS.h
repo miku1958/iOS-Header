@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)setConnectionSetupTime;
 - (void)setDefaultLink:(id)arg1;
 - (void)setPiggybackBlobPreference;
+- (void)setQuickRelayServerProvider:(int)arg1;
 - (void)start;
 - (void)stop;
 

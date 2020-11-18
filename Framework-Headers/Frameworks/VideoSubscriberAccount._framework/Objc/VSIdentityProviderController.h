@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccount/VSAutoAuthenticationViewControllerDelegate-Protocol.h>
-#import <VideoSubscriberAccount/VSCredentialEntryViewControllerDelegate-Protocol.h>
+#import <VideoSubscriberAccount/VSAuthenticationViewControllerDelegate-Protocol.h>
 #import <VideoSubscriberAccount/VSIdentityProviderRequestManagerDelegate-Protocol.h>
 #import <VideoSubscriberAccount/VSLoadingViewControllerDelegate-Protocol.h>
 
 @class NSOperationQueue, NSString, VSIdentityProvider, VSIdentityProviderRequestContext, VSIdentityProviderRequestManager, VSImageLoadOperation, VSViewModel;
 @protocol VSIdentityProviderControllerDelegate;
 
-@interface VSIdentityProviderController : NSObject <VSAutoAuthenticationViewControllerDelegate, VSCredentialEntryViewControllerDelegate, VSIdentityProviderRequestManagerDelegate, VSLoadingViewControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface VSIdentityProviderController : NSObject <VSAuthenticationViewControllerDelegate, VSIdentityProviderRequestManagerDelegate, VSLoadingViewControllerDelegate>
 {
     BOOL _showsLoadingViewController;
     BOOL _cancellationAllowed;
@@ -52,6 +52,8 @@
 - (void)_completeRequestWithResult:(id)arg1;
 - (void)_configureAutoAuthenticationViewModel:(id)arg1 forRequest:(id)arg2;
 - (void)_configureCredentialEntryViewModel:(id)arg1 forRequest:(id)arg2;
+- (void)_configureCuratedViewModel:(id)arg1 forRequest:(id)arg2;
+- (void)_configureOnscreenCodeViewModel:(id)arg1 forRequest:(id)arg2;
 - (void)_configureViewModel:(id)arg1 forRequest:(id)arg2;
 - (void)_didCancel;
 - (void)_hideViewController;
@@ -65,8 +67,7 @@
 - (void)_showLoadingViewController;
 - (void)_showViewController:(id)arg1;
 - (void)_showViewController:(id)arg1 currentlyShowingViewController:(BOOL)arg2;
-- (void)autoAuthenticationViewControllerDidCancel:(id)arg1;
-- (void)credentialEntryViewControllerDidCancel:(id)arg1;
+- (void)authenticationViewControllerDidCancel:(id)arg1;
 - (void)identityProviderRequestManager:(id)arg1 didAuthenticateAccount:(id)arg2 forRequest:(id)arg3;
 - (void)identityProviderRequestManager:(id)arg1 hideUserInterfaceForRequest:(id)arg2;
 - (void)identityProviderRequestManager:(id)arg1 showUserInterfaceWithViewModel:(id)arg2 forRequest:(id)arg3;

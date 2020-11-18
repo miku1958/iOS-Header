@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)boldText;
 + (unsigned char)colCount:(BOOL)arg1;
-+ (id)emojiCategoryImagePath:(id)arg1;
++ (id)emojiCategoryImagePath:(id)arg1 forRenderConfig:(id)arg2;
 + (id)emojiFontAttributes;
 + (id)emojiFontAttributesForPortrait:(BOOL)arg1;
 + (double)emojiPageControlYOffset:(BOOL)arg1;

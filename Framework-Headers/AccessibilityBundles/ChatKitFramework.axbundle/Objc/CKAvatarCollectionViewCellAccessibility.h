@@ -14,8 +14,14 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axCKEntity;
+- (unsigned long long)_axCollectionViewLayoutMode;
+- (id)_axLocalizedFormatStringForAcknowledgmentType:(long long)arg1;
 - (void)_axSetCKEntity:(id)arg1;
+- (id)_axTapbackContacts;
+- (id)_axTapbackLabelWithTally:(id)arg1;
+- (long long)_axTapbackType;
 - (void)_setAXCKEntity:(id)arg1;
+- (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (void)configureWithEntity:(id)arg1;
 - (BOOL)isAccessibilityElement;

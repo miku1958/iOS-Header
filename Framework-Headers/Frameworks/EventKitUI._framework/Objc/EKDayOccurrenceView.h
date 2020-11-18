@@ -56,6 +56,7 @@
     double _cappedColorBarHeight;
     double _travelTime;
     double _bottomPinningProximity;
+    double _topYBoundaryForText;
     struct UIEdgeInsets _margin;
 }
 
@@ -97,6 +98,7 @@
 @property (strong, nonatomic) UIColor *timeTextColor;
 @property (copy, nonatomic) NSString *title;
 @property (strong, nonatomic) UIColor *titleTextColor;
+@property (nonatomic) double topYBoundaryForText; // @synthesize topYBoundaryForText=_topYBoundaryForText;
 @property (nonatomic) BOOL touchesAreBeingTracked; // @synthesize touchesAreBeingTracked=_touchesAreBeingTracked;
 @property (nonatomic) double travelTime; // @synthesize travelTime=_travelTime;
 @property (nonatomic) double travelTimeSubviewHeightInPoints; // @synthesize travelTimeSubviewHeightInPoints=_travelTimeSubviewHeightInPoints;

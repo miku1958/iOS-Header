@@ -26,11 +26,11 @@
     _UIFeedbackStatesBehavior *_dismissFeedbackBehavior;
     BOOL _didPlayDismissHaptic;
     id<UIViewControllerTransitionCoordinator> _activeTransitionCoordinator;
-    struct CGRect _keyboardFrame;
     BOOL _listenToKeyboardEvents;
     BOOL _presenting;
     id<NCLongLookAnimatorDelegate> _transitionAnimatorDelegate;
     id<NCLongLookPresentationControllerDelegate> _longLookPresentationControllerDelegate;
+    struct CGRect _keyboardFrame;
 }
 
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
@@ -39,6 +39,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=_keyboardFrame, setter=_setKeyboardFrame:) struct CGRect keyboardFrame; // @synthesize keyboardFrame=_keyboardFrame;
 @property (weak, nonatomic) id<NCLongLookPresentationControllerDelegate> longLookPresentationControllerDelegate; // @synthesize longLookPresentationControllerDelegate=_longLookPresentationControllerDelegate;
 @property (nonatomic, getter=isPresenting) BOOL presenting; // @synthesize presenting=_presenting;
 @property (readonly) Class superclass;
@@ -56,7 +57,7 @@
 - (id)_animationFactoryForLongLookPresentation:(BOOL)arg1;
 - (void)_configureDismissFeedbackIfNecessary;
 - (void)_configureDismissLabelIfNecessary;
-- (struct UIEdgeInsets)_contentInsetForPresentedViewFrame:(struct CGRect)arg1 visibleFrame:(struct CGRect *)arg2;
+- (struct UIEdgeInsets)_contentInsetWithPresentedFrame:(struct CGRect)arg1 inContainerViewWithBounds:(struct CGRect)arg2;
 - (struct CGPoint)_contentOffsetForPresentedLongLookView:(struct UIView *)arg1;
 - (struct CGRect)_dismissLabelContainerViewFrameForPresentedViewFrame:(struct CGRect)arg1;
 - (struct CGRect)_frameForTransitionViewInPresentationSuperview:(id)arg1;

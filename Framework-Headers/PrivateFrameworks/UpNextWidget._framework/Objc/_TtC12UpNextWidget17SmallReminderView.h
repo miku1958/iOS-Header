@@ -18,7 +18,7 @@
     MISSING_TYPE *circleDiameter;
 }
 
-@property (nonatomic, strong) NSDate *dueDate; // @synthesize dueDate;
+@property (nonatomic, copy) NSDate *dueDate; // @synthesize dueDate;
 @property (nonatomic, strong) UIColor *listColor; // @synthesize listColor;
 @property (nonatomic, copy) NSString *title; // @synthesize title;
 

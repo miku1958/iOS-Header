@@ -6,26 +6,23 @@
 
 #import <SpringBoardFoundation/SBFLockScreenDateSubtitleView.h>
 
-@class NSDate, SBUILegibilityLabel;
+@class NSDate, SBFLockScreenAlternateDateLabel;
 
 @interface SBFLockScreenDateSubtitleDateView : SBFLockScreenDateSubtitleView
 {
     NSDate *_date;
-    SBUILegibilityLabel *_alternateDateLabel;
+    SBFLockScreenAlternateDateLabel *_alternateDateLabel;
     double _alignmentPercent;
 }
 
 @property (nonatomic) double alignmentPercent; // @synthesize alignmentPercent=_alignmentPercent;
-@property (strong, nonatomic) SBUILegibilityLabel *alternateDateLabel; // @synthesize alternateDateLabel=_alternateDateLabel;
+@property (strong, nonatomic) SBFLockScreenAlternateDateLabel *alternateDateLabel; // @synthesize alternateDateLabel=_alternateDateLabel;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 
 - (void).cxx_destruct;
-- (id)_alternateDateString;
 - (id)_createReplicateView;
-- (id)_lunarCalendarIdentifier;
 - (double)_lunarDateLabelYOffsetFromDateLabel;
 - (void)_setupAlternateDateLabel;
-- (BOOL)_showAlternateDate;
 - (struct CGRect)alternateDateLabelFrame;
 - (void)dealloc;
 - (id)initWithDate:(id)arg1;

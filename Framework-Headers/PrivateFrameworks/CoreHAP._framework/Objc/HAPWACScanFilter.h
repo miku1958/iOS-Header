@@ -13,10 +13,12 @@
 {
     NSDictionary *_identifiersForDiscoveredAccessories;
     NSDictionary *_lastSeenTracking;
+    double _ageOutTimePeriod;
     unsigned long long _filterMethod;
     NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
+@property (nonatomic) double ageOutTimePeriod; // @synthesize ageOutTimePeriod=_ageOutTimePeriod;
 @property (nonatomic) unsigned long long filterMethod; // @synthesize filterMethod=_filterMethod;
 @property (strong, nonatomic) NSDictionary *identifiersForDiscoveredAccessories; // @synthesize identifiersForDiscoveredAccessories=_identifiersForDiscoveredAccessories;
 @property (strong, nonatomic) NSDictionary *lastSeenTracking; // @synthesize lastSeenTracking=_lastSeenTracking;

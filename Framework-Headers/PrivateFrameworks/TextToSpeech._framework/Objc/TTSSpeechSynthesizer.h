@@ -58,7 +58,7 @@
 @property (strong, nonatomic) NSString *voiceIdentifier; // @synthesize voiceIdentifier=_voiceIdentifier;
 @property (nonatomic) float volume; // @synthesize volume=_volume;
 
-+ (id)_speechServiceForVoiceIdentifier:(id)arg1;
++ (id)_speechVoiceForIdentifier:(id)arg1 language:(id)arg2 footprint:(long long)arg3;
 + (id)allAvailableVoices;
 + (id)availableLanguageCodes;
 + (id)availableVoices;
@@ -80,7 +80,6 @@
 - (void)_processPhonemeSubstitutions:(id)arg1 toText:(id)arg2 request:(id)arg3 bundleIdentifier:(id)arg4 voice:(id)arg5;
 - (void)_processUserSubstitutions:(id)arg1 toText:(id)arg2 request:(id)arg3 bundleIdentifier:(id)arg4 voice:(id)arg5;
 - (void)_setDelegate:(id)arg1;
-- (id)_speechVoiceForIdentifier:(id)arg1 language:(id)arg2;
 - (BOOL)_startSpeakingString:(id)arg1 orAttributedString:(id)arg2 toURL:(id)arg3 withLanguageCode:(id)arg4 request:(id *)arg5 error:(id *)arg6;
 - (BOOL)_stopSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 synchronously:(BOOL)arg3 error:(id *)arg4;
 - (void)connection:(id)arg1 speechRequest:(id)arg2 didStopAtEnd:(BOOL)arg3 phonemesSpoken:(id)arg4 error:(id)arg5;

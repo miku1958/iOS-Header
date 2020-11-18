@@ -12,6 +12,7 @@
 
 @interface _HKFitnessFriendActivitySnapshot : HKSample <NSCopying>
 {
+    BOOL _hasCarriedForwardGoals;
     NSUUID *_friendUUID;
     NSUUID *_sourceUUID;
     long long _snapshotIndex;
@@ -39,6 +40,7 @@
 @property (nonatomic) double energyBurnedGoal; // @synthesize energyBurnedGoal=_energyBurnedGoal;
 @property (readonly, nonatomic) double energyBurnedGoalPercentage;
 @property (strong, nonatomic) NSUUID *friendUUID; // @synthesize friendUUID=_friendUUID;
+@property (nonatomic) BOOL hasCarriedForwardGoals; // @synthesize hasCarriedForwardGoals=_hasCarriedForwardGoals;
 @property (nonatomic) double pushCount; // @synthesize pushCount=_pushCount;
 @property (nonatomic) long long snapshotIndex; // @synthesize snapshotIndex=_snapshotIndex;
 @property (strong, nonatomic) NSDate *snapshotUploadedDate; // @synthesize snapshotUploadedDate=_snapshotUploadedDate;

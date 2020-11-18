@@ -6,20 +6,30 @@
 
 #import <SearchFoundation/SFCardSection.h>
 
-@class NSArray, SFActionItem, SFMediaItem;
+@class NSArray, NSString, SFActionItem, SFMediaItem;
 
 @interface SFMediaInfoCardSection : SFCardSection
 {
+    BOOL _isMediaContainer;
     SFMediaItem *_mediaItem;
     NSArray *_details;
     SFActionItem *_playAction;
     NSArray *_offers;
+    NSString *_watchListIdentifier;
+    NSString *_watchListButtonLabel;
+    NSString *_watchListContinuationText;
+    NSString *_watchListConfirmationText;
 }
 
 @property (copy, nonatomic) NSArray *details; // @synthesize details=_details;
+@property (nonatomic) BOOL isMediaContainer; // @synthesize isMediaContainer=_isMediaContainer;
 @property (strong, nonatomic) SFMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (copy, nonatomic) NSArray *offers; // @synthesize offers=_offers;
 @property (strong, nonatomic) SFActionItem *playAction; // @synthesize playAction=_playAction;
+@property (copy, nonatomic) NSString *watchListButtonLabel; // @synthesize watchListButtonLabel=_watchListButtonLabel;
+@property (copy, nonatomic) NSString *watchListConfirmationText; // @synthesize watchListConfirmationText=_watchListConfirmationText;
+@property (copy, nonatomic) NSString *watchListContinuationText; // @synthesize watchListContinuationText=_watchListContinuationText;
+@property (copy, nonatomic) NSString *watchListIdentifier; // @synthesize watchListIdentifier=_watchListIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

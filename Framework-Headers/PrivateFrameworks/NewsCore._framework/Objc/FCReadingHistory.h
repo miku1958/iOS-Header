@@ -15,7 +15,9 @@
     FCMutexLock *_itemsLock;
 }
 
+@property (readonly, nonatomic) NSSet *allConsumedArticleIDs;
 @property (readonly, nonatomic) NSSet *allReadArticleIDs;
+@property (readonly, nonatomic) NSSet *allSeenArticleIDs;
 @property (strong, nonatomic) NSMutableDictionary *itemsByArticleID; // @synthesize itemsByArticleID=_itemsByArticleID;
 @property (strong, nonatomic) NSMutableDictionary *itemsByIdentifier; // @synthesize itemsByIdentifier=_itemsByIdentifier;
 @property (strong, nonatomic) FCMutexLock *itemsLock; // @synthesize itemsLock=_itemsLock;

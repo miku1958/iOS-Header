@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IKViewElementStyleFactory;
+@class IKViewElementRegistry, IKViewElementStyleFactory;
 
 @interface IKViewElementFactory : NSObject
 {
@@ -14,7 +14,9 @@
         unsigned int sparse:1;
         unsigned int parsingUpdatedTree:1;
         unsigned int parsingReorderedSiblings:1;
+        unsigned int parsingUpdatedData:1;
     } _parsingFlags;
+    IKViewElementRegistry *_elementRegistry;
     IKViewElementStyleFactory *_styleFactory;
 }
 
@@ -22,14 +24,16 @@
 @property (strong, nonatomic) IKViewElementStyleFactory *styleFactory; // @synthesize styleFactory=_styleFactory;
 
 + (Class)elementClassByTagName:(id)arg1;
-+ (unsigned long long)elementTypeByTagName:(id)arg1;
 + (id)elementsForDocumentElement:(id)arg1 sparse:(BOOL)arg2 styleFactory:(id *)arg3;
 + (void)initialize;
 + (BOOL)isDependentByTagName:(id)arg1;
 + (void)registerClass:(Class)arg1 forElementName:(id)arg2 elementType:(unsigned long long)arg3;
 + (void)registerClass:(Class)arg1 forElementName:(id)arg2 elementType:(unsigned long long)arg3 dependent:(BOOL)arg4;
 - (void).cxx_destruct;
+- (Class)elementClassByTagName:(id)arg1;
 - (id)elementForDOMElement:(id)arg1 parent:(id)arg2;
+- (unsigned long long)elementTypeByTagName:(id)arg1;
+- (id)initWithElementRegistry:(id)arg1;
 
 @end
 

@@ -13,13 +13,15 @@
 
 @interface FCPurchase : NSObject <SKProductsRequestDelegate>
 {
+    BOOL _purchaseRestore;
+    NSNumber *_appAdamID;
     NSString *_purchaseID;
     NSString *_subscriptionPriceFormatted;
     NSString *_subscriptionPeriodInISO_8601;
     NSString *_trialPeriodInISO_8601;
     NSString *_offerName;
-    NSNumber *_appAdamID;
     NSNumber *_storeExternalVersion;
+    NSString *_bundleID;
     NSNumber *_price;
     SKProduct *_product;
     NSObject<OS_dispatch_group> *_productRequestGroup;
@@ -27,6 +29,7 @@
 }
 
 @property (copy, nonatomic) NSNumber *appAdamID; // @synthesize appAdamID=_appAdamID;
+@property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (strong, nonatomic) FCCloudContext *cloudContext; // @synthesize cloudContext=_cloudContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -36,6 +39,7 @@
 @property (strong, nonatomic) SKProduct *product; // @synthesize product=_product;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *productRequestGroup; // @synthesize productRequestGroup=_productRequestGroup;
 @property (copy, nonatomic) NSString *purchaseID; // @synthesize purchaseID=_purchaseID;
+@property (nonatomic) BOOL purchaseRestore; // @synthesize purchaseRestore=_purchaseRestore;
 @property (copy, nonatomic) NSNumber *storeExternalVersion; // @synthesize storeExternalVersion=_storeExternalVersion;
 @property (copy, nonatomic) NSString *subscriptionPeriodInISO_8601; // @synthesize subscriptionPeriodInISO_8601=_subscriptionPeriodInISO_8601;
 @property (copy, nonatomic) NSString *subscriptionPriceFormatted; // @synthesize subscriptionPriceFormatted=_subscriptionPriceFormatted;
@@ -43,8 +47,9 @@
 @property (copy, nonatomic) NSString *trialPeriodInISO_8601; // @synthesize trialPeriodInISO_8601=_trialPeriodInISO_8601;
 
 - (void).cxx_destruct;
+- (void)appLookupForBundleIDWithAppAdamID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)appLookupWithAppAdamID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithPurchaseID:(id)arg1 cloudContext:(id)arg2;
+- (id)initWithPurchaseID:(id)arg1 cloudContext:(id)arg2 purchaseRestore:(BOOL)arg3;
 - (void)productLookupWithcompletion:(CDUnknownBlockType)arg1;
 - (void)productsRequest:(id)arg1 didReceiveResponse:(id)arg2;
 - (void)purchaseLookUp:(CDUnknownBlockType)arg1;

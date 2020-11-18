@@ -12,7 +12,7 @@
 
 @interface FCFaultableRecord : NSObject <FCKeyValueStoreCoding>
 {
-    int _recordLock;
+    struct os_unfair_lock_s _recordLock;
     PBCodable *_record;
     NSData *_recordData;
     NTPBRecordBase *_recordBase;
@@ -24,7 +24,7 @@
 @property (strong, nonatomic) PBCodable *record; // @synthesize record=_record;
 @property (strong, nonatomic) NTPBRecordBase *recordBase; // @synthesize recordBase=_recordBase;
 @property (strong, nonatomic) NSData *recordData; // @synthesize recordData=_recordData;
-@property (nonatomic) int recordLock; // @synthesize recordLock=_recordLock;
+@property (nonatomic) struct os_unfair_lock_s recordLock; // @synthesize recordLock=_recordLock;
 @property (readonly) Class superclass;
 
 + (id)faultableRecordWithRecord:(id)arg1;

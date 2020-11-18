@@ -8,6 +8,7 @@
 
 @class NSXPCConnection, VSFailable, VSIdentityProvider;
 
+__attribute__((visibility("hidden")))
 @interface VSDeveloperIdentityProviderChangeOperation : VSAsyncOperation
 {
     VSIdentityProvider *_identityProvider;

@@ -15,19 +15,19 @@
     int _remotePid;
     unsigned int _contextId;
     BOOL _onClientSide;
-    id<AXRemoteElementChildrenDelegate> _remoteChildrenDelegate;
     NSMutableSet *_allChildren;
     BOOL _deniesDirectAppConnection;
     unsigned int _machPort;
+    id<AXRemoteElementChildrenDelegate> _remoteChildrenDelegate;
     id _accessibilityContainer;
 }
 
-@property (nonatomic) id accessibilityContainer; // @synthesize accessibilityContainer=_accessibilityContainer;
+@property (weak, nonatomic) id accessibilityContainer; // @synthesize accessibilityContainer=_accessibilityContainer;
 @property (nonatomic) unsigned int contextId; // @synthesize contextId=_contextId;
 @property (nonatomic) BOOL deniesDirectAppConnection; // @synthesize deniesDirectAppConnection=_deniesDirectAppConnection;
 @property (nonatomic) unsigned int machPort; // @synthesize machPort=_machPort;
 @property (nonatomic) BOOL onClientSide; // @synthesize onClientSide=_onClientSide;
-@property (nonatomic) id<AXRemoteElementChildrenDelegate> remoteChildrenDelegate; // @synthesize remoteChildrenDelegate=_remoteChildrenDelegate;
+@property (weak, nonatomic) id<AXRemoteElementChildrenDelegate> remoteChildrenDelegate; // @synthesize remoteChildrenDelegate=_remoteChildrenDelegate;
 @property (nonatomic) int remotePid; // @synthesize remotePid=_remotePid;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (readonly, nonatomic) unsigned long long uuidHash;
@@ -36,6 +36,7 @@
 + (BOOL)registerRemoteElement:(id)arg1;
 + (id)remoteElementForBlock:(CDUnknownBlockType)arg1;
 + (id)remoteElementForContextId:(unsigned int)arg1;
+- (void).cxx_destruct;
 - (id)_accessibilityActiveKeyboard;
 - (id)_accessibilityFirstElement;
 - (void)_accessibilityIncreaseSelection:(id)arg1;

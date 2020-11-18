@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, TUIKBGraphSerialization;
 
@@ -21,6 +21,7 @@
 
 + (id)layoutsFileName;
 + (id)sharedKeyboardFactory;
+- (void)_createDecoderIfNecessary;
 - (void)dealloc;
 - (id)init;
 - (id)keyboardPrefixForWidth:(double)arg1 andEdge:(BOOL)arg2;

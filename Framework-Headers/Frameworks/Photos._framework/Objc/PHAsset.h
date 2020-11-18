@@ -142,6 +142,7 @@
 + (id)fetchAssetsForFaces:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsForPersons:(id)arg1 options:(id)arg2;
++ (id)fetchAssetsGroupedByFaceUUIDForFaces:(id)arg1;
 + (id)fetchAssetsInAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsInBoundingBoxWithTopLeftLocation:(id)arg1 bottomRightLocation:(id)arg2 options:(id)arg3;
 + (id)fetchAssetsInFaceCollection:(id)arg1 options:(id)arg2;

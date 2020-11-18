@@ -6,7 +6,7 @@
 
 #import <VideosExtras/NSObject-Protocol.h>
 
-@class IKAppDocument, NSDictionary, NSString, NSURL;
+@class IKAppDocument, IKViewElementRegistry, NSDictionary, NSString, NSURL;
 @protocol IKAppDataStoring, IKAppUserDefaultsStoring;
 
 @protocol IKApplication <NSObject>
@@ -20,8 +20,14 @@
 
 @optional
 - (IKAppDocument *)activeDocument;
+- (BOOL)appIsPrivileged;
 - (BOOL)appIsTrusted;
+- (NSURL *)appJSCachePath;
 - (NSDictionary *)appLaunchParams;
+- (NSURL *)appLocalJSURL;
+- (NSDictionary *)appTraitCollection;
+- (BOOL)appUsesDefaultStyleSheets;
 - (BOOL)shouldAllowRemoteInspection;
+- (IKViewElementRegistry *)viewElementRegistry;
 @end
 

@@ -8,6 +8,7 @@
 
 @class NSArray, NSXPCConnection, VSAccount, VSFailable, VSIdentityProviderAvailabilityInfoCenter;
 
+__attribute__((visibility("hidden")))
 @interface VSViewServiceRequestPreparationOperation : VSAsyncOperation
 {
     BOOL _requestAllowsPrivacyUI;

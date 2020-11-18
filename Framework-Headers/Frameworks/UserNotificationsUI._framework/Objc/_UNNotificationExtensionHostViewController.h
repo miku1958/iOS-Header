@@ -43,6 +43,7 @@
 - (void)_extensionSetPlayPauseMediaButtonColor:(id)arg1;
 - (void)_extensionSetPlayPauseMediaButtonFrame:(struct CGRect)arg1;
 - (void)_extensionSetPlayPauseMediaButtonType:(unsigned long long)arg1;
+- (void)_extensionSetTitle:(id)arg1;
 - (void)_extensionWantsToBecomeFirstResponder:(BOOL)arg1;
 - (void)_extensionWantsToReceiveActionResponses:(BOOL)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

@@ -103,6 +103,7 @@
 - (id)metadata;
 - (id)metadataForFormat:(id)arg1;
 - (int)naturalTimeScale;
+- (CDStruct_1b6d18a9)overallDurationHint;
 - (id)preferredMediaSelection;
 - (float)preferredSoundCheckVolumeNormalization;
 - (BOOL)providesPreciseDurationAndTiming;

@@ -10,6 +10,7 @@
 
 @class NSArray, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface VSKeychainItemKind : NSObject <NSCopying>
 {
     NSString *_itemClassName;

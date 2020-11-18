@@ -111,7 +111,6 @@
 - (void)privateUpdatePromptStyle:(id)arg1;
 - (unsigned long long)promptStyle;
 - (unsigned long long)recordPermission;
-- (void)registerForServerUpNotifications;
 - (oneway void)release;
 - (void)requestRecordPermission:(CDUnknownBlockType)arg1;
 - (id)retain;
@@ -152,7 +151,6 @@
 - (BOOL)silenceOutput:(unsigned long long)arg1 error:(id *)arg2;
 - (float)speakerThermalGain;
 - (double)speechDetectionDeviceSampleRate;
-- (void)unregisterForServerUpNotifications;
 
 @end
 

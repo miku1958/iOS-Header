@@ -28,7 +28,6 @@
 
 - (void).cxx_destruct;
 - (void)_reachabilityChanged:(id)arg1;
-- (void)addObserverForPreferredDaysToSyncChangeNotifications;
 - (id)getDAAccount;
 - (id)initWithAccount:(id)arg1;
 - (void)observeReachabilityWithBlock:(CDUnknownBlockType)arg1;
@@ -36,7 +35,6 @@
 - (int)preferredToDoDaysToSync;
 - (void)processMeetingRequestDatas:(id)arg1 deliveryIdsToClear:(id)arg2 deliveryIdsToSoftClear:(id)arg3 inFolderWithId:(id)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)refreshFolderListRequireChangedFolders:(BOOL)arg1 isUserRequested:(BOOL)arg2;
-- (void)removeObserverForPreferredDaysToSyncChangeNotifications;
 - (void)requestAgentStopMonitoringWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)shutdown;
 - (void)startMonitoring;

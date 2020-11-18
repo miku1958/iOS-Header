@@ -16,9 +16,7 @@
     NTPBFeedViewportGap *_pbGap;
     NTPBFeedViewportGroup *_pbGroup;
     int _type;
-    struct {
-        unsigned int type:1;
-    } _has;
+    CDStruct_f953fb60 _has;
 }
 
 @property (readonly, nonatomic) BOOL hasIdentifier;

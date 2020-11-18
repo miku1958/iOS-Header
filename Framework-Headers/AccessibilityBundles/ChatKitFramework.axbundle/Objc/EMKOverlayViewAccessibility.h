@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)accessibilityPerformEscape;
+- (unsigned long long)accessibilityTraits;
 - (BOOL)accessibilityViewIsModal;
 - (id)initWithView:(id)arg1 anchorRect:(struct CGRect)arg2 emojiTokenList:(id)arg3 selectionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)isAccessibilityElement;

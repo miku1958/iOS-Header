@@ -20,7 +20,7 @@
 }
 
 @property (nonatomic) int algorithm; // @synthesize algorithm=_algorithm;
-@property (strong, nonatomic) id<_HKStreamingDestination> destination; // @synthesize destination=_destination;
+@property (weak, nonatomic) id<_HKStreamingDestination> destination; // @synthesize destination=_destination;
 @property (strong, nonatomic) NSMutableData *destinationBuffer; // @synthesize destinationBuffer=_destinationBuffer;
 @property (nonatomic) int operation; // @synthesize operation=_operation;
 @property (readonly, nonatomic) NSMutableData *sinkContent; // @synthesize sinkContent=_sinkContent;

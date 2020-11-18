@@ -8,6 +8,7 @@
 
 @class VSAccount, VSAccountMetadata, VSImageLoadOperation;
 
+__attribute__((visibility("hidden")))
 @interface VSIdentityProviderResponse : NSObject
 {
     BOOL _didCreateAccount;

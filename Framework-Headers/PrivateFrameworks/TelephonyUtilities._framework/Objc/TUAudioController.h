@@ -6,21 +6,19 @@
 
 #import <Foundation/NSObject.h>
 
-@protocol OS_dispatch_group, OS_dispatch_semaphore;
+@protocol OS_dispatch_semaphore;
 
 @interface TUAudioController : NSObject
 {
     NSObject<OS_dispatch_semaphore> *_modifyingStateLock;
-    NSObject<OS_dispatch_group> *_outstandingRequestsGroup;
 }
+
+@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *modifyingStateLock; // @synthesize modifyingStateLock=_modifyingStateLock;
 
 - (void).cxx_destruct;
 - (void)_acquireLock;
-- (void)_enterOutstandingRequestsGroup;
-- (void)_leaveOutstandingRequestsGroup;
 - (void)_releaseLock;
 - (void)_requestUpdatedValueWithBlock:(CDUnknownBlockType)arg1 object:(id *)arg2 isRequestingPointer:(BOOL *)arg3 forceNewRequest:(BOOL)arg4 scheduleTimePointer:(unsigned long long *)arg5 notificationString:(id)arg6 queue:(id)arg7;
-- (void)blockUntilOutstandingRequestsComplete;
 - (id)init;
 
 @end

@@ -294,20 +294,6 @@ struct Join;
 
 struct LocalMinimum;
 
-struct Module {
-    CDUnknownFunctionPointerType *_field1;
-    struct Module **_field2;
-};
-
-struct NoiseMap {
-    float m_borderValue;
-    int m_height;
-    unsigned long long m_memUsed;
-    float *m_pNoiseMap;
-    int m_stride;
-    int m_width;
-};
-
 struct Obstacle {
     CDUnknownFunctionPointerType *_field1;
 };
@@ -659,14 +645,6 @@ struct vector<long long, std::__1::allocator<long long>> {
 
 struct vector<long, std::__1::allocator<long>>;
 
-struct vector<noise::module::Module *, std::__1::allocator<noise::module::Module *>> {
-    struct Module **__begin_;
-    struct Module **__end_;
-    struct __compressed_pair<noise::module::Module **, std::__1::allocator<noise::module::Module *>> {
-        struct Module **__first_;
-    } __end_cap_;
-};
-
 struct vector<std::__1::pair<id, GKCDecisionNode *>, std::__1::allocator<std::__1::pair<id, GKCDecisionNode *>>> {
     struct pair<id, GKCDecisionNode *> *_field1;
     struct pair<id, GKCDecisionNode *> *_field2;
@@ -703,13 +681,4 @@ typedef struct {
 typedef struct {
     MISSING_TYPE *_field1[3];
 } CDStruct_d80e62f2;
-
-// Template types
-typedef struct vector<noise::module::Module *, std::__1::allocator<noise::module::Module *>> {
-    struct Module **__begin_;
-    struct Module **__end_;
-    struct __compressed_pair<noise::module::Module **, std::__1::allocator<noise::module::Module *>> {
-        struct Module **__first_;
-    } __end_cap_;
-} vector_a0c1ad3f;
 

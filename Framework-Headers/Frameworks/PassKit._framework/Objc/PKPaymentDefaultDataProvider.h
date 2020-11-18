@@ -9,19 +9,22 @@
 #import <PassKitCore/PKPaymentDataProvider-Protocol.h>
 #import <PassKitCore/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSString, PKPaymentService, PKSecureElement;
-@protocol PKPaymentDataProviderDelegate;
+@class NSHashTable, NSString, PKPaymentService, PKSecureElement;
+@protocol OS_dispatch_queue, PKPaymentDataProviderDelegate;
 
 @interface PKPaymentDefaultDataProvider : NSObject <PKPaymentServiceDelegate, PKPaymentDataProvider>
 {
     PKPaymentService *_paymentService;
     PKSecureElement *_secureElement;
-    id<PKPaymentDataProviderDelegate> delegate;
+    NSHashTable *_delegates;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSObject<OS_dispatch_queue> *_replyQueue;
+    id<PKPaymentDataProviderDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSString *defaultPaymentPassIdentifier;
-@property (weak, nonatomic) id<PKPaymentDataProviderDelegate> delegate; // @synthesize delegate;
+@property (weak, nonatomic) id<PKPaymentDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDeviceInRestrictedMode;
@@ -31,6 +34,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_accessDelegatesWithHandler:(CDUnknownBlockType)arg1;
+- (void)addDelegate:(id)arg1;
 - (void)dealloc;
 - (id)defaultExpressFelicaTransitPassIdentifier;
 - (id)defaultPaymentApplicationForPassUniqueIdentifier:(id)arg1;
@@ -42,6 +47,7 @@
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithFelicaPassProperties:(id)arg2;
+- (void)removeDelegate:(id)arg1;
 - (void)setDefaultExpressFelicaTransitPassIdentifier:(id)arg1 withCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDefaultPaymentApplication:(id)arg1 forPassUniqueIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPaymentHandoffDisabled:(BOOL)arg1;

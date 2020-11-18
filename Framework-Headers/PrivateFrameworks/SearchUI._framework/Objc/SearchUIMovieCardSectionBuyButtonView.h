@@ -6,28 +6,42 @@
 
 #import <UIKit/UIView.h>
 
-@class SFMediaInfoCardSection, SFPunchout, SKUIItemOfferButton, SearchUICardViewController, UILabel;
+@class NSString, SFMediaInfoCardSection, SFPunchout, SKUIItemOfferButton, SearchUICardViewController, UILabel;
 
 @interface SearchUIMovieCardSectionBuyButtonView : UIView
 {
+    BOOL _isOnWatchList;
+    BOOL _hasBeenToggled;
     UILabel *_subtitleLabel;
-    SKUIItemOfferButton *_button;
     SFPunchout *_punchout;
+    NSString *_itemIdentifier;
+    SKUIItemOfferButton *_button;
+    SFPunchout *_punchoutForFeedback;
     SearchUICardViewController *_controller;
     SFMediaInfoCardSection *_section;
 }
 
 @property (strong) SKUIItemOfferButton *button; // @synthesize button=_button;
 @property (weak) SearchUICardViewController *controller; // @synthesize controller=_controller;
+@property BOOL hasBeenToggled; // @synthesize hasBeenToggled=_hasBeenToggled;
+@property BOOL isOnWatchList; // @synthesize isOnWatchList=_isOnWatchList;
+@property (strong) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property (strong) SFPunchout *punchout; // @synthesize punchout=_punchout;
+@property (strong) SFPunchout *punchoutForFeedback; // @synthesize punchoutForFeedback=_punchoutForFeedback;
 @property (strong) SFMediaInfoCardSection *section; // @synthesize section=_section;
 @property (strong) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 
 - (void).cxx_destruct;
 - (void)buttonPressed;
+- (void)displayAsAlreadyOnWatchList;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithTitle:(id)arg1 subtitle:(id)arg2 punchout:(id)arg3 adamID:(id)arg4 offerIdentifier:(id)arg5 controller:(id)arg6 section:(id)arg7;
+- (id)initWithTitle:(id)arg1 subtitle:(id)arg2 punchout:(id)arg3 itemIdentifier:(id)arg4 offerIdentifier:(id)arg5 controller:(id)arg6 section:(id)arg7;
 - (void)lookupPriceForAdamID:(id)arg1 offerIdentifier:(id)arg2;
+- (void)updateButtonWithAnimations:(CDUnknownBlockType)arg1 animated:(BOOL)arg2;
+- (void)updatePunchoutWithURL:(id)arg1;
+- (void)updateSubtitleText:(id)arg1 animated:(BOOL)arg2;
+- (void)updateView:(id)arg1 withAnimations:(CDUnknownBlockType)arg2 animated:(BOOL)arg3;
+- (void)updateWatchListStatus:(BOOL)arg1 animated:(BOOL)arg2;
 
 @end
 

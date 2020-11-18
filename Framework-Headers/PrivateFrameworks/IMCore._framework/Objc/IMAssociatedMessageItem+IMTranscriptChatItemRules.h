@@ -8,6 +8,7 @@
 
 @interface IMAssociatedMessageItem (IMTranscriptChatItemRules)
 - (id)_newChatItems;
+- (id)_newChatItemsWithFilteredChat:(BOOL)arg1;
 - (BOOL)shouldGenerateTopLevelChatItem;
 @end
 

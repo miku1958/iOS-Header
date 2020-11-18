@@ -13,6 +13,7 @@
 @interface ISBiometricAuthenticationContext : NSObject <NSCopying>
 {
     BOOL _didAuthenticate;
+    BOOL _didBuyParamsChange;
     BOOL _didFallbackToPassword;
     BOOL _shouldContinueTouchIDSession;
     BOOL _shouldSendFallbackHeader;
@@ -28,6 +29,7 @@
 @property (copy) NSString *accountName; // @synthesize accountName=_accountName;
 @property (copy) NSString *challenge; // @synthesize challenge=_challenge;
 @property BOOL didAuthenticate; // @synthesize didAuthenticate=_didAuthenticate;
+@property BOOL didBuyParamsChange; // @synthesize didBuyParamsChange=_didBuyParamsChange;
 @property BOOL didFallbackToPassword; // @synthesize didFallbackToPassword=_didFallbackToPassword;
 @property (copy) NSString *reason; // @synthesize reason=_reason;
 @property (copy) NSURL *redirectURL; // @synthesize redirectURL=_redirectURL;

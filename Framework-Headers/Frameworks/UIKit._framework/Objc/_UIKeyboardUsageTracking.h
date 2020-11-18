@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)dualStringsKeyFlickUpCount;
 + (void)inputSwitcherSetPredictionPreference:(BOOL)arg1;
 + (void)keyboardExtensionCrashed;
 + (void)keyboardExtensionPrimaryLanguageChanged;
@@ -25,10 +26,14 @@ __attribute__((visibility("hidden")))
 + (void)keyboardReachabilityDistribution:(double)arg1;
 + (void)keyboardSetToInputMode:(id)arg1 fromPrevious:(id)arg2;
 + (void)keyboardTotalOnScreenTime:(double)arg1 orientation:(long long)arg2;
++ (void)panAlternateKeyFlickDownCount;
 + (void)predictionViewState:(BOOL)arg1 forInputMode:(id)arg2;
++ (void)redoKeyCount;
 + (void)selectedPredictiveInputCandidate:(id)arg1 isAutocorrection:(BOOL)arg2;
 + (void)showCharacterPreviewPreference:(BOOL)arg1;
 + (void)showLowercaseKeyplanePreference:(BOOL)arg1;
++ (void)singleStringKeyFlickUpCount;
++ (void)undoKeyCount;
 
 @end
 

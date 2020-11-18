@@ -7,11 +7,13 @@
 #import <ITMLKit/IKJSObject.h>
 
 #import <ITMLKit/IKJSImpression-Protocol.h>
-#import <ITMLKit/JSExport-Protocol.h>
+#import <ITMLKit/NSObject-Protocol.h>
+#import <ITMLKit/_IKJSImpression-Protocol.h>
+#import <ITMLKit/_IKJSImpressionProxy-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString;
 
-@interface IKJSImpression : IKJSObject <IKJSImpression, JSExport>
+@interface IKJSImpression : IKJSObject <NSObject, IKJSImpression, _IKJSImpressionProxy, _IKJSImpression>
 {
     IKJSImpression *_parentImpression;
     NSString *_metricsTag;
@@ -23,6 +25,9 @@
 
 @property (readonly, nonatomic) NSArray *children;
 @property (readonly, nonatomic) NSString *data;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *impressionQueueTag;
 @property (readonly, nonatomic) long long index;
 @property (nonatomic) long long indexInParent; // @synthesize indexInParent=_indexInParent;
@@ -32,12 +37,13 @@
 @property (strong, nonatomic) NSMutableArray *mutableTimestamps; // @synthesize mutableTimestamps=_mutableTimestamps;
 @property (readonly, nonatomic) id parent;
 @property (weak, nonatomic) IKJSImpression *parentImpression; // @synthesize parentImpression=_parentImpression;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *timestamps;
 
 - (void).cxx_destruct;
 - (void)addChild:(id)arg1;
 - (void)addTimestamp:(long long)arg1;
-- (id)description;
+- (id)asPrivateIKJSImpression;
 - (id)initWithAppContext:(id)arg1 data:(id)arg2 index:(unsigned long long)arg3 queueTag:(id)arg4;
 - (void)linkReferences;
 

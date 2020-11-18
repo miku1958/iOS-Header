@@ -7,6 +7,9 @@
 #import <Foundation/NSNumber.h>
 
 @interface NSNumber (FCAdditions)
+
+@property (readonly, nonatomic) double CGFloatValue;
+
 - (BOOL)fc_isGreaterThan:(id)arg1;
 - (BOOL)fc_isLessThan:(id)arg1;
 - (BOOL)fc_isLessThanOrEqualTo:(id)arg1;

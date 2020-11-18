@@ -66,6 +66,7 @@
 - (void)dataForPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)declineFriendshipRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)decryptPayload:(id)arg1 withToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (oneway void)didAddFollowerHandle:(id)arg1;
 - (oneway void)didChangeActiveLocationSharingDevice:(id)arg1;
 - (void)didReceiveFriendshipRequest:(id)arg1;
@@ -82,6 +83,7 @@
 - (oneway void)didUpdatePendingOffersForHandles:(id)arg1;
 - (void)dispatchOnDelegateQueue:(CDUnknownBlockType)arg1;
 - (void)dumpStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)encryptPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)exit5XXGracePeriod;
 - (void)extendFriendshipOfferToHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (oneway void)failedToGetLocationForHandle:(id)arg1 error:(id)arg2;

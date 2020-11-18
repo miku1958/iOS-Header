@@ -54,6 +54,7 @@
 @property (readonly, nonatomic) NSObject<OS_os_log> *memoriesLoggingConnection; // @synthesize memoriesLoggingConnection=_memoriesLoggingConnection;
 @property (readonly) PGMemoryController *memoryController; // @synthesize memoryController=_memoryController;
 @property (strong, nonatomic) NSURL *metadataSnapshotOutputPathURL; // @synthesize metadataSnapshotOutputPathURL=_metadataSnapshotOutputPathURL;
+@property (readonly) unsigned long long numberOfExistingMemoriesToKeepForOverlapCheck;
 @property (strong, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly, strong) PIPipeline *pipeline; // @synthesize pipeline=_pipeline;
 @property (readonly, nonatomic) NSObject<OS_os_log> *relatedLoggingConnection; // @synthesize relatedLoggingConnection=_relatedLoggingConnection;
@@ -63,6 +64,7 @@
 + (unsigned long long)_minimumNumberOfItemsForDuration:(unsigned long long)arg1 withMaximumNumberOfItems:(unsigned long long)arg2;
 + (id)_summaryClusteringForDuration:(unsigned long long)arg1 andPrecision:(unsigned long long)arg2;
 + (id)assetPropertySetsForCuration;
++ (BOOL)clientIsPhotoAnalysis;
 + (id)curatedAssetsForAssetCollections:(id)arg1 forPeopleNames:(id)arg2 duration:(unsigned long long)arg3 precision:(unsigned long long)arg4;
 + (void)initialize;
 + (id)matchingWeightToDictionary;
@@ -73,6 +75,7 @@
 - (void).cxx_destruct;
 - (void)_beginUpdates;
 - (id)_bestAssetInAssets:(id)arg1 forReferencePeople:(id)arg2;
+- (id)_bestAssetInSummarizedAssets:(id)arg1 forReferencePeople:(id)arg2;
 - (id)_bestAssetsInAssets:(id)arg1 forReferencePeople:(id)arg2;
 - (id)_checkConsistencyOfGraph:(id)arg1;
 - (id)_collectionStatisticsForCurrentPhotoLibrary;
@@ -231,6 +234,7 @@
 - (id)surveySocialGroupsInfoDictionaries;
 - (id)titleTupleForAlbum:(id)arg1 format:(long long)arg2 error:(id *)arg3;
 - (id)titleTupleForAssetCollection:(id)arg1 format:(long long)arg2 error:(id *)arg3;
+- (id)titleTupleForMemory:(id)arg1 error:(id *)arg2;
 - (id)titleTupleForMoment:(id)arg1 format:(long long)arg2 error:(id *)arg3;
 - (id)titleTupleForMomentList:(id)arg1 format:(long long)arg2 error:(id *)arg3;
 - (id)titleTupleForPersonIdentifiers:(id)arg1 format:(long long)arg2 error:(id *)arg3;

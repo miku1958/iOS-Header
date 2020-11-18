@@ -152,8 +152,8 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pauseAnimation;
 - (void)pauseAnimationTransiently;
-- (void)reverseAnimation;
-- (void)reverseAnimationWithTimingParameters:(id)arg1 durationFactor:(double)arg2;
+- (void)reverseAnimation:(BOOL)arg1;
+- (void)reverseAnimation:(BOOL)arg1 withTimingParameters:(id)arg2 durationFactor:(double)arg3;
 - (void)startAnimation;
 - (void)startAnimation:(CDUnknownBlockType)arg1;
 - (void)startAnimationAfterDelay:(double)arg1;

@@ -19,7 +19,6 @@
     HDFitnessFriendsRelationshipManager *_relationshipManager;
     NSObject<OS_dispatch_queue> *_serialQueue;
     BOOL _isWatch;
-    long long _intervalExecutionCount;
     BOOL _hasRegisteredForUpdates;
 }
 

@@ -34,6 +34,7 @@
     NSError *_encodedUserInfoError;
     NSSet *_requiredUserInfoKeys;
     NSDate *_when;
+    NSDate *_lastInterestingTime;
     NSDictionary *_encodingOptions;
     NSString *_contentUserAction;
     NSSet *_keywords;
@@ -60,6 +61,7 @@
 @property (copy) NSError *error; // @synthesize error=_error;
 @property (copy) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (copy) NSSet *keywords; // @synthesize keywords=_keywords;
+@property (copy) NSDate *lastInterestingTime; // @synthesize lastInterestingTime=_lastInterestingTime;
 @property (copy) NSDictionary *options; // @synthesize options=_options;
 @property (getter=isPayloadAvailable) BOOL payloadAvailable; // @synthesize payloadAvailable=_payloadAvailable;
 @property (getter=isPayloadRequested) BOOL payloadRequested; // @synthesize payloadRequested=_payloadRequested;

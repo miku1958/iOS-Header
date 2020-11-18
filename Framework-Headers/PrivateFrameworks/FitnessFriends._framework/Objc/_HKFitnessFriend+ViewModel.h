@@ -6,10 +6,16 @@
 
 #import <HealthKit/_HKFitnessFriend.h>
 
+@class NSString, _HKFitnessFriendActivitySnapshot;
+
 @interface _HKFitnessFriend (ViewModel)
-- (id)fullName;
-- (BOOL)isMe;
-- (id)name;
-- (id)snapshotForIndex:(long long)arg1;
+
+@property (readonly, nonatomic) _HKFitnessFriendActivitySnapshot *currentSnapshotWithGoalsCarriedForward;
+@property (readonly, nonatomic) NSString *fullName;
+@property (readonly, nonatomic, getter=isMe) BOOL me;
+@property (readonly, nonatomic) NSString *name;
+
+- (id)_emptySnapshotWithGoalsCarriedForwardForIndex:(long long)arg1;
+- (id)snapshotWithGoalsCarriedForwardForIndex:(id)arg1;
 @end
 

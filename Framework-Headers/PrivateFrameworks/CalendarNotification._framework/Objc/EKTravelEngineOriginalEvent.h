@@ -21,6 +21,7 @@
     NSString *_locationString;
     CLLocation *_geoLocation;
     NSData *_locationMapKitHandle;
+    NSString *_locationStringWithoutPrediction;
 }
 
 @property (nonatomic) BOOL automaticGeocodingAllowed; // @synthesize automaticGeocodingAllowed=_automaticGeocodingAllowed;
@@ -32,6 +33,7 @@
 @property (nonatomic) BOOL locationIsAConferenceRoom; // @synthesize locationIsAConferenceRoom=_locationIsAConferenceRoom;
 @property (strong, nonatomic) NSData *locationMapKitHandle; // @synthesize locationMapKitHandle=_locationMapKitHandle;
 @property (strong, nonatomic) NSString *locationString; // @synthesize locationString=_locationString;
+@property (strong, nonatomic) NSString *locationStringWithoutPrediction; // @synthesize locationStringWithoutPrediction=_locationStringWithoutPrediction;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (nonatomic) int transportTypeOverride; // @synthesize transportTypeOverride=_transportTypeOverride;
 

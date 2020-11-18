@@ -11,6 +11,7 @@
 @class NSString, UIActivityIndicatorView;
 @protocol VSLoadingViewControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface VSLoadingViewController_iOS : UIViewController <VSLoadingViewController>
 {
     BOOL _cancellationAllowed;

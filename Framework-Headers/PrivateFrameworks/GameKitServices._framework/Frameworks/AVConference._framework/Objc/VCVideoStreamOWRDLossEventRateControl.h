@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <AVConference/VCVideoStreamRateControlProtocol-Protocol.h>
 
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
     int _state;
     double _rateControlTime;
     unsigned int _targetBitrate;
-    unsigned int _actualBitrate;
+    unsigned int _averageReceivedBitrate;
     unsigned short _currentTierIndex;
     unsigned short _minTierIndex;
     unsigned short _maxTierIndex;
@@ -48,6 +48,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double nowrd;
+@property (readonly, nonatomic) double nowrdAcc;
+@property (readonly, nonatomic) double nowrdShort;
 @property (readonly, nonatomic) double owrd; // @synthesize owrd=_owrd;
 @property (nonatomic) double rateControlInterval; // @synthesize rateControlInterval=_rateControlInterval;
 @property (readonly, nonatomic) int state; // @synthesize state=_state;
@@ -56,7 +59,7 @@ __attribute__((visibility("hidden")))
 
 - (void)calculateOWRDWithTimestamp:(unsigned int)arg1 sampleRate:(unsigned int)arg2 time:(double)arg3;
 - (id)className;
-- (void)doRateControlWithTime:(double)arg1 roundTripTime:(double)arg2 packetLossRate:(double)arg3 operatingTierIndex:(unsigned short)arg4 actualBitrate:(unsigned int)arg5;
+- (void)doRateControlWithTime:(double)arg1 roundTripTime:(double)arg2 packetLossRate:(double)arg3 operatingTierIndex:(unsigned short)arg4 averageBitrate:(unsigned int)arg5;
 - (id)init;
 - (int)lossEventCount;
 - (int)lossEventCountThresholdForBitrate:(unsigned int)arg1;

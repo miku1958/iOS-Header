@@ -55,6 +55,7 @@
     NSDateComponents *_displayDate;
     NSCalendar *_calendar;
     double _additionalLeftPadding;
+    double _topYBoundaryForOccurrenceText;
     double _verticalContentInset;
     double _todayScrollSecondBuffer;
     double _scrollAnimationDurationOverride;
@@ -115,6 +116,7 @@
 @property (strong, nonatomic) UIVisualEffect *timeViewVisualEffect;
 @property (nonatomic) double todayScrollSecondBuffer; // @synthesize todayScrollSecondBuffer=_todayScrollSecondBuffer;
 @property (nonatomic) double topContentInset; // @synthesize topContentInset=_topContentInset;
+@property (nonatomic) double topYBoundaryForOccurrenceText; // @synthesize topYBoundaryForOccurrenceText=_topYBoundaryForOccurrenceText;
 @property (nonatomic) BOOL usesVibrantGridDrawing; // @synthesize usesVibrantGridDrawing=_usesVibrantGridDrawing;
 @property (nonatomic) double verticalContentInset; // @synthesize verticalContentInset=_verticalContentInset;
 

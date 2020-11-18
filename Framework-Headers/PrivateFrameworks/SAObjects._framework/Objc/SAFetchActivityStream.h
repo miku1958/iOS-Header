@@ -13,8 +13,10 @@
 }
 
 @property (copy, nonatomic) NSString *activityType;
+@property (nonatomic) BOOL ascending;
 @property (copy, nonatomic) NSDate *fromDate;
 @property (copy, nonatomic) NSNumber *limit;
+@property (copy, nonatomic) NSString *sortBy;
 @property (copy, nonatomic) NSArray *streamTypes;
 @property (copy, nonatomic) NSString *taskType;
 @property (copy, nonatomic) NSDate *toDate;

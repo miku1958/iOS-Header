@@ -182,7 +182,7 @@ __attribute__((visibility("hidden")))
 - (void)transferStateFromCanvas:(id)arg1;
 - (id)transitLineMarkersForSelectionAtPoint:(struct CGPoint)arg1;
 - (id)transitLineMarkersInCurrentViewport;
-- (void)transitionToTracking:(BOOL)arg1 mapMode:(long long)arg2 cameraController:(id)arg3 pounceCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)transitionToTracking:(BOOL)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 cameraController:(id)arg4 pounceCompletionHandler:(CDUnknownBlockType)arg5;
 - (void)updateCameraForFrameResize;
 - (struct VehicleState)vehicleState;
 

@@ -58,7 +58,7 @@
 - (BOOL)_setCenter:(struct CGPoint)arg1;
 - (BOOL)_setFloatValue:(float)arg1 forIconPropertyType:(unsigned long long)arg2 ofRingAtIndex:(long long)arg3 animated:(BOOL)arg4;
 - (void)_setFloatValue:(float)arg1 forRingPropertyType:(unsigned long long)arg2 ofRingAtIndex:(long long)arg3 animated:(BOOL)arg4;
-- (BOOL)_setFloatValue:(float)arg1 forRingPropertyType:(unsigned long long)arg2 ofRingAtIndex:(long long)arg3 animated:(BOOL)arg4 duration:(double)arg5 completion:(CDUnknownBlockType)arg6;
+- (BOOL)_setFloatValue:(float)arg1 fromCurrentValue:(float)arg2 forRingPropertyType:(unsigned long long)arg3 ofRingAtIndex:(long long)arg4 animated:(BOOL)arg5 duration:(double)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_updateRingDiameters;
 - (void)_updateRingIconProperties;
 - (void)_updateRingThicknesses;

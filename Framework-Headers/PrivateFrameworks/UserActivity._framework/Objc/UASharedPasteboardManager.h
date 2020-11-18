@@ -22,10 +22,13 @@
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_pasteboardReadQ;
     NSSet *_disallowdTypes;
+    NSSet *_bomCheckTypes;
+    NSDictionary *_typeBOMs;
     NSDictionary *_typeAliases;
     CDUnknownBlockType _completionBlock;
 }
 
+@property (strong) NSSet *bomCheckTypes; // @synthesize bomCheckTypes=_bomCheckTypes;
 @property CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (strong) UAPasteboardGeneration *currentGeneration; // @synthesize currentGeneration=_currentGeneration;
@@ -40,6 +43,7 @@
 @property (strong) NSObject<OS_dispatch_queue> *serverQ; // @synthesize serverQ=_serverQ;
 @property (readonly) Class superclass;
 @property (strong) NSDictionary *typeAliases; // @synthesize typeAliases=_typeAliases;
+@property (strong) NSDictionary *typeBOMs; // @synthesize typeBOMs=_typeBOMs;
 @property BOOL updateScheduled; // @synthesize updateScheduled=_updateScheduled;
 
 + (BOOL)dontConnectToServer;

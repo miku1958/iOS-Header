@@ -178,6 +178,7 @@
 + (void)_initialize;
 + (void)appendCharacteristicsToAccessoryList:(id)arg1 responseTuples:(id)arg2 forMultipleCharacteristicsRemoteRead:(id)arg3;
 + (void)appendCharacteristicsToAccessoryList:(id)arg1 responseTuples:(id)arg2 forMultipleCharacteristicsRemoteWrite:(id)arg3;
++ (id)getBuiltinActionSets;
 + (BOOL)isObjectContainedInHome:(id)arg1;
 + (id)logCategory;
 + (id)shortDescription;
@@ -302,6 +303,7 @@
 - (void)_notifyChangedCharacteristics:(id)arg1 identifier:(id)arg2 multiPartResponse:(BOOL)arg3 moreMessagesInMultipart:(BOOL)arg4 requestMessage:(id)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
 - (void)_notifyChangedCharacteristics:(id)arg1 message:(id)arg2 modifiedCharacteristics:(id)arg3;
 - (void)_notifyChangedCharacteristics:(id)arg1 toUserDeviceAddress:(id)arg2;
+- (void)_notifyClientOfAccessoryInfoUpdatedForAccessories:(id)arg1 shouldRefreshBadge:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_notifyClientsOfUpdatedResidentUser:(id)arg1;
 - (void)_notifyRemoteUsersOfChangedCharacteristics:(id)arg1 message:(id)arg2;
 - (void)_notifyRetrievalError:(id)arg1 accessoryServer:(id)arg2 linkType:(long long)arg3 accessoryOperationBlock:(CDUnknownBlockType)arg4;
@@ -327,6 +329,7 @@
 - (void)_readCharacteristicValuesForAccessories:(id)arg1 readRequestMap:(id)arg2 responseTuples:(id)arg3 requestMessage:(id)arg4 viaDevice:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_redispatchReadForAccessories:(id)arg1 dispatchGroup:(id)arg2 requestMap:(id)arg3 requestMessage:(id)arg4 responseTuples:(id)arg5;
 - (void)_redispatchWriteForAccessories:(id)arg1 dispatchGroup:(id)arg2 requestMap:(id)arg3 requestMessage:(id)arg4 responseTuples:(id)arg5;
+- (void)_reevaluateAccessoryInfoWithBadgeRefresh:(BOOL)arg1;
 - (void)_registerDeviceForReachabilityNotification:(id)arg1 accessoryList:(id)arg2;
 - (void)_registerForMessages;
 - (void)_registerForReachabilityChangeNotifications:(id)arg1 mode:(BOOL)arg2;
@@ -422,7 +425,6 @@
 - (void)configureBulletinNotification;
 - (void)configureWithRelayManager:(id)arg1;
 - (id)createActionSetWithName:(id)arg1 uuid:(id)arg2 type:(id)arg3;
-- (void)createBuiltinActionSets;
 - (void)dealloc;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)dumpActionSetDescription;
@@ -433,6 +435,7 @@
 - (void)evaluateShouldRelaunchAndSetRelaunch;
 - (void)executeActionSet:(id)arg1;
 - (id)filterBuiltinActionSets:(id)arg1;
+- (struct NSDictionary *)firmwareUpdateBulletinContext;
 - (void)fixupBridgeForBridgedAccessories:(id)arg1 potentialBridgeAccessories:(id)arg2;
 - (void)fixupReplacementAccessories:(id)arg1 commonAccessories:(id)arg2 idsDataSync:(BOOL)arg3 dataVersion:(long long)arg4 locallyAdded:(id)arg5;
 - (id)getHomeConfigurationForAWD;
@@ -452,6 +455,9 @@
 - (BOOL)migrateAfterResidentChange;
 - (id)migrateOwnedTriggers;
 - (void)modifyNotificationOnResident:(BOOL)arg1 ignoreDeviceUnlockRequirement:(BOOL)arg2 forCharacteristics:(id)arg3;
+- (id)namesOfServicesWithNewFirmwareAvailableInHome;
+- (void)notifyClientOfAccessoryInfoUpdatedForAccessories:(id)arg1;
+- (void)notifyClientOfVendorInfoUpdatedForManufacturers:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)notifyDidArriveHome;
 - (void)notifyDidLeaveHome;
 - (void)notifyNewRemotePeersFound:(BOOL)arg1 remoteUsersRemoved:(id)arg2 forceRemoteNotificationRegistration:(BOOL)arg3;
@@ -467,6 +473,7 @@
 - (void)readCharacteristicValues:(id)arg1 requestMessage:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)redispatchToResidentMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3;
 - (void)redispatchToResidentMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 viaDevice:(id)arg4;
+- (void)reevaluateAccessoryInfo;
 - (void)regionStateUpdated:(int)arg1;
 - (void)registerForRemoteAccessoryReachabilityNotifications:(BOOL)arg1;
 - (void)relayManager:(id)arg1 didUpdateControllerIdentifier:(id)arg2;

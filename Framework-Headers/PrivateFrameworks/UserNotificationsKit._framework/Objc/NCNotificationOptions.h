@@ -34,9 +34,11 @@
     BOOL _ignoreAttachmentImageThumbnailCrop;
     BOOL _preemptsPresentedNotification;
     BOOL _revealsAdditionalContentOnPresentation;
-    BOOL _suppressesMessageWhenLocked;
     BOOL _suppressesSubtitleWhenLocked;
+    unsigned long long _contentPreviewSetting;
     BOOL _coalescesWhenLocked;
+    BOOL _preventsAutomaticLock;
+    BOOL _revealsAdditionalContentIfNoDefaultAction;
 }
 
 @property (readonly, nonatomic) BOOL addToLockScreenWhenUnlocked; // @synthesize addToLockScreenWhenUnlocked=_addToLockScreenWhenLocked;
@@ -46,6 +48,7 @@
 @property (readonly, nonatomic) BOOL canPlaySound; // @synthesize canPlaySound=_canPlaySound;
 @property (readonly, nonatomic) BOOL canTurnOnDisplay; // @synthesize canTurnOnDisplay=_canTurnOnDisplay;
 @property (readonly, nonatomic) BOOL coalescesWhenLocked; // @synthesize coalescesWhenLocked=_coalescesWhenLocked;
+@property (readonly, nonatomic) unsigned long long contentPreviewSetting; // @synthesize contentPreviewSetting=_contentPreviewSetting;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL dismissAutomatically; // @synthesize dismissAutomatically=_dismissAutomatically;
@@ -58,14 +61,14 @@
 @property (readonly, nonatomic) BOOL overridesPocketMode; // @synthesize overridesPocketMode=_overridesPocketMode;
 @property (readonly, nonatomic) BOOL overridesQuietMode; // @synthesize overridesQuietMode=_overridesQuietMode;
 @property (readonly, nonatomic) BOOL preemptsPresentedNotification; // @synthesize preemptsPresentedNotification=_preemptsPresentedNotification;
+@property (readonly, nonatomic) BOOL preventsAutomaticLock; // @synthesize preventsAutomaticLock=_preventsAutomaticLock;
 @property (readonly, nonatomic) unsigned long long realertCount; // @synthesize realertCount=_realertCount;
 @property (readonly, nonatomic) BOOL requestsFullScreenPresentation; // @synthesize requestsFullScreenPresentation=_requestsFullScreenPresentation;
+@property (readonly, nonatomic) BOOL revealsAdditionalContentIfNoDefaultAction; // @synthesize revealsAdditionalContentIfNoDefaultAction=_revealsAdditionalContentIfNoDefaultAction;
 @property (readonly, nonatomic) BOOL revealsAdditionalContentOnPresentation; // @synthesize revealsAdditionalContentOnPresentation=_revealsAdditionalContentOnPresentation;
 @property (readonly, nonatomic) BOOL silencedByMenuButtonPress; // @synthesize silencedByMenuButtonPress=_silencedByMenuButtonPress;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL suppressesAlertsWhenAppIsActive; // @synthesize suppressesAlertsWhenAppIsActive=_suppressesAlertsWhenAppIsActive;
-@property (readonly, nonatomic) BOOL suppressesContentWhenLocked;
-@property (readonly, nonatomic) BOOL suppressesMessageWhenLocked; // @synthesize suppressesMessageWhenLocked=_suppressesMessageWhenLocked;
 @property (readonly, nonatomic) BOOL suppressesSubtitleWhenLocked; // @synthesize suppressesSubtitleWhenLocked=_suppressesSubtitleWhenLocked;
 
 - (void).cxx_destruct;

@@ -6,6 +6,7 @@
 
 #import <UIKit/UIApplication.h>
 
+__attribute__((visibility("hidden")))
 @interface VSViewServiceApplication : UIApplication
 {
 }

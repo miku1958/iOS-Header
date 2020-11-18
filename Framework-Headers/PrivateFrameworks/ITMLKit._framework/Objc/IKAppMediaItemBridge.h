@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IKAppContext, IKJSMediaItem, NSArray, NSNumber, NSString;
+@class IKAppContext, IKJSMediaItem, NSArray, NSDictionary, NSNumber, NSString;
 @protocol IKAppMediaItem;
 
 @interface IKAppMediaItemBridge : NSObject
@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSNumber *contentRatingRanking;
 @property (strong, nonatomic) NSString *description;
 @property (strong, nonatomic) NSString *externalID;
+@property (strong, nonatomic) NSDictionary *extraMetadata;
 @property (strong, nonatomic) NSArray *interstitials;
 @property (nonatomic) BOOL isExplicit;
 @property (readonly, weak, nonatomic) IKJSMediaItem *jsMediaItem; // @synthesize jsMediaItem=_jsMediaItem;

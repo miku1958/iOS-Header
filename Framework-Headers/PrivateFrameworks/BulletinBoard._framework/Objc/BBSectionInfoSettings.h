@@ -15,7 +15,7 @@
     BOOL _showsInNotificationCenter;
     BOOL _showsInLockScreen;
     BOOL _showsOnExternalDevices;
-    BOOL _showsMessagePreview;
+    long long _contentPreviewSetting;
     unsigned long long _alertType;
     unsigned long long _pushSettings;
     long long _carPlaySetting;
@@ -24,22 +24,23 @@
 @property (nonatomic) unsigned long long alertType; // @synthesize alertType=_alertType;
 @property (nonatomic) BOOL allowsNotifications; // @synthesize allowsNotifications=_allowsNotifications;
 @property (nonatomic) long long carPlaySetting; // @synthesize carPlaySetting=_carPlaySetting;
+@property (nonatomic) long long contentPreviewSetting; // @synthesize contentPreviewSetting=_contentPreviewSetting;
 @property (nonatomic) unsigned long long pushSettings; // @synthesize pushSettings=_pushSettings;
 @property (nonatomic) BOOL showsInLockScreen; // @synthesize showsInLockScreen=_showsInLockScreen;
 @property (nonatomic) BOOL showsInNotificationCenter; // @synthesize showsInNotificationCenter=_showsInNotificationCenter;
-@property (nonatomic) BOOL showsMessagePreview; // @synthesize showsMessagePreview=_showsMessagePreview;
+@property (nonatomic) BOOL showsMessagePreview;
 @property (nonatomic) BOOL showsOnExternalDevices; // @synthesize showsOnExternalDevices=_showsOnExternalDevices;
 
 + (id)sectionInfoSettingsForManagedBundleID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)_alertTypeDescription;
+- (id)_contentPreviewSettingDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDefaultsForSectionType:(long long)arg1;
-- (id)initWithManagedBundleSettingsDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

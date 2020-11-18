@@ -8,22 +8,22 @@
 
 #import <CallKit/CXCallDirectoryProviderVendorProtocol-Protocol.h>
 
-@class CXCallDirectoryBlockingEntryData, CXCallDirectoryIdentificationEntryData, NSString;
+@class CXCallDirectoryBlockingEntryMutableData, CXCallDirectoryIdentificationEntryMutableData, NSString;
 @protocol CXCallDirectoryExtensionContextDelegate;
 
 @interface CXCallDirectoryExtensionContext : NSExtensionContext <CXCallDirectoryProviderVendorProtocol>
 {
     id<CXCallDirectoryExtensionContextDelegate> _delegate;
-    CXCallDirectoryBlockingEntryData *_pendingBlockingEntryData;
-    CXCallDirectoryIdentificationEntryData *_pendingIdentificationEntryData;
+    CXCallDirectoryBlockingEntryMutableData *_pendingBlockingEntryData;
+    CXCallDirectoryIdentificationEntryMutableData *_pendingIdentificationEntryData;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CXCallDirectoryExtensionContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) CXCallDirectoryBlockingEntryData *pendingBlockingEntryData; // @synthesize pendingBlockingEntryData=_pendingBlockingEntryData;
-@property (strong, nonatomic) CXCallDirectoryIdentificationEntryData *pendingIdentificationEntryData; // @synthesize pendingIdentificationEntryData=_pendingIdentificationEntryData;
+@property (strong, nonatomic) CXCallDirectoryBlockingEntryMutableData *pendingBlockingEntryData; // @synthesize pendingBlockingEntryData=_pendingBlockingEntryData;
+@property (strong, nonatomic) CXCallDirectoryIdentificationEntryMutableData *pendingIdentificationEntryData; // @synthesize pendingIdentificationEntryData=_pendingIdentificationEntryData;
 @property (readonly) Class superclass;
 
 + (id)_extensionAuxiliaryHostProtocol;

@@ -10,26 +10,18 @@
 #import <VideosExtras/SKStoreProductViewControllerDelegatePrivate-Protocol.h>
 #import <VideosExtras/VideosExtrasJSITunesStore-Protocol.h>
 
-@class NSDictionary, NSString, UIViewController;
+@class NSString, UIViewController;
 
 @interface VideosExtrasJSITunesStore : IKJSITunesStore <SKStoreProductViewControllerDelegatePrivate, VideosExtrasJSITunesStore, IKJSITunesStore>
 {
     UIViewController *_formPresentationViewController;
 }
 
-@property (readonly, nonatomic) NSString *DSID;
-@property (readonly, nonatomic) NSDictionary *accountInfo;
-@property (strong, nonatomic) id cookie;
-@property (strong, nonatomic) NSString *cookieURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) UIViewController *formPresentationViewController; // @synthesize formPresentationViewController=_formPresentationViewController;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID;
-@property (readonly, nonatomic) NSString *networkConnectionType;
-@property (strong, nonatomic) NSString *storefront;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSString *userAgent;
 
 - (void).cxx_destruct;
 - (void)loadStoreURL:(id)arg1 playOnLaunch:(id)arg2;

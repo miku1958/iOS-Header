@@ -24,6 +24,8 @@
     int _feedType;
     NSString *_language;
     NSMutableArray *_namedEntities;
+    int _nextArticleAffordanceType;
+    NSString *_nextArticleAffordanceTypeFeedId;
     NSString *_notificationId;
     int _publisherArticleVersion;
     NSString *_referencedArticleId;
@@ -33,6 +35,7 @@
     NSString *_surfacedBySectionId;
     NSString *_surfacedByTopicId;
     int _userAction;
+    BOOL _fromNextArticleAffordanceTap;
     BOOL _isCoverArticle;
     BOOL _isDigitalReplicaAd;
     BOOL _isFreeArticle;
@@ -46,8 +49,10 @@
         unsigned int backendArticleVersion:1;
         unsigned int characterCount:1;
         unsigned int feedType:1;
+        unsigned int nextArticleAffordanceType:1;
         unsigned int publisherArticleVersion:1;
         unsigned int userAction:1;
+        unsigned int fromNextArticleAffordanceTap:1;
         unsigned int isCoverArticle:1;
         unsigned int isDigitalReplicaAd:1;
         unsigned int isFreeArticle:1;
@@ -66,6 +71,7 @@
 @property (nonatomic) int characterCount; // @synthesize characterCount=_characterCount;
 @property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
+@property (nonatomic) BOOL fromNextArticleAffordanceTap; // @synthesize fromNextArticleAffordanceTap=_fromNextArticleAffordanceTap;
 @property (nonatomic) BOOL hasAddRemoveReadingListLocation;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (nonatomic) BOOL hasArticleType;
@@ -75,6 +81,7 @@
 @property (nonatomic) BOOL hasCharacterCount;
 @property (readonly, nonatomic) BOOL hasCreativeId;
 @property (nonatomic) BOOL hasFeedType;
+@property (nonatomic) BOOL hasFromNextArticleAffordanceTap;
 @property (nonatomic) BOOL hasIsCoverArticle;
 @property (nonatomic) BOOL hasIsDigitalReplicaAd;
 @property (nonatomic) BOOL hasIsFreeArticle;
@@ -82,6 +89,8 @@
 @property (nonatomic) BOOL hasIsPaidSubscriberToSourceChannel;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
 @property (readonly, nonatomic) BOOL hasLanguage;
+@property (nonatomic) BOOL hasNextArticleAffordanceType;
+@property (readonly, nonatomic) BOOL hasNextArticleAffordanceTypeFeedId;
 @property (readonly, nonatomic) BOOL hasNotificationId;
 @property (nonatomic) BOOL hasPersonalizationTreatmentId;
 @property (nonatomic) BOOL hasPublisherArticleVersion;
@@ -100,6 +109,8 @@
 @property (nonatomic) BOOL isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
 @property (strong, nonatomic) NSMutableArray *namedEntities; // @synthesize namedEntities=_namedEntities;
+@property (nonatomic) int nextArticleAffordanceType; // @synthesize nextArticleAffordanceType=_nextArticleAffordanceType;
+@property (strong, nonatomic) NSString *nextArticleAffordanceTypeFeedId; // @synthesize nextArticleAffordanceTypeFeedId=_nextArticleAffordanceTypeFeedId;
 @property (strong, nonatomic) NSString *notificationId; // @synthesize notificationId=_notificationId;
 @property (nonatomic) long long personalizationTreatmentId; // @synthesize personalizationTreatmentId=_personalizationTreatmentId;
 @property (nonatomic) int publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
@@ -115,6 +126,7 @@
 - (void).cxx_destruct;
 - (int)StringAsArticleType:(id)arg1;
 - (int)StringAsFeedType:(id)arg1;
+- (int)StringAsNextArticleAffordanceType:(id)arg1;
 - (void)addNamedEntities:(id)arg1;
 - (id)articleTypeAsString:(int)arg1;
 - (void)clearNamedEntities;
@@ -127,6 +139,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)namedEntitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)namedEntitiesCount;
+- (id)nextArticleAffordanceTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

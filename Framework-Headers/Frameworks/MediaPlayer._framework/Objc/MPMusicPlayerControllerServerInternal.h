@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/MPMusicPlayerController-Protocol.h>
 
-@class MPMusicPlayerControllerServer, MPVideoViewController, NSMutableArray, NSMutableDictionary;
+@class BKSApplicationStateMonitor, MPMusicPlayerControllerServer, MPVideoViewController, NSMutableArray, NSMutableDictionary;
 @protocol MPMusicPlayerControllerServerDelegate;
 
 @interface MPMusicPlayerControllerServerInternal : MPServerObject <MPMusicPlayerController>
@@ -16,6 +16,8 @@
     id<MPMusicPlayerControllerServerDelegate> _delegate;
     MPMusicPlayerControllerServer *_musicPlayerServer;
     int _activeClientPID;
+    BKSApplicationStateMonitor *_applicationStateMonitor;
+    long long _applicationStateMonitorCount;
     NSMutableArray *_clientPorts;
     NSMutableDictionary *_clientPortsForPIDs;
     NSMutableDictionary *_clientStateForPIDs;
@@ -26,7 +28,7 @@
 
 + (BOOL)_canSeedGeniusWithItem:(id)arg1;
 - (void).cxx_destruct;
-- (void)_applicationStateChangedNotification:(id)arg1;
+- (void)_applicationStateChangedWithUserInfo:(id)arg1;
 - (id)_avController;
 - (id)_avControllerForClientPID:(int)arg1;
 - (BOOL)_clientPIDHasPermissionToPlay:(int)arg1;

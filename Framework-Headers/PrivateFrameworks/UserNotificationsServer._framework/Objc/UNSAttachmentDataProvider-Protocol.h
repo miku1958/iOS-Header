@@ -6,13 +6,9 @@
 
 #import <UserNotificationsServer/NSObject-Protocol.h>
 
-@class NSData, UNNotificationAttachment;
+@class NSData;
 
 @protocol UNSAttachmentDataProvider <NSObject>
 - (NSData *)data;
-
-@optional
-- (struct CGSize)naturalSizeForAttachment:(UNNotificationAttachment *)arg1;
-- (NSData *)thumbnailPNGOfSize:(struct CGSize)arg1 forAttachment:(UNNotificationAttachment *)arg2;
 @end
 

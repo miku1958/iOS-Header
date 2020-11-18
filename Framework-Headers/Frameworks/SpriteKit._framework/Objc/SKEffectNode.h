@@ -8,13 +8,14 @@
 
 #import <SpriteKit/SKWarpable-Protocol.h>
 
-@class CIFilter, NSString, SKShader, SKWarpGeometry;
+@class CIFilter, NSDictionary, NSString, SKShader, SKWarpGeometry;
 
 @interface SKEffectNode : SKNode <SKWarpable>
 {
     struct SKCEffectNode *_skcEffectNode;
 }
 
+@property (copy, nonatomic) NSDictionary *attributeValues;
 @property (nonatomic) long long blendMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

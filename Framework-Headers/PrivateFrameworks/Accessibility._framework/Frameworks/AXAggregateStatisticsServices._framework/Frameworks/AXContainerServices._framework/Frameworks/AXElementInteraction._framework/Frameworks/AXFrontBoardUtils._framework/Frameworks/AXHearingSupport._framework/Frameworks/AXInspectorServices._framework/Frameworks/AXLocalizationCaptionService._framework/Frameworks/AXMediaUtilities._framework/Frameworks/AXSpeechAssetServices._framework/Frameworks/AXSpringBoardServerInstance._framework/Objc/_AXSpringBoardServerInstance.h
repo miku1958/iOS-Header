@@ -31,6 +31,7 @@
 + (id)springBoardServerInstance;
 + (id)springBoardServerInstanceIfExists;
 - (id)_actionHandling:(id)arg1;
+- (id)_activateSOSMode:(id)arg1;
 - (id)_allowedMedusaGestures:(id)arg1;
 - (id)_areSystemGesturesDisabledByAccessibility:(id)arg1;
 - (id)_areSystemGesturesDisabledNatively:(id)arg1;

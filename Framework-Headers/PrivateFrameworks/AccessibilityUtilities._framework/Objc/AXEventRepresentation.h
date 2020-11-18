@@ -18,6 +18,7 @@
     BOOL _isDisplayIntegrated;
     BOOL _isGeneratedEvent;
     BOOL _useOriginalHIDTime;
+    BOOL _redirectEvent;
     unsigned int _type;
     int _subtype;
     int _flags;
@@ -78,6 +79,7 @@
 @property (strong, nonatomic) AXEventKeyInfoRepresentation *keyInfo; // @synthesize keyInfo=_keyInfo;
 @property (nonatomic) struct CGPoint location; // @synthesize location=_location;
 @property (nonatomic) int pid; // @synthesize pid=_pid;
+@property (nonatomic, getter=isRedirectEvent) BOOL redirectEvent; // @synthesize redirectEvent=_redirectEvent;
 @property (nonatomic) long long scrollAmount; // @synthesize scrollAmount=_scrollAmount;
 @property (nonatomic) unsigned long long senderID; // @synthesize senderID=_senderID;
 @property (nonatomic) int subtype; // @synthesize subtype=_subtype;
@@ -102,6 +104,7 @@
 + (id)representationWithData:(id)arg1;
 + (id)representationWithEventRecord:(CDStruct_7f3c0925 *)arg1;
 + (id)representationWithHIDEvent:(struct __IOHIDEvent *)arg1 hidStreamIdentifier:(id)arg2;
++ (id)representationWithHIDEvent:(struct __IOHIDEvent *)arg1 hidStreamIdentifier:(id)arg2 clientID:(id)arg3 taskPort:(unsigned int)arg4;
 + (id)representationWithLocation:(struct CGPoint)arg1 windowLocation:(struct CGPoint)arg2 handInfo:(id)arg3;
 + (id)representationWithType:(unsigned int)arg1 subtype:(int)arg2 time:(unsigned long long)arg3 location:(struct CGPoint)arg4 windowLocation:(struct CGPoint)arg5 handInfo:(id)arg6;
 + (BOOL)supportsSecureCoding;

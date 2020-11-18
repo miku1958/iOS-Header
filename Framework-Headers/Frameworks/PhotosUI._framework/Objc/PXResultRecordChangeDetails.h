@@ -13,16 +13,18 @@
     PXResultRecord *_resultRecordBeforeChanges;
     PXResultRecord *_resultRecordAfterChanges;
     PHFetchResultChangeDetails *_exposedFetchResultChangeDetails;
+    PHFetchResultChangeDetails *_keyAssetsFetchResultChangeDetails;
 }
 
 @property (readonly, nonatomic) PHFetchResultChangeDetails *exposedFetchResultChangeDetails; // @synthesize exposedFetchResultChangeDetails=_exposedFetchResultChangeDetails;
+@property (readonly, nonatomic) PHFetchResultChangeDetails *keyAssetsFetchResultChangeDetails; // @synthesize keyAssetsFetchResultChangeDetails=_keyAssetsFetchResultChangeDetails;
 @property (readonly, nonatomic) PXResultRecord *resultRecordAfterChanges; // @synthesize resultRecordAfterChanges=_resultRecordAfterChanges;
 @property (readonly, nonatomic) PXResultRecord *resultRecordBeforeChanges; // @synthesize resultRecordBeforeChanges=_resultRecordBeforeChanges;
 
 + (id)resultRecordChangeDetailsFor:(id)arg1 withChange:(id)arg2;
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithResultRecordBeforeChanges:(id)arg1 resultRecordAfterChanges:(id)arg2 exposedFetchResultChangeDetails:(id)arg3;
+- (id)initWithResultRecordBeforeChanges:(id)arg1 resultRecordAfterChanges:(id)arg2 exposedFetchResultChangeDetails:(id)arg3 keyAssetsFetchResultChangeDetails:(id)arg4;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <AuthKitUI/AKBasicLoginAlertControllerDelegate-Protocol.h>
 #import <AuthKitUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AKAppleIDServerResourceLoadDelegate, AKAppleIDServerUIDataHarvester, AKBasicLoginAlertController, NSString, RUIObjectModel, RemoteUIController, UINavigationController, UIViewController;
+@class AKAppleIDServerResourceLoadDelegate, AKAppleIDServerUIDataHarvester, AKBasicLoginAlertController, NSHTTPURLResponse, NSString, RUIObjectModel, RemoteUIController, UINavigationController, UIViewController;
 @protocol AKAppleIDAuthenticationInAppContextDelegate;
 
 @interface AKAppleIDAuthenticationInAppContext : AKAppleIDAuthenticationContext <AKBasicLoginAlertControllerDelegate, AKAppleIDAuthenticationUIProvider, RemoteUIControllerDelegate>
@@ -23,6 +23,7 @@
     AKAppleIDServerResourceLoadDelegate *_serverUIDelegate;
     AKAppleIDServerUIDataHarvester *_serverUIHelper;
     RUIObjectModel *_currentRemoteOM;
+    NSHTTPURLResponse *_latestReadResponse;
     BOOL _isPresentingServerUI;
     UIViewController *_presentingViewController;
     id<AKAppleIDAuthenticationInAppContextDelegate> _delegate;

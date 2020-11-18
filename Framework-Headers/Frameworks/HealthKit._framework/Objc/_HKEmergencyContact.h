@@ -19,26 +19,32 @@
     NSString *_phoneNumber;
     NSNumber *_phoneNumberPropertyID;
     NSString *_phoneNumberContactIdentifier;
+    NSString *_phoneNumberLabel;
     NSString *_relationship;
 }
 
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *nameContactIdentifier; // @synthesize nameContactIdentifier=_nameContactIdentifier;
-@property (copy, nonatomic) NSNumber *nameRecordID; // @synthesize nameRecordID=_nameRecordID;
+@property (strong, nonatomic) NSNumber *nameRecordID; // @synthesize nameRecordID=_nameRecordID;
 @property (copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (copy, nonatomic) NSString *phoneNumberContactIdentifier; // @synthesize phoneNumberContactIdentifier=_phoneNumberContactIdentifier;
-@property (copy, nonatomic) NSNumber *phoneNumberPropertyID; // @synthesize phoneNumberPropertyID=_phoneNumberPropertyID;
+@property (copy, nonatomic) NSString *phoneNumberLabel; // @synthesize phoneNumberLabel=_phoneNumberLabel;
+@property (strong, nonatomic) NSNumber *phoneNumberPropertyID; // @synthesize phoneNumberPropertyID=_phoneNumberPropertyID;
 @property (copy, nonatomic) NSString *relationship; // @synthesize relationship=_relationship;
 
++ (id)emergencyContactWithContact:(id)arg1 property:(id)arg2;
++ (id)nameForContact:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_migrateToAddressBook:(void *)arg1;
 - (void)_migrateToContactsWithAddressBook:(void *)arg1;
 - (void)_migrateToSchemaVersion:(long long)arg1 withAddressBook:(void *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

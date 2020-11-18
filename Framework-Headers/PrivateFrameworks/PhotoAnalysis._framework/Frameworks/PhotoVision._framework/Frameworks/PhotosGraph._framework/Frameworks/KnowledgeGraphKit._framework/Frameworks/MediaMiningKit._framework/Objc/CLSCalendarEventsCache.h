@@ -25,7 +25,6 @@
 - (BOOL)hasEventsFromStartDate:(id)arg1 toEndDate:(id)arg2;
 - (id)init;
 - (void)insertEvent:(id)arg1;
-- (void)insertEvents:(id)arg1;
 
 @end
 

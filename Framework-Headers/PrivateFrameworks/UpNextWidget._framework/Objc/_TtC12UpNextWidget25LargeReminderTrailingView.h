@@ -22,7 +22,7 @@
     MISSING_TYPE *intraBaselineDistance;
 }
 
-@property (nonatomic, strong) NSDate *dueDate; // @synthesize dueDate;
+@property (nonatomic, copy) NSDate *dueDate; // @synthesize dueDate;
 @property (nonatomic, copy) NSString *location; // @synthesize location;
 @property (nonatomic, copy) NSString *notes; // @synthesize notes;
 @property (nonatomic, copy) NSString *title; // @synthesize title;

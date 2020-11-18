@@ -12,9 +12,9 @@
 - (UIView *)customBackgroundViewForNotificationListCell:(NCNotificationListCell *)arg1;
 - (void)notificationListCell:(NCNotificationListCell *)arg1 requestsClearingNotificationRequest:(NCNotificationRequest *)arg2;
 - (void)notificationListCell:(NCNotificationListCell *)arg1 requestsPerformAction:(NCNotificationAction *)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 completion:(void (^)(BOOL))arg4;
-- (void)notificationListCell:(NCNotificationListCell *)arg1 requestsPresentingLongLookForNotificationRequest:(NCNotificationRequest *)arg2;
+- (void)notificationListCell:(NCNotificationListCell *)arg1 requestsPresentingLongLookForNotificationRequest:(NCNotificationRequest *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)notificationListCellDidSignificantUserInteraction:(NCNotificationListCell *)arg1;
-- (void)notificationListCellHideCellActions:(NCNotificationListCell *)arg1;
+- (void)notificationListCellHideCellActions:(NCNotificationListCell *)arg1 resetCellScrollPosition:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)notificationListCellRevealCellActions:(NCNotificationListCell *)arg1;
 - (BOOL)notificationListCellShouldShowActionsForNotificationRequest:(NCNotificationRequest *)arg1;
 - (void)willTearDownNotificationListCell:(NCNotificationListCell *)arg1;

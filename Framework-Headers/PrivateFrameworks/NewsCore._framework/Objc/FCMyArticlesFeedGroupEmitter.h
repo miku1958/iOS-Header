@@ -8,20 +8,18 @@
 
 #import <NewsCore/FCFeedGroupEmitting-Protocol.h>
 
-@class NSSet, NSString;
+@class NSString;
 @protocol FCHeadlineClusterOrdering, FCHeadlineClustering;
 
 @interface FCMyArticlesFeedGroupEmitter : NSObject <FCFeedGroupEmitting>
 {
     id<FCHeadlineClustering> _headlineClusterer;
     id<FCHeadlineClusterOrdering> _headlineClusterOrderer;
-    NSSet *_emittableGroupTypes;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL emitsSingletonGroups;
-@property (strong, nonatomic) NSSet *emittableGroupTypes; // @synthesize emittableGroupTypes=_emittableGroupTypes;
 @property (readonly, copy, nonatomic) NSString *groupEmitterIdentifier;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<FCHeadlineClusterOrdering> headlineClusterOrderer; // @synthesize headlineClusterOrderer=_headlineClusterOrderer;
@@ -31,11 +29,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)canEmitGroupsWithType:(long long)arg1;
 - (BOOL)canMergeHeadlinesFromGroup:(id)arg1 intoGroup:(id)arg2;
-- (id)initWithHeadlineClusterer:(id)arg1 headlineClusterOrderer:(id)arg2 canEmitTopicGroups:(BOOL)arg3 canEmitOrphanGroups:(BOOL)arg4;
-- (id)operationToEmitGroupInContext:(id)arg1 withCursor:(id)arg2 toCursor:(id)arg3;
+- (id)initWithHeadlineClusterer:(id)arg1 headlineClusterOrderer:(id)arg2;
+- (id)operationToEmitGroupWithContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (BOOL)supportsPagination;
 - (BOOL)wantsToEmitGroupInContext:(id)arg1 withCursor:(id)arg2 toCursor:(id)arg3;
+- (BOOL)wantsToInsertGroup:(id)arg1 withContext:(id)arg2;
 
 @end
 

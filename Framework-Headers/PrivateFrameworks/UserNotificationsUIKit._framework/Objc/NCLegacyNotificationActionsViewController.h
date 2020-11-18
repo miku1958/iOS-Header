@@ -26,12 +26,13 @@
 @property (readonly, weak, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
 @property (weak, nonatomic) NCNotificationAction *presentationSourceAction;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
 - (BOOL)allowManualDismiss;
 - (unsigned long long)customContentLocation;
 - (BOOL)defaultContentHidden;
-- (void)didReceiveNotificationRequest:(id)arg1;
+- (BOOL)didReceiveNotificationRequest:(id)arg1;
 - (id)initWithNotificationRequest:(id)arg1;
 - (void)loadView;
 - (void)notificationActionsView:(id)arg1 performAction:(id)arg2;

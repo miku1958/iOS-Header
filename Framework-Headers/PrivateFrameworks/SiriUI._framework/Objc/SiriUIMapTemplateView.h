@@ -8,7 +8,7 @@
 
 #import <SiriUI/MKMapViewDelegate-Protocol.h>
 
-@class CLGeocoder, CLPlacemark, MKMapView, MKPinAnnotationView, NSString, UIButton, UILabel;
+@class CLGeocoder, CLPlacemark, MKMapView, MKPinAnnotationView, NSString, UIButton, UILabel, UITapGestureRecognizer;
 @protocol SiriUIMapTemplateModel, SiriUIMapTemplateViewDelegate;
 
 @interface SiriUIMapTemplateView : SiriUIBaseTemplateView <MKMapViewDelegate>
@@ -21,6 +21,7 @@
     CLPlacemark *_currentPlacemark;
     CLGeocoder *_geocoder;
     BOOL _needsToNotifyDelegateOfLocationUpdate;
+    UITapGestureRecognizer *_tapRecognizer;
     id<SiriUIMapTemplateViewDelegate> _delegate;
 }
 
@@ -35,6 +36,7 @@
 - (id)_configuredFootnoteDescriptorLabel;
 - (id)_configuredFootnoteLabel;
 - (id)_configuredLabel;
+- (void)_handleTapGesture:(id)arg1;
 - (void)_mapButtonPressed:(id)arg1;
 - (void)_notifyDelegateOfLocationUpdateIfNeededWithPlacemark:(id)arg1;
 - (double)desiredHeight;

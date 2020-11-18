@@ -118,6 +118,8 @@
 - (void)setShortExcerpt:(id)arg1;
 - (void)setSourceChannel:(id)arg1;
 - (void)setSourceName:(id)arg1;
+- (void)setStoryStyle:(id)arg1;
+- (void)setStoryType:(unsigned long long)arg1;
 - (void)setThumbnailFocalFrame:(struct CGRect)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTopicIDs:(id)arg1;

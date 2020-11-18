@@ -30,6 +30,7 @@
 - (BOOL)_disableUsageLoggingForCountry;
 - (void)_enableLogMsgInstrumentation;
 - (void)_flushLogs;
+- (void)_forceFlushLogs;
 - (id)_logMessageUsageURL;
 - (void)_queueLogMessage:(id)arg1;
 - (void)_registerLogMsgState:(id)arg1;
@@ -46,6 +47,7 @@
 - (void)disableLogMsgInstrumentationWithBlock:(CDUnknownBlockType)arg1;
 - (void)enableLogMsgInstrumentation;
 - (void)flushLogs;
+- (void)forceFlushLogs;
 - (id)init;
 - (void)queueLogMessage:(id)arg1;
 - (void)registerLogMsgState:(id)arg1;

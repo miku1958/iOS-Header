@@ -47,6 +47,7 @@
 @property (strong, nonatomic) NSString *high; // @synthesize high=_high;
 @property (strong, nonatomic) NSURL *infoURL; // @synthesize infoURL=_infoURL;
 @property (strong, nonatomic) NSString *low; // @synthesize low=_low;
+@property (readonly, nonatomic) NSString *marketStatusDescription;
 @property (strong, nonatomic) NSString *marketcap; // @synthesize marketcap=_marketcap;
 @property (strong, nonatomic) NSString *open; // @synthesize open=_open;
 @property (strong, nonatomic) NSString *peRatio; // @synthesize peRatio=_peRatio;

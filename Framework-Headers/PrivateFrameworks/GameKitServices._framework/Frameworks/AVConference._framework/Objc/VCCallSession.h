@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <AVConference/VCCaptionsReceiverDelegate-Protocol.h>
 #import <AVConference/VCSecureDataChannelDelegate-Protocol.h>
@@ -167,6 +167,7 @@ __attribute__((visibility("hidden")))
     unsigned int remoteFrameHeight;
     VCWCMClient *vcWCMClient;
     WRMClient *vcWRMClient;
+    BOOL iRATSuggestionEnabled;
     struct OpaqueVTPixelTransferSession *hdTransferSession;
     struct __CVPixelBufferPool *hdBufferPool;
     struct CGSize expectedDecodeSize;

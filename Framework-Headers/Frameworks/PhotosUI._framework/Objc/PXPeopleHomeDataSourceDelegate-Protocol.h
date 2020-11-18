@@ -6,10 +6,10 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSArray, PXPeopleHomeDataSource;
+@class PXPeopleHomeDataSource;
 
 @protocol PXPeopleHomeDataSourceDelegate <NSObject>
-- (void)peopleHomeDataSource:(PXPeopleHomeDataSource *)arg1 didApplyIncrementalChanges:(NSArray *)arg2;
+- (void)peopleHomeDataSourceDidReceivePersonChanges:(PXPeopleHomeDataSource *)arg1;
 - (void)peopleHomeDataSourceMembersChanged:(PXPeopleHomeDataSource *)arg1;
 @end
 

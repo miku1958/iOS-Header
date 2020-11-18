@@ -6,25 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class BKSApplicationStateMonitor, HMDApplicationRegistry, NSMutableSet, NSSet;
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
+
+@class BKSApplicationStateMonitor, HMDApplicationRegistry, HMFTimer, NSMutableSet, NSSet, NSString;
 @protocol HMDApplicationMonitorDelegate, OS_dispatch_queue;
 
-@interface HMDApplicationMonitor : NSObject
+@interface HMDApplicationMonitor : NSObject <HMFTimerDelegate>
 {
+    BOOL _sendHomeUIServiceTerminatedNotification;
     id<HMDApplicationMonitorDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableSet *_processes;
     BKSApplicationStateMonitor *_monitor;
     HMDApplicationRegistry *_appRegistry;
+    HMFTimer *_homeUIServiceTerminationDelayTimer;
 }
 
 @property (readonly, nonatomic) BOOL activeHomeKitApps;
 @property (weak, nonatomic) HMDApplicationRegistry *appRegistry; // @synthesize appRegistry=_appRegistry;
 @property (readonly, nonatomic) NSSet *backgroundApps;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HMDApplicationMonitorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSSet *foregroundApps;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMFTimer *homeUIServiceTerminationDelayTimer; // @synthesize homeUIServiceTerminationDelayTimer=_homeUIServiceTerminationDelayTimer;
 @property (readonly, nonatomic) BKSApplicationStateMonitor *monitor; // @synthesize monitor=_monitor;
 @property (readonly, nonatomic) NSMutableSet *processes; // @synthesize processes=_processes;
+@property (nonatomic) BOOL sendHomeUIServiceTerminatedNotification; // @synthesize sendHomeUIServiceTerminatedNotification=_sendHomeUIServiceTerminatedNotification;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)applicationStateDescription:(unsigned long long)arg1;
@@ -33,6 +43,7 @@
 - (void)_callAppStateChangeDelegate:(id)arg1;
 - (BOOL)_delegateConformsAndRespondsToSelector:(SEL)arg1;
 - (void)_handleAppStateChangedInfo:(id)arg1;
+- (void)_postAppTerminatedNotification:(id)arg1;
 - (unsigned long long)_translateApplicationState:(unsigned int)arg1;
 - (void)_updateProcessInfo:(id)arg1 info:(id)arg2;
 - (id)activeRequests;
@@ -47,6 +58,7 @@
 - (id)processInfoForPID:(int)arg1;
 - (void)removeProcess:(id)arg1;
 - (void)start;
+- (void)timerDidFire:(id)arg1;
 - (unsigned long long)translateApplicationStateForInfo:(id)arg1 processInfo:(id)arg2;
 
 @end

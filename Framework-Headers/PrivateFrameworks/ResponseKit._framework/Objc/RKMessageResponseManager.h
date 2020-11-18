@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class RKResponseCollection;
+@class NSArray, RKResponseCollection;
 @protocol OS_dispatch_queue;
 
 @interface RKMessageResponseManager : NSObject
 {
     RKResponseCollection *_collection;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    NSArray *_preferredLanguages;
 }
 
 @property (strong) RKResponseCollection *collection; // @synthesize collection=_collection;
 @property (strong) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (strong, nonatomic) NSArray *preferredLanguages; // @synthesize preferredLanguages=_preferredLanguages;
 
 + (id)sharedManager;
 - (void).cxx_destruct;

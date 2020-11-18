@@ -6,24 +6,29 @@
 
 #import <coreroutine/RTNotifier.h>
 
-@class CNContactStore;
+@class CNContact, CNContactStore;
 
 __attribute__((visibility("hidden")))
 @interface RTContactsManager : RTNotifier
 {
     CNContactStore *_contactStore;
+    CNContact *_meCard;
 }
 
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (strong, nonatomic) CNContact *meCard; // @synthesize meCard=_meCard;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)_getMeCard;
 - (void)_onContactStoreNotification:(id)arg1;
+- (void)_setup;
 - (void)_shutdown;
 - (id)init;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)onContactStoreNotification:(id)arg1;
+- (void)setup;
 - (void)shutdown;
 
 @end

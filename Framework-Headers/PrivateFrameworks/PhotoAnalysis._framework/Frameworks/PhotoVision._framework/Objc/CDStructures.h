@@ -25,3 +25,12 @@ struct CGSize {
     double _field2;
 };
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long eligibleFacesCount;
+    unsigned long long pendingFacesCount;
+    BOOL isClustering;
+    BOOL rebuildRequired;
+} CDStruct_56d3ddf4;
+

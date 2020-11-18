@@ -11,11 +11,12 @@
 
 @interface HAPSecuritySession : NSObject
 {
+    unsigned long long _state;
     id<HAPSecuritySessionDelegate> _delegate;
     unsigned long long _role;
     unsigned long long _resumeSessionID;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    unsigned long long _state;
+    NSObject<OS_dispatch_queue> *_propertyQueue;
     struct PairingSessionPrivate *_pairingSession;
     NSData *_inputKey;
     NSMutableData *_inputNonce;
@@ -27,12 +28,15 @@
 @property (readonly, weak) id<HAPSecuritySessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSData *inputKey; // @synthesize inputKey=_inputKey;
 @property (strong, nonatomic) NSMutableData *inputNonce; // @synthesize inputNonce=_inputNonce;
+@property (readonly, getter=isOpen) BOOL open;
+@property (readonly, getter=isOpening) BOOL opening;
 @property (strong, nonatomic) NSData *outputKey; // @synthesize outputKey=_outputKey;
 @property (strong, nonatomic) NSMutableData *outputNonce; // @synthesize outputNonce=_outputNonce;
 @property (nonatomic) struct PairingSessionPrivate *pairingSession; // @synthesize pairingSession=_pairingSession;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) unsigned long long resumeSessionID; // @synthesize resumeSessionID=_resumeSessionID;
 @property (readonly, nonatomic) unsigned long long role; // @synthesize role=_role;
-@property (nonatomic) unsigned long long state; // @synthesize state=_state;
+@property unsigned long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
 - (void)_closeWithError:(id)arg1;
@@ -56,6 +60,7 @@
 - (id)encryptData:(id)arg1 additionalAuthenticatedData:(id)arg2 error:(id *)arg3;
 - (id)initWithRole:(unsigned long long)arg1 resumeSessionID:(unsigned long long)arg2 delegate:(id)arg3;
 - (void)open;
+- (void)reallyOpen;
 - (void)receivedSetupExchangeData:(id)arg1 error:(id)arg2;
 - (void)setResumeSessionID:(unsigned long long)arg1;
 

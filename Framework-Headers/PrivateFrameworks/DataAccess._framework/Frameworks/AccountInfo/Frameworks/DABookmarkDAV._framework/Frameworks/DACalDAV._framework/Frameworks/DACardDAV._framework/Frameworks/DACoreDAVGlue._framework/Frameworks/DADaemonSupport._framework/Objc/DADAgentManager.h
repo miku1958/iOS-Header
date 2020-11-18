@@ -28,6 +28,8 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)_accountInfoPath;
+- (void)_addAccountAggdEntries;
+- (void)_calDaysToSyncDidChange;
 - (BOOL)_clearOrphanedSubscribedCalendars:(void *)arg1 eventAccountIds:(id)arg2 toDoAccountIds:(id)arg3;
 - (id)_configFileForAgent:(id)arg1;
 - (void)_deviceDidWake;

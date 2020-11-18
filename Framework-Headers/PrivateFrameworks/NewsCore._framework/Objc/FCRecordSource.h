@@ -35,8 +35,7 @@
 
 + (id)canaryRecordName;
 + (id)changeTagFromCKRecord:(id)arg1;
-+ (unsigned long long)defaultFetchOperationCachePolicy;
-+ (double)defaultFetchOperationMaximumCachedAge;
++ (id)defaultCachePolicy;
 + (unsigned long long)highThresholdDataSizeLimit;
 + (id)identifierFromCKRecord:(id)arg1;
 + (unsigned long long)lowThresholdDataSizeLimit;
@@ -55,7 +54,7 @@
 - (id)_localizedKeysByOriginalKeyForContentStoreFrontID:(id)arg1;
 - (id)_localizedKeysByOriginalWithCacheDictionary:(id)arg1;
 - (id)_recordBaseFromCKRecord:(id)arg1;
-- (id)_saveCKRecordsWithWriteLock:(id)arg1 fetchContext:(id)arg2;
+- (id)_saveCKRecordsWithWriteLock:(id)arg1 updateFetchDateForRecordIdentifiers:(id)arg2 fetchContext:(id)arg3;
 - (void)cacheCoordinator:(id)arg1 flushKeysWithWriteLock:(id)arg2;
 - (unsigned long long)cacheCoordinatorCurrentSizeWithReadLock:(id)arg1;
 - (id)cachedRecordsWithIDs:(id)arg1;
@@ -67,9 +66,11 @@
 - (id)fetchOperationForRecordsWithIDs:(id)arg1 ignoreCacheForRecordIDs:(id)arg2;
 - (id)init;
 - (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2;
+- (BOOL)isRecordStale:(id)arg1 withCachePolicy:(id)arg2;
 - (id)localizableKeys;
 - (id)recordFromCKRecord:(id)arg1 base:(id)arg2;
 - (id)saveRecords:(id)arg1;
+- (void)updateFetchDateForRecordIDs:(id)arg1;
 
 @end
 

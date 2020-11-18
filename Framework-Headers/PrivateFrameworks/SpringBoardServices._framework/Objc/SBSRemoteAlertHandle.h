@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (id)_initWithHandleToken:(id)arg1;
 - (void)_queue_callObserversWithBlock:(CDUnknownBlockType)arg1;
+- (void)activateWithContext:(id)arg1;
 - (void)activateWithOptions:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)init;

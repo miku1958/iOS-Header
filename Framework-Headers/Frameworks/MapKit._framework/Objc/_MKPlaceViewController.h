@@ -41,6 +41,7 @@
     MKPlaceCardActionItem *_addToFavoriteItem;
     MKPlaceCardActionItem *_removeFromFavoriteItem;
     MKPlaceCardActionItem *_removeFromSuggestedFavoriteItem;
+    MKPlaceCardActionItem *_removeMarkerItem;
     MKPlaceTransitViewController *_transitViewController;
     BOOL _attemptedToCreateAddressBook;
     MKOfficialAppViewController *_officialAppViewController;
@@ -194,6 +195,7 @@
 - (void)placeCardActionControllerDidSelectOpenInSkyline:(id)arg1;
 - (void)placeCardActionControllerDidSelectRemoveFromFavorites:(id)arg1;
 - (void)placeCardActionControllerDidSelectRemoveFromSuggestedFavorites:(id)arg1;
+- (void)placeCardActionControllerDidSelectRemoveMarker:(id)arg1;
 - (void)placeCardActionControllerDidSelectReportAProblem:(id)arg1;
 - (void)placeCardActionControllerDidSelectSimulateLocation:(id)arg1;
 - (void)placeCardActionControllerDidSelectViewAllPhotos:(id)arg1;

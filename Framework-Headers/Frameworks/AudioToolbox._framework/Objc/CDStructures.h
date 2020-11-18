@@ -238,6 +238,7 @@ struct ParameterMap {
     BOOL _field2;
     struct vector<AUv3InstanceBase::ScopeElementIDObj, std::__1::allocator<AUv3InstanceBase::ScopeElementIDObj>> _field3;
     struct vector<AUv3InstanceBase::ScopeElementIDObj, std::__1::allocator<AUv3InstanceBase::ScopeElementIDObj>> _field4;
+    id _field5;
 };
 
 struct PropertyListener;

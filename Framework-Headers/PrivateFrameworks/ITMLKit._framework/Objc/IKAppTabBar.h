@@ -20,7 +20,6 @@
 
 - (void).cxx_destruct;
 - (id)initWithTabBarController:(id)arg1;
-- (void)onReload;
 - (void)onSelect;
 
 @end

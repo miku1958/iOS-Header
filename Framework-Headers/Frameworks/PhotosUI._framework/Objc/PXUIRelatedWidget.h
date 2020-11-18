@@ -72,7 +72,7 @@
 - (id)_scrollViewController;
 - (void)checkInTile:(void *)arg1 withIdentifier:(struct PXTileIdentifier)arg2;
 - (void *)checkOutTileForIdentifier:(struct PXTileIdentifier)arg1 layout:(id)arg2;
-- (void)commitPreviewViewController:(struct NSObject *)arg1;
+- (void)commitPreviewViewController:(id)arg1;
 - (BOOL)containsPoint:(struct CGPoint)arg1 forCoordinateSpace:(id)arg2;
 - (id)createTileAnimator;
 - (void)environmentDidUpdateFocusInContext:(id)arg1;

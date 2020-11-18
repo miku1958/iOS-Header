@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) BOOL lastVisitWasFailure;
 @property (readonly, nonatomic) double lastVisitedTimeInterval;
 @property (readonly, nonatomic) NSString *originalURLString;
+@property (readonly, nonatomic) long long visitCount;
 
 - (void)enumeratePageTitlesUsingBlock:(void (^)(NSString *, unsigned long long, BOOL *))arg1;
 - (void)enumerateUserVisibleURLsUsingBlock:(void (^)(NSString *, unsigned long long, BOOL *))arg1;
@@ -26,5 +27,7 @@
 - (float)topSitesScoreForURLStringAtIndex:(unsigned long long)arg1 atTime:(double)arg2;
 - (NSString *)userVisibleURLStringAtIndex:(unsigned long long)arg1;
 - (NSString *)userVisibleURLStringForPageTitleAtIndex:(unsigned long long)arg1;
+
+@optional
 @end
 

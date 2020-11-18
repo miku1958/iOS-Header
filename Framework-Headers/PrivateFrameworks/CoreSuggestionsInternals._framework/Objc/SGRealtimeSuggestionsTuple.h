@@ -13,10 +13,12 @@
     NSArray *_contacts;
     NSArray *_events;
     NSArray *_invalidatedIdentifiers;
+    NSArray *_handles;
 }
 
 @property (strong) NSArray *contacts; // @synthesize contacts=_contacts;
 @property (strong) NSArray *events; // @synthesize events=_events;
+@property (strong) NSArray *handles; // @synthesize handles=_handles;
 @property (strong) NSArray *invalidatedIdentifiers; // @synthesize invalidatedIdentifiers=_invalidatedIdentifiers;
 
 - (void).cxx_destruct;

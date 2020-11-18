@@ -69,6 +69,7 @@
 - (BOOL)executeUncachedSQL:(id)arg1 error:(id *)arg2 bindingHandler:(CDUnknownBlockType)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
 - (BOOL)foreignKeyExistsFromTable:(id)arg1 column:(id)arg2 toTable:(id)arg3 column:(id)arg4 error:(id *)arg5;
 - (id)getLastErrorWithResultCode:(int)arg1;
+- (id)highFrequenceDatabaseURL;
 - (BOOL)incrementalVacuumDatabaseIfNeeded:(id)arg1 error:(id *)arg2;
 - (id)initWithDatabaseURL:(id)arg1 delegate:(id)arg2;
 - (BOOL)isDatabaseWithNameAttached:(id)arg1;

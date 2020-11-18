@@ -16,8 +16,10 @@
 @property (readonly, nonatomic) BOOL isRequiredByFollowingEmitters;
 @property (readonly, nonatomic) BOOL requiresForYouCatchUpOperation;
 
-- (FCFeedGroupEmittingOperation *)operationToEmitGroupInContext:(FCFeedGroupEmittingContext *)arg1 withCursor:(id<NSCoding>)arg2 toCursor:(id<NSCoding>)arg3;
+- (BOOL)canEmitGroupsWithType:(long long)arg1;
+- (FCFeedGroupEmittingOperation *)operationToEmitGroupWithContext:(FCFeedGroupEmittingContext *)arg1 fromCursor:(id<NSCoding>)arg2 toCursor:(id<NSCoding>)arg3;
 - (BOOL)wantsToEmitGroupInContext:(FCFeedGroupEmittingContext *)arg1 withCursor:(id<NSCoding>)arg2 toCursor:(id<NSCoding>)arg3;
+- (BOOL)wantsToInsertGroup:(id<FCFeedGroupOutlining>)arg1 withContext:(FCFeedGroupEmittingContext *)arg2;
 
 @optional
 - (BOOL)canMergeGroupsUnconditionally;

@@ -13,17 +13,15 @@
     unsigned int _soundID;
     BOOL _shouldDisposeOfSoundID;
     NSURL *_soundFileURL;
-    NSURL *_vibrationPatternFileURL;
 }
 
 @property (readonly, nonatomic) NSURL *soundFileURL; // @synthesize soundFileURL=_soundFileURL;
 @property (readonly, nonatomic) unsigned int soundID;
-@property (readonly, nonatomic) NSURL *vibrationPatternFileURL; // @synthesize vibrationPatternFileURL=_vibrationPatternFileURL;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
-- (id)initWithSoundFileURL:(id)arg1 soundID:(unsigned int)arg2 vibrationPatternFileURL:(id)arg3;
+- (id)initWithSoundFileURL:(id)arg1 soundID:(unsigned int)arg2;
 
 @end
 

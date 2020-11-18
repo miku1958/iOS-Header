@@ -9,6 +9,8 @@
 @class PXOneUpPresentation, UIPinchGestureRecognizer, UIViewController;
 
 @protocol PXOneUpPresentationImplementationDelegate <NSObject>
+- (void)oneUpPresentation:(PXOneUpPresentation *)arg1 commitPreviewViewController:(UIViewController *)arg2;
+- (void)oneUpPresentation:(PXOneUpPresentation *)arg1 didDismissPreviewViewController:(UIViewController *)arg2 committing:(BOOL)arg3;
 - (BOOL)oneUpPresentation:(PXOneUpPresentation *)arg1 startAnimated:(BOOL)arg2 interactiveMode:(long long)arg3;
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 stopAnimated:(BOOL)arg2;
 - (UIViewController *)previewViewControllerForOneUpPresentation:(PXOneUpPresentation *)arg1 allowingActions:(BOOL)arg2;

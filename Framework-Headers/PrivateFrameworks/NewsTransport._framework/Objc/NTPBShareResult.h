@@ -32,6 +32,8 @@
     NSString *_iosActivityType;
     NSString *_language;
     NSMutableArray *_namedEntities;
+    int _nextArticleAffordanceType;
+    NSString *_nextArticleAffordanceTypeFeedId;
     NSString *_notificationId;
     int _publisherArticleVersion;
     NSString *_referencedArticleId;
@@ -43,6 +45,7 @@
     NSString *_surfacedByChannelId;
     NSString *_surfacedBySectionId;
     NSString *_surfacedByTopicId;
+    BOOL _fromNextArticleAffordanceTap;
     BOOL _isCoverArticle;
     BOOL _isDigitalReplicaAd;
     BOOL _isFreeArticle;
@@ -58,10 +61,12 @@
         unsigned int contentType:1;
         unsigned int feedType:1;
         unsigned int groupType:1;
+        unsigned int nextArticleAffordanceType:1;
         unsigned int publisherArticleVersion:1;
         unsigned int resultType:1;
         unsigned int shareLocation:1;
         unsigned int shareMethod:1;
+        unsigned int fromNextArticleAffordanceTap:1;
         unsigned int isCoverArticle:1;
         unsigned int isDigitalReplicaAd:1;
         unsigned int isFreeArticle:1;
@@ -86,6 +91,7 @@
 @property (strong, nonatomic) NSString *feedId; // @synthesize feedId=_feedId;
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
+@property (nonatomic) BOOL fromNextArticleAffordanceTap; // @synthesize fromNextArticleAffordanceTap=_fromNextArticleAffordanceTap;
 @property (strong, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (readonly, nonatomic) BOOL hasArticleSessionId;
@@ -102,6 +108,7 @@
 @property (readonly, nonatomic) BOOL hasFeedId;
 @property (nonatomic) BOOL hasFeedType;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
+@property (nonatomic) BOOL hasFromNextArticleAffordanceTap;
 @property (readonly, nonatomic) BOOL hasGroupFeedId;
 @property (nonatomic) BOOL hasGroupType;
 @property (readonly, nonatomic) BOOL hasIosActivityType;
@@ -113,6 +120,8 @@
 @property (nonatomic) BOOL hasIsPaidSubscriberToSourceChannel;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
 @property (readonly, nonatomic) BOOL hasLanguage;
+@property (nonatomic) BOOL hasNextArticleAffordanceType;
+@property (readonly, nonatomic) BOOL hasNextArticleAffordanceTypeFeedId;
 @property (readonly, nonatomic) BOOL hasNotificationId;
 @property (nonatomic) BOOL hasPersonalizationTreatmentId;
 @property (nonatomic) BOOL hasPublisherArticleVersion;
@@ -135,6 +144,8 @@
 @property (nonatomic) BOOL isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
 @property (strong, nonatomic) NSMutableArray *namedEntities; // @synthesize namedEntities=_namedEntities;
+@property (nonatomic) int nextArticleAffordanceType; // @synthesize nextArticleAffordanceType=_nextArticleAffordanceType;
+@property (strong, nonatomic) NSString *nextArticleAffordanceTypeFeedId; // @synthesize nextArticleAffordanceTypeFeedId=_nextArticleAffordanceTypeFeedId;
 @property (strong, nonatomic) NSString *notificationId; // @synthesize notificationId=_notificationId;
 @property (nonatomic) long long personalizationTreatmentId; // @synthesize personalizationTreatmentId=_personalizationTreatmentId;
 @property (nonatomic) int publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
@@ -154,6 +165,7 @@
 - (int)StringAsContentType:(id)arg1;
 - (int)StringAsFeedType:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
+- (int)StringAsNextArticleAffordanceType:(id)arg1;
 - (void)addNamedEntities:(id)arg1;
 - (id)articleTypeAsString:(int)arg1;
 - (void)clearNamedEntities;
@@ -168,6 +180,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)namedEntitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)namedEntitiesCount;
+- (id)nextArticleAffordanceTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

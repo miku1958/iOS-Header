@@ -17,8 +17,10 @@
     NSString *_correctedAddressSecondaryStreetLine;
     GEOLatLng *_correctedCoordinate;
     NSString *_customLabel;
+    BOOL _hasSubmittedRAP;
     struct {
         unsigned int lastUpdateDate:1;
+        unsigned int hasSubmittedRAP:1;
     } _has;
 }
 
@@ -30,7 +32,9 @@
 @property (readonly, nonatomic) BOOL hasCorrectedAddressSecondaryStreetLine;
 @property (readonly, nonatomic) BOOL hasCorrectedCoordinate;
 @property (readonly, nonatomic) BOOL hasCustomLabel;
+@property (nonatomic) BOOL hasHasSubmittedRAP;
 @property (nonatomic) BOOL hasLastUpdateDate;
+@property (nonatomic) BOOL hasSubmittedRAP; // @synthesize hasSubmittedRAP=_hasSubmittedRAP;
 @property (nonatomic) double lastUpdateDate; // @synthesize lastUpdateDate=_lastUpdateDate;
 
 - (void)copyTo:(id)arg1;

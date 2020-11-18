@@ -9,7 +9,7 @@
 #import <HealthDaemon/APSConnectionDelegate-Protocol.h>
 #import <HealthDaemon/HDFitnessFriendsManagerReadyObserver-Protocol.h>
 
-@class APSConnection, CKContainer, CKShare, HDFitnessFriendsCloudKitServerChangeTokenCache, HDFitnessFriendsCloudKitUtility, HDFitnessFriendsManager, HDFitnessFriendsNotificationStep, NSArray, NSHashTable, NSString;
+@class APSConnection, CKContainer, CKShare, HDFitnessFriendsCloudKitServerChangeTokenCache, HDFitnessFriendsCloudKitUtility, HDFitnessFriendsManager, HDFitnessFriendsNotificationStep, NSArray, NSDate, NSDictionary, NSHashTable, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface HDFitnessFriendsCloudKitManager : NSObject <APSConnectionDelegate, HDFitnessFriendsManagerReadyObserver>
@@ -35,14 +35,17 @@
     HDFitnessFriendsCloudKitServerChangeTokenCache *_serverChangeTokenCache;
     long long _cloudKitAccountStatus;
     NSObject<OS_dispatch_source> *_newAccountTasksTimer;
+    NSDictionary *_friendUUIDsByZoneID;
     BOOL _readyForOperations;
     BOOL _hasCompletedFirstFetch;
     CKContainer *_container;
     HDFitnessFriendsCloudKitUtility *_cloudKitUtility;
+    NSDate *_dateOfLastSuccessfulFetch;
 }
 
 @property (strong, nonatomic) HDFitnessFriendsCloudKitUtility *cloudKitUtility; // @synthesize cloudKitUtility=_cloudKitUtility;
 @property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
+@property (strong, nonatomic) NSDate *dateOfLastSuccessfulFetch; // @synthesize dateOfLastSuccessfulFetch=_dateOfLastSuccessfulFetch;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCompletedFirstFetch; // @synthesize hasCompletedFirstFetch=_hasCompletedFirstFetch;
@@ -63,10 +66,11 @@
 - (void)_enumerateRecordsByRecordZoneID:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_fetchAllChangesWithPriority:(long long)arg1 completion:(CDUnknownBlockType)arg2 waitingForSuccessfulFetchCompletion:(CDUnknownBlockType)arg3;
 - (void)_fetchCloudKitAccountStatusAndNotifyOfChanges;
-- (id)_friendUUIDForActivityDataShareRecordZoneID:(id)arg1;
 - (void)_handleAccountStatusChange:(long long)arg1;
 - (void)_handleIncomingNotification:(id)arg1;
 - (void)_handleNewPrivateDatabaseRecordChanges:(id)arg1 sharedDatabaseRecordChanges:(id)arg2;
+- (void)_observerQueue_clearFriendUUIDByZoneIDCache;
+- (id)_observerQueue_friendUUIDForActivityDataShareRecordZoneID:(id)arg1;
 - (void)_observerQueue_notifyObserversOfBeginUpdates;
 - (void)_observerQueue_notifyObserversOfEndUpdates;
 - (void)_observerQueue_performNotificationStep:(id)arg1 onRecords:(id)arg2 dispatchGroup:(id)arg3;
@@ -99,6 +103,7 @@
 - (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
 - (void)createShareWithRootRecord:(id)arg1 otherRecordsToSave:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (void)fetchAllChangesIfTimeSinceLastFetchIsGreaterThan:(unsigned long long)arg1 priority:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchAllChangesWithPriority:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAllChangesWithPriority:(long long)arg1 waitingForSuccessfulFetchCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchAndHandleAccountStatus;

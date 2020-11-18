@@ -16,8 +16,8 @@
     MISSING_TYPE *identifier;
 }
 
-@property (nonatomic, strong) NSURL *clockAppSectionURL; // @synthesize clockAppSectionURL;
-@property (nonatomic, strong) NSDate *fireDate; // @synthesize fireDate;
+@property (nonatomic, copy) NSURL *clockAppSectionURL; // @synthesize clockAppSectionURL;
+@property (nonatomic, copy) NSDate *fireDate; // @synthesize fireDate;
 @property (nonatomic, copy) NSString *identifier; // @synthesize identifier;
 @property (nonatomic, readonly) NSString *shallowDescription;
 @property (nonatomic, copy) NSString *title; // @synthesize title;

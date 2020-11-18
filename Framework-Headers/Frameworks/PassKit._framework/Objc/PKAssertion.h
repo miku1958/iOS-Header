@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSLock, NSString;
 
 @interface PKAssertion : NSObject
 {
+    NSLock *_invalidationLock;
     BOOL _invalidateWhenBackgrounded;
     NSString *_reason;
     unsigned long long _type;

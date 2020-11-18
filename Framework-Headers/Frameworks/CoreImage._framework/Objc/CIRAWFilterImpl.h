@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     struct CGImageSource *_inputImageSource;
     NSArray *_inputImageAndProperties;
     CIImage *_inputImage;
-    CIImage *_tempImage;
     struct CGSize _nativeSize;
     BOOL _isRawSource;
     BOOL _calledDealloc;
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
     NSArray *_filters;
     NSObject *_typeIdentifierHint;
     NSNumber *_defaultOrientation;
-    NSArray *_neutralColour;
     NSString *inputRequestedSushiMode;
     NSNumber *inputNeutralChromaticityX;
     NSNumber *inputNeutralChromaticityY;
@@ -105,8 +103,8 @@ __attribute__((visibility("hidden")))
 - (id)defaultNeutralChromaticityY;
 - (id)defaultNeutralTemperature;
 - (id)defaultNeutralTint;
-- (struct CGAffineTransform)getOrientationTransform;
-- (struct CGAffineTransform)getScaleTransform;
+- (struct CGAffineTransform)getOrientationTransform:(id)arg1;
+- (struct CGAffineTransform)getScaleTransform:(id)arg1;
 - (void)getWhitePointVectorsR:(id *)arg1 g:(id *)arg2 b:(id *)arg3;
 - (id)init;
 - (id)initWithCVPixelBuffer:(struct __CVBuffer *)arg1 properties:(id)arg2 options:(id)arg3;
@@ -172,6 +170,7 @@ __attribute__((visibility("hidden")))
 - (void)setTempTintAtPoint:(struct CGPoint)arg1;
 - (id)supportedDecoderVersions;
 - (id)supportedSushiModes;
+- (id)transformedImageIgnoringOrientation:(BOOL)arg1;
 - (void)updateChomaticityXAndY;
 - (void)updateTemperatureAndTint;
 - (id)whitePoint;

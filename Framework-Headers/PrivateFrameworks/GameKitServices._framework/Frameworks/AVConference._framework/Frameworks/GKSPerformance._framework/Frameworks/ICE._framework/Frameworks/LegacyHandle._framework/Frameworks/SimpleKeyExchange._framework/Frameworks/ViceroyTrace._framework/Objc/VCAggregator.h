@@ -20,6 +20,10 @@ __attribute__((visibility("hidden")))
     CallSegment *_currentSegment;
     NSMutableDictionary *_aggregatedStats;
     int _duration;
+    unsigned int _currentWidth;
+    unsigned int _currentAudioErasures;
+    BOOL _degradedVideo;
+    unsigned int _degradedVideoCounter;
     NSObject<OS_dispatch_queue> *_stateQueue;
 }
 
@@ -35,7 +39,10 @@ __attribute__((visibility("hidden")))
 - (void)reset;
 - (id)segments;
 - (void)startNewSegment;
+- (void)updateAudioErasure:(id)arg1;
+- (void)updatePauseVideo:(id)arg1;
 - (void)updateRTStats:(id)arg1;
+- (void)updateVideoResolution:(id)arg1;
 
 @end
 

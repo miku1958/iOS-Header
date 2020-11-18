@@ -6,18 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, NSDate, NSMapTable, NSNumber, RTLocationAwarenessManagerConfig, RTLocationAwarenessMetrics, RTLocationManager, RTMetricManager, RTMotionActivityManager;
+@class CLLocation, NSDate, NSMapTable, NSNumber, RTAuthorizationManager, RTInvocationDispatcher, RTLocationAwarenessManagerConfig, RTLocationAwarenessMetrics, RTLocationManager, RTMetricManager, RTMotionActivityManager, RTWiFiManager;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface RTLocationAwarenessManager : NSObject
 {
+    BOOL _activeRequestInterrupted;
+    BOOL _activeRequestFulfilled;
+    BOOL _activeRequestCoarseLocationReceived;
+    BOOL _activeRequestLocationServiceOn;
+    BOOL _activeRequestRoutineOn;
+    BOOL _activeRequestWifiOn;
     RTLocationAwarenessMetrics *_metrics;
     RTMetricManager *_metricManager;
+    RTAuthorizationManager *_authorizationManager;
+    RTWiFiManager *_wifiManager;
     CLLocation *_lastLocationAnyPositive;
     CLLocation *_lastLocationLessThan200m;
     CLLocation *_lastLocationLessThan55m;
     CLLocation *_lastLocationLessThan20m;
     CLLocation *_lastLocationLessThan10m;
+    NSDate *_scheduledHeartbeatFiringTime;
+    NSDate *_scheduledRestTimerFiringTime;
     NSObject<OS_dispatch_queue> *_queue;
     RTLocationAwarenessManagerConfig *_config;
     struct NSMapTable *_requesterToHeartbeatBucket;
@@ -30,11 +40,20 @@
     CLLocation *_lastValidLocation;
     RTMotionActivityManager *_motionActivityManager;
     NSDate *_stationaryStartTimestamp;
+    RTInvocationDispatcher *_heartbeatBuffer;
 }
 
 @property (copy, nonatomic) NSDate *activeOnset; // @synthesize activeOnset=_activeOnset;
+@property (nonatomic) BOOL activeRequestCoarseLocationReceived; // @synthesize activeRequestCoarseLocationReceived=_activeRequestCoarseLocationReceived;
+@property (nonatomic) BOOL activeRequestFulfilled; // @synthesize activeRequestFulfilled=_activeRequestFulfilled;
+@property (nonatomic) BOOL activeRequestInterrupted; // @synthesize activeRequestInterrupted=_activeRequestInterrupted;
+@property (nonatomic) BOOL activeRequestLocationServiceOn; // @synthesize activeRequestLocationServiceOn=_activeRequestLocationServiceOn;
+@property (nonatomic) BOOL activeRequestRoutineOn; // @synthesize activeRequestRoutineOn=_activeRequestRoutineOn;
+@property (nonatomic) BOOL activeRequestWifiOn; // @synthesize activeRequestWifiOn=_activeRequestWifiOn;
+@property (strong, nonatomic) RTAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;
 @property (readonly, nonatomic) RTLocationAwarenessManagerConfig *config; // @synthesize config=_config;
 @property (strong, nonatomic) NSMapTable *heartbeatBucketToRequesters; // @synthesize heartbeatBucketToRequesters=_heartbeatBucketToRequesters;
+@property (copy, nonatomic) RTInvocationDispatcher *heartbeatBuffer; // @synthesize heartbeatBuffer=_heartbeatBuffer;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *heartbeatTimer; // @synthesize heartbeatTimer=_heartbeatTimer;
 @property (strong, nonatomic) CLLocation *lastLocationAnyPositive; // @synthesize lastLocationAnyPositive=_lastLocationAnyPositive;
 @property (strong, nonatomic) CLLocation *lastLocationLessThan10m; // @synthesize lastLocationLessThan10m=_lastLocationLessThan10m;
@@ -50,7 +69,10 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMapTable *requesterToHeartbeatBucket; // @synthesize requesterToHeartbeatBucket=_requesterToHeartbeatBucket;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *restTimer; // @synthesize restTimer=_restTimer;
+@property (strong, nonatomic) NSDate *scheduledHeartbeatFiringTime; // @synthesize scheduledHeartbeatFiringTime=_scheduledHeartbeatFiringTime;
+@property (strong, nonatomic) NSDate *scheduledRestTimerFiringTime; // @synthesize scheduledRestTimerFiringTime=_scheduledRestTimerFiringTime;
 @property (copy, nonatomic) NSDate *stationaryStartTimestamp; // @synthesize stationaryStartTimestamp=_stationaryStartTimestamp;
+@property (strong, nonatomic) RTWiFiManager *wifiManager; // @synthesize wifiManager=_wifiManager;
 
 + (id)createDefaultDispatchTimerWithQueue:(id)arg1;
 + (void)invalidateDispatchTimer:(id)arg1;
@@ -59,22 +81,22 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_shutdown;
+- (BOOL)activeRequestInterruptedCheck;
 - (BOOL)addLocationHeartbeatRequester:(id)arg1 withInterval:(double)arg2 error:(id *)arg3;
 - (void)adjustHeartbeatTimer;
+- (BOOL)coarseLocation:(id)arg1;
 - (void)considerRequestingForLocation;
 - (void)considerSubmittingCurrentMetrics;
+- (void)considerUpdateActiveRequestMetrics;
+- (void)considerUpdatingHeartbeatDelayMetrics;
 - (id)defaultQueue;
 - (id)heartbeatBucketForInterval:(double)arg1;
-- (void)incrementHeartbeatActiveRequestCountForTimestamp:(id)arg1;
-- (void)incrementHeartbeatTimerFiringCountForTimestamp:(id)arg1;
-- (void)incrementHeartbeatValidLocationCountForTimestamp:(id)arg1;
+- (void)heartbeatTasks;
+- (void)incrementBasicHistogram:(id)arg1 forTimestamp:(id)arg2;
 - (id)init;
-- (id)initWithLocationManager:(id)arg1;
-- (id)initWithQueue:(id)arg1 locationManager:(id)arg2;
-- (id)initWithQueue:(id)arg1 locationManager:(id)arg2 config:(id)arg3;
-- (id)initWithQueue:(id)arg1 locationManager:(id)arg2 config:(id)arg3 metricManager:(id)arg4;
-- (id)initWithQueue:(id)arg1 locationManager:(id)arg2 config:(id)arg3 metricManager:(id)arg4 motionActivityManager:(id)arg5;
+- (id)initWithQueue:(id)arg1 locationManager:(id)arg2 config:(id)arg3 metricManager:(id)arg4 motionActivityManager:(id)arg5 authorizationManager:(id)arg6 wifiManager:(id)arg7;
 - (double)intervalForHeartbeatBucket:(id)arg1;
+- (void)logActiveRequestStatus;
 - (double)metricAge;
 - (double)nextFiringDelayWithHeartbeatInterval:(double)arg1 starvingDuration:(double)arg2;
 - (void)onHeartbeat;
@@ -83,9 +105,11 @@
 - (void)onNoOpLocationNotification:(id)arg1;
 - (void)onRest;
 - (void)removeLocationHeartbeatRequester:(id)arg1;
+- (void)resetActiveRequestSummaryVariables;
 - (void)resetOneShotDispatchTimer:(id)arg1 withStart:(unsigned long long)arg2 eventHandler:(CDUnknownBlockType)arg3;
 - (void)shutdown;
 - (double)starvingDurationTillNow;
+- (void)updateHeartbeatTimerDelayForTimestamp:(id)arg1 withDelay:(double)arg2;
 - (void)updateLocationAwarenessHistogramsWithLocations:(id)arg1;
 - (void)updateMinHeartbeatBucket;
 - (id)updateWithLocation:(id)arg1 oneIntervalHistogram:(id)arg2 lastLocation:(id)arg3;

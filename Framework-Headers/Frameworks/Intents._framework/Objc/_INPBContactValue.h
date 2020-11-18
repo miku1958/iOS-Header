@@ -20,6 +20,7 @@
     NSString *_fullName;
     _INPBImageValue *_image;
     NSString *_lastName;
+    NSString *_relationship;
     int _suggestionType;
     _INPBValueMetadata *_valueMetadata;
     struct {
@@ -38,10 +39,12 @@
 @property (readonly, nonatomic) BOOL hasFullName;
 @property (readonly, nonatomic) BOOL hasImage;
 @property (readonly, nonatomic) BOOL hasLastName;
+@property (readonly, nonatomic) BOOL hasRelationship;
 @property (nonatomic) BOOL hasSuggestionType;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
 @property (strong, nonatomic) _INPBImageValue *image; // @synthesize image=_image;
 @property (strong, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property (strong, nonatomic) NSString *relationship; // @synthesize relationship=_relationship;
 @property (nonatomic) int suggestionType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;

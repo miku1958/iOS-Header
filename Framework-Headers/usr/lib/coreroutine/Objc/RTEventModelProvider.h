@@ -82,6 +82,7 @@
 - (id)init;
 - (id)initWithDeviceLocationPredictor:(id)arg1 eventManager:(id)arg2 metricManager:(id)arg3 managedObjectContext:(id)arg4 defaultsManager:(id)arg5 purgeManager:(id)arg6;
 - (id)keywordForCategory:(id)arg1 visited:(unsigned long long)arg2;
+- (id)lastDateOfLOIVisits:(id)arg1;
 - (unsigned long long)lengthOfEvent:(id)arg1;
 - (void)onDeviceLocationPredictorNotification:(id)arg1;
 - (void)onManagedObjectContextCreated:(id)arg1;

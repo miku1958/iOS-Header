@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _allowsCellularAccess;
     BOOL _preferAnonymousRequests;
     BOOL _allowsBackgroundNetworking;
+    BOOL _shouldPipelineFetchAllChangesRequests;
     BOOL _isLongLived;
     CKDURLRequest *_request;
     CKTimeLogger *_timeLogger;
@@ -95,6 +96,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
 @property (strong, nonatomic) NSMutableDictionary *responseHTTPHeadersByRequestUUID; // @synthesize responseHTTPHeadersByRequestUUID=_responseHTTPHeadersByRequestUUID;
 @property (readonly, nonatomic) BOOL shouldCheckAppVersion;
+@property (nonatomic) BOOL shouldPipelineFetchAllChangesRequests; // @synthesize shouldPipelineFetchAllChangesRequests=_shouldPipelineFetchAllChangesRequests;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;

@@ -17,6 +17,7 @@
 - (BOOL)isControlCenterVisible;
 - (BOOL)isMediaPlaying;
 - (BOOL)isNotificationCenterVisible;
+- (BOOL)isNotificationVisible;
 - (BOOL)isNowPlayingUIVisible;
 - (BOOL)isReceivingAirPlay;
 - (BOOL)isScreenSaverVisible;
@@ -24,7 +25,6 @@
 - (BOOL)isSiriTalkingOrListening;
 - (BOOL)isSiriVisible;
 - (BOOL)isSoftwareUpdateUIVisible;
-- (BOOL)isStickyNotificationVisible;
 - (BOOL)openSiri;
 - (int)pid;
 - (void)pid:(void (^)(int))arg1;

@@ -17,5 +17,6 @@
 @optional
 - (void)customContent:(id<NCNotificationCustomContent>)arg1 didLoadAudioAccessoryView:(UIView *)arg2;
 - (void)customContentDidLoadExtension:(id<NCNotificationCustomContent>)arg1;
+- (void)customContentDidUpdateTitle:(id<NCNotificationCustomContent>)arg1;
 @end
 

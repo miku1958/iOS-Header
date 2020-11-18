@@ -26,10 +26,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)canEmitGroupsWithType:(long long)arg1;
 - (BOOL)canMergeGroupsUnconditionally;
 - (id)initWithArticleList:(id)arg1;
-- (id)operationToEmitGroupInContext:(id)arg1 withCursor:(id)arg2 toCursor:(id)arg3;
+- (id)operationToEmitGroupWithContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (BOOL)wantsToEmitGroupInContext:(id)arg1 withCursor:(id)arg2 toCursor:(id)arg3;
+- (BOOL)wantsToInsertGroup:(id)arg1 withContext:(id)arg2;
 
 @end
 

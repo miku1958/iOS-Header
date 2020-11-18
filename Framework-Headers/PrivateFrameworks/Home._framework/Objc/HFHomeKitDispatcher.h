@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
+#import <Home/HFLocationSensingCoordinatorDelegate-Protocol.h>
 #import <Home/HMAccessoryDelegatePrivate-Protocol.h>
 #import <Home/HMCameraSnapshotControlDelegate-Protocol.h>
 #import <Home/HMCameraStreamControlDelegate-Protocol.h>
 #import <Home/HMHomeDelegatePrivate-Protocol.h>
-#import <Home/HMHomeManagerDelegate-Protocol.h>
 #import <Home/HMHomeManagerDelegatePrivate-Protocol.h>
 #import <Home/HMResidentDeviceDelegate-Protocol.h>
 
-@class HMHome, HMHomeManager, NAFuture, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
+@class HFLocationSensingCoordinator, HMHome, HMHomeManager, NAFuture, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSTimer;
 
-@interface HFHomeKitDispatcher : NSObject <HMHomeManagerDelegatePrivate, HMHomeDelegatePrivate, HMAccessoryDelegatePrivate, HMResidentDeviceDelegate, HMCameraSnapshotControlDelegate, HMCameraStreamControlDelegate, HMHomeManagerDelegate>
+@interface HFHomeKitDispatcher : NSObject <HMResidentDeviceDelegate, HMCameraSnapshotControlDelegate, HMCameraStreamControlDelegate, HFLocationSensingCoordinatorDelegate, HMHomeManagerDelegatePrivate, HMHomeDelegatePrivate, HMAccessoryDelegatePrivate>
 {
     BOOL _hasLoadedHomes;
     int _homeKitPreferencesChangedNotifyToken;
@@ -24,6 +24,8 @@
     HMHome *_home;
     HMHome *_overrideHome;
     HMHome *_selectedHome;
+    HFLocationSensingCoordinator *_locationCoordinator;
+    NSTimer *_homeSensingIdleTimer;
     NSMutableDictionary *_remoteAccessStateByHomeID;
     NSHashTable *_homeObservers;
     NSHashTable *_homeManagerObservers;
@@ -49,10 +51,14 @@
 @property (strong, nonatomic) NSHashTable *homeManagerObservers; // @synthesize homeManagerObservers=_homeManagerObservers;
 @property (strong, nonatomic) NSHashTable *homeObservers; // @synthesize homeObservers=_homeObservers;
 @property (strong, nonatomic) NSMutableArray *homePromises; // @synthesize homePromises=_homePromises;
+@property (strong, nonatomic) NSTimer *homeSensingIdleTimer; // @synthesize homeSensingIdleTimer=_homeSensingIdleTimer;
+@property (strong, nonatomic) HFLocationSensingCoordinator *locationCoordinator; // @synthesize locationCoordinator=_locationCoordinator;
+@property (readonly, nonatomic) NAFuture *locationSensingAvailableFuture;
 @property (strong, nonatomic) HMHome *overrideHome; // @synthesize overrideHome=_overrideHome;
 @property (strong, nonatomic) NSMutableDictionary *remoteAccessStateByHomeID; // @synthesize remoteAccessStateByHomeID=_remoteAccessStateByHomeID;
 @property (strong, nonatomic) NSHashTable *residentDeviceObservers; // @synthesize residentDeviceObservers=_residentDeviceObservers;
 @property (strong, nonatomic) HMHome *selectedHome; // @synthesize selectedHome=_selectedHome;
+@property (nonatomic) BOOL selectedHomeFollowsLocation;
 @property (readonly) Class superclass;
 
 + (unsigned long long)_homeManagerCreationPolicy;
@@ -68,8 +74,12 @@
 - (void)_updateRemoteAccessStateForHome:(id)arg1 notifyingObservers:(BOOL)arg2;
 - (void)accessory:(id)arg1 didUpdateApplicationDataForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateAssociatedServiceTypeForService:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateBundleID:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateFirmwareUpdateAvailable:(BOOL)arg2;
+- (void)accessory:(id)arg1 didUpdateFirmwareVersion:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateHasAuthorizationDataForCharacteristic:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateNameForService:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateStoreID:(id)arg2;
 - (void)accessory:(id)arg1 service:(id)arg2 didUpdateValueForCharacteristic:(id)arg3;
 - (void)accessoryDidUpdateAdditionalSetupRequired:(id)arg1;
 - (void)accessoryDidUpdateApplicationData:(id)arg1;
@@ -85,6 +95,8 @@
 - (void)cameraSnapshotControlDidUpdateMostRecentSnapshot:(id)arg1;
 - (void)cameraStreamControl:(id)arg1 didStopStreamWithError:(id)arg2;
 - (void)cameraStreamControlDidStartStream:(id)arg1;
+- (void)coordinator:(id)arg1 homeSensingStatusDidChange:(BOOL)arg2;
+- (void)coordinator:(id)arg1 locationSensingAvailabilityDidChange:(BOOL)arg2;
 - (void)dealloc;
 - (void)dispatchAccessoryObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchCameraObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
@@ -135,11 +147,14 @@
 - (void)homeManager:(id)arg1 didUpdateResidentEnabledForThisDevice:(BOOL)arg2;
 - (void)homeManager:(id)arg1 didUpdateStateForIncomingInvitations:(id)arg2;
 - (void)homeManager:(id)arg1 residentProvisioningStatusChanged:(unsigned long long)arg2;
+- (void)homeManagerDidEndBatchNotifications:(id)arg1;
 - (void)homeManagerDidUpdateApplicationData:(id)arg1;
 - (void)homeManagerDidUpdateCurrentHome:(id)arg1;
 - (void)homeManagerDidUpdateDataSyncState:(id)arg1;
 - (void)homeManagerDidUpdateHomes:(id)arg1;
 - (void)homeManagerDidUpdatePrimaryHome:(id)arg1;
+- (void)homeManagerWillStartBatchNotifications:(id)arg1;
+- (id)homeSensingActiveFuture;
 - (id)init;
 - (void)removeAccessoryObserver:(id)arg1;
 - (void)removeCameraObserver:(id)arg1;
@@ -149,8 +164,10 @@
 - (void)residentDevice:(id)arg1 didUpdateEnabled:(BOOL)arg2;
 - (void)residentDevice:(id)arg1 didUpdateName:(id)arg2;
 - (void)residentDevice:(id)arg1 didUpdateStatus:(unsigned long long)arg2;
+- (void)startHomeSensingIdleTimer;
 - (void)updateHome;
 - (void)updateSelectedHome;
+- (void)updateStopHomeSensingIdleTimerState;
 - (void)warmup;
 
 @end

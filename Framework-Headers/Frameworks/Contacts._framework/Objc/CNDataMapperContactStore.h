@@ -32,12 +32,14 @@ __attribute__((visibility("hidden")))
 - (id)batchEnumeratorForFetchRequest:(id)arg1;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)clearChangeHistoryForClient:(id)arg1 toSequenceNumber:(long long)arg2 error:(id *)arg3;
+- (id)contactIdentifierWithMatchingDictionary:(id)arg1;
 - (id)contactIdentifiersForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
 - (id)contactsInContainerWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)defaultContainerIdentifier;
+- (id)descriptorForRequiredKeysForMatchingDictionary;
 - (BOOL)enumerateContactsAndMatchInfoWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)executeSaveRequest:(id)arg1 error:(id *)arg2;
@@ -50,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDataMapper:(id)arg1;
 - (id)initWithEnvironment:(id)arg1;
 - (BOOL)isValidSaveRequest:(id)arg1 error:(id *)arg2;
+- (id)matchingDictionaryForContact:(id)arg1;
 - (id)meContactIdentifierWithError:(id *)arg1;
 - (id)membersOfGroupWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id *)arg2;

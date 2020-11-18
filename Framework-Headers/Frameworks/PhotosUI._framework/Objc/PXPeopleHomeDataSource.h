@@ -36,11 +36,17 @@
 - (id)_dataSourceForIndexPath:(id)arg1;
 - (id)_dataSourceForSection:(unsigned long long)arg1;
 - (void)_loadObjectsAndUpdateMembersWithCompletion:(CDUnknownBlockType)arg1;
+- (unsigned long long)_sectionForType:(long long)arg1;
+- (void)addVisiblePerson:(id)arg1;
+- (void)cancelImageLoadingForItem:(id)arg1;
 - (id)changeDetailsForLibraryChange:(id)arg1 inSection:(unsigned long long)arg2;
-- (void)changeMembersAtIndexes:(id)arg1 toPersonType:(long long)arg2;
+- (void)changeMembersAtIndexPaths:(id)arg1 toPersonType:(long long)arg2;
 - (void)dealloc;
 - (void)imageAtIndexPath:(id)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
+- (void)imageAtIndexPath:(id)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3 fastDisplayBlock:(CDUnknownBlockType)arg4;
+- (id)indexPathForInsertingMember:(id)arg1 intoSection:(unsigned long long)arg2;
 - (id)indexPathOfMember:(id)arg1;
+- (id)indexPathOfMember:(id)arg1 ofType:(long long)arg2;
 - (id)initWithDelegate:(id)arg1;
 - (BOOL)isSectionDisclosed:(unsigned long long)arg1;
 - (void)loadAndStartListeningToLibraryNotifications;
@@ -48,7 +54,7 @@
 - (id)localizedTitleForSection:(unsigned long long)arg1;
 - (id)memberAtIndexPath:(id)arg1;
 - (id)membersInSection:(unsigned long long)arg1;
-- (void)moveMemberAtIndex:(id)arg1 toIndex:(id)arg2;
+- (void)moveMemberAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
 - (unsigned long long)numberOfMembersInSection:(unsigned long long)arg1;
 - (unsigned long long)numberOfSections;
 - (void)pauseListeningForChangesWithTimeout:(double)arg1;
@@ -56,6 +62,8 @@
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1 withPreparedInfo:(id)arg2;
 - (unsigned long long)photoQuantityAtIndexPath:(id)arg1;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
+- (void)reloadFromDatabase;
+- (void)removeVisiblePerson:(id)arg1;
 - (void)resumeListeningForChanges;
 - (void)setSection:(unsigned long long)arg1 disclosed:(BOOL)arg2;
 - (void)stopListeningToLibraryNotifications;

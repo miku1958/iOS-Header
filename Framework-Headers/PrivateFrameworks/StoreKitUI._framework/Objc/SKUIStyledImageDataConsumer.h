@@ -63,6 +63,7 @@
 + (id)productImageConsumerWithSize:(struct CGSize)arg1;
 + (id)productPageProductImageConsumer;
 + (id)purchasedIconConsumer;
++ (id)purchasedMessagesConsumer;
 + (id)purchasedProductImageConsumer;
 + (id)roomIconConsumer;
 + (id)roomProductImageConsumer;

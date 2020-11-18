@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSDictionary, NSNumber, NSString, NSURL;
 
@@ -15,9 +15,11 @@
     NSURL *_fileURL;
     NSData *_payloadData;
     NSDictionary *_messageItemInfo;
+    NSString *_accessibilityString;
 }
 
 @property (copy, nonatomic) NSString *GUID; // @synthesize GUID=_GUID;
+@property (strong, nonatomic) NSString *accessibilityString; // @synthesize accessibilityString=_accessibilityString;
 @property (strong, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (strong, nonatomic) NSDictionary *messageItemInfo; // @synthesize messageItemInfo=_messageItemInfo;
 @property (strong, nonatomic) NSData *payloadData; // @synthesize payloadData=_payloadData;

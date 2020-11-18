@@ -16,11 +16,13 @@
     NSString *_rawPassword;
     NSString *_continuationKey;
     NSString *_passwordResetKey;
+    NSString *_cloudKitToken;
 }
 
 @property (copy, nonatomic) NSString *DSID; // @synthesize DSID=_DSID;
 @property (readonly, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (readonly, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
+@property (copy, nonatomic) NSString *cloudKitToken; // @synthesize cloudKitToken=_cloudKitToken;
 @property (copy, nonatomic) NSString *continuationKey; // @synthesize continuationKey=_continuationKey;
 @property (copy, nonatomic) NSString *passwordResetKey; // @synthesize passwordResetKey=_passwordResetKey;
 @property (copy, nonatomic) NSString *rawPassword; // @synthesize rawPassword=_rawPassword;

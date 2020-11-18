@@ -5,10 +5,12 @@
 //
 
 @class NSString;
+@protocol GEOTransitRoutingIncidentMessage;
 
 @protocol GEODirectionsError
 
 @property (readonly, nonatomic) long long firstDirectionsErrorCode;
+@property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> incidentMessage;
 @property (readonly, nonatomic) NSString *localizedDescription;
 @property (readonly, nonatomic) NSString *localizedTitle;
 

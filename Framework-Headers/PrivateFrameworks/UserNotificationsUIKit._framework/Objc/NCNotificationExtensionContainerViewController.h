@@ -16,6 +16,8 @@
 {
     BOOL _userInteractionEnabled;
     BOOL _allowManualDismiss;
+    BOOL _defaultContentHidden;
+    BOOL _overridesDefaultTitle;
     id<NCNotificationCustomContentDelegate> _delegate;
     NSExtension *_extension;
     NCNotificationRequest *_notificationRequest;
@@ -30,6 +32,7 @@
 @property (strong, nonatomic) UIView *blockingView; // @synthesize blockingView=_blockingView;
 @property (readonly, nonatomic) NSString *contentExtensionIdentifier;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) BOOL defaultContentHidden; // @synthesize defaultContentHidden=_defaultContentHidden;
 @property (weak, nonatomic) id<NCNotificationCustomContentDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
@@ -37,10 +40,12 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCMediaPlayPauseButton *mediaPlayPauseButton; // @synthesize mediaPlayPauseButton=_mediaPlayPauseButton;
 @property (strong, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
+@property (nonatomic) BOOL overridesDefaultTitle; // @synthesize overridesDefaultTitle=_overridesDefaultTitle;
 @property (weak, nonatomic) NCNotificationAction *presentationSourceAction;
 @property (strong, nonatomic) NSMutableArray *queuedRequests; // @synthesize queuedRequests=_queuedRequests;
 @property (strong, nonatomic) id<_UNNotificationExtensionRemoteInterface> remoteService; // @synthesize remoteService=_remoteService;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *title;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 
 - (void).cxx_destruct;
@@ -54,19 +59,20 @@
 - (void)_setupExtensionViewController:(id)arg1;
 - (void)_setupMediaButton;
 - (void)_setupRemoteServiceInterface:(id)arg1;
+- (void)_teardownExtension;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canResignFirstResponder;
 - (unsigned long long)customContentLocation;
 - (void)dealloc;
-- (BOOL)defaultContentHidden;
-- (void)didReceiveNotificationRequest:(id)arg1;
+- (BOOL)didReceiveNotificationRequest:(id)arg1;
 - (id)initWithExtension:(id)arg1 forNotificationRequest:(id)arg2;
 - (void)loadAudioAccessoryView;
 - (void)loadExtension;
 - (void)notificationHost:(id)arg1 extensionDidCompleteResponse:(id)arg2 withOption:(unsigned long long)arg3;
 - (void)notificationHostExtension:(id)arg1 audioAccessoryViewLayerContextId:(unsigned int)arg2;
 - (void)notificationHostExtension:(id)arg1 setDismissEnabled:(BOOL)arg2;
+- (void)notificationHostExtension:(id)arg1 setTitle:(id)arg2;
 - (void)notificationHostExtensionDidUpdateControls:(id)arg1;
 - (void)notificationHostExtensionMediaPlayingDidPause:(id)arg1;
 - (void)notificationHostExtensionMediaPlayingDidStart:(id)arg1;
@@ -76,7 +82,9 @@
 - (void)playAudioMessage;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (BOOL)resignFirstResponder;
+- (void)setTitle:(id)arg1;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

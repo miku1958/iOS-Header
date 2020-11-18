@@ -16,7 +16,7 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSNumber, NSNumberFormatter, NSObject, NSString, PKFelicaPassProperties, PKLinkedApplication, PKPassHeaderView, PKPaymentApplication, PKPaymentPass, PKPaymentPassDetailActivationFooterView, PKPaymentVerificationController, PKPaymentWebService, PKSettingTableCell, UIColor, UISegmentedControl, UIView, UIVisualEffectView;
+@class NSArray, NSMutableDictionary, NSNumber, NSObject, NSString, PKFelicaPassProperties, PKLinkedApplication, PKPassHeaderView, PKPaymentApplication, PKPaymentPass, PKPaymentPassDetailActivationFooterView, PKPaymentVerificationController, PKPaymentWebService, PKSettingTableCell, UIColor, UISegmentedControl, UIView, UIVisualEffectView;
 @protocol OS_dispatch_source, PKPassDeleteHandler, PKPassLibraryDataProvider, PKPaymentDataProvider;
 
 @interface PKPaymentPassDetailViewController : PKSectionTableViewController <MFMailComposeViewControllerDelegate, PKPerformActionViewControllerDelegate, PKPaymentDataProviderDelegate, PKPaymentVerificationControllerDelegate, PKPassHeaderViewDelegate, UITableViewDataSource, UITableViewDelegate, PSStateRestoration, PKPaymentSetupDelegate>
@@ -32,7 +32,6 @@
     PKPaymentWebService *_webService;
     PKPaymentVerificationController *_verificationController;
     PKPaymentPassDetailActivationFooterView *_activationFooter;
-    NSNumberFormatter *_numberFormatter;
     PKSettingTableCell *_messagesSwitch;
     PKSettingTableCell *_transactionsSwitch;
     PKSettingTableCell *_automaticPresentationSwitch;
@@ -119,6 +118,7 @@
 - (double)_heightForPassStateSectionWithTableView:(id)arg1;
 - (id)_infoCellWithDescription:(id)arg1 forTableView:(id)arg2;
 - (id)_infoCellWithPrimaryText:(id)arg1 detailText:(id)arg2 cellStyle:(long long)arg3 forTableView:(id)arg4;
+- (BOOL)_isJapaneseRegion;
 - (id)_linkCellWithText:(id)arg1 forTableView:(id)arg2;
 - (id)_linkedAppCellForTableView:(id)arg1;
 - (id)_linkedApplicationCellForTableView:(id)arg1;
@@ -141,6 +141,7 @@
 - (void)_reloadTransactionSection;
 - (void)_reloadTransactionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_reloadView;
+- (void)_setFelicaProperties:(id)arg1;
 - (BOOL)_shouldShowAutomaticPresentation;
 - (BOOL)_shouldShowBillingAddressCell;
 - (BOOL)_shouldShowContactCell;

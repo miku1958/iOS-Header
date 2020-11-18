@@ -11,6 +11,7 @@
 }
 
 - (BOOL)_shouldConvertIdentifierFromMemory:(id)arg1 toMemory:(id)arg2;
+- (BOOL)_shouldConvertIdentifierFromMemoryInfo:(id)arg1 toMemoryInfo:(id)arg2;
 - (BOOL)reverseTransformTileIdentifier:(struct PXTileIdentifier *)arg1;
 - (BOOL)transformTileIdentifier:(struct PXTileIdentifier *)arg1 group:(unsigned long long *)arg2;
 

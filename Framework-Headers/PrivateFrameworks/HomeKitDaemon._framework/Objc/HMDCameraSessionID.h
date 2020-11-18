@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDDevice, NSString;
+@class HMDDevice, NSMutableDictionary, NSString;
 
 @interface HMDCameraSessionID : NSObject <NSCopying>
 {
@@ -19,19 +19,28 @@
     NSString *_cameraSessionAppID;
     NSString *_cameraProactiveSessionID;
     HMDDevice *_remoteDevice;
+    NSMutableDictionary *_milestones;
+    NSString *_deviceSectionName;
+    NSMutableDictionary *_deviceMilestones;
 }
 
 @property (readonly, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
 @property (readonly, nonatomic) NSString *cameraProactiveSessionID; // @synthesize cameraProactiveSessionID=_cameraProactiveSessionID;
 @property (readonly, nonatomic) NSString *cameraSessionAppID; // @synthesize cameraSessionAppID=_cameraSessionAppID;
 @property (readonly, nonatomic) NSString *descriptionString; // @synthesize descriptionString=_descriptionString;
+@property (readonly, nonatomic) NSMutableDictionary *deviceMilestones; // @synthesize deviceMilestones=_deviceMilestones;
+@property (readonly, nonatomic) NSString *deviceSectionName; // @synthesize deviceSectionName=_deviceSectionName;
+@property (readonly, nonatomic) NSMutableDictionary *milestones; // @synthesize milestones=_milestones;
 @property (readonly, nonatomic) HMDDevice *remoteDevice; // @synthesize remoteDevice=_remoteDevice;
 @property (readonly, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly, nonatomic, getter=isSPIClient) BOOL spiClient; // @synthesize spiClient=_spiClient;
 
++ (id)millisecondsSince1970;
 - (void).cxx_destruct;
 - (id)_createDescriptionString;
 - (id)_extractSessionAppID:(id)arg1;
+- (void)_prepareDeviceMilestones;
+- (void)addParameterFor:(id)arg1 value:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
@@ -39,6 +48,10 @@
 - (id)initWithAccessory:(id)arg1 sessionID:(id)arg2 message:(id)arg3;
 - (id)initWithAccessoryName:(id)arg1 sessionID:(id)arg2 cameraSessionAppID:(id)arg3 cameraProactiveSessionID:(id)arg4 remoteDevice:(id)arg5 spiClient:(BOOL)arg6;
 - (BOOL)isEqual:(id)arg1;
+- (void)markMilestoneFor:(id)arg1;
+- (void)markMilestoneForPath:(id)arg1;
+- (void)setParameterFor:(id)arg1 value:(id)arg2;
+- (void)setParameterForPath:(id)arg1 value:(id)arg2;
 
 @end
 

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)_accountCredentialForAccount:(id)arg1 withError:(id *)arg2;
 - (id)_initWithParentAccount:(id)arg1 inStore:(id)arg2;
 - (id)accountPropertiesForDataclass:(id)arg1;
+- (BOOL)canAuthWithCloudKit;
 - (id)cloudKitAuthTokenWithError:(id *)arg1;
 - (BOOL)cloudKitIsEnabled;
 - (BOOL)cloudPhotosIsEnabled;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)identifier;
 - (BOOL)isDataclassEnabled:(id)arg1;
 - (id)primaryEmail;
+- (void)saveVerifiedAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAccountProperiesInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)username;
 

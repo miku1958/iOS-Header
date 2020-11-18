@@ -7,7 +7,14 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol INSpeakableStringExport <NSObject, JSExport>
+
+@property (strong, nonatomic) NSString *identifier;
+@property (strong, nonatomic) NSString *pronunciationHint;
+@property (strong, nonatomic) NSString *spokenPhrase;
+
 - (id)init;
 @end
 

@@ -12,6 +12,8 @@
 {
 }
 
+@property (copy, nonatomic) NSString *mediaType;
+@property (copy, nonatomic) NSString *releaseDate;
 @property (copy, nonatomic) NSString *sortTitle;
 @property (copy, nonatomic) NSString *title;
 

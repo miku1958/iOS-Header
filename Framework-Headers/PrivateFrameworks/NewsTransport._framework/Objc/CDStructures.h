@@ -6,6 +6,12 @@
 
 #pragma mark Typedef'd Structures
 
+typedef struct {
+    int *list;
+    unsigned long long count;
+    unsigned long long size;
+} CDStruct_95bda58d;
+
 // Ambiguous groups
 typedef struct {
     unsigned int paidSubscriptionConversionPointType:1;
@@ -19,6 +25,10 @@ typedef struct {
 typedef struct {
     unsigned int coverArticleWidgetArticleCount:1;
 } CDStruct_bb0d9f0d;
+
+typedef struct {
+    unsigned int type:1;
+} CDStruct_f953fb60;
 
 typedef struct {
     unsigned int viewType:1;

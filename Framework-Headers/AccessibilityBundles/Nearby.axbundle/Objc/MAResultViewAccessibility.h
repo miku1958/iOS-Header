@@ -13,10 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axPrepareStarsView;
-- (id)accessibilityContainerElements;
 - (id)accessibilityLabel;
-- (void)dealloc;
 - (BOOL)isAccessibilityElement;
 
 @end

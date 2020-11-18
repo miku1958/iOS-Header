@@ -13,11 +13,12 @@
 #import <PhotosUICore/PXUIViewControllerZoomTransitionEndPoint-Protocol.h>
 #import <PhotosUICore/PXWidgetCompositionDelegate-Protocol.h>
 #import <PhotosUICore/UIViewControllerPreviewingDelegate-Protocol.h>
+#import <PhotosUICore/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 
 @class NSArray, NSMapTable, NSMutableArray, NSString, PXAssetCollectionActionController, PXBarsController, PXPhotosDetailsContext, PXPhotosDetailsHeaderTileWidget, PXPhotosDetailsSpecManager, PXPhotosDetailsViewModel, PXScrollViewController, PXSwipeSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetComposition, PXWidgetSpec, UIScrollView, UIView, _PXPhotosDetailsPreviewOrbContext;
 @protocol PXActionPerformerDelegate, PXUIWidget, UIViewControllerPreviewing;
 
-@interface PXPhotosDetailsUIViewController : UIViewController <PXWidgetCompositionDelegate, PXChangeObserver, PXUIViewControllerZoomTransitionEndPoint, UIViewControllerPreviewingDelegate, PXActionPerformerDelegate, PXScrollViewControllerObserver, PXPurgeableController>
+@interface PXPhotosDetailsUIViewController : UIViewController <PXWidgetCompositionDelegate, PXChangeObserver, PXUIViewControllerZoomTransitionEndPoint, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, PXActionPerformerDelegate, PXScrollViewControllerObserver, PXPurgeableController>
 {
     BOOL __hasAppeared;
     BOOL __shouldFocusHeader;
@@ -116,6 +117,7 @@
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (id)contentScrollView;
 - (void)dealloc;
+- (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContext:(id)arg1 configuration:(id)arg2;

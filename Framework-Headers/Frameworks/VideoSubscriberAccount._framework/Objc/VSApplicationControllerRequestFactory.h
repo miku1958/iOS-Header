@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface VSApplicationControllerRequestFactory : NSObject
 {
 }
@@ -14,7 +15,7 @@
 + (id)_authNRequestSAMLStringWithAuthenticationToken:(id)arg1 forced:(BOOL)arg2 error:(id *)arg3;
 + (id)_logoutSAMLRequestStringWithError:(id *)arg1;
 + (id)sharedFactory;
-- (id)_applicationControllerRequestWithType:(long long)arg1 SAMLRequestString:(id)arg2 authenticationToken:(id)arg3 requestorVerificationToken:(id)arg4 userInfo:(id)arg5;
+- (id)_applicationControllerRequestWithType:(long long)arg1 SAMLRequestString:(id)arg2 authenticationTokenBody:(id)arg3 requestorVerificationToken:(id)arg4 attributeNames:(id)arg5 userInfo:(id)arg6;
 - (id)accountMetadataApplicationControllerRequestWithAccountMetadataRequest:(id)arg1 authenticationToken:(id)arg2;
 - (id)authenticationApplicationControllerRequestWithAuthenticationToken:(id)arg1 forcedAuthentication:(BOOL)arg2;
 - (id)logoutApplicationControllerRequest;

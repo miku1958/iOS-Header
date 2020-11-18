@@ -14,11 +14,14 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_axFollowLink;
+- (id)_axITunesPlayButton;
+- (BOOL)_axPlayPause:(id)arg1;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 
 @end

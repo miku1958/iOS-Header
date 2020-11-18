@@ -13,7 +13,6 @@
 
 @property (nonatomic, getter=isBackgroundBlurred) BOOL backgroundBlurred;
 @property (nonatomic, getter=isBanner) BOOL banner;
-@property (strong, nonatomic) UIView *colorInfusionView;
 @property (readonly, nonatomic) UIView *customContentView;
 @property (copy, nonatomic) NSDate *date;
 @property (nonatomic, getter=isDateAllDay) BOOL dateAllDay;

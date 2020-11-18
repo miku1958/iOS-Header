@@ -39,6 +39,7 @@
     unsigned int _cachedCapabilities;
     unsigned int _lastUpdatedCapabilities;
     BOOL _requestingConnection;
+    NSMutableDictionary *_requestQOSClassCompletionBlocks;
 }
 
 @property (setter=_setAutoReconnect:) BOOL _autoReconnect; // @synthesize _autoReconnect;
@@ -53,6 +54,7 @@
 @property (readonly, nonatomic) BOOL isConnected;
 @property (readonly, nonatomic) BOOL isConnecting;
 @property (readonly, nonatomic) IMDaemonListener *listener; // @synthesize listener=_daemonListener;
+@property (strong, nonatomic) NSMutableDictionary *requestQOSClassCompletionBlocks; // @synthesize requestQOSClassCompletionBlocks=_requestQOSClassCompletionBlocks;
 @property (readonly, nonatomic, getter=isRequestingConnection) BOOL requestingConnection; // @synthesize requestingConnection=_requestingConnection;
 
 + (BOOL)_applicationWillTerminate;
@@ -71,6 +73,7 @@
 - (double)_connectionTimeout;
 - (void)_disconnectFromDaemonWithForce:(BOOL)arg1;
 - (void)_handleDaemonException:(id)arg1;
+- (void)_handleReceivedQOSClassWhileServicingRequestsNotification:(id)arg1;
 - (void)_listenerSetUpdated;
 - (void)_localObjectCleanup;
 - (BOOL)_makeConnectionWithLaunch:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -100,6 +103,7 @@
 - (void)remoteObjectDiedNotification:(id)arg1;
 - (BOOL)remoteObjectExists;
 - (BOOL)removeListenerID:(id)arg1;
+- (void)requestQOSClassOfAgentWhileServicingRequests:(CDUnknownBlockType)arg1;
 - (void)sendABInformationToDaemon;
 - (BOOL)setCapabilities:(unsigned int)arg1 forListenerID:(id)arg2;
 - (void)setDaemonLogsOutWithoutStatusListeners:(BOOL)arg1;

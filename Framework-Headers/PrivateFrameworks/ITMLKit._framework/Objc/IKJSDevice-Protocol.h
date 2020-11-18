@@ -6,20 +6,17 @@
 
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSString;
 
 @protocol IKJSDevice <JSExport>
 
 @property (readonly, nonatomic) NSString *appIdentifier;
 @property (readonly, nonatomic) NSString *appVersion;
-@property (readonly, nonatomic) BOOL isInRetailDemoMode;
+@property (readonly, nonatomic) BOOL isNetworkReachable;
 @property (readonly, nonatomic) NSString *model;
-@property (readonly, nonatomic) NSNumber *pixelRatio;
 @property (readonly, nonatomic) NSString *productType;
 @property (readonly, nonatomic) NSString *systemVersion;
-@property (readonly, nonatomic) NSString *vendorID;
 @property (readonly, nonatomic) NSString *vendorIdentifier;
 
-- (NSNumber *)capacity:(NSString *)arg1;
 @end
 

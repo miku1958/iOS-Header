@@ -8,21 +8,19 @@
 
 #import <CVML/CVMLClustering-Protocol.h>
 
-@class NSString, NSURL;
+@class CVMLClusteringLogger, CVMLSuggestionsLogger;
 
 @interface CVMLGreedyClustering : NSObject <CVMLClustering>
 {
     struct shared_ptr<vision::mod::GreedyClustererFacesAPI> m_ClusteringImpl;
-    NSString *_cacheFolderPath;
-    NSURL *_cacheFolderURL;
-    BOOL _logEnabled;
+    CVMLClusteringLogger *clusteringLogger;
+    CVMLSuggestionsLogger *suggestionsLogger;
 }
 
++ (BOOL)isLogEnabled;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (long long)_cancellableUpdate:(struct ImageDescriptorBufferFloat32 *)arg1 facesToMove:(vector_22dfb71c *)arg2;
-- (void)_logString:(id)arg1;
-- (id)_reduceIdsToOnePerCluster:(id)arg1 allIds:(id)arg2;
 - (BOOL)addDescriptorIds:(id)arg1 withSimilarityMatrix:(id)arg2 error:(id *)arg3;
 - (void)addFaceObservations:(id)arg1 toFaceDescriptorBuffer:(struct ImageDescriptorBufferFloat32 *)arg2;
 - (BOOL)cancelClustering:(id *)arg1;
@@ -31,11 +29,15 @@
 - (id)getClusteredIds;
 - (id)getClustersForClusterIds:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)getClustersWithOptions:(id)arg1 error:(id *)arg2;
+- (id)getDistanceBetweenLevel0ClustersWithFaceIds:(id)arg1;
 - (id)getDistances:(id)arg1 to:(id)arg2;
+- (id)getLevel0ClusteredIdsForFaceId:(id)arg1;
+- (id)getLevel1ClusteredIdsGroupedByLevel0ClustersForFaceId:(id)arg1;
 - (id)getRepresentativenessForFaces:(id)arg1 error:(id *)arg2;
 - (id)initWithOptions:(id)arg1 error:(id *)arg2;
 - (id)refinedSuggestionsForClusterIds:(id)arg1 fromClusters:(id)arg2 affinityThreshold:(float)arg3 error:(id *)arg4;
 - (id)suggestionsForClusterIds:(id)arg1 affinityThreshold:(float)arg2 error:(id *)arg3;
+- (id)suggestionsForClusterIdsWithFlags:(id)arg1 affinityThreshold:(float)arg2 error:(id *)arg3;
 
 @end
 

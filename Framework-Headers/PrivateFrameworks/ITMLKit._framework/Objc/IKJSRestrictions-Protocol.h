@@ -10,13 +10,9 @@
 
 @protocol IKJSRestrictions <JSExport>
 
-@property (readonly, nonatomic) BOOL allowArtistActivity;
 @property (readonly, nonatomic) BOOL allowsErotica;
 @property (readonly, nonatomic) BOOL allowsExplicit;
-@property (readonly, nonatomic) BOOL appAnalyticsAllowed;
-@property (readonly, nonatomic) BOOL appInstallationAllowed;
-@property (readonly, nonatomic) long long maxAppRank;
-@property (readonly, nonatomic) NSString *maxAppRating;
+@property (readonly, nonatomic) BOOL allowsITunes;
 @property (readonly, nonatomic) long long maxMovieRank;
 @property (readonly, nonatomic) long long maxTVShowRank;
 

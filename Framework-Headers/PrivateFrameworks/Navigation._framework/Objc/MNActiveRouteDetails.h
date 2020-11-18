@@ -8,10 +8,15 @@
 
 #import <Navigation/NSCopying-Protocol.h>
 
-@class GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEORoute, GEOTransitDecoderData, GEOTransitSuggestedRoute, NSData;
+@class GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEORoute, GEOTransitDecoderData, GEOTransitSuggestedRoute, NSData, NSMutableArray;
 
 @interface MNActiveRouteDetails : PBCodable <NSCopying>
 {
+    struct {
+        unsigned int *list;
+        unsigned long long count;
+        unsigned long long size;
+    } _trafficIncidentOffsets;
     GEOTransitDecoderData *_decoderData;
     GEOComposedWaypoint *_destination;
     int _navigationType;
@@ -23,6 +28,7 @@
     NSData *_routeDetailsID;
     unsigned int _routeIndex;
     GEOTransitSuggestedRoute *_suggestedRoute;
+    NSMutableArray *_trafficIncidents;
     int _transportType;
     struct {
         unsigned int navigationType:1;
@@ -55,13 +61,22 @@
 @property (strong, nonatomic) NSData *routeDetailsID; // @synthesize routeDetailsID=_routeDetailsID;
 @property (nonatomic) unsigned int routeIndex; // @synthesize routeIndex=_routeIndex;
 @property (strong, nonatomic) GEOTransitSuggestedRoute *suggestedRoute; // @synthesize suggestedRoute=_suggestedRoute;
+@property (readonly, nonatomic) unsigned int *trafficIncidentOffsets;
+@property (readonly, nonatomic) unsigned long long trafficIncidentOffsetsCount;
+@property (strong, nonatomic) NSMutableArray *trafficIncidents; // @synthesize trafficIncidents=_trafficIncidents;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 
++ (Class)trafficIncidentsType;
 - (void).cxx_destruct;
 - (int)StringAsNavigationType:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
+- (void)addTrafficIncidentOffsets:(unsigned int)arg1;
+- (void)addTrafficIncidents:(id)arg1;
+- (void)clearTrafficIncidentOffsets;
+- (void)clearTrafficIncidents;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
@@ -69,6 +84,10 @@
 - (void)mergeFrom:(id)arg1;
 - (id)navigationTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setTrafficIncidentOffsets:(unsigned int *)arg1 count:(unsigned long long)arg2;
+- (unsigned int)trafficIncidentOffsetsAtIndex:(unsigned long long)arg1;
+- (id)trafficIncidentsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)trafficIncidentsCount;
 - (id)transportTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

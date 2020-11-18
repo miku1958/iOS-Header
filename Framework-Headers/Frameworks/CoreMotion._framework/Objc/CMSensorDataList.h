@@ -8,14 +8,14 @@
 
 #import <CoreMotion/NSFastEnumeration-Protocol.h>
 
-@class CLSensorRecorderAccelMeta, CMSensorRecorderInternal, NSArray, NSMutableArray;
+@class CLSensorRecorderSensorMeta, CMSensorRecorderInternal, NSArray, NSMutableArray;
 @protocol OS_xpc_object;
 
 @interface CMSensorDataList : NSObject <NSFastEnumeration>
 {
     CMSensorRecorderInternal *fProxy;
     NSObject<OS_xpc_object> *fDataBuffer;
-    CLSensorRecorderAccelMeta *fCurrentBlock;
+    CLSensorRecorderSensorMeta *fCurrentBlock;
     unsigned long long fCurrentBlockIdentifier;
     long long fCurrentBlockDataIdentifier;
     double fCurrentBlockStartTime;
@@ -26,9 +26,11 @@
     unsigned long long fStartingIdentifier;
     long long fRetrievedDataBufferIdentifier;
     unsigned long long fBlockOffset;
-    struct Unpacker fAccelUnpacker;
-    NSMutableArray *fCachedAccel;
+    struct AccelUnpacker fAccelUnpacker;
+    struct GyroUnpacker fGyroUnpacker;
+    NSMutableArray *fCachedData;
     NSArray *fMetaArray;
+    int fDataType;
 }
 
 - (id).cxx_construct;
@@ -36,8 +38,8 @@
 - (BOOL)_updatePointers;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
-- (id)initFrom:(double)arg1 to:(double)arg2;
-- (id)initWithIdentifier:(unsigned long long)arg1;
+- (id)initFrom:(double)arg1 to:(double)arg2 withType:(int)arg3;
+- (id)initWithIdentifier:(unsigned long long)arg1 andType:(int)arg2;
 
 @end
 

@@ -21,7 +21,7 @@
     id _userData;
     BOOL _sendPending;
     BOOL _releaseWhenDone;
-    int _lock;
+    struct os_unfair_lock_s _lock;
 }
 
 @property (readonly, strong) UIImage *image; // @dynamic image;

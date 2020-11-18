@@ -12,6 +12,7 @@
 - (void)__performUpdateWithReplyHandler:(void (^)(unsigned long long, BOOL))arg1;
 - (void)__prepareForAnimationsForRequestWithIdentifier:(NSUUID *)arg1 withReplyHandler:(void (^)(void))arg2;
 - (void)__requestEncodedLayerTreeToURL:(NSURL *)arg1 withReplyHandler:(void (^)(NSError *))arg2;
+- (void)__updateVisibilityState:(long long)arg1;
 - (void)__viewWillTransitionToSize:(struct CGSize)arg1 requestIdentifier:(NSUUID *)arg2;
 
 @optional

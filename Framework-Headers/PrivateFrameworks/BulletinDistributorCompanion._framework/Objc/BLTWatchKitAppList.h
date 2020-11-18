@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableArray;
+#import <BulletinDistributorCompanion/BLTDebugObserverWatchKitAppList-Protocol.h>
+
+@class NSDictionary, NSMutableArray, NSString;
 @protocol BLTWatchKitAppListDelegate;
 
-@interface BLTWatchKitAppList : NSObject
+@interface BLTWatchKitAppList : NSObject <BLTDebugObserverWatchKitAppList>
 {
     NSDictionary *_appsByAppBundleID;
     struct _opaque_pthread_mutex_t _lock;
@@ -19,8 +21,12 @@
     id<BLTWatchKitAppListDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<BLTWatchKitAppListDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (getter=isLoaded) BOOL loaded; // @synthesize loaded=_loaded;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_fetchWatchKitInfo;

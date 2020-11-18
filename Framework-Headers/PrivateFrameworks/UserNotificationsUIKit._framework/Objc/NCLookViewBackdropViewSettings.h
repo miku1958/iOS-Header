@@ -15,6 +15,7 @@
 
 + (id)lookViewBackdropViewSettingsWithBlur:(BOOL)arg1;
 + (id)lookViewBackdropViewSettingsWithBlur:(BOOL)arg1 darken:(BOOL)arg2;
++ (id)lookViewBackdropViewSettingsWithBlur:(BOOL)arg1 darken:(BOOL)arg2 materialSettings:(id)arg3;
 - (void)setDefaultValues;
 
 @end

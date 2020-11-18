@@ -31,7 +31,6 @@
 - (void)_updateUID;
 - (id)account;
 - (id)attachmentStorageLocation;
-- (BOOL)canBeDeleted;
 - (void)commit;
 - (long long)compareByUidWithMessage:(id)arg1;
 - (unsigned long long)conversationFlags;

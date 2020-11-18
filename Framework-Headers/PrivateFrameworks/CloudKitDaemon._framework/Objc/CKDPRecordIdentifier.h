@@ -10,7 +10,6 @@
 
 @class CKDPIdentifier, CKDPRecordZoneIdentifier;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRecordIdentifier : PBCodable <NSCopying>
 {
     CKDPIdentifier *_value;
@@ -23,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDPRecordZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
 
 - (void).cxx_destruct;
-- (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

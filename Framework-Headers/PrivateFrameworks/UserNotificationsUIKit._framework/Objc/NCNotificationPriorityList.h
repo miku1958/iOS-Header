@@ -21,6 +21,7 @@
 - (id)_identifierForNotificationRequest:(id)arg1;
 - (unsigned long long)_indexOfRequestMatchingNotificationRequest:(id)arg1;
 - (unsigned long long)_insertionIndexForNotificationRequest:(id)arg1;
+- (id)allNotificationRequests;
 - (id)clearAllRequests;
 - (id)clearNonPersistentRequests;
 - (BOOL)containsNotificationRequestMatchingRequest:(id)arg1;

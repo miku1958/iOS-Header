@@ -8,14 +8,14 @@
 
 #import <PhotosUICore/PXPeopleDragAndDropCollectionViewDelegate-Protocol.h>
 #import <PhotosUICore/PXPeopleHomeDataSourceDelegate-Protocol.h>
-#import <PhotosUICore/UICollectionViewDataSourcePrefetching-Protocol.h>
+#import <PhotosUICore/PXPeoplePreviewActionViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUICore/UIViewControllerPreviewingDelegate-Protocol.h>
 
 @class NSIndexPath, NSString, PXPeopleHomeDataSource, PXPeopleProgressManager, UIBarButtonItem, UILongPressGestureRecognizer;
 
-@interface PXPeopleHomeViewController : UICollectionViewController <PXPeopleDragAndDropCollectionViewDelegate, UIGestureRecognizerDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, UIViewControllerPreviewingDelegate, PXPeopleHomeDataSourceDelegate>
+@interface PXPeopleHomeViewController : UICollectionViewController <PXPeopleDragAndDropCollectionViewDelegate, UIGestureRecognizerDelegate, UICollectionViewDelegateFlowLayout, UIViewControllerPreviewingDelegate, PXPeopleHomeDataSourceDelegate, PXPeoplePreviewActionViewControllerDelegate>
 {
     struct {
         unsigned int dragTimerFired:1;
@@ -24,6 +24,7 @@
     } _dragFlags;
     BOOL _ignoreChangeUpdates;
     BOOL _needToCheckProgress;
+    BOOL _databaseUpdateQueued;
     BOOL _pendingChanges;
     UILongPressGestureRecognizer *_dragRecognizer;
     unsigned long long _mode;
@@ -33,15 +34,16 @@
     UIBarButtonItem *_selectItem;
     UIBarButtonItem *_debugMenuItem;
     PXPeopleProgressManager *_progressManager;
+    double _lastUpdateTime;
     PXPeopleHomeDataSource *_dataSource;
-    NSIndexPath *_sourceDragIndex;
-    NSIndexPath *_proposedDropIndex;
+    NSIndexPath *_sourceDragIndexPath;
     struct CGSize _priorityItemSize;
     struct CGSize _nonPriorityItemSize;
     struct CGPoint _lastDragPoint;
 }
 
 @property (strong, nonatomic) PXPeopleHomeDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property (nonatomic, getter=isDatabaseUpdateQueued) BOOL databaseUpdateQueued; // @synthesize databaseUpdateQueued=_databaseUpdateQueued;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) UIBarButtonItem *debugMenuItem; // @synthesize debugMenuItem=_debugMenuItem;
@@ -54,6 +56,7 @@
 @property (strong, nonatomic) UIBarButtonItem *hideToolbarItem; // @synthesize hideToolbarItem=_hideToolbarItem;
 @property BOOL ignoreChangeUpdates; // @synthesize ignoreChangeUpdates=_ignoreChangeUpdates;
 @property (nonatomic) struct CGPoint lastDragPoint; // @synthesize lastDragPoint=_lastDragPoint;
+@property (nonatomic) double lastUpdateTime; // @synthesize lastUpdateTime=_lastUpdateTime;
 @property (strong, nonatomic) UIBarButtonItem *mergeToolbarItem; // @synthesize mergeToolbarItem=_mergeToolbarItem;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property BOOL needToCheckProgress; // @synthesize needToCheckProgress=_needToCheckProgress;
@@ -61,9 +64,8 @@
 @property (nonatomic) BOOL pendingChanges; // @synthesize pendingChanges=_pendingChanges;
 @property struct CGSize priorityItemSize; // @synthesize priorityItemSize=_priorityItemSize;
 @property (strong, nonatomic) PXPeopleProgressManager *progressManager; // @synthesize progressManager=_progressManager;
-@property (strong, nonatomic) NSIndexPath *proposedDropIndex; // @synthesize proposedDropIndex=_proposedDropIndex;
 @property (strong, nonatomic) UIBarButtonItem *selectItem; // @synthesize selectItem=_selectItem;
-@property (strong, nonatomic) NSIndexPath *sourceDragIndex; // @synthesize sourceDragIndex=_sourceDragIndex;
+@property (strong, nonatomic) NSIndexPath *sourceDragIndexPath; // @synthesize sourceDragIndexPath=_sourceDragIndexPath;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
@@ -96,7 +98,6 @@
 - (void)_redetectFaces;
 - (unsigned long long)_requiredFooterStyle;
 - (void)_resetDragFlags;
-- (void)_resetSourceDragCell;
 - (id)_rightBarItemsForMode:(unsigned long long)arg1;
 - (void)_selectAction:(id)arg1;
 - (void)_setFooterDisclosureButtonsHidden:(BOOL)arg1;
@@ -105,6 +106,7 @@
 - (void)_startProgressMonitoring;
 - (void)_stopProgressMonitoring;
 - (id)_toolBarItemsForMode:(unsigned long long)arg1;
+- (void)_updateDelayTime;
 - (void)_updateFavoriteShelfAndFooters;
 - (void)_updateNavTitleForIndexes:(id)arg1;
 - (void)_updateToolbarItemsForIndexes:(id)arg1;
@@ -112,6 +114,7 @@
 - (BOOL)collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
@@ -119,30 +122,30 @@
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 moveItemAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 targetIndexPathForMoveFromItemAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionViewDidEndDrag:(id)arg1;
 - (void)collectionViewDidEndInteractiveMode:(id)arg1;
+- (void)collectionViewDidLayout:(id)arg1;
 - (void)commonInit;
 - (void)contentSizeCategoryDidChangeNotification:(id)arg1;
 - (struct CGPath *)createShapePathForBoundsRect:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)disclosureButtonTapped:(id)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (void)handleDragToDeadSpace;
-- (void)handleMoveFromIndex:(id)arg1 toIndex:(id)arg2 updateDataSource:(BOOL)arg3;
+- (void)handleMoveFromIndexPath:(id)arg1 toIndexPath:(id)arg2;
 - (void)handleReorderingGesture:(id)arg1;
 - (id)init;
 - (id)initWithProgressManager:(id)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (void)peopleHomeDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
+- (void)peopleHomeDataSourceDidReceivePersonChanges:(id)arg1;
 - (void)peopleHomeDataSourceMembersChanged:(id)arg1;
+- (void)peoplePreviewActionViewController:(id)arg1 wantsToChangePerson:(id)arg2 ofType:(long long)arg3 toType:(long long)arg4;
 - (void)ppt_navigateToPhotosDetails;
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
-- (void)processDragState;
+- (void)reloadDataSource;
 - (void)showDetailsForMemberAtIndexPath:(id)arg1;
 - (void)toggleHiddenStateForMemberAtIndexPath:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

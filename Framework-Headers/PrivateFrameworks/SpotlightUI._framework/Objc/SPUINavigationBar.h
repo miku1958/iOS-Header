@@ -26,6 +26,7 @@
 - (void)performShowSeparator:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)performUpdateBlurProgress:(double)arg1 animated:(BOOL)arg2;
 - (void)pushNavigationItem:(id)arg1;
+- (void)setRoundedCornerVisible:(BOOL)arg1;
 - (void)showSeparator:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateBackgroundViewVisibility;
 - (void)updateBlurProgress:(double)arg1 animated:(BOOL)arg2;

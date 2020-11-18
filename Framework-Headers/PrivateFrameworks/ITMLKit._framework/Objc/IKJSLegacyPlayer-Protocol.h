@@ -6,11 +6,6 @@
 
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class IKDOMElement;
-
 @protocol IKJSLegacyPlayer <JSExport>
-
-@property (readonly, weak, nonatomic) IKDOMElement *currentAVMediaElement;
-
 @end
 

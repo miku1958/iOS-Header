@@ -6,12 +6,13 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDAchievementAssetManager, HDAppSubscriptionManager, HDAuthorizationManager, HDBackgroundTaskScheduler, HDContentProtectionManager, HDCurrentActivitySummaryHelper, HDDataProvenanceManager, HDDeviceEntity, HDDeviceManager, HDFitnessFriendsManager, HDHealthServiceManager, HDNanoSyncManager, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDProfile, HDRoutineGateway, HDServiceConnectionManager, HDUserCharacteristicsManager, HKObject, HKSampleType, NSArray, NSDate, NSDictionary, NSObject, NSString, NSTimeZone, NSURL, NSUUID, _HKBehavior, _HKFirstPartyWorkoutSnapshot;
+@class HDAchievementAssetManager, HDAchievementDefinitionAlertManager, HDAppSubscriptionManager, HDAuthorizationManager, HDBackgroundTaskScheduler, HDContentProtectionManager, HDCurrentActivitySummaryHelper, HDDataProvenanceManager, HDDeviceEntity, HDDeviceManager, HDFitnessFriendsManager, HDHealthServiceManager, HDNanoSyncManager, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDProfile, HDRoutineGateway, HDServiceConnectionManager, HDUserCharacteristicsManager, HKObject, HKSampleType, NSArray, NSDate, NSDictionary, NSObject, NSString, NSTimeZone, NSURL, NSUUID, _HKBehavior, _HKFirstPartyWorkoutSnapshot;
 @protocol HDHealthDaemonReadyObserver, HDHealthDatabase, HDNanoAlertSuppressionService, HDViewOnWakeService, OS_dispatch_queue;
 
 @protocol HDHealthDaemon <NSObject>
 
 @property (strong, nonatomic) HDAchievementAssetManager *achievementAssetManager;
+@property (strong, nonatomic) HDAchievementDefinitionAlertManager *achievementDefinitionAlertManager;
 @property (strong, nonatomic) id<HDNanoAlertSuppressionService> alertSuppressionService;
 @property (readonly, nonatomic) HDAuthorizationManager *authorizationManager;
 @property (readonly) HDBackgroundTaskScheduler *backgroundTaskScheduler;

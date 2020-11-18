@@ -6,12 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-#import <PassKitUIFoundation/PKSubglyphViewDelegate-Protocol.h>
+#import <PassKitUIFoundation/PKFingerprintGlyphViewDelegate-Protocol.h>
 
-@class CALayer, NSMutableArray, NSString, PKCheckGlyphLayer, PKPhoneGlyphLayer, PKSubglyphView, UIColor;
+@class CALayer, NSMutableArray, NSString, PKCheckGlyphLayer, PKFingerprintGlyphView, PKPhoneGlyphLayer, UIColor;
 @protocol PKGlyphViewDelegate;
 
-@interface PKGlyphView : UIView <PKSubglyphViewDelegate>
+@interface PKGlyphView : UIView <PKFingerprintGlyphViewDelegate>
 {
     long long _style;
     unsigned long long _transitionIndex;
@@ -25,7 +25,7 @@
         unsigned int showingPhone:1;
         unsigned int phoneRotated:1;
     } _layoutFlags;
-    PKSubglyphView *_subglyphView;
+    PKFingerprintGlyphView *_fingerprintView;
     PKPhoneGlyphLayer *_phoneLayer;
     PKCheckGlyphLayer *_checkLayer;
     double _phoneAspectRatio;
@@ -41,7 +41,7 @@
 @property (readonly, nonatomic) struct CGImage *customImage; // @synthesize customImage=_customImage;
 @property (readonly, nonatomic) struct UIEdgeInsets customImageAlignmentEdgeInsets; // @synthesize customImageAlignmentEdgeInsets=_customImageAlignmentEdgeInsets;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKGlyphViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKGlyphViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL fadeOnRecognized;
 @property (readonly) unsigned long long hash;
@@ -72,6 +72,7 @@
 - (void)_updatePhoneWiggleIfNecessary;
 - (id)createCustomImageLayer;
 - (void)dealloc;
+- (void)fingerprintGlyphView:(id)arg1 didLayoutContentLayer:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithStyle:(long long)arg1;
@@ -81,7 +82,6 @@
 - (void)setSecondaryColor:(struct UIColor *)arg1 animated:(BOOL)arg2;
 - (void)setState:(long long)arg1;
 - (void)setState:(long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)subglyphView:(id)arg1 didLayoutContentLayer:(id)arg2;
 - (void)updateRasterizationScale:(double)arg1;
 
 @end

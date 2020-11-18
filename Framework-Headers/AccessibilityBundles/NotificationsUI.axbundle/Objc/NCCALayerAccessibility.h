@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NotificationsUI/__NCCALayerAccessibility_super.h>
+#import "__NCCALayerAccessibility_super.h"
 
 @interface NCCALayerAccessibility : __NCCALayerAccessibility_super
 {

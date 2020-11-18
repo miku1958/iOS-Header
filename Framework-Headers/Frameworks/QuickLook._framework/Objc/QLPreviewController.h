@@ -37,6 +37,7 @@
     NSDate *_lastCrashTimeStamp;
     unsigned long long _numberOfRetries;
     BOOL _viewWillAppearPerformed;
+    BOOL _rotationEnabled;
     BOOL _overlayHidden;
     BOOL _fullScreen;
     BOOL _previousStatusBarHidden;
@@ -227,7 +228,9 @@
 - (void)setOverlayHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setPrinter:(id)arg1;
 - (void)setQuickLookVisibility:(unsigned long long)arg1 animated:(BOOL)arg2;
+- (void)setRotationEnabled:(BOOL)arg1;
 - (void)setToolbarCanBeVisible:(BOOL)arg1;
+- (BOOL)shouldAutorotate;
 - (void)showNoDataViewIfNeeded;
 - (void)updateKeyCommands;
 - (void)updateOverlayAnimated:(BOOL)arg1 animatedButtons:(BOOL)arg2 forceRefresh:(BOOL)arg3 withTraitCollection:(id)arg4;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNScheduler-Protocol.h>
 
@@ -36,6 +36,7 @@
 - (void)advanceTo:(unsigned long long)arg1;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2 qualityOfService:(unsigned long long)arg3;
+- (BOOL)hasJobsScheduled;
 - (id)init;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;

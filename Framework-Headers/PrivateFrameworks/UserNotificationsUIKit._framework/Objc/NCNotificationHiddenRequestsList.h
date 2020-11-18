@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet;
+@class NSMutableDictionary, NSMutableSet, NSSet;
 
 @interface NCNotificationHiddenRequestsList : NSObject
 {
@@ -14,6 +14,7 @@
     NSMutableDictionary *_hiddenRequests;
 }
 
+@property (readonly, nonatomic) NSSet *allNotificationRequests;
 @property (strong, nonatomic) NSMutableDictionary *hiddenRequests; // @synthesize hiddenRequests=_hiddenRequests;
 @property (strong, nonatomic) NSMutableSet *hiddenSectionStrings; // @synthesize hiddenSectionStrings=_hiddenSectionStrings;
 
@@ -22,6 +23,7 @@
 - (id)_storageStringForSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
 - (void)addHiddenNotificationRequest:(id)arg1;
 - (void)addHiddenSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
+- (void)clearAllNotificationRequests;
 - (id)hiddenNotificationRequestsForSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
 - (id)init;
 - (BOOL)isHiddenNotificationRequest:(id)arg1;

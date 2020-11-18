@@ -6,25 +6,29 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class NSAttributedString, NSMutableArray, NSString, UILabel;
+@class NSArray, NSAttributedString, NSLayoutConstraint, NSString, UILabel;
 
 @interface HUItemTableHeaderFooterView : UITableViewHeaderFooterView
 {
+    BOOL _includeBottomSpacing;
     UILabel *_messageLabel;
-    NSMutableArray *_constraints;
-    struct UIEdgeInsets _messageLabelInsets;
+    NSArray *_constraints;
+    NSLayoutConstraint *_bottomSpacingConstraint;
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedMessage;
-@property (strong, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
+@property (strong, nonatomic) NSLayoutConstraint *bottomSpacingConstraint; // @synthesize bottomSpacingConstraint=_bottomSpacingConstraint;
+@property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
+@property (nonatomic) BOOL includeBottomSpacing; // @synthesize includeBottomSpacing=_includeBottomSpacing;
 @property (copy, nonatomic) NSString *message;
 @property (strong, nonatomic) UILabel *messageLabel; // @synthesize messageLabel=_messageLabel;
-@property (nonatomic) struct UIEdgeInsets messageLabelInsets; // @synthesize messageLabelInsets=_messageLabelInsets;
 @property (nonatomic) unsigned long long numberOfLines;
 
++ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)_updateConstraints;
+- (double)_bottomSpacing;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (void)updateConstraints;
 
 @end
 

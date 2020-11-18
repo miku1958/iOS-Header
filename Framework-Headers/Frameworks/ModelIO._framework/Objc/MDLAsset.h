@@ -40,11 +40,13 @@
 + (id)placeLightProbesWithDensity:(float)arg1 heuristic:(long long)arg2 usingIrradianceDataSource:(id)arg3;
 - (void).cxx_destruct;
 - (void)_commonInit;
+- (void)_conformVertexBuffers:(id)arg1 error:(id *)arg2;
 - (void)addObject:(id)arg1;
 - (struct)boundingBoxAtTime:(double)arg1;
 - (id)childObjectsOfClass:(Class)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (void)enumerateChildObjectsOfClass:(Class)arg1 usingBlock:(CDUnknownBlockType)arg2 stopPointer:(BOOL *)arg3;
 - (BOOL)exportAssetToURL:(id)arg1;
 - (BOOL)exportAssetToURL:(id)arg1 error:(id *)arg2;
 - (id)init;

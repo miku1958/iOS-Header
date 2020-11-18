@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _isFullScreen;
     long long _lastSavedEditNumber;
     BOOL _showingSignatureView;
+    BOOL _showingSignatureManagerView;
     QLMUViewController *_markupViewController;
     BOOL _hasChangesToUndo;
     double _topInset;
@@ -41,8 +42,10 @@ __attribute__((visibility("hidden")))
 - (void)buttonPressedWithIdentifier:(id)arg1;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPinchToDismiss;
+- (BOOL)canRotate;
 - (BOOL)canShowToolBar;
 - (BOOL)canSwipeToDismiss;
+- (BOOL)controller:(id)arg1 shouldOpenLinkAtURL:(id)arg2;
 - (struct UIEdgeInsets)customEdgeInsets;
 - (struct UIEdgeInsets)customSketchOverlayInsets;
 - (void)loadPreviewControllerWithPreviewItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -53,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)scrollView;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAcceptTouch:(id)arg1 ofGestureRecognizer:(id)arg2;
+- (void)showingSignatureManagerView:(BOOL)arg1;
 - (void)showingSignatureView:(BOOL)arg1;
 - (id)toolbarButtons;
 - (void)traitCollectionDidChange:(id)arg1;

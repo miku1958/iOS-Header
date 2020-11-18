@@ -6,10 +6,11 @@
 
 #import <ContactsAutocomplete/NSObject-Protocol.h>
 
-@protocol CNAutocompletePerformanceProbe, CNAutocompleteUsageMonitorProbe;
+@protocol CNAutocompletePerformanceProbe, CNAutocompleteSuggestionsProbe, CNAutocompleteUsageMonitorProbe;
 
 @protocol CNAutocompleteProbeProvider <NSObject>
 - (id<CNAutocompletePerformanceProbe>)performanceProbe;
+- (id<CNAutocompleteSuggestionsProbe>)suggestionsProbe;
 - (id<CNAutocompleteUsageMonitorProbe>)usageMonitorProbe;
 @end
 

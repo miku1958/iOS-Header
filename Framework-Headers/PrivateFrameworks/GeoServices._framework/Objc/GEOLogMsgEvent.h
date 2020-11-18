@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLogMsgEventCacheHit, GEOLogMsgEventDirections, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventNetwork, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStaleResource, GEOLogMsgEventStateTiming, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventUserAction, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray;
+@class GEOLogMsgEventCacheHit, GEOLogMsgEventDirections, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventNetwork, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStaleResource, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventUserAction, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray;
 
 @interface GEOLogMsgEvent : PBCodable <NSCopying>
 {
@@ -30,6 +30,7 @@
     GEOLogMsgEventStateTiming *_stateTimingEvent;
     LOGMSGEVENTLogMsgEventTableBookedSession *_tableBookedSession;
     LOGMSGEVENTLogMsgEventTableBookingSession *_tableBookingSession;
+    GEOLogMsgEventTelemetric *_telemetric;
     GEOLogMsgEventTileSetState *_tileSetStateEvent;
     GEOLogMsgEventTimeToLeaveHypothesis *_timeToLeaveHypothesisEvent;
     GEOLogMsgEventTimeToLeaveInitialTravelTime *_timeToLeaveInitialTravelTimeEvent;
@@ -60,6 +61,7 @@
 @property (readonly, nonatomic) BOOL hasStateTimingEvent;
 @property (readonly, nonatomic) BOOL hasTableBookedSession;
 @property (readonly, nonatomic) BOOL hasTableBookingSession;
+@property (readonly, nonatomic) BOOL hasTelemetric;
 @property (readonly, nonatomic) BOOL hasTileSetStateEvent;
 @property (readonly, nonatomic) BOOL hasTimeToLeaveHypothesisEvent;
 @property (readonly, nonatomic) BOOL hasTimeToLeaveInitialTravelTimeEvent;
@@ -80,6 +82,7 @@
 @property (strong, nonatomic) GEOLogMsgEventStateTiming *stateTimingEvent; // @synthesize stateTimingEvent=_stateTimingEvent;
 @property (strong, nonatomic) LOGMSGEVENTLogMsgEventTableBookedSession *tableBookedSession; // @synthesize tableBookedSession=_tableBookedSession;
 @property (strong, nonatomic) LOGMSGEVENTLogMsgEventTableBookingSession *tableBookingSession; // @synthesize tableBookingSession=_tableBookingSession;
+@property (strong, nonatomic) GEOLogMsgEventTelemetric *telemetric; // @synthesize telemetric=_telemetric;
 @property (strong, nonatomic) GEOLogMsgEventTileSetState *tileSetStateEvent; // @synthesize tileSetStateEvent=_tileSetStateEvent;
 @property (strong, nonatomic) GEOLogMsgEventTimeToLeaveHypothesis *timeToLeaveHypothesisEvent; // @synthesize timeToLeaveHypothesisEvent=_timeToLeaveHypothesisEvent;
 @property (strong, nonatomic) GEOLogMsgEventTimeToLeaveInitialTravelTime *timeToLeaveInitialTravelTimeEvent; // @synthesize timeToLeaveInitialTravelTimeEvent=_timeToLeaveInitialTravelTimeEvent;

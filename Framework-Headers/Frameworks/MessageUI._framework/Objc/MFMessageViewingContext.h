@@ -35,7 +35,6 @@
     NSObject<SGSuggestionsServiceMailProtocol> *_suggestionsService;
     NSConditionLock *_suggestionsLock;
     NSArray *_suggestions;
-    BOOL _isReload;
     long long _loadAlternative;
     NSError *_messageAnalysisError;
 }
@@ -75,7 +74,6 @@
 - (id)attachments;
 - (void)cancelLoad;
 - (void)dealloc;
-- (void)forceReload;
 - (BOOL)hasAnalyzedMessageWithTimeout:(id)arg1;
 - (id)initWithMessage:(id)arg1 attachmentManager:(id)arg2;
 - (void)load;
@@ -86,7 +84,6 @@
 - (void)loadWithPriority:(int)arg1;
 - (void)setLoadTask:(id)arg1;
 - (id)uniqueID;
-- (void)unload;
 
 @end
 

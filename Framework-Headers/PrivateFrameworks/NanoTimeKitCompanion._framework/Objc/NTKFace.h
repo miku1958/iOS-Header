@@ -90,6 +90,7 @@
 - (BOOL)_allowsEditing;
 - (BOOL)_applyConfiguration:(id)arg1 allowFailure:(BOOL)arg2;
 - (void)_cleanupEditOptions;
+- (void)_commonInit;
 - (BOOL)_complication:(id)arg1 appearsInDailySnapshotForSlot:(id)arg2;
 - (id)_complicationMigrationPaths;
 - (id)_configurationFromOldEncodingWithCoder:(id)arg1;
@@ -155,6 +156,7 @@
 - (unsigned long long)indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEquivalentToFace:(id)arg1;
 - (id)nameOfSelectedOptionForCustomEditMode:(long long)arg1;
 - (id)namesOfSelectedOptionsForCustomEditModes;

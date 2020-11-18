@@ -20,16 +20,16 @@
     MISSING_TYPE *persistentConstraints;
 }
 
-@property (nonatomic, strong) NSURL *clockAppSectionURL; // @synthesize clockAppSectionURL;
+@property (nonatomic, copy) NSURL *clockAppSectionURL; // @synthesize clockAppSectionURL;
 @property (nonatomic) BOOL showRowSeparator; // @synthesize showRowSeparator;
 
-+ (id)constraintsForBindingFrameWithView:(id)arg1 toFrameOfView:(id)arg2;
++ (id)constraintsForBindingFrame:(id)arg1 toFrameOfView:(id)arg2;
 + (BOOL)requiresConstraintBasedLayout;
 - (CDUnknownBlockType).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)updateConstraints;
-- (void)updateWithAlarmWithAlarm:(id)arg1;
+- (void)updateWithAlarm:(id)arg1;
 
 @end
 

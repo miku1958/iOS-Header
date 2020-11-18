@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSTimer;
+@class NSMutableDictionary, NSTimer;
 
 @interface TIPreferencesController : NSObject
 {
+    NSMutableDictionary *_configuredDomains;
+    NSMutableDictionary *_configuredPreferences;
     NSTimer *_synchronizePreferencesTimer;
     double _lastSynchronizePreferencesTime[5];
     BOOL isInternalInstall;
@@ -20,27 +22,28 @@
 @property (nonatomic) BOOL isInternalInstall; // @synthesize isInternalInstall;
 
 + (id)sharedPreferencesController;
-- (int)MCValueForManagedKey:(int)arg1;
+- (int)MCValueForManagedPreferenceKey:(id)arg1;
+- (void)_configureDomain:(id)arg1 notification:(id)arg2;
+- (void)_configureDomains;
+- (void)_configureKey:(id)arg1 domain:(id)arg2 defaultValue:(id)arg3;
+- (void)_configurePreferences;
 - (BOOL)boolForKey:(int)arg1;
+- (BOOL)boolForPreferenceKey:(id)arg1;
 - (void)clearSynchronizePreferencesTimer;
 - (void)dealloc;
-- (id)defaultForKey:(int)arg1;
-- (CDStruct_5072e809 *)domainForType:(int)arg1;
-- (CDStruct_5072e809 *)domains;
 - (id)init;
 - (BOOL)isKeyLockedDown:(int)arg1;
+- (BOOL)isPreferenceKeyLockedDown:(id)arg1;
 - (void)managedKeyboardSettingDidChange:(id)arg1;
-- (CDStruct_982099be *)preferences;
 - (void)preferencesChangedCallback:(id)arg1;
-- (void)setAutocorrectionEnabled:(BOOL)arg1;
-- (void)setCheckSpellingEnabled:(BOOL)arg1;
-- (void)setPredictionEnabled:(BOOL)arg1;
 - (void)setValue:(id)arg1 forKey:(int)arg2;
-- (void)setValue:(id)arg1 forManagedKey:(int)arg2;
+- (void)setValue:(id)arg1 forManagedPreferenceKey:(id)arg2;
+- (void)setValue:(id)arg1 forPreferenceKey:(id)arg2;
+- (void)synchronizeDomainIfNeedsGet:(id)arg1;
 - (void)synchronizePreferences;
 - (void)touchSynchronizePreferencesTimer;
 - (id)valueForKey:(int)arg1;
-- (id)valueForManagedKey:(int)arg1;
+- (id)valueForPreferenceKey:(id)arg1;
 
 @end
 

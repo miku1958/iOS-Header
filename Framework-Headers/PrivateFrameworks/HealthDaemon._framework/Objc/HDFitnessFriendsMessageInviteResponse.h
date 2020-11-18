@@ -8,10 +8,11 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDFitnessFriendsMessageShareLocations, NSString;
+@class HDFitnessFriendsMessageActivityDataPreview, HDFitnessFriendsMessageShareLocations, NSString;
 
 @interface HDFitnessFriendsMessageInviteResponse : PBCodable <NSCopying>
 {
+    HDFitnessFriendsMessageActivityDataPreview *_activityDataPreview;
     NSString *_handshakeToken;
     NSString *_inviteeBuildNumber;
     NSString *_inviteeCloudKitAddress;
@@ -24,7 +25,9 @@
     } _has;
 }
 
+@property (strong, nonatomic) HDFitnessFriendsMessageActivityDataPreview *activityDataPreview; // @synthesize activityDataPreview=_activityDataPreview;
 @property (strong, nonatomic) NSString *handshakeToken; // @synthesize handshakeToken=_handshakeToken;
+@property (readonly, nonatomic) BOOL hasActivityDataPreview;
 @property (readonly, nonatomic) BOOL hasHandshakeToken;
 @property (readonly, nonatomic) BOOL hasInviteeBuildNumber;
 @property (readonly, nonatomic) BOOL hasInviteeCloudKitAddress;

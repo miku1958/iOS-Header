@@ -6,10 +6,12 @@
 
 #import <PhotosUICore/PXPeopleDataSource.h>
 
-@class NSArray, NSObject, PXPeopleDetailsContext;
+#import <PhotosUICore/PHPhotoLibraryChangeObserver-Protocol.h>
+
+@class NSArray, NSObject, NSString, PXPeopleDetailsContext;
 @protocol OS_dispatch_queue;
 
-@interface PXPeopleWidgetDataSource : PXPeopleDataSource
+@interface PXPeopleWidgetDataSource : PXPeopleDataSource <PHPhotoLibraryChangeObserver>
 {
     NSObject<OS_dispatch_queue> *_fetchQueue;
     BOOL _containsSocialGroups;
@@ -20,9 +22,13 @@
 
 @property (nonatomic) BOOL containsSocialGroups; // @synthesize containsSocialGroups=_containsSocialGroups;
 @property (strong, nonatomic) PXPeopleDetailsContext *context; // @synthesize context=_context;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isForOneUp; // @synthesize isForOneUp=_isForOneUp;
 @property (readonly, nonatomic) NSArray *members; // @dynamic members;
 @property (nonatomic) BOOL prefetchingStarted; // @synthesize prefetchingStarted=_prefetchingStarted;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_socialGroupsForIdentifiers:(id)arg1;
@@ -31,6 +37,7 @@
 - (void)imageCacheDidChanged:(id)arg1;
 - (id)initWithName:(id)arg1 objectsReloadBlock:(CDUnknownBlockType)arg2;
 - (void)loadMembersWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)photoLibraryDidChange:(id)arg1;
 - (void)prefetchThumbnailsForTargetSize:(struct CGSize)arg1 maxFetchCount:(unsigned long long)arg2;
 - (void)startListeningForChanges;
 - (void)stopListeningForChanges;

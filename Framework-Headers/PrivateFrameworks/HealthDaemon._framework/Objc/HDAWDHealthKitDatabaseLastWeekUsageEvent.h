@@ -12,6 +12,8 @@
 {
     long long _databaseSizeMB;
     long long _highFrequencyDataSizeMB;
+    long long _lastMonthDatabaseSizeIncreaseMB;
+    long long _lastMonthRowsAdded;
     long long _manuallyEnteredTypesCount;
     long long _percentageDeletedObjects;
     long long _rowCountObjects;
@@ -23,6 +25,8 @@
     struct {
         unsigned int databaseSizeMB:1;
         unsigned int highFrequencyDataSizeMB:1;
+        unsigned int lastMonthDatabaseSizeIncreaseMB:1;
+        unsigned int lastMonthRowsAdded:1;
         unsigned int manuallyEnteredTypesCount:1;
         unsigned int percentageDeletedObjects:1;
         unsigned int rowCountObjects:1;
@@ -38,6 +42,8 @@
 @property (nonatomic) BOOL hasDatabaseSizeMB;
 @property (nonatomic) BOOL hasHasWatchSource;
 @property (nonatomic) BOOL hasHighFrequencyDataSizeMB;
+@property (nonatomic) BOOL hasLastMonthDatabaseSizeIncreaseMB;
+@property (nonatomic) BOOL hasLastMonthRowsAdded;
 @property (nonatomic) BOOL hasManuallyEnteredTypesCount;
 @property (nonatomic) BOOL hasPercentageDeletedObjects;
 @property (nonatomic) BOOL hasRowCountCDA;
@@ -47,6 +53,8 @@
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasWatchSource; // @synthesize hasWatchSource=_hasWatchSource;
 @property (nonatomic) long long highFrequencyDataSizeMB; // @synthesize highFrequencyDataSizeMB=_highFrequencyDataSizeMB;
+@property (nonatomic) long long lastMonthDatabaseSizeIncreaseMB; // @synthesize lastMonthDatabaseSizeIncreaseMB=_lastMonthDatabaseSizeIncreaseMB;
+@property (nonatomic) long long lastMonthRowsAdded; // @synthesize lastMonthRowsAdded=_lastMonthRowsAdded;
 @property (nonatomic) long long manuallyEnteredTypesCount; // @synthesize manuallyEnteredTypesCount=_manuallyEnteredTypesCount;
 @property (nonatomic) long long percentageDeletedObjects; // @synthesize percentageDeletedObjects=_percentageDeletedObjects;
 @property (nonatomic) int rowCountCDA; // @synthesize rowCountCDA=_rowCountCDA;

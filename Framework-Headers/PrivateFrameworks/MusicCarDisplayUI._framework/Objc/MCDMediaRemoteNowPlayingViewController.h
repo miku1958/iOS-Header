@@ -45,6 +45,7 @@
     } __supportedCommandsFlags;
     NSDictionary *_supportedCommands;
     BOOL _observingMediaRemoteCommandChanges;
+    BOOL _handledWillAppear;
     BOOL _showNavigationBar;
     NSString *_expectedPlaybackBundleIdentifier;
     NSDictionary *_nowPlayingInfo;
@@ -65,6 +66,7 @@
 - (unsigned int)_bestCommandForFastForwardPosition;
 - (unsigned int)_bestCommandForRewindPosition;
 - (void)_handleActionSheet;
+- (void)_handleWillAppear;
 - (struct _MRMediaRemoteCommandInfo *)_mediaCommandInfoForCommand:(unsigned int)arg1;
 - (void)_nowPlayingAppChangedIsPlaying:(id)arg1;
 - (BOOL)_nowPlayingBundleIDMatchesExpectedID;
@@ -112,9 +114,11 @@
 - (void)setRightTitle:(id)arg1;
 - (long long)shuffleTypeForNowPlayingViewController:(id)arg1;
 - (id)titleForNowPlayingController:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

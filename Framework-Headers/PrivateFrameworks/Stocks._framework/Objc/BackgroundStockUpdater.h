@@ -6,11 +6,17 @@
 
 #import <Stocks/StockUpdater.h>
 
+@class NSURLSession;
+
 @interface BackgroundStockUpdater : StockUpdater
 {
 }
 
-- (id)init;
+@property (readonly, nonatomic) NSURLSession *session;
+
+- (id)_backgroundSession;
+- (void)_createDefaultSession;
+- (void)reestablishBackgroundSession;
 - (id)taskForRequest:(id)arg1 delegate:(id)arg2;
 
 @end

@@ -28,6 +28,7 @@
 + (int)_typeFromCode:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_dictionaryRepresentation;
 - (id)_responseMessagePBRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

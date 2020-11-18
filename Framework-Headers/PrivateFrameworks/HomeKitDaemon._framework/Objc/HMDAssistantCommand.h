@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/AFServiceCommand-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAssistantCommandHelper, HMDAssistantGather, HMHAPMetadata, NSArray, NSObject, NSString, NSUUID;
+@class HMDAssistantCommandHelper, HMDAssistantGather, NSArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDAssistantCommand : SAHACommand <AFServiceCommand, HMFLogging>
@@ -23,7 +23,6 @@
     NSUUID *_primaryHomeUUID;
     NSString *_currentHomeName;
     NSUUID *_currentHomeUUID;
-    HMHAPMetadata *_metadata;
     HMDAssistantCommandHelper *_assistantCommandHelper;
 }
 
@@ -36,7 +35,6 @@
 @property (strong, nonatomic) HMDAssistantGather *gather; // @synthesize gather=_gather;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *homeKitObjects; // @synthesize homeKitObjects=_homeKitObjects;
-@property (strong, nonatomic) HMHAPMetadata *metadata; // @synthesize metadata=_metadata;
 @property (nonatomic) long long numberOfHomes; // @synthesize numberOfHomes=_numberOfHomes;
 @property (strong, nonatomic) NSString *primaryHomeName; // @synthesize primaryHomeName=_primaryHomeName;
 @property (strong, nonatomic) NSUUID *primaryHomeUUID; // @synthesize primaryHomeUUID=_primaryHomeUUID;
@@ -58,12 +56,12 @@
 - (void)executeActionSet:(id)arg1 action:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)filterObjects:(id)arg1 byAttribute:(id)arg2 forActionType:(id)arg3;
 - (id)filterObjects:(id)arg1 byCharacteristicType:(id)arg2;
-- (id)filterObjects:(id)arg1 forCharacteristicType:(id)arg2;
+- (id)filterObjects:(id)arg1 forCharacteristicTypes:(id)arg2;
 - (id)filterObjects:(id)arg1 forCharacteristics:(id)arg2;
 - (id)filterObjects:(id)arg1 forGroup:(id)arg2;
 - (id)filterObjects:(id)arg1 forRoom:(id)arg2 andZone:(id)arg3;
 - (id)getLocaleUnits:(id)arg1;
-- (id)getReportingUnits:(id)arg1 hapCharacteristicType:(id)arg2;
+- (id)getReportingUnits:(id)arg1 hapCharacteristicType:(id)arg2 attribute:(id)arg3;
 - (id)getValueOfType:(id)arg1 action:(id)arg2;
 - (id)getoverridingHomeUUIDFromName:(id)arg1;
 - (void)handleCommandWithCompletionHandler:(CDUnknownBlockType)arg1;

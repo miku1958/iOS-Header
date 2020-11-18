@@ -11,11 +11,11 @@
 
 @protocol INHomeAttributeExport <NSObject, JSExport>
 
-@property (readonly, nonatomic) BOOL boolValue;
-@property (readonly, nonatomic) double doubleValue;
-@property (readonly, copy, nonatomic) NSString *stringValue;
-@property (readonly, nonatomic) long long type;
-@property (readonly, nonatomic) long long valueType;
+@property (nonatomic) BOOL boolValue;
+@property (nonatomic) double doubleValue;
+@property (copy, nonatomic) NSString *stringValue;
+@property (nonatomic) long long type;
+@property (nonatomic) long long valueType;
 
 - (id)init;
 @end

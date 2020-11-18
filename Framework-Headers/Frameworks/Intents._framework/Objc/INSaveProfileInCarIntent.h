@@ -18,14 +18,17 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *profileLabel;
+@property (readonly, copy, nonatomic) NSString *profileName;
 @property (readonly, copy, nonatomic) NSNumber *profileNumber;
 @property (readonly) Class superclass;
 
+- (id)_dictionaryRepresentation;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
 - (id)initWithProfileNumber:(id)arg1 profileLabel:(id)arg2;
-- (void)setProfileLabel:(id)arg1;
+- (id)initWithProfileNumber:(id)arg1 profileName:(id)arg2;
+- (void)setProfileName:(id)arg1;
 - (void)setProfileNumber:(id)arg1;
 
 @end

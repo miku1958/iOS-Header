@@ -19,6 +19,7 @@
 + (BOOL)detectNLEvents;
 + (BOOL)detectStructuredEvents;
 + (long long)messagesToProcessImmediately;
++ (BOOL)onlyShowSignificantNLEvents;
 + (BOOL)onlyShowSignificantPseudoContacts;
 + (void)registerBlockOnSuggestionsSettingsChange:(CDUnknownBlockType)arg1;
 + (void)removeDeprecatedDefaults;
@@ -37,6 +38,7 @@
 + (void)setMessagesToProcessImmediately:(long long)arg1;
 + (void)setMessagesToProcessImmediatelyForTests:(long long)arg1;
 + (void)setNLEventsDetectionEnabledForTests:(BOOL)arg1;
++ (void)setOnlyShowSignificantNLEvents:(BOOL)arg1;
 + (void)setOnlyShowSignificantPseudoContacts:(BOOL)arg1;
 + (void)setProactiveEnabledForTests:(BOOL)arg1;
 + (void)setShowCancelledEventsForTests:(BOOL)arg1;

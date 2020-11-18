@@ -20,8 +20,10 @@
     NSMutableArray *_paymentApplications;
     NSString *_primaryAccountIdentifier;
     NSString *_primaryAccountNumberSuffix;
+    BOOL _supportsAutomaticSelection;
     struct {
         unsigned int ingestedDate:1;
+        unsigned int supportsAutomaticSelection:1;
     } _has;
 }
 
@@ -33,12 +35,14 @@
 @property (readonly, nonatomic) BOOL hasPassID;
 @property (readonly, nonatomic) BOOL hasPrimaryAccountIdentifier;
 @property (readonly, nonatomic) BOOL hasPrimaryAccountNumberSuffix;
+@property (nonatomic) BOOL hasSupportsAutomaticSelection;
 @property (nonatomic) double ingestedDate; // @synthesize ingestedDate=_ingestedDate;
 @property (strong, nonatomic) NSData *manifestHash; // @synthesize manifestHash=_manifestHash;
 @property (strong, nonatomic) NSString *passID; // @synthesize passID=_passID;
 @property (strong, nonatomic) NSMutableArray *paymentApplications; // @synthesize paymentApplications=_paymentApplications;
 @property (strong, nonatomic) NSString *primaryAccountIdentifier; // @synthesize primaryAccountIdentifier=_primaryAccountIdentifier;
 @property (strong, nonatomic) NSString *primaryAccountNumberSuffix; // @synthesize primaryAccountNumberSuffix=_primaryAccountNumberSuffix;
+@property (nonatomic) BOOL supportsAutomaticSelection; // @synthesize supportsAutomaticSelection=_supportsAutomaticSelection;
 
 + (Class)associatedWebDomainsType;
 + (Class)paymentApplicationsType;

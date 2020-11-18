@@ -8,7 +8,7 @@
 
 #import <ITMLKit/IKJSMediaItem-Protocol.h>
 
-@class IKAppMediaItemBridge, NSArray, NSNumber, NSString;
+@class IKAppMediaItemBridge, NSArray, NSDictionary, NSNumber, NSString;
 
 @interface IKJSMediaItem : IKJSObject <IKJSMediaItem>
 {
@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSArray *highlightGroups;
 @property (strong, nonatomic) NSArray *interstitials;
 @property (nonatomic) BOOL isExplicit;
+@property (strong, nonatomic) NSDictionary *metadata;
 @property (strong, nonatomic) NSNumber *resumeTime; // @synthesize resumeTime=_resumeTime;
 @property (strong, nonatomic) NSString *subtitle;
 @property (strong, nonatomic) NSString *title;

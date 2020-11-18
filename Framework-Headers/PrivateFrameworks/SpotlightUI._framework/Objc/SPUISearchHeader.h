@@ -14,6 +14,7 @@
 @interface SPUISearchHeader : UIView <UITextFieldDelegate>
 {
     BOOL _willClear;
+    BOOL _isShowingCornerRadius;
     id<SPUISearchHeaderDelegate> _delegate;
     unsigned long long _suggestionID;
     _UILegibilitySettings *_legibilitySettings;
@@ -32,6 +33,7 @@
 @property (weak) id<SPUISearchHeaderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isShowingCornerRadius; // @synthesize isShowingCornerRadius=_isShowingCornerRadius;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (strong) SPUITextField *searchField; // @synthesize searchField=_searchField;
 @property (strong) NSLayoutConstraint *searchFieldTrailingConstraint; // @synthesize searchFieldTrailingConstraint=_searchFieldTrailingConstraint;
@@ -54,6 +56,7 @@
 - (void)linkWithKeyboardController:(id)arg1;
 - (id)nextResponder;
 - (void)searchForSuggestedQuery:(id)arg1;
+- (void)setRoundedCornerVisible:(BOOL)arg1;
 - (void)showCancelButton:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)textDidChange:(id)arg1;
 - (void)textDidChange:(id)arg1 whyQuery:(unsigned long long)arg2 allowZKW:(BOOL)arg3;

@@ -15,14 +15,18 @@
 {
     NRDevice *_nrDevice;
     NSUUID *_pairingID;
+    BOOL _hasCachedNearby;
+    BOOL _cachedIsNearby;
     long long _state;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
+@property (nonatomic) BOOL cachedIsNearby; // @synthesize cachedIsNearby=_cachedIsNearby;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *deviceClass;
 @property (readonly, nonatomic) long long deviceCode;
+@property (nonatomic) BOOL hasCachedNearby; // @synthesize hasCachedNearby=_hasCachedNearby;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDate *lastActiveDate;
 @property (readonly, nonatomic) NRDevice *nrDevice; // @synthesize nrDevice=_nrDevice;

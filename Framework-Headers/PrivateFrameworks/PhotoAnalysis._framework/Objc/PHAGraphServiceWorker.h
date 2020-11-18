@@ -152,6 +152,7 @@
 - (void)requestSortedArrayOfFaceCollectionIdentifiers:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestTitleForAssetCollectionWithLocalIdentifier:(id)arg1 format:(long long)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)requestTitleForCollectionMomentListWithLocalIdentifier:(id)arg1 format:(long long)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)requestTitleForMemoryWithLocalIdentifier:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestTitleForPersonIdentifiers:(id)arg1 format:(long long)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)requestWriteAdditionalDataToSnapshotResults:(id)arg1 forFilenameKey:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)setupGraphManager;
@@ -159,6 +160,7 @@
 - (void)setupPredicateValidator;
 - (BOOL)shouldAllowBackgroundActivityWithDescription:(id)arg1;
 - (BOOL)shouldCooldownForConstraintChange:(id)arg1;
+- (BOOL)shouldStopOperationInProgress;
 - (BOOL)shouldUnloadGraphOnCooldown;
 - (BOOL)shouldWarmupForConstraintChange:(id)arg1;
 - (void)shutdown;

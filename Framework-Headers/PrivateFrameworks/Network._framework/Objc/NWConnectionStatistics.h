@@ -30,8 +30,10 @@
 @property (readonly, nonatomic) BOOL connected;
 @property (readonly, nonatomic) int connectedInterfaceType;
 @property (readonly, nonatomic) unsigned int connectionEstablishmentTimeMsecs;
+@property (readonly, nonatomic) BOOL delegated;
 @property (readonly, nonatomic) BOOL dnsAnswersCached;
 @property (readonly, nonatomic) unsigned int dnsResolvedTimeMsecs;
+@property (readonly, nonatomic) BOOL fallbackEligible;
 @property (readonly, nonatomic) unsigned int flowDurationMsecs;
 @property (readonly, nonatomic) int interfaceType;
 @property (readonly, nonatomic) BOOL kernelReportedStalls;

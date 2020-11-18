@@ -35,6 +35,8 @@
     NSMutableArray *_locationsCache;
     NSMutableArray *_locationsCacheLeeched;
     RTFMCScoreBoard *_scoreBoard;
+    RTFMCScoreBoard *_scoreBoardForUnusualLocation;
+    RTFMCScoreBoard *_scoreBoardForUsualLocation;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -59,6 +61,8 @@
 @property (strong, nonatomic) RTVehicleEvent *pendingVehicleParkedEvent; // @synthesize pendingVehicleParkedEvent=_pendingVehicleParkedEvent;
 @property (strong, nonatomic) RTPurgeManager *purgeManager; // @synthesize purgeManager=_purgeManager;
 @property (strong, nonatomic) RTFMCScoreBoard *scoreBoard; // @synthesize scoreBoard=_scoreBoard;
+@property (strong, nonatomic) RTFMCScoreBoard *scoreBoardForUnusualLocation; // @synthesize scoreBoardForUnusualLocation=_scoreBoardForUnusualLocation;
+@property (strong, nonatomic) RTFMCScoreBoard *scoreBoardForUsualLocation; // @synthesize scoreBoardForUsualLocation=_scoreBoardForUsualLocation;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL vehicleEventPendingDeletion; // @synthesize vehicleEventPendingDeletion=_vehicleEventPendingDeletion;
 @property (strong, nonatomic) RTVehicleEvent *vehicleEventPendingPersist; // @synthesize vehicleEventPendingPersist=_vehicleEventPendingPersist;
@@ -87,13 +91,17 @@
 - (void)_postBulletinNotificationIfAppropriate;
 - (void)_postVehicleReplacementBulletinNotificationWithVehicleEvent:(id)arg1 replacingEvent:(id)arg2;
 - (void)_processPendingVehicleEventAfterLocationFinalization;
+- (void)_recordMetricAssistanceEvent:(id)arg1;
+- (void)_recordMetricEngagementEvent:(id)arg1;
+- (void)_recordMetricParkingEvent:(id)arg1;
+- (void)_recordMetricSuppressedEvent;
 - (void)_registerScoreBoardSubmission;
 - (void)_restoreLastVehicleEvent;
 - (BOOL)_sameVehicleWithDeviceId:(id)arg1 otherDeviceId:(id)arg2;
 - (void)_submitFMCAssistanceInstanceWithIdentifier:(id)arg1 uiPlacement:(int)arg2 assistanceType:(int)arg3 assistanceValue:(int)arg4;
 - (void)_submitFMCCarParkedInstanceWithParkedEvents:(id)arg1;
-- (void)_submitFMCDailyAssessment;
-- (void)_submitFMCDailyAssessmentWithSubmissionHandler:(CDUnknownBlockType)arg1;
+- (void)_submitFMCDailyAssessments;
+- (void)_submitFMCDailyAssessmentsWithSubmissionHandler:(CDUnknownBlockType)arg1;
 - (void)_submitFMCReturnToCarInstanceWithIdentifier:(id)arg1 horizontalAccuracy:(int)arg2 horizontalDistance:(int)arg3;
 - (void)_submitFMCVehicleConnectionEventInstanceWithConnectionStatus:(int)arg1;
 - (void)_submitFMCVehicleConnectionEventInstanceWithConnectionStatus:(int)arg1 value:(double)arg2;

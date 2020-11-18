@@ -55,6 +55,7 @@
 - (void)notifyTextReplacementDidChange;
 - (void)pullMigrationSettings;
 - (void)pushAllLocalRecordsOnceIfNeeded;
+- (void)recordSyncStatus;
 - (void)requestSyncWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)resetMigrationState;
 - (void)respondToMigrationCompletion;

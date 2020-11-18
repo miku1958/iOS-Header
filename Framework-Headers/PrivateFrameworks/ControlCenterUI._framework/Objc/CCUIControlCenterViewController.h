@@ -11,17 +11,15 @@
 #import <ControlCenterUI/CCUIControlCenterPageContainerViewControllerDelegate-Protocol.h>
 #import <ControlCenterUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <ControlCenterUI/UIScrollViewDelegate-Protocol.h>
-#import <ControlCenterUI/_UISettingsKeyObserver-Protocol.h>
 
-@class CCUIControlCenterContainerView, CCUIControlCenterPageContainerViewController, CCUIControlCenterPageControl, CCUIControlCenterSettings, CCUIImmediateTouchScrollView, CCUISystemControlsPageViewController, NSArray, NSMapTable, NSMutableArray, NSString, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class CCUIControlCenterContainerView, CCUIControlCenterPageContainerViewController, CCUIControlCenterPageControl, CCUIControlCenterSettings, CCUIImmediateTouchScrollView, CCUISystemControlsPageViewController, NSArray, NSMutableArray, NSString, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol CCUIControlCenterViewControllerDelegate;
 
-@interface CCUIControlCenterViewController : UIViewController <UIGestureRecognizerDelegate, _UISettingsKeyObserver, UIScrollViewDelegate, CCUIControlCenterContainerViewDelegate, CCUIControlCenterPageContainerViewControllerDelegate, CCUIControlCenterObserver>
+@interface CCUIControlCenterViewController : UIViewController <UIGestureRecognizerDelegate, UIScrollViewDelegate, CCUIControlCenterContainerViewDelegate, CCUIControlCenterPageContainerViewControllerDelegate, CCUIControlCenterObserver>
 {
     CCUIControlCenterPageContainerViewController *_selectedViewController;
     NSMutableArray *_allPageContainerViewControllers;
     NSArray *_sortedVisibleViewControllers;
-    NSMapTable *_containerViewControllersToWallpaperViews;
     CCUISystemControlsPageViewController *_systemControlsPage;
     BOOL _needsViewControllerVisibilityUpdate;
     CCUIControlCenterContainerView *_containerView;
@@ -79,7 +77,6 @@
 - (void)_setContentViewContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (void)_updatePageControl;
 - (void)_updateScrollViewContentSize;
-- (void)_updateWallpaperColorInfusionVisibility;
 - (void)abortAnimatedTransition;
 - (void)containerViewController:(id)arg1 backdropViewDidUpdate:(id)arg2;
 - (void)containerViewControllerWantsDismissal:(id)arg1;
@@ -92,7 +89,6 @@
 - (void)controlCenterWillBeginTransition;
 - (void)controlCenterWillFinishTransitionOpen:(BOOL)arg1 withDuration:(double)arg2;
 - (void)controlCenterWillPresent;
-- (void)dealloc;
 - (BOOL)dismissModalFullScreenIfNeeded;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
@@ -109,7 +105,6 @@
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)scrollViewForContainerView:(id)arg1;
-- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (id)sortedVisibleViewControllers;
 - (id)view;
 - (id)viewControllers;

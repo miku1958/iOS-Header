@@ -61,7 +61,7 @@
 - (void)_clearCachedDescriptorsForIdentifier:(id)arg1;
 - (void)_connectHAPPeripheralWhenAllowed:(id)arg1;
 - (void)_connectPendingConnections;
-- (void)_createHAPAccessoryAndNotifyDelegateWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(BOOL)arg6 category:(id)arg7 connectionIdleTime:(unsigned char)arg8 format:(unsigned long long)arg9;
+- (void)_createHAPAccessoryAndNotifyDelegateWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(BOOL)arg6 configNumber:(id)arg7 category:(id)arg8 connectionIdleTime:(unsigned char)arg9 format:(unsigned long long)arg10;
 - (BOOL)_delegateRespondsToSelector:(SEL)arg1;
 - (void)_didDiscoverPeripheral:(id)arg1 accessoryName:(id)arg2 pairingIdentifier:(id)arg3 format:(unsigned long long)arg4 statusFlags:(id)arg5 stateNumber:(id)arg6 category:(id)arg7 configNumber:(id)arg8;
 - (void)_disconectFromHAPPeripheral:(id)arg1;
@@ -109,6 +109,7 @@
 - (long long)linkType;
 - (void)markNotifyingCharacteristicUpdatedOnPeripheral:(id)arg1;
 - (void)probeReachabilityForAccessoryServersWithIdentifiers:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)resetLastSeenForAccessoryServersWithIdentifers:(id)arg1;
 - (void)retrieveCurrentStateForIdentifer:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)setConnectionLatency:(long long)arg1 forPeripheral:(id)arg2;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
@@ -117,6 +118,7 @@
 - (void)stopDiscoveringAccessoryServers;
 - (void)stopTrackingBTLEAccessoriesWithIdentifiers:(id)arg1;
 - (void)updateCacheWithDescriptor:(id)arg1 forServiceInstance:(id)arg2;
+- (void)updateStateForIdentifier:(id)arg1 stateNumber:(id)arg2;
 
 @end
 

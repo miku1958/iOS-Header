@@ -25,6 +25,7 @@
 @property (readonly, copy, nonatomic) NSURL *contentURL;
 @property (readonly, nonatomic) FCCoverArt *coverArt;
 @property (readonly, nonatomic, getter=isDeleted) BOOL deleted;
+@property (readonly, copy, nonatomic) NSDate *displayDate;
 @property (readonly, copy, nonatomic) NSArray *endOfArticleTopicIDs;
 @property (readonly, nonatomic, getter=isFeatureCandidate) BOOL featureCandidate;
 @property (readonly, nonatomic) unsigned long long feedOrder;

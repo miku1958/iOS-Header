@@ -12,14 +12,17 @@
 
 @interface FCFeedItemFeature : NSObject <NSCopying>
 {
+    BOOL _queryable;
     NSString *_key;
     long long _type;
 }
 
 @property (readonly, nonatomic) NSString *key; // @synthesize key=_key;
+@property (nonatomic) BOOL queryable; // @synthesize queryable=_queryable;
 @property (readonly, nonatomic) NSString *topicID;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
++ (id)featureForAllArticles;
 + (id)featureForCoverArt;
 + (id)featureForPaidCoverArt;
 + (id)featureForTopicID:(id)arg1;

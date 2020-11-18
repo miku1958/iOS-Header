@@ -91,6 +91,7 @@
 @property (strong, nonatomic) NSDictionary *pendingURLResourceDictionary; // @synthesize pendingURLResourceDictionary=_pendingURLResourceDictionary;
 @property (strong, nonatomic) UIColor *segmentedSliderTrackColor; // @synthesize segmentedSliderTrackColor=_segmentedSliderTrackColor;
 @property (strong, nonatomic) UIColor *separatorColor; // @synthesize separatorColor=_separatorColor;
+@property (strong, nonatomic) id<PSSpecifierDataSource> specifierDataSource;
 @property (copy, nonatomic) NSString *specifierIDPendingPush; // @synthesize specifierIDPendingPush=_specifierIDPendingPush;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
@@ -160,6 +161,8 @@
 - (BOOL)getGroup:(long long *)arg1 row:(long long *)arg2 ofSpecifier:(id)arg3;
 - (BOOL)getGroup:(long long *)arg1 row:(long long *)arg2 ofSpecifierAtIndex:(long long)arg3;
 - (BOOL)getGroup:(long long *)arg1 row:(long long *)arg2 ofSpecifierID:(id)arg3;
+- (id)getGroupSpecifierForSpecifier:(id)arg1;
+- (id)getGroupSpecifierForSpecifierID:(id)arg1;
 - (BOOL)handlePendingURL;
 - (void)handleURL:(id)arg1;
 - (void)highlightSpecifierWithID:(id)arg1;
@@ -254,7 +257,6 @@
 - (id)specifier;
 - (id)specifierAtIndex:(long long)arg1;
 - (id)specifierAtIndexPath:(id)arg1;
-- (id)specifierDataSource;
 - (id)specifierForID:(id)arg1;
 - (id)specifierID;
 - (id)specifiers;

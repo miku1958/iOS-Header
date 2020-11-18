@@ -57,12 +57,14 @@
 - (void)_queue_nanoRegistryInfoChanged;
 - (BOOL)_shouldCompleteSetup;
 - (void)_waitUntilSubmanagersReady;
+- (void)acceptInviteRequestFromFriendWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addFriendsListObserver:(id)arg1;
 - (void)clearFriendListWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cloudKitAccountStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)daemonReady:(id)arg1;
 - (void)dealloc;
-- (void)fetchAndUpdateActivityDataForAllFriendsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchAllDataIfTimeSinceLastFetchIsGreaterThan:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchAllDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchAreMultipleDevicesSharingDataForSnapshotIndex:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)friends;
 - (BOOL)hasFriendsToShareWith;
@@ -73,7 +75,6 @@
 - (void)removeFriendWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeFriendsListObserver:(id)arg1;
 - (void)sendInviteRequestToDestination:(id)arg1 callerID:(id)arg2 serviceIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)sendInviteResponse:(long long)arg1 toFriendWithUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendWithdrawInviteRequestToFriendWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setActivityDataVisible:(BOOL)arg1 toFriendWithUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setMuteEnabled:(BOOL)arg1 forFriendWithUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;

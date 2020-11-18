@@ -55,6 +55,7 @@
 - (void)_invalidateActivityTimer;
 - (BOOL)_itemAlreadyAddedToLibrary;
 - (BOOL)_itemCanBeAddedToLibrary;
+- (BOOL)_itemCanCreateRadioStation;
 - (void)_itemChanged:(id)arg1;
 - (void)_itemIsExplicitDidChangeNotification:(id)arg1;
 - (void)_itemStoreIDDidChangeNotification:(id)arg1;

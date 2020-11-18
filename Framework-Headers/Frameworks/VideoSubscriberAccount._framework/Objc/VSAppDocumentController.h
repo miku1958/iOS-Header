@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)_stopObservingViewModel:(id)arg1;
 - (BOOL)_updateViewModel:(id)arg1 WithError:(id *)arg2;
 - (void)dealloc;
+- (BOOL)document:(id)arg1 evaluateStyleMediaQuery:(id)arg2;
 - (void)documentDidUpdate:(id)arg1;
 - (void)documentNeedsUpdate:(id)arg1;
 - (id)init;

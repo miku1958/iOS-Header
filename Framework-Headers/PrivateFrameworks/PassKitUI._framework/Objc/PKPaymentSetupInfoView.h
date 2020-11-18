@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class PKPaymentHeroImageController, PKPaymentSetupHeroView, PKPaymentSetupPrivacyFooterView, UIImageView, UILabel;
+@class NSString, PKPaymentHeroImageController, PKPaymentSetupHeroView, PKPaymentSetupPrivacyFooterView, UIImageView, UILabel;
 
 @interface PKPaymentSetupInfoView : UIView
 {
@@ -15,6 +15,7 @@
     PKPaymentSetupPrivacyFooterView *_privacyFooter;
     PKPaymentHeroImageController *_heroImageController;
     BOOL _hasSupportingHardware;
+    NSString *_region;
     BOOL _insetPrivacyFooter;
     PKPaymentSetupHeroView *_heroView;
     long long _context;
@@ -32,10 +33,11 @@
 - (void).cxx_destruct;
 - (id)_bodyFont;
 - (struct UIEdgeInsets)_bodyInsetsForSize:(struct CGSize)arg1;
+- (BOOL)_isJapaneseRegion;
 - (struct UIEdgeInsets)_privacyInsets;
 - (double)_textHeightForSize:(struct CGSize)arg1;
 - (id)_titleFont;
-- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2 heroImageController:(id)arg3 hasSupportingHardware:(BOOL)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2 heroImageController:(id)arg3 hasSupportingHardware:(BOOL)arg4 region:(id)arg5;
 - (BOOL)isBuddyiPad;
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;

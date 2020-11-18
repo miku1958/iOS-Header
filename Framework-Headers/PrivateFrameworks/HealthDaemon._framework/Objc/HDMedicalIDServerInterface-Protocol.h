@@ -11,6 +11,7 @@
 @protocol HDMedicalIDServerInterface <NSObject>
 - (void)remote_deleteMedicalIDDataWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_medicalIDDataCreateIfNecessary:(BOOL)arg1 completion:(void (^)(_HKMedicalIDData *, NSError *))arg2;
+- (void)remote_medicalIDEmergencyContactsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)remote_updateMedicalIDData:(_HKMedicalIDData *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 @end
 

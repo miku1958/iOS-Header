@@ -10,11 +10,11 @@
 {
     struct map<std::__1::basic_string<char>, std::__1::vector<std::__1::vector<quasar::LmeDataFactoryBase::Word, std::__1::allocator<quasar::LmeDataFactoryBase::Word>>, std::__1::allocator<std::__1::vector<quasar::LmeDataFactoryBase::Word, std::__1::allocator<quasar::LmeDataFactoryBase::Word>>>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::vector<std::__1::vector<quasar::LmeDataFactoryBase::Word, std::__1::allocator<quasar::LmeDataFactoryBase::Word>>, std::__1::allocator<std::__1::vector<quasar::LmeDataFactoryBase::Word, std::__1::allocator<quasar::LmeDataFactoryBase::Word>>>>>>> _userData;
     struct shared_ptr<quasar::LmeDataFactory> _dataFactory;
-    struct shared_ptr<sdapi::SdapiTokenizer> _tokenizer;
-    struct shared_ptr<quasar::G2P> _g2p;
+    struct unique_ptr<sdapi::SdapiTokenizer, std::__1::default_delete<sdapi::SdapiTokenizer>> _tokenizer;
+    struct unique_ptr<quasar::G2P, std::__1::default_delete<quasar::G2P>> _g2p;
     struct shared_ptr<quasar::PronCache<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>> _pronCache;
     struct BasicTextSanitizer _sanitizer;
-    struct shared_ptr<quasar::LmeData> _quasarLmeData;
+    struct unique_ptr<quasar::LmeData, std::__1::default_delete<quasar::LmeData>> _quasarLmeData;
 }
 
 + (void)initialize;

@@ -6,12 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <VideosExtras/CAAnimationDelegate-Protocol.h>
 #import <VideosExtras/VideosExtrasZoomingImageTransitionParticipant-Protocol.h>
 
 @class NSString, NSTimer, UIImage, VideosExtrasConstrainedArtworkContainerView;
 @protocol VideosExtrasSlideshowViewControllerDataSource;
 
-@interface VideosExtrasSlideshowViewController : UIViewController <VideosExtrasZoomingImageTransitionParticipant>
+@interface VideosExtrasSlideshowViewController : UIViewController <CAAnimationDelegate, VideosExtrasZoomingImageTransitionParticipant>
 {
     BOOL _animatingTransition;
     BOOL _viewVisible;

@@ -16,6 +16,7 @@
 - (BOOL)_accessibilityCanHandleContentPullDown;
 - (struct CGRect)_accessibilityContentFrame;
 - (struct UIEdgeInsets)_accessibilityContentInset;
+- (struct UIEdgeInsets)_accessibilityContentInsetForScrollingCollectionViewCellToVisible;
 - (struct CGPoint)_accessibilityContentOffset;
 - (BOOL)_accessibilityContentOffsetForScrollDirection:(int)arg1 newContentOffset:(struct CGPoint *)arg2 distanceMultiplier:(double)arg3;
 - (void)_accessibilityCurrentPage:(long long *)arg1 totalPages:(long long *)arg2;

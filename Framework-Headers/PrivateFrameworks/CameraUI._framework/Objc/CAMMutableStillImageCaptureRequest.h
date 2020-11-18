@@ -56,7 +56,7 @@
 @property (nonatomic) BOOL usesStillImageStabilization; // @dynamic usesStillImageStabilization;
 @property (copy, nonatomic) NSString *videoPersistenceUUID; // @dynamic videoPersistenceUUID;
 @property (nonatomic) BOOL wantsAudioForCapture; // @dynamic wantsAudioForCapture;
-@property (nonatomic) BOOL wantsAutoDuoImageFusion; // @dynamic wantsAutoDuoImageFusion;
+@property (nonatomic) BOOL wantsAutoDualCameraFusion; // @dynamic wantsAutoDualCameraFusion;
 @property (nonatomic) BOOL wantsHighResolutionStills; // @dynamic wantsHighResolutionStills;
 @property (nonatomic) BOOL wantsPortraitEffect; // @dynamic wantsPortraitEffect;
 @property (nonatomic) BOOL wantsSquareCrop; // @dynamic wantsSquareCrop;

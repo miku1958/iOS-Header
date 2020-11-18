@@ -12,6 +12,7 @@
 @property (readonly, nonatomic) NSString *px_stringByIndentingNewLines;
 
 - (BOOL)px_hasPrefixIgnoringCaseAndDiacritics:(id)arg1;
+- (BOOL)px_hasStringIgnoringCaseAndDiacritics:(id)arg1;
 - (id)px_stringByApplyingCapitalization:(long long)arg1;
 @end
 

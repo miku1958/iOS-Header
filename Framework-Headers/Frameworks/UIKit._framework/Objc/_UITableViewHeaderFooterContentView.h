@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)_updateConstraintsIfNeededPostponeVariableChangeNotifications:(BOOL)arg1;
+- (void)_updateConstraintsIfNeededWithViewForVariableChangeNotifications:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setBackgroundColor:(id)arg1;
 

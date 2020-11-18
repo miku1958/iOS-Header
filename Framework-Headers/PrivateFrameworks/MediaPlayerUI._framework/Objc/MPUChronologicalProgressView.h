@@ -9,7 +9,7 @@
 #import <MediaPlayerUI/MPDetailScrubControllerDelegate-Protocol.h>
 #import <MediaPlayerUI/MPUContentSizeCategoryChanging-Protocol.h>
 
-@class MPDetailScrubController, MPUNowPlayingIndicatorView, MPUTimeFormatter, NSString, UIImageView, UILabel, UISlider;
+@class AVTimeFormatter, MPDetailScrubController, MPUNowPlayingIndicatorView, NSString, UIImageView, UILabel, UISlider;
 @protocol MPDetailedScrubbing><_MPUSliderScrubForwarding, MPUChronologicalProgressViewDelegate;
 
 @interface MPUChronologicalProgressView : UIView <MPDetailScrubControllerDelegate, MPUContentSizeCategoryChanging>
@@ -33,7 +33,7 @@
     long long _substyle;
     double _totalDuration;
     double _currentTime;
-    MPUTimeFormatter *_timeFormatter;
+    AVTimeFormatter *_timeFormatter;
 }
 
 @property (nonatomic, getter=isAlwaysLive) BOOL alwaysLive; // @synthesize alwaysLive=_alwaysLive;
@@ -48,7 +48,7 @@
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 @property (nonatomic) long long substyle; // @synthesize substyle=_substyle;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) MPUTimeFormatter *timeFormatter; // @synthesize timeFormatter=_timeFormatter;
+@property (strong, nonatomic) AVTimeFormatter *timeFormatter; // @synthesize timeFormatter=_timeFormatter;
 @property (nonatomic) double totalDuration; // @synthesize totalDuration=_totalDuration;
 @property (readonly, nonatomic) struct CGRect trackRect;
 

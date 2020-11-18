@@ -41,6 +41,7 @@
 - (void)_stopRepeatedlyPlayingAlert:(id)arg1 withOptions:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3 targetQueue:(id)arg4;
 - (id)_systemSoundController;
 - (void)dealloc;
+- (void)handleActivationAssertionStatusChangeForAlert:(id)arg1 updatedStatus:(BOOL)arg2;
 - (id)init;
 - (void)performBlockOnAudioEventQueue:(CDUnknownBlockType)arg1;
 - (void)playAlert:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

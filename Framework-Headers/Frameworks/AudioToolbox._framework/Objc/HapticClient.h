@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)prepareHapticSequence:(unsigned long long)arg1 error:(id *)arg2;
 - (void)prewarm:(CDUnknownBlockType)arg1;
 - (void)releaseResources;
+- (BOOL)sendEvents:(id)arg1 atTime:(double)arg2 channel:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)setChannelEventBehavior:(unsigned long long)arg1 channel:(unsigned long long)arg2;
 - (void)setChannelKeys:(id)arg1;
 - (BOOL)setNumberOfChannels:(unsigned long long)arg1 error:(id *)arg2;

@@ -41,7 +41,6 @@
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory;
 @property (nonatomic, getter=isBackgroundBlurred) BOOL backgroundBlurred;
 @property (nonatomic, getter=isBanner) BOOL banner;
-@property (strong, nonatomic) UIView *colorInfusionView;
 @property (readonly, nonatomic) struct CGSize contentSizeExcludingActions;
 @property (nonatomic) unsigned long long customContentLocation; // @synthesize customContentLocation=_customContentLocation;
 @property (nonatomic) struct CGSize customContentSize; // @synthesize customContentSize=_customContentSize;
@@ -64,11 +63,9 @@
 @property (copy, nonatomic) NSString *primaryText;
 @property (readonly, nonatomic, getter=_scrollView) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (copy, nonatomic) NSString *secondaryText;
-@property (nonatomic) BOOL showAdditionalMessageLines;
 @property (readonly, nonatomic) struct CGSize sizeExcludingActions;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImage *thumbnail;
-@property (nonatomic) long long thumbnailViewContentMode;
 @property (copy, nonatomic) NSTimeZone *timeZone;
 @property (copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) UIButton *utilityButton;
@@ -98,6 +95,7 @@
 - (void)_layoutTopRubberbandingView;
 - (BOOL)_lookViewTapGestureRecognizerShouldReceiveTouch:(id)arg1;
 - (struct CGSize)_sizeThatFitsContentExcludingActionsWithSize:(struct CGSize)arg1;
+- (struct CGSize)actionsSizeThatFits:(struct CGSize)arg1;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
@@ -105,6 +103,7 @@
 - (long long)lookStyle;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+- (struct CGRect)scrollViewFrame;
 - (void)setDateAllDay:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;

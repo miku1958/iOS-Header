@@ -18,7 +18,6 @@
 @property (nonatomic) int type; // @synthesize type=_type;
 
 - (int)StringAsType:(id)arg1;
-- (id)_typeCKLogValue;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

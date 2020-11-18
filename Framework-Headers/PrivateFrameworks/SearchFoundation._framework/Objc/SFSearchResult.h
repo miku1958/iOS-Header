@@ -22,6 +22,7 @@
     BOOL _isQuickGlance;
     BOOL _isStreaming;
     BOOL _isStaticCorrection;
+    BOOL _publiclyIndexable;
     NSString *_identifier;
     SFImage *_thumbnail;
     SFText *_title;
@@ -131,6 +132,7 @@
 @property (nonatomic) double personalizationScore; // @synthesize personalizationScore=_personalizationScore;
 @property (nonatomic) unsigned long long placement; // @synthesize placement=_placement;
 @property (nonatomic) BOOL preventThumbnailImageScaling; // @synthesize preventThumbnailImageScaling=_preventThumbnailImageScaling;
+@property (nonatomic) BOOL publiclyIndexable; // @synthesize publiclyIndexable=_publiclyIndexable;
 @property (copy, nonatomic) NSString *publishDate; // @synthesize publishDate=_publishDate;
 @property (strong, nonatomic) SFPunchout *punchout; // @synthesize punchout=_punchout;
 @property (nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;

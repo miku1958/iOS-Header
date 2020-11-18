@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)dimKeys:(id)arg1;
 - (struct CGRect)frameForDivider:(int)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
+- (void)prepareForDisplay;
 - (unsigned long long)selectedIndexForTouches:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

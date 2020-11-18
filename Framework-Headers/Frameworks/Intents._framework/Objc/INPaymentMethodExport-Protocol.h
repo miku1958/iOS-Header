@@ -11,10 +11,10 @@
 
 @protocol INPaymentMethodExport <NSObject, JSExport>
 
-@property (readonly, copy, nonatomic) INImage *icon;
-@property (readonly, copy, nonatomic) NSString *identificationHint;
-@property (readonly, copy, nonatomic) NSString *name;
-@property (readonly, nonatomic) long long type;
+@property (copy, nonatomic) INImage *icon;
+@property (copy, nonatomic) NSString *identificationHint;
+@property (copy, nonatomic) NSString *name;
+@property (nonatomic) long long type;
 
 - (id)init;
 @end

@@ -11,7 +11,7 @@
 }
 
 + (void)openHomeAppWithURL:(id)arg1;
-+ (void)presentExecutionErrorDialogForTrigger:(id)arg1;
++ (void)presentExecutionErrorDialogForTrigger:(id)arg1 partialSuccess:(BOOL)arg2;
 
 @end
 

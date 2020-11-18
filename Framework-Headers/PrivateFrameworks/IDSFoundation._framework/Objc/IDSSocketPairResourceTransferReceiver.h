@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSDate, NSDictionary, NSString;
 
 @interface IDSSocketPairResourceTransferReceiver : NSObject
 {
@@ -25,8 +25,11 @@
     BOOL _compressed;
     NSString *_peerResponseIdentifier;
     NSString *_messageUUID;
+    NSDate *_expiryDate;
 }
 
+@property (readonly, strong, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
+@property (readonly, strong, nonatomic) NSString *messageUUID; // @synthesize messageUUID=_messageUUID;
 @property (readonly, nonatomic) unsigned long long totalBytesReceived; // @synthesize totalBytesReceived=_totalBytesReceived;
 
 + (id)incomingFilePath;

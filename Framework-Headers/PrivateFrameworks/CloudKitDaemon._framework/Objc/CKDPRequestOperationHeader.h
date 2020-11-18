@@ -10,7 +10,6 @@
 
 @class CKDPIdentifier, CKDPLocale, NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRequestOperationHeader : PBCodable <NSCopying>
 {
     unsigned long long _applicationConfigVersion;
@@ -106,9 +105,6 @@ __attribute__((visibility("hidden")))
 - (int)StringAsApplicationContainerEnvironment:(id)arg1;
 - (int)StringAsIsolationLevel:(id)arg1;
 - (int)StringAsTargetDatabase:(id)arg1;
-- (id)_applicationContainerEnvironmentCKLogValue;
-- (id)_isolationLevelCKLogValue;
-- (id)_targetDatabaseCKLogValue;
 - (id)applicationContainerEnvironmentAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

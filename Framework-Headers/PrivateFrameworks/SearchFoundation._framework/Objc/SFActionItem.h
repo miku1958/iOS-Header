@@ -23,6 +23,7 @@
     NSString *_applicationBundleIdentifier;
     NSString *_contactIdentifier;
     NSString *_phoneNumber;
+    NSString *_email;
     NSData *_mapsData;
     double _latitude;
     double _longitude;
@@ -37,6 +38,7 @@
 @property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
 @property (strong, nonatomic) SFImage *baseIcon; // @synthesize baseIcon=_baseIcon;
 @property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property (copy, nonatomic) NSString *email; // @synthesize email=_email;
 @property (strong, nonatomic) SFImage *icon; // @synthesize icon=_icon;
 @property (nonatomic) BOOL isITunes; // @synthesize isITunes=_isITunes;
 @property (nonatomic) BOOL isOverlay; // @synthesize isOverlay=_isOverlay;

@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) NSString *endpointConnectionClientID;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL iCloudAccountChanged; // @synthesize iCloudAccountChanged=_iCloudAccountChanged;
+@property (readonly, nonatomic) BOOL isContentStoreFrontSupported;
 @property (copy, nonatomic) NSString *overrideContentStoreFrontID; // @synthesize overrideContentStoreFrontID=_overrideContentStoreFrontID;
 @property (readonly, nonatomic, getter=isPrivateDataSyncingEnabled) BOOL privateDataSyncingEnabled;
 @property (readonly) Class superclass;

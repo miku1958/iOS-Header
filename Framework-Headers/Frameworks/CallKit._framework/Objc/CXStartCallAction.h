@@ -6,9 +6,11 @@
 
 #import <CallKit/CXCallAction.h>
 
+#import <CallKit/CXVideoAspectRatioDescriptor-Protocol.h>
+
 @class CXHandle, NSDate, NSString;
 
-@interface CXStartCallAction : CXCallAction
+@interface CXStartCallAction : CXCallAction <CXVideoAspectRatioDescriptor>
 {
     BOOL _video;
     BOOL _relay;
@@ -19,17 +21,21 @@
     NSString *_contactIdentifier;
     NSDate *_dateStarted;
     long long _ttyType;
-    struct CGSize _localLandscapeAspectRatio;
     struct CGSize _localPortraitAspectRatio;
+    struct CGSize _localLandscapeAspectRatio;
 }
 
 @property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (copy, nonatomic) NSDate *dateStarted; // @synthesize dateStarted=_dateStarted;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEmergency) BOOL emergency; // @synthesize emergency=_emergency;
 @property (copy, nonatomic) CXHandle *handle; // @synthesize handle=_handle;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property (nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
 @property (nonatomic, getter=isRelay) BOOL relay; // @synthesize relay=_relay;
+@property (readonly) Class superclass;
 @property (nonatomic, setter=setTTYType:) long long ttyType; // @synthesize ttyType=_ttyType;
 @property (nonatomic, getter=isUpgrade) BOOL upgrade; // @synthesize upgrade=_upgrade;
 @property (nonatomic, getter=isVideo) BOOL video; // @synthesize video=_video;

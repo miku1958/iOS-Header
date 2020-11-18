@@ -10,6 +10,15 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct AccelUnpacker {
+    char *fData;
+    unsigned int fBitsLeft;
+    unsigned char fPartial;
+    unsigned long long fTimestampLast;
+    long long fTimestampLastDelta;
+    int fSampleLast[3];
+};
+
 struct BasicMutex {
     CDUnknownFunctionPointerType *_field1;
     struct MutexInfo *_field2;
@@ -90,6 +99,8 @@ struct CLMotionActivity {
     int exitState;
     double estExitTime;
     double startTime;
+    int rawType;
+    int rawConfidence;
 };
 
 struct CLNameValuePair {
@@ -156,6 +167,14 @@ struct CMAccel100 {
     unsigned long long _field4;
 };
 
+struct CMGyro50 {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    unsigned long long _field5;
+};
+
 struct CMLiftDetector {
     struct CLRunningVector3d<float> _field1;
     struct CLRunningVector3d<float> _field2;
@@ -171,16 +190,16 @@ struct Dispatcher {
     id _field2;
 };
 
-struct MutexInfo;
-
-struct Unpacker {
+struct GyroUnpacker {
     char *fData;
     unsigned int fBitsLeft;
     unsigned char fPartial;
     unsigned long long fTimestampLast;
     long long fTimestampLastDelta;
-    int fAccelerationLast[3];
+    int fSampleLast[4];
 };
+
+struct MutexInfo;
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *__left_;

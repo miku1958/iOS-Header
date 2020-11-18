@@ -6,10 +6,11 @@
 
 #import <Foundation/NSOperation.h>
 
-@class MPCRadioGetTracksOperation, NSLock, RadioRequestContext, RadioStation, RadioStationMatchContext, SSVPlaybackLease;
+@class MPCRadioGetTracksOperation, NSLock, RadioRequestContext, RadioStation, RadioStationMatchContext, SSAuthenticateRequest, SSVPlaybackLease;
 
 @interface MPCPrepareRadioPlaybackOperation : NSOperation
 {
+    SSAuthenticateRequest *_authenticateRequest;
     CDUnknownBlockType _firstTrackBlock;
     MPCRadioGetTracksOperation *_getTracksOperation;
     NSLock *_lock;

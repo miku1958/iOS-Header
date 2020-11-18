@@ -15,6 +15,7 @@
     BOOL _hasSecondaryValue;
     BOOL _hasOffState;
     double _stepValue;
+    unsigned long long _preferredFillSection;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,6 +23,7 @@
 @property (nonatomic) BOOL hasOffState; // @synthesize hasOffState=_hasOffState;
 @property (nonatomic) BOOL hasSecondaryValue; // @synthesize hasSecondaryValue=_hasSecondaryValue;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long preferredFillSection; // @synthesize preferredFillSection=_preferredFillSection;
 @property (nonatomic) double stepValue; // @synthesize stepValue=_stepValue;
 @property (readonly) Class superclass;
 

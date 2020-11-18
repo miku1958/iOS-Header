@@ -17,6 +17,7 @@
     unsigned long long _mtuLength;
     long long _pairingState;
     long long _hostState;
+    long long _role;
 }
 
 @property (nonatomic) long long hostState; // @synthesize hostState=_hostState;
@@ -24,6 +25,7 @@
 @property (nonatomic) BOOL isLinkEncrypted; // @synthesize isLinkEncrypted=_isLinkEncrypted;
 @property (nonatomic) unsigned long long mtuLength; // @synthesize mtuLength=_mtuLength;
 @property (nonatomic) long long pairingState; // @synthesize pairingState=_pairingState;
+@property (nonatomic) long long role; // @synthesize role=_role;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

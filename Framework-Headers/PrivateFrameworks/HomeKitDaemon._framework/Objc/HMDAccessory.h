@@ -15,8 +15,8 @@
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMDApplicationData, HMDApplicationRegistry, HMDBridgeInformation, HMDCharacteristic, HMDHome, HMDRoom, HMFMessageDispatcher, HMFTimer, NSArray, NSData, NSMutableArray, NSMutableSet, NSNumber, NSSet, NSString, NSUUID;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class HMAccessoryCategory, HMDAccessoryVersion, HMDApplicationData, HMDApplicationRegistry, HMDBridgeInformation, HMDCharacteristic, HMDHome, HMDRoom, HMDVendorModelEntry, HMFMessageDispatcher, HMFTimer, NSArray, NSData, NSMutableArray, NSMutableSet, NSNumber, NSSet, NSString, NSUUID;
+@protocol OS_dispatch_queue;
 
 @interface HMDAccessory : NSObject <HMDBulletinIdentifiers, NSSecureCoding, HMFMessageReceiver, HAPRelayAccessoryDelegate, HMDTimeInformationMonitorDelegate, HMFTimerDelegate, HAPAccessoryServerForBridgeDelegate, HMFDumpState>
 {
@@ -36,7 +36,7 @@
     BOOL _systemTimeNeedsUpdate;
     NSString *_model;
     NSString *_manufacturer;
-    NSString *_firmwareVersion;
+    HMDAccessoryVersion *_firmwareVersion;
     NSString *_serialNumber;
     NSString *_relayIdentifier;
     unsigned long long _currentRelayAccessoryState;
@@ -47,6 +47,7 @@
     NSSet *_accessoryProfiles;
     HMDRoom *_room;
     NSNumber *_accessoryFlags;
+    unsigned long long _configNumber;
     HMDHome *_home;
     NSString *_name;
     NSUUID *_uuid;
@@ -60,7 +61,6 @@
     HMFTimer *_accessoryDiscoveryBackoffTimer;
     NSString *_providedName;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_source> *_pairingRetryTimer;
     NSMutableArray *_discoveredServices;
     HMFMessageDispatcher *_msgDispatcher;
     HMAccessoryCategory *_category;
@@ -88,6 +88,8 @@
 @property (weak, nonatomic) HMDAccessory *bridge; // @synthesize bridge=_bridge;
 @property (strong, nonatomic) NSSet *cameraProfiles; // @synthesize cameraProfiles=_cameraProfiles;
 @property (strong, nonatomic) HMAccessoryCategory *category; // @synthesize category=_category;
+@property (readonly, getter=isClientRegisteredForNotifications) BOOL clientRegisteredForNotifications;
+@property (nonatomic) unsigned long long configNumber; // @synthesize configNumber=_configNumber;
 @property (strong, nonatomic) NSString *configurationAppIdentifier; // @synthesize configurationAppIdentifier=_configurationAppIdentifier;
 @property (readonly, copy, nonatomic) NSString *contextID;
 @property (readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
@@ -99,7 +101,7 @@
 @property (strong, nonatomic) NSMutableSet *discoveredBridgeableAccessories; // @synthesize discoveredBridgeableAccessories=_discoveredBridgeableAccessories;
 @property (nonatomic, getter=isDiscoveredBridgeableAccessory) BOOL discoveredBridgeableAccessory; // @synthesize discoveredBridgeableAccessory=_discoveredBridgeableAccessory;
 @property (strong, nonatomic) NSMutableArray *discoveredServices; // @synthesize discoveredServices=_discoveredServices;
-@property (readonly, copy, nonatomic) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
+@property (readonly, copy, nonatomic) HMDAccessoryVersion *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMDBridgeInformation *hmdBridgeInformation; // @synthesize hmdBridgeInformation=_hmdBridgeInformation;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
@@ -114,7 +116,6 @@
 @property (copy, nonatomic, getter=getName) NSString *name; // @synthesize name=_name;
 @property (nonatomic, getter=isPaired) BOOL paired; // @synthesize paired=_paired;
 @property (nonatomic) unsigned long long pairingAttempts; // @synthesize pairingAttempts=_pairingAttempts;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *pairingRetryTimer; // @synthesize pairingRetryTimer=_pairingRetryTimer;
 @property (strong, nonatomic) NSString *pairingUsername; // @synthesize pairingUsername=_pairingUsername;
 @property (nonatomic, getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
@@ -142,6 +143,7 @@
 @property (nonatomic) BOOL unblockPending; // @synthesize unblockPending=_unblockPending;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (readonly, copy, nonatomic) HMDVendorModelEntry *vendorInfo;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (unsigned long long)getAWDTransportTypeWithLinkType:(long long)arg1;
@@ -178,7 +180,7 @@
 - (void)_handleDiscoverBridgedAccessories:(id)arg1 startDiscovery:(BOOL)arg2;
 - (void)_handleDiscoveryBackoffTimerFired;
 - (void)_handleIdentify:(id)arg1;
-- (void)_handleMultipleCharacteristicsUpdated:(id)arg1 filterUnmodifiedCharacteristics:(BOOL)arg2 queue:(id)arg3 remoteDevice:(id)arg4 notificationUpdateIdentifier:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_handleMultipleCharacteristicsUpdated:(id)arg1 message:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleRename:(id)arg1;
 - (void)_handleRenameService:(id)arg1;
 - (void)_handleSetAppData:(id)arg1;
@@ -211,6 +213,7 @@
 - (void)_relayWriteToCharacteristic:(id)arg1 toResidentForMessage:(id)arg2 viaDevice:(id)arg3;
 - (void)_remoteAccessEnabled:(BOOL)arg1;
 - (void)_removeAllDiscoveredBridgeableAccessories;
+- (void)_removeBackedoffAccessoryForStateNumber:(id)arg1;
 - (void)_removeBridgeFromDiscoveredAccessory:(id)arg1;
 - (void)_removeBridgesFromDiscoveredAccessory;
 - (void)_removeDiscoveredBridgeableAccessory:(id)arg1;
@@ -251,6 +254,7 @@
 - (void)_updateName:(id)arg1;
 - (void)_updateReachability;
 - (void)_updateRelayEnabled:(BOOL)arg1 notifyRelayManager:(BOOL)arg2;
+- (void)_updateStateForTrackedAccessory:(id)arg1 stateNumber:(id)arg2;
 - (void)_writeCharacteristicValues:(id)arg1 hapAccessory:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_writeCharacteristicValues:(id)arg1 localOperationRequired:(BOOL)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 errorBlock:(CDUnknownBlockType)arg5;
 - (void)_writeConfigureBridgeValue:(id)arg1 forCharacteristic:(id)arg2 accessory:(id)arg3 toAdd:(BOOL)arg4 hapAccessory:(id)arg5 authorizationData:(id)arg6 identifier:(id)arg7 queue:(id)arg8 completionHandler:(CDUnknownBlockType)arg9;
@@ -290,6 +294,7 @@
 - (void)configureBulletinNotification:(CDUnknownBlockType)arg1;
 - (void)configureWithAccessory:(id)arg1 reAddServices:(BOOL)arg2 homeNotificationsEnabled:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)configureWithMsgDispatcher:(id)arg1;
+- (BOOL)containsCameraService;
 - (id)currentAssociatingAccessory;
 - (id)currentDisassociatingAccessory;
 - (void)deRegisterForTimeMonitor;
@@ -307,10 +312,10 @@
 - (id)findCharacteristic:(id)arg1 forService:(id)arg2;
 - (id)findCharacteristicType:(id)arg1 forServiceType:(id)arg2;
 - (id)findService:(id)arg1;
-- (void)fixupServices:(id)arg1 idsDataSync:(BOOL)arg2;
+- (void)fixupServices:(id)arg1 idsDataSync:(BOOL)arg2 dataVersion:(long long)arg3;
 - (id)getConfiguredName;
 - (id)getPrimaryHAPAccessories;
-- (void)handleMultipleCharacteristicsUpdated:(id)arg1 filterUnmodifiedCharacteristics:(BOOL)arg2 queue:(id)arg3 remoteDevice:(id)arg4 notificationUpdateIdentifier:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)handleMultipleCharacteristicsUpdated:(id)arg1 message:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleReachabilityChange:(BOOL)arg1;
 - (void)handleRemoteGatewayNotificationRegistration:(id)arg1 enable:(BOOL)arg2 enableTime:(id)arg3;
 - (void)handleStartDiscoveringBridgedAcessories:(id)arg1;
@@ -324,7 +329,7 @@
 - (BOOL)isNonClientNotificationEnabled;
 - (BOOL)isNotificationEnabled;
 - (BOOL)isNotificationEnabledForClientIdentifier:(id)arg1;
-- (BOOL)isReadingRequiredAccessoryInformationCharacteristic:(id)arg1 providedName:(id)arg2;
+- (BOOL)isReadingRequiredAccessoryInformationCharacteristic:(id)arg1 providedName:(id)arg2 forceReadFWVersion:(BOOL)arg3;
 - (BOOL)isRemoteReachable;
 - (long long)linkSpeed;
 - (void)logDuetEventIfNeeded:(id)arg1 clientName:(id)arg2;
@@ -341,6 +346,7 @@
 - (id)matchingTransportInformationWithServerIdentifier:(id)arg1 linkType:(long long)arg2;
 - (void)mergeTransportInformationInstances:(id)arg1;
 - (id)messageIdentifier;
+- (id)namesOfServicesShowingTilesInHomeApp;
 - (void)notifyValue:(id)arg1 previousValue:(id)arg2 error:(id)arg3 forCharacteristic:(id)arg4 requestMessage:(id)arg5;
 - (void)performOperation:(long long)arg1 linkType:(long long)arg2 operationBlock:(CDUnknownBlockType)arg3 errorBlock:(CDUnknownBlockType)arg4;
 - (void)populateHMDCharacteristicResponses:(id)arg1 hapResponses:(id)arg2 mapping:(id)arg3 overallError:(id)arg4 requests:(id)arg5;
@@ -351,7 +357,6 @@
 - (id)relayAccessory;
 - (void)remoteAccessEnabled:(BOOL)arg1;
 - (void)removeAllTransportInformationInstances;
-- (void)removeBackedoffAccessoryForStateNumber:(id)arg1;
 - (void)removeBridgeFromDiscoveredAccessory:(id)arg1;
 - (void)removeBridgedAccessory:(id)arg1;
 - (void)removeBridgesFromDiscoveredAccessory;
@@ -400,6 +405,7 @@
 - (void)updateAccessoryFlagsAndNotifyClients:(id)arg1;
 - (void)updateAccessoryInformation:(id)arg1;
 - (void)updateCategory:(id)arg1;
+- (void)updateManufacturer:(id)arg1 model:(id)arg2 firmwareVersion:(id)arg3 serialNumber:(id)arg4;
 - (void)updateName:(id)arg1;
 - (void)updateReachability;
 - (void)updateRoom:(id)arg1;

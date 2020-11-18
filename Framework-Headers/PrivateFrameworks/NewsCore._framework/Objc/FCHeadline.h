@@ -24,6 +24,7 @@
     BOOL _needsRapidUpdates;
     BOOL _paid;
     BOOL _showSubscriptionRequiredText;
+    BOOL _canBePurchased;
     FCHeadlineThumbnail *_thumbnailLQ;
     FCHeadlineThumbnail *_thumbnail;
     FCHeadlineThumbnail *_thumbnailMedium;
@@ -74,6 +75,7 @@
     FCCoverArt *_coverArt;
     unsigned long long _feedOrder;
     double _globalUserFeedback;
+    NSDate *_displayDate;
     NSString *_identifier;
     NSURL *_headlineURL;
     NSString *_excerpt;
@@ -88,6 +90,7 @@
 @property (readonly, nonatomic) unsigned long long articleRecordModificationDateMilliseconds;
 @property (readonly, nonatomic) unsigned long long backendArticleVersion; // @synthesize backendArticleVersion=_backendArticleVersion;
 @property (readonly, copy, nonatomic) NSArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
+@property (readonly, nonatomic) BOOL canBePurchased; // @synthesize canBePurchased=_canBePurchased;
 @property (readonly, copy, nonatomic) NSString *clusterID;
 @property (nonatomic) unsigned long long contentType; // @synthesize contentType=_contentType;
 @property (readonly, copy, nonatomic) NSURL *contentURL; // @synthesize contentURL=_contentURL;
@@ -95,6 +98,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, getter=isDeleted) BOOL deleted; // @synthesize deleted=_deleted;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSDate *displayDate; // @synthesize displayDate=_displayDate;
 @property (readonly, copy, nonatomic) NSArray *endOfArticleTopicIDs; // @synthesize endOfArticleTopicIDs=_endOfArticleTopicIDs;
 @property (copy, nonatomic) NSString *excerpt; // @synthesize excerpt=_excerpt;
 @property (readonly, nonatomic, getter=isExplicitContent) BOOL explicitContent;
@@ -139,8 +143,8 @@
 @property (readonly, copy, nonatomic) NSString *sourceFeedID;
 @property (copy, nonatomic) NSString *sourceName; // @synthesize sourceName=_sourceName;
 @property (readonly, nonatomic, getter=isSponsored) BOOL sponsored; // @synthesize sponsored=_sponsored;
-@property (readonly, nonatomic) FCTopStoriesStyleConfiguration *storyStyle; // @synthesize storyStyle=_storyStyle;
-@property (readonly, nonatomic) unsigned long long storyType; // @synthesize storyType=_storyType;
+@property (strong, nonatomic) FCTopStoriesStyleConfiguration *storyStyle; // @synthesize storyStyle=_storyStyle;
+@property (nonatomic) unsigned long long storyType; // @synthesize storyType=_storyType;
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *surfacedByBinID; // @synthesize surfacedByBinID=_surfacedByBinID;
@@ -168,10 +172,12 @@
 @property (readonly, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 
 - (void).cxx_destruct;
+- (void)assignStoryType:(unsigned long long)arg1 withAppConfig:(id)arg2;
 - (id)contentManifestWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isGap;
+- (void)overrideDisplayDate:(id)arg1;
 
 @end
 

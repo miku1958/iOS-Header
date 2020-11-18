@@ -7,13 +7,14 @@
 #import <UIKit/UICollectionViewController.h>
 
 #import <UserNotificationsUIKit/NCNotificationListCellDelegate-Protocol.h>
+#import <UserNotificationsUIKit/NCNotificationListCollectionViewDelegate-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationViewControllerDelegatePrivate-Protocol.h>
 #import <UserNotificationsUIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NCAnimationCoordinator, NCNotificationListCell, NCNotificationListTouchEater, NCNotificationViewController, NSHashTable, NSMutableDictionary, NSString;
+@class NCAnimationCoordinator, NCNotificationListCell, NCNotificationListTouchEater, NCNotificationRequest, NCNotificationViewController, NSHashTable, NSMutableDictionary, NSString;
 @protocol NCNotificationListViewControllerDestinationDelegate, NCNotificationListViewControllerUserInteractionDelegate;
 
-@interface NCNotificationListViewController : UICollectionViewController <NCNotificationListCellDelegate, UIGestureRecognizerDelegate, NCNotificationViewControllerDelegatePrivate>
+@interface NCNotificationListViewController : UICollectionViewController <NCNotificationListCellDelegate, UIGestureRecognizerDelegate, NCNotificationViewControllerDelegatePrivate, NCNotificationListCollectionViewDelegate>
 {
     BOOL _backgroundBlurred;
     BOOL _supportsSwipeToDefaultAction;
@@ -43,6 +44,7 @@
 @property (readonly, nonatomic) struct UIEdgeInsets insetMargins; // @synthesize insetMargins=_insetMargins;
 @property (nonatomic) BOOL needsReloadData; // @synthesize needsReloadData=_needsReloadData;
 @property (nonatomic) BOOL notificationRequestRemovedWhileInLongLook; // @synthesize notificationRequestRemovedWhileInLongLook=_notificationRequestRemovedWhileInLongLook;
+@property (readonly, strong, nonatomic) NCNotificationRequest *notificationRequestWithHintText;
 @property (strong, nonatomic) NCNotificationViewController *notificationViewControllerForSizing; // @synthesize notificationViewControllerForSizing=_notificationViewControllerForSizing;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (readonly) Class superclass;
@@ -62,6 +64,7 @@
 - (void)_performCollectionViewOperationBlock:(CDUnknownBlockType)arg1;
 - (void)_performCollectionViewOperationBlockIfNecessary:(CDUnknownBlockType)arg1;
 - (void)_reloadCollectionViewDataIfNecessary;
+- (void)_reloadRequestsAtIndices:(id)arg1;
 - (void)_removeCachedSizesForNotificationRequest:(id)arg1;
 - (void)addContentObserver:(id)arg1;
 - (void)clearAll;
@@ -85,20 +88,25 @@
 - (BOOL)hasContent;
 - (BOOL)hasVisibleContent;
 - (void)hideRequestsForNotificationSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
+- (id)indexPathForNotificationRequest:(id)arg1;
 - (id)init;
 - (BOOL)insertNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
 - (BOOL)isContentExtensionVisible:(id)arg1;
+- (void)loadView;
 - (void)longLookWillPresentForNotificationViewController:(id)arg1;
+- (id)materialSettingsForNotificationViewController:(id)arg1;
 - (BOOL)modifyNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
 - (void)notificationListCell:(id)arg1 requestsClearingNotificationRequest:(id)arg2;
 - (void)notificationListCell:(id)arg1 requestsPerformAction:(id)arg2 forNotificationRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)notificationListCell:(id)arg1 requestsPresentingLongLookForNotificationRequest:(id)arg2;
+- (void)notificationListCell:(id)arg1 requestsPresentingLongLookForNotificationRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)notificationListCellDidSignificantUserInteraction:(id)arg1;
-- (void)notificationListCellHideCellActions:(id)arg1;
+- (void)notificationListCellHideCellActions:(id)arg1 resetCellScrollPosition:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)notificationListCellRevealCellActions:(id)arg1;
 - (BOOL)notificationListCellShouldShowActionsForNotificationRequest:(id)arg1;
+- (void)notificationListCollectionView:(id)arg1 willSetFrame:(struct CGRect)arg2;
 - (id)notificationRequestAtIndexPath:(id)arg1;
 - (id)notificationRequestInLongLook;
+- (id)notificationRequestsPassingTest:(CDUnknownBlockType)arg1;
 - (void)notificationViewController:(id)arg1 didDismissLongLook:(BOOL)arg2;
 - (void)notificationViewController:(id)arg1 didPresentLongLook:(BOOL)arg2;
 - (void)notificationViewController:(id)arg1 executeAction:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -110,6 +118,7 @@
 - (BOOL)notificationViewControllerShouldBlurShortLook:(id)arg1;
 - (void)notifyContentObservers;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (void)reloadNotificationRequest:(id)arg1;
 - (void)reloadRequestsWithSuppressedContent;
 - (void)removeContentObserver:(id)arg1;
 - (void)removeNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class VCMediaStreamStats, VCVideoStreamRateController;
 
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     double _packetLossPercentage;
     double _adaptationTime;
     double _maxOWRD;
+    double _averageBitrateWindowDuration;
     struct opaqueRTCReporting *_reportingAgent;
     VCVideoStreamRateController *_rateController;
     VCMediaStreamStats *_stats;
@@ -33,13 +34,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isOperatingAtMaxBitrate; // @synthesize isOperatingAtMaxBitrate=_isOperatingAtMaxBitrate;
 @property (readonly, nonatomic) BOOL isOperatingAtMinBitrate; // @synthesize isOperatingAtMinBitrate=_isOperatingAtMinBitrate;
 @property (nonatomic) double maxOWRD; // @synthesize maxOWRD=_maxOWRD;
+@property (readonly, nonatomic) double nowrd;
+@property (readonly, nonatomic) double nowrdAcc;
+@property (readonly, nonatomic) double nowrdShort;
 @property (readonly, nonatomic) unsigned int operatingBitrate; // @synthesize operatingBitrate=_operatingBitrate;
 @property (readonly, nonatomic) double owrd;
 @property (readonly, nonatomic) double packetLossPercentage; // @synthesize packetLossPercentage=_packetLossPercentage;
 @property (readonly, nonatomic) double roundTripTime; // @synthesize roundTripTime=_tmmbRTT;
 @property (readonly, nonatomic) unsigned int sendTmmbrBitrate; // @synthesize sendTmmbrBitrate=_sendTmmbrBitrate;
 
-- (unsigned int)actualBitrate;
+- (unsigned int)averageReceivedBitrate;
 - (id)className;
 - (void)dealloc;
 - (id)initWithRTPHandle:(struct tagHANDLE *)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2 receiverStats:(id)arg3;

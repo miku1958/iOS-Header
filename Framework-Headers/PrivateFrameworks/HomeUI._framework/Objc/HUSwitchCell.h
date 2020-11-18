@@ -34,7 +34,9 @@
 - (void)_toggleOn:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
+- (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setOn:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateUIWithAnimation:(BOOL)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <IDSFoundation/IDSSocketPairMessage.h>
 
-@class NSDictionary, NSString;
+@class NSDate, NSDictionary, NSString;
 
 @interface IDSSocketPairResourceTransferSender : IDSSocketPairMessage
 {
@@ -28,6 +28,7 @@
     BOOL _compressed;
     NSString *_peerResponseIdentifier;
     NSString *_messageUUID;
+    NSDate *_expiryDate;
 }
 
 @property (readonly, nonatomic) BOOL isDone; // @synthesize isDone=_done;
@@ -42,7 +43,7 @@
 - (unsigned char)command;
 - (void)dealloc;
 - (id)description;
-- (id)initWithResourceAtPath:(id)arg1 metadata:(id)arg2 sequenceNumber:(unsigned int)arg3 streamID:(unsigned short)arg4 expectsPeerResponse:(BOOL)arg5 wantsAppAck:(BOOL)arg6 compressPayload:(BOOL)arg7 compressed:(BOOL)arg8 peerResponseIdentifier:(id)arg9 messageUUID:(id)arg10;
+- (id)initWithResourceAtPath:(id)arg1 metadata:(id)arg2 sequenceNumber:(unsigned int)arg3 streamID:(unsigned short)arg4 expectsPeerResponse:(BOOL)arg5 wantsAppAck:(BOOL)arg6 compressPayload:(BOOL)arg7 compressed:(BOOL)arg8 peerResponseIdentifier:(id)arg9 messageUUID:(id)arg10 expiryDate:(id)arg11;
 - (id)nextMessage;
 - (id)nextMessage_old;
 - (id)readNextBytes;

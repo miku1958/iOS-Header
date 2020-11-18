@@ -11,11 +11,11 @@
 
 @protocol INMessageExport <NSObject, JSExport>
 
-@property (readonly, copy, nonatomic) NSString *content;
-@property (readonly, copy, nonatomic) NSDate *dateSent;
-@property (readonly, copy, nonatomic) NSString *identifier;
-@property (readonly, copy, nonatomic) NSArray *recipients;
-@property (readonly, copy, nonatomic) INPerson *sender;
+@property (copy, nonatomic) NSString *content;
+@property (copy, nonatomic) NSDate *dateSent;
+@property (copy, nonatomic) NSString *identifier;
+@property (copy, nonatomic) NSArray *recipients;
+@property (copy, nonatomic) INPerson *sender;
 
 - (id)init;
 @end

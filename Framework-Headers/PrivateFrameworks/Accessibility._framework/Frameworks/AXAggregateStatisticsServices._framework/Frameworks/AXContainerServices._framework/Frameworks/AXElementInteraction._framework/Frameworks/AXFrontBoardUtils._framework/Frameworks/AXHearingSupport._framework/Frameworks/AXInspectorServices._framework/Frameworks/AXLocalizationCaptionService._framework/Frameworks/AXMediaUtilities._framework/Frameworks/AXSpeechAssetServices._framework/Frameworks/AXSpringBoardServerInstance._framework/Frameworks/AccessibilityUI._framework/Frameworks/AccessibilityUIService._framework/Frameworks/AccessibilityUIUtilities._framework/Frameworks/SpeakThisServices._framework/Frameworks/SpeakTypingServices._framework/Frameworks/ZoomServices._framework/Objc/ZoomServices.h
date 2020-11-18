@@ -56,6 +56,7 @@
 - (BOOL)notifyZoomLensModeWasChangedInSettingsTo:(id)arg1;
 - (BOOL)notifyZoomLockButtonWasPressed;
 - (BOOL)notifyZoomReturnedToClockFaceAtIdle;
+- (void)notifyZoomSOSMedicalIDShown;
 - (BOOL)notifyZoomWillHideBrailleInputUI;
 - (BOOL)notifyZoomWillShowBrailleInputUI;
 - (double)reachabilityScaleFactor;

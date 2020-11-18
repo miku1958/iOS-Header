@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSError, NSMutableDictionary, NSString, NSXPCConnection;
+@class NSArray, NSData, NSError, NSMutableDictionary, NSString, NSXPCConnection;
 @protocol AFAssistantUIService, AFSpeechDelegate, OS_dispatch_group, OS_dispatch_source;
 
 @interface AFConnection : NSObject
@@ -14,7 +14,7 @@
     NSXPCConnection *_connection;
     NSString *_outstandingRequestClass;
     NSArray *_cachedBulletins;
-    BOOL _hasActiveRequest;
+    long long _activeRequestType;
     BOOL _hasActiveTimeout;
     long long _activeRequestUsefulUserResultType;
     NSMutableDictionary *_replyHandlerForAceId;
@@ -23,13 +23,13 @@
     unsigned int _isCapturingSpeech:1;
     unsigned int _hasOutstandingRequest:1;
     unsigned int _audioSessionID;
-    void *_levelsSharedMem;
-    unsigned long long _sharedMemSize;
+    NSData *_levelsSharedData;
     NSObject<OS_dispatch_source> *_levelsTimer;
     unsigned int _clientStateIsInSync:1;
     unsigned int _voiceOverIsActive:1;
     NSError *_lastRetryError;
     NSObject<OS_dispatch_group> *_speechCallbackGroup;
+    NSString *_requestIdString;
     id<AFAssistantUIService> _delegate;
     id<AFSpeechDelegate> _speechDelegate;
 }
@@ -75,6 +75,7 @@
 - (void)_setAudioSessionID:(unsigned int)arg1;
 - (void)_setLevelsWithSharedMem:(id)arg1;
 - (void)_setShouldSpeak:(BOOL)arg1;
+- (void)_speechRecordingDidFailWithError:(id)arg1;
 - (void)_startRequestWithInfo:(id)arg1 analyticsEventProvider:(CDUnknownBlockType)arg2;
 - (void)_stopLevelUpdates;
 - (void)_tellDelegateAudioSessionDidBeginInterruption;

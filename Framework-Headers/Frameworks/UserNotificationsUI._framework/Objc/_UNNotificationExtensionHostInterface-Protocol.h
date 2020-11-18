@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class UIColor, UNNotificationResponse;
+@class NSString, UIColor, UNNotificationResponse;
 
 @protocol _UNNotificationExtensionHostInterface
 - (void)_extensionAudioAccessoryViewContextId:(unsigned int)arg1;
@@ -17,6 +17,7 @@
 - (void)_extensionSetPlayPauseMediaButtonColor:(UIColor *)arg1;
 - (void)_extensionSetPlayPauseMediaButtonFrame:(struct CGRect)arg1;
 - (void)_extensionSetPlayPauseMediaButtonType:(unsigned long long)arg1;
+- (void)_extensionSetTitle:(NSString *)arg1;
 - (void)_extensionWantsToBecomeFirstResponder:(BOOL)arg1;
 - (void)_extensionWantsToReceiveActionResponses:(BOOL)arg1;
 @end

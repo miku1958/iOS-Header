@@ -22,12 +22,14 @@
     NSData *_userProfileData;
     double _maximumRecognitionDuration;
     NSDictionary *_recognitionReplacements;
+    NSDictionary *_recognitionConfidenceSubtraction;
 }
 
 @property (nonatomic) BOOL concatenateUtterances; // @synthesize concatenateUtterances=_concatenateUtterances;
 @property (nonatomic) BOOL detectUtterances; // @synthesize detectUtterances=_detectUtterances;
 @property (nonatomic) double maximumRecognitionDuration; // @synthesize maximumRecognitionDuration=_maximumRecognitionDuration;
 @property (readonly, nonatomic) _EARSpeechModelInfo *modelInfo;
+@property (copy, nonatomic) NSDictionary *recognitionConfidenceSubtraction; // @synthesize recognitionConfidenceSubtraction=_recognitionConfidenceSubtraction;
 @property (copy, nonatomic) NSDictionary *recognitionReplacements; // @synthesize recognitionReplacements=_recognitionReplacements;
 @property (copy, nonatomic) NSData *userProfileData; // @synthesize userProfileData=_userProfileData;
 

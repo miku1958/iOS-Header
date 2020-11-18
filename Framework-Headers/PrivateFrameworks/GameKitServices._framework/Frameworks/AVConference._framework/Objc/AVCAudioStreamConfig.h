@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @interface AVCAudioStreamConfig : NSObject
 {
@@ -20,6 +20,7 @@
     long long _preferredAMRMode;
     BOOL _octetAligned;
     BOOL _dtxEnabled;
+    BOOL _latencySensitiveMode;
 }
 
 @property (nonatomic) long long audioStreamMode; // @synthesize audioStreamMode=_audioStreamMode;
@@ -29,6 +30,7 @@
 @property (nonatomic) unsigned long long dtmfPayloadType; // @synthesize dtmfPayloadType=_dtmfPayloadType;
 @property (nonatomic) unsigned long long dtmfTimestampRate; // @synthesize dtmfTimestampRate=_dtmfTimestampRate;
 @property (nonatomic, getter=isDTXEnabled) BOOL dtxEnabled; // @synthesize dtxEnabled=_dtxEnabled;
+@property (nonatomic, getter=isLatencySensitiveMode) BOOL latencySensitiveMode; // @synthesize latencySensitiveMode=_latencySensitiveMode;
 @property (nonatomic) unsigned long long maxPtime; // @synthesize maxPtime=_maxPtime;
 @property (nonatomic, getter=isOctectAligned) BOOL octetAligned; // @synthesize octetAligned=_octetAligned;
 @property (nonatomic) long long preferredAMRMode; // @synthesize preferredAMRMode=_preferredAMRMode;

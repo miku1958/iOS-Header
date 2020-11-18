@@ -9,15 +9,14 @@
 #import <MediaSocial/UITableViewDataSource-Protocol.h>
 #import <MediaSocial/UITableViewDelegate-Protocol.h>
 
-@class MSCLAccountStore, MSCLSettingsTableViewCell, NSArray, NSMapTable, NSString, UIImage, UITableView;
+@class MSCLAccount, MSCLAccountStore, MSCLSettingsTableViewCell, NSString, UIImage, UITableView;
 
 @interface MSCLFacebookPageSelectionViewController : SKUIViewController <UITableViewDataSource, UITableViewDelegate>
 {
+    MSCLAccount *_account;
     MSCLAccountStore *_accountStore;
     BOOL _didRequestImages;
     MSCLSettingsTableViewCell *_removeAccountButtonCell;
-    NSMapTable *_images;
-    NSArray *_pages;
     UIImage *_placeholderImage;
     NSString *_selectedPageIdentifier;
     UITableView *_tableView;
@@ -35,23 +34,18 @@
 - (id)_facebookPageTableViewCellInTableView:(id)arg1 forIndexPath:(id)arg2;
 - (id)_imageDataConsumer;
 - (void)_layoutTableHeaderView;
-- (id)_newImageOperationWithObjectIdentifier:(id)arg1;
 - (id)_removalConfirmationMessage;
 - (void)_removeAccount;
-- (void)_requestImagesIfNecessary;
-- (void)_setImage:(id)arg1 forObject:(id)arg2;
 - (void)dealloc;
-- (id)initWithAccountStore:(id)arg1 pages:(id)arg2;
+- (id)initWithAccount:(id)arg1 fromStore:(id)arg2;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)setSelectedPage:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

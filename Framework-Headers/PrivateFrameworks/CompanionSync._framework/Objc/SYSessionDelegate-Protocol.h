@@ -6,7 +6,7 @@
 
 #import <CompanionSync/NSObject-Protocol.h>
 
-@class NSArray, NSError, SYSession;
+@class NSArray, NSError, NSSet, SYSession;
 
 @protocol SYSessionDelegate <NSObject>
 - (void)syncSession:(SYSession *)arg1 applyChanges:(NSArray *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
@@ -18,5 +18,6 @@
 - (void)resetDataStoreForSyncSession:(SYSession *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (BOOL)syncSession:(SYSession *)arg1 restartChanges:(id *)arg2;
 - (BOOL)syncSession:(SYSession *)arg1 rollbackChangesWithError:(id *)arg2;
+- (void)syncSession:(SYSession *)arg1 successfullySynced:(NSSet *)arg2;
 @end
 

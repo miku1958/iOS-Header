@@ -6,9 +6,11 @@
 
 #import <Preferences/PSListController.h>
 
-@class PSSpecifier;
+#import <PreferencesUI/PSListControllerTestableSpecifiers-Protocol.h>
 
-@interface PSUISoundsPrefController : PSListController
+@class NSString, PSSpecifier;
+
+@interface PSUISoundsPrefController : PSListController <PSListControllerTestableSpecifiers>
 {
     float _volume;
     float _rateLimitedVolume;
@@ -20,6 +22,12 @@
     long long _voiceMailSpecifierIndex;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)booleanCapabilitiesToTest;
 - (void).cxx_destruct;
 - (BOOL)_canChangeRingtoneWithButtons;
 - (int)_deviceType;

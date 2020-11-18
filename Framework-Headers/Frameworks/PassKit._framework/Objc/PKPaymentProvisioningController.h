@@ -46,6 +46,7 @@
 @property (readonly, nonatomic) PKPaymentRequirementsResponse *requirementsResponse; // @synthesize requirementsResponse=_requirementsResponse;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL suppressDefaultCardholderNameField;
 @property (readonly, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 
 - (void).cxx_destruct;

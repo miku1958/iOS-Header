@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)_deleteFromDB:(id)arg1 keepAliases:(BOOL)arg2;
 - (BOOL)_insertInDB:(id)arg1 dbRowID:(unsigned long long)arg2;
+- (void)_removeAliasAndMarkDead;
 - (BOOL)_updateInDB:(id)arg1 diffs:(unsigned long long)arg2;
 - (BOOL)changedAtRelativePath:(id)arg1 scanPackage:(BOOL)arg2;
 - (BOOL)evictInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
@@ -34,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (void)rewriteAliasOnDiskWithTarget:(id)arg1;
 - (BOOL)startDownloadInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)structureRecordBeingDeadInServerTruth:(BOOL)arg1 stageID:(id)arg2 pcsChained:(BOOL)arg3;
+- (id)targetDocument;
+- (void)targetMovedToThisAppLibrary;
 - (void)targetMovedToTrashOrDeleted;
 - (id)targetReference;
 - (BOOL)updateOnDiskWithAliasTarget:(id)arg1 forServerEdit:(BOOL)arg2;

@@ -6,10 +6,12 @@
 
 #import <iTunesStore/ISURLOperation.h>
 
-@class ISBiometricAuthenticationContext, NSNumber, SSURLBagContext, SSVFairPlaySAPSession;
-@protocol ISBiometricPurchaseDelegate, ISStoreURLOperationDelegate;
+#import <iTunesStore/ISBiometricSessionDelegate-Protocol.h>
 
-@interface ISStoreURLOperation : ISURLOperation
+@class ISBiometricAuthenticationContext, NSNumber, NSString, SSURLBagContext, SSVFairPlaySAPSession;
+@protocol ISBiometricSessionDelegate, ISStoreURLOperationDelegate;
+
+@interface ISStoreURLOperation : ISURLOperation <ISBiometricSessionDelegate>
 {
     long long _activeMachineDataStyle;
     NSNumber *_authenticatedDSID;
@@ -25,7 +27,7 @@
     BOOL _useUserSpecificURLBag;
     BOOL _needsTermsAndConditionsAcceptance;
     ISBiometricAuthenticationContext *_biometricAuthenticationContext;
-    id<ISBiometricPurchaseDelegate> _biometricDelegate;
+    id<ISBiometricSessionDelegate> _biometricSessionDelegate;
 }
 
 @property (strong) SSVFairPlaySAPSession *SAPSession;
@@ -33,9 +35,12 @@
 @property (nonatomic, getter=isURLBagRequest) BOOL URLBagRequest; // @synthesize URLBagRequest=_isURLBagRequest;
 @property (strong) NSNumber *authenticatedDSID; // @synthesize authenticatedDSID=_authenticatedDSID;
 @property (strong) ISBiometricAuthenticationContext *biometricAuthenticationContext; // @synthesize biometricAuthenticationContext=_biometricAuthenticationContext;
-@property id<ISBiometricPurchaseDelegate> biometricDelegate; // @synthesize biometricDelegate=_biometricDelegate;
+@property id<ISBiometricSessionDelegate> biometricSessionDelegate; // @synthesize biometricSessionDelegate=_biometricSessionDelegate;
 @property BOOL canSendGUIDParameter;
+@property (readonly, copy) NSString *debugDescription;
 @property id<ISStoreURLOperationDelegate> delegate; // @dynamic delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignorePreexistingSecureToken;
 @property long long machineDataStyle; // @synthesize machineDataStyle=_machineDataStyle;
 @property BOOL needsAuthentication; // @synthesize needsAuthentication=_needsAuthentication;
@@ -43,6 +48,7 @@
 @property BOOL needsURLBag; // @synthesize needsURLBag=_needsURLBag;
 @property BOOL performsMachineDataActions;
 @property BOOL shouldSendXTokenHeader;
+@property (readonly) Class superclass;
 @property BOOL urlKnownToBeTrusted; // @synthesize urlKnownToBeTrusted=_urlKnownToBeTrusted;
 @property BOOL useUserSpecificURLBag; // @synthesize useUserSpecificURLBag=_useUserSpecificURLBag;
 
@@ -79,6 +85,7 @@
 - (id)init;
 - (id)newRequestWithURL:(id)arg1;
 - (void)run;
+- (void)sender:(id)arg1 didFallbackToPassword:(BOOL)arg2;
 - (BOOL)shouldFollowRedirectWithRequest:(id)arg1 returningError:(id *)arg2;
 
 @end

@@ -9,18 +9,19 @@
 #import <VideoSubscriberAccount/NSCopying-Protocol.h>
 #import <VideoSubscriberAccount/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSString;
+@class NSData, NSDate, NSString, VSAccountProviderResponse;
 
 @interface VSAccountMetadata : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_accountProviderIdentifier;
     NSDate *_authenticationExpirationDate;
     NSData *_verificationData;
-    NSString *_SAMLAttributeQueryResponse;
+    VSAccountProviderResponse *_accountProviderResponse;
 }
 
-@property (copy, nonatomic) NSString *SAMLAttributeQueryResponse; // @synthesize SAMLAttributeQueryResponse=_SAMLAttributeQueryResponse;
+@property (readonly, copy, nonatomic) NSString *SAMLAttributeQueryResponse;
 @property (copy, nonatomic) NSString *accountProviderIdentifier; // @synthesize accountProviderIdentifier=_accountProviderIdentifier;
+@property (strong, nonatomic) VSAccountProviderResponse *accountProviderResponse; // @synthesize accountProviderResponse=_accountProviderResponse;
 @property (copy, nonatomic) NSDate *authenticationExpirationDate; // @synthesize authenticationExpirationDate=_authenticationExpirationDate;
 @property (copy, nonatomic) NSData *verificationData; // @synthesize verificationData=_verificationData;
 

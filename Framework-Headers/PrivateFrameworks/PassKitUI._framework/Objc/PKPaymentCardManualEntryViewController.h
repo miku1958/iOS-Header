@@ -10,12 +10,13 @@
 #import <PassKitUI/PKPaymentSetupBrowseProductsViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupDisambiguationViewControllerDelegate-Protocol.h>
 
-@class NSString, PKPaymentSetupBrowseProductsViewController, PKPaymentSetupFindWithoutNumberFooterView;
+@class NSArray, NSString, PKPaymentSetupBrowseProductsViewController, PKPaymentSetupFindWithoutNumberFooterView;
 
 @interface PKPaymentCardManualEntryViewController : PKPaymentSetupProvisioningFieldsViewController <PKPaymentSetupDisambiguationViewControllerDelegate, PKPaymentSetupBrowseProductsViewControllerDelegate, PKPaymentCameraCaptureViewControllerDelegate>
 {
     PKPaymentSetupFindWithoutNumberFooterView *_findWithoutNumberFooterView;
     PKPaymentSetupBrowseProductsViewController *_findWithoutNumberBrowser;
+    NSArray *_pendingCameraCaptureObjects;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,6 +33,7 @@
 - (void)_performInlineSecondaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performRequirementsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performSecondaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_processPendingCameraCaptureObjects;
 - (void)_pushSecondaryPaymentSetupViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_shouldUseInlineSecondaryProvisioningFlow;
 - (void)browseProductsViewController:(id)arg1 didSelectProduct:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

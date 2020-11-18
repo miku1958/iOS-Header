@@ -27,7 +27,7 @@
 - (BOOL)_parseObjectFromData:(id)arg1 rawData:(id)arg2;
 - (BOOL)_parseObjects:(BOOL)arg1;
 - (void)finishWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithRequest:(id)arg1;
+- (id)initWithQoS:(long long)arg1;
 - (void)processData:(id)arg1;
 
 @end

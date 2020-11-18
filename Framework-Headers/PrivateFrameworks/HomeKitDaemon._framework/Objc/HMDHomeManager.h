@@ -442,6 +442,7 @@
 - (void)handleHomeKitAppInForeground:(id)arg1;
 - (void)handleIsAtHome:(id)arg1;
 - (void)handleNoHomeKitAppInForeground:(id)arg1;
+- (void)handleVendorInfoUpdated:(id)arg1;
 - (void)honeybeeCollect:(id)arg1 identifier:(id)arg2;
 - (id)identifiersOfAccessories:(id)arg1;
 - (id)initWithMessageDispatcher:(id)arg1 remoteMessageDispatcher:(id)arg2 accessoryBrowser:(id)arg3 messageFilterChain:(id)arg4 homeData:(id)arg5 localDataDecryptionFailed:(BOOL)arg6 identityRegistry:(id)arg7 appRegistry:(id)arg8 accountRegistry:(id)arg9;
@@ -452,6 +453,7 @@
 - (id)nominateCurrentHomeUUID;
 - (void)notifyClientsResidentCapable:(BOOL)arg1;
 - (void)notifyPrimaryHomeUpdated:(id)arg1;
+- (long long)numberOfAccessoryWithNewFirmwareAvailable;
 - (long long)numberOfPendingIncomingInvitation;
 - (id)pairedAccessories;
 - (void)pairedSyncDidStart:(id)arg1;

@@ -67,6 +67,7 @@
 - (void)suggestionManager:(id)arg1 hasNewSuggestionAvailable:(id)arg2;
 - (void)undoConfirm:(id)arg1;
 - (void)undoDeny:(id)arg1;
+- (void)updateViewWithViewState:(unsigned long long)arg1;
 - (unsigned long long)userConfirmedCountForSummaryViewController:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

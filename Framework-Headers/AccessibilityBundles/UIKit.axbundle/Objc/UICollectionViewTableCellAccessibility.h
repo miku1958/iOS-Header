@@ -14,6 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySupplementaryFooterViews;
+- (id)_axCustomActionsForActions:(id)arg1;
+- (BOOL)_axPerformAction:(id)arg1;
 - (id)_privateAccessibilityCustomActions;
 
 @end

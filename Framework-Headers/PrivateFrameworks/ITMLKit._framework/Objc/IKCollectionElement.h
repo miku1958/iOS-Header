@@ -6,17 +6,24 @@
 
 #import <ITMLKit/IKViewElement.h>
 
-@class IKHeaderElement, NSArray;
+#import <ITMLKit/IKAppDocumentStyleChangeObserving-Protocol.h>
 
-@interface IKCollectionElement : IKViewElement
+@class IKHeaderElement, NSArray, NSString;
+
+@interface IKCollectionElement : IKViewElement <IKAppDocumentStyleChangeObserving>
 {
     NSArray *_sections;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) IKHeaderElement *header;
 @property (readonly, strong, nonatomic) NSArray *sections;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)appDocumentDidMarkStylesDirty;
 - (id)applyUpdatesWithElement:(id)arg1;
 
 @end

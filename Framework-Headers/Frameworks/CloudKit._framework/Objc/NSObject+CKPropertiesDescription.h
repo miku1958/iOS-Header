@@ -8,8 +8,8 @@
 
 @interface NSObject (CKPropertiesDescription)
 - (id)CKDescription;
+- (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (id)CKPropertiesDescription;
-- (id)CKPropertiesDescriptionWithProperties:(id)arg1;
-- (id)CKPropertiesToDescribe:(BOOL)arg1;
+- (id)CKPropertiesDescriptionStringFromProperties:(id)arg1;
 @end
 

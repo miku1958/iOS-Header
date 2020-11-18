@@ -28,6 +28,7 @@
     _UIVisualEffectFilterView *_colorBurnSubview;
     _UIVisualEffectFilterView *_darkeningSubview;
     NSArray *_effectConfigViews;
+    double _backdropViewBackgroundColorAlpha;
     BOOL __blurDisabled;
     NSString *_groupName;
     double _cornerRadius;
@@ -35,6 +36,7 @@
     UIVisualEffect *_overrideEffect;
 }
 
+@property (nonatomic, getter=_backdropViewBackgroundColorAlpha, setter=_setBackdropViewBackgroundColorAlpha:) double _backdropViewBackgroundColorAlpha;
 @property (nonatomic, getter=_isBlurDisabled, setter=_setBlurDisabled:) BOOL _blurDisabled; // @synthesize _blurDisabled=__blurDisabled;
 @property (nonatomic, setter=_setCornerRadius:) double _cornerRadius; // @synthesize _cornerRadius;
 @property (readonly, nonatomic) NSArray *_effectViews;

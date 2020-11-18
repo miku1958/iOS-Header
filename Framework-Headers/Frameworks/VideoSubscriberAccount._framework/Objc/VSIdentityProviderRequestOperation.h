@@ -9,6 +9,7 @@
 @class VSFailable, VSIdentityProvider, VSIdentityProviderController, VSIdentityProviderRequest;
 @protocol VSIdentityProviderControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface VSIdentityProviderRequestOperation : VSAsyncOperation
 {
     VSIdentityProvider *_identityProvider;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NotificationsUI/__NCNotificationListSectionHeaderViewAccessibility_super.h>
+#import "__NCNotificationListSectionHeaderViewAccessibility_super.h"
 
 @interface NCNotificationListSectionHeaderViewAccessibility : __NCNotificationListSectionHeaderViewAccessibility_super
 {

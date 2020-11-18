@@ -6,15 +6,21 @@
 
 #import <UserNotifications/UNNotificationAttachmentOptions.h>
 
-@class NSNumber;
+#import <UserNotifications/UNNotificationAttachmentThumbnailOptions-Protocol.h>
 
-@interface UNImageNotificationAttachmentOptions : UNNotificationAttachmentOptions
+@class NSNumber, NSString;
+
+@interface UNImageNotificationAttachmentOptions : UNNotificationAttachmentOptions <UNNotificationAttachmentThumbnailOptions>
 {
     BOOL _thumbnailHidden;
     NSNumber *_thumbnailFrameNumber;
     struct CGRect _thumbnailClippingRect;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) struct CGRect thumbnailClippingRect; // @synthesize thumbnailClippingRect=_thumbnailClippingRect;
 @property (readonly, copy, nonatomic) NSNumber *thumbnailFrameNumber; // @synthesize thumbnailFrameNumber=_thumbnailFrameNumber;
 @property (readonly, nonatomic) BOOL thumbnailHidden; // @synthesize thumbnailHidden=_thumbnailHidden;
@@ -24,7 +30,6 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithThumbnailHidden:(BOOL)arg1 thumbnailClippingRect:(struct CGRect)arg2 thumbnailFrameNumber:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

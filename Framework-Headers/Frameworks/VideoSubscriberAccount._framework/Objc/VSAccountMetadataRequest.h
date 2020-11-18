@@ -22,6 +22,7 @@
     NSString *_verificationToken;
     NSString *_localizedVideoTitle;
     NSArray *_attributeNames;
+    NSArray *_supportedAuthenticationSchemes;
 }
 
 @property (copy, nonatomic) NSArray *attributeNames; // @synthesize attributeNames=_attributeNames;
@@ -32,6 +33,7 @@
 @property (nonatomic, getter=isInterruptionAllowed) BOOL interruptionAllowed; // @synthesize interruptionAllowed=_interruptionAllowed;
 @property (copy, nonatomic) NSString *localizedVideoTitle; // @synthesize localizedVideoTitle=_localizedVideoTitle;
 @property (copy, nonatomic) NSArray *supportedAccountProviderIdentifiers; // @synthesize supportedAccountProviderIdentifiers=_supportedAccountProviderIdentifiers;
+@property (copy, nonatomic) NSArray *supportedAuthenticationSchemes; // @synthesize supportedAuthenticationSchemes=_supportedAuthenticationSchemes;
 @property (copy, nonatomic) NSString *verificationToken; // @synthesize verificationToken=_verificationToken;
 
 + (BOOL)supportsSecureCoding;

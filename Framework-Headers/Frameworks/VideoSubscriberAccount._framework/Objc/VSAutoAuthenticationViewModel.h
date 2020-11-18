@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideoSubscriberAccount/VSViewModel.h>
+#import <VideoSubscriberAccount/VSCuratedViewModel.h>
 
 @class NSString;
 @protocol VSAutoAuthenticationViewModelDelegate;
 
-@interface VSAutoAuthenticationViewModel : VSViewModel
+__attribute__((visibility("hidden")))
+@interface VSAutoAuthenticationViewModel : VSCuratedViewModel
 {
     id<VSAutoAuthenticationViewModelDelegate> _delegate;
     NSString *_messageTitle;

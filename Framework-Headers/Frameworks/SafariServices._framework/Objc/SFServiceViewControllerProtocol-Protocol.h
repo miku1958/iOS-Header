@@ -18,6 +18,5 @@
 - (void)setPreferredBarTintColor:(UIColor *)arg1;
 - (void)setPreferredControlTintColor:(UIColor *)arg1;
 - (void)setShowingLinkPreview:(BOOL)arg1;
-- (void)setTintColor:(UIColor *)arg1;
 @end
 

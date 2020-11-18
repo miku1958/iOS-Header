@@ -76,7 +76,7 @@
 - (void).cxx_destruct;
 - (void)clearCloudKitCaches;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
-- (id)fetchEndOfArticleDataForHeadline:(id)arg1 initialRelatedHeadlineCount:(unsigned long long)arg2 initialPublisherHeadlineCount:(unsigned long long)arg3 totalRelatedHeadlineCount:(unsigned long long)arg4 totalPublisherHeadlineCount:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)fetchEndOfArticleDataForHeadline:(id)arg1 initialRelatedHeadlineCount:(unsigned long long)arg2 initialPublisherHeadlineCount:(unsigned long long)arg3 totalRelatedHeadlineCount:(unsigned long long)arg4 totalPublisherHeadlineCount:(unsigned long long)arg5 fetchRelatedHeadline:(BOOL)arg6 fetchAllTopics:(BOOL)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)getCoverImageForFeed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initForTesting;

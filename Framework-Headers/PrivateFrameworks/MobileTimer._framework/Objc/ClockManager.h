@@ -51,6 +51,7 @@
 - (void)removeNotificationObserver:(id)arg1;
 - (void)resetUpdatesToLocalNotificationsCache;
 - (void)scheduleLocalNotification:(id)arg1;
+- (void)scheduleLocalNotifications:(id)arg1;
 - (BOOL)upgrade;
 - (BOOL)upgradeIfNeverAttempted;
 

@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCCloudContext, NSArray, NSDate, NSDictionary, NSError;
+@class FCArticleList, FCCloudContext, NSArray, NSDate, NSError;
 @protocol FCChannelProviding;
 
 @interface FCTopStoriesCatchUpOperation : FCOperation
@@ -14,16 +14,18 @@
     FCCloudContext *_context;
     NSDate *_date;
     id<FCChannelProviding> _topStoriesChannel;
-    NSArray *_feedItems;
-    NSDictionary *_feedContextByFeedID;
+    NSArray *_headlines;
+    FCArticleList *_articleList;
     NSError *_error;
+    CDUnknownBlockType _catchUpCompletionHandler;
 }
 
+@property (strong) FCArticleList *articleList; // @synthesize articleList=_articleList;
+@property (copy) CDUnknownBlockType catchUpCompletionHandler; // @synthesize catchUpCompletionHandler=_catchUpCompletionHandler;
 @property (strong, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (strong) NSError *error; // @synthesize error=_error;
-@property (copy) NSDictionary *feedContextByFeedID; // @synthesize feedContextByFeedID=_feedContextByFeedID;
-@property (copy) NSArray *feedItems; // @synthesize feedItems=_feedItems;
+@property (copy) NSArray *headlines; // @synthesize headlines=_headlines;
 @property (copy) id<FCChannelProviding> topStoriesChannel; // @synthesize topStoriesChannel=_topStoriesChannel;
 
 - (void).cxx_destruct;

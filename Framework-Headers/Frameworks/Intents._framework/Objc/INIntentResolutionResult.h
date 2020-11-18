@@ -61,7 +61,9 @@
 - (id)_dataForIntentSlotDescription:(id)arg1;
 - (id)_initWithResultCode:(long long)arg1;
 - (id)_intentSlotValueForObject:(id)arg1 slotDescription:(id)arg2;
+- (id)_stringForResultCode:(long long)arg1;
 - (id)_vocabularyValueForObject:(id)arg1 slotDescription:(id)arg2;
+- (id)dictionaryRepresentation;
 - (id)resolutionResultDataForIntent:(id)arg1 intentSlotDescription:(id)arg2;
 
 @end

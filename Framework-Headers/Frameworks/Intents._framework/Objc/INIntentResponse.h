@@ -38,10 +38,12 @@
 + (int)_errorCodeFromCode:(long long)arg1;
 + (long long)_intentHandlingStatusFromCode:(long long)arg1;
 + (int)_typeFromCode:(long long)arg1;
++ (void)load;
 + (id)responseFailure;
 + (id)responseSuccess;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_dictionaryRepresentation;
 - (id)_impl;
 - (long long)_intentHandlingStatus;
 - (id)_payloadResponseMessageData;

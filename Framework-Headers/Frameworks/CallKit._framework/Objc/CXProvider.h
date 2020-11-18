@@ -53,7 +53,7 @@
 - (oneway void)commitTransaction:(id)arg1;
 - (oneway void)handleActionTimeout:(id)arg1;
 - (oneway void)handleAudioSessionActivationStateChangedTo:(BOOL)arg1;
-- (void)handleConnectionInvalidation;
+- (void)handleConnectionInterruption;
 - (void)handleMediaServicesWereResetNotification:(id)arg1;
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;

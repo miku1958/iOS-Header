@@ -24,6 +24,7 @@
 - (void)remote_nextScheduledAchievementDefinitionAlertTaskDateWithCompletion:(void (^)(NSDate *, NSError *))arg1;
 - (void)remote_registerForAchievementDefinitionNotificationsWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_registerForAchievementNotificationsAndFetchUnalertedCountWithCompletion:(void (^)(long long, NSError *))arg1;
+- (void)remote_resetAchievementDefinitionAlertedStates:(BOOL)arg1 availabilityStates:(BOOL)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_runAchievementsFixupAsDryRun:(BOOL)arg1 completion:(void (^)(NSArray *, BOOL, NSError *))arg2;
 - (void)remote_setAchievementAssetsServerURL:(NSURL *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_setCurrentActivityCacheOverrideDate:(NSDate *)arg1 timeZone:(NSTimeZone *)arg2 completion:(void (^)(BOOL, NSError *))arg3;

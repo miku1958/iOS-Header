@@ -15,7 +15,7 @@
 @interface MPAbstractNetworkArtworkDataSource : NSObject <NSURLSessionDataDelegate, MPArtworkDataSource>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
-    NSCache *_artworkRepresentationCache;
+    NSCache *_fallbackArtworkRepresentationCache;
     NSMapTable *_catalogTaskMap;
     NSURLSession *_URLSession;
 }
@@ -23,10 +23,10 @@
 @property (strong, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 @property (readonly, nonatomic) NSURLSessionConfiguration *URLSessionConfiguration;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
-@property (strong, nonatomic) NSCache *artworkRepresentationCache; // @synthesize artworkRepresentationCache=_artworkRepresentationCache;
 @property (strong, nonatomic) NSMapTable *catalogTaskMap; // @synthesize catalogTaskMap=_catalogTaskMap;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSCache *fallbackArtworkRepresentationCache; // @synthesize fallbackArtworkRepresentationCache=_fallbackArtworkRepresentationCache;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

@@ -15,8 +15,10 @@
     NSString *_comments;
     GEORPPhotoWithMetadata *_photo;
     unsigned int _routeStepIndex;
+    unsigned int _routeStepSubstepIndex;
     struct {
         unsigned int routeStepIndex:1;
+        unsigned int routeStepSubstepIndex:1;
     } _has;
 }
 
@@ -24,8 +26,10 @@
 @property (readonly, nonatomic) BOOL hasComments;
 @property (readonly, nonatomic) BOOL hasPhoto;
 @property (nonatomic) BOOL hasRouteStepIndex;
+@property (nonatomic) BOOL hasRouteStepSubstepIndex;
 @property (strong, nonatomic) GEORPPhotoWithMetadata *photo; // @synthesize photo=_photo;
 @property (nonatomic) unsigned int routeStepIndex; // @synthesize routeStepIndex=_routeStepIndex;
+@property (nonatomic) unsigned int routeStepSubstepIndex; // @synthesize routeStepSubstepIndex=_routeStepSubstepIndex;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PXRunNodeDelegate-Protocol.h>
 
-@class NSArray, NSString, PHAsset, PHContentEditingOutput, PLPhotoEditModel, PUPhotoEditIrisModel, PUPhotoKitAdjustmentSaveNode;
+@class NSArray, NSString, PHAsset, PHContentEditingOutput, PLPhotoEditModel, PUPhotoEditIrisModel, PUPhotoKitAdjustmentSaveNode, PUVideoCompositionExportNode;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoEditSaveRequest : NSObject <PXRunNodeDelegate>
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completionHandler;
     double _beginTimestamp;
     PUPhotoKitAdjustmentSaveNode *_outputNode;
+    PUVideoCompositionExportNode *_videoExportNode;
     int _identifier;
     PHAsset *_photo;
     PLPhotoEditModel *_editModel;
@@ -36,7 +37,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) PUPhotoEditIrisModel *irisModel; // @synthesize irisModel=_irisModel;
 @property (readonly, nonatomic) PHAsset *photo; // @synthesize photo=_photo;
+@property (readonly, nonatomic) double progress;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsProgress;
 @property (readonly, nonatomic) long long workImageVersion; // @synthesize workImageVersion=_workImageVersion;
 
 - (void).cxx_destruct;
@@ -46,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)_performRevertToOriginalOperation;
 - (void)_performSaveContentEditingOutput;
 - (void)_performSaveEditsOperation;
+- (BOOL)_requiresVideoRender;
 - (void)_transitionToState:(long long)arg1;
 - (long long)_videoRequestVersion;
 - (void)beginSaveOperationWithCompletionHandler:(CDUnknownBlockType)arg1;

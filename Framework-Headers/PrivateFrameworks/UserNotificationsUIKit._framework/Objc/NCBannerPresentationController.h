@@ -12,21 +12,27 @@
 @interface NCBannerPresentationController : UIPresentationController
 {
     id<UIViewControllerTransitionCoordinator> _activeTransitionCoordinator;
-    BOOL _wantsContainerHeight;
+    long long _transitionState;
+    BOOL _wantsUseableContainerHeight;
     NSArray *_additionalBackgroundViews;
 }
 
 @property (strong, nonatomic) NSArray *additionalBackgroundViews; // @synthesize additionalBackgroundViews=_additionalBackgroundViews;
-@property (nonatomic) BOOL wantsContainerHeight; // @synthesize wantsContainerHeight=_wantsContainerHeight;
+@property (nonatomic) BOOL wantsUseableContainerHeight; // @synthesize wantsUseableContainerHeight=_wantsUseableContainerHeight;
 
++ (struct CGRect)_presentedFrameForVisiblePortion:(BOOL)arg1 ofView:(id)arg2 inPresentationFrame:(struct CGRect)arg3;
 + (struct CGRect)useableContainerViewFrameInContainerViewWithBounds:(struct CGRect)arg1;
++ (struct CGRect)visiblePresentedFrameForView:(id)arg1 inPresentationFrame:(struct CGRect)arg2;
 - (void).cxx_destruct;
 - (struct CGRect)_frameForViewController:(id)arg1 beyondEdge:(unsigned long long)arg2;
-- (struct CGRect)_presentedFrameForViewController:(id)arg1 inPresentationFrame:(struct CGRect)arg2;
+- (struct CGRect)_presentedFrameForView:(id)arg1 inPresentationFrame:(struct CGRect)arg2;
 - (BOOL)_shouldDisableInteractionDuringTransitions;
+- (void)dismissalTransitionDidEnd:(BOOL)arg1;
+- (void)dismissalTransitionWillBegin;
 - (struct CGRect)frameOfDismissedViewInContainerView;
 - (struct CGRect)frameOfPresentedViewInContainerView;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (void)presentationTransitionDidEnd:(BOOL)arg1;
 - (void)presentationTransitionWillBegin;
 - (BOOL)shouldRemovePresentersView;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;

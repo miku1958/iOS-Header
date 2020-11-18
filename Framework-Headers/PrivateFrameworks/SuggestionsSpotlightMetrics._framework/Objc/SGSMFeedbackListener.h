@@ -13,6 +13,7 @@
 @interface SGSMFeedbackListener : NSObject <SFFeedbackListener>
 {
     SGSMutableSearchState *_searchState;
+    SGSMutableSearchState *_previousState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -21,6 +22,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_eventIsOnFoundInAppsCalendar:(id)arg1;
+- (void)_resetState;
+- (void)_restoreStateIfUnset;
+- (void)_saveAndUnsetState;
 - (void)didEngageCardSection:(id)arg1;
 - (void)didEngageResult:(id)arg1;
 - (void)didEngageSuggestion:(id)arg1;

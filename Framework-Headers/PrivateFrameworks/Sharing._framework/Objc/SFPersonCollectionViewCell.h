@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSArray, NSLayoutConstraint, NSObject, NSProgress, NSString, SFAirDropNode, SFCircleProgressView, SFPersonImageView, UIColor, UILabel;
+@class NSArray, NSLayoutConstraint, NSObject, NSProgress, NSString, SFAirDropNode, SFCircleProgressView, SFPersonImageView, UIColor, UIImpactFeedbackGenerator, UILabel, UINotificationFeedbackGenerator, UISelectionFeedbackGenerator;
 @protocol SFPersonCollectionViewCellDelegate;
 
 __attribute__((visibility("hidden")))
@@ -26,6 +26,9 @@ __attribute__((visibility("hidden")))
     UILabel *_secondLabel;
     NSArray *_secondLabelVisibleConstraintsArray;
     UIColor *_fadedSecondLabelColor;
+    UINotificationFeedbackGenerator *_notificationHaptic;
+    UISelectionFeedbackGenerator *_selectionHaptic;
+    UIImpactFeedbackGenerator *_impactHaptic;
     NSLayoutConstraint *_secondLabelFBConstraint;
     UILabel *_nameLabel;
 }
@@ -36,7 +39,9 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) NSObject<SFPersonCollectionViewCellDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIColor *fadedSecondLabelColor; // @synthesize fadedSecondLabelColor=_fadedSecondLabelColor;
 @property (strong, nonatomic) SFPersonImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) UIImpactFeedbackGenerator *impactHaptic; // @synthesize impactHaptic=_impactHaptic;
 @property (strong, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
+@property (strong, nonatomic) UINotificationFeedbackGenerator *notificationHaptic; // @synthesize notificationHaptic=_notificationHaptic;
 @property (strong, nonatomic) SFAirDropNode *person; // @synthesize person=_person;
 @property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (strong, nonatomic) NSArray *progressKeyPaths; // @synthesize progressKeyPaths=_progressKeyPaths;
@@ -44,18 +49,22 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UILabel *secondLabel; // @synthesize secondLabel=_secondLabel;
 @property (strong, nonatomic) NSLayoutConstraint *secondLabelFBConstraint; // @synthesize secondLabelFBConstraint=_secondLabelFBConstraint;
 @property (strong, nonatomic) NSArray *secondLabelVisibleConstraintsArray; // @synthesize secondLabelVisibleConstraintsArray=_secondLabelVisibleConstraintsArray;
+@property (strong, nonatomic) UISelectionFeedbackGenerator *selectionHaptic; // @synthesize selectionHaptic=_selectionHaptic;
 @property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) BOOL stateBeingRestored; // @synthesize stateBeingRestored=_stateBeingRestored;
 
 - (void).cxx_destruct;
 - (void)addObserverOfValuesForKeyPaths:(id)arg1 ofObject:(id)arg2;
+- (void)deactivateHaptics;
 - (void)dealloc;
+- (void)fireHapticsForState:(long long)arg1;
 - (void)handleKVOUpdateForPerson:(id)arg1 keyPath:(id)arg2;
 - (void)handleKVOUpdateForProgress:(id)arg1 keyPath:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)prepareForReuse;
+- (void)prepareHaptics;
 - (void)removeObserverOfValuesForKeyPaths:(id)arg1 ofObject:(id)arg2;
 - (void)restoreCellStateFromFinalTransferState:(long long)arg1;
 - (void)setCellState:(long long)arg1 animated:(BOOL)arg2;

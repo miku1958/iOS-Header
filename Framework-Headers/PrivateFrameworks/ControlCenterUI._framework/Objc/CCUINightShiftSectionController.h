@@ -6,13 +6,21 @@
 
 #import <ControlCenterUI/CCUIControlCenterSectionViewController.h>
 
-@class CBBlueLightClient;
+#import <ControlCenterUI/CCUIControlCenterButtonDelegate-Protocol.h>
 
-@interface CCUINightShiftSectionController : CCUIControlCenterSectionViewController
+@class CBBlueLightClient, NSString, UIAlertController;
+
+@interface CCUINightShiftSectionController : CCUIControlCenterSectionViewController <CCUIControlCenterButtonDelegate>
 {
     CBBlueLightClient *_blueLightReductionClient;
     CDStruct_0b0a24e2 _currentStatus;
+    UIAlertController *_presentedAlertController;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)_defaultFontTight;
 + (id)_displayName;
@@ -36,7 +44,10 @@
 - (void)_updateLayoutForSizeCategoryChange;
 - (void)_updateState;
 - (BOOL)_uses24HourTimeForLocale:(id)arg1;
+- (void)buttonTapped:(id)arg1;
+- (BOOL)dismissModalFullScreenIfNeeded;
 - (BOOL)enabled;
+- (BOOL)isInternal;
 - (id)sectionIdentifier;
 - (id)statusUpdate;
 - (id)view;

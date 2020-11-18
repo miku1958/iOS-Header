@@ -9,8 +9,8 @@
 @protocol GEONavigationServerRequestStateXPCInterface <NSObject>
 - (void)requestActiveRouteDetailsData;
 - (void)requestGuidanceState;
+- (void)requestRideSelections;
 - (void)requestRouteSummary;
-- (void)requestSelectedRideOption;
 - (void)requestStepIndex;
 - (void)requestTransitSummary;
 - (void)requestUpdates;

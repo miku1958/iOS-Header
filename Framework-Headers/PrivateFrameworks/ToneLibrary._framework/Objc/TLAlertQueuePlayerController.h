@@ -20,6 +20,9 @@
     TLAlert *_playingAlert;
     NSString *_playingToneIdentifier;
     CDUnknownBlockType _playingAlertCompletionHandler;
+    BOOL _isAudioEnvironmentSetup;
+    BOOL _isAlertActivationAssertionAcquired;
+    TLAlert *_alertForAudioEnvironmentSetup;
     NSString *_previousAudioCategory;
     unsigned long long _previousAudioCategoryOptions;
     BOOL _isBypassingRingerSwitchPolicy;
@@ -53,12 +56,15 @@
 - (void)_didEndPlayingAlert;
 - (void)_endPreventingAudioSessionDeactivation;
 - (id)_fallbackToneIdentifierForPlayingAlert;
+- (void)_handleActivationAssertionStatusChangeForAlert:(id)arg1 updatedStatus:(BOOL)arg2;
 - (void)_handleAudioSessionInterruptionNotification:(id)arg1;
 - (void)_handleAudioSessionInterruptionOfType:(unsigned long long)arg1 withOptions:(unsigned long long)arg2;
 - (void)_playAlert:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_prepareAudioEnvironment;
 - (void)_queuePlayer:(id)arg1 currentItemStatusWasUpdatedToValue:(long long)arg2;
 - (void)_queuePlayer:(id)arg1 currentItemWasUpdatedFromValue:(id)arg2;
 - (void)_reloadPlaybackForPlayingAlertWithToneIdentifier:(id)arg1;
+- (void)_restoreAudioEnvironment;
 - (void)_startObservingAudioSessionInterruptionNotifications;
 - (void)_startObservingQueuePlayer;
 - (void)_startPlaybackForAssetWithLoadedProperties:(id)arg1 alert:(id)arg2;
@@ -70,6 +76,7 @@
 - (void)_updateAudioVolumeDynamicallyForAlert:(id)arg1 toValue:(float)arg2;
 - (void)_willBeginPlayingAlert;
 - (void)dealloc;
+- (void)handleActivationAssertionStatusChangeForAlert:(id)arg1 updatedStatus:(BOOL)arg2;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)performBlockOnAudioEventQueue:(CDUnknownBlockType)arg1;

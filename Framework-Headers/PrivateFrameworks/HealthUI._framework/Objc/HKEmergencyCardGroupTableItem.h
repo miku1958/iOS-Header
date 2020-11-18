@@ -32,7 +32,6 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndex:(long long)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndex:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndex:(long long)arg2;
-- (id)titleForFooter;
 
 @end
 

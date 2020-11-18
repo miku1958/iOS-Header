@@ -6,16 +6,16 @@
 
 #import <CallKit/NSObject-Protocol.h>
 
-@class CXTransaction, NSDictionary, NSObject, NSString;
-@protocol CXCallObserverDataSourceDelegate, OS_dispatch_queue;
+@class CXTransaction, NSDictionary, NSString;
+@protocol CXCallObserverDataSourceDelegate;
 
 @protocol CXCallObserverDataSource <NSObject>
 
 @property (readonly, copy, nonatomic) NSDictionary *callUUIDToCallMap;
-@property (weak, nonatomic) id<CXCallObserverDataSourceDelegate> delegate;
 
-- (id)initWithConcurrentQueue:(NSObject<OS_dispatch_queue> *)arg1;
+- (void)addDelegate:(id<CXCallObserverDataSourceDelegate>)arg1;
 - (void)invalidate;
+- (void)removeDelegate:(id<CXCallObserverDataSourceDelegate>)arg1;
 - (void)requestTransaction:(CXTransaction *)arg1 forExtensionIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 @end
 

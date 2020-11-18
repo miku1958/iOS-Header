@@ -32,6 +32,7 @@
 @property (readonly, copy, nonatomic) NSString *notificationsUserID;
 @property (copy, nonatomic) NSNumber *onboardingVersionNumber;
 @property (readonly, nonatomic) long long personalizationTreatmentID;
+@property (readonly, nonatomic) BOOL shouldShowDefaultForYou;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) FCTagSettings *tagSettings; // @synthesize tagSettings=_tagSettings;
 @property (copy, nonatomic) NSNumber *totalMeteredCount; // @synthesize totalMeteredCount=_totalMeteredCount;
@@ -62,9 +63,11 @@
 - (void)incrementMonthlyMeteredCountByOneWithArticleID:(id)arg1;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 recordZone:(id)arg3 storeDirectory:(id)arg4 iCloudAccountChanged:(BOOL)arg5;
 - (void)loadLocalCachesFromStore;
+- (void)maybeUpdateOnboardingVersion:(CDUnknownBlockType)arg1;
 - (void)prepareForUse;
 - (void)removeObserver:(id)arg1;
 - (void)syncLocalNotificationsUserID:(id)arg1 withRemoteNotificationsUserID:(id)arg2;
+- (void)syncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)validateIsMeteredLimitReachedWithArticleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

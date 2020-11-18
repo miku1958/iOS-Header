@@ -31,6 +31,7 @@
 @property (readonly, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
 @property (weak, nonatomic) NCNotificationAction *presentationSourceAction;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
 - (void)_loadContentViewControllerForNotificationRequest:(id)arg1;
@@ -46,10 +47,11 @@
 - (void)customContent:(id)arg1 forwardAction:(id)arg2 forNotification:(id)arg3 withUserInfo:(id)arg4;
 - (void)customContent:(id)arg1 requestPermissionToExecuteAction:(id)arg2 forNotification:(id)arg3 withUserInfo:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)customContentDidLoadExtension:(id)arg1;
+- (void)customContentDidUpdateTitle:(id)arg1;
 - (unsigned long long)customContentLocation;
 - (void)customContentRequestsDismiss:(id)arg1;
 - (BOOL)defaultContentHidden;
-- (void)didReceiveNotificationRequest:(id)arg1;
+- (BOOL)didReceiveNotificationRequest:(id)arg1;
 - (id)initWithNotificationRequest:(id)arg1;
 - (void)loadAudioAccessoryView;
 - (void)loadExtension;

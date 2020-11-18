@@ -23,8 +23,8 @@
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <PhotosUI/UIScrollViewDelegate-Protocol.h>
 
-@class CIImage, GLKView, NSArray, NSString, NSURL, PHLivePhotoView, PLPhotoEditAggregateSession, PLPhotoEditModel, PLPhotoEditMutableModel, PLPhotoEditRenderer, PUAdjustmentsToolController, PUAutoAdjustmentController, PUCropToolController, PUEditableMediaProvider, PUFiltersToolController, PUImageEditPluginSession, PUMediaDestination, PUPhotoEditIrisModel, PUPhotoEditLivePhotoController, PUPhotoEditOverlayBadge, PUPhotoEditResourceLoader, PUPhotoEditSnapshot, PUPhotoEditToolController, PUPhotoEditToolbar, PUPhotoEditValuesCalculator, PUPhotoEditViewControllerSpec, PUProgressIndicatorView, PURedeyeToolController, PUTouchingGestureRecognizer, UIAlertController, UIButton, UIImage, UIImageView, UILongPressGestureRecognizer, UIScrollView, UITapGestureRecognizer, UIView;
-@protocol PUEditableAsset, PUPhotoEditViewControllerPresentationDelegate, PUPhotoEditViewControllerSessionDelegate;
+@class CIImage, GLKView, NSArray, NSObject, NSString, NSURL, PHLivePhotoView, PLPhotoEditAggregateSession, PLPhotoEditModel, PLPhotoEditMutableModel, PLPhotoEditRenderer, PUAdjustmentsToolController, PUAutoAdjustmentController, PUCropToolController, PUEditableMediaProvider, PUFiltersToolController, PUImageEditPluginSession, PUMediaDestination, PUPhotoEditIrisModel, PUPhotoEditLivePhotoController, PUPhotoEditOverlayBadge, PUPhotoEditResourceLoader, PUPhotoEditSnapshot, PUPhotoEditToolController, PUPhotoEditToolbar, PUPhotoEditValuesCalculator, PUPhotoEditViewControllerSpec, PUProgressIndicatorView, PURedeyeToolController, PUTouchingGestureRecognizer, UIAlertController, UIButton, UIImage, UIImageView, UILongPressGestureRecognizer, UIScrollView, UITapGestureRecognizer, UIView;
+@protocol OS_dispatch_source, PUEditableAsset, PUPhotoEditViewControllerPresentationDelegate, PUPhotoEditViewControllerSessionDelegate;
 
 @interface PUPhotoEditViewController : PUEditViewController <GLKViewDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PUPhotoEditToolControllerDelegate, PUImageEditPluginSessionDataSource, PUEditPluginSessionDelegate, PXPhotoLibraryUIChangeObserver, PUOneUpAssetTransitionViewController, PLDismissableViewController, PUPhotoEditIrisModelChangeObserver, PHLivePhotoViewDelegate, PUPhotoEditResourceLoaderDelegate, PUPhotoEditLivePhotoControllerDelegate, PUViewControllerSpecChangeObserver, PUPhotoEditLayoutSource>
 {
@@ -80,6 +80,8 @@
     unsigned long long _togglePreviewOriginalOffRequestID;
     PUProgressIndicatorView *_progressIndicatorView;
     id _progressIndicatorInteractionDisablingToken;
+    int _inProgressSaveRequestID;
+    NSObject<OS_dispatch_source> *_saveProgressTimer;
     BOOL _didLoadTools;
     PUCropToolController *_cropController;
     PUFiltersToolController *_filtersController;
@@ -192,6 +194,7 @@
 - (BOOL)_hasUnsavedChanges;
 - (BOOL)_isPreviewingOriginal;
 - (BOOL)_isReadyToRender;
+- (BOOL)_isSaveProgressAvailable;
 - (BOOL)_isWaitingForAssetChange;
 - (BOOL)_isWaitingForSaveCompletion;
 - (void)_loadOriginalImageIfNeeded;
@@ -215,8 +218,10 @@
 - (void)_setupToolsIfNeeded;
 - (BOOL)_shouldDisplayRedEyeTool;
 - (void)_showCancelAndRevertOptionsAllowResetTool:(BOOL)arg1;
+- (void)_startMonitoringSaveProgressIfNeeded;
 - (void)_startWaitingForAssetChange;
 - (void)_startWaitingForSaveRequestID:(int)arg1;
+- (void)_stopMonitoringSaveProgress;
 - (void)_stopWaitingForAssetChangeWithAsset:(id)arg1 success:(BOOL)arg2;
 - (void)_stopWaitingForSaveRequestWithAsset:(id)arg1;
 - (void)_switchToEditingTool:(id)arg1 animated:(BOOL)arg2;
@@ -242,6 +247,7 @@
 - (void)_updatePreviewingOriginalBadge;
 - (void)_updateProgressIndicatorAnimated:(BOOL)arg1;
 - (void)_updateRenderedPreviewForceRender:(BOOL)arg1;
+- (void)_updateSaveProgress;
 - (void)_updateScrollViewCentering;
 - (void)_updateScrollViewContentSize;
 - (void)_updateScrollViewForProxyZooming;

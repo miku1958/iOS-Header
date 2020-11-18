@@ -18,7 +18,9 @@
 - (oneway void)contactForPayload:(NSString *)arg1 completion:(void (^)(CNContact *, NSError *))arg2;
 - (oneway void)dataForPayload:(NSString *)arg1 completion:(void (^)(FMFHandle *, CNContact *, CLLocation *, NSError *))arg2;
 - (oneway void)declineFriendshipRequest:(FMFFriendshipRequest *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)decryptPayload:(NSString *)arg1 withToken:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (oneway void)deviceSharingLocation:(void (^)(FMFDevice *, NSError *))arg1;
+- (oneway void)encryptPayload:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (oneway void)extendFriendshipOfferToHandle:(FMFHandle *)arg1 groupId:(NSString *)arg2 callerId:(FMFHandle *)arg3 endDate:(NSDate *)arg4 completion:(void (^)(NSString *, NSError *))arg5;
 - (oneway void)favoritesForMaxCount:(NSNumber *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)fetchLocationForHandle:(FMFHandle *)arg1 callerId:(FMFHandle *)arg2 priority:(long long)arg3 completion:(void (^)(NSError *, NSString *))arg4;

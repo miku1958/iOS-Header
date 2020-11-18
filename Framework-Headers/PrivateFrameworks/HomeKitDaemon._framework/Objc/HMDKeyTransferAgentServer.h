@@ -50,6 +50,7 @@
 - (void)dealloc;
 - (id)initWithHomeManager:(id)arg1;
 - (id)logIdentifier;
+- (void)resetConfig;
 - (void)timerDidFire:(id)arg1;
 
 @end

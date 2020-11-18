@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
 @property (weak, nonatomic) NCNotificationAction *presentationSourceAction;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *title;
 
 + (id)attachmentViewControllerForAttachment:(id)arg1 notificationRequest:(id)arg2;
 - (void).cxx_destruct;
@@ -35,7 +36,7 @@
 - (BOOL)allowManualDismiss;
 - (unsigned long long)customContentLocation;
 - (BOOL)defaultContentHidden;
-- (void)didReceiveNotificationRequest:(id)arg1;
+- (BOOL)didReceiveNotificationRequest:(id)arg1;
 - (id)initWithAttachment:(id)arg1 forNotificationRequest:(id)arg2;
 - (BOOL)performAction:(id)arg1 forNotification:(id)arg2;
 - (BOOL)performAction:(id)arg1 forNotification:(id)arg2 withUserInfo:(id)arg3;

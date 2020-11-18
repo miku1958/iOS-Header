@@ -6,12 +6,16 @@
 
 #import <HomeKit/HMAccessory.h>
 
+@class NSSet;
+
 @interface HMAccessory (HFAdditions)
 
+@property (readonly, nonatomic) long long hf_appPunchOutReason;
+@property (readonly, nonatomic) NSSet *hf_displayNamesForVisibleTiles;
+@property (readonly, nonatomic) BOOL hf_isBridge;
+@property (readonly, nonatomic) BOOL hf_isCamera;
 @property (readonly, nonatomic) BOOL hf_requiresFirmwareUpdate;
+@property (readonly, nonatomic) NSSet *hf_visibleServices;
 
-- (long long)hf_appPunchOutReason;
-- (BOOL)hf_isBridge;
-- (BOOL)hf_isCamera;
 @end
 

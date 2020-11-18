@@ -16,13 +16,17 @@
     NSMutableArray *_topicIds;
     int _totalChannelSelections;
     int _totalTopicSelections;
+    BOOL _fromPersonalizeNews;
     struct {
         unsigned int totalChannelSelections:1;
         unsigned int totalTopicSelections:1;
+        unsigned int fromPersonalizeNews:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *channelIds; // @synthesize channelIds=_channelIds;
+@property (nonatomic) BOOL fromPersonalizeNews; // @synthesize fromPersonalizeNews=_fromPersonalizeNews;
+@property (nonatomic) BOOL hasFromPersonalizeNews;
 @property (nonatomic) BOOL hasTotalChannelSelections;
 @property (nonatomic) BOOL hasTotalTopicSelections;
 @property (strong, nonatomic) NSMutableArray *topicIds; // @synthesize topicIds=_topicIds;

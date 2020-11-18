@@ -24,6 +24,7 @@
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (copy, nonatomic) NSArray *sources;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *syncReason;
 @property (copy, nonatomic) NSArray *watchAppMetaDataList;
 
 + (id)getAnchors;

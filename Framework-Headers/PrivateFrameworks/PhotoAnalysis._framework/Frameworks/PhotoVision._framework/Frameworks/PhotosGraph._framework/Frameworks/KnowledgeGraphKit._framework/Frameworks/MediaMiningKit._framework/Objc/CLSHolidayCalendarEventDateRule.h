@@ -27,12 +27,14 @@
 @property (nonatomic) long long startYear; // @synthesize startYear=_startYear;
 
 - (void).cxx_destruct;
+- (id)_stringDescriptionForDateRuleComponentValue:(long long)arg1;
 - (id)debugDescription;
-- (BOOL)hasDefinedYearExplictly:(long long)arg1;
 - (BOOL)hasEndYear;
+- (BOOL)hasExplicitYear;
 - (BOOL)hasStartYear;
 - (id)initWithEventDescription:(id)arg1;
 - (id)localDateByEvaluatingRuleForYear:(long long)arg1;
+- (BOOL)matchesExplicitYear:(long long)arg1;
 
 @end
 

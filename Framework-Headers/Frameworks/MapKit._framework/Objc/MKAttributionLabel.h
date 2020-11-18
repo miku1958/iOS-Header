@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class _MKUILabel;
+@class NSAttributedString;
 
 __attribute__((visibility("hidden")))
 @interface MKAttributionLabel : UIView
 {
-    _MKUILabel *_strokeLabel;
-    _MKUILabel *_innerLabel;
+    NSAttributedString *_strokeText;
+    NSAttributedString *_innerText;
     unsigned long long _mapType;
     BOOL _useDarkText;
 }
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_attributesWithStroke:(BOOL)arg1;
 - (void)_prepareLabel;
+- (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)sizeToFit;
 

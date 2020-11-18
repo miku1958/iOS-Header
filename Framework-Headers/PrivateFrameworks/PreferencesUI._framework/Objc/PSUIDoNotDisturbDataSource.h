@@ -6,17 +6,23 @@
 
 #import <Preferences/PSSpecifierDataSource.h>
 
+#import <PreferencesUI/PSListControllerTestableSpecifiers-Protocol.h>
 #import <PreferencesUI/PSTimeRangeCellDelegate-Protocol.h>
 
-@class PSSpecifier;
+@class NSString, PSSpecifier;
 
-@interface PSUIDoNotDisturbDataSource : PSSpecifierDataSource <PSTimeRangeCellDelegate>
+@interface PSUIDoNotDisturbDataSource : PSSpecifierDataSource <PSTimeRangeCellDelegate, PSListControllerTestableSpecifiers>
 {
     PSSpecifier *_dndRangeSpec;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PSSpecifier *dndRangeSpec; // @synthesize dndRangeSpec=_dndRangeSpec;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
++ (id)booleanCapabilitiesToTest;
 - (void).cxx_destruct;
 - (id)_allowedGroupsFooterText;
 - (BOOL)_isScheduled;

@@ -6,6 +6,7 @@
 
 #import <Foundation/NSValueTransformer.h>
 
+__attribute__((visibility("hidden")))
 @interface VSReverseValueTransformer : NSValueTransformer
 {
     NSValueTransformer *_valueTransformer;

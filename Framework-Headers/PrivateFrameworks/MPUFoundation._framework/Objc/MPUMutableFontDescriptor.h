@@ -10,6 +10,7 @@
 {
 }
 
+@property (nonatomic) double defaultPointSizeAdjustment; // @dynamic defaultPointSizeAdjustment;
 @property (nonatomic) long long leadingAdjustment; // @dynamic leadingAdjustment;
 @property (nonatomic) double systemFontSize; // @dynamic systemFontSize;
 @property (nonatomic) long long textStyle; // @dynamic textStyle;

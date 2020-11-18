@@ -10,15 +10,15 @@
 
 @interface CLLocationInternal : NSObject
 {
-    CDStruct_0aa5cb5c fLocation;
+    CDStruct_05ee51d2 fLocation;
     CLLocationMatchInfo *fMatchInfo;
     double fTrustedTimestamp;
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithClientLocation:(CDStruct_0aa5cb5c)arg1;
-- (id)initWithClientLocation:(CDStruct_0aa5cb5c)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3;
+- (id)initWithClientLocation:(CDStruct_05ee51d2)arg1;
+- (id)initWithClientLocation:(CDStruct_05ee51d2)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3;
 
 @end
 

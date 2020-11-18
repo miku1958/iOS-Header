@@ -6,10 +6,12 @@
 
 #import <UIKit/UIAlertController.h>
 
-@class SBAlertItem;
+#import <SpringBoardUI/BSDescriptionProviding-Protocol.h>
+
+@class NSString, SBAlertItem;
 @protocol _SBAlertControllerDelegate;
 
-@interface _SBAlertController : UIAlertController
+@interface _SBAlertController : UIAlertController <BSDescriptionProviding>
 {
     SBAlertItem *_alertItem;
     id<_SBAlertControllerDelegate> _alertControllerDelegate;
@@ -17,8 +19,16 @@
 
 @property (weak, nonatomic) id<_SBAlertControllerDelegate> alertControllerDelegate; // @synthesize alertControllerDelegate=_alertControllerDelegate;
 @property (weak, nonatomic) SBAlertItem *alertItem; // @synthesize alertItem=_alertItem;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 - (void)viewDidDisappear:(BOOL)arg1;
 
 @end

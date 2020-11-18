@@ -6,21 +6,27 @@
 
 #import <GeoServices/GEONavdPeer.h>
 
-@class GEONavigationServer;
+#import <GeoServices/GEONavigationServerRequestStateXPCInterface-Protocol.h>
+
+@class GEONavigationServer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEONavigationServerPeer : GEONavdPeer
+@interface GEONavigationServerPeer : GEONavdPeer <GEONavigationServerRequestStateXPCInterface>
 {
     GEONavigationServer *_delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) GEONavigationServer *delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void)dealloc;
 - (void)requestActiveRouteDetailsData;
 - (void)requestGuidanceState;
+- (void)requestRideSelections;
 - (void)requestRouteSummary;
-- (void)requestSelectedRideOption;
 - (void)requestStepIndex;
 - (void)requestTransitSummary;
 - (void)requestUpdates;

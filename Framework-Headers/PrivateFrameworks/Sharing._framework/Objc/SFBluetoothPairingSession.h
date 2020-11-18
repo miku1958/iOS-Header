@@ -23,8 +23,9 @@
     BOOL _invalidateCalled;
     unsigned int _retryCount;
     BOOL _retryOnDetach;
+    NSObject<OS_dispatch_source> *_retryTimer;
     double _startTime;
-    NSObject<OS_dispatch_source> *_timer;
+    NSObject<OS_dispatch_source> *_timeoutTimer;
     NSObject<OS_os_transaction> *_transaction;
     struct LogCategory *_ucat;
     CDUnknownBlockType _completionHandler;

@@ -29,6 +29,7 @@
 + (void)initialize;
 + (long long)maxFaceCountForClustering;
 + (long long)minFaceCountToTriggerClustering;
++ (BOOL)suggestionsLogEnabled;
 
 @end
 

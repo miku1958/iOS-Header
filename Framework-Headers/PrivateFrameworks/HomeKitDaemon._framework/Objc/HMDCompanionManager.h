@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
 @class HMDDevice, IDSService, NSString;
 @protocol HMDCompanionManagerDelegate, OS_dispatch_queue;
 
-@interface HMDCompanionManager : NSObject <IDSServiceDelegate>
+@interface HMDCompanionManager : NSObject <HMFLogging, IDSServiceDelegate>
 {
     HMDDevice *_companion;
     id<HMDCompanionManagerDelegate> _delegate;
@@ -31,12 +32,17 @@
 @property (readonly) Class superclass;
 
 + (BOOL)isCompatibleCompanionDevice:(id)arg1;
++ (id)logCategory;
++ (id)shortDescription;
 - (void).cxx_destruct;
 - (void)__initializeConnectedDevices;
 - (void)_updateConnectedDevices:(id)arg1;
+- (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
 - (void)notifyDelegateOfCompanionChange:(id)arg1;
 - (void)service:(id)arg1 connectedDevicesChanged:(id)arg2;
+- (void)service:(id)arg1 devicesChanged:(id)arg2;
+- (id)shortDescription;
 
 @end
 

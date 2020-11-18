@@ -20,6 +20,7 @@
     CDUnknownBlockType _outputBlock;
     NSString *_text;
     BOOL _attachmentWasDownloadedAndNeedsRemoval;
+    long long _facebookDestination;
 }
 
 @property (strong, nonatomic) MSCLAccountStore *accountStore; // @synthesize accountStore=_accountStore;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property (copy, nonatomic) MSCLStoreItem *contentItem; // @synthesize contentItem=_contentItem;
 @property (copy, nonatomic) NSArray *enabledExternalServices; // @synthesize enabledExternalServices=_enabledExternalServices;
+@property (nonatomic) long long facebookDestination; // @synthesize facebookDestination=_facebookDestination;
 @property (copy, nonatomic) CDUnknownBlockType outputBlock; // @synthesize outputBlock=_outputBlock;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 

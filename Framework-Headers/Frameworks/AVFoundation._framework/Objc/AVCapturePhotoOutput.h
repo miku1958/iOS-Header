@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) NSArray *availablePhotoCodecTypes;
 @property (readonly, nonatomic) NSArray *availablePhotoPixelFormatTypes;
 @property (readonly, nonatomic) NSArray *availableRawPhotoPixelFormatTypes;
+@property (readonly, nonatomic, getter=isDualCameraFusionSupported) BOOL dualCameraFusionSupported;
 @property (nonatomic, getter=isHighResolutionCaptureEnabled) BOOL highResolutionCaptureEnabled;
 @property (readonly, nonatomic) BOOL isFlashScene;
 @property (readonly, nonatomic) BOOL isStillImageStabilizationScene;
@@ -68,7 +69,7 @@
 - (void)_updateAvailablePhotoCodecTypesForSourceDevice:(id)arg1;
 - (void)_updateAvailablePhotoPixelFormatTypesForSourceDevice:(id)arg1;
 - (void)_updateAvailableRawPhotoPixelFormatTypesForSourceDevice:(id)arg1;
-- (void)_updateBravoImageFusionSupportedForSourceDevice:(id)arg1;
+- (void)_updateDualCameraFusionSupportedForSourceDevice:(id)arg1;
 - (void)_updateLensStabilizationDuringBracketedCaptureSupportedForSourceDevice:(id)arg1;
 - (void)_updateLivePhotoCaptureSupportedForSourceDevice:(id)arg1;
 - (void)_updateLivePhotoMovieDimensionsForSourceDevice:(id)arg1;

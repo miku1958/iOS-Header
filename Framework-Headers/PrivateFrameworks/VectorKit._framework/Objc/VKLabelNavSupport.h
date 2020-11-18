@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
     BOOL _debugEnableShieldsOnRouteLine;
     unsigned char _navMapMode;
     shared_ptr_a3c46825 _styleManager;
+    BOOL _shouldLabelOppositeCarriageways;
 }
 
 @property (readonly, nonatomic) const vector_c899b68f *activeSigns; // @synthesize activeSigns=_activeSigns;

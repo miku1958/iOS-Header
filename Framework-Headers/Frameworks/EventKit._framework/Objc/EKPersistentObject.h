@@ -6,9 +6,8 @@
 
 #import <Foundation/NSObject.h>
 
-@class EKEventStore, NSMutableDictionary, NSMutableSet;
+@class EKEventStore, NSMapTable, NSMutableDictionary, NSMutableSet;
 
-__attribute__((visibility("hidden")))
 @interface EKPersistentObject : NSObject
 {
     struct _opaque_pthread_mutex_t {
@@ -17,10 +16,9 @@ __attribute__((visibility("hidden")))
     } _lock;
     EKEventStore *_eventStore;
     id _objectID;
-    struct __CFDictionary *_loadedProperties;
-    NSMutableDictionary *_referencers;
     NSMutableSet *_dirtyProperties;
     unsigned int _flags;
+    NSMapTable *_loadedProperties;
     NSMutableDictionary *_committedProperties;
 }
 
@@ -33,10 +31,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_addDirtyProperty:(id)arg1;
 - (void)_addObjectCore:(id)arg1 toValues:(id)arg2 relation:(id)arg3;
-- (void)_addReference:(id)arg1 forKey:(id)arg2;
 - (BOOL)_areDefaultPropertiesLoaded;
-- (void)_clearReferences;
-- (void)_clearWeakRelations;
+- (void)_createLoadedPropertiesIfNeeded;
 - (void)_fastpathSetProperty:(id)arg1 forKey:(id)arg2 isRelation:(BOOL)arg3;
 - (BOOL)_isPendingDelete;
 - (BOOL)_isPendingInsert;
@@ -52,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (id)_relationForKey:(id)arg1;
 - (void)_releaseLoadedProperties;
 - (void)_removeObjectCore:(id)arg1 fromValues:(id)arg2 relation:(id)arg3;
-- (void)_removeReference:(id)arg1 forKey:(id)arg2;
 - (void)_setDefaultPropertiesLoaded:(BOOL)arg1;
 - (void)_setEventStore:(id)arg1;
 - (void)_setObjectID:(id)arg1;

@@ -55,6 +55,7 @@
 
 + (double)computeBetaWithManager:(id)arg1;
 + (void)computeMinimumNumbersOfAssetsWithCompletionBlock:(CDUnknownBlockType)arg1;
++ (unsigned long long)minimumNumbersOfCuratedAssetsForMemories;
 - (void).cxx_destruct;
 - (BOOL)_assetCollection:(id)arg1 matchesAssetCollection:(id)arg2;
 - (float)_assetOverlapBetweenMomentsForIDs:(id)arg1 andMomentsForIDs:(id)arg2;

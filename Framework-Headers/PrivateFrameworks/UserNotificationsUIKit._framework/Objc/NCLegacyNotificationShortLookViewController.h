@@ -50,6 +50,7 @@
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (BOOL)wantsUseableContainerHeightForTransitionWithDelegate:(id)arg1;
 
 @end
 

@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) BOOL accountWantsPushRegistration;
 @property (readonly, nonatomic) BOOL canAccessAccount;
+@property (readonly, nonatomic) BOOL canAuthWithCloudKit;
 @property (readonly, nonatomic) BOOL isAnonymousAccount;
 @property (readonly, nonatomic) BOOL isUnitTestingAccount;
 

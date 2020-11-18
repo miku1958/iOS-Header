@@ -12,7 +12,7 @@
 @protocol INSetProfileInCarIntentExport <NSObject, JSExport>
 
 @property (copy, nonatomic) NSNumber *defaultProfile;
-@property (copy, nonatomic) NSString *profileLabel;
+@property (copy, nonatomic) NSString *profileName;
 @property (copy, nonatomic) NSNumber *profileNumber;
 
 - (id)init;

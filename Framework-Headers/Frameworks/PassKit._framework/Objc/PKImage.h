@@ -45,6 +45,7 @@
 - (BOOL)_isTiledWhenStretchedToSize:(struct CGSize)arg1;
 - (void)_queue_createImageRefIfNecessary;
 - (id)blurredImageWithRadius:(unsigned long long)arg1 constraints:(id)arg2;
+- (id)croppedImageWithInsets:(struct PKEdgeInsets)arg1;
 - (void)dealloc;
 - (struct CGSize)downscaleSizeMatchingScale:(double)arg1;
 - (void)drawInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;

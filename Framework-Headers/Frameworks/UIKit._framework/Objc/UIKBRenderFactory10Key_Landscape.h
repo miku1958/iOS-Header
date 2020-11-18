@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)numberPadKeyPrimaryTextOffset;
 - (struct CGPoint)numberPadKeySecondaryTextOffset;
 - (struct CGPoint)numberPadVBarSecondaryTextOffset;
+- (struct UIEdgeInsets)wideShadowPaddleInsets;
 
 @end
 

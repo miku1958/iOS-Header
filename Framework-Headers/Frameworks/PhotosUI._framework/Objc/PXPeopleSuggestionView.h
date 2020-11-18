@@ -37,13 +37,13 @@
 - (void)_fetchImageForSuggestion:(id)arg1 targetSize:(struct CGSize)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (struct CGRect)_scaledFaceRect;
 - (void)_updateSpotlightAnimated:(BOOL)arg1;
+- (void)_updateSuggestionImageWithAnimatedSpotlight:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)commonInit;
 - (void)dealloc;
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setSuggestion:(id)arg1 animated:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)updateSuggestionImageWithAnimatedSpotlight:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)viewScaleDidChange;
 
 @end

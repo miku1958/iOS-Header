@@ -32,6 +32,7 @@
 + (id)_guidForMessage:(id)arg1 url:(id)arg2;
 + (id)_messageItemWithPartsDeleted:(id)arg1 fromMessageItem:(id)arg2;
 + (id)_newMessagePartsForMessageItem:(id)arg1;
++ (id)_newMessagePartsForMessageItem:(id)arg1 shouldDisplayLink:(BOOL)arg2;
 + (BOOL)_testingSupportsURL:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithItem:(id)arg1 messagePartRange:(struct _NSRange)arg2;

@@ -9,7 +9,7 @@
 #import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
 
-@class MISSING_TYPE, NSString, SKShader, SKTileSet, UIColor;
+@class MISSING_TYPE, NSDictionary, NSString, SKShader, SKTileSet, UIColor;
 
 @interface SKTileMapNode : SKNode <NSCopying, NSCoding>
 {
@@ -28,6 +28,7 @@
 }
 
 @property (nonatomic) struct CGPoint anchorPoint;
+@property (copy, nonatomic) NSDictionary *attributeValues;
 @property (nonatomic) long long blendMode;
 @property (strong, nonatomic) UIColor *color;
 @property (nonatomic) double colorBlendFactor;

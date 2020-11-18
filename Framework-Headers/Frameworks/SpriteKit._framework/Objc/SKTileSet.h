@@ -18,7 +18,7 @@
     NSArray *_stamps;
     unsigned long long _type;
     struct CGSize _defaultTileSize;
-    unsigned long long _defaultTileGroupIndex;
+    SKTileGroup *_defaultTileGroup;
     NSString *_name;
 }
 

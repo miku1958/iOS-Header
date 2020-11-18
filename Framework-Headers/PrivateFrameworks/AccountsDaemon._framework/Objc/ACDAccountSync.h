@@ -33,6 +33,7 @@
 - (void)createKeychainItems:(id)arg1;
 - (void)dealloc;
 - (void)deleteAccounts:(id)arg1;
+- (BOOL)detectDuchess;
 - (void)devices;
 - (void)fixLDAP;
 - (void)fixSMTP;

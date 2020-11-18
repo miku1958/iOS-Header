@@ -29,7 +29,6 @@
     AVPlayerItem *lastItem;
     NSMutableSet *items;
     NSArray *queueModifications;
-    BOOL iapdExtendedModeIsActive;
     NSMutableDictionary *pendingFigPlayerProperties;
     AVAudioSession *audioSession;
     AVOutputContext *outputContext;

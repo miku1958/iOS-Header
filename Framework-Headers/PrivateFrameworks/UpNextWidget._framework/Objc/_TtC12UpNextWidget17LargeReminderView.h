@@ -21,7 +21,7 @@
     MISSING_TYPE *circleDiameter;
 }
 
-@property (nonatomic, strong) NSDate *dueDate; // @synthesize dueDate;
+@property (nonatomic, copy) NSDate *dueDate; // @synthesize dueDate;
 @property (nonatomic, strong) UIColor *listColor; // @synthesize listColor;
 @property (nonatomic, copy) NSString *location; // @synthesize location;
 @property (nonatomic, copy) NSString *notes; // @synthesize notes;
@@ -35,7 +35,7 @@
 - (double)lastBaselineOffsetFromBottom;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)tappedWithGestureRecognizer:(id)arg1;
+- (void)tapped:(id)arg1;
 
 @end
 

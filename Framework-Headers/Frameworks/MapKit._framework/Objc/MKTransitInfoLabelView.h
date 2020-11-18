@@ -6,7 +6,7 @@
 
 #import <MapKit/_MKUILabel.h>
 
-@class MKMapItem, NSArray;
+@class MKArtworkDataSourceCache, MKMapItem, NSArray;
 
 @interface MKTransitInfoLabelView : _MKUILabel
 {
@@ -22,8 +22,10 @@
     NSArray *_labelItems;
     double _spaceBetweenShields;
     double _spaceBetweenIcons;
+    MKArtworkDataSourceCache *_artworkCache;
 }
 
+@property (strong, nonatomic) MKArtworkDataSourceCache *artworkCache; // @synthesize artworkCache=_artworkCache;
 @property (readonly, nonatomic) BOOL containsText; // @synthesize containsText=_containsText;
 @property (nonatomic) long long iconSize; // @synthesize iconSize=_iconSize;
 @property (copy, nonatomic) NSArray *labelItems; // @synthesize labelItems=_labelItems;

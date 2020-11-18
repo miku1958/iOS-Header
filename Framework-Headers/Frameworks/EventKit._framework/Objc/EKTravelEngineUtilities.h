@@ -23,6 +23,8 @@
 + (id)geoTransportTypeAsString:(int)arg1;
 + (int)geoTransportTypeForCalLocationRoutingMode:(long long)arg1;
 + (int)geoTransportTypeForString:(id)arg1;
++ (double)maximumAllowableTravelTime;
++ (double)minimumAllowableTravelTime;
 + (BOOL)travelStateIndicatesTravelingTowardDestination:(long long)arg1;
 
 @end

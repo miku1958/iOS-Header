@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)firstValueForParameterWithName:(id)arg1 parser:(id)arg2;
 + (void)processExtensionValuesForLines:(id)arg1 parser:(id)arg2;
 + (id)profileFromURL:(id)arg1;
 + (id)valueWithParser:(id)arg1;

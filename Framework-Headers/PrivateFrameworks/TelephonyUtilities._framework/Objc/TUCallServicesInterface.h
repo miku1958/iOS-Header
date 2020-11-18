@@ -67,7 +67,7 @@
 - (void)enteredBackgroundForAllCalls;
 - (void)enteredForegroundForCallWithUniqueProxyIdentifier:(id)arg1;
 - (void)groupCallWithUniqueProxyIdentifier:(id)arg1 withOtherCallWithUniqueProxyIdentifier:(id)arg2;
-- (void)handleCurrentCallsChanged:(id)arg1 callDisconnected:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)handleCurrentCallsChanged:(id)arg1 callDisconnected:(id)arg2;
 - (void)handleFrequencyChangedTo:(id)arg1 inDirection:(int)arg2 forCallsWithUniqueProxyIdentifiers:(id)arg3;
 - (void)handleNotificationName:(id)arg1 forCallWithUniqueProxyIdentifier:(id)arg2 userInfo:(id)arg3;
 - (void)holdCallWithUniqueProxyIdentifier:(id)arg1;

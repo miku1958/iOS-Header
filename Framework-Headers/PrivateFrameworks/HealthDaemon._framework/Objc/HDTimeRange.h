@@ -13,14 +13,10 @@
     BOOL _deleted;
     double _start;
     double _end;
-    long long _sourceId;
-    double _categoryValue;
 }
 
-@property (nonatomic) double categoryValue; // @synthesize categoryValue=_categoryValue;
 @property (nonatomic) BOOL deleted; // @synthesize deleted=_deleted;
 @property (nonatomic) double end; // @synthesize end=_end;
-@property (nonatomic) long long sourceId; // @synthesize sourceId=_sourceId;
 @property (nonatomic) double start; // @synthesize start=_start;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -11,6 +11,7 @@
 }
 
 + (id)errorForCancellationOfRequest:(id)arg1;
++ (id)errorForMemoryAllocationFailure;
 + (id)errorWithAlgorithmError:(id)arg1;
 + (id)errorWithCode:(int)arg1 message:(id)arg2;
 + (id)errorWithCode:(int)arg1 message:(id)arg2 underlyingError:(id)arg3;

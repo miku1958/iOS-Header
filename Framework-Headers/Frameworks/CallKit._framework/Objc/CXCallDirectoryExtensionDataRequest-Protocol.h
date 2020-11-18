@@ -6,11 +6,12 @@
 
 #import <CallKit/NSObject-Protocol.h>
 
-@class NSObject;
-@protocol CXCallDirectoryExtensionDataRequestDelegate, OS_dispatch_queue;
+@protocol CXCallDirectoryExtensionDataRequestDelegate;
 
 @protocol CXCallDirectoryExtensionDataRequest <NSObject>
+
+@property (weak, nonatomic) id<CXCallDirectoryExtensionDataRequestDelegate> delegate;
+
 - (void)beginWithCompletion:(void (^)(NSError *))arg1;
-- (void)setDelegate:(id<CXCallDirectoryExtensionDataRequestDelegate>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2;
 @end
 

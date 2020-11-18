@@ -8,15 +8,17 @@
 
 #import <HealthDaemon/HDFitnessFriendsCloudKitCodable-Protocol.h>
 
-@class NSString;
+@class HDFitnessFriendsCloudKitCodableAchievement, NSString;
 
 @interface _HKFitnessFriendAchievement (CloudKitCodingSupport) <HDFitnessFriendsCloudKitCodable>
 
+@property (readonly, nonatomic) HDFitnessFriendsCloudKitCodableAchievement *codableAchievement;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)fitnessFriendAchievementWithCodableAchievement:(id)arg1 friendUUID:(id)arg2;
 + (id)fitnessFriendAchievementWithRecord:(id)arg1 friendUUID:(id)arg2;
 - (id)recordWithZoneID:(id)arg1;
 @end

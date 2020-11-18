@@ -11,5 +11,6 @@
 + (id)px_memoryTitleStringFromPeople:(id)arg1;
 + (id)px_slideshowTitleStringForPeople:(id)arg1;
 + (id)px_titleStringForPeople:(id)arg1;
+- (id)px_displayName;
 @end
 

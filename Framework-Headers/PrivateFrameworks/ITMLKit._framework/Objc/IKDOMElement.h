@@ -10,14 +10,18 @@
 #import <ITMLKit/IKJSDOMElement-Protocol.h>
 #import <ITMLKit/IKJSDOMParentNode-Protocol.h>
 #import <ITMLKit/IKStyleableElement-Protocol.h>
-#import <ITMLKit/JSExport-Protocol.h>
+#import <ITMLKit/NSObject-Protocol.h>
+#import <ITMLKit/_IKJSDOMElement-Protocol.h>
+#import <ITMLKit/_IKJSDOMElementProxy-Protocol.h>
 
-@class IKDOMHTMLCollection, IKDOMNamedNodeMap, IKViewElementStyleComposer, NSMutableDictionary, NSString;
+@class IKDOMHTMLCollection, IKDOMNamedNodeMap, IKViewElementStyleComposer, NSArray, NSDictionary, NSMutableDictionary, NSString;
 @protocol IKStyleableElement;
 
-@interface IKDOMElement : IKDOMNode <IKJDOMParsingElement, IKStyleableElement, IKJSDOMElement, JSExport, IKJSDOMParentNode>
+@interface IKDOMElement : IKDOMNode <IKJDOMParsingElement, NSObject, IKStyleableElement, IKJSDOMElement, _IKJSDOMElementProxy, _IKJSDOMElement, IKJSDOMParentNode>
 {
     NSMutableDictionary *_metadataDict;
+    NSArray *_cachedChildElements;
+    NSDictionary *_cachedAttributes;
     IKViewElementStyleComposer *styleComposer;
     id<IKStyleableElement> parentStyleableElement;
 }
@@ -25,20 +29,30 @@
 @property (readonly, copy, nonatomic) IKDOMNamedNodeMap *attributes;
 @property (readonly, nonatomic) unsigned long long childElementCount;
 @property (readonly, nonatomic) IKDOMHTMLCollection *children;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *elementName;
 @property (readonly, nonatomic) IKDOMElement *firstElementChild;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *innerHTML;
 @property (readonly, nonatomic) IKDOMElement *lastElementChild;
 @property (strong, nonatomic) NSString *outerHTML;
 @property (readonly, weak, nonatomic) id<IKStyleableElement> parentStyleableElement; // @synthesize parentStyleableElement;
 @property (strong, nonatomic) IKViewElementStyleComposer *styleComposer; // @synthesize styleComposer;
+@property (readonly) Class superclass;
 @property (readonly, strong, nonatomic) NSString *tagName;
 
 - (void).cxx_destruct;
 - (id)_attributes;
+- (id)asPrivateIKJSDOMElement;
 - (id)childElementByTagName:(id)arg1;
 - (id)childElements;
 - (id)childElementsByTagName:(id)arg1;
+- (void)childrenUpdatedWithUpdatedChildNodes:(id)arg1 notify:(BOOL)arg2;
+- (id)domb_dataBinding;
+- (void)domb_setDataBinding:(id)arg1;
+- (id)dse_appDataSet;
+- (void)dse_setAppDataSet:(id)arg1;
 - (id)getAttribute:(id)arg1;
 - (id)getElementsByTagName:(id)arg1;
 - (BOOL)hasAttribute:(id)arg1;

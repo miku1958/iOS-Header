@@ -6,24 +6,34 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
+
 @class MKPlaceCardHeaderViewController, NSString;
 
-@interface _MKPlaceActionButtonController : NSObject
+@interface _MKPlaceActionButtonController : NSObject <_MKInfoCardChildViewControllerAnalyticsDelegate>
 {
     MKPlaceCardHeaderViewController *_headerViewController;
+    int _analyticsAction;
     NSString *_buttonTitle;
     NSString *_buttonSubTitle;
     CDUnknownBlockType _buttonSelectedBlock;
 }
 
+@property (readonly, nonatomic) int analyticsAction; // @synthesize analyticsAction=_analyticsAction;
 @property (readonly, nonatomic) CDUnknownBlockType buttonSelectedBlock; // @synthesize buttonSelectedBlock=_buttonSelectedBlock;
 @property (readonly, nonatomic) NSString *buttonSubTitle; // @synthesize buttonSubTitle=_buttonSubTitle;
 @property (readonly, nonatomic) NSString *buttonTitle; // @synthesize buttonTitle=_buttonTitle;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) MKPlaceCardHeaderViewController *headerViewController; // @synthesize headerViewController=_headerViewController;
+@property (readonly) Class superclass;
 
 + (id)actionButtonControllerWithTitle:(id)arg1 subTitle:(id)arg2 selectedBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)buttonTextChanged;
+- (id)infoCardChildPossibleActions;
+- (id)initWithTitle:(id)arg1 subTitle:(id)arg2 analyticsAction:(int)arg3 selectedBlock:(CDUnknownBlockType)arg4;
 - (id)initWithTitle:(id)arg1 subTitle:(id)arg2 selectedBlock:(CDUnknownBlockType)arg3;
 
 @end

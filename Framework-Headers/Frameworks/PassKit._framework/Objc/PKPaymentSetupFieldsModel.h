@@ -14,7 +14,6 @@
     PKPaymentSetupFieldFooter *_footerField;
 }
 
-+ (id)defaultPaymentSetupFields;
 + (id)defaultPaymentSetupProvisioningFields;
 + (id)fakePaymentSetupProvisioningFields;
 - (void).cxx_destruct;

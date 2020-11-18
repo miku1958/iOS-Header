@@ -44,6 +44,7 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *userID; // @synthesize userID=_userID;
 @property (copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (readonly, getter=isValid) BOOL valid;
 
 + (id)currentUserWithPrivilege:(unsigned long long)arg1;
 + (id)destinationWithUserID:(id)arg1;

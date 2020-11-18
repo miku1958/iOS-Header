@@ -13,7 +13,7 @@
 @optional
 - (void)userInfo:(FCUserInfo *)arg1 didAddAccessTokenForTagID:(NSString *)arg2;
 - (void)userInfo:(FCUserInfo *)arg1 didChangeAccessTokenForTagID:(NSString *)arg2;
-- (void)userInfoDidChangeFeldsparID:(FCUserInfo *)arg1;
+- (void)userInfoDidChangeFeldsparID:(FCUserInfo *)arg1 fromCloud:(BOOL)arg2;
 - (void)userInfoDidChangeNotificationsUserID:(FCUserInfo *)arg1;
 @end
 

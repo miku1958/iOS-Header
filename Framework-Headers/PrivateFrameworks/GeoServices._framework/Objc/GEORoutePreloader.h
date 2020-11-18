@@ -21,7 +21,6 @@
     BOOL _fullDebuggingEnabled;
     BOOL _enabled;
     BOOL _paused;
-    BOOL _allStationTilesBatchMade;
     double _currentRoutePosition;
     int _downloadState;
     CDUnknownBlockType _batteryHandler;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class PKPass, PKPassView, PKRemoteDataAccessor, UIColor, UIImageView, UILabel;
+@class PKFelicaPassProperties, PKPass, PKPassView, PKRemoteDataAccessor, UIColor, UIImageView, UILabel;
 @protocol PKPassHeaderViewDelegate, PKPassLibraryDataProvider;
 
 @interface PKPassHeaderView : UIView
@@ -17,10 +17,13 @@
     UILabel *_title;
     UILabel *_type;
     UILabel *_modificationDate;
+    UILabel *_valueTitle;
+    UILabel *_value;
     BOOL _largeStyle;
     BOOL _showModificationDate;
     PKPass *_pass;
     PKPassView *_passView;
+    PKFelicaPassProperties *_felicaProperties;
     unsigned long long _suppressedContent;
     UIColor *_primaryTextColor;
     UIColor *_secondaryTextColor;
@@ -29,6 +32,7 @@
 }
 
 @property (weak, nonatomic) id<PKPassHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) PKFelicaPassProperties *felicaProperties; // @synthesize felicaProperties=_felicaProperties;
 @property (nonatomic, getter=isLargeStyle) BOOL largeStyle; // @synthesize largeStyle=_largeStyle;
 @property (readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
 @property (strong, nonatomic) id<PKPassLibraryDataProvider> passLibraryOverride; // @synthesize passLibraryOverride=_passLibraryOverride;
@@ -43,6 +47,7 @@
 - (id)_primaryTextColor;
 - (id)_secondaryTextColor;
 - (void)_updateContent;
+- (void)_updateTextContent;
 - (void)dealloc;
 - (id)initWithPass:(id)arg1;
 - (void)layoutSubviews;

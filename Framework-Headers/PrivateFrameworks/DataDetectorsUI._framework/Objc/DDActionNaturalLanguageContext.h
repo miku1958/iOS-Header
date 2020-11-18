@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSString;
 
 @interface DDActionNaturalLanguageContext : NSObject
 {
@@ -14,11 +14,9 @@
     NSString *_trailingText;
     struct __DDResult *_result;
     NSArray *_associatedResults;
-    NSDictionary *_context;
 }
 
 @property (strong) NSArray *associatedResults; // @synthesize associatedResults=_associatedResults;
-@property (strong) NSDictionary *context; // @synthesize context=_context;
 @property (strong) NSString *leadingText; // @synthesize leadingText=_leadingText;
 @property (strong) struct __DDResult *result; // @synthesize result=_result;
 @property (strong) NSString *trailingText; // @synthesize trailingText=_trailingText;

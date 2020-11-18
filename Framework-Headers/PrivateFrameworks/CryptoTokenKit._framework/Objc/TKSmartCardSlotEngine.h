@@ -10,7 +10,7 @@
 #import <CryptoTokenKit/TKProtocolSmartCardSlot-Protocol.h>
 
 @class NSArray, NSHashTable, NSMapTable, NSMutableArray, NSString, NSXPCConnection, NSXPCListener, TKPowerMonitor, TKSmartCardATR, TKSmartCardSessionEngine;
-@protocol OS_dispatch_queue, TKSmartCardSlotDelegate;
+@protocol OS_dispatch_queue, OS_os_log, TKSmartCardSlotDelegate;
 
 @interface TKSmartCardSlotEngine : NSObject <TKProtocolSmartCardSlot, NSXPCListenerDelegate>
 {
@@ -28,7 +28,7 @@
     NSMutableArray *_powerRequests;
     NSMapTable *_reservations;
     TKPowerMonitor *_powerMonitor;
-    struct __asl_object_s *_log;
+    NSObject<OS_os_log> *_log;
     BOOL _securePINVerificationSupported;
     BOOL _securePINChangeSupported;
     BOOL _apduSentSinceLastReset;
@@ -69,7 +69,7 @@
 - (id)init;
 - (void)leaveSession:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)logMessage:(id)arg1 bytes:(id)arg2;
+- (void)logWithBytes:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)powerDownWithEject:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)powerRequestFinished;

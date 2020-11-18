@@ -8,7 +8,7 @@
 
 #import <HomeKit/HMXPCMessageTransport-Protocol.h>
 
-@class HMFMessageDispatcher, NSObject, NSString, NSXPCConnection;
+@class NSObject, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface HMXpcClient : HMFMessageTransport <HMXPCMessageTransport>
@@ -17,7 +17,6 @@
     BOOL _requiresCheckin;
     BOOL _notifyRegistered;
     int _notifyRegisterToken;
-    HMFMessageDispatcher *_messageDispatcher;
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     CDUnknownBlockType _reconnectionHandler;
@@ -28,7 +27,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (nonatomic) int notifyRegisterToken; // @synthesize notifyRegisterToken=_notifyRegisterToken;
 @property (nonatomic) BOOL notifyRegistered; // @synthesize notifyRegistered=_notifyRegistered;
 @property (copy, nonatomic) CDUnknownBlockType reconnectionHandler; // @synthesize reconnectionHandler=_reconnectionHandler;

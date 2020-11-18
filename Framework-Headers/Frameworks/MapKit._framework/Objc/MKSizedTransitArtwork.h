@@ -19,7 +19,7 @@
 }
 
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> artwork; // @synthesize artwork=_artwork;
-@property (readonly, nonatomic) MKArtworkDataSourceCache *artworkCache; // @synthesize artworkCache=_artworkCache;
+@property (strong, nonatomic) MKArtworkDataSourceCache *artworkCache; // @synthesize artworkCache=_artworkCache;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

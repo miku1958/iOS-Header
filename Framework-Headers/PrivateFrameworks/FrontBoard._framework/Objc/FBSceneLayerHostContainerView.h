@@ -19,8 +19,10 @@
     id<FBSceneLayerHostContainerViewDataSource> _dataSource;
     NSMutableArray *_hostViews;
     NSMutableArray *_hostedLayers;
+    BOOL _clippingDisabled;
 }
 
+@property (nonatomic, getter=isClippingDisabled) BOOL clippingDisabled; // @synthesize clippingDisabled=_clippingDisabled;
 @property (nonatomic) id<FBSceneLayerHostContainerViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<FBSceneLayerHostContainerViewDelegate> delegate; // @synthesize delegate=_delegate;

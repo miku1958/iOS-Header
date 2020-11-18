@@ -13,8 +13,8 @@
 @interface NTPBChannelMembershipRecord : PBCodable <NSCopying>
 {
     NTPBRecordBase *_base;
-    NSString *_channelId;
-    NSString *_draftListId;
+    NSString *_channelID;
+    NSString *_draftListID;
     BOOL _canAccessDrafts;
     struct {
         unsigned int canAccessDrafts:1;
@@ -23,12 +23,12 @@
 
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
 @property (nonatomic) BOOL canAccessDrafts; // @synthesize canAccessDrafts=_canAccessDrafts;
-@property (strong, nonatomic) NSString *channelId; // @synthesize channelId=_channelId;
-@property (strong, nonatomic) NSString *draftListId; // @synthesize draftListId=_draftListId;
+@property (strong, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
+@property (strong, nonatomic) NSString *draftListID; // @synthesize draftListID=_draftListID;
 @property (readonly, nonatomic) BOOL hasBase;
 @property (nonatomic) BOOL hasCanAccessDrafts;
-@property (readonly, nonatomic) BOOL hasChannelId;
-@property (readonly, nonatomic) BOOL hasDraftListId;
+@property (readonly, nonatomic) BOOL hasChannelID;
+@property (readonly, nonatomic) BOOL hasDraftListID;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

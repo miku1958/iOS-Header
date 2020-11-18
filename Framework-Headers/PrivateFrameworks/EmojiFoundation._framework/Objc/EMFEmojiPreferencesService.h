@@ -14,8 +14,8 @@
 @interface EMFEmojiPreferencesService : NSObject <NSXPCListenerDelegate>
 {
     NSXPCListener *_listener;
-    NSObject<OS_dispatch_queue> *_dispatchQueue;
     EMFEmojiPreferences *_preferences;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;

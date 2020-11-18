@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 @class NSString;
+@protocol VSAuthenticationToken;
 
+__attribute__((visibility("hidden")))
 @interface VSAccountAuthentication : NSObject
 {
     NSString *_username;
-    NSString *_authenticationToken;
+    id<VSAuthenticationToken> _authenticationToken;
 }
 
-@property (copy, nonatomic) NSString *authenticationToken; // @synthesize authenticationToken=_authenticationToken;
+@property (strong, nonatomic) id<VSAuthenticationToken> authenticationToken; // @synthesize authenticationToken=_authenticationToken;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
 - (void).cxx_destruct;

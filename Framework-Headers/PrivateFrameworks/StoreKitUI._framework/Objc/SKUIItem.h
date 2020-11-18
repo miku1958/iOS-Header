@@ -43,6 +43,7 @@
     NSString *_versionString;
     NSArray *_videos;
     BOOL _hasMessagesExtension;
+    BOOL _isHiddenFromSpringBoard;
     BOOL _gameControllerSupported;
     BOOL _requiresGameController;
     id<SKUIArtworkProviding> _artworksProvider;
@@ -68,6 +69,7 @@
 @property (readonly, nonatomic) BOOL hasInAppPurchases; // @synthesize hasInAppPurchases=_hasInAppPurchases;
 @property (readonly, nonatomic) BOOL hasMessagesExtension; // @synthesize hasMessagesExtension=_hasMessagesExtension;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isHiddenFromSpringBoard; // @synthesize isHiddenFromSpringBoard=_isHiddenFromSpringBoard;
 @property (readonly, nonatomic) long long itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property (readonly, nonatomic) long long itemKind; // @synthesize itemKind=_itemKind;
 @property (readonly, nonatomic) NSString *itemKindString; // @synthesize itemKindString=_itemKindString;

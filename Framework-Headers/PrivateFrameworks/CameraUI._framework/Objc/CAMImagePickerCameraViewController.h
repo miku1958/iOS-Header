@@ -19,6 +19,7 @@
     BOOL _videoEditingAllowed;
     BOOL _currentlyReviewing;
     BOOL _usingTelephonyUI;
+    BOOL _statusBarWasHidden;
     int _photoSavingOptions;
     UIView *_customOverlayView;
     PLCropOverlay *__cropOverlay;
@@ -44,6 +45,7 @@
 @property (copy, nonatomic, getter=_mostRecentVideoProperties, setter=_setMostRecentVideoProperties:) NSDictionary *mostRecentVideoProperties; // @synthesize mostRecentVideoProperties=_mostRecentVideoProperties;
 @property (nonatomic, getter=_photoSavingOptions, setter=_setPhotoSavingOptions:) int photoSavingOptions; // @synthesize photoSavingOptions=_photoSavingOptions;
 @property (nonatomic, getter=isShowingStandardControls) BOOL showingStandardControls;
+@property (nonatomic, getter=_statusBarWasHidden, setter=_setStatusBarWasHidden:) BOOL statusBarWasHidden; // @synthesize statusBarWasHidden=_statusBarWasHidden;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=_isUsingTelephonyUI, setter=_setUsingTelephonyUI:) BOOL usingTelephonyUI; // @synthesize usingTelephonyUI=_usingTelephonyUI;
 @property (nonatomic, getter=_isVideoEditingAllowed, setter=_setVideoEditingAllowed:) BOOL videoEditingAllowed; // @synthesize videoEditingAllowed=_videoEditingAllowed;
@@ -102,6 +104,7 @@
 - (void)videoViewIsReadyToBeginPlayback:(id)arg1;
 - (double)videoViewScrubberYOrigin:(id)arg1 forOrientation:(long long)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

@@ -52,7 +52,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_createNotification;
-- (void)_readRequiredBTLECharacteristicValues:(BOOL)arg1;
+- (void)_readRequiredBTLECharacteristicValuesForceReadName:(BOOL)arg1 forceReadFWVersion:(BOOL)arg2;
 - (void)_setServiceProperties:(id)arg1;
 - (void)_shouldServiceBeHidden;
 - (BOOL)_supportsBulletinNotification;

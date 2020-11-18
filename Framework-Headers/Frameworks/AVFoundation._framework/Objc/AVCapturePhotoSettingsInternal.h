@@ -27,7 +27,7 @@
     BOOL squareCropEnabled;
     unsigned int shutterSound;
     BOOL turboModeEnabled;
-    BOOL autoBravoImageFusionEnabled;
+    BOOL autoDualCameraFusionEnabled;
     NSString *livePhotoContentIdentifier;
     NSString *livePhotoContentIdentifierForOriginalPhoto;
 }

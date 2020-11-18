@@ -7,6 +7,8 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (WebBookmarksExtras)
+- (id)_wb_stringByDeletingTrailingSlash;
+- (id)_wb_stringByStandardizingDAVServerID;
 - (BOOL)_webBookmarks_hasCaseInsensitivePrefix:(id)arg1;
 @end
 

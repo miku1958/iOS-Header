@@ -15,6 +15,7 @@
     AVCapturePhotoSettingsInternal *_internal;
 }
 
+@property (nonatomic, getter=isAutoDualCameraFusionEnabled) BOOL autoDualCameraFusionEnabled;
 @property (nonatomic, getter=isAutoStillImageStabilizationEnabled) BOOL autoStillImageStabilizationEnabled;
 @property (readonly, nonatomic) NSArray *availablePreviewPhotoPixelFormatTypes;
 @property (nonatomic) long long flashMode;
@@ -34,7 +35,7 @@
 + (long long)uniqueID;
 - (long long)HDRMode;
 - (id)_description;
-- (id)_initWithFormat:(id)arg1 rawPixelFormatType:(unsigned int)arg2 uniqueID:(long long)arg3;
+- (id)_initWithFormat:(id)arg1 rawPixelFormatType:(unsigned int)arg2 uniqueID:(long long)arg3 exceptionReason:(id *)arg4;
 - (id)_sanitizedLivePhotoMovieMetadataForArray:(id)arg1 exceptionReason:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

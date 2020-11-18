@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSPredicate, NSString;
-@protocol NSFastEnumeration, OS_dispatch_queue, PXPeopleDataSourceDelegate;
+@class NSArray, NSPredicate, NSString, PHFetchResult;
+@protocol OS_dispatch_queue, PXPeopleDataSourceDelegate;
 
 @interface PXPeopleDataSource : NSObject
 {
@@ -22,8 +22,8 @@
     CDUnknownBlockType _sortComparator;
     NSArray *_members;
     NSObject<OS_dispatch_queue> *_reloadQueue;
-    id<NSFastEnumeration> _objects;
-    id<NSFastEnumeration> _originalObjects;
+    PHFetchResult *_objects;
+    PHFetchResult *_originalObjects;
     CDUnknownBlockType _reloadBlock;
     NSArray *_originalMembers;
 }
@@ -37,9 +37,9 @@
 @property (strong, nonatomic) NSArray *members; // @synthesize members=_members;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) unsigned long long numberOfMembers;
-@property (strong, nonatomic) id<NSFastEnumeration> objects; // @synthesize objects=_objects;
+@property (strong, nonatomic) PHFetchResult *objects; // @synthesize objects=_objects;
 @property (strong, nonatomic) NSArray *originalMembers; // @synthesize originalMembers=_originalMembers;
-@property (strong, nonatomic) id<NSFastEnumeration> originalObjects; // @synthesize originalObjects=_originalObjects;
+@property (strong, nonatomic) PHFetchResult *originalObjects; // @synthesize originalObjects=_originalObjects;
 @property (copy, nonatomic) CDUnknownBlockType reloadBlock; // @synthesize reloadBlock=_reloadBlock;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *reloadQueue; // @synthesize reloadQueue=_reloadQueue;
 @property (copy, nonatomic) CDUnknownBlockType sortComparator; // @synthesize sortComparator=_sortComparator;
@@ -47,12 +47,14 @@
 
 - (void).cxx_destruct;
 - (void)_asyncLoadImageForItem:(id)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
+- (void)_asyncLoadImageForItem:(id)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3 fastDisplayBlock:(CDUnknownBlockType)arg4;
 - (id)_itemsArrayFromObjects:(id)arg1;
 - (void)_setObjectsWithoutUpdate:(id)arg1;
 - (void)_updateMembers;
 - (void)dealloc;
 - (CDUnknownBlockType)defaultComparator;
 - (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
+- (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3 fastDisplayBlock:(CDUnknownBlockType)arg4;
 - (unsigned long long)indexOfMember:(id)arg1;
 - (id)initWithName:(id)arg1 objects:(id)arg2;
 - (id)initWithName:(id)arg1 objectsReloadBlock:(CDUnknownBlockType)arg2;

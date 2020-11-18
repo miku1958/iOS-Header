@@ -28,7 +28,7 @@
 @property (readonly, nonatomic) unsigned long long indexType; // @synthesize indexType=_indexType;
 @property (strong, nonatomic) MDLMaterial *material; // @synthesize material=_material;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, strong, nonatomic) MDLSubmeshTopology *topology; // @synthesize topology=_topology;
+@property (strong, nonatomic) MDLSubmeshTopology *topology; // @synthesize topology=_topology;
 
 - (void).cxx_destruct;
 - (struct MDLAABB)boundingBoxForMesh:(id)arg1;

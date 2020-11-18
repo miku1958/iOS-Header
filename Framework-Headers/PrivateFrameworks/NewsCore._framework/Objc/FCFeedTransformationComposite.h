@@ -8,10 +8,12 @@
 
 #import <NewsCore/FCFeedTransforming-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSMutableArray, NSString;
 
 @interface FCFeedTransformationComposite : NSObject <FCFeedTransforming>
 {
+    BOOL _shouldLogTransformationResults;
+    NSMutableArray *_transformationLogs;
     NSArray *_feedTransformations;
 }
 
@@ -19,11 +21,14 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *feedTransformations; // @synthesize feedTransformations=_feedTransformations;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL shouldLogTransformationResults; // @synthesize shouldLogTransformationResults=_shouldLogTransformationResults;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSMutableArray *transformationLogs; // @synthesize transformationLogs=_transformationLogs;
 
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithFeedTransformations:(id)arg1;
+- (id)initWithFeedTransformations:(id)arg1 logTransformationResults:(BOOL)arg2;
 - (id)transformFeedItems:(id)arg1;
 
 @end

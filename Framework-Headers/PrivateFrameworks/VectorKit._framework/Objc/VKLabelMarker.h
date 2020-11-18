@@ -43,7 +43,6 @@
 - (id)featureTile;
 - (int)featureType;
 - (BOOL)hasBusinessID;
-- (const basic_string_805fe43b *)iconName;
 - (id)iconNameAsNSString;
 - (id)incident;
 - (id)initWithFeatureMarkerPtr:(const shared_ptr_430519ce *)arg1;

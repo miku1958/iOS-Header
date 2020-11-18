@@ -5,8 +5,7 @@
 //
 
 #import <UpNextWidget/NSObject-Protocol.h>
-#import <UpNextWidget/OS_dispatch_object-Protocol.h>
 
-@protocol OS_dispatch_source <OS_dispatch_object, NSObject>
+@protocol OS_dispatch_source <NSObject>
 @end
 

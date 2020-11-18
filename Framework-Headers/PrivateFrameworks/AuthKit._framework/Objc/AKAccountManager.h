@@ -53,6 +53,7 @@
 - (id)passwordResetTokenForAccount:(id)arg1;
 - (void)removeAllPasswordResetTokens;
 - (void)removeContinuationTokenForAccount:(id)arg1;
+- (void)removeMasterTokenForAccount:(id)arg1;
 - (void)removeUnusedAuthKitAccounts;
 - (unsigned long long)securityLevelForAccount:(id)arg1;
 - (id)servicesUsingAccount:(id)arg1;
@@ -61,6 +62,7 @@
 - (void)setAltDSID:(id)arg1 forAccount:(id)arg2;
 - (void)setDSID:(id)arg1 forAccount:(id)arg2;
 - (void)setSecurityLevel:(unsigned long long)arg1 forAccount:(id)arg2;
+- (id)transportableAuthKitAccount:(id)arg1;
 
 @end
 

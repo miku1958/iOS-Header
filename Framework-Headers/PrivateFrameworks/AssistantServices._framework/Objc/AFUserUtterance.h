@@ -39,7 +39,7 @@
 - (id)rangeListOfDifferingTextFromSpeechInterpretation:(id)arg1 comparedToBaseUtteranceAtIndex:(unsigned long long)arg2;
 - (id)rangeListOfDifferingTextFromTargetTokenList:(id)arg1 comparedToBaseTokenList:(id)arg2;
 - (id)rangeListOfDifferingTextFromUtteranceAtIndex:(unsigned long long)arg1 comparedToBaseUtteranceAtIndex:(unsigned long long)arg2;
-- (id)speechTokensForUtteranceAdIndex:(unsigned long long)arg1;
+- (id)speechTokensForUtteranceAtIndex:(unsigned long long)arg1;
 - (id)streamingTokens;
 - (id)textOfUtteranceAtIndex:(unsigned long long)arg1;
 - (id)updateDictationResult:(id)arg1 withAlternativeUtteranceAtIndex:(unsigned long long)arg2;

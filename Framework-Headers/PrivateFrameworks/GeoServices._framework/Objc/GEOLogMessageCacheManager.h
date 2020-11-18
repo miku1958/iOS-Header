@@ -69,6 +69,7 @@
 - (void)resetLogMessageCacheIterator;
 - (id)retrieveFirstBatchOfLogMessagesWithLimitCount:(long long)arg1 limitSize:(long long)arg2;
 - (id)retrieveNextBatchOfLogMessagesWithLimitCount:(long long)arg1 limitSize:(long long)arg2;
+- (BOOL)shouldFlushLogMessageCache;
 - (void)updateCurrentlyRetrievedLogMessagesRetryCount;
 
 @end

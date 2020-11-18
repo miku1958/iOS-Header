@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol HFPrettyDescription <NSObject>
-- (NSString *)hf_prettyDescription;
+- (NSString *)hf_prettyDescriptionOfType:(unsigned long long)arg1;
 @end
 

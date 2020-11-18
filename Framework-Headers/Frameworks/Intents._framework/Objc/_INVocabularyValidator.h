@@ -10,7 +10,7 @@
 {
 }
 
-+ (void)initialize;
++ (void)load;
 - (BOOL)_bundleID:(id)arg1 isWhitelistedForVocabularyType:(long long)arg2;
 - (void)_confirmExistenceOfWatchAppForCompanionBundleID:(id)arg1 handlingIntents:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_determineIfBundle:(id)arg1 canProvideVocabularyOfType:(long long)arg2 completion:(CDUnknownBlockType)arg3;

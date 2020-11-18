@@ -61,7 +61,7 @@
 - (id)decryptData:(id)arg1 withError:(id *)arg2;
 - (BOOL)deleteIdentityWithError:(id *)arg1;
 - (id)encryptData:(id)arg1 withError:(id *)arg2;
-- (BOOL)handlePairingExchangeData:(id)arg1 withError:(id *)arg2;
+- (void)handlePairingExchangeData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handlePairingFailureWithStatus:(int)arg1;
 - (id)initWithRole:(unsigned long long)arg1 device:(id)arg2;
 - (BOOL)isValid;

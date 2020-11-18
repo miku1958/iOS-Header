@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL canPlaySound; // @dynamic canPlaySound;
 @property (nonatomic) BOOL canTurnOnDisplay; // @dynamic canTurnOnDisplay;
 @property (nonatomic) BOOL coalescesWhenLocked; // @dynamic coalescesWhenLocked;
+@property (nonatomic) unsigned long long contentPreviewSetting; // @dynamic contentPreviewSetting;
 @property (nonatomic) BOOL dismissAutomatically; // @dynamic dismissAutomatically;
 @property (nonatomic) BOOL hideClearActionInList; // @dynamic hideClearActionInList;
 @property (nonatomic) BOOL ignoreAttachmentImageThumbnailCrop; // @dynamic ignoreAttachmentImageThumbnailCrop;
@@ -28,12 +29,13 @@
 @property (nonatomic) BOOL overridesPocketMode; // @dynamic overridesPocketMode;
 @property (nonatomic) BOOL overridesQuietMode; // @dynamic overridesQuietMode;
 @property (nonatomic) BOOL preemptsPresentedNotification; // @dynamic preemptsPresentedNotification;
+@property (nonatomic) BOOL preventsAutomaticLock; // @dynamic preventsAutomaticLock;
 @property (nonatomic) unsigned long long realertCount; // @dynamic realertCount;
 @property (nonatomic) BOOL requestsFullScreenPresentation; // @dynamic requestsFullScreenPresentation;
+@property (nonatomic) BOOL revealsAdditionalContentIfNoDefaultAction; // @dynamic revealsAdditionalContentIfNoDefaultAction;
 @property (nonatomic) BOOL revealsAdditionalContentOnPresentation; // @dynamic revealsAdditionalContentOnPresentation;
 @property (nonatomic) BOOL silencedByMenuButtonPress; // @dynamic silencedByMenuButtonPress;
 @property (nonatomic) BOOL suppressesAlertsWhenAppIsActive; // @dynamic suppressesAlertsWhenAppIsActive;
-@property (nonatomic) BOOL suppressesMessageWhenLocked; // @dynamic suppressesMessageWhenLocked;
 @property (nonatomic) BOOL suppressesSubtitleWhenLocked; // @dynamic suppressesSubtitleWhenLocked;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

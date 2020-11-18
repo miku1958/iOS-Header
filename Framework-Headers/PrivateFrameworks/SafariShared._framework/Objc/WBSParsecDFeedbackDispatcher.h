@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)_takeStartSearchFeedbackForSearchOfType:(long long)arg1 forQuery:(id)arg2;
 - (void)didBeginSearchOfType:(long long)arg1 withQuery:(id)arg2 endpoint:(unsigned long long)arg3;
 - (void)didBeginSearchOfType:(long long)arg1 withQuery:(id)arg2 urlString:(id)arg3 headers:(id)arg4 endpoint:(unsigned long long)arg5;
-- (void)didDisplayCompletionListItems:(id)arg1 forQuery:(id)arg2;
+- (void)didDisplayCompletionListItems:(id)arg1 forQuery:(id)arg2 forEvent:(long long)arg3;
 - (void)didGenerateCompletionListItemsWithRankingObserver:(id)arg1;
 - (void)didRankSections:(id)arg1 blendingDuration:(double)arg2 feedbackForHiddenAndDuplicateResults:(id)arg3;
 - (void)didReceiveLocalResultsForQuery:(id)arg1;

@@ -25,6 +25,7 @@
 @property (nonatomic, setter=setTTYType:) long long ttyType;
 @property (readonly, nonatomic) BOOL useSpeaker;
 
+- (id)_dictionaryRepresentation;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;

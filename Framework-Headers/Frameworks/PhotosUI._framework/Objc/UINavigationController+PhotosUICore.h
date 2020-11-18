@@ -7,7 +7,6 @@
 #import <UIKit/UINavigationController.h>
 
 @interface UINavigationController (PhotosUICore)
-- (BOOL)px_isTopViewControllerDescendant:(id)arg1;
 - (BOOL)px_preparePopToViewController:(id)arg1 forced:(BOOL)arg2;
 @end
 

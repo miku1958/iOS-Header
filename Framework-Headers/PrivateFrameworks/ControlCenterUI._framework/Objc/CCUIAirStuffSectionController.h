@@ -6,6 +6,7 @@
 
 #import <ControlCenterUI/CCUIControlCenterSectionViewController.h>
 
+#import <ControlCenterUI/CCUIControlCenterButtonDelegate-Protocol.h>
 #import <ControlCenterUI/MPAVRoutingControllerDelegate-Protocol.h>
 #import <ControlCenterUI/SFAirDropDiscoveryAlertControllerDelegate-Protocol.h>
 #import <ControlCenterUI/SFAirDropDiscoveryControllerDelegate-Protocol.h>
@@ -13,7 +14,7 @@
 
 @class BSTimer, CCUIControlCenterPushButton, MPAVRoutingController, MPAVRoutingSheet, MPAudioVideoRoutingPopoverController, NSString, SFAirDropDiscoveryController, UIAlertController;
 
-@interface CCUIAirStuffSectionController : CCUIControlCenterSectionViewController <MPAVRoutingControllerDelegate, UIPopoverControllerDelegate, SFAirDropDiscoveryControllerDelegate, SFAirDropDiscoveryAlertControllerDelegate>
+@interface CCUIAirStuffSectionController : CCUIControlCenterSectionViewController <MPAVRoutingControllerDelegate, UIPopoverControllerDelegate, SFAirDropDiscoveryControllerDelegate, SFAirDropDiscoveryAlertControllerDelegate, CCUIControlCenterButtonDelegate>
 {
     CCUIControlCenterPushButton *_airPlaySection;
     CCUIControlCenterPushButton *_airDropSection;
@@ -50,6 +51,7 @@
 - (void)_updateForAirPlayStateChange;
 - (void)_updateLayoutForSizeCategoryChange;
 - (void)_updateSubsectionVisibility;
+- (void)buttonTapped:(id)arg1;
 - (void)controlCenterDidDismiss;
 - (void)controlCenterWillPresent;
 - (void)dealloc;
@@ -59,6 +61,7 @@
 - (BOOL)dismissModalFullScreenIfNeeded;
 - (BOOL)enabled;
 - (id)init;
+- (BOOL)isInternal;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (id)sectionIdentifier;

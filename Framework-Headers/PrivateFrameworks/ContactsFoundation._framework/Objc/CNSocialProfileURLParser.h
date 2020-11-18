@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CNSocialProfileURLParser : NSObject
 {
@@ -15,7 +15,7 @@
 + (id)parseSocialProfileURL:(id)arg1;
 + (id)parseURLStringByInference:(id)arg1;
 + (id)parseURLStringWithRegularExpressions:(id)arg1;
-+ (id)serivicesDictionary;
++ (id)servicesDictionary;
 
 @end
 

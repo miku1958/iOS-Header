@@ -72,6 +72,7 @@
 - (id)newErrorForCode:(int)arg1 message:(id)arg2;
 - (id)pathsToPreserveAcrossWipe;
 - (void)setLowBatteryLocateEnabled:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)signatureHeadersWithData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)userDidAckManagedLostModeLocateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)userNotifiedOfActivationLockForAllPairedDevices;
 - (void)userNotifiedOfActivationLockForPairedDevices:(id)arg1;

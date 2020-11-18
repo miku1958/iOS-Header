@@ -21,7 +21,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)aggdLogEngagementWithResult:(id)arg1 atDistanceFromTop:(double)arg2;
 + (void)cardViewDidDisappearForReason:(unsigned long long)arg1;
 + (void)didAppearFromSource:(unsigned long long)arg1;
 + (void)didAppendLateSections:(id)arg1;
@@ -30,7 +29,6 @@
 + (void)didEndSearch:(id)arg1;
 + (void)didEngageResult:(id)arg1 forReason:(unsigned long long)arg2 withDestination:(unsigned long long)arg3;
 + (void)didEngageResultWithFeedback:(id)arg1;
-+ (void)didPeekResult:(id)arg1;
 + (void)didPerformSearchOnSuggestion:(id)arg1;
 + (void)didRankSections:(id)arg1;
 + (void)didSearchInAppForSection:(id)arg1;
@@ -42,7 +40,6 @@
 + (void)suggestionsDidBecomeVisible:(id)arg1;
 - (void)didEngageActionItem:(id)arg1 actionPerformed:(BOOL)arg2;
 - (BOOL)didHandleCardSectionEngagement:(id)arg1;
-- (void)didPeekResult:(id)arg1;
 - (void)didPopResult:(id)arg1;
 - (void)didSelectResult:(id)arg1;
 - (void)placeViewController:(id)arg1 shouldLogFeedbackOfType:(int)arg2;

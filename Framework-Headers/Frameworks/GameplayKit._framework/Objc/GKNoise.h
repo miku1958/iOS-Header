@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
+@class NSDictionary, NSMutableArray;
 
 @interface GKNoise : NSObject
 {
-    vector_a0c1ad3f _modules;
+    NSMutableArray *_modules;
     NSDictionary *_gradientColors;
 }
 
@@ -20,19 +20,18 @@
 + (id)noiseWithComponentNoises:(id)arg1 selectionNoise:(id)arg2 componentBoundaries:(id)arg3 boundaryBlendDistances:(id)arg4;
 + (id)noiseWithNoiseSource:(id)arg1;
 + (id)noiseWithNoiseSource:(id)arg1 gradientColors:(id)arg2;
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)__blendWithNoise:(id)arg1 selectionNoise:(id)arg2 selectionRangeLowerBound:(double)arg3 selectionRangeUpperBound:(double)arg4 selectionBoundaryBlendDistance:(double)arg5;
-- (vector_a0c1ad3f *)__modules;
+- (id)__modules;
 - (void)addWithNoise:(id)arg1;
 - (void)applyAbsoluteValue;
 - (void)applyTurbulenceWithFrequency:(double)arg1 power:(double)arg2 roughness:(int)arg3 seed:(int)arg4;
-- (void)cacheBinaryModule:(struct Module *)arg1 rhsNoise:(id)arg2;
-- (void)cacheQuaternaryModule:(struct Module *)arg1 xDisplacementNoise:(id)arg2 yDisplacementNoise:(id)arg3 zDisplacementNoise:(id)arg4;
-- (void)cacheTernaryModule:(struct Module *)arg1 rhsNoise:(id)arg2 selectionNoise:(id)arg3;
-- (void)cacheUnaryModule:(struct Module *)arg1;
+- (void)cacheBinaryModule:(id)arg1 rhsNoise:(id)arg2;
+- (void)cacheQuaternaryModule:(id)arg1 xDisplacementNoise:(id)arg2 yDisplacementNoise:(id)arg3 zDisplacementNoise:(id)arg4;
+- (void)cacheTernaryModule:(id)arg1 rhsNoise:(id)arg2 selectionNoise:(id)arg3;
+- (void)cacheUnaryModule:(id)arg1;
 - (void)clampWithLowerBound:(double)arg1 upperBound:(double)arg2;
-- (const struct Module *)cloneRecursive:(const struct Module *)arg1;
+- (id)cloneRecursive:(id)arg1;
 - (void)dealloc;
 - (void)displaceXWithNoise:(id)arg1 yWithNoise:(id)arg2 zWithNoise:(id)arg3;
 - (id)init;

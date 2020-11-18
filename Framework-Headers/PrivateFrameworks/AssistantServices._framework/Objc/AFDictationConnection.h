@@ -8,8 +8,8 @@
 
 #import <AssistantServices/AFNetworkAvailabilityObserver-Protocol.h>
 
-@class NSSet, NSString, NSXPCConnection;
-@protocol AFDictationDelegate, OS_dispatch_group;
+@class NSData, NSSet, NSString, NSXPCConnection;
+@protocol AFDictationDelegate, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
 @interface AFDictationConnection : NSObject <AFNetworkAvailabilityObserver>
 {
@@ -17,16 +17,20 @@
     NSString *_lastUsedLanguage;
     NSSet *_knownOfflineInstalledLanguages;
     id<AFDictationDelegate> _delegate;
-    void *_levelsSharedMem;
-    unsigned long long _sharedMemSize;
+    NSData *_levelsSharedData;
     BOOL _isCapturingSpeech;
     BOOL _hasActiveRequest;
     BOOL _isWaitingForAudioFile;
     NSObject<OS_dispatch_group> *_speechCallbackGroup;
+    NSObject<OS_dispatch_queue> *_internalQueue;
+    NSObject<OS_dispatch_source> *_timeoutTimer;
+    NSString *_requestIdString;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AFDictationDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -44,6 +48,7 @@
 - (void)_connectionClearedForInterruption:(BOOL)arg1;
 - (id)_dictationService;
 - (id)_dictationServiceWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)_dispatchAsync:(CDUnknownBlockType)arg1;
 - (void)_dispatchCallbackGroupBlock:(CDUnknownBlockType)arg1;
 - (void)_extendRequestTimeout;
 - (void)_invokeRequestTimeout;
@@ -53,6 +58,7 @@
 - (void)_setLevelsWithSharedMem:(id)arg1;
 - (void)_stopLevelUpdates;
 - (void)_tellSpeechDelegateAudioFileFinished:(id)arg1 error:(id)arg2;
+- (void)_tellSpeechDelegateAvailabilityChanged;
 - (void)_tellSpeechDelegateDidProcessAudioDuration:(double)arg1;
 - (void)_tellSpeechDelegateDidRecognizeSpeechPhrases:(id)arg1 languageModel:(id)arg2 correctionIdentifier:(id)arg3;
 - (void)_tellSpeechDelegateDidRecognizeSpeechTokens:(id)arg1 languageModel:(id)arg2;
@@ -67,7 +73,7 @@
 - (void)_willCancelDictation;
 - (void)_willCompleteDictation;
 - (void)_willFailDictationWithError:(id)arg1;
-- (void)_willStartDictationWithOptions:(id)arg1;
+- (void)_willStartDictationWithLanguageCode:(id)arg1 options:(id)arg2 speechOptions:(id)arg3 machAbsoluteTime:(unsigned long long)arg4;
 - (void)addRecordedSpeechSampleData:(id)arg1;
 - (float)averagePower;
 - (void)beginAvailabilityMonitoring;
@@ -77,6 +83,7 @@
 - (BOOL)dictationIsAvailableForLanguage:(id)arg1;
 - (void)endSession;
 - (BOOL)forcedOfflineDictationIsAvailableForLanguage:(id)arg1;
+- (id)init;
 - (void)networkAvailability:(id)arg1 isAvailable:(BOOL)arg2;
 - (float)peakPower;
 - (void)preheat;

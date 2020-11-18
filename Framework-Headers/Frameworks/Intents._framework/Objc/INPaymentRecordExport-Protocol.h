@@ -11,12 +11,12 @@
 
 @protocol INPaymentRecordExport <NSObject, JSExport>
 
-@property (readonly, copy, nonatomic) INCurrencyAmount *currencyAmount;
-@property (readonly, copy, nonatomic) NSString *note;
-@property (readonly, copy, nonatomic) INPerson *payee;
-@property (readonly, copy, nonatomic) INPerson *payer;
-@property (readonly, copy, nonatomic) INPaymentMethod *paymentMethod;
-@property (readonly, nonatomic) long long status;
+@property (copy, nonatomic) INCurrencyAmount *currencyAmount;
+@property (copy, nonatomic) NSString *note;
+@property (copy, nonatomic) INPerson *payee;
+@property (copy, nonatomic) INPerson *payer;
+@property (copy, nonatomic) INPaymentMethod *paymentMethod;
+@property (nonatomic) long long status;
 
 - (id)init;
 @end

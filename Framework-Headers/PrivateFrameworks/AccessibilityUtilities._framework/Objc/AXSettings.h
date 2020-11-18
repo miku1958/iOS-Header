@@ -80,6 +80,7 @@
 @property BOOL automationHitpointWarpingEnabled;
 @property BOOL automationLocalizedStringLookupInfoEnabled;
 @property (readonly) NSString *automationPreferredLocalization;
+@property (nonatomic) long long brokenHomeButtonCount;
 @property BOOL buttonShapesEnabled;
 @property (nonatomic) double characterFeedbackDelayDuration;
 @property (nonatomic) long long characterVoicesUsageCount;
@@ -357,6 +358,7 @@
 - (float)quickSpeakSpeakingRateForLanguage:(id)arg1;
 - (void)registerUpdateBlock:(CDUnknownBlockType)arg1 forRetrieveSelector:(SEL)arg2 withListener:(id)arg3;
 - (void)saveRecipe:(id)arg1;
+- (id)selectedSpeechVoiceIdentifiers;
 - (void)setAssistiveTouchScannerPrefersCompact:(BOOL)arg1 forLanguage:(id)arg2;
 - (void)setQuickSpeakSpeakingRate:(float)arg1 forLanguage:(id)arg2;
 - (void)setSpeechVoiceIdentifier:(id)arg1 forLanguage:(id)arg2 source:(long long)arg3;

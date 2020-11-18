@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDCameraSessionID, HMDSnapshotCompletionTimer, NSMutableArray, NSString;
+@class HMDCameraSessionID, HMDCameraSnapshotMetrics, HMDSnapshotCompletionTimer, NSMutableArray, NSString;
 @protocol HMDCameraGetSnapshotProtocol;
 
 @interface HMDSnapshotSession : NSObject <HMFLogging>
@@ -18,6 +18,7 @@
     HMDSnapshotCompletionTimer *_snapshotCompletionTimer;
     NSMutableArray *_sessionMessages;
     unsigned long long _streamingTierType;
+    HMDCameraSnapshotMetrics *_snapshotMetrics;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,13 +28,14 @@
 @property (readonly, nonatomic) NSMutableArray *sessionMessages; // @synthesize sessionMessages=_sessionMessages;
 @property (strong, nonatomic) HMDSnapshotCompletionTimer *snapshotCompletionTimer; // @synthesize snapshotCompletionTimer=_snapshotCompletionTimer;
 @property (readonly, nonatomic) id<HMDCameraGetSnapshotProtocol> snapshotGetter; // @synthesize snapshotGetter=_snapshotGetter;
+@property (readonly, nonatomic) HMDCameraSnapshotMetrics *snapshotMetrics; // @synthesize snapshotMetrics=_snapshotMetrics;
 @property (readonly, nonatomic) unsigned long long streamingTierType; // @synthesize streamingTierType=_streamingTierType;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithSessionID:(id)arg1 snapshotGetter:(id)arg2 message:(id)arg3 waitPeriod:(double)arg4 streamingTierType:(unsigned long long)arg5;
+- (id)initWithSessionID:(id)arg1 accessory:(id)arg2 snapshotGetter:(id)arg3 message:(id)arg4 waitPeriod:(double)arg5 streamingTierType:(unsigned long long)arg6 cameraLocallyReachable:(BOOL)arg7 snapshotForNotification:(BOOL)arg8;
 - (id)logIdentifier;
 - (void)respond:(id)arg1 payload:(id)arg2;
 

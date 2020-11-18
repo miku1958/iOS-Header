@@ -29,6 +29,7 @@
 @property (strong, nonatomic) id<HFIconDescriptor> iconDescriptor; // @synthesize iconDescriptor=_iconDescriptor;
 @property (nonatomic) BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) BOOL requiresDeviceUnlock;
 @property (readonly) Class superclass;
 
 + (Class)homeKitRepresentationClass;

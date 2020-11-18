@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class AVConferenceXPCClient, CALayer, NSDictionary, NSString, VideoAttributes;
-@protocol AVCRemoteVideoClientDelegate;
+@protocol AVCRemoteVideoClientDelegate, OS_dispatch_queue;
 
 @interface AVCRemoteVideoClient : NSObject
 {
@@ -31,6 +31,7 @@
     VideoAttributes *_remoteVideoAttributes;
     NSDictionary *_slotsForModes;
     NSString *_connectionTypeString;
+    NSObject<OS_dispatch_queue> *_avcRemoteVideoQueue;
 }
 
 @property (copy, nonatomic) NSString *connectionTypeString; // @synthesize connectionTypeString=_connectionTypeString;

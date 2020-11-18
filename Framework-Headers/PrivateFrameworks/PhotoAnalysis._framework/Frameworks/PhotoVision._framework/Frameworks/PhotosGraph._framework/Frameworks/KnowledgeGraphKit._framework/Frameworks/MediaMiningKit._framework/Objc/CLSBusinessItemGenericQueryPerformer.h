@@ -16,11 +16,13 @@
     NSArray *_locationGeoParameters;
     id<GEOMapServiceBatchSpatialLookupTicket> _businessGenericTicket;
     NSArray *_regions;
+    BOOL _isCancelled;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
 @property (readonly) Class superclass;
 
 + (double)defaultRadiusForCategories:(id)arg1;

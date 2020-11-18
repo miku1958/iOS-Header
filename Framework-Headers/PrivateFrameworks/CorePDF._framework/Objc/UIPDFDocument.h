@@ -21,10 +21,10 @@
     unsigned long long _imageCacheCount;
     unsigned long long _imageCacheLookAhead;
     double _imageCacheResolution;
-    int _lock;
-    int _imageCacheLock;
+    struct os_unfair_lock_s _lock;
+    struct os_unfair_lock_s _imageCacheLock;
     UIPDFPageImageCache *_thumbnailCache;
-    int _thumbnailLock;
+    struct os_unfair_lock_s _thumbnailLock;
     id<NSObject><UIPDFDocumentDelegate> _delegate;
 }
 

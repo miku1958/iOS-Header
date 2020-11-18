@@ -30,6 +30,7 @@
 - (void)handleAccountChange;
 - (void)handlePushNotification:(id)arg1;
 - (id)init;
+- (void)primeAdSheetDataStore;
 - (void)refreshOptInStatus;
 - (void)refreshOptInStatusRefreshingWeakToken:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setOptInStatus:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -41,9 +41,10 @@
 - (void)handleUpdatePaymentPassWithTypeIdentifier:(id)arg1;
 - (id)init;
 - (void)loadWebService;
+- (void)sendPaymentOptionsDefaultsToWatch;
 - (void)sendWebServiceContextToWatch;
 - (void)setNewAuthRandom:(CDUnknownBlockType)arg1;
-- (void)showPaymentSetupForAppDisplayNamea:(id)arg1;
+- (void)showPaymentSetupForAppDisplayName:(id)arg1;
 
 @end
 

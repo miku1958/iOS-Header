@@ -28,6 +28,7 @@
 - (void)_axSetSkipNextFocusOnMessage:(BOOL)arg1;
 - (void)_axSimulateTapArrowButtonWithDirection:(int)arg1;
 - (BOOL)_axSkipNextFocusOnMessage;
+- (id)_previewActionForTriageAction:(unsigned long long)arg1 withMessages:(id)arg2 forSwipe:(BOOL)arg3;
 - (void)_scrollToReferenceMessage;
 - (void)_shrinkMessagesToBarButton:(id)arg1 withInteraction:(id)arg2;
 - (id)accessibilityCustomRotors;

@@ -8,13 +8,15 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, NTPBDate;
 
 @interface NTPBFeedViewportHeadline : PBCodable <NSCopying>
 {
     double _tileProminenceScore;
     NSString *_articleID;
     NSString *_clusterID;
+    NTPBDate *_displayDate;
+    int _storyType;
     int _surfacedByBinIDRef;
     int _surfacedByChannelIDRef;
     int _surfacedBySectionIDRef;
@@ -23,6 +25,7 @@
     BOOL _usesImageOnTopLayout;
     struct {
         unsigned int tileProminenceScore:1;
+        unsigned int storyType:1;
         unsigned int surfacedByBinIDRef:1;
         unsigned int surfacedByChannelIDRef:1;
         unsigned int surfacedBySectionIDRef:1;
@@ -34,9 +37,12 @@
 
 @property (strong, nonatomic) NSString *articleID; // @synthesize articleID=_articleID;
 @property (strong, nonatomic) NSString *clusterID; // @synthesize clusterID=_clusterID;
+@property (strong, nonatomic) NTPBDate *displayDate; // @synthesize displayDate=_displayDate;
 @property (readonly, nonatomic) BOOL hasArticleID;
 @property (readonly, nonatomic) BOOL hasClusterID;
+@property (readonly, nonatomic) BOOL hasDisplayDate;
 @property (nonatomic) BOOL hasIsTopStory;
+@property (nonatomic) BOOL hasStoryType;
 @property (nonatomic) BOOL hasSurfacedByBinIDRef;
 @property (nonatomic) BOOL hasSurfacedByChannelIDRef;
 @property (nonatomic) BOOL hasSurfacedBySectionIDRef;
@@ -44,6 +50,7 @@
 @property (nonatomic) BOOL hasTileProminenceScore;
 @property (nonatomic) BOOL hasUsesImageOnTopLayout;
 @property (nonatomic) BOOL isTopStory; // @synthesize isTopStory=_isTopStory;
+@property (nonatomic) int storyType; // @synthesize storyType=_storyType;
 @property (nonatomic) int surfacedByBinIDRef; // @synthesize surfacedByBinIDRef=_surfacedByBinIDRef;
 @property (nonatomic) int surfacedByChannelIDRef; // @synthesize surfacedByChannelIDRef=_surfacedByChannelIDRef;
 @property (nonatomic) int surfacedBySectionIDRef; // @synthesize surfacedBySectionIDRef=_surfacedBySectionIDRef;

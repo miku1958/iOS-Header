@@ -17,7 +17,7 @@
 }
 
 @property (strong, nonatomic) WAForecastModel *forecastModel; // @synthesize forecastModel=_forecastModel;
-@property (readonly, nonatomic) NSDate *lastUpdateDate; // @synthesize lastUpdateDate=_lastUpdateDate;
+@property (strong, nonatomic) NSDate *lastUpdateDate; // @synthesize lastUpdateDate=_lastUpdateDate;
 
 + (id)autoupdatingLocationModelWithPreferences:(id)arg1 effectiveBundleIdentifier:(id)arg2;
 + (id)modelWithLocation:(id)arg1;

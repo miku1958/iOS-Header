@@ -27,6 +27,7 @@
     long long _confirmationTitleStyle;
     long long _titleStyle;
     UIImage *_image;
+    UIImage *_borderedImage;
     long long _progressType;
     double _progress;
     double _alpha;
@@ -40,6 +41,7 @@
 @property (nonatomic) double borderCornerRadius; // @synthesize borderCornerRadius=_borderCornerRadius;
 @property (nonatomic) BOOL borderCornerRadiusMatchesHalfBoundingDimension; // @synthesize borderCornerRadiusMatchesHalfBoundingDimension=_borderCornerRadiusMatchesHalfBoundingDimension;
 @property (nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
+@property (strong, nonatomic) UIImage *borderedImage; // @synthesize borderedImage=_borderedImage;
 @property (nonatomic) BOOL cancelRecognizer; // @synthesize cancelRecognizer=_cancelRecognizer;
 @property (nonatomic) long long confirmationTitleStyle; // @synthesize confirmationTitleStyle=_confirmationTitleStyle;
 @property (nonatomic) BOOL hasBorderView; // @synthesize hasBorderView=_hasBorderView;

@@ -25,6 +25,7 @@
     unsigned long long _maximumCallsPerCallGroup;
     NSSet *_supportedHandleTypes;
     NSArray *_emergencyNumbers;
+    NSArray *_emergencyLabeledHandles;
     NSArray *_handoffIdentifiers;
     NSURL *_ringtoneSoundURL;
 }
@@ -32,6 +33,7 @@
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *emergencyLabeledHandles; // @synthesize emergencyLabeledHandles=_emergencyLabeledHandles;
 @property (copy, nonatomic) NSArray *emergencyNumbers; // @synthesize emergencyNumbers=_emergencyNumbers;
 @property (copy, nonatomic) NSArray *handoffIdentifiers; // @synthesize handoffIdentifiers=_handoffIdentifiers;
 @property (readonly) unsigned long long hash;

@@ -100,6 +100,7 @@
 - (void)loadFriendsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadRecentPlayersWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)registerListener:(id)arg1;
+- (void)removeAllFriends:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)removeFriend:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)resolveConflictingSavedGames:(id)arg1 withData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)saveGameData:(id)arg1 withName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

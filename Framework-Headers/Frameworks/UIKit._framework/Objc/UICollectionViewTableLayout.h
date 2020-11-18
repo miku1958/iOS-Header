@@ -200,7 +200,7 @@
 - (BOOL)_shouldHaveFooterViewForSection:(long long)arg1;
 - (BOOL)_shouldHaveGlobalViewForElementOfKind:(id)arg1;
 - (BOOL)_shouldHaveHeaderViewForSection:(long long)arg1;
-- (BOOL)_shouldHaveViewForElementOfKind:(id)arg1 atSection:(long long)arg2;
+- (BOOL)_shouldHaveViewForElementOfKind:(id)arg1 atSection:(long long)arg2 useRowData:(BOOL)arg3;
 - (BOOL)_shouldIndentWhileEditingForRowAtIndexPath:(id)arg1;
 - (BOOL)_shouldStripHeaderTopPaddingForSection:(long long)arg1;
 - (double)_spacingForExtraSeparators;

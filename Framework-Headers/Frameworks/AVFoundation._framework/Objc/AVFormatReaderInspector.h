@@ -35,6 +35,7 @@
 - (id)metadataForFormat:(id)arg1;
 - (struct CGSize)naturalSize;
 - (int)naturalTimeScale;
+- (CDStruct_1b6d18a9)overallDurationHint;
 - (float)preferredRate;
 - (float)preferredSoundCheckVolumeNormalization;
 - (struct CGAffineTransform)preferredTransform;

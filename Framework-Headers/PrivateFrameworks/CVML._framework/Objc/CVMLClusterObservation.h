@@ -6,7 +6,7 @@
 
 #import <CVML/CVMLObservation.h>
 
-@class NSArray, NSData, NSDictionary, NSSet;
+@class NSArray, NSData, NSDictionary, NSNumber, NSSet;
 
 @interface CVMLClusterObservation : CVMLObservation
 {
@@ -14,13 +14,17 @@
     NSArray *_suggestionsForCluster;
     NSData *_clusterState;
     NSSet *_clusteredFaceIds;
+    NSArray *_groupedClusteredFaceIdsForCluster;
+    NSNumber *_distance;
     NSDictionary *_distancesById;
 }
 
 @property (strong) NSData *clusterState; // @synthesize clusterState=_clusterState;
 @property (strong) NSSet *clusteredFaceIds; // @synthesize clusteredFaceIds=_clusteredFaceIds;
 @property (strong) NSArray *clusters; // @synthesize clusters=_clusters;
+@property (strong) NSNumber *distance; // @synthesize distance=_distance;
 @property (strong) NSDictionary *distancesById; // @synthesize distancesById=_distancesById;
+@property (strong) NSArray *groupedClusteredFaceIdsForCluster; // @synthesize groupedClusteredFaceIdsForCluster=_groupedClusteredFaceIdsForCluster;
 @property (strong) NSArray *suggestionsForCluster; // @synthesize suggestionsForCluster=_suggestionsForCluster;
 
 - (void).cxx_destruct;

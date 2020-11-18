@@ -6,7 +6,7 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOAlightNotificationFeedback, GEOComposedRoute, GEONavigationGuidanceState, GEOStep, MNLocation, MNNavigationService, MNTrafficIncidentAlert, NSArray, NSError, NSString;
+@class GEOAlightNotificationFeedback, GEOComposedRoute, GEOETARoute, GEONavigationGuidanceState, GEOStep, MNLocation, MNNavigationService, MNTrafficIncidentAlert, NSArray, NSError, NSString;
 
 @protocol MNNavigationServiceObserver <NSObject>
 
@@ -32,6 +32,7 @@
 - (void)navigationService:(MNNavigationService *)arg1 didUpdateDistanceUntilSign:(double)arg2 timeUntilSign:(double)arg3 forStepIndex:(unsigned long long)arg4;
 - (void)navigationService:(MNNavigationService *)arg1 didUpdateFeedback:(GEOAlightNotificationFeedback *)arg2 forAlightingStepAtIndex:(unsigned long long)arg3;
 - (void)navigationService:(MNNavigationService *)arg1 didUpdateHeading:(double)arg2 accuracy:(double)arg3;
+- (void)navigationService:(MNNavigationService *)arg1 didUpdateIncidentsForRoute:(GEOComposedRoute *)arg2 etaRoute:(GEOETARoute *)arg3 incidentsOffset:(unsigned int)arg4;
 - (void)navigationService:(MNNavigationService *)arg1 didUpdateMatchedLocation:(MNLocation *)arg2;
 - (void)navigationService:(MNNavigationService *)arg1 didUpdateProceedToRouteDistance:(double)arg2 displayString:(NSString *)arg3 closestStepIndex:(unsigned long long)arg4;
 - (void)navigationService:(MNNavigationService *)arg1 didUpdateRemainingTime:(double)arg2 remainingDistance:(double)arg3;

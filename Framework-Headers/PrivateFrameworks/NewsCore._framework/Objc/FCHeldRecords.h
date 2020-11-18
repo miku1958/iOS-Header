@@ -22,12 +22,14 @@
 @property (readonly, nonatomic) id onlyRecord;
 @property (strong, nonatomic) NSDictionary *recordsByID; // @synthesize recordsByID=_recordsByID;
 
++ (id)heldRecordsByMerging:(id)arg1 with:(id)arg2;
 - (void).cxx_destruct;
 - (void)enumerateRecordsAndInterestTokensInOrder:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateRecordsAndInterestTokensWithBlock:(CDUnknownBlockType)arg1;
 - (id)heldRecordsPassingTest:(CDUnknownBlockType)arg1;
 - (id)interestTokenForID:(id)arg1;
 - (id)recordWithID:(id)arg1;
+- (id)transformRecordsByIDWithBlock:(CDUnknownBlockType)arg1;
 - (id)transformRecordsInOrder:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)transformRecordsWithBlock:(CDUnknownBlockType)arg1;
 

@@ -62,6 +62,7 @@
 - (id)fc_randomlyMergeWithArray:(id)arg1;
 - (double)fc_reduceArrayWithDouble:(double)arg1 block:(CDUnknownBlockType)arg2;
 - (id)fc_reduceArrayWithInitial:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)fc_rotateElementsFromTheIndexOfSelectedItem:(unsigned long long)arg1;
 - (id)fc_safeSubarrayWithCountFromBack:(unsigned long long)arg1;
 - (id)fc_safeSubarrayWithCountFromFront:(unsigned long long)arg1;
 - (id)fc_setByTransformingWithBlock:(CDUnknownBlockType)arg1;

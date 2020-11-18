@@ -16,6 +16,7 @@
 }
 
 @property (readonly, weak, nonatomic) SKUIApplicationController *applicationController; // @synthesize applicationController=_applicationController;
+@property (readonly, nonatomic) BOOL pageRenderMetricsEnabled;
 
 - (void).cxx_destruct;
 - (id)initWithAppContext:(id)arg1 applicationController:(id)arg2;

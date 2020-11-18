@@ -17,7 +17,6 @@
 - (void)_axApplyAssetToView;
 - (void)assetDidChange;
 - (void)dealloc;
-- (id)view;
 
 @end
 

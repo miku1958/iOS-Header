@@ -30,20 +30,29 @@
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)_supportedNonSecureServices;
++ (id)_supportedSecureServices;
 + (void)archive;
++ (id)bulletinSupportedCharacteristicsForService:(id)arg1;
 + (id)characteristicTupleKeyFromServiceContextID:(id)arg1 currentType:(id)arg2;
 + (void)initializeMapping;
++ (BOOL)isBulletinSupportedForCharacteristicType:(id)arg1 serviceType:(id)arg2;
++ (BOOL)isBulletinSupportedForNonSecureCharacteristicType:(id)arg1 serviceType:(id)arg2;
++ (BOOL)isCriticalNonSecureServiceType:(id)arg1;
++ (BOOL)presentationValueOfCharacteristic:(id)arg1 equalTo:(id)arg2;
 + (id)sharedBulletinBoard;
 + (BOOL)supportsSecureCoding;
 + (id)unarchive;
-+ (BOOL)valueOfCharacteristic:(id)arg1 equalTo:(id)arg2;
 - (void).cxx_destruct;
+- (id)_bulletinWithRecordID:(id)arg1;
 - (BOOL)_hasDuplicateBulletinForCharacteristic:(id)arg1;
 - (id)_insertBulletinWithTitle:(id)arg1 snapshotData:(id)arg2 message:(id)arg3 recordID:(id)arg4 bulletinType:(unsigned long long)arg5 actionURL:(id)arg6 bulletinContext:(struct NSDictionary *)arg7 actionContext:(struct NSDictionary *)arg8;
 - (id)_insertImageBulletinsForChangedCharacteristics:(id)arg1 snapshotData:(id)arg2;
 - (id)_lookupBulletinForCharacteristic:(id)arg1;
 - (void)_removeBulletinsUsingPredicate:(id)arg1;
+- (BOOL)_shouldPostBulletinOnCurrentValueChangeForCharacteristic:(id)arg1;
 - (void)_updateBulletin:(id)arg1;
+- (void)_updateCharacteristicTupleFor:(id)arg1 withCurrentType:(id)arg2 changedByThisDevice:(BOOL)arg3;
 - (void)configureHomeManager:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
@@ -53,9 +62,7 @@
 - (id)insertBulletinForSecureTriggerExecutionPermission:(id)arg1;
 - (void)insertBulletinsForChangedCharacteristics:(id)arg1 changedByThisDevice:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)insertImageBulletinsForChangedCharacteristics:(id)arg1 snapshotData:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (BOOL)isSupportedCharacteristicForBulletin:(id)arg1;
 - (BOOL)isTargetCharacteristic:(id)arg1 matchCurrentCharacteristic:(id)arg2;
-- (BOOL)isTargetValueChangedByThisDevice:(id)arg1;
 - (void)refreshHomeBadgeNumber;
 - (void)refreshHomeConfiguration;
 - (void)reloadDefaultSectionInfo;
@@ -65,8 +72,7 @@
 - (void)removeBulletinsForHome:(id)arg1;
 - (void)removeBulletinsForService:(id)arg1;
 - (void)removeBulletinsForTrigger:(id)arg1;
-- (id)trimMatchedCharacteristics:(id)arg1;
-- (void)updateCharacteristicTupleFor:(id)arg1 withCurrentType:(id)arg2;
+- (id)updateBulletinForFirmwareUpdateInHome:(id)arg1;
 
 @end
 

@@ -6,14 +6,22 @@
 
 #import <Preferences/PSListController.h>
 
-@class ACAccountStore, PSSpecifier;
+#import <PreferencesUI/PSListControllerTestableSpecifiers-Protocol.h>
 
-@interface PSUIPrivacyController : PSListController
+@class ACAccountStore, NSString, PSSpecifier;
+
+@interface PSUIPrivacyController : PSListController <PSListControllerTestableSpecifiers>
 {
     PSSpecifier *_locationSpecifier;
     ACAccountStore *_accountStore;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)booleanCapabilitiesToTest;
 + (void)formatSearchEntries:(id)arg1 parent:(id)arg2;
 - (void).cxx_destruct;
 - (id)_accountStore;

@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) NSString *contentStoreFrontID;
 @property (readonly, nonatomic) NSString *endpointConnectionClientID;
 @property (readonly, nonatomic, getter=iCloudAccountChanged) BOOL iCloudAccountChanged;
+@property (readonly, nonatomic) BOOL isContentStoreFrontSupported;
 @property (readonly, nonatomic, getter=isPrivateDataSyncingEnabled) BOOL privateDataSyncingEnabled;
 @property (readonly, nonatomic) NSString *supportedContentStoreFrontID;
 @property (readonly, nonatomic, getter=isUserSignedInToiCloud) BOOL userSignedInToiCloud;

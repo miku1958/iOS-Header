@@ -20,19 +20,14 @@
 + (id)_filenameForResourceWithItemIdentifier:(id)arg1 resourceType:(unsigned long long)arg2 extension:(id)arg3;
 + (void)_generateImageDerivativeResourcesFromInputResource:(id)arg1 destinationDirectory:(id)arg2 isAdjusted:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (void)_generateVideoDerivativeResourcesFromInputResource:(id)arg1 withCPLAdjustments:(id)arg2 destinationDirectory:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-+ (void)_handleInterruptedMinionConnection;
-+ (void)_handleInvalidatedMinionConnection;
-+ (void)_invalidateMinionConnection;
-+ (id)_resumedMinionConnection;
++ (id)_minionConnection;
 + (void)_sendCommandToRemoteObjectProxy:(CDUnknownBlockType)arg1 withErrorHandler:(CDUnknownBlockType)arg2;
 + (void)_sendRetryNumber:(int)arg1 toRemoteObjectProxyWithCommand:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
 + (void)generateDerivativeResourcesFromInputResource:(id)arg1 withAdjustments:(id)arg2 destinationDirectory:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (void)generatePosterFrameForVideoAtURL:(id)arg1 maximumPixelCount:(long long)arg2 destinationURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (BOOL)isUnsupportedOriginalFormatError:(id)arg1;
-+ (void)resizeImageAtURL:(id)arg1 destinationURL:(id)arg2 maximumPixelCount:(long long)arg3 bakeInOrientation:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
-+ (void)resizeImageAtURL:(id)arg1 destinationURL:(id)arg2 maximumPixelCount:(long long)arg3 bakeInOrientation:(BOOL)arg4 convertToSRGB:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
++ (void)resizeImageAtURL:(id)arg1 destinationURL:(id)arg2 maximumPixelCount:(long long)arg3 bakeInOrientation:(BOOL)arg4 colorOutput:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (long long)status;
-+ (long long)terminate;
 + (void)transcodeVideoAtURL:(id)arg1 withAdjustments:(id)arg2 destinationURL:(id)arg3 presetName:(id)arg4 outputFileType:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 
 @end

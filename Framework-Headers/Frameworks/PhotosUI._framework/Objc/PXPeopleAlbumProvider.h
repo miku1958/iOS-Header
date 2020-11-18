@@ -20,6 +20,7 @@
     NSObject<OS_dispatch_queue> *_isolationQueue;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
     PHPhotoLibrary *_photoLibrary;
+    NSObject<OS_dispatch_queue> *_fetchedContainersIsolationQueue;
     PXPeoplePersonDataSource *_favoriteDS;
     PXPeoplePersonDataSource *_otherDS;
     NSMutableArray *_imageCache;

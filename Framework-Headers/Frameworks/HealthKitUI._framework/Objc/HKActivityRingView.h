@@ -12,12 +12,14 @@
 {
     HKRingsView *_ringsView;
     _HKShapeView *_maskView;
+    BOOL _shouldBypassApplicationStateChecking;
     HKActivitySummary *_activitySummary;
     double _ringInsetPercentage;
 }
 
 @property (strong, nonatomic) HKActivitySummary *activitySummary; // @synthesize activitySummary=_activitySummary;
 @property (nonatomic, getter=_ringInsetPercentage, setter=_setRingInsetPercentage:) double ringInsetPercentage; // @synthesize ringInsetPercentage=_ringInsetPercentage;
+@property (nonatomic, getter=_shouldBypassApplicationStateChecking, setter=_setShouldBypassApplicationStateChecking:) BOOL shouldBypassApplicationStateChecking; // @synthesize shouldBypassApplicationStateChecking=_shouldBypassApplicationStateChecking;
 
 + (id)_iconSpriteImage;
 - (void).cxx_destruct;

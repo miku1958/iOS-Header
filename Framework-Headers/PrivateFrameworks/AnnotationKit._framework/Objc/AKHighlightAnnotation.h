@@ -14,13 +14,11 @@
 {
     unsigned long long _style;
     UIColor *_color;
-    NSString *_contents;
     NSArray *_quadPoints;
 }
 
 @property (weak) AKAnnotation *childAnnotation;
 @property (strong) UIColor *color; // @synthesize color=_color;
-@property (copy) NSString *contents; // @synthesize contents=_contents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

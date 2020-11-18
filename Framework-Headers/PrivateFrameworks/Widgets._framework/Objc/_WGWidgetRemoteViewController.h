@@ -41,6 +41,7 @@
 - (BOOL)_serviceHasScrollToTopView;
 - (void)_setActiveDisplayMode:(long long)arg1 requestIdentifier:(id)arg2;
 - (void)_setMaximumSize:(struct CGSize)arg1 forDisplayMode:(long long)arg2;
+- (void)_updateVisibilityState:(long long)arg1;
 - (void)_viewWillTransitionToSize:(struct CGSize)arg1 requestIdentifier:(id)arg2;
 - (void)dealloc;
 - (id)disconnect;

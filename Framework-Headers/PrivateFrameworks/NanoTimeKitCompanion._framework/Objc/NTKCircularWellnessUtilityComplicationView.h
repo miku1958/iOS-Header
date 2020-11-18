@@ -26,6 +26,7 @@
 - (void)_updateRingColors;
 - (void)applyFaceColor:(unsigned long long)arg1 units:(unsigned long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setForegroundColor:(id)arg1;
 
 @end
 

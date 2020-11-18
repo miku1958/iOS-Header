@@ -26,7 +26,7 @@
     unsigned long long _connectionPriority;
 }
 
-@property (readonly, nonatomic) unsigned long long advertisementFormat; // @synthesize advertisementFormat=_advertisementFormat;
+@property (nonatomic) unsigned long long advertisementFormat; // @synthesize advertisementFormat=_advertisementFormat;
 @property (readonly, nonatomic) NSMapTable *cachedCharacteristicSignatures; // @synthesize cachedCharacteristicSignatures=_cachedCharacteristicSignatures;
 @property (readonly, nonatomic) NSMutableDictionary *cachedDescriptors; // @synthesize cachedDescriptors=_cachedDescriptors;
 @property (readonly, nonatomic) NSMapTable *cachedServiceSignatures; // @synthesize cachedServiceSignatures=_cachedServiceSignatures;

@@ -58,6 +58,7 @@
 - (void)setAnimationFrameInterval:(long long)arg1;
 - (void)setCharacter:(unsigned long long)arg1;
 - (void)setClothingColor:(id)arg1 andDesaturation:(double)arg2;
+- (void)setClothingColor:(id)arg1 andDesaturation:(double)arg2 forCharacter:(unsigned long long)arg3;
 - (void)setOverrideDate:(id)arg1;
 - (void)setOverrideDate:(id)arg1 animated:(BOOL)arg2 enteringOrb:(BOOL)arg3;
 - (void)setOverrideDate:(id)arg1 animated:(BOOL)arg2 enteringOrb:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;

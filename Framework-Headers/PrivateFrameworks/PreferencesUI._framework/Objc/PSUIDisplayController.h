@@ -6,11 +6,12 @@
 
 #import <Preferences/PSListController.h>
 
+#import <PreferencesUI/PSListControllerTestableSpecifiers-Protocol.h>
 #import <PreferencesUI/PSMagnifyControllerDelegate-Protocol.h>
 
-@class CBClient, NSArray, NSDateFormatter, NSDictionary, NSMutableDictionary;
+@class CBClient, NSArray, NSDateFormatter, NSDictionary, NSMutableDictionary, NSString;
 
-@interface PSUIDisplayController : PSListController <PSMagnifyControllerDelegate>
+@interface PSUIDisplayController : PSListController <PSMagnifyControllerDelegate, PSListControllerTestableSpecifiers>
 {
     NSArray *_autoLockValues;
     NSDictionary *_autoLockTitleDictionary;
@@ -19,6 +20,12 @@
     NSDateFormatter *_timeFormatter;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)booleanCapabilitiesToTest;
 - (void).cxx_destruct;
 - (void)_cleanupTransactionRef;
 - (void)_localizeAutoLockTitles;
@@ -51,7 +58,6 @@
 - (void)setScreenLock:(id)arg1 specifier:(id)arg2;
 - (BOOL)shouldShowAutoLock;
 - (BOOL)shouldShowCaseLockOption;
-- (BOOL)shouldShowRaiseToWake;
 - (void)showAlertToDisableAccessibilityFilters:(CDUnknownBlockType)arg1 cancel:(CDUnknownBlockType)arg2;
 - (id)specifiers;
 - (void)updateAutoLockSpecifier;

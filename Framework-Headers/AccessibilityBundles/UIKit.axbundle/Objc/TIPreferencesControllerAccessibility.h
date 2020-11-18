@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)valueForKey:(int)arg1;
+- (id)valueForPreferenceKey:(id)arg1;
 
 @end
 

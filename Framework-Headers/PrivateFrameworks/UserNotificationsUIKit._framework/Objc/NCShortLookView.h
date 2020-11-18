@@ -8,10 +8,11 @@
 
 #import <UserNotificationsUIKit/NCLookView-Protocol.h>
 #import <UserNotificationsUIKit/NCLookViewInternal-Protocol.h>
+#import <UserNotificationsUIKit/_UISettingsKeyObserver-Protocol.h>
 
-@class NCLookHeaderContentView, NSDate, NSString, NSTimeZone, UIButton, UIImage, UIImageView;
+@class NCLookHeaderContentView, NCMaterialSettings, NSDate, NSString, NSTimeZone, UIButton, UIImage, UIImageView;
 
-@interface NCShortLookView : UIView <NCLookViewInternal, NCLookView>
+@interface NCShortLookView : UIView <NCLookViewInternal, _UISettingsKeyObserver, NCLookView>
 {
     UIImageView *_shadowView;
     UIView *_headerContainerView;
@@ -20,6 +21,7 @@
     UIView *_mainContainerView;
     UIView *_mainOverlayView;
     UIView *_customContentView;
+    NCMaterialSettings *_materialSettings;
     BOOL _banner;
     BOOL _backgroundBlurred;
     BOOL _usesBackgroundView;
@@ -31,7 +33,6 @@
 @property (nonatomic, getter=isBackgroundBlurred) BOOL backgroundBlurred; // @synthesize backgroundBlurred=_backgroundBlurred;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (nonatomic, getter=isBanner) BOOL banner; // @synthesize banner=_banner;
-@property (strong, nonatomic) UIView *colorInfusionView;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (readonly, nonatomic) UIView *customContentView; // @synthesize customContentView=_customContentView;
 @property (copy, nonatomic) NSDate *date;
@@ -69,13 +70,16 @@
 - (id)_newDefaultBackgroundView;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
+- (void)dealloc;
 - (BOOL)headerHeedsHorizontalLayoutMargins;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithMaterialSettings:(id)arg1;
 - (BOOL)isHeaderHidden;
 - (void)layoutSubviews;
 - (void)setHeaderHeedsHorizontalLayoutMargins:(BOOL)arg1;
 - (void)setHeaderNeedsLayout;
 - (void)setUtilityView:(id)arg1;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)utilityView;

@@ -13,6 +13,8 @@
 @property (copy, nonatomic, setter=px_setSubtitle:) NSString *px_subtitle;
 @property (readonly, nonatomic, getter=px_isVisible) BOOL px_visible;
 
+- (BOOL)px_canPresentViewControllerAnimated:(BOOL)arg1;
 - (void)px_enumerateDescendantViewControllersWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (BOOL)px_isDescendantOfViewController:(id)arg1;
 @end
 

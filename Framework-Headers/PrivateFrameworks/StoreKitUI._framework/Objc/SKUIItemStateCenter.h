@@ -75,7 +75,7 @@
 - (void)_notifyObserversOfStateChanges:(id)arg1;
 - (void)_pendingRentalAdded:(id)arg1;
 - (void)_pendingRentalRemoved:(id)arg1;
-- (void)_performPurchases:(id)arg1 withClientContext:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)_performPurchases:(id)arg1 hasBundlePurchase:(BOOL)arg2 withClientContext:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)_purchaseHistoryDatabase;
 - (void)_reloadAppUpdatesStore;
 - (void)_reloadDownloadManager;

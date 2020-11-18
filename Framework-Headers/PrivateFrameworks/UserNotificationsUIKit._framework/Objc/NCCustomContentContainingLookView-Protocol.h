@@ -19,5 +19,7 @@
 @property (readonly, nonatomic, getter=_scrollView) UIScrollView *scrollView;
 @property (readonly, nonatomic) struct CGSize sizeExcludingActions;
 
+- (struct CGSize)actionsSizeThatFits:(struct CGSize)arg1;
+- (struct CGRect)scrollViewFrame;
 @end
 

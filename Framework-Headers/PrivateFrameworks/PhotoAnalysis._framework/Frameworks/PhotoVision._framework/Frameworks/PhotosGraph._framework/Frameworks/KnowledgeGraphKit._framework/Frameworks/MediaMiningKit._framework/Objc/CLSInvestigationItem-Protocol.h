@@ -13,6 +13,8 @@
 @property (readonly, nonatomic) double clsContentScore;
 @property (readonly, nonatomic) NSDate *clsDate;
 @property (readonly, nonatomic) NSData *clsDistanceIdentity;
+@property (readonly, nonatomic) BOOL clsIsHDR;
+@property (readonly, nonatomic) BOOL clsIsSDOF;
 @property (readonly, nonatomic) CLLocation *clsLocation;
 @property (readonly, nonatomic) NSArray *clsPeopleNames;
 @property (readonly, nonatomic) long long clsPlayCount;
@@ -22,6 +24,7 @@
 @property (readonly, nonatomic) long long clsViewCount;
 @property (readonly, nonatomic) NSDate *date;
 @property (readonly, nonatomic) NSDateComponents *dateComponents;
+@property (readonly, nonatomic) BOOL isBlurry;
 @property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) BOOL isScreenshot;
 @property (readonly, nonatomic) BOOL isUtility;

@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCNetworkOperation.h>
 
-@class FCCKDatabase, NSArray, NSDictionary, NSError, NSMutableDictionary;
+@class FCCKDatabase, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary;
 
 @interface FCCKFetchRecordZoneChangesOperation : FCNetworkOperation
 {
@@ -15,6 +15,8 @@
     NSArray *_recordZoneIDs;
     NSDictionary *_optionsByRecordZoneID;
     CDUnknownBlockType _finishedBlock;
+    NSMutableArray *_unfinishedRecordZoneIDs;
+    NSMutableDictionary *_unfinishedOptionsByRecordZoneID;
     NSMutableDictionary *_changedRecordsByRecordType;
     NSMutableDictionary *_deletedRecordIDsByRecordType;
     NSMutableDictionary *_recordZoneChangeResultsByRecordZoneID;
@@ -30,12 +32,15 @@
 @property (copy, nonatomic) NSDictionary *optionsByRecordZoneID; // @synthesize optionsByRecordZoneID=_optionsByRecordZoneID;
 @property (strong, nonatomic) NSMutableDictionary *recordZoneChangeResultsByRecordZoneID; // @synthesize recordZoneChangeResultsByRecordZoneID=_recordZoneChangeResultsByRecordZoneID;
 @property (copy, nonatomic) NSArray *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
+@property (strong, nonatomic) NSMutableDictionary *unfinishedOptionsByRecordZoneID; // @synthesize unfinishedOptionsByRecordZoneID=_unfinishedOptionsByRecordZoneID;
+@property (strong, nonatomic) NSMutableArray *unfinishedRecordZoneIDs; // @synthesize unfinishedRecordZoneIDs=_unfinishedRecordZoneIDs;
 
 - (void).cxx_destruct;
 - (void)_fetchRecordZoneChanges;
 - (id)init;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
+- (void)prepareOperation;
 - (void)resetForRetry;
 - (BOOL)validateOperation;
 

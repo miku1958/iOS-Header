@@ -20,7 +20,6 @@
 - (BOOL)_accessibilityCanPerformEscapeAction;
 - (void)_accessibilityCancelMove;
 - (void)_accessibilityCreateNewFolder;
-- (void)_accessibilityDropFromFolderAction:(id)arg1;
 - (BOOL)_accessibilityElementShouldBeInvalid;
 - (BOOL)_accessibilityHasBadge;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

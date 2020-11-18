@@ -44,6 +44,7 @@
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isSubscribable;
 @property (readonly, nonatomic) NSString *name;
+@property (readonly, copy, nonatomic) NSArray *offlineFeedGroupEmitters;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<FCFeedTheming> theme;
 

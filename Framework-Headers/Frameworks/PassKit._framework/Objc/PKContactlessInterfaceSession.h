@@ -49,6 +49,7 @@
 - (void)invalidateSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)queuePersistentCardEmulation;
 - (void)resetExpressState;
+- (BOOL)resetPersistentCardEmulation;
 - (void)setState:(unsigned long long)arg1;
 - (BOOL)stopCardEmulation;
 

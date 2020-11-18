@@ -6,10 +6,12 @@
 
 #import <HealthDaemon/HDDemoDataBaseSampleGenerator.h>
 
-@class HKActivityCache, _HDDemoDataActivityWorkoutState;
+@class HDDataOriginProvenance, HDProfile, HKActivityCache, _HDDemoDataActivityWorkoutState;
 
 @interface HDDemoDataActivitySampleGenerator : HDDemoDataBaseSampleGenerator
 {
+    HDProfile *_profile;
+    HDDataOriginProvenance *_provenance;
     double _nextActiveCaloriesSampleTime;
     double _nextAppleStandHourSampleTime;
     double _nextRestingCaloriesSampleTime;
@@ -37,6 +39,8 @@
 @property (nonatomic) double nextRestingCaloriesSampleTime; // @synthesize nextRestingCaloriesSampleTime=_nextRestingCaloriesSampleTime;
 @property (nonatomic) double nextStepsSampleTime; // @synthesize nextStepsSampleTime=_nextStepsSampleTime;
 @property (nonatomic) double nextUVIndexSampleTime; // @synthesize nextUVIndexSampleTime=_nextUVIndexSampleTime;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property (strong, nonatomic) HDDataOriginProvenance *provenance; // @synthesize provenance=_provenance;
 @property (strong, nonatomic) _HDDemoDataActivityWorkoutState *workoutState; // @synthesize workoutState=_workoutState;
 
 - (void).cxx_destruct;
@@ -65,6 +69,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)restingCaloriesForDemoPerson:(id)arg1 atTime:(double)arg2;
+- (void)setProfile:(id)arg1 provenance:(id)arg2;
 - (void)setupWithDemoDataGenerator:(id)arg1;
 - (id)stepsForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)uvIndexForDemoPerson:(id)arg1 atTime:(double)arg2;

@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <ITMLKit/IKJSDOMDocumentAppBridge-Protocol.h>
+#import <ITMLKit/IKJSDOMDocumentAppBridgeInternal-Protocol.h>
 #import <ITMLKit/IKStyleMediaQueryEvaluator-Protocol.h>
 
 @class IKAppContext, IKDOMDocument, IKHeadElement, IKJSNavigationDocument, IKJSObject, IKViewElement, IKViewElementStyleFactory, NSError, NSHashTable, NSMutableDictionary, NSString;
 @protocol IKAppDocumentDelegate;
 
-@interface IKAppDocument : NSObject <IKJSDOMDocumentAppBridge, IKStyleMediaQueryEvaluator>
+@interface IKAppDocument : NSObject <IKJSDOMDocumentAppBridgeInternal, IKStyleMediaQueryEvaluator>
 {
+    NSMutableDictionary *_mediaQueryCache;
+    BOOL _parsingDOM;
     BOOL _updated;
     BOOL _subtreeUpdated;
     IKAppContext *_appContext;
@@ -57,6 +59,7 @@
 - (void).cxx_destruct;
 - (void)_addStyleChangeObserver:(id)arg1;
 - (BOOL)_clearUpdatesForElement:(id)arg1;
+- (BOOL)_isUpdateAllowed;
 - (void)_removeStyleChangeObserver:(id)arg1;
 - (void)_setViewElementStylesDirty;
 - (void)_updateWithXML:(id)arg1;

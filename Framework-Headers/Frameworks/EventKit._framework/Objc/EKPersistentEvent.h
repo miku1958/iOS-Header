@@ -30,7 +30,6 @@
 @property (nonatomic) unsigned long long invitationStatus;
 @property (nonatomic) long long locationPredictionState;
 @property (readonly, nonatomic, getter=isMeeting) BOOL meeting;
-@property (nonatomic) unsigned int modifiedProperties;
 @property (nonatomic) BOOL needsOccurrenceCacheUpdate;
 @property (copy, nonatomic) NSDate *originalStartDate;
 @property (nonatomic) long long participationStatus;

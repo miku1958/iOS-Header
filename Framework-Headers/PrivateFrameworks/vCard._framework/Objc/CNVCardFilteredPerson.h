@@ -8,13 +8,13 @@
 
 #import <vCard/CNVCardPerson-Protocol.h>
 
-@class NSArray, NSData, NSDateComponents, NSDictionary, NSSet, NSString;
+@class CNVCardFilteredPersonScope, NSArray, NSData, NSDateComponents, NSDictionary, NSString;
 @protocol CNVCardPerson;
 
 @interface CNVCardFilteredPerson : NSObject <CNVCardPerson>
 {
     id<CNVCardPerson> _person;
-    NSSet *_blacklist;
+    CNVCardFilteredPersonScope *_scope;
 }
 
 @property (readonly) NSDictionary *activityAlerts;
@@ -67,10 +67,10 @@
 @property (readonly) NSArray *unknownProperties;
 @property (readonly) NSArray *urls;
 
-+ (id)filteredPersonWithPerson:(id)arg1 blacklistedFields:(id)arg2;
++ (id)filteredPersonWithPerson:(id)arg1 scope:(id)arg2;
 - (void).cxx_destruct;
 - (id)filterItems:(id)arg1 property:(id)arg2;
-- (id)initWithPerson:(id)arg1 blacklistedFields:(id)arg2;
+- (id)initWithPerson:(id)arg1 scope:(id)arg2;
 - (id)jpegImageDataOfAllowableKinds:(id)arg1 maximumLength:(unsigned long long)arg2 cropRects:(id *)arg3;
 - (id)largeImageHashOfType:(id)arg1;
 

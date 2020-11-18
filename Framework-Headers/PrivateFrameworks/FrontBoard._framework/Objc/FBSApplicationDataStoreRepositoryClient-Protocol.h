@@ -23,5 +23,8 @@
 - (void)removePrefetchedKeys:(NSArray *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)setObject:(id)arg1 forKey:(NSString *)arg2 forApplication:(NSString *)arg3 withCompletion:(void (^)(NSError *))arg4;
 - (void)synchronizeWithCompletion:(void (^)(NSError *))arg1;
+
+@optional
+- (id)objectForKey:(NSString *)arg1 forApplication:(NSString *)arg2 checkPrefetch:(BOOL)arg3;
 @end
 

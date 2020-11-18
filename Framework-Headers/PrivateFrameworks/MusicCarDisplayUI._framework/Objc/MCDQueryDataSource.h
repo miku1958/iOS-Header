@@ -6,17 +6,21 @@
 
 #import <MediaPlayerUI/MPUCompletionQueryDataSource.h>
 
-@class MPMediaPredicate;
+@class MPMediaPredicate, NSString;
 
 @interface MCDQueryDataSource : MPUCompletionQueryDataSource
 {
     MPMediaPredicate *_localPredicate;
+    NSString *_albumSortPreferenceValue;
 }
+
+@property (strong, nonatomic) NSString *albumSortPreferenceValue; // @synthesize albumSortPreferenceValue=_albumSortPreferenceValue;
 
 - (void).cxx_destruct;
 - (void)_predicateBehaviorsChangedNotification:(id)arg1;
 - (id)_queryForNowPlayingComparisonAtIndex:(unsigned long long)arg1;
 - (BOOL)_updateQueryPredicatesAndOrdering;
+- (void)_userDefaultsDidChange:(id)arg1;
 - (void)dealloc;
 - (BOOL)entityIsNowPlayingAtIndex:(unsigned long long)arg1;
 - (id)initWithQuery:(id)arg1 entityType:(long long)arg2;

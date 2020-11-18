@@ -8,12 +8,11 @@
 
 #import <NewsCore/FCFeedPaginating-Protocol.h>
 
-@class FCForYouGroupsConfiguration, NSArray, NSString;
+@class FCForYouGroupsConfiguration, NSString;
 
 @interface FCForYouFeedDescriptor : FCMultiTagFeedDescriptor <FCFeedPaginating>
 {
-    NSArray *_unreadSavedStories;
-    long long _trendingAndSavedStoriesCount;
+    unsigned long long _trendingAndSavedStoriesCount;
     FCForYouGroupsConfiguration *_forYouGroupsConfiguration;
 }
 
@@ -22,8 +21,7 @@
 @property (strong, nonatomic) FCForYouGroupsConfiguration *forYouGroupsConfiguration; // @synthesize forYouGroupsConfiguration=_forYouGroupsConfiguration;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic) long long trendingAndSavedStoriesCount; // @synthesize trendingAndSavedStoriesCount=_trendingAndSavedStoriesCount;
-@property (copy, nonatomic) NSArray *unreadSavedStories; // @synthesize unreadSavedStories=_unreadSavedStories;
+@property (nonatomic) unsigned long long trendingAndSavedStoriesCount; // @synthesize trendingAndSavedStoriesCount=_trendingAndSavedStoriesCount;
 
 - (void).cxx_destruct;
 - (id)editionAtDate:(id)arg1;
@@ -35,6 +33,7 @@
 - (id)iAdFeedID;
 - (id)initWithIdentifier:(id)arg1 trendingAndSavedStoriesCount:(long long)arg2 forYouGroupsConfiguration:(id)arg3;
 - (id)name;
+- (id)offlineFeedGroupEmitters;
 
 @end
 

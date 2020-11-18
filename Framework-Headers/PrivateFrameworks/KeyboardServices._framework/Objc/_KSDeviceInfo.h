@@ -24,7 +24,6 @@
 + (id)ksDeviceWithName:(id)arg1 swVersion:(id)arg2;
 + (id)ksDeviceWithName:(id)arg1 swVersion:(id)arg2 needsUpgrade:(BOOL)arg3 incompatible:(BOOL)arg4;
 - (void).cxx_destruct;
-- (BOOL)swVersionIsPostCloudKitSwitch;
 
 @end
 

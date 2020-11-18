@@ -39,7 +39,6 @@
 @property (readonly, copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly) Class superclass;
 
-+ (id)controlBrowser;
 + (id)homeSharingBrowserWithGroupID:(id)arg1;
 - (void).cxx_destruct;
 - (void)_removalTimerFired:(id)arg1;

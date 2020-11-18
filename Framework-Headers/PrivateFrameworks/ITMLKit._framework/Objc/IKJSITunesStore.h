@@ -7,11 +7,13 @@
 #import <ITMLKit/IKJSObject.h>
 
 #import <ITMLKit/IKJSITunesStore-Protocol.h>
-#import <ITMLKit/JSExport-Protocol.h>
+#import <ITMLKit/NSObject-Protocol.h>
+#import <ITMLKit/_IKJSITunesStore-Protocol.h>
+#import <ITMLKit/_IKJSITunesStoreProxy-Protocol.h>
 
 @class ISLoadURLBagOperation, NSDictionary, NSNumber, NSString, SSMetricsController;
 
-@interface IKJSITunesStore : IKJSObject <IKJSITunesStore, JSExport>
+@interface IKJSITunesStore : IKJSObject <NSObject, IKJSITunesStore, _IKJSITunesStoreProxy, _IKJSITunesStore>
 {
     NSNumber *_lastAccountDSID;
     NSDictionary *_lastKnownStatusDictionary;
@@ -29,10 +31,14 @@
 @property (readonly, nonatomic) NSDictionary *accountInfo;
 @property (strong, nonatomic) id cookie;
 @property (strong, nonatomic) NSString *cookieURL; // @synthesize cookieURL=_cookieURL;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID;
 @property (readonly, nonatomic) NSString *networkConnectionType;
 @property (weak, nonatomic) ISLoadURLBagOperation *pendingBagOperation; // @synthesize pendingBagOperation=_pendingBagOperation;
 @property (strong, nonatomic) NSString *storefront;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *userAgent;
 
 + (id)_URLBagContext;
@@ -45,6 +51,7 @@
 - (id)_subscriptionStatusDictionaryWithStatus:(id)arg1 isFinal:(BOOL)arg2;
 - (void)_updateBag:(BOOL)arg1;
 - (void)_updateWithBag:(id)arg1;
+- (id)asPrivateIKJSITunesStore;
 - (void)authenticate:(id)arg1:(id)arg2;
 - (void)clearCookies;
 - (void)dealloc;

@@ -20,6 +20,8 @@
 @property (copy, nonatomic) NSString *currentPeriod;
 @property (copy, nonatomic) NSNumber *expectedLineScoreCount;
 @property (copy, nonatomic) NSString *favoredEntity;
+@property (copy, nonatomic) NSString *gameSummary;
+@property (copy, nonatomic) NSString *gameType;
 @property (strong, nonatomic) SASportsEntity *homeEntity;
 @property (copy, nonatomic) NSArray *homeLineScores;
 @property (copy, nonatomic) NSString *homeScore;

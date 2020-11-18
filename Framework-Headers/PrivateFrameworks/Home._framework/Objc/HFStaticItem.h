@@ -6,9 +6,11 @@
 
 #import <Home/HFItem.h>
 
+#import <Home/NSCopying-Protocol.h>
+
 @class NSDictionary;
 
-@interface HFStaticItem : HFItem
+@interface HFStaticItem : HFItem <NSCopying>
 {
     NSDictionary *_staticResults;
     CDUnknownBlockType _resultsBlock;
@@ -19,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithResults:(id)arg1;
 - (id)initWithResultsBlock:(CDUnknownBlockType)arg1;

@@ -14,17 +14,18 @@
     NSHashTable *_childViewControllersAtViewWillAppearTime;
     NSHashTable *_childViewControllersAtViewWillDisappearTime;
     NSMapTable *_installedChildViewControllersKeyedByCell;
-    NSMutableArray *_tableViewUpdateBlockQueue;
+    NSMutableArray *_tableViewUpdateRequestQueue;
 }
 
 @property (strong, nonatomic) NSHashTable *childViewControllersAtViewWillAppearTime; // @synthesize childViewControllersAtViewWillAppearTime=_childViewControllersAtViewWillAppearTime;
 @property (strong, nonatomic) NSHashTable *childViewControllersAtViewWillDisappearTime; // @synthesize childViewControllersAtViewWillDisappearTime=_childViewControllersAtViewWillDisappearTime;
 @property (strong, nonatomic) NSMapTable *installedChildViewControllersKeyedByCell; // @synthesize installedChildViewControllersKeyedByCell=_installedChildViewControllersKeyedByCell;
 @property (nonatomic) BOOL isUpdatingTableView; // @synthesize isUpdatingTableView=_isUpdatingTableView;
-@property (strong, nonatomic) NSMutableArray *tableViewUpdateBlockQueue; // @synthesize tableViewUpdateBlockQueue=_tableViewUpdateBlockQueue;
+@property (strong, nonatomic) NSMutableArray *tableViewUpdateRequestQueue; // @synthesize tableViewUpdateRequestQueue=_tableViewUpdateRequestQueue;
 
 - (void).cxx_destruct;
 - (void)_performTableViewUpdateBlock:(CDUnknownBlockType)arg1;
+- (void)_performTableViewUpdateWithRequest:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(long long)arg1;

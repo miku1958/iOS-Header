@@ -6,14 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-@class CPBitmapStore, NSSet;
+@class NSSet, TIImageCacheClient;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCache : NSObject
 {
-    CPBitmapStore *_store;
+    TIImageCacheClient *_store;
     NSSet *_layouts;
-    BOOL _isCommitting;
 }
 
 + (BOOL)enabled;
@@ -24,8 +23,6 @@ __attribute__((visibility("hidden")))
 - (void)commitTransaction;
 - (void)dealloc;
 - (id)displayImagesForView:(id)arg1 fromLayout:(id)arg2 imageFlags:(id)arg3;
-- (void)displayView:(id)arg1 fromLayout:(id)arg2;
-- (void)displayView:(id)arg1 imageWidth:(double)arg2 fromLayout:(id)arg3;
 - (void)drawCachedImage:(id)arg1 alpha:(double)arg2 inContext:(struct CGContext *)arg3;
 - (id)init;
 - (id)uniqueLayoutsFromInputModes:(id)arg1;

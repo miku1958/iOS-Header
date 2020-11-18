@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSString, NSUUID;
 
 @interface IMBalloonPluginManager : NSObject
 {
@@ -14,36 +14,48 @@
     id _extensionMatchingContext;
     NSString *_pluginMetaDataFolder;
     NSMutableDictionary *_pluginIDToMetadataCache;
+    NSString *_simulatedConversationID1;
+    NSString *_simulatedConversationID2;
+    NSUUID *_localParticipantID1;
+    NSUUID *_localParticipantID2;
 }
 
 @property (strong, nonatomic) id extensionMatchingContext; // @synthesize extensionMatchingContext=_extensionMatchingContext;
+@property (strong, nonatomic) NSUUID *localParticipantID1; // @synthesize localParticipantID1=_localParticipantID1;
+@property (strong, nonatomic) NSUUID *localParticipantID2; // @synthesize localParticipantID2=_localParticipantID2;
 @property (strong, nonatomic) NSMutableDictionary *pluginIDToMetadataCache; // @synthesize pluginIDToMetadataCache=_pluginIDToMetadataCache;
 @property (strong, nonatomic) NSString *pluginMetaDataFolder; // @synthesize pluginMetaDataFolder=_pluginMetaDataFolder;
 @property (strong, nonatomic) NSMutableDictionary *pluginsMap; // @synthesize pluginsMap=_pluginsMap;
+@property (strong, nonatomic) NSString *simulatedConversationID1; // @synthesize simulatedConversationID1=_simulatedConversationID1;
+@property (strong, nonatomic) NSString *simulatedConversationID2; // @synthesize simulatedConversationID2=_simulatedConversationID2;
 
 + (id)_extensionBlacklist;
 + (BOOL)isRunningPPT;
 + (void)setIsRunningPPT:(BOOL)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)_appProxyBundleIdentifiersForAppPlugins;
 - (void)_clearPluginMetadataForUninstalledApps;
 - (void)_deleteMetaDataForPlugins:(id)arg1;
-- (void)_dropAppPlugins;
 - (id)_fallBackMessagesExtensionPluginForBundleID:(id)arg1;
 - (void)_findPluginsInPathInternal:(id)arg1;
 - (void)_findPluginsInPaths:(id)arg1;
 - (id)_identifiersForAppPlugins;
 - (id)_infoPlistPathForPluginCreatingFolderIfNeeded:(id)arg1;
+- (void)_insertPluginForExtension:(id)arg1 balloonProviderBundle:(id)arg2 andTimingCollection:(id)arg3;
 - (BOOL)_isExtensionBlackListed:(id)arg1;
 - (BOOL)_isServerBlackListedBundle:(id)arg1 serverBag:(id)arg2;
 - (void)_loadAllDataSources;
 - (void)_loadAppExtensionDataSources;
 - (id)_metadataForPluginIdentifier:(id)arg1;
 - (void)_moveExtensionDataSourcesFromMessagesExtensionPluginToAppExtensions;
+- (id)_participantIDForSimulator:(id)arg1;
 - (id)_pluginPlistPath:(id)arg1;
 - (id)_pluginsForWhichWeHaveMetadata;
+- (id)_proxyIdentifiersForPlugins;
+- (void)_removePluginsForIdentifiers:(id)arg1;
 - (void)_storeMetadata:(id)arg1 _forPlugin:(id)arg2;
-- (void)_updatePluginForExtensions:(id)arg1;
+- (void)_updatePluginsForExtensions:(id)arg1;
 - (id)allPlugins;
 - (id)balloonPluginForBundleID:(id)arg1;
 - (id)conversationID:(id)arg1 appID:(id)arg2;
@@ -53,7 +65,7 @@
 - (id)existingDataSourceForMessageGUID:(id)arg1 bundleID:(id)arg2;
 - (id)init;
 - (void)insertDataSource:(id)arg1 forGUID:(id)arg2;
-- (id)localParticipantIdentifierForAppID:(id)arg1;
+- (id)localParticipantIdentifierForAppID:(id)arg1 conversationID:(id)arg2;
 - (void)pluginChatItem:(id)arg1 didRelinquishController:(id)arg2;
 - (id)recipientIDForRecipient:(id)arg1 appID:(id)arg2;
 

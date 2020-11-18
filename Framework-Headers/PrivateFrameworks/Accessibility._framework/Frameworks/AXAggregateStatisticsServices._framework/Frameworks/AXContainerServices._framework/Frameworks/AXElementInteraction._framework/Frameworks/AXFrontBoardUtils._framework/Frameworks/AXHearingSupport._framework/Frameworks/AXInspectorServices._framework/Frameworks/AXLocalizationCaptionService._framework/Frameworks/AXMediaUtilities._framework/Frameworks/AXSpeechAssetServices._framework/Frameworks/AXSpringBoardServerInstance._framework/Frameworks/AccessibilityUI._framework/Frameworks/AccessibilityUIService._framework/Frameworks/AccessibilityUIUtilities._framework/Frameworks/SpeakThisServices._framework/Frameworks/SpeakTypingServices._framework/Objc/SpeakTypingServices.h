@@ -34,6 +34,9 @@
 - (BOOL)notifySpeakServicesToFeedbackQuickTypePrediction:(id)arg1 forCurrentInputMode:(id)arg2;
 - (BOOL)notifySpeakServicesToFeedbackWord:(id)arg1 forCurrentInputMode:(id)arg2;
 - (BOOL)notifySpeakServicesToStopSpeaking;
+- (void)setLetterFeedbackEnabled:(BOOL)arg1;
+- (void)setPhoneticFeedbackEnabled:(BOOL)arg1;
+- (void)setWordFeedbackEnabled:(BOOL)arg1;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <NotificationCenter/_NCWidgetViewController_Service_IPC-Protocol.h>
 
 @class NSMapTable, NSMutableArray, NSObject, NSString, UIScrollViewDelayedTouchesBeganGestureRecognizer, UIView;
-@protocol NCWidgetProviding, OS_dispatch_queue, UIViewControllerAnimatedTransitioning;
+@protocol NCWidgetProvidingPrivate, OS_dispatch_queue, UIViewControllerAnimatedTransitioning;
 
 __attribute__((visibility("hidden")))
 @interface _NCWidgetViewController : UIViewController <_NCWidgetViewController_Service_IPC, SBUISizeObservingViewDelegate>
@@ -28,8 +28,10 @@ __attribute__((visibility("hidden")))
         unsigned int implementsPerformUpdateWithCompletionHandler:1;
         unsigned int implementsMarginInsets:1;
         unsigned int implementsActiveDisplayModeDidChange:1;
+        unsigned int implementsDidBecomeForeground:1;
     } _contentProvidingViewControllerFlags;
-    UIViewController<NCWidgetProviding> *_contentProvidingViewController;
+    UIViewController<NCWidgetProvidingPrivate> *_contentProvidingViewController;
+    long long _visibilityState;
     NSString *_widgetIdentifier;
     NSString *_containerIdentifier;
     NSMapTable *_activeTransitionContextsByRequestID;
@@ -38,12 +40,13 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic, getter=_activeTransitionContextsByRequestID) NSMapTable *activeTransitionContextsByRequestID; // @synthesize activeTransitionContextsByRequestID=_activeTransitionContextsByRequestID;
 @property (copy, nonatomic, getter=_containerIdentifier) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
-@property (strong, nonatomic, getter=_contentProvidingViewController) UIViewController<NCWidgetProviding> *contentProvidingViewController; // @synthesize contentProvidingViewController=_contentProvidingViewController;
+@property (strong, nonatomic, getter=_contentProvidingViewController) UIViewController<NCWidgetProvidingPrivate> *contentProvidingViewController; // @synthesize contentProvidingViewController=_contentProvidingViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=_pendingSizeTransitionUUIDStack) NSMutableArray *pendingSizeTransitionUUIDStack; // @synthesize pendingSizeTransitionUUIDStack=_pendingSizeTransitionUUIDStack;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=_visibilityState, setter=_setVisibilityState:) long long visibilityState; // @synthesize visibilityState=_visibilityState;
 @property (copy, nonatomic, getter=_widgetIdentifier) NSString *widgetIdentifier; // @synthesize widgetIdentifier=_widgetIdentifier;
 
 + (id)_exportedInterface;
@@ -59,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)__requestEncodedLayerTreeToURL:(id)arg1 withReplyHandler:(CDUnknownBlockType)arg2;
 - (void)__setActiveDisplayMode:(long long)arg1 requestIdentifier:(id)arg2;
 - (void)__setMaximumSize:(struct CGSize)arg1 forDisplayMode:(long long)arg2;
+- (void)__updateVisibilityState:(long long)arg1;
 - (void)__viewWillTransitionToSize:(struct CGSize)arg1 requestIdentifier:(id)arg2;
 - (long long)_clientLargestSupportedDisplayMode;
 - (void)_clientLargestSupportedDisplayModeDidChange;
@@ -74,12 +78,14 @@ __attribute__((visibility("hidden")))
 - (void)_enqueueProxyRequest:(CDUnknownBlockType)arg1;
 - (id)_existingTransitionContextForRequestIdentifier:(id)arg1;
 - (void)_performUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_processInputItems:(id)arg1 initialActiveDisplayMode:(long long *)arg2;
 - (void)_requestMarginInsets;
 - (void)_requestPreferredViewHeight:(double)arg1 usingAutolayout:(BOOL)arg2;
 - (void)_requestPreferredViewHeight:(double)arg1 usingAutolayout:(BOOL)arg2 force:(BOOL)arg3;
 - (void)_setActiveDisplayMode:(long long)arg1 requestIdentifier:(id)arg2 force:(BOOL)arg3;
 - (void)_setContentProvidingViewController:(id)arg1;
 - (void)_setMaximumWidth:(double)arg1 forDisplayMode:(long long)arg2;
+- (void)_setVisibilityState:(long long)arg1 force:(BOOL)arg2;
 - (BOOL)_shouldRemoveViewFromHierarchyOnDisappear;
 - (id)_transitionContextForRequestIdentifier:(id)arg1 usingAutolayout:(BOOL)arg2 createIfNecessary:(BOOL)arg3;
 - (id)_widgetExtensionContext;

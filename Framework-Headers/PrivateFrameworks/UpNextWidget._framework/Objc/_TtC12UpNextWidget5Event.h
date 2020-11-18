@@ -20,11 +20,11 @@
 }
 
 @property (nonatomic, strong) struct CGColor *calendarColor; // @synthesize calendarColor;
-@property (nonatomic, strong) NSDate *endDate; // @synthesize endDate;
-@property (nonatomic, strong) NSURL *externalURL; // @synthesize externalURL;
+@property (nonatomic, copy) NSDate *endDate; // @synthesize endDate;
+@property (nonatomic, copy) NSURL *externalURL; // @synthesize externalURL;
 @property (nonatomic, strong) _TtC12UpNextWidget8Location *location; // @synthesize location;
 @property (nonatomic, readonly) NSString *shallowDescription;
-@property (nonatomic, strong) NSDate *startDate; // @synthesize startDate;
+@property (nonatomic, copy) NSDate *startDate; // @synthesize startDate;
 @property (nonatomic, copy) NSString *title; // @synthesize title;
 @property (nonatomic) int transportType; // @synthesize transportType;
 

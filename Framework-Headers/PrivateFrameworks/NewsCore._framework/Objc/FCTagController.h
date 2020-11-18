@@ -38,7 +38,6 @@
 - (id)_cachedTagsForTagIDs:(id)arg1;
 - (void)_fetchTagForTagID:(id)arg1 qualityOfService:(long long)arg2 callbackQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_fetchTagsForTagIDs:(id)arg1 qualityOfService:(long long)arg2 callbackQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (long long)_inferRelativePriorityForQualityOfService:(long long)arg1;
 - (id)cachedTagForID:(id)arg1;
 - (id)cachedTagsForIDs:(id)arg1;
 - (void)fetchChannelsForSearchString:(id)arg1 batchSize:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;

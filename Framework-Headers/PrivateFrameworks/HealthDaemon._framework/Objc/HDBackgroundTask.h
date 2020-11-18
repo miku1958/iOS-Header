@@ -14,7 +14,9 @@
     NSObject<OS_xpc_object> *_job;
 }
 
+@property (nonatomic) BOOL allowsPowerOptimizedScheduling;
 @property (strong, nonatomic) NSDate *endDate;
+@property (nonatomic) BOOL shiftsDatesWithSystemClockChanges;
 @property (strong, nonatomic) NSDate *startDate;
 @property (strong, nonatomic) NSDictionary *userContext;
 

@@ -34,9 +34,10 @@
 
 + (id)_completePersonalizedObjectWithLibraryObject:(id)arg1 personalizationProperties:(id)arg2 overrideLibraryAddedStatus:(long long)arg3;
 + (id)_identifiersByCombiningPersonalizedIdentifiers:(id)arg1 unpersonalizedIdentifiers:(id)arg2;
-+ (id)_lightweightPersonalizationPropertiesForModelClass:(Class)arg1;
-+ (id)_lightweightPersonalizationPropertiesForProperties:(id)arg1 modelObject:(id)arg2 relativeModelObject:(id)arg3;
++ (id)_intersectingLightweightPersonalizationPropertiesForModelClass:(Class)arg1;
++ (id)_intersectingLightweightPersonalizationPropertiesForProperties:(id)arg1 modelObject:(id)arg2 relativeModelObject:(id)arg3;
 + (id)_lightweightPersonalizedObjectWithUnpersonalizedObject:(id)arg1 libraryObject:(id)arg2 personalizationProperties:(id)arg3 overrideLibraryAddedStatus:(long long)arg4;
++ (id)_requiredLightweightPersonalizationPropertiesForModelClass:(Class)arg1;
 - (void).cxx_destruct;
 - (id)_libraryObjectWithRelativeModelClass:(Class)arg1 identifierSet:(id)arg2 propertySet:(id)arg3;
 - (id)indexPathForItemWithIdentifiersIntersectingSet:(id)arg1;

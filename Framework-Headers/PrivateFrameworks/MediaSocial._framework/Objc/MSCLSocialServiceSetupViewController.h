@@ -30,8 +30,6 @@
 
 - (void).cxx_destruct;
 - (void)_accountStoreDidChangeNotification:(id)arg1;
-- (void)_loadFacebookPagesIfNecessary;
-- (void)_setFacebookPages:(id)arg1;
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1 accountStore:(id)arg2;
 - (void)loadView;

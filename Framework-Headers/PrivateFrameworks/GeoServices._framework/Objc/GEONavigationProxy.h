@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEOCompanionRouteDetails, GEOCompanionRouteStatus, GEOComposedRoute, GEOLocation, GEONavigationGuidanceState, GEONavigationRouteSummary, GEONavigationRouteTransitSummary, GEORouteMatch, NSData, NSString, NSXPCConnection;
+@class GEOCompanionRouteDetails, GEOCompanionRouteStatus, GEOComposedRoute, GEOLocation, GEONavigationGuidanceState, GEONavigationRouteSummary, GEONavigationRouteTransitSummary, GEORouteMatch, NSArray, NSData, NSString, NSXPCConnection;
 @protocol GEOServerFormattedStepStringFormatter;
 
 @interface GEONavigationProxy : NSObject
@@ -22,9 +22,8 @@
     GEORouteMatch *_routeMatch;
     BOOL _guidancePromptsEnabled;
     NSData *_activeRouteDetailsData;
+    NSArray *_rideSelections;
     unsigned long long _stepIndex;
-    unsigned long long _rideIndex;
-    unsigned long long _legIndex;
     unsigned long long _displayedStepIndex;
     double _remainingDistance;
     double _remainingTime;
@@ -55,8 +54,8 @@
 - (void)_sendCompanionRouteDetails:(id)arg1 routeStatus:(id)arg2 routeContext:(id)arg3;
 - (void)_sendCompanionRouteStatus;
 - (void)_sendGuidanceState;
+- (void)_sendRideSelections;
 - (void)_sendRouteSummary;
-- (void)_sendSelectedRideOption;
 - (void)_sendStepIndex;
 - (void)_sendTransitSummary;
 - (void)_updateCompanionRouteStatus;
@@ -74,7 +73,6 @@
 - (void)setNextAnnouncementStage:(unsigned long long)arg1 timeUntilNextAnnouncement:(double)arg2;
 - (void)setRemainingDistance:(double)arg1;
 - (void)setRemainingTime:(double)arg1;
-- (void)setRideIndex:(unsigned long long)arg1 forLegIndex:(unsigned long long)arg2;
 - (void)setRoute:(id)arg1;
 - (void)setRouteMatch:(id)arg1;
 - (void)setStepIndex:(unsigned long long)arg1;

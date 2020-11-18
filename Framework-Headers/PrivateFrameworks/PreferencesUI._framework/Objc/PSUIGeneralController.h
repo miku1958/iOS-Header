@@ -8,10 +8,11 @@
 
 #import <PreferencesUI/CRCarPlayPreferencesDelegate-Protocol.h>
 #import <PreferencesUI/DevicePINControllerDelegate-Protocol.h>
+#import <PreferencesUI/PSListControllerTestableSpecifiers-Protocol.h>
 
 @class CRCarPlayPreferences, NSString, NSTimer, PSSpecifier, PSUITVOutManager;
 
-@interface PSUIGeneralController : PSListController <CRCarPlayPreferencesDelegate, DevicePINControllerDelegate>
+@interface PSUIGeneralController : PSListController <CRCarPlayPreferencesDelegate, DevicePINControllerDelegate, PSListControllerTestableSpecifiers>
 {
     NSTimer *_usageTimer;
     PSUITVOutManager *_tvOutManager;
@@ -25,6 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)booleanCapabilitiesToTest;
 - (void).cxx_destruct;
 - (id)EDGEEnabled:(id)arg1;
 - (BOOL)_hasCarPlayContent;

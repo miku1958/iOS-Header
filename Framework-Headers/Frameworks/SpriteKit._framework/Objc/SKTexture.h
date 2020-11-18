@@ -15,6 +15,7 @@
 {
     BOOL _shouldGenerateMipmaps;
     BOOL _didGenerateMipmaps;
+    BOOL _needsExtrusionWorkaround;
     BOOL _isPath;
     BOOL _isData;
     NSString *_imgName;
@@ -51,6 +52,7 @@
 @property (nonatomic) BOOL isFlipped;
 @property (readonly, nonatomic) BOOL isRepeatable; // @synthesize isRepeatable=_isRepeatable;
 @property (nonatomic) BOOL isRotated;
+@property (nonatomic, getter=_needsExtrusionWorkaround) BOOL needsExtrusionWorkaround; // @synthesize needsExtrusionWorkaround=_needsExtrusionWorkaround;
 @property (copy, nonatomic) NSString *originalAtlasName; // @synthesize originalAtlasName=_originalAtlasName;
 @property BOOL performFullCapture; // @synthesize performFullCapture=_performFullCapture;
 @property (readonly, nonatomic) struct CGSize pixelSize;

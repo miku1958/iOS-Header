@@ -25,6 +25,8 @@
 @property (nonatomic) BOOL outputMirrored; // @synthesize outputMirrored=_outputMirrored;
 @property (nonatomic) double outputScale; // @synthesize outputScale=_outputScale;
 
++ (id)constraintsWithAspectFillToSize:(struct CGSize)arg1;
++ (id)constraintsWithAspectFitToSize:(struct CGSize)arg1;
 + (id)constraintsWithFixedHeight:(double)arg1 minAspectRatio:(double)arg2 maxAspectRatio:(double)arg3;
 + (id)constraintsWithFixedLargeDimenstion:(double)arg1 minAspectRatio:(double)arg2 maxAspectRatio:(double)arg3;
 + (id)constraintsWithFixedSize:(struct CGSize)arg1;
@@ -35,6 +37,7 @@
 + (id)constraintsWithMinSize:(struct CGSize)arg1;
 + (id)constraintsWithMinSize:(struct CGSize)arg1 minAspectRatio:(double)arg2 maxAspectRatio:(double)arg3;
 - (id)_flippedConstraints;
+- (struct CGRect)_getDrawRectForImage:(struct CGImage *)arg1 withOutputSize:(struct CGSize)arg2;
 - (BOOL)_getPixelCropRect:(struct CGRect *)arg1 pixelOutputSize:(struct CGSize *)arg2 forImageSize:(struct CGSize)arg3 scale:(double)arg4;
 - (BOOL)_reasonable;
 - (BOOL)getPixelCropRect:(struct CGRect *)arg1 pixelOutputSize:(struct CGSize *)arg2 forImage:(id)arg3;

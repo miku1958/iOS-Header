@@ -149,7 +149,6 @@
 - (BOOL)_subclassImplementsDrawRect;
 - (void)_tabBarFinishedAnimating;
 - (double)_totalDimensionForItems:(id)arg1 spacing:(double)arg2 dimension:(double)arg3 scaleFactor:(double)arg4;
-- (void)_updateBackgroundColorForTraitCollection:(id)arg1;
 - (void)_updateTabBarItemView:(id)arg1;
 - (void)_updateTintedImages:(id)arg1 selected:(BOOL)arg2;
 - (BOOL)_vibrantLabels;

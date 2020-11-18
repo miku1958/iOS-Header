@@ -6,10 +6,17 @@
 
 #import <VideoSubscriberAccount/NSObject-Protocol.h>
 
+@class VSViewModel;
+@protocol VSAuthenticationViewControllerDelegate;
+
 @protocol VSAuthenticationViewController <NSObject>
 
 @property (nonatomic, getter=isCancellationAllowed) BOOL cancellationAllowed;
+@property (weak, nonatomic) id<VSAuthenticationViewControllerDelegate> delegate;
 @property (readonly, nonatomic) struct CGSize preferredLogoSize;
+@property (readonly, nonatomic) VSViewModel *viewModel;
 
+
+@optional
 @end
 

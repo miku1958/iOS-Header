@@ -43,6 +43,7 @@
 @property (readonly, nonatomic) BOOL dbProfiled;
 @property (readonly, nonatomic) long long dbReclaimableSpaceThreshold;
 @property (readonly, nonatomic) BOOL dbTraced;
+@property (readonly, nonatomic) double defaultOnDiskAccessTimeDefaultForEviction;
 @property (readonly, nonatomic) double defaultTimeDeltaForEviction;
 @property (readonly, nonatomic) BOOL destroyiWorkShares;
 @property (readonly, nonatomic) double diskSpaceCheckInterval;
@@ -54,6 +55,7 @@
 @property (readonly, nonatomic) unsigned long long downloadWillRetryProgressMaxCount;
 @property (readonly, nonatomic) NSSet *excludedExtensionsWorthPreserving;
 @property (readonly, nonatomic) NSSet *excludedFilenamesWorthPreserving;
+@property (readonly, nonatomic) NSSet *excludedFilenamesWorthWarningAtLogout;
 @property (readonly, nonatomic) NSSet *extensionsSkippingBundleBitFixup;
 @property (readonly, nonatomic) BOOL forceBatchFailureWhenReceivingAssetTokenExpiration;
 @property (readonly, nonatomic) double forceForegroundGracePeriod;
@@ -98,6 +100,10 @@
 @property (readonly, nonatomic) unsigned long long notifGatherUpTo;
 @property (readonly, nonatomic) unsigned long long notifOverflowLimit;
 @property (readonly, nonatomic) BOOL nsurlsessiondEnabled;
+@property (readonly, nonatomic) double onDiskAccessTimeDeltaInHighUrgency;
+@property (readonly, nonatomic) double onDiskAccessTimeDeltaInLowUrgency;
+@property (readonly, nonatomic) double onDiskAccessTimeDeltaInMedUrgency;
+@property (readonly, nonatomic) double onDiskAccessTimeDeltaInVeryHighUrgency;
 @property (readonly, nonatomic) BOOL onlyTreatCaughtUpAsConsistent;
 @property (readonly, nonatomic) NSDictionary *operationFailureThrottleParams;
 @property (readonly, nonatomic) double packageExtensionPlistWriteInterval;
@@ -124,6 +130,7 @@
 @property (readonly, nonatomic) unsigned long long sharedDbSyncDownCoalesceNanoseconds;
 @property (readonly, nonatomic) double shortcutServicePacerInterval;
 @property (readonly, nonatomic) BOOL shouldAppLibraryBeGreedy;
+@property (readonly, nonatomic) BOOL shouldAutoMigrateToCloudDocs;
 @property (readonly, nonatomic) BOOL shouldDisplayUploadNotification;
 @property (readonly, nonatomic) BOOL shouldFetchAllChanges;
 @property (readonly, nonatomic) BOOL shouldFixupBundleBitOnPackages;
@@ -194,6 +201,7 @@
 - (float)_defaultSyncUpHourlyBudget;
 - (float)_defaultSyncUpMinutelyBudget;
 - (id)_extensionSetForKey:(id)arg1 startingWithExtensions:(id)arg2;
+- (id)_serverDefaultForKey:(id)arg1;
 - (unsigned short)_umaskForKey:(id)arg1;
 - (BOOL)boolForKey:(id)arg1 byDefault:(BOOL)arg2;
 - (BOOL)boolForKey:(id)arg1 inheritFromGlobal:(BOOL)arg2 byDefault:(BOOL)arg3;

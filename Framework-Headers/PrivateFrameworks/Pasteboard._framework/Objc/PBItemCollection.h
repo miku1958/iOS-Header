@@ -14,6 +14,7 @@
 @interface PBItemCollection : NSObject <NSXPCListenerDelegate, NSSecureCoding>
 {
     BOOL _itemQueue_isDataProvider;
+    BOOL _itemQueue_deviceLockedPasteboard;
     NSDate *_creationDate;
     NSXPCListener *_itemQueue_dataConsumersListener;
     NSXPCListenerEndpoint *_itemQueue_remoteDataProviderEndpoint;
@@ -33,6 +34,7 @@
 @property (readonly, nonatomic) NSXPCListenerEndpoint *dataConsumersEndpoint; // @dynamic dataConsumersEndpoint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDeviceLockedPasteboard) BOOL deviceLockedPasteboard; // @dynamic deviceLockedPasteboard;
 @property (strong, nonatomic) NSDate *expirationDate;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDataProvider; // @dynamic isDataProvider;
@@ -40,6 +42,7 @@
 @property (nonatomic) BOOL isRemote;
 @property (strong, nonatomic) NSUUID *itemQueue_UUID; // @synthesize itemQueue_UUID=_itemQueue_UUID;
 @property (strong, nonatomic) NSXPCListener *itemQueue_dataConsumersListener; // @synthesize itemQueue_dataConsumersListener=_itemQueue_dataConsumersListener;
+@property (nonatomic, getter=itemQueue_isDeviceLockedPasteboard) BOOL itemQueue_deviceLockedPasteboard; // @synthesize itemQueue_deviceLockedPasteboard=_itemQueue_deviceLockedPasteboard;
 @property (nonatomic) BOOL itemQueue_isDataProvider; // @synthesize itemQueue_isDataProvider=_itemQueue_isDataProvider;
 @property (copy, nonatomic) NSArray *itemQueue_items; // @synthesize itemQueue_items=_itemQueue_items;
 @property (copy, nonatomic) NSDictionary *itemQueue_metadata; // @synthesize itemQueue_metadata=_itemQueue_metadata;

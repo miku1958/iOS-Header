@@ -18,11 +18,14 @@
 - (oneway void)createOfflineSpeechProfileWithLanguage:(NSString *)arg1 JSONData:(NSData *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
 - (oneway void)deleteAccountWithIdentifier:(NSString *)arg1;
 - (oneway void)disableDESWithCompletion:(void (^)(NSError *))arg1;
+- (oneway void)fetchEventRecordsFromAnalyticsStoreAtPath:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)fetchSiriDisabledAppIDsWithCompletion:(void (^)(NSArray *))arg1;
 - (oneway void)fetchSiriIntegrationEnabledForAppID:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (oneway void)fetchSupportedLanguagesWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (oneway void)getAvailableVoicesIncludingAssetInfo:(BOOL)arg1 completion:(void (^)(NSArray *))arg2;
 - (oneway void)getOfflineDictationStatusWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (oneway void)purgeAnalyticsStoreWithCompletion:(void (^)(NSError *))arg1;
+- (oneway void)resetAnalyticsStoreWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)retrieveAccountMessageDictionariesWithReply:(void (^)(NSArray *))arg1;
 - (oneway void)runAdaptationRecipeEvaluation:(NSDictionary *)arg1 language:(NSString *)arg2 completion:(void (^)(NSArray *, NSArray *))arg3;
 - (oneway void)runLiveAdaptationRecipeEvaluationWithBaseURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;

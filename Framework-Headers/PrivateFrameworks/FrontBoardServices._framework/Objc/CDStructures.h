@@ -29,8 +29,7 @@ struct CGSize {
 
 typedef struct {
     long long type;
-    unsigned long long unitValue;
-    unsigned long long unitCount;
-    unsigned long long residualValue;
-} CDStruct_9964a7bf;
+    unsigned long long value;
+    unsigned long long reserved;
+} CDStruct_4e83c7bf;
 

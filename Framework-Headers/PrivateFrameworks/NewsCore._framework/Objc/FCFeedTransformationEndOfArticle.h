@@ -31,6 +31,7 @@
 - (void).cxx_destruct;
 - (id)transformFeedItems:(id)arg1;
 - (id)transformHeadlines:(id)arg1;
+- (id)transformItems:(id)arg1 isPaidBlock:(CDUnknownBlockType)arg2 sourceChannelIDProvider:(CDUnknownBlockType)arg3;
 
 @end
 

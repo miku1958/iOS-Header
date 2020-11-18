@@ -11,6 +11,7 @@
 @interface DUDefinitionDictionary : NSObject
 {
     struct __DCSDictionary *_dictionary;
+    ASAsset *_assetToUpgrade;
     BOOL _activated;
     BOOL _isAppleDictionary;
     BOOL _isTTYDictionary;
@@ -19,7 +20,7 @@
     NSString *_definitionLanguage;
 }
 
-@property BOOL activated; // @synthesize activated=_activated;
+@property (nonatomic) BOOL activated; // @synthesize activated=_activated;
 @property (readonly) NSString *definitionLanguage; // @synthesize definitionLanguage=_definitionLanguage;
 @property BOOL isAppleDictionary; // @synthesize isAppleDictionary=_isAppleDictionary;
 @property BOOL isTTYDictionary; // @synthesize isTTYDictionary=_isTTYDictionary;
@@ -41,6 +42,7 @@
 - (id)description;
 - (id)initWithAsset:(id)arg1;
 - (id)localizedLanguageName:(BOOL)arg1;
+- (void)setAssetToUpgrade:(id)arg1;
 
 @end
 

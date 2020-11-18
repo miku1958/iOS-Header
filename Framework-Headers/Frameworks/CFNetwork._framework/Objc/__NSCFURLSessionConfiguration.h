@@ -69,8 +69,11 @@ __attribute__((visibility("hidden")))
     NSString *_CTDataConnectionServiceType;
     BOOL _allowsTCPFastOpen;
     BOOL _allowsTLSSessionTickets;
+    BOOL _allowsTLSSessionResumption;
     BOOL _preventsDirectWiFiAccess;
     BOOL _allowTCPIOConnectionStreamTask;
+    unsigned long long _customReadBufferSize;
+    double _customReadBufferTimeout;
     BOOL _backgroundSession;
     NSString *_disposition;
     NSURLCredentialStorage *_phskip_credStorage;
@@ -130,6 +133,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_allowsResponseMonitoringDuringBodyTranmission;
 - (BOOL)_allowsRetryForBackgroundDataTasks;
 - (BOOL)_allowsTCPFastOpen;
+- (BOOL)_allowsTLSSessionResumption;
 - (BOOL)_allowsTLSSessionTickets;
 - (id)_appleIDContext;
 - (id)_atsContext;
@@ -142,6 +146,8 @@ __attribute__((visibility("hidden")))
 - (id)_contentDispHeadEncFallback;
 - (void *)_copyAttribute:(struct __CFString *)arg1;
 - (struct OpaqueCFHTTPCookieStorage *)_copyCFCookieStorage;
+- (unsigned long long)_customReadBufferSize;
+- (double)_customReadBufferTimeout;
 - (id)_directoryForDownloadedFiles;
 - (BOOL)_disablesOutOfProcessDirectWiFiUsage;
 - (BOOL)_disablesUseOfProxySession;
@@ -251,6 +257,7 @@ __attribute__((visibility("hidden")))
 - (void)set_allowsResponseMonitoringDuringBodyTranmission:(BOOL)arg1;
 - (void)set_allowsRetryForBackgroundDataTasks:(BOOL)arg1;
 - (void)set_allowsTCPFastOpen:(BOOL)arg1;
+- (void)set_allowsTLSSessionResumption:(BOOL)arg1;
 - (void)set_allowsTLSSessionTickets:(BOOL)arg1;
 - (void)set_appleIDContext:(id)arg1;
 - (void)set_atsContext:(id)arg1;
@@ -261,6 +268,8 @@ __attribute__((visibility("hidden")))
 - (void)set_connectionCachePurgeTimeout:(double)arg1;
 - (void)set_connectionPoolName:(id)arg1;
 - (void)set_contentDispHeadEncFallback:(id)arg1;
+- (void)set_customReadBufferSize:(unsigned long long)arg1;
+- (void)set_customReadBufferTimeout:(double)arg1;
 - (void)set_directoryForDownloadedFiles:(id)arg1;
 - (void)set_disablesOutOfProcessDirectWiFiUsage:(BOOL)arg1;
 - (void)set_disablesUseOfProxySession:(BOOL)arg1;

@@ -13,8 +13,11 @@
 @interface CLSTestInvestigationItem : NSObject <CLSInvestigationItem>
 {
     BOOL _isUtility;
+    BOOL _isBlurry;
     BOOL _isScreenshot;
     BOOL _isFavorite;
+    BOOL _clsIsSDOF;
+    BOOL _clsIsHDR;
     NSDate *_clsDate;
     CLLocation *_clsLocation;
     NSArray *_clsPeopleNames;
@@ -30,6 +33,8 @@
 @property (readonly, nonatomic) double clsContentScore; // @synthesize clsContentScore=_clsContentScore;
 @property (strong, nonatomic) NSDate *clsDate; // @synthesize clsDate=_clsDate;
 @property (readonly, nonatomic) NSData *clsDistanceIdentity; // @synthesize clsDistanceIdentity=_clsDistanceIdentity;
+@property (readonly, nonatomic) BOOL clsIsHDR; // @synthesize clsIsHDR=_clsIsHDR;
+@property (readonly, nonatomic) BOOL clsIsSDOF; // @synthesize clsIsSDOF=_clsIsSDOF;
 @property (strong, nonatomic) CLLocation *clsLocation; // @synthesize clsLocation=_clsLocation;
 @property (strong, nonatomic) NSArray *clsPeopleNames; // @synthesize clsPeopleNames=_clsPeopleNames;
 @property (readonly, nonatomic) long long clsPlayCount; // @synthesize clsPlayCount=_clsPlayCount;
@@ -42,6 +47,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isBlurry; // @synthesize isBlurry=_isBlurry;
 @property (readonly, nonatomic) BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
 @property (readonly, nonatomic) BOOL isScreenshot; // @synthesize isScreenshot=_isScreenshot;
 @property (readonly, nonatomic) BOOL isUtility; // @synthesize isUtility=_isUtility;

@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setWidgetLargestAvailableDisplayMode:(long long)arg1;
 - (long long)widgetActiveDisplayMode;
+- (BOOL)widgetIsForeground;
 - (long long)widgetLargestAvailableDisplayMode;
 - (struct CGSize)widgetMaximumSizeForDisplayMode:(long long)arg1;
 

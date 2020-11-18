@@ -18,7 +18,6 @@
 - (BOOL)_axIsCloseButton;
 - (BOOL)_axIsPostButtonInConnect;
 - (BOOL)_axIsShareButtonInConnect;
-- (BOOL)_axIsStyledButtonInConnectTab;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

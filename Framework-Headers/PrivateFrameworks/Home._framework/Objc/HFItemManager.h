@@ -11,14 +11,16 @@
 #import <Home/HFHomeManagerObserver-Protocol.h>
 #import <Home/HFHomeObserver-Protocol.h>
 #import <Home/HFResidentDeviceObserver-Protocol.h>
+#import <Home/HFStateDumpSerializable-Protocol.h>
 #import <Home/HFTemperatureUnitObserver-Protocol.h>
 
-@class HFItem, HMHome, NAFuture, NSArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class HFItem, HFItemManagerBatchedDelegateAdapter, HMHome, NAFuture, NSArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol HFItemManagerDelegate;
 
-@interface HFItemManager : NSObject <HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFTemperatureUnitObserver>
+@interface HFItemManager : NSObject <HFStateDumpSerializable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFTemperatureUnitObserver>
 {
     BOOL _isRunningFastInitialUpdate;
+    BOOL _hasCreatedItemProviders;
     id<HFItemManagerDelegate> _delegate;
     HFItem *_sourceItem;
     HMHome *_home;
@@ -29,18 +31,26 @@
     NSMutableDictionary *_suppressedCharacteristicUpdatesByReason;
     NAFuture *_firstFullUpdateFuture;
     NSMutableSet *_disableUpdateReasons;
+    HFItemManagerBatchedDelegateAdapter *_batchedDelegateAdapterAllowingReads;
+    HFItemManagerBatchedDelegateAdapter *_batchedDelegateAdapterDisallowingReads;
 }
 
 @property (readonly, nonatomic) NSSet *allDisplayedItems;
 @property (readonly, nonatomic) NSSet *allItems;
+@property (strong, nonatomic) HFItemManagerBatchedDelegateAdapter *batchedDelegateAdapterAllowingReads; // @synthesize batchedDelegateAdapterAllowingReads=_batchedDelegateAdapterAllowingReads;
+@property (strong, nonatomic) HFItemManagerBatchedDelegateAdapter *batchedDelegateAdapterDisallowingReads; // @synthesize batchedDelegateAdapterDisallowingReads=_batchedDelegateAdapterDisallowingReads;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HFItemManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSMutableSet *disableUpdateReasons; // @synthesize disableUpdateReasons=_disableUpdateReasons;
 @property (readonly, nonatomic) NAFuture *firstFastUpdateFuture; // @synthesize firstFastUpdateFuture=_firstFastUpdateFuture;
 @property (readonly, nonatomic) NAFuture *firstFullUpdateFuture; // @synthesize firstFullUpdateFuture=_firstFullUpdateFuture;
+@property (nonatomic, getter=_hasCreatedItemProviders, setter=_setHasCreatedItemProviders:) BOOL hasCreatedItemProviders; // @synthesize hasCreatedItemProviders=_hasCreatedItemProviders;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
@@ -49,6 +59,7 @@
 @property (nonatomic) unsigned long long overallLoadingState; // @synthesize overallLoadingState=_overallLoadingState;
 @property (strong, nonatomic) NSArray *sectionInfos; // @synthesize sectionInfos=_sectionInfos;
 @property (strong, nonatomic) HFItem *sourceItem; // @synthesize sourceItem=_sourceItem;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableDictionary *suppressedCharacteristicUpdatesByReason; // @synthesize suppressedCharacteristicUpdatesByReason=_suppressedCharacteristicUpdatesByReason;
@@ -66,6 +77,10 @@
 - (id)_cameraForCameraStream:(id)arg1;
 - (CDUnknownBlockType)_comparatorForSectionIdentifier:(id)arg1;
 - (void)_createItemProvidersWithHome:(id)arg1;
+- (id)_debug_itemDescriptions;
+- (id)_debug_itemManagerDescription;
+- (id)_debug_itemProviderDescriptions;
+- (void)_debug_registerForStateDump;
 - (id)_dependentHomeKitObjectsOfClass:(Class)arg1 inHomeKitObjects:(id)arg2;
 - (void)_didFinishUpdateTransactionWithAffectedItems:(id)arg1;
 - (void)_didUpdateResultsForItem:(id)arg1;
@@ -102,12 +117,10 @@
 - (BOOL)_notifyDelegateOfMoveIfNeededForItem:(id)arg1 oldDisplayedItemArray:(id)arg2 updatedDisplayedItemArray:(id)arg3 addedItems:(id)arg4 removedItems:(id)arg5 logger:(id)arg6;
 - (unsigned long long)_numberOfSections;
 - (id)_performUpdateForItem:(id)arg1 isInternal:(BOOL)arg2 logger:(id)arg3 options:(id)arg4;
-- (CDUnknownBlockType)_readValidatorAllowingNoReads;
 - (void)_registerForExternalUpdates;
 - (id)_reloadAllItemProvidersFromSenderSelector:(SEL)arg1;
 - (id)_reloadAndUpdateItemsForProviders:(id)arg1 updateItems:(id)arg2 senderSelector:(SEL)arg3;
 - (id)_reloadItemProviders:(id)arg1 updateItems:(id)arg2 shouldUpdateExistingItems:(BOOL)arg3 senderSelector:(SEL)arg4 readValidator:(CDUnknownBlockType)arg5;
-- (id)_reloadItemProvidersWithInvalidationReasons:(id)arg1 updateItems:(id)arg2 senderSelector:(SEL)arg3 updatedHome:(id)arg4 readValidator:(CDUnknownBlockType)arg5;
 - (void)_removeDelegateNotifications;
 - (BOOL)_requiresNotificationsForCharacteristic:(id)arg1;
 - (unsigned long long)_sectionForItem:(id)arg1;
@@ -138,8 +151,12 @@
 - (void)_willUpdateSections;
 - (void)accessory:(id)arg1 didUpdateApplicationDataForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateAssociatedServiceTypeForService:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateBundleID:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateFirmwareUpdateAvailable:(BOOL)arg2;
+- (void)accessory:(id)arg1 didUpdateFirmwareVersion:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateHasAuthorizationDataForCharacteristic:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateNameForService:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateStoreID:(id)arg2;
 - (void)accessory:(id)arg1 service:(id)arg2 didUpdateValueForCharacteristic:(id)arg3;
 - (void)accessoryDidUpdateAdditionalSetupRequired:(id)arg1;
 - (void)accessoryDidUpdateApplicationData:(id)arg1;
@@ -161,6 +178,7 @@
 - (void)endDisableExternalUpdatesWithReason:(id)arg1;
 - (void)endSuppressingUpdatesForCharacteristicsWithReason:(id)arg1 updateAffectedItems:(BOOL)arg2;
 - (id)footerTitleForSection:(unsigned long long)arg1;
+- (id)hf_serializedStateDumpRepresentation;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
 - (void)home:(id)arg1 didAddActionSet:(id)arg2;
 - (void)home:(id)arg1 didAddResidentDevice:(id)arg2;
@@ -211,10 +229,12 @@
 - (void)homeManager:(id)arg1 didRemoveHome:(id)arg2;
 - (void)homeManager:(id)arg1 didUpdateStateForIncomingInvitations:(id)arg2;
 - (void)homeManager:(id)arg1 residentProvisioningStatusChanged:(unsigned long long)arg2;
+- (void)homeManagerDidEndBatchNotifications:(id)arg1;
 - (void)homeManagerDidFinishInitialDatabaseLoad:(id)arg1;
 - (void)homeManagerDidFinishUnknownChange:(id)arg1;
 - (void)homeManagerDidUpdateCurrentHome:(id)arg1;
 - (void)homeManagerDidUpdatePrimaryHome:(id)arg1;
+- (void)homeManagerWillStartBatchNotifications:(id)arg1;
 - (id)indexPathForItem:(id)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;

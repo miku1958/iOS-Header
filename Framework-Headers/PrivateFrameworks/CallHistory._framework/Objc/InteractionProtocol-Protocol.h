@@ -9,8 +9,8 @@
 @class CHRecentCall, NSArray, NSString;
 
 @protocol InteractionProtocol <NSObject>
-+ (void)deleteInteractionWithCall:(NSString *)arg1;
-+ (void)deleteInteractionWithCalls:(NSArray *)arg1;
-+ (void)donateCallHistoryInteractionWithCall:(CHRecentCall *)arg1;
+- (void)deleteInteractionWithCall:(NSString *)arg1;
+- (void)deleteInteractionWithCalls:(NSArray *)arg1;
+- (void)donateCallHistoryInteractionWithCall:(CHRecentCall *)arg1;
 @end
 

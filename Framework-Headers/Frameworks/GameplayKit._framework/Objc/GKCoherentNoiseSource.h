@@ -19,7 +19,8 @@
 @property (nonatomic) long long octaveCount; // @synthesize octaveCount=_octaveCount;
 @property (nonatomic) int seed; // @synthesize seed=_seed;
 
-- (struct Module *)__newModule;
+- (id)cloneModule;
+- (double)valueAt: /* Error: Ran out of types for this method. */;
 
 @end
 

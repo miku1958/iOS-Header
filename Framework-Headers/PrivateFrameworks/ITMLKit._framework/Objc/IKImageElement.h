@@ -6,32 +6,42 @@
 
 #import <ITMLKit/IKViewElement.h>
 
-@class NSDictionary, NSURL, UIColor;
+#import <ITMLKit/IKAppDocumentStyleChangeObserving-Protocol.h>
 
-@interface IKImageElement : IKViewElement
+@class NSArray, NSDictionary, NSString, NSURL, UIColor;
+
+@interface IKImageElement : IKViewElement <IKAppDocumentStyleChangeObserving>
 {
     double _srcWidth;
     double _srcHeight;
     NSDictionary *_srcset;
     unsigned long long _imageType;
-    NSURL *_defaultURL;
+    NSURL *_resolvedURL;
+    NSArray *_srcsetRules;
 }
 
 @property (readonly, nonatomic) UIColor *borderColor;
-@property (strong, nonatomic) NSURL *defaultURL; // @synthesize defaultURL=_defaultURL;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long fill;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double height;
 @property (readonly, nonatomic) unsigned long long imageType; // @synthesize imageType=_imageType;
 @property (readonly, strong, nonatomic) NSURL *placeholderURL;
 @property (readonly, nonatomic) unsigned long long position;
 @property (readonly, nonatomic) long long reflect;
+@property (strong, nonatomic) NSURL *resolvedURL; // @synthesize resolvedURL=_resolvedURL;
 @property (readonly, strong, nonatomic) NSDictionary *srcset; // @synthesize srcset=_srcset;
+@property (strong, nonatomic) NSArray *srcsetRules; // @synthesize srcsetRules=_srcsetRules;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *url;
 @property (readonly, nonatomic) double width;
 
 + (BOOL)shouldParseChildDOMElements;
 - (void).cxx_destruct;
 - (unsigned long long)_imageTypeForTagName:(id)arg1;
+- (void)_parseSrcset:(id)arg1;
+- (void)appDocumentDidMarkStylesDirty;
 - (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;
 
 @end

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     CUIRenditionKey *_key;
     NSString *_signature;
     unsigned long long _storageRef;
+    unsigned int _distilledInVersion;
     unsigned int _odContent:1;
 }
 
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL representsOnDemandContent;
 
 - (BOOL)_cacheRenditionProperties;
+- (unsigned int)_distilledInVersion;
 - (id)_rendition;
 - (id)_renditionForSpecificKey:(id)arg1;
 - (void)dealloc;

@@ -12,13 +12,14 @@
 #import <HealthDaemon/NSXPCListenerDelegate-Protocol.h>
 
 @class HDAWDSubmissionManager, HDAchievementAssetManager, HDAchievementDefinitionAlertManager, HDAchievementDoctorManager, HDAppLauncher, HDAppSubscriptionManager, HDAuthorizationManager, HDBackgroundTaskScheduler, HDCoachingDiagnosticManager, HDCompanionWorkoutCreditManager, HDContentProtectionManager, HDCurrentActivitySummaryHelper, HDDataProvenanceManager, HDDatabase, HDDemoDataGenerator, HDDeviceManager, HDFitnessAppBadgeManager, HDFitnessFriendsManager, HDHealthServiceManager, HDNanoSyncManager, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDRoutineGateway, HDServiceConnectionManager, HDUserCharacteristicsManager, NSMutableArray, NSMutableSet, NSString, NSURL, NSXPCListener, _HKBehavior;
-@protocol HDAchievementDefinitionAlertNotifier, HDDaemonTester, HDHealthDatabase, HDNanoAlertSuppressionService, HDViewOnWakeService, OS_dispatch_queue;
+@protocol HDAchievementDefinitionAlertNotifier, HDAchievementDefinitionAlertSuppressor, HDDaemonTester, HDHealthDatabase, HDNanoAlertSuppressionService, HDViewOnWakeService, OS_dispatch_queue;
 
 @interface HDDaemon : NSObject <HDDataCollectionManagerDelegate, HDDiagnosticObject, NSXPCListenerDelegate, HDHealthDaemon>
 {
     NSString *_homeDirectoryPath;
     NSMutableSet *_endpoints;
     NSObject<OS_dispatch_queue> *_mainQueue;
+    int _languageChangeNotifyToken;
     HDContentProtectionManager *_contentProtectionManager;
     HDUserCharacteristicsManager *_userCharacteristicsManager;
     HDBackgroundTaskScheduler *_backgroundTaskScheduler;
@@ -26,6 +27,8 @@
     HDPluginManager *_pluginManager;
     HDAWDSubmissionManager *_awdSubmissionManager;
     HDAchievementDoctorManager *_achievementDoctorManager;
+    HDAchievementDefinitionAlertManager *_achievementDefinitionAlertManager;
+    id<HDAchievementDefinitionAlertSuppressor> _achievementDefinitionAlertSuppressor;
     id<HDAchievementDefinitionAlertNotifier> _achievementDefinitionAlertNotifier;
     HDFitnessFriendsManager *_fitnessFriendsManager;
     HDRoutineGateway *_routineGateway;
@@ -49,7 +52,6 @@
     HDNanoSyncManager *_nanoSyncManager;
     id<HDViewOnWakeService> _viewOnWakeService;
     HDCoachingDiagnosticManager *_coachingDiagnosticManager;
-    HDAchievementDefinitionAlertManager *_achievementDefinitionAlertManager;
     HDFitnessAppBadgeManager *_fitnessAppBadgeManager;
     HDCurrentActivitySummaryHelper *_currentActivitySummaryHelper;
     id<HDNanoAlertSuppressionService> _alertSuppressionService;
@@ -102,7 +104,7 @@
 - (id)IDSServiceWithIdentifier:(id)arg1;
 - (void)_applyPPTUpdatesWithDatabase:(id)arg1;
 - (void)_handleSigterm;
-- (void)_localeChanged:(id)arg1;
+- (void)_localeOrLanguageChanged:(id)arg1;
 - (BOOL)_motionTrackingAvailable;
 - (id)_newAWDSubmissionManager;
 - (id)_newBehavior;

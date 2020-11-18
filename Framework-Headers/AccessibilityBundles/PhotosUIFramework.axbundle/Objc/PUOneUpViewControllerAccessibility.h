@@ -17,6 +17,7 @@
 - (BOOL)_axDetailsVisible;
 - (void)_setAXDetailsVisible:(BOOL)arg1;
 - (void)_toggleDetailsVisibility;
+- (BOOL)accessibilityScroll:(long long)arg1;
 
 @end
 

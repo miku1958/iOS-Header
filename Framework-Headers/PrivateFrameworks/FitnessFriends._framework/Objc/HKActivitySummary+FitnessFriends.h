@@ -8,6 +8,8 @@
 
 @interface HKActivitySummary (FitnessFriends)
 - (id)_activeEnergyStringWithFont:(id)arg1 smallCapsFont:(id)arg2 color:(id)arg3;
+- (BOOL)_isEmptyExerciseSummary;
+- (BOOL)_isEmptyMoveSummary;
 - (id)ff_activeEnergyProgressStringWithContext:(id)arg1;
 - (id)ff_activeEnergyStringWithContext:(id)arg1;
 - (id)ff_distanceStringWithContext:(id)arg1;

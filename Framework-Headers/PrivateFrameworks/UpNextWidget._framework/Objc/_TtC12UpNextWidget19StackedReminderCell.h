@@ -13,7 +13,7 @@
     MISSING_TYPE *externalURL;
 }
 
-@property (nonatomic, strong) NSURL *externalURL; // @synthesize externalURL;
+@property (nonatomic, copy) NSURL *externalURL; // @synthesize externalURL;
 
 - (CDUnknownBlockType).cxx_destruct;
 - (id)initWithCoder:(id)arg1;

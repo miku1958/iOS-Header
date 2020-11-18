@@ -30,6 +30,7 @@
 @property (strong, nonatomic) AVCVirtualTTYDevice *ttyDevice; // @synthesize ttyDevice=_ttyDevice;
 
 - (void).cxx_destruct;
+- (void)audioSessionWasInterrupted:(id)arg1;
 - (void)dealloc;
 - (void)device:(id)arg1 didReceiveCharacter:(unsigned short)arg2;
 - (void)device:(id)arg1 didStart:(BOOL)arg2 error:(id)arg3;

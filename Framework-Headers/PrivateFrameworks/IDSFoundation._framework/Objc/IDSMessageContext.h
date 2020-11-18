@@ -22,6 +22,7 @@
 @property (nonatomic) long long connectionType;
 @property (nonatomic) BOOL expectsPeerResponse;
 @property (copy, nonatomic) NSString *fromID;
+@property (nonatomic) BOOL fromServerStorage;
 @property (copy, nonatomic) NSString *incomingResponseIdentifier;
 @property (nonatomic) NSNumber *originalCommand;
 @property (copy, nonatomic) NSString *originalDestinationDevice;

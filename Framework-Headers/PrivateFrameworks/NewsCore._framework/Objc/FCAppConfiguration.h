@@ -17,6 +17,7 @@
     BOOL _alternativeWidgetConfigEnabled;
     NSArray *_trendingTopics;
     FCCoverArticlesConfiguration *_coverArticlesConfig;
+    NSString *_forYouRecordConfigID;
     NSString *_embedConfigurationAssetID;
     NTPBWidgetConfig *_widgetConfiguration;
     NTPBWidgetConfig *_alternativeWidgetConfiguration;
@@ -52,6 +53,10 @@
     long long _notificationArticleCacheTimeout;
     long long _notificationArticleWithRapidUpdatesCacheTimeout;
     long long _notificationEnabledChannelsRefreshFrequency;
+    long long _savedArticlesMaximumCountWiFi;
+    long long _savedArticlesMaximumCountCellular;
+    long long _savedArticlesCutoffTime;
+    long long _savedArticlesOpenedCutoffTime;
     NSDictionary *_endpointConfigsByEnvironment;
     NTPBPersonalizationConfig *_personalizationConfig;
     NSDictionary *_personalizationTreatments;
@@ -59,6 +64,7 @@
     FCPrefetchConfiguration *_prefetchConfig;
     FCTopStoriesConfiguration *_topStoriesConfig;
     NSString *_editorialChannelID;
+    NSString *_briefingsTagID;
     FCNotificationsConfiguration *_notificationsConfig;
     id<FCContentContext> _context;
     NSHashTable *_observers;
@@ -68,15 +74,28 @@
     NSString *_defaultStoreFrontID;
     NSSet *_preferredLanguages;
     FCForYouGroupsConfiguration *_forYouGroupsConfiguration;
+    double _articleDiversificationSimilarityExpectationStart;
+    double _articleDiversificationSimilarityExpectationEnd;
+    double _articleDiversificationUniquePublisherExpectationSlope;
+    double _articleDiversificationUniquePublisherExpectationYIntercept;
+    long long _maximumPaidSubscriptionGroupSize;
+    long long _maximumTimesHeadlineInPaidSubscriptionGroup;
+    long long _expiredPaidSubscriptionGroupCutoffTime;
+    long long _maximumNumberOfExpiredPaidSubscriptionGroups;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property (nonatomic, getter=isAlternativeWidgetConfigEnabled) BOOL alternativeWidgetConfigEnabled; // @synthesize alternativeWidgetConfigEnabled=_alternativeWidgetConfigEnabled;
 @property (readonly, copy, nonatomic) NTPBWidgetConfig *alternativeWidgetConfiguration; // @synthesize alternativeWidgetConfiguration=_alternativeWidgetConfiguration;
 @property (nonatomic) long long appConfigRefreshRate; // @synthesize appConfigRefreshRate=_appConfigRefreshRate;
+@property (nonatomic) double articleDiversificationSimilarityExpectationEnd; // @synthesize articleDiversificationSimilarityExpectationEnd=_articleDiversificationSimilarityExpectationEnd;
+@property (nonatomic) double articleDiversificationSimilarityExpectationStart; // @synthesize articleDiversificationSimilarityExpectationStart=_articleDiversificationSimilarityExpectationStart;
+@property (nonatomic) double articleDiversificationUniquePublisherExpectationSlope; // @synthesize articleDiversificationUniquePublisherExpectationSlope=_articleDiversificationUniquePublisherExpectationSlope;
+@property (nonatomic) double articleDiversificationUniquePublisherExpectationYIntercept; // @synthesize articleDiversificationUniquePublisherExpectationYIntercept=_articleDiversificationUniquePublisherExpectationYIntercept;
 @property (nonatomic) long long articleRapidUpdatesTimeout; // @synthesize articleRapidUpdatesTimeout=_articleRapidUpdatesTimeout;
 @property (nonatomic) long long autoScrollToTopFeedTimeout; // @synthesize autoScrollToTopFeedTimeout=_autoScrollToTopFeedTimeout;
 @property (nonatomic) double batchedFeedTimeout; // @synthesize batchedFeedTimeout=_batchedFeedTimeout;
+@property (strong, nonatomic) NSString *briefingsTagID; // @synthesize briefingsTagID=_briefingsTagID;
 @property (strong, nonatomic) FCResource *configurationResource; // @synthesize configurationResource=_configurationResource;
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
 @property (readonly, nonatomic) FCCoverArticlesConfiguration *coverArticlesConfig; // @synthesize coverArticlesConfig=_coverArticlesConfig;
@@ -86,7 +105,9 @@
 @property (nonatomic) long long endOfArticleMaxInaccessiblePaidArticleCount; // @synthesize endOfArticleMaxInaccessiblePaidArticleCount=_endOfArticleMaxInaccessiblePaidArticleCount;
 @property (nonatomic) double endOfArticleMinPaidHeadlineRatio; // @synthesize endOfArticleMinPaidHeadlineRatio=_endOfArticleMinPaidHeadlineRatio;
 @property (strong, nonatomic) NSDictionary *endpointConfigsByEnvironment; // @synthesize endpointConfigsByEnvironment=_endpointConfigsByEnvironment;
+@property (nonatomic) long long expiredPaidSubscriptionGroupCutoffTime; // @synthesize expiredPaidSubscriptionGroupCutoffTime=_expiredPaidSubscriptionGroupCutoffTime;
 @property (strong, nonatomic) FCForYouGroupsConfiguration *forYouGroupsConfiguration; // @synthesize forYouGroupsConfiguration=_forYouGroupsConfiguration;
+@property (readonly, nonatomic) NSString *forYouRecordConfigID; // @synthesize forYouRecordConfigID=_forYouRecordConfigID;
 @property (nonatomic) BOOL forceAppConfigUpdate; // @synthesize forceAppConfigUpdate=_forceAppConfigUpdate;
 @property (nonatomic) BOOL forceTrendingSearchesUpdate; // @synthesize forceTrendingSearchesUpdate=_forceTrendingSearchesUpdate;
 @property (strong, nonatomic) NSArray *hiddenFeedIDs; // @synthesize hiddenFeedIDs=_hiddenFeedIDs;
@@ -94,6 +115,9 @@
 @property (nonatomic) long long initialArticlesFromNewFavorite; // @synthesize initialArticlesFromNewFavorite=_initialArticlesFromNewFavorite;
 @property (nonatomic) double interstitialAdLoadDelay; // @synthesize interstitialAdLoadDelay=_interstitialAdLoadDelay;
 @property (nonatomic) long long longReminderTime; // @synthesize longReminderTime=_longReminderTime;
+@property (nonatomic) long long maximumNumberOfExpiredPaidSubscriptionGroups; // @synthesize maximumNumberOfExpiredPaidSubscriptionGroups=_maximumNumberOfExpiredPaidSubscriptionGroups;
+@property (nonatomic) long long maximumPaidSubscriptionGroupSize; // @synthesize maximumPaidSubscriptionGroupSize=_maximumPaidSubscriptionGroupSize;
+@property (nonatomic) long long maximumTimesHeadlineInPaidSubscriptionGroup; // @synthesize maximumTimesHeadlineInPaidSubscriptionGroup=_maximumTimesHeadlineInPaidSubscriptionGroup;
 @property (nonatomic) long long minimumArticleUpdateInterval; // @synthesize minimumArticleUpdateInterval=_minimumArticleUpdateInterval;
 @property (nonatomic) long long minimumDistanceBetweenImageOnTopTiles; // @synthesize minimumDistanceBetweenImageOnTopTiles=_minimumDistanceBetweenImageOnTopTiles;
 @property (nonatomic) long long newFavoriteNotificationAlertsFrequency; // @synthesize newFavoriteNotificationAlertsFrequency=_newFavoriteNotificationAlertsFrequency;
@@ -115,6 +139,10 @@
 @property (strong, nonatomic) NSArray *presubscribedFeedIDs; // @synthesize presubscribedFeedIDs=_presubscribedFeedIDs;
 @property (readonly, nonatomic) NSArray *recommendedCategories;
 @property (strong, nonatomic) FCAsyncSerialQueue *requestSerialQueue; // @synthesize requestSerialQueue=_requestSerialQueue;
+@property (nonatomic) long long savedArticlesCutoffTime; // @synthesize savedArticlesCutoffTime=_savedArticlesCutoffTime;
+@property (nonatomic) long long savedArticlesMaximumCountCellular; // @synthesize savedArticlesMaximumCountCellular=_savedArticlesMaximumCountCellular;
+@property (nonatomic) long long savedArticlesMaximumCountWiFi; // @synthesize savedArticlesMaximumCountWiFi=_savedArticlesMaximumCountWiFi;
+@property (nonatomic) long long savedArticlesOpenedCutoffTime; // @synthesize savedArticlesOpenedCutoffTime=_savedArticlesOpenedCutoffTime;
 @property (nonatomic) long long shortReminderTime; // @synthesize shortReminderTime=_shortReminderTime;
 @property (nonatomic) long long subscriptionsGlobalMeteredCount; // @synthesize subscriptionsGlobalMeteredCount=_subscriptionsGlobalMeteredCount;
 @property (nonatomic) long long subscriptionsGracePeriodForTokenVerificationSeconds; // @synthesize subscriptionsGracePeriodForTokenVerificationSeconds=_subscriptionsGracePeriodForTokenVerificationSeconds;
@@ -140,11 +168,13 @@
 - (void)_didChange;
 - (void)_didChangeTrendingTopics;
 - (void)_extractAlternativeWidgetConfigFromProtobufConfiguration:(id)arg1;
+- (void)_extractBriefingsTagIDFromLanguageConfiguration:(id)arg1;
 - (void)_extractCommonValuesFromProtobufConfiguration:(id)arg1;
 - (void)_extractCoverArticlesFromLanguageConfiguration:(id)arg1;
 - (void)_extractEditorialChannelFromLanguageConfiguration:(id)arg1;
 - (void)_extractEndpointConfigurationFromProtobufConfiguration:(id)arg1;
 - (void)_extractFeedIDsFromLanguageConfigurations:(id)arg1;
+- (void)_extractForYouRecordConfigIDFromLanguageConfiguration:(id)arg1;
 - (void)_extractNotificationsConfigFromLanguageConfiguration:(id)arg1;
 - (void)_extractPersonalizationConfigFromProtobufConfiguration:(id)arg1;
 - (void)_extractPrefetchConfigFromProtobufConfiguration:(id)arg1;
@@ -163,6 +193,7 @@
 - (void)addObserver:(id)arg1;
 - (void)fetchAppConfigurationIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 force:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchTrendingSearchesIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)forceUpdateOnNextLaunch;
 - (id)init;

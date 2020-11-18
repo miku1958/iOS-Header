@@ -8,10 +8,12 @@
 
 #import <ITMLKit/IKJSXMLHTTPRequest-Protocol.h>
 #import <ITMLKit/ISStoreURLOperationDelegate-Protocol.h>
+#import <ITMLKit/NSURLSessionDataDelegate-Protocol.h>
+#import <ITMLKit/NSURLSessionTaskDelegate-Protocol.h>
 
-@class IKDOMDocument, ISURLOperation, JSManagedValue, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableURLRequest, NSString, NSURLConnection;
+@class IKDOMDocument, ISURLOperation, JSManagedValue, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableURLRequest, NSString, NSURLConnection, NSURLSession, NSURLSessionConfiguration;
 
-@interface IKJSXMLHTTPRequest : IKJSEventListenerObject <ISStoreURLOperationDelegate, IKJSXMLHTTPRequest>
+@interface IKJSXMLHTTPRequest : IKJSEventListenerObject <ISStoreURLOperationDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, IKJSXMLHTTPRequest>
 {
     BOOL _shouldSquashOnReadyStateEvents;
     struct os_unfair_lock_s _onReadyStateChangeMessageQueueLock;
@@ -27,6 +29,8 @@
     ISURLOperation *_jingleOperation;
     NSMutableArray *_onReadyStateChangeMessageQueue;
     NSMutableURLRequest *_urlRequest;
+    NSURLSessionConfiguration *_urlSessionConfiguration;
+    NSURLSession *_urlSession;
     NSURLConnection *_urlConnection;
     NSString *_user;
     NSString *_password;
@@ -75,16 +79,27 @@
 @property (strong, nonatomic) NSURLConnection *urlConnection; // @synthesize urlConnection=_urlConnection;
 @property (strong, nonatomic) NSMutableURLRequest *urlRequest; // @synthesize urlRequest=_urlRequest;
 @property (strong, nonatomic) NSHTTPURLResponse *urlResponse; // @synthesize urlResponse=_urlResponse;
+@property (strong, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
+@property (copy, nonatomic) NSURLSessionConfiguration *urlSessionConfiguration; // @synthesize urlSessionConfiguration=_urlSessionConfiguration;
 @property (strong, nonatomic) NSString *user; // @synthesize user=_user;
 
 + (id)xhrOperationQueue;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_abort;
 - (void)_clearAllReadyStateChangeMessagesAndSquashFutureOnes;
 - (id)_constructProgressEventData;
 - (id)_createStoreOperation:(id)arg1;
 - (id)_dequeueReadyStateChangeMessage;
 - (BOOL)_isPrimeError:(long long)arg1 output:(id)arg2;
+- (void)_loadingDidFailWithError:(id)arg1;
+- (void)_loadingDidFinish;
+- (void)_loadingDidReceiveData:(id)arg1;
+- (void)_loadingDidReceiveResponse:(id)arg1;
+- (id)_loadingWillSendRequest:(id)arg1 redirectResponse:(id)arg2;
 - (void)_openWithMethod:(id)arg1 url:(id)arg2 async:(BOOL)arg3 user:(id)arg4 password:(id)arg5;
 - (void)_operationFinished:(id)arg1;
 - (void)_prime:(id)arg1;

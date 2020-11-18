@@ -17,6 +17,7 @@
     NSArray *_titleWordPrefixesForInMemoryFiltering;
     NSString *_urlFilter;
     BOOL _includeHidden;
+    BOOL _countShouldUseNumChildrenIfPossible;
     BOOL _customQuery;
     int _folderID;
 }
@@ -25,7 +26,7 @@
 @property (readonly, nonatomic) int folderID; // @synthesize folderID=_folderID;
 
 - (void).cxx_destruct;
-- (int)_childCountInDatabaseForBookmarkFolder:(int)arg1 collection:(id)arg2 skipCountingInDatabaseBookmarksThatAreDeletedInMemory:(BOOL)arg3;
+- (int)_childCountInDatabaseForFolderFetchInCollection:(id)arg1 skipCountingInDatabaseBookmarksThatAreDeletedInMemory:(BOOL)arg2;
 - (id)_filterBookmarks:(id)arg1;
 - (int)_inMemoryAddedChildrenCountForBookmarkFolder:(int)arg1 collection:(id)arg2 skipCountingBookmarksThatAreDeletedInMemory:(BOOL)arg3;
 - (long long)_listQueryType;

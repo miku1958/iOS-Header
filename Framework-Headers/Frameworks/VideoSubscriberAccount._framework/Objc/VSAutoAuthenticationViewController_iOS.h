@@ -8,14 +8,14 @@
 
 #import <VideoSubscriberAccount/VSAutoAuthenticationViewController-Protocol.h>
 
-@class NSString, UIBarButtonItem, UIButton, UILabel, UIScrollView, VSAutoAuthenticationViewModel, VSIdentityProviderLogoView;
-@protocol VSAutoAuthenticationViewControllerDelegate;
+@class NSString, UIBarButtonItem, UIButton, UILabel, UIScrollView, VSAutoAuthenticationViewModel, VSIdentityProviderLogoView, VSViewModel;
+@protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VSAutoAuthenticationViewController_iOS : UIViewController <VSAutoAuthenticationViewController>
 {
     BOOL _cancellationAllowed;
-    id<VSAutoAuthenticationViewControllerDelegate> _delegate;
+    id<VSAuthenticationViewControllerDelegate> _delegate;
     VSAutoAuthenticationViewModel *_viewModel;
     UIScrollView *_scrollView;
     VSIdentityProviderLogoView *_logoView;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isCancellationAllowed) BOOL cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
 @property (weak, nonatomic) id contentSizeCategoryObserver; // @synthesize contentSizeCategoryObserver=_contentSizeCategoryObserver;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<VSAutoAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VSIdentityProviderLogoView *logoView; // @synthesize logoView=_logoView;
@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (strong, nonatomic) UIBarButtonItem *signInButtonItem; // @synthesize signInButtonItem=_signInButtonItem;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) VSAutoAuthenticationViewModel *viewModel; // @synthesize viewModel=_viewModel;
+@property (readonly, nonatomic) VSViewModel *viewModel;
 
 - (void).cxx_destruct;
 - (void)_cancelButtonPressed:(id)arg1;
@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)setViewModel:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

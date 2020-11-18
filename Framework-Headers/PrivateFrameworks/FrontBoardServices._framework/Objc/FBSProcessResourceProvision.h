@@ -11,34 +11,33 @@
 
 @interface FBSProcessResourceProvision : FBSProcessExecutionProvision
 {
-    CDStruct_9964a7bf _allowance;
-    CDStruct_9964a7bf _allowanceConsumed;
+    CDStruct_4e83c7bf _allowance;
     unsigned long long _baselineValue;
-    unsigned long long _milestoneValue;
+    unsigned long long _consumedValue;
     NSObject<OS_dispatch_queue> *_queue;
     BSTimer *_timer;
     BSMachPortSendRight *_taskRight;
 }
 
-@property (nonatomic) CDStruct_9964a7bf allowance; // @synthesize allowance=_allowance;
+@property (nonatomic) CDStruct_4e83c7bf allowance; // @synthesize allowance=_allowance;
 @property (nonatomic) long long type; // @dynamic type;
 
-+ (id)provisionWithAllowance:(CDStruct_9964a7bf)arg1;
++ (id)provisionWithAllowance:(CDStruct_4e83c7bf)arg1;
 + (id)provisionWithResourceType:(long long)arg1 timeInterval:(double)arg2;
 - (void)_beginMonitoring;
 - (double)_getElapsedCPUTimeForTaskPort:(unsigned int)arg1;
 - (void)_prepareForReuse;
-- (unsigned long long)_queue_calculateValueConsumed;
+- (BOOL)_queue_calculateValueConsumed:(out unsigned long long *)arg1;
 - (void)_queue_evaluateConsumption;
 - (void)_queue_noteAllowanceExhausted;
 - (void)_queue_stopMonitoring;
 - (BOOL)_queue_updateConsumption;
 - (void)_stopMonitoring;
 - (void)_updateProgress;
-- (BOOL)allowanceRemaining:(out CDStruct_9964a7bf *)arg1;
+- (BOOL)allowanceRemaining:(out CDStruct_4e83c7bf *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithAllowance:(CDStruct_9964a7bf)arg1;
+- (id)initWithAllowance:(CDStruct_4e83c7bf)arg1;
 - (BOOL)isResourceProvision;
 - (id)succinctDescriptionBuilder;
 

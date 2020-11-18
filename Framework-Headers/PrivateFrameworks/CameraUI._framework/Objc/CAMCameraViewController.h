@@ -36,12 +36,14 @@
     NSObject<OS_dispatch_queue> *__resultProcessingQueue;
     NSMutableDictionary *__resultQueuePendingLivePhotoProperties;
     CAMThumbnailGenerator *__resultQueueThumbnailGenerator;
+    NSMutableDictionary *__resultQueuePendingPortraitPhotoProperties;
     CAMViewfinderViewController *_viewfinderViewController;
     id<CAMCameraViewControllerPresentationDelegate> _presentationDelegate;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_resultProcessingQueue; // @synthesize _resultProcessingQueue=__resultProcessingQueue;
 @property (readonly, nonatomic) NSMutableDictionary *_resultQueuePendingLivePhotoProperties; // @synthesize _resultQueuePendingLivePhotoProperties=__resultQueuePendingLivePhotoProperties;
+@property (readonly, nonatomic) NSMutableDictionary *_resultQueuePendingPortraitPhotoProperties; // @synthesize _resultQueuePendingPortraitPhotoProperties=__resultQueuePendingPortraitPhotoProperties;
 @property (readonly, nonatomic) CAMThumbnailGenerator *_resultQueueThumbnailGenerator; // @synthesize _resultQueueThumbnailGenerator=__resultQueueThumbnailGenerator;
 @property (readonly, nonatomic) CAMReviewButton *_reviewButton; // @synthesize _reviewButton=__reviewButton;
 @property (nonatomic) BOOL automaticallyAdjustsApplicationIdleTimer;
@@ -65,6 +67,7 @@
 @property (readonly, nonatomic) CAMLocationController *locationController; // @synthesize locationController=_locationController;
 @property (readonly, nonatomic) CAMMotionController *motionController; // @synthesize motionController=_motionController;
 @property (readonly, nonatomic) CAMNebulaDaemonProxyManager *nebulaDaemonProxyManager; // @synthesize nebulaDaemonProxyManager=_nebulaDaemonProxyManager;
+@property (nonatomic, getter=isPerformingTileTransition) BOOL performingTileTransition;
 @property (nonatomic) unsigned long long persistenceBehavior;
 @property (readonly, nonatomic) CAMPersistenceController *persistenceController; // @synthesize persistenceController=_persistenceController;
 @property (readonly, nonatomic) CAMPowerController *powerController; // @synthesize powerController=_powerController;
@@ -93,8 +96,10 @@
 - (id)_previewImageFromVideoURL:(id)arg1;
 - (void)_resultQueueHandleFallbackPhotoForPairingIdentifierIfNecessary:(id)arg1;
 - (id)_resultQueueProcessLivePhotoForPairingIdentifier:(id)arg1 combinedProperties:(out id *)arg2 error:(id *)arg3;
+- (void)_resultQueueProcessSingleCapturePortraitResultForPersistenceUUID:(id)arg1;
 - (id)_resultQueueSafeImageFromSurface:(void *)arg1 imageOrientation:(long long)arg2;
 - (BOOL)_resultQueueUpdatePendingLivePhotoForPairingIdentifier:(id)arg1 withProperties:(id)arg2;
+- (void)_resultQueueUpdateSingleCapturePortraitPhotoForPersistenceUUID:(id)arg1 properties:(id)arg2 captureError:(id)arg3;
 - (unsigned long long)_viewfinderPersistenceBehaviorForCapturePersistenceBehavior:(unsigned long long)arg1;
 - (void)captureController:(id)arg1 didGenerateStillImageCaptureResult:(id)arg2 fromRequest:(id)arg3;
 - (BOOL)capturePhoto;

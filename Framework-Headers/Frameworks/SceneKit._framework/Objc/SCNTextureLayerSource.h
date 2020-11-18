@@ -24,7 +24,9 @@ __attribute__((visibility("hidden")))
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
 - (void)dealloc;
 - (struct CGSize)layerSizeInPixels;
+- (BOOL)prefersGL3;
 - (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 nextFrameTime:(double *)arg2;
+- (BOOL)supportsMetal;
 - (struct __C3DTexture *)textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 
 @end

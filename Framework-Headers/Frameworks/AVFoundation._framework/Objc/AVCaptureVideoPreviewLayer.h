@@ -33,6 +33,7 @@
 - (long long)_orientation;
 - (void)_setSensorAndEstimatedPreviewSizes;
 - (void)_updateCaptureDeviceTransform;
+- (void)_updatePreviewTransforms;
 - (id)activeConnections;
 - (id)addConnection:(id)arg1 error:(id *)arg2;
 - (void)attachToFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;

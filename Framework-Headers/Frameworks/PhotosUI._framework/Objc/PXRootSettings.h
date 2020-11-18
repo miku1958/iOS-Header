@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXSettings.h>
 
-@class NSMutableSet, PXAssetsSceneSettings, PXDiagnosticsSettings, PXKitSettings, PXMemoriesFeedSettings, PXMemoriesRelatedSettings, PXModelSettings, PXPhotosDataSourceSettings, PXPhotosDetailsHeaderTileSettings, PXPhotosDetailsSettings, PXRelatedSettings, PXSnapBackSettings, PXTilingSettings, PXViewControllerTransitionSettings;
+@class NSMutableSet, PXAssetsSceneSettings, PXDiagnosticsSettings, PXKitSettings, PXMemoriesFeedSettings, PXMemoriesRelatedSettings, PXModelSettings, PXPeopleDetailSettings, PXPhotosDataSourceSettings, PXPhotosDetailsHeaderTileSettings, PXPhotosDetailsSettings, PXRelatedSettings, PXSnapBackSettings, PXTilingSettings, PXViewControllerTransitionSettings;
 
 @interface PXRootSettings : PXSettings
 {
@@ -24,6 +24,7 @@
     PXKitSettings *_kit;
     PXViewControllerTransitionSettings *_viewControllerTransition;
     PXSnapBackSettings *_snapBack;
+    PXPeopleDetailSettings *_peopleDetail;
 }
 
 @property (strong, nonatomic) PXAssetsSceneSettings *assetsScene; // @synthesize assetsScene=_assetsScene;
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) PXMemoriesRelatedSettings *memoriesRelated; // @synthesize memoriesRelated=_memoriesRelated;
 @property (strong, nonatomic) PXMemoriesFeedSettings *memoryFeed; // @synthesize memoryFeed=_memoryFeed;
 @property (strong, nonatomic) PXModelSettings *model; // @synthesize model=_model;
+@property (strong, nonatomic) PXPeopleDetailSettings *peopleDetail; // @synthesize peopleDetail=_peopleDetail;
 @property (strong, nonatomic) PXPhotosDataSourceSettings *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property (strong, nonatomic) PXPhotosDetailsSettings *photosDetails; // @synthesize photosDetails=_photosDetails;
 @property (strong, nonatomic) PXPhotosDetailsHeaderTileSettings *photosDetailsHeaderTile; // @synthesize photosDetailsHeaderTile=_photosDetailsHeaderTile;

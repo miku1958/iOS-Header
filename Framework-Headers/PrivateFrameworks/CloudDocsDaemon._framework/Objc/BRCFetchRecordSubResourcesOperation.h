@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithServerZone:(id)arg1;
 - (void)main;
 - (void)removeAllRecords;
+- (void)removeRecordByID:(id)arg1;
 - (BOOL)shouldRetryForError:(id)arg1;
 - (void)startWithParentOperation:(struct _BRCOperation *)arg1;
 - (void)stop;

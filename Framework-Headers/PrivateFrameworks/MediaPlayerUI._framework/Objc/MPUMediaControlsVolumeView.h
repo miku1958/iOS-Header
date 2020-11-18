@@ -52,6 +52,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateSystemVolumeLevel;
 - (void)volumeController:(id)arg1 EUVolumeLimitDidChange:(float)arg2;

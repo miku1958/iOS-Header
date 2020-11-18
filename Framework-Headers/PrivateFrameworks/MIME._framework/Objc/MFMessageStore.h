@@ -53,6 +53,7 @@
 - (id)headerDataForMessage:(id)arg1 downloadIfNecessary:(BOOL)arg2;
 - (id)headersForMessage:(id)arg1 fetchIfNotAvailable:(BOOL)arg2;
 - (id)init;
+- (BOOL)messageCanBeTriaged:(id)arg1;
 - (id)newObjectCache;
 - (void)setMessageClass:(Class)arg1;
 - (void)setNumberOfAttachments:(unsigned int)arg1 isSigned:(BOOL)arg2 isEncrypted:(BOOL)arg3 forMessage:(id)arg4;

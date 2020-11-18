@@ -41,7 +41,7 @@
     UIActivityIndicatorView *_activityIndicator;
     BOOL _showActivityIndicator;
     UIColor *_backingLayerColor;
-    int _lock;
+    struct os_unfair_lock_s _lock;
     NSMutableArray *_highlights;
     double _cachedScale;
     BOOL _allowHighlighting;

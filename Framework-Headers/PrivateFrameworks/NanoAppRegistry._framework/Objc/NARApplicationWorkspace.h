@@ -22,6 +22,7 @@
 - (void)_connectionInvalidated;
 - (void)_loadConnectionIfNeeded;
 - (id)_workspaceServiceWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (void)getWorkspaceInfoIncludingHiddenApps:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getWorkspaceInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;

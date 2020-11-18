@@ -155,6 +155,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (void)detach;
+- (struct AccessibilityObject *)detailParentForObject:(struct AccessibilityObject *)arg1;
+- (struct AccessibilityObject *)detailParentForSummaryObject:(struct AccessibilityObject *)arg1;
 - (BOOL)determineIsAccessibilityElement;
 - (void)disableAttributeCaching;
 - (struct _NSRange)elementTextRange;

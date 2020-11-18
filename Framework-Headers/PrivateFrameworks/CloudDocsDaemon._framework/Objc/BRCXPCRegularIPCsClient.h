@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (void)addExternalDocumentReferenceTo:(id)arg1 forPid:(int)arg2 inContainer:(id)arg3 underParent:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)boostFilePresenterAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)bundleDidAccessExternalDocument:(id)arg1;
-- (void)canLogoutSafely:(CDUnknownBlockType)arg1;
 - (oneway void)checkinAskClientIfUsingUbiquity:(BOOL)arg1;
 - (void)computePurgableSpaceWithUrgency:(int)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)copyBulkShareIDsAtURLs:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -98,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (void)joinShareAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)lookupExcludedExtensionsForLogoutWithReply:(CDUnknownBlockType)arg1;
 - (void)lookupExcludedFilenamesForLogoutWithReply:(CDUnknownBlockType)arg1;
+- (void)moveBRSecurityBookmarkAtURL:(id)arg1 toURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)overwriteAccessTimeForItemAtURL:(id)arg1 atime:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)performSelfCheck:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)postiCloudDriveAppInstallationNotificaionWithReply:(CDUnknownBlockType)arg1;

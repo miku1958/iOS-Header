@@ -149,9 +149,11 @@
 - (void)databasePool:(id)arg1 didFlushDatabases:(id)arg2;
 - (id)databaseSizeInBytesExcludingHFD;
 - (id)diagnosticDescription;
+- (BOOL)discardHighFrequencyDataStoreWithError:(id *)arg1;
 - (id)dumpSchemaAndReturnError:(id *)arg1;
 - (id)extendedDatabaseTransactionForIdentifier:(id)arg1;
 - (void)finalizeExtendedTransactionForIdentifier:(id)arg1;
+- (id)highFrequencyDataStoreURL;
 - (id)initWithHomeDirectoryPath:(id)arg1 profile:(id)arg2;
 - (void)invalidateAndObliterateWithReason:(id)arg1 preserveCopy:(BOOL)arg2;
 - (void)invalidateAndWait;

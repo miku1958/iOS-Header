@@ -18,6 +18,7 @@
     BOOL _pickedOnPairedDevice;
     BOOL _playingOnPairedDevice;
     BOOL _requiresPassword;
+    BOOL _carplayRoute;
     NSString *_routeUID;
     long long _routeType;
     long long _pickableRouteType;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) MPAVBatteryLevel *batteryLevel; // @synthesize batteryLevel=_batteryLevel;
 @property (readonly, nonatomic, getter=isBeatsSoloRoute) BOOL beatsSoloRoute;
 @property (readonly, nonatomic, getter=isBeatsXRoute) BOOL beatsXRoute;
+@property (readonly, nonatomic, getter=isCarplayRoute) BOOL carplayRoute; // @synthesize carplayRoute=_carplayRoute;
 @property (readonly, nonatomic) BOOL displayIsPicked;
 @property (readonly, nonatomic) long long displayRouteType;
 @property (readonly, nonatomic) BOOL isDeviceRoute;

@@ -27,6 +27,8 @@
 @property (readonly, copy, nonatomic) NSArray *gradientPoints; // @synthesize gradientPoints=_gradientPoints;
 @property (nonatomic) long long gradientType; // @synthesize gradientType=_gradientType;
 
++ (id)colorMap;
++ (void)registerColorNameMap:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

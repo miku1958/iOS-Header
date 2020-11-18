@@ -29,6 +29,7 @@
 
 + (id)diskCacheWithName:(id)arg1;
 - (void).cxx_destruct;
+- (void)_resetCoreDataStack;
 - (BOOL)_save;
 - (void)_saveAsync;
 - (id)formatVersion;

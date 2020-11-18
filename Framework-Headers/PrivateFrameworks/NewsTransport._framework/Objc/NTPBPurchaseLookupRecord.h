@@ -12,22 +12,22 @@
 
 @interface NTPBPurchaseLookupRecord : PBCodable <NSCopying>
 {
-    NSString *_appAdamId;
+    NSString *_appAdamID;
     NTPBRecordBase *_base;
-    NSMutableArray *_channelTagIds;
+    NSMutableArray *_channelTagIDs;
 }
 
-@property (strong, nonatomic) NSString *appAdamId; // @synthesize appAdamId=_appAdamId;
+@property (strong, nonatomic) NSString *appAdamID; // @synthesize appAdamID=_appAdamID;
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
-@property (strong, nonatomic) NSMutableArray *channelTagIds; // @synthesize channelTagIds=_channelTagIds;
-@property (readonly, nonatomic) BOOL hasAppAdamId;
+@property (strong, nonatomic) NSMutableArray *channelTagIDs; // @synthesize channelTagIDs=_channelTagIDs;
+@property (readonly, nonatomic) BOOL hasAppAdamID;
 @property (readonly, nonatomic) BOOL hasBase;
 
-+ (Class)channelTagIdsType;
-- (void)addChannelTagIds:(id)arg1;
-- (id)channelTagIdsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)channelTagIdsCount;
-- (void)clearChannelTagIds;
++ (Class)channelTagIDsType;
+- (void)addChannelTagIDs:(id)arg1;
+- (id)channelTagIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)channelTagIDsCount;
+- (void)clearChannelTagIDs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

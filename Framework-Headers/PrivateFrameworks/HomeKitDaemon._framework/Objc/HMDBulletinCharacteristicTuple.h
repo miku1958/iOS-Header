@@ -6,24 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString;
+@class NSDate, NSNumber, NSString;
 
 @interface HMDBulletinCharacteristicTuple : NSObject
 {
+    BOOL _changedByThisDevice;
     NSString *_serviceContextID;
     NSString *_currentType;
     id _targetValue;
-    NSDate *_updateTime;
+    NSDate *_lastPostingTime;
+    NSNumber *_targetStateNumber;
 }
 
+@property (readonly, nonatomic) BOOL changedByThisDevice; // @synthesize changedByThisDevice=_changedByThisDevice;
 @property (readonly, nonatomic) NSString *currentType; // @synthesize currentType=_currentType;
+@property (strong, nonatomic) NSDate *lastPostingTime; // @synthesize lastPostingTime=_lastPostingTime;
 @property (readonly, nonatomic) NSString *serviceContextID; // @synthesize serviceContextID=_serviceContextID;
+@property (readonly, nonatomic) NSNumber *targetStateNumber; // @synthesize targetStateNumber=_targetStateNumber;
 @property (readonly, nonatomic) id targetValue; // @synthesize targetValue=_targetValue;
-@property (readonly, nonatomic) NSDate *updateTime; // @synthesize updateTime=_updateTime;
 
-+ (id)tupleWithServiceContextID:(id)arg1 currentType:(id)arg2 targetValue:(id)arg3;
++ (id)tupleWithServiceContextID:(id)arg1 currentType:(id)arg2 targetValue:(id)arg3 targetStateNumber:(id)arg4 changedByThisDevice:(BOOL)arg5;
 - (void).cxx_destruct;
-- (id)initWithServiceContextID:(id)arg1 currentType:(id)arg2 targetValue:(id)arg3;
+- (id)initWithServiceContextID:(id)arg1 currentType:(id)arg2 targetValue:(id)arg3 targetStateNumber:(id)arg4 changedByThisDevice:(BOOL)arg5;
+- (void)updatePostingTime;
 
 @end
 

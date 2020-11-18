@@ -6,7 +6,7 @@
 
 #import <VideosExtras/NSObject-Protocol.h>
 
-@class IKAppContext, IKAppMediaItemBridge, IKAppPlayerBridge, IKAppPlaylistBridge, IKAppTabBar, IKDOMDocument, JSContext, NSDictionary, NSError;
+@class IKAppContext, IKAppMediaItemBridge, IKAppPlayerBridge, IKAppPlaylistBridge, IKAppTabBar, IKDOMDocument, JSContext, NSDictionary, NSError, NSURLSessionConfiguration;
 @protocol IKAppDeviceConfig, IKAppMediaItem, IKAppNavigationController, IKAppPlayer, IKAppPlaylist;
 
 @protocol IKAppContextDelegate <NSObject>
@@ -26,5 +26,6 @@
 - (id<IKAppPlayer>)objectForPlayer:(IKAppPlayerBridge *)arg1;
 - (id<IKAppPlaylist>)objectForPlaylist:(IKAppPlaylistBridge *)arg1;
 - (IKAppTabBar *)tabBarForContext:(IKAppContext *)arg1;
+- (NSURLSessionConfiguration *)xhrSessionConfigurationForContext:(IKAppContext *)arg1;
 @end
 

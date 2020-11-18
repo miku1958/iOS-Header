@@ -66,7 +66,6 @@
 - (void)_dismissAlertController:(id)arg1;
 - (void)_displayAlertController:(id)arg1;
 - (void)_handleAlertActionPress:(id)arg1 controller:(id)arg2;
-- (void)_handleBrokenHomeButton;
 - (void)_handleDisableBrightnessFiltersAlert:(id)arg1;
 - (void)_handleSwitchUsageConfirmed;
 - (void)_handleTouchAccommodationsUsageConfirmed;
@@ -84,9 +83,10 @@
 - (void)_unlockWithIntent:(int)arg1;
 - (BOOL)_valueForTripleClickOption:(int)arg1;
 - (id)_visibleTripleClickItems;
-- (BOOL)accessibilityIsStickyNotificationVisible;
+- (BOOL)accessibilityIsNotificationVisible;
 - (BOOL)accessibilityShowControlCenter:(BOOL)arg1;
 - (BOOL)accessibilityShowNotificationCenter:(BOOL)arg1;
+- (void)activateSOSModeWithServerInstance:(id)arg1;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
 - (id)allowedMedusaGesturesWithServerInstance:(id)arg1;
@@ -103,6 +103,7 @@
 - (id)focusedAppsWithServerInstance:(id)arg1;
 - (void)forceLoadGAXBundleWithServerInstance:(id)arg1;
 - (id)frontmostAppProcessWithServerInstance:(id)arg1;
+- (void)handleBrokenHomeButtonAlert;
 - (BOOL)handleToggleIncomingCallWithServerInstance:(id)arg1;
 - (BOOL)hasActiveCallWithServerInstance:(id)arg1;
 - (BOOL)hasActiveOrPendingCallOrFaceTimeWithServerInstance:(id)arg1;
@@ -118,6 +119,7 @@
 - (BOOL)isMediaPlayingWithServerInstance:(id)arg1 forBundleId:(id)arg2;
 - (BOOL)isMultiTaskingActive;
 - (BOOL)isNotificationCenterVisibleWithServerInstance:(id)arg1;
+- (BOOL)isNotificationVisibleWithServerInstance:(id)arg1;
 - (BOOL)isOrientationLockedWithServerInstance:(id)arg1;
 - (BOOL)isPasscodeLockVisible;
 - (BOOL)isPasscodeRequiredOnLockWithServerInstance:(id)arg1;
@@ -130,7 +132,6 @@
 - (BOOL)isSideSwitcherVisibleWithServerInstance:(id)arg1;
 - (BOOL)isSiriVisibleWithServerInstance:(id)arg1;
 - (BOOL)isSpeakThisTemporarilyDisabledWithServerInstance:(id)arg1;
-- (BOOL)isStickyNotificationVisibleWithServerInstance:(id)arg1;
 - (BOOL)isSyncingRestoringResettingOrUpdatingWithServerInstance:(id)arg1;
 - (BOOL)isSystemAppFrontmostExcludingSiri:(BOOL)arg1 withServerInstance:(id)arg2;
 - (BOOL)isSystemAppShowingAnAlertWithServerInstance:(id)arg1;

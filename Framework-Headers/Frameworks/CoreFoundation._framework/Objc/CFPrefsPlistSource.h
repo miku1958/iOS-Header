@@ -16,19 +16,17 @@ __attribute__((visibility("hidden")))
     struct __CFString *userIdentifier;
     struct __CFString *domainIdentifier;
     struct __CFString *container;
-    struct __CFDictionary *_locallySetDict;
-    const char *accessPath;
-    struct {
-        unsigned int _isByHost:1;
-        unsigned int _volatile:1;
-        unsigned int _readonly:1;
-        unsigned int _avoidsDaemonCache:1;
-        unsigned int _restrictedAccess:1;
-        unsigned int _checkedInvalidHome:1;
-        unsigned int _lastWriteFailed:1;
-        unsigned int _observing:1;
-        unsigned int _disableBackup:1;
-    } _flags;
+    _Atomic struct __CFDictionary *_locallySetDict;
+    _Atomic char *accessPath;
+    _Atomic BOOL _isByHost;
+    _Atomic BOOL _volatile;
+    _Atomic BOOL _readonly;
+    _Atomic BOOL _avoidsDaemonCache;
+    _Atomic BOOL _restrictedAccess;
+    _Atomic BOOL _checkedInvalidHome;
+    _Atomic BOOL _lastWriteFailed;
+    _Atomic BOOL _observing;
+    _Atomic BOOL _disableBackup;
 }
 
 - (void)_goReadOnlyOrVolatileAfterTryingToWriteKey:(struct __CFString *)arg1 value:(void *)arg2;

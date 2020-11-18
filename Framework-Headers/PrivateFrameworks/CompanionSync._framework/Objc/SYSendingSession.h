@@ -21,6 +21,7 @@
     NSMutableIndexSet *_ackedBatchIndices;
     NSObject<OS_os_activity> *_sessionActivity;
     double _sessionStartTime;
+    struct NSMutableDictionary *_batchObjectIDsByBatchIndex;
     struct os_unfair_lock_s _flagsLock;
     struct {
         unsigned int state:4;

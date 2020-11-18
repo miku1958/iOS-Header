@@ -10,14 +10,8 @@
 
 @protocol IKJSDeviceSettings <JSExport>
 
-@property (readonly, nonatomic) IKJSRestrictions *Restrictions;
-@property (readonly, nonatomic) struct CGSize Screen;
 @property (readonly, strong, nonatomic) NSString *language;
-@property (readonly, strong, nonatomic) NSString *name;
-@property (readonly, strong, nonatomic) NSString *preferredVideoFormat;
-@property (readonly, strong, nonatomic) NSString *preferredVideoPreviewFormat;
 @property (readonly, nonatomic) IKJSRestrictions *restrictions;
-@property (readonly, nonatomic) struct CGSize screen;
 @property (readonly, strong, nonatomic) NSString *storefrontCountryCode;
 
 @end

@@ -22,7 +22,6 @@
 
 - (void).cxx_destruct;
 - (void)_getExternalDestinationForServiceIdentifier:(id)arg1 accountStore:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)_getFacebookDestinationForPageIdentifier:(id)arg1 accountStore:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_registerExternalDestination:(id)arg1 forServiceIdentifier:(id)arg2 accountStore:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)_ssvServiceIdentifierForMSCLServiceIdentifier:(id)arg1;
 - (id)initWithAuthor:(id)arg1 externalServices:(id)arg2;

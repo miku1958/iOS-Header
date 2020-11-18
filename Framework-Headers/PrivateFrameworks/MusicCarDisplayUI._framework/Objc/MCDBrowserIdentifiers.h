@@ -27,7 +27,6 @@
 - (BOOL)_identifiersDidChange;
 - (void)_updateCellIdentifiersOrdering;
 - (id)defaultFuseIdentifiers;
-- (id)init;
 - (id)localizedStrings;
 
 @end

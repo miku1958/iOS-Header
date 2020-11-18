@@ -35,7 +35,7 @@
 @property (strong) NSString *type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
-- (void)addDetectectedKeyword:(id)arg1 classificationTypeIdentifier:(id)arg2;
+- (void)addDetectedKeyword:(id)arg1 classificationTypeIdentifier:(id)arg2;
 - (void)addMessageUnit:(id)arg1;
 - (id)detectedKeywordsDictionary;
 - (id)firstHeaderValueForKey:(id)arg1 inHeaders:(id)arg2;

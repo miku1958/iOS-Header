@@ -36,8 +36,8 @@
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 
-- (void)_setupSubviews;
 - (void)_updateSublayersContentsScale;
+- (void)_updateSubviews;
 - (void)_updateUIProgress;
 - (void)dealloc;
 - (void)didMoveToWindow;

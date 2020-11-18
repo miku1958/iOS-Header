@@ -8,12 +8,16 @@
 
 #import <ITMLKit/IKJSDOMEventTarget-Protocol.h>
 #import <ITMLKit/IKJSDOMNode-Protocol.h>
+#import <ITMLKit/NSObject-Protocol.h>
+#import <ITMLKit/_IKDOMNode-Protocol.h>
+#import <ITMLKit/_IKDOMNodeProxy-Protocol.h>
 
-@class IKDOMDocument, IKDOMNodeData, IKDOMNodeList, JSManagedValue, NSHashTable, NSMutableDictionary, NSString;
+@class IKDOMDocument, IKDOMNodeData, IKDOMNodeList, IKJSDataItem, JSManagedValue, NSHashTable, NSMutableDictionary, NSString;
 
-@interface IKDOMNode : IKJSObject <IKJSDOMNode, IKJSDOMEventTarget>
+@interface IKDOMNode : IKJSObject <NSObject, IKJSDOMNode, _IKDOMNodeProxy, _IKDOMNode, IKJSDOMEventTarget>
 {
     struct _xmlNode *_nodePtr;
+    IKJSDataItem *_dataItem;
     JSManagedValue *_managedOwnerDocument;
     JSManagedValue *_managedParent;
     JSManagedValue *_managedChildNodeList;
@@ -25,9 +29,13 @@
 
 @property (nonatomic) long long ITMLID; // @synthesize ITMLID=_ITMLID;
 @property (readonly, strong, nonatomic) IKDOMNodeList *childNodes;
+@property (strong, nonatomic) IKJSDataItem *dataItem;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSHashTable *domObservers; // @synthesize domObservers=_domObservers;
 @property (strong, nonatomic) NSMutableDictionary *eventListenersMap; // @synthesize eventListenersMap=_eventListenersMap;
 @property (readonly, strong, nonatomic) IKDOMNode *firstChild;
+@property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) IKDOMNodeData *jsNodeData;
 @property (readonly, strong, nonatomic) IKDOMNode *lastChild;
 @property (strong, nonatomic) JSManagedValue *managedChildNodeList; // @synthesize managedChildNodeList=_managedChildNodeList;
@@ -41,6 +49,7 @@
 @property (readonly, weak, nonatomic) IKDOMDocument *ownerDocument;
 @property (readonly, weak, nonatomic) IKDOMNode *parentNode;
 @property (readonly, weak, nonatomic) IKDOMNode *previousSibling;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *textContent;
 
 + (id)_eventListenerMapKeyForType:(id)arg1 useCapture:(BOOL)arg2;
@@ -49,22 +58,26 @@
 + (id)nodeWithAppContext:(id)arg1 nodePtr:(struct _xmlNode *)arg2;
 - (void).cxx_destruct;
 - (struct _xmlNode *)_appendNode:(struct _xmlNode *)arg1;
+- (void)_childrenUpdatedWithUpdatedChildNodes:(id)arg1 withDocument:(id)arg2;
 - (struct _xmlNode *)_insertNode:(struct _xmlNode *)arg1 refNode:(struct _xmlNode *)arg2 operation:(unsigned long long)arg3;
 - (void)_linkManagedObjects;
+- (void)_markSubtreeUpdatesForAncestorsOfNode:(id)arg1;
 - (void)_notifyUpdatesToDOMObservers;
 - (BOOL)_searchEventListener:(id)arg1 key:(id)arg2 destroy:(BOOL)arg3;
 - (void)_unlinkManagedObjects;
+- (void)_updatedAndMark:(BOOL)arg1 withDocument:(id)arg2;
 - (BOOL)_validateDOMOperation:(unsigned long long)arg1 newNode:(id)arg2 refNode:(id)arg3;
 - (void)addDOMObserver:(id)arg1;
 - (void)addEventListener:(id)arg1:(id)arg2:(BOOL)arg3;
 - (id)appendChild:(id)arg1;
+- (id)asPrivateIKDOMNode;
 - (unsigned long long)childElementCount;
 - (id)childNodesAsArray;
 - (id)children;
+- (void)childrenUpdatedWithUpdatedChildNodes:(id)arg1 notify:(BOOL)arg2;
 - (id)cloneNode:(BOOL)arg1;
 - (BOOL)contains:(id)arg1;
 - (void)dealloc;
-- (id)description;
 - (BOOL)dispatchEvent:(id)arg1;
 - (void)enumerateEventListernersForType:(id)arg1 xmlAttribute:(id)arg2 phase:(long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)firstElementChild;
@@ -77,13 +90,12 @@
 - (id)lastElementChild;
 - (struct _xmlNode *)nodePtr;
 - (id)nodesForXPath:(id)arg1 error:(id *)arg2;
-- (void)notifyChildrenUpdatedWithUpdatedChildNodes:(id)arg1;
-- (void)notifyUpdatedAndMark:(BOOL)arg1;
 - (id)performDOMOperation:(unsigned long long)arg1 newNode:(id)arg2 refNode:(id)arg3;
 - (id)removeChild:(id)arg1;
 - (void)removeDOMObserver:(id)arg1;
 - (void)removeEventListener:(id)arg1:(id)arg2:(BOOL)arg3;
 - (id)replaceChild:(id)arg1:(id)arg2;
+- (void)updatedAndMark:(BOOL)arg1 notify:(BOOL)arg2;
 - (id)writeToStringWithError:(id *)arg1;
 
 @end

@@ -17,11 +17,14 @@
 @property (copy, nonatomic) NSArray *alternateProviderPunchouts;
 @property (copy, nonatomic) NSNumber *availableOnItunesForPurchase;
 @property (copy, nonatomic) NSNumber *availableOnItunesForRent;
+@property (nonatomic) BOOL canBeFavorited;
+@property (copy, nonatomic) NSString *canonicalId;
 @property (copy, nonatomic) NSArray *directors;
 @property (copy, nonatomic) NSArray *genres;
 @property (copy, nonatomic) NSURL *hiresTrailerUri;
 @property (copy, nonatomic) NSURL *iTunesUri;
 @property (nonatomic) BOOL is3d;
+@property (nonatomic) BOOL isContainerItem;
 @property (copy, nonatomic) NSURL *lowresTrailerUri;
 @property (copy, nonatomic) NSURL *movieIdentifier;
 @property (strong, nonatomic) SAMovieV2ReviewListSnippet *movieReviewListSnippet;
@@ -38,6 +41,7 @@
 @property (strong, nonatomic) SAMovieV2TheaterShowtimeListSnippet *theaterShowtimeListSnippet;
 @property (copy, nonatomic) NSString *theaterShowtimeSearchRegionDescription;
 @property (copy, nonatomic) NSDate *theatricalReleaseDate;
+@property (strong, nonatomic) SAUIAppPunchOut *videosPunchout;
 
 + (id)movieDetailSnippet;
 + (id)movieDetailSnippetWithDictionary:(id)arg1 context:(id)arg2;

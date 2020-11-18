@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (PGNSStringExtensions)
+- (unsigned long long)pg_levenshteinDistanceToString:(id)arg1;
 - (id)pg_stringByTrailingCharactersInSet:(id)arg1 options:(unsigned long long)arg2;
 @end
 

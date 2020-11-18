@@ -6,7 +6,7 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class NSDate, NSString, NSURL, RTEvent, RTLocationOfInterest, RTLocationOfInterestVisit;
+@class NSArray, NSDate, NSString, NSURL, RTEvent, RTLocationOfInterest, RTLocationOfInterestVisit;
 
 @protocol RTDaemonInternalProtocol <NSObject>
 - (void)fetchMagicalMomentsModelPropertyListRepresentation:(void (^)(NSDictionary *, NSError *))arg1;
@@ -16,6 +16,7 @@
 - (void)forceSequentialClusterIdentification:(void (^)(NSError *))arg1;
 - (void)forceUpdateAssetMetadata;
 - (void)injectLocationOfInterest:(RTLocationOfInterest *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)injectLocations:(NSArray *)arg1;
 - (void)injectVisit:(RTLocationOfInterestVisit *)arg1 locationOfInterest:(RTLocationOfInterest *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)printMagicalMomentsModelWithReply:(void (^)(NSError *))arg1;
 - (void)printRoomAssistModel:(void (^)(NSError *))arg1;

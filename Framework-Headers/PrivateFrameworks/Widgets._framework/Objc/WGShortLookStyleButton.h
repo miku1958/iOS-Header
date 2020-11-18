@@ -6,20 +6,23 @@
 
 #import <UIKit/UIControl.h>
 
-@class NCLookViewFontProvider, NSString, UILabel, UIView;
+@class NCLookViewFontProvider, NCMaterialView, NSString, UILabel;
 
 @interface WGShortLookStyleButton : UIControl
 {
-    UIView *_backgroundView;
+    NCMaterialView *_backgroundView;
     UILabel *_titleLabel;
     NCLookViewFontProvider *_fontProvider;
     double _dimension;
+    BOOL _backgroundBlurred;
 }
 
-@property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (nonatomic, getter=isBackgroundBlurred) BOOL backgroundBlurred; // @synthesize backgroundBlurred=_backgroundBlurred;
+@property (strong, nonatomic) NSString *groupName;
 @property (copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
+- (double)_backgroundViewCornerRadius;
 - (void)_configureBackgroundViewIfNecessary;
 - (void)_configureMaskIfNecessary;
 - (void)_configureTitleLabelIfNecessary;
@@ -27,6 +30,7 @@
 - (id)_fontProvider;
 - (void)_layoutTitleLabel;
 - (double)_minimumScaleFactorForFont:(id)arg1;
+- (void)_setBackgroundViewCornerRadius:(double)arg1;
 - (void)_updateTitleLabelFont;
 - (void)invalidateCachedGeometry;
 - (void)layoutSubviews;

@@ -9,11 +9,12 @@
 #import <AnnotationKit/NSTextStorageDelegate-Protocol.h>
 #import <AnnotationKit/UITextViewDelegate-Protocol.h>
 
-@class AKAnnotation, AKController, AKPageController, NSString, NSTextStorage, NSUndoManager, UITextView;
+@class AKAnnotation, AKController, AKPageController, NSString, NSTextStorage, NSUndoManager, UIScrollView, UITextView;
 @protocol AKTextAnnotationProtocol;
 
 @interface AKTextEditorController : NSObject <NSTextStorageDelegate, UITextViewDelegate>
 {
+    BOOL _keyboardWillRemainUp;
     BOOL _isInEndEditing;
     BOOL _isInAdjustAnnotationFrameToFitText;
     UITextView *_textView;
@@ -22,13 +23,16 @@
     AKPageController *_pageController;
     NSTextStorage *_textStorage;
     double _renderingTextStorageScaleFactor;
+    double _modelToEditorScaleFactor;
     double _handleCompensatingScaleFactor;
     NSUndoManager *_textViewUndoManager;
-    struct CGPoint _startingContentInset;
+    UIScrollView *_currentEnclosingScrollView;
+    struct CGPoint _keyboardStartingContentInset;
 }
 
 @property (weak) AKAnnotation<AKTextAnnotationProtocol> *annotation; // @synthesize annotation=_annotation;
 @property (weak) AKController *controller; // @synthesize controller=_controller;
+@property (weak) UIScrollView *currentEnclosingScrollView; // @synthesize currentEnclosingScrollView=_currentEnclosingScrollView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property double handleCompensatingScaleFactor; // @synthesize handleCompensatingScaleFactor=_handleCompensatingScaleFactor;
@@ -36,9 +40,11 @@
 @property (readonly, nonatomic) BOOL isEditing;
 @property BOOL isInAdjustAnnotationFrameToFitText; // @synthesize isInAdjustAnnotationFrameToFitText=_isInAdjustAnnotationFrameToFitText;
 @property BOOL isInEndEditing; // @synthesize isInEndEditing=_isInEndEditing;
+@property struct CGPoint keyboardStartingContentInset; // @synthesize keyboardStartingContentInset=_keyboardStartingContentInset;
+@property BOOL keyboardWillRemainUp; // @synthesize keyboardWillRemainUp=_keyboardWillRemainUp;
+@property double modelToEditorScaleFactor; // @synthesize modelToEditorScaleFactor=_modelToEditorScaleFactor;
 @property (weak) AKPageController *pageController; // @synthesize pageController=_pageController;
 @property double renderingTextStorageScaleFactor; // @synthesize renderingTextStorageScaleFactor=_renderingTextStorageScaleFactor;
-@property struct CGPoint startingContentInset; // @synthesize startingContentInset=_startingContentInset;
 @property (readonly) Class superclass;
 @property (strong) NSTextStorage *textStorage; // @synthesize textStorage=_textStorage;
 @property (strong) UITextView *textView; // @synthesize textView=_textView;
@@ -52,8 +58,8 @@
 - (void)_commitToModelWithoutEndingEditing;
 - (struct CGRect)_editorFrameForTextBoundsInModel:(struct CGRect)arg1;
 - (void)_endEditing;
+- (void)_keyboardDidHide:(id)arg1;
 - (void)_keyboardDidShow:(id)arg1;
-- (void)_keyboardWillHide:(id)arg1;
 - (id)_newScaledPaths:(id)arg1 withScaleFactor:(double)arg2 aboutCenter:(struct CGPoint)arg3;
 - (void)_performBlockOnMainThread:(CDUnknownBlockType)arg1;
 - (void)_registerForKeyboardNotifications;

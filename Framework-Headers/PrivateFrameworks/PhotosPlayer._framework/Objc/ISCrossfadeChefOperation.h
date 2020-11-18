@@ -11,18 +11,18 @@
 @interface ISCrossfadeChefOperation : NSOperation
 {
     int _photoEXIFOrientation;
+    float _minimumFrameInterval;
     AVAsset *_videoAsset;
     double _crossfadeDuration;
     double _sourceStartTime;
     id _stillPhoto;
-    unsigned long long _numberOfFrames;
     AVVideoComposition *_videoComposition;
     CDUnknownBlockType _resultHandler;
     struct CGSize _targetSize;
 }
 
 @property (readonly, nonatomic) double crossfadeDuration; // @synthesize crossfadeDuration=_crossfadeDuration;
-@property (readonly, nonatomic) unsigned long long numberOfFrames; // @synthesize numberOfFrames=_numberOfFrames;
+@property (readonly, nonatomic) float minimumFrameInterval; // @synthesize minimumFrameInterval=_minimumFrameInterval;
 @property (readonly, nonatomic) int photoEXIFOrientation; // @synthesize photoEXIFOrientation=_photoEXIFOrientation;
 @property (readonly, copy, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
 @property (readonly, nonatomic) double sourceStartTime; // @synthesize sourceStartTime=_sourceStartTime;
@@ -32,7 +32,7 @@
 @property (readonly, copy, nonatomic) AVVideoComposition *videoComposition; // @synthesize videoComposition=_videoComposition;
 
 - (void).cxx_destruct;
-- (id)initWithVideoAsset:(id)arg1 sourceStartTime:(double)arg2 stillPhoto:(struct CGImage *)arg3 photoEXIFOrientation:(int)arg4 crossfadeDuration:(double)arg5 numberOfFrames:(unsigned long long)arg6 targetSize:(struct CGSize)arg7 videoComposition:(id)arg8 resultHandler:(CDUnknownBlockType)arg9;
+- (id)initWithVideoAsset:(id)arg1 sourceStartTime:(double)arg2 stillPhoto:(struct CGImage *)arg3 photoEXIFOrientation:(int)arg4 crossfadeDuration:(double)arg5 minimumFrameInterval:(float)arg6 targetSize:(struct CGSize)arg7 videoComposition:(id)arg8 resultHandler:(CDUnknownBlockType)arg9;
 
 @end
 

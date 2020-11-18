@@ -29,7 +29,6 @@
     MISSING_TYPE *locationManager;
 }
 
-@property (nonatomic) struct CLLocationCoordinate2D lastKnownCoordinate; // @synthesize lastKnownCoordinate;
 @property (nonatomic, strong) EKTravelEngineHypothesis *lastKnownHypothesis; // @synthesize lastKnownHypothesis;
 @property (nonatomic, strong) UIImage *lastKnownMapImage; // @synthesize lastKnownMapImage;
 @property (nonatomic) BOOL showExpandedMode; // @synthesize showExpandedMode;
@@ -39,9 +38,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
-- (void)locationManager:(id)arg1 didChangeAuthorization:(int)arg2;
-- (void)refreshWithAlarms:(id)arg1 events:(id)arg2 reminders:(id)arg3;
-- (void)restoreWithHypothesis:(id)arg1 mapImage:(id)arg2 showExpandedMode:(BOOL)arg3 lastKnownCoordinate:(struct CLLocationCoordinate2D)arg4;
+- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)refresh:(id)arg1 events:(id)arg2 reminders:(id)arg3;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 

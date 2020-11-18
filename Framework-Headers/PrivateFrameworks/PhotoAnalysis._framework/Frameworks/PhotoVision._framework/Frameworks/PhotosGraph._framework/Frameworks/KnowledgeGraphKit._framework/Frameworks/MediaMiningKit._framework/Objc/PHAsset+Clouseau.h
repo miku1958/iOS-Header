@@ -16,6 +16,8 @@
 @property (readonly, nonatomic) double clsContentScore;
 @property (readonly, nonatomic) NSDate *clsDate;
 @property (readonly, nonatomic) NSData *clsDistanceIdentity;
+@property (readonly, nonatomic) BOOL clsIsHDR;
+@property (readonly, nonatomic) BOOL clsIsSDOF;
 @property (readonly, nonatomic) CLLocation *clsLocation;
 @property (readonly, nonatomic) unsigned long long clsPeopleCount;
 @property (readonly, nonatomic) NSArray *clsPeopleNames;
@@ -29,6 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isBlurry;
 @property (readonly, nonatomic) BOOL isFavorite;
 @property (readonly, nonatomic) BOOL isScreenshot;
 @property (readonly, nonatomic) BOOL isUtility;
@@ -38,20 +41,33 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSDate *universalDate;
 
-+ (float)_videoScoreForAsset:(id)arg1;
-+ (id)clsAllAssetsFromFetchResult:(id)arg1 prefetchPersons:(BOOL)arg2 prefetchPersonCount:(BOOL)arg3 prefetchScenes:(BOOL)arg4;
++ (id)clsAllAssetsFromFetchResult:(id)arg1 prefetchPersons:(BOOL)arg2 prefetchPersonCount:(BOOL)arg3 prefetchScenes:(BOOL)arg4 prefetchMediaAnalyses:(BOOL)arg5;
++ (float)clsSharpnessScoreThresholdToNotBeBlurry;
 + (id)contextForItems:(id)arg1;
 + (BOOL)isUtilityForAsset:(id)arg1;
++ (void)prefetchPersonsForFetchedAssets:(id)arg1 orFetchResult:(id)arg2;
 + (double)scoreForAsset:(id)arg1 withContext:(id)arg2;
 - (id)_256SpecificAssetResource;
+- (void)_clsSetSharpnessScore:(float)arg1;
+- (void)_clsSetVideoScore:(float)arg1;
+- (float)_clsSharpnessScore:(BOOL)arg1;
+- (float)_clsUnprefetchedSharpnessScore:(BOOL)arg1;
+- (float)_clsUnprefetchedVideoScore;
 - (id)_imageDataForAssetResource:(id)arg1 networkAccessAllowed:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)clsMediaAnalysisIsPrefetched;
+- (BOOL)clsPeopleCountIsPrefetched;
+- (BOOL)clsPeopleNamesArePrefetched;
+- (BOOL)clsSceneClassificationsArePrefetched;
 - (void)clsSetPeopleCount:(id)arg1;
 - (void)clsSetPeopleNames:(id)arg1;
 - (void)clsSetSceneClassifications:(id)arg1;
+- (float)clsSharpnessScore;
 - (id)clsUnprefetchedSceneClassifications;
 - (float)clsVideoScore;
 - (struct CGImage *)createThumbnailWithResolution:(unsigned long long)arg1 fillMode:(BOOL)arg2 networkAllowed:(BOOL)arg3;
 - (unsigned long long)facesCount;
+- (BOOL)hasSharpnessScore;
+- (BOOL)isBlurryForcingAnalysisIfNeeded;
 - (BOOL)isSubtype:(unsigned long long)arg1;
 - (double)scoreWithContext:(id)arg1;
 @end

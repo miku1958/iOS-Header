@@ -16,6 +16,7 @@
 - (void)remote_allObjectAuthorizationRecordsForSampleWithUUID:(NSUUID *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)remote_allSourcesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)remote_authorizationStatusForType:(HKObjectType *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)remote_badgeHealthAppForEmergencyContactsConsolidationWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_beginAuthorizationDelegateTransactionWithSessionIdentifier:(NSUUID *)arg1 handler:(void (^)(HKSource *, NSError *))arg2;
 - (void)remote_clientResumedWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_clientWillSuspendWithCompletion:(void (^)(BOOL, NSError *))arg1;

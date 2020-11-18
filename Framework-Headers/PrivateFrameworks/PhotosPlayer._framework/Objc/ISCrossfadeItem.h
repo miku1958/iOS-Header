@@ -16,6 +16,7 @@
     NSArray *_images;
     NSArray *_animations;
     CDStruct_1b6d18a9 _videoDuration;
+    struct CGAffineTransform _preferredTransform;
 }
 
 @property (readonly, copy, nonatomic) NSArray *animations; // @synthesize animations=_animations;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) int firstImageOrientation; // @synthesize firstImageOrientation=_firstImageOrientation;
 @property (readonly, copy, nonatomic) NSArray *images; // @synthesize images=_images;
 @property (readonly, nonatomic) unsigned long long numberOfFrames; // @synthesize numberOfFrames=_numberOfFrames;
+@property (readonly, nonatomic) struct CGAffineTransform preferredTransform; // @synthesize preferredTransform=_preferredTransform;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 videoDuration; // @synthesize videoDuration=_videoDuration;
 
 - (void).cxx_destruct;

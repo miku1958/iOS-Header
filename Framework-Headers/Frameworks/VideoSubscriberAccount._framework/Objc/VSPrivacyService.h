@@ -6,11 +6,12 @@
 
 #import <VideoSubscriberAccount/VSServiceListener.h>
 
+__attribute__((visibility("hidden")))
 @interface VSPrivacyService : VSServiceListener
 {
 }
 
-+ (id)sharedService;
+- (id)init;
 
 @end
 

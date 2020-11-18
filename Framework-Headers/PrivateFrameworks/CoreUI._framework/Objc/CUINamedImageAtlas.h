@@ -15,6 +15,7 @@
     struct __CFArray *_atlasImages;
 }
 
+@property (readonly, nonatomic) BOOL completeTextureExtrusion;
 @property (readonly, nonatomic) struct CGImage *image;
 @property (readonly, nonatomic) NSArray *imageNames;
 @property (readonly, nonatomic) struct __CFArray *images;

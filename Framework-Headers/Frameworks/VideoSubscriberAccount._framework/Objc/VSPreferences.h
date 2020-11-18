@@ -8,6 +8,7 @@
 
 @class NSURL, NSUserDefaults, VSDevice;
 
+__attribute__((visibility("hidden")))
 @interface VSPreferences : NSObject
 {
     NSUserDefaults *_userDefaults;

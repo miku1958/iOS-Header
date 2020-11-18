@@ -14,19 +14,19 @@
 
 @interface CXCallDirectoryExtensionDataRequest : NSObject <CXCallDirectoryProviderHostProtocol, CXCallDirectoryExtensionDataRequest>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     id<CXCallDirectoryExtensionDataRequestDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSObject<OS_dispatch_queue> *_queue;
     NSExtension *_extension;
     id<NSCopying> _requestIdentifier;
     CXCallDirectoryExtensionHostContext *_context;
+    CDUnknownBlockType _completionHandler;
     NSError *_hostCancellationError;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic) CXCallDirectoryExtensionHostContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CXCallDirectoryExtensionDataRequestDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property (readonly) unsigned long long hash;
@@ -37,14 +37,12 @@
 
 - (void).cxx_destruct;
 - (void)_cancelWithError:(id)arg1;
-- (void)_performDelegateCallback:(CDUnknownBlockType)arg1;
 - (oneway void)addBlockingEntriesWithData:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)addIdentificationEntriesWithData:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)beginWithCompletion:(CDUnknownBlockType)arg1;
 - (oneway void)completeRequestWithReply:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithExtension:(id)arg1;
-- (void)setDelegate:(id)arg1 queue:(id)arg2;
+- (id)initWithExtension:(id)arg1 queue:(id)arg2;
 
 @end
 

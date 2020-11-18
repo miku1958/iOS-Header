@@ -6,23 +6,22 @@
 
 #import <CallKit/CXCallDirectoryEntryData.h>
 
-@class NSMutableData;
+@class NSData;
 
 @interface CXCallDirectoryBlockingEntryData : CXCallDirectoryEntryData
 {
-    NSMutableData *_phoneNumberData;
+    NSData *_phoneNumberData;
 }
 
-@property (strong, nonatomic) NSMutableData *phoneNumberData; // @synthesize phoneNumberData=_phoneNumberData;
+@property (strong, nonatomic) NSData *phoneNumberData; // @synthesize phoneNumberData=_phoneNumberData;
 @property (readonly, nonatomic) const long long *phoneNumbers;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)appendPhoneNumber:(long long)arg1;
 - (unsigned long long)count;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCapacity:(unsigned long long)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (long long)phoneNumberAtIndex:(unsigned long long)arg1;
 

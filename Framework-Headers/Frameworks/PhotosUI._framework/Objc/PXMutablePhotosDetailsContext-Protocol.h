@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) PHFetchResult *assetCollections;
 @property (copy, nonatomic) NSDictionary *assetsByCollection;
+@property (strong, nonatomic) PHFetchResult *keyAssetsFetchResult;
 @property (copy, nonatomic) NSString *localizedSubtitle;
 @property (copy, nonatomic) NSString *localizedTitle;
 @property (strong, nonatomic) PHFetchResult *people;

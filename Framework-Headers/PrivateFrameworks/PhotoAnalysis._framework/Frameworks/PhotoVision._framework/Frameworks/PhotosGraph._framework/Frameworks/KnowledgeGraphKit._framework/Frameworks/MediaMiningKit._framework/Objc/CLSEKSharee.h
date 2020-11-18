@@ -12,6 +12,8 @@
 
 @interface CLSEKSharee : NSObject <NSCoding>
 {
+    BOOL _isCurrentUserForSharing;
+    BOOL _isCurrentUserForScheduling;
     NSString *_emailAddress;
     NSString *_name;
     NSString *_UUID;
@@ -19,6 +21,8 @@
 
 @property (readonly) NSString *UUID; // @synthesize UUID=_UUID;
 @property (readonly) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
+@property (readonly) BOOL isCurrentUserForScheduling; // @synthesize isCurrentUserForScheduling=_isCurrentUserForScheduling;
+@property (readonly) BOOL isCurrentUserForSharing; // @synthesize isCurrentUserForSharing=_isCurrentUserForSharing;
 @property (readonly) NSString *name; // @synthesize name=_name;
 
 - (void).cxx_destruct;

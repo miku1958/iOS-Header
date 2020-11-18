@@ -80,6 +80,7 @@
 - (void)dealloc;
 - (void)enumeratePeople:(CDUnknownBlockType)arg1;
 - (void)enumeratePlainTextLines:(CDUnknownBlockType)arg1;
+- (unsigned long long)eventEnrichmentsCount;
 - (BOOL)hasEventEnrichment;
 - (id)initWithContactDetailWithKey:(id)arg1 type:(unsigned long long)arg2 extractionType:(unsigned long long)arg3 curated:(BOOL)arg4 parent:(id)arg5 value:(id)arg6 context:(id)arg7 contextRangeOfInterest:(struct _NSRange)arg8;
 - (id)initWithDuplicateKey:(id)arg1 title:(id)arg2 parent:(id)arg3;

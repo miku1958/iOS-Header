@@ -21,9 +21,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSString *pronunciationHint; // @synthesize pronunciationHint=_pronunciationHint;
-@property (readonly, nonatomic) NSString *spokenPhrase; // @synthesize spokenPhrase=_spokenPhrase;
+@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSString *pronunciationHint; // @synthesize pronunciationHint=_pronunciationHint;
+@property (strong, nonatomic) NSString *spokenPhrase; // @synthesize spokenPhrase=_spokenPhrase;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
@@ -34,6 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 spokenPhrase:(id)arg2 pronunciationHint:(id)arg3;
+- (id)initWithSpokenPhrase:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)length;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

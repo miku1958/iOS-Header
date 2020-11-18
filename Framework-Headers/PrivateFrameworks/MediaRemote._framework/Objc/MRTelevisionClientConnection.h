@@ -55,6 +55,7 @@
 - (void)_preProcessMessage:(id)arg1 data:(id)arg2;
 - (void)_setQOSPropertiesOnStream:(id)arg1;
 - (void)dealloc;
+- (void)forceDisconnect;
 - (id)initWithInputStream:(id)arg1 outputStream:(id)arg2 runLoop:(id)arg3;
 - (void)parser:(id)arg1 didParseMessage:(id)arg2;
 - (void)sendMessage:(id)arg1;

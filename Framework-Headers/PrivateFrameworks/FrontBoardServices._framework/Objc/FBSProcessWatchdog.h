@@ -42,7 +42,6 @@
 - (id)initWithName:(id)arg1 process:(id)arg2 policy:(id)arg3;
 - (void)invalidate;
 - (void)provision:(id)arg1 wasViolatedWithError:(id)arg2;
-- (void)provisionMilestoneCompleted:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

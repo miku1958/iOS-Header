@@ -12,10 +12,12 @@ __attribute__((visibility("hidden")))
 @interface CKDModifyShareHandler : CKDModifyRecordHandler
 {
     BOOL _haveAddedOwnerToShare;
+    BOOL _isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade;
     CKDModifyShareTokenURLRequest *_request;
 }
 
 @property (nonatomic) BOOL haveAddedOwnerToShare; // @synthesize haveAddedOwnerToShare=_haveAddedOwnerToShare;
+@property (nonatomic) BOOL isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade; // @synthesize isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade=_isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade;
 @property (strong, nonatomic) CKDModifyShareTokenURLRequest *request; // @synthesize request=_request;
 @property (readonly, nonatomic) CKShare *share;
 @property (readonly, nonatomic) CKRecordID *shareID;

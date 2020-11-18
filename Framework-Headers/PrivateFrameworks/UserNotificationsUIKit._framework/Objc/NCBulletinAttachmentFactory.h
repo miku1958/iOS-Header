@@ -10,7 +10,6 @@
 {
 }
 
-+ (double)_attachmentHeight;
 + (id)_genericImageForAttachmentType:(long long)arg1;
 + (id)_imageByCroppingOrPaddingImage:(id)arg1 toSize:(struct CGSize)arg2;
 + (id)_imageFromPNGData:(id)arg1;

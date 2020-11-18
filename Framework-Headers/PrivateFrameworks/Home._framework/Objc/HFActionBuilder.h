@@ -13,6 +13,7 @@
 }
 
 @property (readonly, nonatomic) HMAction *action;
+@property (readonly, nonatomic) BOOL requiresDeviceUnlock;
 
 + (id)actionBuilderForAction:(id)arg1 inHome:(id)arg2;
 + (Class)homeKitRepresentationClass;

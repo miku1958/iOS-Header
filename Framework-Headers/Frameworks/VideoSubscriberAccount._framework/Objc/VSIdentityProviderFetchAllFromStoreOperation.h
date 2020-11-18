@@ -8,6 +8,7 @@
 
 @class VSFailable, VSStoreRequestOperation;
 
+__attribute__((visibility("hidden")))
 @interface VSIdentityProviderFetchAllFromStoreOperation : VSAsyncOperation
 {
     VSFailable *_result;

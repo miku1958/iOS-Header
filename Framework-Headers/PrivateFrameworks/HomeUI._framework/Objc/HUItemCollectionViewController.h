@@ -57,6 +57,7 @@
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)recursivelyDisableItemUpdates:(BOOL)arg1 withReason:(id)arg2;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
+- (BOOL)shouldCoalesceBatchUpdatesBeforeViewDidAppear;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

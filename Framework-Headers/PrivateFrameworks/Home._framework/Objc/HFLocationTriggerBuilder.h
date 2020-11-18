@@ -17,12 +17,14 @@
 
 + (BOOL)supportsConditions;
 - (void).cxx_destruct;
+- (id)_allActionSets;
 - (id)_performValidation;
 - (id)_updateRegion;
 - (id)commitCreateTrigger;
 - (id)commitEditTrigger;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1;
+- (BOOL)requiresConfirmationToRun;
 
 @end
 

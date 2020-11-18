@@ -19,5 +19,6 @@
 - (oneway void)startRecordingWindowLayerContextIDs:(NSArray *)arg1 windowSize:(struct CGSize)arg2 microphoneEnabled:(BOOL)arg3 cameraEnabled:(BOOL)arg4 broadcast:(BOOL)arg5 systemRecording:(BOOL)arg6 withHandler:(void (^)(NSError *, BOOL, BOOL))arg7;
 - (oneway void)stopRecordingWithHandler:(void (^)(NSURL *, NSError *))arg1;
 - (oneway void)stopRecordingWithStartClipDuration:(double)arg1 endClipDuration:(double)arg2 handler:(void (^)(NSURL *, NSError *))arg3;
+- (oneway void)updateProcessIDForAudioCaptureWithPID:(int)arg1;
 @end
 

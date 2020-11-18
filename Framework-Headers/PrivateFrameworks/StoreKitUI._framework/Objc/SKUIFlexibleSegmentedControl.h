@@ -20,6 +20,7 @@
     long long _previousSelectedSegmentIndex;
     UISegmentedControl *_segmentedControl;
     long long _selectedSegmentIndex;
+    BOOL _sizesSegmentsToFitWidth;
 }
 
 @property (weak, nonatomic) id<SKUIFlexibleSegmentedControlDelegate> delegate; // @synthesize delegate=_delegate;
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) long long moreListIndex;
 @property (copy, nonatomic) NSString *moreListTitle; // @synthesize moreListTitle=_moreListTitle;
 @property (nonatomic) long long selectedSegmentIndex; // @synthesize selectedSegmentIndex=_selectedSegmentIndex;
+@property (nonatomic) BOOL sizesSegmentsToFitWidth; // @synthesize sizesSegmentsToFitWidth=_sizesSegmentsToFitWidth;
 
 - (void).cxx_destruct;
 - (void)_configureSegmentedControl:(id)arg1 withTitles:(id)arg2 boundingSize:(struct CGSize)arg3;

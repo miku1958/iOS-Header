@@ -8,6 +8,7 @@
 
 @protocol PLPhotoAnalysisVisionServiceFaceProcessingProtocol
 - (void)faceClusteringInformation:(unsigned long long)arg1 withContext:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)faceProcessingStatusForUserInterfaceWithContext:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)performFaceProcessingOnAssetWithLocalIdentifier:(NSString *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)performFaceProcessingOnSRGBImageData:(NSData *)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 bytesPerRow:(unsigned long long)arg4 bitmapInfo:(unsigned int)arg5 context:(NSDictionary *)arg6 reply:(void (^)(NSArray *, NSError *))arg7;
 - (void)reclusterFacesWithContext:(NSDictionary *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
@@ -15,7 +16,7 @@
 - (void)resetFaceClusteringStateWithContext:(NSDictionary *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)scheduleFaceProcessingOnAssetsWithLocalIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)suggestFacesForFacesWithLocalIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
-- (void)suggestFacesForPersonWithLocalIdentifier:(NSString *)arg1 toBeConfirmedFaceLocalIdentifiers:(NSArray *)arg2 toBeRejectedFaceLocalIdentifiers:(NSArray *)arg3 context:(NSDictionary *)arg4 reply:(void (^)(NSArray *, NSError *))arg5;
+- (void)suggestFacesForPersonWithLocalIdentifier:(NSString *)arg1 toBeConfirmedFaceSuggestions:(NSArray *)arg2 toBeRejectedFaceSuggestions:(NSArray *)arg3 context:(NSDictionary *)arg4 reply:(void (^)(NSArray *, NSError *))arg5;
 - (void)suggestPersonForFaceWithLocalIdentifier:(NSString *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
 @end
 

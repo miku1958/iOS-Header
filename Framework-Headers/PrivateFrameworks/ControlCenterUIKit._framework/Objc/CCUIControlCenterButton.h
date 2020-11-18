@@ -6,10 +6,12 @@
 
 #import <SpringBoardFoundation/SBFButton.h>
 
+#import <ControlCenterUIKit/_UISettingsKeyObserver-Protocol.h>
+
 @class NSString, UIColor, UIFont, UIImage, UIImageView, UILabel, UIView;
 @protocol CCUIControlCenterButtonDelegate;
 
-@interface CCUIControlCenterButton : SBFButton
+@interface CCUIControlCenterButton : SBFButton <_UISettingsKeyObserver>
 {
     unsigned long long _buttonType;
     UIColor *_selectedColor;
@@ -28,15 +30,19 @@
 }
 
 @property (nonatomic) BOOL animatesStateChanges; // @synthesize animatesStateChanges=_animatesStateChanges;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CCUIControlCenterButtonDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIFont *font; // @dynamic font;
 @property (strong, nonatomic) UIImage *glyphImage; // @synthesize glyphImage=_glyphImage;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInternal) BOOL internal;
 @property (nonatomic) double naturalHeight; // @synthesize naturalHeight=_naturalHeight;
 @property (nonatomic) long long numberOfLines; // @dynamic numberOfLines;
 @property (nonatomic) unsigned long long roundCorners; // @synthesize roundCorners=_roundCorners;
 @property (strong, nonatomic) UIImage *selectedGlyphImage; // @synthesize selectedGlyphImage=_selectedGlyphImage;
 @property (nonatomic, getter=isShowingMenu) BOOL showingMenu; // @synthesize showingMenu=_showingMenu;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *text; // @dynamic text;
 
 + (id)_buttonWithSelectedColor:(id)arg1 text:(id)arg2 type:(unsigned long long)arg3;
@@ -82,6 +88,7 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setGlyphImage:(id)arg1 selectedGlyphImage:(id)arg2 name:(id)arg3;
 - (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

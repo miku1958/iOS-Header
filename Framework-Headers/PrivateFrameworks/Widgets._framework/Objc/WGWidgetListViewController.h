@@ -12,7 +12,7 @@
 #import <Widgets/WGWidgetExtensionVisibilityProviding-Protocol.h>
 #import <Widgets/WGWidgetHostingViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, UIScrollView, UIStackView, WGWidgetDiscoveryController, WGWidgetShortLookView;
+@class NCMaterialSettings, NSArray, NSMutableDictionary, NSString, UIScrollView, UIStackView, WGWidgetDiscoveryController, WGWidgetShortLookView;
 @protocol WGWidgetListViewControllerDelegate, WGWidgetListViewControllerDelegatePrivate;
 
 @interface WGWidgetListViewController : UIViewController <WGWidgetDebugging, UIScrollViewDelegate, WGWidgetDiscoveryObserving, WGWidgetHostingViewControllerDelegate, WGWidgetExtensionVisibilityProviding>
@@ -22,6 +22,8 @@
     NSMutableDictionary *_cancelTouchesAssertionsByWidgetID;
     NSMutableDictionary *_shortLookViewsByWidgetID;
     WGWidgetShortLookView *_shortLookViewForMeasuring;
+    NCMaterialSettings *_materialSettings;
+    BOOL _shouldBlurContent;
     id<WGWidgetListViewControllerDelegate> _delegate;
     NSArray *_previouslyVisibleWidgetIDs;
 }
@@ -37,6 +39,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, getter=_previouslyVisibleWidgetIDs, setter=_setPreviouslyVisibleWidgetIDs:) NSArray *previouslyVisibleWidgetIDs; // @synthesize previouslyVisibleWidgetIDs=_previouslyVisibleWidgetIDs;
+@property (nonatomic) BOOL shouldBlurContent; // @synthesize shouldBlurContent=_shouldBlurContent;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long widgetCount;
@@ -49,6 +52,7 @@
 - (void)_configureStackView;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (CDUnknownBlockType)_insert:(BOOL)arg1 widgetView:(id)arg2 withOrderedIdentifiers:(id)arg3 animated:(BOOL)arg4;
+- (unsigned long long)_insertionIndexOfWidgetView:(id)arg1 intoWidgetViews:(id)arg2 withOrderedIdentifiers:(id)arg3;
 - (void)_invalidateAllCancelTouchesAssertions;
 - (void)_invokeBlock:(CDUnknownBlockType)arg1 withShortLookViewsPassingTest:(CDUnknownBlockType)arg2;
 - (void)_invokeBlockWithShortLookViewsVisibleInBounds:(CDUnknownBlockType)arg1;
@@ -65,10 +69,10 @@
 - (void)_updateWidgetViewStateWithPreviouslyVisibleWidgetIdentifiers:(id)arg1;
 - (void)_validateWidgetHostStateForShortLook:(id)arg1;
 - (id)_widgetIdentifiersForShortLookViewsVisibleInBounds;
+- (void)brokenViewDidAppearForWidget:(id)arg1;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithWidgetDiscoveryController:(id)arg1;
-- (void)invalidateWidgetBackgroundViews;
 - (BOOL)isWidgetExtensionVisible:(id)arg1;
 - (void)loadView;
 - (void)makeVisibleWidgetWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

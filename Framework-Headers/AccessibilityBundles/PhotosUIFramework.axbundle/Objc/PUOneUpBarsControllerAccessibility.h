@@ -24,6 +24,7 @@
 - (id)_newBarButtonItemWithIdentifier:(long long)arg1 location:(long long)arg2;
 - (void)_performToggleDetailsAction;
 - (void)_performToggleFavoriteAction;
+- (BOOL)accessibilityScroll:(long long)arg1;
 
 @end
 

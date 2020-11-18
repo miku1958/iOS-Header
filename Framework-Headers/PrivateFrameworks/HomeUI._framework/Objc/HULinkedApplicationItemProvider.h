@@ -10,11 +10,11 @@
 
 @interface HULinkedApplicationItemProvider : HFItemProvider
 {
-    NSSet *_accessories;
+    CDUnknownBlockType _filter;
     NSSet *_linkedApplicationItems;
 }
 
-@property (strong, nonatomic) NSSet *accessories; // @synthesize accessories=_accessories;
+@property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property (strong, nonatomic) NSSet *linkedApplicationItems; // @synthesize linkedApplicationItems=_linkedApplicationItems;
 
 + (BOOL)prefersNonBlockingReloads;
@@ -25,9 +25,9 @@
 - (id)_itemForLibraryItem:(id)arg1;
 - (id)_itemForStoreItem:(id)arg1;
 - (id)_loadStoreIconWithArtwork:(id)arg1 results:(id)arg2;
-- (id)_performLibraryLookup;
+- (id)_performLibraryLookupForAccessories:(id)arg1;
 - (id)_performStoreLookupWithLibraryResult:(id)arg1;
-- (id)initWithHome:(id)arg1 accessories:(id)arg2;
+- (id)initWithHome:(id)arg1;
 - (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;

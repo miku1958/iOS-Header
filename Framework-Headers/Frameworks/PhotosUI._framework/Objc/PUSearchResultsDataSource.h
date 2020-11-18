@@ -29,15 +29,21 @@ __attribute__((visibility("hidden")))
     PLSearchIndexDateFormatter *_dateFormatter;
     unsigned long long _assetFetchIndex;
     _Atomic BOOL _didMerge;
+    BOOL _needsAggdSearchLogging;
     id<PUSearchResultsDataSourceChangeObserver> _changeObserver;
     PSIDatabase *_searchIndex;
+    double _searchTime;
+    unsigned long long _searchResultsCount;
 }
 
 @property (weak, nonatomic) id<PUSearchResultsDataSourceChangeObserver> changeObserver; // @synthesize changeObserver=_changeObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL needsAggdSearchLogging; // @synthesize needsAggdSearchLogging=_needsAggdSearchLogging;
 @property (strong, nonatomic) PSIDatabase *searchIndex; // @synthesize searchIndex=_searchIndex;
+@property (nonatomic) unsigned long long searchResultsCount; // @synthesize searchResultsCount=_searchResultsCount;
+@property (nonatomic) double searchTime; // @synthesize searchTime=_searchTime;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -52,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSearchIndex:(id)arg1;
 - (void)mergePendingChanges;
 - (unsigned long long)numberOfSearchResults;
+- (void)performAggdSearchLogIfNeeded;
 - (BOOL)searchIsFinished:(id)arg1;
 - (void)setSearchString:(id)arg1;
 - (void)setSearchString:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

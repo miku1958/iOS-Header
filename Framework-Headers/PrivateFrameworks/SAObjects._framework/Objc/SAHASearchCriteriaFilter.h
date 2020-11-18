@@ -27,6 +27,7 @@
 @property (copy, nonatomic) NSURL *serviceGroupIdentifier;
 @property (copy, nonatomic) NSURL *serviceIdentifier;
 @property (copy, nonatomic) NSString *serviceName;
+@property (copy, nonatomic) NSString *serviceSubType;
 @property (copy, nonatomic) NSString *serviceType;
 @property (copy, nonatomic) NSURL *zoneIdentifier;
 @property (copy, nonatomic) NSString *zoneName;

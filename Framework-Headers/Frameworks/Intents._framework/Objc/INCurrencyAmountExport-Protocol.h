@@ -11,8 +11,8 @@
 
 @protocol INCurrencyAmountExport <NSObject, JSExport>
 
-@property (readonly, copy, nonatomic) NSDecimalNumber *amount;
-@property (readonly, copy, nonatomic) NSString *currencyCode;
+@property (copy, nonatomic) NSDecimalNumber *amount;
+@property (copy, nonatomic) NSString *currencyCode;
 
 - (id)init;
 @end

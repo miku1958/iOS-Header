@@ -6,30 +6,34 @@
 
 #import <UIKit/UIViewController.h>
 
-@class AVCaptureDevice, AVCaptureDeviceInput, AVCaptureSession, AVCaptureVideoPreviewLayer;
+@class AVCaptureDevice, AVCaptureDeviceInput, AVCaptureSession;
 
 @interface RPPipViewController : UIViewController
 {
     AVCaptureSession *_pipSession;
     AVCaptureDevice *_videoDevice;
     AVCaptureDeviceInput *_videoInput;
-    AVCaptureVideoPreviewLayer *_previewLayer;
+    long long _initialOrientation;
 }
 
+@property (nonatomic) long long initialOrientation; // @synthesize initialOrientation=_initialOrientation;
 @property (strong, nonatomic) AVCaptureSession *pipSession; // @synthesize pipSession=_pipSession;
-@property (strong, nonatomic) AVCaptureVideoPreviewLayer *previewLayer; // @synthesize previewLayer=_previewLayer;
 @property (strong, nonatomic) AVCaptureDevice *videoDevice; // @synthesize videoDevice=_videoDevice;
 @property (strong, nonatomic) AVCaptureDeviceInput *videoInput; // @synthesize videoInput=_videoInput;
 
 - (void).cxx_destruct;
-- (void)didReceiveMemoryWarning;
-- (id)init;
-- (void)setPreviewOrientation;
+- (long long)_captureVideoOrientationForUIDeviceOrientation:(long long)arg1;
+- (void)_deviceOrientationDidChange;
+- (id)_pipView;
+- (void)_updateViewGeometry;
+- (id)initWithOrientation:(long long)arg1;
+- (void)loadView;
 - (void)setUpPipSession;
 - (void)startPipSession;
 - (void)stopPipSession;
-- (void)viewDidLoad;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

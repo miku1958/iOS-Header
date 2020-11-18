@@ -38,7 +38,6 @@
 - (void)_autoscrollForReordering:(id)arg1;
 - (id)_footerAttributes;
 - (double)_highestVisibleCellZOrder;
-- (void)animateDropToFavoriteSection:(CDUnknownBlockType)arg1;
 - (void)animateDropToFavoriteShelf:(CDUnknownBlockType)arg1;
 - (BOOL)beginInteractiveMovementAtLocation:(struct CGPoint)arg1 forItemAtIndexPath:(id)arg2;
 - (void)cancelInteractiveMovement;

@@ -85,6 +85,7 @@
 - (void)behavior:(id)arg1 setVideoForwardPlaybackEndTime:(CDStruct_1b6d18a9)arg2;
 - (void)behavior:(id)arg1 setVideoPlayRate:(float)arg2;
 - (void)behavior:(id)arg1 setVideoVolume:(float)arg2;
+- (void)configurePlayerItem;
 - (double)currentCrossfadeTime;
 - (void)dealloc;
 - (void)didAddOutput:(id)arg1;

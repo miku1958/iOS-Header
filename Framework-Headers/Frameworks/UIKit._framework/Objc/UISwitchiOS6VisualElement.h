@@ -71,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setAlpha:(double)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setOn:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
++ (void)adjustCodable:(id)arg1;
 + (id)decodeSyncObjectWithData:(id)arg1;
 + (BOOL)generateSyncObjectsForStore:(id)arg1 predicate:(id)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 maxEncodedBytesPerMessage:(long long)arg4 profile:(id)arg5 error:(id *)arg6 handler:(CDUnknownBlockType)arg7;
 + (int)nanoSyncObjectType;

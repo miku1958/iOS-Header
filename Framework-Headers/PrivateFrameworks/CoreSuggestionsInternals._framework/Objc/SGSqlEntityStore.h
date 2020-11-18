@@ -172,6 +172,7 @@
 - (id)allPseudoContacts;
 - (void)analyzeDatabase;
 - (void)analyzeMergeBlobs:(id)arg1;
+- (BOOL)anyEmailAddressIsSignificant:(id)arg1;
 - (id)batch:(CDUnknownBlockType)arg1;
 - (id)batchOf:(unsigned long long)arg1 contactsStartingAtEntityId:(unsigned long long)arg2;
 - (id)childrenFromParentKey:(id)arg1;

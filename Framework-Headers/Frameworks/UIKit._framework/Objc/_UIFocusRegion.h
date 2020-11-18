@@ -40,6 +40,7 @@
 - (unsigned long long)_effectiveFocusableBoundariesForHeading:(unsigned long long)arg1;
 - (unsigned long long)_focusableBoundaries;
 - (id)_occludingRegions;
+- (long long)_preferredDistanceComparisonType;
 - (id)_resizeToRect:(struct CGRect)arg1;
 - (BOOL)_shouldBeOccludedByRegion:(id)arg1;
 - (BOOL)_shouldCropRegionToSearchArea;

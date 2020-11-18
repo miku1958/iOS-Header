@@ -27,7 +27,7 @@
 @property (readonly, nonatomic) BOOL supportsVideo;
 
 - (void).cxx_destruct;
-- (id)dialRequestForDestinationID:(id)arg1 contact:(id)arg2 video:(BOOL)arg3;
+- (id)dialRequestForDestinationID:(id)arg1 customIdentifier:(id)arg2 contact:(id)arg3 video:(BOOL)arg4;
 - (id)initWithCallProvider:(id)arg1;
 
 @end

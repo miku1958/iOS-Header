@@ -7,11 +7,9 @@
 #import <VideoSubscriberAccount/VSAuthenticationViewController-Protocol.h>
 
 @class VSCredentialEntryViewModel;
-@protocol VSCredentialEntryViewControllerDelegate;
 
 @protocol VSCredentialEntryViewController <VSAuthenticationViewController>
 
-@property (weak, nonatomic) id<VSCredentialEntryViewControllerDelegate> delegate;
 @property (strong, nonatomic) VSCredentialEntryViewModel *viewModel;
 
 @end

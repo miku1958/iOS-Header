@@ -6,11 +6,10 @@
 
 #import <UIKit/UIImage.h>
 
-@class MPArtworkCatalog, NSURL;
+@class NSURL;
 
 @interface UIImage (MPArtworkCatalog)
 
-@property (readonly, nonatomic) MPArtworkCatalog *artworkCatalog;
 @property (readonly, nonatomic) NSURL *artworkCatalogBackingFileURL;
 
 @end

@@ -78,6 +78,7 @@
 @property (readonly, nonatomic) PBCodable *stateForLogging;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SYSyncEngine *syncEngine; // @synthesize syncEngine=_syncEngine;
+@property (readonly, nonatomic) BOOL targetIsInProximity;
 
 - (void).cxx_destruct;
 - (id)_chooseBetweenCollidingSessions:(id)arg1:(id)arg2;
@@ -139,6 +140,8 @@
 - (void)_vectorClockUpdated;
 - (void)_whenSessionEnds:(CDUnknownBlockType)arg1;
 - (void)_wrapUpCurrentSession:(id)arg1;
+- (void)currentDeviceProximityChanged:(BOOL)arg1;
+- (void)dataStreamWithMetadata:(id)arg1 options:(struct NSDictionary *)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)dataStreamWithMetadata:(id)arg1 options:(struct NSDictionary *)arg2 identifier:(id *)arg3 error:(id *)arg4;
 - (void)dealloc;
 - (void)deliveredMessageWithID:(id)arg1 context:(id)arg2;
@@ -151,6 +154,7 @@
 - (id)init;
 - (id)initWithService:(id)arg1 priority:(long long)arg2 asMasterStore:(BOOL)arg3 options:(struct NSDictionary *)arg4;
 - (BOOL)resume:(id *)arg1;
+- (void)sendData:(id)arg1 options:(struct NSDictionary *)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)sendData:(id)arg1 options:(struct NSDictionary *)arg2 identifier:(id *)arg3 error:(id *)arg4;
 - (void)sentMessageWithID:(id)arg1 context:(id)arg2;
 - (void)serializeForIncomingSession:(CDUnknownBlockType)arg1;

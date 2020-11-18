@@ -9,6 +9,7 @@
 @class NSMutableArray, NSOperationQueue;
 @protocol VSPresentableViewController, VSViewControllerPresentationStackDelegate;
 
+__attribute__((visibility("hidden")))
 @interface VSViewControllerPresentationStack : NSObject
 {
     id<VSViewControllerPresentationStackDelegate> _delegate;

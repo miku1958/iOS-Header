@@ -54,6 +54,7 @@
 - (id)nextSingleByteStringInEncoding:(unsigned long long)arg1 quotedPrintable:(BOOL)arg2 stopTokens:(int)arg3 trim:(BOOL)arg4;
 - (id)nextStringInEncoding:(unsigned long long)arg1 quotedPrintable:(BOOL)arg2 stopTokens:(int)arg3 trim:(BOOL)arg4;
 - (int)nextTokenPeek:(BOOL)arg1;
+- (int)nextTokenPeek:(BOOL)arg1 length:(long long)arg2;
 - (int)nextTokenPeekSingle:(BOOL)arg1 length:(long long)arg2;
 - (int)nextTokenPeekUnicode:(BOOL)arg1 length:(long long)arg2;
 - (id)nextUnicodeBase64Line:(BOOL *)arg1;
@@ -64,6 +65,7 @@
 - (id)stringFromData:(id)arg1 encoding:(unsigned long long)arg2 prefixLength:(unsigned long long)arg3 suffixLength:(unsigned long long)arg4;
 - (id)stringFromSubData:(id)arg1 encoding:(unsigned long long)arg2;
 - (id)stringWithRange:(struct _NSRange)arg1 encoding:(unsigned long long)arg2;
+- (int)tokenAtCursonIgnoringLineFolding;
 - (int)tokenAtCursor;
 - (id)tokenSetForLength:(long long)arg1;
 - (id)trimData:(id)arg1 withPrefixLength:(unsigned long long)arg2 suffixLength:(unsigned long long)arg3;

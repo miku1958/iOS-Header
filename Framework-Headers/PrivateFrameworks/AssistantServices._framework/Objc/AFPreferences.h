@@ -41,7 +41,6 @@
 - (BOOL)assistantIsEnabled;
 - (BOOL)assistantLanguageForceRTL;
 - (id)bestSupportedLanguageCodeForLanguageCode:(id)arg1;
-- (long long)bugReportingMode;
 - (void)dealloc;
 - (BOOL)debugButtonIsEnabled;
 - (BOOL)dictationIsEnabled;
@@ -64,7 +63,6 @@
 - (BOOL)respectsSystemMute;
 - (void)setAssistantIsEnabled:(BOOL)arg1;
 - (void)setAssistantLanguageForceRTL:(BOOL)arg1;
-- (void)setBugReportingMode:(long long)arg1;
 - (void)setDebugButtonIsEnabled:(BOOL)arg1;
 - (void)setDictationIsEnabled:(BOOL)arg1;
 - (void)setDisableAssistantWhilePasscodeLocked:(BOOL)arg1;

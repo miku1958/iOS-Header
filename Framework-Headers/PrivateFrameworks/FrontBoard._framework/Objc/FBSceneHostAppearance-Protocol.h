@@ -13,6 +13,7 @@
 @property (nonatomic) unsigned long long appearanceStyle;
 @property (strong, nonatomic) UIColor *backgroundColorWhileHosting;
 @property (strong, nonatomic) UIColor *backgroundColorWhileNotHosting;
+@property (nonatomic, getter=isClippingDisabled) BOOL clippingDisabled;
 @property (readonly, nonatomic, getter=isContextHosted) BOOL contextHosted;
 @property (nonatomic) unsigned long long hostedLayerTypes;
 @property (readonly, nonatomic, getter=isHosting) BOOL hosting;

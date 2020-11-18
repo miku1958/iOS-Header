@@ -13,6 +13,7 @@
     BOOL _includeNotes;
     BOOL _includePhotos;
     BOOL _includePrivateFields;
+    BOOL _includePrivateBundleIdentifiers;
     BOOL _includeUserSettings;
     BOOL _compressPhotos;
     BOOL _prefersUncroppedPhotos;
@@ -28,6 +29,7 @@
 @property BOOL compressPhotos; // @synthesize compressPhotos=_compressPhotos;
 @property BOOL includeNotes; // @synthesize includeNotes=_includeNotes;
 @property BOOL includePhotos; // @synthesize includePhotos=_includePhotos;
+@property BOOL includePrivateBundleIdentifiers; // @synthesize includePrivateBundleIdentifiers=_includePrivateBundleIdentifiers;
 @property BOOL includePrivateFields; // @synthesize includePrivateFields=_includePrivateFields;
 @property BOOL includeUserSettings; // @synthesize includeUserSettings=_includeUserSettings;
 @property unsigned long long maximumEncodingLength; // @synthesize maximumEncodingLength=_maximumEncodingLength;

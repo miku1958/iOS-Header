@@ -50,8 +50,10 @@
 - (void).cxx_destruct;
 - (void)_updateImplementationDelegate;
 - (id)actionManager;
+- (void)commitPreviewViewController:(id)arg1;
 - (id)currentImageForAssetReference:(id)arg1;
 - (id)dataSourceManager;
+- (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (BOOL)handlePresentingPinchGestureRecognizer:(id)arg1;
 - (id)init;
 - (id)initWithPresentingViewController:(id)arg1;

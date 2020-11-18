@@ -109,6 +109,7 @@
 - (void)_utilityServerProxyWithCompletion:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_weeklySummaryInfoForDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_workoutServerProxyWithCompletion:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)acceptInviteRequestFromFriendWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addHealthServicePairing:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)addSamples:(id)arg1 toWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addSourceWithBundleIdentifier:(id)arg1 name:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -116,6 +117,7 @@
 - (void)allAuthorizationRecordsForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)allSourcesWithCompletion:(CDUnknownBlockType)arg1;
 - (long long)authorizationStatusForType:(id)arg1;
+- (void)badgeHealthAppForEmergencyContactsConsolidationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginAuthorizationDelegateTransactionWithSessionIdentifier:(id)arg1 sourceHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (id)biologicalSexWithError:(id *)arg1;
 - (id)bloodTypeWithError:(id *)arg1;
@@ -158,10 +160,12 @@
 - (void)endWorkoutSession:(id)arg1;
 - (void)executeQuery:(id)arg1;
 - (void)fetchAllDevicesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchAllFitnessFriendsActivityDataIfTimeSinceLastFetchIsGreaterThan:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAllFitnessFriendsActivityDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchAreMultipleDevicesSharingDataForSnapshotIndex:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchMedicalIDDataCreateIfNecessary:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchMedicalIDDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchMedicalIDEmergencyContactsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)finishLocationSeries:(id)arg1 withMetadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fitnessFriendsCloudKitAccountStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)fitzpatrickSkinTypeWithError:(id *)arg1;
@@ -211,7 +215,6 @@
 - (void)saveObjects:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)select:(id)arg1 from:(id)arg2 where:(id)arg3 groupBy:(id)arg4 orderBy:(id)arg5 limit:(long long)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)sendFitnessFriendInviteRequestToDestination:(id)arg1 callerID:(id)arg2 serviceIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)sendFitnessFriendsInviteResponse:(long long)arg1 toFriendWithUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendFitnessFriendsWithdrawInviteRequestToFriendWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setActivityDataVisible:(BOOL)arg1 toFriendWithUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;

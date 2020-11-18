@@ -8,12 +8,13 @@
 
 #import <HealthDaemon/HDHealthDaemon-Protocol.h>
 
-@class HDAchievementAssetManager, HDAppSubscriptionManager, HDAuthorizationManager, HDBackgroundTaskScheduler, HDContentProtectionManager, HDCurrentActivitySummaryHelper, HDDataProvenanceManager, HDDeviceManager, HDFitnessFriendsManager, HDHealthServiceManager, HDMockPrimaryProfile, HDNanoSyncManager, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDRoutineGateway, HDServiceConnectionManager, HDUserCharacteristicsManager, NSString, NSURL, _HKBehavior;
+@class HDAchievementAssetManager, HDAchievementDefinitionAlertManager, HDAppSubscriptionManager, HDAuthorizationManager, HDBackgroundTaskScheduler, HDContentProtectionManager, HDCurrentActivitySummaryHelper, HDDataProvenanceManager, HDDeviceManager, HDFitnessFriendsManager, HDHealthServiceManager, HDMockPrimaryProfile, HDNanoSyncManager, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDRoutineGateway, HDServiceConnectionManager, HDUserCharacteristicsManager, NSString, NSURL, _HKBehavior;
 @protocol HDHealthDatabase, HDNanoAlertSuppressionService, HDSyncEngine, HDViewOnWakeService, OS_dispatch_queue;
 
 @interface HDMockDaemon : NSObject <HDHealthDaemon>
 {
     HDAchievementAssetManager *achievementAssetManager;
+    HDAchievementDefinitionAlertManager *achievementDefinitionAlertManager;
     HDAuthorizationManager *authorizationManager;
     HDDataProvenanceManager *dataProvenanceManager;
     HDNanoSyncManager *nanoSyncManager;
@@ -35,6 +36,7 @@
 }
 
 @property (strong, nonatomic) HDAchievementAssetManager *achievementAssetManager; // @synthesize achievementAssetManager;
+@property (strong, nonatomic) HDAchievementDefinitionAlertManager *achievementDefinitionAlertManager; // @synthesize achievementDefinitionAlertManager;
 @property (strong, nonatomic) id<HDNanoAlertSuppressionService> alertSuppressionService; // @synthesize alertSuppressionService;
 @property (readonly, nonatomic) HDAuthorizationManager *authorizationManager; // @synthesize authorizationManager;
 @property (strong) HDBackgroundTaskScheduler *backgroundTaskScheduler; // @synthesize backgroundTaskScheduler=_backgroundTaskScheduler;

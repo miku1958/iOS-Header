@@ -8,19 +8,15 @@
 
 #import <NewsCore/FCFeedGroupEmitting-Protocol.h>
 
-@class FCReadingList, NSArray, NSString;
-@protocol FCContentContext;
+@class FCReadingList, NSString;
 
 @interface FCSavedStoriesGroupEmitter : NSObject <FCFeedGroupEmitting>
 {
-    id<FCContentContext> _context;
-    NSArray *_unreadSavedStories;
     unsigned long long _minPrecedingTopicGroups;
     long long _desiredArticlesCount;
     FCReadingList *_readingList;
 }
 
-@property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long desiredArticlesCount; // @synthesize desiredArticlesCount=_desiredArticlesCount;
@@ -32,12 +28,13 @@
 @property (strong, nonatomic) FCReadingList *readingList; // @synthesize readingList=_readingList;
 @property (readonly, nonatomic) BOOL requiresForYouCatchUpOperation;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSArray *unreadSavedStories; // @synthesize unreadSavedStories=_unreadSavedStories;
 
 - (void).cxx_destruct;
-- (id)initWithDesiredArticlesCount:(long long)arg1 listOfUnreadArticles:(id)arg2;
-- (id)operationToEmitGroupInContext:(id)arg1 withCursor:(id)arg2 toCursor:(id)arg3;
+- (BOOL)canEmitGroupsWithType:(long long)arg1;
+- (id)initWithDesiredArticlesCount:(long long)arg1;
+- (id)operationToEmitGroupWithContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (BOOL)wantsToEmitGroupInContext:(id)arg1 withCursor:(id)arg2 toCursor:(id)arg3;
+- (BOOL)wantsToInsertGroup:(id)arg1 withContext:(id)arg2;
 
 @end
 

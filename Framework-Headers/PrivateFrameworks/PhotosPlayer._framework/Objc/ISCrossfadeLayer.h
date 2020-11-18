@@ -8,10 +8,11 @@
 
 #import <PhotosPlayer/CALayerDelegate-Protocol.h>
 
-@class ISCrossfadeItem, ISLayerPlayer, ISPlaybackSpec, NSString;
+@class ISCrossfadeItem, ISLayerPlayer, ISPlaybackSpec, NSMapTable, NSString;
 
 @interface ISCrossfadeLayer : CALayer <CALayerDelegate>
 {
+    NSMapTable *_layerToImageData;
     ISCrossfadeItem *_crossfadeItem;
     ISPlaybackSpec *_playbackSpec;
     ISLayerPlayer *_player;

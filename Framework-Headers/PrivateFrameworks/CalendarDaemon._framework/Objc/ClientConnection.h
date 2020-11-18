@@ -42,6 +42,7 @@
 
 - (void).cxx_destruct;
 - (void)_databaseChanged;
+- (BOOL)_hasTCCAccessToEntityWithObjectIDUsingDeepInspection:(CDStruct_1ef3fb1f)arg1;
 - (void)_loadAccessPermissionsIfNeeded;
 - (id)_restrictedStoreRowIDs;
 - (BOOL)_shouldUseMCToBlacklist;
@@ -51,6 +52,7 @@
 - (void)dealloc;
 - (void)dumpState;
 - (BOOL)eventAccessGranted;
+- (BOOL)hasTCCAccessToEntityWithObjectID:(CDStruct_1ef3fb1f)arg1;
 - (id)initWithXPCConnection:(id)arg1;
 - (void)insertObject:(void *)arg1 key:(id)arg2;
 - (id)insertedObjects;

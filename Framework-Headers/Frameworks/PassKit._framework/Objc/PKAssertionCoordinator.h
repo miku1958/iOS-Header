@@ -28,6 +28,7 @@
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithSemaphore:(id)arg1;
+- (void)_removeAssertionWithIdentifier:(id)arg1;
 - (void)acquireAssertionOfType:(unsigned long long)arg1 withReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)assertionExistsOfType:(unsigned long long)arg1;
 - (void)dealloc;

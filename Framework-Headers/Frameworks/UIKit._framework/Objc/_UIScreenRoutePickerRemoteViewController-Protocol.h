@@ -8,8 +8,8 @@
 
 @protocol _UIScreenRoutePickerRemoteViewController <NSObject>
 - (void)_disconnectRouteWithCompletion:(void (^)(void))arg1;
+- (void)_invalidate;
 - (void)_prepareForDisplayWithCompletion:(void (^)(struct CGSize))arg1;
 - (void)_setCurrentOutputDeviceEnabled:(BOOL)arg1 completion:(void (^)(void))arg2;
-- (void)_viewControllerWasDismissed;
 @end
 

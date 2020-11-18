@@ -6,8 +6,9 @@
 
 #import <VideoSubscriberAccount/VSKeychainItem.h>
 
-@class NSData, NSDate, NSNumber, NSString;
+@class NSDate, NSNumber, NSString;
 
+__attribute__((visibility("hidden")))
 @interface VSKeychainGenericPassword : VSKeychainItem
 {
 }
@@ -17,7 +18,6 @@
 @property (copy, nonatomic) NSString *comment;
 @property (readonly, copy, nonatomic) NSDate *creationDate;
 @property (copy, nonatomic) NSNumber *creatorCode;
-@property (copy, nonatomic) NSData *data;
 @property (copy, nonatomic) NSString *generic;
 @property (nonatomic, getter=isInvisible) BOOL invisible;
 @property (copy, nonatomic) NSString *itemDescription;
@@ -28,6 +28,7 @@
 @property (nonatomic, getter=isSynchronizable) BOOL synchronizable;
 @property (copy, nonatomic) NSNumber *typeCode;
 
+- (id)_faultWhileAccessingPrimitiveValueForKey:(id)arg1;
 - (void)_notifyWhileSettingPrimitiveValue:(id)arg1 forKey:(id)arg2;
 - (id)init;
 

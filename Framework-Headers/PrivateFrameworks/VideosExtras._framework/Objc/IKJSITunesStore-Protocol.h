@@ -6,31 +6,6 @@
 
 #import <VideosExtras/JSExport-Protocol.h>
 
-@class JSValue, NSArray, NSDictionary, NSString;
-
 @protocol IKJSITunesStore <JSExport>
-
-@property (readonly, nonatomic) NSString *DSID;
-@property (readonly, nonatomic) NSDictionary *accountInfo;
-@property (strong, nonatomic) id cookie;
-@property (strong, nonatomic) NSString *cookieURL;
-@property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID;
-@property (readonly, nonatomic) NSString *networkConnectionType;
-@property (strong, nonatomic) NSString *storefront;
-@property (readonly, nonatomic) NSString *userAgent;
-
-- (void)authenticate:(NSDictionary *)arg1:(JSValue *)arg2;
-- (void)clearCookies;
-- (NSDictionary *)eligibilityForService:(NSDictionary *)arg1;
-- (void)evaluateScripts:(NSArray *)arg1:(JSValue *)arg2;
-- (void)flushUnreportedEvents;
-- (JSValue *)getBag;
-- (void)getServiceEligibility:(NSDictionary *)arg1:(JSValue *)arg2;
-- (void)invalidateBag;
-- (void)loadStoreContent:(NSDictionary *)arg1:(JSValue *)arg2;
-- (id)makeStoreXMLHttpRequest;
-- (void)recordEvent:(NSString *)arg1:(NSDictionary *)arg2;
-- (void)signOut;
-- (void)updateServiceEligibility:(NSDictionary *)arg1;
 @end
 

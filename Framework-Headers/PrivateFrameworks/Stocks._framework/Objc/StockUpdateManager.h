@@ -8,7 +8,7 @@
 
 #import <Stocks/StockUpdaterDelegate-Protocol.h>
 
-@class BackgroundStockUpdater, NSHashTable, NSMutableArray, NSString;
+@class BackgroundStockUpdater, NSHashTable, NSMutableArray, NSString, NSURLSession;
 
 @interface StockUpdateManager : NSObject <StockUpdaterDelegate>
 {
@@ -19,6 +19,7 @@
     BackgroundStockUpdater *_backgroundUpdater;
 }
 
+@property (readonly, nonatomic) NSURLSession *backgroundSession;
 @property (readonly, nonatomic) BackgroundStockUpdater *backgroundUpdater;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -42,6 +43,7 @@
 - (BOOL)hadError;
 - (id)init;
 - (BOOL)isLoading;
+- (void)reestablishBackgroundSession;
 - (void)removeUpdateObserver:(id)arg1;
 - (void)reset;
 - (void)resetUpdaters;

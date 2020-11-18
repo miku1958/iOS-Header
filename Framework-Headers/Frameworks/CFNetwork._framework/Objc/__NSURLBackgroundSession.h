@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _wifiRetainCount;
     NSError *_invalidationError;
     BOOL _tryToReconnect;
+    BOOL _appWasLaunchedForBackgroundSessionSeen;
     int _notifyToken;
 }
 

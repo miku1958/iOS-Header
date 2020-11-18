@@ -13,9 +13,11 @@
 {
     NSObject<OS_os_log> *_log;
     NSString *_facility;
+    NSObject<OS_os_log> *_oslog;
 }
 
 @property (copy, nonatomic) NSString *facility; // @synthesize facility=_facility;
+@property (readonly, nonatomic) NSObject<OS_os_log> *oslog; // @synthesize oslog=_oslog;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;

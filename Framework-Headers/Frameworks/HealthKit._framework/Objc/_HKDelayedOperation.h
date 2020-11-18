@@ -12,6 +12,7 @@
 {
     CDUnknownBlockType _block;
     NSObject<OS_dispatch_queue> *_queue;
+    long long _mode;
     int _blockEnqueued;
     double _lastExecution;
     NSObject<OS_dispatch_source> *_timerSource;
@@ -22,6 +23,7 @@
 - (void)_queue_executeBlock;
 - (void)_queue_updateLastExecution;
 - (void)execute;
+- (id)initWithMode:(long long)arg1 queue:(id)arg2 delay:(double)arg3 block:(CDUnknownBlockType)arg4;
 - (id)initWithQueue:(id)arg1 delay:(double)arg2 block:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 

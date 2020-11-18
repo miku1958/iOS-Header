@@ -11,6 +11,7 @@
 
 @class NSMutableSet, NSString, NSXPCInterface;
 
+__attribute__((visibility("hidden")))
 @interface VSServiceListener : NSObject <VSServiceConnectionHandlerDelegate, NSXPCListenerDelegate>
 {
     NSString *_entitlementName;

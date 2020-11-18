@@ -11,9 +11,9 @@
 
 @protocol INHomeEntityExport <NSObject, JSExport>
 
-@property (readonly, nonatomic) long long deviceType;
-@property (readonly, copy, nonatomic) NSString *name;
-@property (readonly, nonatomic) long long type;
+@property (nonatomic) long long deviceType;
+@property (copy, nonatomic) NSString *name;
+@property (nonatomic) long long type;
 
 - (id)init;
 @end

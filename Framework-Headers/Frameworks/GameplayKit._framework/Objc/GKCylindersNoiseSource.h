@@ -14,9 +14,10 @@
 @property (nonatomic) double frequency; // @synthesize frequency=_frequency;
 
 + (id)cylindersNoiseWithFrequency:(double)arg1;
-- (struct Module *)__newModule;
+- (id)cloneModule;
 - (id)init;
 - (id)initWithFrequency:(double)arg1;
+- (double)valueAt: /* Error: Ran out of types for this method. */;
 
 @end
 

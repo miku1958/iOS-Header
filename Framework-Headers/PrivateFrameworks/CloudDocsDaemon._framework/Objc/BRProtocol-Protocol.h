@@ -20,7 +20,6 @@
 - (void)addExternalDocumentReferenceTo:(NSURL *)arg1 forPid:(int)arg2 inContainer:(NSString *)arg3 underParent:(NSURL *)arg4 reply:(void (^)(NSURL *, NSURL *, NSData *, NSURL *, NSData *, NSError *))arg5;
 - (void)boostFilePresenterAtURL:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
 - (oneway void)bundleDidAccessExternalDocument:(NSFileHandle *)arg1;
-- (void)canLogoutSafely:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)checkinAskClientIfUsingUbiquity:(BOOL)arg1;
 - (void)computePurgableSpaceWithUrgency:(int)arg1 reply:(void (^)(long long))arg2;
 - (void)copyBulkShareIDsAtURLs:(NSArray *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
@@ -80,6 +79,7 @@
 - (void)joinShareAtURL:(NSURL *)arg1 reply:(void (^)(NSURL *, NSURL *, NSError *))arg2;
 - (void)lookupExcludedExtensionsForLogoutWithReply:(void (^)(NSSet *, NSError *))arg1;
 - (void)lookupExcludedFilenamesForLogoutWithReply:(void (^)(NSSet *, NSError *))arg1;
+- (void)moveBRSecurityBookmarkAtURL:(NSURL *)arg1 toURL:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)overwriteAccessTimeForItemAtURL:(NSURL *)arg1 atime:(unsigned long long)arg2 reply:(void (^)(NSError *))arg3;
 - (void)performSelfCheck:(NSFileHandle *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)postiCloudDriveAppInstallationNotificaionWithReply:(void (^)(NSError *))arg1;

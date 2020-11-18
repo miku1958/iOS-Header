@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSNumber, NSString;
 
@@ -26,7 +26,7 @@
 @property (readonly, nonatomic) BOOL inputAvailable; // @synthesize inputAvailable=_inputAvailable;
 @property (readonly, nonatomic) BOOL isBluetoothDevice;
 @property (readonly, nonatomic) BOOL outputAvailable; // @synthesize outputAvailable=_outputAvailable;
-@property (readonly, nonatomic, getter=isPreferredDevice) BOOL preferredDevice; // @synthesize preferredDevice=_preferredDevice;
+@property (readonly, nonatomic, getter=isPreferredDevice) BOOL preferredDevice;
 
 - (void)createName;
 - (void)createNameForScope:(unsigned int)arg1;

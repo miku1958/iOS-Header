@@ -11,7 +11,6 @@
 @interface MFMessageCollectionInfo : NSObject
 {
     MFMessageInfoOrderedSet *_messageInfoSet;
-    long long _conversationID;
     long long _messageCollectionHash;
     MFMessageInfo *_stickyPlaceholder;
 }

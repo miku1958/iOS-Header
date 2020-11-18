@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <EmbeddedAcousticRecognition/_EARWordPart_JSExport-Protocol.h>
-
 @class NSSet, NSString;
 
-@interface _EARWordPart : NSObject <_EARWordPart_JSExport>
+@interface _EARWordPart : NSObject
 {
     NSString *_tagName;
     NSString *_orthography;
@@ -26,9 +24,6 @@
 @property (readonly, nonatomic) NSString *tagName;
 
 - (void).cxx_destruct;
-- (id)getOrthography;
-- (id)getPronuncations;
-- (id)getTagName;
 - (id)initWithOrthography:(id)arg1 pronunciations:(id)arg2 tag:(long long)arg3;
 - (id)initWithOrthography:(id)arg1 pronunciations:(id)arg2 tagName:(id)arg3 frequency:(unsigned long long)arg4;
 

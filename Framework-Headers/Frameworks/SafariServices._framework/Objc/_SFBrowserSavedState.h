@@ -13,14 +13,18 @@
     NSArray *_browserControllerUUIDs;
     SFBrowserStateSQLiteStore *_browserStateSQLiteStore;
     NSMutableArray *_recentlyClosedTabs;
+    BOOL _checkPointWriteAheadLogOnNextUpdate;
+    BOOL _secureDeleteEnabled;
 }
 
 @property (copy, nonatomic) NSArray *browserControllerUUIDs;
 @property (strong, nonatomic) NSArray *recentlyClosedTabs; // @synthesize recentlyClosedTabs=_recentlyClosedTabs;
+@property (nonatomic) BOOL secureDeleteEnabled; // @synthesize secureDeleteEnabled=_secureDeleteEnabled;
 
 + (void)setSharedBrowserSavedState:(id)arg1;
 + (id)sharedBrowserSavedState;
 - (void).cxx_destruct;
+- (void)_checkPointWriteAheadLogIfNeeded;
 - (void)_readBrowserControllersSavedState;
 - (BOOL)activeDocumentIsValidForBrowserControllerWithUUID:(id)arg1;
 - (void)addRecentlyClosedTabWithData:(id)arg1;

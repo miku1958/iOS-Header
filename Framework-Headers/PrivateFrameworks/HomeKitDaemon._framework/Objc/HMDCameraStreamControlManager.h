@@ -40,15 +40,16 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)_callStreamFirstFrameReceived:(unsigned long long)arg1 aspectRatio:(id)arg2;
+- (void)_callStreamFirstFrameReceived:(unsigned long long)arg1 aspectRatio:(id)arg2 slotIdentifier:(id)arg3;
 - (void)_callStreamNegotiated:(id)arg1;
 - (void)_callStreamReconfigured;
 - (void)_callStreamRemoteConnectionSetup;
 - (void)_callStreamStarted;
 - (void)_callStreamStopped:(id)arg1;
-- (void)_cleanUpStreamSession;
+- (void)_cleanUpStreamSession:(id)arg1;
 - (void)_reportError:(id)arg1;
 - (void)_reportErrorCode:(long long)arg1;
+- (void)_reportInternalErrorCode:(long long)arg1;
 - (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5 accessory:(id)arg6 streamManagementService:(id)arg7 isLocal:(BOOL)arg8;
 - (id)logIdentifier;
 - (id)managerProtocol;

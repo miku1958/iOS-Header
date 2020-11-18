@@ -10,12 +10,16 @@
 
 @interface GLKTextureLoader : NSObject
 {
+    BOOL _supportsASTC_LDR;
+    BOOL _supportsETC2;
     EAGLContext *_glContext;
     NSLock *_nsLock;
 }
 
 @property (strong) EAGLContext *glContext; // @synthesize glContext=_glContext;
 @property (strong) NSLock *nsLock; // @synthesize nsLock=_nsLock;
+@property BOOL supportsASTC_LDR; // @synthesize supportsASTC_LDR=_supportsASTC_LDR;
+@property BOOL supportsETC2; // @synthesize supportsETC2=_supportsETC2;
 
 + (id)_textureWithTexture:(id)arg1 error:(id *)arg2;
 + (id)_textureWithTextureTXR:(id)arg1 error:(id *)arg2;

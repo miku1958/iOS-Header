@@ -74,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)installLivePhotoPlaybackGestureRecognizer:(id)arg1;
 - (BOOL)installTogglePreviewGestureRecognizer:(id)arg1;
 - (void)photoEditModelDidChange;
+- (void)prepareForSave;
 - (void)resetForZoomAndPan;
 - (void)resetToDefaultValueAnimated:(BOOL)arg1;
 - (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;

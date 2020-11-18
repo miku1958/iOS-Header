@@ -12,6 +12,7 @@
 
 - (void)changeModelVersion:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)createPrivateManagedObjectContextForMigration:(CDUnknownBlockType)arg1;
+- (void)resetPersistentStoreWithHandler:(CDUnknownBlockType)arg1;
 
 @end
 

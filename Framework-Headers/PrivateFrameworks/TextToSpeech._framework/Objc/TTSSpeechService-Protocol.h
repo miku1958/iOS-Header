@@ -19,7 +19,7 @@
 - (oneway void)getVoicesForLanguage:(NSString *)arg1 reply:(void (^)(NSArray *))arg2;
 - (BOOL)isVoiceValid:(TTSSpeechVoice *)arg1;
 - (oneway void)pauseSpeechRequest:(TTSSpeechRequest *)arg1 atMark:(long long)arg2;
-- (NSString *)speechMarkupStringForType:(long long)arg1;
+- (NSString *)speechMarkupStringForType:(long long)arg1 voice:(TTSSpeechVoice *)arg2;
 - (oneway void)startSpeechRequest:(TTSSpeechRequest *)arg1;
 - (oneway void)stopSpeechRequest:(TTSSpeechRequest *)arg1 atMark:(long long)arg2;
 - (NSSet *)supportedIPAPhonemeLanguages;

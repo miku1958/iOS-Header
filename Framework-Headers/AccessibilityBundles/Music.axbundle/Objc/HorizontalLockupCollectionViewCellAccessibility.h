@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityPerformLibraryAddKeepLocalControl:(id)arg1;
+- (id)_accessibilityUserTestingChildren;
 - (id)accessibilityCustomActions;
 - (id)lockupViewCustomActions;
 - (void)setLockupViewCustomActions:(id)arg1;

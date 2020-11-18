@@ -63,7 +63,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateForArrival;
 - (void)_updateForLocation:(id)arg1;
 - (void)_updateForReroute:(id)arg1;
-- (void)_updateForTunnelProjection:(id)arg1 coord:(CDStruct_2c43369c)arg2;
 - (void)_updateShouldLocalizeRoadNames;
 - (void)_updateStateForLocation:(id)arg1;
 - (void)_updateSwitchTransportTypeForLocation:(id)arg1;

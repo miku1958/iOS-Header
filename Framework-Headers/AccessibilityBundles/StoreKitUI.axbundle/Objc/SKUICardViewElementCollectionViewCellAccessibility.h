@@ -17,7 +17,6 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)_axAdornedImageElement;
-- (BOOL)_axIsCollectionViewCellInConnectTab;
 - (id)_axLockupElements;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;

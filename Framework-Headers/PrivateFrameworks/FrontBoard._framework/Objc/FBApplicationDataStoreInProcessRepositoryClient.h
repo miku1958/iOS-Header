@@ -43,6 +43,7 @@
 - (id)init;
 - (id)initWithDataStore:(id)arg1;
 - (void)invalidate;
+- (id)objectForKey:(id)arg1 forApplication:(id)arg2 checkPrefetch:(BOOL)arg3;
 - (void)objectForKey:(id)arg1 forApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3;
 - (void)objectForKey:(id)arg1 forApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3 checkPrefetch:(BOOL)arg4;
 - (BOOL)prefetchedObjectIfAvailableForKey:(id)arg1 application:(id)arg2 outObject:(id *)arg3;

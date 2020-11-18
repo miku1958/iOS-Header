@@ -52,6 +52,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_gregorianUtcCalendar;
+- (id)consolidatedSOSContactsWithSOSContactsManager:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasAnyData;

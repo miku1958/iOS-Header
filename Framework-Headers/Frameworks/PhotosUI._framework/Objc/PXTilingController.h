@@ -166,6 +166,7 @@
 - (id)imageTileWithIdentifier:(struct PXTileIdentifier)arg1;
 - (id)init;
 - (id)initWithLayout:(id)arg1;
+- (void)invalidateLayoutPreferredVisibleOrigin;
 - (void)invalidateScrollControllerMetrics;
 - (void)registerPreheatHandler:(id)arg1 withPadding:(struct UIEdgeInsets)arg2 tileGroup:(unsigned long long)arg3 context:(void *)arg4;
 - (void)requestFocus;

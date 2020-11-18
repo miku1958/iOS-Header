@@ -7,11 +7,9 @@
 #import <VideoSubscriberAccount/VSAuthenticationViewController-Protocol.h>
 
 @class VSAutoAuthenticationViewModel;
-@protocol VSAutoAuthenticationViewControllerDelegate;
 
 @protocol VSAutoAuthenticationViewController <VSAuthenticationViewController>
 
-@property (weak, nonatomic) id<VSAutoAuthenticationViewControllerDelegate> delegate;
 @property (strong, nonatomic) VSAutoAuthenticationViewModel *viewModel;
 
 @end

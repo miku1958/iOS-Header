@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
 + (id)implementationForOneUpPresentation:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithOneUpPresentation:(id)arg1;
+- (void)commitPreviewViewController:(id)arg1;
+- (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (BOOL)handlePresentingPinchGestureRecognizer:(id)arg1;
 - (id)init;
 - (void)invalidatePresentingGeometry;

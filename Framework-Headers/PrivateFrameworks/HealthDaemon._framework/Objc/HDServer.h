@@ -134,6 +134,7 @@
 - (void)remote_allObjectAuthorizationRecordsForSampleWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_allSourcesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_authorizationStatusForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_badgeHealthAppForEmergencyContactsConsolidationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_beginAuthorizationDelegateTransactionWithSessionIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)remote_clientResumedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_clientWillSuspendWithCompletion:(CDUnknownBlockType)arg1;

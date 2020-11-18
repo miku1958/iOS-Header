@@ -66,6 +66,10 @@ struct HTTPMessagePrivate {
             unsigned long long _field14;
             char *_field15;
             char *_field16;
+            char *_field17;
+            unsigned long long _field18;
+            char *_field19;
+            unsigned long long _field20;
         } _field10;
         char *_field11;
         unsigned long long _field12;

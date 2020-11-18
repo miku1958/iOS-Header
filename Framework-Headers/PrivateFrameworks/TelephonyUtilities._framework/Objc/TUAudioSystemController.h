@@ -24,6 +24,7 @@
     NSArray *_pickableRoutesForPlayAndRecordVoice;
     NSArray *_pickableRoutesForPlayAndRecordRemoteVoice;
     NSArray *_pickableRoutesForVoicemail;
+    NSArray *_currentPickableRoutes;
     BOOL _isRequestingUplinkMuted;
     BOOL _isRequestingDownlinkMuted;
     BOOL _isRequestingTTY;
@@ -52,10 +53,12 @@
 + (id)sharedSystemController;
 + (id)sourceIdentifierForRouteID:(id)arg1;
 - (void).cxx_destruct;
+- (void)_getPickableRoutesForCategory:(id)arg1 mode:(id)arg2 onlyKnownCombinations:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handleDownlinkMuteDidChangeNotification:(id)arg1;
 - (void)_handlePickableRoutesDidChangeNotification:(id)arg1;
 - (void)_handleServerConnectionDiedNotification:(id)arg1;
 - (void)_handleUplinkMuteDidChangeNotification:(id)arg1;
+- (void)_loadCurrentPickableRoutesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_pickableRoutesForPhoneCallWithForceNewRequest:(BOOL)arg1;
 - (id)_pickableRoutesForPlayAndRecordRemoteVoiceWithForceNewRequest:(BOOL)arg1;
 - (id)_pickableRoutesForPlayAndRecordVideoWithForceNewRequest:(BOOL)arg1;
@@ -66,6 +69,7 @@
 - (id)bestGuessPickableRoutesForAnyCall;
 - (id)currentlyPickedRouteIdForCategory:(id)arg1 andMode:(id)arg2;
 - (void)dealloc;
+- (void)getPickableRoutesForCategory:(id)arg1 mode:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)pickableRouteWithUniqueIdentifier:(id)arg1;
 - (id)pickableRoutesForCategory:(id)arg1 andMode:(id)arg2;

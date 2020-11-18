@@ -22,7 +22,6 @@
 + (BOOL)refreshCurrentLoggedInAccount;
 + (void)startAccountTokenChangeObserverIfNeeded;
 - (void).cxx_destruct;
-- (BOOL)canLogoutSafely;
 - (id)containerWithPendingChanges;
 - (void)evictOldDocumentsWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)getEvictableSpace:(id *)arg1 error:(id *)arg2;

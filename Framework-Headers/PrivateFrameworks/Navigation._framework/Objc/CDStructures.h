@@ -91,7 +91,8 @@ typedef struct {
     int _field19;
     unsigned int _field20;
     int _field21;
-} CDStruct_99cd443b;
+    int _field22;
+} CDStruct_0e8fe709;
 
 typedef struct {
     struct {

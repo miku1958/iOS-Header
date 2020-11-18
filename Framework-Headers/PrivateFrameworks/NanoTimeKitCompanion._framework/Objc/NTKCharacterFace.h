@@ -6,8 +6,11 @@
 
 #import <NanoTimeKitCompanion/NTKFace.h>
 
+@class NSMutableDictionary;
+
 @interface NTKCharacterFace : NTKFace
 {
+    NSMutableDictionary *_previousCharacterColors;
 }
 
 + (id)_complicationSlotDescriptors;
@@ -16,6 +19,7 @@
 + (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 + (id)_defaultSelectedComplicationSlot;
 + (id)_localizedNameOverrideForCustomEditMode:(long long)arg1;
+- (void).cxx_destruct;
 - (id)_defaultName;
 - (long long)_editModeForOldEncodingIndex:(long long)arg1;
 - (id)_faceDescriptionKey;

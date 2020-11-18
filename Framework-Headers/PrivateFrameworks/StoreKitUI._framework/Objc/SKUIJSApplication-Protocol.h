@@ -9,6 +9,9 @@
 @class IKDOMDocument, NSDictionary, NSString;
 
 @protocol SKUIJSApplication <JSExport>
+
+@property (readonly, nonatomic) BOOL pageRenderMetricsEnabled;
+
 - (void)launchComplete:(NSDictionary *)arg1;
 - (void)launchFailed;
 - (void)sendDocumentMessage:(IKDOMDocument *)arg1:(NSString *)arg2:(NSDictionary *)arg3;

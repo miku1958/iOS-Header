@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (struct _NSRange)accessibilityRowRange;
+- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 
 @end

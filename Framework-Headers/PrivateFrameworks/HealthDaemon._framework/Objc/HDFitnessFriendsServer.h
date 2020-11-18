@@ -20,7 +20,9 @@
 @property (readonly) Class superclass;
 
 - (id)_fitnessFriendsManger;
+- (void)remote_acceptInviteRequestFromFriendWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_clearFriendListWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remote_fetchAllDataIfTimeSinceLastFetchIsGreaterThan:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchAllDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_fetchAreMultipleDevicesSharingDataForSnapshotIndex:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)remote_fitnessFriendsCloudKitAccountStatusWithCompletion:(CDUnknownBlockType)arg1;
@@ -28,7 +30,6 @@
 - (void)remote_pushFakeDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_removeFriendWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_sendInviteRequestToDestination:(id)arg1 callerID:(id)arg2 serviceIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)remote_sendInviteResponse:(long long)arg1 toFriendWithUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_sendWithdrawInviteRequestToFriendWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_setActivityDataVisible:(BOOL)arg1 toFriendWithUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_setMuteEnabled:(BOOL)arg1 forFriendWithUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;

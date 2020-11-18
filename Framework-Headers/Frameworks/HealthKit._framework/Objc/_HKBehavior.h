@@ -60,7 +60,9 @@
 + (BOOL)_shouldShowBuddy;
 + (id)_simulatorDefaultName;
 + (id)_simulatorSettings;
++ (id)activePairedWatchWithoutSOSMedicalIDContactsSupport;
 + (BOOL)allPairedWatchesMeetMinimumVersion:(int)arg1;
++ (BOOL)anyPairedWatchHasSOSModeCapability;
 + (id)behaviorQueue;
 + (id)currentDeviceClass;
 + (id)currentDeviceDisplayName;
@@ -69,6 +71,7 @@
 + (id)currentDeviceProductType;
 + (id)currentOSBuild;
 + (id)currentOSVersion;
++ (BOOL)currentlyPairedWatchMeetsMinimumVersion:(int)arg1;
 + (void)disableForceBuddy;
 + (void)disableSkipBuddy;
 + (BOOL)hasCompletedBuddy;

@@ -7,27 +7,35 @@
 #import <ITMLKit/IKJSObject.h>
 
 #import <ITMLKit/IKJSRestrictions-Protocol.h>
-#import <ITMLKit/JSExport-Protocol.h>
+#import <ITMLKit/NSObject-Protocol.h>
+#import <ITMLKit/_IKJSRestrictions-Protocol.h>
+#import <ITMLKit/_IKJSRestrictionsProxy-Protocol.h>
 
 @class NSString;
 
-@interface IKJSRestrictions : IKJSObject <IKJSRestrictions, JSExport>
+@interface IKJSRestrictions : IKJSObject <NSObject, IKJSRestrictions, _IKJSRestrictionsProxy, _IKJSRestrictions>
 {
 }
 
 @property (readonly, nonatomic) BOOL allowArtistActivity;
 @property (readonly, nonatomic) BOOL allowsErotica;
 @property (readonly, nonatomic) BOOL allowsExplicit;
+@property (readonly, nonatomic) BOOL allowsITunes;
 @property (readonly, nonatomic) BOOL appAnalyticsAllowed;
 @property (readonly, nonatomic) BOOL appInstallationAllowed;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long maxAppRank;
 @property (readonly, nonatomic) NSString *maxAppRating;
 @property (readonly, nonatomic) long long maxMovieRank;
 @property (readonly, nonatomic) long long maxTVShowRank;
+@property (readonly) Class superclass;
 
 + (id)restrictionsDidChangeNotificationName;
 - (id)_contentRestrictionsCountryCode;
 - (id)_ratingForSetting:(id)arg1 domain:(id)arg2 countryCode:(id)arg3;
+- (id)asPrivateIKJSRestrictions;
 - (id)maxMovieRatingForCountry:(id)arg1;
 - (id)maxTVShowRatingForCountry:(id)arg1;
 

@@ -6,16 +6,6 @@
 
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class NSArray, NSString;
-
 @protocol IKJSImpression <JSExport>
-
-@property (readonly, nonatomic) NSArray *children;
-@property (readonly, nonatomic) NSString *data;
-@property (readonly, nonatomic) NSString *impressionQueueTag;
-@property (readonly, nonatomic) long long index;
-@property (readonly, nonatomic) id parent;
-@property (readonly, nonatomic) NSArray *timestamps;
-
 @end
 

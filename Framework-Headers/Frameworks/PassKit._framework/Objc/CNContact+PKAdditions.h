@@ -27,5 +27,6 @@
 - (id)pkFormattedContactAddress;
 - (id)pkFullName;
 - (id)pkSingleLineFormattedContactAddress;
+- (id)sanitizedContact;
 @end
 

@@ -11,6 +11,7 @@
 
 @class NSArray, NSString, VSAccountMetadataRequest;
 
+__attribute__((visibility("hidden")))
 @interface VSViewServiceRequest : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _allowsPrivacyUI;
@@ -25,6 +26,7 @@
 @property (readonly, copy, nonatomic) NSString *localizedVideoTitle;
 @property (copy, nonatomic) NSString *requestingAppDisplayName; // @synthesize requestingAppDisplayName=_requestingAppDisplayName;
 @property (nonatomic) BOOL requiresPrivacyUI; // @synthesize requiresPrivacyUI=_requiresPrivacyUI;
+@property (readonly, copy, nonatomic) NSArray *supportedAccountProviderAuthenticationSchemes;
 @property (readonly, copy, nonatomic) NSArray *supportedIdentityProviderIdentifiers;
 
 + (BOOL)supportsSecureCoding;

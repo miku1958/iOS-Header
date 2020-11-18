@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class SGMContactOpportunityInSpotlight, SGMContactResultInSpotlight, SGMContactResultSelectedInSpotlight, SGMEventOpportunityInSpotlight, SGMEventResultInSpotlight, SGMEventResultSelectedInSpotlight, SGMNoResultSelectedInSpotlight, SGMOtherResultSelectedInSpotlight;
+@class NSMutableSet, SGMContactOpportunityInSpotlight, SGMContactResultInSpotlight, SGMContactResultSelectedInSpotlight, SGMEventOpportunityInSpotlight, SGMEventResultInSpotlight, SGMEventResultSelectedInSpotlight, SGMNoResultSelectedInSpotlight, SGMOtherResultSelectedInSpotlight;
 
 @interface SGSMutableSearchState : NSObject
 {
@@ -18,25 +18,42 @@
     SGMEventResultSelectedInSpotlight *_eventSelected;
     SGMNoResultSelectedInSpotlight *_noneSelected;
     SGMOtherResultSelectedInSpotlight *_otherSelected;
-    int _resultContactCount;
-    int _opportunityContactCount;
-    int _conversionContactCount;
-    int _resultEventCount;
-    int _opportunityEventCount;
-    int _conversionEventCount;
-    int _nonOpportunity;
+    unsigned short _contactResultCount;
+    unsigned short _contactOpportunityCount;
+    unsigned char _contactConversionCount;
+    unsigned char _contactLossCount;
+    unsigned short _curatedOrPseudoContactOpportunityCount;
+    unsigned short _eventResultCount;
+    unsigned short _eventOpportunityCount;
+    unsigned char _eventConversionCount;
+    unsigned char _eventLossCount;
+    unsigned char _otherSelectedCount;
+    unsigned char _nonOpportunityCount;
+    BOOL _justEngaged;
+    NSMutableSet *_resultsSeen;
 }
 
 - (void).cxx_destruct;
 - (void)commit;
+- (id)description;
 - (id)init;
+- (BOOL)isFirstTimeSeeingResult:(id)arg1;
+- (BOOL)justEngaged;
+- (void)resetConversionCounts;
+- (void)resetCounts;
+- (void)resetJustEngaged;
 - (void)scoreAsContactConversion;
+- (void)scoreAsContactLoss;
 - (void)scoreAsContactOpportunity;
 - (void)scoreAsContactResult;
+- (void)scoreAsCuratedOrPseudoContactOpportunity;
 - (void)scoreAsEventConversion;
+- (void)scoreAsEventLoss;
 - (void)scoreAsEventOpportunity;
 - (void)scoreAsEventResult;
 - (void)scoreAsNonOpportunity;
+- (void)scoreAsOtherConversion;
+- (void)setJustEngaged;
 
 @end
 

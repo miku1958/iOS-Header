@@ -22,6 +22,7 @@
     BOOL _libraryAddEligible;
     BOOL _hasCloudSyncSource;
     float _volumeNormalization;
+    float _userRating;
     NSString *_title;
     MPModelAlbum *_album;
     MPModelArtist *_artist;
@@ -40,6 +41,7 @@
     NSString *_protectedContentSupportStorageFilePath;
     NSString *_storeRedownloadParameters;
     unsigned long long _storeAccountIdentifier;
+    long long _year;
     NSString *_classicalWork;
     NSString *_classicalMovement;
     long long _classicalMovementCount;
@@ -85,7 +87,9 @@
 @property (nonatomic, getter=isStoreRedownloadable) BOOL storeRedownloadable; // @synthesize storeRedownloadable=_storeRedownloadable;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) long long trackNumber; // @synthesize trackNumber=_trackNumber;
+@property (nonatomic) float userRating; // @synthesize userRating=_userRating;
 @property (nonatomic) float volumeNormalization; // @synthesize volumeNormalization=_volumeNormalization;
+@property (nonatomic) long long year; // @synthesize year=_year;
 
 + (id)__MPModelPropertySongArtistUploadedContent__PROPERTY;
 + (id)__MPModelPropertySongArtwork__PROPERTY;
@@ -117,7 +121,9 @@
 + (id)__MPModelPropertySongStoreRedownloadable__PROPERTY;
 + (id)__MPModelPropertySongTitle__PROPERTY;
 + (id)__MPModelPropertySongTrackNumber__PROPERTY;
++ (id)__MPModelPropertySongUserRating__PROPERTY;
 + (id)__MPModelPropertySongVolumeNormalization__PROPERTY;
++ (id)__MPModelPropertySongYear__PROPERTY;
 + (id)__MPModelRelationshipSongAlbum__PROPERTY;
 + (id)__MPModelRelationshipSongArtist__PROPERTY;
 + (id)__MPModelRelationshipSongComposer__PROPERTY;
@@ -160,7 +166,9 @@
 + (id)__storeRedownloadable__KEY;
 + (id)__title__KEY;
 + (id)__trackNumber__KEY;
++ (id)__userRating__KEY;
 + (id)__volumeNormalization__KEY;
++ (id)__year__KEY;
 + (id)requiredKeepLocalStatusObservationProperties;
 + (id)requiredLibraryAddStatusObservationProperties;
 + (id)requiredLibraryRemovalProperties;

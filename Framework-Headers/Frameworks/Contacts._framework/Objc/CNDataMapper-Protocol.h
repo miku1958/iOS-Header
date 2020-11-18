@@ -7,7 +7,7 @@
 #import <Contacts/NSObject-Protocol.h>
 
 @class CNChangeHistory, CNChangeHistoryFetchRequest, CNContact, CNContactFetchRequest, CNContactStore, CNContactsEnvironment, CNContainer, CNPolicy, CNSaveRequest, NSArray, NSDictionary, NSNumber, NSPredicate, NSString, NSURL;
-@protocol CNBatchFetchEnumerator, CNCancelable;
+@protocol CNBatchFetchEnumerator, CNCancelable, CNKeyDescriptor;
 
 @protocol CNDataMapper <NSObject>
 - (NSArray *)accountsMatchingPredicate:(NSPredicate *)arg1 error:(id *)arg2;
@@ -41,12 +41,15 @@
 - (id<CNBatchFetchEnumerator>)batchEnumeratorForFetchRequest:(CNContactFetchRequest *)arg1;
 - (CNChangeHistory *)changeHistoryWithFetchRequest:(CNChangeHistoryFetchRequest *)arg1 error:(id *)arg2;
 - (BOOL)clearChangeHistoryForClient:(NSString *)arg1 toSequenceNumber:(long long)arg2 error:(id *)arg3;
+- (NSString *)contactIdentifierWithMatchingDictionary:(NSDictionary *)arg1;
 - (NSArray *)contactIdentifiersForFetchRequest:(CNContactFetchRequest *)arg1 error:(id *)arg2;
 - (CNContact *)contactWithUserActivityUserInfo:(NSDictionary *)arg1 keysToFetch:(NSArray *)arg2;
 - (NSArray *)contactsWithIdentifiers:(NSArray *)arg1 keysToFetch:(NSArray *)arg2 error:(id *)arg3;
+- (id<CNKeyDescriptor>)descriptorForRequiredKeysForMatchingDictionary;
 - (id<CNCancelable>)executeFetchRequest:(CNContactFetchRequest *)arg1 progressiveResults:(void (^)(NSArray *, NSDictionary *))arg2 completion:(void (^)(NSError *))arg3;
 - (NSArray *)groupsWithIdentifiers:(NSArray *)arg1 error:(id *)arg2;
 - (NSString *)identifierWithError:(id *)arg1;
+- (NSDictionary *)matchingDictionaryForContact:(CNContact *)arg1;
 - (BOOL)registerClientForChangeHistory:(NSString *)arg1 error:(id *)arg2;
 - (BOOL)setBestMeIfNeededForGivenName:(NSString *)arg1 familyName:(NSString *)arg2 email:(NSString *)arg3 error:(id *)arg4;
 - (BOOL)setMeContact:(CNContact *)arg1 error:(id *)arg2;

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)allowedOpenInAppBundleIDsAfterApplyingFilterToAppBundleIDs:(id)arg1 originatingAppBundleID:(id)arg2 originatingAccountIsManaged:(BOOL)arg3;
 - (void)beginListeningForChanges;
 - (void)effectiveSettingsChanged;
+- (id)identifierForRemovedAppPrompt:(id)arg1;
 - (BOOL)isAppExtensionRestricted:(id)arg1;
 - (BOOL)isApplicationRemoved:(id)arg1;
 - (BOOL)isApplicationRestricted:(id)arg1;

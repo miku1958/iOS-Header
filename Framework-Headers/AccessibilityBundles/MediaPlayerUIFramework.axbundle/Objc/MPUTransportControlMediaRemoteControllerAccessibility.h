@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_updateForNowPlayingInfoChange;
+- (void)setNowPlayingInfo:(id)arg1;
 
 @end
 

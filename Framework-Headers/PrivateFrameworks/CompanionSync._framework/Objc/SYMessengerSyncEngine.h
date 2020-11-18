@@ -57,10 +57,12 @@ __attribute__((visibility("hidden")))
 - (void)messageCenter:(id)arg1 didSuccessfullyDeliverRequestWithIdentifier:(id)arg2 userInfo:(id)arg3;
 - (void)messageCenter:(id)arg1 didSuccessfullySendRequestWithIdentifier:(id)arg2 userInfo:(id)arg3;
 - (void)messageCenter:(id)arg1 failedToSendMessageWithIdentifier:(id)arg2 error:(id)arg3 userInfo:(id)arg4;
+- (void)messageCenter:(id)arg1 nearbyDevicesChanged:(id)arg2;
 - (id)outputStreamWithMetadata:(id)arg1 priority:(long long)arg2 options:(id)arg3 context:(id)arg4 error:(id *)arg5;
 - (BOOL)resume:(id *)arg1;
 - (id)stateForLogging;
 - (void)suspend;
+- (BOOL)targetIsNearby;
 
 @end
 

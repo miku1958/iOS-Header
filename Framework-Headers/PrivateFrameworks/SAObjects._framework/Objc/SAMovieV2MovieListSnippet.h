@@ -6,16 +6,14 @@
 
 #import <SAObjects/SAUISnippet.h>
 
-@class NSArray, NSString, SALocalSearchBusiness2;
+@class NSArray, SALocalSearchBusiness2;
 
 @interface SAMovieV2MovieListSnippet : SAUISnippet
 {
 }
 
 @property (copy, nonatomic) NSArray *movieListCells;
-@property (copy, nonatomic) NSString *subtitle;
 @property (strong, nonatomic) SALocalSearchBusiness2 *theater;
-@property (copy, nonatomic) NSString *title;
 
 + (id)movieListSnippet;
 + (id)movieListSnippetWithDictionary:(id)arg1 context:(id)arg2;

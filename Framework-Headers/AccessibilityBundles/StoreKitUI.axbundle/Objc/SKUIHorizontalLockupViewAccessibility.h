@@ -21,9 +21,6 @@
 - (id)_accessibilitySupplementaryFooterViewsIncludePlayButton:(BOOL)arg1 includeStyledImageButton:(BOOL)arg2;
 - (id)_accessibilitySupplementaryHeaderViews;
 - (id)_accessibilityUserTestingChildren;
-- (id)_axFindMediaPostedInConnectTab;
-- (id)_axFindStyledButtonInConnectTab;
-- (BOOL)_axIsLockupViewInConnectTab;
 - (BOOL)_playAction:(id)arg1;
 - (void)_resolvePreviewStateAfterTransitionForFlipView:(id)arg1;
 - (BOOL)_styledImageButtonAction:(id)arg1;

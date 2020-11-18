@@ -136,6 +136,7 @@ struct mmcs_http_context {
         struct mmcs_cfnetwork_http_context *_field1;
         struct mmcs_nsurlsession_http_context *_field2;
         struct mmcs_curl_http_context *_field3;
+        void *_field4;
     } _field47;
 };
 

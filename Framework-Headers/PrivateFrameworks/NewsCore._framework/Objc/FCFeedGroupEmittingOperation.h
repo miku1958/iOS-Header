@@ -6,17 +6,19 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCFeedGroup, FCFeedGroupEmittingContext, NSString;
+@class FCFeedGroup, FCFeedGroupEmittingContext, NSArray, NSString;
 @protocol NSCoding;
 
 @interface FCFeedGroupEmittingOperation : FCOperation
 {
+    BOOL _resultFinished;
     CDUnknownBlockType _groupEmittingCompletionHandler;
     FCFeedGroupEmittingContext *_context;
     id<NSCoding> _cursor;
     id<NSCoding> _toCursor;
     NSString *_groupEmitterIdentifier;
     FCFeedGroup *_resultGroup;
+    NSArray *_resultGroups;
     id<NSCoding> _resultCursor;
 }
 
@@ -25,7 +27,9 @@
 @property (readonly, copy, nonatomic) NSString *groupEmitterIdentifier; // @synthesize groupEmitterIdentifier=_groupEmitterIdentifier;
 @property (copy, nonatomic) CDUnknownBlockType groupEmittingCompletionHandler; // @synthesize groupEmittingCompletionHandler=_groupEmittingCompletionHandler;
 @property (strong, nonatomic) id<NSCoding> resultCursor; // @synthesize resultCursor=_resultCursor;
+@property (nonatomic) BOOL resultFinished; // @synthesize resultFinished=_resultFinished;
 @property (strong, nonatomic) FCFeedGroup *resultGroup; // @synthesize resultGroup=_resultGroup;
+@property (strong, nonatomic) NSArray *resultGroups; // @synthesize resultGroups=_resultGroups;
 @property (readonly, nonatomic) id<NSCoding> toCursor; // @synthesize toCursor=_toCursor;
 
 - (void).cxx_destruct;

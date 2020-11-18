@@ -12,10 +12,12 @@
 {
     BOOL _off;
     BOOL _showsSecondGrabber;
+    unsigned long long _primaryGrabberLocation;
 }
 
 @property (readonly, nonatomic) CAShapeLayer *layer; // @dynamic layer;
 @property (nonatomic, getter=isOff) BOOL off; // @synthesize off=_off;
+@property (nonatomic) unsigned long long primaryGrabberLocation; // @synthesize primaryGrabberLocation=_primaryGrabberLocation;
 @property (nonatomic) BOOL showsSecondGrabber; // @synthesize showsSecondGrabber=_showsSecondGrabber;
 
 + (Class)layerClass;

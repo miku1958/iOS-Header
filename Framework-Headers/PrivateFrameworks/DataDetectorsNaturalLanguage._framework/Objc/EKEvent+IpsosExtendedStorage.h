@@ -10,7 +10,7 @@
 
 @interface EKEvent (IpsosExtendedStorage)
 
-@property BOOL ipsos_allDayPrefered;
+@property BOOL ipsos_allDayPreferred;
 @property (readonly) double ipsos_duration;
 @property (strong) IPEventClassificationType *ipsos_eventClassificationType;
 @property BOOL ipsos_isDateTimeTenseDependent;

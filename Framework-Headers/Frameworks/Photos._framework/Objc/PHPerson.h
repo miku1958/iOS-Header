@@ -30,14 +30,16 @@
 @property (readonly, nonatomic) BOOL verified; // @synthesize verified=_verified;
 
 + (id)_convertFaceSuggestionToFaceCollection:(id)arg1 options:(id)arg2;
-+ (id)_faceLocalIdentifiersFromFaceCollection:(id)arg1 options:(id)arg2;
 + (long long)_faceSuggestionForPerson:(id)arg1 confirmedFaceCollections:(id)arg2 rejectedFaceCollections:(id)arg3 options:(id)arg4 fromClient:(id)arg5 completion:(CDUnknownBlockType)arg6;
++ (id)_faceSuggestionMarkedAsConfirmed:(BOOL)arg1 fromFaceCollection:(id)arg2 options:(id)arg3;
 + (id)_packageSuggestionList:(id)arg1 options:(id)arg2;
 + (id)_transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
++ (id)displayNameFromContact:(id)arg1;
 + (id)entityKeyForPropertyKey:(id)arg1;
 + (id)faceSuggestionForPerson:(id)arg1 confirmedFaceCollections:(id)arg2 rejectedFaceCollections:(id)arg3 options:(id)arg4;
 + (long long)faceSuggestionForPerson:(id)arg1 confirmedFaceCollections:(id)arg2 rejectedFaceCollections:(id)arg3 options:(id)arg4 completion:(CDUnknownBlockType)arg5;
 + (id)fetchAssociatedPersonForFaceGroup:(id)arg1 withOptions:(id)arg2;
++ (id)fetchHomePersonUUIDsGroupedByAssetUUIDForAssetUUIDs:(id)arg1 options:(id)arg2;
 + (id)fetchPersonCountGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchPersonWithFace:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsForAssetCollection:(id)arg1 options:(id)arg2;
@@ -48,6 +50,7 @@
 + (id)fetchPersonsWithType:(long long)arg1 options:(id)arg2;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchType;
++ (id)fullNameFromContact:(id)arg1;
 + (id)identifierCode;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsPersonFilters;

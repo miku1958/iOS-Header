@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "UIAccessibilitySafeCategory.h"
+#import <AXSafeCategoryBundle/UIAccessibilitySafeCategory.h>
 
 @interface __LUI_UIGlintyStringViewAccessibility_super : UIAccessibilitySafeCategory
 {

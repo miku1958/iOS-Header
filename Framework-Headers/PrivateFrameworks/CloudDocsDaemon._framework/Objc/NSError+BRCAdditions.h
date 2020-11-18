@@ -16,6 +16,8 @@
 - (BOOL)_brc_isCloudKitInternalErrorCode:(long long)arg1;
 - (BOOL)_brc_isCloudKitInternalErrorSafeToSyncUpWithoutSyncDown;
 - (BOOL)_brc_isCloudKitPluginErrorCode:(long long)arg1;
+- (BOOL)_brc_isCloudKitZoneNotFoundError;
+- (BOOL)_brc_isCloudKitZoneUserDeletedError;
 - (id)br_cloudKitErrorForIdentifier:(id)arg1;
 - (double)br_suggestedRetryTimeInterval;
 - (BOOL)brc_checkErrorsFromCloudKit:(CDUnknownBlockType)arg1;
@@ -29,6 +31,7 @@
 - (BOOL)brc_isBlacklistError;
 - (BOOL)brc_isCloudKitAssetFileModified;
 - (BOOL)brc_isCloudKitCancellationError;
+- (BOOL)brc_isCloudKitErrorImplyingZoneNeedsCreation;
 - (BOOL)brc_isCloudKitErrorNeedsPCSPrep;
 - (BOOL)brc_isCloudKitErrorRequiringAssetRescan;
 - (BOOL)brc_isCloudKitErrorRequiringAssetReupload;
@@ -40,8 +43,6 @@
 - (BOOL)brc_isCloudKitErrorZoneUndergoingMigration;
 - (BOOL)brc_isCloudKitOutOfQuota;
 - (BOOL)brc_isCloudKitUnknownItemError;
-- (BOOL)brc_isCloudKitZoneNotFoundError;
-- (BOOL)brc_isCloudKitZoneUserDeletedError;
 - (BOOL)brc_isEverRetriable;
 - (BOOL)brc_isOutOfSpaceError;
 - (BOOL)brc_isResetError;

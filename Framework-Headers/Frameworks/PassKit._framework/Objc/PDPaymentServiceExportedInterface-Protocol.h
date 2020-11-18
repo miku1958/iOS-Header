@@ -19,12 +19,12 @@
 - (void)deletePaymentTransactionWithIdentifier:(NSString *)arg1 forPassWithUniqueIdentifier:(NSString *)arg2 handler:(void (^)(void))arg3;
 - (void)downloadAllPaymentPassesWithHandler:(void (^)(void))arg1;
 - (void)felicaStateWithPassUniqueIdentifier:(NSString *)arg1 paymentApplication:(PKPaymentApplication *)arg2 handler:(void (^)(PKFelicaTransitAppletState *))arg3;
-- (void)hasOutstandingExpressActivityTimeoutWithHandler:(void (^)(BOOL))arg1;
 - (void)initializeSecureElementIfNecessaryWithHandler:(void (^)(BOOL, NSData *, NSData *))arg1;
 - (void)insertOrUpdatePaymentTransaction:(PKPaymentTransaction *)arg1 forPassUniqueIdentifier:(NSString *)arg2 paymentApplication:(PKPaymentApplication *)arg3 handler:(void (^)(PKPaymentTransaction *))arg4;
 - (void)insertOrUpdateValueAddedServiceTransaction:(PKValueAddedServiceTransaction *)arg1 forPassUniqueIdentifier:(NSString *)arg2 paymentTransaction:(PKPaymentTransaction *)arg3 handler:(void (^)(void))arg4;
 - (void)messagesAppLaunchTokenForPassWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(NSString *))arg2;
 - (void)messagesForPaymentPassWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(NSSet *))arg2;
+- (void)outstandingExpressTransactionState:(void (^)(unsigned long long))arg1;
 - (void)passbookUIServiceDidLaunch:(void (^)(void))arg1;
 - (void)paymentDeviceFieldPropertiesWithHandler:(void (^)(PKFieldProperties *))arg1;
 - (void)processFelicaTransitTransactionEventWithHistory:(PKFelicaAppletHistory *)arg1 transactionDate:(NSDate *)arg2 forPaymentApplication:(PKPaymentApplication *)arg3 withPassUniqueIdentifier:(NSString *)arg4;

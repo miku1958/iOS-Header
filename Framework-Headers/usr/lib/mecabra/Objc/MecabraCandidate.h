@@ -66,6 +66,7 @@
 - (id)syllablesInString:(id)arg1 syllableLengths:(id)arg2;
 - (unsigned long long)trieValueAtIndex:(unsigned long long)arg1;
 - (long long)weight;
+- (unsigned short)wordDictionaryReadingLengthAtIndex:(unsigned long long)arg1;
 - (id)wordIDs;
 - (BOOL)wordIsFromSystemDictionaryAtIndex:(unsigned long long)arg1;
 - (unsigned short)wordLengthAtIndex:(unsigned long long)arg1;

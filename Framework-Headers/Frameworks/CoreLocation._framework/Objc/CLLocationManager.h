@@ -109,7 +109,7 @@
 - (void)onClientEventHeadingCalibration:(id)arg1;
 - (void)onClientEventHistoricLocation:(id)arg1;
 - (void)onClientEventInterrupted:(id)arg1;
-- (void)onClientEventLocation:(id)arg1;
+- (void)onClientEventLocation:(id)arg1 forceMapMatching:(BOOL)arg2 type:(id)arg3;
 - (void)onClientEventLocationUnavailable:(id)arg1;
 - (void)onClientEventMicroLocations:(id)arg1;
 - (void)onClientEventPeerRanging:(id)arg1;

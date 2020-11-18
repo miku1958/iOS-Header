@@ -37,23 +37,10 @@
 - (void).cxx_destruct;
 - (id)characteristicTypeDescription:(id)arg1;
 - (id)characteristicTypeLocalizedDescription:(id)arg1;
-- (id)characteristicValueUnit:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)getAssistantCharacteristic:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)mapCharacteristicValueType:(id)arg1;
-- (id)mapFromAssistantCharacteristicValue:(id)arg1 name:(id)arg2;
-- (id)mapFromAssistantServiceName:(id)arg1;
-- (id)mapFromAssistantUnitName:(id)arg1;
-- (id)mapReadCharcteristicFromAssistantName:(id)arg1;
-- (id)mapToAssistantCharacteristicName:(id)arg1;
-- (id)mapToAssistantCharacteristicValue:(id)arg1 name:(id)arg2;
-- (id)mapToAssistantServiceName:(id)arg1;
-- (id)mapToAssistantUnitName:(id)arg1;
-- (id)mapWriteCharcteristicFromAssistantName:(id)arg1;
 - (id)serviceTypeDescription:(id)arg1;
 - (id)serviceTypeLocalizedDescription:(id)arg1;
-- (BOOL)supportsLocalization:(id)arg1;
 
 @end
 

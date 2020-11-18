@@ -10,8 +10,10 @@
 
 @interface CKDBackingAccount : NSObject
 {
+    BOOL _canAuthWithCloudKit;
 }
 
+@property (readonly, nonatomic) BOOL canAuthWithCloudKit; // @synthesize canAuthWithCloudKit=_canAuthWithCloudKit;
 @property (readonly, nonatomic) BOOL cloudKitIsEnabled;
 @property (readonly, nonatomic) BOOL cloudPhotosIsEnabled;
 @property (readonly, nonatomic) NSString *dsid;
@@ -40,7 +42,9 @@
 - (id)iCloudAuthTokenWithError:(id *)arg1;
 - (id)init;
 - (BOOL)isDataclassEnabled:(id)arg1;
+- (id)parentAppleAccount;
 - (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)saveVerifiedAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAccountProperiesInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)validateVettingToken:(id)arg1 vettingEmail:(id)arg2 vettingPhone:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 

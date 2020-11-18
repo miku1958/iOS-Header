@@ -179,7 +179,7 @@ __attribute__((visibility("hidden")))
 - (void)startPinchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)startPitchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)startRotatingWithFocusPoint:(struct CGPoint)arg1;
-- (void)startWithPounce:(BOOL)arg1 pounceCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)startWithPounce:(BOOL)arg1 startLocation:(CDStruct_c3b9c2ee)arg2 pounceCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)stop;
 - (void)stopAnimations;
 - (void)stopPanningAtPoint:(struct CGPoint)arg1;

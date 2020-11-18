@@ -154,7 +154,6 @@
 - (BOOL)evictInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (float)fakeSync;
 - (id)fetchParentFileIDs;
-- (BOOL)fixupItemAfterCrossZoneMovedCreationWithLookup:(id)arg1;
 - (void)fixupStagedItemAtStartup;
 - (void)handleUnknownItemError;
 - (void)inheritOSUpgradeNeededFromItem:(id)arg1;
@@ -166,7 +165,6 @@
 - (BOOL)learnStagedInfoFromDownloadStageID:(id)arg1 error:(id *)arg2;
 - (void)markBounceFailed;
 - (void)markBounceFinished;
-- (void)markCrossZoneMovedToUncreatedZone:(id)arg1;
 - (void)markDead;
 - (void)markForceNeedsSyncUp;
 - (void)markForceNotify;
@@ -181,6 +179,7 @@
 - (void)markLostWithoutBackoff;
 - (void)markMetadataLive;
 - (void)markNeedsDeleteForRescheduleOfItem:(id)arg1;
+- (void)markNeedsDeleteWhenAlreadyDeadInServerTruth;
 - (void)markNeedsOSUpgradeToSyncUpWithName:(id)arg1;
 - (void)markNeedsUploadOrSyncingUp;
 - (void)markRemovedFromFilesystemForServerEdit:(BOOL)arg1;

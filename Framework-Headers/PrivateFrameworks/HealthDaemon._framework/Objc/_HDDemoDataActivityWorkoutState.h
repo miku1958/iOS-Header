@@ -42,9 +42,10 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addAssociatedObjectUUID:(id)arg1;
+- (void)addLocationSeriesSamplesFromFilePath:(id)arg1 profile:(id)arg2 provenance:(id)arg3;
 - (void)addWorkoutEvent:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)generateWorkoutWithEndDate:(id)arg1;
+- (id)generateWorkoutWithEndDate:(id)arg1 profile:(id)arg2 provenance:(id)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (long long)lapCount;

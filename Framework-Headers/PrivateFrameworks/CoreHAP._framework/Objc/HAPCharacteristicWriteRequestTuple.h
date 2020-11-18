@@ -10,6 +10,7 @@
 
 @interface HAPCharacteristicWriteRequestTuple : NSObject
 {
+    BOOL _timedWrite;
     HAPCharacteristic *_characteristic;
     id _value;
     NSData *_authorizationData;
@@ -19,9 +20,10 @@
 @property (strong, nonatomic) NSData *authorizationData; // @synthesize authorizationData=_authorizationData;
 @property (strong, nonatomic) HAPCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
 @property (strong, nonatomic) NSNumber *enableEvents; // @synthesize enableEvents=_enableEvents;
+@property (nonatomic) BOOL timedWrite; // @synthesize timedWrite=_timedWrite;
 @property (strong, nonatomic) id value; // @synthesize value=_value;
 
-+ (id)writeRequestTupleForCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3;
++ (id)writeRequestTupleForCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 timedWrite:(BOOL)arg4;
 - (void).cxx_destruct;
 
 @end

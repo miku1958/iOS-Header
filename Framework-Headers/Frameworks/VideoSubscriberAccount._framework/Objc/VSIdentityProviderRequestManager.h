@@ -11,6 +11,7 @@
 @class NSMutableArray, NSOperationQueue, NSString, VSAccount, VSAccountStore, VSApplicationController, VSApplicationControllerRequest, VSIdentityProvider, VSPreferences, VSViewModel;
 @protocol OS_dispatch_source, VSIdentityProviderRequestManagerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface VSIdentityProviderRequestManager : NSObject <VSApplicationControllerDelegate>
 {
     BOOL _showingUserInterface;
@@ -55,7 +56,7 @@
 @property (strong, nonatomic) VSViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 - (void).cxx_destruct;
-- (id)_accountMetadataWithSAMLResponseString:(id)arg1 accountMetadataRequest:(id)arg2 verificationData:(id)arg3;
+- (id)_accountMetadataWithAuthenticationScheme:(id)arg1 responseStatusCode:(id)arg2 responseString:(id)arg3 accountMetadataRequest:(id)arg4 verificationData:(id)arg5;
 - (id)_applicationControllerRequestWithIdentityProviderRequest:(id)arg1;
 - (BOOL)_canShowAuthenticationUI;
 - (void)_completeAuthenticationRequestWithApplicationControllerResponse:(id)arg1;

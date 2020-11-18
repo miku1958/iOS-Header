@@ -10,6 +10,7 @@
 - (long long)_mapkit_directionsErrorCode;
 - (id)_mapkit_errorWithDirectionsError:(id)arg1;
 - (BOOL)_mapkit_isDirectionsError;
+- (id)_mapkit_transitIncident;
 - (long long)_mapkit_underlyingGEOError;
 @end
 

@@ -23,6 +23,7 @@
     NSSet *_supportedHandleTypes;
     NSURL *_bundleURL;
     NSString *_bundleIdentifier;
+    NSArray *_emergencyLabeledHandles;
     NSString *_URLScheme;
     NSArray *_handoffIdentifiers;
     TUSandboxExtendedURL *_sandboxExtendedRingtoneSoundURL;
@@ -36,6 +37,7 @@
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
+@property (copy, nonatomic) NSArray *emergencyLabeledHandles; // @synthesize emergencyLabeledHandles=_emergencyLabeledHandles;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, nonatomic, getter=isFaceTimeProvider) BOOL faceTimeProvider;
 @property (copy, nonatomic) NSArray *handoffIdentifiers; // @synthesize handoffIdentifiers=_handoffIdentifiers;

@@ -66,6 +66,7 @@
     long long _albumStoreID;
     NSArray *_buyOffers;
     NSString *_copyrightText;
+    NSString *_externalContentIdentifier;
     long long _storeItemInt64ID;
     long long _storeSubscriptionAdamID;
     MPMediaItem *_mediaItem;
@@ -116,6 +117,7 @@
 @property (readonly, nonatomic) double durationIfAvailable;
 @property (readonly, nonatomic) BOOL durationIsValid;
 @property (readonly, nonatomic, getter=isExplicitTrack) BOOL explicitTrack;
+@property (readonly, copy, nonatomic) NSString *externalContentIdentifier; // @synthesize externalContentIdentifier=_externalContentIdentifier;
 @property (weak, nonatomic) MPQueueFeeder *feeder; // @synthesize feeder=_feeder;
 @property (nonatomic) CDStruct_1b6d18a9 forwardPlaybackEndTime;
 @property (readonly, nonatomic) NSString *genre;

@@ -16,12 +16,14 @@
     double _maximumCachedAgeForArticleList;
     CDUnknownBlockType _headlinesCompletionHandler;
     NSDictionary *_resultHeadlinesByArticleListID;
+    NSDictionary *_resultArticleListsByID;
 }
 
 @property (copy, nonatomic) NSArray *articleListIDs; // @synthesize articleListIDs=_articleListIDs;
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
 @property (copy, nonatomic) CDUnknownBlockType headlinesCompletionHandler; // @synthesize headlinesCompletionHandler=_headlinesCompletionHandler;
-@property double maximumCachedAgeForArticleList; // @synthesize maximumCachedAgeForArticleList=_maximumCachedAgeForArticleList;
+@property (nonatomic) double maximumCachedAgeForArticleList; // @synthesize maximumCachedAgeForArticleList=_maximumCachedAgeForArticleList;
+@property (strong, nonatomic) NSDictionary *resultArticleListsByID; // @synthesize resultArticleListsByID=_resultArticleListsByID;
 @property (strong, nonatomic) NSDictionary *resultHeadlinesByArticleListID; // @synthesize resultHeadlinesByArticleListID=_resultHeadlinesByArticleListID;
 
 - (void).cxx_destruct;

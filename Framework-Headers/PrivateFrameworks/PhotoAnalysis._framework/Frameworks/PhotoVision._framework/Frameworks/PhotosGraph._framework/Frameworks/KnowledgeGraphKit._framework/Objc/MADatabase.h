@@ -35,6 +35,7 @@
 - (void).cxx_destruct;
 - (id)_markerFilePath;
 - (id)_modelGraph;
+- (void)_resetCoreDataStack;
 - (void)_save:(CDUnknownBlockType)arg1 force:(BOOL)arg2;
 - (BOOL)_saveSynchonously:(id *)arg1;
 - (void)addEdge:(id)arg1 requiresTesting:(BOOL)arg2;

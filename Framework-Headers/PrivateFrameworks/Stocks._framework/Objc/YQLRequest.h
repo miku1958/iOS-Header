@@ -37,6 +37,7 @@
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(id)arg1;
 - (id)YQLCountryCode;
 - (id)YQLLanguageCode;
+- (void)_createDefaultSession;
 - (id)_yahooDoppelganger_taskForRequest:(id)arg1 delegate:(id)arg2;
 - (id)aggregateDictionaryDomain;
 - (id)arrayWithDictionaryKeyPath:(id)arg1 inJSONObject:(id)arg2 wrapResultIfDictionary:(BOOL)arg3;
@@ -47,7 +48,6 @@
 - (void)failToParseWithDataSeriesDictionary:(id)arg1;
 - (void)failWithError:(id)arg1;
 - (id)init;
-- (id)initWithSession:(id)arg1;
 - (BOOL)isLoading;
 - (void)loadRequest:(id)arg1;
 - (id)objectOfClass:(Class)arg1 withDictionaryKeyPath:(id)arg2 inJSONObject:(id)arg3;

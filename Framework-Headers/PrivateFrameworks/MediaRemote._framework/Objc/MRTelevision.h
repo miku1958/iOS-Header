@@ -53,12 +53,16 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_pairingAllowedCallbackQueue;
     CDUnknownBlockType _hiliteModeCallback;
     NSObject<OS_dispatch_queue> *_hiliteModeCallbackQueue;
+    CDUnknownBlockType _customDataCallback;
+    NSObject<OS_dispatch_queue> *_customDataCallbackQueue;
 }
 
 @property (strong, nonatomic) MRTelevisionClientConnection *connection; // @synthesize connection=_connection;
 @property (readonly, nonatomic) unsigned int connectionState; // @synthesize connectionState=_connectionState;
 @property (copy, nonatomic) CDUnknownBlockType connectionStateCallback; // @synthesize connectionStateCallback=_connectionStateCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *connectionStateCallbackQueue; // @synthesize connectionStateCallbackQueue=_connectionStateCallbackQueue;
+@property (copy, nonatomic) CDUnknownBlockType customDataCallback; // @synthesize customDataCallback=_customDataCallback;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *customDataCallbackQueue; // @synthesize customDataCallbackQueue=_customDataCallbackQueue;
 @property (nonatomic) struct _MROrigin *customOrigin;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -102,6 +106,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_deviceInfoFromTXTRecordData:(id)arg1;
 - (void)_addArtwork:(id)arg1 toNowPlayingInfo:(id)arg2;
+- (void)_callCientCustomDataCallback:(id)arg1 name:(id)arg2;
 - (void)_callCientHiliteModeCallback;
 - (void)_callClientAllowsPairingCallback;
 - (void)_callClientConnectionStateCallback:(id)arg1;
@@ -115,6 +120,7 @@ __attribute__((visibility("hidden")))
 - (id)_errorForCurrentState;
 - (void)_handleCryptoPairingMessage:(id)arg1;
 - (void)_handleDeviceInfoUpdateMessage:(id)arg1;
+- (void)_handleGenericMessage:(id)arg1;
 - (void)_handleHiliteModeMessage:(id)arg1;
 - (void)_handleKeyboardMessage:(id)arg1;
 - (void)_handleNotificationMessage:(id)arg1;
@@ -151,15 +157,18 @@ __attribute__((visibility("hidden")))
 - (void)registerTouchDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerVoiceInputDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendButtonEvent:(struct _MRHIDButtonEvent)arg1;
+- (void)sendCustomData:(id)arg1 withName:(id)arg2;
 - (void)sendGameControllerEvent:(const CDStruct_06eb3966 *)arg1 controllerID:(unsigned long long)arg2;
 - (void)sendHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)sendTouchEvent:(struct _MRHIDTouchEvent)arg1 toVirtualDeviceWithID:(unsigned long long)arg2;
 - (void)setConnectionState:(unsigned int)arg1 error:(id)arg2;
 - (void)setConnectionStateCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setCustomDataCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setGameControllerInputModeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setGameControllerPropertiesCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setHiliteMode:(BOOL)arg1;
 - (void)setHiliteModeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setName:(id)arg1;
 - (void)setNameCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setPairingAllowedCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setPairingCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;

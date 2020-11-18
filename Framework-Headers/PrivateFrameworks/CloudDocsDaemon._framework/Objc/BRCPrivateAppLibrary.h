@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (unsigned int)_activateState:(unsigned int)arg1 origState:(unsigned int)arg2;
-- (BOOL)_crossZoneMoveDocumentsFromClientZone:(id)arg1 toZone:(id)arg2;
 - (BOOL)_isInCloudDocsZone;
 - (id)_unwrappedDescriptionWithContext:(id)arg1;
 - (void)_updateContainerMetadataFromRecord:(id)arg1 stripIcons:(BOOL)arg2;
@@ -34,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)createAliasWithTarget:(id)arg1 parentPath:(id)arg2 forceReparent:(BOOL)arg3 error:(id *)arg4;
 - (id)fetchRootItem;
 - (id)fetchRootItemInDB:(id)arg1;
-- (id)initWithName:(id)arg1 ownerName:(id)arg2 dbRowID:(id)arg3 zoneRowID:(id)arg4 db:(id)arg5 plist:(id)arg6 session:(id)arg7 initialCreation:(BOOL)arg8 createdRootOnDisk:(BOOL)arg9 rootFileID:(id)arg10;
+- (id)initWithName:(id)arg1 ownerName:(id)arg2 dbRowID:(id)arg3 zoneRowID:(id)arg4 db:(id)arg5 plist:(id)arg6 session:(id)arg7 initialCreation:(BOOL)arg8 createdRootOnDisk:(BOOL)arg9 createdCZMMoved:(BOOL)arg10 rootFileID:(id)arg11;
 - (BOOL)isPrivateAppLibrary;
 - (void)notifyClient:(id)arg1 whenFaultingIsDone:(CDUnknownBlockType)arg2;
 - (id)pathRelativeToRoot;

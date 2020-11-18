@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 @class LAContext, NSDictionary, NSNumber, TKToken;
-@protocol OS_xpc_object, TKTokenSessionDelegate, TKTokenSessionPrivateDelegate;
+@protocol OS_dispatch_queue, OS_xpc_object, TKTokenSessionDelegate, TKTokenSessionPrivateDelegate;
 
 @interface TKTokenSession : NSObject
 {
     NSObject<OS_xpc_object> *_clientConnection;
+    NSObject<OS_dispatch_queue> *_sessionQueue;
     TKToken *_token;
     id<TKTokenSessionDelegate> _delegate;
     LAContext *_LAContext;

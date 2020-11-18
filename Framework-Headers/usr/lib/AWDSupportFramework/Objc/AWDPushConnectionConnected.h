@@ -15,30 +15,38 @@
     unsigned long long _timestamp;
     unsigned int _connectDuration;
     unsigned int _connectionType;
+    unsigned int _dnsDuration;
     unsigned int _dualChannelState;
     NSString *_guid;
     int _linkQuality;
+    unsigned int _tlsDuration;
     struct {
         unsigned int timestamp:1;
         unsigned int connectDuration:1;
         unsigned int connectionType:1;
+        unsigned int dnsDuration:1;
         unsigned int dualChannelState:1;
         unsigned int linkQuality:1;
+        unsigned int tlsDuration:1;
     } _has;
 }
 
 @property (nonatomic) unsigned int connectDuration; // @synthesize connectDuration=_connectDuration;
 @property (nonatomic) unsigned int connectionType; // @synthesize connectionType=_connectionType;
+@property (nonatomic) unsigned int dnsDuration; // @synthesize dnsDuration=_dnsDuration;
 @property (nonatomic) unsigned int dualChannelState; // @synthesize dualChannelState=_dualChannelState;
 @property (strong, nonatomic) NSString *guid; // @synthesize guid=_guid;
 @property (nonatomic) BOOL hasConnectDuration;
 @property (nonatomic) BOOL hasConnectionType;
+@property (nonatomic) BOOL hasDnsDuration;
 @property (nonatomic) BOOL hasDualChannelState;
 @property (readonly, nonatomic) BOOL hasGuid;
 @property (nonatomic) BOOL hasLinkQuality;
 @property (nonatomic) BOOL hasTimestamp;
+@property (nonatomic) BOOL hasTlsDuration;
 @property (nonatomic) int linkQuality; // @synthesize linkQuality=_linkQuality;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned int tlsDuration; // @synthesize tlsDuration=_tlsDuration;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
