@@ -41,7 +41,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatesFeedbackGenerator *swipeFeedbackGenerator; // @synthesize swipeFeedbackGenerator=_swipeFeedbackGenerator;
 
 - (void).cxx_destruct;
+- (void)_cancelExistingSwipe;
+- (void)_cancelExistingSwipeForGestureBeganIfNecessary:(id)arg1;
 - (CDStruct_9b6dff2a)_currentSwipeInfoWithTargetOffset:(double)arg1 animated:(BOOL)arg2 usingSpringWithStiffness:(double)arg3;
+- (BOOL)_delegateWantsToDismissOnTouchDownForGestureRecognizer:(id)arg1;
 - (unsigned long long)_directionForGestureRecognizer:(id)arg1;
 - (void)_dismissalRecognizerDidRecognize:(id)arg1;
 - (void)_moveSwipedItemToOffset:(double)arg1 animated:(BOOL)arg2 usingSpringWithStiffness:(double)arg3 isTracking:(BOOL)arg4;

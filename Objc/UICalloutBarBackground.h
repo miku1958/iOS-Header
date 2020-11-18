@@ -11,10 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface UICalloutBarBackground : UIView
 {
-    double m_dividerOffsets[24];
     UIVisualEffectView *_blurView;
     UIImageView *_selectionTintView;
-    UIImageView *_separatorView;
     struct CGRect _highlightRect;
 }
 
@@ -23,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)init;
 - (void)layoutSubviews;
-- (void)setDividerOffsets:(double *)arg1;
 - (void)setHighlighted:(BOOL)arg1 forFrame:(struct CGRect)arg2;
 
 @end

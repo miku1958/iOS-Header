@@ -11,7 +11,7 @@
 #import <UIKitCore/_UIScreenEdgePanRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIViewRepresentingKeyboardLayout-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID, UIKBCadenceMonitor, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UIKeyboardTypingStyleEstimator, UITextInputTraits, _UIKBRTFingerDetection, _UIKBRTRecognizer, _UIKBRTTouchDrifting, _UIKBRTTouchVelocities, _UIScreenEdgePanRecognizer;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID, UIEvent, UIKBCadenceMonitor, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UIKeyboardTypingStyleEstimator, UITextInputTraits, _UIKBRTFingerDetection, _UIKBRTRecognizer, _UIKBRTTouchDrifting, _UIKBRTTouchVelocities, _UIScreenEdgePanRecognizer;
 @protocol OS_dispatch_queue;
 
 @interface UIKeyboardLayout : UIView <_UIKBRTRecognizerDelegate, _UIKBRTTouchDriftingDelegate, _UIViewRepresentingKeyboardLayout, _UIScreenEdgePanRecognizerDelegate>
@@ -26,6 +26,7 @@
     BOOL _disableInteraction;
     UIKeyboardTaskQueue *_taskQueue;
     UIKeyboardTypingStyleEstimator *_typingStyleEstimator;
+    UIEvent *_currentTouchDownEvent;
     BOOL hideKeysUnderIndicator;
     BOOL _hasPreferredHeight;
     BOOL _isExecutingDeferredTouchTasks;
@@ -50,6 +51,7 @@
 
 @property (strong, nonatomic) NSUUID *activeTouchUUID; // @synthesize activeTouchUUID=_activeTouchUUID;
 @property (strong, nonatomic) UIKBCadenceMonitor *cadenceMonitor; // @synthesize cadenceMonitor=_cadenceMonitor;
+@property (readonly, nonatomic) UIEvent *currentTouchDownEvent;
 @property (nonatomic) unsigned long long cursorLocation; // @synthesize cursorLocation=_cursorLocation;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) CDUnknownBlockType deferredTaskForActiveTouch; // @synthesize deferredTaskForActiveTouch=_deferredTaskForActiveTouch;
@@ -125,6 +127,7 @@
 - (void)clearTransientState;
 - (void)clearUnusedObjects:(BOOL)arg1;
 - (void)commitTouchUUIDs:(id)arg1;
+- (void)commitTouchUUIDs:(id)arg1 cancelInsteadOfUp:(BOOL)arg2;
 - (void)commitTouches:(id)arg1 executionContext:(id)arg2;
 - (long long)currentHandBias;
 - (id)currentKeyplane;

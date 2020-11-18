@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)layoutSubviews;
 - (id)renderFlagsForTraits:(id)arg1;
+- (void)retestForTouchUpSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)setDrawFrame:(struct CGRect)arg1;
 - (void)setRenderConfig:(id)arg1;

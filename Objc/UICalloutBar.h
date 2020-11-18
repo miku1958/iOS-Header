@@ -6,9 +6,11 @@
 
 #import <UIKitCore/UIView.h>
 
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
+
 @class NSArray, NSDictionary, NSMutableArray, NSString, UICalloutBarBackground, UICalloutBarButton, UIResponder, UIScrollView, UIStackView;
 
-@interface UICalloutBar : UIView
+@interface UICalloutBar : UIView <_UICursorInteractionDelegate>
 {
     id m_delegate;
     struct CGPoint m_pointBelowControls;
@@ -39,6 +41,7 @@
     NSMutableArray *m_rectsToEvade;
     UICalloutBarBackground *m_overlay;
     double m_fadedTime;
+    BOOL m_fadedDueToCommand;
     NSDictionary *m_currentAppearOrFadeContext;
     id m_responderTarget;
     CDUnknownBlockType m_responderTargetCompletionHandler;
@@ -52,14 +55,19 @@
     BOOL m_isDisplayingVertically;
     UIScrollView *m_verticalScrollView;
     UIStackView *m_verticalStackView;
-    NSMutableArray *m_axSeparatorViews;
+    NSMutableArray *m_separatorViews;
+    UIView *m_buttonView;
+    long long m_hoveredIndex;
 }
 
 @property (nonatomic) int arrowDirection; // @synthesize arrowDirection=m_arrowDirection;
 @property (nonatomic) struct CGRect controlFrame; // @synthesize controlFrame=m_controlFrame;
 @property (strong, nonatomic) NSDictionary *currentAppearOrFadeContext; // @synthesize currentAppearOrFadeContext=m_currentAppearOrFadeContext;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id delegate; // @synthesize delegate=m_delegate;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *extraItems; // @synthesize extraItems=m_extraItems;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDisplayingVertically; // @synthesize isDisplayingVertically=m_isDisplayingVertically;
 @property (nonatomic) struct CGPoint pointAboveControls; // @synthesize pointAboveControls=m_pointAboveControls;
 @property (nonatomic) struct CGPoint pointBelowControls; // @synthesize pointBelowControls=m_pointBelowControls;
@@ -69,6 +77,7 @@
 @property (copy, nonatomic) NSArray *replacements; // @synthesize replacements=m_replacements;
 @property (weak, nonatomic) UIResponder *responderTarget; // @synthesize responderTarget=m_responderTarget;
 @property (nonatomic) BOOL showAllReplacements; // @synthesize showAllReplacements=m_showAllReplacements;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressesAppearance; // @synthesize suppressesAppearance=m_suppressesAppearance;
 @property (nonatomic) BOOL supressesHorizontalMovement; // @synthesize supressesHorizontalMovement=m_supressesHorizontalMovement;
 @property (nonatomic) int targetDirection; // @synthesize targetDirection=m_targetDirection;
@@ -101,12 +110,13 @@
 - (BOOL)_touchesInsideShouldHideCalloutBar;
 - (BOOL)_updateVisibleItemsAnimated:(BOOL)arg1;
 - (void)addRectToEvade:(struct CGRect)arg1;
-- (void)addVerticalSeparatorAfterButton:(id)arg1;
+- (void)addVerticalSeparatorAfterButton:(id)arg1 usingLargeText:(BOOL)arg2;
 - (void)adjustFrameToAvoidDividerOnArrow;
 - (void)appear;
 - (void)appearAnimationDidStopWithContext:(id)arg1;
 - (void)applicationDidAddDeactivationReason:(id)arg1;
 - (void)buttonHighlighted:(id)arg1 highlighted:(BOOL)arg2;
+- (void)buttonHovered:(id)arg1 index:(long long)arg2 hovered:(BOOL)arg3;
 - (void)buttonPressed:(id)arg1;
 - (BOOL)calculateControlFrameForCalloutSize:(struct CGSize)arg1 below:(BOOL)arg2;
 - (BOOL)calculateControlFrameForCalloutSize:(struct CGSize)arg1 right:(BOOL)arg2;
@@ -120,10 +130,12 @@
 - (void)fade;
 - (void)fadeAnimationDidStopWithContext:(id)arg1 finished:(BOOL)arg2;
 - (void)fadeFromTargetView:(id)arg1;
+- (BOOL)fadedDueToCommand;
 - (BOOL)hasReplacements;
 - (void)hide;
 - (void)hideFromTargetView:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (long long)indexOfButton:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)keyboardAnalyticsDispatchWithSelector:(SEL)arg1;
 - (double)maxVerticalCalloutHeightForMinButtonHeight:(double)arg1;

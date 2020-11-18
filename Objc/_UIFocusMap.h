@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIFocusSystem, _UIFocusMapSearchInfo, _UIFocusSearchInfo;
+@class UIFocusSystem, _UIFocusGroupMap, _UIFocusMapSearchInfo, _UIFocusSearchInfo;
 @protocol UICoordinateSpace, _UIFocusRegionContainer;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     BOOL _minimumSearchAreaIsEmpty;
     BOOL _trackingSearchInfo;
     BOOL _needsSearchInfo;
+    _UIFocusGroupMap *_focusGroupMap;
     UIFocusSystem *_focusSystem;
     id<_UIFocusRegionContainer> _rootContainer;
     id<UICoordinateSpace> _coordinateSpace;
@@ -43,7 +44,9 @@ __attribute__((visibility("hidden")))
 - (id)_defaultFocusItemInEnvironment:(id)arg1 limitScopeUsingFocusPreferences:(BOOL)arg2;
 - (id)_defaultMapSnapshotter;
 - (id)_findAllDefaultFocusableRegionsWithSnapshotter:(id)arg1;
-- (id)_linearlySortedFocusItemsForItems:(id)arg1;
+- (id)_focusGroupMap;
+- (id)_groupBoundariesForItems:(id)arg1;
+- (id)_linearlySortedFocusItemsForItems:(id)arg1 grouping:(BOOL)arg2;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 focusedRegion:(id)arg2;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inRegions:(id)arg2;
@@ -58,7 +61,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 coordinateSpace:(id)arg3;
 - (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 coordinateSpace:(id)arg3 searchInfo:(id)arg4;
 - (id)initWithFocusSystem:(id)arg1 rootContainer:(id)arg2 searchInfo:(id)arg3;
-- (id)linearlyOrderedFocusRegionMapEntriesForRequest:(id)arg1;
 
 @end
 

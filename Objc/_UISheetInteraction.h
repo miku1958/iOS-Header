@@ -17,6 +17,7 @@
 {
     BOOL _enabled;
     BOOL _horizontalRubberBandingEnabled;
+    BOOL _verticalPanningEnabled;
     NSArray *_detents;
     long long _indexOfCurrentDetent;
     double _rubberBandExtentBeyondMinimumOffset;
@@ -58,12 +59,16 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<UITimingCurveProvider> timingCurve; // @synthesize timingCurve=_timingCurve;
 @property (nonatomic) double unconstrainedOffset; // @synthesize unconstrainedOffset=_unconstrainedOffset;
+@property (nonatomic) BOOL verticalPanningEnabled; // @synthesize verticalPanningEnabled=_verticalPanningEnabled;
 @property (weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
+- (id)_currentDragPanGesture;
+- (double)_currentRubberBandCoefficient;
 - (BOOL)_descendentScrollView:(id)arg1 shouldPreserveStartOffset:(struct CGPoint)arg2;
 - (void)_descendentScrollViewDidCancelDragging:(id)arg1;
 - (void)_descendentScrollViewDidEndDragging:(id)arg1;
+- (BOOL)_gestureRecognizer:(id)arg1 shouldReceiveEvent:(id)arg2;
 - (struct CGPoint)_scrollView:(id)arg1 adjustedUnconstrainedOffsetForUnconstrainedOffset:(struct CGPoint)arg2 startOffset:(struct CGPoint)arg3 horizontalVelocity:(inout double *)arg4 verticalVelocity:(inout double *)arg5 animator:(out id *)arg6;
 - (void)_setCurrentOffsetX:(double)arg1;
 - (void)_setCurrentOffsetY:(double)arg1;
@@ -77,6 +82,7 @@
 - (void)draggingChangedInSource:(id)arg1 withTranslation:(struct CGPoint)arg2 animateChange:(BOOL)arg3;
 - (void)draggingEndedInSource:(id)arg1 withVelocity:(double)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handlePan:(id)arg1;
 - (long long)indexOfDetentClosestToOffset:(double)arg1;
 - (id)init;

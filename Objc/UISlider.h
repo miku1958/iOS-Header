@@ -7,10 +7,11 @@
 #import <UIKitCore/UIControl.h>
 
 #import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 
-@class NSArray, UIColor, UIImage, UIImageView, UIView, _UIEdgeFeedbackGenerator, _UIModulationFeedbackGenerator;
+@class NSArray, NSString, UIColor, UIImage, UIImageView, UIView, _UIEdgeFeedbackGenerator, _UIModulationFeedbackGenerator;
 
-@interface UISlider : UIControl <NSCoding>
+@interface UISlider : UIControl <_UICursorInteractionDelegate, NSCoding>
 {
     float _value;
     float _minValue;
@@ -52,8 +53,11 @@
 @property (readonly, nonatomic) UIImage *currentMaximumTrackImage;
 @property (readonly, nonatomic) UIImage *currentMinimumTrackImage;
 @property (readonly, nonatomic) UIImage *currentThumbImage;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic, getter=_edgeFeedbackBehavior, setter=_setEdgeFeedbackBehavior:) _UIEdgeFeedbackGenerator *edgeFeedbackBehavior;
 @property (strong, nonatomic, getter=_edgeFeedbackGenerator, setter=_setEdgeFeedbackGenerator:) _UIEdgeFeedbackGenerator *edgeFeedbackGenerator;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIColor *maximumTrackTintColor; // @synthesize maximumTrackTintColor=_maxTintColor;
 @property (nonatomic) float maximumValue; // @dynamic maximumValue;
 @property (strong, nonatomic) UIImage *maximumValueImage;
@@ -61,6 +65,7 @@
 @property (nonatomic) float minimumValue; // @dynamic minimumValue;
 @property (strong, nonatomic) UIImage *minimumValueImage;
 @property (strong, nonatomic, getter=_modulationFeedbackGenerator, setter=_setModulationFeedbackGenerator:) _UIModulationFeedbackGenerator *modulationFeedbackGenerator;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UIColor *thumbTintColor; // @synthesize thumbTintColor=_thumbTintColor;
 @property (nonatomic) float value; // @dynamic value;
 
@@ -120,8 +125,9 @@
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)createThumbView;
 - (id)createThumbViewNeue;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)dealloc;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;

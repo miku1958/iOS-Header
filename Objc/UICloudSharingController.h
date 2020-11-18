@@ -92,6 +92,7 @@
 - (id)initWithPreparationHandler:(CDUnknownBlockType)arg1;
 - (id)initWithShare:(id)arg1 container:(id)arg2;
 - (id)initWithShare:(id)arg1 preparationHandler:(CDUnknownBlockType)arg2;
+- (long long)modalPresentationStyle;
 
 @end
 

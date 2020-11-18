@@ -9,13 +9,15 @@
 #import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/UIPickerViewScrollTesting-Protocol.h>
 
-@class NSCalendar, NSDate, NSLocale, NSTimeZone, UIColor, _UIDatePickerView;
+@class NSCalendar, NSDate, NSLocale, NSTimeZone, UIColor, UIView, _UIDatePickerDataModel;
+@protocol _UIDatePickerViewComponent;
 
 @interface UIDatePicker : UIControl <UIPickerViewScrollTesting, NSCoding>
 {
-    _UIDatePickerView *_pickerView;
+    UIView<_UIDatePickerViewComponent> *_pickerView;
+    _UIDatePickerDataModel *_data;
     BOOL _useCurrentDateDuringDecoding;
-    BOOL shouldAnimateSetDateCall;
+    long long _preferredDatePickerStyle;
 }
 
 @property (nonatomic, getter=_allowsZeroCountDownDuration, setter=_setAllowsZeroCountDownDuration:) BOOL allowsZeroCountDownDuration; // @dynamic allowsZeroCountDownDuration;
@@ -25,6 +27,7 @@
 @property (nonatomic) double countDownDuration; // @dynamic countDownDuration;
 @property (strong, nonatomic) NSDate *date; // @dynamic date;
 @property (nonatomic) long long datePickerMode; // @dynamic datePickerMode;
+@property (readonly, nonatomic) long long datePickerStyle;
 @property (readonly, nonatomic, getter=_dateUnderSelectionBar) NSDate *dateUnderSelectionBar; // @dynamic dateUnderSelectionBar;
 @property (nonatomic, getter=_drawsBackground, setter=_setDrawsBackground:) BOOL drawsBackground; // @dynamic drawsBackground;
 @property (strong, nonatomic, getter=_highlightColor, setter=_setHighlightColor:) UIColor *highlightColor;
@@ -34,7 +37,7 @@
 @property (strong, nonatomic) NSDate *maximumDate; // @dynamic maximumDate;
 @property (strong, nonatomic) NSDate *minimumDate; // @dynamic minimumDate;
 @property (nonatomic) long long minuteInterval; // @dynamic minuteInterval;
-@property (nonatomic, getter=_shouldAnimateSetDateCall, setter=_setShouldAnimateSetDateCall:) BOOL shouldAnimateSetDateCall; // @synthesize shouldAnimateSetDateCall;
+@property (nonatomic) long long preferredDatePickerStyle; // @synthesize preferredDatePickerStyle=_preferredDatePickerStyle;
 @property (strong, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *textColor;
 @property (strong, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
 @property (nonatomic) double timeInterval; // @dynamic timeInterval;
@@ -59,9 +62,9 @@
 - (void)_setHighlightsToday:(BOOL)arg1;
 - (void)_setLocale:(id)arg1;
 - (void)_setUpInitialValues;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (void)awakeFromNib;
 - (id)dateComponents;
-- (void)didReceiveBindingsUpdate;
 - (void)encodeWithCoder:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (int)hour;
@@ -82,7 +85,6 @@
 - (void)setStaggerTimeIntervals:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)willReceiveBindingsUpdate;
 
 @end
 

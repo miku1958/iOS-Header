@@ -70,7 +70,7 @@
 
 + (Class)invalidationContextClass;
 - (void).cxx_destruct;
-- (struct UIEdgeInsets)_adjustedSectionInsetForSectionInset:(struct UIEdgeInsets)arg1 forAxis:(int)arg2;
+- (struct UIEdgeInsets)_adjustedSectionInsetForSectionInset:(struct UIEdgeInsets)arg1 forAxis:(unsigned long long)arg2;
 - (BOOL)_boundsAndInsetsAreValidForReferenceDimension;
 - (void)_calculateAttributesForRect:(struct CGRect)arg1;
 - (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
@@ -91,7 +91,7 @@
 - (void)_invalidateButKeepAllInfo;
 - (void)_invalidateButKeepDelegateInfo;
 - (id)_layoutAttributesForItemsInRect:(struct CGRect)arg1;
-- (int)_layoutAxis;
+- (unsigned long long)_layoutAxis;
 - (void)_resetCachedItems;
 - (BOOL)_roundsToScreenScale;
 - (id)_rowAlignmentOptions;

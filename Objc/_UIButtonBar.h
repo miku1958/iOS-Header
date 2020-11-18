@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UIBarButtonItemGroupOwner-Protocol.h>
 #import <UIKitCore/_UIBarButtonItemViewOwner-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSLayoutDimension, NSMapTable, NSMutableArray, NSString, UIBarButtonItem, UIView, _UIBarButtonItemData, _UIButtonBarButtonVisualProvider, _UIButtonBarLayoutMetrics, _UIButtonBarStackView;
-@protocol _UIButtonBarAppearanceDelegate, _UIButtonBarDelegate;
+@class NSArray, NSLayoutConstraint, NSLayoutDimension, NSMapTable, NSMutableArray, NSString, UIBarButtonItem, UIView, _UIBarButtonItemData, _UIButtonBarButtonVisualProvider, _UIButtonBarLayoutMetrics, _UIButtonBarStackView, _UIPointerInteractionAssistant;
+@protocol UIPointerInteractionDelegate, _UIButtonBarAppearanceDelegate, _UIButtonBarDelegate;
 
-@interface _UIButtonBar : NSObject <_UIBarButtonItemViewOwner, _UIBarButtonItemGroupOwner, NSCoding>
+@interface _UIButtonBar : NSObject <UIPointerInteractionDelegate, _UIBarButtonItemViewOwner, _UIBarButtonItemGroupOwner, NSCoding>
 {
     _UIButtonBarStackView *_stackView;
     NSLayoutDimension *_flexibleSpaceEqualSizeAnchor;
@@ -36,6 +37,8 @@
         unsigned int needsAppearanceUpdate:1;
         unsigned int plainAppearanceChanged:1;
         unsigned int doneAppearanceChanged:1;
+        unsigned int needsUpdateHitRects:1;
+        unsigned int denyPointerInteractions:1;
     } _buttonBarFlags;
     BOOL _itemsInGroupUseSameSize;
     BOOL _compact;
@@ -47,11 +50,14 @@
     id<_UIButtonBarAppearanceDelegate> __appearanceDelegate;
     _UIBarButtonItemData *_plainItemAppearance;
     _UIBarButtonItemData *_doneItemAppearance;
+    _UIPointerInteractionAssistant *_assistant;
     _UIButtonBarButtonVisualProvider *_visualProvider;
 }
 
 @property (weak, nonatomic) id<_UIButtonBarAppearanceDelegate> _appearanceDelegate; // @synthesize _appearanceDelegate=__appearanceDelegate;
 @property (nonatomic) BOOL allowsViewWrappers;
+@property (strong, nonatomic) _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
+@property (readonly, nonatomic) UIView<UIPointerInteractionDelegate> *assistantView;
 @property (copy, nonatomic) NSArray *barButtonGroups; // @synthesize barButtonGroups=_barButtonGroups;
 @property (nonatomic, getter=_compact, setter=_setCompact:) BOOL compact; // @synthesize compact=_compact;
 @property (nonatomic) BOOL createsPopoverLayoutGuides;
@@ -61,6 +67,8 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _UIBarButtonItemData *doneItemAppearance; // @synthesize doneItemAppearance=_doneItemAppearance;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct NSDirectionalEdgeInsets hitTestDirectionalInsets;
+@property (nonatomic) struct UIEdgeInsets hitTestInsets;
 @property (nonatomic) long long itemDistribution;
 @property (nonatomic, getter=_itemsInGroupUseSameSize, setter=_setItemsInGroupUseSameSize:) BOOL itemsInGroupUseSameSize; // @synthesize itemsInGroupUseSameSize=_itemsInGroupUseSameSize;
 @property (readonly, nonatomic, getter=_layoutWidth) double layoutWidth;
@@ -75,12 +83,15 @@
 + (float)optionalConstraintsPriority;
 - (void).cxx_destruct;
 - (void)_appearanceChanged;
+- (void)_disablePointerInteractions;
+- (void)_enablePointerInteractions;
 - (double)_estimatedWidth;
 - (void)_groupDidChangeGeometry:(id)arg1;
 - (void)_groupDidChangePriority:(id)arg1;
 - (void)_groupDidUpdateItems:(id)arg1 removedItems:(id)arg2;
 - (void)_groupDidUpdateRepresentative:(id)arg1 fromRepresentative:(id)arg2;
 - (void)_groupDidUpdateVisibility:(id)arg1;
+- (void)_invalidateAssistant:(id)arg1;
 - (void)_itemCustomViewDidChange:(id)arg1 fromView:(id)arg2;
 - (void)_itemDidChangeEnabledState:(id)arg1;
 - (void)_itemDidChangeHiddenState:(id)arg1;
@@ -98,6 +109,7 @@
 - (void)_setVisualProvider:(id)arg1;
 - (id)_targetActionForBarButtonItem:(id)arg1;
 - (void)_updateForTraitCollectionChange:(id)arg1;
+- (void)_updateHitRects;
 - (void)_updateToFitInWidth:(double)arg1;
 - (id)_updatedViewForBarButtonItem:(id)arg1 withView:(id)arg2;
 - (void)_validateAllItems;
@@ -107,6 +119,10 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)plainItemAppearanceChanged;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 
 @end
 

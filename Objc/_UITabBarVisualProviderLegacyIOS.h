@@ -7,12 +7,14 @@
 #import <UIKitCore/_UITabBarVisualProvider.h>
 
 #import <UIKitCore/_UIBarAppearanceChangeObserver-Protocol.h>
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 
-@class NSString, UIView, _UIBarBackground, _UIBarBackgroundLayout;
+@class NSString, UIView, _UIBarBackground, _UIBarBackgroundLayout, _UICursorInteraction;
 
 __attribute__((visibility("hidden")))
-@interface _UITabBarVisualProviderLegacyIOS : _UITabBarVisualProvider <_UIBarAppearanceChangeObserver>
+@interface _UITabBarVisualProviderLegacyIOS : _UITabBarVisualProvider <_UIBarAppearanceChangeObserver, _UICursorInteractionDelegate>
 {
+    _UICursorInteraction *_cursorInteraction;
     _UIBarBackground *_backgroundView;
     _UIBarBackgroundLayout *_backgroundViewLayout;
     UIView *_customBackgroundView;
@@ -60,6 +62,8 @@ __attribute__((visibility("hidden")))
 - (void)changeLayout;
 - (void)changeSelectedItem:(id)arg1 fromItem:(id)arg2;
 - (id)createViewForTabBarItem:(id)arg1;
+- (id)cursorInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)exchangeItem:(id)arg1 withItem:(id)arg2;
 - (struct CGSize)intrinsicContentSizeGivenSize:(struct CGSize)arg1;
 - (void)layoutSubviews;

@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)_senderOfPressesHasTouchSurface:(id)arg1 withEvent:(id)arg2;
+- (BOOL)_senderOfPressesIsSoftwareRemoteWithEvent:(id)arg1;
 - (void)_shortTimerFired:(id)arg1;
 - (struct CGPoint)defaultDigitizerLocation;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;

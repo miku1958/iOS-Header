@@ -292,6 +292,7 @@
 - (BOOL)_getRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
 - (BOOL)_getWhite:(double *)arg1 alpha:(double *)arg2;
 - (BOOL)_isDeepColor;
+- (BOOL)_isOpaque;
 - (BOOL)_isSimilarToColor:(id)arg1 withinPercentage:(double)arg2;
 - (double)_luminance;
 - (double)_luminanceDifferenceFromColor:(id)arg1;

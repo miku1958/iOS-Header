@@ -6,13 +6,17 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class _UIStatusBarAction;
+@class UIView, _UIStatusBarAction;
 @protocol UILayoutItem;
 
 @protocol _UIStatusBarActionable <NSObject>
 
+@property (readonly, nonatomic) struct CGRect absoluteHoverFrame;
 @property (strong, nonatomic) _UIStatusBarAction *action;
 @property (nonatomic) struct UIEdgeInsets actionInsets;
+@property (nonatomic) struct NSDirectionalEdgeInsets extendedHoverInsets;
+@property (strong, nonatomic) _UIStatusBarAction *hoverAction;
+@property (readonly, nonatomic) UIView *hoverView;
 @property (readonly, nonatomic) id<UILayoutItem> layoutItem;
 
 @end

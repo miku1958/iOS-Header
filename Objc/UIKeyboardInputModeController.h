@@ -125,11 +125,13 @@
 - (id)filteredInputModesForSiriLanguageFromInputModes:(id)arg1;
 - (id)filteredPadInputModesFromInputModes:(id)arg1 withRules:(id)arg2;
 - (id)filteredTVInputModesFromInputModes:(id)arg1;
+- (id)fullInputModeFromIdentifier:(id)arg1 hardwareKeyboardLanguage:(id)arg2;
 - (id)getDictationSLSLanguagesEnabled;
 - (void)getHardwareKeyboardLanguage:(id *)arg1 countryCode:(id *)arg2;
 - (void)handleLastUsedInputMode:(id)arg1 withNewInputMode:(id)arg2;
 - (void)handleSpecificHardwareKeyboard;
 - (id)hardwareLayoutToUseForInputMode:(id)arg1;
+- (id)hardwareLayoutToUseForInputMode:(id)arg1 hardwareKeyboardLanguage:(id)arg2 countryCode:(id)arg3;
 - (BOOL)identifierIsValidSystemInputMode:(id)arg1;
 - (id)identifiersFromInputModes:(id)arg1;
 - (id)init;
@@ -168,6 +170,7 @@
 - (id)suggestedInputModesForHardwareKeyboardLanguage:(id)arg1 countryCode:(id)arg2 inputModes:(id)arg3;
 - (id)suggestedInputModesForLocales:(id)arg1;
 - (id)suggestedInputModesForPreferredLanguages;
+- (id)supportedFullModesForHardwareKeyboard:(id)arg1 countryCode:(id)arg2 activeModes:(id)arg3 matchedMode:(id *)arg4;
 - (id)supportedInputModesFromArray:(id)arg1;
 - (void)switchToCurrentSystemInputMode;
 - (void)switchToDictationInputMode;

@@ -12,10 +12,12 @@
 @protocol _UIClickInteractionDriving <NSObject>
 
 @property (nonatomic) double allowableMovement;
+@property (nonatomic) unsigned long long behavior;
 @property (nonatomic) BOOL cancelsTouchesInView;
 @property (readonly, nonatomic) BOOL clicksUpAutomaticallyAfterTimeout;
 @property (weak, nonatomic) id<_UIClickInteractionDriverDelegate> delegate;
 @property (readonly, nonatomic) BOOL hasExceededAllowableMovement;
+@property (readonly, nonatomic) unsigned long long inputPrecision;
 @property (readonly, nonatomic) BOOL isCurrentlyAcceleratedByForce;
 @property (readonly, nonatomic) double maximumEffectProgress;
 @property (readonly, nonatomic) UIGestureRecognizer *primaryGestureRecognizer;
@@ -26,5 +28,7 @@
 + (BOOL)requiresForceCapability;
 - (void)cancelInteraction;
 - (struct CGPoint)locationInCoordinateSpace:(id<UICoordinateSpace>)arg1;
+
+@optional
 @end
 

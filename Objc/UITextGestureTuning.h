@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)pointForGestureState:(long long)arg1 point:(struct CGPoint)arg2 translation:(struct CGPoint)arg3;
 - (struct CGPoint)pointIfPlacedCarefully:(struct CGPoint)arg1;
 - (struct CGPoint)touchAlignedPointForPoint:(struct CGPoint)arg1 translation:(struct CGPoint)arg2;
-- (void)updateVisibilityOffsetForTouch:(id)arg1 state:(long long)arg2;
+- (void)updateVisibilityOffsetForGestureState:(long long)arg1 touchType:(long long)arg2 locationInSceneReferenceSpace:(struct CGPoint)arg3 majorRadius:(double)arg4;
 - (void)updateWeightedPointWithGestureState:(long long)arg1 location:(struct CGPoint)arg2;
 - (void)updateWithTouches:(id)arg1 gestureState:(long long)arg2;
 

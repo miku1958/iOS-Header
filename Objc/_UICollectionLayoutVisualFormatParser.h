@@ -11,18 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface _UICollectionLayoutVisualFormatParser : NSObject
 {
-    int _axis;
     NSString *_visualFormat;
+    unsigned long long _axis;
     NSString *_name;
     NSArray *_items;
 }
 
-@property (nonatomic) int axis; // @synthesize axis=_axis;
+@property (nonatomic) unsigned long long axis; // @synthesize axis=_axis;
 @property (copy, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *visualFormat; // @synthesize visualFormat=_visualFormat;
 
-+ (int)axisForVisualFormat:(id)arg1;
++ (unsigned long long)axisForVisualFormat:(id)arg1;
 + (id)parserWithVisualFormat:(id)arg1;
 + (id)parsersWithVisualFormats:(id)arg1 seperatedByDelimiter:(id)arg2;
 - (void).cxx_destruct;

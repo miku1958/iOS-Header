@@ -34,7 +34,7 @@
 - (void).cxx_destruct;
 - (struct CGSize)_effectiveSizeForContainer:(id)arg1;
 - (struct CGSize)_effectiveSizeForContainer:(id)arg1 ignoringInsets:(BOOL)arg2;
-- (BOOL)_isEstimatedForAxis:(int)arg1;
+- (BOOL)_isEstimatedForAxis:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithSize:(struct CGSize)arg1 widthSemantic:(long long)arg2 heightSemantic:(long long)arg3 width:(id)arg4 height:(id)arg5;

@@ -194,6 +194,7 @@
 @property (nonatomic) BOOL contentsIsSingleValue; // @dynamic contentsIsSingleValue;
 @property (nonatomic) struct CGRect currentDragCaretRect;
 @property (nonatomic) unsigned long long currentDragSourceAction; // @synthesize currentDragSourceAction=_currentDragSourceAction;
+@property (readonly, nonatomic) long long cursorBehavior;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -761,7 +762,7 @@
 - (void)setRangedSelectionInitialExtentToCurrentSelectionEnd;
 - (void)setRangedSelectionInitialExtentToCurrentSelectionStart;
 - (void)setRangedSelectionWithExtentPoint:(struct CGPoint)arg1;
-- (void)setSelectedDOMRange:(id)arg1 affinity:(int)arg2;
+- (void)setSelectedDOMRange:(id)arg1 affinity:(unsigned long long)arg2;
 - (void)setSelectedDOMRange:(id)arg1 affinityDownstream:(BOOL)arg2;
 - (void)setSelectedTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 - (void)setSelectionToEnd;

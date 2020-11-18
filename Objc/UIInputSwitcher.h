@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
     double m_lastGlobeKeyUpTime;
     NSString *_newMode;
     BOOL _isGlobeKeyDown;
+    BOOL _usingCapsLockLanguageSwitch;
     NSString *_loadedIdentifier;
 }
 
 @property (nonatomic) BOOL isGlobeKeyDown; // @synthesize isGlobeKeyDown=_isGlobeKeyDown;
 @property (copy, nonatomic) NSString *loadedIdentifier; // @synthesize loadedIdentifier=_loadedIdentifier;
+@property (nonatomic) BOOL usingCapsLockLanguageSwitch; // @synthesize usingCapsLockLanguageSwitch=_usingCapsLockLanguageSwitch;
 
 + (id)activeInstance;
 + (id)sharedInstance;
@@ -48,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)showSwitcherWithAutoHide;
 - (void)showSwitcherWithoutAutoHide;
 - (BOOL)switchMode:(id)arg1 withHUD:(BOOL)arg2 withDelay:(BOOL)arg3;
+- (BOOL)switchMode:(id)arg1 withHUD:(BOOL)arg2 withDelay:(BOOL)arg3 fromCapsLock:(BOOL)arg4;
 - (void)touchHideSwitcherTimer;
 - (void)touchKeyHoldTimer;
 - (void)touchShowSwitcherTimer;

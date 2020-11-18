@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
         BOOL didUpdateHighlightProgress;
         BOOL shouldDelayGesture;
     } _delegateImplements;
+    unsigned long long _behavior;
     BOOL _cancelsTouchesInView;
     BOOL _reachedClickDownThreshold;
     id<_UIClickInteractionDriverDelegate> _delegate;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) double allowableMovement;
+@property (nonatomic) unsigned long long behavior;
 @property (nonatomic) BOOL cancelsTouchesInView; // @synthesize cancelsTouchesInView=_cancelsTouchesInView;
 @property (nonatomic) double clickDownDuration; // @synthesize clickDownDuration=_clickDownDuration;
 @property (readonly, nonatomic) double clickTimeoutDuration;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UITouchDurationObservingGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 @property (readonly, nonatomic) BOOL hasExceededAllowableMovement;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long inputPrecision;
 @property (readonly, nonatomic) BOOL isCurrentlyAcceleratedByForce;
 @property (readonly, nonatomic) double maximumEffectProgress;
 @property (readonly, nonatomic) UIGestureRecognizer *primaryGestureRecognizer;
@@ -61,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateForActiveGestureRecognizer;
 - (void)cancelInteraction;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (id)init;

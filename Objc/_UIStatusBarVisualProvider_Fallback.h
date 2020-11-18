@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *placements; // @synthesize placements=_placements;
 @property (weak, nonatomic) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsIndirectPointerTouchActions;
 
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
 - (void).cxx_destruct;

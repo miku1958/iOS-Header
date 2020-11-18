@@ -352,6 +352,7 @@
 - (void)_matchDeviceOrientation;
 - (void)_moveWithEvent:(id)arg1;
 - (BOOL)_needsShakesWhenInactive;
+- (void)_nextFocusContainer:(id)arg1;
 - (id)_normalInheritedTintColor;
 - (struct UIEdgeInsets)_normalizedSafeAreaInsets;
 - (void)_noteOverlayInsetsDidChange;
@@ -369,6 +370,7 @@
 - (void)_performTouchContinuationWithOverrideHitTestedView:(id)arg1;
 - (void)_positionHeaderView:(id)arg1 andFooterView:(id)arg2 outsideContentViewForInterfaceOrientation:(long long)arg3;
 - (void)_prepareForWindowHostingSceneRemoval;
+- (void)_previousFocusContainer:(id)arg1;
 - (void)_propagateTraitCollectionChangedForStateRestorationWithTransitionCoordinator:(id)arg1;
 - (id)_redundantConstraints;
 - (void)_registerChargedView:(id)arg1;
@@ -552,6 +554,7 @@
 - (BOOL)isRotating;
 - (BOOL)isUsingOnePartRotationAnimation;
 - (BOOL)keepContextInBackground;
+- (id)keyCommands;
 - (void)keyboardDidHide;
 - (double)level;
 - (void)makeKey:(id)arg1;

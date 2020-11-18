@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)mustFlattenForAlert:(id)arg1;
 - (void)mustFlattenForNavigationTransition:(id)arg1;
 - (void)mustFlattenForResignActive:(id)arg1;
+- (void)redrawDotForScale:(double)arg1;
 - (void)removeFromSuperview;
 - (void)saveDeactivationReason:(id)arg1;
 - (BOOL)scroller:(id)arg1 fullyContainSelectionRect:(struct CGRect)arg2;

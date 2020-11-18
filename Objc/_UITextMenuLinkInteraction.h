@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_contextMenuInteraction:(id)arg1 failedToBeginForSecondaryClickAtLocation:(struct CGPoint)arg2;
 - (id)_contextMenuInteraction:(id)arg1 overrideSuggestedActionsForConfiguration:(id)arg2;
 - (BOOL)_contextMenuInteraction:(id)arg1 shouldAttemptToPresentConfiguration:(id)arg2;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;

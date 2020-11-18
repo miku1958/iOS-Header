@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
 + (id)pillFont;
 + (struct CGSize)pillSize;
 + (id)pillSmallFont;
++ (struct UIEdgeInsets)regionCursorInsets;
++ (BOOL)regionCursorIsPill;
 + (struct CGSize)smallPillSize;
 
 @end

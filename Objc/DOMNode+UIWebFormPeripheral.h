@@ -33,6 +33,7 @@
 @property (nonatomic) long long autocorrectionType;
 @property (readonly, nonatomic) UITextPosition *beginningOfDocument;
 @property (nonatomic) BOOL contentsIsSingleValue;
+@property (readonly, nonatomic) long long cursorBehavior;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder;

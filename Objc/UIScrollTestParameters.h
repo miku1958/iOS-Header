@@ -12,18 +12,18 @@
 
 @interface UIScrollTestParameters : NSObject <NSCopying>
 {
-    int _axis;
     NSString *_testName;
     long long _iterations;
     double _delta;
     double _length;
+    unsigned long long _axis;
     CDUnknownBlockType _extraResultsBlock;
     double _startOffset;
     CADisplayLink *_displayLink;
     CDUnknownBlockType _completionBlock;
 }
 
-@property (nonatomic) int axis; // @synthesize axis=_axis;
+@property (nonatomic) unsigned long long axis; // @synthesize axis=_axis;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (nonatomic) double delta; // @synthesize delta=_delta;
 @property (strong, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;

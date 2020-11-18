@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL allowsPullDownGesture;
 @property (nonatomic) BOOL darkKeyboard; // @synthesize darkKeyboard=_darkKeyboard;
 @property (readonly, nonatomic) UIColor *highlightedBackgroundColor;
+@property (readonly, nonatomic) int inlineFloatingViewAdjustMode;
 @property (readonly, nonatomic) unsigned long long maxNumberOfProactiveCandidates;
 @property (readonly, nonatomic) struct CGSize preferredInlineFloatingViewSize;
 @property (readonly, nonatomic) unsigned long long rowsToExtend;

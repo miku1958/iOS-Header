@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_defaultLayoutForHeight:(double)arg1;
 - (BOOL)_heightDemandsCompactLayout;
 - (long long)_numberOfLinesForTitle:(id)arg1;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;

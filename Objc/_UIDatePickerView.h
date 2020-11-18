@@ -8,31 +8,18 @@
 
 #import <UIKitCore/UIPickerViewDataSource-Protocol.h>
 #import <UIKitCore/UIPickerViewDelegate-Protocol.h>
+#import <UIKitCore/_UIDatePickerViewComponent-Protocol.h>
 
-@class NSCalendar, NSDate, NSDateComponents, NSLocale, NSString, NSTimeZone, UIDatePicker, UIFont, UILabel, _UIDatePickerChineseCalendar, _UIDatePickerMode;
+@class NSCalendar, NSLocale, NSString, UIColor, UIDatePicker, UIFont, UILabel, _UIDatePickerDataModel, _UIDatePickerMode;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerView : UIPickerView <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface _UIDatePickerView : UIPickerView <UIPickerViewDelegate, UIPickerViewDataSource, _UIDatePickerViewComponent>
 {
     long long _loadingDate;
-    NSDate *_userSuppliedDate;
-    NSDate *_userSuppliedMinimumDate;
-    NSDate *_userSuppliedMaximumDate;
-    NSLocale *_compositeLocale;
-    NSLocale *_userProvidedLocale;
-    NSCalendar *_userProvidedCalendar;
-    _UIDatePickerChineseCalendar *_chineseWrapperCalendar;
-    NSDate *_minimumDate;
-    NSDate *_maximumDate;
-    NSDateComponents *_lastSelectedDateComponents;
     BOOL _allowsZeroTimeInterval;
     _UIDatePickerMode *_mode;
-    NSTimeZone *_timeZone;
-    double _timeInterval;
     UILabel *_hourLabel;
     UILabel *_minuteLabel;
-    UIDatePicker *_datePickerDelegate;
-    id _delegateOfDatePicker;
     int _expectedAMPM;
     struct {
         unsigned int staggerTimeIntervals:1;
@@ -40,6 +27,8 @@ __attribute__((visibility("hidden")))
         unsigned int highlightsToday:1;
         unsigned int usesBlackChrome:1;
     } _datePickerFlags;
+    UIDatePicker *_datePicker;
+    _UIDatePickerDataModel *_data;
 }
 
 @property (nonatomic, getter=_allowsZeroCountDownDuration, setter=_setAllowsZeroCountDownDuration:) BOOL allowsZeroCountDownDuration;
@@ -47,60 +36,51 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_amPmValue) long long amPmValue; // @dynamic amPmValue;
 @property (readonly, nonatomic) NSCalendar *calendar; // @dynamic calendar;
 @property (readonly, nonatomic) double contentWidth; // @dynamic contentWidth;
-@property (copy, nonatomic) NSDate *date;
-@property (copy, nonatomic) NSDateComponents *dateComponents; // @dynamic dateComponents;
-@property (nonatomic) long long datePickerMode;
+@property (strong, nonatomic) _UIDatePickerDataModel *data; // @synthesize data=_data;
+@property (weak, nonatomic) UIDatePicker *datePicker; // @synthesize datePicker=_datePicker;
+@property (readonly, nonatomic) long long datePickerStyle;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id delegateOfDatePicker; // @synthesize delegateOfDatePicker=_delegateOfDatePicker;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=_hasCustomCalendar) BOOL hasCustomCalendar; // @dynamic hasCustomCalendar;
-@property (readonly, nonatomic, getter=_hasCustomLocale) BOOL hasCustomLocale; // @dynamic hasCustomLocale;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic, getter=_highlightColor, setter=_setHighlightColor:) UIColor *highlightColor;
 @property (nonatomic) BOOL highlightsToday; // @dynamic highlightsToday;
 @property (readonly, nonatomic, getter=_hrMinFont) UIFont *hrMinFont; // @dynamic hrMinFont;
 @property (readonly, nonatomic, getter=_isTimeIntervalMode) BOOL isTimeIntervalMode; // @dynamic isTimeIntervalMode;
-@property (readonly, nonatomic, getter=_lastSelectedDateComponents) NSDateComponents *lastSelectedDateComponents; // @dynamic lastSelectedDateComponents;
 @property (readonly, nonatomic) NSLocale *locale; // @dynamic locale;
-@property (copy, nonatomic) NSDate *maximumDate; // @synthesize maximumDate=_userSuppliedMaximumDate;
-@property (copy, nonatomic) NSDate *minimumDate; // @synthesize minimumDate=_userSuppliedMinimumDate;
-@property (nonatomic) long long minuteInterval;
-@property (nonatomic) BOOL staggerTimeIntervals; // @dynamic staggerTimeIntervals;
+@property (strong, nonatomic, getter=_magnifierLineColor, setter=_setMagnifierLineColor:) UIColor *magnifierLineColor;
 @property (readonly) Class superclass;
+@property (strong, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *textColor;
+@property (strong, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
 @property (nonatomic) double timeInterval;
-@property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
-@property (copy, nonatomic) NSCalendar *userProvidedCalendar;
-@property (strong, nonatomic) NSLocale *userProvidedLocale;
 @property (nonatomic, getter=_usesBlackChrome, setter=_setUsesBlackChrome:) BOOL usesBlackChrome;
 
 - (void).cxx_destruct;
 - (void)_UIAppearance_setTextColor:(id)arg1;
 - (id)_componentsSelectedAfterEnforcingValidityOfComponents:(id)arg1 withLastManipulatedComponent:(long long)arg2;
+- (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
+- (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
 - (id)_contentViewForSizingLabelForPositioningInComponent:(long long)arg1;
 - (void)_datePickerReset:(id)arg1;
 - (void)_doneLoadingDateOrTime;
 - (id)_existingLabelForCalendarUnit:(unsigned long long)arg1;
 - (void)_fadeLabelForCalendarUnit:(unsigned long long)arg1 toText:(id)arg2 animated:(BOOL)arg3;
 - (id)_hoursStringForHour:(long long)arg1;
-- (BOOL)_isCurrentCalendar:(id)arg1;
 - (id)_labelForCalendarUnit:(unsigned long long)arg1 createIfNecessary:(BOOL)arg2;
 - (id)_labelTextForCalendarUnit:(unsigned long long)arg1;
-- (void)_loadDate:(id)arg1 animated:(BOOL)arg2;
+- (void)_loadDateAnimated:(BOOL)arg1;
 - (id)_makeNewCalendarUnitLabel;
 - (id)_minutesStringForHour:(long long)arg1 minutes:(long long)arg2;
 - (id)_orientationImageSuffix;
 - (void)_positionLabel:(id)arg1 forCalendarUnit:(unsigned long long)arg2 relativeTo:(id)arg3 order:(long long)arg4;
-- (void)_rebuildCompositeLocale;
 - (void)_resetSelectionOfTables;
 - (void)_selectRow:(long long)arg1 inComponent:(long long)arg2 animated:(BOOL)arg3 notify:(BOOL)arg4;
 - (int)_selectedHourForColumn:(int)arg1;
 - (int)_selectedMinuteForColumn:(int)arg1;
 - (id)_selectedTextForCalendarUnit:(unsigned long long)arg1;
 - (long long)_selectionBarRowInComponent:(long long)arg1;
-- (void)_setDate:(id)arg1 animated:(BOOL)arg2 forced:(BOOL)arg3;
 - (void)_setHidesLabels:(BOOL)arg1;
 - (void)_setLabel:(id)arg1 forCalendarUnit:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)_setMode:(id)arg1;
-- (void)_setTextColor:(id)arg1;
 - (BOOL)_showingDate;
 - (double)_tableRowHeight;
 - (void)_todayChanged:(id)arg1;
@@ -111,11 +91,19 @@ __attribute__((visibility("hidden")))
 - (void)_updateTextColorForCalendarUnitLabel:(id)arg1;
 - (BOOL)_updatedLastSelectedComponentsByValidatingSelectedDateWithLastManipulatedComponent:(long long)arg1;
 - (id)_viewForSelectedRowInComponent:(long long)arg1;
+- (long long)datePickerMode;
 - (void)dealloc;
-- (int)hour;
+- (void)didChangeCalendar;
+- (void)didChangeDateFrom:(id)arg1 animated:(BOOL)arg2;
+- (void)didChangeLocale;
+- (void)didChangeMaximumDate;
+- (void)didChangeMinimumDate;
+- (void)didChangeMinuteInterval;
+- (void)didChangeMode;
+- (void)didChangeTimeZone;
+- (BOOL)hasDefaultSize;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (int)minute;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
 - (id)pickerImageNamePrefix;
 - (void)pickerTableView:(id)arg1 didChangeSelectionBarRowFrom:(long long)arg2 to:(long long)arg3;
@@ -125,11 +113,9 @@ __attribute__((visibility("hidden")))
 - (id)pickerView:(id)arg1 viewForRow:(long long)arg2 forComponent:(long long)arg3 reusingView:(id)arg4;
 - (double)pickerView:(id)arg1 widthForComponent:(long long)arg2;
 - (void)scrollViewWillBeginDragging:(id)arg1;
-- (int)second;
-- (void)setDate:(id)arg1 animated:(BOOL)arg2;
-- (void)setDelegate:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (id)shadowColor;
+- (BOOL)staggerTimeIntervals;
 
 @end
 

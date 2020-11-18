@@ -13,7 +13,7 @@
 - (BOOL)_hasOrthogonalScrollingSections;
 - (struct CGPoint)_offsetForOrthogonalScrollingSection:(long long)arg1;
 - (struct CGRect)_orthogonalFrameWithOffsetElidedForItemWithLayoutAttributes:(UICollectionViewLayoutAttributes *)arg1 frame:(struct CGRect)arg2;
-- (int)_orthogonalScrollingAxis;
+- (unsigned long long)_orthogonalScrollingAxis;
 - (struct NSDirectionalEdgeInsets)_orthogonalScrollingContentInsetsForSection:(long long)arg1;
 - (struct CGRect)_orthogonalScrollingContentRectForSection:(long long)arg1;
 - (double)_orthogonalScrollingDecelerationRateForSection:(long long)arg1;

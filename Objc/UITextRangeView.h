@@ -6,11 +6,14 @@
 
 #import <UIKitCore/UIView.h>
 
-@class NSArray, NSMutableArray, UIResponder, UISelectionGrabber, UITextGestureTuning, UITextSelectionView, UITouch;
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
+#import <UIKitCore/UITextRangeAdjustmentInteractionDelegate-Protocol.h>
+
+@class NSArray, NSMutableArray, NSString, UIPointerInteraction, UIResponder, UISelectionGrabber, UITextRangeAdjustmentInteraction, UITextSelectionView, UITouch;
 @protocol UITextInput;
 
 __attribute__((visibility("hidden")))
-@interface UITextRangeView : UIView
+@interface UITextRangeView : UIView <UIPointerInteractionDelegate, UITextRangeAdjustmentInteractionDelegate>
 {
     UITextSelectionView *m_selectionView;
     UIResponder<UITextInput> *m_container;
@@ -18,22 +21,12 @@ __attribute__((visibility("hidden")))
     NSArray *m_rects;
     NSMutableArray *m_rectViews;
     UITouch *m_activeTouch;
-    struct CGPoint m_initialPoint;
     struct CGRect m_startEdge;
     struct CGRect m_endEdge;
-    struct CGPoint m_basePoint;
-    struct CGPoint m_extentPoint;
-    struct CGPoint m_initialBasePoint;
-    struct CGPoint m_initialExtentPoint;
-    double m_initialDistance;
-    struct CGPoint m_touchOffset;
-    double m_firstMovedTime;
     UIView *m_rectContainerView;
     UISelectionGrabber *m_startGrabber;
     UISelectionGrabber *m_endGrabber;
-    UITextGestureTuning *m_gestureTuning;
     BOOL m_animateUpdate;
-    BOOL m_baseIsStart;
     BOOL m_commandsWereShowing;
     BOOL m_willBeginMagnifying;
     BOOL m_inGesture;
@@ -42,27 +35,34 @@ __attribute__((visibility("hidden")))
     BOOL m_scaling;
     BOOL m_rotating;
     BOOL m_inputViewIsChanging;
+    UIPointerInteraction *_pointerInteraction;
     BOOL m_isClearingRange;
     BOOL m_shouldStayVisible;
+    BOOL _baseIsStart;
+    UITextRangeAdjustmentInteraction *_adjustmentInteraction;
+    struct CGPoint m_basePoint;
+    struct CGPoint m_extentPoint;
+    struct CGPoint m_initialExtentPoint;
+    struct CGPoint _activeTouchPoint;
 }
 
-@property (strong, nonatomic) UITouch *activeTouch; // @synthesize activeTouch=m_activeTouch;
-@property (readonly, nonatomic) struct CGPoint activeTouchPoint;
+@property (readonly, nonatomic) struct CGPoint activeTouchPoint; // @synthesize activeTouchPoint=_activeTouchPoint;
+@property (strong, nonatomic) UITextRangeAdjustmentInteraction *adjustmentInteraction; // @synthesize adjustmentInteraction=_adjustmentInteraction;
 @property (nonatomic) BOOL animateUpdate; // @synthesize animateUpdate=m_animateUpdate;
+@property (readonly, nonatomic) BOOL areSelectionRectsVisible;
 @property (readonly, nonatomic) BOOL autoscrolled;
-@property (nonatomic) BOOL baseIsStart; // @synthesize baseIsStart=m_baseIsStart;
-@property (nonatomic) struct CGPoint basePoint; // @synthesize basePoint=m_basePoint;
+@property (nonatomic) BOOL baseIsStart; // @synthesize baseIsStart=_baseIsStart;
+@property (readonly, nonatomic) struct CGPoint basePoint; // @synthesize basePoint=m_basePoint;
 @property (nonatomic) BOOL commandsWereShowing; // @synthesize commandsWereShowing=m_commandsWereShowing;
 @property (readonly, nonatomic) UIResponder<UITextInput> *container;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGRect endEdge; // @synthesize endEdge=m_endEdge;
 @property (strong, nonatomic) UISelectionGrabber *endGrabber; // @synthesize endGrabber=m_endGrabber;
-@property (nonatomic) struct CGPoint extentPoint; // @synthesize extentPoint=m_extentPoint;
-@property (nonatomic) double firstMovedTime; // @synthesize firstMovedTime=m_firstMovedTime;
+@property (readonly, nonatomic) struct CGPoint extentPoint; // @synthesize extentPoint=m_extentPoint;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inGesture; // @synthesize inGesture=m_inGesture;
-@property (nonatomic) struct CGPoint initialBasePoint; // @synthesize initialBasePoint=m_initialBasePoint;
-@property (nonatomic) double initialDistance; // @synthesize initialDistance=m_initialDistance;
 @property (nonatomic) struct CGPoint initialExtentPoint; // @synthesize initialExtentPoint=m_initialExtentPoint;
-@property (nonatomic) struct CGPoint initialPoint; // @synthesize initialPoint=m_initialPoint;
 @property (nonatomic) BOOL inputViewIsChanging; // @synthesize inputViewIsChanging=m_inputViewIsChanging;
 @property (nonatomic) BOOL isClearingRange; // @synthesize isClearingRange=m_isClearingRange;
 @property (nonatomic) BOOL isScrolling; // @synthesize isScrolling=m_scrolling;
@@ -75,17 +75,16 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldStayVisible; // @synthesize shouldStayVisible=m_shouldStayVisible;
 @property (nonatomic) struct CGRect startEdge; // @synthesize startEdge=m_startEdge;
 @property (strong, nonatomic) UISelectionGrabber *startGrabber; // @synthesize startGrabber=m_startGrabber;
-@property (nonatomic) struct CGPoint touchOffset; // @synthesize touchOffset=m_touchOffset;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL willBeginMagnifying; // @synthesize willBeginMagnifying=m_willBeginMagnifying;
 
 - (void).cxx_destruct;
 - (void)_cancelGrabberTransitionOutAnimations:(id)arg1;
-- (void)_createGestureTuningIfNecessary;
-- (struct CGRect)_endEdgeHitRect;
+- (struct CGRect)_endEdgeHitRect:(BOOL)arg1;
 - (BOOL)_endIsHorizontal;
 - (BOOL)_gestureRecognizerShouldReceiveTouch:(id)arg1;
 - (struct CGRect)_selectionClipRect;
-- (struct CGRect)_startEdgeHitRect;
+- (struct CGRect)_startEdgeHitRect:(BOOL)arg1;
 - (BOOL)_startIsHorizontal;
 - (void)animateHighlighterDelayedFadeInOnLayer:(id)arg1;
 - (void)animateHighlighterExpanderAnimation;
@@ -105,18 +104,19 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)magnifierPoint;
 - (BOOL)pointCloserToEnd:(struct CGPoint)arg1 startEdge:(struct CGRect)arg2 endEdge:(struct CGRect)arg3;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)prepareForMagnification;
 - (void)removeFromSuperview;
 - (void)scaleDidChange;
 - (void)scaleWillChange;
 - (void)setMagnifierOrientation;
-- (void)setTouchOffset:(struct CGPoint)arg1 touchPoint:(struct CGPoint)arg2;
 - (void)startAnimating;
 - (void)stopAnimating;
-- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
-- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)textRangeAdjustmentInteraction:(id)arg1 didBeginAtPoint:(struct CGPoint)arg2;
+- (void)textRangeAdjustmentInteraction:(id)arg1 didEndAtPoint:(struct CGPoint)arg2;
+- (void)textRangeAdjustmentInteraction:(id)arg1 selectionMoved:(struct CGPoint)arg2 withTouchPoint:(struct CGPoint)arg3;
+- (void)textRangeAdjustmentInteractionWasCancelled:(id)arg1;
 - (void)updateAfterEffectiveModeChange;
 - (void)updateBaseAndExtentPointsFromEdges;
 - (void)updateBaseIsStartWithDocumentPoint:(struct CGPoint)arg1;

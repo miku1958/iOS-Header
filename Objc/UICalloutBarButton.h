@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UITextReplacement *textReplacement; // @synthesize textReplacement=m_textReplacement;
 @property (readonly, nonatomic) int type; // @synthesize type=m_type;
 
++ (BOOL)_cursorInteractionEnabled;
 + (id)buttonWithImage:(id)arg1 action:(SEL)arg2 type:(int)arg3 inView:(id)arg4;
 + (id)buttonWithTitle:(id)arg1 action:(SEL)arg2 type:(int)arg3 inView:(id)arg4;
 + (id)buttonWithTitle:(id)arg1 subtitle:(id)arg2 maxWidth:(double)arg3 action:(SEL)arg4 type:(int)arg5 inView:(id)arg6;
@@ -55,6 +56,10 @@ __attribute__((visibility("hidden")))
 - (void)configureForRightPosition:(int)arg1;
 - (void)configureForSingle:(int)arg1;
 - (void)configureLabel;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
 - (void)dealloc;
 - (void)fadeAndSendAction;
 - (void)flash;

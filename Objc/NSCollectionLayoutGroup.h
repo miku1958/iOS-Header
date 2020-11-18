@@ -48,7 +48,7 @@
 - (void).cxx_destruct;
 - (id)_effectiveCopiedSubitemsForSubitems:(id)arg1 count:(long long)arg2 layoutDirection:(long long)arg3;
 - (id)_effectiveSizeForSize:(id)arg1 count:(long long)arg2 layoutDirection:(long long)arg3;
-- (BOOL)_isListSolverCompatibleForLayoutAxis:(int)arg1;
+- (BOOL)_isListSolverCompatibleForLayoutAxis:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (BOOL)hasItemProvider;
@@ -58,7 +58,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isHorizontalGroup;
 - (BOOL)isVerticalGroup;
-- (int)layoutAxis;
+- (unsigned long long)layoutAxis;
 - (id)visualDescription;
 
 @end

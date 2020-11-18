@@ -8,11 +8,12 @@
 
 #import <UIKitCore/UIResponderStandardEditActions-Protocol.h>
 #import <UIKitCore/UITextInteraction_AssistantDelegate-Protocol.h>
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 
-@class NSString, UIFieldEditor, UIGestureRecognizer, UILongPressGestureRecognizer, UIResponder, UIScrollView, UITapGestureRecognizer, UITextChecker, UITextInteraction, UITextLinkInteraction, UITextRange, UITextSelectionView, UITouch;
+@class NSNumber, NSString, UIFieldEditor, UIGestureRecognizer, UILongPressGestureRecognizer, UIResponder, UIScrollView, UITapGestureRecognizer, UITextChecker, UITextInteraction, UITextLinkInteraction, UITextRange, UITextSelectionView, _UICursorInteraction, _UIKeyboardTextSelectionController;
 @protocol UITextInput;
 
-@interface UITextInteractionAssistant : NSObject <UITextInteraction_AssistantDelegate, UIResponderStandardEditActions>
+@interface UITextInteractionAssistant : NSObject <UITextInteraction_AssistantDelegate, _UICursorInteractionDelegate, UIResponderStandardEditActions>
 {
     UIResponder<UITextInput> *_view;
     UITextSelectionView *_selectionView;
@@ -32,14 +33,22 @@
     BOOL _expectingCommit;
     BOOL _externalTextInput;
     BOOL _suppressSystemUI;
+    _UICursorInteraction *_cursorInteraction;
+    BOOL _viewConformsToCursorInteractionDelegate;
+    BOOL _automaticSelectionCommandsSuppressed;
+    unsigned long long _activeSelectionInteractions;
     UITextLinkInteraction *_linkInteraction;
     UITextInteraction *_interactions;
     long long _textInteractionMode;
     UITextInteraction *_externalInteractions;
-    UITouch *_synthesizedTouchForLollipopForwarding;
+    id _grabberSuppressionAssertion;
+    _UIKeyboardTextSelectionController *_nonEditableSelectionController;
     BOOL _detaching;
+    NSNumber *_viewConformsToTextItemInteracting;
+    NSNumber *_viewRespondsToInteractiveTextSelectionDisabled;
 }
 
+@property (readonly, nonatomic) _UIKeyboardTextSelectionController *activeSelectionController;
 @property (nonatomic) struct CGPoint autoscrollUntransformedExtentPoint;
 @property (nonatomic) BOOL autoscrolled;
 @property (readonly, copy) NSString *debugDescription;
@@ -52,10 +61,12 @@
 @property (readonly, nonatomic) BOOL externalTextInput;
 @property (readonly, nonatomic) UIFieldEditor *fieldEditor; // @dynamic fieldEditor;
 @property (readonly, strong, nonatomic) UIGestureRecognizer *forcePressGesture;
+@property (strong, nonatomic) id grabberSuppressionAssertion;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inGesture;
 @property (readonly, strong, nonatomic) UITextInteraction *interactions;
+@property (readonly, nonatomic, getter=isInteractiveSelectionDisabled) BOOL interactiveSelectionDisabled;
 @property (strong, nonatomic) UITextLinkInteraction *linkInteraction;
 @property (readonly, strong, nonatomic) UILongPressGestureRecognizer *loupeGesture;
 @property (nonatomic) struct CGPoint loupeGestureEndPoint;
@@ -69,9 +80,10 @@
 @property (readonly, nonatomic) UIResponder<UITextInput> *view;
 @property (readonly, nonatomic) BOOL willHandoffLoupeMagnifier;
 
-+ (long long)_nextGranularityInCycle:(long long)arg1;
++ (long long)_nextGranularityInCycle:(long long)arg1 forTouchType:(long long)arg2;
 - (void).cxx_destruct;
 - (id)_asText;
+- (id)_cursorInteractionDelegate;
 - (id)_scrollable;
 - (id)_selectionView;
 - (void)_updateSelectionWithPoint:(struct CGPoint)arg1 granularity:(long long)arg2 forceGranularity:(BOOL)arg3;
@@ -96,6 +108,13 @@
 - (BOOL)containerIsBrowserView;
 - (BOOL)containerIsPlainStyleAtom;
 - (BOOL)containerIsTextField;
+- (long long)currentCursorBehavior;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
 - (void)deactivateSelection;
 - (void)dealloc;
 - (void)detach;
@@ -108,6 +127,7 @@
 - (void)extendSelectionToPoint:(struct CGPoint)arg1;
 - (id)generatorForRange:(id)arg1 withOptions:(unsigned long long)arg2;
 - (BOOL)handleMultilingualAlternativeWithString:(id)arg1 range:(id)arg2;
+- (BOOL)hasActiveSelectionInteraction;
 - (BOOL)hasReplacements;
 - (id)initWithResponder:(id)arg1;
 - (id)initWithView:(id)arg1;
@@ -115,9 +135,8 @@
 - (void)invalidate;
 - (BOOL)isValid;
 - (void)layoutChangedByScrolling:(BOOL)arg1;
-- (void)lollipopGestureWithState:(long long)arg1 location:(struct CGPoint)arg2 locationOfFirstTouch:(struct CGPoint)arg3;
+- (void)lollipopGestureWithState:(long long)arg1 location:(struct CGPoint)arg2 locationOfFirstTouch:(struct CGPoint)arg3 forTouchType:(long long)arg4;
 - (void)loupeGestureWithState:(long long)arg1 location:(CDUnknownBlockType)arg2 translation:(CDUnknownBlockType)arg3 velocity:(CDUnknownBlockType)arg4 modifierFlags:(long long)arg5 shouldCancel:(BOOL *)arg6;
-- (Class)loupeInteractionClass;
 - (void)loupeMagnifierWithState:(long long)arg1 atPoint:(struct CGPoint)arg2;
 - (void)notifyKeyboardSelectionChanged;
 - (id)rangeForTextReplacement:(id)arg1;
@@ -143,6 +162,7 @@
 - (void)selectionAnimationDidStop;
 - (void)selectionChanged;
 - (Class)selectionInteractionClass;
+- (void)setAutomaticSelectionCommandsSuppressedForPointerTouchType:(BOOL)arg1;
 - (void)setFirstResponderIfNecessary;
 - (void)setFirstResponderIfNecessaryActivatingSelection:(BOOL)arg1;
 - (void)setGestureRecognizers;
@@ -152,8 +172,10 @@
 - (BOOL)shouldEnqueueObserverUpdates;
 - (BOOL)shouldSuppressSelectionCommands;
 - (BOOL)showMultilingualDictationReplacementWithRange:(id)arg1;
+- (void)showSelectionCommandsForSecondaryClickAtPoint:(struct CGPoint)arg1;
 - (void)startAutoscroll:(struct CGPoint)arg1;
 - (void)stashCurrentSelection;
+- (BOOL)supportsIndirectInteractions;
 - (BOOL)swallowsDoubleTapWithScale:(double)arg1 atPoint:(struct CGPoint)arg2;
 - (id)textSelectionView;
 - (void)updateAutoscroll:(id)arg1;
@@ -162,6 +184,7 @@
 - (void)updateSelectionWithPoint:(struct CGPoint)arg1;
 - (void)updateWithMagnifierTerminalPoint:(BOOL)arg1;
 - (BOOL)useGesturesForEditableContent;
+- (BOOL)usesAsynchronousSelectionController;
 - (BOOL)viewCouldBecomeEditable:(id)arg1;
 - (BOOL)wantsLinkInteraction;
 - (void)willBeginFloatingCursor:(BOOL)arg1;

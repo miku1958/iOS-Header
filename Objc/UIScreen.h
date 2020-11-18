@@ -144,6 +144,7 @@
 + (id)_carScreen;
 + (void)_enumerateScreensWithBlock:(CDUnknownBlockType)arg1;
 + (BOOL)_isProbablyBeingRecorded;
++ (id)_mainScreenThreadSafeTraitCollection;
 + (void)_prepareCarScreensForResume;
 + (void)_prepareScreensForAppResume;
 + (id)_screenForScene:(id)arg1;

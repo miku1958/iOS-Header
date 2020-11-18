@@ -142,7 +142,8 @@
 - (void)presentationTransitionWillBegin;
 - (id)presentedView;
 - (void)sheetInteraction:(id)arg1 didChangeOffset:(struct CGPoint)arg2;
-- (BOOL)sheetInteraction:(id)arg1 shouldBeginHorizontalRubberBandingAtPoint:(struct CGPoint)arg2;
+- (BOOL)sheetInteraction:(id)arg1 shouldAllowVerticalRubberBandingWithEvent:(id)arg2;
+- (BOOL)sheetInteraction:(id)arg1 shouldBeginHorizontalRubberBandingWithGestureRecognizer:(id)arg2;
 - (void)transitionWillBegin:(BOOL)arg1;
 
 @end

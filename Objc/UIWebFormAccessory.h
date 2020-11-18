@@ -31,11 +31,12 @@
 @property (strong, nonatomic) UIBarButtonItem *_autofill; // @synthesize _autofill;
 @property (strong, nonatomic) UIBarButtonItem *_clearButton; // @synthesize _clearButton;
 @property (strong, nonatomic) UISegmentedControl *_tab; // @synthesize _tab;
-@property (nonatomic) id<UIWebFormAccessoryDelegate> delegate; // @synthesize delegate;
+@property (weak, nonatomic) id<UIWebFormAccessoryDelegate> delegate; // @synthesize delegate;
 @property (nonatomic, getter=isNextEnabled) BOOL nextEnabled;
 @property (nonatomic, getter=isPreviousEnabled) BOOL previousEnabled;
 
 + (id)toolbarWithItems:(id)arg1;
+- (void).cxx_destruct;
 - (void)_applyTreatmentToAutoFillLabel;
 - (id)_autoFillButton;
 - (void)_nextTapped:(id)arg1;

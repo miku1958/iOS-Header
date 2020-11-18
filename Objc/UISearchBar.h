@@ -13,7 +13,7 @@
 #import <UIKitCore/_UINavigationBarAugmentedTitleView-Protocol.h>
 #import <UIKitCore/_UISearchBarVisualProvidingDelegate-Protocol.h>
 
-@class NSArray, NSIndexSet, NSString, UIButton, UIColor, UIImage, UIInputContextHistory, UISearchBarTextField, UISearchController, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputPasswordRules, UITextInputTraits, _UINavigationControllerPalette;
+@class NSArray, NSIndexSet, NSString, UIButton, UIColor, UIImage, UIInputContextHistory, UISearchBarTextField, UISearchController, UISearchTextField, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputPasswordRules, UITextInputTraits, _UINavigationControllerPalette;
 @protocol UISearchBarDelegate, UISearchBarDelegate><UISearchBarDelegate_Private, _UISearchBarVisualProviding;
 
 @interface UISearchBar : UIView <_UISearchBarVisualProvidingDelegate, UITextInputTraits_Private, _UIBarPositioningInternal, _UINavigationBarAugmentedTitleView, UIBarPositioning, UITextInputTraits>
@@ -110,6 +110,7 @@
 @property (readonly, nonatomic, getter=_searchBarTextField) UISearchBarTextField *searchBarTextField;
 @property (nonatomic) struct UIOffset searchFieldBackgroundPositionAdjustment;
 @property (nonatomic, getter=isSearchResultsButtonSelected) BOOL searchResultsButtonSelected;
+@property (readonly, nonatomic) UISearchTextField *searchTextField;
 @property (nonatomic) struct UIOffset searchTextPositionAdjustment;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry; // @dynamic secureTextEntry;
 @property (nonatomic) long long selectedScopeButtonIndex;
@@ -316,7 +317,6 @@
 - (id)searchField;
 - (id)searchFieldBackgroundImageForState:(unsigned long long)arg1;
 - (long long)searchFieldLeftViewMode;
-- (id)searchTextField;
 - (void)sendSubviewToBack:(id)arg1;
 - (void)setBackgroundImage:(id)arg1 forBarMetrics:(long long)arg2;
 - (void)setBackgroundImage:(id)arg1 forBarPosition:(long long)arg2 barMetrics:(long long)arg3;

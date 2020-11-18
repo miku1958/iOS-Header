@@ -12,10 +12,10 @@
 __attribute__((visibility("hidden")))
 @interface _UIPlatterMenuPanningTransformer : NSObject
 {
-    int _axisLock;
-    int _overrideLockAxis;
     id<_UIPlatterMenuPanningTransformerDelegate> _delegate;
     double _minimumXVelocityForAxisLock;
+    unsigned long long _axisLock;
+    unsigned long long _overrideLockAxis;
     double _lastAxisLockTime;
     NSDate *_timeForLastDirectionalChange;
     NSDate *_panBeginTime;
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _transitionZoneRect;
 }
 
-@property (nonatomic) int axisLock; // @synthesize axisLock=_axisLock;
+@property (nonatomic) unsigned long long axisLock; // @synthesize axisLock=_axisLock;
 @property (weak, nonatomic) id<_UIPlatterMenuPanningTransformerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) double lastAxisLockTime; // @synthesize lastAxisLockTime=_lastAxisLockTime;
 @property (nonatomic) struct CGPoint lastDirectionChangeTouchPosition; // @synthesize lastDirectionChangeTouchPosition=_lastDirectionChangeTouchPosition;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGPoint lastTransformedPoint; // @synthesize lastTransformedPoint=_lastTransformedPoint;
 @property (nonatomic) double minimumXVelocityForAxisLock; // @synthesize minimumXVelocityForAxisLock=_minimumXVelocityForAxisLock;
 @property (readonly, nonatomic) struct CGVector offset;
-@property (nonatomic) int overrideLockAxis; // @synthesize overrideLockAxis=_overrideLockAxis;
+@property (nonatomic) unsigned long long overrideLockAxis; // @synthesize overrideLockAxis=_overrideLockAxis;
 @property (strong, nonatomic) NSDate *panBeginTime; // @synthesize panBeginTime=_panBeginTime;
 @property (nonatomic) struct CGPoint panBeginTouchPosition; // @synthesize panBeginTouchPosition=_panBeginTouchPosition;
 @property (strong, nonatomic) NSDate *timeForLastDirectionalChange; // @synthesize timeForLastDirectionalChange=_timeForLastDirectionalChange;

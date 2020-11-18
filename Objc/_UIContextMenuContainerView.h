@@ -6,10 +6,34 @@
 
 #import <UIKitCore/UIView.h>
 
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+
+@class NSString, UIPanGestureRecognizer;
+
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuContainerView : UIView
+@interface _UIContextMenuContainerView : UIView <UIGestureRecognizerDelegate>
 {
+    UIPanGestureRecognizer *_panGestureRecognizer;
+    BOOL _dismissesInstantly;
+    UIView *_contentWrapperView;
+    CDUnknownBlockType _dismissalHandler;
 }
+
+@property (weak, nonatomic) UIView *contentWrapperView; // @synthesize contentWrapperView=_contentWrapperView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType dismissalHandler; // @synthesize dismissalHandler=_dismissalHandler;
+@property (nonatomic) BOOL dismissesInstantly; // @synthesize dismissesInstantly=_dismissesInstantly;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (void).cxx_destruct;
+- (void)_attemptDismiss:(BOOL)arg1;
+- (void)_swipeToDismiss:(id)arg1;
+- (void)didMoveToWindow;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) double allowableMovement;
+@property (nonatomic) unsigned long long behavior;
 @property (nonatomic) BOOL cancelsTouchesInView; // @synthesize cancelsTouchesInView=_cancelsTouchesInView;
 @property (readonly, nonatomic) BOOL clicksUpAutomaticallyAfterTimeout;
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UITouchForceGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 @property (readonly, nonatomic) BOOL hasExceededAllowableMovement;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long inputPrecision;
 @property (readonly, nonatomic) BOOL isCurrentlyAcceleratedByForce;
 @property (readonly, nonatomic) double maximumEffectProgress;
 @property (readonly, nonatomic) UIGestureRecognizer *primaryGestureRecognizer;

@@ -8,7 +8,7 @@
 
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet;
+@class NSArray, NSMutableArray, NSMutableSet, NSSet;
 @protocol UITapRecognizerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long _numberOfTouchesRequired;
     unsigned long long _numberOfTapsRequired;
+    long long _buttonMaskRequired;
+    BOOL _continuousTapRecognition;
     NSMutableSet *_activeTouches;
     int _currentNumberOfTouches;
     int _currentNumberOfTaps;
@@ -28,6 +30,8 @@ __attribute__((visibility("hidden")))
     double _allowableTouchTimeSeparation;
     double _maximumSingleTapDuration;
     double _maximumTapDuration;
+    double _minimumTapDuration;
+    double _startTime;
     double _maximumIntervalBetweenSuccessiveTaps;
     NSMutableArray *_touches;
     long long _strongestDirectionalAxis;
@@ -35,18 +39,25 @@ __attribute__((visibility("hidden")))
     unsigned int _timerOn:1;
     unsigned int _multitouchTimerOn:1;
     unsigned int _noNewTouches:1;
+    unsigned int _hasPointerTouch:1;
+    BOOL _countsOnlyActiveTouches;
     id<UITapRecognizerDelegate> _delegate;
     long long _exclusiveDirectionalAxis;
 }
 
+@property (readonly, nonatomic) NSSet *activeTouches;
 @property (nonatomic) double allowableMovement;
 @property (nonatomic) double allowableSeparation;
 @property (nonatomic) double allowableTouchTimeSeparation; // @synthesize allowableTouchTimeSeparation=_allowableTouchTimeSeparation;
+@property (nonatomic) long long buttonMaskRequired; // @synthesize buttonMaskRequired=_buttonMaskRequired;
+@property (nonatomic) BOOL continuousTapRecognition;
+@property (nonatomic) BOOL countsOnlyActiveTouches; // @synthesize countsOnlyActiveTouches=_countsOnlyActiveTouches;
 @property (weak, nonatomic) id<UITapRecognizerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long exclusiveDirectionalAxis; // @synthesize exclusiveDirectionalAxis=_exclusiveDirectionalAxis;
 @property (nonatomic) double maximumIntervalBetweenSuccessiveTaps;
 @property (nonatomic) double maximumSingleTapDuration;
 @property (nonatomic) double maximumTapDuration; // @synthesize maximumTapDuration=_maximumTapDuration;
+@property (nonatomic) double minimumTapDuration; // @synthesize minimumTapDuration=_minimumTapDuration;
 @property (nonatomic) unsigned long long numberOfTapsRequired; // @synthesize numberOfTapsRequired=_numberOfTapsRequired;
 @property (nonatomic) unsigned long long numberOfTouchesRequired; // @synthesize numberOfTouchesRequired=_numberOfTouchesRequired;
 @property (readonly, nonatomic) NSArray *touches; // @synthesize touches=_touches;

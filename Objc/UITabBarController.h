@@ -55,6 +55,7 @@
         unsigned int hidNavBar:1;
     } _tabBarControllerFlags;
     BOOL __shouldFocusViewControllerAfterTransition;
+    BOOL __allowLateralFocusMovementOutOfTabBar;
     NSMutableArray *_moreChildViewControllers;
     UIView *_accessoryView;
     NSMapTable *_rememberedFocusedItemsByViewController;
@@ -65,6 +66,7 @@
 }
 
 @property (strong, nonatomic, setter=_setAccessoryView:) UIView *_accessoryView; // @synthesize _accessoryView;
+@property (nonatomic, setter=_setAllowLateralFocusMovementOutOfTabBar:) BOOL _allowLateralFocusMovementOutOfTabBar; // @synthesize _allowLateralFocusMovementOutOfTabBar=__allowLateralFocusMovementOutOfTabBar;
 @property (strong, nonatomic, setter=_setAnimator:) id<UIViewControllerAnimatedTransitioning> _animator; // @synthesize _animator=__animator;
 @property (strong, nonatomic, getter=_backdropGroupName, setter=_setBackdropGroupName:) NSString *_backdropGroupName; // @synthesize _backdropGroupName=__backdropGroupName;
 @property (strong, nonatomic, setter=_setInteractor:) id<UIViewControllerInteractiveTransitioning> _interactor; // @synthesize _interactor=__interactor;

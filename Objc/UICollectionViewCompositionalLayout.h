@@ -53,7 +53,7 @@
 @property (strong, nonatomic) _UIUpdateVisibleCellsContext *updateVisibleCellsContext; // @synthesize updateVisibleCellsContext=_updateVisibleCellsContext;
 
 - (void).cxx_destruct;
-- (BOOL)_adjustCollectionViewContentInsetBehaviorForLayoutAxisIfNeeded:(int)arg1 container:(id)arg2;
+- (BOOL)_adjustCollectionViewContentInsetBehaviorForLayoutAxisIfNeeded:(unsigned long long)arg1 container:(id)arg2;
 - (id)_boundsChangeResolve;
 - (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
 - (void)_computeAndUpdateAdjustedContentFrame;
@@ -70,11 +70,11 @@
 - (id)_invalidationContextForUpdatedLayoutMargins:(struct UIEdgeInsets)arg1;
 - (BOOL)_invokeVisibleBoundsUpdateForDynamicAnimatorForNewVisibleBounds:(struct CGRect)arg1 preparingLayout:(BOOL)arg2;
 - (id)_invokeVisibleItemsInvalidationHandlerIfNeededForVisibleBounds:(struct CGRect)arg1;
-- (int)_layoutAxis;
+- (unsigned long long)_layoutAxis;
 - (id)_marginsChangeResolve;
 - (struct CGPoint)_offsetForOrthogonalScrollingSection:(long long)arg1;
 - (struct CGRect)_orthogonalFrameWithOffsetElidedForItemWithLayoutAttributes:(id)arg1 frame:(struct CGRect)arg2;
-- (int)_orthogonalScrollingAxis;
+- (unsigned long long)_orthogonalScrollingAxis;
 - (struct NSDirectionalEdgeInsets)_orthogonalScrollingContentInsetsForSection:(long long)arg1;
 - (struct CGRect)_orthogonalScrollingContentRectForSection:(long long)arg1;
 - (double)_orthogonalScrollingDecelerationRateForSection:(long long)arg1;

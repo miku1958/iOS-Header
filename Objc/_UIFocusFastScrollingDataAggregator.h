@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)scrollingBeganWithStyle:(long long)arg1;
-+ (void)scrollingEnded;
++ (void)scrollingEndedWithStyle:(long long)arg1;
 
 @end
 

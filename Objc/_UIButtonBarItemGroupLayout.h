@@ -35,9 +35,6 @@ __attribute__((visibility("hidden")))
 - (void)_addLayoutGuides:(id)arg1;
 - (void)_addLayoutViews:(id)arg1;
 - (void)_configure;
-- (id)_effectiveLayout;
-- (BOOL)_isGroup;
-- (BOOL)_isSpace;
 - (id)_itemLayouts;
 - (void)_iterateConfiguredLayouts:(CDUnknownBlockType)arg1;
 - (id)_newLayoutForBarButtonItem:(id)arg1 useGroupSizing:(BOOL)arg2;
@@ -46,10 +43,13 @@ __attribute__((visibility("hidden")))
 - (void)dirtyLayoutForPlainAppearanceChange:(BOOL)arg1 doneAppearanceChanged:(BOOL)arg2;
 - (id)initWithLayoutMetrics:(id)arg1;
 - (id)initWithLayoutMetrics:(id)arg1 barButtonItemGroup:(id)arg2;
+- (BOOL)isGroupLayout;
+- (BOOL)isSpaceLayout;
 - (id)layoutForBarButtonItem:(id)arg1;
 - (id)layoutsForSpacerItem:(id)arg1;
 - (double)minimumLayoutWidthGivenMinimumSpaceWidth:(double)arg1;
 - (BOOL)shouldHoriziontallyCenterView:(id)arg1;
+- (id)subLayouts;
 
 @end
 

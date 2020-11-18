@@ -9,11 +9,12 @@
 #import <UIKitCore/CAAnimationDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/UISwitchMVEGestureTrackingSessionElement-Protocol.h>
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 
 @class NSString, UIColor, UIImage, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UISwitchMVEGestureTrackingSession, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UISwitchModernVisualElement : UISwitchVisualElement <UIGestureRecognizerDelegate, UISwitchMVEGestureTrackingSessionElement, CAAnimationDelegate>
+@interface UISwitchModernVisualElement : UISwitchVisualElement <UIGestureRecognizerDelegate, UISwitchMVEGestureTrackingSessionElement, CAAnimationDelegate, _UICursorInteractionDelegate>
 {
     UIView *_switchWellView;
     UIView *_leftSwitchWellView;
@@ -70,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (id)_effectiveThumbImage;
 - (id)_effectiveTintColor;
 - (BOOL)_feedbackEnabled;
+- (BOOL)_gestureRecognizer:(id)arg1 shouldReceiveEvent:(id)arg2;
 - (void)_handleLongPress:(id)arg1;
 - (void)_handleLongPressWithGestureLocationInBounds:(struct CGPoint)arg1 gestureState:(long long)arg2;
 - (void)_handlePan:(id)arg1;
@@ -113,6 +115,8 @@ __attribute__((visibility("hidden")))
 - (struct CGColor *)_wellColorOn:(BOOL)arg1;
 - (struct CGPoint)_wellPositionOn:(BOOL)arg1 forBounds:(struct CGRect)arg2;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (BOOL)displayedOn;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;

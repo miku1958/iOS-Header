@@ -59,6 +59,7 @@
 @property (strong, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 @property (strong, nonatomic) NSString *title;
 
++ (BOOL)_cursorInteractionEnabled;
 + (void)_resetRenderingModesForBackgroundImageView:(id)arg1 inBarStyle:(long long)arg2 isEnabled:(BOOL)arg3 withAccessibilityBackground:(BOOL)arg4 wantsBlendModeForAccessibilityBackgrounds:(BOOL)arg5 accessibilityBackgroundTintColor:(id)arg6;
 + (id)defaultFont;
 - (void).cxx_destruct;
@@ -129,6 +130,8 @@
 - (long long)buttonType;
 - (BOOL)canBecomeFocused;
 - (BOOL)contentsEqualTo:(id)arg1 withStyle:(int)arg2;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)dealloc;
 - (id)initWithImage:(id)arg1;
 - (id)initWithImage:(id)arg1 style:(int)arg2;

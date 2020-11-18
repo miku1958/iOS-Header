@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     UIView *_info;
     UIImageView *_backgroundView;
+    UIView *_selectionIndicatorView;
     UIImageView *_selectionImageView;
     _UISegmentedControlAppearanceStorage *_appearanceStorage;
     _UIFloatingContentView *_floatingContentView;
@@ -38,6 +39,8 @@ __attribute__((visibility("hidden")))
         unsigned int needsBackgroundAndContentViewUpdate:1;
         unsigned int usesAXTextSize:1;
         unsigned int selectionIndicatorDragged:1;
+        unsigned int hovered:1;
+        unsigned int animatingSelectionIndicator:1;
     } _segmentFlags;
     NSArray *_infoConstraints;
     double _requestedScaleFactor;
@@ -58,10 +61,9 @@ __attribute__((visibility("hidden")))
 
 + (id)_backgroundImageWithStorage:(id)arg1 mini:(BOOL)arg2 state:(unsigned long long)arg3 position:(unsigned int)arg4 drawMode:(unsigned int *)arg5 isCustom:(BOOL *)arg6 defaultBlock:(CDUnknownBlockType)arg7;
 - (void).cxx_destruct;
-- (id)_attributedTextForState:(unsigned long long)arg1 selected:(BOOL)arg2;
+- (id)_attributedTextForState:(unsigned long long)arg1 selected:(BOOL)arg2 forceSelectedAppearance:(BOOL)arg3;
 - (double)_barHeight;
 - (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
-- (void)_commonSegmentInit;
 - (struct CGRect)_contentRectForBounds:(struct CGRect)arg1;
 - (id)_dividerImage;
 - (id)_dividerImageIsCustom:(BOOL *)arg1;
@@ -70,7 +72,10 @@ __attribute__((visibility("hidden")))
 - (id)_effectiveContentView;
 - (BOOL)_effectiveDisableShadow;
 - (id)_effectiveSelectedSegmentTintColor;
+- (BOOL)_effectiveUseDynamicShadow;
+- (id)_effectiveVibrancyEffect;
 - (id)_encodableSubviews;
+- (void)_finishInitialSegmentSetup;
 - (id)_floatingContentView;
 - (void)_forceInfoDisplay;
 - (BOOL)_hasSelectedColor;
@@ -81,10 +86,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isContainedInHostedFocusSystem;
 - (struct CGSize)_maximumTextSize;
 - (struct UIEdgeInsets)_paddingInsets;
+- (id)_parentSegmentedControl;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_positionInfo;
 - (void)_positionInfoWithoutAnimation;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
+- (void)_removeSelectionIndicator;
 - (id)_segmentLabel;
 - (unsigned long long)_segmentState;
 - (Class)_segmentedControlClass;
@@ -95,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (id)_tintColorArchivingKey;
 - (void)_updateBackgroundAndContentViews;
 - (void)_updateBackgroundAndContentViewsIfNeeded;
+- (void)_updateDynamicShadow:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_updateFloatingContentControlState:(unsigned long long)arg1 context:(id)arg2 withAnimationCoordinator:(id)arg3 animated:(BOOL)arg4;
 - (void)_updateHighlight;
 - (void)_updateSelectionIndicator;
@@ -115,12 +123,15 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInfo:(id)arg1 size:(int)arg2 barStyle:(long long)arg3 tintColor:(id)arg4 appearanceStorage:(id)arg5 position:(unsigned int)arg6 autosizeText:(BOOL)arg7;
 - (void)insertDividerView;
+- (BOOL)isAnimatingSelectionIndicator;
 - (BOOL)isHighlighted;
+- (BOOL)isHovered;
 - (BOOL)isSelectionIndicatorDragged;
 - (id)label;
 - (void)layoutSubviews;
 - (id)objectValue;
 - (void)removeFromSuperview;
+- (void)setAnimatingSelectionIndicator:(BOOL)arg1;
 - (void)setAutosizeText:(BOOL)arg1;
 - (void)setBarStyle:(long long)arg1;
 - (void)setBounds:(struct CGRect)arg1;
@@ -128,6 +139,7 @@ __attribute__((visibility("hidden")))
 - (void)setEnabled:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1;
+- (void)setHovered:(BOOL)arg1;
 - (void)setNeedsBackgroundAndContentViewUpdate;
 - (void)setObjectValue:(id)arg1;
 - (void)setSelected:(BOOL)arg1 highlighted:(BOOL)arg2;

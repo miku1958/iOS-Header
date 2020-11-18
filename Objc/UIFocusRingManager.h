@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_currentFocusItemForClient:(id)arg1;
 + (id)manager;
 + (void)moveRingToFocusItem:(id)arg1;
 + (void)moveRingToFocusItem:(id)arg1 forClient:(id)arg2;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSTimer, _UIKeyCommandDiscoverabilityHUDWindow;
+@class NSTimer, NSValue, _UIKeyCommandDiscoverabilityHUDWindow;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyCommandDiscoverabilityHUD : NSObject
 {
     NSTimer *_HUDPopTimer;
+    NSValue *_pointerLocation;
     _UIKeyCommandDiscoverabilityHUDWindow *_window;
     BOOL _commandKeyIsDown;
 }
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (void)dismissHUD;
 + (id)sharedKeyCommandDiscoverabilityHUD;
 - (void).cxx_destruct;
+- (BOOL)_HUDAllowedForWindow:(id)arg1;
 - (void)_HUDPopTimerFired:(id)arg1;
 - (void)_applicationWillResignActive;
 - (void)_clearHUDPopTimer;

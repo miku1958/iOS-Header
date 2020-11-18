@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 {
     BOOL _enabled;
     BOOL _additionalTouchesCancelLift;
-    BOOL _acceleratedDragGestureEnabled;
     BOOL _allowsSimultaneousRecognitionDuringLift;
     BOOL _shouldAnimateLift;
     BOOL _cancellationTimerEnabled;
@@ -33,7 +32,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint _initialLocationInWindow;
 }
 
-@property (nonatomic, getter=isAcceleratedDragGestureEnabled) BOOL acceleratedDragGestureEnabled; // @synthesize acceleratedDragGestureEnabled=_acceleratedDragGestureEnabled;
+@property (readonly, nonatomic, getter=isActive) BOOL active;
 @property (nonatomic) BOOL additionalTouchesCancelLift; // @synthesize additionalTouchesCancelLift=_additionalTouchesCancelLift;
 @property (copy, nonatomic) NSArray *allowedTouchTypes; // @synthesize allowedTouchTypes=_allowedTouchTypes;
 @property (nonatomic) BOOL allowsSimultaneousRecognitionDuringLift; // @synthesize allowsSimultaneousRecognitionDuringLift=_allowsSimultaneousRecognitionDuringLift;

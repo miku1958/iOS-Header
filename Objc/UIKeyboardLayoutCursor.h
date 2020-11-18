@@ -44,10 +44,8 @@ __attribute__((visibility("hidden")))
 
 + (id)carKeyboardNameForKeyboard:(id)arg1 screenTraits:(id)arg2;
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
-- (void)_handleKeyUIEvent:(id)arg1;
 - (BOOL)_handleMoveWithEvent:(id)arg1;
 - (BOOL)_handlePhysicalButtonEvent:(id)arg1;
-- (BOOL)_handlePhysicalKeyDownWithEvent:(id)arg1;
 - (BOOL)_handleRemoteControlReceivedWithEvent:(id)arg1;
 - (BOOL)_handleWheelChangedWithEvent:(id)arg1;
 - (BOOL)_isDirectionalHeading:(unsigned long long)arg1;

@@ -72,13 +72,17 @@
 @property (nonatomic) unsigned int audioSessionCategoryOverride;
 @property (nonatomic) id<UIWebAutoFillDelegate> autoFillDelegate; // @synthesize autoFillDelegate=_autoFillDelegate;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasEditedTextField; // @synthesize hasEditedTextField=_hasEditedTextField;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inputViewObeysDOMFocus; // @synthesize inputViewObeysDOMFocus=_inputViewObeysDOMFocus;
 @property (readonly, nonatomic) BOOL isDispatchingTouchEvents;
 @property (nonatomic) BOOL mediaPlaybackRequiresUserAction;
 @property (nonatomic) NSString *networkInterfaceName;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)getUIWebBrowserViewForWebFrame:(id)arg1;

@@ -8,26 +8,57 @@
 
 #import <UIKitCore/_UIStatusBarCellularItemTypeStringProvider-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSLayoutConstraint, NSString, _UIStatusBarCellularItem, _UIStatusBarDisplayItemPlacementGroup, _UIStatusBarRegionAxisCenteringLayout, _UIStatusBarRegionAxisStackingLayout;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarVisualProvider_LegacyPhone : _UIStatusBarVisualProvider_Phone <_UIStatusBarCellularItemTypeStringProvider>
 {
     NSDictionary *_orderedDisplayItemPlacements;
+    _UIStatusBarDisplayItemPlacementGroup *_lowerWifiGroup;
+    NSLayoutConstraint *_backgroundHeightConstraint;
+    _UIStatusBarCellularItem *_condensedCellularItem;
+    NSLayoutConstraint *_leadingTopConstraint;
+    NSLayoutConstraint *_leadingHeightConstraint;
+    _UIStatusBarRegionAxisStackingLayout *_leadingHorizontalLayout;
+    NSLayoutConstraint *_centerTopConstraint;
+    NSLayoutConstraint *_centerHeightConstraint;
+    _UIStatusBarRegionAxisCenteringLayout *_centerHorizontalLayout;
+    NSLayoutConstraint *_trailingTopConstraint;
+    NSLayoutConstraint *_trailingHeightConstraint;
+    _UIStatusBarRegionAxisStackingLayout *_trailingHorizontalLayout;
+    NSLayoutConstraint *_expandedLeadingBottomConstraint;
+    NSLayoutConstraint *_expandedTrailingBottomConstraint;
 }
 
+@property (strong, nonatomic) NSLayoutConstraint *backgroundHeightConstraint; // @synthesize backgroundHeightConstraint=_backgroundHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *centerHeightConstraint; // @synthesize centerHeightConstraint=_centerHeightConstraint;
+@property (strong, nonatomic) _UIStatusBarRegionAxisCenteringLayout *centerHorizontalLayout; // @synthesize centerHorizontalLayout=_centerHorizontalLayout;
+@property (strong, nonatomic) NSLayoutConstraint *centerTopConstraint; // @synthesize centerTopConstraint=_centerTopConstraint;
+@property (strong, nonatomic) _UIStatusBarCellularItem *condensedCellularItem; // @synthesize condensedCellularItem=_condensedCellularItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSLayoutConstraint *expandedLeadingBottomConstraint; // @synthesize expandedLeadingBottomConstraint=_expandedLeadingBottomConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *expandedTrailingBottomConstraint; // @synthesize expandedTrailingBottomConstraint=_expandedTrailingBottomConstraint;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSLayoutConstraint *leadingHeightConstraint; // @synthesize leadingHeightConstraint=_leadingHeightConstraint;
+@property (strong, nonatomic) _UIStatusBarRegionAxisStackingLayout *leadingHorizontalLayout; // @synthesize leadingHorizontalLayout=_leadingHorizontalLayout;
+@property (strong, nonatomic) NSLayoutConstraint *leadingTopConstraint; // @synthesize leadingTopConstraint=_leadingTopConstraint;
+@property (strong, nonatomic) _UIStatusBarDisplayItemPlacementGroup *lowerWifiGroup; // @synthesize lowerWifiGroup=_lowerWifiGroup;
 @property (strong, nonatomic) NSDictionary *orderedDisplayItemPlacements; // @synthesize orderedDisplayItemPlacements=_orderedDisplayItemPlacements;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSLayoutConstraint *trailingHeightConstraint; // @synthesize trailingHeightConstraint=_trailingHeightConstraint;
+@property (strong, nonatomic) _UIStatusBarRegionAxisStackingLayout *trailingHorizontalLayout; // @synthesize trailingHorizontalLayout=_trailingHorizontalLayout;
+@property (strong, nonatomic) NSLayoutConstraint *trailingTopConstraint; // @synthesize trailingTopConstraint=_trailingTopConstraint;
 
++ (double)_heightExpanded:(BOOL)arg1;
 + (double)baselineOffset;
++ (double)dualLineExpandedBaselineOffset;
 + (struct NSDirectionalEdgeInsets)edgeInsets;
 + (double)expandedBaselineOffset;
 + (id)expandedFont;
 + (double)height;
 + (struct CGSize)intrinsicLockScreenContentSizeForOrientation:(long long)arg1;
++ (double)lowerExpandedBaselineOffset;
 + (id)normalFont;
 + (id)pillFont;
 + (struct CGSize)pillSize;
@@ -36,19 +67,31 @@ __attribute__((visibility("hidden")))
 + (id)timeFont;
 + (BOOL)wantsExpandedLeadingPlacements;
 - (void).cxx_destruct;
+- (id)_animationForSingleLineDualCarrier;
 - (id)_backgroundActivityDetailRemovalAnimation;
+- (void)_updateBackgroundHeight;
+- (void)_updateExpandedTrailingRegion;
+- (void)_updateLockScreenSizing;
+- (void)_updateLowerRegionsWithData:(id)arg1;
 - (void)actionable:(id)arg1 highlighted:(BOOL)arg2 initialPress:(BOOL)arg3;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)condensedFontForCellularType:(long long)arg1 defaultFont:(id)arg2 baselineOffset:(double *)arg3;
+- (void)dataUpdated:(id)arg1;
+- (double)effectiveHeight;
 - (void)itemCreated:(id)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
+- (void)orientationUpdatedFromOrientation:(long long)arg1;
 - (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
 - (id)regionIdentifiersForPartWithIdentifier:(id)arg1;
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
+- (void)setExpanded:(BOOL)arg1;
+- (void)setOnLockScreen:(BOOL)arg1;
 - (id)setupInContainerView:(id)arg1;
+- (void)statusBarRegionsUpdated;
 - (id)stringForCellularType:(long long)arg1 condensed:(BOOL)arg2;
 - (id)styleAttributesForStyle:(long long)arg1;
 - (void)updateDataForBackgroundActivity:(id)arg1;
+- (void)updateDataForService:(id)arg1;
 
 @end
 

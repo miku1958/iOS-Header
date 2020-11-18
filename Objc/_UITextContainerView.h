@@ -76,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)_sizeToConstrainedContainerUsedRect;
 - (void)_unconstrainTiledRendering;
 - (void)addGhostedRange:(struct _NSRange)arg1;
+- (id)attributedSubstringForMarkedRange;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2 delegate:(id)arg3;
 - (void)invalidateTextContainerOrigin;

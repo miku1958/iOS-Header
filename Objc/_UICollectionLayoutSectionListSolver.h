@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
     struct vector<CGRect, std::__1::allocator<CGRect>> _itemFrames;
     BOOL _shouldAdjustContentSizeForPartialLastGroupSolution;
     BOOL _layoutRTL;
-    int _layoutAxis;
-    int _containerLayoutAxis;
     NSCollectionLayoutSection *_layoutSection;
     id<NSCollectionLayoutContainer> _container;
     UITraitCollection *_traitCollection;
+    unsigned long long _layoutAxis;
+    unsigned long long _containerLayoutAxis;
     long long _frameCount;
     _UICollectionLayoutItemSolver *_solution;
     _UICollectionLayoutAuxillaryItemSolver *_sectionAuxillarySolution;
@@ -35,14 +35,14 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) id<NSCollectionLayoutContainer> container; // @synthesize container=_container;
-@property (nonatomic) int containerLayoutAxis; // @synthesize containerLayoutAxis=_containerLayoutAxis;
+@property (nonatomic) unsigned long long containerLayoutAxis; // @synthesize containerLayoutAxis=_containerLayoutAxis;
 @property (readonly, nonatomic) struct CGSize contentSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct CGRect effectiveContentFrame;
 @property (nonatomic) long long frameCount; // @synthesize frameCount=_frameCount;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) int layoutAxis; // @synthesize layoutAxis=_layoutAxis;
+@property (nonatomic) unsigned long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
 @property (nonatomic) BOOL layoutRTL; // @synthesize layoutRTL=_layoutRTL;
 @property (strong, nonatomic) NSCollectionLayoutSection *layoutSection; // @synthesize layoutSection=_layoutSection;
 @property (strong, nonatomic) id<NSCollectionLayoutContainer> memoizedAuxillaryHostContainer; // @synthesize memoizedAuxillaryHostContainer=_memoizedAuxillaryHostContainer;
@@ -61,7 +61,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (long long)_binarySearchInitialFrameIndexForStartIndex:(long long)arg1 endIndex:(long long)arg2 lowIndex:(long long)arg3 queryRect:(struct CGRect)arg4;
-- (double)_dimensionForRootGroupAlongAxis:(int)arg1;
+- (double)_dimensionForRootGroupAlongAxis:(unsigned long long)arg1;
 - (id)_queryFramesIntersectingRect:(struct CGRect)arg1 frameOffset:(struct CGPoint)arg2;
 - (id)_resolveWithParameters:(id)arg1;
 - (id)_sectionContainer;
@@ -71,7 +71,7 @@ __attribute__((visibility("hidden")))
 - (long long)auxillaryHostAuxillaryKind;
 - (id)auxillaryHostContainer;
 - (struct CGSize)auxillaryHostContentSize;
-- (int)auxillaryHostLayoutAxis;
+- (unsigned long long)auxillaryHostLayoutAxis;
 - (struct CGSize)auxillaryHostPinningContentSize;
 - (id)auxillaryHostPreferredSizes;
 - (BOOL)auxillaryHostShouldLayoutRTL;
@@ -84,9 +84,9 @@ __attribute__((visibility("hidden")))
 - (id)sectionSupplementaryFrameForIndex:(long long)arg1;
 - (id)sectionSupplementaryFrameWithKind:(id)arg1 index:(long long)arg2;
 - (long long)sectionSupplementaryKindIndexForEnrollmentIdentifier:(id)arg1;
-- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(int)arg3 frameCount:(long long)arg4;
-- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(int)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5;
-- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(int)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5 layoutRTL:(BOOL)arg6;
+- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4;
+- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5;
+- (void)solveForContainer:(id)arg1 traitCollection:(id)arg2 layoutAxis:(unsigned long long)arg3 frameCount:(long long)arg4 preferredSizes:(id)arg5 layoutRTL:(BOOL)arg6;
 - (id)supplementaryFrameWithKind:(id)arg1 index:(long long)arg2;
 - (id)supplementaryKeysAssociatedWithItemAtIndex:(long long)arg1;
 - (void)updatePinnedSupplementaryItemsWithVisibleBounds:(struct CGRect)arg1;

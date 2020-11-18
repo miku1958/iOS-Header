@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 @interface _UICollectionLayoutItemSolver : NSObject <NSCopying, _UICollectionLayoutAuxillaryHosting>
 {
     BOOL _layoutRTL;
-    int _layoutAxis;
     NSCollectionLayoutItem *_item;
     id<NSCollectionLayoutContainer> _container;
     UITraitCollection *_traitCollection;
@@ -25,6 +24,7 @@ __attribute__((visibility("hidden")))
     id<_UICollectionLayoutSupplementaryEnrolling> _supplementaryEnroller;
     long long _solutionRecursionDepth;
     long long _maxFrameCount;
+    unsigned long long _layoutAxis;
 }
 
 @property (readonly, nonatomic) long long auxillaryFrameCount;
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSCollectionLayoutItem *item; // @synthesize item=_item;
 @property (readonly, nonatomic) long long itemFrameCount;
 @property (readonly, nonatomic) NSArray *itemFrames;
-@property (readonly, nonatomic) int layoutAxis; // @synthesize layoutAxis=_layoutAxis;
+@property (readonly, nonatomic) unsigned long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
 @property (readonly, nonatomic) struct CGRect layoutFrame;
 @property (readonly, nonatomic) BOOL layoutRTL; // @synthesize layoutRTL=_layoutRTL;
 @property (readonly, nonatomic) long long maxFrameCount; // @synthesize maxFrameCount=_maxFrameCount;
@@ -51,58 +51,58 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 
 - (void).cxx_destruct;
-- (double)_additionalDimensionForEdgeSpacingAlongAxis:(int)arg1 group:(id)arg2 trailingEdgeOnly:(BOOL)arg3;
+- (double)_additionalDimensionForEdgeSpacingAlongAxis:(unsigned long long)arg1 group:(id)arg2 trailingEdgeOnly:(BOOL)arg3;
 - (struct CGRect)_adjustedFrameForFrame:(struct CGRect)arg1 offset:(struct CGPoint)arg2;
-- (id)_arrangeSolutionItems:(id)arg1 alongLayoutAxis:(int)arg2 forContainer:(id)arg3 additionalLayoutOffset:(struct CGPoint)arg4 interItemSpacing:(id)arg5;
-- (unsigned long long)_directionalEdgeForLayoutAxis:(int)arg1 preEdge:(BOOL)arg2;
+- (id)_arrangeSolutionItems:(id)arg1 alongLayoutAxis:(unsigned long long)arg2 forContainer:(id)arg3 additionalLayoutOffset:(struct CGPoint)arg4 interItemSpacing:(id)arg5;
+- (unsigned long long)_directionalEdgeForLayoutAxis:(unsigned long long)arg1 preEdge:(BOOL)arg2;
 - (struct CGSize)_effectiveContainerSizeForContainer:(id)arg1;
 - (struct CGSize)_effectiveGroupSizeForGroup:(id)arg1 container:(id)arg2;
 - (void)_enumerateSolutionFramesForQueryRect:(struct CGRect)arg1 itemLimit:(long long)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (id)_frameForAbsoluteIndex:(long long)arg1 additionalFrameOffset:(struct CGPoint)arg2 interSolutionSpacing:(double)arg3 repeatAxis:(int)arg4;
-- (struct CGPoint)_frameOffsetForAdditionalFrameOffset:(struct CGPoint)arg1 repeatOffset:(long long)arg2 repeatAxis:(int)arg3 interSolutionSpacing:(double)arg4;
-- (int)_layoutAxisForGroup:(id)arg1;
+- (id)_frameForAbsoluteIndex:(long long)arg1 additionalFrameOffset:(struct CGPoint)arg2 interSolutionSpacing:(double)arg3 repeatAxis:(unsigned long long)arg4;
+- (struct CGPoint)_frameOffsetForAdditionalFrameOffset:(struct CGPoint)arg1 repeatOffset:(long long)arg2 repeatAxis:(unsigned long long)arg3 interSolutionSpacing:(double)arg4;
+- (unsigned long long)_layoutAxisForGroup:(id)arg1;
 - (struct CGPoint)_layoutOffsetForContainer:(id)arg1;
-- (id)_normalizeVisualFormatParserItems:(id)arg1 layoutAxis:(int)arg2;
-- (struct CGPoint)_outerContainerOffsetForGroup:(id)arg1 groupComputedSize:(struct CGSize)arg2 container:(id)arg3 outerLayoutAxis:(int)arg4;
+- (id)_normalizeVisualFormatParserItems:(id)arg1 layoutAxis:(unsigned long long)arg2;
+- (struct CGPoint)_outerContainerOffsetForGroup:(id)arg1 groupComputedSize:(struct CGSize)arg2 container:(id)arg3 outerLayoutAxis:(unsigned long long)arg4;
 - (id)_queryFramesWithQueryRect:(struct CGRect)arg1 additionalFrameOffset:(struct CGPoint)arg2 itemIndexOffset:(long long)arg3 itemLimit:(long long)arg4 supplementaryRepeatOffset:(long long)arg5;
 - (id)_queryFramesWithQueryRect:(struct CGRect)arg1 additionalFrameOffset:(struct CGPoint)arg2 itemIndexOffset:(long long)arg3 supplementaryOffsets:(id)arg4 itemLimit:(long long)arg5;
 - (void)_solve;
-- (void)_solveForContainer:(id)arg1 layoutAxis:(int)arg2 traitCollection:(id)arg3 maxFrameCount:(long long)arg4 layoutRTL:(BOOL)arg5 preferredSizes:(id)arg6 solutionRecursionDepth:(long long)arg7;
+- (void)_solveForContainer:(id)arg1 layoutAxis:(unsigned long long)arg2 traitCollection:(id)arg3 maxFrameCount:(long long)arg4 layoutRTL:(BOOL)arg5 preferredSizes:(id)arg6 solutionRecursionDepth:(long long)arg7;
 - (void)_solveGroup;
 - (void)_solveSingleItem;
 - (void)_solveWithCustomGroupItemProvider;
-- (id)_supplementaryFrameWithKind:(id)arg1 absoluteIndex:(long long)arg2 additionalFrameOffset:(struct CGPoint)arg3 interSolutionSpacing:(double)arg4 repeatAxis:(int)arg5;
+- (id)_supplementaryFrameWithKind:(id)arg1 absoluteIndex:(long long)arg2 additionalFrameOffset:(struct CGPoint)arg3 interSolutionSpacing:(double)arg4 repeatAxis:(unsigned long long)arg5;
 - (id)_supplementaryFrameWithKind:(id)arg1 index:(long long)arg2 additionalFrameOffset:(struct CGPoint)arg3;
 - (void)_transformGroupArrangementItemsForRTL:(id)arg1;
 - (void)_updateGroupByQueryingItemsIfNeeded:(id)arg1 container:(id)arg2;
-- (void)_warnIfClientSpecifiesFlexibleRootGroupEdgeSpacingAlongLayoutAxisAsNeededForGroup:(id)arg1 layoutAxis:(int)arg2;
+- (void)_warnIfClientSpecifiesFlexibleRootGroupEdgeSpacingAlongLayoutAxisAsNeededForGroup:(id)arg1 layoutAxis:(unsigned long long)arg2;
 - (struct CGPoint)auxillaryHostAdditionalFrameOffset;
 - (id)auxillaryHostAuxillaryItems;
 - (long long)auxillaryHostAuxillaryKind;
 - (id)auxillaryHostContainer;
 - (struct CGSize)auxillaryHostContentSize;
-- (int)auxillaryHostLayoutAxis;
+- (unsigned long long)auxillaryHostLayoutAxis;
 - (struct CGSize)auxillaryHostPinningContentSize;
 - (id)auxillaryHostPreferredSizes;
 - (BOOL)auxillaryHostShouldLayoutRTL;
 - (id)auxillaryHostSupplementaryEnroller;
 - (id)availableLayoutSpaces;
 - (BOOL)canAccomodateItemWithSize:(struct CGSize)arg1;
-- (struct CGSize)contentSizeForFrameCount:(long long)arg1 layoutAxis:(int)arg2;
+- (struct CGSize)contentSizeForFrameCount:(long long)arg1 layoutAxis:(unsigned long long)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)frameForAbsoluteIndex:(long long)arg1 additionalFrameOffset:(struct CGPoint)arg2 interSolutionSpacing:(double)arg3 repeatAxis:(int)arg4;
+- (id)frameForAbsoluteIndex:(long long)arg1 additionalFrameOffset:(struct CGPoint)arg2 interSolutionSpacing:(double)arg3 repeatAxis:(unsigned long long)arg4;
 - (id)initWithItem:(id)arg1;
 - (id)initWithItem:(id)arg1 supplementaryEnroller:(id)arg2;
-- (id)initWithItem:(id)arg1 supplementaryEnroller:(id)arg2 container:(id)arg3 layoutAxis:(int)arg4 traitCollection:(id)arg5 maxFrameCount:(long long)arg6 layoutRTL:(BOOL)arg7 preferredSizes:(id)arg8 solverResult:(id)arg9 solutionRecursionDepth:(long long)arg10;
+- (id)initWithItem:(id)arg1 supplementaryEnroller:(id)arg2 container:(id)arg3 layoutAxis:(unsigned long long)arg4 traitCollection:(id)arg5 maxFrameCount:(long long)arg6 layoutRTL:(BOOL)arg7 preferredSizes:(id)arg8 solverResult:(id)arg9 solutionRecursionDepth:(long long)arg10;
 - (id)queryFramesApplyingFrameOffset:(struct CGPoint)arg1;
 - (id)queryFramesWithItemLimit:(long long)arg1;
 - (id)queryFramesWithQueryRect:(struct CGRect)arg1;
 - (id)queryFramesWithQueryRect:(struct CGRect)arg1 additionalFrameOffset:(struct CGPoint)arg2;
 - (id)queryFramesWithQueryRect:(struct CGRect)arg1 additionalFrameOffset:(struct CGPoint)arg2 itemIndexOffset:(long long)arg3 itemLimit:(long long)arg4 supplementaryRepeatOffset:(long long)arg5;
 - (id)queryFramesWithQueryRect:(struct CGRect)arg1 additionalFrameOffset:(struct CGPoint)arg2 itemIndexOffset:(long long)arg3 supplementaryOffsets:(id)arg4 itemLimit:(long long)arg5;
-- (void)solveForContainer:(id)arg1 layoutAxis:(int)arg2 traitCollection:(id)arg3 maxFrameCount:(long long)arg4 layoutRTL:(BOOL)arg5;
-- (void)solveForContainer:(id)arg1 layoutAxis:(int)arg2 traitCollection:(id)arg3 maxFrameCount:(long long)arg4 layoutRTL:(BOOL)arg5 preferredSizes:(id)arg6;
-- (id)supplementaryFrameWithKind:(id)arg1 absoluteIndex:(long long)arg2 additionalFrameOffset:(struct CGPoint)arg3 interSolutionSpacing:(double)arg4 repeatAxis:(int)arg5;
+- (void)solveForContainer:(id)arg1 layoutAxis:(unsigned long long)arg2 traitCollection:(id)arg3 maxFrameCount:(long long)arg4 layoutRTL:(BOOL)arg5;
+- (void)solveForContainer:(id)arg1 layoutAxis:(unsigned long long)arg2 traitCollection:(id)arg3 maxFrameCount:(long long)arg4 layoutRTL:(BOOL)arg5 preferredSizes:(id)arg6;
+- (id)supplementaryFrameWithKind:(id)arg1 absoluteIndex:(long long)arg2 additionalFrameOffset:(struct CGPoint)arg3 interSolutionSpacing:(double)arg4 repeatAxis:(unsigned long long)arg5;
 - (id)supplementaryFrameWithKind:(id)arg1 index:(long long)arg2 additionalFrameOffset:(struct CGPoint)arg3;
 - (id)visualDescription;
 

@@ -22,6 +22,7 @@
 - (BOOL)_saveSnapshotWithName:(id)arg1;
 - (BOOL)canOpenURL:(id)arg1;
 - (BOOL)handleDoubleHeightStatusBarTapWithStyleOverride:(int)arg1;
+- (BOOL)handleStatusBarHoverActionForRegion:(long long)arg1;
 - (id)init;
 - (BOOL)isFrontBoard;
 - (BOOL)isSuspended;

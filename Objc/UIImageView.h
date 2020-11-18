@@ -24,6 +24,9 @@
     struct {
         unsigned int canDrawContentIsValid:1;
         unsigned int canDrawContent:1;
+        unsigned int suppressPixelAlignment:1;
+        unsigned int previousPixelAlignment:1;
+        unsigned int previousEdgeAntialiasing:1;
     } _imageViewFlags;
     BOOL _templateSettingsAreInvalid;
     BOOL _edgeInsetsForEffectsAreValid;
@@ -44,6 +47,7 @@
 @property (readonly, nonatomic) BOOL _layoutShouldFlipHorizontalOrientations;
 @property (nonatomic, setter=_setMasksTemplateImages:) BOOL _masksTemplateImages;
 @property (strong, nonatomic, setter=_setOverridingSymbolConfiguration:) UIImageSymbolConfiguration *_overridingSymbolConfiguration;
+@property (nonatomic, setter=_setSuppressPixelAlignment:) BOOL _suppressPixelAlignment;
 @property (nonatomic, setter=_setSymbolImagesIgnoreAccessibilitySizes:) BOOL _symbolImagesIgnoreAccessibilitySizes; // @synthesize _symbolImagesIgnoreAccessibilitySizes=__symbolImagesIgnoreAccessibilitySizes;
 @property (nonatomic, setter=_setTemplateImageRenderingEffects:) unsigned long long _templateImageRenderingEffects;
 @property (readonly, nonatomic) BOOL _templateSettingsAreInvalid; // @synthesize _templateSettingsAreInvalid;

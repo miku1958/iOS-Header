@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic) long long barType;
 @property (readonly, nonatomic) BOOL barWantsLetterpress;
+@property (readonly, nonatomic) struct CGRect bounds;
 @property (readonly, nonatomic) BOOL centerTextButtons;
 @property (readonly, nonatomic) BOOL compactMetrics; // @synthesize compactMetrics=_compactMetrics;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;

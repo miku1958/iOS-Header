@@ -50,6 +50,7 @@
 @property (readonly, nonatomic) long long textInteractionSet;
 @property (weak, nonatomic) UIView *view; // @synthesize view=_view;
 
++ (double)_maximumBeamSnappingLength;
 + (id)textInteractionForMode:(long long)arg1;
 + (id)textInteractionsForSet:(long long)arg1;
 - (void).cxx_destruct;
@@ -60,10 +61,12 @@
 - (void)_createFeedbackIfNecessary;
 - (void)_performGestureType:(long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3;
 - (void)_performGestureType:(long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4;
+- (void)_performGestureType:(long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4 forTouchType:(long long)arg5;
 - (void)_performPreemtiveLayoutToEnsureNoMoreLayoutWhileSelecting:(id)arg1;
 - (void)_playFeedbackForCursorMovement;
 - (void)_prepareFeedbackForGesture;
 - (void)_setLinkInteractionSession:(id)arg1;
+- (BOOL)_shouldAllowEnforcedTouchTypeForTouch:(id)arg1 forGestureRecognizer:(id)arg2;
 - (BOOL)_shouldObscureTextInput;
 - (id)_textInput;
 - (id)_transientState;

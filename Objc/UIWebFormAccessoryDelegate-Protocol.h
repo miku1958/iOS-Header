@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol UIWebFormAccessoryDelegate
+#import <UIKitCore/NSObject-Protocol.h>
+
+@protocol UIWebFormAccessoryDelegate <NSObject>
 - (void)accessoryAutoFill;
 - (void)accessoryClear;
 - (void)accessoryDone;

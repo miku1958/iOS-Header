@@ -91,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldShowPressFeedbackForEventWithPresses:(id)arg1;
 - (void)_showVisualFeedbackForPressed:(BOOL)arg1;
 - (BOOL)_showsFocusForFocusedView:(id)arg1;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (void)_updateFittingContentSizingViewToFitSize;
 - (void)_updateHighlightAndPressedFeedback;
 - (void)_updateLoadedContentsHierarchyByInsertingOrRemovingIfNecessary;

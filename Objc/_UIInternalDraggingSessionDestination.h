@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     _DUIPotentialDrop *_lastPotentialDrop;
     NSPointerArray *_dragEvents;
     BOOL _isAccessibilitySession;
+    BOOL _drivenByPointer;
     _UIDropSessionImpl *_dropSession;
     UIWindow *_centroidWindow;
     NSArray *_dropItemProviders;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL didRequestDropToBePerformed;
 @property (readonly, nonatomic) NSArray *dragEvents;
 @property (readonly, nonatomic) unsigned long long draggingSourceOperationMask;
+@property (readonly, nonatomic) BOOL drivenByPointer; // @synthesize drivenByPointer=_drivenByPointer;
 @property (readonly, nonatomic) NSArray *dropItemProviders; // @synthesize dropItemProviders=_dropItemProviders;
 @property (readonly, nonatomic) _UIDropSessionImpl *dropSession; // @synthesize dropSession=_dropSession;
 @property (strong, nonatomic) id<_UIDruidDestinationConnection> druidConnection; // @synthesize druidConnection=_druidConnection;

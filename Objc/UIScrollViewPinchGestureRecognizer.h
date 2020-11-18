@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (double)_hysteresis;
+- (void)_transformChangedWithEvent:(id)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)removeTarget:(id)arg1 action:(SEL)arg2;
 - (void)setDelegate:(id)arg1;

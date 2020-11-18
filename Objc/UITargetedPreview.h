@@ -8,7 +8,7 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class UIPreviewParameters, UIPreviewTarget, UIView;
+@class NSArray, UIPreviewParameters, UIPreviewTarget, UIView;
 @protocol NSCopying><NSObject, _UIPreviewProvider;
 
 @interface UITargetedPreview : NSObject <NSCopying>
@@ -23,9 +23,11 @@
     id<_UIPreviewProvider> __PreviewProvider;
     id<NSCopying><NSObject> _internalIdentifer;
     UIView *_overridePositionTrackingView;
+    NSArray *__accessoryViews;
 }
 
 @property (readonly, nonatomic) id<_UIPreviewProvider> _PreviewProvider; // @synthesize _PreviewProvider=__PreviewProvider;
+@property (strong, nonatomic, getter=_accessoryViews, setter=_setAccessoryViews:) NSArray *_accessoryViews; // @synthesize _accessoryViews=__accessoryViews;
 @property (nonatomic, getter=_prefersUnmaskedPlatterStyle, setter=_setPrefersUnmaskedPlatterStyle:) BOOL _prefersUnmaskedPlatterStyle;
 @property (nonatomic) BOOL _springboardPlatterStyle;
 @property (nonatomic, getter=_isDefaultPreview, setter=_setDefaultPreview:) BOOL defaultPreview; // @synthesize defaultPreview=_defaultPreview;

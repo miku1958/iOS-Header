@@ -10,7 +10,7 @@
 #import <UIKitCore/_UIFocusEnginePanGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIFocusFastScrollingRecognizerDelegate-Protocol.h>
 
-@class CADisplayLink, CARInputDeviceTouchpad, CARSessionStatus, NSArray, NSObservation, NSString, NSTimer, NSUserDefaults, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, _UIFocusEngineJoystickGestureRecognizer, _UIFocusEnginePanGestureRecognizer, _UIFocusFastScrollingRecognizer, _UIFocusMotionEffectsController, _UIFocusMovementInfo, _UIFocusPressGestureRecognizer;
+@class CADisplayLink, CARInputDeviceTouchpad, CARSessionStatus, NSArray, NSObservation, NSString, NSTimer, NSUserDefaults, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, _UIFocusEffectsController, _UIFocusEngineJoystickGestureRecognizer, _UIFocusEnginePanGestureRecognizer, _UIFocusFastScrollingRecognizer, _UIFocusLinearMovementDebugGestureRecognizer, _UIFocusLinearMovementDebugView, _UIFocusMovementInfo, _UIFocusPressGestureRecognizer;
 @protocol _UIFocusEventRecognizerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,11 +19,14 @@ __attribute__((visibility("hidden")))
     _UIFocusEnginePanGestureRecognizer *_panGestureRecognizer;
     UITapGestureRecognizer *_tapGestureRecognizer;
     _UIFocusPressGestureRecognizer *_selectGestureRecognizer;
+    _UIFocusLinearMovementDebugGestureRecognizer *_linearDebugGestureRecognizer;
+    _UIFocusLinearMovementDebugView *_linearDebugView;
     struct CGPoint _touchBeganPoint;
     struct CGPoint _lastKnownTouchPoint;
     struct CGPoint _previousPoints[5];
     int _numFrames;
     struct CGVector _progressAccumulator;
+    struct CGVector _unlockedAccumulator;
     _UIFocusFastScrollingRecognizer *_fastScrollingRecognizer;
     struct CGPoint _firstMomentumTouchPoint;
     struct CGPoint _lastMomentumTouchPoint;
@@ -64,7 +67,7 @@ __attribute__((visibility("hidden")))
     id<_UIFocusEventRecognizerDelegate> _delegate;
     UIView *_viewForTouchDeferredFocus;
     UIMoveEvent *_moveEvent;
-    _UIFocusMotionEffectsController *_motionEffectsController;
+    _UIFocusEffectsController *_motionEffectsController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -72,13 +75,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic, getter=_motionEffectsController) _UIFocusMotionEffectsController *motionEffectsController; // @synthesize motionEffectsController=_motionEffectsController;
+@property (readonly, nonatomic) NSArray *keyCommands;
+@property (readonly, nonatomic, getter=_motionEffectsController) _UIFocusEffectsController *motionEffectsController; // @synthesize motionEffectsController=_motionEffectsController;
 @property (strong, nonatomic, getter=_moveEvent, setter=_setMoveEvent:) UIMoveEvent *moveEvent; // @synthesize moveEvent=_moveEvent;
 @property (readonly, weak, nonatomic) UIView *owningView; // @synthesize owningView=_owningView;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsFastScrolling; // @synthesize supportsFastScrolling=_supportsFastScrolling;
 @property (weak, nonatomic) UIView *viewForTouchDeferredFocus; // @synthesize viewForTouchDeferredFocus=_viewForTouchDeferredFocus;
 
++ (BOOL)_canSupportFastScrolling;
 - (void).cxx_destruct;
 - (void)_addGestureRecognizers;
 - (void)_continueTouchWithMomentum;
@@ -96,10 +101,12 @@ __attribute__((visibility("hidden")))
 - (void)_handleJoystickGesture:(id)arg1;
 - (void)_handleJoystickRepeatMode:(id)arg1;
 - (void)_handleJoystickTiltMode:(id)arg1;
+- (void)_handleLinearDebugOverlayGesture:(id)arg1;
 - (void)_handlePanGesture:(id)arg1;
 - (void)_handleSelectGesture:(id)arg1;
 - (void)_handleTapGesture:(id)arg1;
 - (unsigned long long)_headingForJoystickPosition:(struct CGPoint)arg1 usingMinimumRadius:(double)arg2;
+- (BOOL)_hideLinearGroupDebugOverlayIfNecessary:(BOOL)arg1;
 - (double)_horizontalFrictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2;
 - (BOOL)_joystickAttemptFocusMovementWithRequest:(id)arg1;
 - (void)_joystickDisplayLinkHeartbeat:(id)arg1;
@@ -111,12 +118,15 @@ __attribute__((visibility("hidden")))
 - (double)_joystickRepeatDurationForTimeInMovementZone:(double)arg1;
 - (struct CGVector)_joystickVelocityForHeading:(unsigned long long)arg1;
 - (void)_momentumHeartbeat:(id)arg1;
+- (void)_moveFocusContainerWithHeading:(unsigned long long)arg1;
 - (BOOL)_moveInDirection:(unsigned long long)arg1;
 - (BOOL)_moveInDirection:(unsigned long long)arg1 withEvaluator:(CDUnknownBlockType)arg2;
 - (BOOL)_moveInDirection:(unsigned long long)arg1 withSearchInfo:(id)arg2;
 - (BOOL)_moveWithEvent:(id)arg1;
+- (void)_nextFocusContainer:(id)arg1;
 - (void)_panGestureEnd:(id)arg1;
 - (void)_panGestureStart:(id)arg1;
+- (void)_previousFocusContainer:(id)arg1;
 - (void)_recordMomentumForPoint:(struct CGPoint)arg1;
 - (void)_removeGestureRecognizers;
 - (void)_resetJoystick;
@@ -129,6 +139,7 @@ __attribute__((visibility("hidden")))
 - (void)_setSupportsFastScrolling:(BOOL)arg1;
 - (BOOL)_shouldAcceptInputType:(unsigned long long)arg1;
 - (BOOL)_shouldPerformFocusUpdateWithCurrentMomentumStatus;
+- (void)_showLinearGroupDebugOverlay;
 - (void)_stopMomentumAndPerformRollback;
 - (int)_touchRegionForDigitizerLocation:(struct CGPoint)arg1;
 - (struct CGSize)_touchSensitivityForItem:(id)arg1;

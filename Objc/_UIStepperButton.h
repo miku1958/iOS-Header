@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isLeft) BOOL left; // @synthesize left=_left;
 
 - (BOOL)_shouldDefaultToTemplatesForImageViewBackground:(BOOL)arg1;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
 
 @end

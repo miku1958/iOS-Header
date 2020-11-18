@@ -13,6 +13,7 @@
 @interface _UIStatusBarVisualProvider_iOS : NSObject <_UIStatusBarVisualProvider>
 {
     BOOL _expanded;
+    BOOL _onLockScreen;
     _UIStatusBar *_statusBar;
     _UIStatusBarDisplayItemPlacementNetworkGroup *_expandedNetworkGroup;
     NSArray *_expandedCellularPlacementsAffectedByAirplaneMode;
@@ -33,9 +34,11 @@
 @property (readonly, nonatomic) _UIStatusBarDisplayItemPlacementNetworkGroup *expandedNetworkGroup; // @synthesize expandedNetworkGroup=_expandedNetworkGroup;
 @property (readonly, nonatomic) NSArray *expandedTrailingPlacements; // @synthesize expandedTrailingPlacements=_expandedTrailingPlacements;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL onLockScreen; // @synthesize onLockScreen=_onLockScreen;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacementGroup *secondaryWifiGroup; // @synthesize secondaryWifiGroup=_secondaryWifiGroup;
 @property (weak, nonatomic) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsIndirectPointerTouchActions;
 
 + (double)bluetoothPaddingInset;
 + (double)cornerRadius;

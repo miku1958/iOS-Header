@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UIView.h>
+#import <UIKitCore/UIImageView.h>
 
 @class UISelectionGrabber;
 
 __attribute__((visibility("hidden")))
-@interface UISelectionGrabberDot : UIView
+@interface UISelectionGrabberDot : UIImageView
 {
     UISelectionGrabber *m_grabber;
 }
@@ -18,10 +18,11 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct CGRect)_extendedHitTestingRectIncludingCalloutBarAdjustments:(BOOL)arg1;
-- (void)drawRect:(struct CGRect)arg1;
+- (id)_rasterizedDotImageForScale:(double)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 container:(id)arg2;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)redrawRasterizedImageForScale:(double)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (int)textEffectsVisibilityLevel;
 - (int)textEffectsVisibilityLevelInKeyboardWindow;

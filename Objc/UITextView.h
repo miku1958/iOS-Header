@@ -19,6 +19,7 @@
 #import <UIKitCore/UITextPasteConfigurationSupporting-Protocol.h>
 #import <UIKitCore/UITextPasteConfigurationSupporting_Internal-Protocol.h>
 #import <UIKitCore/UIViewGhostedRangeSupporting-Protocol.h>
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UILayoutBaselineUpdating-Protocol.h>
 #import <UIKitCore/_UIMultilineTextContentSizing-Protocol.h>
 #import <UIKitCore/_UITextContainerViewDelegate-Protocol.h>
@@ -31,7 +32,7 @@
 @class CUICatalog, NSAttributedString, NSDictionary, NSIndexSet, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIFont, UIImage, UIInputContextHistory, UILabel, UILayoutManagerBasedDraggableGeometry, UIPasteConfiguration, UITextInputController, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UITextContainerView, _UITextItemDiscoverer, _UITextLayoutView, _UITextSizeCache, _UITextViewContentPadding, _UITextViewRestorableScrollPosition, _UITextViewVisualStyle;
 @protocol UICoordinateSpace, UITextDragDelegate, UITextDragDropSupport, UITextDropDelegate, UITextInputDelegate, UITextInputTokenizer, UITextPasteDelegate, UITextViewDelegate;
 
-@interface UITextView : UIScrollView <_UIViewBaselineSpacing, _UITextContainerViewDelegate, _UITextViewContentPaddingDelegate, UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, _UIMultilineTextContentSizing, _UILayoutBaselineUpdating, UIViewGhostedRangeSupporting, _UITextItemInteracting, UITextPasteConfigurationSupporting_Internal, UITextDragSupporting, UITextDropSupporting, _UITextContent, _UITextItemDiscoverable, UITextDraggable, UITextDroppable, UITextPasteConfigurationSupporting, UITextInput, UIContentSizeCategoryAdjusting>
+@interface UITextView : UIScrollView <_UIViewBaselineSpacing, _UITextContainerViewDelegate, _UITextViewContentPaddingDelegate, UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, _UIMultilineTextContentSizing, _UILayoutBaselineUpdating, UIViewGhostedRangeSupporting, _UITextItemInteracting, UITextPasteConfigurationSupporting_Internal, UITextDragSupporting, UITextDropSupporting, _UICursorInteractionDelegate, _UITextContent, _UITextItemDiscoverable, UITextDraggable, UITextDroppable, UITextPasteConfigurationSupporting, UITextInput, UIContentSizeCategoryAdjusting>
 {
     NSTextStorage *_textStorage;
     NSTextContainer *_textContainer;
@@ -223,6 +224,7 @@
 - (BOOL)_allowAnimatedUpdateSelectionRectViews;
 - (BOOL)_allowHighlightForTextInteractableItem:(id)arg1;
 - (BOOL)_allowInteraction:(long long)arg1 forTextInteractableItem:(id)arg2;
+- (id)_anyTextItemConstrainedToLineAtPoint:(struct CGPoint)arg1;
 - (void)_applyOptionsToGeometry;
 - (id)_attributedStringForInsertionOfAttributedString:(id)arg1;
 - (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(long long)arg2 inContainer:(id)arg3 isGuide:(BOOL)arg4;
@@ -351,7 +353,7 @@
 - (id)_textGeometry;
 - (id)_textInputTraits;
 - (id)_textInputViewForAddingGestureRecognizers;
-- (id)_textInteractableItemAtPoint:(struct CGPoint)arg1;
+- (id)_textInteractableItemAtPoint:(struct CGPoint)arg1 precision:(unsigned long long)arg2;
 - (id)_textItemDiscoverer;
 - (void)_textStorageDidProcessEditing:(id)arg1;
 - (void)_textViewContentPaddingDidChange:(id)arg1;
@@ -404,6 +406,10 @@
 - (id)closestPositionToPoint:(struct CGPoint)arg1 withinRange:(id)arg2;
 - (long long)comparePosition:(id)arg1 toPosition:(id)arg2;
 - (void)copy:(id)arg1;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2;
 - (void)cut:(id)arg1;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;

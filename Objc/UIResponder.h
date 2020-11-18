@@ -155,7 +155,7 @@
 - (BOOL)_isTransitioningFromView:(id)arg1;
 - (BOOL)_isViewController;
 - (id)_keyCommandForEvent:(id)arg1;
-- (id)_keyCommandForEvent:(id)arg1 target:(id *)arg2;
+- (id)_keyCommandForEvent:(id)arg1 target:(out id *)arg2;
 - (id)_keyCommands;
 - (id)_keyCommandsInChainPassingTest:(CDUnknownBlockType)arg1 skipViewControllersPresentingModally:(BOOL)arg2;
 - (id)_keyInput;
@@ -177,7 +177,9 @@
 - (id)_moveUp:(BOOL)arg1 withHistory:(id)arg2;
 - (void)_moveWithEvent:(id)arg1;
 - (id)_nextKeyResponder;
+- (BOOL)_nextResponderChainContainsResponder:(id)arg1;
 - (id)_nextResponderOverride;
+- (id)_nextResponderThatCanBecomeFirstResponder;
 - (void)_nonDestructivelyResignFirstResponder;
 - (id)_normalizedStringForRangeComparison:(id)arg1;
 - (struct _NSRange)_nsrangeForTextRange:(id)arg1;

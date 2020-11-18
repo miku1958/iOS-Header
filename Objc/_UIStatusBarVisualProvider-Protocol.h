@@ -13,6 +13,7 @@
 
 @property (readonly, nonatomic) BOOL canFixupDisplayItemAttributes;
 @property (weak, nonatomic) _UIStatusBar *statusBar;
+@property (readonly, nonatomic) BOOL supportsIndirectPointerTouchActions;
 
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
 - (NSArray *)orderedDisplayItemPlacementsInRegionWithIdentifier:(NSString *)arg1;

@@ -60,7 +60,7 @@
 - (BOOL)_hasBackgroundDecorationItem;
 - (BOOL)_hasVisibleItemsHandler;
 - (BOOL)_isEmptySection;
-- (BOOL)_isListSolverCompatibleForLayoutAxis:(int)arg1;
+- (BOOL)_isListSolverCompatibleForLayoutAxis:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)decorationItemsDict;
 - (id)initWithGroup:(id)arg1 contentInsets:(struct NSDirectionalEdgeInsets)arg2 supplementaryItems:(id)arg3 boundarySupplementartItems:(id)arg4 pinnedSupplementaryItemIndexes:(id)arg5 interGroupSpacing:(double)arg6 visibleItemsInvalidationHandler:(CDUnknownBlockType)arg7 supplementariesFollowInsets:(BOOL)arg8 decorationItems:(id)arg9 orthogonalScrollingBehavior:(long long)arg10 isEmptySection:(BOOL)arg11 prefersListSolver:(BOOL)arg12;

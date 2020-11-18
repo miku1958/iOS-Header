@@ -15,7 +15,7 @@
 #import <UIKitCore/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
 #import <UIKitCore/_UIApplicationInitializationContextFactory-Protocol.h>
 
-@class BKSAnimationFenceHandle, BKSProcessAssertion, BSServiceConnectionEndpointMonitor, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject, NSSet, NSString, NSTimer, PKPushRegistry, SBSApplicationShortcutService, UIActivityContinuationManager, UIEventDispatcher, UIEventFetcher, UIForceStageObservable, UIGestureEnvironment, UINotificationFeedbackGenerator, UIRepeatedAction, UISApplicationState, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWindow, _UIApplicationInfoParser, _UIIdleModeController;
+@class BKSAnimationFenceHandle, BKSProcessAssertion, BSServiceConnectionEndpointMonitor, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject, NSSet, NSString, NSTimer, PKPushRegistry, SBSApplicationShortcutService, UIActivityContinuationManager, UIAlertController, UIEventDispatcher, UIEventFetcher, UIForceStageObservable, UIGestureEnvironment, UINotificationFeedbackGenerator, UIRepeatedAction, UISApplicationState, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWindow, _UIApplicationInfoParser, _UIIdleModeController;
 @protocol BSInvalidatable, FBSWorkspaceFencing, OS_dispatch_queue, UIApplicationDelegate;
 
 @interface UIApplication : UIResponder <FBSUIApplicationWorkspaceDelegate, FBSDisplayLayoutObserver, PKPushRegistryDelegate, UIActivityContinuationManagerApplicationContext, UIApplicationSnapshotPreparing, UIRepeatedActionDelegate, UIStatusBarStyleDelegate_SpringBoardOnly, _UIApplicationInitializationContextFactory>
@@ -25,6 +25,7 @@
     NSArray *_topLevelNibObjects;
     long long _networkResourcesCurrentlyLoadingCount;
     NSTimer *_hideNetworkActivityIndicatorTimer;
+    UIAlertController *_editAlertController;
     UIStatusBar *_statusBar;
     long long _statusBarRequestedStyle;
     UIStatusBarWindow *_statusBarWindow;
@@ -136,6 +137,7 @@
     NSMutableSet *_actionsPendingInitialization;
     NSMutableSet *_idleTimerDisabledReasons;
     UIRepeatedAction *_keyRepeatAction;
+    NSMutableDictionary *_hardwareKeyDownCodeToEventMap;
     double _currentTimestampWhenFirstTouchCameDown;
     struct CGPoint _currentLocationWhereFirstTouchCameDown;
     BOOL _saveStateRestorationArchiveWithFileProtectionCompleteUntilFirstUserAuthentication;
@@ -338,6 +340,7 @@
 - (BOOL)_doRestorationIfNecessary;
 - (id)_dragEvents;
 - (void)_eatCurrentTouchForWindow:(id)arg1;
+- (BOOL)_eatCurrentTouchForWindow:(id)arg1 ifPredicate:(CDUnknownBlockType)arg2;
 - (long long)_effectiveUserInterfaceStyle;
 - (void)_endBackgroundTask:(unsigned long long)arg1;
 - (void)_endFenceTask:(id)arg1;
@@ -384,6 +387,7 @@
 - (void)_handleHeadsetButtonTripleClick;
 - (void)_handleKeyEvent:(struct __GSEvent *)arg1;
 - (void)_handleKeyUIEvent:(id)arg1;
+- (void)_handleKeyboardPressEvent:(id)arg1;
 - (void)_handleNonLaunchSpecificActions:(id)arg1 forScene:(id)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)_handlePhysicalButtonEvent:(id)arg1;
 - (void)_handlePlatformSpecificActions:(id)arg1 forScene:(id)arg2 withTransitionContext:(id)arg3;
@@ -404,6 +408,7 @@
 - (void)_headsetButtonUp:(struct __IOHIDEvent *)arg1;
 - (void)_hideNetworkActivityIndicator;
 - (id)_hoverEventForWindow:(id)arg1;
+- (id)_hoverEventForWindowSpringBoardOnly:(id)arg1;
 - (id)_implicitStatusBarAnimationParametersWithClass:(Class)arg1;
 - (id)_implicitStatusBarHiddenAnimationParametersWithViewController:(id)arg1 animation:(long long)arg2;
 - (id)_implicitStatusBarStyleAnimationParametersWithViewController:(id)arg1;
@@ -437,6 +442,7 @@
 - (BOOL)_keyCommandIsCurrentlyPerformable:(id)arg1 validation:(id)arg2;
 - (id)_keyCommands;
 - (id)_keyCommandsForResponder:(id)arg1;
+- (id)_keyDownDictionary;
 - (id)_keyWindowForScreen:(id)arg1;
 - (id)_launchTestName;
 - (double)_launchTime;
@@ -488,6 +494,7 @@
 - (BOOL)_prepareButtonEvent:(id)arg1 type:(long long)arg2 phase:(long long)arg3 timestamp:(double)arg4 force:(double)arg5 contextID:(unsigned int)arg6;
 - (BOOL)_prepareButtonEvent:(id)arg1 withPressInfo:(id)arg2;
 - (void)_presentEditAlertController:(id)arg1;
+- (id)_pressInfoForPhysicalKeyboardEvent:(id)arg1;
 - (id)_pressesEventForWindow:(id)arg1;
 - (long long)_pureEffectiveUserInterfaceStyle;
 - (void)_purgeSharedInstances;
@@ -519,6 +526,7 @@
 - (void)_reportResults:(id)arg1;
 - (void)_requestDeviceUnlockWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_requiresHighResolution;
+- (void)_resendHoverEventForWindow:(id)arg1;
 - (id)_responderForKeyEvents;
 - (unsigned long long)_restorationArchiveProtectionClass;
 - (void)_restoreApplicationPreservationStateWithSessionIdentifier:(id)arg1 beginHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -539,9 +547,11 @@
 - (void)_saveRestorationUserActivityStateForCanvas:(id)arg1;
 - (void)_saveRestorationUserActivityStateForScene:(id)arg1;
 - (BOOL)_saveSnapshotWithName:(id)arg1;
+- (long long)_sceneInterfaceOrientationFromWindow:(id)arg1;
 - (BOOL)_sceneSettingsIncludeSafeAreaInsets;
 - (void)_scheduleLocalNotification:(id)arg1;
 - (void)_scheduleSceneEventResponseForScene:(id)arg1 withResponseBlock:(CDUnknownBlockType)arg2;
+- (id)_scrollEventForWindow:(id)arg1;
 - (void)_scrollsToTopInitiatorView:(id)arg1 touchesEnded:(id)arg2 withEvent:(id)arg3;
 - (void)_sendButtonEventWithPressInfo:(id)arg1;
 - (void)_sendButtonEventWithType:(long long)arg1 phase:(long long)arg2 timestamp:(double)arg3;
@@ -606,6 +616,7 @@
 - (unsigned long long)_supportedInterfaceOrientationsForWindow:(id)arg1;
 - (BOOL)_supportedOnLockScreen;
 - (BOOL)_supportsCompactStatusBarHiding;
+- (BOOL)_supportsIndirectInputEvents;
 - (BOOL)_supportsShakesWhenNotActive;
 - (void)_synchronizeSystemAnimationFencesWithSpinCleanUpBlock:(CDUnknownBlockType)arg1;
 - (id)_systemAnimationFenceCreatingIfNecessary:(BOOL)arg1;
@@ -621,6 +632,7 @@
 - (id)_touchesEvent;
 - (id)_touchesEventForWindow:(id)arg1;
 - (void)_trackSystemAnimationFence:(id)arg1;
+- (id)_transformEventForWindow:(id)arg1;
 - (void)_unregisterForLanguageChangedNotification;
 - (void)_unregisterForLocaleChangedNotification;
 - (void)_unregisterForSignificantTimeChangeNotification;
@@ -736,6 +748,7 @@
 - (void)handleKeyHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)handleKeyUIEvent:(id)arg1;
 - (BOOL)handleKeyUpCommand:(id)arg1;
+- (BOOL)handleStatusBarHoverActionForRegion:(long long)arg1;
 - (BOOL)handleTestURL:(id)arg1;
 - (void)headsetAvailabilityChanged:(struct __GSEvent *)arg1;
 - (void)headsetButtonDown:(struct __GSEvent *)arg1;

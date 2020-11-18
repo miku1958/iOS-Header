@@ -6,15 +6,17 @@
 
 #import <UIKitCore/_UIStatusBarDisplayItemPlacementGroup.h>
 
-@class NSArray;
+@class NSArray, _UIStatusBarDisplayItemPlacement;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarDisplayItemPlacementIndicatorsGroup : _UIStatusBarDisplayItemPlacementGroup
 {
     NSArray *_stablePlacements;
     NSArray *_unstablePlacements;
+    _UIStatusBarDisplayItemPlacement *_bluetoothInsetPaddingItem;
 }
 
+@property (readonly, nonatomic) _UIStatusBarDisplayItemPlacement *bluetoothInsetPaddingItem; // @synthesize bluetoothInsetPaddingItem=_bluetoothInsetPaddingItem;
 @property (readonly, copy, nonatomic) NSArray *stablePlacements; // @synthesize stablePlacements=_stablePlacements;
 @property (readonly, copy, nonatomic) NSArray *unstablePlacements; // @synthesize unstablePlacements=_unstablePlacements;
 

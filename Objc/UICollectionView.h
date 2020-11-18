@@ -8,14 +8,15 @@
 
 #import <UIKitCore/UIContextMenuInteractionDelegate-Protocol.h>
 #import <UIKitCore/UIDataSourceTranslating-Protocol.h>
+#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UIDataSourceBackedView-Protocol.h>
 #import <UIKitCore/_UIHorizontalIndexTitleBarDelegate-Protocol.h>
 #import <UIKitCore/_UIKeyboardAutoRespondingScrollView-Protocol.h>
 
-@class NSArray, NSHashTable, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTimer, UICollectionReusableView, UICollectionViewCell, UICollectionViewData, UICollectionViewLayout, UICollectionViewLayoutAttributes, UICollectionViewUpdate, UIContextMenuInteraction, UIFocusContainerGuide, UITouch, UIView, _UICollectionViewDragAndDropController, _UICollectionViewDragDestinationController, _UICollectionViewDragSourceController, _UICollectionViewMultiSelectController, _UICollectionViewOrthogonalScrollerSectionController, _UICollectionViewPrefetchingContext, _UIDragSnappingFeedbackGenerator, _UIDynamicAnimationGroup, _UIFocusFastScrollingIndexBarEntry, _UIHorizontalIndexTitleBar, _UIIndexPathIdentityTracker, _UIVelocityIntegrator;
+@class NSArray, NSHashTable, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTimer, UICollectionReusableView, UICollectionViewCell, UICollectionViewData, UICollectionViewLayout, UICollectionViewLayoutAttributes, UICollectionViewUpdate, UIContextMenuInteraction, UIFocusContainerGuide, UITouch, UIView, _UICollectionViewDragAndDropController, _UICollectionViewDragDestinationController, _UICollectionViewDragSourceController, _UICollectionViewMultiSelectController, _UICollectionViewOrthogonalScrollerSectionController, _UICollectionViewPrefetchingContext, _UICursorInteraction, _UICursorRegion, _UIDragSnappingFeedbackGenerator, _UIDynamicAnimationGroup, _UIFocusFastScrollingIndexBarEntry, _UIHorizontalIndexTitleBar, _UIIndexPathIdentityTracker, _UIVelocityIntegrator;
 @protocol UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UICollectionViewDataSource_Private, UICollectionViewDelegate, UICollectionViewDragDelegate, UICollectionViewDragDelegate_Private, UICollectionViewDragDestination, UICollectionViewDragSource, UICollectionViewDropDelegate, UICollectionViewDropDelegate_Private;
 
-@interface UICollectionView : UIScrollView <_UIHorizontalIndexTitleBarDelegate, UIContextMenuInteractionDelegate, _UIKeyboardAutoRespondingScrollView, _UIDataSourceBackedView, UIDataSourceTranslating>
+@interface UICollectionView : UIScrollView <_UIHorizontalIndexTitleBarDelegate, _UICursorInteractionDelegate, UIContextMenuInteractionDelegate, _UIKeyboardAutoRespondingScrollView, _UIDataSourceBackedView, UIDataSourceTranslating>
 {
     UICollectionViewLayout *_layout;
     id<UICollectionViewDataSource_Private> _dataSource;
@@ -134,6 +135,10 @@
         unsigned int delegateWillEndContextMenuInteraction:1;
         unsigned int delegateStyleForContextMenu:1;
         unsigned int delegateAccessoriesForContextMenu:1;
+        unsigned int delegateCursorRegionForItemAtIndexPathSPI:1;
+        unsigned int delegateCursorStyleForModifiersAtIndexPathSPI:1;
+        unsigned int delegateCursorWillEnterItemAtIndexPathSPI:1;
+        unsigned int delegateCursorWillExitItemAtIndexPathSPI:1;
         unsigned int dataSourceNumberOfSections:1;
         unsigned int dataSourceViewForSupplementaryElement:1;
         unsigned int dataSourceCanMoveItemAtIndexPathSPI:1;
@@ -159,6 +164,8 @@
         unsigned int allowsSelectionDuringEditing:1;
         unsigned int allowsUserInitiatedMultipleSelection:1;
         unsigned int allowsMultipleSelectionDuringEditing:1;
+        unsigned int selectionFollowsFocusSPI:1;
+        unsigned int allowsCursorInteractionSPI:1;
         unsigned int displaysHorizontalIndexTitleBar:1;
         unsigned int fadeCellsForBoundsChange:1;
         unsigned int updatingLayout:1;
@@ -222,6 +229,8 @@
     NSMutableDictionary *_orthogonalSectionPrefetchingContexts;
     _UICollectionViewMultiSelectController *_multiSelectController;
     UIContextMenuInteraction *_contextMenuInteraction;
+    _UICursorInteraction *_cursorInteraction;
+    _UICursorRegion *_currentDefaultRegion;
     BOOL _prefetchingEnabled;
     BOOL _searchFullPageOnFocusUpdate;
     BOOL _isMovingFocusFromHorizontalIndexTitleBarToContent;
@@ -237,6 +246,7 @@
     struct UIEdgeInsets _defaultLayoutMargins;
 }
 
+@property (nonatomic, setter=_setAllowsCursorInteraction:) BOOL _allowsCursorInteraction;
 @property (readonly, nonatomic, getter=_isEditing) BOOL _editing;
 @property (readonly, nonatomic, getter=_allowsEffectiveMultipleSelection) BOOL allowsEffectiveMultipleSelection;
 @property (readonly, nonatomic, getter=_allowsEffectiveSelection) BOOL allowsEffectiveSelection;
@@ -334,6 +344,7 @@
 - (void)_computePrefetchCandidatesForVelocity:(struct CGVector)arg1 notifyDelegateIfNeeded:(BOOL)arg2;
 - (id)_computePrefetchCandidatesForVisibleBounds:(struct CGRect)arg1 futureVisibleBounds:(struct CGRect)arg2 prefetchVector:(struct CGVector)arg3 notifyDelegateIfNeeded:(BOOL)arg4;
 - (void)_configureContextMenuInteractionIfNeeded;
+- (void)_configureCursorInteractionIfNeeded;
 - (id)_contentFocusContainerGuide;
 - (struct CGPoint)_contentOffsetForNewFrame:(struct CGRect)arg1 oldFrame:(struct CGRect)arg2 newContentSize:(struct CGSize)arg3 andOldContentSize:(struct CGSize)arg4;
 - (struct CGPoint)_contentOffsetForScrollingToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2;
@@ -424,10 +435,12 @@
 - (id)_indexPathBeforeShadowUpdatesForIndexPath:(id)arg1;
 - (id)_indexPathForCell:(id)arg1;
 - (id)_indexPathForCell:(id)arg1 includePrefetchedCells:(BOOL)arg2;
+- (id)_indexPathForCursorRegion:(id)arg1 inInteraction:(id)arg2;
 - (id)_indexPathForEntryWithTitle:(id)arg1 atIndex:(long long)arg2;
 - (id)_indexPathForItemAtPoint:(struct CGPoint)arg1;
 - (id)_indexPathForView:(id)arg1 ofType:(unsigned long long)arg2 includePrefetchedCells:(BOOL)arg3;
 - (BOOL)_indexPathIsValid:(id)arg1;
+- (BOOL)_indexPathIsValid:(id)arg1 allowSectionItemSentinel:(BOOL)arg2;
 - (id)_indexPathOfItemNearestToPoint:(struct CGPoint)arg1 intersectingRect:(struct CGRect)arg2;
 - (id)_indexPathsAfterShadowUpdatesForIndexPaths:(id)arg1;
 - (id)_indexPathsAfterShadowUpdatesForIndexPaths:(id)arg1 allowingAppendingInserts:(BOOL)arg2;
@@ -530,6 +543,7 @@
 - (void)_selectItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(unsigned long long)arg3 notifyDelegate:(BOOL)arg4;
 - (void)_selectItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(unsigned long long)arg3 notifyDelegate:(BOOL)arg4 deselectPrevious:(BOOL)arg5;
 - (id)_selectableIndexPathForItemContainingHitView:(id)arg1;
+- (BOOL)_selectionFollowsFocus;
 - (void)_setAllowsMultipleSelectionDuringEditing:(BOOL)arg1;
 - (void)_setAllowsSelectionDuringEditing:(BOOL)arg1;
 - (void)_setAllowsVisibleCellUpdatesDuringUpdateAnimations:(BOOL)arg1;
@@ -551,6 +565,7 @@
 - (void)_setRemembersPreviouslyFocusedItem:(BOOL)arg1;
 - (void)_setReorderFeedbackGenerator:(id)arg1;
 - (void)_setReorderingCadence:(long long)arg1;
+- (void)_setSelectionFollowsFocus:(BOOL)arg1;
 - (void)_setShouldDeriveVisibleBoundsFromContainingScrollView:(BOOL)arg1;
 - (void)_setShouldPrefetchCellsWhenPerformingReloadData:(BOOL)arg1;
 - (void)_setShouldResetInitialLayoutOnDataSourceChange:(BOOL)arg1;
@@ -639,6 +654,10 @@
 - (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
+- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2;
+- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2;
 - (id)dataSourceIndexPathForPresentationIndexPath:(id)arg1;
 - (long long)dataSourceSectionIndexForPresentationSectionIndex:(long long)arg1;
 - (void)dealloc;

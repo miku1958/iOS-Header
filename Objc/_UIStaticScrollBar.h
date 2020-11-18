@@ -29,7 +29,7 @@
 @property (nonatomic) BOOL shouldInsetButtonsForIndex; // @synthesize shouldInsetButtonsForIndex=_shouldInsetButtonsForIndex;
 
 - (void).cxx_destruct;
-- (int)_axis;
+- (unsigned long long)_axis;
 - (id)_constraintsForEdge:(long long)arg1;
 - (void)_setupSubviewsIfNeeded;
 - (void)buttonTapped:(id)arg1;

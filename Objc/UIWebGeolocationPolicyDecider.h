@@ -18,7 +18,7 @@
 + (void)initialize;
 + (id)sharedPolicyDecider;
 - (void)_addChallengeCount:(long long)arg1 forToken:(id)arg2 requestingURL:(id)arg3;
-- (void)_decidePolicyForGeolocationRequestFromOrigin:(id)arg1 requestingURL:(id)arg2 window:(id)arg3 listener:(id)arg4;
+- (void)_decidePolicyForGeolocationRequestFromOrigin:(id)arg1 requestingURL:(id)arg2 view:(id)arg3 listener:(id)arg4;
 - (void)_executeNextChallenge;
 - (BOOL)_getAuthorizationStatusForToken:(id)arg1 requestingURL:(id)arg2 promptInfo:(id *)arg3;
 - (long long)_getChallengeCountFromHistoryForToken:(id)arg1 requestingURL:(id)arg2;
@@ -27,11 +27,11 @@
 - (void)_save;
 - (id)_siteFile;
 - (id)_siteFileInContainerDirectory:(id)arg1 creatingIntermediateDirectoriesIfNecessary:(BOOL)arg2;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (void)clearAllCaches;
 - (void)clearAuthorizationsAddedBetween:(id)arg1 and:(id)arg2;
 - (void)clearCache;
 - (void)dealloc;
+- (void)decidePolicyForGeolocationRequestFromOrigin:(id)arg1 requestingURL:(id)arg2 view:(id)arg3 listener:(id)arg4;
 - (void)decidePolicyForGeolocationRequestFromOrigin:(id)arg1 requestingURL:(id)arg2 window:(id)arg3 listener:(id)arg4;
 - (void)didAuthorizeGeolocationForPromptInfo:(id)arg1;
 - (void)didDenyGeolocationForPromptInfo:(id)arg1;

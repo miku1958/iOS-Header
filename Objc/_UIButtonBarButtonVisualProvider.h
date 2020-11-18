@@ -29,10 +29,19 @@
 - (void)buttonWillMoveToSuperview:(id)arg1;
 - (void)buttonWillMoveToWindow:(id)arg1;
 - (void)configureButton:(id)arg1 withAppearanceDelegate:(id)arg2 fromBarItem:(id)arg3;
+- (id)contentCursorInContainer:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)cursorWillEnter:(id)arg1;
+- (void)cursorWillExit:(id)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)matchingPointerShapeForView:(id)arg1 rect:(struct CGRect)arg2 inContainer:(id)arg3;
+- (id)pointerPreviewParameters;
+- (id)pointerShapeInContainer:(id)arg1;
+- (void)pointerWillEnter:(id)arg1;
+- (void)pointerWillExit:(id)arg1;
 - (void)resetButtonHasHighlighted;
+- (BOOL)shouldLift;
 - (BOOL)supportsBackButtons;
 - (void)updateButton:(id)arg1 appearance:(id)arg2;
 - (void)updateButton:(id)arg1 forEnabledState:(BOOL)arg2;
@@ -40,6 +49,7 @@
 - (void)updateButton:(id)arg1 forHighlightedState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 forSelectedState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 toUseButtonShapes:(BOOL)arg2;
+- (BOOL)useLocalPointerInteraction;
 
 @end
 

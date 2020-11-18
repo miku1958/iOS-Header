@@ -247,6 +247,7 @@
 - (id)_existingSystemAccessoryView:(BOOL)arg1;
 - (id)_existingSystemAccessoryViews;
 - (void)_finishTransitioningToReorderingAppearance:(BOOL)arg1;
+- (long long)_focusTouchSensitivityStyle;
 - (id)_forSpringBoardDefaultSelectedBackgroundView;
 - (void)_forSpringBoardSetDefaultSelectedBackgroundView:(id)arg1;
 - (BOOL)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;

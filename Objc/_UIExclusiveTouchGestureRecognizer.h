@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<_UIExclusiveTouchGestureRecognizerDelegate> delegate; // @dynamic delegate;
 @property (nonatomic) struct CGPoint maximumAbsoluteAccumulatedMovement; // @synthesize maximumAbsoluteAccumulatedMovement=_maximumAbsoluteAccumulatedMovement;
 
+- (BOOL)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (id)description;
 - (void)reset;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

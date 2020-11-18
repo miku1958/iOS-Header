@@ -85,6 +85,7 @@
 @property (strong, nonatomic) UIColor *barTintColor;
 @property (readonly, nonatomic, getter=isCustomizing) BOOL customizing;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, getter=_deferViewUpdateToFocusUpdate, setter=_setDeferViewUpdateToFocusUpdate:) BOOL deferViewUpdateToFocusUpdate;
 @property (weak, nonatomic) id<UITabBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=_displayStyle, setter=_setDisplayStyle:) long long displayStyle; // @synthesize displayStyle=_displayStyle;
@@ -138,6 +139,7 @@
 - (id)_dividerImageForLeftButtonState:(unsigned long long)arg1 rightButtonState:(unsigned long long)arg2;
 - (void)_doCommonTabBarInit;
 - (void)_doCommonTabBarPreInit;
+- (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
 - (long long)_effectiveBarOrientation;
 - (id)_effectiveBarTintColor;
 - (void)_effectiveBarTintColorDidChange;
@@ -197,6 +199,7 @@
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setSpringLoaded:(BOOL)arg1;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(BOOL)arg1;
+- (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

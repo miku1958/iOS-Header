@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatusBarRegion *radarRegion; // @synthesize radarRegion=_radarRegion;
 @property (weak, nonatomic) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsIndirectPointerTouchActions;
 @property (strong, nonatomic) _UIStatusBarRegion *timeRegion; // @synthesize timeRegion=_timeRegion;
 
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;

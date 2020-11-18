@@ -11,7 +11,7 @@
 
 @protocol _UIDragInteractionDriving <NSObject>
 
-@property (nonatomic, getter=isAcceleratedDragGestureEnabled) BOOL acceleratedDragGestureEnabled;
+@property (readonly, nonatomic, getter=isActive) BOOL active;
 @property (nonatomic) BOOL additionalTouchesCancelLift;
 @property (copy, nonatomic) NSArray *allowedTouchTypes;
 @property (nonatomic) BOOL allowsSimultaneousRecognitionDuringLift;

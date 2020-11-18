@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface _UIStatusBarCellularItem : _UIStatusBarItem
 {
     BOOL _showsDisabledSignalBars;
-    BOOL _marqueesServiceName;
+    BOOL _marqueeServiceName;
     id<_UIStatusBarCellularItemTypeStringProvider> _typeStringProvider;
     _UIStatusBarStringView *_serviceNameView;
     _UIStatusBarCellularSignalView *_signalView;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) _UIStatusBarImageView *callForwardingView; // @synthesize callForwardingView=_callForwardingView;
 @property (readonly, nonatomic) NSString *cellularDataEntryKey;
-@property (nonatomic) BOOL marqueesServiceName; // @synthesize marqueesServiceName=_marqueesServiceName;
+@property (nonatomic) BOOL marqueeServiceName; // @synthesize marqueeServiceName=_marqueeServiceName;
 @property (strong, nonatomic) _UIStatusBarStringView *networkTypeView; // @synthesize networkTypeView=_networkTypeView;
 @property (strong, nonatomic) _UIStatusBarStringView *rawStringView; // @synthesize rawStringView=_rawStringView;
 @property (strong, nonatomic) _UIStatusBarStringView *serviceNameView; // @synthesize serviceNameView=_serviceNameView;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatusBarImageView *warningView; // @synthesize warningView=_warningView;
 
 + (id)callForwardingDisplayIdentifier;
-+ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2 typeClass:(Class)arg3;
++ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2 typeClass:(Class)arg3 allowDualNetwork:(BOOL)arg4;
 + (id)nameDisplayIdentifier;
 + (id)rawDisplayIdentifier;
 + (id)signalStrengthDisplayIdentifier;
@@ -54,13 +54,15 @@ __attribute__((visibility("hidden")))
 - (void)_create_sosView;
 - (void)_create_warningView;
 - (id)_fillColorForUpdate:(id)arg1 entry:(id)arg2;
+- (BOOL)_showCallFowardingForEntry:(id)arg1;
 - (id)_stringForCellularType:(long long)arg1;
-- (BOOL)_updateSignalView:(id)arg1 withUpdate:(id)arg2 entry:(id)arg3;
+- (BOOL)_updateSignalView:(id)arg1 withUpdate:(id)arg2 entry:(id)arg3 forceShowingDisabledSignalBars:(BOOL)arg4;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)dependentEntryKeys;
 - (id)entryForDisplayItemWithIdentifier:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 statusBar:(id)arg2;
 - (void)prepareAnimation:(id)arg1 forDisplayItem:(id)arg2;
+- (void)setmarqueeServiceName:(BOOL)arg1;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

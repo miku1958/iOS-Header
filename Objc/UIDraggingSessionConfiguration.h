@@ -13,6 +13,7 @@
 @interface UIDraggingSessionConfiguration : NSObject <NSSecureCoding>
 {
     BOOL _supportsSystemDrag;
+    BOOL _initiatedWithPointer;
     NSArray *_touchIDs;
     UIDraggingSystemTouchRoutingPolicy *_routingPolicy;
     PBItemCollection *_itemCollection;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) NSXPCListenerEndpoint *axEndpoint; // @synthesize axEndpoint=_axEndpoint;
 @property (strong, nonatomic) NSXPCListenerEndpoint *dataProviderEndpoint; // @synthesize dataProviderEndpoint=_dataProviderEndpoint;
 @property (nonatomic) struct CGPoint initialCentroid; // @synthesize initialCentroid=_initialCentroid;
+@property (nonatomic) BOOL initiatedWithPointer; // @synthesize initiatedWithPointer=_initiatedWithPointer;
 @property (strong, nonatomic) PBItemCollection *itemCollection; // @synthesize itemCollection=_itemCollection;
 @property (strong, nonatomic) UIDraggingSystemTouchRoutingPolicy *routingPolicy; // @synthesize routingPolicy=_routingPolicy;
 @property (strong, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;

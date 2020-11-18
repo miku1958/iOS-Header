@@ -9,7 +9,7 @@
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 #import <UIKitCore/_UIGeometryChangeObserver-Protocol.h>
 
-@class NSString, UIInputViewSetPlacementFloatingShadow, UIResponder, UIView;
+@class NSString, UIInputViewSetPlacementOnScreen, UIResponder, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIInputViewSetPlacementFloating : UIInputViewSetPlacementUndocked <_UIGeometryChangeObserver, NSSecureCoding>
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     UIView *_responderToFollow;
     struct CGRect _responderRect;
     struct CGSize _lastSize;
-    UIInputViewSetPlacementFloatingShadow *_cachedSecondaryPlacement;
+    UIInputViewSetPlacementOnScreen *_cachedSecondaryPlacement;
 }
 
 @property (readonly, copy) NSString *debugDescription;

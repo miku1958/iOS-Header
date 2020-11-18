@@ -6,10 +6,12 @@
 
 #import <UIKitCore/_UIStatusBarVisualProvider_iOS.h>
 
-@class NSDictionary, NSLayoutConstraint, _UIStatusBarDisplayItemPlacement;
+#import <UIKitCore/_UIStatusBarRegionCursorInsetProvider-Protocol.h>
+
+@class NSDictionary, NSLayoutConstraint, NSString, _UIStatusBar, _UIStatusBarDisplayItemPlacement;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarVisualProvider_Pad : _UIStatusBarVisualProvider_iOS
+@interface _UIStatusBarVisualProvider_Pad : _UIStatusBarVisualProvider_iOS <_UIStatusBarRegionCursorInsetProvider>
 {
     NSDictionary *_orderedDisplayItemPlacements;
     NSLayoutConstraint *_trailingRegionLeadingAnchorConstraint;
@@ -18,9 +20,16 @@ __attribute__((visibility("hidden")))
     _UIStatusBarDisplayItemPlacement *_timePlacement;
 }
 
+@property (readonly, nonatomic) BOOL canFixupDisplayItemAttributes;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *datePlacement; // @synthesize datePlacement=_datePlacement;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSLayoutConstraint *leadingRegionTrailingAnchorConstraint; // @synthesize leadingRegionTrailingAnchorConstraint=_leadingRegionTrailingAnchorConstraint;
 @property (strong, nonatomic) NSDictionary *orderedDisplayItemPlacements; // @synthesize orderedDisplayItemPlacements=_orderedDisplayItemPlacements;
+@property (weak, nonatomic) _UIStatusBar *statusBar;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsIndirectPointerTouchActions;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *timePlacement; // @synthesize timePlacement=_timePlacement;
 @property (strong, nonatomic) NSLayoutConstraint *trailingRegionLeadingAnchorConstraint; // @synthesize trailingRegionLeadingAnchorConstraint=_trailingRegionLeadingAnchorConstraint;
 
@@ -33,6 +42,9 @@ __attribute__((visibility("hidden")))
 + (id)pillFont;
 + (struct CGSize)pillSize;
 + (id)pillSmallFont;
++ (double)regionCursorCornerRadius;
++ (struct UIEdgeInsets)regionCursorInsets;
++ (BOOL)regionCursorIsPill;
 + (double)regionSpacing;
 + (struct CGSize)smallPillSize;
 + (Class)visualProviderSubclassForScreen:(id)arg1;

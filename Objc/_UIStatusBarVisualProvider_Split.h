@@ -12,6 +12,7 @@
 
 @interface _UIStatusBarVisualProvider_Split : _UIStatusBarVisualProvider_Phone <_UIStatusBarCellularItemTypeStringProvider>
 {
+    BOOL _delayedSystemUpdateData;
     NSDictionary *_orderedDisplayItemPlacements;
     _UIStatusBarDisplayItemPlacement *_serviceNamePlacement;
     _UIStatusBarDisplayItemPlacement *_dualServiceNamePlacement;
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) NSTimer *batteryExpansionTimer; // @synthesize batteryExpansionTimer=_batteryExpansionTimer;
 @property (strong, nonatomic) UILayoutGuide *cutoutLayoutGuide; // @synthesize cutoutLayoutGuide=_cutoutLayoutGuide;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) BOOL delayedSystemUpdateData; // @synthesize delayedSystemUpdateData=_delayedSystemUpdateData;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *dualServiceNamePlacement; // @synthesize dualServiceNamePlacement=_dualServiceNamePlacement;
 @property (strong, nonatomic) NSLayoutConstraint *expandedLeadingLowerTopConstraint; // @synthesize expandedLeadingLowerTopConstraint=_expandedLeadingLowerTopConstraint;
@@ -83,13 +85,16 @@
 - (id)_additionAnimationForBatteryCharging;
 - (void)_collapseBattery;
 - (struct CGAffineTransform)_collapseChargingBoltTransformForDisplayItem:(id)arg1;
+- (void)_delaySystemUpdateData;
 - (void)_disableSystemUpdates;
 - (struct CGAffineTransform)_expandedChargingBoltTransformForDisplayItem:(id)arg1;
 - (id)_removalAnimationForBatteryCharging;
 - (void)_resetBattery;
+- (void)_resumeSystemUpdateData;
 - (BOOL)_shouldShowSystemUpdateForDisplayItemWithIdentifier:(id)arg1;
 - (void)_stopBatteryCollapseTimer;
 - (id)_systemUpdateAnimationForDisplayItemWithIdentifier:(id)arg1;
+- (id)_systemUpdateDelayedDataIdentifiers;
 - (void)_updateDataForBatteryCharging:(id)arg1;
 - (void)_updateDataForSystemUpdates:(id)arg1;
 - (void)_updateExpandedTrailingRegion;
@@ -105,6 +110,7 @@
 - (BOOL)canFixupDisplayItemAttributes;
 - (id)condensedFontForCellularType:(long long)arg1 defaultFont:(id)arg2 baselineOffset:(double *)arg3;
 - (void)dataUpdated:(id)arg1;
+- (void)dealloc;
 - (id)defaultAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (id)displayItemIdentifiersForPartWithIdentifier:(id)arg1;
 - (void)itemCreated:(id)arg1;

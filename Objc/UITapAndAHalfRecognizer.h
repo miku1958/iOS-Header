@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) double allowableMovement; // @synthesize allowableMovement=_allowableMovement;
+@property (readonly, nonatomic) struct CGPoint locationOfFirstTap;
 @property (nonatomic) double minimumFinalPressDuration; // @synthesize minimumFinalPressDuration=_minimumFinalPressDuration;
 @property (nonatomic) int numberOfFullTaps; // @synthesize numberOfFullTaps=_numberOfFullTaps;
 @property (strong, nonatomic) UITouch *touch; // @synthesize touch=_touch;
@@ -33,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)recognized:(id)arg1;
-- (BOOL)shouldBeRequiredToFailByGestureRecognizer:(id)arg1;
 - (void)startRecognitionTimer:(double)arg1;
 - (void)startTapTimer:(double)arg1;
 - (void)tooSlow:(id)arg1;

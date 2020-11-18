@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
 
 @property UIResponder<UITextInput> *textView; // @synthesize textView=_textView;
 
+- (BOOL)_allowsForShortDelay;
+- (BOOL)_tracksPointerTouch;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)invalidate;
 - (BOOL)isCloseToCaret;

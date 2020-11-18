@@ -19,9 +19,9 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)shouldShowEditingIntroduction;
 - (void).cxx_destruct;
+- (id)animatedTutorialViewNamed:(id)arg1 ofType:(id)arg2 needsFrame:(BOOL)arg3;
 - (id)buttonTitle;
 - (void)extraButtonTapAction;
-- (id)framedViewWithEmbeddedImageNamed:(id)arg1 ofType:(id)arg2;
 - (id)mediaContents;
 - (double)pagingInterval;
 - (BOOL)presentsFullScreen;
