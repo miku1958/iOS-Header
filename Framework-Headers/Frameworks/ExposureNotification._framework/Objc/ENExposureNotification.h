@@ -8,22 +8,25 @@
 
 #import <ExposureNotification/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString, NSUUID;
+@class ENRegion, NSDate, NSString, NSUUID;
 
 @interface ENExposureNotification : NSObject <NSSecureCoding>
 {
     NSDate *_date;
     NSUUID *_identifier;
     NSString *_localizedBodyText;
-    NSString *_localizedTitleText;
-    NSString *_regionIdentifier;
+    NSString *_localizedDetailBodyText;
+    NSString *_localizedSubjectText;
+    ENRegion *_region;
 }
 
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *localizedBodyText; // @synthesize localizedBodyText=_localizedBodyText;
-@property (copy, nonatomic) NSString *localizedTitleText; // @synthesize localizedTitleText=_localizedTitleText;
-@property (copy, nonatomic) NSString *regionIdentifier; // @synthesize regionIdentifier=_regionIdentifier;
+@property (copy, nonatomic) NSString *localizedDetailBodyText; // @synthesize localizedDetailBodyText=_localizedDetailBodyText;
+@property (copy, nonatomic) NSString *localizedSubjectText; // @synthesize localizedSubjectText=_localizedSubjectText;
+@property (readonly, copy, nonatomic) NSString *localizedTitleText;
+@property (copy, nonatomic) ENRegion *region; // @synthesize region=_region;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

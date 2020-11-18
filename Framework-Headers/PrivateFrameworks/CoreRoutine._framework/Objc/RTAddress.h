@@ -28,6 +28,8 @@
     NSString *_inlandWater;
     NSString *_ocean;
     NSArray *_areasOfInterest;
+    NSString *_iso3166CountryCode;
+    NSString *_iso3166SubdivisionCode;
     NSDate *_creationDate;
     NSDate *_expirationDate;
 }
@@ -42,6 +44,8 @@
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSString *inlandWater; // @synthesize inlandWater=_inlandWater;
 @property (readonly, nonatomic) BOOL isIsland; // @synthesize isIsland=_isIsland;
+@property (readonly, copy, nonatomic) NSString *iso3166CountryCode; // @synthesize iso3166CountryCode=_iso3166CountryCode;
+@property (readonly, copy, nonatomic) NSString *iso3166SubdivisionCode; // @synthesize iso3166SubdivisionCode=_iso3166SubdivisionCode;
 @property (readonly, copy, nonatomic) NSString *locality; // @synthesize locality=_locality;
 @property (readonly, nonatomic) NSString *mergedThoroughfare;
 @property (readonly, copy, nonatomic) NSString *ocean; // @synthesize ocean=_ocean;
@@ -59,7 +63,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 subThoroughfare:(id)arg2 thoroughfare:(id)arg3 subLocality:(id)arg4 locality:(id)arg5 subAdministrativeArea:(id)arg6 administrativeArea:(id)arg7 administrativeAreaCode:(id)arg8 postalCode:(id)arg9 country:(id)arg10 countryCode:(id)arg11 inlandWater:(id)arg12 ocean:(id)arg13 areasOfInterest:(id)arg14 isIsland:(BOOL)arg15 creationDate:(id)arg16 expirationDate:(id)arg17;
+- (id)initWithIdentifier:(id)arg1 subThoroughfare:(id)arg2 thoroughfare:(id)arg3 subLocality:(id)arg4 locality:(id)arg5 subAdministrativeArea:(id)arg6 administrativeArea:(id)arg7 administrativeAreaCode:(id)arg8 postalCode:(id)arg9 country:(id)arg10 countryCode:(id)arg11 inlandWater:(id)arg12 ocean:(id)arg13 areasOfInterest:(id)arg14 isIsland:(BOOL)arg15 creationDate:(id)arg16 expirationDate:(id)arg17 iso3166CountryCode:(id)arg18 iso3166SubdivisionCode:(id)arg19;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToAddress:(id)arg1;
 

@@ -7,18 +7,19 @@
 #import <objc/NSObject.h>
 
 #import <ExposureNotification/CUXPCCodable-Protocol.h>
+#import <ExposureNotification/NSCopying-Protocol.h>
 
 @class NSArray, NSDictionary;
 
-@interface ENExposureConfiguration : NSObject <CUXPCCodable>
+@interface ENExposureConfiguration : NSObject <CUXPCCodable, NSCopying>
 {
     unsigned char _attenuationLevelValuesMap[8];
     unsigned char _daysSinceLastExposureLevelValuesMap[8];
     unsigned char _durationLevelValuesMap[8];
     unsigned char _transmissionRiskLevelValuesMap[8];
     unsigned char _minimumRiskScore;
-    unsigned int _flags;
     unsigned int _reportTypeNoneMap;
+    unsigned int _flags;
     double _immediateDurationWeight;
     double _nearDurationWeight;
     double _mediumDurationWeight;
@@ -73,16 +74,19 @@
 
 - (void).cxx_destruct;
 - (double)attenuationLevelValueWithAttenuation:(unsigned char)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (double)daysSinceLastExposureLevelValueWithDays:(long long)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (double)durationLevelValueWithDuration:(double)arg1;
 - (void)encodeWithXPCObject:(id)arg1;
-- (double)infectiousnessWeightWithDaysSinceOnsetOfSymptoms:(long long)arg1;
+- (double)infectiousnessWeightWithDaysSinceOnsetOfSymptoms:(long long)arg1 skip:(BOOL *)arg2;
+- (unsigned int)infectiousnessWithDaysSinceOnsetOfSymptoms:(long long)arg1;
 - (id)init;
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;
 - (id)initWithXPCObject:(id)arg1 error:(id *)arg2;
-- (double)reportTypeWeightWithReportType:(unsigned int)arg1;
+- (unsigned int)mappedDiagnosisReportType:(unsigned int)arg1;
+- (double)reportTypeWeightWithReportType:(unsigned int)arg1 skip:(BOOL *)arg2;
 - (double)transmissionLevelValueWithTransmissionRiskLevel:(unsigned char)arg1;
 - (double)weightedDurationWithExposureInfo:(id)arg1;
 

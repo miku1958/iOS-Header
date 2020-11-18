@@ -9,23 +9,31 @@
 #import <ExposureNotification/NSCopying-Protocol.h>
 #import <ExposureNotification/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSUUID;
+@class ENRegion, NSDictionary, NSString, NSUUID;
 
 @interface ENRemotePresentationRequest : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _testMode;
     long long _requestType;
     NSUUID *_receiptId;
     NSDictionary *_decisionInfo;
+    ENRegion *_agencyRegion;
+    NSString *_appBundleIdentifier;
 }
 
+@property (copy, nonatomic) ENRegion *agencyRegion; // @synthesize agencyRegion=_agencyRegion;
+@property (copy, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property (copy, nonatomic) NSDictionary *decisionInfo; // @synthesize decisionInfo=_decisionInfo;
 @property (copy, nonatomic) NSUUID *receiptId; // @synthesize receiptId=_receiptId;
+@property (readonly, copy, nonatomic) ENRegion *region;
 @property (nonatomic) long long requestType; // @synthesize requestType=_requestType;
+@property (nonatomic) BOOL testMode; // @synthesize testMode=_testMode;
 
-+ (id)presentationRequestWithType:(long long)arg1 receiptId:(id)arg2;
++ (id)presentationRequestWithType:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)keyReleaseRequestCompletedWithDecision:(BOOL)arg1;

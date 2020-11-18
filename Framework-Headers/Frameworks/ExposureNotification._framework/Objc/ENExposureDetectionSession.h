@@ -40,13 +40,13 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithXPCObject:(id)arg1;
-- (double)estimateRiskWithExposureInfo:(id)arg1 referenceTime:(double)arg2 transmissionRiskLevel:(char *)arg3;
+- (double)estimateRiskWithExposureInfo:(id)arg1 referenceTime:(double)arg2 transmissionRiskLevel:(char *)arg3 skip:(BOOL *)arg4;
 - (void)finishedDiagnosisKeysWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getExposureInfoWithMaximumCount:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithXPCObject:(id)arg1 error:(id *)arg2;
 - (void)invalidate;
-- (double)scoreWithExposureInfo:(id)arg1;
+- (double)scoreWithExposureInfo:(id)arg1 skip:(BOOL *)arg2;
 - (void)updateDaySummary:(id)arg1 exposureInfo:(id)arg2 score:(double)arg3;
 
 @end

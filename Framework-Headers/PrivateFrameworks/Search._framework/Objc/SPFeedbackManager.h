@@ -8,20 +8,26 @@
 
 #import <Search/SFFeedbackListener-Protocol.h>
 
-@class NSString;
+@class NSString, NSUserDefaults;
 @protocol OS_dispatch_queue, SFFeedbackListener;
 
 @interface SPFeedbackManager : NSObject <SFFeedbackListener>
 {
+    BOOL _needsToDisplayFirstTimeView;
+    BOOL _isParsecEnabled;
     NSObject<SFFeedbackListener> *_feedbackListener;
     NSObject<OS_dispatch_queue> *_feedbackQueue;
+    NSUserDefaults *_defaultsCenter;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) NSUserDefaults *defaultsCenter; // @synthesize defaultsCenter=_defaultsCenter;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<SFFeedbackListener> *feedbackListener; // @synthesize feedbackListener=_feedbackListener;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *feedbackQueue; // @synthesize feedbackQueue=_feedbackQueue;
 @property (readonly) unsigned long long hash;
+@property BOOL isParsecEnabled; // @synthesize isParsecEnabled=_isParsecEnabled;
+@property BOOL needsToDisplayFirstTimeView; // @synthesize needsToDisplayFirstTimeView=_needsToDisplayFirstTimeView;
 @property (readonly) Class superclass;
 
 + (void)bumpPriorityOnQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -46,6 +52,7 @@
 - (void)didReportUserResponseFeedback:(id)arg1;
 - (void)didStartSearch:(id)arg1;
 - (id)init;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)reportFeedback:(id)arg1 queryId:(long long)arg2;
 - (void)resultsDidBecomeVisible:(id)arg1;
 - (void)searchViewDidAppear:(id)arg1;
@@ -53,6 +60,7 @@
 - (void)sectionHeaderDidBecomeVisible:(id)arg1;
 - (void)sendCustomFeedback:(id)arg1;
 - (void)suggestionsDidBecomeVisible:(id)arg1;
+- (void)updateParsecEnabled;
 
 @end
 

@@ -13,11 +13,11 @@
 @interface ENTemporaryExposureKey : NSObject <CUXPCCodable>
 {
     unsigned char _transmissionRiskLevel;
-    unsigned int _diagnosisReportType;
     unsigned int _rollingPeriod;
     unsigned int _rollingStartNumber;
-    long long _daysSinceOnsetOfSymptoms;
+    unsigned int _diagnosisReportType;
     NSData *_keyData;
+    long long _daysSinceOnsetOfSymptoms;
 }
 
 @property (nonatomic) long long daysSinceOnsetOfSymptoms; // @synthesize daysSinceOnsetOfSymptoms=_daysSinceOnsetOfSymptoms;
@@ -26,10 +26,14 @@
 @property (nonatomic) unsigned int rollingPeriod; // @synthesize rollingPeriod=_rollingPeriod;
 @property (nonatomic) unsigned int rollingStartNumber; // @synthesize rollingStartNumber=_rollingStartNumber;
 @property (nonatomic) unsigned char transmissionRiskLevel; // @synthesize transmissionRiskLevel=_transmissionRiskLevel;
+@property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 - (void).cxx_destruct;
+- (void)deriveRollingProximityIdentifiersWithBuffer:(CDStruct_60067b7e *)arg1 count:(unsigned long long)arg2;
 - (id)description;
 - (void)encodeWithXPCObject:(id)arg1;
+- (void)getAEMBytes:(void *)arg1 input:(const void *)arg2 length:(unsigned long long)arg3 RPI:(const CDStruct_60067b7e *)arg4;
+- (id)init;
 - (id)initWithXPCObject:(id)arg1 error:(id *)arg2;
 
 @end

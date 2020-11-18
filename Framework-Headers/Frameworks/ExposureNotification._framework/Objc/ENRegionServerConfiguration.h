@@ -9,36 +9,74 @@
 #import <ExposureNotification/NSCopying-Protocol.h>
 #import <ExposureNotification/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class ENRegion, NSString;
 
 @interface ENRegionServerConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _enEnabled;
-    unsigned long long _version;
-    NSString *_state;
-    NSString *_countryCode;
+    BOOL _hasSubdivisions;
+    BOOL _dynamicAlgorithmEnabled;
+    BOOL _dynamicThrottleDownRSSI;
+    BOOL _enableV1;
+    unsigned int _dailyDetectExposureLimit;
+    unsigned int _detectExposureNKDLimit;
+    unsigned int _numberOfAdvSamplesForRPIThreshold;
+    unsigned int _dynamicThrottleDownAdvDensity;
+    unsigned int _dynamicThrottleUpAdvDensity;
+    unsigned long long _enVersion;
+    ENRegion *_region;
     NSString *_appBundleID;
     NSString *_publicKey;
     NSString *_publicKeyVersion;
-    NSString *_publicHealthAuthorityName;
-    double _applicationBackgroundRuntimeIntervalInHours;
-    double _rpiAdvertisementToleranceInSeconds;
-    long long _rateLimitMaxAPICount;
+    double _applicationBackgroundRuntimeInterval;
+    double _rpiAdvertisementTolerance;
+    double _rpiDuplicateAdvertisementTolerance;
     double _callbackInterval;
+    double _forceAPWakeIntervalThreshold;
+    double _dynamicThrottleDownDuration;
+    double _dynamicThrottleUpDuration;
+    double _osTriggeredAppRunInterval;
+    double _regionTransitionGracePeriod;
+    double _regionDisabledTransitionGracePeriod;
+    NSString *_phaTelemetryPublicCertificateChain;
+    NSString *_phaTelemetryAppleCertificateChain;
+    NSString *_partnerTelemetryPublicCertificateChain;
+    NSString *_partnerTelemetryAppleCertificateChain;
+    NSString *_appleTelemetryEndpoint;
+    NSString *_appleTelemetryEndpointCredentials;
 }
 
-@property (copy, nonatomic) NSString *appBundleID; // @synthesize appBundleID=_appBundleID;
-@property (nonatomic) double applicationBackgroundRuntimeIntervalInHours; // @synthesize applicationBackgroundRuntimeIntervalInHours=_applicationBackgroundRuntimeIntervalInHours;
-@property (nonatomic) double callbackInterval; // @synthesize callbackInterval=_callbackInterval;
-@property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
-@property (nonatomic) BOOL enEnabled; // @synthesize enEnabled=_enEnabled;
-@property (copy, nonatomic) NSString *publicHealthAuthorityName; // @synthesize publicHealthAuthorityName=_publicHealthAuthorityName;
-@property (copy, nonatomic) NSString *publicKey; // @synthesize publicKey=_publicKey;
-@property (copy, nonatomic) NSString *publicKeyVersion; // @synthesize publicKeyVersion=_publicKeyVersion;
-@property (nonatomic) long long rateLimitMaxAPICount; // @synthesize rateLimitMaxAPICount=_rateLimitMaxAPICount;
-@property (nonatomic) double rpiAdvertisementToleranceInSeconds; // @synthesize rpiAdvertisementToleranceInSeconds=_rpiAdvertisementToleranceInSeconds;
-@property (copy, nonatomic) NSString *state; // @synthesize state=_state;
-@property (nonatomic) unsigned long long version; // @synthesize version=_version;
+@property (readonly, copy, nonatomic) NSString *appBundleID; // @synthesize appBundleID=_appBundleID;
+@property (copy, nonatomic) NSString *appleTelemetryEndpoint; // @synthesize appleTelemetryEndpoint=_appleTelemetryEndpoint;
+@property (copy, nonatomic) NSString *appleTelemetryEndpointCredentials; // @synthesize appleTelemetryEndpointCredentials=_appleTelemetryEndpointCredentials;
+@property (readonly, nonatomic) double applicationBackgroundRuntimeInterval; // @synthesize applicationBackgroundRuntimeInterval=_applicationBackgroundRuntimeInterval;
+@property (readonly, nonatomic) double callbackInterval; // @synthesize callbackInterval=_callbackInterval;
+@property (readonly, nonatomic) unsigned int dailyDetectExposureLimit; // @synthesize dailyDetectExposureLimit=_dailyDetectExposureLimit;
+@property (readonly, nonatomic) unsigned int detectExposureNKDLimit; // @synthesize detectExposureNKDLimit=_detectExposureNKDLimit;
+@property (readonly, nonatomic) BOOL dynamicAlgorithmEnabled; // @synthesize dynamicAlgorithmEnabled=_dynamicAlgorithmEnabled;
+@property (readonly, nonatomic) unsigned int dynamicThrottleDownAdvDensity; // @synthesize dynamicThrottleDownAdvDensity=_dynamicThrottleDownAdvDensity;
+@property (readonly, nonatomic) double dynamicThrottleDownDuration; // @synthesize dynamicThrottleDownDuration=_dynamicThrottleDownDuration;
+@property (readonly, nonatomic) BOOL dynamicThrottleDownRSSI; // @synthesize dynamicThrottleDownRSSI=_dynamicThrottleDownRSSI;
+@property (readonly, nonatomic) unsigned int dynamicThrottleUpAdvDensity; // @synthesize dynamicThrottleUpAdvDensity=_dynamicThrottleUpAdvDensity;
+@property (readonly, nonatomic) double dynamicThrottleUpDuration; // @synthesize dynamicThrottleUpDuration=_dynamicThrottleUpDuration;
+@property (readonly, nonatomic) BOOL enEnabled; // @synthesize enEnabled=_enEnabled;
+@property (readonly, nonatomic) unsigned long long enVersion; // @synthesize enVersion=_enVersion;
+@property (readonly, nonatomic) BOOL enableV1; // @synthesize enableV1=_enableV1;
+@property (readonly, nonatomic) double forceAPWakeIntervalThreshold; // @synthesize forceAPWakeIntervalThreshold=_forceAPWakeIntervalThreshold;
+@property (readonly, nonatomic) BOOL hasSubdivisions; // @synthesize hasSubdivisions=_hasSubdivisions;
+@property (readonly, nonatomic) unsigned int numberOfAdvSamplesForRPIThreshold; // @synthesize numberOfAdvSamplesForRPIThreshold=_numberOfAdvSamplesForRPIThreshold;
+@property (readonly, nonatomic) double osTriggeredAppRunInterval; // @synthesize osTriggeredAppRunInterval=_osTriggeredAppRunInterval;
+@property (copy, nonatomic) NSString *partnerTelemetryAppleCertificateChain; // @synthesize partnerTelemetryAppleCertificateChain=_partnerTelemetryAppleCertificateChain;
+@property (copy, nonatomic) NSString *partnerTelemetryPublicCertificateChain; // @synthesize partnerTelemetryPublicCertificateChain=_partnerTelemetryPublicCertificateChain;
+@property (copy, nonatomic) NSString *phaTelemetryAppleCertificateChain; // @synthesize phaTelemetryAppleCertificateChain=_phaTelemetryAppleCertificateChain;
+@property (copy, nonatomic) NSString *phaTelemetryPublicCertificateChain; // @synthesize phaTelemetryPublicCertificateChain=_phaTelemetryPublicCertificateChain;
+@property (readonly, copy, nonatomic) NSString *publicKey; // @synthesize publicKey=_publicKey;
+@property (readonly, copy, nonatomic) NSString *publicKeyVersion; // @synthesize publicKeyVersion=_publicKeyVersion;
+@property (readonly, copy, nonatomic) ENRegion *region; // @synthesize region=_region;
+@property (readonly, nonatomic) double regionDisabledTransitionGracePeriod; // @synthesize regionDisabledTransitionGracePeriod=_regionDisabledTransitionGracePeriod;
+@property (readonly, nonatomic) double regionTransitionGracePeriod; // @synthesize regionTransitionGracePeriod=_regionTransitionGracePeriod;
+@property (readonly, nonatomic) double rpiAdvertisementTolerance; // @synthesize rpiAdvertisementTolerance=_rpiAdvertisementTolerance;
+@property (readonly, nonatomic) double rpiDuplicateAdvertisementTolerance; // @synthesize rpiDuplicateAdvertisementTolerance=_rpiDuplicateAdvertisementTolerance;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -47,7 +85,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithServerResponseDictionary:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

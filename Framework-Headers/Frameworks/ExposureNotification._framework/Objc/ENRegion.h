@@ -14,18 +14,14 @@
 @interface ENRegion : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_countryCode;
-    NSString *_state;
-    NSString *_mobileCountryCode;
-    double _lastRegionUpdateTimeInterval;
+    NSString *_subdivisionCode;
 }
 
 @property (readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
-@property (nonatomic) double lastRegionUpdateTimeInterval; // @synthesize lastRegionUpdateTimeInterval=_lastRegionUpdateTimeInterval;
-@property (copy, nonatomic) NSString *mobileCountryCode; // @synthesize mobileCountryCode=_mobileCountryCode;
 @property (readonly, copy, nonatomic) NSString *regionCode;
-@property (readonly, copy, nonatomic) NSString *regionCodeWithMobileCountryCode;
-@property (copy, nonatomic) NSString *state; // @synthesize state=_state;
+@property (readonly, copy, nonatomic) NSString *subdivisionCode; // @synthesize subdivisionCode=_subdivisionCode;
 
++ (id)regionFromServerResponseDictionary:(id)arg1;
 + (id)regionWithCode:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -34,8 +30,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithCountryCode:(id)arg1;
+- (id)initWithCountryCode:(id)arg1 subdivisionCode:(id)arg2;
+- (BOOL)isCountryCodeEqualToRegion:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)setCountryCode:(id)arg1;
+- (BOOL)isSubdivisionCodeEqualToRegion:(id)arg1;
+- (BOOL)validSubdivisionCode;
 
 @end
 

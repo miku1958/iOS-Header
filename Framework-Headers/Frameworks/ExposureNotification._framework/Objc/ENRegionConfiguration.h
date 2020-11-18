@@ -9,26 +9,32 @@
 #import <ExposureNotification/NSCopying-Protocol.h>
 #import <ExposureNotification/NSSecureCoding-Protocol.h>
 
-@class ENRegion, ENRegionServerConfiguration;
+@class ENRegion, ENRegionUserConsent;
 
 @interface ENRegionConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
-    BOOL _travelerModeEnabled;
+    BOOL _everStartedOnboarding;
     unsigned long long _enVersion;
     ENRegion *_region;
+    ENRegionUserConsent *_userConsent;
+    long long _travelerModeEnabled;
+    double _lastConfigurationUpdateTimeInterval;
+    long long _differentialPrivacyConsent;
+    double _differentialPrivacyConsentTimestamp;
     long long _consent;
     double _consentTimestamp;
-    ENRegionServerConfiguration *_serverConfiguration;
-    double _lastConfigurationUpdateTimeInterval;
 }
 
-@property (nonatomic) long long consent; // @synthesize consent=_consent;
-@property (nonatomic) double consentTimestamp; // @synthesize consentTimestamp=_consentTimestamp;
+@property (readonly, nonatomic) long long consent; // @synthesize consent=_consent;
+@property (readonly, nonatomic) double consentTimestamp; // @synthesize consentTimestamp=_consentTimestamp;
+@property (readonly, nonatomic) long long differentialPrivacyConsent; // @synthesize differentialPrivacyConsent=_differentialPrivacyConsent;
+@property (readonly, nonatomic) double differentialPrivacyConsentTimestamp; // @synthesize differentialPrivacyConsentTimestamp=_differentialPrivacyConsentTimestamp;
 @property (nonatomic) unsigned long long enVersion; // @synthesize enVersion=_enVersion;
+@property (nonatomic) BOOL everStartedOnboarding; // @synthesize everStartedOnboarding=_everStartedOnboarding;
 @property (nonatomic) double lastConfigurationUpdateTimeInterval; // @synthesize lastConfigurationUpdateTimeInterval=_lastConfigurationUpdateTimeInterval;
 @property (strong, nonatomic) ENRegion *region; // @synthesize region=_region;
-@property (strong, nonatomic) ENRegionServerConfiguration *serverConfiguration; // @synthesize serverConfiguration=_serverConfiguration;
-@property (nonatomic) BOOL travelerModeEnabled; // @synthesize travelerModeEnabled=_travelerModeEnabled;
+@property (nonatomic) long long travelerModeEnabled; // @synthesize travelerModeEnabled=_travelerModeEnabled;
+@property (strong, nonatomic) ENRegionUserConsent *userConsent; // @synthesize userConsent=_userConsent;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -36,6 +42,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithVersion:(unsigned long long)arg1 region:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)updatedWithConfiguration:(id)arg1;
 

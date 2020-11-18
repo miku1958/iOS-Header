@@ -130,7 +130,6 @@
 - (void)_setupAppleAccountSpecifier:(id)arg1 title:(id)arg2;
 - (void)_setupAppleAccountSpecifierForLogin:(id)arg1;
 - (void)_setupCachedAppleAccountSpecifier:(id)arg1;
-- (BOOL)_shouldPresentModernThirdPartyAppListForBundleIdentifier:(id)arg1;
 - (void)_showControllerFromSpecifier:(id)arg1;
 - (void)_showDetailTargetDidChange:(id)arg1;
 - (BOOL)_showSOS;

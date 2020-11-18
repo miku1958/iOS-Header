@@ -9,12 +9,11 @@
 #import "UIAccessibilityContainerDataTable-Protocol.h"
 #import "UIAccessibilityContainerDataTableCell-Protocol.h"
 
-@class NSMutableArray, NSString, PDFPage;
+@class NSMutableArray, NSString;
 
 @interface UICGPDFNodeAccessibilityElement : AXPDFNodeElement <UIAccessibilityContainerDataTable, UIAccessibilityContainerDataTableCell>
 {
     struct CGPDFTaggedNode *_nodeRef;
-    PDFPage *_page;
     NSMutableArray *_cachedAXElements;
     NSMutableArray *_cachedAXPDFLinks;
     NSMutableArray *_cachedAXPDFOtherLinks;
@@ -41,13 +40,11 @@
 @property (nonatomic) long long listItemNumber; // @synthesize listItemNumber=_listItemNumber;
 @property (strong, nonatomic) NSString *listStyle; // @synthesize listStyle=_listStyle;
 @property (nonatomic) struct CGPDFTaggedNode *nodeRef; // @synthesize nodeRef=_nodeRef;
-@property (weak, nonatomic) PDFPage *page; // @synthesize page=_page;
 @property (readonly) Class superclass;
 
 + (void)_addPDFAnnotation:(id)arg1 toPDFAccessibilityNode:(id)arg2;
 + (BOOL)_containsOnlyTextChildren:(struct CGPDFTaggedNode *)arg1;
 + (void)_findClosestLineNodeForBounds:(struct CGRect)arg1 withRootNode:(id)arg2 withDistanceBetterThan:(double *)arg3 parentFound:(id *)arg4 siblingFound:(id *)arg5;
-+ (void)_findClosestWordNodeForBounds:(struct CGRect)arg1 withLineNode:(id)arg2 withDistanceBetterThan:(double *)arg3 siblingNodeFound:(id *)arg4;
 + (BOOL)_isValidTextFieldElement:(id)arg1;
 + (void)buildPDFAnnotationNodes:(id)arg1;
 - (void).cxx_destruct;
@@ -57,16 +54,17 @@
 - (void)_accessibilitySetPDFCustomLinksRotor:(id)arg1;
 - (id)_accessibilityStringForListType:(int)arg1;
 - (id)_attributedAccessibilityLabelForNode:(struct CGPDFTaggedNode *)arg1;
+- (void)_axHandleUpdateVisibility:(id)arg1;
 - (id)_findCaptionChildrenNodesOfFigureNode:(id)arg1;
 - (id)_findFigureChildrenNodesOfTableCellNode:(id)arg1;
 - (id)_findLabelChildNodeOfListItem:(id)arg1;
 - (id)_findLinkChildrenNodesOfNode:(id)arg1;
-- (id)_findLinkChildrenNodesThatHaveLinksWithoutLinkNode:(id)arg1;
 - (id)_findTOCIChildNodeOfNode:(id)arg1;
 - (id)_findTableCellNodesOfTableNode:(id)arg1 withHeadersOnly:(BOOL)arg2;
 - (unsigned long long)_findTraitsForTableCellElements;
 - (BOOL)_isContainerOfOnlyOneLinkNodeChild;
 - (BOOL)_isSubFigure;
+- (id)_paragraphLinksInNode:(id)arg1;
 - (BOOL)_pdfElementHasLinkContainer;
 - (unsigned long long)accessibilityColumnCount;
 - (struct _NSRange)accessibilityColumnRange;

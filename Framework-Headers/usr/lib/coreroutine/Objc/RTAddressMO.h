@@ -6,7 +6,7 @@
 
 #import <coreroutine/RTCloudManagedObject.h>
 
-@class NSArray, NSNumber, NSString, RTMapItemMO;
+@class NSArray, NSData, NSDate, NSNumber, NSString, NSUUID, RTDeviceMO, RTMapItemMO;
 
 @interface RTAddressMO : RTCloudManagedObject
 {
@@ -15,10 +15,19 @@
 @property (copy, nonatomic) NSString *administrativeArea; // @dynamic administrativeArea;
 @property (copy, nonatomic) NSString *administrativeAreaCode; // @dynamic administrativeAreaCode;
 @property (strong, nonatomic) NSArray *areasOfInterest; // @dynamic areasOfInterest;
+@property (copy, nonatomic) NSString *ckRecordID; // @dynamic ckRecordID;
+@property (strong, nonatomic) NSData *ckRecordSystemFields; // @dynamic ckRecordSystemFields;
 @property (copy, nonatomic) NSString *country; // @dynamic country;
 @property (copy, nonatomic) NSString *countryCode; // @dynamic countryCode;
+@property (copy, nonatomic) NSDate *creationDate; // @dynamic creationDate;
+@property (strong, nonatomic) RTDeviceMO *device; // @dynamic device;
+@property (copy, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
+@property (nonatomic) long long flags; // @dynamic flags;
+@property (strong, nonatomic) NSUUID *identifier; // @dynamic identifier;
 @property (copy, nonatomic) NSString *inlandWater; // @dynamic inlandWater;
 @property (copy, nonatomic) NSNumber *island; // @dynamic island;
+@property (copy, nonatomic) NSString *iso3166CountryCode; // @dynamic iso3166CountryCode;
+@property (copy, nonatomic) NSString *iso3166SubdivisionCode; // @dynamic iso3166SubdivisionCode;
 @property (copy, nonatomic) NSString *locality; // @dynamic locality;
 @property (strong, nonatomic) RTMapItemMO *mapItem; // @dynamic mapItem;
 @property (copy, nonatomic) NSString *ocean; // @dynamic ocean;

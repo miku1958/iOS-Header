@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSMutableData;
 
 @interface ENSignatureFile : NSObject
 {
     struct __sFILE *_fileHandle;
+    NSMutableData *_outputData;
     NSArray *_signatures;
 }
 
@@ -19,6 +20,7 @@
 + (id)signatureFileWithBytes:(const char *)arg1 length:(unsigned long long)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (BOOL)closeAndReturnError:(id *)arg1;
+- (BOOL)openForWritingToData:(id)arg1 error:(id *)arg2;
 - (BOOL)openWithFileSystemRepresentation:(const char *)arg1 reading:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)writeAndReturnError:(id *)arg1;
 

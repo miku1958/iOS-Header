@@ -118,6 +118,7 @@
 - (void)_trainWithFromDate:(id)arg1 ToDate:(id)arg2 forLastLearnedVisit:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_trainWithHandler:(CDUnknownBlockType)arg1;
 - (void)_unregisterForNotifications;
+- (id)_updateLearnedPlaceWithISO3166CountryCodeAndSubdivisionCode:(id)arg1;
 - (void)_updateMonitorFingerprintsWithVisit:(id)arg1;
 - (id)_visitsFromDate:(id)arg1 toDate:(id)arg2 error:(id *)arg3;
 - (void)classifyPlaceTypesWithHandler:(CDUnknownBlockType)arg1;

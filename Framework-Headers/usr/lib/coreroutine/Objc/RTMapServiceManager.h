@@ -21,6 +21,7 @@
 - (id)_proxyForServicingSelector:(SEL)arg1 withErrorHandler:(CDUnknownBlockType)arg2;
 - (void)_shutdown;
 - (void)createMapItemWithIdentifier:(id)arg1 geoMapItemStorage:(id)arg2 source:(unsigned long long)arg3 creationDate:(id)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)fetchCountryAndSubdivisionCodesFromLocation:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchMapItemFromHandle:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchMapItemWithIdentifier:(id)arg1 geoMapItem:(id)arg2 source:(unsigned long long)arg3 creationDate:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)fetchMapItemsFromAddressDictionary:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;

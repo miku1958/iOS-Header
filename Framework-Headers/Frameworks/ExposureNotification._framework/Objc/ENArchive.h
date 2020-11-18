@@ -26,6 +26,8 @@
 - (id)cloneToCurrentEntryAndReturnError:(id *)arg1;
 - (void)close;
 - (void)dealloc;
+- (id)getDataAndReturnError:(id *)arg1;
+- (id)getDataWithSize:(unsigned long long)arg1 error:(id *)arg2;
 - (id)initWithPath:(id)arg1 error:(id *)arg2;
 - (BOOL)readDataIntoBuffer:(void *)arg1 length:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)skipBytes:(unsigned long long)arg1 error:(id *)arg2;

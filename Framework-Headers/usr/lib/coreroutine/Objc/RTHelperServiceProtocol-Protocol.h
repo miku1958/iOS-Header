@@ -8,6 +8,7 @@
 
 @protocol RTHelperServiceProtocol
 - (void)createMapItemWithIdentifier:(NSUUID *)arg1 geoMapItemStorage:(GEOMapItemStorage *)arg2 source:(unsigned long long)arg3 creationDate:(NSDate *)arg4 handler:(void (^)(RTMapItem *, NSError *))arg5;
+- (void)fetchCountryAndSubdivisionCodesFromLocation:(RTLocation *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchMapItemFromHandle:(NSData *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(RTMapItem *, NSError *))arg3;
 - (void)fetchMapItemsFromAddressDictionary:(NSDictionary *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchMapItemsFromAddressString:(NSString *)arg1 options:(RTMapServiceOptions *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
