@@ -17,6 +17,7 @@
     UIBarButtonItem *_flexibleSpaceItem;
     UIBarButtonItem *_previousItem;
     UIBarButtonItem *_nextItem;
+    UIBarButtonItem *_spacer;
     UIBarButtonItemGroup *_buttonGroupAutoFill;
     UIBarButtonItemGroup *_buttonGroupNavigation;
     BOOL _usesUCB;

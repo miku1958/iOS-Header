@@ -6,16 +6,17 @@
 
 #import <Foundation/NSObject.h>
 
-#import <UIKit/NSCoding-Protocol.h>
+#import <UIKit/NSSecureCoding-Protocol.h>
 
 @class UIImage;
 
 __attribute__((visibility("hidden")))
-@interface _UIImageSerializationWrapper : NSObject <NSCoding>
+@interface _UIImageSerializationWrapper : NSObject <NSSecureCoding>
 {
     UIImage *_image;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (Class)classForCoder;
 - (void)encodeWithCoder:(id)arg1;

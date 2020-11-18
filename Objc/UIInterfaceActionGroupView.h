@@ -13,7 +13,7 @@
 #import <UIKit/UISpringLoadedInteractionSupporting-Protocol.h>
 #import <UIKit/_UIInterfaceActionPresenting-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableArray, NSPointerArray, NSString, UIFont, UIInterfaceActionGroup, UIInterfaceActionRepresentationView, UIInterfaceActionSelectionTrackingController, UIInterfaceActionSeparatorAttributes, UIInterfaceActionVisualStyle, UILongPressGestureRecognizer, _UIContentConstraintsLayoutGuide, _UIInterfaceActionRepresentationsSequenceView;
+@class NSArray, NSLayoutConstraint, NSMutableArray, NSPointerArray, NSString, UIFont, UIInterfaceActionGroup, UIInterfaceActionHighlightAttributes, UIInterfaceActionRepresentationView, UIInterfaceActionSelectionTrackingController, UIInterfaceActionSeparatorAttributes, UIInterfaceActionVisualStyle, UILongPressGestureRecognizer, _UIContentConstraintsLayoutGuide, _UIInterfaceActionRepresentationsSequenceView;
 @protocol UIInterfaceActionHandlerInvocationDelegate, UIInterfaceActionVisualStyleProviding, UISeparatorDisplaying;
 
 @interface UIInterfaceActionGroupView : UIView <UIScrollViewDelegate, UIGestureRecognizerDelegatePrivate, _UIInterfaceActionPresenting, UIInterfaceActionGroupDisplayPropertyObserver, UIInterfaceActionGroupDisplaying, UISpringLoadedInteractionSupporting>
@@ -49,6 +49,7 @@
     UILongPressGestureRecognizer *_actionSelectionGestureRecognizer;
     double _requiredActionRepresentationWidth;
     UIInterfaceActionRepresentationView *_preferredActionRepresentation;
+    UIInterfaceActionHighlightAttributes *_visualStyleOverrideActionHighlightAttributes;
     UIInterfaceActionSeparatorAttributes *_visualStyleOverrideSeparatorAttributes;
     UIFont *_visualStyleOverrideTitleLabelFont;
     double _selectionHighlightContinuousCornerRadius;
@@ -83,6 +84,7 @@
 @property (readonly, nonatomic) UIView *topLevelItemsView; // @synthesize topLevelItemsView=_topLevelItemsView;
 @property (readonly, nonatomic) NSArray *topLevelViewArrangementConstraints; // @synthesize topLevelViewArrangementConstraints=_topLevelViewArrangementConstraints;
 @property (strong, nonatomic) UIInterfaceActionVisualStyle *visualStyle; // @synthesize visualStyle=_visualStyle;
+@property (strong, nonatomic, setter=_setVisualStyleOverrideActionHighlightAttributes:) UIInterfaceActionHighlightAttributes *visualStyleOverrideActionHighlightAttributes; // @synthesize visualStyleOverrideActionHighlightAttributes=_visualStyleOverrideActionHighlightAttributes;
 @property (strong, nonatomic, getter=_visualStyleOverrideSeparatorAttributes, setter=_setVisualStyleOverrideSeparatorAttributes:) UIInterfaceActionSeparatorAttributes *visualStyleOverrideSeparatorAttributes; // @synthesize visualStyleOverrideSeparatorAttributes=_visualStyleOverrideSeparatorAttributes;
 @property (strong, nonatomic, getter=_visualStyleOverrideTitleLabelFont, setter=_setVisualStyleOverrideTitleLabelFont:) UIFont *visualStyleOverrideTitleLabelFont; // @synthesize visualStyleOverrideTitleLabelFont=_visualStyleOverrideTitleLabelFont;
 @property (weak, nonatomic) id<UIInterfaceActionVisualStyleProviding> visualStyleProvider; // @synthesize visualStyleProvider=_visualStyleProvider;

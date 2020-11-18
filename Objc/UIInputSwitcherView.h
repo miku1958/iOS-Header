@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultInputMode;
 - (unsigned long long)defaultSelectedIndex;
 - (void)didSelectItemAtIndex:(unsigned long long)arg1;
+- (void)fadeWithDelay:(double)arg1;
 - (id)fontForItemAtIndex:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)localizedTitleForItemAtIndex:(unsigned long long)arg1;

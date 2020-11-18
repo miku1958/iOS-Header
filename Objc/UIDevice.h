@@ -25,6 +25,7 @@
 }
 
 @property (nonatomic, setter=_setBacklightLevel:) float _backlightLevel;
+@property (readonly, nonatomic) BOOL _supportsPencil;
 @property (readonly, nonatomic) float batteryLevel;
 @property (nonatomic, getter=isBatteryMonitoringEnabled) BOOL batteryMonitoringEnabled;
 @property (readonly, nonatomic) long long batteryState;

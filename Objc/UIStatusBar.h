@@ -38,6 +38,7 @@
     NSNumber *_overrideHeight;
     NSMutableSet *_disableRasterizationReasons;
     NSMutableDictionary *_actions;
+    BOOL _disablesRasterization;
     BOOL _timeHidden;
     UIStatusBarWindow *_statusBarWindow;
 }
@@ -92,6 +93,7 @@
 - (id)_prepareToSetStyle:(id)arg1 animation:(int)arg2 forced:(BOOL)arg3;
 - (BOOL)_rectIntersectsTimeItem:(struct CGRect)arg1;
 - (void)_requestStyle:(long long)arg1 animationParameters:(id)arg2 forced:(BOOL)arg3;
+- (void)_setDisablesRasterization:(BOOL)arg1;
 - (void)_setDoubleHeightStatusString:(id)arg1;
 - (void)_setFrameForStyle:(id)arg1;
 - (void)_setOverrideHeight:(double)arg1;
@@ -125,6 +127,7 @@
 - (void)dealloc;
 - (double)defaultDoubleHeight;
 - (double)defaultHeight;
+- (BOOL)disablesRasterization;
 - (void)forceUpdate:(BOOL)arg1;
 - (void)forceUpdateData:(BOOL)arg1;
 - (void)forceUpdateDoubleHeightStatus;

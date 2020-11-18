@@ -21,6 +21,7 @@
     BOOL _registered;
     BOOL _suppressesHiddenSideEffects;
     BOOL _homeItemsDisabled;
+    BOOL _disablesRasterization;
     int _styleOverrides;
     int _activeStyleOverride;
     id<UIStatusBarStyleDelegate> _styleDelegate;
@@ -41,6 +42,7 @@
 
 @property (weak, nonatomic) id<UIViewControllerTransitionCoordinator> _transitionCoordinator; // @synthesize _transitionCoordinator=__transitionCoordinator;
 @property (nonatomic) int activeStyleOverride; // @synthesize activeStyleOverride=_activeStyleOverride;
+@property (nonatomic, setter=_setDisablesRasterization:) BOOL disablesRasterization; // @synthesize disablesRasterization=_disablesRasterization;
 @property (weak, nonatomic) id<UIStatusBarCarPlayDockDataProviding> dockDataProvider; // @synthesize dockDataProvider=_dockDataProvider;
 @property (copy, nonatomic) NSArray *enabledPartIdentifiers; // @synthesize enabledPartIdentifiers=_enabledPartIdentifiers;
 @property (nonatomic) BOOL foreground; // @synthesize foreground=_foreground;

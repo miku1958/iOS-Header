@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *pendingUpdates; // @synthesize pendingUpdates=_pendingUpdates;
 @property (copy, nonatomic) CDUnknownBlockType updateBlock; // @synthesize updateBlock=_updateBlock;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)_coalescedUpdateForEntryKeys:(id)arg1;
 - (void)_updateForCoalescedKeysWithData:(id)arg1;

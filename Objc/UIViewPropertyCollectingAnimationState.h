@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewAnimationState.h>
+#import <UIKit/UIViewInProcessAnimationState.h>
 
 @class _UICompoundObjectMap;
 
 __attribute__((visibility("hidden")))
-@interface UIViewPropertyCollectingAnimationState : UIViewAnimationState
+@interface UIViewPropertyCollectingAnimationState : UIViewInProcessAnimationState
 {
     _UICompoundObjectMap *_capturedProperties;
 }

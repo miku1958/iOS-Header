@@ -16,6 +16,7 @@
 @property (copy, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 
 + (id)entryWithStringValue:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_ui_descriptionBuilder;
 - (id)copyWithZone:(struct _NSZone *)arg1;

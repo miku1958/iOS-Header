@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_actLikeInputAccessoryViewSupportsSplit;
 - (void)_beginSplitTransitionIfNeeded;
 - (void)_endSplitTransitionIfNeeded;
+- (void)_forceRestoreUsingBecomeFirstResponder:(BOOL)arg1;
 - (BOOL)_inputAccessoryViewSupportsSplit;
 - (BOOL)_inputViewIsVisible;
 - (BOOL)_inputViewSetSupportsSplit;

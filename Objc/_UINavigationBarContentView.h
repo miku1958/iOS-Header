@@ -7,6 +7,7 @@
 #import <UIKit/_UIBarContentView.h>
 
 #import <UIKit/_UIBarButtonItemViewOwner-Protocol.h>
+#import <UIKit/_UIButtonBarButtonChangeObserver-Protocol.h>
 #import <UIKit/_UINavigationBarTitleViewDataSource-Protocol.h>
 #import <UIKit/_UINavigationBarTransitionContextParticipant-Protocol.h>
 
@@ -14,7 +15,7 @@
 @protocol _UINavigationBarContentViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarContentView : _UIBarContentView <_UIBarButtonItemViewOwner, _UINavigationBarTitleViewDataSource, _UINavigationBarTransitionContextParticipant>
+@interface _UINavigationBarContentView : _UIBarContentView <_UIBarButtonItemViewOwner, _UINavigationBarTitleViewDataSource, _UINavigationBarTransitionContextParticipant, _UIButtonBarButtonChangeObserver>
 {
     _UINavigationBarContentViewLayout *_layout;
     _UINavigationBarTransitionContext *_transitionContext;
@@ -101,11 +102,13 @@ __attribute__((visibility("hidden")))
 - (void)_setupTrailingButtonBarAnimated:(BOOL)arg1;
 - (void)_updateLayoutMarginsForLayout:(id)arg1;
 - (void)adoptFinalStateFromTransition:(id)arg1 transitionCompleted:(BOOL)arg2;
+- (void)backButtonTitleDidChange;
 - (id)backIndicatorImage;
 - (long long)barType;
 - (double)defaultEdgeSpacing;
 - (id)defaultFontDescriptor;
 - (unsigned long long)edgesPaddingBarButtonItem:(id)arg1;
+- (void)ensureBackButtonTruncationOccursWithContext:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;

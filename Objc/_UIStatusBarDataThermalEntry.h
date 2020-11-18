@@ -15,6 +15,7 @@
 @property (nonatomic) long long color; // @synthesize color=_color;
 @property (nonatomic) BOOL sunlightMode; // @synthesize sunlightMode=_sunlightMode;
 
++ (BOOL)supportsSecureCoding;
 - (id)_ui_descriptionBuilder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

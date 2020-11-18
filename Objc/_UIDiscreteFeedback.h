@@ -24,6 +24,7 @@
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 + (id)discreteFeedbackForType:(long long)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)type;
 - (id)_debugDictionary;
 - (unsigned long long)_effectiveEventType;

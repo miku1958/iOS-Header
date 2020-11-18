@@ -387,6 +387,7 @@
 - (BOOL)_isViewInReuseQueue:(id)arg1;
 - (BOOL)_itemIndexPathIsReordered:(id)arg1;
 - (id)_keysForObject:(id)arg1 inDictionary:(id)arg2;
+- (void)_managedSubviewAdded:(id)arg1;
 - (id)_managedSubviewForView:(id)arg1;
 - (id)_managedViews;
 - (void)_moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;

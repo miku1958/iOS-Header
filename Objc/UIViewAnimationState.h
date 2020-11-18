@@ -129,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (void)setAnimationAttributes:(id)arg1 correctZeroDuration:(BOOL)arg2 skipDelegateAssignment:(BOOL)arg3 customCurve:(id)arg4;
 - (void)setupCustomTimingCurve;
 - (void)setupWithDuration:(double)arg1 delay:(double)arg2 view:(id)arg3 options:(unsigned long long)arg4 factory:(id)arg5 parentState:(id)arg6 start:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
+- (BOOL)shouldAnimatePropertyWithKey:(id)arg1;
 
 @end
 

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     UITextInputController *_textInput;
     struct __CFStringTokenizer *_tokenizer;
     int _tokenizerType;
+    BOOL _tokenizerIsInvalid;
 }
 
 - (void).cxx_destruct;

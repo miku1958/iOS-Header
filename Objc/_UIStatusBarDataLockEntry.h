@@ -13,6 +13,7 @@
 
 @property (nonatomic) long long unlockFailureCount; // @synthesize unlockFailureCount=_unlockFailureCount;
 
++ (BOOL)supportsSecureCoding;
 
 @end
 

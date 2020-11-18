@@ -144,6 +144,7 @@
 + (void)__popKeyWindow:(id)arg1 findNewKeyWindowIfStackEmpty:(BOOL)arg2;
 + (BOOL)_allWindowsKeepContextInBackground;
 + (void)_clearKeyWindowStack;
++ (BOOL)_clearPreCommitHandlerRegistration;
 + (void)_enumerateWindowsIncludingInternalWindows:(BOOL)arg1 onlyVisibleWindows:(BOOL)arg2 allowMutation:(BOOL)arg3 withBlock:(CDUnknownBlockType)arg4;
 + (void)_enumerateWindowsIncludingInternalWindows:(BOOL)arg1 onlyVisibleWindows:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
 + (void)_executeDeferredLaunchBlocks;

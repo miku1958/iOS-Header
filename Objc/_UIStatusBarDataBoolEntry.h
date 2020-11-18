@@ -14,6 +14,7 @@
 @property (nonatomic) BOOL boolValue; // @synthesize boolValue=_boolValue;
 
 + (id)entryWithBoolValue:(BOOL)arg1;
++ (BOOL)supportsSecureCoding;
 - (id)_ui_descriptionBuilder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

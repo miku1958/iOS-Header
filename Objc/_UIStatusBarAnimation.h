@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 + (void)_addAnimations:(id)arg1 toDispatchGroup:(id)arg2;
 + (void)_addAnimations:(id)arg1 toPreparingAnimations:(id)arg2 exclusiveAnimations:(id)arg3 visitedDisplayItemIdentifiers:(id)arg4;
 + (id)animationWithBlock:(CDUnknownBlockType)arg1;
++ (void)initialize;
 + (void)prepareAnimations:(id)arg1 forStatusBar:(id)arg2;
 - (void).cxx_destruct;
 - (id)_dependentItemIdentifiersEnabledOnly:(BOOL)arg1;

@@ -6,16 +6,18 @@
 
 #import <UIKit/UIInterfaceActionVisualStyle.h>
 
-@class UIInterfaceActionSeparatorAttributes;
+@class UIInterfaceActionHighlightAttributes, UIInterfaceActionSeparatorAttributes;
 
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionOverrideVisualStyle : UIInterfaceActionVisualStyle
 {
     double _customSelectionHighlightContinuousCornerRadius;
     UIInterfaceActionSeparatorAttributes *_customSeparatorAttributes;
+    UIInterfaceActionHighlightAttributes *_customActionHighlightAttributes;
     CDUnknownBlockType _customTitleLabelFontProviderForViewState;
 }
 
+@property (strong, nonatomic) UIInterfaceActionHighlightAttributes *customActionHighlightAttributes; // @synthesize customActionHighlightAttributes=_customActionHighlightAttributes;
 @property double customSelectionHighlightContinuousCornerRadius; // @synthesize customSelectionHighlightContinuousCornerRadius=_customSelectionHighlightContinuousCornerRadius;
 @property (strong, nonatomic) UIInterfaceActionSeparatorAttributes *customSeparatorAttributes; // @synthesize customSeparatorAttributes=_customSeparatorAttributes;
 @property (copy, nonatomic) CDUnknownBlockType customTitleLabelFontProviderForViewState; // @synthesize customTitleLabelFontProviderForViewState=_customTitleLabelFontProviderForViewState;
