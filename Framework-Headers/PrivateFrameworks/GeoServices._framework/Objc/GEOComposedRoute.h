@@ -64,6 +64,7 @@
 
 @property (readonly, nonatomic) NSArray *advisoryNotices;
 @property (readonly, nonatomic) BOOL allowsNetworkTileLoad;
+@property (readonly, nonatomic) NSArray *baseTransitFares;
 @property (readonly, nonatomic) GEOMapRegion *boundingMapRegion; // @synthesize boundingMapRegion=_boundingMapRegion;
 @property (readonly, nonatomic) void *controlPoints;
 @property (nonatomic) unsigned long long currentDisplayStep; // @synthesize currentDisplayStep=_currentDisplayStep;

@@ -6,13 +6,9 @@
 
 #import <MediaPlayer/MPPlaybackContext.h>
 
-@class NSData, NSString;
-
 @interface MPPlaybackContext (MPCReportingAdditions)
 
-@property (copy, nonatomic, setter=mpcReporting_setFeatureName:) NSString *mpcReporting_featureName;
 @property (readonly, nonatomic, getter=mpcReporting_isQuickPlay) BOOL mpcReporting_quickPlay;
-@property (copy, nonatomic, setter=mpcReporting_setRecommendationData:) NSData *mpcReporting_recommendationData;
 
 @end
 

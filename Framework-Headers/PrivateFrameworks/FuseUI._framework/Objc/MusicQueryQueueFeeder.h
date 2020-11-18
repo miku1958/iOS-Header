@@ -18,7 +18,6 @@
 + (BOOL)supportsStateRestoration;
 - (id)errorResolverForItem:(id)arg1;
 - (Class)itemClass;
-- (id)playbackInfoForIdentifier:(id)arg1;
 - (long long)realRepeatType;
 - (long long)realShuffleType;
 

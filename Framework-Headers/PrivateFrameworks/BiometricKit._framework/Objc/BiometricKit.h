@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class BiometricKitIdentity, NSCondition, NSTimer;
 @protocol BiometricKitDelegate, OS_dispatch_queue;
@@ -47,6 +47,8 @@
 - (int)enroll:(int)arg1 withOptions:(id)arg2;
 - (BOOL)fileRadarWithLogs:(id)arg1 withDescription:(id)arg2;
 - (void)fingerOffTimerFired:(id)arg1;
+- (int)forceBioLockout;
+- (int)forceBioLockoutForUser:(unsigned int)arg1;
 - (long long)getBioLockoutState;
 - (long long)getBioLockoutStateForUser:(unsigned int)arg1;
 - (long long)getCalBlobVersion;
@@ -74,6 +76,7 @@
 - (id)init;
 - (BOOL)isFingerOn;
 - (BOOL)isIdentityEnrolled;
+- (BOOL)isTouchIDAvailableWithInfo:(long long *)arg1;
 - (BOOL)isTouchIDCapable;
 - (int)match:(id)arg1;
 - (int)match:(id)arg1 withOptions:(id)arg2;

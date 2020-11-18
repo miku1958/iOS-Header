@@ -9,13 +9,12 @@
 #import <VideoSubscriberAccount/VSAppDocumentControllerDelegate-Protocol.h>
 #import <VideoSubscriberAccount/VSApplicationDelegate-Protocol.h>
 
-@class JSValue, NSOperationQueue, NSString, VSAppDocumentController, VSApplication, VSApplicationControllerRequest, VSApplicationControllerResponseHandler, VSIdentityProvider, VSJSSAMLRequest;
+@class JSValue, NSOperationQueue, NSString, VSAppDocumentController, VSApplication, VSApplicationControllerRequest, VSApplicationControllerResponseHandler, VSIdentityProvider, VSJSSAMLRequest, VSPreferences;
 @protocol VSApplicationControllerDelegate;
 
 @interface VSApplicationController : NSObject <VSAppDocumentControllerDelegate, VSApplicationDelegate>
 {
     BOOL _allowUI;
-    BOOL _deviceRunningAnInternalBuild;
     id<VSApplicationControllerDelegate> _delegate;
     VSIdentityProvider *_identityProvider;
     NSOperationQueue *_privateQueue;
@@ -25,6 +24,7 @@
     VSApplicationControllerResponseHandler *_responseHandler;
     VSAppDocumentController *_appDocumentController;
     JSValue *_applicationReadyCallback;
+    VSPreferences *_preferences;
 }
 
 @property (nonatomic) BOOL allowUI; // @synthesize allowUI=_allowUI;
@@ -34,10 +34,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VSApplicationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isDeviceRunningAnInternalBuild) BOOL deviceRunningAnInternalBuild; // @synthesize deviceRunningAnInternalBuild=_deviceRunningAnInternalBuild;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
 @property (strong, nonatomic) VSJSSAMLRequest *javascriptRequest; // @synthesize javascriptRequest=_javascriptRequest;
+@property (strong, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (strong, nonatomic) VSApplicationControllerRequest *request; // @synthesize request=_request;
 @property (strong, nonatomic) VSApplicationControllerResponseHandler *responseHandler; // @synthesize responseHandler=_responseHandler;

@@ -9,7 +9,7 @@
 #import <NanoPassKit/NSCopying-Protocol.h>
 #import <NanoPassKit/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSNumber, NSSet, NSString, PKColor, PKImage, PKNFCPayload, PKPaymentApplication;
+@class NSArray, NSData, NSDate, NSDecimalNumber, NSNumber, NSSet, NSString, PKColor, PKFelicaTransitAppletState, PKImage, PKNFCPayload, PKPaymentApplication;
 
 @interface NPKPassDescription : NSObject <NSSecureCoding, NSCopying>
 {
@@ -17,7 +17,7 @@
     BOOL _privateLabel;
     BOOL _cobranded;
     BOOL _deletePending;
-    BOOL _hasUserSelectablePaymentApplications;
+    BOOL _hasUserSelectableContactlessPaymentApplications;
     PKImage *_logoImage;
     PKImage *_backgroundImage;
     NSString *_uniqueID;
@@ -34,14 +34,26 @@
     PKColor *_backgroundColor;
     PKColor *_foregroundColor;
     PKColor *_labelColor;
+    NSString *_localizedDescription;
     NSSet *_devicePaymentApplications;
     PKPaymentApplication *_devicePrimaryPaymentApplication;
+    PKPaymentApplication *_devicePrimaryContactlessPaymentApplication;
+    PKPaymentApplication *_devicePrimaryInAppPaymentApplication;
     PKPaymentApplication *_preferredPaymentApplication;
     long long _effectivePaymentApplicationState;
+    NSArray *_availableActions;
+    NSString *_organizationName;
+    PKFelicaTransitAppletState *_felicaTransitAppletState;
+    NSArray *_frontFieldBuckets;
+    NSArray *_backFieldBuckets;
+    NSDecimalNumber *_lastAddValueAmount;
+    NSDate *_pendingAddValueDate;
     NSData *_logoImageEncoded;
     NSData *_backgroundImageEncoded;
 }
 
+@property (strong, nonatomic) NSArray *availableActions; // @synthesize availableActions=_availableActions;
+@property (strong, nonatomic) NSArray *backFieldBuckets; // @synthesize backFieldBuckets=_backFieldBuckets;
 @property (strong, nonatomic) PKColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) PKImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property (strong, nonatomic) NSData *backgroundImageEncoded; // @synthesize backgroundImageEncoded=_backgroundImageEncoded;
@@ -49,20 +61,29 @@
 @property (strong, nonatomic) NSData *completeHash; // @synthesize completeHash=_completeHash;
 @property (nonatomic) BOOL deletePending; // @synthesize deletePending=_deletePending;
 @property (strong, nonatomic) NSSet *devicePaymentApplications; // @synthesize devicePaymentApplications=_devicePaymentApplications;
+@property (strong, nonatomic) PKPaymentApplication *devicePrimaryContactlessPaymentApplication; // @synthesize devicePrimaryContactlessPaymentApplication=_devicePrimaryContactlessPaymentApplication;
+@property (strong, nonatomic) PKPaymentApplication *devicePrimaryInAppPaymentApplication; // @synthesize devicePrimaryInAppPaymentApplication=_devicePrimaryInAppPaymentApplication;
 @property (strong, nonatomic) PKPaymentApplication *devicePrimaryPaymentApplication; // @synthesize devicePrimaryPaymentApplication=_devicePrimaryPaymentApplication;
+@property (readonly, nonatomic) long long effectiveContactlessPaymentApplicationState;
 @property (nonatomic) long long effectivePaymentApplicationState; // @synthesize effectivePaymentApplicationState=_effectivePaymentApplicationState;
+@property (strong, nonatomic) PKFelicaTransitAppletState *felicaTransitAppletState; // @synthesize felicaTransitAppletState=_felicaTransitAppletState;
 @property (strong, nonatomic) PKColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
+@property (strong, nonatomic) NSArray *frontFieldBuckets; // @synthesize frontFieldBuckets=_frontFieldBuckets;
 @property (strong, nonatomic) NSNumber *groupID; // @synthesize groupID=_groupID;
 @property (nonatomic) BOOL hasStoredValue; // @synthesize hasStoredValue=_hasStoredValue;
-@property (nonatomic) BOOL hasUserSelectablePaymentApplications; // @synthesize hasUserSelectablePaymentApplications=_hasUserSelectablePaymentApplications;
+@property (nonatomic) BOOL hasUserSelectableContactlessPaymentApplications; // @synthesize hasUserSelectableContactlessPaymentApplications=_hasUserSelectableContactlessPaymentApplications;
 @property (strong, nonatomic) NSDate *ingestionDate; // @synthesize ingestionDate=_ingestionDate;
 @property (strong, nonatomic) PKColor *labelColor; // @synthesize labelColor=_labelColor;
+@property (strong, nonatomic) NSDecimalNumber *lastAddValueAmount; // @synthesize lastAddValueAmount=_lastAddValueAmount;
+@property (strong, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
 @property (strong, nonatomic) PKImage *logoImage; // @synthesize logoImage=_logoImage;
 @property (strong, nonatomic) NSData *logoImageEncoded; // @synthesize logoImageEncoded=_logoImageEncoded;
 @property (strong, nonatomic) NSString *logoText; // @synthesize logoText=_logoText;
 @property (strong, nonatomic) NSData *manifestHash; // @synthesize manifestHash=_manifestHash;
 @property (strong, nonatomic) PKNFCPayload *nfcPayload; // @synthesize nfcPayload=_nfcPayload;
+@property (strong, nonatomic) NSString *organizationName; // @synthesize organizationName=_organizationName;
 @property (strong, nonatomic) NSString *passTypeIdentifier; // @synthesize passTypeIdentifier=_passTypeIdentifier;
+@property (strong, nonatomic) NSDate *pendingAddValueDate; // @synthesize pendingAddValueDate=_pendingAddValueDate;
 @property (strong, nonatomic) PKPaymentApplication *preferredPaymentApplication; // @synthesize preferredPaymentApplication=_preferredPaymentApplication;
 @property (nonatomic, getter=isPrivateLabel) BOOL privateLabel; // @synthesize privateLabel=_privateLabel;
 @property (strong, nonatomic) NSDate *relevantDate; // @synthesize relevantDate=_relevantDate;
@@ -74,14 +95,19 @@
 + (void)setCachingEnabled:(BOOL)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_personalizedInAppPaymentApplicationsForNetworks:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)encodeAsData:(id)arg1;
 - (void)encodeObject:(id)arg1 asDataInCoder:(id)arg2 withKey:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
+- (id)felicaProperties;
+- (id)fieldForKey:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPass:(id)arg1;
+- (BOOL)isAddValuePending;
+- (BOOL)isEnroute;
 - (BOOL)isEqual:(id)arg1;
 - (id)safeUnarchiveObjectOfClass:(Class)arg1 withData:(id)arg2;
 - (BOOL)supportsInAppPaymentOnNetworks:(id)arg1;

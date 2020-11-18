@@ -54,7 +54,6 @@
     NSUUID *_callGroupUUID;
     NSDictionary *_providerContext;
     TUCallDisplayContext *_displayContext;
-    NSString *_contactIdentifier;
     id<TUCallServicesProxyCallActions> _proxyCallActionsDelegate;
     AVCRemoteVideoClient *_remoteVideo;
     NSMutableDictionary *_remoteVideoModeToLayer;
@@ -75,7 +74,6 @@
 @property (copy, nonatomic) NSString *callUUID; // @synthesize callUUID=_callUUID;
 @property (copy, nonatomic) NSString *callerNameFromNetwork; // @synthesize callerNameFromNetwork=_callerNameFromNetwork;
 @property (nonatomic) long long cameraType; // @synthesize cameraType=_cameraType;
-@property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) TUCallDisplayContext *displayContext; // @synthesize displayContext=_displayContext;

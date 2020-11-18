@@ -184,6 +184,7 @@
     BOOL _groupingBoolParam1;
     BOOL _groupingBoolParam2;
     BOOL _hardAgeBeforePublisherDiversification;
+    BOOL _replaceAboutness;
     struct {
         unsigned int baselineImpressionPrior:1;
         unsigned int baselineRatePrior:1;
@@ -359,6 +360,7 @@
         unsigned int groupingBoolParam1:1;
         unsigned int groupingBoolParam2:1;
         unsigned int hardAgeBeforePublisherDiversification:1;
+        unsigned int replaceAboutness:1;
     } _has;
 }
 
@@ -536,6 +538,7 @@
 @property (nonatomic) BOOL hasRecommendationPresentationFeedClickValueBaseline;
 @property (nonatomic) BOOL hasRecommendationPresentationFeedImpressionValue;
 @property (nonatomic) BOOL hasRecommendationPresentationFeedImpressionValueBaseline;
+@property (nonatomic) BOOL hasReplaceAboutness;
 @property (nonatomic) BOOL hasSaturatedSubscriptionCountFactor;
 @property (nonatomic) BOOL hasSavedClickValue;
 @property (nonatomic) BOOL hasSavedClickValueBaseline;
@@ -659,6 +662,7 @@
 @property (nonatomic) double recommendationPresentationFeedClickValueBaseline; // @synthesize recommendationPresentationFeedClickValueBaseline=_recommendationPresentationFeedClickValueBaseline;
 @property (nonatomic) double recommendationPresentationFeedImpressionValue; // @synthesize recommendationPresentationFeedImpressionValue=_recommendationPresentationFeedImpressionValue;
 @property (nonatomic) double recommendationPresentationFeedImpressionValueBaseline; // @synthesize recommendationPresentationFeedImpressionValueBaseline=_recommendationPresentationFeedImpressionValueBaseline;
+@property (nonatomic) BOOL replaceAboutness; // @synthesize replaceAboutness=_replaceAboutness;
 @property (nonatomic) double saturatedSubscriptionCountFactor; // @synthesize saturatedSubscriptionCountFactor=_saturatedSubscriptionCountFactor;
 @property (nonatomic) double savedClickValue; // @synthesize savedClickValue=_savedClickValue;
 @property (nonatomic) double savedClickValueBaseline; // @synthesize savedClickValueBaseline=_savedClickValueBaseline;

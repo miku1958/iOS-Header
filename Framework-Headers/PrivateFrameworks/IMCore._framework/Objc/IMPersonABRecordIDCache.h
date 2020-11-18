@@ -28,6 +28,7 @@
 - (id)cachedRecordResultForQuery:(id)arg1 sequenceNumber:(long long)arg2;
 - (void)clearExistingPreferencesCache;
 - (void)clearInMemoryCache;
+- (id)copyABUniqueID;
 - (id)description;
 - (id)filePath;
 - (void)setCacheSequenceNumber:(long long)arg1;

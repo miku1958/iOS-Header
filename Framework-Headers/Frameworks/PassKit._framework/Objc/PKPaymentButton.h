@@ -6,7 +6,7 @@
 
 #import <UIKit/UIButton.h>
 
-@class CAFilter, CAShapeLayer, PKPDFView, PKShapeView, UILabel, UIView;
+@class CAFilter, CAShapeLayer, PKShapeView, UILabel, UIView;
 
 @interface PKPaymentButton : UIButton
 {
@@ -15,7 +15,6 @@
     long long _type;
     UIView *_container;
     UILabel *_buyLabel;
-    PKPDFView *_pdfView;
     CAFilter *_highlightFilter;
     BOOL _highlighted;
     struct CGSize _boundsSize;
@@ -27,10 +26,8 @@
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (void)_createHighlightFilterIfNecessary;
-- (double)_labelHeightForBounds:(struct CGRect)arg1;
-- (void)_sharedInit;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
-- (void)dealloc;
+- (void)drawRect:(struct CGRect)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -9,6 +9,7 @@
 @interface NSError (FCAdditions)
 - (BOOL)fc_isCancellationError;
 - (BOOL)fc_isNetworkUnavailableError;
+- (BOOL)fc_isServiceUnavailableError;
 - (BOOL)fc_shouldRetry;
 @end
 

@@ -43,6 +43,8 @@
     BOOL _frontPanoramaSupported;
     BOOL _backTimelapseSupported;
     BOOL _frontTimelapseSupported;
+    BOOL _backPortraitModeSupported;
+    BOOL _frontPortraitModeSupported;
     BOOL _backTorchPatternSupported;
     BOOL _frontTorchPatternSupported;
     BOOL _pipelinedStillImageProcessingSupported;
@@ -99,6 +101,7 @@
 @property (readonly, nonatomic, getter=isBackHDRSupported) BOOL backHDRSupported; // @synthesize backHDRSupported=_backHDRSupported;
 @property (readonly, nonatomic, getter=isBackIrisSupported) BOOL backIrisSupported; // @synthesize backIrisSupported=_backIrisSupported;
 @property (readonly, nonatomic, getter=isBackPanoramaSupported) BOOL backPanoramaSupported; // @synthesize backPanoramaSupported=_backPanoramaSupported;
+@property (readonly, nonatomic, getter=isBackPortraitModeSupported) BOOL backPortraitModeSupported; // @synthesize backPortraitModeSupported=_backPortraitModeSupported;
 @property (readonly, nonatomic, getter=isBackSlomoSupported) BOOL backSlomoSupported; // @synthesize backSlomoSupported=_backSlomoSupported;
 @property (readonly, nonatomic, getter=isBackTelephotoSupported) BOOL backTelephotoSupported; // @synthesize backTelephotoSupported=_backTelephotoSupported;
 @property (readonly, nonatomic, getter=isBackTimelapseSupported) BOOL backTimelapseSupported; // @synthesize backTimelapseSupported=_backTimelapseSupported;
@@ -121,6 +124,7 @@
 @property (readonly, nonatomic, getter=isFrontHDRSupported) BOOL frontHDRSupported; // @synthesize frontHDRSupported=_frontHDRSupported;
 @property (readonly, nonatomic, getter=isFrontIrisSupported) BOOL frontIrisSupported; // @synthesize frontIrisSupported=_frontIrisSupported;
 @property (readonly, nonatomic, getter=isFrontPanoramaSupported) BOOL frontPanoramaSupported; // @synthesize frontPanoramaSupported=_frontPanoramaSupported;
+@property (readonly, nonatomic, getter=isFrontPortraitModeSupported) BOOL frontPortraitModeSupported; // @synthesize frontPortraitModeSupported=_frontPortraitModeSupported;
 @property (readonly, nonatomic, getter=isFrontSlomoSupported) BOOL frontSlomoSupported; // @synthesize frontSlomoSupported=_frontSlomoSupported;
 @property (readonly, nonatomic, getter=isFrontTelephotoSupported) BOOL frontTelephotoSupported; // @synthesize frontTelephotoSupported=_frontTelephotoSupported;
 @property (readonly, nonatomic, getter=isFrontTimelapseSupported) BOOL frontTimelapseSupported; // @synthesize frontTimelapseSupported=_frontTimelapseSupported;
@@ -156,6 +160,7 @@
 - (BOOL)isHDRSupportedForDevice:(long long)arg1;
 - (BOOL)isIrisSupportedForDevice:(long long)arg1;
 - (BOOL)isPanoramaSupportedForDevice:(long long)arg1;
+- (BOOL)isPortraitModeSupportedForDevice:(long long)arg1;
 - (BOOL)isSlomoSupportedForDevice:(long long)arg1;
 - (BOOL)isSupportedMode:(long long)arg1 withDevice:(long long)arg2;
 - (BOOL)isSupportedVideoConfiguration:(long long)arg1 forMode:(long long)arg2 device:(long long)arg3;

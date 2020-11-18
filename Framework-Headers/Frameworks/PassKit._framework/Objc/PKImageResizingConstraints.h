@@ -17,9 +17,11 @@
     BOOL _outputMirrored;
     double _outputScale;
     double _outputBorderTrim;
+    double _outputCornerRadius;
 }
 
 @property (nonatomic) double outputBorderTrim; // @synthesize outputBorderTrim=_outputBorderTrim;
+@property (nonatomic) double outputCornerRadius; // @synthesize outputCornerRadius=_outputCornerRadius;
 @property (nonatomic) BOOL outputMirrored; // @synthesize outputMirrored=_outputMirrored;
 @property (nonatomic) double outputScale; // @synthesize outputScale=_outputScale;
 

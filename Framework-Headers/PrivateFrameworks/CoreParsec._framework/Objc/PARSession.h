@@ -9,11 +9,12 @@
 #import <CoreParsec/PARClientXPC-Protocol.h>
 #import <CoreParsec/SFFeedbackListener-Protocol.h>
 
-@class NSString, NSXPCConnection, PARBag, PARRanker, PARSearchClient, PARSessionConfiguration;
+@class MKSearchFoundationFeedbackListener, NSString, NSXPCConnection, PARBag, PARRanker, PARSearchClient, PARSessionConfiguration;
 @protocol PARSessionDelegate;
 
 @interface PARSession : NSObject <PARClientXPC, SFFeedbackListener>
 {
+    MKSearchFoundationFeedbackListener *_mapsListener;
     PARBag *_bag;
     PARSearchClient *_client;
     PARSessionConfiguration *_configuration;

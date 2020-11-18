@@ -21,6 +21,7 @@
     NSMutableDictionary *_clientStateForPIDs;
     MPVideoViewController *_videoViewController;
     unsigned int _queuePrepared:1;
+    unsigned int _hasSentQueuePrepared:1;
 }
 
 + (BOOL)_canSeedGeniusWithItem:(id)arg1;
@@ -39,6 +40,8 @@
 - (void)_itemDidChangeNotification:(id)arg1;
 - (void)_itemPlaybackDidEndNotification:(id)arg1;
 - (unsigned long long)_numberOfItems;
+- (void)_playbackBufferingStateDidChangeNotification:(id)arg1;
+- (void)_playbackErrorPostedNotification:(id)arg1;
 - (void)_playbackStateDidChangeNotification:(id)arg1;
 - (void)_prepareQueueIfNecessary;
 - (void)_registerClientPort:(unsigned int)arg1 forProcessID:(int)arg2 hasAudioBackgroundMode:(BOOL)arg3;
@@ -82,6 +85,7 @@
 - (void)setCurrentPlaybackTime:(id)arg1;
 - (void)setNowPlayingItem:(id)arg1;
 - (void)setPlaybackSpeed:(id)arg1;
+- (void)setQueueWithDescriptor:(id)arg1;
 - (void)setQueueWithGeniusMixPlaylist:(id)arg1;
 - (void)setQueueWithItemCollection:(id)arg1;
 - (void)setQueueWithQuery:(id)arg1;

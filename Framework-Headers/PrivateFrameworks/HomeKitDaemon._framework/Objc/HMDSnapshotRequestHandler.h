@@ -11,7 +11,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDAccessory, HMDCameraStreamSnapshotHandler, HMDSnapshotFile, HMFTimer, NSMutableArray, NSString;
+@class HMDAccessory, HMDCameraStreamSnapshotHandler, HMDSnapshotFile, HMFTimer, NSArray, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDSnapshotRequestHandler : NSObject <HMFLogging, HMFTimerDelegate, HMDCameraStreamSnapshotHandlerDelegate, HMDSnapshotRequestHandlerProtocol>
@@ -24,6 +24,7 @@
     HMFTimer *_mostRecentSnapshotInvalidationTimer;
     HMDSnapshotFile *_mostRecentSnapshot;
     HMDCameraStreamSnapshotHandler *_streamSnapshotHandler;
+    NSArray *_supportedVideoResolutions;
 }
 
 @property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
@@ -37,15 +38,22 @@
 @property (readonly, nonatomic) NSMutableArray *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
 @property (readonly, nonatomic) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSArray *supportedVideoResolutions; // @synthesize supportedVideoResolutions=_supportedVideoResolutions;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)_handleImageResourceData:(id)arg1 error:(id)arg2;
-- (void)_saveSnapshotFile:(id)arg1;
+- (void)_addSupportedResolutionsFrom:(id)arg1 to:(id)arg2;
+- (void)_getSupportedVideoResolutions:(id)arg1 streamingTierType:(unsigned long long)arg2;
+- (void)_handleImageResourceData:(id)arg1 error:(id)arg2 requestedResolution:(id)arg3 snapshotDataTrasaction:(id)arg4;
+- (void)_handleSupportedParameters:(id)arg1 sessionID:(id)arg2 streamingTierType:(unsigned long long)arg3;
+- (id)_prepareResolutionPreference:(id)arg1;
+- (id)_resolutionToRequest:(unsigned long long)arg1;
+- (id)_saveSnapshotFile:(id)arg1;
+- (void)_sendSnapshotRequest:(id)arg1 streamingTierType:(unsigned long long)arg2;
 - (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 imageCacheDirectory:(id)arg4 logID:(id)arg5;
 - (id)logIdentifier;
-- (void)requestSnapshot:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestSnapshot:(id)arg1 streamingTierType:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)streamSnapshotHandler:(id)arg1 didGetLastSnapshot:(id)arg2;
 - (void)streamSnapshotHandler:(id)arg1 didGetNewSnapshot:(id)arg2;
 - (void)timerDidFire:(id)arg1;

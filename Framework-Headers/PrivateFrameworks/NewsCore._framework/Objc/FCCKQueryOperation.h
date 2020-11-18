@@ -36,10 +36,11 @@
 - (void).cxx_destruct;
 - (id)_ckCursorFromQueryResponse:(id)arg1;
 - (id)_ckRecordsFromQueryResponse:(id)arg1;
+- (id)_requestOperations;
 - (id)init;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
-- (id)requestOperations;
+- (id)throttleGroup;
 - (BOOL)validateOperation;
 
 @end

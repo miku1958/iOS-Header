@@ -8,11 +8,12 @@
 
 #import <PhotosUI/AAUIGenericTermsRemoteUIDelegate-Protocol.h>
 #import <PhotosUI/PSCloudStorageOffersManagerDelegate-Protocol.h>
+#import <PhotosUI/PUCloudPhotoWelcomeNavigationControllerDismissDelegate-Protocol.h>
 #import <PhotosUI/PUCloudPhotoWelcomeViewDelegate-Protocol.h>
 
 @class AAUIGenericTermsRemoteUI, NSString, PSCloudStorageOffersManager, PUCloudPhotoWelcomeView;
 
-@interface PUCloudPhotoWelcomeViewController : PUWelcomeViewController <PUCloudPhotoWelcomeViewDelegate, PSCloudStorageOffersManagerDelegate, AAUIGenericTermsRemoteUIDelegate>
+@interface PUCloudPhotoWelcomeViewController : PUWelcomeViewController <PUCloudPhotoWelcomeViewDelegate, PSCloudStorageOffersManagerDelegate, AAUIGenericTermsRemoteUIDelegate, PUCloudPhotoWelcomeNavigationControllerDismissDelegate>
 {
     PSCloudStorageOffersManager *_offersManager;
     AAUIGenericTermsRemoteUI *_termsManager;
@@ -43,6 +44,7 @@
 - (void)_handleEnableError:(id)arg1;
 - (void)_handleGoButtonTapped;
 - (void)_presentStoragePurchaseController;
+- (void)_updateCurrentActivity;
 - (void)cloudPhotoWelcomeViewGoButtonTapped:(id)arg1;
 - (void)cloudPhotoWelcomeViewLearnMoreTapped:(id)arg1;
 - (void)cloudPhotoWelcomeViewNotNowButtonTapped:(id)arg1;
@@ -51,6 +53,7 @@
 - (void)manager:(id)arg1 loadDidFailWithError:(id)arg2;
 - (void)manager:(id)arg1 willPresentViewController:(id)arg2;
 - (void)managerDidCancel:(id)arg1;
+- (void)navigationControllerDidDismissViewController:(id)arg1;
 - (struct CGSize)preferredContentSize;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (BOOL)shouldAutorotate;

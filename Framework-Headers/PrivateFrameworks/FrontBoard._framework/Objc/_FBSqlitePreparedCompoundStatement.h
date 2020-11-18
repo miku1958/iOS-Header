@@ -6,14 +6,15 @@
 
 #import <FrontBoard/FBSqlitePreparedStatement.h>
 
-@class BSZeroingWeakReference, NSArray;
+@class FBSqliteDatabaseConnection, NSArray;
 
 @interface _FBSqlitePreparedCompoundStatement : FBSqlitePreparedStatement
 {
-    BSZeroingWeakReference *_weak_dbConnection;
+    FBSqliteDatabaseConnection *_dbConnection;
     NSArray *_statements;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (BOOL)executeWithBindings:(id)arg1 resultRowHandler:(CDUnknownBlockType)arg2 error:(out id *)arg3;
 - (id)initWithDatabaseConnection:(id)arg1 statements:(id)arg2;

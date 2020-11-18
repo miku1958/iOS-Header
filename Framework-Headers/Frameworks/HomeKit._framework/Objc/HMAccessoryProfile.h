@@ -12,7 +12,6 @@
 
 @interface HMAccessoryProfile : NSObject <HMObjectMerge>
 {
-    NSArray *_services;
     _HMAccessoryProfile *_accessoryProfile;
 }
 
@@ -21,13 +20,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSArray *services; // @synthesize services=_services;
+@property (readonly, nonatomic) NSArray *services;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 - (void).cxx_destruct;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
-- (id)encapsulatingServices;
 - (id)initWithAccessoryProfile:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

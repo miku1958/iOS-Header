@@ -10,8 +10,17 @@
 
 @interface NTPBSearchViewExposure : PBCodable <NSCopying>
 {
+    int _areaPresentationReason;
+    struct {
+        unsigned int areaPresentationReason:1;
+    } _has;
 }
 
+@property (nonatomic) int areaPresentationReason; // @synthesize areaPresentationReason=_areaPresentationReason;
+@property (nonatomic) BOOL hasAreaPresentationReason;
+
+- (int)StringAsAreaPresentationReason:(id)arg1;
+- (id)areaPresentationReasonAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

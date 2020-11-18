@@ -17,6 +17,7 @@
     HUGridCellLayoutOptions *_layoutOptions;
     long long _primaryState;
     UIVisualEffect *_contentEffect;
+    double _secondaryContentDimmingFactor;
     HUGridCellBackgroundView *_gridBackgroundView;
     UIVisualEffectView *_gridForegroundView;
 }
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) HUGridCellLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property (nonatomic) long long primaryState; // @synthesize primaryState=_primaryState;
 @property (nonatomic, getter=isRearranging) BOOL rearranging; // @synthesize rearranging=_rearranging;
+@property (nonatomic) double secondaryContentDimmingFactor; // @synthesize secondaryContentDimmingFactor=_secondaryContentDimmingFactor;
 @property (readonly) Class superclass;
 
 + (id)_jitterPositionAnimation;
@@ -43,7 +45,7 @@
 - (void)_updateForegroundStyle;
 - (void)_updateTintColorSettingsForSubviewsOfView:(id)arg1 desiredDisplayStyle:(unsigned long long)arg2;
 - (void)applyLayoutAttributes:(id)arg1;
-- (void)contentEffectDidChange;
+- (void)displayStyleDidChange;
 - (unsigned long long)iconDisplayStyleForPrimaryState:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

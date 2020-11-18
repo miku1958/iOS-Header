@@ -28,6 +28,7 @@
     unsigned int _cachedPlaybackStateIsValid:1;
     unsigned int _allowsBackgroundVideo:1;
     unsigned int _wantsQueueModificationsDisabled:1;
+    CDUnknownBlockType _prepareToPlayCompletionHandler;
 }
 
 @property BOOL inBlockHandlingPlaybackStateChangedMessageFromServer;

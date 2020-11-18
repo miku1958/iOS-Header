@@ -6,16 +6,20 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 @interface MPServerObject : NSObject
 {
     int _clientPID;
     CDStruct_6ad76789 *_clientAuditToken;
+    NSString *_clientBundleIdentifier;
+    NSString *_clientBundleVersion;
     NSMutableArray *_deferredInvocations;
 }
 
 @property (readonly, nonatomic) CDStruct_6ad76789 *clientAuditToken; // @synthesize clientAuditToken=_clientAuditToken;
+@property (readonly, copy, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *clientBundleVersion; // @synthesize clientBundleVersion=_clientBundleVersion;
 @property (readonly, nonatomic) int clientPID; // @synthesize clientPID=_clientPID;
 @property (strong, nonatomic) NSMutableArray *deferredInvocations; // @synthesize deferredInvocations=_deferredInvocations;
 

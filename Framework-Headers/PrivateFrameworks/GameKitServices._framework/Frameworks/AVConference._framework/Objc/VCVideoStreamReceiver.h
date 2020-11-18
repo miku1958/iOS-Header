@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCMediaStreamSyncDestination-Protocol.h>
 
@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
     VCVideoStreamRateAdaptation *_rateAdaptation;
     unsigned int _mostRecentTimestamp;
     unsigned int _lastVideoTimestamp;
+    double _lastReceivedVideoRTPPacketTime;
+    double _lastReceivedVideoRTCPPacketTime;
     unsigned int _videoTimestampWrapCount;
     struct opaqueCMFormatDescription *_formatDescription;
     id<VCVideoStreamReceiverDelegate> _delegate;
@@ -57,6 +59,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) id<VCVideoStreamReceiverDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) double lastReceivedVideoRTCPPacketTime; // @synthesize lastReceivedVideoRTCPPacketTime=_lastReceivedVideoRTCPPacketTime;
+@property (readonly) double lastReceivedVideoRTPPacketTime; // @synthesize lastReceivedVideoRTPPacketTime=_lastReceivedVideoRTPPacketTime;
 @property int remoteVideoOrientation; // @synthesize remoteVideoOrientation=_remoteVideoOrientation;
 @property double roundTripTime; // @synthesize roundTripTime=_roundTripTime;
 @property (readonly) Class superclass;

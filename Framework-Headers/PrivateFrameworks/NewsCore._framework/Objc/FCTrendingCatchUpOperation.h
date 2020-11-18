@@ -13,14 +13,17 @@
 {
     id<FCContentContext> _context;
     NSArray *_headlines;
+    double _maximumCachedAge;
     NSError *_error;
 }
 
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
 @property (strong) NSError *error; // @synthesize error=_error;
 @property (copy) NSArray *headlines; // @synthesize headlines=_headlines;
+@property double maximumCachedAge; // @synthesize maximumCachedAge=_maximumCachedAge;
 
 - (void).cxx_destruct;
+- (id)init;
 - (void)performOperation;
 - (BOOL)validateOperation;
 

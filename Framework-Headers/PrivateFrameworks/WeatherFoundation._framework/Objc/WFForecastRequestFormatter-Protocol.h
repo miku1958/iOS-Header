@@ -6,9 +6,10 @@
 
 #import <WeatherFoundation/NSObject-Protocol.h>
 
-@class NSDateComponents, NSURLRequest, WFLocation;
+@class NSDateComponents, NSURL, NSURLRequest, WFLocation;
 
 @protocol WFForecastRequestFormatter <NSObject>
 + (NSURLRequest *)forecastRequestForLocation:(WFLocation *)arg1 date:(NSDateComponents *)arg2;
++ (NSURL *)hostURLForService;
 @end
 

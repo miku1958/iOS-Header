@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PKPaymentSession.h>
 
-@class NSArray, NSObject, PKFieldProperties, PKPaymentApplication, PKPaymentPass;
+@class NSArray, NSObject, PKFelicaAppletHistory, PKFieldProperties, PKPaymentApplication, PKPaymentPass;
 @protocol OS_dispatch_queue, PKContactlessInterfaceSessionDelegate;
 
 @interface PKContactlessInterfaceSession : PKPaymentSession
@@ -23,6 +23,8 @@
     BOOL _fieldPropertiesLookupProcessed;
     unsigned long long _fieldPropertiesLookupValueAddedServiceMode;
     unsigned long long _fieldPropertiesLookupTechnology;
+    BOOL _handlingExpress;
+    BOOL _felicaStateChanged;
     unsigned long long _state;
     id<PKContactlessInterfaceSessionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -32,7 +34,10 @@
 @property (readonly, nonatomic) PKPaymentPass *activatedPaymentPass;
 @property (readonly, nonatomic) NSArray *activatedValueAddedServicePasses; // @synthesize activatedValueAddedServicePasses=_activatedValueAddedServicePasses;
 @property (weak, nonatomic) id<PKContactlessInterfaceSessionDelegate> delegate;
+@property (readonly, nonatomic) PKFelicaAppletHistory *felicaAppletState;
+@property (readonly, nonatomic) BOOL fieldPresent;
 @property (readonly, nonatomic) PKFieldProperties *fieldProperties; // @synthesize fieldProperties=_fieldProperties;
+@property (readonly, nonatomic) BOOL persistentCardEmulationQueued;
 @property (readonly, nonatomic) unsigned long long state;
 
 - (void).cxx_destruct;
@@ -41,7 +46,9 @@
 - (BOOL)activatePaymentApplication:(id)arg1 forPaymentPass:(id)arg2 markAsDefault:(BOOL)arg3;
 - (BOOL)activateValueAddedServicePassWhitelist:(id)arg1 greylist:(id)arg2;
 - (BOOL)authorizeAndStartCardEmulationWithCredential:(id)arg1 deferAuthorization:(BOOL)arg2;
-- (BOOL)fieldPresent;
+- (void)invalidateSessionWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)queuePersistentCardEmulation;
+- (void)resetExpressState;
 - (void)setState:(unsigned long long)arg1;
 - (BOOL)stopCardEmulation;
 

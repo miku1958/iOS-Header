@@ -41,6 +41,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
+- (void)_createCloudPushDelayTimer;
 - (void)_handleCancelledOperations:(id)arg1;
 - (void)_handleNextOperation;
 - (void)addOperation:(id)arg1;
@@ -50,6 +51,7 @@
 - (id)initWithClientQueue:(id)arg1 homeManager:(id)arg2;
 - (void)killCloudPushAndResume;
 - (void)pauseCloudPush;
+- (void)resetCloudPushTimer;
 - (void)resumeCloudPush;
 - (void)timerDidFire:(id)arg1;
 

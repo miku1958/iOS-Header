@@ -10,11 +10,13 @@
 
 @interface NPKTransientPassRequest : NSObject
 {
+    BOOL _serviceModeRequested;
     NPKTransientPassAssertionConnection *_owningConnection;
     NSString *_uniqueID;
 }
 
 @property (weak, nonatomic) NPKTransientPassAssertionConnection *owningConnection; // @synthesize owningConnection=_owningConnection;
+@property (nonatomic) BOOL serviceModeRequested; // @synthesize serviceModeRequested=_serviceModeRequested;
 @property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 
 - (void).cxx_destruct;

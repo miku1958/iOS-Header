@@ -24,6 +24,7 @@
     NSString *_deviceModel;
     NSString *_devicePlatform;
     NSString *_languageCode;
+    int _newsWidgetModeGroup;
     NSString *_originatingCampaignId;
     NSString *_originatingCampaignType;
     NSString *_originatingCreativeId;
@@ -44,6 +45,7 @@
     BOOL _isPaidSubscriberFromAppStore;
     BOOL _isPaidSubscriberFromNews;
     BOOL _isPaidSubscriberFromThirdParty;
+    BOOL _locationPermissionGranted;
     BOOL _notificationsEnabled;
     BOOL _privateDataSyncOn;
     BOOL _runningObsolete;
@@ -55,6 +57,7 @@
         unsigned int userStartDate:1;
         unsigned int campaignType:1;
         unsigned int cellularRadioAccessTechnology:1;
+        unsigned int newsWidgetModeGroup:1;
         unsigned int osInstallVariant:1;
         unsigned int reachabilityStatus:1;
         unsigned int textSize:1;
@@ -66,6 +69,7 @@
         unsigned int isPaidSubscriberFromAppStore:1;
         unsigned int isPaidSubscriberFromNews:1;
         unsigned int isPaidSubscriberFromThirdParty:1;
+        unsigned int locationPermissionGranted:1;
         unsigned int notificationsEnabled:1;
         unsigned int privateDataSyncOn:1;
         unsigned int runningObsolete:1;
@@ -100,6 +104,8 @@
 @property (nonatomic) BOOL hasIsPaidSubscriberFromThirdParty;
 @property (readonly, nonatomic) BOOL hasLanguageCode;
 @property (nonatomic) BOOL hasLastAppOpenDate;
+@property (nonatomic) BOOL hasLocationPermissionGranted;
+@property (nonatomic) BOOL hasNewsWidgetModeGroup;
 @property (nonatomic) BOOL hasNotificationsEnabled;
 @property (readonly, nonatomic) BOOL hasOriginatingCampaignId;
 @property (readonly, nonatomic) BOOL hasOriginatingCampaignType;
@@ -128,6 +134,8 @@
 @property (nonatomic) BOOL isPaidSubscriberFromThirdParty; // @synthesize isPaidSubscriberFromThirdParty=_isPaidSubscriberFromThirdParty;
 @property (strong, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property (nonatomic) long long lastAppOpenDate; // @synthesize lastAppOpenDate=_lastAppOpenDate;
+@property (nonatomic) BOOL locationPermissionGranted; // @synthesize locationPermissionGranted=_locationPermissionGranted;
+@property (nonatomic) int newsWidgetModeGroup; // @synthesize newsWidgetModeGroup=_newsWidgetModeGroup;
 @property (nonatomic) BOOL notificationsEnabled; // @synthesize notificationsEnabled=_notificationsEnabled;
 @property (strong, nonatomic) NSString *originatingCampaignId; // @synthesize originatingCampaignId=_originatingCampaignId;
 @property (strong, nonatomic) NSString *originatingCampaignType; // @synthesize originatingCampaignType=_originatingCampaignType;
@@ -152,6 +160,7 @@
 - (void).cxx_destruct;
 - (int)StringAsCampaignType:(id)arg1;
 - (int)StringAsCellularRadioAccessTechnology:(id)arg1;
+- (int)StringAsNewsWidgetModeGroup:(id)arg1;
 - (int)StringAsOsInstallVariant:(id)arg1;
 - (int)StringAsReachabilityStatus:(id)arg1;
 - (int)StringAsWidgetModeType:(id)arg1;
@@ -163,6 +172,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)newsWidgetModeGroupAsString:(int)arg1;
 - (id)osInstallVariantAsString:(int)arg1;
 - (id)reachabilityStatusAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -97,7 +97,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithViewSize:(struct CGSize)arg1 overrideSizeSubclass:(id)arg2;
 - (long long)numberOfCameraCellsPerRow;
-- (double)pointWidthForCameraCell;
 - (double)pointWidthForNumberOfColumns:(long long)arg1;
 
 @end

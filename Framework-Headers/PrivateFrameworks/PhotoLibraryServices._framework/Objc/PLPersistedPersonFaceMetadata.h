@@ -7,10 +7,11 @@
 #import <Foundation/NSObject.h>
 
 #import <PhotoLibraryServices/NSCoding-Protocol.h>
+#import <PhotoLibraryServices/PLFaceRebuildDescription-Protocol.h>
 
 @class NSString;
 
-@interface PLPersistedPersonFaceMetadata : NSObject <NSCoding>
+@interface PLPersistedPersonFaceMetadata : NSObject <NSCoding, PLFaceRebuildDescription>
 {
     BOOL _hidden;
     BOOL _manual;
@@ -19,30 +20,37 @@
     BOOL _isHidden;
     int _faceAlgorithmVersion;
     NSString *_assetUUID;
+    NSString *_assetCloudGUID;
     double _centerX;
     double _centerY;
     double _size;
 }
 
-@property (strong, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
+@property (copy, nonatomic) NSString *assetCloudGUID; // @synthesize assetCloudGUID=_assetCloudGUID;
+@property (copy, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
 @property (nonatomic) double centerX; // @synthesize centerX=_centerX;
 @property (nonatomic) double centerY; // @synthesize centerY=_centerY;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) int faceAlgorithmVersion; // @synthesize faceAlgorithmVersion=_faceAlgorithmVersion;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (readonly, nonatomic, getter=isHidden) BOOL isHidden; // @synthesize isHidden=_isHidden;
 @property (nonatomic, getter=isManual) BOOL manual; // @synthesize manual=_manual;
 @property (nonatomic, getter=isNameSourceAuto) BOOL nameSourceAuto; // @synthesize nameSourceAuto=_nameSourceAuto;
 @property (nonatomic, getter=isRepresentative) BOOL representative; // @synthesize representative=_representative;
 @property (nonatomic) double size; // @synthesize size=_size;
+@property (readonly) Class superclass;
 
-+ (void)_migratePersistedFaces:(id)arg1 fromVersion:(long long)arg2;
++ (void)_migratePersistedFaces:(id)arg1 fromVersion:(unsigned long long)arg2;
 + (id)detectedFacePropertiesToFetch;
 + (id)detectedFaceRelationshipKeyPathsToPrefetch;
++ (void)enumerateMatchedAssetsWithMetadata:(id)arg1 inContext:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 + (id)persistedFaceMetadataWithDetectedFace:(id)arg1 isKeyFace:(BOOL)arg2;
 - (void).cxx_destruct;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)insertDeferredRebuildFaceFromDataInManagedObjectContext:(id)arg1;
 
 @end
 

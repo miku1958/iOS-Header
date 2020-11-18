@@ -34,7 +34,7 @@
 - (void)_performSecondaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_pushSecondaryPaymentSetupViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_shouldUseInlineSecondaryProvisioningFlow;
-- (void)browseProductsViewController:(id)arg1 didSelectProduct:(id)arg2;
+- (void)browseProductsViewController:(id)arg1 didSelectProduct:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)cameraCaptureViewController:(id)arg1 didRecognizeObjects:(id)arg2;
 - (void)cameraCaptureViewControllerDidFail:(id)arg1;
 - (id)defaultFields;
@@ -48,7 +48,6 @@
 - (id)newPaymentEligibilityRequest;
 - (void)performNextActionForProvisioningState:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)readonlyFieldIdentifiers;
-- (BOOL)shouldAppearWithFirstEmptyFieldAsFirstResponder;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)updateFieldsModelWithCameraCaptureObjects:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

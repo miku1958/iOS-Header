@@ -15,9 +15,7 @@
 
 @interface CKDURLSessionPool : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegate>
 {
-    NSMutableDictionary *_delegateByTaskDescription;
-    NSMutableDictionary *_sessionByIdentifier;
-    NSMutableDictionary *_ephemeralSessionByName;
+    NSMutableDictionary *_sessionWrapperByIdentifier;
     NSMutableDictionary *_sessionConfigurationReferenceByName;
     NSMutableDictionary *_sessionConfigurationReferenceByIdentifier;
     NSObject<OS_dispatch_queue> *_queue;
@@ -44,7 +42,7 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)_URLSessionWithConfiguration:(id)arg1 configurationName:(id)arg2 forDelegate:(id)arg3;
+- (id)_URLSessionWrapperWithConfiguration:(id)arg1 configurationName:(id)arg2 forDelegate:(id)arg3;
 - (void)_performAsyncOnDelegateOfSession:(id)arg1 task:(id)arg2 fromSelector:(SEL)arg3 block:(CDUnknownBlockType)arg4;
 - (void)_updateBackgroundSessionConnectionPoolLimit;
 - (void)checkinSessionConfiguration:(id)arg1 withName:(id)arg2;

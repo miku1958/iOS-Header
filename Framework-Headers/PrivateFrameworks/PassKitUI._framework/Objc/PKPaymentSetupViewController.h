@@ -6,47 +6,58 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <PassKitUI/PKPaymentSetupBrowseProductsViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupPrivacyFooterViewDelegate-Protocol.h>
 
-@class ACAccountStore, PKPaymentProvisioningController, PKPaymentWebService;
+@class ACAccountStore, NSString, PKPaymentProvisioningController, PKPaymentSetupIntroView, PKPaymentWebService;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupViewController : UIViewController <PKPaymentSetupPrivacyFooterViewDelegate>
+@interface PKPaymentSetupViewController : UIViewController <PKPaymentSetupPrivacyFooterViewDelegate, PKPaymentSetupBrowseProductsViewControllerDelegate>
 {
     ACAccountStore *_accountStore;
     BOOL _nextButtonPushed;
     PKPaymentProvisioningController *_provisioningController;
+    PKPaymentSetupIntroView *_splashView;
     BOOL _hideSetupLater;
     BOOL _allowsManualEntry;
-    BOOL _skipFlowPicker;
     long long _context;
     id<PKPaymentSetupViewControllerDelegate> _delegate;
+    long long _paymentSetupMode;
 }
 
 @property (nonatomic) BOOL allowsManualEntry; // @synthesize allowsManualEntry=_allowsManualEntry;
 @property (nonatomic) long long context; // @synthesize context=_context;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) long long paymentSetupMode; // @synthesize paymentSetupMode=_paymentSetupMode;
 @property (readonly, strong, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
-@property (nonatomic) BOOL skipFlowPicker; // @synthesize skipFlowPicker=_skipFlowPicker;
+@property (readonly) Class superclass;
 @property (readonly, strong, nonatomic) PKPaymentWebService *webService;
 
-+ (id)configuredNextActionViewControllerForProduct:(id)arg1 provisioningController:(id)arg2 context:(long long)arg3 delegate:(id)arg4;
++ (id)configuredManualProvisioningViewControllerForProduct:(id)arg1 provisioningController:(id)arg2 context:(long long)arg3 delegate:(id)arg4;
 - (void).cxx_destruct;
-- (id)_configuredCardListViewControllerForCredentials:(id)arg1 product:(id)arg2;
-- (id)_configuredCardOnFileEntryViewControllerForCredential:(id)arg1 product:(id)arg2;
-- (id)_configuredSecondaryActionViewControllerForAssociatedCredentials:(id)arg1 product:(id)arg2;
+- (id)_actionViewControllerForAssociatedCredentials:(id)arg1 product:(id)arg2;
+- (id)_associatedCredentialsForDefaultBehaviour;
+- (id)_configuredflowPickerViewControllerWithBrowsableProductTypes:(id)arg1;
 - (id)_contextSpecificStringForAggdKey:(id)arg1;
 - (id)_deviceSpecificLocalizedStringKeyForKey:(id)arg1;
+- (id)_filteredPaymentSetupProductsForFlowPicker:(id)arg1;
+- (id)_flowPicker;
+- (void)_flowPicker:(id)arg1 didSelectProducts:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_next:(id)arg1;
+- (void)_productSelectionViewController:(id)arg1 didSelectProduct:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_pushNextActionViewController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)browseProductsViewController:(id)arg1 didSelectProduct:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)configuredNextActionViewController;
-- (void)dealloc;
 - (unsigned long long)edgesForExtendedLayout;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 - (void)loadView;
 - (void)privacyFooterLinkTapped:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 
 @end

@@ -30,6 +30,7 @@
 @property (readonly, copy, nonatomic) NSString *firstUseLearnMoreURL;
 @property (readonly, nonatomic) unsigned long long maximumCachedQueriesToSend;
 @property (readonly, nonatomic) unsigned long long maximumCachedResultsToSend;
+@property (readonly, nonatomic) NSNumber *minSearchRenderTimeout;
 @property (readonly, nonatomic) double minimumIntervalBetweenQueriesFromBag;
 @property (readonly, nonatomic) unsigned long long minimumQueryLength;
 @property (readonly, nonatomic) NSNumber *otherRenderTimeout;

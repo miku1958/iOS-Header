@@ -15,11 +15,13 @@
 #import <PhotoAnalysis/PLPhotoAnalysisJobServiceProtocol-Protocol.h>
 
 @class NSDictionary, NSMutableArray, NSMutableSet, NSString, PHAActivityGovernor, PHAAnalysisStateObserver, PHADirtyChangeCoalescer, PHAJobCoalescer, PHAJobConstraints, PHAJobConstraintsObserver, PHAJobGenerator, PHAManager, PHAWorkerHealthMonitor, PHAWorkerJob, PHAWorkerWarmer;
-@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction, PHAJobCoordinatorDelegate;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction, OS_voucher, PHAJobCoordinatorDelegate;
 
 @interface PHAJobCoordinator : NSObject <PHAJobCoalescerDelegate, PHAJobConstraintsObserverDelegate, PHAWorkerJobDelegate, PHAAnalysisStateObserverDelegate, PHADirtyChangeCoalescerDelegate, PHAActivityGovernorDelegate, PLPhotoAnalysisJobServiceProtocol>
 {
     _Atomic int _pendingAsyncTasksCount;
+    NSObject<OS_voucher> *_turboModeBoostVoucher;
+    BOOL _turboMode;
     BOOL _newConstraintsPending;
     BOOL _shouldIgnoreConstraintChanges;
     PHAJobCoalescer *_jobCoalescer;
@@ -68,6 +70,7 @@
 @property (nonatomic) BOOL shouldIgnoreConstraintChanges; // @synthesize shouldIgnoreConstraintChanges=_shouldIgnoreConstraintChanges;
 @property (readonly, nonatomic) PHAAnalysisStateObserver *stateObserver; // @synthesize stateObserver=_stateObserver;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isTurboMode) BOOL turboMode; // @synthesize turboMode=_turboMode;
 @property (readonly, nonatomic) NSMutableArray *waitingForegroundJobs; // @synthesize waitingForegroundJobs=_waitingForegroundJobs;
 @property (readonly, nonatomic) PHAWorkerWarmer *warmer; // @synthesize warmer=_warmer;
 @property (strong, nonatomic) NSMutableSet *workerTypesServicedForUserFG; // @synthesize workerTypesServicedForUserFG=_workerTypesServicedForUserFG;

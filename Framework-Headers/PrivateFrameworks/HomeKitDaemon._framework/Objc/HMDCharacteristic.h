@@ -14,8 +14,10 @@
 
 @interface HMDCharacteristic : NSObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState>
 {
+    BOOL _notificationRegisteredWithRemoteGateway;
     HMDAccessory *_accessory;
     HMDService *_service;
+    NSNumber *_stateNumber;
     NSData *_authorizationData;
     NSMutableSet *_hapCharacteristicTuples;
     NSString *_characteristicType;
@@ -46,10 +48,12 @@
 @property (strong, nonatomic) NSDate *lastKnownValueUpdateTime; // @synthesize lastKnownValueUpdateTime=_lastKnownValueUpdateTime;
 @property (readonly, nonatomic) HMDCharacteristicMetadata *metadata;
 @property (strong, nonatomic) NSDate *notificationEnabledTime; // @synthesize notificationEnabledTime=_notificationEnabledTime;
+@property (nonatomic) BOOL notificationRegisteredWithRemoteGateway; // @synthesize notificationRegisteredWithRemoteGateway=_notificationRegisteredWithRemoteGateway;
 @property (strong, nonatomic) NSMutableSet *notificationRegistrations; // @synthesize notificationRegistrations=_notificationRegistrations;
 @property (readonly, nonatomic) long long properties;
 @property (readonly, nonatomic) NSString *serializedIdentifier;
 @property (readonly, weak, nonatomic) HMDService *service; // @synthesize service=_service;
+@property (copy, nonatomic, setter=setStateNumber:) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *type;
 @property (readonly, copy, nonatomic) id value;
@@ -68,6 +72,7 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isClientNotificationEnabled;
 - (BOOL)isNonClientNotificationEnabled;
+- (BOOL)isNonHomeNotificationsEnabled;
 - (BOOL)isNotificationEnabled;
 - (BOOL)isNotificationEnabledForClientIdentifier:(id)arg1;
 - (BOOL)isNotificationEnabledForClientIdentifierPrefix:(id)arg1;
@@ -80,7 +85,7 @@
 - (void)unconfigureForServerIdentifier:(id)arg1 linkType:(long long)arg2;
 - (void)updateLastKnownValue;
 - (void)updateService:(id)arg1 accessory:(id)arg2;
-- (void)updateValue:(id)arg1;
+- (void)updateValue:(id)arg1 updatedTime:(id)arg2 stateNumber:(id)arg3;
 - (id)validateValue:(id)arg1 outValue:(id *)arg2;
 - (BOOL)value:(id)arg1 differentThan:(id)arg2;
 

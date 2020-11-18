@@ -9,7 +9,7 @@
 #import <MediaPlayer/MPMediaLibraryDataProviderPrivate-Protocol.h>
 
 @class ML3MusicLibrary, MPMediaEntityCache, NSArray, NSOperationQueue, NSSet, NSString;
-@protocol MPArtworkDataSource, OS_dispatch_queue;
+@protocol MPArtworkDataSource, OS_dispatch_queue, OS_dispatch_source;
 
 @interface MPMediaLibraryDataProviderML3 : NSObject <MPMediaLibraryDataProviderPrivate>
 {
@@ -20,6 +20,8 @@
     int _refreshState;
     NSString *_uniqueIdentifier;
     NSOperationQueue *_setValuesWidthLimitedQueue;
+    NSObject<OS_dispatch_queue> *_entitiesAddedOrRemovedNotificationQueue;
+    NSObject<OS_dispatch_source> *_entitiesAddedOrRemovedCoalescingTimer;
     ML3MusicLibrary *_library;
     MPMediaEntityCache *_entityCache;
     id<MPArtworkDataSource> _artworkDataSource;
@@ -80,6 +82,7 @@
 - (void)_invisiblePropertiesDidChange:(id)arg1;
 - (void)_libraryCloudLibraryAvailabilityDidChange:(id)arg1;
 - (void)_libraryContentsDidChange:(id)arg1;
+- (void)_libraryEntitiesAddedOrRemoved:(id)arg1;
 - (void)_libraryUIDDidChange:(id)arg1;
 - (void)_loadProperties:(id)arg1 ofEntityWithIdentifier:(long long)arg2 ML3EntityClass:(Class)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)_loadValueForAggregateFunction:(id)arg1 entityClass:(Class)arg2 property:(id)arg3 query:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;

@@ -6,22 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class HMDCameraSessionID, HMDSnapshotFile, HMFTimer;
+@class HMDSnapshotFile, HMFTimer, NSString;
 
 @interface HMDSnapshotCacheEntry : NSObject
 {
     HMDSnapshotFile *_snapshotFile;
-    HMDCameraSessionID *_sessionID;
+    NSString *_proactiveSessionID;
     HMFTimer *_timer;
+    CDUnknownBlockType _snapshotRequestCompletion;
 }
 
-@property (readonly, nonatomic) HMDCameraSessionID *sessionID; // @synthesize sessionID=_sessionID;
+@property (readonly, nonatomic) NSString *proactiveSessionID; // @synthesize proactiveSessionID=_proactiveSessionID;
 @property (readonly, nonatomic) HMDSnapshotFile *snapshotFile; // @synthesize snapshotFile=_snapshotFile;
+@property (copy, nonatomic) CDUnknownBlockType snapshotRequestCompletion; // @synthesize snapshotRequestCompletion=_snapshotRequestCompletion;
 @property (readonly, nonatomic) HMFTimer *timer; // @synthesize timer=_timer;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithSessionID:(id)arg1 snapshotFile:(id)arg2 timer:(id)arg3;
+- (id)initWithProactiveSessionID:(id)arg1 snapshotFile:(id)arg2 timer:(id)arg3;
 
 @end
 

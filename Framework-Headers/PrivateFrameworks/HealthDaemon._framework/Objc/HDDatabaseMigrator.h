@@ -108,6 +108,7 @@
 - (long long)_removeAchievementsAndActivityCachesFromUnprotectedDatabaseWithError:(id *)arg1;
 - (long long)_removeActivitySharingDataWithError:(id *)arg1;
 - (long long)_removeOrphanedDeletedObjectsWithError:(id *)arg1;
+- (long long)_removeOrphanedLocationSeriesWithError:(id *)arg1;
 - (long long)_removeStandHourWriteAuthorizationWithError:(id *)arg1;
 - (long long)_renameCDATableWithError:(id *)arg1;
 - (long long)_renameKeyValueSyncStoreColumnInProtectedDabase:(BOOL)arg1 error:(id *)arg2;
@@ -123,6 +124,8 @@
 - (long long)_updateKeyValueEntityUniquenessWithProtectedDatabase:(BOOL)arg1 error:(id *)arg2;
 - (id)boulderProtectedMigrationSteps;
 - (id)boulderUnprotectedMigrationSteps;
+- (id)butlerProtectedMigrationSteps;
+- (id)butlerUnprotectedMigrationSteps;
 - (id)eagleProtectedMigrationSteps;
 - (id)eagleUnprotectedMigrationSteps;
 - (BOOL)executeSQL:(id)arg1 error:(id *)arg2;

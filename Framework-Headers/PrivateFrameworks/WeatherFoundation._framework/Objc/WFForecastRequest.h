@@ -31,8 +31,10 @@
 
 + (id)forecastRequestForLocation:(id)arg1 date:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (void)cleanup;
 - (id)description;
 - (id)editLinksForForecast:(id)arg1;
+- (void)handleCancellation;
 - (void)handleResponse:(id)arg1;
 - (id)initWithLocation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithLocation:(id)arg1 date:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

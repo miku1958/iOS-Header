@@ -38,6 +38,7 @@
 - (void)performOperation;
 - (void)resetForRetry;
 - (void)setRelativePriority:(long long)arg1;
+- (id)throttleGroup;
 - (BOOL)validateOperation;
 
 @end

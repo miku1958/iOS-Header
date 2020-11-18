@@ -14,8 +14,8 @@
 @interface _WGWidgetRemoteViewController : _UIRemoteViewController <_NCWidgetViewController_Host_IPC>
 {
     BOOL _valid;
-    WGWidgetHostingViewController *_managingHost;
     NSObject<OS_dispatch_queue> *_managingHostQueue;
+    WGWidgetHostingViewController *_managingHost;
 }
 
 @property (weak, nonatomic) WGWidgetHostingViewController *managingHost; // @synthesize managingHost=_managingHost;

@@ -6,8 +6,8 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSLock, NSMutableArray;
-@protocol OS_dispatch_queue;
+@class NSArray, NSCache, NSLock, NSMutableArray;
+@protocol NSCacheDelegate, OS_dispatch_queue;
 
 @interface GEOMapService : NSObject
 {
@@ -17,6 +17,8 @@
     NSObject<OS_dispatch_queue> *_placeDataObserverQueue;
     int _overriddenResultProviderID;
     int _additionalEnabledMarketsChangedToken;
+    NSCache *_handleCache;
+    id<NSCacheDelegate> _handleCacheDelegate;
 }
 
 + (void)_attributedGeoMapItemsForPlaceDatasWithType:(int)arg1 placeDatas:(id)arg2 disambiguationLabels:(id)arg3 handler:(CDUnknownBlockType)arg4;
@@ -45,7 +47,7 @@
 - (void)notifyPlaceDataRequestObserversThatTicket:(id)arg1 didCompleteWithMapItems:(id)arg2;
 - (void)removePlaceDataRequestObserver:(id)arg1;
 - (void)resolveMapItemFromHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)resolveMapItemFromHandle:(id)arg1 withTraits:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)resolveMapItemFromHandle:(id)arg1 withTraits:(id)arg2 useCache:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)serializedClientMetadataForParsec;
 - (id)serializedClientMetadataForSiri;
 - (id)serializedClientMetadataForTraits:(id)arg1;

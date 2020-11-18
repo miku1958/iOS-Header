@@ -10,8 +10,9 @@
 
 @interface CUIMutableCommonAssetStorage : CUICommonAssetStorage
 {
-    unsigned int _useBitmapIndex;
     NSMutableDictionary *_bitmapInfo;
+    unsigned int _useBitmapIndex:1;
+    unsigned int _enableLargeCarKeyWorkaround:1;
 }
 
 @property (nonatomic) BOOL useBitmapIndex;
@@ -19,6 +20,7 @@
 - (void)_allocateExtendedMetadata;
 - (BOOL)_saveBitmapInfo;
 - (void)_setZeroCodeInfo:(CDStruct_c0454aff)arg1 forKey:(const void *)arg2 withLength:(unsigned long long)arg3 inTree:(const void *)arg4;
+- (BOOL)_writeOutKeyFormatWithWorkaround;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;
 - (void)removeAssetForKey:(id)arg1;
@@ -32,6 +34,7 @@
 - (void)setColorSpaceID:(unsigned int)arg1;
 - (void)setDeploymentPlatform:(id)arg1;
 - (void)setDeploymentPlatformVersion:(id)arg1;
+- (void)setEnableLargeCarKeyWorkaround:(BOOL)arg1;
 - (void)setExternalTags:(id)arg1;
 - (void)setFontName:(id)arg1 baselineOffset:(float)arg2 forFontSelector:(id)arg3;
 - (void)setFontSize:(float)arg1 forFontSizeSelector:(id)arg2;

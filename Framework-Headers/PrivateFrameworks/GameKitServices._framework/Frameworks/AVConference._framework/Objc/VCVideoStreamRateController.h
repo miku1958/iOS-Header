@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue, VCVideoStreamRateControlProtocol;
 
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     unsigned short _minTierIndex;
     double _rateControlTime;
     double _rateControlInterval;
+    unsigned int _previousRTPTimestamp;
     unsigned int _averageTargetBitrate;
     unsigned long long _accumulatedTargetDataSize;
     double _totalTime;

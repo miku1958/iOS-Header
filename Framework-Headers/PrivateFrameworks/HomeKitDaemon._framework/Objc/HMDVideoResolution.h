@@ -9,15 +9,23 @@
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
+@class NSNumber;
+
 @interface HMDVideoResolution : HMDNumberParser <NSSecureCoding, NSCopying>
 {
+    NSNumber *_imageWidth;
+    NSNumber *_imageHeight;
     unsigned long long _resolutionType;
 }
 
+@property (readonly, copy, nonatomic) NSNumber *imageHeight; // @synthesize imageHeight=_imageHeight;
+@property (readonly, copy, nonatomic) NSNumber *imageWidth; // @synthesize imageWidth=_imageWidth;
 @property (readonly, nonatomic) unsigned long long resolutionType; // @synthesize resolutionType=_resolutionType;
 
 + (id)arrayWithResolutions:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (void)_extractWidthAndHeight;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)description:(id)arg1 indent:(id)arg2;

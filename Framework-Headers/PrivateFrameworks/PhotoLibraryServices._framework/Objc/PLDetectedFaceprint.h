@@ -14,7 +14,7 @@
 
 @property (strong, nonatomic) NSData *data; // @dynamic data;
 @property (strong, nonatomic) PLDetectedFace *face; // @dynamic face;
-@property (nonatomic) long long faceprintVersion; // @dynamic faceprintVersion;
+@property (nonatomic) int faceprintVersion; // @dynamic faceprintVersion;
 
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;

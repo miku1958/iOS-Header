@@ -17,6 +17,7 @@
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSObject<OS_dispatch_source> *_deviceUpdateTimeoutTimer;
+    NSObject<OS_dispatch_source> *_deviceTotalUpdateTimeoutTimer;
     BOOL _isUpdatingDevices;
     PKRemotePaymentRequest *_currentRemotePaymentRequest;
     long long _messageSendCount;
@@ -36,11 +37,13 @@
 
 - (void).cxx_destruct;
 - (void)_deviceUpdateTimerDidTimeout;
+- (void)_deviceUpdateTotalTimerDidTimeout;
 - (void)_queue_sendPaymentStatus:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resetRequest;
 - (void)_send_didReceiveCancellation;
 - (void)_send_didReceivePayment:(id)arg1;
 - (void)_send_didReceiveUpdatedPaymentDevice:(id)arg1;
+- (void)_send_didTimeoutTotalUpdatePaymentDevices;
 - (void)_send_didTimeoutUpdatePaymentDevices;
 - (void)cancelRemotePaymentRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;

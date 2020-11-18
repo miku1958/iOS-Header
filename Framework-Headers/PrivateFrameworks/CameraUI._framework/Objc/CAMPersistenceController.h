@@ -89,8 +89,8 @@
 - (void)_notifyDelegateOfCompletedVideoRemotePersistenceForRequest:(id)arg1 withReply:(id)arg2 error:(id)arg3;
 - (id)_persistStillImageCaptureSurfaceResult:(id)arg1 withRequest:(id)arg2;
 - (id)_persistVideoCaptureResult:(id)arg1 withRequest:(id)arg2;
-- (void)_remotelyPersistStillImageJob:(id)arg1 forRequest:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)_remotelyPersistVideoJob:(id)arg1 forRequest:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)_remotelyPersistStillImageJob:(id)arg1 forRequest:(id)arg2 withSendHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_remotelyPersistVideoJob:(id)arg1 forRequest:(id)arg2 withSendHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_removeCoordinationGroupForIdentifier:(id)arg1;
 - (void)_removeDispatchGroupForImageGroupIdentifier:(id)arg1;
 - (id)_stillImagePersistenceUUIDForRequest:(id)arg1 withResult:(id)arg2;

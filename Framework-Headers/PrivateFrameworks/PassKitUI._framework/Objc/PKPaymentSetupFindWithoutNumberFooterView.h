@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <PassKitUI/PKTableFooterView.h>
 
 @class UIButton;
 
-@interface PKPaymentSetupFindWithoutNumberFooterView : UIView
+@interface PKPaymentSetupFindWithoutNumberFooterView : PKTableFooterView
 {
     long long _context;
     UIButton *_noNumberButton;
@@ -22,6 +22,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2;
 - (BOOL)isBuddyiPad;
 - (void)layoutSubviews;
+- (void)setButtonsEnabled:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

@@ -32,6 +32,7 @@
     NSString *_variantIdentifier;
     IKDOMElement *_xml;
     BOOL _autoIncrementCount;
+    BOOL _suppressCloudRestore;
     long long _buttonViewSubType;
     NSString *_playItemIdentifier;
     NSString *_sizeVariant;
@@ -60,6 +61,7 @@
 @property (readonly, nonatomic) BOOL showOnDemand; // @synthesize showOnDemand=_showOnDemand;
 @property (readonly, nonatomic) NSString *sizeVariant; // @synthesize sizeVariant=_sizeVariant;
 @property (readonly, nonatomic) SKUIStoreIdentifier *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
+@property (readonly, nonatomic) BOOL suppressCloudRestore; // @synthesize suppressCloudRestore=_suppressCloudRestore;
 @property (readonly, nonatomic) NSString *toggleItemIdentifier; // @synthesize toggleItemIdentifier=_toggleItemIdentifier;
 @property (nonatomic, getter=isToggled) BOOL toggled; // @synthesize toggled=_toggled;
 @property (readonly, nonatomic) NSString *toggledText; // @synthesize toggledText=_toggledText;

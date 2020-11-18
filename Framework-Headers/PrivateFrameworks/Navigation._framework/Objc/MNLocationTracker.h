@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasArrived;
 @property (readonly, nonatomic) MNLocation *lastMatchedLocation; // @synthesize lastMatchedLocation=_lastMatchedLocation;
 @property (readonly, nonatomic) MNNavigationSession *navigationSession; // @synthesize navigationSession=_navigationSession;
+@property (readonly, nonatomic) BOOL shouldProjectAlongRoute;
 @property (nonatomic, setter=_setState:) int state; // @synthesize state=_state;
 @property (readonly, nonatomic) int transportType;
 

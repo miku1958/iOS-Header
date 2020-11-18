@@ -7,6 +7,9 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (CameraKit)
+
+@property (readonly, nonatomic) BOOL cam_isHidden;
+
 + (void)cam_ceilBounds:(struct CGRect *)arg1 andRoundCenter:(struct CGPoint *)arg2 toViewScale:(id)arg3;
 + (void)cam_convertRect:(struct CGRect)arg1 toCeiledBounds:(struct CGRect *)arg2 andRoundedCenter:(struct CGPoint *)arg3 toViewScale:(id)arg4;
 + (double)cam_setHiddenDefaultAnimationDuration;
@@ -24,5 +27,6 @@
 - (void)cam_setHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)cam_setHidden:(BOOL)arg1 animationDuration:(double)arg2;
 - (void)cam_setHidden:(BOOL)arg1 animationDuration:(double)arg2 delay:(double)arg3;
+- (void)cam_setHidden:(BOOL)arg1 animationDuration:(double)arg2 delay:(double)arg3 completion:(CDUnknownBlockType)arg4;
 @end
 

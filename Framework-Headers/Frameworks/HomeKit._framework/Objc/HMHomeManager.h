@@ -118,6 +118,7 @@
 - (void)_notifyAccessAllowedWhenLockedUpdated:(BOOL)arg1;
 - (void)_notifyDelegateOfAppDataUpdate;
 - (void)_notifyResidentProvisioningStatus:(unsigned long long)arg1;
+- (void)_pingDeviceWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_primaryAccountDidChange:(id)arg1 modified:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_primaryAccountWasDeletedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_privateDelegate;
@@ -166,7 +167,6 @@
 - (void)queryiCloudSwitchStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetConfiguration:(BOOL)arg1 withoutPopup:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)sendHomeConfigurationFetched;
 - (void)setApplicationData:(id)arg1;
 - (void)setMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)shouldDisplayiCloudSwitchWithCompletionHandler:(CDUnknownBlockType)arg1;

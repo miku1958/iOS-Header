@@ -12,6 +12,7 @@
 @protocol CKDURLSessionTaskDelegate <NSObject>
 
 @property (readonly, nonatomic) NSOperationQueue *delegateQueue;
+@property (readonly, nonatomic) long long qualityOfService;
 @property (readonly, nonatomic) NSString *sectionID;
 @property (readonly, nonatomic) NSObject<OS_voucher> *voucher;
 

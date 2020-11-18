@@ -98,6 +98,7 @@
 - (BOOL)_lockedHasTCCAuthorization;
 - (void)_lockedSetHasTCCAuthorizationTernary:(long long)arg1;
 - (id)_operationStatusReport:(id)arg1;
+- (void)_sanityCheckMutableEncryptedPublicSharingKeyOnReturnedRecord:(id)arg1 forOperationID:(id)arg2;
 - (void)_setApplicationPermission:(unsigned long long)arg1 enabled:(BOOL)arg2 setupInfo:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_setupClientWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setupOperationQueues;

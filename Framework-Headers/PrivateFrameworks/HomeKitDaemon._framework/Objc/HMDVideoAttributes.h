@@ -25,6 +25,7 @@
 @property (readonly, copy, nonatomic) HMDVideoResolution *videoResolution; // @synthesize videoResolution=_videoResolution;
 
 + (BOOL)supportsSecureCoding;
++ (BOOL)translateImageResolution:(id)arg1 imageWidth:(id *)arg2 imageHeight:(id *)arg3;
 - (void).cxx_destruct;
 - (BOOL)_parseFromTLVData;
 - (void)description:(id)arg1 indent:(id)arg2;
@@ -32,7 +33,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithResolution:(id)arg1 framerate:(id)arg2;
 - (id)tlvData;
-- (BOOL)translateImageResolution:(id)arg1 imageWidth:(id *)arg2 imageHeight:(id *)arg3;
 - (id)translateImageWidth:(id)arg1 imageHeight:(id)arg2;
 
 @end

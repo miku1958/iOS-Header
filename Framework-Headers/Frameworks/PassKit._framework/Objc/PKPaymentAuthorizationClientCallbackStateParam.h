@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PKPaymentAuthorizationStateParam.h>
 
-@class CNContact, PKPayment, PKPaymentMethod, PKShippingMethod;
+@class CNContact, PKPayment, PKPaymentMethod, PKServiceProviderPurchase, PKShippingMethod;
 
 @interface PKPaymentAuthorizationClientCallbackStateParam : PKPaymentAuthorizationStateParam
 {
@@ -18,6 +18,7 @@
 @property (strong, nonatomic) id object; // @synthesize object=_object;
 @property (readonly, nonatomic) PKPayment *payment;
 @property (readonly, nonatomic) PKPaymentMethod *paymentMethod;
+@property (readonly, nonatomic) PKServiceProviderPurchase *purchase;
 @property (readonly, nonatomic) CNContact *shippingContact;
 @property (readonly, nonatomic) PKShippingMethod *shippingMethod;
 

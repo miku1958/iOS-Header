@@ -34,8 +34,10 @@
 + (BOOL)_shouldAcceptConnectionForClient:(id)arg1 error:(id *)arg2;
 + (id)serverWithClient:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
+- (void)_achievementDefinitionAvailabilityChanged:(id)arg1;
 - (void)_achievementDefinitionUnviewedCountChanged:(id)arg1;
 - (void)_achievementsAdded:(id)arg1;
+- (void)_callClientRemoteAchievementDefinitionUnviewedCountChanged;
 - (void)_checkForUpdatedAchievementAssetsOnce;
 - (id)clientInterface;
 - (void)dealloc;
@@ -43,6 +45,7 @@
 - (id)initWithClient:(id)arg1 profile:(id)arg2;
 - (void)invalidate;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)remote_achievementAssetAvailabilityOnPairedDeviceForIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_addAchievement:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_deleteAchievementWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_deleteAllAchievementsWithCompletion:(CDUnknownBlockType)arg1;
@@ -54,6 +57,7 @@
 - (void)remote_markAchievementAsViewed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_markAchievementDefinitionIdentifierAlertViewed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_markAchievementsAlerted:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_nextScheduledAchievementDefinitionAlertTaskDateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_registerForAchievementDefinitionNotificationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_registerForAchievementNotificationsAndFetchUnalertedCountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_runAchievementsFixupAsDryRun:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

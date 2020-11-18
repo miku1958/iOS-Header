@@ -12,6 +12,7 @@
 
 @interface NTPBFeedViewExposure : PBCodable <NSCopying>
 {
+    int _areaPresentationReason;
     NSString *_campaignId;
     NSString *_campaignType;
     int _countOfTotalGroupExposures;
@@ -37,6 +38,7 @@
     BOOL _isSubscribedToGroupFeed;
     BOOL _isUserSubscribedToFeed;
     struct {
+        unsigned int areaPresentationReason:1;
         unsigned int countOfTotalGroupExposures:1;
         unsigned int countOfTotalGroupsExposed:1;
         unsigned int feedCellHostType:1;
@@ -54,6 +56,7 @@
 }
 
 @property (nonatomic) BOOL adSupportedChannel; // @synthesize adSupportedChannel=_adSupportedChannel;
+@property (nonatomic) int areaPresentationReason; // @synthesize areaPresentationReason=_areaPresentationReason;
 @property (nonatomic) BOOL cameFromGroup; // @synthesize cameFromGroup=_cameFromGroup;
 @property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
 @property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
@@ -67,6 +70,7 @@
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (nonatomic) BOOL hasAdSupportedChannel;
+@property (nonatomic) BOOL hasAreaPresentationReason;
 @property (nonatomic) BOOL hasCameFromGroup;
 @property (readonly, nonatomic) BOOL hasCampaignId;
 @property (readonly, nonatomic) BOOL hasCampaignType;
@@ -103,11 +107,13 @@
 @property (strong, nonatomic) NSString *viewFrameInScreen; // @synthesize viewFrameInScreen=_viewFrameInScreen;
 
 - (void).cxx_destruct;
+- (int)StringAsAreaPresentationReason:(id)arg1;
 - (int)StringAsFeedCellHostType:(id)arg1;
 - (int)StringAsFeedCellSection:(id)arg1;
 - (int)StringAsFeedType:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
 - (int)StringAsPresentationReason:(id)arg1;
+- (id)areaPresentationReasonAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

@@ -10,12 +10,14 @@
 
 @interface PKPaymentProvisioningResponse : PKPaymentWebServiceResponse
 {
+    BOOL _willProvisionWithAuthenticationDisabled;
     NSURL *_passURL;
     NSArray *_moreInfoURLs;
 }
 
 @property (readonly, copy, nonatomic) NSArray *moreInfoURLs; // @synthesize moreInfoURLs=_moreInfoURLs;
 @property (copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
+@property (readonly, nonatomic) BOOL willProvisionWithAuthenticationDisabled; // @synthesize willProvisionWithAuthenticationDisabled=_willProvisionWithAuthenticationDisabled;
 
 - (void).cxx_destruct;
 - (id)initWithData:(id)arg1;

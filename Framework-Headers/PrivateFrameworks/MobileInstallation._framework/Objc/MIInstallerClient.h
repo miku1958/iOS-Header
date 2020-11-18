@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)uninstallIdentifiers:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateAppDataProtectionWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateSinfForLSWithIdentifier:(id)arg1 withOptions:(id)arg2 sinfData:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)updateiTunesMetadataForLSWithIdentifier:(id)arg1 options:(id)arg2 plistData:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

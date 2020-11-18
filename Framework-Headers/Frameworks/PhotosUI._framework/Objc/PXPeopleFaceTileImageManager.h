@@ -16,6 +16,7 @@
 {
     NSObject<OS_dispatch_queue> *_fetchQueue;
     NSObject<OS_dispatch_queue> *_requestLookupIsolationQueue;
+    NSObject<OS_dispatch_queue> *_cropCacheQueue;
     NSMapTable *_faceTileRequestByRequestID;
     BOOL _concurrencyEnabled;
     PXLRUMemoryCache *_memoryCache;
@@ -34,8 +35,10 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_addRequestResult:(id)arg1 forIdentifier:(id)arg2;
+- (id)_cachedResultForIdentifier:(id)arg1 params:(struct PXFaceTileImageParams)arg2 allowVeryLowQuality:(BOOL)arg3 isLowResResult:(BOOL *)arg4;
 - (id)_cachedResultForIdentifier:(id)arg1 params:(struct PXFaceTileImageParams)arg2 isLowResResult:(BOOL *)arg3;
 - (void)_cropImage:(id)arg1 cacheResult:(BOOL)arg2 isDegraded:(BOOL)arg3 forRequest:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (BOOL)_deliverCachedResultIfPossibleForRequest:(id)arg1 allowDegradedDelivery:(BOOL)arg2 allowVeryLowQuality:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (BOOL)_deliverCachedResultIfPossibleForRequest:(id)arg1 allowDegradedDelivery:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_doesChange:(id)arg1 containVisibleChangesToPHAssetWithOID:(id)arg2;
 - (id)_fetchKeyFaceFromFaceCollection:(id)arg1 error:(id *)arg2;

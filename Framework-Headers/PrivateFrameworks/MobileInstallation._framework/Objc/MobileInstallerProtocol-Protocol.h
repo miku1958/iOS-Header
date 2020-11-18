@@ -24,5 +24,6 @@
 - (void)uninstallIdentifiers:(NSArray *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)updateAppDataProtectionWithOptions:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateSinfForLSWithIdentifier:(NSString *)arg1 withOptions:(NSDictionary *)arg2 sinfData:(NSData *)arg3 completion:(void (^)(NSDictionary *, NSError *))arg4;
+- (void)updateiTunesMetadataForLSWithIdentifier:(NSString *)arg1 options:(NSDictionary *)arg2 plistData:(NSData *)arg3 completion:(void (^)(NSError *))arg4;
 @end
 

@@ -6,19 +6,21 @@
 
 #import <HMFoundation/HMFTimer.h>
 
-@class NSSet, NSUUID;
+@class NSArray, NSSet, NSString;
 
 @interface HMDCameraSnapshotNotificationTimer : HMFTimer
 {
     NSSet *_changedCharacteristics;
-    NSUUID *_identifier;
+    NSString *_sessionID;
+    NSArray *_postedBulletins;
 }
 
-@property (strong, nonatomic) NSSet *changedCharacteristics; // @synthesize changedCharacteristics=_changedCharacteristics;
-@property (strong, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSSet *changedCharacteristics; // @synthesize changedCharacteristics=_changedCharacteristics;
+@property (strong, nonatomic) NSArray *postedBulletins; // @synthesize postedBulletins=_postedBulletins;
+@property (readonly, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 
 - (void).cxx_destruct;
-- (id)initWithChangedCharacteristics:(id)arg1;
+- (id)initWithCameraSessionID:(id)arg1 changedCharacteristics:(id)arg2 timeInterval:(double)arg3;
 
 @end
 

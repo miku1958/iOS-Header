@@ -9,10 +9,11 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSUUID, _HKFitnessFriendContact;
+@class NSDate, NSDictionary, NSNumber, NSUUID, _HKFitnessFriendContact;
 
 @interface _HKFitnessFriend : NSObject <NSSecureCoding, NSCopying>
 {
+    NSNumber *_currentCacheIndex;
     NSDictionary *_snapshots;
     NSDictionary *_friendAchievements;
     NSDictionary *_friendWorkouts;

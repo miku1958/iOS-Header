@@ -8,7 +8,10 @@
 
 @interface MCDSongsViewController : MCDTableViewController
 {
+    BOOL _playlistMode;
 }
+
+@property (nonatomic, getter=isPlaylistMode) BOOL playlistMode; // @synthesize playlistMode=_playlistMode;
 
 + (id)actionCellConfigurationClassesForLocation:(unsigned long long)arg1;
 - (void)_limitedUIDidChange;

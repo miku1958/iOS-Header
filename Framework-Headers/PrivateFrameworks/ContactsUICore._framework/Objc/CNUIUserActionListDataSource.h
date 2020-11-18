@@ -44,6 +44,7 @@
 - (id)consumer:(id)arg1 localizedButtonDisplayNameForActionType:(id)arg2;
 - (id)consumer:(id)arg1 localizedDisplayNameForActionType:(id)arg2;
 - (id)consumer:(id)arg1 localizedDisplayNameForButtonWithDefaultAction:(id)arg2 actionType:(id)arg3;
+- (void)dealloc;
 - (id)initWithContact:(id)arg1;
 - (id)initWithContact:(id)arg1 schedulerProvider:(id)arg2;
 - (id)initWithDiscoveringEnvironment:(id)arg1;

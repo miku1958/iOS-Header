@@ -10,16 +10,22 @@
 
 @interface NTPBFeedCellHostViewExposure : PBCodable <NSCopying>
 {
+    int _areaPresentationReason;
     int _feedCellHostType;
     struct {
+        unsigned int areaPresentationReason:1;
         unsigned int feedCellHostType:1;
     } _has;
 }
 
+@property (nonatomic) int areaPresentationReason; // @synthesize areaPresentationReason=_areaPresentationReason;
 @property (nonatomic) int feedCellHostType; // @synthesize feedCellHostType=_feedCellHostType;
+@property (nonatomic) BOOL hasAreaPresentationReason;
 @property (nonatomic) BOOL hasFeedCellHostType;
 
+- (int)StringAsAreaPresentationReason:(id)arg1;
 - (int)StringAsFeedCellHostType:(id)arg1;
+- (id)areaPresentationReasonAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

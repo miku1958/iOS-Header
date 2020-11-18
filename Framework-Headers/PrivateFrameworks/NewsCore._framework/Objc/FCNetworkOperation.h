@@ -8,14 +8,15 @@
 
 @interface FCNetworkOperation : FCOperation
 {
-    double _preferredTimeoutIntervalForRequest;
 }
 
-@property (nonatomic) double preferredTimeoutIntervalForRequest; // @synthesize preferredTimeoutIntervalForRequest=_preferredTimeoutIntervalForRequest;
+@property (readonly, nonatomic) double preferredTimeoutIntervalForRequest;
 
++ (BOOL)isNetworkOperationThrottlingEnabled;
 - (BOOL)_canRetryWithError:(id)arg1 retryAfter:(double *)arg2;
 - (BOOL)canRetryWithError:(id)arg1 retryAfter:(double *)arg2;
 - (unsigned long long)maxRetries;
+- (BOOL)shouldStartThrottlingWithError:(id)arg1 retryAfter:(double *)arg2;
 
 @end
 

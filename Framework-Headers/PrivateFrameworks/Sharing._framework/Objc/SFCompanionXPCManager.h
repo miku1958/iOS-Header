@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 @interface SFCompanionXPCManager : NSObject
 {
@@ -14,6 +15,7 @@
     BOOL _interrupted;
     int _listenerResumedToken;
     NSXPCConnection *_connection;
+    NSObject<OS_dispatch_queue> *_xpcSetupQueue;
     NSMutableArray *_observers;
 }
 
@@ -22,6 +24,7 @@
 @property (getter=isInvalid) BOOL invalid; // @synthesize invalid=_invalid;
 @property int listenerResumedToken; // @synthesize listenerResumedToken=_listenerResumedToken;
 @property (strong) NSMutableArray *observers; // @synthesize observers=_observers;
+@property (strong) NSObject<OS_dispatch_queue> *xpcSetupQueue; // @synthesize xpcSetupQueue=_xpcSetupQueue;
 
 + (id)advertiserClientInterface;
 + (id)advertiserInterface;
@@ -39,6 +42,8 @@
 - (void)activityAdvertiserProxyForClient:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)addAirDropClientToManager:(id)arg1 withFailureHandler:(CDUnknownBlockType)arg2;
 - (void)airdropTransferDataProviderForClient:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)appleAccountSignedIn;
+- (void)appleAccountSignedOut;
 - (void)continuityScannerProxyForClient:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;

@@ -14,6 +14,7 @@
 }
 
 + (id)filesystemPersistenceBatchItemForFileAtURL:(id)arg1;
++ (void)performBlockOnWriterQueue:(CDUnknownBlockType)arg1;
 + (void)persistData:(id)arg1 forKey:(id)arg2 fileURL:(id)arg3;
 + (void)persistMetadata:(id)arg1 fileURL:(id)arg2;
 + (void)persistString:(id)arg1 forKey:(id)arg2 fileURL:(id)arg3;
@@ -22,6 +23,7 @@
 + (id)persistedAttributesForFileAtURL:(id)arg1;
 + (id)sharedInstance;
 - (void)_backgroundWriteData:(id)arg1 toFileAtURL:(id)arg2;
+- (void)_performOnWriterQueueWithIdentifier:(const char *)arg1 block:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
 

@@ -10,9 +10,10 @@
 #import <PhotoAnalysis/PLPhotoAnalysisVisionServiceSceneClassificationProtocol-Protocol.h>
 #import <PhotoAnalysis/PLPhotoAnalysisVisionServiceTaxonomyProtocol-Protocol.h>
 
-@class NSDictionary;
+@class NSArray, NSDictionary;
 
 @protocol PLPhotoAnalysisServiceProtocol <PLPhotoAnalysisJobServiceProtocol, PLPhotoAnalysisGraphServiceProtocol, PLPhotoAnalysisVisionServiceTaxonomyProtocol, PLPhotoAnalysisVisionServiceSceneClassificationProtocol, PLPhotoAnalysisVisionServiceFaceProcessingProtocol>
+- (void)cancelOperationsWithIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *))arg3;
 - (void)dumpAnalysisStatusWithContext:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)notifyPhotoLibraryOpenedWithContext:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;
 @end

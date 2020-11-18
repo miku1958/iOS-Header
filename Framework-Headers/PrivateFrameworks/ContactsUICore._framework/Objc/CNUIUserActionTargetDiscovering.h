@@ -28,6 +28,7 @@
 + (BOOL)isSkypeAvailableWithEnvironment:(id)arg1;
 - (void).cxx_destruct;
 - (id)_targetsForActionType:(id)arg1;
+- (void)dealloc;
 - (id)initWithDiscoveringEnvironment:(id)arg1;
 - (id)observableForTargetsChangedForActionType:(id)arg1 schedulerProvider:(id)arg2;
 - (void)resetTargetsForActionType:(id)arg1;

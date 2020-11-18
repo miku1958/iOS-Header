@@ -11,12 +11,13 @@
 
 @interface CAMFocusIndicatorView : UIView
 {
+    BOOL _inactive;
     BOOL _showExposureBias;
     float _exposureBiasMaximum;
     float _exposureBiasMinimum;
     float _exposureBiasValue;
     int __exposureBiasSide;
-    long long _size;
+    long long _style;
     id<CAMFocusIndicatorViewDelegate> _delegate;
     CAMFocusIndicatorRectView *__rectView;
     CAMExposureBiasSlider *__exposureBiasSlider;
@@ -29,9 +30,10 @@
 @property (nonatomic) float exposureBiasMaximum; // @synthesize exposureBiasMaximum=_exposureBiasMaximum;
 @property (nonatomic) float exposureBiasMinimum; // @synthesize exposureBiasMinimum=_exposureBiasMinimum;
 @property (nonatomic) float exposureBiasValue; // @synthesize exposureBiasValue=_exposureBiasValue;
-@property (readonly, nonatomic, getter=isPulsing) BOOL pulsing;
+@property (nonatomic, getter=isInactive) BOOL inactive; // @synthesize inactive=_inactive;
+@property (nonatomic, getter=isPulsing) BOOL pulsing;
 @property (nonatomic) BOOL showExposureBias; // @synthesize showExposureBias=_showExposureBias;
-@property (nonatomic) long long size; // @synthesize size=_size;
+@property (nonatomic) long long style; // @synthesize style=_style;
 
 - (void).cxx_destruct;
 - (void)_commonCAMFocusIndicatorViewInitialization;
@@ -39,18 +41,14 @@
 - (void)_createRectViewAndUpdateBounds;
 - (void)_layoutExposureBiasSlider;
 - (void)_layoutRectView:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithSize:(long long)arg1;
+- (void)_updateTintColor;
+- (id)initWithStyle:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setCenter:(struct CGPoint)arg1;
 - (void)setExposureBiasSide:(int)arg1 animated:(BOOL)arg2;
-- (void)setSize:(long long)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setTintColor:(id)arg1;
-- (void)startPulsing;
-- (void)startScalingWithRepeatCount:(unsigned long long)arg1;
-- (void)stopPulsing;
+- (void)setStyle:(long long)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)startScalingWithExpansionWidth:(double)arg1 duration:(double)arg2 repeatCount:(unsigned long long)arg3;
 
 @end
 

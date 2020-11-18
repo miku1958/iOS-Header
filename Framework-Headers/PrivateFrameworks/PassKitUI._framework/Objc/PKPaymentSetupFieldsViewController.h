@@ -39,6 +39,7 @@
 - (void)_handleNextButtonTapped:(id)arg1;
 - (void)_setIdleTimerDisabled:(BOOL)arg1 title:(id)arg2 subtitle:(id)arg3;
 - (void)_setNavigationBarEnabled:(BOOL)arg1;
+- (void)_setTableViewHeaderActivitySpinnerAnimated:(BOOL)arg1 title:(id)arg2 subtitle:(id)arg3;
 - (void)_triggerNextActionLoop;
 - (id)allCells;
 - (id)cellForIdentifier:(id)arg1;
@@ -52,6 +53,7 @@
 - (id)fieldForIdentifier:(id)arg1;
 - (id)firstEmptyCell;
 - (id)firstEmptyField;
+- (id)firstEmptySetupField;
 - (id)firstResponderCell;
 - (id)footerView;
 - (void)handleNextActionError:(id)arg1 shouldContinue:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
@@ -68,6 +70,7 @@
 - (void)noteFieldIdentifiersChanged;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)readonlyFieldIdentifiers;
+- (void)setHeaderViewTitle:(id)arg1 subtitle:(id)arg2;
 - (BOOL)shouldAppearWithFirstEmptyFieldAsFirstResponder;
 - (void)showActivitySpinnerWithTitle:(id)arg1 subtitle:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

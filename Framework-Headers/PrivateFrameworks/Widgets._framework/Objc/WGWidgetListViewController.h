@@ -22,8 +22,8 @@
     NSMutableDictionary *_cancelTouchesAssertionsByWidgetID;
     NSMutableDictionary *_shortLookViewsByWidgetID;
     WGWidgetShortLookView *_shortLookViewForMeasuring;
-    NSArray *_previouslyVisibleWidgetIDs;
     id<WGWidgetListViewControllerDelegate> _delegate;
+    NSArray *_previouslyVisibleWidgetIDs;
 }
 
 @property (readonly, nonatomic, getter=_activeColumnMode) long long activeColumnMode;
@@ -36,6 +36,7 @@
 @property (readonly, nonatomic, getter=_group) NSString *group;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic, getter=_previouslyVisibleWidgetIDs, setter=_setPreviouslyVisibleWidgetIDs:) NSArray *previouslyVisibleWidgetIDs; // @synthesize previouslyVisibleWidgetIDs=_previouslyVisibleWidgetIDs;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long widgetCount;

@@ -17,6 +17,8 @@
 @property (readonly, nonatomic) BOOL shouldHideHDRButton;
 @property (readonly, nonatomic) BOOL shouldHideIrisButton;
 @property (readonly, nonatomic) BOOL shouldHideLivePhotoBadge;
+@property (readonly, nonatomic) BOOL shouldHidePortraitModeInstructionLabel;
+@property (readonly, nonatomic) BOOL shouldHideShallowDepthOfFieldBadge;
 @property (readonly, nonatomic) BOOL shouldHideTimerButton;
 @property (readonly, nonatomic) BOOL shouldHideTopBar;
 

@@ -13,6 +13,7 @@
 @interface NTPBLanguageConfig : PBCodable <NSCopying>
 {
     NSString *_appleEditorialChannelId;
+    NSString *_briefingsTagId;
     NTPBCoverArticlesConfig *_coverArticlesConfig;
     NSString *_forYouConfigId;
     NSString *_hiddenFeedId;
@@ -26,9 +27,11 @@
 }
 
 @property (strong, nonatomic) NSString *appleEditorialChannelId; // @synthesize appleEditorialChannelId=_appleEditorialChannelId;
+@property (strong, nonatomic) NSString *briefingsTagId; // @synthesize briefingsTagId=_briefingsTagId;
 @property (strong, nonatomic) NTPBCoverArticlesConfig *coverArticlesConfig; // @synthesize coverArticlesConfig=_coverArticlesConfig;
 @property (strong, nonatomic) NSString *forYouConfigId; // @synthesize forYouConfigId=_forYouConfigId;
 @property (readonly, nonatomic) BOOL hasAppleEditorialChannelId;
+@property (readonly, nonatomic) BOOL hasBriefingsTagId;
 @property (readonly, nonatomic) BOOL hasCoverArticlesConfig;
 @property (readonly, nonatomic) BOOL hasForYouConfigId;
 @property (readonly, nonatomic) BOOL hasHiddenFeedId;

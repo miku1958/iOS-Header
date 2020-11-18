@@ -11,6 +11,8 @@
 
 @protocol SFCompanionXPCManagerProtocol <NSObject>
 - (void)addAirDropClientToManager:(id<SFAirDropTransferDataProviderClient>)arg1;
+- (void)appleAccountSignedIn;
+- (void)appleAccountSignedOut;
 - (void)createActivityAdvertiserForClientProxy:(id<SFActivityAdvertiserClient>)arg1 reply:(void (^)(id<SFActivityAdvertiserProtocol>, NSError *))arg2;
 - (void)createAirDropTransferDataProviderForClientProxy:(id<SFAirDropTransferDataProviderClient>)arg1 WithReply:(void (^)(id<SFAirDropTransferDataProviderProtocol>, NSError *))arg2;
 - (void)createCompanionServiceManagerWithIdentifier:(NSString *)arg1 clientProxy:(id<SFCompanionServiceManagerClient>)arg2 reply:(void (^)(id<SFCompanionServiceManagerProtocol>, NSString *, NSString *, NSString *, NSError *))arg3;

@@ -22,7 +22,6 @@
     unsigned long long _style;
     double _topPadding;
     double _bottomPadding;
-    double _extraTextPadding;
 }
 
 @property (nonatomic) BOOL accessoryViewsDisabled; // @synthesize accessoryViewsDisabled=_accessoryViewsDisabled;
@@ -30,7 +29,6 @@
 @property (readonly, strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
 @property (readonly, strong, nonatomic) UIImageView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
-@property (nonatomic) double extraTextPadding; // @synthesize extraTextPadding=_extraTextPadding;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) BOOL shouldResizeImageToFit; // @synthesize shouldResizeImageToFit=_shouldResizeImageToFit;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
@@ -45,7 +43,6 @@
 - (void)_updateAccessoryViews;
 - (void)dealloc;
 - (void)layoutSubviews;
-- (void)setSubtitleBody:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
 

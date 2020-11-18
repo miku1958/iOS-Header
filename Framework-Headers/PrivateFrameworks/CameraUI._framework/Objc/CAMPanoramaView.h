@@ -64,6 +64,7 @@
 @property (nonatomic, setter=_setCurrentOrientedAcceleration:) double currentOrientedAcceleration; // @synthesize currentOrientedAcceleration=_currentOrientedAcceleration;
 @property (weak, nonatomic) id<CAMPanoramaViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
+@property (readonly, nonatomic) UIView *instructionView;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic, getter=isPainting, setter=_setPainting:) BOOL painting; // @synthesize painting=_painting;
 @property (readonly, nonatomic) CAMPanoramaPreviewView *previewView; // @synthesize previewView=_previewView;

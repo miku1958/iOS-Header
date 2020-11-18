@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)clientHasMIEntitlement:(id)arg1;
 - (void)didHandleInvocation:(id)arg1 isReply:(BOOL)arg2;
 - (void)rebuildApplicationDatabasesForSystem:(BOOL)arg1 internal:(BOOL)arg2 user:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)registerExtensionPoint:(id)arg1 withInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -25,8 +26,8 @@ __attribute__((visibility("hidden")))
 - (void)setHandler:(id)arg1 version:(unsigned long long)arg2 roles:(unsigned int)arg3 forContentType:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)setHandlerOptions:(unsigned int)arg1 forContentType:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)synchronizeWithMobileInstallation;
-- (void)updateApplication:(id)arg1 mobileInstallationChanges:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateContainerUnit:(unsigned int)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateRecordForApp:(id)arg1 withSINF:(id)arg2 iTunesMetadata:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)willHandleInvocation:(id)arg1 isReply:(BOOL)arg2;
 
 @end

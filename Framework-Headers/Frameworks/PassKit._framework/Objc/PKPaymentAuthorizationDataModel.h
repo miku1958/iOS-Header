@@ -44,6 +44,7 @@
     CDUnknownBlockType _updateHandler;
     PKPaymentApplication *_paymentApplication;
     PKRemotePaymentInstrument *_remotePaymentInstrument;
+    PKRemotePaymentInstrument *_initialRemotePaymentInstrument;
     NSSet *_allAcceptedRemotePaymentInstruments;
     NSSet *_allUnavailableRemotePaymentInstruments;
     CNContact *_cachedRecentAddress;
@@ -64,6 +65,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *hostAppLocalizedName; // @synthesize hostAppLocalizedName=_hostAppLocalizedName;
 @property (strong, nonatomic) NSString *hostApplicationIdentifier; // @synthesize hostApplicationIdentifier=_hostApplicationIdentifier;
+@property (strong, nonatomic) PKRemotePaymentInstrument *initialRemotePaymentInstrument; // @synthesize initialRemotePaymentInstrument=_initialRemotePaymentInstrument;
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (strong, nonatomic) PKPassLibrary *library; // @synthesize library=_library;
 @property (readonly, nonatomic) NSString *merchantName;

@@ -9,7 +9,7 @@
 #import <PassKitUI/PKAuthenticatorDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationStateMachineDelegate-Protocol.h>
 
-@class NSString, NSTimer, PKAuthenticator, PKContinuityPaymentCardSummaryView, PKContinuityPaymentFaviconView, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationStateMachine, PKRemotePaymentRequest, UILabel, UIStackView, UIView, _UIBackdropView, _UIFeedbackEventBehavior, _UIFeedbackImpactBehavior;
+@class NSString, NSTimer, PKAuthenticator, PKContinuityPaymentCardSummaryView, PKContinuityPaymentFaviconView, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationStateMachine, PKRemotePaymentRequest, UILabel, UIStackView, UIView, _UIBackdropView;
 @protocol PKPaymentAuthorizationHostProtocol;
 
 @interface PKContinuityPaymentViewController : UIViewController <PKAuthenticatorDelegate, PKPaymentAuthorizationStateMachineDelegate>
@@ -27,8 +27,6 @@
     UIViewController *_passphraseViewController;
     PKAuthenticator *_authenticator;
     PKPaymentAuthorizationStateMachine *_stateMachine;
-    _UIFeedbackEventBehavior *_paymentSuccessBehavior;
-    _UIFeedbackImpactBehavior *_paymentFailureBehavior;
     NSTimer *_timeoutTimer;
     BOOL _attemptedTimeout;
     id<PKPaymentAuthorizationHostProtocol> _delegate;

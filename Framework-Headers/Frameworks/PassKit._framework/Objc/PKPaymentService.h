@@ -20,8 +20,9 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSString *defaultPaymentPassUniqueIdentifier;
-@property (nonatomic) id<PKPaymentServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPaymentServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasOutstandingExpressActivityTimeout;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) PKFieldProperties *paymentDeviceFieldProperties;
 @property (strong, nonatomic) PKPaymentWebServiceContext *sharedPaymentWebServiceContext;
@@ -41,11 +42,14 @@
 - (void)_transactionsAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)archiveMessageWithIdentifier:(id)arg1;
 - (void)consistencyCheck;
+- (id)defaultExpressFelicaTransitPassIdentifier;
 - (id)defaultPaymentApplicationForPassUniqueIdentifier:(id)arg1;
 - (void)deleteAllTransactionsForPaymentPassWithUniqueIdentifier:(id)arg1;
 - (void)deleteMessagesForPaymentPassWithUniqueIdentifier:(id)arg1;
+- (void)deletePaymentTransactionWithIdentifier:(id)arg1 forPassWithUniqueIdentifier:(id)arg2;
 - (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(id)arg1;
 - (void)downloadAllPaymentPasses;
+- (void)felicaStateWithPassUniqueIdentifier:(id)arg1 paymentApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (void)initializeSecureElementIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
@@ -62,11 +66,16 @@
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithFelicaPassProperties:(id)arg2;
+- (void)processFelicaTransitTransactionEventWithHistory:(id)arg1 transactionDate:(id)arg2 forPaymentApplication:(id)arg3 withPassUniqueIdentifier:(id)arg4;
 - (void)remoteService:(id)arg1 didEstablishConnection:(id)arg2;
 - (void)remoteService:(id)arg1 didInterruptConnection:(id)arg2;
+- (void)sanitizeDefaultExpressPasses;
 - (void)scheduleAutomaticPresentationAvailableNotificationForPassWithUniqueIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)scheduleSetupReminders;
+- (void)setDefaultExpressFelicaTransitPassIdentifier:(id)arg1 withCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDefaultPaymentApplication:(id)arg1 forPassUniqueIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)simulateDefaultExpressTransitPassIdentifier:(id)arg1;
 - (void)simulatePaymentPush;
 - (void)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forDPANIdentifier:(id)arg3;
 - (void)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forDPANIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;

@@ -26,6 +26,9 @@
 - (void).cxx_destruct;
 - (unsigned int)activeFaceprintVersion;
 - (id)analyzeImage:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)cancelAllSuggestionRequests;
+- (void)cancelFaceClustering;
+- (BOOL)cancelSuggestionRequest:(id)arg1;
 - (void)configurePhotoVisionContextWithParams:(id)arg1;
 - (id)context;
 - (void)drawFaceboxes:(id)arg1 inImage:(id)arg2 outputFilename:(id)arg3;
@@ -39,6 +42,7 @@
 - (void)processFaceUpdates:(id)arg1;
 - (BOOL)reclusterFacesWithThreshold:(id)arg1 withContext:(id)arg2 error:(id *)arg3;
 - (void)requestFaceClusteringWithCompletion:(CDUnknownBlockType)arg1;
+- (id)requestSuggestionsForFaceClusterSequenceNumbers:(id)arg1 updateHandler:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (BOOL)resetFaceClusteringStateWithContext:(id)arg1 error:(id *)arg2;
 - (void)start:(CDUnknownBlockType)arg1;
 - (void)stop;

@@ -8,11 +8,12 @@
 
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDNanoSyncManagerObserver-Protocol.h>
 
 @class HDProfile, NSHashTable, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDAchievementAssetManager : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver>
+@interface HDAchievementAssetManager : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDNanoSyncManagerObserver>
 {
     HDProfile *_profile;
     NSHashTable *_assetObservers;
@@ -26,21 +27,25 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_checkForOSUpdate;
 - (id)_lastSuccessfulUpdateDate;
-- (void)_notifyObservers;
 - (void)_performAchievementsUpdateIfWaitingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performActivity:(id)arg1;
 - (BOOL)_queue_isWaitingToRun;
+- (void)_queue_notifyObservers;
 - (void)_queue_performAchievementsUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_setWaitingToRun:(BOOL)arg1;
 - (void)_registerActivity;
+- (void)_requestNanoSyncAfterAssetUpdates;
 - (void)_setLastSuccessfulUpdateDate:(id)arg1;
 - (void)_setNeedsUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)achievementsAdded:(id)arg1;
 - (void)addAssetObserver:(id)arg1;
 - (void)daemonReady:(id)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
+- (void)dealloc;
 - (id)initWithProfile:(id)arg1 backgroundTaskScheduler:(id)arg2;
+- (void)nanoSyncManagerDidChangeState:(id)arg1;
 - (void)removeAssetObserver:(id)arg1;
 - (id)serverURLWithError:(id *)arg1;
 - (void)setServerURL:(id)arg1;

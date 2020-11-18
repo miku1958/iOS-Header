@@ -10,11 +10,10 @@
 
 @interface HMFNetAddress : NSObject
 {
-    unsigned long long _addressFamily;
     HMFNetAddressInternal *_internal;
 }
 
-@property (readonly, nonatomic) unsigned long long addressFamily; // @synthesize addressFamily=_addressFamily;
+@property (readonly, nonatomic) unsigned long long addressFamily;
 @property (readonly, copy, nonatomic) NSString *addressString;
 @property (readonly, nonatomic) HMFNetAddressInternal *internal; // @synthesize internal=_internal;
 

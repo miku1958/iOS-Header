@@ -17,7 +17,7 @@
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDAccessory, HMDCameraSnapshotMonitorEvents, HMDCameraStreamSnapshotHandler, HMDSnapshotCacheRequestHandler, HMDSnapshotLocalSession, HMDSnapshotSlotManager, HMFMessageDispatcher, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
+@class HMDAccessory, HMDCameraResidentMessageHandler, HMDCameraSnapshotMonitorEvents, HMDCameraStreamSnapshotHandler, HMDNotificationRegistration, HMDSnapshotCacheRequestHandler, HMDSnapshotLocalSession, HMDSnapshotSlotManager, HMFMessageDispatcher, HMFNetMonitor, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
 @protocol HMDSnapshotRequestHandlerProtocol, OS_dispatch_queue;
 
 @interface HMDCameraSnapshotManager : NSObject <HMFMessageReceiver, HMDCameraSnapshotLocalDelegate, HMDCameraSnapshotRemoteRelaySenderDelegate, HMDCameraSnapshotRemoteRelayReceiverDelegate, HMDCameraSnapshotRemoteStreamSenderDelegate, HMDCameraSnapshotRemoteStreamReceiverDelegate, HMDCameraSnapshotRemoteRelayStreamDelegate, HMFTimerDelegate, HMFLogging, HMDCameraStreamSnapshotHandlerDelegate>
@@ -37,6 +37,9 @@
     HMDCameraStreamSnapshotHandler *_streamSnapshotHandler;
     NSMutableArray *_pendingSnapshotRequestDuringStreamSetup;
     NSMutableArray *_pendingRemoteSnapshotRequestDuringStreamSetup;
+    HMDNotificationRegistration *_notificationRegistration;
+    HMFNetMonitor *_networkMonitor;
+    HMDCameraResidentMessageHandler *_residentMessageHandler;
 }
 
 @property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
@@ -51,8 +54,11 @@
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, nonatomic) HMDCameraSnapshotMonitorEvents *monitorServicesManager; // @synthesize monitorServicesManager=_monitorServicesManager;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (strong, nonatomic) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
+@property (readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
 @property (readonly, nonatomic) NSMutableArray *pendingRemoteSnapshotRequestDuringStreamSetup; // @synthesize pendingRemoteSnapshotRequestDuringStreamSetup=_pendingRemoteSnapshotRequestDuringStreamSetup;
 @property (readonly, nonatomic) NSMutableArray *pendingSnapshotRequestDuringStreamSetup; // @synthesize pendingSnapshotRequestDuringStreamSetup=_pendingSnapshotRequestDuringStreamSetup;
+@property (readonly, nonatomic) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
 @property (readonly, nonatomic) HMDSnapshotCacheRequestHandler *snapshotCacheRequestHandler; // @synthesize snapshotCacheRequestHandler=_snapshotCacheRequestHandler;
 @property (readonly, nonatomic) id<HMDSnapshotRequestHandlerProtocol> snapshotRequestHandler; // @synthesize snapshotRequestHandler=_snapshotRequestHandler;
 @property (readonly, nonatomic) HMDSnapshotSlotManager *snapshotSlotManager; // @synthesize snapshotSlotManager=_snapshotSlotManager;
@@ -66,14 +72,13 @@
 - (void).cxx_destruct;
 - (void)_endSession:(id)arg1;
 - (id)_findSessionWithID:(id)arg1;
-- (void)_handleGetMostRecentSnapshotRequest:(id)arg1;
+- (void)_handleCreateSnapshotFromBulletinContext:(id)arg1;
 - (void)_handleReleaseSnapshot:(id)arg1;
 - (void)_handleSnapshotReceived:(id)arg1;
 - (void)_handleSnapshotRemoteRequest:(id)arg1;
 - (void)_handleSnapshotRequest:(id)arg1;
 - (void)_handleSnapshotSendFailure:(id)arg1;
 - (void)_issueGetSnapshot:(id)arg1;
-- (void)_issueRemoteGetSnapshot:(id)arg1;
 - (void)_message:(id)arg1 errored:(long long)arg2;
 - (void)_removeAllPendingRequests:(id)arg1;
 - (void)_sendRemoteResponse:(id)arg1 sessionID:(id)arg2;
@@ -87,8 +92,9 @@
 - (void)_sendStreamSnapshotRequest:(id)arg1;
 - (void)_startedGettingImageFor:(id)arg1 error:(id)arg2;
 - (void)dealloc;
+- (id)getMostRecentSnapshotRequest;
 - (void)handleAccessoryIsNotReachable:(id)arg1;
-- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 uniqueIdentifier:(id)arg4 logID:(id)arg5 msgDispatcher:(id)arg6;
+- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 uniqueIdentifier:(id)arg4 logID:(id)arg5 msgDispatcher:(id)arg6 networkMonitor:(id)arg7 residentMessageHandler:(id)arg8;
 - (id)logIdentifier;
 - (void)monitorForEventsForServices:(id)arg1;
 - (void)registerForMessages;

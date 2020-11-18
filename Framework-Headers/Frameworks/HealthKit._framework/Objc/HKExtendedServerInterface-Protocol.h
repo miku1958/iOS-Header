@@ -9,6 +9,7 @@
 @class NSArray, NSDate, NSString, NSTimeZone, NSURL, NSUUID, _HKAchievement;
 
 @protocol HKExtendedServerInterface <NSObject>
+- (void)remote_achievementAssetAvailabilityOnPairedDeviceForIdentifiers:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)remote_addAchievement:(_HKAchievement *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_deleteAchievementWithUUID:(NSUUID *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_deleteAllAchievementsWithCompletion:(void (^)(BOOL, NSError *))arg1;
@@ -20,6 +21,7 @@
 - (void)remote_markAchievementAsViewed:(_HKAchievement *)arg1 completion:(void (^)(_HKAchievement *, NSError *))arg2;
 - (void)remote_markAchievementDefinitionIdentifierAlertViewed:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_markAchievementsAlerted:(NSArray *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)remote_nextScheduledAchievementDefinitionAlertTaskDateWithCompletion:(void (^)(NSDate *, NSError *))arg1;
 - (void)remote_registerForAchievementDefinitionNotificationsWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_registerForAchievementNotificationsAndFetchUnalertedCountWithCompletion:(void (^)(long long, NSError *))arg1;
 - (void)remote_runAchievementsFixupAsDryRun:(BOOL)arg1 completion:(void (^)(NSArray *, BOOL, NSError *))arg2;

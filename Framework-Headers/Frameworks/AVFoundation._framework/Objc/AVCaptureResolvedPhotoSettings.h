@@ -21,13 +21,14 @@
 @property (readonly, getter=isStillImageStabilizationEnabled) BOOL stillImageStabilizationEnabled;
 @property (readonly) long long uniqueID;
 
-+ (id)resolvedSettingsWithUniqueID:(long long)arg1 photoDimensions:(CDStruct_79c71658)arg2 rawPhotoDimensions:(CDStruct_79c71658)arg3 previewDimensions:(CDStruct_79c71658)arg4 livePhotoMovieEnabled:(BOOL)arg5 livePhotoMovieDimensions:(CDStruct_79c71658)arg6 turboModeEnabled:(BOOL)arg7 flashEnabled:(BOOL)arg8 HDREnabled:(BOOL)arg9 originalPhotoDeliveryEnabled:(BOOL)arg10 stillImageStabilizationEnabled:(BOOL)arg11 bravoImageFusionEnabled:(BOOL)arg12 squareCropEnabled:(BOOL)arg13;
-- (id)_initWithUniqueID:(long long)arg1 photoDimensions:(CDStruct_79c71658)arg2 rawPhotoDimensions:(CDStruct_79c71658)arg3 previewDimensions:(CDStruct_79c71658)arg4 livePhotoMovieEnabled:(BOOL)arg5 livePhotoMovieDimensions:(CDStruct_79c71658)arg6 turboModeEnabled:(BOOL)arg7 flashEnabled:(BOOL)arg8 HDREnabled:(BOOL)arg9 originalPhotoDeliveryEnabled:(BOOL)arg10 stillImageStabilizationEnabled:(BOOL)arg11 bravoImageFusionEnabled:(BOOL)arg12 squareCropEnabled:(BOOL)arg13;
++ (id)resolvedSettingsWithUniqueID:(long long)arg1 photoDimensions:(CDStruct_79c71658)arg2 rawPhotoDimensions:(CDStruct_79c71658)arg3 previewDimensions:(CDStruct_79c71658)arg4 livePhotoMovieEnabled:(BOOL)arg5 livePhotoMovieDimensions:(CDStruct_79c71658)arg6 turboModeEnabled:(BOOL)arg7 flashEnabled:(BOOL)arg8 HDREnabled:(BOOL)arg9 shallowDepthOfFieldEffectEnabled:(BOOL)arg10 originalPhotoDeliveryEnabled:(BOOL)arg11 stillImageStabilizationEnabled:(BOOL)arg12 bravoImageFusionEnabled:(BOOL)arg13 squareCropEnabled:(BOOL)arg14;
+- (id)_initWithUniqueID:(long long)arg1 photoDimensions:(CDStruct_79c71658)arg2 rawPhotoDimensions:(CDStruct_79c71658)arg3 previewDimensions:(CDStruct_79c71658)arg4 livePhotoMovieEnabled:(BOOL)arg5 livePhotoMovieDimensions:(CDStruct_79c71658)arg6 turboModeEnabled:(BOOL)arg7 flashEnabled:(BOOL)arg8 HDREnabled:(BOOL)arg9 shallowDepthOfFieldEffectEnabled:(BOOL)arg10 originalPhotoDeliveryEnabled:(BOOL)arg11 stillImageStabilizationEnabled:(BOOL)arg12 bravoImageFusionEnabled:(BOOL)arg13 squareCropEnabled:(BOOL)arg14;
 - (void)dealloc;
 - (id)description;
 - (BOOL)isBravoImageFusionEnabled;
 - (BOOL)isHDREnabled;
 - (BOOL)isOriginalPhotoDeliveryEnabled;
+- (BOOL)isShallowDepthOfFieldEffectEnabled;
 - (BOOL)isSquareCropEnabled;
 - (BOOL)isTurboModeEnabled;
 - (BOOL)livePhotoMovieEnabled;

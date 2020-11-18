@@ -29,9 +29,11 @@
     NSDictionary *_faceDetectionConfiguration;
     BOOL _sensorHDREnabled;
     int _colorSpace;
+    BOOL _autoShallowDepthOfFieldEffectEnabled;
 }
 
 @property (nonatomic) BOOL applyMaxIntegrationTimeOverrideWhenAvailable; // @synthesize applyMaxIntegrationTimeOverrideWhenAvailable=_applyMaxIntegrationTimeOverrideWhenAvailable;
+@property (nonatomic) BOOL autoShallowDepthOfFieldEffectEnabled; // @synthesize autoShallowDepthOfFieldEffectEnabled=_autoShallowDepthOfFieldEffectEnabled;
 @property (nonatomic) BOOL automaticallyEnablesLowLightBoostWhenAvailable; // @synthesize automaticallyEnablesLowLightBoostWhenAvailable=_automaticallyEnablesLowLightBoostWhenAvailable;
 @property (nonatomic) int colorSpace; // @synthesize colorSpace=_colorSpace;
 @property (readonly, copy) NSString *debugDescription;

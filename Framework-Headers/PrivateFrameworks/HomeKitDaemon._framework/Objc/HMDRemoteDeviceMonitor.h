@@ -8,12 +8,13 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFNetMonitorDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HMDAccountRegistry, HMFNetMonitor, IDSService, NSArray, NSMapTable, NSString;
+@class HMDAccountRegistry, HMFNetMonitor, HMFTimer, IDSService, NSArray, NSMapTable, NSString;
 @protocol HMDRemoteDeviceMonitorDelegate, OS_dispatch_queue;
 
-@interface HMDRemoteDeviceMonitor : NSObject <HMFLogging, HMFNetMonitorDelegate, IDSServiceDelegate>
+@interface HMDRemoteDeviceMonitor : NSObject <HMFLogging, HMFNetMonitorDelegate, HMFTimerDelegate, IDSServiceDelegate>
 {
     NSMapTable *_devices;
     BOOL _reachable;
@@ -23,6 +24,7 @@
     NSObject<OS_dispatch_queue> *_propertyQueue;
     IDSService *_service;
     HMFNetMonitor *_netMonitor;
+    HMFTimer *_deviceHealthTimer;
 }
 
 @property (readonly, nonatomic) HMDAccountRegistry *accountRegistry; // @synthesize accountRegistry=_accountRegistry;
@@ -30,6 +32,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMDRemoteDeviceMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) HMFTimer *deviceHealthTimer; // @synthesize deviceHealthTimer=_deviceHealthTimer;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMFNetMonitor *netMonitor; // @synthesize netMonitor=_netMonitor;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
@@ -45,6 +48,8 @@
 - (void)_handleGlobalReachabilityChange;
 - (void)_notifyDeviceReachabilityChange:(BOOL)arg1 forDevice:(id)arg2;
 - (void)_sendPingToDevice:(id)arg1;
+- (void)_startActivelyMonitoringDevice:(id)arg1;
+- (void)_stopActivelyMonitoringDevice:(id)arg1;
 - (void)confirmDevice:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)deviceInformationForDevice:(id)arg1;
@@ -63,6 +68,7 @@
 - (void)setReachable:(BOOL)arg1;
 - (void)startMonitoringDevice:(id)arg1;
 - (void)stopMonitoringDevice:(id)arg1;
+- (void)timerDidFire:(id)arg1;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSNumberFormatter, NSString, PKPaymentMessage, PKPaymentPass, PKPaymentTransaction, PKStackedTextItemGroup, PKStackedTextItemGroupView, UITableView;
+@class NSNumberFormatter, NSString, PKPaymentMessage, PKPaymentPass, UITableView;
 @protocol PKPassPaymentSummaryViewDelegate;
 
 @interface PKPassPaymentSummaryView : UIView <UITableViewDataSource, UITableViewDelegate, PKPassPaymentSummaryCellDelegate>
@@ -18,13 +18,8 @@
     NSNumberFormatter *_numberFormatter;
     UITableView *_tableView;
     BOOL _deepLinkingEnabled;
-    PKStackedTextItemGroupView *_transactionHeaderView;
-    PKStackedTextItemGroup *_transactionDisplayItem;
-    double _transactionCellHeight;
     PKPaymentPass *_pass;
-    PKPaymentTransaction *_transaction;
     PKPaymentMessage *_message;
-    NSString *_transactionAppLaunchToken;
     NSString *_messageAppLaunchToken;
     id<PKPassPaymentSummaryViewDelegate> _delegate;
 }
@@ -32,30 +27,18 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PKPassPaymentSummaryViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasContent;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKPaymentMessage *message; // @synthesize message=_message;
 @property (readonly, nonatomic) NSString *messageAppLaunchToken; // @synthesize messageAppLaunchToken=_messageAppLaunchToken;
 @property (readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
-@property (readonly, nonatomic) NSString *transactionAppLaunchToken; // @synthesize transactionAppLaunchToken=_transactionAppLaunchToken;
 
 - (void).cxx_destruct;
-- (id)_amountTextFromTransaction:(id)arg1;
 - (void)_configureCell:(id)arg1 forMessage:(id)arg2;
-- (void)_configureCell:(id)arg1 forTransaction:(id)arg2;
-- (id)_imageFromTransaction:(id)arg1;
 - (BOOL)_isSectionIndexOfMessage:(long long)arg1;
-- (BOOL)_isSectionIndexOfTransaction:(long long)arg1;
-- (id)_locationTextFromTransaction:(id)arg1;
-- (id)_merchantTextFromTransaction:(id)arg1;
 - (void)_performAction:(long long)arg1 forSection:(long long)arg2 animated:(BOOL)arg3;
-- (id)_relativeDateTextFromTransaction:(id)arg1;
 - (long long)_sectionIndexOfMessage;
-- (long long)_sectionIndexOfTransaction;
-- (BOOL)_showTransaction;
-- (id)_statusTextFromTransaction:(id)arg1;
-- (void)_updateTransactionRowAnimated:(BOOL)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -64,7 +47,6 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)paymentSummaryCellDetailsButtonPressed:(id)arg1;
 - (void)setMessage:(id)arg1 appLaunchToken:(id)arg2 animated:(BOOL)arg3;
-- (void)setTransaction:(id)arg1 appLaunchToken:(id)arg2 animated:(BOOL)arg3;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;

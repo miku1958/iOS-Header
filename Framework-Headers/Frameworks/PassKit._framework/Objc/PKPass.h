@@ -75,6 +75,7 @@
 @property (strong, nonatomic) NSDate *modifiedDate; // @synthesize modifiedDate=_modifiedDate;
 @property (copy, nonatomic, setter=setNFCPayload:) PKNFCPayload *nfcPayload; // @synthesize nfcPayload=_nfcPayload;
 @property (readonly, nonatomic, getter=isNFCPayloadEncrypted) BOOL nfcPayloadEncrypted;
+@property (readonly) NSString *notificationCenterTitle;
 @property (readonly, nonatomic) PKImage *notificationIconImage;
 @property (copy, nonatomic) NSString *organizationName; // @synthesize organizationName=_organizationName;
 @property (readonly, nonatomic) PKImage *partialFrontFaceImage;

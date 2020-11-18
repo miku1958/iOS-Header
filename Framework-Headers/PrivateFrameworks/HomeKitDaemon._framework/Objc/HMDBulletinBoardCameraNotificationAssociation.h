@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HMDCameraProfile, NSMutableSet, NSSet;
+@class HMDCameraProfile, NSMutableSet;
 
 @interface HMDBulletinBoardCameraNotificationAssociation : NSObject
 {
@@ -16,7 +16,6 @@
 }
 
 @property (readonly, nonatomic) HMDCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
-@property (readonly, nonatomic) NSSet *notificationGeneratingServices;
 @property (readonly, nonatomic) NSMutableSet *notificationGeneratingServicesInRoom; // @synthesize notificationGeneratingServicesInRoom=_notificationGeneratingServicesInRoom;
 @property (readonly, nonatomic) NSMutableSet *notificationGeneratingServicesWithCamera; // @synthesize notificationGeneratingServicesWithCamera=_notificationGeneratingServicesWithCamera;
 

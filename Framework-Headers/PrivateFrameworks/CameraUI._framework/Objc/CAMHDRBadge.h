@@ -10,10 +10,7 @@
 {
 }
 
-- (double)_cornerRadius;
-- (id)_text;
-- (id)_textAttributes;
-- (struct UIEdgeInsets)_textInsets;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -7,6 +7,7 @@
 #import <MediaPlayer/NSObject-Protocol.h>
 
 @class NSArray, NSIndexPath;
+@protocol MPLazySectionedCollectionDataSource;
 
 @protocol MPLazySectionedCollectionDataSource <NSObject>
 - (id)itemAtIndexPath:(NSIndexPath *)arg1;
@@ -15,6 +16,7 @@
 - (id)sectionAtIndex:(unsigned long long)arg1;
 
 @optional
+- (BOOL)hasSameContentAsDataSource:(id<MPLazySectionedCollectionDataSource>)arg1;
 - (long long)indexOfSectionForSectionIndexTitleAtIndex:(long long)arg1;
 - (struct _NSRange)optionalSectionIndexTitlesRange;
 - (NSArray *)sectionIndexTitles;

@@ -34,17 +34,21 @@
 @property (strong, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
 
 - (void).cxx_destruct;
+- (id)_activeTransientPassRequest;
 - (id)_bundleIDForXPCConnection:(id)arg1;
 - (void)_handleAppStateChangeWithStateDictionary:(id)arg1;
 - (void)_notifyDelegateOfTransientPassChangeToUniqueID:(id)arg1;
+- (BOOL)_queue_serviceModeRequested;
 - (id)_queue_transientPassUniqueID;
 - (void)_updateAppStateMonitor;
 - (void)connection:(id)arg1 hasNewTransientPassRequest:(id)arg2;
 - (void)connectionDied:(id)arg1;
+- (void)getTransientPassUniqueID:(id *)arg1 transitServiceModeRequested:(BOOL *)arg2;
 - (void)handleNewConnection:(id)arg1;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)transientPassUniqueID;
+- (BOOL)transitServiceModeRequested;
 
 @end
 

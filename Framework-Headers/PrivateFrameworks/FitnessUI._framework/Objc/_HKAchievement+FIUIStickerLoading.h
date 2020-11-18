@@ -7,6 +7,7 @@
 #import <HealthKit/_HKAchievement.h>
 
 @interface _HKAchievement (FIUIStickerLoading)
+- (void)_addStickersFromBundle:(id)arg1 forType:(id)arg2 toArray:(id)arg3;
 - (id)fiui_stickerBundle;
 - (id)fiui_stickerURLs;
 @end

@@ -6,13 +6,15 @@
 
 #import <UIKit/UIView.h>
 
-@class PKPaymentSetupHeroView, PKPaymentSetupPrivacyFooterView, UIImageView, UILabel;
+@class PKPaymentHeroImageController, PKPaymentSetupHeroView, PKPaymentSetupPrivacyFooterView, UIImageView, UILabel;
 
 @interface PKPaymentSetupInfoView : UIView
 {
     UIImageView *_logo;
     UILabel *_bodyLabel;
     PKPaymentSetupPrivacyFooterView *_privacyFooter;
+    PKPaymentHeroImageController *_heroImageController;
+    BOOL _hasSupportingHardware;
     BOOL _insetPrivacyFooter;
     PKPaymentSetupHeroView *_heroView;
     long long _context;
@@ -33,7 +35,7 @@
 - (struct UIEdgeInsets)_privacyInsets;
 - (double)_textHeightForSize:(struct CGSize)arg1;
 - (id)_titleFont;
-- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2 heroImageController:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2 heroImageController:(id)arg3 hasSupportingHardware:(BOOL)arg4;
 - (BOOL)isBuddyiPad;
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;

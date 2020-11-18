@@ -18,6 +18,7 @@
     BOOL _requiresPlayWhileDownload;
     BOOL _showComposer;
     BOOL _shouldReportPlayEventsToStore;
+    BOOL _shouldRememberBookmarkTime;
     float _volumeNormalization;
     NSString *_albumArtistName;
     long long _albumStoreAdamID;
@@ -79,6 +80,7 @@
 @property (readonly, copy, nonatomic) NSURL *protectedContentSupportStorageURL; // @synthesize protectedContentSupportStorageURL=_protectedContentSupportStorageURL;
 @property (readonly, nonatomic, getter=_rentalIdentifier) NSNumber *rentalIdentifier; // @synthesize rentalIdentifier=_rentalIdentifier;
 @property (readonly, nonatomic) BOOL requiresPlayWhileDownload; // @synthesize requiresPlayWhileDownload=_requiresPlayWhileDownload;
+@property (readonly, nonatomic) BOOL shouldRememberBookmarkTime; // @synthesize shouldRememberBookmarkTime=_shouldRememberBookmarkTime;
 @property (readonly, nonatomic) BOOL shouldReportPlayEventsToStore; // @synthesize shouldReportPlayEventsToStore=_shouldReportPlayEventsToStore;
 @property (readonly, nonatomic) BOOL showComposer; // @synthesize showComposer=_showComposer;
 @property (readonly, nonatomic) unsigned long long storeAccountID; // @synthesize storeAccountID=_storeAccountID;

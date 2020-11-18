@@ -16,6 +16,7 @@
     NSArray *_certificates;
     NSURL *_brokerURL;
     NSURL *_paymentServicesURL;
+    NSURL *_paymentServicesMerchantURL;
     NSURL *_trustedServiceManagerURL;
     NSString *_trustedServiceManagerPushTopic;
     long long _consistencyCheckBackoffLevel;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) NSArray *certificates; // @synthesize certificates=_certificates;
 @property (nonatomic) long long consistencyCheckBackoffLevel; // @synthesize consistencyCheckBackoffLevel=_consistencyCheckBackoffLevel;
 @property (strong, nonatomic) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
+@property (strong, nonatomic) NSURL *paymentServicesMerchantURL; // @synthesize paymentServicesMerchantURL=_paymentServicesMerchantURL;
 @property (strong, nonatomic) NSURL *paymentServicesURL; // @synthesize paymentServicesURL=_paymentServicesURL;
 @property (strong, nonatomic) NSString *trustedServiceManagerPushTopic; // @synthesize trustedServiceManagerPushTopic=_trustedServiceManagerPushTopic;
 @property (strong, nonatomic) NSURL *trustedServiceManagerURL; // @synthesize trustedServiceManagerURL=_trustedServiceManagerURL;

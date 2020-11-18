@@ -7,6 +7,6 @@
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
 @protocol HMDCameraGetSnapshotProtocol <NSObject>
-- (void)getSnapshot;
+- (void)getSnapshot:(unsigned long long)arg1;
 @end
 

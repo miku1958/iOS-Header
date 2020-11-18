@@ -43,6 +43,7 @@
 - (id)init;
 - (id)initWithTransaction:(id)arg1 homeManager:(id)arg2;
 - (void)loadReasonsSaved:(id)arg1;
+- (unsigned long long)preservableTransactionsForHome:(id)arg1;
 - (void)removePendingTransactionsForHome:(id)arg1;
 - (void)reset;
 - (void)startUpload;

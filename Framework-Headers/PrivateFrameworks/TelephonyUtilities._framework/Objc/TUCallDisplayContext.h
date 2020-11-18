@@ -28,6 +28,7 @@
     NSString *_callDirectoryLabel;
     NSString *_callDirectoryLocalizedExtensionContainingAppName;
     NSString *_callDirectoryExtensionIdentifier;
+    NSString *_contactIdentifier;
     NSObject<OS_dispatch_queue> *_serialQueue;
     CXCallDirectoryManager *_callDirectoryManager;
 }
@@ -37,6 +38,7 @@
 @property (copy, nonatomic) NSString *callDirectoryLocalizedExtensionContainingAppName; // @synthesize callDirectoryLocalizedExtensionContainingAppName=_callDirectoryLocalizedExtensionContainingAppName;
 @property (strong, nonatomic) CXCallDirectoryManager *callDirectoryManager; // @synthesize callDirectoryManager=_callDirectoryManager;
 @property (copy, nonatomic) NSString *companyName; // @synthesize companyName=_companyName;
+@property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (copy, nonatomic) NSString *contactLabel; // @synthesize contactLabel=_contactLabel;
 @property (copy, nonatomic) NSString *contactName; // @synthesize contactName=_contactName;
 @property (weak, nonatomic) id<TUCallDisplayContextDelegate> delegate; // @synthesize delegate=_delegate;

@@ -9,12 +9,12 @@
 #import <HealthDaemon/HDFitnessFriendsCloudKitManagerChangesObserver-Protocol.h>
 #import <HealthDaemon/HDFitnessFriendsManagerReadyObserver-Protocol.h>
 
-@class HDFitnessFriendsCloudKitManager, HDFitnessFriendsManager, NSHashTable, NSString;
+@class HDFitnessFriendsCloudKitManager, HDFitnessFriendsFriendListManager, NSHashTable, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDFitnessFriendsGatewayManager : NSObject <HDFitnessFriendsCloudKitManagerChangesObserver, HDFitnessFriendsManagerReadyObserver>
 {
-    HDFitnessFriendsManager *_fitnessFriendsManager;
+    HDFitnessFriendsFriendListManager *_friendListManager;
     HDFitnessFriendsCloudKitManager *_cloudKitManager;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_observerQueue;
@@ -24,6 +24,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasReachedMaximumNumberOfFriends;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

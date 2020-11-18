@@ -6,14 +6,17 @@
 
 #import <Foundation/NSObject.h>
 
-@class MPAVController, MPMusicPlayerControllerServerInternal;
+@class MPAVController, MPMusicPlayerControllerServerInternal, NSString;
 
 @interface MPMusicPlayerControllerServer : NSObject
 {
     MPMusicPlayerControllerServerInternal *_internal;
 }
 
+@property (readonly, nonatomic) BOOL allowForeignAssetPlayback;
 @property (readonly, nonatomic) MPAVController *player;
+@property (readonly, copy, nonatomic) NSString *requestingBundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *requestingBundleVersion;
 
 + (BOOL)isMusicPlayerControllerServerRunning;
 + (id)sharedInstance;

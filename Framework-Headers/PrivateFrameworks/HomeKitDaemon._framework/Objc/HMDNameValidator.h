@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSUUID;
+@class NSMutableDictionary, NSPredicate, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDNameValidator : NSObject
@@ -14,10 +14,12 @@
     NSMutableDictionary *_namespaceList;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSUUID *_homeManagerUUID;
+    NSPredicate *_nonZeroLengthPredicate;
 }
 
 @property (strong, nonatomic) NSUUID *homeManagerUUID; // @synthesize homeManagerUUID=_homeManagerUUID;
 @property (copy, nonatomic) NSMutableDictionary *namespaceList; // @synthesize namespaceList=_namespaceList;
+@property (strong, nonatomic) NSPredicate *nonZeroLengthPredicate; // @synthesize nonZeroLengthPredicate=_nonZeroLengthPredicate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;

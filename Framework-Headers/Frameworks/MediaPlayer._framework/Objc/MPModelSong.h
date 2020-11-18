@@ -15,6 +15,7 @@
     BOOL _hasVideo;
     BOOL _homeSharingAssetAvailable;
     BOOL _shouldReportPlayEventsToStore;
+    BOOL _shouldRememberBookmarkTime;
     BOOL _shouldShowComposer;
     BOOL _storeRedownloadable;
     BOOL _libraryAdded;
@@ -76,6 +77,7 @@
 @property (strong, nonatomic) MPModelLyrics *lyrics; // @synthesize lyrics=_lyrics;
 @property (nonatomic) long long playbackEndpointType; // @synthesize playbackEndpointType=_playbackEndpointType;
 @property (copy, nonatomic) NSString *protectedContentSupportStorageFilePath; // @synthesize protectedContentSupportStorageFilePath=_protectedContentSupportStorageFilePath;
+@property (nonatomic) BOOL shouldRememberBookmarkTime; // @synthesize shouldRememberBookmarkTime=_shouldRememberBookmarkTime;
 @property (nonatomic) BOOL shouldReportPlayEventsToStore; // @synthesize shouldReportPlayEventsToStore=_shouldReportPlayEventsToStore;
 @property (nonatomic) BOOL shouldShowComposer; // @synthesize shouldShowComposer=_shouldShowComposer;
 @property (nonatomic) unsigned long long storeAccountIdentifier; // @synthesize storeAccountIdentifier=_storeAccountIdentifier;
@@ -107,6 +109,7 @@
 + (id)__MPModelPropertySongLocalNetworkFileURL__PROPERTY;
 + (id)__MPModelPropertySongPlaybackEndpointType__PROPERTY;
 + (id)__MPModelPropertySongProtectedContentSupportStorageFilePath__PROPERTY;
++ (id)__MPModelPropertySongShouldRememberBookmarkTime__PROPERTY;
 + (id)__MPModelPropertySongShouldReportPlayEventsToStore__PROPERTY;
 + (id)__MPModelPropertySongShouldShowComposer__PROPERTY;
 + (id)__MPModelPropertySongStoreAccountIdentifier__PROPERTY;
@@ -149,6 +152,7 @@
 + (id)__lyrics__KEY;
 + (id)__playbackEndpointType__KEY;
 + (id)__protectedContentSupportStorageFilePath__KEY;
++ (id)__shouldRememberBookmarkTime__KEY;
 + (id)__shouldReportPlayEventsToStore__KEY;
 + (id)__shouldShowComposer__KEY;
 + (id)__storeAccountIdentifier__KEY;

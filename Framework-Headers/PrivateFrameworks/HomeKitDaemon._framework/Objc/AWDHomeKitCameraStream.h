@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class AWDHomeKitVendorInformation, NSMutableArray, NSString;
 
 @interface AWDHomeKitCameraStream : PBCodable <NSCopying>
 {
@@ -19,6 +19,7 @@
     NSMutableArray *_resolutionCounts;
     int _resolutionOnClose;
     NSString *_sessionID;
+    AWDHomeKitVendorInformation *_vendorDetails;
     BOOL _isLocal;
     BOOL _isStreamStarted;
     struct {
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic) BOOL hasSessionID;
 @property (nonatomic) BOOL hasStartupDelay;
 @property (nonatomic) BOOL hasTimestamp;
+@property (readonly, nonatomic) BOOL hasVendorDetails;
 @property (nonatomic) BOOL isLocal; // @synthesize isLocal=_isLocal;
 @property (nonatomic) BOOL isStreamStarted; // @synthesize isStreamStarted=_isStreamStarted;
 @property (strong, nonatomic) NSMutableArray *resolutionCounts; // @synthesize resolutionCounts=_resolutionCounts;
@@ -49,6 +51,7 @@
 @property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) unsigned long long startupDelay; // @synthesize startupDelay=_startupDelay;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (strong, nonatomic) AWDHomeKitVendorInformation *vendorDetails; // @synthesize vendorDetails=_vendorDetails;
 
 + (Class)resolutionCountType;
 - (void).cxx_destruct;

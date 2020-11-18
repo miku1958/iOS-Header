@@ -55,6 +55,7 @@
 - (void)_stopSearchingForNewAccessories;
 - (void)_updateNewAccessories:(id)arg1;
 - (void)dealloc;
+- (void)handleStartWithError:(id)arg1 response:(id)arg2;
 - (id)init;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (void)startSearchingForNewAccessories;

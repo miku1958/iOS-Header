@@ -24,17 +24,25 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)_alreadyRebootedGracefullyOnce;
 + (void)_checkAccessibilityOptionsSetByiTunes;
 + (void)_checkClosedCaptioningSetByitunes;
 + (void)_checkContrastSetting;
++ (void)_checkForHomeButtonBreakage:(BOOL)arg1;
 + (void)_checkInvertColorsSetByiTunes;
 + (void)_checkMonoAudioSetByiTunes;
 + (void)_checkSpeakAutofillSetByiTunes;
 + (void)_checkVoiceOverTouchSetByiTunes;
 + (void)_checkZoomTouchSetByiTunes;
 + (void)_findNoteFromLoginSessionWithCompletion:(CDUnknownBlockType)arg1;
++ (void)_gracefulRebootForBrokenHomeButton;
++ (void)_performValidations;
++ (void)_registerForHomeButtonBreakage;
++ (void)_registerForHomeButtonBreakageNotification;
 + (void)_registerForNotifications;
++ (void)_setRebootedGracefullyOnce;
 + (void)_setVoiceOverTouchSettings:(unsigned char)arg1;
++ (void)_startAssistiveTouchForBrokenHomeButton;
 + (void)_updateAXSettings;
 + (void)_updateSpringBoardHelper;
 + (void)bootstrapGuidedAccessIfNeeded;

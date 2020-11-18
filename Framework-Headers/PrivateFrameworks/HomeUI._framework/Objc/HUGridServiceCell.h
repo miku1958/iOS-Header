@@ -66,7 +66,7 @@
 - (void)_updateSecondaryContentDisplayStyle;
 - (void)_updateTextWithPrimaryState:(long long)arg1;
 - (void)_updateUIWithAnimation:(BOOL)arg1 overridePrimaryState:(long long)arg2;
-- (void)contentEffectDidChange;
+- (void)displayStyleDidChange;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)item;

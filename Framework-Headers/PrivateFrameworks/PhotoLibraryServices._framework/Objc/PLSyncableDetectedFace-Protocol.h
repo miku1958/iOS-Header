@@ -15,7 +15,7 @@
 @property (nonatomic) double centerX;
 @property (nonatomic) double centerY;
 @property (nonatomic) short cloudLocalState;
-@property (nonatomic) long long faceAlgorithmVersion;
+@property (nonatomic) int faceAlgorithmVersion;
 @property (nonatomic) BOOL hidden;
 @property (nonatomic) BOOL manual;
 @property (nonatomic) BOOL nameSourceAuto;
@@ -23,8 +23,8 @@
 @property (strong, nonatomic) id<PLSyncablePerson> personBeingKeyFace;
 @property (strong, nonatomic) NSSet *rejectedPeople;
 @property (nonatomic) double size;
-@property (nonatomic) long long sourceHeight;
-@property (nonatomic) long long sourceWidth;
+@property (nonatomic) int sourceHeight;
+@property (nonatomic) int sourceWidth;
 
 @end
 

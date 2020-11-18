@@ -12,11 +12,12 @@
 #import <PassKitUI/PKPassGroupStackViewDelegate-Protocol.h>
 #import <PassKitUI/PKPassPersonalizationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
+#import <PassKitUI/PKPerformActionViewControllerDelegate-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
 @class NSMutableArray, NSString, NSTimer, PKGroupsController, PKPassGroupStackView, PKPaymentService, UIImageView;
 
-@interface PKPassGroupsViewController : UIViewController <PKGroupsControllerDelegate, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate, UIScrollViewDelegate, PKPaymentServiceDelegate, PKCodeAcquisitionDelegate, PKPassPersonalizationViewControllerDelegate>
+@interface PKPassGroupsViewController : UIViewController <PKGroupsControllerDelegate, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate, UIScrollViewDelegate, PKPaymentServiceDelegate, PKCodeAcquisitionDelegate, PKPerformActionViewControllerDelegate, PKPassPersonalizationViewControllerDelegate>
 {
     UIImageView *_statusBarGradient;
     PKPassGroupStackView *_groupStackView;
@@ -27,11 +28,14 @@
     NSTimer *_allowDimmingTimer;
     NSTimer *_passViewedNotificationTimer;
     NSMutableArray *_blocksQueuedForUpdateCompletion;
+    BOOL _persistentCardEmulationQueued;
     BOOL _viewAppeared;
     BOOL _viewAppearedBefore;
     BOOL _passesAreOutdated;
     BOOL _reloadingPasses;
     BOOL _backgroundMode;
+    unsigned long long _instanceFooterSuppressionCounter;
+    int _expressTransactionNotifyToken;
     BOOL _handleFieldDetection;
     BOOL _welcomeStateEnabled;
     unsigned long long _suppressedContent;
@@ -54,10 +58,13 @@
 + (BOOL)isPerformingAction;
 - (void).cxx_destruct;
 - (void)_applyPresentationState;
+- (void)_beginSuppressingInstanceFooter;
 - (void)_clearPassViewedNotificationTimer;
 - (void)_dismissPresentedVCsWithRequirements:(unsigned long long)arg1 performAction:(CDUnknownBlockType)arg2;
+- (void)_endSuppressingInstanceFooterWithContext:(id)arg1;
 - (void)_handleApplicationDidEnterBackground:(id)arg1;
 - (void)_handleApplicationWillEnterForeground:(id)arg1;
+- (void)_handleChildViewControllerRequestingServiceMode:(id)arg1;
 - (void)_handleFooterSupressionChange:(id)arg1;
 - (void)_handleNotifyToken:(int)arg1;
 - (void)_handleStatusBarChange:(id)arg1;
@@ -68,13 +75,14 @@
 - (void)_presentGroupWithIndex:(unsigned long long)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_presentWithUpdatedPasses:(CDUnknownBlockType)arg1;
 - (void)_regionConfigurationDidChangeNotification;
+- (void)_registerForExpressFelicaTransitNotifications:(BOOL)arg1;
 - (void)_startPassViewedNotificationTimer;
-- (void)_updateFooterSupression;
+- (void)_updateFooterSuppression;
+- (void)_updateFooterSuppressionWithContext:(id)arg1;
 - (void)_updateStatusBarGradientOpacity:(BOOL)arg1;
 - (void)addSimulatorPassWithURL:(id)arg1;
 - (void)addVASPassWithIdentifier:(id)arg1;
 - (void)allowIdleTimer;
-- (void)cardsChanged:(id)arg1;
 - (void)codeAcquisitionController:(id)arg1 didAddPass:(id)arg2;
 - (void)codeAcquisitionController:(id)arg1 didFinishWithPass:(id)arg2;
 - (void)codeAcquisitionController:(id)arg1 willAddPass:(id)arg2;
@@ -108,8 +116,11 @@
 - (void)passPersonalizationViewController:(id)arg1 didFinishPersonalizingPass:(id)arg2;
 - (BOOL)passesGrowWhenFlipped;
 - (void)paymentDeviceDidEnterFieldWithProperties:(id)arg1;
+- (void)performActionViewControllerDidCancel:(id)arg1;
+- (void)performActionViewControllerDidPerformAction:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (BOOL)prefersStatusBarHidden;
+- (void)presentActionViewControllerWithUniqueID:(id)arg1 actionType:(unsigned long long)arg2;
 - (void)presentAutomaticPresentationControllerForPassWithUniqueID:(id)arg1;
 - (void)presentGroupTable;
 - (void)presentGroupTableAnimated:(BOOL)arg1;
@@ -124,6 +135,7 @@
 - (void)presentPassWithUpdateUserNotificationIdentifier:(id)arg1;
 - (void)presentPaymentSetup;
 - (void)presentPileOffscreen;
+- (void)queuePersistentCardEmulation;
 - (void)reloadGroupsForGroupStackView:(id)arg1;
 - (void)reloadPasses;
 - (void)reloadPassesWithCompletion:(CDUnknownBlockType)arg1;

@@ -18,12 +18,6 @@
     BOOL _isConnected;
     NSString *_localizedName;
     AVWeakReference *_weakReference;
-    struct OpaqueFigSimpleMutex *_clockMutex;
-    BOOL _supportsDecoupledIO;
-    BOOL _decoupledIOActive;
-    struct OpaqueCMClock *_deviceClock;
-    struct OpaqueCMClock *_defaultClock;
-    struct OpaqueCMClock *_decoupledIOClock;
 }
 
 + (id)_devices;
@@ -36,7 +30,6 @@
 - (void)_setFigCaptureSource:(struct OpaqueFigCaptureSource *)arg1;
 - (void)audioInputDeviceLocalizedNameDidChangeHandler:(id)arg1;
 - (void)audioInputDevicesDidChangeHandler:(id)arg1;
-- (void)avAudioSessionRouteChangeHandler:(id)arg1;
 - (void)dealloc;
 - (struct OpaqueCMClock *)deviceClock;
 - (id)deviceType;
@@ -52,7 +45,6 @@
 - (void)stopUsingDevice;
 - (BOOL)supportsAVCaptureSessionPreset:(id)arg1;
 - (id)uniqueID;
-- (id)valueForUndefinedKey:(id)arg1;
 
 @end
 

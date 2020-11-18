@@ -59,6 +59,7 @@
 - (id)modelSong;
 - (id)protectedContentSupportStorageURL;
 - (void)setCachedLocalPlaybackAssetFilePath:(id)arg1 protectionType:(unsigned long long)arg2 assetQuality:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)shouldRememberBookmarkTime;
 - (BOOL)shouldReportPlayEventsToStore;
 - (BOOL)showComposer;
 - (unsigned long long)storeAccountID;

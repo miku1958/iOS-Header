@@ -25,7 +25,9 @@
 @property (readonly) NSString *searchTerm;
 
 - (void).cxx_destruct;
+- (void)cleanup;
 - (id)description;
+- (void)handleCancellation;
 - (void)handleResponse:(id)arg1;
 - (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (id)initWithSearchCompletion:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;

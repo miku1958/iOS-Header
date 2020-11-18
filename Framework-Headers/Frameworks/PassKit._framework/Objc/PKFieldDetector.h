@@ -17,6 +17,7 @@
     unsigned long long _fieldDetectSessionRetryCount;
     NSObject<OS_dispatch_queue> *_fieldDetectorSerialQueue;
     NSObject<OS_dispatch_queue> *_observersConcurrentQueue;
+    NSObject<OS_dispatch_queue> *_replyQueue;
     NSObject<OS_dispatch_source> *_valueAddedServiceLookupTimer;
     unsigned long long _valueAddedServiceLookupSynchronizer;
     unsigned long long _valueAddedServiceLookupTechnology;

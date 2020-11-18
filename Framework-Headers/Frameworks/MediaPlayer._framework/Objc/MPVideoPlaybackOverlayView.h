@@ -10,7 +10,7 @@
 #import <MediaPlayer/MPVideoOverlay-Protocol.h>
 #import <MediaPlayer/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class MPAVController, MPAVItem, MPAudioAndSubtitlesController, MPDetailSlider, MPKnockoutButton, MPVolumeSlider, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UINavigationBar, UIStatusBar, _UIBackdropView;
+@class MPAVController, MPAVItem, MPAudioAndSubtitlesController, MPDetailSlider, MPKnockoutButton, MPVolumeSlider, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UINavigationBar, UIStatusBar, UIViewController, _UIBackdropView;
 @protocol MPVideoControllerProtocol, MPVideoOverlayDelegate;
 
 @interface MPVideoPlaybackOverlayView : UIView <UIPopoverPresentationControllerDelegate, MPVideoOverlay, MPDetailSliderDelegate>
@@ -66,6 +66,7 @@
     unsigned long long visibleParts;
     id<MPVideoControllerProtocol> videoViewController;
     long long _style;
+    UIViewController *_viewControllerForModalPresentationOrientation;
     _UIBackdropView *_topBarBackdropView;
     _UIBackdropView *_bottomBarBackdropView;
 }
@@ -93,6 +94,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) _UIBackdropView *topBarBackdropView; // @synthesize topBarBackdropView=_topBarBackdropView;
 @property (weak, nonatomic) id<MPVideoControllerProtocol> videoViewController; // @synthesize videoViewController;
+@property (weak, nonatomic) UIViewController *viewControllerForModalPresentationOrientation; // @synthesize viewControllerForModalPresentationOrientation=_viewControllerForModalPresentationOrientation;
 @property (nonatomic) unsigned long long visibleParts; // @synthesize visibleParts;
 
 - (void).cxx_destruct;

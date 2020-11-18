@@ -19,23 +19,20 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 @property (strong, nonatomic) NSURL *metadataURL; // @synthesize metadataURL=_metadataURL;
 
-+ (id)_hiddenFacesInAsset:(id)arg1;
 + (BOOL)_isHiddenFaceMetadataExtension:(id)arg1;
 + (id)hiddenFacesToArchiveInManagedObjectContext:(id)arg1;
 + (BOOL)isHiddenFaceMetadataPath:(id)arg1;
 + (BOOL)isValidPath:(id)arg1;
 - (void).cxx_destruct;
-- (id)_bestDetectedFaceMatchFromFaces:(id)arg1 forFaceMetadata:(id)arg2 asset:(id)arg3;
-- (void)_insertHiddenFacesFromMetadata:(id)arg1 inAsset:(id)arg2;
 - (id)_metadataData;
-- (id)_missingFacesFromFacesMetadata:(id)arg1 inAssetFaces:(id)arg2 asset:(id)arg3;
 - (void)_readMetadata;
 - (void)_saveMetadata;
+- (id)description;
 - (id)init;
 - (id)initWithManagedObjectContext:(id)arg1;
 - (id)initWithManagedObjectContext:(id)arg1 metadataURL:(id)arg2;
 - (id)initWithPersistedDataAtURL:(id)arg1;
-- (void)insertHiddenFacesFromDataInManagedObjectContext:(id)arg1;
+- (void)insertHiddenFacesFromDataInManagedObjectContext:(id)arg1 deferUnmatched:(BOOL)arg2;
 - (void)removePersistedData;
 - (void)writePersistedData;
 

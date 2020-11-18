@@ -11,6 +11,7 @@
 }
 
 - (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)internalCancelRequestWithHandler:(id)arg1 error:(id *)arg2;
 - (BOOL)internalProcessWithHandler:(id)arg1 error:(id *)arg2;
 
 @end

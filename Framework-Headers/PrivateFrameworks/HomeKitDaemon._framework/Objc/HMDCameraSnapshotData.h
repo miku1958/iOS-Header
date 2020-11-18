@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class HAPOSTransaction, NSData;
+@class HAPOSTransaction, HMDVideoResolution, NSData;
 
 @interface HMDCameraSnapshotData : NSObject
 {
     NSData *_snapshotData;
     HAPOSTransaction *_snapshotDataTrasaction;
+    HMDVideoResolution *_videoResolution;
 }
 
 @property (readonly, nonatomic) NSData *snapshotData; // @synthesize snapshotData=_snapshotData;
 @property (readonly, nonatomic) HAPOSTransaction *snapshotDataTrasaction; // @synthesize snapshotDataTrasaction=_snapshotDataTrasaction;
+@property (readonly, nonatomic) HMDVideoResolution *videoResolution; // @synthesize videoResolution=_videoResolution;
 
 - (void).cxx_destruct;
-- (id)initWithSnapshotData:(id)arg1 snapshotDataTrasaction:(id)arg2;
+- (void)dealloc;
+- (id)initWithSnapshotData:(id)arg1 videoResolution:(id)arg2 snapshotDataTrasaction:(id)arg3;
 
 @end
 

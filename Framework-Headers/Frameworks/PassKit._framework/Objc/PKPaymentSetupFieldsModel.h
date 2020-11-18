@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PKPaymentSetupFieldFooter;
 
 @interface PKPaymentSetupFieldsModel : NSObject
 {
     NSMutableArray *_paymentSetupFields;
+    PKPaymentSetupFieldFooter *_footerField;
 }
 
 + (id)defaultPaymentSetupFields;
 + (id)defaultPaymentSetupProvisioningFields;
 + (id)fakePaymentSetupProvisioningFields;
 - (void).cxx_destruct;
+- (id)footerPaymentSetupField;
+- (BOOL)hasFooterPaymentSetupField;
 - (BOOL)hasIncompletePaymentSetupFields;
 - (id)incompletePaymentSetupFields;
 - (id)initWithPaymentSetupFields:(id)arg1;

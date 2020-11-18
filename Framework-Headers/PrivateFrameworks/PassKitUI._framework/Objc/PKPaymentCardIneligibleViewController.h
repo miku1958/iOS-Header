@@ -21,9 +21,11 @@
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
     NSURL *_learnMoreURL;
     CDUnknownBlockType _learnMorePresentationHandler;
+    CDUnknownBlockType _continueActionHandler;
 }
 
 @property (nonatomic) long long context; // @synthesize context=_context;
+@property (copy, nonatomic) CDUnknownBlockType continueActionHandler; // @synthesize continueActionHandler=_continueActionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

@@ -29,9 +29,9 @@
 
 - (void).cxx_destruct;
 - (void)cameraSnapshotControl:(id)arg1 didTakeSnapshot:(id)arg2 error:(id)arg3;
+- (void)cameraSnapshotControlDidUpdateMostRecentSnapshot:(id)arg1;
+- (void)fetchCameraSnapshotForBulletinContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithSnapshotControl:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (void)resetControl;
 - (void)takeSnapshot;
 
 @end

@@ -51,6 +51,7 @@
 @property (strong, nonatomic) NSDate *watchPasscodeAndUnlockedQueryDate; // @synthesize watchPasscodeAndUnlockedQueryDate=_watchPasscodeAndUnlockedQueryDate;
 @property (strong, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 
++ (BOOL)watchConnected;
 - (void).cxx_destruct;
 - (void)_checkCompanioniCloudAccount;
 - (void)_checkPasscodeEnabledAndUnlockedState;
@@ -68,8 +69,9 @@
 - (id)_errorForWristDetectNeeded;
 - (void)_finishPresentingSetupControllerIfReadyWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)_setAuthRandomIfNecessary;
+- (void)addCardPreflightWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithWebService:(id)arg1 companionAgentConnection:(id)arg2;
-- (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
+- (void)transferToCompanionPreflightWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

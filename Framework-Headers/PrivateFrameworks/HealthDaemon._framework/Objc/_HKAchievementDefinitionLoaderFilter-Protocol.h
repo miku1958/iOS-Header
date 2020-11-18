@@ -8,6 +8,7 @@
 
 @protocol _HKAchievementDefinitionLoaderFilter
 - (BOOL)areAssetsNeededForAchievementDefinition:(_HKAchievementDefinition *)arg1;
+- (BOOL)areStickersEarnedForAchievementDefinition:(_HKAchievementDefinition *)arg1;
 - (BOOL)areStickersNeededAtAll;
 - (BOOL)areStickersNeededForAchievementDefinition:(_HKAchievementDefinition *)arg1;
 @end

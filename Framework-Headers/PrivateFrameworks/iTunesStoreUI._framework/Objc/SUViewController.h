@@ -61,7 +61,6 @@
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (BOOL)_canReloadView;
-- (void)_dialogFinishedNotification:(id)arg1;
 - (void)_dismissFooterAnimationDidStop:(id)arg1;
 - (id)_existingNavigationItem;
 - (void)_exitStoreButtonAction:(id)arg1;
@@ -92,7 +91,6 @@
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;
-- (void)dismissAfterDialogs;
 - (void)dismissFooterViewControllerAnimated:(BOOL)arg1;
 - (void)enqueueOperation:(id)arg1 cancelOnDealloc:(BOOL)arg2;
 - (void)handleApplicationURL:(id)arg1;

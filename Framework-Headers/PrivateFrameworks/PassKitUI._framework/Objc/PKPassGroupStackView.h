@@ -283,6 +283,7 @@
 - (void)scrollDownTest;
 - (void)scrollNext;
 - (void)scrollUpTest;
+- (void)setFooterSuppressed:(BOOL)arg1 withContext:(id)arg2;
 - (void)setPresentationState:(long long)arg1 animated:(BOOL)arg2;
 - (void)setPresentationState:(long long)arg1 animated:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)setPresentationState:(long long)arg1 context:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

@@ -56,6 +56,8 @@
     NSObject<OS_dispatch_queue> *_propertyQueue;
     unsigned long long _activationAttempts;
     unsigned long long _pairingAttempts;
+    NSNumber *_backedOffStateNumber;
+    HMFTimer *_accessoryDiscoveryBackoffTimer;
     NSString *_providedName;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_source> *_pairingRetryTimer;
@@ -75,11 +77,13 @@
     NSSet *_cameraProfiles;
 }
 
+@property (strong, nonatomic) HMFTimer *accessoryDiscoveryBackoffTimer; // @synthesize accessoryDiscoveryBackoffTimer=_accessoryDiscoveryBackoffTimer;
 @property (copy, nonatomic) NSNumber *accessoryFlags; // @synthesize accessoryFlags=_accessoryFlags;
 @property (strong, nonatomic) NSSet *accessoryProfiles; // @synthesize accessoryProfiles=_accessoryProfiles;
 @property (nonatomic) unsigned long long activationAttempts; // @synthesize activationAttempts=_activationAttempts;
 @property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 @property (strong, nonatomic) HMDApplicationRegistry *appRegistry; // @synthesize appRegistry=_appRegistry;
+@property (copy, nonatomic) NSNumber *backedOffStateNumber; // @synthesize backedOffStateNumber=_backedOffStateNumber;
 @property (nonatomic, getter=isBlocked) BOOL blocked; // @synthesize blocked=_blocked;
 @property (weak, nonatomic) HMDAccessory *bridge; // @synthesize bridge=_bridge;
 @property (strong, nonatomic) NSSet *cameraProfiles; // @synthesize cameraProfiles=_cameraProfiles;
@@ -172,6 +176,7 @@
 - (void)_handleCharacteristicWrite:(id)arg1;
 - (void)_handleCharacteristicsChangedNotification:(id)arg1;
 - (void)_handleDiscoverBridgedAccessories:(id)arg1 startDiscovery:(BOOL)arg2;
+- (void)_handleDiscoveryBackoffTimerFired;
 - (void)_handleIdentify:(id)arg1;
 - (void)_handleMultipleCharacteristicsUpdated:(id)arg1 filterUnmodifiedCharacteristics:(BOOL)arg2 queue:(id)arg3 remoteDevice:(id)arg4 notificationUpdateIdentifier:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_handleRename:(id)arg1;
@@ -213,6 +218,7 @@
 - (void)_removeNewAccessoryCompletionBlockForDisAssociatingAccessory:(id)arg1;
 - (void)_removeNewAccessoryCompletionBlockforAssociatingAccessory:(id)arg1;
 - (void)_removeNewAccessoryCompletionBlockforDiscoveredAccessory:(id)arg1;
+- (void)_retrieveStateForTrackedAccessory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_sendBlockedNotification:(BOOL)arg1 withError:(id)arg2 withIdentifier:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)_setCurrentRelayAccessoryState:(unsigned long long)arg1;
 - (void)_setCurrentTimeCharacteristic:(id)arg1;
@@ -277,9 +283,11 @@
 - (id)allDiscoveredAccessories;
 - (id)assistantObject;
 - (id)assistantUniqueIdentifier;
+- (void)backOffAccessoryForStateNumber:(id)arg1;
 - (void)blockWithError:(id)arg1;
 - (id)characteristicsPassingTest:(CDUnknownBlockType)arg1;
 - (void)configure:(id)arg1 msgDispatcher:(id)arg2 accessoryConfigureGroup:(id)arg3;
+- (void)configureBulletinNotification:(CDUnknownBlockType)arg1;
 - (void)configureWithAccessory:(id)arg1 reAddServices:(BOOL)arg2 homeNotificationsEnabled:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)configureWithMsgDispatcher:(id)arg1;
 - (id)currentAssociatingAccessory;
@@ -343,6 +351,7 @@
 - (id)relayAccessory;
 - (void)remoteAccessEnabled:(BOOL)arg1;
 - (void)removeAllTransportInformationInstances;
+- (void)removeBackedoffAccessoryForStateNumber:(id)arg1;
 - (void)removeBridgeFromDiscoveredAccessory:(id)arg1;
 - (void)removeBridgedAccessory:(id)arg1;
 - (void)removeBridgesFromDiscoveredAccessory;
@@ -371,6 +380,7 @@
 - (void)setSerialNumber:(id)arg1;
 - (void)setTimeInformationServiceExists:(BOOL)arg1;
 - (void)setTimeUpdateCharacteristic:(id)arg1;
+- (BOOL)shouldEnableDaemonRelaunch;
 - (void)startAssociatingAccessoryTimer;
 - (void)startDisassociatingAccessoryTimer;
 - (void)startDiscoveryAccessoryTimer:(CDUnknownBlockType)arg1;
@@ -387,6 +397,7 @@
 - (void)unconfigure;
 - (void)unconfigureAccessoryWithServerIdentifier:(id)arg1 linkType:(long long)arg2;
 - (void)updateAccessoryFlags:(id)arg1;
+- (void)updateAccessoryFlagsAndNotifyClients:(id)arg1;
 - (void)updateAccessoryInformation:(id)arg1;
 - (void)updateCategory:(id)arg1;
 - (void)updateName:(id)arg1;

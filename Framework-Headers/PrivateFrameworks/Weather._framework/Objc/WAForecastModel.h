@@ -33,6 +33,7 @@
 @property (copy, nonatomic) NSArray *dailyForecasts; // @synthesize dailyForecasts=_dailyForecasts;
 @property (strong, nonatomic) NSURL *deepLink; // @synthesize deepLink=_deepLink;
 @property (copy, nonatomic) NSArray *hourlyForecasts; // @synthesize hourlyForecasts=_hourlyForecasts;
+@property (readonly, nonatomic) BOOL isPopulated;
 @property (strong, nonatomic) NSURL *link; // @synthesize link=_link;
 @property (strong, nonatomic) WFLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) NSDate *sunrise; // @synthesize sunrise=_sunrise;
@@ -43,6 +44,9 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

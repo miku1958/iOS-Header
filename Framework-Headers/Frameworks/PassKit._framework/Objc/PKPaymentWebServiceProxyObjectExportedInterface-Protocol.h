@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, PKPass, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext;
+@class NSData, NSDictionary, NSString, PKPass, PKPaymentPass, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext;
 
 @protocol PKPaymentWebServiceProxyObjectExportedInterface <NSObject>
 - (void)addPassData:(NSData *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
@@ -20,6 +20,7 @@
 - (void)getContextWithCompletion:(void (^)(PKPaymentWebServiceContext *))arg1;
 - (void)getProvisioningDataWithCompletion:(void (^)(PKPaymentDeviceProvisioningData *, NSError *))arg1;
 - (void)getRegistrationDataWithAuthToken:(NSString *)arg1 completion:(void (^)(PKPaymentDeviceRegistrationData *, NSError *))arg2;
+- (void)handlePotentialExpressPass:(PKPaymentPass *)arg1 withCompletion:(void (^)(NSSet *))arg2;
 - (void)hasPassesOfType:(unsigned long long)arg1 completion:(void (^)(BOOL))arg2;
 - (void)invalidateRemoteProxyTargetDevice;
 - (void)noteProvisioningDidBegin;
@@ -32,5 +33,6 @@
 - (void)setNewAuthRandomIfNecessaryReturningPairingState:(void (^)(BOOL, NSData *, NSData *))arg1;
 - (void)signData:(NSData *)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(void (^)(NSData *, PKSecureElementSignatureInfo *, NSError *))arg3;
 - (void)validateAddPreconditionsWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)validateTransferPreconditionsWithCompletion:(void (^)(BOOL, NSError *))arg1;
 @end
 

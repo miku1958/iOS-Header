@@ -13,6 +13,8 @@
     BOOL _didResetTorchMode;
     BOOL _shouldShowGridView;
     BOOL _shouldCaptureHDREV0;
+    BOOL _shouldCaptureOriginalForPortraitEffect;
+    BOOL _didAcknowledgePortraitModeDescription;
     BOOL _shouldDisableCameraSwitchingDuringVideoRecording;
     BOOL _lockAsShutterEnabled;
     BOOL _shouldDelayRemotePersistence;
@@ -29,6 +31,7 @@
 
 @property (strong, nonatomic) CAMCaptureConfiguration *captureConfiguration; // @synthesize captureConfiguration=_captureConfiguration;
 @property (strong, nonatomic) CAMConflictingControlConfiguration *conflictingControlConfiguration; // @synthesize conflictingControlConfiguration=_conflictingControlConfiguration;
+@property (nonatomic) BOOL didAcknowledgePortraitModeDescription; // @synthesize didAcknowledgePortraitModeDescription=_didAcknowledgePortraitModeDescription;
 @property (nonatomic, setter=_setDidResetTorchMode:) BOOL didResetTorchMode; // @synthesize didResetTorchMode=_didResetTorchMode;
 @property (readonly, nonatomic, getter=isLockAsShutterEnabled) BOOL lockAsShutterEnabled; // @synthesize lockAsShutterEnabled=_lockAsShutterEnabled;
 @property (readonly, nonatomic) long long overriddenBackCaptureInterval; // @synthesize overriddenBackCaptureInterval=_overriddenBackCaptureInterval;
@@ -36,6 +39,7 @@
 @property (nonatomic) long long previewViewAspectMode; // @synthesize previewViewAspectMode=_previewViewAspectMode;
 @property (strong, nonatomic, setter=_setResetTimeoutDate:) NSDate *resetTimeoutDate; // @synthesize resetTimeoutDate=_resetTimeoutDate;
 @property (readonly, nonatomic) BOOL shouldCaptureHDREV0; // @synthesize shouldCaptureHDREV0=_shouldCaptureHDREV0;
+@property (readonly, nonatomic) BOOL shouldCaptureOriginalForPortraitEffect; // @synthesize shouldCaptureOriginalForPortraitEffect=_shouldCaptureOriginalForPortraitEffect;
 @property (readonly, nonatomic) BOOL shouldDelayRemotePersistence; // @synthesize shouldDelayRemotePersistence=_shouldDelayRemotePersistence;
 @property (readonly, nonatomic) BOOL shouldDisableCameraSwitchingDuringVideoRecording; // @synthesize shouldDisableCameraSwitchingDuringVideoRecording=_shouldDisableCameraSwitchingDuringVideoRecording;
 @property (readonly, nonatomic) BOOL shouldShowGridView; // @synthesize shouldShowGridView=_shouldShowGridView;

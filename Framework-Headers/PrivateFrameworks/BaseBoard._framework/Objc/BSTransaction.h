@@ -9,7 +9,7 @@
 #import <BaseBoard/BSWatchdogProviding-Protocol.h>
 
 @class BSAuditHistory, NSArray, NSDate, NSError, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_log;
 
 @interface BSTransaction : NSObject <BSWatchdogProviding>
 {
@@ -27,6 +27,7 @@
     NSHashTable *_observers;
     unsigned long long _state;
     BSAuditHistory *_auditHistory;
+    NSObject<OS_os_log> *_auditHistoryLog;
     BOOL _debugLoggingEnabled;
     NSMutableSet *_debugLogCategories;
     NSString *_cachedDescriptionProem;

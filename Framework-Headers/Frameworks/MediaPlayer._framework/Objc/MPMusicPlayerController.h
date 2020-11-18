@@ -26,6 +26,7 @@
 + (void)setRunLoopForNotifications:(id)arg1;
 + (id)systemMusicPlayer;
 - (void).cxx_destruct;
+- (void)_cancelExistingPrepareToPlay;
 - (void)_clientCheckInUsingExistencePort:(BOOL)arg1;
 - (void)_isQueuePreparedDidChange:(BOOL)arg1;
 - (void)_itemPlaybackDidEnd:(unsigned long long)arg1;
@@ -33,6 +34,7 @@
 - (BOOL)_musicPlayerExistencePortIsValid;
 - (void)_nowPlayingItemDidChange:(unsigned long long)arg1;
 - (void)_playbackStateDidChange:(long long)arg1;
+- (void)_queuePreparationFailedWithErrorCode:(unsigned char)arg1;
 - (void)_registerForLaunchNotifications;
 - (void)_repeatModeDidChange:(long long)arg1;
 - (void)_runMigServerOnPort:(unsigned int)arg1;
@@ -68,6 +70,7 @@
 - (long long)playbackState;
 - (void)prepareQueueForPlayback;
 - (void)prepareToPlay;
+- (void)prepareToPlayWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)queueAsQuery;
 - (id)queueAsRadioStation;
 - (long long)repeatMode;
@@ -76,6 +79,7 @@
 - (void)setCurrentChapterIndex:(unsigned long long)arg1;
 - (void)setNowPlayingItem:(id)arg1;
 - (void)setPlaybackSpeed:(long long)arg1;
+- (void)setQueueWithDescriptor:(id)arg1;
 - (void)setQueueWithGeniusMixPlaylist:(id)arg1;
 - (void)setQueueWithItemCollection:(id)arg1;
 - (void)setQueueWithQuery:(id)arg1;

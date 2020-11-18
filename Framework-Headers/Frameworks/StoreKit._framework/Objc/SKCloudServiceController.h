@@ -18,9 +18,10 @@
 + (long long)authorizationStatus;
 + (void)requestAuthorization:(CDUnknownBlockType)arg1;
 - (void)_accountStoreDidChangeNotification;
+- (void)_handleInvalidation;
 - (void)_playbackCapabilitiesDidChangeNotification;
 - (void)_storefrontDidChangeNotification;
-- (void)_updateCapabilitiesWithSubscriptionStatus:(id)arg1 postNotification:(BOOL)arg2;
+- (void)_updateCapabilitiesWithResponse:(id)arg1 postNotification:(BOOL)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)requestCapabilitiesWithCompletionHandler:(CDUnknownBlockType)arg1;

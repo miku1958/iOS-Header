@@ -11,7 +11,7 @@
 #import <VideoSubscriberAccount/VSRemoteNotifierDelegate-Protocol.h>
 #import <VideoSubscriberAccount/VSViewServiceProtocol-Protocol.h>
 
-@class NSOperationQueue, NSString, NSUUID, VSAccountStore, VSIdentityProviderController, VSRemoteNotifier, VSViewServiceRequest;
+@class NSOperationQueue, NSString, NSUUID, VSAccountStore, VSIdentityProviderController, VSPreferences, VSRemoteNotifier, VSViewServiceRequest;
 
 __attribute__((visibility("hidden")))
 @interface VSViewServiceViewController : UIViewController <VSViewServiceProtocol, VSIdentityProviderControllerDelegate, VSIdentityProviderPickerViewControllerDelegate, VSRemoteNotifierDelegate>
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     BOOL _didAuthenticateAccount;
     VSAccountStore *_accountStore;
     VSRemoteNotifier *_remoteNotifier;
+    VSPreferences *_preferences;
     NSOperationQueue *_privateQueue;
     VSViewServiceRequest *_currentRequest;
     NSUUID *_currentRequestID;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VSIdentityProviderController *identityProviderController; // @synthesize identityProviderController=_identityProviderController;
 @property (nonatomic, getter=isIdentityProviderPickerRequired) BOOL identityProviderPickerRequired; // @synthesize identityProviderPickerRequired=_identityProviderPickerRequired;
+@property (strong, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
 @property (nonatomic, getter=isPresentedInHost) BOOL presentedInHost; // @synthesize presentedInHost=_presentedInHost;
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (strong, nonatomic) VSRemoteNotifier *remoteNotifier; // @synthesize remoteNotifier=_remoteNotifier;

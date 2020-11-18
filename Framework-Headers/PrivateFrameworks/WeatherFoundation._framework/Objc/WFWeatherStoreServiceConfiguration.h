@@ -8,10 +8,11 @@
 
 #import <WeatherFoundation/NSCopying-Protocol.h>
 
-@class NSMutableDictionary, NSURL, NSURLSession, WFAggregateDictionary;
+@class NSMutableDictionary, NSURL, NSURLSession, NWPathEvaluator, WFAggregateDictionary;
 
 @interface WFWeatherStoreServiceConfiguration : NSObject <NSCopying>
 {
+    NWPathEvaluator *_serviceConnectivityEvaluator;
     NSURLSession *_session;
     WFAggregateDictionary *_aggDictionary;
     NSURL *_cacheURL;
@@ -20,6 +21,7 @@
     Class _airQualityRequestFormatterClass;
     Class _airQualityParserClass;
     Class _cacheClass;
+    NSURL *_serviceConnectivityEvaluationURL;
 }
 
 @property (strong, nonatomic) WFAggregateDictionary *aggDictionary; // @synthesize aggDictionary=_aggDictionary;
@@ -27,9 +29,12 @@
 @property (strong, nonatomic) Class airQualityRequestFormatterClass; // @synthesize airQualityRequestFormatterClass=_airQualityRequestFormatterClass;
 @property (strong, nonatomic) Class cacheClass; // @synthesize cacheClass=_cacheClass;
 @property (copy, nonatomic) NSURL *cacheURL; // @synthesize cacheURL=_cacheURL;
+@property (readonly, nonatomic) BOOL isServiceAvailable;
 @property (readonly, nonatomic) BOOL isValid;
 @property (strong, nonatomic) NSMutableDictionary *requestFormatterForForecastType; // @synthesize requestFormatterForForecastType=_requestFormatterForForecastType;
 @property (strong, nonatomic) NSMutableDictionary *requestParserForForecastType; // @synthesize requestParserForForecastType=_requestParserForForecastType;
+@property (strong, nonatomic) NSURL *serviceConnectivityEvaluationURL; // @synthesize serviceConnectivityEvaluationURL=_serviceConnectivityEvaluationURL;
+@property (readonly, nonatomic) NWPathEvaluator *serviceConnectivityEvaluator; // @synthesize serviceConnectivityEvaluator=_serviceConnectivityEvaluator;
 @property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
 
 + (id)defaultConfiguration;

@@ -14,6 +14,8 @@
     NSPredicate *_compiledPredicate;
     NSPredicate *_baseUnearnedVisibilityPredicate;
     NSPredicate *_compiledUnearnedVisibilityPredicate;
+    NSPredicate *_baseAlertabilityPredicate;
+    NSPredicate *_compiledAlertabilityPredicate;
     NSExpression *_expressionForEarnedValue;
     BOOL _earnableOnlyOnce;
     BOOL _isWorkoutAchievement;
@@ -35,10 +37,12 @@
 }
 
 @property (strong, nonatomic) NSDate *alertDateUTC; // @synthesize alertDateUTC=_alertDateUTC;
+@property (readonly, nonatomic) NSPredicate *alertabilityPredicate;
 @property (strong, nonatomic) NSArray *availableCountryCodes; // @synthesize availableCountryCodes=_availableCountryCodes;
 @property (strong, nonatomic) NSDate *availableEndDateUTC; // @synthesize availableEndDateUTC=_availableEndDateUTC;
 @property (strong, nonatomic) NSDate *availableStartDateUTC; // @synthesize availableStartDateUTC=_availableStartDateUTC;
 @property (strong, nonatomic) NSString *badgeShapeName; // @synthesize badgeShapeName=_badgeShapeName;
+@property (strong, nonatomic) NSPredicate *baseAlertabilityPredicate; // @synthesize baseAlertabilityPredicate=_baseAlertabilityPredicate;
 @property (nonatomic) unsigned long long calendarUnitForEqualityCheck; // @synthesize calendarUnitForEqualityCheck=_calendarUnitForEqualityCheck;
 @property (nonatomic) unsigned long long deduplicationStrategy; // @synthesize deduplicationStrategy=_deduplicationStrategy;
 @property (nonatomic) long long displayOrder; // @synthesize displayOrder=_displayOrder;
@@ -56,13 +60,14 @@
 @property (nonatomic) unsigned long long triggers; // @synthesize triggers=_triggers;
 @property (strong, nonatomic) NSPredicate *unearnedVisibilityPredicate;
 
-+ (id)_compilePredicateFromBasePredicate:(id)arg1 availableCountryCodes:(id)arg2 availableStartDateUTC:(id)arg3 availableEndDateUTC:(id)arg4 earnableOnlyOnce:(BOOL)arg5;
++ (id)_compilePredicateFromBasePredicate:(id)arg1 availableCountryCodes:(id)arg2 availableStartDateUTC:(id)arg3 availableEndDateUTC:(id)arg4 earnableOnlyOnce:(BOOL)arg5 workoutAchievement:(BOOL)arg6;
 + (id)definitionWithDictionaryRepresentation:(id)arg1;
 + (id)definitionWithPlistRepresentation:(id)arg1;
 - (void).cxx_destruct;
 - (long long)compareDisplayOrderOfDefinition:(id)arg1;
 - (id)debugDescription;
 - (id)init;
+- (void)setAlertabilityPredicate:(id)arg1;
 
 @end
 

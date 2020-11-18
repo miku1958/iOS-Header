@@ -8,7 +8,7 @@
 
 #import <PhotoVision/PVFaceComparer-Protocol.h>
 
-@class CVMLRequestHandler, NSMutableSet, NSNumber, NSString, NSURL, PVCanceler, PVClustererPerformanceStats, PVContext, PVDataAccessor, PVEventManager, PVQueue;
+@class CVMLRequestHandler, NSLock, NSMutableArray, NSMutableSet, NSNumber, NSString, NSURL, PVCanceler, PVClustererPerformanceStats, PVContext, PVDataAccessor, PVEventManager, PVQueue, PVSuggestionRequest;
 @protocol PVCVMLIntegrating;
 
 __attribute__((visibility("hidden")))
@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 {
     id<PVCVMLIntegrating> _cvmlIntegration;
     PVQueue *_processingQueue;
-    PVCanceler *_canceler;
     PVContext *_context;
     PVDataAccessor *_dataAccessor;
     NSURL *_cacheDirUrl;
@@ -29,10 +28,14 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_faceCSNsToRemove;
     unsigned long long _accumulatedChangesCount;
     unsigned long long _nextClusterTriggeringAccumulatedChangesCount;
+    PVCanceler *_clusteringCanceler;
     BOOL _rebuildClusterer;
     BOOL _faceClusteringLogEnabled;
     BOOL _faceClusteringPerfLogEnabled;
     PVClustererPerformanceStats *_performanceStats;
+    NSMutableArray *_outstandingSuggestionRequests;
+    PVSuggestionRequest *_currentSuggestionRequest;
+    NSLock *_suggestionLock;
     PVEventManager *_eventManager;
     long long _state;
 }
@@ -67,6 +70,9 @@ __attribute__((visibility("hidden")))
 - (void)_transitionToReadyState;
 - (BOOL)_updatePersistedAlgorithmicClusters:(id)arg1 andFaces:(id)arg2 returnFaceGroupsWithoutKeyFace:(id *)arg3 deletedFaceCSNs:(id)arg4 toBeReclusteredFaceIds:(id)arg5 error:(id *)arg6;
 - (BOOL)_updateRepresentativeFacesForClusters:(id)arg1 csnByGroupWithoutKeyFace:(id)arg2 error:(id *)arg3;
+- (BOOL)cancelAllSuggestionRequests;
+- (void)cancelClustering;
+- (BOOL)cancelSuggestionRequest:(id)arg1;
 - (void)clusterAndWait;
 - (void)clusterIfNecessaryAndWait;
 - (float)clusterRepresentativenessOfFace:(id)arg1;
@@ -77,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithContext:(id)arg1 dataAccessor:(id)arg2 cacheDirectoryUrl:(id)arg3 cvmlIntegration:(id)arg4;
 - (void)performClusteringWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestClusteringWithCompletion:(CDUnknownBlockType)arg1;
+- (id)requestSuggestionsForFaceClusterSequenceNumbers:(id)arg1 updateHandler:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (BOOL)restoreState:(id *)arg1;
 - (BOOL)saveState:(id *)arg1;
 - (void)scheduleClusteringAfterRemovingFaceCSNs:(id)arg1 addingFaceIdStrs:(id)arg2;

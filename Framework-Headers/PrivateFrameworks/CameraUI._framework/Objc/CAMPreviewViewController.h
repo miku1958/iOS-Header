@@ -11,12 +11,13 @@
 #import <CameraUI/CAMFacesDelegate-Protocol.h>
 #import <CameraUI/CAMFocusDelegate-Protocol.h>
 #import <CameraUI/CAMFocusIndicatorViewDelegate-Protocol.h>
+#import <CameraUI/CAMPreviewViewSubjectIndicatorDelegate-Protocol.h>
 #import <CameraUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CAMBurstIndicatorView, CAMEffectsRenderer, CAMExposureResult, CAMFocusIndicatorView, CAMFocusResult, CAMMotionController, CAMPreviewView, CAMTimelapseController, CUCaptureController, NSDate, NSString, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class CAMBurstIndicatorView, CAMEffectsRenderer, CAMExposureResult, CAMFocusIndicatorView, CAMFocusResult, CAMMotionController, CAMPreviewView, CAMSubjectIndicatorView, CAMTimelapseController, CUCaptureController, NSDate, NSString, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol CAMPreviewViewControllerDelegate;
 
-@interface CAMPreviewViewController : UIViewController <UIGestureRecognizerDelegate, CAMFocusDelegate, CAMExposureDelegate, CAMFocusIndicatorViewDelegate, CAMEffectsPreviewSampleBufferDelegate, CAMFacesDelegate>
+@interface CAMPreviewViewController : UIViewController <UIGestureRecognizerDelegate, CAMFocusDelegate, CAMExposureDelegate, CAMFocusIndicatorViewDelegate, CAMEffectsPreviewSampleBufferDelegate, CAMPreviewViewSubjectIndicatorDelegate, CAMFacesDelegate>
 {
     BOOL __changingModeOrDevice;
     BOOL __userLockedFocusAndExposure;
@@ -27,6 +28,7 @@
     id<CAMPreviewViewControllerDelegate> _delegate;
     CAMEffectsRenderer *_effectsRenderer;
     long long _layoutStyle;
+    long long _shallowDepthOfFieldStatus;
     CUCaptureController *__captureController;
     CAMTimelapseController *__timelapseController;
     long long __mode;
@@ -46,6 +48,7 @@
     double __exposureBiasVirtualSliderExponent;
     double __exposureBiasVirtualSliderPointsForFirstStop;
     NSDate *__lastExposureBiasModificationTime;
+    CAMSubjectIndicatorView *__portraitModeCenteredIndicatorView;
     CAMMotionController *__motionController;
 }
 
@@ -70,6 +73,7 @@
 @property (readonly, nonatomic) long long _mode; // @synthesize _mode=__mode;
 @property (readonly, nonatomic) CAMMotionController *_motionController; // @synthesize _motionController=__motionController;
 @property (readonly, nonatomic) CAMFocusIndicatorView *_pointIndicator; // @synthesize _pointIndicator=__pointIndicator;
+@property (readonly, nonatomic) CAMSubjectIndicatorView *_portraitModeCenteredIndicatorView; // @synthesize _portraitModeCenteredIndicatorView=__portraitModeCenteredIndicatorView;
 @property (readonly, nonatomic) UITapGestureRecognizer *_tapToFocusAndExposeGestureRecognizer; // @synthesize _tapToFocusAndExposeGestureRecognizer=__tapToFocusAndExposeGestureRecognizer;
 @property (readonly, weak, nonatomic) CAMTimelapseController *_timelapseController; // @synthesize _timelapseController=__timelapseController;
 @property (readonly, nonatomic) BOOL _updateFaceIndicators; // @synthesize _updateFaceIndicators=__updateFaceIndicators;
@@ -84,6 +88,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (readonly, nonatomic) CAMPreviewView *previewView;
+@property (nonatomic) long long shallowDepthOfFieldStatus; // @synthesize shallowDepthOfFieldStatus=_shallowDepthOfFieldStatus;
 @property (nonatomic, getter=isShowingStandardControls) BOOL showingStandardControls; // @synthesize showingStandardControls=_showingStandardControls;
 @property (readonly) Class superclass;
 
@@ -106,6 +111,7 @@
 - (void)_createExposureBiasPanGestureRecognizerIfNecessary;
 - (void)_createLongPressToLockGestureRecognizersIfNecessary;
 - (void)_createPointIndicatorIfNecessary;
+- (void)_createPortraitModeCenteredIndicatorViewIfNecessary;
 - (void)_createTapToFocusAndExposeGestureRecognizerIfNecessary;
 - (void)_deactivateFocusIndicator:(id)arg1;
 - (void)_deactivateFocusIndicator:(id)arg1 afterDelay:(double)arg2;
@@ -130,19 +136,25 @@
 - (void)_hideFocusIndicator:(id)arg1;
 - (void)_hideFocusIndicator:(id)arg1 afterDelay:(double)arg2;
 - (void)_hideFocusIndicator:(id)arg1 animated:(BOOL)arg2;
+- (void)_hidePortaitModeTrackedSubjectIndicatorsAnimated:(BOOL)arg1;
 - (void)_initializeExposureBiasParametersForFocusIndicatorView:(id)arg1;
 - (void)_initializeExposureBiasSliderParameters;
 - (long long)_interfaceOrientationForExposureBiasUI;
+- (BOOL)_isFocusLockAllowed;
 - (BOOL)_isFullyAutomaticFocus:(id)arg1 andExposure:(id)arg2;
 - (BOOL)_isFullyAutomaticFocusAndExposure;
 - (BOOL)_isPanningExposureBias;
+- (BOOL)_isPortraitEffectActive;
 - (BOOL)_isShowingFaces;
+- (long long)_largeStyleForPointIndicator;
 - (void)_lockFocusAndExposure;
 - (void)_lockFocusAndExposureAfterDelay:(double)arg1;
 - (void)_resetCachedTimes;
 - (void)_resetFaceTracking;
 - (void)_scaleDownLockedPointOfInterest;
+- (void)_scalePortraitModeFocusIndicators;
 - (void)_setFocusIndicatorsHidden:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_setFocusIndicatorsPulsing:(BOOL)arg1;
 - (void)_setUserLockedFocusAndExposure:(BOOL)arg1 shouldAnimate:(BOOL)arg2;
 - (BOOL)_shouldAllowAspectRatioToggleForMode:(long long)arg1;
 - (BOOL)_shouldAllowFaceIndicators;
@@ -151,12 +163,16 @@
 - (BOOL)_shouldHideFocusIndicators;
 - (BOOL)_shouldResetFocusAndExposureForSubjectAreaDidChange;
 - (BOOL)_shouldShowContinuousIndicator;
+- (BOOL)_shouldShowIndicatorsAsInactive;
+- (BOOL)_shouldShowPortraitModeIndicatorViews;
 - (BOOL)_shouldSuppressNewFaces;
-- (void)_showContinuousAutomaticFocusAndExposureIndicator;
+- (BOOL)_shouldSuppressNewPortraitModeTrackedSubjectIndicators;
+- (BOOL)_shouldUpdateIndicatorSizeFrom:(struct CGSize)arg1 to:(struct CGSize)arg2 minimumAreaChangeThreshold:(double)arg3 minimumAreaFractionChangeThreshold:(double)arg4;
 - (BOOL)_showExposureBiasSliderForPointView;
 - (void)_showIndicatorAtPointOfInterest:(struct CGPoint)arg1;
 - (void)_showLockedAtPointOfInterest:(struct CGPoint)arg1;
-- (void)_stopPulsingContinuousIndicatorAndHideIfShownLongEnough;
+- (void)_showUIForResetFocusAndExposure;
+- (long long)_styleForPointIndicator;
 - (void)_updateExposureBiasPanGestureRecognizerForOrientation;
 - (void)_updateExposureBiasSideAnimated:(BOOL)arg1;
 - (void)_updateExposureBiasViews;
@@ -164,7 +180,11 @@
 - (void)_updateFaceIndicatorsForFaceResults:(id)arg1;
 - (void)_updateFaceIndicatorsWithResults:(id)arg1;
 - (void)_updateGestureRecognizersForOrientation;
+- (void)_updatePortraitModeTrackedSubjectIndicatorsWithFaceResults:(id)arg1;
+- (void)_updatePortraitModeViewsAnimated:(BOOL)arg1;
+- (void)_updatePortraitModeViewsForFaceResults:(id)arg1;
 - (void)_updatePreviewViewAspectMode;
+- (void)_updateUIForCenteredContrastBasedFocusDidEnd;
 - (void)_updateVideoPreviewViewOrientationAnimated:(BOOL)arg1;
 - (void)_validateExposureTargetBiasFromExposureResult:(id)arg1;
 - (void)_validateInternalProperties;
@@ -196,6 +216,8 @@
 - (void)notifyDidStopCapture;
 - (void)notifyShutterButtonPressed;
 - (void)notifyWillStartCapturing;
+- (void)previewViewDidAddFirstTrackedSubjectIndicator:(id)arg1;
+- (void)previewViewDidRemoveLastTrackedSubjectIndicator:(id)arg1;
 - (void)updateIndicatorVisibilityAnimated:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

@@ -39,8 +39,8 @@
 + (BOOL)valueOfCharacteristic:(id)arg1 equalTo:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)_hasDuplicateBulletinForCharacteristic:(id)arg1;
-- (void)_insertBulletinWithTitle:(id)arg1 imageURL:(id)arg2 message:(id)arg3 recordID:(id)arg4 bulletinType:(unsigned long long)arg5 actionURL:(id)arg6 bulletinContext:(struct NSDictionary *)arg7 actionContext:(struct NSDictionary *)arg8;
-- (void)_insertImageBulletinsForChangedCharacteristics:(id)arg1 imageURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_insertBulletinWithTitle:(id)arg1 snapshotData:(id)arg2 message:(id)arg3 recordID:(id)arg4 bulletinType:(unsigned long long)arg5 actionURL:(id)arg6 bulletinContext:(struct NSDictionary *)arg7 actionContext:(struct NSDictionary *)arg8;
+- (id)_insertImageBulletinsForChangedCharacteristics:(id)arg1 snapshotData:(id)arg2;
 - (id)_lookupBulletinForCharacteristic:(id)arg1;
 - (void)_removeBulletinsUsingPredicate:(id)arg1;
 - (void)_updateBulletin:(id)arg1;
@@ -52,7 +52,7 @@
 - (id)insertBulletinForIncomingInvitation:(id)arg1;
 - (id)insertBulletinForSecureTriggerExecutionPermission:(id)arg1;
 - (void)insertBulletinsForChangedCharacteristics:(id)arg1 changedByThisDevice:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)insertImageBulletinsForChangedCharacteristics:(id)arg1 imageURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)insertImageBulletinsForChangedCharacteristics:(id)arg1 snapshotData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)isSupportedCharacteristicForBulletin:(id)arg1;
 - (BOOL)isTargetCharacteristic:(id)arg1 matchCurrentCharacteristic:(id)arg2;
 - (BOOL)isTargetValueChangedByThisDevice:(id)arg1;

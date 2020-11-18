@@ -19,6 +19,7 @@
     HAPCharacteristicMetadata *_metadata;
     id _value;
     NSDate *_valueUpdatedTime;
+    NSNumber *_stateNumber;
     HAPCharacteristicMetadata *_accessoryMetadata;
 }
 
@@ -30,6 +31,7 @@
 @property (nonatomic) unsigned long long properties; // @synthesize properties=_properties;
 @property (weak, nonatomic) HAPService *service; // @synthesize service=_service;
 @property (nonatomic) BOOL shouldValidateValueAfterReading; // @synthesize shouldValidateValueAfterReading=_shouldValidateValueAfterReading;
+@property (readonly, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 @property (readonly, nonatomic) BOOL supportsAdditionalAuthorizationData;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (copy, nonatomic, setter=setValue:) id value; // @synthesize value=_value;
@@ -39,7 +41,7 @@
 - (id)_generateValidMetadata:(id)arg1;
 - (void)_updateMetadata:(id)arg1 withProvidedMetadata:(id)arg2;
 - (id)description;
-- (id)initWithType:(id)arg1 instanceID:(id)arg2 value:(id)arg3 properties:(unsigned long long)arg4 eventNotificationsEnabled:(BOOL)arg5 metadata:(id)arg6;
+- (id)initWithType:(id)arg1 instanceID:(id)arg2 value:(id)arg3 stateNumber:(id)arg4 properties:(unsigned long long)arg5 eventNotificationsEnabled:(BOOL)arg6 metadata:(id)arg7;
 - (BOOL)isEqualToCharacteristic:(id)arg1;
 - (id)propertiesDescription;
 - (id)validateValue:(id)arg1 outValue:(id *)arg2;

@@ -21,6 +21,7 @@
     NSXPCConnection *_xpcCnx;
     BOOL _autoUnlockEnabled;
     BOOL _autoUnlockWatch;
+    unsigned char _deviceActionType;
     BOOL _hasProblem;
     BOOL _needsKeyboard;
     BOOL _needsSetup;
@@ -42,6 +43,7 @@
 @property (nonatomic) long long advertiseRate; // @synthesize advertiseRate=_advertiseRate;
 @property (nonatomic) BOOL autoUnlockEnabled; // @synthesize autoUnlockEnabled=_autoUnlockEnabled;
 @property (nonatomic) BOOL autoUnlockWatch; // @synthesize autoUnlockWatch=_autoUnlockWatch;
+@property (nonatomic) unsigned char deviceActionType; // @synthesize deviceActionType=_deviceActionType;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property (copy, nonatomic) CDUnknownBlockType eventMessageHandler; // @synthesize eventMessageHandler=_eventMessageHandler;

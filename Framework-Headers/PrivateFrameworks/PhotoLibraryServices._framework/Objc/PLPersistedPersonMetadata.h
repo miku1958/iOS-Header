@@ -40,10 +40,11 @@
 + (BOOL)isPersonMetadataPath:(id)arg1;
 + (BOOL)isValidPath:(id)arg1;
 + (id)rejectedFacesToArchiveWithPerson:(id)arg1;
++ (unsigned long long)writeMetadataForVerifiedPeopleOnAssetObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addAssetUUIDsFromFaces:(id)arg1 toMutableSet:(id)arg2;
-- (BOOL)_insertDetectedFacesOnPerson:(id)arg1 fromDataInManagedObjectContext:(id)arg2;
-- (BOOL)_insertRejectedFacesOnPerson:(id)arg1 fromDataInManagedObjectContext:(id)arg2;
+- (BOOL)_insertDetectedFacesOnPerson:(id)arg1 fromDataInManagedObjectContext:(id)arg2 deferUnmatched:(BOOL)arg3;
+- (BOOL)_insertRejectedFacesOnPerson:(id)arg1 fromDataInManagedObjectContext:(id)arg2 deferUnmatched:(BOOL)arg3;
 - (id)_metadataData;
 - (void)_readMetadata;
 - (void)_saveMetadata;
@@ -55,7 +56,7 @@
 - (id)initWithPersistedDataAtURL:(id)arg1;
 - (id)insertPersonFromDataInManagedObjectContext:(id)arg1;
 - (void)removePersistedData;
-- (BOOL)updateFacesInPerson:(id)arg1 fromDataInManagedObjectContext:(id)arg2;
+- (BOOL)updateFacesInPerson:(id)arg1 fromDataInManagedObjectContext:(id)arg2 deferUnmatched:(BOOL)arg3;
 - (void)writePersistedData;
 
 @end

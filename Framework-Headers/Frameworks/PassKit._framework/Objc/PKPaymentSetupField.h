@@ -51,11 +51,13 @@
 - (void)_setLocalizedDisplayName:(id)arg1;
 - (id)dateFieldObject;
 - (id)displayString;
+- (id)footerFieldObject;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 configuration:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
 - (BOOL)isFieldTypeDate;
+- (BOOL)isFieldTypeFooter;
 - (BOOL)isFieldTypeLabel;
 - (BOOL)isFieldTypeText;
 - (id)labelFieldObject;

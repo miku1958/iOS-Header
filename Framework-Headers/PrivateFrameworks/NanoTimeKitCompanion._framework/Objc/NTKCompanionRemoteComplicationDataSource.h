@@ -6,15 +6,17 @@
 
 #import <NanoTimeKitCompanion/NTKComplicationDataSource.h>
 
+#import <NanoTimeKitCompanion/NTKCompanionAppLibraryObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKComplicationCollectionObserver-Protocol.h>
 
-@class CLKComplicationTemplate, NSString, NTKCompanionComplicationDataSource, NTKComplicationCollection;
+@class CLKComplicationTemplate, NSString, NTKCompanionAppLibrary, NTKCompanionComplicationDataSource, NTKComplicationCollection;
 
-@interface NTKCompanionRemoteComplicationDataSource : NTKComplicationDataSource <NTKComplicationCollectionObserver>
+@interface NTKCompanionRemoteComplicationDataSource : NTKComplicationDataSource <NTKComplicationCollectionObserver, NTKCompanionAppLibraryObserver>
 {
     CLKComplicationTemplate *_complicationTemplate;
     NTKComplicationCollection *_complicationCollection;
     NTKCompanionComplicationDataSource *_stocksDataSource;
+    NTKCompanionAppLibrary *_appLibrary;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,9 +28,12 @@
 - (void).cxx_destruct;
 - (void)_activeDeviceChanged;
 - (void)_invalidate;
+- (void)_invalidateIfComplicationCorrespondsToApp:(id)arg1;
 - (void)_loadCollection;
 - (BOOL)_remoteIsCompanion;
 - (id)_templateFromApp:(id)arg1;
+- (void)appLibrary:(id)arg1 didAddApp:(id)arg2;
+- (void)appLibrary:(id)arg1 didUpdateApp:(id)arg2;
 - (void)complicationCollection:(id)arg1 didRemoveSampleTemplatesForClient:(id)arg2;
 - (void)complicationCollection:(id)arg1 didUpdateSampleTemplateForClient:(id)arg2;
 - (void)complicationCollectionDidLoad:(id)arg1;

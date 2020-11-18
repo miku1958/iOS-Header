@@ -72,7 +72,9 @@
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPaymentRequest:(id)arg1;
+- (BOOL)isServiceProviderPaymentRequest;
 - (id)protobuf;
+- (id)serviceProviderPaymentRequest;
 
 @end
 

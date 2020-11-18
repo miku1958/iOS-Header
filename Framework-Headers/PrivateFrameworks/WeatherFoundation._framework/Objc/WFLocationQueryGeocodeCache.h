@@ -14,11 +14,9 @@
     NSMutableDictionary *_cache;
     NSMutableDictionary *_cacheAge;
     NSObject<OS_dispatch_queue> *_cacheQueue;
-    unsigned long long _capacity;
     double _expirationInterval;
 }
 
-@property (nonatomic) unsigned long long capacity; // @synthesize capacity=_capacity;
 @property (nonatomic) double expirationInterval; // @synthesize expirationInterval=_expirationInterval;
 
 - (void).cxx_destruct;

@@ -28,6 +28,7 @@
 - (void)enumerateSectionsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)firstItem;
 - (id)firstSection;
+- (BOOL)hasSameContentAsSectionedCollection:(id)arg1;
 - (id)identifiersForItemAtIndexPath:(id)arg1;
 - (id)identifiersForSectionAtIndex:(long long)arg1;
 - (id)indexPathForItemWithIdentifiersIntersectingSet:(id)arg1;

@@ -12,6 +12,7 @@
 - (id)hf_allNonEmptyActionSets;
 - (id)hf_allRooms;
 - (id)hf_allServices;
+- (id)hf_cameraProfileWithIdentifier:(id)arg1;
 - (id)hf_characteristicValueManager;
 - (id)hf_colorPalette;
 - (BOOL)hf_currentUserIsAdministrator;

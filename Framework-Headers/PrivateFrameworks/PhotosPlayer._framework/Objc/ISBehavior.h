@@ -17,6 +17,7 @@
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
+@property (readonly, nonatomic) long long behaviorType;
 @property (weak, nonatomic) id<ISBehaviorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) ISPlayerState *initialLayoutInfo; // @synthesize initialLayoutInfo=_initialLayoutInfo;
 

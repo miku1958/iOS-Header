@@ -30,11 +30,12 @@
 - (void)_addWidgetButtonTapped:(id)arg1;
 - (id)_shortLookViewIfLoaded;
 - (id)_shortLookViewLoadingIfNecessary:(BOOL)arg1;
-- (id)initWithWidgetHost:(id)arg1;
+- (id)initWithWidgetInfo:(id)arg1;
 - (BOOL)isWidgetExtensionVisible:(id)arg1;
 - (long long)largestAvailableDisplayModeForWidget:(id)arg1;
 - (void)loadView;
 - (struct CGSize)maxSizeForWidget:(id)arg1 forDisplayMode:(long long)arg2;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)remoteViewControllerDidConnectForWidget:(id)arg1;
 - (void)remoteViewControllerViewDidAppearForWidget:(id)arg1;
 - (long long)userSpecifiedDisplayModeForWidget:(id)arg1;

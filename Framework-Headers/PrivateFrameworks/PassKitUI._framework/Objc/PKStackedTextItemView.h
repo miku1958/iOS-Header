@@ -19,7 +19,10 @@
     UIFont *_significantPrimaryFont;
     UIFont *_primaryFont;
     UIFont *_layoutPrimaryFont;
+    UIFont *_idealTitleFont;
     UIFont *_idealPrimaryFont;
+    UIFont *_idealSecondaryFont;
+    UIFont *_idealTertiaryFont;
     BOOL _animated;
     long long _style;
     long long _textAlignment;

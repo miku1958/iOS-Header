@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
+#import <GeoServices/NSCopying-Protocol.h>
+
 @class NSArray, NSLock, NSMutableArray;
 
-@interface GEOLogContext : NSObject
+@interface GEOLogContext : NSObject <NSCopying>
 {
     NSMutableArray *_logMsgStates;
     NSLock *_logMsgStatesLock;
@@ -31,6 +33,7 @@
 - (void)_registerExperimentsState;
 - (void)_registerLogContextWithTraits:(id)arg1;
 - (void)_registerMapViewStateWithTraits:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithDefaultStates;

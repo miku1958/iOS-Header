@@ -6,23 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class HMDCharacteristicRequest, NSError;
+@class HMDCharacteristicRequest, NSDate, NSError, NSNumber;
 
 @interface HMDCharacteristicResponse : NSObject
 {
     HMDCharacteristicRequest *_request;
     id _value;
     NSError *_error;
+    NSNumber *_stateNumber;
+    NSDate *_valueUpdatedTime;
 }
 
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) HMDCharacteristicRequest *request; // @synthesize request=_request;
+@property (readonly, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 @property (strong, nonatomic) id value; // @synthesize value=_value;
+@property (readonly, nonatomic) NSDate *valueUpdatedTime; // @synthesize valueUpdatedTime=_valueUpdatedTime;
 
 + (id)responseWithRequest:(id)arg1 error:(id)arg2;
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithRequest:(id)arg1 error:(id)arg2;
+- (void)setValue:(id)arg1 updatedTime:(id)arg2 stateNumber:(id)arg3;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <CameraUI/CAMZoomButtonDelegate-Protocol.h>
 
-@class CAMZoomButton, CAMZoomControlButtonMaskView, CAMZoomDial, NSString, NSTimer, UIView;
+@class CAMZoomButton, CAMZoomControlButtonMaskView, CAMZoomDial, NSDate, NSString, NSTimer, UIView;
 @protocol CAMZoomControlDelegate;
 
 @interface CAMZoomControl : UIControl <CAMZoomButtonDelegate>
@@ -25,6 +25,7 @@
     CAMZoomControlButtonMaskView *__buttonMaskView;
     double __previousTouchTime;
     NSTimer *__zoomDialVisibilityTimer;
+    NSDate *__startTimeForHideAnimationInProgress;
     struct CGPoint __startTouchLocation;
     struct CGPoint __previousTouchLocation;
     struct UIEdgeInsets _contentInsets;
@@ -36,6 +37,7 @@
 @property (nonatomic, setter=_setPreviousTouchLocation:) struct CGPoint _previousTouchLocation; // @synthesize _previousTouchLocation=__previousTouchLocation;
 @property (nonatomic, setter=_setPreviousTouchTime:) double _previousTouchTime; // @synthesize _previousTouchTime=__previousTouchTime;
 @property (nonatomic, setter=_setShouldShowZoomDial:) BOOL _shouldShowZoomDial; // @synthesize _shouldShowZoomDial=__shouldShowZoomDial;
+@property (strong, nonatomic, setter=_setStartTimeForHideAnimationInProgress:) NSDate *_startTimeForHideAnimationInProgress; // @synthesize _startTimeForHideAnimationInProgress=__startTimeForHideAnimationInProgress;
 @property (nonatomic, setter=_setStartTouchLocation:) struct CGPoint _startTouchLocation; // @synthesize _startTouchLocation=__startTouchLocation;
 @property (readonly, nonatomic) CAMZoomButton *_zoomButton; // @synthesize _zoomButton=__zoomButton;
 @property (readonly, nonatomic) CAMZoomDial *_zoomDial; // @synthesize _zoomDial=__zoomDial;
@@ -64,12 +66,12 @@
 - (double)_dampingFactorForPerpendicularityFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
 - (double)_distanceFromDialClippingViewToPoint:(struct CGPoint)arg1;
 - (void)_handleZoomDialVisibilityTimerFiredWithUserInfo:(id)arg1;
-- (BOOL)_isHidingZoomDial;
 - (BOOL)_isWithinZoomButtonBoundsWithTouch:(id)arg1;
 - (double)_normalizeValue:(double)arg1 betweenMinimumValue:(double)arg2 maximumValue:(double)arg3;
 - (void)_setShouldShowZoomDial:(BOOL)arg1 animationSpeed:(double)arg2;
 - (void)_setShouldShowZoomDial:(BOOL)arg1 animationSpeed:(double)arg2 afterDelay:(double)arg3;
 - (void)_setZoomFactor:(double)arg1 shouldNotifyDelegate:(BOOL)arg2;
+- (BOOL)_shouldInterceptTouchesForHidingZoomDial;
 - (void)_updateMaskViewForZoomButtonHighlightingTransform;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

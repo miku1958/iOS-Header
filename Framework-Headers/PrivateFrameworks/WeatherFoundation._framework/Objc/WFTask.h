@@ -6,20 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class WFTaskIdentifier;
+@class NSProgress, WFTaskIdentifier;
 
 @interface WFTask : NSObject
 {
     BOOL _requiresResponse;
     WFTaskIdentifier *_identifier;
+    NSProgress *_progress;
 }
 
 @property (readonly, nonatomic) WFTaskIdentifier *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL isCancelled;
+@property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (readonly, nonatomic) BOOL requiresResponse; // @synthesize requiresResponse=_requiresResponse;
 
 + (id)sharedServiceConnection;
 - (void).cxx_destruct;
+- (void)cancel;
+- (void)cleanup;
 - (void)executeSynchronously;
+- (void)handleCancellation;
 - (void)handleResponse:(id)arg1;
 - (id)init;
 - (id)initWithResponseRequired:(BOOL)arg1;

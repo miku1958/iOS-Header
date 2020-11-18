@@ -6,14 +6,21 @@
 
 #import <CameraUI/CAMBadgeView.h>
 
+@class NSDictionary, NSString;
+
 @interface CAMBadgeTextView : CAMBadgeView
 {
+    NSString *__text;
+    NSDictionary *__textAttributes;
+    struct UIEdgeInsets __textInsets;
 }
 
+@property (copy, nonatomic, setter=_setText:) NSString *_text; // @synthesize _text=__text;
+@property (copy, nonatomic, setter=_setTextAttributes:) NSDictionary *_textAttributes; // @synthesize _textAttributes=__textAttributes;
+@property (nonatomic, setter=_setTextInsets:) struct UIEdgeInsets _textInsets; // @synthesize _textInsets=__textInsets;
+
+- (void).cxx_destruct;
 - (id)_maskImage;
-- (id)_text;
-- (id)_textAttributes;
-- (struct UIEdgeInsets)_textInsets;
 - (struct CGSize)_textSize;
 - (struct CGSize)intrinsicContentSize;
 

@@ -55,6 +55,7 @@
 @property (readonly) CDStruct_79c71658 sensorCropDimensions;
 @property (readonly) CDStruct_79c71658 sensorDimensions;
 @property (readonly) int sensorHDRCompanionIndex;
+@property (readonly, getter=isShallowDepthOfFieldEffectSupported) BOOL shallowDepthOfFieldEffectSupported;
 @property (readonly) CDStruct_79c71658 sourceCropAspectRatio;
 @property (readonly, getter=isStillImageISPChromaNoiseReductionEnabled) BOOL stillImageISPChromaNoiseReductionEnabled;
 @property (readonly) int stillImageNoiseReductionAndStabilizationScheme;

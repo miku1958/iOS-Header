@@ -20,6 +20,7 @@
 }
 
 @property (nonatomic, getter=isCellularDataEnabled) BOOL cellularDataEnabled; // @synthesize cellularDataEnabled=_cellularDataEnabled;
+@property (readonly, nonatomic, getter=areCloudPurchasesEnabled) BOOL cloudPurchasesEnabled;
 @property (strong, nonatomic) MPMediaItem *item; // @synthesize item=_item;
 @property (nonatomic) unsigned long long networkStatus; // @synthesize networkStatus=_networkStatus;
 @property (nonatomic) unsigned long long playbackQuality; // @synthesize playbackQuality=_playbackQuality;

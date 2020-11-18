@@ -44,6 +44,7 @@
 - (void)_startStreamingManager;
 - (void)_stopCurrentStreamSession;
 - (void)_streamStarted;
+- (BOOL)_validateSetupEndPointReadWithWrite;
 - (void)_writeReselectConfig;
 - (void)_writeSelectConfig:(id)arg1 reconfigure:(BOOL)arg2;
 - (void)_writeSetupEndPoint;
@@ -64,8 +65,8 @@
 - (void)streamingManager:(id)arg1 didStartStream:(id)arg2 slotIdentifier:(id)arg3;
 - (void)streamingManagerDidNetworkDeteriorate:(id)arg1;
 - (void)streamingManagerDidNetworkImprove:(id)arg1;
-- (void)streamingManagerDidReceiveFirstFrame:(id)arg1 audioStreamSetting:(unsigned long long)arg2;
-- (void)streamingManagerDidStopStream:(id)arg1;
+- (void)streamingManagerDidReceiveFirstFrame:(id)arg1 audioStreamSetting:(unsigned long long)arg2 aspectRatio:(id)arg3;
+- (void)streamingManagerDidStopStream:(id)arg1 error:(id)arg2;
 - (void)streamingManagerDidUpdateConfiguration:(id)arg1;
 - (void)updateAudioSetting:(unsigned long long)arg1;
 

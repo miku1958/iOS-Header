@@ -37,7 +37,7 @@
 @property (readonly, nonatomic) double lastSeen; // @synthesize lastSeen=_lastSeen;
 @property (nonatomic) BOOL monitorState; // @synthesize monitorState=_monitorState;
 @property (nonatomic) BOOL notifyingCharacteristicUpdated; // @synthesize notifyingCharacteristicUpdated=_notifyingCharacteristicUpdated;
-@property (readonly, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
+@property (strong, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property (strong, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 @property (strong, nonatomic) NSNumber *statusFlags; // @synthesize statusFlags=_statusFlags;
 

@@ -6,35 +6,36 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDate, NSError, WAForecastModel, WFLocation;
+@class NSDate, NSHashTable, NSOperationQueue, WAForecastModel;
 
 @interface WATodayModel : NSObject
 {
-    WFLocation *_location;
+    NSHashTable *_observers;
+    NSOperationQueue *_modelOperationQueue;
     WAForecastModel *_forecastModel;
     NSDate *_lastUpdateDate;
-    NSError *_lastError;
 }
 
 @property (strong, nonatomic) WAForecastModel *forecastModel; // @synthesize forecastModel=_forecastModel;
-@property (strong, nonatomic) NSError *lastError; // @synthesize lastError=_lastError;
-@property (strong, nonatomic) NSDate *lastUpdateDate; // @synthesize lastUpdateDate=_lastUpdateDate;
-@property (strong, nonatomic) WFLocation *location; // @synthesize location=_location;
+@property (readonly, nonatomic) NSDate *lastUpdateDate; // @synthesize lastUpdateDate=_lastUpdateDate;
 
 + (id)autoupdatingLocationModelWithPreferences:(id)arg1 effectiveBundleIdentifier:(id)arg2;
-+ (id)modelOperationQueue;
 + (id)modelWithLocation:(id)arg1;
 - (void).cxx_destruct;
 - (void)_executeForecastRetrievalForLocation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_executeLocationUpdateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_fireEventNotification:(unsigned long long)arg1 userInfo:(id)arg2;
-- (void)_fireNotification:(id)arg1 event:(unsigned long long)arg2 userInfo:(id)arg3;
-- (void)_fireWantsUpdateNotificationBecauseOfEvent:(unsigned long long)arg1 userInfo:(id)arg2;
-- (void)_fireWasUpdatedNotificationForEvent:(unsigned long long)arg1 userInfo:(id)arg2;
-- (void)_fireWillUpdateNotificationForEvent:(unsigned long long)arg1 userInfo:(id)arg2;
-- (void)_persistState;
+- (void)_fireTodayModelForecastWasUpdated:(id)arg1;
+- (void)_fireTodayModelWantsUpdate;
+- (void)_forecastUpdateCompleted:(id)arg1 forecastModel:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_locationUpdateCompleted:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_persistStateWithModel:(id)arg1;
+- (void)_willDeliverForecastModel:(id)arg1;
+- (void)addObserver:(id)arg1;
 - (BOOL)executeModelUpdateWithCompletion:(CDUnknownBlockType)arg1;
+- (id)init;
 - (id)initWithLocation:(id)arg1;
+- (id)location;
+- (void)removeObserver:(id)arg1;
 
 @end
 

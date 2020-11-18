@@ -15,7 +15,7 @@
     SFSearchResult *_resultForFeedback;
 }
 
-@property (strong) SearchUITableViewCell *cell; // @synthesize cell=_cell;
+@property (weak) SearchUITableViewCell *cell; // @synthesize cell=_cell;
 @property (strong) SFSearchResult *resultForFeedback; // @synthesize resultForFeedback=_resultForFeedback;
 @property (strong) UIView *view; // @synthesize view=_view;
 

@@ -7,6 +7,8 @@
 #import <objc/NSObject.h>
 
 #import <Home/HMAccessoryDelegatePrivate-Protocol.h>
+#import <Home/HMCameraSnapshotControlDelegate-Protocol.h>
+#import <Home/HMCameraStreamControlDelegate-Protocol.h>
 #import <Home/HMHomeDelegatePrivate-Protocol.h>
 #import <Home/HMHomeManagerDelegate-Protocol.h>
 #import <Home/HMHomeManagerDelegatePrivate-Protocol.h>
@@ -14,7 +16,7 @@
 
 @class HMHome, HMHomeManager, NAFuture, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
 
-@interface HFHomeKitDispatcher : NSObject <HMHomeManagerDelegatePrivate, HMHomeDelegatePrivate, HMAccessoryDelegatePrivate, HMResidentDeviceDelegate, HMHomeManagerDelegate>
+@interface HFHomeKitDispatcher : NSObject <HMHomeManagerDelegatePrivate, HMHomeDelegatePrivate, HMAccessoryDelegatePrivate, HMResidentDeviceDelegate, HMCameraSnapshotControlDelegate, HMCameraStreamControlDelegate, HMHomeManagerDelegate>
 {
     BOOL _hasLoadedHomes;
     int _homeKitPreferencesChangedNotifyToken;
@@ -27,6 +29,7 @@
     NSHashTable *_homeManagerObservers;
     NSHashTable *_accessoryObservers;
     NSHashTable *_residentDeviceObservers;
+    NSHashTable *_cameraObservers;
     NSMutableArray *_homePromises;
     NSMutableArray *_allHomesPromises;
 }
@@ -34,6 +37,7 @@
 @property (strong, nonatomic) NSHashTable *accessoryObservers; // @synthesize accessoryObservers=_accessoryObservers;
 @property (readonly, nonatomic) NAFuture *allHomesFuture;
 @property (strong, nonatomic) NSMutableArray *allHomesPromises; // @synthesize allHomesPromises=_allHomesPromises;
+@property (strong, nonatomic) NSHashTable *cameraObservers; // @synthesize cameraObservers=_cameraObservers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasLoadedHomes; // @synthesize hasLoadedHomes=_hasLoadedHomes;
@@ -58,6 +62,7 @@
 - (void)_finishAllHomesPromises:(id)arg1;
 - (void)_finishHomePromises:(id)arg1;
 - (id)_primaryHome;
+- (void)_setDelegate:(id)arg1 forAccessoryHierarchy:(id)arg2;
 - (void)_setDelegate:(id)arg1 forObjectsInHome:(id)arg2;
 - (void)_setSelectedHome:(id)arg1 notifyAndSaveIfNecessary:(BOOL)arg2;
 - (void)_updateRemoteAccessStateForHome:(id)arg1 notifyingObservers:(BOOL)arg2;
@@ -72,11 +77,17 @@
 - (void)accessoryDidUpdateReachability:(id)arg1;
 - (void)accessoryDidUpdateServices:(id)arg1;
 - (void)addAccessoryObserver:(id)arg1;
+- (void)addCameraObserver:(id)arg1;
 - (void)addHomeManagerObserver:(id)arg1;
 - (void)addHomeObserver:(id)arg1;
 - (void)addResidentDeviceObserver:(id)arg1;
+- (void)cameraSnapshotControl:(id)arg1 didTakeSnapshot:(id)arg2 error:(id)arg3;
+- (void)cameraSnapshotControlDidUpdateMostRecentSnapshot:(id)arg1;
+- (void)cameraStreamControl:(id)arg1 didStopStreamWithError:(id)arg2;
+- (void)cameraStreamControlDidStartStream:(id)arg1;
 - (void)dealloc;
 - (void)dispatchAccessoryObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
+- (void)dispatchCameraObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchHomeManagerObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchHomeObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
@@ -120,6 +131,7 @@
 - (void)homeDidUpdateName:(id)arg1;
 - (void)homeManager:(id)arg1 didAddHome:(id)arg2;
 - (void)homeManager:(id)arg1 didRemoveHome:(id)arg2;
+- (void)homeManager:(id)arg1 didUpdateAccessAllowedWhenLocked:(BOOL)arg2;
 - (void)homeManager:(id)arg1 didUpdateResidentEnabledForThisDevice:(BOOL)arg2;
 - (void)homeManager:(id)arg1 didUpdateStateForIncomingInvitations:(id)arg2;
 - (void)homeManager:(id)arg1 residentProvisioningStatusChanged:(unsigned long long)arg2;
@@ -130,6 +142,7 @@
 - (void)homeManagerDidUpdatePrimaryHome:(id)arg1;
 - (id)init;
 - (void)removeAccessoryObserver:(id)arg1;
+- (void)removeCameraObserver:(id)arg1;
 - (void)removeHomeManagerObserver:(id)arg1;
 - (void)removeHomeObserver:(id)arg1;
 - (void)removeResidentDeviceObserver:(id)arg1;

@@ -45,6 +45,7 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_encodeWithCoder:(id)arg1;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAccessory:(id)arg1 uuid:(id)arg2 filteredServices:(id)arg3 exposedServices:(id)arg4 msgDispatcher:(id)arg5;

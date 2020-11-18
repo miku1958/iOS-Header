@@ -17,6 +17,7 @@
     id<HMDCameraGetSnapshotProtocol> _snapshotGetter;
     HMDSnapshotCompletionTimer *_snapshotCompletionTimer;
     NSMutableArray *_sessionMessages;
+    unsigned long long _streamingTierType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,12 +27,13 @@
 @property (readonly, nonatomic) NSMutableArray *sessionMessages; // @synthesize sessionMessages=_sessionMessages;
 @property (strong, nonatomic) HMDSnapshotCompletionTimer *snapshotCompletionTimer; // @synthesize snapshotCompletionTimer=_snapshotCompletionTimer;
 @property (readonly, nonatomic) id<HMDCameraGetSnapshotProtocol> snapshotGetter; // @synthesize snapshotGetter=_snapshotGetter;
+@property (readonly, nonatomic) unsigned long long streamingTierType; // @synthesize streamingTierType=_streamingTierType;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithSessionID:(id)arg1 snapshotGetter:(id)arg2 message:(id)arg3 waitPeriod:(double)arg4;
+- (id)initWithSessionID:(id)arg1 snapshotGetter:(id)arg2 message:(id)arg3 waitPeriod:(double)arg4 streamingTierType:(unsigned long long)arg5;
 - (id)logIdentifier;
 - (void)respond:(id)arg1 payload:(id)arg2;
 

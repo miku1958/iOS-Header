@@ -17,6 +17,8 @@
     NSObject<OS_dispatch_queue> *_incomingRequestQueue;
     NSObject<OS_dispatch_queue> *_parseQueue;
     NSObject<OS_dispatch_queue> *_mapQueue;
+    NSMutableDictionary *_UUIDToCallbackMap;
+    NSMutableDictionary *_UUIDToURLMap;
     NSMutableDictionary *_URLToTaskMap;
     NSMutableDictionary *_URLToCallbackMap;
     WFWeatherStoreCache *_cache;
@@ -24,6 +26,8 @@
 
 @property (strong) NSMutableDictionary *URLToCallbackMap; // @synthesize URLToCallbackMap=_URLToCallbackMap;
 @property (strong) NSMutableDictionary *URLToTaskMap; // @synthesize URLToTaskMap=_URLToTaskMap;
+@property (strong) NSMutableDictionary *UUIDToCallbackMap; // @synthesize UUIDToCallbackMap=_UUIDToCallbackMap;
+@property (strong) NSMutableDictionary *UUIDToURLMap; // @synthesize UUIDToURLMap=_UUIDToURLMap;
 @property (strong) WFWeatherStoreCache *cache; // @synthesize cache=_cache;
 @property (copy, nonatomic) WFWeatherStoreServiceConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,14 +39,17 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_addCallback:(id)arg1 forURL:(id)arg2;
+- (void)_addCallback:(CDUnknownBlockType)arg1 requestIdentifier:(id)arg2 forURL:(id)arg3;
 - (BOOL)_cacheParsedForecastData:(id)arg1 type:(unsigned long long)arg2 location:(id)arg3 date:(id)arg4 requestIdentifier:(id)arg5;
-- (void)_executeCallbacksForURL:(id)arg1 conditions:(id)arg2 error:(id)arg3;
-- (void)_executeCallbacksForURL:(id)arg1 parsedForecastData:(id)arg2 error:(id)arg3;
+- (void)_cancelWithRequestIdentifier:(id)arg1;
+- (void)_executeCallbacksForURL:(id)arg1 requestIdentifier:(id)arg2 conditions:(id)arg3 error:(id)arg4;
+- (void)_executeCallbacksForURL:(id)arg1 requestIdentifier:(id)arg2 parsedForecastData:(id)arg3 error:(id)arg4;
 - (BOOL)_forecastConditionsForType:(unsigned long long)arg1 location:(id)arg2 date:(id)arg3 requestIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_setTask:(id)arg1 callback:(id)arg2 forURL:(id)arg3;
+- (BOOL)_isConnectivityAvailableForWeatherHost:(id *)arg1;
+- (void)_setTask:(id)arg1 requestIdentifier:(id)arg2 callback:(CDUnknownBlockType)arg3 forURL:(id)arg4;
 - (id)_taskForURL:(id)arg1;
 - (void)airQualityForLocation:(id)arg1 locale:(id)arg2 requestIdentifier:(id)arg3 options:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)cancelTaskWithIdentifier:(id)arg1;
 - (void)dailyForecastForLocation:(id)arg1 requestIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)forecastForLocation:(id)arg1 atDate:(id)arg2 requestIdentifier:(id)arg3 options:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)hourlyForecastForLocation:(id)arg1 requestIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

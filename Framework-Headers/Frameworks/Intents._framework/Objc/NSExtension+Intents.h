@@ -12,6 +12,7 @@
 + (id)_intents_extensionMatchingAttributesForIntents:(id)arg1;
 + (void)_intents_findAppsWithAnIntentsServiceExtension:(CDUnknownBlockType)arg1;
 + (void)_intents_findPossibleSiriEnabledAppsWithAnIntentsServiceExtension:(CDUnknownBlockType)arg1;
++ (void)_intents_findSiriEntitledAppsContainingAnIntentsExtensionWithCompletion:(CDUnknownBlockType)arg1;
 + (void)_intents_matchExtensionsForIntent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)_intents_matchSiriExtensionsForIntent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)_intents_matchSiriUIExtensionsForIntent:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -19,5 +20,6 @@
 + (id)_intents_uiExtensionMatchingAttributesForIntents:(id)arg1;
 + (void)_matchExtensionsForIntent:(id)arg1 extensionPointName:(id)arg2 shouldCheckForSiriEnabled:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 + (BOOL)appAllowedToTalkToSiri:(id)arg1;
+- (BOOL)_intents_extensionSupportsAtLeastOneSiriIntent;
 @end
 

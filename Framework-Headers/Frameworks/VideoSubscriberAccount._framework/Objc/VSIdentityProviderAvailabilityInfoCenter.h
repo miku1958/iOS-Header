@@ -6,30 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class NSUserDefaults, VSDevice, VSStoreURLBag;
+#import <VideoSubscriberAccount/VSRemoteNotifierDelegate-Protocol.h>
 
-@interface VSIdentityProviderAvailabilityInfoCenter : NSObject
+@class NSOperationQueue, NSString, VSDeveloperServiceConnection, VSPreferences, VSRemoteNotifier, VSStoreURLBag;
+
+@interface VSIdentityProviderAvailabilityInfoCenter : NSObject <VSRemoteNotifierDelegate>
 {
+    BOOL _hasDeterminedInitialStatus;
     long long _status;
+    NSOperationQueue *_privateQueue;
+    VSRemoteNotifier *_remoteNotifier;
     VSStoreURLBag *_bag;
-    VSDevice *_device;
-    NSUserDefaults *_userDefaults;
+    VSPreferences *_preferences;
+    VSDeveloperServiceConnection *_developerServiceConnection;
 }
 
 @property (strong, nonatomic) VSStoreURLBag *bag; // @synthesize bag=_bag;
-@property (strong, nonatomic) VSDevice *device; // @synthesize device=_device;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) VSDeveloperServiceConnection *developerServiceConnection; // @synthesize developerServiceConnection=_developerServiceConnection;
+@property (nonatomic) BOOL hasDeterminedInitialStatus; // @synthesize hasDeterminedInitialStatus=_hasDeterminedInitialStatus;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
+@property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
+@property (strong, nonatomic) VSRemoteNotifier *remoteNotifier; // @synthesize remoteNotifier=_remoteNotifier;
 @property (nonatomic) long long status; // @synthesize status=_status;
-@property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
+@property (readonly) Class superclass;
 
++ (BOOL)automaticallyNotifiesObserversOfStatus;
 + (id)defaultCenter;
 - (void).cxx_destruct;
 - (void)_accountStoreChanged:(id)arg1;
 - (void)_beginStatusUpdateAttemptWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (BOOL)_isFeatureEnabled;
 - (void)_sendStatusChangeNotification;
 - (void)determineIdentityProviderAvailabilityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithBag:(id)arg1 device:(id)arg2 userDefaults:(id)arg3;
+- (void)remoteNotifier:(id)arg1 didReceiveRemoteNotificationWithUserInfo:(id)arg2;
 
 @end
 

@@ -18,7 +18,7 @@
 - (void)setHandler:(NSString *)arg1 version:(unsigned long long)arg2 roles:(unsigned int)arg3 forContentType:(NSString *)arg4 completionHandler:(void (^)(BOOL, NSError *))arg5;
 - (void)setHandlerOptions:(unsigned int)arg1 forContentType:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)synchronizeWithMobileInstallation;
-- (void)updateApplication:(NSString *)arg1 mobileInstallationChanges:(NSDictionary *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)updateContainerUnit:(unsigned int)arg1 completionHandler:(void (^)(NSData *, NSError *))arg2;
+- (void)updateRecordForApp:(NSString *)arg1 withSINF:(NSDictionary *)arg2 iTunesMetadata:(NSDictionary *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 @end
 

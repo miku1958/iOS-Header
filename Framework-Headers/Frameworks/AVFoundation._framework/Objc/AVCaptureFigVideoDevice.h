@@ -97,6 +97,8 @@
     float _videoZoomRampAcceleration;
     BOOL _videoZoomDrawOverlay;
     float _minAvailableVideoZoomFactor;
+    BOOL _autoShallowDepthOfFieldEffectEnabled;
+    long long _shallowDepthOfFieldEffectStatus;
     NSString *_bravoCameraSelectionBehavior;
     AVWeakReference *_weakReference;
     NSMutableArray *_captureSourceSupportedMetadata;
@@ -172,6 +174,7 @@
 - (void)_setIsStillImageStabilizationScene:(BOOL)arg1;
 - (void)_setLowLightBoostEnabled:(BOOL)arg1;
 - (void)_setMinAvailableVideoZoomFactor:(double)arg1;
+- (void)_setShallowDepthOfFieldEffectStatus:(long long)arg1;
 - (void)_setStillImageStabilizationAutomaticallyEnabled:(BOOL)arg1;
 - (void)_setStillImageStabilizationDetectionEnabled:(BOOL)arg1;
 - (void)_setTorchActive:(BOOL)arg1;
@@ -236,6 +239,7 @@
 - (BOOL)isAdjustingFocus;
 - (BOOL)isAdjustingWhiteBalance;
 - (BOOL)isAutoFocusRangeRestrictionSupported;
+- (BOOL)isAutoShallowDepthOfFieldEffectEnabled;
 - (BOOL)isConnected;
 - (BOOL)isExposureModeSupported:(long long)arg1;
 - (BOOL)isExposurePointOfInterestSupported;
@@ -303,6 +307,7 @@
 - (void)setActiveVideoMaxFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setActiveVideoMinFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setAutoFocusRangeRestriction:(long long)arg1;
+- (void)setAutoShallowDepthOfFieldEffectEnabled:(BOOL)arg1;
 - (void)setAutomaticallyAdjustsImageControlMode:(BOOL)arg1;
 - (void)setAutomaticallyAdjustsVideoHDREnabled:(BOOL)arg1;
 - (void)setAutomaticallyEnablesLowLightBoostWhenAvailable:(BOOL)arg1;
@@ -336,6 +341,7 @@
 - (void)setVideoZoomUpscaleStageHint:(long long)arg1;
 - (void)setWhiteBalanceMode:(long long)arg1;
 - (void)setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (long long)shallowDepthOfFieldEffectStatus;
 - (BOOL)smileDetectionEnabled;
 - (id)supportedMetadataObjectIdentifiers;
 - (BOOL)supportsAVCaptureSessionPreset:(id)arg1;

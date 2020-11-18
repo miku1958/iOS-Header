@@ -10,6 +10,7 @@
 + (id)_rpFrameworkBundle;
 + (id)_rpLocalizedAppNameFromBundleID:(id)arg1;
 + (id)_rpLocalizedStringFromFrameworkBundleWithKey:(id)arg1 bundleID:(id)arg2;
++ (id)localizedDictionaryForLanguage:(id)arg1;
 - (id)_rpLocalizedAppName;
 @end
 

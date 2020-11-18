@@ -18,6 +18,7 @@
     double _labelTopPadding;
     BOOL _enhancedContrast;
     BOOL _touchRecognizingHint;
+    BOOL _persistentEmulationHint;
     long long _state;
     PKGlyphView *_glyph;
     UILabel *_label;
@@ -32,12 +33,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (nonatomic) double labelAlpha; // @synthesize labelAlpha=_labelAlpha;
+@property (nonatomic) BOOL persistentEmulationHint; // @synthesize persistentEmulationHint=_persistentEmulationHint;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL touchRecognizingHint; // @synthesize touchRecognizingHint=_touchRecognizingHint;
 
 - (void).cxx_destruct;
 - (void)_applyStateWithTextOverride:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_attributedTextWithTitle:(id)arg1;
+- (id)_attributedTextWithTitle:(id)arg1 subtitle:(id)arg2;
 - (BOOL)_canEmphasizeState:(long long)arg1;
 - (void)_configureLayoutMetrics;
 - (id)_labelForState:(long long)arg1 textOverride:(id)arg2;

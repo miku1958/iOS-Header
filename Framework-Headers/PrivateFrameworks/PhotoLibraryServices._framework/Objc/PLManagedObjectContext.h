@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObjectContext.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, PLDelayedFiledSystemDeletions, PLDelayedSaveActions, PLMergePolicy, PLPhotoLibrary;
+@class NSMutableDictionary, NSMutableSet, NSObject, PLDelayedFiledSystemDeletions, PLDelayedSaveActions, PLMergePolicy, PLPhotoLibrary;
 @protocol OS_xpc_object, PLManagedObjectContextPTPNotificationDelegate;
 
 @interface PLManagedObjectContext : NSManagedObjectContext
@@ -22,10 +22,8 @@
     PLMergePolicy *_mergePolicy;
     PLDelayedFiledSystemDeletions *_delayedDeletions;
     NSMutableSet *_avalancheUUIDsForUpdate;
-    NSMutableArray *_uuidForCloudDeletion;
-    NSMutableArray *_albumUuidForCloudDeletion;
-    NSMutableArray *_memoryUUIDsForCloudDeletion;
     NSMutableDictionary *_uuidsForCloudDeletion;
+    NSMutableSet *_assetObjectIDsWithCloudGUIDChange;
     BOOL _syncChangeMarker;
     NSMutableDictionary *_updatedObjectsAttributes;
     NSMutableDictionary *_updatedObjectsRelationships;
@@ -104,6 +102,7 @@
 - (void)_mergeChangesFromDidSaveDictionary:(id)arg1 usingObjectIDs:(BOOL)arg2;
 - (void)_notifyALAssetsLibraryWithChanges:(id)arg1 usingObjectIDs:(BOOL)arg2;
 - (BOOL)_tooManyAssetChangesToHandle:(unsigned long long)arg1;
+- (void)_writeHiddenFaceMetadata;
 - (void)connectToChangeHub;
 - (long long)context:(id)arg1 shouldHandleInaccessibleFault:(id)arg2 forObjectID:(id)arg3 andTrigger:(id)arg4;
 - (unsigned long long)countForFetchRequest:(id)arg1 error:(id *)arg2;
@@ -122,12 +121,14 @@
 - (BOOL)obtainPermanentIDsForObjects:(id)arg1 error:(id *)arg2;
 - (id)pl_fetchObjectsWithIDs:(id)arg1;
 - (id)pl_fetchObjectsWithIDs:(id)arg1 rootEntity:(id)arg2;
+- (void)recordAssetWithCloudGUIDChange:(id)arg1;
 - (void)recordAvalancheUUIDForUpdate:(id)arg1;
 - (void)recordCloudDeletionForObjectWithID:(id)arg1 withCloudUUID:(id)arg2;
 - (void)recordHiddenFaceStateChanged;
 - (void)recordManagedObjectWillSave:(id)arg1;
 - (void)recordSyncChangeMarker;
-- (void)refreshHiddenFaceStatePersistence;
+- (void)refreshAssetsWithCloudGUIDChangePersistenceIfNeeded;
+- (void)refreshHiddenFaceStatePersistenceIfNeeded;
 - (void)registerFilesystemDeletionInfo:(id)arg1;
 - (BOOL)save:(id *)arg1;
 - (void)setGlobalValue:(id)arg1 forKey:(id)arg2;

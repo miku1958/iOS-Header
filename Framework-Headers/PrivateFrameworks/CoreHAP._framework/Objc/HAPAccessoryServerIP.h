@@ -101,6 +101,7 @@
 - (BOOL)_isSessionEstablished;
 - (BOOL)_mergeExistingAccessory:(id)arg1 withNewAccessory:(id)arg2;
 - (BOOL)_mergeExistingService:(id)arg1 withNewService:(id)arg2;
+- (void)_pairSetupContinueWAC;
 - (int)_pairSetupStart;
 - (void)_pairSetupStartWAC;
 - (int)_pairSetupTryPassword:(id)arg1;

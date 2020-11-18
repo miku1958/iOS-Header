@@ -21,6 +21,7 @@
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property double connectionIdleTimeout;
 @property (readonly, nonatomic) NSMutableArray *connections; // @synthesize connections=_connections;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<_HMFCFHTTPServerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -38,6 +39,8 @@
 - (id)initWithPort:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (void)invalidate;
 - (id)logIdentifier;
+- (void)setWatchdogTimeout:(double)arg1;
+- (double)watchdogTimeout;
 
 @end
 

@@ -19,6 +19,7 @@
 
 + (id)itemWithTitle:(id)arg1 selectionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (void)handleSelectionWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

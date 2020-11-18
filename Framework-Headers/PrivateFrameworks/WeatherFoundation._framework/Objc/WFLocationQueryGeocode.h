@@ -8,7 +8,7 @@
 
 #import <WeatherFoundation/WFLocationQuery-Protocol.h>
 
-@class CLGeocoder, MKLocalSearchCompletion, NSString, WFResponse, WFTaskIdentifier;
+@class CLGeocoder, MKLocalSearch, MKLocalSearchCompletion, NSString, WFResponse, WFTaskIdentifier;
 
 @interface WFLocationQueryGeocode : NSObject <WFLocationQuery>
 {
@@ -19,6 +19,7 @@
     CDUnknownBlockType _resultHandler;
     WFResponse *_response;
     CLGeocoder *_reverseGeocoder;
+    MKLocalSearch *_search;
     struct CLLocationCoordinate2D _searchCoordinate;
     struct CLLocationCoordinate2D _unshiftedCoordinate;
 }
@@ -30,13 +31,15 @@
 @property (strong) WFResponse *response; // @synthesize response=_response;
 @property (copy) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
 @property (strong, nonatomic) CLGeocoder *reverseGeocoder; // @synthesize reverseGeocoder=_reverseGeocoder;
+@property (strong, nonatomic) MKLocalSearch *search; // @synthesize search=_search;
 @property (readonly) MKLocalSearchCompletion *searchCompletion; // @synthesize searchCompletion=_searchCompletion;
 @property (nonatomic) struct CLLocationCoordinate2D searchCoordinate; // @synthesize searchCoordinate=_searchCoordinate;
 @property (readonly) NSString *searchString; // @synthesize searchString=_searchString;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CLLocationCoordinate2D unshiftedCoordinate; // @synthesize unshiftedCoordinate=_unshiftedCoordinate;
 
-+ (id)geoCodeCache;
++ (id)clReverseGeocoderCache;
++ (id)mkLocalSearchGeoCodeCache;
 + (id)queryWithCoordinate:(struct CLLocationCoordinate2D)arg1 resultHandler:(CDUnknownBlockType)arg2;
 + (id)queryWithDictionaryRepresentation:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 + (id)queryWithSearchCompletion:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
@@ -47,6 +50,7 @@
 - (id)_reverseGeocoderLocation;
 - (void)_startCLGeocoderReverseGeo;
 - (void)_startMKLocalSearch;
+- (void)cancel;
 - (void)handleSearchResponseWithLocation:(id)arg1;
 - (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (id)initWithSearchCompletion:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;

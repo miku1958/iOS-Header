@@ -6,22 +6,19 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSXPCConnection, VSFailable;
+@class VSDeveloperServiceConnection, VSFailable;
 
 @interface VSDeveloperIdentityProviderFetchAllOperation : VSAsyncOperation
 {
     VSFailable *_result;
-    NSXPCConnection *_connection;
+    VSDeveloperServiceConnection *_connection;
 }
 
-@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (strong, nonatomic) VSDeveloperServiceConnection *connection; // @synthesize connection=_connection;
 @property (strong, nonatomic) VSFailable *result; // @synthesize result=_result;
 
 - (void).cxx_destruct;
-- (id)_serviceWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (void)executionDidBegin;
-- (id)init;
 
 @end
 

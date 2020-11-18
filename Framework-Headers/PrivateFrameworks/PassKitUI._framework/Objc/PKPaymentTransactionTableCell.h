@@ -6,7 +6,7 @@
 
 #import <PassKitUI/PKTableViewCell.h>
 
-@class NSString, UILabel;
+@class NSString, UIColor, UILabel;
 
 @interface PKPaymentTransactionTableCell : PKTableViewCell
 {
@@ -14,15 +14,23 @@
     UILabel *_secondaryLabel;
     UILabel *_transactionValueLabel;
     UILabel *_tertiaryLabel;
+    UIColor *_primaryColor;
+    UIColor *_secondaryColor;
+    UIColor *_tertiaryColor;
+    UIColor *_transactionValueColor;
     NSString *_primaryString;
     NSString *_secondaryString;
     NSString *_tertiaryString;
     NSString *_transactionValueString;
 }
 
+@property (strong, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primaryColor;
 @property (strong, nonatomic) NSString *primaryString; // @synthesize primaryString=_primaryString;
+@property (strong, nonatomic) UIColor *secondaryColor; // @synthesize secondaryColor=_secondaryColor;
 @property (strong, nonatomic) NSString *secondaryString; // @synthesize secondaryString=_secondaryString;
+@property (strong, nonatomic) UIColor *tertiaryColor; // @synthesize tertiaryColor=_tertiaryColor;
 @property (strong, nonatomic) NSString *tertiaryString; // @synthesize tertiaryString=_tertiaryString;
+@property (strong, nonatomic) UIColor *transactionValueColor; // @synthesize transactionValueColor=_transactionValueColor;
 @property (strong, nonatomic) NSString *transactionValueString; // @synthesize transactionValueString=_transactionValueString;
 
 + (id)primaryLabelFont;
@@ -33,14 +41,11 @@
 - (void).cxx_destruct;
 - (id)defaultPrimaryColor;
 - (id)defaultSecondaryColor;
-- (id)defaultTertiaryValueColor;
+- (id)defaultTertiaryColor;
 - (id)defaultTransactionValueColor;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
-- (void)setPrimaryColor:(id)arg1;
-- (void)setSecondaryColor:(id)arg1;
-- (void)setTransactionValueColor:(id)arg1;
 
 @end
 

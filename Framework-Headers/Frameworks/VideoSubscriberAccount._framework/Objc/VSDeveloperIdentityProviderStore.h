@@ -8,22 +8,25 @@
 
 #import <VideoSubscriberAccount/VSDeveloperServiceProtocol-Protocol.h>
 
-@class NSString, VSPersistentContainer;
+@class NSString, VSPersistentContainer, VSRemoteNotifier;
 
 @interface VSDeveloperIdentityProviderStore : NSObject <VSDeveloperServiceProtocol>
 {
     VSPersistentContainer *_persistentContainer;
+    VSRemoteNotifier *_remoteNotifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VSPersistentContainer *persistentContainer; // @synthesize persistentContainer=_persistentContainer;
+@property (strong, nonatomic) VSRemoteNotifier *remoteNotifier; // @synthesize remoteNotifier=_remoteNotifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_developerIdentityProviderInContext:(id)arg1;
 - (id)_fetchRequest;
+- (void)_noteDidChange;
 - (void)_performBlock:(CDUnknownBlockType)arg1;
 - (void)addDeveloperIdentityProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchDeveloperIdentityProvidersWithCompletionHandler:(CDUnknownBlockType)arg1;

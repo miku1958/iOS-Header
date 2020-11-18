@@ -10,7 +10,7 @@
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDAccessory, HMDBulletinBoard, HMDCameraSnapshotManager, HMFMessageDispatcher, NSMutableSet, NSString, NSUUID;
+@class HMDAccessory, HMDBulletinBoard, HMDCameraSnapshotManager, HMDNotificationRegistration, HMFMessageDispatcher, NSMutableSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDCameraSnapshotMonitorEvents : NSObject <HMFMessageReceiver, HMFLogging, HMFTimerDelegate>
@@ -26,6 +26,7 @@
     NSString *_logID;
     NSMutableSet *_characteristicsList;
     HMDBulletinBoard *_bulletinBoard;
+    HMDNotificationRegistration *_notificationRegistration;
 }
 
 @property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) NSMutableSet *snapShotNotificationResponseTimers; // @synthesize snapShotNotificationResponseTimers=_snapShotNotificationResponseTimers;
 @property (readonly, weak, nonatomic) HMDCameraSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
@@ -54,6 +56,7 @@
 - (void)_handleRemoteNotification:(id)arg1;
 - (void)_handleSnapshotResponse:(id)arg1 cameraSessionID:(id)arg2 changedCharacteristics:(id)arg3 response:(id)arg4 responseTimer:(id)arg5;
 - (void)_monitorForEventsForServices:(id)arg1;
+- (void)_removeBulletins:(id)arg1 sessionID:(id)arg2;
 - (void)_sendReleaseSnapshot:(id)arg1;
 - (void)_subscribeToNotifications;
 - (void)dealloc;
@@ -62,6 +65,7 @@
 - (id)initWithSnapshotManager:(id)arg1 accessory:(id)arg2 workQueue:(id)arg3 msgDispatcher:(id)arg4;
 - (id)logIdentifier;
 - (void)monitorForEventsForServices:(id)arg1;
+- (void)processPostedBulletin:(id)arg1 responseTimer:(id)arg2;
 - (void)registerForMessages;
 - (void)timerDidFire:(id)arg1;
 

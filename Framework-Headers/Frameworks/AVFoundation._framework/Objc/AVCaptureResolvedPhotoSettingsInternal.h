@@ -17,6 +17,7 @@
     BOOL turboModeEnabled;
     BOOL flashEnabled;
     BOOL HDREnabled;
+    BOOL shallowDepthOfFieldEffectEnabled;
     BOOL originalPhotoDeliveryEnabled;
     BOOL stillImageStabilizationEnabled;
     BOOL bravoImageFusionEnabled;

@@ -23,7 +23,7 @@
     NSMutableDictionary *_identifiersToDatums;
     NSMutableDictionary *_dataSourceIdentifiersToDatumIdentifiers;
     NSMutableDictionary *_identifiersToWidgetInfos;
-    NSMutableDictionary *_hostIDsToWidgetIDsToWidgets;
+    NSMutableDictionary *_requesterIDsToWidgetIDsToWidgets;
     NSMutableArray *_orderedEnabledTodayIdentifiers;
     NSArray *_orderedVisibleTodayIdentifiers;
     NSMutableArray *_orderedEnabledWidgetsIdentifiers;
@@ -74,7 +74,7 @@
 - (BOOL)_managesTwoColumns;
 - (id)_newWidgetListEditViewController;
 - (id)_newWidgetListEditViewControllerStatusBarAssertion;
-- (id)_newWidgetWithIdentifier:(id)arg1;
+- (id)_newWidgetWithIdentifier:(id)arg1 delegate:(id)arg2;
 - (void)_notifyObserversOfOrderChange;
 - (void)_notifyObserversOfVisibilityChange:(BOOL)arg1 ofWidgetWithIdentifier:(id)arg2 inGroup:(id)arg3;
 - (id)_orderedEnabledIdentifiersForGroup:(id)arg1;
@@ -132,7 +132,7 @@
 - (id)widgetListEditViewController:(id)arg1 itemIdentifiersForGroup:(id)arg2;
 - (void)widgetListEditViewController:(id)arg1 setEnabled:(BOOL)arg2 forItemsWithIdentifiers:(id)arg3;
 - (BOOL)widgetListEditViewControllerShouldIncludeInternalWidgets:(id)arg1;
-- (id)widgetWithIdentifier:(id)arg1 forHostWithIdentifier:(id)arg2;
+- (id)widgetWithIdentifier:(id)arg1 delegate:(id)arg2 forRequesterWithIdentifier:(id)arg3;
 
 @end
 

@@ -29,6 +29,7 @@
 @property (strong) NSDictionary *photoAnalysisWorkersByType; // @synthesize photoAnalysisWorkersByType=_photoAnalysisWorkersByType;
 @property (strong) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly, getter=isQuiescent) BOOL quiescent;
+@property (readonly, getter=isTurboMode) BOOL turboMode;
 
 + (id)allWorkerClasses;
 + (void)enumerateWorkerClassesUsingBlock:(CDUnknownBlockType)arg1;

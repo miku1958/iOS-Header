@@ -10,10 +10,12 @@
 
 @interface _MPStreamingDownloadSessionUniqueKey : NSObject
 {
+    BOOL _allowForeignAssetPlayback;
     NSString *_buyParameters;
     long long _storeAdamID;
 }
 
+@property (nonatomic) BOOL allowForeignAssetPlayback; // @synthesize allowForeignAssetPlayback=_allowForeignAssetPlayback;
 @property (copy, nonatomic) NSString *buyParameters; // @synthesize buyParameters=_buyParameters;
 @property (nonatomic) long long storeAdamID; // @synthesize storeAdamID=_storeAdamID;
 

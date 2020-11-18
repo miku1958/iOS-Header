@@ -32,8 +32,6 @@
 - (void)cameraStreamControl:(id)arg1 didStopStream:(id)arg2;
 - (void)cameraStreamControlDidStartStream:(id)arg1;
 - (id)initWithStreamControl:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (void)resetControl;
 - (void)startStream;
 - (void)stopStream;
 

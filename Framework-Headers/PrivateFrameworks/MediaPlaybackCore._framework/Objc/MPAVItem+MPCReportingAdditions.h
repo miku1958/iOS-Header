@@ -6,13 +6,16 @@
 
 #import <MediaPlayer/MPAVItem.h>
 
-@class NSData;
+@class NSData, NSString;
 
 @interface MPAVItem (MPCReportingAdditions)
 
+@property (readonly, nonatomic) long long mpcReporting_equivalencySourceAdamID;
 @property (readonly, nonatomic) BOOL mpcReporting_isValidReportingItem;
 @property (readonly, nonatomic) unsigned long long mpcReporting_itemType;
 @property (readonly, copy, nonatomic) NSData *mpcReporting_jingleTimedMetadata;
+@property (readonly, copy, nonatomic) NSString *mpcReporting_requestingBundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *mpcReporting_requestingBundleVersion;
 @property (readonly, nonatomic) BOOL mpcReporting_shouldReportPlayEventsToStore;
 @property (readonly, nonatomic) BOOL mpcReporting_shouldUseRelativeTimePositions;
 @property (readonly, copy, nonatomic) NSData *mpcReporting_trackInfo;

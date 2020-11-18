@@ -11,7 +11,6 @@
 @interface ML3StoreItemTrackData : NSObject
 {
     NSArray *_lookupItems;
-    NSArray *_storeItems;
     NSData *_trackData;
     NSArray *_parsedStoreItemsImportProperties;
     NSDateFormatter *_storePlatformDateFormatter;
@@ -25,19 +24,14 @@
 + (id)_allSongItemsFromLookupItems:(id)arg1;
 + (id)_artworkTokenForItemWithCollectionID:(unsigned long long)arg1 itemID:(unsigned long long)arg2;
 + (id)_artworkTokenFromLookupItem:(id)arg1;
-+ (id)_artworkTokenFromStoreItem:(id)arg1;
-+ (unsigned int)_mediaTypeForStoreItemKind:(id)arg1;
 + (double)_songDurationFromOffersArray:(id)arg1;
 - (void).cxx_destruct;
 - (id)_importDictionaryForLookupItem:(id)arg1 parentCollectionCache:(id)arg2;
-- (id)_importDictionaryForStoreItem:(id)arg1;
 - (id)_parentDictForItemAlbumId:(id)arg1;
 - (id)_storeItemsImportPropertiesFromLookupItems:(id)arg1;
-- (id)_storeItemsImportPropertiesFromStoreItems:(id)arg1;
 - (id)_storeItemsImportPropertiesFromTrackData:(id)arg1;
 - (id)_storePlatformDateFormatter;
 - (id)initWithLookupItems:(id)arg1;
-- (id)initWithStoreItems:(id)arg1;
 - (id)initWithTrackData:(id)arg1;
 
 @end

@@ -13,6 +13,7 @@
 @interface HMDHomeRemoteNotification : NSObject <HMFLogging>
 {
     NSString *_updateIdentifier;
+    id _value;
     NSString *_accessoryUUID;
     NSString *_serviceInstanceID;
     NSString *_characteristicInstanceID;
@@ -26,10 +27,11 @@
 @property (readonly, nonatomic) NSString *serviceInstanceID; // @synthesize serviceInstanceID=_serviceInstanceID;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *updateIdentifier; // @synthesize updateIdentifier=_updateIdentifier;
+@property (readonly, nonatomic) id value; // @synthesize value=_value;
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (id)initWithAccessoryUUID:(id)arg1 serviceInstanceID:(id)arg2 characteristicInstanceID:(id)arg3 updateIdentifier:(id)arg4;
+- (id)initWithAccessoryUUID:(id)arg1 serviceInstanceID:(id)arg2 characteristicInstanceID:(id)arg3 updateIdentifier:(id)arg4 value:(id)arg5;
 - (id)logIdentifier;
 - (BOOL)matchesAccessoryUUID:(id)arg1 serviceInstanceID:(id)arg2 characteristicInstanceID:(id)arg3;
 - (BOOL)matchesCharacterisitic:(id)arg1;

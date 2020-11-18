@@ -6,9 +6,10 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDResidentDeviceManager;
+@class HMDResidentDevice, HMDResidentDeviceManager;
 
 @protocol HMDResidentDeviceManagerDelegate <NSObject>
+- (void)residentDeviceManager:(HMDResidentDeviceManager *)arg1 didUpdatePrimaryResident:(HMDResidentDevice *)arg2;
 - (void)residentDeviceManager:(HMDResidentDeviceManager *)arg1 didUpdateResidentAvailable:(BOOL)arg2;
 @end
 

@@ -9,17 +9,19 @@
 #import <PhotoAnalysis/NSXPCConnectionDelegate-Protocol.h>
 #import <PhotoAnalysis/PLPhotoAnalysisServiceProtocol-Protocol.h>
 
-@class NSString, NSXPCConnection, PHAExecutive, PHAManager;
+@class NSLock, NSMapTable, NSString, NSXPCConnection, PHAExecutive, PHAManager;
 @protocol OS_dispatch_semaphore;
 
 @interface PHAServiceClientHandler : NSObject <NSXPCConnectionDelegate, PLPhotoAnalysisServiceProtocol>
 {
     NSString *_clientBundleID;
+    NSMapTable *_cancelableOperationsById;
     PHAManager *_photoAnalysisManager;
     NSXPCConnection *_xpcConnection;
     PHAExecutive *_executive;
     NSObject<OS_dispatch_semaphore> *_invalidationSemaphore;
     id _serviceUnavailableHandler;
+    NSLock *_sharedOperationLock;
 }
 
 @property (readonly) NSString *clientBundleID;
@@ -30,10 +32,13 @@
 @property (strong) NSObject<OS_dispatch_semaphore> *invalidationSemaphore; // @synthesize invalidationSemaphore=_invalidationSemaphore;
 @property (strong) PHAManager *photoAnalysisManager; // @synthesize photoAnalysisManager=_photoAnalysisManager;
 @property (strong) id serviceUnavailableHandler; // @synthesize serviceUnavailableHandler=_serviceUnavailableHandler;
+@property (strong, nonatomic) NSLock *sharedOperationLock; // @synthesize sharedOperationLock=_sharedOperationLock;
 @property (readonly) Class superclass;
 @property (strong) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 - (void).cxx_destruct;
+- (void)cancelOperationsWithIdentifiers:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)cancelableOperationsById;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
 - (id)contextInformationFromInvocation:(id)arg1;
 - (id)forwardingTargetForInvocation:(id)arg1 contextInformation:(id)arg2;

@@ -8,24 +8,28 @@
 
 #import <PassKit/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface PKAddPaymentPassRequestConfiguration : NSObject <NSSecureCoding>
 {
+    BOOL _requiresFelicaSecureElement;
     NSString *_encryptionScheme;
     NSString *_cardholderName;
     NSString *_primaryAccountSuffix;
+    NSArray *_cardDetails;
     NSString *_localizedDescription;
     NSString *_primaryAccountIdentifier;
     NSString *_paymentNetwork;
 }
 
+@property (copy, nonatomic) NSArray *cardDetails; // @synthesize cardDetails=_cardDetails;
 @property (copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
 @property (readonly, copy, nonatomic) NSString *encryptionScheme; // @synthesize encryptionScheme=_encryptionScheme;
 @property (copy, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
 @property (copy, nonatomic) NSString *paymentNetwork; // @synthesize paymentNetwork=_paymentNetwork;
 @property (copy, nonatomic) NSString *primaryAccountIdentifier; // @synthesize primaryAccountIdentifier=_primaryAccountIdentifier;
 @property (copy, nonatomic) NSString *primaryAccountSuffix; // @synthesize primaryAccountSuffix=_primaryAccountSuffix;
+@property (nonatomic) BOOL requiresFelicaSecureElement; // @synthesize requiresFelicaSecureElement=_requiresFelicaSecureElement;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

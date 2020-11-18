@@ -13,6 +13,7 @@
 
 @interface FCUserInfo : FCPrivateZoneController <FCTagSettingsDelegate, FCAppConfigurationObserving>
 {
+    BOOL _useParsecResults;
     BOOL _iCloudAccountChanged;
     FCTagSettings *_tagSettings;
     NSNumber *_totalMeteredCount;
@@ -34,7 +35,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) FCTagSettings *tagSettings; // @synthesize tagSettings=_tagSettings;
 @property (copy, nonatomic) NSNumber *totalMeteredCount; // @synthesize totalMeteredCount=_totalMeteredCount;
-@property (readonly, nonatomic) BOOL useParsecResults;
+@property (readonly, nonatomic) BOOL useParsecResults; // @synthesize useParsecResults=_useParsecResults;
 @property (copy, nonatomic) NSDate *userStartDate;
 @property (strong, nonatomic) NTPBWidgetConfig *widgetConfiguration; // @synthesize widgetConfiguration=_widgetConfiguration;
 

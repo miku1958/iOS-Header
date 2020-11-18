@@ -36,10 +36,12 @@
     NSMutableArray *_workToPerformAfterInitialLoad;
 }
 
+@property (readonly, nonatomic) NSArray *contactlessPaymentPassDescriptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableCaching; // @synthesize disableCaching=_disableCaching;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSArray *inAppPaymentPassDescriptions;
 @property (nonatomic) BOOL initialLoadComplete; // @synthesize initialLoadComplete=_initialLoadComplete;
 @property (strong, nonatomic) NSArray *lastSeenRelevantPassTuples; // @synthesize lastSeenRelevantPassTuples=_lastSeenRelevantPassTuples;
 @property (nonatomic) BOOL needsRelevancyInformation; // @synthesize needsRelevancyInformation=_needsRelevancyInformation;
@@ -80,7 +82,10 @@
 - (void)getPassWithID:(id)arg1 reply:(CDUnknownBlockType)arg2 queue:(id)arg3;
 - (void)getSecureElementIdentifiers:(CDUnknownBlockType)arg1;
 - (void)getSharedWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
+- (void)handleAddedValue:(id)arg1 forPassUniqueID:(id)arg2;
+- (void)handleEndedServiceModeRequest;
 - (void)handlePassLibraryChangedNotification:(id)arg1;
+- (void)handlePaymentTransactions:(id)arg1 forPassUniqueIDs:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleRelevancyCheckCompletedNotification:(id)arg1;
 - (void)handleRelevancyPotentialChangedNotification:(id)arg1;
 - (void)handleRelevantPassTuplesChanged:(id)arg1;
@@ -91,6 +96,9 @@
 - (void)noteWebServiceUpdateNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performWorkAfterFirstLibraryLoad:(CDUnknownBlockType)arg1;
 - (id)preferredPaymentApplicationForPaymentPass:(id)arg1;
+- (void)processFelicaTransitAppletState:(id)arg1 forPassUniqueID:(id)arg2;
+- (void)processFelicaTransitHistory:(id)arg1 forPaymentApplication:(id)arg2 withPassUniqueIdentifier:(id)arg3 transactionDate:(id)arg4;
+- (void)setExpressTransitUniqueID:(id)arg1 applicationIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPreferredPaymentApplication:(id)arg1 forPaymentPass:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setSharedWebServiceContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

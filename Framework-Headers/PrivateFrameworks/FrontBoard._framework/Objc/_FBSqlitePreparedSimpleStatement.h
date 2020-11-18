@@ -6,14 +6,22 @@
 
 #import <FrontBoard/FBSqlitePreparedStatement.h>
 
-@class BSZeroingWeakReference;
+#import <FrontBoard/FBSqliteDatabaseConnectionObserver-Protocol.h>
 
-@interface _FBSqlitePreparedSimpleStatement : FBSqlitePreparedStatement
+@class FBSqliteDatabaseConnection, NSString;
+
+@interface _FBSqlitePreparedSimpleStatement : FBSqlitePreparedStatement <FBSqliteDatabaseConnectionObserver>
 {
-    BSZeroingWeakReference *_weak_dbConnection;
+    FBSqliteDatabaseConnection *_dbConnection;
     struct sqlite3_stmt *_statement;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (void).cxx_destruct;
 - (int)_bindKey:(id)arg1 value:(id)arg2;
 - (int)_bindParameterIndex:(int)arg1 dataValue:(id)arg2;
 - (int)_bindParameterIndex:(int)arg1 nullValue:(id)arg2;
@@ -24,6 +32,7 @@
 - (void)dealloc;
 - (BOOL)executeWithBindings:(id)arg1 resultRowHandler:(CDUnknownBlockType)arg2 error:(out id *)arg3;
 - (id)initWithDatabaseConnection:(id)arg1 statement:(struct sqlite3_stmt *)arg2;
+- (void)sqliteDatabaseConnectionWillClose:(id)arg1;
 
 @end
 

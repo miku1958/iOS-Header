@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HMDDevice, NSError, NSString;
+@class HMDDevice, NSDate, NSError, NSNumber, NSString;
 
 @interface HMDCharacteristicValueUpdate : NSObject
 {
@@ -14,16 +14,21 @@
     NSString *_updateIdentifier;
     NSError *_error;
     HMDDevice *_remoteDevice;
+    NSDate *_valueUpatedTime;
+    NSNumber *_valueUpdatedStateNumber;
 }
 
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) HMDDevice *remoteDevice; // @synthesize remoteDevice=_remoteDevice;
 @property (readonly, nonatomic) NSString *updateIdentifier; // @synthesize updateIdentifier=_updateIdentifier;
 @property (readonly, nonatomic) id value; // @synthesize value=_value;
+@property (readonly, nonatomic) NSDate *valueUpatedTime; // @synthesize valueUpatedTime=_valueUpatedTime;
+@property (readonly, nonatomic) NSNumber *valueUpdatedStateNumber; // @synthesize valueUpdatedStateNumber=_valueUpdatedStateNumber;
 
 - (void).cxx_destruct;
 - (id)initWithError:(id)arg1;
 - (id)initWithValue:(id)arg1 updateIdentifier:(id)arg2 remoteDevice:(id)arg3;
+- (void)setValueUpdatedTime:(id)arg1 stateNumber:(id)arg2;
 
 @end
 

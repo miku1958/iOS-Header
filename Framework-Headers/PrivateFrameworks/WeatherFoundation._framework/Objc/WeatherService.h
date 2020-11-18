@@ -37,6 +37,7 @@
 - (void)addClient:(id)arg1;
 - (void)addClient:(id)arg1 forPid:(int)arg2;
 - (void)airQualityForLocation:(id)arg1 locale:(id)arg2 options:(id)arg3 taskIdentifier:(id)arg4;
+- (void)cancelTaskWithIdentifier:(id)arg1;
 - (id)clientForPid:(int)arg1;
 - (void)dailyForecastForLocation:(id)arg1 taskIdentifier:(id)arg2;
 - (void)fetchFavoriteLocationsWithTaskIdentifier:(id)arg1;
@@ -48,6 +49,7 @@
 - (void)locationForString:(id)arg1 taskIdentifier:(id)arg2;
 - (void)performMigrationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queryDispatcherDidReceiveResponse:(id)arg1 identifier:(id)arg2;
+- (void)reachabilityConfigurationForIdentifier:(id)arg1;
 - (void)removeClient:(id)arg1;
 - (void)replaceTemperatureUnitWith:(int)arg1 identifier:(id)arg2;
 - (void)temperatureUnitWithIdentifier:(id)arg1;

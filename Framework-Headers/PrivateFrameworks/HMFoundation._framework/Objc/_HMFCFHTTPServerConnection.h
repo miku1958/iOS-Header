@@ -40,7 +40,6 @@
 - (void)_handleRecievedRequestRef:(struct _CFHTTPServerRequest *)arg1;
 - (void)_sendStatusCode:(long long)arg1 forRequest:(id)arg2;
 - (void)_sendStatusCode:(long long)arg1 forRequest:(id)arg2 bodyData:(id)arg3;
-- (void)_startReadBody:(id)arg1;
 - (void)_stopReadBody:(id)arg1;
 - (void)close;
 - (void)dealloc;

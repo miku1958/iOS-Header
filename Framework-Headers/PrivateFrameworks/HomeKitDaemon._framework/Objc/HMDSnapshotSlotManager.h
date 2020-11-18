@@ -8,13 +8,14 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class CAContext, HMDAccessory, HMDSnapshotFile, HMFMessageDispatcher, NSMutableDictionary, NSString;
+@class CAContext, HMDAccessory, HMDNotificationRegistration, HMDSnapshotFile, HMFMessageDispatcher, NSMapTable, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDSnapshotSlotManager : NSObject <HMFLogging>
 {
+    NSUUID *_uniqueIdentifier;
     HMDSnapshotFile *_mostRecentSnapshot;
-    NSMutableDictionary *_snapshotSlots;
+    NSMapTable *_snapshotSlots;
     CAContext *_snapshotContext;
     HMDAccessory *_accessory;
     NSString *_logID;
@@ -22,36 +23,42 @@
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFMessageDispatcher *_msgDispatcher;
     NSString *_imageCacheDirectory;
+    NSMutableArray *_filesToCleanup;
+    HMDNotificationRegistration *_notificationRegistration;
 }
 
 @property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSMutableArray *filesToCleanup; // @synthesize filesToCleanup=_filesToCleanup;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *imageCacheDirectory; // @synthesize imageCacheDirectory=_imageCacheDirectory;
 @property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
 @property (strong, nonatomic) HMDSnapshotFile *mostRecentSnapshot; // @synthesize mostRecentSnapshot=_mostRecentSnapshot;
 @property (readonly, nonatomic, getter=isMostRecentSnapshotValid) BOOL mostRecentSnapshotValid;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) CAContext *snapshotContext; // @synthesize snapshotContext=_snapshotContext;
-@property (readonly, nonatomic) NSMutableDictionary *snapshotSlots; // @synthesize snapshotSlots=_snapshotSlots;
+@property (readonly, nonatomic) NSMapTable *snapshotSlots; // @synthesize snapshotSlots=_snapshotSlots;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)_updateMostRecentSnapshot:(id)arg1;
+- (void)_updateMostRecentSnapshot:(id)arg1 updateGenerationCounter:(BOOL)arg2;
 - (id)addReferenceToMostRecentSnapshotFileForMessage:(id)arg1;
-- (id)createSlotForSnapshotFile:(id)arg1 requestMessages:(id)arg2;
+- (id)createSlotForSnapshotFile:(id)arg1 requestMessages:(id)arg2 updateGenerationCounter:(BOOL)arg3;
 - (void)dealloc;
 - (void)findMostRecentSnapshot;
 - (void)handleForegroundAppsNotification:(id)arg1;
 - (void)handleReleaseSnapshot:(id)arg1;
-- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 imageCacheDirectory:(id)arg3 logID:(id)arg4;
+- (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 imageCacheDirectory:(id)arg3 logID:(id)arg4 uniqueIdentifier:(id)arg5 msgDispatcher:(id)arg6;
 - (id)logIdentifier;
 - (id)payloadForSnapshotFile:(id)arg1;
 - (void)registerForMessages;
+- (void)setupMostRecentSnapshot;
 
 @end
 

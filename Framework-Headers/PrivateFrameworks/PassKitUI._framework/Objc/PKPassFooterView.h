@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPassFooterContentViewDelegate-Protocol.h>
 
 @class NSObject, NSString, PKPassFooterContentView, PKPassView, PKPaymentSessionHandle;
-@protocol OS_dispatch_source;
+@protocol OS_dispatch_group, OS_dispatch_source;
 
 @interface PKPassFooterView : UIView <PKPassFooterContentViewDelegate>
 {
@@ -22,6 +22,7 @@
     unsigned long long _sessionToken;
     unsigned char _visibility;
     unsigned char _contentViewVisibility;
+    NSObject<OS_dispatch_group> *_sessionDelayGroup;
     long long _state;
 }
 
@@ -55,10 +56,11 @@
 - (void)dealloc;
 - (void)didBecomeHiddenAnimated:(BOOL)arg1;
 - (void)didBecomeVisibleAnimated:(BOOL)arg1;
-- (id)initWithPassView:(id)arg1 context:(id)arg2;
+- (id)initWithPassView:(id)arg1 state:(long long)arg2 context:(id)arg3;
 - (void)layoutSubviews;
 - (void)passFooterContentViewDidBeginAuthenticating:(id)arg1;
 - (void)passFooterContentViewDidEndAuthenticating:(id)arg1;
+- (void)passFooterContentViewRequestsSessionSuppression:(id)arg1;
 - (void)willBecomeHiddenAnimated:(BOOL)arg1;
 - (void)willBecomeVisibleAnimated:(BOOL)arg1;
 

@@ -11,6 +11,7 @@
 @interface MPCReportingPlaybackEventSource : NSObject
 {
     BOOL _shouldReportPlayEventsToStore;
+    long long _equivalencySourceAdamID;
     double _eventDuration;
     unsigned long long _overrideItemType;
     NSString *_lyricsID;
@@ -20,8 +21,11 @@
     MPModelPlayEvent *_modelPlayEvent;
     NSString *_featureName;
     NSData *_recommendationData;
+    NSString *_requestingBundleIdentifier;
+    NSString *_requestingBundleVersion;
 }
 
+@property (nonatomic) long long equivalencySourceAdamID; // @synthesize equivalencySourceAdamID=_equivalencySourceAdamID;
 @property (nonatomic) double eventDuration; // @synthesize eventDuration=_eventDuration;
 @property (copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
 @property (copy, nonatomic) NSString *lyricsID; // @synthesize lyricsID=_lyricsID;
@@ -30,6 +34,8 @@
 @property (nonatomic) unsigned long long overrideItemType; // @synthesize overrideItemType=_overrideItemType;
 @property (copy, nonatomic) NSString *playbackSessionID; // @synthesize playbackSessionID=_playbackSessionID;
 @property (copy, nonatomic) NSData *recommendationData; // @synthesize recommendationData=_recommendationData;
+@property (copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
+@property (copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
 @property (nonatomic) BOOL shouldReportPlayEventsToStore; // @synthesize shouldReportPlayEventsToStore=_shouldReportPlayEventsToStore;
 @property (copy, nonatomic) NSData *trackInfo; // @synthesize trackInfo=_trackInfo;
 

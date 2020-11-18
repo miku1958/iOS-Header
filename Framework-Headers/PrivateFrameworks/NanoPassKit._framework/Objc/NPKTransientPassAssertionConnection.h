@@ -28,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithConnection:(id)arg1 queue:(id)arg2 delegate:(id)arg3;
+- (void)setServiceModeRequested:(BOOL)arg1;
 - (void)setTransientPassUniqueID:(id)arg1;
 
 @end

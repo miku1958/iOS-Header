@@ -14,7 +14,9 @@
     WGCheckView *_checkView;
 }
 
+@property (strong, nonatomic, getter=_checkView) WGCheckView *checkView; // @synthesize checkView=_checkView;
 @property (nonatomic, getter=isChecked) BOOL checked;
+@property (strong, nonatomic, getter=_circleView) UIImageView *circleView; // @synthesize circleView=_circleView;
 
 - (void).cxx_destruct;
 - (void)_configureCheckViewIfNecessary;

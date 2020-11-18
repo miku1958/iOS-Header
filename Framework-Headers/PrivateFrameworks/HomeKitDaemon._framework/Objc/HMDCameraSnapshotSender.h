@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMDCameraPowerAssertionProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDAccessory, HMDCameraSessionID, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDCameraSnapshotSender : NSObject <HMFLogging>
+@interface HMDCameraSnapshotSender : NSObject <HMFLogging, HMDCameraPowerAssertionProtocol>
 {
     NSUUID *_uniqueIdentifier;
     NSString *_destinationID;

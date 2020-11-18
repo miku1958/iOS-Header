@@ -30,10 +30,12 @@
 - (id)_debugString;
 - (void)beginDownloadingRemoteImages;
 - (void)beginDownloadingRemoteImagesWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)containsPaymentCredentialType:(long long)arg1;
 - (void)downloadRemoteImageForNetwork:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)featuredNetworksImageData;
 - (struct CGSize)imageSizeForScreenSize:(struct CGSize)arg1;
 - (id)initWithManifest:(id)arg1 featuredNetworks:(id)arg2;
+- (id)initWithManifest:(id)arg1 featuredNetworks:(id)arg2 webService:(id)arg3;
 - (id)primaryFeaturedNetwork;
 
 @end

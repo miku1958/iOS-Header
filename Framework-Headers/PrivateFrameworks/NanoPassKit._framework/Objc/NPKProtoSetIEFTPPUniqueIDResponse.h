@@ -14,10 +14,12 @@
 {
     NSString *_actualUniqueID;
     BOOL _cancelled;
+    BOOL _needsUnlock;
     BOOL _pending;
     BOOL _success;
     struct {
         unsigned int cancelled:1;
+        unsigned int needsUnlock:1;
         unsigned int pending:1;
         unsigned int success:1;
     } _has;
@@ -27,8 +29,10 @@
 @property (nonatomic) BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (readonly, nonatomic) BOOL hasActualUniqueID;
 @property (nonatomic) BOOL hasCancelled;
+@property (nonatomic) BOOL hasNeedsUnlock;
 @property (nonatomic) BOOL hasPending;
 @property (nonatomic) BOOL hasSuccess;
+@property (nonatomic) BOOL needsUnlock; // @synthesize needsUnlock=_needsUnlock;
 @property (nonatomic) BOOL pending; // @synthesize pending=_pending;
 @property (nonatomic) BOOL success; // @synthesize success=_success;
 

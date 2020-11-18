@@ -14,6 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_axStringForElapsedAndRemainingTime;
+- (void)_updateRemainingTimeText;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
 - (void)createViews;

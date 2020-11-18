@@ -27,9 +27,11 @@
     UIAlertController *_voiceOverUsageConfirmedController;
     UIAlertController *_touchAccommodationsUsageConfirmedController;
     UIAlertController *_tripleClickAlertController;
+    UIAlertController *_brokenHomeButtonAlertController;
 }
 
 @property (strong, nonatomic) UIAlertController *alertControllerToDismissAfterPresentation; // @synthesize alertControllerToDismissAfterPresentation=_alertControllerToDismissAfterPresentation;
+@property (strong, nonatomic) UIAlertController *brokenHomeButtonAlertController; // @synthesize brokenHomeButtonAlertController=_brokenHomeButtonAlertController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) AXAssertion *disableSystemGesturesAssertionForAlert; // @synthesize disableSystemGesturesAssertionForAlert=_disableSystemGesturesAssertionForAlert;
@@ -64,6 +66,7 @@
 - (void)_dismissAlertController:(id)arg1;
 - (void)_displayAlertController:(id)arg1;
 - (void)_handleAlertActionPress:(id)arg1 controller:(id)arg2;
+- (void)_handleBrokenHomeButton;
 - (void)_handleDisableBrightnessFiltersAlert:(id)arg1;
 - (void)_handleSwitchUsageConfirmed;
 - (void)_handleTouchAccommodationsUsageConfirmed;

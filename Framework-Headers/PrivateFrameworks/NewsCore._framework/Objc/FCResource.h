@@ -16,6 +16,7 @@
 }
 
 @property (readonly, nonatomic) FCAssetHandle *assetHandle; // @synthesize assetHandle=_assetHandle;
+@property (readonly, nonatomic) NSString *changeTag;
 @property (readonly, nonatomic) NSDate *fetchedDate;
 @property (readonly, nonatomic) NSURL *fileURL;
 @property (strong, nonatomic) FCInterestToken *interestToken; // @synthesize interestToken=_interestToken;

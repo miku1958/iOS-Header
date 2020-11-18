@@ -42,10 +42,12 @@
 - (BOOL)manualProvisioningEnabledForRegion:(id)arg1;
 - (id)paymentServicesMerchantURLForRegion:(id)arg1;
 - (id)paymentServicesURLForRegion:(id)arg1;
+- (id)paymentSetupBrowsableProductTypesForRegion:(id)arg1;
 - (id)paymentSetupFeaturedNetworksForRegion:(id)arg1;
 - (id)primaryFeaturedNetworkForRegion:(id)arg1;
 - (double)provisioningEnablementPercentageForRegion:(id)arg1;
 - (BOOL)regionHasProvisioningEnablementPercentage:(id)arg1;
+- (BOOL)remotePaymentsRequiredForVoiceover;
 - (id)supportedRegionsForOSVersion:(id)arg1 deviceClass:(id)arg2;
 - (id)supportedRegionsForOSVersion:(id)arg1 deviceClass:(id)arg2 platform:(id)arg3;
 - (id)unsupportedWebPaymentConfigurations;

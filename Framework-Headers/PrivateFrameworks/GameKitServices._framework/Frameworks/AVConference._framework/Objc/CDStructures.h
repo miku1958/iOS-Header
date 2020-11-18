@@ -58,6 +58,14 @@ struct JitterPreloadQueue_t;
 
 struct JitterQueue_t;
 
+struct OWRDList {
+    double time[100];
+    double owrd[100];
+    int frontIndex;
+    int rearIndex;
+    int size;
+};
+
 struct OpaqueAudioConverter;
 
 struct OpaqueFigThread;

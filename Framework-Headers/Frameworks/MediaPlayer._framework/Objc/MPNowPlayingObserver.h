@@ -8,13 +8,14 @@
 
 #import <MediaPlayer/MPStoreDownloadManagerObserver-Protocol.h>
 
-@class MPAVController, MPStoreDownload, NSData, NSMutableDictionary, NSString, UIImage;
+@class MPAVController, MPArtworkCatalog, MPStoreDownload, NSData, NSMutableDictionary, NSString, UIImage;
 @protocol OS_dispatch_queue;
 
 @interface MPNowPlayingObserver : NSObject <MPStoreDownloadManagerObserver>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     MPStoreDownload *_activeDownload;
+    MPArtworkCatalog *_currentArtworkCatalog;
     UIImage *_currentArtworkImage;
     NSData *_currentArtworkData;
     BOOL _hasSeenAnyItem;

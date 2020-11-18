@@ -35,6 +35,7 @@
     int _flashMode;
     int _wideColorMode;
     int _HDRMode;
+    BOOL _autoShallowDepthOfFieldEffectEnabled;
     BOOL _providesOriginalImage;
     int _SISMode;
     int _bravoImageFusionMode;
@@ -54,6 +55,7 @@
 @property (nonatomic) int HDRMode; // @synthesize HDRMode=_HDRMode;
 @property (readonly, nonatomic) float *ISOs; // @synthesize ISOs=_ISOs;
 @property (nonatomic) int SISMode; // @synthesize SISMode=_SISMode;
+@property (nonatomic) BOOL autoShallowDepthOfFieldEffectEnabled; // @synthesize autoShallowDepthOfFieldEffectEnabled=_autoShallowDepthOfFieldEffectEnabled;
 @property (readonly, nonatomic) unsigned int bracketImageCount; // @synthesize bracketImageCount=_bracketImageCount;
 @property (readonly, nonatomic) int bracketType; // @synthesize bracketType=_bracketType;
 @property (nonatomic) int bravoImageFusionMode; // @synthesize bravoImageFusionMode=_bravoImageFusionMode;

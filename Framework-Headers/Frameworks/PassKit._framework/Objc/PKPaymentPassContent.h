@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, NSURL;
+@class NSArray, NSDictionary, NSString, NSURL;
 
 @interface PKPaymentPassContent : PKPassContent <NSSecureCoding>
 {
@@ -19,9 +19,11 @@
     NSString *_messagePushTopic;
     NSString *_appURLScheme;
     NSDictionary *_localizedSuspendedReasonsByAID;
+    NSArray *_availableActions;
 }
 
 @property (copy, nonatomic) NSString *appURLScheme; // @synthesize appURLScheme=_appURLScheme;
+@property (copy, nonatomic) NSArray *availableActions; // @synthesize availableActions=_availableActions;
 @property (copy, nonatomic) NSString *cobrandName; // @synthesize cobrandName=_cobrandName;
 @property (copy, nonatomic) NSDictionary *localizedSuspendedReasonsByAID; // @synthesize localizedSuspendedReasonsByAID=_localizedSuspendedReasonsByAID;
 @property (copy, nonatomic) NSString *messagePushTopic; // @synthesize messagePushTopic=_messagePushTopic;

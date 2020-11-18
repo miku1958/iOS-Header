@@ -23,6 +23,7 @@
         unsigned int sectionsDiffer:1;
     } _dragFlags;
     BOOL _ignoreChangeUpdates;
+    BOOL _needToCheckProgress;
     BOOL _pendingChanges;
     UILongPressGestureRecognizer *_dragRecognizer;
     unsigned long long _mode;
@@ -55,6 +56,7 @@
 @property (nonatomic) struct CGPoint lastDragPoint; // @synthesize lastDragPoint=_lastDragPoint;
 @property (strong, nonatomic) UIBarButtonItem *mergeToolbarItem; // @synthesize mergeToolbarItem=_mergeToolbarItem;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+@property BOOL needToCheckProgress; // @synthesize needToCheckProgress=_needToCheckProgress;
 @property struct CGSize nonPriorityItemSize; // @synthesize nonPriorityItemSize=_nonPriorityItemSize;
 @property (nonatomic) BOOL pendingChanges; // @synthesize pendingChanges=_pendingChanges;
 @property struct CGSize priorityItemSize; // @synthesize priorityItemSize=_priorityItemSize;

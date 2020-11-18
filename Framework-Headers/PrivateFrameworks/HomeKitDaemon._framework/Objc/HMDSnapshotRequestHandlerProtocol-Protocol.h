@@ -9,6 +9,6 @@
 @class HMDCameraSessionID;
 
 @protocol HMDSnapshotRequestHandlerProtocol <NSObject>
-- (void)requestSnapshot:(HMDCameraSessionID *)arg1 completionHandler:(void (^)(HMDSnapshotFile *, NSError *))arg2;
+- (void)requestSnapshot:(HMDCameraSessionID *)arg1 streamingTierType:(unsigned long long)arg2 completionHandler:(void (^)(HMDSnapshotFile *, NSError *))arg3;
 @end
 

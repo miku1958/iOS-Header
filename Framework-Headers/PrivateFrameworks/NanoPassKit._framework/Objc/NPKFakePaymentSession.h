@@ -14,6 +14,7 @@
 @interface NPKFakePaymentSession : NPKQuickPaymentSession <PKFieldDetectorObserver>
 {
     BOOL _ourConfirmed;
+    BOOL _ourInServiceMode;
     BOOL _invalidated;
     PKPass *_ourCurrentPass;
     NSDictionary *_ourVasPasses;
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *ourCallbackQueue; // @synthesize ourCallbackQueue=_ourCallbackQueue;
 @property (nonatomic) BOOL ourConfirmed; // @synthesize ourConfirmed=_ourConfirmed;
 @property (strong, nonatomic) PKPass *ourCurrentPass; // @synthesize ourCurrentPass=_ourCurrentPass;
+@property (nonatomic) BOOL ourInServiceMode; // @synthesize ourInServiceMode=_ourInServiceMode;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *ourInternalQueue; // @synthesize ourInternalQueue=_ourInternalQueue;
 @property (strong, nonatomic) NSDictionary *ourVasPasses; // @synthesize ourVasPasses=_ourVasPasses;
 @property (readonly) Class superclass;
@@ -49,10 +51,12 @@
 - (void)dealloc;
 - (BOOL)deferAuthorization;
 - (void)fieldDetectorDidEnterField:(id)arg1 withProperties:(id)arg2;
+- (BOOL)inServiceMode;
 - (id)initWithQueue:(id)arg1;
 - (void)renewSession;
 - (void)setCurrentPass:(id)arg1;
 - (void)setDeferAuthorization:(BOOL)arg1;
+- (void)setInServiceMode:(BOOL)arg1;
 - (void)setVasPasses:(id)arg1;
 - (BOOL)startSession;
 - (id)vasPasses;

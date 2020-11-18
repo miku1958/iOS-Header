@@ -10,14 +10,17 @@
 
 @interface NPKTransientPassAssertion : NSObject
 {
+    BOOL _requestServiceMode;
     NSXPCConnection *_xpcConnection;
     NSString *_uniqueID;
 }
 
+@property (nonatomic) BOOL requestServiceMode; // @synthesize requestServiceMode=_requestServiceMode;
 @property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 - (void).cxx_destruct;
+- (id)_remoteObjectProxy;
 - (void)_resyncState;
 - (id)initWithPassWithUniqueID:(id)arg1;
 - (void)invalidate;

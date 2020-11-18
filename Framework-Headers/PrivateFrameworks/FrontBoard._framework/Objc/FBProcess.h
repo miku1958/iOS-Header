@@ -11,7 +11,7 @@
 #import <FrontBoard/FBSProcessInternal-Protocol.h>
 #import <FrontBoard/FBUIProcess-Protocol.h>
 
-@class BSMachPortTaskNameRight, BSProcessDeathWatcher, FBProcessState, FBSProcessHandle, FBWorkspace, NSHashTable, NSString;
+@class BSMachPortTaskNameRight, BSProcessDeathWatcher, FBProcessState, FBSProcessHandle, FBWorkspace, NSHashTable, NSNumber, NSString;
 @protocol FBProcessDelegate, OS_dispatch_queue;
 
 @interface FBProcess : NSObject <BSDescriptionProviding, FBUIProcess, FBSProcessInternal, FBSProcessIdentity>
@@ -30,12 +30,14 @@
     BOOL _running;
     BSProcessDeathWatcher *_processDeathObserver;
     BOOL _updatingState;
+    NSNumber *_executablePartitionNumber;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<FBProcessDelegate> delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL executableLivesOnSystemPartition;
 @property (readonly, nonatomic, getter=isForeground) BOOL foreground;
 @property (readonly, strong, nonatomic) FBSProcessHandle *handle;
 @property (readonly) unsigned long long hash;

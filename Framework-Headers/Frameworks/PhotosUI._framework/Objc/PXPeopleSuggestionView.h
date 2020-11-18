@@ -7,13 +7,13 @@
 #import <PhotosUICore/PXSmartScaleView.h>
 
 @class CAShapeLayer, NSTimer, UIImageView, UIView;
-@protocol PXFaceCollection;
+@protocol PXPerson;
 
 @interface PXPeopleSuggestionView : PXSmartScaleView
 {
     BOOL _needsSpotlightUpdate;
     BOOL _validSpotlight;
-    id<PXFaceCollection> _suggestion;
+    id<PXPerson> _suggestion;
     UIImageView *_imageView;
     UIView *_suggestionView;
     UIView *_dimView;
@@ -28,7 +28,7 @@
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property BOOL needsSpotlightUpdate; // @synthesize needsSpotlightUpdate=_needsSpotlightUpdate;
 @property (strong, nonatomic) CAShapeLayer *spotlightLayer; // @synthesize spotlightLayer=_spotlightLayer;
-@property (readonly, nonatomic) id<PXFaceCollection> suggestion; // @synthesize suggestion=_suggestion;
+@property (readonly, nonatomic) id<PXPerson> suggestion; // @synthesize suggestion=_suggestion;
 @property (strong, nonatomic) UIView *suggestionView; // @synthesize suggestionView=_suggestionView;
 @property BOOL validSpotlight; // @synthesize validSpotlight=_validSpotlight;
 

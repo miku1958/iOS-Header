@@ -52,6 +52,7 @@
 @property (nonatomic, getter=isResidentSupported) BOOL residentSupported; // @synthesize residentSupported=_residentSupported;
 @property (readonly) Class superclass;
 
++ (long long)compareElectionVersions:(id)arg1 otherVersion:(id)arg2;
 + (id)logCategory;
 + (id)shortDescription;
 + (BOOL)supportsSecureCoding;
@@ -95,6 +96,7 @@
 - (void)notifyClientsOfRemovedResidentDevice:(id)arg1;
 - (void)notifyClientsOfUpdatedResidentDevice:(id)arg1;
 - (void)notifyResidentAvailable:(BOOL)arg1;
+- (void)notifyUpdatedPrimaryResident:(id)arg1;
 - (id)ourSelf;
 - (void)removeResidentDevice:(id)arg1;
 - (id)residentDeviceForDevice:(id)arg1;

@@ -17,6 +17,7 @@
 
 + (id)startContactlessInterfaceSessionWithCompletion:(CDUnknownBlockType)arg1;
 + (id)startInAppSessionWithCompletion:(CDUnknownBlockType)arg1;
++ (id)startReaderSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)invalidateSession;
 - (void)invalidateSessionWithCompletion:(CDUnknownBlockType)arg1;

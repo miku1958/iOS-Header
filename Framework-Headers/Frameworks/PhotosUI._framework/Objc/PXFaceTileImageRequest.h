@@ -10,6 +10,7 @@
 
 @interface PXFaceTileImageRequest : NSObject
 {
+    BOOL _fullResMissing;
     BOOL _canceled;
     int _requestID;
     int _imageManagerRequestID;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) NSString *cacheKey; // @synthesize cacheKey=_cacheKey;
 @property (getter=isCanceled) BOOL canceled; // @synthesize canceled=_canceled;
 @property (strong, nonatomic) PHFace *face; // @synthesize face=_face;
+@property (getter=isFullResMissing) BOOL fullResMissing; // @synthesize fullResMissing=_fullResMissing;
 @property int imageManagerRequestID; // @synthesize imageManagerRequestID=_imageManagerRequestID;
 @property (nonatomic) struct CGSize lastDeliveredSize; // @synthesize lastDeliveredSize=_lastDeliveredSize;
 @property (nonatomic) struct CGRect normalizedActualFaceRect; // @synthesize normalizedActualFaceRect=_normalizedActualFaceRect;

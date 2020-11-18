@@ -14,7 +14,7 @@
 {
     BOOL _autoUnlockEnabled;
     BOOL _autoUnlockWatch;
-    unsigned char _deviceClass;
+    unsigned char _deviceActionType;
     BOOL _hasProblem;
     BOOL _needsKeyboard;
     BOOL _needsSetup;
@@ -34,7 +34,7 @@
 @property (nonatomic) BOOL autoUnlockWatch; // @synthesize autoUnlockWatch=_autoUnlockWatch;
 @property (readonly, copy, nonatomic) NSArray *batteryInfo; // @synthesize batteryInfo=_batteryInfo;
 @property (strong, nonatomic) SFBLEDevice *bleDevice; // @synthesize bleDevice=_bleDevice;
-@property (readonly, nonatomic) unsigned char deviceClass; // @synthesize deviceClass=_deviceClass;
+@property (readonly, nonatomic) unsigned char deviceActionType; // @synthesize deviceActionType=_deviceActionType;
 @property (readonly, nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 @property (nonatomic) long long distance; // @synthesize distance=_distance;
 @property (nonatomic) BOOL hasProblem; // @synthesize hasProblem=_hasProblem;

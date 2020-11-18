@@ -26,8 +26,6 @@
 
 - (void).cxx_destruct;
 - (id)initWithSettingsControl:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (void)resetControl;
 
 @end
 

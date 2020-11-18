@@ -28,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) HMFNetService *netService; // @synthesize netService=_netService;
+@property (readonly, nonatomic, getter=isReachable) BOOL reachable;
 @property (readonly, nonatomic) HMDHTTPDevice *remoteDevice; // @synthesize remoteDevice=_remoteDevice;
 @property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (readonly) Class superclass;

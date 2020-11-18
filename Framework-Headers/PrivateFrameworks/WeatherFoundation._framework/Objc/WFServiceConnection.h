@@ -44,6 +44,7 @@
 - (void)_onQueueInvalidateConnection:(id)arg1;
 - (void)_onQueueOpenConnection;
 - (void)accessServiceWithBlock:(CDUnknownBlockType)arg1;
+- (void)cancelRequestWithIdentifier:(id)arg1;
 - (void)dealloc;
 - (void)enqueueRequest:(id)arg1;
 - (void)enqueueRequest:(id)arg1 waitUntilDone:(BOOL)arg2;

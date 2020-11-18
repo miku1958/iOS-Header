@@ -34,6 +34,7 @@
 - (void)_handleDidSeekToStartTime;
 - (void)_startVideoPlayback;
 - (void)activeDidChange;
+- (long long)behaviorType;
 - (id)initWithInitialLayoutInfo:(id)arg1 photoTime:(double)arg2 playDuration:(CDStruct_1b6d18a9)arg3 playRate:(float)arg4 photoTransitionDuration:(double)arg5;
 - (void)playVitality;
 - (void)prepareForVitality;

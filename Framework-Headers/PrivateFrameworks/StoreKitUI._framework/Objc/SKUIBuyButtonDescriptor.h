@@ -14,6 +14,7 @@
     BOOL _showingConfirmation;
     BOOL _showsUniversal;
     BOOL _shouldSuppressEnabled;
+    BOOL _shouldSuppressCloudRestore;
     long long _buttonType;
     NSString *_buttonText;
     NSString *_confirmationText;
@@ -31,6 +32,7 @@
 @property (nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (nonatomic) long long itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property (nonatomic) long long progressType; // @synthesize progressType=_progressType;
+@property (nonatomic) BOOL shouldSuppressCloudRestore; // @synthesize shouldSuppressCloudRestore=_shouldSuppressCloudRestore;
 @property (nonatomic) BOOL shouldSuppressEnabled; // @synthesize shouldSuppressEnabled=_shouldSuppressEnabled;
 @property (nonatomic) BOOL showingConfirmation; // @synthesize showingConfirmation=_showingConfirmation;
 @property (nonatomic) BOOL showsUniversal; // @synthesize showsUniversal=_showsUniversal;

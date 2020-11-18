@@ -27,10 +27,14 @@
 
 + (id)fakeRemoteCredentials;
 - (void).cxx_destruct;
+- (id)contactlessProductCredential;
+- (BOOL)isContactlessProductCredential;
 - (BOOL)isLocalPassCredential;
 - (BOOL)isRemoteCredential;
+- (BOOL)isRemotePassCredential;
 - (id)localPassCredential;
 - (id)remoteCredential;
+- (id)remotePassCredential;
 
 @end
 

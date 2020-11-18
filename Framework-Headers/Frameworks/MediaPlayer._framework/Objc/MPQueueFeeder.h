@@ -9,7 +9,7 @@
 #import <MediaPlayer/MPQueueBehaviorManaging-Protocol.h>
 #import <MediaPlayer/NSCoding-Protocol.h>
 
-@class MPModelPlayEvent, NSMutableDictionary, NSString;
+@class MPModelPlayEvent, NSData, NSMutableDictionary, NSString;
 @protocol MPQueueFeederDelegate;
 
 @interface MPQueueFeeder : NSObject <MPQueueBehaviorManaging, NSCoding>
@@ -20,6 +20,8 @@
     BOOL _requiresQueueChangeVerification;
     id<MPQueueFeederDelegate> _delegate;
     unsigned long long _state;
+    NSString *_playActivityFeatureName;
+    NSData *_playActivityRecommendationData;
     long long _activeShuffleType;
     MPModelPlayEvent *_modelPlayEvent;
     CDStruct_dcf4dde6 _skipLimit;
@@ -37,6 +39,8 @@
 @property (readonly, nonatomic) Class itemClass;
 @property (readonly, nonatomic) unsigned long long itemCount;
 @property (readonly, nonatomic) MPModelPlayEvent *modelPlayEvent; // @synthesize modelPlayEvent=_modelPlayEvent;
+@property (copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
+@property (copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
 @property (readonly, nonatomic) long long playbackMode;
 @property (readonly, nonatomic) BOOL playerPreparesItemsForPlaybackAsynchronously;
 @property (readonly, nonatomic) long long realRepeatType;
@@ -53,6 +57,7 @@
 + (BOOL)supportsStateRestoration;
 - (void).cxx_destruct;
 - (BOOL)_canPurgeNextStartTimes;
+- (void)applyVolumeNormalizationForItem:(id)arg1;
 - (id)audioSessionModeForItemAtIndex:(unsigned long long)arg1;
 - (BOOL)canSkipItem:(id)arg1;
 - (void)contentsDidChangeWithPreferredStartIndex:(unsigned long long)arg1;

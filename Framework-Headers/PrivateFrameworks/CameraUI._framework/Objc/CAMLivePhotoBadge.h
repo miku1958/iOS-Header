@@ -13,11 +13,8 @@
 
 @property (nonatomic) long long irisMode; // @synthesize irisMode=_irisMode;
 
-- (double)_cornerRadius;
-- (id)_text;
-- (id)_textAttributes;
-- (struct UIEdgeInsets)_textInsets;
-- (void)_updateFromIrisModeChange;
+- (void)_updateTextAndColors;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

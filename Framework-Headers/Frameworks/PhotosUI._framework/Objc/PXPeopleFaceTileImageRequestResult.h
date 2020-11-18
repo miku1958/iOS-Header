@@ -11,9 +11,11 @@
 @interface PXPeopleFaceTileImageRequestResult : NSObject
 {
     BOOL _isDegraded;
+    BOOL _isVeryLowQuality;
     UIImage *_image;
     id _originalObjectID;
     id _assetObjectID;
+    struct CGSize _originalImageSize;
     struct CGRect _faceRect;
     struct PXFaceTileImageParams _params;
 }
@@ -22,6 +24,8 @@
 @property (readonly, nonatomic) struct CGRect faceRect; // @synthesize faceRect=_faceRect;
 @property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) BOOL isDegraded; // @synthesize isDegraded=_isDegraded;
+@property (nonatomic) BOOL isVeryLowQuality; // @synthesize isVeryLowQuality=_isVeryLowQuality;
+@property (nonatomic) struct CGSize originalImageSize; // @synthesize originalImageSize=_originalImageSize;
 @property (strong, nonatomic) id originalObjectID; // @synthesize originalObjectID=_originalObjectID;
 @property (nonatomic) struct PXFaceTileImageParams params; // @synthesize params=_params;
 

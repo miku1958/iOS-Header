@@ -12,16 +12,23 @@
 
 @interface NPKProtoSetIEFTPPUniqueIDRequest : PBRequest <NSCopying>
 {
+    NSString *_applicationIdentifier;
     NSString *_uniqueID;
     BOOL _cancelOutstandingRequests;
+    BOOL _requestAuthorization;
     struct {
         unsigned int cancelOutstandingRequests:1;
+        unsigned int requestAuthorization:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (nonatomic) BOOL cancelOutstandingRequests; // @synthesize cancelOutstandingRequests=_cancelOutstandingRequests;
+@property (readonly, nonatomic) BOOL hasApplicationIdentifier;
 @property (nonatomic) BOOL hasCancelOutstandingRequests;
+@property (nonatomic) BOOL hasRequestAuthorization;
 @property (readonly, nonatomic) BOOL hasUniqueID;
+@property (nonatomic) BOOL requestAuthorization; // @synthesize requestAuthorization=_requestAuthorization;
 @property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 
 - (void).cxx_destruct;

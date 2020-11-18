@@ -47,12 +47,10 @@
     NSUUID *_uuid;
     HMDelegateCaller *_delegateCaller;
     HMThreadSafeMutableArrayCollection *_accessoryProfiles;
-    HMThreadSafeMutableArrayCollection *_accessoryInternalProfiles;
 }
 
 @property (strong, nonatomic) HMThreadSafeMutableArrayCollection *accessories; // @synthesize accessories=_accessories;
 @property (strong, nonatomic) NSNumber *accessoryFlags; // @synthesize accessoryFlags=_accessoryFlags;
-@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *accessoryInternalProfiles; // @synthesize accessoryInternalProfiles=_accessoryInternalProfiles;
 @property (strong, nonatomic) HMThreadSafeMutableArrayCollection *accessoryProfiles; // @synthesize accessoryProfiles=_accessoryProfiles;
 @property (nonatomic) unsigned long long additionalSetupStatus; // @synthesize additionalSetupStatus=_additionalSetupStatus;
 @property (readonly, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
@@ -100,8 +98,9 @@
 - (void)_configure:(id)arg1 messageDispatcher:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4 configCompletionQueue:(id)arg5 configCompletion:(CDUnknownBlockType)arg6;
 - (void)_configureClientQueue:(id)arg1;
 - (void)_configureMessageDispatcher:(id)arg1 clientQueue:(id)arg2 delegateCaller:(id)arg3;
+- (void)_configureProfilesWithClientQueue:(id)arg1 delegateCaller:(id)arg2 msgDispatcher:(id)arg3 home:(id)arg4;
 - (void)_copyFrom:(id)arg1;
-- (void)_createCameraProfilesWithClientQueue:(id)arg1 delegateCaller:(id)arg2 msgDispatcher:(id)arg3 home:(id)arg4;
+- (void)_createCameraProfiles:(id)arg1;
 - (id)_findCharacteristic:(id)arg1 forService:(id)arg2;
 - (id)_findService:(id)arg1;
 - (void)_handleAccessoryCategoryChanged:(id)arg1;
@@ -119,6 +118,7 @@
 - (void)_handleServicesUpdated:(id)arg1;
 - (void)_handleUpdateRoom:(id)arg1;
 - (void)_identifyWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_mergeProfileObjects:(id)arg1 currentOperations:(id)arg2;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_notifyDelegateOfAppDataUpdateForService:(id)arg1;
 - (void)_notifyDelegatesOfAdditionalSetupRequiredChange;

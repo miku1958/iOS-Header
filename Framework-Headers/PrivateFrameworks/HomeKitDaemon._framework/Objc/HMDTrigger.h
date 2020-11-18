@@ -75,6 +75,7 @@
 - (id)initWithName:(id)arg1;
 - (void)invalidate;
 - (void)reEvaluate;
+- (void)refreshActivate;
 - (void)removeAccessory:(id)arg1;
 - (void)removeActionSet:(id)arg1;
 - (void)sendTriggerFiredNotification:(id)arg1;

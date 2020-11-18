@@ -8,15 +8,19 @@
 
 #import <IntentsUI/_INUIRemoteViewControllerHosting-Protocol.h>
 
-@class NSString, _INUIExtensionHostContext;
-@protocol INUIRemoteViewControllerDelegate;
+@class NSExtension, NSString, _INUIExtensionHostContext;
+@protocol INUIRemoteViewControllerDelegate, NSCopying;
 
 @interface INUIRemoteViewController : _UIRemoteViewController <_INUIRemoteViewControllerHosting>
 {
     id<INUIRemoteViewControllerDelegate> _delegate;
     _INUIExtensionHostContext *_extensionHostContext;
+    NSExtension *_activeExtension;
+    id<NSCopying> _currentRequestIdentifier;
 }
 
+@property (strong, nonatomic) NSExtension *activeExtension; // @synthesize activeExtension=_activeExtension;
+@property (strong, nonatomic) id<NSCopying> currentRequestIdentifier; // @synthesize currentRequestIdentifier=_currentRequestIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<INUIRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -33,6 +37,7 @@
 - (void)_queryRepresentedPropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)configureWithInteraction:(id)arg1 context:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)configureWithInteraction:(id)arg1 context:(unsigned long long)arg2 errorHandlingCompletion:(CDUnknownBlockType)arg3;
+- (id)disconnect;
 - (void)serviceViewControllerDesiresConstrainedSize:(struct CGSize)arg1;
 - (void)updateSize;
 - (void)viewServiceDidTerminateWithError:(id)arg1;

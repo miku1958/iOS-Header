@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) BOOL lostModeDisableDashBoard; // @dynamic lostModeDisableDashBoard;
 @property (nonatomic) BOOL showAuthenticationEngineeringUI; // @dynamic showAuthenticationEngineeringUI;
 @property (readonly, nonatomic) BOOL showLegalText; // @dynamic showLegalText;
+@property (nonatomic) BOOL showSupervisionText; // @dynamic showSupervisionText;
 @property (nonatomic) BOOL useDashBoard; // @dynamic useDashBoard;
 
 - (void)_bindAndRegisterDefaults;

@@ -59,6 +59,7 @@
 - (void)_updateName:(id)arg1;
 - (void)_updateProvidedName:(id)arg1;
 - (id)assistantObject;
+- (void)configureBulletinNotification:(CDUnknownBlockType)arg1;
 - (void)configureMsgDispatcher:(id)arg1;
 - (id)configureWithService:(id)arg1 accessory:(id)arg2;
 - (id)dumpState;
@@ -68,6 +69,7 @@
 - (id)getConfiguredName;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithService:(id)arg1 accessory:(id)arg2;
+- (BOOL)shouldEnableDaemonRelaunch;
 - (void)updateAccessory:(id)arg1;
 - (BOOL)updateAssociatedServiceType:(id)arg1 error:(id *)arg2;
 - (void)updateLastKnownValues;

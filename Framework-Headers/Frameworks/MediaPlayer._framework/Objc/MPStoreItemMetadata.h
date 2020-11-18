@@ -64,6 +64,7 @@
 @property (readonly, copy, nonatomic) NSString *shortEditorNotes;
 @property (readonly, copy, nonatomic) NSString *shortName;
 @property (readonly, copy, nonatomic) NSURL *shortURL;
+@property (readonly, nonatomic) BOOL shouldBookmarkPlayPosition;
 @property (readonly, nonatomic) BOOL showComposer;
 @property (readonly, copy, nonatomic) id storeID;
 @property (readonly, nonatomic) long long trackCount;

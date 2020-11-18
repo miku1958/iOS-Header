@@ -6,13 +6,13 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSString, PKPass, PKPaymentApplication;
+@class NSData, NSString, PKPass, PKPaymentApplication;
 @protocol PKPaymentDataProviderDelegate;
 
 @protocol PKPaymentDataProvider <NSObject>
 
 @property (strong, nonatomic) NSString *defaultPaymentPassIdentifier;
-@property (nonatomic) id<PKPaymentDataProviderDelegate> delegate;
+@property (weak, nonatomic) id<PKPaymentDataProviderDelegate> delegate;
 @property (readonly, nonatomic) BOOL isDeviceInRestrictedMode;
 @property (readonly, nonatomic) BOOL isPaymentHandoffDisabled;
 @property (readonly, nonatomic) NSString *secureElementIdentifier;
@@ -23,6 +23,11 @@
 - (void)setPaymentHandoffDisabled:(BOOL)arg1;
 
 @optional
+- (NSString *)defaultExpressFelicaTransitPassIdentifier;
+- (void)deletePaymentTransactionWithIdentifier:(NSString *)arg1 forPassWithUniqueIdentifier:(NSString *)arg2;
+- (void)felicaStateWithPassUniqueIdentifier:(NSString *)arg1 paymentApplication:(PKPaymentApplication *)arg2 completion:(void (^)(PKFelicaTransitAppletState *))arg3;
+- (void)setDefaultExpressFelicaTransitPassIdentifier:(NSString *)arg1 withCredential:(NSData *)arg2 completion:(void (^)(BOOL, NSString *))arg3;
+- (void)startServiceModeForPassWithUniqueIdentifier:(NSString *)arg1 visibleViewController:(id)arg2;
 - (BOOL)supportsInAppPaymentsForPass:(PKPass *)arg1;
 - (BOOL)supportsMessagesForPass:(PKPass *)arg1;
 - (BOOL)supportsNotificationsForPass:(PKPass *)arg1;

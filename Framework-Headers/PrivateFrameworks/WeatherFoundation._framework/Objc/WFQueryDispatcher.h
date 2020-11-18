@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
+- (void)cancelTaskWithIdentifier:(id)arg1;
 - (void)dispatchQuery:(id)arg1;
 - (void)fetchFavoriteLocationsWithTaskIdentifier:(id)arg1 results:(CDUnknownBlockType)arg2;
 - (id)init;

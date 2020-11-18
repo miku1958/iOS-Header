@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotateCollectionView;
-- (void)_axSetAchievementOnCell:(id)arg1 atIndex:(long long)arg2;
+- (void)_axSetAchievementOnCell:(id)arg1 atIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)loadView;
 

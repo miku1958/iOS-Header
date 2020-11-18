@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     long long _usesBackgroundSession;
     long long _qos;
     NSObject<OS_dispatch_queue> *_callbackQueue;
+    long long _highestQOS;
 }
 
 @property (nonatomic) BOOL allowsBackgroundNetworking; // @synthesize allowsBackgroundNetworking=_allowsBackgroundNetworking;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *completionHandlersByItemID; // @synthesize completionHandlersByItemID=_completionHandlersByItemID;
 @property (weak, nonatomic) CKDClientContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property (nonatomic) long long highestQOS; // @synthesize highestQOS=_highestQOS;
 @property (nonatomic) BOOL isFinished; // @synthesize isFinished=_isFinished;
 @property (nonatomic) unsigned long long lastCompletionHandlerCount; // @synthesize lastCompletionHandlerCount=_lastCompletionHandlerCount;
 @property (strong, nonatomic) NSDate *lastRequestDate; // @synthesize lastRequestDate=_lastRequestDate;

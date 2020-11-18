@@ -9,21 +9,25 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSString, UITableView, UITableViewController, UIView;
+@class NSIndexPath, NSString, UILabel, UITableView, UITableViewController, UIView;
 
 @interface PKPaymentSetupTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_tableView;
+    UILabel *_footerLabel;
     UITableViewController *_tableViewController;
     UIView *_containerView;
     long long _style;
     long long _context;
+    NSIndexPath *_selectedIndexPath;
 }
 
 @property (nonatomic) long long context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, strong, nonatomic) UILabel *footerLabel;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property (readonly) Class superclass;
 @property (readonly, strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
@@ -35,8 +39,10 @@
 - (void)loadView;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

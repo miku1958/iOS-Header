@@ -39,7 +39,7 @@
 - (void)handleBulletinActionResponse:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)insertBulletinWithTitle:(id)arg1 imageURL:(id)arg2 message:(id)arg3 recordID:(id)arg4 bulletinType:(unsigned long long)arg5 actionURL:(id)arg6 bulletinContext:(struct NSDictionary *)arg7 actionContext:(struct NSDictionary *)arg8;
+- (id)insertBulletinWithTitle:(id)arg1 snapshotData:(id)arg2 message:(id)arg3 recordID:(id)arg4 bulletinType:(unsigned long long)arg5 actionURL:(id)arg6 bulletinContext:(struct NSDictionary *)arg7 actionContext:(struct NSDictionary *)arg8;
 - (void)reloadDefaultSectionInfo;
 - (void)removeBulletin:(id)arg1;
 - (void)removeBulletinWithRecordID:(id)arg1;

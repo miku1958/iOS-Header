@@ -13,6 +13,7 @@
 @interface CAMStillImageCaptureResponse : CAMCaptureResponse <CAMTransientAssetConvertible>
 {
     BOOL _originalForHDR;
+    BOOL _originalForPortraitEffect;
     BOOL _expectingPairedVideo;
     NSString *_persistenceUUID;
     NSDate *_captureDate;
@@ -40,6 +41,7 @@
 @property (readonly, nonatomic) unsigned long long numberOfRepresentedAssets;
 @property (readonly, nonatomic, getter=isOriginal) BOOL original;
 @property (readonly, nonatomic, getter=isOriginalForHDR) BOOL originalForHDR; // @synthesize originalForHDR=_originalForHDR;
+@property (readonly, nonatomic, getter=isOriginalForPortraitEffect) BOOL originalForPortraitEffect; // @synthesize originalForPortraitEffect=_originalForPortraitEffect;
 @property (readonly, copy, nonatomic) NSURL *persistenceURL;
 @property (readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;
 @property (readonly, nonatomic) UIImage *placeholderImage;
@@ -49,7 +51,7 @@
 @property (readonly, nonatomic) NSString *uuid;
 
 - (void).cxx_destruct;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 originalForHDR:(BOOL)arg8 expectingPairedVideo:(BOOL)arg9;
+- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 originalForHDR:(BOOL)arg8 originalForPortraitEffect:(BOOL)arg9 expectingPairedVideo:(BOOL)arg10;
 
 @end
 

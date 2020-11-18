@@ -10,11 +10,13 @@
 #import <Sharing/SFXPCInterface-Protocol.h>
 
 @class NSSet, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceDiscovery : NSObject <NSSecureCoding, SFXPCInterface>
 {
     BOOL _activateCalled;
+    unsigned long long _activateTicks;
+    NSObject<OS_dispatch_source> *_consoleUserTimer;
     struct NSMutableDictionary *_devices;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
@@ -52,11 +54,12 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_ensureXPCStarted;
+- (int)_ensureXPCStarted;
 - (void)_interrupted;
 - (void)_invalidate;
 - (void)_invalidated;
 - (void)_invokeBlockActivateSafe:(CDUnknownBlockType)arg1;
+- (void)_retryConsole;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)description;

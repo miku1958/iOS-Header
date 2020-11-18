@@ -31,6 +31,7 @@
 @property (copy, nonatomic) CDUnknownBlockType unviewedAchievementDefinitionsChangedHandler;
 
 - (void).cxx_destruct;
+- (void)achievementAssetAvailabilityOnPairedDeviceForIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addAchievement:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)clientInterface;
 - (void)clientRemote_achievementDefinitionUnviewedCountChanged;
@@ -50,6 +51,7 @@
 - (void)markAchievementAsViewed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)markAchievementDefinitionIdentifierAlertViewed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)markAchievementsAlerted:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)nextScheduledAchievementDefinitionAlertTaskDateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)runAchievementsFixupAsDryRun:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)serverInterface;

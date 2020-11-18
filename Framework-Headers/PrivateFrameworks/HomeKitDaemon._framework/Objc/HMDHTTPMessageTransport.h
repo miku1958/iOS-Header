@@ -10,7 +10,7 @@
 #import <HomeKitDaemon/HMDHTTPServerMessageTransportDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFNetServiceBrowserDelegate-Protocol.h>
 
-@class HMDHTTPDevice, HMDHTTPServerMessageTransport, HMFNetServiceBrowser, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+@class HMDHTTPDevice, HMDHTTPServerMessageTransport, HMFNetServiceBrowser, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDHTTPMessageTransport : HMDRemoteMessageTransport <HMDHTTPClientMessageTransportDelegate, HMDHTTPServerMessageTransportDelegate, HMFNetServiceBrowserDelegate>
@@ -18,18 +18,18 @@
     NSMutableSet *_residentDevices;
     NSMutableSet *_transientDevices;
     NSMutableDictionary *_txtRecord;
+    NSMutableArray *_clientTransports;
     HMDHTTPDevice *_currentDevice;
     HMDHTTPServerMessageTransport *_serverTransport;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFNetServiceBrowser *_clientBrowser;
-    NSMutableArray *_clientTransports;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *TXTRecord;
 @property (readonly, nonatomic) HMFNetServiceBrowser *clientBrowser; // @synthesize clientBrowser=_clientBrowser;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (readonly, nonatomic) NSMutableArray *clientTransports; // @synthesize clientTransports=_clientTransports;
+@property (readonly, nonatomic) NSArray *clientTransports;
 @property (readonly, nonatomic) HMDHTTPDevice *currentDevice; // @synthesize currentDevice=_currentDevice;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -43,16 +43,16 @@
 + (id)shortDescription;
 + (BOOL)shouldHostMessageServer;
 - (void).cxx_destruct;
-- (id)_clientTransportForDevice:(id)arg1;
 - (void)_connectToDevice:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleReceivedRequestMessage:(id)arg1 fromDevice:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_sendMessage:(id)arg1 destination:(id)arg2 timeout:(double)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (id)_serviceForDevice:(id)arg1;
+- (void)addClientTransport:(id)arg1;
 - (BOOL)canSendMessage:(id)arg1;
 - (void)client:(id)arg1 didReceiveMessage:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)client:(id)arg1 didStopWithError:(id)arg2;
+- (id)clientTransportForDevice:(id)arg1;
 - (void)configureWithDevice:(id)arg1;
-- (void)dealloc;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)deviceForHTTPDevice:(id)arg1;
 - (id)init;
@@ -63,6 +63,7 @@
 - (void)netServiceBrowser:(id)arg1 didRemoveService:(id)arg2;
 - (void)netServiceBrowser:(id)arg1 didStopBrowsingWithError:(id)arg2;
 - (long long)qualityOfService;
+- (void)removeAllClientTransports;
 - (void)removeTXTRecordValueForKey:(id)arg1;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)server:(id)arg1 didAddDevice:(id)arg2;

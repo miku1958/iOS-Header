@@ -4,55 +4,72 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUICore/PXPeopleBaseConfirmationViewController.h>
+#import <UIKit/UIViewController.h>
 
-@class NSArray, NSLayoutConstraint, UIBarButtonItem, UIButton, UILayoutGuide;
+#import <PhotosUICore/PXPeopleSuggestionManagerDelegate-Protocol.h>
+#import <PhotosUICore/PXPeopleSummaryDelegate-Protocol.h>
 
-@interface PXPeopleConfirmationViewController : PXPeopleBaseConfirmationViewController
+@class NSString, NSTimer, PXAnimatedHeaderView, PXPeopleConfirmationSummaryViewController, PXPeopleSuggestionManager, PXPeopleSuggestionView, UIActivityIndicatorView, UILabel, UIView;
+
+@interface PXPeopleConfirmationViewController : UIViewController <PXPeopleSuggestionManagerDelegate, PXPeopleSummaryDelegate>
 {
-    UIButton *_confirmButton;
-    UIButton *_denyButton;
-    UIBarButtonItem *_undoButton;
-    UILayoutGuide *_controlLayoutGuide;
-    NSLayoutConstraint *_buttonSizeConstraint;
-    NSLayoutConstraint *_firstButtonSpacingConstraint;
-    NSLayoutConstraint *_secondButtonSpacingConstraint;
-    NSLayoutConstraint *_controlGuideHeightConstraint;
-    NSArray *_portraitConstraints;
-    NSArray *_landscapeConstraints;
-    NSArray *_commonConstraints;
+    BOOL _suggestionsPresented;
+    PXPeopleSuggestionManager *_suggestionManager;
+    PXPeopleSuggestionView *_suggestionView;
+    PXAnimatedHeaderView *_headerView;
+    UILabel *_descriptionLabel;
+    UILabel *_interimLoadingLabel;
+    UIActivityIndicatorView *_interimLoadingIndicator;
+    unsigned long long _viewState;
+    UIView *_loadingView;
+    UIView *_loadingStatusView;
+    UILabel *_noneFoundStatusLabel;
+    UIActivityIndicatorView *_initialLoadingIndicator;
+    PXPeopleConfirmationSummaryViewController *_summaryViewController;
+    NSTimer *_loadingDelayTimer;
 }
 
-@property (strong, nonatomic) NSLayoutConstraint *buttonSizeConstraint; // @synthesize buttonSizeConstraint=_buttonSizeConstraint;
-@property (strong, nonatomic) NSArray *commonConstraints; // @synthesize commonConstraints=_commonConstraints;
-@property (strong, nonatomic) UIButton *confirmButton; // @synthesize confirmButton=_confirmButton;
-@property (strong, nonatomic) NSLayoutConstraint *controlGuideHeightConstraint; // @synthesize controlGuideHeightConstraint=_controlGuideHeightConstraint;
-@property (strong, nonatomic) UILayoutGuide *controlLayoutGuide; // @synthesize controlLayoutGuide=_controlLayoutGuide;
-@property (strong, nonatomic) UIButton *denyButton; // @synthesize denyButton=_denyButton;
-@property (strong, nonatomic) NSLayoutConstraint *firstButtonSpacingConstraint; // @synthesize firstButtonSpacingConstraint=_firstButtonSpacingConstraint;
-@property (strong, nonatomic) NSArray *landscapeConstraints; // @synthesize landscapeConstraints=_landscapeConstraints;
-@property (strong, nonatomic) NSArray *portraitConstraints; // @synthesize portraitConstraints=_portraitConstraints;
-@property (strong, nonatomic) NSLayoutConstraint *secondButtonSpacingConstraint; // @synthesize secondButtonSpacingConstraint=_secondButtonSpacingConstraint;
-@property (strong, nonatomic) UIBarButtonItem *undoButton; // @synthesize undoButton=_undoButton;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PXAnimatedHeaderView *headerView; // @synthesize headerView=_headerView;
+@property (strong) UIActivityIndicatorView *initialLoadingIndicator; // @synthesize initialLoadingIndicator=_initialLoadingIndicator;
+@property (strong) UIActivityIndicatorView *interimLoadingIndicator; // @synthesize interimLoadingIndicator=_interimLoadingIndicator;
+@property (strong) UILabel *interimLoadingLabel; // @synthesize interimLoadingLabel=_interimLoadingLabel;
+@property (readonly) BOOL isSummaryViewShowing;
+@property (strong) NSTimer *loadingDelayTimer; // @synthesize loadingDelayTimer=_loadingDelayTimer;
+@property (strong) UIView *loadingStatusView; // @synthesize loadingStatusView=_loadingStatusView;
+@property (strong) UIView *loadingView; // @synthesize loadingView=_loadingView;
+@property (strong) UILabel *noneFoundStatusLabel; // @synthesize noneFoundStatusLabel=_noneFoundStatusLabel;
+@property (readonly) PXPeopleSuggestionManager *suggestionManager; // @synthesize suggestionManager=_suggestionManager;
+@property (strong, nonatomic) PXPeopleSuggestionView *suggestionView; // @synthesize suggestionView=_suggestionView;
+@property BOOL suggestionsPresented; // @synthesize suggestionsPresented=_suggestionsPresented;
+@property (strong) PXPeopleConfirmationSummaryViewController *summaryViewController; // @synthesize summaryViewController=_summaryViewController;
+@property (readonly) Class superclass;
+@property (nonatomic) unsigned long long viewState; // @synthesize viewState=_viewState;
 
 - (void).cxx_destruct;
-- (id)_buttonBackgroundImageFromColor:(id)arg1;
-- (id)_buttonWithTitle:(id)arg1 action:(SEL)arg2 andColor:(id)arg3;
-- (void)_disableActionButtonsWithSelectedButton:(id)arg1;
-- (void)_enableActionButtons;
-- (void)_updateUndoButton;
+- (unsigned long long)autoConfirmedCountForSummaryViewController:(id)arg1;
 - (void)confirmTapped:(id)arg1;
-- (void)contentSizeCategoryDidChangeNotification:(id)arg1;
-- (void)dealloc;
+- (void)confirmationCountUpdatedForSuggestionManager:(id)arg1;
 - (void)denyTapped:(id)arg1;
-- (id)initWithFaceCollection:(id)arg1;
+- (void)dismissSummary;
+- (void)displaySummary;
+- (void)doneTapped:(id)arg1;
+- (id)initWithPerson:(id)arg1;
+- (void)loadingMoreSuggestionsForSuggestionManager:(id)arg1;
 - (void)noMoreSuggestionsAvailableForSuggestionManager:(id)arg1;
+- (void)performUndo:(id)arg1;
+- (id)personForSummaryViewController:(id)arg1;
+- (void)presentSuggestion:(id)arg1 animated:(BOOL)arg2;
+- (void)suggestionDidDisplay;
 - (void)suggestionManager:(id)arg1 hasNewSuggestionAvailable:(id)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)undoButtonTapped:(id)arg1;
-- (void)updateViewConstraints;
+- (void)undoConfirm:(id)arg1;
+- (void)undoDeny:(id)arg1;
+- (unsigned long long)userConfirmedCountForSummaryViewController:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

@@ -8,13 +8,19 @@
 
 @interface CertTrustSettings : PSListController
 {
+    id _profileListChangedNotificationObserver;
 }
 
+@property (strong, nonatomic) id profileListChangedNotificationObserver; // @synthesize profileListChangedNotificationObserver=_profileListChangedNotificationObserver;
+
+- (void).cxx_destruct;
 - (id)isFullTrustEnabled:(id)arg1;
 - (void)setFullTrustEnabled:(id)arg1 forSpecifier:(id)arg2;
-- (id)specifierForTrustSettings:(struct __SecCertificate *)arg1;
+- (id)specifierForTrustSettings:(struct __SecCertificate *)arg1 isRestricted:(BOOL)arg2;
 - (id)specifiers;
 - (id)trustVersionString:(id)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

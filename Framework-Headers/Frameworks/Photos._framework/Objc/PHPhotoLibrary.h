@@ -90,12 +90,15 @@
 - (id)bfa_fetchObjectsForOIDs:(id)arg1 propertyHint:(unsigned long long)arg2;
 - (id)bfa_photoLibrary;
 - (id)bfa_tombstoneObjectForOID:(id)arg1 uuid:(id)arg2 propertyHint:(unsigned long long)arg3;
+- (void)cancelOperationsWithIdentifiers:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)changeRequestForUUID:(id)arg1;
 - (BOOL)cleanupInvalidIgnoreUntilDatesWithError:(id *)arg1;
 - (id)curationDebugInformationForAssetLocalIdentifier:(id)arg1 precision:(unsigned long long)arg2 error:(id *)arg3;
 - (id)deletedAssetUUIDsForAnalysisByWorkerType:(short)arg1 fetchLimit:(unsigned long long)arg2 error:(id *)arg3;
 - (void)enableNamingFlow;
 - (id)exportGraphForPurpose:(id)arg1 error:(id *)arg2;
+- (id)faceClusterSequenceNumbersOfKeyFacesInAlgorithmicFaceGroupsForPerson:(id)arg1 verifiedClusterSequenceNumbers:(id)arg2;
+- (id)faceSuggestionsForFaceClusterSequenceNumbers:(id)arg1 excludeFaceLocalIdentifers:(id)arg2;
 - (BOOL)featureEnabledForWorkerType:(short)arg1;
 - (BOOL)featureEnabledForWorkerType:(short)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)fetchDictionariesByPHClassForOIDs:(id)arg1 propertyHint:(unsigned long long)arg2 includeTrash:(BOOL)arg3;

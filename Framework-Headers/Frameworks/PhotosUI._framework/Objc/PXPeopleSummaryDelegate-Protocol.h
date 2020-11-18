@@ -7,11 +7,11 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class PXPeopleConfirmationSummaryViewController;
-@protocol PXFaceCollection;
+@protocol PXPerson;
 
 @protocol PXPeopleSummaryDelegate <NSObject>
 - (unsigned long long)autoConfirmedCountForSummaryViewController:(PXPeopleConfirmationSummaryViewController *)arg1;
-- (id<PXFaceCollection>)faceCollectionForSummaryViewController:(PXPeopleConfirmationSummaryViewController *)arg1;
+- (id<PXPerson>)personForSummaryViewController:(PXPeopleConfirmationSummaryViewController *)arg1;
 - (unsigned long long)userConfirmedCountForSummaryViewController:(PXPeopleConfirmationSummaryViewController *)arg1;
 @end
 

@@ -14,6 +14,8 @@
 @property (copy, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
 
 - (void).cxx_destruct;
+- (void)cleanup;
+- (void)handleCancellation;
 - (void)handleResponse:(id)arg1;
 - (id)initWithResultHandler:(CDUnknownBlockType)arg1;
 - (BOOL)requiresResponse;

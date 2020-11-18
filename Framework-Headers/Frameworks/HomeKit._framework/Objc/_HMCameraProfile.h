@@ -6,7 +6,7 @@
 
 #import <HomeKit/_HMAccessoryProfile.h>
 
-@class NSMutableArray, _HMCameraAudioControl, _HMCameraSettingsControl, _HMCameraSnapshotControl, _HMCameraStreamControl;
+@class NSArray, _HMCameraAudioControl, _HMCameraSettingsControl, _HMCameraSnapshotControl, _HMCameraStreamControl;
 
 @interface _HMCameraProfile : _HMAccessoryProfile
 {
@@ -15,10 +15,9 @@
     _HMCameraSettingsControl *_settingsControl;
     _HMCameraAudioControl *_speakerControl;
     _HMCameraAudioControl *_microphoneControl;
-    NSMutableArray *_controls;
 }
 
-@property (readonly, nonatomic) NSMutableArray *controls; // @synthesize controls=_controls;
+@property (readonly, nonatomic) NSArray *controls;
 @property (readonly, nonatomic) _HMCameraAudioControl *microphoneControl; // @synthesize microphoneControl=_microphoneControl;
 @property (readonly, nonatomic) _HMCameraSettingsControl *settingsControl; // @synthesize settingsControl=_settingsControl;
 @property (readonly, nonatomic) _HMCameraSnapshotControl *snapshotControlInternal; // @synthesize snapshotControlInternal=_snapshotControlInternal;
@@ -27,9 +26,11 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_createControls:(id)arg1;
 - (void)_registerNotificationHandlers;
-- (void)configureWithClientQueue:(id)arg1 delegateCaller:(id)arg2 msgDispatcher:(id)arg3 home:(id)arg4;
+- (void)configureWithAccessory:(id)arg1 clientQueue:(id)arg2 delegateCaller:(id)arg3 msgDispatcher:(id)arg4 home:(id)arg5;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

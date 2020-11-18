@@ -7,18 +7,22 @@
 #import <Foundation/NSObject.h>
 
 @class NSDictionary, NSURL, NSXPCConnection;
+@protocol OS_dispatch_semaphore;
 
 @interface PLPhotoAnalysisServiceClient : NSObject
 {
     NSURL *_libraryURL;
     NSXPCConnection *_xpcConnection;
     NSDictionary *_cachedRequestContextDictionary;
+    NSObject<OS_dispatch_semaphore> *_notifySemaphore;
 }
 
 @property (readonly, nonatomic) NSXPCConnection *xpcConnection;
 
 + (id)defaultClient;
 - (void).cxx_destruct;
+- (void)cancelOperationsWithIdentifiers:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)configureXPCConnection;
 - (void)dispatchBlockWithoutBoost:(CDUnknownBlockType)arg1;
 - (id)dumpAnalysisStatusError:(id *)arg1;
 - (id)faceClusteringInformation:(unsigned long long)arg1 error:(id *)arg2;
@@ -45,6 +49,7 @@
 - (id)requestAssetCollectionsRelatedToMomentWithLocalIdentifier:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)requestAssetsForFaceCollectionIdentifiers:(id)arg1 withError:(id *)arg2;
 - (id)requestContextDictionary;
+- (id)requestContextDictionaryWithOperationId:(BOOL)arg1;
 - (id)requestCuratedAssetForAssetCollectionWithLocalIdentifier:(id)arg1 referenceAssetLocalIdentifier:(id)arg2 precision:(unsigned long long)arg3 options:(id)arg4 error:(id *)arg5;
 - (id)requestCuratedAssetsForAssetCollectionWithLocalIdentifier:(id)arg1 duration:(unsigned long long)arg2 precision:(unsigned long long)arg3 options:(id)arg4 error:(id *)arg5;
 - (id)requestCurationDebugInformationForAssetLocalIdentifier:(id)arg1 precision:(unsigned long long)arg2 error:(id *)arg3;
@@ -85,7 +90,7 @@
 - (void)setJobProcessingConstraintsWithValues:(id)arg1 mask:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setupXpcConnection;
 - (id)suggestedFacesForFacesWithLocalIdentifiers:(id)arg1 error:(id *)arg2;
-- (id)suggestedFacesForPersonWithLocalIdentifier:(id)arg1 toBeConfirmedFaceLocalIdentifiers:(id)arg2 toBeRejectedFaceLocalIdentifiers:(id)arg3 error:(id *)arg4;
+- (long long)suggestedFacesForPersonWithLocalIdentifier:(id)arg1 toBeConfirmedFaceLocalIdentifiers:(id)arg2 toBeRejectedFaceLocalIdentifiers:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)suggestedPersonLocalIdentifierForFaceWithLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 

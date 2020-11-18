@@ -43,6 +43,8 @@
     NSString *_versionString;
     NSArray *_videos;
     BOOL _hasMessagesExtension;
+    BOOL _gameControllerSupported;
+    BOOL _requiresGameController;
     id<SKUIArtworkProviding> _artworksProvider;
     NSString *_editorialBadge;
     id<SKUIArtworkProviding> _newsstandArtworks;
@@ -62,6 +64,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
 @property (readonly, nonatomic) NSString *editorialBadge; // @synthesize editorialBadge=_editorialBadge;
+@property (readonly, nonatomic) BOOL gameControllerSupported; // @synthesize gameControllerSupported=_gameControllerSupported;
 @property (readonly, nonatomic) BOOL hasInAppPurchases; // @synthesize hasInAppPurchases=_hasInAppPurchases;
 @property (readonly, nonatomic) BOOL hasMessagesExtension; // @synthesize hasMessagesExtension=_hasMessagesExtension;
 @property (readonly) unsigned long long hash;
@@ -81,6 +84,7 @@
 @property (readonly, nonatomic) SKUIItemOffer *primaryItemOffer; // @synthesize primaryItemOffer=_itemOffer;
 @property (readonly, nonatomic) NSString *productPageURLString; // @synthesize productPageURLString=_productPageURLString;
 @property (readonly, nonatomic) NSArray *requiredCapabilities; // @synthesize requiredCapabilities=_requiredCapabilities;
+@property (readonly, nonatomic) BOOL requiresGameController; // @synthesize requiresGameController=_requiresGameController;
 @property (copy, nonatomic) SKUIStoreIdentifier *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;

@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (id)body;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)headerFields;
 - (id)initWithRequest:(id)arg1 statusCode:(long long)arg2;
 - (void)setBody:(id)arg1;

@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDAccessory, HMDService, HMFMessageDispatcher, NSArray, NSDictionary, NSString, NSUUID;
+@class HMDAccessory, HMDNotificationRegistration, HMDService, HMFMessageDispatcher, NSArray, NSDictionary, NSString, NSUUID;
 @protocol HMDCameraSettingsControlManagerDelegate, OS_dispatch_queue;
 
 @interface HMDCameraSettingsControlManager : NSObject <HMFMessageReceiver, HMFLogging>
@@ -25,6 +25,7 @@
     NSUUID *_uniqueIdentifier;
     NSString *_logID;
     NSArray *_characteristicsList;
+    HMDNotificationRegistration *_notificationRegistration;
 }
 
 @property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) HMDService *streamService; // @synthesize streamService=_streamService;
 @property (readonly) Class superclass;

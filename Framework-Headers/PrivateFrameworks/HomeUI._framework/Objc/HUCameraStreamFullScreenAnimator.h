@@ -6,29 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeUI/UIViewControllerAnimatedTransitioning-Protocol.h>
-
-@class NSString, UIView;
-@protocol UIViewControllerContextTransitioning;
-
-@interface HUCameraStreamFullScreenAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+@interface HUCameraStreamFullScreenAnimator : NSObject
 {
-    id<UIViewControllerContextTransitioning> transContext;
-    BOOL _presenting;
-    UIView *_cameraSnapshotView;
-    struct CGRect _cameraCellFrameInWindowSpace;
+    struct CGRect _sourceFrameInPresentingView;
 }
 
-@property (nonatomic) struct CGRect cameraCellFrameInWindowSpace; // @synthesize cameraCellFrameInWindowSpace=_cameraCellFrameInWindowSpace;
-@property (weak, nonatomic) UIView *cameraSnapshotView; // @synthesize cameraSnapshotView=_cameraSnapshotView;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isPresenting) BOOL presenting; // @synthesize presenting=_presenting;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) struct CGRect sourceFrameInPresentingView; // @synthesize sourceFrameInPresentingView=_sourceFrameInPresentingView;
 
-- (void).cxx_destruct;
-- (void)animateTransition:(id)arg1;
+- (struct CGRect)_toViewFinalFrame:(id)arg1;
+- (id)initWithSourceFrameInPresentingView:(struct CGRect)arg1;
 - (double)transitionDuration:(id)arg1;
 
 @end

@@ -27,6 +27,7 @@
 - (void)_updateUserDefaultsKey:(struct __CFString *)arg1 withBooleanValue:(BOOL)arg2;
 - (long long)biometricAvailabilityForAccountIdentifier:(id)arg1;
 - (BOOL)canPerformBiometricOptIn;
+- (BOOL)canPerformExtendedTouchIDActionsForAccountIdentifier:(id)arg1;
 - (void)clearLastRegisteredAccountIdentifier;
 - (id)createAttestationDataForAccountIdentifier:(id)arg1 error:(id *)arg2;
 - (unsigned long long)identityMapCount;

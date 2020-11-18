@@ -15,10 +15,13 @@
 
 @property (readonly, copy, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 
++ (id)normalizedHostname:(id)arg1;
 - (void).cxx_destruct;
 - (id)addressString;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithHostname:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

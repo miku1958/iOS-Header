@@ -19,6 +19,7 @@
 @property (strong, nonatomic) _HMCameraSource *source; // @synthesize source=_source;
 
 - (void).cxx_destruct;
+- (id)aspectRatio;
 - (id)initWithSource:(id)arg1;
 
 @end

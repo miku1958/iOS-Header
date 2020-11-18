@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class City, NSArray, NSCalendar, NSData, NSDate, NSDictionary, NSError, NSLocale, NSString, WACurrentForecast, WAForecastModel, WFAirQualityConditions, WFDailyForecastRequest, WFForecastRequest, WFHourlyForecastRequest, WFLocation, WFWeatherConditions;
+@class City, NSArray, NSCalendar, NSData, NSDate, NSDictionary, NSError, NSLocale, NSString, WACurrentForecast, WAForecastModel, WFAirQualityConditions, WFAirQualityRequest, WFDailyForecastRequest, WFForecastRequest, WFHourlyForecastRequest, WFLocation, WFWeatherConditions;
 
 @interface WAForecastOperation : NSOperation
 {
@@ -28,6 +28,7 @@
     WFDailyForecastRequest *_dailyForecastRequest;
     WFHourlyForecastRequest *_hourlyForecastRequest;
     WFForecastRequest *_todayForecastRequest;
+    WFAirQualityRequest *_airQualityRequest;
     NSCalendar *_calendar;
     NSLocale *_locale;
     NSString *_trackingParameter;
@@ -35,6 +36,7 @@
 }
 
 @property (strong, nonatomic) WFAirQualityConditions *airQualityConditions; // @synthesize airQualityConditions=_airQualityConditions;
+@property (strong, nonatomic) WFAirQualityRequest *airQualityRequest; // @synthesize airQualityRequest=_airQualityRequest;
 @property (strong, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property (strong, nonatomic) City *city; // @synthesize city=_city;
 @property (strong, nonatomic) WACurrentForecast *currentConditions; // @synthesize currentConditions=_currentConditions;
@@ -63,6 +65,7 @@
 - (void)_failWithError:(id)arg1;
 - (void)_mapReferralLinks;
 - (BOOL)_needsGeolocation;
+- (void)cancel;
 - (id)initWithCity:(id)arg1;
 - (id)initWithLocation:(id)arg1;
 - (void)main;

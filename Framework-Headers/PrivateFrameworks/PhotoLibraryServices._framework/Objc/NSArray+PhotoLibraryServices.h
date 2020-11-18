@@ -10,6 +10,8 @@
 - (id)_pl_filter:(CDUnknownBlockType)arg1;
 - (id)_pl_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)_pl_flatMap:(CDUnknownBlockType)arg1;
+- (id)_pl_groupBy:(CDUnknownBlockType)arg1;
+- (id)_pl_indexBy:(CDUnknownBlockType)arg1;
 - (id)_pl_map:(CDUnknownBlockType)arg1;
 @end
 

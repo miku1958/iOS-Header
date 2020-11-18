@@ -51,6 +51,7 @@
 
 - (void).cxx_destruct;
 - (id)_allowedControlsForPanoramaMode;
+- (id)_allowedControlsForPortraitMode;
 - (id)_allowedControlsForSquareMode;
 - (id)_allowedControlsForStillImageMode;
 - (id)_allowedControlsForTimelapseMode;

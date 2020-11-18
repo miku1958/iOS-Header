@@ -7,47 +7,56 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/HDAchievementAssetObserver-Protocol.h>
+#import <HealthDaemon/HDAchievementDefinitionAlertSuppressorDelegate-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class HDBackgroundTaskScheduler, HDProfile, NSArray, NSDate, NSNumber, NSString;
-@protocol HDAchievementDefinitionAlertNotifier, OS_dispatch_queue;
+@class HDBackgroundTaskScheduler, HDProfile, NSDate, NSNumber, NSString;
+@protocol HDAchievementDefinitionAlertNotifier, HDAchievementDefinitionAlertSuppressor, OS_dispatch_queue;
 
-@interface HDAchievementDefinitionAlertManager : NSObject <HDHealthDaemonReadyObserver, HDAchievementAssetObserver>
+@interface HDAchievementDefinitionAlertManager : NSObject <HDHealthDaemonReadyObserver, HDAchievementDefinitionAlertSuppressorDelegate, HDAchievementAssetObserver>
 {
     HDProfile *_profile;
     HDBackgroundTaskScheduler *_backgroundTaskScheduler;
-    id<HDAchievementDefinitionAlertNotifier> _alertNotifier;
+    id<HDAchievementDefinitionAlertSuppressor> _alertSuppressor;
     NSObject<OS_dispatch_queue> *_queue;
     NSNumber *_waitingToRun;
+    id<HDAchievementDefinitionAlertNotifier> _alertNotifier;
     NSDate *_dateOverride;
-    NSArray *_overriddenDefinitions;
 }
 
+@property (readonly, nonatomic) id<HDAchievementDefinitionAlertNotifier> alertNotifier; // @synthesize alertNotifier=_alertNotifier;
 @property (strong, nonatomic) NSDate *dateOverride; // @synthesize dateOverride=_dateOverride;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSArray *overriddenDefinitions; // @synthesize overriddenDefinitions=_overriddenDefinitions;
 @property (readonly) Class superclass;
 
++ (id)_availableDefinitionIdentifiersWithProfile:(id)arg1 error:(id *)arg2;
 + (void)_clearBookkeepingKeyValuesWithProfile:(id)arg1;
 + (id)_definitionIdentifiersInAlertedState:(unsigned long long)arg1 amongDefinitions:(id)arg2 withProfile:(id)arg3 error:(id *)arg4;
 + (id)_findDefinitionsToAlertWithProfile:(id)arg1 currentDate:(id)arg2 amongDefinitions:(id)arg3 getExpiredDefinitions:(id *)arg4;
 + (id)_findNextDefinitionToScheduleAmongDefinitions:(id)arg1 withCurrentDate:(id)arg2;
 - (void).cxx_destruct;
+- (void)_queue_cleanUpIdentifierAvailabilityWithAvailableIdentifiers:(id)arg1;
+- (void)_queue_findAndNotifyAlerts;
 - (BOOL)_queue_markDefinitions:(id)arg1 asAlertedState:(unsigned long long)arg2;
 - (void)_queue_markDefinitionsAvailable:(id)arg1;
 - (void)_queue_rescheduleNewAchievementAlertsWithDefinitions:(id)arg1;
 - (void)_synthesizeAlert;
 - (void)achievementDefinitionsDidChangeToDefinitions:(id)arg1;
+- (void)alertSuppressionStatusDidChange:(id)arg1;
 - (void)clearBookkeepingKeyValues;
+- (id)currentDate;
 - (void)daemonReady:(id)arg1;
 - (void)dealloc;
 - (id)definitionIdentifiersInAlertedState:(unsigned long long)arg1 withError:(id *)arg2;
-- (id)initWithProfile:(id)arg1 backgroundTaskScheduler:(id)arg2 alertNotifier:(id)arg3;
+- (id)initWithProfile:(id)arg1 backgroundTaskScheduler:(id)arg2 alertSuppressor:(id)arg3 alertNotifier:(id)arg4;
 - (BOOL)markDefinitionIdentifiers:(id)arg1 asAlertedState:(unsigned long long)arg2 withProfile:(id)arg3 error:(id *)arg4;
-- (BOOL)markDefinitionIdentifiersAvailable:(id)arg1 withProfile:(id)arg2 error:(id *)arg3;
+- (BOOL)markDefinitionIdentifiers:(id)arg1 asAvailable:(BOOL)arg2 withProfile:(id)arg3 error:(id *)arg4;
+- (id)nextScheduledTaskDate;
+- (id)unviewedDefinitionsWithError:(id *)arg1;
 - (void)updateDefinitionsToAlert;
+- (BOOL)wantsToAlert;
 
 @end
 

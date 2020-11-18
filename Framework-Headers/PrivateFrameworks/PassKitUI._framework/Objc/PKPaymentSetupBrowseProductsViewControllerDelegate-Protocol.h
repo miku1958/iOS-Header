@@ -9,6 +9,6 @@
 @class PKPaymentSetupBrowseProductsViewController, PKPaymentSetupProduct;
 
 @protocol PKPaymentSetupBrowseProductsViewControllerDelegate <NSObject>
-- (void)browseProductsViewController:(PKPaymentSetupBrowseProductsViewController *)arg1 didSelectProduct:(PKPaymentSetupProduct *)arg2;
+- (void)browseProductsViewController:(PKPaymentSetupBrowseProductsViewController *)arg1 didSelectProduct:(PKPaymentSetupProduct *)arg2 withCompletionHandler:(void (^)(BOOL, NSError *))arg3;
 @end
 

@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, NTPBIAdConfig, NTPBPersonalizationConfig, NTPBPrefetchConfig, NTPBWidgetConfig;
+@class NSMutableArray, NSString, NTPBIAdConfig, NTPBPaidSubscriptionConfig, NTPBPersonalizationConfig, NTPBPrefetchConfig, NTPBWidgetConfig;
 
 @interface NTPBConfig : PBCodable <NSCopying>
 {
@@ -29,6 +29,10 @@
     long long _notificationEnabledChannelsRefreshFrequency;
     long long _numberOfScreenfulsScrolledToBypassWidgetTimeLimit;
     double _prerollLoadingTimeout;
+    long long _savedArticlesCutoffTime;
+    long long _savedArticlesMaximumCountCellular;
+    long long _savedArticlesMaximumCountWifi;
+    long long _savedArticlesOpenedCutoffTime;
     long long _shortReminderTime;
     long long _subscriptionsGlobalMeteredCount;
     long long _subscriptionsGracePeriodForTokenVerificationSeconds;
@@ -38,15 +42,19 @@
     long long _timeBetweenSameWidgetReinsertion;
     long long _timeBetweenWidgetInsertions;
     long long _trendingTopicsRefreshRate;
+    NTPBWidgetConfig *_alternativeButlerWidgetConfig;
     NSString *_anfEmbedConfigurationAsset;
+    NTPBWidgetConfig *_butlerWidgetConfig;
     NSMutableArray *_endpointConfigs;
     NSString *_fallbackLanguageTag;
     NSString *_forYouNonPersonalizedGroupsOrder;
     NTPBIAdConfig *_iadConfig;
     NSMutableArray *_languageConfigs;
+    NTPBPaidSubscriptionConfig *_paidSubscriptionConfig;
     NTPBPersonalizationConfig *_personalizationConfig;
     NTPBPrefetchConfig *_prefetchConfig;
     NTPBWidgetConfig *_widgetConfig;
+    BOOL _alternativeButlerWidgetConfigEnabled;
     BOOL _newsletterSubscriptionChecked;
     BOOL _universalLinksEnabled;
     struct {
@@ -67,6 +75,10 @@
         unsigned int notificationEnabledChannelsRefreshFrequency:1;
         unsigned int numberOfScreenfulsScrolledToBypassWidgetTimeLimit:1;
         unsigned int prerollLoadingTimeout:1;
+        unsigned int savedArticlesCutoffTime:1;
+        unsigned int savedArticlesMaximumCountCellular:1;
+        unsigned int savedArticlesMaximumCountWifi:1;
+        unsigned int savedArticlesOpenedCutoffTime:1;
         unsigned int shortReminderTime:1;
         unsigned int subscriptionsGlobalMeteredCount:1;
         unsigned int subscriptionsGracePeriodForTokenVerificationSeconds:1;
@@ -76,26 +88,33 @@
         unsigned int timeBetweenSameWidgetReinsertion:1;
         unsigned int timeBetweenWidgetInsertions:1;
         unsigned int trendingTopicsRefreshRate:1;
+        unsigned int alternativeButlerWidgetConfigEnabled:1;
         unsigned int newsletterSubscriptionChecked:1;
         unsigned int universalLinksEnabled:1;
     } _has;
 }
 
+@property (strong, nonatomic) NTPBWidgetConfig *alternativeButlerWidgetConfig; // @synthesize alternativeButlerWidgetConfig=_alternativeButlerWidgetConfig;
+@property (nonatomic) BOOL alternativeButlerWidgetConfigEnabled; // @synthesize alternativeButlerWidgetConfigEnabled=_alternativeButlerWidgetConfigEnabled;
 @property (strong, nonatomic) NSString *anfEmbedConfigurationAsset; // @synthesize anfEmbedConfigurationAsset=_anfEmbedConfigurationAsset;
 @property (nonatomic) long long appConfigRefreshRate; // @synthesize appConfigRefreshRate=_appConfigRefreshRate;
 @property (nonatomic) long long articleRapidUpdatesTimeout; // @synthesize articleRapidUpdatesTimeout=_articleRapidUpdatesTimeout;
 @property (nonatomic) long long autoScrollToTopFeedTimeout; // @synthesize autoScrollToTopFeedTimeout=_autoScrollToTopFeedTimeout;
 @property (nonatomic) double batchedFeedTimeout; // @synthesize batchedFeedTimeout=_batchedFeedTimeout;
+@property (strong, nonatomic) NTPBWidgetConfig *butlerWidgetConfig; // @synthesize butlerWidgetConfig=_butlerWidgetConfig;
 @property (nonatomic) long long endOfArticleMaxInaccessiblePaidArticles; // @synthesize endOfArticleMaxInaccessiblePaidArticles=_endOfArticleMaxInaccessiblePaidArticles;
 @property (nonatomic) double endOfArticleMinPaidHeadlineRatio; // @synthesize endOfArticleMinPaidHeadlineRatio=_endOfArticleMinPaidHeadlineRatio;
 @property (strong, nonatomic) NSMutableArray *endpointConfigs; // @synthesize endpointConfigs=_endpointConfigs;
 @property (strong, nonatomic) NSString *fallbackLanguageTag; // @synthesize fallbackLanguageTag=_fallbackLanguageTag;
 @property (strong, nonatomic) NSString *forYouNonPersonalizedGroupsOrder; // @synthesize forYouNonPersonalizedGroupsOrder=_forYouNonPersonalizedGroupsOrder;
+@property (readonly, nonatomic) BOOL hasAlternativeButlerWidgetConfig;
+@property (nonatomic) BOOL hasAlternativeButlerWidgetConfigEnabled;
 @property (readonly, nonatomic) BOOL hasAnfEmbedConfigurationAsset;
 @property (nonatomic) BOOL hasAppConfigRefreshRate;
 @property (nonatomic) BOOL hasArticleRapidUpdatesTimeout;
 @property (nonatomic) BOOL hasAutoScrollToTopFeedTimeout;
 @property (nonatomic) BOOL hasBatchedFeedTimeout;
+@property (readonly, nonatomic) BOOL hasButlerWidgetConfig;
 @property (nonatomic) BOOL hasEndOfArticleMaxInaccessiblePaidArticles;
 @property (nonatomic) BOOL hasEndOfArticleMinPaidHeadlineRatio;
 @property (readonly, nonatomic) BOOL hasFallbackLanguageTag;
@@ -112,9 +131,14 @@
 @property (nonatomic) BOOL hasNotificationArticleWithRapidUpdatesCacheTimeout;
 @property (nonatomic) BOOL hasNotificationEnabledChannelsRefreshFrequency;
 @property (nonatomic) BOOL hasNumberOfScreenfulsScrolledToBypassWidgetTimeLimit;
+@property (readonly, nonatomic) BOOL hasPaidSubscriptionConfig;
 @property (readonly, nonatomic) BOOL hasPersonalizationConfig;
 @property (readonly, nonatomic) BOOL hasPrefetchConfig;
 @property (nonatomic) BOOL hasPrerollLoadingTimeout;
+@property (nonatomic) BOOL hasSavedArticlesCutoffTime;
+@property (nonatomic) BOOL hasSavedArticlesMaximumCountCellular;
+@property (nonatomic) BOOL hasSavedArticlesMaximumCountWifi;
+@property (nonatomic) BOOL hasSavedArticlesOpenedCutoffTime;
 @property (nonatomic) BOOL hasShortReminderTime;
 @property (nonatomic) BOOL hasSubscriptionsGlobalMeteredCount;
 @property (nonatomic) BOOL hasSubscriptionsGracePeriodForTokenVerificationSeconds;
@@ -139,9 +163,14 @@
 @property (nonatomic) long long notificationArticleWithRapidUpdatesCacheTimeout; // @synthesize notificationArticleWithRapidUpdatesCacheTimeout=_notificationArticleWithRapidUpdatesCacheTimeout;
 @property (nonatomic) long long notificationEnabledChannelsRefreshFrequency; // @synthesize notificationEnabledChannelsRefreshFrequency=_notificationEnabledChannelsRefreshFrequency;
 @property (nonatomic) long long numberOfScreenfulsScrolledToBypassWidgetTimeLimit; // @synthesize numberOfScreenfulsScrolledToBypassWidgetTimeLimit=_numberOfScreenfulsScrolledToBypassWidgetTimeLimit;
+@property (strong, nonatomic) NTPBPaidSubscriptionConfig *paidSubscriptionConfig; // @synthesize paidSubscriptionConfig=_paidSubscriptionConfig;
 @property (strong, nonatomic) NTPBPersonalizationConfig *personalizationConfig; // @synthesize personalizationConfig=_personalizationConfig;
 @property (strong, nonatomic) NTPBPrefetchConfig *prefetchConfig; // @synthesize prefetchConfig=_prefetchConfig;
 @property (nonatomic) double prerollLoadingTimeout; // @synthesize prerollLoadingTimeout=_prerollLoadingTimeout;
+@property (nonatomic) long long savedArticlesCutoffTime; // @synthesize savedArticlesCutoffTime=_savedArticlesCutoffTime;
+@property (nonatomic) long long savedArticlesMaximumCountCellular; // @synthesize savedArticlesMaximumCountCellular=_savedArticlesMaximumCountCellular;
+@property (nonatomic) long long savedArticlesMaximumCountWifi; // @synthesize savedArticlesMaximumCountWifi=_savedArticlesMaximumCountWifi;
+@property (nonatomic) long long savedArticlesOpenedCutoffTime; // @synthesize savedArticlesOpenedCutoffTime=_savedArticlesOpenedCutoffTime;
 @property (nonatomic) long long shortReminderTime; // @synthesize shortReminderTime=_shortReminderTime;
 @property (nonatomic) long long subscriptionsGlobalMeteredCount; // @synthesize subscriptionsGlobalMeteredCount=_subscriptionsGlobalMeteredCount;
 @property (nonatomic) long long subscriptionsGracePeriodForTokenVerificationSeconds; // @synthesize subscriptionsGracePeriodForTokenVerificationSeconds=_subscriptionsGracePeriodForTokenVerificationSeconds;

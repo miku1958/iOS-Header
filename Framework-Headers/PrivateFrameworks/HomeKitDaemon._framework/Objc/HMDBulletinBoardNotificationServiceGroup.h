@@ -11,12 +11,11 @@
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDBulletinBoardNotification, HMFMessageDispatcher, NSArray, NSDictionary, NSHashTable, NSSet, NSString, NSUUID;
+@class HMDBulletinBoardNotification, HMFMessageDispatcher, NSArray, NSHashTable, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDBulletinBoardNotificationServiceGroup : NSObject <NSSecureCoding, HMFMessageReceiver, HMFLogging, HMFDumpState>
 {
-    BOOL _associationEvaluatedFirstTime;
     NSSet *_cameraProfileUUIDs;
     NSSet *_associatedServiceUUIDs;
     NSHashTable *_cameraProfilesTable;
@@ -30,11 +29,9 @@
     HMFMessageDispatcher *_msgDispatcher;
 }
 
-@property (readonly, nonatomic) NSDictionary *actionContext;
 @property (strong, nonatomic) NSSet *associatedServiceUUIDs; // @synthesize associatedServiceUUIDs=_associatedServiceUUIDs;
 @property (strong, nonatomic) NSArray *associatedServices; // @synthesize associatedServices=_associatedServices;
 @property (readonly, copy, nonatomic) NSHashTable *associatedServicesTable; // @synthesize associatedServicesTable=_associatedServicesTable;
-@property (nonatomic) BOOL associationEvaluatedFirstTime; // @synthesize associationEvaluatedFirstTime=_associationEvaluatedFirstTime;
 @property (readonly, weak, nonatomic) HMDBulletinBoardNotification *bulletinBoardNotification; // @synthesize bulletinBoardNotification=_bulletinBoardNotification;
 @property (strong, nonatomic) NSSet *cameraProfileUUIDs; // @synthesize cameraProfileUUIDs=_cameraProfileUUIDs;
 @property (strong, nonatomic) NSArray *cameraProfiles; // @synthesize cameraProfiles=_cameraProfiles;
@@ -53,7 +50,8 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_gatherServices:(BOOL)arg1;
+- (id)_cameraProfileWithID:(id)arg1;
+- (id)_gatherServices;
 - (void)_handleBulletinBoardNotificationServiceGroupRequest:(id)arg1;
 - (BOOL)_isAlarmService:(id)arg1;
 - (BOOL)_isNotificationGeneratingService:(id)arg1;
@@ -61,15 +59,15 @@
 - (id)_prepareServiceGroupPayload;
 - (void)_registerNotificationHandlers;
 - (void)_sendNotification:(id)arg1;
-- (void)_updateAssociatedService:(id)arg1 associatedCameras:(id)arg2 forceGather:(BOOL)arg3;
+- (id)_updateAssociatedService:(id)arg1 associatedCameras:(id)arg2;
 - (void)_updateAssociatedServicesTable:(id)arg1;
 - (void)_updateCameraProfilesTable:(id)arg1;
-- (void)configureBulletinBoardNotification:(id)arg1;
+- (id)actionContextForCameraProfileID:(id)arg1;
+- (void)configureBulletinNotification:(CDUnknownBlockType)arg1;
 - (void)configureMsgDispatcher:(id)arg1;
 - (void)dealloc;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
-- (void)gatherServices;
 - (id)init;
 - (id)initWithBulletinBoardNotification:(id)arg1;
 - (id)initWithCoder:(id)arg1;

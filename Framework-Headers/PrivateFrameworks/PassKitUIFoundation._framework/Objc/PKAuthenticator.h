@@ -34,6 +34,7 @@
 - (void).cxx_destruct;
 - (BOOL)_delegateSupportsPasscodePresentation;
 - (BOOL)_delegateSupportsPassphrasePresentation;
+- (void)accessExternalizedContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cancelEvaluation;
 - (void)dealloc;
 - (void)evaluatePolicy:(long long)arg1 completion:(CDUnknownBlockType)arg2;

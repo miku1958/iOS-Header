@@ -19,6 +19,7 @@
 - (void)_accessibilityZoomIn:(BOOL)arg1;
 - (BOOL)_axIsBackFacing;
 - (BOOL)_axIsFocusLocked;
+- (BOOL)_axIsPortraitMode;
 - (BOOL)_axShowingEffects;
 - (void)_showFocusAtPoint:(struct CGPoint)arg1 startAnimating:(BOOL)arg2;
 - (struct CGPoint)accessibilityActivationPoint;

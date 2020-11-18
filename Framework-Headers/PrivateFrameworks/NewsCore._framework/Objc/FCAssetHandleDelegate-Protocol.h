@@ -6,10 +6,9 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAssetHandle;
-@protocol FCOperationCanceling><FCOperationPrioritizing;
+@class FCAssetHandle, FCOperation;
 
 @protocol FCAssetHandleDelegate <NSObject>
-- (id<FCOperationCanceling><FCOperationPrioritizing>)fetchFileForAssetHandle:(FCAssetHandle *)arg1 completion:(void (^)(NSString *, BOOL, NSError *))arg2;
+- (FCOperation *)operationToFetchFileForAssetHandle:(FCAssetHandle *)arg1 completion:(void (^)(NSString *, BOOL, NSError *))arg2;
 @end
 

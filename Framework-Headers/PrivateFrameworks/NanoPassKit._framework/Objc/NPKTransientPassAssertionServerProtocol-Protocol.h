@@ -7,6 +7,7 @@
 @class NSString;
 
 @protocol NPKTransientPassAssertionServerProtocol
+- (void)setServiceModeRequested:(BOOL)arg1;
 - (void)setTransientPassUniqueID:(NSString *)arg1;
 @end
 

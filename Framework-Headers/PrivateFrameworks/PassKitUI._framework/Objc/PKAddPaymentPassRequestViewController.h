@@ -8,13 +8,14 @@
 
 #import <PassKitUI/PKPaymentSetupPrivacyFooterViewDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSObject, NSString, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKPaymentProvisioningController, PKPaymentSetupPrivacyFooterView, PKPaymentWebService, PKTableHeaderView, RemoteUIController;
+@class CLInUseAssertion, NSArray, NSObject, NSString, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKPaymentProvisioningController, PKPaymentSetupPrivacyFooterView, PKPaymentWebService, PKTableHeaderView, RemoteUIController;
 @protocol NSObject, OS_dispatch_source, PKAddPaymentPassRequestViewControllerDelegate;
 
 @interface PKAddPaymentPassRequestViewController : UITableViewController <PKPaymentSetupPrivacyFooterViewDelegate>
 {
     NSString *_title;
     NSString *_subtitle;
+    NSArray *_details;
     long long _headerState;
     id<NSObject> _notificationToken;
     PKPaymentProvisioningController *_provisioningController;

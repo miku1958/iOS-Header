@@ -14,7 +14,6 @@
 
 @interface _HMAccessoryProfile : NSObject <HMFMessageReceiver, NSSecureCoding>
 {
-    BOOL _configured;
     NSUUID *_uniqueIdentifier;
     HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_queue> *_clientQueue;
@@ -28,7 +27,6 @@
 
 @property (readonly, weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property BOOL configured; // @synthesize configured=_configured;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
@@ -46,7 +44,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_registerNotificationHandlers;
-- (void)configureWithClientQueue:(id)arg1 delegateCaller:(id)arg2 msgDispatcher:(id)arg3 home:(id)arg4;
+- (void)configureWithAccessory:(id)arg1 clientQueue:(id)arg2 delegateCaller:(id)arg3 msgDispatcher:(id)arg4 home:(id)arg5;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

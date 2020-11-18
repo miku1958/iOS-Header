@@ -38,13 +38,13 @@
 - (BOOL)hasVisibleContent;
 - (void)hideRequestsForNotificationSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
 - (id)init;
-- (void)insertNotificationRequest:(id)arg1;
-- (void)modifyNotificationRequest:(id)arg1;
+- (BOOL)insertNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
+- (BOOL)modifyNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
 - (id)notificationRequestAtIndexPath:(id)arg1;
 - (void)notificationViewController:(id)arg1 didCommitToLongLookPresentation:(BOOL)arg2 withCoordinator:(id)arg3;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)reloadRequestsWithSuppressedContent;
-- (void)removeNotificationRequest:(id)arg1;
+- (void)removeNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
 - (BOOL)shouldAddHintTextForNotificationViewController:(id)arg1;
 - (void)showRequestsForNotificationSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
 

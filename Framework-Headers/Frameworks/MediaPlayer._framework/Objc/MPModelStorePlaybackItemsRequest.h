@@ -15,15 +15,21 @@
 {
     BOOL _allowsMultipleResponseHandlerCalls;
     BOOL _wantsDetailedKeepLocalRequestableResponse;
+    BOOL _allowLocalEquivalencies;
     MPModelResponse *_previousResponse;
+    NSString *_requestingBundleIdentifier;
+    NSString *_requestingBundleVersion;
     NSArray *_storeIDs;
 }
 
+@property (nonatomic) BOOL allowLocalEquivalencies; // @synthesize allowLocalEquivalencies=_allowLocalEquivalencies;
 @property (nonatomic) BOOL allowsMultipleResponseHandlerCalls; // @synthesize allowsMultipleResponseHandlerCalls=_allowsMultipleResponseHandlerCalls;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MPModelResponse *previousResponse; // @synthesize previousResponse=_previousResponse;
+@property (copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
+@property (copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
 @property (copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL wantsDetailedKeepLocalRequestableResponse; // @synthesize wantsDetailedKeepLocalRequestableResponse=_wantsDetailedKeepLocalRequestableResponse;

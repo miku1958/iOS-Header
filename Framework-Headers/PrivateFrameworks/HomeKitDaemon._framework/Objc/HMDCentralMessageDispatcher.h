@@ -10,10 +10,10 @@
 
 @interface HMDCentralMessageDispatcher : HMFMessageDispatcher
 {
+    HMDAdminEnforcementMessageFilter *_adminMsgFilter;
     HMFMessageDispatcher *_recvDispatcher;
     NSMutableDictionary *_remoteGateways;
     HMDMessageFilterChain *_msgFilterChain;
-    HMDAdminEnforcementMessageFilter *_adminMsgFilter;
     HMFMessageDispatcher *_notificationDispatcher;
     HMDHomeManager *_homeManager;
     NSMutableArray *_relayedMessages;
@@ -32,7 +32,7 @@
 + (BOOL)isWhitelistedLocalMessage:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_checkAuthorizationForMessage:(id)arg1 errorReason:(id *)arg2;
-- (void)_handleLocalMessage:(id)arg1 targetUUID:(id)arg2 sourceIsIDS:(BOOL)arg3;
+- (void)_handleLocalMessage:(id)arg1 targetUUID:(id)arg2;
 - (void)_handleRelayedIDSMessage:(id)arg1 handledLocally:(BOOL)arg2;
 - (void)_setRemoteAccessDevice:(id)arg1 forHome:(id)arg2 sendNotification:(BOOL)arg3;
 - (void)configureHTTPTransport:(id)arg1;

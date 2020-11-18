@@ -11,6 +11,7 @@
 
 @interface SFBluetoothPairingSession : NSObject
 {
+    char _btAddrStr[32];
     BOOL _btConnecting;
     struct BTDeviceImpl *_btDevice;
     struct BTPairingAgentImpl *_btPairingAgent;

@@ -10,6 +10,8 @@
 
 @interface HAPAccessoryServerBTLE : HAPAccessoryServer
 {
+    BOOL _stateChanged;
+    BOOL _notifyingCharacteristicUpdated;
     unsigned char _connectionIdleTime;
     NSNumber *_stateNumber;
     CBPeripheral *_peripheral;
@@ -21,15 +23,17 @@
 @property (readonly, weak, nonatomic) HAPAccessoryServerBrowserBTLE *browser; // @synthesize browser=_browser;
 @property (nonatomic) unsigned char connectionIdleTime; // @synthesize connectionIdleTime=_connectionIdleTime;
 @property (readonly, nonatomic) unsigned long long hapBLEProtocolVersion; // @synthesize hapBLEProtocolVersion=_hapBLEProtocolVersion;
+@property (nonatomic) BOOL notifyingCharacteristicUpdated; // @synthesize notifyingCharacteristicUpdated=_notifyingCharacteristicUpdated;
 @property (readonly, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property (readonly, nonatomic) unsigned long long resumeSessionID; // @synthesize resumeSessionID=_resumeSessionID;
+@property (nonatomic) BOOL stateChanged; // @synthesize stateChanged=_stateChanged;
 @property (strong, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 
 + (id)hapUUIDFromBTLEUUID:(id)arg1;
 - (void).cxx_destruct;
 - (void)handleConnectionWithError:(id)arg1;
 - (void)handleDisconnectionWithError:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 category:(id)arg6 connectionIdleTime:(unsigned char)arg7 browser:(id)arg8 keyStore:(id)arg9;
+- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(BOOL)arg6 category:(id)arg7 connectionIdleTime:(unsigned char)arg8 browser:(id)arg9 keyStore:(id)arg10;
 - (long long)linkType;
 - (void)notifyDelegateUdpatedStateNumber;
 - (void)updateConnectionIdleTime:(unsigned char)arg1;

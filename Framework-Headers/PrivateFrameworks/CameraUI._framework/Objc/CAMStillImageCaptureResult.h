@@ -26,6 +26,8 @@
 @property (readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic, getter=isOriginal) BOOL original;
 @property (readonly, nonatomic, getter=isOriginalForHDR) BOOL originalForHDR;
+@property (readonly, nonatomic, getter=isOriginalForPortraitEffect) BOOL originalForPortraitEffect;
+@property (readonly, nonatomic, getter=isPortraitEffectImageWithCorrespondingOriginal) BOOL portraitEffectImageWithCorrespondingOriginal;
 @property (readonly, nonatomic, getter=isProcessedImageWithCorrespondingOriginal) BOOL processedImageWithCorrespondingOriginal;
 @property (readonly, nonatomic) struct opaqueCMSampleBuffer *stillImageFullsizeSampleBuffer; // @synthesize stillImageFullsizeSampleBuffer=_stillImageFullsizeSampleBuffer;
 

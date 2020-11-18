@@ -17,6 +17,7 @@
 - (void)extraSpaceNeededForDownloadWithoutAppPurging:(void (^)(NSNumber *, NSError *))arg1;
 - (void)installUpdate:(void (^)(BOOL, NSError *))arg1;
 - (void)isDownloading:(void (^)(BOOL, NSError *))arg1;
+- (void)isInstallationKeybagRequired:(void (^)(BOOL, NSError *))arg1;
 - (void)isScanning:(void (^)(BOOL, NSError *))arg1;
 - (void)isUpdateReadyForInstallation:(void (^)(BOOL, NSError *))arg1;
 - (void)pauseDownload:(void (^)(BOOL, NSError *))arg1;

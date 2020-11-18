@@ -48,6 +48,7 @@
 - (BOOL)isIrisVideoStabilizationSupported;
 - (BOOL)isPhotoFormat;
 - (BOOL)isSISSupported;
+- (BOOL)isShallowDepthOfFieldEffectSupported;
 - (BOOL)isVideoStabilizationModeSupported:(long long)arg1;
 - (BOOL)isWideColorSupported;
 - (CDStruct_1b6d18a9)lowestSupportedVideoFrameDuration;

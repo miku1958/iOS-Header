@@ -8,37 +8,87 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface NTPBWidgetConfig : PBCodable <NSCopying>
 {
+    double _alternativeButlerWidgetConfigPopulationCeiling;
+    double _alternativeButlerWidgetConfigPopulationFloor;
+    long long _backgroundMinimumUpdateInterval;
+    long long _forYouBackgroundMinimumUpdateInterval;
     long long _forYouCutoffTime;
+    long long _forYouForegroundMinimumUpdateInterval;
+    long long _foregroundMinimumUpdateInterval;
     double _parsecPopulationCeiling;
     double _parsecPopulationFloor;
+    long long _parsecTrendingCutoffTime;
+    long long _topStoriesBackgroundMinimumUpdateInterval;
     long long _topStoriesCutoffTime;
+    long long _topStoriesForegroundMinimumUpdateInterval;
+    long long _trendingBackgroundMinimumUpdateInterval;
     long long _trendingCutoffTime;
+    long long _trendingForegroundMinimumUpdateInterval;
     unsigned int _enabledSections;
+    NSString *_identifier;
     struct {
+        unsigned int alternativeButlerWidgetConfigPopulationCeiling:1;
+        unsigned int alternativeButlerWidgetConfigPopulationFloor:1;
+        unsigned int backgroundMinimumUpdateInterval:1;
+        unsigned int forYouBackgroundMinimumUpdateInterval:1;
         unsigned int forYouCutoffTime:1;
+        unsigned int forYouForegroundMinimumUpdateInterval:1;
+        unsigned int foregroundMinimumUpdateInterval:1;
         unsigned int parsecPopulationCeiling:1;
         unsigned int parsecPopulationFloor:1;
+        unsigned int parsecTrendingCutoffTime:1;
+        unsigned int topStoriesBackgroundMinimumUpdateInterval:1;
         unsigned int topStoriesCutoffTime:1;
+        unsigned int topStoriesForegroundMinimumUpdateInterval:1;
+        unsigned int trendingBackgroundMinimumUpdateInterval:1;
         unsigned int trendingCutoffTime:1;
+        unsigned int trendingForegroundMinimumUpdateInterval:1;
         unsigned int enabledSections:1;
     } _has;
 }
 
+@property (nonatomic) double alternativeButlerWidgetConfigPopulationCeiling; // @synthesize alternativeButlerWidgetConfigPopulationCeiling=_alternativeButlerWidgetConfigPopulationCeiling;
+@property (nonatomic) double alternativeButlerWidgetConfigPopulationFloor; // @synthesize alternativeButlerWidgetConfigPopulationFloor=_alternativeButlerWidgetConfigPopulationFloor;
+@property (nonatomic) long long backgroundMinimumUpdateInterval; // @synthesize backgroundMinimumUpdateInterval=_backgroundMinimumUpdateInterval;
 @property (nonatomic) unsigned int enabledSections; // @synthesize enabledSections=_enabledSections;
+@property (nonatomic) long long forYouBackgroundMinimumUpdateInterval; // @synthesize forYouBackgroundMinimumUpdateInterval=_forYouBackgroundMinimumUpdateInterval;
 @property (nonatomic) long long forYouCutoffTime; // @synthesize forYouCutoffTime=_forYouCutoffTime;
+@property (nonatomic) long long forYouForegroundMinimumUpdateInterval; // @synthesize forYouForegroundMinimumUpdateInterval=_forYouForegroundMinimumUpdateInterval;
+@property (nonatomic) long long foregroundMinimumUpdateInterval; // @synthesize foregroundMinimumUpdateInterval=_foregroundMinimumUpdateInterval;
+@property (nonatomic) BOOL hasAlternativeButlerWidgetConfigPopulationCeiling;
+@property (nonatomic) BOOL hasAlternativeButlerWidgetConfigPopulationFloor;
+@property (nonatomic) BOOL hasBackgroundMinimumUpdateInterval;
 @property (nonatomic) BOOL hasEnabledSections;
+@property (nonatomic) BOOL hasForYouBackgroundMinimumUpdateInterval;
 @property (nonatomic) BOOL hasForYouCutoffTime;
+@property (nonatomic) BOOL hasForYouForegroundMinimumUpdateInterval;
+@property (nonatomic) BOOL hasForegroundMinimumUpdateInterval;
+@property (readonly, nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasParsecPopulationCeiling;
 @property (nonatomic) BOOL hasParsecPopulationFloor;
+@property (nonatomic) BOOL hasParsecTrendingCutoffTime;
+@property (nonatomic) BOOL hasTopStoriesBackgroundMinimumUpdateInterval;
 @property (nonatomic) BOOL hasTopStoriesCutoffTime;
+@property (nonatomic) BOOL hasTopStoriesForegroundMinimumUpdateInterval;
+@property (nonatomic) BOOL hasTrendingBackgroundMinimumUpdateInterval;
 @property (nonatomic) BOOL hasTrendingCutoffTime;
+@property (nonatomic) BOOL hasTrendingForegroundMinimumUpdateInterval;
+@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) double parsecPopulationCeiling; // @synthesize parsecPopulationCeiling=_parsecPopulationCeiling;
 @property (nonatomic) double parsecPopulationFloor; // @synthesize parsecPopulationFloor=_parsecPopulationFloor;
+@property (nonatomic) long long parsecTrendingCutoffTime; // @synthesize parsecTrendingCutoffTime=_parsecTrendingCutoffTime;
+@property (nonatomic) long long topStoriesBackgroundMinimumUpdateInterval; // @synthesize topStoriesBackgroundMinimumUpdateInterval=_topStoriesBackgroundMinimumUpdateInterval;
 @property (nonatomic) long long topStoriesCutoffTime; // @synthesize topStoriesCutoffTime=_topStoriesCutoffTime;
+@property (nonatomic) long long topStoriesForegroundMinimumUpdateInterval; // @synthesize topStoriesForegroundMinimumUpdateInterval=_topStoriesForegroundMinimumUpdateInterval;
+@property (nonatomic) long long trendingBackgroundMinimumUpdateInterval; // @synthesize trendingBackgroundMinimumUpdateInterval=_trendingBackgroundMinimumUpdateInterval;
 @property (nonatomic) long long trendingCutoffTime; // @synthesize trendingCutoffTime=_trendingCutoffTime;
+@property (nonatomic) long long trendingForegroundMinimumUpdateInterval; // @synthesize trendingForegroundMinimumUpdateInterval=_trendingForegroundMinimumUpdateInterval;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

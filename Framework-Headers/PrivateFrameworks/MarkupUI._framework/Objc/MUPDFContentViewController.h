@@ -103,6 +103,7 @@
 - (struct CGRect)maxPageRectWithPageIndex:(unsigned long long)arg1;
 - (id)menuItems:(id)arg1 forPage:(id)arg2;
 - (id)newContentSnapshotPDFDataIncludingAdornments:(BOOL)arg1 atScale:(double)arg2 inRect:(struct CGRect)arg3 onOverlayAtPageIndex:(unsigned long long)arg4;
+- (void)pdfDocumentDidUnlock:(id)arg1;
 - (void)pdfView:(id)arg1 didAddView:(id)arg2 forPage:(id)arg3 atIndex:(unsigned long long)arg4;
 - (void)pdfView:(id)arg1 willRemoveView:(id)arg2 forPage:(id)arg3 atIndex:(unsigned long long)arg4;
 - (void)pdfViewDidChangeCurrentPage:(id)arg1;

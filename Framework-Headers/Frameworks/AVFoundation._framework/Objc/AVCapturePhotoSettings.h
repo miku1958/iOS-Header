@@ -42,6 +42,7 @@
 - (unsigned int)formatFourCC;
 - (id)init;
 - (BOOL)isAutoBravoImageFusionEnabled;
+- (BOOL)isAutoShallowDepthOfFieldEffectEnabled;
 - (BOOL)isOriginalPhotoDeliveryEnabled;
 - (BOOL)isSquareCropEnabled;
 - (BOOL)isTurboModeEnabled;
@@ -52,6 +53,7 @@
 - (struct CGSize)previewCGSize;
 - (unsigned int)previewFormatFourCC;
 - (void)setAutoBravoImageFusionEnabled:(BOOL)arg1;
+- (void)setAutoShallowDepthOfFieldEffectEnabled:(BOOL)arg1;
 - (void)setHDRMode:(long long)arg1;
 - (void)setLivePhotoContentIdentifier:(id)arg1;
 - (void)setLivePhotoContentIdentifierForOriginalPhoto:(id)arg1;

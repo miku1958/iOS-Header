@@ -7,10 +7,11 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSArray;
-@protocol PXFaceCollection;
+@protocol PXPerson;
 
 @protocol PXPeopleSuggestionManagerDataSource <NSObject>
-- (void)commitSuggestionsForFaceCollection:(id<PXFaceCollection>)arg1 withConfirmedSuggestions:(NSArray *)arg2 andRejectedSuggestions:(NSArray *)arg3;
-- (NSArray *)suggestionsForFaceCollection:(id<PXFaceCollection>)arg1 withConfirmedSuggestions:(NSArray *)arg2 andRejectedSuggestions:(NSArray *)arg3;
+- (void)cancelSuggestionForPerson:(id<PXPerson>)arg1 withToken:(long long)arg2 error:(id *)arg3;
+- (void)commitSuggestionsForPerson:(id<PXPerson>)arg1 withConfirmedSuggestions:(NSArray *)arg2 andRejectedSuggestions:(NSArray *)arg3;
+- (long long)suggestionsForPerson:(id<PXPerson>)arg1 withConfirmedSuggestions:(NSArray *)arg2 andRejectedSuggestions:(NSArray *)arg3 completion:(void (^)(NSArray *))arg4;
 @end
 

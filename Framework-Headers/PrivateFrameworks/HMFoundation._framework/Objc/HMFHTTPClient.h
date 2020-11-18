@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFNetMonitorDelegate-Protocol.h>
-#import <HMFoundation/HMFNetServiceBrowserDelegate-Protocol.h>
+#import <HMFoundation/HMFTimerDelegate-Protocol.h>
 #import <HMFoundation/NSURLSessionDelegate-Protocol.h>
+#import <HMFoundation/_HMFNetServiceMonitorDelegate-Protocol.h>
 
-@class HMFNetMonitor, HMFNetService, HMFNetServiceBrowser, NSString, NSURL, NSURLSession;
+@class HMFExponentialBackoffTimer, HMFNetMonitor, HMFNetService, NSOperationQueue, NSString, NSURL, NSURLSession, _HMFNetServiceMonitor;
 @protocol HMFHTTPClientDelegate, OS_dispatch_queue;
 
-@interface HMFHTTPClient : NSObject <HMFNetMonitorDelegate, HMFNetServiceBrowserDelegate, NSURLSessionDelegate>
+@interface HMFHTTPClient : NSObject <HMFLogging, HMFNetMonitorDelegate, _HMFNetServiceMonitorDelegate, HMFTimerDelegate, NSURLSessionDelegate>
 {
     BOOL _reachable;
     BOOL _allowAnonymousConnection;
@@ -25,47 +27,58 @@
     NSObject<OS_dispatch_queue> *_propertyQueue;
     NSURLSession *_session;
     HMFNetMonitor *_reachabilityMonitor;
-    HMFNetServiceBrowser *_netServiceBrowser;
+    NSOperationQueue *_reachabilityProbeQueue;
+    _HMFNetServiceMonitor *_netServiceMonitor;
+    HMFExponentialBackoffTimer *_delegatedPingTimer;
 }
 
 @property (nonatomic) BOOL allowAnonymousConnection; // @synthesize allowAnonymousConnection=_allowAnonymousConnection;
-@property (strong, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
+@property (readonly, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMFHTTPClientDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) HMFExponentialBackoffTimer *delegatedPingTimer; // @synthesize delegatedPingTimer=_delegatedPingTimer;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMFNetService *netService; // @synthesize netService=_netService;
-@property (readonly, nonatomic) HMFNetServiceBrowser *netServiceBrowser; // @synthesize netServiceBrowser=_netServiceBrowser;
+@property (readonly, nonatomic) _HMFNetServiceMonitor *netServiceMonitor; // @synthesize netServiceMonitor=_netServiceMonitor;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) HMFNetMonitor *reachabilityMonitor; // @synthesize reachabilityMonitor=_reachabilityMonitor;
+@property (readonly, nonatomic) NSOperationQueue *reachabilityProbeQueue; // @synthesize reachabilityProbeQueue=_reachabilityProbeQueue;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
 @property (readonly, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
 + (id)baseURLWithScheme:(id)arg1 hostAddress:(id)arg2 port:(unsigned long long)arg3;
 + (BOOL)isValidBaseURL:(id)arg1;
++ (id)logCategory;
 + (id)shortDescription;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)__initializeWithOptions:(unsigned long long)arg1;
-- (BOOL)_requestClientReachabilityPing;
+- (id)currentNetService;
+- (void)dealloc;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
 - (id)initWithBaseURL:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithNetService:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)isValid;
-- (void)netServiceBrowser:(id)arg1 didAddService:(id)arg2;
-- (void)netServiceBrowser:(id)arg1 didRemoveService:(id)arg2;
-- (void)netServiceBrowser:(id)arg1 didStopBrowsingWithError:(id)arg2;
+- (id)logIdentifier;
+- (void)monitor:(id)arg1 didUpdateNetService:(id)arg2;
+- (void)monitor:(id)arg1 didUpdateReachability:(BOOL)arg2;
 - (void)networkMonitorIsReachable:(id)arg1;
 - (void)networkMonitorIsUnreachable:(id)arg1;
 - (void)notifyDelegateOfReachabilityChange:(BOOL)arg1;
+- (BOOL)requestClientReachabilityPingWithRetry:(BOOL)arg1;
 - (void)resolveWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)sendRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)shortDescription;
+- (void)startDelegatedPingTimer;
 - (void)startReachabilityProbe;
+- (void)stopDelegatedPingTimer;
+- (void)timerDidFire:(id)arg1;
 
 @end
 

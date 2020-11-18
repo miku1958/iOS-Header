@@ -44,6 +44,7 @@
 + (id)sharedInstance;
 - (void)_connectToEventFocusService;
 - (void)_pruneSet:(id)arg1 ofDeferralsPassingTest:(CDUnknownBlockType)arg2;
+- (void)_rebuildPendingStatesByPriority;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (void)deferEventsForClientWithProperties:(id)arg1 toClientWithProperties:(id)arg2;

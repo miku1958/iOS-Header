@@ -95,6 +95,7 @@
 - (BOOL)isAdjustingFocus;
 - (BOOL)isAdjustingWhiteBalance;
 - (BOOL)isAutoFocusRangeRestrictionSupported;
+- (BOOL)isAutoShallowDepthOfFieldEffectEnabled;
 - (BOOL)isExposureModeSupported:(long long)arg1;
 - (BOOL)isExposurePointOfInterestSupported;
 - (BOOL)isEyeClosedDetectionSupported;
@@ -154,6 +155,7 @@
 - (float)saturation;
 - (void)setActiveColorSpace:(long long)arg1;
 - (void)setAutoFocusRangeRestriction:(long long)arg1;
+- (void)setAutoShallowDepthOfFieldEffectEnabled:(BOOL)arg1;
 - (void)setAutomaticallyAdjustsImageControlMode:(BOOL)arg1;
 - (void)setAutomaticallyAdjustsVideoHDREnabled:(BOOL)arg1;
 - (void)setAutomaticallyEnablesLowLightBoostWhenAvailable:(BOOL)arg1;
@@ -184,6 +186,7 @@
 - (void)setVideoZoomFactor:(double)arg1;
 - (void)setWhiteBalanceMode:(long long)arg1;
 - (void)setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (long long)shallowDepthOfFieldEffectStatus;
 - (BOOL)smileDetectionEnabled;
 - (BOOL)startUsingDevice:(id *)arg1;
 - (void)stopUsingDevice;

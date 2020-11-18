@@ -25,6 +25,8 @@
 @property (readonly, nonatomic) CAMMemoizationCache *_videoSessionPresetForVideoConfiguration; // @synthesize _videoSessionPresetForVideoConfiguration=__videoSessionPresetForVideoConfiguration;
 @property (readonly, nonatomic) AVCaptureDevice *captureDevice; // @synthesize captureDevice=_captureDevice;
 @property (readonly, nonatomic) AVCaptureDeviceInput *captureDeviceInput; // @synthesize captureDeviceInput=_captureDeviceInput;
+@property (readonly, nonatomic) AVCaptureDeviceFormat *portraitModeDeviceFormat;
+@property (readonly, nonatomic) NSString *portraitModeSessionPreset;
 @property (readonly, nonatomic) AVCaptureDeviceFormat *stillImageDeviceFormat; // @synthesize stillImageDeviceFormat=_stillImageDeviceFormat;
 @property (readonly, nonatomic) NSString *stillImageSessionPreset;
 @property (readonly, nonatomic) AVCaptureDeviceFormat *timelapseDeviceFormat;

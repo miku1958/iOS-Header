@@ -6,10 +6,13 @@
 
 #import <MediaPlayer/MPModelResponse.h>
 
-@class MPStoreLibraryPersonalizationResponse;
+#import <MediaPlayer/MPModelStoreEquivalencyMapping-Protocol.h>
 
-@interface MPModelStorePlaybackItemsResponse : MPModelResponse
+@class MPStoreLibraryPersonalizationResponse, NSMutableDictionary, NSString;
+
+@interface MPModelStorePlaybackItemsResponse : MPModelResponse <MPModelStoreEquivalencyMapping>
 {
+    NSMutableDictionary *_localAdamIDToEquivalencySourceAdamIDMap;
     BOOL _finalResponse;
     MPStoreLibraryPersonalizationResponse *_personalizationResponse;
     MPModelStorePlaybackItemsResponse *_updatedResponse;
@@ -17,12 +20,18 @@
 
 @property (readonly, nonatomic) MPStoreLibraryPersonalizationResponse *_personalizationResponse; // @synthesize _personalizationResponse;
 @property (readonly, nonatomic, getter=_updatedResponse) MPModelStorePlaybackItemsResponse *_updatedResponse; // @synthesize _updatedResponse;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFinalResponse) BOOL finalResponse; // @synthesize finalResponse=_finalResponse;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_allowsExplicitContentDidChangeNotification:(id)arg1;
 - (void)_invalidateWithUpdatedResponse:(id)arg1;
 - (void)_personalizationResponseDidInvalidateNotification:(id)arg1;
+- (void)_setEquivalencySourceStoreAdamID:(long long)arg1 forLocalStoreAdamID:(long long)arg2;
+- (id)equivalencySourceStoreAdamIDForLocalStoreAdamID:(long long)arg1;
 - (id)initWithRequest:(id)arg1 personalizationResponse:(id)arg2;
 
 @end

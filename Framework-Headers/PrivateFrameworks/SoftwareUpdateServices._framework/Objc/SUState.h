@@ -28,6 +28,7 @@
     NSString *_lastReleaseType;
     NSDictionary *_unlockCallbacks;
     _SUAutoInstallOperationModel *_lastAutoInstallOperationModel;
+    BOOL _manifestSubmitted;
 }
 
 @property (nonatomic) BOOL autodownloadNeedsOneTimeRetry; // @synthesize autodownloadNeedsOneTimeRetry=_autodownloadNeedsOneTimeRetry;
@@ -44,6 +45,7 @@
 @property (strong, nonatomic) NSString *lastReleaseType; // @synthesize lastReleaseType=_lastReleaseType;
 @property (copy, nonatomic) SUDescriptor *lastScannedDescriptor; // @synthesize lastScannedDescriptor=_lastScannedDescriptor;
 @property (strong, nonatomic) NSDate *lastScannedDescriptorTime; // @synthesize lastScannedDescriptorTime=_lastScannedDescriptorTime;
+@property (nonatomic) BOOL manifestSubmitted; // @synthesize manifestSubmitted=_manifestSubmitted;
 @property (strong, nonatomic) NSDate *scheduledAutodownloadPolicyChangeTime; // @synthesize scheduledAutodownloadPolicyChangeTime=_scheduledAutodownloadPolicyChangeTime;
 @property (strong, nonatomic) NSDate *scheduledAutodownloadWifiPeriodEndTime; // @synthesize scheduledAutodownloadWifiPeriodEndTime=_scheduledAutodownloadWifiPeriodEndTime;
 @property (strong, nonatomic) NSDate *scheduledManualDownloadWifiPeriodEndTime; // @synthesize scheduledManualDownloadWifiPeriodEndTime=_scheduledManualDownloadWifiPeriodEndTime;

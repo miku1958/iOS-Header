@@ -12,8 +12,8 @@
 @interface HMFLogCategory : NSObject
 {
     NSObject<OS_os_log> *_internal;
-    NSString *_loggingSubsystem;
     NSString *_loggingCategory;
+    NSString *_loggingSubsystem;
 }
 
 @property (readonly, nonatomic) NSObject<OS_os_log> *internal; // @synthesize internal=_internal;

@@ -8,7 +8,7 @@
 
 #import <VideoSubscriberAccount/VSApplicationControllerDelegate-Protocol.h>
 
-@class NSMutableArray, NSOperationQueue, NSString, VSAccount, VSAccountStore, VSApplicationController, VSApplicationControllerRequest, VSIdentityProvider, VSViewModel;
+@class NSMutableArray, NSOperationQueue, NSString, VSAccount, VSAccountStore, VSApplicationController, VSApplicationControllerRequest, VSIdentityProvider, VSPreferences, VSViewModel;
 @protocol OS_dispatch_source, VSIdentityProviderRequestManagerDelegate;
 
 @interface VSIdentityProviderRequestManager : NSObject <VSApplicationControllerDelegate>
@@ -25,6 +25,7 @@
     VSViewModel *_viewModel;
     VSAccount *_account;
     VSAccountStore *_accountStore;
+    VSPreferences *_preferences;
     NSObject<OS_dispatch_source> *_applicationControllerTimerSource;
     double _applicationControllerTimerLeeway;
     double _requestCompletionDelayAfterShowingUserInterface;
@@ -45,6 +46,7 @@
 @property (nonatomic) BOOL didCreateAccount; // @synthesize didCreateAccount=_didCreateAccount;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
+@property (strong, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (nonatomic) double requestCompletionDelayAfterShowingUserInterface; // @synthesize requestCompletionDelayAfterShowingUserInterface=_requestCompletionDelayAfterShowingUserInterface;
 @property (strong, nonatomic) NSMutableArray *requestContexts; // @synthesize requestContexts=_requestContexts;

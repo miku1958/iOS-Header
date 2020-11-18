@@ -48,7 +48,7 @@
 - (void)addDelegate:(id)arg1 delegateQueue:(id)arg2;
 - (void)addVideoStreamInterface:(id)arg1;
 - (void)callStreamSetupInProgress:(BOOL)arg1;
-- (void)getSnapshot;
+- (void)getSnapshot:(unsigned long long)arg1;
 - (id)initWithWorkQueue:(id)arg1 services:(id)arg2 logID:(id)arg3;
 - (id)logIdentifier;
 - (void)removeDelegate:(id)arg1;

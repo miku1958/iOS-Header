@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) double distanceInKilometers;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic) NSNumber *endDate;
+@property (readonly, nonatomic) BOOL isFirstParty;
 @property (readonly, nonatomic) NSNumber *startDate;
 @property (readonly, nonatomic) unsigned long long type;
 

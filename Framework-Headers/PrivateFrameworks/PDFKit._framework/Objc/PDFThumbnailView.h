@@ -30,6 +30,7 @@
 - (void).cxx_destruct;
 - (void)_commonInit;
 - (CDUnknownBlockType)_newIconSetterBlockForIconView:(id)arg1 andIndexPath:(id)arg2;
+- (void)_pdfDocumentWasUnlocked:(id)arg1;
 - (void)configureItem:(id)arg1 forRepresentedObject:(id)arg2 andViewIndexPath:(id)arg3 usingOptionalImage:(id)arg4;
 - (id)currentIndexPath;
 - (void)dealloc;

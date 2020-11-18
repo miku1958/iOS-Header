@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class MPMediaItem, MPMediaItemCollection, MPMediaPlaylist, MPMediaQuery, MPRadioStation, NSArray, NSData, NSNumber;
+@class MPMediaItem, MPMediaItemCollection, MPMediaPlaylist, MPMediaQuery, MPMusicPlayerQueueDescriptor, MPRadioStation, NSArray, NSData, NSNumber;
 
 @protocol MPMusicPlayerController
 
@@ -42,6 +42,7 @@
 - (void)setCurrentPlaybackTime:(NSNumber *)arg1;
 - (void)setNowPlayingItem:(MPMediaItem *)arg1;
 - (void)setPlaybackSpeed:(NSNumber *)arg1;
+- (void)setQueueWithDescriptor:(MPMusicPlayerQueueDescriptor *)arg1;
 - (void)setQueueWithGeniusMixPlaylist:(MPMediaPlaylist *)arg1;
 - (void)setQueueWithItemCollection:(MPMediaItemCollection *)arg1;
 - (void)setQueueWithQuery:(MPMediaQuery *)arg1;

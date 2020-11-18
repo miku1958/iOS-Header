@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)_showAboutPrivacy:(id)arg1;
 - (long long)_textAlignmentForRowAtIndexPath:(id)arg1;
 - (id)_titleForRowAtIndexPath:(id)arg1;
+- (void)deselectSelectedProviderAnimated:(BOOL)arg1;
 - (void)didInvalidateIntrinsicContentSizeForTableHeaderFooterView:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;

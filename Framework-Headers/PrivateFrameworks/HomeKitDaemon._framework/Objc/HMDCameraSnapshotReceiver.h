@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessory, HMDCameraSessionID, HMDSnapshotFile, HMDSnapshotRequestHandler, NSDictionary, NSString, NSUUID;
+@class HMDAccessory, HMDCameraResidentMessageHandler, HMDCameraSessionID, HMDSnapshotFile, HMDSnapshotRequestHandler, NSDictionary, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDCameraSnapshotReceiver : NSObject <HMFLogging>
@@ -21,6 +21,7 @@
     NSObject<OS_dispatch_queue> *_delegateQueue;
     HMDSnapshotFile *_snapshotFile;
     HMDSnapshotRequestHandler *_snapshotRequestHandler;
+    HMDCameraResidentMessageHandler *_residentMessageHandler;
 }
 
 @property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
@@ -29,6 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDictionary *options; // @synthesize options=_options;
+@property (readonly, nonatomic) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
 @property (readonly, nonatomic) HMDCameraSessionID *sessionID; // @synthesize sessionID=_sessionID;
 @property (strong, nonatomic) HMDSnapshotFile *snapshotFile; // @synthesize snapshotFile=_snapshotFile;
 @property (readonly, nonatomic) HMDSnapshotRequestHandler *snapshotRequestHandler; // @synthesize snapshotRequestHandler=_snapshotRequestHandler;
@@ -39,8 +41,8 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_sendConfirmationToResident:(CDUnknownBlockType)arg1;
-- (void)_sendRequestToResident:(CDUnknownBlockType)arg1;
-- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 options:(id)arg3 accessory:(id)arg4 delegateQueue:(id)arg5 uniqueIdentifier:(id)arg6 snapshotRequestHandler:(id)arg7;
+- (void)_sendRequestWithTierType:(unsigned long long)arg1 toResident:(CDUnknownBlockType)arg2;
+- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 options:(id)arg3 accessory:(id)arg4 delegateQueue:(id)arg5 uniqueIdentifier:(id)arg6 snapshotRequestHandler:(id)arg7 residentMessageHandler:(id)arg8;
 - (id)logIdentifier;
 
 @end

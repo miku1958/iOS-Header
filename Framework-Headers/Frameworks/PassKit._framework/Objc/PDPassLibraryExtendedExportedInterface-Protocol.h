@@ -22,6 +22,7 @@
 - (void)introduceDatabaseIntegrityProblem;
 - (void)isPassbookVisibleWithHandler:(void (^)(BOOL))arg1;
 - (void)isRemovingPassesOfType:(unsigned long long)arg1 handler:(void (^)(BOOL))arg2;
+- (void)issueWalletUserNotificationWithTitle:(NSString *)arg1 message:(NSString *)arg2;
 - (void)logDelayExitReasons;
 - (void)migrateDataWithHandler:(void (^)(BOOL))arg1;
 - (void)noteAccountChangedWithHandler:(void (^)(void))arg1;

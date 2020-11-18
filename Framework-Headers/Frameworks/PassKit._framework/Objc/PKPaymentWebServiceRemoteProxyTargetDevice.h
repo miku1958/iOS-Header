@@ -38,6 +38,7 @@
 - (void)getContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getProvisioningDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getRegistrationDataWithAuthToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handlePotentialExpressPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)hasPassesOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithWebService:(id)arg1 connection:(id)arg2;
@@ -52,6 +53,7 @@
 - (void)setNewAuthRandomIfNecessaryReturningPairingState:(CDUnknownBlockType)arg1;
 - (void)signData:(id)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)validateAddPreconditionsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)validateTransferPreconditionsWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

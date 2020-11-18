@@ -6,11 +6,18 @@
 
 #import <UIKit/UINavigationController.h>
 
+@protocol PUCloudPhotoWelcomeNavigationControllerDismissDelegate;
+
 __attribute__((visibility("hidden")))
 @interface PUCloudPhotoWelcomeNavigationController : UINavigationController
 {
+    id<PUCloudPhotoWelcomeNavigationControllerDismissDelegate> _dismissDelegate;
 }
 
+@property (weak, nonatomic) id<PUCloudPhotoWelcomeNavigationControllerDismissDelegate> dismissDelegate; // @synthesize dismissDelegate=_dismissDelegate;
+
+- (void).cxx_destruct;
+- (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;

@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSSet, NSString, NSURL, PKPaymentApplication;
+@class NSArray, NSSet, NSString, NSURL, PKFelicaPassProperties, PKPaymentApplication;
 
 @interface PKPaymentPass : PKPass <NSCopying, NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     BOOL _supportsSerialNumberBasedProvisioning;
     BOOL _paymentOptionSelectable;
     BOOL _cobranded;
+    BOOL _requiresTransferSerialNumberBasedProvisioning;
     NSString *_primaryAccountIdentifier;
     NSString *_primaryAccountNumberSuffix;
     NSSet *_associatedApplicationIdentifiers;
@@ -36,12 +37,14 @@
     NSString *_messagePushTopic;
     NSString *_appURLScheme;
     NSString *_localizedSuspendedReason;
+    NSArray *_availableActions;
 }
 
 @property (readonly, nonatomic) unsigned long long activationState;
 @property (copy, nonatomic) NSString *appURLScheme; // @synthesize appURLScheme=_appURLScheme;
 @property (copy, nonatomic) NSSet *associatedApplicationIdentifiers; // @synthesize associatedApplicationIdentifiers=_associatedApplicationIdentifiers;
 @property (copy, nonatomic) NSSet *associatedWebDomains; // @synthesize associatedWebDomains=_associatedWebDomains;
+@property (copy, nonatomic) NSArray *availableActions; // @synthesize availableActions=_availableActions;
 @property (copy, nonatomic) NSString *cobrandName; // @synthesize cobrandName=_cobrandName;
 @property (nonatomic, getter=isCobranded) BOOL cobranded; // @synthesize cobranded=_cobranded;
 @property (readonly, weak) NSString *deviceAccountIdentifier;
@@ -50,6 +53,7 @@
 @property (strong, nonatomic) PKPaymentApplication *devicePrimaryContactlessPaymentApplication; // @synthesize devicePrimaryContactlessPaymentApplication=_devicePrimaryContactlessPaymentApplication;
 @property (strong, nonatomic) PKPaymentApplication *devicePrimaryInAppPaymentApplication; // @synthesize devicePrimaryInAppPaymentApplication=_devicePrimaryInAppPaymentApplication;
 @property (strong, nonatomic) PKPaymentApplication *devicePrimaryPaymentApplication; // @synthesize devicePrimaryPaymentApplication=_devicePrimaryPaymentApplication;
+@property (readonly, copy, nonatomic) PKFelicaPassProperties *felicaProperties;
 @property (copy, nonatomic) NSString *localizedSuspendedReason; // @synthesize localizedSuspendedReason=_localizedSuspendedReason;
 @property (copy, nonatomic) NSString *messagePushTopic; // @synthesize messagePushTopic=_messagePushTopic;
 @property (copy, nonatomic) NSURL *messageServiceURL; // @synthesize messageServiceURL=_messageServiceURL;
@@ -58,6 +62,7 @@
 @property (copy, nonatomic) NSString *primaryAccountIdentifier; // @synthesize primaryAccountIdentifier=_primaryAccountIdentifier;
 @property (copy, nonatomic) NSString *primaryAccountNumberSuffix; // @synthesize primaryAccountNumberSuffix=_primaryAccountNumberSuffix;
 @property (readonly, nonatomic, getter=isPrivateLabel) BOOL privateLabel;
+@property (nonatomic) BOOL requiresTransferSerialNumberBasedProvisioning; // @synthesize requiresTransferSerialNumberBasedProvisioning=_requiresTransferSerialNumberBasedProvisioning;
 @property (copy, nonatomic) NSString *sanitizedPrimaryAccountNumber; // @synthesize sanitizedPrimaryAccountNumber=_sanitizedPrimaryAccountNumber;
 @property (nonatomic) BOOL supportsDPANNotifications; // @synthesize supportsDPANNotifications=_supportsDPANNotifications;
 @property (nonatomic) BOOL supportsDefaultCardSelection; // @synthesize supportsDefaultCardSelection=_supportsDefaultCardSelection;
@@ -67,12 +72,15 @@
 @property (copy, nonatomic) NSURL *transactionServiceURL; // @synthesize transactionServiceURL=_transactionServiceURL;
 
 + (unsigned long long)defaultSettings;
++ (id)displayableErrorForAction:(id)arg1 andReason:(unsigned long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (unsigned long long)_activationStateForApplicationState:(long long)arg1;
 - (id)_localizedSuspendedReasonForAID:(id)arg1;
+- (id)addValueURL;
 - (BOOL)availableForAutomaticPresentationUsingBeaconContext;
 - (BOOL)availableForAutomaticPresentationUsingVASContext;
+- (BOOL)canPerformAction:(id)arg1 unableReason:(unsigned long long *)arg2 displayableError:(id *)arg3;
 - (unsigned long long)contactlessActivationState;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)effectiveContactlessPaymentApplicationState;
@@ -81,6 +89,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 bundle:(id)arg2;
 - (BOOL)isDevicePrimaryPaymentApplicationPersonalized;
+- (id)notificationCenterTitle;
 - (id)paymentApplicationForAID:(id)arg1;
 - (id)paymentApplicationsForSecureElementIdentifiers:(id)arg1;
 - (id)primaryPaymentApplicationForSecureElementIdentifiers:(id)arg1;

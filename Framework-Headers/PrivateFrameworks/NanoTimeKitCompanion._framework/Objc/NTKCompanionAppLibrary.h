@@ -13,36 +13,40 @@
 
 @interface NTKCompanionAppLibrary : NSObject <NTKCompanionAppDelegate>
 {
-    NSMutableArray *_apps;
+    NSArray *_firstPartyApps;
+    NSMutableArray *_allApps;
+    NSMutableArray *_thirdPartyApps;
     NSHashTable *_changeObservers;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_updateProcessingQueue;
+    NSObject<OS_dispatch_queue> *_observerCallbackQueue;
     NRDevice *_device;
 }
 
-@property (readonly, nonatomic) NSArray *allApps;
-@property (strong, nonatomic) NSMutableArray *apps; // @synthesize apps=_apps;
+@property (strong, nonatomic) NSMutableArray *allApps; // @synthesize allApps=_allApps;
 @property (strong, nonatomic) NSHashTable *changeObservers; // @synthesize changeObservers=_changeObservers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NRDevice *device; // @synthesize device=_device;
+@property (strong, nonatomic) NSArray *firstPartyApps; // @synthesize firstPartyApps=_firstPartyApps;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *observerCallbackQueue; // @synthesize observerCallbackQueue=_observerCallbackQueue;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSArray *topApps;
+@property (strong, nonatomic) NSMutableArray *thirdPartyApps; // @synthesize thirdPartyApps=_thirdPartyApps;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *updateProcessingQueue; // @synthesize updateProcessingQueue=_updateProcessingQueue;
 
 + (id)sharedAppLibrary;
 - (void).cxx_destruct;
 - (void)_activeDeviceChanged;
-- (void)_appsUpdated;
 - (void)_load;
 - (void)_loadApps;
+- (void)_loadThirdPartyApps;
 - (void)_notifyAppAdded:(id)arg1;
 - (void)_notifyAppIconUpdated:(id)arg1;
 - (void)_notifyAppRemoved:(id)arg1;
 - (void)_notifyAppUpdated:(id)arg1;
-- (id)_thirdPartyApps;
+- (void)_queue_loadApps;
 - (void)addObserver:(id)arg1;
 - (void)companionAppUpdatedIcon:(id)arg1;
 - (void)companionAppWasUpdated:(id)arg1;

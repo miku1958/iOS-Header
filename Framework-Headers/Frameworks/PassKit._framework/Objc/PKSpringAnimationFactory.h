@@ -26,6 +26,7 @@
 @property (strong, nonatomic) CAMediaTimingFunction *timing; // @synthesize timing=_timing;
 @property (nonatomic) double velocity; // @synthesize velocity=_velocity;
 
++ (double)defaultDuration;
 + (id)defaultTimingFunction;
 + (id)springAnimationWithKeyPath:(id)arg1;
 + (id)springAnimationWithKeyPath:(id)arg1 velocity:(double)arg2;

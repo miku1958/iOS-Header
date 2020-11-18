@@ -15,6 +15,7 @@
     long long uniqueID;
     long long flashMode;
     long long HDRMode;
+    BOOL autoShallowDepthOfFieldEffectEnabled;
     BOOL originalPhotoDeliveryEnabled;
     BOOL autoStillImageStabilizationEnabled;
     BOOL highResolutionPhotoEnabled;

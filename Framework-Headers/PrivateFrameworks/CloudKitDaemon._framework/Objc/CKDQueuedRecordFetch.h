@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)addRequestForRecordID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)addRequestForRecordID:(id)arg1 forOperation:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)fetchOperationForItemIDs:(id)arg1;
 - (Class)operationInfoClass;
 

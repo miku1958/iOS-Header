@@ -23,6 +23,7 @@
 - (id)_fileNameForNetworkImageOnDisk:(id)arg1;
 - (id)_readManifestDataFromDevice;
 - (void)_saveManifestDataToDevice:(id)arg1;
+- (BOOL)containsPaymentCredentialType:(long long)arg1;
 - (id)description;
 - (void)downloadRemoteManifestWithCompletion:(CDUnknownBlockType)arg1;
 - (id)imageDataOnDiskForNetwork:(id)arg1;

@@ -9,13 +9,14 @@
 #import <FrontBoard/FBApplicationDataStoreRepositoryDelegate-Protocol.h>
 
 @class FBSqliteApplicationDataStoreRepository, LSApplicationWorkspace, NSString, NSURL;
-@protocol FBApplicationDataStoreRepository;
+@protocol FBApplicationDataStoreRepository, OS_dispatch_queue;
 
 @interface FBApplicationDataStoreRepositoryManager : NSObject <FBApplicationDataStoreRepositoryDelegate>
 {
     NSURL *_dataStoreURL;
     FBSqliteApplicationDataStoreRepository *_dataStore;
     LSApplicationWorkspace *_lsApplicationWorkspace;
+    NSObject<OS_dispatch_queue> *_deferredWorkQueue;
 }
 
 @property (strong, nonatomic) id<FBApplicationDataStoreRepository> dataStore; // @synthesize dataStore=_dataStore;
@@ -29,6 +30,7 @@
 - (void)_handleApplicationInstalled:(id)arg1;
 - (void)_handleApplicationsUninstalled:(id)arg1;
 - (id)_initWithDataStore:(id)arg1 lsWorkspace:(id)arg2;
+- (void)_performAfterDeferredWork:(CDUnknownBlockType)arg1;
 - (id)_safeObjectForKey:(id)arg1 forApplication:(id)arg2 ofType:(Class)arg3;
 - (void)clearExpiredUninstalledApplicationsFromStoreIfNecessary;
 - (void)dealloc;

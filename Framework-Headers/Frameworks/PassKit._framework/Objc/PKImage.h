@@ -55,6 +55,8 @@
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 scale:(double)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToImage:(id)arg1;
 - (void)preheatBitmapData;
 - (id)resizableImageByStretchingWithCapInsets:(struct PKEdgeInsets)arg1;
 - (id)resizableImageByTilingCenterPixel;

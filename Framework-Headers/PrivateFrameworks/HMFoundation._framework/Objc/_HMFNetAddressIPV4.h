@@ -13,10 +13,13 @@
 
 @property (readonly, nonatomic) struct sockaddr_in *internal; // @synthesize internal=_internal;
 
+- (unsigned long long)addressFamily;
 - (id)addressString;
 - (void)dealloc;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithSocketAddress:(const struct sockaddr *)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

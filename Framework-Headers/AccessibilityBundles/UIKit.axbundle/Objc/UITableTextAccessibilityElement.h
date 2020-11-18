@@ -25,6 +25,7 @@
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (int)_accessibilityScannerActivateBehavior;
+- (int)_accessibilityScanningBehaviorTraits;
 - (id)_accessibilityScrollStatus;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;

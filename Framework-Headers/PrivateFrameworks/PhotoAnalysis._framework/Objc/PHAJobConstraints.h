@@ -14,12 +14,14 @@
     BOOL _canRunAutomaticForegroundAnalysis;
     BOOL _canRunUserInitiatedForegroundAnalysis;
     BOOL _canUseNetwork;
+    BOOL _turboMode;
 }
 
 @property (readonly, nonatomic) BOOL canRunAutomaticBackgroundAnalysis; // @synthesize canRunAutomaticBackgroundAnalysis=_canRunAutomaticBackgroundAnalysis;
 @property (readonly, nonatomic) BOOL canRunAutomaticForegroundAnalysis; // @synthesize canRunAutomaticForegroundAnalysis=_canRunAutomaticForegroundAnalysis;
 @property (readonly, nonatomic) BOOL canRunUserInitiatedForegroundAnalysis; // @synthesize canRunUserInitiatedForegroundAnalysis=_canRunUserInitiatedForegroundAnalysis;
 @property (readonly, nonatomic) BOOL canUseNetwork; // @synthesize canUseNetwork=_canUseNetwork;
+@property (nonatomic, getter=isTurboMode) BOOL turboMode; // @synthesize turboMode=_turboMode;
 
 + (id)constraintsWithAllAllowances;
 + (id)constraintsWithNoAllowances;

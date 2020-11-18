@@ -27,7 +27,6 @@
 - (void).cxx_destruct;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)initWithCameraProfile:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 - (id)services;
 
 @end

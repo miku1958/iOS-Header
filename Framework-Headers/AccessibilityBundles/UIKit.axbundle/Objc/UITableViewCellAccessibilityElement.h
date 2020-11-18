@@ -52,6 +52,7 @@
 - (struct _NSRange)_accessibilityRangeForLineNumberAndColumn:(id)arg1;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (int)_accessibilityScannerActivateBehavior;
+- (int)_accessibilityScanningBehaviorTraits;
 - (void)_accessibilitySelect;
 - (void)_accessibilitySelectAll;
 - (struct _NSRange)_accessibilitySelectedTextRange;

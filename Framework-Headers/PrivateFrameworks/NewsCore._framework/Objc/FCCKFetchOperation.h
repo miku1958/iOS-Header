@@ -34,6 +34,7 @@
 - (id)init;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
+- (id)throttleGroup;
 - (BOOL)validateOperation;
 
 @end

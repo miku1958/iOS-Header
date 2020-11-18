@@ -9,11 +9,11 @@
 @interface HUGridCameraCellLayoutOptions : HUGridCellLayoutOptions
 {
     double _headerViewHeight;
-    double _cameraViewHeight;
+    double _cameraViewAspectRatio;
     double _headerHorizontalInnerMargins;
 }
 
-@property (nonatomic) double cameraViewHeight; // @synthesize cameraViewHeight=_cameraViewHeight;
+@property (nonatomic) double cameraViewAspectRatio; // @synthesize cameraViewAspectRatio=_cameraViewAspectRatio;
 @property (nonatomic) double headerHorizontalInnerMargins; // @synthesize headerHorizontalInnerMargins=_headerHorizontalInnerMargins;
 @property (nonatomic) double headerViewHeight; // @synthesize headerViewHeight=_headerViewHeight;
 

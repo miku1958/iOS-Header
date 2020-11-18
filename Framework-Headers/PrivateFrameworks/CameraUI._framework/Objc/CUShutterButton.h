@@ -51,6 +51,7 @@
 - (void)_performHighlightAnimation;
 - (void)_performModeSwitchAnimationFromMode:(long long)arg1 toMode:(long long)arg2 animated:(BOOL)arg3;
 - (BOOL)_shouldShowContrastBorderForMode:(long long)arg1 layoutStyle:(long long)arg2;
+- (BOOL)_shouldShowSpinningAnimations;
 - (BOOL)_shouldUseImageViewForMode:(long long)arg1;
 - (BOOL)_shouldUseTimelapseOuterViewForMode:(long long)arg1;
 - (struct CGSize)_sizeForMode:(long long)arg1;

@@ -9,12 +9,13 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDecimalNumber, NSString;
+@class NSArray, NSDecimalNumber, NSString, PKFelicaPassProperties;
 
 @interface PKPaymentApplication : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _supportsContactlessPayment;
     BOOL _supportsInAppPayment;
+    BOOL _supportsOptionalAuthentication;
     BOOL _inAppPINRequired;
     BOOL _auxiliary;
     NSString *_dpanIdentifier;
@@ -24,18 +25,26 @@
     NSString *_secureElementIdentifier;
     long long _state;
     NSString *_suspendedReason;
+    NSArray *_supportedExpressModes;
+    NSArray *_supportsExpressModes;
+    NSString *_appletCurrencyCode;
     long long _paymentNetworkIdentifier;
     NSDecimalNumber *_inAppPINRequiredAmount;
     NSString *_inAppPINRequiredCurrency;
     unsigned long long _paymentType;
     NSString *_displayName;
+    NSString *_appletDataFormat;
+    PKFelicaPassProperties *_felicaProperties;
 }
 
+@property (copy, nonatomic) NSString *appletCurrencyCode; // @synthesize appletCurrencyCode=_appletCurrencyCode;
+@property (copy, nonatomic) NSString *appletDataFormat; // @synthesize appletDataFormat=_appletDataFormat;
 @property (copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (nonatomic, getter=isAuxiliary) BOOL auxiliary; // @synthesize auxiliary=_auxiliary;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic, setter=setDPANIdentifier:) NSString *dpanIdentifier; // @synthesize dpanIdentifier=_dpanIdentifier;
 @property (copy, nonatomic, setter=setDPANSuffix:) NSString *dpanSuffix; // @synthesize dpanSuffix=_dpanSuffix;
+@property (copy, nonatomic) PKFelicaPassProperties *felicaProperties; // @synthesize felicaProperties=_felicaProperties;
 @property (nonatomic) BOOL inAppPINRequired; // @synthesize inAppPINRequired=_inAppPINRequired;
 @property (copy, nonatomic) NSDecimalNumber *inAppPINRequiredAmount; // @synthesize inAppPINRequiredAmount=_inAppPINRequiredAmount;
 @property (copy, nonatomic) NSString *inAppPINRequiredCurrency; // @synthesize inAppPINRequiredCurrency=_inAppPINRequiredCurrency;
@@ -45,14 +54,18 @@
 @property (copy, nonatomic) NSString *secureElementIdentifier; // @synthesize secureElementIdentifier=_secureElementIdentifier;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) NSString *stateAsString;
+@property (copy, nonatomic) NSArray *supportedExpressModes; // @synthesize supportedExpressModes=_supportedExpressModes;
 @property (nonatomic) BOOL supportsContactlessPayment; // @synthesize supportsContactlessPayment=_supportsContactlessPayment;
+@property (copy, nonatomic) NSArray *supportsExpressModes; // @synthesize supportsExpressModes=_supportsExpressModes;
+@property (readonly, nonatomic) BOOL supportsExpressSuica;
 @property (nonatomic) BOOL supportsInAppPayment; // @synthesize supportsInAppPayment=_supportsInAppPayment;
+@property (nonatomic) BOOL supportsOptionalAuthentication; // @synthesize supportsOptionalAuthentication=_supportsOptionalAuthentication;
 @property (copy, nonatomic) NSString *suspendedReason; // @synthesize suspendedReason=_suspendedReason;
 
 + (id)applicationWithProtobuf:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)acceptedForSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 webService:(id)arg3;
+- (BOOL)acceptedForSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3 webPayment:(BOOL)arg4 webService:(id)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

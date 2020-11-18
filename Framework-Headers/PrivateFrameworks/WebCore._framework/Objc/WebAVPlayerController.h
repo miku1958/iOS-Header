@@ -109,7 +109,6 @@ __attribute__((visibility("hidden")))
 - (void)pause:(id)arg1;
 - (void)play:(id)arg1;
 - (id)player;
-- (void)resetState;
 - (void)seekChapterBackward:(id)arg1;
 - (void)seekChapterForward:(id)arg1;
 - (void)seekToBeginning:(id)arg1;

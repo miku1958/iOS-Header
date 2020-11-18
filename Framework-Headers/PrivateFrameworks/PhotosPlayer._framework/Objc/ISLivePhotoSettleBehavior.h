@@ -15,6 +15,7 @@
 @property (weak, nonatomic) id<ISLivePhotoSettleBehaviorDelegate> delegate; // @dynamic delegate;
 
 - (void)_didFinish;
+- (long long)behaviorType;
 - (void)settle:(BOOL)arg1;
 
 @end

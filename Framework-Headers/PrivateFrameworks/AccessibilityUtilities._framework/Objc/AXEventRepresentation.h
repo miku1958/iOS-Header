@@ -97,6 +97,7 @@
 + (id)_wheelEvent:(struct __IOHIDEvent *)arg1;
 + (id)accelerometerRepresentation:(id)arg1;
 + (id)buttonRepresentationWithType:(unsigned int)arg1;
++ (id)cancelEventForPathIndexMask:(unsigned int)arg1;
 + (id)keyRepresentationWithType:(unsigned int)arg1;
 + (id)representationWithData:(id)arg1;
 + (id)representationWithEventRecord:(CDStruct_7f3c0925 *)arg1;
@@ -132,6 +133,7 @@
 - (struct __GSEvent *)newGSEventRef;
 - (struct __IOHIDEvent *)newHIDEventRef;
 - (id)normalizedEventRepresentation:(BOOL)arg1 scale:(BOOL)arg2;
+- (unsigned int)pathIndexMask;
 - (void)resetInitialTouchCountValueForHidStreamIdentifier:(id)arg1;
 
 @end

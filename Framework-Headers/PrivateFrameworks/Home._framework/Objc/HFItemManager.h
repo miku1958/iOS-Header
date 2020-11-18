@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFAccessoryObserver-Protocol.h>
+#import <Home/HFCameraObserver-Protocol.h>
 #import <Home/HFHomeManagerObserver-Protocol.h>
 #import <Home/HFHomeObserver-Protocol.h>
 #import <Home/HFResidentDeviceObserver-Protocol.h>
@@ -15,7 +16,7 @@
 @class HFItem, HMHome, NAFuture, NSArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol HFItemManagerDelegate;
 
-@interface HFItemManager : NSObject <HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFTemperatureUnitObserver>
+@interface HFItemManager : NSObject <HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFTemperatureUnitObserver>
 {
     BOOL _isRunningFastInitialUpdate;
     id<HFItemManagerDelegate> _delegate;
@@ -61,6 +62,8 @@
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_batchItemUpdateFutureWrappers:(id)arg1 removedItems:(id)arg2 batchingIntervals:(id)arg3 logger:(id)arg4;
+- (id)_cameraForCameraControl:(id)arg1;
+- (id)_cameraForCameraStream:(id)arg1;
 - (CDUnknownBlockType)_comparatorForSectionIdentifier:(id)arg1;
 - (void)_createItemProvidersWithHome:(id)arg1;
 - (id)_dependentHomeKitObjectsOfClass:(Class)arg1 inHomeKitObjects:(id)arg2;
@@ -81,6 +84,7 @@
 - (id)_itemsToUpdateForModifiedAccessories:(id)arg1;
 - (id)_itemsToUpdateForModifiedActionSets:(id)arg1;
 - (id)_itemsToUpdateForModifiedActions:(id)arg1;
+- (id)_itemsToUpdateForModifiedCameras:(id)arg1;
 - (id)_itemsToUpdateForModifiedCharacteristics:(id)arg1;
 - (id)_itemsToUpdateForModifiedEvents:(id)arg1;
 - (id)_itemsToUpdateForModifiedMetadataForHomes:(id)arg1;
@@ -143,6 +147,12 @@
 - (void)accessoryDidUpdateReachability:(id)arg1;
 - (void)accessoryDidUpdateServices:(id)arg1;
 - (void)beginSuppressingUpdatesForCharacteristics:(id)arg1 withReason:(id)arg2;
+- (void)cameraSnapshotControl:(id)arg1 didTakeSnapshot:(id)arg2 error:(id)arg3;
+- (void)cameraSnapshotControlDidUpdateMostRecentSnapshot:(id)arg1;
+- (void)cameraStream:(id)arg1 didUpdateAudioStreamSettingWithError:(id)arg2;
+- (void)cameraStreamControl:(id)arg1 didStopStreamWithError:(id)arg2;
+- (void)cameraStreamControlDidStartStream:(id)arg1;
+- (void)cameraStreamControlDidUpdateStreamState:(id)arg1;
 - (void)dealloc;
 - (void)disableExternalUpdatesWithReason:(id)arg1;
 - (id)displayedItemAtIndexPath:(id)arg1;

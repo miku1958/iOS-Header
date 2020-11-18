@@ -10,7 +10,7 @@
 #import <CameraUI/CAMCaptureService-Protocol.h>
 
 @class AVCaptureVideoPreviewLayer, CAMBurstController, CAMCaptureEngine, CAMCaptureRequestIntervalometer, CAMKeyValueCoalescer, CAMLocationController, CAMMotionController, CAMPanoramaCaptureRequest, CAMPanoramaPreviewView, CAMPowerController, CAMProtectionController, CAMRemoteShutterController, CAMThumbnailGenerator, CAMVideoCaptureRequest, NSCountedSet, NSMutableSet, NSString;
-@protocol CAMAvailabilityDelegate, CAMBurstDelegate, CAMCaptureInterruptionDelegate, CAMCaptureRecoveryDelegate, CAMCaptureResultDelegate, CAMCaptureRunningDelegate, CAMConfigurationDelegate, CAMExposureDelegate, CAMFacesDelegate, CAMFocusDelegate, CAMPanoramaConfigurationDelegate, CAMStillImageCapturingVideoDelegate, CAMSuggestionDelegate, CAMZoomDelegate, OS_dispatch_queue;
+@protocol CAMAvailabilityDelegate, CAMBurstDelegate, CAMCaptureInterruptionDelegate, CAMCaptureRecoveryDelegate, CAMCaptureResultDelegate, CAMCaptureRunningDelegate, CAMConfigurationDelegate, CAMExposureDelegate, CAMFacesDelegate, CAMFocusDelegate, CAMPanoramaConfigurationDelegate, CAMShallowDepthOfFieldStatusDelegate, CAMStillImageCapturingVideoDelegate, CAMSuggestionDelegate, CAMZoomDelegate, OS_dispatch_queue;
 
 @interface CUCaptureController : NSObject <CAMCaptureService, CAMCaptureRequestIntervalometerDelegate>
 {
@@ -38,6 +38,7 @@
     id<CAMAvailabilityDelegate> _availabilityDelegate;
     id<CAMFocusDelegate> _focusDelegate;
     id<CAMExposureDelegate> _exposureDelegate;
+    id<CAMShallowDepthOfFieldStatusDelegate> _shallowDepthOfFieldStatusDelegate;
     id<CAMFacesDelegate> _facesDelgate;
     id<CAMCaptureResultDelegate> _resultDelegate;
     id<CAMZoomDelegate> _zoomDelegate;
@@ -117,6 +118,7 @@
 @property (weak, nonatomic) id<CAMCaptureRecoveryDelegate> recoveryDelegate; // @synthesize recoveryDelegate=_recoveryDelegate;
 @property (weak, nonatomic) id<CAMCaptureResultDelegate> resultDelegate; // @synthesize resultDelegate=_resultDelegate;
 @property (weak, nonatomic) id<CAMCaptureRunningDelegate> runningDelegate; // @synthesize runningDelegate=_runningDelegate;
+@property (weak, nonatomic) id<CAMShallowDepthOfFieldStatusDelegate> shallowDepthOfFieldStatusDelegate; // @synthesize shallowDepthOfFieldStatusDelegate=_shallowDepthOfFieldStatusDelegate;
 @property (readonly, nonatomic) BOOL shouldAllowUserToChangeFocusAndExposure;
 @property (readonly, nonatomic) BOOL shouldShowLivePhotoIndicator;
 @property (weak, nonatomic) id<CAMStillImageCapturingVideoDelegate> stillImageCapturingVideoDelegate; // @synthesize stillImageCapturingVideoDelegate=_stillImageCapturingVideoDelegate;
@@ -165,8 +167,11 @@
 - (void)_setupExposureMonitoring;
 - (void)_setupFocusAndExposureMonitoring;
 - (void)_setupFocusMonitoring;
+- (void)_setupShallowDepthOfFieldMonitoring;
 - (void)_setupSuggestionMonitoring;
 - (void)_setupZoomMonitoring;
+- (void)_shallowDepthOfFieldMonitoringChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
+- (id)_shallowDepthOfFieldMonitoringKeyPaths;
 - (void)_startShowingLivePhotoIndicatorForStillImageRequest:(id)arg1;
 - (void)_stopShowingLivePhotoIndicatorForStillImageRequest:(id)arg1;
 - (void)_subjectAreaDidChange:(id)arg1;
@@ -174,6 +179,7 @@
 - (void)_suggestionResultChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
 - (void)_teardownAvailabilityMonitoring;
 - (void)_teardownFocusAndExposureMonitoring;
+- (void)_teardownShallowDepthOfFieldMonitoring;
 - (void)_teardownSuggestionMonitoring;
 - (void)_teardownZoomMonitoring;
 - (id)_thumbnailImageFromStillImageCaptureResult:(id)arg1 imageOrientation:(long long)arg2;
@@ -187,7 +193,7 @@
 - (id)_updateFocusAndExposureForStartPanorama;
 - (void)_updateMaximumNumberOfStillImageRequestsAfterBurst;
 - (void)_updateMaximumNumberOfStillImageRequestsAfterCapturedRequestIfNecessary:(id)arg1;
-- (void)_updateMaximumNumberOfStillImageRequestsAfterEnqueuingRequestWithFlashMode:(long long)arg1 HDRMode:(long long)arg2 burstIdentifier:(id)arg3;
+- (void)_updateMaximumNumberOfStillImageRequestsAfterEnqueuingRequestWithFlashMode:(long long)arg1 HDRMode:(long long)arg2 burstIdentifier:(id)arg3 wantsPortraitEffect:(BOOL)arg4;
 - (BOOL)_useSmoothFocus;
 - (id)_zoomMonitoringKeyPaths;
 - (void)_zoomResultChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
@@ -210,7 +216,7 @@
 - (void)changeToVideoRecordingCaptureOrientation:(long long)arg1;
 - (void)changeToVideoZoomFactor:(double)arg1;
 - (void)dealloc;
-- (void)focusAndExposeAtPoint:(struct CGPoint)arg1 resetExposureTargetBias:(BOOL)arg2;
+- (void)focusAndExposeAtPoint:(struct CGPoint)arg1 lockFocus:(BOOL)arg2 resetExposureTargetBias:(BOOL)arg3;
 - (void)focusAtCenterForVideoRecording;
 - (void)forceDisableSubjectAreaChangeMonitoring;
 - (void)handleSessionDidStartRunning;

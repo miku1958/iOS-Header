@@ -27,6 +27,8 @@
 + (id)javaScriptAlertDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)javaScriptConfirmDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)javaScriptPromptDialogWithMessage:(id)arg1 defaultText:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)mailNavigationDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (id)telephonyNavigationDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)finishWithPrimaryAction:(BOOL)arg1 text:(id)arg2;

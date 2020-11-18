@@ -13,6 +13,7 @@
 {
     BOOL _animated;
     BOOL _postPayment;
+    BOOL _persistentCardEmulation;
     BOOL _wasAutomaticallySelected;
     NSArray *_additionalPassUniqueIdentifiers;
     id<NSCopying> _userInfo;
@@ -20,6 +21,7 @@
 
 @property (copy, nonatomic) NSArray *additionalPassUniqueIdentifiers; // @synthesize additionalPassUniqueIdentifiers=_additionalPassUniqueIdentifiers;
 @property (nonatomic) BOOL animated; // @synthesize animated=_animated;
+@property (nonatomic, getter=wantsPersistentCardEmulation) BOOL persistentCardEmulation; // @synthesize persistentCardEmulation=_persistentCardEmulation;
 @property (nonatomic, getter=isPostPayment) BOOL postPayment; // @synthesize postPayment=_postPayment;
 @property (copy, nonatomic) id<NSCopying> userInfo; // @synthesize userInfo=_userInfo;
 @property (nonatomic) BOOL wasAutomaticallySelected; // @synthesize wasAutomaticallySelected=_wasAutomaticallySelected;

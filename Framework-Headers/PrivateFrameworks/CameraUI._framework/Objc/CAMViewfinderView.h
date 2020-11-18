@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CAMBottomBar, CAMBurstIndicatorView, CAMDisabledModeOverlayView, CAMElapsedTimeView, CAMFlashBadge, CAMFlipButton, CAMFocusLockBadge, CAMFramerateIndicatorView, CAMHDRBadge, CAMLivePhotoBadge, CAMPanoramaView, CAMPreviewContainerMaskingView, CAMPreviewContainerView, CAMPreviewView, CAMShutterIndicatorView, CAMTimerIndicatorView, CAMTopBar, CAMViewfinderFlipTransition, CAMViewfinderOpenAndCloseTransition, CAMZoomControl, CAMZoomSlider, CUShutterButton;
+@class CAMBottomBar, CAMBurstIndicatorView, CAMDisabledModeOverlayView, CAMElapsedTimeView, CAMFlashBadge, CAMFlipButton, CAMFocusLockBadge, CAMFramerateIndicatorView, CAMHDRBadge, CAMLivePhotoBadge, CAMPanoramaView, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPreviewContainerMaskingView, CAMPreviewContainerView, CAMPreviewView, CAMShallowDepthOfFieldBadge, CAMShutterIndicatorView, CAMTimerIndicatorView, CAMTopBar, CAMViewfinderFlipTransition, CAMViewfinderOpenAndCloseTransition, CAMZoomControl, CAMZoomSlider, CUShutterButton;
 @protocol CAMControlVisibilityDelegate;
 
 @interface CAMViewfinderView : UIView
@@ -23,6 +23,9 @@
     CAMHDRBadge *_HDRBadge;
     CAMFocusLockBadge *_focusAndExposureLockBadge;
     CAMLivePhotoBadge *_livePhotoBadge;
+    CAMShallowDepthOfFieldBadge *_shallowDepthOfFieldBadge;
+    CAMPortraitModeInstructionLabel *_portraitModeInstructionLabel;
+    CAMPortraitModeDescriptionOverlayView *_portraitModeDescriptionOverlayView;
     CAMShutterIndicatorView *_shutterIndicatorView;
     CAMElapsedTimeView *_elapsedTimeView;
     CAMFramerateIndicatorView *_framerateIndicatorView;
@@ -62,8 +65,11 @@
 @property (nonatomic) long long maskingAspectRatio; // @synthesize maskingAspectRatio=_maskingAspectRatio;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (strong, nonatomic) CAMPanoramaView *panoramaView; // @synthesize panoramaView=_panoramaView;
+@property (strong, nonatomic) CAMPortraitModeDescriptionOverlayView *portraitModeDescriptionOverlayView; // @synthesize portraitModeDescriptionOverlayView=_portraitModeDescriptionOverlayView;
+@property (strong, nonatomic) CAMPortraitModeInstructionLabel *portraitModeInstructionLabel; // @synthesize portraitModeInstructionLabel=_portraitModeInstructionLabel;
 @property (strong, nonatomic) CAMPreviewView *previewView; // @synthesize previewView=_previewView;
 @property (nonatomic) long long previewViewOrientation; // @synthesize previewViewOrientation=_previewViewOrientation;
+@property (strong, nonatomic) CAMShallowDepthOfFieldBadge *shallowDepthOfFieldBadge; // @synthesize shallowDepthOfFieldBadge=_shallowDepthOfFieldBadge;
 @property (strong, nonatomic) CUShutterButton *shutterButton; // @synthesize shutterButton=_shutterButton;
 @property (strong, nonatomic) CAMShutterIndicatorView *shutterIndicatorView; // @synthesize shutterIndicatorView=_shutterIndicatorView;
 @property (strong, nonatomic) CAMTimerIndicatorView *timerIndicatorView; // @synthesize timerIndicatorView=_timerIndicatorView;
@@ -85,12 +91,13 @@
 - (BOOL)_isAdjustingTopBarOrientationForLayoutStyle:(long long)arg1;
 - (void)_layoutBadgeForTinyLayoutStyle:(id)arg1;
 - (void)_layoutBadgesForLayoutStyle:(long long)arg1;
-- (void)_layoutBottomCenteredView:(id)arg1 forLayoutStyle:(long long)arg2;
+- (void)_layoutBottomCenteredView:(id)arg1 aboveView:(id)arg2 aboveViewSpacing:(double)arg3 forLayoutStyle:(long long)arg4;
 - (void)_layoutBurstIndicatorForLayoutStyle:(long long)arg1;
 - (void)_layoutElapsedTimeViewForLayoutStyle:(long long)arg1;
 - (void)_layoutFlipButtonForLayoutStyle:(long long)arg1;
 - (void)_layoutFramerateIndicatorViewForLayoutStyle:(long long)arg1;
 - (void)_layoutPanoramaViewForLayoutStyle:(long long)arg1;
+- (void)_layoutPortraitModeDescriptionOverlayView;
 - (void)_layoutShutterButtonForLayoutStyle:(long long)arg1;
 - (void)_layoutShutterIndicatorForLayoutStyle:(long long)arg1;
 - (void)_layoutSnapshotsOfPreviewView;

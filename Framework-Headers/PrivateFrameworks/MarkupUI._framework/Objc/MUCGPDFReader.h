@@ -23,7 +23,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSArray *replacedAnnotationMaps;
 
 - (void).cxx_destruct;
+- (void)_loadDocument;
 - (void)dealloc;
+- (void)documentDidUnlock;
 - (BOOL)hasReadAnnotationsFromPageAtIndex:(unsigned long long)arg1;
 - (id)initWithDocument:(struct CGPDFDocument *)arg1 annotationController:(id)arg2;
 - (void)readAnnotationsFromPageAtIndex:(unsigned long long)arg1;

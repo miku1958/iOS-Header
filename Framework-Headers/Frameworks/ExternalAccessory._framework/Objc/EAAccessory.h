@@ -52,6 +52,7 @@
 - (BOOL)containsSameProtocolsAsiAPAccessoryProtocols:(id)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)dictionaryWithLowercaseKeys:(id)arg1;
 - (unsigned int)eqIndex;
 - (id)eqNames;
 - (BOOL)getEphemerisExpirationInterval:(double *)arg1;

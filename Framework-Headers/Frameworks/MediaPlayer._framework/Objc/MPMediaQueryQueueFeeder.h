@@ -9,7 +9,7 @@
 #import <MediaPlayer/MPAVRoutingControllerDelegate-Protocol.h>
 #import <MediaPlayer/MPShuffleControllerDataSource-Protocol.h>
 
-@class MPMediaItem, MPMediaLibraryConnectionAssertion, MPMediaQuery, MPMutableBidirectionalDictionary, MPShuffleController, NSArray, NSString;
+@class MPMediaItem, MPMediaLibraryConnectionAssertion, MPMediaQuery, MPMutableBidirectionalDictionary, MPShuffleController, NSArray, NSDictionary, NSString;
 
 @interface MPMediaQueryQueueFeeder : MPQueueFeeder <MPAVRoutingControllerDelegate, MPShuffleControllerDataSource>
 {
@@ -22,6 +22,10 @@
     vector_c1c297d2 _itemPIDs;
     MPMutableBidirectionalDictionary *_indexToIdentifierCache;
     unsigned long long _currentInvalidationRevision;
+    NSDictionary *_startTimeModifications;
+    NSDictionary *_endTimeModifications;
+    NSString *_requestingBundleIdentifier;
+    NSString *_requestingBundleVersion;
     BOOL _isPlaylistQueueFeeder;
     MPMediaItem *_cloudDialogAllowedMediaItem;
 }
@@ -40,6 +44,7 @@
 - (void).cxx_destruct;
 - (void)_allowsHighQualityMusicStreamingOnCellularDidChangeNotification:(id)arg1;
 - (void)_commonInit;
+- (void)_configureStoreAVItem:(id)arg1;
 - (id)_currentEmptyQueueError;
 - (void)_handleMediaLibraryDidChange;
 - (id)_identifierAtIndex:(unsigned long long)arg1;
@@ -51,6 +56,7 @@
 - (unsigned long long)_playbackIndexByApplyShuffleType:(long long)arg1 withStartIndex:(unsigned long long)arg2 startIndexMediaItem:(id)arg3 shouldKeepConsistentQueueOrder:(BOOL)arg4;
 - (void)_reloadQueryItems;
 - (void)_verifyQueueInvalidationCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)applyVolumeNormalizationForItem:(id)arg1;
 - (id)audioSessionModeForItemAtIndex:(unsigned long long)arg1;
 - (id)copyRawItemAtIndex:(unsigned long long)arg1;
 - (void)dealloc;

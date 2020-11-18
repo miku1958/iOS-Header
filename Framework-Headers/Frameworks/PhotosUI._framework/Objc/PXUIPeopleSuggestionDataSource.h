@@ -8,23 +8,24 @@
 
 #import <PhotosUICore/PXPeopleSuggestionManagerDataSource-Protocol.h>
 
-@class NSArray, NSString;
+@class NSMutableSet, NSString;
 
 @interface PXUIPeopleSuggestionDataSource : NSObject <PXPeopleSuggestionManagerDataSource>
 {
-    NSArray *_cachedSuggestions;
+    NSMutableSet *_cancelledTokens;
 }
 
-@property (strong) NSArray *cachedSuggestions; // @synthesize cachedSuggestions=_cachedSuggestions;
+@property (strong, nonatomic) NSMutableSet *cancelledTokens; // @synthesize cancelledTokens=_cancelledTokens;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)commitSuggestionsForFaceCollection:(id)arg1 withConfirmedSuggestions:(id)arg2 andRejectedSuggestions:(id)arg3;
-- (id)initWithInitialSuggestions:(id)arg1;
-- (id)suggestionsForFaceCollection:(id)arg1 withConfirmedSuggestions:(id)arg2 andRejectedSuggestions:(id)arg3;
+- (void)cancelSuggestionForPerson:(id)arg1 withToken:(long long)arg2 error:(id *)arg3;
+- (void)commitSuggestionsForPerson:(id)arg1 withConfirmedSuggestions:(id)arg2 andRejectedSuggestions:(id)arg3;
+- (id)init;
+- (long long)suggestionsForPerson:(id)arg1 withConfirmedSuggestions:(id)arg2 andRejectedSuggestions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

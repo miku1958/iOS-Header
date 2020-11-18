@@ -6,13 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSDate, NSTimer, WAForecastModel, WATodayModel, WATodayPadView;
+#import <Weather/WATodayModelObserver-Protocol.h>
+
+@class NSDate, NSString, NSTimer, WAForecastModel, WATodayModel, WATodayPadView;
 @protocol WAWidgetDelegate;
 
-@interface WALockscreenWidgetViewController : UIViewController
+@interface WALockscreenWidgetViewController : UIViewController <WATodayModelObserver>
 {
     BOOL _locationServicesActive;
-    BOOL _updateIsInProgress;
     WATodayPadView *_todayView;
     double _updateInterval;
     id<WAWidgetDelegate> _delegate;
@@ -23,13 +24,16 @@
 }
 
 @property (copy, nonatomic) WAForecastModel *currentForecastModel; // @synthesize currentForecastModel=_currentForecastModel;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WAWidgetDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL locationServicesActive; // @synthesize locationServicesActive=_locationServicesActive;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) WATodayModel *todayModel; // @synthesize todayModel=_todayModel;
 @property (strong, nonatomic) WATodayPadView *todayView; // @synthesize todayView=_todayView;
 @property (readonly, nonatomic) BOOL todayViewIsVisible;
 @property (nonatomic) double updateInterval; // @synthesize updateInterval=_updateInterval;
-@property (nonatomic) BOOL updateIsInProgress; // @synthesize updateIsInProgress=_updateIsInProgress;
 @property (copy, nonatomic) NSDate *updateLastCompletionDate; // @synthesize updateLastCompletionDate=_updateLastCompletionDate;
 @property (strong, nonatomic) NSTimer *updateTimer; // @synthesize updateTimer=_updateTimer;
 
@@ -42,7 +46,6 @@
 - (void)_delegateUpdateDidFailWithError:(id)arg1;
 - (void)_delegateWillUpdate;
 - (id)_locationName;
-- (void)_modelWantsUpdate:(id)arg1;
 - (void)_scheduleNewTimer;
 - (void)_setTodayViewHidden:(BOOL)arg1;
 - (void)_setupWeatherModel;
@@ -56,6 +59,8 @@
 - (BOOL)locationServicesAreAuthorized;
 - (BOOL)locationServicesAreForbidden;
 - (BOOL)shouldFakeWeather;
+- (void)todayModel:(id)arg1 forecastWasUpdated:(id)arg2;
+- (void)todayModelWantsUpdate:(id)arg1;
 - (void)updateForChangedSettings:(id)arg1;
 - (void)updateWeather;
 - (void)viewDidAppear:(BOOL)arg1;

@@ -12,18 +12,22 @@
 
 @interface HMDSnapshotFile : NSObject <HMFLogging>
 {
+    BOOL _externalFilePath;
     NSString *_directory;
     NSString *_filePath;
     NSDate *_snapshotTimestamp;
     NSNumber *_slotIdentifier;
+    NSNumber *_aspectRatio;
     CAContext *_snapshotContext;
     HAPOSTransaction *_createSlotIdentifierTransaction;
 }
 
+@property (readonly, nonatomic) NSNumber *aspectRatio; // @synthesize aspectRatio=_aspectRatio;
 @property (strong, nonatomic) HAPOSTransaction *createSlotIdentifierTransaction; // @synthesize createSlotIdentifierTransaction=_createSlotIdentifierTransaction;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *directory; // @synthesize directory=_directory;
+@property (readonly, nonatomic) BOOL externalFilePath; // @synthesize externalFilePath=_externalFilePath;
 @property (readonly, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
@@ -36,12 +40,14 @@
 - (id)copyFileAtPath:(id)arg1 snapshotTimestamp:(id)arg2;
 - (struct CGImage *)createSnapshotCGImageRef:(id)arg1;
 - (void)dealloc;
-- (id)initWithFilePath:(id)arg1 snapshotTimestamp:(id)arg2;
 - (id)initWithImageDirectory:(id)arg1;
-- (id)initWithImageDirectory:(id)arg1 data:(id)arg2;
+- (id)initWithImageDirectory:(id)arg1 externalFilePath:(id)arg2 snapshotTimestamp:(id)arg3;
+- (id)initWithImageDirectory:(id)arg1 filePath:(id)arg2 snapshotTimestamp:(id)arg3;
+- (id)initWithImageDirectory:(id)arg1 snapshotData:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
-- (void)setFileData:(id)arg1 snapshotTimestamp:(id)arg2;
+- (BOOL)prepareParametersWithFilePath:(id)arg1 snapshotData:(id)arg2 directory:(id)arg3 snapshotTimestamp:(id)arg4 resize:(BOOL)arg5 writeBack:(BOOL)arg6;
+- (id)setFileData:(id)arg1 snapshotTimestamp:(id)arg2;
 - (void)updateSlotIdentifierWithContext:(id)arg1;
 
 @end

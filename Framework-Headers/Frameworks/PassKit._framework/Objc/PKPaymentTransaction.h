@@ -8,12 +8,14 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class CLLocation, NSDate, NSDecimalNumber, NSString, PKMerchant;
+@class CLLocation, NSData, NSDate, NSDecimalNumber, NSString, PKMerchant;
 
 @interface PKPaymentTransaction : NSObject <NSSecureCoding>
 {
+    BOOL _enRoute;
     BOOL _processedForLocation;
     BOOL _processedForMerchantCleanup;
+    BOOL _processedForStations;
     BOOL _hasAssociatedPaymentApplication;
     BOOL _hasNotificationServiceData;
     NSString *_identifier;
@@ -31,6 +33,13 @@
     double _locationAltitude;
     double _locationHorizontalAccuracy;
     double _locationVerticalAccuracy;
+    long long _transitType;
+    unsigned long long _transitModifiers;
+    NSString *_stationCodeProvider;
+    NSData *_startStationCode;
+    NSString *_startStation;
+    NSData *_endStationCode;
+    NSString *_endStation;
     long long _transactionStatus;
     long long _transactionType;
     long long _technologyType;
@@ -41,6 +50,9 @@
 @property (copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
 @property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property (readonly, weak, nonatomic) NSString *displayLocation;
+@property (nonatomic) BOOL enRoute; // @synthesize enRoute=_enRoute;
+@property (copy, nonatomic) NSString *endStation; // @synthesize endStation=_endStation;
+@property (copy, nonatomic) NSData *endStationCode; // @synthesize endStationCode=_endStationCode;
 @property (nonatomic) BOOL hasAssociatedPaymentApplication; // @synthesize hasAssociatedPaymentApplication=_hasAssociatedPaymentApplication;
 @property (readonly, nonatomic) BOOL hasBackingData;
 @property (nonatomic) BOOL hasNotificationServiceData; // @synthesize hasNotificationServiceData=_hasNotificationServiceData;
@@ -57,13 +69,19 @@
 @property (strong, nonatomic) PKMerchant *merchant; // @synthesize merchant=_merchant;
 @property (nonatomic) BOOL processedForLocation; // @synthesize processedForLocation=_processedForLocation;
 @property (nonatomic) BOOL processedForMerchantCleanup; // @synthesize processedForMerchantCleanup=_processedForMerchantCleanup;
+@property (nonatomic) BOOL processedForStations; // @synthesize processedForStations=_processedForStations;
 @property (copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
+@property (copy, nonatomic) NSString *startStation; // @synthesize startStation=_startStation;
+@property (copy, nonatomic) NSData *startStationCode; // @synthesize startStationCode=_startStationCode;
+@property (copy, nonatomic) NSString *stationCodeProvider; // @synthesize stationCodeProvider=_stationCodeProvider;
 @property (nonatomic) long long technologyType; // @synthesize technologyType=_technologyType;
 @property (copy, nonatomic) NSDate *transactionDate; // @synthesize transactionDate=_transactionDate;
 @property (copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
 @property (nonatomic) unsigned long long transactionSource; // @synthesize transactionSource=_transactionSource;
 @property (nonatomic) long long transactionStatus; // @synthesize transactionStatus=_transactionStatus;
 @property (nonatomic) long long transactionType; // @synthesize transactionType=_transactionType;
+@property (nonatomic) unsigned long long transitModifiers; // @synthesize transitModifiers=_transitModifiers;
+@property (nonatomic) long long transitType; // @synthesize transitType=_transitType;
 
 + (id)paymentTransactionFromSource:(unsigned long long)arg1;
 + (id)paymentTransactionWithSource:(unsigned long long)arg1;

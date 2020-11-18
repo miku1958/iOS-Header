@@ -99,6 +99,7 @@
 
 + (struct UIEdgeInsets)_defaultBaseContentInsetsForFrame:(struct CGRect)arg1 inView:(id)arg2;
 + (BOOL)_preventsAppearanceProxyCustomization;
++ (BOOL)_shouldPostPresentationControllerNotifications;
 - (void).cxx_destruct;
 - (CDStruct_d58201db)__sizeClassPair;
 - (id)_activePresentationController;

@@ -6,7 +6,7 @@
 
 #import <SAObjects/SADomainObject.h>
 
-@class NSArray, NSDate, NSNumber, NSString, SASportsEntity, SAUIAppPunchOut;
+@class NSArray, NSDate, NSNumber, NSString, SALCMLiveTuneInButton, SASportsEntity, SAUIAppPunchOut;
 
 @interface SASportsMatchup : SADomainObject
 {
@@ -27,6 +27,7 @@
 @property (copy, nonatomic) NSString *homeTeamRecordSummary;
 @property (copy, nonatomic) NSNumber *isExplicitlyEndOfPeriod;
 @property (copy, nonatomic) NSString *line;
+@property (strong, nonatomic) SALCMLiveTuneInButton *liveTuneInButton;
 @property (copy, nonatomic) NSString *location;
 @property (copy, nonatomic) NSString *locationName;
 @property (copy, nonatomic) NSString *matchupOrder;

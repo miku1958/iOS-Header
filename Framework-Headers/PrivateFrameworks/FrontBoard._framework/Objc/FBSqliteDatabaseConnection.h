@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSCache;
+@class NSCache, NSHashTable;
 @protocol OS_dispatch_queue;
 
 @interface FBSqliteDatabaseConnection : NSObject
@@ -14,10 +14,14 @@
     NSObject<OS_dispatch_queue> *_queue;
     struct sqlite3 *_queue_dbConnection;
     NSCache *_queue_queryCache;
+    NSHashTable *_queue_observers;
 }
 
 + (int)_sqliteOpenFlagsForDataProtectionClass:(unsigned long long)arg1;
 - (id)_initWithSqlitePath:(id)arg1 dataProtectionClass:(unsigned long long)arg2;
+- (void)_queue_close;
+- (void)addObserver:(id)arg1;
+- (void)close;
 - (void)dealloc;
 - (id)initWithInMemoryDatabase;
 - (id)initWithURL:(id)arg1;
@@ -26,6 +30,7 @@
 - (void)performSyncWithDatabase:(CDUnknownBlockType)arg1;
 - (void)performWithDatabase:(CDUnknownBlockType)arg1;
 - (id)prepareStatement:(id)arg1;
+- (void)removeObserver:(id)arg1;
 
 @end
 

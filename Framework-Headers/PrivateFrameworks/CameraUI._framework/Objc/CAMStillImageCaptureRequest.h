@@ -27,6 +27,7 @@
     long long _flashMode;
     long long _hdrMode;
     long long _irisMode;
+    BOOL _wantsPortraitEffect;
     BOOL _usesStillImageStabilization;
     BOOL _wantsAutoDuoImageFusion;
     BOOL _wantsAudioForCapture;
@@ -67,6 +68,7 @@
 @property (readonly, nonatomic) BOOL wantsAudioForCapture; // @synthesize wantsAudioForCapture=_wantsAudioForCapture;
 @property (readonly, nonatomic) BOOL wantsAutoDuoImageFusion; // @synthesize wantsAutoDuoImageFusion=_wantsAutoDuoImageFusion;
 @property (readonly, nonatomic) BOOL wantsHighResolutionStills; // @synthesize wantsHighResolutionStills=_wantsHighResolutionStills;
+@property (readonly, nonatomic) BOOL wantsPortraitEffect; // @synthesize wantsPortraitEffect=_wantsPortraitEffect;
 @property (readonly, nonatomic) BOOL wantsSquareCrop; // @synthesize wantsSquareCrop=_wantsSquareCrop;
 
 - (void).cxx_destruct;

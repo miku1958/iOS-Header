@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class HMDDevice, NSMutableArray, NSMutableSet;
+@class HMDDevice, HMFTimer, NSMutableArray, NSMutableSet;
 
 @interface HMDRemoteDeviceInformation : NSObject
 {
     BOOL _pinging;
     BOOL _pingConfirmed;
+    BOOL _shouldConfirm;
     BOOL _reachable;
     HMDDevice *_device;
     NSMutableSet *_pendingPingIdentifiers;
+    HMFTimer *_retryTimer;
     NSMutableArray *_confirmationHandlers;
 }
 
@@ -24,6 +26,8 @@
 @property (nonatomic, getter=isPingConfirmed) BOOL pingConfirmed; // @synthesize pingConfirmed=_pingConfirmed;
 @property (nonatomic, getter=isPinging) BOOL pinging; // @synthesize pinging=_pinging;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
+@property (strong, nonatomic) HMFTimer *retryTimer; // @synthesize retryTimer=_retryTimer;
+@property (nonatomic) BOOL shouldConfirm; // @synthesize shouldConfirm=_shouldConfirm;
 
 - (void).cxx_destruct;
 - (void)completeConfirmationsWithError:(id)arg1;

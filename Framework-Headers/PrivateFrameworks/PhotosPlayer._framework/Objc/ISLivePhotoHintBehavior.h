@@ -30,6 +30,7 @@
 - (void)_preroll;
 - (void)_seekToBeginning;
 - (void)activeDidChange;
+- (long long)behaviorType;
 - (void)hintWithProgress:(float)arg1;
 - (id)initWithInitialLayoutInfo:(id)arg1 seekTime:(CDStruct_1b6d18a9)arg2 prerollRate:(float)arg3 playDuringHint:(BOOL)arg4;
 

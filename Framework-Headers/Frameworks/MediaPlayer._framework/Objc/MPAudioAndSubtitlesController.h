@@ -12,10 +12,14 @@
 {
     _MPAudioAndSubtitlesController *_viewController;
     UINavigationController *_navController;
+    UIViewController *_viewControllerForOrientation;
 }
+
+@property (weak, nonatomic) UIViewController *viewControllerForOrientation; // @synthesize viewControllerForOrientation=_viewControllerForOrientation;
 
 - (void).cxx_destruct;
 - (id)initWithAVItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLoad;
 
 @end

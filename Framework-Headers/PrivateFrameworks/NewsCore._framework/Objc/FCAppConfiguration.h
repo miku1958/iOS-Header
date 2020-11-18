@@ -14,10 +14,12 @@
     BOOL _universalLinksEnabled;
     BOOL _forceAppConfigUpdate;
     BOOL _forceTrendingSearchesUpdate;
+    BOOL _alternativeWidgetConfigEnabled;
     NSArray *_trendingTopics;
     FCCoverArticlesConfiguration *_coverArticlesConfig;
     NSString *_embedConfigurationAssetID;
     NTPBWidgetConfig *_widgetConfiguration;
+    NTPBWidgetConfig *_alternativeWidgetConfiguration;
     FCAsyncSerialQueue *_requestSerialQueue;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSArray *_hiddenFeedIDs;
@@ -69,6 +71,8 @@
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+@property (nonatomic, getter=isAlternativeWidgetConfigEnabled) BOOL alternativeWidgetConfigEnabled; // @synthesize alternativeWidgetConfigEnabled=_alternativeWidgetConfigEnabled;
+@property (readonly, copy, nonatomic) NTPBWidgetConfig *alternativeWidgetConfiguration; // @synthesize alternativeWidgetConfiguration=_alternativeWidgetConfiguration;
 @property (nonatomic) long long appConfigRefreshRate; // @synthesize appConfigRefreshRate=_appConfigRefreshRate;
 @property (nonatomic) long long articleRapidUpdatesTimeout; // @synthesize articleRapidUpdatesTimeout=_articleRapidUpdatesTimeout;
 @property (nonatomic) long long autoScrollToTopFeedTimeout; // @synthesize autoScrollToTopFeedTimeout=_autoScrollToTopFeedTimeout;
@@ -135,6 +139,7 @@
 - (id)_categoryFromProtobufCategory:(id)arg1;
 - (void)_didChange;
 - (void)_didChangeTrendingTopics;
+- (void)_extractAlternativeWidgetConfigFromProtobufConfiguration:(id)arg1;
 - (void)_extractCommonValuesFromProtobufConfiguration:(id)arg1;
 - (void)_extractCoverArticlesFromLanguageConfiguration:(id)arg1;
 - (void)_extractEditorialChannelFromLanguageConfiguration:(id)arg1;

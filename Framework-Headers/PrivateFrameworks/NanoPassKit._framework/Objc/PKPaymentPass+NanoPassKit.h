@@ -6,13 +6,15 @@
 
 #import <PassKitCore/PKPaymentPass.h>
 
-@class PKPaymentApplication;
-
 @interface PKPaymentPass (NanoPassKit)
-
-@property (strong, nonatomic) PKPaymentApplication *npkSelectedPaymentApplication;
-
-- (BOOL)npkHasUserSelectablePaymentApplications;
-- (id)npkSortedDevicePaymentApplications;
+- (id)npkDeviceContactlessPaymentApplications;
+- (id)npkDeviceInAppPaymentApplications;
+- (BOOL)npkHasUserSelectableContactlessPaymentApplications;
+- (BOOL)npkHasUserSelectableInAppPaymentApplications;
+- (id)npkPreferredContactlessPaymentApplication;
+- (id)npkPreferredInAppPaymentApplication;
+- (void)npkSetPreferredPaymentApplication:(id)arg1;
+- (id)npkSortedDeviceContactlessPaymentApplications;
+- (id)npkSortedDeviceInAppPaymentApplications;
 @end
 

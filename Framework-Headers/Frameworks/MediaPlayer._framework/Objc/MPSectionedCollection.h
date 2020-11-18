@@ -35,6 +35,7 @@
 - (void)enumerateSectionIdentifiersUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSectionsUsingBlock:(CDUnknownBlockType)arg1;
 - (long long)globalIndexForIndexPath:(id)arg1;
+- (BOOL)hasSameContentAsSectionedCollection:(id)arg1;
 - (id)identifiersForItemAtIndexPath:(id)arg1;
 - (id)identifiersForSectionAtIndex:(long long)arg1;
 - (id)indexPathForGlobalIndex:(long long)arg1;

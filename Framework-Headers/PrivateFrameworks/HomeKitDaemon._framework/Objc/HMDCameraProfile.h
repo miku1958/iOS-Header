@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMDCameraSettingProactiveReaderDelegate-Protocol.h>
 
-@class HMDCameraSnapshotManager, HMDCameraStreamSnapshotHandler, NSMutableArray, NSSet, NSString;
+@class HMDCameraResidentMessageHandler, HMDCameraSnapshotManager, HMDCameraStreamSnapshotHandler, HMFNetMonitor, NSMutableArray, NSSet, NSString;
 
 @interface HMDCameraProfile : HMDAccessoryProfile <HMDCameraSettingProactiveReaderDelegate>
 {
@@ -18,6 +18,8 @@
     HMDCameraSnapshotManager *_snapshotManager;
     HMDCameraStreamSnapshotHandler *_streamSnapshotHandler;
     NSMutableArray *_settingProactiveReaders;
+    HMFNetMonitor *_networkMonitor;
+    HMDCameraResidentMessageHandler *_residentMessageHandler;
 }
 
 @property (readonly, nonatomic) NSSet *cameraStreamManagers; // @synthesize cameraStreamManagers=_cameraStreamManagers;
@@ -25,6 +27,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isMicrophonePresent) BOOL microphonePresent; // @synthesize microphonePresent=_microphonePresent;
+@property (strong, nonatomic) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
+@property (readonly, nonatomic) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
 @property (readonly, nonatomic) NSMutableArray *settingProactiveReaders; // @synthesize settingProactiveReaders=_settingProactiveReaders;
 @property (readonly, nonatomic) HMDCameraSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
 @property (readonly, nonatomic, getter=isSpeakerPresent) BOOL speakerPresent; // @synthesize speakerPresent=_speakerPresent;
@@ -32,6 +36,7 @@
 @property (readonly) Class superclass;
 
 + (id)logCategory;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_createCameraManagers:(id)arg1;
 - (void)_handleNegotiateStreamRequest:(id)arg1;
@@ -40,7 +45,9 @@
 - (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1;
 - (void)dealloc;
 - (id)dumpState;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithAccessory:(id)arg1 uuid:(id)arg2 services:(id)arg3 msgDispatcher:(id)arg4;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
 - (void)monitorForEventsForServices:(id)arg1;

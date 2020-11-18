@@ -6,19 +6,24 @@
 
 #import <UIKit/UIView.h>
 
+@class UIColor;
+
 @interface CAMBadgeView : UIView
 {
+    double __fillCornerRadius;
+    UIColor *__fillColor;
+    UIColor *__contentColor;
 }
 
-- (void)_commonInit;
-- (id)_contentColor;
-- (double)_cornerRadius;
+@property (strong, nonatomic, setter=_setContentColor:) UIColor *_contentColor; // @synthesize _contentColor=__contentColor;
+@property (strong, nonatomic, setter=_setFillColor:) UIColor *_fillColor; // @synthesize _fillColor=__fillColor;
+@property (nonatomic, setter=_setFillCornerRadius:) double _fillCornerRadius; // @synthesize _fillCornerRadius=__fillCornerRadius;
+
+- (void).cxx_destruct;
 - (id)_maskImage;
 - (void)drawRect:(struct CGRect)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)tintColorDidChange;
 
 @end
 

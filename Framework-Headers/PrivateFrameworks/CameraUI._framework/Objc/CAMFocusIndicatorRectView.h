@@ -4,27 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKit/UIView.h>
 
-@interface CAMFocusIndicatorRectView : UIImageView
+@class UIImageView;
+
+@interface CAMFocusIndicatorRectView : UIView
 {
-    long long _size;
+    long long _style;
+    UIImageView *__imageView;
 }
 
-@property (readonly, nonatomic, getter=isPulsing) BOOL pulsing;
-@property (readonly, nonatomic) long long size; // @synthesize size=_size;
+@property (readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
+@property (nonatomic, getter=isInactive) BOOL inactive;
+@property (nonatomic, getter=isPulsing) BOOL pulsing;
+@property (readonly, nonatomic) long long style; // @synthesize style=_style;
 
-- (void)_commonCAMFocusIndicatorRectViewInitialization;
-- (id)_crosshairImageForSize:(long long)arg1;
-- (void)_generateImagePairFromCurrentTintColor;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithImage:(id)arg1;
-- (id)initWithImage:(id)arg1 highlightedImage:(id)arg2;
-- (id)initWithSize:(long long)arg1;
-- (void)startPulsing;
-- (void)stopPulsing;
-- (void)tintColorDidChange;
+- (void).cxx_destruct;
+- (id)initWithStyle:(long long)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
 
 @end
 

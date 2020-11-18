@@ -45,6 +45,14 @@ struct NSObject {
     Class _field1;
 };
 
+struct PLFaceDimension {
+    double _field1;
+    double _field2;
+    double _field3;
+    long long _field4;
+    long long _field5;
+};
+
 struct PLImageTableEntryFooter_s {
     struct {
         unsigned char _field1;

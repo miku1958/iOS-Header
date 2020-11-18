@@ -66,7 +66,7 @@
 - (id)initWithRoadMatch:(id)arg1 rawLocation:(id)arg2 useMatchLocation:(BOOL)arg3;
 - (id)initWithRouteMatch:(id)arg1 rawLocation:(id)arg2 useMatchLocation:(BOOL)arg3;
 - (id)matchInfo;
-- (id)propagatedLocationForTimeInterval:(double)arg1;
+- (id)propagatedLocationForTimeInterval:(double)arg1 shouldProjectAlongRoute:(BOOL)arg2;
 
 @end
 

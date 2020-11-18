@@ -7,16 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <HMFoundation/HMFHTTPClientConnectionDelegate-Protocol.h>
+#import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/_HMFCFHTTPServerDelegate-Protocol.h>
 
 @class HMFMutableNetService, NSArray, NSMutableArray, NSString, _HMFCFHTTPServer;
 @protocol HMFHTTPServerDelegate, OS_dispatch_queue;
 
-@interface HMFHTTPServer : NSObject <_HMFCFHTTPServerDelegate, HMFHTTPClientConnectionDelegate>
+@interface HMFHTTPServer : NSObject <_HMFCFHTTPServerDelegate, HMFHTTPClientConnectionDelegate, HMFLogging>
 {
     NSMutableArray *_connections;
     NSMutableArray *_requestHandlers;
     unsigned long long _port;
+    double _connectionIdleTimeout;
     _HMFCFHTTPServer *_internal;
     id<HMFHTTPServerDelegate> _delegate;
     NSString *_serviceType;
@@ -28,6 +30,7 @@
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property double connectionIdleTimeout; // @synthesize connectionIdleTimeout=_connectionIdleTimeout;
 @property (readonly, copy) NSArray *connections; // @synthesize connections=_connections;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMFHTTPServerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -43,6 +46,7 @@
 @property (readonly, copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly) Class superclass;
 
++ (id)logCategory;
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (void)_handleClosedConnection:(id)arg1;
@@ -55,6 +59,7 @@
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
 - (id)initWithServiceType:(id)arg1 name:(id)arg2 port:(unsigned long long)arg3 options:(unsigned long long)arg4;
+- (id)logIdentifier;
 - (void)registerRequestHandler:(id)arg1;
 - (void)removeConnection:(id)arg1;
 - (void)server:(id)arg1 didCloseConnection:(id)arg2;

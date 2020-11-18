@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (void)_releaseSlotIdentifier;
 - (void)dealloc;
-- (id)initWithSessionID:(id)arg1 slotIdentifier:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4 msgDispatcher:(id)arg5 profileUniqueIdentifier:(id)arg6 captureDate:(id)arg7;
+- (id)initWithSessionID:(id)arg1 slotIdentifier:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4 msgDispatcher:(id)arg5 profileUniqueIdentifier:(id)arg6 aspectRatio:(id)arg7 captureDate:(id)arg8;
 
 @end
 

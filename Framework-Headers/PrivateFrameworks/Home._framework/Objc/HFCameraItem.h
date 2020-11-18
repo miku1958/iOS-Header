@@ -20,16 +20,16 @@
     HMCameraProfile *_cameraProfile;
 }
 
-@property (readonly, weak, nonatomic) HMAccessory *accessory;
+@property (readonly, nonatomic) HMAccessory *accessory;
 @property (readonly, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
-@property (readonly, nonatomic) BOOL isLocallyReachable;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
++ (void)getErrorDescription:(out id *)arg1 detailedErrorDescription:(out id *)arg2 forCameraStreamError:(id)arg3;
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;
@@ -37,19 +37,12 @@
 - (id)controlPanelItems;
 - (id)copyWithValueSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)hasRemoteMicrophoneControl;
-- (BOOL)hasRemoteSpeakerControl;
 - (id)incrementalStateControlItem;
 - (id)init;
 - (id)initWithValueSource:(id)arg1 cameraProfile:(id)arg2;
 - (id)primaryStateControlItem;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)services;
-- (void)setLocalMicrophoneEnabled:(BOOL)arg1;
-- (void)setLocalSpeakerVolume:(float)arg1;
-- (void)startCameraStream;
-- (void)stopCameraStream;
-- (void)takeCameraSnapshot;
 
 @end
 

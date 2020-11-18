@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/MPAVMetadataItem-Protocol.h>
 
-@class AVAsset, AVPlayerItem, AVPlayerItemAccessLog, MPAVController, MPAlternateTextTrack, MPAlternateTracks, MPMediaItem, MPModelObject, MPModelSong, MPQueueFeeder, MPStoreDownload, NSArray, NSError, NSString, NSURL;
+@class AVAsset, AVPlayerItem, AVPlayerItemAccessLog, MPAVController, MPAlternateTextTrack, MPAlternateTracks, MPMediaItem, MPModelObject, MPModelSong, MPQueueFeeder, MPStoreDownload, NSArray, NSDictionary, NSError, NSNumber, NSString, NSURL;
 @protocol MPAVItemPlaylistIdentifier, MPAVItemQueueIdentifier, OS_dispatch_queue;
 
 @interface MPAVItem : NSObject <MPAVMetadataItem>
@@ -92,6 +92,7 @@
 @property (strong, nonatomic) NSArray *artworkTimeMarkers; // @synthesize artworkTimeMarkers=_artworkTimeMarkers;
 @property (readonly, nonatomic) AVAsset *asset;
 @property (strong, nonatomic) NSError *assetError; // @synthesize assetError=_assetError;
+@property (readonly, copy, nonatomic) NSNumber *bookmarkTime;
 @property (readonly, copy, nonatomic) NSArray *buyOffers; // @synthesize buyOffers=_buyOffers;
 @property (readonly, nonatomic) BOOL canReusePlayerItem; // @synthesize canReusePlayerItem=_canReusePlayerItem;
 @property (readonly, nonatomic) BOOL canSeedGenius;
@@ -122,6 +123,7 @@
 @property (nonatomic) BOOL hasPlayedThisSession;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long indexInQueueFeeder; // @synthesize indexInQueueFeeder=_indexInQueueFeeder;
+@property (readonly, copy, nonatomic) NSNumber *initialPlaybackStartTime;
 @property (readonly, nonatomic) BOOL isAd;
 @property (readonly, nonatomic) BOOL isAlwaysLive;
 @property BOOL isAssetLoaded; // @synthesize isAssetLoaded=_isAssetLoaded;
@@ -141,7 +143,7 @@
 @property (readonly, nonatomic) unsigned long long persistentID;
 @property (readonly, nonatomic) double playableDuration;
 @property (readonly, nonatomic) double playableDurationIfAvailable;
-@property (nonatomic) double playbackCheckpointCurrentTime;
+@property (readonly, copy, nonatomic) NSDictionary *playbackInfo;
 @property (readonly, nonatomic) long long playbackMode; // @synthesize playbackMode=_playbackMode;
 @property (weak, nonatomic) MPAVController *player; // @synthesize player=_player;
 @property (strong, nonatomic) AVPlayerItem *playerItem;
@@ -194,6 +196,7 @@
 - (long long)_expectedPlaybackMode;
 - (void)_handleUpdatedLikedState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_imageChapterTrackIDsForAsset:(id)arg1;
+- (id)_initialPlaybackStartTimeForPlaybackInfo:(id)arg1;
 - (void)_internalLikedStateDidChangeNotification:(id)arg1;
 - (void)_itemAttributeAvailableKey:(id)arg1;
 - (void)_likedStateDidChange;
@@ -252,6 +255,7 @@
 - (void)setAlternateAudioTrackID:(int)arg1;
 - (void)setAlternateAudioTrackLocale:(id)arg1;
 - (void)setOverrideDuration:(double)arg1;
+- (void)setPlaybackCheckpointCurrentTime:(double)arg1;
 - (void)setPlaybackFinishedTime:(double)arg1;
 - (void)setPlaybackStoppedTime:(double)arg1;
 - (void)setRating:(float)arg1;

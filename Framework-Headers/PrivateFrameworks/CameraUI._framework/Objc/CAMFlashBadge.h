@@ -16,11 +16,10 @@
 @property (strong, nonatomic) UIImage *_contentImage; // @synthesize _contentImage=__contentImage;
 
 - (void).cxx_destruct;
-- (void)_commonInit;
-- (double)_cornerRadius;
 - (struct UIEdgeInsets)_imageInsets;
 - (struct CGSize)_imageSize;
 - (id)_maskImage;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 
 @end

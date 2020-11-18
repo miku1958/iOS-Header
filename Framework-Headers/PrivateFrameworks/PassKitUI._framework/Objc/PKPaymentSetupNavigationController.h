@@ -16,19 +16,19 @@
     long long _context;
     BOOL _showsWelcomeViewController;
     BOOL _allowsManualEntry;
-    BOOL _skipFlowPicker;
     PKPaymentProvisioningController *_provisioningController;
     id<PKPaymentSetupDelegate> _setupDelegate;
+    long long _paymentSetupMode;
 }
 
 @property (nonatomic) BOOL allowsManualEntry; // @synthesize allowsManualEntry=_allowsManualEntry;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long paymentSetupMode; // @synthesize paymentSetupMode=_paymentSetupMode;
 @property (readonly, strong, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property (nonatomic) id<PKPaymentSetupDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property (nonatomic) BOOL showsWelcomeViewController; // @synthesize showsWelcomeViewController=_showsWelcomeViewController;
-@property (nonatomic) BOOL skipFlowPicker; // @synthesize skipFlowPicker=_skipFlowPicker;
 @property (readonly) Class superclass;
 
 + (id)viewControllerForPresentingPaymentError:(id)arg1;

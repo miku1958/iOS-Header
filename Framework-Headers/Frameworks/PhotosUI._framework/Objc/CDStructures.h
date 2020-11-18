@@ -63,6 +63,7 @@ struct PXFaceTileImageParams {
     unsigned long long cropFactor;
     BOOL round;
     BOOL cropBounded;
+    BOOL acceptsVeryLowQuality;
 };
 
 struct PXMagazineOrigin {

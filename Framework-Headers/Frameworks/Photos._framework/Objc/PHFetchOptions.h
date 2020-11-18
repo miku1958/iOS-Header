@@ -28,6 +28,7 @@
     NSNumber *_includeTrashedAssetsNumber;
     NSNumber *_includeFavoriteMemoriesCollectionListNumber;
     NSNumber *_includePlacesSmartAlbumNumber;
+    NSNumber *_includeDepthEffectSmartAlbumNumber;
     NSNumber *_excludeMontageAssetsNumber;
     NSNumber *_minimumVerifiedFaceCountNumber;
     NSNumber *_minimumUnverifiedFaceCountNumber;
@@ -53,6 +54,7 @@
 @property (readonly, nonatomic) NSSet *fetchPropertySetsAsSet;
 @property (nonatomic) BOOL includeAllBurstAssets;
 @property (nonatomic) unsigned long long includeAssetSourceTypes;
+@property (nonatomic) BOOL includeDepthEffectSmartAlbum;
 @property (nonatomic) BOOL includeDuplicateAssets;
 @property (nonatomic) BOOL includeFavoriteMemoriesCollectionList;
 @property (nonatomic) BOOL includeHiddenAssets;

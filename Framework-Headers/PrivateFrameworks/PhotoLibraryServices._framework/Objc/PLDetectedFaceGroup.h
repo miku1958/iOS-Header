@@ -13,11 +13,11 @@
 }
 
 @property (strong, nonatomic) PLPerson *associatedPerson; // @dynamic associatedPerson;
-@property (nonatomic) long long faceGroupType; // @dynamic faceGroupType;
+@property (nonatomic) int faceGroupType; // @dynamic faceGroupType;
 @property (strong, nonatomic) NSSet *faces; // @dynamic faces;
 @property (nonatomic) PLDetectedFace *keyFace; // @dynamic keyFace;
 @property (strong, nonatomic) PLPerson *rejectedFacesPerson; // @dynamic rejectedFacesPerson;
-@property (nonatomic) long long *unnamedFaceCount; // @dynamic unnamedFaceCount;
+@property (nonatomic) int unnamedFaceCount; // @dynamic unnamedFaceCount;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
 
 + (id)entityInManagedObjectContext:(id)arg1;

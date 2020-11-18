@@ -8,7 +8,7 @@
 
 #import <PhotoAnalysis/PHAWorkerConfiguration-Protocol.h>
 
-@class NSString, NSURL, PHALibraryChangeListener, PHAManager, PHPhotoLibrary;
+@class NSString, NSURL, PHALibraryChangeListener, PHAManager, PHAServiceCancelableOperation, PHPhotoLibrary;
 @protocol OS_dispatch_queue, PHAAssetResourceDataLoading;
 
 @interface PHAWorker : NSObject <PHAWorkerConfiguration>
@@ -17,10 +17,12 @@
     BOOL _shutdownHasBeenCalled;
     BOOL _warmedUp;
     id<PHAAssetResourceDataLoading> _dataLoader;
+    PHAServiceCancelableOperation *_currentOperation;
     NSObject<OS_dispatch_queue> *_userInitiatedRequestQueue;
 }
 
 @property (readonly) PHALibraryChangeListener *changeListener;
+@property (strong) PHAServiceCancelableOperation *currentOperation; // @synthesize currentOperation=_currentOperation;
 @property (strong, nonatomic) id<PHAAssetResourceDataLoading> dataLoader; // @synthesize dataLoader=_dataLoader;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

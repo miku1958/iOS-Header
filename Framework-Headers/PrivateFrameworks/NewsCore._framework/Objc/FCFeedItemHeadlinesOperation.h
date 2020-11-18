@@ -11,10 +11,10 @@
 
 @interface FCFeedItemHeadlinesOperation : FCOperation
 {
-    BOOL _refreshRapidUpdateHeadlines;
     id<FCContentContext> _context;
     id<FCFeedPersonalizing> _personalizer;
     NSArray *_feedItems;
+    CDUnknownBlockType _rapidUpdateRefreshTest;
     NSDictionary *_feedContextByFeedID;
     CDUnknownBlockType _headlinesCompletionHandler;
     CDUnknownBlockType _headlinesMapCompletionHandler;
@@ -28,7 +28,7 @@
 @property (copy, nonatomic) CDUnknownBlockType headlinesCompletionHandler; // @synthesize headlinesCompletionHandler=_headlinesCompletionHandler;
 @property (copy, nonatomic) CDUnknownBlockType headlinesMapCompletionHandler; // @synthesize headlinesMapCompletionHandler=_headlinesMapCompletionHandler;
 @property (strong, nonatomic) id<FCFeedPersonalizing> personalizer; // @synthesize personalizer=_personalizer;
-@property (nonatomic) BOOL refreshRapidUpdateHeadlines; // @synthesize refreshRapidUpdateHeadlines=_refreshRapidUpdateHeadlines;
+@property (copy, nonatomic) CDUnknownBlockType rapidUpdateRefreshTest; // @synthesize rapidUpdateRefreshTest=_rapidUpdateRefreshTest;
 @property (strong, nonatomic) NSArray *resultHeadlines; // @synthesize resultHeadlines=_resultHeadlines;
 @property (strong, nonatomic) NSMapTable *resultHeadlinesByFeedItem; // @synthesize resultHeadlinesByFeedItem=_resultHeadlinesByFeedItem;
 

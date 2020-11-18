@@ -43,6 +43,7 @@
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;
+- (void)setFelicaProperties:(id)arg1;
 - (void)showActivitySpinner:(BOOL)arg1;
 - (void)tintColorDidChange;
 

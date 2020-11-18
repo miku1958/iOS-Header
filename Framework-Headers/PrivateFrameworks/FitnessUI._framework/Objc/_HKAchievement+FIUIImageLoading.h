@@ -7,13 +7,19 @@
 #import <HealthKit/_HKAchievement.h>
 
 @interface _HKAchievement (FIUIImageLoading)
++ (struct CGSize)_fiui_badgeThumbnailSizeUsingLargerDeviceSize:(BOOL)arg1;
++ (double)fiui_badgeThumbnailRenderingScale;
++ (struct CGSize)fiui_badgeThumbnailRenderingSize;
++ (struct CGSize)fiui_badgeThumbnailSize;
 - (id)_fiui_badgeAssetNameSuffix;
 - (id)_fiui_badgeContainerPath;
+- (id)_fiui_imagePathForUncompletedAchievementOfSizeClass:(long long)arg1;
 - (id)_fiui_pathForAssetNamed:(id)arg1 ofType:(id)arg2;
 - (id)fiui_badgeModelFilename;
 - (id)fiui_badgePlistPath;
 - (id)fiui_badgeTexturePath;
 - (id)fiui_compressedBadgeModelPath;
+- (BOOL)fiui_hasImageForSizeClass:(long long)arg1;
 - (id)fiui_imageForSizeClass:(long long)arg1;
 - (id)fiui_uniqueBadgeModelIdentifier;
 @end

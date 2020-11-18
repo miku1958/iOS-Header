@@ -33,6 +33,7 @@
 - (id)accessibilityValue;
 - (id)expressionForFace:(id)arg1;
 - (id)localizedStringFormatterForExpression:(id)arg1;
+- (BOOL)shouldMeasureBlurriness;
 
 @end
 

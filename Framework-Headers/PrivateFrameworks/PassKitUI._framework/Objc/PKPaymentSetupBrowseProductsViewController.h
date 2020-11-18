@@ -33,7 +33,7 @@
 - (BOOL)_isLikelySection:(long long)arg1;
 - (BOOL)_isUnlikelySection:(long long)arg1;
 - (void)_nextTapped:(id)arg1;
-- (void)_notifyDelegateDidSelectProduct:(id)arg1;
+- (void)_notifyDelegateDidSelectProduct:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)_productAtIndexPath:(id)arg1;
 - (BOOL)_searchUIEnabled;
 - (void)_setNavigationBarEnabled:(BOOL)arg1;

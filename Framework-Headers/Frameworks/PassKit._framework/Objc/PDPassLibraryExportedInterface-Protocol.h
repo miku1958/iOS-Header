@@ -10,9 +10,11 @@
 
 @protocol PDPassLibraryExportedInterface <PDXPCServiceExportedInterface>
 - (void)addPassesWithData:(NSSet *)arg1 handler:(void (^)(unsigned long long))arg2;
+- (void)canAddFelicaPassWithHandler:(void (^)(BOOL))arg1;
 - (void)canAddPassesOfType:(unsigned long long)arg1 handler:(void (^)(BOOL))arg2;
 - (void)countPassesOfType:(unsigned long long)arg1 handler:(void (^)(unsigned long long))arg2;
 - (void)defaultPaymentPassWithHandler:(void (^)(PKPaymentPass *))arg1;
+- (void)expressFelicaTransitPassWithHandler:(void (^)(PKPass *))arg1;
 - (void)getContentForUniqueID:(NSString *)arg1 handler:(void (^)(PKContent *))arg2;
 - (void)getImageSetForUniqueID:(NSString *)arg1 ofType:(long long)arg2 displayProfile:(PKDisplayProfile *)arg3 handler:(void (^)(PKImageSet *))arg4;
 - (void)getManifestHashAndSettingsForPassTypeID:(NSString *)arg1 serialNumber:(NSString *)arg2 handler:(void (^)(NSData *, unsigned long long))arg3;

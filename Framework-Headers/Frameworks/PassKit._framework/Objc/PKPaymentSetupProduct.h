@@ -18,10 +18,11 @@
     NSString *_productIdentifier;
     NSArray *_requiredFields;
     NSArray *_supportedProtocols;
-    NSString *_redirectURI;
+    NSDictionary *_readerModeMetadata;
     NSURL *_termsURL;
     NSArray *_associatedStoreIdentifiers;
     NSURL *_appLaunchURL;
+    NSArray *_paymentOptions;
     NSDictionary *_rawDictionary;
     NSString *_identifier;
 }
@@ -31,9 +32,10 @@
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSString *partnerName;
+@property (readonly, copy, nonatomic) NSArray *paymentOptions; // @synthesize paymentOptions=_paymentOptions;
 @property (copy, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (copy, nonatomic) NSDictionary *rawDictionary; // @synthesize rawDictionary=_rawDictionary;
-@property (copy, nonatomic) NSString *redirectURI; // @synthesize redirectURI=_redirectURI;
+@property (copy, nonatomic) NSDictionary *readerModeMetadata; // @synthesize readerModeMetadata=_readerModeMetadata;
 @property (copy, nonatomic) NSString *region; // @synthesize region=_region;
 @property (copy, nonatomic) NSArray *requiredFields; // @synthesize requiredFields=_requiredFields;
 @property (copy, nonatomic) NSArray *supportedProtocols; // @synthesize supportedProtocols=_supportedProtocols;
@@ -43,8 +45,9 @@
 + (id)partnerProductsFromArrayOfPartners:(id)arg1 andProducts:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 redirectURI:(id)arg4 requiredFields:(id)arg5 termsURL:(id)arg6;
+- (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 readerModeMetadata:(id)arg4 requiredFields:(id)arg5 paymentOptions:(id)arg6 termsURL:(id)arg7;
 - (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 requiredFields:(id)arg4;
+- (long long)allSupportedProtocols;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProductDictionary:(id)arg1;

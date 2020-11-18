@@ -23,10 +23,11 @@
 #import <SafariServices/_SFPageLoadErrorControllerDelegate-Protocol.h>
 #import <SafariServices/_SFSafeBrowsingControllerDelegate-Protocol.h>
 #import <SafariServices/_SFSingleBookmarkNavigationControllerDelegate-Protocol.h>
+#import <SafariServices/_SFTelephonyNavigationMitigationPolicyDelegate-Protocol.h>
 
-@class NSArray, NSString, SFReaderEnabledWebViewController, SFReaderViewController, UIColor, UITapGestureRecognizer, WBSFluidProgressController, WBSFluidProgressState, WBUSheetController, WKBackForwardListItem, WebUIAuthenticationManager, _SFBrowserView, _SFDownloadController, _SFDynamicBarAnimator, _SFFindOnPageView, _SFNavigationBarItem, _SFPageLoadErrorController, _SFReloadOptionsController, _SFSafariSharingExtensionController, _SFSafeBrowsingController, _SFURLSpoofingMitigator, _WKActivatedElementInfo;
+@class NSArray, NSString, SFReaderEnabledWebViewController, SFReaderViewController, UIColor, UITapGestureRecognizer, WBSFluidProgressController, WBSFluidProgressState, WBUSheetController, WKBackForwardListItem, WebUIAuthenticationManager, _SFBrowserView, _SFDownloadController, _SFDynamicBarAnimator, _SFFindOnPageView, _SFNavigationBarItem, _SFPageLoadErrorController, _SFReloadOptionsController, _SFSafariSharingExtensionController, _SFSafeBrowsingController, _SFTelephonyNavigationMitigationPolicy, _SFURLSpoofingMitigator, _WKActivatedElementInfo;
 
-@interface _SFBrowserContentViewController : UIViewController <SFReaderEnabledWebViewControllerDelegate, _SFActivityViewControllerDelegate, _SFDynamicBarAnimatorDelegate, _SFSingleBookmarkNavigationControllerDelegate, _SFPageLoadErrorControllerDelegate, _SFSafeBrowsingControllerDelegate, _SFBrowserToolbarDataSource, _SFBrowserToolbarDelegate, WBSFluidProgressStateSource, WBSFluidProgressControllerWindowDelegate, _SFNavigationBarDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, SFReaderAppearanceViewControllerDelegate, UIPopoverPresentationControllerDelegate, _SFDownloadControllerDelegate, _SFFindOnPageViewDelegate>
+@interface _SFBrowserContentViewController : UIViewController <SFReaderEnabledWebViewControllerDelegate, _SFActivityViewControllerDelegate, _SFDynamicBarAnimatorDelegate, _SFSingleBookmarkNavigationControllerDelegate, _SFPageLoadErrorControllerDelegate, _SFSafeBrowsingControllerDelegate, _SFBrowserToolbarDataSource, _SFBrowserToolbarDelegate, WBSFluidProgressStateSource, WBSFluidProgressControllerWindowDelegate, _SFNavigationBarDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate, SFReaderAppearanceViewControllerDelegate, UIPopoverPresentationControllerDelegate, _SFDownloadControllerDelegate, _SFFindOnPageViewDelegate, _SFTelephonyNavigationMitigationPolicyDelegate>
 {
     _SFBrowserView *_browserView;
     SFReaderViewController *_readerViewController;
@@ -60,6 +61,8 @@
     BOOL _didReceivePolicyForInitialLoad;
     long long _preferredWhitePointAdaptivityStyle;
     long long _customPreferredStatusBarStyle;
+    BOOL _isDisplayingTelephonyPrompt;
+    _SFTelephonyNavigationMitigationPolicy *_telephonyNavigationPolicy;
     BOOL _entersReaderIfAvailable;
     BOOL _remoteSwipeGestureEnabled;
     long long _displayMode;
@@ -204,6 +207,7 @@
 - (BOOL)pageLoadErrorControllerShouldHandleCertificateError:(id)arg1;
 - (void)pageLoadErrorControllerWillShowPrintingDuringLoadAlert:(id)arg1 action:(int)arg2;
 - (long long)preferredStatusBarStyle;
+- (void)presentDialog:(id)arg1 forTelephonyNavigationPolicy:(id)arg2;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)presentingViewControllerForAlertInAuthenticationManager:(id)arg1;
 - (id)presentingViewControllerForWebViewController:(id)arg1;
