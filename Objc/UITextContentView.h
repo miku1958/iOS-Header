@@ -6,16 +6,19 @@
 
 #import <UIKit/UIView.h>
 
+#import <UIKit/UIDragInteractionDelegate_Private-Protocol.h>
+#import <UIKit/UIDropInteractionDelegate_Private-Protocol.h>
 #import <UIKit/UITextInput-Protocol.h>
 #import <UIKit/UITextInputTraits-Protocol.h>
 #import <UIKit/UITextLinkInteraction-Protocol.h>
+#import <UIKit/UIWebDraggingDelegate-Protocol.h>
 #import <UIKit/WebEditingDelegate-Protocol.h>
 #import <UIKit/WebPolicyDelegate-Protocol.h>
 
-@class DOMHTMLElement, NSAttributedString, NSDictionary, NSString, UIColor, UIFont, UITextInteractionAssistant, UITextPosition, UITextRange, UIWebDocumentView, WebFrame;
+@class DOMHTMLElement, NSAttributedString, NSDictionary, NSString, UIColor, UIDragInteraction, UIDropInteraction, UIFont, UITextInteractionAssistant, UITextPosition, UITextRange, UIWebDocumentView, WebFrame;
 @protocol UITextContentViewDelegate, UITextInputDelegate, UITextInputTokenizer;
 
-@interface UITextContentView : UIView <WebPolicyDelegate, WebEditingDelegate, UITextInput, UITextLinkInteraction, UITextInputTraits>
+@interface UITextContentView : UIView <WebPolicyDelegate, WebEditingDelegate, UIWebDraggingDelegate, UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private, UITextInput, UITextLinkInteraction, UITextInputTraits>
 {
     id m_delegate;
     WebFrame *m_frame;
@@ -37,6 +40,8 @@
     UIFont *m_font;
     UIColor *m_textColor;
     long long m_textAlignment;
+    UIDragInteraction *m_dragInteraction;
+    UIDropInteraction *m_dropInteraction;
 }
 
 @property (nonatomic) BOOL allowsEditingTextAttributes;
@@ -67,12 +72,15 @@
 @property (copy) UITextRange *selectedTextRange;
 @property (nonatomic) long long selectionAffinity;
 @property (nonatomic) struct UIEdgeInsets selectionInset; // @synthesize selectionInset=m_selectionInset;
+@property (nonatomic) long long smartDashesType; // @dynamic smartDashesType;
+@property (nonatomic) long long smartInsertDeleteType; // @dynamic smartInsertDeleteType;
+@property (nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property (nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *text;
 @property (nonatomic) long long textAlignment;
 @property (strong, nonatomic) UIColor *textColor;
-@property (copy, nonatomic) NSString *textContentType;
+@property (copy, nonatomic) NSString *textContentType; // @dynamic textContentType;
 @property (readonly, nonatomic) UIView *textInputView;
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 
@@ -81,6 +89,9 @@
 - (unsigned long long)_allowedLinkTypes;
 - (void)_define:(id)arg1;
 - (void)_didScroll;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)_hideSelectionCommands;
 - (void)_insertAttributedTextWithoutClosingTyping:(id)arg1;
 - (id)_keyboardResponder;
@@ -131,6 +142,20 @@
 - (void)didMoveToSuperview;
 - (void)displayScrollerIndicators;
 - (id)documentFragmentForPasteboardItemAtIndex:(long long)arg1;
+- (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
+- (id)dragInteraction:(id)arg1 previewForCancellingItem:(id)arg2 withDefault:(id)arg3;
+- (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
+- (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
+- (void)dragInteraction:(id)arg1 willAnimateLiftWithAnimator:(id)arg2 session:(id)arg3;
+- (BOOL)dragInteractionEnabled;
+- (void)dropInteraction:(id)arg1 concludeDrop:(id)arg2;
+- (void)dropInteraction:(id)arg1 item:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
+- (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
+- (id)dropInteraction:(id)arg1 previewForDroppingItem:(id)arg2 withDefault:(id)arg3;
+- (void)dropInteraction:(id)arg1 sessionDidEnd:(id)arg2;
+- (void)dropInteraction:(id)arg1 sessionDidEnter:(id)arg2;
+- (void)dropInteraction:(id)arg1 sessionDidExit:(id)arg2;
+- (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endSelectionChange;
 - (void)ensureSelection;
@@ -198,6 +223,7 @@
 - (void)setContentToAttributedString:(id)arg1;
 - (void)setContentToHTMLString:(id)arg1;
 - (void)setDataDetectorTypes:(unsigned long long)arg1;
+- (void)setDragInteractionEnabled:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setMarginTop:(int)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;

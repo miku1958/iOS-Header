@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)_drawDebugQuickLookImageWithInfo:(id)arg1 inContext:(struct CGContext *)arg2;
-- (id)_fallbackFocusItemForMovement:(id)arg1 inFocusMap:(id)arg2;
+- (id)_fallbackFocusItemForMovementRequest:(id)arg1 inFocusMap:(id)arg2;
 - (unsigned long long)_focusableBoundaries;
 - (BOOL)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;
 - (id)_visualRepresentationColor;

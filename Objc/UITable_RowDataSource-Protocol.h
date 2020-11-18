@@ -15,13 +15,12 @@
 @property (readonly, nonatomic, getter=_constants) id<UITableConstants> constants;
 @property (readonly, nonatomic, getter=_defaultSectionFooterHeight) double defaultSectionFooterHeight;
 @property (readonly, nonatomic, getter=_defaultSectionHeaderHeight) double defaultSectionHeaderHeight;
+@property (readonly, nonatomic, getter=_estimatesHeights) BOOL estimatesHeights;
 @property (readonly, nonatomic, getter=_estimatesRowHeights) BOOL estimatesRowHeights;
 @property (readonly, nonatomic, getter=_estimatesSectionFooterHeights) BOOL estimatesSectionFooterHeights;
 @property (readonly, nonatomic, getter=_estimatesSectionHeaderHeights) BOOL estimatesSectionHeaderHeights;
-@property (readonly, nonatomic, getter=_footerMarginWidth) double footerMarginWidth;
-@property (readonly, nonatomic, getter=_footerRightMarginWidth) double footerRightMarginWidth;
-@property (readonly, nonatomic, getter=_headerMarginWidth) double headerMarginWidth;
-@property (readonly, nonatomic, getter=_headerRightMarginWidth) double headerRightMarginWidth;
+@property (readonly, nonatomic, getter=_headerFooterLeadingMarginWidth) double headerFooterLeadingMarginWidth;
+@property (readonly, nonatomic, getter=_headerFooterTrailingMarginWidth) double headerFooterTrailingMarginWidth;
 @property (readonly, nonatomic, getter=_heightForTableFooter) double heightForTableFooter;
 @property (readonly, nonatomic, getter=_heightForTableHeader) double heightForTableHeader;
 @property (readonly, nonatomic, getter=_isTableHeaderAutohiding) BOOL isTableHeaderAutohiding;
@@ -35,6 +34,7 @@
 @property (readonly, nonatomic, getter=_tableHeaderView) UIView *tableHeaderView;
 
 - (void)_applyContentSizeDeltaForEstimatedHeightAdjustments:(double)arg1;
+- (void)_coalesceContentSizeUpdateWithDelta:(double)arg1;
 - (double)_dataSourceHeightForFooterInSection:(long long)arg1;
 - (double)_dataSourceHeightForHeaderInSection:(long long)arg1;
 - (double)_dataSourceHeightForRowAtIndexPath:(NSIndexPath *)arg1;
@@ -47,6 +47,7 @@
 - (double)_heightForRowAtIndexPath:(NSIndexPath *)arg1;
 - (double)_maxTitleWidthForFooterInSection:(long long)arg1;
 - (double)_maxTitleWidthForHeaderInSection:(long long)arg1;
+- (void)_setHeight:(double)arg1 forRowAtIndexPath:(NSIndexPath *)arg2 usingPresentationValues:(BOOL)arg3;
 - (BOOL)_shouldStripHeaderTopPaddingForSection:(long long)arg1;
 - (double)_swipeToDeleteOffsetForRow:(long long)arg1 inSection:(long long)arg2;
 - (long long)_titleAlignmentForFooterInSection:(long long)arg1;

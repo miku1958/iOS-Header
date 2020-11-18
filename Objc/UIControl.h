@@ -26,7 +26,7 @@
         unsigned int pendingUnhighlight:1;
         unsigned int selected:1;
         unsigned int verticalAlignment:2;
-        unsigned int horizontalAlignment:2;
+        unsigned int horizontalAlignment:3;
         unsigned int wasLastHighlightSuccessful:1;
         unsigned int touchHasHighlighted:1;
     } _controlFlags;
@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) NSSet *allTargets;
 @property (nonatomic) long long contentHorizontalAlignment; // @dynamic contentHorizontalAlignment;
 @property (nonatomic) long long contentVerticalAlignment; // @dynamic contentVerticalAlignment;
+@property (readonly, nonatomic) long long effectiveContentHorizontalAlignment;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @dynamic enabled;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @dynamic highlighted;
 @property (nonatomic, getter=isSelected) BOOL selected; // @dynamic selected;
@@ -44,10 +45,12 @@
 @property (readonly, nonatomic, getter=isTracking) BOOL tracking; // @dynamic tracking;
 
 + (BOOL)_allowActionsToQueue;
++ (unsigned long long)_primaryStateForState:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)__distributionStatisticsForUserInteractionDuration;
 - (id)__scalarStatisticsForUserTouchUpInsideEvent;
 - (id)__scalarStatisticsForUserValueChangedEvent;
+- (BOOL)_accessibilityShouldActivateOnHUDLift;
 - (void)_beginInteractionDurationStatisticMeasurements;
 - (void)_cancelDelayedActions;
 - (struct CGRect)_clippedHighlightBounds;
@@ -55,6 +58,7 @@
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (void)_delayActions;
+- (void)_diagnoseFocusabilityForReport:(id)arg1;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (id)_distributionStatisticsForUserInteractionDuration;
 - (long long)_focusedSound;

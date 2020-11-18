@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (BOOL)_shouldReverseLayoutDirection;
+- (id)accessibilityHUDRepresentation;
 - (double)addContentOverlap:(double)arg1;
 - (double)adjustFrameToNewSize:(double)arg1;
 - (BOOL)allowsUserInteraction;

@@ -20,14 +20,13 @@
     BOOL _heightIsDeviceHeight;
     BOOL _classicViewportMode;
     id<_UIWebViewportHandlerDelegate> _delegate;
-    struct CGSize _contentsSizeForScaling;
     struct CGRect _documentBounds;
 }
 
 @property (readonly, nonatomic) BOOL allowsUserScaling;
 @property (readonly, nonatomic) struct CGSize availableViewSize; // @synthesize availableViewSize=_availableViewSize;
+@property (readonly, nonatomic) BOOL avoidsUnsafeArea;
 @property (readonly, nonatomic, getter=isClassicViewportMode) BOOL classicViewportMode; // @synthesize classicViewportMode=_classicViewportMode;
-@property (readonly, nonatomic) struct CGSize contentsSizeForScaling; // @synthesize contentsSizeForScaling=_contentsSizeForScaling;
 @property (nonatomic) id<_UIWebViewportHandlerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) struct CGRect documentBounds; // @synthesize documentBounds=_documentBounds;
 @property (readonly, nonatomic) float initialScale;
@@ -37,7 +36,7 @@
 @property (readonly, nonatomic) unsigned int webkitDefinedConfigurationFlags; // @synthesize webkitDefinedConfigurationFlags=_webkitDefinedConfigurationFlags;
 
 - (void)_resolveViewSizeRelativeLengths;
-- (void)applyWebKitViewportArgumentsSize:(struct CGSize)arg1 initialScale:(float)arg2 minimumScale:(float)arg3 maximumScale:(float)arg4 allowsUserScaling:(float)arg5 allowsShrinkToFit:(float)arg6;
+- (void)applyWebKitViewportArgumentsSize:(struct CGSize)arg1 initialScale:(float)arg2 minimumScale:(float)arg3 maximumScale:(float)arg4 allowsUserScaling:(float)arg5 allowsShrinkToFit:(float)arg6 viewportFit:(id)arg7;
 - (void)clearWebKitViewportConfigurationFlags;
 - (double)integralInitialScale;
 - (double)integralScaleForScale:(double)arg1 keepingPointFixed:(struct CGPoint *)arg2;
@@ -45,7 +44,7 @@
 - (void)overrideViewportConfiguration:(const struct _UIWebViewportConfiguration *)arg1;
 - (void)resetViewportConfiguration:(const struct _UIWebViewportConfiguration *)arg1;
 - (void)setAvailableViewSize:(struct CGSize)arg1 updateConfigurationSize:(BOOL)arg2;
-- (void)setDocumentBounds:(struct CGRect)arg1 contentsSizeForScaling:(struct CGSize)arg2;
+- (void)setDocumentBounds:(struct CGRect)arg1;
 - (BOOL)shouldIgnoreHorizontalScalingConstraints;
 - (BOOL)shouldIgnoreScalingConstraints;
 - (BOOL)shouldIgnoreVerticalScalingConstraints;

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (id)initWithSnapshotView:(id)arg1;
-- (void)layoutSubviews;
+- (struct CGSize)intrinsicContentSize;
 
 @end
 

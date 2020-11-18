@@ -116,6 +116,7 @@ __attribute__((visibility("hidden")))
 - (void)showSelectionCommandsAfterDelay:(double)arg1;
 - (void)startCaretBlinkIfNeeded;
 - (void)textSelectionViewActivated:(id)arg1;
+- (void)tintColorDidChange;
 - (void)touchCaretBlinkTimer;
 - (void)updateBaseIsStartWithDocumentPoint:(struct CGPoint)arg1;
 - (BOOL)updateCalloutBarRects:(id)arg1 effectsWindow:(id)arg2;

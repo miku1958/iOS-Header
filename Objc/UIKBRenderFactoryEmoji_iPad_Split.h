@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)emojiPopupTextOffset;
 - (double)keyCornerRadius;
 - (id)lightKeycapsFontName;
+- (id)messagesWriteboardKeyImageName;
 - (BOOL)shouldClearBaseDisplayStringForVariants:(id)arg1;
 - (id)thinKeycapsFontName;
 

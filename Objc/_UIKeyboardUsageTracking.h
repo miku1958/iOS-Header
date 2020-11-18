@@ -11,6 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)appAutofillCredentialFromSafariUI;
++ (void)appAutofillDetectedDecrement;
++ (void)appAutofillDetectedIncrement;
++ (void)appAutofillExtraKeyTapped;
++ (void)appAutofillFilled;
++ (void)countKeystrokeForReachableKeyboardWithBias:(long long)arg1;
++ (void)countReachableKeyboardHandBiasChangeToBias:(long long)arg1;
 + (void)dualStringsKeyFlickUpCount;
 + (void)inputSwitcherSetPredictionPreference:(BOOL)arg1;
 + (void)keyboardExtensionCrashed;
@@ -31,7 +38,7 @@ __attribute__((visibility("hidden")))
 + (void)predictionViewState:(BOOL)arg1 forInputMode:(id)arg2;
 + (void)redoKeyCount;
 + (void)restAndTypeTriggered;
-+ (void)selectedPredictiveInputCandidate:(id)arg1 isAutocorrection:(BOOL)arg2;
++ (void)selectedPredictiveInputCandidate:(id)arg1 isAutocorrection:(BOOL)arg2 index:(unsigned long long)arg3;
 + (void)showCharacterPreviewPreference:(BOOL)arg1;
 + (void)showLowercaseKeyplanePreference:(BOOL)arg1;
 + (void)singleStringKeyFlickUpCount;

@@ -6,17 +6,11 @@
 
 #import <UIKit/_UIScrollsToTopInitiatorView.h>
 
-@class UIImage;
-
 __attribute__((visibility("hidden")))
 @interface UIClassicStatusBarView : _UIScrollsToTopInitiatorView
 {
-    UIImage *_image;
 }
 
-@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-
-- (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

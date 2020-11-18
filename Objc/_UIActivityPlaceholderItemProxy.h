@@ -14,6 +14,10 @@ __attribute__((visibility("hidden")))
     id _uikit_placeholderItem;
 }
 
+@property (readonly, nonatomic) id placeholderItem; // @dynamic placeholderItem;
+
++ (id)unproxiedItemForItem:(id)arg1;
++ (id)unproxiedItemsForItems:(id)arg1;
 - (void).cxx_destruct;
 - (Class)class;
 - (id)copyWithZone:(struct _NSZone *)arg1;

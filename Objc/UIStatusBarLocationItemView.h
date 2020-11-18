@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
     int _iconType;
 }
 
+- (id)_imageName;
+- (id)accessibilityHUDRepresentation;
 - (id)contentsImage;
 - (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
 

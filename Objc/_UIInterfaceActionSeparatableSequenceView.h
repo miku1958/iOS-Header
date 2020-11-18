@@ -44,8 +44,8 @@ __attribute__((visibility("hidden")))
 - (void)_setLayoutDebuggingIdentifier:(id)arg1;
 - (void)_setRoundedCornersOfView:(id)arg1 toCornerPosition:(unsigned long long)arg2;
 - (struct CGRect)_stackViewFrameForViewBounds:(struct CGRect)arg1;
-- (struct CGSize)_systemLayoutSizeFittingStackView;
-- (void)_updateActionRepresentationViewsOnlyKeepVisibleContentInHierarchySetting;
+- (struct CGSize)_systemLayoutSizeFittingStackView:(struct CGSize)arg1;
+- (void)_updateActionRepresentationViewsCanRemoveContentFromHierarchyWhenNotVisibleSetting;
 - (void)_updateLayoutWithStackFrameForActionSequenceEdgeInsets;
 - (void)_updateRoundedCornerPositionForActionRepViews;
 - (void)_updateSeparatorConstantSizedAxis;

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_usesWindowServerHitTesting;
 - (struct CGRect)actualSceneBounds;
 - (struct CGRect)actualSceneBoundsForLandscape:(BOOL)arg1;
+- (struct UIEdgeInsets)safeAreaInsets;
 
 @end
 

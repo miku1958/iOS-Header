@@ -16,11 +16,11 @@
     UIKeyboardDicationBackground *_background;
     UIButton *_endpointButton;
     UIButton *_endpointButtonLandscape;
-    UIButton *_waveTapEndpointButton;
     int _state;
     BOOL _keyboardInTransition;
     BOOL _automaticAppearanceWasEnabled;
     SUICFlamesView *_flamesView;
+    BOOL _showLanguageLabel;
     id<UIDictationViewDisplayDelegate> _displayDelegate;
 }
 
@@ -28,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) id<UIDictationViewDisplayDelegate> displayDelegate; // @synthesize displayDelegate=_displayDelegate;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL showLanguageLabel; // @synthesize showLanguageLabel=_showLanguageLabel;
 @property (readonly) Class superclass;
 
 + (id)activeInstance;
@@ -42,10 +43,12 @@
 - (struct CGPoint)contentOffset;
 - (struct CGSize)currentScreenSize;
 - (void)dealloc;
+- (void)didEndIndirectSelectionGesture;
 - (BOOL)drawsOwnBackground;
 - (id)endpointButton;
 - (void)endpointButtonPressed;
 - (void)finishReturnToKeyboard;
+- (void)globeButtonPressed:(id)arg1 withEvent:(id)arg2 location:(struct CGPoint)arg3;
 - (void)highlightEndpointButton;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isShowing;
@@ -56,6 +59,7 @@
 - (void)setState:(int)arg1;
 - (void)show;
 - (BOOL)visible;
+- (void)willBeginIndirectSelectionGesture;
 
 @end
 

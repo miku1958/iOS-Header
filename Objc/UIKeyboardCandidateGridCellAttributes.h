@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL _emphasizedAppearance;
     int _candidatesVisualStyle;
     NSIndexPath *_candidateIndexPath;
-    CDStruct_961fb75c _visualStyling;
+    CDStruct_227bb23d _visualStyling;
     unsigned long long _candidateNumber;
     unsigned long long _rowIndex;
     unsigned long long _edges;
@@ -38,10 +38,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long rowIndex; // @synthesize rowIndex=_rowIndex;
 @property (nonatomic) struct CGSize rowSize; // @synthesize rowSize=_rowSize;
 @property (nonatomic) BOOL secondaryCandidateAppearance; // @synthesize secondaryCandidateAppearance=_secondaryCandidateAppearance;
-@property (nonatomic) CDStruct_961fb75c visualStyling; // @synthesize visualStyling=_visualStyling;
+@property (nonatomic) CDStruct_227bb23d visualStyling; // @synthesize visualStyling=_visualStyling;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

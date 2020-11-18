@@ -9,11 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface _UIKBCompatInputView : UIView
 {
+    UIView *_touchableView;
     UIView *_snapshotView;
 }
 
 @property (strong, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
-@property (readonly, nonatomic) UIView *touchableView;
+@property (strong, nonatomic) UIView *touchableView; // @synthesize touchableView=_touchableView;
 
 + (BOOL)_retroactivelyRequiresConstraintBasedLayout;
 - (struct CGRect)_compatibleBounds;

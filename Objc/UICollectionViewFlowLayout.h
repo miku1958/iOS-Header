@@ -49,6 +49,7 @@
     NSMutableArray *_indexPathsToValidate;
     NSMutableDictionary *_cachedItemAttributes;
     NSMutableDictionary *_cachedItemFrames;
+    long long _sectionInsetReference;
 }
 
 @property (nonatomic) struct CGSize estimatedItemSize; // @synthesize estimatedItemSize=_estimatedItemSize;
@@ -62,9 +63,11 @@
 @property (nonatomic) BOOL sectionFootersPinToVisibleBounds;
 @property (nonatomic) BOOL sectionHeadersPinToVisibleBounds;
 @property (nonatomic) struct UIEdgeInsets sectionInset; // @synthesize sectionInset=_sectionInset;
+@property (nonatomic) long long sectionInsetReference; // @synthesize sectionInsetReference=_sectionInsetReference;
 
 + (Class)invalidationContextClass;
 - (void).cxx_destruct;
+- (struct UIEdgeInsets)_adjustedSectionInsetForSectionInset:(struct UIEdgeInsets)arg1 forAxis:(int)arg2;
 - (BOOL)_boundsAndInsetsAreValidForReferenceDimension;
 - (void)_calculateAttributesForRect:(struct CGRect)arg1;
 - (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
@@ -72,9 +75,9 @@
 - (double)_dimensionFromCollectionView;
 - (struct CGSize)_effectiveEstimatedItemSize;
 - (id)_existingLayoutAttributesForItemAtIndexPath:(id)arg1;
-- (struct UIEdgeInsets)_fastScrollingIndexBarInsets;
 - (id)_fetchAndCacheNewLayoutAttributesForCellWithIndexPath:(id)arg1 frame:(struct CGRect)arg2;
 - (void)_fetchItemsInfoForRect:(struct CGRect)arg1;
+- (struct UIEdgeInsets)_focusFastScrollingIndexBarInsets;
 - (BOOL)_footerFollowsSectionMargins;
 - (struct CGRect)_frameForFooterInSection:(long long)arg1 usingData:(id)arg2;
 - (struct CGRect)_frameForHeaderInSection:(long long)arg1 usingData:(id)arg2;
@@ -88,16 +91,19 @@
 - (BOOL)_roundsToScreenScale;
 - (id)_rowAlignmentOptions;
 - (long long)_sectionArrayIndexForIndexPath:(id)arg1;
+- (void)_setCollectionView:(id)arg1;
 - (void)_setFooterFollowsSectionMargins:(BOOL)arg1;
 - (void)_setHeaderFollowsSectionMargins:(BOOL)arg1;
 - (void)_setNeedsLayoutComputationWithoutInvalidation;
 - (void)_setRoundsToScreenScale:(BOOL)arg1;
 - (void)_setRowAlignmentsOptions:(id)arg1;
 - (BOOL)_shouldScrollToContentBeginningInRightToLeft;
+- (void)_updateCollectionViewScrollableAxis;
 - (void)_updateContentSizeScrollingDimensionWithDelta:(double)arg1;
 - (void)_updateDelegateFlags;
 - (void)_updateItemsLayoutForRect:(struct CGRect)arg1 allowsPartialUpdate:(BOOL)arg2;
 - (struct CGSize)collectionViewContentSize;
+- (long long)developmentLayoutDirection;
 - (void)encodeWithCoder:(id)arg1;
 - (id)finalLayoutAttributesForDeletedItemAtIndexPath:(id)arg1;
 - (id)finalLayoutAttributesForFooterInDeletedSection:(long long)arg1;

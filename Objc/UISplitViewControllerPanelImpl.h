@@ -33,6 +33,7 @@
     UISlidingBarStateRequest *_suspendedStateRequest;
     long long _suspendedState;
     UIResponder *_postTransitionResponder;
+    long long _primaryEdge;
     struct {
         unsigned int usedNewAPI:1;
         unsigned int primaryHidingState:2;
@@ -40,6 +41,7 @@
         unsigned int hasTransitioningSizeAndOrientation:1;
         unsigned int hasPendingPreferredDisplayModeChange:1;
         unsigned int firstResponderChangedFromPostTransitionResponder:1;
+        unsigned int firstResponderChangedFromPostTransitionResponderToNil:1;
     } _flags;
     double _lastUserInitiatedPrimaryWidth;
     BOOL _presentsWithGesture;
@@ -79,6 +81,7 @@
 @property (nonatomic) long long preferredDisplayMode; // @synthesize preferredDisplayMode=_preferredDisplayMode;
 @property (nonatomic) double preferredPrimaryColumnWidthFraction; // @synthesize preferredPrimaryColumnWidthFraction=_preferredPrimaryColumnWidthFraction;
 @property (nonatomic) BOOL presentsWithGesture; // @synthesize presentsWithGesture=_presentsWithGesture;
+@property (nonatomic) long long primaryEdge;
 @property (copy, nonatomic) UISlidingBarStateRequest *stateRequest;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIViewController *trailingViewController;
@@ -96,6 +99,7 @@
 - (void)_descendantWillPresentViewController:(id)arg1 modalSourceViewController:(id)arg2 presentationController:(id)arg3 animated:(BOOL)arg4;
 - (void)_didChangeToFirstResponder:(id)arg1;
 - (void)_didEndSnapshotSession;
+- (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_disableAutomaticKeyboardBehavior;
 - (void)_displayModeButtonItemWasAddedForFirstTime;
 - (long long)_displayModeForState:(id)arg1;
@@ -115,6 +119,8 @@
 - (BOOL)_isCollapsed;
 - (BOOL)_isLeadingShown;
 - (BOOL)_isRotating;
+- (BOOL)_layoutPrimaryOnRight;
+- (void)_marginInfoForChild:(id)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 - (BOOL)_optsOutOfPopoverControllerHierarchyCheck;
 - (void)_popoverController:(id)arg1 didChangeFromVisible:(BOOL)arg2;
 - (void)_popoverController:(id)arg1 willChangeToVisible:(BOOL)arg2;
@@ -175,6 +181,7 @@
 - (void)toggleMasterVisible:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)unloadViewForced:(BOOL)arg1;
+- (void)updateDisplayModeButtonItem;
 - (void)updateViewConstraints;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
@@ -185,7 +192,6 @@
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
-- (void)willUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 
 @end
 

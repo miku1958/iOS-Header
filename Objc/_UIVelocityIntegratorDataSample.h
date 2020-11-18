@@ -6,23 +6,20 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSDate;
-
 __attribute__((visibility("hidden")))
 @interface _UIVelocityIntegratorDataSample : NSObject
 {
-    NSDate *_time;
+    double _timestamp;
     struct CGVector _translation;
     struct CGPoint _point;
 }
 
 @property (nonatomic) struct CGPoint point; // @synthesize point=_point;
-@property (strong, nonatomic) NSDate *time; // @synthesize time=_time;
+@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) struct CGVector translation; // @synthesize translation=_translation;
 
-- (void).cxx_destruct;
 - (id)description;
-- (BOOL)isSampleDistinctEnoughFromTouchLocation:(struct CGPoint)arg1;
+- (BOOL)isSampleDistinctEnoughFromTouchLocation:(struct CGPoint)arg1 minimumRequiredMovement:(double)arg2;
 - (void)updateTimeToNow;
 
 @end

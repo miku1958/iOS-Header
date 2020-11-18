@@ -17,16 +17,17 @@ __attribute__((visibility("hidden")))
 {
     id<UIViewControllerPreviewingDelegate> _delegate;
     UIView *_sourceView;
+    UIView *_customViewForInteractiveHighlight;
     UIViewController *_viewController;
     UIPreviewInteractionController *_previewInteractionController;
     struct CGRect _sourceRect;
 }
 
+@property (strong, nonatomic) UIView *customViewForInteractiveHighlight; // @synthesize customViewForInteractiveHighlight=_customViewForInteractiveHighlight;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) id<UIViewControllerPreviewingDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UIGestureRecognizer *presentationGestureRecognizer;
 @property (strong, nonatomic) UIPreviewInteractionController *previewInteractionController; // @synthesize previewInteractionController=_previewInteractionController;
 @property (readonly, nonatomic) UIGestureRecognizer *previewingGestureRecognizerForFailureRelationship;
 @property (nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
@@ -35,7 +36,6 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
-- (id)init;
 - (id)initWithSourceView:(id)arg1 viewController:(id)arg2;
 - (BOOL)performsCustomCommitTransitionForPreviewInteractionController:(id)arg1;
 - (BOOL)performsViewControllerCommitTransitionForPreviewInteractionController:(id)arg1;
@@ -49,6 +49,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)previewInteractionController:(id)arg1 shouldUseStandardRevealTransformForPreviewingAtLocation:(struct CGPoint)arg2 inView:(id)arg3;
 - (id)previewInteractionController:(id)arg1 transitioningDelegateForPreviewingAtPosition:(struct CGPoint)arg2 inView:(id)arg3;
 - (id)previewInteractionController:(id)arg1 viewControllerForPreviewingAtPosition:(struct CGPoint)arg2 inView:(id)arg3 presentingViewController:(id *)arg4;
+- (void)previewInteractionController:(id)arg1 willDismissViewController:(id)arg2;
+- (void)previewInteractionController:(id)arg1 willPresentViewController:(id)arg2;
 - (void)previewInteractionController:(id)arg1 willPresentViewController:(id)arg2 forPosition:(struct CGPoint)arg3 inSourceView:(id)arg4;
 - (BOOL)previewInteractionControllerShouldPerformCompatibilityCommitTransition:(id)arg1;
 - (void)setDelegate:(id)arg1;

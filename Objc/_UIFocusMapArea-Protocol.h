@@ -7,9 +7,11 @@
 #import <UIKit/NSObject-Protocol.h>
 
 @class _UIFocusRegion;
+@protocol UICoordinateSpace;
 
 @protocol _UIFocusMapArea <NSObject>
 
+@property (readonly, weak, nonatomic) id<UICoordinateSpace> coordinateSpace;
 @property (readonly, nonatomic) struct CGRect frame;
 
 - (_UIFocusRegion *)intersectionWithRegion:(_UIFocusRegion *)arg1;

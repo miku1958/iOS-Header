@@ -6,12 +6,13 @@
 
 #import <UIKit/UIEvent.h>
 
-@class NSMapTable, NSMutableSet, _UITouchPredictionManager;
+@class NSMapTable, NSMutableSet, NSSet, _UITouchPredictionManager;
 
 __attribute__((visibility("hidden")))
 @interface UITouchesEvent : UIEvent
 {
-    NSMutableSet *_touches;
+    NSMutableSet *_allTouchesMutable;
+    NSSet *_allTouchesImmutableCached;
     struct __CFDictionary *_keyedTouches;
     struct __CFDictionary *_keyedTouchesByWindow;
     struct __CFDictionary *_gestureRecognizersByWindow;
@@ -25,7 +26,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) double _initialTouchTimestamp;
-@property (readonly, nonatomic) unsigned int _windowServerHitTestContextId;
 @property (nonatomic) long long singleAllowableExternalTouchPathIndex; // @synthesize singleAllowableExternalTouchPathIndex=_singleAllowableExternalTouchPathIndex;
 
 - (void).cxx_destruct;
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)_gestureRecognizersForWindow:(id)arg1;
 - (id)_init;
 - (id)_initWithEvent:(struct __GSEvent *)arg1 touches:(id)arg2;
+- (double)_initialTouchTimestampForWindow:(id)arg1;
 - (void)_invalidateGestureRecognizerForWindowCache;
 - (id)_lastPendingCoalescedTouchForIndex:(long long)arg1 hidEvent:(struct __IOHIDEvent *)arg2;
 - (void)_moveCoalescedTouchesFromHidEvent:(struct __IOHIDEvent *)arg1 toHidEvent:(struct __IOHIDEvent *)arg2;

@@ -11,13 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface UITableViewUpdateGap : NSObject
 {
-    UIUpdateItem *_firstUpdateItem;
-    UIUpdateItem *_lastUpdateItem;
     NSMutableArray *_deleteItems;
     NSMutableArray *_insertItems;
     struct {
         unsigned int hasAutomaticAnimationItems:1;
     } _gapFlags;
+    UIUpdateItem *_firstUpdateItem;
+    UIUpdateItem *_lastUpdateItem;
 }
 
 @property (readonly, nonatomic) NSArray *deleteItems; // @synthesize deleteItems=_deleteItems;

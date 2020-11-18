@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, UIStatusBar, UIStatusBarComposedData, UIStatusBarForegroundStyleAttributes, UIStatusBarLayoutManager;
+#import <UIKit/UIAccessibilityHUDGestureHosting-Protocol.h>
+
+@class NSMutableArray, UIAccessibilityHUDGestureManager, UIStatusBar, UIStatusBarComposedData, UIStatusBarForegroundStyleAttributes, UIStatusBarLayoutManager;
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarForegroundView : UIView
+@interface UIStatusBarForegroundView : UIView <UIAccessibilityHUDGestureHosting>
 {
     BOOL _usesVerticalLayout;
     BOOL _itemIsEnabled[41];
@@ -19,6 +21,7 @@ __attribute__((visibility("hidden")))
     UIStatusBarComposedData *_currentData;
     UIStatusBarComposedData *_pendedData;
     int _pendedActions;
+    UIAccessibilityHUDGestureManager *_accessibilityHUDGestureManager;
     long long _idiom;
     UIStatusBarForegroundStyleAttributes *_foregroundStyle;
 }
@@ -28,23 +31,32 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIStatusBar *statusBar;
 
 - (void).cxx_destruct;
+- (id)_accessibilityHUDGestureManager:(id)arg1 HUDItemForPoint:(struct CGPoint)arg2;
+- (void)_accessibilityHUDGestureManager:(id)arg1 gestureLiftedAtPoint:(struct CGPoint)arg2;
+- (BOOL)_accessibilityHUDGestureManager:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)_accessibilityHUDGestureManager:(id)arg1 showHUDItem:(id)arg2;
 - (void)_animateUnlockCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_cleanUpAfterDataChange;
 - (void)_cleanUpAfterSimpleReflow;
 - (id)_computeVisibleItemsPreservingHistory:(BOOL)arg1;
+- (void)_dismissAccessibilityHUDForGestureManager:(id)arg1;
 - (void)_reflowItemViewsCrossfadingCenterWithDuration:(double)arg1 timeWasEnabled:(BOOL)arg2;
 - (void)_reflowItemViewsWithDuration:(double)arg1 preserveHistory:(BOOL)arg2;
 - (void)_setStatusBarData:(id)arg1 actions:(int)arg2 animated:(BOOL)arg3;
+- (id)_statusBarItemViewAtPoint:(struct CGPoint)arg1;
+- (id)_statusBarWindowForAccessibilityHUD;
 - (BOOL)_tryToPlaceItem:(id)arg1 inItemArray:(id)arg2 layoutManager:(id)arg3 roomRemaining:(double *)arg4 allowSwap:(BOOL)arg5 swappedItem:(id *)arg6;
 - (void)animateUnlock;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (double)edgePadding;
+- (struct CGRect)frameForItemOfType:(int)arg1;
 - (BOOL)ignoringData;
 - (id)initWithFrame:(struct CGRect)arg1 foregroundStyle:(id)arg2 usesVerticalLayout:(BOOL)arg3;
 - (BOOL)isShowingBreadcrumb;
 - (void)jiggleLockIcon;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (BOOL)rectIntersectsBatteryItem:(struct CGRect)arg1;
 - (BOOL)rectIntersectsTimeItem:(struct CGRect)arg1;
 - (void)reflowItemViews:(BOOL)arg1;
 - (void)reflowItemViewsCrossfadingCenter:(id)arg1 duration:(double)arg2;

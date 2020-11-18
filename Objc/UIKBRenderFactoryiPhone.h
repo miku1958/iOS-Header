@@ -11,9 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (struct CGPoint)ZWNJKeyOffset;
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
+- (void)_customizeTraits:(id)arg1 forPredictionCellKey:(id)arg2;
 - (BOOL)_popupMenuStyleForKey:(id)arg1;
 - (BOOL)_popupStyleForKey:(id)arg1;
 - (double)_row4ControlSegmentWidthLeft;
@@ -69,12 +71,15 @@ __attribute__((visibility("hidden")))
 - (double)stringKeyFontSize;
 - (struct CGPoint)stringKeyOffset;
 - (struct CGPoint)undoKeyOffset;
+- (struct CGPoint)variantAnnotationTextOffset;
 - (struct UIEdgeInsets)variantDisplayFrameInsets;
-- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3;
+- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3 annotationIndex:(unsigned long long)arg4;
 - (struct UIEdgeInsets)variantPaddedFrameInsets;
 - (struct UIEdgeInsets)variantSymbolFrameInsets;
 - (struct CGPoint)variantSymbolTextOffset;
+- (double)variantWideShadowWeight;
 - (struct UIEdgeInsets)wideShadowPaddleInsets;
+- (struct UIEdgeInsets)wideShadowPopupMenuInsets;
 - (double)zhuyinFirstToneKeyFontSize;
 - (struct CGPoint)zhuyinFirstToneKeyOffset;
 

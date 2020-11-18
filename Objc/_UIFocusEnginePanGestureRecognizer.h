@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     id<_UIFocusEnginePanGestureTouchObserver> _touchObserver;
 }
 
-@property (weak, nonatomic) id<_UIFocusEnginePanGestureRecognizerDelegate> delegate;
+@property (weak, nonatomic) id<_UIFocusEnginePanGestureRecognizerDelegate> delegate; // @dynamic delegate;
 @property (weak, nonatomic) id<_UIFocusEnginePanGestureTouchObserver> touchObserver; // @synthesize touchObserver=_touchObserver;
 
 - (void).cxx_destruct;

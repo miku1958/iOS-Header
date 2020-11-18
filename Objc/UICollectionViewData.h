@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)_validateContentSize;
 - (void)_validateItemCounts;
 - (struct CGRect)collectionViewContentRect;
+- (BOOL)dataSourceMatchesCurrentCounts;
 - (void)dealloc;
 - (id)existingSupplementaryLayoutAttributes;
 - (id)existingSupplementaryLayoutAttributesInSection:(long long)arg1;

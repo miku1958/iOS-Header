@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class CADisplayLink, NSArray, NSTimer, UIPanGestureRecognizer, UIScrollView, _UIDynamicAnimationGroup, _UIDynamicValueAnimation, _UIFocusEngineJoystickGestureRecognizer, _UIScrollViewIndexBar, _UIScrollViewIndexBarEntry;
+@class CADisplayLink, NSArray, NSTimer, UIPanGestureRecognizer, UIScrollView, _UIDynamicAnimationGroup, _UIDynamicValueAnimation, _UIFocusEngineJoystickGestureRecognizer, _UIFocusFastScrollingIndexBarEntry, _UIFocusFastScrollingIndexBarView;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusFastScrollingController : NSObject
@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     UIPanGestureRecognizer *_panGesture;
     NSArray *_pressGestures;
     _UIFocusEngineJoystickGestureRecognizer *_joystickGesture;
-    _UIScrollViewIndexBar *_indexBarView;
     _UIDynamicValueAnimation *_animationX;
     _UIDynamicValueAnimation *_animationY;
     _UIDynamicAnimationGroup *_animationGroup;
@@ -23,8 +22,8 @@ __attribute__((visibility("hidden")))
     struct CGPoint _offsetWhenPanStarted;
     NSArray *_displayedEntries;
     double _initialEdgeDigitizerLocation;
-    int _initialIndexEntry;
-    int _highlightedIndexEntry;
+    long long _initialIndexEntry;
+    long long _highlightedIndexEntry;
     CDStruct_5e2aa800 _initialVelocity;
     unsigned long long _heading;
     unsigned long long _allowedHeadings;
@@ -42,12 +41,13 @@ __attribute__((visibility("hidden")))
         unsigned int isCancellingScrollAnimation:1;
     } _flags;
     NSArray *_indexEntries;
+    _UIFocusFastScrollingIndexBarView *_indexBarView;
 }
 
 @property (readonly, nonatomic, getter=isDecelerating) BOOL decelerating;
 @property (readonly, nonatomic, getter=isDragging) BOOL dragging;
-@property (readonly, nonatomic) _UIScrollViewIndexBarEntry *highlightedEntry;
-@property (readonly, nonatomic) _UIScrollViewIndexBar *indexBarView;
+@property (readonly, nonatomic) _UIFocusFastScrollingIndexBarEntry *highlightedEntry;
+@property (readonly, nonatomic) _UIFocusFastScrollingIndexBarView *indexBarView; // @synthesize indexBarView=_indexBarView;
 @property (copy, nonatomic) NSArray *indexEntries; // @synthesize indexEntries=_indexEntries;
 @property (readonly, weak, nonatomic) UIScrollView *scrollView;
 @property (readonly, nonatomic) long long scrollingStyle;
@@ -62,11 +62,15 @@ __attribute__((visibility("hidden")))
 - (void)_attemptToStopDueToExternalEvent:(BOOL)arg1;
 - (void)_beginCooldownWithDuration:(double)arg1;
 - (void)_beginDeceleratingAfterPressGesture;
+- (void)_beginInitialSwipeDeceleration;
 - (void)_cancelCooldown;
 - (void)_configureWithRequest:(id)arg1;
 - (void)_cooldownEnded;
 - (CDStruct_c3b9c2ee)_currentScrollViewDecelerationVelocity;
+- (void)_endDraggingWithFinalVelocity:(CDStruct_c3b9c2ee)arg1;
 - (void)_finishDecelerating;
+- (void)_handleAnimationGroupScrollingAnimations;
+- (void)_handleAnimationGroupScrollingCompletionWithInitialVelocity:(struct CGPoint)arg1 bounces:(BOOL)arg2;
 - (void)_handleEdgePanBegin:(id)arg1;
 - (void)_handleEdgePanChanged:(id)arg1;
 - (void)_handleEdgePanEnd:(id)arg1;
@@ -80,7 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleSwipePanChanged:(id)arg1;
 - (void)_handleSwipePanEnd:(id)arg1;
 - (void)_hideDestinationIndicators;
-- (void)_interpretDigitzerLocation:(struct CGPoint)arg1 toFindEntryIndex:(int *)arg2 deflection:(double *)arg3;
+- (void)_interpretDigitzerLocation:(struct CGPoint)arg1 toFindEntryIndex:(long long *)arg2 deflection:(double *)arg3;
 - (void)_pressAnimationHeartbeat:(id)arg1;
 - (void)_resetAllPressGestures;
 - (void)_setContentOffset:(struct CGPoint)arg1 withVelocity:(CDStruct_c3b9c2ee)arg2;

@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (struct CGPoint)locationInView:(id)arg1;
+- (struct CGPoint)locationInView:(id)arg1 focusSystem:(id)arg2;
 - (void)multitouchExpired:(id)arg1;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;

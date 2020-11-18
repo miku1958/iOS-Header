@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_loopAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (BOOL)_loopingNecessary;
 - (id)_serviceContentsImage;
+- (id)accessibilityHUDRepresentation;
 - (double)addContentOverlap:(double)arg1;
 - (BOOL)animatesDataChange;
 - (id)contentsImage;

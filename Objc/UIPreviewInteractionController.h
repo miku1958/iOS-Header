@@ -11,14 +11,15 @@
 #import <UIKit/UIPreviewInteractionDelegate-Protocol.h>
 #import <UIKit/_UIForcePresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIGestureRecognizer, UIInteractionProgress, UIPanGestureRecognizer, UIPresentationController, UIPreviewInteraction, UIView, UIViewController, UIWindow, _UIDeepPressAnalyzer, _UIFeedbackStatesBehavior, _UIPreviewGestureRecognizer, _UIRevealGestureRecognizer, _UITouchesObservingGestureRecognizer;
-@protocol UIForcePresentationController, UIForceTransitioningDelegate, UIPreviewInteractionControllerDelegate;
+@class NSArray, NSString, UIGestureRecognizer, UIInteractionProgress, UIPanGestureRecognizer, UIPresentationController, UIPreviewInteraction, UIView, UIViewController, UIWindow, _UIDeepPressAnalyzer, _UIPreviewGestureRecognizer, _UIRevealGestureRecognizer, _UIStatesFeedbackGenerator, _UITouchesObservingGestureRecognizer;
+@protocol UIForcePresentationController, UIForceTransitioningDelegate, UIPreviewInteractionControllerDelegate, UIViewControllerPreviewing_Internal;
 
 @interface UIPreviewInteractionController : NSObject <UIGestureRecognizerDelegate, UIInteractionProgressObserver, _UIForcePresentationControllerDelegate, UIPreviewInteractionDelegate>
 {
     BOOL _isCommitting;
-    BOOL _behaviorTurnedOn;
+    BOOL _generatorTurnedOn;
     BOOL _statusBarWasHidden;
+    BOOL _didSendDelegateWillDismissViewController;
     id<UIPreviewInteractionControllerDelegate> _delegate;
     UIView *_sourceView;
     UIViewController *_presentingViewController;
@@ -34,7 +35,8 @@
     id<UIForceTransitioningDelegate> _currentTransitionDelegate;
     UIWindow *_windowForPreviewPresentation;
     id _currentCommitTransition;
-    _UIFeedbackStatesBehavior *_feedbackBehavior;
+    id<UIViewControllerPreviewing_Internal> _previewingContext;
+    _UIStatesFeedbackGenerator *_feedbackGenerator;
     UIInteractionProgress *_interactionProgressForPresentation;
     struct CGPoint _location;
 }
@@ -48,7 +50,8 @@
 @property (strong, nonatomic) _UIDeepPressAnalyzer *deepPressAnalyzer; // @synthesize deepPressAnalyzer=_deepPressAnalyzer;
 @property (weak, nonatomic) id<UIPreviewInteractionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) _UIFeedbackStatesBehavior *feedbackBehavior; // @synthesize feedbackBehavior=_feedbackBehavior;
+@property (nonatomic) BOOL didSendDelegateWillDismissViewController; // @synthesize didSendDelegateWillDismissViewController=_didSendDelegateWillDismissViewController;
+@property (strong, nonatomic) _UIStatesFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (readonly, nonatomic) NSArray *gestureRecognizers; // @dynamic gestureRecognizers;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIInteractionProgress *interactionProgressForCommit; // @synthesize interactionProgressForCommit=_interactionProgressForCommit;
@@ -59,6 +62,7 @@
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (strong, nonatomic) _UIPreviewGestureRecognizer *previewGestureRecognizer; // @synthesize previewGestureRecognizer=_previewGestureRecognizer;
 @property (strong, nonatomic) UIPreviewInteraction *previewInteraction; // @synthesize previewInteraction=_previewInteraction;
+@property (weak, nonatomic) id<UIViewControllerPreviewing_Internal> previewingContext; // @synthesize previewingContext=_previewingContext;
 @property (strong, nonatomic) _UIRevealGestureRecognizer *revealGestureRecognizer; // @synthesize revealGestureRecognizer=_revealGestureRecognizer;
 @property (weak, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property (nonatomic) BOOL statusBarWasHidden; // @synthesize statusBarWasHidden=_statusBarWasHidden;
@@ -75,14 +79,14 @@
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (void)_handleRevealGesture:(id)arg1;
 - (void)_handleTouchObservingGesture:(id)arg1;
-- (void)_panningRecognizerDidFire:(id)arg1;
+- (void)_previewPresentationControllerDidScheduleDismiss;
 - (BOOL)_previewingIsPossibleForView:(id)arg1;
 - (void)_resetCustomPresentationHooks;
 - (void)_setCalloutBarHidden:(BOOL)arg1;
 - (void)_setStatusBarHidden:(BOOL)arg1;
 - (id)_transitionDelegateForPreviewViewController:(id)arg1 atPosition:(struct CGPoint)arg2 inView:(id)arg3;
-- (void)_turnOffFeedbackBehavior;
-- (void)_turnOnFeedbackBehavior;
+- (void)_turnOffFeedbackGenerator;
+- (void)_turnOnFeedbackGenerator;
 - (BOOL)_usesPreviewInteraction;
 - (BOOL)_usesPreviewPresentationController;
 - (BOOL)_viewControllerIsChildOfExpandedSplitViewController:(id)arg1;

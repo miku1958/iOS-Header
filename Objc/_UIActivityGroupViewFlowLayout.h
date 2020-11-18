@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _evaluatedItemSize;
     struct CGSize _evaluatedContentSize;
     struct UIOffset _draggingOffset;
+    struct UIEdgeInsets _externalSafeInset;
     struct UIEdgeInsets _evaluatedInset;
 }
 
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double evaluatedHorizontalItemOffset; // @synthesize evaluatedHorizontalItemOffset=_evaluatedHorizontalItemOffset;
 @property (nonatomic) struct UIEdgeInsets evaluatedInset; // @synthesize evaluatedInset=_evaluatedInset;
 @property (nonatomic) struct CGSize evaluatedItemSize; // @synthesize evaluatedItemSize=_evaluatedItemSize;
+@property (nonatomic) struct UIEdgeInsets externalSafeInset; // @synthesize externalSafeInset=_externalSafeInset;
 @property (copy, nonatomic) NSIndexPath *indexPathForDraggedItem; // @synthesize indexPathForDraggedItem=_indexPathForDraggedItem;
 @property (copy, nonatomic) NSArray *preparedLayoutAttributes; // @synthesize preparedLayoutAttributes=_preparedLayoutAttributes;
 @property (copy, nonatomic) NSArray *preparedUpdateItems; // @synthesize preparedUpdateItems=_preparedUpdateItems;

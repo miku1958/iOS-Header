@@ -13,7 +13,7 @@
 
 @interface UITraitCollection : NSObject <NSCopying, NSSecureCoding>
 {
-    CDStruct_44017d25 _builtinTraits;
+    CDStruct_759b680f _builtinTraits;
     NSDictionary *_clientDefinedTraits;
 }
 
@@ -34,6 +34,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)traitCollectionWithBarMetrics:(long long)arg1;
 + (id)traitCollectionWithBarPosition:(long long)arg1;
++ (id)traitCollectionWithDisplayCornerRadius:(double)arg1;
 + (id)traitCollectionWithDisplayGamut:(long long)arg1;
 + (id)traitCollectionWithDisplayScale:(double)arg1;
 + (id)traitCollectionWithForceTouchCapability:(long long)arg1;
@@ -49,7 +50,7 @@
 + (id)traitCollectionWithVerticalSizeClass:(long long)arg1;
 - (BOOL)_changedContentSizeCategoryFromTraitCollection:(id)arg1;
 - (long long)_compare:(id)arg1;
-- (id)_initWithBuiltinTraitStorage:(CDStruct_44017d25 *)arg1 clientDefinedTraits:(id)arg2;
+- (id)_initWithBuiltinTraitStorage:(CDStruct_759b680f *)arg1 clientDefinedTraits:(id)arg2;
 - (BOOL)_matchesIntersectionWithTraitCollection:(id)arg1;
 - (id)_namedImageDescription;
 - (id)_traitCollectionByReplacingValue:(id)arg1 forTraitName:(id)arg2;
@@ -58,6 +59,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (double)displayCornerRadius;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;

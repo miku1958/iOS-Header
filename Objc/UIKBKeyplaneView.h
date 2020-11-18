@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKBCacheableView-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSTimer, UIKBCacheToken, UIKBKeyView, UIKBKeyViewAnimator, UIKBRenderConfig, UIKBRenderFactory, UIKBTree, UIKeyboardEmojiKeyDisplayController;
+@class NSMutableDictionary, NSString, NSTimer, UIKBCacheToken, UIKBKeyView, UIKBKeyViewAnimator, UIKBRenderConfig, UIKBRenderFactory, UIKBRenderingContext, UIKBTree, UIKeyboardEmojiKeyDisplayController;
 
 __attribute__((visibility("hidden")))
 @interface UIKBKeyplaneView : UIKBSplitImageView <UIKBCacheableView>
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     BOOL _performingDeactivation;
     BOOL _shouldDrawRect;
     UIKBRenderConfig *_renderConfig;
+    UIKBRenderingContext *_renderingContext;
     UIKBRenderFactory *_factory;
     UIKBSplitImageView *_keyBorders;
     UIKBSplitImageView *_keyBackgrounds;
@@ -49,10 +50,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKBKeyViewAnimator *keyViewAnimator; // @synthesize keyViewAnimator=_keyViewAnimator;
 @property (strong, nonatomic) UIKBTree *keyplane; // @synthesize keyplane=_keyplane;
 @property (strong, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
+@property (strong, nonatomic) UIKBRenderingContext *renderingContext; // @synthesize renderingContext=_renderingContext;
 @property (readonly) Class superclass;
 
 - (BOOL)_canDrawContent;
 - (void)_generateFactoryIfNeeded;
+- (void)_generateRenderingContextIfNeeded;
 - (BOOL)_shouldAllowKey:(id)arg1;
 - (void)activateKeys;
 - (id)activeKeyViews;

@@ -6,19 +6,19 @@
 
 #import <Foundation/NSObject.h>
 
-#import <UIKit/_UIScrollNotification-Protocol.h>
+#import <UIKit/_UIScrollViewScrollObserver_Internal-Protocol.h>
 
 @class NSString, UIScrollView;
-@protocol _UIScrollNotification;
+@protocol _UIScrollViewScrollObserver_Internal;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchControllerDidScrollDelegate : NSObject <_UIScrollNotification>
+@interface _UISearchControllerDidScrollDelegate : NSObject <_UIScrollViewScrollObserver_Internal>
 {
-    id<_UIScrollNotification> _controller;
+    id<_UIScrollViewScrollObserver_Internal> _controller;
     UIScrollView *_scrollView;
 }
 
-@property (weak, nonatomic) id<_UIScrollNotification> controller; // @synthesize controller=_controller;
+@property (weak, nonatomic) id<_UIScrollViewScrollObserver_Internal> controller; // @synthesize controller=_controller;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_didScroll;
-- (void)_updateBackdropMaskViewsInScrollView:(id)arg1;
+- (void)_observeScrollViewDidScroll:(id)arg1;
 
 @end
 

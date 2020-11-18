@@ -30,6 +30,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *touches;
 
++ (BOOL)_supportsTouchContinuation;
 - (void).cxx_destruct;
 - (double)_allowableSeparation;
 - (double)_allowableTouchTimeSeparation;

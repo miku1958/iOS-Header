@@ -18,17 +18,17 @@ __attribute__((visibility("hidden")))
 {
     BOOL _reducedWidth;
     int _position;
+    UIKeyboardCandidateGridCollectionViewController *_collectionViewController;
+    UIKeyboardCandidateSortControl *_sortSelectionBar;
     TIKeyboardCandidateResultSet *_candidateSet;
     NSString *_inlineText;
     double _maxX;
-    UIKeyboardCandidateGridCollectionViewController *_collectionViewController;
     id<UIKeyboardCandidateListDelegate> _candidateListDelegate;
-    UIKeyboardCandidateSortControl *_sortSelectionBar;
     struct CGRect _inlineRect;
     struct CGRect _previousCollapsedFrame;
 }
 
-@property (nonatomic) id<UIKeyboardCandidateListDelegate> candidateListDelegate; // @synthesize candidateListDelegate=_candidateListDelegate;
+@property (weak, nonatomic) id<UIKeyboardCandidateListDelegate> candidateListDelegate; // @synthesize candidateListDelegate=_candidateListDelegate;
 @property (strong, nonatomic) TIKeyboardCandidateResultSet *candidateSet; // @synthesize candidateSet=_candidateSet;
 @property (readonly, nonatomic) UIKeyboardCandidateGridCollectionViewController *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
 @property (readonly, copy) NSString *debugDescription;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIKeyboardCandidateSortControl *sortSelectionBar; // @synthesize sortSelectionBar=_sortSelectionBar;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_inheritedRenderConfig;
 - (id)activeCandidateList;
 - (void)adjustFrameForInlineText:(id)arg1 inlineRect:(struct CGRect)arg2 maxX:(double)arg3;
@@ -68,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAcceptableFrame:(struct CGRect)arg1 afterScrollBy:(double)arg2;
 - (BOOL)isExtendedList;
+- (BOOL)isFloatingList;
 - (id)keyboardBehaviors;
 - (void)layout;
 - (void)padInlineFloatingViewExpand:(id)arg1;
@@ -79,12 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
 - (BOOL)showCandidate:(id)arg1;
 - (void)showCandidateAtIndex:(unsigned long long)arg1;
-- (void)showNextCandidate;
-- (void)showNextPage;
-- (void)showNextRow;
-- (void)showPreviousCandidate;
-- (void)showPreviousPage;
-- (void)showPreviousRow;
+- (void)showCandidateInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (struct CGSize)size;
 - (void)sortSelectionBarAction;
 - (id)statisticsIdentifier;

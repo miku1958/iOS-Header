@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     double _lastSuspendedTime;
     BOOL _shouldRegenerateSizingConstraints;
     BOOL _shouldSuppressRemoteInputController;
+    BOOL _tearingDownInputController;
     double _resetInputModeTime;
     UIViewController *_inputController;
     NSArray *_internalEdgeMatchConstraints;
@@ -57,12 +58,13 @@ __attribute__((visibility("hidden")))
 - (void)keyboardWillChangeFromDelegate:(id)arg1 toDelegate:(id)arg2;
 - (void)killIncomingExtension;
 - (void)loadView;
-- (id)preferredFocusedItem;
+- (id)preferredFocusedView;
 - (void)rebuildChildConstraints;
 - (void)removeSnapshotView;
 - (void)resetInputMode;
 - (void)resetInputModeInMainThread;
 - (void)setInputMode:(id)arg1;
+- (void)setTearingDownInputController;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutomaticallyForwardRotationMethods;
 - (void)shouldUpdateInputMode:(id)arg1;

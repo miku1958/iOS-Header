@@ -7,6 +7,9 @@
 #import <FrontBoardServices/FBSSceneSettings.h>
 
 @interface FBSSceneSettings (UIApplicationSceneSettings)
+
+@property (readonly, nonatomic) Class canvasClass;
+
 - (BOOL)isUISubclass;
 @end
 

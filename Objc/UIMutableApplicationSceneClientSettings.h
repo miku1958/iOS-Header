@@ -8,7 +8,7 @@
 
 #import <UIKit/UIApplicationSceneClientSettings-Protocol.h>
 
-@class NSString;
+@class FBSDisplayMode, NSString;
 
 @interface UIMutableApplicationSceneClientSettings : FBSMutableSceneClientSettings <UIApplicationSceneClientSettings>
 {
@@ -17,6 +17,7 @@
 
 @property (nonatomic) long long backgroundStyle;
 @property (nonatomic) long long compatibilityMode;
+@property (nonatomic) double controlCenterAmbiguousActivationMargin;
 @property (nonatomic) long long controlCenterRevealMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) double defaultPNGExpirationTime;
@@ -26,19 +27,26 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL deviceOrientationEventsEnabled;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL homeIndicatorAutoHidden;
 @property (nonatomic) BOOL idleModeVisualEffectsEnabled;
 @property (nonatomic) BOOL idleTimerDisabled;
 @property (nonatomic) long long interfaceOrientation;
 @property (nonatomic) BOOL interfaceOrientationChangesDisabled;
 @property (nonatomic) long long notificationCenterRevealMode;
+@property (nonatomic) long long overscanCompensation;
 @property (nonatomic) struct UIEdgeInsets primaryWindowOverlayInsets;
 @property (nonatomic) unsigned long long proximityDetectionModes;
+@property (nonatomic, getter=isReachabilitySupported) BOOL reachabilitySupported;
+@property (strong, nonatomic) FBSDisplayMode *requestedDisplayMode;
+@property (nonatomic) unsigned long long screenEdgesDeferringSystemGestures;
 @property (nonatomic) unsigned int statusBarContextID;
 @property (nonatomic, getter=isStatusBarForegroundTransparent) BOOL statusBarForegroundTransparent; // @synthesize statusBarForegroundTransparent=_statusBarForegroundTransparent;
 @property (nonatomic) BOOL statusBarHidden;
 @property (nonatomic) long long statusBarStyle;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long supportedInterfaceOrientations;
+@property (nonatomic) long long userInterfaceStyle;
+@property (nonatomic) BOOL wantsExclusiveForeground;
 @property (nonatomic) long long whitePointAdaptivityStyle;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

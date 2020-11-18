@@ -7,7 +7,6 @@
 #import <UIKit/UICollectionViewDelegate-Protocol.h>
 
 @class NSIndexPath, UICollectionView, UIView;
-@protocol UIFocusContainer;
 
 @protocol UICollectionViewFocusDelegate_Legacy <UICollectionViewDelegate>
 
@@ -16,7 +15,6 @@
 - (void)_collectionView:(UICollectionView *)arg1 didFocusItemAtIndexPath:(NSIndexPath *)arg2;
 - (void)collectionView:(UICollectionView *)arg1 didFocusItemAtIndexPath:(NSIndexPath *)arg2;
 - (void)collectionView:(UICollectionView *)arg1 didUnfocusItemAtIndexPath:(NSIndexPath *)arg2;
-- (BOOL)collectionView:(UICollectionView *)arg1 shouldChangeFocusedItem:(id<UIFocusContainer>)arg2 fromItemAtIndexPath:(NSIndexPath *)arg3;
 - (BOOL)collectionView:(UICollectionView *)arg1 shouldUpdateFocusFromItemAtIndexPath:(NSIndexPath *)arg2 toView:(UIView *)arg3 heading:(unsigned long long)arg4;
 - (NSIndexPath *)indexPathForPreferredFocusedItemForCollectionView:(UICollectionView *)arg1;
 @end

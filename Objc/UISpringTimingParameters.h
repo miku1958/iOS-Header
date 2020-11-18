@@ -23,7 +23,7 @@
 @property (readonly, nonatomic) UICubicTimingParameters *cubicTimingParameters;
 @property (nonatomic) double damping; // @synthesize damping=_damping;
 @property (readonly, nonatomic) double dampingRatio; // @synthesize dampingRatio=_dampingRatio;
-@property (readonly, nonatomic) BOOL implicitDuration; // @synthesize implicitDuration=_implicitDuration;
+@property (nonatomic) BOOL implicitDuration; // @synthesize implicitDuration=_implicitDuration;
 @property (readonly, nonatomic) struct CGVector initialVelocity; // @synthesize initialVelocity=_initialVelocity;
 @property (nonatomic) double mass; // @synthesize mass=_mass;
 @property (readonly, nonatomic) double settlingDuration;

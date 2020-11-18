@@ -107,7 +107,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldMergeKey:(id)arg1;
 - (BOOL)shouldPreventInputManagerHitTestingForKey:(id)arg1;
 - (BOOL)shouldRetestKey:(id)arg1 withKeyplane:(id)arg2;
-- (BOOL)shouldShowDictationKey;
 - (BOOL)shouldToggleKeyplaneWithName:(id)arg1;
 - (BOOL)shouldUseDefaultShiftStateFromLayout;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;

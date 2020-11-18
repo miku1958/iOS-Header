@@ -7,13 +7,16 @@
 #import <UIKit/_UIFocusEnvironmentPrivate-Protocol.h>
 
 @class UIFocusAnimationCoordinator, UIFocusUpdateContext;
-@protocol UIFocusEnvironment;
+@protocol UIFocusEnvironment, _UIFocusRegionContainer;
 
 @protocol _UIFocusEnvironmentInternal <_UIFocusEnvironmentPrivate>
 
+@property (readonly, weak, nonatomic, getter=_focusMapContainer) id<_UIFocusRegionContainer> focusMapContainer;
+
+
 @optional
 - (void)_didUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
-- (id<UIFocusEnvironment>)_overridingDestinationEnvironmentForFocusUpdateInContext:(UIFocusUpdateContext *)arg1;
+- (id<UIFocusEnvironment>)_overridingPreferredFocusEnvironment;
 - (BOOL)_shouldUpdateFocusInContext:(UIFocusUpdateContext *)arg1;
 - (void)_willUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
 @end

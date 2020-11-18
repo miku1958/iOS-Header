@@ -38,6 +38,7 @@
 - (BOOL)_hasMarkedText;
 - (BOOL)_hasMarkedTextOrRangedSelection;
 - (int)_indexForTextPosition:(id)arg1;
+- (id)_intersectionOfRange:(id)arg1 andRange:(id)arg2;
 - (BOOL)_isEmptySelection;
 - (id)_keyInput;
 - (void)_moveCurrentSelection:(int)arg1;
@@ -61,6 +62,8 @@
 - (id)_positionFromPosition:(id)arg1 inDirection:(long long)arg2 offset:(long long)arg3 withAffinityDownstream:(BOOL)arg4;
 - (id)_positionFromPosition:(id)arg1 pastTextUnit:(long long)arg2 inDirection:(long long)arg3;
 - (id)_positionWithinRange:(id)arg1 farthestInDirection:(long long)arg2;
+- (BOOL)_range:(id)arg1 containsRange:(id)arg2;
+- (BOOL)_range:(id)arg1 intersectsRange:(id)arg2;
 - (id)_rangeOfEnclosingWord:(id)arg1;
 - (id)_rangeOfLineEnclosingPosition:(id)arg1;
 - (id)_rangeOfParagraphEnclosingPosition:(id)arg1;
@@ -69,6 +72,7 @@
 - (id)_rangeOfTextUnit:(long long)arg1 enclosingPosition:(id)arg2;
 - (id)_rangeSpanningTextUnit:(long long)arg1 andPosition:(id)arg2;
 - (void)_replaceCurrentWordWithText:(id)arg1;
+- (void)_replaceDocumentWithText:(id)arg1;
 - (void)_scrollRectToVisible:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)_selectAll;
 - (id)_selectableText;
@@ -87,6 +91,7 @@
 - (id)_setSelectionRangeWithHistory:(id)arg1;
 - (BOOL)_shouldPerformUICalloutBarButtonReplaceAction:(SEL)arg1 forText:(id)arg2 checkAutocorrection:(BOOL)arg3;
 - (id)_textColorForCaretSelection;
+- (id)_textRangeFromNSRange:(struct _NSRange)arg1;
 - (void)_unmarkText;
 - (void)_updateSelectionWithTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 - (BOOL)_usesAsynchronousProtocol;

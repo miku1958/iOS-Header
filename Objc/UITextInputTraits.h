@@ -24,11 +24,16 @@
     BOOL secureTextEntry;
     BOOL devicePasscodeEntry;
     NSString *textContentType;
+    long long smartInsertDeleteType;
+    long long smartQuotesType;
+    long long smartDashesType;
     struct __CFCharacterSet *textTrimmingSet;
     UIColor *insertionPointColor;
     UIColor *selectionBarColor;
     UIColor *selectionHighlightColor;
     UIImage *selectionDragDotImage;
+    UIColor *underlineColorForTextAlternatives;
+    UIColor *underlineColorForSpelling;
     unsigned long long insertionPointWidth;
     int textLoupeVisibility;
     int textSelectionBehavior;
@@ -62,7 +67,9 @@
     UIInputContextHistory *inputContextHistory;
     BOOL manageRecentInputs;
     BOOL hasDefaultContents;
+    BOOL acceptsPayloads;
     BOOL displaySecureEditsUsingPlainText;
+    BOOL loadKeyboardsForSiriLanguage;
     NSIndexSet *PINEntrySeparatorIndexes;
     long long forceDictationKeyboardType;
 }
@@ -71,6 +78,7 @@
 @property (nonatomic) BOOL acceptsDictationSearchResults; // @synthesize acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji; // @synthesize acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard; // @synthesize acceptsFloatingKeyboard;
+@property (nonatomic) BOOL acceptsPayloads; // @synthesize acceptsPayloads;
 @property (nonatomic) BOOL acceptsSplitKeyboard; // @synthesize acceptsSplitKeyboard;
 @property (nonatomic) long long autocapitalizationType; // @synthesize autocapitalizationType;
 @property (copy, nonatomic) NSString *autocorrectionContext; // @synthesize autocorrectionContext;
@@ -103,6 +111,7 @@
 @property (nonatomic) long long keyboardAppearance; // @synthesize keyboardAppearance;
 @property (nonatomic) long long keyboardType; // @synthesize keyboardType;
 @property (nonatomic) BOOL learnsCorrections; // @synthesize learnsCorrections;
+@property (nonatomic) BOOL loadKeyboardsForSiriLanguage; // @synthesize loadKeyboardsForSiriLanguage;
 @property (nonatomic) BOOL manageRecentInputs; // @synthesize manageRecentInputs;
 @property (copy, nonatomic) NSString *recentInputIdentifier; // @synthesize recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext; // @synthesize responseContext;
@@ -113,6 +122,9 @@
 @property (strong, nonatomic) UIImage *selectionDragDotImage; // @synthesize selectionDragDotImage;
 @property (strong, nonatomic) UIColor *selectionHighlightColor; // @synthesize selectionHighlightColor;
 @property (nonatomic) int shortcutConversionType; // @synthesize shortcutConversionType;
+@property (nonatomic) long long smartDashesType; // @synthesize smartDashesType;
+@property (nonatomic) long long smartInsertDeleteType; // @synthesize smartInsertDeleteType;
+@property (nonatomic) long long smartQuotesType; // @synthesize smartQuotesType;
 @property (nonatomic) long long spellCheckingType; // @synthesize spellCheckingType;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressReturnKeyStyling; // @synthesize suppressReturnKeyStyling;
@@ -122,6 +134,8 @@
 @property (nonatomic) int textSelectionBehavior; // @synthesize textSelectionBehavior;
 @property (nonatomic) id textSuggestionDelegate; // @dynamic textSuggestionDelegate;
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet; // @dynamic textTrimmingSet;
+@property (strong, nonatomic) UIColor *underlineColorForSpelling; // @synthesize underlineColorForSpelling;
+@property (strong, nonatomic) UIColor *underlineColorForTextAlternatives; // @synthesize underlineColorForTextAlternatives;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization; // @synthesize useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange validTextRange; // @synthesize validTextRange;
 

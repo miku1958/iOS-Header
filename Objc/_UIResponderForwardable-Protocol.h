@@ -12,7 +12,7 @@
 
 @property (nonatomic, setter=_setForwardablePhase:) long long _forwardablePhase;
 @property (strong, nonatomic, setter=_setResponder:) UIResponder *_responder;
-@property (readonly, strong, nonatomic) UIWindow *window;
+@property (readonly, nonatomic) UIWindow *window;
 
 - (void)_abandonForwardingRecord;
 - (NSArray *)_forwardingRecord;

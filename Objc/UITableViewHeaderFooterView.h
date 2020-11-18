@@ -8,7 +8,7 @@
 
 #import <UIKit/UITableViewSubviewReusing-Protocol.h>
 
-@class NSString, UIColor, UIImage, UILabel, UITableView, _UITableViewHeaderFooterViewLabel;
+@class NSString, UIImage, UILabel, UITableView, _UITableViewHeaderFooterViewLabel;
 @protocol UITable, UITableConstants;
 
 @interface UITableViewHeaderFooterView : UIView <UITableViewSubviewReusing>
@@ -24,8 +24,8 @@
     _UITableViewHeaderFooterViewLabel *_label;
     _UITableViewHeaderFooterViewLabel *_detailLabel;
     UIView *_contentView;
-    UIColor *_tintColor;
-    struct UIEdgeInsets _separatorInset;
+    double _leadingMarginWidth;
+    double _trailingMarginWidth;
     id<UITableConstants> _constants;
     struct {
         unsigned int isHeader:1;
@@ -36,6 +36,7 @@
         unsigned int isTopHeader:1;
         unsigned int didSetSectionHeader:1;
         unsigned int didSetupDefaults:1;
+        unsigned int insetsContentViewsToSafeArea:1;
     } _headerFooterFlags;
     id<UITable> _table;
 }
@@ -47,8 +48,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UILabel *detailTextLabel;
+@property (readonly, nonatomic, getter=_effectiveSafeAreaInsets) struct UIEdgeInsets effectiveSafeAreaInsets;
 @property (nonatomic) BOOL floating;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=_insetsContentViewsToSafeArea, setter=_setInsetsContentViewsToSafeArea:) BOOL insetsContentViewsToSafeArea;
 @property (nonatomic, getter=_marginWidth, setter=_setMarginWidth:) double marginWidth;
 @property (nonatomic) double maxTitleWidth; // @synthesize maxTitleWidth=_maxTitleWidth;
 @property (copy, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
@@ -62,7 +65,6 @@
 @property (copy, nonatomic) NSString *text;
 @property (nonatomic) long long textAlignment;
 @property (readonly, nonatomic) UILabel *textLabel;
-@property (strong, nonatomic) UIColor *tintColor;
 @property (nonatomic, getter=_isTopHeader, setter=_setTopHeader:) BOOL topHeader;
 
 + (id)_defaultFontForHeaderFooterView:(id)arg1;
@@ -73,14 +75,20 @@
 + (double)defaultHeaderHeightForStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (struct CGRect)_backgroundRect;
+- (struct CGRect)_backgroundRectForWidth:(double)arg1;
+- (struct CGRect)_contentRect;
+- (struct CGRect)_contentRectForWidth:(double)arg1;
 - (struct CGRect)_detailLabelFrame;
 - (struct CGSize)_detailTextSizeForWidth:(double)arg1;
 - (BOOL)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
+- (struct UIEdgeInsets)_insetsToBounds;
+- (struct UIEdgeInsets)_insetsToContentRect;
 - (void)_invalidateDetailLabelBackgroundColor;
 - (void)_invalidateLabelBackgroundColor;
 - (BOOL)_isTransparentFocusRegion;
 - (id)_label:(BOOL)arg1;
 - (struct CGRect)_labelFrame;
+- (void)_safeAreaInsetsDidChangeFromOldInsets:(struct UIEdgeInsets)arg1;
 - (void)_setBackgroundViewColor:(id)arg1;
 - (void)_setupBackgroundView;
 - (void)_setupDefaultsIfNecessary;
@@ -109,6 +117,7 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setNeedsUpdateConstraints;
 - (void)setOpaque:(BOOL)arg1;
+- (void)setTintColor:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 

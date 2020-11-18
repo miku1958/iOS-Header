@@ -21,18 +21,15 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL backgroundIsDimmed; // @synthesize backgroundIsDimmed=_backgroundIsDimmed;
 @property (strong, nonatomic) UIColor *dimmingColor; // @synthesize dimmingColor=_dimmingColor;
 
-+ (id)newDimmingViewWithFrame:(struct CGRect)arg1;
-+ (id)newDimmingViewWrappingView:(id)arg1 withLeftBorder:(double)arg2;
-+ (id)newDimmingViewWrappingView:(id)arg1 withLeftBorder:(double)arg2 shouldReverseLayoutDirection:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)_basicAnimationWithKeyPath:(id)arg1;
 - (void)_updateLeftEdgeFade:(BOOL)arg1;
 - (void)crossFade;
 - (id)defaultBorderColor;
 - (void)didMoveToWindow;
-- (id)initViewWrappingView:(id)arg1 withLeftBorder:(double)arg2;
 - (id)initViewWrappingView:(id)arg1 withLeftBorder:(double)arg2 shouldReverseLayoutDirection:(BOOL)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 overrideDimmingColor:(id)arg2;
 
 @end
 

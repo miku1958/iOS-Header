@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)_updateWithPersonName:(id)arg1 maxWidth:(double)arg2;
+- (id)accessibilityHUDRepresentation;
 - (double)addContentOverlap:(double)arg1;
 - (id)contentsImage;
 - (long long)legibilityStyle;

@@ -6,10 +6,13 @@
 
 #import <UIKit/UICollectionViewLayoutInvalidationContext.h>
 
-__attribute__((visibility("hidden")))
 @interface UICollectionViewTableLayoutInvalidationContext : UICollectionViewLayoutInvalidationContext
 {
+    BOOL _invalidateTableLayoutDelegateMetrics;
 }
+
+@property (nonatomic) BOOL invalidateTableLayoutDelegateMetrics; // @synthesize invalidateTableLayoutDelegateMetrics=_invalidateTableLayoutDelegateMetrics;
+
 
 @end
 

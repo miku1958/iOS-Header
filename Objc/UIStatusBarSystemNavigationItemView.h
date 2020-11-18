@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (struct CGSize)_buttonSize;
 - (BOOL)_shouldLayoutImageOnRight;
+- (id)accessibilityHUDRepresentation;
 - (double)addContentOverlap:(double)arg1;
 - (double)extraLeftPadding;
 - (double)extraRightPadding;

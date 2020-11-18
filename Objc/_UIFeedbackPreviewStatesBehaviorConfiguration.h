@@ -4,19 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFeedbackStatesBehaviorConfiguration.h>
+#import <UIKit/_UIStatesFeedbackGeneratorPreviewConfiguration.h>
 
-@interface _UIFeedbackPreviewStatesBehaviorConfiguration : _UIFeedbackStatesBehaviorConfiguration
+@interface _UIFeedbackPreviewStatesBehaviorConfiguration : _UIStatesFeedbackGeneratorPreviewConfiguration
 {
 }
-
-+ (id)cancelState;
-+ (id)commitState;
-+ (id)defaultConfiguration;
-+ (id)previewState;
-+ (id)revealState;
-- (BOOL)defaultEnabled;
-- (long long)requiredSupportLevel;
 
 @end
 

@@ -6,11 +6,13 @@
 
 #import <UIKit/UIInputView.h>
 
-@class UIImageView, UIKeyboardCandidateBar, UIKeyboardCandidateGrid, UIKeyboardCandidateSortControl, UIKeyboardCandidateSplitKeyboardToggleButton, UIKeyboardCandidateUnsplitKeyboardToggleButton, UIView;
+#import <UIKit/UIKeyboardCandidateDisplay-Protocol.h>
+
+@class NSString, UIImageView, UIKeyboardCandidateBar, UIKeyboardCandidateGrid, UIKeyboardCandidateSortControl, UIKeyboardCandidateSplitKeyboardToggleButton, UIKeyboardCandidateUnsplitKeyboardToggleButton, UIView;
 @protocol UIKeyboardCandidateList;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateView : UIInputView
+@interface UIKeyboardCandidateView : UIInputView <UIKeyboardCandidateDisplay>
 {
     UIKeyboardCandidateBar *_bar;
     UIKeyboardCandidateSortControl *_sortControl;
@@ -28,22 +30,22 @@ __attribute__((visibility("hidden")))
     } _candidateBarFlags;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView<UIKeyboardCandidateList> *inlineView; // @synthesize inlineView=_inlineView;
+@property (readonly) Class superclass;
 
-+ (id)activeCandidateList;
-+ (id)activeCandidateView;
 + (double)defaultExtendedControlHeight;
-+ (void)setActiveCandidateView:(id)arg1;
-+ (id)sharedInstance;
-+ (id)sharedInstanceForInlineView;
-+ (id)sharedInstanceForInlineView:(BOOL)arg1;
+- (void).cxx_destruct;
 - (BOOL)_needsBackdrop;
 - (unsigned long long)_numberOfColumns:(BOOL)arg1;
 - (void)_toggleExtendedCandidateView:(id)arg1;
 - (id)activeCandidateList;
 - (void)candidatesDidChange;
 - (int)candidatesVisualStyle;
-- (void)dealloc;
+- (long long)currentOrientation;
+- (void)dimKeys:(id)arg1;
 - (double)extendedViewAnimationDuration;
 - (double)extendedViewHeight;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

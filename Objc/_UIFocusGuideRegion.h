@@ -17,12 +17,13 @@
 
 - (void).cxx_destruct;
 - (BOOL)_canOccludeRegionsBelow;
-- (id)_delegatePreferredFocusEnvironmentsForMovement:(id)arg1;
-- (id)_destinationItemForFocusMovement:(id)arg1 inMap:(id)arg2;
+- (id)_debugAssociatedObject;
+- (id)_delegatePreferredFocusEnvironmentsForMovementRequest:(id)arg1;
 - (void)_drawDebugQuickLookImageWithInfo:(id)arg1 inContext:(struct CGContext *)arg2;
-- (id)_fallbackFocusItemForMovement:(id)arg1 inFocusMap:(id)arg2;
+- (id)_fallbackFocusItemForMovementRequest:(id)arg1 inFocusMap:(id)arg2;
 - (unsigned long long)_focusableBoundaries;
 - (BOOL)_isEnabledForFocusedRegion:(id)arg1;
+- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
 - (long long)_preferredDistanceComparisonType;
 - (BOOL)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;
 - (id)_visualRepresentationColor;

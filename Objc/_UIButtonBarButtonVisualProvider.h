@@ -8,18 +8,27 @@
 
 #import <UIKit/NSCopying-Protocol.h>
 
+@class UIView;
+
 __attribute__((visibility("hidden")))
 @interface _UIButtonBarButtonVisualProvider : NSObject <NSCopying>
 {
 }
+
+@property (nonatomic) BOOL backButtonConstraintsActive;
+@property (readonly, nonatomic) UIView *backIndicatorView;
+@property (readonly, nonatomic) UIView *contentView;
 
 - (void)button:(id)arg1 traitCollectionDidChange:(id)arg2;
 - (struct UIEdgeInsets)buttonAlignmentRectInsets:(id)arg1;
 - (BOOL)buttonEnabledState:(id)arg1 forRequestedState:(BOOL)arg2;
 - (BOOL)buttonHighlitedState:(id)arg1 forRequestedState:(BOOL)arg2;
 - (struct CGSize)buttonIntrinsicContentSize:(id)arg1;
+- (void)buttonLayoutSubviews:(id)arg1 baseImplementation:(CDUnknownBlockType)arg2;
 - (BOOL)buttonSelectionState:(id)arg1 forRequestedState:(BOOL)arg2;
-- (void)configureButton:(id)arg1 fromBarItem:(id)arg2;
+- (void)buttonWillMoveToSuperview:(id)arg1;
+- (void)buttonWillMoveToWindow:(id)arg1;
+- (void)configureButton:(id)arg1 withAppearanceDelegate:(id)arg2 fromBarItem:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)rightColumnLetterOffset;
 - (struct CGPoint)rightColumnNumberOffset;
 - (void)setupLayoutSegments;
+- (struct CGPoint)specialSymbolOffset;
 
 @end
 

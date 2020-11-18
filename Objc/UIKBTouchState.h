@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     double _pathMajorRadius;
     unsigned long long _pathIndex;
     NSUUID *_touchUUID;
+    unsigned long long _tapCount;
     struct CGPoint _locationInWindow;
 }
 
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long pathIndex; // @synthesize pathIndex=_pathIndex;
 @property (readonly, nonatomic) double pathMajorRadius; // @synthesize pathMajorRadius=_pathMajorRadius;
 @property (readonly, nonatomic) long long phase; // @synthesize phase=_phase;
+@property (readonly, nonatomic) unsigned long long tapCount; // @synthesize tapCount=_tapCount;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (readonly, nonatomic) NSUUID *touchUUID; // @synthesize touchUUID=_touchUUID;
 @property (readonly, nonatomic) UIWindow *window; // @synthesize window=_window;

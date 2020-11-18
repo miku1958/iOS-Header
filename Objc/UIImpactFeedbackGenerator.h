@@ -15,11 +15,11 @@
 @property (readonly, nonatomic, getter=_impactConfiguration) _UIImpactFeedbackGeneratorConfiguration *impactConfiguration;
 
 + (Class)_configurationClass;
-+ (id)impactBehaviorWithCoordinateSpace:(id)arg1 configuration:(id)arg2;
 - (void)_impactOccurredWithIntensity:(double)arg1;
 - (id)_stats_key;
 - (void)impactOccurred;
 - (id)initWithStyle:(long long)arg1;
+- (id)initWithStyle:(long long)arg1 coordinateSpace:(id)arg2;
 
 @end
 

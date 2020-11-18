@@ -8,7 +8,6 @@
 
 @class NSArray, UILabel;
 
-__attribute__((visibility("hidden")))
 @interface _UIActivityGroupListViewController : UICollectionViewController
 {
     BOOL _darkStyleOnLegacyApp;
@@ -25,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *visibleActivityGroupViewControllers; // @synthesize visibleActivityGroupViewControllers=_visibleActivityGroupViewControllers;
 
 - (void).cxx_destruct;
+- (double)_accessibilityDefaultContentHeightForViewController:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForFooterInSection:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCollectionViewLayout:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (BOOL)isAirdropViewController:(id)arg1;
+- (BOOL)isAirDropViewController:(id)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (double)preferredContentHeightForViewController:(id)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)updateVisibleActivityGroupViewControllers;
 - (id)viewControllerForItemAtIndexPath:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewSafeAreaInsetsDidChange;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UIColor, UIImage, UIImageView, UIVisualEffect, UIVisualEffectView;
+@class NSArray, NSString, UIColor, UIImage, UIImageView, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface _UIBarBackground : UIView
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     long long _translucence;
     UIImage *_backgroundImage;
     UIColor *_backgroundTintColor;
-    UIVisualEffect *_backgroundEffect;
+    NSArray *_backgroundEffects;
     UIImage *_shadowImage;
     UIColor *_shadowColor;
     double _shadowHeight;
@@ -33,11 +33,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL disableTinting; // @synthesize disableTinting=_disableTinting;
 @property (copy, nonatomic) NSString *groupName;
 @property (readonly, nonatomic) BOOL hasBackgroundEffect;
-@property (readonly, nonatomic) UIImage *legacy_backgroundImage;
 @property (nonatomic) double shadowAlpha;
 @property (readonly, nonatomic) UIImage *shim_shadowImage;
 @property (readonly, nonatomic) UIImageView *shim_shadowView;
-@property (readonly, nonatomic) BOOL shouldUseBlendModeForBackgrounds;
 @property (nonatomic) double topInset; // @synthesize topInset=_topInset;
 
 - (void).cxx_destruct;
@@ -53,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)configureImage:(id)arg1 forceOpaque:(BOOL)arg2 barStyle:(long long)arg3;
 - (void)configureImage:(id)arg1 forceTranslucent:(BOOL)arg2;
 - (void)configureShadowImage:(id)arg1 topShadow:(BOOL)arg2;
+- (void)configureWithEffects:(id)arg1;
 - (void)configureWithoutShadow;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

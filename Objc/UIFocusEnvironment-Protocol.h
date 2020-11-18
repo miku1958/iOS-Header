@@ -6,7 +6,7 @@
 
 #import <UIKit/NSObject-Protocol.h>
 
-@class NSArray, UIFocusAnimationCoordinator, UIFocusUpdateContext, UIView;
+@class NSArray, NSString, UIFocusAnimationCoordinator, UIFocusUpdateContext, UIView;
 
 @protocol UIFocusEnvironment <NSObject>
 
@@ -19,5 +19,6 @@
 - (void)updateFocusIfNeeded;
 
 @optional
+- (NSString *)soundIdentifierForFocusUpdateInContext:(UIFocusUpdateContext *)arg1;
 @end
 

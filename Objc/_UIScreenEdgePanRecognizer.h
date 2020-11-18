@@ -14,7 +14,7 @@
 @interface _UIScreenEdgePanRecognizer : NSObject <_UISettingsKeyObserver>
 {
     struct CGRect _screenBounds;
-    BOOL _useGrapeFlags;
+    BOOL _shouldUseGrapeFlags;
     BOOL _hasRecordedData;
     BOOL _hasDoneInitialBackProjectionTest;
     double _gestureRestrictionFactor;
@@ -25,9 +25,14 @@
     UIDelayedAction *_recognitionTimer;
     struct CGPoint _lastTouchLocation;
     double _lastTouchTimestamp;
+    long long _lastTouchModifier;
     long long _type;
     BOOL _requiresLongPress;
+    int _notifyToken;
+    BOOL _simulatorWantsEdgeSwipes;
     BOOL _requiresFlatThumb;
+    BOOL _recognizeImmediatelyFromEdgeLocked;
+    BOOL _recognizeAlongEdge;
     unsigned long long _targetEdges;
     long long _state;
     unsigned long long _recognizedRegion;
@@ -39,32 +44,40 @@
 @property (readonly, copy) NSString *debugDescription;
 @property id<_UIScreenEdgePanRecognizerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasRecordedData; // @synthesize hasRecordedData=_hasRecordedData;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL recognizeAlongEdge; // @synthesize recognizeAlongEdge=_recognizeAlongEdge;
+@property (nonatomic) BOOL recognizeImmediatelyFromEdgeLocked; // @synthesize recognizeImmediatelyFromEdgeLocked=_recognizeImmediatelyFromEdgeLocked;
 @property (readonly, nonatomic) unsigned long long recognizedRegion; // @synthesize recognizedRegion=_recognizedRegion;
 @property (nonatomic) BOOL requiresFlatThumb; // @synthesize requiresFlatThumb=_requiresFlatThumb;
 @property (readonly, nonatomic, getter=isRequiringLongPress) BOOL requiringLongPress;
 @property (nonatomic) struct CGRect screenBounds; // @synthesize screenBounds=_screenBounds;
 @property (strong, nonatomic) _UIScreenEdgePanRecognizerSettings *settings; // @synthesize settings=_settings;
-@property (nonatomic) BOOL shouldUseGrapeFlags; // @synthesize shouldUseGrapeFlags=_useGrapeFlags;
+@property (nonatomic) BOOL shouldUseGrapeFlags; // @synthesize shouldUseGrapeFlags=_shouldUseGrapeFlags;
+@property (nonatomic) BOOL simulatorWantsEdgeSwipes; // @synthesize simulatorWantsEdgeSwipes=_simulatorWantsEdgeSwipes;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long targetEdges; // @synthesize targetEdges=_targetEdges;
+@property (readonly, nonatomic) BOOL useGrapeFlags;
 
 + (BOOL)_edgeSwipeNavigationGestureEnabled;
 - (void).cxx_destruct;
 - (void)_createOrDestoryAnalysisWindowIfNeeded;
 - (void)_idleTimerElapsed:(id)arg1;
-- (void)_incorporateIncrementalSampleAtLocation:(struct CGPoint)arg1 timestamp:(double)arg2 modifier:(long long)arg3 interfaceOrientation:(long long)arg4 forceState:(long long)arg5;
-- (void)_incorporateInitialTouchAtLocation:(struct CGPoint)arg1 timestamp:(double)arg2 modifier:(long long)arg3 interfaceOrientation:(long long)arg4 forceState:(long long)arg5;
+- (void)_incorporateIncrementalSampleAtLocation:(struct CGPoint)arg1 timestamp:(double)arg2 modifier:(long long)arg3 region:(unsigned long long)arg4 interfaceOrientation:(long long)arg5 forceState:(long long)arg6;
+- (void)_incorporateInitialTouchAtLocation:(struct CGPoint)arg1 timestamp:(double)arg2 modifier:(long long)arg3 region:(unsigned long long)arg4 interfaceOrientation:(long long)arg5 forceState:(long long)arg6;
 - (void)_longPressTimerElapsed:(id)arg1;
 - (void)_setState:(long long)arg1;
 - (unsigned long long)_targetEdges;
 - (long long)_type;
 - (void)dealloc;
 - (void)incorporateTouchSampleAtLocation:(struct CGPoint)arg1 timestamp:(double)arg2 modifier:(long long)arg3 interfaceOrientation:(long long)arg4 forceState:(long long)arg5;
+- (void)incorporateTouchSampleAtLocation:(struct CGPoint)arg1 timestamp:(double)arg2 modifier:(long long)arg3 region:(unsigned long long)arg4 interfaceOrientation:(long long)arg5 forceState:(long long)arg6;
 - (id)initWithType:(long long)arg1;
+- (id)initWithType:(long long)arg1 settings:(id)arg2;
 - (void)reset;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (unsigned long long)touchedEdgesForInterfaceOrientation:(long long)arg1;
 
 @end
 

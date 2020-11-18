@@ -13,9 +13,10 @@ __attribute__((visibility("hidden")))
 
 - (struct CGSize)_defaultSize;
 - (unsigned long long)_numberOfColumns:(BOOL)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)setCandidateViewExtended:(BOOL)arg1;
 
 @end

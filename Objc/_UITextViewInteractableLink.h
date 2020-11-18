@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_linkInteractionOpenURLInExternalApplication;
 - (BOOL)_linkInteractionPerformDefaultAction;
 - (void)_linkInteractionShareLink;
+- (void)_performLinkInteractionBlockAfterUnlockingDeviceOnly:(CDUnknownBlockType)arg1;
 - (void)action:(id)arg1 didDismissAlertController:(id)arg2;
 - (void)actionDidFinish:(id)arg1;
 - (id)actions;

@@ -6,10 +6,12 @@
 
 #import <UIKit/UIControl.h>
 
-@class NSMutableDictionary, UIColor, UIImage, UIImageView, UITabBar, UITabBarButtonLabel, UITabBarSwappableImageView, UIVisualEffectView, _UIBadgeView;
+#import <UIKit/UISpringLoadedInteractionSupporting-Protocol.h>
+
+@class NSMutableDictionary, NSString, UIColor, UIImage, UIImageView, UITabBar, UITabBarButtonLabel, UITabBarSwappableImageView, UIVisualEffectView, _UIBadgeView;
 
 __attribute__((visibility("hidden")))
-@interface UITabBarButton : UIControl
+@interface UITabBarButton : UIControl <UISpringLoadedInteractionSupporting>
 {
     struct CGRect _hitRect;
     UITabBarSwappableImageView *_info;
@@ -19,14 +21,17 @@ __attribute__((visibility("hidden")))
     UIImageView *_selectedIndicator;
     BOOL _selected;
     struct UIEdgeInsets _infoInsets;
+    struct UIEdgeInsets _infoLandscapeInsets;
     struct UIOffset _selectedInfoOffset;
     struct UIOffset _infoOffset;
     UIImage *_customSelectedIndicatorImage;
     struct UIOffset _labelOffset;
     NSMutableDictionary *_buttonTintColorsForState;
     NSMutableDictionary *_contentTintColorsForState;
+    UIColor *_defaultUnselectedLabelTintColor;
     UIColor *_badgeColor;
     NSMutableDictionary *_badgeTextAttributesForState;
+    BOOL _horizontalLayout;
     BOOL _showsHighlightedState;
     BOOL _centerAllContents;
     Class _appearanceGuideClass;
@@ -35,8 +40,15 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
 @property (nonatomic, setter=_setCenterAllContents:) BOOL _centerAllContents; // @synthesize _centerAllContents;
+@property (readonly, nonatomic) UIColor *_defaultUnselectedLabelTintColor;
+@property (nonatomic, setter=_setHorizontalLayout:) BOOL _horizontalLayout; // @synthesize _horizontalLayout;
 @property (nonatomic, getter=_isSelected, setter=_setSelected:) BOOL _selected;
 @property (nonatomic, setter=_setShowsHighlightedState:) BOOL _showsHighlightedState; // @synthesize _showsHighlightedState;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isSpringLoaded) BOOL springLoaded;
+@property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) UITabBar *tabBar; // @synthesize tabBar=_tabBar;
 @property (strong, nonatomic, getter=_unselectedTintColor, setter=_setUnselectedTintColor:) UIColor *unselectedTintColor;
 
@@ -51,15 +63,16 @@ __attribute__((visibility("hidden")))
 - (void)_applyTabBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
 - (id)_buttonTintColorForState:(unsigned long long)arg1;
 - (id)_contentTintColorForState:(unsigned long long)arg1;
-- (struct CGRect)_focusRegionFrameInScreen:(id)arg1;
+- (struct CGRect)_defaultFocusRegionFrame;
+- (long long)_focusTouchSensitivityStyle;
+- (struct CGSize)_horizontalLayout_sizeThatFits:(struct CGSize)arg1;
 - (void)_positionBadge;
 - (void)_positionBadgeAfterChangesIfNecessary:(CDUnknownBlockType)arg1;
-- (struct CGRect)_responderSelectionRectForCoordinateSpace:(id)arg1;
+- (struct CGRect)_responderSelectionRect;
 - (struct CGRect)_responderSelectionRectForWindow:(id)arg1;
 - (id)_selectedIndicatorImage;
 - (id)_selectedIndicatorView;
 - (void)_sendFocusAction;
-- (struct CGSize)_sensitivitySize;
 - (void)_setBadgeColor:(id)arg1;
 - (void)_setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setBadgeValue:(id)arg1;
@@ -85,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateVibrancyEffectView;
 - (BOOL)canBecomeFocused;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (id)initWithImage:(id)arg1 landscapeImage:(id)arg2 selectedImage:(id)arg3 landscapeSelectedImage:(id)arg4 label:(id)arg5 withInsets:(struct UIEdgeInsets)arg6 landscapeInsets:(struct UIEdgeInsets)arg7 tabBar:(id)arg8;
 - (id)initWithImage:(id)arg1 selectedImage:(id)arg2 label:(id)arg3 withInsets:(struct UIEdgeInsets)arg4 tabBar:(id)arg5;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;

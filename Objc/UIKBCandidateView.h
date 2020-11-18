@@ -8,17 +8,15 @@
 
 #import <UIKit/UIKeyboardCandidateGridCollectionViewControllerDelegate-Protocol.h>
 
-@class NSString, TIKeyboardCandidateResultSet, UIKeyboardCandidateGridCollectionViewController, UIKeyboardCandidateSortControl, UIView;
+@class NSString, TIKeyboardCandidateResultSet, UIKeyboardCandidateGridCollectionViewController, UIKeyboardCandidateSortControl;
 
 __attribute__((visibility("hidden")))
 @interface UIKBCandidateView : UIKBKeyView <UIKeyboardCandidateGridCollectionViewControllerDelegate>
 {
-    UIView *_clippingView;
-    UIView *_topBorder;
     unsigned long long _selectedSortIndex;
     UIKeyboardCandidateGridCollectionViewController *_collectionViewController;
     UIKeyboardCandidateSortControl *_scrollViewSortControl;
-    CDStruct_961fb75c _visualStyling;
+    CDStruct_227bb23d _visualStyling;
 }
 
 @property (readonly, nonatomic) TIKeyboardCandidateResultSet *candidateResultSet;
@@ -29,9 +27,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKeyboardCandidateSortControl *scrollViewSortControl; // @synthesize scrollViewSortControl=_scrollViewSortControl;
 @property (nonatomic) unsigned long long selectedSortIndex; // @synthesize selectedSortIndex=_selectedSortIndex;
 @property (readonly) Class superclass;
-@property (nonatomic) CDStruct_961fb75c visualStyling; // @synthesize visualStyling=_visualStyling;
+@property (nonatomic) CDStruct_227bb23d visualStyling; // @synthesize visualStyling=_visualStyling;
 
-- (void)addSubview:(id)arg1;
+- (void).cxx_destruct;
 - (void)candidateAcceptedAtIndex:(unsigned long long)arg1;
 - (id)candidateList;
 - (void)clearCollectionViewController;
@@ -46,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)headerViewForCandidateSet:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 - (BOOL)isExtendedList;
+- (BOOL)isFloatingList;
 - (BOOL)isTenKey;
 - (id)keyboardBehaviors;
 - (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(BOOL)arg5;
@@ -53,12 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
 - (BOOL)showCandidate:(id)arg1;
 - (void)showCandidateAtIndex:(unsigned long long)arg1;
-- (void)showNextCandidate;
-- (void)showNextPage;
-- (void)showNextRow;
-- (void)showPreviousCandidate;
-- (void)showPreviousPage;
-- (void)showPreviousRow;
+- (void)showCandidateInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (void)sortSelectionBarAction:(id)arg1;
 - (id)statisticsIdentifier;
 - (void)updateCollectionViewController;

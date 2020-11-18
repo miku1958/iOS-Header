@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)ZWNJKeyImageName;
+- (struct CGPoint)ZWNJKeyOffset;
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
@@ -75,15 +77,16 @@ __attribute__((visibility("hidden")))
 - (double)spaceKeyFontSize;
 - (double)stringKeyFontSize;
 - (struct CGPoint)stringKeyOffset;
-- (BOOL)supportsGestureBehaviors;
 - (BOOL)supportsInputTraits:(id)arg1 forKeyplane:(id)arg2;
 - (double)symbolFrameInset;
 - (id)thinKeycapsFontName;
 - (double)tinyPunctuationGlyphFontSize;
 - (struct CGPoint)tinyPunctuationGlyphOffset;
 - (struct UIEdgeInsets)variantDisplayFrameInsets;
-- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3;
+- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3 annotationIndex:(unsigned long long)arg4;
+- (struct UIEdgeInsets)variantPaddedFrameInsets;
 - (struct UIEdgeInsets)variantSymbolFrameInsets;
+- (struct UIEdgeInsets)wideShadowPaddleInsets;
 - (double)zhuyinFirstToneKeyFontSize;
 
 @end

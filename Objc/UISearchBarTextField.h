@@ -6,10 +6,12 @@
 
 #import <UIKit/UITextField.h>
 
-@class NSMutableDictionary, NSValue, _UISearchBarSearchFieldBackgroundView;
+#import <UIKit/_UISearchBarTextFieldOrMailReplacement-Protocol.h>
+
+@class NSMutableDictionary, NSString, NSValue, _UISearchBarSearchFieldBackgroundView;
 
 __attribute__((visibility("hidden")))
-@interface UISearchBarTextField : UITextField
+@interface UISearchBarTextField : UITextField <_UISearchBarTextFieldOrMailReplacement>
 {
     NSMutableDictionary *_customClearButtons;
     NSMutableDictionary *_iconOffsets;
@@ -25,11 +27,16 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setPreventSelectionViewActivation:) BOOL _preventSelectionViewActivation; // @synthesize _preventSelectionViewActivation=__preventSelectionViewActivation;
 @property (strong, nonatomic, setter=_setSearchTextOffetValue:) NSValue *_searchTextOffsetValue;
 @property (nonatomic) long long _textInputSource; // @synthesize _textInputSource=__textInputSource;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_activateSelectionView;
 - (struct CGRect)_adjustedTextOrEditingRect:(struct CGRect)arg1 forBounds:(struct CGRect)arg2;
 - (struct CGRect)_adjustmentsForSearchIconViewRectForBounds:(struct CGRect)arg1;
+- (void)_applyHighlightedAnimated:(BOOL)arg1;
 - (struct CGRect)_availableTextRectForBounds:(struct CGRect)arg1 forEditing:(BOOL)arg2;
 - (void)_becomeFirstResponder;
 - (BOOL)_becomeFirstResponderWhenPossible;
@@ -40,12 +47,13 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_clearButtonSize;
 - (id)_createEffectsBackgroundViewWithStyle:(unsigned long long)arg1 applyFilter:(id)arg2;
 - (BOOL)_hasActionForEventMask:(unsigned long long)arg1;
-- (BOOL)_labelShouldUseVibrancy;
 - (id)_offsetValueForIcon:(long long)arg1;
 - (id)_placeholderColor;
 - (Class)_placeholderLabelClass;
 - (void)_removeEffectsBackgroundViews;
 - (struct CGRect)_searchIconViewRectForBounds:(struct CGRect)arg1;
+- (void)_setAnimatesBackgroundCornerRadius:(BOOL)arg1;
+- (void)_setBackgroundViewsAlpha:(double)arg1;
 - (void)_setBottomEffectBackgroundVisible:(BOOL)arg1;
 - (void)_setClearButtonImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setEnabled:(BOOL)arg1 animated:(BOOL)arg2;
@@ -56,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_suffixFrame;
 - (long long)_suffixLabelTextAlignment;
 - (Class)_systemBackgroundViewClass;
-- (id)_tvDefaultTextColor;
+- (BOOL)_textShouldFillFieldEditorHeight;
 - (void)_updateBackgroundView:(id)arg1 withStyle:(unsigned long long)arg2 filter:(id)arg3;
 - (void)_updateBackgroundViewsAnimated:(BOOL)arg1;
 - (BOOL)canBecomeFirstResponder;

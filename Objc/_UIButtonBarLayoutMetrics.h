@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 @interface _UIButtonBarLayoutMetrics : NSObject <_UIButtonBarLayoutMetricsData, NSCopying>
 {
     BOOL _locked;
+    BOOL _createsPopoverLayoutGuides;
+    BOOL _allowsViewWrappers;
     NSLayoutDimension *_verticalSizeGuide;
     NSLayoutDimension *_minimumSpaceGuide;
     NSLayoutDimension *_flexibleSpaceGuide;
@@ -23,6 +25,8 @@ __attribute__((visibility("hidden")))
     NSLayoutDimension *_groupSpacingGuide;
 }
 
+@property (nonatomic) BOOL allowsViewWrappers; // @synthesize allowsViewWrappers=_allowsViewWrappers;
+@property (nonatomic) BOOL createsPopoverLayoutGuides; // @synthesize createsPopoverLayoutGuides=_createsPopoverLayoutGuides;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSLayoutDimension *flexibleSpaceGuide; // @synthesize flexibleSpaceGuide=_flexibleSpaceGuide;

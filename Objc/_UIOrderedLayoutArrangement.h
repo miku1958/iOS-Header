@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface _UIOrderedLayoutArrangement : _UILayoutArrangement <_UIOLAPropertySource>
 {
     NSMapTable *_spacingOrCenteringGuides;
-    NSMapTable *_edgeToEdgeConstraints;
+    NSMapTable *_edgeToEdgeConstraintsForVisibleItems;
+    NSMapTable *_edgeToEdgeConstraintsForHiddenItems;
     NSMapTable *_relatedDimensionConstraints;
     NSMapTable *_hidingDimensionConstraints;
     NSMapTable *_multilineTextWidthDisambiguationConstraints;
+    NSMapTable *_customSpacings;
     double _proportionalFillDenominator;
     BOOL _itemOrderingChanged;
     BOOL _itemFittingSizeChanged;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSSet *_newlyUnhiddenItems;
 @property (nonatomic) long long axis;
 @property (nonatomic, getter=isBaselineRelativeArrangement) BOOL baselineRelativeArrangement; // @synthesize baselineRelativeArrangement=_baselineRelativeArrangement;
+@property (readonly, nonatomic) NSMapTable *customSpacings; // @synthesize customSpacings=_customSpacings;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long distribution; // @synthesize distribution=_distribution;
@@ -43,23 +46,28 @@ __attribute__((visibility("hidden")))
 
 + (Class)_configurationHistoryClass;
 - (void).cxx_destruct;
-- (void)_activateAndInsertEdgeToEdgeConstraintForGapBetweenPrecedingItem:(id)arg1 andFollowingItem:(id)arg2 isFirstGap:(BOOL)arg3 isLastGap:(BOOL)arg4;
+- (void)_activateAndInsertEdgeToEdgeConstraintForGapBetweenPrecedingItem:(id)arg1 followingItem:(id)arg2 isPrecededByVisibleItem:(BOOL)arg3 isFollowedByVisibleItem:(BOOL)arg4 isHidden:(BOOL)arg5;
+- (void)_activateAndInsertEdgeToEdgeConstraintForGapBetweenSpanningLayoutGuide:(id)arg1 hiddenItem:(id)arg2;
 - (void)_adjustConstraintConstantsIfPossible;
 - (id)_baselineViewVendTallest:(BOOL)arg1 forFirstBaseline:(BOOL)arg2;
 - (double)_calculatedIntrinsicHeight;
 - (BOOL)_canvasConnectionConstraintsNeedUpdatePass;
+- (void)_cleanUpEdgeToEdgeConstraintsForHiddenItemsForItem:(id)arg1 atIndex:(unsigned long long)arg2 processAdjacentHiddenItems:(BOOL)arg3;
+- (void)_cleanUpEdgeToEdgeConstraintsForVisibleItemsForItem:(id)arg1 atIndex:(unsigned long long)arg2 processPrecedingVisisbleItem:(BOOL)arg3;
 - (void)_cleanUpGuideAtGapFollowingItem:(id)arg1;
 - (void)_cleanUpGuides;
 - (void)_cleanUpWithoutResettingKeepAliveWorkaround;
 - (void)_clearAllConstraintsArrays;
 - (BOOL)_configurationRequiresCanvasConnectionFittingConstraint;
 - (double)_constantForMultilineTextWidthDisambiguationConstraintWithNumberOfVisibleItems:(unsigned long long)arg1;
+- (BOOL)_customSpacingChanged;
 - (void)_didEvaluateMultilineHeightForView:(id)arg1;
 - (id)_dimensionRefItemFromConstraint:(id)arg1;
-- (id)_edgeToEdgeConstraintForGapBetweenPrecedingItem:(id)arg1 andFollowingItem:(id)arg2 isFirstGap:(BOOL)arg3 isLastGap:(BOOL)arg4;
-- (double)_expectedEdgeToEdgeSpacingForFirstItem:(id)arg1 secondItem:(id)arg2 isFirstGap:(BOOL)arg3 isLastGap:(BOOL)arg4;
+- (id)_edgeToEdgeConstraintForGapBetweenPrecedingItem:(id)arg1 followingItem:(id)arg2 isPrecededByVisibleItem:(BOOL)arg3 isFollowedByVisibleItem:(BOOL)arg4;
+- (double)_expectedEdgeToEdgeSpacingForPrecedingItem:(id)arg1 followingItem:(id)arg2 isPrecededByVisibleItem:(BOOL)arg3 isFollowedByVisibleItem:(BOOL)arg4;
 - (id)_firstVisibleItem;
 - (BOOL)_hasStaleConfiguration;
+- (BOOL)_hasStaleSpacing;
 - (id)_identifierForSpanningLayoutGuide;
 - (unsigned long long)_indexOfItemForLocationAttribute:(long long)arg1;
 - (void)_insertIndividualGuidesAndConstraintsAsNecessary;
@@ -83,14 +91,15 @@ __attribute__((visibility("hidden")))
 - (void)_systemLayoutFittingSizeDidChangeForItem:(id)arg1;
 - (id)_tallestItem;
 - (void)_trackChangesAffectingExternalBaselineConstraints:(CDUnknownBlockType)arg1;
-- (void)_trackChangesWithValue:(id)arg1 forKey:(id)arg2;
 - (void)_updateArrangementConstraints;
 - (void)_updateConfigurationHistory;
 - (void)_visibilityParameterChangedForItem:(id)arg1;
 - (id)_visibleItemAtEndWithEnumerationOptions:(unsigned long long)arg1;
 - (BOOL)_wantsProportionalDistribution;
+- (double)customSpacingAfterItem:(id)arg1;
 - (void)insertItem:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)removeItem:(id)arg1;
+- (void)setCustomSpacing:(double)arg1 afterItem:(id)arg2;
 
 @end
 

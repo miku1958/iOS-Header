@@ -23,9 +23,11 @@ __attribute__((visibility("hidden")))
     BOOL _isTypedString;
     BOOL _isCenter;
     BOOL _isLongCandidate;
+    BOOL _isEmoji;
     int _state;
     unsigned int _slotID;
     TIKeyboardCandidate *_prediction;
+    long long _candidateType;
     struct CGRect _collapsedFrame;
     struct CGRect _baseFrame;
     struct CGRect _activeFrame;
@@ -33,15 +35,18 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) struct CGRect activeFrame; // @synthesize activeFrame=_activeFrame;
 @property (nonatomic) struct CGRect baseFrame; // @synthesize baseFrame=_baseFrame;
+@property (nonatomic) long long candidateType; // @synthesize candidateType=_candidateType;
 @property (nonatomic) struct CGRect collapsedFrame; // @synthesize collapsedFrame=_collapsedFrame;
 @property (nonatomic) BOOL isAutocorrection; // @synthesize isAutocorrection=_isAutocorrection;
 @property (nonatomic) BOOL isCenter; // @synthesize isCenter=_isCenter;
+@property (nonatomic) BOOL isEmoji; // @synthesize isEmoji=_isEmoji;
 @property (nonatomic) BOOL isLongCandidate; // @synthesize isLongCandidate=_isLongCandidate;
 @property (nonatomic) BOOL isTypedString; // @synthesize isTypedString=_isTypedString;
 @property (readonly, strong, nonatomic) TIKeyboardCandidate *prediction; // @synthesize prediction=_prediction;
 @property (nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
 @property (nonatomic) int state; // @synthesize state=_state;
 
++ (double)fontSizeForSingleLineLayout;
 + (id)newKeyViewWithSize:(struct CGSize)arg1 state:(int)arg2 needsBackground:(BOOL)arg3;
 - (void)clearKeyViewForState:(int)arg1;
 - (void)dealloc;
@@ -53,8 +58,9 @@ __attribute__((visibility("hidden")))
 - (void)setKeyViewForState:(int)arg1;
 - (void)setState:(int)arg1 withAttrText:(id)arg2;
 - (void)setState:(int)arg1 withText:(id)arg2;
-- (void)setText:(id)arg1 prediction:(id)arg2 active:(BOOL)arg3;
+- (void)setText:(id)arg1 prediction:(id)arg2 active:(BOOL)arg3 isEmoji:(BOOL)arg4;
 - (void)setVisibleRect;
+- (BOOL)shouldDisplayAsSuggestion:(id)arg1;
 - (BOOL)shouldDisplayHeaderForPrediction:(id)arg1;
 - (id)textColor;
 - (void)touchMoved:(double)arg1;

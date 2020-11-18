@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
 @interface UIAlertControllerVisualStyle : NSObject
 {
     UIAlertControllerDescriptor *_descriptor;
-    UITraitCollection *_traitCollection;
     long long _forcedInterfaceIdiom;
     UIInterfaceActionVisualStyle *_interfaceActionVisualStyle;
+    UITraitCollection *_traitCollection;
 }
 
 @property (strong, nonatomic) UIAlertControllerDescriptor *descriptor; // @synthesize descriptor=_descriptor;
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 
 + (long long)interfaceActionPresentationStyle;
++ (void)positionContentsOfAlertController:(id)arg1 alertContentView:(id)arg2 availableSpaceView:(id)arg3 visualStyle:(id)arg4 updatableConstraints:(id)arg5;
 - (void).cxx_destruct;
 - (id)_detailMessageFont;
 - (id)_keyCommandInputForCancelAction;
@@ -34,7 +35,11 @@ __attribute__((visibility("hidden")))
 - (double)_scaledMarginBelowLastLabelLastBaseline;
 - (double)_scaledMarginBelowMessageLabelLastBaseline;
 - (double)_scaledMarginBelowTitleLabelLastBaseline;
+- (double)_scaledMessageSafeBaselineHeightInAlertControllerView:(id)arg1;
+- (double)_scaledSafeBaselineHeightForLabelFont:(id)arg1 inAlertControllerView:(id)arg2;
+- (double)_scaledTitleLabelSafeBaselineHeightInAlertControllerView:(id)arg1;
 - (BOOL)_shouldReverseActions;
+- (double)_spacingBetweenDismissButtonAndContent;
 - (struct UIEdgeInsets)actionImageMarginForAction;
 - (struct UIEdgeInsets)actionSequenceEdgeInsets;
 - (double)actionWidthForMinimumActionWidth:(double)arg1;
@@ -45,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)configureAttributesForTitleLabel:(id)arg1 classificationLabel:(id)arg2 actionViewState:(id)arg3;
 - (double)contentHorizontalMargin;
 - (struct UIEdgeInsets)contentInsets;
+- (double)contentVerticalMargin;
 - (id)defaultActionFont;
 - (id)dimmingViewForAlertController:(id)arg1;
 - (BOOL)hideCancelAction:(id)arg1 inAlertController:(id)arg2;
@@ -68,7 +74,6 @@ __attribute__((visibility("hidden")))
 - (double)minimumWidth;
 - (long long)permittedActionLayoutDirection;
 - (BOOL)placementAvoidsKeyboard;
-- (void)positionAlertControllerView:(id)arg1 ofAlertController:(id)arg2 inAvailableSpaceView:(id)arg3;
 - (id)preferredActionFont;
 - (id)preferredActionForActions:(id)arg1 suggestedPreferredAction:(id)arg2;
 - (id)regularActionFont;

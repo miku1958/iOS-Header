@@ -30,10 +30,10 @@ __attribute__((visibility("hidden")))
 - (void)_playFeedback:(id)arg1 atTime:(double)arg2;
 - (void)_playFeedbackNow:(id)arg1 withOptions:(id)arg2;
 - (BOOL)_prepareSystemSoundID:(unsigned int)arg1 forBeingActive:(BOOL)arg2;
-- (void)_startPreparingToUseFeedbacks:(id)arg1;
+- (void)_startWarmingFeedbacks:(id)arg1;
 - (id)_stats_key;
 - (void)_stopFeedback:(id)arg1;
-- (void)_stopPreparingToUseFeedbacks:(id)arg1;
+- (void)_stopWarmingFeedbacks:(id)arg1;
 - (void)_updateSuspension;
 - (void)_updateValueForParameters:(id)arg1 withKey:(id)arg2;
 

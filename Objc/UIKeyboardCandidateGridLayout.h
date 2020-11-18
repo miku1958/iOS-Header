@@ -23,10 +23,11 @@ __attribute__((visibility("hidden")))
     int _candidatesVisualStyle;
     NSArray *_candidateGroups;
     unsigned long long _columnsCount;
-    CDStruct_961fb75c _visualStyling;
+    CDStruct_227bb23d _visualStyling;
     double _headerViewHeight;
     NSSet *_emphasizedCandidates;
     NSMutableArray *_cellAttributes;
+    NSMutableArray *_dummyAttributes;
     NSMutableDictionary *_supplementaryAttributes;
 }
 
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int candidatesVisualStyle; // @synthesize candidatesVisualStyle=_candidatesVisualStyle;
 @property (strong, nonatomic) NSMutableArray *cellAttributes; // @synthesize cellAttributes=_cellAttributes;
 @property (nonatomic) unsigned long long columnsCount; // @synthesize columnsCount=_columnsCount;
+@property (strong, nonatomic) NSMutableArray *dummyAttributes; // @synthesize dummyAttributes=_dummyAttributes;
 @property (strong, nonatomic) NSSet *emphasizedCandidates; // @synthesize emphasizedCandidates=_emphasizedCandidates;
 @property (nonatomic) BOOL expanded; // @synthesize expanded=_expanded;
 @property (nonatomic) BOOL forceJustifiedAlignment; // @synthesize forceJustifiedAlignment=_forceJustifiedAlignment;
@@ -47,14 +49,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize rowSize;
 @property (strong, nonatomic) NSMutableDictionary *supplementaryAttributes; // @synthesize supplementaryAttributes=_supplementaryAttributes;
 @property (nonatomic) BOOL supportsNumberKeySelection; // @synthesize supportsNumberKeySelection=_supportsNumberKeySelection;
-@property (nonatomic) CDStruct_961fb75c visualStyling; // @synthesize visualStyling=_visualStyling;
+@property (nonatomic) CDStruct_227bb23d visualStyling; // @synthesize visualStyling=_visualStyling;
 
 + (void)deemphasizeLastItemIfNeeded:(id)arg1;
 + (id)layout;
 + (Class)layoutAttributesClass;
+- (void).cxx_destruct;
 - (id)attributesWithFrame:(struct CGRect)arg1;
 - (struct CGSize)collectionViewContentSize;
-- (void)dealloc;
 - (void)finishLayoutForRowWithAttributes:(id)arg1 minimumCellWidth:(double)arg2 remainingWidth:(double)arg3 rowOrigin:(struct CGPoint)arg4 isFirstRow:(BOOL)arg5 isLastRow:(BOOL)arg6 zIndex:(long long)arg7;
 - (void)getGroupBarWidth:(double *)arg1 headerAttributes:(id *)arg2;
 - (id)init;

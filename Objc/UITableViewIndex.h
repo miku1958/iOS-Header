@@ -26,8 +26,10 @@ __attribute__((visibility("hidden")))
     double _verticalTextHeightEstimate;
     NSArray *_entries;
     long long _idiom;
+    struct UIEdgeInsets _drawingInsets;
 }
 
+@property (nonatomic) struct UIEdgeInsets drawingInsets; // @synthesize drawingInsets=_drawingInsets;
 @property (strong, nonatomic) UIFont *font;
 @property (strong, nonatomic) UIColor *indexBackgroundColor;
 @property (strong, nonatomic) UIColor *indexColor;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_cacheAndMeasureTitles;
 - (id)_displayTitles;
 - (id)_dotImage;
+- (struct CGRect)_effectiveBounds;
 - (id)_externalDotImage;
 - (id)_fontForIdiom:(long long)arg1;
 - (long long)_idiom;

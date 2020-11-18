@@ -98,9 +98,11 @@
 - (void)_updateCheckeredPattern;
 - (void)_updateOpaqueAndBackgroundColor;
 - (void)_updateRequest;
+- (void)_updateScrollViewInsetAdjustmentBehavior;
 - (void)_updateScrollerViewForInputView:(id)arg1;
 - (void)_updateViewSettings;
 - (void)_webView:(id)arg1 commitPreview:(id)arg2;
+- (void)_webView:(id)arg1 didChangeAvoidsUnsafeArea:(BOOL)arg2;
 - (void)_webView:(id)arg1 didDismissPreview:(id)arg2 committing:(BOOL)arg3;
 - (id)_webView:(id)arg1 presentationRectsForPreview:(id)arg2;
 - (id)_webView:(id)arg1 presentationSnapshotForPreview:(id)arg2;
@@ -128,6 +130,7 @@
 - (void)reload;
 - (void)restoreStateFromHistoryItem:(id)arg1 forWebView:(id)arg2;
 - (void)saveStateToHistoryItem:(id)arg1 forWebView:(id)arg2;
+- (void)scrollViewDidChangeAdjustedContentInset:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;

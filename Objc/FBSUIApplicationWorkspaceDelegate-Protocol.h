@@ -10,10 +10,10 @@
 
 @protocol FBSUIApplicationWorkspaceDelegate <FBSWorkspaceDelegate>
 - (void)workspace:(FBSUIApplicationWorkspace *)arg1 didLaunchWithCompletion:(void (^)(FBSUIApplicationLaunchResponse *))arg2;
-- (void)workspaceNoteAssertionExpirationImminent:(FBSUIApplicationWorkspace *)arg1;
 - (void)workspaceShouldExit:(FBSUIApplicationWorkspace *)arg1;
 
 @optional
+- (void)workspaceNoteAssertionExpirationImminent:(FBSUIApplicationWorkspace *)arg1;
 - (void)workspaceShouldExit:(FBSUIApplicationWorkspace *)arg1 withTransitionContext:(FBSSceneTransitionContext *)arg2;
 @end
 

@@ -10,12 +10,13 @@
 #import <UIKit/UIKeyboardCandidateGridLayoutDelegate-Protocol.h>
 #import <UIKit/UIKeyboardCandidateList-Protocol.h>
 
-@class NSArray, NSString, TIKeyboardCandidateResultSet, UIButton, UIKBCandidateCollectionView, UIKeyboardCandidateGridCollectionView, UIKeyboardCandidateGridLayout, UIView;
+@class NSArray, NSString, TIKeyboardCandidateResultSet, UIButton, UIKBCandidateCollectionView, UIKeyboardCandidateGridCollectionView, UIKeyboardCandidateGridLayout, UISelectionFeedbackGenerator, UIView;
 @protocol UIKeyboardCandidateGridCollectionViewControllerDelegate, UIKeyboardCandidateListDelegate;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateGridCollectionViewController : UIViewController <UICollectionViewDataSource, UIKeyboardCandidateList, UIKeyboardCandidateGridLayoutDelegate>
 {
+    UISelectionFeedbackGenerator *_indexRetargetFeedbackGenerator;
     BOOL _layoutExtensionCandidates;
     BOOL _hasSecondaryCandidates;
     BOOL _singleLineMode;
@@ -29,22 +30,24 @@ __attribute__((visibility("hidden")))
     TIKeyboardCandidateResultSet *_candidateSet;
     NSArray *_candidateGroups;
     double _rowHeight;
-    CDStruct_961fb75c _visualStyling;
+    CDStruct_227bb23d _visualStyling;
     UIButton *_padInlineFloatingArrowButton;
     UIView *_headerView;
     UIKBCandidateCollectionView *_secondaryCandidatesView;
     double _groupBarWidth;
+    struct UIEdgeInsets _contentInsets;
 }
 
 @property (nonatomic) BOOL _usesDeemphasizedTextAppearance; // @synthesize _usesDeemphasizedTextAppearance=__usesDeemphasizedTextAppearance;
 @property (strong, nonatomic) NSArray *candidateGroups; // @synthesize candidateGroups=_candidateGroups;
-@property (nonatomic) id<UIKeyboardCandidateListDelegate> candidateListDelegate; // @synthesize candidateListDelegate=_candidateListDelegate;
+@property (weak, nonatomic) id<UIKeyboardCandidateListDelegate> candidateListDelegate; // @synthesize candidateListDelegate=_candidateListDelegate;
 @property (strong, nonatomic) TIKeyboardCandidateResultSet *candidateSet; // @synthesize candidateSet=_candidateSet;
 @property (nonatomic) int candidatesVisualStyle; // @synthesize candidatesVisualStyle=_candidatesVisualStyle;
 @property (readonly, nonatomic) UIKeyboardCandidateGridCollectionView *collectionView;
 @property (readonly, nonatomic) UIKeyboardCandidateGridLayout *collectionViewGridLayout;
+@property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<UIKeyboardCandidateGridCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<UIKeyboardCandidateGridCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *filteredCandidates; // @synthesize filteredCandidates=_filteredCandidates;
 @property (nonatomic) double groupBarWidth; // @synthesize groupBarWidth=_groupBarWidth;
@@ -59,8 +62,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL singleLineMode; // @synthesize singleLineMode=_singleLineMode;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsNumberKeySelection; // @synthesize supportsNumberKeySelection=_supportsNumberKeySelection;
-@property (nonatomic) CDStruct_961fb75c visualStyling; // @synthesize visualStyling=_visualStyling;
+@property (nonatomic) CDStruct_227bb23d visualStyling; // @synthesize visualStyling=_visualStyling;
 
+- (void).cxx_destruct;
 - (void)candidateAcceptedAtIndex:(unsigned long long)arg1;
 - (id)candidateAtIndexPath:(id)arg1;
 - (unsigned long long)candidateIndexOffset;
@@ -81,17 +85,17 @@ __attribute__((visibility("hidden")))
 - (id)groupAtIndex:(unsigned long long)arg1;
 - (unsigned long long)groupsCount;
 - (BOOL)handleNumberKey:(unsigned long long)arg1;
+- (BOOL)hasCandidateInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (BOOL)hasCandidates;
-- (BOOL)hasNextPage;
-- (BOOL)hasPreviousPage;
 - (id)indexPathForCandidate:(id)arg1;
 - (id)init;
 - (BOOL)isExtendedList;
+- (BOOL)isFloatingList;
 - (id)keyboardBehaviors;
 - (id)lastCandidateIndexPath;
 - (id)lastCandidateIndexPathInGroupAtIndex:(unsigned long long)arg1;
 - (void)layout;
-- (void)loadSecondaryCandidatesView;
+- (BOOL)loadSecondaryCandidatesView;
 - (void)loadView;
 - (unsigned long long)maxNumberOfProactiveCells;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
@@ -107,6 +111,8 @@ __attribute__((visibility("hidden")))
 - (void)scrollToTopWithAnimation:(BOOL)arg1 revealHeaderView:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewIndexChanged:(id)arg1;
+- (void)scrollViewIndexTouchesBegan:(id)arg1;
+- (void)scrollViewIndexTouchesEnded:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (id)secureCandidateRenderTraits;
 - (id)selectedItemIndexPath;
@@ -115,14 +121,12 @@ __attribute__((visibility("hidden")))
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
 - (BOOL)showCandidate:(id)arg1;
 - (void)showCandidateAtIndex:(unsigned long long)arg1;
+- (void)showCandidateInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (void)showNextCandidate;
-- (void)showNextPage;
-- (void)showNextRow;
 - (void)showPreviousCandidate;
-- (void)showPreviousPage;
-- (void)showPreviousRow;
 - (id)statisticsIdentifier;
 - (void)stepOneLine:(BOOL)arg1;
+- (void)updateBackgroundColor;
 - (void)updateHeaderView;
 - (void)updateIndexTitles;
 - (void)viewDidLoad;

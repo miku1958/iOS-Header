@@ -6,23 +6,28 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString, NSUUID;
+@class NSAttributedString, NSString, NSUUID;
 
 @interface UIAccessibilityCustomRotor : NSObject
 {
     NSUUID *uuid;
     id targetElement;
-    NSString *_name;
+    long long systemRotorType;
+    NSAttributedString *_attributedName;
     CDUnknownBlockType _itemSearchBlock;
 }
 
+@property (copy, nonatomic) NSAttributedString *attributedName; // @synthesize attributedName=_attributedName;
 @property (copy, nonatomic) CDUnknownBlockType itemSearchBlock; // @synthesize itemSearchBlock=_itemSearchBlock;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSString *name;
+@property (nonatomic) long long systemRotorType; // @synthesize systemRotorType;
 @property (weak, nonatomic) id targetElement; // @synthesize targetElement;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid;
 
 - (void).cxx_destruct;
+- (id)initWithAttributedName:(id)arg1 itemSearchBlock:(CDUnknownBlockType)arg2;
 - (id)initWithName:(id)arg1 itemSearchBlock:(CDUnknownBlockType)arg2;
+- (id)initWithSystemType:(long long)arg1 itemSearchBlock:(CDUnknownBlockType)arg2;
 
 @end
 

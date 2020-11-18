@@ -4,28 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory10Key_Landscape.h>
+#import <UIKit/UIKBRenderFactory10Key.h>
 
 __attribute__((visibility("hidden")))
-@interface UIKBRenderFactoryiPad10Key_Portrait : UIKBRenderFactory10Key_Landscape
+@interface UIKBRenderFactoryiPad10Key_Portrait : UIKBRenderFactory10Key
 {
 }
 
 - (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderingContext:(id)arg3 keycapsFontName:(id)arg4;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
+- (struct CGPoint)abcKeyTextOffset;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
 - (double)controlColumnWidthFactor;
+- (struct CGPoint)dictationKeyTextOffset;
 - (unsigned long long)edgesAdjustedForTranslucentGapsForGeometry:(id)arg1 key:(id)arg2 onKeyplane:(id)arg3;
+- (struct CGPoint)globeKeyTextOffset;
 - (double)keyCornerRadius;
 - (id)lightKeycapsFontName;
 - (id)messagesWriteboardKeyImageName;
 - (id)multitapCompleteKeyImageName;
 - (id)muttitapReverseKeyImageName;
+- (double)numberPadKeyPrimarySymbolSize;
+- (struct CGPoint)numberPadKeyPrimaryTextOffset;
+- (struct CGPoint)numberPadKeySecondaryTextOffset;
+- (struct CGPoint)numberPadVBarSecondaryTextOffset;
+- (void)setupLayoutSegments;
 - (id)shiftKeyImageName;
 - (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;
 - (id)thinKeycapsFontName;
 - (struct UIEdgeInsets)topEdgeAdjustmentInsets;
+- (struct UIEdgeInsets)wideShadowPaddleInsets;
 
 @end
 

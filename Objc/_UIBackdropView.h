@@ -21,7 +21,6 @@
     BOOL _applyingBackdropChanges;
     BOOL _applyingTransition;
     BOOL _requiresTintViews;
-    BOOL _wantsColorSettings;
     BOOL _blursBackground;
     BOOL _allowsColorSettingsSuppression;
     BOOL _autoGroup;
@@ -155,19 +154,14 @@
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (strong, nonatomic) CAFilter *tintFilter; // @synthesize tintFilter=_tintFilter;
 @property (nonatomic) BOOL updateMaskViewsForViewReentrancyGuard; // @synthesize updateMaskViewsForViewReentrancyGuard=_updateMaskViewsForViewReentrancyGuard;
-@property (nonatomic) BOOL wantsColorSettings; // @synthesize wantsColorSettings=_wantsColorSettings;
 
 + (void)adjustGraphicsQualityForAccessibilityIfNeeded:(id)arg1;
 + (id)allBackdropViews;
 + (Class)defaultSettingsClass;
 + (Class)layerClass;
-+ (void)restoreColorSettingsForDidBecomeActive:(id)arg1;
 + (void)restoreColorSettingsForRequester:(id)arg1;
-+ (void)restoreColorSettingsForRunLoopModePop:(id)arg1;
 + (void)setAllBackdropViewsToGraphicsQuality:(long long)arg1;
 + (void)suppressColorSettingsForRequester:(id)arg1;
-+ (void)suppressColorSettingsForRunLoopModePush:(id)arg1;
-+ (void)suppressColorSettingsForWillResignActive:(id)arg1;
 - (void).cxx_destruct;
 - (void)_applyCornerRadiusToSubviews;
 - (double)_continuousCornerRadius;
@@ -190,14 +184,11 @@
 - (void)applyOverlayBlendModeToView:(id)arg1;
 - (void)applySettings:(id)arg1;
 - (void)applySettingsWithBuiltInAnimation:(id)arg1;
-- (void)backdropLayerStatisticsDidChange:(id)arg1;
 - (id)backdropViewLayer;
 - (id)blurQuality;
 - (double)blurRadius;
-- (void)computeAndApplySettings:(id)arg1;
 - (void)computeAndApplySettingsForTransition;
 - (void)dealloc;
-- (void)delayedComputeAndApplySettings;
 - (void)didCallRenderInContextOnBackdropViewLayer;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;

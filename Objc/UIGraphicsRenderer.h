@@ -6,35 +6,27 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableSet, UIGraphicsRendererFormat;
-@protocol OS_dispatch_queue;
+@class UIGraphicsRendererFormat, _UIReusePool;
 
 @interface UIGraphicsRenderer : NSObject
 {
     UIGraphicsRendererFormat *_format;
-    NSMutableSet *_reuseSet;
-    NSObject<OS_dispatch_queue> *_reuseAccessQueue;
+    _UIReusePool *_reusePool;
 }
 
 @property (readonly, nonatomic) BOOL allowsImageOutput;
 @property (readonly, nonatomic) UIGraphicsRendererFormat *format; // @synthesize format=_format;
 
-+ (void)__applicationDidEnterBackground:(id)arg1;
-+ (void)__applicationWillEnterForeground:(id)arg1;
 + (struct CGContext *)_contextWithFormat:(id)arg1 renderer:(id)arg2;
 + (void)_destroyCGContext:(struct CGContext *)arg1 withRenderer:(id)arg2;
 + (BOOL)_supportsContextReuse;
 + (struct CGContext *)contextWithFormat:(id)arg1;
-+ (void)initialize;
 + (void)prepareCGContext:(struct CGContext *)arg1 withRendererContext:(id)arg2;
 + (Class)rendererContextClass;
 - (void).cxx_destruct;
 - (void)_configureReuseState;
-- (id)_dequeuePointerForReuse;
-- (void)_disposeReusePool;
-- (void)_disposeReusedPointer:(id)arg1;
-- (void)_preparePointerForReuse:(id)arg1;
-- (void)dealloc;
+- (struct CGContext *)_dequeueContextForReuse;
+- (void)_prepareContextForReuse:(struct CGContext *)arg1;
 - (id)init;
 - (id)initWithBounds:(struct CGRect)arg1;
 - (id)initWithBounds:(struct CGRect)arg1 format:(id)arg2;

@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)rebuildBackgroundAndShadowTransitions;
 - (void)rebuildBackgroundGradientTransitions;
 - (void)rebuildControlKeys:(unsigned long long)arg1;
-- (void)rebuildFromKeyplane:(id)arg1 toKeyplane:(id)arg2 keyboardType:(long long)arg3 orientation:(long long)arg4;
+- (void)rebuildFromKeyplane:(id)arg1 toKeyplane:(id)arg2 startToken:(id)arg3 endToken:(id)arg4 keyboardType:(long long)arg5 orientation:(long long)arg6;
 - (void)rebuildMoreIntlKeys;
 - (void)rebuildPositionTransition;
 - (void)rebuildReturnSlices;

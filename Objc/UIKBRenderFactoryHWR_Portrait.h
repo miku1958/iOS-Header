@@ -4,21 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory10Key.h>
+#import <UIKit/UIKBRenderFactory10Key_iPhone.h>
 
 __attribute__((visibility("hidden")))
-@interface UIKBRenderFactoryHWR_Portrait : UIKBRenderFactory10Key
+@interface UIKBRenderFactoryHWR_Portrait : UIKBRenderFactory10Key_iPhone
 {
 }
 
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (struct CGPoint)deleteGlyphOffset;
+- (struct CGPoint)globeKeyTextOffset;
 - (struct UIEdgeInsets)handwritingAreaInsets;
 - (double)handwritingGradientStartLocation;
 - (struct CGPoint)moreKeyTextOffset;
 - (void)setupLayoutSegments;
+- (BOOL)shouldUseRoundCornerForKey:(id)arg1;
 - (double)spaceKeyFontSize;
 - (struct CGPoint)spaceKeyTextOffset;
+- (struct UIEdgeInsets)symbolFrameInsets;
 
 @end
 

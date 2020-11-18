@@ -22,6 +22,7 @@
 - (void)_addGesturesForPress:(id)arg1;
 - (void)_addPress:(id)arg1 forDelayedDelivery:(BOOL)arg2;
 - (id)_allPresses;
+- (void)_cleanupAfterDispatch;
 - (id)_cloneEvent;
 - (id)_directionalPressWithStrongestForce;
 - (id)_gestureRecognizersForWindow:(id)arg1;

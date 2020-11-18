@@ -8,11 +8,12 @@
 
 #import <UIKit/UIActionSheetPresentationControllerVisualStyle-Protocol.h>
 
-@class NSString, UIActionSheetiOSDismissActionView, UIColor;
+@class NSString, UIActionSheetiOSDismissActionView, UIColor, UITraitCollection;
 
 __attribute__((visibility("hidden")))
 @interface _UIActionSheetPresentationControllerVisualStyleiOS : NSObject <UIActionSheetPresentationControllerVisualStyle>
 {
+    UITraitCollection *_traitCollection;
     UIActionSheetiOSDismissActionView *_dismissActionView;
 }
 
@@ -22,8 +23,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) UIColor *dimmingViewColor;
 @property (strong, nonatomic) UIActionSheetiOSDismissActionView *dismissActionView; // @synthesize dismissActionView=_dismissActionView;
+@property (readonly) double dismissToContentSpacing;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 
 - (void).cxx_destruct;
 - (id)init;

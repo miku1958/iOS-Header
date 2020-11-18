@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) _UIActivityGroupActivityCellTitleLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
-+ (struct CGSize)preferredSizeForTitleLabelText:(id)arg1 screenScale:(double)arg2;
++ (struct CGSize)preferredSizeForSheetWidth:(double)arg1 sizeCategory:(id)arg2 titleLabelText:(id)arg3 screenScale:(double)arg4;
 - (void).cxx_destruct;
 - (id)draggingView;
 - (void)initHighlightedImageViewIfNeeded;
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForReuse;
 - (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateHighlightedImageViewIfNeeded;
 
 @end

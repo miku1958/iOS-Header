@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double horizontalInset;
 @property (readonly, nonatomic) double maxWidth;
 @property (readonly, nonatomic) double minWidth;
+@property (readonly, nonatomic) BOOL positionedRelativeToTrailingEdge;
 @property (readonly, nonatomic) double shadowHeight;
 @property (readonly, nonatomic) double singleBadgeWidth;
 @property (readonly, nonatomic) BOOL usesExternalImage;

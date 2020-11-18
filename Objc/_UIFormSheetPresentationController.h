@@ -41,6 +41,7 @@
 - (void)dismissalTransitionDidEnd:(BOOL)arg1;
 - (void)dismissalTransitionWillBegin;
 - (unsigned long long)dropShadowAutoresizingMask;
+- (id)dropShadowView;
 - (struct CGRect)frameOfPresentedViewInContainerView;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
 - (long long)presentationStyle;

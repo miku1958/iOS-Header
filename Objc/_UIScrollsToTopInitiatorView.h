@@ -13,8 +13,6 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)_shouldSeekHigherPriorityTouchTarget;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 
 @end

@@ -27,7 +27,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSIndexPath *targetIndexPath; // @synthesize targetIndexPath=_targetIndexPath;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithCell:(id)arg1 indexPath:(id)arg2;
+- (BOOL)isNOOP;
 
 @end
 

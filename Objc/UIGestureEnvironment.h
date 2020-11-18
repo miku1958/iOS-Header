@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_delayedTouchesToSend;
     NSMutableArray *_delayedPresses;
     NSMutableArray *_delayedPressesToSend;
+    NSMutableArray *_preUpdateActions;
     BOOL _dirtyGestureRecognizersUnsorted;
     BOOL _updateExclusivity;
     UIGestureGraph *_dependencyGraph;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_activeRelationshipsForGestureRecognizer:(id)arg1;
 - (void)_addDynamicRequirementForGestureRecognizer:(id)arg1 requiringGestureRecognizerToFail:(id)arg2;
+- (void)_addPreUpdateAction:(CDUnknownBlockType)arg1;
 - (void)_cancelGestureRecognizers:(id)arg1;
 - (void)_cancelPresses:(id)arg1 event:(id)arg2;
 - (void)_cancelTouches:(id)arg1 event:(id)arg2;
@@ -47,12 +49,14 @@ __attribute__((visibility("hidden")))
 - (void)_markGestureAsDirty:(id)arg1;
 - (id)_nodeForGestureRecognizer:(id)arg1;
 - (void)_notifyDependentsGestureRecognizerHasCompleted:(id)arg1;
+- (void)_performTouchContinuationWithOverrideHitTestedView:(id)arg1;
 - (BOOL)_pressesBeganWasDelayedForPress:(id)arg1;
 - (void)_queueGestureRecognizerForResetIfFinished:(id)arg1;
 - (void)_queueGestureRecognizersForResetIfFinished:(id)arg1;
 - (void)_removeDelayedPress:(id)arg1;
 - (void)_removeDelayedTouch:(id)arg1;
 - (void)_removeNodeFromGestureGraph:(id)arg1;
+- (void)_runPreUpdateActions;
 - (BOOL)_touchesBeganWasDelayedForTouch:(id)arg1;
 - (void)_updateGesturesForEvent:(id)arg1 window:(id)arg2;
 - (void)addGestureRecognizer:(id)arg1;

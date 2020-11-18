@@ -6,30 +6,41 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSIndexPath;
+#import <UIKit/NSCopying-Protocol.h>
 
-@interface UICollectionViewUpdateItem : NSObject
+@class NSIndexPath, NSUUID;
+
+@interface UICollectionViewUpdateItem : NSObject <NSCopying>
 {
     NSIndexPath *_initialIndexPath;
     NSIndexPath *_finalIndexPath;
     long long _updateAction;
+    BOOL _isAppendingSectionInsert;
+    NSUUID *_identifier;
 }
 
 @property (readonly, nonatomic, getter=_action) long long action;
+@property (strong, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic, getter=_indexPath) NSIndexPath *indexPath;
 @property (readonly, nonatomic) NSIndexPath *indexPathAfterUpdate; // @synthesize indexPathAfterUpdate=_finalIndexPath;
 @property (readonly, nonatomic) NSIndexPath *indexPathBeforeUpdate; // @synthesize indexPathBeforeUpdate=_initialIndexPath;
+@property (nonatomic) BOOL isAppendingSectionInsert; // @synthesize isAppendingSectionInsert=_isAppendingSectionInsert;
 @property (readonly, nonatomic, getter=_isSectionOperation) BOOL isSectionOperation;
 @property (strong, nonatomic, getter=_newIndexPath, setter=_setNewIndexPath:) NSIndexPath *newIndexPath;
 @property (readonly, nonatomic) long long updateAction; // @synthesize updateAction=_updateAction;
 
 - (void).cxx_destruct;
 - (long long)compareIndexPaths:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithAction:(long long)arg1 forIndexPath:(id)arg2;
 - (id)initWithInitialIndexPath:(id)arg1 finalIndexPath:(id)arg2 updateAction:(long long)arg3;
 - (id)initWithOldIndexPath:(id)arg1 newIndexPath:(id)arg2;
 - (long long)inverseCompareIndexPaths:(id)arg1;
+- (BOOL)isEqualToUpdate:(id)arg1;
+- (BOOL)isNOOP;
+- (BOOL)isRevertedUpdateOf:(id)arg1;
+- (id)revertedUpdate;
 
 @end
 

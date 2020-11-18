@@ -27,11 +27,11 @@
 @property (nonatomic) int rowHint;
 @property (nonatomic) struct CGSize size;
 @property (readonly, nonatomic) NSString *string;
-@property (nonatomic) CDStruct_961fb75c styling;
+@property (nonatomic) CDStruct_227bb23d styling;
 
-+ (id)tokenForKey:(id)arg1 style:(CDStruct_961fb75c)arg2;
-+ (id)tokenForKey:(id)arg1 style:(CDStruct_961fb75c)arg2 displayInsets:(struct UIEdgeInsets)arg3;
-+ (id)tokenForKeyMask:(id)arg1 style:(CDStruct_961fb75c)arg2 displayInsets:(struct UIEdgeInsets)arg3;
++ (id)tokenForKey:(id)arg1 style:(CDStruct_227bb23d)arg2;
++ (id)tokenForKey:(id)arg1 style:(CDStruct_227bb23d)arg2 displayInsets:(struct UIEdgeInsets)arg3;
++ (id)tokenForKeyMask:(id)arg1 style:(CDStruct_227bb23d)arg2 displayInsets:(struct UIEdgeInsets)arg3;
 + (id)tokenForKeyplane:(id)arg1;
 + (id)tokenTemplateFilledForKey:(id)arg1 style:(int)arg2 size:(struct CGSize)arg3;
 + (id)tokenTemplateForKey:(id)arg1 name:(id)arg2 style:(int)arg3 size:(struct CGSize)arg4;
@@ -53,7 +53,7 @@
 - (id)stringForConstruction:(CDUnknownBlockType)arg1;
 - (id)stringForKey:(id)arg1 state:(int)arg2;
 - (id)stringForRenderFlags:(long long)arg1 lightKeyboard:(BOOL)arg2;
-- (id)stringForSplitState:(BOOL)arg1;
+- (id)stringForSplitState:(BOOL)arg1 handBias:(long long)arg2;
 - (id)stringForState:(int)arg1;
 
 @end

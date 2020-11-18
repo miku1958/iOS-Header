@@ -7,11 +7,13 @@
 #import <UIKit/UIControl.h>
 
 #import <UIKit/NSCoding-Protocol.h>
+#import <UIKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <UIKit/_UIBasicAnimationFactory-Protocol.h>
+#import <UIKit/_UIHostedFocusSystemDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UIColor, UISegment, UIView;
+@class NSMutableArray, NSString, UIColor, UILongPressGestureRecognizer, UISegment, UIView, _UIHostedFocusSystem;
 
-@interface UISegmentedControl : UIControl <_UIBasicAnimationFactory, NSCoding>
+@interface UISegmentedControl : UIControl <_UIBasicAnimationFactory, UIPopoverPresentationControllerDelegate, _UIHostedFocusSystemDelegate, NSCoding>
 {
     NSMutableArray *_segments;
     long long _selectedSegment;
@@ -37,13 +39,17 @@
         unsigned int appearanceNeedsUpdate:1;
     } _segmentedControlFlags;
     BOOL __hasTranslucentOptionsBackground;
+    _UIHostedFocusSystem *_internalFocusSystem;
+    UILongPressGestureRecognizer *_axLongPressGestureRecognizer;
 }
 
 @property (nonatomic, setter=_setTranslucentOptionsBackground:) BOOL _hasTranslucentOptionsBackground; // @synthesize _hasTranslucentOptionsBackground=__hasTranslucentOptionsBackground;
 @property (nonatomic) BOOL apportionsSegmentWidthsByContent;
+@property (strong, nonatomic) UILongPressGestureRecognizer *axLongPressGestureRecognizer; // @synthesize axLongPressGestureRecognizer=_axLongPressGestureRecognizer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=_internalFocusSystem) _UIHostedFocusSystem *internalFocusSystem; // @synthesize internalFocusSystem=_internalFocusSystem;
 @property (nonatomic, getter=isMomentary) BOOL momentary;
 @property (readonly, nonatomic) unsigned long long numberOfSegments;
 @property (strong, nonatomic) UIView *removedSegment; // @synthesize removedSegment=_removedSegment;
@@ -71,20 +77,25 @@
 - (void).cxx_destruct;
 - (void)_animateContentChangeWithAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_attributedTitleForSegmentAtIndex:(unsigned long long)arg1;
+- (void)_axLongPressHandler:(id)arg1;
 - (double)_backgroundVerticalPositionAdjustmentForBarMetrics:(long long)arg1;
 - (id)_badgeValueForSegmentAtIndex:(unsigned long long)arg1;
 - (double)_barHeight;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 - (void)_cancelDelayedFocusAction;
 - (void)_clearSelectedSegment;
+- (int)_closestSegmentIndexAtPoint:(struct CGPoint)arg1;
 - (void)_commonSegmentedControlInit;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (id)_createAndAddSegmentAtIndex:(int)arg1 position:(unsigned int)arg2 withInfo:(id)arg3;
 - (id)_createSegmentAtIndex:(int)arg1 position:(unsigned int)arg2 withInfo:(id)arg3;
+- (void)_diagnoseFocusabilityForReport:(id)arg1;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_emitValueChanged;
-- (id)_firstEnabledSegment;
+- (id)_focusMapContainerForFocusSystem:(id)arg1;
+- (BOOL)_focusSystem:(id)arg1 containsChildOfHostEnvironment:(id)arg2;
+- (void)_focusSystem:(id)arg1 didFinishUpdatingFocusInContext:(id)arg2;
 - (BOOL)_hasEnabledSegment;
 - (void)_insertSegment:(int)arg1 withInfo:(id)arg2 animated:(BOOL)arg3;
 - (void)_insertSegmentWithAttributedTitle:(id)arg1 atIndex:(unsigned long long)arg2 animated:(BOOL)arg3;
@@ -94,10 +105,12 @@
 - (id)_optionsBackgroundImage;
 - (BOOL)_optionsShadowHidden;
 - (void)_populateArchivedSubviews:(id)arg1;
+- (id)_preferredFocusEnvironmentsForFocusSystem:(id)arg1;
 - (void)_removeSegmentAnimationFinished:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_resetForAppearanceChange;
+- (id)_segmentAtIndex:(int)arg1;
 - (void)_selectFocusedSegment;
-- (void)_sendFocusAction;
+- (void)_sendDelayedFocusActionIfNecessary;
 - (void)_setAppearanceIsTiled:(BOOL)arg1 leftCapWidth:(unsigned long long)arg2 rightCapWidth:(unsigned long long)arg3;
 - (void)_setAttributedTitle:(id)arg1 forSegmentAtIndex:(unsigned long long)arg2;
 - (void)_setAutosizeText:(BOOL)arg1;
@@ -124,10 +137,13 @@
 - (id)_tintColorArchivingKey;
 - (id)_uiktest_labelsWithState:(unsigned long long)arg1;
 - (id)_uiktest_segmentAtIndex:(unsigned long long)arg1;
+- (void)_updateAxLongPressGestureRecognizer;
 - (void)_updateDividerImageForSegmentAtIndex:(unsigned long long)arg1;
 - (void)_updateOptionsBackground;
 - (void)_updateTitleTextAttributes;
 - (BOOL)_usesNewAnimations;
+- (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
+- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)addSegmentWithTitle:(id)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (id)backgroundImageForState:(unsigned long long)arg1 barMetrics:(long long)arg2;
@@ -158,9 +174,9 @@
 - (void)insertSegmentWithTitle:(id)arg1 atIndex:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (BOOL)isEnabledForSegment:(unsigned long long)arg1;
 - (BOOL)isEnabledForSegmentAtIndex:(unsigned long long)arg1;
+- (BOOL)isSpringLoaded;
 - (void)layoutSubviews;
 - (BOOL)pointMostlyInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)preferredFocusedView;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
@@ -191,6 +207,7 @@
 - (void)setImagePadding:(struct CGSize)arg1 forSegment:(unsigned long long)arg2;
 - (void)setSegmentControlStyle:(long long)arg1;
 - (void)setSelectedSegment:(long long)arg1;
+- (void)setSpringLoaded:(BOOL)arg1;
 - (void)setTitle:(id)arg1 forSegment:(unsigned long long)arg2;
 - (void)setTitle:(id)arg1 forSegmentAtIndex:(unsigned long long)arg2;
 - (void)setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
@@ -207,13 +224,13 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (BOOL)transparentBackground;
 - (void)updateForMiniBarState:(BOOL)arg1;
 - (BOOL)useBlockyMagnificationInClassic;
 - (id)viewForLastBaselineLayout;
 - (float)widthForSegment:(unsigned long long)arg1;
 - (double)widthForSegmentAtIndex:(unsigned long long)arg1;
-- (void)willUpdateFocusToView:(id)arg1;
 
 @end
 

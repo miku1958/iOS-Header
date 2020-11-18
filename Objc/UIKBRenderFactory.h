@@ -20,10 +20,12 @@
     BOOL _boldTextEnabled;
     BOOL _allowsPaddles;
     BOOL _preferStringKeycapOverImage;
+    BOOL _drawsOneHandedAffordance;
 }
 
 @property (nonatomic) BOOL allowsPaddles; // @synthesize allowsPaddles=_allowsPaddles;
 @property (readonly, nonatomic) BOOL boldTextEnabled; // @synthesize boldTextEnabled=_boldTextEnabled;
+@property (nonatomic) BOOL drawsOneHandedAffordance; // @synthesize drawsOneHandedAffordance=_drawsOneHandedAffordance;
 @property (nonatomic) BOOL lightweightFactory; // @synthesize lightweightFactory=_lightweightFactory;
 @property (nonatomic) BOOL preferStringKeycapOverImage; // @synthesize preferStringKeycapOverImage=_preferStringKeycapOverImage;
 @property (readonly, getter=renderConfig) UIKBRenderConfig *renderConfig;
@@ -38,12 +40,13 @@
 + (long long)_graphicsQuality;
 + (id)cacheKeyForString:(id)arg1 withRenderFlags:(long long)arg2 renderingContext:(id)arg3;
 + (BOOL)couldUseGlyphSelectorForDisplayString:(id)arg1;
-+ (Class)factoryClassForVisualStyle:(CDStruct_961fb75c)arg1;
-+ (id)factoryForVisualStyle:(CDStruct_961fb75c)arg1 renderingContext:(id)arg2;
-+ (id)factoryForVisualStyle:(CDStruct_961fb75c)arg1 renderingContext:(id)arg2 skipLayoutSegments:(BOOL)arg3;
-+ (id)lightweightFactoryForVisualStyle:(CDStruct_961fb75c)arg1 renderingContext:(id)arg2;
++ (Class)factoryClassForVisualStyle:(CDStruct_227bb23d)arg1;
++ (id)factoryForVisualStyle:(CDStruct_227bb23d)arg1 renderingContext:(id)arg2;
++ (id)factoryForVisualStyle:(CDStruct_227bb23d)arg1 renderingContext:(id)arg2 skipLayoutSegments:(BOOL)arg3;
++ (id)lightweightFactoryForVisualStyle:(CDStruct_227bb23d)arg1 renderingContext:(id)arg2;
 + (id)segmentedControlColor:(BOOL)arg1;
 - (double)RivenFactor:(double)arg1;
+- (id)ZWNJKeyImageName;
 - (id)_controlKeyBackgroundColorName;
 - (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderingContext:(id)arg3 keycapsFontName:(id)arg4;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
@@ -107,13 +110,13 @@
 - (id)shiftOnKeyImageName;
 - (BOOL)shouldClearBaseDisplayStringForVariants:(id)arg1;
 - (double)skinnyKeyThreshold;
-- (BOOL)supportsGestureBehaviors;
+- (id)spaceKeyGrabberHandlesImageName;
 - (BOOL)supportsInputTraits:(id)arg1 forKeyplane:(id)arg2;
 - (void)suppressLayoutSegments;
 - (id)thinKeycapsFontName;
 - (id)thinTextFontName;
 - (id)traitsForKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)traitsHashStringForKey:(id)arg1 withGeometry:(id)arg2 withSymbolStyle:(id)arg3 controlOpacities:(BOOL)arg4;
+- (id)traitsHashStringForKey:(id)arg1 withGeometry:(id)arg2 withSymbolStyle:(id)arg3 controlOpacities:(BOOL)arg4 blurBlending:(BOOL)arg5;
 - (double)translucentGapWidth;
 - (id)undoKeyImageName;
 - (BOOL)useBlueThemingForKey:(id)arg1;

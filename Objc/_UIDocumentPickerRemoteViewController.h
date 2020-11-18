@@ -29,6 +29,7 @@
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
 - (void)_didSelectPicker;
+- (void)_didSelectURLBookmark:(id)arg1;
 - (void)_didSelectURLWrapper:(id)arg1;
 - (void)_dismissViewController;
 - (void)_dismissWithOption:(id)arg1;

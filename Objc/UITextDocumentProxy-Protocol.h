@@ -6,13 +6,15 @@
 
 #import <UIKit/UIKeyInput-Protocol.h>
 
-@class NSString, UITextInputMode;
+@class NSString, NSUUID, UITextInputMode;
 
 @protocol UITextDocumentProxy <UIKeyInput>
 
 @property (readonly, nonatomic) NSString *documentContextAfterInput;
 @property (readonly, nonatomic) NSString *documentContextBeforeInput;
+@property (readonly, copy, nonatomic) NSUUID *documentIdentifier;
 @property (readonly, nonatomic) UITextInputMode *documentInputMode;
+@property (readonly, nonatomic) NSString *selectedText;
 
 - (void)adjustTextPositionByCharacterOffset:(long long)arg1;
 @end

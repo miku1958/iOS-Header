@@ -11,11 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewTrackedValue : NSObject
 {
-    double _trackedValue;
     NSArray *_values;
     long long _valuesCount;
     long long _currentIndex;
     BOOL _isAccumulating;
+    double _trackedValue;
 }
 
 @property (nonatomic) BOOL isAccumulating; // @synthesize isAccumulating=_isAccumulating;

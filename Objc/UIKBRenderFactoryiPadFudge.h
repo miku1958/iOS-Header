@@ -51,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (double)spaceKeyFontSize;
 - (double)stringKeyFontSize:(unsigned long long)arg1;
 - (struct CGPoint)stringKeyOffset:(unsigned long long)arg1;
-- (BOOL)supportsGestureBehaviors;
 - (BOOL)supportsInputTraits:(id)arg1 forKeyplane:(id)arg2;
 - (id)tabKeyImageName;
 

@@ -30,7 +30,6 @@
 - (void)addAnimation:(id)arg1 withDuration:(double)arg2 start:(BOOL)arg3;
 - (void)addAnimations:(id)arg1 withDuration:(double)arg2 start:(BOOL)arg3;
 - (void)dealloc;
-- (float)fractionForAnimation:(id)arg1;
 - (void)removeAnimationsForTarget:(id)arg1;
 - (void)removeAnimationsForTarget:(id)arg1 ofKind:(Class)arg2;
 - (void)startAnimation:(id)arg1;

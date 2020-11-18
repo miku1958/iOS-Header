@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedConstants;
 - (id)_kitImageNamed:(id)arg1 withTint:(id)arg2 flippedForRightToLeftLayoutDirection:(BOOL)arg3;
+- (double)defaultAlphaForDraggingCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultAlphaForReorderingCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultBackgroundColorForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultBackgroundColorForTableViewStyle:(long long)arg1;
@@ -68,6 +69,8 @@ __attribute__((visibility("hidden")))
 - (id)defaultInsertImageForCell:(id)arg1 forUserInterfaceStyle:(long long)arg2;
 - (id)defaultInsertImageForCell:(id)arg1 inTableView:(id)arg2;
 - (struct UIEdgeInsets)defaultLayoutMarginsForCell:(id)arg1 inTableView:(id)arg2;
+- (struct UIEdgeInsets)defaultLayoutMarginsForTableView:(id)arg1;
+- (double)defaultLeadingCellMarginWidthForTableView:(id)arg1;
 - (double)defaultMarginWidthForTableView:(id)arg1;
 - (double)defaultMaskGradientHeightForTableView:(id)arg1;
 - (id)defaultMultiSelectHighlightedImageForCell:(id)arg1 inTableView:(id)arg2;
@@ -85,7 +88,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)defaultRowHeightDependsOnCellStyle;
 - (double)defaultRowHeightForTableView:(id)arg1;
 - (double)defaultRowHeightForTableView:(id)arg1 cellStyle:(long long)arg2;
-- (double)defaultSectionContentMarginWidthForTableView:(id)arg1;
 - (double)defaultSectionFooterHeightForTableView:(id)arg1;
 - (double)defaultSectionHeaderHeightForTableView:(id)arg1;
 - (id)defaultSelectionTintColorForCell:(id)arg1 inTableView:(id)arg2;
@@ -96,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultTextColorForCell:(id)arg1 inTableView:(id)arg2 forUserInterfaceStyle:(long long)arg3;
 - (id)defaultTextLabelFontForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultTextLabelFontSizeForCell:(id)arg1 inTableView:(id)arg2;
+- (double)defaultTrailingCellMarginWidthForTableView:(id)arg1;
 - (BOOL)imageViewOffsetByLayoutMarginsForCell:(id)arg1 inTableView:(id)arg2;
 - (BOOL)reorderingCellWantsShadows:(id)arg1 inTableView:(id)arg2;
 - (BOOL)supportsUserInterfaceStyles;

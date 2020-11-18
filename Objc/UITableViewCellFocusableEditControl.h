@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)_ensureFocusedFloatingContentView;
 - (BOOL)_shouldHandlePressEvent:(id)arg1;
 - (void)_updateFloatingViewForCurrentTraits;
-- (void)focusedViewDidChange;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)layoutSubviews;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;

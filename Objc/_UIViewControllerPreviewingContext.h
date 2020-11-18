@@ -16,17 +16,18 @@ __attribute__((visibility("hidden")))
 @interface _UIViewControllerPreviewingContext : NSObject <_UIPreviewInteractionControllerDelegate, UIViewControllerPreviewing_Internal>
 {
     id<UIViewControllerPreviewingDelegate> _delegate;
+    UIView *_customViewForInteractiveHighlight;
     UIView *_sourceView;
     UIViewController *_viewController;
     _UIPreviewInteractionController *_previewInteractionController;
     struct CGRect _sourceRect;
 }
 
+@property (strong, nonatomic) UIView *customViewForInteractiveHighlight; // @synthesize customViewForInteractiveHighlight=_customViewForInteractiveHighlight;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) id<UIViewControllerPreviewingDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UIGestureRecognizer *presentationGestureRecognizer;
 @property (strong, nonatomic) _UIPreviewInteractionController *previewInteractionController; // @synthesize previewInteractionController=_previewInteractionController;
 @property (readonly, nonatomic) UIGestureRecognizer *previewingGestureRecognizerForFailureRelationship;
 @property (nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
@@ -38,7 +39,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithSourceView:(id)arg1 viewController:(id)arg2;
 - (struct CGRect)preferredSourceViewRectInCoordinateSpace:(id)arg1;
 - (void)previewInteractionController:(id)arg1 commitViewController:(id)arg2;
+- (void)previewInteractionController:(id)arg1 didDismissViewController:(id)arg2 committing:(BOOL)arg3;
 - (id)previewInteractionController:(id)arg1 viewControllerForPreviewingAtLocation:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3 presentingViewController:(id *)arg4;
+- (void)previewInteractionController:(id)arg1 willDismissViewController:(id)arg2;
+- (void)previewInteractionController:(id)arg1 willPresentViewController:(id)arg2;
 - (void)previewInteractionController:(id)arg1 willPresentViewController:(id)arg2 forLocation:(struct CGPoint)arg3 inSourceView:(id)arg4;
 - (void)setDelegate:(id)arg1;
 - (void)unregister;

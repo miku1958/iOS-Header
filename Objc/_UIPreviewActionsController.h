@@ -8,13 +8,16 @@
 
 #import <UIKit/_UIPlatterMenuDynamicsControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIPreviewAction, UITapGestureRecognizer, UIView, UIViewController, _UIPlatterMenuDynamicsController, _UIPreviewActionSheetView, _UIPreviewQuickActionView;
+@class NSArray, NSString, UIImageView, UIPreviewAction, UIView, UIViewController, _UIPlatterMenuDynamicsController, _UIPreviewActionSheetView, _UIPreviewQuickActionView, _UIStatesFeedbackGenerator;
 @protocol _UIPreviewActionsControllerDelegate;
 
 @interface _UIPreviewActionsController : NSObject <_UIPlatterMenuDynamicsControllerDelegate>
 {
+    BOOL _hasBegun;
     UIView *_containerView;
     UIView *_platterView;
+    UIView *_affordanceView;
+    UIImageView *_affordanceImageView;
     UIViewController *_presentedViewController;
     id<_UIPreviewActionsControllerDelegate> _delegate;
     _UIPlatterMenuDynamicsController *_platterDynamicsController;
@@ -24,15 +27,22 @@
     UIPreviewAction *_trailingPreviewAction;
     _UIPreviewQuickActionView *_leadingPreviewActionView;
     _UIPreviewQuickActionView *_trailingPreviewActionView;
-    UITapGestureRecognizer *_tapToDismissRecognizer;
+    _UIStatesFeedbackGenerator *_swipeFeedbackGenerator;
+    struct CGSize _totalPanningTranslation;
+    struct CGPoint _lastPanningLocation;
 }
 
+@property (strong, nonatomic) UIImageView *affordanceImageView; // @synthesize affordanceImageView=_affordanceImageView;
+@property (strong, nonatomic) UIView *affordanceView; // @synthesize affordanceView=_affordanceView;
 @property (strong, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (copy, nonatomic) NSArray *currentPreviewActionItems; // @synthesize currentPreviewActionItems=_currentPreviewActionItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_UIPreviewActionsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) struct CGRect frameForActionView;
+@property (nonatomic) BOOL hasBegun; // @synthesize hasBegun=_hasBegun;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct CGPoint lastPanningLocation; // @synthesize lastPanningLocation=_lastPanningLocation;
 @property (strong, nonatomic) UIPreviewAction *leadingPreviewAction; // @synthesize leadingPreviewAction=_leadingPreviewAction;
 @property (strong, nonatomic) _UIPreviewQuickActionView *leadingPreviewActionView; // @synthesize leadingPreviewActionView=_leadingPreviewActionView;
 @property (strong, nonatomic) _UIPlatterMenuDynamicsController *platterDynamicsController; // @synthesize platterDynamicsController=_platterDynamicsController;
@@ -40,24 +50,42 @@
 @property (strong, nonatomic) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
 @property (strong, nonatomic) _UIPreviewActionSheetView *previewActionsView; // @synthesize previewActionsView=_previewActionsView;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UITapGestureRecognizer *tapToDismissRecognizer; // @synthesize tapToDismissRecognizer=_tapToDismissRecognizer;
+@property (strong, nonatomic) _UIStatesFeedbackGenerator *swipeFeedbackGenerator; // @synthesize swipeFeedbackGenerator=_swipeFeedbackGenerator;
+@property (nonatomic) struct CGSize totalPanningTranslation; // @synthesize totalPanningTranslation=_totalPanningTranslation;
 @property (strong, nonatomic) UIPreviewAction *trailingPreviewAction; // @synthesize trailingPreviewAction=_trailingPreviewAction;
 @property (strong, nonatomic) _UIPreviewQuickActionView *trailingPreviewActionView; // @synthesize trailingPreviewActionView=_trailingPreviewActionView;
 
 + (id)actionsControllerWithContainerView:(id)arg1 platterView:(id)arg2 presentedViewController:(id)arg3 delegate:(id)arg4;
 - (void).cxx_destruct;
 - (void)_actionsControllerCommonInit;
+- (void)_activateFeedbackIfNeeded;
+- (struct CGPoint)_applyLayoutAdjustmentsForManagedViewWithPosition:(struct CGPoint)arg1;
+- (struct CGPoint)_centerForMenuDismissedForActionSheet:(id)arg1;
+- (struct CGPoint)_centerForMenuPresentedForActionSheet:(id)arg1;
+- (struct CGPoint)_centerForPlatterWithMenuViewPresentedForActionSheet:(id)arg1;
+- (void)_configureFeedbackGenerator;
+- (void)_configurePlatterDynamicsController;
+- (void)_deactivateFeedbackIfNeeded;
 - (void)_disablePlatterController;
 - (void)_dismissForSelectedSwipeAction;
 - (void)_dismissWithAction:(id)arg1;
+- (void)_fireConfirmFeedbackIfNeededForInitialSelectionState:(BOOL)arg1 finalSelectionState:(BOOL)arg2;
 - (BOOL)_hasPreviewSwipeActions;
 - (BOOL)_hasSelectedSwipeAction;
+- (void)_hideChromeAndSetAffordanceHidden:(BOOL)arg1;
 - (struct CGRect)_initialPlatterFrame;
+- (BOOL)_isSwipeActionVisible;
+- (id)_makeAndAddToViewHierarchyPreviewActionSheetForMenuItems:(id)arg1;
 - (void)_memoizePreviewActionViews;
+- (BOOL)_platterIsInInitialPositionMostly;
+- (double)_platterOffsetDistance;
+- (void)_presentSubactionsForActionGroup:(id)arg1;
 - (BOOL)_previewActionsSheetIsVisible;
 - (double)_quickActionSelectionOffset;
 - (double)_quickActionsSelectionThresholdForPreviewMenuItemStyle:(long long)arg1;
+- (void)_setAffordanceAlpha:(double)arg1 withDuration:(double)arg2 hideOnCompletion:(BOOL)arg3;
 - (BOOL)_shouldDismiss;
+- (void)_updateAffordanceIfNecessary;
 - (void)_updateSwipeActionsState;
 - (void)beginPanningAtLocation:(struct CGPoint)arg1;
 - (struct CGPoint)centerForMenuDismissed;
@@ -65,7 +93,9 @@
 - (struct CGPoint)centerForPlatterWithMenuViewDismissed;
 - (struct CGPoint)centerForPlatterWithMenuViewPresented;
 - (void)dealloc;
+- (void)dismissPreviewActionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)endPanningAtLocation:(struct CGPoint)arg1;
+- (void)flashScrollAffordance;
 - (id)initWithContainerView:(id)arg1 platterView:(id)arg2 presentedViewController:(id)arg3 delegate:(id)arg4;
 - (struct CGPoint)initialCenterForLeadingSwipeActionView;
 - (struct CGPoint)initialCenterForTrailingSwipeActionView;
@@ -73,7 +103,9 @@
 - (double)minimumSpacingBetweenPlatterAndMenu;
 - (void)platterMenuDynamicsController:(id)arg1 didMoveSwipeView:(id)arg2 toPosition:(struct CGPoint)arg3;
 - (void)platterMenuDynamicsControllerDidDismissWithController:(id)arg1;
-- (void)tappedToDismiss:(id)arg1;
+- (BOOL)platterPanned;
+- (void)setLeadingSwipeActionViewSelected:(BOOL)arg1;
+- (void)setTrailingSwipeActionViewSelected:(BOOL)arg1;
 - (id)trailingSwipeActionView;
 - (void)translationDidUpdateForPlatterMenuDynamicsController:(id)arg1;
 - (void)updatePanningLocation:(struct CGPoint)arg1;

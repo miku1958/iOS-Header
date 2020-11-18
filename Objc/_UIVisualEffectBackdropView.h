@@ -6,33 +6,25 @@
 
 #import <UIKit/_UIVisualEffectSubview.h>
 
-@class CAFilter, NSMutableArray;
+@class CABackdropLayer, _UIVisualEffectViewBackdropCaptureGroup;
 
-__attribute__((visibility("hidden")))
 @interface _UIVisualEffectBackdropView : _UIVisualEffectSubview
 {
-    CAFilter *_blurFilter;
-    CAFilter *_saturateFilter;
-    CAFilter *_colorOffsetFilter;
-    NSMutableArray *_pendingScaleTransitionBlocks;
-    unsigned long long _blurHardEdges;
-    double _blurRadius;
+    _UIVisualEffectViewBackdropCaptureGroup *_captureGroup;
 }
 
-@property (nonatomic) unsigned long long blurHardEdges; // @synthesize blurHardEdges=_blurHardEdges;
-@property (nonatomic) double blurRadius; // @synthesize blurRadius=_blurRadius;
+@property (readonly, nonatomic) CABackdropLayer *backdropLayer;
+@property (strong, nonatomic) _UIVisualEffectViewBackdropCaptureGroup *captureGroup;
+@property (nonatomic) long long renderMode;
 
-+ (id)_additionAnimationsKeys;
 + (Class)layerClass;
 - (void).cxx_destruct;
-- (id)_groupName;
-- (id)_initWithFrame:(struct CGRect)arg1 settings:(id)arg2;
-- (void)_setGroupName:(id)arg1;
-- (void)_setupfilters;
+- (void)_applyScaleHintAsRequested:(BOOL)arg1;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
-- (void)_updateBackdropScaleWithSettingsDeferredIfNecessary:(id)arg1;
-- (void)applySettings:(id)arg1;
-- (id)backdropLayer;
+- (void)applyIdentityFilterEffects;
+- (void)applyRequestedFilterEffects;
+- (id)asBackdropView;
+- (void)removeFromCurrentCaptureGroup;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

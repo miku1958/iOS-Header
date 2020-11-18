@@ -8,12 +8,14 @@
 
 #import <UIKit/UIInterfaceActionGroupDisplaying-Protocol.h>
 #import <UIKit/UIInterfaceActionHandlerInvocationDelegate-Protocol.h>
+#import <UIKit/UISpringLoadedInteractionSupporting-Protocol.h>
 
 @class NSString, UIInterfaceActionGroup, UIInterfaceActionGroupView, UIInterfaceActionVisualStyle;
 @protocol UIInterfaceActionVisualStyleProviding;
 
-@interface UIInterfaceActionGroupViewController : UIViewController <UIInterfaceActionHandlerInvocationDelegate, UIInterfaceActionGroupDisplaying>
+@interface UIInterfaceActionGroupViewController : UIViewController <UIInterfaceActionHandlerInvocationDelegate, UIInterfaceActionGroupDisplaying, UISpringLoadedInteractionSupporting>
 {
+    BOOL _springLoaded;
     id<UIInterfaceActionVisualStyleProviding> _visualStyleProvider;
     UIInterfaceActionGroupView *_actionGroupView;
     UIInterfaceActionGroup *_actionGroup;
@@ -24,6 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isSpringLoaded) BOOL springLoaded; // @synthesize springLoaded=_springLoaded;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIInterfaceActionVisualStyle *visualStyle;
 @property (weak, nonatomic) id<UIInterfaceActionVisualStyleProviding> visualStyleProvider; // @synthesize visualStyleProvider=_visualStyleProvider;

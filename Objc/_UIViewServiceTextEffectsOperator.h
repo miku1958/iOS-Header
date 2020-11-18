@@ -6,22 +6,24 @@
 
 #import <Foundation/NSObject.h>
 
+#import <UIKit/_UIHostedWindowDelegate-Protocol.h>
 #import <UIKit/_UIViewServiceDeputy-Protocol.h>
 #import <UIKit/_UIViewServiceDeputyRotationDelegate-Protocol.h>
 #import <UIKit/_UIViewServiceTextEffectsOperator_RemoteViewControllerInterface-Protocol.h>
 
-@class NSArray, NSString, UIWindow, _UIAsyncInvocation;
+@class NSArray, NSString, _UIAsyncInvocation, _UIHostedWindow;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceTextEffectsOperator : NSObject <_UIViewServiceTextEffectsOperator_RemoteViewControllerInterface, _UIViewServiceDeputy, _UIViewServiceDeputyRotationDelegate>
+@interface _UIViewServiceTextEffectsOperator : NSObject <_UIHostedWindowDelegate, _UIViewServiceTextEffectsOperator_RemoteViewControllerInterface, _UIViewServiceDeputy, _UIViewServiceDeputyRotationDelegate>
 {
     int __automatic_invalidation_retainCount;
     BOOL __automatic_invalidation_invalidated;
     id _remoteViewControllerProxy;
     _UIAsyncInvocation *_prepareForDisconnectionInvocation;
     _UIAsyncInvocation *_invalidationInvocation;
-    UIWindow *_hostedWindow;
+    _UIHostedWindow *_hostedWindow;
     struct CGPoint _windowOffset;
+    struct UIEdgeInsets _safeAreaInsets;
     struct CGSize _sceneSize;
     BOOL _canRestoreInputViews;
     BOOL _isRestoringInputViews;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)XPCInterface;
++ (BOOL)_shouldAddServiceOperator;
 + (id)operatorWithRemoteViewControllerProxy:(id)arg1 hostPID:(int)arg2;
 - (void).cxx_destruct;
 - (int)__automatic_invalidation_logic;
@@ -47,12 +50,14 @@ __attribute__((visibility("hidden")))
 - (void)__prepareForDisconnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)__setHostAllowedNotifications:(id)arg1;
 - (void)__setNextAutomaticOrderOutDirection:(int)arg1 duration:(double)arg2;
+- (void)__setSafeAreaInsets:(struct UIEdgeInsets)arg1;
 - (void)__setSceneSize:(struct CGSize)arg1;
 - (void)__setWindowOffset:(struct CGPoint)arg1;
 - (void)_invalidateUnconditionallyThen:(CDUnknownBlockType)arg1;
 - (BOOL)_isDeallocating;
 - (void)_prepareForDisconnectionUnconditionallyThen:(CDUnknownBlockType)arg1;
 - (id)_queue;
+- (void)_reloadSafeInsets;
 - (void)_resetSceneSize;
 - (void)_restoreInputViews;
 - (BOOL)_tryRetain;
@@ -61,7 +66,10 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)finishRotationFromInterfaceOrientation:(long long)arg1;
 - (void)forceSyncToStatusBarOrientation;
+- (void)hostedWindow:(id)arg1 didSetFirstResponder:(id)arg2;
+- (void)hostedWindow:(id)arg1 didSetResponderTargetForCalloutBar:(id)arg2;
 - (id)invalidate;
+- (void)makeHostWindowKey;
 - (void)performOnRelevantWindows:(CDUnknownBlockType)arg1;
 - (oneway void)release;
 - (id)retain;
@@ -69,7 +77,6 @@ __attribute__((visibility("hidden")))
 - (void)rotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)setHostedWindow:(id)arg1 disableAutomaticBehaviors:(BOOL)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
-- (void)windowDidGainFirstResponder:(id)arg1;
 
 @end
 

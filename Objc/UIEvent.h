@@ -6,20 +6,25 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSSet;
+@class NSSet, UIScreen;
 
 @interface UIEvent : NSObject
 {
     struct __GSEvent *_gsEvent;
     struct __IOHIDEvent *_hidEvent;
+    UIScreen *_cachedScreen;
     double _timestamp;
+    double __initialTouchTimestamp;
 }
 
+@property (readonly, nonatomic) double _initialTouchTimestamp; // @synthesize _initialTouchTimestamp=__initialTouchTimestamp;
 @property (readonly, nonatomic) NSSet *allTouches;
 @property (readonly, nonatomic) long long subtype;
-@property (readonly, nonatomic) double timestamp;
+@property (nonatomic, setter=_setTimestamp:) double timestamp; // @synthesize timestamp=_timestamp;
 @property (readonly, nonatomic) long long type;
 
+- (void).cxx_destruct;
+- (void)_cleanupAfterDispatch;
 - (struct CGPoint)_digitizerLocation;
 - (unsigned long long)_focusHeading;
 - (id)_gestureRecognizersForWindow:(id)arg1;
@@ -35,7 +40,6 @@
 - (void)_sendEventToResponder:(id)arg1;
 - (void)_setGSEvent:(struct __GSEvent *)arg1;
 - (void)_setHIDEvent:(struct __IOHIDEvent *)arg1;
-- (void)_setTimestamp:(double)arg1;
 - (int)_shakeState;
 - (id)_touchesForGestureRecognizer:(id)arg1;
 - (id)_triggeringPhysicalButton;

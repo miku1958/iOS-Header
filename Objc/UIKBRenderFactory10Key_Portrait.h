@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory10Key.h>
+#import <UIKit/UIKBRenderFactory10Key_iPhone.h>
 
 __attribute__((visibility("hidden")))
-@interface UIKBRenderFactory10Key_Portrait : UIKBRenderFactory10Key
+@interface UIKBRenderFactory10Key_Portrait : UIKBRenderFactory10Key_iPhone
 {
 }
 

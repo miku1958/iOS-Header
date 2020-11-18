@@ -12,7 +12,7 @@
 #import <UIKit/UITableViewDataSource-Protocol.h>
 #import <UIKit/UITableViewDelegate-Protocol.h>
 
-@class CALayer, NSMutableArray, NSString, UIColor, UIImageView, _UIFeedbackRetargetBehavior, _UIPickerViewTestParameters;
+@class CALayer, NSMutableArray, NSString, UIColor, UIImageView, UISelectionFeedbackGenerator, _UIPickerViewTestParameters;
 @protocol UIPickerViewDataSource, UIPickerViewDelegate;
 
 @interface UIPickerView : UIView <UIPickerViewScrollTesting, UIPickerTableViewContainerDelegate, UITableViewDelegate, UITableViewDataSource, NSCoding>
@@ -56,7 +56,7 @@
     BOOL _magnifierEnabled;
     BOOL _enabled;
     UIColor *_magnifierLineColor;
-    _UIFeedbackRetargetBehavior *_retargetBehavior;
+    UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
 }
 
 @property (nonatomic, setter=_setMagnifierEnabled:) BOOL _magnifierEnabled; // @synthesize _magnifierEnabled;
@@ -69,7 +69,7 @@
 @property (strong, nonatomic, getter=_highlightColor, setter=_setHighlightColor:) UIColor *highlightColor;
 @property (strong, nonatomic, getter=_magnifierLineColor, setter=_setMagnifierLineColor:) UIColor *magnifierLineColor; // @synthesize magnifierLineColor=_magnifierLineColor;
 @property (readonly, nonatomic) long long numberOfComponents; // @synthesize numberOfComponents=_numberOfComponents;
-@property (strong, nonatomic, getter=_retargetBehavior, setter=_setRetargetBehavior:) _UIFeedbackRetargetBehavior *retargetBehavior; // @synthesize retargetBehavior=_retargetBehavior;
+@property (strong, nonatomic, getter=_selectionFeedbackGenerator, setter=_setSelectionFeedbackGenerator:) UISelectionFeedbackGenerator *selectionFeedbackGenerator; // @synthesize selectionFeedbackGenerator=_selectionFeedbackGenerator;
 @property (nonatomic) BOOL showsSelectionIndicator;
 @property (readonly) Class superclass;
 @property (strong, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *textColor;

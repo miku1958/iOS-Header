@@ -10,10 +10,12 @@
 
 @interface NSObject (UIAccessibilityContainer)
 
+@property (nonatomic) long long accessibilityContainerType;
 @property (strong, nonatomic) NSArray *accessibilityElements;
 
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
 - (long long)indexOfAccessibilityElement:(id)arg1;
+- (id)storedAccessibilityContainerType;
 @end
 

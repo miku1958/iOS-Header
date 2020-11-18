@@ -11,7 +11,7 @@
 #import <UIKit/UIPreviewInteractionControllerDelegate-Protocol.h>
 #import <UIKit/_UIAlertControllerTextFieldViewControllerContaining-Protocol.h>
 
-@class NSArray, NSAttributedString, NSIndexSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSPointerArray, NSSet, NSString, UIAlertAction, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
+@class NSArray, NSAttributedString, NSIndexSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSPointerArray, NSSet, NSString, UIAlertAction, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerShimPresenter, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
 @protocol UIAlertControllerCoordinatedActionPerforming, UIAlertControllerSystemProvidedPresentationDelegate, UIAlertControllerVisualStyleProviding;
 
 @interface UIAlertController : UIViewController <UIAlertControllerContaining, _UIAlertControllerTextFieldViewControllerContaining, UIPreviewInteractionControllerDelegate, UIAlertControllerVisualStyleProviding>
@@ -30,11 +30,13 @@
     _UIAlertControllerTextFieldViewController *_textFieldViewController;
     UITapGestureRecognizer *_backButtonDismissGestureRecognizer;
     id _ownedTransitioningDelegate;
-    BOOL _shouldInformViewOfAddedContentViewController;
+    BOOL _addContentViewControllerToViewHierarchyNeeded;
     BOOL _isInSupportedInterfaceOrientations;
+    long long _batchActionChangesInProgressCount;
+    _UIAlertControllerShimPresenter *_presenter;
     NSPointerArray *_actionsWithInvokedHandlers;
-    BOOL _shouldEnsureContentControllerViewIsVisibleOnAppearance;
     BOOL _hidden;
+    BOOL _springLoaded;
     BOOL __shouldFlipFrameForShimDismissal;
     BOOL __shouldAllowNilParameters;
     BOOL _hasPreservedInputViews;
@@ -44,6 +46,7 @@
     _UIAnimationCoordinator *_temporaryAnimationCoordinator;
     UIPreviewInteractionController *_previewInteractionController;
     UIAlertControllerVisualStyle *__visualStyle;
+    UIViewController *_accessibilityViewControllerForSizing;
     NSIndexSet *_indexesOfActionSectionSeparators;
     NSMutableArray *__actionDelimiterIndices;
     UIPopoverController *__compatibilityPopoverController;
@@ -52,6 +55,8 @@
     UIGestureRecognizer *_systemProvidedGestureRecognizer;
     id<UIAlertControllerCoordinatedActionPerforming> _coordinatedActionPerformingDelegate;
     UIView *__presentationSourceRepresentationView;
+    long long _titleMaximumLineCount;
+    long long _titleLineBreakMode;
 }
 
 @property (readonly) NSMutableArray *_actionDelimiterIndices; // @synthesize _actionDelimiterIndices=__actionDelimiterIndices;
@@ -59,7 +64,6 @@
 @property (copy, nonatomic, getter=_attributedDetailMessage, setter=_setAttributedDetailMessage:) NSAttributedString *_attributedDetailMessage;
 @property (readonly) UIAlertAction *_cancelAction; // @synthesize _cancelAction;
 @property (nonatomic, setter=_setCompatibilityPopoverController:) UIPopoverController *_compatibilityPopoverController; // @synthesize _compatibilityPopoverController=__compatibilityPopoverController;
-@property (weak, nonatomic, setter=_setDefaultAlertAction:) UIAlertAction *_defaultAlertAction;
 @property (readonly) UIView *_dimmingView;
 @property (readonly) UIAlertAction *_focusedAction;
 @property (readonly) UIView *_foregroundView;
@@ -68,7 +72,6 @@
 @property (readonly) long long _resolvedStyle; // @synthesize _resolvedStyle;
 @property (readonly) BOOL _shouldAlignToKeyboard;
 @property (setter=_setShouldAllowNilParameters:) BOOL _shouldAllowNilParameters; // @synthesize _shouldAllowNilParameters=__shouldAllowNilParameters;
-@property (nonatomic, setter=_setShouldEnsureContentControllerViewIsVisibleOnAppearance:) BOOL _shouldEnsureContentControllerViewIsVisibleOnAppearance; // @synthesize _shouldEnsureContentControllerViewIsVisibleOnAppearance;
 @property BOOL _shouldFlipFrameForShimDismissal; // @synthesize _shouldFlipFrameForShimDismissal=__shouldFlipFrameForShimDismissal;
 @property (readonly) BOOL _shouldProvideDimmingView;
 @property (readonly) BOOL _shouldReverseActions;
@@ -77,6 +80,7 @@
 @property (readonly) _UIAlertControllerTextFieldViewController *_textFieldViewController;
 @property (setter=_setTextFieldsHidden:) BOOL _textFieldsHidden;
 @property (strong, nonatomic, setter=_setVisualStyle:) UIAlertControllerVisualStyle *_visualStyle; // @synthesize _visualStyle=__visualStyle;
+@property (strong, nonatomic, getter=_getAccessibilityViewControllerForSizing, setter=_setAccessibilityViewControllerForSizing:) UIViewController *accessibilityViewControllerForSizing; // @synthesize accessibilityViewControllerForSizing=_accessibilityViewControllerForSizing;
 @property (strong, nonatomic, setter=_setActions:) NSArray *actions;
 @property (copy, nonatomic, getter=_attributedMessage, setter=_setAttributedMessage:) NSAttributedString *attributedMessage;
 @property (copy, nonatomic, getter=_attributedTitle, setter=_setAttributedTitle:) NSAttributedString *attributedTitle;
@@ -98,10 +102,11 @@
 @property (strong, nonatomic) _UIAnimationCoordinator *temporaryAnimationCoordinator; // @synthesize temporaryAnimationCoordinator=_temporaryAnimationCoordinator;
 @property (readonly, nonatomic) NSArray *textFields;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
+@property (nonatomic, getter=_titleLineBreakMode, setter=_setTitleLineBreakMode:) long long titleLineBreakMode; // @synthesize titleLineBreakMode=_titleLineBreakMode;
+@property (nonatomic, getter=_titleMaximumLineCount, setter=_setTitleMaximumLineCount:) long long titleMaximumLineCount; // @synthesize titleMaximumLineCount=_titleMaximumLineCount;
 
 + (id)_alertControllerContainedInViewController:(id)arg1;
 + (id)_alertControllerWithTitle:(id)arg1 message:(id)arg2;
-+ (void)_setShouldUsePresentationController:(BOOL)arg1;
 + (BOOL)_shouldUsePresentationController;
 + (id)alertControllerWithTitle:(id)arg1 message:(id)arg2 preferredStyle:(long long)arg3;
 - (void).cxx_destruct;
@@ -117,6 +122,7 @@
 - (id)_alertControllerView;
 - (void)_attemptAnimatedDismissWithGestureRecognizer:(id)arg1;
 - (void)_becomeFirstResponderIfAppropriate;
+- (void)_beginNoPresentingViewControllerPresentation;
 - (long long)_buttonTypeForBackGestureForIdiom:(long long)arg1;
 - (BOOL)_canBePresentedAtLocation:(struct CGPoint)arg1;
 - (BOOL)_canDismissWithGestureRecognizer;
@@ -127,12 +133,14 @@
 - (id)_currentDescriptor;
 - (void)_didParentTextFieldViewController;
 - (void)_dismissAnimated:(BOOL)arg1 triggeringAction:(id)arg2;
-- (void)_dismissAnimated:(BOOL)arg1 triggeringAction:(id)arg2 triggeredByPopoverDimmingView:(BOOL)arg3;
+- (void)_dismissAnimated:(BOOL)arg1 triggeringAction:(id)arg2 triggeredByPopoverDimmingView:(BOOL)arg3 dismissCompletion:(CDUnknownBlockType)arg4;
 - (void)_dismissFromBackButton:(id)arg1;
 - (void)_dismissFromPopoverDimmingView;
 - (id)_dismissGestureRecognizer;
 - (void)_dismissWithAction:(id)arg1;
+- (void)_dismissWithAction:(id)arg1 dismissCompletion:(CDUnknownBlockType)arg2;
 - (void)_dismissWithCancelAction;
+- (void)_endNoPresentingViewControllerPresentation;
 - (void)_flipFrameForShimDismissalIfNecessary;
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
 - (void)_handleKeyCommand:(id)arg1;
@@ -197,6 +205,7 @@
 - (id)cancelAction;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (BOOL)isSpringLoaded;
 - (void)linkAlertController:(id)arg1;
 - (id)linkedAlertControllers;
 - (void)loadView;
@@ -207,6 +216,7 @@
 - (void)previewInteractionController:(id)arg1 willPresentViewController:(id)arg2 forPosition:(struct CGPoint)arg3 inSourceView:(id)arg4;
 - (void)setCancelAction:(id)arg1;
 - (void)setModalPresentationStyle:(long long)arg1;
+- (void)setSpringLoaded:(BOOL)arg1;
 - (void)setTextFieldsCanBecomeFirstResponder:(BOOL)arg1;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;

@@ -6,25 +6,33 @@
 
 #import <UIKit/UIView.h>
 
-@class NSObject, UIImage, UIMotionEffectGroup, _UIStackedImageConfiguration;
+#import <UIKit/_UIImageViewOverlayViewDelegate-Protocol.h>
+
+@class NSObject, NSString, UIImage, UIMotionEffectGroup, _UIStackedImageConfiguration;
 @protocol UINamedLayerStack;
 
-@interface _UIStackedImageContainerView : UIView
+@interface _UIStackedImageContainerView : UIView <_UIImageViewOverlayViewDelegate>
 {
     UIMotionEffectGroup *_stackMotionEffects;
     BOOL _installsMotionEffectsWhenFocused;
     UIImage *_stackImage;
     NSObject<UINamedLayerStack> *_constructedStackImage;
     _UIStackedImageConfiguration *_config;
+    UIView *_overlayView;
 }
 
 @property (copy, nonatomic) _UIStackedImageConfiguration *config; // @synthesize config=_config;
 @property (strong, nonatomic) NSObject<UINamedLayerStack> *constructedStackImage; // @synthesize constructedStackImage=_constructedStackImage;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGPoint focusDirection;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL installsMotionEffectsWhenFocused; // @synthesize installsMotionEffectsWhenFocused=_installsMotionEffectsWhenFocused;
+@property (strong, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
 @property (nonatomic, getter=isPressed) BOOL pressed;
 @property (nonatomic, getter=isStackFocused) BOOL stackFocused;
 @property (strong, nonatomic) UIImage *stackImage; // @synthesize stackImage=_stackImage;
+@property (readonly) Class superclass;
 
 + (Class)layerClass;
 - (void).cxx_destruct;
@@ -35,8 +43,10 @@
 - (void)_setStackFocused:(BOOL)arg1 animated:(BOOL)arg2 focusAnimationCoordinator:(id)arg3;
 - (void)_uninstallMotionEffects;
 - (void)_updateContainerLayerImages;
+- (void)_updateOverlayLayer;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)overlayView:(id)arg1 didChangeClipsToBounds:(BOOL)arg2;
 - (void)setStackFocused:(BOOL)arg1 withFocusAnimationCoordinator:(id)arg2;
 
 @end

@@ -14,7 +14,7 @@
 }
 
 @property (nonatomic) double lastSelectionChangeTime; // @synthesize lastSelectionChangeTime=_lastSelectionChangeTime;
-@property (readonly, nonatomic, getter=_retargetConfiguration) _UISelectionFeedbackGeneratorConfiguration *retargetConfiguration;
+@property (readonly, nonatomic, getter=_selectionConfiguration) _UISelectionFeedbackGeneratorConfiguration *selectionConfiguration;
 
 + (Class)_configurationClass;
 - (void)_deactivated;

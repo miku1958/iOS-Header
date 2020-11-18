@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (id)prefetchingContextWithItems:(id)arg1;
 - (void).cxx_destruct;
 - (void)_invalidateRemainingIndexPaths;
+- (id)_items;
 - (BOOL)hasRemainingItems;
 - (id)initWithPrefetchItems:(id)arg1;
 - (id)peekNextItem;

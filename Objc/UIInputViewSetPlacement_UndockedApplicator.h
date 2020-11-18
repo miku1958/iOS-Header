@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)applyChanges:(id)arg1;
 - (void)checkVerticalConstraint;
 
 @end

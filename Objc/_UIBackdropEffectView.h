@@ -27,8 +27,6 @@ __attribute__((visibility("hidden")))
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
-- (void)backdropLayerStatisticsDidChange:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)valueForUndefinedKey:(id)arg1;
 - (void)willMoveToWindow:(id)arg1;

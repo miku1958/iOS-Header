@@ -17,6 +17,7 @@
 @property (nonatomic) long long livePhotoCount; // @synthesize livePhotoCount=_livePhotoCount;
 @property (nonatomic) long long videoCount; // @synthesize videoCount=_videoCount;
 
++ (unsigned long long)_xpcAttributes;
 - (id)_activityImage;
 - (id)activityTitle;
 - (id)activityType;

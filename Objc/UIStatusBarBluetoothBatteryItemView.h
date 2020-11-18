@@ -6,12 +6,20 @@
 
 #import <UIKit/UIStatusBarItemView.h>
 
+@class UIImage;
+
 __attribute__((visibility("hidden")))
 @interface UIStatusBarBluetoothBatteryItemView : UIStatusBarItemView
 {
     int _capacity;
+    int _accessibilityCachedHUDCapacity;
+    UIImage *_accessibilityCachedHUDImage;
 }
 
+- (void).cxx_destruct;
+- (struct UIEdgeInsets)_accessibilityHUDBatteryInsidesInsets;
+- (double)_normalizedCapacity;
+- (id)accessibilityHUDRepresentation;
 - (id)contentsImage;
 - (double)extraLeftPadding;
 - (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;

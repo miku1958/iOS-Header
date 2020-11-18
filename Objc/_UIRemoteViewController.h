@@ -6,12 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <UIKit/UIActionSheetDelegate-Protocol.h>
 #import <UIKit/_UIRemoteViewController_ViewControllerOperatorInterface-Protocol.h>
 
-@class BKSTouchDeliveryPolicyAssertion, NSArray, NSError, NSString, UIActionSheet, UIAlertView, UIDimmingView, UIView, _UIAsyncInvocation, _UIRemoteView, _UIRemoteViewService, _UISizeTrackingView, _UITextEffectsRemoteView, _UITextServiceSession, _UIViewServiceInterface;
+@class BKSTouchDeliveryPolicyAssertion, FBSDisplayIdentity, NSArray, NSError, NSString, UIAlertView, UIDimmingView, UIView, _UIAsyncInvocation, _UIRemoteView, _UIRemoteViewService, _UISizeTrackingView, _UITextEffectsRemoteView, _UITextServiceSession, _UIViewServiceInterface;
 
-@interface _UIRemoteViewController : UIViewController <_UIRemoteViewController_ViewControllerOperatorInterface, UIActionSheetDelegate>
+@interface _UIRemoteViewController : UIViewController <_UIRemoteViewController_ViewControllerOperatorInterface>
 {
     int __automatic_invalidation_retainCount;
     BOOL __automatic_invalidation_invalidated;
@@ -35,20 +34,21 @@
     _UITextEffectsRemoteView *_remoteKeyboardRemoteView;
     UIView *_fullScreenTextEffectsSnapshotView;
     BOOL _snapshotTextEffectsAfterRotation;
-    unsigned int _serviceScreenDisplayID;
+    FBSDisplayIdentity *_serviceScreenDisplayIdentity;
     _UIAsyncInvocation *_terminationInvocation;
     struct os_unfair_lock_s _terminationErrorLock;
     NSError *_terminationError;
-    UIActionSheet *_hostedActionSheet;
     _UITextServiceSession *_textServiceSession;
     UIDimmingView *_hostedDimmingView;
     UIView *_touchGrabbingView;
     long long _preferredStatusBarStyle;
-    long long _prefersStatusBarHidden;
+    int _preferredStatusBarVisibility;
     long long _preferredStatusBarUpdateAnimation;
     BOOL _isFocusDeferred;
     NSString *_deferredDisplayUUID;
     unsigned int _deferredContextID;
+    BOOL _focusWasDeferredBeforeDeactivation;
+    BOOL _focusWasDeferredBeforeResignKey;
     NSArray *_allowedNotifications;
     NSArray *_sizeTrackingConstraints;
     BOOL _sizeTrackingViewShouldTranslateAutoResizeMaskIntoConstraints;
@@ -61,8 +61,11 @@
     long long _redoButtonIndex;
     long long _proxiedEditAlertToken;
     long long _preferredAdaptivityStyle;
+    unsigned long long _preferredScreenEdgesDeferringSystemGestures;
+    BOOL _prefersHomeIndicatorAutoHidden;
     BOOL _isUnderlappingStatusBar;
     BOOL __shouldUpdateRemoteTextEffectsWindow;
+    long long _preferredUserInterfaceStyle;
     BOOL _isUpdatingSize;
     BOOL _serviceViewShouldShareTouchesWithHost;
     BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion;
@@ -71,14 +74,10 @@
 @property (nonatomic, setter=_setIsUpdatingSize:) BOOL _isUpdatingSize; // @synthesize _isUpdatingSize;
 @property (nonatomic, setter=_setShouldUpdateRemoteTextEffectsWindow:) BOOL _shouldUpdateRemoteTextEffectsWindow;
 @property (strong, nonatomic, setter=_setTouchDeliveryPolicyAssertion:) BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion; // @synthesize _touchDeliveryPolicyAssertion;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CDStruct_4c969caf serviceAuditToken;
 @property (readonly, nonatomic) NSString *serviceBundleIdentifier;
 @property (readonly, nonatomic) int serviceProcessIdentifier;
 @property (nonatomic) BOOL serviceViewShouldShareTouchesWithHost; // @synthesize serviceViewShouldShareTouchesWithHost=_serviceViewShouldShareTouchesWithHost;
-@property (readonly) Class superclass;
 
 + (BOOL)__shouldAllowHostProcessToTakeFocus;
 + (BOOL)__shouldHostRemoteTextEffectsWindow;
@@ -94,12 +93,10 @@
 + (BOOL)shouldPropagateAppearanceCustomizations;
 - (void).cxx_destruct;
 - (int)__automatic_invalidation_logic;
-- (void)__dismissActionSheetWithClickedButtonIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)__dismissTextServiceSessionAnimated:(BOOL)arg1;
 - (long long)__getPreferredInterfaceOrientation;
 - (void)__handleFocusMovementAction:(id)arg1;
 - (BOOL)__interdictServiceViewTouches;
-- (void)__presentActionSheetFromYCoordinate:(double)arg1 withTitle:(id)arg2 buttonTitles:(id)arg3 cancelButtonIndex:(long long)arg4 destructiveButtonIndex:(long long)arg5 style:(long long)arg6;
 - (void)__setInterdictServiceViewTouches:(BOOL)arg1;
 - (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
 - (void)__setSupportedInterfaceOrientations:(id)arg1;
@@ -113,8 +110,11 @@
 - (void)__viewServiceDidPromoteFirstResponder;
 - (void)__viewServiceDidRegisterScrollToTopView;
 - (void)__viewServiceDidUnregisterScrollToTopView;
-- (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 hidden:(long long)arg2 updateAnimation:(long long)arg3;
+- (void)__viewServiceDidUpdatePreferredScreenEdgesDeferringSystemGestures:(long long)arg1;
+- (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 preferredStatusBarVisibility:(int)arg2 updateAnimation:(long long)arg3 currentAnimationSettings:(id)arg4;
+- (void)__viewServiceDidUpdatePreferredUserInterfaceStyle:(long long)arg1;
 - (void)__viewServiceDidUpdatePreferredWhitePointAdaptationStyle:(long long)arg1 animationSettings:(id)arg2;
+- (void)__viewServiceDidUpdatePrefersHomeIndicatorAutoHidden:(BOOL)arg1;
 - (void)__viewServiceDidUpdateTintColor:(id)arg1 duration:(double)arg2;
 - (void)__viewServiceInstrinsicContentSizeDidChange:(struct CGSize)arg1 fence:(id)arg2;
 - (void)__viewServicePopoverDidChangeContentSize:(struct CGSize)arg1 animated:(BOOL)arg2 fence:(id)arg3 withReplyHandler:(CDUnknownBlockType)arg4;
@@ -147,16 +147,20 @@
 - (id)_initWithViewServiceBundleIdentifier:(id)arg1;
 - (void)_initializeAccessibilityPortInformation;
 - (BOOL)_isDeallocating;
+- (BOOL)_needsDocumentManagerWorkaround;
 - (BOOL)_needsUnderflowPropertyUpdate;
+- (void)_noteWindowState:(BOOL)arg1;
+- (int)_preferredStatusBarVisibility;
 - (void)_prepareTouchDeliveryPolicy;
 - (BOOL)_requiresKeyboardWindowWhenFirstResponder;
 - (void)_restoreTextEffectsRemoteView;
 - (void)_screenDidConnect:(id)arg1;
 - (void)_screenDidDisconnect:(id)arg1;
+- (void)_screenDidUpdate:(id)arg1;
 - (void)_screenIDChanged:(id)arg1;
 - (void)_scrollToTopFromTouchAtViewLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_serviceHasScrollToTopView;
-- (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
+- (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1 andLeftMargin:(double)arg2 rightMargin:(double)arg3;
 - (void)_setDeferred:(BOOL)arg1 forDisplayUUID:(id)arg2;
 - (BOOL)_shouldDeferEventsForFocusOnScreen:(id)arg1;
 - (void)_snapshotAndRemoveTextEffectsRemoteView;
@@ -166,13 +170,14 @@
 - (id)_terminateWithError:(id)arg1;
 - (void)_traitCollectionDidChange:(id)arg1;
 - (BOOL)_tryRetain;
+- (void)_uirvc_windowBecameKey:(id)arg1;
+- (void)_uirvc_windowResignedKey:(id)arg1;
 - (void)_updateTintColor;
 - (void)_updateTouchGrabbingView;
 - (void)_updateUnderflowProperties;
 - (void)_willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 forwardToChildControllers:(BOOL)arg3 skipSelf:(BOOL)arg4;
 - (void)_willBecomeContentViewControllerOfPopover:(id)arg1;
 - (void)_willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2 forwardToChildControllers:(BOOL)arg3 skipSelf:(BOOL)arg4;
-- (void)actionSheet:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)alertViewCancel:(id)arg1;
@@ -187,10 +192,12 @@
 - (BOOL)inheritsSecurity;
 - (struct CGSize)intrinsicContentSizeForServiceSize:(struct CGSize)arg1;
 - (void)loadView;
+- (unsigned long long)preferredScreenEdgesDeferringSystemGestures;
 - (long long)preferredStatusBarStyle;
 - (long long)preferredStatusBarUpdateAnimation;
+- (long long)preferredUserInterfaceStyle;
 - (long long)preferredWhitePointAdaptivityStyle;
-- (BOOL)prefersStatusBarHidden;
+- (BOOL)prefersHomeIndicatorAutoHidden;
 - (oneway void)release;
 - (void)restoreStateForSession:(id)arg1 anchor:(id)arg2;
 - (id)retain;

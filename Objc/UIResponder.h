@@ -17,9 +17,9 @@
 
 @interface UIResponder : NSObject <UITextInput_Internal, UITextInputAdditions, _UIStateRestorationContinuation, _UITouchable, UIResponderStandardEditActions>
 {
-    BOOL _hasOverrideClient;
-    BOOL _hasOverrideHost;
-    BOOL _hasInputAssistantItem;
+    unsigned int _hasOverrideClient:1;
+    unsigned int _hasOverrideHost:1;
+    unsigned int _hasInputAssistantItem:1;
 }
 
 @property (readonly, nonatomic, getter=_proxyTextInput) UIResponder<UITextInput> *__content;
@@ -98,6 +98,9 @@
 - (void)_didChangeToFirstResponder:(id)arg1;
 - (BOOL)_disableAutomaticKeyboardBehavior;
 - (BOOL)_disableAutomaticKeyboardUI;
+- (long long)_dragDataOwner;
+- (long long)_dropDataOwner;
+- (id)_effectivePasteConfiguration;
 - (BOOL)_enableAutomaticKeyboardPressDone;
 - (void)_endPinningInputViews;
 - (void)_expandSelectionToBackwardDeletionCluster;
@@ -110,12 +113,14 @@
 - (id)_fontForCaretSelection;
 - (id)_fullRange;
 - (id)_fullText;
+- (void)_gatherKeyResponders:(id)arg1 indexOfSelf:(unsigned long long *)arg2 visibilityTest:(CDUnknownBlockType)arg3 passingTest:(CDUnknownBlockType)arg4;
 - (void)_handleGameControllerEvent:(id)arg1;
 - (void)_handleKeyEvent:(struct __GSEvent *)arg1;
 - (void)_handleKeyUIEvent:(id)arg1;
 - (BOOL)_hasMarkedText;
 - (BOOL)_hasMarkedTextOrRangedSelection;
 - (int)_indexForTextPosition:(id)arg1;
+- (id)_intersectionOfRange:(id)arg1 andRange:(id)arg2;
 - (BOOL)_isEmptySelection;
 - (BOOL)_isPinningInputViews;
 - (BOOL)_isRootForKeyResponderCycle;
@@ -160,6 +165,8 @@
 - (void)_preserveResponderOverridesWhilePerforming:(CDUnknownBlockType)arg1;
 - (id)_previousKeyResponder;
 - (id)_primaryContentResponder;
+- (BOOL)_range:(id)arg1 containsRange:(id)arg2;
+- (BOOL)_range:(id)arg1 intersectsRange:(id)arg2;
 - (id)_rangeOfEnclosingWord:(id)arg1;
 - (id)_rangeOfLineEnclosingPosition:(id)arg1;
 - (id)_rangeOfParagraphEnclosingPosition:(id)arg1;
@@ -169,6 +176,7 @@
 - (id)_rangeSpanningTextUnit:(long long)arg1 andPosition:(id)arg2;
 - (void)_rebuildStateRestorationIdentifierPath;
 - (void)_replaceCurrentWordWithText:(id)arg1;
+- (void)_replaceDocumentWithText:(id)arg1;
 - (BOOL)_requiresKeyboardResetOnReload;
 - (BOOL)_requiresKeyboardWhenFirstResponder;
 - (BOOL)_requiresKeyboardWindowWhenFirstResponder;
@@ -193,6 +201,8 @@
 - (BOOL)_selectionAtWordStart;
 - (struct CGRect)_selectionClipRect;
 - (void)_setCaretSelectionAtEndOfSelection;
+- (void)_setDragDataOwner:(long long)arg1;
+- (void)_setDropDataOwner:(long long)arg1;
 - (void)_setFirstResponder:(id)arg1;
 - (void)_setGestureRecognizers;
 - (id)_setHistory:(id)arg1 withExtending:(BOOL)arg2 withAnchor:(int)arg3 withAffinityDownstream:(BOOL)arg4;
@@ -204,23 +214,27 @@
 - (id)_showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
 - (BOOL)_supportsBecomeFirstResponderWhenPossible;
 - (void)_tagAsRestorableResponder;
-- (id)_targetForAction:(SEL)arg1 withSender:(id)arg2 canPerformActionBlock:(CDUnknownBlockType)arg3;
+- (id)_targetCanPerformBlock:(CDUnknownBlockType)arg1;
 - (id)_textColorForCaretSelection;
+- (id)_textRangeFromNSRange:(struct _NSRange)arg1;
 - (void)_unmarkText;
 - (void)_updateSelectionWithTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 - (id)_userActivity;
 - (BOOL)_usesAsynchronousProtocol;
 - (BOOL)_usesDeemphasizedTextAppearance;
 - (void)_wheelChangedWithEvent:(id)arg1;
+- (void)_willChangeToFirstResponder:(id)arg1;
 - (id)_window;
 - (void)_windowBecameKey;
 - (void)_windowResignedKey;
 - (id)_wordContainingCaretSelection;
 - (BOOL)becomeFirstResponder;
 - (void)beginSelectionChange;
+- (BOOL)canPasteItemProviders:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
+- (void)doesNotRecognizeSelector:(SEL)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (void)endSelectionChange;
 - (id)firstResponder;
@@ -232,6 +246,8 @@
 - (void)motionCancelled:(long long)arg1 withEvent:(id)arg2;
 - (void)motionEnded:(long long)arg1 withEvent:(id)arg2;
 - (id)nextFirstResponder;
+- (id)pasteConfiguration;
+- (void)pasteItemProviders:(id)arg1;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
@@ -244,7 +260,8 @@
 - (void)restoreUserActivityState:(id)arg1;
 - (void)scrollWheel:(struct __GSEvent *)arg1;
 - (long long)selectionAffinity;
-- (BOOL)sholdReloadInputViews;
+- (void)setPasteConfiguration:(id)arg1;
+- (BOOL)shouldReloadInputViews;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (id)textInputSuggestionDelegate;
 - (id)textInputView;

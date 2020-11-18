@@ -11,11 +11,12 @@
 #import <UIKit/UITextInputTraits-Protocol.h>
 #import <UIKit/UITextInputTraits_Private-Protocol.h>
 #import <UIKit/_UIBarPositioningInternal-Protocol.h>
+#import <UIKit/_UINavigationBarAugmentedTitleView-Protocol.h>
 
-@class NSArray, NSIndexSet, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UIInputContextHistory, UILabel, UISearchBarTextField, UISearchController, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputTraits, _UIBackdropView, _UISearchBarNavigationItem, _UISearchBarScopeBarBackground;
-@protocol UISearchBarDelegate, UISearchBarDelegate><UISearchBarDelegate_Private;
+@class NSArray, NSIndexSet, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UIInputContextHistory, UILabel, UISearchBarTextField, UISearchController, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputTraits, _UIBackdropView, _UINavigationBarTitleViewOverlayRects, _UISearchBarNavigationItem, _UISearchBarScopeBarBackground;
+@protocol UISearchBarDelegate, UISearchBarDelegate><UISearchBarDelegate_Private, _UINavigationBarTitleViewDataSource;
 
-@interface UISearchBar : UIView <UITextInputTraits_Private, UIStatusBarTinting, _UIBarPositioningInternal, UIBarPositioning, UITextInputTraits>
+@interface UISearchBar : UIView <UITextInputTraits_Private, UIStatusBarTinting, _UIBarPositioningInternal, _UINavigationBarAugmentedTitleView, UIBarPositioning, UITextInputTraits>
 {
     UISearchBarTextField *_searchField;
     UILabel *_promptLabel;
@@ -30,10 +31,12 @@
     UIView *_background;
     UIView *_scopeBar;
     UIView *_scopeBarContainerView;
-    struct UIEdgeInsets _contentInset;
+    struct UIEdgeInsets _contentInsetPrivate;
+    double _indexWidth;
+    struct UIEdgeInsets _effectiveContentInset;
     UIImageView *_shadowView;
     id _appearanceStorage;
-    _UISearchBarNavigationItem *_navigationItem;
+    _UISearchBarNavigationItem *_searchDisplayControllerNavigationItem;
     _UISearchBarScopeBarBackground *_scopeBarBackgroundView;
     UIBarButtonItem *_animatedAppearanceBarButtonItem;
     _UIBackdropView *_backdrop;
@@ -43,6 +46,9 @@
     UIBarButtonItem *_cancelBarButtonItem;
     UITextInputTraits *_textInputTraits;
     UIButton *_leftButton;
+    id<_UINavigationBarTitleViewDataSource> _dataSource;
+    long long _titleLocation;
+    _UINavigationBarTitleViewOverlayRects *_overlayRects;
     struct {
         unsigned int barStyle:3;
         unsigned int showsBookmarkButton:1;
@@ -77,15 +83,24 @@
 }
 
 @property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
+@property (readonly, nonatomic) struct UIEdgeInsets _effectiveContentInset;
 @property (nonatomic) BOOL _forceCenteredPlaceholderLayout; // @synthesize _forceCenteredPlaceholderLayout=__forceCenteredPlaceholderLayout;
+@property (readonly, nonatomic) BOOL _hideNavigationBarBackButton;
+@property (readonly, nonatomic) BOOL _hideNavigationBarLeadingBarButtons;
+@property (readonly, nonatomic) BOOL _hideNavigationBarStandardTitle;
+@property (readonly, nonatomic) BOOL _hideNavigationBarTrailingBarButtons;
 @property (readonly, strong, nonatomic) UIButton *_leftButton; // @synthesize _leftButton;
+@property (readonly, nonatomic) double _navigationBarBackButtonMaximumWidth;
+@property (readonly, nonatomic) double _navigationBarContentHeight;
 @property (nonatomic, setter=_setScopeBarPosition:) unsigned long long _scopeBarPosition; // @synthesize _scopeBarPosition=__scopeBarPosition;
 @property (nonatomic, setter=_setSearchController:) UISearchController *_searchController; // @synthesize _searchController=__searchController;
 @property (strong, nonatomic, setter=_setStatusBarTintColor:) UIColor *_statusBarTintColor; // @synthesize _statusBarTintColor;
 @property (nonatomic, setter=_setTransplanting:) BOOL _transplanting; // @synthesize _transplanting=__transplanting;
+@property (readonly, nonatomic) BOOL _underlayNavigationBarContent;
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
+@property (nonatomic) BOOL acceptsPayloads;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
 @property (nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
 @property (copy, nonatomic) NSString *autocorrectionContext;
@@ -123,6 +138,7 @@
 @property (nonatomic) long long keyboardAppearance; // @dynamic keyboardAppearance;
 @property (nonatomic) long long keyboardType; // @dynamic keyboardType;
 @property (nonatomic) BOOL learnsCorrections;
+@property (nonatomic) BOOL loadKeyboardsForSiriLanguage;
 @property (copy, nonatomic) NSString *placeholder;
 @property (copy, nonatomic) NSString *prompt;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
@@ -146,11 +162,14 @@
 @property (nonatomic) BOOL showsCancelButton;
 @property (nonatomic) BOOL showsScopeBar;
 @property (nonatomic) BOOL showsSearchResultsButton;
+@property (nonatomic) long long smartDashesType; // @dynamic smartDashesType;
+@property (nonatomic) long long smartInsertDeleteType; // @dynamic smartInsertDeleteType;
+@property (nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property (nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
 @property (copy, nonatomic) NSString *text;
-@property (copy, nonatomic) NSString *textContentType;
+@property (copy, nonatomic) NSString *textContentType; // @dynamic textContentType;
 @property (nonatomic) int textLoupeVisibility;
 @property (nonatomic) long long textScriptType;
 @property (nonatomic) int textSelectionBehavior;
@@ -158,6 +177,8 @@
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet;
 @property (strong, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 @property (nonatomic, getter=isTranslucent) BOOL translucent;
+@property (strong, nonatomic) UIColor *underlineColorForSpelling;
+@property (strong, nonatomic) UIColor *underlineColorForTextAlternatives;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange validTextRange;
 
@@ -167,25 +188,28 @@
 - (id)_alternateTitle;
 - (id)_animatedAppearanceBarButtonItem;
 - (void)_applySearchBarStyle;
-- (double)_autolayoutSpacingAtEdge:(int)arg1 inContainer:(id)arg2;
-- (double)_autolayoutSpacingAtEdge:(int)arg1 nextToNeighbor:(id)arg2;
+- (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(long long)arg2 inContainer:(id)arg3 isGuide:(BOOL)arg4;
 - (double)_availableBoundsWidth;
 - (double)_availableBoundsWidthForSize:(struct CGSize)arg1;
 - (unsigned long long)_backdropStyle;
-- (id)_backgroundBlurEffectForPresentation;
 - (id)_backgroundView;
 - (double)_barHeightForBarMetrics:(long long)arg1;
+- (double)_barHeightForBarMetrics:(long long)arg1 barPosition:(long long)arg2;
+- (double)_barHeightForBarMetrics:(long long)arg1 withEffectiveInsets:(struct UIEdgeInsets)arg2;
 - (long long)_barMetricsForOrientation:(long long)arg1;
 - (long long)_barPosition;
 - (void)_bookmarkButtonPressed;
 - (id)_cancelBarButtonItem;
 - (void)_cancelButtonPressed;
+- (id)_colorForComponent:(unsigned long long)arg1 disabled:(BOOL)arg2;
 - (void)_commonInit;
 - (BOOL)_consideredInBarWithSuperview:(id)arg1;
 - (BOOL)_containedInNavigationPalette;
 - (BOOL)_containsScopeBar;
+- (void)_contentDidChange;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (id)_currentSeparatorImage;
+- (double)_defaultAutolayoutSpacing;
 - (double)_defaultHeight;
 - (id)_defaultPromptString;
 - (double)_defaultWidth;
@@ -196,8 +220,10 @@
 - (id)_effectiveBarTintColor;
 - (void)_effectiveBarTintColorDidChange:(BOOL)arg1;
 - (BOOL)_enableAutomaticKeyboardPressDone;
-- (id)_glyphAndTextColor:(BOOL)arg1;
-- (BOOL)_hasCustomAutolayoutNeighborSpacing;
+- (BOOL)_getNavigationTitleLeadingInset:(double *)arg1 trailingInset:(double *)arg2 isRTL:(BOOL)arg3;
+- (void)_getScopeBarHeight:(double *)arg1 containerHeight:(double *)arg2;
+- (void)_getTopInset:(double *)arg1 bottomInset:(double *)arg2 forBarMetrics:(long long)arg3 barPosition:(long long)arg4;
+- (BOOL)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long *)arg1;
 - (BOOL)_hasDarkUIAppearance;
 - (void)_identifyBarContainer;
 - (id)_imageForSearchBarIcon:(long long)arg1 state:(unsigned long long)arg2;
@@ -210,10 +236,11 @@
 - (void)_layoutBackgroundViewConsideringTopBarStatusAndChangedHeight:(BOOL)arg1;
 - (id)_makeShadowView;
 - (id)_navigationBarForShadow;
-- (id)_navigationItem;
 - (BOOL)_ownsInputAccessoryView;
+- (void)_performTransition:(long long)arg1 willBeDisplayed:(BOOL)arg2;
 - (void)_populateArchivedSubviews:(id)arg1;
-- (void)_removeMarginsIfNecessary;
+- (long long)_preferredContentSizeForSize:(long long)arg1;
+- (id)_presentationBackgroundBlurEffectForTraitCollection:(id)arg1;
 - (void)_resultsListButtonPressed;
 - (id)_scopeBar;
 - (id)_scopeBarBackgroundView;
@@ -223,6 +250,8 @@
 - (struct UIEdgeInsets)_scopeBarInsets;
 - (BOOL)_scopeBarIsVisible;
 - (void)_scopeChanged:(id)arg1;
+- (id)_searchBarTextFieldOrMailReplacementView;
+- (id)_searchDisplayControllerNavigationItem;
 - (void)_searchFieldBeginEditing;
 - (void)_searchFieldEditingChanged;
 - (void)_searchFieldEndEditing;
@@ -237,6 +266,7 @@
 - (void)_setBarTintColor:(id)arg1 forceUpdate:(BOOL)arg2;
 - (void)_setCancelButtonText:(id)arg1;
 - (void)_setCancelButtonWantsLetterpress;
+- (void)_setDataSource:(id)arg1 navigationItem:(id)arg2 titleLocation:(long long)arg3;
 - (void)_setDisableFocus:(BOOL)arg1;
 - (void)_setEnabled:(BOOL)arg1;
 - (void)_setEnabled:(BOOL)arg1 animated:(BOOL)arg2;
@@ -262,8 +292,12 @@
 - (id)_textColor;
 - (BOOL)_textFieldShouldScrollToVisibleWhenBecomingFirstResponder:(id)arg1;
 - (long long)_textInputSource;
+- (void)_transitionCompleted:(long long)arg1 willBeDisplayed:(BOOL)arg2;
+- (void)_transitionWillBegin:(long long)arg1 willBeDisplayed:(BOOL)arg2;
 - (id)_uiktest_placeholderLabelColor;
 - (void)_updateBackgroundToBackdropStyle:(long long)arg1;
+- (void)_updateEffectiveContentInset;
+- (void)_updateInsetsForCurrentContainerViewAndBarPosition;
 - (void)_updateInsetsForTableView:(id)arg1;
 - (void)_updateMagnifyingGlassView;
 - (void)_updateNeedForBackdrop;
@@ -271,6 +305,7 @@
 - (void)_updatePlaceholderColor;
 - (void)_updateRightView;
 - (void)_updateScopeBarBackground;
+- (void)_updateScopeBarFrame;
 - (void)_updateSearchFieldArt;
 - (id)_viewForChildViews;
 - (BOOL)_wouldCombineLandscapeBarsForSize:(struct CGSize)arg1;
@@ -300,6 +335,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
 - (BOOL)isFirstResponder;
+- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (struct UIOffset)positionAdjustmentForSearchBarIcon:(long long)arg1;
@@ -308,6 +344,7 @@
 - (void)reloadInputViews;
 - (BOOL)resignFirstResponder;
 - (BOOL)respondsToSelector:(SEL)arg1;
+- (void)safeAreaInsetsDidChange;
 - (id)scopeBarButtonBackgroundImageForState:(unsigned long long)arg1;
 - (id)scopeBarButtonDividerImageForLeftSegmentState:(unsigned long long)arg1 rightSegmentState:(unsigned long long)arg2;
 - (id)scopeBarButtonTitleTextAttributesForState:(unsigned long long)arg1;

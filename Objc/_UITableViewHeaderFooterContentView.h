@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateConstraintsIfNeededWithViewForVariableChangeNotifications:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setBackgroundColor:(id)arg1;
+- (void)setTranslatesAutoresizingMaskIntoConstraints:(BOOL)arg1;
 
 @end
 

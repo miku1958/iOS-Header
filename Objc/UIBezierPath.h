@@ -6,10 +6,10 @@
 
 #import <Foundation/NSObject.h>
 
-#import <UIKit/NSCoding-Protocol.h>
 #import <UIKit/NSCopying-Protocol.h>
+#import <UIKit/NSSecureCoding-Protocol.h>
 
-@interface UIBezierPath : NSObject <NSCopying, NSCoding>
+@interface UIBezierPath : NSObject <NSCopying, NSSecureCoding>
 {
     struct CGPath *_path;
     double *_lineDashPattern;
@@ -55,6 +55,7 @@
 + (id)roundedRectBezierPath:(struct CGRect)arg1 withRoundedEdges:(unsigned long long)arg2;
 + (id)roundedRectBezierPath:(struct CGRect)arg1 withTopCornerRadius:(double)arg2 withBottomCornerRadius:(double)arg3;
 + (id)shadowBezierPath:(struct CGRect)arg1 withRoundedEdges:(unsigned long long)arg2;
++ (BOOL)supportsSecureCoding;
 - (void)_addRoundedCornerWithTrueCorner:(struct CGPoint)arg1 radius:(struct CGSize)arg2 corner:(unsigned long long)arg3 clockwise:(BOOL)arg4;
 - (struct CGPath *)_createMutablePathByDecodingData:(id)arg1;
 - (id)_initWithCGMutablePath:(struct CGPath *)arg1;

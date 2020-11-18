@@ -11,15 +11,11 @@
 + (id)mapsURLWithQuery:(id)arg1;
 + (id)mapsURLWithSourceAddress:(id)arg1 destinationAddress:(id)arg2;
 - (void)_domain:(id *)arg1 subdomain:(id *)arg2;
-- (BOOL)_isGoogleMapsDomain:(id)arg1 subdomain:(id)arg2 path:(id)arg3 queryKeysAndValues:(id)arg4;
-- (id)appleStoreURL;
 - (BOOL)isAccountURL;
-- (BOOL)isGoogleMapsURL;
 - (BOOL)isHTTPOrHTTPSURL;
 - (BOOL)isJavaScriptURL;
 - (BOOL)isSpringboardHandledURL;
 - (BOOL)isWebcalURL;
-- (id)itmsURL;
 - (id)phobosURL;
 - (id)radarWebURL;
 - (id)searchResultDomain;

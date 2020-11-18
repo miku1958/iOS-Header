@@ -7,19 +7,22 @@
 #import <UIKit/UIWindow.h>
 
 @class UIColor, UITraitCollection, _UIHostedWindowHostingHandle;
+@protocol _UIHostedWindowDelegate;
 
 @interface _UIHostedWindow : UIWindow
 {
     BOOL _wantsTraitPropagation;
     BOOL __hostViewUnderlapsStatusBar;
     long long _hostTintAdjustmentMode;
-    UITraitCollection *_hostTraitCollection;
     UIColor *__hostTintColor;
+    UITraitCollection *_hostTraitCollection;
+    id<_UIHostedWindowDelegate> __hostedWindowDelegate;
 }
 
 @property (nonatomic, setter=_setHostTintAdjustmentMode:) long long _hostTintAdjustmentMode; // @synthesize _hostTintAdjustmentMode;
 @property (strong, nonatomic, setter=_setHostTintColor:) UIColor *_hostTintColor; // @synthesize _hostTintColor=__hostTintColor;
 @property (strong, nonatomic, setter=_setHostTraitCollection:) UITraitCollection *_hostTraitCollection; // @synthesize _hostTraitCollection;
+@property (weak, nonatomic) id<_UIHostedWindowDelegate> _hostedWindowDelegate; // @synthesize _hostedWindowDelegate=__hostedWindowDelegate;
 @property (nonatomic, setter=_setWantsTraitPropagation:) BOOL _wantsTraitPropagation; // @synthesize _wantsTraitPropagation;
 @property (readonly, nonatomic) _UIHostedWindowHostingHandle *hostingHandle;
 
@@ -36,10 +39,10 @@
 - (id)_normalInheritedTintColor;
 - (long long)_orientationForRootTransform;
 - (long long)_orientationForViewTransform;
-- (BOOL)_presentActionSheet:(id)arg1 inView:(id)arg2 fromYCoordinate:(double)arg3;
 - (void)_registerScrollToTopView:(id)arg1;
+- (void)_setFirstResponder:(id)arg1;
 - (BOOL)_shouldPropagateTraitCollectionChanges;
-- (id)_traitCollectionForSize:(struct CGSize)arg1 screenCollection:(id)arg2 virtualHorizontalSizeClass:(long long)arg3 virtualVerticalSizeClass:(long long)arg4;
+- (id)_traitCollectionForSize:(struct CGSize)arg1 screenCollection:(id)arg2;
 - (void)_unregisterScrollToTopView:(id)arg1;
 - (void)_updateAppTintView;
 - (void)_updateTransformLayerForClassicPresentation;
@@ -47,6 +50,7 @@
 - (BOOL)_usesWindowServerHitTesting;
 - (unsigned int)contextID;
 - (void)dealloc;
+- (void)didSetResponderTargetForCalloutBar:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setScreen:(id)arg1;
 

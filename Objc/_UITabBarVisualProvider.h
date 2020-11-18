@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UITabBar *tabBar; // @synthesize tabBar=_tabBar;
 
 - (id)_shim_accessoryView;
+- (id)_shim_backdropGroupName;
 - (id)_shim_compatibilityBackgroundView;
-- (BOOL)_shim_hasBackdrop;
 - (void)_shim_layoutItemsOnly;
 - (void)_shim_setAccessoryView:(id)arg1;
 - (void)_shim_setBackdropGroupName:(id)arg1;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)prepare;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (BOOL)shouldUpdateFocusInContext:(id)arg1;
+- (void)tabBarSizeChanged:(struct CGSize)arg1;
 - (void)teardown;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateArchivedSubviews:(id)arg1;

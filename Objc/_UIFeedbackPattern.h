@@ -38,6 +38,7 @@
 - (id)_allEventTypes;
 - (id)_allSystemSoundIDs;
 - (id)_debugDictionary;
+- (unsigned long long)_effectivePlayableFeedbackTypes;
 - (void)_playPattern;
 - (id)_playableProtocol;
 - (void)addFeedback:(id)arg1 atTime:(double)arg2;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, NSMutableArray, NSString, UIButton, UILabel, _UIBackdropView;
+@class NSLayoutConstraint, NSMutableArray, NSString, UIButton, UILabel, UIScrollView, _UIBackdropView;
 
 @interface _UIContentUnavailableView : UIView
 {
@@ -14,11 +14,13 @@
     NSString *_title;
     _UIBackdropView *_backdrop;
     UIView *_containerView;
+    UIScrollView *_scrollView;
     UILabel *_titleLabel;
     UILabel *_messageLabel;
     UIButton *_actionButton;
     NSLayoutConstraint *titleToMessageConstraint;
     NSLayoutConstraint *messageToButtonConstraint;
+    NSLayoutConstraint *buttonHeightConstraint;
     UIView *_fromSnapshot;
     UIView *_toSnapshot;
     struct CGSize _fromSnapshotSize;
@@ -42,14 +44,17 @@
 - (id)_buttonBackgroundImageForStyle:(unsigned long long)arg1 controlState:(unsigned long long)arg2;
 - (id)_buttonFont;
 - (struct CGSize)_buttonSize;
+- (id)_buttonTextStyle;
 - (double)_buttonVerticalSpacing;
 - (id)_flatTextColor;
 - (BOOL)_hasVibrantButton;
 - (BOOL)_hasVibrantText;
 - (double)_labelAlpha;
 - (double)_labelVerticalSpacing;
+- (id)_messageTextStyle;
 - (void)_rebuildConstraints;
 - (id)_titleFont;
+- (void)_updateForCurrentContentSizeCategory;
 - (void)_updateViewHierarchy;
 - (id)_vibrantBaseColor;
 - (void)cleanupLingeringRotationState;
@@ -60,6 +65,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 title:(id)arg2 style:(unsigned long long)arg3 includeBackdrop:(BOOL)arg4;
 - (void)layoutSubviews;
 - (id)preferredFocusedView;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 - (void)windowDidRotateNotification:(id)arg1;
 - (void)windowWillAnimateRotateNotification:(id)arg1;

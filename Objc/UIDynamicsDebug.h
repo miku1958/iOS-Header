@@ -15,7 +15,10 @@ __attribute__((visibility("hidden")))
 {
     unsigned int _vertexBuffer;
     struct {
-        CDStruct_6e3f967a position;
+        struct {
+            float x;
+            float y;
+        } position;
         MISSING_TYPE *color;
     } _vertices[42000];
     GLKBaseEffect *_effect;

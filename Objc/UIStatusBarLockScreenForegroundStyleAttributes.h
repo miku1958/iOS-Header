@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 - (long long)activityIndicatorStyleWithSyncActivity:(BOOL)arg1;
 - (struct UIEdgeInsets)edgeInsetsForBatteryInsides;
-- (struct UIEdgeInsets)edgeInsetsForBluetoothBatteryInsides;
 - (id)expandedNameForImageName:(id)arg1;
 - (id)makeTextFontForStyle:(long long)arg1;
 - (struct CGPoint)positionForMoonMaskInBounds:(struct CGRect)arg1;

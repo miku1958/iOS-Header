@@ -13,9 +13,11 @@
 
 @interface UICollectionViewTableLayoutAttributes : UICollectionViewLayoutAttributes <UICollectionViewTableSectionHeaderFooterAttributes, UICollectionViewTableAllRowAttributes>
 {
+    BOOL _separatorInsetIsRelativeToCellEdges;
     BOOL _shouldIndentWhileEditing;
     BOOL _showsReorderControl;
     BOOL _layoutMarginsFollowReadableWidth;
+    BOOL _insetsContentViewsToSafeArea;
     BOOL _drawsSeparatorAtTopOfSection;
     BOOL _drawsSeparatorAtBottomOfSection;
     BOOL _isHeader;
@@ -27,11 +29,14 @@
     UIColor *_backgroundColor;
     long long _accessoryType;
     long long _editingStyle;
-    double _defaultMarginWidth;
+    double _defaultLeadingCellMarginWidth;
+    double _defaultTrailingCellMarginWidth;
+    double _indexBarExtentFromEdge;
     double _sectionBorderWidth;
     long long _indentationLevel;
     double _maxTitleWidth;
     long long _textAlignment;
+    struct UIEdgeInsets _separatorInset;
     struct UIEdgeInsets _backgroundInset;
     struct UIEdgeInsets _margins;
 }
@@ -39,12 +44,15 @@
 @property (nonatomic) long long accessoryType; // @synthesize accessoryType=_accessoryType;
 @property (copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) struct UIEdgeInsets backgroundInset; // @synthesize backgroundInset=_backgroundInset;
-@property (nonatomic) double defaultMarginWidth; // @synthesize defaultMarginWidth=_defaultMarginWidth;
+@property (nonatomic) double defaultLeadingCellMarginWidth; // @synthesize defaultLeadingCellMarginWidth=_defaultLeadingCellMarginWidth;
+@property (nonatomic) double defaultTrailingCellMarginWidth; // @synthesize defaultTrailingCellMarginWidth=_defaultTrailingCellMarginWidth;
 @property (nonatomic) BOOL drawsSeparatorAtBottomOfSection; // @synthesize drawsSeparatorAtBottomOfSection=_drawsSeparatorAtBottomOfSection;
 @property (nonatomic) BOOL drawsSeparatorAtTopOfSection; // @synthesize drawsSeparatorAtTopOfSection=_drawsSeparatorAtTopOfSection;
 @property (nonatomic) long long editingStyle; // @synthesize editingStyle=_editingStyle;
 @property (nonatomic) BOOL floating; // @synthesize floating=_floating;
 @property (nonatomic) long long indentationLevel; // @synthesize indentationLevel=_indentationLevel;
+@property (nonatomic) double indexBarExtentFromEdge; // @synthesize indexBarExtentFromEdge=_indexBarExtentFromEdge;
+@property (nonatomic) BOOL insetsContentViewsToSafeArea; // @synthesize insetsContentViewsToSafeArea=_insetsContentViewsToSafeArea;
 @property (nonatomic) BOOL isHeader; // @synthesize isHeader=_isHeader;
 @property (nonatomic) BOOL layoutMarginsFollowReadableWidth; // @synthesize layoutMarginsFollowReadableWidth=_layoutMarginsFollowReadableWidth;
 @property (nonatomic) struct UIEdgeInsets margins; // @synthesize margins=_margins;
@@ -53,6 +61,8 @@
 @property (nonatomic) int sectionLocation; // @synthesize sectionLocation=_sectionLocation;
 @property (copy, nonatomic) UIColor *separatorColor; // @synthesize separatorColor=_separatorColor;
 @property (strong, nonatomic) UIVisualEffect *separatorEffect; // @synthesize separatorEffect=_separatorEffect;
+@property (nonatomic) struct UIEdgeInsets separatorInset; // @synthesize separatorInset=_separatorInset;
+@property (nonatomic) BOOL separatorInsetIsRelativeToCellEdges; // @synthesize separatorInsetIsRelativeToCellEdges=_separatorInsetIsRelativeToCellEdges;
 @property (nonatomic) long long separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (nonatomic) BOOL shouldIndentWhileEditing; // @synthesize shouldIndentWhileEditing=_shouldIndentWhileEditing;
 @property (nonatomic) BOOL showsReorderControl; // @synthesize showsReorderControl=_showsReorderControl;

@@ -22,6 +22,7 @@
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji; // @dynamic acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
+@property (nonatomic) BOOL acceptsPayloads;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
 @property (nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
 @property (copy, nonatomic) NSString *autocorrectionContext;
@@ -58,6 +59,7 @@
 @property (nonatomic) long long keyboardAppearance; // @dynamic keyboardAppearance;
 @property (nonatomic) long long keyboardType; // @dynamic keyboardType;
 @property (nonatomic) BOOL learnsCorrections;
+@property (nonatomic) BOOL loadKeyboardsForSiriLanguage;
 @property (readonly, nonatomic) UITextRange *markedTextRange;
 @property (copy, nonatomic) NSDictionary *markedTextStyle;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
@@ -72,10 +74,13 @@
 @property (nonatomic) long long selectionGranularity;
 @property (strong, nonatomic) UIColor *selectionHighlightColor;
 @property (nonatomic) int shortcutConversionType; // @dynamic shortcutConversionType;
+@property (nonatomic) long long smartDashesType; // @dynamic smartDashesType;
+@property (nonatomic) long long smartInsertDeleteType; // @dynamic smartInsertDeleteType;
+@property (nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property (nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
-@property (copy, nonatomic) NSString *textContentType;
+@property (copy, nonatomic) NSString *textContentType; // @dynamic textContentType;
 @property (readonly, nonatomic) id<UITextInputSuggestionDelegate> textInputSuggestionDelegate;
 @property (readonly, nonatomic) UIView *textInputView;
 @property (nonatomic) int textLoupeVisibility; // @dynamic textLoupeVisibility;
@@ -84,6 +89,8 @@
 @property (nonatomic) id textSuggestionDelegate; // @dynamic textSuggestionDelegate;
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet; // @dynamic textTrimmingSet;
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
+@property (strong, nonatomic) UIColor *underlineColorForSpelling;
+@property (strong, nonatomic) UIColor *underlineColorForTextAlternatives;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange validTextRange;
 

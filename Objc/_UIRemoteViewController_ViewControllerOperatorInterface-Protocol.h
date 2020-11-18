@@ -7,10 +7,8 @@
 @class BKSAnimationFenceHandle, BSAnimationSettings, NSArray, NSData, NSString, NSValue, UIColor, UIFocusMovementAction;
 
 @protocol _UIRemoteViewController_ViewControllerOperatorInterface
-- (void)__dismissActionSheetWithClickedButtonIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)__dismissTextServiceSessionAnimated:(BOOL)arg1;
 - (void)__handleFocusMovementAction:(UIFocusMovementAction *)arg1;
-- (void)__presentActionSheetFromYCoordinate:(double)arg1 withTitle:(NSString *)arg2 buttonTitles:(NSArray *)arg3 cancelButtonIndex:(long long)arg4 destructiveButtonIndex:(long long)arg5 style:(long long)arg6;
 - (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
 - (void)__setSupportedInterfaceOrientations:(NSArray *)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
@@ -21,8 +19,11 @@
 - (void)__viewServiceDidPromoteFirstResponder;
 - (void)__viewServiceDidRegisterScrollToTopView;
 - (void)__viewServiceDidUnregisterScrollToTopView;
-- (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 hidden:(long long)arg2 updateAnimation:(long long)arg3;
+- (void)__viewServiceDidUpdatePreferredScreenEdgesDeferringSystemGestures:(long long)arg1;
+- (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 preferredStatusBarVisibility:(int)arg2 updateAnimation:(long long)arg3 currentAnimationSettings:(BSAnimationSettings *)arg4;
+- (void)__viewServiceDidUpdatePreferredUserInterfaceStyle:(long long)arg1;
 - (void)__viewServiceDidUpdatePreferredWhitePointAdaptationStyle:(long long)arg1 animationSettings:(BSAnimationSettings *)arg2;
+- (void)__viewServiceDidUpdatePrefersHomeIndicatorAutoHidden:(BOOL)arg1;
 - (void)__viewServiceDidUpdateTintColor:(UIColor *)arg1 duration:(double)arg2;
 - (void)__viewServiceInstrinsicContentSizeDidChange:(struct CGSize)arg1 fence:(BKSAnimationFenceHandle *)arg2;
 - (void)__viewServicePopoverDidChangeContentSize:(struct CGSize)arg1 animated:(BOOL)arg2 fence:(BKSAnimationFenceHandle *)arg3 withReplyHandler:(void (^)(struct CGSize))arg4;

@@ -8,17 +8,17 @@
 
 #import <UIKit/UIForceTransitioningDelegate-Protocol.h>
 
-@class NSString, UIInteractionProgress, _UIFeedbackStatesBehavior;
+@class NSString, UIInteractionProgress, _UIStatesFeedbackGenerator;
 
 @interface _UIPreviewTransitionDelegate : NSObject <UIForceTransitioningDelegate>
 {
     UIInteractionProgress *interactionProgressForPresentation;
-    _UIFeedbackStatesBehavior *_feedbackBehavior;
+    _UIStatesFeedbackGenerator *_feedbackGenerator;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) _UIFeedbackStatesBehavior *feedbackBehavior; // @synthesize feedbackBehavior=_feedbackBehavior;
+@property (strong, nonatomic) _UIStatesFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIInteractionProgress *interactionProgressForPresentation; // @synthesize interactionProgressForPresentation;
 @property (readonly) Class superclass;

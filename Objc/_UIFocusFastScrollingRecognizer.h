@@ -6,29 +6,40 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMapTable, NSTimer, UIScrollView, _UIFocusEnginePanGestureRecognizer, _UIFocusFastScrollingTouchSequence;
+#import <UIKit/_UIFocusEnginePanGestureTouchObserver-Protocol.h>
+
+@class NSMapTable, NSString, NSTimer, UIScrollView, _UIFocusEnginePanGestureRecognizer, _UIFocusFastScrollingTouchSequence;
 @protocol _UIFocusFastScrollingRecognizerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIFocusFastScrollingRecognizer : NSObject
+@interface _UIFocusFastScrollingRecognizer : NSObject <_UIFocusEnginePanGestureTouchObserver>
 {
     _UIFocusEnginePanGestureRecognizer *_panGesture;
     _UIFocusFastScrollingTouchSequence *_currentTouch;
     NSMapTable *_swipeSequences;
     NSTimer *_swipeIntervalTimer;
     UIScrollView *_previewingScrollView;
+    NSTimer *_previewingTouchTimer;
     BOOL _enabled;
     id<_UIFocusFastScrollingRecognizerDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_UIFocusFastScrollingRecognizerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)recognizerWithPanGesture:(id)arg1;
 - (void).cxx_destruct;
+- (void)_activatePreviewingScrollView;
+- (void)_activatePreviewingScrollViewAfterDelay;
 - (BOOL)_attemptToImmediatelyRecognizeEdgeGesture;
 - (unsigned long long)_bestHeadingForAccumulator:(struct CGVector)arg1;
+- (void)_deactivatePreviewingScrollViewIfNecessary;
 - (id)_deepestEligibleScrollViewContainingFocusedItem:(unsigned long long)arg1;
+- (void)_focusDidUpate:(id)arg1;
 - (void)_handlePanGesture:(id)arg1;
 - (void)_notifyDelegateWithScrollView:(id)arg1 scrollingStyle:(long long)arg2 heading:(unsigned long long)arg3;
 - (BOOL)_scrollViewIsEligibleForFastScrolling:(id)arg1 alongHeading:(unsigned long long)arg2;
@@ -42,7 +53,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateActiveSwipeSequencesForScrollViews:(id)arg1;
 - (void)dealloc;
 - (void)directionalPressWithHeading:(unsigned long long)arg1 didRepeat:(unsigned long long)arg2;
-- (void)focusDidUpdateWithContext:(id)arg1;
 - (void)focusEnginePanGesture:(id)arg1 touchBeganAtDigitizerLocation:(struct CGPoint)arg2;
 - (void)focusEnginePanGesture:(id)arg1 touchCancelledAtDigitizerLocation:(struct CGPoint)arg2;
 - (void)focusEnginePanGesture:(id)arg1 touchEndedAtDigitizerLocation:(struct CGPoint)arg2;

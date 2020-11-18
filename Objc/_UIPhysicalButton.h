@@ -20,7 +20,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) UIWindow *window;
+@property (readonly, nonatomic) UIWindow *window;
 
 @end
 

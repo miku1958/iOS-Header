@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 
 + (double)defaultExtendedControlHeight;
 + (double)extendedHeight;
+- (void).cxx_destruct;
 - (double)_additionalClipHeight;
 - (int)_clipCornersOfView:(id)arg1;
 - (unsigned long long)_numberOfColumns:(BOOL)arg1;

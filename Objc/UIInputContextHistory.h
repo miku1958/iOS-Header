@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSSet, TIInputContextHistory;
+@class NSSet, NSString, TIInputContextHistory;
 
 @interface UIInputContextHistory : NSObject
 {
@@ -14,11 +14,16 @@
 }
 
 @property (readonly, nonatomic) NSSet *recipientIdentifiers;
+@property (readonly, nonatomic) NSString *senderIdentifier;
+@property (readonly, nonatomic) NSSet *senderIdentifiers;
 @property (readonly, nonatomic) TIInputContextHistory *tiInputContextHistory; // @synthesize tiInputContextHistory=_tiInputContextHistory;
 
 - (void).cxx_destruct;
 - (void)addTextEntry:(id)arg1 timestamp:(id)arg2;
+- (void)addTextEntry:(id)arg1 timestamp:(id)arg2 senderIdentifier:(id)arg3;
 - (id)initWithRecipientIdentifiers:(id)arg1;
+- (id)initWithRecipientIdentifiers:(id)arg1 senderIdentifier:(id)arg2;
+- (id)initWithRecipientIdentifiers:(id)arg1 senderIdentifiers:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

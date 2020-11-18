@@ -7,11 +7,12 @@
 #import <Foundation/NSObject.h>
 
 @class NSArray, PKPrinter, UIPrintFormatter, UIPrintInfo, UIPrintPageRenderer, UIPrintPaper;
-@protocol OS_dispatch_queue, UIPrintInteractionControllerDelegate;
+@protocol OS_dispatch_queue, UIPrintInteractionControllerActivityDelegate, UIPrintInteractionControllerDelegate;
 
 @interface UIPrintInteractionController : NSObject
 {
     BOOL _hidesNumberOfCopies;
+    BOOL _isManagedContent;
     CDUnknownBlockType _completionHandler;
     unsigned long long _backgroundTaskIdentifier;
     NSObject<OS_dispatch_queue> *_previewQueue;
@@ -26,14 +27,15 @@
     UIPrintFormatter *_printFormatter;
     id _printingItem;
     NSArray *_printingItems;
-    id<UIPrintInteractionControllerDelegate> _printActivityDelegate;
+    id<UIPrintInteractionControllerActivityDelegate> _printActivityDelegate;
 }
 
 @property (weak, nonatomic) id<UIPrintInteractionControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL isManagedContent; // @synthesize isManagedContent=_isManagedContent;
 @property (readonly, nonatomic) long long pageCount;
 @property (strong, nonatomic) NSArray *pageRanges;
 @property (strong, nonatomic) UIPrintPaper *paper;
-@property (weak, nonatomic) id<UIPrintInteractionControllerDelegate> printActivityDelegate; // @synthesize printActivityDelegate=_printActivityDelegate;
+@property (weak, nonatomic) id<UIPrintInteractionControllerActivityDelegate> printActivityDelegate; // @synthesize printActivityDelegate=_printActivityDelegate;
 @property (strong, nonatomic) UIPrintFormatter *printFormatter; // @synthesize printFormatter=_printFormatter;
 @property (strong, nonatomic) UIPrintInfo *printInfo; // @synthesize printInfo=_printInfo;
 @property (strong, nonatomic) UIPrintPageRenderer *printPageRenderer; // @synthesize printPageRenderer=_printPageRenderer;
@@ -74,6 +76,7 @@
 - (double)_getCutLengthFromDelegateForPaper:(id)arg1;
 - (id)_init;
 - (void)_manualPrintPage;
+- (id)_newPDFPreviewURLWithPath:(id)arg1 isManagedContent:(BOOL)arg2;
 - (struct CGContext *)_newSaveContext:(id)arg1 withMediaRect:(struct CGRect)arg2;
 - (id)_paperForContentType:(long long)arg1;
 - (id)_paperForPDFItem:(id)arg1 withDuplexMode:(long long)arg2;
@@ -87,6 +90,7 @@
 - (void)_printPanelWillDismiss:(BOOL)arg1;
 - (struct CGSize)_printablePDFDataSize:(id)arg1;
 - (struct CGSize)_printablePDFURLSize:(id)arg1;
+- (BOOL)_printingItemIsReallyTallPDF;
 - (void)_setPrintInfoState:(int)arg1;
 - (BOOL)_setupPrintPanel:(CDUnknownBlockType)arg1;
 - (void)_startPrinting;

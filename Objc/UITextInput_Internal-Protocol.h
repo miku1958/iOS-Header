@@ -34,6 +34,7 @@
 - (BOOL)_hasMarkedText;
 - (BOOL)_hasMarkedTextOrRangedSelection;
 - (int)_indexForTextPosition:(UITextPosition *)arg1;
+- (UITextRange *)_intersectionOfRange:(UITextRange *)arg1 andRange:(UITextRange *)arg2;
 - (BOOL)_isEmptySelection;
 - (void)_moveCurrentSelection:(int)arg1;
 - (UITextInputArrowKeyHistory *)_moveDown:(BOOL)arg1 withHistory:(UITextInputArrowKeyHistory *)arg2;
@@ -55,6 +56,8 @@
 - (UITextPosition *)_positionFromPosition:(UITextPosition *)arg1 inDirection:(long long)arg2 offset:(long long)arg3 withAffinityDownstream:(BOOL)arg4;
 - (UITextPosition *)_positionFromPosition:(UITextPosition *)arg1 pastTextUnit:(long long)arg2 inDirection:(long long)arg3;
 - (UITextPosition *)_positionWithinRange:(UITextRange *)arg1 farthestInDirection:(long long)arg2;
+- (BOOL)_range:(UITextRange *)arg1 containsRange:(UITextRange *)arg2;
+- (BOOL)_range:(UITextRange *)arg1 intersectsRange:(UITextRange *)arg2;
 - (UITextRange *)_rangeOfEnclosingWord:(UITextPosition *)arg1;
 - (UITextRange *)_rangeOfLineEnclosingPosition:(UITextPosition *)arg1;
 - (UITextRange *)_rangeOfParagraphEnclosingPosition:(UITextPosition *)arg1;
@@ -63,6 +66,7 @@
 - (UITextRange *)_rangeOfTextUnit:(long long)arg1 enclosingPosition:(UITextPosition *)arg2;
 - (UITextRange *)_rangeSpanningTextUnit:(long long)arg1 andPosition:(UITextPosition *)arg2;
 - (void)_replaceCurrentWordWithText:(NSString *)arg1;
+- (void)_replaceDocumentWithText:(NSString *)arg1;
 - (void)_scrollRectToVisible:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)_selectAll;
 - (struct _NSRange)_selectedNSRange;
@@ -78,6 +82,7 @@
 - (void)_setSelectedTextRange:(UITextRange *)arg1 withAffinityDownstream:(BOOL)arg2;
 - (BOOL)_shouldPerformUICalloutBarButtonReplaceAction:(SEL)arg1 forText:(NSString *)arg2 checkAutocorrection:(BOOL)arg3;
 - (UIColor *)_textColorForCaretSelection;
+- (UITextRange *)_textRangeFromNSRange:(struct _NSRange)arg1;
 - (void)_unmarkText;
 - (BOOL)_usesAsynchronousProtocol;
 - (NSString *)_wordContainingCaretSelection;

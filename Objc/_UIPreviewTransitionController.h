@@ -10,7 +10,7 @@
 #import <UIKit/UIInteractionProgressObserver-Protocol.h>
 #import <UIKit/UIViewControllerAnimatedTransitioning-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, UIInteractionProgress, _UIFeedbackStatesBehavior;
+@class NSDictionary, NSMutableDictionary, NSString, UIInteractionProgress, _UIStatesFeedbackGenerator;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     UIInteractionProgress *_interactionProgress;
     unsigned long long _targetPresentationPhase;
     NSDictionary *_viewsParticipatingInCommitTransition;
-    _UIFeedbackStatesBehavior *_feedbackBehavior;
+    _UIStatesFeedbackGenerator *_feedbackGenerator;
     NSMutableDictionary *_animationsByPresentationPhase;
     id<UIViewControllerContextTransitioning> _transitionContext;
 }
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double completionSpeed;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) _UIFeedbackStatesBehavior *feedbackBehavior; // @synthesize feedbackBehavior=_feedbackBehavior;
+@property (strong, nonatomic) _UIStatesFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIInteractionProgress *interactionProgress; // @synthesize interactionProgress=_interactionProgress;
 @property (readonly) Class superclass;

@@ -15,11 +15,9 @@ __attribute__((visibility("hidden")))
     UIMorphingLabelGlyphSet *_dstGlyphSet;
     NSMutableArray *_hiddenGlyphViews;
     UIView *_colorView;
-    struct {
-        unsigned long long len;
-        unsigned long long dir;
-    } _memo[51][51];
-    CDStruct_8a233cb2 _alignment[100];
+    unsigned long long _alignmentSrc[100];
+    unsigned long long _alignmentDst[100];
+    BOOL _alignmentIsEqual[100];
     unsigned long long _alignmentSize;
     double _alignmentDelays[100];
     _UIViewAnimationAttributes *_textAnimationAttributes;
@@ -68,12 +66,13 @@ __attribute__((visibility("hidden")))
 - (id)attributedStringForText:(id)arg1;
 - (void)baseInit;
 - (void)calculateGlyphAlignment;
-- (unsigned long long)calculateHardAlignment:(CDStruct_8a233cb2 *)arg1 size:(unsigned long long)arg2 fromGlyphs:(const unsigned short *)arg3 count:(unsigned long long)arg4 toGlyphs:(const unsigned short *)arg5 count:(unsigned long long)arg6;
+- (unsigned long long)calculateHardAlignmentAtIndex:(unsigned long long)arg1 fromGlyphsInRange:(struct _NSRange)arg2 toGlyphsInRange:(struct _NSRange)arg3;
 - (BOOL)canFitText:(id)arg1;
 - (double)changeInWidthDueToAlignmentHunkAtIndex:(unsigned long long)arg1;
 - (void)copyStateFromGlyph:(id)arg1 toGlyph:(id)arg2;
 - (double)currentMediaTime;
 - (void)dealloc;
+- (struct _NSRange)dstRangeOfAlignmentHunkAtIndex:(unsigned long long)arg1;
 - (double)flushAmount;
 - (id)glyphViewWithImage:(id)arg1 isColorGlyph:(BOOL)arg2;
 - (void)hideGlyph:(id)arg1;
@@ -86,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (double)requiredWidthForText:(id)arg1;
+- (struct _NSRange)srcRangeOfAlignmentHunkAtIndex:(unsigned long long)arg1;
 - (double)totalLeftOffsetForAlignmentHunkAtIndex:(unsigned long long)arg1;
 - (double)totalRightOffsetForAlignmentHunkAtIndex:(unsigned long long)arg1;
 - (id)uniqueStringWithPrefix:(id)arg1;

@@ -6,22 +6,26 @@
 
 #import <UIKit/UIActivity.h>
 
-@class MFMessageComposeViewController;
+#import <UIKit/UIManagedConfigurationRestrictableActivity-Protocol.h>
 
-@interface UIMessageActivity : UIActivity
+@class MFMessageComposeViewController, NSString;
+
+@interface UIMessageActivity : UIActivity <UIManagedConfigurationRestrictableActivity>
 {
     BOOL _sourceIsManaged;
+    NSString *_sourceApplicationBundleID;
     MFMessageComposeViewController *_messageComposeViewController;
 }
 
 @property (strong, nonatomic) MFMessageComposeViewController *messageComposeViewController; // @synthesize messageComposeViewController=_messageComposeViewController;
+@property (copy, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
 @property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 
++ (unsigned long long)_xpcAttributes;
 + (long long)activityCategory;
 + (id)applicationBundleID;
 - (void).cxx_destruct;
-- (id)_activityImage;
-- (id)_activitySettingsImage;
+- (id)_bundleIdentifierForActivityImageCreation;
 - (void)_cleanup;
 - (id)activityTitle;
 - (id)activityType;

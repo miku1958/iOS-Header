@@ -22,6 +22,7 @@
 @property (nonatomic) long long preferredDisplayMode;
 @property (nonatomic) double preferredPrimaryColumnWidthFraction;
 @property (nonatomic) BOOL presentsWithGesture;
+@property (nonatomic) long long primaryEdge;
 @property (copy, nonatomic) NSArray *viewControllers;
 
 - (NSArray *)_additionalViewControllersToCheckForUserActivity;
@@ -33,6 +34,7 @@
 - (void)_descendantWillPresentViewController:(UIViewController *)arg1 modalSourceViewController:(UIViewController *)arg2 presentationController:(UIPresentationController *)arg3 animated:(BOOL)arg4;
 - (void)_didChangeToFirstResponder:(UIResponder *)arg1;
 - (void)_didEndSnapshotSession;
+- (void)_didUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
 - (BOOL)_disableAutomaticKeyboardBehavior;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(UIViewController *)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (struct CGRect)_frameForChildContentContainer:(id<UIContentContainer>)arg1;
@@ -42,6 +44,7 @@
 - (void)_initWithCoder:(NSCoder *)arg1;
 - (BOOL)_isCollapsed;
 - (BOOL)_isRotating;
+- (void)_marginInfoForChild:(UIViewController *)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 - (BOOL)_optsOutOfPopoverControllerHierarchyCheck;
 - (void)_popoverController:(UIPopoverController *)arg1 didChangeFromVisible:(BOOL)arg2;
 - (void)_popoverController:(UIPopoverController *)arg1 willChangeToVisible:(BOOL)arg2;
@@ -86,7 +89,6 @@
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willTransitionToTraitCollection:(UITraitCollection *)arg1 withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)arg2;
-- (void)willUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
 
 @optional
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id<UIContentContainer>)arg1;

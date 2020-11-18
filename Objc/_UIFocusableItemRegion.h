@@ -10,7 +10,8 @@
 
 @interface _UIFocusableItemRegion : _UIFocusRegion
 {
-    BOOL _itemCanBecomeFocused;
+    BOOL _itemIsEligibleForFocusInteraction;
+    BOOL _itemIsFocusable;
     id<UIFocusItem> _item;
 }
 
@@ -18,10 +19,12 @@
 
 - (void).cxx_destruct;
 - (BOOL)_canBeOccludedByRegionsAbove;
+- (BOOL)_canOccludeRegionsBelow;
+- (id)_debugAssociatedObject;
 - (id)_defaultFocusItem;
-- (id)_destinationItemForFocusMovement:(id)arg1 inMap:(id)arg2;
 - (void)_drawDebugQuickLookImageWithInfo:(id)arg1 inContext:(struct CGContext *)arg2;
 - (unsigned long long)_focusableBoundaries;
+- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
 - (long long)_preferredDistanceComparisonType;
 - (BOOL)_shouldCropRegionToSearchArea;
 - (BOOL)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;

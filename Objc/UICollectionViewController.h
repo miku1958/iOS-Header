@@ -65,7 +65,7 @@
 - (id)initWithCollectionViewLayout:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
-- (id)preferredFocusedItem;
+- (id)preferredFocusedView;
 - (id)previewViewControllerForItemAtIndexPath:(id)arg1;
 - (id)previewViewControllerForLocation:(struct CGPoint)arg1 inSourceView:(id)arg2;
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;

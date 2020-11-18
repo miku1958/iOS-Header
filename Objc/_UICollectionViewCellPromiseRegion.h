@@ -6,14 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-#import <UIKit/_UIFocusPromiseRegionDelegate-Protocol.h>
 #import <UIKit/_UIFocusRegionContainer-Protocol.h>
 #import <UIKit/_UILegacyFocusRegion-Protocol.h>
 
-@class NSString, UICollectionView, UICollectionViewLayoutAttributes;
+@class NSArray, NSString, UICollectionView, UICollectionViewLayoutAttributes, UIView;
+@protocol UIFocusEnvironment;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewCellPromiseRegion : NSObject <_UIFocusPromiseRegionDelegate, _UILegacyFocusRegion, _UIFocusRegionContainer>
+@interface _UICollectionViewCellPromiseRegion : NSObject <_UILegacyFocusRegion, _UIFocusRegionContainer>
 {
     UICollectionView *_collectionView;
     UICollectionViewLayoutAttributes *_layoutAttributes;
@@ -22,26 +22,35 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UICollectionViewLayoutAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
+@property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
+@property (readonly, weak, nonatomic, getter=_parentFocusEnvironment) id<UIFocusEnvironment> parentFocusEnvironment;
+@property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
+@property (readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
+@property (readonly, weak, nonatomic) UIView *preferredFocusedView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_childFocusRegions;
-- (id)_childFocusRegionsInRect:(struct CGRect)arg1;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (id)_focusDebugOverlayParentView;
-- (BOOL)_focusRegionCanBecomeFocused;
+- (id)_focusRegionFocusSystem;
 - (struct CGRect)_focusRegionFrame;
 - (id)_focusRegionGuides;
-- (BOOL)_focusRegionIsEligibleForFocus;
-- (id)_focusRegionItem;
 - (id)_focusRegionView;
-- (id)_fulfillFocusPromiseRegion:(id)arg1;
 - (id)_fulfillPromisedFocusRegion;
 - (BOOL)_isPromiseFocusRegion;
 - (BOOL)_isTransparentFocusRegion;
+- (BOOL)_legacy_isEligibleForFocusInteraction;
+- (id)_preferredFocusRegionCoordinateSpace;
+- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
-- (BOOL)_shouldSearchForFocusRegionsInContext:(id)arg1;
+- (BOOL)canBecomeFocused;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (void)setNeedsFocusUpdate;
+- (BOOL)shouldUpdateFocusInContext:(id)arg1;
+- (void)updateFocusIfNeeded;
 
 @end
 

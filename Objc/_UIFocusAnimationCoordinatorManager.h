@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     NSHashTable *_unfocusingItems;
     double _lastFocusUpdateTime;
     UIFocusAnimationCoordinator *_lastFocusingItemAnimationCoordinator;
+    long long _inheritedAnimationCoordinatorActiveAnimation;
 }
 
 @property (strong, nonatomic) UIFocusAnimationCoordinator *activeFocusAnimationCoordinator; // @synthesize activeFocusAnimationCoordinator=_activeFocusAnimationCoordinator;
+@property (nonatomic) long long inheritedAnimationCoordinatorActiveAnimation; // @synthesize inheritedAnimationCoordinatorActiveAnimation=_inheritedAnimationCoordinatorActiveAnimation;
 @property (nonatomic) double lastFocusUpdateTime; // @synthesize lastFocusUpdateTime=_lastFocusUpdateTime;
 @property (strong, nonatomic) UIFocusAnimationCoordinator *lastFocusingItemAnimationCoordinator; // @synthesize lastFocusingItemAnimationCoordinator=_lastFocusingItemAnimationCoordinator;
 @property (readonly, nonatomic) NSHashTable *unfocusingItems; // @synthesize unfocusingItems=_unfocusingItems;

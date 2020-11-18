@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     SEL _implicitAnimationSelector;
     _UIViewAnimationAttributes *_animationAttributes;
+    BOOL _animationsEnabled;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,7 +25,7 @@ __attribute__((visibility("hidden")))
 
 + (id)proxyDecodingAnimationsForTarget:(id)arg1;
 - (void).cxx_destruct;
-- (void)__animateNextInvocationOfSelector:(id)arg1 withAnimationAttributes:(id)arg2;
+- (void)__animateNextInvocationOfSelector:(id)arg1 withAnimationAttributes:(id)arg2 animationsEnabled:(BOOL)arg3;
 - (void)forwardInvocation:(id)arg1;
 
 @end

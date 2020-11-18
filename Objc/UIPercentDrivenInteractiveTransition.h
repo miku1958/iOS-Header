@@ -16,6 +16,7 @@
     double _duration;
     BOOL _didCommitAnimations;
     id<UIViewImplicitlyAnimating> _interruptibleAnimator;
+    NSUUID *_animationTrackingAnimatorUUID;
     BOOL _wantsInteractiveStart;
     BOOL __transitionInterrupted;
     double _completionSpeed;
@@ -47,6 +48,7 @@
 - (void)_stopInteractiveTransition;
 - (void)_stopInteractiveTransition:(id)arg1;
 - (void)_updateInteractiveTransition:(id)arg1 percent:(double)arg2 isFinished:(BOOL)arg3 didComplete:(BOOL)arg4;
+- (BOOL)_useAnimatorTrackingToDriveTransition;
 - (void)cancelInteractiveTransition;
 - (void)finishInteractiveTransition;
 - (id)init;

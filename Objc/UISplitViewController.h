@@ -33,6 +33,7 @@
 @property (nonatomic) double preferredPrimaryColumnWidthFraction;
 @property (nonatomic) BOOL presentsWithGesture;
 @property (readonly, nonatomic) double primaryColumnWidth;
+@property (nonatomic) long long primaryEdge;
 @property (copy, nonatomic) UISlidingBarStateRequest *stateRequest;
 @property (strong, nonatomic) UIViewController *trailingViewController;
 @property (copy, nonatomic) NSArray *viewControllers;
@@ -50,6 +51,7 @@
 - (void)_descendantWillPresentViewController:(id)arg1 modalSourceViewController:(id)arg2 presentationController:(id)arg3 animated:(BOOL)arg4;
 - (void)_didChangeToFirstResponder:(id)arg1;
 - (void)_didEndSnapshotSession;
+- (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_disableAutomaticKeyboardBehavior;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (struct CGRect)_frameForChildContentContainer:(id)arg1;
@@ -58,6 +60,7 @@
 - (BOOL)_hasPreferredInterfaceOrientationForPresentation;
 - (BOOL)_isCollapsed;
 - (BOOL)_isRotating;
+- (void)_marginInfoForChild:(id)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 - (BOOL)_optsOutOfPopoverControllerHierarchyCheck;
 - (id)_panelImpl;
 - (void)_popoverController:(id)arg1 didChangeFromVisible:(BOOL)arg2;
@@ -68,6 +71,7 @@
 - (BOOL)_shouldSynthesizeSupportedOrientations;
 - (long long)_subclassPreferredFocusedViewPrioritizationType;
 - (id)_super_childViewControllersToSendViewWillTransitionToSize;
+- (void)_super_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_super_disableAutomaticKeyboardBehavior;
 - (id)_super_preferredFocusEnvironments;
 - (id)_super_preferredFocusedView;
@@ -78,8 +82,8 @@
 - (unsigned long long)_super_supportedInterfaceOrientations;
 - (void)_super_viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_super_willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
-- (void)_super_willUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)_updateChildContentMargins;
+- (void)_updateDisplayModeButtonItem;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
 - (BOOL)_usesPanelImpl;
 - (void)_willBeginSnapshotSession;
@@ -118,7 +122,6 @@
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
-- (void)willUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 
 @end
 

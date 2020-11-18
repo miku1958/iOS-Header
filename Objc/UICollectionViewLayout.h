@@ -46,11 +46,10 @@
     long long _sublayoutType;
 }
 
-@property (nonatomic, setter=_setWantsRightToLeftHorizontalMirroringIfNeeded:) BOOL _wantsRightToLeftHorizontalMirroringIfNeeded;
 @property (readonly, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (nonatomic, getter=_compositionLayout, setter=_setCompositionLayout:) _UICollectionViewCompositionLayout *compositionLayout;
 @property (copy, nonatomic, getter=_elementKinds, setter=_setElementKinds:) NSArray *elementKinds;
-@property (readonly, nonatomic, getter=_fastScrollingIndexBarInsets) struct UIEdgeInsets fastScrollingIndexBarInsets;
+@property (readonly, nonatomic, getter=_focusFastScrollingIndexBarInsets) struct UIEdgeInsets focusFastScrollingIndexBarInsets;
 @property (nonatomic, getter=_frame, setter=_setFrame:) struct CGRect frame;
 @property (copy, nonatomic, getter=_items, setter=_setItems:) NSIndexSet *items;
 @property (nonatomic, getter=_layoutOffset, setter=_setLayoutOffset:) struct CGPoint layoutOffset;
@@ -68,11 +67,13 @@
 - (struct CGRect)_bounds;
 - (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
 - (struct CGPoint)_contentOffsetForScrollingToSection:(long long)arg1;
+- (struct CGPoint)_contentOffsetFromProposedContentOffset:(struct CGPoint)arg1 forScrollingToItemAtIndexPath:(id)arg2 atScrollPosition:(unsigned long long)arg3;
 - (id)_decorationViewForLayoutAttributes:(id)arg1;
 - (void)_didFinishLayoutTransitionAnimations:(BOOL)arg1;
 - (id)_dynamicAnimator;
 - (struct CGRect)_dynamicReferenceBounds;
 - (BOOL)_estimatesSizes;
+- (struct CGSize)_fallbackItemSize;
 - (void)_finalizeCollectionViewItemAnimations;
 - (void)_finalizeLayoutTransition;
 - (id)_indexPathsToDeleteForDecorationViewOfKind:(id)arg1;
@@ -82,6 +83,8 @@
 - (void)_invalidateLayoutUsingContext:(id)arg1;
 - (id)_invalidationContextForEndingReorderingItemToFinalIndexPaths:(id)arg1 previousIndexPaths:(id)arg2 reorderingCancelled:(BOOL)arg3;
 - (id)_invalidationContextForReorderingTargetPosition:(struct CGPoint)arg1 targetIndexPaths:(id)arg2 withPreviousPosition:(struct CGPoint)arg3 previousIndexPaths:(id)arg4;
+- (id)_invalidationContextForUpdatedLayoutMargins:(struct UIEdgeInsets)arg1;
+- (id)_layoutAttributesForElementsInProjectedRect:(struct CGRect)arg1 withProjectionVector:(struct CGVector)arg2 projectionDistance:(double)arg3;
 - (id)_layoutAttributesForReorderedItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
 - (struct CGPoint)_offsetInTopParentLayout:(struct _UICollectionViewCompositionLayout **)arg1;
 - (struct UIEdgeInsets)_preferredLayoutMargins;
@@ -93,12 +96,15 @@
 - (void)_setCollectionViewBoundsSize:(struct CGSize)arg1;
 - (void)_setDynamicAnimator:(id)arg1;
 - (void)_setExternalObjectTable:(id)arg1 forNibLoadingOfDecorationViewOfKind:(id)arg2;
+- (void)_setWantsRightToLeftHorizontalMirroringIfNeeded:(BOOL)arg1;
 - (BOOL)_shouldScrollToContentBeginningInRightToLeft;
 - (BOOL)_supportsAdvancedTransitionAnimations;
+- (BOOL)_wantsRightToLeftHorizontalMirroringIfNeeded;
 - (BOOL)canBeEdited;
 - (struct CGSize)collectionViewContentSize;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromLayout:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toLayout:(id)arg2;
+- (long long)developmentLayoutDirection;
 - (void)encodeWithCoder:(id)arg1;
 - (id)finalLayoutAttributesForDisappearingDecorationElementOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
@@ -106,6 +112,7 @@
 - (void)finalizeAnimatedBoundsChange;
 - (void)finalizeCollectionViewUpdates;
 - (void)finalizeLayoutTransition;
+- (BOOL)flipsHorizontallyInOppositeLayoutDirection;
 - (id)indexPathsToDeleteForDecorationViewOfKind:(id)arg1;
 - (id)indexPathsToDeleteForSupplementaryViewOfKind:(id)arg1;
 - (id)indexPathsToInsertForDecorationViewOfKind:(id)arg1;

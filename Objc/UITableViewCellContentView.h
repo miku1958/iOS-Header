@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setTranslatesAutoresizingMaskIntoConstraints:(BOOL)arg1;
 
 @end
 

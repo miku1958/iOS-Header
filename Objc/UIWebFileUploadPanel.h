@@ -66,7 +66,6 @@ __attribute__((visibility("hidden")))
 - (void)_showDocumentPickerMenu;
 - (void)_showPhotoPickerWithSourceType:(long long)arg1;
 - (BOOL)_string:(id)arg1 hasPrefixCaseInsensitive:(id)arg2;
-- (void)_uploadItemForImage:(id)arg1 withAssetURL:(id)arg2 successBlock:(CDUnknownBlockType)arg3 failureBlock:(CDUnknownBlockType)arg4;
 - (void)_uploadItemForImageData:(id)arg1 imageName:(id)arg2 successBlock:(CDUnknownBlockType)arg3 failureBlock:(CDUnknownBlockType)arg4;
 - (void)_uploadItemForJPEGRepresentationOfImage:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)_uploadItemFromMediaInfo:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;

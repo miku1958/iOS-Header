@@ -14,10 +14,11 @@
 @interface UITouch : NSObject <_UIResponderForwardable>
 {
     double _movementMagnitudeSquared;
-    double _timestamp;
     long long _phase;
     unsigned long long _tapCount;
     long long _edgeType;
+    unsigned long long _edgeAim;
+    unsigned int _touchIdentifier;
     UIWindow *_window;
     UIView *_view;
     UIView *_warpedIntoView;
@@ -49,6 +50,7 @@
     BOOL _eaten;
     BOOL _needsForceUpdate;
     BOOL _hasForceUpdate;
+    double _timestamp;
     long long _forceCorrelationToken;
     double _maximumPossiblePressure;
     unsigned long long _senderID;
@@ -59,11 +61,13 @@
     UIWindow *__windowServerHitTestWindow;
     double _azimuthAngleInCADisplay;
     double _azimuthAngleInWindow;
+    double _initialTouchTimestamp;
     struct CGSize _displacement;
 }
 
 @property (nonatomic, setter=_setDisplacement:) struct CGSize _displacement; // @synthesize _displacement;
 @property (nonatomic, getter=_isEaten, setter=_setEaten:) BOOL _eaten; // @synthesize _eaten;
+@property (nonatomic, setter=_setEdgeAim:) unsigned long long _edgeAim; // @synthesize _edgeAim;
 @property (nonatomic, setter=_setEdgeType:) long long _edgeType; // @synthesize _edgeType;
 @property (nonatomic, setter=_setForceCorrelationToken:) long long _forceCorrelationToken; // @synthesize _forceCorrelationToken;
 @property (nonatomic, setter=_setForwardablePhase:) long long _forwardablePhase;
@@ -94,26 +98,20 @@
 @property (readonly, nonatomic) double force;
 @property (readonly, copy, nonatomic) NSArray *gestureRecognizers;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double initialTouchTimestamp; // @synthesize initialTouchTimestamp=_initialTouchTimestamp;
 @property (nonatomic) BOOL isTap;
-@property (nonatomic) double majorRadius;
-@property (readonly, nonatomic) double majorRadius; // @synthesize majorRadius=_pathMajorRadius;
-@property (nonatomic) double majorRadiusTolerance;
-@property (readonly, nonatomic) double majorRadiusTolerance; // @synthesize majorRadiusTolerance=_majorRadiusTolerance;
+@property (nonatomic) double majorRadius; // @synthesize majorRadius=_pathMajorRadius;
+@property (nonatomic) double majorRadiusTolerance; // @synthesize majorRadiusTolerance=_majorRadiusTolerance;
 @property (readonly, nonatomic) double maximumPossibleForce;
 @property (nonatomic) long long phase;
-@property (readonly, nonatomic) long long phase;
 @property (nonatomic) BOOL sentTouchesEnded;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long tapCount;
-@property (readonly, nonatomic) unsigned long long tapCount;
-@property (nonatomic) double timestamp;
-@property (readonly, nonatomic) double timestamp;
+@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic, setter=_setType:) long long type; // @synthesize type=_type;
 @property (strong, nonatomic) UIView *view;
-@property (readonly, nonatomic) UIView *view;
 @property (strong, nonatomic) UIView *warpedIntoView;
 @property (strong, nonatomic) UIWindow *window;
-@property (readonly, nonatomic) UIWindow *window;
 
 + (id)_createTouchesWithGSEvent:(struct __GSEvent *)arg1 phase:(long long)arg2 view:(id)arg3;
 - (void).cxx_destruct;
@@ -140,6 +138,7 @@
 - (id)_phaseDescription;
 - (struct CGPoint)_previousLocationInSceneReferenceSpace;
 - (struct CGPoint)_previousLocationInWindow:(id)arg1;
+- (id)_rehitTest;
 - (void)_removeGestureRecognizer:(id)arg1;
 - (SEL)_responderSelectorForPhase:(long long)arg1;
 - (void)_setIsFirstTouchForView:(BOOL)arg1;
@@ -147,9 +146,11 @@
 - (void)_setLocationInWindow:(struct CGPoint)arg1 resetPrevious:(BOOL)arg2;
 - (void)_setPressure:(double)arg1 resetPrevious:(BOOL)arg2;
 - (void)_setPreviousTouch:(id)arg1;
+- (void)_setTouchIdentifier:(unsigned int)arg1;
 - (BOOL)_shouldDeliverTouchForTouchesMoved;
 - (double)_standardForceAmount;
 - (BOOL)_supportsForce;
+- (unsigned int)_touchIdentifier;
 - (void)_updateMovementMagnitudeForLocation:(struct CGPoint)arg1;
 - (void)_updateMovementMagnitudeFromLocation:(struct CGPoint)arg1 toLocation:(struct CGPoint)arg2;
 - (void)_updateWithChildEvent:(struct __IOHIDEvent *)arg1;

@@ -9,7 +9,7 @@
 #import <UIKit/UIFocusedInterfaceActionPressDelegate-Protocol.h>
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSPointerArray, NSString, UIGestureRecognizer, UILongPressGestureRecognizer, UIScrollView, UIView, _UIFeedbackRetargetBehavior, _UIInterfaceActionSelectByPressGestureRecognizer;
+@class NSArray, NSMutableSet, NSPointerArray, NSString, UIGestureRecognizer, UILongPressGestureRecognizer, UIScrollView, UISelectionFeedbackGenerator, UIView, _UIInterfaceActionSelectByPressGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionSelectionTrackingController : NSObject <UIGestureRecognizerDelegate, UIFocusedInterfaceActionPressDelegate>
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     UIGestureRecognizer *_systemProvidedGestureRecognizer;
     NSMutableSet *_viewsRequiringSelectionGestureDisabling;
     _UIInterfaceActionSelectByPressGestureRecognizer *_selectByPressGestureRecognizer;
-    _UIFeedbackRetargetBehavior *_selectionRetargetFeedbackBehavior;
+    UISelectionFeedbackGenerator *_selectionRetargetFeedbackGenerator;
     NSPointerArray *_weakCooperatingSelectionTrackingControllers;
     id _scrollViewWillBeginDraggingNotificationToken;
     id _scrollViewDidEndDraggingNotificationToken;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIInterfaceActionSelectByPressGestureRecognizer *selectByPressGestureRecognizer; // @synthesize selectByPressGestureRecognizer=_selectByPressGestureRecognizer;
 @property (nonatomic) BOOL selectionFeedbackEnabled; // @synthesize selectionFeedbackEnabled=_selectionFeedbackEnabled;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *selectionGestureRecognizer; // @synthesize selectionGestureRecognizer=_selectionGestureRecognizer;
-@property (strong, nonatomic) _UIFeedbackRetargetBehavior *selectionRetargetFeedbackBehavior; // @synthesize selectionRetargetFeedbackBehavior=_selectionRetargetFeedbackBehavior;
+@property (strong, nonatomic) UISelectionFeedbackGenerator *selectionRetargetFeedbackGenerator; // @synthesize selectionRetargetFeedbackGenerator=_selectionRetargetFeedbackGenerator;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIGestureRecognizer *systemProvidedGestureRecognizer; // @synthesize systemProvidedGestureRecognizer=_systemProvidedGestureRecognizer;
 @property (weak, nonatomic) UIView *trackableContainerView; // @synthesize trackableContainerView=_trackableContainerView;

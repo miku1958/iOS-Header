@@ -11,10 +11,12 @@
 }
 
 + (BOOL)_isSystemWindow;
+- (id)__autorotationSanityCheckObjectFromSource:(id)arg1 selector:(SEL)arg2;
 - (void)_commonApplicationRotationFollowingWindowInit;
 - (void)_handleStatusBarOrientationChange:(id)arg1;
 - (id)_initWithFrame:(struct CGRect)arg1 attached:(BOOL)arg2;
 - (BOOL)_shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (BOOL)_shouldControlAutorotation;
 - (void)applicationWindowRotated:(id)arg1;
 - (void)dealloc;
 - (id)init;

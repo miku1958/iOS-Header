@@ -11,11 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (struct CGPoint)calculateCompositePointWithOrientation:(BOOL)arg1;
-- (struct CGPoint)calculateFinalCompositionPointForCompositePoint:(struct CGPoint)arg1;
-- (void)drawAutoscroller:(struct CGRect)arg1;
-- (id)filenamesForMagnifier;
-- (double)offsetForMagnifier:(id)arg1;
+- (id)visualsForMagnifier;
 
 @end
 

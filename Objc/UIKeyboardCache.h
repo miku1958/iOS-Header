@@ -6,27 +6,32 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSSet, TIImageCacheClient;
+@class NSMutableSet, NSSet, TIImageCacheClient, _UIActionWhenIdle;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCache : NSObject
 {
     TIImageCacheClient *_store;
     NSSet *_layouts;
-    int _renderCountForTesting;
+    NSMutableSet *_activeRenderers;
+    _UIActionWhenIdle *_idleAction;
 }
+
+@property (strong, nonatomic) _UIActionWhenIdle *idleAction; // @synthesize idleAction=_idleAction;
 
 + (BOOL)enabled;
 + (id)sharedInstance;
+- (void)_didIdle;
+- (void)_didIdleAndShouldWait;
 - (struct CGImage *)cachedCompositeImageForCacheKeys:(id)arg1 fromLayout:(id)arg2 opacities:(id)arg3;
 - (struct CGImage *)cachedImageForKey:(id)arg1 fromLayout:(id)arg2;
 - (void)clearNonPersistentCache;
 - (void)commitTransaction;
 - (void)dealloc;
-- (void)decrementExpectedRender;
+- (void)decrementExpectedRender:(id)arg1;
 - (id)displayImagesForView:(id)arg1 fromLayout:(id)arg2 imageFlags:(id)arg3;
 - (void)drawCachedImage:(id)arg1 alpha:(double)arg2 inContext:(struct CGContext *)arg3;
-- (void)incrementExpectedRender;
+- (void)incrementExpectedRender:(id)arg1;
 - (id)init;
 - (void)purge;
 - (id)uniqueLayoutsFromInputModes:(id)arg1;

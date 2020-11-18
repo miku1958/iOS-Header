@@ -10,12 +10,12 @@
 #import <UIKit/UIViewControllerAnimatedTransitioning-Protocol.h>
 #import <UIKit/UIViewControllerPresenting-Protocol.h>
 #import <UIKit/UIViewControllerTransitioningDelegate-Protocol.h>
-#import <UIKit/_UIScrollNotification-Protocol.h>
+#import <UIKit/_UIScrollViewScrollObserver_Internal-Protocol.h>
 
-@class NSString, UISearchBar, UISystemInputViewController, UITapGestureRecognizer, UIView, _UISearchControllerDidScrollDelegate;
+@class NSString, UISearchBar, UISystemInputViewController, UITapGestureRecognizer, UIView, _UINavigationControllerManagedSearchPalette, _UISearchControllerDidScrollDelegate;
 @protocol UISearchControllerDelegate, UISearchResultsUpdating, UIViewControllerAnimatedTransitioning;
 
-@interface UISearchController : UIViewController <UIViewControllerPresenting, _UIScrollNotification, NSCoding, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@interface UISearchController : UIViewController <UIViewControllerPresenting, _UIScrollViewScrollObserver_Internal, NSCoding, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 {
     UISearchBar *_searchBar;
     int _barPresentationStyle;
@@ -34,6 +34,7 @@
     BOOL _hidesNavigationBarDuringPresentation;
     BOOL __showResultsForEmptySearch;
     UIView *_resultsControllerViewContainer;
+    _UINavigationControllerManagedSearchPalette *_managedPalette;
     id<UISearchResultsUpdating> _searchResultsUpdater;
     id<UISearchControllerDelegate> _delegate;
     UIViewController *_searchResultsController;
@@ -42,6 +43,7 @@
 }
 
 @property (readonly, nonatomic) int _barPresentationStyle; // @synthesize _barPresentationStyle;
+@property (readonly, strong, nonatomic) _UINavigationControllerManagedSearchPalette *_managedPalette; // @synthesize _managedPalette;
 @property (nonatomic) long long _previousSearchBarPosition; // @synthesize _previousSearchBarPosition=__previousSearchBarPosition;
 @property (nonatomic) double _resultsContentScrollViewPresentationOffset; // @synthesize _resultsContentScrollViewPresentationOffset=__resultsContentScrollViewPresentationOffset;
 @property (strong, nonatomic) UIView *_resultsControllerViewContainer; // @synthesize _resultsControllerViewContainer;
@@ -64,17 +66,18 @@
 + (void)_resignSearchBarAsFirstResponder:(id)arg1;
 - (void).cxx_destruct;
 - (void)_adjustSearchBarSizeForOrientation:(long long)arg1;
+- (void)_adjustSearchBarSizeForOrientation:(long long)arg1 oldPaletteFrame:(struct CGRect)arg2;
 - (BOOL)_allowFormSheetStylePresentation;
 - (id)_animatorForBarPresentationStyle:(int)arg1 dismissing:(BOOL)arg2;
 - (void)_beginWatchingPresentingController;
 - (void)_commonInit;
 - (void)_connectSearchBar:(id)arg1;
+- (BOOL)_containedInNavigationPaletteAndNotHidden;
 - (id)_createAnimationCoordinator;
 - (void)_createSystemInputViewControllerIfNeededForTraitEnvironment:(id)arg1;
 - (id)_defaultAnimationController;
 - (void)_didDismissSearchController;
 - (void)_didPresentFromViewController:(id)arg1;
-- (void)_didScroll;
 - (BOOL)_disableAutomaticKeyboardUI;
 - (void)_dismissFromBackButton:(id)arg1;
 - (void)_dismissPresentation:(BOOL)arg1;
@@ -85,6 +88,7 @@
 - (void)_keyboardWillShow:(id)arg1;
 - (id)_locatePresentingViewController;
 - (void)_navigationControllerWillShowViewController:(id)arg1;
+- (void)_observeScrollViewDidScroll:(id)arg1;
 - (void)_performAutomaticPresentation;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)_presentingViewControllerDidChange:(id)arg1;
@@ -100,9 +104,10 @@
 - (void)_searchBarTextDidBeginEditing:(id)arg1;
 - (id)_searchPresentationController;
 - (void)_sizeSearchViewToPresentingViewController:(id)arg1;
+- (void)_startManagingPalette:(id)arg1;
+- (void)_stopManagingPalette;
 - (void)_uninstallBackGestureRecognizer;
 - (void)_uninstallDoneGestureRecognizer;
-- (void)_updateBackdropMaskViewsInScrollView:(id)arg1;
 - (void)_updateBarPresentationStyleForPresentingViewController:(id)arg1;
 - (void)_updateFocusFromDoneButton:(id)arg1;
 - (void)_updateSearchBarMaskIfNecessary;
@@ -115,6 +120,7 @@
 - (void)_watchScrollView:(id)arg1 forScrolling:(BOOL)arg2;
 - (void)_willDismissSearchController;
 - (void)_willPresentFromViewController:(id)arg1;
+- (void)_willUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)animateTransition:(id)arg1;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
@@ -132,7 +138,6 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)willUpdateFocusToView:(id)arg1;
 
 @end
 

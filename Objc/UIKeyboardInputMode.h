@@ -13,6 +13,7 @@
 @interface UIKeyboardInputMode : UITextInputMode <NSCopying>
 {
     BOOL isDisplayed;
+    BOOL _extensionInputModeHasDictation;
     NSString *primaryLanguage;
     NSString *languageWithRegion;
     NSString *identifier;
@@ -26,9 +27,12 @@
 @property (readonly, nonatomic) NSBundle *containingBundle;
 @property (readonly, nonatomic) NSString *containingBundleDisplayName;
 @property (readonly, nonatomic) BOOL defaultLayoutIsASCIICapable;
+@property (readonly, nonatomic) NSString *dictationDisplayName;
+@property (strong, nonatomic) NSString *dictationLanguage;
 @property (readonly, nonatomic) NSString *displayName;
 @property (readonly, nonatomic) NSString *extendedDisplayName;
 @property (readonly, nonatomic) NSExtension *extension;
+@property (nonatomic) BOOL extensionInputModeHasDictation; // @synthesize extensionInputModeHasDictation=_extensionInputModeHasDictation;
 @property (strong, nonatomic) NSString *hardwareLayout; // @synthesize hardwareLayout;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier;
 @property (readonly, nonatomic) NSString *identifierWithLayouts;
@@ -43,6 +47,7 @@
 @property (strong, nonatomic) NSString *primaryLanguage; // @synthesize primaryLanguage;
 @property (strong, nonatomic) NSString *softwareLayout; // @synthesize softwareLayout;
 
++ (id)autofillFallbackInputMode;
 + (id)canonicalLanguageIdentifierFromIdentifier:(id)arg1;
 + (id)dictationInputMode;
 + (id)hardwareLayoutFromIdentifier:(id)arg1;
@@ -58,6 +63,7 @@
 - (BOOL)isAllowedForTraits:(id)arg1;
 - (BOOL)isDesiredForTraits:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)setLastUsedDictationLanguage;
 
 @end
 

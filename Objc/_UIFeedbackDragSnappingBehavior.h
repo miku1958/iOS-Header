@@ -4,24 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFeedbackDragBehavior.h>
+#import <UIKit/_UIDragSnappingFeedbackGenerator.h>
 
-@class _UIFeedbackDragSnappingBehaviorConfiguration;
-
-@interface _UIFeedbackDragSnappingBehavior : _UIFeedbackDragBehavior
+@interface _UIFeedbackDragSnappingBehavior : _UIDragSnappingFeedbackGenerator
 {
 }
 
-@property (readonly, nonatomic, getter=_dragSnappingConfiguration) _UIFeedbackDragSnappingBehaviorConfiguration *dragSnappingConfiguration;
-
-+ (Class)_configurationClass;
-- (void)_startLanding;
-- (void)_stopLanding;
-- (void)draggedObjectLanded;
-- (void)draggedObjectLifted;
-- (void)objectSnapped;
-- (void)userInteractionEnded;
-- (void)userInteractionStarted;
++ (id)dragBehaviorWithCoordinateSpace:(id)arg1 configuration:(id)arg2;
++ (id)dragBehaviorWithStyle:(long long)arg1 coordinateSpace:(id)arg2;
++ (id)retargetBehaviorWithStyle:(long long)arg1 coordinateSpace:(id)arg2;
+- (void)snappedToFinalPosition;
+- (void)targetUpdated;
 
 @end
 

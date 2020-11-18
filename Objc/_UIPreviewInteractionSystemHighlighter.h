@@ -13,12 +13,14 @@
 __attribute__((visibility("hidden")))
 @interface _UIPreviewInteractionSystemHighlighter : NSObject <_UIPreviewInteractionHighlighting>
 {
+    BOOL _blinderViewEnabled;
     UIView *_initialSnapshotView;
     UIView *_updatedSnapshotView;
     UIView *_blinderView;
 }
 
 @property (strong, nonatomic) UIView *blinderView; // @synthesize blinderView=_blinderView;
+@property (nonatomic) BOOL blinderViewEnabled; // @synthesize blinderViewEnabled=_blinderViewEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -28,7 +30,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_newSnapshotViewForPreviewingContext:(id)arg1 afterScreenUpdates:(BOOL)arg2;
-- (void)dealloc;
 - (void)finalizeHighlightForPreviewingContext:(id)arg1;
 - (id)highlightShouldBeginInContainerView:(id)arg1 presentationContainerView:(id)arg2 previewingContext:(id)arg3;
 - (void)prepareHighlightWithPreviewingContext:(id)arg1;

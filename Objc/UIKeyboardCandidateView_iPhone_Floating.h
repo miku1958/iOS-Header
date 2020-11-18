@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)activeCandidateList;
 - (void)candidatesDidChange;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (void)setCandidateViewExtended:(BOOL)arg1;
 
 @end

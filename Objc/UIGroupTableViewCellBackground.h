@@ -11,66 +11,47 @@
 __attribute__((visibility("hidden")))
 @interface UIGroupTableViewCellBackground : UIView
 {
-    int _sectionLocation;
-    int _newSectionLocation;
-    long long _animationCount;
-    long long _selectionStyle;
-    long long _separatorStyle;
-    UIView *_topSeparatorView;
-    UIView *_bottomSeparatorView;
-    UIColor *_selectionTintColor;
-    double _sectionBorderWidth;
-    struct UIEdgeInsets _separatorInset;
     struct {
         unsigned int selected:1;
     } _groupBackgroundFlags;
-    long long _renderingMode;
+    int _sectionLocation;
+    long long _selectionStyle;
+    long long _separatorStyle;
+    UIColor *_selectionTintColor;
+    double _sectionBorderWidth;
 }
 
-@property (nonatomic, getter=_renderingMode, setter=_setRenderingMode:) long long renderingMode; // @synthesize renderingMode=_renderingMode;
 @property (nonatomic) double sectionBorderWidth; // @synthesize sectionBorderWidth=_sectionBorderWidth;
-@property (nonatomic) int sectionLocation;
+@property (nonatomic) int sectionLocation; // @synthesize sectionLocation=_sectionLocation;
 @property (nonatomic, getter=isSelected) BOOL selected;
-@property (nonatomic) long long selectionStyle;
-@property (strong, nonatomic) UIColor *selectionTintColor;
-@property (nonatomic) struct UIEdgeInsets separatorInset; // @synthesize separatorInset=_separatorInset;
-@property (nonatomic) long long separatorStyle;
+@property (nonatomic) long long selectionStyle; // @synthesize selectionStyle=_selectionStyle;
+@property (strong, nonatomic) UIColor *selectionTintColor; // @synthesize selectionTintColor=_selectionTintColor;
+@property (nonatomic) long long separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 
 + (void)_flushCacheOnNotification:(id)arg1;
++ (id)_roundedRectBezierPathInRect:(struct CGRect)arg1 withSectionLocation:(int)arg2 sectionCornerRadius:(double)arg3 cornerRadiusAdjustment:(double)arg4 sectionBorderWidth:(double)arg5 forBorder:(BOOL)arg6;
 + (void)initialize;
-- (id)_backgroundColor;
+- (void).cxx_destruct;
+- (struct UIEdgeInsets)_backgroundImageCapInsets;
+- (struct CGRect)_backgroundImageContentsCenter;
+- (struct CGRect)_backgroundImageContentsRect;
+- (struct CGSize)_backgroundImageSize;
 - (id)_bottomShadowColor;
-- (id)_cachedImageForKey:(id)arg1;
 - (id)_contentMaskLayer;
 - (struct CGRect)_contentRectForContentHeight:(double)arg1;
-- (struct CGRect)_contentsCenter:(BOOL)arg1;
-- (struct CGRect)_contentsRect:(BOOL)arg1;
-- (void)_decrementAnimationCount;
 - (id)_fillColor;
-- (void)_incrementAnimationCount;
 - (void)_layoutSubviews:(BOOL)arg1;
-- (struct UIEdgeInsets)_modernResizableBackgroundImageCapInsets;
-- (BOOL)_modernResizableBackgroundImageEnabled;
-- (struct CGSize)_modernResizableBackgroundImageSize;
-- (struct CGRect)_modernResizableContentsCenter;
-- (struct CGRect)_modernResizableContentsRect;
-- (double)_pixelDisplayedImageHeight;
-- (id)_roundedRectBezierPathInRect:(struct CGRect)arg1 withSectionLocation:(int)arg2 forBorder:(BOOL)arg3 cornerRadiusAdjustment:(double)arg4;
 - (id)_sectionBorderColor;
 - (double)_sectionCornerRadius;
 - (id)_separatorColor;
 - (void)_setSectionLocationAnimationDidStop;
 - (id)_topShadowColor;
 - (id)_topShadowViewWithColor:(id)arg1;
-- (void)_updateSeparatorViews;
-- (BOOL)_useModernResizableBackgroundImage;
-- (BOOL)_useResizableBackgroundImage;
+- (BOOL)_usesResizableBackgroundImage;
 - (id)backgroundColor;
-- (void)dealloc;
 - (void)displayLayer:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setBackgroundColor:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setSectionLocation:(int)arg1 animated:(BOOL)arg2;
 - (void)setSelectionTintColor:(id)arg1 layoutSubviews:(BOOL)arg2;

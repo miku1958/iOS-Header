@@ -47,6 +47,7 @@
 - (void)_UIAppearance_setTintColor:(id)arg1;
 - (void)_UIAppearance_setTitlePositionAdjustment:(struct UIOffset)arg1 forBarMetrics:(long long)arg2;
 - (void)_UIAppearance_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
+- (BOOL)_accessibilityShouldActivateOnHUDLift;
 - (void)_adjustPushButtonForMiniBar:(BOOL)arg1 isChangingBarHeight:(BOOL)arg2;
 - (void)_adjustToolbarButtonInfo;
 - (void)_adjustToolbarButtonInfoTintColorHasChanged:(BOOL)arg1;

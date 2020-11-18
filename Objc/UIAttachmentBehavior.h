@@ -31,10 +31,7 @@
     } _stateFlags;
     long long _attachedBehaviorType;
     double _frictionTorque;
-    struct {
-        double minimum;
-        double maximum;
-    } _attachmentRange;
+    CDStruct_ef18196a _attachmentRange;
 }
 
 @property (nonatomic) struct CGPoint anchorPoint;

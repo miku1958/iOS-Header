@@ -6,30 +6,39 @@
 
 #import <UIKit/UIVisualEffect.h>
 
-@class UIColor;
+@class UIColor, _UIBlurEffectImpl;
 
 @interface UIBlurEffect : UIVisualEffect
 {
-    long long _style;
-    UIColor *_tintColor;
-    BOOL _invertAutomaticStyle;
+    _UIBlurEffectImpl *_impl;
 }
 
+@property (readonly, nonatomic) BOOL _canProvideVibrancyEffect;
 @property (readonly, nonatomic) BOOL _invertAutomaticStyle;
 @property (readonly, nonatomic) long long _style;
+@property (readonly, nonatomic) UIColor *_tintColor;
 
++ (void)_addBlurToEffectNode:(id)arg1 blurRadius:(double)arg2 scale:(double)arg3 options:(id)arg4;
 + (id)_effectWithStyle:(long long)arg1 invertAutomaticStyle:(BOOL)arg2;
 + (id)_effectWithStyle:(long long)arg1 tintColor:(id)arg2 invertAutomaticStyle:(BOOL)arg3;
 + (id)_effectWithTintColor:(id)arg1;
++ (id)effectWithBlurRadius:(double)arg1;
 + (id)effectWithStyle:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (long long)_expectedUsage;
+- (id)_initWithImplementation:(id)arg1;
 - (BOOL)_isATVStyle;
 - (BOOL)_isAutomaticStyle;
+- (BOOL)_needsUpdateForOption:(id)arg1;
+- (BOOL)_needsUpdateForTransitionFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
+- (void)_updateEffectNode:(id)arg1 forTraitCollection:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)effectForUserInterfaceStyle:(long long)arg1;
 - (id)effectSettings;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

@@ -16,12 +16,16 @@ __attribute__((visibility("hidden")))
     _UIPreviewPresentationEffectView *_contentEffectView;
     _UIPreviewPresentationEffectView *_contentClipView;
     UIView *_contentTransformView;
+    UIView *_contentShadowView;
     struct CGSize _contentSize;
+    struct CGSize _contentClippingSize;
 }
 
 @property (nonatomic) double blurRadius; // @dynamic blurRadius;
 @property (strong, nonatomic) _UIPreviewPresentationEffectView *contentClipView; // @synthesize contentClipView=_contentClipView;
+@property (nonatomic) struct CGSize contentClippingSize; // @synthesize contentClippingSize=_contentClippingSize;
 @property (strong, nonatomic) _UIPreviewPresentationEffectView *contentEffectView; // @synthesize contentEffectView=_contentEffectView;
+@property (strong, nonatomic) UIView *contentShadowView; // @synthesize contentShadowView=_contentShadowView;
 @property (nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property (strong, nonatomic) UIView *contentTransformView; // @synthesize contentTransformView=_contentTransformView;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;

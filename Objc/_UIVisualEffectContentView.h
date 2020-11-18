@@ -9,16 +9,9 @@
 __attribute__((visibility("hidden")))
 @interface _UIVisualEffectContentView : _UIVisualEffectSubview
 {
-    BOOL _autosetSubviewLabelTintColor;
 }
 
-+ (id)_additionAnimationsKeys;
-- (void)_adjustColorForLabelsInView:(id)arg1 isInContentView:(BOOL)arg2;
-- (void)_descendent:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
-- (void)_setLayerConfig:(id)arg1;
-- (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)willMoveToWindow:(id)arg1;
 
 @end
 

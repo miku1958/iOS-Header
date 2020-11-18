@@ -12,10 +12,11 @@ __attribute__((visibility("hidden")))
 @interface _UIFeedbackPreferences : NSObject
 {
     NSMutableDictionary *_enabledFeedbackTypes;
-    NSDictionary *_defaultFeedbackTypes;
     NSUserDefaults *_userDefaults;
+    NSDictionary *_defaultFeedbackTypes;
 }
 
+@property (readonly, nonatomic) NSDictionary *defaultFeedbackTypes; // @synthesize defaultFeedbackTypes=_defaultFeedbackTypes;
 @property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 
 + (id)sharedPreferences;

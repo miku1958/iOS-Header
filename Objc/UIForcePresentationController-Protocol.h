@@ -6,14 +6,14 @@
 
 #import <UIKit/NSObject-Protocol.h>
 
-@class UIGestureRecognizer, UIView, _UIFeedbackStatesBehavior;
+@class UIGestureRecognizer, UIView, _UIStatesFeedbackGenerator;
 @protocol _UIForcePresentationControllerDelegate;
 
 @protocol UIForcePresentationController <NSObject>
 
 @property (readonly, nonatomic) UIView *_revealContainerView;
 @property (nonatomic) BOOL _sourceViewSnapshotAndScaleTransformSuppressed;
-@property (strong, nonatomic) _UIFeedbackStatesBehavior *feedbackBehavior;
+@property (strong, nonatomic) _UIStatesFeedbackGenerator *feedbackGenerator;
 @property (weak, nonatomic) id<_UIForcePresentationControllerDelegate> forcePresentationControllerDelegate;
 @property (strong, nonatomic) UIGestureRecognizer *panningGestureRecognizer;
 @property (copy, nonatomic) CDUnknownBlockType presentationPhaseCompletionBlock;

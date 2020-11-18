@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString, UICalloutBarBackground, UICalloutBarButton, UIResponder;
+@class NSArray, NSDictionary, NSMutableArray, NSString, UICalloutBarBackground, UICalloutBarButton, UIResponder, UIScrollView, UIStackView, UIWindow;
 
 @interface UICalloutBar : UIView
 {
@@ -25,6 +25,7 @@
     BOOL m_supressesHorizontalMovement;
     struct CGRect m_controlFrame;
     struct CGRect m_targetRect;
+    UIWindow *m_targetWindow;
     struct CGRect m_supressesHorizontalMovementFrame;
     double m_supressedHorizontalMovementX;
     int m_arrowDirection;
@@ -47,6 +48,10 @@
     BOOL m_showAllReplacements;
     BOOL m_ignoreFade;
     BOOL m_suppressesAppearance;
+    BOOL m_isDisplayingVertically;
+    UIScrollView *m_verticalScrollView;
+    UIStackView *m_verticalStackView;
+    NSMutableArray *m_axSeparatorViews;
 }
 
 @property (nonatomic) int arrowDirection; // @synthesize arrowDirection=m_arrowDirection;
@@ -54,6 +59,7 @@
 @property (strong, nonatomic) NSDictionary *currentAppearOrFadeContext; // @synthesize currentAppearOrFadeContext=m_currentAppearOrFadeContext;
 @property (weak, nonatomic) id delegate; // @synthesize delegate=m_delegate;
 @property (copy, nonatomic) NSArray *extraItems; // @synthesize extraItems=m_extraItems;
+@property (readonly, nonatomic) BOOL isDisplayingVertically; // @synthesize isDisplayingVertically=m_isDisplayingVertically;
 @property (nonatomic) struct CGPoint pointAboveControls; // @synthesize pointAboveControls=m_pointAboveControls;
 @property (nonatomic) struct CGPoint pointBelowControls; // @synthesize pointBelowControls=m_pointBelowControls;
 @property (nonatomic) struct CGPoint pointLeftOfControls; // @synthesize pointLeftOfControls=m_pointLeftOfControls;
@@ -68,7 +74,10 @@
 @property (nonatomic) BOOL targetHorizontal; // @synthesize targetHorizontal=m_targetHorizontal;
 @property (nonatomic) struct CGPoint targetPoint; // @synthesize targetPoint=m_targetPoint;
 @property (nonatomic) struct CGRect targetRect; // @synthesize targetRect=m_targetRect;
+@property (weak, nonatomic) UIWindow *targetWindow; // @synthesize targetWindow=m_targetWindow;
 @property (copy, nonatomic) NSString *untruncatedString; // @synthesize untruncatedString=m_untruncatedString;
+@property (readonly, nonatomic) UIScrollView *verticalScrollView; // @synthesize verticalScrollView=m_verticalScrollView;
+@property (readonly, nonatomic) UIStackView *verticalStackView; // @synthesize verticalStackView=m_verticalStackView;
 @property (readonly, nonatomic) BOOL visible;
 
 + (void)_releaseSharedInstance;
@@ -86,6 +95,7 @@
 - (BOOL)_touchesInsideShouldHideCalloutBar;
 - (BOOL)_updateVisibleItemsAnimated:(BOOL)arg1;
 - (void)addRectToEvade:(struct CGRect)arg1;
+- (void)addVerticalSeparatorAfterButton:(id)arg1;
 - (void)adjustFrameToAvoidDividerOnArrow;
 - (void)appear;
 - (void)appearAnimationDidStopWithContext:(id)arg1;
@@ -99,6 +109,7 @@
 - (void)clearReplacements;
 - (void)clearSupressesHorizontalMovementFrame;
 - (void)configureButtons:(double)arg1;
+- (void)configureButtonsForVerticalView:(double)arg1;
 - (void)dealloc;
 - (void)fade;
 - (void)fadeAnimationDidStopWithContext:(id)arg1 finished:(BOOL)arg2;
@@ -106,25 +117,28 @@
 - (void)hide;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (double)maxVerticalCalloutHeightForMinButtonHeight:(double)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)recentlyFaded;
 - (BOOL)rectClear:(struct CGRect)arg1;
 - (void)removeFromSuperview;
 - (void)resetPage;
 - (BOOL)setFrameForSize:(struct CGSize)arg1;
-- (void)setTargetRect:(struct CGRect)arg1 arrowDirection:(int)arg2;
-- (void)setTargetRect:(struct CGRect)arg1 pointBelowControls:(struct CGPoint)arg2 pointAboveControls:(struct CGPoint)arg3;
-- (void)setTargetRect:(struct CGRect)arg1 pointLeftOfControls:(struct CGPoint)arg2 pointRightOfControls:(struct CGPoint)arg3;
+- (void)setTargetRect:(struct CGRect)arg1 view:(id)arg2 arrowDirection:(int)arg3;
+- (void)setTargetRect:(struct CGRect)arg1 view:(id)arg2 pointBelowControls:(struct CGPoint)arg3 pointAboveControls:(struct CGPoint)arg4;
+- (void)setTargetRect:(struct CGRect)arg1 view:(id)arg2 pointLeftOfControls:(struct CGPoint)arg3 pointRightOfControls:(struct CGPoint)arg4;
 - (void)show;
 - (void)shrinkButtonTextSize:(id)arg1;
 - (double)supressHorizontalXMovementIfNeededForPoint:(struct CGPoint)arg1 proposedX:(double)arg2;
 - (id)targetForAction:(SEL)arg1;
 - (int)textEffectsVisibilityLevel;
-- (struct CGRect)textEffectsWindowBoundsWithoutStatusBar;
+- (struct CGRect)textEffectsWindowSafeArea;
 - (void)update;
 - (void)updateAnimated:(BOOL)arg1;
 - (void)updateAvailableButtons;
+- (void)updateForCurrentHorizontalPage;
 - (void)updateForCurrentPage;
+- (void)updateForCurrentVerticalPage;
 
 @end
 

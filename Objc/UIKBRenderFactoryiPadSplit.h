@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)dismissKeyOffset;
 - (id)globalEmojiKeyImageName;
 - (id)globalKeyImageName;
+- (struct CGPoint)internationalKeyOffset;
 - (double)keyCornerRadius;
 - (double)keyInsetBottom;
 - (id)multitapCompleteKeyImageName;
@@ -34,10 +35,9 @@ __attribute__((visibility("hidden")))
 - (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;
 - (double)skinnyKeyThreshold;
-- (BOOL)supportsGestureBehaviors;
 - (BOOL)supportsInputTraits:(id)arg1 forKeyplane:(id)arg2;
 - (double)symbolFrameInset;
-- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3;
+- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3 annotationIndex:(unsigned long long)arg4;
 
 @end
 

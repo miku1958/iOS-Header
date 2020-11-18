@@ -6,14 +6,19 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, UIFocusUpdateContext, _UIFocusAnimationConfiguration;
+@class NSMutableArray, UIFocusUpdateContext, _UIFocusAnimationConfiguration;
 
 @interface UIFocusAnimationCoordinator : NSObject
 {
     BOOL _locked;
-    NSMutableDictionary *_configurations;
-    NSMutableDictionary *_coordinatedAnimations;
-    NSMutableDictionary *_coordinatedCompletions;
+    _UIFocusAnimationConfiguration *_focusingConfiguration;
+    _UIFocusAnimationConfiguration *_unfocusingConfiguration;
+    NSMutableArray *_focusingAnimations;
+    NSMutableArray *_legacyFocusingAnimations;
+    NSMutableArray *_unfocusingAnimations;
+    NSMutableArray *_legacyUnfocusingAnimations;
+    NSMutableArray *_focusingCompletions;
+    NSMutableArray *_unfocusingCompletions;
     UIFocusUpdateContext *_focusUpdateContext;
     long long _activeFocusAnimation;
 }
@@ -23,13 +28,18 @@
 @property (readonly, nonatomic) long long activeFocusAnimation; // @synthesize activeFocusAnimation=_activeFocusAnimation;
 @property (readonly, nonatomic, getter=_animationDelay) double animationDelay;
 @property (readonly, nonatomic, getter=_animationOptions) unsigned long long animationOptions;
-@property (readonly, nonatomic, getter=_configurations) NSMutableDictionary *configurations; // @synthesize configurations=_configurations;
-@property (readonly, nonatomic, getter=_coordinatedAnimations) NSMutableDictionary *coordinatedAnimations; // @synthesize coordinatedAnimations=_coordinatedAnimations;
-@property (readonly, nonatomic, getter=_coordinatedCompletions) NSMutableDictionary *coordinatedCompletions; // @synthesize coordinatedCompletions=_coordinatedCompletions;
 @property (readonly, nonatomic, getter=_focusUpdateContext) UIFocusUpdateContext *focusUpdateContext; // @synthesize focusUpdateContext=_focusUpdateContext;
 @property (readonly, nonatomic, getter=_focusingAnimationDuration) double focusingAnimationDuration;
+@property (readonly, nonatomic) NSMutableArray *focusingAnimations; // @synthesize focusingAnimations=_focusingAnimations;
+@property (readonly, nonatomic) NSMutableArray *focusingCompletions; // @synthesize focusingCompletions=_focusingCompletions;
+@property (strong, nonatomic) _UIFocusAnimationConfiguration *focusingConfiguration; // @synthesize focusingConfiguration=_focusingConfiguration;
+@property (readonly, nonatomic) NSMutableArray *legacyFocusingAnimations; // @synthesize legacyFocusingAnimations=_legacyFocusingAnimations;
+@property (readonly, nonatomic) NSMutableArray *legacyUnfocusingAnimations; // @synthesize legacyUnfocusingAnimations=_legacyUnfocusingAnimations;
 @property (readonly, nonatomic, getter=_isLocked) BOOL locked; // @synthesize locked=_locked;
 @property (readonly, nonatomic, getter=_unfocusingAnimationDuration) double unfocusingAnimationDuration;
+@property (readonly, nonatomic) NSMutableArray *unfocusingAnimations; // @synthesize unfocusingAnimations=_unfocusingAnimations;
+@property (readonly, nonatomic) NSMutableArray *unfocusingCompletions; // @synthesize unfocusingCompletions=_unfocusingCompletions;
+@property (strong, nonatomic) _UIFocusAnimationConfiguration *unfocusingConfiguration; // @synthesize unfocusingConfiguration=_unfocusingConfiguration;
 @property (readonly, nonatomic, getter=_unfocusingRepositionAnimationDuration) double unfocusingRepositionAnimationDuration;
 
 + (id)_focusAnimationCoordinatorForAnimationType:(long long)arg1 withConfiguration:(id)arg2 inContext:(id)arg3;
@@ -38,17 +48,18 @@
 - (void).cxx_destruct;
 - (void)_animate;
 - (void)_animateFocusAnimation:(long long)arg1;
-- (void)_applyBlocks:(id)arg1 releaseBlocks:(CDUnknownBlockType)arg2;
 - (void)_cancelFocusAnimation:(long long)arg1;
 - (id)_configurationForFocusAnimation:(long long)arg1;
 - (void)_configureWithFocusUpdateContext:(id)arg1;
-- (id)_coordinatedAnimationsForFocusAnimation:(long long)arg1 createIfNeeded:(BOOL)arg2;
-- (id)_coordinatedCompletionsForFocusAnimation:(long long)arg1 createIfNeeded:(BOOL)arg2;
+- (void)_consumeBlocks:(id)arg1;
+- (void)_consumeBlocks:(id)arg1 withAnimationContext:(id)arg2;
 - (id)_initWithFocusUpdateContext:(id)arg1;
 - (void)_prepareForFocusAnimation:(long long)arg1;
 - (void)_setConfiguration:(id)arg1 forFocusAnimation:(long long)arg2;
 - (void)addCoordinatedAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addCoordinatedAnimationsForAnimation:(long long)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)addCoordinatedFocusingAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addCoordinatedUnfocusingAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 
 @end

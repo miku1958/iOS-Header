@@ -12,6 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (struct UIEdgeInsets)contentInsets;
+- (double)marginAboveTitleLabelFirstBaseline;
+- (double)marginBelowLastLabelLastBaseline;
+- (double)marginBelowMessageLabelLastBaseline;
 - (long long)maximumNumberOfLinesInMessageLabel;
 - (long long)maximumNumberOfLinesInTitleLabel;
 - (double)maximumWidth;

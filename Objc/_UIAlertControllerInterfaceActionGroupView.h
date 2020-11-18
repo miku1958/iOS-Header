@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_alertController;
+- (BOOL)_shouldInstallContentGuideConstraints;
 - (BOOL)_shouldShowSeparatorAboveActionsSequenceView;
 - (id)defaultVisualStyleForTraitCollection:(id)arg1 presentationStyle:(long long)arg2;
 - (id)initWithAlertController:(id)arg1 actionGroup:(id)arg2 actionHandlerInvocationDelegate:(id)arg3;

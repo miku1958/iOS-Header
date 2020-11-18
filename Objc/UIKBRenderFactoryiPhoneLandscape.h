@@ -41,8 +41,9 @@ __attribute__((visibility("hidden")))
 - (id)shiftOnKeyImageName;
 - (double)skinnyKeyThreshold;
 - (id)undoKeyImageName;
+- (struct CGPoint)variantAnnotationTextOffset;
 - (struct UIEdgeInsets)variantDisplayFrameInsets;
-- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3;
+- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3 annotationIndex:(unsigned long long)arg4;
 - (struct UIEdgeInsets)variantPaddedFrameInsets;
 - (struct UIEdgeInsets)variantSymbolFrameInsets;
 - (struct CGPoint)variantSymbolTextOffset;

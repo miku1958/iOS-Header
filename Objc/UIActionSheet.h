@@ -55,7 +55,6 @@
 - (void)_didPresent;
 - (void)_dismissForTappedIndex:(long long)arg1;
 - (id)_indexesOfSelectedButtons;
-- (BOOL)_isSBAlert;
 - (void)_performPresentationDismissalWithClickedButtonIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)_prepareAlertActions;
 - (BOOL)_prepareToDismissForTappedIndex:(long long)arg1;

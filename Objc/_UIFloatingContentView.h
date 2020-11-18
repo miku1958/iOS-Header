@@ -6,14 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, UIImage, _UIFloatingContentCornerRadiusAnimatingView, _UIFloatingContentTransformView, _UIFocusAnimationConfiguration;
+@class NSMutableArray, UIImage, _UIFloatingContentCornerRadiusAnimatingScreenScaleInheritingView, _UIFloatingContentCornerRadiusAnimatingView, _UIFloatingContentTransformView, _UIFocusAnimationConfiguration;
 @protocol _UIFloatingContentViewDelegate;
 
 @interface _UIFloatingContentView : UIView
 {
     id<_UIFloatingContentViewDelegate> _floatingContentViewDelegate;
     _UIFloatingContentTransformView *_transformView;
-    _UIFloatingContentCornerRadiusAnimatingView *_containerView;
+    _UIFloatingContentCornerRadiusAnimatingScreenScaleInheritingView *_containerView;
     _UIFloatingContentCornerRadiusAnimatingView *_highlightView;
     _UIFloatingContentCornerRadiusAnimatingView *_visualEffectContainerView;
     UIView *_shadowView;
@@ -128,6 +128,7 @@
 - (void)setShadowOpacity:(double)arg1 forUserInterfaceStyle:(long long)arg2;
 - (double)shadowOpacityForUserInterfaceStyle:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)transformView;
 
 @end
 

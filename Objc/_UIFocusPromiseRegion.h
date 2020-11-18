@@ -6,21 +6,22 @@
 
 #import <UIKit/_UIFocusRegion.h>
 
-@protocol _UIFocusPromiseRegionDelegate;
+@protocol _UIFocusRegionContainer;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusPromiseRegion : _UIFocusRegion
 {
-    id<_UIFocusPromiseRegionDelegate> _delegate;
+    id<_UIFocusRegionContainer> _contentFocusRegionContainer;
+    CDUnknownBlockType _contentFulfillmentHandler;
 }
 
-@property (weak, nonatomic) id<_UIFocusPromiseRegionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (copy, nonatomic) CDUnknownBlockType contentFulfillmentHandler; // @synthesize contentFulfillmentHandler=_contentFulfillmentHandler;
 
 - (void).cxx_destruct;
-- (id)_delegateFulfillFocusPromiseRegion;
-- (id)_destinationItemForFocusMovement:(id)arg1 inMap:(id)arg2;
 - (void)_drawDebugQuickLookImageWithInfo:(id)arg1 inContext:(struct CGContext *)arg2;
 - (unsigned long long)_focusableBoundaries;
+- (id)_loadContentFocusRegionContainer;
+- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
 - (BOOL)_shouldCropRegionToSearchArea;
 - (BOOL)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;
 - (id)_visualRepresentationColor;

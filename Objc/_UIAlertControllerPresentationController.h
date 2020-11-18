@@ -9,7 +9,7 @@
 #import <UIKit/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <UIKit/UIForcePresentationController-Protocol.h>
 
-@class NSString, UIGestureRecognizer, UIView, _UIFeedbackStatesBehavior, _UIKeyboardLayoutAlignmentView;
+@class NSLayoutConstraint, NSString, UIAlertVisualStyleUpdatableConstraints, UIGestureRecognizer, UIView, _UIKeyboardLayoutAlignmentView, _UIStatesFeedbackGenerator;
 @protocol _UIForcePresentationControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,9 @@ __attribute__((visibility("hidden")))
     UIView *_dimmingView;
     _UIKeyboardLayoutAlignmentView *keyboardLayoutAlignmentView;
     UIView *keyboardLayoutAlignmentAvailableSpaceView;
+    UIAlertVisualStyleUpdatableConstraints *_visualStyleUpdatableConstraints;
+    NSLayoutConstraint *_topAvailableSpaceConstraint;
+    NSLayoutConstraint *_bottomAvailableSpaceConstraint;
     BOOL constraintsPrepared;
     BOOL _sourceViewSnapshotAndScaleTransformSuppressed;
     BOOL _chromeHidden;
@@ -27,7 +30,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _presentationPhaseCompletionBlock;
     id<_UIForcePresentationControllerDelegate> _forcePresentationControllerDelegate;
     UIView *_revealContainerView;
-    _UIFeedbackStatesBehavior *_feedbackBehavior;
+    _UIStatesFeedbackGenerator *_feedbackGenerator;
 }
 
 @property (nonatomic, getter=_isChromeHidden, setter=_setChromeHidden:) BOOL _chromeHidden; // @synthesize _chromeHidden;
@@ -38,7 +41,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL _sourceViewSnapshotAndScaleTransformSuppressed; // @synthesize _sourceViewSnapshotAndScaleTransformSuppressed;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) _UIFeedbackStatesBehavior *feedbackBehavior; // @synthesize feedbackBehavior=_feedbackBehavior;
+@property (strong, nonatomic) _UIStatesFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (weak, nonatomic) id<_UIForcePresentationControllerDelegate> forcePresentationControllerDelegate; // @synthesize forcePresentationControllerDelegate=_forcePresentationControllerDelegate;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIGestureRecognizer *panningGestureRecognizer; // @synthesize panningGestureRecognizer=_panningGestureRecognizer;
@@ -57,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_preserveResponderAcrossWindows;
 - (BOOL)_shouldOccludeDuringPresentation;
 - (BOOL)_shouldRespectDefinesPresentationContext;
+- (void)_updateConstraintsIfNecessary;
 - (void)_willRunTransitionForCurrentStateDeferred:(BOOL)arg1;
 - (long long)adaptivePresentationStyle;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
@@ -69,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)setDelegate:(id)arg1;
 - (BOOL)shouldPresentInFullscreen;
 - (BOOL)shouldRemovePresentersView;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (double)_contentFitCanScrollThreshold;
-- (void)_setUsesStaticScrollBar:(BOOL)arg1;
+- (void)accessoryInsetsDidChange:(struct UIEdgeInsets)arg1;
 - (id)initWithContentView:(id)arg1;
 - (void)updateConstraints;
 

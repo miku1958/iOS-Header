@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     BOOL _deferShadowToSearchBar;
     long long defaultBarMetrics;
     long long activeBarMetrics;
-    UIImage *_condensedBackgroundImage;
     NSString *_backdropViewGroupName;
 }
 
@@ -36,7 +35,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *backdropViewGroupName; // @synthesize backdropViewGroupName=_backdropViewGroupName;
 @property (readonly, nonatomic) UIImage *backgroundImage;
 @property (readonly, nonatomic) _UIBarButtonItemAppearanceStorage *barButtonAppearanceStorage;
-@property (readonly, nonatomic) UIImage *condensedBackgroundImage; // @synthesize condensedBackgroundImage=_condensedBackgroundImage;
 @property (nonatomic) long long defaultBarMetrics; // @synthesize defaultBarMetrics;
 @property (nonatomic) BOOL deferShadowToSearchBar; // @synthesize deferShadowToSearchBar=_deferShadowToSearchBar;
 @property (nonatomic) BOOL hidesShadow; // @synthesize hidesShadow;

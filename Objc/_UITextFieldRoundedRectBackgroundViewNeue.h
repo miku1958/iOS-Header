@@ -11,6 +11,7 @@
 @interface _UITextFieldRoundedRectBackgroundViewNeue : UIImageView
 {
     BOOL _disabled;
+    BOOL _hasFlexibleCornerRadius;
     UIColor *_strokeColor;
     UIColor *_fillColor;
     double _lineWidth;
@@ -19,16 +20,20 @@
 
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (strong, nonatomic) UIColor *fillColor; // @synthesize fillColor=_fillColor;
+@property (nonatomic) BOOL hasFlexibleCornerRadius; // @synthesize hasFlexibleCornerRadius=_hasFlexibleCornerRadius;
 @property (nonatomic) double lineWidth; // @synthesize lineWidth=_lineWidth;
 @property (strong, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
 
 - (void).cxx_destruct;
+- (double)_cornerRadiusAdjustedForBoundsHeight;
 - (id)_fillColor:(BOOL)arg1;
 - (id)_initWithFrame:(struct CGRect)arg1 active:(BOOL)arg2 lineWidth:(double)arg3;
 - (id)_initWithFrame:(struct CGRect)arg1 active:(BOOL)arg2 lineWidth:(double)arg3 updateView:(BOOL)arg4;
+- (double)_screenScale;
 - (id)_strokeColor:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 active:(BOOL)arg2;
+- (void)layoutSubviews;
 - (void)setActive:(BOOL)arg1;
 - (void)setEnabled:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateView;

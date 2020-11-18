@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface _UIAlertControllerActionViewInterfaceAction : UIInterfaceAction <UIAlertActionMutablePropertyObservering>
 {
     UIAlertAction *_underlyingAlertAction;
+    BOOL _valid;
 }
 
 @property (readonly, nonatomic) _UIAlertControllerActionView *alertControllerActionView; // @dynamic alertControllerActionView;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIAlertAction *underlyingAlertAction; // @synthesize underlyingAlertAction=_underlyingAlertAction;
+@property (readonly, nonatomic) BOOL valid; // @synthesize valid=_valid;
 
 + (id)actionWithAlertControllerActionView:(id)arg1;
 - (void).cxx_destruct;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (long long)_typeForDeterminingViewRepresentation;
 - (id)classificationTitle;
 - (void)dealloc;
+- (void)invalidate;
 - (id)leadingImage;
 - (long long)type;
 

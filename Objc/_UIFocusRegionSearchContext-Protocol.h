@@ -6,11 +6,13 @@
 
 #import <UIKit/NSObject-Protocol.h>
 
-@class NSArray, UIScreen, _UIFocusRegion;
-@protocol _UIFocusMapArea, _UIFocusRegionContainer;
+@class NSArray, UIFocusSystem, UIScreen, _UIFocusRegion;
+@protocol UICoordinateSpace, _UIFocusMapArea, _UIFocusRegionContainer;
 
 @protocol _UIFocusRegionSearchContext <NSObject>
 
+@property (readonly, nonatomic) id<UICoordinateSpace> coordinateSpace;
+@property (readonly, weak, nonatomic) UIFocusSystem *focusSystem;
 @property (readonly, weak, nonatomic) UIScreen *screen;
 @property (readonly, nonatomic) id<_UIFocusMapArea> searchArea;
 

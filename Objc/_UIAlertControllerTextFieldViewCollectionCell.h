@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_selectButton:(id)arg1;
-- (void)focusedViewDidChange;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)preferredFocusedView;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;

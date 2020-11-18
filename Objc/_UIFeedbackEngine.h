@@ -61,11 +61,11 @@
 - (void)_removeViewControllerWillDisconnect:(id)arg1;
 - (void)_serviceBlocksForState:(long long)arg1 withSuccess:(BOOL)arg2;
 - (void)_setupBackgroundTask;
-- (void)_startPreparingToUseFeedbacks:(id)arg1;
+- (void)_startWarmingFeedbacks:(id)arg1;
 - (id)_statsSuffix;
 - (void)_stats_outOfChannels;
 - (void)_stats_stateDidChangeFrom:(long long)arg1 to:(long long)arg2;
-- (void)_stopPreparingToUseFeedbacks:(id)arg1;
+- (void)_stopWarmingFeedbacks:(id)arg1;
 - (void)_suspendEngineNow;
 - (void)_teardownBackgroundTask;
 - (BOOL)_teardownUnderlyingPlayerIfPossible;

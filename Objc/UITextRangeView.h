@@ -74,8 +74,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGPoint touchOffset; // @synthesize touchOffset=m_touchOffset;
 
 - (void).cxx_destruct;
+- (struct CGRect)_endEdgeHitRect;
 - (BOOL)_endIsHorizontal;
 - (struct CGRect)_selectionClipRect;
+- (struct CGRect)_startEdgeHitRect;
 - (BOOL)_startIsHorizontal;
 - (struct CGPoint)applyTouchOffset:(struct CGPoint)arg1;
 - (void)beginMagnifying;

@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldEnableWeekMonthDayForRow:(long long)arg1;
 - (void)_shouldReset:(id)arg1;
 - (void)_takeBaseDateComponentsFromDate:(id)arg1;
-- (void)_updateSelectedDateComponentsWithNewValueInComponent:(long long)arg1 usingSelectionBarValue:(BOOL)arg2;
 - (id)baseDateComponents;
 - (double)componentWidthForDateTimeCalendarUnit:(unsigned long long)arg1 font:(id)arg2 maxWidth:(double)arg3;
 - (id)dateForRow:(long long)arg1 inCalendarUnit:(unsigned long long)arg2;

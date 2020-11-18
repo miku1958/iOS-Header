@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     double _textOpacity;
     NSString *_textColor;
     NSString *_etchColor;
+    long long _alignment;
     double _pathWeight;
     double _fontWeight;
     long long _selector;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint _etchOffset;
 }
 
+@property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property (nonatomic) int anchorCorner; // @synthesize anchorCorner=_anchorCorner;
 @property (strong, nonatomic) NSString *etchColor; // @synthesize etchColor=_etchColor;
 @property (nonatomic) struct CGPoint etchOffset; // @synthesize etchOffset=_etchOffset;

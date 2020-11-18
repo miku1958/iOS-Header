@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)_configurationHistoryClass;
 - (void).cxx_destruct;
+- (BOOL)_allItemsHidden;
 - (long long)_axisForSpanningLayoutGuide;
 - (BOOL)_canvasConnectionConstraintsNeedUpdatePass;
 - (long long)_centerAttributeForCanvasConnections;
@@ -75,10 +76,15 @@ __attribute__((visibility("hidden")))
 - (void)_registerAnimationRequest;
 - (void)_removeSpanningLayoutGuide;
 - (void)_respondToChangesWithIncomingItem:(id)arg1 outgoingItem:(id)arg2 newlyHiddenItem:(id)arg3 newlyUnhiddenItem:(id)arg4;
+- (void)_setAxis:(long long)arg1 notify:(BOOL)arg2;
+- (void)_setLayoutFillsCanvas:(BOOL)arg1 notify:(BOOL)arg2;
+- (void)_setLayoutUsesCanvasMarginsWhenFilling:(BOOL)arg1 notify:(BOOL)arg2;
 - (BOOL)_spanningGuideConstraintsNeedUpdate;
+- (BOOL)_spanningLayoutGuideAlwaysUsesFittingConstraint;
 - (id)_spanningLayoutGuideCreateIfNecessary;
+- (float)_spanningLayoutGuideFittingPriority;
 - (void)_systemLayoutFittingSizeDidChangeForItem:(id)arg1;
-- (void)_trackChangesWithValue:(id)arg1 forKey:(id)arg2;
+- (void)_trackChangesWithConfigBlock:(CDUnknownBlockType)arg1;
 - (void)_updateArrangementConstraints;
 - (void)_updateCanvasConnectionConstraintsIfNecessary;
 - (void)_updateConfigurationHistory;

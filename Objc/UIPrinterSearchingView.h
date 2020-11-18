@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)searchTimeout;
 - (void)setSearching:(BOOL)arg1;
 - (void)updateConstraints;
+- (void)updateFont;
 
 @end
 

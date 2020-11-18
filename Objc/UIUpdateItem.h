@@ -6,22 +6,24 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSIndexPath, UITableViewUpdateGap;
+@class NSIndexPath, UICollectionViewUpdateItem, UITableViewUpdateGap;
 
 __attribute__((visibility("hidden")))
 @interface UIUpdateItem : NSObject
 {
+    UICollectionViewUpdateItem *_collectionViewUpdateItem;
+    BOOL _headerFooterOnly;
+    BOOL _skipAnimation;
     int _action;
     NSIndexPath *_indexPath;
     long long _animation;
     double _offset;
-    BOOL _headerFooterOnly;
-    BOOL _skipAnimation;
     UITableViewUpdateGap *_gap;
 }
 
 @property (readonly, nonatomic) int action; // @synthesize action=_action;
 @property (nonatomic) long long animation; // @synthesize animation=_animation;
+@property (readonly, nonatomic) UICollectionViewUpdateItem *collectionViewUpdateItem;
 @property (weak, nonatomic) UITableViewUpdateGap *gap; // @synthesize gap=_gap;
 @property (nonatomic) BOOL headerFooterOnly; // @synthesize headerFooterOnly=_headerFooterOnly;
 @property (readonly, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;

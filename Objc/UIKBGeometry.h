@@ -49,6 +49,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (struct CGRect)frame;
 - (struct CGRect)frameWithContainingFrame:(struct CGRect)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initTemplateWithName:(id)arg1 rect:(CDStruct_bd7e7c01)arg2 padding:(CDStruct_bd7e7c01)arg3;
 - (id)initWithCoder:(id)arg1;

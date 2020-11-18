@@ -8,7 +8,7 @@
 
 #import <UIKit/_UIOLAPropertySource-Protocol.h>
 
-@class NSSet, NSString;
+@class NSMapTable, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _UIOLAConfigurationHistory : _UILAConfigurationHistory <_UIOLAPropertySource>
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _inOrderedArrangementUpdateSection;
     double _spacing;
     long long _distribution;
+    NSMapTable *_customSpacings;
     double _proportionalFillDenominator;
 }
 
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSSet *_newlyUnhiddenItems;
 @property (nonatomic) long long axis;
 @property (nonatomic, getter=isBaselineRelativeArrangement) BOOL baselineRelativeArrangement; // @synthesize baselineRelativeArrangement=_baselineRelativeArrangement;
+@property (readonly, nonatomic) NSMapTable *customSpacings; // @synthesize customSpacings=_customSpacings;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long distribution; // @synthesize distribution=_distribution;
@@ -41,7 +43,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double spacing; // @synthesize spacing=_spacing;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (double)customSpacingAfterItem:(id)arg1;
+- (void)setCustomSpacing:(double)arg1 afterItem:(id)arg2;
 
 @end
 

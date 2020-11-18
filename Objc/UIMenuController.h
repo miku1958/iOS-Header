@@ -8,11 +8,12 @@
 
 #import <UIKit/UICalloutBarDelegate-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UIView;
 
 @interface UIMenuController : NSObject <UICalloutBarDelegate>
 {
     struct CGRect _targetRect;
+    UIView *_targetView;
     long long _arrowDirection;
 }
 
@@ -26,6 +27,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedMenuController;
+- (void).cxx_destruct;
 - (BOOL)_menuHidden;
 - (void)_setTargetRect:(struct CGRect)arg1 inView:(id)arg2 animated:(BOOL)arg3;
 - (BOOL)_updateAnimated:(BOOL)arg1 checkVisible:(BOOL)arg2;

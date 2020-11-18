@@ -12,15 +12,15 @@
 
 @interface _UIDocumentPickerNSURLWrapper : NSObject <NSSecureCoding>
 {
-    BOOL _createSandbox;
     NSURL *_url;
+    NSURL *_promiseURL;
     NSData *_scope;
     NSData *_promiseScope;
 }
 
-@property (nonatomic) BOOL createSandbox; // @synthesize createSandbox=_createSandbox;
-@property (copy, nonatomic) NSData *promiseScope; // @synthesize promiseScope=_promiseScope;
-@property (copy, nonatomic) NSData *scope; // @synthesize scope=_scope;
+@property (strong) NSData *promiseScope; // @synthesize promiseScope=_promiseScope;
+@property (strong) NSURL *promiseURL; // @synthesize promiseURL=_promiseURL;
+@property (strong) NSData *scope; // @synthesize scope=_scope;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
 
 + (void)assembleURL:(id)arg1 sandbox:(id)arg2 physicalURL:(id)arg3 physicalSandbox:(id)arg4;

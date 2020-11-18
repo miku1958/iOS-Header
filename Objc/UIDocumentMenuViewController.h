@@ -9,7 +9,7 @@
 #import <UIKit/UIActionSheetPresentationControllerDelegate-Protocol.h>
 #import <UIKit/_UIDocumentPickerRemoteViewControllerContaining-Protocol.h>
 
-@class NSMutableArray, NSString, NSURL, _UIDocumentPickerRemoteViewController, _UIResilientRemoteViewContainerViewController;
+@class NSArray, NSMutableArray, NSString, NSURL, _UIDocumentPickerRemoteViewController, _UIResilientRemoteViewContainerViewController;
 @protocol UIDocumentMenuDelegate;
 
 @interface UIDocumentMenuViewController : UIViewController <_UIDocumentPickerRemoteViewControllerContaining, UIActionSheetPresentationControllerDelegate>
@@ -23,9 +23,11 @@
     _UIResilientRemoteViewContainerViewController *_childViewController;
     unsigned long long _documentPickerMode;
     NSURL *_uploadURL;
+    NSArray *_allowedUTIs;
 }
 
 @property (nonatomic, getter=_ignoreApplicationEntitlementForImport, setter=_setIgnoreApplicationEntitlementForImport:) BOOL _ignoreApplicationEntitlementForImport; // @synthesize _ignoreApplicationEntitlementForImport;
+@property (copy, nonatomic) NSArray *allowedUTIs; // @synthesize allowedUTIs=_allowedUTIs;
 @property (strong, nonatomic) NSMutableArray *auxiliaryOptions; // @synthesize auxiliaryOptions=_auxiliaryOptions;
 @property (strong, nonatomic, getter=_childViewController, setter=_setChildViewController:) _UIResilientRemoteViewContainerViewController *childViewController; // @synthesize childViewController=_childViewController;
 @property (readonly, copy) NSString *debugDescription;

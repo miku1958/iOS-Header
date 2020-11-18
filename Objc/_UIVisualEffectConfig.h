@@ -21,6 +21,7 @@
 + (id)configWithLayerConfigs:(id)arg1;
 - (void).cxx_destruct;
 - (void)addLayerConfig:(id)arg1;
+- (id)description;
 - (void)enumerateLayerConfigs:(CDUnknownBlockType)arg1;
 
 @end

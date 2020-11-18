@@ -35,6 +35,7 @@
 @property (readonly, nonatomic, getter=_requiresPredictionDisabled) BOOL requiresPredictionDisabled;
 @property (copy, nonatomic) NSArray *trailingBarButtonGroups; // @synthesize trailingBarButtonGroups=_trailingBarButtonGroups;
 
++ (id)_keyboardDeleteItem;
 - (void)dealloc;
 - (id)description;
 - (id)init;

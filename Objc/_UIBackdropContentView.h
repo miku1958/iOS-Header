@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIBackdropContentView : UIView
 {
+    BOOL _isForcingLayout;
 }
 
 - (void)_descendent:(id)arg1 didMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;

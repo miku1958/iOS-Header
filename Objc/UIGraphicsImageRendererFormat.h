@@ -27,6 +27,8 @@
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
 + (id)defaultFormat;
++ (id)formatForTraitCollection:(id)arg1;
++ (id)preferredFormat;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;

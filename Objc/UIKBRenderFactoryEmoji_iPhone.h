@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 - (double)emojiInternationalKeySize;
 - (struct CGPoint)emojiPopupTextOffset;
 - (BOOL)shouldClearBaseDisplayStringForVariants:(id)arg1;
-- (id)traitsHashStringForKey:(id)arg1 withGeometry:(id)arg2 withSymbolStyle:(id)arg3 controlOpacities:(BOOL)arg4;
+- (id)traitsHashStringForKey:(id)arg1 withGeometry:(id)arg2 withSymbolStyle:(id)arg3 controlOpacities:(BOOL)arg4 blurBlending:(BOOL)arg5;
 
 @end
 

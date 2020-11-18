@@ -15,6 +15,7 @@
     long long _autoDeactivationCount[3];
     NSObject<OS_dispatch_source> *_autoDeactivateTimer;
     NSMutableDictionary *_preparationTimers;
+    CDUnknownBlockType _feedbackWarmingBlock;
     double _currentDelay;
     NSSet *_usedFeedbacks;
     BOOL _hasMutableFeedbackKeyPaths;
@@ -39,6 +40,7 @@
 @property (nonatomic, getter=_isMuted, setter=_setMuted:) BOOL muted;
 
 + (Class)_configurationClass;
++ (id)_defaultCoordinateSpace;
 + (void)_resetAutoDeactivateTimeout;
 + (void)_resetPreparationTimeouts;
 + (void)_setAutoDeactivateTimeout:(double)arg1;
@@ -47,7 +49,7 @@
 + (id)behaviorWithConfiguration:(id)arg1 coordinateSpace:(id)arg2;
 + (id)behaviorWithCoordinateSpace:(id)arg1;
 - (void).cxx_destruct;
-- (void)__activateWithStyle:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)__activateWithStyle:(long long)arg1 forFeedback:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)__deactivateWithStyle:(long long)arg1;
 - (void)_activateWithStyle:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_activated;
@@ -66,19 +68,22 @@
 - (id)_preparationCountStatistics;
 - (double)_preparationTimeoutForStyle:(long long)arg1;
 - (id)_preparationTimerForStyle:(long long)arg1;
-- (void)_prepare;
 - (void)_prepareWithStyle:(long long)arg1;
 - (void)_resetAutoDeactivationTimeout;
+- (void)_scheduleFeedbackWarming;
 - (void)_setOutputMode:(long long)arg1;
 - (void)_setPreparationTimer:(id)arg1 forStyle:(long long)arg2;
 - (void)_setupAutoDeactivateTimer;
-- (void)_setupEnginesIfNeeded;
+- (void)_setupEnginesIfNeededForFeedback:(id)arg1;
+- (void)_setupForFeedback:(id)arg1;
+- (void)_startFeedbackWarming;
 - (id)_statsSuffix;
 - (void)_stats_activationDidChangeTo:(BOOL)arg1;
 - (void)_stats_activationTimedOut;
 - (void)_stats_playedFeedback;
 - (void)_stats_prepared;
 - (void)_stopAutoDeactivateTimer;
+- (void)_stopFeedbackWarming;
 - (void)_stopPreparationForAllStyles;
 - (void)_stopPreparationForStyle:(long long)arg1;
 - (void)_updatePreparationTimer:(id)arg1 withTimeout:(double)arg2;
@@ -89,10 +94,10 @@
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 coordinateSpace:(id)arg2;
+- (id)initWithCoordinateSpace:(id)arg1;
 - (BOOL)isActive;
 - (void)performFeedbackWithDelay:(double)arg1 insideBlock:(CDUnknownBlockType)arg2;
 - (void)prepare;
-- (void)prepareForFeedback;
 
 @end
 

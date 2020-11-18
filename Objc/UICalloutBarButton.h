@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 + (id)buttonWithTitle:(id)arg1 subtitle:(id)arg2 maxWidth:(double)arg3 action:(SEL)arg4 type:(int)arg5 inView:(id)arg6;
 - (void).cxx_destruct;
 - (void)_commonSetupWithAction:(SEL)arg1 type:(int)arg2;
+- (double)_scaleFactorForImage;
 - (struct CGRect)adjustRectForPosition:(struct CGRect)arg1 scaleRect:(BOOL)arg2;
 - (void)cancelFlash;
 - (void)configureForLeftPosition:(int)arg1;

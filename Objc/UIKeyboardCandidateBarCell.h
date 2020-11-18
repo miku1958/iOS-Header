@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKBCacheableView-Protocol.h>
 
-@class NSString, UIKBThemedView, UILabel;
+@class NSString, UIKBThemedView, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateBarCell : UICollectionViewCell <UIKBCacheableView>
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     UIKBThemedView *_themedView;
     UILabel *_label;
     UILabel *_annotationLabel;
+    UIView *_centeredBackgroundView;
     NSString *_candidateText;
     NSString *_annotationText;
 }
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *cacheKey;
 @property (readonly, nonatomic) double cachedWidth;
 @property (copy, nonatomic) NSString *candidateText; // @synthesize candidateText=_candidateText;
+@property (strong, nonatomic) UIView *centeredBackgroundView; // @synthesize centeredBackgroundView=_centeredBackgroundView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL endsLastPage; // @synthesize endsLastPage=_endsLastPage;
@@ -50,11 +52,12 @@ __attribute__((visibility("hidden")))
 + (id)reuseIdentifier;
 + (id)textColorWithHighlight:(BOOL)arg1 whiteText:(BOOL)arg2;
 + (double)widthForCandidate:(id)arg1;
+- (void).cxx_destruct;
 - (void)_setRenderConfig:(id)arg1;
 - (void)applyLayoutAttributes:(id)arg1;
 - (id)cacheKeysForRenderFlags:(id)arg1;
-- (void)dealloc;
 - (void)didMoveToWindow;
+- (void)dimKeys:(id)arg1;
 - (void)displayLayer:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

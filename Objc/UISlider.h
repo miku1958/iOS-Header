@@ -8,7 +8,7 @@
 
 #import <UIKit/NSCoding-Protocol.h>
 
-@class NSArray, UIColor, UIImage, UIImageView, UIView, _UIFeedbackEdgeBehavior, _UIFeedbackModulationBehavior;
+@class NSArray, UIColor, UIImage, UIImageView, UIView, _UIEdgeFeedbackGenerator, _UIModulationFeedbackGenerator;
 
 @interface UISlider : UIControl <NSCoding>
 {
@@ -43,9 +43,8 @@
     BOOL _trackIsArtworkBased;
     BOOL _thumbIsArtworkBased;
     BOOL _maxColorIsValid;
-    BOOL _animatingWithDynamics;
-    _UIFeedbackEdgeBehavior *_edgeFeedbackBehavior;
-    _UIFeedbackModulationBehavior *_modulationFeedbackBehavior;
+    _UIEdgeFeedbackGenerator *_edgeFeedbackGenerator;
+    _UIModulationFeedbackGenerator *_modulationFeedbackGenerator;
     UIImageView *_innerThumbView;
 }
 
@@ -53,14 +52,15 @@
 @property (readonly, nonatomic) UIImage *currentMaximumTrackImage;
 @property (readonly, nonatomic) UIImage *currentMinimumTrackImage;
 @property (readonly, nonatomic) UIImage *currentThumbImage;
-@property (strong, nonatomic, getter=_edgeFeedbackBehavior, setter=_setEdgeFeedbackBehavior:) _UIFeedbackEdgeBehavior *edgeFeedbackBehavior;
+@property (strong, nonatomic, getter=_edgeFeedbackBehavior, setter=_setEdgeFeedbackBehavior:) _UIEdgeFeedbackGenerator *edgeFeedbackBehavior;
+@property (strong, nonatomic, getter=_edgeFeedbackGenerator, setter=_setEdgeFeedbackGenerator:) _UIEdgeFeedbackGenerator *edgeFeedbackGenerator;
 @property (strong, nonatomic) UIColor *maximumTrackTintColor; // @synthesize maximumTrackTintColor=_maxTintColor;
 @property (nonatomic) float maximumValue; // @dynamic maximumValue;
 @property (strong, nonatomic) UIImage *maximumValueImage;
 @property (strong, nonatomic) UIColor *minimumTrackTintColor; // @synthesize minimumTrackTintColor=_minTintColor;
 @property (nonatomic) float minimumValue; // @dynamic minimumValue;
 @property (strong, nonatomic) UIImage *minimumValueImage;
-@property (strong, nonatomic, getter=_modulationFeedbackBehavior, setter=_setModulationFeedbackBehavior:) _UIFeedbackModulationBehavior *modulationFeedbackBehavior;
+@property (strong, nonatomic, getter=_modulationFeedbackGenerator, setter=_setModulationFeedbackGenerator:) _UIModulationFeedbackGenerator *modulationFeedbackGenerator;
 @property (strong, nonatomic) UIColor *thumbTintColor; // @synthesize thumbTintColor=_thumbTintColor;
 @property (nonatomic) float value; // @dynamic value;
 

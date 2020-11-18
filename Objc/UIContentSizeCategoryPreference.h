@@ -15,8 +15,9 @@
 
 @property (strong, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 
-+ (void)_forceSystemPreferenceToContentSizeCategory:(id)arg1;
-+ (void)_resetSystemPreference;
++ (void)_overrideSystemPreferenceToContentSizeCategory:(id)arg1;
++ (void)_overrideSystemPreferenceToContentSizeCategory:(id)arg1 forBlock:(CDUnknownBlockType)arg2;
++ (void)_resetSystemPreferenceOverride;
 + (id)system;
 - (void).cxx_destruct;
 - (void)checkForChanges;

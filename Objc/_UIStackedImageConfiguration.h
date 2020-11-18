@@ -15,7 +15,7 @@
     BOOL _overlayFixedFrame;
     BOOL _adjustMotionForSize;
     BOOL _flatImageContainsCornerRadius;
-    BOOL _reduceShadowDepth;
+    BOOL _allowsNonOpaqueShadow;
     BOOL _boostBrightness;
     BOOL _hueShift;
     BOOL _focusCursorEnabled;
@@ -64,6 +64,7 @@
 }
 
 @property (nonatomic) BOOL adjustMotionForSize; // @synthesize adjustMotionForSize=_adjustMotionForSize;
+@property (nonatomic) BOOL allowsNonOpaqueShadow; // @synthesize allowsNonOpaqueShadow=_allowsNonOpaqueShadow;
 @property (nonatomic) BOOL boostBrightness; // @synthesize boostBrightness=_boostBrightness;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (nonatomic) double defaultFocusedShadowOpacity; // @synthesize defaultFocusedShadowOpacity=_defaultFocusedShadowOpacity;
@@ -100,7 +101,6 @@
 @property (nonatomic) double pressedScaleAdjustment; // @synthesize pressedScaleAdjustment=_pressedScaleAdjustment;
 @property (nonatomic) double radiosityOffset; // @synthesize radiosityOffset=_radiosityOffset;
 @property (nonatomic) double radiosityStrength; // @synthesize radiosityStrength=_radiosityStrength;
-@property (nonatomic) BOOL reduceShadowDepth; // @synthesize reduceShadowDepth=_reduceShadowDepth;
 @property (nonatomic) double repositionUnselectionDuration; // @synthesize repositionUnselectionDuration=_repositionUnselectionDuration;
 @property (nonatomic) double rotationAmount; // @synthesize rotationAmount=_rotationAmount;
 @property (nonatomic) double scaleSizeIncrease; // @synthesize scaleSizeIncrease=_scaleSizeIncrease;
@@ -114,6 +114,7 @@
 @property (nonatomic) double unpressedDuration; // @synthesize unpressedDuration=_unpressedDuration;
 @property (nonatomic) double zDepth; // @synthesize zDepth=_zDepth;
 
++ (id)newAppIconConfiguration;
 + (id)newStandardConfiguration;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

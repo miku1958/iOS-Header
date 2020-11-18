@@ -7,10 +7,11 @@
 #import <UIKit/UIView.h>
 
 #import <UIKit/NSCoding-Protocol.h>
+#import <UIKit/_UIStatusBarDisplayable-Protocol.h>
 
-@class NSArray, NSString, UIColor, UIImageView;
+@class NSArray, NSString, UIAccessibilityHUDItem, UIColor, UIImageView;
 
-@interface UIActivityIndicatorView : UIView <NSCoding>
+@interface UIActivityIndicatorView : UIView <_UIStatusBarDisplayable, NSCoding>
 {
     double _duration;
     BOOL _animating;
@@ -37,12 +38,17 @@
     struct CGSize _shadowOffset;
 }
 
+@property (readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 @property (nonatomic) long long activityIndicatorViewStyle; // @synthesize activityIndicatorViewStyle=_activityIndicatorViewStyle;
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
 @property (readonly, nonatomic) NSString *artBackupKeyString; // @synthesize artBackupKeyString=_artBackupKeyString;
+@property (readonly, nonatomic) double baselineOffset;
 @property (nonatomic) BOOL clockWise; // @synthesize clockWise=_clockWise;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property BOOL hasShadow; // @synthesize hasShadow=_hasShadow;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesWhenStopped; // @synthesize hidesWhenStopped=_hidesWhenStopped;
 @property (readonly, nonatomic) NSString *highlightArtBackupKeyString; // @synthesize highlightArtBackupKeyString=_highlightArtBackupKeyString;
 @property (nonatomic) double innerRadius; // @synthesize innerRadius=_innerRadius;
@@ -55,8 +61,10 @@
 @property (nonatomic) long long spokeFrameRatio; // @synthesize spokeFrameRatio=_spokeFrameRatio;
 @property (readonly) NSArray *spokeHighlightImages; // @synthesize spokeHighlightImages=_spokeHighlightImages;
 @property (readonly) NSArray *spokeImages; // @synthesize spokeImages=_spokeImages;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL useArtwork; // @synthesize useArtwork=_useArtwork;
 @property (nonatomic) BOOL useOutlineShadow; // @synthesize useOutlineShadow=_useOutlineShadow;
+@property (readonly, nonatomic) BOOL wantsCrossfade;
 @property (nonatomic) double width; // @synthesize width=_width;
 
 + (BOOL)_isModernStyle:(long long)arg1;

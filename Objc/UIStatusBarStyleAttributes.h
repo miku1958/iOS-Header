@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isTransparent;
 - (long long)legibilityStyle;
 - (id)newForegroundStyleWithHeight:(double)arg1;
+- (BOOL)shouldProduceReturnEvent;
 - (BOOL)shouldShowInternalItemType:(int)arg1 withScreenCapabilities:(id)arg2;
 - (BOOL)shouldUseVisualAltitude;
 - (long long)style;

@@ -4,15 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIGestureRecognizer.h>
+#import <UIKit/UILongPressGestureRecognizer.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIPreviewInteractionGestureRecognizer : UIGestureRecognizer
+@interface _UIPreviewInteractionGestureRecognizer : UILongPressGestureRecognizer
 {
 }
 
-- (void)_setStateToFailed;
-- (void)_setStateToRecognized;
+- (void)cancel;
+- (void)recognize;
+- (void)setDelegate:(id)arg1;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 
 @end
 

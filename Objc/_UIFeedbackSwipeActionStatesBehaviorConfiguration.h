@@ -4,17 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFeedbackStatesBehaviorConfiguration.h>
+#import <UIKit/_UIStatesFeedbackGeneratorSwipeActionConfiguration.h>
 
-@interface _UIFeedbackSwipeActionStatesBehaviorConfiguration : _UIFeedbackStatesBehaviorConfiguration
+@interface _UIFeedbackSwipeActionStatesBehaviorConfiguration : _UIStatesFeedbackGeneratorSwipeActionConfiguration
 {
 }
-
-+ (id)confirmState;
-+ (id)defaultConfiguration;
-+ (id)openState;
-+ (id)restingState;
-- (long long)requiredSupportLevel;
 
 @end
 

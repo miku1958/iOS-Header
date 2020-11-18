@@ -10,9 +10,11 @@
 
 @protocol _UIButtonBarLayoutMetricsData <NSObject>
 
+@property (readonly, nonatomic) BOOL allowsViewWrappers;
+@property (readonly, nonatomic) BOOL createsPopoverLayoutGuides;
 @property (readonly, nonatomic) NSLayoutDimension *flexibleSpaceGuide;
 @property (readonly, nonatomic) NSLayoutDimension *groupSizeGuide;
-@property (strong, nonatomic) NSLayoutDimension *groupSpacingGuide;
+@property (readonly, nonatomic) NSLayoutDimension *groupSpacingGuide;
 @property (readonly, nonatomic) NSLayoutDimension *minimumSpaceGuide;
 @property (readonly, nonatomic) NSLayoutAnchor *popoverGuideTopAnchor;
 @property (readonly, nonatomic) NSLayoutDimension *verticalSizeGuide;

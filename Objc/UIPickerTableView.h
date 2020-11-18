@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_beginTrackingWithEvent:(id)arg1;
 - (id)_checkedRows;
 - (id)_containerView;
+- (long long)_contentInsetAdjustmentBehavior;
 - (double)_distanceToCenterForY:(double)arg1;
 - (void)_notifyContentOffsetChange;
 - (id)_pickerView;

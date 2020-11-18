@@ -8,10 +8,10 @@
 
 @interface _UIRootWindow : UIWindow
 {
-    BOOL _mainDisplay;
-    BOOL _isExternal;
+    double _scale;
 }
 
+- (CDStruct_3cbf53c3)_bindingDescription;
 - (void)_configureContextOptions:(id)arg1;
 - (void)_configureRootLayer:(id)arg1 transformLayer:(id)arg2;
 - (id)_context;

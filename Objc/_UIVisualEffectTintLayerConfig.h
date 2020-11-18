@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (void)configureLayerView:(id)arg1;
 - (void)deconfigureLayerView:(id)arg1;
+- (id)description;
 
 @end
 

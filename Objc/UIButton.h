@@ -7,12 +7,13 @@
 #import <UIKit/UIControl.h>
 
 #import <UIKit/NSCoding-Protocol.h>
+#import <UIKit/UIAccessibilityContentSizeCategoryImageAdjusting-Protocol.h>
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKit/_UIFloatingContentViewDelegate-Protocol.h>
 
 @class NSArray, NSAttributedString, NSString, UIColor, UIFont, UIImage, UIImageView, UILabel, UITapGestureRecognizer, UIView, UIVisualEffectView, _UIButtonMaskAnimationView, _UIFloatingContentView;
 
-@interface UIButton : UIControl <UIGestureRecognizerDelegate, _UIFloatingContentViewDelegate, NSCoding>
+@interface UIButton : UIControl <UIAccessibilityContentSizeCategoryImageAdjusting, UIGestureRecognizerDelegate, _UIFloatingContentViewDelegate, NSCoding>
 {
     unsigned long long _externalFlatEdge;
     struct __CFDictionary *_contentLookup;
@@ -43,23 +44,32 @@
         unsigned int visualEffectViewEnabled:1;
         unsigned int suppressAccessibilityUnderline:1;
         unsigned int requiresLayoutForPropertyChange:1;
+        unsigned int adjustsImageSizeForAccessibilityContentSizeCategory:1;
+        unsigned int disableAutomaticTitleAnimations:1;
     } _buttonFlags;
     UIView *_effectiveContentView;
     _UIButtonMaskAnimationView *_maskAnimationView;
     UIView *_selectionView;
     UIFont *_lazyTitleViewFont;
     NSArray *_contentConstraints;
+    long long __imageContentMode;
+    UIColor *__plainButtonBackgroundColor;
     struct UIEdgeInsets _internalTitlePaddingInsets;
 }
 
 @property (copy, nonatomic, setter=_setContentConstraints:) NSArray *_contentConstraints; // @synthesize _contentConstraints;
 @property (readonly, strong, nonatomic) UIColor *_currentImageColor;
+@property (nonatomic, getter=_disableAutomaticTitleAnimations, setter=_setDisableAutomaticTitleAnimations:) BOOL _disableAutomaticTitleAnimations;
 @property (setter=_setExternalFlatEdge:) unsigned long long _externalFlatEdge;
+@property (nonatomic, setter=_setImageContentMode:) long long _imageContentMode; // @synthesize _imageContentMode=__imageContentMode;
 @property (nonatomic, setter=_setInternalTitlePaddingInsets:) struct UIEdgeInsets _internalTitlePaddingInsets; // @synthesize _internalTitlePaddingInsets;
+@property (strong, nonatomic, getter=_plainButtonBackgroundColor, setter=_setPlainButtonBackgroundColor:) UIColor *_plainButtonBackgroundColor; // @synthesize _plainButtonBackgroundColor=__plainButtonBackgroundColor;
 @property (nonatomic, setter=_setWantsAccessibilityUnderline:) BOOL _wantsAccessibilityUnderline;
+@property (nonatomic) BOOL adjustsImageSizeForAccessibilityContentSizeCategory;
 @property (nonatomic) BOOL adjustsImageWhenDisabled; // @dynamic adjustsImageWhenDisabled;
 @property (nonatomic) BOOL adjustsImageWhenHighlighted; // @dynamic adjustsImageWhenHighlighted;
 @property (readonly, nonatomic) long long buttonType;
+@property (nonatomic, getter=_isContentBackgroundHidden, setter=_setContentBackgroundHidden:) BOOL contentBackgroundHidden;
 @property (nonatomic) struct UIEdgeInsets contentEdgeInsets; // @dynamic contentEdgeInsets;
 @property (readonly, nonatomic) NSAttributedString *currentAttributedTitle;
 @property (readonly, nonatomic) UIImage *currentBackgroundImage;
@@ -68,12 +78,16 @@
 @property (readonly, nonatomic) UIColor *currentTitleColor;
 @property (readonly, nonatomic) UIColor *currentTitleShadowColor;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets imageEdgeInsets; // @dynamic imageEdgeInsets;
 @property (readonly, nonatomic) UIImageView *imageView;
 @property (nonatomic) BOOL reversesTitleShadowWhenHighlighted; // @dynamic reversesTitleShadowWhenHighlighted;
 @property (nonatomic) BOOL showsTouchWhenHighlighted;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 @property (nonatomic) struct UIEdgeInsets titleEdgeInsets; // @dynamic titleEdgeInsets;
@@ -98,16 +112,18 @@
 + (id)_selectedIndicatorImage;
 + (void)_setVisuallyHighlighted:(BOOL)arg1 forViews:(id)arg2 initialPress:(BOOL)arg3;
 + (void)_setVisuallyHighlighted:(BOOL)arg1 forViews:(id)arg2 initialPress:(BOOL)arg3 baseAlpha:(double)arg4;
++ (void)_setVisuallyHighlighted:(BOOL)arg1 forViews:(id)arg2 initialPress:(BOOL)arg3 highlightBlock:(CDUnknownBlockType)arg4;
 + (id)_xImage;
 + (id)buttonWithType:(long long)arg1;
 - (void).cxx_destruct;
+- (BOOL)_accessibilityShouldActivateOnHUDLift;
 - (BOOL)_alwaysHandleScrollerMouseEvent;
 - (void)_applyAppropriateChargeForButton;
 - (void)_applyCarPlaySystemButtonCustomizations;
 - (id)_archivableContent:(id *)arg1;
 - (id)_attributedTitleForState:(unsigned long long)arg1;
-- (double)_autolayoutSpacingAtEdge:(int)arg1 inContainer:(id)arg2;
-- (double)_autolayoutSpacingAtEdge:(int)arg1 nextToNeighbor:(id)arg2;
+- (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(long long)arg2 inContainer:(id)arg3 isGuide:(BOOL)arg4;
+- (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(id)arg2 nextToNeighbor:(id)arg3 edge:(int)arg4 attribute:(long long)arg5 multiplier:(double)arg6;
 - (id)_backgroundForState:(unsigned long long)arg1 usesBackgroundForNormalState:(BOOL *)arg2;
 - (id)_backgroundView;
 - (void)_beginTitleAnimation;
@@ -131,6 +147,7 @@
 - (long long)_drawingStyleForState:(unsigned long long)arg1;
 - (long long)_drawingStyleForStroke:(double)arg1;
 - (id)_effectiveContentView;
+- (struct CGSize)_effectiveSizeForImage:(id)arg1;
 - (id)_encodableSubviews;
 - (id)_externalBorderColorForState:(unsigned long long)arg1;
 - (long long)_externalDrawingStyleForState:(unsigned long long)arg1;
@@ -141,7 +158,8 @@
 - (id)_fadeOutAnimationWithKeyPath:(id)arg1;
 - (id)_floatingContentView;
 - (id)_font;
-- (BOOL)_hasCustomAutolayoutNeighborSpacing;
+- (void)_gestureRecognizerFailed:(id)arg1;
+- (BOOL)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long *)arg1;
 - (BOOL)_hasDrawingStyle;
 - (BOOL)_hasHighlightColor;
 - (BOOL)_hasImageForProperty:(id)arg1;
@@ -156,6 +174,7 @@
 - (id)_imageView;
 - (void)_installSelectGestureRecognizer;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
+- (struct CGSize)_intrinsicSizeForTitle:(id)arg1 attributedTitle:(id)arg2 image:(id)arg3 backgroundImage:(id)arg4 titlePaddingInsets:(struct UIEdgeInsets *)arg5;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_invalidateContentConstraints;
 - (BOOL)_isCarPlaySystemTypeButton;
@@ -174,7 +193,6 @@
 - (long long)_lineBreakMode;
 - (id)_newImageViewWithFrame:(struct CGRect)arg1;
 - (id)_newLabelWithFrame:(struct CGRect)arg1;
-- (struct UIEdgeInsets)_outsetInsets:(struct UIEdgeInsets)arg1;
 - (struct UIEdgeInsets)_pathImageEdgeInsets;
 - (struct UIEdgeInsets)_pathTitleEdgeInsets;
 - (void)_populateArchivedSubviews:(id)arg1;
@@ -182,6 +200,8 @@
 - (void)_prepareMaskAnimationViewIfNecessary;
 - (void)_reducedTransparencyDidChange:(id)arg1;
 - (BOOL)_requiresLayoutForPropertyChange;
+- (struct CGSize)_roundSize:(struct CGSize)arg1;
+- (double)_scaleFactorForImage;
 - (void)_selectGestureChanged:(id)arg1;
 - (double)_selectedIndicatorAlpha;
 - (struct CGRect)_selectedIndicatorBounds;
@@ -232,6 +252,7 @@
 - (struct CGSize)_titleShadowOffset;
 - (id)_titleView;
 - (id)_transitionAnimationWithKeyPath:(id)arg1;
+- (void)_uikit_applyValueFromTraitStorage:(id)arg1 forKeyPath:(id)arg2;
 - (void)_uninstallSelectGestureRecognizer;
 - (void)_updateBackgroundImageView;
 - (void)_updateContentBackdropView;
@@ -266,10 +287,13 @@
 - (void)invalidateIntrinsicContentSize;
 - (BOOL)isAccessibilityElementByDefault;
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
+- (BOOL)isSpringLoaded;
 - (void)layoutSubviews;
 - (long long)lineBreakMode;
 - (struct CGPoint)pressFeedbackPosition;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)setAttributedTitle:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setAutosizesToFit:(BOOL)arg1;
 - (void)setBackgroundImage:(id)arg1 forState:(unsigned long long)arg2;
@@ -285,9 +309,11 @@
 - (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setImage:(id)arg1 forStates:(unsigned long long)arg2;
 - (void)setLineBreakMode:(long long)arg1;
+- (void)setNeedsLayout;
 - (void)setSelected:(BOOL)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setShowPressFeedback:(BOOL)arg1;
+- (void)setSpringLoaded:(BOOL)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTitle:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setTitle:(id)arg1 forStates:(unsigned long long)arg2;

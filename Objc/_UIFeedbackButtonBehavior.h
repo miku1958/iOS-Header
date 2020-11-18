@@ -4,24 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIFeedbackGenerator.h>
+#import <UIKit/_UIButtonFeedbackGenerator.h>
 
-#import <UIKit/UIFeedbackGeneratorUserInteractionDriven-Protocol.h>
-
-@class _UIFeedbackButtonBehaviorConfiguration;
-
-@interface _UIFeedbackButtonBehavior : UIFeedbackGenerator <UIFeedbackGeneratorUserInteractionDriven>
+@interface _UIFeedbackButtonBehavior : _UIButtonFeedbackGenerator
 {
 }
 
-@property (readonly, nonatomic, getter=_buttonConfiguration) _UIFeedbackButtonBehaviorConfiguration *buttonConfiguration;
-
-+ (Class)_configurationClass;
 + (id)buttonBehaviorWithStyle:(long long)arg1 coordinateSpace:(id)arg2;
-- (id)_stats_key;
-- (void)userInteractionCancelled;
-- (void)userInteractionEnded;
-- (void)userInteractionStarted;
 
 @end
 
