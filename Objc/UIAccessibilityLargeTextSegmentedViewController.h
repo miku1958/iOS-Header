@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *segments; // @synthesize segments=_segments;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_configureSegmentViews;
 - (void)_orientationChanged:(id)arg1;
 - (void)buttonPress:(id)arg1;

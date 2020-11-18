@@ -26,6 +26,7 @@
 }
 
 @property (readonly, nonatomic) id<_UIPreviewProvider> _PreviewProvider; // @synthesize _PreviewProvider=__PreviewProvider;
+@property (nonatomic, getter=_prefersUnmaskedPlatterStyle, setter=_setPrefersUnmaskedPlatterStyle:) BOOL _prefersUnmaskedPlatterStyle;
 @property (nonatomic) BOOL _springboardPlatterStyle;
 @property (nonatomic, getter=_isDefaultPreview, setter=_setDefaultPreview:) BOOL defaultPreview; // @synthesize defaultPreview=_defaultPreview;
 @property (readonly, nonatomic) BOOL hasCustomTarget; // @synthesize hasCustomTarget=_hasCustomTarget;

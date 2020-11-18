@@ -23,6 +23,7 @@
 @property (weak, nonatomic) id<_UIRotatingAlertControllerDelegate> rotatingSheetDelegate; // @synthesize rotatingSheetDelegate=_rotatingSheetDelegate;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_didRotateAndLayout;
 - (void)_presentingViewControllerDidChange:(id)arg1;
 - (void)_presentingViewControllerWillChange:(id)arg1;

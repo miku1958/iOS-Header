@@ -48,6 +48,9 @@
     double _previousVerticalVelocity;
     CADisplayLink *_scrollHeartbeat;
     CADisplayLink *_trackingHeartbeat;
+    double _telemetryOffsetChangeTime;
+    struct CGPoint _telemetryOffsetChangeDistance;
+    double _telemetryZoomChangeDistance;
     struct CGPoint _pageDecelerationTarget;
     struct CGSize _decelerationFactor;
     struct CGPoint _adjustedDecelerationTarget;
@@ -748,6 +751,7 @@
 - (id)accessoryViewAtEdge:(long long)arg1;
 - (void)adjustedContentInsetDidChange;
 - (BOOL)allowsMultipleFingers;
+- (void)animator:(id)arg1 startAnimation:(id)arg2;
 - (void)animator:(id)arg1 stopAnimation:(id)arg2 fraction:(float)arg3;
 - (struct CGPoint)autoscrollContentOffset;
 - (BOOL)bouncesHorizontally;

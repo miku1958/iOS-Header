@@ -354,7 +354,7 @@
 - (id)_dataSourceProxy;
 - (long long)_dataSourceSectionIndexForPresentationSectionIndex:(long long)arg1;
 - (id)_dataSourceSectionIndexTitles;
-- (void)_decrementSuspendLayoutCount;
+- (void)_decrementUpdateAnimationCount;
 - (id)_defaultTargetedPreviewForIdentifier:(id)arg1;
 - (id)_delegateActual;
 - (BOOL)_delegateAllowsSelectingItemAtIndexPath:(id)arg1;
@@ -418,7 +418,7 @@
 - (void)_highlightSpringLoadedItemAtIndexPath:(id)arg1;
 - (struct CGPoint)_horizontalIndexTitleBarOffset;
 - (id)_identityTracker:(BOOL)arg1;
-- (void)_incrementSuspendLayoutCount;
+- (void)_incrementUpdateAnimationCount;
 - (id)_indexBarEntries;
 - (id)_indexPathAfterShadowUpdatesForIndexPath:(id)arg1;
 - (id)_indexPathBeforeShadowUpdatesForIndexPath:(id)arg1;
@@ -441,6 +441,7 @@
 - (void)_invalidateLayoutIfNecessaryForReload;
 - (void)_invalidateLayoutWithContext:(id)arg1;
 - (void)_invalidateWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_isConnectedToDiffableDataSource;
 - (BOOL)_isCurrentlyPerformingLegacyReordering;
 - (BOOL)_isDragDestinationInteractivelyReordering;
 - (BOOL)_isMovingFocusFromHorizontalIndexBarToCellContent:(id)arg1;

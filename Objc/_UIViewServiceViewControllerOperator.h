@@ -87,6 +87,8 @@ __attribute__((visibility("hidden")))
 - (void)__hostDidUpdateDisplay:(id)arg1;
 - (void)__hostDisablesAutomaticKeyboardBehavior:(BOOL)arg1;
 - (void)__hostReadyToReceiveMessagesFromServiceViewController;
+- (void)__hostSceneDidEnterBackground;
+- (void)__hostSceneWillEnterForeground;
 - (void)__hostViewDidAppear:(BOOL)arg1;
 - (void)__hostViewDidDisappear:(BOOL)arg1;
 - (void)__hostViewDidMoveToScreenWithFBSDisplayIdentity:(id)arg1 newHostingHandleReplyHandler:(CDUnknownBlockType)arg2;
@@ -117,6 +119,7 @@ __attribute__((visibility("hidden")))
 - (void)__undoActionWithToken:(long long)arg1;
 - (id)_appearanceSource;
 - (BOOL)_canShowTextServices;
+- (BOOL)_canShowWhileLocked;
 - (double)_canvasSystemMinimumMargin;
 - (void)_completeInteractiveSheetTransitionInHost:(BOOL)arg1 offset:(double)arg2 duration:(double)arg3 timingCurve:(id)arg4;
 - (struct UIEdgeInsets)_customBasePresentationInsetsForView:(id)arg1;

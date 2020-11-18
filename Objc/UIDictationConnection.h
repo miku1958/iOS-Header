@@ -8,7 +8,7 @@
 
 #import <UIKitCore/AFDictationDelegate-Protocol.h>
 
-@class AFDictationConnection, AFDictationOptions, NSMutableArray, NSString;
+@class AFDictationConnection, AFDictationOptions, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, UIDictationConnectionDelegate, UIDictationConnectionTokenFilterProtocol;
 
 __attribute__((visibility("hidden")))
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSString *_lastUsedPrimaryLanguage;
     NSString *_lastUsedDetectedLanguage;
     NSMutableArray *_lastUsedTopLanguages;
+    NSMutableDictionary *_lastReceivedPartials;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *analyticsQueue; // @synthesize analyticsQueue=_analyticsQueue;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) AFDictationOptions *dictationOptions; // @synthesize dictationOptions=_dictationOptions;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableDictionary *lastReceivedPartials; // @synthesize lastReceivedPartials=_lastReceivedPartials;
 @property (copy, nonatomic) NSString *lastUsedDetectedLanguage; // @synthesize lastUsedDetectedLanguage=_lastUsedDetectedLanguage;
 @property (copy, nonatomic) NSString *lastUsedPrimaryLanguage; // @synthesize lastUsedPrimaryLanguage=_lastUsedPrimaryLanguage;
 @property (strong, nonatomic) NSMutableArray *lastUsedTopLanguages; // @synthesize lastUsedTopLanguages=_lastUsedTopLanguages;

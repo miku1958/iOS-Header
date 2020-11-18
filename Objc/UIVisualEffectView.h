@@ -111,8 +111,6 @@
 - (void)layoutSubviews;
 - (void)setContentView:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)willMoveToSuperview:(id)arg1;
-- (void)willMoveToWindow:(id)arg1;
 
 @end
 

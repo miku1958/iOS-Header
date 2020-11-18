@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (weak, nonatomic) id<_UITextServicesResponderProxyDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) UIResponder *responder; // @synthesize responder=_responder;
+@property (readonly, weak, nonatomic) UIResponder *responder; // @synthesize responder=_responder;
 
 + (id)_proxyWithResponder:(id)arg1;
 - (void).cxx_destruct;

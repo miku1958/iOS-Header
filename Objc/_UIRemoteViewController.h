@@ -152,6 +152,8 @@
 - (void)_firstResponderDidChange:(id)arg1;
 - (id)_hostDeferralPredicate;
 - (void)_hostDidEnterBackground:(id)arg1;
+- (void)_hostSceneDidEnterBackground:(id)arg1;
+- (void)_hostSceneWillEnterForeground:(id)arg1;
 - (void)_hostWillEnterForeground:(id)arg1;
 - (BOOL)_ignoreAppSupportedOrientations;
 - (id)_initWithViewServiceBundleIdentifier:(id)arg1;
@@ -164,6 +166,8 @@
 - (void)_removeTextEffectsRemoteViews;
 - (BOOL)_requiresKeyboardWindowWhenFirstResponder;
 - (void)_restoreTextEffectsRemoteView;
+- (void)_sceneDidEnterBackground:(id)arg1;
+- (void)_sceneWillEnterForeground:(id)arg1;
 - (void)_screenDidConnect:(id)arg1;
 - (void)_screenDidDisconnect:(id)arg1;
 - (void)_screenDidUpdate:(id)arg1;

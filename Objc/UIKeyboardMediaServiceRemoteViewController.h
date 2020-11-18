@@ -28,6 +28,7 @@
 + (id)requestInlineViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)dismissCard;
 - (void)draggedStickerToPoint:(struct CGPoint)arg1;
 - (void)pasteImageAtFileHandle:(id)arg1;

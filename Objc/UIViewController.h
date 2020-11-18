@@ -375,6 +375,7 @@
 + (void)_traverseViewControllerHierarchy:(CDUnknownBlockType)arg1;
 + (void)_traverseViewControllerHierarchyWithDelayedRelease:(CDUnknownBlockType)arg1;
 + (id)_viewControllerForFullScreenPresentationFromView:(id)arg1;
++ (id)_whitelistOfSubclassableViewControllersMarkedSafe;
 + (void)_withDisabledAppearanceTransitions:(BOOL)arg1 forDescendantsOf:(id)arg2 visibleOnly:(BOOL)arg3 perform:(CDUnknownBlockType)arg4;
 + (void)_withDisabledAppearanceTransitionsForVisibleDescendantsOf:(id)arg1 perform:(CDUnknownBlockType)arg2;
 + (void)attemptRotationToDeviceOrientation;

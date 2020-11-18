@@ -14,6 +14,7 @@
 @property (nonatomic) BOOL sizesWindowToScene; // @synthesize sizesWindowToScene=_sizesWindowToScene;
 
 - (id)__autorotationSanityCheckObjectFromSource:(id)arg1 selector:(SEL)arg2;
+- (BOOL)_canShowWhileLocked;
 - (long long)_preferredInterfaceOrientationGivenCurrentOrientation:(long long)arg1;
 - (id)_topMostWindow;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

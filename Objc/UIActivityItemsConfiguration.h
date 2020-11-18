@@ -15,6 +15,7 @@
     NSArray *_itemProviders;
     NSArray *_activityItems;
     UIActivityViewController *_vc;
+    NSArray *_excludedActivityTypes;
     id _localObject;
     NSArray *_supportedInteractions;
     CDUnknownBlockType _metadataProvider;
@@ -24,6 +25,7 @@
 }
 
 @property (readonly, copy, nonatomic) NSArray *_activityItems;
+@property (copy, nonatomic, setter=_setExcludedActivityTypes:) NSArray *_excludedActivityTypes;
 @property (readonly, nonatomic) BOOL _hasItemsForActivityItemsConfiguration;
 @property (readonly, copy, nonatomic) NSArray *applicationActivitiesForActivityItemsConfiguration;
 @property (copy, nonatomic) CDUnknownBlockType applicationActivitiesProvider; // @synthesize applicationActivitiesProvider=_applicationActivitiesProvider;

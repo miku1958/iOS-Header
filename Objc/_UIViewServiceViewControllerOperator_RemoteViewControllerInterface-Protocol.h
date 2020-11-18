@@ -29,6 +29,8 @@
 - (void)__hostDidUpdateDisplay:(FBSDisplayConfiguration *)arg1;
 - (void)__hostDisablesAutomaticKeyboardBehavior:(BOOL)arg1;
 - (void)__hostReadyToReceiveMessagesFromServiceViewController;
+- (void)__hostSceneDidEnterBackground;
+- (void)__hostSceneWillEnterForeground;
 - (void)__hostViewDidAppear:(BOOL)arg1;
 - (void)__hostViewDidDisappear:(BOOL)arg1;
 - (void)__hostViewDidMoveToScreenWithFBSDisplayIdentity:(FBSDisplayIdentity *)arg1 newHostingHandleReplyHandler:(void (^)(_UIHostedWindowHostingHandle *))arg2;

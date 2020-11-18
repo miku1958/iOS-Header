@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (long long)indexForPrettyCategoryDisplay:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 - (id)itemInRect:(struct CGRect)arg1;
+- (BOOL)memojiSettingEnabled;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;

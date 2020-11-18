@@ -60,7 +60,7 @@
 
 + (id)_deferredMenuPlaceholder;
 - (void).cxx_destruct;
-- (id)_accessoryViewsForPreviewPlatterPresentationController:(id)arg1 layoutAnchor:(CDStruct_6f807b77)arg2;
+- (id)_accessoryViewsForPreviewPlatterPresentationController:(id)arg1;
 - (unsigned long long)_actualLayoutForPreferredLayout:(unsigned long long)arg1 withConfiguration:(id)arg2;
 - (void)_clickPresentationInteraction:(id)arg1 dragSessionDidEndForItems:(id)arg2;
 - (id)_clickPresentationInteraction:(id)arg1 interactionEffectForTargetedPreview:(id)arg2;

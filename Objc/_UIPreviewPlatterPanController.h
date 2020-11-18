@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     double _currentDistanceToActionScrubPath;
     struct CGPoint _initialLocationInsidePreview;
     BOOL _actionsViewIsVisible;
+    BOOL _touchEverEnteredMenu;
     BOOL _enabled;
     UIViewSpringAnimationBehavior *_animationBehavior;
     id<_UIPreviewPlatterPanControllerDelegate> _delegate;
@@ -58,7 +59,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIVelocityIntegrator *velocityIntegrator; // @synthesize velocityIntegrator=_velocityIntegrator;
 
 - (void).cxx_destruct;
-- (id)_actionScrubPathWithInitialLocation:(struct CGPoint)arg1;
 - (void)_animationsForActionsStyleWithLocation:(struct CGPoint)arg1 ended:(BOOL)arg2;
 - (void)_animationsForAnyAttachedAccessoryViews;
 - (void)_animationsForPreviewPlusActionsStyleWithTranslation:(struct CGPoint)arg1 location:(struct CGPoint)arg2;
@@ -72,7 +72,8 @@ __attribute__((visibility("hidden")))
 - (double)_rangeOfMotion;
 - (struct CGPoint)_rubberBandedTranslationForGestureTranslation:(struct CGPoint)arg1;
 - (double)_tearOffSpeedMultiplier;
-- (void)_updatePlatterGestureDebugUIWithGesture:(id)arg1;
+- (void)_updateActionScrubPathWithLocationIfNecessary:(struct CGPoint)arg1;
+- (void)_updatePlatterGestureDebugUIWithGesture:(id)arg1 invalidate:(BOOL)arg2;
 - (void)_updateViewPositionsWithTranslation:(struct CGPoint)arg1 location:(struct CGPoint)arg2 ended:(BOOL)arg3 withVelocity:(BOOL)arg4;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
