@@ -20,6 +20,7 @@
 @property (readonly, copy, nonatomic) NSDate *lastBadgedDate;
 @property (readonly, copy, nonatomic) NSDate *lastEngagedDate;
 @property (readonly, copy, nonatomic) NSDate *lastRemovedFromMyMagazinesDate;
+@property (readonly, copy, nonatomic) NSDate *lastSeenDate;
 @property (readonly, copy, nonatomic) NSString *lastVisitedArticleID;
 @property (readonly, copy, nonatomic) NSDate *lastVisitedDate;
 @property (readonly, copy, nonatomic) NSString *lastVisitedPageID;
@@ -33,6 +34,7 @@
 - (void)setLastBadgedDate:(id)arg1;
 - (void)setLastEngagedDate:(id)arg1;
 - (void)setLastRemovedFromMyMagazinesDate:(id)arg1;
+- (void)setLastSeenDate:(id)arg1;
 - (void)setLastVisitedDate:(id)arg1;
 - (void)writeToKeyValuePair:(id)arg1;
 @end

@@ -94,6 +94,7 @@
 - (void)getQueryItemForURL:(NSURL *)arg1 reply:(void (^)(BRQueryItem *, NSError *))arg2;
 - (void)getShareOptionsOfItemIdentifier:(NSString *)arg1 reply:(void (^)(BOOL, BOOL, BOOL, NSString *, NSError *))arg2;
 - (void)getTotalApplicationDocumentUsageWithReply:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)getURLForItemIdentifier:(NSString *)arg1 reply:(void (^)(NSURL *, NSError *))arg2;
 - (void)getiWorkNeedsShareMigrateAtURL:(NSURL *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)getiWorkPublishingBadgingStatusAtURL:(NSURL *)arg1 reply:(void (^)(int, NSError *))arg2;
 - (void)getiWorkPublishingInfoAtURL:(NSURL *)arg1 reply:(void (^)(BOOL, BOOL, NSString *, NSError *))arg2;

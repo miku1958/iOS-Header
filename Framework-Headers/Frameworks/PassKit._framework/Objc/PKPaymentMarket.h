@@ -14,8 +14,13 @@
 {
     NSDictionary *_localizedNames;
     NSSet *_geoFences;
+    NSString *_expressNotificationIdentifier;
+    BOOL _productsRequiredForRegion;
+    BOOL _shouldConsiderCellularRegion;
     long long _type;
     long long _classification;
+    unsigned long long _expressUpgradeHideDisableAction;
+    double _expressUpgradePromoteDuration;
     NSString *_identifier;
     NSString *_region;
     NSSet *_supportedCredentialTypes;
@@ -27,9 +32,13 @@
 @property (readonly) long long classification; // @synthesize classification=_classification;
 @property (readonly, copy) NSSet *expressCredentialTypes; // @synthesize expressCredentialTypes=_expressCredentialTypes;
 @property (readonly, copy) NSSet *expressTransitNetworks; // @synthesize expressTransitNetworks=_expressTransitNetworks;
+@property (readonly) unsigned long long expressUpgradeHideDisableAction; // @synthesize expressUpgradeHideDisableAction=_expressUpgradeHideDisableAction;
+@property (readonly) double expressUpgradePromoteDuration; // @synthesize expressUpgradePromoteDuration=_expressUpgradePromoteDuration;
 @property (readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy) NSString *name; // @dynamic name;
+@property (readonly) BOOL productsRequiredForRegion; // @synthesize productsRequiredForRegion=_productsRequiredForRegion;
 @property (readonly, copy) NSString *region; // @synthesize region=_region;
+@property (readonly) BOOL shouldConsiderCellularRegion; // @synthesize shouldConsiderCellularRegion=_shouldConsiderCellularRegion;
 @property (readonly, copy) NSSet *supportedCredentialTypes; // @synthesize supportedCredentialTypes=_supportedCredentialTypes;
 @property (readonly, copy) NSSet *supportedTransitNetworks; // @synthesize supportedTransitNetworks=_supportedTransitNetworks;
 @property (readonly) long long type; // @synthesize type=_type;
@@ -40,6 +49,7 @@
 - (BOOL)containsLocation:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)expressNotificationIdentifier;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 forDeviceClass:(id)arg2 version:(id)arg3;

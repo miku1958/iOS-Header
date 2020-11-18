@@ -11,6 +11,7 @@
 @interface _TtCC8VideosUI19VerticalStackLayout16FooterViewLayout : _TtC8VideosUI10ViewLayout
 {
     MISSING_TYPE *$__lazy_storage_$_buttonLayout;
+    MISSING_TYPE *$__lazy_storage_$_footerTextLayout;
 }
 
 @end

@@ -51,13 +51,15 @@
 - (void)performProductActionRequest:(PKPaymentProductsActionRequest *)arg1 completion:(void (^)(PKPaymentAvailableProductsResponse *, NSError *))arg2;
 - (void)productsWithCompletion:(void (^)(PKPaymentAvailableProductsResponse *, NSError *))arg1;
 - (void)recomputeCategoryVisualizationMangitudesForPassUniqueID:(NSString *)arg1 style:(long long)arg2;
+- (void)registerCredentialsWithIdentifiers:(NSSet *)arg1 completion:(void (^)(NSSet *, NSSet *))arg2;
 - (void)removeExpressPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSSet *))arg2;
 - (void)removeExpressPassesWithCardType:(long long)arg1 completion:(void (^)(BOOL, NSSet *))arg2;
 - (void)removeMapsDataForTransactionWithIdentifier:(NSString *)arg1 forPassUniqueIdentifier:(NSString *)arg2 issueReportIdentifier:(NSString *)arg3 completion:(void (^)(PKPaymentTransaction *))arg4;
-- (void)removeSharingInvitationReceiptWithIdentifier:(NSString *)arg1 onCredential:(NSString *)arg2 withCompletion:(void (^)(BOOL))arg3;
+- (void)removeSharingInvitationReceiptWithIdentifiers:(NSSet *)arg1 onCredential:(NSString *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)removeSharingInvitationWithIdentifier:(NSString *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (void)requestBackgroundRegistrationForCredentialWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)requiresUpgradedPasscodeWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)revokeCredentialsWithIdentifiers:(NSSet *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)setAccountAttestationAnonymizationSalt:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)setDefaultPaymentPassUniqueIdentifier:(NSString *)arg1 handler:(void (^)(void))arg2;
 - (void)setDeviceCheckInContextBuildVersion:(NSString *)arg1 outstandingAction:(long long)arg2 forRegion:(NSString *)arg3;

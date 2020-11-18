@@ -11,8 +11,10 @@
 @interface NSArray (JSONConformance) <CRKJSONRepresentable>
 - (id)crk_JSONRepresentationWithPrettyPrinting:(BOOL)arg1 sortKeys:(BOOL)arg2;
 - (id)crk_arrayByRemovingObject:(id)arg1;
+- (id)crk_arrayByRemovingObjectsInArray:(id)arg1;
 - (id)crk_dictionaryUsingKeyGenerator:(CDUnknownBlockType)arg1 valueGenerator:(CDUnknownBlockType)arg2;
 - (id)crk_filterUsingBlock:(CDUnknownBlockType)arg1;
+- (id)crk_firstMatching:(CDUnknownBlockType)arg1;
 - (BOOL)crk_isSortedByComparator:(CDUnknownBlockType)arg1;
 - (id)crk_mapUsingBlock:(CDUnknownBlockType)arg1;
 - (id)crk_partitionUsingKeyGenerator:(CDUnknownBlockType)arg1 valueGenerator:(CDUnknownBlockType)arg2;

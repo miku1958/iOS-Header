@@ -7,7 +7,7 @@
 #import <IMAssistantCore/NSObject-Protocol.h>
 
 @class IMChat, NSArray, NSCache;
-@protocol IMAssistantAccountDataSource, IMAssistantChatDataSource, IMAssistantContactsDataSource, IMLocationManager;
+@protocol IMAssistantAccountDataSource, IMAssistantChatDataSource, IMAssistantContactsDataSource, IMAssistantCoreTelephonySubscriptionsDataSource, IMLocationManager;
 
 @protocol IMAssistantMessageHandlerDataSource <NSObject>
 
@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) id<IMAssistantChatDataSource> chatDataSource;
 @property (readonly, nonatomic) NSCache *contactIdentifierToUnifiedContactIdentifierCache;
 @property (readonly, nonatomic) id<IMAssistantContactsDataSource> contactsDataSource;
+@property (readonly, nonatomic) id<IMAssistantCoreTelephonySubscriptionsDataSource> coreTelephonySubscriptionsDataSource;
 @property (readonly, nonatomic) NSCache *handleToContactIdentifierCache;
 @property (readonly, nonatomic) BOOL isInternationalSpamFilteringEnabled;
 @property (readonly, nonatomic) id<IMLocationManager> locationManagerDataSource;

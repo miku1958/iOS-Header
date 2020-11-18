@@ -9,6 +9,7 @@
 @interface NSNumber (PKDecimalNumberAdditions)
 - (BOOL)pk_isIntegralNumber;
 - (BOOL)pk_isNegativeNumber;
+- (BOOL)pk_isNotANumber;
 - (BOOL)pk_isPositiveNumber;
 - (BOOL)pk_isZeroNumber;
 @end

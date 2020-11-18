@@ -13,6 +13,7 @@
 @interface NTPBTelemetry : PBCodable <NSCopying>
 {
     long long _appBuild;
+    NSString *_appBuildNumber;
     NSString *_appVersion;
     NSString *_carrier;
     int _contentEnvironment;
@@ -36,6 +37,7 @@
 }
 
 @property (nonatomic) long long appBuild; // @synthesize appBuild=_appBuild;
+@property (strong, nonatomic) NSString *appBuildNumber; // @synthesize appBuildNumber=_appBuildNumber;
 @property (strong, nonatomic) NSString *appVersion; // @synthesize appVersion=_appVersion;
 @property (strong, nonatomic) NSString *carrier; // @synthesize carrier=_carrier;
 @property (nonatomic) int contentEnvironment; // @synthesize contentEnvironment=_contentEnvironment;
@@ -43,6 +45,7 @@
 @property (strong, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property (strong, nonatomic) NSString *devicePlatform; // @synthesize devicePlatform=_devicePlatform;
 @property (nonatomic) BOOL hasAppBuild;
+@property (readonly, nonatomic) BOOL hasAppBuildNumber;
 @property (readonly, nonatomic) BOOL hasAppVersion;
 @property (readonly, nonatomic) BOOL hasCarrier;
 @property (nonatomic) BOOL hasContentEnvironment;

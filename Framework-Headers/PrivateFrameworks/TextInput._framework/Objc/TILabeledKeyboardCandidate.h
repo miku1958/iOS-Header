@@ -10,12 +10,12 @@
 
 @interface TILabeledKeyboardCandidate : TIKeyboardCandidateSingle
 {
+    long long _transliterationType;
     BOOL _transliterationCandidate;
     NSString *_label;
 }
 
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
-@property (readonly, nonatomic, getter=isTransliterationCandidate) BOOL transliterationCandidate; // @synthesize transliterationCandidate=_transliterationCandidate;
 
 + (BOOL)supportsSecureCoding;
 + (int)type;
@@ -24,9 +24,11 @@
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 label:(id)arg3;
-- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 label:(id)arg3 transliterationCandidate:(BOOL)arg4;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 label:(id)arg3 transliterationType:(long long)arg4;
 - (id)initWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isTransliterationCandidate;
 
 @end
 

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)registerStitchingSession:(id)arg1;
 - (void)removeBouncedItemsWithIDs:(id)arg1;
+- (id)stitchedItemsForParentID:(id)arg1;
 
 @end
 

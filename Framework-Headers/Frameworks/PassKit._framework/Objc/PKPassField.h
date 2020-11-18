@@ -21,6 +21,7 @@
     NSString *_changeMessage;
     long long _textAlignment;
     long long _cellStyle;
+    long long _countModifierType;
     unsigned long long _row;
     unsigned long long _dataDetectorTypes;
     NSDictionary *_semantics;
@@ -30,6 +31,7 @@
 
 @property (nonatomic) long long cellStyle; // @synthesize cellStyle=_cellStyle;
 @property (copy, nonatomic) NSString *changeMessage; // @synthesize changeMessage=_changeMessage;
+@property (nonatomic) long long countModifierType; // @synthesize countModifierType=_countModifierType;
 @property (nonatomic) unsigned long long dataDetectorTypes; // @synthesize dataDetectorTypes=_dataDetectorTypes;
 @property (strong, nonatomic) NSString *foreignReferenceIdentifier; // @synthesize foreignReferenceIdentifier=_foreignReferenceIdentifier;
 @property (nonatomic) long long foreignReferenceType; // @synthesize foreignReferenceType=_foreignReferenceType;

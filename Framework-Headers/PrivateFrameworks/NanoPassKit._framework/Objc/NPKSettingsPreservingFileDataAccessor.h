@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKFileDataAccessor.h>
+#import <PassKit/PKFileDataAccessor.h>
 
 @class NPKCompanionAgentConnection, NSString;
 

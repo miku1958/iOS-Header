@@ -8,7 +8,7 @@
 
 #import <NanoPassKit/PKSubcredentialProvisioningControllerDelegate-Protocol.h>
 
-@class NPKStandaloneFirstUnlockCoordinator, NSString, PKAppletSubcredentialSharingSession, PKPaymentService, PKPaymentWebService, PKSubcredentialProvisioningController;
+@class NPKStandaloneFirstUnlockCoordinator, NPKWatchSubcredentialProvisioningService, NSString, PKAppletSubcredentialSharingSession, PKPaymentService, PKSubcredentialProvisioningController;
 @protocol OS_dispatch_queue;
 
 @interface NPKSubcredentialInvitationCoordinator : NSObject <PKSubcredentialProvisioningControllerDelegate>
@@ -16,11 +16,11 @@
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     PKPaymentService *_paymentService;
-    PKPaymentWebService *_paymentWebService;
     PKSubcredentialProvisioningController *_subcredentialProvisioningController;
     PKAppletSubcredentialSharingSession *_sharingSession;
     CDUnknownBlockType _completion;
     NPKStandaloneFirstUnlockCoordinator *_firstUnlockCoordinator;
+    NPKWatchSubcredentialProvisioningService *_subcredentialProvisioningService;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
@@ -31,9 +31,9 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) PKPaymentService *paymentService; // @synthesize paymentService=_paymentService;
-@property (strong, nonatomic) PKPaymentWebService *paymentWebService; // @synthesize paymentWebService=_paymentWebService;
 @property (strong, nonatomic) PKAppletSubcredentialSharingSession *sharingSession; // @synthesize sharingSession=_sharingSession;
 @property (strong, nonatomic) PKSubcredentialProvisioningController *subcredentialProvisioningController; // @synthesize subcredentialProvisioningController=_subcredentialProvisioningController;
+@property (strong, nonatomic) NPKWatchSubcredentialProvisioningService *subcredentialProvisioningService; // @synthesize subcredentialProvisioningService=_subcredentialProvisioningService;
 @property (readonly) Class superclass;
 
 + (BOOL)_canAddSecureElementPassWithConfiguration:(id)arg1;
@@ -41,14 +41,24 @@
 - (void).cxx_destruct;
 - (BOOL)_deviceSupportsSubcredentialProvisioning;
 - (void)_endProvisioningWithPassForInvitation:(id)arg1 error:(id)arg2;
+- (id)_errorWithCode:(long long)arg1 message:(id)arg2;
+- (void)_fetchInvitationMatchingInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchInvitationWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleProvisioningAttemptForConfiguration:(id)arg1 error:(id)arg2;
 - (void)_invokeCompletionWithPassForInvitation:(id)arg1 error:(id)arg2;
-- (void)_makeAcceptInvitationConfigurationWithSession:(id)arg1 invitationIdentifier:(id)arg2 metadata:(id)arg3 paymentWebService:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)_isInvitationUniqueForPairedReaderIdentifier:(id)arg1;
+- (void)_makeConfigurationForInvitation:(id)arg1 session:(id)arg2 metadata:(id)arg3 paymentWebService:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)_paymentWebService;
+- (void)_performBlockFollowingFirstUnlockWithBlock:(CDUnknownBlockType)arg1;
 - (void)_queue_accountAttestationAnonymizationSaltWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_canAcceptInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_deviceContainsInvitationMatchingInvitation:(id)arg1 withTimeout:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_queue_fetchOrInitializeAccountAttestationAnonymizationSaltIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_listSubcredentialInvitationsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_queue_registerCredentialsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_queue_removeSharingInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_requestSubcredentialInvitation:(id)arg1 fromIDSHandle:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_queue_revokeCredentialsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_setAccountAttestationAnonymizationSalt:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_updateSubcredentialMetadataOnPass:(id)arg1 withCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setUpSharingSessionWithSubcredentialProvisioningController:(id)arg1;
@@ -57,12 +67,19 @@
 - (void)accountAttestationAnonymizationSaltWithCompletion:(CDUnknownBlockType)arg1;
 - (void)canAcceptInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deviceContainsInvitationMatchingInvitation:(id)arg1 withTimeout:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)initWithCallbackQueue:(id)arg1 paymentWebService:(id)arg2;
-- (id)initWithPaymentWebService:(id)arg1;
+- (void)fetchOrInitializeAccountAttestationAnonymizationSaltIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (id)init;
+- (id)initWithCallbackQueue:(id)arg1;
 - (void)listSubcredentialInvitationsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)registerCredentialsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeSharingInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestSubcredentialInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)revokeCredentialsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setAccountAttestationAnonymizationSalt:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startProvisioningWithInvitation:(id)arg1 metadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startProvisioningWithInvitationIdentifier:(id)arg1 metadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)startSubcredentialProvisioningOnLocalDeviceMatchingInvitation:(id)arg1 shouldFetchAnonymizationSaltFromRemoteDevice:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)startSubcredentialProvisioningOnRemoteDeviceForInvitation:(id)arg1;
 - (void)subcredentialProvisioningController:(id)arg1 didFinishWithError:(id)arg2;
 - (void)subcredentialProvisioningController:(id)arg1 didFinishWithPass:(id)arg2;
 - (void)updateSubcredentialMetadataOnPass:(id)arg1 withCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;

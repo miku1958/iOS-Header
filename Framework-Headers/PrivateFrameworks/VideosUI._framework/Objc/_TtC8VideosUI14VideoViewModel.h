@@ -10,7 +10,8 @@
 
 @interface _TtC8VideosUI14VideoViewModel : _TtC8VideosUI9ViewModel
 {
-    MISSING_TYPE *videosPlayable;
+    MISSING_TYPE *defaultVideosPlayable;
+    MISSING_TYPE *tvVideosPlayable;
     MISSING_TYPE *phoneVideosPlayable;
     MISSING_TYPE *padVideosPlayable;
 }

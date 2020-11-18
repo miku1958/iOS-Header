@@ -47,9 +47,11 @@
     unsigned long long _confirmationStyle;
     NSString *_biometricConfirmationTitle;
     NSString *_confirmationTitle;
+    NSString *_authorizingTitle;
     id<PKPaymentAuthorizationFooterViewDelegate> _delegate;
 }
 
+@property (strong, nonatomic) NSString *authorizingTitle; // @synthesize authorizingTitle=_authorizingTitle;
 @property (strong, nonatomic) NSString *biometricConfirmationTitle; // @synthesize biometricConfirmationTitle=_biometricConfirmationTitle;
 @property (nonatomic) unsigned long long confirmationStyle; // @synthesize confirmationStyle=_confirmationStyle;
 @property (strong, nonatomic) NSString *confirmationTitle; // @synthesize confirmationTitle=_confirmationTitle;

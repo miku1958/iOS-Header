@@ -18,6 +18,7 @@
     MISSING_TYPE *feedPersonalizer;
     MISSING_TYPE *tagController;
     MISSING_TYPE *privateDataDirectory;
+    MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *debugEnabled;
 }
 

@@ -35,7 +35,6 @@
 - (id)strokeOutlineColor;
 - (double)strokeOutlineWidth;
 - (double)strokeWidth;
-- (id)systemFilterDarkModeOverride;
 - (BOOL)useSystemFilters;
 
 @end

@@ -33,7 +33,7 @@
 @property (nonatomic) unsigned long long trainingBehavior; // @dynamic trainingBehavior;
 @property (nonatomic) BOOL wantsBackup; // @dynamic wantsBackup;
 @property (nonatomic) BOOL wantsImmutableContent; // @dynamic wantsImmutableContent;
-@property (strong, nonatomic) NSArray *whitelistedDataSourceClassNames; // @dynamic whitelistedDataSourceClassNames;
+@property (copy, nonatomic) NSArray *whitelistedDataSourceClassNames; // @dynamic whitelistedDataSourceClassNames;
 
 + (id)defaultConfiguration;
 + (id)defaultUpNextConfiguration;

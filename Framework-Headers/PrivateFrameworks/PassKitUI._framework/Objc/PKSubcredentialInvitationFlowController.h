@@ -25,8 +25,10 @@
 
 + (void)invitationFromRemoteDeviceWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (id)alertForOperation:(id)arg1 withError:(id)arg2 retryHandler:(CDUnknownBlockType)arg3 cancelationHandler:(CDUnknownBlockType)arg4;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (id)localDeviceProvisioningViewModelForOperation:(id)arg1;
+- (id)localizedIssuerNameForProvisioningOperation:(id)arg1;
 - (void)nextViewControllerFromProvisioningOperation:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)provisioningFinishedWithOperation:(id)arg1;
 - (void)provisioningWasCanceledWithOperation:(id)arg1;

@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)addItems:(id)arg1 withOldItemCollection:(id)arg2;
 - (void)beginDragWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancelDrag;
-- (oneway void)checkCanHandOffCancelledItemsWithReply:(CDUnknownBlockType)arg1;
+- (oneway void)checkCanHandOffCancelledItems:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (oneway void)dataTransferSessionFinished;
 - (void)dirtyItems:(id)arg1;
 - (void)dragDidExitApp;

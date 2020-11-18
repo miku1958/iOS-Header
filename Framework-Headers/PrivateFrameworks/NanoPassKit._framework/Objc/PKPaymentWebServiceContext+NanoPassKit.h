@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKPaymentWebServiceContext.h>
+#import <PassKit/PKPaymentWebServiceContext.h>
 
 @interface PKPaymentWebServiceContext (NanoPassKit)
 - (id)npkPossiblyOverriddenPeerPaymentServiceURL;

@@ -225,7 +225,7 @@ __attribute__((visibility("hidden")))
 - (id)itemByRowID:(unsigned long long)arg1;
 - (id)itemByRowID:(unsigned long long)arg1 db:(id)arg2;
 - (id)itemCountPendingUploadOrSyncUpAndReturnError:(id *)arg1;
-- (void)itemCrossZoneMoved:(id)arg1 toParentID:(id)arg2;
+- (void)itemCrossZoneMoved:(id)arg1 withLookup:(id)arg2;
 - (void)itemMovedIntoShareInThisZone:(id)arg1 associatedItemID:(id)arg2;
 - (BOOL)itemTypeByItemID:(id)arg1 db:(id)arg2;
 - (id)itemsEnumeratorWithDB:(id)arg1;

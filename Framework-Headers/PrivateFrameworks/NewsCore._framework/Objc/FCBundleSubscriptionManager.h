@@ -15,6 +15,7 @@
 
 @interface FCBundleSubscriptionManager : NSObject <FCAppActivityObserving, FCBundleChannelProviderDelegate, FCBundleSubscriptionManagerType>
 {
+    BOOL _hasRunEntitlementOnce;
     id<FCBundleEntitlementsProviderType> _bundleEntitlementsProvider;
     FCPurchaseLookupRecordSource *_purchaseLookupRecordSource;
     FCBundleSubscription *_cachedSubscription;
@@ -36,6 +37,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<FCEntitlementsOverrideProviderType> entitlementsOverrideProvider; // @dynamic entitlementsOverrideProvider;
+@property (nonatomic) BOOL hasRunEntitlementOnce; // @synthesize hasRunEntitlementOnce=_hasRunEntitlementOnce;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) FCKeyValueStore *localStore; // @synthesize localStore=_localStore;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
@@ -63,6 +65,7 @@
 - (void)renewalNoticeShownWithPurchaseID:(id)arg1;
 - (void)setupCachedSubscription;
 - (void)updateCachedSubscriptionWithSubscription:(id)arg1;
+- (void)updateHasRunEntitlementOnce:(BOOL)arg1;
 
 @end
 

@@ -10,7 +10,10 @@
 {
 }
 
-- (void)sendAcceptSubcredentialProvisioningRequestForInvitationWithIdentifier:(id)arg1 metadata:(id)arg2;
+- (void)fetchAccountAttestationAnonymizationSaltOnRemoteDeviceWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchAccountAttestationAnonymizationSaltResponse:(id)arg1;
+- (void)registerProtobufActionsForService:(id)arg1;
+- (void)sendAcceptSubcredentialProvisioningRequestForInvitation:(id)arg1 metadata:(id)arg2;
 
 @end
 

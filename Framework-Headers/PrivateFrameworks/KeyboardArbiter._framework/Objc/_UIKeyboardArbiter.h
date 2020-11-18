@@ -58,7 +58,7 @@
 - (id)handlerForBundleID:(id)arg1;
 - (id)handlerForPID:(int)arg1;
 - (id)handlerForToken:(id)arg1;
-- (void)handlerRequestedFocus:(id)arg1;
+- (void)handlerRequestedFocus:(id)arg1 shouldStealKeyboard:(BOOL)arg2;
 - (id)initWithLink:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)newClientConnected:(id)arg1 withExpectedState:(id)arg2 onConnected:(CDUnknownBlockType)arg3;

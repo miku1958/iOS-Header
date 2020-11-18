@@ -68,6 +68,7 @@
     NSSet *_credentialInvitations;
     NSDictionary *_credentialInvitationForPass;
     NSSet *_passesThatMayRequestCredentialInvitations;
+    BOOL _credentialSharingAllowed;
     id<PKPassbookSettingsDelegate> _delegate;
 }
 
@@ -182,6 +183,7 @@
 - (void)switchSpinnerCell:(id)arg1 hasToggledSwitch:(BOOL)arg2;
 - (void)userCanceledPairingWithSubcredentialProvisioningFlowController:(id)arg1;
 - (void)verifyButtonPressedForPaymentPass:(id)arg1;
+- (id)watchPassReaderIdentifiers;
 
 @end
 

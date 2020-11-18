@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSURL *tokenServerURL;
 @property (readonly, nonatomic) NSURL *tvAppDeeplinkURL;
 @property (readonly, nonatomic) VUIRouterDataSource *upsellRouterDataSource;
+@property (readonly, nonatomic) NSString *utsEntityType;
 @property (readonly, nonatomic) NSDictionary *vpafMetrics;
 
 + (id)videosPlayablesFromDictionaries:(id)arg1 andMetadataDictionary:(id)arg2;

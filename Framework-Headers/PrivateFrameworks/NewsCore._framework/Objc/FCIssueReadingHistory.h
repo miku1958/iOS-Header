@@ -55,15 +55,18 @@
 - (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (BOOL)hasIssueWithIDBeenBadged:(id)arg1;
 - (BOOL)hasIssueWithIDBeenEngaged:(id)arg1;
+- (BOOL)hasIssueWithIDBeenSeen:(id)arg1;
 - (BOOL)hasIssueWithIDBeenVisited:(id)arg1;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 - (id)lastEngagedDateForIssueWithID:(id)arg1;
 - (id)lastRemovedFromMyMagazinesDateForIssueWithID:(id)arg1;
+- (id)lastSeenDateForIssueWithID:(id)arg1;
 - (id)lastVisitedDateForIssueWithID:(id)arg1;
 - (void)loadLocalCachesFromStore;
 - (void)markIssueAsBadgedWithID:(id)arg1;
 - (void)markIssueAsEngagedWithID:(id)arg1;
 - (void)markIssueAsRemovedFromMyMagazinesWithID:(id)arg1;
+- (void)markIssueAsSeenWithID:(id)arg1;
 - (void)markIssueWithID:(id)arg1 asVisitedWithBookmark:(id)arg2;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (void)removeObserver:(id)arg1;

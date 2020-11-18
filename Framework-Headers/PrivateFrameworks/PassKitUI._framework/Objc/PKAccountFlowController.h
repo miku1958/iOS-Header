@@ -46,7 +46,7 @@
 
 + (id)displayableErrorForError:(id)arg1 featureIdentifier:(unsigned long long)arg2 genericErrorTitle:(id)arg3 genericErrorMessage:(id)arg4;
 - (void).cxx_destruct;
-- (void)_accountProvisoningControllerRequiresNextViewController:(id)arg1;
+- (void)_accountProvisioningControllerRequiresNextViewController:(id)arg1;
 - (void)_acquireAssertion;
 - (void)_checkAccountProvisioningControllerState:(id)arg1;
 - (unsigned long long)_fitleredOperations:(unsigned long long)arg1 account:(id)arg2 context:(long long)arg3;

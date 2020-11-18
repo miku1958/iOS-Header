@@ -10,7 +10,6 @@
 
 @interface SBFluidSwitcherAnimationSettings : PTSettings
 {
-    BOOL _animateAppSelectionDimming;
     SBFFluidBehaviorSettings *_layoutSettings;
     SBFFluidBehaviorSettings *_zoomUpSettings;
     SBFFluidBehaviorSettings *_iconZoomDownSettings;
@@ -68,7 +67,6 @@
     SBFFluidBehaviorSettings *_centerZoomOpacitySettings;
     SBFFluidBehaviorSettings *_wallpaperScaleSettings;
     SBFFluidBehaviorSettings *_appSelectionSquishSettings;
-    SBFFluidBehaviorSettings *_appSelectionDimSettings;
     SBFFluidBehaviorSettings *_statusBarFadeInSettings;
     SBFFluidBehaviorSettings *_statusBarFadeOutSettings;
     double _statusBarToApexBounceAnimationDuration;
@@ -117,8 +115,6 @@
 @property (nonatomic) double alertCardifiedDismissHapticDelay; // @synthesize alertCardifiedDismissHapticDelay=_alertCardifiedDismissHapticDelay;
 @property (nonatomic) double alertCardifiedDismissZoomOutDelay; // @synthesize alertCardifiedDismissZoomOutDelay=_alertCardifiedDismissZoomOutDelay;
 @property (strong, nonatomic) SBFFluidBehaviorSettings *alertCardifiedDismissalSettings; // @synthesize alertCardifiedDismissalSettings=_alertCardifiedDismissalSettings;
-@property (nonatomic) BOOL animateAppSelectionDimming; // @synthesize animateAppSelectionDimming=_animateAppSelectionDimming;
-@property (strong, nonatomic) SBFFluidBehaviorSettings *appSelectionDimSettings; // @synthesize appSelectionDimSettings=_appSelectionDimSettings;
 @property (strong, nonatomic) SBFFluidBehaviorSettings *appSelectionSquishSettings; // @synthesize appSelectionSquishSettings=_appSelectionSquishSettings;
 @property (strong, nonatomic) SBFFluidBehaviorSettings *appToSwitcherCornerRadiusSettings; // @synthesize appToSwitcherCornerRadiusSettings=_appToSwitcherCornerRadiusSettings;
 @property (nonatomic) double appToSwitcherTransitionMinCardScaleFactor; // @synthesize appToSwitcherTransitionMinCardScaleFactor=_appToSwitcherTransitionMinCardScaleFactor;

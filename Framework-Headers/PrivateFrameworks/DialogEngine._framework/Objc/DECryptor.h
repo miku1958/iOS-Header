@@ -6,30 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@interface DECryptor : NSObject
+#import <DialogEngine/DEWriter-Protocol.h>
+
+@protocol DEWriter;
+
+@interface DECryptor : NSObject <DEWriter>
 {
-    BOOL _compressed;
-    BOOL _streamEnded;
     unsigned int _operation;
+    NSObject<DEWriter> *_writer;
     struct _CCCryptor *_cryptor;
-    struct z_stream_s _stream;
 }
 
-@property (nonatomic) BOOL compressed; // @synthesize compressed=_compressed;
 @property (nonatomic) struct _CCCryptor *cryptor; // @synthesize cryptor=_cryptor;
 @property (nonatomic) unsigned int operation; // @synthesize operation=_operation;
-@property (nonatomic) struct z_stream_s stream; // @synthesize stream=_stream;
-@property (nonatomic) BOOL streamEnded; // @synthesize streamEnded=_streamEnded;
+@property (strong, nonatomic) NSObject<DEWriter> *writer; // @synthesize writer=_writer;
 
-+ (BOOL)isCompressed:(id)arg1;
-- (id)compress:(id)arg1 finalize:(BOOL)arg2;
+- (void).cxx_destruct;
+- (void)close;
 - (void)dealloc;
-- (id)decompress:(id)arg1;
-- (id)finalize;
-- (id)initForDecryption:(id)arg1 iv:(id)arg2 compressed:(BOOL)arg3;
-- (id)initForEncryption:(id)arg1 iv:(id)arg2;
-- (id)initWithOperation:(unsigned int)arg1 key:(id)arg2 iv:(id)arg3 compressed:(BOOL)arg4;
-- (id)write:(id)arg1;
+- (id)init;
+- (id)initWithWriter:(id)arg1 operation:(unsigned int)arg2 key:(id)arg3 iv:(id)arg4;
+- (void)writeData:(id)arg1;
 
 @end
 

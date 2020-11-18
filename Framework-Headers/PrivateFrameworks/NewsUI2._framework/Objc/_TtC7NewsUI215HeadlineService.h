@@ -15,6 +15,7 @@
     MISSING_TYPE *appConfigurationManager;
     MISSING_TYPE *headlineServiceOperationQueue;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *queryTimeRangeProvider;
 }
 

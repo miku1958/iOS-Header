@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKSubcredentialProvisioningSessionOperation.h>
+#import <PassKitCore/PKSubcredentialProvisioningPairingSessionOperation.h>
 
 #import <PassKitCore/PKAppletSubcredentialPairingSessionDelegate-Protocol.h>
 
 @class NSString;
 
-@interface PKSubcredentialProvisioningHoldNearReaderOperation : PKSubcredentialProvisioningSessionOperation <PKAppletSubcredentialPairingSessionDelegate>
+@interface PKSubcredentialProvisioningHoldNearReaderOperation : PKSubcredentialProvisioningPairingSessionOperation <PKAppletSubcredentialPairingSessionDelegate>
 {
     BOOL _operationWasCancelled;
 }
@@ -22,6 +22,7 @@
 
 - (void)appletSubcredentialPairingSession:(id)arg1 didEndPairingWithError:(id)arg2;
 - (void)appletSubcredentialPairingSession:(id)arg1 didEndPairingWithSubcredential:(id)arg2 registrationData:(id)arg3;
+- (void)appletSubcredentialPairingSessionDidBeginPairing:(id)arg1;
 - (BOOL)canCancelOperation;
 - (void)cancelOperation;
 - (void)performOperation;

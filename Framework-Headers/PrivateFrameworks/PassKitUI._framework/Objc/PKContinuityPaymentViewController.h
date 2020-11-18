@@ -31,6 +31,8 @@
     UIViewController *_passphraseViewController;
     BOOL _viewAppeared;
     BOOL _userIntentRequired;
+    long long _internalFaceIDState;
+    long long _coachingState;
     long long _internalCoachingState;
     NSArray *_defaultConstraints;
     NSArray *_compactConstraints;
@@ -71,7 +73,7 @@
 - (void)_suspendAuthentication;
 - (void)_timeoutFired;
 - (void)_updateCardView;
-- (void)_updateCoachingInstruction;
+- (BOOL)_updateCoachingInstruction;
 - (void)_updatePendingTransaction:(id)arg1 withAuthorizationStateParam:(id)arg2;
 - (void)_updateUserIntentRequired;
 - (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;

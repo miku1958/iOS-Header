@@ -123,7 +123,7 @@
 - (void)hasInAppPrivateLabelPaymentPassesForApplicationIdentifier:(id)arg1 issuerCountryCodes:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)hasInAppPrivateLabelPaymentPassesForWebDomain:(id)arg1 issuerCountryCodes:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (BOOL)hasPassesOfType:(unsigned long long)arg1;
-- (BOOL)hasPassesWithSupportedNetworks:(id)arg1 merchantCapabilities:(unsigned long long)arg2 webDomain:(id)arg3;
+- (BOOL)hasPassesWithSupportedNetworks:(id)arg1 merchantCapabilities:(unsigned long long)arg2 issuerCountryCodes:(id)arg3 webDomain:(id)arg4;
 - (id)imageSetForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 suffix:(id)arg4;
 - (id)inAppPaymentPassesForPaymentRequest:(id)arg1;
 - (id)inAppPrivateLabelPaymentPassesForApplicationIdentifier:(id)arg1 issuerCountryCodes:(id)arg2;

@@ -16,6 +16,7 @@
 
 @property (readonly, copy, nonatomic) NSDate *bootDate;
 @property (readonly, copy, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
+@property (readonly, nonatomic, getter=isEphemeralMultiUser) BOOL ephemeralMultiUser;
 @property (readonly, nonatomic) unsigned long long platform;
 @property (readonly, copy, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 

@@ -10,15 +10,16 @@
 
 @interface DirectoryWatcher : NSObject
 {
-    id<DirectoryWatcherDelegate> delegate;
     int dirFD;
     int kq;
     struct __CFFileDescriptor *dirKQRef;
+    id<DirectoryWatcherDelegate> delegate;
 }
 
-@property (nonatomic) id<DirectoryWatcherDelegate> delegate; // @synthesize delegate;
+@property (weak, nonatomic) id<DirectoryWatcherDelegate> delegate; // @synthesize delegate;
 
 + (id)watchFolderWithPath:(id)arg1 delegate:(id)arg2;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;

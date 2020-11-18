@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *platterView;
     MISSING_TYPE *$__lazy_storage_$_expandableView;
-    MISSING_TYPE *$__lazy_storage_$_footerView;
     MISSING_TYPE *$__lazy_storage_$_panelView;
+    MISSING_TYPE *footerView;
     MISSING_TYPE *layout;
     MISSING_TYPE *$__lazy_storage_$_platterContainerView;
     MISSING_TYPE *$__lazy_storage_$_hangerView;
@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *initialExpandableHeight;
     MISSING_TYPE *maxExpandableHeight;
     MISSING_TYPE *scrollDraggedOffset;
-    MISSING_TYPE *isInitialState;
     MISSING_TYPE *isScrollable;
+    MISSING_TYPE *isPartiallyExpanded;
 }
 
 - (void).cxx_destruct;

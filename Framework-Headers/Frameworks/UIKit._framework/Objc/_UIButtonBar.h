@@ -56,7 +56,7 @@
 
 @property (weak, nonatomic) id<_UIButtonBarAppearanceDelegate> _appearanceDelegate; // @synthesize _appearanceDelegate=__appearanceDelegate;
 @property (nonatomic) BOOL allowsViewWrappers;
-@property (strong, nonatomic) _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
+@property (weak, nonatomic) _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
 @property (readonly, nonatomic) UIView<UIPointerInteractionDelegate> *assistantView;
 @property (copy, nonatomic) NSArray *barButtonGroups; // @synthesize barButtonGroups=_barButtonGroups;
 @property (nonatomic, getter=_compact, setter=_setCompact:) BOOL compact; // @synthesize compact=_compact;
@@ -123,6 +123,7 @@
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
 - (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)setNeedsHitTestUpdate;
 
 @end
 

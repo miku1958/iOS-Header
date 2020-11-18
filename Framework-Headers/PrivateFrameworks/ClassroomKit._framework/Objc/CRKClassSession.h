@@ -31,6 +31,7 @@
 - (id)lastMatchMessageForCurrentDate:(id)arg1;
 - (void)logBeaconFound;
 - (void)lostBeacon;
+- (id)stateDictionary;
 
 @end
 

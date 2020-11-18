@@ -107,6 +107,7 @@
 - (void)_handleAudioSystemFailure;
 - (void)_handleDidStartAudioStreamWithResult:(BOOL)arg1 error:(id)arg2;
 - (void)_handleDidStopAudioStreamWithReason:(long long)arg1;
+- (void)_holdRecordingExceptionIfNeeded:(BOOL)arg1;
 - (void)_holdRecordingTransactionIfNeeded;
 - (BOOL)_isVoiceTriggerInfoAvailableLocally:(id)arg1;
 - (void)_postEpilogueAudioStream;
@@ -156,6 +157,7 @@
 - (void)cancelAudioStreamHold:(id)arg1;
 - (void)configureAlertBehavior:(id)arg1;
 - (BOOL)deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
+- (void)dealloc;
 - (BOOL)duckOthersOption;
 - (void)enableMiniDucking:(BOOL)arg1;
 - (id)holdAudioStreamWithDescription:(id)arg1 timeout:(double)arg2;

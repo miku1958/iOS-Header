@@ -18,8 +18,10 @@
     _UIDragSetDownAnimationWindow *_window;
     CADisplayLink *_displayLink;
     UIViewPropertyAnimator *_remainingItemsPropertyAnimator;
+    UIWindow *_coordinateContainerWindow;
 }
 
+@property (strong, nonatomic) UIWindow *coordinateContainerWindow; // @synthesize coordinateContainerWindow=_coordinateContainerWindow;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

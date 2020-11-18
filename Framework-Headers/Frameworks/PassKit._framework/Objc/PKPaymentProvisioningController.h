@@ -53,11 +53,13 @@
     NSArray *_allowedPaymentNetworks;
     NSSet *_requiredTransitNetworkIdentifiers;
     NSSet *_allowedFeatureIdentifiers;
+    NSSet *_allowedProductIdentifiers;
 }
 
 @property (readonly, copy, nonatomic) NSArray *allCredentials;
 @property (strong, nonatomic) NSSet *allowedFeatureIdentifiers; // @synthesize allowedFeatureIdentifiers=_allowedFeatureIdentifiers;
 @property (strong, nonatomic) NSArray *allowedPaymentNetworks; // @synthesize allowedPaymentNetworks=_allowedPaymentNetworks;
+@property (strong, nonatomic) NSSet *allowedProductIdentifiers; // @synthesize allowedProductIdentifiers=_allowedProductIdentifiers;
 @property (readonly, copy, nonatomic) NSArray *associatedCredentials; // @synthesize associatedCredentials=_associatedCredentials;
 @property (readonly, nonatomic) NSSet *automaticExpressModes; // @synthesize automaticExpressModes=_automaticExpressModes;
 @property (readonly, nonatomic) PKPaymentProvisioningControllerCredentialQueue *credentialProvisioningQueue; // @synthesize credentialProvisioningQueue=_credentialProvisioningQueue;

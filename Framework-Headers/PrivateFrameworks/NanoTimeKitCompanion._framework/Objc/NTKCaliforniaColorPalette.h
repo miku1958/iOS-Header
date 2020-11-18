@@ -47,6 +47,7 @@
 @property (readonly, nonatomic) UIColor *hourHandStrokeColor;
 @property (readonly, nonatomic) UIColor *hourMarkerColor;
 @property (readonly, nonatomic) BOOL isBlackBackground;
+@property (readonly, nonatomic) BOOL isMulticolorPalette;
 @property (readonly, nonatomic) UIColor *largeTickColor;
 @property (readonly, nonatomic) UIColor *platterTextColor;
 @property (readonly, nonatomic) long long richComplicationViewTheme;
@@ -63,9 +64,13 @@
 
 + (id)paletteForColor:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (id)_colorForCircularTicksForMinute:(unsigned long long)arg1;
 - (id)circularDialFillColor;
 - (id)circularDialSubtickColor;
 - (id)circularDialTickColor;
+- (id)colorForCircularTicksForHour:(unsigned long long)arg1;
+- (id)colorForCircularTicksForMinute:(unsigned long long)arg1;
+- (id)colorForHourMarker:(unsigned long long)arg1;
 - (id)initWithColor:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLightColor;

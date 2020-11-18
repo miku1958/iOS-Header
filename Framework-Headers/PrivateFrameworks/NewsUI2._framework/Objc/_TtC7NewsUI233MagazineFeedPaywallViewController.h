@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *paywallView;
     MISSING_TYPE *imageCache;
     MISSING_TYPE *assetManager;
+    MISSING_TYPE *applicationStateManager;
     MISSING_TYPE *isBeingUsedAsPlugin;
     MISSING_TYPE *pluggableDelegate;
     MISSING_TYPE *purchasingSpinnerViewControllerFactory;

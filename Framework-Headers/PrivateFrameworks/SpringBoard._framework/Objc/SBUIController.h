@@ -120,6 +120,7 @@
 - (void)handleDidEndReachabilityAnimation;
 - (BOOL)handleHomeButtonDoublePressDown;
 - (BOOL)handleHomeButtonSinglePressUp;
+- (BOOL)handleHomeButtonSinglePressUpWithSourceType:(unsigned long long)arg1;
 - (void)handleVolumeButtonWithType:(long long)arg1 down:(BOOL)arg2;
 - (void)handleWillBeginReachabilityAnimation;
 - (BOOL)hasVisibleAlertItemOrSheet:(out BOOL *)arg1;

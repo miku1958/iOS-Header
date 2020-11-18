@@ -10,6 +10,7 @@
 
 @interface _TtC8NewsFeed24FormatLayoutViewRenderer : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *presentingViewController;
     MISSING_TYPE *viewNodeRenderer;
     MISSING_TYPE *textNodeRenderer;
     MISSING_TYPE *imageNodeRenderer;

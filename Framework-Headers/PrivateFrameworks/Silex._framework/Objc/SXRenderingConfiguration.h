@@ -6,12 +6,13 @@
 
 #import <Silex/SXJSONObject.h>
 
-@class SXHintsConfigurationOption;
+@class NSArray, SXHintsConfigurationOption;
 
 @interface SXRenderingConfiguration : SXJSONObject
 {
 }
 
+@property (readonly, nonatomic) NSArray *conditionKeys; // @dynamic conditionKeys;
 @property (readonly, nonatomic) SXHintsConfigurationOption *hints; // @dynamic hints;
 
 @end

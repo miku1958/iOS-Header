@@ -9,12 +9,13 @@
 #import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UIViewSubtreeMonitor-Protocol.h>
 
-@class NSMutableDictionary, NSString, UIView;
+@class NSMutableDictionary, NSString, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
 @interface _UIPointerInteractionAssistant : UIPointerInteraction <_UIViewSubtreeMonitor, UIPointerInteractionDelegate>
 {
     UIView *_previewContainer;
+    UIWindow *_monitoredWindow;
     NSMutableDictionary *_assistants;
 }
 
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
 - (struct CGPoint)request:(id)arg1 locationInView:(id)arg2;
 - (void)setAssistedView:(id)arg1 identifier:(id)arg2;
+- (void)willMoveToView:(id)arg1;
 
 @end
 

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *placeholderReplacementsIDs;
 @property (copy, nonatomic) CDUnknownBlockType placeholdersCreationBlock; // @synthesize placeholdersCreationBlock=_placeholdersCreationBlock;
 @property (readonly, nonatomic) NSDictionary *stitchedFieldsAndItemsByItemIDs;
+@property (readonly, nonatomic) NSDictionary *stitchedItemsByParentID;
 
 - (void).cxx_destruct;
 - (void)associateItem:(id)arg1 withPlaceholderID:(id)arg2;

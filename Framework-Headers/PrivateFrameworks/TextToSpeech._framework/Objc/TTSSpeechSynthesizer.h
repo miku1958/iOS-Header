@@ -95,8 +95,8 @@
 + (id)voiceAssetsForTesting;
 + (id)voiceForIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (id)_applySubstitution:(id)arg1 toText:(id)arg2 wordRange:(struct _NSRange)arg3 request:(id)arg4 phonemes:(id *)arg5;
 - (BOOL)_continueSpeakingRequest:(id)arg1 withError:(id *)arg2;
+- (id)_determineSubstitution:(id)arg1 text:(id)arg2 wordRange:(struct _NSRange)arg3 request:(id)arg4;
 - (void)_mediaServicesDied;
 - (BOOL)_pauseSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 synchronously:(BOOL)arg3 error:(id *)arg4;
 - (id)_preprocessText:(id)arg1 languageCode:(id)arg2;

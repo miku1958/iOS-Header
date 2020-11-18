@@ -23,6 +23,7 @@
     NSArray *_replyWithMessageGroupSpecifiers;
     NSArray *_blacklistGroupSpecifiers;
     NSArray *_receiveRelayCallsGroupSpecifiers;
+    NSArray *_GFTProminenceGroupSpecifiers;
     NSArray *_faceTimePhotosGroupSpecifiers;
     NSMutableArray *_addresses;
     NSNumber *_delayedRefreshAnimatedFlag;
@@ -120,6 +121,7 @@
 - (id)getAccountNameForSpecifier:(id)arg1;
 - (id)getFaceTimeEnabledForSpecifier:(id)arg1;
 - (id)getFaceTimePhotosEnabledForSpecifier:(id)arg1;
+- (id)getGFTAudioProminenceEnabledForSpecifier:(id)arg1;
 - (id)getReceiveRelayedCallsEnabledForSpecifier:(id)arg1;
 - (long long)groupIdForSpecifier:(id)arg1;
 - (long long)groupIdForSpecifierId:(id)arg1;
@@ -143,6 +145,7 @@
 - (void)refreshFaceTimePhotosSettingsAnimated:(BOOL)arg1;
 - (void)refreshFaceTimeSettingsAnimated:(BOOL)arg1;
 - (void)refreshFaceTimeSettingsWithDelayAnimated:(BOOL)arg1;
+- (void)refreshGFTProminenceSettingsAnimated:(BOOL)arg1;
 - (void)refreshReceiveRelayCallsSettingsAnimated:(BOOL)arg1;
 - (void)refreshiMessageCallerIDExtraText:(BOOL)arg1;
 - (void)setAliasSelected:(id)arg1;
@@ -150,12 +153,14 @@
 - (void)setFaceTimeEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setFaceTimeEnabled:(id)arg1 specifier:(id)arg2 animated:(BOOL)arg3;
 - (void)setFaceTimePhotosEnabled:(id)arg1 specifier:(id)arg2;
+- (void)setGFTAudioProminenceEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setReceiveRelayedCallsEnabled:(id)arg1 specifier:(id)arg2;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (BOOL)shouldShowBlacklistSettings;
 - (BOOL)shouldShowCallDirectorySettingsBundleSpecifiers;
 - (BOOL)shouldShowExtraTextForiMessageCallerID;
 - (BOOL)shouldShowFaceTimePhotosSpecifiers;
+- (BOOL)shouldShowGFTProminenceSpecifiers;
 - (BOOL)shouldShowICSSettingsBundleSpecifiers;
 - (BOOL)shouldShowReceiveRelayCalls;
 - (BOOL)shouldShowReceiveThumperCalls;
@@ -167,6 +172,7 @@
 - (void)showBlacklistSettings:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)showCallerId:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showFaceTimePhotosSettings:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)showGFTProminenceSettings:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showReceiveRelayCallsSettings:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showReplyWithMessage:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showSpecifiers:(id)arg1 afterGroupId:(id)arg2 animated:(BOOL)arg3;

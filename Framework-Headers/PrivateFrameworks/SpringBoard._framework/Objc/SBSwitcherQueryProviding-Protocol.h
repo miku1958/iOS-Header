@@ -42,6 +42,7 @@
 - (BOOL)isHomeScreenContentRequired;
 - (BOOL)isIndexKillable:(unsigned long long)arg1;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
+- (BOOL)isItemContainerCursorInteractionEnabled;
 - (BOOL)isScrollEnabled;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;

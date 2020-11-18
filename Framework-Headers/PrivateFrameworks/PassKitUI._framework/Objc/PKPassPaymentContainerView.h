@@ -182,6 +182,7 @@
 - (BOOL)_shouldDisplayPrimaryView;
 - (BOOL)_shouldDisplaySecondaryView;
 - (BOOL)_shouldShowTerminalIsNotRequestingPaymentError;
+- (void)_showEmphasisButtonForStateIfPossible:(long long)arg1;
 - (void)_showTerminalIsNotRequestingPaymentError;
 - (void)_showTerminalIsRequestingPaymentError;
 - (void)_startBiometricRecognitionAnimation;
@@ -191,6 +192,7 @@
 - (void)_transitionViewsFromPayState:(long long)arg1 animated:(BOOL)arg2;
 - (void)_updateApplicationsView;
 - (void)_updateAuthenticatorState;
+- (void)_updateCoachingInstruction;
 - (void)_updateContentPrimaryView;
 - (void)_updateContentSecondaryView;
 - (void)_updateVASInfoViewSuppressedTransactionIfNecessary;
@@ -201,6 +203,7 @@
 - (void)authenticatorDidEncounterFingerOn:(id)arg1;
 - (void)authenticatorDidEncounterMatchMiss:(id)arg1;
 - (void)authenticatorWillRestartEvaluation:(id)arg1;
+- (void)coachingStateDidChange;
 - (void)contactlessInterfaceSession:(id)arg1 didEndPersistentCardEmulationWithContext:(id)arg2;
 - (void)contactlessInterfaceSession:(id)arg1 didFinishTransactionWithContext:(id)arg2;
 - (void)contactlessInterfaceSession:(id)arg1 didReceiveExpressState:(unsigned long long)arg2;

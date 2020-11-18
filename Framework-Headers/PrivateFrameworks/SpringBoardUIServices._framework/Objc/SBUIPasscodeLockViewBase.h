@@ -128,6 +128,7 @@
 - (void)_luminanceBoostDidChange;
 - (double)_luminanceBoostFromDisplayBrightness;
 - (double)_luminanceBoostFromLegibility;
+- (void)_noteBottomFaceHasBeenOccluded;
 - (void)_noteDeviceHasBeenUnlockedOnceSinceBoot:(BOOL)arg1;
 - (void)_noteScreenBrightnessDidChange;
 - (void)_notifyDelegatePasscodeEnteredViaMesa;

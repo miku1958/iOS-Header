@@ -6,10 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <VideosUI/TVAppTemplateImpressionable-Protocol.h>
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI28DecoratedShelfViewController : UIViewController
+@interface _TtC8VideosUI28DecoratedShelfViewController : UIViewController <TVAppTemplateImpressionable>
 {
     MISSING_TYPE *shelfViewController;
     MISSING_TYPE *viewElement;
@@ -17,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)impressionableElementsContainedInDocument:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;

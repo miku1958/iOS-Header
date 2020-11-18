@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSMutableArray, NSString;
 
 @interface NTPBSession : PBCodable <NSCopying>
 {
@@ -21,6 +21,7 @@
     long long _userStartDate;
     int _ageBracket;
     float _ageBracketConfidenceLevel;
+    NSString *_appBuildNumber;
     NSData *_appProcessLifetimeId;
     NSString *_appVersion;
     NSString *_browserLanguage;
@@ -53,6 +54,7 @@
     NSString *_previousOsVersion;
     NSString *_productType;
     int _reachabilityStatus;
+    NSMutableArray *_regionIds;
     NSData *_sessionId;
     NSData *_sessionIdWatch;
     int _textSize;
@@ -139,6 +141,7 @@
 @property (nonatomic) int ageBracket; // @synthesize ageBracket=_ageBracket;
 @property (nonatomic) float ageBracketConfidenceLevel; // @synthesize ageBracketConfidenceLevel=_ageBracketConfidenceLevel;
 @property (nonatomic) long long appBuild; // @synthesize appBuild=_appBuild;
+@property (strong, nonatomic) NSString *appBuildNumber; // @synthesize appBuildNumber=_appBuildNumber;
 @property (nonatomic) long long appConfigTreatmentId; // @synthesize appConfigTreatmentId=_appConfigTreatmentId;
 @property (strong, nonatomic) NSData *appProcessLifetimeId; // @synthesize appProcessLifetimeId=_appProcessLifetimeId;
 @property (strong, nonatomic) NSString *appVersion; // @synthesize appVersion=_appVersion;
@@ -159,6 +162,7 @@
 @property (nonatomic) BOOL hasAgeBracket;
 @property (nonatomic) BOOL hasAgeBracketConfidenceLevel;
 @property (nonatomic) BOOL hasAppBuild;
+@property (readonly, nonatomic) BOOL hasAppBuildNumber;
 @property (nonatomic) BOOL hasAppConfigTreatmentId;
 @property (readonly, nonatomic) BOOL hasAppProcessLifetimeId;
 @property (readonly, nonatomic) BOOL hasAppVersion;
@@ -264,6 +268,7 @@
 @property (strong, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property (nonatomic) BOOL progressivePersonalizationAllowed; // @synthesize progressivePersonalizationAllowed=_progressivePersonalizationAllowed;
 @property (nonatomic) int reachabilityStatus; // @synthesize reachabilityStatus=_reachabilityStatus;
+@property (strong, nonatomic) NSMutableArray *regionIds; // @synthesize regionIds=_regionIds;
 @property (nonatomic) BOOL runningObsolete; // @synthesize runningObsolete=_runningObsolete;
 @property (strong, nonatomic) NSData *sessionId; // @synthesize sessionId=_sessionId;
 @property (strong, nonatomic) NSData *sessionIdWatch; // @synthesize sessionIdWatch=_sessionIdWatch;
@@ -287,6 +292,7 @@
 @property (strong, nonatomic) NSData *widgetSessionId; // @synthesize widgetSessionId=_widgetSessionId;
 @property (strong, nonatomic) NSString *widgetUserId; // @synthesize widgetUserId=_widgetUserId;
 
++ (Class)regionIdsType;
 - (void).cxx_destruct;
 - (int)StringAsCampaignType:(id)arg1;
 - (int)StringAsCellularRadioAccessTechnology:(id)arg1;
@@ -296,10 +302,12 @@
 - (int)StringAsWidgetDisplayMode:(id)arg1;
 - (int)StringAsWidgetDisplayModeSessionEnd:(id)arg1;
 - (int)StringAsWidgetModeType:(id)arg1;
+- (void)addRegionIds:(id)arg1;
 - (void)addUserSegmentationSegmentSetIds:(int)arg1;
 - (void)addUserSegmentationTreatmentIds:(long long)arg1;
 - (id)campaignTypeAsString:(int)arg1;
 - (id)cellularRadioAccessTechnologyAsString:(int)arg1;
+- (void)clearRegionIds;
 - (void)clearUserSegmentationSegmentSetIds;
 - (void)clearUserSegmentationTreatmentIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -313,6 +321,8 @@
 - (id)osInstallVariantAsString:(int)arg1;
 - (id)reachabilityStatusAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)regionIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)regionIdsCount;
 - (void)setUserSegmentationSegmentSetIds:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setUserSegmentationTreatmentIds:(long long *)arg1 count:(unsigned long long)arg2;
 - (int)userSegmentationSegmentSetIdsAtIndex:(unsigned long long)arg1;

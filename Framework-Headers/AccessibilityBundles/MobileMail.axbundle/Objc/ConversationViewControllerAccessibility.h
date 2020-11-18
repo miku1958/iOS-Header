@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityFirstElementForFocus;
-- (id)_accessibilityFirstElementForReadFromTop;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityPerformLeadingActionWithCell:(id)arg1;
 - (id)_accessibilityTitleForLeadingActionWithCell:(id)arg1;

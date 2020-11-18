@@ -128,8 +128,8 @@
 - (void)sendComposition:(id)arg1;
 - (void)setupScrollingForKeyboardInteraction;
 - (void)setupStateForLaunchURL:(id)arg1;
-- (void)showFullScreenAcknowledgmentPickerForBalloonAtIndexPath:(id)arg1 showActionMenu:(BOOL)arg2;
 - (void)showFullScreenAcknowledgmentPickerForChatItem:(id)arg1 showActionMenu:(BOOL)arg2;
+- (void)showFullScreenAcknowledgmentPickerIfNeededForBalloonAtIndexPath:(id)arg1 showActionMenu:(BOOL)arg2;
 - (void)significantTimeChange;
 - (void)systemApplicationDidResume;
 - (void)systemApplicationWillEnterForeground;

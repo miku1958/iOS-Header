@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     BOOL _hideLockupTitles;
     BOOL _forceBackButton;
     BOOL _waitingForFetch;
-    BOOL _shouldApplySnapshot;
     VUIFamilyMember *_familyMember;
     id<VUILibraryGridCollectionViewControllerDelegate> _delegate;
     long long _gridFilter;
@@ -59,12 +58,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIBarButtonItem *libraryBarButton; // @synthesize libraryBarButton=_libraryBarButton;
 @property (strong, nonatomic) NSArray *mediaEntities; // @synthesize mediaEntities=_mediaEntities;
 @property (strong, nonatomic) NSString *pageType; // @synthesize pageType=_pageType;
-@property (nonatomic) BOOL shouldApplySnapshot; // @synthesize shouldApplySnapshot=_shouldApplySnapshot;
 @property (strong, nonatomic) UICollectionViewCell *sizingCell; // @synthesize sizingCell=_sizingCell;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL waitingForFetch; // @synthesize waitingForFetch=_waitingForFetch;
 
 - (void).cxx_destruct;
+- (void)_applyInitialSnapshot;
 - (void)_applySnapshotFromEntitiesAndAnimateDifferences:(BOOL)arg1;
 - (double)_computeBottomMargin;
 - (void)_configureSizingCellForItemAtIndexPath:(id)arg1;
@@ -84,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)dataSourceDidFinishFetching:(id)arg1;
 - (void)dataSourceDidFinishFetchingArtwork:(id)arg1;
+- (void)dealloc;
 - (id)initWithDataSource:(id)arg1;
 - (void)loadView;
 - (void)setTitle:(id)arg1 withLargeTitleDisplayEnabled:(BOOL)arg2;
@@ -93,7 +93,6 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

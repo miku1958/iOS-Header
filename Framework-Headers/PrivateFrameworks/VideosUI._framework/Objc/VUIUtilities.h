@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)contentSizeCategoryIsAccessibility:(id)arg1;
 + (id)createImageProxyForResourceObject:(id)arg1 imageSize:(struct CGSize)arg2;
 + (void)gradientConfigForCollection:(id)arg1 gradientMask:(long long)arg2 properties:(id)arg3 configuration:(CDStruct_fe9bf7bc *)arg4;
++ (id)gradientLayerLocationsFromSpacings:(id)arg1 height:(double)arg2;
 + (struct TVCornerRadii)imageCornerRadiiWithStyle:(long long)arg1;
 + (double)imageCornerRadiusWithStyle:(long long)arg1;
 + (struct CGSize)imageSizeWithAspectRatio:(double)arg1 scaleToSize:(struct CGSize)arg2;

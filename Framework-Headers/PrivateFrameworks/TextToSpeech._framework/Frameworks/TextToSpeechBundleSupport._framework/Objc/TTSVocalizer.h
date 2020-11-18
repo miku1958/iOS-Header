@@ -29,7 +29,7 @@
 - (unsigned int)_ttsVocalizerDestroyInstance:(struct _VE_HSAFE *)arg1;
 - (double)_ttsVocalizerGetSampleRate:(struct _VE_HSAFE *)arg1;
 - (BOOL)_ttsVocalizerIsInitialized;
-- (void)_ttsVocalizerLoadProgrammaticRules:(struct _VE_HSAFE)arg1 supportsAccurateWordCallbacks:(unsigned char)arg2;
+- (void)_ttsVocalizerLoadProgrammaticRules:(struct _VE_HSAFE)arg1 supportsAccurateWordCallbacks:(unsigned char)arg2 forTests:(unsigned char)arg3;
 - (struct __CFArray *)_ttsVocalizerLoadedResources;
 - (unsigned int)_ttsVocalizerProcessText:(struct __CFString *)arg1 instance:(struct _VE_HSAFE *)arg2 callback:(CDUnknownFunctionPointerType)arg3 context:(void *)arg4;
 - (unsigned int)_ttsVocalizerReallyLoadResource:(struct _VE_HSAFE)arg1 mimeType:(const char *)arg2 rules:(struct __CFData *)arg3 resource:(struct _VE_HSAFE *)arg4 supportsAccurateWordCallbacks:(unsigned char)arg5 resourceIdentifier:(id)arg6;

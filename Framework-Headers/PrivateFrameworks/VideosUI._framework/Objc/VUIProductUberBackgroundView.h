@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CAGradientLayer, VUIProductUberBackgroundViewLayout, _TVImageView;
+@class CAGradientLayer, UIVisualEffectView, VUIProductUberBackgroundViewLayout, _TVImageView;
 
 __attribute__((visibility("hidden")))
 @interface VUIProductUberBackgroundView : UIView
@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
     VUIProductUberBackgroundViewLayout *_layout;
     _TVImageView *_imageView;
     CAGradientLayer *_maskGradientLayer;
-    UIView *_blurEffectView;
+    UIVisualEffectView *_blurEffectView;
     double _contentOffset;
 }
 
-@property (strong, nonatomic) UIView *blurEffectView; // @synthesize blurEffectView=_blurEffectView;
+@property (strong, nonatomic) UIVisualEffectView *blurEffectView; // @synthesize blurEffectView=_blurEffectView;
 @property (nonatomic) double contentOffset; // @synthesize contentOffset=_contentOffset;
 @property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) VUIProductUberBackgroundViewLayout *layout; // @synthesize layout=_layout;

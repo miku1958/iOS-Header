@@ -28,10 +28,14 @@
     NSHashTable *_subscribedClientConnections;
     HMBCloudZone *_cloudZone;
     HMFTimer *_cloudZoneFetchTimer;
+    HMFTimer *_clipsCleanupTimer;
     unsigned long long _fetchClipsBatchLimit;
     CDUnknownBlockType _cloudFetchTimerFactory;
+    CDUnknownBlockType _clipsCleanupTimerFactory;
 }
 
+@property (strong) HMFTimer *clipsCleanupTimer; // @synthesize clipsCleanupTimer=_clipsCleanupTimer;
+@property (copy) CDUnknownBlockType clipsCleanupTimerFactory; // @synthesize clipsCleanupTimerFactory=_clipsCleanupTimerFactory;
 @property (copy) CDUnknownBlockType cloudFetchTimerFactory; // @synthesize cloudFetchTimerFactory=_cloudFetchTimerFactory;
 @property (strong) HMBCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
 @property (strong) HMFTimer *cloudZoneFetchTimer; // @synthesize cloudZoneFetchTimer=_cloudZoneFetchTimer;
@@ -54,7 +58,10 @@
 + (id)logCategory;
 + (double)maximumClipDuration;
 - (void).cxx_destruct;
-- (void)_cleanUpClipsLeftInProgress;
+- (void)_cleanUpClips;
+- (void)_cleanUpExpiredClips;
+- (void)_cleanUpIncompleteClips;
+- (void)_cleanUpOrphanedSignficantEvents;
 - (void)_fetchAssetContextForMessage:(id)arg1 propertyName:(id)arg2;
 - (id)_fetchAssetContextForProperty:(id)arg1 forClipModel:(id)arg2;
 - (BOOL)_fetchClipsAfterDate:(id)arg1 beforeDate:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;

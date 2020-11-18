@@ -28,6 +28,7 @@
     float _displayHeight;
     NSString *_identifier;
     NSString *_serialNumber;
+    NSString *_trustedExchangeIdentifier;
     unsigned long long _platform;
     NSString *_model;
     NSString *_name;
@@ -143,6 +144,7 @@
 @property (copy, nonatomic) NSString *systemVersion;
 @property (copy, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property (copy, nonatomic) NSArray *trustedAnchorCertificateFingerprints; // @synthesize trustedAnchorCertificateFingerprints=_trustedAnchorCertificateFingerprints;
+@property (copy, nonatomic) NSString *trustedExchangeIdentifier; // @synthesize trustedExchangeIdentifier=_trustedExchangeIdentifier;
 @property (copy, nonatomic) NSString *userDisplayName;
 @property (copy, nonatomic) NSString *userDisplayName; // @synthesize userDisplayName=_userDisplayName;
 @property (copy, nonatomic) NSString *userFamilyName;

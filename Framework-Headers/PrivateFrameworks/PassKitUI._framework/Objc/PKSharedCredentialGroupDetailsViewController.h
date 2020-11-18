@@ -16,11 +16,13 @@
     CNContact *_contact;
     PKSharedCredentialGroup *_group;
     PKSharedCredentialsGroupController *_groupController;
+    BOOL _revokingGroup;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isRevokingGroup) BOOL revokingGroup; // @synthesize revokingGroup=_revokingGroup;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

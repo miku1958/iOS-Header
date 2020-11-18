@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKExpressPassInformation.h>
+#import <PassKit/PKExpressPassInformation.h>
 
 @interface PKExpressPassInformation (NanoPassKit)
 - (BOOL)npk_hasImmediateAutomaticSelectionCriterion;

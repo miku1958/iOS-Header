@@ -16,7 +16,6 @@
 @interface NEProfileIngestionPayloadInfo : NSObject <NEPrettyDescription, NEConfigurationLegacySupport, NSSecureCoding, NSCopying>
 {
     BOOL _isSetAside;
-    BOOL _applicationCreated;
     NSString *_payloadProtocolType;
     NSString *_payloadUUID;
     NSString *_payloadOrganization;
@@ -28,7 +27,6 @@
     long long _profileSource;
 }
 
-@property BOOL applicationCreated; // @synthesize applicationCreated=_applicationCreated;
 @property BOOL isSetAside; // @synthesize isSetAside=_isSetAside;
 @property (copy) NSString *payloadOrganization; // @synthesize payloadOrganization=_payloadOrganization;
 @property (copy) NSString *payloadProtocolType; // @synthesize payloadProtocolType=_payloadProtocolType;

@@ -997,7 +997,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var work : UnsafeMutableRawBufferPointer // +0x10 (0x10)
 
 	// Swift methods
-	0x7fb00  func <stripped> // method 
+	0x7fb70  func <stripped> // method 
  }
 
  struct SiriOntologyProtobuf.TextFormatEncodingOptions {
@@ -1395,10 +1395,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var state : InternalState // +0x20 (0x29)
 
 	// Swift methods
-	0xf2820  func <stripped> // getter 
-	0xf2ce0  func <stripped> // method 
-	0xf2dc0  func <stripped> // method 
-	0xf31f0  func <stripped> // method 
+	0xf2880  func <stripped> // getter 
+	0xf2d40  func <stripped> // method 
+	0xf2e20  func <stripped> // method 
+	0xf3250  func <stripped> // method 
  }
 
  enum SiriOntologyProtobuf.InternalState {
@@ -1481,7 +1481,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var interned :  empty-list  // +0x10 (0x8)
 
 	// Swift methods
-	0xffe70  func <stripped> // method 
+	0xffed0  func <stripped> // method 
  }
 
  struct SiriOntologyProtobuf._NameMap {

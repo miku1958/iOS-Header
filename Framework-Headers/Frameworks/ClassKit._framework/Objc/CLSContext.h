@@ -20,10 +20,10 @@
     NSString *_currentActivityID;
     NSString *_contentStoreIdentifier;
     long long _displayOrder;
+    NSString *_summary;
+    NSString *_customTypeName;
     NSString *_identifier;
     long long _type;
-    NSString *_customTypeName;
-    NSString *_summary;
     NSString *_stableObjectID;
     NSString *_storeTeamID;
     NSString *_storeIdentifier;
@@ -35,7 +35,7 @@
 @property (copy, nonatomic) NSString *contentStoreIdentifier;
 @property (readonly, nonatomic) CLSActivity *currentActivity;
 @property (copy, nonatomic) NSString *currentActivityID;
-@property (copy, nonatomic) NSString *customTypeName; // @synthesize customTypeName=_customTypeName;
+@property (copy, nonatomic) NSString *customTypeName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long displayOrder;
@@ -46,7 +46,7 @@
 @property (copy, nonatomic) NSString *stableObjectID; // @synthesize stableObjectID=_stableObjectID;
 @property (copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 @property (copy, nonatomic) NSString *storeTeamID; // @synthesize storeTeamID=_storeTeamID;
-@property (copy, nonatomic) NSString *summary; // @synthesize summary=_summary;
+@property (copy, nonatomic) NSString *summary;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGImage *thumbnail;
 @property (copy, nonatomic) NSString *title;

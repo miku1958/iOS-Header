@@ -26,6 +26,7 @@
     NSProgress *_progress;
     WFContentSourceTracker *_contentSourceTracker;
     NSString *_identifier;
+    NSString *_metricsIdentifier;
     NSDictionary *_definition;
     WFContentCollection *_input;
     WFContentCollection *_output;
@@ -118,6 +119,7 @@
 @property (readonly, nonatomic) NSString *localizedName;
 @property (readonly, nonatomic) NSString *localizedShortName;
 @property (readonly, nonatomic) NSString *localizedSubtitle;
+@property (readonly, copy, nonatomic) NSString *metricsIdentifier; // @synthesize metricsIdentifier=_metricsIdentifier;
 @property (readonly, nonatomic, getter=isMissing) BOOL missing;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) BOOL neverSuggested;

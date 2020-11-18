@@ -14,9 +14,11 @@
 @interface _HKMedicalIDData : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _isDisabled;
+    BOOL _shareDuringEmergency;
     NSData *_pictureData;
     NSString *_name;
     NSDate *_gmtBirthdate;
+    NSString *_primaryLanguageCode;
     HKQuantity *_height;
     HKQuantity *_weight;
     long long _bloodType;
@@ -46,7 +48,9 @@
 @property (copy, nonatomic) NSString *medicationInfo; // @synthesize medicationInfo=_medicationInfo;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSData *pictureData; // @synthesize pictureData=_pictureData;
+@property (copy, nonatomic) NSString *primaryLanguageCode; // @synthesize primaryLanguageCode=_primaryLanguageCode;
 @property (nonatomic) long long schemaVersion; // @synthesize schemaVersion=_schemaVersion;
+@property (nonatomic) BOOL shareDuringEmergency; // @synthesize shareDuringEmergency=_shareDuringEmergency;
 @property (strong, nonatomic) HKQuantity *weight; // @synthesize weight=_weight;
 
 + (BOOL)supportsSecureCoding;

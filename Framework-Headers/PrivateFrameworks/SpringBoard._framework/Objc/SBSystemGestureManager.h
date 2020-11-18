@@ -9,7 +9,7 @@
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class FBSDisplayIdentity, NSMutableDictionary, NSMutableSet, NSSet, NSString, UIGestureRecognizer;
+@class FBSDisplayIdentity, NSMutableDictionary, NSMutableSet, NSSet, NSString, SBIndirectTouchLifecycleMonitor, UIGestureRecognizer;
 
 @interface SBSystemGestureManager : NSObject <UIGestureRecognizerDelegate, BSDescriptionProviding>
 {
@@ -24,6 +24,7 @@
     NSSet *_gesturesPreventedByStylus;
     UIGestureRecognizer *_stylusPriorityRecognizer;
     BOOL _systemGesturesDisabledForAccessibility;
+    SBIndirectTouchLifecycleMonitor *_indirectTouchLifecycleMonitor;
 }
 
 @property (readonly, nonatomic, getter=isAnyTouchGestureRunning) BOOL anyTouchGestureRunning;
@@ -31,6 +32,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSSet *gesturesPreventedByStylus; // @synthesize gesturesPreventedByStylus=_gesturesPreventedByStylus;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SBIndirectTouchLifecycleMonitor *indirectTouchLifecycleMonitor; // @synthesize indirectTouchLifecycleMonitor=_indirectTouchLifecycleMonitor;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=areSystemGesturesDisabledForAccessibility) BOOL systemGesturesDisabledForAccessibility; // @synthesize systemGesturesDisabledForAccessibility=_systemGesturesDisabledForAccessibility;
 

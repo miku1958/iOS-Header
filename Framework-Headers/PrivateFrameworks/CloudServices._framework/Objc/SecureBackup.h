@@ -27,6 +27,7 @@
     BOOL _usesRandomPassphrase;
     BOOL _usesRecoveryKey;
     BOOL _suppressServerFiltering;
+    BOOL _silentDoubleRecovery;
     NSString *_appleID;
     NSString *_authToken;
     NSDate *_backOffDate;
@@ -37,6 +38,7 @@
     NSString *_emcsCred;
     NSDictionary *_emcsDict;
     NSString *_encodedMetadata;
+    NSString *_duplicateEncodedMetadata;
     NSDictionary *_escrowRecord;
     NSString *_escrowProxyURL;
     NSString *_fmipUUID;
@@ -71,6 +73,7 @@
 @property (copy, nonatomic) NSString *countryDialCode; // @synthesize countryDialCode=_countryDialCode;
 @property (nonatomic) BOOL deleteAll; // @synthesize deleteAll=_deleteAll;
 @property (copy, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
+@property (copy, nonatomic) NSString *duplicateEncodedMetadata; // @synthesize duplicateEncodedMetadata=_duplicateEncodedMetadata;
 @property (copy, nonatomic) NSString *emcsCred; // @synthesize emcsCred=_emcsCred;
 @property (strong, nonatomic) NSDictionary *emcsDict; // @synthesize emcsDict=_emcsDict;
 @property (nonatomic) BOOL emcsMode; // @synthesize emcsMode=_emcsMode;
@@ -97,6 +100,7 @@
 @property (copy, nonatomic) NSString *recoveryKey; // @synthesize recoveryKey=_recoveryKey;
 @property (strong, nonatomic) SESWrapper *ses; // @synthesize ses=_ses;
 @property (nonatomic) BOOL silent; // @synthesize silent=_silent;
+@property (nonatomic) BOOL silentDoubleRecovery; // @synthesize silentDoubleRecovery=_silentDoubleRecovery;
 @property (copy, nonatomic) NSString *smsTarget; // @synthesize smsTarget=_smsTarget;
 @property (nonatomic) BOOL stingray; // @synthesize stingray=_stingray;
 @property (nonatomic) BOOL suppressServerFiltering; // @synthesize suppressServerFiltering=_suppressServerFiltering;
@@ -159,6 +163,7 @@
 - (void)recoverWithInfo:(id)arg1 completionBlockWithResults:(CDUnknownBlockType)arg2;
 - (id)recoverWithInfo:(id)arg1 results:(id *)arg2;
 - (void)recoverWithResults:(CDUnknownBlockType)arg1;
+- (BOOL)requiresDoubleEnrollment;
 - (void)setBackOffDateWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)setBackOffDateWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)srpInitNonce;

@@ -14,7 +14,6 @@
 @interface PKTransitAppletHistoryRecord : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _transitModifiers;
-    BOOL _appletStateDirty;
     NSNumber *_historySequenceNumber;
     unsigned long long _type;
     unsigned long long _subtype;
@@ -34,7 +33,6 @@
 
 @property (copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
 @property (copy, nonatomic) NSArray *amounts; // @synthesize amounts=_amounts;
-@property (nonatomic) BOOL appletStateDirty; // @synthesize appletStateDirty=_appletStateDirty;
 @property (copy, nonatomic) NSDecimalNumber *balance; // @synthesize balance=_balance;
 @property (copy, nonatomic) NSNumber *cityCode; // @synthesize cityCode=_cityCode;
 @property (nonatomic) unsigned long long detail; // @synthesize detail=_detail;
@@ -58,7 +56,8 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_setTransactionHistoryDetailsFromString:(id)arg1;
-- (id)concreteTransactionWithCurrency:(id)arg1;
+- (id)_transactionAmountsWithBalanceLabels:(id)arg1;
+- (id)concreteTransactionWithCurrency:(id)arg1 balanceLabels:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
@@ -68,7 +67,6 @@
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToTransitAppletHistoryRecord:(id)arg1;
-- (id)transactionAmounts;
 
 @end
 

@@ -31,6 +31,7 @@
 - (void)dismiss;
 - (void)productViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

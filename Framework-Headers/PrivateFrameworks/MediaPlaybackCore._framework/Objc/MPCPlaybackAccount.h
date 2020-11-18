@@ -8,7 +8,7 @@
 
 #import <MediaPlaybackCore/NSCopying-Protocol.h>
 
-@class ICUserIdentity, NSString;
+@class ICMusicSubscriptionStatus, ICUserIdentity, NSString;
 
 @interface MPCPlaybackAccount : NSObject <NSCopying>
 {
@@ -17,23 +17,26 @@
     BOOL _activeAccount;
     ICUserIdentity *_userIdentity;
     NSString *_hashedDSID;
-    unsigned long long _subscriptionCapabilities;
     NSString *_storeFrontIdentifier;
+    ICMusicSubscriptionStatus *_subscriptionStatus;
 }
 
 @property (nonatomic, getter=isActiveAccount) BOOL activeAccount; // @synthesize activeAccount=_activeAccount;
-@property (nonatomic, getter=isDelegated) BOOL delegated; // @synthesize delegated=_delegated;
+@property (readonly, nonatomic, getter=isDelegated) BOOL delegated; // @synthesize delegated=_delegated;
+@property (readonly, nonatomic) BOOL hasCatalogPlaybackCapability;
 @property (nonatomic) BOOL hasCloudLibraryEnabled; // @synthesize hasCloudLibraryEnabled=_hasCloudLibraryEnabled;
 @property (copy, nonatomic) NSString *hashedDSID; // @synthesize hashedDSID=_hashedDSID;
 @property (copy, nonatomic) NSString *storeFrontIdentifier; // @synthesize storeFrontIdentifier=_storeFrontIdentifier;
-@property (readonly, nonatomic) unsigned long long subscriptionCapabilities; // @synthesize subscriptionCapabilities=_subscriptionCapabilities;
+@property (readonly, nonatomic) ICMusicSubscriptionStatus *subscriptionStatus; // @synthesize subscriptionStatus=_subscriptionStatus;
 @property (readonly, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
+@property (readonly, nonatomic) BOOL usesLease;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithUserIdentity:(id)arg1 subscriptionCapabilities:(unsigned long long)arg2;
+- (id)initWithDelegatedUserIdentity:(id)arg1;
+- (id)initWithUserIdentity:(id)arg1 subscriptionStatus:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

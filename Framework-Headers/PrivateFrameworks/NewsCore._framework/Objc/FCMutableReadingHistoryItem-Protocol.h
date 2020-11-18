@@ -23,6 +23,7 @@
 @property (copy, nonatomic) NSDate *lastVisitedAt;
 @property (nonatomic) long long maxVersionRead;
 @property (nonatomic) long long maxVersionSeen;
+@property (nonatomic) long long readCount;
 @property (copy, nonatomic) NSString *sourceChannelTagID;
 
 @end

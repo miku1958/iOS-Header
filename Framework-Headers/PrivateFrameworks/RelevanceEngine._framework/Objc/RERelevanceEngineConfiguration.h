@@ -41,7 +41,7 @@
 @property (readonly, nonatomic) unsigned long long trainingBehavior;
 @property (readonly, nonatomic) BOOL wantsBackup;
 @property (readonly, nonatomic) BOOL wantsImmutableContent;
-@property (readonly, nonatomic) NSArray *whitelistedDataSourceClassNames; // @synthesize whitelistedDataSourceClassNames=_whitelistedDataSourceClassNames;
+@property (readonly, copy, nonatomic) NSArray *whitelistedDataSourceClassNames; // @synthesize whitelistedDataSourceClassNames=_whitelistedDataSourceClassNames;
 
 + (id)_defaultModelFileURL;
 + (id)defaultConfiguration;

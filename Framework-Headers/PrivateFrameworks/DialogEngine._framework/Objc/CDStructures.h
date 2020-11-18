@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Blocks
+#pragma mark Function Pointers and Blocks
+
+typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -24,6 +26,12 @@ struct Asset {
     struct ArenaStringPtr _field7;
     unsigned long long _field8;
     int _field9;
+};
+
+struct CC_SHA256state_st {
+    unsigned int count[2];
+    unsigned int hash[8];
+    unsigned int wbuf[16];
 };
 
 struct CachedSize {
@@ -50,7 +58,8 @@ struct Context {
     struct DialogStateFamily _field13;
     BOOL _field14;
     BOOL _field15;
-    BOOL _field16;
+    struct shared_ptr<siri::dialogengine::ExecutionState> _field16;
+    BOOL _field17;
 };
 
 struct CountAndTimestamp {
@@ -89,6 +98,8 @@ struct Encrypted {
     BOOL _field9;
 };
 
+struct ExecutionState;
+
 struct File;
 
 struct Group;
@@ -111,7 +122,8 @@ struct ObjectProperty {
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field2;
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field3;
-    BOOL _field4;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field4;
+    BOOL _field5;
 };
 
 struct ObjectSampleValues {
@@ -312,6 +324,11 @@ struct shared_ptr<siri::dialogengine::ConditionEntry> {
 struct shared_ptr<siri::dialogengine::Dialog> {
     struct Dialog *__ptr_;
     struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<siri::dialogengine::ExecutionState> {
+    struct ExecutionState *_field1;
+    struct __shared_weak_count *_field2;
 };
 
 struct shared_ptr<siri::dialogengine::File> {

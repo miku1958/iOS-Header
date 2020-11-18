@@ -9,6 +9,7 @@
 #import <HealthUI/HKEmergencyCardContactUpdateDelegate-Protocol.h>
 #import <HealthUI/HKEmergencyCardDeletionDelegate-Protocol.h>
 #import <HealthUI/HKEmergencyCardRowHeightChangeDelegate-Protocol.h>
+#import <HealthUI/HKEmergencyCardSelectionTableItemDelegate-Protocol.h>
 #import <HealthUI/HKMedicalIDViewControllerDelegate-Protocol.h>
 #import <HealthUI/UITableViewDataSource-Protocol.h>
 #import <HealthUI/UITableViewDelegate-Protocol.h>
@@ -16,17 +17,17 @@
 @class HKEmergencyCardContactsTableItem, HKEmergencyCardGroupTableItem, HKEmergencyCardNameAndPictureTableItem, HKHealthStore, HKNavigationController, NSArray, NSString, _HKMedicalIDData;
 @protocol HKMedicalIDViewControllerDelegate;
 
-@interface HKMedicalIDViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, HKMedicalIDViewControllerDelegate, HKEmergencyCardDeletionDelegate, HKEmergencyCardRowHeightChangeDelegate, HKEmergencyCardContactUpdateDelegate>
+@interface HKMedicalIDViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, HKMedicalIDViewControllerDelegate, HKEmergencyCardDeletionDelegate, HKEmergencyCardRowHeightChangeDelegate, HKEmergencyCardContactUpdateDelegate, HKEmergencyCardSelectionTableItemDelegate>
 {
     NSArray *_presentableTableItems;
     NSArray *_footers;
+    NSArray *_headers;
     HKEmergencyCardGroupTableItem *_groupItem;
     HKEmergencyCardNameAndPictureTableItem *_nameAndPictureItem;
     HKEmergencyCardContactsTableItem *_contactsItem;
     long long _tableViewStyle;
     BOOL _inBuddy;
     NSArray *_localeItems;
-    NSArray *_accumulatedNumberOfRowsForItems;
     int _medicalIDChangedToken;
     HKNavigationController *_medicalIDEditor;
     NSArray *_organDonationItems;
@@ -36,6 +37,9 @@
     BOOL _showsDeleteButton;
     BOOL _modernAppearance;
     BOOL _shouldShowHints;
+    BOOL _showsShowWhenLockedState;
+    BOOL _showsEmergencyAccessState;
+    BOOL _showsEditMedicalIDRowInViewMode;
     BOOL _inEditMode;
     _HKMedicalIDData *_medicalID;
     HKHealthStore *_healthStore;
@@ -55,6 +59,9 @@
 @property (nonatomic) BOOL shouldShowHints; // @synthesize shouldShowHints=_shouldShowHints;
 @property (nonatomic) BOOL showsDeleteButton; // @synthesize showsDeleteButton=_showsDeleteButton;
 @property (nonatomic) BOOL showsDismissButton; // @synthesize showsDismissButton=_showsDismissButton;
+@property (nonatomic) BOOL showsEditMedicalIDRowInViewMode; // @synthesize showsEditMedicalIDRowInViewMode=_showsEditMedicalIDRowInViewMode;
+@property (nonatomic) BOOL showsEmergencyAccessState; // @synthesize showsEmergencyAccessState=_showsEmergencyAccessState;
+@property (nonatomic) BOOL showsShowWhenLockedState; // @synthesize showsShowWhenLockedState=_showsShowWhenLockedState;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *tableItems; // @synthesize tableItems=_tableItems;
 
@@ -76,6 +83,7 @@
 - (void)_fetchDemographicInformation;
 - (void)_forceDisableBiometricIfDeviceLocked;
 - (id)_newViewForFooterInSection:(long long)arg1;
+- (id)_newViewForHeaderInSection:(long long)arg1;
 - (void)_nextButtonTapped:(id)arg1;
 - (long long)_preferredOrganDonationOrganization;
 - (void)_refreshEmergencyContactsAndReload:(BOOL)arg1;
@@ -101,6 +109,7 @@
 - (void)medicalIDViewControllerDidSave:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)preferredStatusBarStyle;
+- (void)selectionTableItemDidTap:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)tableItem:(id)arg1 heightDidChangeForRowIndex:(long long)arg2 keepRectVisible:(struct CGRect)arg3 inView:(id)arg4;
 - (void)tableItemDidBeginEditing:(id)arg1 keepRectVisible:(struct CGRect)arg2 inView:(id)arg3;
@@ -117,9 +126,10 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)timeZoneDidChange:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateEmergencyContactTableItem;
 - (void)updateNavigationBar;
 - (void)viewDidAppear:(BOOL)arg1;

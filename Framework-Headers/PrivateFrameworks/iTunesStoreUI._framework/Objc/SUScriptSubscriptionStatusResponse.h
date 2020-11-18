@@ -11,7 +11,6 @@
 @interface SUScriptSubscriptionStatusResponse : SUScriptObject
 {
     NSNumber *_acceptedStoreTermsVersion;
-    NSString *_accountIdentifier;
     NSString *_accountStatus;
     NSString *_carrierBundlingStatus;
     NSNumber *_carrierBundlingErrorCode;
@@ -29,7 +28,7 @@
 }
 
 @property (readonly) NSNumber *acceptedStoreTermsVersion; // @synthesize acceptedStoreTermsVersion=_acceptedStoreTermsVersion;
-@property (readonly) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
+@property (readonly) NSString *accountIdentifier;
 @property (readonly) NSString *accountStatus; // @synthesize accountStatus=_accountStatus;
 @property (readonly) NSString *accountStatusNeedsAuthentication;
 @property (readonly) NSString *accountStatusNotSubscribed;

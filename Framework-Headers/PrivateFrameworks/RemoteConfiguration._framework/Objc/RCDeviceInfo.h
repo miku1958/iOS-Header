@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) long long utcOffset; // @synthesize utcOffset=_utcOffset;
 
 + (id)defaultDeviceInfo;
++ (id)defaultDeviceInfoWithAppVersion:(id)arg1;
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 - (id)initWithPreferredLanguages:(id)arg1 deviceType:(id)arg2 utcOffset:(long long)arg3 dstOffset:(long long)arg4 appVersion:(id)arg5 osVersion:(id)arg6;

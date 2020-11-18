@@ -30,6 +30,8 @@
     NSString *_sanitizedPrimaryAccountNumber;
     NSString *_associatedAccountServiceAccountIdentifier;
     NSString *_issuerCountryCode;
+    NSString *_topLeftBackgroundTitle;
+    NSString *_topRightBackgroundTitle;
     NSSet *_paymentApplications;
     NSSet *_devicePaymentApplications;
     PKPaymentApplication *_devicePrimaryPaymentApplication;
@@ -88,6 +90,8 @@
 @property (readonly, nonatomic) BOOL supportsOnlyTransit;
 @property (nonatomic) BOOL supportsPeerPayment; // @synthesize supportsPeerPayment=_supportsPeerPayment;
 @property (nonatomic) BOOL supportsSerialNumberBasedProvisioning; // @synthesize supportsSerialNumberBasedProvisioning=_supportsSerialNumberBasedProvisioning;
+@property (copy, nonatomic) NSString *topLeftBackgroundTitle; // @synthesize topLeftBackgroundTitle=_topLeftBackgroundTitle;
+@property (copy, nonatomic) NSString *topRightBackgroundTitle; // @synthesize topRightBackgroundTitle=_topRightBackgroundTitle;
 @property (copy, nonatomic) NSString *transactionPushTopic; // @synthesize transactionPushTopic=_transactionPushTopic;
 @property (copy, nonatomic) NSURL *transactionServiceRegistrationURL; // @synthesize transactionServiceRegistrationURL=_transactionServiceRegistrationURL;
 @property (copy, nonatomic) NSURL *transactionServiceURL; // @synthesize transactionServiceURL=_transactionServiceURL;
@@ -119,11 +123,13 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 bundle:(id)arg2;
 - (BOOL)isAccessPass;
+- (BOOL)isChinaTransitCredential;
 - (BOOL)isContactlessPaymentSupportedForTransitNetworks:(id)arg1;
 - (BOOL)isDevicePrimaryPaymentApplicationPersonalized;
 - (BOOL)isOctopusPass;
 - (BOOL)isSuicaPass;
 - (BOOL)isTransitPass;
+- (BOOL)needsHardcodedReminderOptions;
 - (id)notificationCenterTitle;
 - (id)paymentApplicationForAID:(id)arg1;
 - (id)paymentApplicationsForSecureElementIdentifiers:(id)arg1;

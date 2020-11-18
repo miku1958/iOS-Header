@@ -21,6 +21,7 @@
     MISSING_TYPE *interactionProvider;
     MISSING_TYPE *configurationProvider;
     MISSING_TYPE *onReuse;
+    MISSING_TYPE *webLinkPresentingViewController;
     MISSING_TYPE *stateMachine;
     MISSING_TYPE *errorState;
     MISSING_TYPE *activityIndicator;

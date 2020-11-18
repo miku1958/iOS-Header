@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _waitingForTransactionToStart;
     BOOL _monitorTransaction;
+    NSString *_transactionID;
     VUICircularProgress *_progressIndicator;
     NSString *_textContentTitleBackup;
 }
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL monitorTransaction; // @synthesize monitorTransaction=_monitorTransaction;
 @property (strong, nonatomic) VUICircularProgress *progressIndicator; // @synthesize progressIndicator=_progressIndicator;
 @property (copy, nonatomic) NSString *textContentTitleBackup; // @synthesize textContentTitleBackup=_textContentTitleBackup;
+@property (copy, nonatomic) NSString *transactionID; // @synthesize transactionID=_transactionID;
 @property (nonatomic, getter=isWaitingForTransactionToStart) BOOL waitingForTransactionToStart; // @synthesize waitingForTransactionToStart=_waitingForTransactionToStart;
 
 - (void).cxx_destruct;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleTransactionDidStartNotification:(id)arg1;
 - (void)_layoutProgressIndicatorIfNeeded;
 - (void)_registerForTransactionNotification;
+- (void)_startListeningForTransactionWithTransactionID:(id)arg1;
 - (id)_transactionBuyParams;
 - (void)_unregisterTransactionNotifications;
 - (void)_updateProgressIndicatorTintColor:(id)arg1;

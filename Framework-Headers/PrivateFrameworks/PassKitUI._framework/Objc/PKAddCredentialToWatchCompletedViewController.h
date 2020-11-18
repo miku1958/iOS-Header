@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) BOOL suppressFieldDetect;
 
 - (void).cxx_destruct;
+- (id)bodyText;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (id)initWithFlowController:(id)arg1 context:(id)arg2;

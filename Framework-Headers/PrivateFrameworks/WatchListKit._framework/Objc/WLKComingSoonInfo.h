@@ -12,7 +12,6 @@
 {
     BOOL _comingSoon;
     NSString *_dateString;
-    NSString *_dateStringShort;
     NSString *_dateFormat;
     unsigned long long _precision;
     NSString *_brandID;
@@ -22,7 +21,6 @@
 @property (readonly, nonatomic, getter=isComingSoon) BOOL comingSoon; // @synthesize comingSoon=_comingSoon;
 @property (readonly, copy, nonatomic) NSString *dateFormat; // @synthesize dateFormat=_dateFormat;
 @property (readonly, copy, nonatomic) NSString *dateString; // @synthesize dateString=_dateString;
-@property (readonly, copy, nonatomic) NSString *dateStringShort; // @synthesize dateStringShort=_dateStringShort;
 @property (readonly, nonatomic) unsigned long long precision; // @synthesize precision=_precision;
 
 + (id)comingSoonItemsWithDictionaries:(id)arg1;

@@ -16,6 +16,7 @@
     BOOL _supportsContactlessPayment;
     BOOL _supportsInAppPayment;
     BOOL _supportsOptionalAuthentication;
+    BOOL _supportsServiceMode;
     BOOL _requiresDeferredAuthorization;
     BOOL _inAppPINRequired;
     BOOL _auxiliary;
@@ -76,6 +77,7 @@
 @property (nonatomic) BOOL supportsInAppPayment; // @synthesize supportsInAppPayment=_supportsInAppPayment;
 @property (nonatomic) BOOL supportsInstantFundsIn; // @synthesize supportsInstantFundsIn=_supportsInstantFundsIn;
 @property (nonatomic) BOOL supportsOptionalAuthentication; // @synthesize supportsOptionalAuthentication=_supportsOptionalAuthentication;
+@property (nonatomic) BOOL supportsServiceMode; // @synthesize supportsServiceMode=_supportsServiceMode;
 @property (readonly, nonatomic) BOOL supportsSuica;
 @property (readonly, nonatomic) BOOL supportsTransit;
 @property (readonly, nonatomic) BOOL supportsTransitHistory;

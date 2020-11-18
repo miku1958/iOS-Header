@@ -66,6 +66,7 @@
     AKAnisetteData *_proxiedDeviceAnisetteData;
     NSString *_appProvidedContext;
     NSString *_masterKey;
+    long long _authenticationMode;
     NSString *_username;
     long long _serviceType;
     NSString *_reason;
@@ -115,6 +116,7 @@
 @property (nonatomic) BOOL anticipateEscrowAttempt; // @synthesize anticipateEscrowAttempt=_anticipateEscrowAttempt;
 @property (copy, nonatomic) NSString *appProvidedContext; // @synthesize appProvidedContext=_appProvidedContext;
 @property (copy, nonatomic) NSDictionary *appProvidedData; // @synthesize appProvidedData=_appProvidedData;
+@property (nonatomic) long long authenticationMode; // @synthesize authenticationMode=_authenticationMode;
 @property (nonatomic) unsigned long long authenticationType; // @synthesize authenticationType=_authenticationType;
 @property (strong, nonatomic) id clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (copy, nonatomic) AKDevice *companionDevice; // @synthesize companionDevice=_companionDevice;

@@ -25,7 +25,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) struct __SecIdentity *underlyingIdentity;
 
-+ (id)identityWithConfiguration:(id)arg1;
++ (id)identityWithConfiguration:(id)arg1 validityDateInterval:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithCertificate:(id)arg1 privateKey:(id)arg2;
 

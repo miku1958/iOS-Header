@@ -10,16 +10,12 @@
 
 @interface _TtC8VideosUI11ImageLayout : _TtC8VideosUI10ViewLayout
 {
-    MISSING_TYPE *$__lazy_storage_$_tvImageLayout;
-    MISSING_TYPE *imageSize;
     MISSING_TYPE *upscaleFactor;
     MISSING_TYPE *aspectRatio;
     MISSING_TYPE *scaleMode;
     MISSING_TYPE *borderColor;
     MISSING_TYPE *borderWidth;
     MISSING_TYPE *continuousBorder;
-    MISSING_TYPE *placeholderResourceName;
-    MISSING_TYPE *cropCode;
 }
 
 @end

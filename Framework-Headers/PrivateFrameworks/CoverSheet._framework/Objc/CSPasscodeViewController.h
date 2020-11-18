@@ -9,7 +9,7 @@
 #import <CoverSheet/PTSettingsKeyObserver-Protocol.h>
 #import <CoverSheet/SBUIPasscodeLockViewDelegate-Protocol.h>
 
-@class CSLockScreenPearlSettings, CSPasscodeBackgroundView, NSString, SBFAuthenticationAssertion, SBUIProudLockContainerViewController, UIColor, UIView;
+@class CSFaceOcclusionMonitor, CSLockScreenPearlSettings, CSPasscodeBackgroundView, NSString, SBFAuthenticationAssertion, SBUIProudLockContainerViewController, UIColor, UIView;
 @protocol CSCoverSheetContextProviding, CSPasscodeViewControllerDelegate, CSWallpaperColorProvider, SBUIPasscodeLockView_Internal;
 
 @interface CSPasscodeViewController : CSCoverSheetViewControllerBase <SBUIPasscodeLockViewDelegate, PTSettingsKeyObserver>
@@ -31,6 +31,7 @@
     UIColor *_wallpaperAverageColorOverride;
     id<CSCoverSheetContextProviding> _coverSheetContext;
     id<CSWallpaperColorProvider> _wallpaperColorProvider;
+    CSFaceOcclusionMonitor *_faceOcclusionMonitor;
 }
 
 @property (nonatomic) BOOL biometricButtonsInitiallyVisible; // @synthesize biometricButtonsInitiallyVisible=_biometricButtonsInitiallyVisible;
@@ -39,6 +40,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CSPasscodeViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CSFaceOcclusionMonitor *faceOcclusionMonitor; // @synthesize faceOcclusionMonitor=_faceOcclusionMonitor;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SBUIProudLockContainerViewController *proudLockContainerViewControllerToUpdate; // @synthesize proudLockContainerViewControllerToUpdate=_proudLockContainerViewControllerToUpdate;
 @property (nonatomic) BOOL showProudLock; // @synthesize showProudLock=_showProudLock;

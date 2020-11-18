@@ -26,14 +26,13 @@
 
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_actionHandlerForItem:(id)arg1 indexPath:(id)arg2;
-- (id)_allocViewForTransitItem:(id)arg1 indexPath:(id)arg2;
-- (unsigned long long)_cellTypeForTransitItem:(id)arg1 indexPath:(id)arg2;
+- (id)_allocViewForTransitItem:(id)arg1;
 - (void)_configureCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
 - (void)_configureView:(id *)arg1 transitItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (id)_identifierForItem:(id)arg1;
 - (id)_passForTransitItem:(id)arg1 indexPath:(id)arg2;
 - (id)_renewActionForItem:(id)arg1 indexPath:(id)arg2 commutePlanIdentifier:(id)arg3;
-- (id)_sampleViewForTransitItem:(id)arg1 indexPath:(id)arg2;
+- (id)_sampleViewForTransitItem:(id)arg1;
 - (id)_topUpActionForItem:(id)arg1 indexPath:(id)arg2 balanceIdentifier:(id)arg3;
 - (BOOL)canSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;

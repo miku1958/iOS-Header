@@ -14,14 +14,14 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let data : ÁM // +0x0
+	let data : wM // +0x0
  }
 
  struct CloudKitCode.Ckcode_ProtectedEnvelope {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : πM
+	var unknownFields : IM
 	var _storage : _StorageClass
  }
 
@@ -29,9 +29,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case encrypted : ÁM
+	case encrypted : wM
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case value : èM
+	case value : M
  }
 
  class CloudKitCode._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -51,7 +51,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let local : Bool // +0x30 (0x1)
 
 	// Swift methods
-	0x8720  func <stripped> // method 
+	0x87b0  func <stripped> // method 
  }
 
  struct CloudKitCode.Ckcode_RecordTransport {
@@ -59,16 +59,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var contents : OneOf_Contents
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : πM
+	var unknownFields : IM
  }
 
  enum CloudKitCode.OneOf_Contents {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case localSerialization : ÁM
+	case localSerialization : wM
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case wireSerialization : ÁM
+	case wireSerialization : wM
  }
 
  class CloudKitCode.CodeOperation {
@@ -76,7 +76,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case url : ìK
+	case url : #K
 	case default  
 	case local  
  }

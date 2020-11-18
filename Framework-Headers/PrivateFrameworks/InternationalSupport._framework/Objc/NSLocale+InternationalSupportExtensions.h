@@ -27,6 +27,7 @@
 + (id)_parentLocaleIdentifierForIdentifier:(id)arg1;
 + (id)_regionLanguageDataForRegionCode:(id)arg1 subdivisionCode:(id)arg2;
 + (id)_supportedKeyboardLanguages;
++ (id)availableSpokenLanguages;
 + (id)baseLanguageFromLanguage:(id)arg1;
 + (id)baseSystemLanguages;
 + (id)deviceLanguage;
@@ -41,6 +42,8 @@
 + (id)minimizedLanguagesFromLanguages:(id)arg1;
 + (id)relatedLanguagesForLanguage:(id)arg1;
 + (id)scriptCodeFromLanguage:(id)arg1;
++ (id)spokenLanguagesForLanguage:(id)arg1;
++ (id)spokenLanguagesForLanguages:(id)arg1 includeLanguagesForRegion:(BOOL)arg2;
 + (id)supportedLanguages;
 + (id)supportedRegions;
 - (id)countryCodeTopLevelDomainsUsingPunycode:(BOOL)arg1;

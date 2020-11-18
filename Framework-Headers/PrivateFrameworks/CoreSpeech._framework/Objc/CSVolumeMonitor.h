@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (void)_startMonitoringWithQueue:(id)arg1;
 - (void)_startObservingSystemControllerLifecycle;
+- (BOOL)_supportAVSystemVolumeFetch;
 - (float)alarmVolume;
 - (void)dealloc;
 - (void)fetchVolumeFromAVSystemControllerForAudioCategory:(id)arg1;

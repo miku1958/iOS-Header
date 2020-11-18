@@ -13,6 +13,7 @@
 {
     struct os_unfair_lock_s _lock;
     NSHashTable *_observers;
+    unsigned long long _enablePersistentFieldDetectionReasons;
     PKFieldProperties *_fieldProperties;
     NSObject<OS_dispatch_queue> *_fieldDetectorSerialQueue;
     NSObject<OS_dispatch_queue> *_replyQueue;
@@ -23,10 +24,13 @@
 @property (readonly, weak, nonatomic) PKFieldProperties *fieldProperties;
 
 - (void).cxx_destruct;
+- (void)_evaulatePersistentFieldDetectionEnablementReasons;
+- (void)_setPersistentFieldDetectionEnabled:(BOOL)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (void)registerObserver:(id)arg1;
+- (void)requestPersistentFieldDetectionEnabled:(BOOL)arg1 withReason:(unsigned long long)arg2;
 - (void)setPersistentFieldDetectionEnabled:(BOOL)arg1;
 - (void)unregisterObserver:(id)arg1;
 

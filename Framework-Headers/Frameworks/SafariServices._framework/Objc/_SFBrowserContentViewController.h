@@ -108,6 +108,7 @@
     BOOL _keepBarsMinimized;
     UIPanGestureRecognizer *_hideNavigationBarGestureRecognizer;
     NSError *_lastLoadErrorForFormatMenu;
+    long long _concurrentNavigationActionPolicyDecisions;
     BOOL _loadWasUserDriven;
     BOOL _webViewIsInFullScreen;
     CDUnknownBlockType _pendingNavigationActionDueToExternalSchemePromptHandler;
@@ -195,7 +196,7 @@
 - (void)_cancelPendingUpdateUserActivityTimer;
 - (void)_cleanUpAfterRedirectToExternalApp;
 - (id)_committedDomainForPreferences;
-- (void)_completeRedirectToExternalNavigationResult:(id)arg1 fromOriginalRequest:(id)arg2 userCancelled:(BOOL)arg3;
+- (void)_completeRedirectToExternalNavigationResult:(id)arg1 fromOriginalRequest:(id)arg2 dialogResult:(long long)arg3;
 - (id)_contextMenuConfigurationForWebView:(id)arg1 element:(id)arg2;
 - (double)_crashBannerDraggingOffsetForContentOffset:(struct CGPoint)arg1;
 - (id)_currentWebView;
@@ -223,6 +224,7 @@
 - (void)_hideReaderAnimated:(BOOL)arg1 deactivationMode:(unsigned long long)arg2;
 - (void)_increasePageZoomSetting;
 - (void)_initialLoadFinishedWithSuccess:(BOOL)arg1;
+- (void)_internalWebViewController:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)_invalidateEVOrganizationName;
 - (void)_invalidateUserActivity;
 - (BOOL)_isPreviewing;

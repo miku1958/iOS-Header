@@ -32,6 +32,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithHandout:(id)arg1;
 - (id)initWithType:(long long)arg1;
+- (void)mergeWithObject:(id)arg1;
 - (BOOL)validateObject:(id *)arg1;
 
 @end

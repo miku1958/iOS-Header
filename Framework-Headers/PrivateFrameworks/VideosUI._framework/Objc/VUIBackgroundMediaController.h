@@ -129,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)loadAlphaImageProxy;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pause;
 - (void)play;

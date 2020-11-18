@@ -76,6 +76,7 @@
 - (void)paymentWebService:(id)arg1 canAcceptInvitation:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)paymentWebService:(id)arg1 canProvisionPaymentPassWithPrimaryAccountIdentifier:(id)arg2;
 - (void)paymentWebService:(id)arg1 configurationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)paymentWebService:(id)arg1 credentialWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 declineSharingInvitation:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 deleteApplicationWithAID:(id)arg2;
 - (void)paymentWebService:(id)arg1 deviceMetadataWithFields:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
@@ -92,6 +93,7 @@
 - (void)paymentWebService:(id)arg1 registrationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 removePass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 removeSharingInvitation:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)paymentWebService:(id)arg1 removeSharingInvitationReceipts:(id)arg2 onCredential:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)paymentWebService:(id)arg1 requestPassUpgrade:(id)arg2 pass:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)paymentWebService:(id)arg1 revokeSharedCredentialGroup:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 setAccountAttestationAnonymizationSalt:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
@@ -112,6 +114,7 @@
 - (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performProductActionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (int)registrationSupportedInCurrentRegionForWebService:(id)arg1;
+- (void)removeExpressPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestBackgroundRegistrationForCredential:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)secureElementIdentifiers;

@@ -25,6 +25,7 @@
 + (id)_dialogWithTitle:(id)arg1 message:(id)arg2 acceptAction:(id)arg3 secondaryAction:(id)arg4 cancelAction:(id)arg5 applicationModal:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
 + (id)_dialogWithTitle:(id)arg1 message:(id)arg2 primaryAction:(id)arg3 secondaryAction:(id)arg4 applicationModal:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (id)allowDownloadDialogWithDownload:(id)arg1 initiatingURL:(id)arg2 allowViewAction:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (id)appLinkRedirectDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)authenticationDialogWithAuthenticationChallenge:(id)arg1 committedURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)authenticatorDialogForPanel:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)blockedPopupWindowDialogWithCompletionHandler:(CDUnknownBlockType)arg1;

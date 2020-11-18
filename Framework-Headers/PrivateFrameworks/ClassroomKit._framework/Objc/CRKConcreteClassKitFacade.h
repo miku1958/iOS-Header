@@ -8,31 +8,60 @@
 
 #import <ClassroomKit/CRKClassKitFacade-Protocol.h>
 
-@class CLSDataStore, NSString;
+@class CRKClassKitAccountEligibilityProvider, NSString;
 
 @interface CRKConcreteClassKitFacade : NSObject <CRKClassKitFacade>
 {
-    CLSDataStore *_dataStore;
+    CRKClassKitAccountEligibilityProvider *_accountEligibilityProvider;
 }
 
+@property (readonly, nonatomic) CRKClassKitAccountEligibilityProvider *accountEligibilityProvider; // @synthesize accountEligibilityProvider=_accountEligibilityProvider;
 @property (readonly, copy, nonatomic) NSString *currentUserDidChangeNotificationName;
 @property (readonly, copy, nonatomic) NSString *currentUserInfoKey;
-@property (readonly, nonatomic) CLSDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isEligibleAccountSignedIn) BOOL eligibleAccountSignedIn;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *studentClassMembershipChangeDarwinNotificationName;
 @property (readonly) Class superclass;
 
++ (id)keyPathsForValuesAffectingEligibleAccountSignedIn;
++ (id)makePersonSortDescriptorsSortingGivenNameFirst:(BOOL)arg1;
 - (void).cxx_destruct;
+- (void)addInstructor:(id)arg1 toClass:(id)arg2;
+- (void)addPerson:(id)arg1 withRole:(unsigned long long)arg2 toClass:(id)arg3;
+- (void)addStudent:(id)arg1 toClass:(id)arg2;
 - (id)classDataObserverWithSortDescriptors:(id)arg1;
 - (id)currentUserDataObserverWithSortDescriptors:(id)arg1;
 - (void)currentUserWithCompletion:(CDUnknownBlockType)arg1;
+- (id)dataStore;
 - (void)deregisterDataObserver:(id)arg1;
 - (void)enrolledClassesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)executeQuery:(id)arg1;
 - (id)init;
+- (void)instructedClassesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)instructorObserverWithSortDescriptors:(id)arg1;
-- (void)instructorsInClassWithID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)instructorsInClassWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)locationsObserverWithSortDescriptors:(id)arg1;
+- (void)locationsWithManagePermissionsForUserWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)locationsWithObjectIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)makeClassWithLocationID:(id)arg1 name:(id)arg2;
+- (id)makeInstructorQueryForSearchString:(id)arg1 sortingGivenNameFirst:(BOOL)arg2 pageSize:(long long)arg3;
+- (id)makePredicateForObjectIDs:(id)arg1;
+- (id)makePredicatesForObjectIDs:(id)arg1;
+- (id)makeQueryForPersonsWithRole:(long long)arg1 searchString:(id)arg2 sortingGivenNameFirst:(BOOL)arg3 pageSize:(long long)arg4;
+- (id)makeStudentQueryForSearchString:(id)arg1 sortingGivenNameFirst:(BOOL)arg2 pageSize:(long long)arg3;
+- (id)objectIDsOfInstructorsInClass:(id)arg1;
+- (id)objectIDsOfMembersInClass:(id)arg1 withRole:(unsigned long long)arg2;
+- (id)objectIDsOfStudentsInClass:(id)arg1;
 - (void)registerDataObserver:(id)arg1;
+- (void)removeClass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeInstructor:(id)arg1 fromClass:(id)arg2;
+- (void)removePerson:(id)arg1 withRole:(unsigned long long)arg2 fromClass:(id)arg3;
+- (void)removeStudent:(id)arg1 fromClass:(id)arg2;
+- (void)saveClass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)studentObserverWithSortDescriptors:(id)arg1;
+- (void)studentsInClassWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

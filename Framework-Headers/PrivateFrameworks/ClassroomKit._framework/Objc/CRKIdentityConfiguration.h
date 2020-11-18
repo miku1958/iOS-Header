@@ -18,12 +18,14 @@
     unsigned int _hashingAlgorithm;
     NSString *_commonName;
     long long _keySizeInBits;
+    NSString *_emailAddress;
 }
 
 @property (nonatomic) BOOL addsClientAuthAndServerAuthEKUs; // @synthesize addsClientAuthAndServerAuthEKUs=_addsClientAuthAndServerAuthEKUs;
 @property (readonly, copy, nonatomic) NSString *commonName; // @synthesize commonName=_commonName;
 @property (nonatomic) BOOL createsCertificateAuthority; // @synthesize createsCertificateAuthority=_createsCertificateAuthority;
 @property (readonly, copy, nonatomic) NSData *dataRepresentation;
+@property (copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property (nonatomic) unsigned int hashingAlgorithm; // @synthesize hashingAlgorithm=_hashingAlgorithm;
 @property (nonatomic) long long keySizeInBits; // @synthesize keySizeInBits=_keySizeInBits;
 

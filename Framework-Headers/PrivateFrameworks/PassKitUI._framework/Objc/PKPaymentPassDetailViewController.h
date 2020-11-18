@@ -64,6 +64,7 @@
     NSArray *_devicePaymentApplications;
     NSArray *_contactlessPaymentApplications;
     PKSharedCredentialsGroupController *_credentialsGroupController;
+    NSArray *_sharedCredentialGroups;
     BOOL _expressModeEnabled;
     BOOL _expressModeSupported;
     PKExpressPassController *_expressPassController;
@@ -137,6 +138,7 @@
     NSDateFormatter *_dueTimeFormatter;
     BOOL _isAppleAccess;
     BOOL _isCredentialedPass;
+    BOOL _canShareCredentials;
     NSObject<OS_dispatch_group> *_initialLoadGroup;
     BOOL _initialLoadTimedout;
     PKTransitBalanceModel *_transitBalanceModel;
@@ -185,6 +187,7 @@
 - (BOOL)_accountServiceRewardsRowIsEnabled:(unsigned long long)arg1;
 - (id)_accountServiceScheduledPaymentsCellForRowIndex:(long long)arg1 tableView:(id)arg2;
 - (unsigned long long)_accountServiceScheduledPaymentsRowTypeForRowIndex:(long long)arg1;
+- (id)_actionForCommutePlan:(id)arg1;
 - (void)_activationFooterPressed:(id)arg1;
 - (id)_activationFooterView;
 - (void)_ampEligbilityUpdated:(BOOL)arg1;
@@ -207,6 +210,7 @@
 - (unsigned long long)_cardInfoSectionGenerateCellWithOutput:(id *)arg1 forRowIndex:(long long)arg2 tableView:(id)arg3;
 - (id)_cellForField:(id)arg1 tableView:(id)arg2;
 - (id)_checkmarkCellWithText:(id)arg1 forTableView:(id)arg2;
+- (BOOL)_commutePlanIsSelectable:(id)arg1 action:(id)arg2;
 - (id)_commuterRouteCellForRowIndex:(long long)arg1 tableView:(id)arg2;
 - (unsigned long long)_contactBankCellWithOutput:(id *)arg1 forRowIndex:(long long)arg2 tableView:(id)arg3;
 - (id)_contactKeysToFetch;
@@ -284,7 +288,6 @@
 - (id)_installmentsPlanCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (BOOL)_isDeletingPass;
 - (BOOL)_isJapaneseRegion;
-- (id)_keyNameInfoCellForTableView:(id)arg1;
 - (id)_linkCellWithText:(id)arg1 forTableView:(id)arg2;
 - (id)_linkedAppCellForTableView:(id)arg1;
 - (id)_linkedApplicationCellForTableView:(id)arg1;
@@ -340,6 +343,7 @@
 - (unsigned long long)_rowIndexForPeerPaymentBalanceActionRow:(unsigned long long)arg1;
 - (unsigned long long)_rowIndexForPrivacyTermsInfoRowType:(unsigned long long)arg1;
 - (id)_scheduledPaymentCellForPayment:(id)arg1 tableView:(id)arg2;
+- (void)_setExpressAccessEnabled:(BOOL)arg1;
 - (void)_setExpressAccessEnabled:(BOOL)arg1 paymentSetupContext:(long long)arg2 authenticationCredential:(id)arg3;
 - (void)_setTransitProperties:(id)arg1;
 - (id)_settingsExpressTransitURL;

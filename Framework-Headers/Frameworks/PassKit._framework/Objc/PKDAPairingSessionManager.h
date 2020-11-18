@@ -14,11 +14,13 @@
 {
     BOOL _probingTerminalPairingStatus;
     NSMutableArray *_probingCompletionBlocks;
+    CDUnknownBlockType _prewarmCompletion;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType prewarmCompletion; // @synthesize prewarmCompletion=_prewarmCompletion;
 @property (readonly, nonatomic) NSMutableArray *probingCompletionBlocks; // @synthesize probingCompletionBlocks=_probingCompletionBlocks;
 @property (nonatomic, getter=isProbingTerminalPairingStatus) BOOL probingTerminalPairingStatus; // @synthesize probingTerminalPairingStatus=_probingTerminalPairingStatus;
 @property (readonly) Class superclass;

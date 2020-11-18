@@ -96,7 +96,7 @@ __attribute__((visibility("hidden")))
 - (void)requestDropOnView:(id)arg1 withOperation:(unsigned long long)arg2 perform:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)requestVisibleItems:(CDUnknownBlockType)arg1;
 - (void)sawDragEndEvent;
-- (void)setUpDropAnimation:(id)arg1;
+- (void)setUpDropAnimation:(id)arg1 contextID:(unsigned int *)arg2 layerRenderID:(unsigned long long *)arg3;
 - (void)takePotentialDrop:(id)arg1;
 - (void)takeVisibleDroppedItems:(id)arg1;
 - (void)updateCentroidFromDragEvent;

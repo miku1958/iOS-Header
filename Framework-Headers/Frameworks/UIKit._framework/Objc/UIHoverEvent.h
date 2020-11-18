@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)_init;
 - (void)_pointerStateDidChange:(id)arg1;
 - (BOOL)_sendEventToGestureRecognizer:(id)arg1;
+- (void)_setNeedsUpdateForWindow:(id)arg1 forcingHitTest:(BOOL)arg2;
 - (id)_touchesByContextId:(unsigned int)arg1 createIfNeeded:(BOOL)arg2;
 - (void)_windowDidDetachContext:(id)arg1;
 - (id)_windows;
@@ -36,7 +37,8 @@ __attribute__((visibility("hidden")))
 - (void)removeTouch:(id)arg1 fromGestureRecognizer:(id)arg2;
 - (void)setHoverTouch:(id)arg1 forContextId:(unsigned int)arg2 pathIndex:(long long)arg3;
 - (void)setNeedsHitTestReset;
-- (void)setNeedsUpdate;
+- (void)setNeedsHitTestResetForWindow:(id)arg1;
+- (void)setNeedsUpdateForWindow:(id)arg1;
 - (long long)subtype;
 - (id)touchesForGestureRecognizer:(id)arg1;
 - (id)touchesForView:(id)arg1;

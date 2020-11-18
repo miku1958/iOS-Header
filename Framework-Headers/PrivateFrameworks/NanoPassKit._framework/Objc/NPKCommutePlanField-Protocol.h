@@ -6,10 +6,13 @@
 
 #import <NanoPassKit/NPKTransitItemField-Protocol.h>
 
+@class NSString;
 @protocol NPKDateRange;
 
 @protocol NPKCommutePlanField <NPKTransitItemField>
 
+@property (readonly, nonatomic) NSString *detailLabel;
+@property (readonly, nonatomic) BOOL isCountBasedCommutePlan;
 @property (readonly, nonatomic) id<NPKDateRange> usageDateRange;
 
 @end

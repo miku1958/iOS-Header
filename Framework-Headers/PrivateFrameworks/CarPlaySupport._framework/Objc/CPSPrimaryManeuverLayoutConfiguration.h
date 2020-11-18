@@ -28,6 +28,8 @@
 - (void).cxx_destruct;
 - (id)_layoutString;
 - (id)description;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToConfiguration:(id)arg1;
 
 @end
 

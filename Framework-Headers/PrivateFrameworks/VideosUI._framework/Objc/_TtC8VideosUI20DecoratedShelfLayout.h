@@ -10,8 +10,11 @@
 
 @interface _TtC8VideosUI20DecoratedShelfLayout : _TtC8VideosUI10ViewLayout
 {
-    MISSING_TYPE *$__lazy_storage_$_logoLayout;
+    MISSING_TYPE *$__lazy_storage_$_channelLogoLayout;
     MISSING_TYPE *$__lazy_storage_$_shelfLayout;
+    MISSING_TYPE *$__lazy_storage_$_verticalStackLayout;
+    MISSING_TYPE *$__lazy_storage_$_logoImageLayout;
+    MISSING_TYPE *$__lazy_storage_$_alphaImageLayout;
 }
 
 - (id)copyWithZone:(void *)arg1;

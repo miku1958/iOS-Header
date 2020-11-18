@@ -20,6 +20,7 @@
     MISSING_TYPE *purchasingSpinnerViewControllerFactory;
     MISSING_TYPE *paywallApplicationStateMonitor;
     MISSING_TYPE *eventHandlerDelegate;
+    MISSING_TYPE *applicationStateManager;
 }
 
 - (void).cxx_destruct;

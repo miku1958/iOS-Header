@@ -14,10 +14,12 @@
 {
     BOOL _sharingRequiresPassword;
     unsigned long long _maxNumberOfSharedCredentials;
+    unsigned long long _numberOfShareableCredentials;
     NSArray *_supportedEntitlements;
 }
 
 @property (nonatomic) unsigned long long maxNumberOfSharedCredentials; // @synthesize maxNumberOfSharedCredentials=_maxNumberOfSharedCredentials;
+@property (nonatomic) unsigned long long numberOfShareableCredentials; // @synthesize numberOfShareableCredentials=_numberOfShareableCredentials;
 @property (nonatomic) BOOL sharingRequiresPassword; // @synthesize sharingRequiresPassword=_sharingRequiresPassword;
 @property (copy, nonatomic) NSArray *supportedEntitlements; // @synthesize supportedEntitlements=_supportedEntitlements;
 

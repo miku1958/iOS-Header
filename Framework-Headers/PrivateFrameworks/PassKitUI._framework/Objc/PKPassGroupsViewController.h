@@ -118,7 +118,7 @@
 - (void)_regionConfigurationDidChangeNotification;
 - (void)_registerForExpressTransactionNotifications:(BOOL)arg1;
 - (void)_resetToRootAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_setupItemForExpressUpgradeMarket:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_setupItemForExpressUpgradeMarket:(id)arg1 hideDisableAction:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_startPassViewedNotificationTimer;
 - (void)_updateFooterSuppressionAnimated:(BOOL)arg1;
 - (void)_updateFooterSuppressionWithContext:(id)arg1;
@@ -192,7 +192,7 @@
 - (void)presentDailyCashForPassUniqueIdentifier:(id)arg1 dateComponents:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentDefaultPaymentPassAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentDiscoveryArticleForItemWithIdentifier:(id)arg1 referrerIdentifier:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)presentExpressUpgradeDetailForPassUniqueID:(id)arg1 marketIdentifier:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)presentExpressUpgradeDetailForPassUniqueID:(id)arg1 marketIdentifier:(id)arg2 hideDisableAction:(unsigned long long)arg3 animated:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)presentGroupTable;
 - (void)presentGroupTableAnimated:(BOOL)arg1;
 - (void)presentInitialState;
@@ -210,7 +210,7 @@
 - (void)presentPassWithUniqueID:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentPassWithUpdateUserNotificationIdentifier:(id)arg1;
 - (void)presentPaymentSetupController;
-- (void)presentPaymentSetupInMode:(long long)arg1 referrerIdentifier:(id)arg2 paymentNetwork:(id)arg3 transitNetworkIdentifier:(id)arg4 allowedFeatureIdentifiers:(id)arg5;
+- (void)presentPaymentSetupInMode:(long long)arg1 referrerIdentifier:(id)arg2 paymentNetwork:(id)arg3 transitNetworkIdentifier:(id)arg4 allowedFeatureIdentifiers:(id)arg5 productIdentifiers:(id)arg6;
 - (void)presentPeerPaymentPassAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentPeerPaymentSetupWithCurrencyAmount:(id)arg1 flowState:(unsigned long long)arg2 senderAddress:(id)arg3;
 - (void)presentPeerPaymentTermsAcceptance;
@@ -218,9 +218,10 @@
 - (void)presentPeerPaymentVerifyIdentity;
 - (void)presentPileOffscreen;
 - (void)presentSpendingSummaryForPassUniqueIdentifier:(id)arg1 type:(unsigned long long)arg2 unit:(unsigned long long)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)presentSubcredentialInvitationWithIdentifier:(id)arg1 animated:(BOOL)arg2;
+- (void)presentSubcredentialInvitationWithIdentifier:(id)arg1 remoteDeviceInvitationIdentifier:(id)arg2 animated:(BOOL)arg3;
 - (BOOL)presentSubcredentialPairingFlowIfPossibleWithAppIdentifier:(id)arg1 animated:(BOOL)arg2;
-- (void)presentSubcredentialPairingFlowWithConfig:(id)arg1 animated:(BOOL)arg2;
+- (BOOL)presentSubcredentialPairingFlowIfPossibleWithIssuer:(id)arg1 password:(id)arg2 animated:(BOOL)arg3;
+- (void)presentSubcredentialPairingFlowWithConfig:(id)arg1 flowType:(long long)arg2 animated:(BOOL)arg3;
 - (void)presentTransactionDetailsForTransactionWithIdentifier:(id)arg1;
 - (void)presentTransactionDetailsForTransactionWithServiceIdentifier:(id)arg1;
 - (void)queuePersistentCardEmulation;
@@ -236,7 +237,7 @@
 - (BOOL)shouldAutorotate;
 - (void)shouldUpdateSectionSubheaderView:(id)arg1;
 - (void)showStatementForIdentifier:(id)arg1 passUniqueIdentifier:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)startPaymentPreflight:(id)arg1 withPaymentSetupMode:(long long)arg2 referrerIdentifier:(id)arg3 paymentNetwork:(id)arg4 transitNetworkIdentifier:(id)arg5 allowedFeatureIdentifiers:(id)arg6;
+- (void)startPaymentPreflight:(id)arg1 withPaymentSetupMode:(long long)arg2 referrerIdentifier:(id)arg3 paymentNetwork:(id)arg4 transitNetworkIdentifier:(id)arg5 allowedFeatureIdentifiers:(id)arg6 productIdentifiers:(id)arg7;
 - (void)subcredentialProvisioningFlowController:(id)arg1 didFinishWithPass:(id)arg2 error:(id)arg3;
 - (unsigned long long)supportedInterfaceOrientations;
 - (BOOL)supportsExternalPresentation;

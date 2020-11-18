@@ -6,14 +6,13 @@
 
 #import <NanoPassKit/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSData, NSDate, NSError, NSString, NSURL, NSUUID, PKAccessPassProvisioningConfiguration, PKAddSecureElementPassConfiguration, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKTransitCommutePlan, PKVerificationChannel;
+@class NSData, NSDate, NSError, NSString, NSURL, NSUUID, PKAddSecureElementPassConfiguration, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKTransitCommutePlan, PKVerificationChannel;
 
 @protocol NPKCompanionServerProtocol <PDXPCServiceExportedInterface>
 - (void)balanceReminderForBalance:(PKPaymentBalance *)arg1 pass:(PKPaymentPass *)arg2 withCompletion:(void (^)(PKPaymentBalanceReminder *))arg3;
 - (void)balancesForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)beginProvisioningFromWatchOfferForPaymentPass:(PKPaymentPass *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (BOOL)canAddSecureElementPassWithConfiguration:(PKAddSecureElementPassConfiguration *)arg1;
-- (BOOL)canProvisionAccessPassWithConfiguration:(PKAccessPassProvisioningConfiguration *)arg1;
 - (void)commutePlanReminderForCommutePlan:(PKTransitCommutePlan *)arg1 pass:(PKPaymentPass *)arg2 withCompletion:(void (^)(PKPaymentCommutePlanReminder *))arg3;
 - (void)connect;
 - (void)defaultCard:(void (^)(NSString *))arg1;
@@ -31,6 +30,7 @@
 - (void)noteWatchOfferDisplayedForPaymentPassWithUniqueID:(NSString *)arg1;
 - (void)paymentPassUniqueIDs:(void (^)(NSSet *))arg1;
 - (void)paymentPassWithDeviceAccountIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentPass *))arg2;
+- (void)paymentPassWithPairedTerminalIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentPass *))arg2;
 - (void)paymentPassWithUniqueID:(NSString *)arg1 reply:(void (^)(PKPaymentPass *))arg2;
 - (void)paymentPassesWithPrimaryAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)peerPaymentAccountForPairingID:(NSUUID *)arg1 withCompletion:(void (^)(PKPeerPaymentAccount *))arg2;

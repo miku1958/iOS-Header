@@ -24,11 +24,12 @@
 @property (readonly, nonatomic) PKPaymentPassAction *action; // @synthesize action=_action;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSString *detailLabel; // @synthesize detailLabel=_detailLabel;
+@property (readonly, nonatomic) NSString *detailLabel;
 @property (readonly, nonatomic) NSString *formattedValue; // @synthesize formattedValue=_formattedValue;
 @property (readonly, nonatomic) BOOL hasPendingUpdate;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL isCountBasedCommutePlan;
 @property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<NPKDateRange> usageDateRange; // @synthesize usageDateRange=_usageDateRange;

@@ -38,7 +38,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_urlByEnsuringQueryItemInURL:(id)arg1 queryItemKey:(id)arg2 queryItemValue:(id)arg3;
+- (id)_urlByEnsuringQueryItemInURL:(id)arg1 percentEncodedQueryItemKey:(id)arg2 percentEncodedQueryItemValue:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

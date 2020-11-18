@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *sessionManager;
     MISSING_TYPE *cloudContext;
+    MISSING_TYPE *client;
     MISSING_TYPE *window;
 }
 

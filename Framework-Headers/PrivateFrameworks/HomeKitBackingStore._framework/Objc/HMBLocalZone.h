@@ -79,6 +79,7 @@
 - (id)inputContext:(id *)arg1;
 - (unsigned long long)insertBlockToRemoveAllModelsAndChildModelsWithType:(unsigned long long)arg1 modelIDs:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (unsigned long long)insertBlockToRemoveAllModelsWithType:(unsigned long long)arg1 modelTypes:(id)arg2 options:(id)arg3 error:(id *)arg4;
+- (unsigned long long)insertBlockToRemoveOrphanedModelsWithType:(unsigned long long)arg1 modelTypes:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (unsigned long long)insertBlockWithType:(unsigned long long)arg1 options:(id)arg2 items:(id)arg3 error:(id *)arg4;
 - (id)logIdentifier;
 - (id)markGroupAsSentWithOutputBlock:(unsigned long long)arg1 tuples:(id)arg2;
@@ -104,6 +105,7 @@
 - (id)removeModelsAndChildModelsWithIDs:(id)arg1 options:(id)arg2;
 - (void)removeObserver:(id)arg1 forModelWithID:(id)arg2;
 - (void)removeObserverForAllModels:(id)arg1;
+- (id)removeOrphanedModelsOfTypes:(id)arg1 options:(id)arg2;
 - (BOOL)removeOutputBlockWithRow:(unsigned long long)arg1 error:(id *)arg2;
 - (id)replicationToken;
 - (id)setExternalData:(id)arg1 forExternalID:(id)arg2;

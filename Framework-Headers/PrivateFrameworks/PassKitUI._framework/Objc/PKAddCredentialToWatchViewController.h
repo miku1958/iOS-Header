@@ -54,7 +54,7 @@
 - (void)showSuccessCheckmark:(BOOL)arg1;
 - (void)startProvisioning;
 - (void)subcredentialProvisioningConfiguration:(id)arg1 requestUserAuthWithCompletion:(CDUnknownBlockType)arg2;
-- (void)subcredentialProvisioningController:(id)arg1 didFinishWithError:(id)arg2;
+- (void)subcredentialProvisioningController:(id)arg1 didFinishWithError:(id)arg2 inState:(long long)arg3;
 - (void)subcredentialProvisioningController:(id)arg1 didFinishWithPass:(id)arg2;
 - (void)viewWillDisappear:(BOOL)arg1;
 

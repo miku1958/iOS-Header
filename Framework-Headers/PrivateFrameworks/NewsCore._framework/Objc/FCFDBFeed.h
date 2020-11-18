@@ -18,6 +18,7 @@
 @property (nonatomic) unsigned long long refreshedToOrder; // @dynamic refreshedToOrder;
 @property (strong, nonatomic) NSOrderedSet *segments; // @dynamic segments;
 
+- (void)_visitContiguousSegmentsInRange:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)awakeFromFetch;
 - (id)contiguousRangeInRange:(id)arg1;
 - (id)contiguousSegmentsInFeedRange:(id)arg1;

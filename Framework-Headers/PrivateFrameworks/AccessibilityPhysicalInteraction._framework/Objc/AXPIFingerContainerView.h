@@ -6,14 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-@class AXPIPinchChainView, NSMutableArray;
+#import <AccessibilityPhysicalInteraction/_UILumaTrackingBackdropViewDelegate-Protocol.h>
+
+@class AXPIPinchChainView, NSMutableArray, _UILumaTrackingBackdropView;
 @protocol AXPIFingerAppearanceDelegate;
 
-@interface AXPIFingerContainerView : UIView
+@interface AXPIFingerContainerView : UIView <_UILumaTrackingBackdropViewDelegate>
 {
     NSMutableArray *_fingerViews;
     UIView *_viewForAnimatingAlpha;
     AXPIPinchChainView *_pinchChainView;
+    _UILumaTrackingBackdropView *_pointerLumaMeasurementView;
     BOOL _shouldAnimatePress;
     BOOL _shouldSuppressFingerVisuals;
     id<AXPIFingerAppearanceDelegate> _appearanceDelegate;
@@ -25,9 +28,11 @@
 @property (nonatomic) BOOL shouldSuppressFingerVisuals; // @synthesize shouldSuppressFingerVisuals=_shouldSuppressFingerVisuals;
 
 - (void).cxx_destruct;
-- (void)_setSystemFilters;
+- (void)_updateLumaMeasurementViewFrame;
 - (void)_updatePinchChainAppearance;
+- (void)_updateSystemFiltersWithBackgroundLuminanceLevel:(unsigned long long)arg1;
 - (void)animateToTapWithDuration:(double)arg1;
+- (void)backgroundLumaView:(id)arg1 didTransitionToLevel:(unsigned long long)arg2;
 - (void)cancelCircularProgressAnimation;
 - (void)clearAllFingersAnimated:(BOOL)arg1 endPointForAnimation:(struct CGPoint)arg2;
 - (unsigned long long)indexOfFingerAtPoint:(struct CGPoint)arg1;
@@ -36,7 +41,6 @@
 - (struct CGRect)rectForFingersAtPoints:(id)arg1;
 - (void)setPressedState:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showFingerModels:(id)arg1 animated:(BOOL)arg2 startPointForAnimation:(struct CGPoint)arg3 shouldShowPinchChain:(BOOL)arg4;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateWithFingerModel:(id)arg1 forFingerAtIndex:(unsigned long long)arg2;
 
 @end

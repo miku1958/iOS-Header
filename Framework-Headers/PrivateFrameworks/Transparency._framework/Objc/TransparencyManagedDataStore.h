@@ -6,24 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSManagedObjectContext, NSPersistentContainer;
+@class NSManagedObjectContext, TransparencyManagedDataStoreController;
 
 @interface TransparencyManagedDataStore : NSObject
 {
+    BOOL _permanentContext;
+    TransparencyManagedDataStoreController *_controller;
     NSManagedObjectContext *_context;
-    NSPersistentContainer *_persistentContainer;
-    _Atomic long long _sequenceId;
+    long long _contextRefCount;
 }
 
-@property (readonly, nonatomic) NSManagedObjectContext *context; // @synthesize context=_context;
-@property (strong) NSPersistentContainer *persistentContainer; // @synthesize persistentContainer=_persistentContainer;
-@property _Atomic long long sequenceId; // @synthesize sequenceId=_sequenceId;
+@property (strong) NSManagedObjectContext *context; // @synthesize context=_context;
+@property long long contextRefCount; // @synthesize contextRefCount=_contextRefCount;
+@property (weak) TransparencyManagedDataStoreController *controller; // @synthesize controller=_controller;
+@property BOOL permanentContext; // @synthesize permanentContext=_permanentContext;
 
 + (id)deserializeLoggableDatas:(id)arg1 error:(id *)arg2;
 + (void)reportCoreDataEventForEntity:(id)arg1 write:(BOOL)arg2 code:(long long)arg3 underlyingError:(id)arg4;
 + (id)serializeLoggableDatas:(id)arg1;
 - (void).cxx_destruct;
-- (id)bundleURL;
 - (BOOL)clearState:(id *)arg1;
 - (BOOL)clearStateForApplication:(id)arg1 error:(id *)arg2;
 - (id)copyStatistics:(id *)arg1;
@@ -34,15 +35,18 @@
 - (unsigned long long)countTotalSMTsForApplication:(id)arg1 error:(id *)arg2;
 - (unsigned long long)countTotalSTHsForApplication:(id)arg1 error:(id *)arg2;
 - (id)createDownloadRecord:(id)arg1;
+- (void)createKTRequestID:(id)arg1 request:(id)arg2;
 - (id)createRequest;
 - (id)createRequestFailure;
+- (id)createRequestWithUri:(id)arg1 application:(id)arg2 accountID:(id)arg3 serverData:(id)arg4 queryRequest:(id)arg5 queryResponse:(id)arg6 type:(unsigned long long)arg7 error:(id *)arg8;
+- (id)createRequestWithUri:(id)arg1 application:(id)arg2 accountID:(id)arg3 serverData:(id)arg4 syncedData:(id)arg5 queryRequest:(id)arg6 queryResponse:(id)arg7 type:(unsigned long long)arg8 clientId:(id)arg9 error:(id *)arg10;
 - (id)createRequestWithUri:(id)arg1 application:(id)arg2 accountID:(id)arg3 serverData:(id)arg4 syncedData:(id)arg5 queryRequest:(id)arg6 queryResponse:(id)arg7 type:(unsigned long long)arg8 error:(id *)arg9;
+- (id)createRequestWithUri:(id)arg1 application:(id)arg2 accountID:(id)arg3 serverData:(id)arg4 type:(unsigned long long)arg5 error:(id *)arg6;
 - (id)createSignedMutationTimestamp:(id)arg1 mutationMs:(unsigned long long)arg2 receiptTime:(double)arg3;
 - (id)createSignedMutationTimestampsFailure;
 - (id)createSignedTreeHeadFailure;
 - (id)createTreeHead;
 - (id)createTreeHead:(id)arg1 application:(id)arg2 logBeginTime:(long long)arg3 logHeadHash:(id)arg4 logType:(long long)arg5 revision:(long long)arg6;
-- (long long)currentSequenceId:(id *)arg1;
 - (void)deleteCompletedRequest:(id)arg1;
 - (BOOL)deleteDownloadRecord:(id)arg1 error:(id *)arg2;
 - (BOOL)deleteDownloadRecordById:(id)arg1 error:(id *)arg2;
@@ -64,7 +68,8 @@
 - (void)gargabeCollectEntity:(id)arg1 predicate:(id)arg2 error:(id *)arg3;
 - (BOOL)hasPendingDownloadForUUID:(id)arg1 error:(id *)arg2;
 - (BOOL)haveTreeHead:(id)arg1 application:(id)arg2 logBeginTime:(long long)arg3 logType:(long long)arg4 revision:(long long)arg5 error:(id *)arg6;
-- (id)init;
+- (id)initWithController:(id)arg1;
+- (id)initWithController:(id)arg1 context:(id)arg2;
 - (id)latestVerifiedTreeHeadRevision:(id)arg1 logBeginMs:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)logMetricsForApplication:(id)arg1 error:(id *)arg2;
 - (BOOL)logRequestMetricsForApplication:(id)arg1 error:(id *)arg2;
@@ -85,13 +90,17 @@
 - (BOOL)persistAndRefaultObject:(id)arg1 error:(id *)arg2;
 - (BOOL)persistAndRefaultObjects:(id)arg1 error:(id *)arg2;
 - (BOOL)persistWithError:(id *)arg1;
+- (BOOL)populateExistingRequestsToLookupTable:(id *)arg1;
 - (BOOL)populateMissingLogHeadHashes:(id *)arg1;
 - (void)refaultObject:(id)arg1;
+- (void)releaseContext;
 - (unsigned long long)requestCount:(id *)arg1;
 - (unsigned long long)requestFailureCount:(id *)arg1;
 - (id)requestFailures:(id *)arg1;
+- (id)requestIds:(id *)arg1;
 - (id)requests:(id *)arg1;
 - (BOOL)resetRequestsToPending:(id)arg1 error:(id *)arg2;
+- (id)retainContext;
 - (BOOL)setResponse:(id)arg1 downloadId:(id)arg2 error:(id *)arg3;
 - (unsigned long long)signedMutationTimestampCount:(id *)arg1;
 - (id)signedMutationTimestamps:(id *)arg1;

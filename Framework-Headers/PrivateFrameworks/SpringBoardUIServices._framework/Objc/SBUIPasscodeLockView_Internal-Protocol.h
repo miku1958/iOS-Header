@@ -24,6 +24,7 @@
 
 @optional
 - (void)_noteAppearingForSmartCoverUnlock:(BOOL)arg1;
+- (void)_noteBottomFaceHasBeenOccluded;
 - (void)_noteDeviceHasBeenUnlockedOnceSinceBoot:(BOOL)arg1;
 @end
 

@@ -14,7 +14,6 @@
 @interface CPManeuver : NSObject <NSCopying, NSSecureCoding>
 {
     CPImageSet *_symbolSet;
-    UIImage *_junctionImage;
     NSArray *_instructionVariants;
     CPTravelEstimates *_initialTravelEstimates;
     NSArray *_attributedInstructionVariants;
@@ -27,6 +26,7 @@
     NSMeasurement *_junctionExitAngle;
     NSSet *_junctionElementAngles;
     long long _displayStyle;
+    CPImageSet *_junctionImageSet;
 }
 
 @property (copy, nonatomic) NSArray *attributedInstructionVariants; // @synthesize attributedInstructionVariants=_attributedInstructionVariants;
@@ -36,7 +36,8 @@
 @property (copy, nonatomic) NSArray *instructionVariants; // @synthesize instructionVariants=_instructionVariants;
 @property (copy, nonatomic) NSSet *junctionElementAngles; // @synthesize junctionElementAngles=_junctionElementAngles;
 @property (copy, nonatomic) NSMeasurement *junctionExitAngle; // @synthesize junctionExitAngle=_junctionExitAngle;
-@property (strong, nonatomic) UIImage *junctionImage; // @synthesize junctionImage=_junctionImage;
+@property (strong, nonatomic) UIImage *junctionImage;
+@property (strong, nonatomic) CPImageSet *junctionImageSet; // @synthesize junctionImageSet=_junctionImageSet;
 @property (nonatomic) unsigned long long junctionType; // @synthesize junctionType=_junctionType;
 @property (nonatomic) unsigned long long maneuverType; // @synthesize maneuverType=_maneuverType;
 @property (copy, nonatomic) NSArray *roadFollowingManeuverVariants; // @synthesize roadFollowingManeuverVariants=_roadFollowingManeuverVariants;

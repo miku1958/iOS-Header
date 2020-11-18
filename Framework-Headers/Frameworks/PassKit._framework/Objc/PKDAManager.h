@@ -21,12 +21,15 @@
 
 - (void).cxx_destruct;
 - (void)declineSharingInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)decryptData:(id)arg1 withCredential:(id)arg2 publicKeyHash:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)decryptData:(id)arg1 withCredential:(id)arg2 ephemeralPublicKey:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)description;
+- (void)immobilizerTokensCountForCredential:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)listCredentialsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)listCredentialsWithSession:(id)arg1 seid:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)prewarmWithIssuerName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)probeTerminalForPairingStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)removeSharedCredentialsWithIdentifiers:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestSharingInvitation:(id)arg1 from:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)rescindInvitations:(id)arg1 onCredential:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)revokeCredential:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

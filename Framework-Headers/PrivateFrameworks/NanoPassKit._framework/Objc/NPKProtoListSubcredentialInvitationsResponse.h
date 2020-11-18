@@ -8,17 +8,19 @@
 
 #import <NanoPassKit/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSMutableArray;
 
 @interface NPKProtoListSubcredentialInvitationsResponse : PBCodable <NSCopying>
 {
-    NSData *_subcredentialInvitationsData;
+    NSMutableArray *_subcredentialInvitationsDatas;
 }
 
-@property (readonly, nonatomic) BOOL hasSubcredentialInvitationsData;
-@property (strong, nonatomic) NSData *subcredentialInvitationsData; // @synthesize subcredentialInvitationsData=_subcredentialInvitationsData;
+@property (strong, nonatomic) NSMutableArray *subcredentialInvitationsDatas; // @synthesize subcredentialInvitationsDatas=_subcredentialInvitationsDatas;
 
++ (Class)subcredentialInvitationsDataType;
 - (void).cxx_destruct;
+- (void)addSubcredentialInvitationsData:(id)arg1;
+- (void)clearSubcredentialInvitationsDatas;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -27,6 +29,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)subcredentialInvitationsDataAtIndex:(unsigned long long)arg1;
+- (unsigned long long)subcredentialInvitationsDatasCount;
 - (void)writeTo:(id)arg1;
 
 @end

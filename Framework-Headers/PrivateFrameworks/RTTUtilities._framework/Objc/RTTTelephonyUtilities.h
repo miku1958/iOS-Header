@@ -66,7 +66,7 @@
 + (BOOL)softwareTTYIsSupported;
 + (BOOL)softwareTTYIsSupportedForContext:(id)arg1;
 - (void).cxx_destruct;
-- (void)_icloudAccountChanged;
+- (void)_processiCloudAccountForRTT;
 - (void)activeSubscriptionsDidChange;
 - (void)carrierSettingsDidChange;
 - (BOOL)contactIsTTYContact:(id)arg1;

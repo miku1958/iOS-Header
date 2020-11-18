@@ -40,6 +40,7 @@
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 - (id)localizedName;
 - (id)localizedSubtitle;
+- (id)metricsIdentifier;
 - (id)name;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (id)serializedParameters;

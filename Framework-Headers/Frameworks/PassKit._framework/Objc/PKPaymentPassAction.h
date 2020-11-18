@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSString, PKEnteredValueActionItem, PKTransitCommutePlan;
+@class NSArray, NSDate, NSDictionary, NSSet, NSString, PKEnteredValueActionItem, PKTransitCommutePlan;
 
 @interface PKPaymentPassAction : NSObject <NSSecureCoding>
 {
@@ -32,6 +32,7 @@
     NSString *_serviceProviderIdentifier;
     NSString *_serviceProviderCountryCode;
     NSArray *_serviceProviderSupportedNetworks;
+    NSSet *_serviceProviderSupportedCountries;
     unsigned long long _serviceProviderCapabilities;
     PKEnteredValueActionItem *_enteredValueItem;
     NSString *_headerText;
@@ -58,6 +59,7 @@
 @property (readonly, nonatomic) unsigned long long serviceProviderCapabilities; // @synthesize serviceProviderCapabilities=_serviceProviderCapabilities;
 @property (readonly, copy, nonatomic) NSString *serviceProviderCountryCode; // @synthesize serviceProviderCountryCode=_serviceProviderCountryCode;
 @property (readonly, copy, nonatomic) NSString *serviceProviderIdentifier; // @synthesize serviceProviderIdentifier=_serviceProviderIdentifier;
+@property (readonly, copy, nonatomic) NSSet *serviceProviderSupportedCountries; // @synthesize serviceProviderSupportedCountries=_serviceProviderSupportedCountries;
 @property (readonly, copy, nonatomic) NSArray *serviceProviderSupportedNetworks; // @synthesize serviceProviderSupportedNetworks=_serviceProviderSupportedNetworks;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;

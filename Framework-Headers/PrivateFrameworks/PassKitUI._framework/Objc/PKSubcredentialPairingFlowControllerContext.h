@@ -12,6 +12,7 @@
 
 @interface PKSubcredentialPairingFlowControllerContext : PKSubcredentialProvisioningFlowControllerContext <NSCopying>
 {
+    BOOL _passwordManuallyEntered;
     BOOL _shouldRequestInvitation;
     PKAddCarKeyPassConfiguration *_configuration;
     PKEntitlementWhitelist *_appEntitlementWhitelist;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) PKEntitlementWhitelist *appEntitlementWhitelist; // @synthesize appEntitlementWhitelist=_appEntitlementWhitelist;
 @property (strong, nonatomic) PKAddCarKeyPassConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (strong, nonatomic) PKAppletSubcredential *credentialToShare; // @synthesize credentialToShare=_credentialToShare;
+@property (nonatomic) BOOL passwordManuallyEntered; // @synthesize passwordManuallyEntered=_passwordManuallyEntered;
 @property (strong, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property (strong, nonatomic) PKAppletSubcredentialSharingInvitation *remoteDeviceInvitation; // @synthesize remoteDeviceInvitation=_remoteDeviceInvitation;
 @property (strong, nonatomic) PKAppletSubcredentialSharingRequest *remoteDeviceSharingRequest; // @synthesize remoteDeviceSharingRequest=_remoteDeviceSharingRequest;

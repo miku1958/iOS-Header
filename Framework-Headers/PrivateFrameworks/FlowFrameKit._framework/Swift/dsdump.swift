@@ -67,8 +67,8 @@
 	let completion : (_:_:) // +0x10 (0x10)
 
 	// Swift methods
-	0x4440  class func AnyChildCompletion.__allocating_init<A, B>(_:) // init 
-	0x48d0  func AnyChildCompletion.completion<A>(controller:exitValue:) // method 
+	0x44a0  class func AnyChildCompletion.__allocating_init<A, B>(_:) // init 
+	0x4930  func AnyChildCompletion.completion<A>(controller:exitValue:) // method 
  }
 
  class FlowFrameKit.MegaFrame {
@@ -78,7 +78,7 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let perFrameOperationTimeout : (
+	let perFrameOperationTimeout : Û'
  }
 
  class FlowFrameKit.FlowFrameRuntime {
@@ -91,9 +91,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let typeName : String
 	let depth : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let signpostName : ·(
+	let signpostName : ‡(
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let signpostId : Y'
+	let signpostId : )'
  }
 
  struct FlowFrameKit.NonUnderstanding {

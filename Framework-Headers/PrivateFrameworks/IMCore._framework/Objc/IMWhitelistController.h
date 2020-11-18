@@ -13,6 +13,7 @@
 
 @interface IMWhitelistController : NSObject <TUCallProviderManagerDelegate>
 {
+    BOOL _isRunningFromMacMessagesApp;
     TUCallProviderManager *_callProviderManager;
     NSObject<OS_dispatch_queue> *_screenTimeDispatchQueue;
     NSSet *_emergencyNumbersSet;
@@ -28,6 +29,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSSet *emergencyNumbersSet; // @synthesize emergencyNumbersSet=_emergencyNumbersSet;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isRunningFromMacMessagesApp; // @synthesize isRunningFromMacMessagesApp=_isRunningFromMacMessagesApp;
 @property (strong, nonatomic) IMCommLimitsPolicyCache *policyCache; // @synthesize policyCache=_policyCache;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *screenTimeDispatchQueue; // @synthesize screenTimeDispatchQueue=_screenTimeDispatchQueue;
 @property (readonly) Class superclass;

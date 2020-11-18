@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSData *accountId; // @dynamic accountId;
 @property (copy, nonatomic) NSString *application; // @dynamic application;
 @property (strong, nonatomic) NSData *clientLoggableDatas; // @dynamic clientLoggableDatas;
+@property (copy, nonatomic) NSDate *earliestAddedDate; // @dynamic earliestAddedDate;
 @property (strong, nonatomic) NSSet *failures; // @dynamic failures;
 @property (strong, nonatomic) NSData *queryRequest; // @dynamic queryRequest;
 @property (strong, nonatomic) NSData *queryResponse; // @dynamic queryResponse;
+@property (strong, nonatomic) NSSet *requestIDCache; // @dynamic requestIDCache;
 @property (copy, nonatomic) NSUUID *requestId; // @dynamic requestId;
 @property (nonatomic) double requestTime; // @dynamic requestTime;
 @property (nonatomic) long long responseErrorCode; // @dynamic responseErrorCode;

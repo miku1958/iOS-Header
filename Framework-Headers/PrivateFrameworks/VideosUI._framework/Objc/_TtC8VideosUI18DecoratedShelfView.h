@@ -6,32 +6,23 @@
 
 #import <UIKit/UIView.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI18DecoratedShelfView : UIView
 {
-    MISSING_TYPE *willHost;
-    MISSING_TYPE *willRelinquish;
-    MISSING_TYPE *shelfView;
-    MISSING_TYPE *shelfRowMetrics;
-    MISSING_TYPE *backgroundMediaController;
-    MISSING_TYPE *backgroundViewModel;
     MISSING_TYPE *viewModel;
-    MISSING_TYPE *verticalStackView;
-    MISSING_TYPE *logoGradientView;
-    MISSING_TYPE *logoImageView;
-    MISSING_TYPE *$__lazy_storage_$_platterView;
-    MISSING_TYPE *$__lazy_storage_$_gradientLayer;
-    MISSING_TYPE *$__lazy_storage_$_opacityMaskLayer;
+    MISSING_TYPE *headerView;
+    MISSING_TYPE *contentView;
 }
+
+@property (nonatomic, readonly) NSArray *preferredFocusEnvironments;
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

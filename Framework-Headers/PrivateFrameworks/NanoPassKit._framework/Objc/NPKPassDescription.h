@@ -54,6 +54,7 @@
     NSArray *_backFieldBuckets;
     NSDecimalNumber *_lastAddValueAmount;
     NSDate *_pendingAddValueDate;
+    NSSet *_subcredentials;
 }
 
 @property (strong, nonatomic) NSArray *availableActions; // @synthesize availableActions=_availableActions;
@@ -96,6 +97,7 @@
 @property (strong, nonatomic) NSDate *relevantDate; // @synthesize relevantDate=_relevantDate;
 @property (nonatomic) unsigned long long settings; // @synthesize settings=_settings;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (strong, nonatomic) NSSet *subcredentials; // @synthesize subcredentials=_subcredentials;
 @property (strong, nonatomic) PKTransitAppletState *transitAppletState; // @synthesize transitAppletState=_transitAppletState;
 @property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 

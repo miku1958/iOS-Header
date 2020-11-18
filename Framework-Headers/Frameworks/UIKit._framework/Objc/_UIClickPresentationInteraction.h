@@ -94,6 +94,7 @@
 - (BOOL)_canPerformPresentation;
 - (void)_cancelAllDrivers;
 - (void)_cancelWithReason:(unsigned long long)arg1 alongsideActions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_candidateInteractionsForAssociation;
 - (id)_clickDragDriver;
 - (id)_clickDriverTouch;
 - (unsigned long long)_currentState;

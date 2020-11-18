@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL sharingPurchases; // @synthesize sharingPurchases=_sharingPurchases;
 
 - (void).cxx_destruct;
+- (unsigned long long)hash;
 
 @end
 

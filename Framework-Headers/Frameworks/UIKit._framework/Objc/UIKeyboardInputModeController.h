@@ -138,7 +138,9 @@
 - (id)inputModeByReplacingSoftwareLayoutWithSoftwareLayout:(id)arg1 inInputMode:(id)arg2;
 - (id)inputModeForASCIIToggleWithTraits:(id)arg1;
 - (id)inputModeIdentifierLastUsedForLanguage:(id)arg1;
+- (id)inputModeIdentifierLastUsedForLanguage:(id)arg1 includingExtensions:(BOOL)arg2;
 - (id)inputModeLastUsedForLanguage:(id)arg1;
+- (id)inputModeLastUsedForLanguage:(id)arg1 includingExtensions:(BOOL)arg2;
 - (id)inputModeToAddForKeyboardLanguage:(id)arg1 countryCode:(id)arg2 activeModes:(id)arg3;
 - (id)inputModeWithIdentifier:(id)arg1;
 - (id)inputModesFromIdentifiers:(id)arg1;

@@ -79,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)setFilename:(id)arg1;
 - (void)setFilename:(id)arg1 forcePhysicalName:(id)arg2 forceBouncedLogicalName:(id)arg3 serverName:(id)arg4;
 - (void)updateAsAppLibraryRoot:(id)arg1;
+- (void)updateFilenameFromPath:(id)arg1;
 - (void)updateFromFSAtPath:(id)arg1 itemID:(id)arg2 parentGlobalID:(id)arg3 isPackageFault:(BOOL)arg4 readonlyShareChild:(BOOL)arg5;
 - (void)updateLocationAndMetaFromFSAtPath:(id)arg1 itemID:(id)arg2 parentGlobalID:(id)arg3 isPackageFault:(BOOL)arg4 readonlyShareChild:(BOOL)arg5;
 

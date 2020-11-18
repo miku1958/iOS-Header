@@ -35,6 +35,7 @@
 - (id)initWithDaemonXPCEndpoint:(id)arg1;
 - (void)performAuthorizationWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performAuthorizationWithContext:(id)arg1 withUserProvidedInformation:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)primaryApplicationInformationForWebServiceWithInfo:(id)arg1 error:(id *)arg2;
 
 @end
 

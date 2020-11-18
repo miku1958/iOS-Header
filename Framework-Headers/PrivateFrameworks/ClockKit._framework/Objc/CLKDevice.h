@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NRDevice, NSCache, NSUUID;
+@class NRDevice, NSLock, NSMutableDictionary, NSUUID;
 
 @interface CLKDevice : NSObject
 {
@@ -20,7 +20,6 @@
     BOOL _hasRichMediaComplications;
     BOOL _supportsUrsa;
     int _pairedDeviceCapabilitiesChangeNotificationToken;
-    struct os_unfair_lock_s _capabilitiesLock;
     unsigned long long _version;
     unsigned long long _sizeClass;
     double _screenScale;
@@ -28,11 +27,12 @@
     unsigned long long _collectionType;
     unsigned long long _materialType;
     NRDevice *_nrDevice;
-    NSCache *_supportedCapabilitiesCache;
+    NSLock *_capabilitiesLock;
+    NSMutableDictionary *_supportedCapabilitiesCache;
     struct CGRect _screenBounds;
 }
 
-@property (readonly, nonatomic) struct os_unfair_lock_s capabilitiesLock; // @synthesize capabilitiesLock=_capabilitiesLock;
+@property (readonly, nonatomic) NSLock *capabilitiesLock; // @synthesize capabilitiesLock=_capabilitiesLock;
 @property (nonatomic) unsigned long long collectionType; // @synthesize collectionType=_collectionType;
 @property (nonatomic) BOOL hasRichMediaComplications; // @synthesize hasRichMediaComplications=_hasRichMediaComplications;
 @property (nonatomic) BOOL isBridgeActive; // @synthesize isBridgeActive=_isBridgeActive;
@@ -51,7 +51,7 @@
 @property (nonatomic) double screenCornerRadius; // @synthesize screenCornerRadius=_screenCornerRadius;
 @property (nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
 @property (nonatomic) unsigned long long sizeClass; // @synthesize sizeClass=_sizeClass;
-@property (strong, nonatomic) NSCache *supportedCapabilitiesCache; // @synthesize supportedCapabilitiesCache=_supportedCapabilitiesCache;
+@property (strong, nonatomic) NSMutableDictionary *supportedCapabilitiesCache; // @synthesize supportedCapabilitiesCache=_supportedCapabilitiesCache;
 @property (readonly, nonatomic) BOOL supportsTritium; // @synthesize supportsTritium=_supportsTritium;
 @property (nonatomic) BOOL supportsUrsa; // @synthesize supportsUrsa=_supportsUrsa;
 @property (readonly, nonatomic) BOOL unlockedSinceBoot;
@@ -69,12 +69,15 @@
 + (id)nrDeviceForNRDeviceUUID:(id)arg1;
 + (void)setCurrentDevice:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_checkUpdateFlushCapabilitiesCache_locked;
 - (void)_loadDeviceInfo;
 - (BOOL)_queryAndCacheNanoRegistryDeviceCapabilities;
+- (BOOL)_supportsCapabilityUncached_locked:(id)arg1;
 - (void)dealloc;
 - (id)initWithNRDevice:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)supportsCapability:(id)arg1;
+- (BOOL)supportsCapability:(id)arg1 forceUpdate:(BOOL)arg2;
 
 @end
 

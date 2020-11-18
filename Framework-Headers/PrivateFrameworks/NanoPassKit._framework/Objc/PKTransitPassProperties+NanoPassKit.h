@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKTransitPassProperties.h>
+#import <PassKit/PKTransitPassProperties.h>
 
 @interface PKTransitPassProperties (NanoPassKit)
 - (BOOL)npkHasTransitBalance;

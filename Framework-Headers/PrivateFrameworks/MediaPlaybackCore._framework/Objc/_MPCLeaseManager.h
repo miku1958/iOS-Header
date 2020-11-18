@@ -8,13 +8,13 @@
 
 #import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
 
-@class MPCPlaybackEngine, NSMutableSet, NSString;
+@class MPCPlaybackEngine, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface _MPCLeaseManager : NSObject <MPCPlaybackEngineEventObserving>
 {
-    BOOL _isPreparingForImminentPlaybackIntent;
     MPCPlaybackEngine *_playbackEngine;
     NSMutableSet *_leaseEndIgnoreReasons;
+    NSMutableDictionary *_prepareCompletions;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,6 +22,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *leaseEndIgnoreReasons; // @synthesize leaseEndIgnoreReasons=_leaseEndIgnoreReasons;
 @property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
+@property (strong, nonatomic) NSMutableDictionary *prepareCompletions; // @synthesize prepareCompletions=_prepareCompletions;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -33,7 +34,7 @@
 - (void)engine:(id)arg1 willChangeToItem:(id)arg2 fromItem:(id)arg3;
 - (id)initWithPlaybackEngine:(id)arg1;
 - (void)prepareForCurrentItemPlayback;
-- (void)prepareForPlaybackWithUserIdentity:(id)arg1;
+- (void)prepareForPlaybackWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setCanStealLeaseIfNeeded;
 
 @end

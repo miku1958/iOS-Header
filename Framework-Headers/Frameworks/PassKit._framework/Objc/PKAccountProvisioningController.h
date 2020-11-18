@@ -48,7 +48,7 @@
 - (id)_notificationDidChangeNames;
 - (void)_passLibraryDidChange:(id)arg1;
 - (void)_processRemainingTasks;
-- (void)_provisionAccountCredenital:(id)arg1 provisoningController:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_provisionAccountCredenital:(id)arg1 provisioningController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_startPassActivationObserver;
 - (void)_stopPassActivationObserver;
 - (void)addToAMPAsDefault:(BOOL)arg1;

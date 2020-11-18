@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIView, UIViewController;
+@class NSString, UIView;
 
 __attribute__((visibility("hidden")))
 @interface VUIViewControllerContentPresenter : NSObject
@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
     NSString *_deletedContentErrorMessage;
     NSString *_logName;
     UIView *_rootView;
-    UIViewController *_viewController;
 }
 
 @property (nonatomic) BOOL contentHasBeenDeleted; // @synthesize contentHasBeenDeleted=_contentHasBeenDeleted;
@@ -34,14 +33,12 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *noContentErrorMessage; // @synthesize noContentErrorMessage=_noContentErrorMessage;
 @property (copy, nonatomic) NSString *noContentErrorTitle; // @synthesize noContentErrorTitle=_noContentErrorTitle;
 @property (strong, nonatomic) UIView *rootView; // @synthesize rootView=_rootView;
-@property (strong, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
 - (id)_createAlertViewWithTitle:(id)arg1 description:(id)arg2;
 - (id)_logNameForContentViewType:(unsigned long long)arg1;
-- (void)configureCurrentViewFrame;
-- (id)initWithViewController:(id)arg1;
-- (void)setRootViewForViewController;
+- (void)configureCurrentViewFrameForBounds:(struct CGRect)arg1;
+- (void)setRootViewForViewController:(id)arg1;
 
 @end
 

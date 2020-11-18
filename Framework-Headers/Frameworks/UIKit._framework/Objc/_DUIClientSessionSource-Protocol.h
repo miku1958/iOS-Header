@@ -9,7 +9,7 @@
 @class BKSAnimationFenceHandle, NSArray;
 
 @protocol _DUIClientSessionSource <_DUIClientSessionCommon>
-- (oneway void)checkCanHandOffCancelledItemsWithReply:(void (^)(BOOL))arg1;
+- (oneway void)checkCanHandOffCancelledItems:(NSArray *)arg1 withReply:(void (^)(BOOL, unsigned int, unsigned long long))arg2;
 - (oneway void)dataTransferSessionFinished;
 - (oneway void)dragEndedWithOperation:(unsigned long long)arg1;
 - (oneway void)dragFailed;

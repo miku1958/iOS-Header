@@ -9,7 +9,7 @@
 #import <IMAssistantCore/IMAssistantMessageHandlerDataSource-Protocol.h>
 
 @class CNContactStore, NSCache, NSString;
-@protocol IMAssistantAccountDataSource, IMAssistantChatDataSource, IMAssistantContactsDataSource, IMLocationManager;
+@protocol IMAssistantAccountDataSource, IMAssistantChatDataSource, IMAssistantContactsDataSource, IMAssistantCoreTelephonySubscriptionsDataSource, IMLocationManager;
 
 @interface IMAssistantMessageHandlerDefaultDataSource : NSObject <IMAssistantMessageHandlerDataSource>
 {
@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) NSCache *contactIdentifierToUnifiedContactIdentifierCache;
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (readonly, nonatomic) id<IMAssistantContactsDataSource> contactsDataSource;
+@property (readonly, nonatomic) id<IMAssistantCoreTelephonySubscriptionsDataSource> coreTelephonySubscriptionsDataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didRegisterForContactStoreChangeNotifications; // @synthesize didRegisterForContactStoreChangeNotifications=_didRegisterForContactStoreChangeNotifications;

@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <ClassroomKit/CRKCertificate-Protocol.h>
+#import <ClassroomKit/NSSecureCoding-Protocol.h>
 
 @class CRKIdentityConfiguration, NSArray, NSData, NSDateInterval, NSString;
 
-@interface CRKInMemoryCertificate : NSObject <CRKCertificate>
+@interface CRKInMemoryCertificate : NSObject <NSSecureCoding, CRKCertificate>
 {
+    NSDateInterval *_validityDateInterval;
     CRKIdentityConfiguration *_configuration;
 }
 
@@ -28,12 +30,14 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isTemporallyValid) BOOL temporallyValid;
 @property (readonly, nonatomic) struct __SecCertificate *underlyingCertificate;
-@property (readonly, nonatomic) NSDateInterval *validityDateInterval;
+@property (strong, nonatomic) NSDateInterval *validityDateInterval; // @synthesize validityDateInterval=_validityDateInterval;
 
++ (id)certificateWithData:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)init;
-- (id)initWithConfiguration:(id)arg1;
-- (id)initWithData:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 validityDateInterval:(id)arg2;
 
 @end
 

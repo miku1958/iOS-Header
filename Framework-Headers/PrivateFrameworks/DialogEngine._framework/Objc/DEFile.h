@@ -14,15 +14,16 @@
 }
 
 @property shared_ptr_ab06ee6d This; // @synthesize This=_This;
-@property NSString *id;
-@property NSString *localeFilename;
-@property NSString *paramsFilename;
+@property (strong) NSString *id;
+@property (strong) NSString *localeFilename;
+@property (strong) NSString *paramsFilename;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addCondition:(id)arg1;
 - (void)addPhrase:(id)arg1;
 - (id)execute:(id)arg1;
+- (id)getDialogs;
 - (id)getParameters;
 - (id)getRoot;
 - (shared_ptr_ab06ee6d)getSharedPtr;

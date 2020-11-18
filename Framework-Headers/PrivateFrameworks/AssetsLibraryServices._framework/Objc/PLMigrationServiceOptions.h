@@ -27,10 +27,12 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isPMSOption:(unsigned short)arg1;
+- (id)nameForOption:(unsigned short)arg1;
 
 @end
 

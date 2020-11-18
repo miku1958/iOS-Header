@@ -19,7 +19,7 @@
 + (BOOL)laserEnabled;
 + (id)pointStringsForFingerModels:(id)arg1;
 + (id)pointerAnimationSettings;
-+ (id)pointerFiltersForDarkModeActive:(BOOL)arg1;
++ (id)pointerFiltersForLuminanceLevel:(unsigned long long)arg1;
 + (void)updateFirstLocation:(struct CGPoint *)arg1 secondLocation:(struct CGPoint *)arg2 forPinchWithRadiusDelta:(double)arg3 angleDelta:(double)arg4;
 
 @end

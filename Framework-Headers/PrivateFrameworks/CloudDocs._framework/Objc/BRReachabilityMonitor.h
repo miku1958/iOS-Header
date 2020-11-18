@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL isNetworkReachable;
 @property (nonatomic) unsigned int reachabilityFlags; // @synthesize reachabilityFlags=_reachabilityFlags;
 
++ (unsigned int)getReachabilityFlagsByCheckingNetwork;
 + (BOOL)isNetworkReachableForFlags:(unsigned int)arg1;
 + (id)sharedReachabilityMonitor;
 - (void).cxx_destruct;

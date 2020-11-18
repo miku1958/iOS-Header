@@ -47,6 +47,7 @@
 @property (readonly, nonatomic) double articleDiversificationUniquePublisherExpectationSlope;
 @property (readonly, nonatomic) double articleDiversificationUniquePublisherExpectationYIntercept;
 @property (readonly, nonatomic) long long articleRapidUpdatesTimeout;
+@property (readonly, nonatomic) long long articleReadCountThreshold;
 @property (readonly, nonatomic) NSString *articleRecirculationComponentPlacementConfigJSON;
 @property (readonly, nonatomic) NSString *articleRecirculationConfigJSON;
 @property (readonly, nonatomic) long long articleRecirculationPopularFeedQueryTimeRange;
@@ -73,6 +74,7 @@
 @property (readonly, nonatomic) long long emailSignupRequiredAppLaunchCount;
 @property (readonly, nonatomic) NSString *embedConfigurationAssetID;
 @property (readonly, nonatomic) BOOL enableBadgeInSpotlightTabBar;
+@property (readonly, nonatomic) BOOL enableCacheFallbackForArticleRecirculation;
 @property (readonly, nonatomic) BOOL enableLocationBasedAutofavorites;
 @property (readonly, nonatomic) long long endOfArticleMaxInaccessiblePaidArticleCount;
 @property (readonly, nonatomic) double endOfArticleMinPaidHeadlineRatio;

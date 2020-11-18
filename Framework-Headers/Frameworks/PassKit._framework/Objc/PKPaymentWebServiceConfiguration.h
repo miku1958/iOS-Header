@@ -54,6 +54,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)featureWithType:(long long)arg1 inRegion:(id)arg2;
 - (id)featuresForRegion:(id)arg1;
+- (BOOL)hasFeatureRequiringRegistrationInRegion:(id)arg1 osVersion:(id)arg2 deviceClass:(id)arg3;
 - (BOOL)hasFeaturesSupportedForRegion:(id)arg1 osVersion:(id)arg2 deviceClass:(id)arg3;
 - (id)heroImageManifestURLForRegion:(id)arg1;
 - (id)init;

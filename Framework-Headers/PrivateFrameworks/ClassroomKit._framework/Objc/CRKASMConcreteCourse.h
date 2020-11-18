@@ -8,29 +8,45 @@
 
 #import <ClassroomKit/CRKASMCourse-Protocol.h>
 
-@class DMFControlGroupIdentifier, NSString;
+@class CRKASMCertificateVendor, CRKASMIdentityVendor, DMFControlGroupIdentifier, NSArray, NSSet, NSString;
+@protocol CRKASMLocation, CRKIdentity;
 
 @interface CRKASMConcreteCourse : NSObject <CRKASMCourse>
 {
-    DMFControlGroupIdentifier *_identifier;
-    NSString *_name;
+    BOOL _editable;
     unsigned long long _color;
+    DMFControlGroupIdentifier *_identifier;
+    id<CRKASMLocation> _location;
     unsigned long long _mascot;
+    NSString *_name;
+    NSArray *_trustedUsers;
+    NSString *_backingClassObjectID;
+    CRKASMIdentityVendor *_identityVendor;
+    CRKASMCertificateVendor *_certificateVendor;
+    NSSet *_trustedUserIdentifiers;
 }
 
+@property (readonly, copy, nonatomic) NSSet *allTrustedUserCertificates;
+@property (readonly, copy, nonatomic) NSString *backingClassObjectID; // @synthesize backingClassObjectID=_backingClassObjectID;
+@property (readonly, nonatomic) CRKASMCertificateVendor *certificateVendor; // @synthesize certificateVendor=_certificateVendor;
 @property (readonly, nonatomic) unsigned long long color; // @synthesize color=_color;
+@property (readonly, nonatomic, getter=isEditable) BOOL editable; // @synthesize editable=_editable;
 @property (readonly, copy, nonatomic) DMFControlGroupIdentifier *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) id<CRKIdentity> identity;
+@property (readonly, nonatomic) CRKASMIdentityVendor *identityVendor; // @synthesize identityVendor=_identityVendor;
+@property (readonly, nonatomic) id<CRKASMLocation> location; // @synthesize location=_location;
 @property (readonly, nonatomic) unsigned long long mascot; // @synthesize mascot=_mascot;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, copy, nonatomic) NSSet *trustedUserIdentifiers; // @synthesize trustedUserIdentifiers=_trustedUserIdentifiers;
+@property (readonly, copy, nonatomic) NSArray *trustedUsers; // @synthesize trustedUsers=_trustedUsers;
 
-+ (unsigned long long)asmHash:(unsigned long long)arg1 forString:(id)arg2;
-+ (unsigned long long)classColorFromClassName:(id)arg1;
-+ (id)classThemeColors;
++ (id)courseNameforClass:(id)arg1;
++ (id)trustedUserIdentifierForTrustedUsers:(id)arg1;
++ (id)trustedUsersFromPersons:(id)arg1 certificateVendor:(id)arg2;
 - (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithClass:(id)arg1;
-- (id)initWithName:(id)arg1 identifier:(id)arg2;
+- (id)initWithBackingClass:(id)arg1 location:(id)arg2 persons:(id)arg3 identityVendor:(id)arg4 certificateVendor:(id)arg5 manageableLocationIDs:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

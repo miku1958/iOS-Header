@@ -4,51 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitUI/PKExplanationViewController.h>
+#import <PassKitUI/PKOnBoardingViewController.h>
 
-#import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
-#import <PassKitUI/PKPaymentSetupPresentationProtocol-Protocol.h>
-#import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
+@class PKApplyController, PKPaymentInstallmentConfiguration;
 
-@class NSString, PKApplyController, PKDynamicProvisioningPageContent, PKPaymentInstallmentConfiguration, PKPaymentProvisioningController, PKPaymentSetupProduct, UIImage;
-@protocol PKPaymentSetupViewControllerDelegate, PKSetupFlowControllerProtocol;
-
-@interface PKFeatureOnBoardingViewController : PKExplanationViewController <PKPaymentSetupPresentationProtocol, PKExplanationViewControllerDelegate, PKViewControllerPreflightable>
+@interface PKFeatureOnBoardingViewController : PKOnBoardingViewController
 {
-    id<PKSetupFlowControllerProtocol> _parentFlowController;
-    id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
     unsigned long long _featureIdentifier;
-    PKPaymentProvisioningController *_provisioningController;
     PKApplyController *_applyController;
-    PKPaymentSetupProduct *_paymentSetupProduct;
-    UIImage *_heroImage;
-    PKDynamicProvisioningPageContent *_currentPage;
     BOOL _isMainFeatureOnboardingPage;
     BOOL _useCompactLayout;
     PKPaymentInstallmentConfiguration *_installmentConfiguration;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKPaymentInstallmentConfiguration *installmentConfiguration; // @synthesize installmentConfiguration=_installmentConfiguration;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_checkSecurityCapabilities:(unsigned long long)arg1 nextStep:(CDUnknownBlockType)arg2;
 - (void)_handleAccountCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleApplyFlowWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_handleNotifyRequested;
 - (void)_openTermsAndConditions;
-- (void)explanationViewControllerDidSelectCancel:(id)arg1;
-- (void)explanationViewControllerDidSelectDone:(id)arg1;
-- (void)explanationViewDidSelectBodyButton:(id)arg1;
-- (void)explanationViewDidSelectContinue:(id)arg1;
-- (void)explanationViewDidSelectSetupLater:(id)arg1;
-- (id)initWithParentFlowController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 featureIdentifier:(unsigned long long)arg4 provisoningController:(id)arg5 paymentSetupProduct:(id)arg6 currentPage:(id)arg7;
-- (id)paymentSetupMarker;
-- (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
-- (void)terminateSetupFlow;
+- (void)handleProductAvailable;
+- (void)handleSetupLater;
+- (id)initWithParentFlowController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 featureIdentifier:(unsigned long long)arg4 provisioningController:(id)arg5 paymentSetupProduct:(id)arg6 currentPage:(id)arg7;
+- (id)nextOnboardingViewControllerWithPage:(id)arg1 product:(id)arg2;
 - (void)viewDidLoad;
 
 @end

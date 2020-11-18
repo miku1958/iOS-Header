@@ -179,10 +179,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let traitCollection : UITraitCollection // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1fc0  @objc CacheKey.hash <stripped>
-	0x2160  @objc CacheKey.isEqual: <stripped>
-	0x2270  @objc CacheKey.init <stripped>
-	0x2220  @objc CacheKey..cxx_destruct <stripped>
+	0x2060  @objc CacheKey.hash <stripped>
+	0x2200  @objc CacheKey.isEqual: <stripped>
+	0x2310  @objc CacheKey.init <stripped>
+	0x22c0  @objc CacheKey..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -275,7 +275,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var font : UIFont? // +0x60 (0x8)
 
 	// Swift methods
-	0xb9b0  class func LayoutAttributedTextViewPlaceholder.__allocating_init(attributedText:font:textAlignment:lineBreakMode:lineSpacing:numberOfLines:) // init 
+	0xba20  class func LayoutAttributedTextViewPlaceholder.__allocating_init(attributedText:font:textAlignment:lineBreakMode:lineSpacing:numberOfLines:) // init 
  }
 
  struct JetUI.VerticalStackLayout {
@@ -346,13 +346,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let traitCollection : UITraitCollection // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x141f0  @objc TraitEnvironmentPlaceholder.traitCollection <stripped>
-	0x14240  @objc TraitEnvironmentPlaceholder.traitCollectionDidChange: <stripped>
-	0x142f0  @objc TraitEnvironmentPlaceholder.init <stripped>
-	0x14280  @objc TraitEnvironmentPlaceholder..cxx_destruct <stripped>
+	0x14260  @objc TraitEnvironmentPlaceholder.traitCollection <stripped>
+	0x142b0  @objc TraitEnvironmentPlaceholder.traitCollectionDidChange: <stripped>
+	0x14360  @objc TraitEnvironmentPlaceholder.init <stripped>
+	0x142f0  @objc TraitEnvironmentPlaceholder..cxx_destruct <stripped>
 
 	// Swift methods
-	0x140a0  class func TraitEnvironmentPlaceholder.__allocating_init(traitCollection:) // init 
+	0x14110  class func TraitEnvironmentPlaceholder.__allocating_init(traitCollection:) // init 
  }
 
  struct JetUI.VerticalMarginsMeasurable {
@@ -396,9 +396,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isHidden : Bool // +0x48 (0x1)
 
 	// Swift methods
-	0x172b0  class func LayoutViewPlaceholder.__allocating_init(measureWith:) // init 
-	0x173d0  class func LayoutViewPlaceholder.__allocating_init(measurements:) // init 
-	0x17560  class func LayoutViewPlaceholder.__allocating_init(representing:) // init 
+	0x17320  class func LayoutViewPlaceholder.__allocating_init(measureWith:) // init 
+	0x17440  class func LayoutViewPlaceholder.__allocating_init(measurements:) // init 
+	0x175d0  class func LayoutViewPlaceholder.__allocating_init(representing:) // init 
  }
 
  class JetUI.InvariantExpression {
@@ -714,7 +714,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var font : UIFont? // +0x68 (0x8)
 
 	// Swift methods
-	0x342a0  class func LayoutTextViewPlaceholder.__allocating_init(text:font:textAlignment:lineBreakMode:lineSpacing:numberOfLines:) // init 
+	0x34300  class func LayoutTextViewPlaceholder.__allocating_init(text:font:textAlignment:lineBreakMode:lineSpacing:numberOfLines:) // init 
  }
 
  enum JetUI.FontUseCase {

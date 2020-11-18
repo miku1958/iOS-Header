@@ -29,9 +29,10 @@
 - (id)hyperRecentHeuristicSuggestionProxiesWithReferenceDate:(id)arg1 predictionContextBundleId:(id)arg2;
 - (id)inPhoneCallHeuristicSuggestionProxies;
 - (id)initWithKnowledgeStore:(id)arg1 interactionStore:(id)arg2 contactResolver:(id)arg3;
+- (id)initWithKnowledgeStore:(id)arg1 interactionStore:(id)arg2 contactResolver:(id)arg3 shareSheetSupportedBundleIds:(id)arg4;
 - (id)maximalIntersectionGroupChatSuggestionProxyWithSeedContactIdentifiers:(id)arg1 bundleIds:(id)arg2 meContactIdentifier:(id)arg3;
 - (id)photoSuggestionProxiesPartitionedByPresenceInAttachments:(id)arg1 photoSuggestedPeople:(id)arg2 contactIDsInAssets:(id)arg3;
-- (void)prepareRecencyCache;
+- (void)prepareRecencyCacheWithSupportedBundleIds:(id)arg1;
 - (id)proximityBoostingHeuristicWithProximityBooster:(id)arg1 existingSuggestions:(id)arg2;
 - (id)recentNonSystemSuggestionsForBundleIDs:(id)arg1 numberOfSuggestion:(unsigned long long)arg2;
 - (id)seedSuggestionsForChatGuidsAndEmails:(id)arg1;

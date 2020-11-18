@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _SFWebAppViewController *_contentViewController;
     _UIAsyncInvocation *_cancelViewServiceRequest;
     BOOL _hasShownLoadingViewController;
+    BOOL _hasCustomScheme;
     LoadingViewController *_loadingViewController;
     long long _orientation;
     NSTimer *_hideSnapshotTimer;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)hideLoadingView;
 - (id)initWithWebClip:(id)arg1;
+- (void)openURLWithCustomSchemeIfNeeded;
 - (void)timeLimitForLoadCompletionExpired;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)webAppViewController:(id)arg1 didChangeLoadingState:(BOOL)arg2;

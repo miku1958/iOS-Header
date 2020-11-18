@@ -44,6 +44,7 @@
 - (void)cancelAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)checkAssociatedDomains;
 - (id)description;
+- (BOOL)hasAssociatedDomainsApproved;
 - (BOOL)hasURLApprovedAssociatedDomain:(id)arg1;
 - (id)initWithExtension:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

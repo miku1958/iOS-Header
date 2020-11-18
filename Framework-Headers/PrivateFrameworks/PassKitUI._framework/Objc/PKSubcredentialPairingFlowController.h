@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <PassKitUI/PKFieldDetectSuppressor-Protocol.h>
 #import <PassKitUI/PKSubcredentialPairingFlowControllerProtocol-Protocol.h>
 
 @class NSString;
 @protocol OS_dispatch_queue, PKPaymentSetupViewControllerDelegate, PKSubcredentialProvisioningFlowControllerDelegate;
 
-@interface PKSubcredentialPairingFlowController : NSObject <PKSubcredentialPairingFlowControllerProtocol, PKFieldDetectSuppressor>
+@interface PKSubcredentialPairingFlowController : NSObject <PKSubcredentialPairingFlowControllerProtocol>
 {
     NSObject<OS_dispatch_queue> *_queue;
     id<PKSubcredentialProvisioningFlowControllerDelegate> _delegate;
@@ -25,17 +24,20 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL suppressFieldDetect;
 
 + (id)contextFromPaymentCredential:(id)arg1 provisioningController:(id)arg2;
 + (id)credentialToShareForContext:(id)arg1;
 + (id)sharingRequestForContext:(id)arg1 withCredential:(id)arg2;
 - (void).cxx_destruct;
-- (void)canProvisionOnRemoteDevice:(id)arg1 withSharingRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)alertForOperation:(id)arg1 withError:(id)arg2 retryHandler:(CDUnknownBlockType)arg3 cancelationHandler:(CDUnknownBlockType)arg4;
+- (void)canProvisionOnRemoteDeviceWithContext:(id)arg1 sharingRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (id)localDeviceProvisioningViewModelForOperation:(id)arg1;
+- (id)localizedIssuerNameForProvisioningOperation:(id)arg1;
 - (id)nextQueuedProvisioningViewControllerFromProvisioningOperation:(id)arg1;
+- (void)nextViewControllerFromHeroViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)nextViewControllerFromProvisioningOperation:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)prewarmPairingWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)provisioningFinishedWithOperation:(id)arg1;
 - (void)provisioningWasCanceledWithOperation:(id)arg1;
 - (id)remoteDeviceProvisioningViewModelForOperation:(id)arg1;

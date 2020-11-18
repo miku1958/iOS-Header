@@ -26,6 +26,7 @@
     CSAudioFileReader *_audioFileReader;
     unsigned long long _audioFilePathIndex;
     BOOL _waitingForDidStart;
+    BOOL _holdingPrewarmException;
     NSObject<OS_dispatch_queue> *_queue;
     NSHashTable *_observers;
 }
@@ -34,6 +35,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL duckOthersOption;
 @property (readonly) unsigned long long hash;
+@property BOOL holdingPrewarmException; // @synthesize holdingPrewarmException=_holdingPrewarmException;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
@@ -48,10 +50,13 @@
 - (id)_deinterleaveBufferIfNeeded:(id)arg1;
 - (void)_destroyVoiceController;
 - (id)_getRecordSettingsWithRequest:(id)arg1;
+- (void)_logRecordingStopErrorIfNeeded:(long long)arg1;
+- (void)_logResourceNotAvailableErrorIfNeeded:(id)arg1;
 - (BOOL)_needResetAudioInjectionIndex:(id)arg1;
 - (void)_processAudioBuffer:(id)arg1 audioStreamHandleId:(unsigned long long)arg2;
 - (void)_processAudioChain:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 remoteVAD:(id)arg3 atTime:(unsigned long long)arg4;
 - (BOOL)_shouldInjectAudio;
+- (BOOL)_shouldLogResourceNotAvailableError;
 - (BOOL)_shouldUseRemoteBuiltInMic:(id)arg1;
 - (BOOL)_shouldUseRemoteRecordForContext:(id)arg1;
 - (BOOL)_startAudioStreamForAudioInjection;
@@ -67,6 +72,7 @@
 - (BOOL)deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)enableMiniDucking:(BOOL)arg1;
+- (void)holdPrewarmMSNException;
 - (id)initWithQueue:(id)arg1 error:(id *)arg2;
 - (BOOL)isNarrowBandWithStreamHandleId:(unsigned long long)arg1;
 - (BOOL)isRecordingWithStreamHandleId:(unsigned long long)arg1;
@@ -83,6 +89,7 @@
 - (id)recordSettingsWithStreamHandleId:(unsigned long long)arg1;
 - (float)recordingSampleRateWithStreamHandleId:(unsigned long long)arg1;
 - (void)registerObserver:(id)arg1;
+- (void)releasePrewarmMSNException;
 - (BOOL)setAlertSoundFromURL:(id)arg1 forType:(long long)arg2;
 - (unsigned long long)setContext:(id)arg1 error:(id *)arg2;
 - (BOOL)setCurrentContext:(id)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;

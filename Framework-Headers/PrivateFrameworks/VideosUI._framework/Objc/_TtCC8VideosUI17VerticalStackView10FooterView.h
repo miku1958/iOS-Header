@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtCC8VideosUI17VerticalStackView10FooterView : UIView
 {
+    MISSING_TYPE *viewModel;
     MISSING_TYPE *subviewElements;
     MISSING_TYPE *$__lazy_storage_$_viewLayout;
 }

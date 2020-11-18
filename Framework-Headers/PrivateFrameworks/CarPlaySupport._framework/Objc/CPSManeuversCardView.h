@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
+#import <CarPlaySupport/BSInvalidatable-Protocol.h>
 #import <CarPlaySupport/CPSCardPlatterProviding-Protocol.h>
 #import <CarPlaySupport/CPSNavigationDisplaying-Protocol.h>
 
 @class CPSCardPlatterView, CPSHairlineView, CPSPrimaryManeuverView, CPSSecondaryManeuverView, NSArray, NSLayoutConstraint, NSString;
 
-@interface CPSManeuversCardView : UIView <CPSNavigationDisplaying, CPSCardPlatterProviding>
+@interface CPSManeuversCardView : UIView <CPSNavigationDisplaying, CPSCardPlatterProviding, BSInvalidatable>
 {
     BOOL _usesCustomBackgroundColor;
     CPSCardPlatterView *_cardPlatterView;
@@ -41,6 +42,7 @@
 - (BOOL)canFitSize:(struct CGSize)arg1;
 - (id)initWithManeuvers:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)invalidate;
 - (void)layoutSubviews;
 - (void)showManeuvers:(id)arg1 usingDisplayStyles:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;

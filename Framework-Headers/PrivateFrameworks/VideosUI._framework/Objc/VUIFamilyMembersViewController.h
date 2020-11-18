@@ -9,7 +9,7 @@
 #import <VideosUI/UICollectionViewDelegate-Protocol.h>
 #import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
 
-@class NSString, UICollectionViewDiffableDataSource, VUICollectionView, VUIFamilyMemberCell, VUILibraryFamilyMembersDataSource, VUIViewControllerContentPresenter;
+@class NSDictionary, NSString, UICollectionViewDiffableDataSource, VUICollectionView, VUIFamilyMemberCell, VUILibraryFamilyMembersDataSource, VUIViewControllerContentPresenter;
 @protocol VUIFamilyMembersViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     VUIViewControllerContentPresenter *_contentPresenter;
     VUICollectionView *_collectionView;
     VUIFamilyMemberCell *_sizingCell;
+    NSDictionary *_familyMemberHashToFamilyMemberDictionary;
     long long _gridType;
     long long _gridStyle;
     double _tvCellWidth;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<VUIFamilyMembersViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
+@property (strong, nonatomic) NSDictionary *familyMemberHashToFamilyMemberDictionary; // @synthesize familyMemberHashToFamilyMemberDictionary=_familyMemberHashToFamilyMemberDictionary;
 @property (nonatomic) long long gridStyle; // @synthesize gridStyle=_gridStyle;
 @property (nonatomic) long long gridType; // @synthesize gridType=_gridType;
 @property (readonly) unsigned long long hash;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)_createCollectionView;
 - (id)_createDiffableDataSource;
 - (id)_createDiffableDataSourceSnapshot;
+- (id)_generateFamilyMemberHashToFamilyMemberDictionaryForFamilyMembers:(id)arg1;
 - (id)_getFamilyMemberIdentifiersFromFamilyMembers;
 - (void)_updateCurrentViewIfNeeded;
 - (void)_updateLayout;

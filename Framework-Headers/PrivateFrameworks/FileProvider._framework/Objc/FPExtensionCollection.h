@@ -14,7 +14,6 @@
     FPItemID *_alternateID;
 }
 
-@property (readonly) FPItemID *enumeratedItemID;
 @property (copy) FPExtensionEnumerationSettings *settings; // @synthesize settings=_settings;
 
 + (BOOL)_item:(id)arg1 isCollectionRootForObservedItemID:(id)arg2;
@@ -22,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)createDataSourceWithSortDescriptors:(id)arg1;
 - (id)description;
+- (id)enumeratedItemID;
 - (id)initWithSettings:(id)arg1;
 - (BOOL)isCollectionValidForItem:(id)arg1;
 - (BOOL)isRootItem:(id)arg1;

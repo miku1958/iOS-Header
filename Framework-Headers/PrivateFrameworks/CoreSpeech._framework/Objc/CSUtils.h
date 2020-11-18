@@ -153,6 +153,7 @@
 + (BOOL)supportJarvisVoiceTrigger;
 + (BOOL)supportKeywordDetector;
 + (BOOL)supportLanguageDetector;
++ (BOOL)supportLazySessionActivation;
 + (BOOL)supportOpportunisticZLL;
 + (BOOL)supportPhatic;
 + (BOOL)supportPremiumAssets;

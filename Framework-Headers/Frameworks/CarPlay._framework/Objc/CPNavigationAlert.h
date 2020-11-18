@@ -36,6 +36,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithTitleVariants:(id)arg1 subtitleVariants:(id)arg2 imageSet:(id)arg3 primaryAction:(id)arg4 secondaryAction:(id)arg5 duration:(double)arg6;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTitleVariants:(id)arg1 subtitleVariants:(id)arg2 image:(id)arg3 primaryAction:(id)arg4 secondaryAction:(id)arg5 duration:(double)arg6;

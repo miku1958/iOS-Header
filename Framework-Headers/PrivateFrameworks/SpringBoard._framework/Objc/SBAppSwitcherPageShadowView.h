@@ -16,17 +16,20 @@
     SBMedusaSettings *_medusaSettings;
     SBFView *_diffuseShadowView;
     SBFView *_rimShadowView;
+    double _rimShadowRadius;
+    double _rimShadowOpacity;
     double _diffuseShadowRadius;
     double _diffuseShadowOpacity;
     struct CGSize _diffuseShadowOffset;
-    double _rimShadowRadius;
-    double _rimShadowOpacity;
-    double _highlightedDiffuseShadowRadius;
-    double _highlightedDiffuseShadowOpacity;
-    struct CGSize _highlightedDiffuseShadowOffset;
-    BOOL _highlighted;
+    double _diffuseShadowRadiusWhileTouched;
+    double _diffuseShadowOpacityWhileTouched;
+    struct CGSize _diffuseShadowOffsetWhileTouched;
+    double _diffuseShadowRadiusWhileCursorHovered;
+    double _diffuseShadowOpacityWhileCursorHovered;
+    struct CGSize _diffuseShadowOffsetWhileCursorHovered;
     double _switcherCardScale;
     long long _style;
+    unsigned long long _highlightType;
     double _shadowOffset;
 }
 
@@ -35,7 +38,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property (nonatomic) unsigned long long highlightType; // @synthesize highlightType=_highlightType;
 @property (nonatomic) double shadowOffset; // @synthesize shadowOffset=_shadowOffset;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;

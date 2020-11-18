@@ -39,7 +39,6 @@
 - (void)fetchDeviceListWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)fetchDeviceListWithContext:(id)arg1 error:(id *)arg2;
 - (void)fetchDeviceMapWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)fetchPrimaryBundleIDForWebServiceWithInfo:(id)arg1 error:(id *)arg2;
 - (void)fetchURLBagForAltDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchUserInformationForAltDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)forceURLBagUpdateForAltDSID:(id)arg1 urlSwitchData:(id)arg2 completion:(CDUnknownBlockType)arg3;

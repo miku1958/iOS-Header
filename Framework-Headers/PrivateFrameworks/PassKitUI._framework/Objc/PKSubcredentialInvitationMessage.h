@@ -15,9 +15,10 @@
 }
 
 @property (copy, nonatomic) NSString *dataString;
-@property (copy, nonatomic) PKAppletSubcredentialSharingInvitation *invitation;
+@property (copy, nonatomic) PKAppletSubcredentialSharingInvitation *phoneInvitation;
 @property (nonatomic) unsigned long long status;
 @property (readonly, nonatomic) MSMessage *underlyingMessage; // @synthesize underlyingMessage=_underlyingMessage;
+@property (copy, nonatomic) PKAppletSubcredentialSharingInvitation *watchInvitation;
 
 - (void).cxx_destruct;
 - (id)_subcredentialInvitationMessageDataURLWithData:(id)arg1;

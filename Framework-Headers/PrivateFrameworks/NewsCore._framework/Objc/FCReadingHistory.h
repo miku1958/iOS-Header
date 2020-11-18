@@ -63,6 +63,7 @@
 - (BOOL)hasArticleBeenConsumed:(id)arg1;
 - (BOOL)hasArticleBeenMarkedAsOffensive:(id)arg1;
 - (BOOL)hasArticleBeenRead:(id)arg1;
+- (BOOL)hasArticleBeenReadMoreThanThreshold:(id)arg1;
 - (BOOL)hasArticleBeenSeen:(id)arg1;
 - (BOOL)hasArticleBeenVisited:(id)arg1;
 - (id)historyItemsForArticleIDs:(id)arg1;

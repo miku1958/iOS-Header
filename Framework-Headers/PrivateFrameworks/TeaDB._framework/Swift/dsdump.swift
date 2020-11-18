@@ -66,9 +66,9 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : F
+	var width : #F
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : F
+	var height : #F
  }
 
  struct __C.CGRect {
@@ -82,9 +82,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : F
+	var x : #F
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : F
+	var y : #F
  }
 
  class TeaDB.KeyValueStore {
@@ -151,7 +151,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case bool : Bool
 	case double : Double
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case blob : ÁC
+	case blob : ÒC
 	case null  
  }
 
@@ -173,7 +173,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queue : OS_dispatch_queue // +0x18 (0x8)
 
 	// Swift methods
-	0x11190  class func Database.__allocating_init(location:) // init 
+	0x112c0  class func Database.__allocating_init(location:) // init 
  }
 
  enum TeaDB.Location {
@@ -251,7 +251,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let handle : !D // +0x10 (0x8)
+	let handle : +D // +0x10 (0x8)
 
 	// Swift methods
  }
@@ -303,7 +303,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let handle : !D // +0x10 (0x8)
+	let handle : +D // +0x10 (0x8)
 
 	// Swift methods
  }

@@ -48,7 +48,6 @@
 - (void)_setDelaysRecognitionForGreaterTapCounts:(BOOL)arg1;
 - (BOOL)_shouldFailInResponseToPresses:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldReceivePress:(id)arg1;
-- (BOOL)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (double)_touchSloppinessFactor;
 - (double)allowableMovement;
 - (BOOL)canPreventGestureRecognizer:(id)arg1;

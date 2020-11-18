@@ -48,6 +48,7 @@
 @property (nonatomic) unsigned long long dial; // @synthesize dial=_dial;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isBlackBackground;
+@property (readonly, nonatomic) BOOL isMulticolorPalette;
 @property (strong, nonatomic) UIColor *largeHandsColor; // @synthesize largeHandsColor=_largeHandsColor;
 @property (strong, nonatomic) UIColor *lightMainColor; // @synthesize lightMainColor=_lightMainColor;
 @property (strong, nonatomic) UIColor *mainColor; // @synthesize mainColor=_mainColor;
@@ -69,6 +70,8 @@
 - (void).cxx_destruct;
 - (id)circularDialFillColor;
 - (id)circularDialTickColor;
+- (id)colorForCircularTicksForHour:(unsigned long long)arg1;
+- (id)colorForCircularTicksForMinute:(unsigned long long)arg1;
 - (id)initWithDevice:(id)arg1 color:(unsigned long long)arg2 dial:(unsigned long long)arg3 style:(unsigned long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 

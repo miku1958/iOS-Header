@@ -14,12 +14,14 @@
     NSArray *_unreadFollowedIssues;
     NSArray *_autoFavoriteIssues;
     NSArray *_unbadgedIssues;
+    NSArray *_seenIssues;
     NSError *_error;
 }
 
 @property (strong, nonatomic) NSArray *autoFavoriteIssues; // @synthesize autoFavoriteIssues=_autoFavoriteIssues;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSArray *followedIssues; // @synthesize followedIssues=_followedIssues;
+@property (strong, nonatomic) NSArray *seenIssues; // @synthesize seenIssues=_seenIssues;
 @property (strong, nonatomic) NSArray *unbadgedIssues; // @synthesize unbadgedIssues=_unbadgedIssues;
 @property (strong, nonatomic) NSArray *unreadFollowedIssues; // @synthesize unreadFollowedIssues=_unreadFollowedIssues;
 

@@ -36,7 +36,7 @@
 @property (copy, nonatomic) NSString *recipientName; // @synthesize recipientName=_recipientName;
 @property (strong, nonatomic) NSUUID *sharingSessionIdentifier; // @synthesize sharingSessionIdentifier=_sharingSessionIdentifier;
 
-+ (id)invitationFromSharedCredential:(id)arg1 withCredential:(id)arg2;
++ (id)invitationFromSharedCredential:(id)arg1 withCredential:(id)arg2 pass:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)canBeSent;

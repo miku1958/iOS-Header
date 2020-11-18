@@ -14,10 +14,14 @@
     MISSING_TYPE *$__lazy_storage_$_captionTextLayout;
     MISSING_TYPE *$__lazy_storage_$_titleTextLayout;
     MISSING_TYPE *$__lazy_storage_$_subtitleTextLayout;
+    MISSING_TYPE *$__lazy_storage_$_subBodyTextLayout;
     MISSING_TYPE *$__lazy_storage_$_bodyTextLayout;
     MISSING_TYPE *$__lazy_storage_$_imageLayout;
     MISSING_TYPE *$__lazy_storage_$_expandableViewLayout;
     MISSING_TYPE *$__lazy_storage_$_footerLayout;
+    MISSING_TYPE *$__lazy_storage_$_channelLogoLayout;
+    MISSING_TYPE *$__lazy_storage_$_buttonLayout;
+    MISSING_TYPE *$__lazy_storage_$_textualButtonViewLayout;
     MISSING_TYPE *$__lazy_storage_$_hangerViewLayout;
     MISSING_TYPE *stackType;
 }

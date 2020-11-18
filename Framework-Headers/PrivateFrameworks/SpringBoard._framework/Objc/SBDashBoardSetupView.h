@@ -8,14 +8,14 @@
 
 #import <SpringBoard/CAAnimationDelegate-Protocol.h>
 
-@class CSHomeAffordanceView, NSArray, NSObject, NSString, SBUICallToActionLabel, SBUILegibilityLabel, UIButton, UILabel, _UILegibilitySettings;
+@class CSHomeAffordanceView, NSArray, NSObject, NSString, SBFTouchPassThroughView, SBUICallToActionLabel, SBUILegibilityLabel, UIButton, UILabel, _UILegibilitySettings;
 @protocol OS_dispatch_source;
 
 @interface SBDashBoardSetupView : UIView <CAAnimationDelegate>
 {
     UILabel *_titleLabel;
     UILabel *_storeRestrictedLabel;
-    UIView *_homeAffordanceContainer;
+    SBFTouchPassThroughView *_homeAffordanceContainer;
     CSHomeAffordanceView *_homeAffordanceView;
     UIView *_homeAffordanceCallToActionContainer;
     SBUILegibilityLabel *_homeAffordanceCallToActionLabel;
@@ -32,6 +32,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) CSHomeAffordanceView *homeAffordanceView; // @synthesize homeAffordanceView=_homeAffordanceView;
 @property (readonly, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (strong, nonatomic) UIView *regulatoryInfoView; // @synthesize regulatoryInfoView=_regulatoryInfoView;

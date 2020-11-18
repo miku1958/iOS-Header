@@ -6,11 +6,11 @@
 
 #import <PassKitCore/PKSubcredentialProvisioningOperation.h>
 
-#import <PassKitCore/PKAppletSubcredentialPairingSessionDelegate-Protocol.h>
+#import <PassKitCore/PKSessionDelegate-Protocol.h>
 
 @class NSString;
 
-@interface PKSubcredentialProvisioningSessionOperation : PKSubcredentialProvisioningOperation <PKAppletSubcredentialPairingSessionDelegate>
+@interface PKSubcredentialProvisioningSessionOperation : PKSubcredentialProvisioningOperation <PKSessionDelegate>
 {
 }
 
@@ -19,13 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)appletSubcredentialPairingSession:(id)arg1 didEndPairingWithError:(id)arg2;
-- (void)appletSubcredentialPairingSession:(id)arg1 didEndPairingWithSubcredential:(id)arg2 registrationData:(id)arg3;
-- (void)appletSubcredentialPairingSession:(id)arg1 didFinishPreWarmWithResult:(id)arg2;
-- (void)appletSubcredentialPairingSession:(id)arg1 didFinishProbingTerminalWithResult:(BOOL)arg2;
-- (void)appletSubcredentialPairingSessionDidBeginPairing:(id)arg1;
-- (void)appletSubcredentialPairingSessionDidFirstTransaction:(id)arg1 withError:(id)arg2;
-- (id)pairingSession;
+- (void)session:(id)arg1 didChangeState:(unsigned long long)arg2;
 
 @end
 

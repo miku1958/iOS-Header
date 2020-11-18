@@ -15,7 +15,6 @@
 @interface PKSubcredentialPairingErrorViewController : UIViewController <PKExplanationViewDelegate, PKSubcredentialPairingFlowControllerOperation>
 {
     PKExplanationView *_explainationView;
-    long long _errorCode;
     BOOL _isAdvancing;
     id<PKSubcredentialPairingFlowControllerProtocol> _flowController;
     PKSubcredentialPairingFlowControllerContext *_provisioningContext;
@@ -32,6 +31,7 @@
 
 - (void).cxx_destruct;
 - (void)cancelButtonPressed;
+- (void)configureExplanationViewWithError:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (id)initWithFlowController:(id)arg1 context:(id)arg2;
 - (void)viewDidLoad;

@@ -326,7 +326,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let bundleIdentifier : CFString // +0x10 (0x8)
 
 	// Swift methods
-	0x58f0  class func LocalPreferences.__allocating_init(bundleIdentifier:) // init 
+	0x5ab0  class func LocalPreferences.__allocating_init(bundleIdentifier:) // init 
  }
 
  enum JetEngine.JSONTimeUnit {
@@ -352,20 +352,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let stubs : AMSBagKey // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x9fb0  @objc MockedAMSBag.isExpired <stripped>
-	0x9fc0  @objc MockedAMSBag.expirationDate <stripped>
-	0x9fd0  @objc MockedAMSBag.profile <stripped>
-	0xa020  @objc MockedAMSBag.profileVersion <stripped>
-	0xa620  @objc MockedAMSBag.arrayForKey: <stripped>
-	0xa650  @objc MockedAMSBag.boolForKey: <stripped>
-	0xa690  @objc MockedAMSBag.doubleForKey: <stripped>
-	0xa6d0  @objc MockedAMSBag.integerForKey: <stripped>
-	0xa710  @objc MockedAMSBag.stringForKey: <stripped>
-	0xa750  @objc MockedAMSBag.URLForKey: <stripped>
-	0xa790  @objc MockedAMSBag.dictionaryForKey: <stripped>
-	0xa850  @objc MockedAMSBag.createSnapshotWithCompletion: <stripped>
-	0xa910  @objc MockedAMSBag.init <stripped>
-	0xa8d0  @objc MockedAMSBag..cxx_destruct <stripped>
+	0xa170  @objc MockedAMSBag.isExpired <stripped>
+	0xa180  @objc MockedAMSBag.expirationDate <stripped>
+	0xa190  @objc MockedAMSBag.profile <stripped>
+	0xa1e0  @objc MockedAMSBag.profileVersion <stripped>
+	0xa7e0  @objc MockedAMSBag.arrayForKey: <stripped>
+	0xa810  @objc MockedAMSBag.boolForKey: <stripped>
+	0xa850  @objc MockedAMSBag.doubleForKey: <stripped>
+	0xa890  @objc MockedAMSBag.integerForKey: <stripped>
+	0xa8d0  @objc MockedAMSBag.stringForKey: <stripped>
+	0xa910  @objc MockedAMSBag.URLForKey: <stripped>
+	0xa950  @objc MockedAMSBag.dictionaryForKey: <stripped>
+	0xaa10  @objc MockedAMSBag.createSnapshotWithCompletion: <stripped>
+	0xaad0  @objc MockedAMSBag.init <stripped>
+	0xaa90  @objc MockedAMSBag..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -687,9 +687,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class JetEngine.JSPlistObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x45490  @objc JSPlistObject.parse: <stripped>
-	0x45900  @objc JSPlistObject.stringify:: <stripped>
-	0x45a50  @objc JSPlistObject.init <stripped>
+	0x45650  @objc JSPlistObject.parse: <stripped>
+	0x45ac0  @objc JSPlistObject.stringify:: <stripped>
+	0x45c10  @objc JSPlistObject.init <stripped>
  }
 
  struct JetEngine.KeySet {
@@ -734,7 +734,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var exceptionObserver : JSStack // +0x20 (0x10)
 
 	// Swift methods
-	0x4b270  class func JSStack.__allocating_init(prerequisites:virtualMachine:) // init 
+	0x4b430  class func JSStack.__allocating_init(prerequisites:virtualMachine:) // init 
  }
 
  enum JetEngine.Prerequisite {
@@ -796,11 +796,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let onActiveDidChange : SyncEvent // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x550d0  @objc ApplicationStatePresenter.applicationDidBecomeActive <stripped>
-	0x551c0  @objc ApplicationStatePresenter.applicationDidResignActive <stripped>
+	0x55290  @objc ApplicationStatePresenter.applicationDidBecomeActive <stripped>
+	0x55380  @objc ApplicationStatePresenter.applicationDidResignActive <stripped>
 
 	// Swift methods
-	0x54ae0  class func ApplicationStatePresenter.__allocating_init(isEnabled:) // init 
+	0x54ca0  class func ApplicationStatePresenter.__allocating_init(isEnabled:) // init 
  }
 
  class JetEngine.JSWeakReference : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -810,7 +810,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let weakValue : UnsafeRawPointer // +0x18 (0x8)
 
 	// Swift methods
-	0x55230  class func JSWeakReference.__allocating_init(_:) // init 
+	0x553f0  class func JSWeakReference.__allocating_init(_:) // init 
  }
 
  struct JetEngine.StateStoreHandle: AnyStateStoreHandle {
@@ -974,17 +974,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let backing : AMSBagProtocol // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x71d10  @objc MescalBagContract.mescalCertificateURL <stripped>
-	0x71d70  @objc MescalBagContract.mescalSetupURL <stripped>
-	0x71dd0  @objc MescalBagContract.mescalPrimingURL <stripped>
-	0x71e30  @objc MescalBagContract.mescalSignedActions <stripped>
-	0x71e90  @objc MescalBagContract.mescalSignSapRequests <stripped>
-	0x71ef0  @objc MescalBagContract.mescalSignSapResponses <stripped>
-	0x720d0  @objc MescalBagContract.init <stripped>
-	0x72060  @objc MescalBagContract..cxx_destruct <stripped>
+	0x71ed0  @objc MescalBagContract.mescalCertificateURL <stripped>
+	0x71f30  @objc MescalBagContract.mescalSetupURL <stripped>
+	0x71f90  @objc MescalBagContract.mescalPrimingURL <stripped>
+	0x71ff0  @objc MescalBagContract.mescalSignedActions <stripped>
+	0x72050  @objc MescalBagContract.mescalSignSapRequests <stripped>
+	0x720b0  @objc MescalBagContract.mescalSignSapResponses <stripped>
+	0x72290  @objc MescalBagContract.init <stripped>
+	0x72220  @objc MescalBagContract..cxx_destruct <stripped>
 
 	// Swift methods
-	0x71c90  class func MescalBagContract.__allocating_init(_:) // init 
+	0x71e50  class func MescalBagContract.__allocating_init(_:) // init 
  }
 
  enum JetEngine.PlatformUI { }
@@ -1033,7 +1033,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var rawRecords : Record // +0x18 (0x8)
 
 	// Swift methods
-	0x74ab0  class func ReplayLogger.__allocating_init() // init 
+	0x74c70  class func ReplayLogger.__allocating_init() // init 
  }
 
  struct JetEngine.Record {
@@ -1124,10 +1124,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var unlockedActiveiTunesAccount : ACAccount? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7d1b0  @objc Accounts.accountStoreDidChange: <stripped>
+	0x7d370  @objc Accounts.accountStoreDidChange: <stripped>
 
 	// Swift methods
-	0x7cdd0  class func Unstable.Accounts.__allocating_init(_:) // init 
+	0x7cf90  class func Unstable.Accounts.__allocating_init(_:) // init 
  }
 
  class JetEngine.Atomic {
@@ -1155,7 +1155,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let managedValue : JSManagedValue // +0x10 (0x8)
 
 	// Swift methods
-	0x800f0  class func JSConditionalReference.__allocating_init(value:ownedBy:) // init 
+	0x802b0  class func JSConditionalReference.__allocating_init(value:ownedBy:) // init 
  }
 
  struct JetEngine.ClosureActionImplementation {
@@ -1216,16 +1216,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var bag : Bag // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x86c40  @objc JSBagObject.registerBagKeys: <stripped>
-	0x86f40  @objc JSBagObject.string: <stripped>
-	0x870e0  @objc JSBagObject.double: <stripped>
-	0x87280  @objc JSBagObject.integer: <stripped>
-	0x87420  @objc JSBagObject.boolean: <stripped>
-	0x87630  @objc JSBagObject.array: <stripped>
-	0x87840  @objc JSBagObject.dictionary: <stripped>
-	0x87ae0  @objc JSBagObject.url: <stripped>
-	0x87c10  @objc JSBagObject.init <stripped>
-	0x87c70  @objc JSBagObject..cxx_destruct <stripped>
+	0x86e00  @objc JSBagObject.registerBagKeys: <stripped>
+	0x87100  @objc JSBagObject.string: <stripped>
+	0x872a0  @objc JSBagObject.double: <stripped>
+	0x87440  @objc JSBagObject.integer: <stripped>
+	0x875e0  @objc JSBagObject.boolean: <stripped>
+	0x877f0  @objc JSBagObject.array: <stripped>
+	0x87a00  @objc JSBagObject.dictionary: <stripped>
+	0x87ca0  @objc JSBagObject.url: <stripped>
+	0x87dd0  @objc JSBagObject.init <stripped>
+	0x87e30  @objc JSBagObject..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1262,7 +1262,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let defaultTopic : String // +0x18 (0x10)
 
 	// Swift methods
-	0x89600  class func AMSMetricsEventRecorder.__allocating_init(metrics:defaultTopic:) // init 
+	0x897c0  class func AMSMetricsEventRecorder.__allocating_init(metrics:defaultTopic:) // init 
  }
 
  struct JetEngine.ComponentTypes {
@@ -1322,10 +1322,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class JetEngine.JSRandomObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x8f000  @objc JSRandomObject.nextBoolean <stripped>
-	0x8f020  @objc JSRandomObject.nextNumber <stripped>
-	0x8f040  @objc JSRandomObject.nextUUID <stripped>
-	0x8f060  @objc JSRandomObject.init <stripped>
+	0x8f1c0  @objc JSRandomObject.nextBoolean <stripped>
+	0x8f1e0  @objc JSRandomObject.nextNumber <stripped>
+	0x8f200  @objc JSRandomObject.nextUUID <stripped>
+	0x8f220  @objc JSRandomObject.init <stripped>
  }
 
  struct JetEngine.MethodEventObserver {
@@ -1391,7 +1391,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queue : OS_dispatch_queue // +0x18 (0x8)
 
 	// Swift methods
-	0x98350  class func CompoundMetricsEventRecorder.__allocating_init(recorders:) // init 
+	0x98510  class func CompoundMetricsEventRecorder.__allocating_init(recorders:) // init 
  }
 
  class JetEngine.PageMetricsPresenter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1406,7 +1406,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var data : PageMetrics // +0xa0 (0x18)
 
 	// Swift methods
-	0x99a30  class func PageMetricsPresenter.__allocating_init(appMetrics:pipeline:context:data:) // init 
+	0x99bf0  class func PageMetricsPresenter.__allocating_init(appMetrics:pipeline:context:data:) // init 
  }
 
  struct JetEngine.MonotonicTime {
@@ -1459,7 +1459,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var storage : [String : Any] // +0x10 (0x8)
 
 	// Swift methods
-	0x9e930  class func TransientPreferences.__allocating_init() // init 
+	0x9eaf0  class func TransientPreferences.__allocating_init() // init 
  }
 
  class JetEngine.OverriddenAMSBag : AMSSnapshotBag /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices {
@@ -1469,22 +1469,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let overrides : AMSBagKey // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x9f360  @objc OverriddenAMSBag.dealloc <stripped>
-	0x9f510  @objc OverriddenAMSBag.forwardSnapshotBagExpiredValueAccessed: <stripped>
-	0x9f5b0  @objc OverriddenAMSBag.isExpired <stripped>
-	0x9f5d0  @objc OverriddenAMSBag.expirationDate <stripped>
-	0x9f6e0  @objc OverriddenAMSBag.profile <stripped>
-	0x9f700  @objc OverriddenAMSBag.profileVersion <stripped>
-	0x9f7b0  @objc OverriddenAMSBag.arrayForKey: <stripped>
-	0x9f7d0  @objc OverriddenAMSBag.boolForKey: <stripped>
-	0x9f7f0  @objc OverriddenAMSBag.doubleForKey: <stripped>
-	0x9f810  @objc OverriddenAMSBag.integerForKey: <stripped>
-	0x9f830  @objc OverriddenAMSBag.stringForKey: <stripped>
-	0x9f850  @objc OverriddenAMSBag.URLForKey: <stripped>
-	0x9f870  @objc OverriddenAMSBag.dictionaryForKey: <stripped>
-	0x9f9f0  @objc OverriddenAMSBag.createSnapshotWithCompletion: <stripped>
-	0x9fb30  @objc OverriddenAMSBag.init <stripped>
-	0x9f400  @objc OverriddenAMSBag..cxx_destruct <stripped>
+	0x9f520  @objc OverriddenAMSBag.dealloc <stripped>
+	0x9f6d0  @objc OverriddenAMSBag.forwardSnapshotBagExpiredValueAccessed: <stripped>
+	0x9f770  @objc OverriddenAMSBag.isExpired <stripped>
+	0x9f790  @objc OverriddenAMSBag.expirationDate <stripped>
+	0x9f8a0  @objc OverriddenAMSBag.profile <stripped>
+	0x9f8c0  @objc OverriddenAMSBag.profileVersion <stripped>
+	0x9f970  @objc OverriddenAMSBag.arrayForKey: <stripped>
+	0x9f990  @objc OverriddenAMSBag.boolForKey: <stripped>
+	0x9f9b0  @objc OverriddenAMSBag.doubleForKey: <stripped>
+	0x9f9d0  @objc OverriddenAMSBag.integerForKey: <stripped>
+	0x9f9f0  @objc OverriddenAMSBag.stringForKey: <stripped>
+	0x9fa10  @objc OverriddenAMSBag.URLForKey: <stripped>
+	0x9fa30  @objc OverriddenAMSBag.dictionaryForKey: <stripped>
+	0x9fbb0  @objc OverriddenAMSBag.createSnapshotWithCompletion: <stripped>
+	0x9fcf0  @objc OverriddenAMSBag.init <stripped>
+	0x9f5c0  @objc OverriddenAMSBag..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1513,9 +1513,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let requestEncoder : JSURLRequestEncoder // +0x18 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xa1d30  @objc JSNetworkObject.fetch: <stripped>
-	0xa1e40  @objc JSNetworkObject.init <stripped>
-	0xa1ea0  @objc JSNetworkObject..cxx_destruct <stripped>
+	0xa1ef0  @objc JSNetworkObject.fetch: <stripped>
+	0xa2000  @objc JSNetworkObject.init <stripped>
+	0xa2060  @objc JSNetworkObject..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1570,7 +1570,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let onEventRecorded : AsyncEvent // +0x28 (0x8)
 
 	// Swift methods
-	0xaab00  class func InMemoryMetricsEventRecorder.__allocating_init(historySize:) // init 
+	0xaacc0  class func InMemoryMetricsEventRecorder.__allocating_init(historySize:) // init 
  }
 
  class JetEngine.JSPlatformObject : NSObject /usr/lib/libobjc.A.dylib {
@@ -1580,9 +1580,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let process : AMSProcessInfo // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xacfc0  @objc JSPlatformObject.lookup: <stripped>
-	0xad0d0  @objc JSPlatformObject.init <stripped>
-	0xad130  @objc JSPlatformObject..cxx_destruct <stripped>
+	0xad180  @objc JSPlatformObject.lookup: <stripped>
+	0xad290  @objc JSPlatformObject.init <stripped>
+	0xad2f0  @objc JSPlatformObject..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1594,21 +1594,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var name : String // +0x18 (0x10)
 
 	// Swift methods
-	0xae120  class func BaseObjectGraph.__allocating_init(name:dependencies:) // init 
-	0xae240  func BaseObjectGraph.adding(allDependenciesOf:) // method 
-	0xae3a0  func BaseObjectGraph.adding<A>(allDependencies:) // method 
-	0xae500  func BaseObjectGraph.adding(dependency:) // method 
-	0xae650  func BaseObjectGraph.adding(uniqueDependenciesOf:) // method 
-	0xae7e0  func BaseObjectGraph.subtracting<A>(dependenciesFor:) // method 
-	0xaeaa0  func BaseObjectGraph.subtracting(dependencyFor:) // method 
-	0xaec10  func BaseObjectGraph.subtracting<A>(allDependenciesExcept:) // method 
-	0xaeee0  func BaseObjectGraph.availableCandidates.getter // getter 
-	0xaf330  func BaseObjectGraph.errorDescription<A>(forNoMemberSatisfying:) // method 
-	0xaf700  func BaseObjectGraph.noMemberFound<A>(toSatisfy:) // method 
-	0xaf790  func BaseObjectGraph.name.getter // getter 
-	0xaf7d0  func BaseObjectGraph.name.setter // setter 
-	0xaf810  func BaseObjectGraph.name.modify // modifyCoroutine 
-	0xaf850  func BaseObjectGraph.description.getter // getter 
+	0xae2e0  class func BaseObjectGraph.__allocating_init(name:dependencies:) // init 
+	0xae400  func BaseObjectGraph.adding(allDependenciesOf:) // method 
+	0xae560  func BaseObjectGraph.adding<A>(allDependencies:) // method 
+	0xae6c0  func BaseObjectGraph.adding(dependency:) // method 
+	0xae810  func BaseObjectGraph.adding(uniqueDependenciesOf:) // method 
+	0xae9a0  func BaseObjectGraph.subtracting<A>(dependenciesFor:) // method 
+	0xaec60  func BaseObjectGraph.subtracting(dependencyFor:) // method 
+	0xaedd0  func BaseObjectGraph.subtracting<A>(allDependenciesExcept:) // method 
+	0xaf0a0  func BaseObjectGraph.availableCandidates.getter // getter 
+	0xaf4f0  func BaseObjectGraph.errorDescription<A>(forNoMemberSatisfying:) // method 
+	0xaf8c0  func BaseObjectGraph.noMemberFound<A>(toSatisfy:) // method 
+	0xaf950  func BaseObjectGraph.name.getter // getter 
+	0xaf990  func BaseObjectGraph.name.setter // setter 
+	0xaf9d0  func BaseObjectGraph.name.modify // modifyCoroutine 
+	0xafa10  func BaseObjectGraph.description.getter // getter 
  }
 
  enum JetEngine.ValueOverride {
@@ -1686,11 +1686,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let backing : AMSBagProtocol // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xb88a0  @objc LookupBagContract.unpersonalizedLookupURL <stripped>
-	0xb8a20  @objc LookupBagContract..cxx_destruct <stripped>
+	0xb8a60  @objc LookupBagContract.unpersonalizedLookupURL <stripped>
+	0xb8be0  @objc LookupBagContract..cxx_destruct <stripped>
 
 	// Swift methods
-	0xb8930  func LookupBagContract.unpersonalizedLookupURL.getter // getter 
+	0xb8af0  func LookupBagContract.unpersonalizedLookupURL.getter // getter 
  }
 
  struct JetEngine.MutableStateRef {
@@ -1759,7 +1759,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let weakOwner : JSWeakReference // +0x20 (0x8)
 
 	// Swift methods
-	0xbb320  class func JSBoundReference.__allocating_init(value:ownedBy:) // init 
+	0xbb4e0  class func JSBoundReference.__allocating_init(value:ownedBy:) // init 
  }
 
  class JetEngine.JSNotifyObject : NSObject /usr/lib/libobjc.A.dylib {
@@ -1768,11 +1768,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var observersByName : JSCallable // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xbc220  @objc JSNotifyObject.init <stripped>
-	0xbc710  @objc JSNotifyObject.register:: <stripped>
-	0xbcb70  @objc JSNotifyObject.unregister:: <stripped>
-	0xbcbe0  @objc JSNotifyObject.post: <stripped>
-	0xbcc60  @objc JSNotifyObject..cxx_destruct <stripped>
+	0xbc3e0  @objc JSNotifyObject.init <stripped>
+	0xbc8d0  @objc JSNotifyObject.register:: <stripped>
+	0xbcd30  @objc JSNotifyObject.unregister:: <stripped>
+	0xbcda0  @objc JSNotifyObject.post: <stripped>
+	0xbce20  @objc JSNotifyObject..cxx_destruct <stripped>
  }
 
  class JetEngine.DeferredLazy {
@@ -1816,9 +1816,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class JetEngine.JSCryptoObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xc7200  @objc JSCryptoObject.supports: <stripped>
-	0xc7470  @objc JSCryptoObject.hash:: <stripped>
-	0xc7590  @objc JSCryptoObject.init <stripped>
+	0xc73c0  @objc JSCryptoObject.supports: <stripped>
+	0xc7630  @objc JSCryptoObject.hash:: <stripped>
+	0xc7750  @objc JSCryptoObject.init <stripped>
  }
 
  struct JetEngine.JSSource {
@@ -1851,7 +1851,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let onAppStateEvent : SyncEvent // +0x90 (0x8)
 
 	// Swift methods
-	0xc9ff0  class func AppMetricsPresenter.__allocating_init(pipeline:) // init 
+	0xca1b0  class func AppMetricsPresenter.__allocating_init(pipeline:) // init 
  }
 
  struct JetEngine.AppStateEvent {
@@ -1862,14 +1862,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class JetEngine.JSHostObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xcae60  @objc JSHostObject.platform <stripped>
-	0xcae90  @objc JSHostObject.osBuild <stripped>
-	0xcaeb0  @objc JSHostObject.deviceModel <stripped>
-	0xcaed0  @objc JSHostObject.deviceLocalizedModel <stripped>
-	0xcaf70  @objc JSHostObject.clientIdentifier <stripped>
-	0xcb050  @objc JSHostObject.clientVersion <stripped>
-	0xcb090  @objc JSHostObject.isOSAtLeast::: <stripped>
-	0xcb1b0  @objc JSHostObject.init <stripped>
+	0xcb020  @objc JSHostObject.platform <stripped>
+	0xcb050  @objc JSHostObject.osBuild <stripped>
+	0xcb070  @objc JSHostObject.deviceModel <stripped>
+	0xcb090  @objc JSHostObject.deviceLocalizedModel <stripped>
+	0xcb130  @objc JSHostObject.clientIdentifier <stripped>
+	0xcb210  @objc JSHostObject.clientVersion <stripped>
+	0xcb250  @objc JSHostObject.isOSAtLeast::: <stripped>
+	0xcb370  @objc JSHostObject.init <stripped>
  }
 
  struct JetEngine.SwiftLogger {
@@ -1884,11 +1884,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let backing : AMSBagProtocol // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xcbaa0  @objc FamilyInfoLookupBagContract.familyInfoURL <stripped>
-	0xcbc00  @objc FamilyInfoLookupBagContract..cxx_destruct <stripped>
+	0xcbc60  @objc FamilyInfoLookupBagContract.familyInfoURL <stripped>
+	0xcbdc0  @objc FamilyInfoLookupBagContract..cxx_destruct <stripped>
 
 	// Swift methods
-	0xcbb20  func FamilyInfoLookupBagContract.familyInfoURL.getter // getter 
+	0xcbce0  func FamilyInfoLookupBagContract.familyInfoURL.getter // getter 
  }
 
  struct JetEngine.JSTypedArray {
@@ -1921,16 +1921,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var tasks : [()] // +0x38 (0x8)
 
 	// Swift methods
-	0xcd970  class func RunLoopWorkerThread.__allocating_init(name:) // init 
-	0xcdc20  func RunLoopWorkerThread.isRunning.getter // getter 
-	0xcdce0  func RunLoopWorkerThread.start() // method 
-	0xcdfe0  func RunLoopWorkerThread.stop() // method 
-	0xce1a0  func <stripped> // method 
-	0xce7a0  func RunLoopWorkerThread.scheduleAfter(delay:execute:) // method 
-	0xcef70  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
-	0xcf310  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
-	0xcf430  func RunLoopWorkerThread.schedule(task:) // method 
-	0xcf610  func RunLoopWorkerThread.description.getter // getter 
+	0xcdb30  class func RunLoopWorkerThread.__allocating_init(name:) // init 
+	0xcdde0  func RunLoopWorkerThread.isRunning.getter // getter 
+	0xcdea0  func RunLoopWorkerThread.start() // method 
+	0xce1a0  func RunLoopWorkerThread.stop() // method 
+	0xce360  func <stripped> // method 
+	0xce960  func RunLoopWorkerThread.scheduleAfter(delay:execute:) // method 
+	0xcf130  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
+	0xcf4d0  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
+	0xcf5f0  func RunLoopWorkerThread.schedule(task:) // method 
+	0xcf7d0  func RunLoopWorkerThread.description.getter // getter 
  }
 
  struct JetEngine.PendingTask {
@@ -1954,7 +1954,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let sampling : MetricsSamplingLottery // +0x58 (0x30)
 
 	// Swift methods
-	0xd2df0  class func MetricsLogger.__allocating_init(loggerName:configuration:) // init 
+	0xd2fb0  class func MetricsLogger.__allocating_init(loggerName:configuration:) // init 
  }
 
  struct JetEngine.Configuration {
@@ -1979,36 +1979,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let mescalContract : AMSMescalBagContract // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd5760  @objc URLBagContract.guidRegexes <stripped>
-	0xd5790  @objc URLBagContract.guidSchemes <stripped>
-	0xd57c0  @objc URLBagContract.storefrontSuffix <stripped>
-	0xd57f0  @objc URLBagContract.trustedDomains <stripped>
-	0xd5820  @objc URLBagContract.metricsContract <stripped>
-	0xd5840  @objc URLBagContract.mescalContract <stripped>
-	0xd5890  @objc URLBagContract.TLSSamplingPercentage <stripped>
-	0xd58c0  @objc URLBagContract.TLSSamplingSessionDuration <stripped>
-	0xd58f0  @objc URLBagContract.TFOSamplingPercentage <stripped>
-	0xd5920  @objc URLBagContract.TFOSamplingSessionDuration <stripped>
-	0xd5950  @objc URLBagContract.apsEnabledPatterns <stripped>
-	0xd5980  @objc URLBagContract.apsSamplingPercent <stripped>
-	0xd59b0  @objc URLBagContract.metricsURL <stripped>
-	0xd59e0  @objc URLBagContract.metricsDictionary <stripped>
-	0xd5ae0  @objc URLBagContract.init <stripped>
-	0xd5b40  @objc URLBagContract..cxx_destruct <stripped>
+	0xd5920  @objc URLBagContract.guidRegexes <stripped>
+	0xd5950  @objc URLBagContract.guidSchemes <stripped>
+	0xd5980  @objc URLBagContract.storefrontSuffix <stripped>
+	0xd59b0  @objc URLBagContract.trustedDomains <stripped>
+	0xd59e0  @objc URLBagContract.metricsContract <stripped>
+	0xd5a00  @objc URLBagContract.mescalContract <stripped>
+	0xd5a50  @objc URLBagContract.TLSSamplingPercentage <stripped>
+	0xd5a80  @objc URLBagContract.TLSSamplingSessionDuration <stripped>
+	0xd5ab0  @objc URLBagContract.TFOSamplingPercentage <stripped>
+	0xd5ae0  @objc URLBagContract.TFOSamplingSessionDuration <stripped>
+	0xd5b10  @objc URLBagContract.apsEnabledPatterns <stripped>
+	0xd5b40  @objc URLBagContract.apsSamplingPercent <stripped>
+	0xd5b70  @objc URLBagContract.metricsURL <stripped>
+	0xd5ba0  @objc URLBagContract.metricsDictionary <stripped>
+	0xd5ca0  @objc URLBagContract.init <stripped>
+	0xd5d00  @objc URLBagContract..cxx_destruct <stripped>
 
 	// Swift methods
-	0xd56a0  class func URLBagContract.__allocating_init(_:) // init 
-	0xd53e0  func URLBagContract.guidRegexes.getter // getter 
-	0xd5410  func URLBagContract.guidSchemes.getter // getter 
-	0xd5440  func URLBagContract.storefrontSuffix.getter // getter 
-	0xd5470  func URLBagContract.trustedDomains.getter // getter 
-	0xd54a0  func URLBagContract.metricsContract.getter // getter 
-	0xd54c0  func URLBagContract.tlsSamplingPercentage.getter // getter 
-	0xd54f0  func URLBagContract.tlsSamplingSessionDuration.getter // getter 
-	0xd5520  func URLBagContract.tfoSamplingPercentage.getter // getter 
-	0xd5550  func URLBagContract.tfoSamplingSessionDuration.getter // getter 
-	0xd5580  func URLBagContract.apsEnabledPatterns.getter // getter 
-	0xd55b0  func URLBagContract.apsSamplingPercent.getter // getter 
-	0xd55e0  func URLBagContract.metricsURL.getter // getter 
-	0xd5610  func URLBagContract.metricsDictionary.getter // getter 
+	0xd5860  class func URLBagContract.__allocating_init(_:) // init 
+	0xd55a0  func URLBagContract.guidRegexes.getter // getter 
+	0xd55d0  func URLBagContract.guidSchemes.getter // getter 
+	0xd5600  func URLBagContract.storefrontSuffix.getter // getter 
+	0xd5630  func URLBagContract.trustedDomains.getter // getter 
+	0xd5660  func URLBagContract.metricsContract.getter // getter 
+	0xd5680  func URLBagContract.tlsSamplingPercentage.getter // getter 
+	0xd56b0  func URLBagContract.tlsSamplingSessionDuration.getter // getter 
+	0xd56e0  func URLBagContract.tfoSamplingPercentage.getter // getter 
+	0xd5710  func URLBagContract.tfoSamplingSessionDuration.getter // getter 
+	0xd5740  func URLBagContract.apsEnabledPatterns.getter // getter 
+	0xd5770  func URLBagContract.apsSamplingPercent.getter // getter 
+	0xd57a0  func URLBagContract.metricsURL.getter // getter 
+	0xd57d0  func URLBagContract.metricsDictionary.getter // getter 
  }

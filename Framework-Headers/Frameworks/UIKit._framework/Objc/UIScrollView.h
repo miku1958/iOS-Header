@@ -13,7 +13,7 @@
 #import <UIKitCore/UIScrollViewDelayedTouchesBeganGestureRecognizerClient-Protocol.h>
 #import <UIKitCore/_UIScrollToTopView-Protocol.h>
 
-@class CADisplayLink, NSArray, NSHashTable, NSISVariable, NSMutableDictionary, NSString, NSTimer, UIGestureRecognizer, UIHoverGestureRecognizer, UILayoutGuide, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIPointerRegion, UIRefreshControl, UIScrollViewDelayedTouchesBeganGestureRecognizer, UIScrollViewDirectionalPressGestureRecognizer, UIScrollViewKnobLongPressGestureRecognizer, UIScrollViewPanGestureRecognizer, UIScrollViewPinchGestureRecognizer, UISwipeGestureRecognizer, UIViewAnimationState, _UIAutoScrollAssistant, _UIClickFeedbackGenerator, _UIDragAutoScrollGestureRecognizer, _UIFocusFastScrollingController, _UIFocusFastScrollingIndexBarView, _UIFocusFastScrollingRequest, _UIScrollViewScrollIndicator, _UIStaticScrollBar, _UIZoomEdgeFeedbackGenerator;
+@class CADisplayLink, NSArray, NSHashTable, NSISVariable, NSMutableDictionary, NSString, NSTimer, UIDelayedAction, UIGestureRecognizer, UIHoverGestureRecognizer, UILayoutGuide, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIPointerRegion, UIRefreshControl, UIScrollViewDelayedTouchesBeganGestureRecognizer, UIScrollViewDirectionalPressGestureRecognizer, UIScrollViewKnobLongPressGestureRecognizer, UIScrollViewPanGestureRecognizer, UIScrollViewPinchGestureRecognizer, UIScrollViewScrollAnimation, UISwipeGestureRecognizer, UIViewAnimationState, _UIAutoScrollAssistant, _UIClickFeedbackGenerator, _UIDragAutoScrollGestureRecognizer, _UIFocusFastScrollingController, _UIFocusFastScrollingIndexBarView, _UIFocusFastScrollingRequest, _UIScrollViewScrollIndicator, _UIStaticScrollBar, _UIZoomEdgeFeedbackGenerator;
 @protocol UICoordinateSpace, UIFocusItem, UIScrollViewDelegate, _UIScrollViewLayoutObserver, _UIScrollViewScrollableAncestor;
 
 @interface UIScrollView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelayedTouchesBeganGestureRecognizerClient, _UIScrollToTopView, UIIndexBarAccessoryViewDelegate, NSCoding, UIFocusItemScrollableContainer>
@@ -59,7 +59,7 @@
     id *_shadows;
     NSHashTable *_scrollNotificationObservers;
     double _contentOffsetAnimationDuration;
-    id _animation;
+    UIScrollViewScrollAnimation *_animation;
     id _zoomAnimation;
     UIViewAnimationState *_zoomAnimationState;
     UIScrollViewPinchGestureRecognizer *_pinch;
@@ -78,6 +78,11 @@
     double _fastScrollMultiplier;
     double _fastScrollStartMultiplier;
     double _fastScrollEndTime;
+    double _discreteFastScrollLastHighVelocityEventTime;
+    long long _discreteFastScrollCount;
+    double _discreteFastScrollMultiplier;
+    double _discreteFastScrollStartMultiplier;
+    double _discreteFastScrollEndTime;
     struct CGPoint _rotationCenterPoint;
     double _accuracy;
     unsigned long long _zoomAnimationCount;
@@ -122,6 +127,7 @@
     UIScrollViewKnobLongPressGestureRecognizer *_knobLongPressGestureRecognizer;
     UIScrollViewKnobLongPressGestureRecognizer *_knobPointerLongPressGestureRecognizer;
     UIHoverGestureRecognizer *_knobHoverGestureRecognizer;
+    UIDelayedAction *_trackpadScrollInterruptionDelayedAction;
     double _lastScrollInterruptionByPointerEventTime;
     double _intervalBetweenPanGestures;
     double _lastPanGestureEndTime;
@@ -230,6 +236,7 @@
     NSTimer *_trackingWatchdogTimer;
     unsigned long long _currentScrollDeviceCategory;
     UIPointerRegion *_scrollingPointerRegion;
+    unsigned long long _scrollingPointerRegionGenerationID;
     BOOL _useContentDimensionVariablesForConstraintLowering;
     id _scrollTestParameters;
     long long _keyboardDismissMode;
@@ -392,6 +399,7 @@
 - (void)_beginDirectManipulationIfNecessaryWithGestureRecognizer:(id)arg1;
 - (void)_beginIndicatingFocusFastScrollingDestination;
 - (void)_beginRefreshing;
+- (void)_beginScrollingCursorOverrideIfNecessary;
 - (BOOL)_beginTrackingWithEvent:(id)arg1;
 - (BOOL)_bounceForCarPlayIfNecessary;
 - (id)_boundingPathForSubtree;
@@ -462,6 +470,7 @@
 - (void)_endIndicatingFocusFastScrollingDestination;
 - (void)_endPanNormal:(BOOL)arg1;
 - (void)_endRefreshingAnimated:(BOOL)arg1;
+- (void)_endScrollingCursorOverrideIfNecessary;
 - (void)_ensureViewsAreLoadedInRect:(struct CGRect)arg1;
 - (void)_enumerateAllScrollObserversWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_evaluateWantsConstrainedContentSize;
@@ -594,6 +603,7 @@
 - (void)_removeScrollViewScrollObserver:(id)arg1;
 - (BOOL)_requiresExplicitLayoutMarginsGuideForAttribute:(long long)arg1 getAttributeForGuide:(int *)arg2;
 - (void)_resetContentScrollableAxes;
+- (void)_resetDiscreteFastScroll;
 - (BOOL)_resetScrollingForGestureEvent:(id)arg1;
 - (void)_resetScrollingWithUIEvent:(id)arg1;
 - (BOOL)_resetsBoundingPathForSubtree;
@@ -639,8 +649,10 @@
 - (void)_setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2 animationCurve:(int)arg3;
 - (void)_setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2 animationCurve:(int)arg3 animationAdjustsForContentOffsetDelta:(BOOL)arg4;
 - (void)_setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2 animationCurve:(int)arg3 animationAdjustsForContentOffsetDelta:(BOOL)arg4 animation:(id)arg5;
+- (void)_setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2 animationCurve:(int)arg3 animationAdjustsForContentOffsetDelta:(BOOL)arg4 animation:(id)arg5 animationConfigurator:(CDUnknownBlockType)arg6;
 - (void)_setContentOffset:(struct CGPoint)arg1 animation:(id)arg2;
 - (void)_setContentOffset:(struct CGPoint)arg1 duration:(double)arg2 animationCurve:(int)arg3;
+- (void)_setContentOffset:(struct CGPoint)arg1 duration:(double)arg2 animationCurve:(int)arg3 animationConfigurator:(CDUnknownBlockType)arg4;
 - (void)_setContentOffsetAnimationDuration:(double)arg1;
 - (void)_setContentOffsetPinned:(struct CGPoint)arg1;
 - (void)_setContentOffsetPinned:(struct CGPoint)arg1 animated:(BOOL)arg2;
@@ -724,6 +736,7 @@
 - (id)_touchesDelayedGestureRecognizer;
 - (void)_trackingDidBegin;
 - (void)_trackingDidEnd;
+- (void)_trackpadInterruptScroll:(id)arg1;
 - (BOOL)_transfersScrollToContainer;
 - (id)_uili_existingObservationEligibleLayoutVariables;
 - (void)_unregisterForSpringBoardBlankedScreenNotification;

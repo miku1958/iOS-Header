@@ -18,6 +18,8 @@
     BOOL _allowHDR;
     BOOL _allowMultichannelAudio;
     BOOL _includeDefaultAudioOption;
+    BOOL _includeOriginalAudio;
+    BOOL _includeDeviceLanguageAudio;
     BOOL _useLegacyAudioSettings;
     BOOL _downloadIsComplete;
     NSObject<TVPMediaItem> *_mediaItem;
@@ -56,6 +58,8 @@
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL includeDefaultAudioOption; // @synthesize includeDefaultAudioOption=_includeDefaultAudioOption;
+@property (nonatomic) BOOL includeDeviceLanguageAudio; // @synthesize includeDeviceLanguageAudio=_includeDeviceLanguageAudio;
+@property (nonatomic) BOOL includeOriginalAudio; // @synthesize includeOriginalAudio=_includeOriginalAudio;
 @property (strong, nonatomic) NSObject<TVPMediaItem> *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (strong, nonatomic) TVPMediaItemLoader *mediaItemLoader; // @synthesize mediaItemLoader=_mediaItemLoader;
 @property (strong, nonatomic) NSMapTable *mediaSelectionToProgressMap; // @synthesize mediaSelectionToProgressMap=_mediaSelectionToProgressMap;
@@ -79,6 +83,7 @@
 - (void)URLSession:(id)arg1 aggregateAssetDownloadTask:(id)arg2 didLoadTimeRange:(CDStruct_5c5366e1)arg3 totalTimeRangesLoaded:(id)arg4 timeRangeExpectedToLoad:(CDStruct_5c5366e1)arg5 forMediaSelection:(id)arg6;
 - (void)URLSession:(id)arg1 aggregateAssetDownloadTask:(id)arg2 willDownloadToURL:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)_addMediaSelectionOptionsIfNotAlreadyAdded:(id)arg1 toMediaSelections:(id)arg2 forMediaSelectionGroup:(id)arg3 baseMediaSelection:(id)arg4;
 - (void)_mediaItemLoaderStateDidChangeTo:(id)arg1;
 - (void)_registerStateMachineHandlers;
 - (void)addDelegate:(id)arg1;

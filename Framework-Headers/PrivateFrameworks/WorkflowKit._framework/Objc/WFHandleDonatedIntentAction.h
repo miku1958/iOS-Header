@@ -40,6 +40,7 @@
 - (id)localizedKeyParameterDisplayName;
 - (id)localizedName;
 - (id)localizedSubtitle;
+- (id)metricsIdentifier;
 - (id)name;
 - (id)requiredResources;
 - (id)serializedParameters;

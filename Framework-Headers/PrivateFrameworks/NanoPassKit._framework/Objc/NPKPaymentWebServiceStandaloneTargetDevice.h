@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKPaymentWebServiceTargetDevice.h>
+#import <PassKit/PKPaymentWebServiceTargetDevice.h>
 
 @protocol NPKPaymentWebServiceStandaloneTargetDeviceDelegate;
 

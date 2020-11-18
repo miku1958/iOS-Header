@@ -14,31 +14,38 @@
     UILabel *_nameLabel;
     UILabel *_birthdateLabel;
     UILabel *_organDonationLabel;
+    UILabel *_emergencyAccessLabel;
+    UIStackView *_fullContainerView;
     UIStackView *_mainContainerView;
     UIStackView *_labelContainerView;
     UIFont *_nameLabelFont;
     NSLayoutConstraint *_pictureWidthAnchor;
     NSCalendar *_gregorianCalendar;
     BOOL _resetFormatters;
+    BOOL _enabled;
+    BOOL _shareInfo;
     UIImage *_picture;
     NSString *_name;
     NSDateComponents *_gregorianBirthday;
     NSNumber *_organDonationStatus;
 }
 
+@property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic) NSDateComponents *gregorianBirthday; // @synthesize gregorianBirthday=_gregorianBirthday;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSNumber *organDonationStatus; // @synthesize organDonationStatus=_organDonationStatus;
 @property (strong, nonatomic) UIImage *picture; // @synthesize picture=_picture;
+@property (nonatomic) BOOL shareInfo; // @synthesize shareInfo=_shareInfo;
 
 - (void).cxx_destruct;
 - (id)_cachedCalendar;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
+- (void)buildEmergencyAccessTableItem;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)localeDidChange:(id)arg1;
 - (id)notOrganDonorString;
-- (id)organDonorStringWithTemplate:(id)arg1;
+- (id)stringWithImageNamed:(id)arg1 withText:(id)arg2 andColor:(id)arg3;
 - (void)timeZoneDidChange:(id)arg1;
 - (void)updateSubviewsFromData;
 

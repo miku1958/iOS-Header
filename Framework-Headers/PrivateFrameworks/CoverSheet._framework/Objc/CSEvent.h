@@ -11,11 +11,13 @@
 @interface CSEvent : NSObject
 {
     BOOL _consumable;
+    BOOL _stateless;
     long long _type;
     NSNumber *_value;
 }
 
 @property (nonatomic, getter=isConsumable) BOOL consumable; // @synthesize consumable=_consumable;
+@property (nonatomic, getter=isStateless) BOOL stateless; // @synthesize stateless=_stateless;
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (strong, nonatomic) NSNumber *value; // @synthesize value=_value;
 

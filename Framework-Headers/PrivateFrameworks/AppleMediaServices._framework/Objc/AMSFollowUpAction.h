@@ -16,11 +16,13 @@
     NSString *_label;
     AMSMetricsEvent *_metricsEvent;
     NSURL *_url;
+    NSString *_backingIdentifier;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_actionQueue;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *actionQueue; // @synthesize actionQueue=_actionQueue;
+@property (strong, nonatomic) NSString *backingIdentifier; // @synthesize backingIdentifier=_backingIdentifier;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
@@ -39,6 +41,7 @@
 - (id)generateAction;
 - (id)initWithAction:(id)arg1;
 - (id)initWithAction:(id)arg1 parentIdentifier:(id)arg2;
+- (id)initWithItem:(id)arg1 action:(id)arg2;
 - (id)initWithLabel:(id)arg1;
 - (id)initWithLabel:(id)arg1 parentIdentifier:(id)arg2;
 - (id)performActionsWithBag:(id)arg1 account:(id)arg2;

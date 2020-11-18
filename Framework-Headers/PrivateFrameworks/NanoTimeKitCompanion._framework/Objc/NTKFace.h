@@ -187,6 +187,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)customEditModes;
 - (void)dealloc;
+- (id)defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)didMoveToLibrary;
 - (id)displayNameForComplicationSlot:(id)arg1;
 - (Class)editOptionClassFromEditMode:(long long)arg1 resourceDirectoryExists:(BOOL)arg2;

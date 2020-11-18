@@ -555,7 +555,6 @@
 - (void)_removeMediaSessionWithIdentifier:(id)arg1;
 - (void)_removeOutgoingInvitationForUser:(id)arg1;
 - (void)_removePendingAccessoryAdd:(id)arg1;
-- (void)_removeReachableAccessory:(id)arg1 hapAccessory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_removeService:(id)arg1;
 - (void)_removeTrigger:(id)arg1 message:(id)arg2;
 - (void)_removeUser:(id)arg1;

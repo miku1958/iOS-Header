@@ -23,7 +23,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)createAccountPageViewControllerFor:(id)arg1 useAMS:(BOOL)arg2;
+- (id)createAccountPageViewControllerFor:(id)arg1;
 
 @end
 

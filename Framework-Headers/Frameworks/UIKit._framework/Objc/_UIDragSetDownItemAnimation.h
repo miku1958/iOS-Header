@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
     _UIPlatterView *_updatedAppPlatterView;
     _UIPlatterView *_druidPlatterView;
     _UIPlatterContainerView *_platterContainerView;
+    _UIPlatterView *_defaultPlatterView;
     CDUnknownBlockType _positionHandler;
     CDUnknownBlockType _morphHandler;
     CDUnknownBlockType _midpointHandler;
@@ -55,6 +56,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGPoint center; // @synthesize center=_center;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (nonatomic) BOOL defaultAnimation; // @synthesize defaultAnimation=_defaultAnimation;
+@property (strong, nonatomic) _UIPlatterView *defaultPlatterView; // @synthesize defaultPlatterView=_defaultPlatterView;
 @property (weak, nonatomic) id<_UIDragSetDownItemAnimationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL done; // @synthesize done=_done;
 @property (readonly, nonatomic) _DUIVisibleDroppedItem *droppedItem; // @synthesize droppedItem=_droppedItem;
@@ -78,6 +80,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIPortalView *retargetingContainerPortalView; // @synthesize retargetingContainerPortalView=_retargetingContainerPortalView;
 @property (strong, nonatomic) UIView *retargetingContainerView; // @synthesize retargetingContainerView=_retargetingContainerView;
 @property (nonatomic) BOOL sourceAnimation; // @synthesize sourceAnimation=_sourceAnimation;
+@property (readonly, nonatomic) UIWindow *targetContainerWindow;
 @property (nonatomic) struct CGRect targetFrame; // @synthesize targetFrame=_targetFrame;
 @property (strong, nonatomic) UITargetedDragPreview *targetedDropPreview; // @synthesize targetedDropPreview=_targetedDropPreview;
 @property (strong, nonatomic) _UIPlatterView *updatedAppPlatterView; // @synthesize updatedAppPlatterView=_updatedAppPlatterView;

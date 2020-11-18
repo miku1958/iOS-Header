@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKSubcredentialProvisioningSessionOperation.h>
+#import <PassKitCore/PKSubcredentialProvisioningSharingSessionOperation.h>
 
-@interface PKSubcredentialProvisioningAcceptInvitationOperation : PKSubcredentialProvisioningSessionOperation
+@interface PKSubcredentialProvisioningAcceptInvitationOperation : PKSubcredentialProvisioningSharingSessionOperation
 {
-    BOOL _operationCompleted;
 }
 
 - (void)acceptInvitation;

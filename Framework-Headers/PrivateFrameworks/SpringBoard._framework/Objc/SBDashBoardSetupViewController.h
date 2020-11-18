@@ -7,10 +7,11 @@
 #import <CoverSheet/CSCoverSheetViewControllerBase.h>
 
 #import <SpringBoard/CSEventHandling-Protocol.h>
+#import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CSCoverSheetViewController, NSArray, NSDictionary, NSMutableArray, NSString, NSTimer, SBActivationInfoViewController, SBSetupManager, SBSetupRegulatoryInfoViewController;
+@class CSCoverSheetViewController, NSArray, NSDictionary, NSMutableArray, NSString, NSTimer, SBActivationInfoViewController, SBSetupManager, SBSetupRegulatoryInfoViewController, UIHoverGestureRecognizer, UITapGestureRecognizer;
 
-@interface SBDashBoardSetupViewController : CSCoverSheetViewControllerBase <CSEventHandling>
+@interface SBDashBoardSetupViewController : CSCoverSheetViewControllerBase <CSEventHandling, UIGestureRecognizerDelegate>
 {
     SBActivationInfoViewController *_activationInfoViewController;
     SBSetupRegulatoryInfoViewController *_regulatoryInfoViewController;
@@ -29,6 +30,8 @@
     BOOL _isCyclingComponents;
     unsigned long long _componentsToCycle;
     BOOL _isStoreRestricted;
+    UITapGestureRecognizer *_pointerClickGestureRecognizer;
+    UIHoverGestureRecognizer *_hoverGestureRecognizer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -39,10 +42,13 @@
 - (void).cxx_destruct;
 - (void)_animateComponentsForNewCycle;
 - (void)_cancelWifiScan;
+- (unsigned long long)_componentsRelevantToPointerSuppression;
 - (id)_currentLanguageIdentifier;
 - (id)_currentStoreRestrictedStringsDictionary;
 - (id)_currentStringsDictionary;
+- (void)_didClickHomeAffordance:(id)arg1;
 - (void)_fetchLanguageFromTelephony;
+- (void)_handleHoverEvent:(id)arg1;
 - (id)_importantLanguageIdentifiers;
 - (void)_incrementLocalizedStringsForNewCycle;
 - (void)_infoButtonTapped:(id)arg1;
@@ -55,8 +61,10 @@
 - (void)_updateWifiPrimaryLanguageFromDiscoveredCountryCodes:(id)arg1;
 - (void)aggregateAppearance:(id)arg1;
 - (void)aggregateBehavior:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)handleEvent:(id)arg1;
 - (id)initWithCoverSheetViewController:(id)arg1;
+- (BOOL)isCyclingComponents:(unsigned long long)arg1;
 - (void)loadView;
 - (long long)presentationPriority;
 - (long long)presentationType;

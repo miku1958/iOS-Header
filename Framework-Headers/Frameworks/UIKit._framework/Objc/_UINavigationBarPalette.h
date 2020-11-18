@@ -33,7 +33,7 @@
 @property (nonatomic, setter=_setDisplaysWhenSearchActive:) BOOL _displaysWhenSearchActive; // @synthesize _displaysWhenSearchActive=__displaysWhenSearchActive;
 @property (nonatomic, setter=_setLayoutPriority:) long long _layoutPriority; // @synthesize _layoutPriority=__layoutPriority;
 @property (nonatomic, setter=_setPaletteOverridesPinningBar:) BOOL _paletteOverridesPinningBar;
-@property (strong, nonatomic) _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
+@property (weak, nonatomic) _UIPointerInteractionAssistant *assistant; // @synthesize assistant=_assistant;
 @property (copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
 @property (readonly, nonatomic) unsigned long long boundaryEdge;
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;

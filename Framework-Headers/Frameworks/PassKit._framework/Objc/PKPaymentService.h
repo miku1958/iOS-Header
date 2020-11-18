@@ -134,6 +134,7 @@
 - (void)processTransitTransactionEventWithHistory:(id)arg1 transactionDate:(id)arg2 forPaymentApplication:(id)arg3 withPassUniqueIdentifier:(id)arg4 expressTransactionState:(id)arg5;
 - (void)productsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)recomputeCategoryVisualizationMangitudesForPassUniqueID:(id)arg1 style:(long long)arg2;
+- (void)registerCredentialsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remoteService:(id)arg1 didEstablishConnection:(id)arg2;
 - (void)remoteService:(id)arg1 didInterruptConnection:(id)arg2;
 - (void)remoteServiceDidSuspend:(id)arg1;
@@ -142,9 +143,10 @@
 - (void)removeMapsDataForTransactionWithIdentifier:(id)arg1 forPassUniqueIdentifier:(id)arg2 issueReportIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removeProductsCache;
 - (void)removeSharingInvitation:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)removeSharingInvitationReceiptWithIdentifier:(id)arg1 onCredential:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)removeSharingInvitationReceiptWithIdentifiers:(id)arg1 onCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestBackgroundRegistrationForCredentialWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requiresUpgradedPasscodeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)revokeCredentialsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sanitizeExpressPasses;
 - (void)scheduleAutomaticPresentationAvailableNotificationForPassWithUniqueIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)scheduleDeviceCheckInWithStartTimeOffset:(double)arg1;

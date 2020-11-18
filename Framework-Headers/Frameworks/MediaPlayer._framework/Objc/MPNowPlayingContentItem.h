@@ -51,6 +51,7 @@
 @property (nonatomic) BOOL hasLyrics;
 @property (copy, nonatomic) NSString *info;
 @property (nonatomic) long long legacyUniqueID;
+@property (nonatomic, getter=isLoading) BOOL loading;
 @property (copy, nonatomic) NSString *localizedContentRating;
 @property (copy, nonatomic) NSString *localizedDurationString;
 @property (copy, nonatomic) MPNowPlayingInfoLyricsItem *lyrics;

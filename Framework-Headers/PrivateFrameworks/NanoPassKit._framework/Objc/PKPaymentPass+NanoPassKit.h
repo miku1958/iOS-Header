@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKPaymentPass.h>
+#import <PassKit/PKPaymentPass.h>
 
 @interface PKPaymentPass (NanoPassKit)
 - (id)npkDevicePaymentApplicationForAID:(id)arg1;

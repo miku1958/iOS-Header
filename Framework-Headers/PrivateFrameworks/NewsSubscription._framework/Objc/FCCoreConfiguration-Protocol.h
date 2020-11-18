@@ -21,6 +21,7 @@
 @property (nonatomic, readonly) BOOL diversifyOptionalTopStories;
 @property (nonatomic, readonly) NSString *editorialChannelID;
 @property (nonatomic, readonly) NSString *editorialGemsSectionID;
+@property (nonatomic, readonly) BOOL enableCacheFallbackForArticleRecirculation;
 @property (nonatomic, readonly) long long endOfArticleMaxInaccessiblePaidArticleCount;
 @property (nonatomic, readonly) double endOfArticleMinPaidHeadlineRatio;
 @property (nonatomic, readonly) NSDictionary *endpointConfigsByEnvironment;

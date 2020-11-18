@@ -727,13 +727,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rightMarginView : UIView // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x472c0  @objc ColumnDebugView.initWithCoder: <stripped>
-	0x47b20  @objc ColumnDebugView.layoutSubviews <stripped>
-	0x47c80  @objc ColumnDebugView.initWithFrame: <stripped>
-	0x47b80  @objc ColumnDebugView..cxx_destruct <stripped>
+	0x47320  @objc ColumnDebugView.initWithCoder: <stripped>
+	0x47b80  @objc ColumnDebugView.layoutSubviews <stripped>
+	0x47ce0  @objc ColumnDebugView.initWithFrame: <stripped>
+	0x47be0  @objc ColumnDebugView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x46a10  class func ColumnDebugView.__allocating_init(columnSystem:) // init 
+	0x46a70  class func ColumnDebugView.__allocating_init(columnSystem:) // init 
  }
 
  class TeaTemplate.Layout {

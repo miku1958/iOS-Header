@@ -16,10 +16,12 @@
 @property shared_ptr_bd7e2fee This; // @synthesize This=_This;
 @property DESpeakableString *caption;
 @property DESpeakableString *content;
-@property NSString *id;
+@property (strong) NSString *id;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)getExpandedCaption:(id)arg1;
+- (id)getExpandedContent:(id)arg1;
 - (id)init;
 - (id)initWithSharedPtr:(shared_ptr_bd7e2fee)arg1;
 - (BOOL)isEqual:(id)arg1;

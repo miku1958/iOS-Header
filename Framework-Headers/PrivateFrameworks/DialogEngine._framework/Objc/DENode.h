@@ -14,11 +14,12 @@
 }
 
 @property shared_ptr_549d7737 This; // @synthesize This=_This;
-@property NSString *conditionName;
+@property (strong) NSString *conditionName;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)getDialog;
+- (id)getGlobalId:(id)arg1;
 - (shared_ptr_549d7737)getSharedPtr;
 - (id)init;
 - (id)initWithSharedPtr:(shared_ptr_549d7737)arg1;

@@ -591,20 +591,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let invocable : %» // +0x10 (0x28)
 
 	// Swift methods
-	0x399d0  class func SecureAggregationAPIAsyncClient.__allocating_init(invocable:) // init 
-	0x39a30  func SecureAggregationAPIAsyncClient.postTask(_:completion:) // method 
-	0x39b00  func SecureAggregationAPIAsyncClient.retireTask(_:completion:) // method 
-	0x39bd0  func SecureAggregationAPIAsyncClient.deleteTask(_:completion:) // method 
-	0x39ca0  func SecureAggregationAPIAsyncClient.register(_:completion:) // method 
-	0x39d70  func SecureAggregationAPIAsyncClient.checkIn(_:completion:) // method 
-	0x39e40  func SecureAggregationAPIAsyncClient.submitEncryptedMaskingShares(_:completion:) // method 
-	0x39f20  func SecureAggregationAPIAsyncClient.submitMaskedData(_:completion:) // method 
-	0x3a000  func SecureAggregationAPIAsyncClient.submitConsistencyCheck(_:completion:) // method 
-	0x3a0e0  func SecureAggregationAPIAsyncClient.submitDecryptedUnmaskingShares(_:completion:) // method 
-	0x3a1c0  func SecureAggregationAPIAsyncClient.abort(_:completion:) // method 
-	0x3a290  func SecureAggregationAPIAsyncClient.dropOut(_:completion:) // method 
-	0x3a360  func SecureAggregationAPIAsyncClient.submitTelemetry(_:completion:) // method 
-	0x3a430  func SecureAggregationAPIAsyncClient.debug(_:completion:) // method 
+	0x39a60  class func SecureAggregationAPIAsyncClient.__allocating_init(invocable:) // init 
+	0x39ac0  func SecureAggregationAPIAsyncClient.postTask(_:completion:) // method 
+	0x39b90  func SecureAggregationAPIAsyncClient.retireTask(_:completion:) // method 
+	0x39c60  func SecureAggregationAPIAsyncClient.deleteTask(_:completion:) // method 
+	0x39d30  func SecureAggregationAPIAsyncClient.register(_:completion:) // method 
+	0x39e00  func SecureAggregationAPIAsyncClient.checkIn(_:completion:) // method 
+	0x39ed0  func SecureAggregationAPIAsyncClient.submitEncryptedMaskingShares(_:completion:) // method 
+	0x39fb0  func SecureAggregationAPIAsyncClient.submitMaskedData(_:completion:) // method 
+	0x3a090  func SecureAggregationAPIAsyncClient.submitConsistencyCheck(_:completion:) // method 
+	0x3a170  func SecureAggregationAPIAsyncClient.submitDecryptedUnmaskingShares(_:completion:) // method 
+	0x3a250  func SecureAggregationAPIAsyncClient.abort(_:completion:) // method 
+	0x3a320  func SecureAggregationAPIAsyncClient.dropOut(_:completion:) // method 
+	0x3a3f0  func SecureAggregationAPIAsyncClient.submitTelemetry(_:completion:) // method 
+	0x3a4c0  func SecureAggregationAPIAsyncClient.debug(_:completion:) // method 
  }
 
  class DistributedEvaluation._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -751,71 +751,71 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var centralDifferentialPrivacyVariance : Float // +0x60 (0x4)
 
 	// ObjC -> Swift bridged methods
-	0x70f30  @objc DESSecureAggregationConfiguration.setData:count: <stripped>
-	0x710f0  @objc DESSecureAggregationConfiguration.metricCount <stripped>
-	0x71130  @objc DESSecureAggregationConfiguration.setMetricCount: <stripped>
-	0x711c0  @objc DESSecureAggregationConfiguration.xpcActivity <stripped>
-	0x71230  @objc DESSecureAggregationConfiguration.setXpcActivity: <stripped>
-	0x72000  @objc DESSecureAggregationConfiguration.initWithTaskInfo:error: <stripped>
-	0x720b0  @objc DESSecureAggregationConfiguration.minimumCohortSize <stripped>
-	0x720f0  @objc DESSecureAggregationConfiguration.setMinimumCohortSize: <stripped>
-	0x72170  @objc DESSecureAggregationConfiguration.maximumCohortSize <stripped>
-	0x721b0  @objc DESSecureAggregationConfiguration.setMaximumCohortSize: <stripped>
-	0x72230  @objc DESSecureAggregationConfiguration.inputBound <stripped>
-	0x72270  @objc DESSecureAggregationConfiguration.setInputBound: <stripped>
-	0x722f0  @objc DESSecureAggregationConfiguration.outputBitCount <stripped>
-	0x72330  @objc DESSecureAggregationConfiguration.setOutputBitCount: <stripped>
-	0x723b0  @objc DESSecureAggregationConfiguration.L2NormClippingBound <stripped>
-	0x723f0  @objc DESSecureAggregationConfiguration.setL2NormClippingBound: <stripped>
-	0x72470  @objc DESSecureAggregationConfiguration.secretSharingThreshold <stripped>
-	0x724b0  @objc DESSecureAggregationConfiguration.setSecretSharingThreshold: <stripped>
-	0x72530  @objc DESSecureAggregationConfiguration.numValuesSummableWithoutOverflow <stripped>
-	0x725d0  @objc DESSecureAggregationConfiguration.setNumValuesSummableWithoutOverflow: <stripped>
-	0x726d0  @objc DESSecureAggregationConfiguration.centralDifferentialPrivacyVariance <stripped>
-	0x72770  @objc DESSecureAggregationConfiguration.setCentralDifferentialPrivacyVariance: <stripped>
-	0x72fa0  @objc DESSecureAggregationConfiguration.init <stripped>
-	0x72f30  @objc DESSecureAggregationConfiguration..cxx_destruct <stripped>
+	0x70fc0  @objc DESSecureAggregationConfiguration.setData:count: <stripped>
+	0x71180  @objc DESSecureAggregationConfiguration.metricCount <stripped>
+	0x711c0  @objc DESSecureAggregationConfiguration.setMetricCount: <stripped>
+	0x71250  @objc DESSecureAggregationConfiguration.xpcActivity <stripped>
+	0x712c0  @objc DESSecureAggregationConfiguration.setXpcActivity: <stripped>
+	0x72090  @objc DESSecureAggregationConfiguration.initWithTaskInfo:error: <stripped>
+	0x72140  @objc DESSecureAggregationConfiguration.minimumCohortSize <stripped>
+	0x72180  @objc DESSecureAggregationConfiguration.setMinimumCohortSize: <stripped>
+	0x72200  @objc DESSecureAggregationConfiguration.maximumCohortSize <stripped>
+	0x72240  @objc DESSecureAggregationConfiguration.setMaximumCohortSize: <stripped>
+	0x722c0  @objc DESSecureAggregationConfiguration.inputBound <stripped>
+	0x72300  @objc DESSecureAggregationConfiguration.setInputBound: <stripped>
+	0x72380  @objc DESSecureAggregationConfiguration.outputBitCount <stripped>
+	0x723c0  @objc DESSecureAggregationConfiguration.setOutputBitCount: <stripped>
+	0x72440  @objc DESSecureAggregationConfiguration.L2NormClippingBound <stripped>
+	0x72480  @objc DESSecureAggregationConfiguration.setL2NormClippingBound: <stripped>
+	0x72500  @objc DESSecureAggregationConfiguration.secretSharingThreshold <stripped>
+	0x72540  @objc DESSecureAggregationConfiguration.setSecretSharingThreshold: <stripped>
+	0x725c0  @objc DESSecureAggregationConfiguration.numValuesSummableWithoutOverflow <stripped>
+	0x72660  @objc DESSecureAggregationConfiguration.setNumValuesSummableWithoutOverflow: <stripped>
+	0x72760  @objc DESSecureAggregationConfiguration.centralDifferentialPrivacyVariance <stripped>
+	0x72800  @objc DESSecureAggregationConfiguration.setCentralDifferentialPrivacyVariance: <stripped>
+	0x73030  @objc DESSecureAggregationConfiguration.init <stripped>
+	0x72fc0  @objc DESSecureAggregationConfiguration..cxx_destruct <stripped>
 
 	// Swift methods
-	0x70e40  func DESSecureAggregationConfiguration.data.getter // getter 
-	0x70e60  func DESSecureAggregationConfiguration.data.setter // setter 
-	0x70e80  func DESSecureAggregationConfiguration.data.modify // modifyCoroutine 
-	0x70ec0  func DESSecureAggregationConfiguration.setData(_:count:) // method 
-	0x70fe0  func DESSecureAggregationConfiguration.metrics.getter // getter 
-	0x71040  func DESSecureAggregationConfiguration.metrics.setter // setter 
-	0x710a0  func DESSecureAggregationConfiguration.metrics.modify // modifyCoroutine 
-	0x71110  func DESSecureAggregationConfiguration.metricCount.getter // getter 
-	0x71150  func DESSecureAggregationConfiguration.metricCount.setter // setter 
-	0x71170  func DESSecureAggregationConfiguration.metricCount.modify // modifyCoroutine 
-	0x71210  func DESSecureAggregationConfiguration.xpcActivity.getter // getter 
-	0x71290  func DESSecureAggregationConfiguration.xpcActivity.setter // setter 
-	0x712b0  func DESSecureAggregationConfiguration.xpcActivity.modify // modifyCoroutine 
-	0x712f0  class func DESSecureAggregationConfiguration.__allocating_init(taskInfo:) // init 
-	0x720d0  func DESSecureAggregationConfiguration.minimumCohortSize.getter // getter 
-	0x72110  func DESSecureAggregationConfiguration.minimumCohortSize.setter // setter 
-	0x72130  func DESSecureAggregationConfiguration.minimumCohortSize.modify // modifyCoroutine 
-	0x72190  func DESSecureAggregationConfiguration.maximumCohortSize.getter // getter 
-	0x721d0  func DESSecureAggregationConfiguration.maximumCohortSize.setter // setter 
-	0x721f0  func DESSecureAggregationConfiguration.maximumCohortSize.modify // modifyCoroutine 
-	0x72250  func DESSecureAggregationConfiguration.inputBound.getter // getter 
-	0x72290  func DESSecureAggregationConfiguration.inputBound.setter // setter 
-	0x722b0  func DESSecureAggregationConfiguration.inputBound.modify // modifyCoroutine 
-	0x72310  func DESSecureAggregationConfiguration.outputBitCount.getter // getter 
-	0x72350  func DESSecureAggregationConfiguration.outputBitCount.setter // setter 
-	0x72370  func DESSecureAggregationConfiguration.outputBitCount.modify // modifyCoroutine 
-	0x723d0  func DESSecureAggregationConfiguration.L2NormClippingBound.getter // getter 
-	0x72410  func DESSecureAggregationConfiguration.L2NormClippingBound.setter // setter 
-	0x72430  func DESSecureAggregationConfiguration.L2NormClippingBound.modify // modifyCoroutine 
-	0x72490  func DESSecureAggregationConfiguration.secretSharingThreshold.getter // getter 
-	0x724d0  func DESSecureAggregationConfiguration.secretSharingThreshold.setter // setter 
-	0x724f0  func DESSecureAggregationConfiguration.secretSharingThreshold.modify // modifyCoroutine 
-	0x72580  func DESSecureAggregationConfiguration.numValuesSummableWithoutOverflow.getter // getter 
-	0x72630  func DESSecureAggregationConfiguration.numValuesSummableWithoutOverflow.setter // setter 
-	0x72690  func DESSecureAggregationConfiguration.numValuesSummableWithoutOverflow.modify // modifyCoroutine 
-	0x72720  func DESSecureAggregationConfiguration.centralDifferentialPrivacyVariance.getter // getter 
-	0x727d0  func DESSecureAggregationConfiguration.centralDifferentialPrivacyVariance.setter // setter 
-	0x72830  func DESSecureAggregationConfiguration.centralDifferentialPrivacyVariance.modify // modifyCoroutine 
-	0x72870  func DESSecureAggregationConfiguration.noisedQuantizedData.getter // getter 
+	0x70ed0  func DESSecureAggregationConfiguration.data.getter // getter 
+	0x70ef0  func DESSecureAggregationConfiguration.data.setter // setter 
+	0x70f10  func DESSecureAggregationConfiguration.data.modify // modifyCoroutine 
+	0x70f50  func DESSecureAggregationConfiguration.setData(_:count:) // method 
+	0x71070  func DESSecureAggregationConfiguration.metrics.getter // getter 
+	0x710d0  func DESSecureAggregationConfiguration.metrics.setter // setter 
+	0x71130  func DESSecureAggregationConfiguration.metrics.modify // modifyCoroutine 
+	0x711a0  func DESSecureAggregationConfiguration.metricCount.getter // getter 
+	0x711e0  func DESSecureAggregationConfiguration.metricCount.setter // setter 
+	0x71200  func DESSecureAggregationConfiguration.metricCount.modify // modifyCoroutine 
+	0x712a0  func DESSecureAggregationConfiguration.xpcActivity.getter // getter 
+	0x71320  func DESSecureAggregationConfiguration.xpcActivity.setter // setter 
+	0x71340  func DESSecureAggregationConfiguration.xpcActivity.modify // modifyCoroutine 
+	0x71380  class func DESSecureAggregationConfiguration.__allocating_init(taskInfo:) // init 
+	0x72160  func DESSecureAggregationConfiguration.minimumCohortSize.getter // getter 
+	0x721a0  func DESSecureAggregationConfiguration.minimumCohortSize.setter // setter 
+	0x721c0  func DESSecureAggregationConfiguration.minimumCohortSize.modify // modifyCoroutine 
+	0x72220  func DESSecureAggregationConfiguration.maximumCohortSize.getter // getter 
+	0x72260  func DESSecureAggregationConfiguration.maximumCohortSize.setter // setter 
+	0x72280  func DESSecureAggregationConfiguration.maximumCohortSize.modify // modifyCoroutine 
+	0x722e0  func DESSecureAggregationConfiguration.inputBound.getter // getter 
+	0x72320  func DESSecureAggregationConfiguration.inputBound.setter // setter 
+	0x72340  func DESSecureAggregationConfiguration.inputBound.modify // modifyCoroutine 
+	0x723a0  func DESSecureAggregationConfiguration.outputBitCount.getter // getter 
+	0x723e0  func DESSecureAggregationConfiguration.outputBitCount.setter // setter 
+	0x72400  func DESSecureAggregationConfiguration.outputBitCount.modify // modifyCoroutine 
+	0x72460  func DESSecureAggregationConfiguration.L2NormClippingBound.getter // getter 
+	0x724a0  func DESSecureAggregationConfiguration.L2NormClippingBound.setter // setter 
+	0x724c0  func DESSecureAggregationConfiguration.L2NormClippingBound.modify // modifyCoroutine 
+	0x72520  func DESSecureAggregationConfiguration.secretSharingThreshold.getter // getter 
+	0x72560  func DESSecureAggregationConfiguration.secretSharingThreshold.setter // setter 
+	0x72580  func DESSecureAggregationConfiguration.secretSharingThreshold.modify // modifyCoroutine 
+	0x72610  func DESSecureAggregationConfiguration.numValuesSummableWithoutOverflow.getter // getter 
+	0x726c0  func DESSecureAggregationConfiguration.numValuesSummableWithoutOverflow.setter // setter 
+	0x72720  func DESSecureAggregationConfiguration.numValuesSummableWithoutOverflow.modify // modifyCoroutine 
+	0x727b0  func DESSecureAggregationConfiguration.centralDifferentialPrivacyVariance.getter // getter 
+	0x72860  func DESSecureAggregationConfiguration.centralDifferentialPrivacyVariance.setter // setter 
+	0x728c0  func DESSecureAggregationConfiguration.centralDifferentialPrivacyVariance.modify // modifyCoroutine 
+	0x72900  func DESSecureAggregationConfiguration.noisedQuantizedData.getter // getter 
  }
 
  enum DistributedEvaluation.TaskError {
@@ -837,7 +837,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let activity : OS_xpc_object?
 
 	// Swift methods
-	0x72fd0  func <stripped> // method 
+	0x73060  func <stripped> // method 
  }
 
  class DistributedEvaluation.DESSecureAggregationSession : NSObject /usr/lib/libobjc.A.dylib {
@@ -872,52 +872,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var checkinTimer : OS_dispatch_source_timer? // +0xa2000 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x73920  @objc DESSecureAggregationSession.initWithDatabase:toService:local:configuration: <stripped>
-	0x73a30  @objc DESSecureAggregationSession.clientUuid <stripped>
-	0x73af0  @objc DESSecureAggregationSession.setClientUuid: <stripped>
-	0x74450  @objc DESSecureAggregationSession.postTaskWithTaskUuid:numTargetDevices:samplingRate:cohortSize:secretSharingThreshold:completion: <stripped>
-	0x74fe0  @objc DESSecureAggregationSession.registerTaskWithTaskUuid:completion: <stripped>
-	0x75720  @objc DESSecureAggregationSession.checkinWithCompletion: <stripped>
-	0x7d330  @objc DESSecureAggregationSession.init <stripped>
-	0x7d190  @objc DESSecureAggregationSession..cxx_destruct <stripped>
+	0x739b0  @objc DESSecureAggregationSession.initWithDatabase:toService:local:configuration: <stripped>
+	0x73ac0  @objc DESSecureAggregationSession.clientUuid <stripped>
+	0x73b80  @objc DESSecureAggregationSession.setClientUuid: <stripped>
+	0x744e0  @objc DESSecureAggregationSession.postTaskWithTaskUuid:numTargetDevices:samplingRate:cohortSize:secretSharingThreshold:completion: <stripped>
+	0x75070  @objc DESSecureAggregationSession.registerTaskWithTaskUuid:completion: <stripped>
+	0x757b0  @objc DESSecureAggregationSession.checkinWithCompletion: <stripped>
+	0x7d3c0  @objc DESSecureAggregationSession.init <stripped>
+	0x7d220  @objc DESSecureAggregationSession..cxx_destruct <stripped>
 
 	// Swift methods
-	0x736c0  func <stripped> // getter 
-	0x736e0  func <stripped> // setter 
-	0x73700  func <stripped> // modifyCoroutine 
 	0x73750  func <stripped> // getter 
 	0x73770  func <stripped> // setter 
 	0x73790  func <stripped> // modifyCoroutine 
 	0x737e0  func <stripped> // getter 
 	0x73800  func <stripped> // setter 
 	0x73820  func <stripped> // modifyCoroutine 
-	0x739b0  class func <stripped> // init 
-	0x73aa0  func DESSecureAggregationSession.clientUuid.getter // getter 
-	0x73b60  func DESSecureAggregationSession.clientUuid.setter // setter 
-	0x73bc0  func DESSecureAggregationSession.clientUuid.modify // modifyCoroutine 
-	0x73c10  func <stripped> // getter 
-	0x73c30  func <stripped> // setter 
-	0x73c50  func <stripped> // modifyCoroutine 
-	0x73c90  func <stripped> // getter 
-	0x73cf0  func <stripped> // setter 
-	0x73d60  func <stripped> // modifyCoroutine 
-	0x73da0  func <stripped> // getter 
-	0x73dc0  func <stripped> // setter 
-	0x73de0  func <stripped> // modifyCoroutine 
-	0x73e20  func <stripped> // getter 
-	0x73e80  func <stripped> // setter 
-	0x73ef0  func <stripped> // modifyCoroutine 
-	0x73f30  func DESSecureAggregationSession.postTask(taskUuid:numTargetDevices:samplingRate:cohortSize:secretSharingThreshold:completion:) // method 
-	0x745c0  func DESSecureAggregationSession.registerTask(taskUuid:completion:) // method 
-	0x75090  func DESSecureAggregationSession.checkin(completion:) // method 
-	0x75790  func <stripped> // method 
-	0x75c30  func <stripped> // method 
-	0x763f0  func <stripped> // method 
-	0x77830  func <stripped> // method 
-	0x78030  func <stripped> // method 
-	0x7ad00  func <stripped> // method 
-	0x7ad20  func <stripped> // method 
-	0x7ae70  func <stripped> // method 
+	0x73870  func <stripped> // getter 
+	0x73890  func <stripped> // setter 
+	0x738b0  func <stripped> // modifyCoroutine 
+	0x73a40  class func <stripped> // init 
+	0x73b30  func DESSecureAggregationSession.clientUuid.getter // getter 
+	0x73bf0  func DESSecureAggregationSession.clientUuid.setter // setter 
+	0x73c50  func DESSecureAggregationSession.clientUuid.modify // modifyCoroutine 
+	0x73ca0  func <stripped> // getter 
+	0x73cc0  func <stripped> // setter 
+	0x73ce0  func <stripped> // modifyCoroutine 
+	0x73d20  func <stripped> // getter 
+	0x73d80  func <stripped> // setter 
+	0x73df0  func <stripped> // modifyCoroutine 
+	0x73e30  func <stripped> // getter 
+	0x73e50  func <stripped> // setter 
+	0x73e70  func <stripped> // modifyCoroutine 
+	0x73eb0  func <stripped> // getter 
+	0x73f10  func <stripped> // setter 
+	0x73f80  func <stripped> // modifyCoroutine 
+	0x73fc0  func DESSecureAggregationSession.postTask(taskUuid:numTargetDevices:samplingRate:cohortSize:secretSharingThreshold:completion:) // method 
+	0x74650  func DESSecureAggregationSession.registerTask(taskUuid:completion:) // method 
+	0x75120  func DESSecureAggregationSession.checkin(completion:) // method 
+	0x75820  func <stripped> // method 
+	0x75cc0  func <stripped> // method 
+	0x76480  func <stripped> // method 
+	0x778c0  func <stripped> // method 
+	0x780c0  func <stripped> // method 
+	0x7ad90  func <stripped> // method 
+	0x7adb0  func <stripped> // method 
+	0x7af00  func <stripped> // method 
  }
 
  enum DistributedEvaluation.ProtocolError {

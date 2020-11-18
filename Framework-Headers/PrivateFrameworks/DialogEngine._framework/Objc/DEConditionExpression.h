@@ -13,9 +13,9 @@
 }
 
 @property struct shared_ptr<siri::dialogengine::ConditionExpression> This; // @dynamic This;
-@property NSString *name;
-@property NSString *op;
-@property NSString *value;
+@property (strong) NSString *name;
+@property (strong) NSString *op;
+@property (strong) NSString *value;
 
 - (BOOL)evaluate:(id)arg1;
 - (id)init;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKSubcredentialProvisioningSessionOperation.h>
+#import <PassKitCore/PKSubcredentialProvisioningPairingSessionOperation.h>
 
 @class NSData, PKAppletSubcredential;
 
-@interface PKSubcredentialProvisioningTrackCredentialOperation : PKSubcredentialProvisioningSessionOperation
+@interface PKSubcredentialProvisioningTrackCredentialOperation : PKSubcredentialProvisioningPairingSessionOperation
 {
     BOOL _performingOperation;
     BOOL _hasTrackedCredential;
@@ -21,7 +21,6 @@
 - (void).cxx_destruct;
 - (void)appletSubcredentialPairingSessionDidFirstTransaction:(id)arg1 withError:(id)arg2;
 - (id)initWithConfiguration:(id)arg1 context:(id)arg2 delegate:(id)arg3;
-- (id)pairingSession;
 - (void)performOperation;
 - (void)performOperationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)session:(id)arg1 didChangeState:(unsigned long long)arg2;

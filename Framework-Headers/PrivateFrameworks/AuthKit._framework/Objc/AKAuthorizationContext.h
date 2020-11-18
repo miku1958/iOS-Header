@@ -31,6 +31,7 @@
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (copy, nonatomic) NSString *appProvidedContext; // @synthesize appProvidedContext=_appProvidedContext;
 @property (copy, nonatomic) NSDictionary *appProvidedData; // @synthesize appProvidedData=_appProvidedData;
+@property (nonatomic) long long authenticationMode;
 @property (copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
 @property (copy, nonatomic) AKDevice *companionDevice; // @synthesize companionDevice=_companionDevice;
 @property (readonly, copy) NSString *debugDescription;

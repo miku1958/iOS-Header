@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)capDefaultValues:(unsigned long long)arg1;
 - (void)dealloc;
 - (unsigned long long)defaultValueForNetwork:(BOOL)arg1;
-- (id)initWithOperatingMode:(int)arg1 withBitrateCap:(unsigned long long)arg2;
+- (id)initWithOperatingMode:(int)arg1 withBitrateCap:(unsigned long long)arg2 useCaseWatchContinuity:(BOOL)arg3;
 
 @end
 

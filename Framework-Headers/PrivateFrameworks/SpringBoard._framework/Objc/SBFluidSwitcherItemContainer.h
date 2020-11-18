@@ -11,7 +11,7 @@
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSString, SBAppSwitcherPageView, SBAppSwitcherSettings, SBFFluidBehaviorSettings, SBFailureNotifyingTapGestureRecognizer, SBFluidSwitcherIconOverlayView, SBFluidSwitcherItemContainerHeaderView, SBFluidSwitcherTouchPassThroughScrollView, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView;
+@class NSArray, NSString, SBAppSwitcherPageView, SBAppSwitcherSettings, SBFFluidBehaviorSettings, SBFailureNotifyingTapGestureRecognizer, SBFluidSwitcherIconOverlayView, SBFluidSwitcherItemContainerHeaderView, SBFluidSwitcherTouchPassThroughScrollView, SBMedusaSettings, UIHoverGestureRecognizer, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView;
 @protocol SBAppSwitcherPageContentView, SBFluidSwitcherItemContainerDelegate;
 
 @interface SBFluidSwitcherItemContainer : SBFTouchPassThroughView <UIScrollViewDelegate, UIGestureRecognizerDelegate, SBFailureNotifyingTapGestureRecognizerDelegate, SBAppPlatterDragSourceViewProviding>
@@ -31,17 +31,21 @@
     UITapGestureRecognizer *_doubleTapGestureRecognizer;
     SBFFluidBehaviorSettings *_squishSettings;
     SBAppSwitcherSettings *_settings;
+    SBMedusaSettings *_medusaSettings;
     BOOL _sentKillRequest;
     struct CGPoint _highlightTapDownLocation;
-    BOOL _highlighted;
     BOOL _animatingPageViewScale;
     double _killProgressForCurrentDecelerationTarget;
+    UIHoverGestureRecognizer *_hoverGestureRecognizer;
     BOOL _dragging;
     BOOL _clipsToUnobscuredMargin;
     BOOL _killable;
     BOOL _shouldScaleOverlayToFillBounds;
     BOOL _active;
     BOOL _visible;
+    BOOL _cursorInteractionEnabled;
+    BOOL _highlightedFromDirectTouch;
+    BOOL _highlightedFromCursorHover;
     double _unobscuredMargin;
     unsigned long long _killAxis;
     double _minimumTranslationForKillingContainer;
@@ -59,6 +63,7 @@
 @property (strong, nonatomic) UIView *contentOverlay;
 @property (nonatomic) double contentPageViewScale; // @synthesize contentPageViewScale=_contentPageViewScale;
 @property (strong, nonatomic) UIView<SBAppSwitcherPageContentView> *contentView;
+@property (nonatomic, getter=isCursorInteractionEnabled) BOOL cursorInteractionEnabled; // @synthesize cursorInteractionEnabled=_cursorInteractionEnabled;
 @property (nonatomic) double darkeningAlpha;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBFluidSwitcherItemContainerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -66,7 +71,8 @@
 @property (nonatomic, getter=isDragging) BOOL dragging; // @synthesize dragging=_dragging;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *headerItems; // @synthesize headerItems=_headerItems;
-@property (nonatomic, getter=isHighlighted) BOOL highlighted;
+@property (nonatomic, getter=isHighlightedFromCursorHover) BOOL highlightedFromCursorHover; // @synthesize highlightedFromCursorHover=_highlightedFromCursorHover;
+@property (nonatomic, getter=isHighlightedFromDirectTouch) BOOL highlightedFromDirectTouch; // @synthesize highlightedFromDirectTouch=_highlightedFromDirectTouch;
 @property (readonly, nonatomic) BOOL isDeceleratingTowardsKillZone;
 @property (nonatomic) unsigned long long killAxis; // @synthesize killAxis=_killAxis;
 @property (nonatomic, getter=isKillable) BOOL killable; // @synthesize killable=_killable;
@@ -98,25 +104,26 @@
 - (void)_ensureSubviewOrder;
 - (struct CGRect)_frameForPageView;
 - (struct CGRect)_frameForScrollView;
+- (void)_handleHoverGesture:(id)arg1;
 - (void)_handlePageViewPressDown:(id)arg1;
 - (void)_handlePageViewTap:(id)arg1;
 - (void)_handleSelectionHighlightGesture:(id)arg1;
 - (double)_inverseScaleTransformFactor;
 - (BOOL)_isTitleIconVisible;
-- (double)_killingDarkeningAlpha;
 - (double)_killingProgressForContentOffset:(struct CGPoint)arg1;
 - (struct CGSize)_overlayViewSize;
 - (void)_resetKillProgressScrollState;
+- (double)_scaleForHighlightFromCursorHover;
+- (double)_scaleForHighlightFromDirectTouch;
 - (double)_scaleTransformFactor;
 - (BOOL)_scrollViewShouldPanGestureTryToBegin:(id)arg1;
-- (void)_setKillingDarkeningAlpha:(double)arg1;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (id)_springLoadingEffectTargetView;
-- (struct CGAffineTransform)_squishedPageViewScaleTransform;
 - (void)_updateHeaderAnimated:(BOOL)arg1;
 - (void)_updatePageViewContentClippingFrame;
 - (void)_updatePageViewContentViewClipping;
 - (void)_updateShadowVisibility;
+- (void)_updateTransformForCurrentHighlight;
 - (void)configureOverlayForIconZoomWithView:(id)arg1;
 - (id)containerViewForBlurContentView;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

@@ -16,6 +16,7 @@
     NSString *_groupIdentifier;
     long long _entitlement;
     long long _state;
+    long long _rawState;
 }
 
 @property (readonly, nonatomic) long long entitlement; // @synthesize entitlement=_entitlement;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) long long rawState; // @synthesize rawState=_rawState;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;

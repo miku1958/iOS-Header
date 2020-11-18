@@ -68,8 +68,9 @@
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithStudentDaemonProxy:(id)arg1 delegate:(id)arg2;
 - (id)invitationWithCourseIdentifier:(id)arg1;
-- (BOOL)isEphemeralMultiUser;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)refreshASMCourses;
+- (void)refreshASMCoursesOperationDidFail:(id)arg1;
 - (void)screenObserversHaveChanged:(id)arg1;
 - (void)startBrowsingForInvitations;
 - (void)startLongRunningOperations;

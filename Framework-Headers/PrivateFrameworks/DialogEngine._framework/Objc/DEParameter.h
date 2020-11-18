@@ -14,9 +14,9 @@
 }
 
 @property shared_ptr_a172c490 This; // @synthesize This=_This;
-@property NSString *description;
-@property NSString *name;
-@property NSString *type;
+@property (strong) NSString *description;
+@property (strong) NSString *name;
+@property (strong) NSString *type;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

@@ -24,7 +24,10 @@
 
 + (id)sharedConfiguration;
 - (void).cxx_destruct;
+- (id)MAIDUsername;
+- (BOOL)alreadySignedIntoFaceTime;
 - (id)diagnosticsUploadURL;
+- (BOOL)hasMAIDCredential;
 - (id)init;
 - (BOOL)isAwaitingConfiguration;
 - (BOOL)isProvisionallyEnrolled;

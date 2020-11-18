@@ -149,7 +149,7 @@
 - (void)_updateBackgroundedState:(BOOL)arg1;
 - (void)_updateBankAccounts;
 - (void)_updateCancelButtonEnabledForState:(unsigned long long)arg1 param:(id)arg2;
-- (void)_updateCoachingInstruction;
+- (BOOL)_updateCoachingInstruction;
 - (void)_updateFooterStateForBiometricMatchMissIfNecessary;
 - (void)_updateLayoutForKeyboardAction:(CDUnknownBlockType)arg1;
 - (void)_updatePendingTransaction:(id)arg1 withAuthorizationStateParam:(id)arg2;

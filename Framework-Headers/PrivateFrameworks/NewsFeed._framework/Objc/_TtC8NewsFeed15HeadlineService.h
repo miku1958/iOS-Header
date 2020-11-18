@@ -13,6 +13,7 @@
     MISSING_TYPE *tagService;
     MISSING_TYPE *coreConfigurationManager;
     MISSING_TYPE *contentContext;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 @end

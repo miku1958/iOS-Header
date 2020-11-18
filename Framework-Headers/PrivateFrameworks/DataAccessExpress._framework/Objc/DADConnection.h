@@ -81,6 +81,7 @@
 - (void)dealloc;
 - (id)decodedErrorFromData:(id)arg1;
 - (void)externalIdentificationForAccountID:(id)arg1 resultsBlock:(CDUnknownBlockType)arg2;
+- (void)externalIdentificationInfoForAccountID:(id)arg1 resultsBlock:(CDUnknownBlockType)arg2;
 - (void)fillOutCurrentEASTimeZoneInfo;
 - (void)handleURL:(id)arg1;
 - (id)init;

@@ -68,6 +68,10 @@ struct _NSRange {
     unsigned long long length;
 };
 
+struct atomic_flag {
+    _Atomic BOOL _Value;
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };

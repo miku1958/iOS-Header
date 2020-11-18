@@ -63,6 +63,7 @@
 @property (nonatomic) BOOL requiresSamePrivacyLevelAcrossRecurrenceSeries;
 @property (readonly, nonatomic) NSString *serverHost;
 @property (readonly, nonatomic) long long serverPort;
+@property (readonly, nonatomic) BOOL serverUsesSSL;
 @property (nonatomic) BOOL showsNotifications;
 @property (nonatomic) BOOL snoozeAlarmRequiresDetach; // @synthesize snoozeAlarmRequiresDetach=_snoozeAlarmRequiresDetach;
 @property (strong, nonatomic) NSString *sourceIdentifier;

@@ -14,6 +14,7 @@
     MISSING_TYPE *headlineService;
     MISSING_TYPE *stocksFeedService;
     MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *configurationManager;
     MISSING_TYPE *createdDate;
     MISSING_TYPE *cache;
 }

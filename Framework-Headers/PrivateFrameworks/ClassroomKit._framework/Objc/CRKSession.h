@@ -6,40 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <ClassroomKit/CATRemoteTransportDelegate-Protocol.h>
-#import <ClassroomKit/CATTransportDelegate-Protocol.h>
-
-@class CATRemoteTransport, CATStateMachine, CATTransport, CRKRemoteEndpoint, NSString;
+@class CATStateMachine, CATTransport, CRKRemoteEndpoint, CRKTransportPreflightOperation, NSDictionary;
 @protocol CRKGrowthFunction, CRKSessionDelegate;
 
-@interface CRKSession : NSObject <CATTransportDelegate, CATRemoteTransportDelegate>
+@interface CRKSession : NSObject
 {
     CATStateMachine *mFSM;
-    CATRemoteTransport *mTransport;
     double mCurrentBackoffInterval;
-    BOOL _allowUntrustedConnections;
     BOOL _requiresBeacon;
     id<CRKSessionDelegate> _delegate;
     CRKRemoteEndpoint *_endpoint;
     id<CRKGrowthFunction> _backoffGrowthFunction;
+    CATTransport *_transport;
     double _lostBeaconTimeout;
     double _willLoseBeaconWarningTimeout;
-    double _failedConnectionRetryInterval;
+    CRKTransportPreflightOperation *_transportPreflightOperation;
 }
 
-@property (readonly, nonatomic) BOOL allowUntrustedConnections; // @synthesize allowUntrustedConnections=_allowUntrustedConnections;
 @property (readonly, nonatomic) id<CRKGrowthFunction> backoffGrowthFunction; // @synthesize backoffGrowthFunction=_backoffGrowthFunction;
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CRKSessionDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
 @property (readonly) CRKRemoteEndpoint *endpoint; // @synthesize endpoint=_endpoint;
-@property (nonatomic) double failedConnectionRetryInterval; // @synthesize failedConnectionRetryInterval=_failedConnectionRetryInterval;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) double lostBeaconTimeout; // @synthesize lostBeaconTimeout=_lostBeaconTimeout;
 @property (nonatomic) BOOL requiresBeacon; // @synthesize requiresBeacon=_requiresBeacon;
+@property (readonly, copy, nonatomic) NSDictionary *stateDictionary;
 @property (strong, nonatomic) CATStateMachine *stateMachine; // @synthesize stateMachine=mFSM;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) CATTransport *transport; // @synthesize transport=mTransport;
+@property (strong, nonatomic) CATTransport *transport; // @synthesize transport=_transport;
+@property (strong, nonatomic) CRKTransportPreflightOperation *transportPreflightOperation; // @synthesize transportPreflightOperation=_transportPreflightOperation;
 @property (nonatomic) double willLoseBeaconWarningTimeout; // @synthesize willLoseBeaconWarningTimeout=_willLoseBeaconWarningTimeout;
 
 - (void).cxx_destruct;
@@ -66,14 +58,14 @@
 - (void)localWiFiBecameUnavailable;
 - (void)lostBeacon;
 - (void)lostConnection;
+- (void)processFinishedTransportPreflightOperation:(id)arg1;
 - (void)registerDefaults;
 - (void)rejected;
 - (void)resetBackoff;
+- (void)startPreflightingTransport:(id)arg1;
+- (void)stopPreflightingTransport;
 - (id)studentSocketOptions;
-- (void)transport:(id)arg1 didInterruptWithError:(id)arg2;
-- (void)transport:(id)arg1 encounteredTrustDecisionWhileTryingToSecure:(id)arg2;
-- (void)transportDidConnect:(id)arg1;
-- (void)transportDidInvalidate:(id)arg1;
+- (void)transportPreflightOperationDidFinish:(id)arg1;
 - (void)tryConnecting;
 
 @end

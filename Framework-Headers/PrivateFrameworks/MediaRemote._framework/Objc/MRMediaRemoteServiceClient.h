@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MRAVRoutingClientController, MRBlockGuard, MRMediaRemoteService, MRNotificationClient, MRNotificationServiceClient, NSArray, NSMutableArray, NSMutableSet, _MRNowPlayingPlayerPathProtobuf;
+@class MRAVRoutingClientController, MRMediaRemoteService, MRNotificationClient, MRNotificationServiceClient, NSArray, NSMutableArray, NSMutableSet, _MRNowPlayingPlayerPathProtobuf;
 @protocol OS_dispatch_queue;
 
 @interface MRMediaRemoteServiceClient : NSObject
@@ -18,8 +18,6 @@
     int _notifyRestoreClientStateForLaunch;
     NSMutableSet *_playerPathInvalidationHandlers;
     MRNotificationServiceClient *_notificationService;
-    BOOL _xpcConnectionIsActive;
-    MRBlockGuard *_xpcConnectionIgnoreNextInvalidationTimer;
     MRMediaRemoteService *_service;
     MRNotificationClient *_notificationClient;
     NSObject<OS_dispatch_queue> *_playbackQueueDispatchQueue;
@@ -35,8 +33,8 @@
 + (id)sharedServiceClient;
 - (void).cxx_destruct;
 - (void)_callInvalidationHandler:(id)arg1;
-- (void)_initializeConnection;
-- (void)_invalidateConnectionWithTimer:(BOOL)arg1;
+- (void)_initializeConnectionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_invalidateConnection;
 - (void)_onQueue_processPlayerPathInvalidationHandlersWithBlock:(CDUnknownBlockType)arg1;
 - (void)_onQueue_setActivePlayerPath:(id)arg1;
 - (void)_processPlayerPathInvalidationHandlersWithBlock:(CDUnknownBlockType)arg1;

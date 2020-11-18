@@ -16,6 +16,7 @@
     MISSING_TYPE *tracker;
     MISSING_TYPE *layoutOptionsProvider;
     MISSING_TYPE *paidBundleConfigManager;
+    MISSING_TYPE *webEmbedViewControllerReuseManager;
 }
 
 - (void).cxx_destruct;

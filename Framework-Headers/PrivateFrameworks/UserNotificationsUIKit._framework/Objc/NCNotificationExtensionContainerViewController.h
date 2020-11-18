@@ -51,6 +51,7 @@
 @property (strong, nonatomic) NSMutableArray *updatedActions; // @synthesize updatedActions=_updatedActions;
 @property (nonatomic) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 
++ (BOOL)isMediaSafetyNetEnabled;
 - (void).cxx_destruct;
 - (void)_addExtensionViewFromViewController:(id)arg1;
 - (BOOL)_canShowWhileLocked;

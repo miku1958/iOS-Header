@@ -42,6 +42,7 @@
 - (BOOL)hasUnlockedSinceBoot;
 - (id)init;
 - (BOOL)isConnectedToCarPlay;
+- (BOOL)isConnectedToEyesFreeDevice;
 - (BOOL)isConnectedToTrustedCarPlay;
 - (BOOL)isGuestConnected;
 - (BOOL)isInActiveCall;

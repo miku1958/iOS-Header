@@ -13,7 +13,7 @@
 - (void)hasInAppPaymentPassesForNetworks:(NSSet *)arg1 capabilities:(unsigned long long)arg2 issuerCountryCodes:(NSSet *)arg3 withHandler:(void (^)(BOOL))arg4;
 - (void)hasInAppPrivateLabelPaymentPassesForApplicationIdentifier:(NSString *)arg1 issuerCountryCodes:(NSSet *)arg2 withHandler:(void (^)(BOOL))arg3;
 - (void)hasInAppPrivateLabelPaymentPassesForWebDomain:(NSString *)arg1 issuerCountryCodes:(NSSet *)arg2 withHandler:(void (^)(BOOL))arg3;
-- (void)hasPassesWithSupportedNetworks:(NSSet *)arg1 merchantCapabilities:(unsigned long long)arg2 webDomain:(NSString *)arg3 completion:(void (^)(BOOL))arg4;
+- (void)hasPassesWithSupportedNetworks:(NSSet *)arg1 merchantCapabilities:(unsigned long long)arg2 webDomain:(NSString *)arg3 issuerCountryCodes:(NSSet *)arg4 completion:(void (^)(BOOL))arg5;
 - (void)inAppPaymentPassesForNetworks:(NSSet *)arg1 capabilities:(unsigned long long)arg2 issuerCountryCodes:(NSSet *)arg3 withHandler:(void (^)(NSSet *))arg4;
 - (void)inAppPrivateLabelPaymentPassesForApplicationIdentifier:(NSString *)arg1 issuerCountryCodes:(NSSet *)arg2 withHandler:(void (^)(NSSet *))arg3;
 - (void)inAppPrivateLabelPaymentPassesForWebDomain:(NSString *)arg1 issuerCountryCodes:(NSSet *)arg2 withHandler:(void (^)(NSSet *))arg3;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsCore/FCLocalAreasProvider-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
 #import <NewsCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDictionary;
+@class NSArray, NSData, NSDictionary, NSString;
 
-@interface FCLocalAreasMapping : NSObject <NSSecureCoding, NSCopying>
+@interface FCLocalAreasMapping : NSObject <FCLocalAreasProvider, NSSecureCoding, NSCopying>
 {
     NSData *_data;
     NSDictionary *_regionMap;
@@ -21,15 +22,21 @@
 @property (strong, nonatomic) NSArray *areas; // @synthesize areas=_areas;
 @property (readonly, nonatomic) unsigned long long count;
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDictionary *regionMap; // @synthesize regionMap=_regionMap;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)autoFavoriteTagIDsForLocation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1;
+- (id)localVersionedTagIDsForLocation:(id)arg1;
 - (id)regionsForLocation:(id)arg1;
 
 @end

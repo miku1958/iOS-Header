@@ -71,6 +71,8 @@
 - (id)delegateNeedsClientIdentityForInvitationSessionWithEndpoint:(id)arg1;
 - (id)delegateNeedsTrustedAnchorCertificatesForGroup:(id)arg1;
 - (void)dewhitelistEndpoint:(id)arg1 forSessionClass:(Class)arg2;
+- (void)handleUntrustedClassSession:(id)arg1 decisionHandler:(CDUnknownBlockType)arg2;
+- (void)handleUntrustedInvitationSession:(id)arg1 decisionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)hasConnectionToClassWithIdentifier:(id)arg1;
 - (id)init;
 - (void)invitationSessionWithEndpointInvalidated:(id)arg1;
@@ -82,6 +84,7 @@
 - (void)releaseConnectWithoutBeaconAssertionForSessionIdentifier:(id)arg1;
 - (void)removeInRangeClassSession:(id)arg1;
 - (void)session:(id)arg1 didConnectWithTransport:(id)arg2;
+- (void)session:(id)arg1 encounteredUntrustedConnection:(CDUnknownBlockType)arg2;
 - (void)session:(id)arg1 willLoseBeaconAfterTimeInterval:(double)arg2;
 - (void)sessionDidBecomeConnectable:(id)arg1;
 - (void)sessionDidBecomeNotConnectable:(id)arg1;

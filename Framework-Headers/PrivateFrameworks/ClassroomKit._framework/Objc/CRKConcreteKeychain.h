@@ -8,7 +8,7 @@
 
 #import <ClassroomKit/CRKKeychain-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface CRKConcreteKeychain : NSObject <CRKKeychain>
 {
@@ -16,6 +16,10 @@
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *baseQueryAttributes; // @synthesize baseQueryAttributes=_baseQueryAttributes;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)defaultKeychain;
 - (void).cxx_destruct;
@@ -24,17 +28,19 @@
 - (id)addItem:(void *)arg1 toAccessGroup:(id)arg2;
 - (id)addPrivateKey:(id)arg1 toAccessGroup:(id)arg2;
 - (id)certificateWithPersistentID:(id)arg1;
-- (const void *)copyItemWithPersistentID:(id)arg1;
-- (id)description;
+- (const void *)copyItemWithPersistentID:(id)arg1 itemClass:(id)arg2;
 - (id)identityWithPersistentID:(id)arg1;
 - (id)initWithBaseQueryAttributes:(id)arg1;
 - (id)makeCertificateWithData:(id)arg1;
 - (id)makeIdentityWithCertificate:(id)arg1 privateKey:(id)arg2;
 - (id)makeIdentityWithConfiguration:(id)arg1;
-- (id)makeItemWithPersistentID:(id)arg1 expectedTypeID:(unsigned long long)arg2 creationBlock:(CDUnknownBlockType)arg3;
+- (id)makeItemWithPersistentID:(id)arg1 itemClass:(id)arg2 creationBlock:(CDUnknownBlockType)arg3;
+- (id)makePasswordFacade;
 - (id)makePrivateKeyWithData:(id)arg1;
+- (id)passwordForService:(id)arg1;
 - (id)privateKeyWithPersistentID:(id)arg1;
 - (void)removeItemWithPersistentID:(id)arg1;
+- (void)setPassword:(id)arg1 forService:(id)arg2 accessGroup:(id)arg3;
 
 @end
 

@@ -14,9 +14,11 @@
     MISSING_TYPE *name;
     MISSING_TYPE *version;
     MISSING_TYPE *build;
+    MISSING_TYPE *buildNumber;
 }
 
 @property (nonatomic, readonly) long long build; // @synthesize build;
+@property (nonatomic, readonly) NSString *buildNumber;
 @property (nonatomic, readonly) NSString *fullVersion;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) NSString *name;
@@ -26,6 +28,7 @@
 - (id)init;
 - (id)initWithBundle:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 version:(id)arg3 build:(long long)arg4;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 version:(id)arg3 buildNumber:(id)arg4;
 
 @end
 

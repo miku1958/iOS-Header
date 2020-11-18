@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_gestureRecognizersByWindow;
     struct CGPoint _sceneReferenceLocation;
     unsigned long long _lastDeliveredPhase;
+    unsigned long long _lastReceivedPhase;
     unsigned long long _phase;
 }
 

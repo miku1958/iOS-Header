@@ -57,6 +57,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 appearanceDelegate:(id)arg2;
 - (BOOL)isUserInteractionEnabled;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setPressed:(BOOL)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

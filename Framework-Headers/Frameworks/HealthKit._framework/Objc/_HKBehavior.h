@@ -84,6 +84,7 @@
 @property (nonatomic) BOOL supportsActivitySharing; // @synthesize supportsActivitySharing=_supportsActivitySharing;
 @property (nonatomic) BOOL supportsAppSubscriptions; // @synthesize supportsAppSubscriptions=_supportsAppSubscriptions;
 @property (readonly, nonatomic) BOOL supportsCloudSync;
+@property (readonly, nonatomic) BOOL supportsEED;
 @property (readonly, nonatomic) BOOL supportsFeatureAvailabilityAssets; // @synthesize supportsFeatureAvailabilityAssets=_supportsFeatureAvailabilityAssets;
 @property (nonatomic) BOOL supportsHeartRateDataCollection; // @synthesize supportsHeartRateDataCollection=_supportsHeartRateDataCollection;
 @property (nonatomic) BOOL supportsNanoSync; // @synthesize supportsNanoSync=_supportsNanoSync;

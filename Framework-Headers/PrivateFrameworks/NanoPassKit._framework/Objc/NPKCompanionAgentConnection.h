@@ -66,7 +66,6 @@
 - (void)balancesForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginProvisioningFromWatchOfferForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)canAddSecureElementPassWithConfiguration:(id)arg1;
-- (BOOL)canProvisionAccessPassWithConfiguration:(id)arg1;
 - (void)commutePlanReminderForCommutePlan:(id)arg1 pass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)consistencyCheckWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -86,6 +85,7 @@
 - (void)paymentPassUniqueIDs:(CDUnknownBlockType)arg1;
 - (void)paymentPassUniqueIDsSynchronous:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)paymentPassWithDeviceAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)paymentPassWithPairedTerminalIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)paymentPassWithUniqueID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)paymentPassWithUniqueID:(id)arg1 synchronous:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableMessageService:(BOOL)arg2;
@@ -93,6 +93,7 @@
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithBalances:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithCredentials:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)paymentPassesWithPrimaryAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)peerPaymentAccountForDevice:(id)arg1;

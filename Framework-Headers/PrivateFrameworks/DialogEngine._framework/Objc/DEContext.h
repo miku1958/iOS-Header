@@ -23,7 +23,9 @@
 - (id)findVariable:(id)arg1;
 - (id)getFile;
 - (id)init;
+- (id)initWithPtr:(struct Context *)arg1;
 - (BOOL)load:(id)arg1 locale:(id)arg2;
+- (void)registerMorphunDataPathFor:(id)arg1 path:(id)arg2;
 - (void)setFile:(id)arg1;
 - (void)setTemplateDir:(id)arg1;
 

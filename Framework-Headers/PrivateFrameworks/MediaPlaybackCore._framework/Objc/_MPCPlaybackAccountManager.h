@@ -30,6 +30,7 @@
 - (void)_userIdentityStoreChangedNotification:(id)arg1;
 - (id)accountForDSID:(id)arg1;
 - (id)accountForHashedDSID:(id)arg1;
+- (id)accountForUserIdentity:(id)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
 
 @end

@@ -16,7 +16,7 @@
 
 @property (strong, nonatomic) NTKComplicationLayoutRule *defaultRule; // @synthesize defaultRule=_defaultRule;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)ruleForLayoutOverride:(long long)arg1;
 - (void)setRule:(id)arg1 forLayoutOverride:(long long)arg2;
 

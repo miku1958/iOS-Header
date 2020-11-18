@@ -12,6 +12,7 @@
 @protocol CRKSessionDelegate <NSObject>
 - (id<CRKIdentity>)clientIdentityForSession:(CRKSession *)arg1;
 - (void)session:(CRKSession *)arg1 didConnectWithTransport:(CATTransport *)arg2;
+- (void)session:(CRKSession *)arg1 encounteredUntrustedConnection:(void (^)(unsigned long long))arg2;
 - (void)session:(CRKSession *)arg1 willLoseBeaconAfterTimeInterval:(double)arg2;
 - (void)sessionDidBecomeConnectable:(CRKSession *)arg1;
 - (void)sessionDidBecomeNotConnectable:(CRKSession *)arg1;

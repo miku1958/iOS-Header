@@ -25,17 +25,15 @@
     double _shadowAlpha;
     double _shadowOffset;
     struct UIRectCornerRadii _cornerRadii;
-    BOOL _isHighlighted;
-    BOOL _isShadowHighlighted;
     SBAppSwitcherPageShadowView *_shadowView;
     SBAppSwitcherSettings *_settings;
     long long _orientation;
     BOOL _shouldClipContentView;
     BOOL _shouldScaleOverlayToFillBounds;
     BOOL _needsBackgroundWallpaperTreatment;
+    unsigned long long _highlightType;
     double _switcherCardScale;
     double _darkeningAlpha;
-    double _killingDarkeningAlpha;
     double _wallpaperOverlayAlpha;
     double _lighteningAlpha;
     struct CGSize _overlayViewSize;
@@ -55,8 +53,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGSize fullyPresentedSize; // @synthesize fullyPresentedSize=_fullyPresentedSize;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isHighlighted) BOOL highlighted;
-@property (nonatomic) double killingDarkeningAlpha; // @synthesize killingDarkeningAlpha=_killingDarkeningAlpha;
+@property (nonatomic) unsigned long long highlightType; // @synthesize highlightType=_highlightType;
 @property (nonatomic) double lighteningAlpha; // @synthesize lighteningAlpha=_lighteningAlpha;
 @property (nonatomic) BOOL needsBackgroundWallpaperTreatment; // @synthesize needsBackgroundWallpaperTreatment=_needsBackgroundWallpaperTreatment;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
@@ -64,7 +61,6 @@
 @property (nonatomic) double overlayAlpha;
 @property (nonatomic) struct CGSize overlayViewSize; // @synthesize overlayViewSize=_overlayViewSize;
 @property (nonatomic) double shadowAlpha; // @synthesize shadowAlpha=_shadowAlpha;
-@property (nonatomic, getter=isShadowHighlighted) BOOL shadowHighlighted;
 @property (nonatomic) double shadowOffset; // @synthesize shadowOffset=_shadowOffset;
 @property (nonatomic) long long shadowStyle; // @synthesize shadowStyle=_shadowStyle;
 @property (nonatomic) BOOL shouldClipContentView; // @synthesize shouldClipContentView=_shouldClipContentView;

@@ -14,6 +14,7 @@
 @property (copy, nonatomic) NSString *altDSID;
 @property (copy, nonatomic) NSString *appProvidedContext;
 @property (copy, nonatomic) NSDictionary *appProvidedData;
+@property (nonatomic) long long authenticationMode;
 @property (copy, nonatomic) AKDevice *companionDevice;
 @property (copy, nonatomic) AKDevice *proxiedDevice;
 @property (nonatomic) long long serviceType;

@@ -9,7 +9,6 @@
 #import <PassKitUI/PKPaymentDashboardCellActionHandleable-Protocol.h>
 
 @class NSString, PKContinuousButton, PKPaymentPass, PKPaymentPassAction, UIColor, UIImageView, UILabel;
-@protocol PKAccessibleLayoutObserverDelegate;
 
 @interface PKAdjustableSingleCellView : UIView <PKPaymentDashboardCellActionHandleable>
 {
@@ -17,8 +16,6 @@
     PKContinuousButton *_actionButton;
     double _topPadding;
     double _middlePadding;
-    long long _accessibleLayout;
-    id<PKAccessibleLayoutObserverDelegate> _accessibleLayoutObserverDelegate;
     BOOL _isTemplateLayout;
     UILabel *_titleView;
     UILabel *_detailView;
@@ -75,6 +72,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutIfNeededAnimated:(BOOL)arg1;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

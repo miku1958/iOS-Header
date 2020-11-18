@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
     UIPointerRegion *_activePointerRegion;
     PSPointerHoverRegion *_lastSentHoverRegion;
     unsigned long long _lastMaterialLuminance;
-    NSMapTable *_cursorRegionToMatchMoveSourceMap;
+    NSMapTable *_pointerRegionToMatchMoveSourceMap;
     PSPointerClientController *_pointerClientController;
     PSPointerPortalSourceCollection *_pointerPortalSourceCollection;
-    _UIPortalView *_cursorPortalView;
+    _UIPortalView *_pointerPortalView;
     _UIPortalView *_overlayEffectPortalView;
     _UILumaTrackingBackdropView *_samplingBackdropView;
     unsigned long long _transactionRevisionID;
@@ -33,8 +33,6 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) UIPointerRegion *activePointerRegion; // @synthesize activePointerRegion=_activePointerRegion;
 @property (strong, nonatomic) UIPointerStyle *activePointerStyle; // @synthesize activePointerStyle=_activePointerStyle;
-@property (strong, nonatomic) _UIPortalView *cursorPortalView; // @synthesize cursorPortalView=_cursorPortalView;
-@property (copy, nonatomic) NSMapTable *cursorRegionToMatchMoveSourceMap; // @synthesize cursorRegionToMatchMoveSourceMap=_cursorRegionToMatchMoveSourceMap;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasRunningTransaction; // @synthesize hasRunningTransaction=_hasRunningTransaction;
@@ -45,6 +43,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *pendingTransactionBlocks; // @synthesize pendingTransactionBlocks=_pendingTransactionBlocks;
 @property (strong, nonatomic) PSPointerClientController *pointerClientController; // @synthesize pointerClientController=_pointerClientController;
 @property (copy, nonatomic) PSPointerPortalSourceCollection *pointerPortalSourceCollection; // @synthesize pointerPortalSourceCollection=_pointerPortalSourceCollection;
+@property (strong, nonatomic) _UIPortalView *pointerPortalView; // @synthesize pointerPortalView=_pointerPortalView;
+@property (strong, nonatomic) NSMapTable *pointerRegionToMatchMoveSourceMap; // @synthesize pointerRegionToMatchMoveSourceMap=_pointerRegionToMatchMoveSourceMap;
 @property (readonly, nonatomic) long long pointerState;
 @property (strong, nonatomic) _UILumaTrackingBackdropView *samplingBackdropView; // @synthesize samplingBackdropView=_samplingBackdropView;
 @property (strong, nonatomic) UIPointerRegion *scrollingRegion; // @synthesize scrollingRegion=_scrollingRegion;
@@ -52,14 +52,16 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long transactionRevisionID; // @synthesize transactionRevisionID=_transactionRevisionID;
 
 - (void).cxx_destruct;
+- (void)_clearMatchMoveSourceForRegion:(id)arg1 immediately:(BOOL)arg2;
 - (id)_coordinateSpaceSourceViewForRegion:(id)arg1 withStyle:(id)arg2;
 - (void)_getPointerRegion:(inout id *)arg1 andStyle:(inout id *)arg2 atLocation:(struct CGPoint)arg3 inWindow:(id)arg4;
 - (id)_hoverRegionWithStyle:(id)arg1 forRegion:(id)arg2;
 - (void)_performNextTransaction;
 - (void)_performTransactionUsingBlock:(CDUnknownBlockType)arg1;
 - (id)_pointerShapeForStyle:(id)arg1;
-- (void)_prepareContentMatchMoveSourceForCursorRegion:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_prepareContentMatchMoveSourceForPointerRegion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_preparePointerPortalSourceCollectionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_setActiveHoverRegion:(id)arg1 style:(id)arg2 forPointerRegion:(id)arg3 transactionID:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)applyStyle:(id)arg1 forRegion:(id)arg2 effectSourceHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)backgroundLumaView:(id)arg1 didTransitionToLevel:(unsigned long long)arg2;
 - (void)beginScrollingWithRegion:(id)arg1;

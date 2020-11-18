@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (id)initWithGroup:(id)arg1 groupController:(id)arg2 reuseIdentifier:(id)arg3 delegate:(id)arg4;
 - (void)layoutSubviews;
+- (id)localizedGroupState;
 
 @end
 

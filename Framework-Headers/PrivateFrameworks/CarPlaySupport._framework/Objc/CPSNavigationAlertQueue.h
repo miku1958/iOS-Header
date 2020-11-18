@@ -24,13 +24,13 @@
 
 @property (strong, nonatomic) NSTimer *alertTimer; // @synthesize alertTimer=_alertTimer;
 @property (weak, nonatomic) CPSApplicationStateMonitor *applicationStateMonitor; // @synthesize applicationStateMonitor=_applicationStateMonitor;
-@property (readonly, nonatomic) BOOL canDisplayAlert;
 @property (readonly, nonatomic) CPNavigationAlert *currentAlert; // @synthesize currentAlert=_currentAlert;
 @property (readonly, nonatomic) CPSNavigationAlertView *currentAlertView; // @synthesize currentAlertView=_currentAlertView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<CPSNavigationAlertQueueDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isDisplayingAlert;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<CPTemplateDelegate> templateDelegate; // @synthesize templateDelegate=_templateDelegate;
 
@@ -41,7 +41,7 @@
 - (void)applicationStateMonitor:(id)arg1 didBecomeActive:(BOOL)arg2;
 - (void)beginAnimatingAlertIfPossible;
 - (void)didSelectButton:(id)arg1;
-- (void)dismissCurrentNavigationAlertAnimated:(BOOL)arg1 context:(unsigned long long)arg2;
+- (void)dismissCurrentNavigationAlertAnimated:(BOOL)arg1 context:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithDelegate:(id)arg1 applicationStateMonitor:(id)arg2;
 - (void)prepareNavigationAlert:(id)arg1 templateDelegate:(id)arg2 animated:(BOOL)arg3;
 

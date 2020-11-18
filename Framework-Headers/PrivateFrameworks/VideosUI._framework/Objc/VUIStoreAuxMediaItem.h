@@ -18,7 +18,7 @@
     BOOL _isAudioOnly;
     BOOL _disableResumeMenu;
     BOOL _disableScrubbing;
-    BOOL _sharedPurchase;
+    BOOL _isiTunesPurchasedOrRentedContent;
     BOOL _ignoreExistingOfflineKeyData;
     BOOL _isHLS;
     BOOL _isForStartingDownload;
@@ -53,10 +53,10 @@
 @property (nonatomic) BOOL isAudioOnly; // @synthesize isAudioOnly=_isAudioOnly;
 @property (nonatomic) BOOL isForStartingDownload; // @synthesize isForStartingDownload=_isForStartingDownload;
 @property (nonatomic) BOOL isHLS; // @synthesize isHLS=_isHLS;
+@property (nonatomic) BOOL isiTunesPurchasedOrRentedContent; // @synthesize isiTunesPurchasedOrRentedContent=_isiTunesPurchasedOrRentedContent;
 @property (strong, nonatomic) NSObject *parentReportingToken; // @synthesize parentReportingToken=_parentReportingToken;
 @property (nonatomic) long long playbackType; // @synthesize playbackType=_playbackType;
 @property (strong, nonatomic) TVPPlayer *scrubPlayer; // @synthesize scrubPlayer=_scrubPlayer;
-@property (nonatomic) BOOL sharedPurchase; // @synthesize sharedPurchase=_sharedPurchase;
 @property (strong, nonatomic) VUIStoreFPSKeyLoader *storeFPSKeyLoader; // @synthesize storeFPSKeyLoader=_storeFPSKeyLoader;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
@@ -66,8 +66,8 @@
 - (void).cxx_destruct;
 - (void)_keepKeyLoaderAlive:(id)arg1;
 - (id)_offlineKeyDataForKeyRequest:(id)arg1;
+- (id)_replacementErrorForITunesPlaybackError:(id)arg1;
 - (id)_replacementErrorForPlaybackError:(id)arg1;
-- (id)_replacementErrorForSharedPurchasePlaybackError:(id)arg1;
 - (void)_scrubPlayerItemDidLoad:(id)arg1;
 - (id)_tvpRatingDomainFromUTSRatingDomain:(id)arg1;
 - (void)cleanUpMediaItem;

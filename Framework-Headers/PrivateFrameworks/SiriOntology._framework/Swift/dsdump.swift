@@ -77,7 +77,7 @@
 	case float : Float
 	case int : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case long : ˜«
+	case long : ∑«
 	case string : String
 	case dateTime : DateTimeValue
 	case scalar : ScalarValue
@@ -99,7 +99,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let unit : SemanticValue // +0x220 (0x20)
 
 	// Swift methods
-	0x5490  class func TerminalElement.ScalarValue.__allocating_init(value:unit:) // init 
+	0x54d0  class func TerminalElement.ScalarValue.__allocating_init(value:unit:) // init 
  }
 
  struct SiriOntology.Origin {
@@ -166,7 +166,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let alternateInterpretationConfidences : [String : Double] // +0x2c8
 	let alternateInterpretationPhoneSequences : [String : String] // +0x2d0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let metadata : U« // +0x2d8
+	let metadata : « // +0x2d8
  }
 
  enum SiriOntology.MatchType {
@@ -209,7 +209,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let matchingSpan : MatchingSpan
 
 	// Swift methods
-	0x1e370  class func AnyMatchingSpan.__allocating_init(_:) // init 
+	0x1e3b0  class func AnyMatchingSpan.__allocating_init(_:) // init 
  }
 
  class SiriOntology._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -257,7 +257,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _element : Com_Apple_Siri_Product_Proto_Element
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _parentIndex : c∆
+	var _parentIndex : #∆
 
 	// Swift methods
  }
@@ -271,10 +271,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _primary : Bool
 	var _usingExplicitInput : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _intentRank : w∆
+	var _intentRank : 7∆
 	var _nerbasedParse : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _intentID : w∆
+	var _intentID : 7∆
 	var _nlState : Com_Apple_Siri_Product_Proto_NLState
 	var _mitigatorClassification : Com_Apple_Siri_Product_Proto_MitigatorClassification
 	var _strippedVoiceTrigger : String
@@ -290,7 +290,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
@@ -317,7 +317,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
@@ -350,14 +350,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isFresh : Bool
 	var input : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_Origin {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
@@ -389,7 +389,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
@@ -398,7 +398,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var elementValue : Com_Apple_Siri_Product_Proto_ElementValue
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_AdjustmentReason {
@@ -407,14 +407,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var explanation : String
 	var sourceClass : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_ProtoIntent {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
@@ -429,7 +429,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var alternativeIntentsIndices :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_IntegerList {
@@ -438,27 +438,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var integerValue :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_NonTerminalElement {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_ElementValue {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
  class SiriOntology.PersonOntologyNode : NonTerminalOntologyNode {
 	// Swift methods
-	0xb9600  class func PersonOntologyNode.__allocating_init(name:multicardinal:) // init 
+	0xb9640  class func PersonOntologyNode.__allocating_init(name:multicardinal:) // init 
  }
 
  enum SiriOntology.PersonSelfReference {
@@ -552,9 +552,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _meridiem : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _hourOfDay : w∆
+	var _hourOfDay : 7∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _minute : w∆
+	var _minute : 7∆
 	var _period : Com_Apple_Siri_Product_Proto_DateTimePeriod
 	var _qualifier : Com_Apple_Siri_Product_Proto_Qualifier
 	var _timeZoneID : String
@@ -569,11 +569,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _year : w∆
+	var _year : 7∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _month : w∆
+	var _month : 7∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _dayOfMonth : w∆
+	var _dayOfMonth : 7∆
 	var _dayOfWeek : Com_Apple_Siri_Product_Proto_DayOfWeek
 	var _dateTimeHoliday : Com_Apple_Siri_Product_Proto_DateTimeHoliday
 	var _qualifier : Com_Apple_Siri_Product_Proto_Qualifier
@@ -583,7 +583,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _calendarSystem : Com_Apple_Siri_Product_Proto_CalendarSystem
 	var _fractionalPeriod : Com_Apple_Siri_Product_Proto_FractionalPeriod
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _dayOfWeekOrdinalValue : c∆
+	var _dayOfWeekOrdinalValue : #∆
 
 	// Swift methods
  }
@@ -599,9 +599,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _startTime : Com_Apple_Siri_Product_Proto_Time
 	var _endTime : Com_Apple_Siri_Product_Proto_Time
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _startPosition : c∆
+	var _startPosition : #∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _endPosition : c∆
+	var _endPosition : #∆
 	var _temporalIntent : TemporalIntent
 
 	// Swift methods
@@ -611,7 +611,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
@@ -629,7 +629,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
@@ -637,10 +637,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var magnitude : c∆
+	var magnitude : #∆
 	var period : Com_Apple_Siri_Product_Proto_Period
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_Interval {
@@ -651,7 +651,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var qualifier : Com_Apple_Siri_Product_Proto_Qualifier
 	var isUserDefined : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_Duration {
@@ -660,14 +660,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var duration : Double
 	var period : Com_Apple_Siri_Product_Proto_Period
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_Date {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
@@ -708,13 +708,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var numerator : w∆
+	var numerator : 7∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var denominator : w∆
+	var denominator : 7∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ordinalValue : w∆
+	var ordinalValue : 7∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_DateTimeHoliday {
@@ -723,7 +723,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var id : String
 	var calendarSystem : Com_Apple_Siri_Product_Proto_CalendarSystem
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  enum SiriOntology.Com_Apple_Siri_Product_Proto_Qualifier {
@@ -758,7 +758,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isStart : Bool
 	var period : Com_Apple_Siri_Product_Proto_Period
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  enum SiriOntology.Com_Apple_Siri_Product_Proto_Period {
@@ -1047,12 +1047,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_recursiveParentForChildren : AnyOntologyNode // +0x30 (0x8)
 
 	// Swift methods
-	0xd8a90  class func NonTerminalOntologyNode.__allocating_init(name:multicardinal:childNodes:) // init 
+	0xd8ad0  class func NonTerminalOntologyNode.__allocating_init(name:multicardinal:childNodes:) // init 
  }
 
  class SiriOntology.AppOntologyNode : NonTerminalOntologyNode {
 	// Swift methods
-	0xdb4b0  class func AppOntologyNode.__allocating_init(name:multicardinal:) // init 
+	0xdb4f0  class func AppOntologyNode.__allocating_init(name:multicardinal:) // init 
  }
 
  enum SiriOntology.AppAttributes {
@@ -1091,7 +1091,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let isInEventTree : Bool // +0x38 (0x1)
 
 	// Swift methods
-	0x1021c0  class func DomainOntologyNode.__allocating_init(name:childNodes:isInEventTree:) // init 
+	0x102200  class func DomainOntologyNode.__allocating_init(name:childNodes:isInEventTree:) // init 
  }
 
  struct SiriOntology.NLIntent {
@@ -1141,24 +1141,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _prefix : Com_Apple_Siri_Product_Proto_MatchingSpan
 	var _suffix : Com_Apple_Siri_Product_Proto_MatchingSpan
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _start : w∆
+	var _start : 7∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _end : w∆
+	var _end : 7∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _startWithoutPrefix : w∆
+	var _startWithoutPrefix : 7∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _endWithoutSuffix : w∆
+	var _endWithoutSuffix : 7∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _confidence : w∆
+	var _confidence : 7∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _prefixSuffixConfidence : w∆
+	var _prefixSuffixConfidence : 7∆
 	var _explicit : Bool
 	var _isSuffixVariableMatch : Bool
 	var _isPrefixVariableMatch : Bool
 	var _isPayloadVariableMatch : Bool
 	var _locale : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _numWords : w∆
+	var _numWords : 7∆
 	var _matchType : Com_Apple_Siri_Product_Proto_MatchType
 	var _appID : String
 	var _matcherNames : [String]
@@ -1166,7 +1166,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _altInterpretationConfidences : [String : Double]
 	var _altInterpretationPhoneSequences : [String : String]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _metadata : èπ
+	var _metadata : Oπ
 
 	// Swift methods
  }
@@ -1194,7 +1194,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var ontologyNodePojoClassName : String
 	var serializedValue : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  enum SiriOntology.OneOf_Value {
@@ -1203,9 +1203,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case floatValue : Float
 	case doubleValue : Double
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case intValue : c∆
+	case intValue : #∆
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case longValue : ˜«
+	case longValue : ∑«
 	case stringValue : String
 	case dateTimeValue : Com_Apple_Siri_Product_Proto_DateTime
 	case scalarValue : Com_Apple_Siri_Product_Proto_ScalarValue
@@ -1217,7 +1217,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
@@ -1247,7 +1247,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
@@ -1255,7 +1255,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
@@ -1285,7 +1285,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
 	var _storage : _StorageClass
  }
 
@@ -1303,17 +1303,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var nodeValueListMap : Com_Apple_Siri_Product_Proto_StatefulValues
 	var mcNodeValueListMap : Com_Apple_Siri_Product_Proto_MultiCardinalStateCombos
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_MultiCardinalState {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : c∆
+	var id : #∆
 	var states : Com_Apple_Siri_Product_Proto_StatefulValue
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_MultiCardinalStateCombo {
@@ -1322,7 +1322,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var nodeName : String
 	var stateValues : Com_Apple_Siri_Product_Proto_MultiCardinalState
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_MultiCardinalStateCombos {
@@ -1330,7 +1330,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var values : Com_Apple_Siri_Product_Proto_MultiCardinalStateCombo
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }
 
  struct SiriOntology.Com_Apple_Siri_Product_Proto_StatefulValues {
@@ -1338,5 +1338,5 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var values : Com_Apple_Siri_Product_Proto_StatefulValue
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownFields : …√
+	var unknownFields : â√
  }

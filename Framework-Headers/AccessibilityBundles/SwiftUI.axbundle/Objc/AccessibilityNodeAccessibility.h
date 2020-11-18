@@ -38,6 +38,7 @@
 + (BOOL)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityScrollToVisible;
 - (BOOL)_axAreChildrenFocused;
 - (id)_axDefaultFocusGroupDescriptor;
 - (id)_axGetStoredDefaultFocusGroupDescriptor;

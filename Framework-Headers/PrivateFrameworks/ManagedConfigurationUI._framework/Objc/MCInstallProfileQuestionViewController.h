@@ -9,7 +9,7 @@
 #import <ManagedConfigurationUI/PSStateRestoration-Protocol.h>
 #import <ManagedConfigurationUI/UITextFieldDelegate-Protocol.h>
 
-@class MCUIFieldCollection, NSString, UIAlertView, UITextField;
+@class MCUIFieldCollection, NSString, UITextField;
 @protocol MCProfileQuestionsControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     NSString *_previousResponseValue;
     BOOL _waitingForPasscodePreflight;
     int _outDirection;
-    UIAlertView *_activeAlert;
     BOOL _showingKeyboard;
     BOOL _isLastQuestion;
     id<MCProfileQuestionsControllerDelegate> _questionsDelegate;
@@ -35,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UITextField *textField; // @synthesize textField=_textField;
 
 - (void).cxx_destruct;
-- (void)_cancelActiveAlert:(BOOL)arg1;
+- (void)_addActionForError:(unsigned long long)arg1 title:(id)arg2 toAlert:(id)arg3;
 - (void)_cancelButtonClicked;
 - (void)_cancelInput;
 - (void)_cancelPayload;
@@ -47,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)_disableRightButton;
 - (void)_enableRightButton;
 - (void)_finishInput;
+- (void)_handleError:(unsigned long long)arg1;
 - (void)_hideKeyboard:(BOOL)arg1;
 - (void)_hideProgressIndicator;
 - (void)_nextButtonClicked;
@@ -58,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)_retryPayload;
 - (void)_retryWithCurrentField;
 - (void)_setup;
-- (void)_showErrorAlertWithError:(id)arg1;
+- (void)_showAlertForError:(id)arg1;
 - (void)_showKeyboard:(BOOL)arg1;
 - (void)_showNavButtonsAnimated:(BOOL)arg1;
 - (void)_showProgressIndicator;
@@ -66,8 +66,6 @@ __attribute__((visibility("hidden")))
 - (void)_tellDelegateDidFinishWithUserInputResponses:(id)arg1;
 - (void)_textFieldValueChanged:(id)arg1;
 - (void)_updateNavigationBar;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
-- (void)alertViewCancel:(id)arg1;
 - (BOOL)canBeShownFromSuspendedState;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;

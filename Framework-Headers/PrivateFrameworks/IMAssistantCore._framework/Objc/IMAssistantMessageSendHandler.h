@@ -45,7 +45,7 @@
 - (id)resolvedRecipientsFromChat:(id)arg1;
 - (id)sendMessageWithText:(id)arg1 currentLocation:(BOOL)arg2 expressiveSendStyleID:(id)arg3 idsIdentifier:(id)arg4 executionContext:(long long)arg5 toChat:(id)arg6;
 - (BOOL)shouldContinueToExamineRelevantChatsWithMatches:(id)arg1 nextChat:(id)arg2;
-- (BOOL)updateSenderIdentityForChat:(id)arg1 recipients:(id)arg2;
+- (BOOL)updateSenderIdentityForNewlyCreatedChat:(id)arg1;
 
 @end
 

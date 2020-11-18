@@ -14,6 +14,7 @@
 {
     long long _maxVersionRead;
     long long _maxVersionSeen;
+    long long _readCount;
     NSString *_articleID;
     NSString *_deviceID;
     NTPBDate *_firstSeenDate;
@@ -24,6 +25,7 @@
     struct {
         unsigned int maxVersionRead:1;
         unsigned int maxVersionSeen:1;
+        unsigned int readCount:1;
         unsigned int flags:1;
     } _has;
 }
@@ -41,10 +43,12 @@
 @property (readonly, nonatomic) BOOL hasLastVisitedDate;
 @property (nonatomic) BOOL hasMaxVersionRead;
 @property (nonatomic) BOOL hasMaxVersionSeen;
+@property (nonatomic) BOOL hasReadCount;
 @property (readonly, nonatomic) BOOL hasSourceChannelTagID;
 @property (strong, nonatomic) NTPBDate *lastVisitedDate; // @synthesize lastVisitedDate=_lastVisitedDate;
 @property (nonatomic) long long maxVersionRead; // @synthesize maxVersionRead=_maxVersionRead;
 @property (nonatomic) long long maxVersionSeen; // @synthesize maxVersionSeen=_maxVersionSeen;
+@property (nonatomic) long long readCount; // @synthesize readCount=_readCount;
 @property (strong, nonatomic) NSString *sourceChannelTagID; // @synthesize sourceChannelTagID=_sourceChannelTagID;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

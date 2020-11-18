@@ -377,6 +377,7 @@
 - (void)chatAllowedByScreenTimeChanged:(id)arg1;
 - (id)chatForSendAnimationManager:(id)arg1;
 - (void)chatInputController:(id)arg1 presentShelfModal:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)chatInputControllerCanSend:(id)arg1;
 - (void)chatInputControllerDidDismissCompactBrowserViewController:(id)arg1;
 - (void)chatInputControllerDidDismissModalBrowserViewController:(id)arg1;
 - (void)chatInputControllerDidPresentModalBrowserViewController:(id)arg1;
@@ -607,7 +608,7 @@
 - (BOOL)shouldUseThrowAnimationForComposition:(id)arg1;
 - (void)showAddContactForNickname:(id)arg1 sourceView:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)showAlternateViewerForMediaObject:(id)arg1;
-- (void)showFullScreenAcknowledgmentPickerForBalloonAtIndexPath:(id)arg1 showActionMenu:(BOOL)arg2;
+- (void)showFullScreenAcknowledgmentPickerIfNeededForBalloonAtIndexPath:(id)arg1 showActionMenu:(BOOL)arg2;
 - (void)showKeyboard;
 - (void)showKeyboardForReply;
 - (void)showMediaPicker:(id)arg1 animated:(BOOL)arg2;

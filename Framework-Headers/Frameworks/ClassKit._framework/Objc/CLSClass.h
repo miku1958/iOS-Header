@@ -52,6 +52,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocation:(id)arg1 customName:(id)arg2;
+- (void)mergeWithObject:(id)arg1;
 - (void)removePerson:(id)arg1 withRole:(unsigned long long)arg2;
 - (void)setDisplayName:(id)arg1;
 - (BOOL)validateObject:(id *)arg1;

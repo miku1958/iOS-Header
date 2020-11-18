@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     BOOL _shouldAnimateLift;
     BOOL _preparedForLift;
     BOOL _hasBegunDrag;
-    BOOL _dragDidBeginInDruid;
     NSMutableArray *_animationBlocks;
     NSMutableArray *_completionBlocks;
     long long _state;
@@ -37,7 +36,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSMutableArray *completionBlocks; // @synthesize completionBlocks=_completionBlocks;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL dragDidBeginInDruid; // @synthesize dragDidBeginInDruid=_dragDidBeginInDruid;
 @property (nonatomic) BOOL hasBegunDrag; // @synthesize hasBegunDrag=_hasBegunDrag;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint initialLocation; // @synthesize initialLocation=_initialLocation;

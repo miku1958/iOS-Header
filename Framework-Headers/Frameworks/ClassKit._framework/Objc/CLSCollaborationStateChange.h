@@ -43,6 +43,7 @@
 - (BOOL)hasChanges;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithObject:(id)arg1 ownerPersonID:(id)arg2 targetClassID:(id)arg3 recipientPersonID:(id)arg4;
+- (void)mergeChangesFrom:(id)arg1;
 - (void)mergeWithObject:(id)arg1;
 - (void)removeStateForDomain:(long long)arg1;
 - (BOOL)setAssetURL:(id)arg1 forDomain:(long long)arg2;

@@ -115,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (void)getQueryItemForURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getShareOptionsOfItemIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getTotalApplicationDocumentUsageWithReply:(CDUnknownBlockType)arg1;
+- (void)getURLForItemIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getiWorkNeedsShareMigrateAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getiWorkPublishingBadgingStatusAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getiWorkPublishingInfoAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;

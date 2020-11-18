@@ -11,6 +11,7 @@
 
 @protocol CKChatInputControllerDelegate <NSObject>
 - (void)chatInputController:(CKChatInputController *)arg1 presentShelfModal:(UIViewController *)arg2 animated:(BOOL)arg3 completion:(void (^)(void))arg4;
+- (BOOL)chatInputControllerCanSend:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidDismissCompactBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidDismissModalBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidPresentModalBrowserViewController:(CKChatInputController *)arg1;

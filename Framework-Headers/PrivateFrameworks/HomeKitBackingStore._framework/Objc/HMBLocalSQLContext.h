@@ -25,6 +25,7 @@
     struct sqlite3_stmt *deleteNullBlocks;
     struct sqlite3_stmt *insertItem;
     struct sqlite3_stmt *insertDeletionItemsForRecordsOfType;
+    struct sqlite3_stmt *insertDeletionItemsForOrphanedRecordsOfType;
     struct sqlite3_stmt *insertDeletionItemsForRecordWithUUID;
     struct sqlite3_stmt *insertDeletionItemsForRecordsWithParentUUID;
     struct sqlite3_stmt *updateItem;
@@ -106,6 +107,7 @@
 - (unsigned long long)_insertBlockWithZoneRow:(unsigned long long)arg1 type:(unsigned long long)arg2 error:(id *)arg3;
 - (unsigned long long)_insertBlockWithZoneRow:(unsigned long long)arg1 type:(unsigned long long)arg2 options:(id)arg3 items:(id)arg4 error:(id *)arg5;
 - (unsigned long long)_insertDeletionItemWithZoneRow:(unsigned long long)arg1 blockRow:(unsigned long long)arg2 type:(unsigned long long)arg3 modelID:(id)arg4 error:(id *)arg5;
+- (unsigned long long)_insertDeletionItemsForOrphanedRecordsWithZoneRow:(unsigned long long)arg1 blockRow:(unsigned long long)arg2 type:(unsigned long long)arg3 modelType:(id)arg4 error:(id *)arg5;
 - (unsigned long long)_insertDeletionItemsWithZoneRow:(unsigned long long)arg1 blockRow:(unsigned long long)arg2 type:(unsigned long long)arg3 modelType:(id)arg4 error:(id *)arg5;
 - (unsigned long long)_insertDeletionItemsWithZoneRow:(unsigned long long)arg1 blockRow:(unsigned long long)arg2 type:(unsigned long long)arg3 parentModelID:(id)arg4 error:(id *)arg5;
 - (BOOL)_insertIndexSentinelWithZoneRow:(unsigned long long)arg1 modelType:(id)arg2 error:(id *)arg3;

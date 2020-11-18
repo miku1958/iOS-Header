@@ -132,7 +132,7 @@
 - (id)_layoutElementViewControllerAtLocation:(struct CGPoint)arg1;
 - (void)_setUpGestureRecognizers;
 - (BOOL)_shouldAllowDeckBottomEdgeGestureToRecognizeFromEdges:(unsigned long long)arg1;
-- (BOOL)_shouldAllowFloatingApplicationGesture:(id)arg1 failureReason:(id *)arg2;
+- (BOOL)_shouldAllowFloatingApplicationGesture:(id)arg1 gestureType:(unsigned long long)arg2 failureReason:(id *)arg3;
 - (BOOL)_shouldBeginBottomEdgePanGesture:(id)arg1;
 - (BOOL)_shouldBeginClickAndDragHomeGesture:(id)arg1;
 - (BOOL)_shouldBeginDeckForcePressGesture:(id)arg1;

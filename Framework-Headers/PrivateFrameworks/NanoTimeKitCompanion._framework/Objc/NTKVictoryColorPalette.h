@@ -41,6 +41,7 @@
 @property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) UIColor *digitalComplicationsColor; // @synthesize digitalComplicationsColor=_digitalComplicationsColor;
 @property (readonly, nonatomic) UIColor *digitalComplicationsPlatterColor; // @synthesize digitalComplicationsPlatterColor=_digitalComplicationsPlatterColor;
+@property (readonly, nonatomic) unsigned long long faceColor;
 @property (readonly, nonatomic) UIColor *handInlayColor; // @synthesize handInlayColor=_handInlayColor;
 @property (readonly, nonatomic) UIColor *handsColor; // @synthesize handsColor=_handsColor;
 @property (readonly, nonatomic) BOOL hasWhiteElements; // @synthesize hasWhiteElements=_hasWhiteElements;

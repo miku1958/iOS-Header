@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKTransitCommutePlan.h>
+#import <PassKit/PKTransitCommutePlan.h>
 
 #import <NanoPassKit/NPKDateRange-Protocol.h>
 

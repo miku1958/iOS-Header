@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKPassLogoImageSet.h>
+#import <PassKit/PKPassLogoImageSet.h>
 
 @interface PKPassLogoImageSet (NanoPassKit)
 - (void)loadPDFArtFromBundle:(id)arg1;

@@ -26,10 +26,12 @@
     MISSING_TYPE *previousArticleID;
     MISSING_TYPE *previousArticleVersion;
     MISSING_TYPE *showSubscribedAlert;
+    MISSING_TYPE *adQToken;
 }
 
 @property (nonatomic, copy) NSString *adPreviewID;
 @property (nonatomic, copy) NSString *adPreviewSessionID;
+@property (nonatomic, copy) NSString *adQToken;
 @property (nonatomic, strong) NSNumber *displayRank; // @synthesize displayRank;
 @property (nonatomic, strong) NSNumber *externalAnalyticsFeedReferrer; // @synthesize externalAnalyticsFeedReferrer;
 @property (nonatomic, strong) NSNumber *feedPickerSection; // @synthesize feedPickerSection;
@@ -49,6 +51,7 @@
 - (id)init;
 - (void)setWithAdPreviewID:(id)arg1;
 - (void)setWithAdPreviewSessionID:(id)arg1;
+- (void)setWithAdQToken:(id)arg1;
 - (void)setWithDisplayRank:(long long)arg1;
 - (void)setWithExternalAnalyticsFeedReferrer:(long long)arg1;
 - (void)setWithFeedPickerSection:(int)arg1;

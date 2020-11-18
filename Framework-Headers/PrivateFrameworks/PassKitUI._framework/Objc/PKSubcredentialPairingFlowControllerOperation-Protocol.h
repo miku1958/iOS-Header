@@ -17,5 +17,9 @@
 @property (strong, nonatomic) PKSubcredentialPairingFlowControllerContext *provisioningContext;
 
 - (id)initWithFlowController:(id<PKSubcredentialPairingFlowControllerProtocol>)arg1 context:(PKSubcredentialPairingFlowControllerContext *)arg2;
+
+@optional
+- (void)hostApplicationDidEnterBackground;
+- (void)hostApplicationWillEnterForeground;
 @end
 

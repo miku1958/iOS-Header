@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

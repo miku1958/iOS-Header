@@ -17,6 +17,7 @@
     BOOL _needsStationProcessing;
     BOOL _appletStateDirty;
     NSNumber *_historySequenceNumber;
+    NSNumber *_serverRefreshIdentifier;
     NSDecimalNumber *_balance;
     NSNumber *_loyaltyBalance;
     NSString *_currency;
@@ -37,10 +38,11 @@
 @property (readonly, nonatomic, getter=isInStation) BOOL inStation; // @dynamic inStation;
 @property (copy, nonatomic) NSNumber *loyaltyBalance; // @synthesize loyaltyBalance=_loyaltyBalance;
 @property (nonatomic) BOOL needsStationProcessing; // @synthesize needsStationProcessing=_needsStationProcessing;
+@property (copy, nonatomic) NSNumber *serverRefreshIdentifier; // @synthesize serverRefreshIdentifier=_serverRefreshIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_resolveTransactionsFromState:(id)arg1 toState:(id)arg2 withHistoryRecords:(id)arg3 concreteTransactions:(id *)arg4 ephemeralTransaction:(id *)arg5;
+- (void)_resolveTransactionsFromState:(id)arg1 toState:(id)arg2 withHistoryRecords:(id)arg3 concreteTransactions:(id *)arg4 ephemeralTransaction:(id *)arg5 balanceLabels:(id)arg6;
 - (void)addEnrouteTransitType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -48,7 +50,8 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3;
-- (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransactions:(id *)arg3;
+- (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3 mutatedBalances:(id *)arg4;
+- (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3 mutatedBalances:(id *)arg4 balanceLabelDictionary:(id)arg5;
 - (id)transitPassPropertiesWithPaymentApplication:(id)arg1;
 - (id)updatedEnrouteTransitTypesFromExistingTypes:(id)arg1 newTypes:(id)arg2;
 

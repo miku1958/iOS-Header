@@ -44,6 +44,7 @@
 - (BOOL)ef_isWebAddress;
 - (const void *)ef_lossyDefaultCStringBytes;
 - (id)ef_quotedWordComponentsForLanguages:(id)arg1;
+- (id)ef_sanitizedFileName;
 - (const char *)ef_sqliteAllocatedStringWithHexFromUTF8;
 - (id)ef_stringByAddingPercentEscapesUsingEncoding:(unsigned long long)arg1;
 - (id)ef_stringByApplyingJavaScriptArguments:(id)arg1;

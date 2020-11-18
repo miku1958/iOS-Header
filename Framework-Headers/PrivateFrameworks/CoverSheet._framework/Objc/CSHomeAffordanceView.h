@@ -43,6 +43,7 @@
 - (void)_updateForLegibility;
 - (id)_viewForStyle:(unsigned long long)arg1;
 - (struct UIEdgeInsets)cursorInteractionHitTestInsetsForView:(id)arg1;
+- (struct CGRect)extendedFrameForPointerAnimationSuppression;
 - (id)init;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

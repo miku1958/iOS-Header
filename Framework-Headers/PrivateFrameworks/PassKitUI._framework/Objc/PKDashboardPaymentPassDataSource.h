@@ -139,7 +139,6 @@
 - (void)_presentPassWithPassUniqueIdentifier:(id)arg1;
 - (void)_presentPhysicalCardActivation;
 - (BOOL)_shouldPaymentMessageAppear:(id)arg1;
-- (BOOL)_showTiledBalances;
 - (void)_updateBalance;
 - (void)_updateTransactionsTimer;
 - (void)_updateTransitBalanceProperties:(id)arg1 dynamicBalances:(id)arg2;
@@ -176,6 +175,7 @@
 - (void)reloadTransactionGroups;
 - (void)reloadTransactions;
 - (void)reloadTransitBalance;
+- (id)revokingAccessMessage;
 - (void)scheduledPaymentsChangedForAccountIdentifier:(id)arg1;
 - (void)secureElementDidEnterRestrictedMode:(id)arg1;
 - (void)secureElementDidLeaveRestrictedMode:(id)arg1;

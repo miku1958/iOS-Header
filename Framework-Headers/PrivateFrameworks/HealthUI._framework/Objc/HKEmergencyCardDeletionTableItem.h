@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)initInEditMode:(BOOL)arg1;
+- (struct UIEdgeInsets)separatorInset;
 - (BOOL)shouldHighlightRowAtIndex:(long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndex:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndex:(long long)arg2;

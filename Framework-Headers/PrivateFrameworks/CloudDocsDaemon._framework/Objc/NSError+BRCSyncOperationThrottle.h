@@ -58,6 +58,7 @@
 - (id)brc_staleUpdateRecordIDs;
 - (id)brc_strippedError;
 - (int)brc_syncOperationErrorKind;
+- (id)brc_telemetryReportableErrorWithRecordName:(id *)arg1;
 - (id)brc_wrappedError;
 @end
 

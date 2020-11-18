@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (BOOL)isGVAEncoderAvailable;
+- (BOOL)isIMacPro;
 
 @end
 

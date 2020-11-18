@@ -11,6 +11,7 @@
 @interface NSURL (SafariSharedExtras)
 
 @property (readonly, nonatomic) NSURL *safari_canonicalURLForStartPage;
+@property (readonly, nonatomic) BOOL safari_hasCustomScheme;
 @property (readonly, nonatomic) BOOL safari_isBlobURL;
 @property (readonly, nonatomic) BOOL safari_isEligibleToShowNotSecureWarning;
 @property (readonly, nonatomic) BOOL safari_isLocalOrPrivateNetworkURL;

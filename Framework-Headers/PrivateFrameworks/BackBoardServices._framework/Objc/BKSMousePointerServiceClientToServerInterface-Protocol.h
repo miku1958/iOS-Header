@@ -13,7 +13,6 @@
 - (oneway void)acquireButtonDownPointerRepositionAssertionWithUniqueIdentifier:(NSUUID *)arg1 forReason:(NSString *)arg2 contextRelativePointerPosition:(BKSContextRelativePoint *)arg3 onDisplay:(NSString *)arg4 restrictingToPID:(NSNumber *)arg5;
 - (oneway void)applyAssertionParametersOnDisplay:(NSString *)arg1 withOptionsMask:(NSNumber *)arg2;
 - (oneway void)getHitTestContextsAtPoint:(BKSContextRelativePoint *)arg1 withAdditionalContexts:(NSSet<__BKSHIDEventHitTestClientContext__> *)arg2 onDisplay:(NSString *)arg3 withCompletion:(void (^)(NSArray<__BKSHIDEventHitTestClientContext__> *, NSArray<__NSValue__> *, NSError *))arg4;
-- (NSValue *)getTransformFromLayerId:(NSNumber *)arg1 inContextId:(NSNumber *)arg2;
 - (BKSMousePointerDevicePreferences *)globalDevicePreferences;
 - (NSValue *)globalPointerPosition;
 - (oneway void)invalidateButtonDownPointerRepositionAssertionWithUniqueIdentifier:(NSUUID *)arg1 onDisplay:(NSString *)arg2;

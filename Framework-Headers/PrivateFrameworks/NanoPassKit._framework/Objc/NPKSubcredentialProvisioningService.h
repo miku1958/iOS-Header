@@ -8,18 +8,20 @@
 
 #import <NanoPassKit/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NSString;
+@class IDSService, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface NPKSubcredentialProvisioningService : NSObject <IDSServiceDelegate>
 {
     NSObject<OS_dispatch_queue> *_subcredentialProvisioningQueue;
+    NSMutableDictionary *_outstandingRequests;
     IDSService *_subcredentialService;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableDictionary *outstandingRequests; // @synthesize outstandingRequests=_outstandingRequests;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *subcredentialProvisioningQueue; // @synthesize subcredentialProvisioningQueue=_subcredentialProvisioningQueue;
 @property (strong, nonatomic) IDSService *subcredentialService; // @synthesize subcredentialService=_subcredentialService;
 @property (readonly) Class superclass;
@@ -29,6 +31,7 @@
 - (id)_sendProtobuf:(id)arg1 responseExpected:(BOOL)arg2 extraOptions:(id)arg3;
 - (void)_setUpSubcredentialProvisioningQueue;
 - (void)_setUpSubcredentialProvisioningService;
+- (void)_trackOutstandingRequestWithMessageIdentifier:(id)arg1 completionHandler:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)registerProtobufActionsForService:(id)arg1;
 - (id)sendProtobuf:(id)arg1 responseExpected:(BOOL)arg2;
@@ -36,6 +39,7 @@
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5;
 - (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
 - (void)service:(id)arg1 devicesChanged:(id)arg2;
+- (void)trackOutstandingRequestWithMessageIdentifier:(id)arg1 completionHandler:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
 
 @end
 

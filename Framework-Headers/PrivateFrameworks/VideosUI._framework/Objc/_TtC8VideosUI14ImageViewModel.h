@@ -10,9 +10,9 @@
 
 @interface _TtC8VideosUI14ImageViewModel : _TtC8VideosUI9ViewModel
 {
-    MISSING_TYPE *mainImage;
+    MISSING_TYPE *defaultImage;
     MISSING_TYPE *alternateImages;
-    MISSING_TYPE *$__lazy_storage_$_imageProxyCache;
+    MISSING_TYPE *accessibilityText;
 }
 
 @end

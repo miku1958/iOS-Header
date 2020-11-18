@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
+#import <ClassroomKit/NSObject-Protocol.h>
 
-@protocol CRKASMOrganization
+@class NSUUID;
 
-@property (readonly, copy, nonatomic) NSString *identifier;
-@property (readonly, copy, nonatomic) NSString *name;
+@protocol CRKASMOrganization <NSObject>
+
+@property (readonly, nonatomic) NSUUID *UUID;
 
 @end
 

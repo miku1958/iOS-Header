@@ -136,8 +136,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _cancel : ()? // +0x10 (0x10)
 
 	// Swift methods
-	0x4e10  class func AnyCancellable.__allocating_init(_:) // init 
-	0x4e60  class func AnyCancellable.__allocating_init<A>(_:) // init 
+	0x4f00  class func AnyCancellable.__allocating_init(_:) // init 
+	0x4f50  class func AnyCancellable.__allocating_init<A>(_:) // init 
  }
 
  enum Combine.SubscriptionStatus {
@@ -467,12 +467,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : ObjectIdentifier?
 
 	// Swift methods
-	0x34d10  class func ObservableObjectPublisher.__allocating_init() // init 
+	0x34e00  class func ObservableObjectPublisher.__allocating_init() // init 
  }
 
  class Combine.Conduit : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x34570  func ObservableObjectPublisher.Conduit.send() // method 
+	0x34660  func ObservableObjectPublisher.Conduit.send() // method 
  }
 
  class Combine.Inner {

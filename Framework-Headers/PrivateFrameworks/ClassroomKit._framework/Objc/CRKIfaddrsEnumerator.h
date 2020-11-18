@@ -15,6 +15,7 @@
 }
 
 + (id)enumeratorWithError:(id *)arg1;
++ (id)internetInterfaceEnumeratorWithError:(id *)arg1;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;

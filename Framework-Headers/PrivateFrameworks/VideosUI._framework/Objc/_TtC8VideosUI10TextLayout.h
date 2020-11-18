@@ -10,17 +10,20 @@
 
 @interface _TtC8VideosUI10TextLayout : _TtC8VideosUI10ViewLayout
 {
-    MISSING_TYPE *$__lazy_storage_$_vuiTextLayout;
-    MISSING_TYPE *contentSize;
-    MISSING_TYPE *fontFamily;
     MISSING_TYPE *textStyle;
-    MISSING_TYPE *textTransform;
+    MISSING_TYPE *maximumContentSizeCategory;
+    MISSING_TYPE *fontFamily;
     MISSING_TYPE *fontWeight;
-    MISSING_TYPE *fontFeature;
     MISSING_TYPE *fontSize;
+    MISSING_TYPE *fontFeature;
+    MISSING_TYPE *textTransform;
     MISSING_TYPE *textAlignment;
     MISSING_TYPE *numberOfLines;
+    MISSING_TYPE *numberOfLinesAXSmall;
+    MISSING_TYPE *numberOfLinesAXLarge;
     MISSING_TYPE *minimumScaleFactor;
+    MISSING_TYPE *letterSpacing;
+    MISSING_TYPE *alwaysFocusable;
 }
 
 @end

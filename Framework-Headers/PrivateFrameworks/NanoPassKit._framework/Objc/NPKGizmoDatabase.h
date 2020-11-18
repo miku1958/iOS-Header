@@ -46,6 +46,8 @@
     struct sqlite3_stmt *_selectCloudKitArchivedTransactionsStatement;
     struct sqlite3_stmt *_selectBalancesForPassStatement;
     struct sqlite3_stmt *_updateBalancesForPassStatement;
+    struct sqlite3_stmt *_selectSubcredentialsForPassStatement;
+    struct sqlite3_stmt *_updateSubcredentialsForPassStatement;
     NSObject<OS_dispatch_queue> *_dbQueue;
     BOOL _isInTransaction;
     NSMutableDictionary *_manifest;
@@ -140,7 +142,9 @@
 - (void)_setLastAddValueAmountLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)_setPaymentBalancesLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)_setPendingAddValueDateLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
+- (void)_setSubcredentialsLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)_setTransitAppletStateLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
+- (id)_subcredentialsForPassWithUniqueIDLocked:(id)arg1;
 - (BOOL)_table:(id)arg1 containsColumn:(id)arg2;
 - (id)_transactionWithIdentifierLocked:(id)arg1;
 - (id)_transactionWithServiceIdentifierLocked:(id)arg1;
@@ -203,6 +207,7 @@
 - (struct sqlite3_stmt *)selectDeletePendingStatement;
 - (struct sqlite3_stmt *)selectPassUniqueIDAsssociateToTransactionWithIdentifierStatement;
 - (struct sqlite3_stmt *)selectPassUniqueIDAsssociateToTransactionWithServiceIdentifierStatement;
+- (struct sqlite3_stmt *)selectSubcredentialsForPassStatement;
 - (struct sqlite3_stmt *)selectTransactionsStatementWithTransactionSource:(unsigned long long)arg1 orderByDate:(long long)arg2;
 - (void)setCurrentEphemeralTransactionIdentifier:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)setDeletePending:(BOOL)arg1 forUniqueID:(id)arg2;
@@ -210,13 +215,16 @@
 - (void)setPaymentBalances:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)setPendingAddValueDate:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)setPreferredPaymentApplication:(id)arg1 forPaymentPass:(id)arg2;
+- (void)setSubcredentials:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)setTransitAppletState:(id)arg1 forPassWithUniqueID:(id)arg2;
+- (id)subcredentialsForPassWithUniqueID:(id)arg1;
 - (id)transactionWithIdentifier:(id)arg1;
 - (id)transactionWithServiceIdentifier:(id)arg1;
 - (id)transactionsForPassWithUniqueID:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5 orderedByDate:(long long)arg6 limit:(long long)arg7;
 - (id)transactionsWithCloudKitArchivedState:(BOOL)arg1;
 - (id)transitAppletStateForPassWithUniqueID:(id)arg1;
 - (struct sqlite3_stmt *)updateBalancesForPassStatement;
+- (struct sqlite3_stmt *)updateSubcredentialsForPassStatement;
 
 @end
 

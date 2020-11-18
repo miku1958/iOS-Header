@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) UIColor *backgroundColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long faceColor;
 @property (readonly, nonatomic) BOOL hasWhiteElements;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIColor *logoColor;

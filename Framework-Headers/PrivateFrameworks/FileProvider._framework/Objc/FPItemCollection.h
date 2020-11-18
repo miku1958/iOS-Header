@@ -9,7 +9,7 @@
 #import <FileProvider/FPCollectionDataSourceDelegate-Protocol.h>
 #import <FileProvider/FPReachabilityObserver-Protocol.h>
 
-@class FPAppRegistry, FPPacer, NSArray, NSMutableDictionary, NSMutableSet, NSPredicate, NSString, _FPItemList;
+@class FPAppRegistry, FPItemID, FPPacer, NSArray, NSMutableDictionary, NSMutableSet, NSPredicate, NSString, _FPItemList;
 @protocol FPCollectionDataSource, FPItemCollectionIndexPathBasedDelegate, FPItemCollectionItemIDBasedDelegate, FPItemCollectionMinimalDelegate, OS_dispatch_queue;
 
 @interface FPItemCollection : NSObject <FPReachabilityObserver, FPCollectionDataSourceDelegate>
@@ -35,6 +35,7 @@
     BOOL _showHiddenFiles;
     BOOL _observing;
     id<FPItemCollectionMinimalDelegate> _delegate;
+    FPItemID *_enumeratedItemID;
     NSPredicate *_additionalItemFilteringPredicate;
     NSObject<OS_dispatch_queue> *_updateQueue;
     FPPacer *_updatePacer;
@@ -46,6 +47,7 @@
 @property (weak, nonatomic) id<FPItemCollectionMinimalDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) NSString *domainIdentifier;
+@property (readonly) FPItemID *enumeratedItemID; // @synthesize enumeratedItemID=_enumeratedItemID;
 @property (nonatomic, getter=isGathering) BOOL gathering; // @synthesize gathering=_gathering;
 @property (readonly, nonatomic) BOOL hasMoreUpdates; // @synthesize hasMoreUpdates=_hasMoreUpdates;
 @property (readonly) unsigned long long hash;

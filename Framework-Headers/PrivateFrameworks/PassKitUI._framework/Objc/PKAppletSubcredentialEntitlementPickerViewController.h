@@ -6,19 +6,31 @@
 
 #import <PassKitUI/PKPaymentSetupTableViewController.h>
 
-@class NSArray, PKAppletSubcredentialSharingRequest, PKPaymentPass;
+#import <PassKitUI/PKSubcredentialMessageComposeViewControllerDelegate-Protocol.h>
 
-@interface PKAppletSubcredentialEntitlementPickerViewController : PKPaymentSetupTableViewController
+@class NSArray, NSString, PKAppletSubcredentialSharingRequest, PKPaymentPass, PKSharedCredentialsGroupController, PKSubcredentialMessageComposeViewController;
+
+@interface PKAppletSubcredentialEntitlementPickerViewController : PKPaymentSetupTableViewController <PKSubcredentialMessageComposeViewControllerDelegate>
 {
     PKPaymentPass *_pass;
+    PKSharedCredentialsGroupController *_groupController;
     PKAppletSubcredentialSharingRequest *_sharingRequest;
     NSArray *_supportedEntitlements;
     long long _selectedEntitlementIndex;
+    BOOL _isSharing;
+    PKSubcredentialMessageComposeViewController *_messageComposeViewController;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PKSubcredentialMessageComposeViewController *messageComposeViewController; // @synthesize messageComposeViewController=_messageComposeViewController;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)handleSharedButton;
-- (id)initWithSharingRequest:(id)arg1;
+- (id)initWithSharedCredentialsGroupController:(id)arg1 sharingRequest:(id)arg2;
+- (void)messageComposeViewControllerDidFinishWithResult:(BOOL)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

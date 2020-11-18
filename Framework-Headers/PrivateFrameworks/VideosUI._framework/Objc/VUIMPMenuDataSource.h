@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)_fetchRequestsWithMediaLibrary:(id)arg1 categoryTypeMap:(id *)arg2;
 - (void)_homeShareMediaLibrariesDidChange:(id)arg1;
 - (void)_loadMediaEntityShelves;
+- (void)_notifyDelegateFetchDidComplete;
 - (void)_populateViewModel:(id)arg1;
 - (void)_removeAccountChangedNotificationObserver;
 - (void)_removeMediaLibraryNotificationObservers;

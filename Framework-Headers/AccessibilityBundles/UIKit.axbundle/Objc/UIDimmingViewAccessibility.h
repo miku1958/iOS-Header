@@ -10,11 +10,13 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityCanDismiss;
 - (BOOL)_accessibilityCoversScreen;
 - (id)_accessibilityObscuredScreenAllowedViews;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
 - (long long)accessibilityContainerType;

@@ -63,6 +63,8 @@
     NSArray *_allowedStorefrontIDs;
     NSArray *_relatedArticleIDs;
     NSArray *_moreFromPublisherArticleIDs;
+    NSArray *_publisherSpecifiedArticleIDs;
+    NSString *_articleRecirculationConfigJSON;
     unsigned long long _storyType;
     FCTopStoriesStyleConfiguration *_storyStyle;
     long long _minimumNewsVersion;
@@ -89,6 +91,7 @@
 - (id)accessoryText;
 - (id)allowedStorefrontIDs;
 - (id)articleID;
+- (id)articleRecirculationConfigJSON;
 - (long long)backendArticleVersion;
 - (id)blockedStorefrontIDs;
 - (long long)bodyTextLength;
@@ -126,6 +129,7 @@
 - (id)primaryAudience;
 - (id)publishDate;
 - (long long)publisherArticleVersion;
+- (id)publisherSpecifiedArticleIDs;
 - (id)referencedArticleID;
 - (id)relatedArticleIDs;
 - (unsigned long long)role;

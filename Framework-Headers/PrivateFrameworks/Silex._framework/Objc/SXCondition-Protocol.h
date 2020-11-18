@@ -10,6 +10,7 @@
 
 @protocol SXCondition <NSObject>
 
+@property (readonly, nonatomic) NSString *configurationKey;
 @property (readonly, nonatomic) long long horizontalSizeClass;
 @property (readonly, nonatomic) unsigned long long maxColumns;
 @property (readonly, nonatomic) NSString *maxContentSizeCategory;

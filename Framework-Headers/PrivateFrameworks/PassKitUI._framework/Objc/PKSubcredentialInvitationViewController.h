@@ -37,7 +37,6 @@
 - (void).cxx_destruct;
 - (void)advanceToNextState;
 - (id)bodyTextForContext:(id)arg1;
-- (void)cancelButtonPressed;
 - (id)contactKeysToFetch;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
@@ -49,7 +48,7 @@
 - (void)showSuccessCheckmark:(BOOL)arg1;
 - (void)startLocalDeviceProvisioning;
 - (void)startRemoteDeviceProvisioning;
-- (void)subcredentialProvisioningController:(id)arg1 didFinishWithError:(id)arg2;
+- (void)subcredentialProvisioningController:(id)arg1 didFinishWithError:(id)arg2 inState:(long long)arg3;
 - (void)subcredentialProvisioningController:(id)arg1 didFinishWithPass:(id)arg2;
 - (void)subcredentialProvisioningController:(id)arg1 shouldFailAfterError:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)viewDidLoad;

@@ -12,6 +12,7 @@
 {
     BOOL _showingStatusIcon;
     BOOL _circularPillMarkersCenterPointsCalculated;
+    BOOL _circularTicksHidden;
     unsigned long long _style;
     unsigned long long _dial;
     unsigned long long _color;
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) CALayer *circularHourTicks; // @synthesize circularHourTicks=_circularHourTicks;
 @property (strong, nonatomic) CALayer *circularMinuteTicks; // @synthesize circularMinuteTicks=_circularMinuteTicks;
 @property (nonatomic) BOOL circularPillMarkersCenterPointsCalculated; // @synthesize circularPillMarkersCenterPointsCalculated=_circularPillMarkersCenterPointsCalculated;
+@property (nonatomic) BOOL circularTicksHidden; // @synthesize circularTicksHidden=_circularTicksHidden;
 @property (strong, nonatomic) CALayer *circularTicksMulticolor; // @synthesize circularTicksMulticolor=_circularTicksMulticolor;
 @property (nonatomic) unsigned long long color; // @synthesize color=_color;
 @property (strong, nonatomic) NTKCaliforniaColorPalette *colorPalette; // @synthesize colorPalette=_colorPalette;
@@ -57,8 +59,10 @@
 - (void)_createTemporaryDigitsIfNeededWithStyle:(unsigned long long)arg1 dial:(unsigned long long)arg2;
 - (id)_digitLayersForStyle:(unsigned long long)arg1 dial:(unsigned long long)arg2;
 - (void)_layoutHourMarkersLayers:(id)arg1 style:(unsigned long long)arg2 dialShape:(unsigned long long)arg3;
+- (id)_setupTickLayerForColor:(id)arg1;
 - (void)addCircularTicksIfNeeded:(id)arg1;
 - (void)addFullscreenTicksIfNeeded:(id)arg1;
+- (id)allTicksForStatus:(BOOL)arg1;
 - (void)applyTransitionFraction:(double)arg1 fromColorPalette:(id)arg2 toColorPalette:(id)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromDial:(unsigned long long)arg2 toDial:(unsigned long long)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3;
@@ -79,7 +83,6 @@
 - (id)pillLayerFromHourMarkerView:(id)arg1;
 - (void)removeHourMarkers;
 - (void)removeTemporaryHourMarkers;
-- (void)setCircularTicksHidden:(BOOL)arg1;
 - (void)setColorInHourMarkerView:(id)arg1 color:(id)arg2;
 - (void)setHourTicksColor:(id)arg1;
 - (void)setMinuteTicksColor:(id)arg1;

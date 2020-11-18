@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (void)cancelProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithDelegate:(id)arg1;
+- (void)rescindSimilarInvitationsToSharingRequest:(id)arg1 withWebService:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setNewAuthRandomIfNecessaryWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startProvisioning;
 

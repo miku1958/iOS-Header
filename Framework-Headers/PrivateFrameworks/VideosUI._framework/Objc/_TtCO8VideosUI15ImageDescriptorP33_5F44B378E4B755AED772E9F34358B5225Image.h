@@ -10,16 +10,15 @@
 
 @interface _TtCO8VideosUI15ImageDescriptorP33_5F44B378E4B755AED772E9F34358B5225Image : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *fallbackImage;
-    MISSING_TYPE *$__lazy_storage_$_layoutDictionary;
-    MISSING_TYPE *isTemplated;
+    MISSING_TYPE *src;
+    MISSING_TYPE *darkSrc;
     MISSING_TYPE *isResource;
-    MISSING_TYPE *$__lazy_storage_$_src;
-    MISSING_TYPE *$__lazy_storage_$_darkSrc;
-    MISSING_TYPE *$__lazy_storage_$_crop;
-    MISSING_TYPE *$__lazy_storage_$_format;
-    MISSING_TYPE *$__lazy_storage_$_placeHolderSrc;
+    MISSING_TYPE *isTemplated;
+    MISSING_TYPE *crop;
+    MISSING_TYPE *format;
     MISSING_TYPE *themeString;
+    MISSING_TYPE *placeHolderSrc;
+    MISSING_TYPE *layoutDictionary;
 }
 
 @end

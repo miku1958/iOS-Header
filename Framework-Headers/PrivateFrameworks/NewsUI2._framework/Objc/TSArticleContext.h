@@ -16,6 +16,7 @@
     MISSING_TYPE *previousArticleVersion;
     MISSING_TYPE *adPreviewSessionID;
     MISSING_TYPE *adPreviewID;
+    MISSING_TYPE *adQToken;
     MISSING_TYPE *maximumAdRequestsForCurrentAdPreviewID;
     MISSING_TYPE *userActionDate;
     MISSING_TYPE *presentationReason;
@@ -26,6 +27,7 @@
 
 @property (nonatomic, readonly) NSString *adPreviewID;
 @property (nonatomic, readonly) NSString *adPreviewSessionID;
+@property (nonatomic, readonly) NSString *adQToken;
 @property (nonatomic, readonly) long long maximumAdRequestsForCurrentAdPreviewID; // @synthesize maximumAdRequestsForCurrentAdPreviewID;
 @property (nonatomic, readonly) NSString *notificationID;
 @property (nonatomic, readonly) NSString *notificationSenderChannelID;
@@ -39,7 +41,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithUrl:(id)arg1 sourceApplication:(id)arg2 previousArticleID:(id)arg3 previousArticleVersion:(id)arg4 adPreviewSessionID:(id)arg5 adPreviewID:(id)arg6 maximumAdRequestsForCurrentAdPreviewID:(long long)arg7 userActionDate:(id)arg8 presentationReason:(long long)arg9 notificationID:(id)arg10 notificationSenderChannelID:(id)arg11 referral:(id)arg12;
+- (id)initWithUrl:(id)arg1 sourceApplication:(id)arg2 previousArticleID:(id)arg3 previousArticleVersion:(id)arg4 adPreviewSessionID:(id)arg5 adPreviewID:(id)arg6 adQToken:(id)arg7 maximumAdRequestsForCurrentAdPreviewID:(long long)arg8 userActionDate:(id)arg9 presentationReason:(long long)arg10 notificationID:(id)arg11 notificationSenderChannelID:(id)arg12 referral:(id)arg13;
 
 @end
 

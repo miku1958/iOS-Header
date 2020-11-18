@@ -25,6 +25,7 @@
 - (BOOL)isContentAllowedInStorefrontID:(id)arg1 withAllowedStorefrontIDs:(id)arg2 blockedStorefrontIDs:(id)arg3;
 - (BOOL)isContentBlockedInStorefrontID:(id)arg1 withAllowedStorefrontIDs:(id)arg2 blockedStorefrontIDs:(id)arg3;
 - (BOOL)isNewsVersionAllowed:(long long)arg1;
+- (BOOL)isNewsVersionAllowedWithMinNewsVersion:(long long)arg1 maxNewsVersion:(long long)arg2;
 - (void)t_startForcingExplicitContentDisallowed;
 - (void)t_stopForcingExplicitContentDisallowed;
 

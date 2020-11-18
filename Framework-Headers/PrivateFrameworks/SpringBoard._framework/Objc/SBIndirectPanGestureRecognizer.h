@@ -8,11 +8,12 @@
 
 #import <SpringBoard/SBGestureRecognizerPanGestureProviding-Protocol.h>
 #import <SpringBoard/SBGestureRecognizerTouchHistoryProviding-Protocol.h>
+#import <SpringBoard/SBIndirectTouchLifecycleObserving-Protocol.h>
 
-@class BSMonotonicReferenceTime, NSMutableSet, NSString, NSTimer, NSValue, SBTouchHistory, UIEvent, UITouch;
+@class BSMonotonicReferenceTime, NSString, NSTimer, NSValue, SBTouchHistory, UIEvent, UITouch;
 @protocol SBIndirectPanGestureRecognizerOrientationProviding, SBSystemGestureRecognizerDelegate;
 
-@interface SBIndirectPanGestureRecognizer : UIGestureRecognizer <SBGestureRecognizerTouchHistoryProviding, SBGestureRecognizerPanGestureProviding>
+@interface SBIndirectPanGestureRecognizer : UIGestureRecognizer <SBIndirectTouchLifecycleObserving, SBGestureRecognizerTouchHistoryProviding, SBGestureRecognizerPanGestureProviding>
 {
     BOOL _shouldCancelAfterMovingAwayFromEdge;
     BOOL _shouldInvertXAxis;
@@ -21,6 +22,7 @@
     BOOL _shouldActivateWithThreshold;
     BOOL _shouldRequireGestureToStartAtEdge;
     BOOL _shouldSwitchAxes;
+    BOOL _gesturePassedThroughScreenCenterRegion;
     unsigned long long _edges;
     CDUnknownBlockType _translationAdjustmentBlock;
     double _activationRecognitionDistance;
@@ -36,7 +38,6 @@
     NSValue *_gestureStartLocation;
     BSMonotonicReferenceTime *_mouseEnteredNearEdgeRegionTimestamp;
     BSMonotonicReferenceTime *_lastMouseActivationTimestamp;
-    NSMutableSet *_gestureRecognizersToDelayOnMouseActivation;
     double _trackpadHysteresis;
     double _mouseHysteresis;
     struct CGPoint _origin;
@@ -54,7 +55,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long edges; // @synthesize edges=_edges;
 @property (readonly, nonatomic) unsigned long long endReason; // @synthesize endReason=_endReason;
-@property (strong, nonatomic) NSMutableSet *gestureRecognizersToDelayOnMouseActivation; // @synthesize gestureRecognizersToDelayOnMouseActivation=_gestureRecognizersToDelayOnMouseActivation;
+@property (nonatomic) BOOL gesturePassedThroughScreenCenterRegion; // @synthesize gesturePassedThroughScreenCenterRegion=_gesturePassedThroughScreenCenterRegion;
 @property (strong, nonatomic) NSValue *gestureStartLocation; // @synthesize gestureStartLocation=_gestureStartLocation;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) BSMonotonicReferenceTime *lastKnownMouseEventTimestamp; // @synthesize lastKnownMouseEventTimestamp=_lastKnownMouseEventTimestamp;
@@ -80,23 +81,21 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)_axisForEdge:(unsigned long long)arg1;
-- (BOOL)_computeShouldSwitchAxes;
+- (struct CGPoint)_centerOfCircleForRoundedCorner:(unsigned long long)arg1 radius:(double)arg2 inView:(id)arg3;
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 fromView:(id)arg2 toView:(id)arg3;
 - (unsigned long long)_edgeForPointerModelLocation:(struct CGPoint)arg1 inView:(id)arg2 inset:(double)arg3;
 - (BOOL)_hasTranslationReachedThreshold:(double)arg1 withTranslation:(struct CGPoint)arg2 forEdge:(unsigned long long)arg3;
 - (void)_hoverEntered:(id)arg1 withEvent:(id)arg2;
 - (void)_hoverExited:(id)arg1 withEvent:(id)arg2;
 - (void)_hoverMoved:(id)arg1 withEvent:(id)arg2;
-- (BOOL)_isTrackpadEvent:(id)arg1;
-- (BOOL)_isVelocityOrthogonalToAxis:(struct CGPoint)arg1 axis:(unsigned long long)arg2;
+- (BOOL)_isPointOnRoundedCorner:(struct CGPoint)arg1 corner:(unsigned long long)arg2 radius:(double)arg3 inView:(id)arg4;
+- (BOOL)_isPointerOnTopScreenCorner:(struct CGPoint)arg1 radius:(double)arg2;
 - (void)_mouseIdleTimerElapsed;
 - (void)_mouseIdleTimerFired:(id)arg1;
-- (BOOL)_pointerEventHasNonZeroOffset:(id)arg1 axis:(unsigned long long)arg2;
-- (BOOL)_pointerEventRepresentsTrackpadTouchUp:(id)arg1;
-- (struct __IOHIDEvent *)_pointerHIDSubEventFromEvent:(struct __IOHIDEvent *)arg1;
 - (struct CGPoint)_pointerModelLocation;
 - (void)_resetTranslationState;
 - (BOOL)_shouldReceiveEvent:(id)arg1;
+- (BOOL)_shouldSwitchAxes;
 - (void)_updateTranslationWithPointerEventAttributes:(id)arg1 activeEdge:(unsigned long long)arg2;
 - (BOOL)_wantsHoverEvents;
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
@@ -104,6 +103,7 @@
 - (BOOL)canBePreventedByGestureRecognizer:(id)arg1;
 - (BOOL)canPreventGestureRecognizer:(id)arg1;
 - (id)containerView;
+- (void)dealloc;
 - (double)hysteresisForInputType:(unsigned long long)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2 edges:(unsigned long long)arg3;
 - (struct CGPoint)locationInView:(id)arg1;
@@ -111,7 +111,7 @@
 - (void)reset;
 - (void)setAllowedTouchTypes:(id)arg1;
 - (void)setHysteresis:(double)arg1 forInputType:(unsigned long long)arg2;
-- (void)shouldDelayOtherSystemGesturesOnMouseActivation:(id)arg1;
+- (void)trackpadDidTouchUpWithEvent:(id)arg1;
 - (struct CGPoint)translationInView:(id)arg1;
 - (void)updateTouchHistoryWithTouches:(id)arg1;
 - (struct CGPoint)velocityInView:(id)arg1;

@@ -60,6 +60,8 @@
     NSString *_localizedConfirmationTitle;
     NSString *_localizedBiometricConfirmationTitle;
     NSString *_localizedPasswordButtonTitle;
+    NSString *_localizedAuthorizingTitle;
+    NSString *_localizedErrorMessage;
     NSString *_shippingEditableMessage;
     PKPaymentMerchantSession *_merchantSession;
     NSString *_passTypeIdentifier;
@@ -90,8 +92,10 @@
 @property (nonatomic) BOOL expectsMerchantSession; // @synthesize expectsMerchantSession=_expectsMerchantSession;
 @property (copy, nonatomic) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
 @property (strong, nonatomic) PKPaymentInstallmentConfiguration *installmentConfiguration; // @synthesize installmentConfiguration=_installmentConfiguration;
+@property (copy, nonatomic) NSString *localizedAuthorizingTitle; // @synthesize localizedAuthorizingTitle=_localizedAuthorizingTitle;
 @property (copy, nonatomic) NSString *localizedBiometricConfirmationTitle; // @synthesize localizedBiometricConfirmationTitle=_localizedBiometricConfirmationTitle;
 @property (copy, nonatomic) NSString *localizedConfirmationTitle; // @synthesize localizedConfirmationTitle=_localizedConfirmationTitle;
+@property (copy, nonatomic) NSString *localizedErrorMessage; // @synthesize localizedErrorMessage=_localizedErrorMessage;
 @property (copy, nonatomic) NSString *localizedNavigationTitle; // @synthesize localizedNavigationTitle=_localizedNavigationTitle;
 @property (copy, nonatomic) NSString *localizedPasswordButtonTitle; // @synthesize localizedPasswordButtonTitle=_localizedPasswordButtonTitle;
 @property (copy, nonatomic) NSString *localizedSummaryItemsTitle; // @synthesize localizedSummaryItemsTitle=_localizedSummaryItemsTitle;

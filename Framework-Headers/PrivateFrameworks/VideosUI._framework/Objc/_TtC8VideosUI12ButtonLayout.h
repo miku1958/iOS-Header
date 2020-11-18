@@ -10,10 +10,8 @@
 
 @interface _TtC8VideosUI12ButtonLayout : _TtC8VideosUI10ViewLayout
 {
-    MISSING_TYPE *buttonType;
-    MISSING_TYPE *buttonTitleStyle;
-    MISSING_TYPE *$__lazy_storage_$_imageLayout;
-    MISSING_TYPE *$__lazy_storage_$_textLayout;
+    MISSING_TYPE *$__lazy_storage_$_buttonType;
+    MISSING_TYPE *$__lazy_storage_$_buttonTitleStyle;
     MISSING_TYPE *$__lazy_storage_$_vuiButtonLayout;
 }
 

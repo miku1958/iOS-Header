@@ -20,7 +20,6 @@
 - (void)fetchAppListWithAltDSID:(NSString *)arg1 completion:(void (^)(AKApplicationMetadataInfo *, NSError *))arg2;
 - (void)fetchAuthModeWithContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(unsigned long long, NSError *))arg2;
 - (void)fetchDeviceMapWithContext:(AKDeviceListRequestContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)fetchPrimaryBundleIDForServiceWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)fetchURLBagForAltDSID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchURLBagFromCache:(BOOL)arg1 altDSID:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)fetchUserInformationForAltDSID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;

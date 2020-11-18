@@ -16,6 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (long long)_axConversationRecipientsCount;
 - (void)_axExecuteBlockOnAvatarCells:(CDUnknownBlockType)arg1;
+- (void)_axExecuteBlockOnBannerCells:(CDUnknownBlockType)arg1;
 - (void)_axExposeTitleViewIfNeeded;
 - (BOOL)_axIsPancakeMode;
 - (void)_handleConversationRecipientsDidChange:(id)arg1;

@@ -189,7 +189,7 @@
 - (id)initWithMapTemplate:(id)arg1 templateDelegate:(id)arg2 safeAreaDelegate:(id)arg3 applicationStateMonitor:(id)arg4;
 - (void)invalidate;
 - (void)navigationAlertQueue:(id)arg1 shouldDisplayAlertView:(id)arg2 animated:(BOOL)arg3;
-- (void)navigationAlertQueue:(id)arg1 shouldRemoveAlertView:(id)arg2 animated:(BOOL)arg3 dismissalContext:(unsigned long long)arg4;
+- (void)navigationAlertQueue:(id)arg1 shouldRemoveAlertView:(id)arg2 animated:(BOOL)arg3 dismissalContext:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)navigationOwnershipChangedToOwner:(unsigned long long)arg1;
 - (void)navigator:(id)arg1 didEndTrip:(BOOL)arg2;
 - (void)navigator:(id)arg1 pausedTripForReason:(unsigned long long)arg2 description:(id)arg3;

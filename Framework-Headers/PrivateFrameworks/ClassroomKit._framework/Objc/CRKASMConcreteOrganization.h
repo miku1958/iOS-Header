@@ -8,21 +8,21 @@
 
 #import <ClassroomKit/CRKASMOrganization-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
 @interface CRKASMConcreteOrganization : NSObject <CRKASMOrganization>
 {
-    NSString *_name;
-    NSString *_identifier;
+    NSUUID *_UUID;
 }
 
-@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)description;
-- (unsigned long long)hash;
-- (id)initWithIdentifier:(id)arg1 name:(id)arg2;
+- (id)initWithPerson:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

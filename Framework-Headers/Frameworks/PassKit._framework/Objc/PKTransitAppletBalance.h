@@ -31,10 +31,14 @@
 - (void).cxx_destruct;
 - (void)_setIdentifierFromObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 balance:(id)arg2 currency:(id)arg3 exponent:(long long)arg4 expirationDate:(id)arg5;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToBalance:(id)arg1;
 
 @end
 

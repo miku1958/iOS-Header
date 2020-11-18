@@ -274,6 +274,7 @@
 @property (nonatomic) struct _NSRange validTextRange;
 @property (strong, nonatomic) _UITextFieldVisualStyle *visualStyle; // @synthesize visualStyle=_visualStyle;
 
++ (Class)_canvasViewClass;
 + (Class)_fieldEditorClass;
 + (BOOL)_isCompatibilityTextField;
 + (Class)_textPasteItemClass;

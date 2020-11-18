@@ -43,6 +43,7 @@
 - (void)dealloc;
 - (void)handleAppletState:(id)arg1 forUniqueID:(id)arg2;
 - (void)handleBalanceUpdate:(id)arg1 forUniqueID:(id)arg2;
+- (void)handleCredentialsUpdate:(id)arg1 forUniqueID:(id)arg2;
 - (void)handleDownloadAllPaymentPasses;
 - (void)handlePaymentTransactions:(id)arg1 appletStates:(id)arg2 forUniqueIDs:(id)arg3;
 - (void)handlePaymentWebServiceContextFromWatch:(id)arg1;

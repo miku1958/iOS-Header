@@ -15,12 +15,14 @@
     CNContactStore *_contactStore;
     ACAccountStore *_accountStore;
     id<NSObject> _contactStoreDidChangeNotificationToken;
+    id<NSObject> _accountStoreDidChangeNotificationToken;
 }
 
-@property (readonly) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
-@property (readonly) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
-@property (readonly) id<NSObject> contactStoreDidChangeNotificationToken; // @synthesize contactStoreDidChangeNotificationToken=_contactStoreDidChangeNotificationToken;
-@property (readonly) NSString *primaryiCloudContainerIdentifier; // @synthesize primaryiCloudContainerIdentifier=_primaryiCloudContainerIdentifier;
+@property (readonly, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
+@property (readonly, nonatomic) id<NSObject> accountStoreDidChangeNotificationToken; // @synthesize accountStoreDidChangeNotificationToken=_accountStoreDidChangeNotificationToken;
+@property (readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (readonly, nonatomic) id<NSObject> contactStoreDidChangeNotificationToken; // @synthesize contactStoreDidChangeNotificationToken=_contactStoreDidChangeNotificationToken;
+@property (strong, nonatomic) NSString *primaryiCloudContainerIdentifier; // @synthesize primaryiCloudContainerIdentifier=_primaryiCloudContainerIdentifier;
 
 + (BOOL)anyContactIsWhitelisted:(id)arg1;
 + (BOOL)isWhitelistedContact:(id)arg1;
@@ -29,7 +31,9 @@
 - (void).cxx_destruct;
 - (id)allWhitelistedContacts;
 - (id)allWhitelistedHandleStrings;
+- (void)beginObservingChangeNotifications;
 - (void)dealloc;
+- (id)fetchPrimaryiCloudCardDAVAccountIdentifier;
 - (id)fetchPrimaryiCloudCardDAVContainerIdentifier;
 - (id)identifierOfContainerSupporingDowntimeContacts;
 - (id)init;

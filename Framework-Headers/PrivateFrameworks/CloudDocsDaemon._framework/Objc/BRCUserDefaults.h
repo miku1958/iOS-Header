@@ -160,6 +160,7 @@
 @property (readonly, nonatomic) unsigned long long recentsEnumeratorMaxHierarchyDepth;
 @property (readonly, nonatomic) double recentsEnumeratorPacerInterval;
 @property (readonly, nonatomic) float relativeDiskSpaceRequiredToReturnToGreedyState;
+@property (readonly, nonatomic) BOOL reportXPCErrorOnPCSChain;
 @property (readonly, nonatomic) NSString *serverConfigurationURL;
 @property (readonly, nonatomic) BOOL sessionZombiesEnabled;
 @property (readonly, nonatomic) NSDictionary *sharedAppLibraryResetThrottleParams;

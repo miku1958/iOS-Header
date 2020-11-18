@@ -6,7 +6,7 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class _UIBeamPointerSettings, _UIFreeformPointerSettings, _UILinkPointerSettings, _UINavigationAndToolbarBehaviorSettings, _UIPointerEffectSizeRuleSettings, _UIPointerHighlightEffectSettings, _UIPointerHoverEffectSettings, _UIPointerLiftEffectSettings, _UIPointerSBAppIconEffectSettings, _UIPointerTextBehaviorSettings, _UISearchBarBehaviorSettings, _UITabBarBehaviorSettings;
+@class _UIBeamPointerSettings, _UIButtonBehaviorSettings, _UIFreeformPointerSettings, _UILinkPointerSettings, _UINavigationAndToolbarBehaviorSettings, _UIPointerEffectSizeRuleSettings, _UIPointerHighlightEffectSettings, _UIPointerHoverEffectSettings, _UIPointerLiftEffectSettings, _UIPointerSBAppIconEffectSettings, _UIPointerTextBehaviorSettings, _UISearchBarBehaviorSettings, _UITabBarBehaviorSettings;
 
 __attribute__((visibility("hidden")))
 @interface _UIPointerSettings : PTSettings
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     _UIPointerHoverEffectSettings *_hoverEffectSettings;
     _UIPointerSBAppIconEffectSettings *_SBAppIconEffectSettings;
     _UIPointerTextBehaviorSettings *_textSettings;
+    _UIButtonBehaviorSettings *_buttonSettings;
     _UINavigationAndToolbarBehaviorSettings *_navigationAndToolbarSettings;
     _UITabBarBehaviorSettings *_tabBarSettings;
     _UISearchBarBehaviorSettings *_searchBarSettings;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) _UIPointerSBAppIconEffectSettings *SBAppIconEffectSettings; // @synthesize SBAppIconEffectSettings=_SBAppIconEffectSettings;
 @property (strong, nonatomic) _UIBeamPointerSettings *beamSettings; // @synthesize beamSettings=_beamSettings;
+@property (strong, nonatomic) _UIButtonBehaviorSettings *buttonSettings; // @synthesize buttonSettings=_buttonSettings;
 @property (strong, nonatomic) _UIFreeformPointerSettings *freeformPointerSettings; // @synthesize freeformPointerSettings=_freeformPointerSettings;
 @property (strong, nonatomic) _UIPointerHighlightEffectSettings *highlightEffectSettings; // @synthesize highlightEffectSettings=_highlightEffectSettings;
 @property (strong, nonatomic) _UIPointerHoverEffectSettings *hoverEffectSettings; // @synthesize hoverEffectSettings=_hoverEffectSettings;

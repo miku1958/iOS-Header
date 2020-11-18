@@ -164,6 +164,7 @@
 - (float)audioRecordingPowerLevelForSiriView:(id)arg1;
 - (id)bulletinsForSiriSession:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
+- (void)cancelSpeechRecordingIfNecessary;
 - (void)cancelTTS;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)contextAppInfosForSiriSession:(id)arg1;

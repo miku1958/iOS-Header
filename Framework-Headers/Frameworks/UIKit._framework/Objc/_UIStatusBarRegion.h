@@ -65,6 +65,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;
 @property (strong, nonatomic) _UIStatusBarAction *hoverAction; // @synthesize hoverAction=_hoverAction;
+@property (readonly, nonatomic) BOOL hoverHighlightsAsRegion;
 @property (readonly, nonatomic) UIView *hoverView;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) id<_UIStatusBarRegionLayout> layout; // @synthesize layout=_layout;

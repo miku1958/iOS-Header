@@ -33,14 +33,14 @@
 	var attributes : HealthEducationTextAttributes // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1c80  @objc DynamicHeightLabelView.initWithFrame: <stripped>
-	0x1cb0  @objc DynamicHeightLabelView.initWithCoder: <stripped>
-	0x1df0  @objc DynamicHeightLabelView.traitCollectionDidChange: <stripped>
-	0x2090  @objc DynamicHeightLabelView..cxx_destruct <stripped>
+	0x1d30  @objc DynamicHeightLabelView.initWithFrame: <stripped>
+	0x1d60  @objc DynamicHeightLabelView.initWithCoder: <stripped>
+	0x1ea0  @objc DynamicHeightLabelView.traitCollectionDidChange: <stripped>
+	0x2140  @objc DynamicHeightLabelView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1e40  func <stripped> // method 
-	0x2000  func <stripped> // method 
+	0x1ef0  func <stripped> // method 
+	0x20b0  func <stripped> // method 
  }
 
  class HealthEducationUI.LinkedTextView : ParagraphView {
@@ -52,19 +52,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var linkedURL : ï  // +0xfeedfacf (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x2d80  @objc LinkedTextView.initWithFrame: <stripped>
-	0x2db0  @objc LinkedTextView.initWithCoder: <stripped>
-	0x3340  @objc LinkedTextView..cxx_destruct <stripped>
+	0x2e30  @objc LinkedTextView.initWithFrame: <stripped>
+	0x2e60  @objc LinkedTextView.initWithCoder: <stripped>
+	0x33f0  @objc LinkedTextView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2dd0  func <stripped> // method 
-	0x3190  func <stripped> // getter 
+	0x2e80  func <stripped> // method 
+	0x3240  func <stripped> // getter 
  }
 
  class HealthEducationUI.TitleView : DynamicHeightLabelView {
 	// ObjC -> Swift bridged methods
-	0x3bc0  @objc TitleView.initWithFrame: <stripped>
-	0x3c30  @objc TitleView.initWithCoder: <stripped>
+	0x3c70  @objc TitleView.initWithFrame: <stripped>
+	0x3ce0  @objc TitleView.initWithCoder: <stripped>
  }
 
  struct HealthEducationUI.SoundLevelModel {
@@ -84,13 +84,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var headerStackView : UIStackView? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4030  @objc SoundLevelView.initWithCoder: <stripped>
-	0x4200  @objc SoundLevelView.traitCollectionDidChange: <stripped>
-	0x4370  @objc SoundLevelView.initWithFrame: <stripped>
-	0x4280  @objc SoundLevelView..cxx_destruct <stripped>
+	0x40e0  @objc SoundLevelView.initWithCoder: <stripped>
+	0x42b0  @objc SoundLevelView.traitCollectionDidChange: <stripped>
+	0x4420  @objc SoundLevelView.initWithFrame: <stripped>
+	0x4330  @objc SoundLevelView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3fc0  class func SoundLevelView.__allocating_init(model:) // init 
+	0x4070  class func SoundLevelView.__allocating_init(model:) // init 
  }
 
  struct HealthEducationUI.HealthEducationTileViewModel {
@@ -117,14 +117,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_sashView : TileSashView // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5fd0  @objc HealthEducationTileView.initWithFrame: <stripped>
-	0x6070  @objc HealthEducationTileView.initWithCoder: <stripped>
-	0x68f0  @objc HealthEducationTileView..cxx_destruct <stripped>
+	0x6080  @objc HealthEducationTileView.initWithFrame: <stripped>
+	0x6120  @objc HealthEducationTileView.initWithCoder: <stripped>
+	0x69a0  @objc HealthEducationTileView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x5a90  func HealthEducationTileView.sashView.getter // getter 
-	0x60b0  func HealthEducationTileView.update(viewModel:) // method 
-	0x6350  func HealthEducationTileView.setHighlighted(_:animated:) // method 
+	0x5b40  func HealthEducationTileView.sashView.getter // getter 
+	0x6160  func HealthEducationTileView.update(viewModel:) // method 
+	0x6400  func HealthEducationTileView.setHighlighted(_:animated:) // method 
  }
 
  enum HealthEducationUI.HealthEducationComponent {
@@ -147,8 +147,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthEducationUI.ParagraphView : DynamicHeightTextView {
 	// ObjC -> Swift bridged methods
-	0x9e00  @objc ParagraphView.initWithFrame: <stripped>
-	0x9e70  @objc ParagraphView.initWithCoder: <stripped>
+	0x9eb0  @objc ParagraphView.initWithFrame: <stripped>
+	0x9f20  @objc ParagraphView.initWithCoder: <stripped>
  }
 
  class HealthEducationUI.HealthEducationViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -159,21 +159,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_contentView : UIStackView? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xc120  @objc HealthEducationViewController.initWithCoder: <stripped>
-	0xc1c0  @objc HealthEducationViewController.viewDidLoad <stripped>
-	0xcc80  @objc HealthEducationViewController.initWithNibName:bundle: <stripped>
-	0xcba0  @objc HealthEducationViewController..cxx_destruct <stripped>
+	0xc1d0  @objc HealthEducationViewController.initWithCoder: <stripped>
+	0xc270  @objc HealthEducationViewController.viewDidLoad <stripped>
+	0xcd30  @objc HealthEducationViewController.initWithNibName:bundle: <stripped>
+	0xcc50  @objc HealthEducationViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xbe20  func HealthEducationViewController.componentViews.getter // getter 
-	0xbfe0  class func HealthEducationViewController.__allocating_init(title:components:) // init 
-	0xc220  func HealthEducationViewController.setUpScrollingContentView() // method 
+	0xbed0  func HealthEducationViewController.componentViews.getter // getter 
+	0xc090  class func HealthEducationViewController.__allocating_init(title:components:) // init 
+	0xc2d0  func HealthEducationViewController.setUpScrollingContentView() // method 
  }
 
  class HealthEducationUI.SectionHeaderView : DynamicHeightLabelView {
 	// ObjC -> Swift bridged methods
-	0xef50  @objc SectionHeaderView.initWithFrame: <stripped>
-	0xefc0  @objc SectionHeaderView.initWithCoder: <stripped>
+	0xf000  @objc SectionHeaderView.initWithFrame: <stripped>
+	0xf070  @objc SectionHeaderView.initWithCoder: <stripped>
  }
 
  class HealthEducationUI.ImageView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -182,12 +182,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let imageView : UIImageView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xf2e0  @objc ImageView.initWithFrame: <stripped>
-	0xf310  @objc ImageView.initWithCoder: <stripped>
-	0xf4f0  @objc ImageView..cxx_destruct <stripped>
+	0xf390  @objc ImageView.initWithFrame: <stripped>
+	0xf3c0  @objc ImageView.initWithCoder: <stripped>
+	0xf5a0  @objc ImageView..cxx_destruct <stripped>
 
 	// Swift methods
-	0xf3a0  func <stripped> // method 
+	0xf450  func <stripped> // method 
  }
 
  class HealthEducationUI.DynamicHeightTextView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -198,14 +198,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var attributes : HealthEducationTextAttributes // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x10250  @objc DynamicHeightTextView.initWithFrame: <stripped>
-	0x10280  @objc DynamicHeightTextView.initWithCoder: <stripped>
-	0x103c0  @objc DynamicHeightTextView.traitCollectionDidChange: <stripped>
-	0x10440  @objc DynamicHeightTextView..cxx_destruct <stripped>
+	0x10300  @objc DynamicHeightTextView.initWithFrame: <stripped>
+	0x10330  @objc DynamicHeightTextView.initWithCoder: <stripped>
+	0x10470  @objc DynamicHeightTextView.traitCollectionDidChange: <stripped>
+	0x104f0  @objc DynamicHeightTextView..cxx_destruct <stripped>
 
 	// Swift methods
-	0xfc30  func <stripped> // method 
-	0xfde0  func <stripped> // method 
+	0xfce0  func <stripped> // method 
+	0xfe90  func <stripped> // method 
  }
 
  struct HealthEducationUI.HorizontalMeterViewModel {
@@ -227,13 +227,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var foregroundViewWidth : NSLayoutConstraint? // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x10930  @objc HorizontalMeterView.initWithCoder: <stripped>
-	0x10a90  @objc HorizontalMeterView.layoutSubviews <stripped>
-	0x10b70  @objc HorizontalMeterView.initWithFrame: <stripped>
-	0x10bd0  @objc HorizontalMeterView..cxx_destruct <stripped>
+	0x109e0  @objc HorizontalMeterView.initWithCoder: <stripped>
+	0x10b40  @objc HorizontalMeterView.layoutSubviews <stripped>
+	0x10c20  @objc HorizontalMeterView.initWithFrame: <stripped>
+	0x10c80  @objc HorizontalMeterView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x107f0  class func HorizontalMeterView.__allocating_init(model:) // init 
+	0x108a0  class func HorizontalMeterView.__allocating_init(model:) // init 
  }
 
  enum HealthEducationUI.HealthEducationTextAttributes {
@@ -255,10 +255,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var buttonAction : ()? // +0x10 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x12aa0  @objc ButtonView.initWithFrame: <stripped>
-	0x12ad0  @objc ButtonView.initWithCoder: <stripped>
-	0x12b70  @objc ButtonView.performActionWithSender: <stripped>
-	0x12c30  @objc ButtonView..cxx_destruct <stripped>
+	0x12b50  @objc ButtonView.initWithFrame: <stripped>
+	0x12b80  @objc ButtonView.initWithCoder: <stripped>
+	0x12c20  @objc ButtonView.performActionWithSender: <stripped>
+	0x12ce0  @objc ButtonView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -269,9 +269,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var customView : UIView? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x12ed0  @objc CustomContentView.initWithFrame: <stripped>
-	0x12f50  @objc CustomContentView.initWithCoder: <stripped>
-	0x12fe0  @objc CustomContentView..cxx_destruct <stripped>
+	0x12f80  @objc CustomContentView.initWithFrame: <stripped>
+	0x13000  @objc CustomContentView.initWithCoder: <stripped>
+	0x13090  @objc CustomContentView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -283,11 +283,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_descriptionLabel : UILabel? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x13220  @objc TileSashView.initWithFrame: <stripped>
-	0x132d0  @objc TileSashView.initWithCoder: <stripped>
-	0x134c0  @objc TileSashView.layoutSubviews <stripped>
-	0x139c0  @objc TileSashView.traitCollectionDidChange: <stripped>
-	0x13a40  @objc TileSashView..cxx_destruct <stripped>
+	0x132d0  @objc TileSashView.initWithFrame: <stripped>
+	0x13380  @objc TileSashView.initWithCoder: <stripped>
+	0x13570  @objc TileSashView.layoutSubviews <stripped>
+	0x13a70  @objc TileSashView.traitCollectionDidChange: <stripped>
+	0x13af0  @objc TileSashView..cxx_destruct <stripped>
 
 	// Swift methods
  }

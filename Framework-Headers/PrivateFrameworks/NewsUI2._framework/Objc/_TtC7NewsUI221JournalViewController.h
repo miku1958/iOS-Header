@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *tagController;
     MISSING_TYPE *journalGroup;
     MISSING_TYPE *privateDataDirectory;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 - (void).cxx_destruct;

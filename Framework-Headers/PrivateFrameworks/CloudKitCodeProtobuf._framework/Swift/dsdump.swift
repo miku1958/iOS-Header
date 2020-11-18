@@ -275,9 +275,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var options : BinaryDecodingOptions // +0x68
 	var recursionBudget : Int // +0x78
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownData : „ // +0x80
+	var unknownData : c // +0x80
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownOverride : „ // +0x90
+	var unknownOverride : c // +0x90
  }
 
  struct CloudKitCodeProtobuf.TextFormatEncoder {
@@ -296,20 +296,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var state : InternalState // +0x20 (0x29)
 
 	// Swift methods
-	0x19110  func <stripped> // getter 
-	0x195d0  func <stripped> // method 
-	0x196b0  func <stripped> // method 
-	0x19ae0  func <stripped> // method 
+	0x191a0  func <stripped> // getter 
+	0x19660  func <stripped> // method 
+	0x19740  func <stripped> // method 
+	0x19b70  func <stripped> // method 
  }
 
  enum CloudKitCodeProtobuf.InternalState {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case binary : 
+	case binary : ù
 	case message : Message
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case contentJSON : 
+	case contentJSON : è
  }
 
  class CloudKitCodeProtobuf.MessageExtension {
@@ -323,7 +323,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var data :  // +0x0
+	var data : ù // +0x0
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_Any {
@@ -340,7 +340,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var work : UnsafeMutableRawBufferPointer // +0x20 (0x10)
 
 	// Swift methods
-	0x208e0  func <stripped> // method 
+	0x20970  func <stripped> // method 
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_SourceContext {
@@ -459,7 +459,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var separator : ≈ // +0x0
+	var separator : E // +0x0
 	var encoder : JSONEncoder // +0x18
 	let options : JSONEncodingOptions // +0x30
  }
@@ -571,7 +571,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : E // +0x0
+	var value : ≈ // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -579,7 +579,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : ± // +0x0
+	var value : 1 // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -587,7 +587,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : ı // +0x0
+	var value : u // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -595,7 +595,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : q // +0x0
+	var value : Ò // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -617,7 +617,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value :  // +0x0
+	var value : ù // +0x0
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -625,9 +625,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seconds : E // +0x0
+	var seconds : ≈ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nanos : ı // +0x8
+	var nanos : u // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -692,9 +692,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seconds : E // +0x0
+	var seconds : ≈ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nanos : ı // +0x8
+	var nanos : u // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -704,7 +704,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var scanner : TextFormatScanner // +0x0
 	var fieldCount : Int // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var terminator : 9 // +0x48
+	var terminator : π // +0x48
 	var fieldNameMap : _NameMap // +0x50
 	var messageType : Message // +0x70
  }
@@ -715,7 +715,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var data :  empty-list  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var separator : 9 // +0x8
+	var separator : π // +0x8
 	let doubleFormatter : DoubleFormatter // +0x10
  }
 
@@ -807,7 +807,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var interned :  empty-list  // +0x10 (0x8)
 
 	// Swift methods
-	0x7d8c0  func <stripped> // method 
+	0x7d950  func <stripped> // method 
  }
 
  struct CloudKitCodeProtobuf._NameMap {
@@ -823,13 +823,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case same : ¡˛
+	case same : A˛
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case standard : ¡˛
+	case standard : A˛
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unique : ≥˛
+	case unique : 3˛
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case aliased : ù˛
+	case aliased : ˛
  }
 
  struct CloudKitCodeProtobuf.Name {
@@ -852,7 +852,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case string : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case staticString : -˛
+	case staticString : ≠˝
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_FieldMask {
@@ -868,7 +868,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hasher : ’˛ // +0x0
+	var hasher : U˛ // +0x0
  }
 
  enum CloudKitCodeProtobuf.JSONEncodingError {
@@ -936,11 +936,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var kind : Kind // +0x0
 	var cardinality : Cardinality // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var number : ı // +0x1c
+	var number : u // +0x1c
 	var name : String // +0x20
 	var typeURL : String // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var oneofIndex : ı // +0x40
+	var oneofIndex : u // +0x40
 	var packed : Bool // +0x44
 	var options : Google_Protobuf_Option // +0x48
 	var jsonName : String // +0x50
@@ -995,7 +995,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var name : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var number : ı // +0x10
+	var number : u // +0x10
 	var options : Google_Protobuf_Option // +0x18
 	var unknownFields : UnknownStorage // +0x20
  }

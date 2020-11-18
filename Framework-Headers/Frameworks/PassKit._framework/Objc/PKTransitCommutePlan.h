@@ -30,6 +30,7 @@
 @property (copy, nonatomic) NSArray *deviceAccountIdentifiers; // @synthesize deviceAccountIdentifiers=_deviceAccountIdentifiers;
 @property (copy, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
 @property (copy, nonatomic) NSString *expiryDateString; // @synthesize expiryDateString=_expiryDateString;
+@property (readonly, nonatomic) BOOL hasDisplayableInformation;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isPlanAvailable;
 @property (nonatomic) unsigned long long properties; // @synthesize properties=_properties;

@@ -71,7 +71,7 @@
 - (void)_deleteRecordingsWithDurationLessThan:(double)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (void)_deliverSaveNotifications;
 - (void)_enumerateFetchedRecordingTitles:(CDUnknownBlockType)arg1;
-- (void)_enumerateRecordingsWithEntityDescription:(id)arg1 propertiesToFetch:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)_enumerateRecordingsWithEntityDescription:(id)arg1 propertiesToFetch:(id)arg2 sortDescriptors:(id)arg3 withBlock:(CDUnknownBlockType)arg4;
 - (id)_initWithContainer:(id)arg1 concurrencyType:(unsigned long long)arg2;
 - (id)_labelPresetsForQuery:(id)arg1;
 - (id)_recordingsWithUniqueID:(id)arg1 templateName:(id)arg2;
@@ -91,6 +91,7 @@
 - (id)enumerateChangeHistorySinceToken:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)enumerateExistingRecordingsSinceChangeToken:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateExistingRecordingsWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateExistingRecordingsWithProperties:(id)arg1 sortDescriptors:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)eraseAllDeleted;
 - (void)eraseRecording:(id)arg1;
 - (void)eraseRecordingsDeletedBeforeDate:(id)arg1;

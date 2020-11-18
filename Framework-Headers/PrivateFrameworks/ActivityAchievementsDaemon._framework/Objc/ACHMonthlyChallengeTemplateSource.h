@@ -50,7 +50,6 @@
 - (BOOL)_isInFirstWeekOfCurrentMonth:(id)arg1;
 - (id)_maximumValueForMonthlyChallengeType:(unsigned long long)arg1;
 - (id)_modelsDirectoryBasePathForTemplate:(id)arg1;
-- (id)_monthStringFromTemplateName:(id)arg1;
 - (id)_monthlyAchievementsAssetsDirectoryBasePath;
 - (unsigned long long)_numberOfDaysInMonthForDate:(id)arg1;
 - (void)_removeMonthlyChallengeTemplate:(id)arg1 monthlyChallengeTemplates:(id *)arg2 templatesToRemove:(id *)arg3;
@@ -58,6 +57,7 @@
 - (BOOL)_shouldOverrideMonthlyChallengeCadence;
 - (id)_suffixForCurrentMonthForType:(unsigned long long)arg1 template:(id)arg2;
 - (double)_targetGoalValueForCurrentMonthForType:(unsigned long long)arg1;
+- (id)_yearMonthStringFromTemplateName:(id)arg1;
 - (id)customPlaceholderValuesForTemplate:(id)arg1;
 - (id)initWithDataSource:(id)arg1 dataProvider:(id)arg2 templateCache:(id)arg3;
 - (BOOL)isGoalValueForMonthlyChallengeTypeValid:(unsigned long long)arg1;

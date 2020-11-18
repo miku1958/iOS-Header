@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) double articleDiversificationSimilarityExpectationStart;
 @property (readonly, nonatomic) double articleDiversificationUniquePublisherExpectationSlope;
 @property (readonly, nonatomic) double articleDiversificationUniquePublisherExpectationYIntercept;
+@property (readonly, nonatomic) long long articleReadCountThreshold;
 @property (readonly, nonatomic) NSString *articleRecirculationComponentPlacementConfigJSON;
 @property (readonly, nonatomic) NSString *articleRecirculationConfigJSON;
 @property (readonly, nonatomic) long long articleRecirculationPopularFeedQueryTimeRange;

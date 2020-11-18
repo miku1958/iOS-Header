@@ -391,7 +391,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthExperience.EncodedFeatureTag : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0xb030  @objc EncodedFeatureTag.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0xb310  @objc EncodedFeatureTag.initWithEntity:insertIntoManagedObjectContext: <stripped>
  }
 
  class HealthExperience.SignalListener : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -400,7 +400,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let stateDumpSignalSource : OS_dispatch_source_signal // +0x10 (0x8)
 
 	// Swift methods
-	0xb1b0  func SignalListener.sourceNotification() // method 
+	0xb490  func SignalListener.sourceNotification() // method 
  }
 
  class HealthExperience.VitalSignRecord : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -414,10 +414,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var bundleIdentifier : String
 
 	// Swift methods
-	0xd470  func BasicPluginInfo.bundleIdentifier.getter // getter 
-	0xd4b0  func BasicPluginInfo.bundleIdentifier.setter // setter 
-	0xd4f0  func BasicPluginInfo.bundleIdentifier.modify // modifyCoroutine 
-	0xd530  class func BasicPluginInfo.__allocating_init(bundle:) // init 
+	0xd750  func BasicPluginInfo.bundleIdentifier.getter // getter 
+	0xd790  func BasicPluginInfo.bundleIdentifier.setter // setter 
+	0xd7d0  func BasicPluginInfo.bundleIdentifier.modify // modifyCoroutine 
+	0xd810  class func BasicPluginInfo.__allocating_init(bundle:) // init 
  }
 
  class HealthExperience.FoundationPluginBundleProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -472,12 +472,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var callback : (_:_:)? // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x13330  @objc RelevanceEngineMetricsBlockRecorder.recordTrainingMetrics:forInteraction: <stripped>
-	0x13440  @objc RelevanceEngineMetricsBlockRecorder.init <stripped>
-	0x13420  @objc RelevanceEngineMetricsBlockRecorder..cxx_destruct <stripped>
+	0x13610  @objc RelevanceEngineMetricsBlockRecorder.recordTrainingMetrics:forInteraction: <stripped>
+	0x13720  @objc RelevanceEngineMetricsBlockRecorder.init <stripped>
+	0x13700  @objc RelevanceEngineMetricsBlockRecorder..cxx_destruct <stripped>
 
 	// Swift methods
-	0x13230  func <stripped> // method 
+	0x13510  func <stripped> // method 
  }
 
  class HealthExperience.HKHealthSourceDataSource : MutableArrayDataSource {
@@ -487,9 +487,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var objectType : HKObjectType // +0x58 (0x8)
 
 	// Swift methods
-	0x13540  func <stripped> // method 
-	0x137c0  func <stripped> // method 
-	0x13960  func <stripped> // method 
+	0x13820  func <stripped> // method 
+	0x13aa0  func <stripped> // method 
+	0x13c40  func <stripped> // method 
  }
 
  class HealthExperience.MemoryHealthExperienceStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -501,23 +501,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_persistentContainer : NSPersistentContainer? // +0x28 (0x8)
 
 	// Swift methods
-	0x14250  func MemoryHealthExperienceStore.viewContext.getter // getter 
-	0x14310  func MemoryHealthExperienceStore.viewContext.setter // setter 
-	0x14330  func MemoryHealthExperienceStore.viewContext.modify // modifyCoroutine 
-	0x14430  func MemoryHealthExperienceStore.sharedBackgroundContext.getter // getter 
-	0x14530  func MemoryHealthExperienceStore.sharedBackgroundContext.setter // setter 
-	0x14550  func MemoryHealthExperienceStore.sharedBackgroundContext.modify // modifyCoroutine 
-	0x145a0  class func MemoryHealthExperienceStore.__allocating_init() // init 
-	0x14860  func MemoryHealthExperienceStore.persistentStoreDescription.getter // getter 
-	0x14890  func MemoryHealthExperienceStore.persistentStoreDescription.setter // setter 
-	0x148d0  func MemoryHealthExperienceStore.persistentStoreDescription.modify // modifyCoroutine 
-	0x14910  func MemoryHealthExperienceStore.persistentStoreCoordinator.getter // getter 
-	0x14990  func MemoryHealthExperienceStore.initPersistentContainer() // method 
-	0x149c0  func MemoryHealthExperienceStore.persistentContainer.getter // getter 
-	0x14a20  func MemoryHealthExperienceStore.persistentContainer.setter // setter 
-	0x14a40  func MemoryHealthExperienceStore.persistentContainer.modify // modifyCoroutine 
-	0x14ad0  func <stripped> // method 
-	0x14f00  func MemoryHealthExperienceStore.deleteAllFeedItems() // method 
+	0x14530  func MemoryHealthExperienceStore.viewContext.getter // getter 
+	0x145f0  func MemoryHealthExperienceStore.viewContext.setter // setter 
+	0x14610  func MemoryHealthExperienceStore.viewContext.modify // modifyCoroutine 
+	0x14710  func MemoryHealthExperienceStore.sharedBackgroundContext.getter // getter 
+	0x14810  func MemoryHealthExperienceStore.sharedBackgroundContext.setter // setter 
+	0x14830  func MemoryHealthExperienceStore.sharedBackgroundContext.modify // modifyCoroutine 
+	0x14880  class func MemoryHealthExperienceStore.__allocating_init() // init 
+	0x14b40  func MemoryHealthExperienceStore.persistentStoreDescription.getter // getter 
+	0x14b70  func MemoryHealthExperienceStore.persistentStoreDescription.setter // setter 
+	0x14bb0  func MemoryHealthExperienceStore.persistentStoreDescription.modify // modifyCoroutine 
+	0x14bf0  func MemoryHealthExperienceStore.persistentStoreCoordinator.getter // getter 
+	0x14c70  func MemoryHealthExperienceStore.initPersistentContainer() // method 
+	0x14ca0  func MemoryHealthExperienceStore.persistentContainer.getter // getter 
+	0x14d00  func MemoryHealthExperienceStore.persistentContainer.setter // setter 
+	0x14d20  func MemoryHealthExperienceStore.persistentContainer.modify // modifyCoroutine 
+	0x14db0  func <stripped> // method 
+	0x151e0  func MemoryHealthExperienceStore.deleteAllFeedItems() // method 
  }
 
  class HealthExperience.WaistCircumference : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -530,12 +530,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let pluginsToCache : BasicPluginInfo // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x16290  @objc PluginBundleProviderPrecacheOperation.main <stripped>
-	0x16360  @objc PluginBundleProviderPrecacheOperation.init <stripped>
-	0x162f0  @objc PluginBundleProviderPrecacheOperation..cxx_destruct <stripped>
+	0x16570  @objc PluginBundleProviderPrecacheOperation.main <stripped>
+	0x16640  @objc PluginBundleProviderPrecacheOperation.init <stripped>
+	0x165d0  @objc PluginBundleProviderPrecacheOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x15d80  class func PluginBundleProviderPrecacheOperation.__allocating_init(pluginsToCache:) // init 
+	0x16060  class func PluginBundleProviderPrecacheOperation.__allocating_init(pluginsToCache:) // init 
  }
 
  class HealthExperience.HKCorrelationQueryDataSource {
@@ -564,13 +564,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let store : HealthExperienceStore // +0x30 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x1af30  @objc HealthExperienceStoreCoreSpotlightOperation.main <stripped>
-	0x1b080  @objc HealthExperienceStoreCoreSpotlightOperation.init <stripped>
-	0x1b010  @objc HealthExperienceStoreCoreSpotlightOperation..cxx_destruct <stripped>
+	0x1b210  @objc HealthExperienceStoreCoreSpotlightOperation.main <stripped>
+	0x1b360  @objc HealthExperienceStoreCoreSpotlightOperation.init <stripped>
+	0x1b2f0  @objc HealthExperienceStoreCoreSpotlightOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1acc0  class func HealthExperienceStoreCoreSpotlightOperation.__allocating_init(store:) // init 
-	0x1af60  func HealthExperienceStoreCoreSpotlightOperation.makeCoreSpotlightDelegate() // method 
+	0x1afa0  class func HealthExperienceStoreCoreSpotlightOperation.__allocating_init(store:) // init 
+	0x1b240  func HealthExperienceStoreCoreSpotlightOperation.makeCoreSpotlightDelegate() // method 
  }
 
  enum HealthExperience.DataVisualizationKind {
@@ -597,27 +597,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var timeout : õt // +0x3 (0x0)
-	var operationTimedOut : Bool // +0x67 (0x1)
+	var operationTimedOut : Bool // +0x69 (0x1)
 	var progress : NSProgress? // +0x6100085 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1c290  @objc AsynchronousProgressOperation.main <stripped>
-	0x1cf40  @objc AsynchronousProgressOperation.init <stripped>
-	0x1cde0  @objc AsynchronousProgressOperation..cxx_destruct <stripped>
+	0x1c570  @objc AsynchronousProgressOperation.main <stripped>
+	0x1d220  @objc AsynchronousProgressOperation.init <stripped>
+	0x1d0c0  @objc AsynchronousProgressOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1bdc0  func AsynchronousProgressOperation.timeout.getter // getter 
-	0x1be10  func AsynchronousProgressOperation.timeout.setter // setter 
-	0x1be70  func AsynchronousProgressOperation.timeout.modify // modifyCoroutine 
-	0x1beb0  func AsynchronousProgressOperation.operationTimedOut.getter // getter 
-	0x1bee0  func AsynchronousProgressOperation.operationTimedOut.setter // setter 
-	0x1bf20  func AsynchronousProgressOperation.operationTimedOut.modify // modifyCoroutine 
-	0x1bf70  func AsynchronousProgressOperation.progress.getter // getter 
-	0x1bfb0  func AsynchronousProgressOperation.progress.setter // setter 
-	0x1c020  func AsynchronousProgressOperation.progress.modify // modifyCoroutine 
-	0x1c0d0  func AsynchronousProgressOperation.beginWork() // method 
-	0x1c1c0  func AsynchronousProgressOperation.timeoutOccured() // method 
-	0x1c640  func AsynchronousProgressOperation.interceptCancellationHandler() // method 
+	0x1c0a0  func AsynchronousProgressOperation.timeout.getter // getter 
+	0x1c0f0  func AsynchronousProgressOperation.timeout.setter // setter 
+	0x1c150  func AsynchronousProgressOperation.timeout.modify // modifyCoroutine 
+	0x1c190  func AsynchronousProgressOperation.operationTimedOut.getter // getter 
+	0x1c1c0  func AsynchronousProgressOperation.operationTimedOut.setter // setter 
+	0x1c200  func AsynchronousProgressOperation.operationTimedOut.modify // modifyCoroutine 
+	0x1c250  func AsynchronousProgressOperation.progress.getter // getter 
+	0x1c290  func AsynchronousProgressOperation.progress.setter // setter 
+	0x1c300  func AsynchronousProgressOperation.progress.modify // modifyCoroutine 
+	0x1c3b0  func AsynchronousProgressOperation.beginWork() // method 
+	0x1c4a0  func AsynchronousProgressOperation.timeoutOccured() // method 
+	0x1c920  func AsynchronousProgressOperation.interceptCancellationHandler() // method 
  }
 
  struct HealthExperience.TypeLister { }
@@ -631,27 +631,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var didBeginWork : ()? // +0x20 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x1f490  @objc AsynchronousOperation.isAsynchronous <stripped>
-	0x1f4b0  @objc AsynchronousOperation.isCancelled <stripped>
-	0x1f4f0  @objc AsynchronousOperation.isExecuting <stripped>
-	0x1f610  @objc AsynchronousOperation.isFinished <stripped>
-	0x1f980  @objc AsynchronousOperation.start <stripped>
-	0x1fba0  @objc AsynchronousOperation.cancel <stripped>
-	0x1fc40  @objc AsynchronousOperation.main <stripped>
-	0x1fd50  @objc AsynchronousOperation.description <stripped>
-	0x20010  @objc AsynchronousOperation.init <stripped>
-	0x20060  @objc AsynchronousOperation..cxx_destruct <stripped>
+	0x1f770  @objc AsynchronousOperation.isAsynchronous <stripped>
+	0x1f790  @objc AsynchronousOperation.isCancelled <stripped>
+	0x1f7d0  @objc AsynchronousOperation.isExecuting <stripped>
+	0x1f8f0  @objc AsynchronousOperation.isFinished <stripped>
+	0x1fc60  @objc AsynchronousOperation.start <stripped>
+	0x1fe80  @objc AsynchronousOperation.cancel <stripped>
+	0x1ff20  @objc AsynchronousOperation.main <stripped>
+	0x20030  @objc AsynchronousOperation.description <stripped>
+	0x202f0  @objc AsynchronousOperation.init <stripped>
+	0x20340  @objc AsynchronousOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1e860  func AsynchronousOperation.autoFinishesOnCancel.getter // getter 
-	0x1e890  func AsynchronousOperation.autoFinishesOnCancel.setter // setter 
-	0x1e8d0  func AsynchronousOperation.autoFinishesOnCancel.modify // modifyCoroutine 
-	0x1e910  func AsynchronousOperation.performWithExclusiveAccess(_:) // method 
-	0x1e970  func AsynchronousOperation.performWithExclusiveAccessThenFinish(_:) // method 
-	0x1fc50  func AsynchronousOperation.cleanUp() // method 
-	0x1ea00  func AsynchronousOperation.didBeginWork.getter // getter 
-	0x1ea50  func AsynchronousOperation.didBeginWork.setter // setter 
-	0x1eab0  func AsynchronousOperation.didBeginWork.modify // modifyCoroutine 
+	0x1eb40  func AsynchronousOperation.autoFinishesOnCancel.getter // getter 
+	0x1eb70  func AsynchronousOperation.autoFinishesOnCancel.setter // setter 
+	0x1ebb0  func AsynchronousOperation.autoFinishesOnCancel.modify // modifyCoroutine 
+	0x1ebf0  func AsynchronousOperation.performWithExclusiveAccess(_:) // method 
+	0x1ec50  func AsynchronousOperation.performWithExclusiveAccessThenFinish(_:) // method 
+	0x1ff30  func AsynchronousOperation.cleanUp() // method 
+	0x1ece0  func AsynchronousOperation.didBeginWork.getter // getter 
+	0x1ed30  func AsynchronousOperation.didBeginWork.setter // setter 
+	0x1ed90  func AsynchronousOperation.didBeginWork.modify // modifyCoroutine 
  }
 
  enum HealthExperience.ExecutionState {
@@ -688,10 +688,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var diastolicStatisticsCollection : HKStatisticsCollection? // +0x45545f5f (0x8)
 
 	// Swift methods
-	0x205f0  func <stripped> // method 
-	0x20650  func <stripped> // method 
-	0x20f50  func <stripped> // method 
-	0x21ff0  func <stripped> // method 
+	0x208d0  func <stripped> // method 
+	0x20930  func <stripped> // method 
+	0x21230  func <stripped> // method 
+	0x222d0  func <stripped> // method 
  }
 
  class HealthExperience.UnfairLock : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -700,10 +700,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var underlyingLock : os_unfair_lock_s // +0x10 (0x8)
 
 	// Swift methods
-	0x23860  class func UnfairLock.__allocating_init() // init 
-	0x23920  func UnfairLock.lock() // method 
-	0x23930  func UnfairLock.unlock() // method 
-	0x23940  func UnfairLock.assertOwner() // method 
+	0x23b40  class func UnfairLock.__allocating_init() // init 
+	0x23c00  func UnfairLock.lock() // method 
+	0x23c10  func UnfairLock.unlock() // method 
+	0x23c20  func UnfairLock.assertOwner() // method 
  }
 
  class HealthExperience.IntermenstrualBleeding : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -712,7 +712,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthExperience.FeedSection : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0x23b50  @objc FeedSection.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0x23e30  @objc FeedSection.initWithEntity:insertIntoManagedObjectContext: <stripped>
  }
 
  class HealthExperience.DietaryMolybdenum : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -721,17 +721,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthExperience.HealthExperienceStoreCoreSpotlightDelegate : NSCoreDataCoreSpotlightDelegate /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0x23e10  @objc HealthExperienceStoreCoreSpotlightDelegate.usePrivateIndex <stripped>
-	0x23e50  @objc HealthExperienceStoreCoreSpotlightDelegate.bundleIdentifier <stripped>
-	0x23eb0  @objc HealthExperienceStoreCoreSpotlightDelegate.domainIdentifier <stripped>
-	0x23f10  @objc HealthExperienceStoreCoreSpotlightDelegate.indexName <stripped>
-	0x23f90  @objc HealthExperienceStoreCoreSpotlightDelegate.protectionClass <stripped>
-	0x242e0  @objc HealthExperienceStoreCoreSpotlightDelegate.attributeSetForObject: <stripped>
-	0x24570  @objc HealthExperienceStoreCoreSpotlightDelegate.initForStoreWithDescription:model: <stripped>
-	0x245f0  @objc HealthExperienceStoreCoreSpotlightDelegate..cxx_destruct <stripped>
+	0x240f0  @objc HealthExperienceStoreCoreSpotlightDelegate.usePrivateIndex <stripped>
+	0x24130  @objc HealthExperienceStoreCoreSpotlightDelegate.bundleIdentifier <stripped>
+	0x24190  @objc HealthExperienceStoreCoreSpotlightDelegate.domainIdentifier <stripped>
+	0x241f0  @objc HealthExperienceStoreCoreSpotlightDelegate.indexName <stripped>
+	0x24270  @objc HealthExperienceStoreCoreSpotlightDelegate.protectionClass <stripped>
+	0x245c0  @objc HealthExperienceStoreCoreSpotlightDelegate.attributeSetForObject: <stripped>
+	0x24850  @objc HealthExperienceStoreCoreSpotlightDelegate.initForStoreWithDescription:model: <stripped>
+	0x248d0  @objc HealthExperienceStoreCoreSpotlightDelegate..cxx_destruct <stripped>
 
 	// Swift methods
-	0x23df0  func HealthExperienceStoreCoreSpotlightDelegate.setUp() // method 
+	0x240d0  func HealthExperienceStoreCoreSpotlightDelegate.setUp() // method 
  }
 
  class HealthExperience.BloodPressureSystolic : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -747,12 +747,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let healthStore : HKHealthStore // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x24db0  @objc MedicalIDFetchOperation.main <stripped>
-	0x25040  @objc MedicalIDFetchOperation.init <stripped>
-	0x24ff0  @objc MedicalIDFetchOperation..cxx_destruct <stripped>
+	0x25090  @objc MedicalIDFetchOperation.main <stripped>
+	0x25320  @objc MedicalIDFetchOperation.init <stripped>
+	0x252d0  @objc MedicalIDFetchOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x24de0  func <stripped> // method 
+	0x250c0  func <stripped> // method 
  }
 
  class HealthExperience.DebouncedDispatchItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -764,18 +764,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var workItem : Atomic // +0x30 (0x8)
 
 	// Swift methods
-	0x25120  func DebouncedDispatchItem.block.getter // getter 
-	0x25160  func DebouncedDispatchItem.block.setter // setter 
-	0x251a0  func DebouncedDispatchItem.block.modify // modifyCoroutine 
-	0x251d0  func DebouncedDispatchItem.queue.getter // getter 
-	0x25200  func DebouncedDispatchItem.queue.setter // setter 
-	0x25240  func DebouncedDispatchItem.queue.modify // modifyCoroutine 
-	0x25270  func DebouncedDispatchItem.debounceInterval.getter // getter 
-	0x252a0  func DebouncedDispatchItem.debounceInterval.setter // setter 
-	0x252e0  func DebouncedDispatchItem.debounceInterval.modify // modifyCoroutine 
-	0x25320  func DebouncedDispatchItem.cancel() // method 
-	0x253e0  func DebouncedDispatchItem.dispatch() // method 
-	0x25850  class func DebouncedDispatchItem.__allocating_init(queue:debounceLength:block:) // init 
+	0x25400  func DebouncedDispatchItem.block.getter // getter 
+	0x25440  func DebouncedDispatchItem.block.setter // setter 
+	0x25480  func DebouncedDispatchItem.block.modify // modifyCoroutine 
+	0x254b0  func DebouncedDispatchItem.queue.getter // getter 
+	0x254e0  func DebouncedDispatchItem.queue.setter // setter 
+	0x25520  func DebouncedDispatchItem.queue.modify // modifyCoroutine 
+	0x25550  func DebouncedDispatchItem.debounceInterval.getter // getter 
+	0x25580  func DebouncedDispatchItem.debounceInterval.setter // setter 
+	0x255c0  func DebouncedDispatchItem.debounceInterval.modify // modifyCoroutine 
+	0x25600  func DebouncedDispatchItem.cancel() // method 
+	0x256c0  func DebouncedDispatchItem.dispatch() // method 
+	0x25b30  class func DebouncedDispatchItem.__allocating_init(queue:debounceLength:block:) // init 
  }
 
  class HealthExperience.InsulinDelivery : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -793,9 +793,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let store : HealthExperienceStore // +0x18 (0x28)
 
 	// Swift methods
-	0x25cd0  class func ModelTrainingScenarioExecutor.__allocating_init(coordinator:store:) // init 
-	0x25d40  func ModelTrainingScenarioExecutor.saveModelToDisk(completion:) // method 
-	0x25d60  func ModelTrainingScenarioExecutor.execute(scenario:completion:) // method 
+	0x25fb0  class func ModelTrainingScenarioExecutor.__allocating_init(coordinator:store:) // init 
+	0x26020  func ModelTrainingScenarioExecutor.saveModelToDisk(completion:) // method 
+	0x26040  func ModelTrainingScenarioExecutor.execute(scenario:completion:) // method 
  }
 
  enum HealthExperience.Kind {
@@ -835,16 +835,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let healthStore : HKHealthStore // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2d1b0  @objc MedicalIDCache.init <stripped>
-	0x2d100  @objc MedicalIDCache..cxx_destruct <stripped>
+	0x2d490  @objc MedicalIDCache.init <stripped>
+	0x2d3e0  @objc MedicalIDCache..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2c480  func MedicalIDCache.medicalIDDataResult.getter // getter 
-	0x2c320  class func MedicalIDCache.__allocating_init(healthStore:) // init 
-	0x2c4f0  func <stripped> // method 
-	0x2ca70  func MedicalIDCache.enqueueMedicalIDFetch() // method 
-	0x2cb80  func <stripped> // method 
-	0x2cf60  func <stripped> // method 
+	0x2c760  func MedicalIDCache.medicalIDDataResult.getter // getter 
+	0x2c600  class func MedicalIDCache.__allocating_init(healthStore:) // init 
+	0x2c7d0  func <stripped> // method 
+	0x2cd50  func MedicalIDCache.enqueueMedicalIDFetch() // method 
+	0x2ce60  func <stripped> // method 
+	0x2d240  func <stripped> // method 
  }
 
  class HealthExperience.RestingHeartRate : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -874,8 +874,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthExperience.GroupConfigurationLoader : REBundleConfiguration /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine {
 	// ObjC -> Swift bridged methods
-	0x2e030  @objc GroupConfigurationLoader.elementGroupWithIdentifier: <stripped>
-	0x2e120  @objc GroupConfigurationLoader.init <stripped>
+	0x2e310  @objc GroupConfigurationLoader.elementGroupWithIdentifier: <stripped>
+	0x2e400  @objc GroupConfigurationLoader.init <stripped>
  }
 
  class HealthExperience.DietaryMagnesium : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -888,13 +888,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let context : NSManagedObjectContext // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2ff30  @objc HealthExperienceStoreCleanupOperation.start <stripped>
-	0x2ff60  @objc HealthExperienceStoreCleanupOperation.description <stripped>
-	0x30130  @objc HealthExperienceStoreCleanupOperation.init <stripped>
-	0x300c0  @objc HealthExperienceStoreCleanupOperation..cxx_destruct <stripped>
+	0x30210  @objc HealthExperienceStoreCleanupOperation.start <stripped>
+	0x30240  @objc HealthExperienceStoreCleanupOperation.description <stripped>
+	0x30410  @objc HealthExperienceStoreCleanupOperation.init <stripped>
+	0x303a0  @objc HealthExperienceStoreCleanupOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2f550  class func HealthExperienceStoreCleanupOperation.__allocating_init(context:) // init 
+	0x2f830  class func HealthExperienceStoreCleanupOperation.__allocating_init(context:) // init 
  }
 
  class HealthExperience.Matcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib, MatcherProtocol {
@@ -903,10 +903,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var constraintPredicates : [NSPredicate] // +0x10 (0x8)
 
 	// Swift methods
-	0x313e0  func Matcher.constraintPredicates.getter // getter 
-	0x31430  func Matcher.constraintPredicates.setter // setter 
-	0x30260  func Matcher.constraintPredicates.modify // modifyCoroutine 
-	0x30290  class func Matcher.__allocating_init() // init 
+	0x316c0  func Matcher.constraintPredicates.getter // getter 
+	0x31710  func Matcher.constraintPredicates.setter // setter 
+	0x30540  func Matcher.constraintPredicates.modify // modifyCoroutine 
+	0x30570  class func Matcher.__allocating_init() // init 
  }
 
  class HealthExperience.AggregateMatcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AggregateMatcherProtocol,  MatcherProtocol {
@@ -920,19 +920,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var anchorDate : Ïm // +0x0 (0x0)
 
 	// Swift methods
-	0x30520  func AggregateMatcher.constraintPredicates.getter // getter 
-	0x30550  func AggregateMatcher.constraintPredicates.setter // setter 
-	0x30590  func AggregateMatcher.constraintPredicates.modify // modifyCoroutine 
-	0x305c0  func AggregateMatcher.aggregateIntervalComponents.getter // getter 
-	0x30600  func AggregateMatcher.aggregateIntervalComponents.setter // setter 
-	0x30650  func AggregateMatcher.aggregateIntervalComponents.modify // modifyCoroutine 
-	0x30690  func AggregateMatcher.aggregateStatisticsOptions.getter // getter 
-	0x306c0  func AggregateMatcher.aggregateStatisticsOptions.setter // setter 
-	0x30700  func AggregateMatcher.aggregateStatisticsOptions.modify // modifyCoroutine 
-	0x30740  func AggregateMatcher.anchorDate.getter // getter 
-	0x30790  func AggregateMatcher.anchorDate.setter // setter 
-	0x307f0  func AggregateMatcher.anchorDate.modify // modifyCoroutine 
-	0x30840  class func AggregateMatcher.__allocating_init() // init 
+	0x30800  func AggregateMatcher.constraintPredicates.getter // getter 
+	0x30830  func AggregateMatcher.constraintPredicates.setter // setter 
+	0x30870  func AggregateMatcher.constraintPredicates.modify // modifyCoroutine 
+	0x308a0  func AggregateMatcher.aggregateIntervalComponents.getter // getter 
+	0x308e0  func AggregateMatcher.aggregateIntervalComponents.setter // setter 
+	0x30930  func AggregateMatcher.aggregateIntervalComponents.modify // modifyCoroutine 
+	0x30970  func AggregateMatcher.aggregateStatisticsOptions.getter // getter 
+	0x309a0  func AggregateMatcher.aggregateStatisticsOptions.setter // setter 
+	0x309e0  func AggregateMatcher.aggregateStatisticsOptions.modify // modifyCoroutine 
+	0x30a20  func AggregateMatcher.anchorDate.getter // getter 
+	0x30a70  func AggregateMatcher.anchorDate.setter // setter 
+	0x30ad0  func AggregateMatcher.anchorDate.modify // modifyCoroutine 
+	0x30b20  class func AggregateMatcher.__allocating_init() // init 
  }
 
  class HealthExperience.DietaryVitaminK : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -970,34 +970,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_modelPath : “f // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pretrainedModelURL : “f // +0x124454 (0x0)
+	let pretrainedModelURL : “f // +0x1249e4 (0x0)
 	let dataSources : [REElementDataSource] // +0x0 (0x8)
 	var $__lazy_storage_$_trainingContext : RETrainingContext? // +0x0 (0x8)
 	var $__lazy_storage_$_metricsRecorder : RelevanceEngineMetricsBlockRecorder // +0x0 (0x8)
 	var $__lazy_storage_$_relevanceEngine : RERelevanceEngine? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x45ab0  @objc RelevanceEngineCoordinator.init <stripped>
-	0x45960  @objc RelevanceEngineCoordinator..cxx_destruct <stripped>
+	0x45d90  @objc RelevanceEngineCoordinator.init <stripped>
+	0x45c40  @objc RelevanceEngineCoordinator..cxx_destruct <stripped>
 
 	// Swift methods
-	0x426a0  class func RelevanceEngineCoordinator.__allocating_init(dataSources:engineName:modelDirectoryName:pretrainedModelURL:) // init 
-	0x42760  func RelevanceEngineCoordinator.resumeEngineIfNeeded(completion:) // method 
-	0x428f0  func RelevanceEngineCoordinator.makeResumeEngineOperation() // method 
-	0x429b0  func RelevanceEngineCoordinator.modelPath.getter // getter 
-	0x42de0  func RelevanceEngineCoordinator.modelPath.setter // setter 
-	0x42e90  func RelevanceEngineCoordinator.modelPath.modify // modifyCoroutine 
-	0x42fc0  func RelevanceEngineCoordinator.trainingContext.getter // getter 
-	0x430d0  func RelevanceEngineCoordinator.trainingContext.setter // setter 
-	0x430f0  func RelevanceEngineCoordinator.trainingContext.modify // modifyCoroutine 
-	0x43230  func <stripped> // method 
-	0x43d20  func RelevanceEngineCoordinator.element(for:in:) // method 
-	0x43fb0  func RelevanceEngineCoordinator.submitTraining(trainingEvents:store:completion:) // method 
-	0x441f0  func <stripped> // method 
-	0x44f30  func RelevanceEngineCoordinator.collectDiagnosticLogs(completion:) // method 
-	0x45180  func RelevanceEngineCoordinator.gatherMetrics(completion:) // method 
-	0x452f0  func RelevanceEngineCoordinator.clearEngineAndModel(completion:) // method 
-	0x45620  func RelevanceEngineCoordinator.saveModelToDisk(completion:) // method 
+	0x42980  class func RelevanceEngineCoordinator.__allocating_init(dataSources:engineName:modelDirectoryName:pretrainedModelURL:) // init 
+	0x42a40  func RelevanceEngineCoordinator.resumeEngineIfNeeded(completion:) // method 
+	0x42bd0  func RelevanceEngineCoordinator.makeResumeEngineOperation() // method 
+	0x42c90  func RelevanceEngineCoordinator.modelPath.getter // getter 
+	0x430c0  func RelevanceEngineCoordinator.modelPath.setter // setter 
+	0x43170  func RelevanceEngineCoordinator.modelPath.modify // modifyCoroutine 
+	0x432a0  func RelevanceEngineCoordinator.trainingContext.getter // getter 
+	0x433b0  func RelevanceEngineCoordinator.trainingContext.setter // setter 
+	0x433d0  func RelevanceEngineCoordinator.trainingContext.modify // modifyCoroutine 
+	0x43510  func <stripped> // method 
+	0x44000  func RelevanceEngineCoordinator.element(for:in:) // method 
+	0x44290  func RelevanceEngineCoordinator.submitTraining(trainingEvents:store:completion:) // method 
+	0x444d0  func <stripped> // method 
+	0x45210  func RelevanceEngineCoordinator.collectDiagnosticLogs(completion:) // method 
+	0x45460  func RelevanceEngineCoordinator.gatherMetrics(completion:) // method 
+	0x455d0  func RelevanceEngineCoordinator.clearEngineAndModel(completion:) // method 
+	0x45900  func RelevanceEngineCoordinator.saveModelToDisk(completion:) // method 
  }
 
  class HealthExperience.DietaryPantothenicAcid : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1075,31 +1075,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var lock : UnfairLock // +0x48 (0x8)
 
 	// Swift methods
-	0x514e0  func MutableArrayDataSource.eventHandler.getter // getter 
-	0x51510  func MutableArrayDataSource.eventHandler.setter // setter 
-	0x51560  func MutableArrayDataSource.eventHandler.modify // modifyCoroutine 
-	0x51640  func MutableArrayDataSource.promise.getter // getter 
-	0x51670  func MutableArrayDataSource.arrangedSections.getter // getter 
-	0x516a0  func MutableArrayDataSource.arrangedSections.setter // setter 
-	0x516e0  func MutableArrayDataSource.arrangedSections.modify // modifyCoroutine 
-	0x51720  func MutableArrayDataSource.identifier.getter // getter 
-	0x517a0  func MutableArrayDataSource.identifier.setter // setter 
-	0x517c0  func MutableArrayDataSource.identifier.modify // modifyCoroutine 
-	0x51880  func MutableArrayDataSource.sectionIdentifiers.getter // getter 
-	0x52890  class func MutableArrayDataSource.__allocating_init(arrangedSections:) // init 
-	0x51c30  func MutableArrayDataSource.replaceAllSections(with:) // method 
-	0x51d00  func MutableArrayDataSource.insert(section:index:) // method 
-	0x51ee0  func MutableArrayDataSource.removeSection(at:) // method 
-	0x520d0  func MutableArrayDataSource.insert(item:at:) // method 
-	0x520f0  func MutableArrayDataSource.removeItemAt(indexPath:) // method 
-	0x52150  func MutableArrayDataSource.reload(item:at:) // method 
-	0x521b0  func MutableArrayDataSource.send(_:) // method 
+	0x517c0  func MutableArrayDataSource.eventHandler.getter // getter 
+	0x517f0  func MutableArrayDataSource.eventHandler.setter // setter 
+	0x51840  func MutableArrayDataSource.eventHandler.modify // modifyCoroutine 
+	0x51920  func MutableArrayDataSource.promise.getter // getter 
+	0x51950  func MutableArrayDataSource.arrangedSections.getter // getter 
+	0x51980  func MutableArrayDataSource.arrangedSections.setter // setter 
+	0x519c0  func MutableArrayDataSource.arrangedSections.modify // modifyCoroutine 
+	0x51a00  func MutableArrayDataSource.identifier.getter // getter 
+	0x51a80  func MutableArrayDataSource.identifier.setter // setter 
+	0x51aa0  func MutableArrayDataSource.identifier.modify // modifyCoroutine 
+	0x51b60  func MutableArrayDataSource.sectionIdentifiers.getter // getter 
+	0x52b70  class func MutableArrayDataSource.__allocating_init(arrangedSections:) // init 
+	0x51f10  func MutableArrayDataSource.replaceAllSections(with:) // method 
+	0x51fe0  func MutableArrayDataSource.insert(section:index:) // method 
+	0x521c0  func MutableArrayDataSource.removeSection(at:) // method 
+	0x523b0  func MutableArrayDataSource.insert(item:at:) // method 
+	0x523d0  func MutableArrayDataSource.removeItemAt(indexPath:) // method 
+	0x52430  func MutableArrayDataSource.reload(item:at:) // method 
+	0x52490  func MutableArrayDataSource.send(_:) // method 
  }
 
  class HealthExperience.FeedItem : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0x576c0  @objc FeedItem.initWithEntity:insertIntoManagedObjectContext: <stripped>
-	0x57740  @objc FeedItem..cxx_construct <stripped>
+	0x579a0  @objc FeedItem.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0x57a20  @objc FeedItem..cxx_construct <stripped>
  }
 
  class HealthExperience.UVExposure : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1112,7 +1112,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let notificationCenter : NSNotificationCenter // +0x18 (0x8)
 
 	// Swift methods
-	0x57e10  class func USR1SignalDebuggingResponderListener.__allocating_init() // init 
+	0x580f0  class func USR1SignalDebuggingResponderListener.__allocating_init() // init 
  }
 
  struct HealthExperience.DefaultFavoritablesProvider: FavoritablesProvider {
@@ -1132,13 +1132,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let store : HealthExperienceStore // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x595f0  @objc FeedItemREElementDataSource.supportedSections <stripped>
-	0x59d70  @objc FeedItemREElementDataSource.getElementsInSection:withHandler: <stripped>
-	0x59e90  @objc FeedItemREElementDataSource.init <stripped>
-	0x59ef0  @objc FeedItemREElementDataSource..cxx_destruct <stripped>
+	0x598d0  @objc FeedItemREElementDataSource.supportedSections <stripped>
+	0x5a050  @objc FeedItemREElementDataSource.getElementsInSection:withHandler: <stripped>
+	0x5a170  @objc FeedItemREElementDataSource.init <stripped>
+	0x5a1d0  @objc FeedItemREElementDataSource..cxx_destruct <stripped>
 
 	// Swift methods
-	0x594b0  class func FeedItemREElementDataSource.__allocating_init(store:) // init 
+	0x59790  class func FeedItemREElementDataSource.__allocating_init(store:) // init 
  }
 
  enum HealthExperience.RelevanceFeatureTagCoreDataError {
@@ -1194,17 +1194,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let nonspecificUpdatesDisabled : Atomic // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x5e2e0  @objc FavoritesProvider.dealloc <stripped>
-	0x5ea40  @objc FavoritesProvider.favoritesChangedRemotely: <stripped>
-	0x5eb30  @objc FavoritesProvider.init <stripped>
-	0x5e370  @objc FavoritesProvider..cxx_destruct <stripped>
+	0x5e5c0  @objc FavoritesProvider.dealloc <stripped>
+	0x5ed20  @objc FavoritesProvider.favoritesChangedRemotely: <stripped>
+	0x5ee10  @objc FavoritesProvider.init <stripped>
+	0x5e650  @objc FavoritesProvider..cxx_destruct <stripped>
 
 	// Swift methods
-	0x5df40  func FavoritesProvider.favorites.getter // getter 
-	0x5e130  class func FavoritesProvider.__allocating_init(controller:) // init 
-	0x5e3c0  func FavoritesProvider.addObserver(_:) // method 
-	0x5e410  func FavoritesProvider.removeObserver(_:) // method 
-	0x5e440  func <stripped> // method 
+	0x5e220  func FavoritesProvider.favorites.getter // getter 
+	0x5e410  class func FavoritesProvider.__allocating_init(controller:) // init 
+	0x5e6a0  func FavoritesProvider.addObserver(_:) // method 
+	0x5e6f0  func FavoritesProvider.removeObserver(_:) // method 
+	0x5e720  func <stripped> // method 
  }
 
  class HealthExperience.HideableDataSource {
@@ -1226,20 +1226,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_
 
 	// Swift methods
-	0x62d70  func HKActiveEnergySample.debugDescription.getter // getter 
-	0x63040  func HKActiveEnergySample.debugDescription.setter // setter 
-	0x63060  func HKActiveEnergySample.debugDescription.modify // modifyCoroutine 
-	0x630b0  func HKActiveEnergySample.shortUnitString.getter // getter 
-	0x630f0  func HKActiveEnergySample.shortUnitString.setter // setter 
-	0x63130  func HKActiveEnergySample.shortUnitString.modify // modifyCoroutine 
-	0x63160  func HKActiveEnergySample.longUnitString.getter // getter 
-	0x631a0  func HKActiveEnergySample.longUnitString.setter // setter 
-	0x631e0  func HKActiveEnergySample.longUnitString.modify // modifyCoroutine 
-	0x63890  func HKActiveEnergySample.dateRange.getter // getter 
-	0x638e0  func HKActiveEnergySample.dateRange.setter // setter 
-	0x63940  func HKActiveEnergySample.dateRange.modify // modifyCoroutine 
-	0x63980  class func HKActiveEnergySample.__allocating_init(statistics:) // init 
-	0x639d0  class func HKActiveEnergySample.__allocating_init(sample:) // init 
+	0x63050  func HKActiveEnergySample.debugDescription.getter // getter 
+	0x63320  func HKActiveEnergySample.debugDescription.setter // setter 
+	0x63340  func HKActiveEnergySample.debugDescription.modify // modifyCoroutine 
+	0x63390  func HKActiveEnergySample.shortUnitString.getter // getter 
+	0x633d0  func HKActiveEnergySample.shortUnitString.setter // setter 
+	0x63410  func HKActiveEnergySample.shortUnitString.modify // modifyCoroutine 
+	0x63440  func HKActiveEnergySample.longUnitString.getter // getter 
+	0x63480  func HKActiveEnergySample.longUnitString.setter // setter 
+	0x634c0  func HKActiveEnergySample.longUnitString.modify // modifyCoroutine 
+	0x63b70  func HKActiveEnergySample.dateRange.getter // getter 
+	0x63bc0  func HKActiveEnergySample.dateRange.setter // setter 
+	0x63c20  func HKActiveEnergySample.dateRange.modify // modifyCoroutine 
+	0x63c60  class func HKActiveEnergySample.__allocating_init(statistics:) // init 
+	0x63cb0  class func HKActiveEnergySample.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKActiveEnergyMatcher {
@@ -1259,15 +1259,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var timeoutWork : Me // +0x98 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x651c0  @objc SetDefaultFavoritesOperation.main <stripped>
-	0x65800  @objc SetDefaultFavoritesOperation.init <stripped>
-	0x65750  @objc SetDefaultFavoritesOperation..cxx_destruct <stripped>
+	0x654a0  @objc SetDefaultFavoritesOperation.main <stripped>
+	0x65ae0  @objc SetDefaultFavoritesOperation.init <stripped>
+	0x65a30  @objc SetDefaultFavoritesOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x64b30  func <stripped> // getter 
-	0x64c40  func <stripped> // getter 
-	0x64fd0  class func SetDefaultFavoritesOperation.__allocating_init(favoritesProvider:healthStore:precondition:timeout:) // init 
-	0x651f0  func <stripped> // method 
+	0x64e10  func <stripped> // getter 
+	0x64f20  func <stripped> // getter 
+	0x652b0  class func SetDefaultFavoritesOperation.__allocating_init(favoritesProvider:healthStore:precondition:timeout:) // init 
+	0x654d0  func <stripped> // method 
  }
 
  class HealthExperience.HKAnchoredObjectQueryDataSource {
@@ -1309,14 +1309,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var trainingAnalyticsCache : Atomic
 
 	// Swift methods
-	0x6acc0  func <stripped> // method 
-	0x6afd0  func FeedPopulationManager.relevanceEngineCoordinator.getter // getter 
-	0x6b000  class func FeedPopulationManager.__allocating_init(healthExperienceStore:debounceInterval:) // init 
-	0x6b6e0  func FeedPopulationManager.populateFeed(feedKinds:for:completion:) // method 
-	0x6c5e0  func FeedPopulationManager.deleteFeed(feedKinds:completion:) // method 
-	0x6d260  func FeedPopulationManager.submitTraining(trainingEvents:store:completion:) // method 
-	0x6d950  func <stripped> // method 
-	0x6e460  func FeedPopulationManager.feedItemSubmissionOccurred(_:) // method 
+	0x6afa0  func <stripped> // method 
+	0x6b2b0  func FeedPopulationManager.relevanceEngineCoordinator.getter // getter 
+	0x6b2e0  class func FeedPopulationManager.__allocating_init(healthExperienceStore:debounceInterval:) // init 
+	0x6b9c0  func FeedPopulationManager.populateFeed(feedKinds:for:completion:) // method 
+	0x6c8c0  func FeedPopulationManager.deleteFeed(feedKinds:completion:) // method 
+	0x6d540  func FeedPopulationManager.submitTraining(trainingEvents:store:completion:) // method 
+	0x6dc30  func <stripped> // method 
+	0x6e740  func FeedPopulationManager.feedItemSubmissionOccurred(_:) // method 
  }
 
  class HealthExperience.PopulationOperation : AsynchronousOperation {
@@ -1326,9 +1326,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let populationManager : FeedPopulationManager
 
 	// ObjC -> Swift bridged methods
-	0x6f270  @objc PopulationOperation.main <stripped>
-	0x6f340  @objc PopulationOperation.init <stripped>
-	0x6f310  @objc PopulationOperation..cxx_destruct <stripped>
+	0x6f550  @objc PopulationOperation.main <stripped>
+	0x6f620  @objc PopulationOperation.init <stripped>
+	0x6f5f0  @objc PopulationOperation..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1356,23 +1356,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var environment : FeedItemContextEnvironment // +0x20 (0x20)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var boundingRange : ç_ // +0x108a0 (0x0)
-	let storageContext : NSManagedObjectContext // +0x1262f0 (0x8)
+	let storageContext : NSManagedObjectContext // +0x126880 (0x8)
 	let pluginInfo : PluginInfo // +0x0 (0x28)
 	var hasOperationCompleted : Bool? // +0x0 (0x1)
 
 	// Swift methods
-	0x76b40  func HealthExperienceStoreFeedItemContext.healthStore.getter // getter 
-	0x76c00  func HealthExperienceStoreFeedItemContext.favoritesProvider.getter // getter 
-	0x76d20  func HealthExperienceStoreFeedItemContext.environment.getter // getter 
-	0x76ec0  func HealthExperienceStoreFeedItemContext.boundingRange.getter // getter 
-	0x76f10  class func HealthExperienceStoreFeedItemContext.__allocating_init(storageContext:pluginInfo:healthStore:environment:favoritesProvider:dateRange:) // init 
-	0x77000  func HealthExperienceStoreFeedItemContext.pluginData.getter // getter 
-	0x77240  func HealthExperienceStoreFeedItemContext.commit(_:) // method 
-	0x780e0  func <stripped> // method 
-	0x79480  func <stripped> // method 
-	0x79a60  func <stripped> // method 
-	0x7a1a0  func <stripped> // method 
-	0x7a2d0  func <stripped> // method 
+	0x76e20  func HealthExperienceStoreFeedItemContext.healthStore.getter // getter 
+	0x76ee0  func HealthExperienceStoreFeedItemContext.favoritesProvider.getter // getter 
+	0x77000  func HealthExperienceStoreFeedItemContext.environment.getter // getter 
+	0x771a0  func HealthExperienceStoreFeedItemContext.boundingRange.getter // getter 
+	0x771f0  class func HealthExperienceStoreFeedItemContext.__allocating_init(storageContext:pluginInfo:healthStore:environment:favoritesProvider:dateRange:) // init 
+	0x772e0  func HealthExperienceStoreFeedItemContext.pluginData.getter // getter 
+	0x77520  func HealthExperienceStoreFeedItemContext.commit(_:) // method 
+	0x783c0  func <stripped> // method 
+	0x79760  func <stripped> // method 
+	0x79d40  func <stripped> // method 
+	0x7a480  func <stripped> // method 
+	0x7a5b0  func <stripped> // method 
  }
 
  struct HealthExperience.ArrayDataSourceSection {
@@ -1420,31 +1420,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_diastolic : Double?
 
 	// Swift methods
-	0x7f1a0  func HKBloodPressureSample.shortUnitString.getter // getter 
-	0x7f1e0  func HKBloodPressureSample.shortUnitString.setter // setter 
-	0x7f220  func HKBloodPressureSample.shortUnitString.modify // modifyCoroutine 
-	0x7f250  func HKBloodPressureSample.longUnitString.getter // getter 
-	0x7f290  func HKBloodPressureSample.longUnitString.setter // setter 
-	0x7f2d0  func HKBloodPressureSample.longUnitString.modify // modifyCoroutine 
-	0x7f7f0  func HKBloodPressureSample.dateRange.getter // getter 
-	0x7f840  func HKBloodPressureSample.dateRange.setter // setter 
-	0x7f8a0  func HKBloodPressureSample.dateRange.modify // modifyCoroutine 
-	0x7f8e0  func HKBloodPressureSample.systolic.getter // getter 
-	0x7fa90  func HKBloodPressureSample.systolic.setter // setter 
-	0x7fab0  func HKBloodPressureSample.systolic.modify // modifyCoroutine 
-	0x7fb30  func HKBloodPressureSample.diastolic.getter // getter 
-	0x7fd20  func HKBloodPressureSample.diastolic.setter // setter 
-	0x7fd40  func HKBloodPressureSample.diastolic.modify // modifyCoroutine 
-	0x7fda0  class func HKBloodPressureSample.__allocating_init(sample:) // init 
-	0x7fdd0  class func HKBloodPressureSample.__allocating_init(statistics:) // init 
-	0x7f140  class func HKBloodPressureSample.__allocating_init(systolic:diastolic:) // init 
-	0x82150  func HKBloodPressureSample.smallDescriptionString() // method 
-	0x7fe60  func HKBloodPressureSample.longDescriptionString() // method 
+	0x7f480  func HKBloodPressureSample.shortUnitString.getter // getter 
+	0x7f4c0  func HKBloodPressureSample.shortUnitString.setter // setter 
+	0x7f500  func HKBloodPressureSample.shortUnitString.modify // modifyCoroutine 
+	0x7f530  func HKBloodPressureSample.longUnitString.getter // getter 
+	0x7f570  func HKBloodPressureSample.longUnitString.setter // setter 
+	0x7f5b0  func HKBloodPressureSample.longUnitString.modify // modifyCoroutine 
+	0x7fad0  func HKBloodPressureSample.dateRange.getter // getter 
+	0x7fb20  func HKBloodPressureSample.dateRange.setter // setter 
+	0x7fb80  func HKBloodPressureSample.dateRange.modify // modifyCoroutine 
+	0x7fbc0  func HKBloodPressureSample.systolic.getter // getter 
+	0x7fd70  func HKBloodPressureSample.systolic.setter // setter 
+	0x7fd90  func HKBloodPressureSample.systolic.modify // modifyCoroutine 
+	0x7fe10  func HKBloodPressureSample.diastolic.getter // getter 
+	0x80000  func HKBloodPressureSample.diastolic.setter // setter 
+	0x80020  func HKBloodPressureSample.diastolic.modify // modifyCoroutine 
+	0x80080  class func HKBloodPressureSample.__allocating_init(sample:) // init 
+	0x800b0  class func HKBloodPressureSample.__allocating_init(statistics:) // init 
+	0x7f420  class func HKBloodPressureSample.__allocating_init(systolic:diastolic:) // init 
+	0x82430  func HKBloodPressureSample.smallDescriptionString() // method 
+	0x80140  func HKBloodPressureSample.longDescriptionString() // method 
  }
 
  class HealthExperience.HKBloodPressureSampleMatcher : AggregateMatcher {
 	// Swift methods
-	0x80560  func HKBloodPressureSampleMatcher.dataSource(healthStore:) // method 
+	0x80840  func HKBloodPressureSampleMatcher.dataSource(healthStore:) // method 
  }
 
  class HealthExperience.DietaryFatTotal : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1513,12 +1513,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let context : NSManagedObjectContext // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x89270  @objc SaveManagedObjectContextOperation.main <stripped>
-	0x893a0  @objc SaveManagedObjectContextOperation.init <stripped>
-	0x89420  @objc SaveManagedObjectContextOperation..cxx_destruct <stripped>
+	0x89550  @objc SaveManagedObjectContextOperation.main <stripped>
+	0x89680  @objc SaveManagedObjectContextOperation.init <stripped>
+	0x89700  @objc SaveManagedObjectContextOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x88df0  class func SaveManagedObjectContextOperation.__allocating_init(context:) // init 
+	0x890d0  class func SaveManagedObjectContextOperation.__allocating_init(context:) // init 
  }
 
  class HealthExperience.HKStatisticsCollectionQueryDataSource {
@@ -1553,13 +1553,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let debugIdentifier : String? // +0x40 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x8c6b0  @objc AsynchronousBlockOperation.main <stripped>
-	0x8c700  @objc AsynchronousBlockOperation.debugDescription <stripped>
-	0x8c930  @objc AsynchronousBlockOperation.init <stripped>
-	0x8c9c0  @objc AsynchronousBlockOperation..cxx_destruct <stripped>
+	0x8c990  @objc AsynchronousBlockOperation.main <stripped>
+	0x8c9e0  @objc AsynchronousBlockOperation.debugDescription <stripped>
+	0x8cc10  @objc AsynchronousBlockOperation.init <stripped>
+	0x8cca0  @objc AsynchronousBlockOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8c560  class func AsynchronousBlockOperation.__allocating_init(debugIdentifier:_:) // init 
+	0x8c840  class func AsynchronousBlockOperation.__allocating_init(debugIdentifier:_:) // init 
  }
 
  class HealthExperience.BodyMass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1623,7 +1623,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let evaluate : (_:)
 
 	// Swift methods
-	0x93490  func <stripped> // method 
+	0x93770  func <stripped> // method 
  }
 
  class HealthExperience.HasUpgradedFavoritesPrecondition : UserDefaultsQueryPrecondition {
@@ -1641,7 +1641,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var preconditionCompletion : (_:)?
 
 	// Swift methods
-	0x93bc0  func <stripped> // method 
+	0x93ea0  func <stripped> // method 
  }
 
  struct HealthExperience.ModelTrainingScenario {
@@ -1736,17 +1736,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x77735f5f (0x0)
 
 	// Swift methods
-	0xb1220  func HKBloodGlucoseSample.shortUnitString.getter // getter 
-	0xb15e0  func HKBloodGlucoseSample.shortUnitString.setter // setter 
-	0x9b390  func HKBloodGlucoseSample.shortUnitString.modify // modifyCoroutine 
-	0xb1230  func HKBloodGlucoseSample.longUnitString.getter // getter 
-	0xb15f0  func HKBloodGlucoseSample.longUnitString.setter // setter 
-	0x9b3c0  func HKBloodGlucoseSample.longUnitString.modify // modifyCoroutine 
-	0x9b8b0  func HKBloodGlucoseSample.dateRange.getter // getter 
-	0x9b8d0  func HKBloodGlucoseSample.dateRange.setter // setter 
-	0x9b8f0  func HKBloodGlucoseSample.dateRange.modify // modifyCoroutine 
-	0x9b930  class func HKBloodGlucoseSample.__allocating_init(statistics:) // init 
-	0x9b980  class func HKBloodGlucoseSample.__allocating_init(sample:) // init 
+	0xb1500  func HKBloodGlucoseSample.shortUnitString.getter // getter 
+	0xb18c0  func HKBloodGlucoseSample.shortUnitString.setter // setter 
+	0x9b670  func HKBloodGlucoseSample.shortUnitString.modify // modifyCoroutine 
+	0xb1510  func HKBloodGlucoseSample.longUnitString.getter // getter 
+	0xb18d0  func HKBloodGlucoseSample.longUnitString.setter // setter 
+	0x9b6a0  func HKBloodGlucoseSample.longUnitString.modify // modifyCoroutine 
+	0x9bb90  func HKBloodGlucoseSample.dateRange.getter // getter 
+	0x9bbb0  func HKBloodGlucoseSample.dateRange.setter // setter 
+	0x9bbd0  func HKBloodGlucoseSample.dateRange.modify // modifyCoroutine 
+	0x9bc10  class func HKBloodGlucoseSample.__allocating_init(statistics:) // init 
+	0x9bc60  class func HKBloodGlucoseSample.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKBodyMassIndex : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1759,17 +1759,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x6f72705f (0x0)
 
 	// Swift methods
-	0xb1260  func HKBodyMassIndex.shortUnitString.getter // getter 
-	0xb1620  func HKBodyMassIndex.shortUnitString.setter // setter 
-	0x9bda0  func HKBodyMassIndex.shortUnitString.modify // modifyCoroutine 
-	0xb1270  func HKBodyMassIndex.longUnitString.getter // getter 
-	0xb1630  func HKBodyMassIndex.longUnitString.setter // setter 
-	0x9bdd0  func HKBodyMassIndex.longUnitString.modify // modifyCoroutine 
-	0x9c320  func HKBodyMassIndex.dateRange.getter // getter 
-	0x9c340  func HKBodyMassIndex.dateRange.setter // setter 
-	0x9c360  func HKBodyMassIndex.dateRange.modify // modifyCoroutine 
-	0x9c3a0  class func HKBodyMassIndex.__allocating_init(statistics:) // init 
-	0x9c3f0  class func HKBodyMassIndex.__allocating_init(sample:) // init 
+	0xb1540  func HKBodyMassIndex.shortUnitString.getter // getter 
+	0xb1900  func HKBodyMassIndex.shortUnitString.setter // setter 
+	0x9c080  func HKBodyMassIndex.shortUnitString.modify // modifyCoroutine 
+	0xb1550  func HKBodyMassIndex.longUnitString.getter // getter 
+	0xb1910  func HKBodyMassIndex.longUnitString.setter // setter 
+	0x9c0b0  func HKBodyMassIndex.longUnitString.modify // modifyCoroutine 
+	0x9c600  func HKBodyMassIndex.dateRange.getter // getter 
+	0x9c620  func HKBodyMassIndex.dateRange.setter // setter 
+	0x9c640  func HKBodyMassIndex.dateRange.modify // modifyCoroutine 
+	0x9c680  class func HKBodyMassIndex.__allocating_init(statistics:) // init 
+	0x9c6d0  class func HKBodyMassIndex.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKBodyFatPercentage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1782,17 +1782,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x45545f5f (0x0)
 
 	// Swift methods
-	0xb1240  func HKBodyFatPercentage.shortUnitString.getter // getter 
-	0xb1600  func HKBodyFatPercentage.shortUnitString.setter // setter 
-	0x9c740  func HKBodyFatPercentage.shortUnitString.modify // modifyCoroutine 
-	0xb1250  func HKBodyFatPercentage.longUnitString.getter // getter 
-	0xb1610  func HKBodyFatPercentage.longUnitString.setter // setter 
-	0x9c770  func HKBodyFatPercentage.longUnitString.modify // modifyCoroutine 
-	0x9cc60  func HKBodyFatPercentage.dateRange.getter // getter 
-	0x9cc80  func HKBodyFatPercentage.dateRange.setter // setter 
-	0x9cca0  func HKBodyFatPercentage.dateRange.modify // modifyCoroutine 
-	0x9cce0  class func HKBodyFatPercentage.__allocating_init(statistics:) // init 
-	0x9cd30  class func HKBodyFatPercentage.__allocating_init(sample:) // init 
+	0xb1520  func HKBodyFatPercentage.shortUnitString.getter // getter 
+	0xb18e0  func HKBodyFatPercentage.shortUnitString.setter // setter 
+	0x9ca20  func HKBodyFatPercentage.shortUnitString.modify // modifyCoroutine 
+	0xb1530  func HKBodyFatPercentage.longUnitString.getter // getter 
+	0xb18f0  func HKBodyFatPercentage.longUnitString.setter // setter 
+	0x9ca50  func HKBodyFatPercentage.longUnitString.modify // modifyCoroutine 
+	0x9cf40  func HKBodyFatPercentage.dateRange.getter // getter 
+	0x9cf60  func HKBodyFatPercentage.dateRange.setter // setter 
+	0x9cf80  func HKBodyFatPercentage.dateRange.modify // modifyCoroutine 
+	0x9cfc0  class func HKBodyFatPercentage.__allocating_init(statistics:) // init 
+	0x9d010  class func HKBodyFatPercentage.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKBodyHeight : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1805,17 +1805,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x0 (0x0)
 
 	// Swift methods
-	0xb12e0  func HKBodyHeight.shortUnitString.getter // getter 
-	0xb16a0  func HKBodyHeight.shortUnitString.setter // setter 
-	0x9d0a0  func HKBodyHeight.shortUnitString.modify // modifyCoroutine 
-	0xb12f0  func HKBodyHeight.longUnitString.getter // getter 
-	0xb16b0  func HKBodyHeight.longUnitString.setter // setter 
-	0x9d0d0  func HKBodyHeight.longUnitString.modify // modifyCoroutine 
-	0x9d5a0  func HKBodyHeight.dateRange.getter // getter 
-	0x9d5c0  func HKBodyHeight.dateRange.setter // setter 
-	0x9d5e0  func HKBodyHeight.dateRange.modify // modifyCoroutine 
-	0x9d620  class func HKBodyHeight.__allocating_init(statistics:) // init 
-	0x9d670  class func HKBodyHeight.__allocating_init(sample:) // init 
+	0xb15c0  func HKBodyHeight.shortUnitString.getter // getter 
+	0xb1980  func HKBodyHeight.shortUnitString.setter // setter 
+	0x9d380  func HKBodyHeight.shortUnitString.modify // modifyCoroutine 
+	0xb15d0  func HKBodyHeight.longUnitString.getter // getter 
+	0xb1990  func HKBodyHeight.longUnitString.setter // setter 
+	0x9d3b0  func HKBodyHeight.longUnitString.modify // modifyCoroutine 
+	0x9d880  func HKBodyHeight.dateRange.getter // getter 
+	0x9d8a0  func HKBodyHeight.dateRange.setter // setter 
+	0x9d8c0  func HKBodyHeight.dateRange.modify // modifyCoroutine 
+	0x9d900  class func HKBodyHeight.__allocating_init(statistics:) // init 
+	0x9d950  class func HKBodyHeight.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKWaistCircumference : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1828,17 +1828,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x15587c (0x0)
 
 	// Swift methods
-	0xb1280  func HKWaistCircumference.shortUnitString.getter // getter 
-	0xb1640  func HKWaistCircumference.shortUnitString.setter // setter 
-	0x9d9c0  func HKWaistCircumference.shortUnitString.modify // modifyCoroutine 
-	0xb1290  func HKWaistCircumference.longUnitString.getter // getter 
-	0xb1650  func HKWaistCircumference.longUnitString.setter // setter 
-	0x9d9f0  func HKWaistCircumference.longUnitString.modify // modifyCoroutine 
-	0x9dec0  func HKWaistCircumference.dateRange.getter // getter 
-	0x9dee0  func HKWaistCircumference.dateRange.setter // setter 
-	0x9df00  func HKWaistCircumference.dateRange.modify // modifyCoroutine 
-	0x9df40  class func HKWaistCircumference.__allocating_init(statistics:) // init 
-	0x9df90  class func HKWaistCircumference.__allocating_init(sample:) // init 
+	0xb1560  func HKWaistCircumference.shortUnitString.getter // getter 
+	0xb1920  func HKWaistCircumference.shortUnitString.setter // setter 
+	0x9dca0  func HKWaistCircumference.shortUnitString.modify // modifyCoroutine 
+	0xb1570  func HKWaistCircumference.longUnitString.getter // getter 
+	0xb1930  func HKWaistCircumference.longUnitString.setter // setter 
+	0x9dcd0  func HKWaistCircumference.longUnitString.modify // modifyCoroutine 
+	0x9e1a0  func HKWaistCircumference.dateRange.getter // getter 
+	0x9e1c0  func HKWaistCircumference.dateRange.setter // setter 
+	0x9e1e0  func HKWaistCircumference.dateRange.modify // modifyCoroutine 
+	0x9e220  class func HKWaistCircumference.__allocating_init(statistics:) // init 
+	0x9e270  class func HKWaistCircumference.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKVO2Max : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1851,17 +1851,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0xcc (0x0)
 
 	// Swift methods
-	0xb12a0  func HKVO2Max.shortUnitString.getter // getter 
-	0xb1660  func HKVO2Max.shortUnitString.setter // setter 
-	0x9e300  func HKVO2Max.shortUnitString.modify // modifyCoroutine 
-	0xb12b0  func HKVO2Max.longUnitString.getter // getter 
-	0xb1670  func HKVO2Max.longUnitString.setter // setter 
-	0x9e330  func HKVO2Max.longUnitString.modify // modifyCoroutine 
-	0x9e820  func HKVO2Max.dateRange.getter // getter 
-	0x9e840  func HKVO2Max.dateRange.setter // setter 
-	0x9e860  func HKVO2Max.dateRange.modify // modifyCoroutine 
-	0x9e8a0  class func HKVO2Max.__allocating_init(statistics:) // init 
-	0x9e8f0  class func HKVO2Max.__allocating_init(sample:) // init 
+	0xb1580  func HKVO2Max.shortUnitString.getter // getter 
+	0xb1940  func HKVO2Max.shortUnitString.setter // setter 
+	0x9e5e0  func HKVO2Max.shortUnitString.modify // modifyCoroutine 
+	0xb1590  func HKVO2Max.longUnitString.getter // getter 
+	0xb1950  func HKVO2Max.longUnitString.setter // setter 
+	0x9e610  func HKVO2Max.longUnitString.modify // modifyCoroutine 
+	0x9eb00  func HKVO2Max.dateRange.getter // getter 
+	0x9eb20  func HKVO2Max.dateRange.setter // setter 
+	0x9eb40  func HKVO2Max.dateRange.modify // modifyCoroutine 
+	0x9eb80  class func HKVO2Max.__allocating_init(statistics:) // init 
+	0x9ebd0  class func HKVO2Max.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKLeanBodyMass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1874,17 +1874,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x15587c (0x0)
 
 	// Swift methods
-	0xb12c0  func HKLeanBodyMass.shortUnitString.getter // getter 
-	0xb1680  func HKLeanBodyMass.shortUnitString.setter // setter 
-	0x9ec40  func HKLeanBodyMass.shortUnitString.modify // modifyCoroutine 
-	0xb12d0  func HKLeanBodyMass.longUnitString.getter // getter 
-	0xb1690  func HKLeanBodyMass.longUnitString.setter // setter 
-	0x9ec70  func HKLeanBodyMass.longUnitString.modify // modifyCoroutine 
-	0x9f140  func HKLeanBodyMass.dateRange.getter // getter 
-	0x9f160  func HKLeanBodyMass.dateRange.setter // setter 
-	0x9f180  func HKLeanBodyMass.dateRange.modify // modifyCoroutine 
-	0x9f1c0  class func HKLeanBodyMass.__allocating_init(statistics:) // init 
-	0x9f210  class func HKLeanBodyMass.__allocating_init(sample:) // init 
+	0xb15a0  func HKLeanBodyMass.shortUnitString.getter // getter 
+	0xb1960  func HKLeanBodyMass.shortUnitString.setter // setter 
+	0x9ef20  func HKLeanBodyMass.shortUnitString.modify // modifyCoroutine 
+	0xb15b0  func HKLeanBodyMass.longUnitString.getter // getter 
+	0xb1970  func HKLeanBodyMass.longUnitString.setter // setter 
+	0x9ef50  func HKLeanBodyMass.longUnitString.modify // modifyCoroutine 
+	0x9f420  func HKLeanBodyMass.dateRange.getter // getter 
+	0x9f440  func HKLeanBodyMass.dateRange.setter // setter 
+	0x9f460  func HKLeanBodyMass.dateRange.modify // modifyCoroutine 
+	0x9f4a0  class func HKLeanBodyMass.__allocating_init(statistics:) // init 
+	0x9f4f0  class func HKLeanBodyMass.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKHeartRate : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1897,17 +1897,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x0 (0x0)
 
 	// Swift methods
-	0x9f560  func HKHeartRate.shortUnitString.getter // getter 
-	0x9f5a0  func HKHeartRate.shortUnitString.setter // setter 
-	0x9f5e0  func HKHeartRate.shortUnitString.modify // modifyCoroutine 
-	0x9f610  func HKHeartRate.longUnitString.getter // getter 
-	0x9f650  func HKHeartRate.longUnitString.setter // setter 
-	0x9f690  func HKHeartRate.longUnitString.modify // modifyCoroutine 
-	0x9fbc0  func HKHeartRate.dateRange.getter // getter 
-	0x9fbe0  func HKHeartRate.dateRange.setter // setter 
-	0x9fc00  func HKHeartRate.dateRange.modify // modifyCoroutine 
-	0x9fc40  class func HKHeartRate.__allocating_init(statistics:) // init 
-	0x9fc90  class func HKHeartRate.__allocating_init(sample:) // init 
+	0x9f840  func HKHeartRate.shortUnitString.getter // getter 
+	0x9f880  func HKHeartRate.shortUnitString.setter // setter 
+	0x9f8c0  func HKHeartRate.shortUnitString.modify // modifyCoroutine 
+	0x9f8f0  func HKHeartRate.longUnitString.getter // getter 
+	0x9f930  func HKHeartRate.longUnitString.setter // setter 
+	0x9f970  func HKHeartRate.longUnitString.modify // modifyCoroutine 
+	0x9fea0  func HKHeartRate.dateRange.getter // getter 
+	0x9fec0  func HKHeartRate.dateRange.setter // setter 
+	0x9fee0  func HKHeartRate.dateRange.modify // modifyCoroutine 
+	0x9ff20  class func HKHeartRate.__allocating_init(statistics:) // init 
+	0x9ff70  class func HKHeartRate.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKDistanceWalkingRunning : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1920,17 +1920,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x0 (0x0)
 
 	// Swift methods
-	0xb1300  func HKDistanceWalkingRunning.shortUnitString.getter // getter 
-	0xb16c0  func HKDistanceWalkingRunning.shortUnitString.setter // setter 
-	0xa0090  func HKDistanceWalkingRunning.shortUnitString.modify // modifyCoroutine 
-	0xb1310  func HKDistanceWalkingRunning.longUnitString.getter // getter 
-	0xb16d0  func HKDistanceWalkingRunning.longUnitString.setter // setter 
-	0xa00c0  func HKDistanceWalkingRunning.longUnitString.modify // modifyCoroutine 
-	0xa0590  func HKDistanceWalkingRunning.dateRange.getter // getter 
-	0xa05b0  func HKDistanceWalkingRunning.dateRange.setter // setter 
-	0xa05d0  func HKDistanceWalkingRunning.dateRange.modify // modifyCoroutine 
-	0xa0610  class func HKDistanceWalkingRunning.__allocating_init(statistics:) // init 
-	0xa0660  class func HKDistanceWalkingRunning.__allocating_init(sample:) // init 
+	0xb15e0  func HKDistanceWalkingRunning.shortUnitString.getter // getter 
+	0xb19a0  func HKDistanceWalkingRunning.shortUnitString.setter // setter 
+	0xa0370  func HKDistanceWalkingRunning.shortUnitString.modify // modifyCoroutine 
+	0xb15f0  func HKDistanceWalkingRunning.longUnitString.getter // getter 
+	0xb19b0  func HKDistanceWalkingRunning.longUnitString.setter // setter 
+	0xa03a0  func HKDistanceWalkingRunning.longUnitString.modify // modifyCoroutine 
+	0xa0870  func HKDistanceWalkingRunning.dateRange.getter // getter 
+	0xa0890  func HKDistanceWalkingRunning.dateRange.setter // setter 
+	0xa08b0  func HKDistanceWalkingRunning.dateRange.modify // modifyCoroutine 
+	0xa08f0  class func HKDistanceWalkingRunning.__allocating_init(statistics:) // init 
+	0xa0940  class func HKDistanceWalkingRunning.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKFlightsClimbed : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1943,17 +1943,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x0 (0x0)
 
 	// Swift methods
-	0xb1320  func HKFlightsClimbed.shortUnitString.getter // getter 
-	0xb16e0  func HKFlightsClimbed.shortUnitString.setter // setter 
-	0xa09d0  func HKFlightsClimbed.shortUnitString.modify // modifyCoroutine 
-	0xb1330  func HKFlightsClimbed.longUnitString.getter // getter 
-	0xb16f0  func HKFlightsClimbed.longUnitString.setter // setter 
-	0xa0a00  func HKFlightsClimbed.longUnitString.modify // modifyCoroutine 
-	0xa0ef0  func HKFlightsClimbed.dateRange.getter // getter 
-	0xa0f10  func HKFlightsClimbed.dateRange.setter // setter 
-	0xa0f30  func HKFlightsClimbed.dateRange.modify // modifyCoroutine 
-	0xa0f70  class func HKFlightsClimbed.__allocating_init(statistics:) // init 
-	0xa0fc0  class func HKFlightsClimbed.__allocating_init(sample:) // init 
+	0xb1600  func HKFlightsClimbed.shortUnitString.getter // getter 
+	0xb19c0  func HKFlightsClimbed.shortUnitString.setter // setter 
+	0xa0cb0  func HKFlightsClimbed.shortUnitString.modify // modifyCoroutine 
+	0xb1610  func HKFlightsClimbed.longUnitString.getter // getter 
+	0xb19d0  func HKFlightsClimbed.longUnitString.setter // setter 
+	0xa0ce0  func HKFlightsClimbed.longUnitString.modify // modifyCoroutine 
+	0xa11d0  func HKFlightsClimbed.dateRange.getter // getter 
+	0xa11f0  func HKFlightsClimbed.dateRange.setter // setter 
+	0xa1210  func HKFlightsClimbed.dateRange.modify // modifyCoroutine 
+	0xa1250  class func HKFlightsClimbed.__allocating_init(statistics:) // init 
+	0xa12a0  class func HKFlightsClimbed.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKOxygenSaturation : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1966,17 +1966,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x6e755f5f (0x0)
 
 	// Swift methods
-	0xb1340  func HKOxygenSaturation.shortUnitString.getter // getter 
-	0xb1700  func HKOxygenSaturation.shortUnitString.setter // setter 
-	0xa1330  func HKOxygenSaturation.shortUnitString.modify // modifyCoroutine 
-	0xb1350  func HKOxygenSaturation.longUnitString.getter // getter 
-	0xb1710  func HKOxygenSaturation.longUnitString.setter // setter 
-	0xa1360  func HKOxygenSaturation.longUnitString.modify // modifyCoroutine 
-	0xa1830  func HKOxygenSaturation.dateRange.getter // getter 
-	0xa1850  func HKOxygenSaturation.dateRange.setter // setter 
-	0xa1870  func HKOxygenSaturation.dateRange.modify // modifyCoroutine 
-	0xa18b0  class func HKOxygenSaturation.__allocating_init(statistics:) // init 
-	0xa1900  class func HKOxygenSaturation.__allocating_init(sample:) // init 
+	0xb1620  func HKOxygenSaturation.shortUnitString.getter // getter 
+	0xb19e0  func HKOxygenSaturation.shortUnitString.setter // setter 
+	0xa1610  func HKOxygenSaturation.shortUnitString.modify // modifyCoroutine 
+	0xb1630  func HKOxygenSaturation.longUnitString.getter // getter 
+	0xb19f0  func HKOxygenSaturation.longUnitString.setter // setter 
+	0xa1640  func HKOxygenSaturation.longUnitString.modify // modifyCoroutine 
+	0xa1b10  func HKOxygenSaturation.dateRange.getter // getter 
+	0xa1b30  func HKOxygenSaturation.dateRange.setter // setter 
+	0xa1b50  func HKOxygenSaturation.dateRange.modify // modifyCoroutine 
+	0xa1b90  class func HKOxygenSaturation.__allocating_init(statistics:) // init 
+	0xa1be0  class func HKOxygenSaturation.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKBloodAlcoholContent : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1989,17 +1989,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x666e695f (0x0)
 
 	// Swift methods
-	0xb1360  func HKBloodAlcoholContent.shortUnitString.getter // getter 
-	0xb1720  func HKBloodAlcoholContent.shortUnitString.setter // setter 
-	0xa1c70  func HKBloodAlcoholContent.shortUnitString.modify // modifyCoroutine 
-	0xb1370  func HKBloodAlcoholContent.longUnitString.getter // getter 
-	0xb1730  func HKBloodAlcoholContent.longUnitString.setter // setter 
-	0xa1ca0  func HKBloodAlcoholContent.longUnitString.modify // modifyCoroutine 
-	0xa2170  func HKBloodAlcoholContent.dateRange.getter // getter 
-	0xa2190  func HKBloodAlcoholContent.dateRange.setter // setter 
-	0xa21b0  func HKBloodAlcoholContent.dateRange.modify // modifyCoroutine 
-	0xa21f0  class func HKBloodAlcoholContent.__allocating_init(statistics:) // init 
-	0xa2240  class func HKBloodAlcoholContent.__allocating_init(sample:) // init 
+	0xb1640  func HKBloodAlcoholContent.shortUnitString.getter // getter 
+	0xb1a00  func HKBloodAlcoholContent.shortUnitString.setter // setter 
+	0xa1f50  func HKBloodAlcoholContent.shortUnitString.modify // modifyCoroutine 
+	0xb1650  func HKBloodAlcoholContent.longUnitString.getter // getter 
+	0xb1a10  func HKBloodAlcoholContent.longUnitString.setter // setter 
+	0xa1f80  func HKBloodAlcoholContent.longUnitString.modify // modifyCoroutine 
+	0xa2450  func HKBloodAlcoholContent.dateRange.getter // getter 
+	0xa2470  func HKBloodAlcoholContent.dateRange.setter // setter 
+	0xa2490  func HKBloodAlcoholContent.dateRange.modify // modifyCoroutine 
+	0xa24d0  class func HKBloodAlcoholContent.__allocating_init(statistics:) // init 
+	0xa2520  class func HKBloodAlcoholContent.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKForcedVitalCapacity : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2012,17 +2012,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x45545f5f (0x0)
 
 	// Swift methods
-	0xb1380  func HKForcedVitalCapacity.shortUnitString.getter // getter 
-	0xb1740  func HKForcedVitalCapacity.shortUnitString.setter // setter 
-	0xa25b0  func HKForcedVitalCapacity.shortUnitString.modify // modifyCoroutine 
-	0xb1390  func HKForcedVitalCapacity.longUnitString.getter // getter 
-	0xb1750  func HKForcedVitalCapacity.longUnitString.setter // setter 
-	0xa25e0  func HKForcedVitalCapacity.longUnitString.modify // modifyCoroutine 
-	0xa2ab0  func HKForcedVitalCapacity.dateRange.getter // getter 
-	0xa2ad0  func HKForcedVitalCapacity.dateRange.setter // setter 
-	0xa2af0  func HKForcedVitalCapacity.dateRange.modify // modifyCoroutine 
-	0xa2b30  class func HKForcedVitalCapacity.__allocating_init(statistics:) // init 
-	0xa2b80  class func HKForcedVitalCapacity.__allocating_init(sample:) // init 
+	0xb1660  func HKForcedVitalCapacity.shortUnitString.getter // getter 
+	0xb1a20  func HKForcedVitalCapacity.shortUnitString.setter // setter 
+	0xa2890  func HKForcedVitalCapacity.shortUnitString.modify // modifyCoroutine 
+	0xb1670  func HKForcedVitalCapacity.longUnitString.getter // getter 
+	0xb1a30  func HKForcedVitalCapacity.longUnitString.setter // setter 
+	0xa28c0  func HKForcedVitalCapacity.longUnitString.modify // modifyCoroutine 
+	0xa2d90  func HKForcedVitalCapacity.dateRange.getter // getter 
+	0xa2db0  func HKForcedVitalCapacity.dateRange.setter // setter 
+	0xa2dd0  func HKForcedVitalCapacity.dateRange.modify // modifyCoroutine 
+	0xa2e10  class func HKForcedVitalCapacity.__allocating_init(statistics:) // init 
+	0xa2e60  class func HKForcedVitalCapacity.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKForcedExpiratoryVolume : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2035,17 +2035,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x0 (0x0)
 
 	// Swift methods
-	0xb13a0  func HKForcedExpiratoryVolume.shortUnitString.getter // getter 
-	0xb1760  func HKForcedExpiratoryVolume.shortUnitString.setter // setter 
-	0xa2ef0  func HKForcedExpiratoryVolume.shortUnitString.modify // modifyCoroutine 
-	0xb13b0  func HKForcedExpiratoryVolume.longUnitString.getter // getter 
-	0xb1770  func HKForcedExpiratoryVolume.longUnitString.setter // setter 
-	0xa2f20  func HKForcedExpiratoryVolume.longUnitString.modify // modifyCoroutine 
-	0xa33f0  func HKForcedExpiratoryVolume.dateRange.getter // getter 
-	0xa3410  func HKForcedExpiratoryVolume.dateRange.setter // setter 
-	0xa3430  func HKForcedExpiratoryVolume.dateRange.modify // modifyCoroutine 
-	0xa3470  class func HKForcedExpiratoryVolume.__allocating_init(statistics:) // init 
-	0xa34c0  class func HKForcedExpiratoryVolume.__allocating_init(sample:) // init 
+	0xb1680  func HKForcedExpiratoryVolume.shortUnitString.getter // getter 
+	0xb1a40  func HKForcedExpiratoryVolume.shortUnitString.setter // setter 
+	0xa31d0  func HKForcedExpiratoryVolume.shortUnitString.modify // modifyCoroutine 
+	0xb1690  func HKForcedExpiratoryVolume.longUnitString.getter // getter 
+	0xb1a50  func HKForcedExpiratoryVolume.longUnitString.setter // setter 
+	0xa3200  func HKForcedExpiratoryVolume.longUnitString.modify // modifyCoroutine 
+	0xa36d0  func HKForcedExpiratoryVolume.dateRange.getter // getter 
+	0xa36f0  func HKForcedExpiratoryVolume.dateRange.setter // setter 
+	0xa3710  func HKForcedExpiratoryVolume.dateRange.modify // modifyCoroutine 
+	0xa3750  class func HKForcedExpiratoryVolume.__allocating_init(statistics:) // init 
+	0xa37a0  class func HKForcedExpiratoryVolume.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKPeakExpiratoryFlowRate : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2058,17 +2058,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x155948 (0x0)
 
 	// Swift methods
-	0xb13c0  func HKPeakExpiratoryFlowRate.shortUnitString.getter // getter 
-	0xb1780  func HKPeakExpiratoryFlowRate.shortUnitString.setter // setter 
-	0xa3830  func HKPeakExpiratoryFlowRate.shortUnitString.modify // modifyCoroutine 
-	0xb13d0  func HKPeakExpiratoryFlowRate.longUnitString.getter // getter 
-	0xb1790  func HKPeakExpiratoryFlowRate.longUnitString.setter // setter 
-	0xa3860  func HKPeakExpiratoryFlowRate.longUnitString.modify // modifyCoroutine 
-	0xa3d50  func HKPeakExpiratoryFlowRate.dateRange.getter // getter 
-	0xa3d70  func HKPeakExpiratoryFlowRate.dateRange.setter // setter 
-	0xa3d90  func HKPeakExpiratoryFlowRate.dateRange.modify // modifyCoroutine 
-	0xa3dd0  class func HKPeakExpiratoryFlowRate.__allocating_init(statistics:) // init 
-	0xa3e20  class func HKPeakExpiratoryFlowRate.__allocating_init(sample:) // init 
+	0xb16a0  func HKPeakExpiratoryFlowRate.shortUnitString.getter // getter 
+	0xb1a60  func HKPeakExpiratoryFlowRate.shortUnitString.setter // setter 
+	0xa3b10  func HKPeakExpiratoryFlowRate.shortUnitString.modify // modifyCoroutine 
+	0xb16b0  func HKPeakExpiratoryFlowRate.longUnitString.getter // getter 
+	0xb1a70  func HKPeakExpiratoryFlowRate.longUnitString.setter // setter 
+	0xa3b40  func HKPeakExpiratoryFlowRate.longUnitString.modify // modifyCoroutine 
+	0xa4030  func HKPeakExpiratoryFlowRate.dateRange.getter // getter 
+	0xa4050  func HKPeakExpiratoryFlowRate.dateRange.setter // setter 
+	0xa4070  func HKPeakExpiratoryFlowRate.dateRange.modify // modifyCoroutine 
+	0xa40b0  class func HKPeakExpiratoryFlowRate.__allocating_init(statistics:) // init 
+	0xa4100  class func HKPeakExpiratoryFlowRate.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKPeripheralPerfusionIndex : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2081,17 +2081,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x519c (0x0)
 
 	// Swift methods
-	0xb13e0  func HKPeripheralPerfusionIndex.shortUnitString.getter // getter 
-	0xb17a0  func HKPeripheralPerfusionIndex.shortUnitString.setter // setter 
-	0xa4190  func HKPeripheralPerfusionIndex.shortUnitString.modify // modifyCoroutine 
-	0xb13f0  func HKPeripheralPerfusionIndex.longUnitString.getter // getter 
-	0xb17b0  func HKPeripheralPerfusionIndex.longUnitString.setter // setter 
-	0xa41c0  func HKPeripheralPerfusionIndex.longUnitString.modify // modifyCoroutine 
-	0xa4690  func HKPeripheralPerfusionIndex.dateRange.getter // getter 
-	0xa46b0  func HKPeripheralPerfusionIndex.dateRange.setter // setter 
-	0xa46d0  func HKPeripheralPerfusionIndex.dateRange.modify // modifyCoroutine 
-	0xa4710  class func HKPeripheralPerfusionIndex.__allocating_init(statistics:) // init 
-	0xa4760  class func HKPeripheralPerfusionIndex.__allocating_init(sample:) // init 
+	0xb16c0  func HKPeripheralPerfusionIndex.shortUnitString.getter // getter 
+	0xb1a80  func HKPeripheralPerfusionIndex.shortUnitString.setter // setter 
+	0xa4470  func HKPeripheralPerfusionIndex.shortUnitString.modify // modifyCoroutine 
+	0xb16d0  func HKPeripheralPerfusionIndex.longUnitString.getter // getter 
+	0xb1a90  func HKPeripheralPerfusionIndex.longUnitString.setter // setter 
+	0xa44a0  func HKPeripheralPerfusionIndex.longUnitString.modify // modifyCoroutine 
+	0xa4970  func HKPeripheralPerfusionIndex.dateRange.getter // getter 
+	0xa4990  func HKPeripheralPerfusionIndex.dateRange.setter // setter 
+	0xa49b0  func HKPeripheralPerfusionIndex.dateRange.modify // modifyCoroutine 
+	0xa49f0  class func HKPeripheralPerfusionIndex.__allocating_init(statistics:) // init 
+	0xa4a40  class func HKPeripheralPerfusionIndex.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKDietaryFatTotal : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2104,17 +2104,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x155948 (0x0)
 
 	// Swift methods
-	0xb1400  func HKDietaryFatTotal.shortUnitString.getter // getter 
-	0xb17c0  func HKDietaryFatTotal.shortUnitString.setter // setter 
-	0xa4ad0  func HKDietaryFatTotal.shortUnitString.modify // modifyCoroutine 
-	0xb1410  func HKDietaryFatTotal.longUnitString.getter // getter 
-	0xb17d0  func HKDietaryFatTotal.longUnitString.setter // setter 
-	0xa4b00  func HKDietaryFatTotal.longUnitString.modify // modifyCoroutine 
-	0xa4fd0  func HKDietaryFatTotal.dateRange.getter // getter 
-	0xa4ff0  func HKDietaryFatTotal.dateRange.setter // setter 
-	0xa5010  func HKDietaryFatTotal.dateRange.modify // modifyCoroutine 
-	0xa5050  class func HKDietaryFatTotal.__allocating_init(statistics:) // init 
-	0xa50a0  class func HKDietaryFatTotal.__allocating_init(sample:) // init 
+	0xb16e0  func HKDietaryFatTotal.shortUnitString.getter // getter 
+	0xb1aa0  func HKDietaryFatTotal.shortUnitString.setter // setter 
+	0xa4db0  func HKDietaryFatTotal.shortUnitString.modify // modifyCoroutine 
+	0xb16f0  func HKDietaryFatTotal.longUnitString.getter // getter 
+	0xb1ab0  func HKDietaryFatTotal.longUnitString.setter // setter 
+	0xa4de0  func HKDietaryFatTotal.longUnitString.modify // modifyCoroutine 
+	0xa52b0  func HKDietaryFatTotal.dateRange.getter // getter 
+	0xa52d0  func HKDietaryFatTotal.dateRange.setter // setter 
+	0xa52f0  func HKDietaryFatTotal.dateRange.modify // modifyCoroutine 
+	0xa5330  class func HKDietaryFatTotal.__allocating_init(statistics:) // init 
+	0xa5380  class func HKDietaryFatTotal.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKDietaryFatPolyunsaturated : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2127,17 +2127,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x0 (0x0)
 
 	// Swift methods
-	0xb1420  func HKDietaryFatPolyunsaturated.shortUnitString.getter // getter 
-	0xb17e0  func HKDietaryFatPolyunsaturated.shortUnitString.setter // setter 
-	0xa5410  func HKDietaryFatPolyunsaturated.shortUnitString.modify // modifyCoroutine 
-	0xb1430  func HKDietaryFatPolyunsaturated.longUnitString.getter // getter 
-	0xb17f0  func HKDietaryFatPolyunsaturated.longUnitString.setter // setter 
-	0xa5440  func HKDietaryFatPolyunsaturated.longUnitString.modify // modifyCoroutine 
-	0xa5910  func HKDietaryFatPolyunsaturated.dateRange.getter // getter 
-	0xa5930  func HKDietaryFatPolyunsaturated.dateRange.setter // setter 
-	0xa5950  func HKDietaryFatPolyunsaturated.dateRange.modify // modifyCoroutine 
-	0xa5990  class func HKDietaryFatPolyunsaturated.__allocating_init(statistics:) // init 
-	0xa59e0  class func HKDietaryFatPolyunsaturated.__allocating_init(sample:) // init 
+	0xb1700  func HKDietaryFatPolyunsaturated.shortUnitString.getter // getter 
+	0xb1ac0  func HKDietaryFatPolyunsaturated.shortUnitString.setter // setter 
+	0xa56f0  func HKDietaryFatPolyunsaturated.shortUnitString.modify // modifyCoroutine 
+	0xb1710  func HKDietaryFatPolyunsaturated.longUnitString.getter // getter 
+	0xb1ad0  func HKDietaryFatPolyunsaturated.longUnitString.setter // setter 
+	0xa5720  func HKDietaryFatPolyunsaturated.longUnitString.modify // modifyCoroutine 
+	0xa5bf0  func HKDietaryFatPolyunsaturated.dateRange.getter // getter 
+	0xa5c10  func HKDietaryFatPolyunsaturated.dateRange.setter // setter 
+	0xa5c30  func HKDietaryFatPolyunsaturated.dateRange.modify // modifyCoroutine 
+	0xa5c70  class func HKDietaryFatPolyunsaturated.__allocating_init(statistics:) // init 
+	0xa5cc0  class func HKDietaryFatPolyunsaturated.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKDietaryFatMonounsaturated : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2150,17 +2150,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x0 (0x0)
 
 	// Swift methods
-	0xb1440  func HKDietaryFatMonounsaturated.shortUnitString.getter // getter 
-	0xb1800  func HKDietaryFatMonounsaturated.shortUnitString.setter // setter 
-	0xa5d50  func HKDietaryFatMonounsaturated.shortUnitString.modify // modifyCoroutine 
-	0xb1450  func HKDietaryFatMonounsaturated.longUnitString.getter // getter 
-	0xb1810  func HKDietaryFatMonounsaturated.longUnitString.setter // setter 
-	0xa5d80  func HKDietaryFatMonounsaturated.longUnitString.modify // modifyCoroutine 
-	0xa6250  func HKDietaryFatMonounsaturated.dateRange.getter // getter 
-	0xa6270  func HKDietaryFatMonounsaturated.dateRange.setter // setter 
-	0xa6290  func HKDietaryFatMonounsaturated.dateRange.modify // modifyCoroutine 
-	0xa62d0  class func HKDietaryFatMonounsaturated.__allocating_init(statistics:) // init 
-	0xa6320  class func HKDietaryFatMonounsaturated.__allocating_init(sample:) // init 
+	0xb1720  func HKDietaryFatMonounsaturated.shortUnitString.getter // getter 
+	0xb1ae0  func HKDietaryFatMonounsaturated.shortUnitString.setter // setter 
+	0xa6030  func HKDietaryFatMonounsaturated.shortUnitString.modify // modifyCoroutine 
+	0xb1730  func HKDietaryFatMonounsaturated.longUnitString.getter // getter 
+	0xb1af0  func HKDietaryFatMonounsaturated.longUnitString.setter // setter 
+	0xa6060  func HKDietaryFatMonounsaturated.longUnitString.modify // modifyCoroutine 
+	0xa6530  func HKDietaryFatMonounsaturated.dateRange.getter // getter 
+	0xa6550  func HKDietaryFatMonounsaturated.dateRange.setter // setter 
+	0xa6570  func HKDietaryFatMonounsaturated.dateRange.modify // modifyCoroutine 
+	0xa65b0  class func HKDietaryFatMonounsaturated.__allocating_init(statistics:) // init 
+	0xa6600  class func HKDietaryFatMonounsaturated.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKDietaryFatSaturated : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2173,17 +2173,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x0 (0x0)
 
 	// Swift methods
-	0xb1460  func HKDietaryFatSaturated.shortUnitString.getter // getter 
-	0xb1820  func HKDietaryFatSaturated.shortUnitString.setter // setter 
-	0xa6690  func HKDietaryFatSaturated.shortUnitString.modify // modifyCoroutine 
-	0xb1470  func HKDietaryFatSaturated.longUnitString.getter // getter 
-	0xb1830  func HKDietaryFatSaturated.longUnitString.setter // setter 
-	0xa66c0  func HKDietaryFatSaturated.longUnitString.modify // modifyCoroutine 
-	0xa6b90  func HKDietaryFatSaturated.dateRange.getter // getter 
-	0xa6bb0  func HKDietaryFatSaturated.dateRange.setter // setter 
-	0xa6bd0  func HKDietaryFatSaturated.dateRange.modify // modifyCoroutine 
-	0xa6c10  class func HKDietaryFatSaturated.__allocating_init(statistics:) // init 
-	0xa6c60  class func HKDietaryFatSaturated.__allocating_init(sample:) // init 
+	0xb1740  func HKDietaryFatSaturated.shortUnitString.getter // getter 
+	0xb1b00  func HKDietaryFatSaturated.shortUnitString.setter // setter 
+	0xa6970  func HKDietaryFatSaturated.shortUnitString.modify // modifyCoroutine 
+	0xb1750  func HKDietaryFatSaturated.longUnitString.getter // getter 
+	0xb1b10  func HKDietaryFatSaturated.longUnitString.setter // setter 
+	0xa69a0  func HKDietaryFatSaturated.longUnitString.modify // modifyCoroutine 
+	0xa6e70  func HKDietaryFatSaturated.dateRange.getter // getter 
+	0xa6e90  func HKDietaryFatSaturated.dateRange.setter // setter 
+	0xa6eb0  func HKDietaryFatSaturated.dateRange.modify // modifyCoroutine 
+	0xa6ef0  class func HKDietaryFatSaturated.__allocating_init(statistics:) // init 
+	0xa6f40  class func HKDietaryFatSaturated.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKDietaryCholesterol : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2196,17 +2196,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x68655f5f (0x0)
 
 	// Swift methods
-	0xb1480  func HKDietaryCholesterol.shortUnitString.getter // getter 
-	0xb1840  func HKDietaryCholesterol.shortUnitString.setter // setter 
-	0xa6fd0  func HKDietaryCholesterol.shortUnitString.modify // modifyCoroutine 
-	0xb1490  func HKDietaryCholesterol.longUnitString.getter // getter 
-	0xb1850  func HKDietaryCholesterol.longUnitString.setter // setter 
-	0xa7000  func HKDietaryCholesterol.longUnitString.modify // modifyCoroutine 
-	0xa7700  func HKDietaryCholesterol.dateRange.getter // getter 
-	0xa7720  func HKDietaryCholesterol.dateRange.setter // setter 
-	0xa7740  func HKDietaryCholesterol.dateRange.modify // modifyCoroutine 
-	0xa7780  class func HKDietaryCholesterol.__allocating_init(statistics:) // init 
-	0xa77d0  class func HKDietaryCholesterol.__allocating_init(sample:) // init 
+	0xb1760  func HKDietaryCholesterol.shortUnitString.getter // getter 
+	0xb1b20  func HKDietaryCholesterol.shortUnitString.setter // setter 
+	0xa72b0  func HKDietaryCholesterol.shortUnitString.modify // modifyCoroutine 
+	0xb1770  func HKDietaryCholesterol.longUnitString.getter // getter 
+	0xb1b30  func HKDietaryCholesterol.longUnitString.setter // setter 
+	0xa72e0  func HKDietaryCholesterol.longUnitString.modify // modifyCoroutine 
+	0xa79e0  func HKDietaryCholesterol.dateRange.getter // getter 
+	0xa7a00  func HKDietaryCholesterol.dateRange.setter // setter 
+	0xa7a20  func HKDietaryCholesterol.dateRange.modify // modifyCoroutine 
+	0xa7a60  class func HKDietaryCholesterol.__allocating_init(statistics:) // init 
+	0xa7ab0  class func HKDietaryCholesterol.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKOvulationTestResultSample : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2217,16 +2217,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x656d (0x0)
 
 	// Swift methods
-	0xb1210  func HKOvulationTestResultSample.value.getter // getter 
-	0xb1860  func HKOvulationTestResultSample.value.setter // setter 
-	0xa7d00  func HKOvulationTestResultSample.value.modify // modifyCoroutine 
-	0xa7e70  func HKOvulationTestResultSample.dateRange.getter // getter 
-	0xa7e90  func HKOvulationTestResultSample.dateRange.setter // setter 
-	0xa7eb0  func HKOvulationTestResultSample.dateRange.modify // modifyCoroutine 
-	0xa7ef0  class func HKOvulationTestResultSample.__allocating_init(sample:) // init 
-	0xa7f30  class func HKOvulationTestResultSample.__allocating_init(categorySample:) // init 
-	0xa7f70  func HKOvulationTestResultSample.smallDescriptionString() // method 
-	0xa8030  func HKOvulationTestResultSample.longDescriptionString() // method 
+	0xb14f0  func HKOvulationTestResultSample.value.getter // getter 
+	0xb1b40  func HKOvulationTestResultSample.value.setter // setter 
+	0xa7fe0  func HKOvulationTestResultSample.value.modify // modifyCoroutine 
+	0xa8150  func HKOvulationTestResultSample.dateRange.getter // getter 
+	0xa8170  func HKOvulationTestResultSample.dateRange.setter // setter 
+	0xa8190  func HKOvulationTestResultSample.dateRange.modify // modifyCoroutine 
+	0xa81d0  class func HKOvulationTestResultSample.__allocating_init(sample:) // init 
+	0xa8210  class func HKOvulationTestResultSample.__allocating_init(categorySample:) // init 
+	0xa8250  func HKOvulationTestResultSample.smallDescriptionString() // method 
+	0xa8310  func HKOvulationTestResultSample.longDescriptionString() // method 
  }
 
  class HealthExperience.HKMenstrualFlowSample : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2237,16 +2237,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_
 
 	// Swift methods
-	0xa8350  func HKMenstrualFlowSample.value.getter // getter 
-	0xa8380  func HKMenstrualFlowSample.value.setter // setter 
-	0xa83b0  func HKMenstrualFlowSample.value.modify // modifyCoroutine 
-	0xa85d0  func HKMenstrualFlowSample.dateRange.getter // getter 
-	0xa8640  func HKMenstrualFlowSample.dateRange.setter // setter 
-	0xa86c0  func HKMenstrualFlowSample.dateRange.modify // modifyCoroutine 
-	0xa8700  class func HKMenstrualFlowSample.__allocating_init(sample:) // init 
-	0xa8740  class func HKMenstrualFlowSample.__allocating_init(categorySample:) // init 
-	0xa8a60  func HKMenstrualFlowSample.smallDescriptionString() // method 
-	0xa8b30  func HKMenstrualFlowSample.longDescriptionString() // method 
+	0xa8630  func HKMenstrualFlowSample.value.getter // getter 
+	0xa8660  func HKMenstrualFlowSample.value.setter // setter 
+	0xa8690  func HKMenstrualFlowSample.value.modify // modifyCoroutine 
+	0xa88b0  func HKMenstrualFlowSample.dateRange.getter // getter 
+	0xa8920  func HKMenstrualFlowSample.dateRange.setter // setter 
+	0xa89a0  func HKMenstrualFlowSample.dateRange.modify // modifyCoroutine 
+	0xa89e0  class func HKMenstrualFlowSample.__allocating_init(sample:) // init 
+	0xa8a20  class func HKMenstrualFlowSample.__allocating_init(categorySample:) // init 
+	0xa8d40  func HKMenstrualFlowSample.smallDescriptionString() // method 
+	0xa8e10  func HKMenstrualFlowSample.longDescriptionString() // method 
  }
 
  enum HealthExperience.SectionedDataSourceChangeset {
@@ -2274,13 +2274,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var currentOperations : Set<NSOperation> // +0x20 (0x8)
 
 	// Swift methods
-	0xb3710  class func OperationQueueObserver.__allocating_init(queue:) // init 
-	0xb3790  func OperationQueueObserver.addOperation(_:) // method 
-	0xb37f0  func OperationQueueObserver.addOperations(_:waitUntilFinished:) // method 
-	0xb4120  func OperationQueueObserver.currentOperationsCopy.getter // getter 
-	0xb41e0  func OperationQueueObserver.operationCount.getter // getter 
-	0xb4270  func OperationQueueObserver.clearObserving() // method 
-	0xb42e0  func OperationQueueObserver.didComplete(_:) // method 
+	0xb39f0  class func OperationQueueObserver.__allocating_init(queue:) // init 
+	0xb3a70  func OperationQueueObserver.addOperation(_:) // method 
+	0xb3ad0  func OperationQueueObserver.addOperations(_:waitUntilFinished:) // method 
+	0xb4400  func OperationQueueObserver.currentOperationsCopy.getter // getter 
+	0xb44c0  func OperationQueueObserver.operationCount.getter // getter 
+	0xb4550  func OperationQueueObserver.clearObserving() // method 
+	0xb45c0  func OperationQueueObserver.didComplete(_:) // method 
  }
 
  class HealthExperience.SwimmingStrokeCount : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2293,7 +2293,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthExperience.Feed : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0xb68a0  @objc Feed.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0xb6b80  @objc Feed.initWithEntity:insertIntoManagedObjectContext: <stripped>
  }
 
  class HealthExperience.ConditionRecord : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2334,26 +2334,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let arrangedSections : ArrayDataSourceSection // +0x40 (0x8)
 
 	// Swift methods
-	0xb9030  func ArrayDataSource.eventHandler.getter // getter 
-	0xb9060  func ArrayDataSource.eventHandler.setter // setter 
-	0xb90b0  func ArrayDataSource.eventHandler.modify // modifyCoroutine 
-	0xb9190  func ArrayDataSource.debugDescription.getter // getter 
-	0xb9390  func ArrayDataSource.debugDescription.setter // setter 
-	0xb93b0  func ArrayDataSource.debugDescription.modify // modifyCoroutine 
-	0xb9400  func ArrayDataSource.identifier.getter // getter 
-	0xb95b0  func ArrayDataSource.identifier.setter // setter 
-	0xb95d0  func ArrayDataSource.identifier.modify // modifyCoroutine 
-	0xb9690  func ArrayDataSource.numberOfSections.getter // getter 
-	0xb96a0  func ArrayDataSource.titleForHeader(in:) // method 
-	0xb8fb0  class func ArrayDataSource.__allocating_init(arrangedSections:) // init 
-	0xb9740  func ArrayDataSource.sections.getter // getter 
-	0xb9750  func ArrayDataSource.sectionIdentifiers.getter // getter 
-	0xb9af0  func ArrayDataSource.numberOfItems(in:) // method 
-	0xb9b60  func ArrayDataSource.item(at:) // method 
-	0xb9ce0  func ArrayDataSource.reuseIdentifierForItem(at:) // method 
-	0xb9d40  func ArrayDataSource.item(for:) // method 
-	0xb9fe0  func ArrayDataSource.reuseIdentifierForItem(with:) // method 
-	0xba060  func ArrayDataSource.itemIdentifiers(in:) // method 
+	0xb9310  func ArrayDataSource.eventHandler.getter // getter 
+	0xb9340  func ArrayDataSource.eventHandler.setter // setter 
+	0xb9390  func ArrayDataSource.eventHandler.modify // modifyCoroutine 
+	0xb9470  func ArrayDataSource.debugDescription.getter // getter 
+	0xb9670  func ArrayDataSource.debugDescription.setter // setter 
+	0xb9690  func ArrayDataSource.debugDescription.modify // modifyCoroutine 
+	0xb96e0  func ArrayDataSource.identifier.getter // getter 
+	0xb9890  func ArrayDataSource.identifier.setter // setter 
+	0xb98b0  func ArrayDataSource.identifier.modify // modifyCoroutine 
+	0xb9970  func ArrayDataSource.numberOfSections.getter // getter 
+	0xb9980  func ArrayDataSource.titleForHeader(in:) // method 
+	0xb9290  class func ArrayDataSource.__allocating_init(arrangedSections:) // init 
+	0xb9a20  func ArrayDataSource.sections.getter // getter 
+	0xb9a30  func ArrayDataSource.sectionIdentifiers.getter // getter 
+	0xb9dd0  func ArrayDataSource.numberOfItems(in:) // method 
+	0xb9e40  func ArrayDataSource.item(at:) // method 
+	0xb9fc0  func ArrayDataSource.reuseIdentifierForItem(at:) // method 
+	0xba020  func ArrayDataSource.item(for:) // method 
+	0xba2c0  func ArrayDataSource.reuseIdentifierForItem(with:) // method 
+	0xba340  func ArrayDataSource.itemIdentifiers(in:) // method 
  }
 
  class HealthExperience.InhalerUsage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2386,21 +2386,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_ // +0x0 (0x0)
 
 	// Swift methods
-	0xbd700  func HKCervicalMucusQualitySample.value.getter // getter 
-	0xbd730  func HKCervicalMucusQualitySample.value.setter // setter 
-	0xbd760  func HKCervicalMucusQualitySample.value.modify // modifyCoroutine 
-	0xbd940  func HKCervicalMucusQualitySample.dateRange.getter // getter 
-	0xbd990  func HKCervicalMucusQualitySample.dateRange.setter // setter 
-	0xbd9f0  func HKCervicalMucusQualitySample.dateRange.modify // modifyCoroutine 
-	0xbda30  class func HKCervicalMucusQualitySample.__allocating_init(sample:) // init 
-	0xbda60  class func HKCervicalMucusQualitySample.__allocating_init(categorySample:) // init 
-	0xbdd30  func HKCervicalMucusQualitySample.smallDescriptionString() // method 
-	0xbddf0  func HKCervicalMucusQualitySample.longDescriptionString() // method 
+	0xbd9e0  func HKCervicalMucusQualitySample.value.getter // getter 
+	0xbda10  func HKCervicalMucusQualitySample.value.setter // setter 
+	0xbda40  func HKCervicalMucusQualitySample.value.modify // modifyCoroutine 
+	0xbdc20  func HKCervicalMucusQualitySample.dateRange.getter // getter 
+	0xbdc70  func HKCervicalMucusQualitySample.dateRange.setter // setter 
+	0xbdcd0  func HKCervicalMucusQualitySample.dateRange.modify // modifyCoroutine 
+	0xbdd10  class func HKCervicalMucusQualitySample.__allocating_init(sample:) // init 
+	0xbdd40  class func HKCervicalMucusQualitySample.__allocating_init(categorySample:) // init 
+	0xbe010  func HKCervicalMucusQualitySample.smallDescriptionString() // method 
+	0xbe0d0  func HKCervicalMucusQualitySample.longDescriptionString() // method 
  }
 
  class HealthExperience.HKCervicalMucusQualitySampleMatcher : Matcher {
 	// Swift methods
-	0xbe510  func HKCervicalMucusQualitySampleMatcher.dataSource(healthStore:) // method 
+	0xbe7f0  func HKCervicalMucusQualitySampleMatcher.dataSource(healthStore:) // method 
  }
 
  class HealthExperience.PushCount : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2418,14 +2418,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var completionQueue : OS_dispatch_queue? // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xbf7c0  @objc FirstRestoreNotInProgressPrecondition.dealloc <stripped>
-	0xbf8f0  @objc FirstRestoreNotInProgressPrecondition.description <stripped>
-	0xbfaa0  @objc FirstRestoreNotInProgressPrecondition.init <stripped>
-	0xbf7e0  @objc FirstRestoreNotInProgressPrecondition..cxx_destruct <stripped>
+	0xbfaa0  @objc FirstRestoreNotInProgressPrecondition.dealloc <stripped>
+	0xbfbd0  @objc FirstRestoreNotInProgressPrecondition.description <stripped>
+	0xbfd80  @objc FirstRestoreNotInProgressPrecondition.init <stripped>
+	0xbfac0  @objc FirstRestoreNotInProgressPrecondition..cxx_destruct <stripped>
 
 	// Swift methods
-	0xbf460  class func FirstRestoreNotInProgressPrecondition.__allocating_init(healthStore:waitUntilShouldProceed:completionQueue:) // init 
-	0xbf840  func FirstRestoreNotInProgressPrecondition.evaluate(_:) // method 
+	0xbf740  class func FirstRestoreNotInProgressPrecondition.__allocating_init(healthStore:waitUntilShouldProceed:completionQueue:) // init 
+	0xbfb20  func FirstRestoreNotInProgressPrecondition.evaluate(_:) // method 
  }
 
  class HealthExperience.DietaryCalcium : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2496,7 +2496,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthExperience.Plugin : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0xc4f40  @objc Plugin.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0xc5220  @objc Plugin.initWithEntity:insertIntoManagedObjectContext: <stripped>
  }
 
  class HealthExperience.Food : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2526,11 +2526,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let relevantDateInterval : RelevantDateInterval // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0xca2f0  @objc DateRangeRelevanceProvider.init <stripped>
-	0xca4d0  @objc DateRangeRelevanceProvider.isEqual: <stripped>
-	0xca560  @objc DateRangeRelevanceProvider.hash <stripped>
-	0xca5f0  @objc DateRangeRelevanceProvider.description <stripped>
-	0xca830  @objc DateRangeRelevanceProvider..cxx_destruct <stripped>
+	0xca860  @objc DateRangeRelevanceProvider.init <stripped>
+	0xcaa40  @objc DateRangeRelevanceProvider.isEqual: <stripped>
+	0xcaad0  @objc DateRangeRelevanceProvider.hash <stripped>
+	0xcab60  @objc DateRangeRelevanceProvider.description <stripped>
+	0xcada0  @objc DateRangeRelevanceProvider..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -2549,20 +2549,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var lock : UnfairLock // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xcb140  @objc ComposableAsyncOperation.start <stripped>
-	0xcba50  @objc ComposableAsyncOperation.cancel <stripped>
-	0xcbc40  @objc ComposableAsyncOperation.init <stripped>
-	0xcbaf0  @objc ComposableAsyncOperation..cxx_destruct <stripped>
+	0xcb6b0  @objc ComposableAsyncOperation.start <stripped>
+	0xcbfc0  @objc ComposableAsyncOperation.cancel <stripped>
+	0xcc1b0  @objc ComposableAsyncOperation.init <stripped>
+	0xcc060  @objc ComposableAsyncOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0xcacf0  func ComposableAsyncOperation.automaticallyDispatchFinishOperation.getter // getter 
-	0xcad20  func ComposableAsyncOperation.automaticallyDispatchFinishOperation.setter // setter 
-	0xcad60  func ComposableAsyncOperation.automaticallyDispatchFinishOperation.modify // modifyCoroutine 
-	0xcadb0  func ComposableAsyncOperation.childOperations.getter // getter 
-	0xcadf0  func ComposableAsyncOperation.childOperations.setter // setter 
-	0xcae40  func ComposableAsyncOperation.childOperations.modify // modifyCoroutine 
-	0xcae80  func ComposableAsyncOperation.addChild(_:) // method 
-	0xcb170  func ComposableAsyncOperation.dispatchChildOperations() // method 
+	0xcb260  func ComposableAsyncOperation.automaticallyDispatchFinishOperation.getter // getter 
+	0xcb290  func ComposableAsyncOperation.automaticallyDispatchFinishOperation.setter // setter 
+	0xcb2d0  func ComposableAsyncOperation.automaticallyDispatchFinishOperation.modify // modifyCoroutine 
+	0xcb320  func ComposableAsyncOperation.childOperations.getter // getter 
+	0xcb360  func ComposableAsyncOperation.childOperations.setter // setter 
+	0xcb3b0  func ComposableAsyncOperation.childOperations.modify // modifyCoroutine 
+	0xcb3f0  func ComposableAsyncOperation.addChild(_:) // method 
+	0xcb6e0  func ComposableAsyncOperation.dispatchChildOperations() // method 
  }
 
  class HealthExperience.WalkingHeartRateAverage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2609,19 +2609,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var lock : UnfairLock // +0x68 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xcd000  @objc HealthExperienceStoreOracle.init <stripped>
-	0xcdb40  @objc HealthExperienceStoreOracle..cxx_destruct <stripped>
+	0xcd570  @objc HealthExperienceStoreOracle.init <stripped>
+	0xce0b0  @objc HealthExperienceStoreOracle..cxx_destruct <stripped>
 
 	// Swift methods
-	0xcc8e0  func HealthExperienceStoreOracle.readyHealthExperienceStore.getter // getter 
-	0xcc980  func HealthExperienceStoreOracle.readyHealthExperienceStore.setter // setter 
-	0xcca20  func HealthExperienceStoreOracle.readyHealthExperienceStore.modify // modifyCoroutine 
-	0xcca70  func HealthExperienceStoreOracle.healthExperienceStore.getter // getter 
-	0xccb20  func HealthExperienceStoreOracle.register(observer:) // method 
-	0xcd020  func HealthExperienceStoreOracle.attemptToInitilizeStore(shouldListen:) // method 
-	0xcd810  func HealthExperienceStoreOracle.beginListeningToDataAccessChanges() // method 
-	0xcd9b0  func HealthExperienceStoreOracle.handleUnrecoverableError() // method 
-	0xcdac0  func HealthExperienceStoreOracle.makeHealthExperienceStore() // method 
+	0xcce50  func HealthExperienceStoreOracle.readyHealthExperienceStore.getter // getter 
+	0xccef0  func HealthExperienceStoreOracle.readyHealthExperienceStore.setter // setter 
+	0xccf90  func HealthExperienceStoreOracle.readyHealthExperienceStore.modify // modifyCoroutine 
+	0xccfe0  func HealthExperienceStoreOracle.healthExperienceStore.getter // getter 
+	0xcd090  func HealthExperienceStoreOracle.register(observer:) // method 
+	0xcd590  func HealthExperienceStoreOracle.attemptToInitilizeStore(shouldListen:) // method 
+	0xcdd80  func HealthExperienceStoreOracle.beginListeningToDataAccessChanges() // method 
+	0xcdf20  func HealthExperienceStoreOracle.handleUnrecoverableError() // method 
+	0xce030  func HealthExperienceStoreOracle.makeHealthExperienceStore() // method 
  }
 
  enum HealthExperience.UnderlyingKitType {
@@ -2663,18 +2663,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var identifier : String
 
 	// Swift methods
-	0xcf2b0  func CompoundSectionedDataSource.childDataSources.getter // getter 
-	0xcf2e0  func CompoundSectionedDataSource.eventHandler.getter // getter 
-	0xcf310  func CompoundSectionedDataSource.eventHandler.setter // setter 
-	0xcf360  func CompoundSectionedDataSource.eventHandler.modify // modifyCoroutine 
-	0xcf4e0  func CompoundSectionedDataSource.promise.getter // getter 
-	0xcf510  func CompoundSectionedDataSource.identifier.getter // getter 
-	0xcf550  func CompoundSectionedDataSource.identifier.setter // setter 
-	0xcf590  func CompoundSectionedDataSource.identifier.modify // modifyCoroutine 
-	0xcf5d0  func CompoundSectionedDataSource.sectionIdentifiers.getter // getter 
-	0xcff00  class func CompoundSectionedDataSource.__allocating_init(_:) // init 
-	0xcff80  func CompoundSectionedDataSource.determineSectionOffset(for:) // method 
-	0xd02e0  func CompoundSectionedDataSource.handle(change:for:) // method 
+	0xcf820  func CompoundSectionedDataSource.childDataSources.getter // getter 
+	0xcf850  func CompoundSectionedDataSource.eventHandler.getter // getter 
+	0xcf880  func CompoundSectionedDataSource.eventHandler.setter // setter 
+	0xcf8d0  func CompoundSectionedDataSource.eventHandler.modify // modifyCoroutine 
+	0xcfa50  func CompoundSectionedDataSource.promise.getter // getter 
+	0xcfa80  func CompoundSectionedDataSource.identifier.getter // getter 
+	0xcfac0  func CompoundSectionedDataSource.identifier.setter // setter 
+	0xcfb00  func CompoundSectionedDataSource.identifier.modify // modifyCoroutine 
+	0xcfb40  func CompoundSectionedDataSource.sectionIdentifiers.getter // getter 
+	0xd0470  class func CompoundSectionedDataSource.__allocating_init(_:) // init 
+	0xd04f0  func CompoundSectionedDataSource.determineSectionOffset(for:) // method 
+	0xd0850  func CompoundSectionedDataSource.handle(change:for:) // method 
  }
 
  struct HealthExperience.FakeHeaderItem {
@@ -2694,7 +2694,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let bundleIdentifier : String
 
 	// Swift methods
-	0xd7e60  class func HKHealthSource.__allocating_init(name:bundleIdentifier:) // init 
+	0xd83d0  class func HKHealthSource.__allocating_init(name:bundleIdentifier:) // init 
  }
 
  class HealthExperience.HKHealthSourceMatcher : Matcher {
@@ -2703,8 +2703,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var objectType : HKObjectType?
 
 	// Swift methods
-	0xd8250  func HKHealthSourceMatcher.dataSource(healthStore:) // method 
-	0xd8360  func HKHealthSourceMatcher.addConstraint(sourcesFor:) // method 
+	0xd87c0  func HKHealthSourceMatcher.dataSource(healthStore:) // method 
+	0xd88d0  func HKHealthSourceMatcher.addConstraint(sourcesFor:) // method 
  }
 
  struct HealthExperience.HKTypesFeatureTag {
@@ -2736,10 +2736,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var list : [NSProgress] // +0x18 (0x8)
 
 	// Swift methods
-	0xd8c70  class func CancellableProgressList.__allocating_init() // init 
-	0xd8d80  func CancellableProgressList.add(_:uuid:) // method 
-	0xd95a0  func CancellableProgressList.clearProgress(for:) // method 
-	0xda130  func CancellableProgressList.cancelAll() // method 
+	0xd91e0  class func CancellableProgressList.__allocating_init() // init 
+	0xd92f0  func CancellableProgressList.add(_:uuid:) // method 
+	0xd9b10  func CancellableProgressList.clearProgress(for:) // method 
+	0xda6a0  func CancellableProgressList.cancelAll() // method 
  }
 
  class HealthExperience.ActiveEnergyBurned : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2748,9 +2748,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthExperience.DateRangeRelevanceProviderManager : RERelevanceProviderManager /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine {
 	// ObjC -> Swift bridged methods
-	0xdc480  @objc DateRangeRelevanceProviderManager._valueForProvider:context:feature: <stripped>
-	0xdc510  @objc DateRangeRelevanceProviderManager._valueForProvider:feature: <stripped>
-	0xdc570  @objc DateRangeRelevanceProviderManager.initWithQueue: <stripped>
+	0xdc9f0  @objc DateRangeRelevanceProviderManager._valueForProvider:context:feature: <stripped>
+	0xdca80  @objc DateRangeRelevanceProviderManager._valueForProvider:feature: <stripped>
+	0xdcae0  @objc DateRangeRelevanceProviderManager.initWithQueue: <stripped>
  }
 
  class HealthExperience.DietaryPhosphorus : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2825,22 +2825,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_principalClass : Swift.AnyObject.Type??
 
 	// Swift methods
-	0xdf660  func BundleFeedItemGenerationPluginInfo.bundle.getter // getter 
-	0xdf690  func BundleFeedItemGenerationPluginInfo.bundle.setter // setter 
-	0xdf6d0  func BundleFeedItemGenerationPluginInfo.bundle.modify // modifyCoroutine 
-	0xdf700  func BundleFeedItemGenerationPluginInfo.bundleIdentifier.getter // getter 
-	0xdf740  func BundleFeedItemGenerationPluginInfo.bundleIdentifier.setter // setter 
-	0xdf780  func BundleFeedItemGenerationPluginInfo.bundleIdentifier.modify // modifyCoroutine 
-	0xdf7b0  func BundleFeedItemGenerationPluginInfo.principalClass.getter // getter 
-	0xdf950  func BundleFeedItemGenerationPluginInfo.principalClass.setter // setter 
-	0xdf960  func BundleFeedItemGenerationPluginInfo.principalClass.modify // modifyCoroutine 
-	0xdf9b0  func BundleFeedItemGenerationPluginInfo.makeFeedItemGenerator(context:) // method 
-	0xdfc40  class func BundleFeedItemGenerationPluginInfo.__allocating_init(bundle:) // init 
+	0xdfbd0  func BundleFeedItemGenerationPluginInfo.bundle.getter // getter 
+	0xdfc00  func BundleFeedItemGenerationPluginInfo.bundle.setter // setter 
+	0xdfc40  func BundleFeedItemGenerationPluginInfo.bundle.modify // modifyCoroutine 
+	0xdfc70  func BundleFeedItemGenerationPluginInfo.bundleIdentifier.getter // getter 
+	0xdfcb0  func BundleFeedItemGenerationPluginInfo.bundleIdentifier.setter // setter 
+	0xdfcf0  func BundleFeedItemGenerationPluginInfo.bundleIdentifier.modify // modifyCoroutine 
+	0xdfd20  func BundleFeedItemGenerationPluginInfo.principalClass.getter // getter 
+	0xdfec0  func BundleFeedItemGenerationPluginInfo.principalClass.setter // setter 
+	0xdfed0  func BundleFeedItemGenerationPluginInfo.principalClass.modify // modifyCoroutine 
+	0xdff20  func BundleFeedItemGenerationPluginInfo.makeFeedItemGenerator(context:) // method 
+	0xe01b0  class func BundleFeedItemGenerationPluginInfo.__allocating_init(bundle:) // init 
  }
 
  class HealthExperience.Keyword : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0xe0650  @objc Keyword.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0xe0bc0  @objc Keyword.initWithEntity:insertIntoManagedObjectContext: <stripped>
  }
 
  class HealthExperience.CDA : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2872,12 +2872,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthExperience.ManagedProfileConnection : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xed5a0  class func ManagedProfileConnection.__allocating_init() // init 
-	0xed630  func ManagedProfileConnection.isImproveHealthDataAllowed.getter // getter 
-	0xed650  func ManagedProfileConnection.isImproveWheelchairDataAllowed.getter // getter 
-	0xed720  func ManagedProfileConnection.setImproveHealthData(value:) // method 
-	0xed740  func ManagedProfileConnection.setImproveWheelchairData(value:) // method 
-	0xed7d0  func ManagedProfileConnection.isAppInstallationAllowed() // method 
+	0xedb10  class func ManagedProfileConnection.__allocating_init() // init 
+	0xedba0  func ManagedProfileConnection.isImproveHealthDataAllowed.getter // getter 
+	0xedbc0  func ManagedProfileConnection.isImproveWheelchairDataAllowed.getter // getter 
+	0xedc90  func ManagedProfileConnection.setImproveHealthData(value:) // method 
+	0xedcb0  func ManagedProfileConnection.setImproveWheelchairData(value:) // method 
+	0xedd40  func ManagedProfileConnection.isAppInstallationAllowed() // method 
  }
 
  class HealthExperience.DietaryChromium : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2957,20 +2957,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dateRange : ç_
 
 	// Swift methods
-	0xf1400  func HKStepsSample.shortUnitString.getter // getter 
-	0xf1440  func HKStepsSample.shortUnitString.setter // setter 
-	0xf1480  func HKStepsSample.shortUnitString.modify // modifyCoroutine 
-	0xf14b0  func HKStepsSample.longUnitString.getter // getter 
-	0xf14f0  func HKStepsSample.longUnitString.setter // setter 
-	0xf1530  func HKStepsSample.longUnitString.modify // modifyCoroutine 
-	0xf1560  func HKStepsSample.underlyingType.getter // getter 
-	0xf15a0  func HKStepsSample.underlyingType.setter // setter 
-	0xf15e0  func HKStepsSample.underlyingType.modify // modifyCoroutine 
-	0xf1c40  func HKStepsSample.dateRange.getter // getter 
-	0xf1c90  func HKStepsSample.dateRange.setter // setter 
-	0xf1cf0  func HKStepsSample.dateRange.modify // modifyCoroutine 
-	0xf1d30  class func HKStepsSample.__allocating_init(statistics:) // init 
-	0xf1d80  class func HKStepsSample.__allocating_init(sample:) // init 
+	0xf1990  func HKStepsSample.shortUnitString.getter // getter 
+	0xf19d0  func HKStepsSample.shortUnitString.setter // setter 
+	0xf1a10  func HKStepsSample.shortUnitString.modify // modifyCoroutine 
+	0xf1a40  func HKStepsSample.longUnitString.getter // getter 
+	0xf1a80  func HKStepsSample.longUnitString.setter // setter 
+	0xf1ac0  func HKStepsSample.longUnitString.modify // modifyCoroutine 
+	0xf1af0  func HKStepsSample.underlyingType.getter // getter 
+	0xf1b30  func HKStepsSample.underlyingType.setter // setter 
+	0xf1b70  func HKStepsSample.underlyingType.modify // modifyCoroutine 
+	0xf21d0  func HKStepsSample.dateRange.getter // getter 
+	0xf2220  func HKStepsSample.dateRange.setter // setter 
+	0xf2280  func HKStepsSample.dateRange.modify // modifyCoroutine 
+	0xf22c0  class func HKStepsSample.__allocating_init(statistics:) // init 
+	0xf2310  class func HKStepsSample.__allocating_init(sample:) // init 
  }
 
  class HealthExperience.HKStepsSampleMatcher {
@@ -2988,14 +2988,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var engineCoordinator : RelevanceEngineCoordinator // +0x54534e4f (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xf57b0  @objc PopulateFeedFromRelevanceEngineOperation.main <stripped>
-	0xf8250  @objc PopulateFeedFromRelevanceEngineOperation.init <stripped>
-	0xf8300  @objc PopulateFeedFromRelevanceEngineOperation..cxx_destruct <stripped>
+	0xf5d40  @objc PopulateFeedFromRelevanceEngineOperation.main <stripped>
+	0xf87e0  @objc PopulateFeedFromRelevanceEngineOperation.init <stripped>
+	0xf8890  @objc PopulateFeedFromRelevanceEngineOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0xf4f70  class func PopulateFeedFromRelevanceEngineOperation.__allocating_init(context:engineCoordinator:feedKind:dateRange:) // init 
-	0xf57e0  func <stripped> // method 
-	0xf71e0  func <stripped> // method 
+	0xf5500  class func PopulateFeedFromRelevanceEngineOperation.__allocating_init(context:engineCoordinator:feedKind:dateRange:) // init 
+	0xf5d70  func <stripped> // method 
+	0xf7770  func <stripped> // method 
  }
 
  struct HealthExperience.ShowAllHighlightsDataSourceItem { }
@@ -3010,7 +3010,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthExperience.DataType : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-	0x104550  @objc DataType.initWithEntity:insertIntoManagedObjectContext: <stripped>
+	0x104ae0  @objc DataType.initWithEntity:insertIntoManagedObjectContext: <stripped>
  }
 
  class HealthExperience.OxygenSaturation : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3024,9 +3024,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let timeout : Double // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x104900  @objc ResumeRelevanceEngineIfNeededOperation.main <stripped>
-	0x104990  @objc ResumeRelevanceEngineIfNeededOperation.init <stripped>
-	0x104a10  @objc ResumeRelevanceEngineIfNeededOperation..cxx_destruct <stripped>
+	0x104e90  @objc ResumeRelevanceEngineIfNeededOperation.main <stripped>
+	0x104f20  @objc ResumeRelevanceEngineIfNeededOperation.init <stripped>
+	0x104fa0  @objc ResumeRelevanceEngineIfNeededOperation..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3081,9 +3081,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let favoritesProvider : FavoritesProvider // +0x48 (0x8)
 
 	// Swift methods
-	0x10a210  class func FeedItemGeneratorManager.__allocating_init(availablePlugins:store:healthStore:) // init 
-	0x10a4d0  func FeedItemGeneratorManager.run(dateRange:completion:) // method 
-	0x10b6a0  func FeedItemGeneratorManager.startInteractiveGeneration(plugins:cancellationCompletion:) // method 
+	0x10a7a0  class func FeedItemGeneratorManager.__allocating_init(availablePlugins:store:healthStore:) // init 
+	0x10aa60  func FeedItemGeneratorManager.run(dateRange:completion:) // method 
+	0x10bc30  func FeedItemGeneratorManager.startInteractiveGeneration(plugins:cancellationCompletion:) // method 
  }
 
  class HealthExperience.DistanceWheelchair : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3105,30 +3105,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_persistentContainer : NSPersistentContainer? // +0x68 (0x8)
 
 	// Swift methods
-	0x10ddb0  func DiskHealthExperienceStore.isRunningInApplicationProcess.getter // getter 
-	0x10df60  func DiskHealthExperienceStore.viewContext.getter // getter 
-	0x10e120  func DiskHealthExperienceStore.sharedBackgroundContext.getter // getter 
-	0x10e220  func DiskHealthExperienceStore.sharedBackgroundContext.setter // setter 
-	0x10e240  func DiskHealthExperienceStore.sharedBackgroundContext.modify // modifyCoroutine 
-	0x10e290  func DiskHealthExperienceStore.allEntities.getter // getter 
-	0x10e390  func DiskHealthExperienceStore.allEntities.setter // setter 
-	0x10e3b0  func DiskHealthExperienceStore.allEntities.modify // modifyCoroutine 
-	0x10dc60  class func DiskHealthExperienceStore.__allocating_init() // init 
-	0x10e930  func DiskHealthExperienceStore.makeStoreLocation() // method 
-	0x10eb80  class func static DiskHealthExperienceStore.storeFileURL.getter // getter 
-	0x10ecc0  func DiskHealthExperienceStore.persistentStoreDescription.getter // getter 
-	0x10eef0  func DiskHealthExperienceStore.persistentStoreCoordinator.getter // getter 
-	0x10ef70  func DiskHealthExperienceStore.initPersistentContainer() // method 
-	0x10f0b0  func DiskHealthExperienceStore.persistentContainer.getter // getter 
-	0x10f270  func DiskHealthExperienceStore.persistentContainer.setter // setter 
-	0x10f290  func DiskHealthExperienceStore.persistentContainer.modify // modifyCoroutine 
-	0x10f320  func DiskHealthExperienceStore.destroyStoreIfNeededAndMakePersistentContainer() // method 
-	0x10f4c0  func DiskHealthExperienceStore.deleteAllObjects() // method 
-	0x10f500  func DiskHealthExperienceStore.delete(_:from:) // method 
-	0x110070  func DiskHealthExperienceStore.makePersistentContainer(retryOnFailure:) // method 
-	0x110650  func DiskHealthExperienceStore.updateStoreMetadataWithLatestVersion(_:) // method 
-	0x111110  func DiskHealthExperienceStore.unsafeMakePersistentContainer(retryOnFailure:) // method 
-	0x112880  func DiskHealthExperienceStore.getStoreState() // method 
+	0x10e340  func DiskHealthExperienceStore.isRunningInApplicationProcess.getter // getter 
+	0x10e4f0  func DiskHealthExperienceStore.viewContext.getter // getter 
+	0x10e6b0  func DiskHealthExperienceStore.sharedBackgroundContext.getter // getter 
+	0x10e7b0  func DiskHealthExperienceStore.sharedBackgroundContext.setter // setter 
+	0x10e7d0  func DiskHealthExperienceStore.sharedBackgroundContext.modify // modifyCoroutine 
+	0x10e820  func DiskHealthExperienceStore.allEntities.getter // getter 
+	0x10e920  func DiskHealthExperienceStore.allEntities.setter // setter 
+	0x10e940  func DiskHealthExperienceStore.allEntities.modify // modifyCoroutine 
+	0x10e1f0  class func DiskHealthExperienceStore.__allocating_init() // init 
+	0x10eec0  func DiskHealthExperienceStore.makeStoreLocation() // method 
+	0x10f110  class func static DiskHealthExperienceStore.storeFileURL.getter // getter 
+	0x10f250  func DiskHealthExperienceStore.persistentStoreDescription.getter // getter 
+	0x10f480  func DiskHealthExperienceStore.persistentStoreCoordinator.getter // getter 
+	0x10f500  func DiskHealthExperienceStore.initPersistentContainer() // method 
+	0x10f640  func DiskHealthExperienceStore.persistentContainer.getter // getter 
+	0x10f800  func DiskHealthExperienceStore.persistentContainer.setter // setter 
+	0x10f820  func DiskHealthExperienceStore.persistentContainer.modify // modifyCoroutine 
+	0x10f8b0  func DiskHealthExperienceStore.destroyStoreIfNeededAndMakePersistentContainer() // method 
+	0x10fa50  func DiskHealthExperienceStore.deleteAllObjects() // method 
+	0x10fa90  func DiskHealthExperienceStore.delete(_:from:) // method 
+	0x110600  func DiskHealthExperienceStore.makePersistentContainer(retryOnFailure:) // method 
+	0x110be0  func DiskHealthExperienceStore.updateStoreMetadataWithLatestVersion(_:) // method 
+	0x1116a0  func DiskHealthExperienceStore.unsafeMakePersistentContainer(retryOnFailure:) // method 
+	0x112e10  func DiskHealthExperienceStore.getStoreState() // method 
  }
 
  enum HealthExperience.State {
@@ -3157,19 +3157,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var stateLock : UnfairLock // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x11e110  @objc AsyncOperation.isExecuting <stripped>
-	0x11e1a0  @objc AsyncOperation.isFinished <stripped>
-	0x11e230  @objc AsyncOperation.isAsynchronous <stripped>
-	0x11e290  @objc AsyncOperation.start <stripped>
-	0x11e310  @objc AsyncOperation.main <stripped>
-	0x11e3c0  @objc AsyncOperation.init <stripped>
-	0x11e410  @objc AsyncOperation..cxx_destruct <stripped>
+	0x11e6a0  @objc AsyncOperation.isExecuting <stripped>
+	0x11e730  @objc AsyncOperation.isFinished <stripped>
+	0x11e7c0  @objc AsyncOperation.isAsynchronous <stripped>
+	0x11e820  @objc AsyncOperation.start <stripped>
+	0x11e8a0  @objc AsyncOperation.main <stripped>
+	0x11e950  @objc AsyncOperation.init <stripped>
+	0x11e9a0  @objc AsyncOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x11dd60  func AsyncOperation.state.getter // getter 
-	0x11ddb0  func AsyncOperation.state.setter // setter 
-	0x11df50  func AsyncOperation.state.modify // modifyCoroutine 
-	0x11dfe0  func AsyncOperation.finish() // method 
+	0x11e2f0  func AsyncOperation.state.getter // getter 
+	0x11e340  func AsyncOperation.state.setter // setter 
+	0x11e4e0  func AsyncOperation.state.modify // modifyCoroutine 
+	0x11e570  func AsyncOperation.finish() // method 
  }
 
  enum HealthExperience.State {

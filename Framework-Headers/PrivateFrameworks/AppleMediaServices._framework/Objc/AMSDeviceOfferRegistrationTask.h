@@ -40,6 +40,8 @@
 - (id)_latestOffersWithFetchedDeviceOffers:(id)arg1 offersStore:(id)arg2;
 - (id)_requestParameters;
 - (void)_updateWithDeviceOffers:(id)arg1;
+- (id)_urlRequestMethod;
+- (id)_urlRequestWithBagURL:(id)arg1;
 - (id)initWithAccount:(id)arg1 bag:(id)arg2;
 - (id)perform;
 

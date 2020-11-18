@@ -32,6 +32,7 @@
 - (id)dataUsageWorkspaceInfo;
 - (id)documentSource:(id)arg1;
 - (id)documentsSpecifier;
+- (id)exposureSpecifiers;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)isBackgroundRefreshEnabled:(id)arg1;
 - (BOOL)isCellularBundleID:(id)arg1;

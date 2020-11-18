@@ -27,7 +27,6 @@
 @property (nonatomic) BOOL disableCAScaling; // @dynamic disableCAScaling;
 @property (nonatomic) BOOL disableCAYUV; // @dynamic disableCAYUV;
 @property (nonatomic) BOOL disableCloneMirroring; // @dynamic disableCloneMirroring;
-@property (nonatomic) BOOL disableMousePointer; // @dynamic disableMousePointer;
 @property (nonatomic) BOOL disableStudyLogALSLogging; // @synthesize disableStudyLogALSLogging=_disableStudyLogALSLogging;
 @property (nonatomic) BOOL disableStudyLogAccelerometerLogging; // @synthesize disableStudyLogAccelerometerLogging=_disableStudyLogAccelerometerLogging;
 @property (nonatomic) BOOL disableStudyLogBTKeyboardEventLogging; // @dynamic disableStudyLogBTKeyboardEventLogging;

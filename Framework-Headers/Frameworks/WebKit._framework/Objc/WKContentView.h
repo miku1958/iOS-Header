@@ -91,7 +91,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSObject<WKFormPeripheral>> _inputPeripheral;
     struct BlockPtr<void (WebEvent *, bool)> _keyWebEventHandler;
     struct CGPoint _lastInteractionLocation;
-    struct MonotonicObjectIdentifier<WebKit::TransactionIDType> _layerTreeTransactionIdAtLastTouchStart;
+    struct MonotonicObjectIdentifier<WebKit::TransactionIDType> _layerTreeTransactionIdAtLastInteractionStart;
     struct WKSelectionDrawingInfo _lastSelectionDrawingInfo;
     struct Optional<WebKit::InteractionInformationRequest> _outstandingPositionInformationRequest;
     unsigned long long _positionInformationCallbackDepth;
@@ -661,6 +661,7 @@ __attribute__((visibility("hidden")))
 - (void)didMoveToWindow;
 - (void)didUpdateVisibleRect:(struct CGRect)arg1 unobscuredRect:(struct CGRect)arg2 contentInsets:(struct UIEdgeInsets)arg3 unobscuredRectInScrollViewCoordinates:(struct CGRect)arg4 obscuredInsets:(struct UIEdgeInsets)arg5 unobscuredSafeAreaInsets:(struct UIEdgeInsets)arg6 inputViewBounds:(struct CGRect)arg7 scale:(double)arg8 minimumScale:(double)arg9 inStableState:(BOOL)arg10 isChangingObscuredInsetsInteractively:(BOOL)arg11 enclosedInScrollableAncestorView:(BOOL)arg12;
 - (void)didZoomToScale:(double)arg1;
+- (void)disableMouseInteractionIfNecessary;
 - (void)dismissFilePicker;
 - (void)doAfterPositionInformationUpdate:(CDUnknownBlockType)arg1 forRequest:(struct InteractionInformationRequest)arg2;
 - (struct DragData)dragDataForDropSession:(id)arg1 dragDestinationAction:(unsigned long long)arg2;

@@ -42,6 +42,7 @@
 - (void)_setCoachingState:(long long)arg1;
 - (void)_setRequestPileSuppression:(BOOL)arg1;
 - (void)_setUserIntentRequired:(BOOL)arg1;
+- (void)coachingStateDidChange;
 - (void)dealloc;
 - (void)didBecomeHiddenAnimated:(BOOL)arg1;
 - (void)didBecomeVisibleAnimated:(BOOL)arg1;

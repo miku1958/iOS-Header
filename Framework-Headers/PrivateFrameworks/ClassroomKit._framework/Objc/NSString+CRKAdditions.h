@@ -8,6 +8,7 @@
 
 @interface NSString (CRKAdditions)
 + (id)crk_stringWithIPAddress:(unsigned int)arg1;
+- (BOOL)crk_hasCaseInsensitivePrefix:(id)arg1;
 - (BOOL)crk_isFourDigitPasscode;
 - (id)crk_sha1Hash;
 - (id)crk_stringByRemovingPrefix:(id)arg1;

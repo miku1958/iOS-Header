@@ -30,7 +30,7 @@
 @property (readonly) Class superclass;
 @property (strong) NSObject<OS_dispatch_workloop> *workloop; // @synthesize workloop=_workloop;
 
-+ (id)createErrorFromURLResonse:(id)arg1 data:(id)arg2 error:(id)arg3;
++ (id)createErrorFromURLResonse:(id)arg1 data:(id)arg2 allowEmptyData:(BOOL)arg3 error:(id)arg4;
 - (void).cxx_destruct;
 - (id)createAuthenticatedBackgroundSession:(id)arg1 delegateQueue:(id)arg2;
 - (id)createAuthenticatedForegroundSession;

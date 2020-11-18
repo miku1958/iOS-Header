@@ -14,6 +14,7 @@
 - (void)checkCompanionPeerPaymentRegistrationState;
 - (void)handleAppletState:(PKTransitAppletState *)arg1 forUniqueID:(NSString *)arg2;
 - (void)handleBalanceUpdate:(NSSet *)arg1 forUniqueID:(NSString *)arg2;
+- (void)handleCredentialsUpdate:(NSSet *)arg1 forUniqueID:(NSString *)arg2;
 - (void)handleDownloadAllPaymentPasses;
 - (void)handlePaymentTransactions:(NSArray *)arg1 appletStates:(NSDictionary *)arg2 forUniqueIDs:(NSArray *)arg3;
 - (void)handlePaymentWebServiceContextFromWatch:(PKPaymentWebServiceContext *)arg1;

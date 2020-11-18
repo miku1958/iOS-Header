@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/NTKUtilityFlatComplicationViewDelegate-Protocol.h>
 
-@class NSString, NTKCaliforniaColorPalette, NTKCaliforniaContentView, NTKCircularAnalogDialView, NTKRoundedCornerOverlayView, UIImageView, UIView;
+@class NSString, NTKCaliforniaColorEditOption, NTKCaliforniaColorPalette, NTKCaliforniaContentView, NTKCircularAnalogDialView, NTKRoundedCornerOverlayView, UIImageView, UIView;
 
 @interface NTKCaliforniaFaceView : NTKAnalogFaceView <NTKUtilityFlatComplicationViewDelegate>
 {
@@ -21,6 +21,7 @@
     NTKCaliforniaColorPalette *_colorPalette;
     UIImageView *_editingNotchBackgroundView;
     NTKCircularAnalogDialView *_dialView;
+    NTKCaliforniaColorEditOption *_pride2020SensitiveShroudColor;
 }
 
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) NTKCircularAnalogDialView *dialView; // @synthesize dialView=_dialView;
 @property (strong, nonatomic) UIImageView *editingNotchBackgroundView; // @synthesize editingNotchBackgroundView=_editingNotchBackgroundView;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NTKCaliforniaColorEditOption *pride2020SensitiveShroudColor; // @synthesize pride2020SensitiveShroudColor=_pride2020SensitiveShroudColor;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 
@@ -58,6 +60,7 @@
 - (double)_contentAlphaForEditMode:(long long)arg1;
 - (double)_dialAlphaForEditMode:(long long)arg1;
 - (double)_editSpeedForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (id)_filterColorOptionForUISensitivityFromOption:(id)arg1;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_loadSnapshotContentViews;
@@ -69,6 +72,7 @@
 - (void)_setComplicationAlphaForTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 customEditMode:(long long)arg4 slot:(id)arg5;
 - (void)_setupDialViewIfNeeded;
 - (void)_setupViews;
+- (BOOL)_shouldHideSensitiveUI;
 - (id)_simpleTextComplicationColorForEditMode:(long long)arg1;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (double)_timeAlphaForEditMode:(long long)arg1;

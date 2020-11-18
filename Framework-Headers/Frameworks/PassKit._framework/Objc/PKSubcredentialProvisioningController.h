@@ -49,7 +49,7 @@
 - (void)appletSubcredentialPairingSessionDidFirstTransaction:(id)arg1 withError:(id)arg2;
 - (void)cancelProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cleanUpProvisioningAfterError:(BOOL)arg1;
-- (void)finishProvisioningWithError:(id)arg1;
+- (void)finishProvisioningWithError:(id)arg1 state:(long long)arg2;
 - (id)init;
 - (void)operation:(id)arg1 addedCredential:(id)arg2;
 - (void)operation:(id)arg1 addedPass:(id)arg2;

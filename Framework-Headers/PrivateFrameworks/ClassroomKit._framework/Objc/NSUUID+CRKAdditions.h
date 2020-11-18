@@ -7,6 +7,9 @@
 #import <Foundation/NSUUID.h>
 
 @interface NSUUID (CRKAdditions)
++ (id)crk_UUIDWithOpaqueData:(id)arg1;
++ (id)crk_UUIDWithOpaqueString:(id)arg1;
++ (void)crk_condense32BytesIntoFirst16Bytes:(char *)arg1;
 + (id)crk_zerosUUID;
 @end
 

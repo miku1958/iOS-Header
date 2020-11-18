@@ -45,6 +45,7 @@
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (BOOL)accessibilityParentDiscardsChildrenContainerGroupingBehavior;
+- (unsigned long long)accessibilityTraits;
 - (BOOL)canBecomeFocused;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;

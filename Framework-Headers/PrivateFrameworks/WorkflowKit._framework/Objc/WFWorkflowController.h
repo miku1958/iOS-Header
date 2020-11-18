@@ -64,7 +64,9 @@
 - (id)currentAction;
 - (void)evaluateRemoteQuarantinePolicyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)logRunEvent:(BOOL)arg1;
+- (void)logFinishActionEventWithIdentifier:(id)arg1 completed:(BOOL)arg2;
+- (void)logFinishRunEvent:(BOOL)arg1;
+- (void)logStartActionEventWithIdentifier:(id)arg1;
 - (void)logStartEvent;
 - (id)parameterInputProviderForAction:(id)arg1;
 - (void)reset;
@@ -74,6 +76,8 @@
 - (void)setFinishedRunningWithSuccess:(BOOL)arg1;
 - (id)stateWithActionIndex:(unsigned long long)arg1 input:(id)arg2 processedParameters:(id)arg3;
 - (void)stop;
+- (void)trackRunActionEventWithKey:(id)arg1 identifier:(id)arg2 completed:(BOOL)arg3;
+- (void)trackRunShortcutEventWithKey:(id)arg1 completed:(BOOL)arg2;
 - (id)userInterfaceForAction:(id)arg1;
 - (id)userInterfaceToPresentAlertForEvaluator:(id)arg1;
 - (void)workflowController:(id)arg1 didFinishRunningWithError:(id)arg2 cancelled:(BOOL)arg3;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     LPImage *_originalImage;
     LPImage *_quickLookThumbnail;
     NSString *_MIMEType;
+    NSString *_UTI;
     LPLinkMetadata *_metadata;
     LPFileMetadata *_fileMetadata;
     NSObject<OS_dispatch_group> *_fetchGroup;
@@ -38,7 +39,9 @@ __attribute__((visibility("hidden")))
 - (void)cleanUpTemporaryFile;
 - (void)complete;
 - (void)fetchIconAndThumbnailFromQuickLookForURL:(id)arg1;
+- (void)fetchMetadataForReachableFile:(id)arg1;
 - (void)fetchMetadataFromURL:(id)arg1;
+- (void)generateFallbackMetadataForUnreachableFile:(id)arg1;
 - (void)metadataProviderSpecialization:(id)arg1 didCompleteWithMetadata:(id)arg2;
 - (void)metadataProviderSpecializationDidFail:(id)arg1;
 - (void)start;

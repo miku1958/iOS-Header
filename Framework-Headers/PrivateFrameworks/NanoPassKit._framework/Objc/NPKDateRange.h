@@ -29,7 +29,7 @@
 
 + (id)_dateStringWithDate:(id)arg1 style:(unsigned long long)arg2;
 - (void).cxx_destruct;
-- (id)initWithExpireDate:(id)arg1 formatterStyle:(unsigned long long)arg2;
+- (id)initWithStartDate:(id)arg1 expirationDate:(id)arg2 formatterStyle:(unsigned long long)arg3;
 
 @end
 

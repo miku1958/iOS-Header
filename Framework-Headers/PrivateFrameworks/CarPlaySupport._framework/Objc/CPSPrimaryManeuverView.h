@@ -21,6 +21,7 @@
     UILayoutGuide *_yCenteringGuide;
     UILayoutGuide *_centeringLayoutGuide;
     CPSPrimaryManeuverLayoutConfiguration *_activeLayoutConfiguration;
+    CPSPrimaryManeuverLayoutConfiguration *_layoutConfigurationForIntrinsicSizing;
     CPManeuver *_maneuver;
     CPTravelEstimates *_currentTravelEstimates;
     NSArray *_layoutConfigurations;
@@ -37,6 +38,7 @@
 @property (strong, nonatomic) UIView *junctionImageBackgroundView; // @synthesize junctionImageBackgroundView=_junctionImageBackgroundView;
 @property (strong, nonatomic) CPSAspectFitImageView *junctionImageView; // @synthesize junctionImageView=_junctionImageView;
 @property (strong, nonatomic) UILayoutGuide *labelCenteringLayoutGuide; // @synthesize labelCenteringLayoutGuide=_labelCenteringLayoutGuide;
+@property (strong, nonatomic) CPSPrimaryManeuverLayoutConfiguration *layoutConfigurationForIntrinsicSizing; // @synthesize layoutConfigurationForIntrinsicSizing=_layoutConfigurationForIntrinsicSizing;
 @property (strong, nonatomic) NSArray *layoutConfigurations; // @synthesize layoutConfigurations=_layoutConfigurations;
 @property (readonly, nonatomic) CPManeuver *maneuver; // @synthesize maneuver=_maneuver;
 @property (strong, nonatomic) CPSAbridgableLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;

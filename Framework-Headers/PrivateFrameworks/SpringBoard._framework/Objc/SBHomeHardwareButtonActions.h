@@ -55,6 +55,7 @@
 - (void)performLongPressActions;
 - (void)performLongPressCancelledActions;
 - (void)performSinglePressUpActions;
+- (void)performSinglePressUpActionsWithSourceType:(unsigned long long)arg1;
 - (void)performTriplePressUpActions;
 - (void)performWhenMenuButtonIsUpUsingBlock:(CDUnknownBlockType)arg1;
 - (void)provider:(id)arg1 didUpdateButtonGestureParameters:(id)arg2;

@@ -23,7 +23,8 @@
     BOOL _frontHDROnSupported;
     BOOL _previewSupportedDuringHDR;
     BOOL _modernHDRSupported;
-    BOOL _smartHDRSupported;
+    BOOL _backSmartHDRSupported;
+    BOOL _frontSmartHDRSupported;
     BOOL _HDREV0CaptureSupported;
     BOOL _backLivePhotoSupported;
     BOOL _frontLivePhotoSupported;
@@ -192,6 +193,7 @@
 @property (readonly, nonatomic, getter=isBackPortraitModeSupported) BOOL backPortraitModeSupported; // @synthesize backPortraitModeSupported=_backPortraitModeSupported;
 @property (readonly, nonatomic, getter=isBackSingleCameraPortraitModeSupported) BOOL backSingleCameraPortraitModeSupported; // @synthesize backSingleCameraPortraitModeSupported=_backSingleCameraPortraitModeSupported;
 @property (readonly, nonatomic, getter=isBackSlomoSupported) BOOL backSlomoSupported; // @synthesize backSlomoSupported=_backSlomoSupported;
+@property (readonly, nonatomic, getter=isBackSmartHDRSupported) BOOL backSmartHDRSupported; // @synthesize backSmartHDRSupported=_backSmartHDRSupported;
 @property (readonly, nonatomic, getter=isBackSpatialOverCaptureSupported) BOOL backSpatialOverCaptureSupported; // @synthesize backSpatialOverCaptureSupported=_backSpatialOverCaptureSupported;
 @property (readonly, nonatomic, getter=isBackSuperWideSupported) BOOL backSuperWideSupported; // @synthesize backSuperWideSupported=_backSuperWideSupported;
 @property (readonly, nonatomic, getter=isBackTelephotoSupported) BOOL backTelephotoSupported; // @synthesize backTelephotoSupported=_backTelephotoSupported;
@@ -234,6 +236,7 @@
 @property (readonly, nonatomic, getter=isFrontPortraitModeSupported) BOOL frontPortraitModeSupported; // @synthesize frontPortraitModeSupported=_frontPortraitModeSupported;
 @property (readonly, nonatomic, getter=isFrontSingleCameraPortraitModeSupported) BOOL frontSingleCameraPortraitModeSupported; // @synthesize frontSingleCameraPortraitModeSupported=_frontSingleCameraPortraitModeSupported;
 @property (readonly, nonatomic, getter=isFrontSlomoSupported) BOOL frontSlomoSupported; // @synthesize frontSlomoSupported=_frontSlomoSupported;
+@property (readonly, nonatomic, getter=isFrontSmartHDRSupported) BOOL frontSmartHDRSupported; // @synthesize frontSmartHDRSupported=_frontSmartHDRSupported;
 @property (readonly, nonatomic, getter=isFrontSpatialOverCaptureSupported) BOOL frontSpatialOverCaptureSupported; // @synthesize frontSpatialOverCaptureSupported=_frontSpatialOverCaptureSupported;
 @property (readonly, nonatomic, getter=isFrontSuperWideSupported) BOOL frontSuperWideSupported; // @synthesize frontSuperWideSupported=_frontSuperWideSupported;
 @property (readonly, nonatomic, getter=isFrontTelephotoSupported) BOOL frontTelephotoSupported; // @synthesize frontTelephotoSupported=_frontTelephotoSupported;
@@ -266,7 +269,7 @@
 @property (readonly, nonatomic, getter=isPortraitModeSupported) BOOL portraitModeSupported;
 @property (readonly, nonatomic, getter=isPreviewDuringHDRSupported) BOOL previewSupportedDuringHDR; // @synthesize previewSupportedDuringHDR=_previewSupportedDuringHDR;
 @property (readonly, nonatomic) BOOL sfCameraFontSupported; // @synthesize sfCameraFontSupported=_sfCameraFontSupported;
-@property (readonly, nonatomic, getter=isSmartHDRSupported) BOOL smartHDRSupported; // @synthesize smartHDRSupported=_smartHDRSupported;
+@property (readonly, nonatomic, getter=isSmartHDRSupported) BOOL smartHDRSupported;
 @property (readonly, nonatomic, getter=isSpatialOverCaptureSupported) BOOL spatialOverCaptureSupported;
 @property (readonly, nonatomic, getter=isSplitScreenSupported) BOOL splitScreenSupported; // @synthesize splitScreenSupported=_splitScreenSupported;
 @property (readonly, nonatomic, getter=isSquareModeSupported) BOOL squareModeSupported; // @synthesize squareModeSupported=_squareModeSupported;
@@ -325,6 +328,7 @@
 - (BOOL)isPortraitModeSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isSingleCameraPortraitModeSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isSlomoSupportedForDevice:(long long)arg1;
+- (BOOL)isSmartHDRSupportedForMode:(long long)arg1 devicePosition:(long long)arg2;
 - (BOOL)isSpatialOverCapturePreviewSupportedForMode:(long long)arg1 device:(long long)arg2;
 - (BOOL)isSpatialOverCaptureSupportedForDevice:(long long)arg1;
 - (BOOL)isSpatialOverCaptureSupportedForMode:(long long)arg1 device:(long long)arg2 photoEncodingBehavior:(long long)arg3;

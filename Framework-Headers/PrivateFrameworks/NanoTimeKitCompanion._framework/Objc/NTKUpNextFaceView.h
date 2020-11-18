@@ -42,6 +42,7 @@
     BOOL _needsReloadedContent;
     BOOL _hasDeferredUpdate;
     BOOL _isApplyingSnapshot;
+    BOOL _isApplyingBatchUpdate;
     BOOL _isInflightScroll;
     BOOL _cancelInflightScroll;
     BOOL _isProgramaticScrollEvent;
@@ -78,6 +79,7 @@
 - (id)_additionalPrelaunchApplicationIdentifiers;
 - (void)_allowContentViewInteractive:(BOOL)arg1;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
+- (void)_applyCollectionViewSnapshot:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_applyDataMode;
 - (void)_applyFraction:(double)arg1 fromFaceColor:(unsigned long long)arg2 toFaceColor:(unsigned long long)arg3 onCell:(id)arg4;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;

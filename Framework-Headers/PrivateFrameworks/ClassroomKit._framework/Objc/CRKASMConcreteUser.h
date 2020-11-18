@@ -14,22 +14,26 @@
 @interface CRKASMConcreteUser : NSObject <CRKASMUser>
 {
     NSString *_identifier;
-    NSObject<CRKASMNameComponents> *_nameComponents;
-    NSObject<CRKASMOrganization> *_organization;
+    NSString *_appleID;
+    id<CRKASMOrganization> _organization;
+    id<CRKASMNameComponents> _nameComponents;
     id<CRKClassKitPerson> _backingPerson;
 }
 
-@property (strong, nonatomic) id<CRKClassKitPerson> backingPerson; // @synthesize backingPerson=_backingPerson;
+@property (readonly, copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
+@property (readonly, nonatomic) id<CRKClassKitPerson> backingPerson; // @synthesize backingPerson=_backingPerson;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSObject<CRKASMNameComponents> *nameComponents; // @synthesize nameComponents=_nameComponents;
-@property (readonly, nonatomic) NSObject<CRKASMOrganization> *organization; // @synthesize organization=_organization;
+@property (readonly, nonatomic) id<CRKASMNameComponents> nameComponents; // @synthesize nameComponents=_nameComponents;
+@property (readonly, nonatomic) id<CRKASMOrganization> organization; // @synthesize organization=_organization;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)description;
-- (unsigned long long)hash;
-- (id)initWithPerson:(id)arg1;
+- (id)initWithBackingPerson:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)updateWithPerson:(id)arg1;
+- (BOOL)isEqualToConcreteUser:(id)arg1;
 
 @end
 

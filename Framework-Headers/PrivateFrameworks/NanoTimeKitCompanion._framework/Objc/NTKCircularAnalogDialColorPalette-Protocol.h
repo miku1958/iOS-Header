@@ -9,8 +9,13 @@
 @class UIColor;
 
 @protocol NTKCircularAnalogDialColorPalette <NSObject>
+
+@property (readonly, nonatomic) BOOL isMulticolorPalette;
+
 - (UIColor *)circularDialFillColor;
 - (UIColor *)circularDialSubtickColor;
 - (UIColor *)circularDialTickColor;
+- (UIColor *)colorForCircularTicksForHour:(unsigned long long)arg1;
+- (UIColor *)colorForCircularTicksForMinute:(unsigned long long)arg1;
 @end
 

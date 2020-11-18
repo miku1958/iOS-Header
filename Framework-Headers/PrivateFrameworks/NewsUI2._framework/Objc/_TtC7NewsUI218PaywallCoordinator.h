@@ -12,6 +12,9 @@
 {
     MISSING_TYPE *tracker;
     MISSING_TYPE *paywallModel;
+    MISSING_TYPE *articleData;
+    MISSING_TYPE *campaignData;
+    MISSING_TYPE *adReferralData;
 }
 
 @end

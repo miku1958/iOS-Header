@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitCore/PKPaymentAuthorizationDataModel.h>
+#import <PassKit/PKPaymentAuthorizationDataModel.h>
 
 @interface PKPaymentAuthorizationDataModel (NanoPassKit)
 - (BOOL)_hasNonPeerPaymentAcceptedPasses;

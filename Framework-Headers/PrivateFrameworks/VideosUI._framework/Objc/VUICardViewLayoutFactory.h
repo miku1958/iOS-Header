@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_layoutForCardLayoutType:(long long)arg1 interfaceIdiom:(long long)arg2;
 - (id)activeLayout;
+- (id)decoratedShelfLockupCardViewLayout;
 - (id)editorialCardViewLayout;
 - (id)featuredCardViewLayoutForIdiom:(long long)arg1;
 - (id)initWithCardLayoutType:(long long)arg1 gridStyle:(long long)arg2 gridType:(long long)arg3;

@@ -14,8 +14,8 @@
 }
 
 @property struct SpeakableString *This; // @synthesize This=_This;
-@property NSString *print;
-@property NSString *speak;
+@property (strong) NSString *print;
+@property (strong) NSString *speak;
 
 - (void)dealloc;
 - (id)init;

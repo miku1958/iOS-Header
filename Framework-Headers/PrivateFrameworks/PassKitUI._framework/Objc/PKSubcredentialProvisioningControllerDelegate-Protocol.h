@@ -9,11 +9,12 @@
 @class NSError, PKPaymentPass, PKSubcredentialProvisioningController;
 
 @protocol PKSubcredentialProvisioningControllerDelegate <NSObject>
-- (void)subcredentialProvisioningController:(PKSubcredentialProvisioningController *)arg1 didFinishWithError:(NSError *)arg2;
 - (void)subcredentialProvisioningController:(PKSubcredentialProvisioningController *)arg1 didFinishWithPass:(PKPaymentPass *)arg2;
 
 @optional
 - (void)subcredentialProvisioningController:(PKSubcredentialProvisioningController *)arg1 didEnterState:(long long)arg2;
+- (void)subcredentialProvisioningController:(PKSubcredentialProvisioningController *)arg1 didFinishWithError:(NSError *)arg2;
+- (void)subcredentialProvisioningController:(PKSubcredentialProvisioningController *)arg1 didFinishWithError:(NSError *)arg2 inState:(long long)arg3;
 - (void)subcredentialProvisioningController:(PKSubcredentialProvisioningController *)arg1 shouldFailAfterError:(NSError *)arg2 withCompletion:(void (^)(BOOL))arg3;
 @end
 

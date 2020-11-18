@@ -10,7 +10,6 @@
 
 @interface _TtC8VideosUI8Document : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *onUIEvent;
     MISSING_TYPE *appContext;
     MISSING_TYPE *template;
     MISSING_TYPE *navigationBar;

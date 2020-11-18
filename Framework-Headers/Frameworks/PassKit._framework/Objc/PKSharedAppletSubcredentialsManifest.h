@@ -17,6 +17,7 @@
 
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSDictionary *items; // @synthesize items=_items;
+@property (readonly, nonatomic) NSDictionary *sanitizedItems;
 @property (readonly, nonatomic) NSString *version; // @synthesize version=_version;
 
 - (void).cxx_destruct;

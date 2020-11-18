@@ -12,10 +12,12 @@
 {
     MISSING_TYPE *identifier;
     MISSING_TYPE *type;
+    MISSING_TYPE *metrics;
     MISSING_TYPE *children;
     MISSING_TYPE *childrenDictionary;
     MISSING_TYPE *viewLayout;
     MISSING_TYPE *parent;
+    MISSING_TYPE *parentViewElement;
     MISSING_TYPE *jsonDictionary;
     MISSING_TYPE *_document;
 }

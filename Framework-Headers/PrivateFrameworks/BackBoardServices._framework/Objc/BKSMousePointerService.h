@@ -9,19 +9,17 @@
 #import <BackBoardServices/BKSMousePointerServiceServerToClientInterface-Protocol.h>
 
 @class BKSMousePointerDevicePreferences, BSCompoundAssertion, BSServiceConnection, NSMutableDictionary, NSSet, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@protocol OS_dispatch_queue;
 
 @interface BKSMousePointerService : NSObject <BKSMousePointerServiceServerToClientInterface>
 {
     NSObject<OS_dispatch_queue> *_connectionQueue;
-    NSObject<OS_dispatch_queue> *_calloutQueue;
-    NSObject<OS_dispatch_semaphore> *_connectionActivatedSemaphore;
+    struct os_unfair_lock_s _lock;
     BSServiceConnection *_connection;
     NSMutableDictionary *_displayUUIDToPerDisplayInfo;
     BSCompoundAssertion *_deviceConnectionObservers;
     BSCompoundAssertion *_preferencesObservers;
     NSSet *_attachedDevices;
-    struct os_unfair_lock_s _lock;
     BOOL _isObservingDeviceConnection;
     BOOL _isObservingPreferences;
 }
@@ -35,28 +33,28 @@
 + (id)new;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_calloutQueue_locked_setMousePointerDeviceObservationEnabled:(BOOL)arg1;
-- (void)_calloutQueue_locked_setMousePointerPreferencesObservationEnabled:(BOOL)arg1;
-- (void)_connectionQueue_invalidate;
-- (void)_connectionQueue_setupAndActivate;
+- (void)_activateServerConnection;
 - (id)_init;
 - (id)_locked_infoForDisplayUUID:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (void)_locked_pointingDevicesDidChange:(id)arg1;
 - (void)_locked_reactivateConnection;
 - (void)_locked_sendCurrentAssertionParameters:(id)arg1 forDisplayUUID:(id)arg2;
+- (id)_locked_serverTarget;
+- (void)_locked_setMousePointerDeviceObservationEnabled:(BOOL)arg1;
+- (void)_locked_setMousePointerPreferencesObservationEnabled:(BOOL)arg1;
 - (void)_locked_updateEventRoutesFromContext:(id)arg1 forDisplayUUID:(id)arg2;
 - (void)_locked_updateObserver:(id)arg1 withPointingDevices:(id)arg2;
-- (void)_performBlockOnActiveConnection:(CDUnknownBlockType)arg1 withTimeout:(double)arg2 timeoutHandler:(CDUnknownBlockType)arg3;
+- (void)_locked_updateServerWithPointerDeviceObservationState;
+- (void)_locked_updateServerWithPreferencesObservationState;
+- (id)_unlocked_serverTarget;
 - (id)acquireButtonDownPointerRepositionAssertionForReason:(id)arg1 contextRelativePointerPosition:(id)arg2 onDisplay:(id)arg3 restrictingToPID:(int)arg4;
 - (id)addPointerDeviceObserver:(id)arg1;
 - (id)addPointerPreferencesObserver:(id)arg1;
 - (void)dealloc;
 - (void)getHitTestContextsAtPoint:(id)arg1 withAdditionalContexts:(id)arg2 onDisplay:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
-- (id)getTransformFromLayerId:(unsigned long long)arg1 inContextId:(unsigned int)arg2;
 - (struct CGPoint)globalPointerPosition;
 - (id)init;
 - (oneway void)pointerGlobalDevicePreferencesDidChange:(id)arg1;
-- (oneway void)pointerServiceServerIsGoingAway;
 - (id)pointerSuppressionAssertionOnDisplay:(id)arg1 forReason:(id)arg2 withOptionsMask:(unsigned long long)arg3;
 - (oneway void)pointingDevicesDidChange:(id)arg1;
 - (id)preferencesForDevice:(id)arg1;

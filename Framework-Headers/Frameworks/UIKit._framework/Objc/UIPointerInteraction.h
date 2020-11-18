@@ -58,6 +58,7 @@
 - (void)_configureHoverGestureRecognizer:(id)arg1 forView:(id)arg2;
 - (void)_cursorDidExit;
 - (void)_cursorDidHide;
+- (void)_handlePresentationNotification:(id)arg1;
 - (void)_modifiersDidChangeInRegion:(id)arg1 modifiers:(long long)arg2;
 - (id)_newContentEffectForStyle:(id)arg1 region:(id)arg2;
 - (id)_notifyDelegate_willEnterRegion:(id)arg1;
@@ -69,12 +70,15 @@
 - (void)_queryDelegateForRegionWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2 forceSynchronous:(BOOL)arg3;
 - (BOOL)_regionContainsCurrentHoverLocation:(id)arg1;
 - (void)_runAlongsideAnimator:(id)arg1;
+- (BOOL)_supportsAssociation;
+- (id)_targetedPreviewForContinuingEffectWithPreview:(id)arg1;
 - (void)_updateCurrentRegionIfNecessary:(id)arg1 modifiers:(long long)arg2 reason:(long long)arg3;
 - (void)_updateDebugUIForRegionIfEnabled:(id)arg1;
 - (void)_updateInteractionIsEnabled;
 - (void)_updatePointerStyleForRegion:(id)arg1 modifiers:(long long)arg2 animator:(id)arg3;
 - (void)_updatePointerWithPoint:(struct CGPoint)arg1 modifiers:(long long)arg2 buttonMask:(long long)arg3 forReason:(long long)arg4;
 - (void)_viewTraitCollectionDidChange:(id)arg1;
+- (void)dealloc;
 - (void)didMoveToView:(id)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;

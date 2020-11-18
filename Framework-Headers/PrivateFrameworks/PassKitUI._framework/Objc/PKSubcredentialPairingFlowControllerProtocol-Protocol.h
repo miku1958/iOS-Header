@@ -6,10 +6,13 @@
 
 #import <PassKitUI/PKSubcredentialProvisioningFlowController-Protocol.h>
 
-@protocol PKSubcredentialLocalDevicePairingFlowControllerOperation, PKSubcredentialProvisioningViewModelProtocol, PKSubcredentialRemoteDevicePairingFlowControllerOperation;
+@class NSError, PKSubcredentialPairingFlowControllerContext, UIAlertController;
+@protocol PKSubcredentialLocalDevicePairingFlowControllerOperation, PKSubcredentialPairingFlowControllerOperation, PKSubcredentialProvisioningViewModelProtocol, PKSubcredentialRemoteDevicePairingFlowControllerOperation;
 
 @protocol PKSubcredentialPairingFlowControllerProtocol <PKSubcredentialProvisioningFlowController>
+- (UIAlertController *)alertForOperation:(id<PKSubcredentialPairingFlowControllerOperation>)arg1 withError:(NSError *)arg2 retryHandler:(void (^)(void))arg3 cancelationHandler:(void (^)(void))arg4;
 - (id<PKSubcredentialProvisioningViewModelProtocol>)localDeviceProvisioningViewModelForOperation:(id<PKSubcredentialLocalDevicePairingFlowControllerOperation>)arg1;
+- (void)prewarmPairingWithContext:(PKSubcredentialPairingFlowControllerContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (id<PKSubcredentialProvisioningViewModelProtocol>)remoteDeviceProvisioningViewModelForOperation:(id<PKSubcredentialRemoteDevicePairingFlowControllerOperation>)arg1;
 @end
 

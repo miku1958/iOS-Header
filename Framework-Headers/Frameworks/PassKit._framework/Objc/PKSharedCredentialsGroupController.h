@@ -20,19 +20,23 @@
     NSDictionary *_invitationReceiptsForCredential;
     NSDictionary *_credentialForIdentifier;
     BOOL _canSendInvitation;
+    BOOL _sharingEnabled;
     NSArray *_groups;
     PKPaymentPass *_pass;
 }
 
-@property (readonly, nonatomic) BOOL canSendInvitation; // @synthesize canSendInvitation=_canSendInvitation;
 @property (readonly, nonatomic) NSArray *groups; // @synthesize groups=_groups;
+@property (readonly, nonatomic) NSArray *nonLocalGroups;
 @property (readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property (readonly, nonatomic) BOOL sharingEnabled; // @synthesize sharingEnabled=_sharingEnabled;
 
 - (void).cxx_destruct;
 - (void)addDelegate:(id)arg1;
+- (void)canSendInvitationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)contactForGroup:(id)arg1;
 - (void)didUpdateGroups;
 - (void)fetchContactForGroup:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)immobilizerTokenCountWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithPass:(id)arg1 contactResolver:(id)arg2 webService:(id)arg3 queue:(id)arg4;
 - (void)parseCredentialsOnPass:(id)arg1;
 - (void)removeDelegate:(id)arg1;
