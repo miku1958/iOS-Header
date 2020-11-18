@@ -63,6 +63,8 @@
         unsigned int disableUpdateTextColorOnTraitCollectionChange:1;
         unsigned int textAlignmentFollowsWritingDirection:1;
         unsigned int textAlignmentMirrored:1;
+        unsigned int shortcutIntrinsicContentSize:1;
+        unsigned int noNeedsDisplayCheckForBaselineCalculationNeeded:1;
     } _textLabelFlags;
     BOOL _adjustsFontForContentSizeCategory;
     BOOL __textColorFollowsTintColor;
@@ -157,12 +159,14 @@
 - (void)_invalidateLayout;
 - (void)_invalidateSynthesizedAttributedTextAndLayout;
 - (void)_invalidateTextSize;
+- (void)_invalidateTextSizeIncludingIntrinsicContentSize:(BOOL)arg1;
 - (BOOL)_isTextFieldCenteredLabel;
 - (id)_layoutDebuggingTitle;
 - (double)_maximumMarqueeTextWidth;
 - (long long)_measuredNumberOfLines;
 - (double)_minimumFontSize;
 - (double)_multilineContextWidth;
+- (BOOL)_needsDisplayForbaselineCalculation;
 - (BOOL)_needsDoubleUpdateConstraintsPass;
 - (void)_noteInstanceCustomizationForAttributedString:(id)arg1 attributes:(id)arg2;
 - (double)_preferredMaxLayoutWidth;
@@ -190,6 +194,7 @@
 - (void)_setTextAlignmentFollowsWritingDirection:(BOOL)arg1;
 - (void)_setTextAlignmentMirrored:(BOOL)arg1;
 - (void)_setTextColor:(id)arg1;
+- (void)_setUseShortcutIntrinsicContentSize:(BOOL)arg1;
 - (void)_setUsesSimpleTextEffects:(BOOL)arg1;
 - (void)_setWordRoundingEnabled:(BOOL)arg1;
 - (id)_shadow;
@@ -209,6 +214,7 @@
 - (BOOL)_updateScaledMetricsForRect:(struct CGRect)arg1;
 - (void)_updateTextColorWithFallbackColorIfNeeded;
 - (void)_updateVariableLengthString;
+- (BOOL)_useShortcutIntrinsicContentSize;
 - (BOOL)_usesSimpleTextEffects;
 - (BOOL)_wantsDeepDrawing;
 - (BOOL)autotrackTextToFit;
@@ -229,6 +235,7 @@
 - (void)invalidateIntrinsicContentSize;
 - (BOOL)isAccessibilityElementByDefault;
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
+- (void)layerWillDraw:(id)arg1;
 - (id)letterpressStyle;
 - (BOOL)marqueeEnabled;
 - (BOOL)marqueeRunning;
@@ -244,9 +251,11 @@
 - (void)setLetterpressStyle:(id)arg1;
 - (void)setMarqueeEnabled:(BOOL)arg1;
 - (void)setMarqueeRunning:(BOOL)arg1;
+- (void)setNeedsDisplay;
 - (void)setRawSize:(struct CGSize)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setShadowBlur:(double)arg1;
+- (void)set_useShortcutIntrinsicContentSize:(BOOL)arg1;
 - (double)shadowBlur;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1;

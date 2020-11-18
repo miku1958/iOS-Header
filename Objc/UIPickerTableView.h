@@ -86,6 +86,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (BOOL)selectRow:(long long)arg1 animated:(BOOL)arg2 notify:(BOOL)arg3;
+- (BOOL)selectRow:(long long)arg1 animated:(BOOL)arg2 notify:(BOOL)arg3 updateChecked:(BOOL)arg4;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1;
 - (void)setFrame:(struct CGRect)arg1;

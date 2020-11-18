@@ -24,6 +24,7 @@
 @property (readonly, strong, nonatomic) NSNumber *forcedStatusBarStyle;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL idleModeEnabled;
+@property (readonly, nonatomic) BOOL statusBarDisabled;
 @property (readonly, nonatomic) int statusBarStyleOverridesToSuppress;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL underLock;

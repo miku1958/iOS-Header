@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)_beginTrackingDefaultItemSearchInfoIfNecessary;
 - (void)_beginTrackingFocusMovementSearchInfoIfNecessary;
 - (void)_beginTrackingSearches;
+- (id)_closestFocusableItemToPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2 excludingItems:(id)arg3;
 - (id)_defaultFocusItemInEnvironment:(id)arg1;
 - (id)_defaultFocusItemInEnvironment:(id)arg1 limitScopeUsingFocusPreferences:(BOOL)arg2;
 - (id)_defaultMapSnapshotOptions;

@@ -98,6 +98,7 @@
 @property (weak, nonatomic) id<UITextViewDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDevicePasscodeEntry) BOOL devicePasscodeEntry;
 @property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText;
@@ -349,6 +350,7 @@
 - (void)makeTextWritingDirectionLeftToRight:(id)arg1;
 - (void)makeTextWritingDirectionRightToLeft:(id)arg1;
 - (unsigned long long)marginTop;
+- (double)maxTileHeight;
 - (id)metadataDictionariesForDictationResults;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (BOOL)mightHaveLinks;
@@ -384,6 +386,7 @@
 - (void)setLineHeight:(double)arg1;
 - (void)setMarginTop:(unsigned long long)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
+- (void)setMaxTileHeight:(double)arg1;
 - (void)setScrollEnabled:(BOOL)arg1;
 - (void)setShouldAutoscrollAboveBottom:(BOOL)arg1;
 - (void)setShouldPresentSheetsInAWindowLayeredAboveTheKeyboard:(BOOL)arg1;

@@ -31,8 +31,10 @@ __attribute__((visibility("hidden")))
 - (id)displayContentsForKey:(id)arg1;
 - (double)dualStringKeyBottomFontSize:(unsigned long long)arg1;
 - (struct CGPoint)dualStringKeyBottomTextOffset:(unsigned long long)arg1;
+- (struct CGPoint)dualStringKeyBottomTextOffset:(id)arg1 keyplane:(id)arg2;
 - (double)dualStringKeyTopFontSize:(unsigned long long)arg1;
 - (struct CGPoint)dualStringKeyTopTextOffset:(unsigned long long)arg1;
+- (struct CGPoint)dualStringKeyTopTextOffset:(id)arg1 keyplane:(id)arg2;
 - (id)globalEmojiKeyImageName;
 - (id)globalKeyImageName;
 - (struct CGPoint)iPadFudgeControlKeyOffset;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (double)spaceKeyFontSize;
 - (double)stringKeyFontSize:(unsigned long long)arg1;
 - (struct CGPoint)stringKeyOffset:(unsigned long long)arg1;
+- (BOOL)supportsGestureBehaviors;
 - (BOOL)supportsInputTraits:(id)arg1 forKeyplane:(id)arg2;
 - (id)tabKeyImageName;
 

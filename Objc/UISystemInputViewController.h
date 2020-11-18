@@ -91,6 +91,7 @@
 - (unsigned long long)_horizontalLayoutTypeForEdge:(long long)arg1;
 - (void)_removeAccessoryViewController:(id)arg1;
 - (void)_resetDelegate;
+- (void)_restoreKeyboardIfNecessary;
 - (void)_returnButtonPressed;
 - (void)_setNonInputViewVisibility:(BOOL)arg1;
 - (id)_traitCollectionForUserInterfaceStyle;

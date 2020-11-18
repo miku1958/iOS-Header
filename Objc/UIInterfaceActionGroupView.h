@@ -48,6 +48,7 @@
     UIInterfaceActionRepresentationView *_preferredActionRepresentation;
     UIInterfaceActionSeparatorAttributes *_visualStyleOverrideSeparatorAttributes;
     UIFont *_visualStyleOverrideTitleLabelFont;
+    double _selectionHighlightContinuousCornerRadius;
 }
 
 @property (readonly, nonatomic) UIInterfaceActionGroup *actionGroup; // @synthesize actionGroup=_actionGroup;
@@ -72,6 +73,7 @@
 @property (strong, nonatomic) UIInterfaceActionRepresentationView *preferredActionRepresentation; // @synthesize preferredActionRepresentation=_preferredActionRepresentation;
 @property (nonatomic) long long presentationStyle; // @synthesize presentationStyle=_presentationStyle;
 @property (nonatomic) double requiredActionRepresentationWidth; // @synthesize requiredActionRepresentationWidth=_requiredActionRepresentationWidth;
+@property (nonatomic, getter=_selectionHighlightContinuousCornerRadius, setter=_setSelectionHighlightContinuousCornerRadius:) double selectionHighlightContinuousCornerRadius; // @synthesize selectionHighlightContinuousCornerRadius=_selectionHighlightContinuousCornerRadius;
 @property (nonatomic) BOOL showsSeparatorAboveActions; // @synthesize showsSeparatorAboveActions=_showsSeparatorAboveActions;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIView *topLevelItemsView; // @synthesize topLevelItemsView=_topLevelItemsView;
@@ -134,6 +136,7 @@
 - (void)_updateActionSequenceViewActionLayoutAxis;
 - (void)_updateActionSequenceViewDebugLayoutIdentifier;
 - (void)_updateRequiredActionRepresentationSizeConstraints;
+- (void)_updateRoundedCornerPositionForSubviews;
 - (id)_viewContainingTopLevelItems;
 - (id)_viewDisplayingRoundedBackground;
 - (id)_visualStyleByApplyingOurTraitsToVisualStyle:(id)arg1 traitCollection:(id)arg2;

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKBEmojiHitTestResponder-Protocol.h>
 
-@class CADisplayLink, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSTimer, UIDelayedAction, UIKBBackgroundView, UIKBKeyViewAnimator, UIKBKeyplaneView, UIKBRenderConfig, UIKBTree, UIKeyboardEmojiKeyDisplayController, UIKeyboardKeyplaneTransition, UIKeyboardSplitTransitionView, UISwipeGestureRecognizer, UIView, _UIFeedbackRetargetBehavior, _UIKeyboardTypingSpeedLogger;
+@class CADisplayLink, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSTimer, UIDelayedAction, UIGestureKeyboardIntroduction, UIKBBackgroundView, UIKBKeyViewAnimator, UIKBKeyplaneView, UIKBRenderConfig, UIKBTree, UIKeyboardEmojiKeyDisplayController, UIKeyboardSplitTransitionView, UISwipeGestureRecognizer, UIView, _UIFeedbackRetargetBehavior, _UIKeyboardTypingSpeedLogger;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardLayoutStar : UIKeyboardLayout <UIKBEmojiHitTestResponder>
@@ -59,14 +59,15 @@ __attribute__((visibility("hidden")))
     BOOL _showIntlKey;
     BOOL _showDictationKey;
     BOOL _suppressDeactivateKeys;
-    BOOL _suppressKeyplaneAnimation;
+    BOOL _suppressShiftKeyplaneAnimation;
+    BOOL _suppressGestureKeyplaneAnimation;
     BOOL _isTrackpadMode;
     BOOL _shiftLockReady;
     double _shiftLockFirstTapTime;
     UISwipeGestureRecognizer *_rightSwipeRecognizer;
     UISwipeGestureRecognizer *_leftSwipeRecognizer;
     UISwipeGestureRecognizer *_upSwipeRecognizer;
-    UIKeyboardKeyplaneTransition *_keyplaneTransition;
+    NSMutableDictionary *_activeKeyplaneTransitions;
     UIKeyboardSplitTransitionView *_transitionView;
     double _initialSplitProgress;
     double _finalSplitProgress;
@@ -117,6 +118,9 @@ __attribute__((visibility("hidden")))
     NSDate *_prevTouchMoreKeyTime;
     NSString *_lastInputMode;
     BOOL _pendingDictationReload;
+    BOOL _hasPeekedGestureKey;
+    BOOL _lastInputIsGestureKey;
+    UIGestureKeyboardIntroduction *_gestureKeyboardIntroduction;
     BOOL _muteNextKeyClickSound;
     int playKeyClickSoundOn;
     int _rightSwipeFunction;
@@ -162,6 +166,7 @@ __attribute__((visibility("hidden")))
 + (id)keyboardFromFactoryWithName:(id)arg1 screen:(id)arg2;
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
 + (id)keyboardWithName:(id)arg1 screenTraits:(id)arg2;
++ (id)sharedPunctuationCharacterSet;
 + (id)sharedRivenKeyplaneGenerator;
 - (id)_appendingSecondaryStringToVariantsTop:(id)arg1 secondaryString:(id)arg2 withDirection:(id)arg3;
 - (void)_autoSplit:(id)arg1;
@@ -230,6 +235,7 @@ __attribute__((visibility("hidden")))
 - (void)didFinishScreenGestureRecognition;
 - (void)didRecognizeGestureOnEdge:(unsigned long long)arg1 withDistance:(double)arg2;
 - (void)didRotate;
+- (void)dismissGestureKeyboardIntroduction;
 - (int)displayTypeHintForMoreKey;
 - (int)displayTypeHintForShiftKey;
 - (void)divideKeysIntoLeft:(id)arg1 right:(id)arg2;
@@ -283,6 +289,7 @@ __attribute__((visibility("hidden")))
 - (void)hideMenu:(id)arg1 forKey:(id)arg2;
 - (id)highlightedVariantListForStylingKey:(id)arg1;
 - (double)hitBuffer;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)ignoresShiftState;
 - (void)incrementPunctuationIfNeeded:(id)arg1;
 - (id)infoForTouch:(id)arg1;
@@ -338,6 +345,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForSplitTransition;
 - (void)rebuildKeyplaneTransitionWithTargetBias:(long long)arg1;
 - (void)rebuildSplitTransitionView;
+- (void)refreshDualStringKeys;
 - (void)refreshForDictationAvailablityDidChange;
 - (void)refreshForRivenPreferences;
 - (void)refreshGhostKeyState;
@@ -387,11 +395,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldSendStringForFlick:(id)arg1;
 - (BOOL)shouldSendTouchUpToInputManager:(id)arg1;
 - (BOOL)shouldShowDictationKey;
+- (BOOL)shouldShowGestureKeyboardIntroduction;
 - (BOOL)shouldShowIndicator;
 - (BOOL)shouldSkipResponseToGlobeKey:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (BOOL)shouldUseDefaultShiftStateFromLayout;
 - (BOOL)shouldYieldToControlCenterForFlickWithInitialPoint:(struct CGPoint)arg1 finalPoint:(struct CGPoint)arg2;
 - (void)showFlickView:(int)arg1 withKey:(id)arg2 flickString:(id)arg3;
+- (BOOL)showGestureKeyboardIntroductionIfNeeded;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
 - (void)showMenu:(id)arg1 forKey:(id)arg2;
 - (void)showPopupVariantsForKey:(id)arg1;
@@ -409,6 +419,9 @@ __attribute__((visibility("hidden")))
 - (int)stateForMultitapReverseKey:(id)arg1;
 - (int)stateForShiftKey:(id)arg1;
 - (int)stateForStylingKey:(id)arg1;
+- (struct CGSize)stretchFactor;
+- (BOOL)stretchKeyboardToFit;
+- (BOOL)stretchKeyboardToFitKeyplane:(id)arg1;
 - (BOOL)supportStylingWithKey:(id)arg1;
 - (BOOL)supportsEmoji;
 - (void)swipeDetected:(id)arg1;
@@ -429,16 +442,19 @@ __attribute__((visibility("hidden")))
 - (void)uninstallGestureRecognizers;
 - (unsigned long long)upActionFlagsForKey:(id)arg1;
 - (void)upActionShift;
+- (void)updateAutolocalizedKeysForKeyplane:(id)arg1;
 - (void)updateBackgroundCorners;
 - (void)updateBackgroundIfNeeded;
 - (void)updateCachedKeyplaneKeycaps;
 - (void)updateCurrencySymbolForKey:(id)arg1 withCurrencyString:(id)arg2;
 - (void)updateGlobeKeyDisplayString;
+- (void)updateInputModeLocalizedKeysForKeyplane:(id)arg1;
 - (void)updateKeyCentroids;
 - (void)updateKeyboardForKeyplane:(id)arg1;
 - (void)updateLayoutTags;
 - (void)updateLocalizedDisplayStringOnEmojiInternationalWithKeyplane:(id)arg1 withInputMode:(id)arg2;
 - (void)updateLocalizedKeys:(BOOL)arg1;
+- (void)updateLocalizedKeysForKeyplane:(id)arg1 updateAllKeyplanes:(BOOL)arg2;
 - (void)updateLocalizedKeysOnKeyplane:(id)arg1;
 - (void)updateMoreAndInternationalKeys;
 - (void)updatePanAlternativesForTouchInfo:(id)arg1;
@@ -448,7 +464,6 @@ __attribute__((visibility("hidden")))
 - (void)updateShiftKeyState;
 - (void)updateTransitionWithFlags:(unsigned long long)arg1;
 - (BOOL)useDismissForMessagesWriteboard;
-- (BOOL)useScaledGeometrySet;
 - (BOOL)useUndoForMessagesWriteboard;
 - (BOOL)usesAutoShift;
 - (int)visualStyleForKeyboardIfSplit:(BOOL)arg1;

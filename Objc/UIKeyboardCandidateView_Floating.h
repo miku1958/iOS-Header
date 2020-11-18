@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_numberOfColumns:(BOOL)arg1;
 - (id)activeCandidateList;
 - (void)candidatesDidChange;
+- (int)candidatesVisualStyle;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setCandidateViewExtended:(BOOL)arg1;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     CDUnion_2c5a7b77 _style;
     NSString *_geometrySetName;
     NSString *_keySetName;
+    NSString *_cachedGestureKeySetName;
     NSString *_annotations;
 }
 

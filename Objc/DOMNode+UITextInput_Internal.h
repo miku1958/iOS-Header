@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMNode.h>
+#import <WebKitLegacy/DOMNode.h>
 
 #import <UIKit/UITextInput_Internal-Protocol.h>
 

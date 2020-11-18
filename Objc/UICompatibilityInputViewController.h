@@ -8,7 +8,7 @@
 
 #import <UIKit/_UIKBDelegateAwareInputController-Protocol.h>
 
-@class NSString, UIKeyboard, UIKeyboardInputMode, UIViewController;
+@class NSArray, NSString, UIKeyboard, UIKeyboardInputMode, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface UICompatibilityInputViewController : UIInputViewController <_UIKBDelegateAwareInputController>
@@ -22,12 +22,14 @@ __attribute__((visibility("hidden")))
     BOOL _shouldSuppressRemoteInputController;
     double _resetInputModeTime;
     UIViewController *_inputController;
+    NSArray *_internalEdgeMatchConstraints;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIViewController *inputController; // @synthesize inputController=_inputController;
+@property (strong, nonatomic) NSArray *internalEdgeMatchConstraints; // @synthesize internalEdgeMatchConstraints=_internalEdgeMatchConstraints;
 @property (readonly) Class superclass;
 
 + (BOOL)_requiresProxyInterface;

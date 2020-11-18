@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
     NSUserDefaults *_userDefaults;
 }
 
+@property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
+
 + (id)sharedPreferences;
 - (void).cxx_destruct;
 - (id)_defaultKeyForKey:(id)arg1 type:(unsigned long long)arg2;

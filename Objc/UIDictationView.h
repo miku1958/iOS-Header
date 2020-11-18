@@ -8,7 +8,7 @@
 
 #import <UIKit/SUICFlamesViewDelegate-Protocol.h>
 
-@class NSString, SUICFlamesView, UIButton, UIDictationMeterView, UIKeyboardDicationBackground;
+@class NSString, SUICFlamesView, UIButton, UIKeyboardDicationBackground;
 @protocol UIDictationViewDisplayDelegate;
 
 @interface UIDictationView : UIView <SUICFlamesViewDelegate>
@@ -21,7 +21,6 @@
     BOOL _keyboardInTransition;
     BOOL _automaticAppearanceWasEnabled;
     SUICFlamesView *_flamesView;
-    UIDictationMeterView *_meterView;
     id<UIDictationViewDisplayDelegate> _displayDelegate;
 }
 

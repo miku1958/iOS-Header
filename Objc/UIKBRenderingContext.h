@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long _shiftState;
     UIKBRenderConfig *_renderConfig;
+    long long _keyboardType;
 }
 
+@property (nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
 @property (strong, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 @property (nonatomic) unsigned long long shiftState; // @synthesize shiftState=_shiftState;
 

@@ -121,6 +121,7 @@
 - (void)_effectiveBarTintColorDidChange;
 - (id)_effectiveUnselectedTabTintColorConsideringView:(id)arg1;
 - (id)_effectiveUnselectedTintColor;
+- (void)_ensureUnfocusedItemsAreNotSelected;
 - (BOOL)_hasCustomAutolayoutNeighborSpacing;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (BOOL)_isEligibleForFocus;

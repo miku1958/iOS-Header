@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMHTMLTextAreaElement.h>
+#import <WebKitLegacy/DOMHTMLTextAreaElement.h>
 
 @interface DOMHTMLTextAreaElement (UIWebBrowserViewPrivate)
 - (BOOL)_requiresAccessoryView;

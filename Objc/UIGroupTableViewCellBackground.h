@@ -24,8 +24,10 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int selected:1;
     } _groupBackgroundFlags;
+    long long _renderingMode;
 }
 
+@property (nonatomic, getter=_renderingMode, setter=_setRenderingMode:) long long renderingMode; // @synthesize renderingMode=_renderingMode;
 @property (nonatomic) double sectionBorderWidth; // @synthesize sectionBorderWidth=_sectionBorderWidth;
 @property (nonatomic) int sectionLocation;
 @property (nonatomic, getter=isSelected) BOOL selected;

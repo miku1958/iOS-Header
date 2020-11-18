@@ -48,6 +48,7 @@
     UIViewController *_viewDelegate;
     NSString *_backgroundColorSystemColorName;
     unsigned long long _countOfMotionEffectsInSubtree;
+    unsigned long long _unsatisfiableConstraintsLoggingSuspensionCount;
     unsigned long long _countOfTraitChangeRespondersInDirectSubtree;
     double _cachedScreenScale;
     struct {
@@ -110,12 +111,12 @@
         unsigned int isHostingUpdateConstraintsPassDuringLayout:1;
         unsigned int isRunningEngineLevelConstraintsPass:1;
         unsigned int isUpdatingLayoutEngineHostConstraints:1;
-        unsigned int isUnsatisfiableConstraintsLoggingSuspended:1;
         unsigned int isExpectingToFlushPendingLayoutChangeNotifications:1;
         unsigned int systemLayoutFittingSizeNeedsUpdate:1;
         unsigned int systemLayoutFittingSizeNeedsUpdateInWholeSubtree:1;
         unsigned int isCalculatingSystemLayoutFittingSize:1;
         unsigned int suppressEncapsulationConstraints:1;
+        unsigned int isFetchingSizeForTAMIC_NOEngineHost:1;
         unsigned int stayHiddenAwaitingReuse:1;
         unsigned int stayHiddenAfterReuse:1;
         unsigned int skippedLayoutWhileHiddenForReuse:1;
@@ -217,6 +218,7 @@
 @property (strong, nonatomic, setter=_setInteractionTintColor:) UIColor *_interactionTintColor; // @synthesize _interactionTintColor;
 @property (strong, nonatomic, setter=_setInternalConstraints:) NSMutableArray *_internalConstraints; // @synthesize _internalConstraints;
 @property (readonly, nonatomic) BOOL _isInLayoutSubviews; // @dynamic _isInLayoutSubviews;
+@property (readonly, nonatomic) BOOL _isUnsatisfiableConstraintsLoggingSuspended;
 @property (readonly, nonatomic) long long _keyboardOrientation;
 @property (copy, nonatomic, setter=_setLayoutDebuggingIdentifier:) NSString *_layoutDebuggingIdentifier; // @synthesize _layoutDebuggingIdentifier;
 @property (strong, nonatomic, setter=_setLayoutEngine:) NSISEngine *_layoutEngine; // @synthesize _layoutEngine;
@@ -308,8 +310,6 @@
 @property (readonly) NSLayoutXAxisAnchor *trailingAnchor;
 @property (readonly, nonatomic) UITraitCollection *traitCollection;
 @property (nonatomic) struct CGAffineTransform transform;
-@property (nonatomic, getter=_isUnsatisfiableConstraintsLoggingSuspended, setter=_setUnsatisfiableConstraintsLoggingSuspended:) BOOL unsatisfiableConstraintsLoggingSuspended; // @dynamic unsatisfiableConstraintsLoggingSuspended;
-@property (nonatomic, getter=_isUnsatisfiableConstraintsLoggingSuspended, setter=_setUnsatisfiableConstraintsLoggingSuspended:) BOOL unsatisfiableConstraintsLoggingSuspended;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled;
 @property (nonatomic, getter=_viewDelegate, setter=_setViewDelegate:) UIViewController *viewDelegate;
 @property (nonatomic) BOOL viewTraversalMark;
@@ -558,6 +558,7 @@
 - (void)_clearAnimationFilters;
 - (void)_clearBecomeFirstResponderWhenCapable;
 - (void)_clearBecomeFirstResponderWhenCapableOnSubtree;
+- (void)_clearConstraintsBrokenWhileUnsatisfiableConstraintsLoggingSuspended;
 - (void)_clearLayoutVariableObservationsOnlyToSupportTAMICChange:(BOOL)arg1;
 - (int)_clipCorners;
 - (int)_clipCornersOfView:(id)arg1;
@@ -574,6 +575,7 @@
 - (id)_constraintForIdentifier:(id)arg1;
 - (id)_constraintsArray;
 - (id)_constraintsBrokenWhileUnsatisfiableConstraintsLoggingSuspended;
+- (id)_constraintsBrokenWhileUnsatisfiableConstraintsLoggingSuspendedCreateIfNecessary:(BOOL)arg1;
 - (id)_constraintsEquivalentToAutoresizingMask;
 - (id)_constraintsValidityDescription;
 - (void)_constraints_didChangeAutoresizingConstraintsArrayForContainedView:(id)arg1;
@@ -617,6 +619,7 @@
 - (id)_debuggableDescriptionForConstraintsAffectingVerticalAxis;
 - (void)_decrementHiddenManagedByLayoutArrangementCount;
 - (void)_decrementPendingHiddenCount;
+- (void)_decrementUnsatisfiableConstraintsLoggingSuspensionCount;
 - (struct CGSize)_defaultContentCompressionResistancePriorities;
 - (struct CGSize)_defaultContentHuggingPriorities;
 - (id)_defaultLayoutDescription;
@@ -724,6 +727,7 @@
 - (BOOL)_imageSnapshotCapturedAllContent;
 - (void)_incrementHiddenManagedByLayoutArrangementCount;
 - (void)_incrementPendingHiddenCount;
+- (void)_incrementUnsatisfiableConstraintsLoggingSuspensionCount;
 - (void)_informContainerThatSubviewsNeedUpdateConstraints;
 - (void)_informContainerThatSubviewsNeedUpdateConstraintsNeedingLayout:(BOOL)arg1;
 - (void)_informSuperviewChainThatDescendantNeedsDoubleUpdateConstraintsPass;
@@ -736,6 +740,7 @@
 - (id)_interceptEvent:(id)arg1;
 - (id)_interceptMouseEvent:(struct __GSEvent *)arg1;
 - (float)_internalScaleForScale:(float)arg1;
+- (BOOL)_intrinsicContentSizeConstraintsAreClean;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_invalidateAppearance;
@@ -807,6 +812,7 @@
 - (void)_makeSubtreePerformSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3 copySublayers:(BOOL)arg4;
 - (void)_makeTemporaryInternalConstraintsWithEngine:(id)arg1 ignoreAutoresizingMaskConstraints:(BOOL)arg2 returningConstraintsForViewsNeedingSecondPass:(id *)arg3 currentTargetWidth:(double)arg4;
 - (void)_markClippingDetected;
+- (void)_mergeConstraintsBrokenWhileUnsatisfiableConstraintsLoggingSuspendedToAncestor:(id)arg1;
 - (float)_minimumZoomScaleDelta;
 - (id)_motionEffects;
 - (BOOL)_motionEffectsAreSuspended;

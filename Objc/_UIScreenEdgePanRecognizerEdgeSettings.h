@@ -11,7 +11,6 @@
     double _hysteresis;
     double _edgeRegionSize;
     double _bottomEdgeRegionSize;
-    double _backProjectionTime;
     double _edgeAngleWindow;
     double _edgeAngleWindowDecayTime;
     double _restrictedEdgeRegionTimeInterval;
@@ -19,7 +18,6 @@
     double _maximumSwipeDuration;
 }
 
-@property (nonatomic) double backProjectionTime; // @synthesize backProjectionTime=_backProjectionTime;
 @property (nonatomic) double bottomEdgeRegionSize; // @synthesize bottomEdgeRegionSize=_bottomEdgeRegionSize;
 @property (nonatomic) double edgeAngleWindow; // @synthesize edgeAngleWindow=_edgeAngleWindow;
 @property (nonatomic) double edgeAngleWindowDecayTime; // @synthesize edgeAngleWindowDecayTime=_edgeAngleWindowDecayTime;

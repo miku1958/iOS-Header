@@ -180,6 +180,7 @@
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (void)_prepareMaskAnimationViewIfNecessary;
+- (void)_reducedTransparencyDidChange:(id)arg1;
 - (BOOL)_requiresLayoutForPropertyChange;
 - (void)_selectGestureChanged:(id)arg1;
 - (double)_selectedIndicatorAlpha;

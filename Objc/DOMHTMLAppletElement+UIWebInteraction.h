@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMHTMLAppletElement.h>
+#import <WebKitLegacy/DOMHTMLAppletElement.h>
 
 @interface DOMHTMLAppletElement (UIWebInteraction)
 - (BOOL)showsTapHighlight;

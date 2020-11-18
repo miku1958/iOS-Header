@@ -4,21 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
-
-@class NSString;
+#import <UIKit/_UIVisualEffectBackdropView.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIVisualEffectCaptureView : UIView
+@interface _UIVisualEffectCaptureView : _UIVisualEffectBackdropView
 {
 }
 
-@property (nonatomic, getter=isEnabled) BOOL enabled;
-@property (copy, nonatomic) NSString *groupName;
-
-+ (Class)layerClass;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)_initWithFrame:(struct CGRect)arg1 settings:(id)arg2;
 
 @end
 

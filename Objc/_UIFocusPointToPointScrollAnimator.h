@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (double)_animationDurationForDistance:(double)arg1 convergenceRate:(double)arg2;
 - (void)cancelPeekAdjustmentForScrollView:(id)arg1 performRollback:(BOOL)arg2;
 - (void)cancelScrollingForScrollView:(id)arg1;
+- (struct CGPoint)currentVelocityForScrollView:(id)arg1;
 - (id)init;
 - (BOOL)isAnimatingScrollView:(id)arg1;
 - (void)setPeekOffsetAdjustment:(struct CGPoint)arg1 forScrollView:(id)arg2;

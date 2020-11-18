@@ -31,6 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDevicePasscodeEntry) BOOL devicePasscodeEntry;
 @property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText;

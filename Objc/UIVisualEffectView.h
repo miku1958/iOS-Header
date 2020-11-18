@@ -27,7 +27,10 @@
     _UIVisualEffectFilterView *_colorSubview;
     _UIVisualEffectFilterView *_colorBurnSubview;
     _UIVisualEffectFilterView *_darkeningSubview;
+    _UIVisualEffectFilterView *_noiseSubview;
     NSArray *_effectConfigViews;
+    double _noiseAlpha;
+    BOOL _noiseEnabled;
     double _backdropViewBackgroundColorAlpha;
     BOOL __blurDisabled;
     NSString *_groupName;
@@ -59,11 +62,14 @@
 - (void)_configureForEffectSettings:(id)arg1;
 - (double)_continuousCornerRadius;
 - (void)_createContentViewIfNecessary;
+- (BOOL)_isNoiseEnabled;
 - (id)_maskViewImageMask;
+- (id)_noiseSubview;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_rebuildEffectViewForCurrentEffect;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_setEffect:(id)arg1;
+- (void)_setNoiseEnabled:(BOOL)arg1;
 - (void)_setTintOpacity:(double)arg1;
 - (void)_setupEffectsViewsForSettings:(id)arg1;
 - (BOOL)_shouldRegenerateMasksForNewMaskView:(id)arg1;

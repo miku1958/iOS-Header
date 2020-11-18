@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMHTMLInputElement.h>
+#import <WebKitLegacy/DOMHTMLInputElement.h>
 
 @interface DOMHTMLInputElement (UIWebInteraction)
 - (BOOL)isAssistedDateType;

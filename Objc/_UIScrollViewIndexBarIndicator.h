@@ -7,7 +7,7 @@
 #import <UIKit/UIView.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIFloatingContentSpecialAnimatingView : UIView
+@interface _UIScrollViewIndexBarIndicator : UIView
 {
 }
 

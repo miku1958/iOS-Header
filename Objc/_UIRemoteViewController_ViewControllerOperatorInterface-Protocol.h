@@ -11,6 +11,7 @@
 - (void)__dismissTextServiceSessionAnimated:(BOOL)arg1;
 - (void)__handleFocusMovementAction:(UIFocusMovementAction *)arg1;
 - (void)__presentActionSheetFromYCoordinate:(double)arg1 withTitle:(NSString *)arg2 buttonTitles:(NSArray *)arg3 cancelButtonIndex:(long long)arg4 destructiveButtonIndex:(long long)arg5 style:(long long)arg6;
+- (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
 - (void)__setSupportedInterfaceOrientations:(NSArray *)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (void)__showEditAlertViewWithToken:(long long)arg1 canUndo:(BOOL)arg2 canRedo:(BOOL)arg3;

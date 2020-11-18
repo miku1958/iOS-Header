@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMNode.h>
+#import <WebKitLegacy/DOMNode.h>
 
 #import <UIKit/UIKeyInput-Protocol.h>
 #import <UIKit/UIKeyboardInput-Protocol.h>
@@ -30,6 +30,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDevicePasscodeEntry) BOOL devicePasscodeEntry;
 @property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText;

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_pressAndHoldButton:(id)arg1;
 - (void)_pressButton:(id)arg1;
 - (void)_triggerButtonWithAction:(long long)arg1;
+- (BOOL)allowsUserInteraction;
 - (long long)buttonType;
 - (BOOL)canBecomeFocused;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;

@@ -17,6 +17,7 @@
 @property (readonly, strong, nonatomic) NSNumber *forcedStatusBarHidden;
 @property (readonly, strong, nonatomic) NSNumber *forcedStatusBarStyle;
 @property (readonly, nonatomic) BOOL idleModeEnabled;
+@property (readonly, nonatomic) BOOL statusBarDisabled;
 @property (readonly, nonatomic) int statusBarStyleOverridesToSuppress;
 @property (readonly, nonatomic) BOOL underLock;
 @property (readonly, nonatomic) long long userInterfaceStyle;

@@ -229,6 +229,7 @@
 + (BOOL)isActivatingForeground;
 + (BOOL)isFloating;
 + (BOOL)isSplit;
++ (BOOL)keyboardOrientation:(long long)arg1 isEquivalentToOrientation:(long long)arg2;
 + (id)keyboardScreen;
 + (struct CGSize)keyboardSizeForInterfaceOrientation:(long long)arg1;
 + (double)keyboardWidthForScreen:(id)arg1 withOrientation:(long long)arg2;
@@ -242,6 +243,7 @@
 + (struct CGPoint)normalizedPersistentOffsetIgnoringState;
 + (struct CGPoint)persistentOffset;
 + (double)persistentSplitProgress;
++ (void)purgeImageCache;
 + (void)refreshRivenStateWithTraits:(id)arg1 isKeyboard:(BOOL)arg2;
 + (void)releaseSharedInstance;
 + (BOOL)rivenInstalled;
@@ -594,6 +596,7 @@
 - (void)removeAutocorrection;
 - (void)removeCandidateList;
 - (void)removeFromSuperview;
+- (void)removeRecentInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeSpaceAfterEmojiForInputString:(id)arg1;
 - (void)replaceText:(id)arg1;
 - (id)replacementsFromSelectedText;
@@ -658,6 +661,7 @@
 - (void)setShiftNeedsUpdate;
 - (void)setShiftOffIfNeeded;
 - (void)setShiftPreventAutoshift:(BOOL)arg1;
+- (void)setShouldSkipCandidateSelection:(BOOL)arg1 userInitiated:(BOOL)arg2;
 - (void)setShouldUpdateCacheOnInputModesChange:(BOOL)arg1;
 - (void)setSplit:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSplitProgress:(double)arg1;
@@ -697,6 +701,7 @@
 - (void)startCaretBlinkIfNeeded;
 - (void)stopAutoDelete;
 - (void)storeDelegateConformance;
+- (struct CGSize)stretchFactor;
 - (struct CGRect)subtractKeyboardFrameFromRect:(struct CGRect)arg1 inView:(id)arg2;
 - (BOOL)suppliesCompletions;
 - (BOOL)supportsNumberKeySelection;

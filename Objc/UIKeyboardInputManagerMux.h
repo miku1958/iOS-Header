@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)removeAllClients;
 - (void)removeClient:(id)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
-- (void)setSystemInputManagerFromKeyboardState:(id)arg1;
+- (void)setSystemInputManagerFromKeyboardState:(id)arg1 devicePasscodeEntry:(BOOL)arg2;
 - (void)updateClientResponseDelegatesWithDelegate:(id)arg1;
 
 @end

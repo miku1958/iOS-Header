@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMNode.h>
+#import <WebKitLegacy/DOMNode.h>
 
 @interface DOMNode (UIWebFormPeripheral)
 - (id)createPeripheral;

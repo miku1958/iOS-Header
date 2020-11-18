@@ -15,9 +15,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
 + (id)operatorWithScale:(double)arg1;
-- (CDStruct_ef18196a)_scaleRange:(CDStruct_ef18196a)arg1 factor:(double)arg2;
+- (CDStruct_c3b9c2ee)_scaleRange:(CDStruct_c3b9c2ee)arg1 factor:(double)arg2;
 - (struct CGRect)_scaleRect:(struct CGRect)arg1 factor:(struct CGSize)arg2;
 - (id)geometryByScalingShapeGeometry:(id)arg1 factor:(struct CGSize)arg2;
+- (struct CGRect)rectByScalingRect:(struct CGRect)arg1 factor:(struct CGSize)arg2;
 - (id)shapeByScalingShape:(id)arg1 factor:(struct CGSize)arg2;
 - (id)shapesByCenteringShapes:(id)arg1 insideRect:(struct CGRect)arg2;
 - (id)shapesByElaboratingShapes:(id)arg1 insideShape:(id)arg2 count:(long long)arg3;

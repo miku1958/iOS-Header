@@ -36,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)dismissKeySymbolFrame;
 - (id)displayContentsForKey:(id)arg1;
 - (double)dualStringKeyFontSizeAdjustment;
-- (double)dualStringKeyMiddleMargin;
 - (struct CGPoint)dualStringKeyOffset;
 - (double)emailDotKeyFontSize;
 - (double)facemarkKeyFontSize;
@@ -76,9 +75,12 @@ __attribute__((visibility("hidden")))
 - (double)spaceKeyFontSize;
 - (double)stringKeyFontSize;
 - (struct CGPoint)stringKeyOffset;
+- (BOOL)supportsGestureBehaviors;
 - (BOOL)supportsInputTraits:(id)arg1 forKeyplane:(id)arg2;
 - (double)symbolFrameInset;
 - (id)thinKeycapsFontName;
+- (double)tinyPunctuationGlyphFontSize;
+- (struct CGPoint)tinyPunctuationGlyphOffset;
 - (struct UIEdgeInsets)variantDisplayFrameInsets;
 - (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3;
 - (struct UIEdgeInsets)variantSymbolFrameInsets;

@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)dismissKeyOffset;
 - (struct CGRect)dismissKeySymbolFrame;
 - (double)dualStringKeyFontSizeAdjustment;
-- (double)dualStringKeyMiddleMargin;
 - (struct CGPoint)dualStringKeyOffset;
 - (double)emailDotKeyFontSize;
 - (double)facemarkKeyFontSize;
@@ -50,6 +49,8 @@ __attribute__((visibility("hidden")))
 - (double)smallKanaKeyFontSize;
 - (double)spaceKeyFontSize;
 - (double)stringKeyFontSize;
+- (double)tinyPunctuationGlyphFontSize;
+- (struct CGPoint)tinyPunctuationGlyphOffset;
 - (double)zhuyinFirstToneKeyFontSize;
 
 @end

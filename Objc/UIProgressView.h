@@ -54,6 +54,7 @@
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)_progressColor;
+- (void)_reducedTransparencyDidChange:(id)arg1;
 - (unsigned long long)_roundedCornersForProgressForCurrentStyle;
 - (unsigned long long)_roundedCornersForTrackForCurrentStyle;
 - (void)_setProgress:(float)arg1;

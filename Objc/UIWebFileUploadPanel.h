@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     UIWebDocumentView *_documentView;
     NSObject<WebOpenPanelResultListener> *_resultListener;
     id<UIWebFileUploadPanelDelegate> _delegate;
+    long long _mediaCaptureType;
 }
 
 @property (nonatomic) BOOL allowMultipleFiles; // @synthesize allowMultipleFiles=_allowMultipleFiles;
@@ -39,11 +40,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) UIWebDocumentView *documentView; // @synthesize documentView=_documentView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isUsingCamera; // @synthesize isUsingCamera=_isUsingCamera;
+@property (nonatomic) long long mediaCaptureType; // @synthesize mediaCaptureType=_mediaCaptureType;
 @property (copy, nonatomic) NSArray *mimeTypes; // @synthesize mimeTypes=_mimeTypes;
 @property (strong, nonatomic) NSObject<WebOpenPanelResultListener> *resultListener; // @synthesize resultListener=_resultListener;
 @property (readonly) Class superclass;
 
 - (id)_UTIsForMIMETypes;
+- (void)_adjustMediaCaptureType;
 - (id)_cameraButtonLabel;
 - (void)_cancel;
 - (void)_chooseFilename:(id)arg1 displayString:(id)arg2 iconImage:(id)arg3;
@@ -59,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)_presentPopoverWithContentViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_processMediaInfoDictionaries:(id)arg1 atIndex:(unsigned long long)arg2 processedResults:(id)arg3 processedImageCount:(unsigned long long)arg4 processedVideoCount:(unsigned long long)arg5 successBlock:(CDUnknownBlockType)arg6 failureBlock:(CDUnknownBlockType)arg7;
 - (void)_processMediaInfoDictionaries:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
+- (BOOL)_shouldMediaCaptureOpenMediaDevice;
 - (void)_showDocumentPickerMenu;
 - (void)_showPhotoPickerWithSourceType:(long long)arg1;
 - (BOOL)_string:(id)arg1 hasPrefixCaseInsensitive:(id)arg2;
@@ -76,7 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (void)imagePickerController:(id)arg1 didFinishPickingMultipleMediaWithInfo:(id)arg2;
 - (void)imagePickerControllerDidCancel:(id)arg1;
-- (id)initWithResultListener:(id)arg1 mimeTypes:(id)arg2 allowMultipleFiles:(BOOL)arg3 documentView:(id)arg4;
+- (id)initWithResultListener:(id)arg1 configuration:(id)arg2 documentView:(id)arg3;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
 - (void)present;
 

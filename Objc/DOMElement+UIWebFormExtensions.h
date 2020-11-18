@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMElement.h>
+#import <WebKitLegacy/DOMElement.h>
 
 @interface DOMElement (UIWebFormExtensions)
 - (void)getTextWritingDirection:(long long *)arg1 override:(BOOL *)arg2;

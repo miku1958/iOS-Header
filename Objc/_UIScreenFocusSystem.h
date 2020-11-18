@@ -8,7 +8,7 @@
 
 #import <UIKit/BKSEventFocusObserving-Protocol.h>
 
-@class NSHashTable, NSString, UIFocusAnimationCoordinator, UIScreen, UIView;
+@class NSString, UIFocusAnimationCoordinator, UIScreen, UIView, _UIFocusAnimationCoordinatorManager;
 @protocol UIFocusEnvironment, UIFocusItem;
 
 __attribute__((visibility("hidden")))
@@ -20,25 +20,22 @@ __attribute__((visibility("hidden")))
     BOOL _forceSourceItemMayRemainFocused;
     BOOL _pendingFocusRestoration;
     id<UIFocusItem> _focusedItem;
-    NSHashTable *_unfocusingItems;
-    UIFocusAnimationCoordinator *_currentFocusAnimationCoordinator;
     id<UIFocusItem> _previousFocusedItem;
     UIScreen *_screen;
     id<UIFocusEnvironment> _pendingFocusUpdateEnvironment;
-    double _lastFocusStartTime;
+    _UIFocusAnimationCoordinatorManager *_focusAnimationCoordinatorManager;
 }
 
-@property (readonly, nonatomic) NSHashTable *_unfocusingItems; // @synthesize _unfocusingItems;
-@property (readonly, nonatomic) UIFocusAnimationCoordinator *currentFocusAnimationCoordinator; // @synthesize currentFocusAnimationCoordinator=_currentFocusAnimationCoordinator;
+@property (readonly, nonatomic) UIFocusAnimationCoordinator *currentFocusAnimationCoordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic, getter=_focusAnimationCoordinatorManager, setter=_setFocusAnimationCoordinatorManager:) _UIFocusAnimationCoordinatorManager *focusAnimationCoordinatorManager; // @synthesize focusAnimationCoordinatorManager=_focusAnimationCoordinatorManager;
 @property (nonatomic, getter=isFocusEnabled) BOOL focusEnabled; // @synthesize focusEnabled=_focusEnabled;
 @property (readonly, weak, nonatomic) id<UIFocusItem> focusedItem; // @synthesize focusedItem=_focusedItem;
 @property (readonly, weak, nonatomic) UIView *focusedView;
 @property (nonatomic, getter=_forceSourceItemMayRemainFocused, setter=_forceSourceItemMayRemainFocused:) BOOL forceSourceItemMayRemainFocused; // @synthesize forceSourceItemMayRemainFocused=_forceSourceItemMayRemainFocused;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoreFocusUpdateIfNeeded; // @synthesize ignoreFocusUpdateIfNeeded=_ignoreFocusUpdateIfNeeded;
-@property (readonly, nonatomic, getter=_lastFocusStartTime) double lastFocusStartTime; // @synthesize lastFocusStartTime=_lastFocusStartTime;
 @property (nonatomic, getter=_pendingFocusRestoration, setter=_setPendingFocusRestoration:) BOOL pendingFocusRestoration; // @synthesize pendingFocusRestoration=_pendingFocusRestoration;
 @property (nonatomic, getter=_pendingFocusUpdateAllowsDeferral, setter=_setPendingFocusUpdateAllowsDeferral:) BOOL pendingFocusUpdateAllowsDeferral; // @synthesize pendingFocusUpdateAllowsDeferral=_pendingFocusUpdateAllowsDeferral;
 @property (weak, nonatomic, getter=_pendingFocusUpdateEnvironment, setter=_setPendingFocusUpdateEnvironment:) id<UIFocusEnvironment> pendingFocusUpdateEnvironment; // @synthesize pendingFocusUpdateEnvironment=_pendingFocusUpdateEnvironment;

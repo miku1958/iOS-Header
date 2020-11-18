@@ -50,6 +50,7 @@
 @property (readonly, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (nonatomic, getter=_compositionLayout, setter=_setCompositionLayout:) _UICollectionViewCompositionLayout *compositionLayout;
 @property (copy, nonatomic, getter=_elementKinds, setter=_setElementKinds:) NSArray *elementKinds;
+@property (readonly, nonatomic, getter=_fastScrollingIndexBarInsets) struct UIEdgeInsets fastScrollingIndexBarInsets;
 @property (nonatomic, getter=_frame, setter=_setFrame:) struct CGRect frame;
 @property (copy, nonatomic, getter=_items, setter=_setItems:) NSIndexSet *items;
 @property (nonatomic, getter=_layoutOffset, setter=_setLayoutOffset:) struct CGPoint layoutOffset;
@@ -66,6 +67,7 @@
 - (CDUnknownBlockType)_animationForReusableView:(id)arg1 toLayoutAttributes:(id)arg2 type:(unsigned long long)arg3;
 - (struct CGRect)_bounds;
 - (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
+- (struct CGPoint)_contentOffsetForScrollingToSection:(long long)arg1;
 - (id)_decorationViewForLayoutAttributes:(id)arg1;
 - (void)_didFinishLayoutTransitionAnimations:(BOOL)arg1;
 - (id)_dynamicAnimator;

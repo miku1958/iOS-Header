@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     UIInterfaceActionVisualStyle *_visualStyle;
     NSArray *_arrangedActionRepresentationViews;
     long long _actionLayoutAxis;
+    unsigned long long _visualCornerPosition;
     NSLayoutConstraint *_minimumHeightConstraint;
     _UIInterfaceActionSeparatableSequenceView *_separatedContentSequenceView;
 }
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *arrangedActionRepresentationViews; // @synthesize arrangedActionRepresentationViews=_arrangedActionRepresentationViews;
 @property (readonly, nonatomic) NSLayoutConstraint *minimumHeightConstraint; // @synthesize minimumHeightConstraint=_minimumHeightConstraint;
 @property (readonly, nonatomic) _UIInterfaceActionSeparatableSequenceView *separatedContentSequenceView; // @synthesize separatedContentSequenceView=_separatedContentSequenceView;
+@property (nonatomic) unsigned long long visualCornerPosition; // @synthesize visualCornerPosition=_visualCornerPosition;
 @property (strong, nonatomic) UIInterfaceActionVisualStyle *visualStyle; // @synthesize visualStyle=_visualStyle;
 
 - (void).cxx_destruct;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_loadDefaultSizingConstraints;
 - (double)_minimumNumberOfRowsRequiredVisible;
 - (void)_notifyDidScroll;
+- (struct CGSize)_sizeByApplyingLayoutMarginsAsOutsetToSize:(struct CGSize)arg1;
 - (void)_temporarilySkipSizingSeparatedContentSequenceViewToFit;
 - (void)_updateMinimumHeightConstraint;
 - (void)_updateSeparatedContentSequenceViewToFitSizeIfPossible;

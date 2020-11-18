@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     BOOL _usesGroupHeaderAppearance;
     BOOL _shouldShowCandidateNumber;
     BOOL _secondaryCandidateAppearance;
+    BOOL _facemarkCategoryAppearance;
     BOOL _emphasizedAppearance;
     BOOL _needsUpdateLabels;
     int _candidatesVisualStyle;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL dummy; // @synthesize dummy=_dummy;
 @property (nonatomic) unsigned long long edges; // @synthesize edges=_edges;
 @property (nonatomic) BOOL emphasizedAppearance; // @synthesize emphasizedAppearance=_emphasizedAppearance;
+@property (nonatomic) BOOL facemarkCategoryAppearance; // @synthesize facemarkCategoryAppearance=_facemarkCategoryAppearance;
 @property (nonatomic) double minimumWidth; // @synthesize minimumWidth=_minimumWidth;
 @property (nonatomic) BOOL needsUpdateLabels; // @synthesize needsUpdateLabels=_needsUpdateLabels;
 @property (nonatomic) double rightPadding; // @synthesize rightPadding=_rightPadding;
@@ -71,6 +73,7 @@ __attribute__((visibility("hidden")))
 + (struct CGColor *)legacy_outlineShadowColorForVisualStyling:(CDStruct_961fb75c)arg1 candidatesVisualStyle:(int)arg2;
 + (id)reuseIdentifier;
 + (double)rightPaddingForIndex;
++ (BOOL)shouldShowImageForGroupTitle:(id)arg1;
 + (struct CGSize)sizeForGroupHeader:(id)arg1 visualStyle:(int)arg2;
 + (double)widthForCandidate:(id)arg1 candidateNumber:(unsigned long long)arg2 visualStyle:(int)arg3;
 - (void)applyLayoutAttributes:(id)arg1;

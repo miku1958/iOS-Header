@@ -6,18 +6,22 @@
 
 #import <UIKit/UIPanGestureRecognizer.h>
 
-@class _UIFocusEngine;
+@protocol _UIFocusEnginePanGestureRecognizerDelegate, _UIFocusEnginePanGestureTouchObserver;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusEnginePanGestureRecognizer : UIPanGestureRecognizer
 {
-    _UIFocusEngine *_focusEngine;
+    id<_UIFocusEnginePanGestureTouchObserver> _touchObserver;
 }
 
-@property (weak, nonatomic) _UIFocusEngine *focusEngine; // @synthesize focusEngine=_focusEngine;
+@property (weak, nonatomic) id<_UIFocusEnginePanGestureRecognizerDelegate> delegate;
+@property (weak, nonatomic) id<_UIFocusEnginePanGestureTouchObserver> touchObserver; // @synthesize touchObserver=_touchObserver;
 
 - (void).cxx_destruct;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 
 @end
 

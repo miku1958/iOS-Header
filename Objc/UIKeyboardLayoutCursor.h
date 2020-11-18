@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _cachedCanMultitap;
     UILabel *_dictationHelpLabel;
     BOOL _didVariantDelete;
+    BOOL _isForwardingEvent;
     UIAlertController *_recentInputsAlert;
     NSString *_keyplaneBeforeDictation;
     long long _selectedKeyBeforeDictation;

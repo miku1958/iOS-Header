@@ -74,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (void)pickerTableView:(id)arg1 didChangeSelectionBarRowFrom:(long long)arg2 to:(long long)arg3;
 - (void)reloadData;
 - (BOOL)selectRow:(long long)arg1 animated:(BOOL)arg2 notify:(BOOL)arg3;
+- (BOOL)selectRow:(long long)arg1 animated:(BOOL)arg2 notify:(BOOL)arg3 updateChecked:(BOOL)arg4;
 - (void)setAllowsMultipleSelection:(BOOL)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

@@ -25,11 +25,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_setContinuousCornerRadius:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setCornerRadius:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setPressed:(BOOL)arg1;
+- (void)setRoundedCornerPosition:(unsigned long long)arg1;
 
 @end
 

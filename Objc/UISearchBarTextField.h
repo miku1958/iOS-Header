@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_clearButtonSize;
 - (id)_createEffectsBackgroundViewWithStyle:(unsigned long long)arg1 applyFilter:(id)arg2;
 - (BOOL)_hasActionForEventMask:(unsigned long long)arg1;
+- (BOOL)_labelShouldUseVibrancy;
 - (id)_offsetValueForIcon:(long long)arg1;
 - (id)_placeholderColor;
 - (Class)_placeholderLabelClass;

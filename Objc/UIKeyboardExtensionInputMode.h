@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDefaultRightToLeft;
 - (BOOL)isDesiredForTraits:(id)arg1;
 - (BOOL)isExtensionInputMode;
+- (BOOL)isStalledExtensionInputMode;
 - (id)normalizedIdentifierLevels;
 - (void)setPrimaryLanguage:(id)arg1;
 

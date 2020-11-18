@@ -19,8 +19,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)contentsImage;
-- (double)extraLeftPadding;
-- (double)extraRightPadding;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setVisible:(BOOL)arg1 frame:(struct CGRect)arg2 duration:(double)arg3;
 - (long long)textStyle;
