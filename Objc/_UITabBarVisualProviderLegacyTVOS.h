@@ -9,7 +9,7 @@
 @class UIMotionEffect, UIScrollView, UIView, _UIBarBackground;
 
 __attribute__((visibility("hidden")))
-@interface _UITabBarVisualProviderLegacyIOS : _UITabBarVisualProvider
+@interface _UITabBarVisualProviderLegacyTVOS : _UITabBarVisualProvider
 {
     _UIBarBackground *_backgroundView;
     UIView *_customBackgroundView;

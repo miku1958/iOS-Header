@@ -11,11 +11,12 @@
 #import <UIKitCore/UILayoutContainerViewDelegate-Protocol.h>
 #import <UIKitCore/UITabBarDelegate-Protocol.h>
 #import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
+#import <UIKitCore/_UITVScrollViewManagerDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIGestureRecognizer, UILayoutContainerView, UILongPressGestureRecognizer, UIMoreNavigationController, UINavigationController, UIScrollView, UITabBar, UITapGestureRecognizer, UIView;
+@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIGestureRecognizer, UILayoutContainerView, UILongPressGestureRecognizer, UIMoreNavigationController, UINavigationController, UIScrollView, UITabBar, UITapGestureRecognizer, UIView, _UITVScrollViewManager;
 @protocol UITabBarControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
-@interface UITabBarController : UIViewController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, _UIScrollViewScrollObserver, UITabBarDelegate, NSCoding>
+@interface UITabBarController : UIViewController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, _UIScrollViewScrollObserver, _UITVScrollViewManagerDelegate, UITabBarDelegate, NSCoding>
 {
     UITabBar *_tabBar;
     UILayoutContainerView *_containerView;
@@ -37,6 +38,8 @@
     UIFocusContainerGuide *_contentFocusContainerGuide;
     UILongPressGestureRecognizer *_accessibilityLongPressGestureRecognizer;
     UIScrollView *_observingScrollView;
+    UIView *_tabBarContainerView;
+    _UITVScrollViewManager *_scrollViewManager;
     struct {
         unsigned int isShowingMoreItem:1;
         unsigned int needsToRebuildItems:1;
@@ -50,6 +53,7 @@
         unsigned int offscreen:1;
         unsigned int hidNavBar:1;
     } _tabBarControllerFlags;
+    BOOL __shouldFocusViewControllerAfterTransition;
     NSMutableArray *_moreChildViewControllers;
     UIView *_accessoryView;
     NSMapTable *_rememberedFocusedItemsByViewController;
@@ -63,6 +67,7 @@
 @property (strong, nonatomic, setter=_setAnimator:) id<UIViewControllerAnimatedTransitioning> _animator; // @synthesize _animator=__animator;
 @property (strong, nonatomic, getter=_backdropGroupName, setter=_setBackdropGroupName:) NSString *_backdropGroupName; // @synthesize _backdropGroupName=__backdropGroupName;
 @property (strong, nonatomic, setter=_setInteractor:) id<UIViewControllerInteractiveTransitioning> _interactor; // @synthesize _interactor=__interactor;
+@property (nonatomic) BOOL _shouldFocusViewControllerAfterTransition; // @synthesize _shouldFocusViewControllerAfterTransition=__shouldFocusViewControllerAfterTransition;
 @property (copy, nonatomic) NSArray *customizableViewControllers; // @synthesize customizableViewControllers=_customizableViewControllers;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UITabBarControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -141,6 +146,7 @@
 - (void)_rememberPresentingFocusedItem:(id)arg1;
 - (id)_responderSelectionContainerViewForResponder:(id)arg1;
 - (void)_safeAreaInsetsDidChangeForView;
+- (void)_scrollViewManagerDidFinishScrolling:(id)arg1;
 - (void)_selectDefaultViewControllerIfNecessaryWithAppearanceTransitions:(BOOL)arg1;
 - (id)_selectedViewControllerInTabBar;
 - (void)_setBadgeValue:(id)arg1 forTabBarItem:(id)arg2;
@@ -168,7 +174,7 @@
 - (void)_updateLayoutForTraitCollection:(id)arg1;
 - (void)_updateOffscreenStatus:(BOOL)arg1;
 - (void)_updateTabBarLayout;
-- (void)_updateViewController:(id)arg1 forFloatingTabBar:(BOOL)arg2;
+- (void)_updateViewControllerForFloatingTabBar:(id)arg1;
 - (id)_viewControllerForSelectAtIndex:(unsigned long long)arg1;
 - (id)_viewControllerForTabBarItem:(id)arg1;
 - (id)_viewControllersInTabBar;

@@ -6,9 +6,11 @@
 
 #import <UIKitCore/_UIStatusBarVisualProvider_Phone.h>
 
-@class NSDictionary, NSLayoutConstraint, NSTimer, UILayoutGuide, _UIStatusBarDisplayItemPlacement, _UIStatusBarDisplayItemPlacementGroup;
+#import <UIKitCore/_UIStatusBarCellularItemTypeStringProvider-Protocol.h>
 
-@interface _UIStatusBarVisualProvider_Split : _UIStatusBarVisualProvider_Phone
+@class NSDictionary, NSLayoutConstraint, NSString, NSTimer, UILayoutGuide, _UIStatusBarDisplayItemPlacement, _UIStatusBarDisplayItemPlacementGroup;
+
+@interface _UIStatusBarVisualProvider_Split : _UIStatusBarVisualProvider_Phone <_UIStatusBarCellularItemTypeStringProvider>
 {
     NSDictionary *_orderedDisplayItemPlacements;
     _UIStatusBarDisplayItemPlacement *_serviceNamePlacement;
@@ -31,9 +33,12 @@
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *batteryChargingPlacement; // @synthesize batteryChargingPlacement=_batteryChargingPlacement;
 @property (strong, nonatomic) NSTimer *batteryExpansionTimer; // @synthesize batteryExpansionTimer=_batteryExpansionTimer;
 @property (strong, nonatomic) UILayoutGuide *cutoutLayoutGuide; // @synthesize cutoutLayoutGuide=_cutoutLayoutGuide;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *dualServiceNamePlacement; // @synthesize dualServiceNamePlacement=_dualServiceNamePlacement;
 @property (strong, nonatomic) NSLayoutConstraint *expandedLeadingLowerTopConstraint; // @synthesize expandedLeadingLowerTopConstraint=_expandedLeadingLowerTopConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *expandedTrailingBottomConstraint; // @synthesize expandedTrailingBottomConstraint=_expandedTrailingBottomConstraint;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSLayoutConstraint *leadingBottomConstraint; // @synthesize leadingBottomConstraint=_leadingBottomConstraint;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacementGroup *lowerWifiGroup; // @synthesize lowerWifiGroup=_lowerWifiGroup;
 @property (strong, nonatomic) UILayoutGuide *mainRegionsLayoutGuide; // @synthesize mainRegionsLayoutGuide=_mainRegionsLayoutGuide;
@@ -41,11 +46,13 @@
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *pillIconPlacement; // @synthesize pillIconPlacement=_pillIconPlacement;
 @property (strong, nonatomic) NSTimer *pillTimer; // @synthesize pillTimer=_pillTimer;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *serviceNamePlacement; // @synthesize serviceNamePlacement=_serviceNamePlacement;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSTimer *systemUpdatesTimer; // @synthesize systemUpdatesTimer=_systemUpdatesTimer;
 
 + (struct NSDirectionalEdgeInsets)_edgeInsetsFromCenteringEdgeInset:(double)arg1 trailing:(BOOL)arg2;
 + (double)baseIconScale;
 + (double)baselineBottomInset;
++ (double)condensedPointSizeForCellularType:(long long)arg1 defaultPointSize:(double)arg2 baselineOffset:(double *)arg3;
 + (double)cornerRadius;
 + (struct NSDirectionalEdgeInsets)expandedEdgeInsets;
 + (id)expandedFont;
@@ -95,9 +102,11 @@
 - (double)airplaneTravelOffsetInProposedPartWithIdentifier:(id *)arg1 animationType:(long long)arg2;
 - (id)animationForAirplaneMode;
 - (BOOL)canFixupDisplayItemAttributes;
+- (id)condensedFontForCellularType:(long long)arg1 defaultFont:(id)arg2 baselineOffset:(double *)arg3;
 - (void)dataUpdated:(id)arg1;
 - (id)defaultAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (id)displayItemIdentifiersForPartWithIdentifier:(id)arg1;
+- (void)itemCreated:(id)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (void)orientationUpdatedFromOrientation:(long long)arg1;
 - (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
@@ -107,6 +116,7 @@
 - (void)setExpanded:(BOOL)arg1;
 - (id)setupInContainerView:(id)arg1;
 - (void)statusBarRegionsUpdated;
+- (id)stringForCellularType:(long long)arg1 condensed:(BOOL)arg2;
 - (id)styleAttributes;
 - (void)styleUpdatedFromStyle:(long long)arg1;
 - (void)updateDataForService:(id)arg1;

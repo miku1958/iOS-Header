@@ -13,7 +13,7 @@
 
 @property (nonatomic) double allowableMovement;
 @property (weak, nonatomic) id<_UIClickInteractionDriverDelegate> delegate;
-@property (strong, nonatomic) UIView *view;
+@property (weak, nonatomic) UIView *view;
 
 - (void)cancelInteraction;
 - (struct CGPoint)locationInCoordinateSpace:(id<UICoordinateSpace>)arg1;

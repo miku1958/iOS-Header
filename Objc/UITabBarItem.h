@@ -65,7 +65,9 @@
 - (id)_internalLargeContentSizeImage;
 - (id)_internalTemplateImage;
 - (id)_internalTemplateImages;
+- (id)_internalTemplateImagesForTabBarDisplayStyle:(long long)arg1;
 - (id)_internalTitle;
+- (id)_internalTitleForTabBarDisplayStyle:(long long)arg1;
 - (void)_setInternalLandscapeTemplateImage:(id)arg1;
 - (void)_setInternalTemplateImage:(id)arg1;
 - (void)_setInternalTitle:(id)arg1;

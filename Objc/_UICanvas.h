@@ -56,7 +56,7 @@
 @property (nonatomic, getter=_runningInTaskSwitcher, setter=_setRunningInTaskSwitcher:) BOOL runningInTaskSwitcher; // @synthesize runningInTaskSwitcher;
 @property (readonly, nonatomic) FBSScene *scene; // @synthesize scene=_scene;
 @property (readonly, nonatomic) UIScreen *screen;
-@property (nonatomic, getter=_screenRequestedDisplayPixelSize, setter=_setScreenRequestedDisplayPixelSize:) struct CGSize screenRequestedDisplayPixelSize; // @dynamic screenRequestedDisplayPixelSize;
+@property (nonatomic, getter=_screenRequestedDisplayNativePixelSize, setter=_setScreenRequestedDisplayNativePixelSize:) struct CGSize screenRequestedDisplayNativePixelSize; // @dynamic screenRequestedDisplayNativePixelSize;
 @property (nonatomic, getter=_screenRequestedOverscanCompensation, setter=_setScreenRequestedOverscanCompensation:) long long screenRequestedOverscanCompensation; // @synthesize screenRequestedOverscanCompensation=_screenRequestedOverscanCompensation;
 @property (readonly, weak, nonatomic) _UICanvas *settingsCanvas;
 @property (readonly, nonatomic) long long state; // @synthesize state;

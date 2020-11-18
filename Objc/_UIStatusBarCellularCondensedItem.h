@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_fontForEntry:(id)arg1 styleAttributes:(id)arg2 baselineOffset:(double *)arg3;
 - (id)_singleCellularEntryMatching:(CDUnknownBlockType)arg1;
+- (id)_stringForCellularType:(long long)arg1;
 - (void)applyStyleAttributes:(id)arg1 toDisplayItem:(id)arg2;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (BOOL)canEnableDisplayItem:(id)arg1 fromData:(id)arg2;

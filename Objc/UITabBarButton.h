@@ -82,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)_setCustomSelectedIndicatorImage:(id)arg1;
 - (void)_setImage:(id)arg1 selected:(BOOL)arg2 offset:(struct UIOffset)arg3;
 - (void)_setInfoOffset:(struct UIOffset)arg1;
+- (void)_setLabelCompositingMode:(long long)arg1;
 - (void)_setLabelHidden:(BOOL)arg1;
 - (void)_setSelectedInfoOffset:(struct UIOffset)arg1;
 - (void)_setTabBarHitRect:(struct CGRect)arg1;

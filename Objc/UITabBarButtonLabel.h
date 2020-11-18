@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_applyTabBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(BOOL)arg3;
 - (id)_fontForIdiom:(long long)arg1;
+- (id)_fontForIdiom:(long long)arg1 forTabBarDisplayStyle:(long long)arg2;
 - (long long)_idiomForFontGivenIdiom:(long long)arg1;
 - (void)_setBadgeColor:(id)arg1;
 - (void)_setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateForFontChangeWithIdiom:(long long)arg1;
 - (void)_updateLabelsVibrancy;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithTabBarDisplayStyle:(long long)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
 - (void)sizeToFitBounds:(struct CGRect)arg1;

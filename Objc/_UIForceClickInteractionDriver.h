@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double touchForce;
-@property (strong, nonatomic) UIView *view; // @synthesize view=_view;
+@property (weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
 - (void)_handleGestureRecognizer:(id)arg1;
