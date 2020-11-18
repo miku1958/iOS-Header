@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
 - (long long)_orientationForRootTransform;
 - (long long)_orientationForSceneTransform;
 - (long long)_orientationForViewTransform;
+- (struct CGSize)keyboardScreenReferenceSize;
+- (double)keyboardWidthForCurrentDevice;
 - (struct UIEdgeInsets)safeAreaInsets;
 
 @end

@@ -30,6 +30,7 @@
     NSDictionary *_capabilities;
     NSArray *_availableDisplayModes;
     double _pointsPerInch;
+    double _nativePointsPerMillimeter;
     _UIScreenFixedCoordinateSpace *_fixedCoordinateSpace;
     id<_UIDisplayInfoProviding> _displayInfoProvider;
     FBSDisplayConfiguration *__displayConfiguration;
@@ -186,6 +187,7 @@
 - (struct UIEdgeInsets)_displayPeripheryInsets;
 - (long long)_effectiveUserInterfaceStyle;
 - (void)_endObservingBacklightLevelNotifications;
+- (void)_ensureComputedMainScreenDPI;
 - (BOOL)_expectsSecureRendering;
 - (void)_externalDeviceNightModeDidChange:(id)arg1;
 - (id)_fallbackTraitCollection;
@@ -229,6 +231,7 @@
 - (double)_maximumSupportedScale;
 - (id)_name;
 - (struct CGRect)_nativeDisplayBounds;
+- (double)_nativePointsPerMillimeter;
 - (double)_nativeScale;
 - (double)_nativeScaleWithLevel:(unsigned long long)arg1;
 - (void)_notifyTraitsChangedAndPropagateToAllWindows;

@@ -12,9 +12,11 @@
 {
     BOOL __isFocusGuideUnoccludable;
     id<_UIFocusGuideRegionDelegate> _delegate;
+    double __regionFocusPriority;
 }
 
 @property (nonatomic, setter=_setIsFocusGuideUnoccludable:) BOOL _isFocusGuideUnoccludable; // @synthesize _isFocusGuideUnoccludable=__isFocusGuideUnoccludable;
+@property (nonatomic, setter=_setRegionFocusPriority:) double _regionFocusPriority; // @synthesize _regionFocusPriority=__regionFocusPriority;
 @property (weak, nonatomic) id<_UIFocusGuideRegionDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
