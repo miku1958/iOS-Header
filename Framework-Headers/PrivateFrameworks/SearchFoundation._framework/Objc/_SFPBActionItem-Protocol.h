@@ -26,9 +26,11 @@
 @property (strong, nonatomic) _SFPBLatLng *location;
 @property (strong, nonatomic) _SFPBGraphicalFloat *longitude;
 @property (copy, nonatomic) NSData *mapsData;
+@property (nonatomic) int mediaEntityType;
 @property (copy, nonatomic) NSString *messageIdentifier;
 @property (strong, nonatomic) _SFPBURL *messageURL;
 @property (copy, nonatomic) NSString *offerType;
+@property (copy, nonatomic) NSString *persistentID;
 @property (copy, nonatomic) NSString *phoneNumber;
 @property (copy, nonatomic) NSString *provider;
 @property (strong, nonatomic) _SFPBPunchout *punchout;

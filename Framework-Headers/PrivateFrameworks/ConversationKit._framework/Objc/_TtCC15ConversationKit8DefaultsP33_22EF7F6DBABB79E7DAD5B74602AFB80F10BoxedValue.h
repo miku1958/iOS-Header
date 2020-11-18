@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/SwiftObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtCC15ConversationKit8DefaultsP33_22EF7F6DBABB79E7DAD5B74602AFB80F10BoxedValue : SwiftObject
+@interface _TtCC15ConversationKit8DefaultsP33_22EF7F6DBABB79E7DAD5B74602AFB80F10BoxedValue : _TtCs12_SwiftObject
 {
     MISSING_TYPE *value;
 }

@@ -33,6 +33,7 @@
 - (void)setBuildVersionHistory:(NSArray *)arg1;
 - (void)setOptions:(NSDictionary *)arg1;
 - (void)setQuickLookThumbnail:(TSUImage *)arg1;
+- (void)setReturnCode:(int *)arg1;
 - (void)setSaveToURL:(NSURL *)arg1;
 - (void)setUsePackageFormat:(BOOL)arg1;
 @end

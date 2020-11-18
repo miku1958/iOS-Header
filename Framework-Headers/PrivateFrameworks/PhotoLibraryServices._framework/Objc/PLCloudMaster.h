@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSSet *assets; // @dynamic assets;
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
 @property (strong, nonatomic) NSString *cloudMasterGUID; // @dynamic cloudMasterGUID;
+@property (nonatomic) NSString *codecName; // @dynamic codecName;
 @property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -37,6 +38,7 @@
 @property (strong, nonatomic) NSSet *resources; // @dynamic resources;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *uniformTypeIdentifier; // @dynamic uniformTypeIdentifier;
+@property (nonatomic) short videoFrameRate; // @dynamic videoFrameRate;
 
 + (id)_originalTypes;
 + (id)cloudMasterWithGUID:(id)arg1 inMomentShare:(id)arg2 inManagedObjectContext:(id)arg3;
@@ -45,6 +47,7 @@
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 withCloudMasterGUID:(id)arg2 inMomentShare:(id)arg3;
++ (id)listOfSyncedProperties;
 + (void)resetCloudMastersStateInManagedObjectContext:(id)arg1 hardReset:(BOOL)arg2;
 - (void)_promptForNilScopeIdentifierRadar;
 - (id)allMasterResources;
@@ -57,15 +60,18 @@
 - (id)cloudResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2;
 - (id)cloudResourcesForResourceType:(unsigned long long)arg1;
 - (id)cplFullRecord;
+- (id)cplPropertyRecord;
 - (id)cplResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2;
 - (void)deleteAllResourcesForAssetUuid:(id)arg1;
 - (BOOL)hasResourcesOtherThanForAssetUuid:(id)arg1;
+- (BOOL)isSyncableChange;
 - (void)nrm_applyResourcesFromCPLMasterChange:(id)arg1 inPhotoLibrary:(id)arg2;
 - (id)nrm_assetUUIDToCloudResources;
 - (id)nrm_cloudResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2;
 - (id)nrm_cloudResourcesForResourceType:(unsigned long long)arg1;
 - (id)scopedIdentifier;
 - (unsigned long long)sizeOfOriginal;
+- (BOOL)supportsCloudUpload;
 
 @end
 

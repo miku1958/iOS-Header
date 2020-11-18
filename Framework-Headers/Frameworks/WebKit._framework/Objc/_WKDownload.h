@@ -8,7 +8,7 @@
 
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSArray, NSString, NSURLRequest, WKWebView;
+@class NSArray, NSData, NSString, NSURLRequest, WKWebView;
 
 @interface _WKDownload : NSObject <WKObject>
 {
@@ -22,11 +22,13 @@
 @property (readonly, weak, nonatomic) WKWebView *originatingWebView;
 @property (readonly, copy, nonatomic) NSArray *redirectChain;
 @property (readonly, nonatomic) NSURLRequest *request;
+@property (readonly, nonatomic) NSData *resumeData;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL wasUserInitiated;
 
 - (void)cancel;
 - (void)dealloc;
+- (void)publishProgressAtURL:(id)arg1;
 
 @end
 

@@ -7,6 +7,9 @@
 #import <Foundation/NSThread.h>
 
 @interface NSThread (NSThread_TSUAdditions)
+
+@property (readonly) unsigned int tsu_qualityOfServiceClass;
+
 + (id)tsu_currentThreadName;
 @end
 

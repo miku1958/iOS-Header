@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarCellularItem : _UIStatusBarItem
 {
+    BOOL _showsDisabledSignalBars;
     _UIStatusBarStringView *_serviceNameView;
     _UIStatusBarCellularSignalView *_signalView;
     _UIStatusBarStringView *_networkTypeView;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *cellularDataEntryKey;
 @property (strong, nonatomic) _UIStatusBarStringView *networkTypeView; // @synthesize networkTypeView=_networkTypeView;
 @property (strong, nonatomic) _UIStatusBarStringView *serviceNameView; // @synthesize serviceNameView=_serviceNameView;
+@property (nonatomic) BOOL showsDisabledSignalBars; // @synthesize showsDisabledSignalBars=_showsDisabledSignalBars;
 @property (strong, nonatomic) _UIStatusBarCellularSignalView *signalView; // @synthesize signalView=_signalView;
 @property (strong, nonatomic) _UIStatusBarImageView *sosView; // @synthesize sosView=_sosView;
 @property (strong, nonatomic) _UIStatusBarImageView *warningView; // @synthesize warningView=_warningView;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)dependentEntryKeys;
 - (id)entryForDisplayItemWithIdentifier:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 statusBar:(id)arg2;
 - (void)prepareAnimation:(id)arg1 forDisplayItem:(id)arg2;
 - (id)viewForIdentifier:(id)arg1;
 

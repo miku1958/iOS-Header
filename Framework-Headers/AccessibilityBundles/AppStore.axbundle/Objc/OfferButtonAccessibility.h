@@ -14,13 +14,13 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
+- (void)accessibilityShowLoading;
+- (void)accessibilityShowProgress:(double)arg1;
+- (void)accessibilityShowRedownload;
+- (void)accessibilityShowText:(id)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElement;
-- (void)showLoadingWithAligned:(long long)arg1 theme:(id)arg2 isCompact:(BOOL)arg3;
-- (void)showRedownloadWithAligned:(long long)arg1 theme:(id)arg2 isCompact:(BOOL)arg3;
-- (void)showWithProgress:(double)arg1 aligned:(long long)arg2 theme:(id)arg3 isCompact:(BOOL)arg4;
-- (void)showWithText:(id)arg1 theme:(id)arg2;
 
 @end
 

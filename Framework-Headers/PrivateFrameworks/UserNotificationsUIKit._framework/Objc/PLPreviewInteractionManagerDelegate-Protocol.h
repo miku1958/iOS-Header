@@ -20,6 +20,7 @@
 - (void)previewInteractionManager:(PLPreviewInteractionManager *)arg1 willDismissPresentedContentWithTrigger:(long long)arg2;
 - (void)previewInteractionManagerDidEndUserInteraction:(PLPreviewInteractionManager *)arg1;
 - (BOOL)previewInteractionManagerShouldAutomaticallyTransitionToPreviewAfterDelay:(PLPreviewInteractionManager *)arg1;
+- (BOOL)previewInteractionManagerShouldUseHapticTouch:(PLPreviewInteractionManager *)arg1;
 - (void)previewInteractionManagerWillBeginUserInteraction:(PLPreviewInteractionManager *)arg1;
 - (id<PLViewControllerTransitioningDelegate>)transitioningDelegateForPreviewInteractionManager:(PLPreviewInteractionManager *)arg1;
 @end

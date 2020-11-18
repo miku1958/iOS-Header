@@ -44,15 +44,15 @@
 @property (nonatomic) BOOL hasJoined; // @synthesize hasJoined;
 @property (nonatomic, weak) id<CNKStagingAreaViewControllerDelegate> stagingAreaDelegate; // @synthesize stagingAreaDelegate;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)didTapJoinButton;
 - (void)didTapLeaveButton;
 - (void)didTapSwapLocalParticipantCamera;
-- (void)didTapToggleVideoMute;
 - (id)initWithActiveCall:(id)arg1;
 - (id)initWithActiveCall:(id)arg1 hasJoined:(BOOL)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)toggleVideoMute;
 - (void)updateViewConstraints;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

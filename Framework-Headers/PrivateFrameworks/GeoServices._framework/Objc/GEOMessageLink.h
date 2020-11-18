@@ -22,10 +22,8 @@
 @property (readonly, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 
 - (void).cxx_destruct;
-- (unsigned long long)currentMessageOpeningHoursOptions;
 - (id)initWithMessageLink:(id)arg1;
 - (id)messageBusinessHours;
-- (id)messageOperationBusinessDates;
 - (int)responseTime;
 
 @end

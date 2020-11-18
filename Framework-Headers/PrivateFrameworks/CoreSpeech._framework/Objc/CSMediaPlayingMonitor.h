@@ -24,6 +24,7 @@
 - (id)init;
 - (void)initializeMediaPlayingState;
 - (long long)mediaPlayingState;
+- (void)mediaPlayingStateWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

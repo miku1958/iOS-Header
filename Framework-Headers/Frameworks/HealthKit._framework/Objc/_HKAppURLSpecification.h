@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)isAtrialFibrillationEventURL:(id)arg1;
 + (BOOL)isClinicalLoginRedirectURL:(id)arg1;
 + (BOOL)isClinicalOnboardingURL:(id)arg1;
 + (BOOL)isViewHealthRecordsURL:(id)arg1;

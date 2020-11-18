@@ -10,10 +10,11 @@
 #import <ClassroomKit/NSCopying-Protocol.h>
 #import <ClassroomKit/NSSecureCoding-Protocol.h>
 
-@class CRKImage, NSData, NSPersonNameComponents, NSString;
+@class CRKNotSoGoodImage, NSData, NSPersonNameComponents, NSString;
 
 @interface CRKUser : NSObject <NSSecureCoding, NSCopying, CRKCloudStoringSubItem>
 {
+    BOOL _useMeCardIfAvailable;
     NSString *_userIdentifier;
     NSString *_displayName;
     NSString *_givenName;
@@ -25,7 +26,7 @@
     NSString *_userSource;
     long long _role;
     NSData *_userImageData;
-    CRKImage *_userImage;
+    CRKNotSoGoodImage *_userImage;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -43,11 +44,13 @@
 @property (copy, nonatomic) NSString *phoneticGivenName; // @synthesize phoneticGivenName=_phoneticGivenName;
 @property (nonatomic) long long role; // @synthesize role=_role;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=shouldUseMeCardIfAvailable) BOOL useMeCardIfAvailable; // @synthesize useMeCardIfAvailable=_useMeCardIfAvailable;
 @property (copy, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
-@property (copy, nonatomic) CRKImage *userImage; // @synthesize userImage=_userImage;
+@property (copy, nonatomic) CRKNotSoGoodImage *userImage; // @synthesize userImage=_userImage;
 @property (copy, nonatomic) NSData *userImageData; // @synthesize userImageData=_userImageData;
 @property (copy, nonatomic) NSString *userSource; // @synthesize userSource=_userSource;
 
++ (id)customUserFromMeCardUser:(id)arg1;
 + (id)instanceWithKeyValue:(id)arg1;
 + (id)instanceWithParentObject:(id)arg1 keyValue:(id)arg2;
 + (id)instanceWithRecord:(id)arg1;
@@ -65,6 +68,7 @@
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isChangedFrom:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToUser:(id)arg1;
 - (id)recordName;
 - (void)updateUserImage;
 

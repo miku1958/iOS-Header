@@ -22,6 +22,8 @@
 {
     HMFUnfairLock *_lock;
     BOOL _monitoring;
+    BOOL _rapportIdentitiesChangedNotificationTokenValid;
+    int _rapportIdentitiesChangedNotificationToken;
     HMDAccount *_account;
     HMDAppleAccountContext *_accountContext;
     ACAccountStore *_accountStore;
@@ -48,6 +50,8 @@
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (nonatomic, getter=isMonitoring) BOOL monitoring; // @synthesize monitoring=_monitoring;
 @property (readonly, nonatomic) APSConnection *pushConnection; // @synthesize pushConnection=_pushConnection;
+@property (nonatomic) int rapportIdentitiesChangedNotificationToken; // @synthesize rapportIdentitiesChangedNotificationToken=_rapportIdentitiesChangedNotificationToken;
+@property (nonatomic, getter=isRapportIdentitiesChangedNotificationTokenValid) BOOL rapportIdentitiesChangedNotificationTokenValid; // @synthesize rapportIdentitiesChangedNotificationTokenValid=_rapportIdentitiesChangedNotificationTokenValid;
 @property (readonly, nonatomic) IDSService *service; // @synthesize service=_service;
 @property (readonly, nonatomic) HMDAppleAccountSettings *settings;
 @property (readonly) Class superclass;
@@ -61,6 +65,9 @@
 - (void)__handleModifiedAccount:(id)arg1;
 - (void)__handleRemovedAccount:(id)arg1;
 - (void)__handleUpdatedName:(id)arg1;
+- (void)__localDataReset:(id)arg1;
+- (void)_deregisterForRapportNotifications;
+- (void)_registerForRapportNotifications;
 - (void)account:(id)arg1 aliasesChanged:(id)arg2;
 - (void)account:(id)arg1 isActiveChanged:(BOOL)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;

@@ -37,6 +37,7 @@
     _MediaControlsTapHoldGestureRecognizer *_tapGestureRecognizer;
     UIScrollView *_scrollView;
     long long _displayMode;
+    double _preferredItemHeight;
     struct UIEdgeInsets _scrollViewInsets;
 }
 
@@ -47,6 +48,7 @@
 @property (copy, nonatomic) CDUnknownBlockType dismissalBlock; // @synthesize dismissalBlock=_dismissalBlock;
 @property (nonatomic) long long displayMode; // @synthesize displayMode=_displayMode;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double preferredItemHeight; // @synthesize preferredItemHeight=_preferredItemHeight;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (nonatomic) struct UIEdgeInsets scrollViewInsets; // @synthesize scrollViewInsets=_scrollViewInsets;
 @property (nonatomic) long long selectedItemIndex; // @synthesize selectedItemIndex=_selectedItemIndex;
@@ -120,6 +122,7 @@
 - (long long)itemAtPoint:(struct CGPoint)arg1;
 - (void)moveItemAtIndex:(long long)arg1 toIndex:(long long)arg2;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
+- (double)preferredItemHeightGivenWidth:(double)arg1;
 - (void)reloadData;
 - (void)reloadItemAtIndex:(long long)arg1;
 - (void)reloadItemsAtIndexes:(id)arg1;

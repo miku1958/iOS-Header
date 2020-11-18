@@ -17,12 +17,12 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)anyHasExplosion;
-- (BOOL)applyElementTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3 propertyAccessor:(const struct ChartScenePropertyAccessor *)arg4;
-- (struct GeometryResource)boundsGeometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
+- (BOOL)applyElementTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(tvec2_3b141483)arg3 propertyAccessor:(id)arg4;
+- (id)boundsGeometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (float)elementTransformDepthFromPropertyAccessor:(const struct ChartScenePropertyAccessor *)arg1;
+- (float)elementTransformDepthFromPropertyAccessor:(id)arg1;
 - (float)explosionAtElementIndex:(const tvec2_3b141483 *)arg1;
-- (float)explosionAtElementIndex:(const tvec2_3b141483 *)arg1 propertyAccessor:(const struct ChartScenePropertyAccessor *)arg2;
+- (float)explosionAtElementIndex:(const tvec2_3b141483 *)arg1 propertyAccessor:(id)arg2;
 - (long long)flatIndex:(const tvec2_3b141483 *)arg1;
 - (float)percentOfTotalAtElementIndex:(const tvec2_3b141483 *)arg1;
 - (void)reset;

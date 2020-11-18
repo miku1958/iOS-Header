@@ -12,7 +12,7 @@
 #import <CoreSpeech/CSAudioFileReaderDelegate-Protocol.h>
 #import <CoreSpeech/CSBeepCancellerDelegate-Protocol.h>
 
-@class AVVoiceController, CSAudioDecoder, CSAudioFileReader, CSAudioPowerMeter, CSAudioSampleRateConverter, CSAudioZeroCounter, CSAudioZeroFilter, CSBeepCanceller, CSRemoteRecordClient, NSDictionary, NSString;
+@class AVVoiceController, CSAudioDecoder, CSAudioFileReader, CSAudioPowerMeter, CSAudioSampleRateConverter, CSAudioZeroCounter, CSAudioZeroFilter, CSBeepCanceller, CSOSTransaction, CSRemoteRecordClient, NSDictionary, NSString;
 @protocol CSAudioRecorderDelegate;
 
 @interface CSAudioRecorder : NSObject <AVVoiceControllerRecordDelegate, AVVoiceControllerPlaybackDelegate, CSBeepCancellerDelegate, CSAudioDecoderDelegate, CSAudioFileReaderDelegate>
@@ -37,6 +37,7 @@
     CSAudioFileReader *_audioFileReader;
     unsigned long long _audioFilePathIndex;
     BOOL _waitingForDidStart;
+    CSOSTransaction *_recordingTransaction;
     id<CSAudioRecorderDelegate> _delegate;
 }
 
@@ -56,19 +57,23 @@
 - (void)_createSampleRateConverterIfNeeded;
 - (id)_deinterleaveBufferIfNeeded:(id)arg1;
 - (void)_destroyVoiceController;
+- (void)_holdAudioRecordingTransaction;
 - (BOOL)_needResetAudioInjectionIndex:(id)arg1;
-- (void)_processAudioChain:(id)arg1 atTime:(unsigned long long)arg2;
+- (void)_processAudioChain:(id)arg1 remoteVAD:(id)arg2 atTime:(unsigned long long)arg3;
 - (void)_processAudioChainWithZeroFiltering:(id)arg1 atTime:(unsigned long long)arg2;
 - (float)_recordingSampleRate;
+- (void)_releaseAudioRecordingTransaction;
 - (void)_resetZeroFilter;
 - (id)_samplingRateConvertIfNeeded:(id)arg1;
 - (BOOL)_shouldInjectAudio;
 - (BOOL)_shouldRunZeroFilter;
+- (BOOL)_shouldUseRemoteBuiltInMic:(id)arg1;
 - (BOOL)_shouldUseRemoteRecordForContext:(id)arg1;
 - (BOOL)_startRecordingForAudioInjection;
+- (void)_updatePowerMeter:(id)arg1;
 - (id)_voiceControllerWithContext:(id)arg1 error:(id *)arg2;
 - (unsigned long long)alertStartTime;
-- (void)audioDecoderDidDecodePackets:(id)arg1 buffer:(id)arg2 timestamp:(unsigned long long)arg3;
+- (void)audioDecoderDidDecodePackets:(id)arg1 buffer:(id)arg2 remoteVAD:(id)arg3 timestamp:(unsigned long long)arg4;
 - (void)audioFileReaderBufferAvailable:(id)arg1 buffer:(id)arg2 atTime:(unsigned long long)arg3;
 - (void)audioFileReaderDidStartRecording:(id)arg1 successfully:(BOOL)arg2 error:(id)arg3;
 - (void)audioFileReaderDidStopRecording:(id)arg1 forReason:(long long)arg2;
@@ -99,6 +104,7 @@
 - (BOOL)setRecordMode:(long long)arg1 error:(id *)arg2;
 - (void)setSynchronousCallbackEnabled:(BOOL)arg1;
 - (BOOL)startListening:(id *)arg1;
+- (BOOL)startListeningWithSettings:(id)arg1 error:(id *)arg2;
 - (BOOL)startRecording;
 - (BOOL)startRecording:(id *)arg1;
 - (BOOL)startRecordingWithSettings:(id)arg1 error:(id *)arg2;

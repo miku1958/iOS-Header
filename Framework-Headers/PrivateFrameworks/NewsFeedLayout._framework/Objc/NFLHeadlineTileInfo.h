@@ -13,16 +13,20 @@
 
 @interface NFLHeadlineTileInfo : NSObject <NFLFeedTileInfo>
 {
-    id<FCHeadlineProviding> _headline;
+    BOOL _aggregated;
     NSString *_groupIdentifier;
+    id<FCHeadlineProviding> _headline;
+    NSString *_bookmarkableIdentifier;
     NSString *_namespacedIdentifier;
 }
 
+@property (readonly, nonatomic, getter=isAggregated) BOOL aggregated; // @synthesize aggregated=_aggregated;
 @property (readonly, nonatomic) unsigned long long bookmarkOffsetType;
-@property (readonly, nonatomic) BOOL bookmarkable;
+@property (readonly, copy, nonatomic) NSString *bookmarkableIdentifier; // @synthesize bookmarkableIdentifier=_bookmarkableIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
+@property (readonly, nonatomic) NFLHeadlineTileInfo *feedTileInfoForBookmarking;
+@property (readonly, copy, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) id<FCHeadlineProviding> headline; // @synthesize headline=_headline;
 @property (readonly, copy, nonatomic) NSString *identifier;
@@ -32,11 +36,14 @@
 @property (readonly, nonatomic) unsigned long long tileInfoType;
 @property (readonly, nonatomic) NSArray *underlyingFeedElements;
 
++ (id)identifierWithBookmarkableIdentifier:(id)arg1 groupIdentifier:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithHeadline:(id)arg1 groupIdentifier:(id)arg2;
+- (id)initWithHeadline:(id)arg1 groupIdentifier:(id)arg2 aggregated:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)updatedTileInfoWithNewHeadline:(id)arg1;
 
 @end
 

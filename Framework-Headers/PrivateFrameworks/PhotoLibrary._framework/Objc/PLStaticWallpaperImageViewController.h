@@ -8,11 +8,14 @@
 
 @interface PLStaticWallpaperImageViewController : PLWallpaperImageViewController
 {
+    BOOL _moveAndScaleDisabled;
 }
 
 @property (nonatomic) BOOL colorSamplingEnabled;
+@property (nonatomic) BOOL moveAndScaleDisabled; // @synthesize moveAndScaleDisabled=_moveAndScaleDisabled;
 
 - (void)_fetchImageForWallPaperAsset:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (id)_findSubviewOfView:(id)arg1 withClass:(Class)arg2;
 - (id)_wallPaperPreviewControllerForAsset:(id)arg1;
 - (id)_wallPaperPreviewControllerForPhotoIrisAsset:(id)arg1;
 - (id)initWithImage:(id)arg1 name:(id)arg2 video:(id)arg3 time:(double)arg4;
@@ -22,6 +25,7 @@
 - (void)photoTileViewControllerDidEndGesture:(id)arg1;
 - (void)providerLegibilitySettingsChanged:(id)arg1;
 - (void)setWallpaperForLocations:(long long)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (id)wallpaperImage;
 

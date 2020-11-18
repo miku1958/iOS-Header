@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)documentResourceDataWithDigestString:(id)arg1 locator:(id)arg2 filename:(id)arg3;
 - (id)init;
 - (id)initWithContext:(id)arg1;
+- (id)unmaterializedRemoteData;
 
 @end
 

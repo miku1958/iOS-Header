@@ -14,7 +14,8 @@
 {
     NTPBRecordBase *_base;
     NSString *_channelID;
-    NSString *_draftListID;
+    NSString *_draftArticleListID;
+    NSString *_draftIssueListID;
     BOOL _canAccessDrafts;
     struct {
         unsigned int canAccessDrafts:1;
@@ -24,11 +25,13 @@
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
 @property (nonatomic) BOOL canAccessDrafts; // @synthesize canAccessDrafts=_canAccessDrafts;
 @property (strong, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
-@property (strong, nonatomic) NSString *draftListID; // @synthesize draftListID=_draftListID;
+@property (strong, nonatomic) NSString *draftArticleListID; // @synthesize draftArticleListID=_draftArticleListID;
+@property (strong, nonatomic) NSString *draftIssueListID; // @synthesize draftIssueListID=_draftIssueListID;
 @property (readonly, nonatomic) BOOL hasBase;
 @property (nonatomic) BOOL hasCanAccessDrafts;
 @property (readonly, nonatomic) BOOL hasChannelID;
-@property (readonly, nonatomic) BOOL hasDraftListID;
+@property (readonly, nonatomic) BOOL hasDraftArticleListID;
+@property (readonly, nonatomic) BOOL hasDraftIssueListID;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

@@ -13,10 +13,12 @@
     BrightnessSystemClient *_brightnessSystemClient;
 }
 
+@property (nonatomic) BOOL autoBrightnessEnabled;
 @property (strong, nonatomic) BrightnessSystemClient *brightnessSystemClient; // @synthesize brightnessSystemClient=_brightnessSystemClient;
 @property (strong, nonatomic) NSString *currentHDRMode;
+@property (readonly, nonatomic) BOOL externalDisplayAutoBrightnessAvailable;
 @property (readonly, nonatomic) BOOL externalDisplayAvailable;
-@property (strong, nonatomic) NSNumber *externalDisplayBrightness;
+@property (readonly, nonatomic) NSNumber *externalDisplayBrightness;
 @property (readonly, nonatomic) BOOL externalDisplayBrightnessAvailable;
 @property (nonatomic) BOOL matchContent;
 
@@ -27,6 +29,7 @@
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)preferredHDRModes;
+- (void)setExternalDisplayBrightness:(id)arg1 shouldCommit:(BOOL)arg2;
 - (id)supportedHDRModes;
 
 @end

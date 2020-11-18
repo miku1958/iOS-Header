@@ -27,11 +27,11 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)_addFileToIndex:(const char *)arg1 error:(id *)arg2;
-- (BOOL)_buildFileIndex:(id *)arg1;
+- (BOOL)_buildFileIndex;
 - (BOOL)_buildSingleFileIndex:(id *)arg1;
 - (void)_enumerateEntriesInRange:(struct os_timesync_range_s *)arg1 options:(unsigned int)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_foreachIndexFile:(CDUnknownBlockType)arg1;
-- (BOOL)_openTimesyncDatabase:(id *)arg1;
+- (BOOL)_openTimesyncDatabase;
 - (BOOL)_readArchiveMetadata:(id *)arg1;
 - (BOOL)addReferenceToIndex:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
@@ -41,8 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateEntriesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFilesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithCollection:(id)arg1 buildLocalIndex:(BOOL)arg2 error:(id *)arg3;
-- (id)initWithCollection:(id)arg1 error:(id *)arg2;
+- (id)initWithCollection:(id)arg1 buildLocalIndex:(BOOL)arg2;
 - (id)initWithCollection:(id)arg1 timesync:(struct _os_timesync_db_s *)arg2 metadata:(id)arg3;
 - (void)insertChunkStore:(id)arg1;
 - (void)insertIndexFile:(id)arg1;

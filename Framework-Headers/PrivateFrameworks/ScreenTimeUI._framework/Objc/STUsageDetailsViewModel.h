@@ -10,6 +10,8 @@
 
 @interface STUsageDetailsViewModel : NSObject
 {
+    BOOL _localDevice;
+    BOOL _hasAggregateUsageData;
     unsigned long long _selectedTimePeriod;
     NSString *_selectedItemDisplayName;
     NSDate *_lastUpdatedDate;
@@ -18,8 +20,10 @@
     NSArray *_rawUsageItems;
 }
 
+@property BOOL hasAggregateUsageData; // @synthesize hasAggregateUsageData=_hasAggregateUsageData;
 @property (readonly, nonatomic) BOOL hasUsageData;
 @property (strong, nonatomic) NSDate *lastUpdatedDate; // @synthesize lastUpdatedDate=_lastUpdatedDate;
+@property (getter=isLocalDevice) BOOL localDevice; // @synthesize localDevice=_localDevice;
 @property (readonly, copy, nonatomic) NSArray *rawUsageItems; // @synthesize rawUsageItems=_rawUsageItems;
 @property (copy, nonatomic) NSString *selectedItemDisplayName; // @synthesize selectedItemDisplayName=_selectedItemDisplayName;
 @property unsigned long long selectedTimePeriod; // @synthesize selectedTimePeriod=_selectedTimePeriod;
@@ -30,6 +34,7 @@
 + (id)keyPathsForValuesAffectingHasUsageData;
 + (id)keyPathsForValuesAffectingSelectedUsageReport;
 - (void).cxx_destruct;
+- (void)_setRawUsageItems:(id)arg1 lastUpdatedDate:(id)arg2 firstPickupOnReferenceDate:(id)arg3 referenceDate:(id)arg4;
 - (id)init;
 - (void)setRawUsageItems:(id)arg1 lastUpdatedDate:(id)arg2;
 

@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL skipDocumentUpgrade;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)close;
 - (void)dealloc;
 - (id)documentCachePath;

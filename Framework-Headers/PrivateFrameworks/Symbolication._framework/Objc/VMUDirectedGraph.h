@@ -12,6 +12,8 @@
 
 @interface VMUDirectedGraph : NSObject <NSCopying>
 {
+    long long _graphCompatibilityVersion;
+    long long _graphVersion;
     unsigned int _nodeCount;
     unsigned int _edgeCount;
     unsigned int _edgeCapacity;
@@ -83,6 +85,8 @@
 - (void)removeMarkedEdges:(void *)arg1;
 - (void)removeMarkedNodes:(void *)arg1;
 - (id)renormalizedGraph;
+- (void)setGraphCompatibilityVersion:(long long)arg1;
+- (void)setGraphVersion:(long long)arg1;
 - (id)subgraphWithMarkedNodes:(void *)arg1;
 - (void)ungroupNode:(unsigned int)arg1;
 - (void)withEdgeMarkingMap:(CDUnknownBlockType)arg1;

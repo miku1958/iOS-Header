@@ -30,6 +30,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)authorizationDidAuthorizeDisbursement:(id)arg1;
 - (void)authorizationDidAuthorizePayment:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuote:(id)arg1;
 - (void)authorizationDidAuthorizePurchase:(id)arg1;
@@ -40,6 +41,7 @@
 - (void)authorizationDidSelectShippingAddress:(id)arg1;
 - (void)authorizationDidSelectShippingMethod:(id)arg1;
 - (void)authorizationWillStart;
+- (void)connectionDidOpen;
 - (void)dealloc;
 - (void)didEncounterAuthorizationEvent:(unsigned long long)arg1;
 - (id)init;

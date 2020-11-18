@@ -8,11 +8,13 @@
 
 @interface TLKVibrantLabel : UILabel
 {
+    BOOL _isTertiary;
     BOOL _enableVibrancy;
     unsigned long long _style;
 }
 
 @property BOOL enableVibrancy; // @synthesize enableVibrancy=_enableVibrancy;
+@property BOOL isTertiary; // @synthesize isTertiary=_isTertiary;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 
 + (id)textColorForStyle:(unsigned long long)arg1;

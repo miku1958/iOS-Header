@@ -9,13 +9,11 @@
 #import <WebCore/AVPlayerItemOutputPullDelegate-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
 @interface WebCoreAVFPullDelegate : NSObject <AVPlayerItemOutputPullDelegate>
 {
-    struct MediaPlayerPrivateAVFoundationObjC *m_callback;
-    NSObject<OS_dispatch_semaphore> *m_semaphore;
+    WeakPtr_db8b46a6 m_player;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,10 +21,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)initWithCallback:(struct MediaPlayerPrivateAVFoundationObjC *)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (id)initWithPlayer:(WeakPtr_db8b46a6 *)arg1;
 - (void)outputMediaDataWillChange:(struct AVPlayerItemVideoOutput *)arg1;
 - (void)outputSequenceWasFlushed:(struct AVPlayerItemVideoOutput *)arg1;
-- (void)setCallback:(struct MediaPlayerPrivateAVFoundationObjC *)arg1;
 
 @end
 

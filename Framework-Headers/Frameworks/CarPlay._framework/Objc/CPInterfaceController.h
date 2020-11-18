@@ -21,6 +21,7 @@
     CPWindow *_carWindow;
     NSMutableArray *_templateStack;
     CPTemplate *_presentedTemplate;
+    CPTemplate *_lastPresentedTemplate;
 }
 
 @property (strong, nonatomic) CPWindow *carWindow; // @synthesize carWindow=_carWindow;
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) id<CPInterfaceControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) CPTemplate *lastPresentedTemplate; // @synthesize lastPresentedTemplate=_lastPresentedTemplate;
 @property (strong, nonatomic) CPTemplate *presentedTemplate; // @synthesize presentedTemplate=_presentedTemplate;
 @property (strong, nonatomic) CPTemplate *rootTemplate; // @synthesize rootTemplate=_rootTemplate;
 @property (readonly) Class superclass;

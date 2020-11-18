@@ -6,17 +6,20 @@
 
 #import <iWorkImport/TSPObject.h>
 
+@class TSPDocumentRevision;
+
 __attribute__((visibility("hidden")))
 @interface TSKViewState : TSPObject
 {
     TSPObject *_viewStateRoot;
+    TSPDocumentRevision *_documentRevision;
 }
 
+@property (copy, nonatomic) TSPDocumentRevision *documentRevision; // @synthesize documentRevision=_documentRevision;
 @property (strong, nonatomic) TSPObject *viewStateRoot; // @synthesize viewStateRoot=_viewStateRoot;
 
-+ (id)viewStateWithRoot:(id)arg1 context:(id)arg2;
-- (void)dealloc;
-- (id)initWithViewStateRoot:(id)arg1 context:(id)arg2;
+- (void).cxx_destruct;
+- (id)initWithContext:(id)arg1 viewStateRoot:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)packageLocator;
 - (void)saveToArchiver:(id)arg1;

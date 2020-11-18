@@ -67,7 +67,7 @@
 - (void)_resetDocumentUuid:(id)arg1;
 - (BOOL)_setupWithOutputPath:(id)arg1 attemptIncremental:(BOOL)arg2;
 - (BOOL)_sortRenditionEntries;
-- (void)_storeRenditions;
+- (BOOL)_storeRenditions;
 - (id)_textureFaceExclusionPredicate;
 - (BOOL)assetStoreWriteToDisk;
 - (void)cancelDistill;

@@ -13,10 +13,10 @@
 __attribute__((visibility("hidden")))
 @interface TSSStylesheet : TSPObject <TSKTransformableObject>
 {
+    NSMutableDictionary *mIdentifierToStyleMap;
+    TSUMutableRetainedPointerSet *mStyles;
     TSSStylesheet *mParent;
     TSSStylesheet *mChild;
-    TSUMutableRetainedPointerSet *mStyles;
-    NSMutableDictionary *mIdentifierToStyleMap;
     TSURetainedPointerKeyDictionary *mParentToChildrenStyleMap;
     NSMutableDictionary *mUUIDToStyleMap;
     BOOL mIsLocked;

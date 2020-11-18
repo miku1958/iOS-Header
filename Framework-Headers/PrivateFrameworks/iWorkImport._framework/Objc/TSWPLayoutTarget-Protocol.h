@@ -13,7 +13,7 @@
 
 @property (readonly, nonatomic) struct CGPoint anchorPoint;
 @property (strong, nonatomic) NSMutableArray *anchoredDrawablesForRelayout;
-@property (readonly, nonatomic) unsigned int autosizeFlags;
+@property (readonly, nonatomic) unsigned long long autosizeFlags;
 @property (readonly, nonatomic) TSDCanvas *canvas;
 @property (readonly, nonatomic) NSMutableArray *columns;
 @property (readonly, nonatomic) struct CGSize currentSize;
@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) BOOL layoutIsValid;
 @property (readonly, nonatomic) BOOL marginsAreMirrored;
 @property (readonly, nonatomic) struct CGRect maskRect;
-@property (readonly, nonatomic) double maxAnchorY;
+@property (readonly, nonatomic) double maxAnchorInBlockDirection;
 @property (readonly, nonatomic) struct CGSize maxSize;
 @property (readonly, nonatomic) struct CGSize minSize;
 @property (readonly, nonatomic) int naturalAlignment;

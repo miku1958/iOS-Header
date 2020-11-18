@@ -12,14 +12,13 @@
 @interface HUChildServiceEditorItemModule : HFItemModule
 {
     NSSet *_itemProviders;
-    HMAccessory *_accessory;
     HFItem<HFServiceLikeItem> *_sourceItem;
     HFServiceItemProvider *_childServiceItemProvider;
     unsigned long long _editingMode;
     HMHome *_home;
 }
 
-@property (readonly, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, nonatomic) HMAccessory *accessory;
 @property (strong, nonatomic) HFServiceItemProvider *childServiceItemProvider; // @synthesize childServiceItemProvider=_childServiceItemProvider;
 @property (readonly, nonatomic) unsigned long long editingMode; // @synthesize editingMode=_editingMode;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
@@ -30,6 +29,7 @@
 - (void).cxx_destruct;
 - (id)_createItemProviders;
 - (id)_isConfiguredControlItemForItem:(id)arg1;
+- (BOOL)canToggleConfigurationStateForItem:(id)arg1;
 - (long long)configurationStateForItem:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1 home:(id)arg2 sourceItem:(id)arg3 mode:(unsigned long long)arg4;
 - (id)itemProviders;

@@ -10,9 +10,12 @@
 
 @protocol TSCETableResolverFactoryProtocol <NSObject>
 - (unsigned char)aggregateTypeForCategoryRef:(const struct TSCECategoryRef *)arg1;
+- (vector_2431c21e)categoryRefsForSpanningCategoryRef:(const struct TSCECategoryRef *)arg1;
 - (vector_4115f7f8)cellRefsForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2;
 - (id)initWithCalcEngine:(struct TSCECalcEngine *)arg1;
+- (UUIDData_5fbc143e)mapOwnerUID:(const UUIDData_5fbc143e *)arg1;
 - (struct TSCETableResolver *)newTableResolverForResolver:(id<TSCEReferenceResolving>)arg1;
+- (vector_4115f7f8)unorderedCellRefsForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2;
 - (vector_a1208d01)valuesForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2 error:(id *)arg3;
 @end
 

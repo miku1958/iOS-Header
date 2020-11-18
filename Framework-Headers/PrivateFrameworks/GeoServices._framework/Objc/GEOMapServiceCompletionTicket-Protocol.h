@@ -6,7 +6,7 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOMapItemIdentifier, GEOMapServiceTraits, GEORPSuggestionEntry, GEORPSuggestionList, NSDictionary, NSString;
+@class GEOMapItemIdentifier, GEOMapServiceTraits, GEORPSuggestionEntry, GEORPSuggestionList, GEOSortPriorityMapping, NSDictionary, NSString;
 
 @protocol GEOMapServiceCompletionTicket <NSObject>
 
@@ -22,6 +22,7 @@
 - (BOOL)matchesFragment:(NSString *)arg1;
 - (double)retainSearchTime;
 - (BOOL)shouldDisplayNoResults;
+- (GEOSortPriorityMapping *)sortPriorityMapping;
 - (void)submitWithAutoCompletionHandler:(void (^)(id<GEOCompletion>, NSError *))arg1 networkActivity:(void (^)(BOOL))arg2;
 @end
 

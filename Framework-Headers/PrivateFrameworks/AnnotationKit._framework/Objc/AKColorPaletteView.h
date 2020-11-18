@@ -6,12 +6,15 @@
 
 #import <UIKit/UIControl.h>
 
+#import <AnnotationKit/AKColorChooserUserInterfaceItem-Protocol.h>
+#import <AnnotationKit/AKInkIsUpdatable-Protocol.h>
+#import <AnnotationKit/AKUserInterfaceItem-Protocol.h>
 #import <AnnotationKit/UICollectionViewDataSource-Protocol.h>
 #import <AnnotationKit/UICollectionViewDelegate-Protocol.h>
 
 @class NSArray, NSString, UICollectionView, UIColor;
 
-@interface AKColorPaletteView : UIControl <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface AKColorPaletteView : UIControl <UICollectionViewDataSource, UICollectionViewDelegate, AKInkIsUpdatable, AKUserInterfaceItem, AKColorChooserUserInterfaceItem>
 {
     UIColor *_color;
     long long _scrollDirection;
@@ -40,6 +43,7 @@
 - (void)layoutSubviews;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)scrollToCurrentColor;
+- (BOOL)wantsInkUpdate;
 
 @end
 

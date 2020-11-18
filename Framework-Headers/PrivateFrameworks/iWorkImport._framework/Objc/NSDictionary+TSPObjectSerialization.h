@@ -7,10 +7,10 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (TSPObjectSerialization)
-+ (id)tsp_decoderDataInfoDictionaryFromMessage:(const RepeatedPtrField_fe6aca30 *)arg1;
-+ (id)tsp_decoderResourceNameDictionaryFromMessage:(const RepeatedPtrField_fe6aca30 *)arg1;
-+ (id)tsp_identifierToObjectUUIDDictionaryFromMessage:(const RepeatedPtrField_c964a194 *)arg1;
++ (id)tsp_decoderDataInfoDictionaryFromMessage:(const RepeatedPtrField_6277dbb5 *)arg1;
++ (id)tsp_decoderResourceNameDictionaryFromMessage:(const RepeatedPtrField_6277dbb5 *)arg1;
++ (id)tsp_identifierToObjectUUIDDictionaryFromMessage:(const RepeatedPtrField_f8410f9e *)arg1;
 + (id)tsp_identifierToObjectUUIDDictionaryFromWeakExternalReferences:(id)arg1 updatingComponentInfo:(struct ComponentInfo *)arg2 failIfReferenceIsNotPersisted:(BOOL)arg3 context:(id)arg4 error:(id *)arg5;
-- (void)tsp_saveIdentifierToObjectUUIDDictionaryToMessage:(RepeatedPtrField_c964a194 *)arg1;
+- (void)tsp_saveIdentifierToObjectUUIDDictionaryToMessage:(RepeatedPtrField_f8410f9e *)arg1;
 @end
 

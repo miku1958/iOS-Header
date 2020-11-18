@@ -21,6 +21,7 @@
 @property (nonatomic) int workerFlags; // @dynamic workerFlags;
 @property (nonatomic) short workerType; // @dynamic workerType;
 
++ (id)_batchOperationQueue;
 + (BOOL)_bulkUpdateAnalysisStatesTo:(int)arg1 predicate:(id)arg2 error:(id *)arg3;
 + (id)_countOfAnalysisStatesByWorkerTypeWithPredicate:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 + (unsigned long long)_countOfAssetsAllowedForProcessingInLibrary:(id)arg1 error:(id *)arg2;

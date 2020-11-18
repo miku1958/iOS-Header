@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)_convertToNSRange:(struct Range *)arg1;
 - (BOOL)_prepareAccessibilityCall;
 - (id)_stringForRange:(struct _NSRange)arg1 attributed:(BOOL)arg2;
+- (id)_stringFromStartMarker:(id)arg1 toEndMarker:(id)arg2 attributed:(BOOL)arg3;
 - (unsigned long long)accessibilityARIAColumnCount;
 - (unsigned long long)accessibilityARIAColumnIndex;
 - (id)accessibilityARIACurrentStatus;
@@ -87,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)accessibilityCanFuzzyHitTest;
 - (BOOL)accessibilityCanSetValue;
 - (struct CGPoint)accessibilityClickPoint;
+- (id)accessibilityColorStringValue;
 - (unsigned long long)accessibilityColumnCount;
 - (struct _NSRange)accessibilityColumnRange;
 - (id)accessibilityContainer;
@@ -157,6 +159,7 @@ __attribute__((visibility("hidden")))
 - (id)accessibilitySpeechHint;
 - (BOOL)accessibilitySupportsARIAExpanded;
 - (BOOL)accessibilitySupportsARIAPressed;
+- (id)accessibilityTextualContext;
 - (id)accessibilityTitleElement;
 - (void)accessibilityToggleMuteForMedia;
 - (unsigned long long)accessibilityTraits;
@@ -166,6 +169,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)accessibilityVisibleContentRect;
 - (id)arrayOfTextForTextMarkers:(id)arg1 attributed:(BOOL)arg2;
 - (id)attachmentView;
+- (id)attributedStringForElement;
 - (id)attributedStringForRange:(struct _NSRange)arg1;
 - (BOOL)containsUnnaturallySegmentedChildren;
 - (struct CGPoint)convertPointToScreenSpace:(struct FloatPoint *)arg1;

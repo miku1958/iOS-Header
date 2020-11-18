@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class AFNotifyStatePublisher, NSMapTable;
-@protocol OS_dispatch_queue;
+@class AFNotifyStatePublisher, AFSafetyBlock, AFWatchdogTimer, NSMapTable;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface AFSiriClientStateManager : NSObject
 {
@@ -15,31 +15,40 @@
     AFNotifyStatePublisher *_publisher;
     NSMapTable *_statesByClient;
     long long _transactionDepth;
+    AFSafetyBlock *_presentationTransitionAssertion;
+    AFWatchdogTimer *_presentationTransitionWatchdogTimer;
+    NSObject<OS_dispatch_group> *_presentationTransitionGroup;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_aggregateStatesAndPublishIfNeeded;
+- (unsigned long long)_aggregatedState;
 - (void)_beginListeningForClient:(void *)arg1;
+- (void)_beginPresentationTransition;
 - (void)_beginRequestWithUUID:(id)arg1 forClient:(void *)arg2;
 - (void)_beginSessionForClient:(void *)arg1;
 - (void)_beginSpeakingForClient:(void *)arg1;
 - (void)_endListeningForClient:(void *)arg1;
+- (void)_endPresentationTransitionForReason:(id)arg1;
 - (void)_endRequestWithUUID:(id)arg1 forClient:(void *)arg2;
 - (void)_endSessionForClient:(void *)arg1;
 - (void)_endSpeakingForClient:(void *)arg1;
 - (void)_removeStateForClient:(void *)arg1;
 - (id)_stateForClient:(void *)arg1 createIfAbsent:(BOOL)arg2;
 - (void)beginListeningForClient:(void *)arg1;
+- (void)beginPresentationTransition;
 - (void)beginRequestWithUUID:(id)arg1 forClient:(void *)arg2;
 - (void)beginSessionForClient:(void *)arg1;
 - (void)beginSpeakingForClient:(id)arg1;
 - (void)beginTransaction;
 - (void)endListeningForClient:(void *)arg1;
+- (void)endPresentationTransition;
 - (void)endRequestWithUUID:(id)arg1 forClient:(void *)arg2;
 - (void)endSessionForClient:(void *)arg1;
 - (void)endSpeakingForClient:(id)arg1;
 - (void)endTransaction;
+- (void)getCurrentStateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)invalidateClient:(void *)arg1;
 

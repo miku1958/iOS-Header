@@ -7,11 +7,12 @@
 #import <UIKit/UITableViewController.h>
 
 #import <ClassroomKit/CRKSwitchTableViewCellDelegate-Protocol.h>
+#import <ClassroomKit/CRKUserTableViewCellDelegate-Protocol.h>
 
 @class CRKUser, NSString;
 @protocol CRKUserEditorTableViewControllerDelegate;
 
-@interface CRKUserEditorTableViewController : UITableViewController <CRKSwitchTableViewCellDelegate>
+@interface CRKUserEditorTableViewController : UITableViewController <CRKSwitchTableViewCellDelegate, CRKUserTableViewCellDelegate>
 {
     CRKUser *mMeCardUser;
     BOOL mUseMeCardUser;
@@ -42,6 +43,7 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)updateTableView;
+- (void)userTableViewCellDidEditUser:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
 

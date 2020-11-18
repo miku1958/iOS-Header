@@ -29,6 +29,8 @@
 - (void).cxx_destruct;
 - (void)_addAssertionCoordinator:(id)arg1 forProcessIdentifier:(id)arg2;
 - (void)_applicationStateChanged:(id)arg1;
+- (id)_coordinatorsBundleIdentifier;
+- (id)_processNameWithPID:(int)arg1;
 - (void)_removeAllAssertionCoordinators;
 - (void)_removeAssertionCoordinator:(id)arg1;
 - (BOOL)assertionCoordinator:(id)arg1 canAcquireAssertion:(id)arg2;

@@ -17,9 +17,11 @@
     NSDictionary *_serviceProviderDict;
     NSString *_action;
     NSString *_merchantID;
+    NSArray *_defaultSuggestions;
 }
 
 @property (readonly, copy, nonatomic) NSString *action; // @synthesize action=_action;
+@property (readonly, copy, nonatomic) NSArray *defaultSuggestions; // @synthesize defaultSuggestions=_defaultSuggestions;
 @property (readonly, copy, nonatomic) NSString *merchantID; // @synthesize merchantID=_merchantID;
 @property (readonly, copy, nonatomic) NSArray *serviceProviderCapabilities; // @synthesize serviceProviderCapabilities=_serviceProviderCapabilities;
 @property (readonly, copy, nonatomic) NSString *serviceProviderCountryCode; // @synthesize serviceProviderCountryCode=_serviceProviderCountryCode;

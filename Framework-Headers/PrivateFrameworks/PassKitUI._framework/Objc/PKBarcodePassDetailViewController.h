@@ -49,6 +49,8 @@
     UISegmentedControl *_tabBar;
     UIView *_keyLine;
     BOOL _didRampScreenBrightness;
+    unsigned char _visiblityState;
+    BOOL _showDoneButton;
     PKPass *_pass;
     unsigned long long _suppressedContent;
     id<PKPassDeleteHandler> _deleteOverrider;
@@ -59,6 +61,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
+@property (nonatomic) BOOL showDoneButton; // @synthesize showDoneButton=_showDoneButton;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;
 
@@ -87,12 +90,14 @@
 - (void)_refreshFinished:(BOOL)arg1;
 - (id)_relevantBuckets;
 - (void)_reloadPassAndView;
+- (void)_reloadTitle;
 - (unsigned long long)_settingForRow:(unsigned long long)arg1;
 - (BOOL)_settingsAvailable;
 - (id)_settingsCellForRow:(unsigned long long)arg1;
 - (id)_shareCell;
 - (void)_sharePass;
 - (void)_tabBarSegmentChanged:(id)arg1;
+- (double)_titleOpacityForBounds:(struct CGRect)arg1 lowerBoundary:(double)arg2 higherBoundary:(double)arg3;
 - (BOOL)_updateHeaderHeightDeterminingLayout:(BOOL)arg1;
 - (void)_updatePassProperties;
 - (void)_updateTabBar;
@@ -130,6 +135,8 @@
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

@@ -53,7 +53,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL supportsCollaborativeEditing;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
 @property (readonly, nonatomic) BOOL textIsLinked;
-@property (readonly, nonatomic) BOOL textIsVertical;
 
 + (void)addDefaultGalleryCaptionParagraphStyleIfNeededWithFontSize:(double)arg1 toStylesheet:(id)arg2;
 + (id)defaultGalleryCaptionParagraphStyleInStylesheet:(id)arg1;
@@ -91,6 +90,7 @@ __attribute__((visibility("hidden")))
 - (void)setCaptionStorage:(id)arg1;
 - (BOOL)supportsParentRotation;
 - (struct CGSize)targetSizeForImageData:(id)arg1 associatedHint:(id)arg2;
+- (BOOL)textIsVerticalAtCharIndex:(unsigned long long)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

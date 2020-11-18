@@ -81,7 +81,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isObjectInDocument:(id)arg1;
 - (long long)modifyObjectTokenForNewObject;
 - (long long)newObjectIdentifier;
-- (id)newObjectUUIDForObject:(id)arg1;
+- (id)newObjectUUIDForObject:(id)arg1 baseOffset:(unsigned long long)arg2 ignoringBaseUUIDForObjectUUID:(BOOL)arg3;
 - (long long)objectIdentifierForUUID:(id)arg1;
 - (struct ObjectInfo *)objectInfoForIdentifier:(long long)arg1;
 - (id)objectUUIDMap;

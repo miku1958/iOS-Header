@@ -82,6 +82,7 @@
 - (void)pushControllerType:(id)arg1;
 - (void)refreshTimeoutTimer;
 - (void)remoteRequestToKeepAlive:(id)arg1;
+- (BOOL)reportRemoteActivationFailureError:(id)arg1;
 - (void)retryActivation:(id)arg1;
 - (BOOL)sendCompanionPerformanceResults;
 - (id)serviceIdentifier;

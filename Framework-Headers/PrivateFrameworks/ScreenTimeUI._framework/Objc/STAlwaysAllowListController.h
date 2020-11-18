@@ -7,11 +7,12 @@
 #import <Preferences/PSListController.h>
 
 @class NSArray, NSSet, PSSpecifier, STAlwaysAllowList;
-@protocol STAlwaysAllowListControllerDelegate;
+@protocol STAlwaysAllowListControllerDelegate, STRootViewModelCoordinator;
 
 @interface STAlwaysAllowListController : PSListController
 {
     id<STAlwaysAllowListControllerDelegate> _delegate;
+    id<STRootViewModelCoordinator> _coordinator;
     STAlwaysAllowList *_alwaysAllowList;
     NSArray *_chooseBundleIDs;
     NSSet *_installedBundleIDs;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) PSSpecifier *chooseAppsGroupSpecifier; // @synthesize chooseAppsGroupSpecifier=_chooseAppsGroupSpecifier;
 @property (strong, nonatomic) NSArray *chooseAppsSpecifiers; // @synthesize chooseAppsSpecifiers=_chooseAppsSpecifiers;
 @property (copy, nonatomic) NSArray *chooseBundleIDs; // @synthesize chooseBundleIDs=_chooseBundleIDs;
+@property (strong, nonatomic) id<STRootViewModelCoordinator> coordinator; // @synthesize coordinator=_coordinator;
 @property (weak, nonatomic) id<STAlwaysAllowListControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSSet *installedBundleIDs; // @synthesize installedBundleIDs=_installedBundleIDs;
 
@@ -37,6 +39,7 @@
 - (id)createChooseAppsSpecifiers;
 - (id)init;
 - (void)removeAllowedIdentifier:(id)arg1 withSpecifier:(id)arg2;
+- (id)removeMessagesConfirmationPrompt;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (id)specifiers;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;

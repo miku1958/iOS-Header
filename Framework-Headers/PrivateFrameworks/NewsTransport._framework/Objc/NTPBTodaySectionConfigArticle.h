@@ -15,6 +15,7 @@
     NSString *_articleID;
     NSString *_displayDateString;
     NSString *_storyType;
+    NSString *_title;
 }
 
 @property (strong, nonatomic) NSString *articleID; // @synthesize articleID=_articleID;
@@ -22,7 +23,9 @@
 @property (readonly, nonatomic) BOOL hasArticleID;
 @property (readonly, nonatomic) BOOL hasDisplayDateString;
 @property (readonly, nonatomic) BOOL hasStoryType;
+@property (readonly, nonatomic) BOOL hasTitle;
 @property (strong, nonatomic) NSString *storyType; // @synthesize storyType=_storyType;
+@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

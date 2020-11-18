@@ -24,6 +24,7 @@
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
+- (id)_complicationsCompanionForegroundColor;
 - (void)_customizeVideoPlayerOnSetup;
 - (id)_editOptionThatHidesAllComplications;
 - (id)_swatchImageForColor:(unsigned long long)arg1 andDialShape:(unsigned long long)arg2;

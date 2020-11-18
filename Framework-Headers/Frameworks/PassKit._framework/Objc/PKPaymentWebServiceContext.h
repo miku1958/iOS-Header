@@ -23,6 +23,7 @@
     NSString *_companionSerialNumber;
     NSDate *_registrationDate;
     NSDate *_configurationDate;
+    NSString *_lastDeviceCheckInBuildVersion;
     PKPaymentWebServiceConfiguration *_configuration;
     NSDictionary *_regions;
     NSString *_primaryRegionIdentifier;
@@ -41,6 +42,7 @@
 @property BOOL devSigned; // @synthesize devSigned=_devSigned;
 @property (copy) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property BOOL ignoreProvisioningEnablementPercentage; // @synthesize ignoreProvisioningEnablementPercentage=_ignoreProvisioningEnablementPercentage;
+@property (copy) NSString *lastDeviceCheckInBuildVersion; // @synthesize lastDeviceCheckInBuildVersion=_lastDeviceCheckInBuildVersion;
 @property (copy) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
 @property BOOL messageServiceDisabled; // @synthesize messageServiceDisabled=_messageServiceDisabled;
 @property (readonly, weak) PKPaymentWebServiceRegion *primaryRegion;
@@ -64,6 +66,7 @@
 - (id)betaPaymentNetworksForRegion:(id)arg1;
 - (BOOL)contextMeetsMarketGeoNotificationThresholdForRegion:(id)arg1 paymentNetwork:(long long)arg2;
 - (BOOL)contextMeetsProvisioningEnablementPercentageThresholdForRegion:(id)arg1;
+- (BOOL)deviceCheckInRequired;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

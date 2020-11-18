@@ -40,6 +40,7 @@
 - (id)defaultBodyDefinition;
 - (id)defaultFeedMetadataDefinition;
 - (id)defaultHeaderDefinition;
+- (id)defaultIssueDefinition;
 - (id)defaultRootDefinition;
 - (id)inArticleContextConstructor;
 - (id)initWithConfigurationProvider:(id)arg1 device:(id)arg2;

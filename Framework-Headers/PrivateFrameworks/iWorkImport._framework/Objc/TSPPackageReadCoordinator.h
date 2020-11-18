@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     unordered_map_38045d47 _readExternalObjects;
     BOOL _losesDataOnWrite;
     BOOL _didRequireUpgrade;
+    NSSet *_featureIdentifiers;
     NSSet *_unsupportedFeatureIdentifiers;
     TSPDocumentRevision *_documentRevision;
     unsigned long long _saveToken;
@@ -53,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL didRequireUpgrade; // @synthesize didRequireUpgrade=_didRequireUpgrade;
 @property (readonly, nonatomic) TSPDocumentRevision *documentRevision; // @synthesize documentRevision=_documentRevision;
+@property (readonly, nonatomic) NSSet *featureIdentifiers; // @synthesize featureIdentifiers=_featureIdentifiers;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isReadingFromDocument;
 @property (readonly, nonatomic) BOOL losesDataOnWrite; // @synthesize losesDataOnWrite=_losesDataOnWrite;

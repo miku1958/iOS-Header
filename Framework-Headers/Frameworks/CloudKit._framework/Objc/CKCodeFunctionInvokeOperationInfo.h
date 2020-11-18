@@ -6,18 +6,22 @@
 
 #import <CloudKit/CKDatabaseOperationInfo.h>
 
-@class NSData, NSString;
+@class NSArray, NSString;
 
 @interface CKCodeFunctionInvokeOperationInfo : CKDatabaseOperationInfo
 {
+    BOOL _local;
+    BOOL _shouldFetchAssetContentInMemory;
     NSString *_serviceName;
     NSString *_functionName;
-    NSData *_serializedParameters;
+    NSArray *_requestLocalSerializations;
 }
 
 @property (copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
-@property (copy, nonatomic) NSData *serializedParameters; // @synthesize serializedParameters=_serializedParameters;
+@property (nonatomic) BOOL local; // @synthesize local=_local;
+@property (copy, nonatomic) NSArray *requestLocalSerializations; // @synthesize requestLocalSerializations=_requestLocalSerializations;
 @property (copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
+@property (nonatomic) BOOL shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

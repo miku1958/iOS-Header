@@ -13,6 +13,6 @@
 - (void)CSVTUITrainingSessionStopListen;
 
 @optional
-- (void)CSVTUITrainingSession:(CSVTUITrainingSession *)arg1 hasTrainUtterance:(NSData *)arg2 languageCode:(NSString *)arg3;
+- (BOOL)CSVTUITrainingSession:(CSVTUITrainingSession *)arg1 hasTrainUtterance:(NSData *)arg2 languageCode:(NSString *)arg3 payload:(BOOL)arg4;
 @end
 

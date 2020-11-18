@@ -13,13 +13,17 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) unsigned long long count;
+@property (readonly, nonatomic) const vector_b5e32e34 *rangeVector;
 
++ (id)stringValueForRangeVector:(const vector_b5e32e34 *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addRange:(struct _NSRange)arg1;
 - (void)consolidate;
 - (id)initWithRange:(struct _NSRange)arg1;
 - (id)initWithRangeList:(id)arg1;
+- (id)initWithRangeVector:(const vector_b5e32e34 *)arg1;
+- (id)initWithRangeVectorMove:(vector_b5e32e34 *)arg1;
 - (id)initWithString:(id)arg1;
 - (void)insertRange:(struct _NSRange)arg1 atIndex:(unsigned long long)arg2;
 - (struct _NSRange)rangeAtIndex:(unsigned long long)arg1;

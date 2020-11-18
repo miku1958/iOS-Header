@@ -19,6 +19,7 @@
     double _nameImageScaleFactor;
     long long _score;
     NSMutableArray *_allowedStorefrontIDs;
+    NSString *_archiveIssueListID;
     NSData *_articleRecirculationConfiguration;
     NTPBRecordBase *_base;
     NSMutableArray *_blockedStorefrontIDs;
@@ -32,7 +33,10 @@
     int _groupingAvailability;
     NSMutableArray *_iAdCategories;
     NSMutableArray *_iAdKeywords;
+    NSString *_language;
+    NSMutableArray *_latestIssueIDs;
     NSString *_logoURL;
+    NSString *_magazineGenre;
     NSString *_name;
     NSString *_nameCompact;
     NSData *_nameImageCompactMetadata;
@@ -44,9 +48,9 @@
     NSData *_nameImageMetadata;
     NSString *_nameImageURL;
     NSString *_parentID;
-    NSMutableArray *_pinnedArticleIDs;
     NSString *_primaryAudience;
     NSString *_publisherPaidAuthorizationURL;
+    NSMutableArray *_publisherPaidBundlePurchaseIDs;
     NTPBPublisherPaidDescriptionStrings *_publisherPaidDescriptionStrings;
     NSMutableArray *_publisherPaidFeldsparablePurchaseIDs;
     NSString *_publisherPaidVerificationURL;
@@ -54,10 +58,6 @@
     NSMutableArray *_publisherSpecifiedArticleIds;
     NTPBDate *_publisherSpecifiedArticleIdsModifiedDate;
     NSMutableArray *_purchaseOfferableConfigurations;
-    NSMutableArray *_relatedChannelIDs;
-    NSMutableArray *_relatedChannelIDsForOnboardings;
-    NSMutableArray *_relatedTopicIDs;
-    NSMutableArray *_relatedTopicIDsForOnboardings;
     NSString *_replacementID;
     NSString *_subtitle;
     NSString *_templateJson;
@@ -91,6 +91,7 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *allowedStorefrontIDs; // @synthesize allowedStorefrontIDs=_allowedStorefrontIDs;
+@property (strong, nonatomic) NSString *archiveIssueListID; // @synthesize archiveIssueListID=_archiveIssueListID;
 @property (strong, nonatomic) NSData *articleRecirculationConfiguration; // @synthesize articleRecirculationConfiguration=_articleRecirculationConfiguration;
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
 @property (nonatomic) long long behaviorFlags; // @synthesize behaviorFlags=_behaviorFlags;
@@ -104,6 +105,7 @@
 @property (strong, nonatomic) NTPBFeedConfiguration *feedConfiguration; // @synthesize feedConfiguration=_feedConfiguration;
 @property (strong, nonatomic) NSString *feedNavImageURL; // @synthesize feedNavImageURL=_feedNavImageURL;
 @property (nonatomic) int groupingAvailability; // @synthesize groupingAvailability=_groupingAvailability;
+@property (readonly, nonatomic) BOOL hasArchiveIssueListID;
 @property (readonly, nonatomic) BOOL hasArticleRecirculationConfiguration;
 @property (readonly, nonatomic) BOOL hasBase;
 @property (nonatomic) BOOL hasBehaviorFlags;
@@ -120,7 +122,9 @@
 @property (nonatomic) BOOL hasIsHidden;
 @property (nonatomic) BOOL hasIsNotificationEnabled;
 @property (nonatomic) BOOL hasIsPublic;
+@property (readonly, nonatomic) BOOL hasLanguage;
 @property (readonly, nonatomic) BOOL hasLogoURL;
+@property (readonly, nonatomic) BOOL hasMagazineGenre;
 @property (nonatomic) BOOL hasMinimumNewsVersion;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasNameCompact;
@@ -156,7 +160,10 @@
 @property (nonatomic) BOOL isHidden; // @synthesize isHidden=_isHidden;
 @property (nonatomic) BOOL isNotificationEnabled; // @synthesize isNotificationEnabled=_isNotificationEnabled;
 @property (nonatomic) BOOL isPublic; // @synthesize isPublic=_isPublic;
+@property (strong, nonatomic) NSString *language; // @synthesize language=_language;
+@property (strong, nonatomic) NSMutableArray *latestIssueIDs; // @synthesize latestIssueIDs=_latestIssueIDs;
 @property (strong, nonatomic) NSString *logoURL; // @synthesize logoURL=_logoURL;
+@property (strong, nonatomic) NSString *magazineGenre; // @synthesize magazineGenre=_magazineGenre;
 @property (nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *nameCompact; // @synthesize nameCompact=_nameCompact;
@@ -171,9 +178,9 @@
 @property (nonatomic) double nameImageScaleFactor; // @synthesize nameImageScaleFactor=_nameImageScaleFactor;
 @property (strong, nonatomic) NSString *nameImageURL; // @synthesize nameImageURL=_nameImageURL;
 @property (strong, nonatomic) NSString *parentID; // @synthesize parentID=_parentID;
-@property (strong, nonatomic) NSMutableArray *pinnedArticleIDs; // @synthesize pinnedArticleIDs=_pinnedArticleIDs;
 @property (strong, nonatomic) NSString *primaryAudience; // @synthesize primaryAudience=_primaryAudience;
 @property (strong, nonatomic) NSString *publisherPaidAuthorizationURL; // @synthesize publisherPaidAuthorizationURL=_publisherPaidAuthorizationURL;
+@property (strong, nonatomic) NSMutableArray *publisherPaidBundlePurchaseIDs; // @synthesize publisherPaidBundlePurchaseIDs=_publisherPaidBundlePurchaseIDs;
 @property (strong, nonatomic) NTPBPublisherPaidDescriptionStrings *publisherPaidDescriptionStrings; // @synthesize publisherPaidDescriptionStrings=_publisherPaidDescriptionStrings;
 @property (strong, nonatomic) NSMutableArray *publisherPaidFeldsparablePurchaseIDs; // @synthesize publisherPaidFeldsparablePurchaseIDs=_publisherPaidFeldsparablePurchaseIDs;
 @property (nonatomic) BOOL publisherPaidLeakyPaywallOptOut; // @synthesize publisherPaidLeakyPaywallOptOut=_publisherPaidLeakyPaywallOptOut;
@@ -183,10 +190,6 @@
 @property (strong, nonatomic) NSMutableArray *publisherSpecifiedArticleIds; // @synthesize publisherSpecifiedArticleIds=_publisherSpecifiedArticleIds;
 @property (strong, nonatomic) NTPBDate *publisherSpecifiedArticleIdsModifiedDate; // @synthesize publisherSpecifiedArticleIdsModifiedDate=_publisherSpecifiedArticleIdsModifiedDate;
 @property (strong, nonatomic) NSMutableArray *purchaseOfferableConfigurations; // @synthesize purchaseOfferableConfigurations=_purchaseOfferableConfigurations;
-@property (strong, nonatomic) NSMutableArray *relatedChannelIDs; // @synthesize relatedChannelIDs=_relatedChannelIDs;
-@property (strong, nonatomic) NSMutableArray *relatedChannelIDsForOnboardings; // @synthesize relatedChannelIDsForOnboardings=_relatedChannelIDsForOnboardings;
-@property (strong, nonatomic) NSMutableArray *relatedTopicIDs; // @synthesize relatedTopicIDs=_relatedTopicIDs;
-@property (strong, nonatomic) NSMutableArray *relatedTopicIDsForOnboardings; // @synthesize relatedTopicIDsForOnboardings=_relatedTopicIDsForOnboardings;
 @property (strong, nonatomic) NSString *replacementID; // @synthesize replacementID=_replacementID;
 @property (nonatomic) long long score; // @synthesize score=_score;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
@@ -199,28 +202,22 @@
 + (Class)channelSectionIDsType;
 + (Class)iAdCategoriesType;
 + (Class)iAdKeywordsType;
-+ (Class)pinnedArticleIDsType;
++ (Class)latestIssueIDsType;
++ (Class)publisherPaidBundlePurchaseIDsType;
 + (Class)publisherPaidFeldsparablePurchaseIDsType;
 + (Class)publisherSpecifiedArticleIdsType;
 + (Class)purchaseOfferableConfigurationType;
-+ (Class)relatedChannelIDsForOnboardingType;
-+ (Class)relatedChannelIDsType;
-+ (Class)relatedTopicIDsForOnboardingType;
-+ (Class)relatedTopicIDsType;
 - (void)addAllowedStorefrontIDs:(id)arg1;
 - (void)addBlockedStorefrontIDs:(id)arg1;
 - (void)addChannelSectionFeedConfigurations:(id)arg1;
 - (void)addChannelSectionIDs:(id)arg1;
 - (void)addIAdCategories:(id)arg1;
 - (void)addIAdKeywords:(id)arg1;
-- (void)addPinnedArticleIDs:(id)arg1;
+- (void)addLatestIssueIDs:(id)arg1;
+- (void)addPublisherPaidBundlePurchaseIDs:(id)arg1;
 - (void)addPublisherPaidFeldsparablePurchaseIDs:(id)arg1;
 - (void)addPublisherSpecifiedArticleIds:(id)arg1;
 - (void)addPurchaseOfferableConfiguration:(id)arg1;
-- (void)addRelatedChannelIDs:(id)arg1;
-- (void)addRelatedChannelIDsForOnboarding:(id)arg1;
-- (void)addRelatedTopicIDs:(id)arg1;
-- (void)addRelatedTopicIDsForOnboarding:(id)arg1;
 - (id)allowedStorefrontIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)allowedStorefrontIDsCount;
 - (id)blockedStorefrontIDsAtIndex:(unsigned long long)arg1;
@@ -235,14 +232,11 @@
 - (void)clearChannelSectionIDs;
 - (void)clearIAdCategories;
 - (void)clearIAdKeywords;
-- (void)clearPinnedArticleIDs;
+- (void)clearLatestIssueIDs;
+- (void)clearPublisherPaidBundlePurchaseIDs;
 - (void)clearPublisherPaidFeldsparablePurchaseIDs;
 - (void)clearPublisherSpecifiedArticleIds;
 - (void)clearPurchaseOfferableConfigurations;
-- (void)clearRelatedChannelIDs;
-- (void)clearRelatedChannelIDsForOnboardings;
-- (void)clearRelatedTopicIDs;
-- (void)clearRelatedTopicIDsForOnboardings;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -253,9 +247,11 @@
 - (id)iAdKeywordsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)iAdKeywordsCount;
 - (BOOL)isEqual:(id)arg1;
+- (id)latestIssueIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)latestIssueIDsCount;
 - (void)mergeFrom:(id)arg1;
-- (id)pinnedArticleIDsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)pinnedArticleIDsCount;
+- (id)publisherPaidBundlePurchaseIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)publisherPaidBundlePurchaseIDsCount;
 - (id)publisherPaidFeldsparablePurchaseIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)publisherPaidFeldsparablePurchaseIDsCount;
 - (id)publisherSpecifiedArticleIdsAtIndex:(unsigned long long)arg1;
@@ -263,14 +259,6 @@
 - (id)purchaseOfferableConfigurationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)purchaseOfferableConfigurationsCount;
 - (BOOL)readFrom:(id)arg1;
-- (id)relatedChannelIDsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)relatedChannelIDsCount;
-- (id)relatedChannelIDsForOnboardingAtIndex:(unsigned long long)arg1;
-- (unsigned long long)relatedChannelIDsForOnboardingsCount;
-- (id)relatedTopicIDsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)relatedTopicIDsCount;
-- (id)relatedTopicIDsForOnboardingAtIndex:(unsigned long long)arg1;
-- (unsigned long long)relatedTopicIDsForOnboardingsCount;
 - (void)writeTo:(id)arg1;
 
 @end

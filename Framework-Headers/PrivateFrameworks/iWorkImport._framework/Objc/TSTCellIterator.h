@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSTCellIterating-Protocol.h>
 
-@class NSMutableIndexSet, NSString, TSTCell, TSTCellRegion, TSTInfo, TSTMutableCellIteratorData, TSTTableModel;
+@class NSMutableIndexSet, NSString, TSTCell, TSTCellRegion, TSTMutableCellIteratorData, TSTTableInfo, TSTTableModel;
 @protocol TSTCellRegionIterating, TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL _returnOneEmptyCell;
     BOOL _terminateRegionIterator;
     unsigned int _rowForColumnIndexesWithMerges;
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     TSTTableModel *_tableModel;
     TSTCellRegion *_region;
     TSTCell *_cell;
@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int rowForColumnIndexesWithMerges; // @synthesize rowForColumnIndexesWithMerges=_rowForColumnIndexesWithMerges;
 @property (strong, nonatomic) id<TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> strokeIterator; // @synthesize strokeIterator=_strokeIterator;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (readonly, strong, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property (strong, nonatomic) TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
 @property (nonatomic) BOOL terminateRegionIterator; // @synthesize terminateRegionIterator=_terminateRegionIterator;
 

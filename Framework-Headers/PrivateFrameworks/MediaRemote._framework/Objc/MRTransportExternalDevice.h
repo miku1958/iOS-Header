@@ -8,7 +8,7 @@
 
 #import <MediaRemote/MRProtocolClientConnectionDelegate-Protocol.h>
 
-@class CURunLoopThread, MRExternalClientConnection, MRExternalDeviceTransport, NSData, NSDate, NSDictionary, NSObject, NSString, _MRContentItemProtobuf, _MRDeviceInfoMessageProtobuf, _MRNowPlayingPlayerPathProtobuf, _MROriginProtobuf;
+@class CURunLoopThread, MRExternalClientConnection, MRExternalDeviceTransport, NSData, NSDate, NSDictionary, NSObject, NSRunLoop, NSString, _MRContentItemProtobuf, _MRDeviceInfoMessageProtobuf, _MRNowPlayingPlayerPathProtobuf, _MROriginProtobuf;
 @protocol OS_dispatch_queue, OS_os_transaction;
 
 @interface MRTransportExternalDevice : MRExternalDevice <MRProtocolClientConnectionDelegate>
@@ -29,6 +29,7 @@
     unsigned long long _reconnectionAttemptCount;
     BOOL _forceReconnectOnConnectionFailure;
     BOOL _disconnecting;
+    BOOL _isClientSyncActive;
     NSObject<OS_os_transaction> *_transaction;
     BOOL _isCallingClientCallback;
     MRExternalClientConnection *_clientConnection;
@@ -59,6 +60,7 @@
     CDUnknownBlockType _volumeControlCapabilitiesCallback;
     NSObject<OS_dispatch_queue> *_volumeControlCapabilitiesCallbackQueue;
     NSObject<OS_dispatch_queue> *_outputContextCallbackQueue;
+    NSRunLoop *_runLoop;
 }
 
 @property (strong, nonatomic) MRExternalClientConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
@@ -88,6 +90,7 @@
 @property (copy, nonatomic) CDUnknownBlockType pairingCallback; // @synthesize pairingCallback=_pairingCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *pairingCallbackQueue; // @synthesize pairingCallbackQueue=_pairingCallbackQueue;
 @property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
+@property (strong, nonatomic) NSRunLoop *runLoop; // @synthesize runLoop=_runLoop;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) MRExternalDeviceTransport *transport; // @synthesize transport=_transport;
 @property (copy, nonatomic) CDUnknownBlockType volumeCallback; // @synthesize volumeCallback=_volumeCallback;
@@ -105,6 +108,8 @@
 - (void)_callOutputDevicesUpdatedCallbackWithOutputDevices:(id)arg1;
 - (void)_callVolumeCallback:(float)arg1 outputDeviceUID:(id)arg2;
 - (void)_callVolumeControlCapabilitiesCallback:(unsigned int)arg1 outputDeviceUID:(id)arg2;
+- (void)_cleanUpStreamsWithReason:(long long)arg1;
+- (void)_cleanUpWithReason:(long long)arg1;
 - (void)_contentItemUpdatedNotification:(id)arg1;
 - (id)_createPlaybackQueue:(BOOL)arg1;
 - (void)_handleCryptoPairingMessage:(id)arg1;
@@ -140,16 +145,16 @@
 - (void)_handleVolumeControlCapabilitiesDidChangeMessage:(id)arg1;
 - (void)_handleVolumeDidChangeMessage:(id)arg1;
 - (void)_localDeviceInfoDidChangeNotification:(id)arg1;
-- (void)_onSerialQueue_connectWithOptions:(unsigned int)arg1;
+- (void)_onSerialQueue_prepareToConnectWithOptions:(unsigned int)arg1;
+- (void)_onSerialQueue_prepareToDisconnect:(id)arg1;
 - (void)_onSerialQueue_registerOriginCallbacks;
-- (void)_onWorkerQueue_cleanUpWithReason:(long long)arg1;
 - (void)_onWorkerQueue_connectWithOptions:(unsigned int)arg1 isRetry:(BOOL)arg2;
+- (void)_onWorkerQueue_disconnect:(id)arg1;
 - (id)_onWorkerQueue_initializeConnectionWithOptions:(unsigned int)arg1;
 - (id)_onWorkerQueue_loadDeviceInfo;
 - (id)_onWorkerQueue_openSecuritySession;
 - (id)_onWorkerQueue_setupCustomOrigin;
 - (void)_onWorkerQueue_syncClientState;
-- (void)_tearDownCustomOriginWithReason:(long long)arg1;
 - (void)_transportDeviceInfoDidChangeNotification:(id)arg1;
 - (void)_updateNowPlayingInfo;
 - (void)clientConnection:(id)arg1 didReceiveMessage:(id)arg2;
@@ -173,6 +178,7 @@
 - (void)ping:(double)arg1 callback:(CDUnknownBlockType)arg2 withQueue:(id)arg3;
 - (long long)port;
 - (void)removeFromParentGroup:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendButtonEvent:(struct _MRHIDButtonEvent)arg1;
 - (void)sendClientUpdatesConfigMessage;
 - (void)sendClientUpdatesConfigMessageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)sendCustomData:(id)arg1 withName:(id)arg2;
@@ -195,6 +201,7 @@
 - (void)setWantsVolumeNotifications:(BOOL)arg1;
 - (id)supportedMessages;
 - (void)unpair;
+- (void)veirfyConnectionStatusAndMaybeDisconnect:(id)arg1;
 - (BOOL)wantsNowPlayingArtworkNotifications;
 - (BOOL)wantsNowPlayingNotifications;
 - (BOOL)wantsOutputDeviceNotifications;

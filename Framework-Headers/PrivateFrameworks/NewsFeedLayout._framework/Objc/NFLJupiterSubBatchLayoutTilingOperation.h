@@ -10,7 +10,6 @@
 {
 }
 
-+ (void)drawDebugNodeViewInFrame:(struct CGRect)arg1 context:(struct CGContext *)arg2 layoutSeed:(CDStruct_bfc4548b)arg3;
 + (BOOL)mayTileInfosTileSubBatchLayout:(id)arg1 withLayoutSeed:(CDStruct_bfc4548b)arg2;
 + (unsigned long long)tileInfosUsedCount;
 - (id)rankedLayoutRequests;

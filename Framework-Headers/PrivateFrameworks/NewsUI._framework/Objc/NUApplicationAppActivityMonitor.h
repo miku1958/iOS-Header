@@ -15,14 +15,14 @@
 {
     NSNotificationCenter *_notificationCenter;
     NSHashTable *_observers;
-    NSMutableSet *_activeObserverBlocks;
+    NSMutableSet *_foregroundObserverBlocks;
     NSMutableSet *_backgroundObserverBlocks;
 }
 
-@property (readonly, nonatomic) NSMutableSet *activeObserverBlocks; // @synthesize activeObserverBlocks=_activeObserverBlocks;
 @property (readonly, nonatomic) NSMutableSet *backgroundObserverBlocks; // @synthesize backgroundObserverBlocks=_backgroundObserverBlocks;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSMutableSet *foregroundObserverBlocks; // @synthesize foregroundObserverBlocks=_foregroundObserverBlocks;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
@@ -38,6 +38,7 @@
 - (id)initWithNotificationCenter:(id)arg1;
 - (void)performOnApplicationDidBecomeActive:(CDUnknownBlockType)arg1;
 - (void)performOnApplicationDidEnterBackground:(CDUnknownBlockType)arg1;
+- (void)performOnApplicationWillEnterForeground:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 
 @end

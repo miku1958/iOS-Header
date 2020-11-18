@@ -17,11 +17,10 @@
 
 @property (nonatomic, readonly) NSString *description;
 @property (nonatomic, readonly) NSPredicate *predicate;
-@property (nonatomic, copy) NSString *sql;
 
 + (void)setSupportsSecureCoding:(BOOL)arg1;
 + (BOOL)supportsSecureCoding;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)and:(id)arg1;
 - (id)copyWithZone:(void *)arg1;
 - (void)encodeWithCoder:(id)arg1;

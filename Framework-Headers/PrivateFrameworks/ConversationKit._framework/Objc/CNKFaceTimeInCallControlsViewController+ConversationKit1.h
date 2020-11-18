@@ -6,11 +6,9 @@
 
 #import <ConversationKit/CNKFaceTimeInCallControlsViewController.h>
 
-#import <ConversationKit/UITableViewDataSource-Protocol.h>
+@interface CNKFaceTimeInCallControlsViewController (ConversationKit1)
 
-@interface CNKFaceTimeInCallControlsViewController (ConversationKit1) <UITableViewDataSource>
-- (long long)numberOfSectionsInTableView:(id)arg1;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+@property (nonatomic) BOOL videoButtonIsEnabled;
+
 @end
 

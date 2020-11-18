@@ -9,7 +9,6 @@
 @interface NSObject (HKDataMetadataSampleExtensions)
 - (void)fetchDetailedReportWithHealthStore:(id)arg1 reportDataBlock:(CDUnknownBlockType)arg2;
 - (BOOL)hasAssociatedReport;
-- (BOOL)hasBeatToBeatData;
 - (id)hk_defaultDistanceQuantityType;
 - (id)hk_localizedStringForAssociatedDistanceQuantity:(id)arg1 displayTypeController:(id)arg2 unitController:(id)arg3;
 @end

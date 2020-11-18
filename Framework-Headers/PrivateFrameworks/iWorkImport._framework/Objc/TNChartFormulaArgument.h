@@ -38,6 +38,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithRangeReference:(struct TSCERangeRef)arg1;
 - (id)initWithStaticValue:(const struct TSCEValue *)arg1;
 - (id)initWithTractReference:(id)arg1;
+- (BOOL)isVisible:(id)arg1;
+- (unsigned long long)numberOfValuesWithCalcEngine:(id)arg1 plotByRow:(BOOL)arg2;
 - (UUIDData_5fbc143e)tableUID:(id)arg1;
 
 @end

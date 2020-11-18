@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (id)initWithText:(id)arg1 autocapitalizationType:(long long)arg2 autocorrectionType:(long long)arg3;
 - (void)layoutMarginsDidChange;
+- (void)safeAreaInsetsDidChange;
 - (void)setSeparatorInset:(struct UIEdgeInsets)arg1;
 - (void)updateConstraints;
 

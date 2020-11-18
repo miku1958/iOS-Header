@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 + (id)noisePatternWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 factor:(double)arg3;
 - (struct CGImage *)CGImageForContentsScale:(double)arg1;
 - (struct CGImage *)CGImageForSize:(struct CGSize)arg1;
-- (struct CGImage *)CGImageForSize:(struct CGSize)arg1 inContext:(struct CGContext *)arg2 orLayer:(id)arg3;
+- (struct CGImage *)CGImageForSize:(struct CGSize)arg1 inContext:(struct CGContext *)arg2 orContentsScaleProvider:(id)arg3;
 - (id)JPEGRepresentationWithCompressionQuality:(double)arg1;
 - (id)PNGRepresentation;
 - (id)TIFFRepresentation;

@@ -6,27 +6,38 @@
 
 #import <objc/NSObject.h>
 
+#import <Silex/SXComponentControllerObserver-Protocol.h>
+#import <Silex/SXComponentExposureMonitor-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
 @class NSMutableSet, NSString, SXViewport;
+@protocol SXHost;
 
-@interface SXComponentExposureMonitor : NSObject <SXViewportChangeListener>
+@interface SXComponentExposureMonitor : NSObject <SXViewportChangeListener, SXComponentControllerObserver, SXComponentExposureMonitor>
 {
     SXViewport *_viewport;
+    id<SXHost> _host;
     NSMutableSet *_trackingComponents;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableSet *trackingComponents; // @synthesize trackingComponents=_trackingComponents;
 @property (readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
 
 - (void).cxx_destruct;
-- (id)initWithViewport:(id)arg1;
-- (void)onExposureOf:(id)arg1 exposureStateChangeBlock:(CDUnknownBlockType)arg2;
+- (void)beginExposure:(id)arg1;
+- (void)componentControllerDidPresent:(id)arg1;
+- (void)conditionsChanged;
+- (void)endExposure:(id)arg1;
+- (id)initWithViewport:(id)arg1 appStateMonitor:(id)arg2 componentController:(id)arg3 host:(id)arg4;
+- (void)onExposureOf:(id)arg1 then:(CDUnknownBlockType)arg2;
+- (void)onExposureOf:(id)arg1 then:(CDUnknownBlockType)arg2 when:(CDUnknownBlockType)arg3;
 - (void)performMonitoring;
+- (void)stopTrackingExposureOfComponentView:(id)arg1;
 - (void)trackExposureForTracking:(id)arg1;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 - (void)viewport:(id)arg1 documentSizeDidChangeFromSize:(struct CGSize)arg2;

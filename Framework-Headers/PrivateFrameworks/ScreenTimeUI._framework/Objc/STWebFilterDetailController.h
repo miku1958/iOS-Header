@@ -6,16 +6,16 @@
 
 #import <Preferences/PSListController.h>
 
-@class STContentPrivacyMediaRestrictionsDetailController;
+@class NSObject, STContentPrivacyMediaRestrictionsDetailController;
 @protocol STContentPrivacyViewModelCoordinator;
 
 @interface STWebFilterDetailController : PSListController
 {
-    id<STContentPrivacyViewModelCoordinator> _coordinator;
+    NSObject<STContentPrivacyViewModelCoordinator> *_coordinator;
     STContentPrivacyMediaRestrictionsDetailController *_parentMediaRestrictionsController;
 }
 
-@property (strong, nonatomic) id<STContentPrivacyViewModelCoordinator> coordinator; // @synthesize coordinator=_coordinator;
+@property (strong, nonatomic) NSObject<STContentPrivacyViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
 @property (weak) STContentPrivacyMediaRestrictionsDetailController *parentMediaRestrictionsController; // @synthesize parentMediaRestrictionsController=_parentMediaRestrictionsController;
 
 - (void).cxx_destruct;
@@ -24,10 +24,12 @@
 - (id)_listItemSpecifiersForSitesGroup:(id)arg1;
 - (void)addNamedSite:(id)arg1;
 - (void)addSite:(id)arg1;
+- (void)dealloc;
 - (id)getItemSpecifierValue:(id)arg1;
 - (id)groupSpecifierWithConfiguration:(id)arg1 key:(id)arg2 footerText:(id)arg3 radio:(BOOL)arg4;
 - (id)init;
 - (id)listItemSpecifierWithGroup:(id)arg1 name:(id)arg2 value:(id)arg3;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)saveItemValue:(id)arg1 specifier:(id)arg2;
 - (void)saveRemovingItem:(id)arg1 value:(id)arg2;
 - (id)specifiers;

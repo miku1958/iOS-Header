@@ -25,6 +25,7 @@
     NSString *_preferredApp;
     NSData *_certSerial;
     NSData *_certData;
+    NSString *_ppid;
     int _classType;
     NSDictionary *_audioPorts;
     unsigned int _capabilities;
@@ -82,6 +83,7 @@
 @property (nonatomic) BOOL notPresentInIAPAccessoriesArray; // @synthesize notPresentInIAPAccessoriesArray=_notPresentInIAPAccessoriesArray;
 @property (copy) CDUnknownBlockType pairingCompletionBlock; // @synthesize pairingCompletionBlock=_pairingCompletionBlock;
 @property BOOL pointOfInterestHandoffEnabled; // @synthesize pointOfInterestHandoffEnabled=_pointOfInterestHandoffEnabled;
+@property (copy, nonatomic) NSString *ppid; // @synthesize ppid=_ppid;
 @property (copy, nonatomic) NSString *preferredApp; // @synthesize preferredApp=_preferredApp;
 @property (strong, nonatomic) NSDictionary *protocols; // @synthesize protocols=_protocols;
 @property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;

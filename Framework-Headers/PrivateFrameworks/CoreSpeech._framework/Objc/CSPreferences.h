@@ -10,14 +10,14 @@
 {
 }
 
-+ (unsigned long long)_deviceCategoryForDeviceProductType:(id)arg1;
-+ (id)deviceCategoryStringRepresentationForCategoryType:(unsigned long long)arg1;
-+ (BOOL)isCurrentDeviceCompatibleWithVoiceProfileAt:(id)arg1;
 + (id)sharedPreferences;
 - (id)CSSATBasePath;
-- (id)_CSSATUpdatePath;
+- (id)_CSSATDownloadPath;
+- (id)_CSSATDownloadPathForNewerZone;
+- (id)_CSSATLegacyUploadPath;
 - (id)_CSSATUploadPath;
 - (id)_getEnrolledLanguageList;
+- (id)_getUserVoiceProfileUpdateDirectoryWithUpdatePath:(id)arg1;
 - (BOOL)_isDirectory:(id)arg1;
 - (BOOL)_markSATEnrollmentMigratedForLanguageCode:(id)arg1;
 - (BOOL)_markSATEnrollmentSuccessForLanguageCode:(id)arg1;
@@ -32,25 +32,36 @@
 - (BOOL)enableAudioInjection:(BOOL)arg1;
 - (BOOL)fileLoggingIsEnabled;
 - (id)fileLoggingLevel;
+- (long long)getJarvisTriggerMode;
 - (id)getUserVoiceProfileFileList;
 - (id)getUserVoiceProfileUpdateDirectory;
-- (id)getUserVoiceProfileUploadPath;
+- (id)getUserVoiceProfileUpdateDirectoryForNewerZone;
 - (id)getUserVoiceProfileUploadPathWithEnrolledLanguageList:(id *)arg1;
 - (id)interstitialAbsoluteDirForLevel:(long long)arg1;
 - (id)interstitialRelativeDirForLevel:(long long)arg1;
+- (BOOL)jarvisAudioLoggingEnabled;
+- (void)markSATEnrollmentSuccessForLanguageCode:(id)arg1;
 - (unsigned long long)maxNumLoggingFiles;
 - (BOOL)myriadFileLoggingEnabled;
+- (void)notifyUserVoiceProfileDownloadReadyForUser:(id)arg1 getData:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)notifyUserVoiceProfileUpdateReady;
 - (void)notifyUserVoiceProfileUploadComplete;
+- (void)notifyUserVoiceProfileUploadComplete:(id)arg1;
+- (float)overwritingRemoteVADScore;
 - (double)remoteVoiceTriggerDelayTime;
 - (double)remoteVoiceTriggerEndpointTimeoutWithDefault:(double)arg1;
 - (BOOL)secondPassAudioLoggingEnabled;
 - (void)setAudioInjectionFilePath:(id)arg1;
 - (void)setFileLoggingIsEnabled:(BOOL)arg1;
 - (void)setFileLoggingLevel:(id)arg1;
+- (void)setHearstFirstPassModelVersion:(id)arg1;
+- (void)setHearstSecondPassModelVersion:(id)arg1;
+- (void)setJarvisTriggerMode:(long long)arg1;
+- (BOOL)shouldOverwriteRemoteVADScore;
 - (BOOL)smartSiriVolumeSoftVolumeEnabled;
 - (BOOL)speakerIdEnabled;
 - (BOOL)twoShotNotificationEnabled;
+- (void)uploadUserVoiceProfile:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)useSiriActivationSPIForHomePod;
 - (id)voiceTriggerAudioLogDirectory;
 - (BOOL)voiceTriggerEnabled;

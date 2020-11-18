@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseGetLocalSource:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetSources:(CDUnknownBlockType)arg1;
 - (void)CADSourceGetConstraints:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADSourceGetManagedConfigurationAccountAccess:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADSourceRefresh:(id)arg1 isUserRequested:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 
 @end

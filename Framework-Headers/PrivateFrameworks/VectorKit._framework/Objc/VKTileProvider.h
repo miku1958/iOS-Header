@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
     BOOL _hasFailedTile;
     BOOL _finishedLoading;
     BOOL _finishedLoadingOptionalLayers;
+    BOOL _canceled;
     struct VKCameraState _lastCameraState;
     struct CGSize _lastCanvasSize;
     BOOL _tilesChanged;
@@ -71,6 +72,7 @@ __attribute__((visibility("hidden")))
     double _lastIntegrityCheckLog;
 }
 
+@property (readonly, nonatomic, getter=isCanceled) BOOL canceled; // @synthesize canceled=_canceled;
 @property (nonatomic) id<VKTileProviderClient> client; // @synthesize client=_client;
 @property (nonatomic) double contentScale; // @synthesize contentScale=_contentScale;
 @property (readonly, copy) NSString *debugDescription;
@@ -111,7 +113,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canRenderTile:(id)arg1;
 - (void)cancelLoadForMapTile:(id)arg1;
 - (void)cancelLoadingTiles;
-- (void)changeTileForKey:(const struct VKTileKey *)arg1 toState:(unsigned long long)arg2 withMetadata:(id)arg3 withTile:(id)arg4 forLayer:(unsigned char)arg5;
+- (void)changeTileForKey:(const struct VKTileKey *)arg1 toState:(unsigned long long)arg2 withError:(id)arg3 withTile:(id)arg4 forLayer:(unsigned char)arg5;
 - (BOOL)checkMapTileIntegrity:(id)arg1 errors:(id)arg2;
 - (void)clearScene;
 - (void)configureTileSelection;
@@ -125,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (void)dirtyTile:(const struct VKTileKey *)arg1 source:(id)arg2;
 - (void)dirtyTilesFromTileSource:(id)arg1;
 - (void)dirtyTilesFromTileSource:(id)arg1 withState:(unsigned long long)arg2;
+- (id)errorsForRequiredLayers;
 - (BOOL)evaluateNeighborTileForRendering:(id)arg1;
 - (BOOL)evaluateSelectedTileForRendering:(id)arg1;
 - (void)flushCaches:(BOOL)arg1;

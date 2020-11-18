@@ -107,6 +107,7 @@
 - (void)dealloc;
 - (void)didEndTransitionFromFullScreen:(BOOL)arg1 toFullScreen:(BOOL)arg2;
 - (void)didFinishFullscreenActiveIndex:(unsigned long long)arg1;
+- (void)dismiss;
 - (id)dragManager:(id)arg1 dragableAtLocation:(struct CGPoint)arg2;
 - (struct CGSize)fitSizeForRect:(struct CGRect)arg1;
 - (void)fullScreenImageViewDidStartZooming:(id)arg1;

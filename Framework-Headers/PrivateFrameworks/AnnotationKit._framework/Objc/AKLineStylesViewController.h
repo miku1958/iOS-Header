@@ -29,6 +29,7 @@
 + (id)generateLineImageForTag:(long long)arg1 selected:(BOOL)arg2;
 - (void).cxx_destruct;
 - (long long)currentLineWidthTag;
+- (id)indexPathForLineWidthTag:(long long)arg1;
 - (id)initWithController:(id)arg1;
 - (void)selectRowForTag:(long long)arg1;
 - (void)selectedLineWidthChanged:(long long)arg1;

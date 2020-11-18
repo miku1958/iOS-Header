@@ -18,6 +18,7 @@
 
 + (id)nfl_accessoryColorForTextColor:(id)arg1 backgroundColor:(id)arg2;
 + (long long)nfl_binForColor:(id)arg1;
++ (long long)nfl_binUsingBrightnessForColor:(id)arg1;
 + (id)nfl_blue;
 + (id)nfl_colorBetweenGradientColors:(id)arg1 andColor:(id)arg2 atPosition:(double)arg3;
 + (id)nfl_colorByInterpolatingFromColor:(id)arg1 toColor:(id)arg2 percent:(double)arg3;

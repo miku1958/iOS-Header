@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 
 - (short)acceptNode:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

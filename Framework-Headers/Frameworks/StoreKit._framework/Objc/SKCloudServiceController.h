@@ -13,7 +13,10 @@
     BOOL _hasValidCloudServiceCapability;
     unsigned long long _cloudServiceCapability;
     NSObject<OS_dispatch_queue> *_accessQueue;
+    BOOL _allowsPromptingForPrivacyAcknowledgement;
 }
+
+@property (nonatomic, setter=_setAllowsPromptingForPrivacyAcknowledgement:) BOOL _allowsPromptingForPrivacyAcknowledgement; // @synthesize _allowsPromptingForPrivacyAcknowledgement;
 
 + (long long)authorizationStatus;
 + (void)requestAuthorization:(CDUnknownBlockType)arg1;

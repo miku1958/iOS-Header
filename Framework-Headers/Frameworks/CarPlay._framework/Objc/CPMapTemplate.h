@@ -12,7 +12,7 @@
 #import <CarPlay/CPMapClientTemplateDelegate-Protocol.h>
 #import <CarPlay/CPNavigationAlertUpdating-Protocol.h>
 
-@class CPNavigationAlert, NSArray, NSMutableArray, NSMutableDictionary, NSString, UIColor;
+@class CPBarButton, CPNavigationAlert, NSArray, NSMutableArray, NSMutableDictionary, NSString, UIColor;
 @protocol CPBannerProviding, CPMapTemplateDelegate, CPMapTemplateProviding;
 
 @interface CPMapTemplate : CPTemplate <CPMapButtonDelegate, CPMapClientTemplateDelegate, CPBannerDelegate, CPNavigationAlertUpdating, CPBarButtonProviding>
@@ -30,6 +30,7 @@
 }
 
 @property (nonatomic) BOOL automaticallyHidesNavigationBar; // @synthesize automaticallyHidesNavigationBar=_automaticallyHidesNavigationBar;
+@property (strong, nonatomic) CPBarButton *backButton;
 @property (strong, nonatomic) id<CPBannerProviding> bannerProvider; // @synthesize bannerProvider=_bannerProvider;
 @property (readonly, nonatomic) CPNavigationAlert *currentNavigationAlert; // @synthesize currentNavigationAlert=_currentNavigationAlert;
 @property (readonly, copy) NSString *debugDescription;

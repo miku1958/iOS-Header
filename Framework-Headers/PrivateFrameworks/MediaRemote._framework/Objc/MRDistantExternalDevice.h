@@ -78,6 +78,7 @@
 - (void)outputDeviceVolumeControlCapabilities:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)ping:(double)arg1 callback:(CDUnknownBlockType)arg2 withQueue:(id)arg3;
 - (long long)port;
+- (void)sendButtonEvent:(struct _MRHIDButtonEvent)arg1;
 - (void)sendCustomData:(id)arg1 withName:(id)arg2;
 - (void)setConnectionStateCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setCustomDataCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;

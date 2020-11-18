@@ -131,6 +131,7 @@
 - (BOOL)availableForAutomaticPresentationUsingBeaconContext;
 - (BOOL)availableForAutomaticPresentationUsingVASContext;
 - (id)backgroundImage;
+- (id)balanceFields;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)currencyAmountForSemanticKey:(id)arg1;
 - (id)dateForSemanticKey:(id)arg1;

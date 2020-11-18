@@ -6,7 +6,12 @@
 
 #import <QuartzCore/CALayer.h>
 
-@interface CALayer (TSDAdditions)
+#import <iWorkImport/TSDContentsScaleProviding-Protocol.h>
+
+@interface CALayer (TSDAdditions) <TSDContentsScaleProviding>
+
+@property (readonly, nonatomic) double contentsScale;
+
 - (void)addDistortAnimationWithVector:(struct CGPoint)arg1;
 - (void)addDragRotationAnimationWithDelta:(struct CGPoint)arg1;
 - (void)addFlipTransitionAnimationToLayer:(id)arg1;

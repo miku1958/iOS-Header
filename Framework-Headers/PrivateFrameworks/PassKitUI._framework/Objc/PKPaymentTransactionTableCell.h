@@ -6,55 +6,23 @@
 
 #import <PassKitUI/PKTableViewCell.h>
 
-@class CNAvatarView, NSAttributedString, NSString, UIColor, UIFont, UILabel;
+@class NSString, PKPaymentTransactionView, UIColor;
 
 @interface PKPaymentTransactionTableCell : PKTableViewCell
 {
-    UILabel *_primaryLabel;
-    UILabel *_secondaryLabel;
-    UILabel *_tertiaryLabel;
-    UILabel *_transactionValueLabel;
-    BOOL _isTemplateLayout;
-    BOOL _showsAvatarView;
-    UIColor *_primaryColor;
-    UIColor *_secondaryColor;
-    UIColor *_tertiaryColor;
-    UIFont *_primaryFont;
-    UIFont *_secondaryFont;
-    NSString *_primaryString;
-    NSString *_secondaryString;
-    NSString *_tertiaryString;
     NSString *_transactionIdentifier;
-    CNAvatarView *_avatarView;
+    PKPaymentTransactionView *_transactionView;
 }
 
-@property (readonly, nonatomic) CNAvatarView *avatarView; // @synthesize avatarView=_avatarView;
-@property (strong, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primaryColor;
-@property (strong, nonatomic) UIFont *primaryFont; // @synthesize primaryFont=_primaryFont;
-@property (strong, nonatomic) NSString *primaryString; // @synthesize primaryString=_primaryString;
-@property (strong, nonatomic) UIColor *secondaryColor; // @synthesize secondaryColor=_secondaryColor;
-@property (strong, nonatomic) UIFont *secondaryFont; // @synthesize secondaryFont=_secondaryFont;
-@property (strong, nonatomic) NSString *secondaryString; // @synthesize secondaryString=_secondaryString;
-@property (nonatomic) BOOL showsAvatarView; // @synthesize showsAvatarView=_showsAvatarView;
-@property (strong, nonatomic) UIColor *tertiaryColor; // @synthesize tertiaryColor=_tertiaryColor;
-@property (strong, nonatomic) NSString *tertiaryString; // @synthesize tertiaryString=_tertiaryString;
-@property (strong, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
-@property (strong, nonatomic) NSAttributedString *transactionValueAttributedText; // @dynamic transactionValueAttributedText;
+@property (strong, nonatomic) UIColor *primaryColor;
+@property (strong, nonatomic) UIColor *secondaryColor;
+@property (copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
+@property (readonly, nonatomic) PKPaymentTransactionView *transactionView; // @synthesize transactionView=_transactionView;
 
-+ (id)defaultPrimaryLabelFont;
-+ (id)defaultSecondaryLabelFont;
-+ (double)rowHeightWithTransactionValueFont:(id)arg1 secondaryLabelFont:(id)arg2;
-+ (id)tertiaryLabelFont;
 - (void).cxx_destruct;
-- (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
-- (void)_updateAvatarView;
-- (id)defaultPrimaryColor;
-- (id)defaultSecondaryColor;
-- (id)defaultTertiaryColor;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
-- (BOOL)shouldShowTransactionPreviewForTouchAtPoint:(struct CGPoint)arg1 inView:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

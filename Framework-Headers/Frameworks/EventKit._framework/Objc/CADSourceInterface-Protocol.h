@@ -11,6 +11,7 @@
 - (void)CADDatabaseGetLocalSource:(void (^)(int, CADObjectID *))arg1;
 - (void)CADDatabaseGetSources:(void (^)(int, NSArray *))arg1;
 - (void)CADSourceGetConstraints:(CADObjectID *)arg1 reply:(void (^)(int, int, int, unsigned long long))arg2;
+- (void)CADSourceGetManagedConfigurationAccountAccess:(CADObjectID *)arg1 reply:(void (^)(int, int))arg2;
 - (void)CADSourceRefresh:(CADObjectID *)arg1 isUserRequested:(BOOL)arg2 reply:(void (^)(int, BOOL))arg3;
 @end
 

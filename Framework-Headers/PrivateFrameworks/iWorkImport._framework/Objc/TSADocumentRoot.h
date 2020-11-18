@@ -65,10 +65,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isBrowsingVersions;
 @property (readonly, nonatomic) BOOL isClosed; // @synthesize isClosed=_isClosed;
 @property (readonly, nonatomic) BOOL isLoaded; // @synthesize isLoaded=_didLoadControllers;
+@property (readonly, nonatomic) BOOL isMultiPageForQuickLook;
 @property (readonly, nonatomic) NSDictionary *missingFontNamesAndWarningMessages;
 @property (readonly, nonatomic) NSSet *missingFontWarningMessages;
 @property (readonly, nonatomic) NSString *name;
 @property (nonatomic) BOOL needsMediaCompatibilityUpgrade;
+@property (readonly, nonatomic) NSDictionary *packageDataForWrite;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *templateIdentifier;
 @property (readonly, nonatomic) TSKViewState *viewState;
@@ -99,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (id)additionalDocumentPropertiesForWrite;
 - (id)additionalResourceRequestsForObjectContext:(id)arg1;
 - (id)allPencilAnnotations;
+- (void)applyViewState:(id)arg1;
 - (void)blockForRecalcWithTimeout:(double)arg1;
 - (BOOL)canBeAnnotatedWithPencil;
 - (id)captureViewState;
@@ -113,6 +116,7 @@ __attribute__((visibility("hidden")))
 - (long long)compareLocationSortingInfo:(id)arg1 toSortingInfo:(id)arg2;
 - (id)consolidatedDocumentWarningsFromWarnings:(id)arg1;
 - (id)createViewStateRootForContinuation:(BOOL)arg1;
+- (double)currentDesiredPencilAnnotationDrawingScale;
 - (id)customFormatList;
 - (id)dataFromDocumentCachePath:(id)arg1;
 - (void)dealloc;
@@ -139,7 +143,6 @@ __attribute__((visibility("hidden")))
 - (void)initializeForImport;
 - (void)insertTextPresetDisplayItemsPreservingGrouping:(id)arg1 insertAtBeginningOfGroup:(BOOL)arg2;
 - (void)invalidateViewState;
-- (BOOL)isMultiPageForQuickLook;
 - (void)loadFromArchive:(const struct DocumentArchive *)arg1 unarchiver:(id)arg2;
 - (id)makeIsolatedStyleMapper;
 - (id)makeStyleMapper;
@@ -162,7 +165,6 @@ __attribute__((visibility("hidden")))
 - (void)p_upgradeCustomFormatList;
 - (void)p_upgradeDocumentCreationLocale;
 - (void)p_upgradeTablesIfNeeded:(unsigned long long)arg1;
-- (id)packageDataForWrite;
 - (void)pauseRecalculation;
 - (void)pauseRecalculationSometimeSoon;
 - (id)pencilAnnotationEnumeratorFromRootObect:(id)arg1;

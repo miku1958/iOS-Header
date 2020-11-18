@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL _retryPCSFailures;
     BOOL _canSetPreviousProtectionEtag;
     BOOL _trustProtectionData;
+    BOOL _shouldModifyRecordsInDatabase;
     BOOL _retriedRecords;
     BOOL _shouldOnlySaveAssetContent;
     BOOL _haveOutstandingHandlers;
@@ -72,6 +73,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType saveCompletionBlock; // @synthesize saveCompletionBlock=_saveCompletionBlock;
 @property (nonatomic) long long savePolicy; // @synthesize savePolicy=_savePolicy;
 @property (copy, nonatomic) CDUnknownBlockType saveProgressBlock; // @synthesize saveProgressBlock=_saveProgressBlock;
+@property (nonatomic) BOOL shouldModifyRecordsInDatabase; // @synthesize shouldModifyRecordsInDatabase=_shouldModifyRecordsInDatabase;
 @property (nonatomic) BOOL shouldOnlySaveAssetContent; // @synthesize shouldOnlySaveAssetContent=_shouldOnlySaveAssetContent;
 @property (nonatomic) BOOL shouldReportRecordsInFlight; // @synthesize shouldReportRecordsInFlight=_shouldReportRecordsInFlight;
 @property (readonly, nonatomic) CKDProtocolTranslator *translator;

@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (id)imageViewForResource:(id)arg1;
 - (id)initWithResourceDataSourceProvider:(id)arg1 reachabilityProvider:(id)arg2;
+- (id)repeatableImageViewForResource:(id)arg1;
 
 @end
 

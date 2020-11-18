@@ -7,40 +7,33 @@
 #import <iWorkImport/TSKCOUpdateOperation.h>
 
 #import <iWorkImport/TSKCORangeOperation-Protocol.h>
-#import <iWorkImport/TSKCOTransforming-Protocol.h>
-#import <iWorkImport/TSKCOUpdateRangeOperationSubset-Protocol.h>
-
-@class TSKCORangeAddress;
 
 __attribute__((visibility("hidden")))
-@interface TSKCOUpdateRangeOperation : TSKCOUpdateOperation <TSKCORangeOperation, TSKCOUpdateRangeOperationSubset, TSKCOTransforming>
+@interface TSKCOUpdateRangeOperation : TSKCOUpdateOperation <TSKCORangeOperation>
 {
+    vector_b5e32e34 _rangeVector;
     int _transformBehavior;
-    TSKCORangeAddress *_address;
 }
 
-@property (readonly, nonatomic) TSKCORangeAddress *address; // @synthesize address=_address;
+@property (readonly, nonatomic) const vector_b5e32e34 *rangeVector;
 @property (readonly, nonatomic) int transformBehavior; // @synthesize transformBehavior=_transformBehavior;
 
++ (int)p_determineTransformBehaviorByPropertyId:(unsigned short)arg1;
 + (id)stringForTransformBehavior:(int)arg1;
+- (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithRangeAddress:(id)arg1 propertyName:(id)arg2;
-- (id)initWithRangeAddress:(id)arg1 propertyName:(id)arg2 noop:(BOOL)arg3;
-- (id)initWithRangeAddress:(id)arg1 selectionPropertyName:(id)arg2;
+- (unsigned long long)hash;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 propertyId:(unsigned short)arg3;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 propertyId:(unsigned short)arg3 noop:(BOOL)arg4;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 propertyId:(unsigned short)arg3 transformBehavior:(int)arg4 noop:(BOOL)arg5;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 propertyType:(CDStruct_1464e8ba)arg3 transformBehavior:(int)arg4 noop:(BOOL)arg5;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 selectionPropertyId:(unsigned short)arg3;
 - (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
-- (id)operationWithNewAddress:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (shared_ptr_f167ad79)newTransformableOperation;
 - (id)operationWithNewNoop:(BOOL)arg1;
-- (id)p_initWithRangeAddress:(id)arg1 propertyName:(id)arg2 transformBehavior:(int)arg3 noop:(BOOL)arg4;
 - (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
 - (id)toString;
-- (id)toUpdateRangeOperation;
-- (id)transformDynamicByAnyOperation:(id)arg1 byHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformIdPlacementBaseOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformReplaceRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformStaticByAnyOperation:(id)arg1 byHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformUpdateIdOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformUpdateRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)ut_transformByTransformer:(id)arg1;
 
 @end
 

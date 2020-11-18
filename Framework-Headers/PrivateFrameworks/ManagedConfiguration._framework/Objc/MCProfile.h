@@ -30,6 +30,7 @@
     long long _version;
     NSDate *_installDate;
     NSDate *_expiryDate;
+    unsigned long long _targetDeviceType;
     NSString *_removalPasscode;
     NSString *_productVersion;
     NSString *_productBuildVersion;
@@ -65,6 +66,7 @@
 @property (readonly, strong, nonatomic) NSArray *payloads;
 @property (readonly, strong, nonatomic) NSString *productBuildVersion; // @synthesize productBuildVersion=_productBuildVersion;
 @property (readonly, strong, nonatomic) NSString *productVersion; // @synthesize productVersion=_productVersion;
+@property (readonly, strong, nonatomic) NSString *profileDataFileName;
 @property (readonly, strong, nonatomic) NSString *profileDescription; // @synthesize profileDescription=_profileDescription;
 @property (readonly, strong, nonatomic) NSString *profileIDHashFileName;
 @property (readonly, nonatomic) NSDate *removalDate; // @synthesize removalDate=_removalDate;
@@ -74,6 +76,7 @@
 @property (strong, nonatomic) NSArray *signerCertificates;
 @property (readonly, nonatomic) NSString *signerSummary;
 @property (readonly, strong, nonatomic) NSString *stubFileName;
+@property (readonly, nonatomic) unsigned long long targetDeviceType; // @synthesize targetDeviceType=_targetDeviceType;
 @property (readonly, nonatomic) int trustLevel;
 @property (readonly, nonatomic) long long version; // @synthesize version=_version;
 
@@ -88,16 +91,17 @@
 + (int)evaluateTrustOfCertificateChain:(id)arg1 signatureVersion:(id)arg2 outIsAllowedToWriteDefaults:(BOOL *)arg3;
 + (id)missingFieldErrorWithField:(id)arg1;
 + (id)newProfileSignatureVersion;
-+ (id)profileDictionaryFromProfileData:(id)arg1 outError:(id *)arg2;
++ (id)profileDictionaryFromProfileData:(id)arg1 outSignerCerts:(id *)arg2 outError:(id *)arg3;
 + (id)profileWithData:(id)arg1 fileName:(id)arg2 allowEmptyPayload:(BOOL)arg3 outError:(id *)arg4;
 + (id)profileWithData:(id)arg1 fileName:(id)arg2 outError:(id *)arg3;
 + (id)profileWithData:(id)arg1 outError:(id *)arg2;
-+ (id)profileWithDictionary:(id)arg1 fileName:(id)arg2 allowEmptyPayload:(BOOL)arg3 outError:(id *)arg4;
++ (id)profileWithDictionary:(id)arg1 signerCerts:(id)arg2 fileName:(id)arg3 allowEmptyPayload:(BOOL)arg4 outError:(id *)arg5;
 + (id)removeOptionalNonZeroLengthStringInDictionary:(id)arg1 key:(id)arg2 errorDomain:(id)arg3 invalidDataCode:(long long)arg4 invalidDataErrorString:(id)arg5 outError:(id *)arg6;
 + (id)removeOptionalObjectInDictionary:(id)arg1 key:(id)arg2 type:(Class)arg3 errorDomain:(id)arg4 invalidDataCode:(long long)arg5 invalidDataErrorString:(id)arg6 outError:(id *)arg7;
 + (id)removeRequiredNonZeroLengthStringInDictionary:(id)arg1 key:(id)arg2 errorDomain:(id)arg3 missingDataCode:(long long)arg4 missingDataErrorString:(id)arg5 invalidDataCode:(long long)arg6 invalidDataErrorString:(id)arg7 outError:(id *)arg8;
 + (id)removeRequiredObjectInDictionary:(id)arg1 key:(id)arg2 type:(Class)arg3 errorDomain:(id)arg4 missingDataCode:(long long)arg5 missingDataErrorString:(id)arg6 invalidDataCode:(long long)arg7 invalidDataErrorString:(id)arg8 outError:(id *)arg9;
 + (id)signerSummaryOfCertificate:(struct __SecCertificate *)arg1;
++ (id)stringForDeviceType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)appAccessibilityParameters;
 - (BOOL)containsAnyPayloadOfClasses:(id)arg1;
@@ -111,8 +115,9 @@
 - (BOOL)doesSigningAllowReplacementWithProfile:(id)arg1 useOriginalCheck:(BOOL)arg2;
 - (void)evaluateSignerTrust;
 - (void)evaluateSignerTrustAsynchronouslyWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithDictionary:(id)arg1 allowEmptyPayload:(BOOL)arg2 outError:(id *)arg3;
+- (id)initWithDictionary:(id)arg1 signerCerts:(id)arg2 allowEmptyPayload:(BOOL)arg3 outError:(id *)arg4;
 - (id)installationWarningsIncludeUnsignedProfileWarning:(BOOL)arg1;
+- (BOOL)isProfileUIInstallationEffectivelyAllowed;
 - (id)malformedProfileErrorWithError:(id)arg1;
 - (BOOL)mayInstallWithOptions:(id)arg1 hasInteractionClient:(BOOL)arg2 outError:(id *)arg3;
 - (id)payloadWithUUID:(id)arg1;

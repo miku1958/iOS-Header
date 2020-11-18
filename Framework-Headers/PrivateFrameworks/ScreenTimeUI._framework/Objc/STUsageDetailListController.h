@@ -37,6 +37,7 @@
 - (void)setCoordinator:(id)arg1;
 - (void)showDeviceSelectionAlertController:(id)arg1;
 - (void)showNoUsageDataViewIfNeeded;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

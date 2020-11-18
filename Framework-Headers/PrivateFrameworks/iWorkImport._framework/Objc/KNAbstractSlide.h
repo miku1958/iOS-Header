@@ -25,13 +25,13 @@ __attribute__((visibility("hidden")))
     KNSlideStyle *_style;
     KNSlideBackgroundInfo *_background;
     NSOrderedSet *_childInfos;
-    BOOL _inDocument;
     NSSet *_builds;
     NSArray *_buildChunks;
     BOOL _needsSlideNodeEventCountUpdate;
     TSUPointerKeyDictionary *_drawableToGhostInfosMap;
     TSUMutablePointerSet *_drawablesWithInvalidatedGhosts;
     BOOL _shouldConsiderAllChunksActive;
+    BOOL _inDocument;
     KNTransition *_transition;
     KNTitlePlaceholderInfo *_titlePlaceholder;
     KNBodyPlaceholderInfo *_bodyPlaceholder;
@@ -64,7 +64,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly, nonatomic) BOOL hasFreeformTextPlaceholders;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL inDocument; // @synthesize inDocument=_inDocument;
+@property (nonatomic) BOOL inDocument; // @synthesize inDocument=_inDocument;
 @property (readonly, nonatomic) NSArray *infosToDisplay;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
 @property (readonly, nonatomic) BOOL isMasterSlide;
@@ -117,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canSetChunksToAutomaticWith:(id)arg1;
 - (id)childEnumerator;
 - (id)chunksForDrawable:(id)arg1 animationType:(long long)arg2;
+- (id)chunksWhichPlayWithChunk:(id)arg1;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (BOOL)containsProperty:(int)arg1;
 - (id)contentBuildForDrawable:(id)arg1;

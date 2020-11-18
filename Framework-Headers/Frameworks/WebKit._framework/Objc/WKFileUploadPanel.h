@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)_cameraButtonLabel;
 - (void)_cancel;
 - (void)_chooseFiles:(id)arg1 displayString:(id)arg2 iconImage:(id)arg3;
+- (void)_configureImagePicker:(id)arg1;
 - (void)_dismissDisplayAnimated:(BOOL)arg1;
 - (void)_dispatchDidDismiss;
 - (id)_documentPickerMenuMediaTypes;

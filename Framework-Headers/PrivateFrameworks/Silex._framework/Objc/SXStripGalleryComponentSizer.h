@@ -10,7 +10,7 @@
 {
 }
 
-- (double)calculateHeightForWidth:(double)arg1 inColumnLayout:(id)arg2;
+- (double)calculateHeightForWidth:(double)arg1 layoutContext:(id)arg2;
 - (double)contentWidthForColumnLayout:(id)arg1;
 - (id)imageResources;
 - (struct _NSRange)overrideColumnLayoutForColumnRange:(struct _NSRange)arg1 inColumnLayout:(id)arg2;

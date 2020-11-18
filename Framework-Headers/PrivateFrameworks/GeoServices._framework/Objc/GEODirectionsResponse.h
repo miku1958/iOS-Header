@@ -21,6 +21,7 @@
     GEOClientMetrics *_clientMetrics;
     NSString *_dataVersion;
     GEOPDDatasetABStatus *_datasetAbStatus;
+    NSString *_debugData;
     GEOTransitDecoderData *_decoderData;
     NSData *_directionsResponseID;
     GEORouteDisplayHints *_displayHints;
@@ -63,6 +64,7 @@
 @property (strong, nonatomic) GEOClientMetrics *clientMetrics;
 @property (strong, nonatomic) NSString *dataVersion; // @synthesize dataVersion=_dataVersion;
 @property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
+@property (strong, nonatomic) NSString *debugData; // @synthesize debugData=_debugData;
 @property (nonatomic) unsigned long long debugLatencyMs;
 @property (strong, nonatomic) GEOTransitDecoderData *decoderData; // @synthesize decoderData=_decoderData;
 @property (strong, nonatomic) NSData *directionsResponseID; // @synthesize directionsResponseID=_directionsResponseID;
@@ -72,6 +74,7 @@
 @property (readonly, nonatomic) BOOL hasClientMetrics;
 @property (readonly, nonatomic) BOOL hasDataVersion;
 @property (readonly, nonatomic) BOOL hasDatasetAbStatus;
+@property (readonly, nonatomic) BOOL hasDebugData;
 @property (nonatomic) BOOL hasDebugLatencyMs;
 @property (readonly, nonatomic) BOOL hasDecoderData;
 @property (readonly, nonatomic) BOOL hasDirectionsResponseID;

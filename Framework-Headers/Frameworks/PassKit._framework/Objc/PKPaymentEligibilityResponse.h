@@ -31,6 +31,7 @@
 @property (readonly, copy, nonatomic) NSString *termsID; // @synthesize termsID=_termsID;
 @property (readonly, copy, nonatomic) NSURL *termsURL; // @synthesize termsURL=_termsURL;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 

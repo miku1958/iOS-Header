@@ -13,6 +13,7 @@
     BOOL _deviceShouldUseFrozenBackdropSnapshot;
     BOOL _deviceShouldFreezeAura;
     BOOL _deviceShouldDeferFlamesView;
+    BOOL _deviceSupportsProximitySensor;
     BOOL _deviceShouldSkipGuidePreloading;
 }
 
@@ -20,6 +21,7 @@
 @property (readonly, nonatomic) BOOL deviceShouldFreezeAura; // @synthesize deviceShouldFreezeAura=_deviceShouldFreezeAura;
 @property (readonly, nonatomic) BOOL deviceShouldSkipGuidePreloading; // @synthesize deviceShouldSkipGuidePreloading=_deviceShouldSkipGuidePreloading;
 @property (readonly, nonatomic) BOOL deviceShouldUseFrozenBackdropSnapshot; // @synthesize deviceShouldUseFrozenBackdropSnapshot=_deviceShouldUseFrozenBackdropSnapshot;
+@property (readonly, nonatomic) BOOL deviceSupportsProximitySensor; // @synthesize deviceSupportsProximitySensor=_deviceSupportsProximitySensor;
 @property (readonly, nonatomic, getter=isDeviceZoomed) BOOL deviceZoomed; // @synthesize deviceZoomed=_deviceZoomed;
 @property (readonly, nonatomic, getter=isLargeFormatPhone) BOOL largeFormatPhone; // @synthesize largeFormatPhone=_largeFormatPhone;
 

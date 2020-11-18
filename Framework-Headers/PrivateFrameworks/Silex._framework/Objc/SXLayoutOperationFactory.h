@@ -9,12 +9,15 @@
 #import <Silex/SXLayoutOperationFactory-Protocol.h>
 
 @class NSString;
-@protocol SXComponentSizerEngine, SXLayoutBlueprintFactory;
+@protocol SXComponentSizerEngine, SXLayoutBlueprintFactory, SXLayoutContextFactory, SXLayouterFactory, SXUnitConverterFactory;
 
 @interface SXLayoutOperationFactory : NSObject <SXLayoutOperationFactory>
 {
     id<SXComponentSizerEngine> _componentSizerEngine;
     id<SXLayoutBlueprintFactory> _layoutBlueprintFactory;
+    id<SXLayouterFactory> _layouterFactory;
+    id<SXLayoutContextFactory> _layoutContextFactory;
+    id<SXUnitConverterFactory> _unitConverterFactory;
 }
 
 @property (readonly, nonatomic) id<SXComponentSizerEngine> componentSizerEngine; // @synthesize componentSizerEngine=_componentSizerEngine;
@@ -22,11 +25,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<SXLayoutBlueprintFactory> layoutBlueprintFactory; // @synthesize layoutBlueprintFactory=_layoutBlueprintFactory;
+@property (readonly, nonatomic) id<SXLayoutContextFactory> layoutContextFactory; // @synthesize layoutContextFactory=_layoutContextFactory;
+@property (readonly, nonatomic) id<SXLayouterFactory> layouterFactory; // @synthesize layouterFactory=_layouterFactory;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<SXUnitConverterFactory> unitConverterFactory; // @synthesize unitConverterFactory=_unitConverterFactory;
 
 - (void).cxx_destruct;
-- (id)initWithComponentSizerEngine:(id)arg1 layoutBlueprintFactory:(id)arg2;
-- (id)layoutOperationWithViewportSize:(struct CGSize)arg1 constrainedToWidth:(double)arg2 layoutDataProvider:(id)arg3;
+- (id)initWithComponentSizerEngine:(id)arg1 layoutBlueprintFactory:(id)arg2 layouterFactory:(id)arg3 layoutContextFactory:(id)arg4 unitConverterFactory:(id)arg5;
+- (id)layoutOperationWithTask:(id)arg1 DOMObjectProvider:(id)arg2;
 
 @end
 

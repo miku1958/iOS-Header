@@ -9,33 +9,37 @@
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
 
+@class TSDInfoGeometry;
+
 __attribute__((visibility("hidden")))
 @interface TSDLayoutGeometry : NSObject <NSCopying, NSMutableCopying>
 {
-    struct CGSize mSize;
-    struct CGAffineTransform mTransform;
+    struct CGSize _size;
+    struct CGAffineTransform _transform;
 }
 
-@property (readonly, nonatomic) struct CGSize size; // @synthesize size=mSize;
-@property (readonly, nonatomic) struct CGAffineTransform transform; // @synthesize transform=mTransform;
+@property (readonly, nonatomic) struct CGPoint center;
+@property (readonly, nonatomic) struct CGRect frame;
+@property (readonly, nonatomic) struct CGAffineTransform fullTransform;
+@property (readonly, nonatomic) TSDInfoGeometry *infoGeometry;
+@property (readonly, nonatomic) struct CGAffineTransform inverseTransform;
+@property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (readonly, nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
 
 + (id)geometryFromFullTransform:(struct CGAffineTransform)arg1;
-- (struct CGPoint)center;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (BOOL)differsInMoreThanTranslationFrom:(id)arg1;
-- (struct CGRect)frame;
-- (struct CGAffineTransform)fullTransform;
 - (id)geometryByOutsettingBy:(struct CGSize)arg1;
 - (id)geometryByTransformingBy:(struct CGAffineTransform)arg1;
 - (id)geometryByTranslatingBy:(struct CGPoint)arg1;
 - (unsigned long long)hash;
-- (id)infoGeometry;
+- (void)i_setSize:(struct CGSize)arg1;
+- (void)i_setTransform:(struct CGAffineTransform)arg1;
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithInfoGeometry:(id)arg1;
 - (id)initWithSize:(struct CGSize)arg1 transform:(struct CGAffineTransform)arg2;
-- (struct CGAffineTransform)inverseTransform;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (struct CGAffineTransform)transformByConcatenatingTransformTo:(struct CGAffineTransform)arg1;

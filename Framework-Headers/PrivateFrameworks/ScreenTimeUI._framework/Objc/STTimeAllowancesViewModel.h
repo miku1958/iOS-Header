@@ -10,12 +10,14 @@
 
 @interface STTimeAllowancesViewModel : NSObject
 {
+    BOOL _allAllowancesEnabled;
     STDeviceBedtime *_bedtime;
     NSDictionary *_allowancesByIdentifier;
     STAlwaysAllowList *_alwaysAllowList;
     NSDictionary *_pendingAskForTimeByIdentifier;
 }
 
+@property (nonatomic) BOOL allAllowancesEnabled; // @synthesize allAllowancesEnabled=_allAllowancesEnabled;
 @property (copy, nonatomic) NSDictionary *allowancesByIdentifier; // @synthesize allowancesByIdentifier=_allowancesByIdentifier;
 @property (copy, nonatomic) STAlwaysAllowList *alwaysAllowList; // @synthesize alwaysAllowList=_alwaysAllowList;
 @property (copy, nonatomic) STDeviceBedtime *bedtime; // @synthesize bedtime=_bedtime;

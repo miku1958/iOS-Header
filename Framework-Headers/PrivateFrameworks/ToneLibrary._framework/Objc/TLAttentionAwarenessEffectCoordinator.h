@@ -27,6 +27,7 @@
 - (id)audioMixForAsset:(id)arg1;
 - (void)dealloc;
 - (id)initWithEffectParameters:(CDStruct_4922f917)arg1;
+- (BOOL)isAttentionAwarenessAudioMix:(id)arg1;
 - (void)setEffectParameters:(CDStruct_4922f917)arg1 effectMixFadeDuration:(double)arg2;
 
 @end

@@ -30,6 +30,7 @@
 @property (nonatomic, setter=_setDefaultFixedPitchFontSize:) unsigned long long _defaultFixedPitchFontSize;
 @property (nonatomic, setter=_setDefaultFontSize:) unsigned long long _defaultFontSize;
 @property (nonatomic, setter=_setDeveloperExtrasEnabled:) BOOL _developerExtrasEnabled;
+@property (nonatomic, setter=_setDeviceOrientationEventEnabled:) BOOL _deviceOrientationEventEnabled;
 @property (nonatomic, setter=_setDiagnosticLoggingEnabled:) BOOL _diagnosticLoggingEnabled;
 @property (nonatomic, setter=_setDisplayListDrawingEnabled:) BOOL _displayListDrawingEnabled;
 @property (nonatomic, setter=_setDOMPasteAllowed:) BOOL _domPasteAllowed;
@@ -46,6 +47,7 @@
 @property (nonatomic, setter=_setLargeImageAsyncDecodingEnabled:) BOOL _largeImageAsyncDecodingEnabled;
 @property (nonatomic, setter=_setLoadsImagesAutomatically:) BOOL _loadsImagesAutomatically;
 @property (nonatomic, setter=_setLogsPageMessagesToSystemConsoleEnabled:) BOOL _logsPageMessagesToSystemConsoleEnabled;
+@property (nonatomic, setter=_setLowPowerVideoAudioBufferSizeEnabled:) BOOL _lowPowerVideoAudioBufferSizeEnabled;
 @property (nonatomic, setter=_setMediaCaptureRequiresSecureConnection:) BOOL _mediaCaptureRequiresSecureConnection;
 @property (nonatomic, setter=_setMediaDevicesEnabled:) BOOL _mediaDevicesEnabled;
 @property (nonatomic, setter=_setMockCaptureDevicesEnabled:) BOOL _mockCaptureDevicesEnabled;
@@ -55,9 +57,11 @@
 @property (nonatomic, setter=_setPeerConnectionEnabled:) BOOL _peerConnectionEnabled;
 @property (nonatomic, setter=_setPunchOutWhiteBackgroundsInDarkMode:) BOOL _punchOutWhiteBackgroundsInDarkMode;
 @property (nonatomic, setter=_setResourceUsageOverlayVisible:) BOOL _resourceUsageOverlayVisible;
+@property (nonatomic, getter=_isSafeBrowsingEnabled, setter=_setSafeBrowsingEnabled:) BOOL _safeBrowsingEnabled;
 @property (nonatomic, setter=_setScreenCaptureEnabled:) BOOL _screenCaptureEnabled;
 @property (nonatomic, setter=_setShouldAllowUserInstalledFonts:) BOOL _shouldAllowUserInstalledFonts;
 @property (nonatomic, setter=_setShouldEnableTextAutosizingBoost:) BOOL _shouldEnableTextAutosizingBoost;
+@property (nonatomic, setter=_setShouldIgnoreMetaViewport:) BOOL _shouldIgnoreMetaViewport;
 @property (nonatomic, setter=_setShouldSuppressKeyboardInputDuringProvisionalNavigation:) BOOL _shouldSuppressKeyboardInputDuringProvisionalNavigation;
 @property (nonatomic, setter=_setSimpleLineLayoutDebugBordersEnabled:) BOOL _simpleLineLayoutDebugBordersEnabled;
 @property (nonatomic, setter=_setSimpleLineLayoutEnabled:) BOOL _simpleLineLayoutEnabled;
@@ -68,8 +72,10 @@
 @property (nonatomic, setter=_setTelephoneNumberDetectionIsEnabled:) BOOL _telephoneNumberDetectionIsEnabled;
 @property (nonatomic, setter=_setTextAutosizingEnabled:) BOOL _textAutosizingEnabled;
 @property (nonatomic, setter=_setTiledScrollingIndicatorVisible:) BOOL _tiledScrollingIndicatorVisible;
+@property (nonatomic, setter=_setVideoQualityIncludesDisplayCompositingEnabled:) BOOL _videoQualityIncludesDisplayCompositingEnabled;
 @property (nonatomic, setter=_setVisibleDebugOverlayRegions:) unsigned long long _visibleDebugOverlayRegions;
 @property (nonatomic, setter=_setVisualViewportEnabled:) BOOL _visualViewportEnabled;
+@property (nonatomic, setter=_setWebAnimationsCSSIntegrationEnabled:) BOOL _webAnimationsCSSIntegrationEnabled;
 @property (nonatomic, setter=_setWebRTCLegacyAPIEnabled:) BOOL _webRTCLegacyAPIEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -80,9 +86,14 @@
 @property (readonly) Class superclass;
 
 + (id)_experimentalFeatures;
++ (id)_internalDebugFeatures;
 + (BOOL)supportsSecureCoding;
+- (BOOL)_isEnabledForExperimentalFeature:(id)arg1;
 - (BOOL)_isEnabledForFeature:(id)arg1;
+- (BOOL)_isEnabledForInternalDebugFeature:(id)arg1;
+- (void)_setEnabled:(BOOL)arg1 forExperimentalFeature:(id)arg2;
 - (void)_setEnabled:(BOOL)arg1 forFeature:(id)arg2;
+- (void)_setEnabled:(BOOL)arg1 forInternalDebugFeature:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

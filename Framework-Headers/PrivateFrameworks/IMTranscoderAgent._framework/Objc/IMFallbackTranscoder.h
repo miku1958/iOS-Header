@@ -6,12 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class IMFallbackTranscoder_AudioMessage;
+
 @interface IMFallbackTranscoder : NSObject
 {
+    IMFallbackTranscoder_AudioMessage *_audioTranscoder;
 }
 
+@property (strong, nonatomic) IMFallbackTranscoder_AudioMessage *audioTranscoder; // @synthesize audioTranscoder=_audioTranscoder;
+
 - (id)_findPluginFallbackEncoder:(id)arg1 withBalloonBundleID:(id)arg2;
-- (void)transcodeFileTransferContents:(id)arg1 utiType:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)_transcodeAudioMessageContents:(id)arg1 utiType:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)_transcodeAutoloopContents:(id)arg1 utiType:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)dealloc;
+- (void)transcodeFileTransferContents:(id)arg1 utiType:(id)arg2 transcoderUserInfo:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)transcodeFileTransferData:(id)arg1 balloonBundleID:(id)arg2 attachments:(id)arg3 inFileURL:(id)arg4 fallBack:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
 
 @end

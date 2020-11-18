@@ -9,6 +9,7 @@
 @interface PKPass (PKPassUIAdditions)
 - (id)_generateIcon:(id)arg1 withVariant:(int)arg2;
 - (id)_icon;
+- (id)cardImageWithDimensions:(struct CGSize)arg1;
 - (id)icon;
 - (id)mailAttachmentIcon;
 @end

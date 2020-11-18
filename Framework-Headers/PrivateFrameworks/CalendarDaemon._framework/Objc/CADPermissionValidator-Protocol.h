@@ -17,6 +17,7 @@
 @property (readonly) BOOL hasMigrationEntitlement;
 @property (readonly) BOOL hasSyncClientEntitlement;
 @property (readonly) BOOL internalAccessLevelGranted;
+@property (readonly) BOOL shouldTrustClientEnforcedManagedConfigurationAccess;
 @property (readonly) BOOL testingAccessLevelGranted;
 
 @end

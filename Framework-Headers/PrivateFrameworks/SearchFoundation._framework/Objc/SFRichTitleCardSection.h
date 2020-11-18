@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFRichTitleCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFCard, SFColor, SFImage;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFCard, SFColor, SFImage, SFUserReportRequest;
 
 @interface SFRichTitleCardSection : SFTitleCardSection <SFRichTitleCardSection, NSSecureCoding, NSCopying>
 {
@@ -114,6 +114,7 @@
 @property (nonatomic) BOOL titleNoWrap; // @synthesize titleNoWrap=_titleNoWrap;
 @property (copy, nonatomic) NSNumber *titleWeight; // @synthesize titleWeight=_titleWeight;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

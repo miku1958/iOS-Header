@@ -16,11 +16,11 @@
 @property (strong, nonatomic) NSURL *publishedURL; // @synthesize publishedURL=_publishedURL;
 
 - (void).cxx_destruct;
-- (void)_completePublishActionWithSuccess:(BOOL)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_completePublishActionWithSuccess:(BOOL)arg1 error:(id)arg2 shareOrigin:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)cancelActionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)createActionProgress;
 - (BOOL)isCancellable;
-- (id)performPublishActionWithSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)performPublishActionWithSession:(id)arg1 shareOrigin:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

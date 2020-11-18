@@ -17,7 +17,9 @@
 - (void)inlineInkPicker:(PKInlineInkPicker *)arg1 toolIndicatorWillPresent:(BOOL)arg2 animated:(BOOL)arg3;
 - (UIBarButtonItem *)inlineInkPickerBarButtonItemForContentsHiddenColorPickerPresentation:(PKInlineInkPicker *)arg1;
 - (struct CGRect)inlineInkPickerCenteringRectForToolIndicator:(PKInlineInkPicker *)arg1;
+- (void)inlineInkPickerDidToggleRuler:(PKInlineInkPicker *)arg1;
 - (struct CGRect)inlineInkPickerRectForContentsHiddenColorPickerPresentation:(PKInlineInkPicker *)arg1;
+- (BOOL)inlineInkPickerShouldChangeToolColorForSelectedColor:(PKInlineInkPicker *)arg1;
 - (BOOL)inlineInkPickerShouldRespondToPencilGestures:(PKInlineInkPicker *)arg1;
 - (UIViewController *)viewControllerForPopoverPresentationFromInlineInkPicker:(PKInlineInkPicker *)arg1;
 @end

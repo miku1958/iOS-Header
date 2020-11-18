@@ -18,12 +18,10 @@
 }
 
 @property (nonatomic, readonly) CKKnowledgeStore *backingStore;
-@property (nonatomic, readonly) CKKnowledgeStore *knowledgeStore; // @synthesize knowledgeStore;
 
 + (id)createEventWithIdentifier:(id)arg1 dateInterval:(id)arg2 metadata:(id)arg3 fromEvent:(id)arg4;
 + (id)defaultStore;
-- (CDUnknownBlockType).cxx_destruct;
-- (void)createEventIfNotExistsWithIdentifier:(id)arg1 dateInterval:(id)arg2 metadata:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void).cxx_destruct;
 - (void)deleteEventWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)deleteEventWithIdentifier:(id)arg1 error:(id *)arg2;
 - (void)deleteInteractionsWithBundleId:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

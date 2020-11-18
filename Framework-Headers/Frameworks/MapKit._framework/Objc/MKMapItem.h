@@ -11,7 +11,7 @@
 #import <MapKit/NSItemProviderWriting-Protocol.h>
 #import <MapKit/NSSecureCoding-Protocol.h>
 
-@class GEOAddress, GEOFeatureStyleAttributes, GEOMapItemDetourInfo, GEOMapItemStorage, GEOMapItemStorageUserValues, GEOMapRegion, GEOModuleLayoutEntry, GEOPDBusinessClaim, GEOPDFlyover, GEOPlace, MKMapItemIdentifier, MKMapItemMetadata, MKPlacemark, NSArray, NSData, NSNumber, NSNumberFormatter, NSString, NSTimeZone, NSURL, UIColor, _MKMapItemPhotosAttribution, _MKMapItemPlaceAttribution, _MKMapItemReviewsAttribution, _MKPlaceReservationInfo;
+@class GEOAddress, GEOBusinessHours, GEOFeatureStyleAttributes, GEOMapItemDetourInfo, GEOMapItemStorage, GEOMapItemStorageUserValues, GEOMapRegion, GEOModuleLayoutEntry, GEOPDBusinessClaim, GEOPDFlyover, GEOPlace, MKMapItemIdentifier, MKMapItemMetadata, MKPlacemark, NSArray, NSData, NSNumber, NSNumberFormatter, NSString, NSTimeZone, NSURL, UIColor, _MKMapItemPhotosAttribution, _MKMapItemPlaceAttribution, _MKMapItemReviewsAttribution, _MKPlaceReservationInfo;
 @protocol GEOAnnotatedItemList, GEOEncyclopedicInfo, GEOMapItem, GEOMapItemPrivate, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, MKTransitInfoPreload, NSObject;
 
 @interface MKMapItem : NSObject <NSSecureCoding, NSItemProviderReading, NSItemProviderWriting, GEOURLSerializable>
@@ -44,8 +44,10 @@
 @property (readonly, nonatomic, getter=_alternativeAppAdamIds) NSArray *alternativeAppAdamIds;
 @property (readonly, nonatomic, getter=_annotatedItemList) id<GEOAnnotatedItemList> annotatedItemList;
 @property (readonly, nonatomic, getter=_attribution) _MKMapItemPlaceAttribution *attribution; // @synthesize attribution=_attribution;
+@property (readonly, nonatomic, getter=_brandMUID) unsigned long long brand;
 @property (readonly, nonatomic, getter=_browseCategories) NSArray *browseCategories;
 @property (readonly, nonatomic, getter=_businessClaim) GEOPDBusinessClaim *businessClaim;
+@property (readonly, nonatomic, getter=_businessHours) NSArray *businessHours;
 @property (readonly, nonatomic, getter=_coordinate) struct CLLocationCoordinate2D coordinate;
 @property (readonly, nonatomic, getter=_customIconID) unsigned long long customIconID;
 @property (readonly, copy) NSString *debugDescription;
@@ -72,7 +74,9 @@
 @property (readonly, nonatomic, getter=_handle) NSData *handle;
 @property (readonly, nonatomic, getter=_hasAcceptsApplePayAmenity) BOOL hasAcceptsApplePayAmenity;
 @property (readonly, nonatomic, getter=_hasAnyAmenities) BOOL hasAnyAmenities;
+@property (readonly, nonatomic, getter=_hasBrandMUID) BOOL hasBrandMUID;
 @property (readonly, nonatomic, getter=_hasBusinessClaim) BOOL hasBusinessClaim;
+@property (readonly, nonatomic, getter=_hasBusinessHours) BOOL hasBusinessHours;
 @property (readonly, nonatomic, getter=_hasCorrectedHomeWorkAddress) BOOL hasCorrectedHomeWorkAddress;
 @property (readonly, nonatomic, getter=_hasCorrectedHomeWorkCoordinate) BOOL hasCorrectedHomeWorkCoordinate;
 @property (readonly, nonatomic, getter=_hasDelivery) BOOL hasDelivery;
@@ -85,6 +89,7 @@
 @property (readonly, nonatomic, getter=_hasGenderNeutralRestroom) BOOL hasGenderNeutralRestroom;
 @property (readonly, nonatomic, getter=_hasGenderNeutralRestroomAmenity) BOOL hasGenderNeutralRestroomAmenity;
 @property (readonly, nonatomic, getter=_hasGoodForKidsAmenity) BOOL hasGoodForKidsAmenity;
+@property (readonly, nonatomic, getter=_hasLinkedServices) BOOL hasLinkedServices;
 @property (readonly, nonatomic, getter=_hasLocalizedOperatingHours) BOOL hasLocalizedOperatingHours;
 @property (readonly, nonatomic, getter=_hasMUID) BOOL hasMUID;
 @property (readonly, nonatomic, getter=_hasOperatingHours) BOOL hasOperatingHours;
@@ -112,9 +117,10 @@
 @property (readonly, nonatomic, getter=_isMessageIDVerified) BOOL isMessageIDVerified;
 @property (readonly, nonatomic) BOOL isPlaceHolder; // @synthesize isPlaceHolder=_isPlaceHolder;
 @property (readonly, nonatomic, getter=_isStandAloneBrand) BOOL isStandAloneBrand;
+@property (readonly, nonatomic, getter=_linkedServices) NSArray *linkedServices;
 @property (readonly, nonatomic, getter=_localizedResponseTime) NSString *localizedResponseTime;
 @property (readonly, nonatomic, getter=_localizedSampleSizeForUserRatingScoreString) NSString *localizedSampleSizeForUserRatingScoreString;
-@property (readonly, nonatomic, getter=_messageBusinessHours) NSArray *messageBusinessHours;
+@property (readonly, nonatomic, getter=_messageBusinessHours) GEOBusinessHours *messageBusinessHours;
 @property (readonly, nonatomic, getter=_messageID) NSString *messageID;
 @property (readonly, nonatomic, getter=_messageURLString) NSString *messageURLString;
 @property (readonly, nonatomic) MKMapItemMetadata *metadata; // @synthesize metadata=_metadata;
@@ -150,6 +156,8 @@
 @property (readonly, nonatomic, getter=_reviewsDisplayName) NSString *reviewsDisplayName;
 @property (readonly, nonatomic) NSString *reviewsProviderDisplayName;
 @property (readonly, nonatomic, getter=_sampleSizeForUserRatingScore) unsigned int sampleSizeForUserRatingScore;
+@property (readonly, nonatomic, getter=_secondaryName) NSString *secondaryName;
+@property (readonly, nonatomic, getter=_secondarySpokenName) NSString *secondarySpokenName;
 @property (readonly, nonatomic, getter=_shortAddress) NSString *shortAddress;
 @property (readonly, nonatomic, getter=_styleAttributes) GEOFeatureStyleAttributes *styleAttributes;
 @property (readonly) Class superclass;

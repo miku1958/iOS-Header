@@ -6,13 +6,15 @@
 
 #import <PassKitCore/PDPaymentServiceExportedInterface-Protocol.h>
 
-@class NSData, NSDate, NSString, PKExpressTransactionState, PKPaymentApplication, PKPaymentPass, PKPaymentTransaction, PKTransitAppletHistory, PKValueAddedServiceTransaction, PKVerificationChannel;
+@class NSData, NSDate, NSString, PKExpressTransactionState, PKPaymentApplication, PKPaymentBalanceReminder, PKPaymentPass, PKPaymentTransaction, PKTransitAppletHistory, PKValueAddedServiceTransaction, PKVerificationChannel;
 
 @protocol PDPaymentServiceExtendedExportedInterface <PDPaymentServiceExportedInterface>
 - (void)archiveMessageWithIdentifier:(NSString *)arg1 handler:(void (^)(void))arg2;
+- (void)balanceReminderThresholdForBalanceIdentifier:(NSString *)arg1 withPassUniqueIdentifier:(NSString *)arg2 handler:(void (^)(PKPaymentBalanceReminder *))arg3;
 - (void)balancesForPaymentPassWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(NSSet *))arg2;
 - (void)consistencyCheckWithHandler:(void (^)(void))arg1;
 - (void)defaultPaymentApplicationForPassUniqueIdentifier:(NSString *)arg1 handler:(void (^)(PKPaymentApplication *))arg2;
+- (void)defaultPaymentPassIngestionSpecificIdentifier:(void (^)(NSString *))arg1;
 - (void)deleteAllMessagesForPaymentPassWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(void))arg2;
 - (void)deleteAllTransactionsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(void))arg2;
 - (void)deletePaymentTransactionWithIdentifier:(NSString *)arg1 forPassWithUniqueIdentifier:(NSString *)arg2 handler:(void (^)(void))arg3;
@@ -26,6 +28,7 @@
 - (void)sanitizeExpressPasses;
 - (void)scheduleAutomaticPresentationAvailableNotificationForPassWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(BOOL))arg2;
 - (void)scheduleSetupReminders:(void (^)(void))arg1;
+- (void)setBalanceReminder:(PKPaymentBalanceReminder *)arg1 forBalanceIdentifier:(NSString *)arg2 withPassUniqueIdentifier:(NSString *)arg3 handler:(void (^)(BOOL))arg4;
 - (void)setDefaultExpressFelicaTransitPassIdentifier:(NSString *)arg1 withCredential:(NSData *)arg2 completion:(void (^)(BOOL, NSString *))arg3;
 - (void)setDefaultExpressTransitPassIdentifier:(NSString *)arg1 withCredential:(NSData *)arg2 completion:(void (^)(BOOL, NSString *))arg3;
 - (void)setDefaultPaymentApplication:(PKPaymentApplication *)arg1 forPassUniqueIdentifier:(NSString *)arg2 handler:(void (^)(PKPass *))arg3;

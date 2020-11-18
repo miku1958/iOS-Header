@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *delegate;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

@@ -12,7 +12,9 @@
 {
     BOOL _fetchAllChanges;
     BOOL _shouldFetchAssetContents;
+    BOOL _shouldReportAllPerItemFailures;
     CDUnknownBlockType _recordChangedBlock;
+    CDUnknownBlockType _perRecordChangeCompletionBlock;
     CDUnknownBlockType _recordWithIDWasDeletedBlock;
     CDUnknownBlockType _recordZoneChangeTokensUpdatedBlock;
     CDUnknownBlockType _recordZoneFetchCompletionBlock;
@@ -31,12 +33,14 @@
 @property (copy, nonatomic) CDUnknownBlockType fetchRecordZoneChangesCompletionBlock; // @synthesize fetchRecordZoneChangesCompletionBlock=_fetchRecordZoneChangesCompletionBlock;
 @property (copy, nonatomic) NSDictionary *optionsByRecordZoneID;
 @property (strong, nonatomic) NSMutableDictionary *perItemErrors; // @synthesize perItemErrors=_perItemErrors;
+@property (copy, nonatomic) CDUnknownBlockType perRecordChangeCompletionBlock; // @synthesize perRecordChangeCompletionBlock=_perRecordChangeCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordChangedBlock; // @synthesize recordChangedBlock=_recordChangedBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordWithIDWasDeletedBlock; // @synthesize recordWithIDWasDeletedBlock=_recordWithIDWasDeletedBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordZoneChangeTokensUpdatedBlock; // @synthesize recordZoneChangeTokensUpdatedBlock=_recordZoneChangeTokensUpdatedBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordZoneFetchCompletionBlock; // @synthesize recordZoneFetchCompletionBlock=_recordZoneFetchCompletionBlock;
 @property (copy, nonatomic) NSArray *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
 @property (nonatomic) BOOL shouldFetchAssetContents; // @synthesize shouldFetchAssetContents=_shouldFetchAssetContents;
+@property (nonatomic) BOOL shouldReportAllPerItemFailures; // @synthesize shouldReportAllPerItemFailures=_shouldReportAllPerItemFailures;
 @property (strong, nonatomic) NSMutableDictionary *statusByZoneID; // @synthesize statusByZoneID=_statusByZoneID;
 @property (strong, nonatomic) NSMutableSet *zoneIDsWithPendingArchivedRecords; // @synthesize zoneIDsWithPendingArchivedRecords=_zoneIDsWithPendingArchivedRecords;
 
@@ -52,6 +56,7 @@
 - (id)init;
 - (id)initWithRecordZoneIDs:(id)arg1 configurationsByRecordZoneID:(id)arg2;
 - (id)initWithRecordZoneIDs:(id)arg1 optionsByRecordZoneID:(id)arg2;
+- (id)partialFailureForItemsInZone:(id)arg1;
 - (void)performCKOperation;
 - (id)recordZoneChangesStatusByZoneID;
 - (id)recordZoneIDsWithPendingArchivedRecords;

@@ -17,6 +17,7 @@
 - (id)tsu_arrayByFlattening;
 - (id)tsu_arrayByMappingObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)tsu_arrayByRemovingFirstObject;
+- (id)tsu_arrayByRemovingObjectsAtIndexes:(id)arg1;
 - (id)tsu_arrayByRemovingObjectsIdenticalToObjectsInArray:(id)arg1;
 - (id)tsu_arrayByReversingOrder;
 - (id)tsu_arrayByTransformingWithBlock:(CDUnknownBlockType)arg1;

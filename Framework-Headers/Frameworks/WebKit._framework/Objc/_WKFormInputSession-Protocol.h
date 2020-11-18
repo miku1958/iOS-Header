@@ -13,6 +13,7 @@
 
 @property (copy, nonatomic) NSString *accessoryViewCustomButtonTitle;
 @property (nonatomic) BOOL accessoryViewShouldNotShow;
+@property (strong, nonatomic) UIView *customInputAccessoryView;
 @property (strong, nonatomic) UIView *customInputView;
 @property (readonly, nonatomic) id<_WKFocusedElementInfo> focusedElementInfo;
 @property (nonatomic) BOOL forceSecureTextEntry;

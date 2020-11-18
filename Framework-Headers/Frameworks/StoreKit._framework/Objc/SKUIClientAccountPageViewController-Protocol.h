@@ -11,11 +11,14 @@
 @protocol SKUIClientAccountPageViewController <NSObject>
 - (void)didFinishLoading;
 - (void)didPrepareWithResult:(NSNumber *)arg1 error:(NSError *)arg2;
+- (void)dismissBridgedViewController;
 - (void)dismissViewControllerWithResult:(NSNumber *)arg1 error:(NSError *)arg2;
 - (void)financeInterruptionResolved:(BOOL)arg1;
 - (void)overrideCreditCardPresentationWithCompletion:(void (^)(SUCreditCardReaderOutput *))arg1;
+- (void)overrideRedeemCameraPerformAction:(long long)arg1 withObject:(id)arg2;
 - (void)overrideRedeemCameraWithCompletion:(void (^)(SKUIRedeem *, NSError *))arg1;
 - (void)popBridgedViewControllersToIndex:(unsigned long long)arg1;
+- (void)presentBridgedViewController;
 - (void)pushBridgedViewControllerAnimated:(BOOL)arg1 options:(NSDictionary *)arg2;
 - (void)setBridgedNavigationItemWithOptions:(NSDictionary *)arg1;
 @end

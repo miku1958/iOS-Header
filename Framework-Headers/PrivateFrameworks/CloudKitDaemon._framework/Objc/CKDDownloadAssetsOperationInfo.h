@@ -14,9 +14,13 @@ __attribute__((visibility("hidden")))
     BOOL _shouldFetchAssetContentInMemory;
     NSArray *_assetsToDownload;
     NSArray *_packageIndexSets;
+    NSArray *_assetsToDownloadInMemory;
+    NSArray *_assetURLInfosToFillOut;
 }
 
+@property (strong, nonatomic) NSArray *assetURLInfosToFillOut; // @synthesize assetURLInfosToFillOut=_assetURLInfosToFillOut;
 @property (strong, nonatomic) NSArray *assetsToDownload; // @synthesize assetsToDownload=_assetsToDownload;
+@property (strong, nonatomic) NSArray *assetsToDownloadInMemory; // @synthesize assetsToDownloadInMemory=_assetsToDownloadInMemory;
 @property (strong, nonatomic) NSArray *packageIndexSets; // @synthesize packageIndexSets=_packageIndexSets;
 @property (nonatomic) BOOL shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
 

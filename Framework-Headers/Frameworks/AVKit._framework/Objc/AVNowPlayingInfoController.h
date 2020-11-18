@@ -27,8 +27,15 @@
 @property (weak, nonatomic) AVPlayerController *playerControllerToActivateAfterDelay; // @synthesize playerControllerToActivateAfterDelay=_playerControllerToActivateAfterDelay;
 @property (nonatomic) BOOL requiresLinearPlayback; // @synthesize requiresLinearPlayback=_requiresLinearPlayback;
 
++ (id)_avMediaCharacteristics;
++ (void *)_createMediaRemoteLanguageOptionGroupWithAVMediaSelectionOptions:(id)arg1;
++ (void *)_createMediaRemoteLanguageOptionWithAVMediaSelectionOption:(id)arg1;
++ (id)_mediaRemoteLanguageOptionCharacteristicForAVMediaCharacteristic:(id)arg1;
++ (id)_mediaRemoteLanguageOptionCharacteristicsForAVMediaSelectionOption:(id)arg1;
 + (void)sharedNowPlayingInfoControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+- (id)_availableLanguageOptions;
+- (id)_currentLanguageOptions;
 - (unsigned int)_handleRemoteCommand:(unsigned int)arg1 options:(id)arg2;
 - (id)_makeCommandsAndStatesDictionaryForPlayerController:(id)arg1;
 - (id)_makeNowPlayingInfo;

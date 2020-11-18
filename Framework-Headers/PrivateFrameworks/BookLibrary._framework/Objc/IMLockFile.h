@@ -25,6 +25,7 @@
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;
 - (BOOL)lock:(BOOL)arg1;
+- (BOOL)lockWithBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (BOOL)tryLock:(BOOL)arg1;
 - (void)unlock;
 

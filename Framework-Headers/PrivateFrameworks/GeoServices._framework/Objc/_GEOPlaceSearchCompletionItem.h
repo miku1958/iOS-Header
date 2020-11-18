@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSData *entryMetadata;
 @property (readonly, nonatomic) id<GEOMapItem> geoMapItem;
 @property (readonly, nonatomic) BOOL hasDisambiguationRadiusMeters;
+@property (readonly, nonatomic) BOOL hasSortPriority;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property (readonly, nonatomic) NSData *metadata;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int placeType;
 @property (readonly, nonatomic) GEORetainedSearchMetadata *retainedSearchMetadata;
 @property (readonly, nonatomic) GEOSearchCategory *searchCategory;
+@property (readonly, nonatomic) long long sortPriority;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type;
 

@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (NSSAdditions)
++ (id)nss_MarketingPageURL;
 + (id)nss_NewsURLForArticleID:(id)arg1;
 + (id)nss_NewsURLForArticleID:(id)arg1 internal:(BOOL)arg2 targetIsVideo:(BOOL)arg3;
 + (id)nss_NewsURLForArticleID:(id)arg1 targetIsVideo:(BOOL)arg2;
@@ -14,7 +15,10 @@
 + (id)nss_NewsURLForFavoritesPicker;
 + (id)nss_NewsURLForForYou;
 + (id)nss_NewsURLForHistory;
++ (id)nss_NewsURLForIssueID:(id)arg1;
++ (id)nss_NewsURLForMagazines;
 + (id)nss_NewsURLForManageNotifications;
++ (id)nss_NewsURLForMyMagazines;
 + (id)nss_NewsURLForSaved;
 + (id)nss_NewsURLForTagID:(id)arg1;
 + (id)nss_NewsURLForWebLinkURL:(id)arg1;
@@ -25,6 +29,7 @@
 - (id)nss_URLWithCampaignID:(id)arg1;
 - (id)nss_URLWithVideoTarget:(BOOL)arg1;
 - (id)nss_campaignID;
+- (BOOL)nss_isFollowNewsTagURL;
 - (BOOL)nss_isNewsArticleURL;
 - (BOOL)nss_isNewsArticleVideoURL;
 - (BOOL)nss_isNewsTagURL;

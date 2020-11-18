@@ -10,13 +10,13 @@
 #import <RelevanceEngine/NSCopying-Protocol.h>
 #import <RelevanceEngine/REIndentedDescription-Protocol.h>
 
-@class NSDictionary, NSPointerArray, NSSet, NSString;
+@class NSDictionary, NSSet, NSString;
 
 @interface REFeatureMap : NSObject <MLFeatureProvider, REIndentedDescription, NSCopying>
 {
     unsigned long long _hash;
-    NSPointerArray *_values;
-    NSDictionary *_indicies;
+    unsigned long long *_values;
+    NSDictionary *_indices;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,7 +28,9 @@
 
 + (id)defaultFeatureName;
 - (void).cxx_destruct;
+- (unsigned long long)_count;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)descriptionWithIndent:(unsigned long long)arg1;
 - (void)enumerateBoolFeaturesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateDoubleFeaturesUsingBlock:(CDUnknownBlockType)arg1;
@@ -41,6 +43,7 @@
 - (BOOL)hasValueForFeature:(id)arg1;
 - (id)initWithFeatureMap:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)removeAllValues;
 - (void)removeValueForFeature:(id)arg1;
 - (void)setValue:(id)arg1 forFeature:(id)arg2;
 - (id)valueForFeature:(id)arg1;

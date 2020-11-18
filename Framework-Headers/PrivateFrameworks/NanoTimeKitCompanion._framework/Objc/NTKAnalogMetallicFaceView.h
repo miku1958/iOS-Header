@@ -25,6 +25,7 @@
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (void)_applyVideoPlayerTransform;
+- (id)_complicationsCompanionForegroundColor;
 - (void)_customizeVideoPlayerOnSetup;
 - (id)_editOptionThatHidesAllComplications;
 - (void)_handleEitherScreenWake;

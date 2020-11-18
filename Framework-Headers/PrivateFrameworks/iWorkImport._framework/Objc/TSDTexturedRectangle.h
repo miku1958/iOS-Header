@@ -71,7 +71,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isValid;
 @property (nonatomic) BOOL isVerticalText; // @synthesize isVerticalText=_isVerticalText;
 @property (readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
-@property (weak) id<TSDLiveTexturedRectangleSource> liveTexturedRectangleSource; // @synthesize liveTexturedRectangleSource=_liveTexturedRectangleSource;
+@property (strong) id<TSDLiveTexturedRectangleSource> liveTexturedRectangleSource; // @synthesize liveTexturedRectangleSource=_liveTexturedRectangleSource;
 @property (readonly, nonatomic) id<MTLTexture> metalTexture; // @synthesize metalTexture=_metalTexture;
 @property (nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
 @property (nonatomic) struct CGPoint originalPosition; // @synthesize originalPosition=_originalPosition;
@@ -106,7 +106,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)drawFrameAtLayerTime:(double)arg1 context:(id)arg2;
+- (void)drawFrameWithMetalContext:(id)arg1;
 - (void)evictRenderedResources;
 - (id)init;
 - (id)initWithCGImage:(struct CGImage *)arg1;
@@ -117,10 +117,14 @@ __attribute__((visibility("hidden")))
 - (id)initWithSize:(struct CGSize)arg1 offset:(struct CGPoint)arg2 renderBlock:(CDUnknownBlockType)arg3;
 - (id)initWithTextureInfo:(id)arg1 frame:(struct CGRect)arg2;
 - (BOOL)isMetalTextureSetup;
-- (id)p_allocateMetalTextureForDevice:(id)arg1;
+- (id)metalTextureWithContext:(id)arg1;
+- (id)metalTextureWithContext:(id)arg1 cpuReadable:(BOOL)arg2;
+- (id)p_allocateMetalTextureForDevice:(id)arg1 renderTarget:(BOOL)arg2 private:(BOOL)arg3;
 - (void)p_bakeLayerWithAngle:(double)arg1 scale:(double)arg2 layer:(id)arg3;
 - (struct CGColorSpace *)p_colorSpace;
 - (void)p_initializeMap;
+- (id)p_latestTextureNotAfterLayerTime:(double)arg1;
+- (void)p_makeMetalTextureCPUReadable:(id)arg1 metalContext:(id)arg2;
 - (struct CGImage *)p_newImageAndBufferWithAngle:(double)arg1 scale:(double)arg2 offset:(struct CGPoint)arg3 transform:(struct CGAffineTransform *)arg4;
 - (void)p_renderIntoContext:(struct CGContext *)arg1 viewLayer:(id)arg2 shouldApplyAlpha:(BOOL)arg3 shouldIgnoreLayerVisibility:(BOOL)arg4 shouldClipToBounds:(BOOL)arg5;
 - (void)p_setupSingleTextureAndGenerateMipMaps:(BOOL)arg1 withContext:(id)arg2;
@@ -134,7 +138,8 @@ __attribute__((visibility("hidden")))
 - (void)renderLayerContentsIfNeeded;
 - (void)resetAnchorPointAtEventIndex:(unsigned long long)arg1;
 - (void)resetToSourceImageAtEventIndex:(unsigned long long)arg1;
-- (void)setupMetalTextureForDevice:(id)arg1;
+- (void)setupMetalTextureForContext:(id)arg1;
+- (void)setupMetalTextureForDevice:(id)arg1 commandQueue:(id)arg2;
 - (void)setupSingleTexture;
 - (void)setupSingleTextureWithContext:(id)arg1;
 - (void)teardown;

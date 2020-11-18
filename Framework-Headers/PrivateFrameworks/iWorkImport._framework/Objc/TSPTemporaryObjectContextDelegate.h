@@ -30,13 +30,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoreDocumentSupport; // @synthesize ignoreDocumentSupport=_ignoreDocumentSupport;
 @property (readonly, nonatomic) BOOL isDocumentSupportTemporary;
-@property (readonly, nonatomic) NSSet *persistenceWarnings; // @synthesize persistenceWarnings=_persistenceWarnings;
+@property (readonly, nonatomic) NSSet *persistenceWarnings;
 @property (readonly) Class superclass;
 
 + (id)temporaryObjectContextDelegateWithPackageDataForWrite:(id)arg1 additionalDocumentPropertiesForWrite:(id)arg2;
 - (void).cxx_destruct;
 - (void)addPersistenceWarnings:(id)arg1;
 - (void)context:(id)arg1 canPerformUserActionUsingBlock:(CDUnknownBlockType)arg2;
+- (BOOL)contextCanPerformUserActions:(id)arg1;
 - (id)init;
 - (id)persistenceWarningsForData:(id)arg1 flags:(unsigned long long)arg2;
 - (void)presentPersistenceError:(id)arg1;

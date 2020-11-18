@@ -15,7 +15,6 @@
 @property (readonly, nonatomic) UIViewController *webui_presentingViewController;
 @property (readonly, nonatomic) BOOL webui_privateBrowsingEnabled;
 
-- (WBSFormMetadata *)webui_formMetadataAndFrame:(id *)arg1 forLastPasswordGenerationOrSubmitEventInFrame:(id<WBUFormAutoFillFrameHandle>)arg2;
 - (WBSFormMetadata *)webui_formMetadataForLastPasswordGenerationOrSubmitEventInFrame:(id<WBUFormAutoFillFrameHandle>)arg1;
 - (void (^)(void))webui_preventNavigationDuringAutoFillPrompt;
 - (void)webui_removeFormMetadataForLastPasswordGenerationOrSubmitEventInFrame:(id<WBUFormAutoFillFrameHandle>)arg1;

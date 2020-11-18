@@ -9,6 +9,7 @@
 #import <iWorkImport/TSWPFootnoteHeightMeasurer-Protocol.h>
 
 @class NSString, TPFootnoteContainerLayout, TSDLayoutController, TSULRUCache;
+@protocol TPFootnotePageDelegate;
 
 __attribute__((visibility("hidden")))
 @interface TPFootnoteHeightMeasurer : NSObject <TSWPFootnoteHeightMeasurer>
@@ -16,6 +17,7 @@ __attribute__((visibility("hidden")))
     TPFootnoteContainerLayout *_footnoteContainerLayout;
     TSDLayoutController *_layoutController;
     TSULRUCache *_footnoteLayoutCache;
+    id<TPFootnotePageDelegate> _pageDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,12 +27,13 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)addFootnoteReferenceStorage:(id)arg1;
-- (double)footnoteHeight;
-- (id)initWithFootnoteMarkProvider:(id)arg1 maxFootnoteWidth:(double)arg2 maxFootnoteHeight:(double)arg3 footnoteSpacing:(double)arg4;
+- (double)footnoteBlockHeightForTarget:(id)arg1;
+- (BOOL)footnoteContainerFits;
+- (id)initWithFootnoteMarkProvider:(id)arg1 pageDelegate:(id)arg2 maxFootnoteLineWidth:(double)arg3 maxFootnoteBlockHeight:(double)arg4 vertical:(BOOL)arg5 footnoteSpacing:(double)arg6;
 - (void)p_clearFootnoteLayoutCache;
 - (void)removeAllFootnoteReferenceStorages;
 - (void)removeFootnoteReferenceStorage:(id)arg1;
-- (void)setContainerWidth:(double)arg1;
+- (void)setContainerLineWidth:(double)arg1;
 - (void)setFootnoteSpacing:(long long)arg1;
 
 @end

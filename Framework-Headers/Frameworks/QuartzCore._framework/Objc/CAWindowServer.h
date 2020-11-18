@@ -26,7 +26,6 @@
 + (id)serverWithOptions:(id)arg1;
 - (void)_detectDisplays;
 - (id)_init;
-- (void)_initializeBrightnessNotifications;
 - (void)addDisplay:(id)arg1;
 - (unsigned int)clientPortOfContextId:(unsigned int)arg1;
 - (unsigned int)contextIdHostingContextId:(unsigned int)arg1;

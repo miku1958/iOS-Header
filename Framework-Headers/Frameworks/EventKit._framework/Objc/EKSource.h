@@ -43,6 +43,7 @@
 @property (nonatomic) BOOL isFacebook; // @synthesize isFacebook=_isFacebook;
 @property (readonly, nonatomic) BOOL isFacebookSource;
 @property (readonly, nonatomic) BOOL isSyncing;
+@property (readonly, nonatomic) BOOL isWritable;
 @property (strong, nonatomic) NSDate *lastSyncEndDate;
 @property (nonatomic) unsigned long long lastSyncError;
 @property (strong, nonatomic) NSDate *lastSyncStartDate;
@@ -95,6 +96,7 @@
 - (id)description;
 - (BOOL)disabled;
 - (BOOL)flag:(int)arg1;
+- (int)managedConfigurationAccountAccess;
 - (int)preferredEventPrivateValueRaw;
 - (id)readWriteCalendarsForEntityType:(unsigned long long)arg1;
 - (BOOL)remove:(id *)arg1;

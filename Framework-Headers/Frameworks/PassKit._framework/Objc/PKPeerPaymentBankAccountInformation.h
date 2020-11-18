@@ -4,35 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PassKitCore/PKBankAccountInformation.h>
 
-#import <PassKitCore/NSSecureCoding-Protocol.h>
-
-@class NSString;
-
-@interface PKPeerPaymentBankAccountInformation : NSObject <NSSecureCoding>
+@interface PKPeerPaymentBankAccountInformation : PKBankAccountInformation
 {
-    NSString *_accountNumber;
-    NSString *_routingNumber;
-    NSString *_bankName;
 }
 
-@property (copy, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
-@property (copy, nonatomic) NSString *bankName; // @synthesize bankName=_bankName;
-@property (copy, nonatomic) NSString *routingNumber; // @synthesize routingNumber=_routingNumber;
-
-+ (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
 - (id)_bankAccountInformationInKeychain;
 - (void)_deleteBankAccountKeychainData;
 - (id)_wrapperWithType:(unsigned long long)arg1;
 - (void)_writeBankAccountInformationToKeychain;
 - (void)deleteAllBankInformation;
-- (id)description;
-- (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
-- (BOOL)isValid;
+- (void)setAccountNumber:(id)arg1;
+- (void)setBankName:(id)arg1;
+- (void)setRoutingNumber:(id)arg1;
 - (void)updateToLatestKeychainData;
 
 @end

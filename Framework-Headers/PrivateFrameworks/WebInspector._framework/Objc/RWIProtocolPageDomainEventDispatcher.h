@@ -11,6 +11,7 @@
     struct AugmentableInspectorController *_controller;
 }
 
+- (void)defaultAppearanceDidChangeWithAppearance:(long long)arg1;
 - (void)domContentEventFiredWithTimestamp:(double)arg1;
 - (void)frameClearedScheduledNavigationWithFrameId:(id)arg1;
 - (void)frameDetachedWithFrameId:(id)arg1;

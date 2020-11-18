@@ -35,14 +35,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
-+ (Class)TTYSettingsClass;
-+ (Class)TTYTelephonyUtilitiesClass;
-+ (id)sharedTTYTelephonyUtilities;
++ (Class)RTTSettingsClass;
++ (Class)RTTTelephonyUtilitiesClass;
++ (id)sharedRTTTelephonyUtilities;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (BOOL)isEmergencyNumberForDigits:(id)arg1 subscription:(id)arg2 error:(id *)arg3;
-- (BOOL)isEmergencyNumberForDigits:(id)arg1 subscriptionLabelID:(id)arg2 error:(id *)arg3;
+- (BOOL)isEmergencyNumberForDigits:(id)arg1 subscriptionUUID:(id)arg2 error:(id *)arg3;
 - (BOOL)isRTTSupportedForSubscription:(id)arg1;
 - (BOOL)isRTTSupportedForSubscriptionUUID:(id)arg1;
 - (BOOL)isTTYEnabledForSubscription:(id)arg1;
@@ -62,11 +62,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)isTTYSupportedForSubscription:(id)arg1;
 - (BOOL)isTTYSupportedForSubscriptionUUID:(id)arg1;
 - (BOOL)isWhitelistedEmergencyNumberForDigits:(id)arg1 subscription:(id)arg2 error:(id *)arg3;
-- (BOOL)isWhitelistedEmergencyNumberForDigits:(id)arg1 subscriptionLabelID:(id)arg2 error:(id *)arg3;
+- (BOOL)isWhitelistedEmergencyNumberForDigits:(id)arg1 subscriptionUUID:(id)arg2 error:(id *)arg3;
 - (unsigned long long)preferredTransportMethodForSubscription:(id)arg1;
 - (BOOL)shouldShowEmergencyCallbackModeAlertForSubscription:(id)arg1 error:(id *)arg2;
-- (BOOL)shouldShowEmergencyCallbackModeAlertForSubscriptionLabelID:(id)arg1 error:(id *)arg2;
-- (id)subscriptionForLabelID:(id)arg1;
+- (BOOL)shouldShowEmergencyCallbackModeAlertForSubscriptionUUID:(id)arg1 error:(id *)arg2;
 - (id)subscriptionForUUID:(id)arg1;
 
 @end

@@ -16,16 +16,16 @@ __attribute__((visibility("hidden")))
 {
     TSWPShapeRep *_editingRep;
     BOOL _useFindOverlayers;
-    NSObject<TSKSearchReference> *_activeSearchReference;
+    NSObject<TSKSearchReference> *_primaryFindResultSearchReference;
     NSArray *_searchReferences;
 }
 
-@property (strong, nonatomic) NSObject<TSKSearchReference> *activeSearchReference; // @synthesize activeSearchReference=_activeSearchReference;
 @property (readonly, nonatomic) NSArray *childReps;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSObject<TSKSearchReference> *primaryFindResultSearchReference; // @synthesize primaryFindResultSearchReference=_primaryFindResultSearchReference;
 @property (strong, nonatomic) NSArray *searchReferences; // @synthesize searchReferences=_searchReferences;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL useFindOverlayers; // @synthesize useFindOverlayers=_useFindOverlayers;

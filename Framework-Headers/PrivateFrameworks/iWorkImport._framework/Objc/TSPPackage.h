@@ -60,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)didCloseDocument;
 - (void)didReadFileFormatVersion:(unsigned long long)arg1;
 - (void)didReferenceData:(id)arg1;
-- (BOOL)didReloadZipArchive:(id)arg1 error:(id *)arg2;
+- (BOOL)didReloadZipArchive:(id)arg1 packageURL:(id)arg2 error:(id *)arg3;
 - (void)didRetrieveDecryptionKey:(id)arg1;
 - (void)enumerateDatasUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)hasDataAtRelativePath:(id)arg1;
@@ -69,11 +69,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithURL:(id)arg1 zipArchiveOrNil:(id)arg2 zipArchiveOptions:(unsigned long long)arg3 packageIdentifier:(unsigned char)arg4 documentProperties:(id)arg5 decryptionKey:(id)arg6 fileCoordinatorDelegate:(id)arg7 error:(id *)arg8;
 - (id)keyFromPassword:(id)arg1;
 - (id)keyFromPassword:(id)arg1 passwordVerifier:(id)arg2;
+- (id)newCompressionReadChannelWithReadChannel:(id)arg1 compressionAlgorithm:(long long)arg2;
 - (id)newDataStorageAtRelativePath:(id)arg1 decryptionInfo:(id)arg2 packageURL:(id)arg3 lastModificationDate:(out id *)arg4;
 - (id)newDocumentPropertiesWithURL:(id)arg1 zipProvider:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (id)newRawDataReadChannelAtRelativePath:(id)arg1;
 - (id)newRawReadChannelForComponentLocator:(id)arg1 isStoredOutsideObjectArchive:(BOOL)arg2;
-- (id)newReadChannelForComponentLocator:(id)arg1 isStoredOutsideObjectArchive:(BOOL)arg2;
+- (id)newReadChannelForComponentLocator:(id)arg1 compressionAlgorithm:(long long)arg2 isStoredOutsideObjectArchive:(BOOL)arg3;
 - (id)newZipArchiveFromPackageURL:(id)arg1 isLazyLoading:(BOOL)arg2 error:(id *)arg3;
 - (id)packageEntryInfoAtRelativePath:(id)arg1 error:(id *)arg2;
 - (id)packageEntryInfoForComponentLocator:(id)arg1 isStoredOutsideObjectArchive:(BOOL)arg2;

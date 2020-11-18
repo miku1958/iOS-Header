@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class ML3DatabaseConnection, NSString;
+@class NSString;
 
 @interface ML3DatabaseStatement : NSObject
 {
     NSString *_sql;
     BOOL _clearBindingsAfterRunning;
     BOOL _isExecuting;
-    ML3DatabaseConnection *_connection;
     struct sqlite3_stmt *_sqliteStatement;
 }
 
 @property (nonatomic) BOOL clearBindingsAfterRunning; // @synthesize clearBindingsAfterRunning=_clearBindingsAfterRunning;
-@property (readonly, nonatomic) ML3DatabaseConnection *connection; // @synthesize connection=_connection;
 @property (nonatomic) BOOL isExecuting; // @synthesize isExecuting=_isExecuting;
 @property (readonly, nonatomic) NSString *sql;
 @property (readonly, nonatomic) struct sqlite3_stmt *sqliteStatement; // @synthesize sqliteStatement=_sqliteStatement;
@@ -40,7 +38,7 @@
 - (void)dealloc;
 - (id)description;
 - (int)finalizeStatement;
-- (id)initWithSQLiteStatement:(struct sqlite3_stmt *)arg1 SQL:(id)arg2 connection:(id)arg3;
+- (id)initWithSQLiteStatement:(struct sqlite3_stmt *)arg1 SQL:(id)arg2;
 - (BOOL)isBusy;
 - (BOOL)isReadOnly;
 - (int)reset;

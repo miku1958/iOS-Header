@@ -20,6 +20,7 @@
 - (BOOL)_isNameCached;
 - (void)acceptSSP:(long long)arg1;
 - (int)accessorySettingFeatureBitMask;
+- (id)aclUID;
 - (id)address;
 - (int)batteryLevel;
 - (BOOL)cloudPaired;

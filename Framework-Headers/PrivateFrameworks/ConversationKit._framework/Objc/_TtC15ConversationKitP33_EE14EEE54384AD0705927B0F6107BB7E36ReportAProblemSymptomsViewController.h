@@ -17,7 +17,7 @@
     MISSING_TYPE *textViewBottomConstraint;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)didTapNext:(id)arg1;
 - (void)handleKeyboardChangeNotification:(id)arg1;
 - (id)initWithCoder:(id)arg1;

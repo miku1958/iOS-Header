@@ -19,7 +19,7 @@
     MISSING_TYPE *session.storage;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

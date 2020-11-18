@@ -12,10 +12,12 @@
 
 @interface STAlwaysAllowList : NSObject <NSCopying>
 {
+    BOOL _shouldAllowEditing;
     NSArray *_allowedBundleIDs;
 }
 
 @property (copy, nonatomic) NSArray *allowedBundleIDs; // @synthesize allowedBundleIDs=_allowedBundleIDs;
+@property (nonatomic) BOOL shouldAllowEditing; // @synthesize shouldAllowEditing=_shouldAllowEditing;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

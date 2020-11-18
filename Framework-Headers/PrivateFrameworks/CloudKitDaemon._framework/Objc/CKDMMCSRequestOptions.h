@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKOperationMMCSRequestOptions, NSArray, NSData, NSDictionary, NSString;
+@class C2MetricOptions, CKOperationMMCSRequestOptions, NSArray, NSData, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDMMCSRequestOptions : NSObject
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_authPutResponseHeaders;
     long long _qualityOfService;
     unsigned long long _discretionaryNetworkBehavior;
+    C2MetricOptions *_metricOptions;
     unsigned long long _networkServiceType;
     CKOperationMMCSRequestOptions *_MMCSRequestOptions;
 }
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
 @property (strong, nonatomic) NSString *deviceHardwareID; // @synthesize deviceHardwareID=_deviceHardwareID;
 @property (nonatomic) unsigned long long discretionaryNetworkBehavior; // @synthesize discretionaryNetworkBehavior=_discretionaryNetworkBehavior;
+@property (strong, nonatomic) C2MetricOptions *metricOptions; // @synthesize metricOptions=_metricOptions;
 @property (nonatomic) unsigned long long networkServiceType; // @synthesize networkServiceType=_networkServiceType;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (strong, nonatomic) NSString *topmostParentOperationGroupID; // @synthesize topmostParentOperationGroupID=_topmostParentOperationGroupID;

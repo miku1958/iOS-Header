@@ -42,6 +42,7 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)presentQuickActionsForSuggestionGadget:(id)arg1;
 - (void)presentSuggestionGadget:(id)arg1 context:(id)arg2 animated:(BOOL)arg3;
+- (long long)shareOriginForSession:(id)arg1 workflowCoordinator:(id)arg2;
 - (void)workflowCoordinator:(id)arg1 workflowViewController:(id)arg2 didFinishSession:(id)arg3 withActivityState:(unsigned long long)arg4;
 
 @end

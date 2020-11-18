@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     TSPDataAttributesSnapshot *_dataAttributesSnapshot;
     TSPObjectReferenceMap *_objectReferenceMap;
     TSPArchiverManager *_archiverManager;
+    NSObject<OS_dispatch_queue> *_completionQueue;
     NSObject<OS_dispatch_group> *_completionGroup;
     NSSet *_knownComponentLocators;
     struct unordered_map<const long long, TSP::ComponentPropertiesSnapshot, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ComponentPropertiesSnapshot>>> _componentPropertiesSnapshot;
@@ -54,6 +55,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_metadataQueue;
     unsigned long long _readVersion;
     unsigned long long _writeVersion;
+    NSMutableSet *_featureIdentifiers;
     NSHashTable *_referencedDatas;
     NSMutableArray *_dataFinalizeHandlers;
     BOOL _writeSuccess;
@@ -68,6 +70,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSSet *featureIdentifiers;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) TSPObjectContainer *objectContainer;
 @property (readonly, nonatomic) TSPPackageMetadata *packageMetadata; // @synthesize packageMetadata=_packageMetadata;
@@ -78,10 +81,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)addDataFinalizeHandlerForSuccessfulSave:(CDUnknownBlockType)arg1;
 - (void)addDelayedObject:(id)arg1 forComponentRootObject:(id)arg2 claimingComponent:(id)arg3 isDelayedObjectReferencedByObjectContainer:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)archiveComponent:(id)arg1 locator:(id)arg2 storeOutsideObjectArchive:(BOOL)arg3 rootObject:(id)arg4 withPackageWriter:(id)arg5;
+- (void)archiveComponent:(id)arg1 locator:(id)arg2 compressionAlgorithm:(long long)arg3 storeOutsideObjectArchive:(BOOL)arg4 rootObject:(id)arg5 withPackageWriter:(id)arg6;
 - (void)calculateExternalReferences;
 - (id)componentForObjectIdentifier:(long long)arg1 objectOrNil:(id)arg2;
-- (long long)componentIdentifierForObjectIdentifier:(long long)arg1 objectOrNil:(id)arg2 objectUUIDOrNil:(id)arg3;
+- (long long)componentIdentifierForObjectIdentifier:(long long)arg1 objectOrNil:(id)arg2 objectUUIDOrNil:(id)arg3 outComponentIsVersioned:(BOOL *)arg4;
 - (void)componentWriter:(id)arg1 canSkipArchivingStronglyReferencedObject:(id)arg2 fromComponentRootObject:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)componentWriter:(id)arg1 locatorForClaimingComponent:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)componentWriter:(id)arg1 object:(id)arg2 belongsToLinkedComponent:(id)arg3;
@@ -103,8 +106,8 @@ __attribute__((visibility("hidden")))
 - (id)explicitComponentRootObjectForObject:(id)arg1;
 - (id)explicitComponentRootObjectForObject:(id)arg1 archiverOrNil:(id)arg2 claimingComponent:(id)arg3 newClaimingComponent:(id)arg4 hasArchiverAccessLock:(BOOL)arg5;
 - (id)init;
-- (id)initWithContext:(id)arg1 documentRevision:(id)arg2 saveToken:(unsigned long long)arg3 packageIdentifier:(unsigned char)arg4 fileFormatVersion:(unsigned long long)arg5 preferredPackageType:(long long)arg6 metadataObject:(id)arg7 dataAttributesSnapshot:(id)arg8;
-- (id)initWithContext:(id)arg1 documentRevision:(id)arg2 saveToken:(unsigned long long)arg3 packageIdentifier:(unsigned char)arg4 fileFormatVersion:(unsigned long long)arg5 preferredPackageType:(long long)arg6 metadataObject:(id)arg7 dataAttributesSnapshot:(id)arg8 packageWriteCoordinator:(id)arg9 captureSnapshots:(BOOL)arg10;
+- (id)initWithContext:(id)arg1 archiverClass:(Class)arg2 archiverFlags:(BOOL)arg3 documentRevision:(id)arg4 saveToken:(unsigned long long)arg5 packageIdentifier:(unsigned char)arg6 fileFormatVersion:(unsigned long long)arg7 preferredPackageType:(long long)arg8 metadataObject:(id)arg9 dataAttributesSnapshot:(id)arg10;
+- (id)initWithContext:(id)arg1 archiverClass:(Class)arg2 archiverFlags:(BOOL)arg3 documentRevision:(id)arg4 saveToken:(unsigned long long)arg5 packageIdentifier:(unsigned char)arg6 fileFormatVersion:(unsigned long long)arg7 preferredPackageType:(long long)arg8 metadataObject:(id)arg9 dataAttributesSnapshot:(id)arg10 packageWriteCoordinator:(id)arg11 captureSnapshots:(BOOL)arg12;
 - (BOOL)isComponentExternal:(id)arg1 wasWritten:(BOOL *)arg2 wasCopied:(BOOL *)arg3;
 - (BOOL)isComponentPersisted:(id)arg1;
 - (BOOL)isObjectInExternalPackage:(id)arg1 claimingComponent:(id *)arg2;

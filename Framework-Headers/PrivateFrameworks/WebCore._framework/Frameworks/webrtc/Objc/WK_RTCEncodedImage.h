@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     int _encodedWidth;
     int _encodedHeight;
     unsigned int _timeStamp;
+    int _spatialIndex;
     NSData *_buffer;
     long long _captureTimeMs;
     long long _ntpTimeMs;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long ntpTimeMs; // @synthesize ntpTimeMs=_ntpTimeMs;
 @property (strong, nonatomic) NSNumber *qp; // @synthesize qp=_qp;
 @property (nonatomic) long long rotation; // @synthesize rotation=_rotation;
+@property (nonatomic) int spatialIndex; // @synthesize spatialIndex=_spatialIndex;
 @property (nonatomic) unsigned int timeStamp; // @synthesize timeStamp=_timeStamp;
 
 - (void).cxx_destruct;

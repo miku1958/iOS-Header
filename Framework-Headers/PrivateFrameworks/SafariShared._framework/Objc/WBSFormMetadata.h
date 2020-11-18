@@ -19,6 +19,7 @@
     BOOL _bestForCredentialPreFill;
     BOOL _bestForPageLevelAutoFill;
     BOOL _bestForStreamlinedLogin;
+    BOOL _eligibleForAutomaticLogin;
     BOOL _visible;
     BOOL _usesRelAsync;
     BOOL _usesGeneratedPassword;
@@ -48,6 +49,7 @@
 @property (readonly, nonatomic) BOOL containsAtLeastOneSecureTextField;
 @property (readonly, copy, nonatomic) NSArray *controls;
 @property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic, getter=isEligibleForAutomaticLogin) BOOL eligibleForAutomaticLogin; // @synthesize eligibleForAutomaticLogin=_eligibleForAutomaticLogin;
 @property (readonly, copy, nonatomic) NSString *firstCreditCardCardholderFieldOrCreditCardNumberFieldUniqueID; // @synthesize firstCreditCardCardholderFieldOrCreditCardNumberFieldUniqueID=_firstCreditCardCardholderFieldOrCreditCardNumberFieldUniqueID;
 @property (readonly, nonatomic) BOOL isSearchForm; // @synthesize isSearchForm=_isSearchForm;
 @property (readonly, copy, nonatomic) NSString *oldPasswordElementUniqueID; // @synthesize oldPasswordElementUniqueID=_oldPasswordElementUniqueID;

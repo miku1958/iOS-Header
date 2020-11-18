@@ -10,6 +10,7 @@
 
 @interface _SFNavigationResult : NSObject
 {
+    BOOL _loadWasUserDriven;
     LSApplicationProxy *_externalApplication;
     long long _externalApplicationCategory;
     long long _type;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) LSApplicationProxy *externalApplication; // @synthesize externalApplication=_externalApplication;
 @property (readonly, nonatomic) long long externalApplicationCategory; // @synthesize externalApplicationCategory=_externalApplicationCategory;
 @property (readonly, nonatomic) BOOL isRedirectToAppStore;
+@property (nonatomic) BOOL loadWasUserDriven; // @synthesize loadWasUserDriven=_loadWasUserDriven;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)resultOfLoadingRequest:(id)arg1 isMainFrame:(BOOL)arg2 disallowRedirectToExternalApps:(BOOL)arg3 preferredApplicationBundleIdentifier:(id)arg4;

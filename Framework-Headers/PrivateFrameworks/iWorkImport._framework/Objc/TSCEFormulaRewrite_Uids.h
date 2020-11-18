@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)indexSetBySubtractingOurIndexesFromIndexSet:(id)arg1;
 - (id)initFromMessage:(const struct IndexedUidsArchive *)arg1;
 - (id)initWithUids:(const vector_4dc5f307 *)arg1;
+- (id)initWithUids:(const vector_4dc5f307 *)arg1 atIndexes:(const vector_12da65de *)arg2;
 - (void)loadIndexesForTable:(id)arg1 isRows:(BOOL)arg2 shuffleMap:(id)arg3;
 - (unsigned int)rowIndexForUid:(const UUIDData_5fbc143e *)arg1;
 - (void)saveToMessage:(struct IndexedUidsArchive *)arg1;

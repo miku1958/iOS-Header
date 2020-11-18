@@ -15,6 +15,7 @@
     unsigned long long _duration;
     unsigned long long _startupDelay;
     unsigned long long _timestamp;
+    int _certified;
     AWDHomeKitCameraStreamMessaging *_controllerMessaging;
     unsigned int _errorCode;
     AWDHomeKitCameraIDSSessionSetup *_idsSessionSetup;
@@ -37,6 +38,7 @@
         unsigned int duration:1;
         unsigned int startupDelay:1;
         unsigned int timestamp:1;
+        unsigned int certified:1;
         unsigned int errorCode:1;
         unsigned int receivedFirstFrame:1;
         unsigned int resolutionOnClose:1;
@@ -46,9 +48,11 @@
     } _has;
 }
 
+@property (nonatomic) int certified; // @synthesize certified=_certified;
 @property (strong, nonatomic) AWDHomeKitCameraStreamMessaging *controllerMessaging; // @synthesize controllerMessaging=_controllerMessaging;
 @property (nonatomic) unsigned long long duration; // @synthesize duration=_duration;
 @property (nonatomic) unsigned int errorCode; // @synthesize errorCode=_errorCode;
+@property (nonatomic) BOOL hasCertified;
 @property (readonly, nonatomic) BOOL hasControllerMessaging;
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasErrorCode;
@@ -90,9 +94,11 @@
 + (Class)reconfigurationsType;
 + (Class)resolutionCountType;
 - (void).cxx_destruct;
+- (int)StringAsCertified:(id)arg1;
 - (int)StringAsResolutionOnClose:(id)arg1;
 - (void)addReconfigurations:(id)arg1;
 - (void)addResolutionCount:(id)arg1;
+- (id)certifiedAsString:(int)arg1;
 - (void)clearReconfigurations;
 - (void)clearResolutionCounts;
 - (void)copyTo:(id)arg1;

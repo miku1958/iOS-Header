@@ -6,36 +6,20 @@
 
 #import <iWorkImport/TSKCOUpdateOperation.h>
 
-#import <iWorkImport/TSKCOIdOperation-Protocol.h>
-#import <iWorkImport/TSKCOTransforming-Protocol.h>
-#import <iWorkImport/TSKCOUpdateIdOperationSubset-Protocol.h>
-
-@class TSKCOIdAddress;
-
 __attribute__((visibility("hidden")))
-@interface TSKCOUpdateIdOperation : TSKCOUpdateOperation <TSKCOIdOperation, TSKCOUpdateIdOperationSubset, TSKCOTransforming>
+@interface TSKCOUpdateIdOperation : TSKCOUpdateOperation
 {
-    TSKCOIdAddress *_address;
 }
 
-@property (readonly, nonatomic) TSKCOIdAddress *address; // @synthesize address=_address;
-
-+ (id)operationWithIdAddress:(id)arg1 propertyName:(id)arg2;
-- (void).cxx_destruct;
-- (id)initWithIdAddress:(id)arg1 propertyName:(id)arg2;
-- (id)initWithIdAddress:(id)arg1 propertyName:(id)arg2 noop:(BOOL)arg3;
++ (id)operationWithAddress:(const vector_4dc5f307 *)arg1 propertyId:(unsigned short)arg2;
++ (id)operationWithUUIDPath:(id)arg1 propertyId:(unsigned short)arg2;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 propertyId:(unsigned short)arg2;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 propertyId:(unsigned short)arg2 noop:(BOOL)arg3;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 propertyType:(const CDStruct_1464e8ba *)arg2 noop:(BOOL)arg3;
 - (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
+- (shared_ptr_f167ad79)newTransformableOperation;
 - (id)operationWithNewNoop:(BOOL)arg1;
 - (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
-- (id)toString;
-- (id)toUpdateIdOperation;
-- (id)transformDynamicByAnyOperation:(id)arg1 byHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformIdPlacementBaseOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformReplaceRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformStaticByAnyOperation:(id)arg1 byHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformUpdateIdOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformUpdateRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)ut_transformByTransformer:(id)arg1;
 
 @end
 

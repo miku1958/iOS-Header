@@ -35,6 +35,7 @@
 - (double)_modelBaseScaleFactorForNewAnnotation;
 - (void)_peripheralAvailabilityDidUpdate:(id)arg1;
 - (void)_setRectangleToFitTextOnTextAnnotation:(id)arg1;
+- (id)_strokeColorForNewAnnotation;
 - (double)_strokeWidthForNewAnnotation;
 - (struct CGRect)_validatedRect:(struct CGRect)arg1 fitsInVisibleRegionOfOverlayView:(id)arg2 ownedByPageController:(id)arg3 centeredAtPoint:(struct CGPoint)arg4;
 - (void)addNewAnnotation:(id)arg1 onPageController:(id)arg2 shouldSelect:(BOOL)arg3 shouldCascade:(BOOL)arg4;

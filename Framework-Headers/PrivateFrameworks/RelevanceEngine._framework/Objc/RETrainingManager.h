@@ -39,6 +39,7 @@
 - (void)addTrainingContext:(id)arg1;
 - (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)flushTraining;
 - (id)initWithRelevanceEngine:(id)arg1;
 - (void)makeContextCurrent:(id)arg1;
 - (void)manuallyPerformTraining;

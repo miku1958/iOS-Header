@@ -6,20 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable;
+@class NSHashTable, Protocol;
 
 @interface NFMultiDelegate : NSObject
 {
     NSHashTable *_children;
+    Protocol *_delegateProtocol;
 }
 
 @property (readonly, nonatomic) NSHashTable *children; // @synthesize children=_children;
 @property (readonly, nonatomic) id delegate;
+@property (readonly, nonatomic) Protocol *delegateProtocol; // @synthesize delegateProtocol=_delegateProtocol;
 
 - (void).cxx_destruct;
 - (void)addDelegate:(id)arg1;
+- (BOOL)conformsToProtocol:(id)arg1;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
+- (id)initWithDelegate:(id)arg1 delegateProtocol:(id)arg2;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)removeDelegate:(id)arg1;
 - (void)replaceDelegate:(id)arg1 withDelegate:(id)arg2;

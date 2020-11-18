@@ -6,119 +6,23 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MediaControls/MPAVRoutingViewControllerThemeDelegate-Protocol.h>
-#import <MediaControls/MPMediaControlsViewControllerDelegate-Protocol.h>
-#import <MediaControls/MediaControlsCollectionItemViewController-Protocol.h>
-#import <MediaControls/MediaControlsEndpointControllerDelegate-Protocol.h>
-#import <MediaControls/MediaControlsMasterVolumeSliderDelegate-Protocol.h>
-#import <MediaControls/MediaControlsRatingActionSheet-Protocol.h>
+@class MPAVRoutingViewController, MTVibrantStylingProvider, UIView;
 
-@class MPAVRoutingViewController, MPArtworkCatalog, MPMediaControlsViewController, MPVolumeGroupSliderCoordinator, MTVibrantStylingProvider, MediaControlsEndpointController, MediaControlsHeaderView, MediaControlsParentContainerView, MediaControlsRoutingCornerView, MediaControlsVolumeContainerView, NSMutableArray, NSString, UIView;
-@protocol MediaControlsPanelViewControllerDelegate;
-
-@interface MediaControlsPanelViewController : UIViewController <MediaControlsEndpointControllerDelegate, MediaControlsRatingActionSheet, MPAVRoutingViewControllerThemeDelegate, MPMediaControlsViewControllerDelegate, MediaControlsMasterVolumeSliderDelegate, MediaControlsCollectionItemViewController>
+@interface MediaControlsPanelViewController : UIViewController
 {
-    struct CGSize _lastKnownSize;
-    BOOL _selected;
-    BOOL _transitioning;
-    BOOL _coverSheetRoutingViewControllerShouldBePresented;
-    BOOL _onScreen;
-    BOOL _isListeningForResponse;
-    UIView *_contentView;
-    UIView *_backgroundView;
+    id _delegate;
     MPAVRoutingViewController *_routingViewController;
-    id<MediaControlsPanelViewControllerDelegate> _delegate;
     MTVibrantStylingProvider *_vibrantStylingProvider;
-    long long _style;
-    MediaControlsHeaderView *_headerView;
-    MediaControlsRoutingCornerView *_routingCornerView;
-    MediaControlsParentContainerView *_parentContainerView;
-    MediaControlsVolumeContainerView *_volumeContainerView;
-    UIView *_topDividerView;
-    UIView *_bottomDividerView;
-    NSMutableArray *_secondaryStringComponents;
-    MPMediaControlsViewController *_coverSheetRoutingViewController;
-    MPArtworkCatalog *_artworkCatalog;
-    MPVolumeGroupSliderCoordinator *_groupSliderCoordinator;
-    NSString *_label;
-    unsigned long long _supportedModes;
-    long long _selectedMode;
-    MediaControlsEndpointController *_endpointController;
-    CDUnknownBlockType _routingCornerViewTappedBlock;
+    UIView *_backgroundView;
 }
 
-@property (strong, nonatomic) MPArtworkCatalog *artworkCatalog; // @synthesize artworkCatalog=_artworkCatalog;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property (strong, nonatomic) UIView *bottomDividerView; // @synthesize bottomDividerView=_bottomDividerView;
-@property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property (strong, nonatomic) MPMediaControlsViewController *coverSheetRoutingViewController; // @synthesize coverSheetRoutingViewController=_coverSheetRoutingViewController;
-@property (nonatomic) BOOL coverSheetRoutingViewControllerShouldBePresented; // @synthesize coverSheetRoutingViewControllerShouldBePresented=_coverSheetRoutingViewControllerShouldBePresented;
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<MediaControlsPanelViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (strong, nonatomic) MediaControlsEndpointController *endpointController; // @synthesize endpointController=_endpointController;
-@property (strong, nonatomic) MPVolumeGroupSliderCoordinator *groupSliderCoordinator; // @synthesize groupSliderCoordinator=_groupSliderCoordinator;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) MediaControlsHeaderView *headerView; // @synthesize headerView=_headerView;
-@property (nonatomic) BOOL isListeningForResponse; // @synthesize isListeningForResponse=_isListeningForResponse;
-@property (copy, nonatomic) NSString *label; // @synthesize label=_label;
-@property (nonatomic, getter=isOnScreen) BOOL onScreen; // @synthesize onScreen=_onScreen;
-@property (strong, nonatomic) MediaControlsParentContainerView *parentContainerView; // @synthesize parentContainerView=_parentContainerView;
-@property (strong, nonatomic) MediaControlsRoutingCornerView *routingCornerView; // @synthesize routingCornerView=_routingCornerView;
-@property (copy, nonatomic) CDUnknownBlockType routingCornerViewTappedBlock; // @synthesize routingCornerViewTappedBlock=_routingCornerViewTappedBlock;
+@property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) MPAVRoutingViewController *routingViewController; // @synthesize routingViewController=_routingViewController;
-@property (strong, nonatomic) NSMutableArray *secondaryStringComponents; // @synthesize secondaryStringComponents=_secondaryStringComponents;
-@property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
-@property (nonatomic) long long selectedMode; // @synthesize selectedMode=_selectedMode;
-@property (nonatomic) long long style; // @synthesize style=_style;
-@property (readonly) Class superclass;
-@property (nonatomic) unsigned long long supportedModes; // @synthesize supportedModes=_supportedModes;
-@property (strong, nonatomic) UIView *topDividerView; // @synthesize topDividerView=_topDividerView;
-@property (nonatomic, getter=isTransitioning) BOOL transitioning; // @synthesize transitioning=_transitioning;
 @property (strong, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider; // @synthesize vibrantStylingProvider=_vibrantStylingProvider;
-@property (strong, nonatomic) MediaControlsVolumeContainerView *volumeContainerView; // @synthesize volumeContainerView=_volumeContainerView;
 
 + (id)panelViewControllerForCoverSheet;
 - (void).cxx_destruct;
-- (void)_dismissRoutingViewControllerFromCoverSheetIfNeeded;
-- (void)_mediaControlsPanelViewControllerReceivedInteraction:(id)arg1;
-- (void)_presentRoutingViewControllerFromCoverSheet;
-- (id)_route;
-- (void)_routingCornerViewReceivedTap:(id)arg1;
-- (void)_setRoutingPickerVisible:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)_updateConfiguration;
-- (void)_updateControlCenterMetadata:(id)arg1;
-- (void)_updateHeaderUI;
-- (void)_updateOnScreenForStyle:(long long)arg1;
-- (void)_updatePlaceholderArtwork;
-- (void)_updateRouteNameLabel;
-- (void)_updateRoutingCornerView;
-- (void)_updateSecondaryStringFormat;
-- (void)_updateStyle;
-- (struct UIEdgeInsets)contentInsetsForRoutingViewController:(id)arg1;
-- (void)endpointController:(id)arg1 didLoadNewResponse:(id)arg2;
-- (void)endpointControllerDidChangeState:(id)arg1;
-- (void)endpointControllerDidUpdateRoutingAvailability:(id)arg1;
-- (void)endpointControllerRouteDidUpdate:(id)arg1;
-- (void)headerViewButtonPressed:(id)arg1;
-- (void)headerViewLaunchNowPlayingAppButtonPressed:(id)arg1;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithStyle:(long long)arg1;
-- (void)mediaControlsViewControllerDidReceiveInteraction:(id)arg1;
-- (void)presentRatingActionSheet:(id)arg1;
-- (void)routingViewController:(id)arg1 willDisplayCell:(id)arg2;
-- (void)setSelectedMode:(long long)arg1 animated:(BOOL)arg2;
-- (BOOL)shouldAutomaticallyForwardAppearanceMethods;
-- (BOOL)shouldEnableSyncingForSlider:(id)arg1;
-- (BOOL)slider:(id)arg1 shouldCancelSnapWithTouch:(id)arg2;
-- (BOOL)slider:(id)arg1 syncStateWillChangeFromState:(long long)arg2 toState:(long long)arg3;
-- (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
-- (void)willTransitionToSize:(struct CGSize)arg1 withCoordinator:(id)arg2;
 
 @end
 

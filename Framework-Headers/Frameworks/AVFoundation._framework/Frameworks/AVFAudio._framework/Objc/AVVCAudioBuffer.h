@@ -18,6 +18,7 @@
 @property (readonly) int packetDescriptionCapacity;
 @property (readonly) int packetDescriptionCount;
 @property (readonly) struct AudioStreamPacketDescription *packetDescriptions;
+@property (readonly) BOOL remoteVoiceActivityAvailable;
 @property (readonly) unsigned char remoteVoiceActivityRMS;
 @property (readonly) unsigned char remoteVoiceActivityVAD;
 @property (readonly) struct AudioStreamBasicDescription *streamDescription;

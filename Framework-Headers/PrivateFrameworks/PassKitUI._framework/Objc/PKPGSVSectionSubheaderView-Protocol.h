@@ -6,7 +6,12 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
+@protocol PKPGSVSectionSubheaderDelegate;
+
 @protocol PKPGSVSectionSubheaderView <NSObject>
 - (BOOL)needsUpdate;
+
+@optional
+- (void)setSubheaderDelegate:(id<PKPGSVSectionSubheaderDelegate>)arg1;
 @end
 

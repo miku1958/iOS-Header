@@ -66,6 +66,7 @@
 - (void)syncFillColorOnSelectionToUI;
 - (void)syncStrokeColorOnSelectionToUI;
 - (void)updateAttributeSenderState:(id)arg1 segment:(long long)arg2 enabled:(BOOL)arg3;
+- (void)updateInkIfNeeded:(id)arg1;
 
 @end
 

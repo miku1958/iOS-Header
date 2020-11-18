@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) UIView *behaviorView;
 @property (readonly, nonatomic) SXComponentView *componentView; // @synthesize componentView=_componentView;
 @property (readonly, nonatomic) BOOL isSetup; // @synthesize isSetup=_isSetup;
+@property (readonly, nonatomic) BOOL requiresContinuousUpdates;
 
 - (void).cxx_destruct;
 - (void)destroyWithBehaviorController:(id)arg1;

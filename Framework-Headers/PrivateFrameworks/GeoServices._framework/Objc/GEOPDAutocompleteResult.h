@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     unsigned int _retainSearchTime;
     NSMutableArray *_sections;
+    NSMutableArray *_sortPriorityMappings;
     BOOL _enableRap;
     BOOL _shouldDisplayNoResults;
     struct {
@@ -32,12 +33,16 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int retainSearchTime; // @synthesize retainSearchTime=_retainSearchTime;
 @property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property (nonatomic) BOOL shouldDisplayNoResults; // @synthesize shouldDisplayNoResults=_shouldDisplayNoResults;
+@property (strong, nonatomic) NSMutableArray *sortPriorityMappings; // @synthesize sortPriorityMappings=_sortPriorityMappings;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)sectionsType;
++ (Class)sortPriorityMappingType;
 - (void).cxx_destruct;
 - (void)addSections:(id)arg1;
+- (void)addSortPriorityMapping:(id)arg1;
 - (void)clearSections;
+- (void)clearSortPriorityMappings;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -48,6 +53,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)readFrom:(id)arg1;
 - (id)sectionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sectionsCount;
+- (id)sortPriorityMappingAtIndex:(unsigned long long)arg1;
+- (unsigned long long)sortPriorityMappingsCount;
 - (void)writeTo:(id)arg1;
 
 @end

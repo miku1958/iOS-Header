@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) BOOL hasRemoteData;
-@property (readonly, nonatomic) BOOL inheritPermissions;
-@property (readonly, nonatomic) BOOL preserveDocumentUUID;
+@property (readonly, nonatomic) BOOL inheritAttributes;
+@property (readonly, nonatomic) BOOL isSavingCurrentDocument;
 @property (nonatomic) int sampleID; // @synthesize sampleID=_sampleID;
 @property (readonly, nonatomic) BOOL shouldUpdate;
 @property (readonly, nonatomic) long long updateType; // @synthesize updateType=_updateType;

@@ -12,18 +12,18 @@
 {
     BOOL _empty;
     long long _style;
-    MediaControlsTransportStackView *_mediaControlsTransportStackView;
-    MediaControlsTimeControl *_mediaControlsTimeControl;
+    MediaControlsTransportStackView *_transportStackView;
+    MediaControlsTimeControl *_timeControl;
     UIVisualEffectView *_primaryVisualEffectView;
 }
 
 @property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
-@property (strong, nonatomic) MediaControlsTimeControl *mediaControlsTimeControl; // @synthesize mediaControlsTimeControl=_mediaControlsTimeControl;
-@property (strong, nonatomic) MediaControlsTransportStackView *mediaControlsTransportStackView; // @synthesize mediaControlsTransportStackView=_mediaControlsTransportStackView;
 @property (strong, nonatomic) UIVisualEffectView *primaryVisualEffectView; // @synthesize primaryVisualEffectView=_primaryVisualEffectView;
 @property (strong, nonatomic) MPCPlayerResponse *response;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (strong, nonatomic) MediaControlsTimeControl *timeControl; // @synthesize timeControl=_timeControl;
 @property (nonatomic, getter=isTimeControlOnScreen) BOOL timeControlOnScreen;
+@property (strong, nonatomic) MediaControlsTransportStackView *transportStackView; // @synthesize transportStackView=_transportStackView;
 
 - (void).cxx_destruct;
 - (void)_updateStyle;

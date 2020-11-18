@@ -29,7 +29,7 @@
 @property (copy, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property (nonatomic, getter=isDiscretionary) BOOL discretionary; // @synthesize discretionary=_discretionary;
 @property (nonatomic) BOOL requiresPower; // @synthesize requiresPower=_requiresPower;
-@property (strong, nonatomic) NSData *resumeData; // @synthesize resumeData=_resumeData;
+@property (copy, nonatomic) NSData *resumeData; // @synthesize resumeData=_resumeData;
 
 - (void).cxx_destruct;
 - (id)_sessionIdentifier;

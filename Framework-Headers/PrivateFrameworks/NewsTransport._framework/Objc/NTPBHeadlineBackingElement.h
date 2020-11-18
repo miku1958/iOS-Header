@@ -13,12 +13,15 @@
 @interface NTPBHeadlineBackingElement : PBCodable <NSCopying>
 {
     NSData *_articleRecordData;
+    NSData *_masterIssueRecordData;
     NSData *_sourceChannelRecordData;
 }
 
 @property (strong, nonatomic) NSData *articleRecordData; // @synthesize articleRecordData=_articleRecordData;
 @property (readonly, nonatomic) BOOL hasArticleRecordData;
+@property (readonly, nonatomic) BOOL hasMasterIssueRecordData;
 @property (readonly, nonatomic) BOOL hasSourceChannelRecordData;
+@property (strong, nonatomic) NSData *masterIssueRecordData; // @synthesize masterIssueRecordData=_masterIssueRecordData;
 @property (strong, nonatomic) NSData *sourceChannelRecordData; // @synthesize sourceChannelRecordData=_sourceChannelRecordData;
 
 - (void).cxx_destruct;

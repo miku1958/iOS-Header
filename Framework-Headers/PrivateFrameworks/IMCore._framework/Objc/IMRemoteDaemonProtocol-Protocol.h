@@ -32,6 +32,7 @@
 - (void)chat:(NSString *)arg1 updateLastAddressedSIMID:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 updateProperties:(NSDictionary *)arg2;
 - (void)cleanupAttachments;
+- (void)clearAnalyticDefaultsAndLocalSyncState;
 - (void)clearChatZoneSyncToken;
 - (void)clearDataFromCloudKit;
 - (void)clearHistoryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 beforeGUID:(NSString *)arg4 afterGUID:(NSString *)arg5 chatID:(NSString *)arg6 queryID:(NSString *)arg7;
@@ -191,10 +192,12 @@
 - (void)unEnrollDeviceForSMSRelay:(NSString *)arg1 account:(NSString *)arg2;
 - (void)unregisterAccount:(NSString *)arg1;
 - (void)unvalidateAliases:(NSArray *)arg1 account:(NSString *)arg2;
+- (void)updateAttachmentFileSizes;
 - (void)updateAuthorizationCredentials:(NSString *)arg1 token:(NSString *)arg2 account:(NSString *)arg3;
 - (void)updateBalloonPayload:(NSData *)arg1 attachments:(NSArray *)arg2 forMessageGUID:(NSString *)arg3;
 - (void)updateMessage:(IMMessageItem *)arg1;
 - (void)updateUnformattedID:(NSString *)arg1 forBuddyID:(NSString *)arg2 onService:(NSString *)arg3;
+- (void)uploadDailyAnalyticstoCloudKit;
 - (void)validateAliases:(NSArray *)arg1 account:(NSString *)arg2;
 - (void)validateProfileAccount:(NSString *)arg1;
 - (void)writeAccount:(NSString *)arg1 defaults:(NSDictionary *)arg2;

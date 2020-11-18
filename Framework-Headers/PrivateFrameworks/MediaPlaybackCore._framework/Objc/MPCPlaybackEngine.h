@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlaybackCore/MPCExplicitContentAuthorizationDelegate-Protocol.h>
+
 @class MPCPlaybackIntent, MPCPlayerPath, MPProtocolProxy, NSString, UIView, _MPCAVController, _MPCLeaseManager, _MPCMediaRemotePublisher, _MPCReportingController;
 @protocol MPCPlaybackEngineDelegate, MPCPlaybackEngineEventObserving;
 
-@interface MPCPlaybackEngine : NSObject
+@interface MPCPlaybackEngine : NSObject <MPCExplicitContentAuthorizationDelegate>
 {
     BOOL _pictureInPictureSupported;
     BOOL _videoSupported;
@@ -28,9 +30,12 @@
 }
 
 @property (copy, nonatomic) NSString *audioSessionCategory; // @synthesize audioSessionCategory=_audioSessionCategory;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MPCPlaybackEngineDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) MPProtocolProxy<MPCPlaybackEngineEventObserving> *eventObserver; // @synthesize eventObserver=_eventObserver;
 @property (strong, nonatomic) MPCPlaybackIntent *fallbackPlaybackIntent; // @synthesize fallbackPlaybackIntent=_fallbackPlaybackIntent;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) _MPCAVController *implementation; // @synthesize implementation=_implementation;
 @property (readonly, nonatomic) _MPCLeaseManager *leaseManager; // @synthesize leaseManager=_leaseManager;
 @property (readonly, nonatomic) _MPCMediaRemotePublisher *mediaRemotePublisher; // @synthesize mediaRemotePublisher=_mediaRemotePublisher;
@@ -40,11 +45,13 @@
 @property (readonly, nonatomic) _MPCReportingController *reportingController; // @synthesize reportingController=_reportingController;
 @property (nonatomic, getter=hasScheduledPlaybackStatePreservation) BOOL scheduledPlaybackStatePreservation; // @synthesize scheduledPlaybackStatePreservation=_scheduledPlaybackStatePreservation;
 @property (nonatomic, getter=isStateRestorationSupported) BOOL stateRestorationSupported; // @synthesize stateRestorationSupported=_stateRestorationSupported;
+@property (readonly) Class superclass;
 @property (nonatomic, getter=isSystemMusicApplication) BOOL systemMusicApplication; // @synthesize systemMusicApplication=_systemMusicApplication;
 @property (nonatomic, getter=isVideoSupported) BOOL videoSupported; // @synthesize videoSupported=_videoSupported;
 @property (readonly, nonatomic) UIView *videoView;
 
 + (void)preheatPlayback;
++ (BOOL)requiresMainThread;
 - (void).cxx_destruct;
 - (void)_initializePlaybackStack;
 - (void)_preservePlaybackStateImmediately;
@@ -56,6 +63,7 @@
 - (void)removeEngineObserver:(id)arg1;
 - (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;
 - (void)reportUserSeekFromTime:(double)arg1 toTime:(double)arg2;
+- (void)requestAuthorizationForExplicitItem:(id)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)restoreStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)schedulePlaybackStatePreservation;
 - (void)start;

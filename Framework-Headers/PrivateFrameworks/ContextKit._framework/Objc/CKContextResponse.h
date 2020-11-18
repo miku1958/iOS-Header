@@ -8,11 +8,20 @@
 
 #import <ContextKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSError, NSString;
+@class NSArray, NSDate, NSError, NSString;
 
 @interface CKContextResponse : NSObject <NSSecureCoding>
 {
     BOOL _discarded;
+    double _hideCompletionsTimeLimit;
+    _Atomic BOOL _shown;
+    _Atomic BOOL _engaged;
+    _Atomic BOOL _transactionSuccessful;
+    _Atomic BOOL _logged;
+    _Atomic unsigned int _loggingShownMax;
+    _Atomic BOOL _loggingServerOverride;
+    _Atomic unsigned int _loggingCouldHaveShownMax;
+    _Atomic unsigned int _loggingInputLengthMax;
     BOOL _resultsNeedFiltering;
     NSString *_uuid;
     NSError *_error;
@@ -21,12 +30,16 @@
     NSArray *_level2Topics;
     NSString *_debug;
     unsigned long long _requestType;
+    unsigned long long _mustPrefixMatchLength;
+    NSDate *_hideCompletionsAfterDate;
 }
 
 @property (strong, nonatomic) NSString *debug; // @synthesize debug=_debug;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (strong, nonatomic) NSDate *hideCompletionsAfterDate; // @synthesize hideCompletionsAfterDate=_hideCompletionsAfterDate;
 @property (strong, nonatomic) NSArray *level1Topics; // @synthesize level1Topics=_level1Topics;
 @property (strong, nonatomic) NSArray *level2Topics; // @synthesize level2Topics=_level2Topics;
+@property (nonatomic) unsigned long long mustPrefixMatchLength; // @synthesize mustPrefixMatchLength=_mustPrefixMatchLength;
 @property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (strong, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (nonatomic) BOOL resultsNeedFiltering; // @synthesize resultsNeedFiltering=_resultsNeedFiltering;
@@ -39,6 +52,7 @@
 - (id)completer;
 - (void)dealloc;
 - (void)discard;
+- (void)discardCompleter:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initPlaceholderWithUUID:(id)arg1 requestType:(unsigned long long)arg2;
@@ -47,7 +61,11 @@
 - (id)initWithResults:(id)arg1 requestType:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPlaceholder;
+- (void)logEngagement:(id)arg1 forInput:(id)arg2 completion:(id)arg3;
+- (void)logResultsShown:(unsigned long long)arg1 serverOverride:(BOOL)arg2 forInput:(id)arg3 couldHaveShown:(unsigned long long)arg4;
+- (void)logTransactionSuccessfulForInput:(id)arg1 completion:(id)arg2;
 - (id)resultByQuery:(id)arg1;
+- (void)setHideCompletionsTimeLimit:(double)arg1;
 
 @end
 

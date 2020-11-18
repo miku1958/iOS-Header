@@ -24,7 +24,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)description;
+- (id)init;
 - (id)initWithMutableDictionaryStore:(id)arg1;
+- (id)lastKey;
+- (id)lastObject;
 - (id)objectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 

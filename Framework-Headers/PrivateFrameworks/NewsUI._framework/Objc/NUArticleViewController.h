@@ -6,15 +6,17 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <NewsUI/NUANFDebugSettingsObserver-Protocol.h>
+#import <NewsUI/NUBarCompressible-Protocol.h>
 #import <NewsUI/NUDynamicTypeObserving-Protocol.h>
 #import <NewsUI/NULoadable-Protocol.h>
 #import <NewsUI/SXAnalyticsReporting-Protocol.h>
 #import <NewsUI/SXScrollViewControllerDelegate-Protocol.h>
 
 @class FCObservable, NFEventManager, NFMultiDelegate, NSHashTable, NSString, NUArticleAdManager, SXScrollViewController, UIScrollView;
-@protocol NUArticleDataProvider, NUArticleKeyCommandManager, NUDynamicTypeProviding, NUEndOfArticleDataProvider, NULoadingDelegate, SXAnalyticsReporting;
+@protocol NUANFDebugSettingsProvider, NUArticleDataProvider, NUArticleKeyCommandManager, NUDocumentSectionBlueprintProvider, NUDynamicTypeProviding, NUEndOfArticleDataProvider, NULoadingDelegate, SXAnalyticsReporting;
 
-@interface NUArticleViewController : UIViewController <SXScrollViewControllerDelegate, SXAnalyticsReporting, NUDynamicTypeObserving, NULoadable>
+@interface NUArticleViewController : UIViewController <SXScrollViewControllerDelegate, SXAnalyticsReporting, NUDynamicTypeObserving, NUANFDebugSettingsObserver, NULoadable, NUBarCompressible>
 {
     BOOL _articleIsPresentingFullscreen;
     id<NULoadingDelegate> _loadingDelegate;
@@ -31,6 +33,9 @@
     NFEventManager *_eventManager;
     id<NUArticleKeyCommandManager> _keyCommandManager;
     NSHashTable *_loadingListeners;
+    id<NUDocumentSectionBlueprintProvider> _documentSectionBlueprintProvider;
+    id<NUANFDebugSettingsProvider> _debugSettingsProvider;
+    unsigned long long _presentationMode;
 }
 
 @property (readonly, nonatomic) NUArticleAdManager *adManager; // @synthesize adManager=_adManager;
@@ -40,7 +45,9 @@
 @property (nonatomic) BOOL articleIsPresentingFullscreen; // @synthesize articleIsPresentingFullscreen=_articleIsPresentingFullscreen;
 @property (readonly, nonatomic) FCObservable *articleViewStyler; // @synthesize articleViewStyler=_articleViewStyler;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) id<NUANFDebugSettingsProvider> debugSettingsProvider; // @synthesize debugSettingsProvider=_debugSettingsProvider;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<NUDocumentSectionBlueprintProvider> documentSectionBlueprintProvider; // @synthesize documentSectionBlueprintProvider=_documentSectionBlueprintProvider;
 @property (readonly, nonatomic) id<NUDynamicTypeProviding> dynamicTypeProviding; // @synthesize dynamicTypeProviding=_dynamicTypeProviding;
 @property (readonly, nonatomic) id<NUEndOfArticleDataProvider> endOfArticleDataProvider; // @synthesize endOfArticleDataProvider=_endOfArticleDataProvider;
 @property (readonly, nonatomic) NFEventManager *eventManager; // @synthesize eventManager=_eventManager;
@@ -49,6 +56,7 @@
 @property (weak, nonatomic) id<NULoadingDelegate> loadingDelegate; // @synthesize loadingDelegate=_loadingDelegate;
 @property (readonly, nonatomic) NSHashTable *loadingListeners; // @synthesize loadingListeners=_loadingListeners;
 @property (readonly, nonatomic) NFMultiDelegate *multiScrollViewDelegate; // @synthesize multiScrollViewDelegate=_multiScrollViewDelegate;
+@property (nonatomic) unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
 @property (readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly, nonatomic) SXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
 @property (readonly) Class superclass;
@@ -57,7 +65,7 @@
 - (BOOL)canBecomeFirstResponder;
 - (id)currentPresentationAttributes;
 - (void)dynamicTypeDidChange:(id)arg1;
-- (id)initWithArticleDataProvider:(id)arg1 scrollViewController:(id)arg2 articleAdManager:(id)arg3 dynamicTypeProviding:(id)arg4 appStateMonitor:(id)arg5 keyCommandManager:(id)arg6 loadingListeners:(id)arg7;
+- (id)initWithArticleDataProvider:(id)arg1 scrollViewController:(id)arg2 articleAdManager:(id)arg3 dynamicTypeProviding:(id)arg4 appStateMonitor:(id)arg5 keyCommandManager:(id)arg6 loadingListeners:(id)arg7 headerBlueprintProvider:(id)arg8 debugSettingsProvider:(id)arg9;
 - (double)navigationBarHeightForScrollViewController:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (BOOL)prefersStatusBarHidden;
@@ -68,12 +76,17 @@
 - (void)scrollViewControllerDidLayoutContent:(id)arg1;
 - (void)scrollViewControllerDismissFullscreen:(id)arg1;
 - (void)scrollViewControllerRequestsFullscreen:(id)arg1;
+- (void)testingConditionEnabled:(BOOL)arg1;
 - (double)toolBarHeightForScrollViewController:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updatePresentationAttributes;
+- (void)updateScrollViewControllerWithFooterBlueprint:(id)arg1;
+- (void)updateScrollViewControllerWithHeaderBlueprint:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewportDebuggingEnabled:(BOOL)arg1;
 
 @end
 

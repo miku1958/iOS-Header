@@ -14,6 +14,8 @@
     int _signalCount;
 }
 
+@property (readonly, nonatomic) int signalCount; // @synthesize signalCount=_signalCount;
+
 - (void).cxx_destruct;
 - (id)description;
 - (void)incrementIntegerForKey:(id)arg1;

@@ -68,10 +68,10 @@
 - (void)_presentAddCardAlert:(id)arg1;
 - (void)_presentTermsAndConditionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_presetPaymentRequest:(id)arg1 forResultType:(long long)arg2;
+- (BOOL)_readerModeIsSupported;
 - (id)_rightBarButton;
 - (void)_rightBarButtonPressed:(id)arg1;
 - (BOOL)_shouldHideImage;
-- (BOOL)_shouldShowTransferButton;
 - (void)_showSpinner:(BOOL)arg1;
 - (id)_spinnerBarButton;
 - (void)didUpdateAmount:(id)arg1 isValid:(BOOL)arg2;

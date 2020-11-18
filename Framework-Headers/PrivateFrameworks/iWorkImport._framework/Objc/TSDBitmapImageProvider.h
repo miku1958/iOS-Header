@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 + (struct CGImageSource *)p_newImageSourceFromFilePath:(id)arg1;
 - (void).cxx_destruct;
 - (struct CGImage *)CGImageForNaturalSize;
-- (struct CGImage *)CGImageForSize:(struct CGSize)arg1 inContext:(struct CGContext *)arg2 orLayer:(id)arg3;
+- (struct CGImage *)CGImageForSize:(struct CGSize)arg1 inContext:(struct CGContext *)arg2 orContentsScaleProvider:(id)arg3;
 - (struct CGImage *)CGImageResampledToSize:(struct CGSize)arg1 lowQuality:(BOOL)arg2;
 - (void)dealloc;
 - (struct CGSize)dpiAdjustedNaturalSize;

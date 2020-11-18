@@ -13,6 +13,7 @@
 - (id)PKColorForKey:(id)arg1;
 - (id)PKDateForKey:(id)arg1;
 - (id)PKDecimalNumberForKey:(id)arg1;
+- (id)PKDecimalNumberFromStringForKey:(id)arg1;
 - (id)PKDictionaryForKey:(id)arg1;
 - (double)PKDoubleForKey:(id)arg1;
 - (long long)PKIntegerForKey:(id)arg1;

@@ -211,11 +211,11 @@
 - (void)_geolocationDidFailWithMessage:(id)arg1;
 - (id)_geolocationProvider;
 - (id)_getDataInteractionData;
-- (id)_globalHistoryItem;
 - (BOOL)_inFastImageScalingMode;
 - (id)_initWithArguments:(id)arg1;
 - (id)_initWithFrame:(struct CGRect)arg1 frameName:(id)arg2 groupName:(id)arg3;
 - (void)_insertNewlineInQuotedContent;
+- (void)_invalidateUserAgentCache;
 - (BOOL)_isClosed;
 - (BOOL)_isClosing;
 - (BOOL)_isLoading;
@@ -294,7 +294,6 @@
 - (void)_setFormDelegate:(id)arg1;
 - (void)_setGapBetweenPages:(double)arg1;
 - (void)_setGeolocationProvider:(id)arg1;
-- (void)_setGlobalHistoryItem:(struct HistoryItem *)arg1;
 - (void)_setHostApplicationProcessIdentifier:(int)arg1 auditToken:(CDStruct_6ad76789)arg2;
 - (void)_setIsVisible:(BOOL)arg1;
 - (void)_setMaintainsInactiveSelection:(BOOL)arg1;
@@ -343,6 +342,7 @@
 - (id)_webMailDelegate;
 - (id)_webcore_effectiveFirstResponder;
 - (void)_willStartScrollingOrZooming;
+- (void)_windowVisibilityChanged:(id)arg1;
 - (void)_zoomIn:(id)arg1 isTextOnly:(BOOL)arg2;
 - (float)_zoomMultiplier:(BOOL)arg1;
 - (void)_zoomOut:(id)arg1 isTextOnly:(BOOL)arg2;
@@ -593,6 +593,7 @@
 - (id)textIteratorForRect:(struct CGRect)arg1;
 - (void)toggleBaseWritingDirection:(id)arg1;
 - (void)toggleBold:(id)arg1;
+- (void)toggleContinuousSpellChecking:(id)arg1;
 - (void)toggleItalic:(id)arg1;
 - (void)toggleUnderline:(id)arg1;
 - (id)trackedRepaintRects;

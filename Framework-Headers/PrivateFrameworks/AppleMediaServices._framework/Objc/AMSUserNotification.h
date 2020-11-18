@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class AMSUserNotificationAction, NSArray, NSMutableDictionary, NSString;
+@class ACAccount, AMSUserNotificationAction, NSArray, NSMutableDictionary, NSString, NSURL;
 
 @interface AMSUserNotification : NSObject
 {
+    ACAccount *_account;
+    NSURL *_artworkUrl;
+    NSURL *_videoUrl;
     NSArray *_buttonActions;
-    long long _intent;
     AMSUserNotificationAction *_defaultAction;
     NSString *_identifier;
     NSString *_informativeText;
@@ -19,33 +21,41 @@
     NSString *_subtitle;
     NSString *_title;
     NSMutableDictionary *_userInfo;
+    long long _intent;
     NSString *_categoryIdentifier;
+    NSString *_threadIdentifier;
 }
 
+@property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (strong, nonatomic) NSURL *artworkUrl; // @synthesize artworkUrl=_artworkUrl;
 @property (strong, nonatomic) NSArray *buttonActions; // @synthesize buttonActions=_buttonActions;
-@property (readonly, nonatomic) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
+@property (strong, nonatomic) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property (strong, nonatomic) AMSUserNotificationAction *defaultAction; // @synthesize defaultAction=_defaultAction;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *informativeText; // @synthesize informativeText=_informativeText;
 @property (nonatomic) long long intent; // @synthesize intent=_intent;
 @property (strong, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (strong, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property (strong, nonatomic) NSURL *videoUrl; // @synthesize videoUrl=_videoUrl;
 
++ (BOOL)_canParseNotificationWithUserInfo:(id)arg1;
++ (id)handleNotificationResponse:(id)arg1 bagContract:(id)arg2;
++ (BOOL)shouldHandleNotificationResponse:(id)arg1;
 - (void).cxx_destruct;
 - (id)_compileStoredUserInfo;
 - (void)_populatePropertiesFromStoredUserInfo:(id)arg1;
 - (void)addButtonAction:(id)arg1;
 - (id)createNSUserNotification;
-- (id)createUNNotificationCategory;
+- (id)createUNNotificationActions;
 - (id)createUNNotificationContent;
-- (void)handleSelectedButton:(id)arg1;
-- (id)initWithNSUserNotification:(id)arg1 center:(id)arg2;
+- (id)handleSelectedButton:(id)arg1 bagContract:(id)arg2;
+- (id)initWithNSUserNotification:(id)arg1;
 - (id)initWithTitle:(id)arg1;
 - (id)initWithTitle:(id)arg1 intent:(long long)arg2;
-- (id)initWithUNNotification:(id)arg1 center:(id)arg2;
-- (BOOL)shouldHandleSelection;
+- (id)initWithUNNotification:(id)arg1;
 
 @end
 

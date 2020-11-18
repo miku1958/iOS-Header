@@ -15,6 +15,7 @@
 - (oneway void)remote_currentUserWithCompletion:(void (^)(CLSCurrentUser *, NSError *))arg1;
 - (oneway void)remote_deregisterDataObserverWithID:(NSString *)arg1 completion:(void (^)(void))arg2;
 - (oneway void)remote_executeQuery:(NSObject<CLSQuery> *)arg1 forClassNamed:(NSString *)arg2 predicate:(NSPredicate *)arg3 sortDescriptors:(NSArray *)arg4 state:(unsigned long long)arg5 limit:(unsigned long long)arg6 completion:(void (^)(void))arg7;
+- (oneway void)remote_fetchAndCompleteActiveAssignedActivitiesForContextPath:(NSArray *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)remote_fetchDeletedObjectIDsNewerThanDate:(NSDate *)arg1 completion:(void (^)(NSArray *))arg2;
 - (oneway void)remote_fetchTransparencyMessageInfoWithCompletion:(void (^)(id, NSError *))arg1;
 - (oneway void)remote_mainAppContextWithCompletion:(void (^)(id, NSError *))arg1;

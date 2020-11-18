@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     TSWPStorage *_storage;
     struct CGSize _minSize;
     struct CGSize _maxSize;
+    BOOL _vertical;
     unsigned long long _pageNumber;
     unsigned long long _pageCount;
     int _flags;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL alwaysStartsNewTarget;
 @property (readonly, nonatomic) struct CGPoint anchorPoint;
 @property (strong, nonatomic) NSMutableArray *anchoredDrawablesForRelayout;
-@property (readonly, nonatomic) unsigned int autosizeFlags;
+@property (readonly, nonatomic) unsigned long long autosizeFlags;
 @property (readonly, nonatomic) TSDCanvas *canvas;
 @property (readonly, nonatomic) NSArray *childLayouts;
 @property (readonly, nonatomic) unsigned long long columnCount;
@@ -60,7 +61,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSULocale *locale;
 @property (readonly, nonatomic) BOOL marginsAreMirrored;
 @property (readonly, nonatomic) struct CGRect maskRect;
-@property (readonly, nonatomic) double maxAnchorY;
+@property (readonly, nonatomic) double maxAnchorInBlockDirection;
 @property (readonly, nonatomic) struct CGSize maxSize;
 @property (readonly, nonatomic) struct CGSize minSize;
 @property (readonly, nonatomic) int naturalAlignment; // @synthesize naturalAlignment=_naturalAlignment;
@@ -84,6 +85,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSUColor *textColorOverride; // @synthesize textColorOverride=_textColorOverride;
 @property (readonly, nonatomic) BOOL textIsVertical;
 @property (readonly, nonatomic) double textScaleFactor;
+@property (nonatomic) BOOL vertical; // @synthesize vertical=_vertical;
 @property (readonly, nonatomic) int verticalAlignment;
 @property (readonly, nonatomic) BOOL wantsLineFragments;
 

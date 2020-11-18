@@ -16,7 +16,7 @@
     double _timestamp;
     long long _type;
     NSData *_achievementData;
-    NSData *_friendData;
+    NSData *_friendListData;
     NSString *_friendUUID;
     NSData *_snapshotData;
     NSString *_title;
@@ -30,11 +30,11 @@
 
 @property (strong, nonatomic) NSData *achievementData; // @synthesize achievementData=_achievementData;
 @property (nonatomic) long long competitionStage; // @synthesize competitionStage=_competitionStage;
-@property (strong, nonatomic) NSData *friendData; // @synthesize friendData=_friendData;
+@property (strong, nonatomic) NSData *friendListData; // @synthesize friendListData=_friendListData;
 @property (strong, nonatomic) NSString *friendUUID; // @synthesize friendUUID=_friendUUID;
 @property (readonly, nonatomic) BOOL hasAchievementData;
 @property (nonatomic) BOOL hasCompetitionStage;
-@property (readonly, nonatomic) BOOL hasFriendData;
+@property (readonly, nonatomic) BOOL hasFriendListData;
 @property (readonly, nonatomic) BOOL hasFriendUUID;
 @property (readonly, nonatomic) BOOL hasSnapshotData;
 @property (nonatomic) BOOL hasTimestamp;

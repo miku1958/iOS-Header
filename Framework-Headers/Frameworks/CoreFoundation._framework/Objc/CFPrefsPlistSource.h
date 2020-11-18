@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     _Atomic BOOL _lastWriteFailed;
     _Atomic BOOL _observing;
     _Atomic BOOL _disableBackup;
+    _Atomic int _fileProtectionClass;
 }
 
 - (BOOL)_isSharedInTheiOSSimulator;
@@ -61,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)setContainer:(struct __CFString *)arg1;
 - (void)setDaemonCacheEnabled:(BOOL)arg1;
 - (void)setDomainIdentifier:(struct __CFString *)arg1;
+- (void)setFileProtectionClass:(int)arg1;
 - (void)setUserIdentifier:(struct __CFString *)arg1;
 - (BOOL)synchronize;
 - (struct __CFString *)userIdentifier;

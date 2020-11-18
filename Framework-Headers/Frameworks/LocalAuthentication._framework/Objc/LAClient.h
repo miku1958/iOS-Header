@@ -42,10 +42,11 @@ __attribute__((visibility("hidden")))
 - (void)_serializedInvalidateWithMessage:(id)arg1;
 - (BOOL)_setPermanentError:(id)arg1;
 - (id)_updateOptions:(id)arg1;
+- (void)authMethodWithReply:(CDUnknownBlockType)arg1;
 - (void)connectToServerWithInterruptionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (void)evaluateACL:(id)arg1 operation:(long long)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)evaluateACL:(id)arg1 operation:(long long)arg2 options:(id)arg3 uiDelegate:(id)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)evaluateACL:(id)arg1 operation:(id)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)evaluateACL:(id)arg1 operation:(id)arg2 options:(id)arg3 uiDelegate:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)evaluatePolicy:(long long)arg1 options:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)evaluatePolicy:(long long)arg1 options:(id)arg2 uiDelegate:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)externalizedContextWithReply:(CDUnknownBlockType)arg1;

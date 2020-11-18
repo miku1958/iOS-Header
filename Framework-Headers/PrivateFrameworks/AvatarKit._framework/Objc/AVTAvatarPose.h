@@ -10,11 +10,13 @@
 
 @interface AVTAvatarPose : NSObject
 {
+    NSMutableDictionary *_weights;
+    double _bakedAnimationBlendFactor;
     struct SCNVector3 _neckPosition;
     struct SCNVector4 _neckOrientation;
-    NSMutableDictionary *_weights;
 }
 
+@property (nonatomic) double bakedAnimationBlendFactor; // @synthesize bakedAnimationBlendFactor=_bakedAnimationBlendFactor;
 @property (nonatomic) struct SCNVector4 neckOrientation; // @synthesize neckOrientation=_neckOrientation;
 @property (nonatomic) struct SCNVector3 neckPosition; // @synthesize neckPosition=_neckPosition;
 

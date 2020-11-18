@@ -9,16 +9,14 @@
 #import <CoreLocation/NSCopying-Protocol.h>
 #import <CoreLocation/NSSecureCoding-Protocol.h>
 
-@class NSString, _CLMicroLocation;
+@class _CLMicroLocation;
 
 @interface _CLMicroLocationResult : NSObject <NSCopying, NSSecureCoding>
 {
     _CLMicroLocation *_microlocation;
     double _probability;
-    NSString *_domain;
 }
 
-@property (readonly, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property (readonly, nonatomic) _CLMicroLocation *microlocation; // @synthesize microlocation=_microlocation;
 @property (readonly, nonatomic) double probability; // @synthesize probability=_probability;
 
@@ -31,8 +29,6 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMicroLocation:(id)arg1 probability:(double)arg2;
-- (id)initWithMicroLocation:(id)arg1 probability:(double)arg2 domain:(id)arg3;
-- (id)jsonObject;
 
 @end
 

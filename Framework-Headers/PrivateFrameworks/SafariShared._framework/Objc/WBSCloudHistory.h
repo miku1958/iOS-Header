@@ -8,12 +8,13 @@
 
 #import <SafariShared/WBSCloudKitThrottlerDataStore-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSTimer, WBSCloudHistoryConfiguration, WBSCloudHistoryPushAgentProxy, WBSCloudKitThrottler;
+@class NSMutableDictionary, NSString, WBSCloudHistoryConfiguration, WBSCloudHistoryPushAgentProxy, WBSCloudKitThrottler, WBSHistory, WBSOneShotTimer;
 @protocol NSObject, OS_dispatch_queue, WBSCloudHistoryDataStore;
 
 @interface WBSCloudHistory : NSObject <WBSCloudKitThrottlerDataStore>
 {
     NSObject<OS_dispatch_queue> *_cloudHistoryQueue;
+    WBSHistory *_history;
     BOOL _cloudHistoryEnabled;
     BOOL _saveChangesWhenHistoryLoads;
     BOOL _fetchChangesWhenHistoryLoads;
@@ -21,20 +22,22 @@
     struct unique_ptr<SafariShared::SuddenTerminationDisabler, std::__1::default_delete<SafariShared::SuddenTerminationDisabler>> _saveOperationSuddenTerminationDisabler;
     struct unique_ptr<SafariShared::SuddenTerminationDisabler, std::__1::default_delete<SafariShared::SuddenTerminationDisabler>> _fetchOperationSuddenTerminationDisabler;
     struct unique_ptr<SafariShared::SuddenTerminationDisabler, std::__1::default_delete<SafariShared::SuddenTerminationDisabler>> _replayLongLivedSaveOperationSuddenTerminationDisabler;
-    BOOL _removedHistoryItemsArePendingSave;
     BOOL _replayLongLivedSaveOperationHasBeenPerformed;
     WBSCloudHistoryConfiguration *_configuration;
     id<WBSCloudHistoryDataStore> _store;
     WBSCloudKitThrottler *_saveChangesThrottler;
     WBSCloudKitThrottler *_fetchChangesThrottler;
     WBSCloudKitThrottler *_syncCircleSizeRetrievalThrottler;
-    NSTimer *_serverBackoffTimer;
+    WBSOneShotTimer *_serverBackoffTimer;
     BOOL _saveChangesWhenBackoffTimerFires;
     BOOL _fetchChangesWhenBackoffTimerFires;
     WBSCloudHistoryPushAgentProxy *_pushAgent;
-    NSTimer *_pushNotificationFetchTimer;
+    WBSOneShotTimer *_pushNotificationFetchTimer;
     unsigned long long _numberOfDevicesInSyncCircle;
     NSMutableDictionary *_syncCircleSizeRetrievalCompletionHandlersByOperation;
+    CDUnknownBlockType _fetchCompletionHandler;
+    CDUnknownBlockType _saveCompletionHandler;
+    BOOL _removedHistoryItemsArePendingSave;
 }
 
 @property (nonatomic, getter=isCloudHistoryEnabled) BOOL cloudHistoryEnabled;
@@ -42,6 +45,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long numberOfDevicesInSyncCircle; // @synthesize numberOfDevicesInSyncCircle=_numberOfDevicesInSyncCircle;
+@property (nonatomic) BOOL removedHistoryItemsArePendingSave; // @synthesize removedHistoryItemsArePendingSave=_removedHistoryItemsArePendingSave;
 @property (readonly) Class superclass;
 
 - (id).cxx_construct;
@@ -49,16 +53,18 @@
 - (void)_backOffWithInterval:(double)arg1;
 - (double)_backoffTimeIntervalFromError:(id)arg1;
 - (unsigned long long)_cachedNumberOfDevicesInSyncCircle;
+- (void)_callAndResetFetchCompletionHandlerWithError:(id)arg1;
+- (void)_callAndResetSaveCompletionHandlerWithError:(id)arg1;
 - (void)_cloudHistoryConfigurationChanged:(id)arg1;
 - (id)_currentFetchChangesThrottlerPolicyString;
 - (id)_currentSaveChangesThrottlerPolicyString;
 - (id)_currentSyncCircleSizeRetrievalThrottlerPolicyString;
 - (void)_determineNumberOfDevicesInSyncCircleForOperation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)_estimatedPriorityForPotentialSaveAttempt;
-- (void)_fetchAndMergeChangesBypassingThrottler:(BOOL)arg1;
-- (void)_fetchAndMergeChangesWithServerChangeTokenData:(id)arg1 intoHistory:(id)arg2 withPriority:(long long)arg3;
+- (void)_fetchAndMergeChangesWithServerChangeTokenData:(id)arg1 withPriority:(long long)arg2;
 - (void)_fetchChangesInResponseToPushNotification:(id)arg1;
 - (void)_fetchChangesWhenHistoryLoads;
+- (void)_getServerChangeTokenDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_historyItemsWereRemoved:(id)arg1;
 - (void)_historyWasLoaded:(id)arg1;
 - (void)_initializePushNotificationSupport;
@@ -70,25 +76,34 @@
 - (void)_processPendingPushNotifications;
 - (void)_pruneTombstonesThatCanNoLongerMatchVisitsFetchedFromCloud;
 - (void)_pushNotificationReceived:(id)arg1;
+- (void)_pushNotificationsAreInitializedWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_registerFetchCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_registerForHistoryWasLoadedNotificationIfNecessary;
+- (void)_registerSaveCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_removePersistedLongLivedSaveOperationDictionary;
 - (void)_replayPersistedLongLivedSaveOperationIfNecessary;
+- (void)_resetCloudHistoryDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)_resultFromError:(id)arg1;
-- (void)_saveChangesToCloudHistoryStoreBypassingThrottler:(BOOL)arg1;
 - (void)_saveChangesWhenHistoryLoads;
 - (void)_saveVisits:(id)arg1 tombstones:(id)arg2 toCloudHistoryBypassingThrottler:(BOOL)arg3 longLivedOperationPersistenceCompletion:(CDUnknownBlockType)arg4 withCallback:(CDUnknownBlockType)arg5;
 - (void)_serverBackoffTimerFired:(id)arg1;
 - (void)_setCachedNumberOfDevicesInSyncCircle:(unsigned long long)arg1;
+- (void)_setPushNotificationAreInitialized:(BOOL)arg1;
+- (void)_setServerChangeToken:(id)arg1;
 - (void)_updateDeviceCountInResponseToPushNotification;
+- (void)_updateHistoryAfterSuccessfulPersistedLongLivedSaveOperationWithGeneration:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateThrottlerPolicies;
 - (id)dateOfNextPermittedSaveChangesAttempt;
 - (void)dealloc;
 - (void)fetchAndMergeChanges;
 - (void)fetchAndMergeChangesBypassingThrottler;
-- (id)initWithConfiguration:(id)arg1;
-- (id)initWithConfiguration:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)fetchAndMergeChangesBypassingThrottler:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getVisitsAndTombstonesNeedingSyncWithVisitSyncWindow:(double)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)initWithHistory:(id)arg1 configuration:(id)arg2;
+- (id)initWithHistory:(id)arg1 configuration:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)recordOfPastOperationsForThrottler:(id)arg1;
 - (void)resetForAccountChange;
+- (void)saveChangesBypassingThrottler:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveChangesToCloudHistoryStore;
 - (void)saveChangesToCloudHistoryStoreBypassingThrottler;
 - (void)setRecordOfPastOperations:(id)arg1 forThrottler:(id)arg2;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface WKFullScreenViewController : UIViewController <UIGestureRecognizerDelegate, UIToolbarDelegate>
 {
     struct RetainPtr<UILongPressGestureRecognizer> _touchGestureRecognizer;
+    struct RetainPtr<UIView> _animatingView;
     struct RetainPtr<WKFullscreenStackView> _stackView;
     struct RetainPtr<_WKExtrinsicButton> _cancelButton;
     struct RetainPtr<_WKExtrinsicButton> _pipButton;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSLayoutConstraint> _topConstraint;
     struct FullscreenTouchSecheuristic _secheuristic;
     struct WKFullScreenViewControllerPlaybackSessionModelClient _playbackClient;
+    struct WKFullScreenViewControllerVideoFullscreenModelClient _videoFullscreenClient;
     double _nonZeroStatusBarHeight;
     BOOL _prefersStatusBarHidden;
     BOOL _prefersHomeIndicatorAutoHidden;
@@ -60,6 +62,8 @@ __attribute__((visibility("hidden")))
 - (void)_touchDetected:(id)arg1;
 - (void)_updateWebViewFullscreenInsets;
 - (void)dealloc;
+- (void)didEnterPictureInPicture;
+- (void)failedToEnterPictureInPicture;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)hideUI;
@@ -71,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)willEnterPictureInPicture;
 
 @end
 

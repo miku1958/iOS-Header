@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)_cancelActiveAlert:(BOOL)arg1;
 - (void)_cancelActiveAlertController:(BOOL)arg1;
 - (void)_clearCachedTableCells;
-- (void)_hideProgressIndicatorWithSuccess:(BOOL)arg1 showButtons:(BOOL)arg2;
+- (BOOL)_isProfileInstalled;
 - (void)_leaveRemoteManagementAndErase;
 - (id)_mdmProfileRemovalAlertBody;
 - (void)_performReEnroll;
@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (void)_resetWithMode:(int)arg1;
 - (void)_showEraseDeviceAlert;
 - (void)_showLeaveRemoteManagementAlert;
-- (void)_showProgressIndicator;
 - (void)_showRemovalWarningActionSheet;
 - (void)_showRemovalWarningAfterPINVerification;
 - (void)_showRemovalWarningAlert;
@@ -58,9 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)alertViewCancel:(id)arg1;
 - (void)didAcceptEnteredPIN:(id)arg1;
 - (void)didCancelEnteringPIN;
-- (void)didReceiveMemoryWarning;
 - (id)initWithProfile:(id)arg1;
-- (void)performRemoveAfterFinalVerification;
 - (void)profileViewControllerDidSelectRemoveProfile:(id)arg1;
 - (void)profileViewControllerDidSelectUpdateProfile:(id)arg1;
 - (void)setInstallState:(int)arg1 animated:(BOOL)arg2;

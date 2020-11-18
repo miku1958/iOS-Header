@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface _DKSync2Policy : NSObject
 {
@@ -14,6 +14,7 @@
     BOOL _pushTriggersSync;
     BOOL _requireCharging;
     NSString *_name;
+    NSNumber *_version;
     unsigned long long _maxSyncPeriodInDays;
     unsigned long long _maxSyncDownIntervalInDays;
     unsigned long long _minSyncIntervalInSeconds;
@@ -54,6 +55,7 @@
 @property (nonatomic) BOOL syncDisabled; // @synthesize syncDisabled=_syncDisabled;
 @property (nonatomic) unsigned long long syncTimeoutInSeconds; // @synthesize syncTimeoutInSeconds=_syncTimeoutInSeconds;
 @property (nonatomic) unsigned long long triggeredSyncDelayInSeconds; // @synthesize triggeredSyncDelayInSeconds=_triggeredSyncDelayInSeconds;
+@property (strong, nonatomic) NSNumber *version; // @synthesize version=_version;
 
 + (id)_policyForSyncTransportType:(long long)arg1;
 + (BOOL)cloudSyncDisabled;
@@ -80,6 +82,7 @@
 - (id)initWithDictionary:(id)arg1;
 - (id)queryStartDateWithSyncType:(id)arg1 lastSyncDate:(id)arg2 lastDaySyncCount:(unsigned long long)arg3;
 - (id)queryStartDateWithSyncType:(id)arg1 lastSyncDate:(id)arg2 lastDaySyncCount:(unsigned long long)arg3 previousHighWaterMark:(id)arg4;
+- (id)queryStartDateWithSyncType:(id)arg1 previousHighWaterMark:(id)arg2;
 - (id)streamNamesToSyncWithDisabledFeatures:(id)arg1;
 - (id)streamNamesToSyncWithSyncType:(id)arg1 transportType:(long long)arg2;
 

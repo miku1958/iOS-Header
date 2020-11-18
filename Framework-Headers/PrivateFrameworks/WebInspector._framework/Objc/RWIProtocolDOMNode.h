@@ -30,7 +30,6 @@
 @property (copy, nonatomic) NSArray *pseudoElements;
 @property (nonatomic) long long pseudoType;
 @property (copy, nonatomic) NSString *publicId;
-@property (copy, nonatomic) NSString *role;
 @property (nonatomic) long long shadowRootType;
 @property (copy, nonatomic) NSArray *shadowRoots;
 @property (copy, nonatomic) NSString *systemId;

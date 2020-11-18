@@ -25,6 +25,14 @@ __attribute__((visibility("hidden")))
     unsigned short _averageFramerateReportCounter;
     double _averageJitterLengthSum;
     unsigned short _averageJitterReportCounter;
+    int _totalVideoPacketsReceived;
+    int _oooPacketCount;
+    unsigned int _totalFIRDemandCounter;
+    unsigned int _totalFIRCounter;
+    unsigned int _videoFrameDecodedButSkippedCounter;
+    unsigned int _videoFrameImcompleteNextTSCounter;
+    unsigned int _videoFrameTotalIncompleteCounter;
+    unsigned int _decodedVideoFrameEnqueueCounter;
 }
 
 - (unsigned int)RTPeriod;
@@ -35,9 +43,17 @@ __attribute__((visibility("hidden")))
 - (double)averageJitterLengthSum;
 - (unsigned short)averageJitterReportCounter;
 - (void)dealloc;
+- (unsigned int)decodedVideoFrameEnqueueCounter;
 - (id)initStreamWithID:(id)arg1;
+- (unsigned int)oooPacketCount;
 - (void)processData:(id)arg1;
 - (unsigned short)significantVideoStallCount;
+- (unsigned int)totalFIRCounter;
+- (unsigned int)totalFIRDemandCounter;
+- (unsigned int)totalVideoPacketsReceived;
+- (unsigned int)videoFrameDecodedButSkippedCounter;
+- (unsigned int)videoFrameImcompleteNextTSCounter;
+- (unsigned int)videoFrameTotalIncompleteCounter;
 - (double)videoStallTotalTime;
 
 @end

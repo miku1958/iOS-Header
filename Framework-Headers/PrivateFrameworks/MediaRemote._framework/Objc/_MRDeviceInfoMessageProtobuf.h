@@ -33,6 +33,7 @@
     NSString *_uniqueIdentifier;
     BOOL _allowsPairing;
     BOOL _connected;
+    BOOL _isAirplayActive;
     BOOL _isGroupLeader;
     BOOL _isProxyGroupPlayer;
     BOOL _supportsACL;
@@ -48,6 +49,7 @@
         unsigned int sharedQueueVersion:1;
         unsigned int allowsPairing:1;
         unsigned int connected:1;
+        unsigned int isAirplayActive:1;
         unsigned int isGroupLeader:1;
         unsigned int isProxyGroupPlayer:1;
         unsigned int supportsACL:1;
@@ -64,6 +66,7 @@
 @property (strong, nonatomic) NSData *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
 @property (nonatomic) BOOL connected; // @synthesize connected=_connected;
 @property (nonatomic) int deviceClass; // @synthesize deviceClass=_deviceClass;
+@property (readonly, nonatomic) NSString *deviceUID;
 @property (strong, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property (strong, nonatomic) NSString *groupUID; // @synthesize groupUID=_groupUID;
 @property (strong, nonatomic) NSMutableArray *groupedDevices; // @synthesize groupedDevices=_groupedDevices;
@@ -75,6 +78,7 @@
 @property (nonatomic) BOOL hasDeviceClass;
 @property (readonly, nonatomic) BOOL hasGroupName;
 @property (readonly, nonatomic) BOOL hasGroupUID;
+@property (nonatomic) BOOL hasIsAirplayActive;
 @property (nonatomic) BOOL hasIsGroupLeader;
 @property (nonatomic) BOOL hasIsProxyGroupPlayer;
 @property (nonatomic) BOOL hasLastSupportedMessageType;
@@ -94,6 +98,7 @@
 @property (readonly, nonatomic) BOOL hasTightSyncUID;
 @property (nonatomic) BOOL hasTightlySyncedGroup;
 @property (readonly, nonatomic) BOOL hasUniqueIdentifier;
+@property (nonatomic) BOOL isAirplayActive; // @synthesize isAirplayActive=_isAirplayActive;
 @property (nonatomic) BOOL isGroupLeader; // @synthesize isGroupLeader=_isGroupLeader;
 @property (nonatomic) BOOL isProxyGroupPlayer; // @synthesize isProxyGroupPlayer=_isProxyGroupPlayer;
 @property (nonatomic) unsigned int lastSupportedMessageType; // @synthesize lastSupportedMessageType=_lastSupportedMessageType;

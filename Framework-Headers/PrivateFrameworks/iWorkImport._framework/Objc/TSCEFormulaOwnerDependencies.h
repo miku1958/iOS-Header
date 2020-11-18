@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _isRegisteredWithCalcEngine;
     unsigned short _formulaOwnerId;
-    int _ownerKind;
+    unsigned short _ownerKind;
     id<TSCEFormulaOwning> _formulaOwner;
     struct TSCECellDependencies *_cellDependencies;
     struct TSCERangeDependencies *_rangeDependencies;
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     struct TSCEWholeOwnerDependencies *_wholeOwnerDependencies;
     struct TSCERefErrors *_errors;
     UUIDData_5fbc143e _formulaOwnerUid;
+    struct TSCESubFormulaOwnerID _subOwnerID;
 }
 
 @property (readonly, nonatomic) struct TSCECellDependencies *cellDependencies; // @synthesize cellDependencies=_cellDependencies;
@@ -32,17 +33,18 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned short formulaOwnerId; // @synthesize formulaOwnerId=_formulaOwnerId;
 @property (readonly, nonatomic) UUIDData_5fbc143e formulaOwnerUid; // @synthesize formulaOwnerUid=_formulaOwnerUid;
 @property (nonatomic) BOOL isRegisteredWithCalcEngine; // @synthesize isRegisteredWithCalcEngine=_isRegisteredWithCalcEngine;
-@property (nonatomic) int ownerKind; // @synthesize ownerKind=_ownerKind;
+@property (readonly, nonatomic) unsigned short ownerKind; // @synthesize ownerKind=_ownerKind;
 @property (readonly, nonatomic) struct TSCERangeDependencies *rangeDependencies; // @synthesize rangeDependencies=_rangeDependencies;
 @property (readonly, nonatomic) struct TSCESpanningDependencies *spanningColumnDependencies; // @synthesize spanningColumnDependencies=_spanningColumnDependencies;
 @property (readonly, nonatomic) struct TSCESpanningDependencies *spanningRowDependencies; // @synthesize spanningRowDependencies=_spanningRowDependencies;
+@property (nonatomic) struct TSCESubFormulaOwnerID subOwnerID; // @synthesize subOwnerID=_subOwnerID;
 @property (readonly, nonatomic) struct TSCEVolatileDependencies *volatileDependencies; // @synthesize volatileDependencies=_volatileDependencies;
 @property (readonly, nonatomic) struct TSCEWholeOwnerDependencies *wholeOwnerDependencies; // @synthesize wholeOwnerDependencies=_wholeOwnerDependencies;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithContext:(id)arg1 dependencyTracker:(struct TSCEDependencyTracker *)arg2 ownerID:(unsigned short)arg3 ownerUID:(const UUIDData_5fbc143e *)arg4 owner:(id)arg5 ownerKind:(int)arg6;
+- (id)initWithContext:(id)arg1 dependencyTracker:(struct TSCEDependencyTracker *)arg2 ownerID:(unsigned short)arg3 ownerUID:(const UUIDData_5fbc143e *)arg4 owner:(id)arg5 subOwnerID:(const struct TSCESubFormulaOwnerID *)arg6;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)unpackAfterUnarchive;

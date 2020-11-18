@@ -14,8 +14,8 @@
 {
     BOOL _highPriority;
     BOOL _cancelled;
-    CPLResource *_resource;
     NSString *_taskIdentifier;
+    CPLResource *_resource;
 }
 
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;

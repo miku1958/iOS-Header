@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class BSAnimationSettings, NSString, SBUIRemoteAlertIdleTimerSettings, SBUIRemoteAlertMaterialDescriptor;
+@class BSAnimationSettings, NSNumber, NSString, SBUIRemoteAlertIdleTimerSettings, SBUIRemoteAlertMaterialDescriptor;
 
 @protocol SBUIRemoteAlertHostInterface
 - (void)deactivate;
@@ -28,6 +28,7 @@
 - (void)setLaunchingInterfaceOrientation:(long long)arg1;
 - (void)setOrientationChangedEventsEnabled:(BOOL)arg1;
 - (void)setReachabilityDisabled:(BOOL)arg1;
+- (void)setSceneDeactivationReason:(NSNumber *)arg1;
 - (void)setShouldDisableFadeInAnimation:(BOOL)arg1;
 - (void)setShouldDismissOnUILock:(BOOL)arg1;
 - (void)setStatusBarHidden:(BOOL)arg1 withDuration:(double)arg2;

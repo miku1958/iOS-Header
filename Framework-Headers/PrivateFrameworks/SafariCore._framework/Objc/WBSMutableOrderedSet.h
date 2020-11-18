@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableOrderedSet;
+@class NSArray, NSMutableOrderedSet;
 
 @interface WBSMutableOrderedSet : NSObject
 {
@@ -14,11 +14,19 @@
     unsigned long long _maximumCount;
 }
 
+@property (readonly, nonatomic) NSArray *array;
+
 - (void).cxx_destruct;
+- (void)_moveObjectAtIndexToLast:(unsigned long long)arg1;
 - (void)addObject:(id)arg1;
 - (BOOL)containsObject:(id)arg1;
 - (id)init;
 - (id)initWithMaximumCount:(unsigned long long)arg1;
+- (void)markObjectAsRecentlyUsed:(id)arg1;
+- (id)objectAtIndex:(unsigned long long)arg1;
+- (id)objectAtIndexWithoutAffectingRecency:(unsigned long long)arg1;
+- (void)removeObject:(id)arg1;
+- (void)removeObjectsInArray:(id)arg1;
 
 @end
 

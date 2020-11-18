@@ -26,23 +26,17 @@
 @property (strong) NSMutableArray *observers; // @synthesize observers=_observers;
 @property (strong) NSObject<OS_dispatch_queue> *xpcSetupQueue; // @synthesize xpcSetupQueue=_xpcSetupQueue;
 
-+ (id)advertiserClientInterface;
-+ (id)advertiserInterface;
 + (id)hotspotClientInterface;
 + (id)hotspotInterface;
 + (void)initialize;
-+ (id)scannerClientInterface;
-+ (id)scannerInterface;
 + (id)serviceManagerClientInterface;
 + (id)serviceManagerInterface;
 + (id)sharedManager;
 + (id)unlockInterface;
 + (id)xpcManagerInterface;
 - (void).cxx_destruct;
-- (void)activityAdvertiserProxyForClient:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)appleAccountSignedIn;
 - (void)appleAccountSignedOut;
-- (void)continuityScannerProxyForClient:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)notifyOfInterruption;

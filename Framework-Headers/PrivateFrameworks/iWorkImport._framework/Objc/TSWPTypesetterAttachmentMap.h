@@ -12,12 +12,14 @@ __attribute__((visibility("hidden")))
 @interface TSWPTypesetterAttachmentMap : NSObject
 {
     BOOL _layoutNeedsRevalidation;
+    BOOL _isWithinVerticalText;
     TSWPAttachment *_attachment;
     TSDLayout *_layout;
     struct __CTLine *_lineRef;
 }
 
 @property (weak, nonatomic) TSWPAttachment *attachment; // @synthesize attachment=_attachment;
+@property (nonatomic) BOOL isWithinVerticalText; // @synthesize isWithinVerticalText=_isWithinVerticalText;
 @property (strong, nonatomic) TSDLayout *layout; // @synthesize layout=_layout;
 @property (nonatomic) BOOL layoutNeedsRevalidation; // @synthesize layoutNeedsRevalidation=_layoutNeedsRevalidation;
 @property (readonly, nonatomic) struct __CTLine *lineRef; // @synthesize lineRef=_lineRef;

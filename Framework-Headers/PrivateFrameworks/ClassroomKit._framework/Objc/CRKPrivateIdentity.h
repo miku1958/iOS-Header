@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <ClassroomKit/CRKCloudStoringSubItem-Protocol.h>
+#import <ClassroomKit/NSSecureCoding-Protocol.h>
 
 @class NSData, NSDate, NSString;
 
-@interface CRKPrivateIdentity : NSObject <CRKCloudStoringSubItem>
+@interface CRKPrivateIdentity : NSObject <CRKCloudStoringSubItem, NSSecureCoding>
 {
     NSData *_identityPersistentId;
     NSData *_stagedIdentityPersistentId;
@@ -35,7 +36,6 @@
 + (id)instanceWithParentObject:(id)arg1 keyValue:(id)arg2;
 + (id)instanceWithRecord:(id)arg1;
 + (id)keychainGroup;
-+ (id)new;
 + (id)recordType;
 + (id)skeletonInstance;
 + (BOOL)supportsSecureCoding;
@@ -44,7 +44,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryValue;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithIdentityPersistentId:(id)arg1 stagedIdentityPersistentId:(id)arg2 commonNamePrefix:(id)arg3;

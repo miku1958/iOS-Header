@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (TSUAdditions)
++ (id)tsu_JSONStringFromString:(id)arg1;
 + (id)tsu_stringByBase64EncodingBytes:(const char *)arg1 length:(unsigned long long)arg2;
 + (id)tsu_stringByBase64EncodingBytes:(const char *)arg1 length:(unsigned long long)arg2 breakLines:(BOOL)arg3;
 + (id)tsu_stringByHexEncodingData:(id)arg1;
@@ -16,6 +17,7 @@
 + (id)tsu_stringWithHexFromBytes:(const char *)arg1 length:(unsigned long long)arg2;
 + (id)tsu_stringWithUUID;
 + (id)tsu_stringWithXMLString:(const char *)arg1;
+- (void)tsu_appendJSONStringToString:(id)arg1;
 - (BOOL)tsu_containsOnlyCharactersFromSet:(id)arg1;
 - (BOOL)tsu_containsSubstring:(id)arg1;
 - (unsigned long long)tsu_countInstancesOfString:(id)arg1 options:(unsigned long long)arg2;
@@ -23,16 +25,19 @@
 - (void)tsu_enumerateRangesOfCharactersInSet:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)tsu_escapeForIcuRegex;
 - (id)tsu_escapeXML;
+- (void)tsu_getMD5Hash:(char *)arg1;
 - (BOOL)tsu_isChildOfPath:(id)arg1;
 - (BOOL)tsu_isDescendantOfPath:(id)arg1;
 - (BOOL)tsu_isEqualToString:(id)arg1;
 - (id)tsu_md5Hash;
 - (id)tsu_middleTruncateToLength:(unsigned long long)arg1;
+- (id)tsu_pathExceptPrivate;
 - (struct _NSRange)tsu_range;
 - (struct _NSRange)tsu_rangeOfString:(id)arg1 options:(unsigned long long)arg2 updatingSearchRange:(struct _NSRange *)arg3;
 - (id)tsu_setOfContainedWordsIncludingPunctuationAndSymbols:(BOOL)arg1;
 - (id)tsu_stringByAddingCSVEscapesForLocale:(id)arg1;
 - (id)tsu_stringByAppendingSeparator:(id)arg1 format:(id)arg2;
+- (id)tsu_stringByDeletingPathExtensionIfEqualTo:(id)arg1;
 - (id)tsu_stringByExpandingTableFormatting;
 - (id)tsu_stringByFixingBrokenSurrogatePairs;
 - (id)tsu_stringByMakingFirstCharacterLowercase;
@@ -44,6 +49,7 @@
 - (id)tsu_stringByUniquingPathInsideDirectory:(id)arg1;
 - (id)tsu_stringByUniquingPathInsideDirectory:(id)arg1 withFormat:(id)arg2;
 - (id)tsu_stringQuotedIfContainsCharacterSet:(id)arg1;
+- (id)tsu_stringTrimByLimitingFirstCharacterToSet:(id)arg1;
 - (id)tsu_stringWithNormalizedHyphens;
 - (id)tsu_stringWithNormalizedHyphensAndQuotationMarks;
 - (id)tsu_stringWithNormalizedQuotationMarks;

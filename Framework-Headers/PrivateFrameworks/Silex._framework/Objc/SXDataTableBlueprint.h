@@ -12,7 +12,6 @@
 {
     unsigned long long _numberOfRows;
     unsigned long long _numberOfColumns;
-    unsigned long long _layoutType;
     SXDataTableDictionary *_blueprint;
     SXDataTableDictionary *_contentBlueprint;
     SXDataTableDictionary *_rowDividers;
@@ -26,7 +25,6 @@
 @property (readonly, nonatomic) SXDataTableDictionary *columnDividers; // @synthesize columnDividers=_columnDividers;
 @property (readonly, nonatomic) SXDataTableDictionary *contentBlueprint; // @synthesize contentBlueprint=_contentBlueprint;
 @property (nonatomic) unsigned long long dataOrientation; // @synthesize dataOrientation=_dataOrientation;
-@property (readonly, nonatomic) unsigned long long layoutType; // @synthesize layoutType=_layoutType;
 @property (readonly, nonatomic) unsigned long long numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
 @property (readonly, nonatomic) unsigned long long numberOfRows; // @synthesize numberOfRows=_numberOfRows;
 @property (readonly, nonatomic) SXDataTableDictionary *rowDividers; // @synthesize rowDividers=_rowDividers;

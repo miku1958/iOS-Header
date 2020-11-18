@@ -27,6 +27,7 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (void)getChangedIndexesForClientPeopleList:(id)arg1 peopleList:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)getChangedIndexesForClientPeopleList:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handleBrowserCallBack;
 - (id)init;

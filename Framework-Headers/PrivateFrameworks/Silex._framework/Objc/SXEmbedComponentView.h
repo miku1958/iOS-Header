@@ -13,8 +13,8 @@
 #import <Silex/WKScriptMessageHandler-Protocol.h>
 #import <Silex/WKUIDelegate-Protocol.h>
 
-@class NSMutableSet, NSString, SXEmbedResource, SXWebCrashRetryThrottler, UIActivityIndicatorView, UILabel, WKNavigation, WKWebView;
-@protocol SXComponentActionHandler, SXEmbedService, SXEmbedType, SXReachabilityProvider;
+@class NFMultiDelegate, NSMutableSet, NSString, SXEmbedResource, SXWebCrashRetryThrottler, UIActivityIndicatorView, UILabel, WKNavigation, WKWebView;
+@protocol SXComponentActionHandler, SXEmbedService, SXEmbedType, SXLayoutInvalidator, SXReachabilityProvider;
 
 @interface SXEmbedComponentView : SXComponentView <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, UIGestureRecognizerDelegate, UIScrollViewDelegate, SXViewportChangeListener>
 {
@@ -24,6 +24,7 @@
     id<SXReachabilityProvider> _reachabilityProvider;
     id<SXEmbedService> _embedService;
     id<SXComponentActionHandler> _actionHandler;
+    id<SXLayoutInvalidator> _layoutInvalidator;
     id<SXEmbedType> _embedConfiguration;
     SXEmbedResource *_embedResource;
     WKWebView *_webView;
@@ -35,10 +36,10 @@
     NSMutableSet *_expectedMessages;
     UIActivityIndicatorView *_activityIndicator;
     WKNavigation *_initialNavigation;
+    NFMultiDelegate *_scriptMessageHandler;
     struct CGSize _currentlyLayoutingForSize;
     struct CGSize _currentLayoutSize;
     struct CGSize _currentViewportSize;
-    struct CGPoint _lastKnownTouchPoint;
 }
 
 @property (strong, nonatomic) NSString *HTML; // @synthesize HTML=_HTML;
@@ -59,8 +60,9 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) WKNavigation *initialNavigation; // @synthesize initialNavigation=_initialNavigation;
 @property (nonatomic) BOOL isCurrentlyLoadingEmbedData; // @synthesize isCurrentlyLoadingEmbedData=_isCurrentlyLoadingEmbedData;
-@property (nonatomic) struct CGPoint lastKnownTouchPoint; // @synthesize lastKnownTouchPoint=_lastKnownTouchPoint;
+@property (readonly, nonatomic) id<SXLayoutInvalidator> layoutInvalidator; // @synthesize layoutInvalidator=_layoutInvalidator;
 @property (readonly, nonatomic) id<SXReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
+@property (readonly, nonatomic) NFMultiDelegate *scriptMessageHandler; // @synthesize scriptMessageHandler=_scriptMessageHandler;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *userScript; // @synthesize userScript=_userScript;
 @property (strong, nonatomic) SXWebCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
@@ -74,15 +76,15 @@
 - (void)_webViewWebProcessDidCrash:(id)arg1;
 - (void)addScriptMessageHandlers;
 - (BOOL)allowHierarchyRemoval;
+- (void)dealloc;
 - (void)discardContents;
 - (void)displayEmbedIfNeeded;
 - (id)enclosingHTML;
 - (void)finalizeLayoutForSize:(struct CGSize)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handleError:(id)arg1;
-- (void)handleLongPress:(id)arg1;
 - (BOOL)hasLoadedEmbedData;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 reachabilityProvider:(id)arg6 embedService:(id)arg7 actionHandler:(id)arg8;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 reachabilityProvider:(id)arg5 embedService:(id)arg6 actionHandler:(id)arg7 layoutInvalidator:(id)arg8;
 - (double)initialScale;
 - (void)layoutWebViewForSize:(struct CGSize)arg1;
 - (void)loadEmbedData;

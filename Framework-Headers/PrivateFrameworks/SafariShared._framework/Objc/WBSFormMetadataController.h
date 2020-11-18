@@ -40,7 +40,7 @@
 - (void)disableSpellCheckInField:(id)arg1 inFrame:(id)arg2;
 - (void)fillField:(id)arg1 inFrame:(id)arg2 withGeneratedPassword:(id)arg3;
 - (id)fillForm:(double)arg1 inFrame:(id)arg2 withPassword:(id)arg3;
-- (void)finishedAutoFillingForm:(id)arg1 inFrame:(id)arg2;
+- (void)finishedAutoFillingForm:(id)arg1 inFrame:(id)arg2 shouldSubmit:(BOOL)arg3;
 - (void)focusField:(id)arg1 inFrame:(id)arg2;
 - (void)focusFormForStreamlinedLogin:(double)arg1 inFrame:(id)arg2;
 - (id)formAutoFillNodeForField:(id)arg1 inFrame:(id)arg2;
@@ -58,6 +58,8 @@
 - (struct FrameMetadata *)metadataForFrame:(id)arg1 requestType:(unsigned long long)arg2;
 - (void)oneTimeCodeFieldBlurred:(id)arg1 inFrame:(id)arg2 page:(id)arg3 textFieldMetadata:(id)arg4 formMetadata:(id)arg5;
 - (void)oneTimeCodeFieldFocused:(id)arg1 withFieldMetadata:(id)arg2 inFrame:(id)arg3;
+- (void)otherCreditCardFieldBlurred:(id)arg1 inFrame:(id)arg2 textFieldMetadata:(id)arg3 formMetadata:(id)arg4;
+- (void)otherCreditCardFieldFocused:(id)arg1 inFrame:(id)arg2 textFieldMetadata:(id)arg3 formMetadata:(id)arg4;
 - (BOOL)pageWithMainFrameMeetsEditedFormTextWarningCriteria:(id)arg1;
 - (void)passwordFieldBlurred:(id)arg1 inFrame:(id)arg2 page:(id)arg3 textFieldMetadata:(id)arg4 formMetadata:(id)arg5;
 - (void)passwordFieldFocused:(id)arg1 inFrame:(id)arg2 isPasswordFieldForUserCredentials:(BOOL)arg3;
@@ -70,11 +72,12 @@
 - (void)selectRange:(struct _NSRange)arg1 inField:(id)arg2 inFrame:(id)arg3;
 - (struct _NSRange)selectionRangeInField:(id)arg1 inFrame:(id)arg2;
 - (void)setFormControls:(id)arg1 inFrame:(id)arg2 asAutoFilled:(BOOL)arg3;
-- (BOOL)shouldAttemptToClassifyFormsWithoutAPasswordFieldAsLoginForms;
 - (BOOL)shouldIncludeNonEmptyFields;
 - (id)substitutePasswordElementsWithAutomaticPasswordElementsInFrame:(id)arg1 formID:(double)arg2 focusedPasswordControlUniqueID:(id)arg3 passwordControlUniqueIDs:(id)arg4 automaticPassword:(id)arg5 blurAfterSubstitution:(BOOL)arg6;
 - (void)textFieldBlurred:(id)arg1 inFrame:(id)arg2 page:(id)arg3 textFieldMetadata:(id)arg4 formMetadata:(id)arg5;
 - (void)textFieldFocused:(id)arg1 inFrame:(id)arg2;
+- (void)unidentifiedTextFieldBlurred:(id)arg1 inFrame:(id)arg2 textFieldMetadata:(id)arg3 formMetadata:(id)arg4;
+- (void)unidentifiedTextFieldFocused:(id)arg1 inFrame:(id)arg2 textFieldMetadata:(id)arg3 formMetadata:(id)arg4;
 - (id)uniqueIDForTextField:(id)arg1 inFrame:(id)arg2;
 - (unsigned long long)userEditedTextControlCountInArray:(struct OpaqueJSValue *)arg1 context:(struct OpaqueJSContext *)arg2 expectTextFieldsRatherThanTextAreas:(BOOL)arg3;
 - (void)usernameFieldBlurred:(id)arg1 inFrame:(id)arg2 page:(id)arg3 textFieldMetadata:(id)arg4 formMetadata:(id)arg5;

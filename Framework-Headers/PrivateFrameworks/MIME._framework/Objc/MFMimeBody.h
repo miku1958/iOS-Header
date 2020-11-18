@@ -8,7 +8,7 @@
 
 #import <MIME/ECMimePart-Protocol.h>
 
-@class MFMimePart, NSString;
+@class MFMimePart, NSArray, NSString;
 
 @interface MFMimeBody : MFMessageBody <ECMimePart>
 {
@@ -16,6 +16,7 @@
     unsigned int _preferredAlternative:16;
     unsigned int _numAlternatives:16;
     long long _encryptedDescendantState;
+    NSArray *_signers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *mimeSubtype;
 @property (readonly, copy, nonatomic) NSString *mimeType;
+@property (strong, nonatomic) NSArray *signers; // @synthesize signers=_signers;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) MFMimePart *topLevelPart;
 @property (readonly, nonatomic) unsigned long long totalTextSize;

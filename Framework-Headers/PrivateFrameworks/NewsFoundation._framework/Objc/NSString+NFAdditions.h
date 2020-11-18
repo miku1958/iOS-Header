@@ -8,5 +8,6 @@
 
 @interface NSString (NFAdditions)
 - (id)nf_sha1;
+- (id)nf_stringByReversingString;
 @end
 

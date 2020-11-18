@@ -6,30 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSBundle, NSError, SFDeviceAssetQuery;
+@class NSBundle, NSError, NSMutableArray, SFDeviceAssetQuery, SFDeviceAssetRequestConfiguration;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface SFDeviceAssetTask : NSObject
 {
     BOOL _useProcessLocalCache;
+    BOOL _queryResultCalled;
+    BOOL _downloadCompletionCalled;
     SFDeviceAssetQuery *_deviceAssetQuery;
+    SFDeviceAssetRequestConfiguration *_configuration;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    NSMutableArray *_deviceQueryParameters;
     NSObject<OS_dispatch_source> *_timer;
-    CDUnknownBlockType _completionHandler;
-    NSBundle *_assetBundle;
-    NSBundle *_fallbackAssetBundle;
-    NSBundle *_cachedAssetBundle;
+    NSBundle *_matchBundle;
+    NSBundle *_imperfectMatchBundle;
+    NSBundle *_fallbackBundle;
+    NSBundle *_cachedBundle;
     NSError *_error;
 }
 
-@property (readonly, nonatomic) NSBundle *assetBundle; // @synthesize assetBundle=_assetBundle;
-@property (readonly, nonatomic) NSBundle *cachedAssetBundle; // @synthesize cachedAssetBundle=_cachedAssetBundle;
-@property (readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (readonly, nonatomic) NSBundle *cachedBundle; // @synthesize cachedBundle=_cachedBundle;
+@property (readonly, nonatomic) SFDeviceAssetRequestConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) SFDeviceAssetQuery *deviceAssetQuery; // @synthesize deviceAssetQuery=_deviceAssetQuery;
+@property (readonly, nonatomic) NSMutableArray *deviceQueryParameters; // @synthesize deviceQueryParameters=_deviceQueryParameters;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (nonatomic) BOOL downloadCompletionCalled; // @synthesize downloadCompletionCalled=_downloadCompletionCalled;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
-@property (readonly, nonatomic) NSBundle *fallbackAssetBundle; // @synthesize fallbackAssetBundle=_fallbackAssetBundle;
+@property (readonly, nonatomic) NSBundle *fallbackBundle; // @synthesize fallbackBundle=_fallbackBundle;
+@property (readonly, nonatomic) NSBundle *imperfectMatchBundle; // @synthesize imperfectMatchBundle=_imperfectMatchBundle;
+@property (readonly, nonatomic) NSBundle *matchBundle; // @synthesize matchBundle=_matchBundle;
+@property (nonatomic) BOOL queryResultCalled; // @synthesize queryResultCalled=_queryResultCalled;
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
 @property (readonly, nonatomic) BOOL useProcessLocalCache; // @synthesize useProcessLocalCache=_useProcessLocalCache;
 
@@ -39,11 +47,11 @@ __attribute__((visibility("hidden")))
 - (void)cancelTimeout;
 - (BOOL)completeIfPossible;
 - (void)completeWithBundle:(id)arg1 isFallback:(BOOL)arg2 isCached:(BOOL)arg3;
-- (id)initWithDeviceQuery:(id)arg1 dispatchQueue:(id)arg2 useProcessLocalCache:(BOOL)arg3 timeout:(double)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
-- (BOOL)processCanAccessURL:(id)arg1 error:(id *)arg2;
-- (BOOL)updateTaskWithAssetBundleURL:(id)arg1 error:(id)arg2 isFallback:(BOOL)arg3 isCached:(BOOL)arg4;
-- (BOOL)updateTaskWithAssetURL:(id)arg1 error:(id)arg2 isFallback:(BOOL)arg3 isCached:(BOOL)arg4;
-- (BOOL)updateTaskWithBundle:(id)arg1 error:(id)arg2 isFallback:(BOOL)arg3 isCached:(BOOL)arg4;
+- (void)createQueryParameters;
+- (id)initWithDeviceQuery:(id)arg1 requestConfiguration:(id)arg2 dispatchQueue:(id)arg3 useProcessLocalCache:(BOOL)arg4;
+- (BOOL)updateTaskWithAssetBundleURL:(id)arg1 error:(id)arg2 isFallback:(BOOL)arg3 isImperfectMatch:(BOOL)arg4 isCached:(BOOL)arg5;
+- (BOOL)updateTaskWithAssetURL:(id)arg1 error:(id)arg2 isFallback:(BOOL)arg3 isImperfectMatch:(BOOL)arg4 isCached:(BOOL)arg5;
+- (BOOL)updateTaskWithBundle:(id)arg1 error:(id)arg2 isFallback:(BOOL)arg3 isImperfectMatch:(BOOL)arg4 isCached:(BOOL)arg5;
 
 @end
 

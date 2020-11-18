@@ -10,6 +10,7 @@
 - (id)decodeHexadecimal;
 - (id)pk_capitalizedStringForPreferredLocale;
 - (id)pk_lowercaseStringForPreferredLocale;
+- (double)pk_normalizedLevenshteinDistanceFromString:(id)arg1 decimalPlaces:(unsigned long long)arg2;
 - (id)pk_uppercaseAttributedString;
 - (id)pk_uppercaseFirstStringForLocale:(id)arg1;
 - (id)pk_uppercaseFirstStringForPreferredLocale;

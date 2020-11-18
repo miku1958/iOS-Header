@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)containsOutputDevice:(id)arg1;
 - (void)dealloc;
 - (id)description;
+- (BOOL)effectivelyEqual:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isVolumeControlAvailable;
 - (id)outputDeviceUIDsMatchingPredicate:(CDUnknownBlockType)arg1;

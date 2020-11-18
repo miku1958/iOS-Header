@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class TSKCORangeAddress;
-
 @protocol TSKCORangeOperation
 
-@property (readonly, nonatomic) TSKCORangeAddress *address;
+@property (readonly, nonatomic) const vector_b5e32e34 *rangeVector;
 
 @end
 

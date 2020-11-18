@@ -6,13 +6,14 @@
 
 #import <Silex/SXWebContentConfiguration.h>
 
-@class NSLocale, NSString;
+@class NSDictionary, NSLocale, NSString;
 
 @interface SXMutableWebContentConfiguration : SXWebContentConfiguration
 {
     NSString *storeFront;
     NSLocale *locale;
     NSString *contentSizeCategory;
+    NSDictionary *dataSources;
     struct CGSize canvasSize;
     struct CGRect contentFrame;
 }
@@ -20,6 +21,7 @@
 @property (nonatomic) struct CGSize canvasSize; // @synthesize canvasSize;
 @property (nonatomic) struct CGRect contentFrame; // @synthesize contentFrame;
 @property (copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory;
+@property (copy, nonatomic) NSDictionary *dataSources; // @synthesize dataSources;
 @property (copy, nonatomic) NSLocale *locale; // @synthesize locale;
 @property (copy, nonatomic) NSString *storeFront; // @synthesize storeFront;
 

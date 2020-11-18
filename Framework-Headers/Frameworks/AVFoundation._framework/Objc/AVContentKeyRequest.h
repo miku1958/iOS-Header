@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVContentKeyRequestInternal, NSData, NSError;
+@class AVContentKeyRequestInternal, NSData, NSDictionary, NSError;
 
 @interface AVContentKeyRequest : NSObject
 {
@@ -17,12 +17,16 @@
 @property (readonly) NSError *error;
 @property (readonly) id identifier;
 @property (readonly, nonatomic) NSData *initializationData;
+@property (readonly, copy) NSDictionary *options;
 @property (readonly) long long status;
 
++ (id)_createKeyRequestDictionaryForApp:(id)arg1 persistentKey:(id)arg2 serverChallenge:(id)arg3 cryptorKeyRequestID:(unsigned long long)arg4 purpose:(int)arg5;
++ (id)_ensureProtocolVersionList:(id)arg1;
 + (id)_mergePreloadingRequestOptions:(id)arg1 withCreateKeyRequestOptions:(id)arg2;
 + (int)_prepareCryptor:(struct OpaqueFigCPECryptor *)arg1 forRenewal:(BOOL)arg2 andReturnKeyRequestID:(unsigned long long *)arg3;
 + (void)_validateHLSEncryptionMethod:(id)arg1;
 + (void)_validateProtocolVersionList:(id)arg1;
++ (void)_validateServerChallenge:(id)arg1;
 - (BOOL)_canRespondByRequestingPersistableContentKeyRequest;
 - (void)_clearContext;
 - (void)_copyAndStoreCryptorUUID;

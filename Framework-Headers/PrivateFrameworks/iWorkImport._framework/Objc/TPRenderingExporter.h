@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (struct CGRect)boundsRect;
 - (id)currentInfos;
-- (void)finalizeContext:(struct CGContext *)arg1;
 - (BOOL)incrementPage;
 - (id)initWithDocumentRoot:(id)arg1;
 - (unsigned long long)pageCount;

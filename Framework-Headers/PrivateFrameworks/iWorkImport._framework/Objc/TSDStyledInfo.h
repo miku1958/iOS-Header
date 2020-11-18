@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)setValuesForProperties:(id)arg1;
 - (Class)styleClass;
 - (id)styleIdentifierTemplateForNewPreset;
+- (unsigned short)stylePropertyId;
 - (id)stylePropertyName;
 - (id)stylesForCopyStyle;
 

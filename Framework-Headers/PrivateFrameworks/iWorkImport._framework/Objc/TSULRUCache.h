@@ -6,23 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, TSUNoCopyDictionary;
+@class NSArray, NSMutableOrderedSet, TSUNoCopyDictionary;
 
 __attribute__((visibility("hidden")))
 @interface TSULRUCache : NSObject
 {
-    TSUNoCopyDictionary *mData;
-    NSMutableArray *mOrderedKeys;
-    unsigned long long mMax;
-    id mCallbackTarget;
-    SEL mCallback;
+    unsigned long long _maxSize;
+    TSUNoCopyDictionary *_data;
+    NSMutableOrderedSet *_orderedKeys;
+    id _callbackTarget;
+    SEL _callback;
 }
 
 @property (readonly, nonatomic) NSArray *allKeys;
 @property (readonly, nonatomic) NSArray *allValues;
+@property (nonatomic) SEL callback; // @synthesize callback=_callback;
+@property (weak, nonatomic) id callbackTarget; // @synthesize callbackTarget=_callbackTarget;
 @property (readonly, nonatomic) unsigned long long count;
-@property (readonly, nonatomic) unsigned long long maxSize; // @synthesize maxSize=mMax;
+@property (readonly, nonatomic) TSUNoCopyDictionary *data; // @synthesize data=_data;
+@property (nonatomic) unsigned long long maxSize; // @synthesize maxSize=_maxSize;
+@property (readonly, nonatomic) NSMutableOrderedSet *orderedKeys; // @synthesize orderedKeys=_orderedKeys;
 
+- (void).cxx_destruct;
 - (void)clearEvictionCallbackTarget;
 - (void)dealloc;
 - (id)description;

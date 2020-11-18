@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 
++ (BOOL)requiresMainThread;
 - (void).cxx_destruct;
 - (void)_initializePlaybackStack;
 - (void)_updatePlayerPath;

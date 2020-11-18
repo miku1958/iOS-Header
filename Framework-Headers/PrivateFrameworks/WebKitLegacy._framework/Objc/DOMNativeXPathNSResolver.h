@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)lookupNamespaceURI:(id)arg1;
 
 @end

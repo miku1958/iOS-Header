@@ -12,12 +12,14 @@
 
 @interface BFFSimplePasscodeInputView : BFFPasscodeInputView <PSPasscodeFieldDelegate>
 {
+    BOOL _limitCharactersToNumbers;
     PSPasscodeField *_passcodeField;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL limitCharactersToNumbers; // @synthesize limitCharactersToNumbers=_limitCharactersToNumbers;
 @property (strong, nonatomic) PSPasscodeField *passcodeField; // @synthesize passcodeField=_passcodeField;
 @property (readonly) Class superclass;
 

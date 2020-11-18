@@ -6,15 +6,14 @@
 
 #import <NewsUI/NSObject-Protocol.h>
 
-@class NSArray, NSNumber, NSObject, NSString;
-@protocol FCNewsAppConfiguration, FCNewsAppConfigurationObserving, OS_dispatch_queue;
+@class NSArray, NSObject, NSString;
+@protocol FCNewsAppConfiguration, FCNewsAppConfiguration><FCJSONEncodableObjectProviding, FCNewsAppConfigurationObserving, OS_dispatch_queue;
 
 @protocol FCNewsAppConfigurationManager <NSObject>
 
 @property (readonly, nonatomic) id<FCNewsAppConfiguration> appConfiguration;
-@property (readonly, nonatomic) NSArray *availableExperiments;
-@property (readonly, copy, nonatomic) NSNumber *currentModdedBucketID;
 @property (readonly, copy, nonatomic) NSString *feldsparID;
+@property (readonly, nonatomic) id<FCNewsAppConfiguration><FCJSONEncodableObjectProviding> jsonEncodableAppConfiguration;
 @property (readonly, nonatomic) id<FCNewsAppConfiguration> possiblyUnfetchedAppConfiguration;
 @property (readonly, nonatomic) NSArray *segmentSetIDs;
 @property (readonly, nonatomic) NSArray *treatmentIDs;
@@ -27,7 +26,6 @@
 - (void)removeAppConfigObserver:(id<FCNewsAppConfigurationObserving>)arg1;
 
 @optional
-- (void)fetchAppWidgetConfigurationUseBackgroundRefreshRate:(BOOL)arg1 completion:(void (^)(id<FCNewsAppConfiguration>, NSData *, NSError *))arg2;
-- (void)overrideConfigWithTreatment:(NSNumber *)arg1;
+- (void)fetchAppWidgetConfigurationUseBackgroundRefreshRate:(BOOL)arg1 completion:(void (^)(id<FCNewsAppConfiguration>, NSDictionary *, NSError *))arg2;
 @end
 

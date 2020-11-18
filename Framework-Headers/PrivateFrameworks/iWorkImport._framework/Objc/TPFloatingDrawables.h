@@ -8,33 +8,32 @@
 
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 
-@class NSMutableDictionary, TPDocumentRoot, TSUPointerKeyDictionary;
+@class NSMapTable, NSMutableDictionary, NSSet, TPDocumentRoot;
 
 __attribute__((visibility("hidden")))
 @interface TPFloatingDrawables : TSPObject <TSKDocumentObject>
 {
     NSMutableDictionary *_drawablesByPageIndex;
-    TSUPointerKeyDictionary *_pageIndexByDrawable;
-    TSUPointerKeyDictionary *_tagByDrawable;
+    NSMapTable *_pageIndexByDrawable;
+    NSMapTable *_tagByDrawable;
     TPDocumentRoot *_documentRoot;
 }
 
+@property (readonly, nonatomic) NSSet *allDrawables;
+@property (readonly, nonatomic) unsigned long long countOfAllDrawables;
 @property (readonly, weak, nonatomic) TPDocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
+@property (readonly, nonatomic) BOOL hasAnyDrawables;
+@property (readonly, nonatomic) unsigned long long maximumPageIndex;
 
 - (void).cxx_destruct;
 - (void)addDrawable:(id)arg1 toPageIndex:(unsigned long long)arg2 insertContext:(id)arg3;
 - (void)addDrawable:(id)arg1 toPageIndex:(unsigned long long)arg2 insertContext:(id)arg3 suppressDOLC:(BOOL)arg4;
 - (void)addDrawables:(id)arg1 toPageIndex:(unsigned long long)arg2 insertContext:(id)arg3;
-- (id)allDrawables;
 - (void)applyTag:(id)arg1 toDrawable:(id)arg2;
-- (unsigned long long)countOfAllDrawables;
-- (id)debugDescription;
 - (id)drawableEnumerator;
 - (id)drawablesOnPageIndex:(unsigned long long)arg1;
-- (BOOL)hasAnyDrawables;
 - (id)initWithContext:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (unsigned long long)maximumPageIndex;
 - (void)moveDrawable:(id)arg1 toPageIndex:(unsigned long long)arg2;
 - (id)orderedDrawablesOnPageIndex:(unsigned long long)arg1;
 - (void)p_addDrawable:(id)arg1 toPageIndex:(unsigned long long)arg2;

@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 + (BOOL)isSkypeAvailableWithEnvironment:(id)arg1;
++ (id)os_log;
 - (void).cxx_destruct;
 - (id)_targetsForActionType:(id)arg1;
 - (void)dealloc;

@@ -15,10 +15,13 @@
 
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (id)nullMicroLocation;
 - (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithUUID:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToMicroLocation:(id)arg1;
 
 @end
 

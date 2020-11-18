@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)removeFromExcludedUidsTractColumnUidsSet:(const UUIDSet_bcc2db41 *)arg1;
 - (void)removeFromExcludedUidsTractRowUids:(const vector_4dc5f307 *)arg1;
 - (void)removeFromExcludedUidsTractRowUidsSet:(const UUIDSet_bcc2db41 *)arg1;
+- (id)removedByMoveUidTract;
 - (void)saveToArchive:(struct ASTNodeArrayArchive_ASTUidTractList *)arg1;
 - (unsigned char)tractCount;
 - (id)uidTractAtIndex:(unsigned char)arg1;

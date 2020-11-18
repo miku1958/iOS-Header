@@ -21,7 +21,7 @@
 - (id)_randomStores:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithStores:(id)arg1 sessionDescriptor:(id)arg2 seed:(unsigned long long)arg3;
-- (id)runParallelPlansWithPlanId:(id)arg1 tracker:(id)arg2 noiseScaleFactor:(float)arg3 noiseMinimumMagnitude:(float)arg4 weights:(id)arg5 serverIteration:(unsigned long long)arg6 useIntercept:(BOOL)arg7 beforeNoiseScaling:(long long)arg8 constantScaleFactor:(float)arg9 usingRandomlySelected:(unsigned long long)arg10;
+- (id)runParallelPlansWithPlanId:(id)arg1 tracker:(id)arg2 noiseScaleFactors:(CDStruct_cd4a7bf5)arg3 noiseMinimumMagnitude:(float)arg4 weights:(id)arg5 serverIteration:(unsigned long long)arg6 useIntercept:(BOOL)arg7 noiseMechanism:(long long)arg8 usingRandomlySelected:(unsigned long long)arg9;
 
 @end
 

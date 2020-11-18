@@ -25,9 +25,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)newBookmarkInfoViewControllerWithBookmark:(id)arg1 inCollection:(id)arg2 addingBookmark:(BOOL)arg3 toFavorites:(BOOL)arg4 willBeDisplayedModally:(BOOL)arg5;
 - (void).cxx_destruct;
-- (id)_initWithBookmark:(id)arg1 inCollection:(id)arg2 addingBookmark:(BOOL)arg3 toFavorites:(BOOL)arg4;
+- (id)_initWithBookmark:(id)arg1 childBookmarks:(id)arg2 inCollection:(id)arg3 addingBookmark:(BOOL)arg4 toFavorites:(BOOL)arg5;
+- (id)_lastSelectedFolder;
 - (void)addBookmarkWithTitle:(id)arg1 address:(id)arg2 parentBookmark:(id)arg3;
 - (void)bookmarkInfoViewController:(id)arg1 didFinishWithResult:(BOOL)arg2;
 - (BOOL)bookmarkInfoViewControllerCanSaveBookmarkChanges:(id)arg1;

@@ -15,6 +15,7 @@
     BOOL _wantsDetailedKeepLocalRequestableResponse;
     MPMediaLibrary *_mediaLibrary;
     NSArray *_allowedItemIdentifiers;
+    NSArray *_allowedSectionIdentifiers;
     NSArray *_scopedContainers;
     unsigned long long _filteringOptions;
     MPMediaQuery *_legacyMediaQuery;
@@ -22,6 +23,7 @@
 }
 
 @property (copy, nonatomic) NSArray *allowedItemIdentifiers; // @synthesize allowedItemIdentifiers=_allowedItemIdentifiers;
+@property (copy, nonatomic) NSArray *allowedSectionIdentifiers; // @synthesize allowedSectionIdentifiers=_allowedSectionIdentifiers;
 @property (nonatomic) struct _NSRange contentRange; // @synthesize contentRange=_contentRange;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

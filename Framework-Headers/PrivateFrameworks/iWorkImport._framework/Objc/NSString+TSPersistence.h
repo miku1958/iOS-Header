@@ -10,6 +10,5 @@
 
 @property (readonly, nonatomic) BOOL tsp_isPasteboardStateType;
 
-- (id)tsp_pathExceptPrivate;
 @end
 

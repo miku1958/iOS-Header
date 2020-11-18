@@ -10,7 +10,7 @@
 #import <iWorkImport/TSTTableInternalGeometryProviding-Protocol.h>
 #import <iWorkImport/TSTTableMergeRangeProviding-Protocol.h>
 
-@class NSIndexSet, NSMutableArray, NSMutableSet, NSPointerArray, NSString, TSDFill, TSDInfoGeometry, TSDLayoutGeometry, TSKChangeNotifier, TSTCellRegion, TSTCellSelection, TSTConcurrentMutableIndexSet, TSTDupContentCache, TSTHiddenRowsColumnsCache, TSTInfo, TSTLayout, TSTLayoutDynamicResizeInfo, TSTMergeRangeSortedSet, TSTRWRetainedPointerKeyDictionary, TSTStrokeDefaultVendor, TSTStrokeWidthCache, TSTWPColumnCache, TSTWidthHeightCache, TSUColor, TSUWidthLimitedQueue, TSWPColumnStyle;
+@class NSIndexSet, NSMutableArray, NSMutableSet, NSPointerArray, NSString, TSDFill, TSDInfoGeometry, TSDLayoutGeometry, TSKChangeNotifier, TSTCellRegion, TSTCellSelection, TSTConcurrentMutableIndexSet, TSTDupContentCache, TSTHiddenRowsColumnsCache, TSTLayout, TSTLayoutDynamicResizeInfo, TSTMergeRangeSortedSet, TSTRWRetainedPointerKeyDictionary, TSTStrokeDefaultVendor, TSTStrokeWidthCache, TSTTableInfo, TSTWPColumnCache, TSTWidthHeightCache, TSUColor, TSUWidthLimitedQueue, TSWPColumnStyle;
 @protocol OS_dispatch_group, TSTLayoutDynamicCellFillProtocol, TSTLayoutDynamicContentProtocol;
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_group> *_layoutInFlight;
     struct _opaque_pthread_rwlock_t _strokesRWLock;
     struct _opaque_pthread_rwlock_t _contentRWLock;
-    TSWPColumnStyle *_defaultColumnStyle;
     BOOL _inDynamicLayoutMode;
     BOOL _dynamicBandedFill;
     BOOL _dynamicBandedFillSetting;
@@ -52,7 +51,7 @@ __attribute__((visibility("hidden")))
     unsigned int _cachedNumberOfHeaderColumns;
     unsigned int _cachedNumberOfHeaderRows;
     unsigned int _cachedNumberOfFooterRows;
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     TSKChangeNotifier *_changeNotifier;
     TSTStrokeDefaultVendor *_strokesDefaultVendor;
     TSTWPColumnCache *_cellIDToWPColumnCache;
@@ -98,6 +97,7 @@ __attribute__((visibility("hidden")))
     TSTLayoutDynamicResizeInfo *_dynamicResizeInfo;
     long long _dynamicRevealingRowsColsDirection;
     id<TSTLayoutDynamicCellFillProtocol> _dynamicCellFillDelegate;
+    TSWPColumnStyle *_defaultColumnStyle;
     struct TSUCellRect _dynamicFontColorCellRange;
     struct TSUCellRect _dynamicResizingColumnRange;
     struct TSUCellRect _dynamicResizingRowRange;
@@ -130,7 +130,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSTStrokeWidthCache *columnToStrokeWidthCache; // @synthesize columnToStrokeWidthCache=_columnToStrokeWidthCache;
 @property (strong, nonatomic) NSMutableSet *contentReadingThreads; // @synthesize contentReadingThreads=_contentReadingThreads;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) TSWPColumnStyle *defaultColumnStyle;
+@property (readonly, nonatomic) TSWPColumnStyle *defaultColumnStyle; // @synthesize defaultColumnStyle=_defaultColumnStyle;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) TSTDupContentCache *dupContentCache; // @synthesize dupContentCache=_dupContentCache;
 @property (nonatomic) double dynamicAddOrRemoveColumnElementSize; // @synthesize dynamicAddOrRemoveColumnElementSize=_dynamicAddOrRemoveColumnElementSize;
@@ -210,7 +210,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL tableDefaultFontHeightsAreValid; // @synthesize tableDefaultFontHeightsAreValid=_tableDefaultFontHeightsAreValid;
 @property (nonatomic) int tableEnvironment; // @synthesize tableEnvironment=_tableEnvironment;
-@property (weak, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property (nonatomic) struct CGRect tableNameBounds; // @synthesize tableNameBounds=_tableNameBounds;
 @property (nonatomic) BOOL tableNameEnabled; // @synthesize tableNameEnabled=_tableNameEnabled;
 @property (nonatomic) BOOL tableNameHeightValid; // @synthesize tableNameHeightValid=_tableNameHeightValid;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/SwiftObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC13CoreKnowledge20CKAbstractWriteBatch : SwiftObject
+@interface _TtC13CoreKnowledge20CKAbstractWriteBatch : _TtCs12_SwiftObject
 {
     MISSING_TYPE *buffer;
     MISSING_TYPE *backingStore;

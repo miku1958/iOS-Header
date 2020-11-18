@@ -62,6 +62,7 @@
 - (void)_updateStatusString;
 - (void)_updateTitle;
 - (void)commitPreviewViewController:(id)arg1;
+- (void)contentHasBeenSeen;
 - (struct NSObject *)contentView;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)ppt_presentDetailView;

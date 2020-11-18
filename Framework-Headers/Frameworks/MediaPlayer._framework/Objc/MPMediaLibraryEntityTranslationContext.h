@@ -12,13 +12,13 @@
 {
     BOOL _multiQuery;
     MPMediaLibrary *_mediaLibrary;
-    NSArray *_allowedItemIdentifiers;
+    NSArray *_allowedEntityIdentifiers;
     NSArray *_scopedContainers;
     unsigned long long _filteringOptions;
     MPModelKind *_modelKind;
 }
 
-@property (strong, nonatomic) NSArray *allowedItemIdentifiers; // @synthesize allowedItemIdentifiers=_allowedItemIdentifiers;
+@property (strong, nonatomic) NSArray *allowedEntityIdentifiers; // @synthesize allowedEntityIdentifiers=_allowedEntityIdentifiers;
 @property (nonatomic) unsigned long long filteringOptions; // @synthesize filteringOptions=_filteringOptions;
 @property (strong, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (strong, nonatomic) MPModelKind *modelKind; // @synthesize modelKind=_modelKind;

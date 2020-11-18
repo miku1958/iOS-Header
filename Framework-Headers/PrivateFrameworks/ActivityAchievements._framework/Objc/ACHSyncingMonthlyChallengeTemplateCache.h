@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class HDKeyValueDomain, HDProfile, NSCalendar;
+@class HDDatabaseTransactionContext, HDKeyValueDomain, HDProfile, NSCalendar;
 
 @interface ACHSyncingMonthlyChallengeTemplateCache : NSObject
 {
     struct os_unfair_lock_s _lock;
+    HDDatabaseTransactionContext *_databaseContext;
     HDProfile *_profile;
     NSCalendar *_gregorianCalendar;
     HDKeyValueDomain *_keyValueDomain;
 }
 
+@property (weak, nonatomic) HDDatabaseTransactionContext *databaseContext; // @synthesize databaseContext=_databaseContext;
 @property (strong, nonatomic) NSCalendar *gregorianCalendar; // @synthesize gregorianCalendar=_gregorianCalendar;
 @property (strong, nonatomic) HDKeyValueDomain *keyValueDomain; // @synthesize keyValueDomain=_keyValueDomain;
 @property (nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;

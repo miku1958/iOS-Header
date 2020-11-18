@@ -97,11 +97,13 @@
 - (void)presentViewController:(id)arg1;
 - (void)presentViewController:(id)arg1 forCardSectionViewController:(id)arg2;
 - (void)userDidEngageCardSection:(id)arg1 withEngagementFeedback:(id)arg2;
+- (void)userDidReportFeedback:(id)arg1 fromCardSection:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)willDismissViewController:(id)arg1;
 
 @end
 

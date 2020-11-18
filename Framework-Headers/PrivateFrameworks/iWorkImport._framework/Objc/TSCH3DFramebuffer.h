@@ -6,16 +6,31 @@
 
 #import <objc/NSObject.h>
 
+#import <iWorkImport/TSCH3DPipelineLinkable-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface TSCH3DFramebuffer : NSObject
+@interface TSCH3DFramebuffer : NSObject <TSCH3DPipelineLinkable>
 {
     struct FramebufferAttributes mFramebufferAttributes;
+    unsigned long long _uniqueIdentifier;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (id)framebufferWithFramebufferAttributes:(const struct FramebufferAttributes *)arg1;
 - (id).cxx_construct;
+- (void)dealloc;
 - (const struct FramebufferAttributes *)framebufferAttributes;
 - (id)initWithFramebufferAttributes:(const struct FramebufferAttributes *)arg1;
+- (id)output;
+- (id)pixelBufferFromViewport:(const box_0260e9b3 *)arg1 components:(unsigned long long)arg2 flipped:(BOOL)arg3 forProcessor:(id)arg4 session:(id)arg5;
+- (id)resolvingFramebuffer;
 
 @end
 

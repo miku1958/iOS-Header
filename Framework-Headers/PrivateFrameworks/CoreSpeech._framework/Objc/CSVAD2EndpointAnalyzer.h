@@ -108,7 +108,7 @@
 - (void)processAudioSamplesAsynchronously:(id)arg1;
 - (void)recordingStoppedForReason:(unsigned long long)arg1;
 - (void)reset;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2;
 
 @end
 

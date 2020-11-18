@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString, NTPBAppConfigurationResource, NTPBCacheCoordinatorHints, NTPBDate, NTPBNetworkSessionList, NTPBPersonalizationLocalData, NTPBPrivateDataControllerSyncState, NTPBReadingHistoryItem;
+@class NSData, NSString, NTPBAppConfigurationResource, NTPBCacheCoordinatorHints, NTPBDate, NTPBIssueReadingHistoryItem, NTPBNetworkSessionList, NTPBPersonalizationLocalData, NTPBPrivateDataControllerSyncState, NTPBReadingHistoryItem;
 
 @interface NTPBKeyValuePair : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     NTPBCacheCoordinatorHints *_cacheCoordinatorHintsValue;
     NSData *_dataValue;
     NTPBDate *_dateValue;
+    NTPBIssueReadingHistoryItem *_issueReadingHistoryItem;
     NSString *_key;
     NTPBNetworkSessionList *_networkSessionList;
     NTPBPersonalizationLocalData *_personalizationLocalData;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) BOOL hasCacheCoordinatorHintsValue;
 @property (readonly, nonatomic) BOOL hasDataValue;
 @property (readonly, nonatomic) BOOL hasDateValue;
+@property (readonly, nonatomic) BOOL hasIssueReadingHistoryItem;
 @property (readonly, nonatomic) BOOL hasKey;
 @property (readonly, nonatomic) BOOL hasNetworkSessionList;
 @property (readonly, nonatomic) BOOL hasPersonalizationLocalData;
@@ -45,6 +47,7 @@
 @property (readonly, nonatomic) BOOL hasRecordData;
 @property (readonly, nonatomic) BOOL hasStringValue;
 @property (nonatomic) BOOL hasValueType;
+@property (strong, nonatomic) NTPBIssueReadingHistoryItem *issueReadingHistoryItem; // @synthesize issueReadingHistoryItem=_issueReadingHistoryItem;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 @property (strong, nonatomic) NTPBNetworkSessionList *networkSessionList; // @synthesize networkSessionList=_networkSessionList;
 @property (strong, nonatomic) NTPBPersonalizationLocalData *personalizationLocalData; // @synthesize personalizationLocalData=_personalizationLocalData;

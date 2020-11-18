@@ -87,7 +87,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)drawFrameAtLayerTime:(double)arg1 context:(id)arg2;
+- (void)drawFrameWithMetalContext:(id)arg1;
 - (void)evictRenderedResources;
 - (id)finalTexturesForStage:(long long)arg1;
 - (id)firstVisibleTextureForTextureType:(long long)arg1;

@@ -14,6 +14,7 @@
     NSString *_accountIdentifier;
     NSString *_accountStatus;
     NSString *_carrierBundlingStatus;
+    NSNumber *_carrierBundlingErrorCode;
     id _discoveryModeEligible;
     NSString *_eligibilityStatus;
     id _familyOrganizer;
@@ -34,6 +35,7 @@
 @property (readonly) NSString *accountStatusNotSubscribed;
 @property (readonly) NSString *accountStatusSubscribed;
 @property (readonly) NSString *accountStatusUnknown;
+@property (readonly) NSNumber *carrierBundlingErrorCode; // @synthesize carrierBundlingErrorCode=_carrierBundlingErrorCode;
 @property (readonly) NSString *carrierBundlingStatus; // @synthesize carrierBundlingStatus=_carrierBundlingStatus;
 @property (readonly, getter=isDiscoveryModeEligible) id discoveryModeEligible; // @synthesize discoveryModeEligible=_discoveryModeEligible;
 @property (readonly) NSString *eligibilityStatus; // @synthesize eligibilityStatus=_eligibilityStatus;

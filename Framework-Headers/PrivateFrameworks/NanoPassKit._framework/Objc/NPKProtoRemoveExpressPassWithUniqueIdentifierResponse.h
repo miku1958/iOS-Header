@@ -8,26 +8,33 @@
 
 #import <NanoPassKit/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSData, NSMutableArray;
 
 @interface NPKProtoRemoveExpressPassWithUniqueIdentifierResponse : PBCodable <NSCopying>
 {
     NSData *_actualExpressPassInformation;
+    NSMutableArray *_currentExpressPasseInformations;
     BOOL _pending;
     BOOL _success;
     CDStruct_5ee4970e _has;
 }
 
 @property (strong, nonatomic) NSData *actualExpressPassInformation; // @synthesize actualExpressPassInformation=_actualExpressPassInformation;
+@property (strong, nonatomic) NSMutableArray *currentExpressPasseInformations; // @synthesize currentExpressPasseInformations=_currentExpressPasseInformations;
 @property (readonly, nonatomic) BOOL hasActualExpressPassInformation;
 @property (nonatomic) BOOL hasPending;
 @property (nonatomic) BOOL hasSuccess;
 @property (nonatomic) BOOL pending; // @synthesize pending=_pending;
 @property (nonatomic) BOOL success; // @synthesize success=_success;
 
++ (Class)currentExpressPasseInformationType;
 - (void).cxx_destruct;
+- (void)addCurrentExpressPasseInformation:(id)arg1;
+- (void)clearCurrentExpressPasseInformations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)currentExpressPasseInformationAtIndex:(unsigned long long)arg1;
+- (unsigned long long)currentExpressPasseInformationsCount;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

@@ -86,6 +86,7 @@
 - (void)paymentPassesWithPrimaryAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)peerPaymentAccountForDevice:(id)arg1;
 - (void)redownloadAllPaymentPassesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removePaymentPassWithUniqueID:(id)arg1 forDevice:(id)arg2 waitForConfirmation:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)savePaymentPass:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDefaultCardUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;

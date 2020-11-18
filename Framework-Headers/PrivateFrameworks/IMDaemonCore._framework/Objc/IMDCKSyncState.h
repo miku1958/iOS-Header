@@ -8,7 +8,7 @@
 
 #import <IMDaemonCore/IMKeyValueCollectionDelegate-Protocol.h>
 
-@class IMKeyValueCollection, NSArray, NSDate, NSString;
+@class IMKeyValueCollection, NSArray, NSDate, NSDictionary, NSString;
 @protocol IMDCKSyncStateDelegate;
 
 @interface IMDCKSyncState : NSObject <IMKeyValueCollectionDelegate>
@@ -18,8 +18,11 @@
 }
 
 @property (nonatomic) long long accountStatus; // @dynamic accountStatus;
+@property (copy, nonatomic) NSDictionary *analyticSyncDatesDictionary; // @dynamic analyticSyncDatesDictionary;
+@property (nonatomic) BOOL createdChatZone; // @dynamic createdChatZone;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<IMDCKSyncStateDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL deletedZones; // @dynamic deletedZones;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDisablingDevices) BOOL disablingDevices; // @dynamic disablingDevices;
 @property (nonatomic, getter=isEligibleForTruthZone) BOOL eligibleForTruthZone; // @dynamic eligibleForTruthZone;
@@ -28,7 +31,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isInExitState) BOOL inExitState; // @dynamic inExitState;
 @property (readonly, nonatomic) IMKeyValueCollection *keyValueCollection; // @synthesize keyValueCollection=_storage;
-@property (copy, nonatomic) NSDate *lastCompleteSyncedDBDate; // @dynamic lastCompleteSyncedDBDate;
 @property (copy, nonatomic) NSDate *lastSyncDate; // @dynamic lastSyncDate;
 @property (nonatomic, getter=isRemovedFromBackup) BOOL removedFromBackup; // @dynamic removedFromBackup;
 @property (nonatomic, getter=isStartingEnabledSettingChange) BOOL startingEnabledSettingChange; // @dynamic startingEnabledSettingChange;
@@ -44,26 +46,38 @@
 @property (nonatomic, getter=isSyncingPaused) BOOL syncingPaused; // @dynamic syncingPaused;
 
 + (id)logHandle;
++ (void)removeBuildObjectsFromDict:(id)arg1;
 - (void).cxx_destruct;
+- (id)_describeErrors:(id)arg1;
 - (void)_finishBatchChange;
+- (void)_removeObjectForKey:(id)arg1 forDictionary:(id)arg2;
+- (void)_setObject:(id)arg1 forKey:(id)arg2 forDictionary:(id)arg3 shouldSetBuild:(BOOL)arg4;
 - (void)_setStartingSync;
+- (BOOL)_shouldReportNewUserIfCreatedChatZones:(BOOL)arg1 deletedZones:(BOOL)arg2;
 - (void)_startBatchChange;
 - (void)addSyncError:(id)arg1;
 - (void)broadcastSyncState;
 - (void)clearLocalCloudKitSyncState;
 - (void)clearSyncErrors;
+- (id)describeErrors;
+- (id)getAnalyticSyncDatesObjectForKey:(id)arg1;
 - (id)init;
 - (id)initWithKeyValueCollection:(id)arg1;
 - (void)keyValueCollection:(id)arg1 didUpdateValues:(id)arg2;
 - (void)keyValueCollection:(id)arg1 willUpdateValues:(id)arg2;
 - (id)logHandle;
+- (void)removeObjectFromAnalyticSyncDatesDictionaryForKey:(id)arg1;
 - (id)serializedRepresentation;
+- (void)setAnalyticSyncDatesDictionaryObject:(id)arg1 forKey:(id)arg2 shouldOverrideIfExists:(BOOL)arg3;
 - (void)setErrorToAccountNeedsRepair;
 - (void)setErrorToKeyRollingError;
 - (void)setStartingInitialSyncWithRecordType:(long long)arg1;
 - (void)setStartingPeriodicSyncWithRecordType:(long long)arg1;
 - (void)setSyncControllerSyncState:(unsigned long long)arg1 withRecordType:(long long)arg2;
 - (void)setSyncingFinished;
+- (id)syncReportDictionary;
+- (id)syncReportDictionaryForAttempt:(unsigned long long)arg1 withSuccess:(BOOL)arg2;
+- (id)syncUserType;
 
 @end
 

@@ -13,8 +13,12 @@
 
 @property (readonly, weak, nonatomic) id object; // @synthesize object=_object;
 
++ (id)withObject:(id)arg1;
 - (void).cxx_destruct;
+- (id)description;
+- (unsigned long long)hash;
 - (id)initWithObject:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

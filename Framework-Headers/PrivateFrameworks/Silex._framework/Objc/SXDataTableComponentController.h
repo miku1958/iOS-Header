@@ -10,7 +10,7 @@
 #import <Silex/SXTextSourceDataSource-Protocol.h>
 
 @class NSArray, NSString, SXDataRecordValueTransformerFactory, SXDataTableDictionary;
-@protocol SXDataTableComponentControllerDataSource, SXDataTableStyleFactory, SXDataTableTextSourceFactory;
+@protocol SXDOMObjectProviding, SXDataTableComponentControllerDataSource, SXDataTableStyleFactory, SXDataTableTextSourceFactory;
 
 @interface SXDataTableComponentController : NSObject <SXTextSourceDataSource, SXDataTableDataSource>
 {
@@ -21,8 +21,10 @@
     id<SXDataTableTextSourceFactory> _textSourceFactory;
     NSArray *_records;
     SXDataRecordValueTransformerFactory *_recordValueTransformerFactory;
+    id<SXDOMObjectProviding> _DOMObjectProvider;
 }
 
+@property (readonly, nonatomic) id<SXDOMObjectProviding> DOMObjectProvider; // @synthesize DOMObjectProvider=_DOMObjectProvider;
 @property (readonly, nonatomic) SXDataTableDictionary *cellObjects; // @synthesize cellObjects=_cellObjects;
 @property (readonly, weak, nonatomic) id<SXDataTableComponentControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -46,13 +48,14 @@
 - (id)columnDividerAtIndex:(unsigned long long)arg1;
 - (id)columnStyleForColumnIndex:(unsigned long long)arg1;
 - (id)component;
+- (id)componentTextStyleForTextSource:(id)arg1 inheritingFromDefaultStyles:(BOOL)arg2;
 - (id)contentSizeCategoryForTextSource:(id)arg1;
 - (double)convertConvertibleValue:(struct _SXConvertibleValue)arg1;
 - (id)dataDescriptorForIdentifier:(id)arg1;
 - (id)dataDescriptorForIndexPath:(CDStruct_2fea82da)arg1;
 - (unsigned long long)dataOrientation;
-- (id)documentController;
-- (id)documentControllerForTextSource:(id)arg1;
+- (id)defaultComponentTextStyleForTextSource:(id)arg1;
+- (id)defaultComponentTextStylesForTextSource:(id)arg1;
 - (BOOL)hasColumnHeader;
 - (BOOL)hasRowHeader;
 - (double)heightForCellAtIndexPath:(CDStruct_2fea82da)arg1;
@@ -60,8 +63,9 @@
 - (unsigned long long)horizontalAlignmentForCellAtIndexPath:(CDStruct_2fea82da)arg1;
 - (BOOL)indexPathIsHeader:(CDStruct_2fea82da)arg1;
 - (CDStruct_2fea82da)indexPathSubstractingHeaders:(CDStruct_2fea82da)arg1;
-- (id)initWithStyleFactory:(id)arg1 textSourceFactory:(id)arg2 dataSource:(id)arg3;
+- (id)initWithStyleFactory:(id)arg1 textSourceFactory:(id)arg2 dataSource:(id)arg3 recordValueTransformerFactory:(id)arg4 DOMObjectProvider:(id)arg5;
 - (id)inlineTextStylesForTextSource:(id)arg1;
+- (id)linkStyleForTextSource:(id)arg1;
 - (void)loadRecords;
 - (double)minimumWidthForCellAtIndexPath:(CDStruct_2fea82da)arg1;
 - (double)minimumWidthForStorage:(id)arg1 usingStringEnumeration:(unsigned long long)arg2;
@@ -77,7 +81,7 @@
 - (id)textLayouterForIndexPath:(CDStruct_2fea82da)arg1;
 - (id)textResizerForTextSource:(id)arg1;
 - (id)textRulesForTextSource:(id)arg1;
-- (id)textStyleForTextSource:(id)arg1;
+- (id)textStyleForIdentifier:(id)arg1;
 - (unsigned long long)verticalAlignmentForCellAtIndexPath:(CDStruct_2fea82da)arg1;
 - (double)widthForCellAtIndexPath:(CDStruct_2fea82da)arg1;
 

@@ -11,6 +11,7 @@
 @interface TSDDrawableInfo (KNAdditions)
 
 @property (readonly, nonatomic) KNAbstractSlide *abstractSlide;
+@property (readonly, nonatomic) NSArray *actionBuildChunks;
 @property (readonly, nonatomic) NSSet *actionBuilds;
 @property (readonly, nonatomic) NSArray *activeBuildChunks;
 @property (readonly, nonatomic) NSArray *buildChunks;

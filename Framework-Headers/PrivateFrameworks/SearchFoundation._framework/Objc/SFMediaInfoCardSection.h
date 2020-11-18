@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFMediaInfoCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFActionItem, SFCard, SFColor, SFMediaItem, SFRichText;
+@class NSArray, NSData, NSDictionary, NSString, SFActionItem, SFCard, SFColor, SFMediaItem, SFRichText, SFUserReportRequest;
 
 @interface SFMediaInfoCardSection : SFCardSection <SFMediaInfoCardSection, NSSecureCoding, NSCopying>
 {
@@ -69,6 +69,7 @@
 @property (strong, nonatomic) SFRichText *specialOfferButtonLabel; // @synthesize specialOfferButtonLabel=_specialOfferButtonLabel;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 @property (copy, nonatomic) NSString *watchListButtonLabel; // @synthesize watchListButtonLabel=_watchListButtonLabel;
 @property (copy, nonatomic) NSString *watchListConfirmationText; // @synthesize watchListConfirmationText=_watchListConfirmationText;
 @property (copy, nonatomic) NSString *watchListContinuationText; // @synthesize watchListContinuationText=_watchListContinuationText;

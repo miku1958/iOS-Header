@@ -63,6 +63,10 @@
 + (BOOL)_assetsLibrary_isSharedPhotoStreamsSupportEnabled;
 + (BOOL)_assetsdQueueingMode;
 + (BOOL)_canSetPauseMarkerWithUnpauseTime:(id)arg1 onPauseData:(id)arg2;
++ (void)_context:(id)arg1 saveFailedWithError:(id)arg2;
++ (void)_contextSaveFailedWithError:(id)arg1;
++ (void)_contextSaveFailedWithSQLiteError:(id)arg1;
++ (void)_contextSaveFailedWithTimeoutError:(id)arg1;
 + (void)_createPauseMarkerForReason:(short)arg1 withUnpauseTime:(id)arg2 withPath:(id)arg3;
 + (id)_dataMigratorFinishedFilePath;
 + (id)_dataMigratorFinishedMarkerQueue;

@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isSystemSpeakingOnBehalfOfCurrentConnection;
 - (void)pauseCurrentSpeechRequestAtMark:(long long)arg1;
 - (void)prewarmIfNeededWithRequest:(id)arg1;
+- (BOOL)queryPhaticCapabilityWithRequest:(id)arg1;
 - (void)setAutoDownloadedVoiceAssets:(id)arg1;
 - (void)setLogToFile:(BOOL)arg1;
 - (void)setPresynthesizedAudioRequest:(id)arg1;

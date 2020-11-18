@@ -11,14 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface TSUBasicProgress : TSUProgress
 {
-    TSUBasicProgressStorage *mStorage;
+    TSUBasicProgressStorage *_storage;
 }
 
 @property (getter=isIndeterminate) BOOL indeterminate;
 @property double value;
 
-- (void)dealloc;
-- (id)init;
+- (void).cxx_destruct;
+- (id)initForSubclass;
 - (id)initWithMaxValue:(double)arg1;
 - (double)maxValue;
 

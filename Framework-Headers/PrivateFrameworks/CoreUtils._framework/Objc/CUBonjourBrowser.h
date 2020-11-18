@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUBonjourBrowser : NSObject
@@ -16,7 +16,7 @@
     struct BonjourBrowser *_bonjourBrowser;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
-    struct NSMutableDictionary *_devices;
+    struct NSMutableDictionary *_deviceMap;
     struct LogCategory *_ucat;
     BOOL _browseFlagsChanged;
     unsigned int _changeFlags;
@@ -40,6 +40,7 @@
 @property (copy, nonatomic) CDUnknownBlockType deviceChangedHandler; // @synthesize deviceChangedHandler=_deviceChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceFoundHandler; // @synthesize deviceFoundHandler=_deviceFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceLostHandler; // @synthesize deviceLostHandler=_deviceLostHandler;
+@property (readonly, copy) NSArray *devices;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property (copy, nonatomic) NSString *interfaceName; // @synthesize interfaceName=_interfaceName;

@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
     int _basebandFlushCount;
     int _basebandFlushedVideoCount;
     int _basebandFlushedAudioCount;
+    double _lastBasebandFlushCountChangeTime;
     double _lastBasebandFlushAudioTime;
     double _lastBasebandFlushVideoTime;
     unsigned short _videoFlushTransactionID;
@@ -74,6 +75,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isSenderProbingEnabled; // @synthesize isSenderProbingEnabled=_isSenderProbingEnabled;
 @property (readonly, nonatomic) BOOL isVideoStopped;
 @property (readonly, nonatomic) BOOL isVideoStoppedByVCRateControl; // @synthesize isVideoStoppedByVCRateControl=_isVideoStoppedByVCRateControl;
+@property (nonatomic) double lastBasebandFlushCountChangeTime; // @synthesize lastBasebandFlushCountChangeTime=_lastBasebandFlushCountChangeTime;
 @property (readonly, nonatomic) double lastVideoKeyFrameTime; // @synthesize lastVideoKeyFrameTime=_lastVideoKeyFrameTime;
 @property (nonatomic) unsigned int minTargetBitrate; // @synthesize minTargetBitrate=_minTargetBitrate;
 @property (readonly, nonatomic) unsigned int probingLargeFrameSize; // @synthesize probingLargeFrameSize=_probingLargeFrameSize;

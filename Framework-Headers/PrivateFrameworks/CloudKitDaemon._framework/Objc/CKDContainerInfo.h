@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSURL *_publicDeviceServiceURL;
     NSURL *_publicCodeServiceURL;
     NSURL *_publicMetricsServiceURL;
+    NSURL *_publicDatabaseRPCServiceURL;
     NSString *_containerScopedUserID;
     NSString *_orgAdminUserID;
     long long _environment;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *orgAdminUserID; // @synthesize orgAdminUserID=_orgAdminUserID;
 @property (copy, nonatomic) NSURL *publicCloudDBURL; // @synthesize publicCloudDBURL=_publicCloudDBURL;
 @property (copy, nonatomic) NSURL *publicCodeServiceURL; // @synthesize publicCodeServiceURL=_publicCodeServiceURL;
+@property (copy, nonatomic) NSURL *publicDatabaseRPCServiceURL; // @synthesize publicDatabaseRPCServiceURL=_publicDatabaseRPCServiceURL;
 @property (copy, nonatomic) NSURL *publicDeviceServiceURL; // @synthesize publicDeviceServiceURL=_publicDeviceServiceURL;
 @property (copy, nonatomic) NSURL *publicMetricsServiceURL; // @synthesize publicMetricsServiceURL=_publicMetricsServiceURL;
 @property (copy, nonatomic) NSURL *publicShareServiceURL; // @synthesize publicShareServiceURL=_publicShareServiceURL;

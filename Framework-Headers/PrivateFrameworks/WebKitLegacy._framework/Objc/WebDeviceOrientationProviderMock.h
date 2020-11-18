@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <WebKitLegacy/WebDeviceOrientationProvider-Protocol.h>
+#import <WebKitLegacy/WebDeviceOrientationProviderMock-Protocol.h>
 
 @class NSString, WebDeviceOrientationProviderMockInternal;
 
-@interface WebDeviceOrientationProviderMock : NSObject <WebDeviceOrientationProvider>
+@interface WebDeviceOrientationProviderMock : NSObject <WebDeviceOrientationProviderMock, WebDeviceOrientationProvider>
 {
     WebDeviceOrientationProviderMockInternal *m_internal;
 }

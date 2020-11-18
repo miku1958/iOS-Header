@@ -77,6 +77,7 @@
 - (void)rcs_repairDecomposedFragmentMetadataIfNecessary;
 - (void)reloadComposition;
 - (void)sanitizeWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)trimDidSave;
 
 @end
 

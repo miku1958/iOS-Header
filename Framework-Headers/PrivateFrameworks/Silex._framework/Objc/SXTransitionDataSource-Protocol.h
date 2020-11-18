@@ -20,6 +20,5 @@
 @property (readonly, nonatomic) BOOL transitionViewUsesThumbnail;
 @property (readonly, nonatomic) struct CGRect transitionVisibleFrame;
 
-- (void)prepareForTransitionType:(unsigned long long)arg1;
 @end
 

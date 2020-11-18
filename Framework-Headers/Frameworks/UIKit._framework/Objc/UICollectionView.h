@@ -8,12 +8,13 @@
 
 #import <UIKitCore/UIDataSourceTranslating-Protocol.h>
 #import <UIKitCore/_UIDataSourceBackedView-Protocol.h>
+#import <UIKitCore/_UIHorizontalIndexTitleBarDelegate-Protocol.h>
 #import <UIKitCore/_UIKeyboardAutoRespondingScrollView-Protocol.h>
 
-@class NSArray, NSHashTable, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UICollectionReusableView, UICollectionViewCell, UICollectionViewData, UICollectionViewLayout, UICollectionViewLayoutAttributes, UICollectionViewUpdate, UIFocusContainerGuide, UITouch, UIView, _UICollectionViewDragAndDropController, _UICollectionViewDragDestinationController, _UICollectionViewDragSourceController, _UICollectionViewPrefetchingContext, _UIDragSnappingFeedbackGenerator, _UIDynamicAnimationGroup, _UIVelocityIntegrator;
+@class NSArray, NSHashTable, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UICollectionReusableView, UICollectionViewCell, UICollectionViewData, UICollectionViewLayout, UICollectionViewLayoutAttributes, UICollectionViewUpdate, UIFocusContainerGuide, UITouch, UIView, _UICollectionViewDragAndDropController, _UICollectionViewDragDestinationController, _UICollectionViewDragSourceController, _UICollectionViewPrefetchingContext, _UIDragSnappingFeedbackGenerator, _UIDynamicAnimationGroup, _UIFocusFastScrollingIndexBarEntry, _UIHorizontalIndexTitleBar, _UIVelocityIntegrator;
 @protocol UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UICollectionViewDataSource_Private, UICollectionViewDelegate, UICollectionViewDragDelegate, UICollectionViewDragDelegate_Private, UICollectionViewDragDestination, UICollectionViewDragSource, UICollectionViewDropDelegate, UICollectionViewDropDelegate_Private;
 
-@interface UICollectionView : UIScrollView <_UIKeyboardAutoRespondingScrollView, _UIDataSourceBackedView, UIDataSourceTranslating>
+@interface UICollectionView : UIScrollView <_UIHorizontalIndexTitleBarDelegate, _UIKeyboardAutoRespondingScrollView, _UIDataSourceBackedView, UIDataSourceTranslating>
 {
     UICollectionViewLayout *_layout;
     id<UICollectionViewDataSource_Private> _dataSource;
@@ -88,6 +89,7 @@
     NSTimer *_autoscrollTimer;
     long long _focusedViewType;
     UIFocusContainerGuide *_contentFocusContainerGuide;
+    struct CGPoint _horizontalIndexTitleBarOffset;
     struct {
         unsigned int delegateShouldHighlightItemAtIndexPath:1;
         unsigned int delegateDidHighlightItemAtIndexPath:1;
@@ -119,6 +121,7 @@
         unsigned int delegateDidUpdateFocusInContext:1;
         unsigned int delegateTemplateLayoutCell:1;
         unsigned int delegateWillLayoutCellUsingTemplateLayoutCell:1;
+        unsigned int delegateHorizontalIndexTitleBarSelectedEntry:1;
         unsigned int delegateWasNonNil:1;
         unsigned int dataSourceNumberOfSections:1;
         unsigned int dataSourceViewForSupplementaryElement:1;
@@ -142,6 +145,7 @@
         unsigned int allowsMultipleSelection:1;
         unsigned int allowsSelectionDuringEditing:1;
         unsigned int allowsMultipleSelectionDuringEditing:1;
+        unsigned int displaysHorizontalIndexTitleBar:1;
         unsigned int fadeCellsForBoundsChange:1;
         unsigned int updatingLayout:1;
         unsigned int needsReload:1;
@@ -195,9 +199,13 @@
     long long _reorderingCadence;
     NSIndexPath *_highlightedSpringLoadedItem;
     BOOL _prefetchingEnabled;
+    BOOL _isMovingFocusFromHorizontalIndexTitleBarToContent;
     NSIndexPath *_focusedCellIndexPath;
     UICollectionReusableView *_focusedCell;
     NSString *_focusedCellElementKind;
+    _UIFocusFastScrollingIndexBarEntry *_selectedIndexTitleEntry;
+    _UIHorizontalIndexTitleBar *_horizontalIndexTitleBar;
+    NSIndexPath *_indexPathOfFocusedCellBeforeFocusingOnHorizontalIndexTitleBar;
     CDUnknownBlockType _navigationCompletion;
     UIFocusContainerGuide *_endOfContentFocusContainerGuide;
     UICollectionViewCell *_currentPromiseFulfillmentCell;
@@ -232,8 +240,11 @@
 @property (readonly, nonatomic) BOOL hasActiveDrop;
 @property (readonly, nonatomic) BOOL hasUncommittedUpdates;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic, getter=_horizontalIndexTitleBar, setter=_setHorizontalIndexTitleBar:) _UIHorizontalIndexTitleBar *horizontalIndexTitleBar; // @synthesize horizontalIndexTitleBar=_horizontalIndexTitleBar;
+@property (strong, nonatomic) NSIndexPath *indexPathOfFocusedCellBeforeFocusingOnHorizontalIndexTitleBar; // @synthesize indexPathOfFocusedCellBeforeFocusingOnHorizontalIndexTitleBar=_indexPathOfFocusedCellBeforeFocusingOnHorizontalIndexTitleBar;
 @property (readonly, nonatomic) NSArray *indexPathsForSelectedItems;
 @property (readonly, nonatomic) NSArray *indexPathsForVisibleItems;
+@property (nonatomic) BOOL isMovingFocusFromHorizontalIndexTitleBarToContent; // @synthesize isMovingFocusFromHorizontalIndexTitleBarToContent=_isMovingFocusFromHorizontalIndexTitleBarToContent;
 @property (nonatomic, getter=_keepsFirstResponderVisibleOnBoundsChange, setter=_setKeepsFirstResponderVisibleOnBoundsChange:) BOOL keepsFirstResponderVisibleOnBoundsChange;
 @property (copy, nonatomic, getter=_navigationCompletion, setter=_setNavigationCompletion:) CDUnknownBlockType navigationCompletion; // @synthesize navigationCompletion=_navigationCompletion;
 @property (readonly, nonatomic) long long numberOfSections;
@@ -243,6 +254,7 @@
 @property (readonly, nonatomic, getter=_reorderedItems) NSArray *reorderedItems;
 @property (nonatomic) long long reorderingCadence;
 @property (readonly, nonatomic, getter=_reorderingTargetPosition) struct CGPoint reorderingTargetPosition;
+@property (strong, nonatomic) _UIFocusFastScrollingIndexBarEntry *selectedIndexTitleEntry; // @synthesize selectedIndexTitleEntry=_selectedIndexTitleEntry;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *visibleCells;
 @property (readonly, nonatomic, getter=_visibleViews) NSArray *visibleViews;
@@ -256,6 +268,7 @@
 - (void)_addEntriesFromDictionary:(id)arg1 inDictionary:(id)arg2 andSet:(id)arg3;
 - (void)_addItemAtIndexPathToActiveDragSession:(id)arg1;
 - (void)_addUpdateToShadowControllerIfNeeded:(id)arg1;
+- (struct CGPoint)_adjustFocusContentOffset:(struct CGPoint)arg1 toShowFocusItemWithInfo:(id)arg2;
 - (void)_adjustForAutomaticKeyboardInfo:(id)arg1 animated:(BOOL)arg2 lastAdjustment:(double *)arg3;
 - (BOOL)_allowsMultipleSelectionDuringEditing;
 - (BOOL)_allowsSelectionDuringEditing;
@@ -318,6 +331,7 @@
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_didScroll;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (BOOL)_displaysHorizontalIndexTitleBar;
 - (id)_doubleSidedAnimationsForView:(id)arg1 withStartingLayoutAttributes:(id)arg2 startingLayout:(id)arg3 endingLayoutAttributes:(id)arg4 endingLayout:(id)arg5 withAnimationSetup:(CDUnknownBlockType)arg6 animationCompletion:(CDUnknownBlockType)arg7 enableCustomAnimations:(BOOL)arg8 customAnimationsType:(unsigned long long)arg9;
 - (id)_dragAndDropController;
 - (id)_dragDelegateActual;
@@ -363,6 +377,7 @@
 - (BOOL)_highlightItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(unsigned long long)arg3;
 - (BOOL)_highlightItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(long long)arg3 notifyDelegate:(BOOL)arg4;
 - (void)_highlightSpringLoadedItemAtIndexPath:(id)arg1;
+- (struct CGPoint)_horizontalIndexTitleBarOffset;
 - (void)_incrementSuspendLayoutCount;
 - (id)_indexBarEntries;
 - (id)_indexPathAfterShadowUpdatesForIndexPath:(id)arg1;
@@ -388,6 +403,7 @@
 - (void)_invalidateWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_isCurrentlyPerformingLegacyReordering;
 - (BOOL)_isDragDestinationInteractivelyReordering;
+- (BOOL)_isMovingFocusFromHorizontalIndexBarToCellContent:(id)arg1;
 - (BOOL)_isOperatingWithPresentationValues;
 - (BOOL)_isReordering;
 - (BOOL)_isViewInReuseQueue:(id)arg1;
@@ -404,6 +420,7 @@
 - (long long)_numberOfSections;
 - (id)_objectInDictionary:(id)arg1 forKind:(id)arg2 indexPath:(id)arg3;
 - (void)_offsetPinnedReorderedItemsWithCurrentContentOffset:(struct CGPoint)arg1;
+- (id)_overridingPreferredFocusEnvironment;
 - (void)_performAction:(SEL)arg1 forCell:(id)arg2 sender:(id)arg3;
 - (void)_performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2 invalidationContext:(id)arg3;
 - (void)_performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2 invalidationContext:(id)arg3 tentativelyForReordering:(BOOL)arg4;
@@ -468,11 +485,13 @@
 - (void)_setCollectionViewLayout:(id)arg1 animated:(BOOL)arg2 isInteractive:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_setCollectionViewLayout:(id)arg1 animated:(BOOL)arg2 isInteractive:(BOOL)arg3 completion:(CDUnknownBlockType)arg4 animator:(id)arg5;
 - (void)_setDefaultLayoutMargins:(struct UIEdgeInsets)arg1 fromViewController:(BOOL)arg2;
+- (void)_setDisplaysHorizontalIndexTitleBar:(BOOL)arg1;
 - (void)_setDragPlaceholderInsertionCadence:(long long)arg1;
 - (void)_setDragReorderingCadence:(long long)arg1;
 - (void)_setEffectiveDataSource:(id)arg1;
 - (void)_setExternalObjectTable:(id)arg1 forNibLoadingOfCellWithReuseIdentifier:(id)arg2;
 - (void)_setExternalObjectTable:(id)arg1 forNibLoadingOfSupplementaryViewOfKind:(id)arg2 withReuseIdentifier:(id)arg3;
+- (void)_setHorizontalIndexTitleBarOffset:(struct CGPoint)arg1;
 - (void)_setIsAncestorOfFirstResponder:(BOOL)arg1;
 - (void)_setNeedsVisibleCellsUpdate:(BOOL)arg1 withLayoutAttributes:(BOOL)arg2;
 - (void)_setObject:(id)arg1 inDictionary:(id)arg2 forKind:(id)arg3 indexPath:(id)arg4;
@@ -522,6 +541,7 @@
 - (void)_updateDragInteractionForCurrentInteractionEnabledState;
 - (void)_updateEditing:(BOOL)arg1 forView:(id)arg2 atIndexPath:(id)arg3;
 - (void)_updateFocusedCellIndexPathIfNecessaryWithLastFocusedRect:(struct CGRect)arg1;
+- (void)_updateHorizontalIndexTitleBarSelectionForFocusedIndexPath:(id)arg1;
 - (void)_updateIndex;
 - (void)_updateReorderingTargetPosition:(struct CGPoint)arg1;
 - (void)_updateReorderingTargetPosition:(struct CGPoint)arg1 forced:(BOOL)arg2;
@@ -573,6 +593,7 @@
 - (void)endInteractiveMovement;
 - (void)finishInteractiveTransition;
 - (long long)highlightedGlobalItem;
+- (void)horizontalIndexBar:(id)arg1 selectedEntry:(id)arg2;
 - (struct CGPoint)indexBarAccessoryView:(id)arg1 contentOffsetForEntry:(id)arg2 atIndex:(long long)arg3;
 - (id)indexPathForCell:(id)arg1;
 - (id)indexPathForItemAtPoint:(struct CGPoint)arg1;
@@ -589,6 +610,7 @@
 - (BOOL)isSpringLoaded;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (id)layoutAttributesForSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
+- (void)layoutHorizontalIndexTitleBar;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (long long)maximumGlobalItemIndex;
@@ -622,6 +644,7 @@
 - (void)setCollectionViewLayout:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setCollectionViewLayout:(id)arg1 withAnimator:(id)arg2;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
+- (void)setContentOffset:(struct CGPoint)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (void)setContentSize:(struct CGSize)arg1;
 - (void)setDirectionalLayoutMargins:(struct NSDirectionalEdgeInsets)arg1;
@@ -633,8 +656,10 @@
 - (void)setScrollEnabled:(BOOL)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setSpringLoaded:(BOOL)arg1;
+- (void)setupHorizontalIndexTitleBar;
 - (id)startInteractiveTransitionToCollectionViewLayout:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)supplementaryViewForElementKind:(id)arg1 atIndexPath:(id)arg2;
+- (void)teardownHorizontalIndexTitleBar;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

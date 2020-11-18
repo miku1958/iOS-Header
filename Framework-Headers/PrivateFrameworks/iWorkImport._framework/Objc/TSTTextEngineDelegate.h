@@ -17,14 +17,16 @@ __attribute__((visibility("hidden")))
     int mVerticalAlignment;
     double mMaxWidthForChildren;
     TSULocale *mLocale;
+    BOOL mShouldHyphenate;
 }
 
 @property (readonly, nonatomic) TSULocale *locale; // @synthesize locale=mLocale;
 @property (nonatomic) double maxWidthForChildren; // @synthesize maxWidthForChildren=mMaxWidthForChildren;
+@property (readonly, nonatomic) BOOL shouldHyphenate; // @synthesize shouldHyphenate=mShouldHyphenate;
 
 - (void)dealloc;
 - (BOOL)forceWesternLineBreaking;
-- (id)initWithPadding:(struct UIEdgeInsets)arg1 verticalAlignment:(int)arg2 locale:(id)arg3;
+- (id)initWithPadding:(struct UIEdgeInsets)arg1 verticalAlignment:(int)arg2 locale:(id)arg3 shouldHyphenate:(BOOL)arg4;
 - (id)padding;
 - (int)verticalAlignment;
 

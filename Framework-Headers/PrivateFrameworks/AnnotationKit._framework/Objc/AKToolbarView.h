@@ -106,6 +106,7 @@
 - (id)inkPicker;
 - (void)inlineInkPicker:(id)arg1 didSelectColor:(id)arg2;
 - (void)inlineInkPicker:(id)arg1 didSelectTool:(id)arg2;
+- (BOOL)inlineInkPickerShouldChangeToolColorForSelectedColor:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isPresentingPopover;
 - (BOOL)isPresentingPopovers;
@@ -118,6 +119,7 @@
 - (id)presentedViewController;
 - (void)resetToLastDrawingTool;
 - (void)revalidateItems;
+- (id)selectedAnnotations;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBackgroundImage:(id)arg1 forToolbarPosition:(long long)arg2 barMetrics:(long long)arg3;
 - (void)setContentsHidden:(BOOL)arg1 animated:(BOOL)arg2;

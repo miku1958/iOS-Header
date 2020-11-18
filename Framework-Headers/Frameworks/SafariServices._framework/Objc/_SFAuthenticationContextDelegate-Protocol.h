@@ -11,7 +11,6 @@
 @protocol _SFAuthenticationContextDelegate <NSObject>
 
 @optional
-- (BOOL)authenticationEnabledForContext:(_SFAuthenticationContext *)arg1;
 - (BOOL)contextRequiresSessionBasedAuthentication:(_SFAuthenticationContext *)arg1;
 - (BOOL)contextShouldAllowMultipleBiometricFailures:(_SFAuthenticationContext *)arg1;
 - (BOOL)contextShouldAllowPasscodeFallback:(_SFAuthenticationContext *)arg1;

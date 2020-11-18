@@ -12,7 +12,6 @@
 
 @property (copy, nonatomic) UIImage *thumbnailMask;
 
-+ (id)_sharedDownloader;
 - (void)_commonCachedImageFromURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_generateThumbnailMask;
 - (id)_getCardImageUrlFromMetadata:(id)arg1 forScale:(double)arg2;

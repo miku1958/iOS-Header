@@ -7,45 +7,31 @@
 #import <iWorkImport/TSKCOReplaceOperation.h>
 
 #import <iWorkImport/TSKCORangeOperation-Protocol.h>
-#import <iWorkImport/TSKCOReplaceRangeOperationSubset-Protocol.h>
-#import <iWorkImport/TSKCOTransforming-Protocol.h>
-
-@class TSKCORangeAddress;
 
 __attribute__((visibility("hidden")))
-@interface TSKCOReplaceRangeOperation : TSKCOReplaceOperation <TSKCORangeOperation, TSKCOReplaceRangeOperationSubset, TSKCOTransforming>
+@interface TSKCOReplaceRangeOperation : TSKCOReplaceOperation <TSKCORangeOperation>
 {
+    vector_b5e32e34 _rangeVector;
     BOOL _preserveLowerPriorityLocation;
-    TSKCORangeAddress *_address;
     unsigned long long _insertLength;
 }
 
-@property (readonly, nonatomic) TSKCORangeAddress *address; // @synthesize address=_address;
 @property (readonly, nonatomic) unsigned long long insertLength; // @synthesize insertLength=_insertLength;
 @property (readonly, nonatomic) BOOL preserveLowerPriorityLocation; // @synthesize preserveLowerPriorityLocation=_preserveLowerPriorityLocation;
+@property (readonly, nonatomic) const vector_b5e32e34 *rangeVector;
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)hasNoEffects;
-- (id)initWithRangeAddress:(id)arg1 insertLength:(unsigned long long)arg2;
-- (id)initWithRangeAddress:(id)arg1 insertLength:(unsigned long long)arg2 noop:(BOOL)arg3;
-- (id)initWithRangeAddress:(id)arg1 insertLength:(unsigned long long)arg2 preserveLowerPriorityLocation:(BOOL)arg3 noop:(BOOL)arg4;
+- (unsigned long long)hash;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 insertLength:(unsigned long long)arg3;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 insertLength:(unsigned long long)arg3 noop:(BOOL)arg4;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 rangeVector:(const vector_b5e32e34 *)arg2 insertLength:(unsigned long long)arg3 preserveLowerPriorityLocation:(BOOL)arg4 noop:(BOOL)arg5;
 - (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
-- (id)operationWithNewAddress:(id)arg1;
-- (id)operationWithNewAddress:(id)arg1 newPreserveLowerPriorityLocation:(BOOL)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (shared_ptr_f167ad79)newTransformableOperation;
 - (id)operationWithNewNoop:(BOOL)arg1;
-- (id)p_transformReplaceRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2 myRange:(struct _NSRange)arg3 myReplacementLength:(unsigned long long)arg4 preserveLocation:(BOOL)arg5;
-- (id)p_transformUpdateRange:(struct _NSRange)arg1 replacementRange:(struct _NSRange)arg2 replacementLength:(unsigned long long)arg3 transformBehavior:(int)arg4;
-- (void)p_validateAndMergeTransformedRanges:(id)arg1;
 - (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
-- (id)toReplaceRangeOperation;
 - (id)toString;
-- (id)transformDynamicByAnyOperation:(id)arg1 byHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformIdPlacementBaseOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformReplaceRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformStaticByAnyOperation:(id)arg1 byHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformUpdateIdOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformUpdateRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)ut_transformByTransformer:(id)arg1;
 
 @end
 

@@ -79,6 +79,7 @@
 - (void)addUserBookmark:(id)arg1;
 - (void)addWebContentFilterAutoPermittedURLString:(id)arg1;
 - (id)allClientUUIDsForClientType:(id)arg1;
+- (void)allProfilesOutMDMProfileInfo:(id *)arg1 outConfigurationProfilesInfo:(id *)arg2 outUninstalledProfilesInfo:(id *)arg3 forDeviceType:(unsigned long long)arg4;
 - (id)allowedAppBundleIDsForBidirectionalDataMovementAfterApplyingFilterToBundleIDs:(id)arg1 localAppBundleID:(id)arg2 localAccountIsManaged:(BOOL)arg3;
 - (id)allowedImportFromAppBundleIDsAfterApplyingFilterToBundleIDs:(id)arg1 importingAppBundleID:(id)arg2 importingAccountIsManaged:(BOOL)arg3;
 - (void)allowedKeyboardBundleIDsAfterApplyingFilterToBundleIDs:(id)arg1 hostAppBundleID:(id)arg2 accountIsManaged:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
@@ -315,10 +316,12 @@
 - (BOOL)isPasswordAutoFillAllowed;
 - (BOOL)isPasswordProximityAutoFillRequestingAllowed;
 - (BOOL)isPasswordSharingAllowed;
+- (BOOL)isPersonalHotspotModificationAllowed;
 - (BOOL)isPodcastsAllowed;
 - (BOOL)isPredictiveKeyboardAllowed;
 - (void)isProfileInstalledWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)isProfileUIInstallationAllowed;
+- (BOOL)isProfileUIInstallationEffectivelyAllowed;
 - (BOOL)isProvisionallyEnrolled;
 - (BOOL)isProximitySetupToNewDeviceAllowed;
 - (BOOL)isRemoteAppPairingAllowed;
@@ -326,6 +329,7 @@
 - (BOOL)isScreenRecordingAllowed;
 - (BOOL)isScreenShotAllowed;
 - (BOOL)isSettingLockedDownByRestrictions:(id)arg1;
+- (BOOL)isSiriServerLoggingAllowed;
 - (BOOL)isSmartPunctuationAllowed;
 - (BOOL)isSoftwareUpdateResisted;
 - (BOOL)isSpellCheckAllowed;
@@ -412,9 +416,11 @@
 - (BOOL)passcode:(id)arg1 meetsCurrentConstraintsOutError:(id *)arg2;
 - (id)passcodeExpiryDate;
 - (id)passcodeExpiryDateOutError:(id *)arg1;
+- (id)peekProfileDataFromPurgatoryForDeviceType:(unsigned long long)arg1;
 - (void)performBootTimeChecks;
 - (id)permittedAutoLockSeconds;
 - (id)popProfileDataFromHeadOfInstallationQueue;
+- (id)popProfileDataFromPurgatoryForDeviceType:(unsigned long long)arg1;
 - (id)popProvisioningProfileDataFromHeadOfInstallationQueue;
 - (void)preflightUserInputResponses:(id)arg1 forPayloadIndex:(unsigned long long)arg2;
 - (void)processProfilesPostMigrate;
@@ -445,6 +451,7 @@
 - (void)removeProtectedProfileAsyncWithIdentifier:(id)arg1 installationType:(long long)arg2;
 - (void)removeProtectedProfileAsyncWithIdentifier:(id)arg1 installationType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)removeProvisioningProfileWithUUID:(id)arg1 outError:(id *)arg2;
+- (void)removeUninstalledProfileWithIdentifier:(id)arg1 installationType:(long long)arg2 targetDeviceType:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removeValueSetting:(id)arg1;
 - (void)removeWebContentFilterUserBlacklistedURLString:(id)arg1;
 - (id)removedSystemAppBundleIDs;
@@ -505,7 +512,6 @@
 - (void)setConferenceRoomDisplayModeEnabled:(BOOL)arg1 ask:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setConferenceRoomDisplaySettingsUIAllowed:(BOOL)arg1 ask:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setDelegate:(id)arg1;
-- (void)setDictationAllowed:(BOOL)arg1;
 - (void)setDriverDoNotDisturbModificationsAllowed:(BOOL)arg1;
 - (void)setExplicitContentAllowed:(BOOL)arg1 ask:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setFeatureM1Allowed:(BOOL)arg1;
@@ -577,6 +583,8 @@
 - (void)submitUserInputResponses:(id)arg1;
 - (id)trustedCodeSigningIdentities;
 - (void)unenrollWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (id)uninstalledProfileDataWithIdentifier:(id)arg1 targetDevice:(unsigned long long)arg2;
+- (id)uninstalledProfileIdentifiersForDevice:(unsigned long long)arg1;
 - (BOOL)unlockDeviceWithPasscode:(id)arg1 outError:(id *)arg2;
 - (int)unlockScreenType;
 - (int)unlockScreenTypeWithOutSimplePasscodeType:(int *)arg1;

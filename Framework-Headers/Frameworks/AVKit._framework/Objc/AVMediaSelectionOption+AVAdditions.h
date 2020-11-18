@@ -11,7 +11,9 @@
 @interface AVMediaSelectionOption (AVAdditions)
 
 @property (readonly, nonatomic) NSString *localizedDisplayName;
+@property (readonly, nonatomic) NSString *mediaRemoteIdentifier;
 @property (readonly, nonatomic) NSString *shortLocalizedDisplayName;
 
+- (id)avkit_title;
 @end
 

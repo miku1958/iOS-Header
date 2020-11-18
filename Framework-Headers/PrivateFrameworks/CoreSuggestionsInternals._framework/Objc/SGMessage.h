@@ -54,6 +54,7 @@
 - (BOOL)isEqualToMessage:(id)arg1;
 - (id)spotlightBundleIdentifier;
 - (id)spotlightDomainIdentifier;
+- (id)spotlightReference;
 - (id)spotlightUniqueIdentifier;
 
 @end

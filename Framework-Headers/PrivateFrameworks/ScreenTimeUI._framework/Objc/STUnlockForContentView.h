@@ -10,16 +10,14 @@
 
 @interface STUnlockForContentView : UIView
 {
-    BOOL _isVibrancyEnabled;
     UILabel *_unlockToViewContentLabel;
 }
 
-@property (readonly, nonatomic) BOOL isVibrancyEnabled; // @synthesize isVibrancyEnabled=_isVibrancyEnabled;
 @property (readonly, nonatomic) UILabel *unlockToViewContentLabel; // @synthesize unlockToViewContentLabel=_unlockToViewContentLabel;
 
 - (void).cxx_destruct;
 - (id)constraintsForBaseView:(id)arg1;
-- (id)initWithPreferredFontTextStyle:(id)arg1 vibrancyEnabled:(BOOL)arg2;
+- (id)init;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSCHUnretainedParent-Protocol.h>
 
-@class TSCH3DChartMeshSharedResource, TSCH3DChartTexcoordSharedResource, TSCH3DGeometry, TSCH3DResource, TSCHChartSeries, TSUOnce;
+@class TSCH3DChartMeshSharedResource, TSCH3DChartTexcoordSharedResource, TSCH3DGeometry, TSCH3DGeometryArrays, TSCH3DResource, TSCHChartSeries, TSUOnce;
 @protocol TSCH3DChartMeshCreator;
 
 __attribute__((visibility("hidden")))
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     TSUOnce *mCachedBoundsOnce;
     TSCH3DChartMeshSharedResource *mNormal;
     TSCH3DChartTexcoordSharedResource *mTexcoord;
-    struct GeometryArrays mArrays;
+    TSCH3DGeometryArrays *mArrays;
     TSCH3DGeometry *mGeometry;
 }
 
@@ -33,10 +33,9 @@ __attribute__((visibility("hidden")))
 
 + (id)nullBuffer;
 + (id)resourcesWithSeries:(id)arg1 creator:(id)arg2;
-- (id).cxx_construct;
 - (void)clearParent;
 - (void)dealloc;
-- (struct GeometryResource)geometryResourceWithPrimitiveType:(int)arg1;
+- (id)geometryResourceWithPrimitiveType:(int)arg1;
 - (id)initWithSeries:(id)arg1 creator:(id)arg2;
 - (void)regenerate;
 - (void)regenerateBounds;

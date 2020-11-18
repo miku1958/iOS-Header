@@ -13,13 +13,24 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axAllHandlesInCall:(id)arg1;
 - (long long)_axAppLayoutType;
 - (id)_axBundleIdentifier;
+- (id)_axContactForHandle:(id)arg1;
 - (id)_axDisplayItems;
+- (id)_axGetFirstCall;
+- (id)_axGetFirstDestination;
+- (id)_axGetFirstDestinationHandleValue;
+- (id)_axGetHandlesAndLoadFirstDestinationInCall:(id)arg1;
 - (id)_axLabelForInCallService;
 - (id)_axLabelWithFirstIconTitle:(id)arg1 secondIconTitle:(id)arg2;
+- (void)_axLoadFirstDestinationIfNecessary;
+- (id)_axPredicateForHandle:(id)arg1;
+- (void)_axSetFirstDestination:(id)arg1;
+- (void)_axSetFirstDestinationHandleValue:(id)arg1;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (id)initWithItemsForLayoutRoles:(id)arg1 configuration:(long long)arg2;
 
 @end
 

@@ -11,16 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit19InCallControlButton : UIControl
 {
-    MISSING_TYPE *discView;
     MISSING_TYPE *imageView;
+    MISSING_TYPE *toggledConstraints;
+    MISSING_TYPE *paragraphStyle;
+    MISSING_TYPE *style;
+    MISSING_TYPE *label;
+    MISSING_TYPE *discView;
     MISSING_TYPE *image;
+    MISSING_TYPE *colorConfiguration;
 }
 
 @property (nonatomic) BOOL highlighted;
-@property (nonatomic, readonly) struct CGSize intrinsicContentSize;
 @property (nonatomic) BOOL selected;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isHighlighted;

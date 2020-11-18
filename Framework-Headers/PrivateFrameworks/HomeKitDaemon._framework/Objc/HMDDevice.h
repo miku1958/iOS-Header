@@ -14,7 +14,7 @@
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccount, HMDDeviceCapabilities, HMDHomeKitVersion, HMFProductInfo, HMFUnfairLock, NSArray, NSSet, NSString, NSUUID;
+@class HMDAccount, HMDDeviceCapabilities, HMDHomeKitVersion, HMDRPIdentity, HMFProductInfo, HMFUnfairLock, NSArray, NSSet, NSString, NSUUID;
 
 @interface HMDDevice : HMFObject <HMFObject, HMFLogging, HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, HMDRemoteAddressable, HMFMerging, NSSecureCoding>
 {
@@ -29,6 +29,7 @@
     HMDHomeKitVersion *_version;
     HMDDeviceCapabilities *_capabilities;
     NSUUID *_idsIdentifierHash;
+    HMDRPIdentity *_rpIdentity;
     NSUUID *_modelIdentifier;
     NSUUID *_identifier;
 }
@@ -53,6 +54,7 @@
 @property (readonly, copy) NSString *privateDescription;
 @property (copy) HMFProductInfo *productInfo; // @synthesize productInfo=_productInfo;
 @property (readonly, copy) NSString *propertyDescription;
+@property (copy) HMDRPIdentity *rpIdentity; // @synthesize rpIdentity=_rpIdentity;
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 @property (readonly, copy) HMDHomeKitVersion *version; // @synthesize version=_version;

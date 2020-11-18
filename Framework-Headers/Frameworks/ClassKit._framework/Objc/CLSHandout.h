@@ -16,11 +16,12 @@
     NSString *_instructions;
     NSDate *_dueDate;
     BOOL _reviewed;
+    NSDate *_lastReviewedDate;
     NSDate *_dateOfPublication;
-    NSDate *_dateLastReviewed;
     long long _state;
     long long _publishingState;
     NSError *_publishError;
+    NSDate *_dateLastReviewed;
 }
 
 @property (readonly, nonatomic) NSArray *attachments;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) CLSClass *effectiveClass;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *instructions;
+@property (strong, nonatomic) NSDate *lastReviewedDate;
 @property (strong, nonatomic) NSError *publishError; // @synthesize publishError=_publishError;
 @property (nonatomic) long long publishingState; // @synthesize publishingState=_publishingState;
 @property (readonly, nonatomic) NSArray *recipients;

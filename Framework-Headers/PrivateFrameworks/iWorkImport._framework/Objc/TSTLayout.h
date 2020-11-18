@@ -10,7 +10,7 @@
 #import <iWorkImport/TSWPLayoutParent-Protocol.h>
 #import <iWorkImport/TSWPStorageObserver-Protocol.h>
 
-@class NSMutableDictionary, NSString, TSTInfo, TSTLayoutHint, TSTLayoutSpaceBundle, TSTMasterLayout, TSWPLayout, TSWPPadding;
+@class NSMutableDictionary, NSString, TSTLayoutHint, TSTLayoutSpaceBundle, TSTMasterLayout, TSTTableInfo, TSWPLayout, TSWPPadding;
 
 __attribute__((visibility("hidden")))
 @interface TSTLayout : TSWPTextHostLayout <TSWPColumnMetrics, TSWPLayoutParent, TSWPStorageObserver>
@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL columnsAreLeftToRight;
 @property (readonly, nonatomic) struct CGRect computedEditingCellContentFrame;
 @property (strong, nonatomic) TSWPLayout *containedTextEditingLayout; // @synthesize containedTextEditingLayout=mContainedTextEditingLayout;
+@property (readonly, nonatomic) BOOL containedTextEditorSpills; // @synthesize containedTextEditorSpills=mContainedTextEditorSpills;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct TSUCellRect editingSpillingTextRange; // @synthesize editingSpillingTextRange=mEditingSpillingTextRange;
@@ -79,15 +80,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL shrinkTextToFit;
 @property (strong, nonatomic) TSTLayoutSpaceBundle *spaceBundle; // @synthesize spaceBundle=mSpaceBundle;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) TSTInfo *tableInfo;
-@property (readonly, nonatomic) TSTInfo *tableModel;
+@property (readonly, nonatomic) TSTTableInfo *tableInfo;
+@property (readonly, nonatomic) TSTTableInfo *tableModel;
 @property (readonly, nonatomic) double textScaleFactor;
 
 - (struct CGPoint)activityLineUnscaledEndPointForSearchReference:(id)arg1;
 - (struct CGRect)adjustRect:(struct CGRect)arg1 forScrollingToSelectionPath:(id)arg2 forZoom:(BOOL)arg3;
 - (struct CGSize)adjustedInsetsForTarget:(id)arg1;
 - (struct CGRect)alignmentFrame;
-- (unsigned int)autosizeFlagsForTextLayout:(id)arg1;
+- (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
 - (void)bezierPathsForCellRegion:(id)arg1 selectionMask:(unsigned int)arg2 transform:(struct CGAffineTransform)arg3 viewScale:(double)arg4 inset:(double)arg5 clipToVisibleRect:(BOOL)arg6 block:(CDUnknownBlockType)arg7;
 - (struct CGPoint)calculatePointFromSearchReference:(id)arg1;
@@ -126,7 +127,7 @@ __attribute__((visibility("hidden")))
 - (void)iterateCellsInRange:(struct TSUCellRect)arg1 flags:(unsigned long long)arg2 searchFlags:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)layoutGeometryFromInfo;
 - (struct CGRect)maskRectForTextLayout:(id)arg1;
-- (double)maxAutoGrowWidthForTextLayout:(id)arg1;
+- (double)maxAutoGrowLineWidthForTextLayout:(id)arg1;
 - (struct CGSize)maximumFrameSizeForChild:(id)arg1;
 - (int)naturalAlignmentForCellID:(struct TSUCellCoord)arg1;
 - (int)naturalAlignmentForTextLayout:(id)arg1;

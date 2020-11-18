@@ -9,12 +9,10 @@
 #import <RelevanceEngine/RERemoteTrainingServerInterface-Protocol.h>
 
 @class NSString, NSXPCConnection;
-@protocol OS_dispatch_queue;
 
 @interface RERemoteTrainingServer : NSObject <RERemoteTrainingServerInterface>
 {
     NSXPCConnection *_connection;
-    NSObject<OS_dispatch_queue> *_queue;
     NSString *_processName;
 }
 
@@ -26,7 +24,7 @@
 - (void).cxx_destruct;
 - (void)_clearConnection;
 - (void)_queue_setupConnectionIfNeeded;
-- (id)initWithQueue:(id)arg1 targetProcessName:(id)arg2;
+- (id)initWithTargetProcessName:(id)arg1;
 - (void)performTrainingWithElements:(id)arg1 events:(id)arg2 interactions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)updateRemoteAttribute:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 

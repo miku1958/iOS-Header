@@ -10,22 +10,22 @@
 {
 }
 
++ (id)_validityDateIntervalForCetificateRef:(struct __SecCertificate *)arg1;
++ (id)_validityEndDateForCertificateRef:(struct __SecCertificate *)arg1;
++ (id)_validityStartDateForCertificateRef:(struct __SecCertificate *)arg1;
 + (id)addCertificateData:(id)arg1 toGroup:(id)arg2;
 + (id)addItem:(void *)arg1 toGroup:(id)arg2;
 + (id)addPrivateKeyData:(id)arg1 certificateData:(id)arg2 toGroup:(id)arg3;
 + (id)baseQueryAttributes;
++ (id)certificateCommonNamesFromPersistentID:(id)arg1;
 + (id)certificateDataFromPersistentId:(id)arg1;
 + (id)certificateExpirationDateFromPersistentId:(id)arg1;
 + (BOOL)certificateExpiredWithPersistentId:(id)arg1;
 + (struct __SecCertificate *)copyCertificateWithPersistentID:(id)arg1;
-+ (id)copyCertificatesWithPersistentIDs:(id)arg1;
-+ (id)copyCommonNamesForCertificate:(struct __SecCertificate *)arg1;
 + (struct __SecIdentity *)copyIdentityWithPersistentID:(id)arg1;
-+ (void *)copyItemWithPersistentID:(id)arg1;
-+ (struct __SecCertificate *)copyLeafCertificateForTrust:(struct __SecTrust *)arg1;
++ (const void *)copyItemWithPersistentID:(id)arg1;
 + (id)createIdentityPersistentIdFromCommonName:(id)arg1 groupName:(id)arg2;
 + (struct __SecIdentity *)createIdentityWithCommonName:(id)arg1 error:(id *)arg2;
-+ (BOOL)dateHasPassed:(id)arg1;
 + (id)getCertificateExpirationDate:(struct __SecCertificate *)arg1;
 + (id)getCertificateFingerprint:(struct __SecCertificate *)arg1;
 + (id)getCertificatesWithPersistentIDs:(id)arg1;
@@ -38,11 +38,13 @@
 + (BOOL)identityExpiredWithPersistentId:(id)arg1;
 + (struct __SecIdentity *)identityFromPrivateKeyData:(id)arg1 certificateData:(id)arg2;
 + (BOOL)itemExistsInKeychain:(void *)arg1;
++ (BOOL)itemWithPersistentIDIsTemporallyValid:(id)arg1;
 + (id)persistentIdFromCertificateData:(id)arg1;
 + (id)persistentIdFromPrivateKeyData:(id)arg1 certificateData:(id)arg2;
 + (id)privateKeyDataFromPersistentId:(id)arg1;
 + (struct __SecKey *)privateKeyFromPersistentId:(id)arg1;
 + (BOOL)removeItemWithPersistentID:(id)arg1;
++ (id)validityDateIntervalForItemWithPersistentID:(id)arg1;
 
 @end
 

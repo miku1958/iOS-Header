@@ -6,7 +6,7 @@
 
 #import <AppPredictionUI/NSObject-Protocol.h>
 
-@protocol CRAsyncCardReceiptFeedback, CRAsyncCardRequestFeedback, CRCard, CRCardSection, CRCardSectionEngagementFeedback, CRCardSectionViewAppearanceFeedback, CRCardSectionViewDisappearanceFeedback, CRCardViewAppearanceFeedback, CRCardViewDisappearanceFeedback;
+@protocol CRAsyncCardReceiptFeedback, CRAsyncCardRequestFeedback, CRCard, CRCardSection, CRCardSectionEngagementFeedback, CRCardSectionViewAppearanceFeedback, CRCardSectionViewDisappearanceFeedback, CRCardViewAppearanceFeedback, CRCardViewDisappearanceFeedback, CRUserReportRequestFeedback;
 
 @protocol CRFeedbackListener <NSObject>
 
@@ -22,5 +22,6 @@
 - (void)controllerForCard:(id<CRCard>)arg1 didRequestAsyncCard:(id<CRCard>)arg2 withAsyncCardRequestFeedback:(id<CRAsyncCardRequestFeedback>)arg3;
 - (BOOL)shouldHandleEngagement:(id<CRCardSectionEngagementFeedback>)arg1 forCardSection:(id<CRCardSection>)arg2;
 - (void)userDidEngageCardSection:(id<CRCardSection>)arg1 withEngagementFeedback:(id<CRCardSectionEngagementFeedback>)arg2;
+- (void)userDidReportFeedback:(id<CRUserReportRequestFeedback>)arg1 fromCardSection:(id<CRCardSection>)arg2;
 @end
 

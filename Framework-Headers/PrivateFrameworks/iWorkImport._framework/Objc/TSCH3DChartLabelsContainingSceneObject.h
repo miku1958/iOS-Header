@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)rayPick:(id)arg1;
 - (void)render:(id)arg1;
 - (void)renderAnnotatedLabels:(id)arg1;
-- (void)renderLabelRenderInfo:(const struct ChartLabelsContainingLabelRenderInfo *)arg1;
+- (void)renderLabelRenderInfo:(id)arg1;
 - (void)renderLabels:(id)arg1;
 - (void)renderLabelsResourcesSessionWithResources:(id)arg1 expectedSize:(const tvec2_3b141483 *)arg2 pipeline:(id)arg3 renderBlock:(CDUnknownBlockType)arg4;
 

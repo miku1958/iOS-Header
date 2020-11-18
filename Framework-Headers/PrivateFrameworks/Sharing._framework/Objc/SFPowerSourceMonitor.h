@@ -11,13 +11,17 @@
 
 @interface SFPowerSourceMonitor : NSObject
 {
+    struct LogCategory *_ucat;
     BOOL _activateCalled;
+    long long _previousSourcesCount;
+    unsigned short _powerSourcesUpdateIndex;
     CUCoalescer *_updateCoalescer;
     NSMutableDictionary *_powerSources;
     int _psNotifyTokenAccessoryAttach;
     int _psNotifyTokenAccessoryPowerSource;
     int _psNotifyTokenAccessoryTimeRemaining;
     int _psNotifyTokenAnyPowerSource;
+    BOOL _skipCoalescing;
     unsigned int _changeFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
@@ -32,6 +36,7 @@
 @property (copy, nonatomic) CDUnknownBlockType powerSourcesChangedHandler; // @synthesize powerSourcesChangedHandler=_powerSourcesChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType powerSourcesFoundHandler; // @synthesize powerSourcesFoundHandler=_powerSourcesFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType powerSourcesLostHandler; // @synthesize powerSourcesLostHandler=_powerSourcesLostHandler;
+@property (nonatomic) BOOL skipCoalescing; // @synthesize skipCoalescing=_skipCoalescing;
 
 - (void).cxx_destruct;
 - (void)_cleanup;
@@ -39,14 +44,17 @@
 - (void)_handlePowerSourcesChanged:(id)arg1 changes:(unsigned int)arg2;
 - (void)_handlePowerSourcesFound:(id)arg1;
 - (void)_handlePowerSourcesLost:(id)arg1;
+- (void)_removePowerSources:(id)arg1;
 - (void)_triggerUpdatePowerSources;
 - (void)_update;
 - (void)_updatePowerSource:(id)arg1 desc:(id)arg2 adapterDesc:(id)arg3;
 - (void)_updatePowerSources;
+- (void)_updatePowerSourcesWithInfo:(void *)arg1 sources:(struct __CFArray *)arg2 sourcesCount:(long long)arg3;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
+- (BOOL)powerSourcesListWithOutInfo:(const void **)arg1 outSources:(const struct __CFArray **)arg2 outSourcesCount:(long long *)arg3;
 
 @end
 

@@ -17,6 +17,8 @@
     long long _eventAccess;
     long long _reminderAccess;
     struct CalDatabase *_database;
+    id<CADAccountAccessHandler> _accountAccessHandler;
+    id<CADAccountAccessHandler> _strictAccountAccessHandler;
     NSObject<OS_dispatch_queue> *_dbQueue;
     NSOperationQueue *_operations;
     NSMutableDictionary *_insertedObjects;
@@ -29,10 +31,9 @@
     ClientIdentity *_identity;
     NSXPCConnection *_xpcConnection;
     CADDatabaseInitializationOptions *_databaseInitializationOptions;
-    id<CADAccountAccessHandler> _accountAccessHandler;
 }
 
-@property (readonly, nonatomic) id<CADAccountAccessHandler> accountAccessHandler; // @synthesize accountAccessHandler=_accountAccessHandler;
+@property (readonly, nonatomic) id<CADAccountAccessHandler> accountAccessHandler;
 @property (readonly, nonatomic) CADOperationProxy *cadOperationProxy; // @synthesize cadOperationProxy=_cadOperationProxy;
 @property (readonly, nonatomic) NSString *changeTrackingID;
 @property (nonatomic) struct CalDatabase *database; // @synthesize database=_database;
@@ -66,10 +67,12 @@
 - (BOOL)isObjectWithObjectIDAJunkEvent:(id)arg1;
 - (BOOL)isStoreManaged:(void *)arg1;
 - (BOOL)isStoreRestricted:(void *)arg1 forAction:(unsigned long long)arg2;
+- (BOOL)isStoreRestricted:(void *)arg1 forAction:(unsigned long long)arg2 strict:(BOOL)arg3;
 - (void *)objectForKey:(id)arg1;
 - (id)operations;
 - (BOOL)reminderAccessGranted;
 - (id)restrictedCalendarRowIDsForAction:(unsigned long long)arg1;
+- (id)strictAccountAccessHandler;
 
 @end
 

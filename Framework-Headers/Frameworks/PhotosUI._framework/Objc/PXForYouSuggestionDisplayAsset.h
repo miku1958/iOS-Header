@@ -50,7 +50,7 @@
 
 - (void).cxx_destruct;
 - (id)_computedPortraitEffectSettingsForEditModel:(id)arg1 editSource:(id)arg2;
-- (id)applyAdjustmentsToEditModel:(id)arg1 editSource:(id)arg2;
+- (id)applyAdjustmentsToEditModel:(id)arg1 editSource:(id)arg2 renderer:(id)arg3;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;

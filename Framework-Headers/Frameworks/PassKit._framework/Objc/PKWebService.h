@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSURLSessionTaskDelegate-Protocol.h>
 
-@class ACAccount, ACAccountStore, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, NSURLSession, NSURLSessionConfiguration;
+@class ACAccount, ACAccountStore, NSArray, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, NSURLSession, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue;
 
 @interface PKWebService : NSObject <NSURLSessionTaskDelegate>
@@ -24,6 +24,7 @@
     NSObject<OS_dispatch_queue> *_diagnosticReasonsQueue;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_sessionQueue;
+    NSArray *_sensitiveKeys;
 }
 
 @property (readonly) ACAccount *account;
@@ -45,6 +46,8 @@
 - (id)_accountStore;
 - (void)_associateDiagnosticReasonsWithTaskID:(unsigned long long)arg1;
 - (void)_cleanUpDiagnosticReasonsForTaskID:(unsigned long long)arg1;
+- (void)_redactLogsFromJSONObject:(id)arg1;
+- (id)_redactLogsWithData:(id)arg1;
 - (BOOL)_trustPassesExtendedValidation:(struct __SecTrust *)arg1;
 - (id)_urlRequestTaggedWithDiagnosticReasonHeader:(id)arg1 forTaskID:(unsigned long long)arg2;
 - (id)_urlRequestTaggedWithWebServiceSessionMarkerHeader:(id)arg1;

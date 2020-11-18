@@ -10,6 +10,7 @@
 
 @property (readonly, nonatomic) TSULocale *locale;
 @property (readonly, nonatomic) double maxWidthForChildren;
+@property (readonly, nonatomic) BOOL shouldHyphenate;
 
 - (TSWPPadding *)padding;
 - (int)verticalAlignment;

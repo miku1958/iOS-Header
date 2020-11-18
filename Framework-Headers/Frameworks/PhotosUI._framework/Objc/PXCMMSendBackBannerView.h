@@ -20,6 +20,7 @@
 }
 
 + (id)_headlineLabelFont;
++ (double)bottomInset;
 + (id)captionLabelFont;
 + (double)captionLabelTopInset;
 - (void).cxx_destruct;

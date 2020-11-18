@@ -20,16 +20,16 @@ __attribute__((visibility("hidden")))
     BOOL _shouldTintWhiteImages;
     unsigned long long _slideNumber;
     KNAbstractSlide *_slide;
-    double _elementListThumbnailContentInset;
-    struct CGSize _elementListThumbnailSize;
+    double _drawableThumbnailContentInset;
+    struct CGSize _drawableThumbnailSize;
 }
 
 @property (readonly, nonatomic) id<TSDCanvasProxyDelegate> canvasProxyDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) double elementListThumbnailContentInset; // @synthesize elementListThumbnailContentInset=_elementListThumbnailContentInset;
-@property (readonly, nonatomic) TSUImage *elementListThumbnailImage;
-@property (nonatomic) struct CGSize elementListThumbnailSize; // @synthesize elementListThumbnailSize=_elementListThumbnailSize;
+@property (nonatomic) double drawableThumbnailContentInset; // @synthesize drawableThumbnailContentInset=_drawableThumbnailContentInset;
+@property (readonly, nonatomic) TSUImage *drawableThumbnailImage;
+@property (nonatomic) struct CGSize drawableThumbnailSize; // @synthesize drawableThumbnailSize=_drawableThumbnailSize;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) KNBodyPlaceholderInfo *replacementBodyPlaceholder; // @synthesize replacementBodyPlaceholder=_replacementBodyPlaceholder;
 @property (strong, nonatomic) KNTitlePlaceholderInfo *replacementTitlePlaceholder; // @synthesize replacementTitlePlaceholder=_replacementTitlePlaceholder;

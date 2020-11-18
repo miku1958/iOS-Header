@@ -163,6 +163,8 @@
     BOOL _forceEnablePredictionView;
     BOOL _handlingKeyCommandFromHardwareKeyboard;
     BOOL _suppressRTIClient;
+    BOOL _applicationStateIsActiveForRTI;
+    BOOL _viewServiceStateIsActiveForRTI;
     TISmartPunctuationController *m_smartPunctuationController;
     TIKeyboardTouchEvent *m_touchEventWaitingForKeyInputEvent;
     _UIActionWhenIdle *m_delayedCandidateRequest;
@@ -181,6 +183,7 @@
 }
 
 @property (nonatomic) BOOL animateUpdateBars; // @synthesize animateUpdateBars=m_animateUpdateBars;
+@property (nonatomic) BOOL applicationStateIsActiveForRTI; // @synthesize applicationStateIsActiveForRTI=_applicationStateIsActiveForRTI;
 @property (strong, nonatomic) UITextInputArrowKeyHistory *arrowKeyHistory; // @synthesize arrowKeyHistory=m_arrowKeyHistory;
 @property (readonly, nonatomic) UIResponder<UIWKInteractionViewProtocol> *asynchronousInputDelegate;
 @property (strong, nonatomic) UIKeyboardScheduledTask *autocorrectPromptTask; // @synthesize autocorrectPromptTask=_autocorrectPromptTask;
@@ -250,6 +253,7 @@
 @property (strong, nonatomic) _UIKeyboardTextSelectionController *textSelectionController; // @synthesize textSelectionController=_textSelectionController;
 @property (readonly, nonatomic) double timestampOfLastTouchesEnded;
 @property (strong, nonatomic) TIKeyboardTouchEvent *touchEventWaitingForKeyInputEvent; // @synthesize touchEventWaitingForKeyInputEvent=m_touchEventWaitingForKeyInputEvent;
+@property (nonatomic) BOOL viewServiceStateIsActiveForRTI; // @synthesize viewServiceStateIsActiveForRTI=_viewServiceStateIsActiveForRTI;
 
 + (void)_clearHardwareKeyboardMinimizationPreference;
 + (id)activeInstance;
@@ -289,6 +293,7 @@
 + (BOOL)rivenInstalled;
 + (BOOL)rivenPreference;
 + (BOOL)rivenTranslationPreference;
++ (void)screenModeDidChange:(id)arg1;
 + (void)sendPerformanceNotification:(id)arg1;
 + (void)sendPerformanceNotification:(id)arg1 userInfo:(id)arg2;
 + (void)setParentTestForProfiling:(id)arg1;
@@ -368,6 +373,7 @@
 - (void)_updateExternalDeviceInputSettingForWindow:(id)arg1;
 - (void)_updateInputViewControllerOutput:(id)arg1 forKeyboardOutput:(id)arg2;
 - (void)_updateKeyboardConfigurations;
+- (void)_updateRTIAllowedAndNotify:(BOOL)arg1 withReason:(id)arg2;
 - (void)_updateRTIObjectsIfNecessary;
 - (void)_updateRTIStateIfNecessary;
 - (void)_updateRTITraitsIfNecessary;
@@ -725,7 +731,6 @@
 - (void)resizeCandidateBarWithDelta:(double)arg1;
 - (id)responderForSendCurrentLocation;
 - (void)responseContextDidChange;
-- (void)restoreAutofillCustomInfoOnAppBecomeActiveIfNeeded;
 - (id)returnKeyDisplayName;
 - (BOOL)returnKeyEnabled;
 - (int)returnKeyType;

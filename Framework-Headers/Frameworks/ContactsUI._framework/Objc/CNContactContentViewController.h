@@ -57,6 +57,7 @@
     BOOL _allowsDeletion;
     BOOL _allowsActionsModel;
     BOOL _allowsDisplayModePickerActions;
+    BOOL _allowsEditPhoto;
     BOOL _hideCardActions;
     BOOL _outOfProcessSetupComplete;
     BOOL _didSetFirstResponder;
@@ -175,6 +176,7 @@
 @property (nonatomic) BOOL allowsDeletion; // @synthesize allowsDeletion=_allowsDeletion;
 @property (nonatomic) BOOL allowsDisplayModePickerActions; // @synthesize allowsDisplayModePickerActions=_allowsDisplayModePickerActions;
 @property (nonatomic) BOOL allowsEditInApp; // @synthesize allowsEditInApp=_allowsEditInApp;
+@property (nonatomic) BOOL allowsEditPhoto; // @synthesize allowsEditPhoto=_allowsEditPhoto;
 @property (nonatomic) BOOL allowsEditing; // @synthesize allowsEditing=_allowsEditing;
 @property (nonatomic) BOOL allowsPropertyActions; // @synthesize allowsPropertyActions=_allowsPropertyActions;
 @property (nonatomic) BOOL allowsSendMessage; // @synthesize allowsSendMessage=_allowsSendMessage;

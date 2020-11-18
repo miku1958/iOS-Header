@@ -6,15 +6,21 @@
 
 #import <CoreData/NSManagedObject.h>
 
+#import <RemoteManagement/RMSyncableSubObject-Protocol.h>
+
 @class NSSet, NSString, RMUserDeviceState;
 
-@interface RMCoreDevice : NSManagedObject
+@interface RMCoreDevice : NSManagedObject <RMSyncableSubObject>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (strong, nonatomic) RMUserDeviceState *localUserDeviceState; // @dynamic localUserDeviceState;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSSet *usages; // @dynamic usages;
 @property (strong, nonatomic) NSSet *userDeviceAddresses; // @dynamic userDeviceAddresses;
 @property (strong, nonatomic) NSSet *userDeviceStates; // @dynamic userDeviceStates;
@@ -22,6 +28,7 @@
 + (id)fetchDeviceWithIdentifier:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 + (id)fetchOrCreateDeviceWithIdentifier:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
 + (id)fetchOrCreateLocalDeviceInContext:(id)arg1 error:(id *)arg2;
+- (id)syncableRootObject;
 
 @end
 

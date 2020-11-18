@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setNeedsUpdateWallpaperModificationAllowed:) BOOL _needsUpdateWallpaperModificationAllowed; // @synthesize _needsUpdateWallpaperModificationAllowed=__needsUpdateWallpaperModificationAllowed;
 @property (nonatomic, getter=_isWallpaperModificationAllowed, setter=_setWallpaperModificationAllowed:) BOOL _wallpaperModificationAllowed; // @synthesize _wallpaperModificationAllowed=__wallpaperModificationAllowed;
 
++ (BOOL)_isCapabilityBasedActivity;
 - (void).cxx_destruct;
 - (id)_activityBundleImageConfiguration;
 - (id)_activityImageName;

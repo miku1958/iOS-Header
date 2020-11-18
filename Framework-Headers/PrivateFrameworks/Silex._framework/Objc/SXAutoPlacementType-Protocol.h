@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/NSObject-Protocol.h>
+#import <Silex/SXConditionalObject-Protocol.h>
 
 @protocol SXAutoPlacementLayout;
 
-@protocol SXAutoPlacementType <NSObject>
+@protocol SXAutoPlacementType <SXConditionalObject>
 
 @property (readonly, nonatomic) BOOL enabled;
 @property (readonly, nonatomic) id<SXAutoPlacementLayout> layout;

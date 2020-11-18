@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_applyAppearanceCustomizationsToItem:(id)arg1;
 - (void)_cleanupAdaptiveBackdrop;
+- (void)_configureDefaultDisplayStyle;
+- (void)_configureFloatingDisplayStyle;
 - (void)_configureItems:(id)arg1;
 - (void)_determineHorizontalLayout;
 - (id)_focusedItemHighlightView;

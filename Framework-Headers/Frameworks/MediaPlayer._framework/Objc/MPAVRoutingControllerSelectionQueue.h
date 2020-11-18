@@ -24,7 +24,7 @@
 @property (readonly, nonatomic) BOOL hasPendingPickedRoutes; // @synthesize hasPendingPickedRoutes=_hasPendingPickedRoutes;
 @property (readonly, nonatomic) MPAVRoute *pendingPickedRoute;
 @property (readonly, nonatomic) NSSet *pendingPickedRoutes;
-@property (readonly, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
+@property (readonly, weak, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
 
 - (void).cxx_destruct;
 - (void)_dequeue;
@@ -39,6 +39,7 @@
 - (void)pickedRouteDidChange;
 - (void)removeAllPendingRoutes;
 - (void)removePendingRoute:(id)arg1;
+- (void)removePendingRoute:(id)arg1 withError:(BOOL)arg2;
 - (BOOL)routeIsPendingPick:(id)arg1;
 
 @end

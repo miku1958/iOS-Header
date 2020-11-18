@@ -24,11 +24,13 @@
 @property (strong, nonatomic) SXComponentAnimation *backingAnimation; // @synthesize backingAnimation;
 @property (readonly, nonatomic) SXJSONArray *behaviors; // @dynamic behaviors;
 @property (readonly, nonatomic) SXComponentClassification *classification; // @synthesize classification=_classification;
+@property (readonly, nonatomic) SXJSONArray *conditional; // @dynamic conditional;
 @property (readonly, nonatomic) SXComponentConditions *conditions; // @dynamic conditions;
 @property (readonly, nonatomic) unsigned long long contentRelevance; // @dynamic contentRelevance;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL hidden; // @dynamic hidden;
 @property (readonly, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (readonly, nonatomic) NSString *layout; // @dynamic layout;
 @property (readonly, nonatomic) int role;

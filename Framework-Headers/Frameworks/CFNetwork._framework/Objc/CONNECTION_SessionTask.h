@@ -70,13 +70,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isTopLevelNavigation;
 - (id)_loggableDescription;
 - (id)_networkServiceType;
-- (id)_nw_activity;
 - (struct __PerformanceTiming *)_performanceTiming;
 - (BOOL)_preconnect;
 - (void)_prepareNewTimingDataContainer;
 - (unsigned char)_preventsIdleSystemSleep;
 - (BOOL)_preventsSystemHTTPProxyAuthentication;
 - (id)_priorityValue;
+- (id)_private_nw_activity;
 - (void)_processConnectionProperties;
 - (id)_prohibitAuthUI;
 - (id)_protocolForTask;

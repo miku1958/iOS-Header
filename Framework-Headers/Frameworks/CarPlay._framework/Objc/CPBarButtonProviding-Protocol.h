@@ -6,10 +6,11 @@
 
 #import <CarPlay/NSObject-Protocol.h>
 
-@class NSArray;
+@class CPBarButton, NSArray;
 
 @protocol CPBarButtonProviding <NSObject>
 
+@property (strong, nonatomic) CPBarButton *backButton;
 @property (strong, nonatomic) NSArray *leadingNavigationBarButtons;
 @property (strong, nonatomic) NSArray *trailingNavigationBarButtons;
 

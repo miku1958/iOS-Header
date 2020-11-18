@@ -26,7 +26,7 @@
 - (id)imageFromData:(id)arg1;
 - (id)imageFromData:(id)arg1 size:(struct CGSize)arg2;
 - (id)init;
-- (id)loadAnimatedImageFromImageData:(id)arg1;
+- (id)loadAnimatedImageFromImageData:(id)arg1 size:(struct CGSize)arg2;
 - (void)loadImageFromImageData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (struct CGImage *)newImageByDecodingImage:(struct CGImage *)arg1 size:(struct CGSize)arg2;
 

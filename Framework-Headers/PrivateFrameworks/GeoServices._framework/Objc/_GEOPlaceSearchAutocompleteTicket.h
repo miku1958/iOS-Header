@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)matchesFragment:(id)arg1;
 - (double)retainSearchTime;
 - (BOOL)shouldDisplayNoResults;
+- (id)sortPriorityMapping;
 - (void)submitWithAutoCompletionHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 networkActivity:(CDUnknownBlockType)arg3;
 - (void)submitWithAutoCompletionHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 

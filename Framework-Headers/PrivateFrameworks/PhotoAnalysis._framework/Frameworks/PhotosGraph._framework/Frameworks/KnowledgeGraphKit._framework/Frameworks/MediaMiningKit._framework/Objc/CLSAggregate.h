@@ -10,9 +10,11 @@
 
 @interface CLSAggregate : NSObject
 {
+    BOOL _allowWeeklyUpdates;
     NSString *_primaryDomain;
 }
 
+@property (readonly, nonatomic) BOOL allowWeeklyUpdates; // @synthesize allowWeeklyUpdates=_allowWeeklyUpdates;
 @property (strong, nonatomic) NSString *primaryDomain; // @synthesize primaryDomain=_primaryDomain;
 
 + (id)sharedCLSAggregate;
@@ -23,6 +25,7 @@
 - (id)_distributionKeys;
 - (id)_doubleValueTypeKeys;
 - (id)_getSubdomain:(id)arg1;
+- (id)_keysForWeeklyReporting;
 - (id)_messageTracerMethodConstructionHints;
 - (id)_messageTracerMethodConstructionHintsForKey:(id)arg1;
 - (id)_needsParsingKeys;
@@ -33,6 +36,8 @@
 - (id)_stringValueTypeKeys;
 - (id)_truncateToSignificantFigureForValue:(id)arg1 numOfSignificantDigits:(int)arg2;
 - (void)incrementValueForKey:(id)arg1;
+- (id)init;
+- (void)invalidateForWeeklyUpdates;
 - (void)recordValue:(id)arg1 forKey:(id)arg2;
 
 @end

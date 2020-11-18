@@ -241,6 +241,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)markAsFinished;
 - (id)operationRequestWithType:(int)arg1;
 - (void)overrideRequestHeader:(id)arg1 withValue:(id)arg2;
+- (BOOL)parsingStandaloneMessage;
 - (void)performASyncOnLifecycleQueueIfNotFinished:(CDUnknownBlockType)arg1;
 - (void)performOnLifecycleQueueIfNotFinished:(CDUnknownBlockType)arg1;
 - (void)performRequest;
@@ -253,6 +254,7 @@ __attribute__((visibility("hidden")))
 - (void)requestDidParsePlaintextObject:(id)arg1;
 - (void)requestDidParsePlistObject:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
+- (Class)requestMessageClass;
 - (id)requestOperationCountsByOperationType;
 - (id)requestOptions;
 - (BOOL)requiresAppPartitionURL;

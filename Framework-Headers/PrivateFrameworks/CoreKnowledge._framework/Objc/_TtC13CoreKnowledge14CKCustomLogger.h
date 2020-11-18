@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE;
 
 @interface _TtC13CoreKnowledge14CKCustomLogger : NSObject
 {
@@ -17,12 +17,8 @@
     MISSING_TYPE *defaultSettings;
 }
 
-@property (nonatomic) BOOL enabled; // @synthesize enabled;
-@property (nonatomic, readonly) NSString *name; // @synthesize name;
-
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
-- (void)setFormatWithName:(BOOL)arg1 file:(BOOL)arg2 method:(BOOL)arg3;
 
 @end
 

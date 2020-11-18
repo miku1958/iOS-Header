@@ -11,7 +11,7 @@
 #import <iWorkImport/TSPObjectContextDelegate-Protocol.h>
 
 @class NSDictionary, NSError, NSMapTable, NSMutableArray, NSMutableSet, NSOperationQueue, NSProgress, NSSet, NSString, NSURL, NSUUID, TSPObjectContext, TSUProgressContext, TSUTemporaryDirectory;
-@protocol NSFilePresenter, OS_dispatch_group, TSAImportDelegate, TSKImporter;
+@protocol NSFilePresenter, OS_dispatch_group, TSADocumentPassphraseProvider, TSAImportDelegate, TSKImporter;
 
 __attribute__((visibility("hidden")))
 @interface TSAImportController : NSObject <TSPObjectContextDelegate, NSFilePresenter, TSDImportExportDelegate>
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
     NSError *_error;
     TSPObjectContext *_documentContext;
     TSUProgressContext *_progressContext;
+    id<TSADocumentPassphraseProvider> _passphraseProvider;
     NSURL *_fileURL;
 }
 
@@ -65,6 +66,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isImportCancelled;
 @property (readonly, nonatomic) BOOL isPasswordProtected;
 @property (readonly) NSSet *observedPresentedItemUbiquityAttributes;
+@property (weak, nonatomic) id<TSADocumentPassphraseProvider> passphraseProvider; // @synthesize passphraseProvider=_passphraseProvider;
 @property (readonly, strong) NSOperationQueue *presentedItemOperationQueue; // @synthesize presentedItemOperationQueue=_presentedItemOperationQueue;
 @property (readonly, copy) NSURL *presentedItemURL; // @synthesize presentedItemURL=_presentedItemURL;
 @property (readonly, copy) NSURL *primaryPresentedItemURL;
@@ -92,7 +94,7 @@ __attribute__((visibility("hidden")))
 - (void)checkDownloadPermissionForMissingResourceAccessTypes:(long long)arg1 estimatedMissingResourcesSize:(unsigned long long)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)defaultDraftName;
-- (void)didSaveImportedDocumentWithPassphrase:(id)arg1;
+- (id)documentProvider;
 - (void)finishImportWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (BOOL)import;
 - (id)importErrorWithCode:(long long)arg1 description:(id)arg2 failureReason:(id)arg3 underlyingError:(id)arg4;
@@ -115,7 +117,6 @@ __attribute__((visibility("hidden")))
 - (void)resumeAutosaveWithReason:(id)arg1;
 - (void)resumeSaveAndAutosaveWithReason:(id)arg1;
 - (void)retrievePassphraseForEncryptedDocumentWithImporter:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)sharingStateForContext:(id)arg1;
 - (void)showProgressIfNeededForURL:(id)arg1;
 - (void)suspendAutosaveWithReason:(id)arg1;
 - (void)suspendSaveAndAutosaveWithReason:(id)arg1;

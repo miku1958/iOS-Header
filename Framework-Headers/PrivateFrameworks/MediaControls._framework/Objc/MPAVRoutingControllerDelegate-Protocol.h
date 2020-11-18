@@ -6,7 +6,7 @@
 
 #import <MediaControls/NSObject-Protocol.h>
 
-@class MPAVRoute, MPAVRoutingController, NSArray, NSError;
+@class MPAVRoute, MPAVRoutingController, NSArray, NSError, NSString;
 
 @protocol MPAVRoutingControllerDelegate <NSObject>
 
@@ -14,7 +14,7 @@
 - (void)routingController:(MPAVRoutingController *)arg1 didFailToPickRouteWithError:(NSError *)arg2;
 - (void)routingController:(MPAVRoutingController *)arg1 pickedRouteDidChange:(MPAVRoute *)arg2;
 - (void)routingController:(MPAVRoutingController *)arg1 pickedRoutesDidChange:(NSArray *)arg2;
-- (void)routingController:(MPAVRoutingController *)arg1 shouldHijackRoute:(MPAVRoute *)arg2 completion:(void (^)(BOOL))arg3;
+- (void)routingController:(MPAVRoutingController *)arg1 shouldHijackRoute:(MPAVRoute *)arg2 alertStyle:(long long)arg3 busyRouteName:(NSString *)arg4 presentingAppName:(NSString *)arg5 completion:(void (^)(BOOL))arg6;
 - (void)routingController:(MPAVRoutingController *)arg1 volumeControlAvailabilityDidChange:(BOOL)arg2;
 - (void)routingControllerAvailableRoutesDidChange:(MPAVRoutingController *)arg1;
 - (void)routingControllerDidPauseFromActiveRouteChange:(MPAVRoutingController *)arg1;

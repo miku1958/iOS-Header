@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, copy) NSString *accessibilityDisplayName; // @synthesize accessibilityDisplayName;
 @property (nonatomic, readonly) _TtC15ConversationKit15ParticipantView *participantView; // @synthesize participantView;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;

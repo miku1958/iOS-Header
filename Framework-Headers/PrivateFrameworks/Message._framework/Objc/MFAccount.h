@@ -26,6 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *hostname;
 @property (readonly, copy) NSString *identifier;
+@property (readonly, nonatomic, getter=isManaged) BOOL managed;
 @property (readonly) NSString *managedTag;
 @property (readonly, copy, nonatomic) NSString *mf_publicDescription;
 @property (readonly) ACAccount *parentAccount;
@@ -119,7 +120,6 @@
 - (BOOL)isActive;
 - (BOOL)isEnabledForDataclass:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isManaged;
 - (BOOL)isSyncingNotes;
 - (id)loginDisabledErrorWithTitle:(id)arg1;
 - (id)missingPasswordErrorWithTitle:(id)arg1;

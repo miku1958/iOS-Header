@@ -90,12 +90,16 @@ __attribute__((visibility("hidden")))
 - (void)beginDynamicOperation;
 - (void)beginResize;
 - (void)beginRotate;
+- (void)calculateAndSetPointsToSearchReference:(id)arg1;
 - (struct CGPoint)calculatePointFromSearchReference:(id)arg1;
 - (BOOL)canvasShouldScrollForSelectionPath:(id)arg1;
 - (struct CGPoint)capturedInfoPositionForAttachment;
 - (id)computeInfoGeometryDuringResize;
 - (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
 - (id)computeLayoutGeometry;
+- (id)containedPencilAnnotations;
+- (id)containedPencilAnnotationsIncludingChildren:(BOOL)arg1;
+- (BOOL)containsStartOfPencilAnnotation:(id)arg1;
 - (struct CGPoint)convertNaturalPointFromUnscaledCanvas:(struct CGPoint)arg1;
 - (struct CGRect)convertNaturalRectFromUnscaledCanvas:(struct CGRect)arg1;
 - (struct CGRect)convertNaturalRectToUnscaledCanvas:(struct CGRect)arg1;

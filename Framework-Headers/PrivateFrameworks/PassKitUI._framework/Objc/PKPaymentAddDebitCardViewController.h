@@ -17,20 +17,24 @@
     PKPaymentProvisioningController *_provisioningController;
     id<PKPaymentSetupViewControllerDelegate> _delegate;
     UIImage *_passSnapShot;
+    BOOL _showDebitCardHeroView;
+    NSString *_titleText;
+    NSString *_bodyText;
 }
 
+@property (copy, nonatomic) NSString *bodyText; // @synthesize bodyText=_bodyText;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL showDebitCardHeroView; // @synthesize showDebitCardHeroView=_showDebitCardHeroView;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 
 - (void).cxx_destruct;
 - (void)_handleNextStep;
 - (void)_handleProvisioningError:(id)arg1;
 - (id)_paymentSetupNavigationControllerForProvisioningController:(id)arg1;
 - (void)_presentPaymentSetupController;
-- (void)_setNavigationBarEnabled:(BOOL)arg1;
-- (void)_setViewEnabledState:(BOOL)arg1;
 - (void)_setupLater;
 - (void)_terminateSetupFlow;
 - (void)explanationViewDidSelectContinue:(id)arg1;

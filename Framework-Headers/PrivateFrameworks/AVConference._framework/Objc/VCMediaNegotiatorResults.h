@@ -16,12 +16,16 @@ __attribute__((visibility("hidden")))
     NSString *_remoteBasebandCodec;
     unsigned int _remoteBasebandCodecSampleRate;
     NSMutableDictionary *_bandwidthSettings;
+    BOOL _SIPDisabled;
+    BOOL _secureMessagingRequired;
 }
 
+@property (nonatomic) BOOL SIPDisabled; // @synthesize SIPDisabled=_SIPDisabled;
 @property (strong, nonatomic) NSMutableDictionary *bandwidthSettings; // @synthesize bandwidthSettings=_bandwidthSettings;
 @property (strong, nonatomic) NSString *remoteBasebandCodec; // @synthesize remoteBasebandCodec=_remoteBasebandCodec;
 @property (nonatomic) unsigned int remoteBasebandCodecSampleRate; // @synthesize remoteBasebandCodecSampleRate=_remoteBasebandCodecSampleRate;
 @property (strong, nonatomic) NSString *remoteUserAgent; // @synthesize remoteUserAgent=_remoteUserAgent;
+@property (nonatomic) BOOL secureMessagingRequired; // @synthesize secureMessagingRequired=_secureMessagingRequired;
 @property (nonatomic) BOOL supportsDynamicMaxBitrate; // @synthesize supportsDynamicMaxBitrate=_supportsDynamicMaxBitrate;
 
 - (void)dealloc;

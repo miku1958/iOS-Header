@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFTableHeaderRowCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFTableAlignmentSchema;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFTableAlignmentSchema, SFUserReportRequest;
 
 @interface SFTableHeaderRowCardSection : SFTableRowCardSection <SFTableHeaderRowCardSection, NSSecureCoding, NSCopying>
 {
@@ -63,6 +63,7 @@
 @property (copy, nonatomic) NSString *tabGroupIdentifier;
 @property (copy, nonatomic) NSString *tableIdentifier;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 @property (nonatomic) int verticalAlign;
 
 + (BOOL)supportsSecureCoding;

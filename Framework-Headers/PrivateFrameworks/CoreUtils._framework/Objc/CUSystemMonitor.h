@@ -21,6 +21,7 @@
     CDUnknownBlockType _callChangedHandler;
     CDUnknownBlockType _consoleUserChangedHandler;
     CDUnknownBlockType _familyUpdatedHandler;
+    CDUnknownBlockType _manateeChangedHandler;
     CDUnknownBlockType _meDeviceChangedHandler;
     CDUnknownBlockType _netFlagsChangedHandler;
     CDUnknownBlockType _primaryIPChangedHandler;
@@ -31,6 +32,7 @@
     CDUnknownBlockType _screenLockedChangedHandler;
     CDUnknownBlockType _screenOnChangedHandler;
     CDUnknownBlockType _screenSaverChangedHandler;
+    CDUnknownBlockType _systemLockStateChangedHandler;
     CDUnknownBlockType _firstUnlockHandler;
     CDUnknownBlockType _wifiStateChangedHandler;
 }
@@ -40,6 +42,7 @@
 @property (copy) CDUnknownBlockType bluetoothAddressChangedHandler; // @synthesize bluetoothAddressChangedHandler=_bluetoothAddressChangedHandler;
 @property (readonly, copy) NSData *bluetoothAddressData;
 @property (copy) CDUnknownBlockType callChangedHandler; // @synthesize callChangedHandler=_callChangedHandler;
+@property (readonly) int connectedCallCount;
 @property (copy, nonatomic) CDUnknownBlockType consoleUserChangedHandler; // @synthesize consoleUserChangedHandler=_consoleUserChangedHandler;
 @property (readonly) unsigned int consoleUserID;
 @property (readonly, copy) NSString *consoleUserName;
@@ -49,9 +52,12 @@
 @property (copy, nonatomic) CDUnknownBlockType firstUnlockHandler; // @synthesize firstUnlockHandler=_firstUnlockHandler;
 @property (readonly, nonatomic) BOOL firstUnlocked;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property (readonly) BOOL manateeAvailable;
+@property (copy, nonatomic) CDUnknownBlockType manateeChangedHandler; // @synthesize manateeChangedHandler=_manateeChangedHandler;
 @property (copy) CDUnknownBlockType meDeviceChangedHandler; // @synthesize meDeviceChangedHandler=_meDeviceChangedHandler;
 @property (readonly, copy) NSString *meDeviceFMFDeviceID;
 @property (readonly, copy) NSString *meDeviceIDSDeviceID;
+@property (readonly) BOOL meDeviceIsMe;
 @property (readonly, copy) NSString *meDeviceName;
 @property (readonly) BOOL meDeviceValid;
 @property (readonly) unsigned int netFlags;
@@ -74,6 +80,8 @@
 @property (copy) CDUnknownBlockType screenOnChangedHandler; // @synthesize screenOnChangedHandler=_screenOnChangedHandler;
 @property (readonly) BOOL screenSaverActive;
 @property (copy) CDUnknownBlockType screenSaverChangedHandler; // @synthesize screenSaverChangedHandler=_screenSaverChangedHandler;
+@property (readonly, nonatomic) int systemLockState;
+@property (copy, nonatomic) CDUnknownBlockType systemLockStateChangedHandler; // @synthesize systemLockStateChangedHandler=_systemLockStateChangedHandler;
 @property (readonly, nonatomic) unsigned int wifiFlags;
 @property (readonly, nonatomic) int wifiState;
 @property (copy, nonatomic) CDUnknownBlockType wifiStateChangedHandler; // @synthesize wifiStateChangedHandler=_wifiStateChangedHandler;

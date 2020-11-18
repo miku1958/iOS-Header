@@ -8,7 +8,7 @@
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class NSDate, NSString, TSDCommentStorage, TSDFill, TSKFormat, TSTCellBorder, TSTCellSpec, TSTCellStyle, TSTConditionalStyleSet, TSTImportWarningSet, TSTStockDetails, TSULocale, TSWPParagraphStyle, TSWPStorage;
+@class NSDate, NSString, TSDCommentStorage, TSDFill, TSKFormat, TSTCellBorder, TSTCellSpec, TSTCellStyle, TSTConditionalStyleSet, TSTImportWarningSet, TSULocale, TSWPParagraphStyle, TSWPStorage;
 
 __attribute__((visibility("hidden")))
 @interface TSTCell_PreBNC : NSObject <NSCopying>
@@ -112,7 +112,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasImportWarningSet;
 @property (readonly, nonatomic) BOOL hasMismatchedFormatAndValue;
 @property (readonly, nonatomic) BOOL hasRichText;
-@property (readonly, nonatomic) BOOL hasStockFormula;
 @property (readonly, nonatomic) BOOL hasTextStyle;
 @property (readonly, nonatomic) BOOL hasValueOrError;
 @property (strong, nonatomic) TSTImportWarningSet *importWarningSet; // @synthesize importWarningSet=_importWarningSet;
@@ -129,7 +128,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int richTextID;
 @property (readonly, nonatomic) TSWPStorage *richTextStorageForLayout;
 @property (strong, nonatomic) TSWPStorage *richTextValue;
-@property (readonly, nonatomic) TSTStockDetails *stockDetails;
 @property (readonly, nonatomic) NSString *stringForEditing;
 @property (readonly, nonatomic) NSString *stringForUnderlyingValue;
 @property (nonatomic) unsigned int stringID;

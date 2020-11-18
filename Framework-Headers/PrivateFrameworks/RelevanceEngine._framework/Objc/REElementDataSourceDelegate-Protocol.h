@@ -11,7 +11,6 @@
 
 @protocol REElementDataSourceDelegate <NSObject>
 - (void)addElements:(NSArray *)arg1 toSectionWithIdentifier:(NSString *)arg2;
-- (void)dataBecameAvailable;
 - (NSObject<OS_dispatch_queue> *)elementOperationQueue;
 - (void)fetchElementWithIdentifierVisible:(NSString *)arg1 withHandler:(void (^)(BOOL))arg2;
 - (BOOL)hasElementWithId:(NSString *)arg1 inSectionWithIdentifier:(NSString *)arg2;

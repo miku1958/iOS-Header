@@ -16,6 +16,7 @@
     BOOL _invalidateDone;
     struct LogCategory *_ucat;
     unsigned int _localInterfaceIndex;
+    unsigned int _trafficFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_identifier;
     NSString *_label;
@@ -33,6 +34,7 @@
 @property (readonly, nonatomic) unsigned int localInterfaceIndex; // @synthesize localInterfaceIndex=_localInterfaceIndex;
 @property (readonly, nonatomic) CDUnion_fab80606 peerAddress; // @synthesize peerAddress=_peerAddress;
 @property (strong, nonatomic) CUNANEndpoint *peerEndpoint; // @synthesize peerEndpoint=_peerEndpoint;
+@property (nonatomic) unsigned int trafficFlags; // @synthesize trafficFlags=_trafficFlags;
 
 - (void).cxx_destruct;
 - (void)_invalidate;

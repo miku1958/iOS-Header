@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSExtension, NSMutableArray, NSString, PDFExtensionTopView, PDFPageLabelView, PDFPanGestureRecognizer, PDFPasswordViewController, UILongPressGestureRecognizer, UIScrollView, UISwipeGestureRecognizer, UITapGestureRecognizer;
+@class NSExtension, NSMutableArray, NSString, PDFExtensionTopView, PDFPageLabelView, PDFPanGestureRecognizer, PDFPasswordViewController, UILongPressGestureRecognizer, UIScrollView, UITapGestureRecognizer;
 @protocol PDFExtensionProtocol, PDFHostViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     BOOL isUnlocked;
     long long currentPageIndex;
     long long pageCount;
+    struct CGSize documentViewSize;
     double minScaleFactor;
     double maxScaleFactor;
     BOOL hasSelection;
@@ -34,22 +35,15 @@ __attribute__((visibility("hidden")))
     UITapGestureRecognizer *doubleTapGestureRecognizer;
     UILongPressGestureRecognizer *longPressGestureRecognizer;
     PDFPanGestureRecognizer *panGestureRecognizer;
-    UISwipeGestureRecognizer *swipeGestureRecognizer;
     struct CGRect boundsInDocument;
-    struct CGRect boundsInView;
     struct CGRect scrollViewFrame;
-    double zoomScale;
+    struct UIEdgeInsets contentInset;
+    struct UIEdgeInsets pdfSafeAreaInsets;
+    double horizontalScaleFactor;
+    struct CGPoint documentViewCenter;
     BOOL pdfViewIsRotating;
-    struct {
-        struct UIEdgeInsets contentInset;
-        struct UIEdgeInsets safeAreaInsets;
-        struct UIEdgeInsets expandedContentInsetPortrait;
-        struct UIEdgeInsets collapsedContentInsetPortrait;
-        struct UIEdgeInsets expandedContentInsetLandscape;
-        struct UIEdgeInsets collapsedContentInsetLandscape;
-        struct UIEdgeInsets endRotationContentInset;
-        BOOL contentInsetIsExpandedDuringRotation;
-    } hostScrollViewInsets;
+    BOOL pdfViewNeedsUpdate;
+    BOOL hostScrollViewObserverIsActive;
 }
 
 - (void).cxx_destruct;

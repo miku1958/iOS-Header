@@ -13,5 +13,6 @@
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)tsu_allKeys;
 - (id)tsu_allObjects;
+- (void)tsu_enumerateKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
 @end
 

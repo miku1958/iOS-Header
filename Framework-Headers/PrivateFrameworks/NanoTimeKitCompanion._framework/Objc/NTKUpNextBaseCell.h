@@ -40,6 +40,7 @@
 @property (readonly) Class superclass;
 
 + (void)clearLabel:(id)arg1;
++ (double)cornerRadiusForDevice:(id)arg1;
 + (struct CGSize)suggestedBodyImageSizeForDevice:(id)arg1;
 + (struct CGSize)suggestedHeaderImageSizeForDevice:(id)arg1;
 - (void).cxx_destruct;

@@ -8,18 +8,20 @@
 
 #import <CarKit/CARSessionCommandDelegate-Protocol.h>
 
-@class CARInputDeviceManager, CARSessionConfiguration, NSArray, NSNumber, NSString;
+@class CARInputDeviceManager, CARSessionConfiguration, NSArray, NSDictionary, NSNumber, NSString;
 
 @interface CARSession : NSObject <CARSessionCommandDelegate>
 {
     struct OpaqueFigEndpoint *_endpoint;
     BOOL _authenticated;
     CARSessionConfiguration *_configuration;
+    NSDictionary *_APEndPointInfo;
     CARInputDeviceManager *_inputDeviceManager;
     NSArray *_screenInfo;
     NSArray *_screenIDs;
 }
 
+@property (readonly, copy, nonatomic) NSDictionary *APEndPointInfo; // @synthesize APEndPointInfo=_APEndPointInfo;
 @property (readonly, nonatomic, getter=isAuthenticated) BOOL authenticated; // @synthesize authenticated=_authenticated;
 @property (readonly, nonatomic) CARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;

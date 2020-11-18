@@ -24,6 +24,8 @@
 + (id)sharedInstance;
 - (void)__postDBUpdate;
 - (id)_chatsForMessageGUID:(id)arg1 enableVerboseLogging:(BOOL)arg2;
+- (id)_cleanUnformattedPhoneNumber:(id)arg1 countryCode:(id)arg2;
+- (struct _IMDHandleRecordStruct *)_copyHandle:(id)arg1 onService:(id)arg2;
 - (void)_deleteMessagesWithGUIDs:(id)arg1 chatIdentifiers:(id)arg2 style:(unsigned char)arg3 onServices:(id)arg4 batchNumber:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (BOOL)_hasMessagesWithGUIDs:(id)arg1;
 - (BOOL)_isUsingStingRay;

@@ -15,9 +15,11 @@
     BOOL _hasRemoteDevices;
     BOOL _inFailForward;
     BOOL _canMakeRemotePayments;
+    BOOL _canDecryptBAAEncryptedData;
 }
 
 @property (readonly, nonatomic, getter=_isDemoModeActive) BOOL _isDemoModeActive;
+@property (nonatomic) BOOL canDecryptBAAEncryptedData; // @synthesize canDecryptBAAEncryptedData=_canDecryptBAAEncryptedData;
 @property (readonly, nonatomic) BOOL canMakeLocalPayments;
 @property (readonly, nonatomic) BOOL canMakePayments;
 @property (nonatomic) BOOL canMakeRemotePayments; // @synthesize canMakeRemotePayments=_canMakeRemotePayments;

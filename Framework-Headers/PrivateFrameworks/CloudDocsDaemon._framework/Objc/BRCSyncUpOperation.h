@@ -61,7 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)_performUpdateSharingProtectionDataIfNecessary:(CDUnknownBlockType)arg1;
 - (BOOL)_recordIsIWorkShareable:(id)arg1;
 - (void)_scheduleShareUpdateAndModifyRecordsAndZoneCreationOperation;
-- (void)_setSharingFieldsOnContentRecord:(id)arg1 withProtectionData:(id)arg2 baseToken:(id)arg3 routingKey:(id)arg4;
+- (void)_setSharingFieldsOnContentRecord:(id)arg1 withProtectionData:(id)arg2 baseToken:(id)arg3 routingKey:(id)arg4 forceOverwrite:(BOOL)arg5;
 - (id)createActivity;
 - (void)dealloc;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;

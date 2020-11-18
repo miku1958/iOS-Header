@@ -6,19 +6,19 @@
 
 #import <iWorkImport/TSCH3DLinkablePipeline.h>
 
-@class TSCH3DGLFramebuffer;
+@class TSCH3DFramebuffer;
 @protocol TSCH3DPipelineLinkable;
 
 __attribute__((visibility("hidden")))
 @interface TSCH3DFramebufferTransformPipeline : TSCH3DLinkablePipeline
 {
     id<TSCH3DPipelineLinkable> mSource;
-    TSCH3DGLFramebuffer *mTarget;
-    TSCH3DGLFramebuffer *mInput;
+    TSCH3DFramebuffer *mTarget;
+    TSCH3DFramebuffer *mInput;
 }
 
 @property (strong, nonatomic) id<TSCH3DPipelineLinkable> source; // @synthesize source=mSource;
-@property (strong, nonatomic) TSCH3DGLFramebuffer *target; // @synthesize target=mTarget;
+@property (strong, nonatomic) TSCH3DFramebuffer *target; // @synthesize target=mTarget;
 
 - (void)dealloc;
 - (void)loadSource;

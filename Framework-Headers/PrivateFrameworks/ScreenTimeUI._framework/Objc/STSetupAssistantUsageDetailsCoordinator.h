@@ -12,6 +12,7 @@
 
 @interface STSetupAssistantUsageDetailsCoordinator : NSObject <STUsageDetailsViewModelCoordinator>
 {
+    BOOL _refreshing;
     NSArray *_devices;
     NSString *_selectedDeviceIdentifier;
     STUsageDetailsViewModel *_viewModel;
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSArray *devices; // @synthesize devices=_devices;
 @property (readonly) unsigned long long hash;
+@property (readonly, getter=isRefreshing) BOOL refreshing; // @synthesize refreshing=_refreshing;
 @property (copy, nonatomic) NSString *selectedDeviceIdentifier; // @synthesize selectedDeviceIdentifier=_selectedDeviceIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) STUsageDetailsViewModel *viewModel; // @synthesize viewModel=_viewModel;

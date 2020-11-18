@@ -22,6 +22,10 @@ __attribute__((visibility("hidden")))
     NSString *_locator;
     unsigned long long _readVersion;
     unsigned long long _writeVersion;
+    unsigned long long _parseVersion;
+    unsigned long long _requiredVersion;
+    BOOL _canBeDropped;
+    long long _compressionAlgorithm;
     NSArray *_featureInfos;
     unsigned long long _saveToken;
     TSPObject *_strongRootObject;
@@ -43,10 +47,13 @@ __attribute__((visibility("hidden")))
     TSPObjectReferenceMap *_objectReferenceMap;
 }
 
+@property (readonly, nonatomic) BOOL canBeDropped; // @synthesize canBeDropped=_canBeDropped;
 @property (readonly, nonatomic) TSPComponentObjectUUIDMap *componentObjectUUIDMap; // @synthesize componentObjectUUIDMap=_componentObjectUUIDMap;
+@property (readonly, nonatomic) long long compressionAlgorithm; // @synthesize compressionAlgorithm=_compressionAlgorithm;
 @property (readonly, nonatomic) unsigned long long encodedLength; // @synthesize encodedLength=_encodedLength;
 @property (readonly, nonatomic) NSArray *featureInfos; // @synthesize featureInfos=_featureInfos;
 @property (readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL incompatibleVersion;
 @property (readonly, nonatomic) BOOL isStoredOutsideObjectArchive;
 @property (readonly, nonatomic) BOOL isTransientComponent;
 @property (readonly, nonatomic) NSDate *lastModificationDate; // @synthesize lastModificationDate=_lastModificationDate;
@@ -55,9 +62,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL needsArchiving;
 @property (readonly, nonatomic) TSPObjectReferenceMap *objectReferenceMap; // @synthesize objectReferenceMap=_objectReferenceMap;
 @property (readonly) unsigned char packageIdentifier;
+@property (readonly, nonatomic) unsigned long long parseVersion; // @synthesize parseVersion=_parseVersion;
 @property (readonly) BOOL persisted;
 @property (readonly, nonatomic) NSString *preferredLocator; // @synthesize preferredLocator=_preferredLocator;
 @property (readonly, nonatomic) unsigned long long readVersion; // @synthesize readVersion=_readVersion;
+@property (readonly, nonatomic) unsigned long long requiredVersion; // @synthesize requiredVersion=_requiredVersion;
 @property (strong) TSPObject *rootObject;
 @property (readonly, nonatomic) unsigned long long saveToken; // @synthesize saveToken=_saveToken;
 @property (readonly, nonatomic) unsigned long long writeVersion; // @synthesize writeVersion=_writeVersion;
@@ -77,7 +86,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateExternalReferences:(CDUnknownBlockType)arg1;
 - (struct ComponentExternalReferenceInfo)externalReferenceInfoForObjectIdentifier:(long long)arg1;
 - (id)init;
-- (id)initWithDelegate:(id)arg1 identifier:(long long)arg2 preferredLocator:(id)arg3 packageIdentifier:(unsigned char)arg4 isStoredOutsideObjectArchive:(BOOL)arg5 encodedLength:(unsigned long long)arg6 lastModificationDate:(id)arg7;
+- (id)initWithDelegate:(id)arg1 identifier:(long long)arg2 preferredLocator:(id)arg3 packageIdentifier:(unsigned char)arg4 isStoredOutsideObjectArchive:(BOOL)arg5 parseVersion:(unsigned long long)arg6 requiredVersion:(unsigned long long)arg7 canBeDropped:(BOOL)arg8 compressionAlgorithm:(long long)arg9 encodedLength:(unsigned long long)arg10 lastModificationDate:(id)arg11;
 - (id)initWithDelegate:(id)arg1 message:(const struct ComponentInfo *)arg2 packageIdentifier:(unsigned char)arg3 encodedLength:(unsigned long long)arg4 lastModificationDate:(id)arg5;
 - (id)initWithDelegate:(id)arg1 rootObject:(id)arg2;
 - (BOOL)isCachingEnabled;
@@ -96,7 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)setModified:(BOOL)arg1 forObject:(id)arg2;
 - (void)setModified:(BOOL)arg1 forObject:(id)arg2 isDocumentUpgrade:(BOOL)arg3;
 - (void)setModifiedImpl:(BOOL)arg1 forObject:(id)arg2;
-- (void)setPackageIdentifier:(unsigned char)arg1 preferredLocator:(id)arg2 locator:(id)arg3 isStoredOutsideObjectArchive:(BOOL)arg4 rootObjectOrNil:(id)arg5 archivedObjects:(id)arg6 externalReferenceMap:(id)arg7 dataReferences:(id)arg8 readVersion:(unsigned long long)arg9 writeVersion:(unsigned long long)arg10 featureInfos:(id)arg11 componentObjectUUIDMap:(id)arg12 objectReferenceMap:(id)arg13 saveToken:(unsigned long long)arg14 encodedLength:(unsigned long long)arg15 lastModificationDate:(id)arg16 wasCopied:(BOOL)arg17 wasModifiedDuringWrite:(BOOL)arg18;
+- (void)setPackageIdentifier:(unsigned char)arg1 preferredLocator:(id)arg2 locator:(id)arg3 isStoredOutsideObjectArchive:(BOOL)arg4 parseVersion:(unsigned long long)arg5 requiredVersion:(unsigned long long)arg6 canBeDropped:(BOOL)arg7 compressionAlgorithm:(long long)arg8 rootObjectOrNil:(id)arg9 archivedObjects:(id)arg10 externalReferenceMap:(id)arg11 dataReferences:(id)arg12 readVersion:(unsigned long long)arg13 writeVersion:(unsigned long long)arg14 featureInfos:(id)arg15 componentObjectUUIDMap:(id)arg16 objectReferenceMap:(id)arg17 saveToken:(unsigned long long)arg18 encodedLength:(unsigned long long)arg19 lastModificationDate:(id)arg20 wasCopied:(BOOL)arg21 wasModifiedDuringWrite:(BOOL)arg22;
 - (void)setReadVersion:(unsigned long long)arg1 writeVersion:(unsigned long long)arg2 componentObjectUUIDMap:(id)arg3;
 - (BOOL)shouldForceCaching;
 - (BOOL)shouldKeepStrongObjectImpl;

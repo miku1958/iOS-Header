@@ -23,8 +23,7 @@
 - (void)_pageChangedNotification:(id)arg1;
 - (void)_pdfViewZoomToRect:(id)arg1;
 - (void)_selectionChangedNotification:(id)arg1;
-- (void)_setupAutoScaleFactor;
-- (void)_setupScrollViewContentSize;
+- (void)_setupDocumentViewSize;
 - (void)_textSelectionDidCopyDataNotification:(id)arg1;
 - (void)_textSelectionDidCopyStringNotification:(id)arg1;
 - (void)_textSelectionPointChangedNotification:(id)arg1;
@@ -32,15 +31,15 @@
 - (void)_textSelectionStateChangedNotification:(id)arg1;
 - (void)_updateDocumentIsLocked;
 - (void)_updatePageCount;
+- (void)_updateSelectionRects;
+- (void)_updateTextSelectionPoints;
 - (void)_zoomToRect:(struct CGRect)arg1;
-- (void)beginPDFViewRotation:(struct UIEdgeInsets)arg1;
 - (void)cancelFindString;
 - (void)cancelFindStringWithHighlightsCleared:(BOOL)arg1;
 - (void)clearSearchHighlights;
 - (void)copy;
 - (void)didMatchString:(id)arg1;
 - (void)documentDidEndDocumentFind:(id)arg1;
-- (void)endPDFViewRotation;
 - (void)findString:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)focusOnSearchResultAtIndex:(unsigned long long)arg1;
 - (void)goToPageIndex:(long long)arg1;
@@ -50,11 +49,9 @@
 - (void)setDocumentData:(id)arg1;
 - (void)setMaximumZoomScale:(double)arg1;
 - (void)setMinimumZoomScale:(double)arg1;
-- (void)setScrollViewFrame:(struct CGRect)arg1;
-- (void)setup;
 - (void)setupPDFView;
 - (void)unlockWithPassword:(id)arg1;
-- (void)updatePDFViewLayout:(struct CGRect)arg1 boundsInView:(struct CGRect)arg2 scrollViewFrame:(struct CGRect)arg3 zoomScale:(double)arg4;
+- (void)updatePDFViewLayout:(struct CGRect)arg1 scrollViewFrame:(struct CGRect)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3 zoomScale:(double)arg4;
 - (void)viewDidLoad;
 
 @end

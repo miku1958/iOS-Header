@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
     BOOL _cacheIsValid;
     int _cachedVerticalAlignment;
     int _cachedParagraphAlignment;
-    unsigned int _cachedAutoSizeFlags;
     struct TSUCellCoord _cachedCellID;
     TSTCellStyle *_cachedCellStyle;
     TSWPParagraphStyle *_cachedTextStyle;
+    unsigned long long _cachedAutoSizeFlags;
     TSWPPadding *_cachedPadding;
     struct TSUCellRect _cachedMergeRange;
     struct TSUCellRect _cachedMaskSpillRange;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) BOOL cacheIsValid; // @synthesize cacheIsValid=_cacheIsValid;
-@property (nonatomic) unsigned int cachedAutoSizeFlags; // @synthesize cachedAutoSizeFlags=_cachedAutoSizeFlags;
+@property (nonatomic) unsigned long long cachedAutoSizeFlags; // @synthesize cachedAutoSizeFlags=_cachedAutoSizeFlags;
 @property (nonatomic) struct CGRect cachedAutosizedFrame; // @synthesize cachedAutosizedFrame=_cachedAutosizedFrame;
 @property (nonatomic) struct TSUCellCoord cachedCellID; // @synthesize cachedCellID=_cachedCellID;
 @property (strong, nonatomic) TSTCellStyle *cachedCellStyle; // @synthesize cachedCellStyle=_cachedCellStyle;

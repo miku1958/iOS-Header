@@ -19,6 +19,7 @@
     NSString *_platform;
     long long _signatureType;
     long long _version;
+    NSString *_language;
 }
 
 @property (strong, nonatomic) NSString *caller; // @synthesize caller=_caller;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) id<AMSLookupBagContract> contract; // @synthesize contract=_contract;
 @property (strong, nonatomic) NSString *imageProfile; // @synthesize imageProfile=_imageProfile;
 @property (strong, nonatomic) NSString *keyProfile; // @synthesize keyProfile=_keyProfile;
+@property (strong, nonatomic) NSString *language; // @synthesize language=_language;
 @property (strong, nonatomic) NSString *platform; // @synthesize platform=_platform;
 @property (nonatomic) long long signatureType; // @synthesize signatureType=_signatureType;
 @property (nonatomic) long long version; // @synthesize version=_version;

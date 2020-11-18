@@ -12,8 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)arraySegmentClass;
-- (id)convertElementToSegmentElement:(id)arg1;
-- (id)convertSegmentElementToElement:(id)arg1;
+- (void)addObjectsFromArray:(id)arg1;
 - (void)loadFromMessage:(const struct LargeObjectArray *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;

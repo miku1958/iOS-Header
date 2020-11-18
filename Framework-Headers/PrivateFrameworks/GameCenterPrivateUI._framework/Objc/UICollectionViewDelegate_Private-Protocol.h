@@ -7,12 +7,13 @@
 #import <GameCenterPrivateUI/UICollectionViewDelegate-Protocol.h>
 #import <GameCenterPrivateUI/UICollectionViewFocusDelegate_Legacy-Protocol.h>
 
-@class NSIndexPath, NSString, UICollectionView, UICollectionViewCell;
+@class NSIndexPath, NSString, UICollectionView, UICollectionViewCell, _UIFocusFastScrollingIndexBarEntry, _UIHorizontalIndexTitleBar;
 @protocol UISpringLoadedInteractionContext;
 
 @protocol UICollectionViewDelegate_Private <UICollectionViewDelegate, UICollectionViewFocusDelegate_Legacy>
 
 @optional
+- (void)_collectionView:(UICollectionView *)arg1 horizontalIndexTitleBar:(_UIHorizontalIndexTitleBar *)arg2 selectedEntry:(_UIFocusFastScrollingIndexBarEntry *)arg3;
 - (BOOL)_collectionView:(UICollectionView *)arg1 shouldApplyTransitionContentOffset:(struct CGPoint)arg2 contentSize:(struct CGSize)arg3;
 - (BOOL)_collectionView:(UICollectionView *)arg1 shouldSpringLoadItemAtIndexPath:(NSIndexPath *)arg2 withContext:(id<UISpringLoadedInteractionContext>)arg3;
 - (struct CGPoint)_collectionView:(UICollectionView *)arg1 targetContentOffsetForProposedContentOffset:(struct CGPoint)arg2;

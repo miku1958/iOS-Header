@@ -18,6 +18,8 @@
 - (id)hf_characteristicOfType:(id)arg1;
 - (id)hf_childServices;
 - (id)hf_childServicesOfType:(id)arg1;
+- (id)hf_defaultName;
+- (id)hf_editingName;
 - (id)hf_effectiveServiceSubtype;
 - (id)hf_effectiveServiceType;
 - (id)hf_iconDescriptor;

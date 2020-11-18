@@ -11,8 +11,6 @@
 @property (readonly, copy, nonatomic) NSString *safari_stringByRemovingExcessWhitespace;
 
 + (id)safari_localizedStringFromComponents:(id)arg1 usingConjunctionForFinalJoiner:(BOOL)arg2;
-+ (id)safari_stringAsHexWithBuffer:(const char *)arg1 length:(unsigned long long)arg2;
-+ (id)safari_stringAsHexWithData:(id)arg1;
 + (id)safari_stringByBase64EncodingData:(id)arg1;
 + (id)safari_stringWithJSValue:(struct OpaqueJSValue *)arg1 context:(struct OpaqueJSContext *)arg2;
 + (id)safari_stringWithJSValue:(struct OpaqueJSValue *)arg1 context:(struct OpaqueJSContext *)arg2 nullStringPolicy:(long long)arg3;
@@ -20,6 +18,7 @@
 - (id)safari_bestLanguageTag;
 - (id)safari_bestURLForUserTypedString;
 - (id)safari_bestURLStringForUserTypedString;
+- (id)safari_canonicalURLForFrequentlyVisitedSites;
 - (id)safari_canonicalURLStringForFrequentlyVisitedSites;
 - (id)safari_containedURLs;
 - (void)safari_enumerateSubdomainRangesInHostUsingBlock:(CDUnknownBlockType)arg1;

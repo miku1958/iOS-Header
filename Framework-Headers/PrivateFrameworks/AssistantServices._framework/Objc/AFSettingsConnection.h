@@ -27,6 +27,7 @@
 - (id)_connection;
 - (void)_fetchPeerData:(CDUnknownBlockType)arg1;
 - (id)_filterVoices:(id)arg1 forLanguage:(id)arg2;
+- (void)_getSharedCompanionInfo:(CDUnknownBlockType)arg1;
 - (void)_runServiceMaintenance;
 - (void)_setSyncNeededForReason:(id)arg1;
 - (void)_setSyncVerificationNeededAndFullReportNeeded:(BOOL)arg1 shouldPostNotification:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
@@ -51,14 +52,20 @@
 - (void)fetchExperimentConfigurationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchExperimentContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSupportedLanguageCodes:(CDUnknownBlockType)arg1;
+- (void)forceMultiUserSync:(BOOL)arg1 download:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getAvailableVoicesForLanguage:(id)arg1 includeAssetInfo:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getAvailableVoicesForRecognitionLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAvailableVoicesForRecognitionLanguage:(id)arg1 includeAssetInfo:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getAvailableVoicesForSynthesisLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getBluetoothDeviceWithAddress:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getBluetoothDeviceWithUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getConnectedBluetoothDeviceInfoArrayWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getDevicesWithAvailablePHSAssetsForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getHorsemanSupplementalLanguageDictionary:(CDUnknownBlockType)arg1;
 - (void)getOfflineDictationStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getPairedBluetoothDeviceInfoArrayWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPeerIdentifiers:(CDUnknownBlockType)arg1;
+- (void)getSiriOutputVolumeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getStereoPairState:(CDUnknownBlockType)arg1;
 - (void)getStereoPartnerLastMyriadWinDate:(CDUnknownBlockType)arg1;
 - (void)getSupplementalLanguageDictionaryForProduct:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -81,6 +88,7 @@
 - (void)setOfflineDictationProfileOverridePath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setOutputVoice:(id)arg1;
 - (void)setOutputVoice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)setSiriOutputVolume:(float)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSupplementalLanguageDictionary:(id)arg1 forProduct:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setSupplementalLanguages:(id)arg1 forProduct:(id)arg2 forBuildVersion:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)startAudioPlaybackRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

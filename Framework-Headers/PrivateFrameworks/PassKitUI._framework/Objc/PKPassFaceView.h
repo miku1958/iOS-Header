@@ -10,7 +10,6 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
 @class CAFilter, NSArray, NSMutableArray, NSMutableSet, NSString, PKLiveRenderedCardFaceView, PKPass, PKPassColorProfile, PKPassFaceTemplate, PKPaymentService, UIImage, UIImageView, UIView;
-@protocol PKPassFaceDelegate;
 
 @interface PKPassFaceView : WLEasyToHitCustomView <PKPaymentServiceDelegate, PKForegroundActiveArbiterObserver>
 {
@@ -33,16 +32,17 @@
     double _dimmer;
     NSMutableArray *_headerBucketViews;
     NSMutableArray *_bodyBucketViews;
+    NSMutableArray *_delayedAnimations;
     PKLiveRenderedCardFaceView *_liveBackgroundView;
     unsigned long long _contentViewCreatedRegions;
     unsigned long long _invariantViewCreatedRegions;
     BOOL _showsLiveRendering;
     BOOL _foregroundActive;
     PKPaymentService *_paymentService;
+    BOOL _invalidated;
     BOOL _clipsContent;
     BOOL _allowBackgroundPlaceHolders;
     BOOL _liveMotionEnabled;
-    id<PKPassFaceDelegate> _delegate;
     long long _backgroundMode;
     unsigned long long _visibleRegions;
     double _clippedContentHeight;
@@ -62,13 +62,13 @@
 @property (readonly, nonatomic) struct CGSize contentSize;
 @property (readonly, nonatomic) UIView *contentView;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKPassFaceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PKPassFaceTemplate *faceTemplate; // @synthesize faceTemplate=_faceTemplate;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *headerBucketViews; // @synthesize headerBucketViews=_headerBucketViews;
 @property (nonatomic) BOOL liveMotionEnabled; // @synthesize liveMotionEnabled=_liveMotionEnabled;
 @property (readonly, nonatomic) PKPass *pass;
+@property (nonatomic, getter=isPaused) BOOL paused;
 @property (readonly, nonatomic) struct UIEdgeInsets shadowInsets;
 @property (nonatomic) BOOL showsLiveRendering;
 @property (nonatomic) long long style; // @synthesize style=_style;
@@ -104,6 +104,7 @@
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)insertContentView:(id)arg1 ofType:(long long)arg2;
+- (void)invalidate;
 - (void)layoutSubviews;
 - (id)passFaceTemplate;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;

@@ -14,11 +14,12 @@
 + (void)_stopWaitingForLibraryToBeReadyForCPLManager;
 + (void)disableCPL:(CDUnknownBlockType)arg1;
 + (void)enableCPL:(CDUnknownBlockType)arg1;
-+ (void)initializeCPLManager;
 + (void)pauseCloudPhotos:(BOOL)arg1 reason:(short)arg2;
 + (void)performOnceLibraryIsReadyForCPLManager:(CDUnknownBlockType)arg1;
 + (void)processCloudPhotosLibraryStateChange:(BOOL)arg1;
++ (void)setShouldRepushVideoAssetsMetadataOnce:(BOOL)arg1;
 + (void)setShouldSendOptimizeFeedbackOnce:(BOOL)arg1;
++ (BOOL)shouldRepushVideoAssetsMetadataOnce;
 + (BOOL)shouldSendOptimizeFeedbackOnce;
 
 @end

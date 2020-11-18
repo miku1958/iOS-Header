@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)adjustRangesByDelta:(long long)arg1 startingAt:(unsigned long long)arg2;
 - (id)attachmentAtCharIndex:(unsigned long long)arg1;
 - (id)attachmentOrFootnoteAtCharIndex:(unsigned long long)arg1;
-- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(BOOL [21])arg2 attributesTable:(id [21])arg3 effectiveRange:(struct _NSRange *)arg4;
+- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(BOOL [22])arg2 attributesTable:(id [22])arg3 effectiveRange:(struct _NSRange *)arg4;
 - (unsigned long long)changeCount;
 - (unsigned long long)charIndexMappedFromStorage:(unsigned long long)arg1;
 - (unsigned long long)charIndexMappedToStorage:(unsigned long long)arg1;
@@ -39,8 +39,8 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)charRangeRemappedFromStorage:(struct _NSRange)arg1;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (id)characterStyleAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
-- (void)enumerateSmartFieldsWithAttributeKind:(int)arg1 inRange:(struct _NSRange)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)enumerateWithAttributeKind:(int)arg1 inRange:(struct _NSRange)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateSmartFieldsWithAttributeKind:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateWithAttributeKind:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)footnoteReferenceAtCharIndex:(unsigned long long)arg1;
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (BOOL)hasColumnBreakAtCharIndex:(unsigned long long)arg1;
@@ -52,13 +52,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)isWritingDirectionRightToLeftForParagraphAtCharIndex:(unsigned long long)arg1;
 - (unsigned long long)length;
 - (unsigned long long)nextCharacterIndex:(unsigned long long)arg1;
-- (id)objectAtLocationPriorToMappedCharIndex:(unsigned long long)arg1 forAttributeKind:(int)arg2 effectiveRange:(struct _NSRange *)arg3;
+- (id)objectAtLocationPriorToMappedCharIndex:(unsigned long long)arg1 forAttributeKind:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (id)paragraphStyleAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (unsigned long long)previousCharacterIndex:(unsigned long long)arg1;
 - (struct _NSRange)rangeForSelectionAtCharIndex:(unsigned long long)arg1 caretIndex:(unsigned long long)arg2;
 - (struct _NSRange)scanBackwardForWordAtCharIndex:(unsigned long long)arg1;
-- (id)smartFieldAtCharIndex:(unsigned long long)arg1 attributeKind:(int)arg2 effectiveRange:(struct _NSRange *)arg3;
-- (id)smartFieldsWithAttributeKind:(int)arg1 intersectingRange:(struct _NSRange)arg2;
+- (id)smartFieldAtCharIndex:(unsigned long long)arg1 attributeKind:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
+- (id)smartFieldsWithAttributeKind:(unsigned long long)arg1 intersectingRange:(struct _NSRange)arg2;
 - (unsigned long long)storageLength;
 - (id)string;
 - (id)substringWithRange:(struct _NSRange)arg1;

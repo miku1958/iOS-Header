@@ -10,9 +10,13 @@
 {
 }
 
++ (id)_addPrefix:(id)arg1 toKeysInDictionary:(id)arg2;
++ (double)_getDateMedian:(id)arg1 fromStartDate:(id)arg2 forCameraCapture:(BOOL)arg3;
++ (id)_performMedianCalculation:(id)arg1;
 + (void)performAnalysisStateLogging:(id)arg1;
++ (void)performCMMSummaryLogging:(id)arg1;
 + (void)performCollectionsStaticsLogging:(id)arg1;
-+ (void)performHyperionLocalResourcesLogging:(CDUnknownBlockType)arg1;
++ (void)performHyperionLocalResourcesLogging:(CDUnknownBlockType)arg1 inManagedObjectContext:(id)arg2;
 + (void)performLibraryStatisticsLogging:(CDUnknownBlockType)arg1;
 + (void)performLibrarySummaryLogging:(id)arg1;
 + (void)performMomentsStatisticsLogging:(id)arg1;

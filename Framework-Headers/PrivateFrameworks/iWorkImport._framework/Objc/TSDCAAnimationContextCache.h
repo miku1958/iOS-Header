@@ -13,19 +13,23 @@
 __attribute__((visibility("hidden")))
 @interface TSDCAAnimationContextCache : NSObject <TSDCAAnimationContextCacheProtocol>
 {
+    BOOL _autoreverses;
     CAMediaTimingFunction *_timingFunction;
     double _beginTime;
     double _timeOffset;
     double _duration;
     NSString *_fillMode;
+    double _repeatCount;
 }
 
+@property (readonly, nonatomic) BOOL autoreverses; // @synthesize autoreverses=_autoreverses;
 @property (readonly, nonatomic) double beginTime; // @synthesize beginTime=_beginTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) NSString *fillMode; // @synthesize fillMode=_fillMode;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double repeatCount; // @synthesize repeatCount=_repeatCount;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeOffset; // @synthesize timeOffset=_timeOffset;
 @property (readonly, nonatomic) CAMediaTimingFunction *timingFunction; // @synthesize timingFunction=_timingFunction;
@@ -34,9 +38,11 @@ __attribute__((visibility("hidden")))
 - (double)animationPercentFromAnimationTime:(double)arg1;
 - (id)initWithAnimation:(id)arg1;
 - (double)percentAtTime:(double)arg1;
+- (BOOL)shouldUseInitialValueAtAnimationTime:(double)arg1;
 - (id)valueAtTime:(double)arg1 initialValue:(id)arg2;
 - (id)valueAtTime:(double)arg1 initialValue:(id)arg2 groupTimingFactor:(double)arg3;
 - (id)valueForKeyPath:(id)arg1 atTime:(double)arg2 animationCache:(id)arg3;
+- (double)workingPercentFromAnimationTime:(double)arg1;
 
 @end
 

@@ -11,8 +11,10 @@
 @interface NSHTTPCookieStorage : NSObject
 {
     NSHTTPCookieStorageInternal *_internal;
+    BOOL __overrideSessionCookieAcceptPolicy;
 }
 
+@property (nonatomic) BOOL _overrideSessionCookieAcceptPolicy; // @synthesize _overrideSessionCookieAcceptPolicy=__overrideSessionCookieAcceptPolicy;
 @property unsigned long long cookieAcceptPolicy;
 @property (readonly, copy) NSArray *cookies;
 

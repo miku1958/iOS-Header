@@ -39,6 +39,7 @@
 - (void)removeAllExclusionPaths;
 - (void)reset;
 - (id)textLayout;
+- (struct CGRect)typographicBounds;
 - (struct _NSRange)validAnchorRangeForRange:(struct _NSRange)arg1;
 - (double)verticalLocationOfCharacterAtIndex:(unsigned long long)arg1;
 - (id)wpLayout;

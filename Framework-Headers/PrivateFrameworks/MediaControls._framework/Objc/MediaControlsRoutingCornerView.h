@@ -10,12 +10,12 @@
 {
     BOOL _routesAvailable;
     BOOL _routing;
-    BOOL _shouldPauseAnimations;
+    long long _deviceType;
 }
 
+@property (nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 @property (nonatomic, getter=routesAreAvailable) BOOL routesAvailable; // @synthesize routesAvailable=_routesAvailable;
 @property (nonatomic, getter=isRouting) BOOL routing; // @synthesize routing=_routing;
-@property (nonatomic) BOOL shouldPauseAnimations; // @synthesize shouldPauseAnimations=_shouldPauseAnimations;
 
 - (void)_updateGlyph;
 - (id)initWithFrame:(struct CGRect)arg1;

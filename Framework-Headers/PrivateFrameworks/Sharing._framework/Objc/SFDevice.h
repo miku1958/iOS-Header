@@ -29,6 +29,8 @@
     BOOL _paired;
     unsigned int _deviceFlags;
     unsigned int _systemPairState;
+    unsigned int _hotspotInfo;
+    NSString *_accountID;
     NSArray *_batteryInfo;
     SFBLEDevice *_bleDevice;
     NSString *_contactIdentifier;
@@ -42,6 +44,7 @@
     NSString *_requestSSID;
 }
 
+@property (copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 @property (nonatomic) BOOL autoUnlockEnabled; // @synthesize autoUnlockEnabled=_autoUnlockEnabled;
 @property (nonatomic) BOOL autoUnlockWatch; // @synthesize autoUnlockWatch=_autoUnlockWatch;
 @property (copy, nonatomic) NSArray *batteryInfo; // @synthesize batteryInfo=_batteryInfo;
@@ -55,6 +58,7 @@
 @property (nonatomic) long long distance; // @synthesize distance=_distance;
 @property (readonly, nonatomic) BOOL duetSync; // @synthesize duetSync=_duetSync;
 @property (nonatomic) BOOL hasProblem; // @synthesize hasProblem=_hasProblem;
+@property (nonatomic) unsigned int hotspotInfo; // @synthesize hotspotInfo=_hotspotInfo;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;

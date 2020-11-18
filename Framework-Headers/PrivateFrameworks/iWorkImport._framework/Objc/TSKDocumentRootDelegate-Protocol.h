@@ -6,23 +6,26 @@
 
 #import <iWorkImport/TSKAccessControllerDelegate-Protocol.h>
 
-@class NSObject, NSString, NSURL, SFUCryptoKey, TSKDocumentRoot, TSKSharingState, TSPDocumentRevision, TSPObjectContext;
-@protocol NSFilePresenter, OS_dispatch_queue, TSKDocumentInfo, TSULogContext, TSUTraceableResourceToken;
+@class NSURL, SFUCryptoKey, TSKCommandExecutor, TSKDocumentRoot, TSKSharingState, TSUDocumentSerializationToken;
+@protocol NSFilePresenter, TSKCollaborationCommandReceiver, TSKCollaborationSessionContext, TSKDocumentInfo, TSULogContext;
 
 @protocol TSKDocumentRootDelegate <TSKAccessControllerDelegate>
 
 @property (readonly, nonatomic) id<NSFilePresenter> cloudFilePresenter;
-@property (readonly, strong, nonatomic) SFUCryptoKey *encryptionKey;
+@property (readonly, nonatomic) id<TSKCollaborationSessionContext> collaborationSessionContext;
+@property (readonly, strong) SFUCryptoKey *encryptionKey;
 @property (readonly, nonatomic) NSURL *fileURL;
 @property (readonly, nonatomic) id<TSULogContext> logContext;
+@property (readonly, nonatomic) struct __CFRunLoop *primaryRunLoop;
+@property (readonly, nonatomic) BOOL shouldInitiallySuspendCollaborationSessionForOfflineCatchUp;
 @property (readonly, nonatomic) id<TSKDocumentInfo> tskDocumentInfo;
 
 
 @optional
-- (void)documentRoot:(TSKDocumentRoot *)arg1 didUpdateDocumentRevision:(TSPDocumentRevision *)arg2;
-- (void)documentRootDidRollbackOfflineCommands:(TSKDocumentRoot *)arg1;
-- (void)refreshSharingStateWithReason:(NSString *)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2 completionBlock:(void (^)(TSKSharingState *, NSError *))arg3;
-- (TSKSharingState *)sharingStateForContext:(TSPObjectContext *)arg1;
-- (void)sharingStateRefreshed:(TSKSharingState *)arg1 isUserInitiated:(BOOL)arg2 isContinuingActivity:(BOOL)arg3 serializationToken:(id<TSUTraceableResourceToken>)arg4 completionBlock:(void (^)(void))arg5;
+- (id<TSKCollaborationCommandReceiver>)commandReceiverWithExecutor:(TSKCommandExecutor *)arg1;
+- (void)documentRootDidRollbackBlockedCommands:(TSKDocumentRoot *)arg1;
+- (unsigned long long)documentType;
+- (TSKSharingState *)sharingState;
+- (void)sharingStateRefreshed:(TSKSharingState *)arg1 isUserInitiated:(BOOL)arg2 parentDocumentSerializationToken:(TSUDocumentSerializationToken *)arg3 completionBlock:(void (^)(void))arg4;
 @end
 

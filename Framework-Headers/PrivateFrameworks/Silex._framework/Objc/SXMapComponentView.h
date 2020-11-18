@@ -10,12 +10,14 @@
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
 @class MKMapView, NSArray, NSMutableDictionary, NSString, SXMapSnapShotter, SXMediaEngageEvent, UIBarButtonItem, UIImageView, UISegmentedControl, UITapGestureRecognizer, UIViewController;
+@protocol SXDocumentTitleProviding;
 
 @interface SXMapComponentView : SXMediaComponentView <UIGestureRecognizerDelegate, MKMapViewDelegate>
 {
     MKMapView *_mapView;
     UITapGestureRecognizer *_tapGesture;
     NSArray *_annotations;
+    id<SXDocumentTitleProviding> _documentTitleProvider;
     UIBarButtonItem *_doneBarButtonItem;
     UIViewController *_fullScreenCanvasViewController;
     UISegmentedControl *_segmentedControl;
@@ -35,6 +37,7 @@
 @property (strong, nonatomic) NSMutableDictionary *cachedSnapshots; // @synthesize cachedSnapshots=_cachedSnapshots;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<SXDocumentTitleProviding> documentTitleProvider; // @synthesize documentTitleProvider=_documentTitleProvider;
 @property (strong, nonatomic) UIBarButtonItem *doneBarButtonItem; // @synthesize doneBarButtonItem=_doneBarButtonItem;
 @property (strong, nonatomic) UIViewController *fullScreenCanvasViewController; // @synthesize fullScreenCanvasViewController=_fullScreenCanvasViewController;
 @property (readonly) unsigned long long hash;
@@ -65,7 +68,7 @@
 - (void)handleDoneTap:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (BOOL)hasSelectedAnnotations;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 documentTitleProvider:(id)arg7;
 - (BOOL)isPresentingFullscreen;
 - (BOOL)isUserInteractingWithMap;
 - (id)mapTitle;

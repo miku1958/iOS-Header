@@ -13,17 +13,21 @@
 @interface AWDHomeKitTargetControllerCommand : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
+    int _certified;
     int _command;
     int _transportType;
     AWDHomeKitVendorInformation *_vendorDetails;
     struct {
         unsigned int timestamp:1;
+        unsigned int certified:1;
         unsigned int command:1;
         unsigned int transportType:1;
     } _has;
 }
 
+@property (nonatomic) int certified; // @synthesize certified=_certified;
 @property (nonatomic) int command; // @synthesize command=_command;
+@property (nonatomic) BOOL hasCertified;
 @property (nonatomic) BOOL hasCommand;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasTransportType;
@@ -33,8 +37,10 @@
 @property (strong, nonatomic) AWDHomeKitVendorInformation *vendorDetails; // @synthesize vendorDetails=_vendorDetails;
 
 - (void).cxx_destruct;
+- (int)StringAsCertified:(id)arg1;
 - (int)StringAsCommand:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
+- (id)certifiedAsString:(int)arg1;
 - (id)commandAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

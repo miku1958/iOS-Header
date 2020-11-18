@@ -28,6 +28,7 @@
     BOOL _urlKnownToBeTrusted;
     BOOL _useUserSpecificURLBag;
     BOOL _needsTermsAndConditionsAcceptance;
+    BOOL _shouldCancelBiometricTokenUpdate;
     BOOL _shouldSuppressUserInfo;
     BOOL _shouldSendAKClientInfoHeaders;
     BOOL _shouldSendDSIDHeader;
@@ -56,6 +57,7 @@
 @property BOOL performsMachineDataActions;
 @property (nonatomic) BOOL shouldAppendAuthKitHeaders; // @synthesize shouldAppendAuthKitHeaders=_shouldAppendAuthKitHeaders;
 @property (nonatomic) BOOL shouldAppendStorefrontToURL; // @synthesize shouldAppendStorefrontToURL=_shouldAppendStorefrontToURL;
+@property BOOL shouldCancelBiometricTokenUpdate; // @synthesize shouldCancelBiometricTokenUpdate=_shouldCancelBiometricTokenUpdate;
 @property BOOL shouldSendAKClientInfoHeaders; // @synthesize shouldSendAKClientInfoHeaders=_shouldSendAKClientInfoHeaders;
 @property BOOL shouldSendDSIDHeader; // @synthesize shouldSendDSIDHeader=_shouldSendDSIDHeader;
 @property BOOL shouldSendXTokenHeader;

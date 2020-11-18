@@ -29,6 +29,7 @@
 - (id)activeSectionInfo;
 - (id)allSectionInfo;
 - (void)dealloc;
+- (id)effectiveSectionInfoForSectionID:(id)arg1;
 - (void)getEffectiveGlobalContentPreviewsSettingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getEffectiveSectionInfoForSectionID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getEffectiveSectionInfoForSectionIDs:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

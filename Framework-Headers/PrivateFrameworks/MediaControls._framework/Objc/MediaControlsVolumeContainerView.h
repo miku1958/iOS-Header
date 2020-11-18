@@ -8,14 +8,16 @@
 
 #import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
 
-@class MPVolumeSlider, NSString;
+@class MPVolumeSlider, MediaControlsRelativeVolumeStepper, NSString;
 
 @interface MediaControlsVolumeContainerView : UIView <UIGestureRecognizerDelegate>
 {
     BOOL _transitioning;
     BOOL _onScreen;
+    unsigned int _volumeCapabilities;
     MPVolumeSlider *_volumeSlider;
     long long _style;
+    MediaControlsRelativeVolumeStepper *_volumeStepper;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,10 +27,14 @@
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isTransitioning) BOOL transitioning; // @synthesize transitioning=_transitioning;
+@property (nonatomic) unsigned int volumeCapabilities; // @synthesize volumeCapabilities=_volumeCapabilities;
 @property (strong, nonatomic) MPVolumeSlider *volumeSlider; // @synthesize volumeSlider=_volumeSlider;
+@property (strong, nonatomic) MediaControlsRelativeVolumeStepper *volumeStepper; // @synthesize volumeStepper=_volumeStepper;
 
 - (void).cxx_destruct;
+- (void)_updateVolumeCapabilities;
 - (void)_updateVolumeStyle;
+- (void)dealloc;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;

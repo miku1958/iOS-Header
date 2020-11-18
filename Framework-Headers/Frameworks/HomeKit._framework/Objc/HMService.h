@@ -16,8 +16,10 @@
 @interface HMService : NSObject <HMFLogging, NSSecureCoding, HMObjectMerge, HMMutableApplicationData>
 {
     HMFUnfairLock *_lock;
+    BOOL _nameModifiable;
     BOOL _userInteractive;
     BOOL _primaryService;
+    BOOL _mediaSourceDisplayOrderModifiable;
     NSUUID *_uniqueIdentifier;
     HMAccessory *_accessory;
     NSString *_serviceType;
@@ -30,11 +32,14 @@
     HMApplicationData *_applicationData;
     HMBulletinBoardNotification *_bulletinBoardNotificationInternal;
     NSURL *_homeObjectURLInternal;
+    NSNumber *_mediaSourceIdentifier;
     _HMContext *_context;
     NSNumber *_instanceID;
-    NSArray *_linkedServiceInstanceIDs;
     HMMutableArray *_currentCharacteristics;
+    NSNumber *_lastKnownDiscoveryMode;
     NSUUID *_uuid;
+    NSArray *_linkedServiceInstanceIDs;
+    NSArray *_mediaSourceDisplayOrder;
 }
 
 @property (weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
@@ -52,10 +57,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSURL *homeObjectURLInternal; // @synthesize homeObjectURLInternal=_homeObjectURLInternal;
 @property (readonly, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
+@property (copy, nonatomic) NSNumber *lastKnownDiscoveryMode; // @synthesize lastKnownDiscoveryMode=_lastKnownDiscoveryMode;
 @property (readonly, copy, nonatomic) NSArray *linkedServiceInstanceIDs; // @synthesize linkedServiceInstanceIDs=_linkedServiceInstanceIDs;
 @property (readonly, copy, nonatomic) NSArray *linkedServices;
 @property (readonly, copy, nonatomic) NSString *localizedDescription;
+@property (strong, nonatomic) NSArray *mediaSourceDisplayOrder; // @synthesize mediaSourceDisplayOrder=_mediaSourceDisplayOrder;
+@property (nonatomic) BOOL mediaSourceDisplayOrderModifiable; // @synthesize mediaSourceDisplayOrderModifiable=_mediaSourceDisplayOrderModifiable;
+@property (strong, nonatomic) NSNumber *mediaSourceIdentifier; // @synthesize mediaSourceIdentifier=_mediaSourceIdentifier;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property BOOL nameModifiable; // @synthesize nameModifiable=_nameModifiable;
 @property (readonly, nonatomic, getter=isPrimaryService) BOOL primaryService; // @synthesize primaryService=_primaryService;
 @property (copy, nonatomic) NSString *serviceSubtype; // @synthesize serviceSubtype=_serviceSubtype;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
@@ -74,8 +84,10 @@
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 accessory:(id)arg2;
 - (void)_addCharacteristic:(id)arg1;
+- (void)_addLastKnownSleepDiscoveryModeDidUpdateDelegateCallbackToOperations:(id)arg1;
 - (id)_findCharacteristic:(id)arg1;
 - (void)_handleMarkServiceInteractive:(id)arg1;
+- (void)_handleMediaSourceIdentifierUpdated:(id)arg1;
 - (void)_handleUpdateAssociatedServiceType:(id)arg1;
 - (void)_handleUpdateConfigurationState:(long long)arg1;
 - (void)_handleUpdateConfiguredName:(id)arg1;
@@ -92,10 +104,13 @@
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)bulletinBoardNotification;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasSleepDiscoveryMode;
 - (id)homeObjectURL;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isNameModifiable;
+- (long long)lastKnownSleepDiscoveryMode;
 - (id)logIdentifier;
 - (void)setApplicationData:(id)arg1;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

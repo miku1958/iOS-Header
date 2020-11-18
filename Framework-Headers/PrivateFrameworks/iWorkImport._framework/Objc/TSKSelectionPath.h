@@ -11,15 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface TSKSelectionPath : NSObject
 {
-    NSArray *mCurrentSelection;
+    NSArray *_currentSelection;
 }
 
 @property (readonly, nonatomic) NSString *UUIDDescription;
 @property (readonly, nonatomic) NSArray *orderedSelections;
 
 + (id)selectionPathWithSelectionArray:(id)arg1;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)enumerateSelectionsLeastToMostSpecificInPathUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSelectionsMostToLeastSpecificInPathUsingBlock:(CDUnknownBlockType)arg1;

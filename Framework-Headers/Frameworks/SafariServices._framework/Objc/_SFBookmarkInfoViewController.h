@@ -18,6 +18,7 @@
 {
     WebBookmarkCollection *_collection;
     WebBookmark *_parentBookmark;
+    NSArray *_childBookmarks;
     BOOL _addingBookmark;
     BOOL _saveWhenDismissed;
     _SFBookmarkTextEntryTableViewCell *_titleCell;
@@ -35,7 +36,7 @@
     WebBookmark *_bookmark;
 }
 
-@property (strong, nonatomic) WebBookmark *bookmark; // @synthesize bookmark=_bookmark;
+@property (copy, nonatomic) WebBookmark *bookmark; // @synthesize bookmark=_bookmark;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_SFBookmarkInfoViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -81,9 +82,8 @@
 - (void)dealloc;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;
 - (BOOL)hasTranslucentAppearance;
+- (id)initWithBookmark:(id)arg1 childBookmarks:(id)arg2 inCollection:(id)arg3 addingBookmark:(BOOL)arg4 toFavorites:(BOOL)arg5 willBeDisplayedModally:(BOOL)arg6;
 - (id)initWithBookmark:(id)arg1 inCollection:(id)arg2 addingBookmark:(BOOL)arg3;
-- (id)initWithBookmark:(id)arg1 inCollection:(id)arg2 addingBookmark:(BOOL)arg3 toFavorites:(BOOL)arg4 willBeDisplayedModally:(BOOL)arg5;
-- (id)initWithBookmarkForFavorites:(id)arg1 inCollection:(id)arg2 addingBookmark:(BOOL)arg3;
 - (BOOL)isEditingField;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;

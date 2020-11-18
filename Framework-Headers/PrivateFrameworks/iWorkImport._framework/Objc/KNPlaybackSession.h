@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSDAnimationSession-Protocol.h>
 
-@class CALayer, KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationTestResultLogger, KNShow, KNSlideNode, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSDMetalLayer, TSKAccessController;
+@class CALayer, KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationTestResultLogger, KNShow, KNSlideNode, NSArray, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSDMetalLayer, TSKAccessController;
 @protocol MTLDevice, TSDCanvasDelegate, TSKAccessControllerReadTicket;
 
 __attribute__((visibility("hidden")))
@@ -16,9 +16,10 @@ __attribute__((visibility("hidden")))
 {
     KNSlideNode *_currentSlideNode;
     BOOL _hasEndShowHandlerBeenCancelled;
-    BOOL _isMetalEnabled;
-    BOOL _isMetalCapable;
-    BOOL _isMetalCapableCheckInitialized;
+    unsigned int _isMetalEnabledByCaller:1;
+    unsigned int _isMetalCapable:1;
+    unsigned int _isMetalCapableCheckInitialized:1;
+    unsigned int _isDiscreteGPUAcquired:1;
     CALayer *_noMetalBadgeLayer;
     BOOL _disableAutoAnimationRemoval;
     BOOL _disableTransitionTextureCaching;
@@ -37,7 +38,8 @@ __attribute__((visibility("hidden")))
     BOOL _shouldUseContentlessLayers;
     BOOL _shouldUseSourceImage;
     BOOL _shouldSkipBuilds;
-    BOOL _shouldPlaySkippedSlides;
+    BOOL _shouldRespectSkippedSlides;
+    BOOL _shouldAlwaysLoop;
     BOOL _shouldPreserveTransparency;
     BOOL _shouldExcludeFloatingComments;
     id<TSKAccessControllerReadTicket> _accessControllerReadTicket;
@@ -55,6 +57,7 @@ __attribute__((visibility("hidden")))
     id<MTLDevice> _metalDevice;
     TSDMetalLayer *_sharedMetalLayer;
     KNShow *_show;
+    NSArray *_slideNodesWithinPlayableRange;
     TSDGLLayer *_sharedGLLayer;
     NSMutableArray *_animationDurationArray;
     NSMutableArray *_eventDurationArray;
@@ -71,7 +74,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *animationDurationArray; // @synthesize animationDurationArray=_animationDurationArray;
 @property (strong, nonatomic) NSMutableArray *animationStringArray; // @synthesize animationStringArray=_animationStringArray;
 @property (readonly, nonatomic) KNAnimationTestResultLogger *animationTestResultLogger; // @synthesize animationTestResultLogger=_animationTestResultLogger;
-@property (readonly, nonatomic) BOOL atBegginingOfDeck;
+@property (readonly, nonatomic) BOOL atBeginningOfDeck;
 @property (readonly, nonatomic) BOOL atEndOfDeck;
 @property (nonatomic) TSDBitmapRenderingQualityInfo *bitmapRenderingQualityInfo; // @synthesize bitmapRenderingQualityInfo=_bitmapRenderingQualityInfo;
 @property (strong, nonatomic) NSMutableArray *breadCrumbTrail; // @synthesize breadCrumbTrail=_breadCrumbTrail;
@@ -93,9 +96,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isWideGamut;
 @property (readonly, nonatomic) id<MTLDevice> metalDevice; // @synthesize metalDevice=_metalDevice;
 @property (nonatomic) long long playMode; // @synthesize playMode=_playMode;
+@property (readonly, nonatomic) NSArray *playableSlideNodes;
 @property (readonly, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 @property (strong, nonatomic) TSDGLLayer *sharedGLLayer; // @synthesize sharedGLLayer=_sharedGLLayer;
 @property (strong, nonatomic) TSDMetalLayer *sharedMetalLayer; // @synthesize sharedMetalLayer=_sharedMetalLayer;
+@property (nonatomic) BOOL shouldAlwaysLoop; // @synthesize shouldAlwaysLoop=_shouldAlwaysLoop;
 @property (nonatomic) BOOL shouldAlwaysSetCurrentGLContextWhenDrawing; // @synthesize shouldAlwaysSetCurrentGLContextWhenDrawing=_shouldAlwaysSetCurrentGLContextWhenDrawing;
 @property (nonatomic) BOOL shouldAnimateNullTransitions; // @synthesize shouldAnimateNullTransitions=_shouldAnimateNullTransitions;
 @property (nonatomic) BOOL shouldAnimateTransitionOnLastSlide; // @synthesize shouldAnimateTransitionOnLastSlide=_shouldAnimateTransitionOnLastSlide;
@@ -104,9 +109,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldExcludeFloatingComments; // @synthesize shouldExcludeFloatingComments=_shouldExcludeFloatingComments;
 @property (nonatomic) BOOL shouldForceTextureGeneration; // @synthesize shouldForceTextureGeneration=_shouldForceTextureGeneration;
 @property (nonatomic) BOOL shouldNotBakeActionTextures; // @synthesize shouldNotBakeActionTextures=_shouldNotBakeActionTextures;
-@property (nonatomic) BOOL shouldPlaySkippedSlides; // @synthesize shouldPlaySkippedSlides=_shouldPlaySkippedSlides;
 @property (nonatomic) BOOL shouldPreferCARenderer; // @synthesize shouldPreferCARenderer=_shouldPreferCARenderer;
 @property (nonatomic) BOOL shouldPreserveTransparency; // @synthesize shouldPreserveTransparency=_shouldPreserveTransparency;
+@property (nonatomic) BOOL shouldRespectSkippedSlides; // @synthesize shouldRespectSkippedSlides=_shouldRespectSkippedSlides;
 @property (readonly, nonatomic) BOOL shouldShowInstructionalText;
 @property (nonatomic) BOOL shouldShowVideoReflectionsAndMasks; // @synthesize shouldShowVideoReflectionsAndMasks=_shouldShowVideoReflectionsAndMasks;
 @property (nonatomic) BOOL shouldSkipBuilds; // @synthesize shouldSkipBuilds=_shouldSkipBuilds;
@@ -114,17 +119,20 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldUseSourceImage; // @synthesize shouldUseSourceImage=_shouldUseSourceImage;
 @property (readonly, nonatomic) KNShow *show; // @synthesize show=_show;
 @property (readonly, nonatomic) double showScale;
+@property (copy, nonatomic) NSArray *slideNodesWithinPlayableRange; // @synthesize slideNodesWithinPlayableRange=_slideNodesWithinPlayableRange;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) KNAnimatedTextureManager *textureManager; // @synthesize textureManager=_textureManager;
 @property (strong, nonatomic) NSMutableArray *workDurationArray; // @synthesize workDurationArray=_workDurationArray;
 
 - (void).cxx_destruct;
+- (void)acquireDiscreteGPUIfNeeded;
 - (id)animatedSlideViewFor:(id)arg1;
 - (id)breadCrumb;
 - (void)cancelEndShowHandler;
 - (id)currentSlide;
 - (id)currentSlideNode;
 - (void)dealloc;
+- (void)discardDiscreteGPUIfAcquired;
 - (void)dropABreadCrumb;
 - (void)enableMetalBadge:(BOOL)arg1;
 - (void)executeEndShowHandlerAfterDelay:(double)arg1;
@@ -142,9 +150,15 @@ __attribute__((visibility("hidden")))
 - (id)nextSlideAfterCurrent;
 - (id)nextSlideNodeAfterCurrent;
 - (id)nextSlideNodeAfterSlideNode:(id)arg1;
+- (BOOL)p_checkArrayInclusionIncludingUUID:(id)arg1 object:(id)arg2;
+- (BOOL)p_checkNodeEqualityIncludingUUID:(id)arg1 secondSlideNode:(id)arg2;
 - (void)p_executeEndShowHandler;
+- (unsigned long long)p_findIndexIncludingUUID:(id)arg1 object:(id)arg2;
+- (id)p_intersectArraysWithUUIDEquality:(id)arg1 secondArray:(id)arg2;
+- (id)p_nextBestSlideNodeToSlideNode:(id)arg1;
 - (void)p_setCurrentSlideNode:(id)arg1;
 - (void)p_setupBadging;
+- (BOOL)p_slideNodeIsPlayable:(id)arg1;
 - (void)performSlideRead:(CDUnknownBlockType)arg1;
 - (id)previousSlideNodeBeforeCurrent;
 - (id)previousSlideNodeBeforeSlideNode:(id)arg1;

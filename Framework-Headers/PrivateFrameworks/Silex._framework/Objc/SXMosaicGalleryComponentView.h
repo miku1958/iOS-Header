@@ -7,19 +7,18 @@
 #import <Silex/SXGalleryComponentView.h>
 
 #import <Silex/SXFullscreenCanvasShowable-Protocol.h>
+#import <Silex/SXFullscreenCaptionDataSource-Protocol.h>
 #import <Silex/SXImageViewDelegate-Protocol.h>
 #import <Silex/SXMosaicGalleryLayouterDataSource-Protocol.h>
-#import <Silex/SXTextSourceDataSource-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
 @class NSMutableArray, NSMutableSet, NSString, SXFullscreenCanvasController, SXMediaViewEvent, SXMosaicGalleryLayouter, UIView;
-@protocol SXFullscreenCanvasControllerFactory, SXGalleryItemImageViewFactory;
+@protocol SXGalleryItemImageViewFactory;
 
-@interface SXMosaicGalleryComponentView : SXGalleryComponentView <SXMosaicGalleryLayouterDataSource, SXFullscreenCanvasShowable, SXImageViewDelegate, SXTextSourceDataSource, SXViewportChangeListener>
+@interface SXMosaicGalleryComponentView : SXGalleryComponentView <SXMosaicGalleryLayouterDataSource, SXFullscreenCanvasShowable, SXImageViewDelegate, SXFullscreenCaptionDataSource, SXViewportChangeListener>
 {
     BOOL _loadedAtleastOneImage;
     id<SXGalleryItemImageViewFactory> _imageViewFactory;
-    id<SXFullscreenCanvasControllerFactory> _canvasControllerFactory;
     SXFullscreenCanvasController *_fullScreenCanvasController;
     UIView *_galleryView;
     NSMutableArray *_imageViews;
@@ -29,7 +28,6 @@
     NSMutableSet *_exposedGalleryItems;
 }
 
-@property (readonly, nonatomic) id<SXFullscreenCanvasControllerFactory> canvasControllerFactory; // @synthesize canvasControllerFactory=_canvasControllerFactory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableSet *exposedGalleryItems; // @synthesize exposedGalleryItems=_exposedGalleryItems;
@@ -45,15 +43,14 @@
 @property (readonly, nonatomic) NSMutableArray *visibleImageViews; // @synthesize visibleImageViews=_visibleImageViews;
 
 - (void).cxx_destruct;
-- (id)additionsForTextSource:(id)arg1;
 - (BOOL)allowHierarchyRemoval;
 - (unsigned long long)analyticsGalleryType;
 - (unsigned long long)analyticsMediaType;
-- (id)contentSizeCategoryForTextSource:(id)arg1;
+- (id)componentTextStyleForIdentifier:(id)arg1 inheritingFromComponentTextStyle:(id)arg2;
+- (id)contentSizeCategoryForCaption:(id)arg1;
 - (void)createMediaViewEventForGalleryItem:(id)arg1;
 - (void)discardContents;
 - (id)documentColumnLayoutForGalleryLayouter:(id)arg1;
-- (id)documentControllerForTextSource:(id)arg1;
 - (void)finishMediaViewEvent;
 - (void)forceImageViewFullscreen:(id)arg1;
 - (id)fullScreenCanvasController:(id)arg1 canvasViewControllerForShowable:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -80,9 +77,7 @@
 - (void)imageView:(id)arg1 didLoadImage:(id)arg2 ofQuality:(int)arg3;
 - (id)imageViewForItemAtIndex:(unsigned long long)arg1;
 - (id)imageViewForLocation:(struct CGPoint)arg1;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7 canvasControllerFactory:(id)arg8;
-- (id)inlineTextStylesForTextSource:(id)arg1;
-- (void)loadComponent:(id)arg1;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 mediaSharingPolicyProvider:(id)arg7 imageViewFactory:(id)arg8 canvasControllerFactory:(id)arg9;
 - (unsigned long long)numberOfItemsForGalleryLayouter:(id)arg1;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
@@ -91,9 +86,9 @@
 - (BOOL)requestInteractivityFocusForFullScreenCanvasController:(id)arg1;
 - (BOOL)shouldSubmitMediaExposureEventForExposedBounds:(struct CGRect)arg1;
 - (void)submitEvents;
-- (id)textResizerForTextSource:(id)arg1;
-- (id)textRulesForTextSource:(id)arg1;
-- (id)textStyleForTextSource:(id)arg1;
+- (id)textResizerForCaption:(id)arg1;
+- (id)textRulesForCaption:(id)arg1;
+- (id)textStyleForIdentifier:(id)arg1;
 - (void)visibleBoundsChanged;
 - (void)willSubmitMediaExposureEvent:(id)arg1;
 

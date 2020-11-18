@@ -94,6 +94,7 @@
 - (void).cxx_destruct;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
+- (void)_clearTimerToHandleGadgetsSeen;
 - (void)_configureHeader:(id)arg1 withGadget:(id)arg2;
 - (void)_dataSourceManagerDidChange;
 - (void)_deferNavigationToItem:(id)arg1;
@@ -116,6 +117,7 @@
 - (void)_registerForPreview;
 - (void)_scrollToGadget:(id)arg1 atIndexPath:(id)arg2 atScrollPosition:(unsigned long long)arg3 animated:(BOOL)arg4;
 - (void)_scrollViewDidEndScrolling;
+- (void)_setTimerToHandleGadgetsSeen;
 - (void)_startNavigationTimer;
 - (void)_stopNavigationTimer;
 - (void)_unloadAllGadgets;

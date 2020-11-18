@@ -23,7 +23,6 @@
 @property (strong, nonatomic) UIColor *guidanceBackgroundColor; // @synthesize guidanceBackgroundColor=_guidanceBackgroundColor;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CPSUpcomingManeuversCardView *maneuversView; // @synthesize maneuversView=_maneuversView;
-@property (nonatomic, getter=isMinimalMode) BOOL minimalMode;
 @property (readonly, nonatomic) CPSPausedCardView *pausedView; // @synthesize pausedView=_pausedView;
 @property (readonly, nonatomic) CPSCardPlatterView *platterView; // @synthesize platterView=_platterView;
 @property (readonly) Class superclass;
@@ -31,8 +30,11 @@
 - (void).cxx_destruct;
 - (void)_showManeuversView;
 - (void)_showPausedViewForReason:(unsigned long long)arg1 description:(id)arg2;
+- (BOOL)hasContent;
 - (id)initWithBackgroundColor:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)invalidateIntrinsicContentSize;
+- (void)layoutSubviews;
 - (void)navigator:(id)arg1 pausedTripForReason:(unsigned long long)arg2 description:(id)arg3;
 - (void)showManeuvers:(id)arg1 usingDisplayStyles:(id)arg2;
 - (void)updateEstimates:(id)arg1 forManeuver:(id)arg2;

@@ -9,6 +9,7 @@
 @class NSArray, NSError, PKPaymentAuthorizationResult, PKPaymentMerchantSession, PKPaymentRequest, PKPaymentRequestPaymentMethodUpdate, PKPaymentRequestShippingContactUpdate, PKPaymentRequestShippingMethodUpdate;
 
 @protocol PKPaymentAuthorizationServiceProtocol <NSObject>
+- (void)authorizationDidAuthorizeDisbursementWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizePurchaseCompleteWithStatus:(long long)arg1;

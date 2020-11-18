@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)sendReliableMessageAndWait:(id)arg1;
 - (BOOL)sendReliableMessageAndWait:(id)arg1 participantID:(unsigned long long)arg2;
 - (void)sendUnreliableMessage:(id)arg1 participantID:(unsigned long long)arg2;
+- (void)setEncryptionWithEncryptionMaterial:(CDStruct_791df8ea *)arg1;
 - (void)throwNotSupportedExceptionForMethod:(id)arg1;
 
 @end

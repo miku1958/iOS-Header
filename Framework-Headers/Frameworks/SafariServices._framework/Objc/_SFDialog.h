@@ -24,12 +24,14 @@
 + (id)_dialogWithTitle:(id)arg1 message:(id)arg2 primaryAction:(id)arg3 secondaryAction:(id)arg4 applicationModal:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (id)authenticationDialogWithAuthenticationChallenge:(id)arg1 committedURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)blockedPopupWindowDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
-+ (id)continuePrintingDialogWithTitle:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)continuePrintingDialogWithTitle:(id)arg1 message:(id)arg2 applicationModal:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)dialogWithWebUIAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)digitalHealthOverlayForURL:(id)arg1;
 + (id)downloadBlockedDialogWithFileType:(long long)arg1 initiatingURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)formSubmissionDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)genericErrorDialogWithTitle:(id)arg1 message:(id)arg2 applicationModal:(BOOL)arg3;
++ (id)increaseApplicationCacheQuotaDialogForOrigin:(id)arg1 newQuota:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)increaseDatabaseQuotaDialogForOrigin:(id)arg1 newQuota:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)javaScriptAlertDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)javaScriptConfirmDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)javaScriptPromptDialogWithMessage:(id)arg1 defaultText:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -79,6 +79,7 @@
 - (BOOL)incremental;
 - (void)insertTextSuggestion:(id)arg1;
 - (id)labels;
+- (id)list;
 - (id)max;
 - (id)min;
 - (id)pattern;

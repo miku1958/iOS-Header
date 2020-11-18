@@ -13,7 +13,6 @@
 __attribute__((visibility("hidden")))
 @interface TSCERefNamingContext : NSObject <NSCopying>
 {
-    struct TSUPreserveFlags _preserveFlags;
     BOOL _suppressIdenticalEndReference;
     BOOL _useSymbolicNames;
     BOOL _allowTableName;
@@ -32,7 +31,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL forFormulaPlainText; // @synthesize forFormulaPlainText=_forFormulaPlainText;
 @property (nonatomic) BOOL forceEscaping; // @synthesize forceEscaping=_forceEscaping;
 @property (nonatomic) UUIDData_5fbc143e hostTableUID; // @synthesize hostTableUID=_hostTableUID;
-@property (nonatomic) struct TSUPreserveFlags preserveFlags; // @synthesize preserveFlags=_preserveFlags;
 @property (nonatomic) BOOL quoteComponents; // @synthesize quoteComponents=_quoteComponents;
 @property (nonatomic) BOOL suppressIdenticalEndReference; // @synthesize suppressIdenticalEndReference=_suppressIdenticalEndReference;
 @property (nonatomic) BOOL useSymbolicNames; // @synthesize useSymbolicNames=_useSymbolicNames;

@@ -6,16 +6,14 @@
 
 #import <PassKitUI/PKPassFaceView.h>
 
-@class PKBarcodeStickerView, PKLinkedAppIconView, UIImageView, UILabel, UIView, WLEasyToHitCustomButton;
+@class PKBarcodeStickerView, PKLinkedAppIconView, UIImageView, UILabel, UIView;
 
 @interface PKPassFrontFaceView : PKPassFaceView
 {
     PKBarcodeStickerView *_barcodeView;
-    WLEasyToHitCustomButton *_infoButton;
     UIImageView *_contactlessLogoView;
     UIView *_bottomRightItemView;
     UILabel *_logoLabel;
-    BOOL _showsLinkedApp;
     BOOL _showsBarcodeView;
     BOOL _showsLiveBalance;
     long long _bottomRightItem;
@@ -26,11 +24,9 @@
 @property (nonatomic) long long bottomRightItem; // @synthesize bottomRightItem=_bottomRightItem;
 @property (readonly, nonatomic) PKLinkedAppIconView *linkedApp; // @synthesize linkedApp=_linkedApp;
 @property (nonatomic) BOOL showsBarcodeView; // @synthesize showsBarcodeView=_showsBarcodeView;
-@property (nonatomic) BOOL showsLinkedApp; // @synthesize showsLinkedApp=_showsLinkedApp;
 @property (nonatomic) BOOL showsLiveBalance; // @synthesize showsLiveBalance=_showsLiveBalance;
 
 - (void).cxx_destruct;
-- (void)_infoButtonPressed;
 - (void)_positionBarcodeView;
 - (id)_rebucketAuxiliaryFields:(id)arg1;
 - (id)_relevantBuckets;
@@ -39,13 +35,11 @@
 - (void)createBodyContentViews;
 - (id)createContactlessLogoView;
 - (void)createHeaderContentViews;
-- (id)createInfoButton;
 - (void)dealloc;
 - (id)init;
 - (void)insertContentView:(id)arg1 ofType:(long long)arg2;
 - (void)layoutSubviews;
 - (id)passFaceTemplate;
-- (void)setClipsContent:(BOOL)arg1;
 - (void)setShowsBarcodeView:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)templateForLayoutMode:(long long)arg1;
 - (void)updateValidity;

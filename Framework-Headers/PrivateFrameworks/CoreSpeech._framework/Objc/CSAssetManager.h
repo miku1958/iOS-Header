@@ -42,7 +42,7 @@
 - (void)assetForCurrentLanguageOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)assetOfType:(unsigned long long)arg1 language:(id)arg2;
 - (void)assetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)init;
+- (id)initWithDaemonMode:(BOOL)arg1;
 - (id)installedAssetForCurrentLanguageOfType:(unsigned long long)arg1;
 - (void)installedAssetForCurrentLanguageOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2;

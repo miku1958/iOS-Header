@@ -20,7 +20,6 @@
 @property (readonly) Class superclass;
 
 - (BOOL)clearsWeakScriptReferences;
-- (void)dealloc;
 
 @end
 

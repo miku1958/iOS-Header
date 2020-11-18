@@ -16,25 +16,34 @@
     BOOL _paymentAllAccess;
     BOOL _paymentConfiguration;
     BOOL _paymentPresentation;
+    BOOL _applePayTrustAllAccess;
     BOOL _inAppPayments;
     BOOL _inAppPaymentsPrivate;
     BOOL _webPayments;
     BOOL _winterpegPayments;
     BOOL _cardOnFilePayments;
+    BOOL _AMPCardEnrollment;
     BOOL _trustedDeviceEnrollmentInfo;
     BOOL _peerPaymentAllAccess;
+    BOOL _featuresAllAccess;
+    BOOL _supportsDisbursements;
     BOOL _addSilently;
     int _processIdentifier;
     NSString *_applicationID;
+    NSString *_developerTeamID;
     NSArray *_merchantIdentifiers;
     NSArray *_teamIDs;
     NSArray *_passTypeIDs;
 }
 
+@property (readonly) BOOL AMPCardEnrollment; // @synthesize AMPCardEnrollment=_AMPCardEnrollment;
 @property BOOL addSilently; // @synthesize addSilently=_addSilently;
 @property (readonly) BOOL allAccess;
+@property (readonly) BOOL applePayTrustAllAccess; // @synthesize applePayTrustAllAccess=_applePayTrustAllAccess;
 @property (readonly, copy) NSString *applicationID; // @synthesize applicationID=_applicationID;
 @property (readonly) BOOL cardOnFilePayments; // @synthesize cardOnFilePayments=_cardOnFilePayments;
+@property (readonly, copy) NSString *developerTeamID; // @synthesize developerTeamID=_developerTeamID;
+@property (readonly) BOOL featuresAllAccess; // @synthesize featuresAllAccess=_featuresAllAccess;
 @property (readonly) BOOL inAppPayments; // @synthesize inAppPayments=_inAppPayments;
 @property (readonly) BOOL inAppPaymentsPrivate; // @synthesize inAppPaymentsPrivate=_inAppPaymentsPrivate;
 @property (readonly, copy) NSArray *merchantIdentifiers; // @synthesize merchantIdentifiers=_merchantIdentifiers;
@@ -47,6 +56,7 @@
 @property (readonly) BOOL paymentPresentation; // @synthesize paymentPresentation=_paymentPresentation;
 @property (readonly) BOOL peerPaymentAllAccess; // @synthesize peerPaymentAllAccess=_peerPaymentAllAccess;
 @property (readonly) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
+@property (readonly) BOOL supportsDisbursements; // @synthesize supportsDisbursements=_supportsDisbursements;
 @property (copy) NSArray *teamIDs; // @synthesize teamIDs=_teamIDs;
 @property (readonly) BOOL trustedDeviceEnrollmentInfo; // @synthesize trustedDeviceEnrollmentInfo=_trustedDeviceEnrollmentInfo;
 @property (readonly) BOOL webPayments; // @synthesize webPayments=_webPayments;

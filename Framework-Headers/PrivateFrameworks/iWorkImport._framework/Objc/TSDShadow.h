@@ -85,7 +85,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)shadowType;
 - (BOOL)showForEditingText;
 - (id)typeDescription;
-- (BOOL)usesOpenGL;
 
 @end
 

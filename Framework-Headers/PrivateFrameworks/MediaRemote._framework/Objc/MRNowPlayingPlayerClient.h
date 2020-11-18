@@ -20,7 +20,7 @@
     NSDictionary *_nowPlayingInfo;
     MRNowPlayingArtwork *_nowPlayingArtwork;
     unsigned int _playbackState;
-    double _playbackStateSetToPlayTimestamp;
+    NSDate *_playbackStateDate;
     unsigned long long _capabilities;
     NSDate *_lastReceivedCommandDate;
     BOOL _coalescingInvalidations;
@@ -43,7 +43,7 @@
 @property (readonly, nonatomic) _MRContentItemProtobuf *nowPlayingContentItem;
 @property (copy, nonatomic) NSDictionary *nowPlayingInfo;
 @property (strong, nonatomic) _MRPlaybackQueueProtobuf *playbackQueue;
-@property (nonatomic) unsigned int playbackState;
+@property (readonly, nonatomic) unsigned int playbackState;
 @property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
 @property (readonly, nonatomic) MRPlaybackQueueSubscriptionController *subscriptionController; // @synthesize subscriptionController=_subscriptionController;
 @property (copy, nonatomic) NSArray *supportedCommands;
@@ -73,6 +73,7 @@
 - (void)updateCacheWithItem:(id)arg1;
 - (void)updateCacheWithPlaybackQueue:(id)arg1;
 - (void)updatePlaybackQueueWithCachedUpdates:(id)arg1 forPendingRequest:(id)arg2;
+- (void)updatePlaybackState:(unsigned int)arg1 date:(id)arg2;
 - (void)updatePlayer:(id)arg1;
 
 @end

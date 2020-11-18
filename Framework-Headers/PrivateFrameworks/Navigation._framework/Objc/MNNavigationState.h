@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double suggestionUpdateFrequency; // @synthesize suggestionUpdateFrequency=_suggestionUpdateFrequency;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) MNNavigationTraceManager *traceManager;
-@property (readonly, nonatomic) unsigned long long type;
+@property (readonly, nonatomic) long long type;
 
 - (void).cxx_destruct;
 - (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;

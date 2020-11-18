@@ -41,8 +41,8 @@ __attribute__((visibility("hidden")))
 - (void)scale:(tvec3_17f03ce0 *)arg1;
 - (void)setRenderHints:(const struct RenderHints *)arg1;
 - (void)setRenderState:(const struct RenderState *)arg1;
-- (void)submit:(const struct PrimitiveInfo *)arg1;
-- (long long)texture:(id)arg1 attributes:(const struct TextureAttributes *)arg2;
+- (void)submit:(id)arg1;
+- (long long)texture:(id)arg1 resource:(id)arg2 attributes:(const struct TextureAttributes *)arg3;
 - (void)translate:(tvec3_17f03ce0 *)arg1;
 - (void)updateRenderState;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, VMUClassInfo;
+@class NSArray, NSMutableArray, NSString, VMUClassInfo;
 
 @interface VMUFieldInfo : NSObject
 {
@@ -19,7 +19,7 @@
     unsigned int _stride;
     unsigned int _flags;
     VMUClassInfo *_destinationLayout;
-    NSArray *_subFieldArray;
+    NSMutableArray *_subFieldArray;
 }
 
 @property (readonly) unsigned int bitfieldWidth;
@@ -41,7 +41,7 @@
 @property (readonly) unsigned int scannableSize; // @synthesize scannableSize=_scannable;
 @property (readonly) unsigned int size; // @synthesize size=_size;
 @property (readonly) unsigned int stride; // @synthesize stride=_stride;
-@property (readonly, nonatomic) NSArray *subFieldArray; // @synthesize subFieldArray=_subFieldArray;
+@property (readonly, nonatomic) NSArray *subFieldArray;
 @property (readonly, nonatomic) NSString *typeName; // @synthesize typeName=_typeName;
 @property (readonly) NSString *typedDescription;
 

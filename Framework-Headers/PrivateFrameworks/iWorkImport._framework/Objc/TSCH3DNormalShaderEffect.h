@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)addVariables:(id)arg1;
-- (void)inject:(id)arg1;
+- (void)injectCommonShaderInto:(id)arg1 context:(id)arg2;
 - (void)uploadData:(id)arg1 effectsStates:(id)arg2;
 - (void)uploadData:(id)arg1 effectsStates:(id)arg2 updateCurrentStates:(id)arg3;
 

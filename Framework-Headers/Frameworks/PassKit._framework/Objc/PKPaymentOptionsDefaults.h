@@ -39,6 +39,7 @@
 - (void)_deleteKeychainDataForKey:(id)arg1;
 - (void)_hardDeleteDefaultBillingAddress;
 - (id)_keychainDataForKey:(id)arg1;
+- (id)_lastUpdatedDatesForBillingAddresses;
 - (id)_rawDefaultBillingAddresses;
 - (void)_registerForChangeNotifications;
 - (void)_setContact:(id)arg1 forKeychainKey:(id)arg2;
@@ -58,11 +59,13 @@
 - (void)deleteDefaultForContactKey:(id)arg1;
 - (void)deleteDefaultShippingAddress;
 - (id)init;
+- (id)lastUpdatedDateForPrimaryAccountIdentifier:(id)arg1;
 - (void)migrateToSyncable;
 - (void)optionsSynchronizationDidChangeTo:(BOOL)arg1;
 - (void)setDefaultBillingAddress:(id)arg1 forPaymentPass:(id)arg2;
 - (void)setDefaultBillingAddress:(id)arg1 forPrimaryAccountIdentifier:(id)arg2;
 - (void)setDefaultBillingAddress:(id)arg1 forRemotePaymentInstrument:(id)arg2;
+- (void)updateLastUpdatedDate:(id)arg1 forPrimaryAccountIdentifier:(id)arg2;
 
 @end
 

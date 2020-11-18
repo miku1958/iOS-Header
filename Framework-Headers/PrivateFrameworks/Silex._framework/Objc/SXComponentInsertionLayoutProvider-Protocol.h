@@ -6,7 +6,7 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXColumnLayout;
+@class SXColumnLayout, SXUnitConverter;
 @protocol SXBlueprintMarker, SXComponent, SXEdgeSpacing;
 
 @protocol SXComponentInsertionLayoutProvider <NSObject>
@@ -17,5 +17,6 @@
 
 - (struct CGRect)frameForComponent:(id<SXComponent>)arg1;
 - (id<SXEdgeSpacing>)suggestedMarginForMarker:(id<SXBlueprintMarker>)arg1;
+- (SXUnitConverter *)unitConverterForMarker:(id<SXBlueprintMarker>)arg1;
 @end
 

@@ -7,6 +7,7 @@
 #import <UIKit/UIDevice.h>
 
 @interface UIDevice (SXAdditions)
++ (BOOL)isSlow;
 + (BOOL)sx_isSpectreDevice;
 @end
 

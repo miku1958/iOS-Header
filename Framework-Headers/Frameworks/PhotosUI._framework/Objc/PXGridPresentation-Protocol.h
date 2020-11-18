@@ -13,7 +13,7 @@
 
 @optional
 - (UIViewController *)createAlbumListViewControllerWithConfiguration:(PXPhotoKitCollectionsDataSourceManagerConfiguration *)arg1;
-- (void)createGridViewControllerWithAssets:(id<NSFastEnumeration>)arg1 withTitle:(NSString *)arg2 hideTabBar:(BOOL)arg3 containerViewController:(UIViewController *)arg4 navigationItemDelegate:(id<PXGridPresentationNavigationItemDelegate>)arg5 andCompletion:(void (^)(UIViewController *))arg6;
+- (void)createGridViewControllerWithAssets:(id<NSFastEnumeration>)arg1 withTitle:(NSString *)arg2 hideTabBar:(BOOL)arg3 gridPresentationContext:(long long)arg4 containerViewController:(UIViewController *)arg5 navigationItemDelegate:(id<PXGridPresentationNavigationItemDelegate>)arg6 andCompletion:(void (^)(UIViewController *))arg7;
 - (UIViewController *)createImportHistoryGridViewControllerWithCollection:(PHCollection *)arg1;
 - (UIViewController *)createPanoramaViewController;
 - (UIViewController *)createPhotosAlbumViewControllerForAlbum:(PHAssetCollection *)arg1 withFetchResult:(PHFetchResult *)arg2;

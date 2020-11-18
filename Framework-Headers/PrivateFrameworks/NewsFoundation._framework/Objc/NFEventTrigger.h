@@ -8,7 +8,6 @@
 
 @class NSSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface NFEventTrigger : NSObject
 {
     BOOL _fireOnce;

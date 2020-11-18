@@ -6,24 +6,34 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/TSKCOOperation-Protocol.h>
+@class NSString, TSUUUIDPath;
 
 __attribute__((visibility("hidden")))
-@interface TSKCOAbstractOperation : NSObject <TSKCOOperation>
+@interface TSKCOAbstractOperation : NSObject
 {
+    vector_4dc5f307 _address;
     BOOL _noop;
 }
 
+@property (readonly, nonatomic) const vector_4dc5f307 *UUIDAddress;
+@property (readonly, nonatomic) TSUUUIDPath *UUIDPath;
 @property (readonly, nonatomic) BOOL isNoop; // @synthesize isNoop=_noop;
+@property (readonly, nonatomic) NSString *toString;
 
-+ (id)_classRegistry;
 + (id)newObjectForUnarchiver:(id)arg1 message:(const struct Message *)arg2;
-+ (void)registerClass:(Class)arg1 forExtensionNumber:(int)arg2;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)description;
-- (id)initWithNoop:(BOOL)arg1;
+- (unsigned long long)hash;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 noop:(BOOL)arg2;
 - (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (shared_ptr_f167ad79)newTransformableOperation;
+- (void)populateAddressFromIdentifier:(const RepeatedField_d2055372 *)arg1;
+- (void)populateRangeVector:(vector_b5e32e34 *)arg1 fromRangeList:(const RepeatedField_92283dc2 *)arg2;
+- (void)saveAddress:(const vector_4dc5f307 *)arg1 identifier:(RepeatedField_d2055372 *)arg2;
+- (void)saveRangeVector:(vector_b5e32e34 *)arg1 rangeList:(RepeatedField_92283dc2 *)arg2;
 - (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
-- (id)toString;
 
 @end
 

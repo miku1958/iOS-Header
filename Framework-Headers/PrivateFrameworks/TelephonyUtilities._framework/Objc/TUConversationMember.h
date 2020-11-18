@@ -9,14 +9,16 @@
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSSet;
+@class NSArray, NSSet, NSString, TUHandle;
 
 @interface TUConversationMember : NSObject <NSCopying, NSSecureCoding>
 {
-    NSSet *_handles;
+    TUHandle *_handle;
 }
 
-@property (readonly, copy, nonatomic) NSSet *handles; // @synthesize handles=_handles;
+@property (readonly, copy, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
+@property (readonly, copy, nonatomic) NSSet *handles;
+@property (readonly, copy, nonatomic) NSString *idsDestination;
 @property (readonly, copy, nonatomic) NSArray *idsDestinations;
 
 + (BOOL)supportsSecureCoding;
@@ -28,7 +30,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContact:(id)arg1;
 - (id)initWithContact:(id)arg1 additionalHandles:(id)arg2;
+- (id)initWithDestination:(id)arg1;
 - (id)initWithDestinations:(id)arg1;
+- (id)initWithHandle:(id)arg1;
 - (id)initWithHandles:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToMember:(id)arg1;

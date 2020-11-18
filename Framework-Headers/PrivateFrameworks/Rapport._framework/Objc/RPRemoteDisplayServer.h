@@ -22,6 +22,7 @@
     unsigned int _pairSetupFlags;
     unsigned int _pairVerifyFlags;
     int _passwordType;
+    int _passwordTypeActual;
     unsigned int _internalAuthFlags;
     NSString *_password;
     CDUnknownBlockType _authCompletionHandler;
@@ -45,6 +46,7 @@
 @property (nonatomic) unsigned int pairVerifyFlags; // @synthesize pairVerifyFlags=_pairVerifyFlags;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (nonatomic) int passwordType; // @synthesize passwordType=_passwordType;
+@property (readonly, nonatomic) int passwordTypeActual; // @synthesize passwordTypeActual=_passwordTypeActual;
 @property (copy, nonatomic) CDUnknownBlockType promptForPasswordHandler; // @synthesize promptForPasswordHandler=_promptForPasswordHandler;
 @property (copy, nonatomic) CDUnknownBlockType sessionEndedHandler; // @synthesize sessionEndedHandler=_sessionEndedHandler;
 @property (copy, nonatomic) CDUnknownBlockType sessionStartHandler; // @synthesize sessionStartHandler=_sessionStartHandler;

@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)didRemovePageAtIndex:(unsigned long long)arg1;
 - (void)didSwapPageAtIndex:(unsigned long long)arg1 withIndex:(unsigned long long)arg2;
 - (BOOL)drawProgressCallback;
+- (void)forceSetBackgroundImage:(id)arg1 forPageIndex:(unsigned long long)arg2;
 - (void)forceUpdateActivePageIndex:(unsigned long long)arg1 withMaxDuration:(double)arg2;
 - (id)initWithDelegate:(id)arg1 andRenderingProperties:(id)arg2;
 - (void)updateActivePageIndex:(unsigned long long)arg1;

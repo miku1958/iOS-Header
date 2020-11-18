@@ -29,6 +29,7 @@
     id<PXDisplayAsset> __currentImageSourceAsset;
     PXImageRequest *__currentRequest;
     struct CGSize _contentSize;
+    struct CGSize _maximumRequestSize;
     struct CGSize _viewportSize;
     struct CGSize __targetSize;
     struct CGRect _desiredContentsRect;
@@ -49,6 +50,7 @@
 @property (strong, nonatomic, setter=_setImage:) UIImage *image; // @synthesize image=_image;
 @property (nonatomic, setter=_setIsInCloud:) BOOL isInCloud; // @synthesize isInCloud=_isInCloud;
 @property (nonatomic, setter=_setLoadingProgress:) double loadingProgress; // @synthesize loadingProgress=_loadingProgress;
+@property (readonly, nonatomic) struct CGSize maximumRequestSize; // @synthesize maximumRequestSize=_maximumRequestSize;
 @property (readonly, nonatomic) id<PXUIImageProvider> mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (strong, nonatomic, setter=_setOpportunisticImage:) UIImage *opportunisticImage; // @synthesize opportunisticImage=_opportunisticImage;
 @property (readonly, nonatomic) double scale; // @synthesize scale=_scale;
@@ -80,6 +82,7 @@
 - (void)setContentSize:(struct CGSize)arg1;
 - (void)setContentsRect:(struct CGRect)arg1;
 - (void)setDesiredContentsRect:(struct CGRect)arg1;
+- (void)setMaximumRequestSize:(struct CGSize)arg1;
 - (void)setMediaProvider:(id)arg1;
 - (void)setScale:(double)arg1;
 - (void)setViewportSize:(struct CGSize)arg1;

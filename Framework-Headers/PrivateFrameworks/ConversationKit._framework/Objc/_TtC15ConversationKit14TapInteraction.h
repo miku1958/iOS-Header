@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long numberOfTapsRequired;
 @property (nonatomic, weak) UIView *view; // @synthesize view;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)didMoveToView:(id)arg1;
 - (void)handleRecognizer:(id)arg1;
 - (id)init;

@@ -14,6 +14,7 @@
 @optional
 - (struct CGRect)contextualNotification:(PXContextualNotification *)arg1 containingFrameInCoordinateSpace:(id<UICoordinateSpace>)arg2;
 - (BOOL)contextualNotification:(PXContextualNotification *)arg1 shouldPassthroughPoint:(struct CGPoint)arg2 inCoordinateSpace:(id<UICoordinateSpace>)arg3;
+- (void)contextualNotificationDidAppear:(PXContextualNotification *)arg1;
 - (void)contextualNotificationDidDisappear:(PXContextualNotification *)arg1;
 - (void)contextualNotificationWasDiscarded:(PXContextualNotification *)arg1;
 - (void)contextualNotificationWasTapped:(PXContextualNotification *)arg1;

@@ -18,6 +18,8 @@
     unsigned long long _environmentHash;
 }
 
+@property (readonly, nonatomic, getter=isActiveUser) BOOL activeUser;
+@property (readonly, copy, nonatomic) NSString *ek;
 @property (readonly, nonatomic) NSDictionary *endpointsDictionary;
 @property (readonly, nonatomic) unsigned long long environmentHash; // @synthesize environmentHash=_environmentHash;
 @property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;

@@ -128,6 +128,7 @@
 - (BOOL)pauseSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 synchronously:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)prewarmIfNeeded;
 - (id)prewarmIfNeededWithRequest:(id)arg1;
+- (BOOL)queryPhaticCapability:(id)arg1;
 - (void)setAutoDownloadedVoiceAssets:(id)arg1;
 - (void)setLogToFile:(BOOL)arg1;
 - (void)setMaintainInactivePersistentConnection:(BOOL)arg1;

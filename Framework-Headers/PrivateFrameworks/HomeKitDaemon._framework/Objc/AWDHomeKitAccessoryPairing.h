@@ -16,6 +16,7 @@
     int _certified;
     unsigned int _duration;
     int _errorCode;
+    unsigned int _retryCount;
     int _transportType;
     AWDHomeKitVendorInformation *_vendorDetails;
     BOOL _isAdd;
@@ -26,6 +27,7 @@
         unsigned int certified:1;
         unsigned int duration:1;
         unsigned int errorCode:1;
+        unsigned int retryCount:1;
         unsigned int transportType:1;
         unsigned int isAdd:1;
         unsigned int isAddedViaWAC:1;
@@ -42,12 +44,14 @@
 @property (nonatomic) BOOL hasIsAdd;
 @property (nonatomic) BOOL hasIsAddedViaWAC;
 @property (nonatomic) BOOL hasIsSecureWAC;
+@property (nonatomic) BOOL hasRetryCount;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasTransportType;
 @property (readonly, nonatomic) BOOL hasVendorDetails;
 @property (nonatomic) BOOL isAdd; // @synthesize isAdd=_isAdd;
 @property (nonatomic) BOOL isAddedViaWAC; // @synthesize isAddedViaWAC=_isAddedViaWAC;
 @property (nonatomic) BOOL isSecureWAC; // @synthesize isSecureWAC=_isSecureWAC;
+@property (nonatomic) unsigned int retryCount; // @synthesize retryCount=_retryCount;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property (strong, nonatomic) AWDHomeKitVendorInformation *vendorDetails; // @synthesize vendorDetails=_vendorDetails;

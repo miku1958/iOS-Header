@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     GEOABSecondPartyPlaceRequestClientMetaData *_abClientMetadata;
     GEOAdditionalEnabledMarkets *_additionalEnabledMarkets;
     NSMutableArray *_businessChatPreflightIdentifiers;
+    int _clientRevision;
     unsigned int _dayOfWeek;
     NSString *_debugApiKey;
     NSString *_deviceCountryCode;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
     unsigned int _timeSinceMapEnteredForeground;
     BOOL _enablePreflightVenues;
     struct {
+        unsigned int clientRevision:1;
         unsigned int dayOfWeek:1;
         unsigned int hourOfDay:1;
         unsigned int requiredVersion:1;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOABSecondPartyPlaceRequestClientMetaData *abClientMetadata;
 @property (strong, nonatomic) GEOAdditionalEnabledMarkets *additionalEnabledMarkets; // @synthesize additionalEnabledMarkets=_additionalEnabledMarkets;
 @property (strong, nonatomic) NSMutableArray *businessChatPreflightIdentifiers; // @synthesize businessChatPreflightIdentifiers=_businessChatPreflightIdentifiers;
+@property (nonatomic) int clientRevision; // @synthesize clientRevision=_clientRevision;
 @property (nonatomic) unsigned int dayOfWeek; // @synthesize dayOfWeek=_dayOfWeek;
 @property (strong, nonatomic) NSString *debugApiKey; // @synthesize debugApiKey=_debugApiKey;
 @property (strong, nonatomic) NSString *deviceCountryCode; // @synthesize deviceCountryCode=_deviceCountryCode;
@@ -56,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL enablePreflightVenues; // @synthesize enablePreflightVenues=_enablePreflightVenues;
 @property (readonly, nonatomic) BOOL hasAbClientMetadata;
 @property (readonly, nonatomic) BOOL hasAdditionalEnabledMarkets;
+@property (nonatomic) BOOL hasClientRevision;
 @property (nonatomic) BOOL hasDayOfWeek;
 @property (readonly, nonatomic) BOOL hasDebugApiKey;
 @property (readonly, nonatomic) BOOL hasDeviceCountryCode;
@@ -81,6 +85,7 @@ __attribute__((visibility("hidden")))
 + (Class)businessChatPreflightIdentifierType;
 + (Class)deviceHistoricalLocationType;
 - (void).cxx_destruct;
+- (int)StringAsClientRevision:(id)arg1;
 - (int)StringAsKnownClientResolvedTypeDeprecateds:(id)arg1;
 - (int)StringAsKnownClientResolvedTypes:(id)arg1;
 - (int)StringAsRequiredVersion:(id)arg1;
@@ -96,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)clearKnownClientResolvedTypeDeprecateds;
 - (void)clearKnownClientResolvedTypes;
 - (void)clearLocations;
+- (id)clientRevisionAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

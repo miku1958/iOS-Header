@@ -20,7 +20,6 @@
 @property (nonatomic) long long callAudioRoute;
 @property (nonatomic) BOOL exportsLiveListenToFile;
 @property (nonatomic) BOOL independentHearingAidSettings;
-@property (nonatomic) long long inputRoutingOption;
 @property (nonatomic) long long mediaAudioRoute;
 @property (nonatomic) BOOL multideviceAudioEnabled;
 @property (nonatomic) BOOL multideviceSettingsEnabled;
@@ -40,6 +39,7 @@
 - (void)_registerForNotification:(id)arg1;
 - (void)_setValue:(id)arg1 forPreferenceKey:(id)arg2;
 - (void)_synchronizeIfNecessary:(id)arg1;
+- (void)_updateTripleClickOptionsForPairedAids:(id)arg1;
 - (id)_valueForPreferenceKey:(id)arg1;
 - (void)addDeviceIDToCloudBlacklist:(id)arg1;
 - (id)convertPersistentRepresentation:(id)arg1 fromVersion:(float)arg2 toVersion:(float)arg3;

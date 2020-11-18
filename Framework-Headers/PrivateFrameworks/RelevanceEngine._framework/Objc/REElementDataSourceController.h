@@ -83,7 +83,6 @@
 - (void)addElements:(id)arg1 toSection:(unsigned long long)arg2;
 - (void)addElements:(id)arg1 toSectionWithIdentifier:(id)arg2;
 - (void)collectLoggableState:(CDUnknownBlockType)arg1;
-- (void)dataBecameAvailable;
 - (void)dealloc;
 - (void)elementDidBecomeHidden:(id)arg1;
 - (id)elementOperationQueue;

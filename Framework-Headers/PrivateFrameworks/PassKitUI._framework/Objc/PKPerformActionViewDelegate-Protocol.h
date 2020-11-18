@@ -15,5 +15,7 @@
 
 @optional
 - (void)performActionView:(UIView<PKPerformActionView> *)arg1 requestsPresentViewController:(UIViewController *)arg2;
+- (void)performActionViewDidPerformAction:(UIView<PKPerformActionView> *)arg1;
+- (void)performActionViewRequestsPerformNextStepForAction:(UIView<PKPerformActionView> *)arg1 completion:(void (^)(BOOL))arg2;
 @end
 

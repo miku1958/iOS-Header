@@ -13,11 +13,17 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (BOOL)_accessibilityIsFrameOutOfBounds;
+- (id)_axAllElements;
+- (id)_axAllNodeElements;
 - (id)_axGetPDFView;
 - (id)_axGetPage;
+- (BOOL)_axIsUsingPDFExtensionView;
 - (id)_axLineSelections;
 - (struct CGPDFPage *)_axPageRef;
 - (id)_axPageViewElements;
+- (void)_axSetAllNodeElements:(id)arg1;
 - (void)_axSetPageViewElements:(id)arg1;
 - (struct CGPDFSelection *)_lineSelectionForSelection:(struct CGPDFSelection *)arg1;
 - (id)accessibilityElements;

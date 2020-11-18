@@ -6,28 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, TSKShuffleMapping, TSTCellRegion;
+@class NSHashTable, NSSet, TSKShuffleMapping, TSTCellRegion;
 
 __attribute__((visibility("hidden")))
 @interface TSTChangeDescriptor : NSObject
 {
+    BOOL _processedByMasterLayout;
     int _changeDescriptor;
     NSHashTable *_referenceIdentifiers;
     TSTCellRegion *_cellRegion;
     struct TSUCellCoord _cellID;
     TSTCellRegion *_strokeRegion;
     TSKShuffleMapping *_shuffleMapping;
+    NSSet *_annotations;
 }
 
+@property (strong, nonatomic) NSSet *annotations; // @synthesize annotations=_annotations;
 @property (nonatomic) struct TSUCellCoord cellID; // @synthesize cellID=_cellID;
 @property (readonly, nonatomic) struct TSUCellRect cellRange;
 @property (strong, nonatomic) TSTCellRegion *cellRegion; // @synthesize cellRegion=_cellRegion;
 @property (nonatomic) int changeDescriptor; // @synthesize changeDescriptor=_changeDescriptor;
+@property (nonatomic) BOOL processedByMasterLayout; // @synthesize processedByMasterLayout=_processedByMasterLayout;
 @property (strong, nonatomic) NSHashTable *referenceIdentifiers; // @synthesize referenceIdentifiers=_referenceIdentifiers;
 @property (strong, nonatomic) TSKShuffleMapping *shuffleMapping; // @synthesize shuffleMapping=_shuffleMapping;
 @property (readonly, nonatomic) struct TSUCellRect strokeRange;
 @property (strong, nonatomic) TSTCellRegion *strokeRegion; // @synthesize strokeRegion=_strokeRegion;
 
++ (id)changeDescriptorWithAnnotationsRemovedForMerge:(id)arg1;
 + (id)changeDescriptorWithType:(int)arg1;
 + (id)changeDescriptorWithType:(int)arg1 cellID:(struct TSUCellCoord)arg2 cellRange:(struct TSUCellRect)arg3;
 + (id)changeDescriptorWithType:(int)arg1 cellID:(struct TSUCellCoord)arg2 cellRange:(struct TSUCellRect)arg3 strokeRange:(struct TSUCellRect)arg4;
@@ -44,7 +49,9 @@ __attribute__((visibility("hidden")))
 + (void)enumerateChangeRecords:(id)arg1 withType:(int)arg2 block:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)initWithChangeDescriptorType:(int)arg1 cellRegion:(id)arg2 cellID:(struct TSUCellCoord)arg3 strokeRegion:(id)arg4 referenceIdentifiers:(id)arg5 shuffleMapping:(id)arg6;
+- (id)initWithChangeDescriptorType:(int)arg1 cellRegion:(id)arg2 cellID:(struct TSUCellCoord)arg3 strokeRegion:(id)arg4 referenceIdentifiers:(id)arg5 shuffleMapping:(id)arg6 annotations:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
+- (void)markAsProcessed;
 
 @end
 

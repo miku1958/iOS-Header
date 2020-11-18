@@ -31,7 +31,8 @@
 - (void)deviceToDeviceEncryptionHelper:(id)arg1 shouldContinueUpgradingUserToHSA2WithCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)performAccountUpgradeIfApplicable:(CDUnknownBlockType)arg1;
+- (void)performHSA2RepairIfNeeded:(CDUnknownBlockType)arg1;
+- (void)presentHSA2RepairUI:(CDUnknownBlockType)arg1;
 - (void)setCloudSyncData:(id)arg1 specifier:(id)arg2;
 - (void)setCoordinator:(id)arg1;
 - (void)setScreenTimeSyncing:(BOOL)arg1;

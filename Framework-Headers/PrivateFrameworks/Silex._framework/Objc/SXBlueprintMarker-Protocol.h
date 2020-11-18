@@ -7,7 +7,7 @@
 #import <Silex/NSObject-Protocol.h>
 
 @class NSArray;
-@protocol SXComponent, SXComponentAnchor;
+@protocol SXBlueprintMarker, SXComponent, SXComponentAnchor;
 
 @protocol SXBlueprintMarker <NSObject>
 
@@ -17,5 +17,6 @@
 @property (readonly, nonatomic) NSArray *path;
 @property (readonly, nonatomic) id<SXComponent> trailingComponent;
 
+- (BOOL)isEqualToMarker:(id<SXBlueprintMarker>)arg1;
 @end
 

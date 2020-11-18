@@ -25,12 +25,14 @@
     unsigned int _pairSetupFlags;
     unsigned int _pairVerifyFlags;
     int _passwordType;
+    int _passwordTypeActual;
     unsigned int _internalAuthFlags;
     NSString *_password;
     CDUnknownBlockType _authCompletionHandler;
     CDUnknownBlockType _showPasswordHandler;
     CDUnknownBlockType _hidePasswordHandler;
     CDUnknownBlockType _promptForPasswordHandler;
+    unsigned long long _controlFlags;
     RPRemoteDisplayDevice *_destinationDevice;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _errorHandler;
@@ -45,6 +47,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType authCompletionHandler; // @synthesize authCompletionHandler=_authCompletionHandler;
 @property (strong, nonatomic) CUBonjourDevice *bonjourDevice; // @synthesize bonjourDevice=_bonjourDevice;
+@property (nonatomic) unsigned long long controlFlags; // @synthesize controlFlags=_controlFlags;
 @property (strong, nonatomic) RPRemoteDisplayDevice *daemonDevice; // @synthesize daemonDevice=_daemonDevice;
 @property (strong, nonatomic) RPRemoteDisplayDevice *destinationDevice; // @synthesize destinationDevice=_destinationDevice;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
@@ -58,6 +61,7 @@
 @property (nonatomic) unsigned int pairVerifyFlags; // @synthesize pairVerifyFlags=_pairVerifyFlags;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (nonatomic) int passwordType; // @synthesize passwordType=_passwordType;
+@property (readonly, nonatomic) int passwordTypeActual; // @synthesize passwordTypeActual=_passwordTypeActual;
 @property (copy, nonatomic) CDUnknownBlockType promptForPasswordHandler; // @synthesize promptForPasswordHandler=_promptForPasswordHandler;
 @property (strong, nonatomic) RPRemoteDisplayServer *server; // @synthesize server=_server;
 @property (copy, nonatomic) NSNumber *sessionID; // @synthesize sessionID=_sessionID;

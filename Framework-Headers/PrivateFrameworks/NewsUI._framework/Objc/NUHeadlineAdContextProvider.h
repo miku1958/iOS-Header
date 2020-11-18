@@ -8,23 +8,26 @@
 
 #import <NewsUI/NUAdContextProvider-Protocol.h>
 
-@class NSString;
+@class FCIssue, NSString;
 @protocol FCHeadlineProviding;
 
 @interface NUHeadlineAdContextProvider : NSObject <NUAdContextProvider>
 {
     id<FCHeadlineProviding> _headline;
+    FCIssue *_issue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<FCHeadlineProviding> headline; // @synthesize headline=_headline;
+@property (readonly, nonatomic) FCIssue *issue; // @synthesize issue=_issue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)adContextValueForKeyPath:(id)arg1;
-- (id)initWithHeadline:(id)arg1;
+- (id)contextProvidersForKeyPath:(id)arg1;
+- (id)initWithHeadline:(id)arg1 issue:(id)arg2;
 
 @end
 

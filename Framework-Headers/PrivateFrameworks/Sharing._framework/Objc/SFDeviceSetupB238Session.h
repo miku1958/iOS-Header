@@ -8,7 +8,7 @@
 
 #import <Sharing/AVAudioPlayerDelegate-Protocol.h>
 
-@class ACAccount, ACAccountStore, AVAudioPlayer, AVAudioSession, HMAccessory, HMHome, NSArray, NSDictionary, NSMutableArray, NSSet, NSString, RPCompanionLinkClient, SFDevice, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, SSAccount, TROperationQueue, TRSession, UIViewController;
+@class ACAccount, ACAccountStore, AVAudioPlayer, AVAudioSession, HMAccessory, HMHome, NSArray, NSDictionary, NSMutableArray, NSSet, NSString, RPCompanionLinkClient, SFDevice, SFDeviceOperationCDPSetup, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, SSAccount, TROperationQueue, TRSession, UIViewController;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceSetupB238Session : NSObject <AVAudioPlayerDelegate>
@@ -99,6 +99,10 @@
     int _trAuthenticationState;
     unsigned long long _trAuthenticationStartTicks;
     double _trAuthenticationSecs;
+    BOOL _cdpEnabled;
+    SFDeviceOperationCDPSetup *_cdpSetupOperation;
+    double _cdpSetupSecs;
+    int _cdpState;
     SFDeviceOperationHomeKitSetup *_homeKitSetupOperation;
     int _homeKitUserInputState;
     int _homeKitSetupState;
@@ -111,6 +115,7 @@
     double _iTunesWaitSecs;
     double _mediaSystemWaitSecs;
     double _totalSecs;
+    BOOL _prefBonjourTest;
     BOOL _prefForceSiriGreeting;
     BOOL _liveOn;
     BOOL _pauseAfterPreAuth;
@@ -198,6 +203,7 @@
 - (int)_runBasicConfig;
 - (void)_runBasicConfigReceiveResponse:(id)arg1 error:(id)arg2;
 - (void)_runBasicConfigSendRequest;
+- (int)_runCDPSetup;
 - (int)_runCheckAccount;
 - (void)_runFinishRequest;
 - (void)_runFinishResponse:(id)arg1 error:(id)arg2;

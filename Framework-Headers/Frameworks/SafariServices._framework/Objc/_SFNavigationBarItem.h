@@ -21,7 +21,7 @@
     BOOL _showsReaderAvailabilityText;
     BOOL _overrideBarStyleForSecurityWarning;
     BOOL _showsNotSecureAnnotation;
-    BOOL _showsNotSecureMessage;
+    BOOL _hasFocusedSensitiveFieldOnCurrentPage;
     NSString *_text;
     NSString *_textWhenExpanded;
     unsigned long long _startIndexOfTextInExpandedText;
@@ -32,6 +32,7 @@
 }
 
 @property (copy, nonatomic) NSString *customPlaceholderText; // @synthesize customPlaceholderText=_customPlaceholderText;
+@property (nonatomic) BOOL hasFocusedSensitiveFieldOnCurrentPage; // @synthesize hasFocusedSensitiveFieldOnCurrentPage=_hasFocusedSensitiveFieldOnCurrentPage;
 @property (nonatomic) BOOL lockIconHasEVCertificateTint; // @synthesize lockIconHasEVCertificateTint=_lockIconHasEVCertificateTint;
 @property (nonatomic) unsigned long long mediaCaptureDeviceIcon; // @synthesize mediaCaptureDeviceIcon=_mediaCaptureDeviceIcon;
 @property (weak, nonatomic, setter=_setNavigationBar:) _SFNavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
@@ -40,7 +41,6 @@
 @property (nonatomic) BOOL readerButtonSelected; // @synthesize readerButtonSelected=_readerButtonSelected;
 @property (nonatomic) BOOL showsLockIcon; // @synthesize showsLockIcon=_showsLockIcon;
 @property (nonatomic) BOOL showsNotSecureAnnotation; // @synthesize showsNotSecureAnnotation=_showsNotSecureAnnotation;
-@property (nonatomic) BOOL showsNotSecureMessage; // @synthesize showsNotSecureMessage=_showsNotSecureMessage;
 @property (readonly, nonatomic) BOOL showsReaderAvailabilityText; // @synthesize showsReaderAvailabilityText=_showsReaderAvailabilityText;
 @property (nonatomic) BOOL showsReaderButton; // @synthesize showsReaderButton=_showsReaderButton;
 @property (nonatomic) BOOL showsSearchIndicator; // @synthesize showsSearchIndicator=_showsSearchIndicator;
@@ -53,7 +53,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)setShowsNotSecureAnnotation:(BOOL)arg1 showsNotSecureMessage:(BOOL)arg2;
+- (void)setShowsNotSecureAnnotation:(BOOL)arg1 hasFocusedSensitiveField:(BOOL)arg2;
 - (void)setShowsReaderButton:(BOOL)arg1 showsAvailabilityText:(BOOL)arg2;
 - (void)setText:(id)arg1 textWhenExpanded:(id)arg2 startIndex:(unsigned long long)arg3;
 

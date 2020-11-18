@@ -11,6 +11,7 @@
 @interface REMLPrediction : NSObject <NSCopying>
 {
     float _actionProbability;
+    float _appActionProbability;
     float _mean;
     float _variance;
     float _probability;
@@ -18,6 +19,7 @@
 }
 
 @property (nonatomic) float actionProbability;
+@property (nonatomic) float appActionProbability;
 @property (readonly, nonatomic) float mean; // @synthesize mean=_mean;
 @property (readonly, nonatomic) float pessimistic; // @synthesize pessimistic=_pessimistic;
 @property (readonly, nonatomic) float probability; // @synthesize probability=_probability;

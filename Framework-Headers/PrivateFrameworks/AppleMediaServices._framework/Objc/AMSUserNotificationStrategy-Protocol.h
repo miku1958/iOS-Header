@@ -4,17 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class AMSBinaryPromise, AMSUserNotification, AMSUserNotificationCenter, NSArray, NSString;
-@protocol AMSUserNotificationCenterDelegate;
+@class AMSBinaryPromise, AMSUserNotification, NSArray, NSString;
 
 @protocol AMSUserNotificationStrategy
-
-@property (readonly, nonatomic) NSArray *activeNotifications;
-@property (weak, nonatomic) id<AMSUserNotificationCenterDelegate> delegate;
-@property (readonly, weak, nonatomic) AMSUserNotificationCenter *originalCenter;
-
-- (id)initWithOriginalCenter:(AMSUserNotificationCenter *)arg1 bundleId:(NSString *)arg2 runningInDaemon:(BOOL)arg3;
-- (AMSBinaryPromise *)postNotification:(AMSUserNotification *)arg1;
-- (AMSBinaryPromise *)removeNotification:(AMSUserNotification *)arg1;
++ (NSArray *)_activeNotificationsWithCenterBundleId:(NSString *)arg1;
++ (AMSBinaryPromise *)_postNotification:(AMSUserNotification *)arg1 centerBundleId:(NSString *)arg2;
++ (AMSBinaryPromise *)_removeNotification:(AMSUserNotification *)arg1 centerBundleId:(NSString *)arg2;
++ (AMSBinaryPromise *)_removeNotificationWithIdentifier:(NSString *)arg1 centerBundleId:(NSString *)arg2 logKey:(NSString *)arg3;
 @end
 

@@ -12,11 +12,15 @@
 
 @interface MPSStateRequest : PBRequest <NSCopying>
 {
+    long long _originalLibrarySize;
     NSString *_backupDeviceID;
     NSString *_backupDeviceUDID;
     NSString *_backupDeviceUUID;
     NSString *_iCPLDeviceID;
     NSString *_mPSDeviceID;
+    struct {
+        unsigned int originalLibrarySize:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSString *backupDeviceID; // @synthesize backupDeviceID=_backupDeviceID;
@@ -27,8 +31,10 @@
 @property (readonly, nonatomic) BOOL hasBackupDeviceUUID;
 @property (readonly, nonatomic) BOOL hasICPLDeviceID;
 @property (readonly, nonatomic) BOOL hasMPSDeviceID;
+@property (nonatomic) BOOL hasOriginalLibrarySize;
 @property (strong, nonatomic) NSString *iCPLDeviceID; // @synthesize iCPLDeviceID=_iCPLDeviceID;
 @property (strong, nonatomic) NSString *mPSDeviceID; // @synthesize mPSDeviceID=_mPSDeviceID;
+@property (nonatomic) long long originalLibrarySize; // @synthesize originalLibrarySize=_originalLibrarySize;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

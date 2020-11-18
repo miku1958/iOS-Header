@@ -58,6 +58,8 @@
 - (id)initWithKeySystem:(id)arg1 storageDirectoryAtURL:(id)arg2;
 - (id)initWithKeySystem:(id)arg1 storageDirectoryAtURL:(id)arg2 internal:(BOOL)arg3;
 - (id)initWithStorageDirectoryAtURL:(id)arg1;
+- (void)invalidateAllPersistableContentKeysForApp:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)invalidatePersistableContentKey:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)issueContentKeyRequest:(id)arg1;
 - (id)issueContentKeyRequestForInitializationData:(id)arg1;
 - (void)issueContentKeyRequestWithCustomURLHandler:(struct OpaqueFigCustomURLHandler *)arg1 identifier:(id)arg2 requestInfo:(struct __CFDictionary *)arg3 requestID:(unsigned long long)arg4 providesPersistableKey:(BOOL)arg5;

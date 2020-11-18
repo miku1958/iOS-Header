@@ -121,8 +121,6 @@ struct Context {
     int _field29;
     struct Context *_field30;
     unsigned long long _field31;
-    id _field32;
-    id _field33;
 };
 
 struct FastRegistration_Signatures {

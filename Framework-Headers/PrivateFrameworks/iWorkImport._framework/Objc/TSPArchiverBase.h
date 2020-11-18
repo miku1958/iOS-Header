@@ -37,6 +37,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isContentUnknown;
 @property (readonly, nonatomic) BOOL isDiff;
 @property (readonly, nonatomic) BOOL isForCopy;
+@property (readonly, nonatomic) BOOL isSavingCollaborativeDocument;
+@property (readonly, nonatomic) BOOL isSavingDocumentAs;
 @property (readonly, nonatomic) NSHashTable *lazyReferences; // @synthesize lazyReferences=_lazyReferences;
 @property (readonly, nonatomic) unsigned int messageType;
 @property (readonly, nonatomic) unsigned long long messageVersion;
@@ -67,7 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)pushScopeForField:(int)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)releaseMessage;
 - (void)setDataReference:(id)arg1 message:(struct DataReference *)arg2;
-- (void)setDataReferenceArray:(id)arg1 message:(RepeatedPtrField_5fb0b506 *)arg2;
+- (void)setDataReferenceArray:(id)arg1 message:(RepeatedPtrField_867c874a *)arg2;
 - (void)setIgnoreAndPreserveRuleForField:(int)arg1;
 - (void)setIgnoreAndPreserveRuleForFieldPath:(int *)arg1;
 - (void)setIgnoreAndPreserveUntilModifiedRuleForField:(int)arg1;
@@ -81,17 +83,17 @@ __attribute__((visibility("hidden")))
 - (void)setSparseWeakObjectUUIDReferenceArray:(id)arg1 message:(struct SparseUUIDArray *)arg2;
 - (void)setSparseWeakReferenceArray:(id)arg1 message:(struct SparseReferenceArray *)arg2;
 - (void)setStrongLazyReference:(id)arg1 message:(struct Reference *)arg2;
-- (void)setStrongLazyReferenceArray:(id)arg1 message:(RepeatedPtrField_a0d2dbe7 *)arg2;
+- (void)setStrongLazyReferenceArray:(id)arg1 message:(RepeatedPtrField_54b3089c *)arg2;
 - (void)setStrongReference:(id)arg1 message:(struct Reference *)arg2;
-- (void)setStrongReferenceArray:(id)arg1 message:(RepeatedPtrField_a0d2dbe7 *)arg2;
+- (void)setStrongReferenceArray:(id)arg1 message:(RepeatedPtrField_54b3089c *)arg2;
 - (void)setWeakLazyReference:(id)arg1 message:(struct Reference *)arg2;
 - (void)setWeakReference:(id)arg1 message:(struct Reference *)arg2;
-- (void)setWeakReferenceArray:(id)arg1 message:(RepeatedPtrField_a0d2dbe7 *)arg2;
+- (void)setWeakReferenceArray:(id)arg1 message:(RepeatedPtrField_54b3089c *)arg2;
 - (void)setWeakReferenceToObjectUUID:(id)arg1 message:(struct UUID *)arg2;
-- (void)setWeakReferenceToObjectUUIDArray:(id)arg1 message:(RepeatedPtrField_bfda3daa *)arg2;
+- (void)setWeakReferenceToObjectUUIDArray:(id)arg1 message:(RepeatedPtrField_c4607516 *)arg2;
 - (void)setWeakReferenceToObjectUUIDData:(const UUIDData_5fbc143e *)arg1 message:(struct UUID *)arg2;
 - (void)setWeakReferenceToObjectUUIDPath:(id)arg1 message:(struct UUIDPath *)arg2;
-- (void)setWeakReferenceToObjectUUIDPathArray:(id)arg1 message:(RepeatedPtrField_0a3269f6 *)arg2;
+- (void)setWeakReferenceToObjectUUIDPathArray:(id)arg1 message:(RepeatedPtrField_4f2d564d *)arg2;
 
 @end
 

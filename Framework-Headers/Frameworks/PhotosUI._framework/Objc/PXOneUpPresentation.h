@@ -24,6 +24,7 @@
         BOOL respondsToActionContext;
         BOOL respondsToGestureProvider;
         BOOL respondsToImportStatusManager;
+        BOOL respondsToOrigin;
     } _delegateFlags;
     struct {
         BOOL respondsToPresentingViewControllerViewWillAppear;
@@ -57,6 +58,7 @@
 @property (readonly, nonatomic) id<PXImportStatusManager> importStatusManager;
 @property (readonly, nonatomic) PXAssetReference *initialAssetReference;
 @property (readonly, nonatomic) PXUIMediaProvider *mediaProvider;
+@property (readonly, nonatomic) long long origin;
 @property (weak, nonatomic) UIViewController *originalPresentingViewController; // @synthesize originalPresentingViewController=_originalPresentingViewController;
 @property (readonly, nonatomic) PXPhotosDetailsContext *photosDetailsContext;
 @property (readonly, weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;

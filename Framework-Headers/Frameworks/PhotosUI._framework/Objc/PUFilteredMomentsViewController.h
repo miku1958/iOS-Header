@@ -16,12 +16,14 @@ __attribute__((visibility("hidden")))
 {
     PUFilteredMomentsDataSource *_filteredMomentsDataSource;
     NSString *_emptyPlaceholderText;
+    long long _gridPresentationContext;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *emptyPlaceholderText; // @synthesize emptyPlaceholderText=_emptyPlaceholderText;
 @property (strong, nonatomic) PUFilteredMomentsDataSource *filteredMomentsDataSource; // @synthesize filteredMomentsDataSource=_filteredMomentsDataSource;
+@property (nonatomic) long long gridPresentationContext; // @synthesize gridPresentationContext=_gridPresentationContext;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)headerView:(id)arg1 actionButtonPressed:(id)arg2;
 - (id)newEmptyPlaceholderView;
 - (id)newGridLayout;
+- (long long)oneUpPresentationOrigin;
 - (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
 - (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;

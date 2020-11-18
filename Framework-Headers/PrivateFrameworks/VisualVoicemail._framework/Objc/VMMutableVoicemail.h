@@ -6,12 +6,27 @@
 
 #import <VisualVoicemail/VMVoicemail.h>
 
+@class NSDate, NSString, NSURL;
+
 @interface VMMutableVoicemail : VMVoicemail
 {
 }
 
+@property (copy, nonatomic) NSString *callbackDestinationID; // @dynamic callbackDestinationID;
+@property (copy, nonatomic) NSString *callbackISOCountryCode; // @dynamic callbackISOCountryCode;
+@property (strong, nonatomic) NSURL *dataURL; // @dynamic dataURL;
+@property (strong, nonatomic) NSDate *date; // @dynamic date;
 @property (nonatomic, getter=isDeleted) BOOL deleted; // @dynamic deleted;
+@property (nonatomic) double duration; // @dynamic duration;
+@property (nonatomic) unsigned long long flags; // @dynamic flags;
+@property (nonatomic) unsigned long long identifier; // @dynamic identifier;
 @property (nonatomic, getter=isRead) BOOL read; // @dynamic read;
+@property (copy, nonatomic) NSString *receiverDestinationID; // @dynamic receiverDestinationID;
+@property (copy, nonatomic) NSString *receiverISOCountryCode; // @dynamic receiverISOCountryCode;
+@property (nonatomic) unsigned long long remoteUID; // @dynamic remoteUID;
+@property (copy, nonatomic) NSString *senderDestinationID; // @dynamic senderDestinationID;
+@property (copy, nonatomic) NSString *senderISOCountryCode; // @dynamic senderISOCountryCode;
+@property (strong, nonatomic) NSURL *transcriptionURL; // @dynamic transcriptionURL;
 @property (nonatomic, getter=isTrashed) BOOL trashed; // @dynamic trashed;
 
 @end

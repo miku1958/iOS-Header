@@ -6,14 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-#import <PassKitUI/PKPassFaceDelegate-Protocol.h>
 #import <PassKitUI/PKPasscodeLockManagerObserver-Protocol.h>
 #import <PassKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, PKPass, PKPassColorProfile, PKPassFrontFaceView, PKPasscodeLockManager, UITapGestureRecognizer;
+@class NSMutableArray, NSString, PKPass, PKPassColorProfile, PKPassFrontFaceView, PKPasscodeLockManager, UITapGestureRecognizer;
 @protocol WLCardViewDelegate;
 
-@interface PKPassView : UIView <PKPassFaceDelegate, UIGestureRecognizerDelegate, PKPasscodeLockManagerObserver>
+@interface PKPassView : UIView <UIGestureRecognizerDelegate, PKPasscodeLockManagerObserver>
 {
     PKPassFrontFaceView *_frontFace;
     PKPassColorProfile *_colorProfile;
@@ -22,6 +21,8 @@
     PKPasscodeLockManager *_passcodeLockManager;
     unsigned long long _contentModeToken;
     NSString *_suppressingIdentifier;
+    NSMutableArray *_delayedAnimations;
+    BOOL _invalidated;
     BOOL _modallyPresented;
     PKPass *_pass;
     id<WLCardViewDelegate> _delegate;
@@ -41,9 +42,9 @@
 @property (nonatomic) double modalShadowVisibility; // @synthesize modalShadowVisibility=_modalShadowVisibility;
 @property (nonatomic, getter=isModallyPresented) BOOL modallyPresented; // @synthesize modallyPresented=_modallyPresented;
 @property (readonly, strong, nonatomic) PKPass *pass; // @synthesize pass=_pass;
+@property (nonatomic, getter=isPaused) BOOL paused;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;
-@property (readonly, nonatomic) BOOL suppressesPile;
 @property (readonly, nonatomic) NSString *uniqueID;
 
 - (void).cxx_destruct;
@@ -64,11 +65,9 @@
 - (id)initWithPass:(id)arg1;
 - (id)initWithPass:(id)arg1 content:(long long)arg2;
 - (id)initWithPass:(id)arg1 content:(long long)arg2 suppressedContent:(unsigned long long)arg3;
+- (void)invalidate;
 - (id)item;
 - (void)layoutSubviews;
-- (BOOL)passFaceDeleteButtonEnabled;
-- (void)passFaceDeleteButtonPressed:(id)arg1;
-- (void)passFaceInfoButtonPressed:(id)arg1;
 - (void)passcodeLockManager:(id)arg1 didReceivePasscodeSet:(BOOL)arg2;
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resizePassAnimated:(BOOL)arg1 notify:(BOOL)arg2;

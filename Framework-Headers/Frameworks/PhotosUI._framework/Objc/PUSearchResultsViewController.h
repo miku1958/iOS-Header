@@ -84,6 +84,7 @@
 - (id)_axDummyCell;
 - (void)_configureCell:(id)arg1 inTableView:(id)arg2 atIndexAPath:(id)arg3;
 - (id)_configureContentViewForCell:(id)arg1;
+- (void)_configureContext:(id)arg1;
 - (id)_configureSuggestionsContentViewForCell:(id)arg1;
 - (void)_configureTopResultsCell:(id)arg1 atIndexPath:(id)arg2;
 - (id)_correctedIndexPathForIndexPath:(id)arg1;
@@ -134,6 +135,7 @@
 - (id)oneUpPresentationDataSourceManager:(id)arg1;
 - (id)oneUpPresentationInitialAssetReference:(id)arg1;
 - (id)oneUpPresentationMediaProvider:(id)arg1;
+- (long long)oneUpPresentationOrigin:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarCancelButtonClicked:(id)arg1;

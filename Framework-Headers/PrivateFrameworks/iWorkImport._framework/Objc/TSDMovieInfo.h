@@ -17,19 +17,19 @@ __attribute__((visibility("hidden")))
 @interface TSDMovieInfo : TSDMediaInfo <KNImplicitAmbientAnimating, TSDMixing, TSDCompatibilityAwareMediaContainer, TSDPlayableInfo>
 {
     TSPData *mMovieData;
-    NSURL *mMovieRemoteURL;
     TSPData *mImportedAuxiliaryMovieData;
     NSString *mImportedAuxiliaryMovieDataOriginalFilename;
+    BOOL mAudioOnly;
     TSPData *mAudioOnlyImageData;
     double mStartTime;
     double mEndTime;
     double mPosterTime;
+    long long mLoopOption;
+    float mVolume;
+    NSURL *mMovieRemoteURL;
     TSPData *mPosterImageData;
     BOOL mPosterImageGeneratedWithAlphaSupport;
     struct CGSize mNaturalSize;
-    long long mLoopOption;
-    float mVolume;
-    BOOL mAudioOnly;
     BOOL mStreaming;
     BOOL mNativeAudioRecording;
     TSDMediaStyle *mStyle;
@@ -77,7 +77,6 @@ __attribute__((visibility("hidden")))
 - (double)doubleValueForProperty:(int)arg1;
 - (float)floatValueForProperty:(int)arg1;
 - (id)generateEmptyPosterImageForContext:(id)arg1;
-- (id)initWithContext:(id)arg1 geometry:(id)arg2;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 movieData:(id)arg4 loadedAsset:(id)arg5;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 movieRemoteURL:(id)arg4 loadedAsset:(id)arg5;
@@ -116,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsStyleInspecting;
 - (id)synchronouslyGenerateDefaultPosterImageForContext:(id)arg1;
 - (id)synchronouslyGenerateNewPosterImageForAsset:(id)arg1 time:(double)arg2;
+- (void)takePropertiesFromReplacedMediaInfo:(id)arg1;
 - (id)typesToPromiseWhenCopyingSingleDrawable;
 - (BOOL)willRenderContentViaImager;
 

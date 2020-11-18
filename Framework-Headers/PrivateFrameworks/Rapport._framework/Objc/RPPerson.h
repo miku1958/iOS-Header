@@ -8,29 +8,36 @@
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString;
+@class CURangingMeasurement, NSArray, NSMutableDictionary, NSString;
 
 @interface RPPerson : NSObject <NSSecureCoding>
 {
+    int _activityLevel;
     unsigned int _flags;
     int _proximity;
+    NSString *_contactID;
     NSArray *_devices;
     NSString *_identifier;
     NSString *_name;
+    CURangingMeasurement *_relativeLocation;
     struct NSMutableDictionary *_deviceDict;
 }
 
+@property (readonly, nonatomic) int activityLevel; // @synthesize activityLevel=_activityLevel;
+@property (readonly, copy, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;
 @property (strong, nonatomic) NSMutableDictionary *deviceDict; // @synthesize deviceDict=_deviceDict;
 @property (readonly, copy, nonatomic) NSArray *devices; // @synthesize devices=_devices;
 @property (readonly, nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) int proximity; // @synthesize proximity=_proximity;
+@property (readonly) CURangingMeasurement *relativeLocation; // @synthesize relativeLocation=_relativeLocation;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (unsigned int)_updateDeviceDerivedInfo;
 - (id)description;
+- (id)descriptionWithLevel:(int)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned int)removeRPDevice:(id)arg1;

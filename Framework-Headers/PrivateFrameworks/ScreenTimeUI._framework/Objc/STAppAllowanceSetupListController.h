@@ -22,12 +22,15 @@
 @property (copy, nonatomic) NSSet *installedBundleIDs; // @synthesize installedBundleIDs=_installedBundleIDs;
 
 - (void).cxx_destruct;
+- (void)_selectInitialSelectedIdentifiersIfNeeded;
 - (void)addButtonTapped:(id)arg1;
 - (id)appSpecifiersForBundleIDs:(id)arg1;
 - (id)createChooseAppsSpecifiers;
+- (id)initWithSelectedIdentifiers:(id)arg1 creatingNewAllowance:(BOOL)arg2;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (id)specifiers;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

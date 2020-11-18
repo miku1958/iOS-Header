@@ -18,30 +18,36 @@
     long long _cellularRadioAccessTechnology;
     long long _onboardingVersion;
     long long _reachabilityStatus;
+    NSString *_bundleIap;
     NSData *_clickThroughRateByPersonalizationFeatureIDData;
     NSString *_contentStoreFrontID;
     NSString *_localeIdentifier;
     NSString *_todaySourceIdentifier;
     NSString *_userID;
     NTPBTodayWidgetConfig *_widgetConfig;
+    BOOL _isBundleSubscriber;
     BOOL _wifiReachable;
     struct {
         unsigned int appConfigTreatmentIDInteger:1;
         unsigned int cellularRadioAccessTechnology:1;
         unsigned int onboardingVersion:1;
         unsigned int reachabilityStatus:1;
+        unsigned int isBundleSubscriber:1;
         unsigned int wifiReachable:1;
     } _has;
 }
 
 @property (nonatomic) long long appConfigTreatmentIDInteger; // @synthesize appConfigTreatmentIDInteger=_appConfigTreatmentIDInteger;
+@property (strong, nonatomic) NSString *bundleIap; // @synthesize bundleIap=_bundleIap;
 @property (nonatomic) long long cellularRadioAccessTechnology; // @synthesize cellularRadioAccessTechnology=_cellularRadioAccessTechnology;
 @property (strong, nonatomic) NSData *clickThroughRateByPersonalizationFeatureIDData; // @synthesize clickThroughRateByPersonalizationFeatureIDData=_clickThroughRateByPersonalizationFeatureIDData;
 @property (strong, nonatomic) NSString *contentStoreFrontID; // @synthesize contentStoreFrontID=_contentStoreFrontID;
 @property (nonatomic) BOOL hasAppConfigTreatmentIDInteger;
+@property (readonly, nonatomic) BOOL hasBundleIap;
 @property (nonatomic) BOOL hasCellularRadioAccessTechnology;
 @property (readonly, nonatomic) BOOL hasClickThroughRateByPersonalizationFeatureIDData;
 @property (readonly, nonatomic) BOOL hasContentStoreFrontID;
+@property (nonatomic) BOOL hasIsBundleSubscriber;
 @property (readonly, nonatomic) BOOL hasLocaleIdentifier;
 @property (nonatomic) BOOL hasOnboardingVersion;
 @property (nonatomic) BOOL hasReachabilityStatus;
@@ -49,6 +55,7 @@
 @property (readonly, nonatomic) BOOL hasUserID;
 @property (readonly, nonatomic) BOOL hasWidgetConfig;
 @property (nonatomic) BOOL hasWifiReachable;
+@property (nonatomic) BOOL isBundleSubscriber; // @synthesize isBundleSubscriber=_isBundleSubscriber;
 @property (strong, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
 @property (nonatomic) long long onboardingVersion; // @synthesize onboardingVersion=_onboardingVersion;
 @property (nonatomic) long long reachabilityStatus; // @synthesize reachabilityStatus=_reachabilityStatus;

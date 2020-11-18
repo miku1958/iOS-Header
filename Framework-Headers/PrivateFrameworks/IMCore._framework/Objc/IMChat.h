@@ -393,6 +393,7 @@
 - (void)updateIsFiltered:(BOOL)arg1;
 - (void)updateMessage:(id)arg1;
 - (void)updateMessage:(id)arg1 flags:(unsigned long long)arg2;
+- (void)updateShouldForceToSMS:(BOOL)arg1;
 - (void)updateWasDetectedAsSMSSpam:(BOOL)arg1;
 - (void)updateWatermarks;
 - (void)userToggledReadReceiptSwitch:(BOOL)arg1;

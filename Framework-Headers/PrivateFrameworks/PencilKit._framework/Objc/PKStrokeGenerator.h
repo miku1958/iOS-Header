@@ -102,6 +102,7 @@
 - (void)drawingCancelledWithCompletion:(CDUnknownBlockType)arg1;
 - (void)drawingEndedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)drawingUpdateAllPoints;
+- (void)drawingUpdateAllPointsDidTimeout:(BOOL)arg1;
 - (void)drawingUpdatePoint:(CDStruct_f17e9403)arg1;
 - (long long)fetchFilteredPointsFromIndex:(long long)arg1 accessBlock:(CDUnknownBlockType)arg2;
 - (vector_58517711 *)getInputUpdatedRangeFromIndex:(inout unsigned long long *)arg1;

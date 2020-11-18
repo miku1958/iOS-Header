@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
         unsigned int isReadingFromDocument:1;
         unsigned int ignoreUnknownContent:1;
         unsigned int ignoreVersionChecking:1;
+        unsigned int hasIncompatibleVersion:1;
         unsigned int acceptUnknownDocumentObject:1;
     } _flags;
 }
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)didUnarchiveObject:(id)arg1 withUnarchiver:(id)arg2;
 - (id)initWithComponent:(id)arg1 finalizeHandlerQueue:(id)arg2 delegate:(id)arg3;
 - (id)initWithComponent:(id)arg1 finalizeHandlerQueue:(id)arg2 delegate:(id)arg3 readChannel:(id)arg4;
+- (id)initWithComponent:(id)arg1 finalizeHandlerQueue:(id)arg2 delegate:(id)arg3 readChannel:(id)arg4 ignoreUnknownContent:(BOOL)arg5 ignoreVersionChecking:(BOOL)arg6;
 - (id)newUnarchiverWithArchiveInfo:(const struct ArchiveInfo *)arg1 stream:(struct DispatchDataInputStream *)arg2 isUnknownObject:(BOOL *)arg3;
 - (id)newUnarchiverWithObjectIdentifier:(long long)arg1 messageInfo:(const struct MessageInfo *)arg2 message:(auto_ptr_4370f086 *)arg3 messageVersion:(unsigned long long)arg4 strongReferences:(auto_ptr_945ad503)arg5 unknownContent:(id)arg6;
 - (BOOL)shouldProceedParsingOnFailure;

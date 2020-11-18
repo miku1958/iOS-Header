@@ -15,6 +15,7 @@
     CDUnknownBlockType _changeCallback;
     NSData *_salt;
     CKRecordID *_saltAtomicReferenceId;
+    NSNumber *_saltUsesManatee;
     CKServerChangeToken *_syncToken;
     NSNumber *_hasSubscription;
     NSNumber *_eventsWereRemovedFromEventKit;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) NSString *primaryICloudCalendarAccount; // @synthesize primaryICloudCalendarAccount=_primaryICloudCalendarAccount;
 @property (strong, nonatomic) NSData *salt; // @synthesize salt=_salt;
 @property (strong, nonatomic) CKRecordID *saltAtomicReferenceId; // @synthesize saltAtomicReferenceId=_saltAtomicReferenceId;
+@property (strong, nonatomic) NSNumber *saltUsesManatee; // @synthesize saltUsesManatee=_saltUsesManatee;
 @property (strong, nonatomic) CKServerChangeToken *syncToken; // @synthesize syncToken=_syncToken;
 
 + (id)properties;

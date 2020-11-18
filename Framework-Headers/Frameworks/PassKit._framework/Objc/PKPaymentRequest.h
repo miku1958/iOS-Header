@@ -16,6 +16,7 @@
     BOOL _suppressTotal;
     BOOL _shippingEditable;
     BOOL _requiresAddressPrecision;
+    BOOL _supportsInstantFundsIn;
     NSString *_merchantIdentifier;
     NSString *_countryCode;
     NSArray *_supportedNetworks;
@@ -52,6 +53,8 @@
     NSString *_localizedPasswordButtonTitle;
     NSString *_shippingEditableMessage;
     PKPaymentMerchantSession *_merchantSession;
+    NSString *_passTypeIdentifier;
+    NSString *_passSerialNumber;
     double _clientCallbackTimeout;
 }
 
@@ -77,6 +80,8 @@
 @property (copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 @property (strong, nonatomic) PKPaymentMerchantSession *merchantSession; // @synthesize merchantSession=_merchantSession;
 @property (strong, nonatomic) NSURL *originatingURL; // @synthesize originatingURL=_originatingURL;
+@property (copy, nonatomic) NSString *passSerialNumber; // @synthesize passSerialNumber=_passSerialNumber;
+@property (copy, nonatomic) NSString *passTypeIdentifier; // @synthesize passTypeIdentifier=_passTypeIdentifier;
 @property (copy, nonatomic) NSArray *paymentContentItems; // @synthesize paymentContentItems=_paymentContentItems;
 @property (copy, nonatomic) NSArray *paymentSummaryItems; // @synthesize paymentSummaryItems=_paymentSummaryItems;
 @property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
@@ -96,6 +101,7 @@
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
 @property (copy, nonatomic) NSSet *supportedCountries; // @synthesize supportedCountries=_supportedCountries;
 @property (copy, nonatomic) NSArray *supportedNetworks; // @synthesize supportedNetworks=_supportedNetworks;
+@property (nonatomic) BOOL supportsInstantFundsIn; // @synthesize supportsInstantFundsIn=_supportsInstantFundsIn;
 @property (nonatomic) BOOL suppressTotal; // @synthesize suppressTotal=_suppressTotal;
 @property (strong, nonatomic) NSArray *thumbnailURLs; // @synthesize thumbnailURLs=_thumbnailURLs;
 
@@ -112,10 +118,12 @@
 - (id)_addressFieldsToContactFields:(unsigned long long)arg1;
 - (unsigned long long)_contactFieldsToAddressFields:(id)arg1;
 - (id)_transactionAmount;
+- (id)disbursementPaymentRequest;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;
+- (BOOL)isDisbursementPaymentRequest;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPaymentRequest:(id)arg1;
 - (BOOL)isPeerPaymentRequest;

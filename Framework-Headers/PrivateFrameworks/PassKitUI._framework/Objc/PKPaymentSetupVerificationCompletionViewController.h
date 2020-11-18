@@ -22,6 +22,7 @@
     PKPaymentSetupFooterView *_tableFooter;
     UIColor *_editableTextFieldColor;
     long long _mode;
+    BOOL _offerOtherMethods;
     PKPaymentVerificationController *_verificationController;
     PKPaymentProvisioningController *_provisioningController;
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
@@ -48,7 +49,7 @@
 - (void)_submitVerificationCode;
 - (void)_terminateFlow;
 - (void)dealloc;
-- (id)initWithVerificationController:(id)arg1 mode:(long long)arg2;
+- (id)initWithVerificationController:(id)arg1 mode:(long long)arg2 offerOtherMethods:(BOOL)arg3;
 - (void)loadView;
 - (void)next:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;

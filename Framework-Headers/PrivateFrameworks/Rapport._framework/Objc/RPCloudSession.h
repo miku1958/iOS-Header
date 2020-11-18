@@ -31,6 +31,7 @@
     unsigned int _pairSetupFlags;
     unsigned int _pairVerifyFlags;
     int _passwordType;
+    int _passwordTypeActual;
     unsigned int _destinationPort;
     unsigned int _sourcePort;
     NSString *_password;
@@ -63,6 +64,7 @@
 @property (nonatomic) unsigned int pairVerifyFlags; // @synthesize pairVerifyFlags=_pairVerifyFlags;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (nonatomic) int passwordType; // @synthesize passwordType=_passwordType;
+@property (readonly, nonatomic) int passwordTypeActual; // @synthesize passwordTypeActual=_passwordTypeActual;
 @property (copy, nonatomic) CDUnknownBlockType promptForPasswordHandler; // @synthesize promptForPasswordHandler=_promptForPasswordHandler;
 @property (strong, nonatomic) RPCloudXPCConnection *serverXPCCnx; // @synthesize serverXPCCnx=_serverXPCCnx;
 @property (copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
@@ -82,8 +84,8 @@
 - (void)_invalidated;
 - (void)_pairSetupInvalidate;
 - (void)_pairVerifyInvalidate;
-- (void)_receivedFrameHeader:(const CDStruct_793dca1b *)arg1 encryptedBodyPtr:(const char *)arg2 bodyLen:(unsigned long long)arg3 fromID:(id)arg4;
-- (void)_receivedFrameHeader:(const CDStruct_793dca1b *)arg1 unencryptedBodyPtr:(const char *)arg2 bodyLen:(unsigned long long)arg3 fromID:(id)arg4;
+- (void)_receivedFrameHeader:(const CDStruct_d0ed6788 *)arg1 encryptedBodyPtr:(const char *)arg2 bodyLen:(unsigned long long)arg3 fromID:(id)arg4;
+- (void)_receivedFrameHeader:(const CDStruct_d0ed6788 *)arg1 unencryptedBodyPtr:(const char *)arg2 bodyLen:(unsigned long long)arg3 fromID:(id)arg4;
 - (void)_receivedStopUnencrypted:(id)arg1;
 - (void)_run;
 - (void)_sendFrameType:(unsigned char)arg1 destinationID:(id)arg2 unencryptedObject:(id)arg3 completion:(CDUnknownBlockType)arg4;

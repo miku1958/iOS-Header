@@ -20,6 +20,7 @@
 @property (readonly, nonatomic, getter=isCloningSupported) BOOL cloningSupported;
 @property (copy, nonatomic) NSString *colorMode;
 @property (readonly, nonatomic) unsigned int connectionSeed;
+@property (readonly, nonatomic) NSString *containerId;
 @property (strong, nonatomic) CADisplayMode *currentMode;
 @property (readonly, nonatomic) NSString *deviceName;
 @property (readonly, nonatomic) unsigned int displayId;

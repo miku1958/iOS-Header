@@ -9,6 +9,8 @@
 @class NSNumber, NSString, NSXPCListenerEndpoint, PKPaymentRequest;
 
 @protocol PDInAppPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
+- (void)cardDataForMerchantIdentifier:(NSString *)arg1 countryCode:(NSString *)arg2 completion:(void (^)(PKAMPCardRegistrationResponse *))arg3;
+- (void)cardsAvailableForAMPWithCountryCode:(NSString *)arg1 completion:(void (^)(long long))arg2;
 - (void)merchantStatusCheck:(NSString *)arg1 merchantDomain:(NSString *)arg2 sourceApplicationSecondaryIdentifier:(NSString *)arg3 handler:(void (^)(BOOL, NSError *))arg4;
 - (void)paymentHardwareStatusWithCompletion:(void (^)(PKPaymentHardwareStatus *))arg1;
 - (void)paymentServicesMerchantURLForAPIType:(unsigned long long)arg1 handler:(void (^)(BOOL, NSURL *))arg2;

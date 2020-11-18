@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *participantGridViewControllerDelegate;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)forceBumpPriority;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

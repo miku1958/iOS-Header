@@ -13,35 +13,35 @@
 __attribute__((visibility("hidden")))
 @interface TNSheetUIState : NSObject <NSCopying>
 {
-    BOOL mHasVisibleRect;
-    BOOL mHasPreviousVisibleRect;
-    float mViewScale;
-    float mPreviousViewScale;
-    long long mDeviceIdiom;
-    TSKSelectionPath *mSelectionPath;
-    struct CGRect mVisibleRect;
-    struct CGRect mPreviousVisibleRect;
+    BOOL _hasVisibleRect;
+    BOOL _hasPreviousVisibleRect;
+    float _viewScale;
+    float _previousViewScale;
+    long long _archivedDeviceIdiom;
+    TSKSelectionPath *_selectionPath;
+    struct CGRect _visibleRect;
+    struct CGRect _previousVisibleRect;
 }
 
-@property (nonatomic) long long archivedDeviceIdiom; // @synthesize archivedDeviceIdiom=mDeviceIdiom;
-@property (nonatomic) BOOL hasPreviousVisibleRect; // @synthesize hasPreviousVisibleRect=mHasPreviousVisibleRect;
-@property (nonatomic) BOOL hasVisibleRect; // @synthesize hasVisibleRect=mHasVisibleRect;
+@property (nonatomic) long long archivedDeviceIdiom; // @synthesize archivedDeviceIdiom=_archivedDeviceIdiom;
+@property (nonatomic) BOOL hasPreviousVisibleRect; // @synthesize hasPreviousVisibleRect=_hasPreviousVisibleRect;
+@property (nonatomic) BOOL hasVisibleRect; // @synthesize hasVisibleRect=_hasVisibleRect;
 @property (readonly, nonatomic) struct CGPoint previousScrollPosition;
-@property (nonatomic) float previousViewScale; // @synthesize previousViewScale=mPreviousViewScale;
-@property (nonatomic) struct CGRect previousVisibleRect; // @synthesize previousVisibleRect=mPreviousVisibleRect;
+@property (nonatomic) float previousViewScale; // @synthesize previousViewScale=_previousViewScale;
+@property (nonatomic) struct CGRect previousVisibleRect; // @synthesize previousVisibleRect=_previousVisibleRect;
 @property (readonly, nonatomic) struct CGPoint scrollPosition;
-@property (strong, nonatomic) TSKSelectionPath *selectionPath; // @synthesize selectionPath=mSelectionPath;
-@property (nonatomic) float viewScale; // @synthesize viewScale=mViewScale;
-@property (nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=mVisibleRect;
+@property (strong, nonatomic) TSKSelectionPath *selectionPath; // @synthesize selectionPath=_selectionPath;
+@property (nonatomic) float viewScale; // @synthesize viewScale=_viewScale;
+@property (nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 
 + (long long)currentDeviceIdiom;
 + (id)sheetUIState;
 + (id)sheetUIStateWithPreviousVisibleRect:(struct CGRect)arg1;
 + (id)sheetUIStateWithVisibleRect:(struct CGRect)arg1;
+- (void).cxx_destruct;
 - (void)clearPreviousVisibleRect;
 - (void)clearVisibleRect;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithArchive:(const struct SheetUIStateArchive *)arg1 unarchiver:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

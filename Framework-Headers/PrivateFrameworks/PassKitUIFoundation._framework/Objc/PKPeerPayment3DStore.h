@@ -33,10 +33,11 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)charactersForText:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)charactersForText:(id)arg1 completion:(CDUnknownBlockType)arg2 synchronously:(BOOL)arg3;
 - (id)init;
 - (id)material;
-- (void)newSceneWithCompletion:(CDUnknownBlockType)arg1;
+- (void)motionManager:(id)arg1 didReceiveMotion:(id)arg2;
+- (void)newSceneWithCompletion:(CDUnknownBlockType)arg1 synchronously:(BOOL)arg2;
 - (id)nodeForCharacter:(id)arg1;
 - (void)relinquishScene:(id)arg1;
 - (void)sceneDidBecomeActive:(id)arg1;

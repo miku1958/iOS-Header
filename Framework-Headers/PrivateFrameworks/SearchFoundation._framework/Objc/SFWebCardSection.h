@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFWebCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFUserReportRequest;
 
 @interface SFWebCardSection : SFCardSection <SFWebCardSection, NSSecureCoding, NSCopying>
 {
@@ -49,6 +49,7 @@
 @property (nonatomic) int separatorStyle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

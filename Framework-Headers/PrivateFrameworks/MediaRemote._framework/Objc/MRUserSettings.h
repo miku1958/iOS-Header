@@ -14,11 +14,18 @@
     BOOL _externalDevicePairingAllowed;
 }
 
+@property (readonly, nonatomic) double activeSystemEndpointStartupDelayToAllowAllPreviousClientsTimeToInitializeInterval;
 @property (readonly, nonatomic) double airPlayOutputContextInitTimeoutDuration;
 @property (readonly, nonatomic) double bluetoothDeviceResumeDuration;
 @property (readonly, nonatomic) double broadcastCommandWaitDuration;
 @property (readonly, nonatomic) BOOL computeNowPlayingApplication;
+@property (readonly, nonatomic) BOOL connectToAllEndpointsWhenAnyEndpointBeginsPlayback;
+@property (readonly, nonatomic) BOOL connectToEndpointWhenBeginsPlayback;
+@property (readonly, nonatomic) BOOL connectToUserSelectedEndpoint;
 @property (strong, nonatomic) NSArray *connectedClientPIDs;
+@property (readonly, nonatomic) double deviceRecentlyUsedInterval;
+@property (readonly, nonatomic) double discoverEndpointTimeoutInterval;
+@property (readonly, nonatomic) double endpointRecentlyUserSelectedInterval;
 @property (readonly, nonatomic) double externalDeviceDisconnectSleepDuration;
 @property (readonly, nonatomic) double externalDeviceDisconnectWaitDuration;
 @property (readonly, nonatomic) double externalDeviceNowPlayingInfoArtworkCoalesceDuration;
@@ -29,9 +36,11 @@
 @property (readonly, nonatomic) double externalDeviceTimeoutDuration;
 @property (readonly, nonatomic) BOOL hasExternalDeviceSocketQOSLevelSet;
 @property (readonly, nonatomic) long long maxTransactionMemorySize;
+@property (readonly, nonatomic) double mediaRecentlyPlayedInterval;
+@property (readonly, nonatomic) BOOL needNowPlayingForegroundState;
 @property (readonly, nonatomic) double nowPlayingApplicationTimeout;
-@property (readonly, nonatomic) double pauseWhileOnLockScreenTimeout;
 @property (readonly, nonatomic) BOOL shouldInitializeGenericBonjourService;
+@property (readonly, nonatomic) BOOL shouldInitializeRapportService;
 @property (readonly, nonatomic) BOOL shouldInitializeTelevisionBonjourService;
 @property (readonly, nonatomic) BOOL shouldLogArtwork;
 @property (readonly, nonatomic) BOOL shouldLogPairingSetupCode;
@@ -40,10 +49,12 @@
 @property (readonly, nonatomic) double transactionWaitDurationOnOutOfMemory;
 @property (readonly, nonatomic) double transactionWaitDurationOnXpcSend;
 @property (readonly, nonatomic) BOOL useDebugAVRouteWithoutVolumeControl;
+@property (readonly, nonatomic) BOOL useDeviceLockStateToRestoreDeferredPlayerPaths;
 @property (readonly, nonatomic) BOOL useExternalDeviceSystemPairing;
 @property (readonly, nonatomic) BOOL useGenericTransportForHostedEndpoints;
 @property (readonly, nonatomic) BOOL useNoDelayOptionForExternalDeviceSockets;
 @property (readonly, nonatomic) BOOL usePeerToPeerExternalDeviceConnections;
+@property (readonly, nonatomic) BOOL useProactiveEndpoint;
 @property (readonly, nonatomic) BOOL useSystemAudioContextForAirPlayTransport;
 
 + (id)currentSettings;

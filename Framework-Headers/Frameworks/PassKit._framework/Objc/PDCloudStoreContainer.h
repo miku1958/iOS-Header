@@ -66,7 +66,6 @@
 - (void)_fetchAllSubscriptionsWithOperationGroupNameSuffix:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchRecordZonesWithOperationGroupNameSuffix:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchRecordsWithQuery:(id)arg1 operationGroupName:(id)arg2 cursor:(id)arg3 fetchedRecords:(id)arg4 zone:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)_fetchRecordsWithQuery:(id)arg1 operationGroupName:(id)arg2 zone:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_keychainSyncFinishedFired;
 - (void)_markEndCloudStoreDatabaseSetupWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)_modifyRecordsOperationWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -96,10 +95,13 @@
 - (void)fetchAndStoreChangesWithForceFetch:(BOOL)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)fetchAndStoreChangesWithForceFetch:(BOOL)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 userInfo:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)fetchAndStoreChangesWithOperationGroupName:(id)arg1 operationGroupNameSuffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchRecordsWithQuery:(id)arg1 operationGroupName:(id)arg2 zone:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)fetchRecordsWithRecordIDs:(id)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithDataSource:(id)arg1;
 - (void)initialCloudDatabaseSetupWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initialCloudDatabaseSetupWithOperationGroupNameSuffix:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)invalidateCloudStoreIfPossible;
+- (void)invalidateCloudStoreIfPossibleWithOperationGroupNameSuffix:(id)arg1;
 - (void)invalidateCloudStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (void)invalidateCloudStoreWithOperationGroupNameSuffix:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)isSetup;

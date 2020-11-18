@@ -159,14 +159,6 @@ struct __sbuf {
 struct libSwiftRemoteMirrorWrapper {
     struct SwiftReflectionInteropContext *_field1;
     unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    BOOL _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    unsigned char _field9;
-    unsigned char _field10;
 };
 
 struct malloc_introspection_t;

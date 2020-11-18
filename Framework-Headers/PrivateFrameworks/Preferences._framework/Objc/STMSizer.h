@@ -6,26 +6,26 @@
 
 #import <Preferences/STMSizeCache.h>
 
-@class NSArray, NSObject;
-@protocol OS_dispatch_queue;
+@class NSArray, NSMutableDictionary;
 
 @interface STMSizer : STMSizeCache
 {
-    NSObject<OS_dispatch_queue> *_fsQueue;
+    struct os_unfair_lock_s _pendingEventsLock;
+    NSMutableDictionary *_pendingEventsByPath;
     struct __FSEventStream *_fsStream;
     BOOL _streamRunning;
     NSArray *_rootPaths;
-    NSObject<OS_dispatch_queue> *_updateQueue;
 }
 
 @property (strong, nonatomic) NSArray *rootPaths; // @synthesize rootPaths=_rootPaths;
-@property (strong) NSObject<OS_dispatch_queue> *updateQueue; // @synthesize updateQueue=_updateQueue;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithPrefsKey:(id)arg1;
-- (void)pathChanged:(id)arg1 flags:(unsigned int)arg2 event:(unsigned long long)arg3;
+- (void)processEvents:(id)arg1;
+- (void)setEvent:(id)arg1 forItem:(id)arg2;
 - (void)startSizer;
+- (void)startSizing:(id)arg1;
 - (void)stopSizer;
 
 @end

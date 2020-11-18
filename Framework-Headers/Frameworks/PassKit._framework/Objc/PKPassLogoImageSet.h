@@ -34,6 +34,7 @@
 @property (strong, nonatomic) PKImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 
 + (id)archiveName;
++ (unsigned int)currentVersion;
 + (long long)imageSetType;
 + (BOOL)shouldCache;
 + (BOOL)supportsSecureCoding;

@@ -9,16 +9,17 @@
 #import <iWorkImport/TSTGroupByChangeProtocol-Protocol.h>
 #import <iWorkImport/TSTTableTileCreating-Protocol.h>
 
-@class TSTCategoryAggregateFormulaOwner, TSTColumnRowUIDMap, TSTInfo, TSTSummaryCellVendor, TSTTableDataStore;
+@class TSTCategoryAggregateFormulaOwner, TSTColumnRowUIDMap, TSTSummaryCellVendor, TSTTableDataStore, TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTSummaryModel : TSPObject <TSTTableTileCreating, TSTGroupByChangeProtocol>
 {
+    BOOL _needsFormulaReset;
     TSTTableDataStore *_dataStore;
     TSTColumnRowUIDMap *_columnRowUIDMap;
     TSTSummaryCellVendor *_summaryCellVendor;
     TSTCategoryAggregateFormulaOwner *_aggregateFormulaOwner;
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     double _categoryColumnWidth;
     UUIDData_5fbc143e _aggregateFormulaOwnerUID;
     vector_b67dfe3a _summaryRowHeightList;
@@ -33,11 +34,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSTTableDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property (readonly, nonatomic) vector_b67dfe3a *labelRowHeightList; // @synthesize labelRowHeightList=_labelRowHeightList;
 @property (readonly, nonatomic) vector_12bd641b *labelRowVisibilityList; // @synthesize labelRowVisibilityList=_labelRowVisibilityList;
+@property (nonatomic) BOOL needsFormulaReset; // @synthesize needsFormulaReset=_needsFormulaReset;
 @property (readonly, nonatomic) struct TSUModelColumnIndex numberOfColumns;
 @property (readonly, nonatomic) struct TSUModelRowIndex numberOfRows;
 @property (readonly, nonatomic) TSTSummaryCellVendor *summaryCellVendor; // @synthesize summaryCellVendor=_summaryCellVendor;
 @property (readonly, nonatomic) vector_b67dfe3a *summaryRowHeightList; // @synthesize summaryRowHeightList=_summaryRowHeightList;
-@property (readonly, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (readonly, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 
 + (unsigned char)categoryLevelForTableStyleArea:(unsigned long long)arg1;
 + (unsigned long long)tableStyleAreaForCategoryLevel:(unsigned char)arg1 isLabel:(BOOL)arg2;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (unsigned short)_appendColumnWithUID:(const UUIDData_5fbc143e *)arg1;
 - (unsigned int)_appendRowWithUID:(const UUIDData_5fbc143e *)arg1;
 - (void)addPasteboardCustomFormatsToDocumentAndUpdateCells;
+- (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)allRichTextStorages;
 - (BOOL)cellExistsAtCellCoord:(struct TSUModelCellCoord)arg1;
 - (id)cellStyleAtCellCoord:(struct TSUModelCellCoord)arg1 isDefault:(out BOOL *)arg2;
@@ -53,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (id)cellStyleOfRowAtIndex:(struct TSUModelRowIndex)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleOfSummaryLabelRowAtLevel:(unsigned char)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleOfSummaryRowAtLevel:(unsigned char)arg1 isDefault:(out BOOL *)arg2;
-- (id)copyWithContext:(id)arg1 tableInfo:(id)arg2;
 - (id)currentState;
 - (id)defaultCellStyleForCellCoord:(struct TSUModelCellCoord)arg1;
 - (id)defaultTextStyleForCellCoord:(struct TSUModelCellCoord)arg1;

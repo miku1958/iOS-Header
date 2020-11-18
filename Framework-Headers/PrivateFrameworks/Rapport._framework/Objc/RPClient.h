@@ -37,6 +37,7 @@
 - (void)diagnosticLogControl:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)diagnosticShow:(id)arg1 level:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getIdentitiesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getIdentitiesWithFlags:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)invalidate;
 - (void)primaryAccountSignedInWithCompletion:(CDUnknownBlockType)arg1;

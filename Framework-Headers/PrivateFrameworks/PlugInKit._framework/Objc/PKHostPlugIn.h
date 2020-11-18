@@ -109,6 +109,7 @@
 - (void)startPlugInSynchronously:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)suspend;
 - (void)unwind:(unsigned long long)arg1 force:(BOOL)arg2;
+- (void)updateFromForm:(id)arg1;
 - (BOOL)useBundle:(id)arg1 error:(id *)arg2;
 
 @end

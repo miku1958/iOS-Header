@@ -118,6 +118,7 @@
 + (id)currentDeviceName;
 + (id)currentDeviceProductType;
 + (id)currentDeviceRegionCode;
++ (id)currentDeviceReleaseType;
 + (id)currentOSBuild;
 + (id)currentOSVersion;
 + (CDStruct_f6aba300)currentOSVersionStruct;
@@ -141,6 +142,7 @@
 + (BOOL)showSensitiveLogItems;
 + (int)syncProtocolVersionForNRDevice:(id)arg1;
 - (void).cxx_destruct;
+- (id)currentDeviceReleaseType;
 - (id)init;
 - (void)setManateeEnabledForHSA2AccountsOverride:(BOOL)arg1;
 

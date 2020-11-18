@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) BOOL shouldRequestMoreTime;
 
 - (void).cxx_destruct;
+- (BOOL)clearRestrictionsPasscodeWithError:(id *)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)isRestrictionsPasscodeSet:(CDUnknownBlockType)arg1;

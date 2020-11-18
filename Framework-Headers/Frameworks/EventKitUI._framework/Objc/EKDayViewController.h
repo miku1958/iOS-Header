@@ -49,6 +49,7 @@
     BOOL _resizing;
     BOOL _adjustingForDeceleration;
     BOOL _fingerDown;
+    int _springAnimatedDecelerationsInProgress;
     BOOL _correctAfterScroll;
     NSDateComponents *_targetDateComponents;
     BOOL _needToCompleteScrollingAnimation;

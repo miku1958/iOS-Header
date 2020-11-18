@@ -13,11 +13,9 @@
 + (id)applicationSupportDirectory;
 + (id)cachesDirectory;
 + (id)familyPhotosCacheDirectory;
-+ (id)legacyLibraryDirectory;
 + (id)metadataFile;
 + (id)mockFamilyCircleFile;
 + (id)persistentStoreDirectory;
-+ (id)systemGroupContainerDirectory;
 
 @end
 

@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 
 + (id)scene;
 - (void)addObject:(id)arg1;
-- (struct ChartScenePropertyAccessor)chartProperties;
 - (id)clone;
 - (void)copyPropertiesFromScene:(id)arg1;
 - (unsigned long long)count;
@@ -59,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)mutablePropertiesForType:(id)arg1;
 - (id)objects;
 - (void)overrideObjects;
-- (struct TSCH3DScenePart)partForType:(id)arg1;
+- (id)partForType:(id)arg1;
 - (id)propertiesForType:(id)arg1;
 - (id)propertiesMap;
 - (id)reallocateObjects;
@@ -77,7 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)setDelegate:(id)arg1 forSceneObject:(id)arg2;
 - (void)setEnumerator:(id)arg1 forType:(id)arg2;
 - (void)setEnumerator:(id)arg1 properties:(id)arg2 forType:(id)arg3;
-- (void)setPart:(struct TSCH3DScenePart)arg1 forType:(id)arg2;
+- (void)setPart:(id)arg1 forType:(id)arg2;
 - (void)setProperties:(id)arg1 forType:(id)arg2;
 - (tmat4x4_3074befe)transform;
 

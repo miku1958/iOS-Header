@@ -93,6 +93,7 @@
 - (void)oneUpPresentation:(id)arg1 setHiddenAssetReferences:(id)arg2;
 - (id)oneUpPresentationDataSourceManager:(id)arg1;
 - (id)oneUpPresentationMediaProvider:(id)arg1;
+- (long long)oneUpPresentationOrigin:(id)arg1;
 - (void)ppt_performBlockAfterLoadingCompletes:(CDUnknownBlockType)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

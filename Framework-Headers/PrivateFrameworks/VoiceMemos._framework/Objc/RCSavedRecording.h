@@ -48,6 +48,7 @@
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSString *titleDisallowingEmptyString;
 @property (readonly, copy, nonatomic) NSString *uniqueID;
+@property (readonly, nonatomic) BOOL uploaded;
 @property (readonly, copy, nonatomic) NSURL *url;
 
 + (id)localizedStringForRecordingLabel:(long long)arg1;

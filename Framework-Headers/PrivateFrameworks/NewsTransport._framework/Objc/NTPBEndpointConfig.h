@@ -19,6 +19,8 @@
     NSString *_eventRelayBaseUrl;
     NSString *_eventRelayBatchBaseUrl;
     NSString *_newsNotificationsBaseUrl;
+    NSString *_remoteDataSourceBaseUrl;
+    NSString *_staticAssetBaseUrl;
 }
 
 @property (strong, nonatomic) NSString *analyticsEndpointUrlsJson; // @synthesize analyticsEndpointUrlsJson=_analyticsEndpointUrlsJson;
@@ -33,7 +35,11 @@
 @property (readonly, nonatomic) BOOL hasEventRelayBaseUrl;
 @property (readonly, nonatomic) BOOL hasEventRelayBatchBaseUrl;
 @property (readonly, nonatomic) BOOL hasNewsNotificationsBaseUrl;
+@property (readonly, nonatomic) BOOL hasRemoteDataSourceBaseUrl;
+@property (readonly, nonatomic) BOOL hasStaticAssetBaseUrl;
 @property (strong, nonatomic) NSString *newsNotificationsBaseUrl; // @synthesize newsNotificationsBaseUrl=_newsNotificationsBaseUrl;
+@property (strong, nonatomic) NSString *remoteDataSourceBaseUrl; // @synthesize remoteDataSourceBaseUrl=_remoteDataSourceBaseUrl;
+@property (strong, nonatomic) NSString *staticAssetBaseUrl; // @synthesize staticAssetBaseUrl=_staticAssetBaseUrl;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

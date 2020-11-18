@@ -31,6 +31,7 @@
 - (id)description;
 - (BOOL)hasAccessEntitlementWithIdentifer:(id)arg1;
 - (BOOL)hasEntitlement:(id)arg1;
+- (BOOL)hasPrivateAccessEntitlementWithIdentifer:(id)arg1;
 - (id)init;
 - (id)stringForEntitlement:(id)arg1;
 - (id)typesForReadAuthorizationOverride;

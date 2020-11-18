@@ -20,6 +20,7 @@
 - (long long)_getNumberOfCoordinates;
 - (void)_loadFeatureVector:(vector_cfeb9b06 *)arg1 fromFeatureMap:(id)arg2;
 - (BOOL)_loadModelFromURL:(id)arg1 error:(id *)arg2;
+- (unsigned long long)_maxFeatureCoordinates;
 - (id)_predictWithFeatures:(id)arg1;
 - (BOOL)_saveDebugModelToURL:(id)arg1 error:(id *)arg2;
 - (BOOL)_saveModelToURL:(id)arg1 error:(id *)arg2;
@@ -27,6 +28,7 @@
 - (void)_trainWithFeatures:(id)arg1 positiveEvent:(id)arg2;
 - (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (id)initWithFeatureSet:(id)arg1;
+- (void)logCoreAnalyticsMetrics;
 
 @end
 

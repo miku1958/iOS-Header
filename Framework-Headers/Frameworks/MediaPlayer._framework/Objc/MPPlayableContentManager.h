@@ -27,7 +27,7 @@
 @property (strong, nonatomic) MPPlayableContentManagerContext *context; // @synthesize context=_context;
 @property (weak, nonatomic) id<MPPlayableContentDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (weak, nonatomic) id<MPPlayableContentDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) NSArray *nowPlayingIdentifiers; // @synthesize nowPlayingIdentifiers=_nowPlayingIdentifiers;
+@property (copy, nonatomic) NSArray *nowPlayingIdentifiers; // @synthesize nowPlayingIdentifiers=_nowPlayingIdentifiers;
 
 + (BOOL)_deviceIsCarplayCapable;
 + (id)sharedContentManager;

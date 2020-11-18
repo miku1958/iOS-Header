@@ -23,10 +23,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) WBSReaderFont *selectedFont;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSString *themeName;
+@property (readonly, nonatomic) long long theme;
 
 - (void).cxx_destruct;
-- (id)initWithInitialReaderConfiguration:(id)arg1 fontManager:(id)arg2;
+- (id)initWithConfigurationManager:(id)arg1 fontManager:(id)arg2;
 - (void)loadView;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 

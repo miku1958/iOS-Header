@@ -9,7 +9,7 @@
 #import <NewsToday/NSSecureCoding-Protocol.h>
 #import <NewsToday/NTTodayItem-Protocol.h>
 
-@class NSDate, NSObject, NSString, NSURL, SFSearchResult;
+@class NSArray, NSDate, NSObject, NSString, NSURL, SFSearchResult;
 @protocol NTHeadlineAdElement, NTHeadlineAnalyticsElementProviding, NTHeadlineBackingElement, NTHeadlinePersonalizationMetadata;
 
 @protocol NTHeadlineProviding <NSObject, NFCopying, NSSecureCoding, NTTodayItem>
@@ -27,6 +27,7 @@
 @property (readonly, nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites;
 @property (readonly, nonatomic, getter=isHiddenFromFeeds) BOOL hiddenFromFeeds;
 @property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, copy, nonatomic) NSString *language;
 @property (readonly, copy, nonatomic) NSObject<NTHeadlinePersonalizationMetadata> *personalizationMetadata;
 @property (readonly, copy, nonatomic) SFSearchResult *searchResult;
 @property (readonly, copy, nonatomic) NSString *shortExcerpt;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) unsigned long long thumbnailSizePreset;
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSString *titleCompact;
+@property (readonly, copy, nonatomic) NSArray *topicIDs;
 @property (readonly, copy, nonatomic) NSString *videoCallToActionTitle;
 @property (readonly, copy, nonatomic) NSURL *videoCallToActionURL;
 @property (readonly, nonatomic) double videoDuration;

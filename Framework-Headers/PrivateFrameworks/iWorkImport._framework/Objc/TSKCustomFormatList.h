@@ -36,8 +36,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL upgrading; // @synthesize upgrading=_upgrading;
 @property (nonatomic) BOOL upgradingDone; // @synthesize upgradingDone=_upgradingDone;
 
-+ (void)archiveKeys:(id)arg1 message:(RepeatedPtrField_bfda3daa *)arg2;
-+ (id)unarchiveKeys:(const RepeatedPtrField_bfda3daa *)arg1;
++ (void)archiveKeys:(id)arg1 message:(RepeatedPtrField_c4607516 *)arg2;
++ (id)unarchiveKeys:(const RepeatedPtrField_c4607516 *)arg1;
 - (void).cxx_destruct;
 - (id)addCustomFormat:(id)arg1 oldKey:(id)arg2 fuzzyNameMatching:(BOOL)arg3;
 - (void)addCustomFormatForUpgrade:(id)arg1 legacyKey:(unsigned int)arg2;

@@ -13,12 +13,15 @@
 __attribute__((visibility("hidden")))
 @interface CKDPAsset : PBCodable <NSCopying>
 {
+    long long _constructedAssetDownloadEstimatedSize;
+    long long _constructedAssetDownloadURLExpiration;
     long long _downloadTokenExpiration;
     long long _downloadURLExpiration;
     long long _size;
     NSString *_assetAuthorizationResponseUUID;
     NSData *_assetCopyMetadata;
     NSData *_clearAssetKey;
+    NSString *_constructedAssetDownloadURL;
     NSString *_contentBaseURL;
     NSString *_derivedContentType;
     NSString *_downloadBaseURL;
@@ -33,6 +36,8 @@ __attribute__((visibility("hidden")))
     NSData *_signature;
     NSString *_uploadReceipt;
     struct {
+        unsigned int constructedAssetDownloadEstimatedSize:1;
+        unsigned int constructedAssetDownloadURLExpiration:1;
         unsigned int downloadTokenExpiration:1;
         unsigned int downloadURLExpiration:1;
         unsigned int size:1;
@@ -42,6 +47,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *assetAuthorizationResponseUUID; // @synthesize assetAuthorizationResponseUUID=_assetAuthorizationResponseUUID;
 @property (strong, nonatomic) NSData *assetCopyMetadata; // @synthesize assetCopyMetadata=_assetCopyMetadata;
 @property (strong, nonatomic) NSData *clearAssetKey; // @synthesize clearAssetKey=_clearAssetKey;
+@property (nonatomic) long long constructedAssetDownloadEstimatedSize; // @synthesize constructedAssetDownloadEstimatedSize=_constructedAssetDownloadEstimatedSize;
+@property (strong, nonatomic) NSString *constructedAssetDownloadURL; // @synthesize constructedAssetDownloadURL=_constructedAssetDownloadURL;
+@property (nonatomic) long long constructedAssetDownloadURLExpiration; // @synthesize constructedAssetDownloadURLExpiration=_constructedAssetDownloadURLExpiration;
 @property (strong, nonatomic) NSString *contentBaseURL; // @synthesize contentBaseURL=_contentBaseURL;
 @property (strong, nonatomic) NSString *derivedContentType; // @synthesize derivedContentType=_derivedContentType;
 @property (strong, nonatomic) NSString *downloadBaseURL; // @synthesize downloadBaseURL=_downloadBaseURL;
@@ -52,6 +60,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasAssetAuthorizationResponseUUID;
 @property (readonly, nonatomic) BOOL hasAssetCopyMetadata;
 @property (readonly, nonatomic) BOOL hasClearAssetKey;
+@property (nonatomic) BOOL hasConstructedAssetDownloadEstimatedSize;
+@property (readonly, nonatomic) BOOL hasConstructedAssetDownloadURL;
+@property (nonatomic) BOOL hasConstructedAssetDownloadURLExpiration;
 @property (readonly, nonatomic) BOOL hasContentBaseURL;
 @property (readonly, nonatomic) BOOL hasDerivedContentType;
 @property (readonly, nonatomic) BOOL hasDownloadBaseURL;

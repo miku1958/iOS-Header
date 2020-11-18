@@ -15,7 +15,6 @@
 {
     BOOL _monitorFingerprints;
     id<RTLearnedLocationEngineProtocol> _delegate;
-    RTLearnedLocationEngineTrainingMetrics *_trainingMetrics;
     NSObject<OS_dispatch_queue> *_queue;
     RTAccountManager *_accountManager;
     RTLearnedLocationAlgorithmMetricCalculator *_algorithmMetricCalculator;
@@ -33,6 +32,7 @@
     RTMetricManager *_metricManager;
     RTMotionActivityManager *_motionActivityManager;
     RTPersonalizationPortraitManager *_portraitManager;
+    RTLearnedLocationEngineTrainingMetrics *_trainingMetrics;
     RTVisitManager *_visitManager;
     RTXPCActivityManager *_xpcActivityManager;
 }
@@ -93,6 +93,7 @@
 - (void)_setupTrainingMetricsFromDate:(id)arg1 toDate:(id)arg2;
 - (void)_setupXpcActivityTrain;
 - (void)_shutdown;
+- (void)_submitMetricsForVisit:(id)arg1 possibleInferredMapItems:(id)arg2 selectedInferredMapItem:(id)arg3;
 - (void)_teardownTrainingMetrics;
 - (void)_teardownXpcActivityTrain;
 - (BOOL)_trainLocationsOfInterestModelWithError:(id *)arg1;

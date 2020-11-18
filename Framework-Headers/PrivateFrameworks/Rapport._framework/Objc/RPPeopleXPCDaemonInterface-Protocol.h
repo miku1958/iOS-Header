@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class RPPeopleDiscovery;
+@class NSString, RPPeopleDiscovery;
 
 @protocol RPPeopleXPCDaemonInterface
-- (void)xpcPeopleDiscoveryActivate:(RPPeopleDiscovery *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)xpcPeopleAddAppleID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)xpcPeopleDiscoveryActivate:(RPPeopleDiscovery *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)xpcPeopleDiscoveryUpdate:(RPPeopleDiscovery *)arg1;
+- (void)xpcPeopleRemoveAppleID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

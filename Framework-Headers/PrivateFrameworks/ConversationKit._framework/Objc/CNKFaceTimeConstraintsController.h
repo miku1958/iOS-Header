@@ -16,12 +16,14 @@
     MISSING_TYPE *floatingControlsState;
     MISSING_TYPE *viewStateEffects;
     MISSING_TYPE *viewControllerLayout;
+    MISSING_TYPE *inCallControlsFramesCache;
 }
 
 @property (nonatomic) long long inCallControlsState; // @synthesize inCallControlsState;
 @property (nonatomic) long long localParticipantState; // @synthesize localParticipantState;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
+- (struct CGRect)inCallControlsViewFrameFor:(id)arg1 state:(long long)arg2;
 - (id)init;
 - (id)initWithContainingView:(id)arg1 controlsViewController:(id)arg2 inCallControlsState:(long long)arg3 deviceOrientation:(long long)arg4;
 - (void)removeEffectsConstraints;

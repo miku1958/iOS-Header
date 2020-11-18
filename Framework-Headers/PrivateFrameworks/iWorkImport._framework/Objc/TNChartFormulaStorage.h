@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)numberOfGroupsWithCalcEngine:(id)arg1 inEntity:(const UUIDData_5fbc143e *)arg2;
 - (unsigned long long)numberOfSeries;
+- (unsigned long long)numberOfTotalCategoryLabelsWithCalcEngine:(id)arg1 inEntity:(const UUIDData_5fbc143e *)arg2;
 - (unsigned long long)p_calculateNumberOfGroupsWithCalcEngine:(id)arg1 inEntity:(const UUIDData_5fbc143e *)arg2;
 - (void)saveToArchive:(struct ChartMediatorFormulaStorage *)arg1 archiver:(id)arg2;
 

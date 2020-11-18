@@ -19,7 +19,6 @@
 @property (nonatomic) BOOL shouldDirectToStorageManagement;
 @property (nonatomic, getter=isSimulatedDeviceStorageAlmostFull) BOOL simulatedDeviceStorageAlmostFull;
 @property (strong, nonatomic) NSNumber *simulatedPhotosLibrarySize;
-@property (nonatomic) BOOL useHysteresisForDeviceStorageAlmostFull;
 
 + (id)ckBackupDeviceID;
 + (id)sharedDaemonOfferManager;

@@ -26,6 +26,7 @@
 }
 
 @property (copy, nonatomic) NSNumber *dsid; // @synthesize dsid=_dsid;
+@property (readonly, copy, nonatomic) NSString *givenName;
 @property (nonatomic) BOOL hasAllowances; // @synthesize hasAllowances=_hasAllowances;
 @property (readonly, nonatomic) BOOL hasPasscode;
 @property (readonly, nonatomic) BOOL isChild;
@@ -40,6 +41,7 @@
 @property (copy, nonatomic) NSManagedObjectID *userObjectID; // @synthesize userObjectID=_userObjectID;
 @property (nonatomic, getter=isWebUsageEnabled) BOOL webUsageEnabled; // @synthesize webUsageEnabled=_webUsageEnabled;
 
++ (id)keyPathsForValuesAffectingGivenName;
 + (id)keyPathsForValuesAffectingHasPasscode;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

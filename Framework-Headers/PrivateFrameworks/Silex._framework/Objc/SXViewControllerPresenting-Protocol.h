@@ -9,6 +9,9 @@
 @class UIView, UIViewController;
 
 @protocol SXViewControllerPresenting <NSObject>
+
+@property (readonly, nonatomic) UIViewController *controller;
+
 - (void)presentViewController:(UIViewController *)arg1 animated:(BOOL)arg2;
 - (void)presentViewController:(UIViewController *)arg1 animated:(BOOL)arg2 sourceView:(UIView *)arg3 sourceRect:(struct CGRect)arg4;
 @end

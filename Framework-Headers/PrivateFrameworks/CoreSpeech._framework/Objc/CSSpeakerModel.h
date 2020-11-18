@@ -14,21 +14,26 @@
     NSString *_languageCode;
     NSString *_modelPath;
     NSString *_utteranceDirectory;
+    NSString *_tdtiModelPath;
+    NSString *_tdtiUtteranceDirectory;
+    NSString *_tiModelPath;
+    NSString *_tiUtteranceDirectory;
 }
 
 @property (readonly, nonatomic) NSArray *enrollmentUtterance;
 @property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) NSString *modelPath;
 @property (readonly, nonatomic) BOOL needsRetrain;
+@property (readonly, nonatomic) NSString *tdtiModelPath;
+@property (readonly, nonatomic) NSString *tdtiUtteranceDirectory;
+@property (readonly, nonatomic) NSString *tiModelPath;
+@property (readonly, nonatomic) NSString *tiUtteranceDirectory;
 @property (readonly, nonatomic) NSString *utteranceDirectory;
 
 - (void).cxx_destruct;
-- (void)_createDirectoryIfNotExist:(id)arg1;
 - (BOOL)_isDirectoryEmpty:(id)arg1;
-- (id)_satPath;
 - (void)discard;
 - (id)initWithSpeakerModelFileName:(id)arg1 languageCode:(id)arg2;
-- (id)modelDirectory;
 
 @end
 

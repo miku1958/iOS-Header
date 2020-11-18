@@ -24,9 +24,12 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) unsigned long long arraySize; // @synthesize arraySize=mArraySize;
+@property (readonly, nonatomic) NSString *commonShaderType;
+@property (readonly, nonatomic) unsigned long long componentCount;
 @property (readonly, nonatomic) TSCH3DShaderVariable *genericName; // @synthesize genericName=mGenericName;
 @property (readonly, nonatomic) struct TSCH3DShaderType initialLinkType;
 @property (readonly, nonatomic) BOOL isSpecial; // @synthesize isSpecial=mIsSpecial;
+@property (readonly, nonatomic) BOOL isTexture;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=mName;
 @property (readonly, nonatomic) NSString *precision; // @synthesize precision=mPrecision;
 @property (readonly, nonatomic) struct TSCH3DShaderType shaderType; // @synthesize shaderType=mShaderType;

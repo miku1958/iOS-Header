@@ -154,7 +154,7 @@
 - (void)layoutSubviews;
 - (id)minimizedImageForInk:(id)arg1 small:(BOOL)arg2;
 - (struct CGSize)minimumSizeForSizeState:(unsigned long long)arg1 selectionState:(unsigned long long)arg2;
-- (void)notifyColorSelected:(BOOL)arg1;
+- (void)notifyColorSelected:(id)arg1 didChange:(BOOL)arg2;
 - (void)notifyToolSelected:(BOOL)arg1;
 - (double)offsetForToolIndex:(unsigned long long)arg1 pressed:(BOOL)arg2;
 - (void)pencilInteractionDidTap:(id)arg1;
@@ -162,6 +162,7 @@
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (BOOL)popoverPresentationControllerShouldDismissPopover:(id)arg1;
 - (void)resetToDrawingToolWithAnimation:(BOOL)arg1;
+- (void)selectColorPickerColor:(id)arg1;
 - (unsigned long long)selectionStateForSizeState:(unsigned long long)arg1 previousSelectionState:(unsigned long long)arg2;
 - (void)setContentsHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelectedColor:(id)arg1 animated:(BOOL)arg2;
@@ -173,6 +174,7 @@
 - (void)toolIndicator:(id)arg1 willPresent:(BOOL)arg2 animated:(BOOL)arg3;
 - (struct CGRect)toolIndicatorCenteringRect:(id)arg1;
 - (void)toolTapped:(id)arg1;
+- (void)updateSelectedToolColor:(id)arg1;
 - (void)userDidTouchTool:(id)arg1;
 - (id)viewControllerForPopoverPresentationFromColorPicker:(id)arg1;
 

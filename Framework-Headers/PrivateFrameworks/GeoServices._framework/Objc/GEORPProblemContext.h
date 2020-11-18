@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOABAssignmentResponse, GEOPDPlace, GEOPlace, GEORPCurrentEnvironmentManifestURLs, GEORPMapLocation, GEORPNavigationSettings, GEORPPersonalizedMaps, GEORPPlaceInfo, GEORPTransitLineTileInfo, GEOServicesState, NSMutableArray, NSString;
+@class GEOABAssignmentResponse, GEOPDPlace, GEOPlace, GEORPCurrentEnvironmentManifestURLs, GEORPMapLocation, GEORPMerchantLookupContext, GEORPNavigationSettings, GEORPPersonalizedMaps, GEORPPlaceInfo, GEORPTransitLineTileInfo, GEOServicesState, NSMutableArray, NSString;
 
 @interface GEORPProblemContext : PBCodable <NSCopying>
 {
@@ -26,6 +26,7 @@
     NSString *_lastSearchString;
     NSString *_lastUserTypedSearchString;
     GEORPMapLocation *_mapLocation;
+    GEORPMerchantLookupContext *_merchantLookupContext;
     GEORPNavigationSettings *_navigationSettings;
     GEOPlace *_originalPlace;
     GEORPPersonalizedMaps *_personalizedMaps;
@@ -61,6 +62,7 @@
 @property (readonly, nonatomic) BOOL hasLastSearchString;
 @property (readonly, nonatomic) BOOL hasLastUserTypedSearchString;
 @property (readonly, nonatomic) BOOL hasMapLocation;
+@property (readonly, nonatomic) BOOL hasMerchantLookupContext;
 @property (readonly, nonatomic) BOOL hasNavigationSettings;
 @property (readonly, nonatomic) BOOL hasOriginalPlace;
 @property (nonatomic) BOOL hasOriginatingAuxiliaryControlIndex;
@@ -75,6 +77,7 @@
 @property (strong, nonatomic) NSString *lastSearchString; // @synthesize lastSearchString=_lastSearchString;
 @property (strong, nonatomic) NSString *lastUserTypedSearchString; // @synthesize lastUserTypedSearchString=_lastUserTypedSearchString;
 @property (strong, nonatomic) GEORPMapLocation *mapLocation; // @synthesize mapLocation=_mapLocation;
+@property (strong, nonatomic) GEORPMerchantLookupContext *merchantLookupContext; // @synthesize merchantLookupContext=_merchantLookupContext;
 @property (strong, nonatomic) GEORPNavigationSettings *navigationSettings; // @synthesize navigationSettings=_navigationSettings;
 @property (strong, nonatomic) GEOPlace *originalPlace; // @synthesize originalPlace=_originalPlace;
 @property (nonatomic) unsigned long long originatingAuxiliaryControlIndex; // @synthesize originatingAuxiliaryControlIndex=_originatingAuxiliaryControlIndex;

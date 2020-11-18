@@ -34,7 +34,6 @@
     NSArray *_payloadSetupModes;
     NSNumber *_payloadPriority;
     NSNumber *_payloadEnableIPv6;
-    NSString *_payloadNONEXISTENT;
     NSNumber *_payloadTLSCertificateRequired;
     NSString *_payloadProxyServer;
     NSNumber *_payloadProxyServerPort;
@@ -60,7 +59,6 @@
 @property (copy, nonatomic) NSNumber *payloadIsHotspot; // @synthesize payloadIsHotspot=_payloadIsHotspot;
 @property (copy, nonatomic) NSArray *payloadMCCAndMNCs; // @synthesize payloadMCCAndMNCs=_payloadMCCAndMNCs;
 @property (copy, nonatomic) NSArray *payloadNAIRealmNames; // @synthesize payloadNAIRealmNames=_payloadNAIRealmNames;
-@property (copy, nonatomic) NSString *payloadNONEXISTENT; // @synthesize payloadNONEXISTENT=_payloadNONEXISTENT;
 @property (copy, nonatomic) NSString *payloadPassword; // @synthesize payloadPassword=_payloadPassword;
 @property (copy, nonatomic) NSString *payloadPayloadCertificateUUID; // @synthesize payloadPayloadCertificateUUID=_payloadPayloadCertificateUUID;
 @property (copy, nonatomic) NSNumber *payloadPriority; // @synthesize payloadPriority=_payloadPriority;
@@ -81,7 +79,7 @@
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
-+ (id)buildWithIdentifier:(id)arg1 withAutoJoin:(id)arg2 withSSIDSTR:(id)arg3 withHIDDENNETWORK:(id)arg4 withProxyType:(id)arg5 withEncryptionType:(id)arg6 withPassword:(id)arg7 withPayloadCertificateUUID:(id)arg8 withEAPClientConfiguration:(id)arg9 withDisplayedOperatorName:(id)arg10 withDomainName:(id)arg11 withRoamingConsortiumOIs:(id)arg12 withServiceProviderRoamingEnabled:(id)arg13 withIsHotspot:(id)arg14 withHESSID:(id)arg15 withNAIRealmNames:(id)arg16 withMCCAndMNCs:(id)arg17 withCaptiveBypass:(id)arg18 withQoSMarkingPolicy:(id)arg19 withInterface:(id)arg20 withSetupModes:(id)arg21 withPriority:(id)arg22 withEnableIPv6:(id)arg23 withNONEXISTENT:(id)arg24 withTLSCertificateRequired:(id)arg25 withProxyServer:(id)arg26 withProxyServerPort:(id)arg27 withProxyUsername:(id)arg28 withProxyPassword:(id)arg29 withProxyPACURL:(id)arg30 withProxyPACFallbackAllowed:(id)arg31;
++ (id)buildWithIdentifier:(id)arg1 withAutoJoin:(id)arg2 withSSIDSTR:(id)arg3 withHIDDENNETWORK:(id)arg4 withProxyType:(id)arg5 withEncryptionType:(id)arg6 withPassword:(id)arg7 withPayloadCertificateUUID:(id)arg8 withEAPClientConfiguration:(id)arg9 withDisplayedOperatorName:(id)arg10 withDomainName:(id)arg11 withRoamingConsortiumOIs:(id)arg12 withServiceProviderRoamingEnabled:(id)arg13 withIsHotspot:(id)arg14 withHESSID:(id)arg15 withNAIRealmNames:(id)arg16 withMCCAndMNCs:(id)arg17 withCaptiveBypass:(id)arg18 withQoSMarkingPolicy:(id)arg19 withInterface:(id)arg20 withSetupModes:(id)arg21 withPriority:(id)arg22 withEnableIPv6:(id)arg23 withTLSCertificateRequired:(id)arg24 withProxyServer:(id)arg25 withProxyServerPort:(id)arg26 withProxyUsername:(id)arg27 withProxyPassword:(id)arg28 withProxyPACURL:(id)arg29 withProxyPACFallbackAllowed:(id)arg30;
 + (id)profileType;
 + (id)registeredClassName;
 + (id)registeredIdentifier;

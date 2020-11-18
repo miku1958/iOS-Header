@@ -8,13 +8,13 @@
 
 #import <iWorkImport/TSDComment-Protocol.h>
 
-@class NSDate, NSString, TSDCommentStorage, TSKAnnotationAuthor, TSTInfo;
+@class NSDate, NSString, TSDCommentStorage, TSKAnnotationAuthor, TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTCommentHosting : NSObject <TSDComment>
 {
     TSDCommentStorage *mStorage;
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     NSString *_annotationUUID;
     struct TSTCellUID _cellUID;
 }
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isHighlight;
 @property (copy, nonatomic) TSDCommentStorage *storage;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (strong, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property (readonly, nonatomic) struct TSUViewCellCoord viewCellCoord;
 
 - (id).cxx_construct;

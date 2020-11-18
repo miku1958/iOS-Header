@@ -12,15 +12,15 @@
 
 @interface SGTextMessageItem : NSObject <NSSecureCoding>
 {
+    SGTextMessage *_message;
     NSString *_content;
     NSString *_language;
-    SGTextMessage *_message;
     NSArray *_features;
 }
 
-@property (readonly) NSString *content;
+@property (readonly) NSString *content; // @synthesize content=_content;
 @property (strong) NSArray *features; // @synthesize features=_features;
-@property (readonly) NSString *language;
+@property (readonly) NSString *language; // @synthesize language=_language;
 @property (readonly) SGTextMessage *message; // @synthesize message=_message;
 
 + (BOOL)supportsSecureCoding;

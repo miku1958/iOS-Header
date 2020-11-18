@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (tvec3_17f03ce0)fastProjectNormalizedPoint:(tvec2_84d5962d *)arg1 planeDistance:(float)arg2;
-- (struct FrustumSlice)frustumSliceAtDistance:(float)arg1;
+- (id)frustumSliceAtDistance:(float)arg1;
 - (id)initWithLens:(id)arg1 size:(tvec2_3b141483 *)arg2;
 - (id)matrixDescription;
 - (tmat4x4_3074befe)modelViewViewportProjectionWithViewportScale:(float)arg1;

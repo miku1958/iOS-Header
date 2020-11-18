@@ -8,17 +8,14 @@
 
 #import <Silex/NSFastEnumeration-Protocol.h>
 
-@class NSArray, NSMutableArray, NSObject, NSString;
-@protocol OS_dispatch_semaphore;
+@class NSArray, NSMutableArray;
 
 @interface SXJSONArray : SXJSONObject <NSFastEnumeration>
 {
     CDUnknownBlockType _objectValueClassBlock;
     CDUnknownBlockType _valueClassBlock;
     NSArray *_json;
-    NSString *_specificationVersion;
     NSMutableArray *_objects;
-    NSObject<OS_dispatch_semaphore> *_semaphore;
     unsigned long long _count;
 }
 
@@ -26,7 +23,6 @@
 @property (readonly, nonatomic) NSArray *json; // @synthesize json=_json;
 @property (readonly, nonatomic) CDUnknownBlockType objectValueClassBlock; // @synthesize objectValueClassBlock=_objectValueClassBlock;
 @property (readonly, nonatomic) NSMutableArray *objects; // @synthesize objects=_objects;
-@property (readonly, nonatomic) NSObject<OS_dispatch_semaphore> *semaphore; // @synthesize semaphore=_semaphore;
 @property (readonly, nonatomic) CDUnknownBlockType valueClassBlock; // @synthesize valueClassBlock=_valueClassBlock;
 
 - (void).cxx_destruct;
@@ -37,7 +33,6 @@
 - (id)initWithValueClassBlock:(CDUnknownBlockType)arg1 objectValueClassBlock:(CDUnknownBlockType)arg2 purgeBlock:(CDUnknownBlockType)arg3 andJSONObject:(id)arg4 andVersion:(id)arg5;
 - (id)lastObject;
 - (id)objectAtIndex:(unsigned long long)arg1;
-- (id)specificationVersion;
 
 @end
 

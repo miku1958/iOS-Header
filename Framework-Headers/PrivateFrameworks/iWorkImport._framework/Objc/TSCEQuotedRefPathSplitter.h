@@ -16,12 +16,16 @@ __attribute__((visibility("hidden")))
     NSString *_localizedErrorGroupName;
     NSString *_localizedTrueGroupName;
     NSString *_localizedFalseGroupName;
+    NSString *_localizedTrueGroupNameForColumn;
+    NSString *_localizedFalseGroupNameForColumn;
 }
 
 @property (strong, nonatomic) NSString *localizedBlankGroupName; // @synthesize localizedBlankGroupName=_localizedBlankGroupName;
 @property (strong, nonatomic) NSString *localizedErrorGroupName; // @synthesize localizedErrorGroupName=_localizedErrorGroupName;
 @property (strong, nonatomic) NSString *localizedFalseGroupName; // @synthesize localizedFalseGroupName=_localizedFalseGroupName;
+@property (strong, nonatomic) NSString *localizedFalseGroupNameForColumn; // @synthesize localizedFalseGroupNameForColumn=_localizedFalseGroupNameForColumn;
 @property (strong, nonatomic) NSString *localizedTrueGroupName; // @synthesize localizedTrueGroupName=_localizedTrueGroupName;
+@property (strong, nonatomic) NSString *localizedTrueGroupNameForColumn; // @synthesize localizedTrueGroupNameForColumn=_localizedTrueGroupNameForColumn;
 
 + (BOOL)isColon:(id)arg1;
 + (BOOL)isDollar:(id)arg1;

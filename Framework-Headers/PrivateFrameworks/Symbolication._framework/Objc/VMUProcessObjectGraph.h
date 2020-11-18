@@ -21,6 +21,7 @@
     NSArray *_zoneNames;
     NSString *_processName;
     NSString *_processDescriptionString;
+    NSString *_executablePath;
     NSString *_binaryImagesDescription;
     VMURangeToStringMap *_threadNameRanges;
     VMURangeToStringMap *_binarySectionNameRanges;
@@ -42,6 +43,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) VMUDebugTimer *debugTimer; // @synthesize debugTimer=_debugTimer;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL is64bit;
 @property (nonatomic) BOOL javaScriptCoreUsingPoisoning; // @synthesize javaScriptCoreUsingPoisoning=_javaScriptCoreUsingPoisoning;

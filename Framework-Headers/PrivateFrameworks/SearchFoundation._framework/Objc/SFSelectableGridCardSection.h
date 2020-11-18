@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFSelectableGridCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor, SFUserReportRequest;
 
 @interface SFSelectableGridCardSection : SFCardSection <SFSelectableGridCardSection, NSSecureCoding, NSCopying>
 {
@@ -51,6 +51,7 @@
 @property (nonatomic) int separatorStyle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

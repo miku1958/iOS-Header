@@ -7,14 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <Silex/SXDocumentSectionManager-Protocol.h>
+#import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NFMultiDelegate, NSMutableDictionary, NSMutableSet, NSString, SXViewport;
 @protocol SXDocumentSectionHosting;
 
-@interface SXDocumentSectionManager : NSObject <SXDocumentSectionManager>
+@interface SXDocumentSectionManager : NSObject <SXViewportChangeListener, SXDocumentSectionManager>
 {
     id<SXDocumentSectionHosting> _hosting;
+    SXViewport *_viewport;
     NSMutableDictionary *_blueprints;
+    NSMutableSet *_visibleViewControllers;
+    NFMultiDelegate *_multiScrollDelegate;
 }
 
 @property (readonly, nonatomic) NSMutableDictionary *blueprints; // @synthesize blueprints=_blueprints;
@@ -22,14 +26,22 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) id<SXDocumentSectionHosting> hosting; // @synthesize hosting=_hosting;
+@property (readonly, nonatomic) NFMultiDelegate *multiScrollDelegate; // @synthesize multiScrollDelegate=_multiScrollDelegate;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
+@property (readonly, nonatomic) NSMutableSet *visibleViewControllers; // @synthesize visibleViewControllers=_visibleViewControllers;
 
 - (void).cxx_destruct;
 - (void)applySectionBlueprint:(id)arg1 identifier:(id)arg2 offset:(struct CGPoint)arg3 width:(double)arg4;
-- (double)heightForBlueprint:(id)arg1 width:(double)arg2;
-- (id)initWithSectionHosting:(id)arg1;
+- (void)endImpressions;
+- (double)heightForBlueprint:(id)arg1 width:(double)arg2 traitCollection:(id)arg3;
+- (id)initWithSectionHosting:(id)arg1 viewport:(id)arg2 appStateMonitor:(id)arg3;
+- (void)updateViewControllerVisibility;
 - (id)view;
 - (id)viewController;
+- (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
+- (void)viewport:(id)arg1 boundsDidChangeFromBounds:(struct CGRect)arg2;
+- (void)viewport:(id)arg1 documentSizeDidChangeFromSize:(struct CGSize)arg2;
 
 @end
 

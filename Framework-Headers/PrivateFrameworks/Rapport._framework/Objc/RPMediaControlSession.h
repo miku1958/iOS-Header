@@ -11,15 +11,26 @@
 @interface RPMediaControlSession : NSObject
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    BOOL _invalidateCalled;
+    BOOL _registeredMediaControlInterest;
+    unsigned long long _mediaControlFlags;
+    CDUnknownBlockType _mediaControlFlagsChangedHandler;
     id<RPMessageable> _messenger;
 }
 
+@property (readonly, nonatomic) unsigned long long mediaControlFlags; // @synthesize mediaControlFlags=_mediaControlFlags;
+@property (copy, nonatomic) CDUnknownBlockType mediaControlFlagsChangedHandler; // @synthesize mediaControlFlagsChangedHandler=_mediaControlFlagsChangedHandler;
 @property (strong, nonatomic) id<RPMessageable> messenger; // @synthesize messenger=_messenger;
 
 - (void).cxx_destruct;
+- (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_handleMediaControlEvent:(id)arg1;
+- (void)_invalidate;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)invalidate;
+- (void)mediaCaptionSettingGetFromDestinationID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)mediaCaptionSettingSet:(int)arg1 destinationID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)mediaCommand:(int)arg1 destinationID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)mediaGetVolumeFromDestinationID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mediaSetVolume:(double)arg1 destinationID:(id)arg2 completion:(CDUnknownBlockType)arg3;

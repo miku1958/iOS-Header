@@ -130,11 +130,11 @@
 + (id)uniqueIDFromItunesMetadataEntry:(id)arg1;
 + (id)uniqueIdFromPlistEntry:(id)arg1;
 - (void).cxx_destruct;
+- (id)_initWithDirectory:(id)arg1 fileName:(id)arg2;
 - (void)addDeletedFiles:(id)arg1;
 - (BOOL)bumpModificationDate;
 - (id)calculateChecksum;
 - (id)contents;
-- (id)initWithDirectory:(id)arg1 fileName:(id)arg2;
 - (BOOL)isPathInDirectory:(id)arg1;
 - (id)p_contents:(id)arg1;
 - (void)p_rewriteSidecarWithDeletes:(id)arg1;

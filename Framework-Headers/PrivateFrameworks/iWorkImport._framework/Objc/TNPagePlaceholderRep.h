@@ -11,9 +11,5 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)didUpdateLayer:(id)arg1;
-- (BOOL)directlyManagesLayerContent;
-- (Class)layerClass;
-
 @end
 

@@ -9,11 +9,11 @@
 #import <MediaPlayer/MPAVLightweightRoutingControllerDelegate-Protocol.h>
 #import <MediaPlayer/NSCoding-Protocol.h>
 
-@class MPAVLightweightRoutingController, MPMediaControlsStandaloneViewController, MPVolumeSlider, NSString, UIButton, UIImage, UILabel;
+@class MPAVLightweightRoutingController, MPMediaControls, MPVolumeSlider, NSString, UIButton, UIImage, UILabel;
 
 @interface MPVolumeView : UIView <MPAVLightweightRoutingControllerDelegate, NSCoding>
 {
-    MPMediaControlsStandaloneViewController *_mediaControlsViewController;
+    MPMediaControls *_mediaControls;
     MPAVLightweightRoutingController *_lightweightRoutingController;
     BOOL _hasNonDefaultRouteButtonImages;
     BOOL _hasNonDefaultMaxVolumeSliderImage;
@@ -73,12 +73,10 @@
 - (void)dealloc;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
-- (void)dismissActiveOverlaysAnimated:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
-- (BOOL)isShowingActiveOverlays;
 - (void)layoutSubviews;
 - (void)lightweightRoutingController:(id)arg1 didChangeDevicePresenceDetected:(BOOL)arg2;
 - (void)lightweightRoutingController:(id)arg1 didChangePickedRoutes:(id)arg2;

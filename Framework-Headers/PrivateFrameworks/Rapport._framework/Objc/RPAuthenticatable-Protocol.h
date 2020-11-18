@@ -16,6 +16,7 @@
 @property (nonatomic) unsigned int pairVerifyFlags;
 @property (copy, nonatomic) NSString *password;
 @property (nonatomic) int passwordType;
+@property (readonly, nonatomic) int passwordTypeActual;
 @property (copy, nonatomic) CDUnknownBlockType promptForPasswordHandler;
 @property (copy, nonatomic) CDUnknownBlockType showPasswordHandler;
 

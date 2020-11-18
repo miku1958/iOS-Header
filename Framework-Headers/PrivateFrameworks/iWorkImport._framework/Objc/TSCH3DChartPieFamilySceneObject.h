@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 + (id)chartSeriesType;
 + (id)createBoundsForSeries:(id)arg1;
 + (id)createGeometryWithStartAngle:(float)arg1 endAngle:(float)arg2 bevel:(BOOL)arg3 bevelEdges:(BOOL)arg4;
-+ (struct MeshData)createMeshForSeries:(id)arg1;
++ (id)createMeshForSeries:(id)arg1;
 + (float)geometrySpaceRadius;
 + (id)p_boundsDataBufferWithDepthFactor:(float)arg1 angleRange:(const range_2a4e38ce *)arg2 includeEndPoints:(BOOL)arg3;
 + (unsigned long long)p_boundsStepsForAngle:(double)arg1;
@@ -30,9 +30,9 @@ __attribute__((visibility("hidden")))
 - (Class)resizer3DClass;
 - (void)setExplosion:(float)arg1 atElementIndex:(const tvec2_3b141483 *)arg2 forScene:(id)arg3;
 - (BOOL)shouldRenderEachValue;
-- (void)sortElements:(vector_d7c2985b *)arg1 pipeline:(id)arg2;
+- (void)sortElements:(id *)arg1 pipeline:(id)arg2;
 - (BOOL)transparencyDepthMask;
-- (void)updateElementEffectsStates:(const struct RenderElementInfo *)arg1 depthToWidthRatio:(float)arg2;
+- (void)updateElementEffectsStates:(id)arg1 depthToWidthRatio:(float)arg2;
 - (void)updateTilingEffect:(struct TexCoordTilingShaderEffectState *)arg1 properties:(id)arg2 textureTiling:(id)arg3 depth:(float)arg4 percentOfTotal:(float)arg5;
 
 @end

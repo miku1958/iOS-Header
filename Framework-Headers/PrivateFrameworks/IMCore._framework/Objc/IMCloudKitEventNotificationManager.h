@@ -51,10 +51,11 @@
 - (void)addEventHandler:(id)arg1;
 - (id)cloudKitHooks;
 - (void)disableAllSyncEnabledCloudKitDevices;
+- (void)fetchRampStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSyncDebuggingInfo:(id)arg1;
 - (void)fetchSyncState;
 - (void)fetchSyncStateAfterClearingErrors;
-- (void)fetchSyncStateAfterClearingErrorsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchSyncStateAfterClearingErrorsWithRepairSuccess:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchSyncStateStatistics;
 - (void)fetchSyncStateStatisticsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSyncStateWithCompletion:(CDUnknownBlockType)arg1;

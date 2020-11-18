@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBImage-Protocol.h>
 
-@class NSData, NSString, _SFPBAppIconImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBURLImage;
+@class NSData, NSString, _SFPBAppIconImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBURLImage;
 
 @interface _SFPBImage : PBCodable <_SFPBImage, NSSecureCoding>
 {
@@ -29,6 +29,7 @@
     _SFPBMonogramImage *_monogramImage;
     _SFPBLocalImage *_localImage;
     _SFPBAppIconImage *_appIconImage;
+    _SFPBMediaArtworkImage *_mediaArtworkImage;
 }
 
 @property (strong, nonatomic) _SFPBAppIconImage *appIconImage; // @synthesize appIconImage=_appIconImage;
@@ -44,6 +45,7 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *keyColor; // @synthesize keyColor=_keyColor;
 @property (strong, nonatomic) _SFPBLocalImage *localImage; // @synthesize localImage=_localImage;
+@property (strong, nonatomic) _SFPBMediaArtworkImage *mediaArtworkImage; // @synthesize mediaArtworkImage=_mediaArtworkImage;
 @property (strong, nonatomic) _SFPBMonogramImage *monogramImage; // @synthesize monogramImage=_monogramImage;
 @property (strong, nonatomic) _SFPBGraphicalFloat *scale; // @synthesize scale=_scale;
 @property (nonatomic) BOOL shouldCropToCircle; // @synthesize shouldCropToCircle=_shouldCropToCircle;

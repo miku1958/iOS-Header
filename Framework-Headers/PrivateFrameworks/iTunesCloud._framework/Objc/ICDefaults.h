@@ -11,26 +11,35 @@
 @interface ICDefaults : NSObject
 {
     NSUserDefaults *_userDefaults;
+    BOOL _bypassBagSanityChecks;
+    NSUserDefaults *_internalDefaults;
 }
 
+@property (copy, nonatomic) NSDate *ageVerificationExpirationDate;
 @property (copy, nonatomic) NSString *authServiceClientToken;
 @property (copy, nonatomic) NSNumber *authServiceClientTokenDSID;
 @property (copy, nonatomic) NSDate *authServiceClientTokenExpiration;
+@property (nonatomic) BOOL bypassBagSanityChecks; // @synthesize bypassBagSanityChecks=_bypassBagSanityChecks;
 @property (copy, nonatomic) NSDictionary *cachedSubscriptionStatus;
 @property (copy, nonatomic) NSString *cloudMediaLibraryUID;
 @property (copy, nonatomic) NSString *defaultStoreFront;
 @property (readonly, copy, nonatomic) NSNumber *deviceClassOverride;
 @property (readonly, copy, nonatomic) NSString *deviceModelOverride;
+@property (nonatomic, getter=isExplicitContentAllowedForCurrentYear) BOOL explicitContentAllowedForCurrentYear;
+@property (nonatomic, getter=isExplicitContentAllowedForExpirationYear) BOOL explicitContentAllowedForExpirationYear;
 @property (readonly, copy, nonatomic) NSNumber *fairPlayDeviceTypeOverride;
 @property (readonly, copy, nonatomic) NSString *hardwarePlatformOverride;
 @property (nonatomic) BOOL ignoreExtendedCertificateValidation;
+@property (readonly, nonatomic) NSUserDefaults *internalDefaults; // @synthesize internalDefaults=_internalDefaults;
 @property (copy, nonatomic) NSNumber *lastActiveAccountDSID;
+@property (nonatomic) double lastAuthenticationDialogResponseTime;
 @property (copy, nonatomic) NSDictionary *lastCookieHeadersForRevokingMusicUserTokens;
 @property (copy, nonatomic) NSDictionary *mediaLibraryAccessApplicationIdentifiersWithTCCAcceptanceDates;
 @property (readonly, copy, nonatomic) NSString *productPlatformOverride;
 @property (readonly, copy, nonatomic) NSString *productVersionOverride;
 @property (copy, nonatomic) NSDictionary *pushNotificationState;
 @property (readonly, nonatomic) BOOL shouldForceiPhoneBehaviors;
+@property (nonatomic) BOOL shouldRunAgeVerification;
 
 + (id)standardDefaults;
 - (void).cxx_destruct;

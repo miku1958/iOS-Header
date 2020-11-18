@@ -33,11 +33,15 @@
 - (void)_finishedFetchingAppInfoByBundleIdentifier:(id)arg1;
 - (void)_handleiTunesResponseForBundleIdentifiers:(id)arg1 response:(id)arg2 data:(id)arg3 error:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_localAppNameForBundleIdentifier:(id)arg1;
+- (id)_placeholderAppInfoWithBundleIdentifier:(id)arg1;
 - (id)_preloadedAppInfoWithBundleIdentifier:(id)arg1;
+- (void)addObserver:(id)arg1 selector:(SEL)arg2 bundleIdentifier:(id)arg3;
 - (id)appInfoForBundleIdentifier:(id)arg1;
+- (id)appInfoForBundleIdentifier:(id)arg1 localOnly:(BOOL)arg2;
 - (void)dealloc;
 - (void)fetchAppInfoForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
+- (void)removeObserver:(id)arg1 bundleIdentifier:(id)arg2;
 
 @end
 

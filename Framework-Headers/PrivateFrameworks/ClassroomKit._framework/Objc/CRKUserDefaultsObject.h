@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSUserDefaults;
+@class NSString;
+@protocol CRKKeyObjectStoring;
 
 @interface CRKUserDefaultsObject : NSObject
 {
     NSString *_key;
-    NSUserDefaults *_defaults;
+    NSObject<CRKKeyObjectStoring> *_store;
 }
 
-@property (readonly, nonatomic) NSUserDefaults *defaults; // @synthesize defaults=_defaults;
 @property (readonly, copy, nonatomic) NSString *key; // @synthesize key=_key;
-@property (strong) id value;
+@property (readonly, nonatomic) NSObject<CRKKeyObjectStoring> *store; // @synthesize store=_store;
+@property (copy) id value;
 
 - (void).cxx_destruct;
-- (id)init;
 - (id)initWithDefaults:(id)arg1 key:(id)arg2;
 - (id)initWithKey:(id)arg1;
+- (id)initWithStore:(id)arg1 key:(id)arg2;
 
 @end
 

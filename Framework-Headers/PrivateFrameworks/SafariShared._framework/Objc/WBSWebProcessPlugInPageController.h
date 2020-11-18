@@ -27,7 +27,6 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithPlugIn:(id)arg1 contextController:(id)arg2;
-- (id)requestIfDoNotTrackEnabled:(id)arg1;
 - (void)willDestroyBrowserContextController:(id)arg1;
 
 @end

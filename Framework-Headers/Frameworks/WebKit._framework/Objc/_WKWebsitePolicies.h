@@ -20,8 +20,11 @@
 @property (nonatomic) long long autoplayPolicy;
 @property (nonatomic) BOOL contentBlockersEnabled;
 @property (copy, nonatomic) NSDictionary *customHeaderFields;
+@property (copy, nonatomic) NSString *customNavigatorPlatform;
+@property (copy, nonatomic) NSString *customUserAgent;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL deviceOrientationEventEnabled;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long popUpPolicy;
 @property (readonly) Class superclass;

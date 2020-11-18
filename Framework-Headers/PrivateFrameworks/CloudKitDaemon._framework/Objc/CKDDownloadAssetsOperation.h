@@ -6,21 +6,23 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class CKDCancelTokenGroup, NSArray, NSMapTable, NSMutableArray, NSObject;
+@class CKDCancelTokenGroup, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDDownloadAssetsOperation : CKDDatabaseOperation
 {
-    BOOL _shouldFetchAssetContentInMemory;
     CDUnknownBlockType _downloadPreparationBlock;
     CDUnknownBlockType _downloadProgressBlock;
     CDUnknownBlockType _downloadCommandBlock;
     CDUnknownBlockType _downloadCompletionBlock;
-    NSArray *_assetsToDownloadInMemory;
+    CDUnknownBlockType _urlFilledOutBlock;
+    NSMutableDictionary *_keyOrErrorForHostname;
     NSObject<OS_dispatch_queue> *_queue;
     NSArray *_assetsToDownload;
     NSArray *_packageIndexSets;
+    NSArray *_assetsToDownloadInMemory;
+    NSArray *_assetURLInfosToFillOut;
     NSMutableArray *_MMCSItemsToDownload;
     NSMutableArray *_MMCSItemsToDownloadInMemory;
     NSMapTable *_downloadTasksByPackages;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSMutableArray *MMCSItemsToDownload; // @synthesize MMCSItemsToDownload=_MMCSItemsToDownload;
 @property (strong, nonatomic) NSMutableArray *MMCSItemsToDownloadInMemory; // @synthesize MMCSItemsToDownloadInMemory=_MMCSItemsToDownloadInMemory;
+@property (strong, nonatomic) NSArray *assetURLInfosToFillOut; // @synthesize assetURLInfosToFillOut=_assetURLInfosToFillOut;
 @property (strong, nonatomic) NSArray *assetsToDownload; // @synthesize assetsToDownload=_assetsToDownload;
 @property (strong, nonatomic) NSArray *assetsToDownloadInMemory; // @synthesize assetsToDownloadInMemory=_assetsToDownloadInMemory;
 @property (strong, nonatomic) CKDCancelTokenGroup *cancelTokens; // @synthesize cancelTokens=_cancelTokens;
@@ -38,10 +41,11 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType downloadPreparationBlock; // @synthesize downloadPreparationBlock=_downloadPreparationBlock;
 @property (copy, nonatomic) CDUnknownBlockType downloadProgressBlock; // @synthesize downloadProgressBlock=_downloadProgressBlock;
 @property (strong, nonatomic) NSMapTable *downloadTasksByPackages; // @synthesize downloadTasksByPackages=_downloadTasksByPackages;
+@property (strong, nonatomic) NSMutableDictionary *keyOrErrorForHostname; // @synthesize keyOrErrorForHostname=_keyOrErrorForHostname;
 @property (nonatomic) unsigned long long maxPackageDownloadsPerBatch; // @synthesize maxPackageDownloadsPerBatch=_maxPackageDownloadsPerBatch;
 @property (strong, nonatomic) NSArray *packageIndexSets; // @synthesize packageIndexSets=_packageIndexSets;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (nonatomic) BOOL shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
+@property (copy, nonatomic) CDUnknownBlockType urlFilledOutBlock; // @synthesize urlFilledOutBlock=_urlFilledOutBlock;
 
 - (void).cxx_destruct;
 - (id)CKStatusReportLogGroups;
@@ -66,8 +70,10 @@ __attribute__((visibility("hidden")))
 - (void)_downloadPackageSectionsWithSectionEnumerator:(id)arg1 task:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_downloadPackageSectionsWithTask:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
+- (BOOL)_postProcess;
 - (BOOL)_prepareForDownload;
 - (void)_removeUntrackedMMCSItems:(id)arg1;
+- (id)_tryToFillInTheDerivativeTemplateWithAsset:(id)arg1;
 - (id)activityCreate;
 - (void)cancel;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;

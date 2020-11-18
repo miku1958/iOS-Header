@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSCHUnretainedParent-Protocol.h>
 
-@class TSCH3DChartElementProperties, TSCH3DChartElementSceneObject, TSCH3DRenderProcessor, TSCH3DSceneRenderPipeline;
+@class NSMutableArray, TSCH3DChartElementProperties, TSCH3DChartElementSceneObject, TSCH3DRenderProcessor, TSCH3DSceneRenderPipeline;
 
 __attribute__((visibility("hidden")))
 @interface TSCH3DChartElementSceneObjectProcessItems : NSObject <TSCHUnretainedParent>
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     TSCH3DChartElementSceneObject *mSceneObject;
     TSCH3DSceneRenderPipeline *mPipeline;
     TSCH3DChartElementProperties *mProperties;
-    vector_d7c2985b mDelayedItems;
+    NSMutableArray *mDelayedItems;
 }
 
 @property (readonly, nonatomic) BOOL geometryOnly;
@@ -25,11 +25,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL useBoundsGeometry;
 
 + (id)processItemsWithSceneObject:(id)arg1 properties:(id)arg2 pipeline:(id)arg3;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)clearParent;
 - (void)dealloc;
-- (struct RenderElementInfo)elementInfoWithSeries:(id)arg1 position:(const tvec2_3b141483 *)arg2;
+- (id)elementInfoWithSeries:(id)arg1 position:(const tvec2_3b141483 *)arg2;
 - (id)initWithSceneObject:(id)arg1 properties:(id)arg2 pipeline:(id)arg3;
 - (BOOL)p_delayedItemsAreUnique;
 - (void)p_processElementInfoWithSeries:(id)arg1 position:(const tvec2_3b141483 *)arg2;

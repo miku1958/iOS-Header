@@ -7,6 +7,6 @@
 #import <Foundation/NSHashTable.h>
 
 @interface NSHashTable (TSPObjectSerialization)
-- (BOOL)tsp_saveDataReferencesToMessage:(RepeatedPtrField_fe6aca30 *)arg1 dataArchiver:(id)arg2;
+- (BOOL)tsp_saveDataReferencesToMessage:(RepeatedPtrField_6277dbb5 *)arg1 dataArchiver:(id)arg2;
 @end
 

@@ -14,6 +14,7 @@
 {
     NSData *_actualExpressPassInformation;
     NSString *_actualUniqueID;
+    NSMutableArray *_currentExpressPasseInformations;
     NSMutableArray *_currentUniqueIDs;
     BOOL _cancelled;
     BOOL _needsUnlock;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) NSData *actualExpressPassInformation; // @synthesize actualExpressPassInformation=_actualExpressPassInformation;
 @property (strong, nonatomic) NSString *actualUniqueID; // @synthesize actualUniqueID=_actualUniqueID;
 @property (nonatomic) BOOL cancelled; // @synthesize cancelled=_cancelled;
+@property (strong, nonatomic) NSMutableArray *currentExpressPasseInformations; // @synthesize currentExpressPasseInformations=_currentExpressPasseInformations;
 @property (strong, nonatomic) NSMutableArray *currentUniqueIDs; // @synthesize currentUniqueIDs=_currentUniqueIDs;
 @property (readonly, nonatomic) BOOL hasActualExpressPassInformation;
 @property (readonly, nonatomic) BOOL hasActualUniqueID;
@@ -41,12 +43,17 @@
 @property (nonatomic) BOOL pending; // @synthesize pending=_pending;
 @property (nonatomic) BOOL success; // @synthesize success=_success;
 
++ (Class)currentExpressPasseInformationType;
 + (Class)currentUniqueIDsType;
 - (void).cxx_destruct;
+- (void)addCurrentExpressPasseInformation:(id)arg1;
 - (void)addCurrentUniqueIDs:(id)arg1;
+- (void)clearCurrentExpressPasseInformations;
 - (void)clearCurrentUniqueIDs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)currentExpressPasseInformationAtIndex:(unsigned long long)arg1;
+- (unsigned long long)currentExpressPasseInformationsCount;
 - (id)currentUniqueIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)currentUniqueIDsCount;
 - (id)description;

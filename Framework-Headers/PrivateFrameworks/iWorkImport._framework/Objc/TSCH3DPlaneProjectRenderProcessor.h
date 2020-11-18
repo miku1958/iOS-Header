@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)processorWithPlane:(const plane_849e6053 *)arg1 projPt:(const tvec3_17f03ce0 *)arg2;
 - (id).cxx_construct;
 - (id)initWithPlane:(const plane_849e6053 *)arg1 projPt:(const tvec3_17f03ce0 *)arg2;
-- (void)submit:(const struct PrimitiveInfo *)arg1;
+- (void)submit:(id)arg1;
 
 @end
 

@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
+#import <iWorkImport/TSCH3DObjectStateResource-Protocol.h>
 
-@class TSCH3DDataBuffer;
+@class NSString, TSCH3DDataBuffer;
 
 __attribute__((visibility("hidden")))
-@interface TSCH3DResource : NSObject <NSCopying>
+@interface TSCH3DResource : NSObject <NSCopying, TSCH3DObjectStateResource>
 {
     int mCaching;
     TSCH3DDataBuffer *mCache;
@@ -26,12 +27,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct DataBufferInfo bufferInfo;
 @property (nonatomic) int caching; // @synthesize caching=mCaching;
 @property (nonatomic) BOOL changed;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isTexturable;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=mUniqueIdentifier;
 @property (nonatomic) int update; // @synthesize update=mUpdate;
 
-+ (unsigned long long)allocateResourceUniqueIdentifier;
-+ (void)deallocateResourceUniqueIdentifier:(unsigned long long)arg1;
 + (id)resource;
 + (id)resourceWithCaching:(int)arg1;
 - (id).cxx_construct;
@@ -39,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)flushMemory;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCaching:(int)arg1;
 - (void)setCache:(id)arg1;

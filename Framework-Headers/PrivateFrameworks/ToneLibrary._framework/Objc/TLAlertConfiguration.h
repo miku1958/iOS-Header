@@ -21,6 +21,8 @@
     BOOL _shouldIgnoreRingerSwitch;
     BOOL _shouldForcePlayingAtUserSelectedAudioVolume;
     float _audioVolume;
+    double _audioPlaybackInitiationDelay;
+    double _audioVolumeRampingDuration;
     long long _type;
     NSString *_topic;
     NSString *_toneIdentifier;
@@ -33,6 +35,8 @@
     double _maximumDuration;
 }
 
+@property (nonatomic, setter=_setAudioPlaybackInitiationDelay:) double _audioPlaybackInitiationDelay; // @synthesize _audioPlaybackInitiationDelay;
+@property (nonatomic, setter=_setAudioVolumeRampingDuration:) double _audioVolumeRampingDuration; // @synthesize _audioVolumeRampingDuration;
 @property (readonly, nonatomic) BOOL _hasCustomAudioVolume; // @synthesize _hasCustomAudioVolume;
 @property (copy, nonatomic) NSString *audioCategory; // @synthesize audioCategory=_audioCategory;
 @property (nonatomic) float audioVolume; // @synthesize audioVolume=_audioVolume;

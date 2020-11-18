@@ -17,11 +17,13 @@
     NSString *_footer;
     NSArray *_preferences;
     unsigned long long _selectedIndex;
+    unsigned long long _pendingIndex;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *errors; // @synthesize errors=_errors;
 @property (copy, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property (nonatomic) BOOL isReadOnly; // @synthesize isReadOnly=_isReadOnly;
+@property (nonatomic) unsigned long long pendingIndex; // @synthesize pendingIndex=_pendingIndex;
 @property (copy, nonatomic) NSArray *preferences; // @synthesize preferences=_preferences;
 @property (nonatomic) unsigned long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
 @property (readonly, nonatomic) BOOL supportsDeletion; // @synthesize supportsDeletion=_supportsDeletion;

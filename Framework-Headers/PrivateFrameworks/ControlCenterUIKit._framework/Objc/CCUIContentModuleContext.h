@@ -35,6 +35,7 @@
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestAuthenticationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestExpandModule;
+- (void)setHomeGestureDismissalAllowed:(BOOL)arg1;
 
 @end
 

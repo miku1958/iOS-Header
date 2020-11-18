@@ -20,6 +20,7 @@
 + (CDUnknownBlockType)animator;
 + (void)assertInactive;
 + (void)begin;
++ (double)beginTime;
 + (void)commit;
 + (double)commitTime;
 + (CDUnknownBlockType)completionBlock;
@@ -38,6 +39,7 @@
 + (void)setAnimatesFromModelValues:(BOOL)arg1;
 + (void)setAnimationDuration:(double)arg1;
 + (void)setAnimationTimingFunction:(id)arg1;
++ (void)setBeginTime:(double)arg1;
 + (void)setCommitHandler:(CDUnknownBlockType)arg1;
 + (void)setCommitTime:(double)arg1;
 + (void)setCompletionBlock:(CDUnknownBlockType)arg1;

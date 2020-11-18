@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 + (float)depthLimitFactorForSeriesCount:(long long)arg1 maxLimitingSeries:(long long)arg2;
 + (BOOL)supportsChartSeriesDepthOffset;
 - (float)depthForScene:(id)arg1;
-- (void)sortElements:(vector_d7c2985b *)arg1 pipeline:(id)arg2;
+- (void)sortElements:(id *)arg1 pipeline:(id)arg2;
 - (BOOL)transparencyDepthMask;
 
 @end

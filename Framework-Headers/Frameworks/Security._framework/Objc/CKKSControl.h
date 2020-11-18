@@ -21,6 +21,7 @@
 + (id)controlObject:(id *)arg1;
 - (void).cxx_destruct;
 - (id)initWithConnection:(id)arg1;
+- (void)rpcFastStatus:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcFetchAndProcessChanges:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcFetchAndProcessClassAChanges:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcGetCKDeviceIDWithReply:(CDUnknownBlockType)arg1;

@@ -20,6 +20,7 @@
     unsigned long long _context;
     PKPeerPaymentRequestToken *_requestToken;
     NSString *_dpanIdentifier;
+    NSString *_fpanIdentifier;
     long long _paymentNetwork;
     unsigned long long _paymentMethodType;
     NSString *_recipientIdentifier;
@@ -38,6 +39,7 @@
 @property (nonatomic) unsigned long long destination; // @synthesize destination=_destination;
 @property (copy, nonatomic, setter=setDPANIdentifier:) NSString *dpanIdentifier; // @synthesize dpanIdentifier=_dpanIdentifier;
 @property (nonatomic) unsigned long long externalFundingSource; // @synthesize externalFundingSource=_externalFundingSource;
+@property (copy, nonatomic, setter=setFPANIdentifier:) NSString *fpanIdentifier; // @synthesize fpanIdentifier=_fpanIdentifier;
 @property (readonly, copy, nonatomic) NSString *orderIdentifier; // @synthesize orderIdentifier=_orderIdentifier;
 @property (nonatomic) unsigned long long paymentMethodType; // @synthesize paymentMethodType=_paymentMethodType;
 @property (nonatomic) long long paymentNetwork; // @synthesize paymentNetwork=_paymentNetwork;
@@ -58,6 +60,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPeerPaymentQuoteRequest:(id)arg1;
 - (void)updateWithPaymentPass:(id)arg1;
+- (void)updateWithPaymentPass:(id)arg1 externalFundingSource:(unsigned long long)arg2;
 
 @end
 

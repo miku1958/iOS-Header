@@ -34,12 +34,12 @@
     NSObject<OS_dispatch_semaphore> *_resultSemaphore;
     double _minVergenceAngleCosine;
     double _resultLatency;
-    ARWorldTrackingOptions *_options;
     BOOL _allowPoseGraphUpdates;
     NSDictionary *_objectDetectionOptions;
+    ARWorldTrackingOptions *_mutableOptions;
 }
 
-@property (readonly, nonatomic) ARWorldTrackingOptions *mutableOptions;
+@property (strong) ARWorldTrackingOptions *mutableOptions; // @synthesize mutableOptions=_mutableOptions;
 @property (readonly, copy, nonatomic) ARWorldTrackingOptions *options;
 
 + (BOOL)isSupported;

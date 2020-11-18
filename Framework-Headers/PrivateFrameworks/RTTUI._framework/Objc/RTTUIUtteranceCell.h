@@ -23,7 +23,7 @@
 
 @property (nonatomic, getter=_accessibilityIsUnread, setter=_accessibilitySetIsUnread:) BOOL accessibilityIsUnread; // @synthesize accessibilityIsUnread=_accessibilityIsUnread;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<RTTUIUtteranceCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<RTTUIUtteranceCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEditingUtterance) BOOL editingUtterance; // @synthesize editingUtterance=_editingUtterance;
 @property (readonly) unsigned long long hash;

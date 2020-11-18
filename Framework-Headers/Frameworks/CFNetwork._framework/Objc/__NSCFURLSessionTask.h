@@ -82,6 +82,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_transactionMetrics;
     NSURLSessionTaskMetrics *_incompleteTaskMetrics;
     NSObject<OS_nw_activity> *_nw_activity;
+    NSObject<OS_nw_activity> *_private_nw_activity;
     __NSCFTaskPerformanceTiming *_taskPerformanceTiming;
     NSDictionary *_trailers;
     long long _discretionaryOverride;
@@ -120,6 +121,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldReportTimingDataToAWD;
     BOOL _preconnect;
     BOOL _authenticatorConfiguredViaTaskProperty;
+    BOOL _seenFirstResume;
     BOOL _extractorPreparedForExtraction;
 }
 
@@ -196,6 +198,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_preventsSystemHTTPProxyAuthentication;
 - (long long)_priority;
 - (long long)_priorityValue;
+- (id)_private_nw_activity;
 - (BOOL)_prohibitAuthUI;
 - (id)_protocolForTask;
 - (id)_proxySettings;
@@ -257,6 +260,7 @@ __attribute__((visibility("hidden")))
 - (void)initializeHTTPAuthenticatorWithAppleIDContext:(id)arg1 statusCodes:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)originalRequest;
+- (void)performSetupOnFirstResume;
 - (float)priority;
 - (id)progress;
 - (id)response;
@@ -332,6 +336,7 @@ __attribute__((visibility("hidden")))
 - (void)set_preventsSystemHTTPProxyAuthentication:(BOOL)arg1;
 - (void)set_priority:(long long)arg1;
 - (void)set_priorityValue:(long long)arg1;
+- (void)set_private_nw_activity:(id)arg1;
 - (void)set_prohibitAuthUI:(BOOL)arg1;
 - (void)set_protocolForTask:(id)arg1;
 - (void)set_proxySettings:(id)arg1;

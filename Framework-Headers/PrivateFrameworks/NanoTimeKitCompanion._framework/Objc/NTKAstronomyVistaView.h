@@ -18,6 +18,8 @@
     NSMutableSet *_activeContentsAnimations;
     unsigned long long _vista;
     unsigned int _isSupplemental:1;
+    unsigned int _isDisplayOn:1;
+    unsigned int _isAnimating:1;
     CLKDevice *_device;
     id<NTKAstronomyVistaViewObserver> _observer;
 }
@@ -32,6 +34,7 @@
 
 - (void).cxx_destruct;
 - (void)_setVista:(unsigned long long)arg1 scene:(id)arg2;
+- (void)_updateAnimation;
 - (void)dealloc;
 - (id)generateAnimationArrayFromVista:(unsigned long long)arg1 toVista:(unsigned long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;

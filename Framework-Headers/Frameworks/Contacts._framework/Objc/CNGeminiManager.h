@@ -49,7 +49,7 @@
 - (id)channelForContact:(id)arg1 error:(id *)arg2;
 - (id)channelForFavoritesEntry:(id)arg1 error:(id *)arg2;
 - (id)channelForFavoritesEntry:(id)arg1 includeDanglingChannels:(BOOL)arg2 error:(id *)arg3;
-- (id)channelForPreferredChannelString:(id)arg1 fromChannels:(id)arg2;
+- (id)channelForPreferredChannelString:(id)arg1 fromChannels:(id)arg2 synthesizeMissingChannels:(BOOL)arg3;
 - (id)channelIdentifierForMostRecentCallFromPhoneNumbers:(id)arg1 fromChannelIdentifiers:(id)arg2;
 - (id)channelIdentifierForMostRecentSMSFromPhoneNumbers:(id)arg1 fromChannelIdentifiers:(id)arg2;
 - (id)channelsByIdentifierIncludingDanglingPlans:(BOOL)arg1 defaultChannel:(id *)arg2 availableChannels:(id *)arg3;

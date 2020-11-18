@@ -31,6 +31,7 @@
 - (void)_metaDataDidChange:(id)arg1;
 - (void)_registerForMedadaDataFileChangeDistributedNotification;
 - (void)_resumeMonitoringMetaDataFile;
+- (void)_setUpWithPlistURL:(id)arg1 readOnly:(BOOL)arg2 queue:(id)arg3;
 - (void)dealloc;
 - (id)description;
 - (id)initWithPlistURL:(id)arg1 readOnly:(BOOL)arg2;

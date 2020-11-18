@@ -24,7 +24,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) id<HUIDCManagerSecurityDelegate> securityDelegate;
+@property (weak, nonatomic) id<HUIDCManagerSecurityDelegate> securityDelegate;
 @property (strong, nonatomic) AXHearingSlaveController *slaveController; // @synthesize slaveController=_slaveController;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableArray *updateDeviceBlocks; // @synthesize updateDeviceBlocks=_updateDeviceBlocks;

@@ -27,9 +27,9 @@
     NSArray *_appAdamIDs;
     NSArray *_appBundleIDs;
     NSString *_appName;
-    NSURL *_appStoreURL;
     WLKArtworkVariantListing *_images;
     NSDictionary *_rateLimit;
+    NSString *_appStoreURLString;
 }
 
 @property (readonly, copy, nonatomic) NSArray *appAdamIDs;
@@ -39,7 +39,8 @@
 @property (readonly, nonatomic, getter=isAppInstalled) BOOL appInstalled; // @synthesize appInstalled=_appInstalled;
 @property (readonly, copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
 @property (readonly, copy, nonatomic) NSURL *appStoreURL;
-@property (readonly, copy, nonatomic) NSURL *appStoreURL; // @synthesize appStoreURL=_appStoreURL;
+@property (readonly, copy, nonatomic) NSURL *appStoreURL;
+@property (copy, nonatomic) NSString *appStoreURLString; // @synthesize appStoreURLString=_appStoreURLString;
 @property (readonly, copy, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

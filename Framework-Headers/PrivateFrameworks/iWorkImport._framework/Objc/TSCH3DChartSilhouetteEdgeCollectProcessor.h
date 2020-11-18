@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithEdgeDetectionParameters:(const struct EdgeDetectionParameters *)arg1;
 - (id)matrix;
-- (void)submit:(const struct PrimitiveInfo *)arg1;
+- (void)submit:(id)arg1;
 
 @end
 

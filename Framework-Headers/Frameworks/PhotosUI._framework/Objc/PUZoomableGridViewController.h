@@ -135,6 +135,7 @@
 - (void)navigateToLowerZoomLevelWithReferenceItemPath:(id)arg1;
 - (id)newGridLayout;
 - (void)oneUpPresentationHelper:(id)arg1 willPresentOneUpPreviewViewController:(id)arg2;
+- (long long)oneUpPresentationOrigin;
 - (void)ppt_navigateToPhotosDetailsAnimated:(BOOL)arg1;
 - (void)preheatAssets;
 - (void)prepareForTransitionToZoomableViewController:(id)arg1 anchorItemIndexPath:(id)arg2 anchorShiftsColumns:(BOOL)arg3 animated:(BOOL)arg4 interactive:(BOOL)arg5;

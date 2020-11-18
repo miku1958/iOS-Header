@@ -9,34 +9,34 @@
 #import <Silex/SXDocumentStyleRenderer-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class NSString, SXGradientFillView, SXImageFillView, SXVideoFillView, SXViewport, UIView;
-@protocol SXDocumentControllerProvider, SXGradientFactory, SXImageViewFactory, SXPresentationDelegate;
+@class NSString, SXFillView, SXGradientFillView, SXImageFillView, SXVideoFillView, SXViewport, UIView;
+@protocol SXGradientFactory, SXImageFillViewFactory, SXVideoFillViewFactory;
 
 @interface SXDocumentStyleRenderer : NSObject <SXViewportChangeListener, SXDocumentStyleRenderer>
 {
-    id<SXPresentationDelegate> _presentationDelegate;
-    id<SXDocumentControllerProvider> _documentControllerProvider;
-    id<SXImageViewFactory> _imageViewFactory;
+    id<SXImageFillViewFactory> _imageFillViewFactory;
+    id<SXVideoFillViewFactory> _videoFillViewFactory;
     SXViewport *_viewport;
     id<SXGradientFactory> _gradientFactory;
     UIView *_topBackgroundView;
     SXGradientFillView *_gradientFillView;
     SXImageFillView *_imageFillView;
     SXVideoFillView *_videoFillView;
+    SXFillView *_fillView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) id<SXDocumentControllerProvider> documentControllerProvider; // @synthesize documentControllerProvider=_documentControllerProvider;
+@property (strong, nonatomic) SXFillView *fillView; // @synthesize fillView=_fillView;
 @property (readonly, nonatomic) id<SXGradientFactory> gradientFactory; // @synthesize gradientFactory=_gradientFactory;
 @property (strong, nonatomic) SXGradientFillView *gradientFillView; // @synthesize gradientFillView=_gradientFillView;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SXImageFillView *imageFillView; // @synthesize imageFillView=_imageFillView;
-@property (readonly, nonatomic) id<SXImageViewFactory> imageViewFactory; // @synthesize imageViewFactory=_imageViewFactory;
-@property (weak, nonatomic) id<SXPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
+@property (readonly, nonatomic) id<SXImageFillViewFactory> imageFillViewFactory; // @synthesize imageFillViewFactory=_imageFillViewFactory;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *topBackgroundView; // @synthesize topBackgroundView=_topBackgroundView;
 @property (strong, nonatomic) SXVideoFillView *videoFillView; // @synthesize videoFillView=_videoFillView;
+@property (readonly, nonatomic) id<SXVideoFillViewFactory> videoFillViewFactory; // @synthesize videoFillViewFactory=_videoFillViewFactory;
 @property (readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
 
 - (void).cxx_destruct;
@@ -46,7 +46,8 @@
 - (void)applyTopBackgroundForStyle:(id)arg1 onView:(id)arg2;
 - (id)gradientViewForFill:(id)arg1;
 - (id)imageViewForFill:(id)arg1;
-- (id)initWithDocumentControllerProvider:(id)arg1 viewport:(id)arg2 imageViewFactory:(id)arg3 gradientFactory:(id)arg4;
+- (id)initWithViewport:(id)arg1 imageFillViewFactory:(id)arg2 videoFillViewFactory:(id)arg3 gradientFactory:(id)arg4;
+- (void)layoutFillView;
 - (void)layoutTopBackgroundView;
 - (id)videoPlayerViewForFill:(id)arg1;
 - (id)viewForFill:(id)arg1;

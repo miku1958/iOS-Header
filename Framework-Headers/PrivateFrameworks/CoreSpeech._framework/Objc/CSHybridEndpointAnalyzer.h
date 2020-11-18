@@ -10,7 +10,7 @@
 #import <CoreSpeech/CSEndpointAnalyzerImpl-Protocol.h>
 #import <CoreSpeech/EARCaesuraSilencePosteriorGeneratorDelegate-Protocol.h>
 
-@class CSAsset, CSServerEndpointFeatures, EARCaesuraSilencePosteriorGenerator, EARClientSilenceFeatures, NSDate, NSMutableArray, NSString, _EAREndpointer;
+@class CSAsset, CSServerEndpointFeatures, EARCaesuraSilencePosteriorGenerator, EARClientSilenceFeatures, NSDate, NSDictionary, NSMutableArray, NSString, _EAREndpointer;
 @protocol CSEndpointAnalyzerDelegate, OS_dispatch_queue;
 
 @interface CSHybridEndpointAnalyzer : NSObject <CSAssetManagerDelegate, EARCaesuraSilencePosteriorGeneratorDelegate, CSEndpointAnalyzerImpl>
@@ -55,6 +55,7 @@
     double _vtExtraAudioAtStartInMs;
     unsigned long long _vtEndInSampleCount;
     double _hepAudioOriginInMs;
+    NSDictionary *_recordContext;
     NSDate *_firstAudioPacketTimestamp;
     NSObject<OS_dispatch_queue> *_silencePosteriorGeneratorQueue;
     double _elapsedTimeWithNoSpeech;
@@ -98,6 +99,7 @@
 @property (readonly, nonatomic) double lastStartOfVoiceActivityTime;
 @property (nonatomic) double minimumDurationForEndpointer; // @synthesize minimumDurationForEndpointer=_minimumDurationForEndpointer;
 @property (nonatomic) unsigned long long numSamplesProcessed; // @synthesize numSamplesProcessed=_numSamplesProcessed;
+@property (strong, nonatomic) NSDictionary *recordContext; // @synthesize recordContext=_recordContext;
 @property (nonatomic) BOOL recordingDidStop; // @synthesize recordingDidStop=_recordingDidStop;
 @property (nonatomic) BOOL saveSamplesSeenInReset; // @synthesize saveSamplesSeenInReset=_saveSamplesSeenInReset;
 @property (strong, nonatomic) NSMutableArray *serverFeatureLatencies; // @synthesize serverFeatureLatencies=_serverFeatureLatencies;
@@ -126,7 +128,7 @@
 - (void)processServerEndpointFeatures:(id)arg1;
 - (void)recordingStoppedForReason:(unsigned long long)arg1;
 - (void)reset;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2;
 - (id)serverFeaturesLatencyDistributionDictionary;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)updateEndpointerDelayedTrigger:(BOOL)arg1;

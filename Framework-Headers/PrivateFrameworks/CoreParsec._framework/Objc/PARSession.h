@@ -38,6 +38,8 @@
 + (id)sharedPARSessionWithConfiguration:(id)arg1;
 + (id)sharedSession;
 - (void).cxx_destruct;
+- (void)_flushUsingConnectionToFBF:(id)arg1;
+- (void)_scheduleEagerFlush;
 - (id)awaitBag;
 - (void)cardViewDidAppear:(id)arg1;
 - (void)cardViewDidDisappear:(id)arg1;
@@ -55,7 +57,9 @@
 - (void)didGradeResultRelevancy:(id)arg1;
 - (void)didRankSections:(id)arg1;
 - (void)didReceiveResultsAfterTimeout:(id)arg1;
+- (void)didReportUserResponseFeedback:(id)arg1;
 - (void)didStartSearch:(id)arg1;
+- (void)didSubmitUserReportFeedback:(id)arg1;
 - (unsigned long long)enabledStatus;
 - (void)fileHandleAndAttributesForResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithConfiguration:(id)arg1;

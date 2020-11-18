@@ -12,6 +12,8 @@
 {
     NSString *_title;
     NSString *_body;
+    NSString *_linkText;
+    NSURL *_linkURL;
     NSURL *_imageURL;
     NSData *_imageData;
 }
@@ -19,6 +21,8 @@
 @property (readonly, copy, nonatomic) NSString *body; // @synthesize body=_body;
 @property (copy, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property (readonly, copy, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
+@property (readonly, copy, nonatomic) NSString *linkText; // @synthesize linkText=_linkText;
+@property (readonly, copy, nonatomic) NSURL *linkURL; // @synthesize linkURL=_linkURL;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithAssistedNodeInformation:(const struct AssistedNodeInformation *)arg1 isUserInitiated:(BOOL)arg2 userObject:(id)arg3;
+- (id)initWithFocusedElementInformation:(const struct FocusedElementInformation *)arg1 isUserInitiated:(BOOL)arg2 userObject:(id)arg3;
 
 @end
 

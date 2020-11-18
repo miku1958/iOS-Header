@@ -9,6 +9,7 @@
 @class NSDictionary, NSString;
 
 @protocol GKAccountServicePrivate <GKAccountService>
+- (oneway void)accountCreated:(NSString *)arg1 playerID:(NSString *)arg2 authenticationToken:(NSString *)arg3 alias:(NSString *)arg4 altDSID:(NSString *)arg5 finished:(BOOL)arg6 handler:(void (^)(GKAuthenticateResponse *, NSError *))arg7;
 - (oneway void)accountCreated:(NSString *)arg1 playerID:(NSString *)arg2 authenticationToken:(NSString *)arg3 alias:(NSString *)arg4 finished:(BOOL)arg5 handler:(void (^)(GKAuthenticateResponse *, NSError *))arg6;
 - (oneway void)accountEdited:(NSString *)arg1 alias:(NSString *)arg2 firstName:(NSString *)arg3 lastName:(NSString *)arg4 handler:(void (^)(void))arg5;
 - (oneway void)authenticatePlayerWithUsername:(NSString *)arg1 password:(NSString *)arg2 handler:(void (^)(GKAuthenticateResponse *, NSError *))arg3;

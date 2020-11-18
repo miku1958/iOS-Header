@@ -12,9 +12,9 @@
 
 @interface NUArticleViewStyler : NSObject <NUArticleViewStyler>
 {
+    UIColor *_backgroundColor;
     long long _statusBarStyle;
     long long _topBackgroundStatusBarStyle;
-    UIColor *_backgroundColor;
     UIColor *_tabBarTintColor;
     UIColor *_toolbarTintColor;
 }

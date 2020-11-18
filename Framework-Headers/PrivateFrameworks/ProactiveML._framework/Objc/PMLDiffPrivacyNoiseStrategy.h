@@ -15,9 +15,9 @@
     unsigned long long _seed;
     BOOL _inplaceNorm;
     int _maxIterations;
-    float _scaleFactor;
     float _minimumMagnitude;
-    Class _samplerClass;
+    CDStruct_cd4a7bf5 _noiseScaleFactors;
+    long long _noiseMechanism;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,23 +25,20 @@
 @property (readonly) unsigned long long hash;
 @property int maxIterations; // @synthesize maxIterations=_maxIterations;
 @property float minimumMagnitude; // @synthesize minimumMagnitude=_minimumMagnitude;
-@property (strong) Class samplerClass; // @synthesize samplerClass=_samplerClass;
-@property float scaleFactor; // @synthesize scaleFactor=_scaleFactor;
+@property long long noiseMechanism; // @synthesize noiseMechanism=_noiseMechanism;
+@property CDStruct_cd4a7bf5 noiseScaleFactors; // @synthesize noiseScaleFactors=_noiseScaleFactors;
 @property (readonly) Class superclass;
 
 + (id)gaussianNoiseWithScaleFactor:(float)arg1 minimumMagnitude:(float)arg2 seed:(int)arg3;
-- (void).cxx_destruct;
-- (void)addNoiseToDenseVector:(id)arg1;
-- (void)addNoiseToFeatureMatrix:(id)arg1;
-- (void)addNoiseToGradient:(id)arg1;
-- (void)addNoiseToObjectiveFeatures:(id)arg1;
 - (void)addNoiseToSparseMatrix:(id)arg1;
 - (void)addNoiseToSparseVector:(id)arg1;
-- (void)addNoiseToWeights:(id)arg1;
-- (id)createSampler;
-- (id)initWithMaxIterationCount:(int)arg1 scaleFactor:(float)arg2 minimumMagnitude:(float)arg3 samplerClass:(Class)arg4 inplaceNorm:(BOOL)arg5;
-- (id)initWithMaxIterationCount:(int)arg1 scaleFactor:(float)arg2 minimumMagnitude:(float)arg3 seed:(int)arg4 samplerClass:(Class)arg5 inplaceNorm:(BOOL)arg6;
+- (id)createDefaultSampler;
+- (id)createSamplerByName:(id)arg1;
+- (id)initWithMaxIterationCount:(int)arg1 noiseScaleFactors:(CDStruct_cd4a7bf5)arg2 minimumMagnitude:(float)arg3 noiseMechanism:(long long)arg4 inplaceNorm:(BOOL)arg5;
+- (id)initWithMaxIterationCount:(int)arg1 noiseScaleFactors:(CDStruct_cd4a7bf5)arg2 minimumMagnitude:(float)arg3 seed:(int)arg4 noiseMechanism:(long long)arg5 inplaceNorm:(BOOL)arg6;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
+- (struct _PMLPreNoiseScaleFactorAndNoiseSampler)samplerWithScaleFactorFor:(id)arg1 usingNorm:(BOOL)arg2;
+- (float)scaleAndAddNoiseToDenseVector:(id)arg1 usingNorm:(BOOL)arg2;
 - (id)toPlistWithChunks:(id)arg1;
 
 @end

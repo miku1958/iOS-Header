@@ -15,7 +15,7 @@
 + (id)appleIDSession;
 + (void)applyUserDefaultOverridesToResponse:(id)arg1;
 + (id)deviceInfoDictForPersonID:(id)arg1;
-+ (void)fetchMPSStateWithBaseAvailabilityURL:(id)arg1 personID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
++ (void)fetchMPSStateWithBaseAvailabilityURL:(id)arg1 personID:(id)arg2 originalLibrarySize:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 + (id)retryAfterDateBasedOnRetryAfterHeaderString:(id)arg1;
 
 @end

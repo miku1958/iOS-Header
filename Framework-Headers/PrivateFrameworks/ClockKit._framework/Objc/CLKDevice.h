@@ -12,7 +12,7 @@
 {
     BOOL _isLuxo;
     BOOL _isExplorer;
-    BOOL _supportsNewInGallery;
+    BOOL _limitedToPreGlory;
     BOOL _isBridgeActive;
     unsigned long long _sizeClass;
     double _screenScale;
@@ -23,12 +23,12 @@
     struct CGRect _screenBounds;
 }
 
-@property (readonly, nonatomic) NRDevice *_rawNRDevice;
 @property (nonatomic) unsigned long long collectionType; // @synthesize collectionType=_collectionType;
 @property (nonatomic) BOOL isBridgeActive; // @synthesize isBridgeActive=_isBridgeActive;
 @property (nonatomic) BOOL isExplorer; // @synthesize isExplorer=_isExplorer;
 @property (readonly, nonatomic) BOOL isLocked;
 @property (nonatomic) BOOL isLuxo; // @synthesize isLuxo=_isLuxo;
+@property (readonly, nonatomic) BOOL limitedToPreGlory; // @synthesize limitedToPreGlory=_limitedToPreGlory;
 @property (nonatomic) unsigned long long materialType; // @synthesize materialType=_materialType;
 @property (strong, nonatomic) NRDevice *nrDevice; // @synthesize nrDevice=_nrDevice;
 @property (readonly, nonatomic) NSUUID *nrDeviceUUID;
@@ -37,7 +37,6 @@
 @property (nonatomic) double screenCornerRadius; // @synthesize screenCornerRadius=_screenCornerRadius;
 @property (nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
 @property (nonatomic) unsigned long long sizeClass; // @synthesize sizeClass=_sizeClass;
-@property (readonly, nonatomic) BOOL supportsNewInGallery; // @synthesize supportsNewInGallery=_supportsNewInGallery;
 @property (readonly, nonatomic) BOOL unlockedSinceBoot;
 
 + (void)_deviceDidBecomeActive;
@@ -51,7 +50,6 @@
 + (void)setCurrentDevice:(id)arg1;
 - (void).cxx_destruct;
 - (void)_loadDeviceInfo;
-- (id)init;
 - (id)initWithNRDevice:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

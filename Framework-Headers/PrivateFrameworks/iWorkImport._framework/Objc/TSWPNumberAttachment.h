@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *numberFormat; // @synthesize numberFormat=_numberFormat;
 @property (copy, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 
-+ (BOOL)allowsObjectDigestValidation;
 + (Class)classForUnarchiver:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithContext:(id)arg1;

@@ -13,12 +13,14 @@
 @interface SFAppleIDIdentity : NSObject <NSSecureCoding>
 {
     NSString *_encDSID;
+    NSString *_intermediateCertificateSerialNumber;
     BOOL _linkedToCurrentUser;
     NSString *_accountIdentifier;
     NSString *_altDSID;
     NSString *_appleID;
     NSDate *_certificateExpirationDate;
     NSData *_certificatePersistentReference;
+    NSDate *_intermediateCertificateExpirationDate;
     NSData *_intermediateCertificatePersistentReference;
     NSDate *_lastValidationAttemptDate;
     NSDate *_lastValidationDate;
@@ -33,7 +35,10 @@
 @property (strong, nonatomic) NSDate *certificateExpirationDate; // @synthesize certificateExpirationDate=_certificateExpirationDate;
 @property (readonly, nonatomic) BOOL certificateExpired;
 @property (strong, nonatomic) NSData *certificatePersistentReference; // @synthesize certificatePersistentReference=_certificatePersistentReference;
+@property (strong, nonatomic) NSDate *intermediateCertificateExpirationDate; // @synthesize intermediateCertificateExpirationDate=_intermediateCertificateExpirationDate;
+@property (readonly, nonatomic) BOOL intermediateCertificateExpired;
 @property (strong, nonatomic) NSData *intermediateCertificatePersistentReference; // @synthesize intermediateCertificatePersistentReference=_intermediateCertificatePersistentReference;
+@property (readonly, nonatomic) NSString *intermediateCertificateSerialNumber;
 @property (readonly, nonatomic) BOOL isInvalid;
 @property (strong, nonatomic) NSDate *lastValidationAttemptDate; // @synthesize lastValidationAttemptDate=_lastValidationAttemptDate;
 @property (strong, nonatomic) NSDate *lastValidationDate; // @synthesize lastValidationDate=_lastValidationDate;
@@ -56,6 +61,7 @@
 - (id)initWithAppleID:(id)arg1 altDSID:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (BOOL)isDateInThePast:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToIdentity:(id)arg1;
 - (void)removeFromKeychain;

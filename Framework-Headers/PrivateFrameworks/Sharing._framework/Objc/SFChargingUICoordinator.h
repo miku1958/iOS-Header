@@ -13,6 +13,7 @@
 {
     BOOL _activateCalled;
     BOOL _invalidateCalled;
+    BOOL _animationSPIAdopted;
     BOOL _runningAsCarry;
     NSDate *_uiUpdateMaxDate;
     NSDate *_uiUpdateRequestDate;
@@ -32,6 +33,7 @@
 - (void)_initialViewControllerDidDisappear;
 - (void)_invalidate;
 - (void)_requestToDismissUIHandler:(CDUnknownBlockType)arg1;
+- (void)_requestToStartAnimationAtDate:(id)arg1;
 - (void)_sendDismissUIWithReason:(long long)arg1;
 - (void)_timingInvalidateMinTimer;
 - (void)_timingRestartMinTimer;
@@ -45,8 +47,10 @@
 - (void)onqueue_connectionInterrupted;
 - (void)onqueue_connectionInvalidated;
 - (id)remoteObjectInterface;
+- (void)requestAnimationDateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestToDismissUIHandler:(CDUnknownBlockType)arg1;
 - (void)requestToShowUIWithHandler:(CDUnknownBlockType)arg1;
+- (void)requestToStartAnimationAtDate:(id)arg1;
 - (void)sendDismissUIWithReason:(long long)arg1;
 - (BOOL)shouldEscapeXpcTryCatch;
 

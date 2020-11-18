@@ -27,6 +27,7 @@
 - (id)safari_canonicalURL;
 - (id)safari_displayNameWithTitle:(id)arg1;
 - (BOOL)safari_hasCharactersBeyondPath;
+- (BOOL)safari_hasLocalScheme;
 - (BOOL)safari_hasSameOriginAsURL:(id)arg1;
 - (BOOL)safari_hasScheme:(id)arg1;
 - (BOOL)safari_hasUserOrPassword;
@@ -36,6 +37,7 @@
 - (BOOL)safari_isWellKnownChangePasswordURL;
 - (id)safari_originalDataAsString;
 - (id)safari_path;
+- (id)safari_relativePathToURL:(id)arg1;
 - (BOOL)safari_shouldBeAssociatedWithFaviconFromRedirectedURL:(id)arg1;
 - (id)safari_userVisibleHost;
 - (id)safari_userVisibleHostWithoutWWWSubdomain;

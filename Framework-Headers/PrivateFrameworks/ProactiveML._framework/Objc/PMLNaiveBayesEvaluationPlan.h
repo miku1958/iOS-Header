@@ -16,7 +16,7 @@
     PMLTrainingStore *_store;
     id<PMLEvaluationTrackerProtocol> _tracker;
     PMLSessionDescriptor *_sessionDescriptor;
-    unsigned long long _maxSessionsLimit;
+    unsigned long long _sessionsInBatch;
     PMLModelWeights *_currentModelWeights;
     PMLModelWeights *_probabilities;
     PMLModelWeights *_positiveConditionalProbabilities;
@@ -28,6 +28,7 @@
     unsigned long long _evaluationLevel;
     BOOL _isSynchronous;
     struct NSString *_planId;
+    unsigned long long _maxSessionsLimit;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -44,8 +45,8 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
-- (id)initWithStore:(id)arg1 tracker:(id)arg2 planId:(struct NSString *)arg3 isSynchronous:(BOOL)arg4 sessionDescriptor:(id)arg5 maxSessionsLimit:(unsigned long long)arg6 probabilities:(id)arg7 positiveConditionalProbabilities:(id)arg8 negativeConditionalProbabilities:(id)arg9 skew:(double)arg10 threshold:(double)arg11 isMultiLabel:(BOOL)arg12 positiveLabel:(unsigned long long)arg13 evaluationLevel:(unsigned long long)arg14;
-- (void)loadSessionsSince:(double)arg1 block:(CDUnknownBlockType)arg2;
+- (id)initWithStore:(id)arg1 tracker:(id)arg2 planId:(struct NSString *)arg3 isSynchronous:(BOOL)arg4 sessionDescriptor:(id)arg5 sessionsInBatch:(unsigned long long)arg6 probabilities:(id)arg7 positiveConditionalProbabilities:(id)arg8 negativeConditionalProbabilities:(id)arg9 skew:(double)arg10 threshold:(double)arg11 isMultiLabel:(BOOL)arg12 positiveLabel:(unsigned long long)arg13 evaluationLevel:(unsigned long long)arg14;
+- (void)loadSessionsWithBlock:(CDUnknownBlockType)arg1;
 - (id)normalizeRegressor:(id)arg1;
 - (id)run;
 - (void)runUntilDoneForTesting;

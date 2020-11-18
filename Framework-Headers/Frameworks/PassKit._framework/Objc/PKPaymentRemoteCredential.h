@@ -19,12 +19,14 @@
     NSString *_statusDescription;
     PKPaymentPass *_paymentPass;
     unsigned long long _rank;
+    NSString *_productIdentifier;
 }
 
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSArray *metadata; // @synthesize metadata=_metadata;
 @property (copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
 @property (strong, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
+@property (readonly, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (nonatomic) unsigned long long rank; // @synthesize rank=_rank;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (readonly, copy, nonatomic) NSString *statusDescription; // @synthesize statusDescription=_statusDescription;

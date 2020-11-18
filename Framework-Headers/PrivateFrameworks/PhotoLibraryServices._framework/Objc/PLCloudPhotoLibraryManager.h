@@ -15,7 +15,7 @@
 #import <PhotoLibraryServices/PLCloudUserSessionHandling-Protocol.h>
 #import <PhotoLibraryServices/PLForegroundMonitorDelegate-Protocol.h>
 
-@class CPLLibraryManager, NSDate, NSMutableDictionary, NSNumber, NSString, PFCoalescer, PLBatterySaverWatcher, PLCloudBatchDownloader, PLCloudBatchUploader, PLCloudInMemoryTaskManager, PLCloudPhotoLibraryUploadTracker, PLCloudResourceManager, PLCloudTaskManager, PLForegroundMonitor, PLPhotoLibrary;
+@class CPLLibraryManager, NSDate, NSMutableDictionary, NSNumber, NSString, PFCoalescer, PLBatterySaverWatcher, PLCloudBatchDownloader, PLCloudBatchUploader, PLCloudInMemoryTaskManager, PLCloudPhotoLibraryUploadTracker, PLCloudPhotoLibraryUserSwitchHandler, PLCloudResourceManager, PLCloudTaskManager, PLForegroundMonitor, PLPhotoLibrary;
 @protocol OS_dispatch_queue, OS_dispatch_source, PLCloudChangeTracker;
 
 @interface PLCloudPhotoLibraryManager : NSObject <PLCloudChangeTrackerDelegate, PLCloudPersistentHistoryMigratorContext, CPLResourceProgressDelegate, CPLLibraryManagerDelegate, PLForegroundMonitorDelegate, PLBatterySaverWatcherDelegate, PLCloudUserSessionHandling, CPLStatusDelegate>
@@ -58,6 +58,7 @@
     PLCloudPhotoLibraryUploadTracker *_uploadTracker;
     NSMutableDictionary *_placeholderAssetAvailabilityHandlers;
     struct os_unfair_lock_s _placeholderAssetAvailabilityHandlersLock;
+    PLCloudPhotoLibraryUserSwitchHandler *_switchHandler;
     NSNumber *__numberOfPhotosToPush;
     NSNumber *__numberOfVideosToPush;
     NSNumber *__numberOfOtherItemsToPush;
@@ -94,7 +95,6 @@
 + (BOOL)needResetSyncErrorType:(id)arg1;
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (id)_addPrefix:(id)arg1 toKeysInDictionary:(id)arg2;
 - (id)_assetResourceForAsset:(id)arg1 resourceType:(unsigned long long)arg2 masterResourceOnly:(BOOL)arg3 isPhoto:(BOOL *)arg4;
 - (id)_calculateUnpauseTimeForPauseTime:(id)arg1;
 - (BOOL)_canExternallyTransitionToNewLibraryModeIgnoringPause:(BOOL)arg1 ignoringBatterySaver:(BOOL)arg2;
@@ -135,6 +135,8 @@
 - (void)_processUploadBatch;
 - (void)_processUploadBatchWithStartupFailureCount:(unsigned long long)arg1;
 - (void)_promptForCameraCaptureSettingChangeWithReason:(int)arg1;
+- (void)_repushVideoAssetsMetadata;
+- (void)_repushVideoAssetsMetadataIfNecessary;
 - (void)_resetCPLLibrary;
 - (void)_runAsyncOnIsolationQueueWithTransaction:(id)arg1 afterDelay:(double)arg2 block:(CDUnknownBlockType)arg3;
 - (void)_runAsyncOnIsolationQueueWithTransaction:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -212,8 +214,7 @@
 - (id)readMigrationMarker;
 - (id)readTokenObject;
 - (void)registerPlaceholderAssetAvailabilityHandler:(CDUnknownBlockType)arg1 forAssetUUID:(id)arg2;
-- (void)reportDeviceData:(id)arg1;
-- (void)reportLibrarySizeIfNeeded;
+- (void)reportMiscInformation:(id)arg1;
 - (void)resetSyncDueToMigrationMarker;
 - (void)saveLastKnownChangeTrackerTokenToDisk;
 - (void)saveTokenObject:(id)arg1;
@@ -221,6 +222,7 @@
 - (void)setMigratedLocalVersion:(id)arg1;
 - (void)setMigrationMarker:(id)arg1;
 - (void)setPause:(BOOL)arg1 reason:(short)arg2;
+- (long long)sizeOfResourcesToUploadByCPL:(id *)arg1;
 - (void)sizeOfResourcesToUploadDidChangeForLibraryManager:(id)arg1;
 - (void)startAutomaticPrefetchOrPrune;
 - (void)statusDidChange:(id)arg1;

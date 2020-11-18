@@ -8,7 +8,7 @@
 
 #import <CoreUtils/CUReadWriteRequestable-Protocol.h>
 
-@class CUBonjourDevice, CUNetLinkEndpoint, CUNetLinkManager, CUReadRequest, CUWriteRequest, NSString;
+@class CUBonjourDevice, CUNANDataSession, CUNetLinkEndpoint, CUNetLinkManager, CUReadRequest, CUWriteRequest, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CUTCPConnection : NSObject <CUReadWriteRequestable>
@@ -34,6 +34,7 @@
     char _ifName[17];
     int _defaultPort;
     unsigned int _flags;
+    int _flowControlState;
     int _keepAliveSeconds;
     unsigned int _netTransportType;
     int _socketFD;
@@ -43,8 +44,11 @@
     NSString *_destinationString;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _errorHandler;
+    CDUnknownBlockType _flowControlChangedHandler;
+    NSString *_interfaceName;
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;
+    CUNANDataSession *_nanDataSession;
     CUNetLinkManager *_netLinkManager;
     CDUnknownBlockType _serverInvalidationHandler;
     CDUnion_fab80606 _peerAddr;
@@ -59,9 +63,13 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
+@property (copy, nonatomic) CDUnknownBlockType flowControlChangedHandler; // @synthesize flowControlChangedHandler=_flowControlChangedHandler;
+@property (readonly, nonatomic) int flowControlState; // @synthesize flowControlState=_flowControlState;
+@property (copy, nonatomic) NSString *interfaceName; // @synthesize interfaceName=_interfaceName;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (nonatomic) int keepAliveSeconds; // @synthesize keepAliveSeconds=_keepAliveSeconds;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (strong, nonatomic) CUNANDataSession *nanDataSession; // @synthesize nanDataSession=_nanDataSession;
 @property (strong, nonatomic) CUNetLinkManager *netLinkManager; // @synthesize netLinkManager=_netLinkManager;
 @property (readonly, nonatomic) unsigned int netTransportType; // @synthesize netTransportType=_netTransportType;
 @property (readonly, nonatomic) CDUnion_fab80606 peerAddr; // @synthesize peerAddr=_peerAddr;
@@ -79,10 +87,12 @@
 - (void)_netLinkStateChanged;
 - (void)_prepareReadRequest:(id)arg1;
 - (BOOL)_prepareWriteRequest:(id)arg1 error:(id *)arg2;
-- (BOOL)_processReadStatus;
 - (void)_processReads:(BOOL)arg1;
-- (void)_processWrites;
+- (void)_processWrites:(BOOL)arg1;
+- (BOOL)_readStatus;
+- (BOOL)_readableData;
 - (BOOL)_setupIOAndReturnError:(id *)arg1;
+- (BOOL)_startConnectingToBonjourDevice:(id)arg1 error:(id *)arg2;
 - (BOOL)_startConnectingToDestination:(id)arg1 error:(id *)arg2;
 - (BOOL)activateDirectAndReturnError:(id *)arg1;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;

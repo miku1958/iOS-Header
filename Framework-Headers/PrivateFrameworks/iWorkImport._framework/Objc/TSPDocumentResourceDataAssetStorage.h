@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)addDownloadObserver:(id)arg1 forData:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)archiveInfoMessage:(struct DataInfo *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
 - (id)documentResourceLocator;
-- (id)downloadProgress;
 - (unsigned long long)encodedLength;
 - (id)fallbackColor;
 - (id)init;

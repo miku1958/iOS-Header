@@ -9,12 +9,12 @@
 #import <iWorkImport/TSTCellWillChangeProtocol-Protocol.h>
 #import <iWorkImport/TSTMergeChangeProtocol-Protocol.h>
 
-@class NSArray, NSMutableArray, TSCECalculationEngine, TSTInfo, TSTTableModel;
+@class NSArray, NSMutableArray, TSCECalculationEngine, TSTTableInfo, TSTTableModel;
 
 __attribute__((visibility("hidden")))
 @interface TSTCategoryOwner : NSObject <TSTCellWillChangeProtocol, TSTMergeChangeProtocol>
 {
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     TSCECalculationEngine *_calcEngine;
     UUIDData_5fbc143e _baseTableUID;
     UUIDData_5fbc143e _ownerUID;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) UUIDData_5fbc143e baseTableUID; // @synthesize baseTableUID=_baseTableUID;
 @property (strong, nonatomic) NSArray *groupBys; // @synthesize groupBys=_groupBys;
 @property (nonatomic) UUIDData_5fbc143e ownerUID; // @synthesize ownerUID=_ownerUID;
-@property (strong, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property (readonly, nonatomic) TSTTableModel *tableModel;
 
 - (id).cxx_construct;
@@ -43,17 +43,17 @@ __attribute__((visibility("hidden")))
 - (UUIDData_5fbc143e)p_willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 refreshCategoryInfo:(BOOL)arg3;
 - (void)registerGroupBy:(id)arg1;
 - (id)registerGroupByForColumns:(id)arg1;
-- (int)registerWithCalcEngine:(id)arg1;
+- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
 - (void)registerWithDistributors;
 - (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2;
 - (void)saveToArchive:(struct CategoryOwnerArchive *)arg1 archiver:(id)arg2;
+- (void)teardown;
 - (void)unregisterFromCalcEngine;
 - (void)unregisterFromDistributors;
 - (void)unregisterGroupBy:(id)arg1;
 - (void)updateWithDocumentRoot:(id)arg1;
 - (void)willApplyBaseCellMap:(id)arg1;
 - (void)willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2;
-- (void)willClose;
 - (void)willRemoveRows:(const vector_4dc5f307 *)arg1;
 
 @end

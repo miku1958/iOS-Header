@@ -60,9 +60,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)flushPendingWritesReturningError:(id *)arg1;
 - (id)init;
 - (id)initWithURL:(id)arg1 documentTargetURL:(id)arg2 relativeURLForExternalData:(id)arg3 packageIdentifier:(unsigned char)arg4 documentProperties:(id)arg5 fileFormatVersion:(unsigned long long)arg6 updateType:(long long)arg7 apfsMode:(BOOL)arg8 encryptionKey:(id)arg9 originalDocumentPackage:(id)arg10 originalSuppportPackage:(id)arg11 fileCoordinatorDelegate:(id)arg12 progress:(id)arg13 error:(id *)arg14;
-- (id)linkOrCopyData:(id)arg1 fromURL:(id)arg2 decryptionInfo:(id)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
+- (id)linkOrCopyData:(id)arg1 fromURL:(id)arg2 fromTemporaryLocation:(BOOL)arg3 decryptionInfo:(id)arg4 preferredFilename:(id)arg5 error:(id *)arg6;
 - (struct CGDataConsumer *)newCGDataConsumerAtRelativePath:(id)arg1;
-- (id)newComponentWriteChannelWithPackageLocator:(id)arg1 storeOutsideObjectArchive:(BOOL)arg2;
+- (id)newComponentWriteChannelWithPackageLocator:(id)arg1 compressionAlgorithm:(long long)arg2 storeOutsideObjectArchive:(BOOL)arg3;
+- (id)newCompressionComponentWriteChannelWithComponentWriteChannel:(id)arg1 compressionAlgorithm:(long long)arg2;
 - (id)newPackageWithPackageIdentifier:(unsigned char)arg1 documentProperties:(id)arg2 fileFormatVersion:(unsigned long long)arg3 decryptionKey:(id)arg4 fileCoordinatorDelegate:(id)arg5;
 - (id)newRawComponentWriteChannelWithPackageLocator:(id)arg1 storeOutsideObjectArchive:(BOOL)arg2;
 - (id)newRawDataWriteChannelForRelativePath:(id)arg1 originalLastModificationDate:(id)arg2 originalSize:(unsigned long long)arg3 originalCRC:(unsigned int)arg4 forceCalculatingSizeAndCRCForPreservingLastModificationDate:(BOOL)arg5;

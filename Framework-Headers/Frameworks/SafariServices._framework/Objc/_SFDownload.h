@@ -41,7 +41,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) _WKUserInitiatedAction *userInitiatedAction; // @synthesize userInitiatedAction=_userInitiatedAction;
 
-+ (id)provisionalDownloadWithType:(long long)arg1 userInitiatedAction:(id)arg2;
++ (id)downloadDestinationPathWithFilename:(id)arg1;
++ (id)provisionalDownloadWithType:(long long)arg1 request:(id)arg2 uti:(id)arg3 userInitiatedAction:(id)arg4;
 - (void).cxx_destruct;
 - (void)_beginDownloadBackgroundTask;
 - (void)_download:(id)arg1 decideDestinationWithSuggestedFilename:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -51,6 +52,7 @@
 - (void)_downloadDidCancel:(id)arg1;
 - (void)_downloadDidFinish:(id)arg1;
 - (void)_downloadDidStart:(id)arg1;
+- (void)_downloadProcessDidCrash:(id)arg1;
 - (void)_endDownloadBackgroundTask;
 - (void)cancel;
 - (void)clearFluidProgressState;

@@ -6,7 +6,7 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFAudioPlaybackRequest, AFRequestInfo, AFVoiceInfo, NSArray, NSData, NSDictionary, NSString, NSURL;
+@class AFAudioPlaybackRequest, AFRequestInfo, AFVoiceInfo, NSArray, NSData, NSDictionary, NSString, NSURL, NSUUID;
 
 @protocol AFSettingsService <NSObject>
 - (oneway void)_clearSyncNeededForKey:(NSString *)arg1;
@@ -26,10 +26,17 @@
 - (oneway void)fetchExperimentConfigurationsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (oneway void)fetchExperimentContextWithCompletion:(void (^)(AFExperimentContext *, NSError *))arg1;
 - (oneway void)fetchSupportedLanguagesWithReply:(void (^)(NSArray *, NSError *))arg1;
+- (oneway void)forceMultiUserSync:(BOOL)arg1 download:(BOOL)arg2 completion:(void (^)(BOOL))arg3;
 - (oneway void)getAvailableVoicesIncludingAssetInfo:(BOOL)arg1 completion:(void (^)(NSArray *))arg2;
+- (oneway void)getBluetoothDeviceWithAddress:(NSString *)arg1 completion:(void (^)(AFBluetoothDeviceInfo *))arg2;
+- (oneway void)getBluetoothDeviceWithUID:(NSUUID *)arg1 completion:(void (^)(AFBluetoothDeviceInfo *))arg2;
+- (oneway void)getConnectedBluetoothDeviceInfoArrayWithCompletion:(void (^)(NSArray *))arg1;
 - (oneway void)getDevicesWithAvailablePHSAssetsForLanguage:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
 - (oneway void)getOfflineDictationStatusWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (oneway void)getPairedBluetoothDeviceInfoArrayWithCompletion:(void (^)(NSArray *))arg1;
 - (oneway void)getPeerIdentifiers:(void (^)(NSArray *))arg1;
+- (oneway void)getSharedCompanionInfo:(void (^)(NSDictionary *, NSError *))arg1;
+- (oneway void)getSiriOutputVolumeWithCompletion:(void (^)(float, NSError *))arg1;
 - (oneway void)getStereoPairState:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)getStereoPartnerLastMyriadWinDate:(void (^)(NSDate *, NSError *))arg1;
 - (oneway void)getSupplementalLanguageDictionaryForProduct:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
@@ -48,6 +55,7 @@
 - (oneway void)setLanguage:(NSString *)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setOfflineDictationProfileOverridePath:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)setOutputVoice:(AFVoiceInfo *)arg1 withCompletion:(void (^)(void))arg2;
+- (oneway void)setSiriOutputVolume:(float)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)setSupplementalLanguageDictionary:(NSDictionary *)arg1 forProduct:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)setSupplementalLanguages:(NSArray *)arg1 forProduct:(NSString *)arg2 forBuildVersion:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (oneway void)startAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1 completion:(void (^)(NSError *))arg2;

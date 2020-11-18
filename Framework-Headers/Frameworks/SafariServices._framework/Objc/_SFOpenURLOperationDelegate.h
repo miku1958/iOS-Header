@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_didFinishWithSuccess:(BOOL)arg1;
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)openResourceOperation:(id)arg1 didFailWithError:(id)arg2;
 - (void)openResourceOperation:(id)arg1 didFinishCopyingResource:(id)arg2;

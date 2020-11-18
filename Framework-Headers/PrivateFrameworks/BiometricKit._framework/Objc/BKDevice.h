@@ -7,13 +7,18 @@
 #import <objc/NSObject.h>
 
 @class BKDeviceDescriptor;
+@protocol BKDeviceDelegate, OS_dispatch_queue;
 
 @interface BKDevice : NSObject
 {
+    id<BKDeviceDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_queue;
     BKDeviceDescriptor *_descriptor;
 }
 
+@property (weak, nonatomic) id<BKDeviceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) BKDeviceDescriptor *descriptor; // @synthesize descriptor=_descriptor;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)deviceWithDescriptor:(id)arg1 error:(id *)arg2;
 + (BOOL)isIdentityEnrolled;
@@ -34,6 +39,7 @@
 - (id)identitiesForUser:(unsigned int)arg1 error:(id *)arg2;
 - (id)identitiesWithError:(id *)arg1;
 - (id)identityForUUID:(id)arg1 error:(id *)arg2;
+- (id)lastMatchEventWithError:(id *)arg1;
 - (id)maxIdentityCountWithError:(id *)arg1;
 - (id)protectedConfigurationForUser:(unsigned int)arg1 error:(id *)arg2;
 - (BOOL)removeAllIdentitiesForUser:(unsigned int)arg1 error:(id *)arg2;

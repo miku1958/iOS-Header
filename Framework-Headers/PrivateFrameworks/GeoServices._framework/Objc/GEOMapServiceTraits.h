@@ -66,6 +66,7 @@
     BOOL _supportDirectionIntentSearch;
     BOOL _supportDymSuggestion;
     BOOL _supportUnresolvedDirectionIntent;
+    BOOL _supportsBrandFallback;
     BOOL _useBackgroundUrl;
     BOOL _wantsBrandIcon;
     struct {
@@ -98,6 +99,7 @@
         unsigned int supportDirectionIntentSearch:1;
         unsigned int supportDymSuggestion:1;
         unsigned int supportUnresolvedDirectionIntent:1;
+        unsigned int supportsBrandFallback:1;
         unsigned int useBackgroundUrl:1;
         unsigned int wantsBrandIcon:1;
     } _has;
@@ -167,6 +169,7 @@
 @property (nonatomic) BOOL hasSupportDirectionIntentSearch;
 @property (nonatomic) BOOL hasSupportDymSuggestion;
 @property (nonatomic) BOOL hasSupportUnresolvedDirectionIntent;
+@property (nonatomic) BOOL hasSupportsBrandFallback;
 @property (nonatomic) BOOL hasTimeSinceMapEnteredForeground;
 @property (nonatomic) BOOL hasTimeSinceMapViewportChanged;
 @property (readonly, nonatomic) BOOL hasTransitOptions;
@@ -199,6 +202,7 @@
 @property (nonatomic) BOOL supportDirectionIntentSearch; // @synthesize supportDirectionIntentSearch=_supportDirectionIntentSearch;
 @property (nonatomic) BOOL supportDymSuggestion; // @synthesize supportDymSuggestion=_supportDymSuggestion;
 @property (nonatomic) BOOL supportUnresolvedDirectionIntent; // @synthesize supportUnresolvedDirectionIntent=_supportUnresolvedDirectionIntent;
+@property (nonatomic) BOOL supportsBrandFallback; // @synthesize supportsBrandFallback=_supportsBrandFallback;
 @property (nonatomic) unsigned int timeSinceMapEnteredForeground; // @synthesize timeSinceMapEnteredForeground=_timeSinceMapEnteredForeground;
 @property (nonatomic) unsigned int timeSinceMapViewportChanged; // @synthesize timeSinceMapViewportChanged=_timeSinceMapViewportChanged;
 @property (strong, nonatomic) GEOTransitOptions *transitOptions; // @synthesize transitOptions=_transitOptions;

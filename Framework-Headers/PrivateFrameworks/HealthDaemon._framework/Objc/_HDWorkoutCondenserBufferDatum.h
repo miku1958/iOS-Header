@@ -24,8 +24,13 @@
 @property (readonly, nonatomic) double value; // @synthesize value=_value;
 
 - (void).cxx_destruct;
+- (long long)compare:(id)arg1;
+- (id)description;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithStartTime:(double)arg1 endTime:(double)arg2 value:(double)arg3 UUID:(id)arg4 series:(BOOL)arg5;
+- (BOOL)isEqual:(id)arg1;
+- (id)preferredDatum:(id)arg1;
 
 @end
 

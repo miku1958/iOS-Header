@@ -37,8 +37,6 @@
 + (id)photosLibraryUploadSize;
 + (id)photosVideosCount;
 + (void)setSimulatedDeviceStorageAlmostFull:(BOOL)arg1;
-+ (void)setUseHysteresisForDeviceStorageAlmostFull:(BOOL)arg1;
-+ (BOOL)useHysteresisForDeviceStorageAlmostFull;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCurrentConditions;

@@ -24,16 +24,30 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) BOOL bncStorageBufferExists;
 @property (readonly, nonatomic) unsigned short cellCount; // @synthesize cellCount=_cellCount;
+@property (readonly, nonatomic) unsigned short maxTileColumnIndex;
 @property (nonatomic) unsigned int tileRowIndex; // @synthesize tileRowIndex=_tileRowIndex;
 
+- (void)_insertCell:(id)arg1 atIndex:(unsigned short)arg2 formatKeys:(CDStruct_c8ca99d5 *)arg3;
+- (void)_invalidateMaxTileColumnIndex;
+- (void)_recalculateMaxTileColumnIndex;
+- (void)_removeCellAtIndex:(unsigned short)arg1;
+- (void)_replaceCellAtIndex:(unsigned short)arg1 withCell:(id)arg2 formatKeys:(CDStruct_c8ca99d5 *)arg3;
+- (unsigned short)cellIndexAtOrAfterIndex:(unsigned short)arg1;
+- (unsigned short)cellIndexAtOrBeforeIndex:(unsigned short)arg1;
+- (struct TSTCellStorage *)cellStorageRefAtIndex:(unsigned short)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)enumerateStoragesInColumnRange:(struct _NSRange)arg1 getPreBNC:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateStoragesInColumnRange:(struct _NSRange)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)initWithArchive:(const struct TileRowInfo *)arg1 owner:(id)arg2;
 - (id)initWithOwner:(id)arg1 tileRowIndex:(unsigned int)arg2;
+- (void)insertColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
+- (void)moveColumnsFromIndex:(unsigned short)arg1 toIndex:(unsigned short)arg2 count:(unsigned int)arg3;
+- (struct TSTCellStorage *)preBNCStorageRefAtIndex:(unsigned short)arg1;
+- (void)removeColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
 - (void)saveToArchive:(struct TileRowInfo *)arg1 archiver:(id)arg2;
 - (BOOL)searchCellStorageRefAtColumnIndex:(unsigned short)arg1 searchMask:(unsigned long long)arg2;
+- (void)setCell:(id)arg1 atIndex:(unsigned short)arg2 formatKeys:(CDStruct_c8ca99d5 *)arg3;
 - (void)validate;
 - (BOOL)validateWithResult:(id *)arg1;
 

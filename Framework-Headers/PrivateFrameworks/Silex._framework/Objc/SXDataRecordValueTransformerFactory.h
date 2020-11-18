@@ -6,17 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class SXDocumentController;
+#import <Silex/SXDataRecordValueTransformerFactory-Protocol.h>
 
-@interface SXDataRecordValueTransformerFactory : NSObject
+@class NSString;
+@protocol SXDOMObjectProviding;
+
+@interface SXDataRecordValueTransformerFactory : NSObject <SXDataRecordValueTransformerFactory>
 {
-    SXDocumentController *_documentController;
+    id<SXDOMObjectProviding> _DOMObjectProvider;
 }
 
-@property (readonly, nonatomic) SXDocumentController *documentController; // @synthesize documentController=_documentController;
+@property (readonly, nonatomic) id<SXDOMObjectProviding> DOMObjectProvider; // @synthesize DOMObjectProvider=_DOMObjectProvider;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithDocumentController:(id)arg1;
+- (id)initWithDOMObjectProvider:(id)arg1;
 - (id)recordValueTransformerForDataDescriptor:(id)arg1;
 
 @end

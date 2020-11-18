@@ -62,6 +62,7 @@
 @property (copy, nonatomic) NSString *value; // @dynamic value;
 @property (nonatomic, getter=isVisible) BOOL visible; // @dynamic visible;
 
+- (void)setPlaceholder:(id)arg1;
 - (void)setassociatedUsername:(id)arg1;
 
 @end

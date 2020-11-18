@@ -29,9 +29,11 @@
     int _groupType;
     NSData *_groupViewExposureId;
     NSMutableArray *_groupedArticleIds;
+    NSMutableArray *_groupedIssueIds;
     int _screenfulsFromTop;
     int _topStoryMandatoryArticleCount;
     int _topStoryOptionalArticleCount;
+    BOOL _isIssueContext;
     BOOL _isSubscribedToGroupFeed;
     BOOL _reachedEndOfGroup;
     struct {
@@ -48,6 +50,7 @@
         unsigned int screenfulsFromTop:1;
         unsigned int topStoryMandatoryArticleCount:1;
         unsigned int topStoryOptionalArticleCount:1;
+        unsigned int isIssueContext:1;
         unsigned int isSubscribedToGroupFeed:1;
         unsigned int reachedEndOfGroup:1;
     } _has;
@@ -70,6 +73,7 @@
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (strong, nonatomic) NSData *groupViewExposureId; // @synthesize groupViewExposureId=_groupViewExposureId;
 @property (strong, nonatomic) NSMutableArray *groupedArticleIds; // @synthesize groupedArticleIds=_groupedArticleIds;
+@property (strong, nonatomic) NSMutableArray *groupedIssueIds; // @synthesize groupedIssueIds=_groupedIssueIds;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
 @property (nonatomic) BOOL hasCuratedContentType;
 @property (nonatomic) BOOL hasFeedAutoSubscribeType;
@@ -86,11 +90,13 @@
 @property (nonatomic) BOOL hasGroupPresentationReason;
 @property (nonatomic) BOOL hasGroupType;
 @property (readonly, nonatomic) BOOL hasGroupViewExposureId;
+@property (nonatomic) BOOL hasIsIssueContext;
 @property (nonatomic) BOOL hasIsSubscribedToGroupFeed;
 @property (nonatomic) BOOL hasReachedEndOfGroup;
 @property (nonatomic) BOOL hasScreenfulsFromTop;
 @property (nonatomic) BOOL hasTopStoryMandatoryArticleCount;
 @property (nonatomic) BOOL hasTopStoryOptionalArticleCount;
+@property (nonatomic) BOOL isIssueContext; // @synthesize isIssueContext=_isIssueContext;
 @property (nonatomic) BOOL isSubscribedToGroupFeed; // @synthesize isSubscribedToGroupFeed=_isSubscribedToGroupFeed;
 @property (nonatomic) BOOL reachedEndOfGroup; // @synthesize reachedEndOfGroup=_reachedEndOfGroup;
 @property (nonatomic) int screenfulsFromTop; // @synthesize screenfulsFromTop=_screenfulsFromTop;
@@ -98,6 +104,7 @@
 @property (nonatomic) int topStoryOptionalArticleCount; // @synthesize topStoryOptionalArticleCount=_topStoryOptionalArticleCount;
 
 + (Class)groupedArticleIdsType;
++ (Class)groupedIssueIdsType;
 - (void).cxx_destruct;
 - (int)StringAsCuratedContentType:(id)arg1;
 - (int)StringAsFeedAutoSubscribeType:(id)arg1;
@@ -107,7 +114,9 @@
 - (int)StringAsGroupPresentationReason:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
 - (void)addGroupedArticleIds:(id)arg1;
+- (void)addGroupedIssueIds:(id)arg1;
 - (void)clearGroupedArticleIds;
+- (void)clearGroupedIssueIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)curatedContentTypeAsString:(int)arg1;
 - (id)description;
@@ -120,6 +129,8 @@
 - (id)groupTypeAsString:(int)arg1;
 - (id)groupedArticleIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)groupedArticleIdsCount;
+- (id)groupedIssueIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)groupedIssueIdsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface TSCH3DLabelsRenderer : NSObject
 {
     TSCH3DResource *mLabelQuad;
+    TSCH3DResource *mLabelTexcoordQuad;
     BOOL mUseLabelBounds;
     TSCH3DLabelResource *mLabel;
     TSCH3DLabelResources *mResources;
@@ -51,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)postrender:(id)arg1;
 - (void)prepareCachedIndex:(const tvec2_3b141483 *)arg1 string:(id)arg2 alignmentPadding:(const tvec2_84d5962d *)arg3 width:(double)arg4 bitmapContextInfo:(id)arg5;
 - (void)prerender:(id)arg1;
-- (void)renderAtPosition:(const tvec3_17f03ce0 *)arg1 offset:(const tvec3_17f03ce0 *)arg2 alignment:(unsigned int)arg3 offset2D:(const tvec2_84d5962d *)arg4 rotation:(float)arg5 externalAttribute:(const struct ExternalLabelAttribute *)arg6;
+- (void)renderAtPosition:(const tvec3_17f03ce0 *)arg1 offset:(const tvec3_17f03ce0 *)arg2 alignment:(unsigned int)arg3 offset2D:(const tvec2_84d5962d *)arg4 rotation:(float)arg5 externalAttribute:(id)arg6;
 - (const tmat4x4_3074befe *)unitToWorld;
 - (const tmat4x4_3074befe *)worldToStage;
 

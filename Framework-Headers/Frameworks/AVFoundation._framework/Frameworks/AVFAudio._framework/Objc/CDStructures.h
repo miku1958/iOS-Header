@@ -52,17 +52,16 @@ struct AVAudioEngineGraph;
 struct AVAudioEngineImpl {
     id _field1;
     struct AVAudioEngineGraph *_field2;
-    BOOL _field3;
-    BOOL _field4;
+    id _field3;
+    id _field4;
     id _field5;
     id _field6;
-    id _field7;
-    id _field8;
-    struct AVAudioIOUnit *_field9;
-    id _field10;
-    int _field11;
-    BOOL _field12;
-    struct unique_ptr<AVAEBlock<AVAudioEngineManualRenderingStatus (^)(unsigned int, AudioBufferList *, int *)>, std::__1::default_delete<AVAEBlock<AVAudioEngineManualRenderingStatus (^)(unsigned int, AudioBufferList *, int *)>>> _field13;
+    struct AVAudioIOUnit *_field7;
+    BOOL _field8;
+    id _field9;
+    int _field10;
+    BOOL _field11;
+    struct unique_ptr<AVAEBlock<AVAudioEngineManualRenderingStatus (^)(unsigned int, AudioBufferList *, int *)>, std::__1::default_delete<AVAEBlock<AVAudioEngineManualRenderingStatus (^)(unsigned int, AudioBufferList *, int *)>>> _field12;
 };
 
 struct AVAudioEnvironmentNodeImpl {
@@ -259,13 +258,16 @@ struct AVVCPluginRecordingEngine {
     struct OpaqueAudioFileID *_field3;
     int _field4;
     id _field5;
-    id _field6;
-    unsigned int _field7;
+    unsigned int _field6;
+    id _field7;
     unsigned int _field8;
-    float _field9;
-    int _field10;
-    unsigned char _field11;
-    unsigned char _field12;
+    unsigned int _field9;
+    unsigned int _field10;
+    float _field11;
+    int _field12;
+    unsigned char _field13;
+    unsigned char _field14;
+    BOOL _field15;
 };
 
 struct AVVCRecordingEngine;
@@ -636,8 +638,9 @@ struct MyAudioQueueBuffer {
     struct AudioStreamPacketDescription *_field6;
     unsigned int _field7;
     struct AudioStreamBasicDescription _field8;
-    unsigned char _field9;
+    BOOL _field9;
     unsigned char _field10;
+    unsigned char _field11;
 };
 
 struct MyMutex;
@@ -678,6 +681,7 @@ struct RouteDescriptionImpl {
     id _field1;
     id _field2;
     id _field3;
+    unsigned long long _field4;
 };
 
 struct SMPTETime {

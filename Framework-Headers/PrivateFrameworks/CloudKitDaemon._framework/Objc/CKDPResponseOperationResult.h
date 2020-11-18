@@ -14,9 +14,7 @@
 {
     int _code;
     CKDPResponseOperationResultError *_error;
-    struct {
-        unsigned int code:1;
-    } _has;
+    CDStruct_9ab06576 _has;
 }
 
 @property (nonatomic) int code; // @synthesize code=_code;

@@ -20,7 +20,6 @@
     BOOL _touchRecognizingHint;
     BOOL _persistentEmulationHint;
     BOOL _accessPass;
-    BOOL _useSmallStyleGlyph;
     long long _state;
     PKGlyphView *_glyph;
     UILabel *_label;
@@ -43,7 +42,6 @@
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL touchRecognizingHint; // @synthesize touchRecognizingHint=_touchRecognizingHint;
-@property (nonatomic) BOOL useSmallStyleGlyph; // @synthesize useSmallStyleGlyph=_useSmallStyleGlyph;
 
 - (void).cxx_destruct;
 - (void)_applyStatePreservingGlyphState:(BOOL)arg1 overridingText:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;

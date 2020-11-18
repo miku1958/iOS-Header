@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct _NSRange superRange;
 
 + (id)rangeArray;
++ (id)rangeArrayWithRange:(struct _NSRange)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)containsCharacterAtIndex:(unsigned long long)arg1;
@@ -28,12 +29,14 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateRanges:(CDUnknownBlockType)arg1;
 - (void)enumerateRangesInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (unsigned long long)hash;
 - (unsigned long long)indexForRange:(struct _NSRange)arg1;
 - (id)init;
 - (id)initWithRange:(struct _NSRange)arg1;
 - (id)initWithRangeVector:(const vector_b5e32e34 *)arg1;
 - (id)intersection:(struct _NSRange)arg1;
 - (BOOL)intersectsRange:(struct _NSRange)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToRangeArray:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)p_finish;

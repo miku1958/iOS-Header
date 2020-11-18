@@ -25,7 +25,10 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) unsigned long long allowedObjectTargetTypes;
 @property (readonly, nonatomic) BOOL allowsImplicitComponentOwnership;
+@property (readonly, nonatomic) BOOL componentCanBeDropped;
+@property (readonly, nonatomic) BOOL componentRequiresCurrentVersion;
 @property (readonly, nonatomic) TSPObject *componentRootObject;
+@property (readonly, nonatomic) long long compressionAlgorithm;
 @property (readonly, nonatomic) TSPObjectContext *context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) unsigned int delayedArchivingPriority;
@@ -73,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithContext:(id)arg1;
 - (BOOL)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
+- (id)newObjectUUIDWithOffset:(unsigned long long)arg1;
 - (id)objectLocale;
 - (id)owningDocument;
 - (void)performBlockIgnoringModifications:(CDUnknownBlockType)arg1;

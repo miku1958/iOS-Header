@@ -16,11 +16,13 @@ __attribute__((visibility("hidden")))
     _MKLineHeaderModel *_thirdLine;
     _MKLineHeaderModel *_forthLine;
     MKTransitInfoLabelView *_transitLabel;
+    _MKLineHeaderModel *_secondaryNameLine;
 }
 
 @property (strong, nonatomic) _MKLineHeaderModel *firstLine; // @synthesize firstLine=_firstLine;
 @property (strong, nonatomic) _MKLineHeaderModel *forthLine; // @synthesize forthLine=_forthLine;
 @property (strong, nonatomic) _MKLineHeaderModel *secondLine; // @synthesize secondLine=_secondLine;
+@property (strong, nonatomic) _MKLineHeaderModel *secondaryNameLine; // @synthesize secondaryNameLine=_secondaryNameLine;
 @property (strong, nonatomic) _MKLineHeaderModel *thirdLine; // @synthesize thirdLine=_thirdLine;
 @property (strong, nonatomic) MKTransitInfoLabelView *transitLabel; // @synthesize transitLabel=_transitLabel;
 

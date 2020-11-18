@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)instanceWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
 + (int)interactionTypeForShimControlFormatType:(int)arg1;
 + (BOOL)interactionTypeIsControl:(int)arg1;
++ (BOOL)isShimControlFormatType:(int)arg1;
 + (int)shimControlFormatTypeForInteractionType:(int)arg1;
 - (id)asChooserControlSpec;
 - (id)asFormulaSpec;

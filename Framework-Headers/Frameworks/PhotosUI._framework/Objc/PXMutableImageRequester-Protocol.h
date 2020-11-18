@@ -14,6 +14,7 @@
 @property (strong, nonatomic) id<PXDisplayAsset> asset;
 @property (nonatomic) struct CGSize contentSize;
 @property (nonatomic) struct CGRect desiredContentsRect;
+@property (nonatomic) struct CGSize maximumRequestSize;
 @property (strong, nonatomic) id<PXUIImageProvider> mediaProvider;
 @property (nonatomic) double scale;
 @property (nonatomic) struct CGSize viewportSize;

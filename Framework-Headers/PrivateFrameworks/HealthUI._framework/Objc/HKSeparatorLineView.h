@@ -23,6 +23,7 @@
 @property (nonatomic) double separatorThickness; // @synthesize separatorThickness=_separatorThickness;
 @property (nonatomic) double trailingMargin; // @synthesize trailingMargin=_trailingMargin;
 
++ (id)_hkecg_separatorView;
 - (void).cxx_destruct;
 - (void)_applyStyleToContext:(struct CGContext *)arg1;
 - (BOOL)_isVertical;

@@ -8,6 +8,8 @@
 
 @interface HDDemoDataHeartSampleGenerator : HDDemoDataBaseSampleGenerator
 {
+    double _nextElectrocardiogramSampleTime;
+    unsigned long long _nextElectrocardiogramClassification;
     double _nextRestingHeartRateSampleTime;
     double _nextWalkingHeartRateAverageSampleTime;
     double _lastRestingHeartRate;
@@ -16,12 +18,16 @@
 
 @property (nonatomic) double lastRestingHeartRate; // @synthesize lastRestingHeartRate=_lastRestingHeartRate;
 @property (nonatomic) double lastWalkingHeartRateAverage; // @synthesize lastWalkingHeartRateAverage=_lastWalkingHeartRateAverage;
+@property (nonatomic) unsigned long long nextElectrocardiogramClassification; // @synthesize nextElectrocardiogramClassification=_nextElectrocardiogramClassification;
+@property (nonatomic) double nextElectrocardiogramSampleTime; // @synthesize nextElectrocardiogramSampleTime=_nextElectrocardiogramSampleTime;
 @property (nonatomic) double nextRestingHeartRateSampleTime; // @synthesize nextRestingHeartRateSampleTime=_nextRestingHeartRateSampleTime;
 @property (nonatomic) double nextWalkingHeartRateAverageSampleTime; // @synthesize nextWalkingHeartRateAverageSampleTime=_nextWalkingHeartRateAverageSampleTime;
 
 + (BOOL)supportsSecureCoding;
 - (double)_computeRestingHeartRateForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (double)_computeWalkingHeartRateAverageForDemoPerson:(id)arg1 atTime:(double)arg2;
+- (id)_generateElectrocardiogramForDemoPerson:(id)arg1 atTime:(double)arg2 classification:(unsigned long long)arg3 sampleDate:(id)arg4;
+- (id)electrocardiogramForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
 - (id)init;

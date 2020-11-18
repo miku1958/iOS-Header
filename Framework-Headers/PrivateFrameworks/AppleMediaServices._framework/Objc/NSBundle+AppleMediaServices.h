@@ -8,5 +8,6 @@
 
 @interface NSBundle (AppleMediaServices)
 + (id)ams_AppleMediaServicesBundle;
++ (id)ams_iTunesBundle;
 @end
 

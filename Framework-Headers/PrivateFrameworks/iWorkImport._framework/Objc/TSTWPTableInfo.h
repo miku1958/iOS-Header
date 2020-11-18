@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <iWorkImport/TSTInfo.h>
+#import <iWorkImport/TSTTableInfo.h>
 
 __attribute__((visibility("hidden")))
-@interface TSTWPTableInfo : TSTInfo
+@interface TSTWPTableInfo : TSTTableInfo
 {
 }
 

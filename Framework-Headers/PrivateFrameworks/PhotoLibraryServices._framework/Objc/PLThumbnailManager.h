@@ -51,6 +51,7 @@
 + (void)addRebuildThumbnailsRequest;
 + (BOOL)assetIsAllowedForCameraPreviewWell:(id)arg1;
 + (BOOL)assetIsCameraPreviewWellAsset:(id)arg1;
++ (id)cameraPreviewWellAssetFetchRequest;
 + (id)cameraPreviewWellAssetUUIDFromPersistedFile;
 + (id)cameraPreviewWellImageQueue;
 + (BOOL)cameraPreviewWellSupportedOnCurrentDevice;

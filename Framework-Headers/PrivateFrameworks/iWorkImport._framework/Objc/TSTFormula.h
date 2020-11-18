@@ -8,14 +8,14 @@
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class NSString, TSCECalculationEngine, TSTExpressionNode, TSTInfo;
+@class NSString, TSCECalculationEngine, TSTExpressionNode, TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTFormula : NSObject <NSCopying>
 {
     TSTExpressionNode *_expressionTree;
     TSCECalculationEngine *_calculationEngine;
-    TSTInfo *_hostInfo;
+    TSTTableInfo *_hostInfo;
     NSString *_initialWhitespace;
     struct TSUModelCellCoord _hostCell;
     BOOL _syntaxError;
@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canSimplify;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)fixPreserveFlagsForCategoryRefInNode:(id)arg1;
 - (id)formulaDetokenizedText;
 - (id)formulaPlainText;
 - (BOOL)hasBareArgumentPlaceholders;

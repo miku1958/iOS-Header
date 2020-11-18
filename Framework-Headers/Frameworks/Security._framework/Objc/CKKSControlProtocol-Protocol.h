@@ -10,6 +10,7 @@
 
 @protocol CKKSControlProtocol <NSObject>
 - (void)performanceCounters:(void (^)(NSDictionary *))arg1;
+- (void)rpcFastStatus:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)rpcFetchAndProcessChanges:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)rpcFetchAndProcessClassAChanges:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)rpcGetCKDeviceIDWithReply:(void (^)(NSString *))arg1;

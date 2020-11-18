@@ -6,10 +6,13 @@
 
 #import <Foundation/NSDictionary.h>
 
+@class NSSet;
+
 @interface NSDictionary (TSUAdditions)
-+ (id)tsu_dictionaryByInvertingDictionary:(id)arg1;
-- (id)tsu_allKeysAsSet;
+
+@property (readonly) NSSet *tsu_allKeysAsSet;
+
 - (BOOL)tsu_boolValueForKey:(id)arg1;
-- (id)tsu_objectOfClass:(Class)arg1 forKey:(id)arg2;
+- (id)tsu_invertedCopy;
 @end
 

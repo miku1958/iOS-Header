@@ -23,12 +23,13 @@
 #import <Home/HMSoftwareUpdateDelegate-Protocol.h>
 #import <Home/HMSymptomFixSessionDelegate-Protocol.h>
 #import <Home/HMSymptomsHandlerDelegate-Protocol.h>
+#import <Home/HMTelevisionProfileDelegate-Protocol.h>
 #import <Home/HMUserDelegatePrivate-Protocol.h>
 #import <Home/_HFSettingsObserverTupleOwning-Protocol.h>
 
 @class HFLocationSensingCoordinator, HMHome, HMHomeManager, NAFuture, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSTimer;
 
-@interface HFHomeKitDispatcher : NSObject <HFLocationSensingCoordinatorDelegate, HFHomeAppInstallStateArbiterObserver, _HFSettingsObserverTupleOwning, HFStateRestorationSettingsObserver, HMResidentDeviceDelegate, HMCameraSnapshotControlDelegate, HMCameraStreamControlDelegate, HMMediaProfileDelegate, HMSoftwareUpdateControllerDelegate, HMAccessorySettingsDelegate, HMSoftwareUpdateDelegate, HMSymptomsHandlerDelegate, HMUserDelegatePrivate, HMHomeManagerDelegatePrivate, HMHomeDelegatePrivate, HMAccessoryDelegatePrivate, HFMediaObjectObserver, HFMediaSessionObserver, HMSymptomFixSessionDelegate>
+@interface HFHomeKitDispatcher : NSObject <HFLocationSensingCoordinatorDelegate, HFHomeAppInstallStateArbiterObserver, _HFSettingsObserverTupleOwning, HFStateRestorationSettingsObserver, HMResidentDeviceDelegate, HMCameraSnapshotControlDelegate, HMCameraStreamControlDelegate, HMMediaProfileDelegate, HMSoftwareUpdateControllerDelegate, HMAccessorySettingsDelegate, HMSoftwareUpdateDelegate, HMSymptomsHandlerDelegate, HMUserDelegatePrivate, HMTelevisionProfileDelegate, HMHomeManagerDelegatePrivate, HMHomeDelegatePrivate, HMAccessoryDelegatePrivate, HFMediaObjectObserver, HFMediaSessionObserver, HMSymptomFixSessionDelegate>
 {
     BOOL _hasLoadedHomes;
     int _homeKitPreferencesChangedNotifyToken;
@@ -51,6 +52,7 @@
     NSHashTable *_softwareUpdateObservers;
     NSHashTable *_userObservers;
     NSHashTable *_symptomsHandlerObservers;
+    NSHashTable *_televisionObservers;
     NSMutableArray *_settingsObservers;
     NSMutableArray *_requestedSoftwareUpdates;
     NSMutableArray *_homePromises;
@@ -94,6 +96,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSHashTable *symptomFixSessionObservers; // @synthesize symptomFixSessionObservers=_symptomFixSessionObservers;
 @property (strong, nonatomic) NSHashTable *symptomsHandlerObservers; // @synthesize symptomsHandlerObservers=_symptomsHandlerObservers;
+@property (strong, nonatomic) NSHashTable *televisionObservers; // @synthesize televisionObservers=_televisionObservers;
 @property (strong, nonatomic) NSHashTable *userObservers; // @synthesize userObservers=_userObservers;
 
 + (unsigned long long)_homeManagerCreationPolicy;
@@ -125,6 +128,7 @@
 - (void)accessory:(id)arg1 didUpdateFirmwareUpdateAvailable:(BOOL)arg2;
 - (void)accessory:(id)arg1 didUpdateFirmwareVersion:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateHasAuthorizationDataForCharacteristic:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateLastKnownSleepDiscoveryModeForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateLoggedInAccount:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateNameForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateServiceSubtypeForService:(id)arg2;
@@ -154,6 +158,7 @@
 - (void)addSoftwareUpdateObserver:(id)arg1;
 - (void)addSymptomFixSessionObserver:(id)arg1;
 - (void)addSymptomsHandlerObserver:(id)arg1;
+- (void)addTelevisionObserver:(id)arg1;
 - (void)addUserObserver:(id)arg1;
 - (void)cameraSnapshotControl:(id)arg1 didTakeSnapshot:(id)arg2 error:(id)arg3;
 - (void)cameraSnapshotControlDidUpdateMostRecentSnapshot:(id)arg1;
@@ -248,6 +253,7 @@
 - (void)mediaSystem:(id)arg1 didUpdateComponents:(id)arg2;
 - (void)mediaSystem:(id)arg1 didUpdateConfiguredName:(id)arg2;
 - (void)mediaSystem:(id)arg1 didUpdateName:(id)arg2;
+- (void)profileDidUpdateMediaSourceDisplayOrder:(id)arg1;
 - (void)removeAccessoryObserver:(id)arg1;
 - (void)removeCameraObserver:(id)arg1;
 - (void)removeHomeManagerObserver:(id)arg1;
@@ -263,6 +269,7 @@
 - (void)removeSoftwareUpdateObserver:(id)arg1;
 - (void)removeSymptomFixSessionObserver:(id)arg1;
 - (void)removeSymptomsHandlerObserver:(id)arg1;
+- (void)removeTelevisionObserver:(id)arg1;
 - (void)removeUserObserver:(id)arg1;
 - (void)residentDevice:(id)arg1 didUpdateCapabilities:(unsigned long long)arg2;
 - (void)residentDevice:(id)arg1 didUpdateEnabled:(BOOL)arg2;

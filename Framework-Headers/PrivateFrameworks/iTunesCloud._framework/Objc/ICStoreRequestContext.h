@@ -6,9 +6,11 @@
 
 #import <iTunesCloud/ICRequestContext.h>
 
+#import <iTunesCloud/NSSecureCoding-Protocol.h>
+
 @class ICStoreDialogResponseHandler, ICUserIdentity, ICUserIdentityStore;
 
-@interface ICStoreRequestContext : ICRequestContext
+@interface ICStoreRequestContext : ICRequestContext <NSSecureCoding>
 {
     ICUserIdentity *_delegatedIdentity;
     ICUserIdentity *_identity;
@@ -26,9 +28,12 @@
 @property (readonly, copy, nonatomic) ICStoreDialogResponseHandler *storeDialogResponseHandler; // @synthesize storeDialogResponseHandler=_storeDialogResponseHandler;
 
 + (id)activeStoreAccountRequestContext;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithBlock:(CDUnknownBlockType)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithIdentity:(id)arg1;
 - (id)initWithIdentity:(id)arg1 clientInfo:(id)arg2;
 - (id)initWithIdentity:(id)arg1 identityStore:(id)arg2 clientInfo:(id)arg3;

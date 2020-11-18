@@ -57,6 +57,7 @@
 - (void)setOrientation:(long long)arg1;
 - (void)setStyleRequest:(id)arg1 animationParameters:(id)arg2;
 - (void)statusBarServer:(id)arg1 didReceiveStatusBarData:(const CDStruct_1916f467 *)arg2 withActions:(int)arg3;
+- (void)statusBarServer:(id)arg1 didReceiveStyleOverrides:(int)arg2;
 
 @end
 

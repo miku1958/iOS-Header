@@ -12,6 +12,7 @@
 {
     SXComponentView *_componentView;
     CDUnknownBlockType _exposureStateChangeBlock;
+    CDUnknownBlockType _conditionBlock;
     double _visibilityFactor;
     double _minimumVisibleY;
     double _maximumVisibleY;
@@ -19,16 +20,17 @@
 }
 
 @property (readonly, weak, nonatomic) SXComponentView *componentView; // @synthesize componentView=_componentView;
+@property (readonly, copy, nonatomic) CDUnknownBlockType conditionBlock; // @synthesize conditionBlock=_conditionBlock;
 @property (readonly, copy, nonatomic) CDUnknownBlockType exposureStateChangeBlock; // @synthesize exposureStateChangeBlock=_exposureStateChangeBlock;
 @property (nonatomic) long long lastObservedVisibilityState; // @synthesize lastObservedVisibilityState=_lastObservedVisibilityState;
 @property (nonatomic) double maximumVisibleY; // @synthesize maximumVisibleY=_maximumVisibleY;
 @property (nonatomic) double minimumVisibleY; // @synthesize minimumVisibleY=_minimumVisibleY;
 @property (readonly, nonatomic) double visibilityFactor; // @synthesize visibilityFactor=_visibilityFactor;
 
-+ (id)exposureTrackingWithComponent:(id)arg1 exposureStateChangeBlock:(CDUnknownBlockType)arg2;
++ (id)exposureTrackingWithComponent:(id)arg1 exposureStateChangeBlock:(CDUnknownBlockType)arg2 conditionBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)calculateVisibilityFactor;
-- (id)initWithComponent:(id)arg1 exposureStateChangeBlock:(CDUnknownBlockType)arg2;
+- (id)initWithComponent:(id)arg1 exposureStateChangeBlock:(CDUnknownBlockType)arg2 conditionBlock:(CDUnknownBlockType)arg3;
 
 @end
 

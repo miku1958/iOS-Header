@@ -6,7 +6,7 @@
 
 #import <NewsUI/WKNavigationDelegate-Protocol.h>
 
-@class NSArray, NSData, NSError, NSString, NSURL, NSURLAuthenticationChallenge, NSURLProtectionSpace, WKBackForwardListItem, WKFrameInfo, WKNavigation, WKNavigationAction, WKWebView;
+@class NSArray, NSData, NSError, NSString, NSURL, WKBackForwardListItem, WKFrameInfo, WKNavigation, WKNavigationAction, WKWebView;
 @protocol NSSecureCoding;
 
 @protocol WKNavigationDelegatePrivate <WKNavigationDelegate>
@@ -14,12 +14,11 @@
 @optional
 - (NSData *)_webCryptoMasterKeyForWebView:(WKWebView *)arg1;
 - (void)_webView:(WKWebView *)arg1 URL:(NSURL *)arg2 contentRuleListIdentifiers:(NSArray *)arg3 notifications:(NSArray *)arg4;
-- (BOOL)_webView:(WKWebView *)arg1 canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)arg2;
 - (void)_webView:(WKWebView *)arg1 decidePolicyForNavigationAction:(WKNavigationAction *)arg2 decisionHandler:(void (^)(long long, _WKWebsitePolicies *))arg3;
 - (void)_webView:(WKWebView *)arg1 decidePolicyForNavigationAction:(WKNavigationAction *)arg2 userInfo:(id<NSSecureCoding>)arg3 decisionHandler:(void (^)(long long, _WKWebsitePolicies *))arg4;
 - (void)_webView:(WKWebView *)arg1 didFailNavigation:(WKNavigation *)arg2 withError:(NSError *)arg3 userInfo:(id<NSSecureCoding>)arg4;
 - (void)_webView:(WKWebView *)arg1 didFinishLoadForQuickLookDocumentInMainFrame:(NSData *)arg2;
-- (void)_webView:(WKWebView *)arg1 didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)arg2;
+- (void)_webView:(WKWebView *)arg1 didPerformClientRedirectFromURL:(NSURL *)arg2 toURL:(NSURL *)arg3;
 - (void)_webView:(WKWebView *)arg1 didStartLoadForQuickLookDocumentInMainFrameWithFileName:(NSString *)arg2 uti:(NSString *)arg3;
 - (void)_webView:(WKWebView *)arg1 didStartProvisionalNavigation:(WKNavigation *)arg2 userInfo:(id<NSSecureCoding>)arg3;
 - (void)_webView:(WKWebView *)arg1 navigation:(WKNavigation *)arg2 didFailProvisionalLoadInSubframe:(WKFrameInfo *)arg3 withError:(NSError *)arg4;

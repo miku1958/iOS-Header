@@ -6,38 +6,15 @@
 
 #import <CoreKnowledge/CKAbstractBackingStore.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE;
 
 @interface _TtC13CoreKnowledge26CKUserDefaultsBackingStore : CKAbstractBackingStore
 {
     MISSING_TYPE *kv;
 }
 
-@property (nonatomic, copy) NSString *name;
-
-- (CDUnknownBlockType).cxx_destruct;
-- (void)decreaseWeightForLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)dictionaryRepresentationAndReturnError:(id *)arg1;
-- (id)dictionaryRepresentationForKeysMatching:(id)arg1 error:(id *)arg2;
-- (void)disableSyncAndDeleteCloudDataWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)dropLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)dropLinksWithBetween:(id)arg1 and:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)dropLinksWithLabel:(id)arg1 from:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)increaseWeightForLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void).cxx_destruct;
 - (id)init;
-- (id)keysAndReturnError:(id *)arg1;
-- (id)keysMatching:(id)arg1 error:(id *)arg2;
-- (BOOL)removeAllValuesAndReturnError:(id *)arg1;
-- (BOOL)removeValueForKey:(id)arg1 error:(id *)arg2;
-- (BOOL)removeValuesForKeys:(id)arg1 error:(id *)arg2;
-- (BOOL)removeValuesMatching:(id)arg1 error:(id *)arg2;
-- (void)setValue:(id)arg1 forKey:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)setWeightForLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3 toValue:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)synchronize;
-- (id)triplesComponentsMatching:(id)arg1 error:(id *)arg2;
-- (id)valuesAndReturnError:(id *)arg1;
-- (id)valuesForKeysMatching:(id)arg1 error:(id *)arg2;
-- (id)writeBatch;
 
 @end
 

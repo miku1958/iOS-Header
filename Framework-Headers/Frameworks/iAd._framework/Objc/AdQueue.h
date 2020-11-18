@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *concurrentQueue; // @synthesize concurrentQueue=_concurrentQueue;
 
 - (unsigned long long)count;
+- (void)dealloc;
 - (id)dequeue;
 - (void)enqueue:(id)arg1;
 - (id)init;

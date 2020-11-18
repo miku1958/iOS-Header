@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/NSProgressReporting-Protocol.h>
 
-@class ICRequestContext, NSData, NSDictionary, NSError, NSMutableArray, NSMutableData, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTask;
+@class ICRequestContext, ICURLResponseHandler, NSData, NSDictionary, NSError, NSMutableArray, NSMutableData, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTask;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ICURLRequest : NSObject <NSProgressReporting>
@@ -27,6 +27,7 @@
     double _retryDelay;
     long long _requestState;
     NSData *_resumeData;
+    ICURLResponseHandler *_responseHandler;
     NSURLRequest *_urlRequest;
     NSURLSessionTask *_task;
     long long _type;
@@ -63,6 +64,7 @@
 @property (nonatomic) long long requestState; // @synthesize requestState=_requestState;
 @property (strong, nonatomic) NSMutableData *responseData; // @synthesize responseData=_responseData;
 @property (strong, nonatomic) NSURL *responseDataURL; // @synthesize responseDataURL=_responseDataURL;
+@property (strong, nonatomic) ICURLResponseHandler *responseHandler; // @synthesize responseHandler=_responseHandler;
 @property (readonly, copy, nonatomic) NSData *resumeData; // @synthesize resumeData=_resumeData;
 @property (nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
 @property (nonatomic) double retryDelay; // @synthesize retryDelay=_retryDelay;

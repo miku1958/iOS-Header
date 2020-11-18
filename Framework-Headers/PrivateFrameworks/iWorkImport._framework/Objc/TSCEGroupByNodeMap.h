@@ -18,8 +18,10 @@ __attribute__((visibility("hidden")))
 - (void)addCellRef:(const struct TSCEInternalCellReference *)arg1 usingCategoryRef:(const struct TSCECategoryRef *)arg2;
 - (id)description;
 - (void)encodeToArchive:(struct GroupByNodeMapArchive *)arg1;
+- (void)getCellRefs:(struct TSCEReferenceSet *)arg1 forGroupRootInGroupBy:(const UUIDData_5fbc143e *)arg2;
 - (void)getCellRefs:(struct TSCEReferenceSet *)arg1 inGroupBy:(const UUIDData_5fbc143e *)arg2;
-- (void)getCellRefs:(struct TSCEReferenceSet *)arg1 referringToGroupNodes:(const vector_4dc5f307 *)arg2 inGroupBy:(const UUIDData_5fbc143e *)arg3;
+- (void)getCellRefs:(struct TSCEReferenceSet *)arg1 inGroupBys:(const vector_4dc5f307 *)arg2;
+- (BOOL)getCellRefs:(struct TSCEReferenceSet *)arg1 referringToGroupNodes:(const vector_4dc5f307 *)arg2 inGroupBy:(const UUIDData_5fbc143e *)arg3;
 - (id)initFromArchive:(const struct GroupByNodeMapArchive *)arg1;
 - (void)removeAllCellRefsInOwner:(unsigned short)arg1;
 - (void)removeCellRef:(const struct TSCEInternalCellReference *)arg1;

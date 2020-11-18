@@ -16,20 +16,24 @@
     NSNumber *_payloadAllowOpenFromUnmanagedToManaged;
     NSNumber *_payloadForceAirDropUnmanaged;
     NSNumber *_payloadAllowManagedAppsCloudSync;
+    NSNumber *_payloadAllowManagedToWriteUnmanagedContacts;
+    NSNumber *_payloadAllowUnmanagedToReadManagedContacts;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSNumber *payloadAllowManagedAppsCloudSync; // @synthesize payloadAllowManagedAppsCloudSync=_payloadAllowManagedAppsCloudSync;
+@property (copy, nonatomic) NSNumber *payloadAllowManagedToWriteUnmanagedContacts; // @synthesize payloadAllowManagedToWriteUnmanagedContacts=_payloadAllowManagedToWriteUnmanagedContacts;
 @property (copy, nonatomic) NSNumber *payloadAllowOpenFromManagedToUnmanaged; // @synthesize payloadAllowOpenFromManagedToUnmanaged=_payloadAllowOpenFromManagedToUnmanaged;
 @property (copy, nonatomic) NSNumber *payloadAllowOpenFromUnmanagedToManaged; // @synthesize payloadAllowOpenFromUnmanagedToManaged=_payloadAllowOpenFromUnmanagedToManaged;
+@property (copy, nonatomic) NSNumber *payloadAllowUnmanagedToReadManagedContacts; // @synthesize payloadAllowUnmanagedToReadManagedContacts=_payloadAllowUnmanagedToReadManagedContacts;
 @property (copy, nonatomic) NSNumber *payloadForceAirDropUnmanaged; // @synthesize payloadForceAirDropUnmanaged=_payloadForceAirDropUnmanaged;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
-+ (id)buildWithIdentifier:(id)arg1 withAllowOpenFromManagedToUnmanaged:(id)arg2 withAllowOpenFromUnmanagedToManaged:(id)arg3 withForceAirDropUnmanaged:(id)arg4 withAllowManagedAppsCloudSync:(id)arg5;
++ (id)buildWithIdentifier:(id)arg1 withAllowOpenFromManagedToUnmanaged:(id)arg2 withAllowOpenFromUnmanagedToManaged:(id)arg3 withForceAirDropUnmanaged:(id)arg4 withAllowManagedAppsCloudSync:(id)arg5 withAllowManagedToWriteUnmanagedContacts:(id)arg6 withAllowUnmanagedToReadManagedContacts:(id)arg7;
 + (id)profileType;
 + (id)registeredClassName;
 + (id)registeredIdentifier;

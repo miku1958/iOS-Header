@@ -58,6 +58,7 @@
 - (id)defaultFields;
 - (id)defaultHeaderViewSubTitle;
 - (id)defaultHeaderViewTitle;
+- (void)fieldCellDidTapButton:(id)arg1;
 - (BOOL)fieldCellEditableTextFieldShouldBeginEditing:(id)arg1;
 - (BOOL)fieldCellEditableTextFieldShouldClear:(id)arg1;
 - (BOOL)fieldCellEditableTextFieldShouldReturn:(id)arg1;

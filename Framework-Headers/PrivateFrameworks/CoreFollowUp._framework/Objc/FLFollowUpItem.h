@@ -21,6 +21,9 @@
     NSString *_targetBundleIdentifier;
     NSString *_title;
     NSString *_informativeText;
+    NSString *_informativeFooterText;
+    NSString *_representingBundlePath;
+    NSString *_bundleIconName;
     unsigned long long _displayStyle;
     NSString *_extensionIdentifier;
     NSArray *_actions;
@@ -32,13 +35,16 @@
 
 @property (strong, nonatomic) NSData *_userInfoData;
 @property (copy) NSArray *actions; // @synthesize actions=_actions;
+@property (copy, nonatomic) NSString *bundleIconName; // @synthesize bundleIconName=_bundleIconName;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (copy, nonatomic) NSString *delegateMachServiceName; // @synthesize delegateMachServiceName=_delegateMachServiceName;
 @property unsigned long long displayStyle; // @synthesize displayStyle=_displayStyle;
 @property (copy) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 @property (copy, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
+@property (copy, nonatomic) NSString *informativeFooterText; // @synthesize informativeFooterText=_informativeFooterText;
 @property (copy, nonatomic) NSString *informativeText; // @synthesize informativeText=_informativeText;
 @property (strong, nonatomic) FLFollowUpNotification *notification; // @synthesize notification=_notification;
+@property (copy, nonatomic) NSString *representingBundlePath; // @synthesize representingBundlePath=_representingBundlePath;
 @property BOOL shouldPersistWhenActivated; // @synthesize shouldPersistWhenActivated=_shouldPersistWhenActivated;
 @property BOOL shouldPersistWhenDismissed; // @synthesize shouldPersistWhenDismissed=_shouldPersistWhenDismissed;
 @property (nonatomic) BOOL showInSettings; // @synthesize showInSettings=_showInSettings;

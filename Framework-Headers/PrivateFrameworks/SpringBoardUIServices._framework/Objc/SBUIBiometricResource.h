@@ -71,6 +71,7 @@
 - (void)_addFingerDetectionWantedAssertion:(id)arg1;
 - (void)_addMatchingAssertion:(id)arg1;
 - (void)_addSimulatedLockoutAssertion:(id)arg1;
+- (void)_clearFinishedOperationsIfNeededForAssertion:(id)arg1;
 - (void)_deactivateAllPearlAssertions;
 - (void)_deactivateAssertion:(id)arg1;
 - (void)_matchingAllowedStateMayHaveChangedForReason:(id)arg1;

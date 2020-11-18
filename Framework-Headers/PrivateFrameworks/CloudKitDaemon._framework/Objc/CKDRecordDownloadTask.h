@@ -17,10 +17,12 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_assetsToDownload;
     NSMutableArray *_assetsToDownloadInMemory;
     NSMutableArray *_packageIndexSets;
+    NSMutableArray *_assetURLInfosToFillOut;
     NSObject<OS_dispatch_group> *_group;
     CKDProgressTracker *_progressTracker;
 }
 
+@property (strong, nonatomic) NSMutableArray *assetURLInfosToFillOut; // @synthesize assetURLInfosToFillOut=_assetURLInfosToFillOut;
 @property (strong, nonatomic) NSMutableArray *assetsToDownload; // @synthesize assetsToDownload=_assetsToDownload;
 @property (strong, nonatomic) NSMutableArray *assetsToDownloadInMemory; // @synthesize assetsToDownloadInMemory=_assetsToDownloadInMemory;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
@@ -32,7 +34,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)didCompleteTaskWithError:(id)arg1;
 - (void)didDownloadAsset:(id)arg1 error:(id)arg2;
-- (id)initWithRecord:(id)arg1 trackProgress:(BOOL)arg2 assetsToDownload:(id)arg3 assetsToDownloadInMemory:(id)arg4 packageIndexSets:(id)arg5;
+- (void)didFillOutURLInfo:(id)arg1 error:(id)arg2;
+- (id)initWithRecord:(id)arg1 trackProgress:(BOOL)arg2 assetsToDownload:(id)arg3 assetsToDownloadInMemory:(id)arg4 packageIndexSets:(id)arg5 assetURLInfosToFillOut:(id)arg6;
 
 @end
 

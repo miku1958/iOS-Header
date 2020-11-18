@@ -8,6 +8,7 @@
 
 @interface NSURL (CRKAdditions)
 + (id)crk_uniqueTemporaryDirectoryURL;
++ (id)crk_uniqueTemporaryFileURL;
 - (id)crk_escapedPath;
 - (BOOL)crk_isBundle;
 @end

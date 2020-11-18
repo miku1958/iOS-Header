@@ -10,6 +10,7 @@
 
 @protocol CSCoreSpeechServiceListenerDelegate <NSObject>
 - (oneway void)clearTriggerCount:(void (^)(void))arg1;
+- (oneway void)getCurrentVoiceTriggerLocale:(void (^)(NSString *))arg1;
 - (oneway void)getFirstPassRunningMode:(void (^)(long long))arg1;
 - (oneway void)getTestResponse:(void (^)(NSString *))arg1;
 - (oneway void)getTriggerCount:(void (^)(unsigned long long))arg1;

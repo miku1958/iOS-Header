@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/SwiftObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
-@interface _TtC15ConversationKit20SpringBoardUtilities : SwiftObject
+@interface _TtC15ConversationKit20SpringBoardUtilities : _TtCs12_SwiftObject
 {
 }
 

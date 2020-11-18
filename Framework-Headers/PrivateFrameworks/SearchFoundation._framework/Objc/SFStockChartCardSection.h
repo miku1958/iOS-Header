@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFStockChartCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, NSURL, SFCard, SFColor;
+@class NSArray, NSData, NSDictionary, NSString, NSURL, SFCard, SFColor, SFUserReportRequest;
 
 @interface SFStockChartCardSection : SFCardSection <SFStockChartCardSection, NSSecureCoding, NSCopying>
 {
@@ -51,6 +51,7 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSURL *thirdPartyContentURL; // @synthesize thirdPartyContentURL=_thirdPartyContentURL;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

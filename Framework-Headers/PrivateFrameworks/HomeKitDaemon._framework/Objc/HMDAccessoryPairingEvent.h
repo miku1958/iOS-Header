@@ -19,6 +19,7 @@
     long long _linkType;
     long long _certificationStatus;
     unsigned long long _authMethod;
+    NSString *_identifier;
 }
 
 @property (readonly, nonatomic, getter=isAddOperation) BOOL addOperation; // @synthesize addOperation=_addOperation;
@@ -28,6 +29,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) AWDHomeKitVendorInformation *vendorInfo; // @synthesize vendorInfo=_vendorInfo;

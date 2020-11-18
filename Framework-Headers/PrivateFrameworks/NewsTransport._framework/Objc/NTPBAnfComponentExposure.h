@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSData, NSMutableArray, NSString, NTPBIssueData, NTPBIssueExposureData, NTPBIssueViewData;
 
 @interface NTPBAnfComponentExposure : PBCodable <NSCopying>
 {
@@ -19,6 +19,11 @@
     NSString *_anfComponentType;
     NSString *_articleId;
     NSString *_articleVersion;
+    NSData *_articleViewingSessionId;
+    NSMutableArray *_fractionalCohortMemberships;
+    NTPBIssueData *_issueData;
+    NTPBIssueExposureData *_issueExposureData;
+    NTPBIssueViewData *_issueViewData;
     NSString *_metadata;
     NSString *_sourceChannelId;
     struct {
@@ -32,24 +37,38 @@
 @property (strong, nonatomic) NSString *anfComponentType; // @synthesize anfComponentType=_anfComponentType;
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property (strong, nonatomic) NSString *articleVersion; // @synthesize articleVersion=_articleVersion;
+@property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
 @property (nonatomic) long long backendArticleVersionInt64; // @synthesize backendArticleVersionInt64=_backendArticleVersionInt64;
+@property (strong, nonatomic) NSMutableArray *fractionalCohortMemberships; // @synthesize fractionalCohortMemberships=_fractionalCohortMemberships;
 @property (readonly, nonatomic) BOOL hasAnfComponentId;
 @property (readonly, nonatomic) BOOL hasAnfComponentRole;
 @property (readonly, nonatomic) BOOL hasAnfComponentType;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleVersion;
+@property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
 @property (nonatomic) BOOL hasBackendArticleVersionInt64;
+@property (readonly, nonatomic) BOOL hasIssueData;
+@property (readonly, nonatomic) BOOL hasIssueExposureData;
+@property (readonly, nonatomic) BOOL hasIssueViewData;
 @property (readonly, nonatomic) BOOL hasMetadata;
 @property (nonatomic) BOOL hasPublisherArticleVersionInt64;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
+@property (strong, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
+@property (strong, nonatomic) NTPBIssueExposureData *issueExposureData; // @synthesize issueExposureData=_issueExposureData;
+@property (strong, nonatomic) NTPBIssueViewData *issueViewData; // @synthesize issueViewData=_issueViewData;
 @property (strong, nonatomic) NSString *metadata; // @synthesize metadata=_metadata;
 @property (nonatomic) long long publisherArticleVersionInt64; // @synthesize publisherArticleVersionInt64=_publisherArticleVersionInt64;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
 
++ (Class)fractionalCohortMembershipType;
 - (void).cxx_destruct;
+- (void)addFractionalCohortMembership:(id)arg1;
+- (void)clearFractionalCohortMemberships;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)fractionalCohortMembershipAtIndex:(unsigned long long)arg1;
+- (unsigned long long)fractionalCohortMembershipsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

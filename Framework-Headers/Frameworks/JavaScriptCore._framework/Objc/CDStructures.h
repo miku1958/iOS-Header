@@ -50,8 +50,6 @@ struct HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>
 
 struct HashMap<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>;
 
-struct InferredTypeTable;
-
 struct InlineWatchpointSet {
     unsigned long long _field1;
 };
@@ -106,7 +104,7 @@ struct OpaqueJSClass {
 
 struct OpaqueJSValue;
 
-struct Poisoned<WTF::Poison<&g_GlobalDataPoison>, const JSC::ClassInfo *, void> {
+struct Poisoned<WTF::Poison<&JSC::g_GlobalDataPoison>, const JSC::ClassInfo *, void> {
     unsigned long long _field1;
 };
 
@@ -150,13 +148,12 @@ struct Structure {
     struct WriteBarrier<JSC::StructureChain, WTF::DumbPtrTraits<JSC::StructureChain>> _field13;
     struct WriteBarrier<JSC::JSCell, WTF::DumbPtrTraits<JSC::JSCell>> _field14;
     struct RefPtr<WTF::UniquedStringImpl, WTF::DumbPtrTraits<WTF::UniquedStringImpl>> _field15;
-    struct Poisoned<WTF::Poison<&g_GlobalDataPoison>, const JSC::ClassInfo *, void> _field16;
+    struct Poisoned<WTF::Poison<&JSC::g_GlobalDataPoison>, const JSC::ClassInfo *, void> _field16;
     struct StructureTransitionTable _field17;
     struct WriteBarrier<JSC::PropertyTable, WTF::DumbPtrTraits<JSC::PropertyTable>> _field18;
-    struct WriteBarrier<JSC::InferredTypeTable, WTF::DumbPtrTraits<JSC::InferredTypeTable>> _field19;
-    struct InlineWatchpointSet _field20;
-    int _field21;
-    unsigned int _field22;
+    struct InlineWatchpointSet _field19;
+    int _field20;
+    unsigned int _field21;
 };
 
 struct StructureChain;
@@ -200,10 +197,6 @@ struct Weak<JSC::Structure> {
 struct WeakGCMap<id, JSC::JSObject, WTF::PtrHash<id>, WTF::HashTraits<id>>;
 
 struct WeakImpl;
-
-struct WriteBarrier<JSC::InferredTypeTable, WTF::DumbPtrTraits<JSC::InferredTypeTable>> {
-    struct InferredTypeTable *_field1;
-};
 
 struct WriteBarrier<JSC::JSCell, WTF::DumbPtrTraits<JSC::JSCell>> {
     struct JSCell *_field1;

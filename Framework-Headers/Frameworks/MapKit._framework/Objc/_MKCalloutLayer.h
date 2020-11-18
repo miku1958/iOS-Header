@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (struct CGSize)_contentSize;
 - (struct CGImage *)_newContentImage;
+- (void)dealloc;
 - (id)init;
 - (void)layoutSublayers;
 - (void)setContentsScale:(double)arg1;

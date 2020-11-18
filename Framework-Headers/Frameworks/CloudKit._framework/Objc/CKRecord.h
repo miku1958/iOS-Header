@@ -41,7 +41,6 @@
     NSData *_chainParentPublicKeyID;
     NSArray *_tombstonedPublicKeyIDs;
     NSURL *_mutableURL;
-    NSString *_displayedHostname;
     CKRecordValueStore *_valueStore;
     CKEncryptedRecordValueStore *_encryptedValueStore;
     NSString *_modifiedByDevice;
@@ -55,6 +54,7 @@
     NSString *_shareEtag;
     NSString *_routingKey;
     NSString *_baseToken;
+    NSString *_displayedHostname;
     long long _permission;
     NSDictionary *_pluginFields;
     NSString *_previousProtectionEtagFromUnitTest;

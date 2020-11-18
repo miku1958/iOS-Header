@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long countOfMasterDrawables;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) TPDrawablesZOrder *drawablesZOrder; // @synthesize drawablesZOrder=_drawablesZOrder;
+@property (readonly, nonatomic) TPDrawablesZOrder *drawablesZOrder; // @synthesize drawablesZOrder=_drawablesZOrder;
 @property (readonly, nonatomic, getter=isFloatingAboveText) BOOL floatingAboveText;
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;

@@ -29,6 +29,7 @@
 - (void)dismissCloudServiceSetupViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissSafariViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)overrideCreditCardPresentationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)overrideRedeemCameraPerformAction:(long long)arg1 withObject:(id)arg2;
 - (void)presentSafariViewControllerWithURL:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

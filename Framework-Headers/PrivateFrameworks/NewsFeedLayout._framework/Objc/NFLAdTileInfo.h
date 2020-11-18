@@ -8,7 +8,7 @@
 
 #import <NewsFeedLayout/NFLFeedTileInfo-Protocol.h>
 
-@class NSArray, NSString;
+@class NFLHeadlineTileInfo, NSArray, NSString;
 
 @interface NFLAdTileInfo : NSObject <NFLFeedTileInfo>
 {
@@ -16,6 +16,7 @@
     BOOL _isOnScreen;
     BOOL _appearedOnScreen;
     BOOL _appearedWithAd;
+    NSString *_groupIdentifier;
     long long _adType;
     NSString *_adUnitIdentifier;
 }
@@ -25,9 +26,10 @@
 @property (nonatomic) BOOL appearedOnScreen; // @synthesize appearedOnScreen=_appearedOnScreen;
 @property (nonatomic) BOOL appearedWithAd; // @synthesize appearedWithAd=_appearedWithAd;
 @property (readonly, nonatomic) unsigned long long bookmarkOffsetType;
-@property (readonly, nonatomic) BOOL bookmarkable;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NFLHeadlineTileInfo *feedTileInfoForBookmarking;
+@property (readonly, copy, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (nonatomic) BOOL isDisplayingAd; // @synthesize isDisplayingAd=_isDisplayingAd;
@@ -47,6 +49,7 @@
 - (id)initWithAdType:(long long)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)updatedTileInfoWithNewHeadline:(id)arg1;
 
 @end
 

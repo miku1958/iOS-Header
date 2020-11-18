@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
+@class TSCH3DChartSceneInfo;
+
 __attribute__((visibility("hidden")))
 @interface TSCH3DChartScene : NSObject
 {
-    struct ChartSceneInfo mSceneInfo;
+    TSCH3DChartSceneInfo *mSceneInfo;
 }
 
-+ (void)addObjectsToSceneWithSceneInfo:(const struct ChartSceneInfo *)arg1;
++ (void)addObjectsToSceneWithSceneInfo:(id)arg1;
 + (BOOL)supportsValueAxisLabelAlignmentCaching;
 - (void)addAllLabelsToScene;
 - (void)addAllObjectsToScene;
@@ -23,8 +25,9 @@ __attribute__((visibility("hidden")))
 - (void)adjustSceneSettings;
 - (id)chartInfo;
 - (id)chartType;
-- (id)initWithSceneInfo:(const struct ChartSceneInfo *)arg1;
-- (const CDStruct_b1c75024 *)layoutSettings;
+- (void)dealloc;
+- (id)initWithSceneInfo:(id)arg1;
+- (CDStruct_b1c75024)layoutSettings;
 - (id)scene;
 - (id)seriesType;
 

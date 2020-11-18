@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)addLinkage:(struct TSCH3DShaderType)arg1;
 - (void)addShader:(struct TSCH3DShaderType)arg1 scope:(struct TSCH3DShaderVariableScopeType)arg2;
 - (void)dealloc;
+- (BOOL)declaredInShader:(struct TSCH3DShaderType)arg1 scope:(struct TSCH3DShaderVariableScopeType)arg2;
 - (id)description;
 - (id)globalNameForShader:(struct TSCH3DShaderType)arg1 scope:(struct TSCH3DShaderVariableScopeType)arg2;
 - (BOOL)hasBody:(struct TSCH3DShaderType)arg1;
@@ -69,8 +70,8 @@ __attribute__((visibility("hidden")))
 - (void)unlink;
 - (BOOL)updateLinkage:(struct TSCH3DShaderType)arg1;
 - (BOOL)updateShader:(struct TSCH3DShaderType)arg1 scope:(struct TSCH3DShaderVariableScopeType)arg2;
-- (id)variableDeclarationInShader:(struct TSCH3DShaderType)arg1 scope:(struct TSCH3DShaderVariableScopeType)arg2;
-- (id)variableQualifiersWithStorageQualifier:(id)arg1;
+- (id)variableDeclarationInShader:(struct TSCH3DShaderType)arg1 scope:(struct TSCH3DShaderVariableScopeType)arg2 isMetal:(BOOL)arg3;
+- (id)variableQualifiersWithStorageQualifier:(id)arg1 isMetal:(BOOL)arg2;
 
 @end
 

@@ -17,6 +17,7 @@
 - (id)_accessibilityControlCenterButtonIdentifier;
 - (BOOL)_accessibilityControlCenterButtonIsToggle;
 - (id)_accessibilityControlCenterButtonLabel;
+- (BOOL)_accessibilityControlCenterShouldExpandContentModule;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <VectorKit/NSCopying-Protocol.h>
 
-@class VKRasterTile;
+@class NSError, VKRasterTile;
 
 __attribute__((visibility("hidden")))
 @interface VKMapTile : VKTile <NSCopying>
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     VKTile *_tiles[33];
     unsigned long long _states[33];
     double _stateDates[33];
-    id _stateMetas[33];
+    NSError *_stateErrors[33];
     Box_3d7e3c2c _localBounds[33];
     VKRasterTile *_rasterized;
     BOOL _needsRasterization;
@@ -31,18 +31,18 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_setTile:(id)arg1 state:(unsigned long long)arg2 metadata:(id)arg3 forLayer:(unsigned char)arg4 timestamp:(double)arg5;
+- (void)_setTile:(id)arg1 state:(unsigned long long)arg2 error:(id)arg3 forLayer:(unsigned char)arg4 timestamp:(double)arg5;
 - (void)clear;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)detailedDescription;
 - (id)detailedDescriptionDictionaryRepresentation;
+- (id)errorForLayer:(unsigned char)arg1;
 - (id)initWithKey:(const struct VKTileKey *)arg1;
 - (Box_3d7e3c2c)localBoundsForLayer:(unsigned char)arg1;
-- (id)metaDataForLayer:(unsigned char)arg1;
 - (void)populateDebugNode:(shared_ptr_eafb90f9)arg1;
-- (void)setTile:(id)arg1 state:(unsigned long long)arg2 metadata:(id)arg3 forLayer:(unsigned char)arg4;
+- (void)setTile:(id)arg1 state:(unsigned long long)arg2 error:(id)arg3 forLayer:(unsigned char)arg4;
 - (id)tileForLayer:(unsigned char)arg1;
 - (unsigned long long)tileStateForLayer:(unsigned char)arg1;
 - (double)timeTileEnteredStateForLayer:(unsigned char)arg1;

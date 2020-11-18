@@ -34,11 +34,11 @@
 - (BOOL)canSelectItem:(id)arg1;
 - (Class)cellClassForItem:(id)arg1;
 - (void)checkmarkTappedInCell:(id)arg1 forItem:(id)arg2;
+- (id)currentTextForTextField:(id)arg1 item:(id)arg2;
 - (id)defaultTextForTextField:(id)arg1 item:(id)arg2;
 - (unsigned long long)didSelectItem:(id)arg1;
 - (id)initWithModule:(id)arg1;
 - (id)initWithModule:(id)arg1 delegate:(id)arg2;
-- (id)placeholderTextForTextField:(id)arg1 item:(id)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2;
 - (BOOL)shouldManageTextFieldForItem:(id)arg1;
 - (void)textDidChange:(id)arg1 forTextField:(id)arg2 item:(id)arg3;

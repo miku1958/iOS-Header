@@ -49,6 +49,7 @@
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilityIsTableCell;
 - (BOOL)_accessibilityLabelShouldBeDistinct:(id)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityMockParent;
 - (id)_accessibilityNativeFocusPreferredElement;
 - (id)_accessibilityNextIndexPath;
@@ -86,6 +87,8 @@
 - (BOOL)_accessibilityViewHierarchyHasNativeFocus;
 - (id)_axCustomActionsForActions:(id)arg1;
 - (BOOL)_axPerformAction:(id)arg1;
+- (void)_axSetShouldForceRefreshChildren:(BOOL)arg1;
+- (BOOL)_axShouldForceRefreshChildren;
 - (BOOL)_axSubviewIgnoredDueToHiddenOrZeroAlphaAncestry:(id)arg1;
 - (void)_beginSwiping;
 - (id)_checkmarkImage:(BOOL)arg1;

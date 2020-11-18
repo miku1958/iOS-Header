@@ -7,7 +7,6 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (TSUDarkSidebar)
-+ (id)tsu_darkInsertSwatchBackgroundColor;
 + (id)tsu_darkToolbarBackgroundColor;
 + (id)tsu_darkToolbarTintColor;
 + (id)tsu_darkToolbarTitleColor;

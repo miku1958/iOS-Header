@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+@protocol UITraitEnvironment;
+
 @interface _SFBrowserConfiguration : NSObject
 {
     long long _configuration;
+    id<UITraitEnvironment> _traitEnvironment;
 }
 
 @property (readonly, nonatomic) BOOL allowsClosingLastTab;
@@ -22,16 +25,16 @@
 @property (readonly, nonatomic) BOOL allowsSpeculativeLoading;
 @property (readonly, nonatomic) BOOL allowsStreamlinedLogin;
 @property (readonly, nonatomic) BOOL allowsUserActivityFeedback;
-@property (readonly, nonatomic) BOOL forcesDoNotTrack;
-@property (readonly, nonatomic) unsigned long long navigationBarTintStyle;
+@property (readonly, nonatomic) unsigned long long barTintStyle;
 @property (readonly, nonatomic, getter=isPrivateBrowsingEnabled) BOOL privateBrowsingEnabled;
-@property (readonly, nonatomic) unsigned long long toolbarTintStyle;
+@property (readonly, weak, nonatomic) id<UITraitEnvironment> traitEnvironment; // @synthesize traitEnvironment=_traitEnvironment;
 @property (readonly, nonatomic) BOOL usesDarkTheme;
 @property (readonly, nonatomic) BOOL usesPersistentDataStore;
 
+- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithPrivateBrowsingEnabled:(BOOL)arg1;
+- (id)initWithPrivateBrowsingEnabled:(BOOL)arg1 traitEnvironment:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

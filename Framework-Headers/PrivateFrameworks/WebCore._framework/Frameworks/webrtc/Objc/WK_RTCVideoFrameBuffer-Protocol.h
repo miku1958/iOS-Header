@@ -6,13 +6,13 @@
 
 #import <webrtc/NSObject-Protocol.h>
 
-@protocol WK_RTCI420Buffer;
+@protocol RTCI420Buffer;
 
 @protocol WK_RTCVideoFrameBuffer <NSObject>
 
 @property (readonly, nonatomic) int height;
 @property (readonly, nonatomic) int width;
 
-- (id<WK_RTCI420Buffer>)toI420;
+- (id<RTCI420Buffer>)toI420;
 @end
 

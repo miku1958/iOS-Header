@@ -24,6 +24,7 @@
     BOOL _internal;
     BOOL _powerSource;
     BOOL _approximatesPercentCharge;
+    BOOL _wirelesslyCharging;
     BOOL _fake;
     long long _vendor;
     long long _powerSourceState;
@@ -57,6 +58,7 @@
 @property (readonly, nonatomic) long long productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (nonatomic) long long transportType; // @synthesize transportType=_transportType;
 @property (readonly, nonatomic) long long vendor; // @synthesize vendor=_vendor;
+@property (nonatomic, getter=isWirelesslyCharging) BOOL wirelesslyCharging; // @synthesize wirelesslyCharging=_wirelesslyCharging;
 
 + (id)batteryDeviceWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 parts:(unsigned long long)arg4 matchIdentifier:(id)arg5;
 + (BOOL)supportsSecureCoding;

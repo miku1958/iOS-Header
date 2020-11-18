@@ -18,5 +18,6 @@
 - (void)presentViewController:(UIViewController *)arg1;
 - (BOOL)shouldHandleCardSectionEngagement:(SFCardSectionEngagementFeedback *)arg1;
 - (void)updateViewControllerTitle:(NSString *)arg1;
+- (void)willDismissViewController:(UIViewController *)arg1;
 @end
 

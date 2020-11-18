@@ -6,9 +6,20 @@
 
 #import <Silex/SXResource.h>
 
-@interface SXAudioResource : SXResource
+#import <Silex/SXAudioResource-Protocol.h>
+
+@class NSString, NSURL;
+
+@interface SXAudioResource : SXResource <SXAudioResource>
 {
 }
+
+@property (readonly, nonatomic) NSURL *URL;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *identifier;
+@property (readonly) Class superclass;
 
 + (id)typeString;
 

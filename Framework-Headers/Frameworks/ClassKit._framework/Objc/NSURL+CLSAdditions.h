@@ -17,7 +17,7 @@
 + (id)cls_draftsURL;
 + (id)cls_libraryURL;
 + (id)cls_ubiquitousContainerURL;
-- (id)cls_createDirectoryIfNeeded;
+- (id)cls_createDirectoryIfNeeded:(id *)arg1;
 - (BOOL)cls_isParentOfURL:(id)arg1;
 - (id)cls_pathRelativeToURL:(id)arg1;
 @end

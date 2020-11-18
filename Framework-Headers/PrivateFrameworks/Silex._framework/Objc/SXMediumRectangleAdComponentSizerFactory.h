@@ -9,26 +9,26 @@
 #import <Silex/SXComponentSizerFactory-Protocol.h>
 
 @class NSString;
-@protocol SXAdControllerProvider, SXDocumentControllerProvider;
+@protocol SXAdControllerProvider, SXDOMObjectProviding;
 
 @interface SXMediumRectangleAdComponentSizerFactory : NSObject <SXComponentSizerFactory>
 {
-    id<SXDocumentControllerProvider> _documentControllerProvider;
+    id<SXDOMObjectProviding> _DOMObjectProvider;
     id<SXAdControllerProvider> _adControllerProvider;
 }
 
+@property (readonly, nonatomic) id<SXDOMObjectProviding> DOMObjectProvider; // @synthesize DOMObjectProvider=_DOMObjectProvider;
 @property (readonly, nonatomic) id<SXAdControllerProvider> adControllerProvider; // @synthesize adControllerProvider=_adControllerProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) id<SXDocumentControllerProvider> documentControllerProvider; // @synthesize documentControllerProvider=_documentControllerProvider;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int role;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *type;
 
 - (void).cxx_destruct;
-- (id)initWithDocumentControllerProvider:(id)arg1 adControllerProvider:(id)arg2;
-- (id)sizerForComponent:(id)arg1 componentLayout:(id)arg2 layoutAttributes:(id)arg3;
+- (id)initWithDOMObjectProvider:(id)arg1 adControllerProvider:(id)arg2;
+- (id)sizerForComponent:(id)arg1 componentLayout:(id)arg2 layoutOptions:(id)arg3 DOMObjectProvider:(id)arg4;
 
 @end
 

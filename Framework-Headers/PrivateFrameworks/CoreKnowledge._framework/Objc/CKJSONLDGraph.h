@@ -16,7 +16,7 @@
 
 @property (nonatomic, readonly) NSArray *entities;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithEntities:(id)arg1;
 - (void)linkedDataWithCompletionHandler:(CDUnknownBlockType)arg1;

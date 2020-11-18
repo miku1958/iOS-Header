@@ -4,21 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/NSObject-Protocol.h>
+#import <Silex/SXComponentLayoutProperties-Protocol.h>
+#import <Silex/SXConditionalObject-Protocol.h>
 
-@protocol SXEdgeSpacing;
-
-@protocol SXComponentLayout <NSObject>
-
-@property (readonly, nonatomic) struct _NSRange columnRange;
-@property (readonly, nonatomic) struct _SXComponentContentInset contentInset;
-@property (readonly, nonatomic) unsigned long long horizontalContentAlignment;
-@property (readonly, nonatomic) unsigned long long ignoreDocumentGutter;
-@property (readonly, nonatomic) unsigned long long ignoreDocumentMargin;
-@property (readonly, nonatomic) id<SXEdgeSpacing> margin;
-@property (readonly, nonatomic) struct _SXConvertibleValue maximumContentWidth;
-@property (readonly, nonatomic) struct _SXConvertibleValue minimumHeight;
-@property (readonly, nonatomic) struct _SXConvertibleValue suggestedHeight;
-
+@protocol SXComponentLayout <SXConditionalObject, SXComponentLayoutProperties>
 @end
 

@@ -6,6 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <RTTUI/RTTUIServiceCellDelegate-Protocol.h>
 #import <RTTUI/RTTUIUtteranceCellDelegate-Protocol.h>
 #import <RTTUI/UITableViewDataSource-Protocol.h>
 #import <RTTUI/UITableViewDelegate-Protocol.h>
@@ -14,7 +15,7 @@
 @class AXDispatchTimer, CAShapeLayer, DDParsecCollectionViewController, NSDictionary, NSLock, NSMutableArray, NSMutableCharacterSet, NSMutableString, NSObject, NSString, RTTConversation, RTTUITextView, RTTUtterance, TUCall, UIButton, UITableView;
 @protocol OS_dispatch_queue;
 
-@interface RTTUIConversationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RTTUIUtteranceCellDelegate, UITextViewDelegate>
+@interface RTTUIConversationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RTTUIUtteranceCellDelegate, UITextViewDelegate, RTTUIServiceCellDelegate>
 {
     RTTUITextView *_textView;
     CAShapeLayer *_bubbleLayer;
@@ -26,8 +27,10 @@
     NSMutableString *_voAnnouncementBuffer;
     NSLock *_realtimeSendLock;
     NSObject<OS_dispatch_queue> *_utteranceRequestQueue;
+    BOOL _serviceMessageVisible;
     BOOL _processingUtteranceBuffer;
     RTTConversation *_conversation;
+    NSString *_currentServiceMessage;
     DDParsecCollectionViewController *_lookupController;
     UITableView *_tableView;
     RTTUtterance *_currentUtterance;
@@ -37,6 +40,7 @@
 
 @property (strong, nonatomic) TUCall *call; // @synthesize call=_call;
 @property (strong, nonatomic) RTTConversation *conversation; // @synthesize conversation=_conversation;
+@property (strong, nonatomic) NSString *currentServiceMessage; // @synthesize currentServiceMessage=_currentServiceMessage;
 @property (strong, nonatomic) RTTUtterance *currentUtterance; // @synthesize currentUtterance=_currentUtterance;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -53,20 +57,21 @@
 - (void)_define:(id)arg1;
 - (void)_sendNewUtteranceString:(id)arg1 atIndex:(unsigned long long)arg2 forCellPath:(id)arg3;
 - (id)addUtterance:(id)arg1;
-- (id)callContainingUtterance;
 - (void)callDidConnect:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)cannedResponses;
 - (id)cellAtIndexPath:(id)arg1;
+- (id)currentCall;
 - (id)currentContactPath;
 - (void)dealloc;
 - (void)deviceDidReceiveString:(id)arg1 forUtterance:(id)arg2;
 - (void)gaButtonPressed:(id)arg1;
 - (id)init;
 - (id)inputTextView;
+- (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)processUtteranceQueue;
 - (void)realtimeTextDidChange;
-- (void)replyCellActionDidActivate:(id)arg1;
+- (void)replyCell:(id)arg1 didActivateWithReplyButtonType:(unsigned long long)arg2;
 - (void)sendNewUtteranceString:(id)arg1;
 - (void)setTextViewUtterance:(id)arg1;
 - (void)setupTableView;
@@ -80,7 +85,9 @@
 - (void)textViewDidChangeSelection:(id)arg1;
 - (id)textViewUtterance;
 - (void)toggleMute:(id)arg1;
+- (void)updateGAButton:(BOOL)arg1;
 - (void)updateMuteButton;
+- (void)updateServiceCellWithString:(id)arg1;
 - (void)updateTableViewSizeAnimated:(BOOL)arg1;
 - (void)updateViewForKeyboard:(id)arg1;
 - (void)updateVoiceOverAnnouncement:(id)arg1;

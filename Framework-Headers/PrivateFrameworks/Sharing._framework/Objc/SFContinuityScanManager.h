@@ -4,25 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Sharing/SFXPCClient.h>
 
-#import <Sharing/SFCompanionXPCManagerObserver-Protocol.h>
 #import <Sharing/SFContinuityScannerClient-Protocol.h>
 
 @class NSHashTable, NSMutableSet, NSString;
-@protocol SFContinuityScannerProtocol><NSXPCProxyCreating;
 
 __attribute__((visibility("hidden")))
-@interface SFContinuityScanManager : NSObject <SFCompanionXPCManagerObserver, SFContinuityScannerClient>
+@interface SFContinuityScanManager : SFXPCClient <SFContinuityScannerClient>
 {
-    BOOL _xpcSetupInProgress;
-    id<SFContinuityScannerProtocol><NSXPCProxyCreating> _connectionProxy;
     NSMutableSet *_foundDevices;
     NSHashTable *_observers;
     unsigned long long _scanTypes;
 }
 
-@property (strong) id<SFContinuityScannerProtocol><NSXPCProxyCreating> connectionProxy; // @synthesize connectionProxy=_connectionProxy;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong) NSMutableSet *foundDevices; // @synthesize foundDevices=_foundDevices;
@@ -30,22 +25,25 @@ __attribute__((visibility("hidden")))
 @property (strong) NSHashTable *observers; // @synthesize observers=_observers;
 @property unsigned long long scanTypes; // @synthesize scanTypes=_scanTypes;
 @property (readonly) Class superclass;
-@property BOOL xpcSetupInProgress; // @synthesize xpcSetupInProgress=_xpcSetupInProgress;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (void)_getRemoteObjectProxyOnQueue:(CDUnknownBlockType)arg1;
 - (void)activityPayloadFromDeviceUniqueID:(id)arg1 forAdvertisementPayload:(id)arg2 command:(id)arg3 timeout:(long long)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
 - (void)addObserver:(id)arg1;
+- (id)exportedInterface;
 - (void)foundDeviceWithDevice:(id)arg1;
 - (id)init;
 - (void)lostDeviceWithDevice:(id)arg1;
+- (id)machServiceName;
+- (void)onqueue_connectionEstablished;
+- (void)onqueue_connectionInterrupted;
 - (void)pairedDevicesChanged:(id)arg1;
 - (void)receivedAdvertisement:(id)arg1;
+- (id)remoteObjectInterface;
 - (void)removeObserver:(id)arg1;
 - (void)scanForTypes:(unsigned long long)arg1;
-- (void)setupProxyIfNeeded;
-- (void)xpcManagerConnectionInterrupted;
-- (void)xpcManagerDidResumeConnection:(id)arg1;
+- (BOOL)shouldEscapeXpcTryCatch;
 
 @end
 

@@ -20,7 +20,7 @@
 @property (nonatomic, readonly) NSString *personId; // @synthesize personId;
 
 + (BOOL)supportsSecureCoding;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithAuthToken:(id)arg1 personId:(id)arg2 hostName:(id)arg3;

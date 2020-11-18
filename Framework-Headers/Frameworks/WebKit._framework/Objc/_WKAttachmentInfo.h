@@ -6,26 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class NSData, NSFileWrapper, NSString;
 
 @interface _WKAttachmentInfo : NSObject
 {
-    struct RetainPtr<NSData> _data;
-    struct RetainPtr<NSString> _name;
+    struct RetainPtr<NSFileWrapper> _fileWrapper;
+    struct RetainPtr<NSString> _mimeType;
+    struct RetainPtr<NSString> _utiType;
     struct RetainPtr<NSString> _filePath;
-    struct RetainPtr<NSString> _contentType;
-    struct RetainPtr<NSError> _fileLoadingError;
 }
 
 @property (readonly, nonatomic) NSString *contentType;
 @property (readonly, nonatomic) NSData *data;
 @property (readonly, nonatomic) NSString *filePath;
+@property (readonly, nonatomic) NSFileWrapper *fileWrapper;
 @property (readonly, nonatomic) NSString *name;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)fileLoadingError;
-- (id)initWithInfo:(const struct AttachmentInfo *)arg1;
+- (id)initWithFileWrapper:(id)arg1 filePath:(id)arg2 mimeType:(id)arg3 utiType:(id)arg4;
 
 @end
 

@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <ClassroomKit/NSCopying-Protocol.h>
 #import <ClassroomKit/NSSecureCoding-Protocol.h>
 
 @class CRKUser, DMFControlGroupIdentifier, NSDate, NSDictionary, NSSet, NSString;
 
-@interface CRKCourse : NSObject <NSSecureCoding>
+@interface CRKCourse : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _requestingUnenroll;
     BOOL _studentCredentialsAreValid;
@@ -19,6 +20,8 @@
     DMFControlGroupIdentifier *_courseIdentifier;
     NSString *_courseName;
     NSString *_courseDescription;
+    unsigned long long _courseMascotType;
+    unsigned long long _courseColorType;
     CRKUser *_courseUser;
     NSDictionary *_instructorsByIdentifier;
     unsigned long long _type;
@@ -28,8 +31,10 @@
 }
 
 @property (strong, nonatomic) NSDate *automaticRemovalDate; // @synthesize automaticRemovalDate=_automaticRemovalDate;
+@property (nonatomic) unsigned long long courseColorType; // @synthesize courseColorType=_courseColorType;
 @property (copy, nonatomic) NSString *courseDescription; // @synthesize courseDescription=_courseDescription;
 @property (strong, nonatomic) DMFControlGroupIdentifier *courseIdentifier; // @synthesize courseIdentifier=_courseIdentifier;
+@property (nonatomic) unsigned long long courseMascotType; // @synthesize courseMascotType=_courseMascotType;
 @property (copy, nonatomic) NSString *courseName; // @synthesize courseName=_courseName;
 @property (strong, nonatomic) CRKUser *courseUser; // @synthesize courseUser=_courseUser;
 @property (nonatomic, getter=isExpired) BOOL expired; // @synthesize expired=_expired;
@@ -46,6 +51,7 @@
 + (id)stringForType:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

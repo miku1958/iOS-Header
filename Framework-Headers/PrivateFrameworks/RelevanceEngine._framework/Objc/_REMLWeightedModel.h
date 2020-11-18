@@ -6,18 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class REMLModel;
+@class REInteractionDescriptor;
 
 @interface _REMLWeightedModel : NSObject
 {
-    float _weight;
-    REMLModel *_model;
+    REInteractionDescriptor *_descriptor;
 }
 
-@property (strong, nonatomic) REMLModel *model; // @synthesize model=_model;
-@property (nonatomic) float weight; // @synthesize weight=_weight;
+@property (readonly, nonatomic) float weight;
 
++ (id)weightedModelWithDescriptor:(id)arg1 featureSet:(id)arg2;
 - (void).cxx_destruct;
+- (void)_configureMode:(id)arg1;
+- (BOOL)_loadModel:(id)arg1 fromURL:(id)arg2 error:(id *)arg3;
+- (void)enumerateModels:(CDUnknownBlockType)arg1;
+- (BOOL)loadModelFromURL:(id)arg1 error:(id *)arg2;
+- (id)predictWithFeatures:(id)arg1;
+- (BOOL)saveModelToURL:(id)arg1 error:(id *)arg2;
+- (void)trainModelWithFeatureMap:(id)arg1 positiveEvent:(id)arg2;
 
 @end
 

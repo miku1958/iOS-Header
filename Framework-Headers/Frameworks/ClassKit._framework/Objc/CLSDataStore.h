@@ -25,6 +25,8 @@
     CLSAuthTree *_authTree;
     NSMutableArray *_runningActivities;
     NSDate *_lastPruneDate;
+    NSString *_appBundleIdentifier;
+    NSString *_appName;
     id<CLSDataStoreDelegate> _delegate;
     CLSContext *_mainAppContext;
     CLSEndpointConnection *_endpointConnection;
@@ -76,6 +78,7 @@
 - (void)awaitExecuteQuery:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)cachedMainAppContext;
 - (void)classesForPersonID:(id)arg1 role:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)completeAllAssignedActivitiesMatching:(id)arg1;
 - (void)contextsMatchingIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)contextsMatchingIdentifierPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)contextsMatchingIdentifierPath:(id)arg1 parentContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -92,6 +95,7 @@
 - (void)executeQuery:(id)arg1;
 - (void)faultMainAppContext;
 - (BOOL)faultProcessor:(id)arg1 shouldFaultRelation:(id)arg2 fromObject:(struct NSObject *)arg3;
+- (void)fetchAndCompleteAllAssignedActivitiesForContextPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchTransparencyMessageInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handoutAttachmentForDocumentURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;

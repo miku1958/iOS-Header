@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, WBSCloudHistoryVisitIdentifier;
+#import <SafariShared/NSSecureCoding-Protocol.h>
 
-@interface WBSCloudHistoryVisit : NSObject
+@class NSDictionary, NSString, WBSHistoryVisitIdentifier;
+
+@interface WBSCloudHistoryVisit : NSObject <NSSecureCoding>
 {
     BOOL _loadSuccessful;
     BOOL _httpNonGet;
-    WBSCloudHistoryVisitIdentifier *_visitIdentifier;
+    WBSHistoryVisitIdentifier *_visitIdentifier;
     NSString *_title;
-    WBSCloudHistoryVisitIdentifier *_redirectSourceVisitIdentifier;
+    WBSHistoryVisitIdentifier *_redirectSourceVisitIdentifier;
     WBSCloudHistoryVisit *_redirectSourceVisit;
-    WBSCloudHistoryVisitIdentifier *_redirectDestinationVisitIdentifier;
+    WBSHistoryVisitIdentifier *_redirectDestinationVisitIdentifier;
     WBSCloudHistoryVisit *_redirectDestinationVisit;
 }
 
@@ -24,16 +26,20 @@
 @property (nonatomic, getter=wasHTTPNonGet) BOOL httpNonGet; // @synthesize httpNonGet=_httpNonGet;
 @property (nonatomic, getter=loadWasSuccessful) BOOL loadSuccessful; // @synthesize loadSuccessful=_loadSuccessful;
 @property (weak, nonatomic) WBSCloudHistoryVisit *redirectDestinationVisit; // @synthesize redirectDestinationVisit=_redirectDestinationVisit;
-@property (copy, nonatomic) WBSCloudHistoryVisitIdentifier *redirectDestinationVisitIdentifier; // @synthesize redirectDestinationVisitIdentifier=_redirectDestinationVisitIdentifier;
+@property (copy, nonatomic) WBSHistoryVisitIdentifier *redirectDestinationVisitIdentifier; // @synthesize redirectDestinationVisitIdentifier=_redirectDestinationVisitIdentifier;
 @property (weak, nonatomic) WBSCloudHistoryVisit *redirectSourceVisit; // @synthesize redirectSourceVisit=_redirectSourceVisit;
-@property (copy, nonatomic) WBSCloudHistoryVisitIdentifier *redirectSourceVisitIdentifier; // @synthesize redirectSourceVisitIdentifier=_redirectSourceVisitIdentifier;
+@property (copy, nonatomic) WBSHistoryVisitIdentifier *redirectSourceVisitIdentifier; // @synthesize redirectSourceVisitIdentifier=_redirectSourceVisitIdentifier;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property (copy, nonatomic) WBSCloudHistoryVisitIdentifier *visitIdentifier; // @synthesize visitIdentifier=_visitIdentifier;
+@property (copy, nonatomic) WBSHistoryVisitIdentifier *visitIdentifier; // @synthesize visitIdentifier=_visitIdentifier;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithHistoryVisit:(id)arg1;
+- (id)initWithVisitIdentifier:(id)arg1 title:(id)arg2 loadSuccessful:(BOOL)arg3 httpNonGet:(BOOL)arg4 redirectSourceVisitIdentifier:(id)arg5 redirectDestinationVisitIdentifier:(id)arg6;
 
 @end
 

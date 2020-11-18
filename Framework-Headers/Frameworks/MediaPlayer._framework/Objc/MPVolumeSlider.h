@@ -28,6 +28,9 @@
     double _originalMinTrackViewAlphaOverride;
     double _originalMinValueViewAlphaOverride;
     double _originalMaxValueViewAlphaOverride;
+    BOOL _isCurrentlyTracking;
+    float _setVolumeStartValue;
+    int _coalescedVolumeDidChangeLogCount;
     BOOL _optimisticState;
     float _optimisticValue;
     UILayoutGuide *_trackLayoutGuide;
@@ -70,10 +73,12 @@
 - (void)_endTracking;
 - (void)_layoutForAvailableRoutes;
 - (void)_layoutVolumeWarningView;
+- (void)_logVolumeValueDidChange:(float)arg1;
 - (id)_maxTrackImageForStyle:(long long)arg1;
 - (id)_minTrackImageForStyle:(long long)arg1;
 - (id)_newVolumeWarningView;
 - (void)_resetThumbImageForState:(unsigned long long)arg1;
+- (id)_routeName;
 - (id)_thumbImageForStyle:(long long)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
@@ -102,6 +107,7 @@
 - (void)volumeController:(id)arg1 EUVolumeLimitDidChange:(float)arg2;
 - (void)volumeController:(id)arg1 EUVolumeLimitEnforcedDidChange:(BOOL)arg2;
 - (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(BOOL)arg2;
+- (void)volumeController:(id)arg1 volumeControlCapabilitiesDidChange:(unsigned int)arg2;
 - (void)volumeController:(id)arg1 volumeControlLabelDidChange:(id)arg2;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 - (void)volumeController:(id)arg1 volumeWarningStateDidChange:(long long)arg2;

@@ -17,15 +17,20 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSArray *applicationTemplateVariants;
-@property (nonatomic) TSADocumentRoot *documentRoot; // @synthesize documentRoot=mDocumentRoot;
+@property (weak, nonatomic) TSADocumentRoot *documentRoot; // @synthesize documentRoot=mDocumentRoot;
+@property (readonly, nonatomic) Class documentRootClass;
 @property (strong, nonatomic) id<TSADownloadDelegate> downloadDelegate; // @synthesize downloadDelegate=_downloadDelegate;
+@property (readonly, nonatomic) BOOL hasIWorkAuthorName;
 @property (readonly, nonatomic) NSArray *iWorkAuthorPrivateIDs;
 @property (readonly, nonatomic) NSArray *importableDocumentTypes;
+@property (readonly, nonatomic) double maximumAspectRatioForPreviewImage;
+@property (readonly, nonatomic) double mimimumAspectRatioForPreviewImage;
 @property (readonly, nonatomic) NSString *nativeDocumentExtension;
 @property (readonly, nonatomic) NSString *nativeDocumentType;
 @property (readonly, nonatomic) NSArray *nativeDocumentTypes;
 @property (readonly, nonatomic) NSString *nativeSFFDocumentType;
 @property (readonly, nonatomic) NSArray *readableDocumentTypes;
+@property (readonly, nonatomic) BOOL showChineseNamedPointSizes;
 @property (readonly, nonatomic) NSString *tangierEditingFormatDocumentType;
 @property (readonly, nonatomic) NSString *templateDocumentExtension;
 @property (readonly, nonatomic) NSString *templateDocumentType;
@@ -33,6 +38,7 @@ __attribute__((visibility("hidden")))
 
 + (void)resetSharedConfigurations;
 + (id)sharedDelegate;
+- (void).cxx_destruct;
 - (id)appTextDefaults;
 - (id)appTextDefaultsKey;
 - (id)applicationTemplateVariantsForLocale:(struct __CFLocale *)arg1;
@@ -44,10 +50,9 @@ __attribute__((visibility("hidden")))
 - (id)collaboratorNameForDocumentInfo:(id)arg1 firstName:(id *)arg2 lastName:(id *)arg3;
 - (void)dealloc;
 - (id)documentPreferenceKeyPrefix;
-- (Class)documentRootClass;
 - (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
 - (id)existingNestedDocumentPathForPath:(id)arg1;
-- (BOOL)hasIWorkAuthorName;
+- (BOOL)hasApplicationBadgeCount;
 - (id)iCloudDocumentPreferenceKeyForKvsDocumentKey:(id)arg1 isMatchingKey:(BOOL *)arg2;
 - (id)iCloudPreferenceKeys;
 - (id)iCloudPreferencesForKvsDocumentKey:(id)arg1;
@@ -59,8 +64,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isICloudDocumentPreference:(id)arg1 validForKey:(id)arg2;
 - (BOOL)isReadableDocumentType:(id)arg1;
 - (BOOL)isValidIWorkAuthorColorIndex:(unsigned long long)arg1;
-- (double)maximumAspectRatioForPreviewImage;
-- (double)mimimumAspectRatioForPreviewImage;
 - (BOOL)openURL:(id)arg1;
 - (BOOL)openURL:(id)arg1 withDocumentRoot:(id)arg2;
 - (void)persistenceError:(id)arg1;
@@ -68,11 +71,11 @@ __attribute__((visibility("hidden")))
 - (void)registerICloudPreferences;
 - (void)registerSOSClassTypeMappings;
 - (void)setAppTextDefaults:(id)arg1 passphraseVerifier:(id)arg2;
+- (void)setApplicationBadgeCount:(unsigned long long)arg1 forCategory:(id)arg2;
 - (void)setICloudPreferences:(id)arg1 forKvsDocumentKey:(id)arg2;
 - (void)setIWorkAuthorColorIndex:(unsigned long long)arg1;
 - (void)setIWorkAuthorName:(id)arg1;
 - (void)setIWorkAuthorPrivateID:(id)arg1;
-- (BOOL)showChineseNamedPointSizes;
 - (void)ubiquitousKeyValueStoreDidChange:(id)arg1;
 - (id)validICloudPreferencesForPreferences:(id)arg1 invalidKeys:(id *)arg2;
 - (void)wakeUpDownloadManager;

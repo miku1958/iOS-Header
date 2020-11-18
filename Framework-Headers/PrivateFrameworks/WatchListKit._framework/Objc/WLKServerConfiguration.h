@@ -14,7 +14,6 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSOperationQueue *_fetchQueue;
     NSOperationQueue *_operationQueue;
-    WLKServerConfigurationResponse *_response;
     NSArray *_orderedChannels;
     NSDictionary *_channelsByID;
     long long _vppaStatus;
@@ -27,6 +26,7 @@
     BOOL _isFetching;
     CDUnknownBlockType _fetchCompletionHandler;
     NSDictionary *_requiredRequestKeyValuePairsDictionary;
+    WLKServerConfigurationResponse *_response;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *channels;
@@ -37,6 +37,7 @@
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded; // @synthesize loaded=_loaded;
 @property (readonly, copy, nonatomic) NSArray *orderedChannels;
 @property (strong, nonatomic) NSDictionary *requiredRequestKeyValuePairsDictionary; // @synthesize requiredRequestKeyValuePairsDictionary=_requiredRequestKeyValuePairsDictionary;
+@property (readonly, nonatomic) WLKServerConfigurationResponse *response; // @synthesize response=_response;
 @property (readonly, copy, nonatomic) NSDictionary *serverRoutesDictionary;
 @property (readonly, nonatomic) long long vppaStatus;
 

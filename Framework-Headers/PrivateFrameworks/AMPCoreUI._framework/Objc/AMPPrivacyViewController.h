@@ -6,23 +6,11 @@
 
 #import <UIKit/UIAlertController.h>
 
-@class NSString, NSURL;
-@protocol AMPPrivacyViewControllerDelegate;
-
 @interface AMPPrivacyViewController : UIAlertController
 {
-    id<AMPPrivacyViewControllerDelegate> _acknowledgementDelegate;
-    NSString *_identifier;
-    NSURL *_url;
 }
 
-@property (weak, nonatomic) id<AMPPrivacyViewControllerDelegate> acknowledgementDelegate; // @synthesize acknowledgementDelegate=_acknowledgementDelegate;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
-
-+ (id)privacyControllerWithIdentifier:(id)arg1 URL:(id)arg2;
-- (void).cxx_destruct;
-- (void)_finishWithResult:(unsigned long long)arg1;
++ (id)privacyControllerWithIdentifier:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
 
 @end
 

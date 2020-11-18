@@ -18,7 +18,11 @@
 @property (strong, nonatomic) STUsageSummaryView *summaryView; // @synthesize summaryView=_summaryView;
 
 - (void).cxx_destruct;
+- (void)_layoutDidChangeFrom:(BOOL)arg1 to:(BOOL)arg2;
+- (void)_numberOfLinesDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)dealloc;
 - (id)initWithUsageReport:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end
 

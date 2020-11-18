@@ -11,6 +11,7 @@
 }
 
 + (long long)bradycardiaThresholdHeartRate;
++ (void)deleteAtrialFibrillationDetectionLastAnalyzedSampleDate;
 + (id)heartRateSettingsURL;
 + (BOOL)isBackgroundHeartRateEnabled;
 + (BOOL)isBradycardiaDetectionEnabled;

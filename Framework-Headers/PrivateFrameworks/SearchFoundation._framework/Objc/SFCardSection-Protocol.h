@@ -7,7 +7,7 @@
 #import <SearchFoundation/NSObject-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, SFCard, SFColor;
+@class NSArray, NSString, SFCard, SFColor, SFUserReportRequest;
 
 @protocol SFCardSection <NSSecureCoding, NSObject>
 
@@ -26,6 +26,7 @@
 @property (copy, nonatomic) NSString *resultIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 @end
 

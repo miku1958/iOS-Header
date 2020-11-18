@@ -40,6 +40,7 @@
 + (id)deviceIsSleepingStream;
 + (id)displayIsBacklit;
 + (id)displayOrientationStream;
++ (id)doNotDisturbStream;
 + (id)glanceLaunchStream;
 + (id)homeKitAccessoryControlStream;
 + (id)homeKitAppViewStream;
@@ -52,6 +53,7 @@
 + (id)microLocationVisitStream;
 + (id)motionStream;
 + (id)nextCalendarEventStream;
++ (id)nextEventForTopOffProtectionStream;
 + (id)nextSleepEventStream;
 + (id)notificationUsageStream;
 + (id)nowPlayingStream;

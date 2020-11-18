@@ -7,33 +7,41 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSMapTable;
+@protocol OS_dispatch_queue;
 
 @interface WBSCreditCardDataController : NSObject
 {
     NSMapTable *_creditCardDataKeychainReferences;
+    NSObject<OS_dispatch_queue> *_internalQueue;
 }
 
 @property (readonly, nonatomic) NSArray *creditCardData;
 
 + (BOOL)hasCreditCardData;
 - (void).cxx_destruct;
+- (id)_creditCardData;
 - (id)_neverSavedCreditCardSuffixFromCard:(id)arg1;
 - (id)_neverSavedCreditCardSuffixFromCardNumber:(id)arg1;
 - (void)_removeNeverSaveCreditCardData:(id)arg1;
+- (void)_sortCreditCardDataArray:(id)arg1;
 - (id)_uniqueCardNameForCardName:(id)arg1;
 - (void)clearCreditCardData;
 - (void)creditCardDataDidChange;
 - (id)defaultNameForCardOfType:(unsigned long long)arg1 cardholderName:(id)arg2;
 - (id)existingCardWithNumber:(id)arg1;
+- (void)getCreditCardDataToFill:(id)arg1 externalizedContext:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getCreditCardDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)invalidateCreditCardData;
 - (BOOL)isCreditCardDataSaved:(id)arg1;
+- (void)markCreditCardDataAsMostRecentlyUsed:(id)arg1;
 - (void)neverSaveCreditCardData:(id)arg1;
 - (void)removeCreditCardData:(id)arg1;
 - (void)replaceCreditCardData:(id)arg1 withCard:(id)arg2;
 - (id)savableCreditCardDataInForm:(id)arg1;
 - (void)saveCreditCardData:(id)arg1;
 - (void)saveCreditCardDataIfAllowed:(id)arg1;
+- (void)savePendingChangesBeforeTermination;
 - (BOOL)shouldAddCardWithNumber:(id)arg1;
 - (BOOL)shouldNeverSaveCardWithNumber:(id)arg1;
 

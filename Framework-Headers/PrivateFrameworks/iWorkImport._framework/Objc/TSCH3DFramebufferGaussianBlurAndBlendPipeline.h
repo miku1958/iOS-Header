@@ -6,17 +6,17 @@
 
 #import <iWorkImport/TSCH3DFramebufferGaussianBlurPipeline.h>
 
-@class TSCH3DGLFramebuffer;
+@class TSCH3DFramebuffer;
 
 __attribute__((visibility("hidden")))
 @interface TSCH3DFramebufferGaussianBlurAndBlendPipeline : TSCH3DFramebufferGaussianBlurPipeline
 {
     float mBlendFactor;
-    TSCH3DGLFramebuffer *mBlendTexture;
+    TSCH3DFramebuffer *mBlendTexture;
 }
 
 @property (nonatomic) float blendFactor; // @synthesize blendFactor=mBlendFactor;
-@property (strong, nonatomic) TSCH3DGLFramebuffer *blendTexture; // @synthesize blendTexture=mBlendTexture;
+@property (strong, nonatomic) TSCH3DFramebuffer *blendTexture; // @synthesize blendTexture=mBlendTexture;
 
 + (id)effectsArray;
 - (void)dealloc;

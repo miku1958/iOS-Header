@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 
 - (void)_attachTimerSourceToTimebase;
 - (void)_effectiveRateChanged;
-- (void)_finishInitialization;
+- (void)_finishInitializationWithTimerEventHandler:(CDUnknownBlockType)arg1;
 - (void)_handleTimeDiscontinuity;
 - (void)_reallyInvalidate;
 - (void)_removeTimebaseFromTimerSource;
@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (void)_startObservingTimebaseNotifications;
 - (void)_stopObservingTimebaseNotifications;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithTimebase:(struct OpaqueCMTimebase *)arg1 queue:(id)arg2;
 - (void)invalidate;
 

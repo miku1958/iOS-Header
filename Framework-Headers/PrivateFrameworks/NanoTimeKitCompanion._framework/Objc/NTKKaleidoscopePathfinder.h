@@ -19,17 +19,21 @@
     int _pathLength;
     MISSING_TYPE **_dominanceGrid;
     MISSING_TYPE **_path;
+    float _startRotation;
 }
 
 @property (readonly, nonatomic) int cellGridHeight; // @synthesize cellGridHeight=_cellGridHeight;
 @property (readonly, nonatomic) int cellGridWidth; // @synthesize cellGridWidth=_cellGridWidth;
 @property (readonly, nonatomic) int pathLength; // @synthesize pathLength=_pathLength;
+@property (readonly, nonatomic) float startRotation; // @synthesize startRotation=_startRotation;
 
 + (id)pathfinderFromDirectory:(id)arg1;
 + (id)pathfinderFromFile:(id)arg1;
 + (id)pathfinderWithImage:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)adjustPathStart: /* Error: Ran out of types for this method. */;
+- (void)adjustRotationStart:(float)arg1;
+- (void)adjustSampleRadius:(float)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

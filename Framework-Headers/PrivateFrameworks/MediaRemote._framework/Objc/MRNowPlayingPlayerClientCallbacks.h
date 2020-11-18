@@ -26,6 +26,10 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _videoThumbnailsCallback;
     CDUnknownBlockType _audioAmplitudeSamplesCallback;
     NSMutableDictionary *_commandHandlerBlocks;
+    MSVMultiCallback *_createItemToken;
+    MSVMultiCallback *_metadataToken;
+    MSVMultiCallback *_languageToken;
+    MSVMultiCallback *_artworkToken;
     _MRNowPlayingPlayerPathProtobuf *_playerPath;
 }
 
@@ -50,11 +54,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_onQueue_capabilities;
 - (void)addCommandHandlerBlock:(CDUnknownBlockType)arg1 forKey:(id)arg2;
 - (id)initWithPlayerPath:(id)arg1 queue:(id)arg2;
-- (void)registerCallbacks;
 - (void)registerNowPlayingInfoArtworkAssetCallback:(id)arg1;
 - (void)registerNowPlayingInfoAssetCallbacks:(id)arg1;
+- (void)registerNowPlayingInfoBackedPlaybackQueueDataSourceCallbacks;
 - (void)registerNowPlayingInfoCallbacks:(id)arg1;
-- (void)registerNowPlayingInfoLanguageOptionsCallback:(id)arg1;
 - (void)removeCommandHandlerBlockForKey:(id)arg1;
 
 @end

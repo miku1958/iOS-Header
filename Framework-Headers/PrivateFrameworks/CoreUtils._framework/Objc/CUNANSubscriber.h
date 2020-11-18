@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUNANSubscriber : NSObject
@@ -14,6 +14,10 @@
     CDUnknownBlockType _activateCompletion;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } _mutex;
     struct LogCategory *_ucat;
     unsigned int _changeFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -27,6 +31,7 @@
 }
 
 @property (nonatomic) unsigned int changeFlags; // @synthesize changeFlags=_changeFlags;
+@property (readonly, copy) NSArray *discoveredEndpoints;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType endpointChangedHandler; // @synthesize endpointChangedHandler=_endpointChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType endpointFoundHandler; // @synthesize endpointFoundHandler=_endpointFoundHandler;

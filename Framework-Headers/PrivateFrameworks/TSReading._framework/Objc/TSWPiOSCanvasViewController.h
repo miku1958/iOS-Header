@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) TSWPSwipeGestureRecognizer *textLeftSwipeGestureRecognizer; // @synthesize textLeftSwipeGestureRecognizer=_leftSwipeGestureRecognizer;
 @property (readonly, nonatomic) TSWPSwipeGestureRecognizer *textRightSwipeGestureRecognizer; // @synthesize textRightSwipeGestureRecognizer=_rightSwipeGestureRecognizer;
 
+- (void)_clearSelectedRange;
 - (id)_dragItemsForInteraction:(id)arg1 session:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (id)actionForHyperlink:(id)arg1 inRep:(id)arg2 gesture:(id)arg3;
 - (void)addSwipeGestureRecognizers;

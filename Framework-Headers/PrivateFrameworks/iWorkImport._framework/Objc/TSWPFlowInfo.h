@@ -45,7 +45,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
 @property (readonly, nonatomic) BOOL textIsLinked;
-@property (readonly, nonatomic) BOOL textIsVertical;
 @property (strong, nonatomic) TSWPStorage *textStorage; // @synthesize textStorage=_textStorage;
 @property (strong, nonatomic) NSArray *textboxes; // @synthesize textboxes=_textboxes;
 @property (readonly, nonatomic) TSUColor *userInterfaceFillColor;
@@ -82,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchiver:(id)arg1;
 - (void)saveWithOnlyLinkedTextBoxes:(id)arg1 archiver:(id)arg2;
 - (void)setPrimitiveGeometry:(id)arg1;
+- (BOOL)textIsVerticalAtCharIndex:(unsigned long long)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

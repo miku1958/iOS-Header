@@ -22,6 +22,7 @@
 - (void)_updateCloudKitStateWithDictionary:(id)arg1;
 - (void)broadcastCloudKitState;
 - (void)broadcastCloudKitStateAfterClearingErrors;
+- (void)clearAnalyticDefaultsAndLocalSyncState;
 - (void)clearChatZoneSyncToken;
 - (void)clearDataFromCloudKit;
 - (void)clearLocalSyncState;
@@ -81,6 +82,8 @@
 - (void)toggleiCloudBackupsIfNeeded;
 - (void)tryToAutoCollectLogsWithErrorString:(id)arg1 sendLogsTo:(id)arg2;
 - (void)tryToDisableAllDevices;
+- (void)updateAttachmentFileSizes;
+- (void)uploadDailyAnalyticstoCloudKit;
 - (void)writeAttachments;
 - (void)writeCloudKitSyncCounts:(id)arg1;
 - (void)writeDirtyChats;

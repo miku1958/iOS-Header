@@ -17,13 +17,12 @@
     MISSING_TYPE *animation;
     MISSING_TYPE *delegate;
     MISSING_TYPE *disabledScrollViews;
-    MISSING_TYPE *isDragging;
 }
 
 @property (nonatomic, weak) id<CNKFaceTimeInCallControlsDragControllerDelegate> delegate; // @synthesize delegate;
-@property (nonatomic) BOOL isDragging; // @synthesize isDragging;
+@property (nonatomic, readonly) BOOL isDragging;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)handlePanGestureRecognizer:(id)arg1;
 - (id)init;
 - (id)initInCallControlsView:(id)arg1 constraintsController:(id)arg2;

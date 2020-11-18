@@ -36,6 +36,7 @@
     NSArray *_moreInfoItems;
     NSSet *_automaticExpressModes;
     NSArray *_allowedPaymentNetworks;
+    NSSet *_requiredTransitNetworkIdentifiers;
 }
 
 @property (readonly, copy, nonatomic) NSArray *allCredentials;
@@ -55,6 +56,7 @@
 @property (readonly, nonatomic) PKPaymentProvisioningResponse *provisioningResponse; // @synthesize provisioningResponse=_provisioningResponse;
 @property (readonly, copy, nonatomic) NSArray *purchaseCredentials; // @synthesize purchaseCredentials=_purchaseCredentials;
 @property (copy, nonatomic) NSString *referrerIdentifier; // @synthesize referrerIdentifier=_referrerIdentifier;
+@property (strong, nonatomic) NSSet *requiredTransitNetworkIdentifiers; // @synthesize requiredTransitNetworkIdentifiers=_requiredTransitNetworkIdentifiers;
 @property (readonly, nonatomic) PKPaymentRequirementsResponse *requirementsResponse; // @synthesize requirementsResponse=_requirementsResponse;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
@@ -68,6 +70,7 @@
 - (BOOL)_credentialIsValidForSetupConfiguration:(id)arg1;
 - (long long)_defaultResetState;
 - (id)_displayableErrorOverrideForUnderlyingError:(id)arg1;
+- (id)_doesDisplayableErrorConstitutePreflightFailure:(id)arg1;
 - (void)_downloadMoreInfoItemURLs:(id)arg1 withMetadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_downloadPassForPaymentCredential:(id)arg1;
 - (void)_downloadRemoteAssetsForPaymentPass:(id)arg1 paymentCredential:(id)arg2;
@@ -81,14 +84,12 @@
 - (void)_provisioningNonceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queryEligibilityForCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queryRequirementsForCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_registerWhileRetrievingRemoteCredentials:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_requestEligibility:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_requestProvisioning:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_requestRequirements:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_setLocalizedProgressDescription:(id)arg1;
 - (void)_setState:(long long)arg1 notify:(BOOL)arg2;
 - (void)_updateLocalizedProgressAndInvalidateTimer;
-- (void)_validatePreconditionsWhileRetrievingRemoteCredentials:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)acceptTerms;
 - (void)addDelegate:(id)arg1;
 - (void)associateCredentials:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -106,6 +107,7 @@
 - (id)passesWithPaymentMethodType:(unsigned long long)arg1;
 - (void)paymentWebService:(id)arg1 didCompleteTSMConnectionForTaskID:(unsigned long long)arg2;
 - (void)paymentWebService:(id)arg1 didQueueTSMConnectionForTaskID:(unsigned long long)arg2;
+- (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)provisioningUserInterfaceIsVisible;
 - (void)registerDevice:(CDUnknownBlockType)arg1;
 - (void)removeDelegate:(id)arg1;
@@ -114,7 +116,6 @@
 - (void)requestProvisioning:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestProvisioningMethodMetadataForProduct:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestPurchasesForProduct:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)requestRemoteCredentials:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestRequirements:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)reset;
 - (void)resetForNewProvisioning;
@@ -123,6 +124,7 @@
 - (void)resolveRequirementsUsingAlreadyProvisionedRemoteCredential:(id)arg1;
 - (void)resolveRequirementsUsingProduct:(id)arg1;
 - (void)resolveRequirementsUsingProvisioningMethodMetadata:(id)arg1;
+- (void)retrieveAllAvaialbleCredentials:(CDUnknownBlockType)arg1;
 - (void)retrieveRemoteCredentials:(CDUnknownBlockType)arg1;
 - (void)setupProductForProvisioning:(id)arg1 includePurchases:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)updatePaymentSetupProductModelWithCompletionHandler:(CDUnknownBlockType)arg1;

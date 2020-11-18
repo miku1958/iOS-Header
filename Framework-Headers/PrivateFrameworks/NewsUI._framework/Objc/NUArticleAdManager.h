@@ -11,19 +11,22 @@
 #import <NewsUI/SXAdControllerFactory-Protocol.h>
 #import <NewsUI/SXAdProvider-Protocol.h>
 
-@class FCArticle, NSString;
-@protocol NUAdLayoutOptionsFactory, NUAdMetadataFactory, NUAdProvider, NUAdSettings, NUDevice;
+@class FCArticle, FCIssue, NSString;
+@protocol NUAdContextProvider, NUAdControllerFactory, NUAdLayoutOptionsFactory, NUAdMetadataFactory, NUAdProvider, NUDevice;
 
 @interface NUArticleAdManager : NSObject <NUAdContextProvider, SXAdControllerDelegate, SXAdProvider, SXAdControllerFactory>
 {
     FCArticle *_article;
+    FCIssue *_issue;
     id<NUAdProvider> _adProvider;
+    id<NUAdControllerFactory> _adControllerFactory;
     id<NUAdMetadataFactory> _adMetadataFactory;
-    id<NUAdSettings> _settings;
     id<NUDevice> _device;
     id<NUAdLayoutOptionsFactory> _layoutOptionsFactory;
+    id<NUAdContextProvider> _subscriptionAdContextProvider;
 }
 
+@property (readonly, nonatomic) id<NUAdControllerFactory> adControllerFactory; // @synthesize adControllerFactory=_adControllerFactory;
 @property (readonly, nonatomic) id<NUAdMetadataFactory> adMetadataFactory; // @synthesize adMetadataFactory=_adMetadataFactory;
 @property (readonly, nonatomic) id<NUAdProvider> adProvider; // @synthesize adProvider=_adProvider;
 @property (readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
@@ -31,8 +34,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<NUDevice> device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) FCIssue *issue; // @synthesize issue=_issue;
 @property (readonly, nonatomic) id<NUAdLayoutOptionsFactory> layoutOptionsFactory; // @synthesize layoutOptionsFactory=_layoutOptionsFactory;
-@property (readonly, nonatomic) id<NUAdSettings> settings; // @synthesize settings=_settings;
+@property (readonly, nonatomic) id<NUAdContextProvider> subscriptionAdContextProvider; // @synthesize subscriptionAdContextProvider=_subscriptionAdContextProvider;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -43,7 +47,7 @@
 - (id)adControllerForDocument:(id)arg1 viewport:(id)arg2;
 - (CDUnknownBlockType)adForRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)contextProvidersForKeyPath:(id)arg1;
-- (id)initWithArticle:(id)arg1 adProvider:(id)arg2 adMetadataFactory:(id)arg3 settings:(id)arg4 device:(id)arg5 layoutOptionsFactory:(id)arg6;
+- (id)initWithArticle:(id)arg1 issue:(id)arg2 adProvider:(id)arg3 adControllerFactory:(id)arg4 adMetadataFactory:(id)arg5 device:(id)arg6 layoutOptionsFactory:(id)arg7 subscriptionAdContextProvider:(id)arg8;
 
 @end
 

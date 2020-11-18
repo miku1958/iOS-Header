@@ -110,6 +110,7 @@
 - (void)setSublayers:(id)arg1;
 - (void)startRedirectingVideoToLayer:(id)arg1 forMode:(long long)arg2;
 - (void)stopRedirectingVideoToLayer:(id)arg1;
+- (id)videoPerformanceMetrics;
 
 @end
 

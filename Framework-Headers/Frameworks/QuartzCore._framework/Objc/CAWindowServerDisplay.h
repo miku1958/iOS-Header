@@ -46,6 +46,7 @@
 @property long long tag;
 @property (readonly) NSString *uniqueId;
 @property BOOL usesPreferredModeRefreshRate;
+@property (readonly) CDStruct_b2fbf00d whitepoint;
 
 - (id)_initWithCADisplayServer:(struct Server *)arg1;
 - (void)addClone:(id)arg1;

@@ -9,7 +9,7 @@
 @protocol TSCH3DLightingPackageData
 - (Color_1703f521)ambientColorAtIndex:(unsigned long long)arg1;
 - (struct Vector3)attenuationAtIndex:(unsigned long long)arg1;
-- (int)coordinateSpaceAtIndex:(unsigned long long)arg1;
+- (long long)coordinateSpaceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;
 - (float)cutOffAngleAtIndex:(unsigned long long)arg1;
 - (Color_1703f521)diffuseColorAtIndex:(unsigned long long)arg1;
@@ -21,6 +21,6 @@
 - (NSString *)packageName;
 - (struct Vector3)positionAtIndex:(unsigned long long)arg1;
 - (Color_1703f521)specularColorAtIndex:(unsigned long long)arg1;
-- (int)typeAtIndex:(unsigned long long)arg1;
+- (long long)typeAtIndex:(unsigned long long)arg1;
 @end
 

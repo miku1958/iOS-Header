@@ -11,15 +11,20 @@
 
 @interface AFMediaRemoteDeviceInfo : NSObject
 {
+    BOOL _lastFetchSucceeded;
     NSString *_routeIdentifier;
     NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
+@property (nonatomic) BOOL lastFetchSucceeded; // @synthesize lastFetchSucceeded=_lastFetchSucceeded;
 @property (copy, nonatomic) NSString *routeIdentifier; // @synthesize routeIdentifier=_routeIdentifier;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 
 + (id)currentDevice;
 - (void).cxx_destruct;
+- (void)_activeDeviceInfoChanged:(id)arg1;
+- (void)_updateRouteIdentifierWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getRouteIdentifierWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

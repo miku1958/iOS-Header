@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *componentIdentifier; // @synthesize componentIdentifier=_componentIdentifier;
 @property (nonatomic) double relativePageOffset; // @synthesize relativePageOffset=_relativePageOffset;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

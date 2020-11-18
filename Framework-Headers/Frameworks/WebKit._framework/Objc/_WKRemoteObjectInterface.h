@@ -21,8 +21,8 @@
 + (id)remoteObjectInterfaceWithProtocol:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (const Vector_cee2251c *)_allowedArgumentClassesForReplyBlockOfSelector:(SEL)arg1;
-- (const Vector_cee2251c *)_allowedArgumentClassesForSelector:(SEL)arg1;
+- (const Vector_e0e169c4 *)_allowedArgumentClassesForReplyBlockOfSelector:(SEL)arg1;
+- (const Vector_e0e169c4 *)_allowedArgumentClassesForSelector:(SEL)arg1;
 - (id)_methodSignatureForReplyBlockOfSelector:(SEL)arg1;
 - (id)_methodSignatureForSelector:(SEL)arg1;
 - (id)classesForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2;

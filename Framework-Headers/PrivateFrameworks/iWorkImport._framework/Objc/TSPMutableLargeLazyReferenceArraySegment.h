@@ -13,11 +13,11 @@ __attribute__((visibility("hidden")))
 
 - (void)addReferredObject:(id)arg1;
 - (unsigned long long)estimatedByteSizeOfElement:(id)arg1;
-- (void)loadFromMessage:(const struct LargeObjectArraySegment *)arg1 unarchiver:(id)arg2;
+- (void)loadFromMessage:(const struct LargeLazyObjectArraySegment *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)referredObjectAtIndex:(unsigned long long)arg1;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToMessage:(struct LargeObjectArraySegment *)arg1 archiver:(id)arg2;
+- (void)saveToMessage:(struct LargeLazyObjectArraySegment *)arg1 archiver:(id)arg2;
 
 @end
 

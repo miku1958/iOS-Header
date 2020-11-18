@@ -8,12 +8,13 @@
 
 #import <iWorkImport/KNCanvasDelegate-Protocol.h>
 #import <iWorkImport/TSDConnectedInfoReplacing-Protocol.h>
+#import <iWorkImport/TSDLiveTexturedRectangleSource-Protocol.h>
 
 @class KNAnimatedSlideModel, KNPlaybackSession, KNSlide, KNSlideNode, NSArray, NSIndexSet, NSLock, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, TSDCanvas;
 @protocol TSDCanvasProxyDelegate;
 
 __attribute__((visibility("hidden")))
-@interface KNAnimatedSlideView : NSObject <KNCanvasDelegate, TSDConnectedInfoReplacing>
+@interface KNAnimatedSlideView : NSObject <KNCanvasDelegate, TSDConnectedInfoReplacing, TSDLiveTexturedRectangleSource>
 {
     unsigned long long _animationsActive;
     unsigned long long _animationsStarted;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_textureDescriptionAndSetForRepMap;
     double _transitionStartTime;
     NSMapTable *_eventToSlideTextureMap;
+    NSMutableSet *_movieControllers;
     BOOL _isSlideBuildable;
     BOOL _shouldStopAnimations;
     BOOL _isInDelayBeforeActiveBuild;
@@ -77,7 +79,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isInDelayBeforeActiveTransition; // @synthesize isInDelayBeforeActiveTransition=_isInDelayBeforeActiveTransition;
 @property (readonly, nonatomic) BOOL isNonAmbientAnimationActive;
 @property (readonly, nonatomic) BOOL isNonAmbientAnimationAnimating;
+@property (readonly) BOOL isPlayingMovies;
 @property (readonly, nonatomic) KNAnimatedSlideModel *model; // @synthesize model=_model;
+@property (readonly) NSSet *movieControllers;
 @property (readonly, nonatomic) NSSet *movieRenderers;
 @property (readonly, nonatomic) KNAnimatedSlideView *nextASV;
 @property (nonatomic) BOOL playsAutomaticTransitions; // @synthesize playsAutomaticTransitions=_playsAutomaticTransitions;
@@ -95,10 +99,13 @@ __attribute__((visibility("hidden")))
 + (void)registerUserDefaults;
 - (void).cxx_destruct;
 - (void)addActiveAnimatedBuild:(id)arg1;
+- (struct CGRect)boundingRectOnCanvasForInfo:(id)arg1;
 - (void)buildHasFinishedAnimating:(id)arg1;
 - (void)clearActiveAnimatedBuilds;
 - (void)dealloc;
 - (id)documentRoot;
+- (void)drawToMetalTextureWithContext:(id)arg1;
+- (void)evictInactiveRenderers;
 - (void)generateTextures;
 - (BOOL)hasTransitionAtEventIndex:(long long)arg1;
 - (id)infoToConnectToForConnectionLineConnectedToInfo:(id)arg1;
@@ -112,6 +119,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isInfoAKeynoteMasterObject:(id)arg1;
 - (BOOL)isPrintingCanvas;
 - (BOOL)isRenderingForKPF;
+- (id)movieControllerForInfo:(id)arg1;
 - (id)newSlideTextureForEvent:(unsigned long long)arg1;
 - (id)nonCachedTextureSetForRep:(id)arg1 description:(id)arg2 shouldRender:(BOOL)arg3;
 - (void)p_addAmbientBuildRenderer:(id)arg1;
@@ -128,7 +136,6 @@ __attribute__((visibility("hidden")))
 - (void)p_evictCacheAmbientBuildTexturesForTransition:(id)arg1;
 - (id)p_initializeTextureSetForRep:(id)arg1 info:(id)arg2 eventIndex:(unsigned long long)arg3 ignoreBuildVisibility:(BOOL)arg4 isRenderingToContext:(BOOL)arg5;
 - (void)p_loadPerformanceAnalysisFrameWork;
-- (void)p_makeMetalLayerVisible;
 - (double)p_minimumDelay;
 - (void)p_notifyAmbientBuildEndWithObject:(id)arg1;
 - (void)p_notifyAmbientBuildStartWithObject:(id)arg1;
@@ -152,6 +159,7 @@ __attribute__((visibility("hidden")))
 - (void)pauseAnimations;
 - (BOOL)playAutomaticEvents;
 - (void)prepareAnimations;
+- (void)prepareAsLiveTextureSource;
 - (void)registerForAmbientBuildEndCallback:(SEL)arg1 target:(id)arg2;
 - (void)registerForAmbientBuildStartCallback:(SEL)arg1 target:(id)arg2;
 - (void)registerForEventAnimationActiveCallback:(SEL)arg1 target:(id)arg2;
@@ -168,6 +176,7 @@ __attribute__((visibility("hidden")))
 - (void)resumeAnimationsIfPaused;
 - (void)serializeTextures;
 - (void)setTexture:(id)arg1 forRep:(id)arg2 forDescription:(id)arg3;
+- (BOOL)shouldDrawToMetalTextureWithContext:(id)arg1;
 - (BOOL)shouldShowInstructionalText;
 - (BOOL)shouldSuppressBackgrounds;
 - (void)stopAnimations;

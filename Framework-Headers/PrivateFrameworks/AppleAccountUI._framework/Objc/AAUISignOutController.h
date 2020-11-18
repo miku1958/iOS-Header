@@ -29,11 +29,14 @@
 
 - (void).cxx_destruct;
 - (struct NSDictionary *)_actionableDataclassOptions;
+- (id)_appendToSignoutMessage:(id)arg1 appendedString:(id)arg2;
 - (id)_dataclassViewController;
 - (void)_delegate_signOutControllerDidCancel;
 - (void)_delegate_signOutControllerDidCompleteWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (BOOL)_hasHealthData;
 - (BOOL)_hasPaymentPasses;
+- (BOOL)_hasiCloudDriveData;
+- (BOOL)_hasiCloudPhotosData;
 - (void)_mainQueue_continueSignOutWithDataclassActions:(struct NSDictionary *)arg1;
 - (void)_mainQueue_presentSpinnerPageWithDataclassActions:(struct NSDictionary *)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_mainQueue_promptForConfirmationInViewController:(id)arg1 simplified:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;

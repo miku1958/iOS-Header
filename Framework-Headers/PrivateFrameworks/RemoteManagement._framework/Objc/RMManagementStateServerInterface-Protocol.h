@@ -9,6 +9,7 @@
 @class NSDateInterval, NSString, NSURL;
 
 @protocol RMManagementStateServerInterface <NSObject>
+- (void)clearRestrictionsPasscodeWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)deleteAllWebApplicationHistory:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteWebHistoryDuringInterval:(NSDateInterval *)arg1 webApplication:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)deleteWebHistoryForDomain:(NSString *)arg1 webApplication:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;

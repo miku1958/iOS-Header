@@ -84,6 +84,7 @@
 - (id)shortTypeDescription;
 - (BOOL)supportsNotification;
 - (BOOL)supportsRead;
+- (BOOL)supportsWrite;
 - (void)unconfigure;
 - (void)unconfigureForServerIdentifier:(id)arg1 linkType:(long long)arg2;
 - (void)updateLastKnownValue;

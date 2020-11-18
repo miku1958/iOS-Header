@@ -6,23 +6,25 @@
 
 #import <UIKit/UIView.h>
 
-@class OBPrivacyLinkController, PKContinuousButton, PKPaymentSetupFooterView;
+@class OBPrivacyLinkController, PKContinuousButton, PKPaymentSetupFooterView, UILabel;
 
 @interface PKPaymentSetupDockView : UIView
 {
-    PKContinuousButton *_continousButton;
+    PKContinuousButton *_continuousButton;
     PKPaymentSetupFooterView *_footerView;
     BOOL _isBuddyiPad;
-    BOOL _requiresAdditionalContinousButtonPadding;
+    BOOL _requiresAdditionalContinuousButtonPadding;
     long long _context;
     OBPrivacyLinkController *_privacyLink;
+    UILabel *_buttonExplanationLabel;
 }
 
+@property (strong, nonatomic) UILabel *buttonExplanationLabel; // @synthesize buttonExplanationLabel=_buttonExplanationLabel;
 @property (readonly, nonatomic) long long context; // @synthesize context=_context;
-@property (strong, nonatomic) PKContinuousButton *continousButton;
+@property (strong, nonatomic) PKContinuousButton *continuousButton;
 @property (strong, nonatomic) PKPaymentSetupFooterView *footerView;
 @property (strong, nonatomic) OBPrivacyLinkController *privacyLink; // @synthesize privacyLink=_privacyLink;
-@property (nonatomic) BOOL requiresAdditionalContinousButtonPadding; // @synthesize requiresAdditionalContinousButtonPadding=_requiresAdditionalContinousButtonPadding;
+@property (nonatomic) BOOL requiresAdditionalContinuousButtonPadding; // @synthesize requiresAdditionalContinuousButtonPadding=_requiresAdditionalContinuousButtonPadding;
 
 - (void).cxx_destruct;
 - (struct CGSize)_sizeForButton:(id)arg1 constrainedToSize:(struct CGSize)arg2;

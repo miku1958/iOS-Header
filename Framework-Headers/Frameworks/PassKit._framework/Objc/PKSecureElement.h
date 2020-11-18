@@ -65,8 +65,8 @@
 - (unsigned long long)ownershipStateForUserUUID:(id)arg1;
 - (void)pairingStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)peerPaymentEnrollmentDataWithAlternateDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)queueConnectionToSeverForAppletIdentifiers:(id)arg1;
-- (BOOL)queueConnectionToSeverWithPushTopic:(id)arg1;
+- (BOOL)queueConnectionToServerForAppletIdentifiers:(id)arg1;
+- (BOOL)queueConnectionToServerWithPushTopic:(id)arg1;
 - (void)registerObserver:(id)arg1;
 - (BOOL)setOwnerUserUUID:(id)arg1 keybagUUID:(id)arg2;
 - (BOOL)setRegistrationInformation:(id)arg1 primaryRegionTopic:(id)arg2;

@@ -5,15 +5,11 @@
 //
 
 #import <iWorkImport/NSObject-Protocol.h>
-#import <iWorkImport/TSKCOOperation-Protocol.h>
 
-@protocol TSKCOObjectCountConstraint;
-
-@protocol TSKCOObjectCountConstraint <NSObject, TSKCOOperation>
+@protocol TSKCOObjectCountConstraint <NSObject>
 
 @property (readonly, nonatomic) int objectCount;
 @property (readonly, nonatomic) int objectCounterSpace;
 
-- (id<TSKCOObjectCountConstraint>)operationWithNewObjectCount:(int)arg1;
 @end
 

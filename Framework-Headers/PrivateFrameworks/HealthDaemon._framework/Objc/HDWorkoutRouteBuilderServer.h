@@ -21,7 +21,6 @@
 @property (strong, nonatomic) HKWorkoutRoute *route; // @synthesize route=_route;
 @property (readonly) Class superclass;
 
-+ (id)serverEntitlements;
 + (id)taskIdentifier;
 - (void).cxx_destruct;
 - (void)_queue_finishRouteWithWorkout:(id)arg1 metadata:(id)arg2 completion:(CDUnknownBlockType)arg3;

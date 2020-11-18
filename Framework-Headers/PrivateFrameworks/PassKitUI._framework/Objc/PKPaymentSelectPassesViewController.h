@@ -28,8 +28,8 @@
 @property (copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
 
 - (void).cxx_destruct;
-- (void)_continousButtonPressed;
-- (void)_setContinousButtonEnabledState;
+- (void)_continuousButtonPressed;
+- (void)_setContinuousButtonEnabledState;
 - (void)_setNavigationBarEnabled:(BOOL)arg1;
 - (void)_setViewEnabledState:(BOOL)arg1;
 - (id)headerView;

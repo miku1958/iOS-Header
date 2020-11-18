@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     BOOL _hasBegunFirstNavigation;
     SFBrowserPersonaAnalyticsHelper *_cachedAnalyticsHelper;
     NSTimer *_redirectNotificationTimer;
+    BOOL _hostApplicationIsForeground;
     SFUserNotification *_userNotification;
     NSString *_hostApplicationCallbackURLScheme;
 }
@@ -53,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_recordHostAppIdAndURLForTapToRadar:(id)arg1;
 - (BOOL)_redirectToHostAppWithExpectedCallbackSchemeIfPossible:(id)arg1;
 - (BOOL)_redirectToHostAppWithNavigationResult:(id)arg1 options:(id)arg2;
+- (BOOL)_shouldReloadImmediatelyAfterPageLoadError;
 - (void)_updateRemoteSwipeGestureState;
 - (id)_webDataStoreRootURL;
 - (void)_willAppearInRemoteViewController;

@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, NTPBIssueData;
 
 @interface NTPBAlreadySubscriberSignIn : PBCodable <NSCopying>
 {
@@ -21,6 +21,7 @@
     NSString *_errorMessage;
     int _groupType;
     NSString *_iadQtoken;
+    NTPBIssueData *_issueData;
     int _paidSubscriptionConversionPointType;
     int _parentFeedType;
     NSString *_sectionId;
@@ -58,6 +59,7 @@
 @property (readonly, nonatomic) BOOL hasErrorMessage;
 @property (nonatomic) BOOL hasGroupType;
 @property (readonly, nonatomic) BOOL hasIadQtoken;
+@property (readonly, nonatomic) BOOL hasIssueData;
 @property (nonatomic) BOOL hasPaidSubscriptionConversionPointType;
 @property (nonatomic) BOOL hasParentFeedType;
 @property (readonly, nonatomic) BOOL hasSectionId;
@@ -66,6 +68,7 @@
 @property (readonly, nonatomic) BOOL hasSubscriptionPurchaseSessionId;
 @property (nonatomic) BOOL hasSuccessfulNewsTokenVerification;
 @property (strong, nonatomic) NSString *iadQtoken; // @synthesize iadQtoken=_iadQtoken;
+@property (strong, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
 @property (nonatomic) int paidSubscriptionConversionPointType; // @synthesize paidSubscriptionConversionPointType=_paidSubscriptionConversionPointType;
 @property (nonatomic) int parentFeedType; // @synthesize parentFeedType=_parentFeedType;
 @property (strong, nonatomic) NSString *sectionId; // @synthesize sectionId=_sectionId;

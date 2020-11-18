@@ -14,10 +14,13 @@
 + (id)serviceFacilityIdentifier;
 - (void)_handleButtonEventConsumePressMessage:(id)arg1;
 - (void)acquireAssertionOfType:(long long)arg1 forReason:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)disableRemoteStateDumpWithCompletion:(CDUnknownBlockType)arg1;
+- (void)enableRemoteStateDumpWithTimeout:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchHapticTypeForButtonKind:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchUnlockCredentialSetWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleMessage:(id)arg1 withType:(long long)arg2;
 - (void)requestPasscodeUnlockUIWithOptions:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)requestStateDump:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)resetToHomeScreenAnimated:(BOOL)arg1;
 - (void)setAlertsEnabled:(BOOL)arg1;
 - (void)setApplicationBundleIdentifier:(id)arg1 blockedForScreenTime:(BOOL)arg2;

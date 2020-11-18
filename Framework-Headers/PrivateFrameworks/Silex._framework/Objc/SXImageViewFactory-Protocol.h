@@ -6,9 +6,10 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXImageResource, SXImageView;
+@class SXImageResource, SXImageView, SXRepeatableImageView;
 
 @protocol SXImageViewFactory <NSObject>
 - (SXImageView *)imageViewForResource:(SXImageResource *)arg1;
+- (SXRepeatableImageView *)repeatableImageViewForResource:(SXImageResource *)arg1;
 @end
 

@@ -15,6 +15,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSURLRequestProperties : NSObject <NSCopying, NSMutableCopying>
 {
+    BOOL _disableLoadURLMetrics;
     BOOL _knownToBeTrusted;
     BOOL _shouldSetCookiesFromResponse;
     ACAccount *_account;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) id<AMSURLBagContract> bagContract; // @synthesize bagContract=_bagContract;
 @property (strong, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (nonatomic) long long dialogOptions; // @synthesize dialogOptions=_dialogOptions;
+@property (nonatomic) BOOL disableLoadURLMetrics; // @synthesize disableLoadURLMetrics=_disableLoadURLMetrics;
 @property (nonatomic) BOOL knownToBeTrusted; // @synthesize knownToBeTrusted=_knownToBeTrusted;
 @property (strong, nonatomic) NSString *logUUID; // @synthesize logUUID=_logUUID;
 @property (nonatomic) long long mescalType; // @synthesize mescalType=_mescalType;

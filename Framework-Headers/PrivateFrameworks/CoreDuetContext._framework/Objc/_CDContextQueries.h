@@ -121,6 +121,7 @@
 + (id)nextSunsetKey;
 + (id)nowPlayingBundleIdKey;
 + (id)nowPlayingCreationDateKey;
++ (id)nowPlayingOutputDeviceIDsKey;
 + (id)nowPlayingStatusKey;
 + (id)nowPlayingTrackKey;
 + (id)predicateForAudioOutputStatus:(BOOL)arg1;

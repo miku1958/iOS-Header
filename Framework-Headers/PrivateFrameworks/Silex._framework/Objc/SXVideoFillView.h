@@ -30,7 +30,7 @@
 - (void).cxx_destruct;
 - (struct CGRect)contentFrame;
 - (struct CGRect)fillFrameWithBoundingSize:(struct CGSize)arg1;
-- (id)initWithVideoFill:(id)arg1 documentController:(id)arg2 imageViewFactory:(id)arg3;
+- (id)initWithVideoFill:(id)arg1 DOMObjectProvider:(id)arg2 imageViewFactory:(id)arg3;
 - (void)layoutSubviews;
 - (void)pause;
 - (void)play;

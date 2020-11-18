@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFTextColumnsCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFUserReportRequest;
 
 @interface SFTextColumnsCardSection : SFCardSection <SFTextColumnsCardSection, NSSecureCoding, NSCopying>
 {
@@ -59,6 +59,7 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) unsigned long long titleWeight; // @synthesize titleWeight=_titleWeight;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

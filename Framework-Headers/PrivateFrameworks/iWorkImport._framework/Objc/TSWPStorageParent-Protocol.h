@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol TSWPStorageParent
+#import <iWorkImport/NSObject-Protocol.h>
+
+@protocol TSWPStorageParent <NSObject>
 
 @property (readonly, nonatomic) BOOL autoListRecognition;
 @property (readonly, nonatomic) BOOL autoListTermination;
@@ -14,8 +16,8 @@
 @property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
 @property (readonly, nonatomic) BOOL textIsLinked;
-@property (readonly, nonatomic) BOOL textIsVertical;
 
+- (BOOL)textIsVerticalAtCharIndex:(unsigned long long)arg1;
 
 @optional
 @end

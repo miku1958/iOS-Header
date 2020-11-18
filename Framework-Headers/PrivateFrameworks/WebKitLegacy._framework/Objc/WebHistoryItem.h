@@ -33,9 +33,7 @@
 - (struct CGPoint)_scrollPoint;
 - (void)_setScale:(float)arg1 isInitial:(BOOL)arg2;
 - (void)_setScrollPoint:(struct CGPoint)arg1;
-- (void)_setTransientProperty:(id)arg1 forKey:(id)arg2;
 - (void)_setViewportArguments:(id)arg1;
-- (id)_transientPropertyForKey:(id)arg1;
 - (id)_viewportArguments;
 - (void)_visitedWithTitle:(id)arg1;
 - (id)children;

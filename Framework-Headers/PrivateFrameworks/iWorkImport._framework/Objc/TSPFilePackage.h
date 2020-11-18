@@ -6,12 +6,13 @@
 
 #import <iWorkImport/TSPPackage.h>
 
-@class TSUZipArchive;
+@class TSUTemporaryDirectory, TSUZipArchive;
 
 __attribute__((visibility("hidden")))
 @interface TSPFilePackage : TSPPackage
 {
     TSUZipArchive *_componentZipArchive;
+    TSUTemporaryDirectory *_componentZipArchiveTemporaryDirectory;
 }
 
 + (BOOL)isValidOrEmptyPackageOrTangierEditingFormatAtURL:(id)arg1 hasNativeUTI:(BOOL)arg2;
@@ -23,7 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)zipArchiveURLFromPackageURL:(id)arg1;
 - (void).cxx_destruct;
 - (id)componentZipArchive;
-- (BOOL)didReloadZipArchive:(id)arg1 error:(id *)arg2;
+- (BOOL)didReloadZipArchive:(id)arg1 packageURL:(id)arg2 error:(id *)arg3;
 - (BOOL)hasDataAtRelativePath:(id)arg1;
 - (id)newDataStorageAtRelativePath:(id)arg1 decryptionInfo:(id)arg2 packageURL:(id)arg3 lastModificationDate:(out id *)arg4;
 - (id)newDocumentPropertiesWithURL:(id)arg1 zipProvider:(CDUnknownBlockType)arg2 error:(id *)arg3;

@@ -25,6 +25,7 @@
 
 + (id)criteriaDictionaryWithCriteria:(id)arg1;
 + (id)lastAttemptDateKeyForIdentifier:(id)arg1;
++ (id)lastCompleteDateKeyForIdentifier:(id)arg1;
 + (id)xpcActivityCopyCriteriaActivity:(id)arg1;
 + (long long)xpcActivityGetStateActivity:(id)arg1;
 + (void)xpcActivityRegisterIdentifier:(const char *)arg1 criteria:(id)arg2 handler:(CDUnknownBlockType)arg3;
@@ -33,6 +34,7 @@
 + (void)xpcActivityUnregisterIdentifier:(const char *)arg1;
 - (void).cxx_destruct;
 - (id)_lastAttemptDateForIdentifier:(id)arg1;
+- (id)_lastCompleteDateForIdentifier:(id)arg1;
 - (void)_registerActivityWithIdentifier:(id)arg1 criteria:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_registerRegistrant:(id)arg1;
 - (void)_runRegistrantWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -41,6 +43,7 @@
 - (BOOL)_takeSnapshotSinceDate:(id)arg1 description:(id)arg2 error:(id *)arg3;
 - (void)_unregisterActivityWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_updateLastAttemptDateForIdentifier:(id)arg1;
+- (void)_updateLastCompleteDateForIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithDefaultsManager:(id)arg1 diagnostics:(id)arg2;
 - (void)registerActivityWithIdentifier:(id)arg1 criteria:(id)arg2 handler:(CDUnknownBlockType)arg3;

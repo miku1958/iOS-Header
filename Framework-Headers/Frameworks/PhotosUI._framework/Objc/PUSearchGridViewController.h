@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)fullMomentsLevelSectionHeaderHighlightInset;
 - (id)newEmptyPlaceholderView;
 - (id)newGridLayout;
+- (long long)oneUpPresentationOrigin;
 - (BOOL)pu_handleSecondTabTap;
 - (void)searchGridDataSourceHasPendingChanges:(id)arg1;
 - (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;

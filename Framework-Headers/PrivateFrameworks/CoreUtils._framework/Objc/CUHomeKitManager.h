@@ -14,7 +14,7 @@
 #import <CoreUtils/HMMediaSystemDelegate-Protocol.h>
 #import <CoreUtils/HMUserDelegatePrivate-Protocol.h>
 
-@class HMAccessory, HMHomeManager, HMMediaSystem, HMMediaSystemRole, HMUser, NSDictionary, NSString, NSUUID;
+@class HMAccessory, HMHomeManager, HMMediaSystem, HMMediaSystemRole, HMUser, NSArray, NSDictionary, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface CUHomeKitManager : NSObject <HMAccessoryDelegatePrivate, HMHomeDelegate, HMHomeDelegatePrivate, HMHomeManagerDelegate, HMHomeManagerDelegatePrivate, HMMediaSystemDelegate, HMUserDelegatePrivate>
@@ -23,6 +23,7 @@
     HMHomeManager *_homeManager;
     BOOL _homeManagerDidUpdateHomes;
     struct NSMutableDictionary *_homes;
+    struct NSMutableDictionary *_resolvableAccessoriesMap;
     NSDictionary *_selfAccessoryAppData;
     BOOL _selfAccessoryEnabled;
     NSUUID *_selfAccessoryRoomID;
@@ -43,6 +44,8 @@
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
     CDUnknownBlockType _stateChangedHandler;
+    NSArray *_resolvableAccessories;
+    CDUnknownBlockType _resolvableAccessoriesChangedHandler;
     HMAccessory *_selfAccessory;
     CDUnknownBlockType _selfAccessoryAppDataChangedHandler;
     CDUnknownBlockType _selfAccessoryUpdatedHandler;
@@ -64,6 +67,8 @@
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (readonly, copy, nonatomic) NSArray *resolvableAccessories; // @synthesize resolvableAccessories=_resolvableAccessories;
+@property (copy, nonatomic) CDUnknownBlockType resolvableAccessoriesChangedHandler; // @synthesize resolvableAccessoriesChangedHandler=_resolvableAccessoriesChangedHandler;
 @property (readonly, nonatomic) HMAccessory *selfAccessory; // @synthesize selfAccessory=_selfAccessory;
 @property (readonly, copy, nonatomic) NSDictionary *selfAccessoryAppData; // @synthesize selfAccessoryAppData=_selfAccessoryAppData;
 @property (copy, nonatomic) CDUnknownBlockType selfAccessoryAppDataChangedHandler; // @synthesize selfAccessoryAppDataChangedHandler=_selfAccessoryAppDataChangedHandler;
@@ -96,6 +101,7 @@
 - (void)_invalidated;
 - (BOOL)_isOwnerOfHome:(id)arg1;
 - (id)_selfAccessoryMediaSystemUncached:(id *)arg1;
+- (void)_updateAccessories;
 - (void)_updateHomes;
 - (void)_updateSelfAccessoryIfNeeded;
 - (void)_updateSelfAccessoryMediaAccess;

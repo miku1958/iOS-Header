@@ -20,6 +20,7 @@
 - (vector_4dc5f307)columnUIDsForColumnRange:(struct _NSRange)arg1;
 - (UUIDData_5fbc143e)conditionalStyleFormulaOwnerUID;
 - (id)drawableInfo;
+- (UUIDData_5fbc143e)groupByUID;
 - (NSMutableIndexSet *)mutableColumnIndexesForUIDs:(const vector_4dc5f307 *)arg1;
 - (NSMutableIndexSet *)mutableIndexesForUIDs:(const vector_4dc5f307 *)arg1 isRows:(BOOL)arg2;
 - (NSMutableIndexSet *)mutableRowIndexesForUIDs:(const vector_4dc5f307 *)arg1;

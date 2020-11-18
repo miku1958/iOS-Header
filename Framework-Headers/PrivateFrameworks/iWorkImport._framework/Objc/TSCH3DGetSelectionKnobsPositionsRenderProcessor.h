@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (tmat4x4_3074befe)modelViewNormalizedProjection;
-- (void)submit:(const struct PrimitiveInfo *)arg1;
+- (void)submit:(id)arg1;
 
 @end
 

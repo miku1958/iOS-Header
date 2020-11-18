@@ -12,7 +12,7 @@
 #import <AssistantServices/AFInterstitialProviderDelegate-Protocol.h>
 #import <AssistantServices/NSXPCListenerDelegate-Protocol.h>
 
-@class AFAudioPowerUpdater, AFClientConfiguration, AFClockAlarmSnapshot, AFClockTimerSnapshot, AFConnectionLocationManager, AFInterstitialProvider, AFOneArgumentSafetyBlock, NSArray, NSError, NSMutableArray, NSMutableDictionary, NSString, NSUUID, NSXPCConnection;
+@class AFAudioPowerUpdater, AFClientConfiguration, AFClockAlarmSnapshot, AFClockTimerSnapshot, AFInterstitialProvider, AFOneArgumentSafetyBlock, NSArray, NSError, NSMutableArray, NSMutableDictionary, NSString, NSUUID, NSXPCConnection;
 @protocol AFAssistantUIService, AFSpeechDelegate, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
 @interface AFConnection : NSObject <NSXPCListenerDelegate, AFAudioPowerUpdaterDelegate, AFAccessibilityListening, AFDeviceRingerSwitchListening, AFInterstitialProviderDelegate>
@@ -29,7 +29,10 @@
     long long _activeRequestUsefulUserResultType;
     NSObject<OS_dispatch_source> *_requestTimeoutTimer;
     AFOneArgumentSafetyBlock *_requestCompletion;
+    long long _activeRequestSpeechEvent;
     BOOL _activeRequestHasSpeechRecognition;
+    BOOL _activeRequestIsDucking;
+    BOOL _activeRequestIsTwoShot;
     NSMutableDictionary *_replyHandlerForAceId;
     unsigned int _stateInSync:1;
     unsigned int _shouldSpeak:1;
@@ -46,7 +49,6 @@
     NSError *_lastRetryError;
     unsigned long long _pendingSpeechRequestCounter;
     NSObject<OS_dispatch_group> *_speechCallbackGroup;
-    AFConnectionLocationManager *_locationManager;
     id<AFAssistantUIService> _delegate;
     id<AFSpeechDelegate> _speechDelegate;
 }
@@ -100,17 +102,19 @@
 - (void)_handleInterstitialPhase:(long long)arg1 fromProvider:(id)arg2 displayText:(id)arg3 speakableText:(id)arg4 context:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_invokeRequestTimeoutForReason:(id)arg1;
 - (BOOL)_isInterstitialsRunning;
+- (void)_markIsDucking;
+- (void)_markIsTwoShot;
 - (void)_markSpeechRecognized;
 - (void)_requestDidEnd;
-- (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(BOOL)arg2 analyticsEventProvider:(CDUnknownBlockType)arg3;
-- (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(BOOL)arg2 isBackgroundRequest:(BOOL)arg3 analyticsEventProvider:(CDUnknownBlockType)arg4;
+- (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(BOOL)arg2 speechRequestOptions:(id)arg3 analyticsEventProvider:(CDUnknownBlockType)arg4;
+- (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(BOOL)arg2 speechRequestOptions:(id)arg3 isBackgroundRequest:(BOOL)arg4 analyticsEventProvider:(CDUnknownBlockType)arg5;
 - (void)_scheduleRequestTimeoutForReason:(id)arg1;
 - (void)_setAudioSessionID:(unsigned int)arg1;
 - (void)_setRecordRoute:(id)arg1;
 - (void)_setShouldSpeak:(BOOL)arg1;
 - (void)_speechRecordingDidFailWithError:(id)arg1;
 - (BOOL)_startInputAudioPowerUpdatesWithXPCWrapper:(id)arg1;
-- (void)_startRequestWithAceCommand:(id)arg1 suppressAlert:(BOOL)arg2;
+- (void)_startRequestWithAceCommand:(id)arg1 turnIdentifier:(struct NSUUID *)arg2 suppressAlert:(BOOL)arg3;
 - (void)_startRequestWithInfo:(id)arg1;
 - (void)_startUIRequestWithText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_stopInputAudioPowerUpdates;
@@ -159,7 +163,7 @@
 - (void)_willEndSession;
 - (void)_willFailRequestWithError:(id)arg1;
 - (void)_willPresentUsefulUserResultWithType:(long long)arg1;
-- (void)_willStartRequestWithSpeech:(BOOL)arg1 analyticsEventProvider:(CDUnknownBlockType)arg2;
+- (void)_willStartRequestWithSpeech:(BOOL)arg1 speechRequestOptions:(id)arg2 analyticsEventProvider:(CDUnknownBlockType)arg3;
 - (void)accessibilityObserver:(id)arg1 didChangeVibrationDisabledPreference:(BOOL)arg2;
 - (void)accessibilityObserver:(id)arg1 didChangeVoiceOverTouchEnabledPreference:(BOOL)arg2;
 - (id)acquireUserInteractionAssertion;
@@ -205,6 +209,7 @@
 - (void)sendFeedbackToAppPreferencesPredictorForMetricsContext:(id)arg1 selectedBundleId:(id)arg2;
 - (void)sendGenericAceCommand:(id)arg1;
 - (void)sendGenericAceCommand:(id)arg1 conflictHandler:(CDUnknownBlockType)arg2;
+- (void)sendGenericAceCommand:(id)arg1 turnIdentifier:(struct NSUUID *)arg2 conflictHandler:(CDUnknownBlockType)arg3;
 - (void)sendReplyCommand:(id)arg1;
 - (void)setAlertContextWithBulletins:(id)arg1;
 - (void)setAlertContextWithClockAlarmSnapshot:(id)arg1;

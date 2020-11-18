@@ -16,6 +16,7 @@
 @property (copy, nonatomic, getter=_localeIdentifier, setter=_setLocaleIdentifier:) NSString *_localeIdentifier;
 @property (readonly, nonatomic) NSArray *contentLengths;
 @property (readonly, nonatomic) NSString *contentVersion;
+@property (readonly, nonatomic) NSArray *discounts;
 @property (readonly, nonatomic) NSArray *downloadContentLengths;
 @property (readonly, nonatomic) NSString *downloadContentVersion;
 @property (readonly, nonatomic, getter=isDownloadable) BOOL downloadable;
@@ -32,6 +33,7 @@
 + (id)productsFromXPCEncodingsArray:(id)arg1;
 - (void).cxx_destruct;
 - (void)_setContentVersion:(id)arg1;
+- (void)_setDiscounts:(id)arg1;
 - (void)_setDownloadContentLengths:(id)arg1;
 - (void)_setDownloadable:(BOOL)arg1;
 - (void)_setIntroductoryPrice:(id)arg1;

@@ -14,11 +14,12 @@
 __attribute__((visibility("hidden")))
 @interface TSPPackageDataReader : NSObject <TSPFileCoordinatorDelegate, TSPPassphraseConsumer>
 {
-    NSURL *_URL;
     TSPPackage *_package;
     NSString *_lastPasswordAttempted;
+    NSURL *_URL;
 }
 
+@property (readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) TSPDocumentProperties *documentProperties;

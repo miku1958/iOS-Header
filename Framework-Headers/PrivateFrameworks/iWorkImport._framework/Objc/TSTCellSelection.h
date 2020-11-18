@@ -8,14 +8,14 @@
 
 #import <iWorkImport/TSDTextSelection-Protocol.h>
 
-@class NSString, TSTCellRegion, TSTCellUIDRegion, TSTInfo;
+@class NSString, TSTCellRegion, TSTCellUIDRegion, TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTCellSelection : TSKSelection <TSDTextSelection>
 {
     BOOL _beginImplicitEditing;
     long long _selectionType;
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     TSTCellUIDRegion *_cellUIDRegion;
     TSTCellUIDRegion *_baseCellUIDRegion;
     TSTCellRegion *_cachedCellRegion;
@@ -65,7 +65,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct _NSRange searchReferenceRange; // @synthesize searchReferenceRange=_searchReferenceRange;
 @property (readonly, nonatomic) long long selectionType; // @synthesize selectionType=_selectionType;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (weak, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 
 + (Class)archivedSelectionClass;
 + (id)selectionWithTableInfo:(id)arg1 cellID:(struct TSUCellCoord)arg2;
@@ -89,7 +89,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithRdar39989167Archive:(const struct DeathhawkRdar39989167CellSelectionArchive *)arg1 unarchiver:(id)arg2;
 - (id)initWithTableInfo:(id)arg1 andCellID:(struct TSUCellCoord)arg2;
 - (id)initWithTableInfo:(id)arg1 andCellRange:(struct TSUCellRect)arg2;
-- (id)initWithTableInfo:(id)arg1 andPreviousSelection:(id)arg2 offsetBy:(CDStruct_1ef3fb1f)arg3;
+- (id)initWithTableInfo:(id)arg1 andPreviousSelection:(id)arg2 offsetBy:(struct TSUColumnRowOffset)arg3;
 - (id)initWithTableInfo:(id)arg1 cellID:(struct TSUCellCoord)arg2 selectionType:(long long)arg3;
 - (id)initWithTableInfo:(id)arg1 cellRange:(struct TSUCellRect)arg2 type:(long long)arg3 anchorCellID:(struct TSUCellCoord)arg4 cursorCellID:(struct TSUCellCoord)arg5;
 - (id)initWithTableInfo:(id)arg1 cellRegion:(id)arg2;

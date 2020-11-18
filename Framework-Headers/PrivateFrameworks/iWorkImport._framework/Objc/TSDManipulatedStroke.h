@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)mutableClass;
 - (void)applyInteriorWrapPropertiesInContext:(struct CGContext *)arg1 insideStroke:(BOOL)arg2;
-- (BOOL)canApplyToCAShapeLayer;
+- (BOOL)canApplyToShapeRenderable;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (BOOL)drawsOutsideStrokeBounds;
@@ -30,9 +30,9 @@ __attribute__((visibility("hidden")))
 - (struct CGPath *)manipulatePath:(struct CGPath *)arg1 withLineWidth:(double)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)p_setupDoodlesManipulation;
-- (void)paintPath:(struct CGPath *)arg1 wantsInteriorStroke:(BOOL)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(BOOL)arg4 parameterized:(BOOL)arg5 drawWithOpenGL:(BOOL)arg6 shouldReverseDrawOrder:(BOOL)arg7;
-- (struct CGPath *)pathToStrokeFromCGPath:(struct CGPath *)arg1;
-- (BOOL)prefersToApplyToCAShapeLayerDuringManipulation;
+- (void)paintPath:(struct CGPath *)arg1 wantsInteriorStroke:(BOOL)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(BOOL)arg4 parameterized:(BOOL)arg5 shouldReverseDrawOrder:(BOOL)arg6;
+- (const struct CGPath *)pathToStrokeFromCGPath:(struct CGPath *)arg1;
+- (BOOL)prefersToApplyToShapeRenderableDuringManipulation;
 - (double)renderedWidth;
 - (void)saveToArchive:(struct StrokeArchive *)arg1 archiver:(id)arg2;
 - (void)seedRandom;

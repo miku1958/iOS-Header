@@ -16,6 +16,7 @@
     BOOL _isOverlay;
     BOOL _requiresLocalMedia;
     BOOL _isITunes;
+    int _mediaEntityType;
     NSString *_label;
     NSString *_labelForLocalMedia;
     NSArray *_storeIdentifiers;
@@ -37,6 +38,7 @@
     _SFPBLatLng *_location;
     NSString *_messageIdentifier;
     _SFPBURL *_messageURL;
+    NSString *_persistentID;
 }
 
 @property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
@@ -58,9 +60,11 @@
 @property (strong, nonatomic) _SFPBLatLng *location; // @synthesize location=_location;
 @property (strong, nonatomic) _SFPBGraphicalFloat *longitude; // @synthesize longitude=_longitude;
 @property (copy, nonatomic) NSData *mapsData; // @synthesize mapsData=_mapsData;
+@property (nonatomic) int mediaEntityType; // @synthesize mediaEntityType=_mediaEntityType;
 @property (copy, nonatomic) NSString *messageIdentifier; // @synthesize messageIdentifier=_messageIdentifier;
 @property (strong, nonatomic) _SFPBURL *messageURL; // @synthesize messageURL=_messageURL;
 @property (copy, nonatomic) NSString *offerType; // @synthesize offerType=_offerType;
+@property (copy, nonatomic) NSString *persistentID; // @synthesize persistentID=_persistentID;
 @property (copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (copy, nonatomic) NSString *provider; // @synthesize provider=_provider;
 @property (strong, nonatomic) _SFPBPunchout *punchout; // @synthesize punchout=_punchout;

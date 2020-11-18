@@ -7,13 +7,14 @@
 #import <iWorkImport/TSDLayout.h>
 
 #import <iWorkImport/TPAttachmentLayoutParent-Protocol.h>
+#import <iWorkImport/TPFootnotePageDelegate-Protocol.h>
 #import <iWorkImport/TSWPLayoutTarget-Protocol.h>
 
 @class NSMutableArray, NSMutableSet, NSObject, NSString, TPFootnoteHeightMeasurer, TSDCanvas, TSPObject, TSWPStorage;
 @protocol TSDHint, TSWPFootnoteHeightMeasurer, TSWPFootnoteMarkProvider, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
 __attribute__((visibility("hidden")))
-@interface TPBodyLayout : TSDLayout <TSWPLayoutTarget, TPAttachmentLayoutParent>
+@interface TPBodyLayout : TSDLayout <TSWPLayoutTarget, TPAttachmentLayoutParent, TPFootnotePageDelegate>
 {
     NSMutableArray *_columns;
     TPFootnoteHeightMeasurer *_footnoteHeightMeasurer;
@@ -23,7 +24,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) struct CGPoint anchorPoint;
 @property (strong, nonatomic) NSMutableArray *anchoredDrawablesForRelayout; // @synthesize anchoredDrawablesForRelayout=_anchoredDrawablesForRelayout;
-@property (readonly, nonatomic) unsigned int autosizeFlags;
+@property (readonly, nonatomic) unsigned long long autosizeFlags;
 @property (readonly, nonatomic) TSDCanvas *canvas;
 @property (readonly, nonatomic) NSMutableArray *columns; // @synthesize columns=_columns;
 @property (readonly, nonatomic) struct CGSize currentSize;
@@ -38,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL layoutIsValid;
 @property (readonly, nonatomic) BOOL marginsAreMirrored;
 @property (readonly, nonatomic) struct CGRect maskRect;
-@property (readonly, nonatomic) double maxAnchorY;
+@property (readonly, nonatomic) double maxAnchorInBlockDirection;
 @property (readonly, nonatomic) struct CGSize maxSize;
 @property (readonly, nonatomic) struct CGSize minSize;
 @property (readonly, nonatomic) int naturalAlignment;
@@ -70,7 +71,9 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)capturedInfoPositionForAttachment;
 - (id)columnMetricsForCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
 - (id)computeLayoutGeometry;
-- (double)contentHeight;
+- (id)containedPencilAnnotations;
+- (BOOL)containsStartOfPencilAnnotation:(id)arg1;
+- (double)contentBlockHeight;
 - (id)currentAnchoredDrawableLayouts;
 - (id)currentInlineDrawableLayouts;
 - (BOOL)excludeFromNearestVisibleRectSearchForSelectionPath:(id)arg1;
@@ -78,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)invalidateForPageCountChange;
 - (void)invalidateSize;
+- (BOOL)isFootnoteContainerOnSamePageAsTarget:(id)arg1;
 - (BOOL)isLastTarget;
 - (BOOL)isLayoutOffscreen;
 - (struct CGPoint)layoutPositionFromAnchoredAttachmentPosition:(struct CGPoint)arg1;
@@ -95,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)rectInRootForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootOfAutoZoomContextOfSelectionPath:(id)arg1;
 - (void)replaceChild:(id)arg1 with:(id)arg2;
+- (void)resetFootnoteHeightMeasurer;
 - (BOOL)selectionMustBeEntirelyOnscreenToCountAsVisibleInSelectionPath:(id)arg1;
 - (void)setChildren:(id)arg1;
 - (void)setNeedsDisplayInTargetRect:(struct CGRect)arg1;

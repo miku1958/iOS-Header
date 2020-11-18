@@ -6,27 +6,54 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class NSData, NSString;
+@class CKDProtocolTranslator, NSArray, NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDCodeFunctionInvokeOperation : CKDDatabaseOperation
 {
-    CDUnknownBlockType _functionInvokeCompletionBlock;
+    BOOL _local;
+    BOOL _shouldFetchAssetContentInMemory;
+    CDUnknownBlockType _replaceLocalSerializationsBlobs;
+    CDUnknownBlockType _initialResponseReceivedCallback;
+    CDUnknownBlockType _replaceWireSerializations;
+    CDUnknownBlockType _recordFetchCompletionBlock;
+    CDUnknownBlockType _recordFetchProgressBlock;
+    CDUnknownBlockType _recordFetchCommandBlock;
     NSString *_serviceName;
     NSString *_functionName;
+    NSArray *_requestLocalSerializations;
+    NSArray *_requestRecords;
     NSData *_serializedArguments;
     NSData *_serializedResponse;
+    NSArray *_responseRecords;
+    CKDProtocolTranslator *_translator;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType functionInvokeCompletionBlock; // @synthesize functionInvokeCompletionBlock=_functionInvokeCompletionBlock;
 @property (readonly, copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
-@property (readonly, nonatomic) NSData *serializedArguments; // @synthesize serializedArguments=_serializedArguments;
+@property (copy, nonatomic) CDUnknownBlockType initialResponseReceivedCallback; // @synthesize initialResponseReceivedCallback=_initialResponseReceivedCallback;
+@property (nonatomic) BOOL local; // @synthesize local=_local;
+@property (copy, nonatomic) CDUnknownBlockType recordFetchCommandBlock; // @synthesize recordFetchCommandBlock=_recordFetchCommandBlock;
+@property (copy, nonatomic) CDUnknownBlockType recordFetchCompletionBlock; // @synthesize recordFetchCompletionBlock=_recordFetchCompletionBlock;
+@property (copy, nonatomic) CDUnknownBlockType recordFetchProgressBlock; // @synthesize recordFetchProgressBlock=_recordFetchProgressBlock;
+@property (copy, nonatomic) CDUnknownBlockType replaceLocalSerializationsBlobs; // @synthesize replaceLocalSerializationsBlobs=_replaceLocalSerializationsBlobs;
+@property (copy, nonatomic) CDUnknownBlockType replaceWireSerializations; // @synthesize replaceWireSerializations=_replaceWireSerializations;
+@property (copy, nonatomic) NSArray *requestLocalSerializations; // @synthesize requestLocalSerializations=_requestLocalSerializations;
+@property (copy, nonatomic) NSArray *requestRecords; // @synthesize requestRecords=_requestRecords;
+@property (copy, nonatomic) NSArray *responseRecords; // @synthesize responseRecords=_responseRecords;
+@property (copy, nonatomic) NSData *serializedArguments; // @synthesize serializedArguments=_serializedArguments;
 @property (copy, nonatomic) NSData *serializedResponse; // @synthesize serializedResponse=_serializedResponse;
 @property (readonly, copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
+@property (nonatomic) BOOL shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
+@property (strong, nonatomic) CKDProtocolTranslator *translator; // @synthesize translator=_translator;
 
 + (long long)isPredominatelyDownload;
 - (void).cxx_destruct;
+- (void)_getDeserializedRecords;
+- (void)_getSerializedRequest;
 - (void)_invokeFunction;
+- (void)_invokeLocalFunction;
+- (void)_postflightRecords;
+- (void)_preflightRecords;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;

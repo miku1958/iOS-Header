@@ -37,7 +37,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) TSWPCTTypesetterCache *typesetterCache;
 
-+ (void)fixColumnBoundsForTarget:(id)arg1 storage:(id)arg2 charIndex:(unsigned long long)arg3 firstColumnIndex:(unsigned long long)arg4 precedingHeight:(double)arg5 height:(double)arg6 alreadyHasMargins:(BOOL)arg7 styleProvider:(id)arg8 vertical:(BOOL)arg9;
++ (void)fixColumnBoundsForTarget:(id)arg1 storage:(id)arg2 charIndex:(unsigned long long)arg3 firstColumnIndex:(unsigned long long)arg4 precedingHeight:(double)arg5 height:(double)arg6 alreadyHasMargins:(BOOL)arg7 styleProvider:(id)arg8;
++ (void)setTransformForColumn:(id)arg1 andInvalidateWPRect:(struct CGRect)arg2 inTarget:(id)arg3;
++ (void)setTransformForColumn:(id)arg1 inTarget:(id)arg2 metrics:(id)arg3;
 - (void).cxx_destruct;
 - (void)clearOwner;
 - (void)clearTypesetterCache;
@@ -48,10 +50,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithStorage:(id)arg1 owner:(id)arg2;
 - (void *)layoutIntoTarget:(id)arg1 withLayoutState:(void *)arg2 outSync:(BOOL *)arg3;
 - (id)layoutMetricsCache;
-- (void *)layoutStateForLayoutAfterHint:(id)arg1 childHint:(id)arg2 topicNumbers:(id)arg3 textIsVertical:(BOOL)arg4;
-- (void *)layoutStateForLayoutWithHint:(id)arg1 topicNumbers:(id)arg2 textIsVertical:(BOOL)arg3;
+- (void *)layoutStateForLayoutAfterHint:(id)arg1 childHint:(id)arg2 topicNumbers:(id)arg3;
+- (void *)layoutStateForLayoutWithHint:(id)arg1 topicNumbers:(id)arg2;
 - (BOOL)needsLayoutInColumn:(id)arg1;
-- (int)p_layoutConfigFlagsForTarget:(id)arg1;
+- (unsigned long long)p_layoutConfigFlagsForTarget:(id)arg1;
 - (void)removeDirtyRange:(struct _NSRange)arg1;
 - (void)resetDirtyRange;
 - (void)storage:(id)arg1 didChangeRange:(struct _NSRange)arg2 delta:(long long)arg3 broadcastKind:(int)arg4;

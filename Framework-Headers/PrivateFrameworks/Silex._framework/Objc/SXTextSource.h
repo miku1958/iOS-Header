@@ -6,25 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSLocale, NSMutableIndexSet, NSString, SXFontAttributesConstructor;
-@protocol SXSmartFieldFactory, SXTextSourceDataSource, SXTextStyleFontDescribing;
+@class NSLocale, NSMutableIndexSet, NSString, SXTextSourceDefaults;
+@protocol SXDocumentLanguageProviding, SXFontAttributesConstructor, SXSmartFieldFactory, SXTextSourceDataSource, SXTextStyleFontDescribing;
 
 @interface SXTextSource : NSObject
 {
     id<SXTextSourceDataSource> _dataSource;
     NSString *_string;
+    SXTextSourceDefaults *_defaults;
     id<SXSmartFieldFactory> _smartFieldFactory;
     NSMutableIndexSet *_deletedRangeOffsets;
     NSMutableIndexSet *_insertedRangeOffsets;
     NSMutableIndexSet *_rangesExcludedOfParagraphSpacing;
-    SXFontAttributesConstructor *_fontAttributeConstructor;
+    id<SXFontAttributesConstructor> _fontAttributeConstructor;
     id<SXTextStyleFontDescribing> _defaultFontDescribing;
+    id<SXDocumentLanguageProviding> _documentLanguageProvider;
 }
 
 @property (readonly, weak, nonatomic) id<SXTextSourceDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, nonatomic) id<SXTextStyleFontDescribing> defaultFontDescribing; // @synthesize defaultFontDescribing=_defaultFontDescribing;
+@property (readonly, nonatomic) SXTextSourceDefaults *defaults; // @synthesize defaults=_defaults;
 @property (strong, nonatomic) NSMutableIndexSet *deletedRangeOffsets; // @synthesize deletedRangeOffsets=_deletedRangeOffsets;
-@property (readonly, nonatomic) SXFontAttributesConstructor *fontAttributeConstructor; // @synthesize fontAttributeConstructor=_fontAttributeConstructor;
+@property (readonly, nonatomic) id<SXDocumentLanguageProviding> documentLanguageProvider; // @synthesize documentLanguageProvider=_documentLanguageProvider;
+@property (readonly, nonatomic) id<SXFontAttributesConstructor> fontAttributeConstructor; // @synthesize fontAttributeConstructor=_fontAttributeConstructor;
 @property (strong, nonatomic) NSMutableIndexSet *insertedRangeOffsets; // @synthesize insertedRangeOffsets=_insertedRangeOffsets;
 @property (readonly, nonatomic) NSLocale *locale;
 @property (strong, nonatomic) NSMutableIndexSet *rangesExcludedOfParagraphSpacing; // @synthesize rangesExcludedOfParagraphSpacing=_rangesExcludedOfParagraphSpacing;
@@ -35,14 +39,16 @@
 - (void)applyAdditionsOnTextTangierStorage:(id)arg1;
 - (void)applyListStylingOnTextTangierStorage:(id)arg1 usingAttributesMap:(id)arg2;
 - (void)applyStylingOnTextTangierStorage:(id)arg1;
-- (id)attributesForTextStyle:(id)arg1 baseTextStyle:(id)arg2 onParagraphStyle:(id)arg3 forRange:(struct _NSRange)arg4 resultingDropCapStyle:(id *)arg5 textResizer:(id)arg6;
+- (id)attributesForTextStyle:(id)arg1 baseTextStyle:(id)arg2 onParagraphStyle:(id)arg3 forRange:(struct _NSRange)arg4 resultingDropCapStyle:(id *)arg5 textResizer:(id)arg6 fontFace:(id)arg7;
 - (id)characterStyleFromAttributes:(id)arg1 context:(id)arg2;
 - (id)cleanString:(id)arg1;
 - (id)description;
-- (id)fontFaceForTextDescribing:(id)arg1 inheritingFromTextStyle:(id)arg2;
-- (id)initWithString:(id)arg1 smartFieldFactory:(id)arg2 dataSource:(id)arg3;
+- (id)fontDescriptionsForTextStyle:(id)arg1 defaultTextStyles:(id)arg2;
+- (id)fontFaceForTextStyle:(id)arg1 defaultTextStyle:(id)arg2 fontDescriptions:(id)arg3;
+- (id)initWithString:(id)arg1 defaults:(id)arg2 smartFieldFactory:(id)arg3 dataSource:(id)arg4 documentLanguageProvider:(id)arg5 fontAttributesConstructor:(id)arg6;
 - (int)listLabelTypeForListType:(unsigned long long)arg1;
 - (int)listNumberTypeForListType:(unsigned long long)arg1;
+- (unsigned int)paragraphAlignmentForTextAlignment:(long long)arg1;
 - (id)populateArray:(id)arg1 withValue:(id)arg2 forSize:(unsigned long long)arg3;
 - (id)randomColorWithAlpha:(double)arg1;
 - (struct _NSRange)rangeForRange:(struct _NSRange)arg1;

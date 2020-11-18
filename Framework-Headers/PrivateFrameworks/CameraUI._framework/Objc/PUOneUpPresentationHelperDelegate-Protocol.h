@@ -10,6 +10,7 @@
 
 @protocol PUOneUpPresentationHelperDelegate <NSObject>
 - (UIViewController *)oneUpPresentationHelperViewController:(PUOneUpPresentationHelper *)arg1;
+- (long long)oneUpPresentationOrigin:(PUOneUpPresentationHelper *)arg1;
 
 @optional
 - (void)oneUpPresentationHelper:(PUOneUpPresentationHelper *)arg1 didDismissOneUpViewController:(PUOneUpViewController *)arg2;

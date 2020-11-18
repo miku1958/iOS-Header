@@ -9,7 +9,7 @@
 #import <StoreKit/NSCopying-Protocol.h>
 #import <StoreKit/NSMutableCopying-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSDictionary, NSString, SKPaymentDiscount;
 
 @interface SKPayment : NSObject <NSCopying, NSMutableCopying>
 {
@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL isStoreOriginated;
 @property (readonly, copy, nonatomic) NSString *partnerIdentifier;
 @property (readonly, copy, nonatomic) NSString *partnerTransactionIdentifier;
+@property (readonly, copy, nonatomic) SKPaymentDiscount *paymentDiscount;
 @property (readonly, copy, nonatomic) NSString *productIdentifier;
 @property (readonly, nonatomic) long long quantity;
 @property (readonly, copy, nonatomic) NSData *requestData;

@@ -48,6 +48,7 @@
 - (id)groupID;
 - (BOOL)hasBatteryLevel;
 - (id)initWithAVOutputDevice:(id)arg1 sourceInfo:(id)arg2;
+- (BOOL)isAddedToHomeKit;
 - (BOOL)isAirPlayReceiverSessionActive;
 - (BOOL)isDeviceGroupable;
 - (BOOL)isGroupLeader;
@@ -70,6 +71,7 @@
 - (void)setVolume:(float)arg1;
 - (BOOL)supportsBufferedAirPlay;
 - (BOOL)supportsExternalScreen;
+- (BOOL)supportsRapport;
 - (id)uid;
 - (float)volume;
 

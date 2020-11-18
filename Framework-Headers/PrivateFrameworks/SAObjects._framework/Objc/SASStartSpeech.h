@@ -36,6 +36,7 @@
 @property (copy, nonatomic) NSString *origin;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *turnId;
 @property (copy, nonatomic) NSDictionary *voiceTriggerEventInfo;
 
 + (id)startSpeech;

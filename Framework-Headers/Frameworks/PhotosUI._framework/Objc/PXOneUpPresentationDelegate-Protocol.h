@@ -12,6 +12,7 @@
 @protocol PXOneUpPresentationDelegate <NSObject>
 - (PXAssetsDataSourceManager *)oneUpPresentationDataSourceManager:(PXOneUpPresentation *)arg1;
 - (PXUIMediaProvider *)oneUpPresentationMediaProvider:(PXOneUpPresentation *)arg1;
+- (long long)oneUpPresentationOrigin:(PXOneUpPresentation *)arg1;
 
 @optional
 - (UIImage *)oneUpPresentation:(PXOneUpPresentation *)arg1 currentImageForAssetReference:(PXAssetReference *)arg2;

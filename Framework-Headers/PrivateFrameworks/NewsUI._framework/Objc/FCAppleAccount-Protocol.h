@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) NSString *endpointConnectionClientID;
 @property (readonly, nonatomic, getter=iCloudAccountChanged) BOOL iCloudAccountChanged;
 @property (readonly, nonatomic) BOOL isContentStoreFrontSupported;
+@property (readonly, nonatomic) NSString *primaryLanguageCode;
 @property (readonly, nonatomic, getter=isPrivateDataSyncingEnabled) BOOL privateDataSyncingEnabled;
 @property (readonly, nonatomic) NSString *supportedContentStoreFrontID;
 @property (readonly, nonatomic, getter=isUserSignedInToiCloud) BOOL userSignedInToiCloud;
@@ -23,10 +24,10 @@
 - (void)checkAllDevicesRunningMinimumiOSVersion:(CDStruct_912cb5d2)arg1 macOSVersion:(CDStruct_912cb5d2)arg2 orInactiveForTimeInterval:(double)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)checkAlliOSDevicesRunningMinimumOSVersion:(CDStruct_912cb5d2)arg1 orInactiveForTimeInterval:(double)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (NSString *)currentStoreFrontID;
+- (NSString *)iCloudAccountDSID;
 - (NSString *)iTunesAccountDSID;
 - (NSString *)iTunesAccountName;
 - (BOOL)isPrimaryAccountEmailAddress;
 - (BOOL)isUserSignedIntoiTunes;
-- (void)loadStoreFrontIfNeededWithCompletion:(void (^)(void))arg1;
 @end
 

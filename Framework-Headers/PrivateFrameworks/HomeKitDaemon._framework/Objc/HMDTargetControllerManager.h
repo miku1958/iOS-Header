@@ -69,7 +69,6 @@
 - (void)_resetTargets;
 - (void)_saveTargetUUIDs;
 - (void)_updateName:(id)arg1 buttonConfiguration:(id)arg2 target:(id)arg3;
-- (void)_writeData:(id)arg1 toCharacteristic:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)acknowledgeTargetControlService:(id)arg1 active:(BOOL)arg2;
 - (void)addConfiguredTarget:(id)arg1;
 - (void)addTargetAccessory:(id)arg1 buttonConfiguration:(id)arg2;

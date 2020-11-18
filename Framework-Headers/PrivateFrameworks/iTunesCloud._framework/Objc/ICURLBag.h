@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (BOOL)_shouldMescalSignBodyForURL:(id)arg1 withSignatureConfiguration:(id)arg2;
 - (void)_validateGUIDURLConfigIfNeeded;
+- (BOOL)boolValueForBagKey:(id)arg1;
 - (BOOL)hasValueForBagKey:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (long long)int64ValueForBagKey:(id)arg1;

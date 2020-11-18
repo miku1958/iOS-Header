@@ -13,18 +13,20 @@
 @interface SFWirelessChargingDevice : NSObject <NSSecureCoding>
 {
     BOOL _wirelessCharging;
+    BOOL _charged;
     BOOL _inBandCommsBasedPowerSources;
     int _type;
     NSString *_uniqueIdentifier;
-    NSDate *_startedCharging;
+    NSDate *_startedWirelessCharging;
     NSArray *_powerSources;
     long long _matID;
 }
 
+@property (readonly, nonatomic) BOOL charged; // @synthesize charged=_charged;
 @property (readonly, nonatomic) BOOL inBandCommsBasedPowerSources; // @synthesize inBandCommsBasedPowerSources=_inBandCommsBasedPowerSources;
 @property (readonly, nonatomic) long long matID; // @synthesize matID=_matID;
 @property (readonly, nonatomic) NSArray *powerSources; // @synthesize powerSources=_powerSources;
-@property (strong, nonatomic) NSDate *startedCharging; // @synthesize startedCharging=_startedCharging;
+@property (strong, nonatomic) NSDate *startedWirelessCharging; // @synthesize startedWirelessCharging=_startedWirelessCharging;
 @property (readonly, nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) BOOL wirelessCharging; // @synthesize wirelessCharging=_wirelessCharging;

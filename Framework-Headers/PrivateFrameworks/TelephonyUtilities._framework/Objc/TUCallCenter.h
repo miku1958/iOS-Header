@@ -162,6 +162,7 @@
 - (void)sendFieldModeDigits:(id)arg1 forProvider:(id)arg2;
 - (void)setTTYType:(int)arg1 forCall:(id)arg2;
 - (BOOL)shouldPreferRelayOverDirectSecondaryCallingForProvider:(id)arg1 isVideo:(BOOL)arg2;
+- (void)shouldSuppressInCallStatusBar:(BOOL)arg1;
 - (void)swapCalls;
 - (void)ungroupCall:(id)arg1;
 - (void)unholdCall:(id)arg1;

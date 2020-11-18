@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)adjustRangesByDelta:(long long)arg1 startingAt:(unsigned long long)arg2;
 - (id)attachmentAtCharIndex:(unsigned long long)arg1;
 - (id)attachmentOrFootnoteAtCharIndex:(unsigned long long)arg1;
-- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(BOOL [21])arg2 attributesTable:(id [21])arg3 effectiveRange:(struct _NSRange *)arg4;
+- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(BOOL [22])arg2 attributesTable:(id [22])arg3 effectiveRange:(struct _NSRange *)arg4;
 - (unsigned long long)changeCount;
 - (unsigned long long)charIndexMappedFromStorage:(unsigned long long)arg1;
 - (unsigned long long)charIndexMappedToStorage:(unsigned long long)arg1;
@@ -46,10 +46,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)length;
 - (unsigned long long)mappedIndexFrom:(unsigned long long)arg1;
 - (struct _NSRange)mappedRangeFrom:(struct _NSRange)arg1;
-- (id)objectAtLocationPriorToMappedCharIndex:(unsigned long long)arg1 forAttributeKind:(int)arg2 effectiveRange:(struct _NSRange *)arg3;
+- (id)objectAtLocationPriorToMappedCharIndex:(unsigned long long)arg1 forAttributeKind:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (id)paragraphStyleAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
-- (id)smartFieldAtCharIndex:(unsigned long long)arg1 attributeKind:(int)arg2 effectiveRange:(struct _NSRange *)arg3;
-- (id)smartFieldsWithAttributeKind:(int)arg1 intersectingRange:(struct _NSRange)arg2;
+- (id)smartFieldAtCharIndex:(unsigned long long)arg1 attributeKind:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
+- (id)smartFieldsWithAttributeKind:(unsigned long long)arg1 intersectingRange:(struct _NSRange)arg2;
 - (unsigned long long)storageLength;
 - (id)string;
 - (unsigned long long)unmappedIndexFrom:(unsigned long long)arg1;

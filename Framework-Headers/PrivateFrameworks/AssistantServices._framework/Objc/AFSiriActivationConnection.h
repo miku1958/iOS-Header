@@ -29,11 +29,13 @@
 - (void)_connectionInvalidated;
 - (void)_invalidate;
 - (oneway void)activateWithRequestInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)deactivateForReason:(long long)arg1 options:(unsigned long long)arg2 analyticsContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dealloc;
+- (oneway void)handleContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)handleIntent:(id)arg1 inBackgroundAppWithBundleId:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)invalidate;
-- (oneway void)prewarmForRequestInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)prewarmWithRequestInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

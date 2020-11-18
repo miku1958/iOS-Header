@@ -29,7 +29,6 @@
 - (void)commonInit;
 - (unsigned long long)evenColumnsWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)evenRowsWithValue:(id)arg1 withType:(int)arg2;
-- (id)initWithBackingObject:(id)arg1 andVersion:(id)arg2;
 - (id)initWithJSONData:(id)arg1 andVersion:(id)arg2;
 - (id)initWithJSONObject:(id)arg1 andVersion:(id)arg2;
 - (unsigned long long)oddColumnsWithValue:(id)arg1 withType:(int)arg2;

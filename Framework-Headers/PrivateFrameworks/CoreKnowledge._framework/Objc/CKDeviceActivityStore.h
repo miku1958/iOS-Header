@@ -6,19 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class CKKnowledgeStore, MISSING_TYPE;
+@class MISSING_TYPE;
 
 @interface CKDeviceActivityStore : NSObject
 {
     MISSING_TYPE *store;
 }
 
-@property (nonatomic, readonly) CKKnowledgeStore *store; // @synthesize store;
-
-+ (id)defaultStore;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
-- (id)initWithStore:(id)arg1;
 
 @end
 

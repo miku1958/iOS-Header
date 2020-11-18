@@ -13,6 +13,7 @@
 - (void)dismissCloudServiceSetupViewControllerAnimated:(BOOL)arg1 completion:(void (^)(void))arg2;
 - (void)dismissSafariViewControllerAnimated:(BOOL)arg1 completion:(void (^)(void))arg2;
 - (void)overrideCreditCardPresentationWithCompletion:(void (^)(SUCreditCardReaderOutput *))arg1;
+- (void)overrideRedeemCameraPerformAction:(long long)arg1 withObject:(id)arg2;
 - (void)presentSafariViewControllerWithURL:(NSURL *)arg1 animated:(BOOL)arg2 completion:(void (^)(void))arg3;
 @end
 

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldFetchAssetContents;
     BOOL _fetchAllChanges;
     BOOL _forcePCSDecryptionAttempt;
+    BOOL _shouldReportAllPerItemFailures;
     CKDRecordCache *_recordCache;
     NSObject<OS_dispatch_group> *_fetchRecordsGroup;
     NSSet *_desiredAssetKeys;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
 @property (strong, nonatomic) NSMutableArray *requestInfos; // @synthesize requestInfos=_requestInfos;
 @property (nonatomic) BOOL shouldFetchAssetContents; // @synthesize shouldFetchAssetContents=_shouldFetchAssetContents;
+@property (nonatomic) BOOL shouldReportAllPerItemFailures; // @synthesize shouldReportAllPerItemFailures=_shouldReportAllPerItemFailures;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

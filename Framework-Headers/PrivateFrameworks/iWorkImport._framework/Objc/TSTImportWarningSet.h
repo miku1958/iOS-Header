@@ -13,9 +13,9 @@
 __attribute__((visibility("hidden")))
 @interface TSTImportWarningSet : NSObject <TSSPropertyCommandSerializing>
 {
-    struct TSTImportWarningSetCellWarningFlags mCellWarning;
-    NSString *mOriginalDataFormat;
-    struct TSTImportFormulaWarning mFormulaWarning;
+    struct TSTImportWarningSetCellWarningFlags _cellWarning;
+    NSString *_originalDataFormat;
+    struct TSTImportFormulaWarning _formulaWarning;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -54,10 +54,11 @@ __attribute__((visibility("hidden")))
 + (id)warningSetForUnsupportedFormula:(id)arg1;
 + (id)warningSetForUnsupportedFunction:(id)arg1 originalFormula:(id)arg2;
 + (id)warningSetForUnsupportedNameFormula:(id)arg1 originalFormula:(id)arg2;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (BOOL)areAnySet;
 - (id)cellDiffClearingWarningsWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)individualWarnings;
 - (id)init;
 - (id)initFromArchive:(const struct ImportWarningSetArchive *)arg1;

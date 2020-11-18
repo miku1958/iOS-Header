@@ -12,7 +12,7 @@
 - (BOOL)adjustRangesByDelta:(long long)arg1 startingAt:(unsigned long long)arg2;
 - (TSWPAttachment *)attachmentAtCharIndex:(unsigned long long)arg1;
 - (TSWPAttachment *)attachmentOrFootnoteAtCharIndex:(unsigned long long)arg1;
-- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(BOOL [21])arg2 attributesTable:(id [21])arg3 effectiveRange:(struct _NSRange *)arg4;
+- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(BOOL [22])arg2 attributesTable:(id [22])arg3 effectiveRange:(struct _NSRange *)arg4;
 - (unsigned long long)changeCount;
 - (unsigned long long)charIndexMappedFromStorage:(unsigned long long)arg1;
 - (unsigned long long)charIndexMappedToStorage:(unsigned long long)arg1;
@@ -29,10 +29,10 @@
 - (long long)hyphenationLocationBeforeIndex:(long long)arg1 inRange:(struct _NSRange)arg2 locale:(NSLocale *)arg3 hyphenChar:(unsigned int *)arg4;
 - (BOOL)isWritingDirectionRightToLeftForParagraphAtCharIndex:(unsigned long long)arg1;
 - (unsigned long long)length;
-- (id)objectAtLocationPriorToMappedCharIndex:(unsigned long long)arg1 forAttributeKind:(int)arg2 effectiveRange:(struct _NSRange *)arg3;
+- (id)objectAtLocationPriorToMappedCharIndex:(unsigned long long)arg1 forAttributeKind:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (TSWPParagraphStyle *)paragraphStyleAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
-- (TSWPSmartField *)smartFieldAtCharIndex:(unsigned long long)arg1 attributeKind:(int)arg2 effectiveRange:(struct _NSRange *)arg3;
-- (NSArray *)smartFieldsWithAttributeKind:(int)arg1 intersectingRange:(struct _NSRange)arg2;
+- (TSWPSmartField *)smartFieldAtCharIndex:(unsigned long long)arg1 attributeKind:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
+- (NSArray *)smartFieldsWithAttributeKind:(unsigned long long)arg1 intersectingRange:(struct _NSRange)arg2;
 - (unsigned long long)storageLength;
 - (NSString *)string;
 - (void)updateStorageChangeCount;
@@ -40,8 +40,8 @@
 - (struct _NSRange)wordAtCharIndex:(unsigned long long)arg1 includePreviousWord:(BOOL)arg2 includeHyphenation:(BOOL)arg3;
 
 @optional
-- (void)enumerateSmartFieldsWithAttributeKind:(int)arg1 inRange:(struct _NSRange)arg2 usingBlock:(void (^)(id, struct _NSRange, BOOL *))arg3;
-- (void)enumerateWithAttributeKind:(int)arg1 inRange:(struct _NSRange)arg2 usingBlock:(void (^)(id, struct _NSRange, BOOL *))arg3;
+- (void)enumerateSmartFieldsWithAttributeKind:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 usingBlock:(void (^)(id, struct _NSRange, BOOL *))arg3;
+- (void)enumerateWithAttributeKind:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 usingBlock:(void (^)(id, struct _NSRange, BOOL *))arg3;
 - (BOOL)hasSmartFieldsInRange:(struct _NSRange)arg1;
 - (NSString *)substringWithRange:(struct _NSRange)arg1;
 @end

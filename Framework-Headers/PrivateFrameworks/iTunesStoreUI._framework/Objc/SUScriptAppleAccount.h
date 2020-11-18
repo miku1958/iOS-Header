@@ -32,6 +32,7 @@
 - (id)initWithACAccount:(id)arg1 accountStore:(id)arg2;
 - (void)reload;
 - (id)scriptAttributeKeys;
+- (void)setAgeVerificationExpirationDate:(id)arg1 completionHandler:(id)arg2;
 
 @end
 

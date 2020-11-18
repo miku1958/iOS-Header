@@ -7,10 +7,12 @@
 #import <SearchUI/SearchUICardSectionView.h>
 
 #import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
+#import <SearchUI/SearchUIFeedbackDelegate-Protocol.h>
+#import <SearchUI/TLKDetailsViewDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString, SearchUIAccessoryViewController, SearchUIImageView, TLKDetailsView, TLKStackView, UIButton;
 
-@interface SearchUIDetailedRowCardSectionView : SearchUICardSectionView <NUIContainerStackViewDelegate>
+@interface SearchUIDetailedRowCardSectionView : SearchUICardSectionView <NUIContainerStackViewDelegate, TLKDetailsViewDelegate, SearchUIFeedbackDelegate>
 {
     SearchUIImageView *_thumbnailView;
     UIButton *_buttonView;
@@ -40,6 +42,8 @@
 - (BOOL)arrangedViewMustCenter:(id)arg1;
 - (void)buttonPressed;
 - (long long)containerStackView:(id)arg1 alignmentForArrangedSubview:(id)arg2;
+- (void)didEngageActionItem:(id)arg1 actionPerformed:(BOOL)arg2;
+- (void)footnoteButtonPressed;
 - (id)setupContentView;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
 - (void)updateWithRowModel:(id)arg1;

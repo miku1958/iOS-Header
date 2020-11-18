@@ -32,6 +32,7 @@
 
 + (BOOL)areAnyAccessoriesConfigured;
 + (BOOL)areAnySpeakersConfigured;
++ (BOOL)areAnyTelevisionAccessoriesConfigured;
 + (BOOL)areHomesConfigured;
 + (id)sharedInstance;
 + (id)siriHomeIdentifier;

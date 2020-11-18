@@ -10,7 +10,7 @@
 #import <DiagnosticExtensionsDaemon/NSSecureCoding-Protocol.h>
 
 @class DEDBugSessionConfiguration, DEDExtensionIdentifierManager, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
-@protocol DEDClientProtocol, DEDFinisher><DEDSecureArchiving, DEDNotifier><DEDSecureArchiving, DEDUploadStatusDelegate, DEDWorkerProtocol, OS_os_log;
+@protocol DEDClientProtocol, DEDFinisher><DEDSecureArchiving, DEDNotifier><DEDSecureArchiving, DEDUploadStatusDelegate, DEDWorkerProtocol, OS_dispatch_queue, OS_os_log;
 
 @interface DEDBugSession : NSObject <NSSecureCoding, DEDSecureArchiving>
 {
@@ -36,6 +36,7 @@
     id<DEDWorkerProtocol> _worker;
     id<DEDFinisher><DEDSecureArchiving> __finisher;
     id<DEDNotifier><DEDSecureArchiving> __notifier;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
 @property (strong) id<DEDFinisher><DEDSecureArchiving> _finisher; // @synthesize _finisher=__finisher;
@@ -43,6 +44,7 @@
 @property (strong) NSMutableArray *adoptFilesCompletions; // @synthesize adoptFilesCompletions=_adoptFilesCompletions;
 @property (readonly) NSArray *allExtensionIdentifiers;
 @property (strong) NSDictionary *cachedExtensions; // @synthesize cachedExtensions=_cachedExtensions;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (strong) id<DEDClientProtocol> client; // @synthesize client=_client;
 @property (strong) DEDBugSessionConfiguration *config; // @synthesize config=_config;
 @property (strong) NSMutableDictionary *deCompletions; // @synthesize deCompletions=_deCompletions;

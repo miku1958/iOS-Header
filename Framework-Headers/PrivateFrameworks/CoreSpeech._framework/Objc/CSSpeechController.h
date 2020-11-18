@@ -7,14 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <CoreSpeech/CSAudioConverterDelegate-Protocol.h>
+#import <CoreSpeech/CSAudioRouteChangeMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSSpIdSpeakerRecognizerDelegate-Protocol.h>
 #import <CoreSpeech/CSSpeechManagerDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerDelegate-Protocol.h>
 
-@class CSAudioConverter, CSAudioSampleRateConverter, CSAudioZeroCounter, CSEndpointerProxy, CSPlainAudioFileWriter, CSSpeakerIdRecognizerFactory, CSSpeechManager, NSDictionary, NSString;
+@class CSAudioConverter, CSAudioSampleRateConverter, CSAudioZeroCounter, CSEndpointerProxy, CSPlainAudioFileWriter, CSSpIdImplicitTraining, CSSpeakerIdRecognizerFactory, CSSpeechManager, NSDictionary, NSString;
 @protocol CSEndpointAnalyzer, CSSpIdSpeakerRecognizer, CSSpeechControllerDelegate, OS_dispatch_group, OS_dispatch_queue;
 
-@interface CSSpeechController : NSObject <CSAudioConverterDelegate, CSSpIdSpeakerRecognizerDelegate, CSVoiceTriggerDelegate, CSSpeechManagerDelegate>
+@interface CSSpeechController : NSObject <CSAudioConverterDelegate, CSSpIdSpeakerRecognizerDelegate, CSAudioRouteChangeMonitorDelegate, CSVoiceTriggerDelegate, CSSpeechManagerDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
     CSAudioConverter *_opusAudioConverter;
@@ -24,7 +25,7 @@
     NSDictionary *_requestedRecordSettings;
     NSDictionary *_lastVoiceTriggerInfo;
     CSAudioZeroCounter *_continuousZeroCounter;
-    NSObject<OS_dispatch_queue> *_twoShotAudibleFeedbackQueue;
+    NSObject<OS_dispatch_queue> *_audibleFeedbackQueue;
     NSObject<OS_dispatch_group> *_twoShotAudibleFeedbackDecisionGroup;
     BOOL _isOpus;
     BOOL _isActivated;
@@ -34,7 +35,9 @@
     BOOL _isAlarmPlaying;
     BOOL _isTimerPlaying;
     BOOL _isSoundPlaying;
+    BOOL _isRemoteVADAvailableStream;
     BOOL _myriadPreventingTwoShotFeedback;
+    BOOL _needsPostGain;
     id<CSSpeechControllerDelegate> _delegate;
     CSEndpointerProxy *_endpointerProxy;
     CSSpeechManager *_speechManager;
@@ -42,6 +45,7 @@
     CSPlainAudioFileWriter *_audioFileWriter;
     CSSpeakerIdRecognizerFactory *_spIdFactory;
     id<CSSpIdSpeakerRecognizer> _spIdRecognizer;
+    CSSpIdImplicitTraining *_voiceTriggerImplicitTraining;
     NSDictionary *_spIdUserScores;
     unsigned long long _activeChannel;
 }
@@ -61,23 +65,27 @@
 @property (nonatomic) BOOL isMediaPlaying; // @synthesize isMediaPlaying=_isMediaPlaying;
 @property (nonatomic) BOOL isNarrowBand; // @synthesize isNarrowBand=_isNarrowBand;
 @property (nonatomic) BOOL isOpus; // @synthesize isOpus=_isOpus;
+@property (nonatomic) BOOL isRemoteVADAvailableStream; // @synthesize isRemoteVADAvailableStream=_isRemoteVADAvailableStream;
 @property (nonatomic) BOOL isSoundPlaying; // @synthesize isSoundPlaying=_isSoundPlaying;
 @property (nonatomic) BOOL isTimerPlaying; // @synthesize isTimerPlaying=_isTimerPlaying;
 @property (nonatomic) BOOL myriadPreventingTwoShotFeedback; // @synthesize myriadPreventingTwoShotFeedback=_myriadPreventingTwoShotFeedback;
+@property (nonatomic) BOOL needsPostGain; // @synthesize needsPostGain=_needsPostGain;
 @property (strong, nonatomic) CSSpeakerIdRecognizerFactory *spIdFactory; // @synthesize spIdFactory=_spIdFactory;
 @property (strong, nonatomic) id<CSSpIdSpeakerRecognizer> spIdRecognizer; // @synthesize spIdRecognizer=_spIdRecognizer;
 @property (strong, nonatomic) NSDictionary *spIdUserScores; // @synthesize spIdUserScores=_spIdUserScores;
 @property (weak, nonatomic) CSSpeechManager *speechManager; // @synthesize speechManager=_speechManager;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL twoShotNotificationEnabled; // @synthesize twoShotNotificationEnabled=_twoShotNotificationEnabled;
+@property (strong, nonatomic) CSSpIdImplicitTraining *voiceTriggerImplicitTraining; // @synthesize voiceTriggerImplicitTraining=_voiceTriggerImplicitTraining;
 
 + (BOOL)isSmartSiriVolumeAvailable;
 + (id)sharedController;
 - (void).cxx_destruct;
 - (void)CSAlarmMonitor:(id)arg1 didReceiveAlarmChanged:(long long)arg2;
+- (void)CSAudioRouteChangeMonitor:(id)arg1 didReceiveAudioRouteChangeEvent:(long long)arg2;
 - (void)CSMediaPlayingMonitor:(id)arg1 didReceiveMediaPlayingChanged:(long long)arg2;
 - (void)CSTimerMonitor:(id)arg1 didReceiveTimerChanged:(long long)arg2;
-- (BOOL)PacketDecodingUsed;
+- (BOOL)_canPlayPhaticDuringMediaPlayback;
 - (id)_contextToString:(id)arg1;
 - (long long)_currentAudioRecorderSampleRate;
 - (void)_deviceAudioLogging;
@@ -87,17 +95,22 @@
 - (void)_initializeMediaPlayingState;
 - (void)_initializeTimerState;
 - (BOOL)_isAutoPrompted;
+- (BOOL)_isHearstDoubleTap;
+- (BOOL)_isHearstVoiceTriggered;
+- (BOOL)_isJarvisButtonPress;
+- (BOOL)_isJarvisVoiceTriggered;
 - (BOOL)_isSpeakerIdTrainingTriggered;
 - (BOOL)_isVoiceTriggered;
-- (BOOL)_private_PacketDecodingUsed;
-- (BOOL)_private_PacketEncodingUsed;
+- (unsigned long long)_phaticPlaybackReason;
+- (float)_scheduledPhaticDelay;
 - (void)_setSoundPlayingState;
 - (BOOL)_setupAudioConverter:(BOOL)arg1;
 - (void)_setupDownsamplerIfNeeded;
 - (void)_setupSpeakerId;
+- (BOOL)_shouldSchedulePhaticAtStartRecording;
 - (BOOL)_shouldSetStartSampleCount;
 - (unsigned long long)alertStartTime;
-- (void)audioConverterDidConvertPackets:(id)arg1 packets:(id)arg2 timestamp:(unsigned long long)arg3;
+- (void)audioConverterDidConvertPackets:(id)arg1 packets:(id)arg2 durationInSec:(float)arg3 timestamp:(unsigned long long)arg4;
 - (float)averagePowerForChannel:(unsigned long long)arg1;
 - (float)averagePowerForOutputReference;
 - (void)beginWaitingForMyriad;
@@ -108,6 +121,8 @@
 - (float)getSmartSiriVolume;
 - (id)initWithManager:(id)arg1;
 - (BOOL)initializeRecordSessionWithContext:(id)arg1;
+- (BOOL)isHearstVoiceTriggered;
+- (BOOL)isJarvisVoiceTriggered;
 - (BOOL)isRTSTriggered;
 - (BOOL)isRecording;
 - (BOOL)isSmartSiriVolumeAvailable;
@@ -161,7 +176,7 @@
 - (void)updateEndpointerDelayedTrigger:(BOOL)arg1;
 - (void)updateEndpointerThreshold:(float)arg1;
 - (void)updateMeters;
-- (void)voiceTriggerDidDetectKeyword:(id)arg1;
+- (void)voiceTriggerDidDetectKeyword:(id)arg1 deviceId:(id)arg2;
 - (void)voiceTriggerDidDetectTwoShotAtTime:(double)arg1;
 - (id)voiceTriggerInfo;
 

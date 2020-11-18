@@ -37,6 +37,7 @@
 @property (readonly, nonatomic) id<CADPermissionValidator> permissionValidator; // @synthesize permissionValidator=_permissionValidator;
 
 - (void).cxx_destruct;
+- (id)_cachedAccounts;
 - (BOOL)_existingCalStoreMapsToAccountIdentifier:(id)arg1;
 - (id)_filteredAccountsForAction:(unsigned long long)arg1 withUnfilteredAccounts:(id)arg2;
 - (BOOL)_isDisabledForAction:(unsigned long long)arg1;

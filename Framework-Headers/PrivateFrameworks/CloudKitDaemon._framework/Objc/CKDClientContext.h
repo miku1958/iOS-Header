@@ -32,6 +32,7 @@
     NSURL *_publicDeviceServiceURL;
     NSURL *_publicCodeServiceURL;
     NSURL *_publicMetricsServiceURL;
+    NSURL *_publicDatabaseRPCServiceURL;
     NSString *_containerScopedUserID;
     NSString *_orgAdminUserID;
     NSHashTable *_proxies;
@@ -154,6 +155,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *proxyPreparationGroup; // @synthesize proxyPreparationGroup=_proxyPreparationGroup;
 @property (copy) NSURL *publicCloudDBURL; // @synthesize publicCloudDBURL=_publicCloudDBURL;
 @property (copy) NSURL *publicCodeServiceURL; // @synthesize publicCodeServiceURL=_publicCodeServiceURL;
+@property (copy) NSURL *publicDatabaseRPCServiceURL; // @synthesize publicDatabaseRPCServiceURL=_publicDatabaseRPCServiceURL;
 @property (copy) NSURL *publicDeviceServiceURL; // @synthesize publicDeviceServiceURL=_publicDeviceServiceURL;
 @property (strong, nonatomic) CKDKeyValueDiskCache *publicIdentitiesDiskCache; // @synthesize publicIdentitiesDiskCache=_publicIdentitiesDiskCache;
 @property (copy) NSURL *publicMetricsServiceURL; // @synthesize publicMetricsServiceURL=_publicMetricsServiceURL;

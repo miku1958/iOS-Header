@@ -71,38 +71,3 @@ typedef struct {
     MISSING_TYPE *columns[4];
 } CDStruct_14d5dc5e;
 
-#pragma mark Named Unions
-
-union _GLKQuaternion {
-    struct {
-        union _GLKVector3 v;
-        float s;
-    } ;
-    struct {
-        float x;
-        float y;
-        float z;
-        float w;
-    } ;
-    float q[4];
-};
-
-union _GLKVector3 {
-    struct {
-        float x;
-        float y;
-        float z;
-    } ;
-    struct {
-        float r;
-        float g;
-        float b;
-    } ;
-    struct {
-        float s;
-        float t;
-        float p;
-    } ;
-    float v[3];
-};
-

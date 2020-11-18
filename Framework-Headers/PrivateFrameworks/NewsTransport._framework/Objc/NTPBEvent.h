@@ -17,6 +17,11 @@
     long long _personalizationTreatmentId;
     long long _personalizedTreatmentId;
     long long _startTimestamp;
+    NSString *_appAnalyticsEventIdentifier;
+    NSString *_appAnalyticsEventPath;
+    NSString *_bundleOfferId;
+    NSString *_bundlePurchaseId;
+    int _bundleSubscriptionStatus;
     int _cellularRadioAccessTechnology;
     int _deviceOrientation;
     NTPBEventObject *_eventObject;
@@ -34,6 +39,7 @@
     NSData *_widgetSessionId;
     NSString *_widgetUserId;
     NSString *_windowFrameInScreen;
+    BOOL _isBundlePurchaser;
     BOOL _isPaidSubscriberDuringEvent;
     BOOL _isPaidSubscriberFromAppStoreDuringEvent;
     BOOL _isPaidSubscriberFromNewsDuringEvent;
@@ -44,11 +50,13 @@
         unsigned int personalizationTreatmentId:1;
         unsigned int personalizedTreatmentId:1;
         unsigned int startTimestamp:1;
+        unsigned int bundleSubscriptionStatus:1;
         unsigned int cellularRadioAccessTechnology:1;
         unsigned int deviceOrientation:1;
         unsigned int gestureType:1;
         unsigned int interfaceOrientation:1;
         unsigned int reachabilityStatus:1;
+        unsigned int isBundlePurchaser:1;
         unsigned int isPaidSubscriberDuringEvent:1;
         unsigned int isPaidSubscriberFromAppStoreDuringEvent:1;
         unsigned int isPaidSubscriberFromNewsDuringEvent:1;
@@ -56,19 +64,30 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSString *appAnalyticsEventIdentifier; // @synthesize appAnalyticsEventIdentifier=_appAnalyticsEventIdentifier;
+@property (strong, nonatomic) NSString *appAnalyticsEventPath; // @synthesize appAnalyticsEventPath=_appAnalyticsEventPath;
 @property (nonatomic) long long appConfigTreatmentId; // @synthesize appConfigTreatmentId=_appConfigTreatmentId;
+@property (strong, nonatomic) NSString *bundleOfferId; // @synthesize bundleOfferId=_bundleOfferId;
+@property (strong, nonatomic) NSString *bundlePurchaseId; // @synthesize bundlePurchaseId=_bundlePurchaseId;
+@property (nonatomic) int bundleSubscriptionStatus; // @synthesize bundleSubscriptionStatus=_bundleSubscriptionStatus;
 @property (nonatomic) int cellularRadioAccessTechnology; // @synthesize cellularRadioAccessTechnology=_cellularRadioAccessTechnology;
 @property (nonatomic) int deviceOrientation; // @synthesize deviceOrientation=_deviceOrientation;
 @property (nonatomic) long long duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) NTPBEventObject *eventObject; // @synthesize eventObject=_eventObject;
 @property (nonatomic) int gestureType; // @synthesize gestureType=_gestureType;
+@property (readonly, nonatomic) BOOL hasAppAnalyticsEventIdentifier;
+@property (readonly, nonatomic) BOOL hasAppAnalyticsEventPath;
 @property (nonatomic) BOOL hasAppConfigTreatmentId;
+@property (readonly, nonatomic) BOOL hasBundleOfferId;
+@property (readonly, nonatomic) BOOL hasBundlePurchaseId;
+@property (nonatomic) BOOL hasBundleSubscriptionStatus;
 @property (nonatomic) BOOL hasCellularRadioAccessTechnology;
 @property (nonatomic) BOOL hasDeviceOrientation;
 @property (nonatomic) BOOL hasDuration;
 @property (readonly, nonatomic) BOOL hasEventObject;
 @property (nonatomic) BOOL hasGestureType;
 @property (nonatomic) BOOL hasInterfaceOrientation;
+@property (nonatomic) BOOL hasIsBundlePurchaser;
 @property (nonatomic) BOOL hasIsPaidSubscriberDuringEvent;
 @property (nonatomic) BOOL hasIsPaidSubscriberFromAppStoreDuringEvent;
 @property (nonatomic) BOOL hasIsPaidSubscriberFromNewsDuringEvent;
@@ -88,6 +107,7 @@
 @property (readonly, nonatomic) BOOL hasWidgetUserId;
 @property (readonly, nonatomic) BOOL hasWindowFrameInScreen;
 @property (nonatomic) int interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
+@property (nonatomic) BOOL isBundlePurchaser; // @synthesize isBundlePurchaser=_isBundlePurchaser;
 @property (nonatomic) BOOL isPaidSubscriberDuringEvent; // @synthesize isPaidSubscriberDuringEvent=_isPaidSubscriberDuringEvent;
 @property (nonatomic) BOOL isPaidSubscriberFromAppStoreDuringEvent; // @synthesize isPaidSubscriberFromAppStoreDuringEvent=_isPaidSubscriberFromAppStoreDuringEvent;
 @property (nonatomic) BOOL isPaidSubscriberFromNewsDuringEvent; // @synthesize isPaidSubscriberFromNewsDuringEvent=_isPaidSubscriberFromNewsDuringEvent;
@@ -110,9 +130,11 @@
 
 + (Class)userPaidSubscriptionStatusType;
 - (void).cxx_destruct;
+- (int)StringAsBundleSubscriptionStatus:(id)arg1;
 - (int)StringAsCellularRadioAccessTechnology:(id)arg1;
 - (int)StringAsReachabilityStatus:(id)arg1;
 - (void)addUserPaidSubscriptionStatus:(id)arg1;
+- (id)bundleSubscriptionStatusAsString:(int)arg1;
 - (id)cellularRadioAccessTechnologyAsString:(int)arg1;
 - (void)clearUserPaidSubscriptionStatus;
 - (id)copyWithZone:(struct _NSZone *)arg1;

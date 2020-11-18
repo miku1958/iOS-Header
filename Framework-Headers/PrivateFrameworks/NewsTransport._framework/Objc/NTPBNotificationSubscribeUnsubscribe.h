@@ -16,10 +16,12 @@
     NSString *_campaignType;
     NSString *_channelId;
     NSString *_creativeId;
+    int _notificationSettingType;
     int _notificationSubscribeUnsubscribeLocation;
     int _userAction;
     BOOL _isPaidUserOfChannel;
     struct {
+        unsigned int notificationSettingType:1;
         unsigned int notificationSubscribeUnsubscribeLocation:1;
         unsigned int userAction:1;
         unsigned int isPaidUserOfChannel:1;
@@ -35,9 +37,11 @@
 @property (readonly, nonatomic) BOOL hasChannelId;
 @property (readonly, nonatomic) BOOL hasCreativeId;
 @property (nonatomic) BOOL hasIsPaidUserOfChannel;
+@property (nonatomic) BOOL hasNotificationSettingType;
 @property (nonatomic) BOOL hasNotificationSubscribeUnsubscribeLocation;
 @property (nonatomic) BOOL hasUserAction;
 @property (nonatomic) BOOL isPaidUserOfChannel; // @synthesize isPaidUserOfChannel=_isPaidUserOfChannel;
+@property (nonatomic) int notificationSettingType; // @synthesize notificationSettingType=_notificationSettingType;
 @property (nonatomic) int notificationSubscribeUnsubscribeLocation; // @synthesize notificationSubscribeUnsubscribeLocation=_notificationSubscribeUnsubscribeLocation;
 @property (nonatomic) int userAction; // @synthesize userAction=_userAction;
 

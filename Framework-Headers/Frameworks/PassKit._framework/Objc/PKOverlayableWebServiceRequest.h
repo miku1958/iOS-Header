@@ -6,9 +6,11 @@
 
 #import <PassKitCore/PKWebServiceRequest.h>
 
+#import <PassKitCore/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSDictionary, NSMutableDictionary;
 
-@interface PKOverlayableWebServiceRequest : PKWebServiceRequest
+@interface PKOverlayableWebServiceRequest : PKWebServiceRequest <NSSecureCoding>
 {
     NSMutableDictionary *_overlayParameters;
     NSMutableDictionary *_secureOverlayParameters;
@@ -22,14 +24,17 @@
 @property (nonatomic) BOOL requiresConfigurationForRetry; // @synthesize requiresConfigurationForRetry=_requiresConfigurationForRetry;
 @property (copy, nonatomic) NSDictionary *secureOverlayParameters;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_applyOverlayToDictionary:(id)arg1;
 - (void)_applySecureOverlayToDictionary:(id)arg1;
 - (void)_setOverriddenKeys:(id)arg1;
 - (void)_updateRequestForRedirect:(id)arg1 overrides:(id)arg2 webService:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)_updateRequestForRetry:(id)arg1 retryFields:(id)arg2 webService:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasOverlayParameters;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)overlayValueForKey:(id)arg1;
 - (id)secureOverlayValueForKey:(id)arg1;
 - (void)setOverlayValue:(id)arg1 forKey:(id)arg2;

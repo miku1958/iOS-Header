@@ -97,6 +97,7 @@
 - (BOOL)isInstallationKeybagRequired;
 - (void)isScanning:(CDUnknownBlockType)arg1;
 - (void)isUpdateReadyForInstallation:(CDUnknownBlockType)arg1;
+- (void)managedInstallationRequested:(id)arg1;
 - (void)noteConnectionDropped;
 - (void)noteServerExiting;
 - (id)observeInstallationConstraintChangesForDownload:(id)arg1 observer:(CDUnknownBlockType)arg2;

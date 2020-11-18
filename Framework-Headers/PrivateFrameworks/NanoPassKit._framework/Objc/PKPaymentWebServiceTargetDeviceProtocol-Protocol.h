@@ -6,15 +6,17 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, PKAppleAccountInformation, PKPass, PKPaymentPass, PKPaymentWebService, PKTrustedDeviceEnrollmentInfo, PKVerificationChannel;
+@class NSArray, NSData, NSDictionary, NSString, PKAppleAccountInformation, PKOSVersionRequirement, PKPass, PKPaymentPass, PKPaymentWebService, PKTrustedDeviceEnrollmentInfo, PKVerificationChannel;
 
 @protocol PKPaymentWebServiceTargetDeviceProtocol <NSObject>
 - (NSString *)bridgedClientInfo;
 - (BOOL)claimSecureElementForCurrentUser;
 - (void)claimSecureElementForCurrentUserWithCompletion:(void (^)(BOOL))arg1;
+- (NSString *)deviceClass;
 - (NSString *)deviceDescriptionForPaymentWebService:(PKPaymentWebService *)arg1;
 - (NSString *)deviceName;
 - (NSString *)deviceRegion;
+- (PKOSVersionRequirement *)deviceVersion;
 - (void)downloadAllPaymentPassesForPaymentWebService:(PKPaymentWebService *)arg1;
 - (void)noteProvisioningDidBegin;
 - (void)noteProvisioningDidEnd;
@@ -43,6 +45,7 @@
 
 @optional
 - (PKAppleAccountInformation *)appleAccountInformation;
+- (NSString *)cellularNetworkRegion;
 - (BOOL)felicaSecureElementIsAvailable;
 - (unsigned long long)maximumPaymentCards;
 - (void)noteForegroundVerificationObserverActive:(BOOL)arg1;
@@ -55,6 +58,7 @@
 - (void)renewAppleAccountWithCompletionHandler:(void (^)(long long, PKAppleAccountInformation *))arg1;
 - (BOOL)secureElementIsAvailable;
 - (void)setMaximumPaymentCards:(unsigned long long)arg1;
+- (void)signatureForAuthToken:(NSString *)arg1 webService:(PKPaymentWebService *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)startBackgroundVerificationObserverForPass:(PKPaymentPass *)arg1 verificationMethod:(PKVerificationChannel *)arg2;
 - (BOOL)supportsCredentialType:(long long)arg1;
 - (BOOL)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;

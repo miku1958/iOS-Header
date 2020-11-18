@@ -6,7 +6,7 @@
 
 #import <ConfigurationEngineModel/CEMPayloadBase.h>
 
-@class CEMNetworkVPNDeclaration_SecurityAssociationParameters, NSNumber, NSString;
+@class CEMNetworkVPNDeclaration_SecurityAssociationParameters, NSArray, NSNumber, NSString;
 
 @interface CEMNetworkVPNDeclaration_AlwaysOnTunnelConfiguration : CEMPayloadBase
 {
@@ -32,6 +32,7 @@
     NSString *_payloadServerCertificateCommonName;
     CEMNetworkVPNDeclaration_SecurityAssociationParameters *_payloadIKESecurityAssociationParameters;
     CEMNetworkVPNDeclaration_SecurityAssociationParameters *_payloadChildSecurityAssociationParameters;
+    NSArray *_payloadInterfaces;
 }
 
 @property (copy, nonatomic) NSString *payloadAuthName; // @synthesize payloadAuthName=_payloadAuthName;
@@ -45,6 +46,7 @@
 @property (copy, nonatomic) NSNumber *payloadEnablePFS; // @synthesize payloadEnablePFS=_payloadEnablePFS;
 @property (copy, nonatomic) NSNumber *payloadExtendedAuthEnabled; // @synthesize payloadExtendedAuthEnabled=_payloadExtendedAuthEnabled;
 @property (copy, nonatomic) CEMNetworkVPNDeclaration_SecurityAssociationParameters *payloadIKESecurityAssociationParameters; // @synthesize payloadIKESecurityAssociationParameters=_payloadIKESecurityAssociationParameters;
+@property (copy, nonatomic) NSArray *payloadInterfaces; // @synthesize payloadInterfaces=_payloadInterfaces;
 @property (copy, nonatomic) NSString *payloadLocalIdentifier; // @synthesize payloadLocalIdentifier=_payloadLocalIdentifier;
 @property (copy, nonatomic) NSNumber *payloadNATKeepAliveInterval; // @synthesize payloadNATKeepAliveInterval=_payloadNATKeepAliveInterval;
 @property (copy, nonatomic) NSNumber *payloadNATKeepAliveOffloadEnable; // @synthesize payloadNATKeepAliveOffloadEnable=_payloadNATKeepAliveOffloadEnable;
@@ -58,8 +60,8 @@
 @property (copy, nonatomic) NSNumber *payloadUseConfigurationAttributeInternalIPSubnet; // @synthesize payloadUseConfigurationAttributeInternalIPSubnet=_payloadUseConfigurationAttributeInternalIPSubnet;
 
 + (id)allowedPayloadKeys;
-+ (id)buildRequiredOnlyWithRemoteAddress:(id)arg1 withLocalIdentifier:(id)arg2 withRemoteIdentifier:(id)arg3 withAuthenticationMethod:(id)arg4;
-+ (id)buildWithRemoteAddress:(id)arg1 withLocalIdentifier:(id)arg2 withRemoteIdentifier:(id)arg3 withAuthenticationMethod:(id)arg4 withPayloadCertificateUUID:(id)arg5 withSharedSecret:(id)arg6 withExtendedAuthEnabled:(id)arg7 withDisableRedirect:(id)arg8 withDisableMOBIKE:(id)arg9 withUseConfigurationAttributeInternalIPSubnet:(id)arg10 withEnablePFS:(id)arg11 withEnableCertificateRevocationCheck:(id)arg12 withNATKeepAliveOffloadEnable:(id)arg13 withNATKeepAliveInterval:(id)arg14 withAuthName:(id)arg15 withAuthPassword:(id)arg16 withDeadPeerDetectionRate:(id)arg17 withProtocolType:(id)arg18 withServerCertificateIssuerCommonName:(id)arg19 withServerCertificateCommonName:(id)arg20 withIKESecurityAssociationParameters:(id)arg21 withChildSecurityAssociationParameters:(id)arg22;
++ (id)buildRequiredOnlyWithRemoteAddress:(id)arg1 withLocalIdentifier:(id)arg2 withRemoteIdentifier:(id)arg3 withAuthenticationMethod:(id)arg4 withProtocolType:(id)arg5;
++ (id)buildWithRemoteAddress:(id)arg1 withLocalIdentifier:(id)arg2 withRemoteIdentifier:(id)arg3 withAuthenticationMethod:(id)arg4 withPayloadCertificateUUID:(id)arg5 withSharedSecret:(id)arg6 withExtendedAuthEnabled:(id)arg7 withDisableRedirect:(id)arg8 withDisableMOBIKE:(id)arg9 withUseConfigurationAttributeInternalIPSubnet:(id)arg10 withEnablePFS:(id)arg11 withEnableCertificateRevocationCheck:(id)arg12 withNATKeepAliveOffloadEnable:(id)arg13 withNATKeepAliveInterval:(id)arg14 withAuthName:(id)arg15 withAuthPassword:(id)arg16 withDeadPeerDetectionRate:(id)arg17 withProtocolType:(id)arg18 withServerCertificateIssuerCommonName:(id)arg19 withServerCertificateCommonName:(id)arg20 withIKESecurityAssociationParameters:(id)arg21 withChildSecurityAssociationParameters:(id)arg22 withInterfaces:(id)arg23;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)loadPayload:(id)arg1 error:(id *)arg2;

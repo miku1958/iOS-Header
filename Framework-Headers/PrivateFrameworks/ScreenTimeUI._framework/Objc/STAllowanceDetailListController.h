@@ -16,6 +16,8 @@
 @interface STAllowanceDetailListController : PSListController <STUIDateTimePickerCellDelegate, STCustomizeDaysListControllerDelegate, STAllowanceSetupListControllerDelegate>
 {
     BOOL _isSetupController;
+    BOOL _useBackButton;
+    BOOL _creatingNewAllowance;
     BOOL _didDeleteAllowance;
     id<STAllowanceDetailListControllerDelegate> _delegate;
     STAllowance *_allowance;
@@ -25,19 +27,14 @@
     PSSpecifier *_timePickerSpecifier;
     PSSpecifier *_customizeDaysSpecifier;
     PSSpecifier *_selectedTimeSpecifier;
-    PSSpecifier *_appsCategoriesGroupSpecifier;
     NSArray *_budgetedItemSpecifiers;
-    PSSpecifier *_atAllowanceGroupSpecifier;
-    PSSpecifier *_atAllowanceSpecifier;
     UIColor *_defaultTimeCellDetailTextColor;
 }
 
 @property (copy, nonatomic) STAllowance *allowance; // @synthesize allowance=_allowance;
-@property (strong, nonatomic) PSSpecifier *appsCategoriesGroupSpecifier; // @synthesize appsCategoriesGroupSpecifier=_appsCategoriesGroupSpecifier;
-@property (strong, nonatomic) PSSpecifier *atAllowanceGroupSpecifier; // @synthesize atAllowanceGroupSpecifier=_atAllowanceGroupSpecifier;
-@property (strong, nonatomic) PSSpecifier *atAllowanceSpecifier; // @synthesize atAllowanceSpecifier=_atAllowanceSpecifier;
 @property (strong, nonatomic) NSArray *budgetedItemSpecifiers; // @synthesize budgetedItemSpecifiers=_budgetedItemSpecifiers;
 @property (readonly, nonatomic) NSObject<STRootViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
+@property (nonatomic) BOOL creatingNewAllowance; // @synthesize creatingNewAllowance=_creatingNewAllowance;
 @property (strong, nonatomic) PSSpecifier *customizeDaysSpecifier; // @synthesize customizeDaysSpecifier=_customizeDaysSpecifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) UIColor *defaultTimeCellDetailTextColor; // @synthesize defaultTimeCellDetailTextColor=_defaultTimeCellDetailTextColor;
@@ -47,15 +44,20 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isSetupController; // @synthesize isSetupController=_isSetupController;
 @property (strong, nonatomic) PSSpecifier *selectedTimeSpecifier; // @synthesize selectedTimeSpecifier=_selectedTimeSpecifier;
+@property (readonly) BOOL shouldShowCompatibilityAlert;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PSSpecifier *timeGroupSpecifier; // @synthesize timeGroupSpecifier=_timeGroupSpecifier;
 @property (strong, nonatomic) PSSpecifier *timePickerSpecifier; // @synthesize timePickerSpecifier=_timePickerSpecifier;
 @property (strong, nonatomic) PSSpecifier *timeSpecifier; // @synthesize timeSpecifier=_timeSpecifier;
+@property BOOL useBackButton; // @synthesize useBackButton=_useBackButton;
 
 - (void).cxx_destruct;
+- (id)_allowanceEnabled:(id)arg1;
+- (id)_askForMoreTime:(id)arg1;
+- (void)_setAllowanceEnabled:(id)arg1 specifier:(id)arg2;
+- (void)_setAskForMoreTime:(id)arg1 specifier:(id)arg2;
 - (void)allowanceSetupListController:(id)arg1 didSelectAllowanceIdentifiers:(id)arg2;
 - (void)allowanceSetupListControllerDidCancel:(id)arg1;
-- (id)askForMoreTime:(id)arg1;
 - (id)atEndOfLimitFooterText;
 - (id)budgetTime;
 - (BOOL)canBeShownFromSuspendedState;
@@ -72,7 +74,6 @@
 - (id)initWithCoordinator:(id)arg1;
 - (void)loadView;
 - (void)saveButtonTapped:(id)arg1;
-- (void)setAskForMoreTime:(id)arg1 specifier:(id)arg2;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (void)showCustomizeDaysController:(id)arg1;
 - (void)showOrHideCustomizeDaysSpecifier;

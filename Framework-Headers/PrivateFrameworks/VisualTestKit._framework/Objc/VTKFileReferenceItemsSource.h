@@ -23,8 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)referenceImageURLWithTestCase:(id)arg1;
-- (id)referenceImageWithID:(id)arg1 testCase:(id)arg2;
+- (id)referenceImageWithID:(id)arg1 testCase:(id)arg2 error:(id *)arg3;
 
 @end
 

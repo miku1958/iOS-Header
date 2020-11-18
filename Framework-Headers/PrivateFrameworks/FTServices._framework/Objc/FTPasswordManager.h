@@ -38,6 +38,8 @@
 - (id)_profileIDForUsername:(id)arg1 inStore:(id)arg2;
 - (void)_setKeychainAuthToken:(id)arg1 forUsername:(id)arg2 service:(id)arg3;
 - (void)_setKeychainPassword:(id)arg1 forUsername:(id)arg2 service:(id)arg3;
+- (BOOL)_shouldForceSilentOnlyAuthForUsername:(id)arg1 serviceIdentifier:(id)arg2;
+- (BOOL)_usernameHasCorrespondingIdMSAccount:(id)arg1;
 - (id)acAccountWithProfileID:(id)arg1 username:(id)arg2 accountStore:(id)arg3;
 - (double)authTokenGracePeriod;
 - (void)cancelRequestID:(id)arg1 serviceIdentifier:(id)arg2;

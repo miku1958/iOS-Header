@@ -41,7 +41,7 @@
 @property (copy, nonatomic) CDUnknownBlockType beginLyricsEventCallback;
 @property (nonatomic) BOOL canBeNowPlayingApp;
 @property (copy, nonatomic) CDUnknownBlockType commandCallback;
-@property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
+@property (strong, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
 @property (copy, nonatomic) CDUnknownBlockType endLyricsEventCallback;
 @property (nonatomic) unsigned int hardwareRemoteBehavior; // @synthesize hardwareRemoteBehavior=_hardwareRemoteBehavior;
 @property (nonatomic) unsigned int inputMode;
@@ -65,7 +65,6 @@
 - (id)nowPlayingClientForPlayerPath:(id)arg1;
 - (void)removeClient:(id)arg1;
 - (void)restoreNowPlayingClientState;
-- (void)updateDeviceInfo:(id)arg1;
 
 @end
 

@@ -32,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithLeadingComponent:(id)arg1 trailingComponent:(id)arg2 approximateLocation:(struct CGPoint)arg3 path:(id)arg4;
+- (BOOL)isEqualToMarker:(id)arg1;
 
 @end
 

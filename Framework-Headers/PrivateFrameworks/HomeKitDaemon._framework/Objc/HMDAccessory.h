@@ -37,11 +37,11 @@
     HMDHome *_home;
     NSString *_providedName;
     NSString *_configurationAppIdentifier;
-    NSString *_configuredName;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFMessageDispatcher *_msgDispatcher;
     NSNumber *_categoryIdentifier;
+    NSString *_configuredName;
     unsigned long long _configNumber;
     HMDApplicationRegistry *_appRegistry;
     HMDAccessoryTransaction *_transaction;

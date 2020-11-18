@@ -9,28 +9,30 @@
 #import <iWorkImport/NSFilePresenter-Protocol.h>
 
 @class NSData, NSError, NSOperationQueue, NSSet, NSString, NSURL, TSUURLTracker;
-@protocol OS_dispatch_queue, TSUURLTrackerDelegate;
+@protocol OS_dispatch_queue, TSULogContext, TSUURLTrackerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface TSUURLTrackerFilePresenter : NSObject <NSFilePresenter>
 {
     TSUURLTracker *_urlTracker;
+    id<TSULogContext> _logContext;
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _hasStarted;
-    NSData *_bookmarkDataIfAvailable;
     BOOL _forceEncodingBookmarkData;
-    NSError *_latestError;
+    NSError *_latestBookmarkError;
     id<TSUURLTrackerDelegate> _delegate;
+    struct os_unfair_lock_s _propertiesLock;
+    NSURL *_URLIfAvailable;
+    NSData *_bookmarkDataIfAvailable;
     BOOL _deleted;
     NSOperationQueue *_presentedItemOperationQueue;
-    NSURL *_URLIfAvailable;
 }
 
-@property (copy) NSURL *URLIfAvailable; // @synthesize URLIfAvailable=_URLIfAvailable;
+@property (readonly) NSURL *URLIfAvailable;
 @property (readonly) NSData *bookmarkData;
 @property (readonly) NSData *bookmarkDataIfAvailable;
 @property (readonly, copy) NSString *debugDescription;
-@property BOOL deleted; // @synthesize deleted=_deleted;
+@property (readonly) BOOL deleted;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSSet *observedPresentedItemUbiquityAttributes;
@@ -41,17 +43,21 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)URLAndReturnError:(id *)arg1;
-- (id)_URLAndReturnError:(id *)arg1;
-- (id)_bookmarkData;
-- (id)_bookmarkDataAndReturnError:(id *)arg1;
-- (id)_description;
-- (void)_notifyURLTrackerPresentedItemContentsDidChange;
-- (void)_notifyURLTrackerPresentedItemDidMoveToURL:(id)arg1;
-- (void)_notifyURLTrackerPresentedItemWasDeleted;
 - (void)accommodatePresentedItemDeletionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)bookmarkDataAndReturnError:(id *)arg1;
 - (id)init;
-- (id)initWithURL:(id)arg1 bookmarkData:(id)arg2 urlTracker:(id)arg3 delegate:(id)arg4;
+- (id)initWithURL:(id)arg1 bookmarkData:(id)arg2 urlTracker:(id)arg3 logContext:(id)arg4 delegate:(id)arg5;
+- (id)p_URLAndReturnError:(id *)arg1;
+- (id)p_URLIfAvailableLoadingLastKnownURLFromBookmark:(BOOL)arg1;
+- (id)p_bookmarkData;
+- (id)p_bookmarkDataAndReturnError:(id *)arg1;
+- (id)p_lastKnownURLFromBookmark:(id)arg1;
+- (void)p_notifyURLTrackerPresentedItemContentsDidChange;
+- (void)p_notifyURLTrackerPresentedItemDidMoveToURL:(id)arg1;
+- (void)p_notifyURLTrackerPresentedItemWasDeleted;
+- (void)p_setBookmarkDataIfAvailable:(id)arg1;
+- (void)p_setDeleted:(BOOL)arg1;
+- (void)p_setURLIfAvailable:(id)arg1;
 - (void)pauseForEnteringBackground:(BOOL)arg1;
 - (void)presentedItemDidChangeUbiquityAttributes:(id)arg1;
 - (void)presentedItemDidMoveToURL:(id)arg1;

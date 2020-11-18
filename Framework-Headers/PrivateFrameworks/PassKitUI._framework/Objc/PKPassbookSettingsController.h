@@ -12,7 +12,7 @@
 #import <PassKitUI/PKPeerPaymentAccountResolutionControllerDelegate-Protocol.h>
 #import <PassKitUI/PKSwitchSpinnerTableCellDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentSetupAboutViewController, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
+@class NSArray, NSMutableDictionary, NSString, PKExpressPassController, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentSetupAboutViewController, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
 @protocol PKPassLibraryDataProvider, PKPassbookPeerPaymentSettingsDelegate, PKPassbookSettingsDataSource, PKPassbookSettingsDelegate, PKPaymentDataProvider, PKPaymentOptionsProtocol;
 
 @interface PKPassbookSettingsController : NSObject <PKPaymentServiceDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPaymentDataProviderDelegate, PKSwitchSpinnerTableCellDelegate, PKPaymentPassTableCellDelegate>
@@ -50,10 +50,14 @@
     PKPeerPaymentAccountResolutionController *_peerPaymentAccountResolutionController;
     PKPeerPaymentAccount *_peerPaymentAccount;
     BOOL _registeringForPeerPayment;
-    NSArray *_expressTransitPasses;
-    NSString *_defaultExpressTransitPassIdentifier;
+    PKExpressPassController *_expressPassController;
+    BOOL _hasExpressCapablePass;
+    NSString *_expressTransitSubtitleText;
+    NSString *_expressTransitSectionFooterText;
     PSSpecifier *_defaultExpressTransitSpecifier;
-    NSMutableDictionary *_latestTransitPassProperties;
+    NSMutableDictionary *_lastestTransitBalanceModel;
+    id<PKPaymentDataProvider> _companionPaymentDataProvider;
+    int _notifyToken;
     id<PKPassbookSettingsDelegate> _delegate;
 }
 
@@ -75,19 +79,18 @@
 - (id)_defaultShippingAddressSpecifier;
 - (id)_defaultsGroupSpecifiers;
 - (id)_displayableStringForLabeledValue:(id)arg1;
-- (id)_expressTransitFooter;
-- (void)_finishDefaultExpressTransitUpdateWithContainer:(id)arg1 preference:(id)arg2;
+- (void)_expressPassDidChange;
+- (id)_fallbackExpressTransitFooterText;
+- (void)_fetchBalancesAndTransitPassPropertiesForPass:(id)arg1 withDataProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_getDefaultContactEmail;
 - (id)_getDefaultContactPhone;
 - (id)_getDefaultPaymentCard;
 - (id)_getDefaultShippingAddress;
-- (void)_handleDefaultExpressTransitPassChangedTo:(id)arg1 withContainer:(id)arg2 preference:(id)arg3;
 - (void)_handleDefaultPaymentPassChangedTo:(id)arg1 withSender:(id)arg2 optionsController:(id)arg3 canPrompt:(BOOL)arg4;
 - (void)_handleProvisioningError:(id)arg1 viewController:(id)arg2;
 - (id)_handoffSwitchGroupSpecifiers;
 - (id)_handoffSwitchSettingForSpecifier:(id)arg1;
 - (BOOL)_isPeerPaymentRegistered;
-- (id)_latestTransitProperties:(id)arg1;
 - (id)_lockscreenSwitchGroupSpecifiers;
 - (id)_lockscreenSwitchSettingForSpecifier:(id)arg1;
 - (void)_openPrivacyLink;
@@ -102,17 +105,16 @@
 - (id)_peerPaymentSwitchSpecifier;
 - (void)_performPhoneToWatchProvisioningForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_presentFeatureNotEnabledForDemoForSpecifier:(id)arg1;
+- (void)_presentPaymentSetupViewController:(id)arg1 paymentPass:(id)arg2;
 - (void)_presentPeerPaymentReOpenCardFlowForSpecifier:(id)arg1;
 - (void)_presentPeerPaymentSetupFlowForSpecifier:(id)arg1;
 - (void)_presentPeerPaymentSetupFlowForSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentPeerPaymentSetupFlowWithAmount:(id)arg1 flowState:(unsigned long long)arg2 senderAddress:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_presentProvisioningPaymentPassNavController:(id)arg1 paymentPass:(id)arg2;
 - (void)_regionConfigurationDidChangeNotification;
 - (void)_registerForPeerPaymentWithSpecifier:(id)arg1;
 - (void)_reloadPassData;
 - (void)_requestDelegatePresentViewController:(id)arg1;
 - (id)_restrictedModeSpecifier;
-- (void)_saveLatestTransitProperties:(id)arg1 forPass:(id)arg2;
 - (void)_setCardAddProvisioningButtonEnabled:(BOOL)arg1 forPaymentPass:(id)arg2;
 - (void)_setHandoffSwitchSetting:(id)arg1 forSpecifier:(id)arg2;
 - (void)_setLockscreenSwitchSetting:(id)arg1 forSpecifier:(id)arg2;
@@ -122,17 +124,17 @@
 - (void)_showDefaultContactPhoneOptions:(id)arg1;
 - (void)_showDefaultPaymentOptions:(id)arg1;
 - (void)_showDefaultShippingAddressOptions:(id)arg1;
-- (void)_showExpressTransitOptions:(id)arg1;
 - (id)_specifierForPassUniqueID:(id)arg1;
 - (id)_transitDefaultsGroupSpecifiers;
 - (void)_transitPropertiesForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_unregisterForPeerPaymentWithSpecifier:(id)arg1;
 - (void)_updateAddButtonSpecifier;
+- (void)_updateBalancesWithServerBalances:(id)arg1 transitPassProperties:(id)arg2 forPassWithUniqueIdentifier:(id)arg3;
 - (void)_updateCardsGroupSpecifier;
 - (void)_updateCompanionGroupSpecifier;
 - (void)_updateCompanionPassesAddButton;
 - (void)_updateDefaultCardsPreferences;
-- (void)_updateExpressPassIdentifiersWithReload:(BOOL)arg1;
+- (void)_updateTransitExpressPassIdentifiersWithReload:(BOOL)arg1;
 - (BOOL)_useAlternateExpressTitle;
 - (void)addButtonPressedForPaymentPass:(id)arg1;
 - (void)addCardTapped;
@@ -140,9 +142,11 @@
 - (void)addCardTappedForPaymentPassWithUniqueID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 dataSource:(id)arg2 context:(long long)arg3;
+- (void)openExpressTransitSettings:(id)arg1;
 - (void)openPaymentSetupWithMode:(long long)arg1 referrerIdentifier:(id)arg2;
 - (void)openPeerPaymentSetupWithCurrenyAmount:(id)arg1 state:(unsigned long long)arg2 senderAddress:(id)arg3;
 - (id)passWithUniqueIdentifier:(id)arg1;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;

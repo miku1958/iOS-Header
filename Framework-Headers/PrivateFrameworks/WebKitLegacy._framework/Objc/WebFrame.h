@@ -85,7 +85,7 @@
 - (id)_markDOMRange;
 - (BOOL)_needsLayout;
 - (id)_nodesFromList:(Vector_1d266cd7 *)arg1;
-- (unsigned int)_paintBehaviorForDestinationContext:(struct CGContext *)arg1;
+- (OptionSet_8e32cbf3)_paintBehaviorForDestinationContext:(struct CGContext *)arg1;
 - (unsigned int)_pendingFrameUnloadEventCount;
 - (id)_rectsForRange:(id)arg1;
 - (void)_replaceSelectionWithFragment:(id)arg1 selectReplacement:(BOOL)arg2 smartReplace:(BOOL)arg3 matchStyle:(BOOL)arg4;
@@ -112,7 +112,7 @@
 - (void)_setSelectionFromNone;
 - (void)_setShouldCreateRenderers:(BOOL)arg1;
 - (void)_setTextAutosizingWidth:(double)arg1;
-- (void)_setTypingStyle:(id)arg1 withUndoAction:(int)arg2;
+- (void)_setTypingStyle:(id)arg1 withUndoAction:(unsigned char)arg2;
 - (void)_setVisibleSize:(struct CGSize)arg1;
 - (id)_stringByEvaluatingJavaScriptFromString:(id)arg1;
 - (id)_stringByEvaluatingJavaScriptFromString:(id)arg1 forceUserGesture:(BOOL)arg2;

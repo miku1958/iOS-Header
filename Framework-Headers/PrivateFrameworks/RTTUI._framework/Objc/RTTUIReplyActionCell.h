@@ -13,9 +13,9 @@
     id<RTTUIReplyActionCellDelegate> _delegate;
 }
 
-@property (nonatomic) id<RTTUIReplyActionCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<RTTUIReplyActionCellDelegate> delegate; // @synthesize delegate=_delegate;
 
-- (void)arouetButtonDidActivate:(id)arg1;
+- (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 andDelegate:(id)arg3;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;

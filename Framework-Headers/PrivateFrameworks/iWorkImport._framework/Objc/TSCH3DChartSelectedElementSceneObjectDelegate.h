@@ -24,18 +24,18 @@ __attribute__((visibility("hidden")))
 - (void)didEndProcessingSceneObject:(id)arg1;
 - (void)didGenerateShaderEffectsForSeriesAtIndex:(const tvec2_3b141483 *)arg1 effects:(id)arg2 sceneObject:(id)arg3 pipeline:(id)arg4;
 - (void)didProcessElements:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
-- (void)didTransformElement:(const struct RenderElementInfo *)arg1 sceneObject:(id)arg2;
+- (void)didTransformElement:(id)arg1 sceneObject:(id)arg2;
 - (id)initWithSelectedSeriesIndex:(unsigned long long)arg1;
 - (BOOL)renderPassDelayDisallowedForSceneObject:(id)arg1 pipeline:(id)arg2;
-- (struct ElementRenderPass)renderPassForElement:(const struct RenderElementInfo *)arg1 sceneObject:(id)arg2;
+- (struct ElementRenderPass)renderPassForElement:(id)arg1 sceneObject:(id)arg2;
 - (struct ElementRenderPass)renderPassForSceneObject:(id)arg1;
 - (BOOL)willBeginProcessingSceneObject:(id)arg1;
-- (BOOL)willProcessElement:(const struct RenderElementInfo *)arg1 sceneObject:(id)arg2;
+- (BOOL)willProcessElement:(id)arg1 sceneObject:(id)arg2;
 - (BOOL)willProcessElements:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
 - (BOOL)willProcessSeries:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
-- (BOOL)willRenderElement:(const struct RenderElementInfo *)arg1 sceneObject:(id)arg2;
-- (BOOL)willSubmitElement:(const struct RenderElementInfo *)arg1 sceneObject:(id)arg2;
-- (BOOL)willUpdateElementEffectsStatesForElement:(const struct RenderElementInfo *)arg1 sceneObject:(id)arg2;
+- (BOOL)willRenderElement:(id)arg1 sceneObject:(id)arg2;
+- (BOOL)willSubmitElement:(id)arg1 sceneObject:(id)arg2;
+- (BOOL)willUpdateElementEffectsStatesForElement:(id)arg1 sceneObject:(id)arg2;
 
 @end
 

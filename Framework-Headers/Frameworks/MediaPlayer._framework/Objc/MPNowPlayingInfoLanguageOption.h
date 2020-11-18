@@ -20,11 +20,13 @@
 @property (readonly, nonatomic) NSString *languageTag; // @dynamic languageTag;
 @property (readonly, nonatomic) void *mrLanguageOption; // @synthesize mrLanguageOption=_mrLanguageOption;
 
+- (id)copyExternalRepresentation;
 - (void)dealloc;
 - (id)initWithMRLanguageOption:(void *)arg1;
 - (id)initWithType:(unsigned long long)arg1 languageTag:(id)arg2 characteristics:(id)arg3 displayName:(id)arg4 identifier:(id)arg5;
 - (BOOL)isAutomaticAudibleLanguageOption;
 - (BOOL)isAutomaticLegibleLanguageOption;
+- (BOOL)isEqualToLanguageOption:(id)arg1;
 
 @end
 

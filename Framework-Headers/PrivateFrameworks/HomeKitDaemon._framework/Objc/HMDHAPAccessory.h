@@ -78,6 +78,7 @@
 @property (strong, nonatomic) NSMutableArray *discoveredServices; // @synthesize discoveredServices=_discoveredServices;
 @property (readonly, copy, nonatomic) NSNumber *hapInstanceId;
 @property (nonatomic) BOOL hardwareSupport; // @synthesize hardwareSupport=_hardwareSupport;
+@property (readonly) BOOL hasTelevisionService;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *identifiersForBridgedAccessories; // @synthesize identifiersForBridgedAccessories=_identifiersForBridgedAccessories;
 @property BOOL keyGenerationInProgress; // @synthesize keyGenerationInProgress=_keyGenerationInProgress;
@@ -126,7 +127,6 @@
 - (id)_dayOfTheWeekCharacteristic;
 - (void)_deRegisterForTimeMonitor;
 - (void)_disableNotificationsForBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)_doesAccessoryProvideServiceOfType:(id)arg1;
 - (void)_enableBroadcastNotifications:(BOOL)arg1 hapAccessory:(id)arg2 forCharacteristics:(id)arg3;
 - (void)_enableNotification:(BOOL)arg1 forCharacteristics:(id)arg2 hapAccessory:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_enableNotification:(BOOL)arg1 forCharacteristics:(id)arg2 message:(id)arg3 clientIdentifier:(id)arg4;
@@ -147,7 +147,9 @@
 - (void)_handleServiceRemovedTransaction:(id)arg1 message:(id)arg2;
 - (void)_handleUpdateAssociatedServiceType:(id)arg1;
 - (void)_handleUpdateAuthorizationData:(id)arg1;
+- (void)_handleUpdateMediaSourceDisplayOrder:(id)arg1;
 - (void)_logDuetEventIfNeeded:(id)arg1 clientName:(id)arg2;
+- (id)_messagesForUpdatedRoom:(id)arg1;
 - (void)_notifyCharacteristicNotificationChangedForCharacteristic:(id)arg1 enableNotification:(BOOL)arg2 message:(id)arg3;
 - (void)_notifyCharacteristicNotificationChanges:(id)arg1 enableNotification:(BOOL)arg2 message:(id)arg3 clientIdentifier:(id)arg4;
 - (void)_notifyClientsOfTargetControlSupportUpdate;
@@ -160,6 +162,7 @@
 - (void)_readCharacteristicValues:(id)arg1 localOperationRequired:(BOOL)arg2 source:(unsigned long long)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5 errorBlock:(CDUnknownBlockType)arg6;
 - (void)_readValueForCharacteristic:(id)arg1 hapAccessory:(id)arg2 requestMessage:(id)arg3;
 - (void)_readandWriteToCurrentTime:(id)arg1 errorBlock:(CDUnknownBlockType)arg2;
+- (void)_reconcileAccessControlSetting;
 - (void)_reenableNotificationsOnWatch;
 - (void)_registerForMessages;
 - (void)_registerForTimeMonitor;
@@ -253,6 +256,7 @@
 - (void)handleMultipleCharacteristicsUpdated:(id)arg1 message:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handlePairedStateChange:(BOOL)arg1;
 - (void)handleRemoteGatewayNotificationRegistration:(id)arg1 enable:(BOOL)arg2 enableTime:(id)arg3;
+- (void)handleRoomNameChanged:(id)arg1;
 - (void)handleUpdatedMinimumUserPrivilege:(long long)arg1;
 - (void)handleUpdatedPassword:(id)arg1;
 - (id)hapCharacteristicWriteRequests:(id)arg1 hapAccessory:(id)arg2 hmdResponses:(id *)arg3 mapping:(id *)arg4;
@@ -274,7 +278,7 @@
 - (BOOL)isSecuritySessionOpen;
 - (long long)linkSpeed;
 - (void)logDuetEventIfNeeded:(id)arg1 clientName:(id)arg2;
-- (void)makeServiceNameConsistent:(id)arg1 withName:(id)arg2;
+- (void)makeServiceNameConsistent:(id)arg1 withName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)matchesHAPAccessory:(id)arg1;
 - (BOOL)matchesHAPAccessoryWithServerIdentifier:(id)arg1 linkType:(long long *)arg2;
 - (BOOL)matchesHMDAccessoryTransportInformationWithServerIdentifier:(id)arg1 instanceID:(id)arg2;
@@ -360,6 +364,7 @@
 - (void)verifyPairingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)writeCharacteristicValues:(id)arg1 source:(unsigned long long)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)writeTimeInformationCharacteristicsForAccessory:(id)arg1;
+- (void)writeValue:(id)arg1 toCharacteristic:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

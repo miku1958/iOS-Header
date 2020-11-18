@@ -6,29 +6,26 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXComponentAnimationController, SXComponentBehaviorController, SXComponentController, SXComponentView, SXFullscreenCanvasController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXTangierController, SXViewport, UIView, UIViewController;
-@protocol SXAdDocumentStateManager, SXTextSelectionManager;
+@class SXComponentAnimationController, SXComponentBehaviorController, SXComponentView, SXFullscreenCanvasController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXTangierController, UIViewController;
+@protocol SXAdDocumentStateManager, SXComponentController, SXTextSelectionManager;
 
 @protocol SXPresentationDelegate <NSObject>
 
 @property (readonly, nonatomic) id<SXAdDocumentStateManager> adDocumentStateManager;
 @property (readonly, nonatomic) SXComponentAnimationController *animationController;
 @property (readonly, nonatomic) SXComponentBehaviorController *behaviorController;
-@property (readonly, nonatomic) SXComponentController *componentController;
+@property (readonly, nonatomic) id<SXComponentController> componentController;
 @property (readonly, nonatomic) SXFullscreenVideoPlaybackManager *fullscreenVideoPlaybackManager;
 @property (readonly, nonatomic) SXMediaPlaybackController *mediaPlaybackController;
 @property (readonly, nonatomic) SXPresentationAttributes *presentationAttributes;
 @property (readonly, nonatomic) SXTangierController *tangierController;
 @property (readonly, nonatomic) id<SXTextSelectionManager> textSelectionManager;
-@property (readonly, nonatomic) SXViewport *viewport;
 
 - (BOOL)addInteractivityFocusForComponent:(SXComponentView *)arg1;
 - (BOOL)allowInteractivityFocusForComponent:(SXComponentView *)arg1;
 - (void)dismissFullscreenCanvasForComponent:(SXComponentView *)arg1;
 - (BOOL)isScrolling;
-- (void)maintainPositionOfViewWhileScrolling:(UIView *)arg1;
 - (UIViewController *)presentingContentViewController;
-- (void)releasePositionOfView:(UIView *)arg1;
 - (void)removeInteractivityFocusForComponent:(SXComponentView *)arg1;
 - (UIViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1 canvasController:(SXFullscreenCanvasController *)arg2 withCompletionBlock:(void (^)(void))arg3;
 - (UIViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1 withCompletionBlock:(void (^)(void))arg2;

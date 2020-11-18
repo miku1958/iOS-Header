@@ -11,16 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithIdAddress:(id)arg1 fromIndex:(int)arg2 toIndex:(int)arg3 dominating:(BOOL)arg4;
-- (id)initWithIdAddress:(id)arg1 fromIndex:(int)arg2 toIndex:(int)arg3 dominating:(BOOL)arg4 noop:(BOOL)arg5;
-- (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 fromIndex:(int)arg2 toIndex:(int)arg3 dominating:(BOOL)arg4;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 fromIndex:(int)arg2 toIndex:(int)arg3 dominating:(BOOL)arg4 noop:(BOOL)arg5;
+- (shared_ptr_f167ad79)newTransformableOperation;
+- (int)placementType;
 - (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
-- (id)transformAddOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformRearrangeOrPlacementOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformRemoveOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformReplaceRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformUpdateIdOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
-- (id)transformUpdateRangeOperation:(id)arg1 isHigherPriority:(BOOL)arg2 history:(id)arg3;
 
 @end
 

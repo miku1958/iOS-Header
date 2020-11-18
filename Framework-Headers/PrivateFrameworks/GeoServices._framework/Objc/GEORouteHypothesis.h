@@ -60,7 +60,7 @@
 - (void)_updateHistoricTrafficDensity:(double)arg1 staticTravelTime:(double)arg2;
 - (void)_updateTrafficDensityDescription:(id)arg1;
 - (void)_updateTrafficIncidents:(id)arg1;
-- (void)_updateTravelStateHasArrived:(BOOL)arg1 isTraveling:(BOOL)arg2 travelScore:(double)arg3;
+- (void)_updateTravelStateHasArrived:(BOOL)arg1 isTraveling:(BOOL)arg2 travelScore:(double)arg3 isNavigating:(BOOL)arg4 isNavigatingToDestination:(BOOL)arg5;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

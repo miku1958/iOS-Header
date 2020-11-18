@@ -17,10 +17,11 @@
     NSArray *_childBookmarks;
 }
 
-@property (strong, nonatomic) NSArray *childBookmarks; // @synthesize childBookmarks=_childBookmarks;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
+@property (copy, nonatomic) NSArray *childBookmarks; // @synthesize childBookmarks=_childBookmarks;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 
++ (id)bookmarkFromDMFBookmark:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;

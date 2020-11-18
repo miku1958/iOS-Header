@@ -8,7 +8,7 @@
 
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSString;
+@class NSString, _WKAttachmentInfo;
 
 @interface _WKAttachment : NSObject <WKObject>
 {
@@ -16,17 +16,17 @@
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (readonly, nonatomic, getter=isConnected) BOOL connected;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) _WKAttachmentInfo *info;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueIdentifier;
 
-- (BOOL)isEqual:(id)arg1;
-- (void)requestData:(CDUnknownBlockType)arg1;
 - (void)requestInfo:(CDUnknownBlockType)arg1;
 - (void)setData:(id)arg1 newContentType:(id)arg2 newFilename:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)setDisplayOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setFileWrapper:(id)arg1 contentType:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

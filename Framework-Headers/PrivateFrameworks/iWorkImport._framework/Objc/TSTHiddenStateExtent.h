@@ -9,7 +9,7 @@
 #import <iWorkImport/TSCEFormulaOwning-Protocol.h>
 #import <iWorkImport/TSTGroupByChangeProtocol-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableIndexSet, NSString, TSCECalculationEngine, TSTHiddenStatesOwner, TSTInfo, TSTTableFilterSet, TSUMutableUUIDSet, TSUUUIDSet;
+@class NSArray, NSMutableArray, NSMutableIndexSet, NSString, TSCECalculationEngine, TSTHiddenStatesOwner, TSTTableFilterSet, TSTTableInfo, TSUMutableUUIDSet, TSUUUIDSet;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     UUIDData_5fbc143e _hiddenStatesOwnerUid;
     TSTHiddenStatesOwner *_hiddenStatesOwner;
     TSCECalculationEngine *_calcEngine;
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     NSMutableIndexSet *_baseUserHiddenIndexes;
     NSMutableIndexSet *_baseFilteredIndexes;
     NSMutableIndexSet *_anyBaseHiddenIndexes;
@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSUUUIDSet *collapsedGroupUids; // @synthesize collapsedGroupUids=_collapsedGroupUids;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) TSTTableFilterSet *filterSet; // @synthesize filterSet=_filterSet;
+@property (strong, nonatomic) TSTTableFilterSet *filterSet;
 @property (readonly, nonatomic) BOOL forRows; // @synthesize forRows=_forRows;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) UUIDData_5fbc143e hiddenStateExtentUid; // @synthesize hiddenStateExtentUid=_hiddenStateExtentUid;
@@ -58,7 +58,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int numberOfHidden;
 @property (readonly, nonatomic) unsigned int numberOfUserHidden;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) TSTInfo *tableInfo;
+@property (readonly, nonatomic) TSTTableInfo *tableInfo;
 @property (readonly, nonatomic) NSArray *thresholdCellValues; // @synthesize thresholdCellValues=_thresholdCellValues;
 
 + (id)mutableIndexSetByIntersecting:(id)arg1 withRange:(struct _NSRange)arg2;
@@ -84,6 +84,8 @@ __attribute__((visibility("hidden")))
 - (void)didRemoveGroup:(id)arg1;
 - (void)didRemoveRowUID:(const UUIDData_5fbc143e *)arg1 fromGroup:(id)arg2;
 - (void)dirtyFilterState;
+- (void)dirtyFilterStateForHeaders;
+- (void)dirtyFilterStateForRowRange:(struct _NSRange)arg1;
 - (id)duplicateFilterSet;
 - (id)duplicateFilterSetInUidFormWithTable:(id)arg1;
 - (void)enableFilterSet:(BOOL)arg1;
@@ -107,6 +109,8 @@ __attribute__((visibility("hidden")))
 - (unsigned int)indexOfVisibleAfterIndex:(unsigned int)arg1;
 - (unsigned int)indexOfVisibleBeforeAndIncludingIndex:(unsigned int)arg1;
 - (unsigned int)indexOfVisibleBeforeIndex:(unsigned int)arg1;
+- (id)indexesOfCollapsedInRange:(struct _NSRange)arg1;
+- (id)indexesOfFilteredInRange:(struct _NSRange)arg1;
 - (id)indexesOfHiddenInBaseRange:(struct _NSRange)arg1;
 - (id)indexesOfHiddenInRange:(struct _NSRange)arg1;
 - (id)indexesOfUserHiddenInRange:(struct _NSRange)arg1;
@@ -129,8 +133,9 @@ __attribute__((visibility("hidden")))
 - (void)mutateFormulaFiltersWithTable:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (unsigned int)numberOfHiddenInBaseRange:(struct _NSRange)arg1;
 - (unsigned int)numberOfHiddenInRange:(struct _NSRange)arg1;
+- (unsigned int)numberOfUserHiddenInBaseRange:(struct _NSRange)arg1;
 - (unsigned int)numberOfUserHiddenInRange:(struct _NSRange)arg1;
-- (int)ownerKind;
+- (unsigned short)ownerKind;
 - (UUIDData_5fbc143e)ownerUID;
 - (struct TSCEValue)p_calculateAverageThresholdWithCalcEngine:(id)arg1 formulaCoord:(const struct TSUCellCoord *)arg2;
 - (struct TSCEValue)p_calculateTopOrBottomThresholdWithCalcEngine:(id)arg1 formulaCoord:(const struct TSUCellCoord *)arg2 isTop:(BOOL)arg3 keyScale:(int)arg4;
@@ -139,7 +144,7 @@ __attribute__((visibility("hidden")))
 - (void)p_removeAllFormulaFromCalculationEngine;
 - (id)precedentsForFilterSet:(id)arg1 calcEngine:(id)arg2 hostOwnerUID:(const UUIDData_5fbc143e *)arg3 hostCellID:(const struct TSUCellCoord *)arg4;
 - (CDStruct_2a4d9400)recalculateForCalcEngine:(id)arg1 atFormulaCoord:(struct TSUCellCoord)arg2 recalcOptions:(CDStruct_3d581f42)arg3;
-- (int)registerWithCalcEngine:(id)arg1;
+- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
 - (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2;
 - (void)removeHiddenIndex:(struct TSUModelColumnOrRowIndex)arg1 forAction:(unsigned char)arg2;
 - (void)removeUid:(const UUIDData_5fbc143e *)arg1;

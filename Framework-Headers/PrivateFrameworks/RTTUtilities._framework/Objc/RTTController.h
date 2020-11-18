@@ -25,7 +25,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType actionCompletionBlock; // @synthesize actionCompletionBlock=_actionCompletionBlock;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) id<HCHeardControllerProtocol> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<HCHeardControllerProtocol> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *rttCalls; // @synthesize rttCalls=_rttCalls;
@@ -49,6 +49,8 @@
 - (void)handleUpdatedCalls:(id)arg1;
 - (id)init;
 - (void)ttyCall:(id)arg1 didReceiveString:(id)arg2 forUtterance:(id)arg3;
+- (void)ttyCall:(id)arg1 didSendRemoteString:(id)arg2 forUtterance:(id)arg3;
+- (void)ttyCall:(id)arg1 shouldDisplayServiceMessage:(id)arg2;
 - (id)userInterfaceClient:(id)arg1 processMessageFromServer:(id)arg2 withIdentifier:(unsigned long long)arg3 error:(id *)arg4;
 
 @end

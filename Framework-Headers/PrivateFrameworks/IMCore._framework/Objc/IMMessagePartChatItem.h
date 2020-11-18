@@ -20,6 +20,7 @@
     NSArray *_messageEditChatItems;
     BOOL _isBusiness;
     BOOL _chatInScrutinyMode;
+    BOOL _whitelistedRichLinkSender;
 }
 
 @property (nonatomic) BOOL chatInScrutinyMode; // @synthesize chatInScrutinyMode=_chatInScrutinyMode;
@@ -35,14 +36,19 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSAttributedString *text; // @synthesize text=_text;
 @property (strong, nonatomic, setter=_setVisibleAssociatedMessageChatItems:) NSArray *visibleAssociatedMessageChatItems; // @synthesize visibleAssociatedMessageChatItems=_visibleAssociatedMessageChatItems;
+@property (nonatomic, getter=isWhitelistedRichLinkSender) BOOL whitelistedRichLinkSender; // @synthesize whitelistedRichLinkSender=_whitelistedRichLinkSender;
 
++ (id)_additionalSupportedRichLinkSchemesForWhitelistedSender:(id)arg1;
++ (id)_defaultRichLinkSenderWhitelist;
 + (id)_defaultRichLinkWhiteList;
 + (id)_guidForMessage:(id)arg1 url:(id)arg2;
 + (BOOL)_isWhiteListedURL:(id)arg1;
++ (BOOL)_isWhitelistedRichLinkSender:(id)arg1 isBusiness:(BOOL)arg2;
 + (id)_messageItemWithPartsDeleted:(id)arg1 fromMessageItem:(id)arg2;
 + (id)_newMessagePartsForMessageItem:(id)arg1;
 + (id)_newMessagePartsForMessageItem:(id)arg1 shouldDisplayLink:(BOOL)arg2 isBusiness:(BOOL)arg3 parentChatIsSpam:(BOOL)arg4 hasKnownParticipants:(BOOL)arg5;
-+ (BOOL)_testingSupportsURL:(id)arg1;
++ (id)_richLinkRangesForMessageText:(id)arg1 sender:(id)arg2 isWhitelistedRichLinkSender:(BOOL)arg3;
++ (BOOL)_supportsRichLinkURL:(id)arg1 forSender:(id)arg2 isWhitelistedRichLinkSender:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)_initWithItem:(id)arg1 messagePartRange:(struct _NSRange)arg2;
 - (id)_initWithItem:(id)arg1 text:(id)arg2 index:(long long)arg3 messagePartRange:(struct _NSRange)arg4 visibleAssociatedMessageChatItems:(id)arg5;

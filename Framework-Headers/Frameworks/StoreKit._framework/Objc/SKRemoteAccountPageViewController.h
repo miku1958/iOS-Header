@@ -27,11 +27,15 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)didFinishLoading;
 - (void)didPrepareWithResult:(id)arg1 error:(id)arg2;
+- (id)disconnect;
+- (void)dismissBridgedViewController;
 - (void)dismissViewControllerWithResult:(id)arg1 error:(id)arg2;
 - (void)financeInterruptionResolved:(BOOL)arg1;
 - (void)overrideCreditCardPresentationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)overrideRedeemCameraPerformAction:(long long)arg1 withObject:(id)arg2;
 - (void)overrideRedeemCameraWithCompletion:(CDUnknownBlockType)arg1;
 - (void)popBridgedViewControllersToIndex:(unsigned long long)arg1;
+- (void)presentBridgedViewController;
 - (void)pushBridgedViewControllerAnimated:(BOOL)arg1 options:(id)arg2;
 - (void)setBridgedNavigationItemWithOptions:(id)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;

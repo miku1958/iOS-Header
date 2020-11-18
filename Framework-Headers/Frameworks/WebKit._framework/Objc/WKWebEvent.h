@@ -11,12 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface WKWebEvent : WebEvent
 {
-    UIEvent *_uiEvent;
+    struct RetainPtr<UIEvent> _uiEvent;
 }
 
-@property (strong, nonatomic) UIEvent *uiEvent; // @synthesize uiEvent=_uiEvent;
+@property (readonly, strong, nonatomic) UIEvent *uiEvent;
 
-- (void)dealloc;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (id)initWithEvent:(id)arg1;
 
 @end
 

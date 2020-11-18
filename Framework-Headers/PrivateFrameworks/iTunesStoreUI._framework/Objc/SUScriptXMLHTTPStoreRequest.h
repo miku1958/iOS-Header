@@ -18,13 +18,16 @@
     SSMutableURLRequestProperties *_requestProperties;
     NSDictionary *_responseHeaders;
     NSString *_responseText;
+    BOOL _shouldSendGUIDHeader;
     unsigned long long _status;
     NSString *_statusText;
     unsigned long long _timeout;
+    BOOL _useJSONEncoding;
     SSAuthenticationContext *_authenticationContext;
     ISDataProvider *_dataProvider;
 }
 
+@property (strong, getter=isJSONEncoded) id JSONEncoded;
 @property (strong, nonatomic) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (strong, nonatomic) ISDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 @property (weak) id<SUScriptXMLHTTPStoreRequestDelegate> delegate; // @synthesize delegate=_delegate;
@@ -36,6 +39,7 @@
 @property (strong) WebScriptObject *ontimeout;
 @property (readonly) unsigned long long readyState;
 @property (readonly, copy) NSString *responseText;
+@property (strong) id shouldSendGUIDHeader;
 @property (readonly) unsigned long long status;
 @property (readonly, copy) NSString *statusText;
 @property unsigned long long timeout;
@@ -46,8 +50,11 @@
 - (void).cxx_destruct;
 - (void)_callFunctionWithName:(id)arg1 arguments:(id)arg2;
 - (id)_className;
+- (id)_clientInfoHeader;
+- (id)_gsTokenForAIDAAccount:(id)arg1 accountStore:(id)arg2;
 - (id)_scriptObjectForFunctionName:(id)arg1;
 - (void)_setScriptObject:(id)arg1 forFunctionName:(id)arg2;
+- (id)_uniqueDeviceID;
 - (void)abort;
 - (id)attributeKeys;
 - (void)dealloc;

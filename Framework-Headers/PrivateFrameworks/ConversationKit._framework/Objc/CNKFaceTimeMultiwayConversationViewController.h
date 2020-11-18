@@ -34,7 +34,7 @@
 @property (nonatomic, readonly) UIViewController *pipViewController;
 @property (nonatomic, readonly) BOOL wantsApplicationDismissalStyle;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)accessibilityConstraintController;
 - (void)dealloc;
 - (id)initWithActiveCall:(id)arg1;

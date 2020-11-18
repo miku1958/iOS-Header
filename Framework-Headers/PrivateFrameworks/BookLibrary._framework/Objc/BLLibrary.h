@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IMLibraryPlist *sharedPlist; // @synthesize sharedPlist=_sharedPlist;
 
 + (BOOL)_addDate:(id)arg1 toPlist:(id)arg2 bookItem:(id)arg3 error:(id *)arg4;
++ (id)_bookItemsFromPlist:(id)arg1 sharedPlist:(id)arg2;
 + (id)defaultBookLibrary;
 + (void)initialize;
 - (void).cxx_destruct;
@@ -36,28 +37,19 @@
 - (BOOL)_bookItemIsShared:(id)arg1;
 - (id)_bookItemsFromPlist:(id)arg1;
 - (void)_bookWasOpenedWithStoreID:(id)arg1 permlink:(id)arg2 date:(id)arg3;
-- (void)_cancelPurge;
-- (void)_deleteBooksFromSharedPlist:(id)arg1;
 - (void)_downloadWithPermalink:(id)arg1 title:(id)arg2 result:(CDUnknownBlockType)arg3;
 - (id)_findBookItemWithTestBlock:(CDUnknownBlockType)arg1 foundWhere:(long long *)arg2;
+- (id)_init;
+- (id)_initWithBooksPlist:(id)arg1 purchasedPlist:(id)arg2 managedPlist:(id)arg3 sharedPlist:(id)arg4;
 - (BOOL)_isMultiUser;
 - (BOOL)_isShareableBook:(id)arg1;
 - (id)_list:(id)arg1 testBlock:(CDUnknownBlockType)arg2;
 - (id)_lookupBookItemExhaustiveFromPermlink:(id)arg1 error:(id *)arg2;
-- (id)_orphanedBookURLs;
 - (id)_perUserBookURLForBookURL:(id)arg1;
-- (long long)_periodicPurgeVolume:(id)arg1 urgency:(long long)arg2 requested:(id)arg3;
-- (long long)_purgeOrphanedBooks;
-- (long long)_purgeVolume:(id)arg1 urgency:(long long)arg2 requested:(id)arg3;
-- (long long)_purgeableAmountForVolume:(id)arg1 urgency:(long long)arg2;
-- (long long)_recoverSpace:(long long)arg1 fromList:(id)arg2 withMaxPriority:(long long)arg3;
 - (BOOL)_removeBookFromLibraryWithPath:(id)arg1 error:(id *)arg2;
-- (id)_scoredSharedBooksWithinVolume:(id)arg1;
 - (void)addITunesUBookToLibraryWithPermlink:(id)arg1 title:(id)arg2 result:(CDUnknownBlockType)arg3;
 - (id)allBookItems;
 - (id)bookIdentifierFromURL:(id)arg1 error:(id *)arg2;
-- (BOOL)bookItem:(id)arg1 isWithinVolume:(id)arg2;
-- (id)init;
 - (BOOL)removeBookFromLibraryWithIdentifier:(id)arg1 error:(id *)arg2;
 
 @end

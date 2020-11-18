@@ -38,6 +38,7 @@
 
 + (id)clientWithConnection:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (id)_antimonySourceFilterWithSourceManager:(id)arg1;
 - (id)_initWithConnection:(id)arg1 entitlements:(id)arg2;
 - (id)_watchKitAvailabilityFilter;
 - (id)baseDataEntityEncodingOptions;

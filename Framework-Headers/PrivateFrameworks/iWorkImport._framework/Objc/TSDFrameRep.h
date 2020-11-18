@@ -24,27 +24,19 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)applyMaskForRectWithCoverage:(struct CGRect)arg1 toContext:(struct CGContext *)arg2;
-- (id)applyToCALayer:(id)arg1 withRepLayer:(id)arg2 maskLayer:(id)arg3 viewScale:(double)arg4;
 - (void)blendMaskBeforeRenderingImageInContext:(struct CGContext *)arg1;
 - (void)dealloc;
 - (void)frameRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 withTotalScale:(double)arg3;
 - (id)init;
 - (id)initWithTSDFrame:(id)arg1;
 - (struct CGImage *)newFrameForMask:(BOOL)arg1 size:(struct CGSize)arg2 forCALayer:(BOOL)arg3 viewScale:(double)arg4;
-- (void)p_addEdgeLayerForIndex:(unsigned int)arg1 toLayer:(id)arg2 maskLayer:(id)arg3;
-- (void)p_addUnreplicatedLayerForIndex:(unsigned int)arg1 toLayer:(id)arg2 maskLayer:(id)arg3;
-- (void)p_adjustRepeatingLayer:(id)arg1 withImageRect:(struct CGRect)arg2 start:(double)arg3 end:(double)arg4 vertical:(BOOL)arg5;
-- (id)p_createRepeatingLayerWithImage:(struct CGImage *)arg1 vertical:(BOOL)arg2 screenScale:(double)arg3;
 - (void)p_drawFrameIntoRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 withImages:(id)arg3 atViewScale:(double)arg4 isMask:(BOOL)arg5;
 - (void)p_drawTiles:(id)arg1 inContext:(struct CGContext *)arg2 rect:(struct CGRect)arg3 start:(double)arg4 end:(double)arg5 vertical:(BOOL)arg6;
 - (struct CGImage *)p_newRenderedFrameForMask:(BOOL)arg1 size:(struct CGSize)arg2 forCALayer:(BOOL)arg3 viewScale:(double)arg4;
-- (void)p_setRepeatingLayerWithIndex:(unsigned int)arg1 sublayers:(id)arg2 maskLayers:(id)arg3 toRect:(struct CGRect)arg4 start:(double)arg5 end:(double)arg6;
-- (void)p_setUnreplicatedLayerWithIndex:(unsigned int)arg1 sublayers:(id)arg2 maskLayers:(id)arg3 toRect:(struct CGRect)arg4;
 - (BOOL)p_shouldRender;
 - (BOOL)p_shouldRenderForRectWithCoverage:(struct CGRect)arg1;
 - (BOOL)p_shouldRenderForRectWithoutCoverage:(struct CGRect)arg1;
 - (BOOL)p_willRenderForRect:(struct CGRect)arg1;
-- (void)updateCALayer:(id)arg1 toRect:(struct CGRect)arg2 withRepLayer:(id)arg3 maskLayer:(id)arg4 viewScale:(double)arg5 maskLayerTransform:(struct CGAffineTransform)arg6;
 
 @end
 

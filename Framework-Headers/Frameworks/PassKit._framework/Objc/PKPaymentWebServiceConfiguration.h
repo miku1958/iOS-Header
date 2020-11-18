@@ -48,6 +48,7 @@
 - (id)marketGeoRegionNotificationNetworkThresholdsForRegion:(id)arg1;
 - (id)marketGeoRegionNotificationSendLimitForRegion:(id)arg1;
 - (id)marketGeoRegionNotificationTimeRangeForRegion:(id)arg1;
+- (id)marketsURL;
 - (id)maxRefreshIntervalForRegion:(id)arg1;
 - (id)maxRefreshIntervalForUnsupportedRegion;
 - (id)paymentServicesMerchantURLForRegion:(id)arg1;

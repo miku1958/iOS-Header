@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSDictionary, NSError, NSString, NSURL, NSUUID, NSXPCListenerEndpoint, SFBLEDevice, SFCoordinatedAlertRequest, SFDevice, SFDeviceDiscovery, SFEventMessage, SFRemoteAutoFillSessionHelper, SFRemoteInteractionSession, SFRequestMessage, SFResponseMessage, SFService, SFSession, SFUserAlert;
+@class NSData, NSDictionary, NSError, NSString, NSURL, NSUUID, NSXPCListenerEndpoint, SFBLEDevice, SFContactInfo, SFCoordinatedAlertRequest, SFDevice, SFDeviceDiscovery, SFEventMessage, SFRemoteAutoFillSessionHelper, SFRemoteInteractionSession, SFRequestMessage, SFResponseMessage, SFService, SFSession, SFUserAlert;
 
 @protocol SDXPCInterface
 - (void)accountForAppleID:(NSString *)arg1 withCompletion:(void (^)(SFAppleIDAccount *, NSError *))arg2;
@@ -35,6 +35,7 @@
 - (void)diagnosticUnlockTestServer;
 - (void)displayNameForEmailHash:(NSString *)arg1 phoneHash:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)displayStringForContactIdentifier:(NSString *)arg1 deviceIdentifier:(NSUUID *)arg2 completion:(void (^)(NSString *, BOOL, NSError *))arg3;
+- (void)findContact:(SFContactInfo *)arg1 completion:(void (^)(SFContactInfo *, NSError *))arg2;
 - (void)myAccountWithCompletion:(void (^)(SFAppleIDAccount *, NSError *))arg1;
 - (void)nfcTagReaderUIActivateWithEndpoint:(NSXPCListenerEndpoint *)arg1 params:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)openSetupURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
@@ -73,6 +74,7 @@
 - (void)setupDevice:(SFDevice *)arg1 homeIdentifier:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)showDevicePickerWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)statusInfoWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)testContinuityKeyboardBegin:(BOOL)arg1;
 - (void)triggerHomeKitDeviceDetectedWithURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)triggerProximityAutoFillDetectedWithURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)userNotificationPresent:(SFUserAlert *)arg1;

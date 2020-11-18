@@ -29,6 +29,7 @@
 - (id)objectForDomain:(id)arg1 key:(id)arg2 subscription:(id)arg3 error:(id *)arg4;
 - (id)objectForKey:(id)arg1 subscription:(id)arg2;
 - (id)objectForKey:(id)arg1 subscription:(id)arg2 error:(id *)arg3;
+- (id)serviceNameForSubscription:(id)arg1;
 
 @end
 

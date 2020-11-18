@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString, NTPBWidgetEngagement;
+@class NSData, NSMutableArray, NSString, NTPBIssueData, NTPBIssueExposureData, NTPBIssueViewData, NTPBWidgetEngagement;
 
 @interface NTPBMediaExposure : PBCodable <NSCopying>
 {
@@ -34,6 +34,9 @@
     NSString *_iadNativeCampaign;
     NSString *_iadNativeCampaignAd;
     NSString *_iadNativeLine;
+    NTPBIssueData *_issueData;
+    NTPBIssueExposureData *_issueExposureData;
+    NTPBIssueViewData *_issueViewData;
     NSString *_mediaId;
     int _mediaLocation;
     int _mediaType;
@@ -118,6 +121,9 @@
 @property (nonatomic) BOOL hasIsNativeAd;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
 @property (nonatomic) BOOL hasIsVideoInFeed;
+@property (readonly, nonatomic) BOOL hasIssueData;
+@property (readonly, nonatomic) BOOL hasIssueExposureData;
+@property (readonly, nonatomic) BOOL hasIssueViewData;
 @property (readonly, nonatomic) BOOL hasMediaId;
 @property (nonatomic) BOOL hasMediaLocation;
 @property (nonatomic) BOOL hasMediaType;
@@ -144,6 +150,9 @@
 @property (nonatomic) BOOL isNativeAd; // @synthesize isNativeAd=_isNativeAd;
 @property (nonatomic) BOOL isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;
 @property (nonatomic) BOOL isVideoInFeed; // @synthesize isVideoInFeed=_isVideoInFeed;
+@property (strong, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
+@property (strong, nonatomic) NTPBIssueExposureData *issueExposureData; // @synthesize issueExposureData=_issueExposureData;
+@property (strong, nonatomic) NTPBIssueViewData *issueViewData; // @synthesize issueViewData=_issueViewData;
 @property (strong, nonatomic) NSString *mediaId; // @synthesize mediaId=_mediaId;
 @property (nonatomic) int mediaLocation; // @synthesize mediaLocation=_mediaLocation;
 @property (nonatomic) int mediaType; // @synthesize mediaType=_mediaType;

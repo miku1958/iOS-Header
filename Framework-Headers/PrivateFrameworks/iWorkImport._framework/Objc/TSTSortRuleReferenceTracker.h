@@ -8,12 +8,12 @@
 
 #import <iWorkImport/TSCEReferenceTrackerDelegate-Protocol.h>
 
-@class NSMutableSet, NSString, TSCEReferenceTracker, TSTInfo;
+@class NSMutableSet, NSString, TSCEReferenceTracker, TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTSortRuleReferenceTracker : NSObject <TSCEReferenceTrackerDelegate>
 {
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     NSMutableSet *_references;
     TSCEReferenceTracker *_referenceTracker;
 }
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSCEReferenceTracker *referenceTracker; // @synthesize referenceTracker=_referenceTracker;
 @property (strong, nonatomic) NSMutableSet *references; // @synthesize references=_references;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (weak, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 
 - (void).cxx_destruct;
 - (id)cellRangeWasInserted:(const struct TSCERangeRef *)arg1;

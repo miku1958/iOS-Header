@@ -40,15 +40,20 @@
 
 + (id)bridgedClientInfoHTTPHeader;
 - (void).cxx_destruct;
+- (id)_categoryIdentifierForPass:(id)arg1;
 - (BOOL)_deviceIsDaytonaOrLater;
 - (BOOL)_deviceIsFortuneOrLater;
+- (id)_expressModesFromExpressPassesInformation:(id)arg1;
+- (id)_expressPassesInformationFromDataArray:(id)arg1;
 - (void)_getPairingInfoAndSetAuthRandomIfNotPaired:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_multipleExpressTransitPassPaymentWebService:(id)arg1 handlePotentialExpressPassInformation:(id)arg2 pass:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (id)_sendProtobuf:(id)arg1 responseExpected:(BOOL)arg2;
 - (id)_sendProtobuf:(id)arg1 responseExpected:(BOOL)arg2 extraOptions:(id)arg3;
 - (id)_serialNumbersOfAllPairedDevices;
 - (void)_setNewAuthRandomIfNecessaryReturningPairingState:(CDUnknownBlockType)arg1;
 - (void)_setNewAuthRandomReturningPairingState:(CDUnknownBlockType)arg1;
 - (void)_setOrResetCleanupTimerForRequest:(id)arg1;
+- (void)_singleExpressTransitPassPaymentWebService:(id)arg1 handlePotentialExpressPassInformation:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)_supportedRegionsForWebService:(id)arg1;
 - (void)archiveBackgroundContext:(id)arg1;
 - (void)archiveContext:(id)arg1;
@@ -63,9 +68,15 @@
 - (void)cloudStoreStatusResponse:(id)arg1;
 - (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)configurationDataResponse:(id)arg1;
+- (void)conflictingExpressPassIdentifiersForPassInformation:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)conflictingExpressPassIdentifiersForPassInformation:(id)arg1 withReferenceExpressState:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)conflictingExpressPassIdentifiersForPassInformationResponse:(id)arg1;
+- (id)deviceClass;
 - (id)deviceDescriptionForPaymentWebService:(id)arg1;
 - (id)deviceName;
 - (id)deviceRegion;
+- (BOOL)deviceSupportMultipleExpressPasses;
+- (id)deviceVersion;
 - (void)didRegisterResponse:(id)arg1;
 - (void)downloadAllPaymentPasses:(id)arg1;
 - (void)downloadAllPaymentPassesForPaymentWebService:(id)arg1;

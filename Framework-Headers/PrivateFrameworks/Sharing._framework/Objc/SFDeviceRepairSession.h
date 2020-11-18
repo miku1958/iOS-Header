@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString, SFDevice, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, TROperationQueue, TRSession, UIViewController;
+@class NSMutableArray, NSString, SFDevice, SFDeviceOperationCDPSetup, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, TROperationQueue, TRSession, UIViewController;
 @protocol OS_dispatch_queue;
 
 @interface SFDeviceRepairSession : NSObject
@@ -20,9 +20,12 @@
     int _pairVerifyState;
     int _getProblemsState;
     unsigned long long _problemFlags;
+    BOOL _cdpEnabled;
+    SFDeviceOperationCDPSetup *_cdpSetupOperation;
+    double _cdpSetupSecs;
+    int _cdpState;
     SFDeviceOperationHomeKitSetup *_homeKitSetupOperation;
     int _homeKitSetupState;
-    BOOL _wifiSetupEnabled;
     SFDeviceOperationWiFiSetup *_wifiSetupOperation;
     int _wifiSetupState;
     double _wifiSetupSecs;
@@ -55,6 +58,7 @@
 - (void)_cleanup;
 - (void)_reportError:(id)arg1;
 - (void)_run;
+- (int)_runCDPSetup;
 - (int)_runFinish;
 - (int)_runGetProblems;
 - (int)_runHomeKitSetup;

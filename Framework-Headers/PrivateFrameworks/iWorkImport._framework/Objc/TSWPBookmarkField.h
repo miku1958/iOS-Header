@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 + (id)uniqueBookmarkNameFromBase:(id)arg1 excludingNames:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)allowsEditing;
-- (int)attributeArrayKind;
+- (unsigned long long)attributeArrayKind;
 - (id)copyWithContext:(id)arg1;
 - (id)copyWithNewName:(id)arg1;
 - (id)initWithContext:(id)arg1;

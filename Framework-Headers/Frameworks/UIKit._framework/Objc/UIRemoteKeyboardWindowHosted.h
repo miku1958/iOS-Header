@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (BOOL)_isSecure;
 - (BOOL)_isHostedInAnotherProcess;
 - (BOOL)_isTextEffectsWindowHosting;
 - (long long)_orientationForRootTransform;

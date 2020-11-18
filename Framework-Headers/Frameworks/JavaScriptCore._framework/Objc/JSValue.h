@@ -33,7 +33,11 @@
 + (id)valueWithNewArrayInContext:(id)arg1;
 + (id)valueWithNewErrorFromMessage:(id)arg1 inContext:(id)arg2;
 + (id)valueWithNewObjectInContext:(id)arg1;
++ (id)valueWithNewPromiseInContext:(id)arg1 fromExecutor:(CDUnknownBlockType)arg2;
++ (id)valueWithNewPromiseRejectedWithReason:(id)arg1 inContext:(id)arg2;
++ (id)valueWithNewPromiseResolvedWithResult:(id)arg1 inContext:(id)arg2;
 + (id)valueWithNewRegularExpressionFromPattern:(id)arg1 flags:(id)arg2 inContext:(id)arg3;
++ (id)valueWithNewSymbolFromDescription:(id)arg1 inContext:(id)arg2;
 + (id)valueWithNullInContext:(id)arg1;
 + (id)valueWithObject:(id)arg1 inContext:(id)arg2;
 + (id)valueWithPoint:(struct CGPoint)arg1 inContext:(id)arg2;
@@ -56,6 +60,7 @@
 - (BOOL)isEqualToObject:(id)arg1;
 - (BOOL)isEqualWithTypeCoercionToObject:(id)arg1;
 - (BOOL)isInstanceOf:(id)arg1;
+- (BOOL)isSymbol;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)setObject:(id)arg1 atIndexedSubscript:(unsigned long long)arg2;

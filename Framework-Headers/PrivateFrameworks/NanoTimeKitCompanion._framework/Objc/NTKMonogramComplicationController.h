@@ -23,9 +23,7 @@
 - (void)_activate;
 - (void)_configureForLegacyDisplay:(id)arg1;
 - (void)_deactivate;
-- (void)_handleCustomMonogramChanged;
-- (void)_handleFaceDefaultsChanged;
-- (void)_handleLocaleChange;
+- (void)_handleMonogramTextReload;
 - (void)_reloadMonogramText;
 - (void)_updateDisplay;
 - (BOOL)hasTapAction;

@@ -19,6 +19,7 @@
 - (void)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 didFailToLoadCard:(id<CRCard>)arg2;
 - (void)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 requestCardSectionViewSourceForCard:(id<CRCard>)arg2 reply:(void (^)(id<CRKCardSectionViewSourcing>, NSError *))arg3;
 - (void)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 requestsHandlingOfIntent:(INIntent *)arg2;
+- (void)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 willDismissViewController:(UIViewController *)arg2;
 - (void)cardViewControllerBoundsDidChange:(UIViewController<CRKCardViewControlling> *)arg1;
 - (void)cardViewControllerDidLoad:(UIViewController<CRKCardViewControlling> *)arg1;
 - (unsigned long long)navigationIndexOfCardViewController:(UIViewController<CRKCardViewControlling> *)arg1;

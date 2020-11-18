@@ -33,7 +33,7 @@
 @property (readonly, nonatomic) BOOL wantsAdjustments;
 
 - (void)_adjustRectWithFaces:(struct CGRect *)arg1 forAssetRect:(struct CGRect)arg2 verticalContentMode:(long long)arg3;
-- (id)applyAdjustmentsToEditModel:(id)arg1 editSource:(id)arg2;
+- (id)applyAdjustmentsToEditModel:(id)arg1 editSource:(id)arg2 renderer:(id)arg3;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (long long)isContentEqualTo:(id)arg1;

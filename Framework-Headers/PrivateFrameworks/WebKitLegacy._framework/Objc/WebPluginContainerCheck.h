@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 + (id)checkWithRequest:(id)arg1 target:(id)arg2 resultObject:(id)arg3 selector:(SEL)arg4 controller:(id)arg5 contextInfo:(id)arg6;
 - (id)_actionInformationWithURL:(id)arg1;
 - (void)_askPolicyDelegate;
-- (void)_continueWithPolicy:(int)arg1;
+- (void)_continueWithPolicy:(unsigned char)arg1;
 - (BOOL)_isForbiddenFileLoad;
 - (void)cancel;
 - (id)contextInfo;

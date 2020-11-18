@@ -163,6 +163,7 @@
 - (void)dismissPopoverAnimated:(BOOL)arg1;
 - (void)endUpdates;
 - (id)findFirstVisibleResponder;
+- (void)fontSliderDidEndSlidingNotificationPosted:(id)arg1;
 - (void)formSheetViewWillDisappear;
 - (BOOL)getGroup:(long long *)arg1 row:(long long *)arg2 ofSpecifier:(id)arg3;
 - (BOOL)getGroup:(long long *)arg1 row:(long long *)arg2 ofSpecifierAtIndex:(long long)arg3;

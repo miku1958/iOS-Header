@@ -20,8 +20,10 @@
 @property (strong, nonatomic) PSSpecifier *categoriesGroupSpecifier; // @synthesize categoriesGroupSpecifier=_categoriesGroupSpecifier;
 
 - (void).cxx_destruct;
+- (void)_selectInitialSelectedIdentifiersIfNeeded;
 - (void)addButtonTapped:(id)arg1;
 - (id)categorySpecifiers;
+- (id)initWithSelectedIdentifiers:(id)arg1 creatingNewAllowance:(BOOL)arg2;
 - (id)specifiers;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

@@ -28,6 +28,8 @@
 - (double)preferredHeightForWidth:(double)arg1;
 - (void)reloadFromSpecifier;
 - (void)selectedSegmentIndexChanged:(id)arg1;
+- (void)startAnimatingSpinner;
+- (void)stopAnimatingSpinner;
 
 @end
 

@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)enterState;
 - (BOOL)requiresHighMemoryThreshold;
 - (void)stopPredictingDestinations;
-- (unsigned long long)type;
+- (long long)type;
 - (void)updateMapsActive:(BOOL)arg1;
 
 @end

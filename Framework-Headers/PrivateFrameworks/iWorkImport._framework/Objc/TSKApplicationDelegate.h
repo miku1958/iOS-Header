@@ -39,8 +39,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, getter=isInBackground) BOOL inBackground;
 @property (readonly, nonatomic) NSString *initialInputLanguage; // @synthesize initialInputLanguage=_initialInputLanguage;
 @property (readonly, nonatomic) BOOL isCanvasFullScreen;
+@property (readonly, nonatomic) unsigned long long maxOperationStorageSize;
+@property (readonly, nonatomic) double minOperationStorageEntryAge;
 @property (readonly, nonatomic) BOOL performanceModeEnabled;
 @property (nonatomic) BOOL shouldOptimizeForiOSOnInsert;
+@property (readonly, nonatomic) unsigned long long smallOperationStorageSize;
 @property (readonly, nonatomic) BOOL supportsCanvasNativeEquationObjects;
 @property (readonly, nonatomic) BOOL supportsFreehandAnimationUI;
 @property (readonly, nonatomic) BOOL supportsInlineNativeEquationObjects;
@@ -67,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)customizeHyperlinkViewController:(id)arg1;
 - (void)dealloc;
 - (id)defaultHyperlinkURL;
+- (void)donateAddBodyRowAtBottomIntentWithInfo:(id)arg1;
 - (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
 - (id)init;
 - (id)invalidURLSchemes;
@@ -74,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)logDocumentCreationWithImportState:(BOOL)arg1;
 - (BOOL)openURL:(id)arg1;
 - (BOOL)openURL:(id)arg1 withDocumentRoot:(id)arg2;
+- (unsigned long long)operationStoragePruningThresholdWithDocumentRoot:(id)arg1;
 - (id)previewImageForType:(id)arg1;
 - (void)setAppTextDefaults:(id)arg1 passphraseVerifier:(id)arg2;
 - (BOOL)shouldRenderContactShadow;

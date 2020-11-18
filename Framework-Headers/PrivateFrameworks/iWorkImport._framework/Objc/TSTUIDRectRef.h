@@ -16,12 +16,13 @@ __attribute__((visibility("hidden")))
     TSCECalculationEngine *_calcEngine;
     UUIDRect_d701734b _uidRange;
     TSCECellTractRef *_lastKnownViewTractRef;
-    unsigned char _preserveFlags;
+    unsigned char _basePreserveFlags;
     UUIDData_5fbc143e _tableUID;
     RefTypeHolder_8c6da553 _chromeRangeRef;
 }
 
 @property (readonly) struct TSUModelCellCoord baseBottomRightCoord;
+@property (nonatomic) unsigned char basePreserveFlags; // @synthesize basePreserveFlags=_basePreserveFlags;
 @property (readonly) struct TSUModelCellCoord baseTopLeftCoord;
 @property (weak, nonatomic) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
 @property (nonatomic) RefTypeHolder_8c6da553 chromeRangeRef; // @synthesize chromeRangeRef=_chromeRangeRef;
@@ -29,18 +30,19 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) BOOL isViewRectangle;
-@property (nonatomic) unsigned char preserveFlags; // @synthesize preserveFlags=_preserveFlags;
 @property (readonly, nonatomic) BOOL spansAllColumns;
 @property (readonly, nonatomic) BOOL spansAllRows;
 @property (readonly, nonatomic) UUIDData_5fbc143e tableUID; // @synthesize tableUID=_tableUID;
 @property (readonly, nonatomic) UUIDRect_d701734b uidRange; // @synthesize uidRange=_uidRange;
 @property (readonly) struct TSUViewCellCoord viewBottomRightCoord;
+@property (nonatomic) unsigned char viewPreserveFlags;
 @property (readonly) struct TSUViewCellCoord viewTopLeftCoord;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (RefTypeHolder_1140c985)baseRangeRef;
 - (vector_40295af5)baseRangeRefs;
+- (BOOL)baseToViewPreserveFlagsAreInverted;
 - (id)baseTractRef;
 - (id)chromeTractRef;
 - (void)convertUIDRefToViewTractRef;

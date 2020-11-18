@@ -22,6 +22,7 @@
 @property (copy, nonatomic) NSDictionary *readerModeMetadata; // @synthesize readerModeMetadata=_readerModeMetadata;
 
 - (void).cxx_destruct;
+- (long long)_cardTypeFromSetupProductType:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithPaymentSetupProduct:(id)arg1;
 - (id)initWithPaymentSetupProduct:(id)arg1 cardSessionToken:(id)arg2;

@@ -20,15 +20,15 @@ __attribute__((visibility("hidden")))
     NSPointerArray *_bottomRowStrokes;
 }
 
-@property (strong, nonatomic) NSPointerArray *bottomRowStrokes; // @synthesize bottomRowStrokes=_bottomRowStrokes;
+@property (readonly, nonatomic) NSPointerArray *bottomRowStrokes; // @synthesize bottomRowStrokes=_bottomRowStrokes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSPointerArray *leftColumnStrokes; // @synthesize leftColumnStrokes=_leftColumnStrokes;
+@property (readonly, nonatomic) NSPointerArray *leftColumnStrokes; // @synthesize leftColumnStrokes=_leftColumnStrokes;
 @property (nonatomic) int maxOrder; // @synthesize maxOrder=_maxOrder;
-@property (strong, nonatomic) NSPointerArray *rightColumnStrokes; // @synthesize rightColumnStrokes=_rightColumnStrokes;
+@property (readonly, nonatomic) NSPointerArray *rightColumnStrokes; // @synthesize rightColumnStrokes=_rightColumnStrokes;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSPointerArray *topRowStrokes; // @synthesize topRowStrokes=_topRowStrokes;
+@property (readonly, nonatomic) NSPointerArray *topRowStrokes; // @synthesize topRowStrokes=_topRowStrokes;
 
 - (void).cxx_destruct;
 - (id)cellBorderAtCellID:(struct TSUCellCoord)arg1;
@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)strokeLayerForRightSideOfColumn:(unsigned short)arg1;
 - (id)strokeLayerForTopOfRow:(unsigned int)arg1;
 - (void)swapRowAtIndex:(unsigned int)arg1 withRowAtIndex:(unsigned int)arg2;
+- (void)updateForTableSize:(CDStruct_c0454aff)arg1;
 
 @end
 

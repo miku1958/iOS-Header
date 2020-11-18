@@ -19,13 +19,14 @@
 #import <Home/HFStateDumpBuildable-Protocol.h>
 #import <Home/HFSymptomFixSessionObserver-Protocol.h>
 #import <Home/HFSymptomsHandlerObserver-Protocol.h>
+#import <Home/HFTelevisionObserver-Protocol.h>
 #import <Home/HFTemperatureUnitObserver-Protocol.h>
 #import <Home/HFUserObserver-Protocol.h>
 
 @class HFItem, HFItemManagerBatchedDelegateAdapter, HMHome, NAFuture, NSArray, NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol HFCharacteristicReadPolicy, HFItemManagerDelegate;
 
-@interface HFItemManager : NSObject <HFStateDumpBuildable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFMediaSessionObserver, HFMediaObjectObserver, HFSoftwareUpdateControllerObserver, HFSoftwareUpdateObserver, HFSymptomsHandlerObserver, HFUserObserver, HFSymptomFixSessionObserver, HFTemperatureUnitObserver, HFItemUpdating>
+@interface HFItemManager : NSObject <HFStateDumpBuildable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFMediaSessionObserver, HFMediaObjectObserver, HFSoftwareUpdateControllerObserver, HFSoftwareUpdateObserver, HFSymptomsHandlerObserver, HFUserObserver, HFTelevisionObserver, HFSymptomFixSessionObserver, HFTemperatureUnitObserver, HFItemUpdating>
 {
     BOOL _hasRequestedFirstUpdate;
     id<HFItemManagerDelegate> _delegate;
@@ -146,6 +147,7 @@
 - (id)_itemsToUpdateForModifiedZones:(id)arg1;
 - (id)_itemsToUpdateForOutgoingInvitation:(id)arg1;
 - (id)_itemsToUpdateForRemoteAccessChange;
+- (id)_itemsToUpdateForTelevisionProfiles:(id)arg1;
 - (id)_itemsWithDependenciesPassingTest:(CDUnknownBlockType)arg1 forItems:(id)arg2;
 - (id)_legacy_buildSectionsWithDisplayedItems:(id)arg1;
 - (unsigned long long)_loadingStateForItem:(id)arg1;
@@ -195,6 +197,7 @@
 - (void)accessory:(id)arg1 didUpdateFirmwareUpdateAvailable:(BOOL)arg2;
 - (void)accessory:(id)arg1 didUpdateFirmwareVersion:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateHasAuthorizationDataForCharacteristic:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateLastKnownSleepDiscoveryModeForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateLoggedInAccount:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateNameForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateServiceSubtypeForService:(id)arg2;
@@ -311,6 +314,7 @@
 - (void)mediaSystem:(id)arg1 didUpdateName:(id)arg2;
 - (unsigned long long)numberOfSections;
 - (id)performItemUpdateRequest:(id)arg1;
+- (void)profileDidUpdateMediaSourceDisplayOrder:(id)arg1;
 - (void)recalculateVisibilityAndSortAllItems;
 - (id)reloadAndUpdateAllItemsFromSenderSelector:(SEL)arg1;
 - (id)reloadAndUpdateItemsForProviders:(id)arg1 senderSelector:(SEL)arg2;

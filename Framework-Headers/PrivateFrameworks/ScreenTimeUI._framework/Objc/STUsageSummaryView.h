@@ -6,24 +6,20 @@
 
 #import <UIKit/UIView.h>
 
-@class STTopUsageItemsView, STUsageGraphView, STUsageReport, STUsageTotalDeltaView, UILabel;
+@class STHorizontallySegmentedView, STScreenTimeSummaryView, STUsageGraphView, STUsageReport;
 
 @interface STUsageSummaryView : UIView
 {
-    BOOL _useDailyAverageLabel;
     STUsageReport *_usageReport;
-    UILabel *_screenTimeLabel;
-    STUsageTotalDeltaView *_deltaView;
-    STTopUsageItemsView *_topItemsView;
+    STScreenTimeSummaryView *_summaryView;
+    STHorizontallySegmentedView *_topItemsView;
     STUsageGraphView *_graphView;
 }
 
-@property (readonly, nonatomic) STUsageTotalDeltaView *deltaView; // @synthesize deltaView=_deltaView;
-@property (readonly, nonatomic) STUsageGraphView *graphView; // @synthesize graphView=_graphView;
-@property (readonly, nonatomic) UILabel *screenTimeLabel; // @synthesize screenTimeLabel=_screenTimeLabel;
-@property (readonly, nonatomic) STTopUsageItemsView *topItemsView; // @synthesize topItemsView=_topItemsView;
+@property (readonly) STUsageGraphView *graphView; // @synthesize graphView=_graphView;
+@property (readonly) STScreenTimeSummaryView *summaryView; // @synthesize summaryView=_summaryView;
+@property (readonly) STHorizontallySegmentedView *topItemsView; // @synthesize topItemsView=_topItemsView;
 @property (strong, nonatomic) STUsageReport *usageReport; // @synthesize usageReport=_usageReport;
-@property (readonly, nonatomic) BOOL useDailyAverageLabel; // @synthesize useDailyAverageLabel=_useDailyAverageLabel;
 
 - (void).cxx_destruct;
 - (id)initWithDailyAverageLabel:(BOOL)arg1;

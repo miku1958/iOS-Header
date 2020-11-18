@@ -15,6 +15,7 @@
 }
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
+@property (copy, nonatomic) NSString *applicationName;
 @property (nonatomic) BOOL clearContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -22,6 +23,7 @@
 @property (nonatomic) BOOL handsFree;
 @property (copy, nonatomic) NSString *hardwareBuild;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *inputOrigin;
 @property (copy, nonatomic) NSNumber *isCarryDevice;
 @property (copy, nonatomic) NSString *motionActivity;
 @property (copy, nonatomic) NSNumber *motionConfidence;
@@ -31,6 +33,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL talkOnly;
 @property (nonatomic) BOOL textToSpeechIsMuted;
+@property (copy, nonatomic) NSString *turnId;
 @property (copy, nonatomic) NSString *utterance;
 
 + (id)startRequest;

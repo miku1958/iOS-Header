@@ -12,27 +12,29 @@
 #import <CarPlay/CPTemplateDelegate-Protocol.h>
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSMutableArray, NSOperationQueue, NSString, NSUUID;
+@class CPBarButton, NSArray, NSOperationQueue, NSString, NSUUID;
 @protocol CPBaseTemplateProviding, CPTemplateDelegate;
 
 @interface CPTemplate : NSObject <CPBarButtonDelegate, CPBarButtonProviding, CPControlDelegate, CPTemplateDelegate, NSSecureCoding>
 {
+    CPBarButton *_backButton;
     id _userInfo;
     id<CPBaseTemplateProviding> _templateProvider;
     NSUUID *_identifier;
     id<CPTemplateDelegate> _templateDelegate;
-    NSMutableArray *_internalLeadingBarButtons;
-    NSMutableArray *_internalTrailingBarButtons;
+    NSArray *_internalLeadingBarButtons;
+    NSArray *_internalTrailingBarButtons;
     NSOperationQueue *_deferredOperationQueue;
 }
 
+@property (strong, nonatomic) CPBarButton *backButton; // @synthesize backButton=_backButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSOperationQueue *deferredOperationQueue; // @synthesize deferredOperationQueue=_deferredOperationQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSMutableArray *internalLeadingBarButtons; // @synthesize internalLeadingBarButtons=_internalLeadingBarButtons;
-@property (strong, nonatomic) NSMutableArray *internalTrailingBarButtons; // @synthesize internalTrailingBarButtons=_internalTrailingBarButtons;
+@property (strong, nonatomic) NSArray *internalLeadingBarButtons; // @synthesize internalLeadingBarButtons=_internalLeadingBarButtons;
+@property (strong, nonatomic) NSArray *internalTrailingBarButtons; // @synthesize internalTrailingBarButtons=_internalTrailingBarButtons;
 @property (strong, nonatomic) NSArray *leadingNavigationBarButtons;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<CPTemplateDelegate> templateDelegate; // @synthesize templateDelegate=_templateDelegate;

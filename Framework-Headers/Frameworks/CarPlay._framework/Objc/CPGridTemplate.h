@@ -9,16 +9,17 @@
 #import <CarPlay/CPBarButtonProviding-Protocol.h>
 #import <CarPlay/CPGridTemplateClientDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class CPBarButton, NSArray, NSString;
 @protocol CPGridTemplateProviding;
 
 @interface CPGridTemplate : CPTemplate <CPGridTemplateClientDelegate, CPBarButtonProviding>
 {
-    NSMutableArray *_buttons;
     NSArray *_gridButtons;
     NSString *_title;
+    NSArray *_buttons;
 }
 
+@property (strong, nonatomic) CPBarButton *backButton;
 @property (readonly, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

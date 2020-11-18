@@ -7,15 +7,18 @@
 #import <objc/NSObject.h>
 
 @class SFSearchResult, SearchUITableViewCell, UIView;
+@protocol SearchUIFeedbackDelegate;
 
 @interface SearchUIAccessoryViewController : NSObject
 {
     UIView *_view;
+    id<SearchUIFeedbackDelegate> _feedbackDelegate;
     SearchUITableViewCell *_cell;
     SFSearchResult *_resultForFeedback;
 }
 
 @property (weak) SearchUITableViewCell *cell; // @synthesize cell=_cell;
+@property (weak) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property (strong) SFSearchResult *resultForFeedback; // @synthesize resultForFeedback=_resultForFeedback;
 @property (strong) UIView *view; // @synthesize view=_view;
 

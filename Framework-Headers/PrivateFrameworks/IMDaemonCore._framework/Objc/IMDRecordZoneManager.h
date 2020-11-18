@@ -18,6 +18,8 @@
     CKRecordZone *_attachmentRecordZone;
     CKRecordZoneID *_messageRecordZoneID;
     CKRecordZone *_messageRecordZone;
+    CKRecordZoneID *_analyticRecordZoneID;
+    CKRecordZone *_analyticRecordZone;
     CKRecordZoneID *_deDupeSaltZoneID;
     CKRecordZone *_deDupeSaltRecordZone;
     CKRecordZoneID *_metricZoneID;
@@ -25,6 +27,8 @@
     APSConnection *_pushConnection;
 }
 
+@property (readonly, nonatomic) CKRecordZone *analyticRecordZone; // @synthesize analyticRecordZone=_analyticRecordZone;
+@property (readonly, nonatomic) CKRecordZoneID *analyticRecordZoneID; // @synthesize analyticRecordZoneID=_analyticRecordZoneID;
 @property (readonly, nonatomic) CKRecordZone *attachmentRecordZone; // @synthesize attachmentRecordZone=_attachmentRecordZone;
 @property (readonly, nonatomic) CKRecordZoneID *attachmentRecordZoneID; // @synthesize attachmentRecordZoneID=_attachmentRecordZoneID;
 @property (readonly, nonatomic) CKRecordZone *chatRecordZone; // @synthesize chatRecordZone=_chatRecordZone;
@@ -55,6 +59,7 @@
 - (id)ckUtilities;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
+- (void)createAnalyticZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)createAttachmentZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)createChatZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)createDeDupeSaltZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
@@ -62,6 +67,7 @@
 - (void)createSubscriptionIfNeededOnDeDupeZoneForSubscription:(id)arg1 recordType:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)deleteAllZones;
+- (void)deleteAnalyticZone;
 - (void)deleteAttachmentZone;
 - (void)deleteChatZone;
 - (void)deleteDeDupeSaltZone;

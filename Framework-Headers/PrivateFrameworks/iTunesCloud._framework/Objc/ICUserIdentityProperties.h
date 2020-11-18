@@ -10,7 +10,7 @@
 #import <iTunesCloud/NSMutableCopying-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class ICDelegateToken, NSNumber, NSString;
+@class ICDelegateToken, NSDate, NSNumber, NSString;
 
 @interface ICUserIdentityProperties : NSObject <NSMutableCopying, NSCopying, NSSecureCoding>
 {
@@ -26,10 +26,13 @@
     BOOL _managedAppleID;
     BOOL _sandboxed;
     NSString *_storefrontIdentifier;
+    BOOL _subscriptionStatusEnabled;
     NSString *_username;
+    NSDate *_ageVerificationExpirationDate;
 }
 
 @property (readonly, copy, nonatomic) NSNumber *DSID; // @synthesize DSID=_dsid;
+@property (readonly, copy, nonatomic) NSDate *ageVerificationExpirationDate;
 @property (readonly, copy, nonatomic) NSString *alternateDSID;
 @property (readonly, copy, nonatomic) NSString *carrierBundleDeviceIdentifier;
 @property (nonatomic, getter=isCloudBackupEnabled) BOOL cloudBackupEnabled; // @synthesize cloudBackupEnabled=_cloudBackupEnabled;
@@ -41,6 +44,7 @@
 @property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID; // @synthesize managedAppleID=_managedAppleID;
 @property (readonly, nonatomic, getter=isSandboxed) BOOL sandboxed; // @synthesize sandboxed=_sandboxed;
 @property (readonly, copy, nonatomic) NSString *storefrontIdentifier;
+@property (readonly, nonatomic, getter=isSubscriptionStatusEnabled) BOOL subscriptionStatusEnabled; // @synthesize subscriptionStatusEnabled=_subscriptionStatusEnabled;
 @property (readonly, copy, nonatomic) NSString *username;
 
 + (BOOL)supportsSecureCoding;

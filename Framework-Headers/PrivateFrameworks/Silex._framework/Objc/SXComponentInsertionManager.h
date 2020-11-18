@@ -8,31 +8,33 @@
 
 #import <Silex/SXComponentInsertionManager-Protocol.h>
 
-@class NSString;
-@protocol SXBlueprintAnalyzer, SXComponentInserterProvider, SXComponentInsertionConditionEngine;
+@class NSMutableArray, NSString;
+@protocol SXBlueprintAnalyzer, SXComponentInserterManager, SXComponentInsertionConditionEngine, SXUnitConverterFactory;
 
 @interface SXComponentInsertionManager : NSObject <SXComponentInsertionManager>
 {
-    BOOL _hasInsertedComponents;
     id<SXComponentInsertionConditionEngine> _conditionEngine;
-    id<SXComponentInserterProvider> _inserterProvider;
+    id<SXComponentInserterManager> _inserterManager;
     id<SXBlueprintAnalyzer> _blueprintAnalyzer;
+    id<SXUnitConverterFactory> _unitConverterFactory;
+    NSMutableArray *_cache;
 }
 
 @property (readonly, nonatomic) id<SXBlueprintAnalyzer> blueprintAnalyzer; // @synthesize blueprintAnalyzer=_blueprintAnalyzer;
+@property (readonly, nonatomic) NSMutableArray *cache; // @synthesize cache=_cache;
 @property (readonly, nonatomic) id<SXComponentInsertionConditionEngine> conditionEngine; // @synthesize conditionEngine=_conditionEngine;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL hasInsertedComponents; // @synthesize hasInsertedComponents=_hasInsertedComponents;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<SXComponentInserterProvider> inserterProvider; // @synthesize inserterProvider=_inserterProvider;
+@property (readonly, nonatomic) id<SXComponentInserterManager> inserterManager; // @synthesize inserterManager=_inserterManager;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<SXUnitConverterFactory> unitConverterFactory; // @synthesize unitConverterFactory=_unitConverterFactory;
 
 - (void).cxx_destruct;
-- (id)initWithComponentInserterProvider:(id)arg1 conditionEngine:(id)arg2 blueprintAnalyzer:(id)arg3;
-- (void)insertComponentsForBlueprint:(id)arg1 layoutDataProvider:(id)arg2;
-- (id)insertForMarker:(id)arg1 remainingMarkerCount:(unsigned long long)arg2 inserter:(id)arg3 layoutProvider:(id)arg4 layoutDataProvider:(id)arg5;
-- (void)updateLayoutDataProvider:(id)arg1 layoutBlueprint:(id)arg2 insert:(id)arg3 marker:(id)arg4;
+- (id)initWithComponentInserterManager:(id)arg1 conditionEngine:(id)arg2 blueprintAnalyzer:(id)arg3 unitConverterFactory:(id)arg4;
+- (id)insertComponentsForBlueprint:(id)arg1 DOMObjectProvider:(id)arg2;
+- (id)insertForMarker:(id)arg1 inserter:(id)arg2 DOMObjectProvider:(id)arg3 layoutProvider:(id)arg4;
+- (void)updateDOM:(id)arg1 layoutBlueprint:(id)arg2 insert:(id)arg3 marker:(id)arg4;
 
 @end
 

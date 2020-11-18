@@ -23,6 +23,7 @@
     double _lastOffset;
     BOOL _inSteadyState;
     BOOL _performingBatchUpdates;
+    BOOL _sendingOutputsDidChange;
     long long _state;
     double _topBarHeight;
     double _bottomBarOffset;
@@ -33,6 +34,7 @@
 @property (readonly, nonatomic) double bottomBarOffset; // @synthesize bottomBarOffset=_bottomBarOffset;
 @property (weak, nonatomic) id<_SFDynamicBarAnimatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) double minimumTopBarHeight; // @synthesize minimumTopBarHeight=_minimumTopBarHeight;
+@property (readonly, nonatomic, getter=isSendingOutputsDidChange) BOOL sendingOutputsDidChange; // @synthesize sendingOutputsDidChange=_sendingOutputsDidChange;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) long long targetState;
 @property (readonly, nonatomic) double topBarHeight; // @synthesize topBarHeight=_topBarHeight;

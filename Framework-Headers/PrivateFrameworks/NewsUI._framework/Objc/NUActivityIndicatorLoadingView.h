@@ -8,17 +8,19 @@
 
 #import <NewsUI/NULoadingViewProviding-Protocol.h>
 
-@class NSString, UIActivityIndicatorView;
+@class NSString, UIActivityIndicatorView, UILabel;
 
 @interface NUActivityIndicatorLoadingView : UIView <NULoadingViewProviding>
 {
     UIActivityIndicatorView *_activityIndicatorView;
+    UILabel *_label;
 }
 
 @property (readonly, nonatomic) UIActivityIndicatorView *activityIndicatorView; // @synthesize activityIndicatorView=_activityIndicatorView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

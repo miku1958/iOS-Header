@@ -11,6 +11,7 @@
 
 @protocol _SFBarRegistrationToken <NSObject>
 - (UIBarButtonItem *)UIBarButtonItemForItem:(long long)arg1;
+- (BOOL)containsBarItem:(long long)arg1;
 - (id<_SFPopoverSourceInfo>)popoverSourceInfoForItem:(long long)arg1;
 @end
 

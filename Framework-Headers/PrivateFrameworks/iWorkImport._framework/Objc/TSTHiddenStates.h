@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)deleteColumnsFromBaseRange:(struct _NSRange)arg1 columnUids:(const vector_4dc5f307 *)arg2;
 - (void)deleteRowsFromBaseRange:(struct _NSRange)arg1 rowUids:(const vector_4dc5f307 *)arg2;
 - (void)dirtyFilterState;
+- (void)dirtyFilterStateForHeaders;
 - (id)duplicateFilterSet;
 - (id)duplicateFilterSetInUidFormWithTable:(id)arg1;
 - (void)enableFilterSet:(BOOL)arg1;
@@ -88,6 +89,8 @@ __attribute__((visibility("hidden")))
 - (unsigned int)indexOfVisibleRowAfterRowAtIndex:(unsigned int)arg1;
 - (unsigned int)indexOfVisibleRowBeforeAndIncludingRowAtIndex:(unsigned int)arg1;
 - (unsigned int)indexOfVisibleRowBeforeRowAtIndex:(unsigned int)arg1;
+- (id)indexesOfCollapsedRowsInCellRange:(struct TSUCellRect)arg1;
+- (id)indexesOfFilteredRowsInCellRange:(struct TSUCellRect)arg1;
 - (id)indexesOfHiddenColumnsInBaseCellRange:(struct TSUModelCellRect)arg1;
 - (id)indexesOfHiddenColumnsInCellRange:(struct TSUCellRect)arg1;
 - (id)indexesOfHiddenRowsInBaseCellRange:(struct TSUModelCellRect)arg1;
@@ -122,10 +125,11 @@ __attribute__((visibility("hidden")))
 - (unsigned int)numberOfHiddenColumnsInCellRange:(struct TSUCellRect)arg1;
 - (struct TSUModelRowIndex)numberOfHiddenRowsInBaseCellRange:(struct TSUModelCellRect)arg1;
 - (unsigned int)numberOfHiddenRowsInCellRange:(struct TSUCellRect)arg1;
+- (struct TSUModelRowIndex)numberOfUserHiddenRowsInBaseCellRange:(struct TSUModelCellRect)arg1;
 - (unsigned int)numberOfUserHiddenRowsInCellRange:(struct TSUCellRect)arg1;
 - (struct TSCERangeRef)referenceToHiddenStateFromColumn:(unsigned short)arg1 toColumn:(unsigned short)arg2;
 - (struct TSCERangeRef)referenceToHiddenStateFromRow:(unsigned int)arg1 toRow:(unsigned int)arg2;
-- (int)registerWithCalcEngine:(id)arg1;
+- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
 - (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2;
 - (id)runChange:(id)arg1 withCollapsedState:(id)arg2 outUndoState:(id *)arg3;
 - (void)setCategoryGroupUID:(const UUIDData_5fbc143e *)arg1 asCollapsed:(BOOL)arg2;

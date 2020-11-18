@@ -39,7 +39,6 @@
 - (id)leftItems;
 - (id)rightItems;
 - (id)scriptAttributeKeys;
-- (void)setHidesBackButton:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setLeftItem:(id)arg1 animated:(BOOL)arg2;
 - (void)setLeftItems:(id)arg1;
 - (void)setLeftItems:(id)arg1 animated:(BOOL)arg2;

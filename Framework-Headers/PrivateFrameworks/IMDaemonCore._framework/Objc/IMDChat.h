@@ -42,6 +42,7 @@
     BOOL _isArchived;
     BOOL _isFiltered;
     BOOL _hasHadSuccessfulQuery;
+    BOOL _wasReportedAsJunk;
     NSString *_cloudKitRecordID;
     NSString *_srCloudKitRecordID;
     NSString *_srServerChangeToken;
@@ -96,6 +97,7 @@
 @property (readonly) Class superclass;
 @property (setter=_setUnreadCount:) unsigned long long unreadCount;
 @property (readonly, nonatomic) NSString *vocabularyIdentifier;
+@property BOOL wasReportedAsJunk; // @synthesize wasReportedAsJunk=_wasReportedAsJunk;
 
 + (id)_recordType;
 - (id)_chatRegistry;

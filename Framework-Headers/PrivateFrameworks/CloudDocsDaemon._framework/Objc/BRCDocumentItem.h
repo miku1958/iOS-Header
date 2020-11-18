@@ -77,6 +77,7 @@
 - (void)clearDesiredVersion;
 - (void)clearFromStage;
 - (void)clearVersionSignatures:(unsigned long long)arg1 isPackage:(BOOL)arg2;
+- (BOOL)contentRecordNeedsForceAllFieldsWhenDeadInServerTruth:(BOOL)arg1;
 - (id)contentsRecordID;
 - (id)descriptionWithContext:(id)arg1;
 - (unsigned long long)diffAgainstLocalItem:(id)arg1;

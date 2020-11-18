@@ -20,20 +20,20 @@
 __attribute__((visibility("hidden")))
 @interface TSDImageInfo : TSDMediaInfo <TSDReducibleImageContainer, TSDContainerInfo, TSDMixing, TSSPresetSource, TSKTransformableObject, TSDCompatibilityAwareMediaContainer, TSDAttachmentAwareContainerInfo>
 {
+    TSUBezierPath *mInstantAlphaPath;
+    struct CGSize mNaturalSize;
+    TSDImageDataHelper *mImageDataHelper;
     TSPData *mImageData;
     TSPData *mThumbnailImageData;
     TSPData *mOriginalImageData;
     TSDImageAdjustments *mImageAdjustments;
     TSPData *mAdjustedImageData;
     TSPData *mThumbnailAdjustedImageData;
-    TSDImageDataHelper *mImageDataHelper;
     TSDImageDataHelper *mAdjustedImageDataHelper;
     TSPData *mEnhancedImageData;
     TSDMediaStyle *mStyle;
     TSDMaskInfo *mMaskInfo;
-    TSUBezierPath *mInstantAlphaPath;
     TSUBezierPath *mTracedPath;
-    struct CGSize mNaturalSize;
     BOOL mCurrentlyInDocument;
     double mDescentForInlineLayout;
     BOOL mDescentForInlineLayoutValid;
@@ -116,6 +116,8 @@ __attribute__((visibility("hidden")))
 - (void)p_upgradeImageThumbnail;
 - (id)presetKind;
 - (id)promisedDataForType:(id)arg1;
+- (unsigned short)propertyIdForFlagsCommand;
+- (unsigned short)propertyIdForOriginalSizeCommand;
 - (id)propertyNameForFlagsCommand;
 - (id)propertyNameForOriginalSizeCommand;
 - (struct CGSize)rawDataSize;

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NewsUI/FCFeedPersonalizingArticle-Protocol.h>
+#import <NewsUI/FCFeedPersonalizingItem-Protocol.h>
 #import <NewsUI/NSObject-Protocol.h>
 
 @class NSString;
+@protocol FCChannelProviding;
 
-@protocol FCFeedTransformationItem <NSObject, FCFeedPersonalizingArticle>
+@protocol FCFeedTransformationItem <NSObject, FCFeedPersonalizingItem>
 
 @property (readonly, copy, nonatomic) NSString *articleID;
 @property (readonly, nonatomic) BOOL canBePurchased;
@@ -22,10 +23,12 @@
 @property (readonly, nonatomic) double globalUserFeedback;
 @property (readonly, nonatomic) long long minimumNewsVersion;
 @property (readonly, nonatomic) unsigned long long order;
-@property (readonly, nonatomic, getter=isPaid) BOOL paid;
 @property (readonly, nonatomic) unsigned long long publishDateMilliseconds;
 @property (readonly, nonatomic) long long publisherArticleVersion;
+@property (readonly, copy, nonatomic) id<FCChannelProviding> sourceChannel;
 @property (readonly, copy, nonatomic) NSString *sourceChannelID;
 
+
+@optional
 @end
 

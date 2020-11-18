@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSUUID;
+@class NSDate, NSString, NSUUID;
 
 @interface _DKSyncPeer : NSObject
 {
@@ -14,6 +14,7 @@
     NSString *_sourceDeviceID;
     NSString *_idsDeviceIdentifier;
     NSString *_zoneName;
+    NSDate *_lastSeenDate;
     NSString *_name;
     NSString *_model;
     NSUUID *_uuid;
@@ -21,6 +22,7 @@
 
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSString *idsDeviceIdentifier; // @synthesize idsDeviceIdentifier=_idsDeviceIdentifier;
+@property (copy, nonatomic) NSDate *lastSeenDate; // @synthesize lastSeenDate=_lastSeenDate;
 @property (nonatomic) BOOL me; // @synthesize me=_me;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;

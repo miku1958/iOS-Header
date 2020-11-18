@@ -47,6 +47,7 @@
 - (oneway void)endEventsGrouping;
 - (oneway void)flushStagedEventsWithReply:(CDUnknownBlockType)arg1;
 - (id)init;
+- (oneway void)logInstrumentationOfType:(id)arg1 machAbsoluteTime:(unsigned long long)arg2 turnIdentifier:(id)arg3;
 - (oneway void)stageEvent:(id)arg1;
 - (oneway void)stageEvents:(id)arg1;
 - (oneway void)stageEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;

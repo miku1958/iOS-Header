@@ -16,6 +16,7 @@
 + (BOOL)deviceIsMultiUser;
 + (BOOL)deviceIsPad;
 + (BOOL)deviceIsPhone;
++ (BOOL)deviceIsPod;
 + (BOOL)deviceIsSmallPhone;
 + (BOOL)isInternalInstall;
 + (id)messagePayloadFromDictionary:(id)arg1 andIdentifier:(unsigned long long)arg2;

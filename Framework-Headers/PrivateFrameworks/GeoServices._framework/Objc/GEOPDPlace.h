@@ -65,6 +65,7 @@
 - (void)_removeETAComponents;
 - (void)addComponent:(id)arg1;
 - (id)bestName;
+- (unsigned long long)brandMUID;
 - (id)businessURL;
 - (id)cacheKey;
 - (void)clearComponents;
@@ -86,6 +87,7 @@
 - (void)enumerateValidComponentsWithValuesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)geoMapItem;
 - (id)geoMapItemWithDetourInfo:(id)arg1;
+- (BOOL)hasBrandMUID;
 - (BOOL)hasExpiredComponentsAsOf:(double)arg1;
 - (unsigned long long)hash;
 - (BOOL)isDisputed;
@@ -98,6 +100,8 @@
 - (int)placeDisplayType;
 - (BOOL)readFrom:(id)arg1;
 - (id)referenceFrameAsString:(int)arg1;
+- (id)secondaryName;
+- (id)secondarySpokenName;
 - (void)setFirstSeenTimestamp:(double)arg1;
 - (id)spokenNameForLocale:(id)arg1;
 - (id)statusAsString:(int)arg1;

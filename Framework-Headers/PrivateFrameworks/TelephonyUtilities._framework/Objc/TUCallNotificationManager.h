@@ -37,6 +37,7 @@
 - (void)isThirdPartyVideoChangedForCall:(id)arg1;
 - (void)isUplinkMutedChangedForCall:(id)arg1;
 - (void)isUsingBasebandChangedForCall:(id)arg1;
+- (void)localSenderIdentityAccountUUIDChangedForCall:(id)arg1;
 - (void)mediaPropertiesChangedForCall:(id)arg1 remoteAspectRatioDidChange:(BOOL)arg2 remoteCameraOrientationDidChange:(BOOL)arg3;
 - (void)mediaStalledChangedForCall:(id)arg1;
 - (void)modelChangedForCall:(id)arg1;

@@ -73,6 +73,7 @@
 - (void)didAttemptToDisableiCloudBackups:(long long)arg1 error:(NSError *)arg2;
 - (void)didAttemptToSetEnabledTo:(BOOL)arg1 result:(BOOL)arg2;
 - (void)didFetchCloudKitSyncDebuggingInfo:(NSDictionary *)arg1;
+- (void)didFetchRampState:(NSDictionary *)arg1;
 - (void)didFetchSyncStateStats:(NSDictionary *)arg1;
 - (void)didPerformAdditionalStorageRequiredCheckWithSuccess:(BOOL)arg1 additionalStorageRequired:(unsigned long long)arg2 forAccountId:(NSString *)arg3 error:(NSError *)arg4;
 - (void)displayPinCodeForAccount:(NSString *)arg1 pinCode:(NSNumber *)arg2 deviceName:(NSString *)arg3 deviceType:(NSString *)arg4 phoneNumber:(NSString *)arg5;

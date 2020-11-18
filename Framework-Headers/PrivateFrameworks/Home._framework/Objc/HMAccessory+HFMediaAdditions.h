@@ -10,6 +10,7 @@
 
 @interface HMAccessory (HFMediaAdditions)
 
+@property (readonly, nonatomic) BOOL hf_fake8021xNetworkSymptom;
 @property (readonly, nonatomic) NSSet *hf_fakeDebugSymptoms;
 @property (readonly, nonatomic) BOOL hf_fakeGeneralFixSymptom;
 @property (readonly, nonatomic) BOOL hf_fakeHardwareFixSymptom;

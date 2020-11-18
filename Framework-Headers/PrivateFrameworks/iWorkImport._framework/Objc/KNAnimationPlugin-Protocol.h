@@ -23,6 +23,8 @@
 @optional
 + (NSArray *)customAttributes;
 + (NSDictionary *)customEffectTimingCurveDisplayParametersForAttributes:(NSDictionary *)arg1 layoutStyleOnly:(BOOL)arg2;
++ (BOOL)isCARendererBased;
++ (BOOL)isResponsibleForDrawingAllTextures;
 + (long long)rendererTypeForAnimationContext:(KNAnimationContext *)arg1;
 - (NSDictionary *)animationInfoForAnimatedBuild:(KNAnimatedBuild *)arg1;
 @end

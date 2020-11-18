@@ -21,6 +21,7 @@
     unsigned long long _numberOfCachedImages;
     NSMutableArray *_cachedImages;
     NSMutableIndexSet *_indicesToCache;
+    struct CGSize _size;
 }
 
 @property (weak, nonatomic) SXAnimatedImage *animatedImage; // @synthesize animatedImage=_animatedImage;
@@ -34,6 +35,7 @@
 @property (nonatomic) unsigned long long numberOfCachedImages; // @synthesize numberOfCachedImages=_numberOfCachedImages;
 @property (readonly, nonatomic) NSObject<OS_dispatch_semaphore> *semaphore; // @synthesize semaphore=_semaphore;
 @property long long singleImageByteSize; // @synthesize singleImageByteSize=_singleImageByteSize;
+@property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 
 - (void).cxx_destruct;
 - (void)cacheNextImage;
@@ -42,7 +44,7 @@
 - (id)decodeImageFromSource:(struct CGImageSource *)arg1 index:(unsigned long long)arg2;
 - (void)decreaseCacheSize;
 - (id)imageForFrameIndex:(unsigned long long)arg1;
-- (id)init;
+- (id)initWithImageSize:(struct CGSize)arg1;
 - (unsigned long long)nearestCachedFrameIndexForFrameIndex:(unsigned long long)arg1;
 - (void)prepareCache;
 - (void)prepareImageForFrameIndex:(unsigned long long)arg1;

@@ -30,6 +30,7 @@
 - (void)_backGestureFired:(id)arg1;
 - (id)_stateWithIdentifier:(id)arg1;
 - (id)initWithVoiceTemplate:(id)arg1 templateDelegate:(id)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

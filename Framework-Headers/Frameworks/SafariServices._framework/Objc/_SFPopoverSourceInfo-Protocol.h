@@ -6,12 +6,15 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class UIView;
+@class UIBarButtonItem, UIView;
 
 @protocol _SFPopoverSourceInfo <NSObject>
 
+@property (readonly, nonatomic) UIBarButtonItem *barButtonItem;
 @property (readonly, nonatomic) struct CGRect popoverSourceRect;
 @property (readonly, nonatomic) UIView *popoverSourceView;
 
+
+@optional
 @end
 

@@ -55,6 +55,7 @@
 - (void)_updateLongPressGestureRecognizer;
 - (void)_updatePeopleSuggestionFaceTileImagesForPersons:(id)arg1;
 - (void)commitPreviewViewController:(id)arg1;
+- (void)contentHasBeenSeen;
 - (struct NSObject *)contentView;
 - (void)gadgetControllerHasAppeared;
 - (void)ppt_presentComposeRecipientViewAfterDelay:(double)arg1;

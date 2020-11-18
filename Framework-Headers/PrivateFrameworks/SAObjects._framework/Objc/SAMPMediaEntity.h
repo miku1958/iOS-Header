@@ -13,6 +13,7 @@
 }
 
 @property (strong, nonatomic) SACalendar *dateAdded;
+@property (nonatomic) BOOL explicit;
 @property (copy, nonatomic) NSString *mediaType;
 @property (strong, nonatomic) SAMPPlaybackInfo *playbackInfo;
 @property (copy, nonatomic) NSString *rawPlaybackInfo;
@@ -20,6 +21,7 @@
 @property (copy, nonatomic) NSString *sortTitle;
 @property (copy, nonatomic) NSString *storeId;
 @property (copy, nonatomic) NSString *title;
+@property (nonatomic) BOOL unplayable;
 
 + (id)mediaEntity;
 + (id)mediaEntityWithDictionary:(id)arg1 context:(id)arg2;

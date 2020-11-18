@@ -8,13 +8,14 @@
 
 #import <NewsToday/NTSourceAvailabilityEntry-Protocol.h>
 
-@class NSSNewsAvailabilityMonitor, NSString;
+@class FCNetworkReachability, NSSNewsAvailabilityMonitor, NSString;
 @protocol OS_dispatch_queue;
 
 @interface NTNewsSourceAvailabilityEntry : NSObject <NTSourceAvailabilityEntry>
 {
     BOOL _available;
     CDUnknownBlockType _availabilityChangedNotificationBlock;
+    FCNetworkReachability *_networkReachability;
     NSSNewsAvailabilityMonitor *_NewsAvailabilityMonitor;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -25,6 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) FCNetworkReachability *networkReachability; // @synthesize networkReachability=_networkReachability;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) Class todayResultsFetchDescriptorClass;
@@ -33,7 +35,7 @@
 - (void)_updateAvailability;
 - (void)dealloc;
 - (id)init;
-- (id)initWithProcessVariant:(unsigned long long)arg1 queue:(id)arg2;
+- (id)initWithNetworkReachability:(id)arg1 processVariant:(unsigned long long)arg2 queue:(id)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end

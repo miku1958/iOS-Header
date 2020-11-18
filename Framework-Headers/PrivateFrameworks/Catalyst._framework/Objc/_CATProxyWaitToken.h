@@ -8,6 +8,7 @@
 
 @protocol OS_dispatch_group;
 
+__attribute__((visibility("hidden")))
 @interface _CATProxyWaitToken : NSObject
 {
     _Atomic BOOL mFinished;

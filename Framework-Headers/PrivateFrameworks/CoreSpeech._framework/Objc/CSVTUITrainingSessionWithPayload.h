@@ -10,23 +10,29 @@
 #import <CoreSpeech/CSVTUIEndPointDelegate-Protocol.h>
 #import <CoreSpeech/SFSpeechRecognitionTaskDelegate-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface CSVTUITrainingSessionWithPayload : CSVTUITrainingSession <SFSpeechRecognitionTaskDelegate, CSVTUIAudioSessionDelegate, CSVTUIEndPointDelegate>
 {
     BOOL _detectBOS;
     BOOL _ASRResultReceived;
     BOOL _reportedStopListening;
+    BOOL _utteranceStored;
+    unsigned long long _numSamplesFed;
+    NSDictionary *_voiceTriggerEventInfo;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSDictionary *voiceTriggerEventInfo; // @synthesize voiceTriggerEventInfo=_voiceTriggerEventInfo;
 
+- (void).cxx_destruct;
 - (void)_firedEndPointTimeout;
 - (void)_firedVoiceTriggerTimeout;
 - (void)_registerEndPointTimeout;
+- (void)_registerForceEndPointTimeout;
 - (void)_registerVoiceTriggerTimeout;
 - (void)_reportStopListening;
 - (void)audioSessionDidStartRecording:(BOOL)arg1 error:(id)arg2;
@@ -34,6 +40,7 @@
 - (void)audioSessionErrorDidOccur:(id)arg1;
 - (void)audioSessionRecordBufferAvailable:(id)arg1;
 - (void)audioSessionUnsupportedAudioRoute;
+- (void)closeSessionWithStatus:(int)arg1 successfully:(BOOL)arg2;
 - (void)didDetectBeginOfSpeech;
 - (void)didDetectEndOfSpeech:(long long)arg1;
 - (void)handleAudioInput:(id)arg1;

@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) BOOL hasAnyHistoryItems;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double historyAgeLimit; // @synthesize historyAgeLimit=_historyAgeLimit;
+@property (copy, nonatomic) NSData *longLivedSaveOperationData;
 @property (readonly, nonatomic) unsigned long long numberOfHistoryItems;
 @property (readonly, nonatomic) unsigned long long numberOfHistoryItemsOnHistoryQueue;
 @property (nonatomic) BOOL pushNotificationsAreInitialized;
@@ -107,7 +108,7 @@
 - (void)pruneTombstonesWithEndDatePriorToDate:(id)arg1;
 - (void)removeAttributes:(unsigned long long)arg1 fromVisit:(id)arg2;
 - (void)removeItemsInResponseToUserAction:(id)arg1;
-- (void)replayAndAddTombstone:(id)arg1;
+- (void)replayAndAddTombstones:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetCloudHistoryDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)savePendingChangesBeforeTerminationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setLastSeenDate:(id)arg1 forCloudClientVersion:(unsigned long long)arg2;

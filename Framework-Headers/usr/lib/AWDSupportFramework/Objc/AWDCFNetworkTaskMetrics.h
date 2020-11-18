@@ -21,9 +21,11 @@
     long long _underlyingError;
     long long _underlyingErrorDomain;
     NSString *_activityUUID;
+    int _schedulingTier;
     int _taskType;
     NSMutableArray *_transactionMetrics;
     BOOL _isBackground;
+    BOOL _unused;
     struct {
         unsigned int didCompleteWithError:1;
         unsigned int error:1;
@@ -33,8 +35,10 @@
         unsigned int timestamp:1;
         unsigned int underlyingError:1;
         unsigned int underlyingErrorDomain:1;
+        unsigned int schedulingTier:1;
         unsigned int taskType:1;
         unsigned int isBackground:1;
+        unsigned int unused:1;
     } _has;
 }
 
@@ -47,22 +51,27 @@
 @property (nonatomic) BOOL hasIsBackground;
 @property (nonatomic) BOOL hasNumberOfRedirects;
 @property (nonatomic) BOOL hasNumberOfRetries;
+@property (nonatomic) BOOL hasSchedulingTier;
 @property (nonatomic) BOOL hasTaskResume;
 @property (nonatomic) BOOL hasTaskType;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasUnderlyingError;
 @property (nonatomic) BOOL hasUnderlyingErrorDomain;
+@property (nonatomic) BOOL hasUnused;
 @property (nonatomic) BOOL isBackground; // @synthesize isBackground=_isBackground;
 @property (nonatomic) unsigned long long numberOfRedirects; // @synthesize numberOfRedirects=_numberOfRedirects;
 @property (nonatomic) unsigned long long numberOfRetries; // @synthesize numberOfRetries=_numberOfRetries;
+@property (nonatomic) int schedulingTier; // @synthesize schedulingTier=_schedulingTier;
 @property (nonatomic) unsigned long long taskResume; // @synthesize taskResume=_taskResume;
 @property (nonatomic) int taskType; // @synthesize taskType=_taskType;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (strong, nonatomic) NSMutableArray *transactionMetrics; // @synthesize transactionMetrics=_transactionMetrics;
 @property (nonatomic) long long underlyingError; // @synthesize underlyingError=_underlyingError;
 @property (nonatomic) long long underlyingErrorDomain; // @synthesize underlyingErrorDomain=_underlyingErrorDomain;
+@property (nonatomic) BOOL unused; // @synthesize unused=_unused;
 
 + (Class)transactionMetricsType;
+- (int)StringAsSchedulingTier:(id)arg1;
 - (int)StringAsTaskType:(id)arg1;
 - (void)addTransactionMetrics:(id)arg1;
 - (void)clearTransactionMetrics;
@@ -75,6 +84,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)schedulingTierAsString:(int)arg1;
 - (id)taskTypeAsString:(int)arg1;
 - (id)transactionMetricsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)transactionMetricsCount;

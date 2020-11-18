@@ -73,6 +73,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithTCPReport:(struct netcore_stats_tcp_report *)arg1 length:(unsigned long long)arg2 clientIdentifier:(id)arg3 sourceIdentifier:(id)arg4;
+- (BOOL)tlsHandshakeTimedOut;
 
 @end
 

@@ -13,6 +13,7 @@
 @interface TTTextController : NSObject <TTTextStorageStyler>
 {
     BOOL _keepNSTextTableAttributes;
+    BOOL _disableSingleLineA;
     double _bodyStyleFontSizeThreshold;
     double _headingStyleFontSizeThreshold;
     TTZoomController *_zoomController;
@@ -21,6 +22,7 @@
 @property (nonatomic) double bodyStyleFontSizeThreshold; // @synthesize bodyStyleFontSizeThreshold=_bodyStyleFontSizeThreshold;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableSingleLineA; // @synthesize disableSingleLineA=_disableSingleLineA;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double headingStyleFontSizeThreshold; // @synthesize headingStyleFontSizeThreshold=_headingStyleFontSizeThreshold;
 @property (nonatomic) BOOL keepNSTextTableAttributes; // @synthesize keepNSTextTableAttributes=_keepNSTextTableAttributes;

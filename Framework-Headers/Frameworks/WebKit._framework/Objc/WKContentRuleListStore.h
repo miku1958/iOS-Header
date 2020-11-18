@@ -26,7 +26,6 @@
 + (id)storeWithURL:(id)arg1;
 + (id)storeWithURLAndLegacyFilename:(id)arg1;
 - (void)_compileContentRuleListForIdentifier:(id)arg1 encodedContentRuleList:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_compileContentRuleListForIdentifier:(id)arg1 encodedContentRuleList:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 releasesArgument:(BOOL)arg4;
 - (void)_getContentRuleListSourceForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_invalidateContentRuleListVersionForIdentifier:(id)arg1;
 - (void)_removeAllContentRuleLists;

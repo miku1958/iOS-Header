@@ -16,18 +16,23 @@
     unsigned long long _sampleByteDepth;
     unsigned long long _startSampleCount;
     unsigned long long _hostTime;
+    NSData *_remoteVAD;
 }
 
 @property (readonly, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, nonatomic) unsigned long long hostTime; // @synthesize hostTime=_hostTime;
 @property (readonly, nonatomic) unsigned long long numChannels; // @synthesize numChannels=_numChannels;
 @property (readonly, nonatomic) unsigned long long numSamples; // @synthesize numSamples=_numSamples;
+@property (strong, nonatomic) NSData *remoteVAD; // @synthesize remoteVAD=_remoteVAD;
+@property (readonly, nonatomic) BOOL remoteVADAvailable;
 @property (readonly, nonatomic) unsigned long long sampleByteDepth; // @synthesize sampleByteDepth=_sampleByteDepth;
 @property (readonly, nonatomic) unsigned long long startSampleCount; // @synthesize startSampleCount=_startSampleCount;
 
 - (void).cxx_destruct;
 - (id)dataForChannel:(unsigned long long)arg1;
+- (id)dataWithRemoteVADWithScaleFactor:(float)arg1 numAudioSamplesPerRemoteVAD:(unsigned long long)arg2;
 - (id)initWithData:(id)arg1 numChannels:(unsigned long long)arg2 numSamples:(unsigned long long)arg3 sampleByteDepth:(unsigned long long)arg4 startSampleCount:(unsigned long long)arg5 hostTime:(unsigned long long)arg6;
+- (id)initWithData:(id)arg1 numChannels:(unsigned long long)arg2 numSamples:(unsigned long long)arg3 sampleByteDepth:(unsigned long long)arg4 startSampleCount:(unsigned long long)arg5 hostTime:(unsigned long long)arg6 remoteVAD:(id)arg7;
 - (void)skipSamplesAtStartSuchThatNumSamplesReceivedSoFar:(unsigned long long)arg1 reachesACountOf:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)splitAudioChunkSuchThatNumSamplesReceivedSoFar:(unsigned long long)arg1 reachesACountOf:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)subChunkFrom:(unsigned long long)arg1 numSamples:(unsigned long long)arg2;

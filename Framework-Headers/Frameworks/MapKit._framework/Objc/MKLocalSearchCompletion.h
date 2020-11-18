@@ -31,10 +31,12 @@
 @property (readonly, nonatomic) NSArray *displayLines;
 @property (readonly, nonatomic) id<GEOCompletionItem> geoCompletionItem;
 @property (readonly, nonatomic, getter=_hasDisambiguationRadiusMeters) BOOL hasDisambiguationRadiusMeters;
+@property (readonly, nonatomic) BOOL hasSortPriority;
 @property (copy, nonatomic) NSString *localizedSectionHeader; // @synthesize localizedSectionHeader=_localizedSectionHeader;
 @property (readonly, nonatomic) MKMapItem *mapItem;
 @property (readonly, nonatomic, getter=_placeType) int placeType;
 @property (readonly, nonatomic) GEORetainedSearchMetadata *retainedSearchMetadata;
+@property (readonly, nonatomic) long long sortPriority;
 @property (copy, nonatomic) NSString *sourceID; // @synthesize sourceID=_sourceID;
 @property (readonly, nonatomic) NSString *subtitle;
 @property (readonly, nonatomic) NSArray *subtitleHighlightRanges;

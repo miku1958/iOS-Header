@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFSuggestionCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFRichText;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFRichText, SFUserReportRequest;
 
 @interface SFSuggestionCardSection : SFCardSection <SFSuggestionCardSection, NSSecureCoding, NSCopying>
 {
@@ -59,6 +59,7 @@
 @property (strong, nonatomic) SFRichText *suggestionText; // @synthesize suggestionText=_suggestionText;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

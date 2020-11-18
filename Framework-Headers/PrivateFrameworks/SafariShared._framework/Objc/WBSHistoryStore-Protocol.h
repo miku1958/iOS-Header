@@ -6,7 +6,7 @@
 
 #import <SafariShared/WBSHistoryLoader-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSSet, WBSHistoryItem, WBSHistoryTombstone, WBSHistoryVisit;
+@class NSArray, NSData, NSDate, NSSet, WBSHistoryItem, WBSHistoryVisit;
 @protocol WBSHistoryStoreDelegate;
 
 @protocol WBSHistoryStore <WBSHistoryLoader>
@@ -16,6 +16,7 @@
 @property (copy, nonatomic) NSData *fetchThrottlerData;
 @property (nonatomic) double historyAgeLimit;
 @property (readonly, nonatomic) BOOL isUsingInMemoryDatabase;
+@property (copy, nonatomic) NSData *longLivedSaveOperationData;
 @property (nonatomic) BOOL pushNotificationsAreInitialized;
 @property (copy, nonatomic) NSData *pushThrottlerData;
 @property (copy, nonatomic) NSData *syncCircleSizeRetrievalThrottlerData;
@@ -42,7 +43,7 @@
 - (void)removeItemsOnDatabaseQueue:(NSSet *)arg1;
 - (void)removePastHistoryVisitsForItem:(WBSHistoryItem *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)removeVisitsOnDatabaseQueue:(NSSet *)arg1;
-- (void)replayAndAddTombstone:(WBSHistoryTombstone *)arg1;
+- (void)replayAndAddTombstones:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)resetCloudHistoryDataWithCompletionHandler:(void (^)(void))arg1;
 - (void)setLastSeenDate:(NSDate *)arg1 forCloudClientVersion:(unsigned long long)arg2;
 - (void)setServerChangeTokenData:(NSData *)arg1;

@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (id)fontFamilies;
 - (id)fontsForMetadata:(id)arg1;
+- (id)init;
 - (id)initWithFontMetaData:(id)arg1;
 
 @end

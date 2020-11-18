@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSNumber, NSString;
+@class NSDate, NSNumber, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ICLibraryAuthServiceClientTokenProvider : NSObject
@@ -18,6 +18,7 @@
     NSDate *_cachedClientTokenExpiration;
     NSNumber *_cachedDSID;
     CDUnknownBlockType _requestDelayBlock;
+    NSOperationQueue *_operationQueue;
 }
 
 + (id)sharedProvider;
@@ -27,6 +28,7 @@
 - (void)_handleRequestToken;
 - (void)_handleTokenResponse:(id)arg1 tokenRequest:(id)arg2;
 - (CDUnknownBlockType)_requestTokenWithDelay:(long long)arg1;
+- (void)_userIdentityStoreDidChangeNotification:(id)arg1;
 - (id)cachedTokenAndResetCache:(BOOL)arg1;
 - (id)init;
 

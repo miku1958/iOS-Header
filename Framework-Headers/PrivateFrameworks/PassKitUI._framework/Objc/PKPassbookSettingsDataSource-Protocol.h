@@ -6,7 +6,7 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSString;
 @protocol PKPassLibraryDataProvider, PKPassbookPeerPaymentSettingsDataSource, PKPassbookPeerPaymentSettingsDelegate, PKPaymentDataProvider, PKPaymentOptionsProtocol, PKPaymentSetupDelegate;
 
 @protocol PKPassbookSettingsDataSource <NSObject>
@@ -25,8 +25,6 @@
 @optional
 - (NSString *)deviceName;
 - (BOOL)hasFelicaSecureElement;
-- (NSArray *)setupBrowsableProductTypesForDevice;
-- (NSArray *)setupFeaturedNetworksForDevice;
 - (BOOL)supportsCredentialType:(long long)arg1;
 @end
 

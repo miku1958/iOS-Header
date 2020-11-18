@@ -11,8 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface TSDGLFrameBufferTextureLookupInfo : NSObject
 {
+    BOOL _valid;
     unsigned int _attachment;
     unsigned int _textureName;
+    unsigned int _target;
     long long _indexOnAttachment;
     NSString *_name;
     struct CGSize _textureSize;
@@ -21,13 +23,17 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int attachment; // @synthesize attachment=_attachment;
 @property (nonatomic) long long indexOnAttachment; // @synthesize indexOnAttachment=_indexOnAttachment;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) unsigned int target; // @synthesize target=_target;
 @property (readonly, nonatomic) unsigned int textureName; // @synthesize textureName=_textureName;
 @property (readonly, nonatomic) struct CGSize textureSize; // @synthesize textureSize=_textureSize;
+@property (nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 
-+ (id)textureLookupInfoWithAttachment:(unsigned int)arg1 indexOnAttachment:(long long)arg2 textureName:(unsigned int)arg3 textureSize:(struct CGSize)arg4 name:(id)arg5;
++ (id)invalidTextureLookupInfo;
++ (id)textureLookupInfoWithAttachment:(unsigned int)arg1 indexOnAttachment:(long long)arg2 textureName:(unsigned int)arg3 textureSize:(struct CGSize)arg4 name:(id)arg5 target:(unsigned int)arg6;
 - (void)dealloc;
 - (id)description;
-- (id)initWithAttachment:(unsigned int)arg1 indexOnAttachment:(long long)arg2 textureName:(unsigned int)arg3 textureSize:(struct CGSize)arg4 name:(id)arg5;
+- (id)initWithAttachment:(unsigned int)arg1 indexOnAttachment:(long long)arg2 textureName:(unsigned int)arg3 textureSize:(struct CGSize)arg4 name:(id)arg5 target:(unsigned int)arg6 valid:(BOOL)arg7;
+- (unsigned int)targetOfPossiblyInvalidInfo;
 
 @end
 

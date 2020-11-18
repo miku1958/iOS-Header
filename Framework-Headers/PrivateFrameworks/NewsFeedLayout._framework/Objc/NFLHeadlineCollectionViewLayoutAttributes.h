@@ -29,6 +29,12 @@
     double _excerptLineHeight;
     long long _accessoryContentMode;
     NSString *_accessoryFontName;
+    double _accessoryViewBottomPadding;
+    double _accessoryViewTopPadding;
+    double _accessoryContentViewLeftPadding;
+    double _accessoryContentViewRightPadding;
+    unsigned long long _numberOfSegments;
+    unsigned long long _segmentedColorViewDirection;
     UIColor *_accessoryFontColor;
     UIColor *_accessoryIconColor;
     double _accessoryFontSize;
@@ -43,17 +49,22 @@
     struct CGRect _titleFrame;
     struct CGRect _excerptFrame;
     struct CGRect _accessoryViewFrame;
+    struct CGRect _segmentedColorViewFrame;
     struct CGRect _sharrowFrame;
     struct CGRect _publisherLogoFrame;
 }
 
 @property (nonatomic) long long accessoryContentMode; // @synthesize accessoryContentMode=_accessoryContentMode;
+@property (nonatomic) double accessoryContentViewLeftPadding; // @synthesize accessoryContentViewLeftPadding=_accessoryContentViewLeftPadding;
+@property (nonatomic) double accessoryContentViewRightPadding; // @synthesize accessoryContentViewRightPadding=_accessoryContentViewRightPadding;
 @property (strong, nonatomic) UIColor *accessoryFontColor; // @synthesize accessoryFontColor=_accessoryFontColor;
 @property (strong, nonatomic) NSString *accessoryFontName; // @synthesize accessoryFontName=_accessoryFontName;
 @property (nonatomic) double accessoryFontSize; // @synthesize accessoryFontSize=_accessoryFontSize;
 @property (strong, nonatomic) UIColor *accessoryIconColor; // @synthesize accessoryIconColor=_accessoryIconColor;
 @property (nonatomic) double accessoryLineHeight; // @synthesize accessoryLineHeight=_accessoryLineHeight;
+@property (nonatomic) double accessoryViewBottomPadding; // @synthesize accessoryViewBottomPadding=_accessoryViewBottomPadding;
 @property (nonatomic) struct CGRect accessoryViewFrame; // @synthesize accessoryViewFrame=_accessoryViewFrame;
+@property (nonatomic) double accessoryViewTopPadding; // @synthesize accessoryViewTopPadding=_accessoryViewTopPadding;
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 @property (strong, nonatomic) NSString *excerptFontName; // @synthesize excerptFontName=_excerptFontName;
@@ -65,11 +76,14 @@
 @property (nonatomic) struct CGRect imageViewFrame; // @synthesize imageViewFrame=_imageViewFrame;
 @property (nonatomic) BOOL layoutHasTooMuchWhiteSpaceInCurrentState; // @synthesize layoutHasTooMuchWhiteSpaceInCurrentState=_layoutHasTooMuchWhiteSpaceInCurrentState;
 @property (nonatomic) double minimumHeightBetweenLowestTextFrameAndBottomOfContent; // @synthesize minimumHeightBetweenLowestTextFrameAndBottomOfContent=_minimumHeightBetweenLowestTextFrameAndBottomOfContent;
+@property (nonatomic) unsigned long long numberOfSegments; // @synthesize numberOfSegments=_numberOfSegments;
 @property (strong, nonatomic) UIColor *numberedCircleColor; // @synthesize numberedCircleColor=_numberedCircleColor;
 @property (nonatomic) struct CGRect numberedCircleFrame; // @synthesize numberedCircleFrame=_numberedCircleFrame;
 @property (strong, nonatomic) UIColor *publisherLogoColor; // @synthesize publisherLogoColor=_publisherLogoColor;
 @property (nonatomic) long long publisherLogoContentMode; // @synthesize publisherLogoContentMode=_publisherLogoContentMode;
 @property (nonatomic) struct CGRect publisherLogoFrame; // @synthesize publisherLogoFrame=_publisherLogoFrame;
+@property (nonatomic) unsigned long long segmentedColorViewDirection; // @synthesize segmentedColorViewDirection=_segmentedColorViewDirection;
+@property (nonatomic) struct CGRect segmentedColorViewFrame; // @synthesize segmentedColorViewFrame=_segmentedColorViewFrame;
 @property (nonatomic) double selectionCornerRadius; // @synthesize selectionCornerRadius=_selectionCornerRadius;
 @property (nonatomic) struct UIEdgeInsets selectionInset; // @synthesize selectionInset=_selectionInset;
 @property (nonatomic) struct CGRect sharrowFrame; // @synthesize sharrowFrame=_sharrowFrame;

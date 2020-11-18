@@ -32,11 +32,13 @@
 - (void)_remotePersistentStoreDidChange:(id)arg1;
 - (id)descriptionForPersistentStore:(id)arg1;
 - (id)init;
+- (id)localPersistentStoreMetadataValueForKey:(id)arg1;
 - (id)newBackgroundContext;
 - (void)performBackgroundTask:(CDUnknownBlockType)arg1;
 - (void)performBackgroundTaskAndWait:(CDUnknownBlockType)arg1;
 - (id)persistentHistoryTokenForStore:(id)arg1;
 - (void)savePersistentHistoryToken:(id)arg1 forStore:(id)arg2;
+- (void)setLocalPersistentStoreValue:(id)arg1 forKey:(id)arg2;
 - (id)viewContext;
 
 @end

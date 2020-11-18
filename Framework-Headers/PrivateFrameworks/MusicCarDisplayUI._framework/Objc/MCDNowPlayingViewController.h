@@ -22,6 +22,7 @@
     BOOL _navbarHidesShadow;
     BOOL _viewHasShifted;
     BOOL _handledWillAppear;
+    BOOL _isForMusic;
     MCDTransportControlView *_transportControlView;
     MCDPlayModeControlView *_playModeControlView;
     MCDTitleView *_titleView;
@@ -65,6 +66,7 @@
 @property (readonly, nonatomic) MCDTitleView *titleView; // @synthesize titleView=_titleView;
 @property (readonly, nonatomic) MCDTransportControlView *transportControlView; // @synthesize transportControlView=_transportControlView;
 
++ (id)nowPlayingViewControllerForMusic:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_addToLibraryButtonTouchUp:(id)arg1;
 - (void)_didUpdateSupportedCommandsNotification:(id)arg1;

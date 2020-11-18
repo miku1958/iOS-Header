@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     TSUMutableUUIDSet *_rowUids;
     TSTGroupNode *_parentNode;
     TSTGroupNodeFormatManager *_formatManager;
+    unordered_map_8a2ad1cf _childNodesByRowUid;
 }
 
 @property (readonly, nonatomic) unordered_map_facfd2e8 *aggNodes;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)clearEmptyNodesWithGroupBy:(id)arg1;
 - (void)clearWithGroupBy:(id)arg1;
 - (BOOL)containsRowUid:(const UUIDData_5fbc143e *)arg1;
+- (void)dealloc;
 - (id)descriptionWithGroupBy:(id)arg1;
 - (void)encodeToArchive:(struct CategoryOwnerArchive_GroupByArchive_GroupNodeArchive *)arg1;
 - (void)enumerateAllGroupsWithBlock:(CDUnknownBlockType)arg1;

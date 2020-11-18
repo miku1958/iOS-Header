@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _activitySupportsPromiseURLs;
     BOOL _appIsDocumentTypeOwner;
+    BOOL _isCapabilityBasedActivity;
     NSUUID *_activityUUID;
     long long _activityCategory;
     NSString *_activityType;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long encodingType; // @synthesize encodingType=_encodingType;
 @property (readonly, nonatomic) NSString *fallbackActivityType; // @synthesize fallbackActivityType=_fallbackActivityType;
 @property (readonly, nonatomic) unsigned long long indexInApplicationDefinedActivities; // @synthesize indexInApplicationDefinedActivities=_indexInApplicationDefinedActivities;
+@property (nonatomic) BOOL isCapabilityBasedActivity; // @synthesize isCapabilityBasedActivity=_isCapabilityBasedActivity;
 @property (strong, nonatomic) NSString *overrideTitle; // @synthesize overrideTitle=_overrideTitle;
 @property (readonly, nonatomic) NSString *positionBeforeActivityType; // @synthesize positionBeforeActivityType=_positionBeforeActivityType;
 @property (readonly, nonatomic) struct CGSize preferredThumbnailSize; // @synthesize preferredThumbnailSize=_preferredThumbnailSize;

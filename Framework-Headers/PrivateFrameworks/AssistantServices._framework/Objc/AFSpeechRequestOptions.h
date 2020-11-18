@@ -8,7 +8,7 @@
 
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class AFSpeechSynthesisRecord, CLLocation, NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSXPCListenerEndpoint;
+@class AFSpeechSynthesisRecord, CLLocation, NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSUUID, NSXPCListenerEndpoint;
 
 @interface AFSpeechRequestOptions : NSObject <NSSecureCoding>
 {
@@ -23,6 +23,7 @@
     BOOL _useBorealisBuffer;
     BOOL _fetchSmartSiriVolume;
     BOOL _suppressStopAlert;
+    BOOL _hasPlayedStartAlert;
     BOOL _isOnPhoneCall;
     long long _activationEvent;
     NSString *_activationDeviceIdentifier;
@@ -47,6 +48,7 @@
     NSDictionary *_clientAnalyticsContext;
     NSDictionary *_startContext;
     NSDictionary *_stopContext;
+    struct NSUUID *_turnIdentifier;
 }
 
 @property (nonatomic) BOOL acousticIdEnabled; // @synthesize acousticIdEnabled=_acousticIdEnabled;
@@ -62,6 +64,7 @@
 @property (copy, nonatomic) NSDictionary *clientAnalyticsContext; // @synthesize clientAnalyticsContext=_clientAnalyticsContext;
 @property (nonatomic) double expectedActivationEventTime; // @synthesize expectedActivationEventTime=_expectedActivationEventTime;
 @property (nonatomic) BOOL fetchSmartSiriVolume; // @synthesize fetchSmartSiriVolume=_fetchSmartSiriVolume;
+@property (nonatomic) BOOL hasPlayedStartAlert; // @synthesize hasPlayedStartAlert=_hasPlayedStartAlert;
 @property (nonatomic) unsigned long long homeButtonDownEventMachAbsoluteTime; // @synthesize homeButtonDownEventMachAbsoluteTime=_homeButtonDownEventMachAbsoluteTime;
 @property (nonatomic) double homeButtonDownEventTime; // @synthesize homeButtonDownEventTime=_homeButtonDownEventTime;
 @property (copy, nonatomic) NSNumber *homeButtonUpFromBeep; // @synthesize homeButtonUpFromBeep=_homeButtonUpFromBeep;
@@ -80,6 +83,7 @@
 @property (copy, nonatomic) NSDictionary *startContext; // @synthesize startContext=_startContext;
 @property (copy, nonatomic) NSDictionary *stopContext; // @synthesize stopContext=_stopContext;
 @property (nonatomic) BOOL suppressStopAlert; // @synthesize suppressStopAlert=_suppressStopAlert;
+@property (copy, nonatomic) NSUUID *turnIdentifier; // @synthesize turnIdentifier=_turnIdentifier;
 @property (nonatomic) BOOL useAutomaticEndpointing; // @synthesize useAutomaticEndpointing=_useAutomaticEndpointing;
 @property (nonatomic) BOOL useBorealisBuffer; // @synthesize useBorealisBuffer=_useBorealisBuffer;
 @property (nonatomic) BOOL usePrelisteningMode; // @synthesize usePrelisteningMode=_usePrelisteningMode;

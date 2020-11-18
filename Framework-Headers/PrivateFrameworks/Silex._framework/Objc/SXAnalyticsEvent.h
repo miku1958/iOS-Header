@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
 - (void).cxx_destruct;
+- (id)description;
 - (void)determineEndDate;
 - (id)init;
 

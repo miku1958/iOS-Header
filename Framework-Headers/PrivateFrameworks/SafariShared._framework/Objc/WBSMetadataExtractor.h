@@ -20,10 +20,13 @@
 
 + (id)metadataExtractorScriptSource;
 - (void).cxx_destruct;
+- (id)_colorFromColorComponents:(id)arg1;
 - (id)_resultForInvokingFunctionWithName:(id)arg1;
 - (id)appleTouchIconURLs;
 - (void)dealloc;
 - (id)faviconURLs;
+- (id)firstElementForSelector:(id)arg1;
+- (void)getTemplateIconURL:(id *)arg1 andColor:(id *)arg2;
 - (id)initWithWebProcessPlugInFrame:(id)arg1;
 - (id)initWithWebProcessPlugInFrame:(id)arg1 useNormalWorld:(BOOL)arg2;
 - (id)makeContext;

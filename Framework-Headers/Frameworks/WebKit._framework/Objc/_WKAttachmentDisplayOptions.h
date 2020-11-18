@@ -11,10 +11,8 @@
     long long _mode;
 }
 
-@property (readonly, nonatomic) struct AttachmentDisplayOptions coreDisplayOptions;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 
-- (id)init;
 
 @end
 

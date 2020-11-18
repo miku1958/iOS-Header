@@ -54,12 +54,14 @@
 - (void)_lostAllPeople;
 - (void)_scheduleRetry;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)addAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)description;
 - (id)descriptionWithLevel:(int)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidate;
+- (void)removeAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)xpcPersonChanged:(id)arg1 changes:(unsigned int)arg2;
 - (void)xpcPersonFound:(id)arg1;
 - (void)xpcPersonLost:(id)arg1;

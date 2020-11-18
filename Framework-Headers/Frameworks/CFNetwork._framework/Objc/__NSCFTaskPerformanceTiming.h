@@ -10,7 +10,6 @@
 
 @class NSDate, NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface __NSCFTaskPerformanceTiming : NSObject <NSSecureCoding>
 {
     BOOL __isBackground;
@@ -18,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSUUID *__activityUUID;
     NSDate *__didCompleteWithError;
     long long __numberOfRetries;
+    long long __taskSchedulingTier;
 }
 
 @property (strong) NSUUID *_activityUUID; // @synthesize _activityUUID=__activityUUID;
@@ -25,9 +25,10 @@ __attribute__((visibility("hidden")))
 @property BOOL _isBackground; // @synthesize _isBackground=__isBackground;
 @property long long _numberOfRetries; // @synthesize _numberOfRetries=__numberOfRetries;
 @property (strong) NSDate *_resumeTime; // @synthesize _resumeTime=__resumeTime;
+@property long long _taskSchedulingTier; // @synthesize _taskSchedulingTier=__taskSchedulingTier;
 
 + (BOOL)supportsSecureCoding;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

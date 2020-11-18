@@ -9,11 +9,14 @@
 #import <Silex/ADBannerViewInternalDelegate-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString, SXDocument, SXViewport;
-@protocol OS_dispatch_semaphore, SXAdControllerDelegate, SXAdControllerPresentationDelegate, SXAdProvider;
+@protocol OS_dispatch_semaphore, SXAdControllerDelegate, SXAdControllerPresentationDelegate, SXAdProvider, SXAdvertisingSettings;
 
 @interface SXAdController : NSObject <ADBannerViewInternalDelegate>
 {
+    BOOL _debuggingEnabled;
+    BOOL _interactivityDebuggingEnabled;
     BOOL _didLoadFirstBannerView;
+    id<SXAdvertisingSettings> _debugAdvertisementSettings;
     id<SXAdControllerDelegate> _delegate;
     id<SXAdControllerPresentationDelegate> _presentationDelegate;
     id<SXAdProvider> _adProvider;
@@ -28,22 +31,19 @@
 @property (strong, nonatomic) NSMutableDictionary *bannerViews; // @synthesize bannerViews=_bannerViews;
 @property (readonly, nonatomic) NSObject<OS_dispatch_semaphore> *bannerViewsSemaphore; // @synthesize bannerViewsSemaphore=_bannerViewsSemaphore;
 @property (readonly, nonatomic) NSMutableArray *componentViewsDisplayingAds; // @synthesize componentViewsDisplayingAds=_componentViewsDisplayingAds;
+@property (strong, nonatomic) id<SXAdvertisingSettings> debugAdvertisementSettings; // @synthesize debugAdvertisementSettings=_debugAdvertisementSettings;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, getter=isDebuggingEnabled) BOOL debuggingEnabled; // @synthesize debuggingEnabled=_debuggingEnabled;
 @property (weak, nonatomic) id<SXAdControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didLoadFirstBannerView; // @synthesize didLoadFirstBannerView=_didLoadFirstBannerView;
 @property (readonly, nonatomic) SXDocument *document; // @synthesize document=_document;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isInteractivityDebuggingEnabled) BOOL interactivityDebuggingEnabled; // @synthesize interactivityDebuggingEnabled=_interactivityDebuggingEnabled;
 @property (weak, nonatomic) id<SXAdControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
 
-+ (id)debugAdvertisementSettings;
-+ (BOOL)interactivityDebuggingEnabled;
-+ (BOOL)isDebugModeEnabled;
-+ (void)setDebugAdvertisingSettings:(id)arg1;
-+ (void)setDebugModeEnabled:(BOOL)arg1;
-+ (void)setInteractivityDebuggingEnabled:(BOOL)arg1;
 - (void).cxx_destruct;
 - (BOOL)allowComponentViewInFirstViewport:(id)arg1;
 - (CDUnknownBlockType)bannerViewForComponentView:(id)arg1 component:(id)arg2 metadataProvider:(id)arg3 adType:(unsigned long long)arg4 completionBlock:(CDUnknownBlockType)arg5;
@@ -57,7 +57,7 @@
 - (id)initWithAdProvider:(id)arg1 document:(id)arg2 viewport:(id)arg3;
 - (BOOL)isComponentViewWithinFirstViewport:(id)arg1;
 - (BOOL)isDisplayingAdsWithinScreenfullOfComponentView:(id)arg1;
-- (BOOL)isRect:(struct CGRect)arg1 withinScreenFullOfRect:(struct CGRect)arg2 viewport:(struct CGSize)arg3;
+- (BOOL)isRect:(struct CGRect)arg1 withinMinimumDistanceOfRect:(struct CGRect)arg2 viewport:(struct CGSize)arg3;
 - (CDUnknownBlockType)prerollForComponent:(id)arg1 metadataProvider:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)reset;
 - (void)resumeAdInteraction;

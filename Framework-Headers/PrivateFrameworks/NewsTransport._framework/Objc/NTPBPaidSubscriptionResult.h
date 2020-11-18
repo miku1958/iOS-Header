@@ -17,10 +17,13 @@
     NSString *_campaignId;
     NSString *_campaignType;
     NSString *_creativeId;
+    NSString *_groupFeedId;
     int _groupType;
     NSString *_iadQtoken;
     int _paidSubscriptionConversionPointType;
+    NSString *_parentFeedId;
     int _parentFeedType;
+    NSString *_purchaseId;
     int _resultType;
     NSString *_sectionId;
     NSString *_sourceChannelId;
@@ -45,6 +48,7 @@
 @property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
 @property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
 @property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
+@property (strong, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (nonatomic) BOOL hasArrivedFromAd;
 @property (readonly, nonatomic) BOOL hasArticleId;
@@ -52,10 +56,13 @@
 @property (readonly, nonatomic) BOOL hasCampaignId;
 @property (readonly, nonatomic) BOOL hasCampaignType;
 @property (readonly, nonatomic) BOOL hasCreativeId;
+@property (readonly, nonatomic) BOOL hasGroupFeedId;
 @property (nonatomic) BOOL hasGroupType;
 @property (readonly, nonatomic) BOOL hasIadQtoken;
 @property (nonatomic) BOOL hasPaidSubscriptionConversionPointType;
+@property (readonly, nonatomic) BOOL hasParentFeedId;
 @property (nonatomic) BOOL hasParentFeedType;
+@property (readonly, nonatomic) BOOL hasPurchaseId;
 @property (nonatomic) BOOL hasResultType;
 @property (nonatomic) BOOL hasSawSubscriptionSheet;
 @property (readonly, nonatomic) BOOL hasSectionId;
@@ -64,7 +71,9 @@
 @property (readonly, nonatomic) BOOL hasSubscriptionPurchaseSessionId;
 @property (strong, nonatomic) NSString *iadQtoken; // @synthesize iadQtoken=_iadQtoken;
 @property (nonatomic) int paidSubscriptionConversionPointType; // @synthesize paidSubscriptionConversionPointType=_paidSubscriptionConversionPointType;
+@property (strong, nonatomic) NSString *parentFeedId; // @synthesize parentFeedId=_parentFeedId;
 @property (nonatomic) int parentFeedType; // @synthesize parentFeedType=_parentFeedType;
+@property (strong, nonatomic) NSString *purchaseId; // @synthesize purchaseId=_purchaseId;
 @property (nonatomic) int resultType; // @synthesize resultType=_resultType;
 @property (nonatomic) BOOL sawSubscriptionSheet; // @synthesize sawSubscriptionSheet=_sawSubscriptionSheet;
 @property (strong, nonatomic) NSString *sectionId; // @synthesize sectionId=_sectionId;

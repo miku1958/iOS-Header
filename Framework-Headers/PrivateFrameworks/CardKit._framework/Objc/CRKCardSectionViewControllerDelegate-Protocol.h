@@ -16,6 +16,7 @@
 - (BOOL)canPerformCommand:(id<CRCommand>)arg1 forCardSectionViewController:(CRKCardSectionViewController *)arg2;
 - (void)cardSectionViewController:(CRKCardSectionViewController *)arg1 didSelectPreferredPunchoutIndex:(long long)arg2;
 - (void)cardSectionViewController:(CRKCardSectionViewController *)arg1 requestsHandlingOfIntent:(INIntent *)arg2;
+- (void)cardSectionViewController:(CRKCardSectionViewController *)arg1 willDismissViewController:(UIViewController *)arg2;
 - (void)cardSectionViewControllerBoundsDidChange:(CRKCardSectionViewController *)arg1;
 - (void)cardSectionViewControllerDidFinishLoading:(CRKCardSectionViewController *)arg1;
 - (BOOL)performCommand:(id<CRCommand>)arg1 forCardSectionViewController:(CRKCardSectionViewController *)arg2;

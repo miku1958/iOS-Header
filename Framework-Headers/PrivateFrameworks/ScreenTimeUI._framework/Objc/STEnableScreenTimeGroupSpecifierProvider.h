@@ -26,6 +26,7 @@
 + (id)providerWithCoordinator:(id)arg1 rootViewController:(id)arg2;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (id)enableScreenTimeFooterText;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;

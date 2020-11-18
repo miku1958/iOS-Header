@@ -127,6 +127,7 @@
 @property (nonatomic) BOOL supportsTargetController; // @synthesize supportsTargetController=_supportsTargetController;
 @property (copy) HMSymptomsHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 @property (nonatomic) BOOL targetControllerHardwareSupport; // @synthesize targetControllerHardwareSupport=_targetControllerHardwareSupport;
+@property (readonly, copy, nonatomic) NSArray *televisionProfiles;
 @property (nonatomic) unsigned long long transportTypes; // @synthesize transportTypes=_transportTypes;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (copy, nonatomic) NSArray *uniqueIdentifiersForBridgedAccessories; // @synthesize uniqueIdentifiersForBridgedAccessories=_uniqueIdentifiersForBridgedAccessories;
@@ -135,6 +136,7 @@
 
 + (id)_cameraProfilesForAccessoryProfiles:(id)arg1;
 + (id)_mediaProfilesForAccessoryProfiles:(id)arg1;
++ (id)_televisionProfilesForAccessoryServices:(id)arg1;
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -142,6 +144,7 @@
 - (void)__handleConnectivityChanged:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)__updateSymptomsHandler:(id)arg1 operations:(id)arg2;
 - (id)_accessoryInformationService;
+- (void)_checkForTelevisionProfileChanges:(id)arg1;
 - (void)_configureProfilesWithContext:(id)arg1;
 - (void)_copyFrom:(id)arg1;
 - (id)_findCharacteristic:(id)arg1 forService:(id)arg2;
@@ -162,6 +165,7 @@
 - (void)_handleServiceConfigurationState:(id)arg1;
 - (void)_handleServiceConfiguredNameUpdate:(id)arg1;
 - (void)_handleServiceDefaultNameUpdate:(id)arg1;
+- (void)_handleServiceMediaSourceIdentifierUpdated:(id)arg1;
 - (void)_handleServiceRenamed:(id)arg1;
 - (void)_handleServiceSubtype:(id)arg1;
 - (void)_handleServiceTypeAssociated:(id)arg1;

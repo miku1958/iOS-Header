@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) HKGradient *gradient; // @synthesize gradient=_gradient;
 
++ (id)hk_verticalWaveformMaskGradientWithInsetLocation:(double)arg1;
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (void)_updateGradientLayer;

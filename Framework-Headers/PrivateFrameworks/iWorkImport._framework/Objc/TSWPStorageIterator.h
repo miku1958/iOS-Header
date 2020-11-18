@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSWPStorage *storage; // @synthesize storage=_storage;
 
 - (void).cxx_destruct;
-- (void)addAttributeRangeProvider:(int)arg1;
+- (void)addAttributeRangeProvider:(unsigned long long)arg1;
 - (void)addLocationProvider:(id)arg1;
 - (void)addRangeProvider:(id)arg1;
 - (id)description;

@@ -9,7 +9,7 @@
 #import <ClockKit/NSCopying-Protocol.h>
 #import <ClockKit/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface CLKGaugeProvider : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,8 +18,10 @@
     long long _style;
     NSArray *_gaugeColors;
     NSArray *_gaugeColorLocations;
+    NSString *_accessibilityLabel;
 }
 
+@property (strong, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
 @property (nonatomic) BOOL finalized; // @synthesize finalized=_finalized;
 @property (strong, nonatomic) NSArray *gaugeColorLocations; // @synthesize gaugeColorLocations=_gaugeColorLocations;
 @property (strong, nonatomic) NSArray *gaugeColors; // @synthesize gaugeColors=_gaugeColors;
@@ -30,6 +32,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentation;
+- (id)_init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)finalize;

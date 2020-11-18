@@ -44,6 +44,7 @@
 - (void)installProfileWithData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)installProfileWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)invalidate;
+- (void)rebootSystemWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeProfileWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

@@ -12,6 +12,7 @@
 
 @interface PKPaymentSetupProduct : NSObject <NSCopying>
 {
+    BOOL _suppressPendingPurchases;
     NSString *_displayName;
     unsigned long long _type;
     NSSet *_regions;
@@ -31,6 +32,7 @@
     NSArray *_searchTerms;
     NSArray *_supportedCameraCaptureTypes;
     NSArray *_supportedInAppTypes;
+    NSArray *_supportedTransitNetworkIdentifiers;
     NSArray *_paymentOptions;
     NSDictionary *_rawDictionary;
     NSString *_identifier;
@@ -61,6 +63,8 @@
 @property (readonly, copy, nonatomic) NSArray *supportedInAppTypes; // @synthesize supportedInAppTypes=_supportedInAppTypes;
 @property (copy, nonatomic) NSArray *supportedProtocols; // @synthesize supportedProtocols=_supportedProtocols;
 @property (nonatomic) long long supportedProvisioningMethods; // @synthesize supportedProvisioningMethods=_supportedProvisioningMethods;
+@property (readonly, copy, nonatomic) NSArray *supportedTransitNetworkIdentifiers; // @synthesize supportedTransitNetworkIdentifiers=_supportedTransitNetworkIdentifiers;
+@property (readonly, nonatomic) BOOL suppressPendingPurchases; // @synthesize suppressPendingPurchases=_suppressPendingPurchases;
 @property (copy, nonatomic) NSURL *termsURL; // @synthesize termsURL=_termsURL;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
@@ -69,13 +73,14 @@
 + (id)partnerProductsFromArrayOfPartners:(id)arg1 andProducts:(id)arg2;
 + (id)productsFromBrowseableBankApps:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 paymentOptions:(id)arg4 termsURL:(id)arg5 provisioningMethods:(id)arg6 readerModeMetadata:(id)arg7 requiredFields:(id)arg8 imageAssets:(id)arg9 minimumOSVersion:(id)arg10 region:(id)arg11 hsa2Requirement:(id)arg12;
+- (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 paymentOptions:(id)arg4 termsURL:(id)arg5 provisioningMethods:(id)arg6 readerModeMetadata:(id)arg7 requiredFields:(id)arg8 imageAssets:(id)arg9 minimumOSVersion:(id)arg10 region:(id)arg11 hsa2Requirement:(id)arg12 suppressPendingPurchases:(id)arg13;
 - (long long)allSupportedProtocols;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithProductDictionary:(id)arg1;
 - (id)provisioningMethodMetadataForType:(id)arg1;
 - (id)provisioningMethodTypes;
 - (void)setProvisioningMethodMetadata:(id)arg1 forType:(id)arg2;
+- (BOOL)supportsDevice:(id)arg1;
 - (BOOL)supportsOSVersion:(id)arg1 deviceClass:(id)arg2;
 
 @end

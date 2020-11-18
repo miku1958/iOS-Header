@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, NSArray, NSDictionary, NSMutableDictionary, NSString;
+@class ACAccount, AMSMetricsEvent, NSArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface AMSFollowUpItem : NSObject
@@ -18,6 +18,7 @@
     NSArray *_actions;
     long long _displayStyle;
     NSString *_informativeText;
+    AMSMetricsEvent *_metricsEvent;
     NSString *_title;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_metricsQueue;
@@ -29,12 +30,11 @@
 @property (readonly, nonatomic) NSString *backingIdentifier;
 @property (nonatomic) long long displayStyle; // @synthesize displayStyle=_displayStyle;
 @property (readonly, nonatomic) NSString *groupIdentifier;
-@property (nonatomic) BOOL hasPostedMetrics;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *informativeText; // @synthesize informativeText=_informativeText;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSString *logKey;
-@property (strong, nonatomic) NSDictionary *metrics;
+@property (strong, nonatomic) AMSMetricsEvent *metricsEvent; // @synthesize metricsEvent=_metricsEvent;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *metricsQueue; // @synthesize metricsQueue=_metricsQueue;
 @property (nonatomic) long long priority;
 @property (nonatomic) BOOL shouldPostNotification; // @synthesize shouldPostNotification=_shouldPostNotification;

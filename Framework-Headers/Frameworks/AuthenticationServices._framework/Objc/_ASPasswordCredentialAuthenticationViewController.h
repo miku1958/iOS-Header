@@ -4,47 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <AuthenticationServices/_ASExtensionViewController.h>
 
-#import <AuthenticationServices/_ASCredentialProviderExtensionHostContextDelegate-Protocol.h>
-
-@class ASPasswordCredentialIdentity, NSExtension, NSString, NSTimer, _ASCredentialProviderExtensionHostContext;
+@class ASPasswordCredentialIdentity;
 @protocol _ASPasswordCredentialAuthenticationViewControllerDelegate;
 
-@interface _ASPasswordCredentialAuthenticationViewController : UIViewController <_ASCredentialProviderExtensionHostContextDelegate>
+@interface _ASPasswordCredentialAuthenticationViewController : _ASExtensionViewController
 {
-    NSExtension *_extension;
     ASPasswordCredentialIdentity *_credentialIdentity;
-    _ASCredentialProviderExtensionHostContext *_nonUIHostContext;
-    _ASCredentialProviderExtensionHostContext *_requestHostContext;
-    UIViewController *_remoteViewController;
-    NSTimer *_nonUIRequestTimer;
-    BOOL _dismissOnBackground;
     id<_ASPasswordCredentialAuthenticationViewControllerDelegate> _delegate;
 }
 
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_ASPasswordCredentialAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL dismissOnBackground; // @synthesize dismissOnBackground=_dismissOnBackground;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_didInstantiatePreflightViewController:(id)arg1 withRequestID:(id)arg2 error:(id)arg3;
-- (void)_didInstantiateRequestViewController:(id)arg1 withRequestID:(id)arg2 error:(id)arg3;
 - (void)_finishWithCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_invalidateNonUIRequestTimerIfNeeded;
-- (void)_nonUIRequestTimedOut;
-- (void)_presentUI;
-- (void)_setRemoteViewController:(id)arg1;
-- (id)childViewControllerForHomeIndicatorAutoHidden;
-- (id)childViewControllerForScreenEdgesDeferringSystemGestures;
-- (id)childViewControllerForStatusBarHidden;
-- (id)childViewControllerForStatusBarStyle;
-- (id)childViewControllerForWhitePointAdaptivityStyle;
+- (void)_nonUIRequestDidRequireUserInteraction;
+- (void)_requestDidFailWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithExtension:(id)arg1 credentialIdentity:(id)arg2;
-- (void)prepareToCancelRequestWithHostContext:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)prepareToCompleteRequestWithHostContext:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

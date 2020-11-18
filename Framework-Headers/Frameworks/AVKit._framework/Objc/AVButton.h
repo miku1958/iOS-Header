@@ -6,12 +6,13 @@
 
 #import <UIKit/UIButton.h>
 
-@class AVMicaPackage, AVUserInteractionObserverGestureRecognizer, NSNumber, NSString, NSTimer, UIViewPropertyAnimator;
+@class AVMicaPackage, AVUserInteractionObserverGestureRecognizer, NSNumber, NSString, NSTimer, UIViewPropertyAnimator, UIVisualEffectView;
 
 @interface AVButton : UIButton
 {
     BOOL _wasLongPressed;
     BOOL _treatsForcePressAsLongPress;
+    BOOL _usesBackgroundEffectViewForTextOnlyButtons;
     BOOL _multipleTouchesEndsTracking;
     BOOL _disablesHighlightWhenLongPressed;
     BOOL _clampsHitRectInsetsWhenContainedInScrollableView;
@@ -35,10 +36,12 @@
     NSNumber *_previousHorizontalPositionOfLongPress;
     NSTimer *_longPressTimer;
     AVUserInteractionObserverGestureRecognizer *_userInteractionGestureRecognizer;
+    UIVisualEffectView *_backgroundEffectView;
     struct CGSize _extrinsicContentSize;
     struct NSDirectionalEdgeInsets _hitRectInsets;
 }
 
+@property (strong, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
 @property (nonatomic) BOOL clampsHitRectInsetsWhenContainedInScrollableView; // @synthesize clampsHitRectInsetsWhenContainedInScrollableView=_clampsHitRectInsetsWhenContainedInScrollableView;
 @property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
 @property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded;
@@ -65,6 +68,7 @@
 @property (nonatomic) double trackingStartTime; // @synthesize trackingStartTime=_trackingStartTime;
 @property (nonatomic) BOOL treatsForcePressAsLongPress; // @synthesize treatsForcePressAsLongPress=_treatsForcePressAsLongPress;
 @property (strong, nonatomic) AVUserInteractionObserverGestureRecognizer *userInteractionGestureRecognizer; // @synthesize userInteractionGestureRecognizer=_userInteractionGestureRecognizer;
+@property (nonatomic) BOOL usesBackgroundEffectViewForTextOnlyButtons; // @synthesize usesBackgroundEffectViewForTextOnlyButtons=_usesBackgroundEffectViewForTextOnlyButtons;
 @property (nonatomic) BOOL wasForcePressTriggered; // @synthesize wasForcePressTriggered=_wasForcePressTriggered;
 @property (nonatomic) BOOL wasLongPressed; // @synthesize wasLongPressed=_wasLongPressed;
 
@@ -74,6 +78,8 @@
 - (id)_preferredImageName;
 - (struct CGSize)_preferredLayoutSize;
 - (void)_resetTrackedState;
+- (void)_updateBackgroundEffectViewIsHidden;
+- (void)_updateEdgeInsets;
 - (void)_updateImageIfNeeded;
 - (void)_updateIsHiddenAndAlpha;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
@@ -82,11 +88,13 @@
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (struct CGRect)hitRect;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
+- (void)setTitle:(id)arg1 forState:(unsigned long long)arg2;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)dictationConnnectionDidChangeAvailability:(id)arg1;
 - (BOOL)dictationIsAvailableForLanguage:(id)arg1;
 - (void)endSession;
+- (id)languageDetectionUserContext;
 - (void)logDidAcceptDictationResult:(id)arg1 reason:(id)arg2 result:(id)arg3 correctionIdentifier:(id)arg4;
 - (void)logDidSelectAlternative:(id)arg1 correctionIdentifier:(id)arg2;
 - (void)logDidShowAlternatives:(id)arg1 correctionIdentifier:(id)arg2;

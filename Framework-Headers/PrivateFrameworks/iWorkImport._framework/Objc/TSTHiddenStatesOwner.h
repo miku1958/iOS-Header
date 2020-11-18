@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, TSCECalculationEngine, TSTInfo;
+@class NSMutableDictionary, TSCECalculationEngine, TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTHiddenStatesOwner : NSObject
 {
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     TSCECalculationEngine *_calcEngine;
     UUIDData_5fbc143e _baseTableUID;
     UUIDData_5fbc143e _ownerUID;
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) UUIDData_5fbc143e baseTableUID; // @synthesize baseTableUID=_baseTableUID;
 @property (nonatomic) UUIDData_5fbc143e ownerUID; // @synthesize ownerUID=_ownerUID;
-@property (weak, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (weak, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -33,10 +33,11 @@ __attribute__((visibility("hidden")))
 - (id)initWithArchive:(const struct HiddenStatesOwnerArchive *)arg1 unarchiver:(id)arg2 forBaseTableUID:(const UUIDData_5fbc143e *)arg3;
 - (id)initWithBaseTableUID:(const UUIDData_5fbc143e *)arg1;
 - (id)initWithBaseTableUID:(const UUIDData_5fbc143e *)arg1 ownerUID:(const UUIDData_5fbc143e *)arg2;
-- (void)registerHiddenStates:(id)arg1;
-- (int)registerWithCalcEngine:(id)arg1;
+- (void)registerHiddenStates:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
+- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
 - (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2;
 - (void)saveToArchive:(struct HiddenStatesOwnerArchive *)arg1 archiver:(id)arg2;
+- (id)tableModel;
 - (void)unregisterFromCalcEngine;
 - (void)unregisterHiddenStates:(id)arg1;
 - (void)willChangeExtentUids:(id)arg1;

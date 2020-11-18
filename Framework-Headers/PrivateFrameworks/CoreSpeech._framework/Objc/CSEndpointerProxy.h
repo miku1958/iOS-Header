@@ -68,6 +68,7 @@
 - (BOOL)_shouldEnterTwoShotAtEndPointTime:(double)arg1;
 - (BOOL)_shouldUseVAD2ForTwoShot;
 - (double)elapsedTimeWithNoSpeech;
+- (unsigned long long)endPointAnalyzerType;
 - (void)endpointer:(id)arg1 didDetectHardEndpointAtTime:(double)arg2 withMetrics:(id)arg3;
 - (void)endpointer:(id)arg1 didDetectStartpointAtTime:(double)arg2;
 - (id)endpointerModelVersion;
@@ -77,7 +78,7 @@
 - (void)processServerEndpointFeatures:(id)arg1;
 - (void)recordingStoppedForReason:(unsigned long long)arg1;
 - (void)reset;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2;
 - (void)resetForVoiceTriggerTwoShotWithSampleRate:(unsigned long long)arg1;
 - (void)setActiveChannel:(unsigned long long)arg1;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(CDUnknownBlockType)arg2;

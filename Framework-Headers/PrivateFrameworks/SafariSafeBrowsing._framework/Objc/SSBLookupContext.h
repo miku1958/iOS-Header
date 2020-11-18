@@ -6,11 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@interface SSBLookupContext : NSObject
+#import <SafariSafeBrowsing/MCProfileConnectionObserver-Protocol.h>
+
+@class NSString;
+
+@interface SSBLookupContext : NSObject <MCProfileConnectionObserver>
 {
     struct shared_ptr<SafeBrowsing::LookupContext> _lookupContext;
     unsigned int _observerToken;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)sharedLookupContext;
 - (id).cxx_construct;
@@ -24,9 +33,11 @@
 - (void)_getLastDatabaseUpdateTimeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_getServiceStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_lookUpURLs:(id)arg1 forProtectionType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_setSafeBrowsingEnabledStateNeedsUpdate;
 - (void)dealloc;
 - (id)init;
 - (void)lookUpURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)profileConnectionDidReceiveRestrictionChangedNotification:(id)arg1 userInfo:(id)arg2;
 
 @end
 

@@ -28,6 +28,8 @@
 - (void)_processDidExit;
 - (void)_registerForNotificationsIfNecessary;
 - (void)_setAccessibilityWebProcessToken:(id)arg1;
+- (void)_stopAssistingKeyboard;
+- (void)_zoomToRevealFocusedElement;
 - (id)accessibilityDragSourceDescriptors;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;

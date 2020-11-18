@@ -25,6 +25,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) AWDProactiveModelFittingModelInfo *modelInfo; // @synthesize modelInfo=_modelInfo;
+@property (readonly) unsigned long long quantizationNumberOfBuckets; // @synthesize quantizationNumberOfBuckets=_quantizationNumberOfBuckets;
 @property (readonly) Class superclass;
 
 + (id)awdTrackerForPlanId:(struct NSString *)arg1;

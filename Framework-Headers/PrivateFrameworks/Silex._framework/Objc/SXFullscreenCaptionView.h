@@ -12,7 +12,7 @@
 #import <Silex/UIScrollViewDelegate-Protocol.h>
 
 @class NSString, STStandaloneTextInfo, STStandaloneTextLayout, STTextTangierDocumentRoot, STTextTangierStorage, SXAutoSizedCanvasController, SXFullscreenCaption, SXTextSource, UIScrollView, UISwipeGestureRecognizer, UITapGestureRecognizer, UIVisualEffectView;
-@protocol SXComponentActionHandler, SXFullscreenCaptionViewDelegate, SXSmartFieldFactory;
+@protocol SXComponentActionHandler, SXFullscreenCaptionViewDelegate, SXTextSourceFactory;
 
 @interface SXFullscreenCaptionView : UIView <SXAutoSizedCanvasControllerDelegate, STStandaloneTextLayoutDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate>
 {
@@ -21,8 +21,8 @@
     SXFullscreenCaption *_caption;
     unsigned long long _viewIndex;
     UITapGestureRecognizer *_tapGestureRecognizer;
-    id<SXSmartFieldFactory> _smartFieldFactory;
     id<SXComponentActionHandler> _actionHandler;
+    id<SXTextSourceFactory> _textSourceFactory;
     SXAutoSizedCanvasController *_autoSizeCanvasController;
     STTextTangierDocumentRoot *_documentRoot;
     STStandaloneTextInfo *_captionInfo;
@@ -53,12 +53,12 @@
 @property (nonatomic) struct CGSize fullSize; // @synthesize fullSize=_fullSize;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property (readonly, nonatomic) id<SXSmartFieldFactory> smartFieldFactory; // @synthesize smartFieldFactory=_smartFieldFactory;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UISwipeGestureRecognizer *swipeGestureRecognizer; // @synthesize swipeGestureRecognizer=_swipeGestureRecognizer;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property (nonatomic) struct CGRect temporaryLayoutRect; // @synthesize temporaryLayoutRect=_temporaryLayoutRect;
 @property (strong, nonatomic) SXTextSource *textSource; // @synthesize textSource=_textSource;
+@property (readonly, nonatomic) id<SXTextSourceFactory> textSourceFactory; // @synthesize textSourceFactory=_textSourceFactory;
 @property (strong, nonatomic) STTextTangierStorage *textStorage; // @synthesize textStorage=_textStorage;
 @property (readonly, nonatomic) unsigned long long viewIndex; // @synthesize viewIndex=_viewIndex;
 
@@ -76,7 +76,7 @@
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handleSwipeGestureRecognizer:(id)arg1;
 - (void)handleTapGestureRecognizer:(id)arg1;
-- (id)initWithSmartFieldFactory:(id)arg1 actionHandler:(id)arg2;
+- (id)initWithTextSourceFactory:(id)arg1 actionHandler:(id)arg2;
 - (void)initializeTangier;
 - (void)layoutSubviews;
 - (double)marginForTextLayout:(id)arg1;

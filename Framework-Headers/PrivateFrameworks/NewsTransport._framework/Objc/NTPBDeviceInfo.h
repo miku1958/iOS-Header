@@ -14,6 +14,8 @@
 {
     long long _deviceDstOffset;
     long long _deviceUtcOffset;
+    NSString *_deviceAppBundleId;
+    NSString *_deviceAppVersion;
     NSString *_deviceOsVersion;
     NSMutableArray *_devicePreferredLanguages;
     NSString *_devicePushToken;
@@ -27,6 +29,8 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSString *deviceAppBundleId; // @synthesize deviceAppBundleId=_deviceAppBundleId;
+@property (strong, nonatomic) NSString *deviceAppVersion; // @synthesize deviceAppVersion=_deviceAppVersion;
 @property (nonatomic) long long deviceDstOffset; // @synthesize deviceDstOffset=_deviceDstOffset;
 @property (strong, nonatomic) NSString *deviceOsVersion; // @synthesize deviceOsVersion=_deviceOsVersion;
 @property (strong, nonatomic) NSMutableArray *devicePreferredLanguages; // @synthesize devicePreferredLanguages=_devicePreferredLanguages;
@@ -35,6 +39,8 @@
 @property (nonatomic) int deviceTokenEnv; // @synthesize deviceTokenEnv=_deviceTokenEnv;
 @property (strong, nonatomic) NSString *deviceType; // @synthesize deviceType=_deviceType;
 @property (nonatomic) long long deviceUtcOffset; // @synthesize deviceUtcOffset=_deviceUtcOffset;
+@property (readonly, nonatomic) BOOL hasDeviceAppBundleId;
+@property (readonly, nonatomic) BOOL hasDeviceAppVersion;
 @property (nonatomic) BOOL hasDeviceDstOffset;
 @property (readonly, nonatomic) BOOL hasDeviceOsVersion;
 @property (readonly, nonatomic) BOOL hasDevicePushToken;

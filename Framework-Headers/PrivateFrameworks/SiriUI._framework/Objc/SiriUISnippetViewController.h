@@ -6,7 +6,7 @@
 
 #import <SiriUI/SiriUIBaseSnippetViewController.h>
 
-@class NSArray, NSAttributedString, NSString, SAUIAppPunchOut, SAUIConfirmationOptions, UICollectionReusableView, UIColor, UIView;
+@class NSArray, NSAttributedString, NSString, NSUUID, SAUIAppPunchOut, SAUIConfirmationOptions, UICollectionReusableView, UIColor, UIView;
 @protocol SiriUIReusableView, SiriUISnippetViewControllerDelegate;
 
 @interface SiriUISnippetViewController : SiriUIBaseSnippetViewController
@@ -28,6 +28,7 @@
     BOOL _awaitingSuccessOrFailureEvent;
     BOOL _showHeaderChevron;
     BOOL _provisional;
+    struct NSUUID *_instrumentationTurnIdentifier;
     UIColor *_titleTextColor;
     UIColor *_titleBackgroundColor;
     NSAttributedString *_attributedSubtitle;
@@ -51,6 +52,7 @@
 @property (weak, nonatomic) id<SiriUISnippetViewControllerDelegate> delegate; // @dynamic delegate;
 @property (strong, nonatomic) SAUIAppPunchOut *headerPunchOut; // @synthesize headerPunchOut=_headerPunchOut;
 @property (readonly, nonatomic, getter=isIndicatingActivity) BOOL indicatingActivity;
+@property (strong, nonatomic) NSUUID *instrumentationTurnIdentifier; // @synthesize instrumentationTurnIdentifier=_instrumentationTurnIdentifier;
 @property (nonatomic) BOOL isFullPadWidth; // @synthesize isFullPadWidth=_isFullPadWidth;
 @property (nonatomic) BOOL isTransparent; // @synthesize isTransparent=_isTransparent;
 @property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;

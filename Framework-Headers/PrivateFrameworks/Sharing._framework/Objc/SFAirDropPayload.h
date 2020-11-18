@@ -8,7 +8,6 @@
 
 @class NSData, NSString, NSURL, UIImage;
 
-__attribute__((visibility("hidden")))
 @interface SFAirDropPayload : NSObject
 {
     BOOL _wasString;

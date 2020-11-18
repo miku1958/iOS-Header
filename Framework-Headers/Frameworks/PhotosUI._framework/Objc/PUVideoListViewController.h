@@ -103,6 +103,7 @@
 - (long long)oneUpPresentationHelperPreferredBarStyle:(id)arg1;
 - (BOOL)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
+- (long long)oneUpPresentationOrigin:(id)arg1;
 - (id)photoCollectionAtIndex:(unsigned long long)arg1;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 - (long long)preferredAlertControllerStyleForDeletePhotosActionController:(id)arg1;

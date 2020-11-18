@@ -8,11 +8,12 @@
 
 #import <HearingUI/HACCContentModule-Protocol.h>
 
-@class BCBatteryDevice, HACCBatteryGroupView, NSString, UIImageView, UILabel;
+@class BCBatteryDevice, HACCBatteryGroupView, NSNumberFormatter, NSString, UIImageView, UILabel;
 @protocol HACCContentModuleDelegate;
 
 @interface HACCStatusView : UIControl <HACCContentModule>
 {
+    NSNumberFormatter *_numberFormatter;
     unsigned long long module;
     id<HACCContentModuleDelegate> delegate;
     UILabel *_titleLabel;
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (id)_productIdentifierForBTDevice:(id)arg1;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
 - (void)buttonTapped:(id)arg1;

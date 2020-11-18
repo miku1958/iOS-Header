@@ -34,8 +34,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithRangeRef:(const struct TSCERangeRef *)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)p_stringByUnescapingQuotedStringWithPossibleDollarPrefix:(id)arg1 partial:(BOOL)arg2;
-- (id)referenceTextForAutocompleteWithCalculationEngine:(id)arg1 contextSheetName:(id)arg2 stickyBits:(unsigned char)arg3 inputString:(id)arg4 inputStringIsComplete:(BOOL)arg5;
-- (id)referenceTextForAutocompleteWithCalculationEngine:(id)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2 stickyBits:(unsigned char)arg3 inputString:(id)arg4 inputStringIsComplete:(BOOL)arg5;
+- (id)referenceTextForAutocompleteWithCalculationEngine:(id)arg1 contextSheetName:(id)arg2 preserveFlags:(struct TSUPreserveFlags)arg3 inputString:(id)arg4 inputStringIsComplete:(BOOL)arg5;
+- (id)referenceTextForAutocompleteWithCalculationEngine:(id)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2 preserveFlags:(struct TSUPreserveFlags)arg3 inputString:(id)arg4 inputStringIsComplete:(BOOL)arg5;
 - (id)referenceTextWithCalculationEngine:(id)arg1 contextSheetName:(id)arg2;
 - (id)referenceTextWithCalculationEngine:(id)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2;
 

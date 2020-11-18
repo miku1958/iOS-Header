@@ -6,25 +6,31 @@
 
 #import <TemplateKit/TLKView.h>
 
+#import <TemplateKit/TLKDetailsViewDelegate-Protocol.h>
 #import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
 @class NSArray, NSString, TLKImage, TLKMultilineText, TLKRichText, TLKTextAreaView;
+@protocol TLKDetailsViewDelegate;
 
-@interface TLKDetailsView : TLKView <TLKTextAreaViewTesting>
+@interface TLKDetailsView : TLKView <TLKDetailsViewDelegate, TLKTextAreaViewTesting>
 {
     BOOL _secondaryTitleIsDetached;
+    id<TLKDetailsViewDelegate> _delegate;
     TLKRichText *_title;
     TLKMultilineText *_secondaryTitle;
     TLKImage *_secondaryTitleImage;
     NSArray *_details;
     TLKRichText *_footnote;
+    NSString *_footnoteButtonText;
     TLKTextAreaView *_textAreaView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak) id<TLKDetailsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *details; // @synthesize details=_details;
 @property (strong, nonatomic) TLKRichText *footnote; // @synthesize footnote=_footnote;
+@property (strong, nonatomic) NSString *footnoteButtonText; // @synthesize footnoteButtonText=_footnoteButtonText;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TLKMultilineText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
 @property (strong, nonatomic) TLKImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
@@ -34,6 +40,7 @@
 @property (strong, nonatomic) TLKRichText *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
+- (void)footnoteButtonPressed;
 - (id)footnoteLabelString;
 - (id)init;
 - (void)observedPropertiesChanged;

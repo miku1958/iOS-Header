@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_initWithCPBarButton:(id)arg1 showBackIndicator:(BOOL)arg2;
 - (void)didSelectButton:(id)arg1;
 - (id)initWithCPBarButton:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;

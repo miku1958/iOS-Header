@@ -6,17 +6,19 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSItemProvider, NSURL, NSUUID, _SFNavigationBar, _SFNavigationIntent, _UIBackdropViewSettings;
+@class NSItemProvider, NSURL, NSUUID, _SFNavigationBar, _SFNavigationIntent, _SFToolbar, _UIBackdropViewSettings;
 
 @protocol _SFNavigationBarDelegate <NSObject>
 - (void)compressedNavigationBarWasTapped:(_SFNavigationBar *)arg1;
 - (void)navigationBarBackdropDidApplySettings:(_SFNavigationBar *)arg1;
 - (void)navigationBarCancelButtonWasTapped:(_SFNavigationBar *)arg1;
+- (void)navigationBarDidCreateToolbar:(_SFToolbar *)arg1;
 - (void)navigationBarReaderAppearanceButtonWasTapped:(_SFNavigationBar *)arg1;
 - (void)navigationBarReaderButtonWasLongPressed:(_SFNavigationBar *)arg1;
 - (void)navigationBarReaderButtonWasTapped:(_SFNavigationBar *)arg1;
 - (void)navigationBarReloadButtonWasLongPressed:(_SFNavigationBar *)arg1;
 - (void)navigationBarReloadButtonWasTapped:(_SFNavigationBar *)arg1;
+- (void)navigationBarStopLoadingButtonWasLongPressed:(_SFNavigationBar *)arg1;
 - (void)navigationBarStopLoadingButtonWasTapped:(_SFNavigationBar *)arg1;
 - (NSURL *)navigationBarURLForSharing:(_SFNavigationBar *)arg1;
 

@@ -10,7 +10,7 @@
 #import <TemplateKit/TLKObservable-Protocol.h>
 #import <TemplateKit/TLKObserver-Protocol.h>
 
-@class NSString, TLKEmojiableVibrantLabel, TLKIconsView, TLKRichText, TLKRoundedCornerLabels, TLKStarsView, UIFont;
+@class NSString, TLKEmojiableVibrantLabel, TLKIconsView, TLKRichText, TLKRoundedCornerLabels, TLKStarsView, UIColor, UIFont;
 @protocol TLKObserver;
 
 @interface TLKRichTextField : TLKStackView <NUIContainerStackViewDelegate, TLKObservable, TLKObserver>
@@ -35,6 +35,7 @@
 @property (strong) TLKRoundedCornerLabels *roundedCornerLabels; // @synthesize roundedCornerLabels=_roundedCornerLabels;
 @property (strong) TLKStarsView *starRatingView; // @synthesize starRatingView=_starRatingView;
 @property (readonly) Class superclass;
+@property (readonly) UIColor *textColor;
 @property (strong) TLKEmojiableVibrantLabel *textLabel; // @synthesize textLabel=_textLabel;
 
 - (void).cxx_destruct;

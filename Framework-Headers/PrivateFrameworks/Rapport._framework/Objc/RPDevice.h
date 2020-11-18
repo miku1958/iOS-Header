@@ -8,12 +8,13 @@
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
-@class CUMobileDevice, CUPairedPeer, NSData, NSDictionary, NSString, NSUUID;
+@class CUMobileDevice, CUPairedPeer, CURangingMeasurement, NSData, NSDictionary, NSString, NSUUID;
 
 @interface RPDevice : NSObject <NSSecureCoding>
 {
     unsigned char _deviceActionType;
     BOOL _needsSetup;
+    int _activityLevel;
     unsigned int _flags;
     int _proximity;
     unsigned int _blePairState;
@@ -21,8 +22,12 @@
     int _smoothedRSSI;
     unsigned int _systemPairState;
     unsigned int _wifiDeviceIEFlags;
+    NSString *_accountID;
+    NSString *_contactID;
     NSString *_identifier;
+    NSString *_idsDeviceIdentifier;
     NSString *_name;
+    CURangingMeasurement *_relativeLocation;
     CUMobileDevice *_mobileDevice;
     NSData *_authTag;
     NSData *_bleAdvertisementData;
@@ -43,14 +48,18 @@
     NSString *_wifiSSID;
 }
 
+@property (readonly, copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
+@property (readonly, nonatomic) int activityLevel; // @synthesize activityLevel=_activityLevel;
 @property (readonly, copy, nonatomic) NSData *authTag; // @synthesize authTag=_authTag;
 @property (readonly, copy, nonatomic) NSData *bleAdvertisementData; // @synthesize bleAdvertisementData=_bleAdvertisementData;
 @property (readonly, copy, nonatomic) NSData *bleDeviceAddress; // @synthesize bleDeviceAddress=_bleDeviceAddress;
 @property (readonly, nonatomic) unsigned int blePairState; // @synthesize blePairState=_blePairState;
+@property (readonly, copy, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;
 @property (readonly, nonatomic) unsigned char deviceActionType; // @synthesize deviceActionType=_deviceActionType;
 @property (readonly, nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSUUID *identifierUUID; // @synthesize identifierUUID=_identifierUUID;
+@property (readonly, copy, nonatomic) NSString *idsDeviceIdentifier; // @synthesize idsDeviceIdentifier=_idsDeviceIdentifier;
 @property (strong, nonatomic) CUMobileDevice *mobileDevice; // @synthesize mobileDevice=_mobileDevice;
 @property (readonly, copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -59,6 +68,7 @@
 @property (copy, nonatomic) NSUUID *pairingIdentifier; // @synthesize pairingIdentifier=_pairingIdentifier;
 @property (readonly, nonatomic) int proximity; // @synthesize proximity=_proximity;
 @property (readonly, nonatomic) int rawRSSI; // @synthesize rawRSSI=_rawRSSI;
+@property (readonly) CURangingMeasurement *relativeLocation; // @synthesize relativeLocation=_relativeLocation;
 @property (readonly, nonatomic) int smoothedRSSI; // @synthesize smoothedRSSI=_smoothedRSSI;
 @property (nonatomic) unsigned int systemPairState; // @synthesize systemPairState=_systemPairState;
 @property (readonly, copy, nonatomic) NSData *txtData; // @synthesize txtData=_txtData;

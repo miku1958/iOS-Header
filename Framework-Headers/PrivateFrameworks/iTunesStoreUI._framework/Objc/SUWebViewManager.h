@@ -41,7 +41,7 @@
     NSDictionary *_tidHeaders;
 }
 
-@property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (copy, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (copy, nonatomic) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<SUWebViewManagerDelegate> delegate; // @synthesize delegate=_delegate;

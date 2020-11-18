@@ -33,11 +33,6 @@ __attribute__((visibility("hidden")))
 + (id)p_subclassRegistry;
 + (void)registerSubclass:(Class)arg1;
 + (BOOL)tsch_hasAllResourcesForFill:(id)arg1;
-- (void)applyToCALayer:(id)arg1 withScale:(double)arg2;
-- (void)applyToCAShapeLayer:(id)arg1 withScale:(double)arg2;
-- (BOOL)canApplyToCALayer;
-- (BOOL)canApplyToCALayerByAddingSublayers;
-- (BOOL)canApplyToCAShapeLayer;
 - (id)convertForChartSeriesType:(id)arg1 context:(id)arg2;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (BOOL)drawsInOneStep;
@@ -54,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
 - (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
-- (BOOL)shouldBeReappliedToCALayer:(id)arg1;
 
 @end
 

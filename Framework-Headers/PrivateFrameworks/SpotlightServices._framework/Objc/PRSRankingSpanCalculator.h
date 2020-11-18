@@ -8,6 +8,7 @@
 
 @interface PRSRankingSpanCalculator : NSObject
 {
+    BOOL _pathExists;
     float _unordered;
     float _ordered;
     float _firstTermPosition;
@@ -19,13 +20,15 @@
 @property (nonatomic) float normCount; // @synthesize normCount=_normCount;
 @property (nonatomic) float ordered; // @synthesize ordered=_ordered;
 @property (nonatomic) float pairDist; // @synthesize pairDist=_pairDist;
+@property (nonatomic) BOOL pathExists; // @synthesize pathExists=_pathExists;
 @property (nonatomic) float unordered; // @synthesize unordered=_unordered;
 
 + (BOOL)doesOrderedSpanExistWithStartingIndex:(unsigned long long)arg1 nextArray:(id)arg2 arrayOfIndexArrays:(id)arg3 level:(unsigned long long)arg4 currentOrderedSpan:(long long *)arg5;
 + (void)minimumAnyOrderSpanWithStartingIndex:(long long)arg1 nextArray:(id)arg2 arrayOfIndexArrays:(id)arg3 level:(unsigned long long)arg4 currentAnyOrderSpan:(long long)arg5 minimumSpan:(long long *)arg6 minimumDistancePair:(long long *)arg7 currentMinimumIndex:(long long)arg8 currentMaximumIndex:(long long)arg9;
 - (id)description;
 - (void)reset;
-- (void)updateWithTermPositions:(id)arg1 queryTermCount:(unsigned long long)arg2;
+- (void)resetSpans;
+- (void)updateWithTermPositions:(id)arg1 queryTermCount:(unsigned long long)arg2 tokenCount:(unsigned long long)arg3;
 
 @end
 

@@ -9,17 +9,17 @@
 #import <SafariServices/SFReaderAppearanceFontSizeSelectorDelegate-Protocol.h>
 #import <SafariServices/SFReaderAppearanceThemeSelectorTableViewCellDelegate-Protocol.h>
 
-@class NSDictionary, NSString, UIImage, WBSReaderFont, WBSReaderFontManager, _SFReaderAppearanceViewController;
+@class NSString, UIImage, WBSReaderConfigurationManager, WBSReaderFont, WBSReaderFontManager, _SFReaderAppearanceViewController;
 
 __attribute__((visibility("hidden")))
 @interface SFReaderAppearanceMainViewController : _SFPopoverSizingTableViewController <SFReaderAppearanceFontSizeSelectorDelegate, SFReaderAppearanceThemeSelectorTableViewCellDelegate>
 {
     WBSReaderFontManager *_fontManager;
-    NSDictionary *_initialReaderConfiguration;
+    WBSReaderConfigurationManager *_configurationManager;
     long long _selectedFontIndex;
     UIImage *_checkmarkImage;
     _SFReaderAppearanceViewController *_ownerAppearanceViewController;
-    NSString *_themeName;
+    long long _theme;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,19 +28,18 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) _SFReaderAppearanceViewController *ownerAppearanceViewController; // @synthesize ownerAppearanceViewController=_ownerAppearanceViewController;
 @property (readonly, nonatomic) WBSReaderFont *selectedFont;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSString *themeName; // @synthesize themeName=_themeName;
+@property (readonly, nonatomic) long long theme; // @synthesize theme=_theme;
 
 - (void).cxx_destruct;
 - (BOOL)_canSelectRowAtIndexPath:(id)arg1;
 - (void)_determineSelectedFontIndex;
-- (void)_determineSelectedTheme;
 - (void)_determineSelectedValues;
-- (long long)_themeFromThemeName:(id)arg1;
-- (id)_themeNameFromTheme:(long long)arg1;
 - (id)checkmarkImage;
-- (id)initWithInitialReaderConfiguration:(id)arg1 fontManager:(id)arg2;
+- (id)initWithConfigurationManager:(id)arg1 fontManager:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (struct CGSize)preferredContentSize;
+- (BOOL)readerAppearanceFontSizeCanDecrease:(id)arg1;
+- (BOOL)readerAppearanceFontSizeCanIncrease:(id)arg1;
 - (void)readerAppearanceFontSizeDidDecrease:(id)arg1;
 - (void)readerAppearanceFontSizeDidIncrease:(id)arg1;
 - (void)readerAppearanceThemeSelectorDidChangeTheme:(id)arg1;

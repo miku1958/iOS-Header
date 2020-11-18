@@ -6,18 +6,21 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <NewsUI/NUBarCompressible-Protocol.h>
 #import <NewsUI/NULoadingDelegate-Protocol.h>
 #import <NewsUI/NUPageable-Protocol.h>
 #import <NewsUI/SXAnalyticsReporting-Protocol.h>
 
-@class FCArticle, NFMultiDelegate, NSHashTable, NSString, UIView;
+@class FCArticle, FCIssue, FCObservable, NFMultiDelegate, NSHashTable, NSString, UIScrollView, UIView;
 @protocol NUAnalyticsReporting, NUArticleViewControllerFactory, NUErrorMessageFactory, NULoadingDelegate, NULoadingViewProviding, NUSettings;
 
-@interface NUArticleHostViewController : UIViewController <NULoadingDelegate, SXAnalyticsReporting, NUPageable>
+@interface NUArticleHostViewController : UIViewController <NULoadingDelegate, SXAnalyticsReporting, NUPageable, NUBarCompressible>
 {
     NSString *_pageIdentifier;
     id<NULoadingDelegate> _loadingDelegate;
+    FCObservable *_articleViewStyler;
     FCArticle *_article;
+    FCIssue *_issue;
     id<NUArticleViewControllerFactory> _articleViewControllerFactory;
     id<NUSettings> _settings;
     UIViewController *_contentTypeViewController;
@@ -30,29 +33,32 @@
 @property (readonly, nonatomic) id<NUAnalyticsReporting> analyticsReporting; // @synthesize analyticsReporting=_analyticsReporting;
 @property (readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
 @property (readonly, nonatomic) id<NUArticleViewControllerFactory> articleViewControllerFactory; // @synthesize articleViewControllerFactory=_articleViewControllerFactory;
+@property (readonly, nonatomic) FCObservable *articleViewStyler; // @synthesize articleViewStyler=_articleViewStyler;
 @property (strong, nonatomic) UIViewController *contentTypeViewController; // @synthesize contentTypeViewController=_contentTypeViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<NUErrorMessageFactory> errorMessageFactory; // @synthesize errorMessageFactory=_errorMessageFactory;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) FCIssue *issue; // @synthesize issue=_issue;
 @property (weak, nonatomic) id<NULoadingDelegate> loadingDelegate; // @synthesize loadingDelegate=_loadingDelegate;
 @property (readonly, nonatomic) NSHashTable *loadingListeners;
 @property (strong, nonatomic) UIView<NULoadingViewProviding> *loadingView; // @synthesize loadingView=_loadingView;
 @property (readonly, nonatomic) NFMultiDelegate *multiLoadingDelegate; // @synthesize multiLoadingDelegate=_multiLoadingDelegate;
 @property (readonly, copy, nonatomic) NSString *pageIdentifier; // @synthesize pageIdentifier=_pageIdentifier;
+@property (readonly, nonatomic) UIScrollView *scrollView;
 @property (readonly, copy, nonatomic) id<NUSettings> settings; // @synthesize settings=_settings;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)initWithArticle:(id)arg1 articleViewControllerFactory:(id)arg2 settings:(id)arg3 errorMessageFactory:(id)arg4;
 - (id)initWithArticle:(id)arg1 articleViewControllerFactory:(id)arg2 settings:(id)arg3 errorMessageFactory:(id)arg4 analyticsReporting:(id)arg5;
+- (id)initWithArticle:(id)arg1 issue:(id)arg2 articleViewControllerFactory:(id)arg3 settings:(id)arg4 errorMessageFactory:(id)arg5 analyticsReporting:(id)arg6;
 - (void)loadArticleAndEmbedArticleViewController;
 - (void)loadingDidFinishWithError:(id)arg1;
 - (void)loadingDidStart;
 - (void)loadingDidUpdateProgress:(double)arg1;
 - (void)loadingWillStart;
 - (void)reportEvent:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

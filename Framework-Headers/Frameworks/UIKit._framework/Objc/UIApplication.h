@@ -216,7 +216,6 @@
 + (BOOL)_isSystemUIService;
 + (void)_screensHaveConnected;
 + (BOOL)_shouldBigify;
-+ (BOOL)_shouldForceClassicForExtensions;
 + (void)_startStatusBarServerIfNecessary;
 + (void)_startWindowServerIfNecessary;
 + (Class)_statusBarClass;

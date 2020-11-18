@@ -58,6 +58,7 @@
 @property (copy, nonatomic) CDUnknownBlockType unlockCompletion; // @synthesize unlockCompletion=_unlockCompletion;
 
 - (void).cxx_destruct;
+- (long long)_actualIconState;
 - (void)_allowCameraCoveredImmediately:(BOOL)arg1;
 - (void)_allowCoachingCondition;
 - (void)_allowCoachingConditionImmediately:(BOOL)arg1;
@@ -69,7 +70,9 @@
 - (void)_dontCallThis_updateCoachingCondition:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (unsigned long long)_effectiveCoachingConditionForCondition:(unsigned long long)arg1;
 - (unsigned long long)_effectiveCoachingConditionForCondition:(unsigned long long)arg1 orientation:(long long)arg2;
+- (long long)_iconViewStateForCoachingCondition:(unsigned long long)arg1;
 - (BOOL)_isBiometricLockedOut;
+- (BOOL)_isShowingCoachingCondition:(unsigned long long)arg1;
 - (void)_performForcedUpdate:(CDUnknownBlockType)arg1;
 - (id)_proudLockIconView;
 - (void)_reallyAllowCameraCovered;

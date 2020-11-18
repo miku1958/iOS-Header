@@ -17,6 +17,7 @@
     int _contentTypeMinorVersion;
     int _contentTypePatchVersion;
     int _contentTypeVersion;
+    NSData *_identifier;
     struct {
         unsigned int contentTypeMinorVersion:1;
         unsigned int contentTypePatchVersion:1;
@@ -30,6 +31,8 @@
 @property (nonatomic) int contentTypeVersion; // @synthesize contentTypeVersion=_contentTypeVersion;
 @property (nonatomic) BOOL hasContentTypeMinorVersion;
 @property (nonatomic) BOOL hasContentTypePatchVersion;
+@property (readonly, nonatomic) BOOL hasIdentifier;
+@property (strong, nonatomic) NSData *identifier; // @synthesize identifier=_identifier;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

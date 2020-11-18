@@ -365,6 +365,7 @@
 - (id)oneUpPresentationHelperScrollView:(id)arg1;
 - (BOOL)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
+- (long long)oneUpPresentationOrigin:(id)arg1;
 - (void)performWhenReadyToNavigate:(CDUnknownBlockType)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (id)ppt_currentCollectionView;

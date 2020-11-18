@@ -6,7 +6,7 @@
 
 #import <CoreSuggestionsInternals/SGEntity.h>
 
-@class NSArray, NSData, NSIndexSet, NSMutableArray, NSMutableDictionary, NSNumber, NSSet, NSString, SGMessage;
+@class NSArray, NSData, NSIndexSet, NSMutableArray, NSMutableDictionary, NSSet, NSString, SGMessage;
 
 @interface SGPipelineEntity : SGEntity
 {
@@ -18,7 +18,6 @@
     BOOL _fullDownloadRequested;
     CDStruct_f96224e3 _inhumanFeatures;
     struct _opaque_pthread_mutex_t _dissectorLock;
-    NSNumber *_isAppleInternalConversation;
     BOOL _contactInformationExtracted;
     BOOL _pendingGeocode;
     NSIndexSet *_plainTextQuotedRegions;
@@ -105,8 +104,6 @@
 - (id)initWithPseudoContactWithKey:(id)arg1 parent:(id)arg2 name:(id)arg3;
 - (id)initWithTextMessage:(id)arg1 fromSource:(id)arg2;
 - (id)initWithUnrecognizedContactWithKey:(id)arg1;
-- (BOOL)isAppleInternalConversation;
-- (BOOL)isAuthorKnownAppleContact;
 - (BOOL)isEvent;
 - (BOOL)isPerson;
 - (void)releaseDissectorLock;

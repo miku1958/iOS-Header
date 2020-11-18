@@ -6,7 +6,7 @@
 
 #import "CATTaskRequest.h"
 
-@class DMFControlGroupIdentifier, NSData, NSString;
+@class DMFControlGroupIdentifier, NSData, NSNumber, NSString;
 
 @interface CRKSetUserPropertiesRequest : CATTaskRequest
 {
@@ -19,6 +19,7 @@
     NSString *_phoneticFamilyName;
     NSString *_userSource;
     NSData *_imageData;
+    NSNumber *_useMeCardIfAvailable;
 }
 
 @property (strong, nonatomic) DMFControlGroupIdentifier *courseIdentifier; // @synthesize courseIdentifier=_courseIdentifier;
@@ -28,6 +29,7 @@
 @property (copy, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property (copy, nonatomic) NSString *phoneticFamilyName; // @synthesize phoneticFamilyName=_phoneticFamilyName;
 @property (copy, nonatomic) NSString *phoneticGivenName; // @synthesize phoneticGivenName=_phoneticGivenName;
+@property (strong, nonatomic) NSNumber *useMeCardIfAvailable; // @synthesize useMeCardIfAvailable=_useMeCardIfAvailable;
 @property (copy, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
 @property (copy, nonatomic) NSString *userSource; // @synthesize userSource=_userSource;
 

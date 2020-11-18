@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 
 @property (readonly) unsigned char numberOfLevels;
 
-+ (UUIDData_5fbc143e)rootUid;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

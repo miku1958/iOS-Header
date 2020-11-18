@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) id<SXComponentLayout> componentLayout; // @synthesize componentLayout=_componentLayout;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithComponent:(id)arg1 componentLayout:(id)arg2;
 
 @end

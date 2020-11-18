@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _pictureInPictureInterrupted;
     BOOL _muted;
     BOOL _liveStreamEventModePossible;
+    BOOL _isScrubbing;
     BOOL _canScanBackward;
     BOOL _canPlay;
     BOOL _canPause;
@@ -74,6 +75,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL hasLegibleMediaSelectionOptions;
 @property (readonly) BOOL hasMediaSelectionOptions;
 @property BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
+@property (readonly) BOOL isScrubbing;
 @property (strong) NSArray *legibleMediaSelectionOptions; // @synthesize legibleMediaSelectionOptions=_legibleMediaSelectionOptions;
 @property double liveUpdateInterval; // @synthesize liveUpdateInterval=_liveUpdateInterval;
 @property (strong) NSArray *loadedTimeRanges; // @synthesize loadedTimeRanges=_loadedTimeRanges;
@@ -126,7 +128,6 @@ __attribute__((visibility("hidden")))
 - (void)pause:(id)arg1;
 - (void)play:(id)arg1;
 - (id)player;
-- (void)resetMediaState;
 - (void)seekByTimeInterval:(double)arg1;
 - (void)seekByTimeInterval:(double)arg1 toleranceBefore:(double)arg2 toleranceAfter:(double)arg3;
 - (void)seekChapterBackward:(id)arg1;

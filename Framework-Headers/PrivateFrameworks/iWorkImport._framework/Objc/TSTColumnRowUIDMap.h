@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)UIDSetForIndexes:(id)arg1 isRows:(BOOL)arg2;
 - (BOOL)_checkStructure;
+- (const vector_4dc5f307 *)allOrderedRowUIDs;
 - (void)applyMap:(const UUIDMap_b66c2694 *)arg1 toRows:(BOOL)arg2;
 - (void)assertCollaborationConvergence;
 - (struct TSUCellCoord)cellIDForCellUID:(const struct TSTCellUID *)arg1;

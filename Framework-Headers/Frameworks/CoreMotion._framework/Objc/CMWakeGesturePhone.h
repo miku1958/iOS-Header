@@ -32,6 +32,7 @@
     BOOL fEnableAudioAlert;
     int fLatencyAlertThreshold;
     BOOL fDisplayState;
+    int fSelector;
 }
 
 + (BOOL)hasSlowBootArgs;
@@ -52,6 +53,7 @@
 - (void)onWakeUpdated:(const struct Sample *)arg1;
 - (void)playAlert;
 - (void)reenableDetectedStateRecognition;
+- (void)setDelegate:(id)arg1;
 - (BOOL)simulateGestureWithDelay:(double)arg1 Duration:(double)arg2;
 - (void)startWakeGestureUpdates;
 - (void)stopWakeGestureUpdates;

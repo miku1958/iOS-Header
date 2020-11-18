@@ -8,13 +8,13 @@
 
 #import <iWorkImport/TSCEFormulaOwning-Protocol.h>
 
-@class NSString, TSCECalculationEngine, TSTCellDictionary, TSTInfo;
+@class NSString, TSCECalculationEngine, TSTCellDictionary, TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTCategoryAggregateFormulaOwner : NSObject <TSCEFormulaOwning>
 {
     TSCECalculationEngine *_calcEngine;
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     UUIDData_5fbc143e _tableUID;
     UUIDData_5fbc143e _ownerUID;
     TSTCellDictionary *_cellsPendingWrite;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) const UUIDData_5fbc143e *ownerUID; // @synthesize ownerUID=_ownerUID;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) TSTInfo *tableInfo;
+@property (weak, nonatomic) TSTTableInfo *tableInfo;
 @property (nonatomic) const UUIDData_5fbc143e *tableUID; // @synthesize tableUID=_tableUID;
 
 - (id).cxx_construct;
@@ -35,9 +35,9 @@ __attribute__((visibility("hidden")))
 - (void)invalidateForCalcEngine:(id)arg1;
 - (BOOL)isRegisteredWithCalcEngine:(id)arg1;
 - (id)linkedResolver;
-- (int)ownerKind;
+- (unsigned short)ownerKind;
 - (CDStruct_2a4d9400)recalculateForCalcEngine:(id)arg1 atFormulaCoord:(struct TSUCellCoord)arg2 recalcOptions:(CDStruct_3d581f42)arg3;
-- (int)registerWithCalcEngine:(id)arg1;
+- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
 - (void)unregisterFromCalcEngine;
 - (void)writeResultsForCalcEngine:(id)arg1;
 

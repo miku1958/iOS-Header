@@ -41,6 +41,7 @@
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSString *titleDisallowingEmptyString;
 @property (copy, nonatomic) NSString *uniqueID; // @dynamic uniqueID;
+@property (readonly, nonatomic) BOOL uploaded;
 @property (readonly, copy, nonatomic) NSURL *url;
 
 + (id)playablePredicate;

@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <SafariShared/NSSecureCoding-Protocol.h>
+
 @class NSData, NSDictionary, NSString;
 
-@interface WBSHistoryTombstone : NSObject
+@interface WBSHistoryTombstone : NSObject <NSSecureCoding>
 {
     NSString *_urlString;
     NSData *_urlHash;
@@ -27,8 +29,11 @@
 @property (readonly, nonatomic) NSData *urlSalt; // @synthesize urlSalt=_urlSalt;
 @property (readonly, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithSQLiteRow:(id)arg1 crypto:(id)arg2;
 - (id)initWithURLString:(id)arg1 urlHash:(id)arg2 urlSalt:(id)arg3 startTime:(double)arg4 endTime:(double)arg5 generation:(long long)arg6;

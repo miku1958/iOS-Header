@@ -410,6 +410,8 @@
 - (id)oneUpPresentationHelperScrollView:(id)arg1;
 - (BOOL)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
+- (long long)oneUpPresentationOrigin;
+- (long long)oneUpPresentationOrigin:(id)arg1;
 - (void)paste:(id)arg1;
 - (id)photoCollectionAtIndex:(unsigned long long)arg1;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;

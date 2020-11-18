@@ -43,6 +43,7 @@
 - (BOOL)brc_isCloudKitErrorZoneMigrated;
 - (BOOL)brc_isCloudKitErrorZoneUndergoingMigration;
 - (BOOL)brc_isCloudKitOutOfQuota;
+- (BOOL)brc_isCloudKitPCSDecryptionFailure;
 - (BOOL)brc_isCloudKitUnknownItemError;
 - (BOOL)brc_isEverRetriable;
 - (BOOL)brc_isOutOfSpaceError;

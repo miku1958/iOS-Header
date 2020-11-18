@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_dateChangedSetAsString;
 - (id)_sanitizeInputValueForFormatter:(id)arg1;
 - (long long)_timeZoneOffsetFromGMT:(id)arg1;
+- (id)calendarType;
 - (void)controlBeginEditing;
 - (void)controlEndEditing;
 - (id)controlView;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)datePicker;
 - (void)dealloc;
 - (id)initWithView:(id)arg1 datePickerMode:(long long)arg2;
+- (BOOL)shouldPresentGregorianCalendar:(const struct FocusedElementInformation *)arg1;
 
 @end
 

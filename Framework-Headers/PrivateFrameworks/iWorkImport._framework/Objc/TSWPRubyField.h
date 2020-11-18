@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)allowsEditing;
-- (int)attributeArrayKind;
+- (unsigned long long)attributeArrayKind;
 - (BOOL)canCopy:(struct _NSRange)arg1;
 - (id)copyWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 rubyText:(id)arg2;

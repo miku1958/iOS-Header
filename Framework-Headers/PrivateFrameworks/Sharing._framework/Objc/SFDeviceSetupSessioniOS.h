@@ -50,6 +50,7 @@
 - (void)_cleanup;
 - (void)_completedWithError:(id)arg1;
 - (void)_handleSetupActionRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (void)_receivedConfigResponse:(id)arg1;
 - (void)_receivedObject:(id)arg1 flags:(unsigned int)arg2;
 - (void)_run;
 - (int)_runCoreCDPSetup;

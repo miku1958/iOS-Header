@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString, NTPBAlternateHeadline, NTPBWidgetEngagement;
+@class NSData, NSMutableArray, NSString, NTPBAlternateHeadline, NTPBChannelData, NTPBIssueData, NTPBIssueExposureData, NTPBIssueViewContextData, NTPBIssueViewData, NTPBWidgetEngagement;
 
 @interface NTPBArticleHostViewExposure : PBCodable <NSCopying>
 {
@@ -43,6 +43,7 @@
     int _breakingNewsArticlePosition;
     NSString *_campaignId;
     NSString *_campaignType;
+    NTPBChannelData *_channelData;
     int _characterCount;
     int _coverArticleDisplayRank;
     int _coverArticleFeatureType;
@@ -70,6 +71,10 @@
     NSString *_iadNativeCampaign;
     NSString *_iadNativeCampaignAd;
     NSString *_iadNativeLine;
+    NTPBIssueData *_issueData;
+    NTPBIssueExposureData *_issueExposureData;
+    NTPBIssueViewContextData *_issueViewContextData;
+    NTPBIssueViewData *_issueViewData;
     NSString *_language;
     int _loadFailureReason;
     int _maxActiveTimeSpent;
@@ -97,6 +102,7 @@
     NSString *_referencedArticleId;
     NSString *_referringSourceApplication;
     NSString *_referringUrl;
+    int _role;
     NSString *_sectionHeadlineId;
     NSString *_sourceBinId;
     NSString *_sourceChannelId;
@@ -138,7 +144,7 @@
     BOOL _isVideoInFeed;
     BOOL _subscriptionOnlyArticle;
     BOOL _viewFromNotificationDirectOpen;
-    CDStruct_120998a0 _has;
+    CDStruct_803929fe _has;
 }
 
 @property (nonatomic) int activeTimeSpent; // @synthesize activeTimeSpent=_activeTimeSpent;
@@ -164,6 +170,7 @@
 @property (nonatomic) int breakingNewsArticlePosition; // @synthesize breakingNewsArticlePosition=_breakingNewsArticlePosition;
 @property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
 @property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
+@property (strong, nonatomic) NTPBChannelData *channelData; // @synthesize channelData=_channelData;
 @property (nonatomic) int characterCount; // @synthesize characterCount=_characterCount;
 @property (nonatomic) double computedGlobalScoreCoefficient; // @synthesize computedGlobalScoreCoefficient=_computedGlobalScoreCoefficient;
 @property (nonatomic) int coverArticleDisplayRank; // @synthesize coverArticleDisplayRank=_coverArticleDisplayRank;
@@ -217,6 +224,7 @@
 @property (nonatomic) BOOL hasBreakingNewsArticlePosition;
 @property (readonly, nonatomic) BOOL hasCampaignId;
 @property (readonly, nonatomic) BOOL hasCampaignType;
+@property (readonly, nonatomic) BOOL hasChannelData;
 @property (nonatomic) BOOL hasCharacterCount;
 @property (nonatomic) BOOL hasComputedGlobalScoreCoefficient;
 @property (nonatomic) BOOL hasCoverArticleDisplayRank;
@@ -266,6 +274,10 @@
 @property (nonatomic) BOOL hasIsTopStoryArticle;
 @property (nonatomic) BOOL hasIsUserSubscribedToParentFeed;
 @property (nonatomic) BOOL hasIsVideoInFeed;
+@property (readonly, nonatomic) BOOL hasIssueData;
+@property (readonly, nonatomic) BOOL hasIssueExposureData;
+@property (readonly, nonatomic) BOOL hasIssueViewContextData;
+@property (readonly, nonatomic) BOOL hasIssueViewData;
 @property (readonly, nonatomic) BOOL hasLanguage;
 @property (nonatomic) BOOL hasLoadFailureReason;
 @property (nonatomic) BOOL hasMaxActiveTimeSpent;
@@ -297,6 +309,7 @@
 @property (readonly, nonatomic) BOOL hasReferencedArticleId;
 @property (readonly, nonatomic) BOOL hasReferringSourceApplication;
 @property (readonly, nonatomic) BOOL hasReferringUrl;
+@property (nonatomic) BOOL hasRole;
 @property (readonly, nonatomic) BOOL hasSectionHeadlineId;
 @property (readonly, nonatomic) BOOL hasSourceBinId;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
@@ -337,6 +350,10 @@
 @property (nonatomic) BOOL isTopStoryArticle; // @synthesize isTopStoryArticle=_isTopStoryArticle;
 @property (nonatomic) BOOL isUserSubscribedToParentFeed; // @synthesize isUserSubscribedToParentFeed=_isUserSubscribedToParentFeed;
 @property (nonatomic) BOOL isVideoInFeed; // @synthesize isVideoInFeed=_isVideoInFeed;
+@property (strong, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
+@property (strong, nonatomic) NTPBIssueExposureData *issueExposureData; // @synthesize issueExposureData=_issueExposureData;
+@property (strong, nonatomic) NTPBIssueViewContextData *issueViewContextData; // @synthesize issueViewContextData=_issueViewContextData;
+@property (strong, nonatomic) NTPBIssueViewData *issueViewData; // @synthesize issueViewData=_issueViewData;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
 @property (nonatomic) int loadFailureReason; // @synthesize loadFailureReason=_loadFailureReason;
 @property (nonatomic) int maxActiveTimeSpent; // @synthesize maxActiveTimeSpent=_maxActiveTimeSpent;
@@ -369,6 +386,7 @@
 @property (strong, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property (strong, nonatomic) NSString *referringSourceApplication; // @synthesize referringSourceApplication=_referringSourceApplication;
 @property (strong, nonatomic) NSString *referringUrl; // @synthesize referringUrl=_referringUrl;
+@property (nonatomic) int role; // @synthesize role=_role;
 @property (strong, nonatomic) NSString *sectionHeadlineId; // @synthesize sectionHeadlineId=_sectionHeadlineId;
 @property (strong, nonatomic) NSString *sourceBinId; // @synthesize sourceBinId=_sourceBinId;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;

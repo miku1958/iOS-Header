@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)deviceNormalize;
-- (struct FrustumRect)frustumRect;
+- (id)frustumRect;
 - (id)init;
 - (id)narrowByNormalizedBounds:(box_80622335 *)arg1;
 - (id)narrowedByNormalizedBounds:(box_80622335 *)arg1;

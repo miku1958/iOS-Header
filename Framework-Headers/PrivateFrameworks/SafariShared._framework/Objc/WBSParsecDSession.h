@@ -47,7 +47,6 @@
 - (void).cxx_destruct;
 - (void)_didReceiveResponse:(id)arg1 error:(id)arg2 forTask:(id)arg3 query:(id)arg4;
 - (void)_startUpdatingAutoFillDataInBackgroundIfPossibleForSession:(id)arg1;
-- (id)init;
 - (id)initWithParsecdSession:(id)arg1 skipAutoFillDataUpdates:(BOOL)arg2;
 - (void)session:(id)arg1 bag:(id)arg2 didLoadWithError:(id)arg3;
 

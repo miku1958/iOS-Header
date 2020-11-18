@@ -12,17 +12,21 @@
 {
     BOOL _usedMaximumSuggestion;
     NSDecimalNumber *_value;
+    NSString *_title;
     NSString *_displayValue;
 }
 
 @property (copy, nonatomic) NSString *displayValue; // @synthesize displayValue=_displayValue;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) BOOL usedMaximumSuggestion; // @synthesize usedMaximumSuggestion=_usedMaximumSuggestion;
 @property (readonly, copy, nonatomic) NSDecimalNumber *value; // @synthesize value=_value;
 
++ (id)suggestionWithTitle:(id)arg1 value:(id)arg2 currencyCode:(id)arg3;
 + (id)suggestionWithValue:(id)arg1 currencyCode:(id)arg2;
 - (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
+- (id)initWithTitle:(id)arg1 value:(id)arg2 currencyCode:(id)arg3;
 - (id)initWithValue:(id)arg1 currencyCode:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 

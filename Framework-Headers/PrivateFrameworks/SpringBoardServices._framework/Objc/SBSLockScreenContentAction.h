@@ -13,15 +13,17 @@
     unsigned long long _type;
     NSString *_slot;
     unsigned long long _secureAppType;
+    id _configurationObject;
 }
 
+@property (strong, nonatomic) id configurationObject; // @synthesize configurationObject=_configurationObject;
 @property (readonly, nonatomic) NSString *identifier;
 @property (nonatomic) unsigned long long secureAppType; // @synthesize secureAppType=_secureAppType;
 @property (strong, nonatomic) NSString *slot; // @synthesize slot=_slot;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
-- (id)initWithType:(unsigned long long)arg1 slot:(id)arg2 identifier:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)initWithType:(unsigned long long)arg1 slot:(id)arg2 identifier:(id)arg3 configurationObject:(id)arg4 handler:(CDUnknownBlockType)arg5;
 
 @end
 

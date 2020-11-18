@@ -12,6 +12,7 @@
 
 - (void)layoutSubviews;
 - (id)newControl;
+- (void)sliderDidEndSliding:(id)arg1;
 
 @end
 

@@ -42,6 +42,10 @@
 + (id)composedWaypointForTransitID:(unsigned long long)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 isCurrentLocation:(BOOL)arg3 traits:(id)arg4 clientAttributes:(id)arg5 completionHandler:(CDUnknownBlockType)arg6 networkActivityHandler:(CDUnknownBlockType)arg7;
 + (id)composedWaypointForWaypointTyped:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 networkActivityHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (id)_addressCandidatesForComparison;
+- (id)_locationCandidatesForComparison;
+- (id)_muidCandidatesForComparison;
+- (id)_regionCandidatesForContainment;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -54,6 +58,8 @@
 - (BOOL)isCurrentLocation;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLocationWaypointType;
+- (BOOL)isSameAs:(id)arg1;
+- (BOOL)isSameAs:(id)arg1 comparisonCriteria:(unsigned long long)arg2;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setIsCurrentLocation:(BOOL)arg1;

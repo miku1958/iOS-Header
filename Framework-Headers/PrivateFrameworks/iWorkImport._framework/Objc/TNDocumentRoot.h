@@ -9,7 +9,7 @@
 #import <iWorkImport/TSTFormsSheetProvider-Protocol.h>
 #import <iWorkImport/TSTResolverContainerNameProvider-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, TNTheme, TNUIState, TSKTreeNode, TSSStylesheet;
+@class NSArray, NSMutableArray, NSString, TNDocumentViewController, TNTheme, TNUIState, TSKTreeNode, TSSStylesheet;
 
 __attribute__((visibility("hidden")))
 @interface TNDocumentRoot : TSADocumentRoot <TSTResolverContainerNameProvider, TSTFormsSheetProvider>
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long tableCount;
 @property (readonly, nonatomic) TNTheme *theme; // @synthesize theme=_theme;
 @property (strong, nonatomic) TNUIState *uiState; // @synthesize uiState=_uiState;
+@property (readonly, nonatomic) TNDocumentViewController *viewController; // @dynamic viewController;
 
 + (struct CGSize)previewImageMaxSizeForType:(unsigned long long)arg1;
 + (struct CGSize)previewImageSizeForType:(unsigned long long)arg1;
@@ -80,7 +81,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)p_tableCountForSheet:(id)arg1;
 - (void)performDeferredUpgradeImportOperationsOnNewThreadForCharts:(id)arg1;
 - (void)performDeferredUpgradeImportOperationsRequiringCalcEngine;
-- (BOOL)prepareAndValidateSidecarViewStateObjectWithVersionUUIDMismatch:(id)arg1 originalDocumentViewStateObject:(id)arg2;
+- (BOOL)prepareAndValidateSidecarViewStateRootWithVersionUUIDMismatch:(id)arg1 sidecarDocumentRevision:(id)arg2 originalDocumentViewStateRoot:(id)arg3;
 - (void)prepareNewDocumentWithTemplateBundle:(id)arg1 documentLocale:(id)arg2;
 - (id)previewImageForSize:(struct CGSize)arg1;
 - (void)removeAllSheets;

@@ -27,11 +27,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 parameters:(id)arg2;
 - (id)initWithNativeSdpVideoFormat:(struct SdpVideoFormat)arg1;
-- (id)initWithNativeVideoCodec:(VideoCodec_88e09d5a)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCodecInfo:(id)arg1;
 - (struct SdpVideoFormat)nativeSdpVideoFormat;
-- (VideoCodec_88e09d5a)nativeVideoCodec;
 
 @end
 

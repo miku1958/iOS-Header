@@ -10,6 +10,8 @@
 
 @property (readonly) BOOL settingsUIVisible;
 
+
+@optional
 - (void)connectToDaemon;
 @end
 

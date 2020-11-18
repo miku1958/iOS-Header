@@ -28,6 +28,7 @@
 @property (copy, nonatomic) NSString *captionPipelineStrategy;
 @property (copy, nonatomic) NSString *captionRenderingStrategy;
 @property (nonatomic) BOOL disallowsAMRAudio;
+@property (nonatomic, getter=_disallowsAutoPauseOnRouteRemovalIfNoAudio, setter=_setDisallowsAutoPauseOnRouteRemovalIfNoAudio:) BOOL disallowsAutoPauseOnRouteRemovalIfNoAudio;
 @property (readonly, nonatomic) NSError *error;
 @property (strong, nonatomic) id<AVLoggingIdentifier> loggingIdentifier;
 @property (nonatomic) float maxRateForAudioPlayback;
@@ -127,6 +128,7 @@
 - (BOOL)_outputObscuredDueToInsufficientExternalProtection;
 - (id)_pendingFigPlayerProperties;
 - (id)_pendingFigPlayerPropertyForKey:(id)arg1;
+- (id)_performanceDictionary;
 - (id)_pixelBufferAttributeMediator;
 - (void)_pixelBufferAttributesDidChangeForLayer:(id)arg1;
 - (id)_playbackDisplaysForFigPlayer;

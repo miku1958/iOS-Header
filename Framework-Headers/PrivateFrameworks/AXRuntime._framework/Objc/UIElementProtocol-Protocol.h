@@ -6,10 +6,13 @@
 
 #import <AXRuntime/NSObject-Protocol.h>
 
-@class NSArray, NSNumber, NSObject, NSString;
+@class NSArray, NSMutableDictionary, NSNumber, NSObject, NSString;
 @protocol UIElementProtocol;
 
 @protocol UIElementProtocol <NSObject>
+
+@property (readonly, copy, nonatomic) NSMutableDictionary *cachedAttributes;
+
 + (void)applyElementAttributeCacheScheme:(unsigned long long)arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1 forApplication:(struct __AXUIElement *)arg2 contextId:(unsigned int)arg3;

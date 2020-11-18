@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFAudioPlaybackCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFImage, SFRichText;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFImage, SFRichText, SFUserReportRequest;
 
 @interface SFAudioPlaybackCardSection : SFCardSection <SFAudioPlaybackCardSection, NSSecureCoding, NSCopying>
 {
@@ -67,6 +67,7 @@
 @property (strong, nonatomic) SFImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property (strong, nonatomic) SFRichText *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

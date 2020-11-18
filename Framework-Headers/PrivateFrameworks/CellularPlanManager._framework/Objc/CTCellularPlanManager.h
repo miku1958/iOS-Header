@@ -136,6 +136,7 @@
 - (id)synchronousProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)triggerAddNewDataPlan:(CDUnknownBlockType)arg1;
 - (void)userDidProvideConsentResponse:(long long)arg1 forPlan:(id)arg2 isRemote:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)userDidProvideResponse:(long long)arg1 confirmationCode:(id)arg2 forPlan:(id)arg3 isRemote:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)willDisplayPlanItems;
 
 @end

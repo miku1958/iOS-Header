@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)addChild:(id)arg1;
 - (struct CGSize)adjustedInsetsForTarget:(id)arg1;
-- (unsigned int)autosizeFlagsForTextLayout:(id)arg1;
+- (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 - (struct CGPoint)autosizePositionOffset;
 - (struct CGPoint)autosizePositionOffsetForFixedWidth:(BOOL)arg1 height:(BOOL)arg2;
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
@@ -66,7 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidatePath;
 - (void)invalidateSize;
 - (BOOL)isInvisibleAutosizingShape;
-- (double)maxAutoGrowWidthForTextLayout:(id)arg1;
+- (double)maxAutoGrowLineWidthForTextLayout:(id)arg1;
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;
 - (BOOL)p_hasVisibleContents;
 - (BOOL)p_isEmptyList;

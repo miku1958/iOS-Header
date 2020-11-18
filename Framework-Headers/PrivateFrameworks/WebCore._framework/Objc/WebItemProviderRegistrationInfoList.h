@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString, UIItemProvider;
+@class NSData, NSItemProvider, NSString;
 
 @interface WebItemProviderRegistrationInfoList : NSObject
 {
@@ -17,7 +17,7 @@
     struct CGSize _preferredPresentationSize;
 }
 
-@property (readonly, nonatomic) UIItemProvider *itemProvider;
+@property (readonly, nonatomic) NSItemProvider *itemProvider;
 @property (nonatomic) struct CGSize preferredPresentationSize; // @synthesize preferredPresentationSize=_preferredPresentationSize;
 @property (nonatomic) long long preferredPresentationStyle; // @synthesize preferredPresentationStyle=_preferredPresentationStyle;
 @property (copy, nonatomic) NSString *suggestedName; // @synthesize suggestedName=_suggestedName;

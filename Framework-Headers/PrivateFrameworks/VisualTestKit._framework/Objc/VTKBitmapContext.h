@@ -6,31 +6,48 @@
 
 #import <objc/NSObject.h>
 
-@class UIImage;
+@class MISSING_TYPE, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface VTKBitmapContext : NSObject
 {
     struct CGColorSpace *_colorSpace;
+    unsigned long long _contextType;
     struct CGContext *_CGContext;
     void *_CGContextDataBytes;
     unsigned long long _CGContextDataBytesLength;
-    unsigned long long _width;
-    unsigned long long _height;
+    double _width;
+    double _height;
+    double _scale;
     unsigned long long _bytesPerPixel;
+    unsigned long long _bytesPerRow;
 }
 
 @property (readonly) struct CGContext *CGContext; // @synthesize CGContext=_CGContext;
 @property (readonly) void *CGContextDataBytes; // @synthesize CGContextDataBytes=_CGContextDataBytes;
 @property (readonly) unsigned long long CGContextDataBytesLength; // @synthesize CGContextDataBytesLength=_CGContextDataBytesLength;
 @property (readonly) unsigned long long bytesPerPixel; // @synthesize bytesPerPixel=_bytesPerPixel;
-@property (readonly) unsigned long long height; // @synthesize height=_height;
+@property (readonly) unsigned long long bytesPerRow; // @synthesize bytesPerRow=_bytesPerRow;
+@property (readonly) double height; // @synthesize height=_height;
 @property (readonly, nonatomic) UIImage *image;
-@property (readonly) unsigned long long width; // @synthesize width=_width;
+@property (readonly) unsigned long long pixelHeight;
+@property (readonly) unsigned long long pixelWidth;
+@property (readonly) double scale; // @synthesize scale=_scale;
+@property (readonly) double width; // @synthesize width=_width;
 
-+ (id)contextType:(unsigned long long)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3;
++ (id)contextType:(unsigned long long)arg1 width:(double)arg2 height:(double)arg3 scale:(double)arg4;
+- (id)_16BitColor:(MISSING_TYPE **)arg1;
+- (id)_8BitColor:(char *)arg1;
+- (void)_draw16BitColor:(id)arg1 at:(MISSING_TYPE **)arg2;
+- (void)_draw8BitColor:(id)arg1 at:(char *)arg2;
+- (id)colorAt:(void *)arg1;
+- (id)colorForAntiAliased;
+- (id)colorForDifferent;
+- (id)colorForSame;
+- (void *)dataAtPixel:(struct VTKPoint)arg1;
 - (void)dealloc;
-- (id)initWithColorSpaceName:(struct __CFString *)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 bitsPerComponent:(unsigned long long)arg4 bytesPerPixel:(unsigned long long)arg5 bitmapInfo:(unsigned int)arg6;
+- (void)drawColor:(id)arg1 at:(void *)arg2;
+- (id)initWithColorSpaceName:(struct __CFString *)arg1 contextType:(unsigned long long)arg2 width:(double)arg3 height:(double)arg4 scale:(double)arg5 bitsPerComponent:(unsigned long long)arg6 bytesPerPixel:(unsigned long long)arg7 bitmapInfo:(unsigned int)arg8;
 
 @end
 

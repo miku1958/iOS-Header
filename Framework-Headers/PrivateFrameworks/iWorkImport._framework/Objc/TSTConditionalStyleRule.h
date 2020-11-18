@@ -29,27 +29,27 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)containsUidReferences;
 - (id)copyByClearingUids:(id)arg1 containingTableUID:(const UUIDData_5fbc143e *)arg2;
-- (id)copyByOffsettingRelativeReferencesWithOffset:(CDStruct_1ef3fb1f)arg1;
+- (id)copyByOffsettingRelativeReferencesWithOffset:(struct TSUColumnRowOffset)arg1;
 - (id)copyByRemappingHostCellAgnosticOwnerUIDsWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2 ownerUID:(const UUIDData_5fbc143e *)arg3 error:(BOOL *)arg4;
 - (id)copyByRemappingOwnerUIDsWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2 error:(BOOL *)arg3;
-- (id)copyByRepairingBadReferences:(id)arg1;
-- (id)copyByRewritingWithContext:(id)arg1 rewriteBlock:(CDUnknownBlockType)arg2;
+- (id)copyByRepairingBadReferences:(struct TSCEFormulaRewriteContext *)arg1;
+- (id)copyByRewritingWithContext:(struct TSCEFormulaRewriteContext *)arg1 rewriteBlock:(CDUnknownBlockType)arg2;
 - (id)copyByRewritingWithSpec:(id)arg1 inOwner:(id)arg2 inCellCoordinate:(struct TSUCellCoord)arg3;
 - (id)copyByUpdatingHostCellRef:(const struct TSCECellRef *)arg1;
 - (id)copyByUpgradingToLinkedRefAtHostCellRef:(const struct TSCECellRef *)arg1;
-- (id)copyToGeometricFormWithRewriteContext:(id)arg1;
+- (id)copyToGeometricFormWithRewriteContext:(struct TSCEFormulaRewriteContext *)arg1;
 - (id)copyToUidFormForTableInfo:(id)arg1 inCellCoordinate:(struct TSUCellCoord)arg2 preserveHostCell:(BOOL)arg3;
 - (id)copyWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (BOOL)evaluateFormulaAtCellID:(struct TSUCellCoord)arg1 withCalcEngine:(id)arg2 withFormulaTableUID:(const UUIDData_5fbc143e *)arg3;
+- (BOOL)evaluateFormulaAtCellID:(struct TSUCellCoord)arg1 withCalcEngine:(id)arg2 onSubOwnerID:(const struct TSCESubFormulaOwnerID *)arg3;
 - (void)getPrecedents:(struct TSCEReferenceSet *)arg1 calcEngine:(id)arg2 hostOwnerUID:(const UUIDData_5fbc143e *)arg3 hostCellID:(const struct TSUCellCoord *)arg4;
 - (BOOL)hasBadRefWithUidInfo;
 - (unsigned long long)hash;
 - (id)initWithPredicate:(id)arg1 cellStyle:(id)arg2 textStyle:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualForInspector:(id)arg1;
-- (void)iterateFormulasWithContext:(id)arg1 shouldStop:(BOOL *)arg2 block:(CDUnknownBlockType)arg3;
+- (void)iterateFormulasWithContext:(struct TSCEFormulaRewriteContext *)arg1 shouldStop:(BOOL *)arg2 block:(CDUnknownBlockType)arg3;
 - (void)setHostCell:(const UUIDData_5fbc143e *)arg1 hostColumnUID:(const UUIDData_5fbc143e *)arg2 hostRowUID:(const UUIDData_5fbc143e *)arg3;
 
 @end

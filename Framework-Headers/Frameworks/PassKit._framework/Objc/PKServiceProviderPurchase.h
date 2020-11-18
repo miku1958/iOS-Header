@@ -20,12 +20,14 @@
     PKServiceProviderPurchaseData *_serviceProviderData;
     NSDate *_purchaseDate;
     NSString *_signature;
+    NSString *_partnerMetadata;
     NSArray *_actions;
 }
 
 @property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *partnerMetadata; // @synthesize partnerMetadata=_partnerMetadata;
 @property (copy, nonatomic) NSDate *purchaseDate; // @synthesize purchaseDate=_purchaseDate;
 @property (copy, nonatomic) PKServiceProviderPurchaseData *serviceProviderData; // @synthesize serviceProviderData=_serviceProviderData;
 @property (copy, nonatomic) NSString *serviceProviderIdentifier; // @synthesize serviceProviderIdentifier=_serviceProviderIdentifier;

@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *overlayViewBottomLayoutGuide;
     MISSING_TYPE *overlayConstraints;
     MISSING_TYPE *labelState;
+    MISSING_TYPE *overallLayoutState;
     MISSING_TYPE *backgroundBackdropView;
     MISSING_TYPE *debugProminenceLabel;
     MISSING_TYPE *bottomBarHideTimer;
@@ -50,7 +51,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, readonly) UILabel *overlaySubtitleLabel; // @synthesize overlaySubtitleLabel;
 @property (nonatomic) long long style; // @synthesize style;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (BOOL)accessibilityIsShowingVideo;
 - (void)dealloc;
 - (void)didTapExpandButton;

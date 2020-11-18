@@ -62,9 +62,7 @@
 - (void)_handleConfiguredQueueFeeder:(id)arg1 fromPlaybackContext:(id)arg2;
 - (long long)_hardQueueIndexForIndex:(long long)arg1;
 - (struct _NSRange)_hardQueuePlaylistIndexRangeIncludingCurrentItem:(BOOL)arg1;
-- (unsigned long long)_indexOfMediaItem:(id)arg1;
 - (void)_insertSoftQueueSourceContext:(id)arg1 atIndex:(long long)arg2;
-- (void)_invalidateCachedMusicPlayerControllerQueue;
 - (id)_itemForPlaylistIndex:(long long)arg1;
 - (id)_itemForSourceContext:(id)arg1;
 - (BOOL)_itemIsHardQueueItem:(id)arg1;
@@ -82,8 +80,8 @@
 - (struct _NSRange)_softQueuePlaylistIndexRangeIncludingCurrentItem:(BOOL)arg1;
 - (id)_softQueueSourceContextForIndex:(long long)arg1;
 - (id)_sourceContextForPlaylistIndex:(unsigned long long)arg1;
-- (void)_updateMusicPlayerControllerQueueWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_willFinishReloadWithQueueFeeder:(id)arg1 fromPlaybackContext:(id)arg2;
+- (void)addPlaybackContext:(id)arg1 toQueueWithInsertionType:(long long)arg2 atIndex:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)addPlaybackContext:(id)arg1 toQueueWithInsertionType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)allowsQueueResetWhenReachingEnd;
 - (BOOL)canSkipToPreviousItemForItem:(id)arg1;
@@ -91,7 +89,6 @@
 - (void)clearSoftQueue;
 - (id)contentItemIDForPlaylistIndex:(long long)arg1;
 - (long long)currentIndex;
-- (id)currentQueueUUID;
 - (unsigned long long)displayCountForItem:(id)arg1;
 - (unsigned long long)displayIndexForItem:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -107,7 +104,6 @@
 - (id)itemForPlaylistIndex:(long long)arg1;
 - (id)metadataItemForPlaylistIndex:(long long)arg1;
 - (void)moveItemAtPlaybackIndex:(long long)arg1 toPlaybackIndex:(long long)arg2 intoHardQueue:(BOOL)arg3;
-- (id)musicPlayerControllerQueueForUUID:(id)arg1;
 - (void)player:(id)arg1 currentItemDidChangeFromItem:(id)arg2 toItem:(id)arg3;
 - (id)playlistFeeder;
 - (id)playlistFeederForPlaylistIndex:(long long)arg1;
@@ -123,9 +119,7 @@
 - (void)queueFeeder:(id)arg1 didChangeContentsWithReplacementPlaybackContext:(id)arg2;
 - (void)queueFeederDidInvalidateRealShuffleType:(id)arg1;
 - (void)removeItemAtPlaybackIndex:(long long)arg1;
-- (void)requestMusicPlayerControllerQueueWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setCurrentIndex:(long long)arg1 selectionDirection:(long long)arg2;
-- (BOOL)setMusicPlayerControllerQueue:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)setPlaylistFeeder:(id)arg1 startIndex:(long long)arg2 keepPlaying:(BOOL)arg3;
 - (void)setRepeatMode:(long long)arg1;
 - (BOOL)supportsAddToQueue;

@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)endSession;
+- (void)readNDEFMessageFromTag:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startPolling;
 - (void)stopPolling;
 

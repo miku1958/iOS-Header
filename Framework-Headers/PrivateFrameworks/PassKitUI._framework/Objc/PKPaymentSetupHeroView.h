@@ -24,6 +24,7 @@
     UILabel *_instructionLabel;
     PKPaymentHeroImageController *_heroImageController;
     NSMutableDictionary *_networkImageViewsMap;
+    BOOL _imageDownloadFailed;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -34,7 +35,7 @@
 + (id)assetBackgroundColor;
 - (void).cxx_destruct;
 - (void)_createCardViewsWithImages:(id)arg1;
-- (void)_createSubviews;
+- (void)_createSubviews:(id)arg1;
 - (void)_finishedTransitionToCard:(id)arg1;
 - (struct CGRect)_frameForCardView:(id)arg1;
 - (struct CGRect)_frameForInstructionLabel;
@@ -46,9 +47,8 @@
 - (id)_resizeImage:(id)arg1;
 - (void)_setCardViews:(id)arg1 networks:(id)arg2;
 - (void)_transitionFromCardToCard:(id)arg1;
-- (void)heroImageController:(id)arg1 didFinishDownloadingImageData:(id)arg2 forNetwork:(id)arg3 error:(id)arg4;
-- (id)initWithContext:(long long)arg1 heroImageController:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)heroImageController:(id)arg1 didFinishDownloadingImageData:(id)arg2 forImage:(id)arg3 error:(id)arg4;
+- (id)initWithContext:(long long)arg1 heroImageController:(id)arg2 heroImages:(id)arg3;
 - (void)layoutSubviews;
 - (id)pk_childrenForAppearance;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

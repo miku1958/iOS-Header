@@ -10,11 +10,13 @@
 
 @interface SFSiriWordTimingInfo : NSObject
 {
+    NSString *_localizedText;
     double _timeOffset;
     NSString *_wordID;
     struct _NSRange _textRange;
 }
 
+@property (copy, nonatomic) NSString *localizedText; // @synthesize localizedText=_localizedText;
 @property (nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
 @property (nonatomic) double timeOffset; // @synthesize timeOffset=_timeOffset;
 @property (copy, nonatomic) NSString *wordID; // @synthesize wordID=_wordID;

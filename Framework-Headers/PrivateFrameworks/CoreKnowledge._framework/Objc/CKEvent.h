@@ -25,11 +25,8 @@
 - (id)debugDescription;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithEntity:(id)arg1 error:(id *)arg2;
 - (id)initWithIdentifier:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 metadata:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
-- (id)next;
-- (id)previous;
 
 @end
 

@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 + (void)applyFakeShadowForPresetsIfNecessary:(id)arg1 documentRoot:(id)arg2;
 + (BOOL)applyFakeStrokeIfNeededForShape:(id)arg1 documentRoot:(id)arg2 backgroundAppearance:(unsigned long long)arg3;
-+ (struct CGImage *)newImageForDarkBackground:(struct CGImage *)arg1 atScale:(double)arg2 ofSize:(struct CGSize)arg3 inset:(struct CGSize)arg4;
 + (id)swatchCache;
 - (void).cxx_destruct;
 - (void)dealloc;

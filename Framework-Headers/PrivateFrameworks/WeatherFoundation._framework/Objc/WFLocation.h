@@ -61,6 +61,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocalDataRepresentation:(id)arg1;
 - (id)initWithMapItem:(id)arg1;
+- (id)initWithMapItem:(id)arg1 isCurrentLocation:(BOOL)arg2;
 - (id)initWithPlacemark:(id)arg1;
 - (id)initWithSearchResponse:(id)arg1;
 - (BOOL)isDay;

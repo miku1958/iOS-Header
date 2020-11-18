@@ -33,6 +33,6 @@
 - (void)webProcessVideoAdJSODidCallVideoTapped:(float)arg1 volume:(float)arg2;
 - (void)webProcessVideoAdJSODidCallViewabilityChanged:(BOOL)arg1 playTime:(float)arg2 volume:(float)arg3;
 - (void)webProcessVideoAdJSODidCallVolumeChanged:(float)arg1 playTime:(float)arg2;
-- (void)webProcessVideoAdJSOGetVideoInfo:(void (^)(NSString *, BOOL))arg1;
+- (void)webProcessVideoAdJSOGetVideoInfo:(void (^)(NSString *, BOOL, NSDictionary *))arg1;
 @end
 

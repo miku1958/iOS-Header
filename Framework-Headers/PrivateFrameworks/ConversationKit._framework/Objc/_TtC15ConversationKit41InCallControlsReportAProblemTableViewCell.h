@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *enabled;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;

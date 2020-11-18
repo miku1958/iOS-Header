@@ -11,16 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface TSUProgressObserver : NSObject
 {
-    double mValueInterval;
-    NSObject<OS_dispatch_queue> *mQueue;
-    CDUnknownBlockType mHandler;
-    double mLastHandledValue;
-    BOOL mLastHandledIndeterminate;
+    NSObject<OS_dispatch_queue> *_queue;
+    CDUnknownBlockType _handler;
+    double _lastHandledValue;
+    BOOL _lastHandledIndeterminate;
+    double _valueInterval;
 }
 
-@property (readonly, nonatomic) double valueInterval; // @synthesize valueInterval=mValueInterval;
+@property (readonly, nonatomic) double valueInterval; // @synthesize valueInterval=_valueInterval;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)handleValue:(double)arg1 maxValue:(double)arg2 isIndeterminate:(BOOL)arg3;
 - (id)init;
 - (id)initWithValueInterval:(double)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;

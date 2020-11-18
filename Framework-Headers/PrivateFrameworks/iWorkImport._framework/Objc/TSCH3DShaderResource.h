@@ -6,7 +6,7 @@
 
 #import <iWorkImport/TSCH3DResource.h>
 
-@class TSCH3DShaderProgram;
+@class TSCH3DShaderProgram, TSCH3DVersion;
 
 __attribute__((visibility("hidden")))
 @interface TSCH3DShaderResource : TSCH3DResource
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) TSCH3DShaderProgram *program;
+@property (readonly, nonatomic) TSCH3DVersion *version;
 
 + (pair_10e2d813)stringsFromBuffer:(id)arg1;
 - (void)appendShaderResourceString:(IteratorRange_617e5e79)arg1 toDataBuffer:(id)arg2;

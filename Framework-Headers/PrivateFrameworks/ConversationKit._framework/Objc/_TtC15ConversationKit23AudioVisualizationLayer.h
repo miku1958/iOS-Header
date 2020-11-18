@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) struct CGRect bounds;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 - (void)dealloc;
 - (id)init;

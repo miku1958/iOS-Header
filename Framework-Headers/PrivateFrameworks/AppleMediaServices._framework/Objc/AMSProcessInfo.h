@@ -29,6 +29,7 @@
 + (BOOL)boolForMachLookupAccess:(id)arg1;
 + (id)currentProcess;
 + (BOOL)isBuddyRunning;
++ (id)stringForEntitlement:(id)arg1;
 - (void).cxx_destruct;
 - (id)generateConfiguration;
 - (id)generateConfigurationFromBagContract:(id)arg1;

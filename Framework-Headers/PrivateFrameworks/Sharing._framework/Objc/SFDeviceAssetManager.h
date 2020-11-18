@@ -34,12 +34,11 @@
 
 - (void).cxx_destruct;
 - (void)activate;
-- (void)addKeyValuePair:(id)arg1 with:(id)arg2 toQuery:(id)arg3;
 - (void)addQueryResultToLocalCache:(id)arg1 url:(id)arg2 isFallback:(BOOL)arg3;
 - (id)cacheDirectory;
 - (BOOL)canUseMobileAssetSPI;
 - (void)clearQueryResultFromLocalCache:(id)arg1;
-- (void)getAssetBundleForDeviceQuery:(id)arg1 timeout:(double)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)getAssetBundleForDeviceQuery:(id)arg1 withRequestConfiguration:(id)arg2;
 - (id)hardcodedMappedProducts;
 - (id)init;
 - (void)invalidate;
@@ -54,25 +53,24 @@
 - (id)onqueue_assetMappedMPNForMPN:(id)arg1 forProductType:(id)arg2;
 - (id)onqueue_assetMappedProductTypeForProductType:(id)arg1;
 - (void)onqueue_downloadAsset:(id)arg1 ucat:(struct LogCategory *)arg2 queryLogString:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)onqueue_executeNextMAQueryForTask:(id)arg1;
 - (void)onqueue_findAssetBundleForAssetQuery:(id)arg1 ucat:(struct LogCategory *)arg2 queryType:(id)arg3 fallback:(BOOL)arg4 retryAttempt:(BOOL)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
-- (void)onqueue_findAssetBundleForDeviceQuery:(id)arg1 installedOnly:(BOOL)arg2 fallback:(BOOL)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
-- (void)onqueue_getAssetBundleForDeviceQuery:(id)arg1 timeout:(double)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)onqueue_getAssetBundleForDeviceQuery:(id)arg1 withRequestConfiguration:(id)arg2;
 - (void)onqueue_getCachedAssetBundleForTask:(id)arg1;
 - (void)onqueue_invalidate;
-- (id)onqueue_managementAsset;
 - (void)onqueue_manuallyFindFallbackAssetBundleMatchingQuery:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)onqueue_mappedProductTypeForProductType:(id)arg1;
 - (void)onqueue_purgeAssetsMatchingQuery:(id)arg1;
-- (void)onqueue_updateManagementAssetIfNecessary;
+- (id)onqueue_sharingManagementAsset;
 - (void)onqueue_updateMetaDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)onqueue_updateSharingManagementAssetIfNecessary;
 - (void)onqueue_validateMPNInQuery:(id)arg1;
 - (void)onqueue_validateProductTypeInQuery:(id)arg1;
+- (BOOL)pathInLocalCache:(id)arg1;
 - (void)purgeAssetsMatchingQuery:(id)arg1;
-- (id)queryTypeForInstalledOnly:(BOOL)arg1 fallback:(BOOL)arg2;
 - (void)storeEntries:(id)arg1 inLocalCacheWithFileName:(id)arg2;
 - (void)storeMPNsInLocalCache:(id)arg1 forProductType:(id)arg2;
 - (void)storeProductMappingsInLocalCache:(id)arg1;
-- (void)storeQueryResultsInLocalCache:(id)arg1;
 
 @end
 

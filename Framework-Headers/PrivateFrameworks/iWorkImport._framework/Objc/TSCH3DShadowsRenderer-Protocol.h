@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class TSCH3DGLContext, TSCH3DGLFramebuffer, TSCH3DSceneRenderPipeline, TSCH3DSession;
+@class TSCH3DContext, TSCH3DFramebuffer, TSCH3DSceneRenderPipeline, TSCH3DSession;
 
 @protocol TSCH3DShadowsRenderer
 - (float)blurSlackForQuality:(float)arg1;
 - (void)invalidate;
-- (void)protectShadowForQuality:(float)arg1 pipeline:(TSCH3DSceneRenderPipeline *)arg2 renderBlock:(void (^)(TSCH3DGLFramebuffer *))arg3;
-- (TSCH3DGLFramebuffer *)shadowsFBOForContext:(TSCH3DGLContext *)arg1;
+- (void)protectShadowForQuality:(float)arg1 pipeline:(TSCH3DSceneRenderPipeline *)arg2 renderBlock:(void (^)(TSCH3DFramebuffer *))arg3;
+- (TSCH3DFramebuffer *)shadowsFBOForContext:(TSCH3DContext *)arg1;
 - (void)unprotectShadowInSession:(TSCH3DSession *)arg1;
 @end
 

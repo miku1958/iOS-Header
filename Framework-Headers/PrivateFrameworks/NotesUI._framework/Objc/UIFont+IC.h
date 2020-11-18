@@ -43,5 +43,6 @@
 - (BOOL)fontHasSingleLineA;
 - (id)fontWithSingleLineA;
 - (id)fontWithTabularNumbers;
+- (id)ic_fontWithoutSingleLineA;
 @end
 

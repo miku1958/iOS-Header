@@ -12,7 +12,7 @@
 @protocol TSCEFormulaOwning <NSObject>
 - (void)invalidateForCalcEngine:(TSCECalculationEngine *)arg1;
 - (id<TSCEReferenceResolving>)linkedResolver;
-- (int)ownerKind;
+- (unsigned short)ownerKind;
 - (UUIDData_5fbc143e)ownerUID;
 - (CDStruct_2a4d9400)recalculateForCalcEngine:(TSCECalculationEngine *)arg1 atFormulaCoord:(struct TSUCellCoord)arg2 recalcOptions:(CDStruct_3d581f42)arg3;
 - (void)writeResultsForCalcEngine:(TSCECalculationEngine *)arg1;

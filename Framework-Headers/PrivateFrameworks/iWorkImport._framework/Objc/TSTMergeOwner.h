@@ -25,11 +25,12 @@ __attribute__((visibility("hidden")))
 }
 
 @property (weak, nonatomic) TSCECalculationEngine *calculationEngine; // @synthesize calculationEngine=_calculationEngine;
-@property (readonly) unsigned long long count;
+@property (readonly, nonatomic) unsigned long long count;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) TSTFormulaStore *formulaStore; // @synthesize formulaStore=_formulaStore;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isEmpty;
 @property (strong, nonatomic) TSTMergeChangeDistributor *mergeChangeDistributor; // @synthesize mergeChangeDistributor=_mergeChangeDistributor;
 @property (readonly, nonatomic) const unordered_map_c82faa35 *mergeOriginsMap; // @synthesize mergeOriginsMap=_mergeOriginsMap;
 @property (strong, nonatomic) TSTMergeRangeCache *mergeRangeCache; // @synthesize mergeRangeCache=_mergeRangeCache;
@@ -80,7 +81,7 @@ __attribute__((visibility("hidden")))
 - (id)mergedGridIndicesForDimension:(long long)arg1;
 - (struct TSUModelCellRect)mergedRangeForBaseCellCoord:(struct TSUModelCellCoord)arg1;
 - (void)openRewritingTransaction;
-- (int)ownerKind;
+- (unsigned short)ownerKind;
 - (void)p_dirtyCellsForMerge:(const struct TSUModelCellRect *)arg1;
 - (void)p_enumerateMergesUsingBlock:(CDUnknownBlockType)arg1;
 - (struct TSUModelCellRect)p_growRangeFrom:(struct TSUModelCellRect)arg1 toDesired:(struct TSUModelCellRect)arg2;
@@ -91,7 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)p_updateOriginMapWithSourceCellCoord:(struct TSUModelCellCoord)arg1 destCellCoord:(struct TSUModelCellCoord)arg2;
 - (id)performActionReturningInverse:(id)arg1;
 - (CDStruct_2a4d9400)recalculateForCalcEngine:(id)arg1 atFormulaCoord:(struct TSUCellCoord)arg2 recalcOptions:(CDStruct_3d581f42)arg3;
-- (int)registerWithCalcEngine:(id)arg1;
+- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
 - (void)reloadMergeCacheForIndexes:(id)arg1;
 - (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2;
 - (void)removeBaseMergeRange:(struct TSUModelCellRect)arg1;

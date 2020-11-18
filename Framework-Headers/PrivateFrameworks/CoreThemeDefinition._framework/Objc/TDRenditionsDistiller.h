@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class CoreThemeDocument, NSConditionLock, NSMutableArray, TDLogger;
+@protocol OS_dispatch_group;
 
 @interface TDRenditionsDistiller : NSObject
 {
@@ -18,6 +19,7 @@
     BOOL shouldCompressCSIDataFlag;
     BOOL noMoreCSIDataInfo;
     BOOL noMoreRenditions;
+    NSObject<OS_dispatch_group> *_group;
     TDLogger *_logger;
 }
 
@@ -38,6 +40,7 @@
 - (void)enqueueRenditionSpec:(id)arg1;
 - (id)initWithDocument:(id)arg1 shouldCompressCSIDataFlag:(BOOL)arg2;
 - (id)nextCSIDataInfoFromQueue;
+- (void)waitUntilFinished;
 
 @end
 

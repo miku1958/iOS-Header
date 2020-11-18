@@ -25,7 +25,7 @@
 @property (nonatomic, readonly) BOOL nearbyScanWhileAuthenticated; // @synthesize nearbyScanWhileAuthenticated;
 
 + (BOOL)supportsSecureCoding;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

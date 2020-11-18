@@ -17,13 +17,15 @@ __attribute__((visibility("hidden")))
 + (void)setTapUnit:(tvec2_84d5962d)arg1 effectsStates:(id)arg2;
 + (id)variableAccum;
 + (id)variableTapUnit;
++ (id)variableTexture;
 - (void)addVariables:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)inject:(id)arg1;
+- (void)injectCommonShaderInto:(id)arg1 context:(id)arg2;
 - (void)uploadData:(id)arg1 effectsStates:(id)arg2;
 - (id)variableAccum;
 - (id)variableTapUnit;
+- (id)variableTexture;
 
 @end
 

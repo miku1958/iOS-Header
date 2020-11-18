@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSCharacterSet *whitespaceAndNewlineCharSet; // @synthesize whitespaceAndNewlineCharSet=_whitespaceAndNewlineCharSet;
 
 - (void).cxx_destruct;
-- (id)cellRangeName:(id)arg1 namingContext:(id)arg2;
+- (id)cellRangeName:(id)arg1 namingContext:(id)arg2 asChrome:(BOOL)arg3;
 - (id)cellRangeNameFromChromeRangeRef:(const RefTypeHolder_8c6da553 *)arg1 namingContext:(id)arg2;
 - (id)createNameComponentWithChromeRangeRef:(const RefTypeHolder_8c6da553 *)arg1 rowOrColumnName:(id)arg2 isSticky:(BOOL)arg3 namingContext:(id)arg4;
 - (id)initWithCalcEngine:(id)arg1;

@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
 {
     int _type;
     struct _NSRange _range;
-    unsigned long long _headChar;
-    unsigned long long _tailChar;
+    unsigned long long _headCharIndex;
+    unsigned long long _tailCharIndex;
     BOOL _leadingEdge;
     unsigned long long _leadingCharIndex;
     BOOL _validVisualRanges;
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long headChar; // @synthesize headChar=_headChar;
+@property (nonatomic) unsigned long long headCharIndex; // @synthesize headCharIndex=_headCharIndex;
 @property (readonly, nonatomic) BOOL isAtEndOfLine;
 @property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, nonatomic) BOOL isInsertionPoint;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct _NSRange smartFieldRange; // @synthesize smartFieldRange=_smartFieldRange;
 @property (readonly, nonatomic) int styleInsertionBehavior; // @synthesize styleInsertionBehavior=_styleInsertionBehavior;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned long long tailChar; // @synthesize tailChar=_tailChar;
+@property (nonatomic) unsigned long long tailCharIndex; // @synthesize tailCharIndex=_tailCharIndex;
 @property (readonly, nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) BOOL validVisualRanges; // @synthesize validVisualRanges=_validVisualRanges;
 
@@ -65,7 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithNewType:(int)arg1 smartFieldRange:(struct _NSRange)arg2;
 - (id)copyWithNewVisualRanges:(id)arg1;
 - (id)copyWithNewVisualTypeRange:(struct _NSRange)arg1 head:(unsigned long long)arg2 tail:(unsigned long long)arg3;
-- (id)copyWithVisualRanges:(id)arg1 headChar:(unsigned long long)arg2 tailChar:(unsigned long long)arg3 rightToLeft:(BOOL)arg4 sameLine:(BOOL)arg5;
+- (id)copyWithVisualRanges:(id)arg1 headCharIndex:(unsigned long long)arg2 tailCharIndex:(unsigned long long)arg3 rightToLeft:(BOOL)arg4 sameLine:(BOOL)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)end;
 - (void)i_setVisualRanges:(id)arg1;
@@ -79,11 +79,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)intersectsRange:(struct _NSRange)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEquivalentForInsertionStyle:(id)arg1;
-- (unsigned long long)leftEdge;
 - (BOOL)p_isEqual:(id)arg1;
-- (unsigned long long)rightEdge;
 - (void)saveToArchive:(struct SelectionArchive *)arg1 archiver:(id)arg2;
-- (void)setHeadChar:(unsigned long long)arg1 tailChar:(unsigned long long)arg2;
+- (void)setHeadCharIndex:(unsigned long long)arg1 tailCharIndex:(unsigned long long)arg2;
 - (unsigned long long)start;
 - (struct _NSRange)superRange;
 - (unsigned long long)visualRangeCount;

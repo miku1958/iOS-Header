@@ -22,6 +22,8 @@
 - (id)_duetDonationsStreams;
 - (id)_duetQueryForDonatedActionsAfterDate:(id)arg1 onStreams:(id)arg2 withPredicate:(id)arg3;
 - (void)_executeQuery:(id)arg1 responseQueue:(id)arg2 synchronouslyWithBatching:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_queryForDonatedActionsAfterDate:(id)arg1 streams:(id)arg2;
+- (id)_queryForUnfilteredDonationsForStream:(id)arg1;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)executeQuerySynchronouslyWithBatching:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
@@ -33,7 +35,9 @@
 - (id)queryForHistoricChargingEventsWithMinimumDuration:(double)arg1 inThePastDays:(unsigned long long)arg2;
 - (id)queryForPredictedChargingEventsWithMinimumDuration:(double)arg1;
 - (id)queryForTopNApplications:(long long)arg1 withLikelihoodGreaterThan:(double)arg2 withTemporalResolution:(int)arg3;
-- (id)queryForUnfilteredDonations;
+- (id)queryForUnfilteredIntentDonations;
+- (id)queryForUnfilteredRelevantShortcutDonations;
+- (id)queryForUnfilteredUserActivityDonations;
 - (id)sleepInterval;
 
 @end

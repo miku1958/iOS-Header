@@ -23,7 +23,6 @@
 @property (readonly) HMDMediaProfile *mediaProfile; // @synthesize mediaProfile=_mediaProfile;
 @property (readonly) Class superclass;
 
-+ (id)computedNameForCategoryType:(id)arg1 inRoom:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_registerForMessages;

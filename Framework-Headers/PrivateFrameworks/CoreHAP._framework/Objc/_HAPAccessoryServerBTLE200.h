@@ -109,6 +109,7 @@
 - (void)_checkForAuthPrompt:(BOOL)arg1;
 - (void)_configureBroadcastKeyGeneration:(unsigned char)arg1 service:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_configureCharacteristics:(id)arg1 queue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)_continuePairingAfterMFiCertValidation;
 - (void)_createPrimaryAccessoryFromAdvertisementData;
 - (id)_decryptData:(id)arg1 error:(id *)arg2;
 - (BOOL)_delegateRespondsToSelector:(SEL)arg1;

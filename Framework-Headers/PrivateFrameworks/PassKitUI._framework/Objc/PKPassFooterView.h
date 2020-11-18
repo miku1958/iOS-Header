@@ -18,7 +18,6 @@
     PKPassView *_passView;
     PKPassFooterContentView *_contentView;
     NSObject<OS_dispatch_source> *_sessionStartTimer;
-    long long _paymentApplicationState;
     BOOL _isBackgrounded;
     BOOL _isAssistantActive;
     BOOL _acquiringSession;
@@ -41,6 +40,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isPassAuthorized) BOOL passAuthorized;
 @property (strong, nonatomic) PKPassView *passView; // @synthesize passView=_passView;
+@property (readonly, nonatomic) BOOL requestPileSuppression;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isUserIntentRequired) BOOL userIntentRequired; // @synthesize userIntentRequired=_userIntentRequired;
@@ -54,11 +54,13 @@
 - (void)_configureForPersonalizedPaymentApplicationWithContext:(id)arg1;
 - (void)_configureForState:(long long)arg1 context:(id)arg2 passView:(id)arg3;
 - (void)_configureForValueAddedServiceWithContext:(id)arg1;
-- (id)_contentViewForPaymentApplicationWithContext:(id)arg1;
-- (void)_deleteButtonTapped;
 - (void)_endSession;
 - (void)_endSessionStartTimer;
-- (void)_lostModeButtonTapped;
+- (id)_messageContentViewFromMessage:(id)arg1;
+- (id)_messageForPaymentApplicationState;
+- (id)_messageForPeerPaymentZeroBalance;
+- (id)_messageForRestrictedState;
+- (id)_messageForUnavailableState;
 - (void)_setCoachingState:(long long)arg1;
 - (void)_setContentView:(id)arg1 animated:(BOOL)arg2;
 - (void)_setUserIntentRequired:(BOOL)arg1;
@@ -75,10 +77,9 @@
 - (void)invalidate;
 - (BOOL)isPassFooterContentViewInGroup:(id)arg1;
 - (void)layoutSubviews;
-- (void)passFooterContentViewDidBeginAuthenticating:(id)arg1;
 - (void)passFooterContentViewDidChangeCoachingState:(id)arg1;
+- (void)passFooterContentViewDidChangePileSuppressionRequirement:(id)arg1;
 - (void)passFooterContentViewDidChangeUserIntentRequirement:(id)arg1;
-- (void)passFooterContentViewDidEndAuthenticating:(id)arg1;
 - (void)passFooterContentViewRequestsSessionSuppression:(id)arg1;
 - (unsigned long long)suppressedContentForContentView:(id)arg1;
 - (void)willBecomeHiddenAnimated:(BOOL)arg1;

@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFDetailedRowCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFActionItem, SFButton, SFCard, SFColor, SFFormattedText, SFImage, SFRichText;
+@class NSArray, NSData, NSDictionary, NSString, SFActionItem, SFButton, SFCard, SFColor, SFFormattedText, SFImage, SFRichText, SFUserReportRequest;
 
 @interface SFDetailedRowCardSection : SFCardSection <SFDetailedRowCardSection, NSSecureCoding, NSCopying>
 {
@@ -80,6 +80,7 @@
 @property (strong, nonatomic) SFFormattedText *trailingMiddleText; // @synthesize trailingMiddleText=_trailingMiddleText;
 @property (strong, nonatomic) SFFormattedText *trailingTopText; // @synthesize trailingTopText=_trailingTopText;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

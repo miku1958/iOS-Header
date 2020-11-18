@@ -67,9 +67,11 @@
 @property (copy, nonatomic) NSString *widgetFieldType;
 @property (copy, nonatomic) NSString *widgetStringValue;
 
++ (BOOL)annotationPageLayerEffectIsFlipped;
 + (id)getProperNameStringFromString:(id)arg1;
 + (long long)lineStyleFromName:(id)arg1;
 + (id)nameForLineStyle:(long long)arg1;
++ (void)setAnnotationPageLayerEffectIsFlipped:(BOOL)arg1;
 - (void).cxx_destruct;
 - (struct CGPDFAnnotation *)CGPDFAnnotation;
 - (id)_accessibilityTypeString;
@@ -84,6 +86,7 @@
 - (void)_didSetValue:(id)arg1 forAnnotationKey:(id)arg2;
 - (void)_drawAnnotationWithBox:(long long)arg1 inContext:(struct CGContext *)arg2;
 - (void)_generateFormFieldName;
+- (id)_getAttributedStringForTextWidget;
 - (BOOL)_isValidAnnotationKey:(id)arg1;
 - (void)_printDictionary:(id)arg1 atDepth:(int)arg2;
 - (void)_releaseDictionaryRef;
@@ -147,12 +150,14 @@
 - (id)control;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createDefaultAppearanceStringWithFont:(id)arg1 fontColor:(id)arg2;
+- (void)createTextStorageAndLayoutManager;
 - (void)dealloc;
 - (id)debugQuickLookObject;
 - (void)derotateContext:(struct CGContext *)arg1;
 - (id)description;
 - (struct __CFDictionary *)dictionaryRef;
 - (struct __CFDictionary *)dictionaryRefExcludingParentOrPopup;
+- (void)discardTextStorageAndLayoutManager;
 - (void)drawAppearance:(struct CGPDFForm *)arg1 withBox:(long long)arg2 inContext:(struct CGContext *)arg3;
 - (void)drawAppearance:(struct CGPDFForm *)arg1 withBox:(long long)arg2 inContext:(struct CGContext *)arg3 inRect:(struct CGRect)arg4 scaleProportional:(BOOL)arg5;
 - (void)drawAppearance:(struct CGPDFForm *)arg1 withBox:(long long)arg2 inContext:(struct CGContext *)arg3 scaleProportional:(BOOL)arg4;
@@ -185,7 +190,9 @@
 - (BOOL)isReadOnlyAnnotation;
 - (BOOL)isSelected;
 - (BOOL)isSignature;
+- (BOOL)isTextWidget;
 - (BOOL)isWidgetOrMarkupAnnotation;
+- (id)layoutManager;
 - (id)mouseDownAction;
 - (id)mouseHoverBackgroundColor;
 - (id)mouseUpAction;
@@ -207,6 +214,7 @@
 - (id)replaceTextWidgetWithString:(id)arg1;
 - (BOOL)savesAppearanceStream;
 - (double)scaleFactor;
+- (id)scaledFontForTextWidget;
 - (void)secondaryInit;
 - (void)setAccessibilityNode:(id)arg1;
 - (void)setAppearance:(struct CGPDFForm *)arg1 forType:(int)arg2;
@@ -222,6 +230,7 @@
 - (void)setIsFullyConstructed:(BOOL)arg1;
 - (void)setIsSelected:(BOOL)arg1;
 - (void)setIsSignature:(BOOL)arg1;
+- (void)setLayoutManager:(id)arg1;
 - (void)setLocked:(BOOL)arg1;
 - (void)setMouseDownAction:(id)arg1;
 - (void)setMouseHoverBackgroundColor:(id)arg1;
@@ -239,6 +248,8 @@
 - (void)setShouldNotRotate:(BOOL)arg1;
 - (void)setShouldNotZoom:(BOOL)arg1;
 - (void)setShouldToggleNoView:(BOOL)arg1;
+- (void)setTextInsets:(struct UIEdgeInsets)arg1;
+- (void)setTextStorage:(id)arg1;
 - (BOOL)setValue:(id)arg1 forAnnotationKey:(id)arg2;
 - (void)setWidgetOnStateString:(id)arg1;
 - (void)setupAKAnnotationAdaptorIfNecessary;
@@ -249,6 +260,8 @@
 - (BOOL)shouldToggleNoView;
 - (struct CGPDFDictionary *)sourceDictionary;
 - (BOOL)supportsNSCoding;
+- (struct UIEdgeInsets)textInsets;
+- (id)textStorage;
 - (id)tokenizeAppearanceString:(id)arg1;
 - (id)toolTip;
 - (void)updateAnnotationEffect;

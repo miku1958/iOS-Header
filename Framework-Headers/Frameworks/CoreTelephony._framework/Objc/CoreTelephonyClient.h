@@ -234,6 +234,10 @@
 - (id)getSimLabel:(id)arg1 error:(id *)arg2;
 - (id)getSimLessContexts:(id *)arg1;
 - (void)getSimLessContextsWithCallback:(CDUnknownBlockType)arg1;
+- (void)getSmsReadyState:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)getSmsReadyState:(id)arg1 error:(id *)arg2;
+- (void)getSmscAddress:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)getSmscAddress:(id)arg1 error:(id *)arg2;
 - (void)getSubscriptionInfo:(CDUnknownBlockType)arg1;
 - (id)getSubscriptionInfoWithError:(id *)arg1;
 - (void)getSupportDynamicDataSimSwitchOnBBCall:(CDUnknownBlockType)arg1;

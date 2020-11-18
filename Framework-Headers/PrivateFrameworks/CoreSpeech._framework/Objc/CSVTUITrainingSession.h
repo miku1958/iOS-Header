@@ -43,6 +43,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_registerEndPointTimeout;
 - (void)audioSessionDidStartRecording:(BOOL)arg1 error:(id)arg2;
 - (void)audioSessionDidStopRecording:(long long)arg1;
 - (void)audioSessionErrorDidOccur:(id)arg1;

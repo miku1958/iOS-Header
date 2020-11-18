@@ -44,7 +44,7 @@
 @property (readonly) BOOL hasCppConstructorOrDestructor;
 @property (readonly, nonatomic) BOOL hasSpecificLayout;
 @property (readonly, nonatomic) BOOL hasVariantLayout;
-@property (readonly) int infoType;
+@property (readonly) unsigned int infoType;
 @property (readonly) unsigned int instanceSize; // @synthesize instanceSize=_instanceSize;
 @property (readonly) BOOL isARR;
 @property (readonly) BOOL isMetaClass;
@@ -58,7 +58,7 @@
 @property (readonly, nonatomic) BOOL usesSwiftRefcounting; // @synthesize usesSwiftRefcounting=_usesSwiftRefcounting;
 
 + (id)_genericBlockByrefInfo;
-+ (id)classInfoWithClassName:(id)arg1 binaryPath:(id)arg2 type:(int)arg3;
++ (id)classInfoWithClassName:(id)arg1 binaryPath:(id)arg2 type:(unsigned int)arg3;
 + (id)descriptionForTypeEncoding:(const char *)arg1 ivarName:(const char *)arg2;
 + (void)initialize;
 + (unsigned long long)sizeofClassStructure:(BOOL)arg1;
@@ -69,13 +69,14 @@
 - (id)_copyWithInstanceSize:(unsigned int)arg1 superclassOffset:(unsigned int)arg2 asVariant:(BOOL)arg3 mutable:(BOOL)arg4;
 - (void)_demangleClassName;
 - (void)_freeLocalIvarList;
-- (id)_initWithClass:(unsigned long long)arg1 realizedOnly:(BOOL)arg2 infoMap:(id)arg3 symbolicator:(struct _CSTypeRef)arg4 type:(int)arg5 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg6 memoryReader:(CDUnknownBlockType)arg7;
+- (id)_initWithClass:(unsigned long long)arg1 realizedOnly:(BOOL)arg2 infoMap:(id)arg3 symbolicator:(struct _CSTypeRef)arg4 type:(unsigned int)arg5 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg6 memoryReader:(CDUnknownBlockType)arg7;
 - (void)_logDescriptionWithSuperclasses:(BOOL)arg1 indentation:(int)arg2 toLogger:(CDUnknownBlockType)arg3;
 - (void)_parseIvarsAndLayouts;
 - (void)_processARRLayout:(const char *)arg1 scanType:(unsigned int)arg2;
 - (void)_replaceField:(id)arg1 withFields:(id)arg2;
+- (void)_replaceFieldRecursively:(id)arg1 withField:(id)arg2;
 - (void)_setBinaryPath:(id)arg1;
-- (void)_setClassNameWithAddress:(unsigned long long)arg1 reader:(CDUnknownBlockType)arg2;
+- (void)_setClassNameWithAddress:(unsigned long long)arg1 symbolicator:(struct _CSTypeRef)arg2;
 - (void)_setDefaultScanType:(unsigned int)arg1;
 - (void)_setDisplayName:(id)arg1;
 - (void)_setFields:(id)arg1;
@@ -98,11 +99,12 @@
 - (id)fieldAtOrBeforeOffset:(unsigned int)arg1;
 - (id)firstFieldWithName:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithClass:(unsigned long long)arg1 infoMap:(id)arg2 symbolicator:(struct _CSTypeRef)arg3 type:(int)arg4 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg5 memoryReader:(CDUnknownBlockType)arg6;
-- (id)initWithClassName:(id)arg1 binaryPath:(id)arg2 type:(int)arg3;
+- (id)initSwiftClassWithName:(id)arg1 classInfoType:(unsigned int)arg2 size:(unsigned long long)arg3;
+- (id)initWithClass:(unsigned long long)arg1 infoMap:(id)arg2 symbolicator:(struct _CSTypeRef)arg3 type:(unsigned int)arg4 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg5 memoryReader:(CDUnknownBlockType)arg6;
+- (id)initWithClassName:(id)arg1 binaryPath:(id)arg2 type:(unsigned int)arg3;
 - (id)initWithClosureContext:(unsigned long long)arg1 typeInfo:(struct swift_typeinfo)arg2 infoMap:(id)arg3 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg4;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRealizedClass:(unsigned long long)arg1 infoMap:(id)arg2 symbolicator:(struct _CSTypeRef)arg3 type:(int)arg4 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg5 memoryReader:(CDUnknownBlockType)arg6;
+- (id)initWithRealizedClass:(unsigned long long)arg1 infoMap:(id)arg2 symbolicator:(struct _CSTypeRef)arg3 type:(unsigned int)arg4 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg5 memoryReader:(CDUnknownBlockType)arg6;
 - (id)initWithSerializer:(id)arg1 classMap:(id)arg2 version:(unsigned int)arg3;
 - (id)instanceSpecificInfoForObject:(unsigned long long)arg1 ofSize:(unsigned int)arg2 memoryReader:(CDUnknownBlockType)arg3;
 - (id)instanceSpecificInfoForObject:(unsigned long long)arg1 ofSize:(unsigned int)arg2 withScanner:(id)arg3 memoryReader:(CDUnknownBlockType)arg4;

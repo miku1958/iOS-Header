@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSDate, NSUUID;
+@class NSArray, NSDate, NSUUID, _DKSyncType;
 
 @protocol _DKSyncRemoteKnowledgeStorageFetchDelegate
 
 @property (readonly, nonatomic) NSUUID *deviceUUID;
+@property (readonly, nonatomic) _DKSyncType *syncType;
 
 - (NSArray *)deletedEventIDsSinceDate:(NSDate *)arg1 streamNames:(NSArray *)arg2 limit:(unsigned long long)arg3 endDate:(id *)arg4 error:(id *)arg5;
 - (NSArray *)sortedEventsWithCreationDateBetweenDate:(NSDate *)arg1 andDate:(NSDate *)arg2 streamNames:(NSArray *)arg3 limit:(unsigned long long)arg4 fetchOrder:(long long)arg5 error:(id *)arg6;

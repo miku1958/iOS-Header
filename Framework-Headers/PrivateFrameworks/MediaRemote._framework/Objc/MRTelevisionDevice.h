@@ -77,7 +77,6 @@ __attribute__((visibility("hidden")))
 - (void)registerGameControllerWithProperties:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerTouchDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerVoiceInputDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)sendButtonEvent:(struct _MRHIDButtonEvent)arg1;
 - (void)sendGameControllerEvent:(id)arg1 controllerID:(unsigned long long)arg2;
 - (void)sendHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)sendTouchEvent:(struct _MRHIDTouchEvent)arg1 toVirtualDeviceWithID:(unsigned long long)arg2;

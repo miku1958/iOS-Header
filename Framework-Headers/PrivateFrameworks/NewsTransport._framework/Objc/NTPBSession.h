@@ -76,12 +76,14 @@
     BOOL _isPaidSubscriberFromAppStore;
     BOOL _isPaidSubscriberFromNews;
     BOOL _isPaidSubscriberFromThirdParty;
+    BOOL _isStoreDemoModeEnabled;
     BOOL _locationPermissionGranted;
     BOOL _notificationsEnabled;
     BOOL _privateDataEncrypted;
     BOOL _privateDataSyncOn;
     BOOL _progressivePersonalizationAllowed;
     BOOL _runningObsolete;
+    BOOL _signedIntoITunes;
     BOOL _signedIntoIcloud;
     BOOL _upgradedFromObsolete;
     struct {
@@ -119,12 +121,14 @@
         unsigned int isPaidSubscriberFromAppStore:1;
         unsigned int isPaidSubscriberFromNews:1;
         unsigned int isPaidSubscriberFromThirdParty:1;
+        unsigned int isStoreDemoModeEnabled:1;
         unsigned int locationPermissionGranted:1;
         unsigned int notificationsEnabled:1;
         unsigned int privateDataEncrypted:1;
         unsigned int privateDataSyncOn:1;
         unsigned int progressivePersonalizationAllowed:1;
         unsigned int runningObsolete:1;
+        unsigned int signedIntoITunes:1;
         unsigned int signedIntoIcloud:1;
         unsigned int upgradedFromObsolete:1;
     } _has;
@@ -183,6 +187,7 @@
 @property (nonatomic) BOOL hasIsPaidSubscriberFromAppStore;
 @property (nonatomic) BOOL hasIsPaidSubscriberFromNews;
 @property (nonatomic) BOOL hasIsPaidSubscriberFromThirdParty;
+@property (nonatomic) BOOL hasIsStoreDemoModeEnabled;
 @property (readonly, nonatomic) BOOL hasLanguageCode;
 @property (nonatomic) BOOL hasLastAppOpenDate;
 @property (nonatomic) BOOL hasLocationPermissionGranted;
@@ -206,6 +211,7 @@
 @property (nonatomic) BOOL hasRunningObsolete;
 @property (readonly, nonatomic) BOOL hasSessionId;
 @property (readonly, nonatomic) BOOL hasSessionIdWatch;
+@property (nonatomic) BOOL hasSignedIntoITunes;
 @property (nonatomic) BOOL hasSignedIntoIcloud;
 @property (nonatomic) BOOL hasTestBucket;
 @property (nonatomic) BOOL hasTextSize;
@@ -233,6 +239,7 @@
 @property (nonatomic) BOOL isPaidSubscriberFromAppStore; // @synthesize isPaidSubscriberFromAppStore=_isPaidSubscriberFromAppStore;
 @property (nonatomic) BOOL isPaidSubscriberFromNews; // @synthesize isPaidSubscriberFromNews=_isPaidSubscriberFromNews;
 @property (nonatomic) BOOL isPaidSubscriberFromThirdParty; // @synthesize isPaidSubscriberFromThirdParty=_isPaidSubscriberFromThirdParty;
+@property (nonatomic) BOOL isStoreDemoModeEnabled; // @synthesize isStoreDemoModeEnabled=_isStoreDemoModeEnabled;
 @property (strong, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property (nonatomic) long long lastAppOpenDate; // @synthesize lastAppOpenDate=_lastAppOpenDate;
 @property (nonatomic) BOOL locationPermissionGranted; // @synthesize locationPermissionGranted=_locationPermissionGranted;
@@ -256,6 +263,7 @@
 @property (nonatomic) BOOL runningObsolete; // @synthesize runningObsolete=_runningObsolete;
 @property (strong, nonatomic) NSData *sessionId; // @synthesize sessionId=_sessionId;
 @property (strong, nonatomic) NSData *sessionIdWatch; // @synthesize sessionIdWatch=_sessionIdWatch;
+@property (nonatomic) BOOL signedIntoITunes; // @synthesize signedIntoITunes=_signedIntoITunes;
 @property (nonatomic) BOOL signedIntoIcloud; // @synthesize signedIntoIcloud=_signedIntoIcloud;
 @property (nonatomic) long long testBucket; // @synthesize testBucket=_testBucket;
 @property (nonatomic) int textSize; // @synthesize textSize=_textSize;

@@ -123,6 +123,7 @@ __attribute__((visibility("hidden")))
 - (id)stylesForCopyStyle;
 - (BOOL)supportsShrinkTextToFit;
 - (BOOL)supportsTextInset;
+- (BOOL)textIsVerticalAtCharIndex:(unsigned long long)arg1;
 - (id)textStorageForHeadOfTextFlow;
 - (id)textureDeliveryStylesLocalized:(BOOL)arg1 animationFilter:(id)arg2;
 - (struct CGPoint)transformableObjectAnchorPoint;

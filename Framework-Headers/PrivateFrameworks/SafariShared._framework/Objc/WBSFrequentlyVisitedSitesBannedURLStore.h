@@ -27,6 +27,7 @@
 - (id)initWithStoreURL:(id)arg1 history:(id)arg2;
 - (void)removeAllURLStrings;
 - (void)removeURLStrings:(id)arg1;
+- (id)urlStrings;
 
 @end
 

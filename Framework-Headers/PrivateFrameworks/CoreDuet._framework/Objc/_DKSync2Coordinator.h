@@ -9,7 +9,7 @@
 #import <CoreDuet/APSConnectionDelegate-Protocol.h>
 #import <CoreDuet/_DKSyncRemoteKnowledgeStorageFetchDelegate-Protocol.h>
 
-@class APSConnection, NSMutableArray, NSMutableSet, NSString, NSUUID, _CDMutablePerfMetric, _CDPeriodicSchedulerJob, _DKDataProtectionStateMonitor, _DKKnowledgeStorage, _DKSync2State, _DKSyncToggle, _DKThrottledActivity;
+@class APSConnection, NSMutableArray, NSMutableSet, NSString, NSUUID, _CDMutablePerfMetric, _CDPeriodicSchedulerJob, _DKDataProtectionStateMonitor, _DKKnowledgeStorage, _DKSync2State, _DKSyncToggle, _DKSyncType, _DKThrottledActivity;
 @protocol NSObject, _DKKeyValueStore, _DKSyncLocalKnowledgeStorage, _DKSyncRemoteKnowledgeStorage;
 
 @interface _DKSync2Coordinator : NSObject <APSConnectionDelegate, _DKSyncRemoteKnowledgeStorageFetchDelegate>
@@ -62,6 +62,7 @@
 @property (strong, nonatomic) id<_DKSyncLocalKnowledgeStorage> localStorage; // @synthesize localStorage=_localStorage;
 @property (readonly, nonatomic) _DKKnowledgeStorage *storage; // @synthesize storage=_storage;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) _DKSyncType *syncType;
 @property (strong, nonatomic) id<_DKSyncRemoteKnowledgeStorage> transportCloudDown; // @synthesize transportCloudDown=_transportCloudDown;
 @property (strong, nonatomic) id<_DKSyncRemoteKnowledgeStorage> transportCloudUp; // @synthesize transportCloudUp=_transportCloudUp;
 @property (strong, nonatomic) id<_DKSyncRemoteKnowledgeStorage> transportRapport; // @synthesize transportRapport=_transportRapport;

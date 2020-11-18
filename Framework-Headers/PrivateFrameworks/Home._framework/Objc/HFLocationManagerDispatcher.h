@@ -33,7 +33,9 @@
 
 + (id)sharedDispatcher;
 - (void).cxx_destruct;
+- (void)_authorizeHomeKitLocationServices;
 - (void)_updateCachedAuthorizationStatus:(int)arg1;
+- (void)_updateMacAuthorizationStatus:(int)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dispatchLocationManagerObserverMessage:(SEL)arg1 withBlock:(CDUnknownBlockType)arg2 sender:(id)arg3;
 - (id)init;

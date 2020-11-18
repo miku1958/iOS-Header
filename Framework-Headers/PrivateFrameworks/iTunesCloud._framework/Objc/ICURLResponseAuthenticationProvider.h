@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@interface ICURLResponseAuthenticationProvider : NSObject
+#import <iTunesCloud/NSSecureCoding-Protocol.h>
+
+@interface ICURLResponseAuthenticationProvider : NSObject <NSSecureCoding>
 {
     long long _interactionLevel;
 }
@@ -14,6 +16,9 @@
 @property (readonly, nonatomic) long long interactionLevel; // @synthesize interactionLevel=_interactionLevel;
 
 + (id)defaultProvider;
++ (BOOL)supportsSecureCoding;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithUserInteractionLevel:(long long)arg1;
 - (void)performAuthenticationToHandleResponse:(id)arg1 toRequest:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)performAuthenticationUsingRequestContext:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

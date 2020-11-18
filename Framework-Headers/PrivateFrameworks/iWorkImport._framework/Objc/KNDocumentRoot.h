@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithContext:(id)arg1;
 - (BOOL)isMultiPageForQuickLook;
 - (BOOL)isSharedReadOnly;
+- (id)knDelegate;
 - (void)loadFromArchive:(const struct DocumentArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)nameForResolverContainer:(id)arg1;

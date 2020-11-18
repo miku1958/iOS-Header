@@ -11,15 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface TSWPHyperlinkField : TSWPSmartField
 {
-    NSURL *_url;
+    NSString *_urlString;
     NSString *_displayTextForChangeTracking;
 }
 
 @property (readonly, nonatomic) NSString *displayText;
 @property (readonly, nonatomic) NSString *displayTextForChangeTracking; // @synthesize displayTextForChangeTracking=_displayTextForChangeTracking;
+@property (readonly, nonatomic) NSString *filePath;
+@property (readonly, nonatomic) NSString *fullPath;
+@property (readonly, nonatomic) BOOL hasDisplayText;
 @property (readonly, nonatomic) TSWPSelection *highlightSelection;
 @property (readonly, nonatomic) BOOL isInGroupedShape;
-@property (strong, nonatomic, setter=setURL:) NSURL *url;
+@property (readonly, nonatomic) long long scheme;
+@property (copy, nonatomic, setter=setURL:) NSURL *url;
+@property (readonly, nonatomic) NSString *urlPrefix;
 
 + (id)defaultFieldStyleIdentifier;
 + (id)defaultFileURL;
@@ -27,31 +32,23 @@ __attribute__((visibility("hidden")))
 + (id)defaultURLFromDefaultsKey:(id)arg1 defaultValue:(id)arg2;
 + (id)defaultWebURL;
 + (id)newURLFromURLReference:(id)arg1;
-+ (int)schemeFromURL:(id)arg1;
++ (long long)schemeFromURL:(id)arg1;
 + (BOOL)schemeIsValidForURL:(id)arg1;
 + (BOOL)schemeIsValidForURLReference:(id)arg1;
-+ (id)urlReferenceFromURL:(id)arg1;
 - (void).cxx_destruct;
-- (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (BOOL)allowsEditing;
 - (id)copyWithContext:(id)arg1;
-- (id)filePath;
-- (id)fullPath;
-- (BOOL)hasDisplayText;
 - (unsigned long long)hash;
 - (id)initWithContext:(id)arg1 url:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isFileURL;
 - (void)loadFromArchive:(const struct HyperlinkFieldArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)p_performHyperlinkSelector:(SEL)arg1 onStorage:(id)arg2;
 - (void)saveToArchive:(struct HyperlinkFieldArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (int)scheme;
-- (void)setURLReference:(id)arg1;
+- (void)setUrlString:(id)arg1;
 - (int)smartFieldKind;
-- (id)urlPrefix;
-- (id)urlReference;
+- (id)urlString;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1 storage:(id)arg2;
 

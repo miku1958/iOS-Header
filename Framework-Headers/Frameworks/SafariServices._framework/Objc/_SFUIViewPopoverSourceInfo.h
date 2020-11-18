@@ -8,13 +8,14 @@
 
 #import <SafariServices/_SFPopoverSourceInfo-Protocol.h>
 
-@class NSString, UIView;
+@class NSString, UIBarButtonItem, UIView;
 
 @interface _SFUIViewPopoverSourceInfo : NSObject <_SFPopoverSourceInfo>
 {
     UIView *_view;
 }
 
+@property (readonly, nonatomic) UIBarButtonItem *barButtonItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

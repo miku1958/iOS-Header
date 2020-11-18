@@ -9,5 +9,6 @@
 @interface CNContact (MFContactUtilities)
 + (id)mf_contactFromEmailAddress:(id)arg1;
 + (id)mf_contactWithPersonNameComponents:(id)arg1 emailAddress:(id)arg2;
++ (id)mf_contactWithPersonNameComponents:(id)arg1 emailAddress:(id)arg2 allowInvalidEmailAddress:(BOOL)arg3;
 @end
 

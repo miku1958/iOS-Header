@@ -11,21 +11,25 @@
 __attribute__((visibility("hidden")))
 @interface TSTTableHeaderInfo : NSObject
 {
-    TSTCellStyle *mCellStyle;
-    TSWPParagraphStyle *mTextStyle;
-    double mSize;
-    unsigned char mHidingState;
-    unsigned short mNumberOfCells;
+    unsigned char _hidingState;
+    unsigned int _numberOfCells;
+    TSTCellStyle *_cellStyle;
+    TSWPParagraphStyle *_textStyle;
+    double _size;
 }
 
-@property (strong, nonatomic) TSTCellStyle *cellStyle; // @synthesize cellStyle=mCellStyle;
-@property (nonatomic) unsigned char hidingState; // @synthesize hidingState=mHidingState;
-@property (nonatomic) unsigned short numberOfCells; // @synthesize numberOfCells=mNumberOfCells;
-@property (nonatomic) double size; // @synthesize size=mSize;
-@property (strong, nonatomic) TSWPParagraphStyle *textStyle; // @synthesize textStyle=mTextStyle;
+@property (strong, nonatomic) TSTCellStyle *cellStyle; // @synthesize cellStyle=_cellStyle;
+@property (readonly, nonatomic) BOOL hasContent;
+@property (nonatomic) unsigned char hidingState; // @synthesize hidingState=_hidingState;
+@property (nonatomic) unsigned int numberOfCells; // @synthesize numberOfCells=_numberOfCells;
+@property (nonatomic) double size; // @synthesize size=_size;
+@property (strong, nonatomic) TSWPParagraphStyle *textStyle; // @synthesize textStyle=_textStyle;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
+- (void)encodeToArchive:(struct HeaderStorageBucket_Header *)arg1 archiver:(id)arg2 index:(unsigned int)arg3;
+- (id)initFromArchive:(const struct HeaderStorageBucket_Header *)arg1 unarchiver:(id)arg2 outIndex:(unsigned int *)arg3;
+- (void)updateFromMetadata:(id)arg1;
 
 @end
 

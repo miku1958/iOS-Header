@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL didTakePriority;
 @property (readonly, nonatomic) NSThread *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
 
-+ (id)priorityMainThreadWriterQueueItem;
++ (id)priorityPrimaryThreadWriterQueueItemForAccessController:(id)arg1;
 + (id)writerQueueItemWithThreadIdentifier:(struct NSThread *)arg1;
 - (void).cxx_destruct;
 - (id)description;

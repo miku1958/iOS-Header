@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)documentVisibleRectForWebView:(id)arg1;
 - (long long)getPasteboardChangeCount;
 - (long long)getPasteboardItemsCount;
+- (BOOL)handleKeyCommandForCurrentEvent;
 - (BOOL)hasRichlyEditableSelection;
 - (struct CGPoint)interactionLocation;
 - (BOOL)isUnperturbedDictationResultMarker:(id)arg1;

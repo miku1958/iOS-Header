@@ -8,11 +8,12 @@
 
 #import <iWorkImport/TSPCopying-Protocol.h>
 
-@class NSString, TSWPListStyle, TSWPParagraphStyle;
+@class NSString, TSWPListStyle, TSWPParagraphStyle, TSWPStorage;
 
 __attribute__((visibility("hidden")))
 @interface TSWPTOCEntryData : TSPObject <TSPCopying>
 {
+    TSWPStorage *_storage;
     unsigned long long _paragraphIndex;
     unsigned long long _pageNumber;
     NSString *_numberFormat;
@@ -31,14 +32,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *numberFormat; // @synthesize numberFormat=_numberFormat;
 @property (readonly, nonatomic) unsigned long long pageNumber; // @synthesize pageNumber=_pageNumber;
 @property (readonly, nonatomic) unsigned long long paragraphIndex; // @synthesize paragraphIndex=_paragraphIndex;
+@property (readonly, nonatomic) unsigned long long sectionIndex;
+@property (readonly, weak, nonatomic) TSWPStorage *storage; // @synthesize storage=_storage;
 
-+ (id)tocEntryDataWithParagraphIndex:(unsigned long long)arg1 pageNumber:(unsigned long long)arg2 numberFormat:(id)arg3 heading:(id)arg4 indexedStyle:(id)arg5 indexedListStyle:(id)arg6 indexedListStart:(unsigned long long)arg7 indexedParagraphLevel:(unsigned long long)arg8;
++ (id)tocEntryDataWithStorage:(id)arg1 paragraphIndex:(unsigned long long)arg2 pageNumber:(unsigned long long)arg3 numberFormat:(id)arg4 heading:(id)arg5 indexedStyle:(id)arg6 indexedListStyle:(id)arg7 indexedListStart:(unsigned long long)arg8 indexedParagraphLevel:(unsigned long long)arg9;
 - (void).cxx_destruct;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)copyWithContext:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithParagraphIndex:(unsigned long long)arg1 pageNumber:(unsigned long long)arg2 numberFormat:(id)arg3 heading:(id)arg4 indexedStyle:(id)arg5 indexedListStyle:(id)arg6 indexedListStart:(unsigned long long)arg7 indexedParagraphLevel:(unsigned long long)arg8;
+- (id)initWithStorage:(id)arg1 paragraphIndex:(unsigned long long)arg2 pageNumber:(unsigned long long)arg3 numberFormat:(id)arg4 heading:(id)arg5 indexedStyle:(id)arg6 indexedListStyle:(id)arg7 indexedListStart:(unsigned long long)arg8 indexedParagraphLevel:(unsigned long long)arg9;
 - (BOOL)isEqual:(id)arg1;
 - (void)loadFromArchive:(const struct TOCEntryInstanceArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;

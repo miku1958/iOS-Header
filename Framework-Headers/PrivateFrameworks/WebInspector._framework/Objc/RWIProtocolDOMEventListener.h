@@ -16,6 +16,7 @@
 @property (nonatomic) int eventListenerId;
 @property (strong, nonatomic) RWIProtocolRuntimeRemoteObject *handler;
 @property (copy, nonatomic) NSString *handlerBody;
+@property (nonatomic) BOOL hasBreakpoint;
 @property (nonatomic) BOOL isAttribute;
 @property (strong, nonatomic) RWIProtocolDebuggerLocation *location;
 @property (nonatomic) int nodeId;

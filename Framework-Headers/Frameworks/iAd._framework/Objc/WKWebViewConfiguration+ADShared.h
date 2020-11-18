@@ -7,7 +7,7 @@
 #import <WebKit/WKWebViewConfiguration.h>
 
 @interface WKWebViewConfiguration (ADShared)
-+ (id)_createSharedConfiguration:(BOOL)arg1 forVideo:(BOOL)arg2;
++ (id)_newSharedConfiguration:(BOOL)arg1 forVideo:(BOOL)arg2;
 + (BOOL)excludeCustomJavaScript;
 + (id)sharedAdvertisingConfiguration:(BOOL)arg1;
 + (id)sharedAdvertisingConfigurationForVideo:(BOOL)arg1;

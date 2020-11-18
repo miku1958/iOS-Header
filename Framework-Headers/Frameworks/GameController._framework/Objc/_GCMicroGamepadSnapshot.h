@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameController/_GCGamepad.h>
+#import <GameController/_GCMicroGamepad.h>
 
 #import <GameController/_GCSnapshot-Protocol.h>
 
 @class GCMotion, NSData, NSString;
 
-@interface _GCMicroGamepadSnapshot : _GCGamepad <_GCSnapshot>
+@interface _GCMicroGamepadSnapshot : _GCMicroGamepad <_GCSnapshot>
 {
     NSData *_snapshotData;
     GCMotion *_motion;

@@ -21,8 +21,9 @@ __attribute__((visibility("hidden")))
 + (id)cellRegionCullingToFirstFoundLevelFrom:(id)arg1 inTable:(id)arg2 byRows:(BOOL)arg3;
 + (id)chartFormulasForSummaryRegion:(id)arg1 inTable:(id)arg2;
 - (void).cxx_destruct;
-- (id)chartFormulaByAppendingCategoryReferences:(vector_2431c21e)arg1 toFormula:(id)arg2 andLocale:(id)arg3;
-- (id)chartFormulaByAppendingRangeReference:(struct TSCERangeRef)arg1 toFormula:(id)arg2 andLocale:(id)arg3;
+- (id)chartFormulaByAppendingCategoryReferences:(vector_2431c21e)arg1 toFormula:(id)arg2;
+- (id)chartFormulaByAppendingRangeReference:(struct TSCERangeRef)arg1 toFormula:(id)arg2;
+- (id)chartFormulaByAppendingTractReference:(id)arg1 toFormula:(id)arg2;
 - (id)formulaStorageForChartGridDirection:(int)arg1;
 - (id)formulaStorageTransformTable:(UUIDData_5fbc143e)arg1 toLevel:(unsigned char)arg2;
 - (id)initWithMediator:(id)arg1;

@@ -14,9 +14,12 @@ __attribute__((visibility("hidden")))
     NSDictionary *mSettings;
 }
 
++ (BOOL)isMetalBlacklistedWithCapabilities:(id)arg1;
 + (id)p_defaultSettingsDictionary;
++ (BOOL)p_isMetalEnabled;
 + (id)p_platformSettingsDictionary;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (double)backgroundLayoutContentsScaleFactor;
 - (BOOL)backgroundLayoutUsesTiledRendering;
 - (unsigned long long)buildFramebufferMemoryLimitInBytes;
@@ -28,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)buildTextureRendersAsSingleImage;
 - (BOOL)buildsCanUseDynamicShadows;
 - (BOOL)buildsUseLowDetailedGeometries;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)highQualityShadowsSize;
 - (id)initWithDictionary:(id)arg1;
@@ -54,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)useHighQualityShadows;
 - (BOOL)useInteractiveModeWhileSelected;
 - (BOOL)useLayoutInwardForInsertionIcons;
+- (BOOL)useMetal;
 - (BOOL)useTiledFullSizeInteractiveLayer;
 
 @end

@@ -8,12 +8,11 @@
 
 #import <ScreenTimeUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, STBarView, STDeviceBedtime, STPaddleView, STUsageReportGraphDataSet, UIImageView, UILayoutGuide;
+@class NSArray, NSLayoutConstraint, NSString, STBarView, STPaddleView, STUsageReportGraphDataSet, UIImageView, UILayoutGuide;
 
 @interface STUsageGraphView : UIView <UIGestureRecognizerDelegate>
 {
     STUsageReportGraphDataSet *_dataSet;
-    STDeviceBedtime *_bedtime;
     UIView *_titleView;
     STPaddleView *_paddleView;
     STBarView *_selectedBarView;
@@ -23,10 +22,9 @@
     UIImageView *_horizontalBaseline;
     NSArray *_verticalDividers;
     NSArray *_barViews;
+    NSArray *_barIndicators;
     NSArray *_barViewHeightConstraints;
     NSArray *_verticalLayoutGuides;
-    NSArray *_bedtimeFields;
-    UILayoutGuide *_bedtimeFieldLayoutGuide;
     UILayoutGuide *_graphLayoutGuide;
     UILayoutGuide *_labelSectionLayoutGuide;
     UILayoutGuide *_barSectionLayoutGuide;
@@ -36,12 +34,10 @@
     NSLayoutConstraint *_weeklyAverageTrailingConstraint;
 }
 
+@property (copy, nonatomic) NSArray *barIndicators; // @synthesize barIndicators=_barIndicators;
 @property (strong, nonatomic) UILayoutGuide *barSectionLayoutGuide; // @synthesize barSectionLayoutGuide=_barSectionLayoutGuide;
 @property (copy, nonatomic) NSArray *barViewHeightConstraints; // @synthesize barViewHeightConstraints=_barViewHeightConstraints;
 @property (copy, nonatomic) NSArray *barViews; // @synthesize barViews=_barViews;
-@property (copy, nonatomic) STDeviceBedtime *bedtime; // @synthesize bedtime=_bedtime;
-@property (strong, nonatomic) UILayoutGuide *bedtimeFieldLayoutGuide; // @synthesize bedtimeFieldLayoutGuide=_bedtimeFieldLayoutGuide;
-@property (copy, nonatomic) NSArray *bedtimeFields; // @synthesize bedtimeFields=_bedtimeFields;
 @property (strong, nonatomic) STUsageReportGraphDataSet *dataSet; // @synthesize dataSet=_dataSet;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -64,11 +60,10 @@
 @property (strong, nonatomic) NSLayoutConstraint *weeklyAverageTrailingConstraint; // @synthesize weeklyAverageTrailingConstraint=_weeklyAverageTrailingConstraint;
 
 + (id)baselineImage;
-+ (id)bedtimeFieldImage;
 + (id)dashedAverageLineImage;
 - (void).cxx_destruct;
+- (id)createBarIndicatorWithImageName:(id)arg1 barView:(id)arg2;
 - (id)createBarViewWithDataPoint:(id)arg1 layoutGuide:(id)arg2 previousView:(id)arg3 previousLayoutGuide:(id)arg4 layoutGuideWidthMultiplier:(double)arg5;
-- (id)createBedtimeField;
 - (id)createDividerWithView:(id)arg1 layoutGuide:(id)arg2 previousLayoutGuide:(id)arg3 layoutGuideWidthMultiplier:(double)arg4;
 - (id)createFirstDivider;
 - (id)createWeeklyAverageLineWithLayoutGuide:(id)arg1;
@@ -78,7 +73,6 @@
 - (void)selectBarWithClosestHorizontalPositionToPoint:(struct CGPoint)arg1;
 - (void)setDataSet:(id)arg1 animated:(BOOL)arg2;
 - (void)setUpBarViewHeightContraints;
-- (void)setUpBedtimeFields;
 - (void)setUpGraphWithLabelFormatter:(id)arg1;
 - (void)setUpWeeklyAverageLine:(BOOL)arg1;
 - (void)updateBarViews;

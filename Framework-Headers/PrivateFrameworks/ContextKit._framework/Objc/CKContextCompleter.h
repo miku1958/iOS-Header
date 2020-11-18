@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKContextResponse, NSLocale, NSString;
+@class CKContextResponse, NSDate, NSLocale, NSMutableArray, NSString;
 
 @interface CKContextCompleter : NSObject
 {
@@ -15,14 +15,11 @@
     NSLocale *_searchLocale;
     _Atomic BOOL _discarded;
     unsigned long long _couldHaveShown;
-    _Atomic BOOL _shown;
-    _Atomic BOOL _engaged;
-    _Atomic BOOL _transactionSuccessful;
     NSString *_input;
-    _Atomic unsigned int _loggingShownMax;
-    _Atomic BOOL _loggingServerOverride;
-    _Atomic unsigned int _loggingCouldHaveShownMax;
-    _Atomic unsigned int _loggingInputLengthMax;
+    NSDate *_hideCompletionsAfterDate;
+    BOOL _hideCompletions;
+    unsigned long long _mustPrefixMatchLength;
+    NSMutableArray *_zkwResults;
 }
 
 - (void).cxx_destruct;

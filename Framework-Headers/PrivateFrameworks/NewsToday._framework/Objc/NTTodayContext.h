@@ -9,7 +9,7 @@
 #import <NewsToday/FCNetworkReachabilityObserving-Protocol.h>
 #import <NewsToday/NTTodayContext-Protocol.h>
 
-@class NSString, NTSourceAvailabilityManager;
+@class FCAsyncSerialQueue, NSString, NTSourceAvailabilityManager;
 @protocol FCContentContext, NTReadablePrivateDataStorage, NTTodayResultsSource, NTWritablePrivateDataStorage, OS_dispatch_queue;
 
 @interface NTTodayContext : NSObject <FCNetworkReachabilityObserving, NTTodayContext>
@@ -21,15 +21,17 @@
     id<NTWritablePrivateDataStorage> _writablePrivateDataStorage;
     NTSourceAvailabilityManager *_sourceAvailabilityManager;
     id<NTTodayResultsSource> _todayResultsSource;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    FCAsyncSerialQueue *_fetchQueue;
 }
 
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property (strong, nonatomic) id<FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) FCAsyncSerialQueue *fetchQueue; // @synthesize fetchQueue=_fetchQueue;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType newResultsHandler; // @synthesize newResultsHandler=_newResultsHandler;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) id<NTReadablePrivateDataStorage> readablePrivateDataStorage; // @synthesize readablePrivateDataStorage=_readablePrivateDataStorage;
 @property (copy, nonatomic) CDUnknownBlockType sessionProvider; // @synthesize sessionProvider=_sessionProvider;
 @property (strong, nonatomic) NTSourceAvailabilityManager *sourceAvailabilityManager; // @synthesize sourceAvailabilityManager=_sourceAvailabilityManager;
@@ -41,8 +43,8 @@
 - (void)_setupTodayResultsSource;
 - (void)fetchLatestResultsWithOperationInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithContentContext:(id)arg1 processVariant:(unsigned long long)arg2 queue:(id)arg3 sessionProvider:(CDUnknownBlockType)arg4;
-- (id)initWithContentHostDirectory:(id)arg1 processVariant:(unsigned long long)arg2 queue:(id)arg3 sessionProvider:(CDUnknownBlockType)arg4;
+- (id)initWithContentContext:(id)arg1 processVariant:(unsigned long long)arg2 accessQueue:(id)arg3 fetchQueue:(id)arg4 sessionProvider:(CDUnknownBlockType)arg5;
+- (id)initWithContentHostDirectory:(id)arg1 processVariant:(unsigned long long)arg2 accessQueue:(id)arg3 fetchQueue:(id)arg4 sessionProvider:(CDUnknownBlockType)arg5;
 - (void)networkReachabilityDidChange:(id)arg1;
 - (void)userDidReadHeadlineWithAnalyticsElement:(id)arg1 atDate:(id)arg2;
 - (void)userDidSeeHeadlinesWithAnalyticsElements:(id)arg1 atDate:(id)arg2;

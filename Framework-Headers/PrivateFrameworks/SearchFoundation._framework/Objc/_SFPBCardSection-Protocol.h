@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBAbstractCommand, _SFPBCard, _SFPBCardSectionValue;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBAbstractCommand, _SFPBCard, _SFPBCardSectionValue, _SFPBUserReportRequest;
 
 @protocol _SFPBCardSection <NSObject>
 
@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSArray *parameterKeyPaths;
 @property (copy, nonatomic) NSString *resultIdentifier;
 @property (nonatomic) int type;
+@property (strong, nonatomic) _SFPBUserReportRequest *userReportRequest;
 @property (strong, nonatomic) _SFPBCardSectionValue *value;
 
 - (void)addCommands:(_SFPBAbstractCommand *)arg1;

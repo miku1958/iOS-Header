@@ -90,6 +90,7 @@
 - (id)getPhotosXPCEndpoint;
 - (void)getSandboxExtensionForPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getSearchIndexProgress:(CDUnknownBlockType)arg1;
+- (void)getSizeOfResourcesToUploadByCPLWithHandler:(CDUnknownBlockType)arg1;
 - (void)getSystemBudgetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)getXPCTransactionStatus;
 - (BOOL)hasCompletedMomentAnalysis;

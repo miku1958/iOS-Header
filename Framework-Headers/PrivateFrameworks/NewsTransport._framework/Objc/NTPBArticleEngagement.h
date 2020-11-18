@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, NTPBIssueData, NTPBIssueViewData;
 
 @interface NTPBArticleEngagement : PBCodable <NSCopying>
 {
@@ -18,6 +18,8 @@
     NSString *_articleId;
     NSString *_channelId;
     NSString *_countryCode;
+    NTPBIssueData *_issueData;
+    NTPBIssueViewData *_issueViewData;
     NSData *_sessionId;
     NSString *_userId;
     int _utcOffset;
@@ -44,10 +46,14 @@
 @property (readonly, nonatomic) BOOL hasCountryCode;
 @property (nonatomic) BOOL hasEventTimestamp;
 @property (nonatomic) BOOL hasIsPaidSubscriber;
+@property (readonly, nonatomic) BOOL hasIssueData;
+@property (readonly, nonatomic) BOOL hasIssueViewData;
 @property (readonly, nonatomic) BOOL hasSessionId;
 @property (readonly, nonatomic) BOOL hasUserId;
 @property (nonatomic) BOOL hasUtcOffset;
 @property (nonatomic) BOOL isPaidSubscriber; // @synthesize isPaidSubscriber=_isPaidSubscriber;
+@property (strong, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
+@property (strong, nonatomic) NTPBIssueViewData *issueViewData; // @synthesize issueViewData=_issueViewData;
 @property (strong, nonatomic) NSData *sessionId; // @synthesize sessionId=_sessionId;
 @property (strong, nonatomic) NSString *userId; // @synthesize userId=_userId;
 @property (nonatomic) int utcOffset; // @synthesize utcOffset=_utcOffset;

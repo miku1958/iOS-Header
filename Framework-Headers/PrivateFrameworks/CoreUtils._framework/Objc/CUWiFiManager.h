@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CURetrier, NSString;
+@class NSArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUWiFiManager : NSObject
@@ -17,9 +17,7 @@
     BOOL _invalidateDone;
     struct LogCategory *_ucat;
     BOOL _updating;
-    BOOL _wifiAutoJoinMonitorEnabled;
-    BOOL _wifiAutoJoinMonitorSetup;
-    CURetrier *_wifiRetrier;
+    BOOL _trafficPeerChanged;
     BOOL _wakeOnWirelessEnabledChanged;
     BOOL _wakeOnWirelessEnabled;
     unsigned int _wifiFlags;
@@ -28,6 +26,7 @@
     NSString *_label;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
+    NSArray *_trafficPeers;
     CDUnknownBlockType _wifiStateChangedHandler;
 }
 
@@ -35,6 +34,7 @@
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (copy, nonatomic) NSArray *trafficPeers; // @synthesize trafficPeers=_trafficPeers;
 @property (nonatomic) BOOL wakeOnWirelessEnabled; // @synthesize wakeOnWirelessEnabled=_wakeOnWirelessEnabled;
 @property (readonly, nonatomic) unsigned int wifiFlags; // @synthesize wifiFlags=_wifiFlags;
 @property (readonly, nonatomic) int wifiState; // @synthesize wifiState=_wifiState;
@@ -45,7 +45,6 @@
 - (void)_interrupted;
 - (void)_invalidated;
 - (void)_update;
-- (void)_update:(BOOL)arg1;
 - (void)_wifiEnsureStarted;
 - (void)_wifiEnsureStopped;
 - (void)activate;

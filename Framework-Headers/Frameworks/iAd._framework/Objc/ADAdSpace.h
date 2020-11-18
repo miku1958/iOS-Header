@@ -52,6 +52,7 @@
     ADMediaAnalyticsEventInfo *_pendingAnalyticsEventInfo;
     ADMRAIDAction *_mraidAction;
     long long _visibility;
+    long long _requestOrientation;
     double _lastSlowCheck;
     ADCreativeController *_creativeController;
     ADWebViewActionViewController *_webViewActionViewController;
@@ -99,6 +100,7 @@
 @property (nonatomic) unsigned long long reUseCount; // @synthesize reUseCount=_reUseCount;
 @property (readonly, nonatomic) id<ADAdRecipient> recipient;
 @property (strong, nonatomic) ADSInternalSize *reorientedContainerSize; // @synthesize reorientedContainerSize=_reorientedContainerSize;
+@property (nonatomic) long long requestOrientation; // @synthesize requestOrientation=_requestOrientation;
 @property (nonatomic) BOOL requiresFastVisibiltyTestOnly; // @synthesize requiresFastVisibiltyTestOnly=_requiresFastVisibiltyTestOnly;
 @property (nonatomic) struct CGRect selectedAdFrame; // @synthesize selectedAdFrame=_selectedAdFrame;
 @property (copy, nonatomic) NSURL *serverURL; // @synthesize serverURL=_serverURL;
@@ -176,6 +178,7 @@
 - (id)initForRecipient:(id)arg1;
 - (void)installCreativeView;
 - (void)internalAdTypeDidChange;
+- (BOOL)isInternalDeepLinkURL:(id)arg1;
 - (long long)modalPresentationStyle;
 - (void)newsTransparencyViewController:(id)arg1 didFailWithError:(id)arg2;
 - (void)newsTransparencyViewControllerDidDismiss:(id)arg1;
@@ -198,6 +201,7 @@
 - (void)uninstallCreativeView;
 - (void)updateCreativeControllerVisibility;
 - (void)updateVisibility;
+- (void)useSafariViewControllerToOpenURL:(id)arg1;
 - (void)webViewActionViewControllerHomeButtonWasTapped:(id)arg1;
 
 @end

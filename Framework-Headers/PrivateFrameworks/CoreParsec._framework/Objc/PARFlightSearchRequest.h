@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (unsigned int)nwActivityLabel;
 - (Class)responseClass;
 
 @end

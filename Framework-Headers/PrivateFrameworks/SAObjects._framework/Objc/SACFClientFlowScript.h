@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSData *compressedScript;
 @property (strong, nonatomic) SACFScriptEncryptionParameters *encryptionParameters;
+@property (copy, nonatomic) NSString *fileContentType;
 @property (copy, nonatomic) NSString *jsScript;
 @property (copy, nonatomic) NSData *jsScriptChecksum;
 @property (copy, nonatomic) NSString *jsScriptIdentifier;

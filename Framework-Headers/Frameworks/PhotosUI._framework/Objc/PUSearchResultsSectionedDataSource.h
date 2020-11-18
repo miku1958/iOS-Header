@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
     PHFetchResult *_homePersons;
     NSArray *_suggestions;
+    NSArray *_uncommittedSuggestions;
     NSDictionary *_sceneAncestryInformation;
     NSCalendar *_calendar;
     NSDateComponents *_dateRangeFormattingComponents;
@@ -68,6 +69,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long uncommittedMaxGroupedResultsCount; // @synthesize uncommittedMaxGroupedResultsCount=_uncommittedMaxGroupedResultsCount;
 @property (strong, nonatomic) NSArray *uncommittedResults; // @synthesize uncommittedResults=_uncommittedResults;
+@property (strong, nonatomic) NSArray *uncommittedSuggestions; // @synthesize uncommittedSuggestions=_uncommittedSuggestions;
 @property (nonatomic) unsigned long long unprocessedSearchResultsCount; // @synthesize unprocessedSearchResultsCount=_unprocessedSearchResultsCount;
 @property (nonatomic) BOOL wordEmbeddingsRequested; // @synthesize wordEmbeddingsRequested=_wordEmbeddingsRequested;
 

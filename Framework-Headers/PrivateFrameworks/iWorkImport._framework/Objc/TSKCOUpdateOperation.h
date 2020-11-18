@@ -11,16 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface TSKCOUpdateOperation : TSKCOAbstractOperation
 {
-    NSString *_propertyName;
+    CDStruct_1464e8ba _propertyType;
 }
 
-@property (readonly, nonatomic) NSString *propertyName; // @synthesize propertyName=_propertyName;
+@property (readonly, nonatomic) NSString *propertyName;
+@property (readonly, nonatomic) CDStruct_1464e8ba propertyType; // @synthesize propertyType=_propertyType;
 
-- (void).cxx_destruct;
-- (int)conflictTypeWithOperation:(id)arg1 hadRun:(BOOL)arg2;
-- (id)initWithPropertyName:(id)arg1;
-- (id)initWithPropertyName:(id)arg1 noop:(BOOL)arg2;
+- (unsigned long long)hash;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 propertyId:(unsigned short)arg2 noop:(BOOL)arg3;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 propertyType:(const CDStruct_1464e8ba *)arg2 noop:(BOOL)arg3;
 - (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
 - (id)toString;
 

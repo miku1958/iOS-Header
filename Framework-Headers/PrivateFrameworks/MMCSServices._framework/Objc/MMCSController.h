@@ -24,6 +24,7 @@
 
 + (void)preMMCSWarm:(id)arg1;
 - (void)_addPreauthorizationOptions:(id)arg1 forFiles:(id)arg2;
+- (void)_cancelRequest:(id)arg1;
 - (id)_optionsForFiles:(id)arg1;
 - (void)_registerPowerAssertionIfNeeded;
 - (void)_releasePowerAssertion;

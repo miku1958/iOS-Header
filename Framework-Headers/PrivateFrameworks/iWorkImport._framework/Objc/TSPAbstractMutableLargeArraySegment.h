@@ -8,7 +8,7 @@
 
 #import <iWorkImport/NSFastEnumeration-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString;
 @protocol TSPMutableLargeArraySegmentDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,10 +24,12 @@ __attribute__((visibility("hidden")))
     id<TSPMutableLargeArraySegmentDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) NSArray *allObjects;
 @property (readonly) unsigned long long count;
 @property (nonatomic) unsigned int delayedArchivingPriority;
 @property (weak, nonatomic) id<TSPMutableLargeArraySegmentDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) unsigned long long estimatedByteSize;
+@property (readonly, nonatomic) NSMutableArray *mutableArrayWrapper;
 @property (copy, nonatomic) NSString *packageLocator; // @synthesize packageLocator=_packageLocator;
 @property (nonatomic) BOOL shouldDelayArchiving; // @synthesize shouldDelayArchiving=_shouldDelayArchiving;
 @property (nonatomic) BOOL storeOutsideObjectArchive; // @synthesize storeOutsideObjectArchive=_storeOutsideObjectArchive;

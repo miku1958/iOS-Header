@@ -10,7 +10,7 @@
 #import <ClassroomKit/CATTaskOperationNotificationDelegate-Protocol.h>
 
 @class CATOperationQueue, CATRemoteTaskOperation, CATTaskClient, NSSet, NSString;
-@protocol CRKShareTargetBrowserDelegate, OS_dispatch_queue;
+@protocol CRKShareTargetBrowserDelegate, CRKTransportProviding, OS_dispatch_queue;
 
 @interface CRKShareTargetBrowser : NSObject <CATTaskClientDelegate, CATTaskOperationNotificationDelegate>
 {
@@ -25,11 +25,14 @@
     NSSet *mStudentTargets;
     BOOL mBrowsing;
     BOOL mIsValid;
+    unsigned long long mSessionIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<CRKTransportProviding> instructorTransportProvider;
+@property (readonly, nonatomic) id<CRKTransportProviding> studentdTransportProvider;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -39,11 +42,15 @@
 - (void)client:(id)arg1 didInterruptWithError:(id)arg2;
 - (void)clientDidConnect:(id)arg1;
 - (void)clientDidDisconnect:(id)arg1;
-- (void)connectToInstructor;
+- (void)connectToInstructorMacOS;
+- (void)connectToInstructoriOS;
+- (void)connectToStudentd;
 - (void)dealloc;
 - (void)delegateDidFindTargets:(id)arg1;
 - (void)delegateDidInterruptWithError:(id)arg1;
 - (void)delegateDidRemoveTargets:(id)arg1;
+- (void)didFetchInstructorTransport:(id)arg1 error:(id)arg2;
+- (void)didFetchStudentdTransport:(id)arg1 error:(id)arg2;
 - (void)fetchInstructorEndpointOperationDidFinish:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
@@ -51,7 +58,6 @@
 - (void)invalidate;
 - (id)makeShareTargetsWithDictionaries:(id)arg1 taskClient:(id)arg2;
 - (void)resume;
-- (void)resumeWithTransport:(id)arg1;
 - (void)startBrowsingForInstructorTargetsIfNeeded;
 - (void)startBrowsingForStudentTargetsIfNeeded;
 - (void)stopBrowsingForInstructorTargets;

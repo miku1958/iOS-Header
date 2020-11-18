@@ -39,9 +39,11 @@
 - (id)context;
 - (void)contextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (id)deviceClass;
 - (id)deviceDescriptionForPaymentWebService:(id)arg1;
 - (id)deviceName;
 - (id)deviceRegion;
+- (id)deviceVersion;
 - (void)downloadAllPaymentPassesForPaymentWebService:(id)arg1;
 - (id)initWithConnection:(id)arg1;
 - (void)noteProvisioningDidBegin;

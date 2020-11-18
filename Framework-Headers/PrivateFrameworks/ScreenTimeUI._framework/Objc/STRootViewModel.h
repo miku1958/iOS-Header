@@ -10,6 +10,7 @@
 
 @interface STRootViewModel : NSObject
 {
+    BOOL _canStopScreenTimeWithoutPasscode;
     BOOL _isCloudSyncEnabled;
     NSSet *_installedBundleIDs;
     NSDictionary *_installedBundleIDsByCategoryIdentifier;
@@ -22,6 +23,7 @@
 @property (readonly, nonatomic) BOOL canSignIn;
 @property (readonly, nonatomic) BOOL canStartScreenTime;
 @property (readonly, nonatomic) BOOL canStopScreenTime;
+@property (nonatomic) BOOL canStopScreenTimeWithoutPasscode; // @synthesize canStopScreenTimeWithoutPasscode=_canStopScreenTimeWithoutPasscode;
 @property (readonly, nonatomic) BOOL canStopSharingScreenTime;
 @property (readonly, nonatomic) BOOL canToggleCloudSyncData;
 @property (readonly, nonatomic) BOOL canToggleWebsiteData;

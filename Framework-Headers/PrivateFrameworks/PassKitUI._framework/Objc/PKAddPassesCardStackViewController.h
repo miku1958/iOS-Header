@@ -53,10 +53,12 @@
 - (unsigned long long)indexOfGroup:(id)arg1;
 - (unsigned long long)indexOfSeparationGroup;
 - (id)initWithPasses:(id)arg1 passDataArray:(id)arg2 presentationSource:(unsigned long long)arg3;
+- (BOOL)isInField;
 - (unsigned long long)numberOfGroups;
 - (void)passPersonalizationViewController:(id)arg1 didFinishPersonalizingPass:(id)arg2;
 - (void)reloadGroupsForGroupStackView:(id)arg1;
 - (void)resetBrightness;
+- (BOOL)supportsExternalPresentation;
 - (unsigned long long)suppressedContent;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)viewDidLoad;

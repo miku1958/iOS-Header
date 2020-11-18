@@ -8,7 +8,7 @@
 
 #import <ManagedConfigurationUI/UITableViewDelegate-Protocol.h>
 
-@class MCProfileInfo, NSArray, NSMutableArray, NSSManager, NSString, UIImage;
+@class NSMutableDictionary, NSSManager, NSString, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface MCProfileListController : MCURLListenerListController <UITableViewDelegate>
@@ -17,28 +17,18 @@ __attribute__((visibility("hidden")))
     BOOL _hasFailedFetchingProfilesInfo;
     int _provisioningProfileInstalledToken;
     int _provisioningProfileRemovedToken;
-    NSMutableArray *_profileInfo;
+    NSMutableDictionary *_dataDictionary;
     UIImage *_profileListIcon;
     NSSManager *_nssManager;
-    MCProfileInfo *_mdmProfileInfo;
-    NSArray *_configurationProfilesInfoList;
-    NSArray *_enterpriseAppSigners;
-    NSArray *_developerAppSigners;
-    NSArray *_blockedApplications;
 }
 
-@property (strong, nonatomic) NSArray *blockedApplications; // @synthesize blockedApplications=_blockedApplications;
-@property (strong, nonatomic) NSArray *configurationProfilesInfoList; // @synthesize configurationProfilesInfoList=_configurationProfilesInfoList;
+@property (strong, nonatomic) NSMutableDictionary *dataDictionary; // @synthesize dataDictionary=_dataDictionary;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSArray *developerAppSigners; // @synthesize developerAppSigners=_developerAppSigners;
-@property (strong, nonatomic) NSArray *enterpriseAppSigners; // @synthesize enterpriseAppSigners=_enterpriseAppSigners;
 @property (nonatomic) BOOL hasFailedFetchingProfilesInfo; // @synthesize hasFailedFetchingProfilesInfo=_hasFailedFetchingProfilesInfo;
 @property (nonatomic) BOOL hasFetchedProfilesInfo; // @synthesize hasFetchedProfilesInfo=_hasFetchedProfilesInfo;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) MCProfileInfo *mdmProfileInfo; // @synthesize mdmProfileInfo=_mdmProfileInfo;
 @property (strong, nonatomic) NSSManager *nssManager; // @synthesize nssManager=_nssManager;
-@property (strong, nonatomic) NSMutableArray *profileInfo; // @synthesize profileInfo=_profileInfo;
 @property (strong, nonatomic) UIImage *profileListIcon; // @synthesize profileListIcon=_profileListIcon;
 @property (nonatomic) int provisioningProfileInstalledToken; // @synthesize provisioningProfileInstalledToken=_provisioningProfileInstalledToken;
 @property (nonatomic) int provisioningProfileRemovedToken; // @synthesize provisioningProfileRemovedToken=_provisioningProfileRemovedToken;
@@ -46,28 +36,27 @@ __attribute__((visibility("hidden")))
 
 + (id)specifiersForBlockedApps:(id)arg1;
 - (void).cxx_destruct;
-- (id)_adjustCell:(id)arg1 forAppSigner:(id)arg2;
 - (void)_appSignerApplicationsChanged:(id)arg1;
 - (void)_blockedAppsChanged:(id)arg1;
-- (void)_effectiveSettingsChanged:(id)arg1;
+- (id)_dataForIndexPath:(id)arg1;
+- (void)_fetchPhoneProfileList;
+- (void)_handleProfileCellSelectionAtIndexPath:(id)arg1;
 - (void)_hideProgressIndicatorAndShowBackButton:(BOOL)arg1;
 - (void)_installedApplicationsChanged:(id)arg1;
-- (id)_isUIProfileInstallationEnabled:(id)arg1;
+- (BOOL)_isSectionPopulated:(int)arg1;
 - (BOOL)_isUIProfileInstallationRestricted;
 - (void)_profileListChanged:(id)arg1;
-- (long long)_resolveIndexPathForProfileIndex:(id)arg1;
-- (int)_resolveIndexPathForTableSection:(id)arg1;
+- (long long)_profilesCount;
+- (int)_resolveIndexPathForSection:(id)arg1;
 - (void)_showProgressIndicator;
-- (void)_toggleUIProfileInstallationStatus:(id)arg1;
+- (id)_specifiersForDataDictionary;
 - (void)dealloc;
 - (void)fetchRemoteProfileList;
 - (void)handleProfilesInfoResponse:(id)arg1 error:(id)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)specifiers;
-- (id)specifiersForMDMProfileInfo:(id)arg1 configurationProfilesInfo:(id)arg2 enterpriseAppSigners:(id)arg3 developerAppSigners:(id)arg4 blockedApps:(id)arg5;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

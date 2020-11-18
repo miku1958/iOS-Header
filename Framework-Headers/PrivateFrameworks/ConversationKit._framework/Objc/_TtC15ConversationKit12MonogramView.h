@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *text;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

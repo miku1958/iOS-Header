@@ -12,10 +12,12 @@
 {
     SXComponentLayoutRules *_layoutRules;
     SXComponentTextRules *_textRules;
+    NSArray *_defaultStyleIdentifiers;
 }
 
 @property (readonly, nonatomic) unsigned long long contentRelevance;
 @property (readonly, nonatomic) NSArray *defaultComponentStyleIdentifiers;
+@property (readonly, nonatomic) NSArray *defaultStyleIdentifiers; // @synthesize defaultStyleIdentifiers=_defaultStyleIdentifiers;
 @property (readonly, nonatomic) NSArray *defaultTextStyleIdentifiers;
 @property (readonly, nonatomic) SXComponentLayoutRules *layoutRules; // @synthesize layoutRules=_layoutRules;
 @property (readonly, nonatomic) SXComponentTextRules *textRules; // @synthesize textRules=_textRules;
@@ -37,7 +39,9 @@
 - (BOOL)accessibilitySkippedDuringReadAll;
 - (Class)componentModelClass;
 - (BOOL)hasAffiliationWithClassification:(id)arg1 forDirection:(long long)arg2;
+- (id)init;
 - (BOOL)isCollapsible;
+- (void)setupStyleIdentifiersForRole:(id)arg1;
 
 @end
 

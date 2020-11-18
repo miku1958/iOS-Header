@@ -44,13 +44,12 @@ __attribute__((visibility("hidden")))
     BOOL _tornDown;
     BOOL _searchHitsAreInvalid;
     BOOL _findIsShowing;
-    TSWPSearchReference *_activeSearchReference;
+    TSWPSearchReference *_primaryFindResultSearchReference;
     NSArray *_searchReferences;
     CALayer *_floatingCaretLayer;
     struct CGAffineTransform _transformToConvertNaturalToScaledRoot;
 }
 
-@property (strong, nonatomic) TSWPSearchReference *activeSearchReference; // @synthesize activeSearchReference=_activeSearchReference;
 @property (readonly, nonatomic) NSArray *columns;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -61,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isBeingEdited;
 @property (copy, nonatomic) TSWPSelection *lastSelection; // @synthesize lastSelection=_lastSelection;
 @property (readonly, weak, nonatomic) TSDLayout<TSWPLayoutTarget> *layout;
+@property (strong, nonatomic) TSWPSearchReference *primaryFindResultSearchReference; // @synthesize primaryFindResultSearchReference=_primaryFindResultSearchReference;
 @property (strong, nonatomic) NSArray *searchReferences; // @synthesize searchReferences=_searchReferences;
 @property (readonly, nonatomic) TSWPSelection *selection;
 @property (readonly, nonatomic) TSWPStorage *storage;
@@ -98,8 +98,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isPointInSelectedArea:(struct CGPoint)arg1;
 - (struct CGRect)labelRectForCharIndex:(unsigned long long)arg1;
 - (Class)layerClass;
-- (CDStruct_d12891c8)lineMetricsAtCharIndex:(unsigned long long)arg1;
-- (CDStruct_d12891c8)lineMetricsAtPoint:(struct CGPoint)arg1;
+- (CDStruct_8299b2ea)lineMetricsAtCharIndex:(unsigned long long)arg1;
+- (CDStruct_8299b2ea)lineMetricsAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)naturalBoundsRectForHyperlinkField:(id)arg1;
 - (const struct CGPath *)newPathForSelection:(id)arg1;
 - (BOOL)p_allowCaretForSelection:(id)arg1;
@@ -129,7 +129,7 @@ __attribute__((visibility("hidden")))
 - (id)textLayer;
 - (void)viewDidAppear;
 - (void)willBeRemoved;
-- (CDStruct_7e4c5a1e)wordMetricsAtCharIndex:(unsigned long long)arg1;
+- (CDStruct_249a8bf0)wordMetricsAtCharIndex:(unsigned long long)arg1;
 
 @end
 

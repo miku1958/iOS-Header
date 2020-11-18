@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, NSURL, NSURLRequest;
+@class AMSMetricsEvent, NSMutableDictionary, NSString, NSURL, NSURLRequest;
 @protocol OS_dispatch_queue;
 
 @interface AMSFollowUpAction : NSObject
@@ -14,6 +14,7 @@
     NSMutableDictionary *_userInfo;
     NSString *_identifier;
     NSString *_label;
+    AMSMetricsEvent *_metricsEvent;
     NSURL *_url;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_actionQueue;
@@ -24,7 +25,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (strong, nonatomic) NSString *logKey;
-@property (strong, nonatomic) NSDictionary *metrics;
+@property (strong, nonatomic) AMSMetricsEvent *metricsEvent; // @synthesize metricsEvent=_metricsEvent;
 @property (strong, nonatomic) NSString *preferredClient;
 @property (strong, nonatomic) NSURLRequest *request;
 @property (nonatomic) BOOL requiresFollowUpUI;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class MISSING_TYPE, UIButton;
+@class MISSING_TYPE, _TtC15ConversationKit19InCallControlButton;
 
 __attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit38InCallControlsParticipantTableViewCell : UITableViewCell
@@ -26,10 +26,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *delegate;
 }
 
-@property (nonatomic, readonly) UIButton *ringButton; // @synthesize ringButton;
+@property (nonatomic, readonly) _TtC15ConversationKit19InCallControlButton *ringButton; // @synthesize ringButton;
 
-- (CDUnknownBlockType).cxx_destruct;
-- (void)didTapRing;
+- (void).cxx_destruct;
+- (void)didTapRing:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;

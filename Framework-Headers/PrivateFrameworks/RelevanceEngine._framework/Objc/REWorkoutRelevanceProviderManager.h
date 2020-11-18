@@ -8,11 +8,12 @@
 
 #import <RelevanceEngine/REPredictorObserver-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface REWorkoutRelevanceProviderManager : RERelevanceProviderManager <REPredictorObserver>
 {
     unsigned long long _state;
+    NSDate *_lastWorkoutDate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,6 +23,7 @@
 
 + (id)_features;
 + (Class)_relevanceProviderClass;
+- (void).cxx_destruct;
 - (void)_prepareForUpdate;
 - (id)_valueForProvider:(id)arg1 feature:(id)arg2;
 - (void)collectLoggableState:(CDUnknownBlockType)arg1;

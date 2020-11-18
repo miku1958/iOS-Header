@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (struct CGSize)labelWrapSizeForScene:(id)arg1;
 + (struct CGSize)p_labelWrapSizeForScene:(id)arg1 returningSizeValue:(id *)arg2;
-+ (struct TSCH3DScenePart)partWithChartInfo:(id)arg1;
++ (id)partWithChartInfo:(id)arg1;
 + (BOOL)setLabelWrapBounds:(const box_80622335 *)arg1 forScene:(id)arg2;
 + (void)setSelectionPath:(id)arg1 selectionMode:(int)arg2 forScene:(id)arg3;
 - (BOOL)isAnnotated;

@@ -10,11 +10,10 @@
 
 @protocol SFWebViewControllerDelegate <NSObject>
 - (unsigned long long)browserPersonaForWebViewController:(SFWebViewController *)arg1;
-- (BOOL)currentLoadIsEligibleForAutoFillAuthenticationForWebViewController:(SFWebViewController *)arg1;
 - (UIViewController *)presentingViewControllerForWebViewController:(SFWebViewController *)arg1;
 - (void)webViewController:(SFWebViewController *)arg1 commitPreviewedViewController:(UIViewController *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 createWebViewWithConfiguration:(WKWebViewConfiguration *)arg2 forNavigationAction:(WKNavigationAction *)arg3 completionHandler:(void (^)(WKWebView *))arg4;
-- (void)webViewController:(SFWebViewController *)arg1 decidePolicyForNavigationAction:(WKNavigationAction *)arg2 decisionHandler:(void (^)(long long))arg3;
+- (void)webViewController:(SFWebViewController *)arg1 decidePolicyForNavigationAction:(WKNavigationAction *)arg2 decisionHandler:(void (^)(long long, _WKWebsitePolicies *))arg3;
 - (void)webViewController:(SFWebViewController *)arg1 decidePolicyForNavigationResponse:(WKNavigationResponse *)arg2 decisionHandler:(void (^)(long long))arg3;
 - (void)webViewController:(SFWebViewController *)arg1 didChangeFullScreen:(BOOL)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 didCommitNavigation:(WKNavigation *)arg2;
@@ -40,10 +39,13 @@
 - (void)webViewControllerDidChangeSafeAreaShouldAffectObscuredInsets:(SFWebViewController *)arg1;
 - (void)webViewControllerDidChangeURL:(SFWebViewController *)arg1;
 - (void)webViewControllerDidFirstVisuallyNonEmptyLayout:(SFWebViewController *)arg1;
+- (void)webViewControllerUpdateNavigationBar:(SFWebViewController *)arg1;
 - (void)webViewControllerWebProcessDidBecomeResponsive:(SFWebViewController *)arg1;
 - (void)webViewControllerWebProcessDidBecomeUnresponsive:(SFWebViewController *)arg1;
 - (void)webViewControllerWebProcessDidCrash:(SFWebViewController *)arg1;
-- (void)webViewControllerWillAuthenticateForAutoFill:(SFWebViewController *)arg1;
 - (void)webViewControllerWillPresentJavaScriptDialog:(SFWebViewController *)arg1;
+
+@optional
+- (void)webViewControllerDidShowSafeBrowsingWarning:(SFWebViewController *)arg1;
 @end
 

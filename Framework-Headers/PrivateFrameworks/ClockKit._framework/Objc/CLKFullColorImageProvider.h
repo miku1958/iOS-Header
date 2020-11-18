@@ -34,6 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)finalizeWithMaxSize:(struct CGSize)arg1 cornerRadius:(double)arg2;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

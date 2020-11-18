@@ -103,11 +103,13 @@
 - (void)backgroundDownloadWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2;
 - (unsigned long long)browseableBankAppsWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)canBypassTrustExtendedValidation;
+- (unsigned long long)cardInfoForMerchantIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)checkMerchantStatus:(id)arg1 forDomain:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (unsigned long long)completeSession:(id)arg1 wrappedPayment:(id)arg2 pass:(id)arg3 applicationData:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (unsigned long long)configurePaymentServiceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (unsigned long long)deprovisionForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)deviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)devicePassesSinceLastUpdatedTag:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (unsigned long long)eligibilityForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)forbiddenErrorWithResponse:(id)arg1;
@@ -129,6 +131,7 @@
 - (unsigned long long)passesWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)paymentProvisioningNonceWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)performAction:(id)arg1 onServiceProviderPurchase:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)performDeviceCheckInFollowingActionsWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)performNotifificationActionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)performServiceProviderPayment:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)prepareTransactionDetailsForMerchantSession:(id)arg1 secureElementIdentifier:(id)arg2 amount:(id)arg3 currencyCode:(id)arg4 completion:(CDUnknownBlockType)arg5;

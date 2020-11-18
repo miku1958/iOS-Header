@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSSet, NSString, SFDevice, SFDeviceOperationHomeKitSetup, SFSession, TROperationQueue, TRSession, UIViewController;
+@class NSMutableArray, NSSet, NSString, SFDevice, SFDeviceOperationCDPSetup, SFDeviceOperationHomeKitSetup, SFSession, TROperationQueue, TRSession, UIViewController;
 @protocol OS_dispatch_queue;
 
 @interface SFDeviceSetupAppleTVSession : NSObject
@@ -26,6 +26,10 @@
     BOOL _iCloudAccountMatches;
     int _pairSetupState;
     double _pairSetupSecs;
+    BOOL _cdpEnabled;
+    SFDeviceOperationCDPSetup *_cdpSetupOperation;
+    double _cdpSetupSecs;
+    int _cdpState;
     BOOL _homeKitDoKeyExchange;
     BOOL _homeKitDoFullSetup;
     SFDeviceOperationHomeKitSetup *_homeKitSetupOperation;
@@ -56,6 +60,7 @@
     double _trCompletionSecs;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     SFDevice *_peerDevice;
+    unsigned long long _peerFeatureFlags;
     UIViewController *_presentingViewController;
     CDUnknownBlockType _progressHandler;
     CDUnknownBlockType _promptForHomeHandler;
@@ -65,6 +70,7 @@
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (strong, nonatomic) SFDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
+@property (nonatomic) unsigned long long peerFeatureFlags; // @synthesize peerFeatureFlags=_peerFeatureFlags;
 @property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (copy, nonatomic) CDUnknownBlockType promptForHomeHandler; // @synthesize promptForHomeHandler=_promptForHomeHandler;
@@ -78,6 +84,7 @@
 - (int)_runBasicConfig;
 - (void)_runBasicConfigRequest;
 - (void)_runBasicConfigResponse:(id)arg1 error:(id)arg2;
+- (int)_runCDPSetup;
 - (int)_runFinish:(BOOL)arg1;
 - (int)_runHomeKitSetup;
 - (int)_runHomeKitUserInput;

@@ -19,6 +19,7 @@
 - (void)childNodeRemovedWithParentNodeId:(int)arg1 nodeId:(int)arg2;
 - (void)customElementStateChangedWithNodeId:(int)arg1 customElementState:(long long)arg2;
 - (void)didAddEventListenerWithNodeId:(int)arg1;
+- (void)didFireEventWithNodeId:(int)arg1 eventName:(id)arg2 timestamp:(double)arg3 data:(id *)arg4;
 - (void)documentUpdated;
 - (id)initWithController:(struct AugmentableInspectorController *)arg1;
 - (void)inlineStyleInvalidatedWithNodeIds:(id)arg1;
@@ -28,6 +29,7 @@
 - (void)setChildNodesWithParentId:(int)arg1 nodes:(id)arg2;
 - (void)shadowRootPoppedWithHostId:(int)arg1 rootId:(int)arg2;
 - (void)shadowRootPushedWithHostId:(int)arg1 root:(id)arg2;
+- (void)videoLowPowerChangedWithNodeId:(int)arg1 timestamp:(double)arg2 isLowPower:(BOOL)arg3;
 - (void)willRemoveEventListenerWithNodeId:(int)arg1;
 
 @end

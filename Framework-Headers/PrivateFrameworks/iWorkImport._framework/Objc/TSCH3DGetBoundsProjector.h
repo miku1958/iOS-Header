@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class TSCH3DCamera;
+@class TSCH3DCamera, TSCH3DChartScenePropertyAccessor;
 
 __attribute__((visibility("hidden")))
 @interface TSCH3DGetBoundsProjector : NSObject
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     tmat4x4_3074befe mProjection;
     tmat4x4_3074befe mMVP;
     TSCH3DCamera *mCamera;
-    struct ChartScenePropertyAccessor *mAccessor;
+    TSCH3DChartScenePropertyAccessor *mAccessor;
     BOOL mUseAggressiveBackProjection;
 }
 
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)reset;
 - (void)resetTransformsForLayoutBounds;
 - (void)resetTransformsForRenderBounds;
-- (void)setCamera:(id)arg1 accessor:(struct ChartScenePropertyAccessor *)arg2;
+- (void)setCamera:(id)arg1 accessor:(id)arg2;
 
 @end
 

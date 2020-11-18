@@ -15,6 +15,7 @@
 
 @property (readonly) NSArray *inputs;
 @property (readonly) NSArray *outputs;
+@property (readonly) unsigned long long siriInputSource;
 @property (readonly) NSString *siriRemoteInputIdentifier;
 
 - (void)dealloc;

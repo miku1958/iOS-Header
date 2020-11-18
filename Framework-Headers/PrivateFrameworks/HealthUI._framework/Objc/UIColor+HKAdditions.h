@@ -63,6 +63,15 @@
 + (id)hk_defaultKeyColor;
 + (id)hk_defaultPrimaryTextColor;
 + (id)hk_defaultSecondaryTextColor;
++ (id)hk_electrocardiogramCardBackgroundColor;
++ (id)hk_electrocardiogramCardHeaderColor;
++ (id)hk_electrocardiogramCardOnboardingBackgroundColor;
++ (id)hk_electrocardiogramCardOnboardingHeaderColor;
++ (id)hk_electrocardiogramChartBorderColor;
++ (id)hk_electrocardiogramChartMajorGridlineColor;
++ (id)hk_electrocardiogramChartMediumGridlineColor;
++ (id)hk_electrocardiogramChartMinorGridlineColor;
++ (id)hk_electrocardiogramChartVeryMinorGridlineColor;
 + (id)hk_hearingHealthKeyColor;
 + (id)hk_immunizationsClinicalGradientBottomColor;
 + (id)hk_immunizationsClinicalGradientTopColor;

@@ -18,6 +18,7 @@
 - (void)outputDeviceVolume:(NSString *)arg1 withCompletion:(void (^)(float, NSError *))arg2;
 - (void)outputDeviceVolumeControlCapabilities:(NSString *)arg1 withCompletion:(void (^)(unsigned int, NSError *))arg2;
 - (void)pingWithTimeout:(double)arg1 callback:(void (^)(NSError *))arg2;
+- (void)sendButtonEventWithUsagePage:(unsigned int)arg1 usage:(unsigned int)arg2 down:(BOOL)arg3;
 - (void)sendCustomData:(NSData *)arg1 withName:(NSString *)arg2;
 - (void)setNotifications:(unsigned long long)arg1;
 - (void)setOutputDeviceVolume:(float)arg1 forOutputDevice:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;

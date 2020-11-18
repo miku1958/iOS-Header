@@ -51,7 +51,7 @@
 - (void)_handleDatabaseChanged;
 - (void)_handleXPCConnection:(id)arg1;
 - (void)_protectedDataDidBecomeAvailable;
-- (void)_registerForIdentityOrphanCleanup;
+- (void)_registerForDatabaseCleanup;
 - (void)_registerForIdleChangeTrackingClientCleanup;
 - (void)_registerForNotifications;
 - (void)_registerMaintenanceActivities;
@@ -62,10 +62,10 @@
 - (BOOL)_trimAndExtendOccurrenceCache;
 - (void)_updateOccurrenceCacheTimeZone;
 - (void)activate;
+- (void)cleanupDatabase:(struct CalDatabase *)arg1;
 - (void)clientConnectionDied:(id)arg1;
 - (void)deactivate;
 - (void)dealloc;
-- (void)identityOrphanCleanupDatabase:(struct CalDatabase *)arg1;
 - (void)idleChangeTrackingClientCleanupDatabase:(struct CalDatabase *)arg1;
 - (id)init;
 - (id)initWithModules:(id)arg1;

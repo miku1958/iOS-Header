@@ -11,11 +11,13 @@
     BOOL _alreadyCapturedErrorWithAutoBugCapture;
     BOOL _allowsWritingToDisk;
     BOOL _deviceLowOnDiskSpace;
+    BOOL _isUpdatingAttachmentFileSizes;
 }
 
 @property (nonatomic) BOOL allowsWritingToDisk; // @synthesize allowsWritingToDisk=_allowsWritingToDisk;
 @property (nonatomic) BOOL alreadyCapturedErrorWithAutoBugCapture; // @synthesize alreadyCapturedErrorWithAutoBugCapture=_alreadyCapturedErrorWithAutoBugCapture;
 @property (nonatomic, getter=isDeviceLowOnDiskSpace) BOOL deviceLowOnDiskSpace; // @synthesize deviceLowOnDiskSpace=_deviceLowOnDiskSpace;
+@property BOOL isUpdatingAttachmentFileSizes; // @synthesize isUpdatingAttachmentFileSizes=_isUpdatingAttachmentFileSizes;
 
 + (id)sharedInstance;
 - (id)__wrapperAroundCacheDeletePurgeableCallback:(id)arg1 urgency:(int)arg2;
@@ -25,8 +27,9 @@
 - (id)_ckUtilitiesSharedInstance;
 - (long long)_deleteAttachmentsAndReturnBytesDeleted:(int)arg1;
 - (long long)_deleteFilesOnDiskAndUpdateTransfers:(id)arg1;
+- (BOOL)_deviceConditionsAllowsAttachmentFileSizeUpdateForActivity:(id)arg1;
 - (void)_fetchTransfersFromCloudKit:(id)arg1;
-- (void)_fetchTransfersFromCloudKit:(id)arg1 indexOfTransfers:(unsigned long long)arg2 numberOfBatchesToFetch:(unsigned long long)arg3;
+- (void)_fetchTransfersFromCloudKit:(id)arg1 indexOfTransfers:(unsigned long long)arg2 numberOfBatchesToFetch:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)_fileTransfersToDelete:(struct __CFArray *)arg1;
 - (id)_fileTransfersToValidate:(struct __CFArray *)arg1;
 - (id)_getIndexSetForBatch:(id)arg1 indexOfTransfers:(unsigned long long)arg2;
@@ -44,6 +47,7 @@
 - (void)registerWithCacheDelete;
 - (id)reportAvailableSpaceToBeDeleted:(id)arg1 urgency:(int)arg2;
 - (BOOL)shouldDownloadAssetsOfSize:(unsigned long long)arg1 refreshCachedValue:(BOOL)arg2;
+- (void)updateAttachmentFileSizesWithActivity:(id)arg1;
 
 @end
 

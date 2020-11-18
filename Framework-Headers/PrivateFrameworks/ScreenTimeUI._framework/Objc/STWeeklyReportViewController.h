@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSArray *tableViewCells; // @synthesize tableViewCells=_tableViewCells;
 
 - (void).cxx_destruct;
+- (void)_heightDidChange:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (id)initWithUsageReport:(id)arg1;
 - (struct CGSize)preferredContentSize;

@@ -49,6 +49,7 @@
     BOOL _shouldConsiderTapGuard;
     BOOL _screenOn;
     BOOL _confirmedNotInPocket;
+    BOOL _canSuggestSwipeToRetry;
     BOOL _shouldResetForFailedPasscodeAttempt;
     BOOL _isTransitioning;
     int _style;
@@ -75,6 +76,7 @@
 @property (strong, nonatomic) UIView *biometricAuthenticationView; // @synthesize biometricAuthenticationView=_biometricAuthenticationView;
 @property (nonatomic) BOOL biometricPresentationAncillaryButtonsVisible;
 @property (strong, nonatomic) id<SBUIBiometricResource> biometricResource; // @synthesize biometricResource=_biometricResource;
+@property (nonatomic) BOOL canSuggestSwipeToRetry; // @synthesize canSuggestSwipeToRetry=_canSuggestSwipeToRetry;
 @property (nonatomic) BOOL confirmedNotInPocket; // @synthesize confirmedNotInPocket=_confirmedNotInPocket;
 @property (strong, nonatomic) UIColor *customBackgroundColor; // @synthesize customBackgroundColor=_customBackgroundColor;
 @property (readonly, copy) NSString *debugDescription;
@@ -148,6 +150,7 @@
 - (void)_setLegibilitySettings:(id)arg1;
 - (void)_setPasscodeLockViewState:(long long)arg1 animated:(BOOL)arg2;
 - (void)_setStatusState:(unsigned long long)arg1 animated:(BOOL)arg2;
+- (void)_setStatusStateSwipeToRetryAnimated:(BOOL)arg1;
 - (void)_setSuppressTitleText:(BOOL)arg1 animated:(BOOL)arg2;
 - (unsigned long long)_statusStateForLockoutState:(unsigned long long)arg1;
 - (BOOL)_supportsProudLock;

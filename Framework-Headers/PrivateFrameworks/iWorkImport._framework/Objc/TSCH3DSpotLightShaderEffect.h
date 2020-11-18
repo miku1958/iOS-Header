@@ -11,9 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)inject:(id)arg1;
++ (id)variableSpotLightLightIntensities;
+- (void)injectCommonShaderInto:(id)arg1 context:(id)arg2;
 - (void)uploadData:(id)arg1 effectsStates:(id)arg2;
 - (void)uploadSpotLightWithUploader:(id)arg1 effectsStates:(id)arg2;
+- (id)variableSpotLightLightIntensities;
 - (id)variables;
 
 @end

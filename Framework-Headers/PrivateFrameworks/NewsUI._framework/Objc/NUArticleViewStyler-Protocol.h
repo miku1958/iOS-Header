@@ -8,6 +8,7 @@
 
 @protocol NUArticleViewStyler
 
+@property (readonly, nonatomic) UIColor *backgroundColor;
 @property (readonly, nonatomic) long long statusBarStyle;
 @property (readonly, nonatomic) long long topBackgroundStatusBarStyle;
 

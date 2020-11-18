@@ -56,8 +56,8 @@ __attribute__((visibility("hidden")))
 - (void)p_drawReflectionIntoReflectionFrameInContext:(struct CGContext *)arg1 withTransparencyLayer:(BOOL)arg2 applyingOpacity:(BOOL)arg3 shouldClipGradient:(BOOL)arg4 withBlock:(CDUnknownBlockType)arg5;
 - (struct CGImage *)p_newReflectionImageWithSize:(struct CGSize)arg1 applyOpacity:(BOOL)arg2 viewScale:(double)arg3 withBlock:(CDUnknownBlockType)arg4;
 - (struct CGRect)p_rectWithEffectsAppliedToRect:(struct CGRect)arg1 additionalTransform:(struct CGAffineTransform)arg2 includeShadow:(BOOL)arg3 includeReflection:(BOOL)arg4;
+- (struct CGRect)p_reflectionRenderableFrameInRoot;
 - (struct CGRect)rectWithEffectsAppliedToRect:(struct CGRect)arg1;
-- (struct CGRect)reflectionLayerFrameInRoot;
 - (void)setTextureAttributes:(id)arg1 textureBounds:(struct CGRect)arg2;
 - (struct CGRect)strokeBoundsWithOptions:(unsigned long long)arg1 fallbackBounds:(struct CGRect)arg2;
 - (id)textureForDescription:(id)arg1;

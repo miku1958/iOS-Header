@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class NSData, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ICDeviceInfo : NSObject
@@ -27,6 +27,9 @@
     NSString *_pairedDeviceGUID;
     NSString *_serialNumber;
     struct CGSize _mainScreenSize;
+    NSNumber *_hasCellularDataCapabilityNumber;
+    NSNumber *_hasTelephonyCapabilityNumber;
+    NSNumber *_isInternalBuildNumber;
     NSString *_systemReleaseType;
     NSObject<OS_dispatch_queue> *_accessQueue;
 }
@@ -39,6 +42,8 @@
 @property (readonly, copy, nonatomic) NSString *deviceModel;
 @property (readonly, nonatomic) unsigned int fairPlayDeviceType;
 @property (readonly, copy, nonatomic) NSString *hardwarePlatform;
+@property (readonly, nonatomic) BOOL hasCellularDataCapability;
+@property (readonly, nonatomic) BOOL hasTelephonyCapability;
 @property (readonly, nonatomic, getter=isInternalBuild) BOOL internalBuild;
 @property (readonly, nonatomic) BOOL isAppleTV;
 @property (readonly, nonatomic) BOOL isAudioAccessory;

@@ -20,6 +20,7 @@
 - (void)trackedReferenceWasDeleted:(TSCETrackedReference *)arg1 fromOwnerUID:(const UUIDData_5fbc143e *)arg2;
 
 @optional
+- (void)endOfEvaluationWritePhase;
 - (void)referenceTrackerDidUpdateReferences:(TSCEReferenceTracker *)arg1;
 - (void)updateTrackedHeaders:(const UUIDData_5fbc143e *)arg1;
 @end

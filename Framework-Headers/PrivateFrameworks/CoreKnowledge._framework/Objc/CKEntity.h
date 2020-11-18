@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKKnowledgeStore, MISSING_TYPE, NSString;
+@class MISSING_TYPE, NSString;
 
 @interface CKEntity : NSObject
 {
@@ -15,16 +15,11 @@
 }
 
 @property (nonatomic, readonly) NSString *description;
-@property (nonatomic, readonly) long long hashValue;
-@property (nonatomic, readonly) NSString *identifier; // @synthesize identifier;
-@property (nonatomic, readonly) CKKnowledgeStore *store; // @synthesize store;
+@property (nonatomic, readonly) long long hash;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
-- (id)initWithEvent:(id)arg1 knowledgeStore:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 knowledgeStore:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (void)linkBasedOnRulesAfterConnecting:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)linkTo:(id)arg1 withPredicate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)linkTo:(id)arg1 withPredicate:(id)arg2 error:(id *)arg3;
 - (void)linksTo:(id)arg1 matchType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -33,9 +28,9 @@
 - (void)setValue:(id)arg1 forKey:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setValuesForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)unlinkTo:(id)arg1 withPredicate:(id)arg2 ignoreWeights:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (BOOL)unlinkTo:(id)arg1 withPredicate:(id)arg2 ignoreWeights:(BOOL)arg3 error:(id *)arg4;
 - (id)valueForKey:(id)arg1;
 - (void)valueForKey:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)valuesForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

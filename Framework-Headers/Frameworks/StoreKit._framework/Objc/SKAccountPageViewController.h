@@ -20,14 +20,16 @@
     SKRemoteAccountPageViewController *_remoteViewController;
     SKInvocationQueueProxy<SKUIServiceAccountPageViewController> *_serviceProxy;
     BOOL _isRemoteViewControllerReady;
+    BOOL _financeInterruptionCalled;
     BOOL _cameraDidShow;
     BOOL _viewHasAppeared;
     BOOL _isRemoteViewControllerSetup;
     CDUnknownBlockType redeemCompletionHandler;
-    BOOL _loadFromBridgedNavigation;
     id<SKAccountPageViewControllerDelegate> _delegate;
     ACAccount *_account;
+    long long _type;
     SKAccountPageViewController *_preWarmedViewController;
+    SKAccountPageViewController *_presentingAccountPageViewController;
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
@@ -35,30 +37,38 @@
 @property (weak, nonatomic) id<SKAccountPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL loadFromBridgedNavigation; // @synthesize loadFromBridgedNavigation=_loadFromBridgedNavigation;
 @property (strong, nonatomic) SKAccountPageViewController *preWarmedViewController; // @synthesize preWarmedViewController=_preWarmedViewController;
+@property (weak, nonatomic) SKAccountPageViewController *presentingAccountPageViewController; // @synthesize presentingAccountPageViewController=_presentingAccountPageViewController;
 @property (readonly) Class superclass;
+@property (nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (void)_addRemoteView;
 - (void)_bridgedRightButtonPressed:(id)arg1;
 - (void)_didFinishLoading;
 - (void)_didPrepareWithResult:(BOOL)arg1 error:(id)arg2;
+- (void)_dismissBridgedViewController;
 - (void)_dismissViewControllerWithResult:(BOOL)arg1 error:(id)arg2;
 - (void)_financeInterruptionResolved:(BOOL)arg1;
 - (unsigned long long)_indexForFirstBridgedNavigationViewController;
+- (void)_keyboardDidChangeNotification:(id)arg1;
+- (void)_keyboardWillChangeNotification:(id)arg1;
 - (void)_overrideCreditCardPresentationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_overrideRedeemCameraPerformAction:(long long)arg1 withObject:(id)arg2;
 - (void)_overrideRedeemCameraWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_popAllBridgedNavigationViewControllers;
 - (void)_popBridgedViewControllersToIndex:(unsigned long long)arg1;
+- (void)_presentBridgedViewController;
 - (void)_pushBridgedViewControllerAnimated:(BOOL)arg1 options:(id)arg2;
 - (void)_requestRemoteViewController;
 - (void)_setBridgedNavigationItemWithOptions:(id)arg1;
+- (void)_setupNotificationCenter;
 - (void)_setupPreWarmedViewController;
 - (void)_setupRemoteViewController:(BOOL)arg1;
 - (void)_sk_applicationDidEnterBackground:(id)arg1;
 - (void)_sk_applicationWillEnterForeground:(id)arg1;
 - (void)dealloc;
+- (void)didMoveToParentViewController:(id)arg1;
 - (id)initWithAccountURL:(id)arg1;
 - (void)loadView;
 - (void)loadWithCompletionBlock:(CDUnknownBlockType)arg1;
@@ -66,6 +76,7 @@
 - (void)prepareWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)redeemCameraViewController:(id)arg1 didFinishWithRedeem:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
 

@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString, NTPBAlternateHeadline, NTPBWidgetEngagement;
+@class NSData, NSMutableArray, NSString, NTPBAlternateHeadline, NTPBIssueData, NTPBIssueExposureData, NTPBIssueViewData, NTPBWidgetEngagement;
 
 @interface NTPBMediaEngageComplete : PBCodable <NSCopying>
 {
@@ -36,6 +36,9 @@
     NSString *_iadNativeCampaign;
     NSString *_iadNativeCampaignAd;
     NSString *_iadNativeLine;
+    NTPBIssueData *_issueData;
+    NTPBIssueExposureData *_issueExposureData;
+    NTPBIssueViewData *_issueViewData;
     NSString *_mediaId;
     int _mediaPlayLocation;
     int _mediaType;
@@ -126,6 +129,9 @@
 @property (nonatomic) BOOL hasIsNativeAd;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
 @property (nonatomic) BOOL hasIsVideoInFeed;
+@property (readonly, nonatomic) BOOL hasIssueData;
+@property (readonly, nonatomic) BOOL hasIssueExposureData;
+@property (readonly, nonatomic) BOOL hasIssueViewData;
 @property (nonatomic) BOOL hasMediaDuration;
 @property (readonly, nonatomic) BOOL hasMediaId;
 @property (nonatomic) BOOL hasMediaPlayLocation;
@@ -157,6 +163,9 @@
 @property (nonatomic) BOOL isNativeAd; // @synthesize isNativeAd=_isNativeAd;
 @property (nonatomic) BOOL isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;
 @property (nonatomic) BOOL isVideoInFeed; // @synthesize isVideoInFeed=_isVideoInFeed;
+@property (strong, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
+@property (strong, nonatomic) NTPBIssueExposureData *issueExposureData; // @synthesize issueExposureData=_issueExposureData;
+@property (strong, nonatomic) NTPBIssueViewData *issueViewData; // @synthesize issueViewData=_issueViewData;
 @property (nonatomic) long long mediaDuration; // @synthesize mediaDuration=_mediaDuration;
 @property (strong, nonatomic) NSString *mediaId; // @synthesize mediaId=_mediaId;
 @property (nonatomic) int mediaPlayLocation; // @synthesize mediaPlayLocation=_mediaPlayLocation;

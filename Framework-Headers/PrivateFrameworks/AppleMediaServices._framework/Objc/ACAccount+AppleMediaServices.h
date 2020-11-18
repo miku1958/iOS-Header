@@ -13,6 +13,7 @@
 @interface ACAccount (AppleMediaServices) <AMSHashable>
 
 @property (readonly, nonatomic) NSNumber *ams_DSID;
+@property (readonly, nonatomic, getter=ams_isHSA2) BOOL ams_HSA2;
 @property (readonly, nonatomic, getter=ams_isIDMSAccount) BOOL ams_IDMSAccount;
 @property (readonly, nonatomic) NSString *ams_altDSID;
 @property (readonly, nonatomic) NSArray *ams_cookies;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic, getter=ams_isLocalAccount) BOOL ams_localAccount;
 @property (readonly, nonatomic, getter=ams_isManagedAppleID) BOOL ams_managedAppleID;
 @property (readonly, nonatomic, getter=ams_isSandboxAccount) BOOL ams_sandboxAccount;
+@property (readonly, nonatomic) unsigned long long ams_securityLevel;
 @property (readonly, nonatomic) NSString *ams_storefront;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,17 +35,22 @@
 @property (readonly, nonatomic) NSString *hashedDescription;
 @property (readonly) Class superclass;
 
-+ (BOOL)_defaultValueForAccountFlag:(id)arg1;
++ (id)_defaultValueForAccountFlag:(id)arg1;
++ (BOOL)_isAccountFlagValue:(id)arg1 validForAccountFlag:(id)arg2;
 + (BOOL)_isAccountFlagWritable:(id)arg1;
+- (id)_accountPropertyForKey:(id)arg1 dataProtectionClass:(unsigned long long)arg2 expectedClass:(Class)arg3 error:(id *)arg4;
 - (id)_accountPropertyForKey:(id)arg1 expectedClass:(Class)arg2;
 - (id)_cookiesMatchingProperties:(id)arg1;
 - (id)_createCookieStorage;
+- (void)_setAccountProperty:(id)arg1 forKey:(id)arg2 dataProtectionClass:(unsigned long long)arg3 expectedClass:(Class)arg4;
 - (void)_setAccountProperty:(id)arg1 forKey:(id)arg2 expectedClass:(Class)arg3;
 - (void)_setCookies:(id)arg1;
+- (id)ams_accountFlagValueForAccountFlag:(id)arg1;
 - (id)ams_accountFlags;
 - (void)ams_addCookies:(id)arg1;
 - (id)ams_cookiesForURL:(id)arg1;
 - (BOOL)ams_didAgreeToTerms;
+- (BOOL)ams_encryptAccountFlags;
 - (BOOL)ams_isDuplicate:(id)arg1;
 - (BOOL)ams_isInGoodStanding;
 - (BOOL)ams_isValidPayment;
@@ -56,6 +63,7 @@
 - (void)ams_removeCookiesMatchingProperties:(id)arg1;
 - (BOOL)ams_requiresAuthKitUpdate;
 - (id)ams_secureToken;
+- (void)ams_setAccountFlagValue:(id)arg1 forAccountFlag:(id)arg2;
 - (void)ams_setAccountFlags:(id)arg1;
 - (void)ams_setAgreedToTerms:(BOOL)arg1;
 - (void)ams_setAltDSID:(id)arg1;

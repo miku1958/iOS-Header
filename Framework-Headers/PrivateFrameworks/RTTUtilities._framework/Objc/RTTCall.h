@@ -8,13 +8,15 @@
 
 #import <RTTUtilities/AVCVirtualTTYDeviceDelegate-Protocol.h>
 
-@class AVCVirtualTTYDevice, NSDictionary, NSString, RTTConversation, TUCall;
+@class AVCVirtualTTYDevice, AXDispatchTimer, NSDictionary, NSMutableString, NSString, RTTConversation, TUCall;
 @protocol OS_dispatch_queue, RTTCallDelegate;
 
 @interface RTTCall : NSObject <AVCVirtualTTYDeviceDelegate>
 {
     long long _ttyMode;
     NSObject<OS_dispatch_queue> *_callQueue;
+    NSMutableString *_garbageCollection;
+    AXDispatchTimer *_garbageCharacterStripperTimer;
     id<RTTCallDelegate> _delegate;
     RTTConversation *_conversation;
     TUCall *_call;
@@ -23,9 +25,10 @@
 }
 
 @property (strong, nonatomic) TUCall *call; // @synthesize call=_call;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *callQueue; // @synthesize callQueue=_callQueue;
 @property (strong, nonatomic) RTTConversation *conversation; // @synthesize conversation=_conversation;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<RTTCallDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<RTTCallDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDictionary *substitutions; // @synthesize substitutions=_substitutions;
@@ -33,13 +36,17 @@
 @property (strong, nonatomic) AVCVirtualTTYDevice *ttyDevice; // @synthesize ttyDevice=_ttyDevice;
 
 - (void).cxx_destruct;
+- (BOOL)_handleInitialGarbageTextFromTTY:(struct NSString *)arg1 device:(id)arg2;
+- (struct NSString *)_processText:(struct NSString *)arg1 withDevice:(id)arg2;
 - (void)audioSessionWasInterrupted:(id)arg1;
+- (void)callDidReceiveText:(id)arg1 forUtterance:(id)arg2;
 - (void)dealloc;
 - (void)device:(id)arg1 didReceiveCharacter:(unsigned short)arg2;
 - (void)device:(id)arg1 didReceiveText:(struct NSString *)arg2;
 - (void)device:(id)arg1 didStart:(BOOL)arg2 error:(id)arg3;
 - (void)deviceDidStop:(id)arg1;
 - (id)initWithCall:(id)arg1;
+- (BOOL)isLocallyHosted;
 - (void)mediaServerDied;
 - (void)recreateTTYDevice:(id)arg1;
 - (void)registerNotifications;

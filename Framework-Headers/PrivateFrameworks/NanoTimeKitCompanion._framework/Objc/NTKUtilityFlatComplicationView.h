@@ -28,8 +28,10 @@
 - (BOOL)_shouldLayoutWithImageView;
 - (void)_updateContentForMaxSizeChange;
 - (void)_updateForTemplateChange;
+- (void)_updateHighlightViewCornerRadius;
 - (void)_updateLabelMaxWidth;
 - (double)_widthThatFits;
+- (unsigned long long)imagePlacement;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -37,6 +39,7 @@
 - (void)setForegroundColor:(id)arg1;
 - (void)setPlacement:(unsigned long long)arg1;
 - (void)setShouldUseBackgroundPlatter:(BOOL)arg1;
+- (void)setUseBlockyHighlightCorners:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

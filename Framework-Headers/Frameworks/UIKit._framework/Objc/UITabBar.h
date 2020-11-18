@@ -47,6 +47,7 @@
     long long _imageStyle;
     long long _tabBarSizing;
     unsigned long long _preferredFocusHeading;
+    long long _displayStyle;
     NSArray *_backgroundEffects;
 }
 
@@ -75,6 +76,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UITabBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=_displayStyle, setter=_setDisplayStyle:) long long displayStyle; // @synthesize displayStyle=_displayStyle;
 @property (nonatomic, getter=_focusedItemHighlightShouldBeVisible, setter=_setFocusedItemHightlightShouldBeVisible:) BOOL focusedItemHighlightShouldBeVisible;
 @property (readonly, nonatomic, getter=_focusedTabBarItem) UITabBarItem *focusedTabBarItem;
 @property (readonly) unsigned long long hash;

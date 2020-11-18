@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)geometry:(id)arg1;
 - (id)init;
 - (id)matrix;
-- (void)submit:(const struct PrimitiveInfo *)arg1;
+- (void)submit:(id)arg1;
 
 @end
 

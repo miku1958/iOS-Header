@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString, SFPrintQueueItem, UIPrintInfo, UIPrintInteractionController, UIViewController, WBUPrintPageRenderer, WKWebView, _SFReaderController;
+#import <SafariServices/UIPrintInteractionControllerDelegate-Protocol.h>
+#import <SafariServices/WBUPrintPageRendererDelegate-Protocol.h>
+
+@class NSMutableArray, NSString, SFPrintQueueItem, UIPrintInfo, UIPrintInteractionController, WBUPrintPageRenderer, WKWebView, _SFReaderController;
 @protocol _SFDialogPresenting, _SFPrintControllerDelegate;
 
-@interface _SFPrintController : NSObject
+@interface _SFPrintController : NSObject <UIPrintInteractionControllerDelegate, WBUPrintPageRendererDelegate>
 {
     UIPrintInfo *_cachedPrintInfo;
     WBUPrintPageRenderer *_cachedPrintPageRenderer;
@@ -19,20 +22,23 @@
     NSString *_loadingDialogTitle;
     NSMutableArray *_printQueue;
     SFPrintQueueItem *_currentItem;
+    BOOL _hasReservedPrintInteractionController;
     BOOL _suppressingPrintUI;
     WKWebView *_webView;
     _SFReaderController *_readerController;
     id<_SFDialogPresenting> _dialogPresenter;
     id<_SFPrintControllerDelegate> _delegate;
-    UIViewController *_viewControllerForPresentation;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_SFPrintControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<_SFDialogPresenting> dialogPresenter; // @synthesize dialogPresenter=_dialogPresenter;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIPrintInfo *printInfo;
 @property (readonly, nonatomic) WBUPrintPageRenderer *printRenderer;
 @property (weak, nonatomic) _SFReaderController *readerController; // @synthesize readerController=_readerController;
-@property (weak, nonatomic) UIViewController *viewControllerForPresentation; // @synthesize viewControllerForPresentation=_viewControllerForPresentation;
+@property (readonly) Class superclass;
 @property (weak, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
 - (void).cxx_destruct;
@@ -48,8 +54,10 @@
 - (void)handleNextPrintRequest;
 - (id)init;
 - (void)preparePrintInteractionControllerForUsage:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)presentingViewControllerForPrintPageRenderer:(id)arg1;
 - (void)printFrame:(id)arg1 initiatedByWebContent:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)printInteractionControllerDidFinish;
+- (id)printInteractionControllerParentViewController:(id)arg1;
 - (BOOL)reservePrintInteractionController;
 - (void)resetPrintUISuppression;
 - (void)updatePrintInfo;

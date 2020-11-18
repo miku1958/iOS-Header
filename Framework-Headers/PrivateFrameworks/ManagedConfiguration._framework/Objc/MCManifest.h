@@ -27,10 +27,12 @@
 + (id)installedUserProfileWithIdentifier:(id)arg1;
 + (id)sharedManifest;
 - (void).cxx_destruct;
+- (void)_adjustManifestIdentifier:(id)arg1 isUserInstall:(BOOL)arg2 flag:(int)arg3 addingIdentifier:(BOOL)arg4;
 - (void)_setSystemManifest:(id)arg1 userManifest:(id)arg2;
 - (id)_systemManifest;
 - (id)_userManifest;
-- (void)addIdentifierToManifest:(id)arg1 flag:(int)arg2;
+- (void)addIdentifierToSystemManifest:(id)arg1 flag:(int)arg2;
+- (void)addIdentifierToUserManifest:(id)arg1 flag:(int)arg2;
 - (id)allInstalledProfileIdentifiers;
 - (id)allInstalledSystemProfileIdentifiers;
 - (id)allInstalledUserProfileIdentifiers;
@@ -43,8 +45,8 @@
 - (id)installedSystemProfileWithIdentifier:(id)arg1;
 - (id)installedUserProfileWithIdentifier:(id)arg1;
 - (void)invalidateCache;
-- (void)removeIdentifierFromSystemManifest:(id)arg1;
-- (void)removeIdentifierFromUserManifest:(id)arg1;
+- (void)removeIdentifierFromSystemManifest:(id)arg1 flag:(int)arg2;
+- (void)removeIdentifierFromUserManifest:(id)arg1 flag:(int)arg2;
 - (id)systemManifest;
 - (id)userManifest;
 

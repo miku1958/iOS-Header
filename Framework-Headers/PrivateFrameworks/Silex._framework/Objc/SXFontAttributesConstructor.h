@@ -6,19 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class SXDocumentController;
+#import <Silex/SXFontAttributesConstructor-Protocol.h>
 
-@interface SXFontAttributesConstructor : NSObject
+@class NSString;
+@protocol SXFontIndex;
+
+@interface SXFontAttributesConstructor : NSObject <SXFontAttributesConstructor>
 {
-    SXDocumentController *_documentController;
+    id<SXFontIndex> _fontIndex;
 }
 
-@property (readonly, nonatomic) SXDocumentController *documentController; // @synthesize documentController=_documentController;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<SXFontIndex> fontIndex; // @synthesize fontIndex=_fontIndex;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)fontAttributesForFontDescriptions:(id)arg1;
 - (id)fontNameForAttributes:(id)arg1;
-- (id)initWithDocumentController:(id)arg1;
+- (id)initWithFontIndex:(id)arg1;
 - (long long)weightByApplyingWeightLabels:(id)arg1 toWeight:(long long)arg2;
 
 @end

@@ -35,18 +35,22 @@
 
 - (void).cxx_destruct;
 - (long long)_CDACountWithDatabase:(id)arg1 error:(id *)arg2;
+- (id)_aFibSamplesBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (id)_actions;
 - (BOOL)_activitySummaryForActivitySummaryIndex:(long long)arg1 activitySummaryOut:(id *)arg2 error:(id *)arg3;
 - (BOOL)_addRowCountDeltaToEvent:(id)arg1 profile:(id)arg2 currentDate:(id)arg3;
 - (BOOL)_computeAndSubmitDatabaseStatsMetric:(BOOL)arg1;
 - (BOOL)_computeAndSubmitFitnessDailyReportWithAction:(id)arg1 force:(BOOL)arg2;
 - (BOOL)_computeAndSubmitHealthTypesDifferentialPrivacyMetric;
+- (BOOL)_computeAndSubmitHeartDailyAnalyticsWithAction:(id)arg1 force:(BOOL)arg2;
 - (BOOL)_computeAndSubmitSleepAlarmDailyReportWithAction:(id)arg1 force:(BOOL)arg2;
 - (BOOL)_computeAndSubmitSleepAlarmStatistics:(BOOL)arg1;
 - (long long)_countOfObjectsWithSQLQuery:(id)arg1 database:(id)arg2 error:(id *)arg3 bindingHandler:(CDUnknownBlockType)arg4;
 - (long long)_deletedRowCountWithDatabase:(id)arg1 error:(id *)arg2;
+- (id)_ecgClassificationsBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (BOOL)_enumerateAppleStandHoursFromDate:(id)arg1 toDate:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
 - (id)_exerciseMinuteHoursFromDate:(id)arg1 toDate:(id)arg2 error:(id *)arg3;
+- (id)_generateHeartDailyAnalyticsWithStartDate:(id)arg1 endDate:(id)arg2;
 - (id)_hasWatchSourcesWithDatabase:(id)arg1 error:(id *)arg2;
 - (id)_hourlyStatisticsCollectionForStartDate:(id)arg1 endDate:(id)arg2 quantityType:(id)arg3 statisticsOptions:(unsigned long long)arg4 error:(id *)arg5;
 - (long long)_int64ForKeyPrefix:(id)arg1 profile:(id)arg2 date:(id *)arg3 error:(id *)arg4;

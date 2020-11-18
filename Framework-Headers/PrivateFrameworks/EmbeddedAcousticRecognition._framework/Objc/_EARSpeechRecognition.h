@@ -20,7 +20,7 @@
 @property (readonly, copy, nonatomic) NSArray *tokenSausage; // @synthesize tokenSausage=_tokenSausage;
 
 - (void).cxx_destruct;
-- (id)_initWithNBestList:(const vector_2c247c42 *)arg1;
+- (id)_initWithNBestList:(const vector_2c247c42 *)arg1 useHatText:(BOOL)arg2;
 - (id)_initWithTokenSausage:(id)arg1 interpretationIndices:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)nBest;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)extend2DProjectedBounds:(const box_a3bd9649 *)arg1;
 - (id)init;
 - (void)resetBounds;
-- (void)submit:(const struct PrimitiveInfo *)arg1;
+- (void)submit:(id)arg1;
 
 @end
 

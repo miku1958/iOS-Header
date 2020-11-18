@@ -11,15 +11,16 @@
 @interface MediaControlsRoutingButtonView : MPButton
 {
     long long _currentMode;
+    long long _deviceType;
     MediaControlsRoutingButtonPackageView *_packageView;
 }
 
 @property (nonatomic) long long currentMode; // @synthesize currentMode=_currentMode;
+@property (nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 @property (strong, nonatomic) MediaControlsRoutingButtonPackageView *packageView; // @synthesize packageView=_packageView;
 
 - (void).cxx_destruct;
 - (void)_updateGlyph;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setAlpha:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1;

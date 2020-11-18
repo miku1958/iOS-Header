@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class AVMicaPackage, AVObservationController, MPMediaControlsViewController, NSObject, UIButton, UIColor, UIViewPropertyAnimator;
+@class AVMicaPackage, AVObservationController, MPMediaControlsViewController, NSObject, NSString, UIButton, UIColor, UIViewPropertyAnimator;
 @protocol AVRoutePickerViewDelegate, OS_dispatch_queue;
 
 @interface AVRoutePickerView : UIView
@@ -19,14 +19,17 @@
     UIViewPropertyAnimator *_buttonHighlightAnimator;
     AVObservationController *_observationController;
     BOOL _airPlayActive;
+    BOOL _prioritizesVideoDevices;
     AVMicaPackage *_routePickerButtonMicaPackage;
     MPMediaControlsViewController *_routePickerViewController;
     id<AVRoutePickerViewDelegate> _delegate;
     long long _routePickerButtonStyle;
+    NSString *_overrideRoutingContextUID;
 }
 
 @property (strong, nonatomic) UIColor *activeTintColor;
 @property (weak, nonatomic) id<AVRoutePickerViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (copy, nonatomic) NSString *overrideRoutingContextUID; // @synthesize overrideRoutingContextUID=_overrideRoutingContextUID;
 @property (nonatomic) long long routePickerButtonStyle; // @synthesize routePickerButtonStyle=_routePickerButtonStyle;
 
 - (void).cxx_destruct;
@@ -48,8 +51,10 @@
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isAirPlayActive;
 - (void)layoutSubviews;
+- (BOOL)prioritizesVideoDevices;
 - (void)setAirPlayActive:(BOOL)arg1;
 - (void)setCustomButton:(id)arg1;
+- (void)setPrioritizesVideoDevices:(BOOL)arg1;
 - (void)tintColorDidChange;
 - (void)updateButtonAppearance;
 

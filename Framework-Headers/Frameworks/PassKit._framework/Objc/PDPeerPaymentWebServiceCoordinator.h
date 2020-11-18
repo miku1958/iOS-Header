@@ -75,6 +75,7 @@
 - (void)handleMigratedAccount:(id)arg1;
 - (void)handlePassLibraryChangedWithPassUniqueIdentifier:(id)arg1;
 - (void)handlePushNotificationForTopic:(id)arg1 userInfo:(id)arg2;
+- (void)identityVerificationResponseWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithPushNotificationManager:(id)arg1 paymentWebService:(id)arg2 assertionManager:(id)arg3 dataSource:(id)arg4;
 - (id)initWithPushNotificationManager:(id)arg1 paymentWebService:(id)arg2 assertionManager:(id)arg3 dataSource:(id)arg4 passStore:(id)arg5;
 - (id)initWithPushNotificationManager:(id)arg1 paymentWebService:(id)arg2 assertionManager:(id)arg3 userNotificationManager:(id)arg4 dataSource:(id)arg5 passStore:(id)arg6;

@@ -29,12 +29,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_deviceBedtimeDidChange:(id)arg1;
+- (id)_subtitleTextForDeviceBedtime:(id)arg1;
 - (void)alwaysAllowListController:(id)arg1 didFinishEditingAlwaysAllowList:(id)arg2;
 - (id)alwaysAllowedDetailText;
 - (id)appLimitsDetailText;
 - (void)bedtimeListController:(id)arg1 didFinishEditingBedtime:(id)arg2;
 - (id)contentPrivacyDetailText;
-- (id)deviceDowntimeDetailText;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setCoordinator:(id)arg1;

@@ -12,11 +12,16 @@
 {
     double _contactRelevanceScore;
     double _fractionOfMatch;
+    double _mapsSuggestionsContactRevelanceScore;
+    double _mapsSuggestionsIsTouristScore;
+    double _mapsSuggestionsPoiRevelanceScore;
     int _age;
     int _distanceToSuggestion;
     int _peopleSuggesterRank;
+    int _poiOpenState;
     int _serverEntryType;
     int _suggestionType;
+    BOOL _isFavorite;
     BOOL _matchedUsingAddress;
     BOOL _matchedUsingEventName;
     BOOL _matchedUsingLabel;
@@ -26,11 +31,16 @@
     struct {
         unsigned int contactRelevanceScore:1;
         unsigned int fractionOfMatch:1;
+        unsigned int mapsSuggestionsContactRevelanceScore:1;
+        unsigned int mapsSuggestionsIsTouristScore:1;
+        unsigned int mapsSuggestionsPoiRevelanceScore:1;
         unsigned int age:1;
         unsigned int distanceToSuggestion:1;
         unsigned int peopleSuggesterRank:1;
+        unsigned int poiOpenState:1;
         unsigned int serverEntryType:1;
         unsigned int suggestionType:1;
+        unsigned int isFavorite:1;
         unsigned int matchedUsingAddress:1;
         unsigned int matchedUsingEventName:1;
         unsigned int matchedUsingLabel:1;
@@ -48,25 +58,36 @@
 @property (nonatomic) BOOL hasContactRelevanceScore;
 @property (nonatomic) BOOL hasDistanceToSuggestion;
 @property (nonatomic) BOOL hasFractionOfMatch;
+@property (nonatomic) BOOL hasIsFavorite;
+@property (nonatomic) BOOL hasMapsSuggestionsContactRevelanceScore;
+@property (nonatomic) BOOL hasMapsSuggestionsIsTouristScore;
+@property (nonatomic) BOOL hasMapsSuggestionsPoiRevelanceScore;
 @property (nonatomic) BOOL hasMatchedUsingAddress;
 @property (nonatomic) BOOL hasMatchedUsingEventName;
 @property (nonatomic) BOOL hasMatchedUsingLabel;
 @property (nonatomic) BOOL hasMatchedUsingName;
 @property (nonatomic) BOOL hasMatchedUsingOrganization;
 @property (nonatomic) BOOL hasPeopleSuggesterRank;
+@property (nonatomic) BOOL hasPoiOpenState;
 @property (nonatomic) BOOL hasServerEntryType;
 @property (nonatomic) BOOL hasShownToUser;
 @property (nonatomic) BOOL hasSuggestionType;
+@property (nonatomic) BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
+@property (nonatomic) double mapsSuggestionsContactRevelanceScore; // @synthesize mapsSuggestionsContactRevelanceScore=_mapsSuggestionsContactRevelanceScore;
+@property (nonatomic) double mapsSuggestionsIsTouristScore; // @synthesize mapsSuggestionsIsTouristScore=_mapsSuggestionsIsTouristScore;
+@property (nonatomic) double mapsSuggestionsPoiRevelanceScore; // @synthesize mapsSuggestionsPoiRevelanceScore=_mapsSuggestionsPoiRevelanceScore;
 @property (nonatomic) BOOL matchedUsingAddress; // @synthesize matchedUsingAddress=_matchedUsingAddress;
 @property (nonatomic) BOOL matchedUsingEventName; // @synthesize matchedUsingEventName=_matchedUsingEventName;
 @property (nonatomic) BOOL matchedUsingLabel; // @synthesize matchedUsingLabel=_matchedUsingLabel;
 @property (nonatomic) BOOL matchedUsingName; // @synthesize matchedUsingName=_matchedUsingName;
 @property (nonatomic) BOOL matchedUsingOrganization; // @synthesize matchedUsingOrganization=_matchedUsingOrganization;
 @property (nonatomic) int peopleSuggesterRank; // @synthesize peopleSuggesterRank=_peopleSuggesterRank;
+@property (nonatomic) int poiOpenState; // @synthesize poiOpenState=_poiOpenState;
 @property (nonatomic) int serverEntryType; // @synthesize serverEntryType=_serverEntryType;
 @property (nonatomic) BOOL shownToUser; // @synthesize shownToUser=_shownToUser;
 @property (nonatomic) int suggestionType; // @synthesize suggestionType=_suggestionType;
 
+- (int)StringAsPoiOpenState:(id)arg1;
 - (int)StringAsServerEntryType:(id)arg1;
 - (int)StringAsSuggestionType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -76,6 +97,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)poiOpenStateAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)serverEntryTypeAsString:(int)arg1;
 - (id)suggestionTypeAsString:(int)arg1;

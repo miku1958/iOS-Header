@@ -14,6 +14,7 @@
 
 @interface STUsageDetailsViewModelCoordinator : NSObject <NSFetchedResultsControllerDelegate, STUsageDetailsViewModelCoordinator>
 {
+    BOOL _refreshing;
     STUsageDetailsViewModel *_viewModel;
     NSArray *_devices;
     NSString *_selectedDeviceIdentifier;
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) NSDate *lastUsageDataRefreshTime; // @synthesize lastUsageDataRefreshTime=_lastUsageDataRefreshTime;
 @property (copy, nonatomic) NSString *organizationIdentifier; // @synthesize organizationIdentifier=_organizationIdentifier;
 @property (strong, nonatomic) id<RMPersistenceControllerProtocol> persistenceController; // @synthesize persistenceController=_persistenceController;
+@property (getter=isRefreshing) BOOL refreshing; // @synthesize refreshing=_refreshing;
 @property (copy, nonatomic) NSString *selectedDeviceIdentifier; // @synthesize selectedDeviceIdentifier=_selectedDeviceIdentifier;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSFetchedResultsController *usageBlocksFetchedResultsController; // @synthesize usageBlocksFetchedResultsController=_usageBlocksFetchedResultsController;
@@ -44,7 +46,7 @@
 - (void).cxx_destruct;
 - (void)_refreshUsageDataAndReschedule;
 - (void)_refreshUsageDataWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_usageItemsWithUser:(id)arg1 device:(id)arg2 lastUpdatedDate:(id *)arg3 inManagedObjectContext:(id)arg4 error:(id *)arg5;
+- (id)_usageItemsWithUser:(id)arg1 device:(id)arg2 lastUpdatedDate:(id *)arg3 firstPickupOnReferenceDate:(id *)arg4 referenceDate:(id)arg5 inManagedObjectContext:(id)arg6 error:(id *)arg7;
 - (void)controllerDidChangeContent:(id)arg1;
 - (void)dealloc;
 - (id)initWithPersistenceController:(id)arg1 organizationIdentifier:(id)arg2 userDSID:(id)arg3 devices:(id)arg4;

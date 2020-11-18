@@ -20,6 +20,7 @@
 @property (readonly) NSString *accountTypeIdentifierFacebook;
 @property (readonly) NSString *accountTypeIdentifierSinaWeibo;
 @property (readonly) NSString *accountTypeIdentifierTwitter;
+@property (readonly) SUScriptAppleAccount *activeStoreAccount;
 @property (readonly) NSString *effectiveBundleID;
 @property (readonly) SUScriptAppleAccount *primaryAppleAccount;
 @property (readonly) long long renewResultFailed;

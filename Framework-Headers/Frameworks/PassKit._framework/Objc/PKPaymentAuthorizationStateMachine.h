@@ -10,7 +10,7 @@
 #import <PassKitCore/PKContinuityPaymentCoordinatorDelegate-Protocol.h>
 
 @class CBCentralManager, NSMutableArray, NSString, PKContinuityPaymentCoordinator, PKContinuityPaymentService, PKInAppPaymentSession, PKPaymentAuthorizationClientCallbackStateParam, PKPaymentAuthorizationDataModel, PKPaymentService, PKPaymentWebService, PKPeerPaymentSession;
-@protocol OS_dispatch_source, PKAggregateDictionaryProtocol, PKPaymentAuthorizationStateMachineDelegate;
+@protocol OS_dispatch_group, OS_dispatch_source, PKAggregateDictionaryProtocol, PKPaymentAuthorizationStateMachineDelegate;
 
 @interface PKPaymentAuthorizationStateMachine : NSObject <PKContinuityPaymentCoordinatorDelegate, CBCentralManagerDelegate>
 {
@@ -36,6 +36,7 @@
     PKPaymentAuthorizationClientCallbackStateParam *_mostRecentClientCallback;
     NSString *_instanceIdentifier;
     unsigned long long _prepareTransactionDetailsCounter;
+    NSObject<OS_dispatch_group> *_delayAuthorizedStateGroup;
 }
 
 @property (strong, nonatomic) id<PKAggregateDictionaryProtocol> aggregateDictionary; // @synthesize aggregateDictionary=_aggregateDictionary;
@@ -47,6 +48,7 @@
 @property (strong, nonatomic) PKContinuityPaymentCoordinator *continuityPaymentCoordinator; // @synthesize continuityPaymentCoordinator=_continuityPaymentCoordinator;
 @property (strong, nonatomic) PKContinuityPaymentService *continuityPaymentService; // @synthesize continuityPaymentService=_continuityPaymentService;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) NSObject<OS_dispatch_group> *delayAuthorizedStateGroup; // @synthesize delayAuthorizedStateGroup=_delayAuthorizedStateGroup;
 @property (weak, nonatomic) id<PKPaymentAuthorizationStateMachineDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL detectedBluetoothOn; // @synthesize detectedBluetoothOn=_detectedBluetoothOn;
@@ -67,11 +69,14 @@
 @property (readonly, nonatomic) BOOL useSecureElement;
 
 - (void).cxx_destruct;
+- (void)__setState:(unsigned long long)arg1 param:(id)arg2;
 - (void)_advanceToNextState;
+- (void)_applyBillingInformationToAuthorizedQuote:(id)arg1;
 - (void)_applyBillingInformationToPayment:(id)arg1;
 - (void)_applyShippingInformationToPayment:(id)arg1;
 - (void)_applyShippingMethodToPayment:(id)arg1;
 - (void)_applyWebServiceConfigurationIfNeeded;
+- (id)_billingInformationFromPaymentRequest:(id)arg1;
 - (void)_cancelClientCallbackTimer;
 - (void)_clientCallbackTimedOut;
 - (id)_createNewRemotePaymentRequest;
@@ -80,6 +85,7 @@
 - (void)_dispatchNextCallbackParam;
 - (void)_enqeueDidAuthorizePurchaseWithParam:(id)arg1;
 - (void)_enqueueCallbackOfKind:(long long)arg1 withObject:(id)arg2;
+- (void)_enqueueDidAuthorizeDisbursementWithVoucher:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithByPassPayment:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithPayment:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithRemotePayment:(id)arg1;
@@ -123,6 +129,7 @@
 - (id)_transactionWithPurchase:(id)arg1 paymentHash:(id)arg2;
 - (void)_unregisterForNotifications;
 - (void)_updateModelWithShippingMethods:(id)arg1 paymentSummaryItems:(id)arg2;
+- (void)beginDelayingAuthorizedState;
 - (BOOL)canSelectPaymentOptions;
 - (void)centralManagerDidUpdateState:(id)arg1;
 - (void)continuityPaymentCoordinator:(id)arg1 didReceivePayment:(id)arg2;
@@ -131,6 +138,7 @@
 - (void)continuityPaymentCoordinatorDidReceiveCancellation:(id)arg1;
 - (void)continuityPaymentCoordinatorDidTimeoutUpdatePaymentDevices:(id)arg1;
 - (void)dealloc;
+- (void)delayAuthorizedStateByDuration:(double)arg1;
 - (void)didAuthenticateWithAuthenticatorEvaluationResponse:(id)arg1;
 - (void)didAuthenticateWithCredential:(id)arg1;
 - (void)didBecomeActive:(BOOL)arg1;
@@ -160,6 +168,7 @@
 - (void)didSelectShippingMethod:(id)arg1;
 - (void)didSelectShippingName:(id)arg1;
 - (void)didSelectShippingPhoneNumber:(id)arg1;
+- (void)endDelayingAuthorizedState;
 - (BOOL)hasPendingCallbacks;
 - (id)init;
 - (void)start;

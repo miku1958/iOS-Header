@@ -39,13 +39,11 @@
 
 - (void).cxx_destruct;
 - (void)appendToExistingCEPBlacklist:(id)arg1;
-- (float)enagementProbabilityForCategoryCooked:(id)arg1;
 - (float)engagementProbabilityForCategory:(id)arg1;
-- (float)engagementProbabilityForCategory:(id)arg1 allowDefault:(BOOL)arg2;
 - (id)init;
 - (void)mergeWith:(id)arg1;
-- (double)queryDependentProbabilityForCategoryWithDefaultFloor:(id)arg1;
-- (double)queryIndependentProbabilityForCategoryWithDefaultFloor:(id)arg1;
+- (double)queryDependentProbabilityForCategory:(id)arg1;
+- (double)queryIndependentProbabilityForCategory:(id)arg1;
 - (void)updateQueryDependentProbabilityAndBlacklistSetWith:(id)arg1;
 - (void)updateWithSQFData:(id)arg1;
 

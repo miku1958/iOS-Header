@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)_parsables;
++ (id)_sharedPushHandler;
 + (void)handleNotification:(id)arg1;
 + (BOOL)shouldHandleNotification:(id)arg1;
 

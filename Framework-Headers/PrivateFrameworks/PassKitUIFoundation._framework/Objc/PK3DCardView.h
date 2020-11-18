@@ -20,6 +20,7 @@
     MISSING_TYPE *_lastRollPitch;
     BOOL _renderedOnce;
     BOOL _motionEnabled;
+    BOOL _invalidated;
     id<PK3DLiveCardViewDelegate> _delegate;
 }
 
@@ -29,12 +30,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_sharedMotionManager;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)invalidate;
 - (void)layoutSubviews;
+- (void)motionManager:(id)arg1 didReceiveMotion:(id)arg2;
 - (void)renderSceneWithTextures:(id)arg1 shaders:(id)arg2;
 - (void)renderer:(id)arg1 didRenderScene:(id)arg2 atTime:(double)arg3;
 - (void)setMotionEnabled:(BOOL)arg1;

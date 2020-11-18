@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)streamReadChannelForEntry:(id)arg1;
 - (id)streamReadChannelForEntry:(id)arg1 validateCRC:(BOOL)arg2;
 - (id)tsp_dataForEntry:(id)arg1;
+- (BOOL)tsp_writeZipEntry:(id)arg1 toURL:(id)arg2 validateCRC:(BOOL)arg3 error:(id *)arg4;
 
 @end
 

@@ -104,6 +104,7 @@
 - (int)_continuePairingAfterAuthPrompt;
 - (void)_continuePairingAfterConfirmingSecureWAC;
 - (void)_continuePairingAfterConfirmingSoftAuthWAC;
+- (void)_continuePairingAfterMFiCertValidation;
 - (void)_continuePairingAfterWAC:(id)arg1;
 - (void)_continuePairingUsingWAC;
 - (int)_continuePairingWithSetupCode:(id)arg1;
@@ -115,10 +116,12 @@
 - (void)_error:(id)arg1 forWriteCharacteristicValues:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_establishSecureConnectionAndFetchAttributeDatabase;
 - (void)_establishSecureSession;
+- (void)_establishSecureSessionAndRemovePairing:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_getAttributeDatabase;
 - (void)_handleEventResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 error:(id)arg4 characteristics:(id)arg5 requestedEventState:(BOOL)arg6 completion:(CDUnknownBlockType)arg7 queue:(id)arg8;
 - (void)_handleHTTPClientErrors;
 - (void)_handleListPairingsResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 httpError:(id)arg4 completionQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_handleMFiCertValidation;
 - (int)_handlePairSetupCompletionWithData:(id)arg1;
 - (int)_handlePairVerifyCompletionWithData:(id)arg1;
 - (void)_handlePairingsResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 httpError:(id)arg4 removeRequest:(BOOL)arg5 completionQueue:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
@@ -166,6 +169,7 @@
 - (void)_removePairingWithIdentifier:(id)arg1 publicKey:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_requestResource:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_reset;
+- (void)_sendRemovePairingWithData:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_startAddPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_tearDownSession;
 - (void)_tearDownWAC;

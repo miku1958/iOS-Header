@@ -35,6 +35,7 @@
 - (void)_localeChanged:(id)arg1;
 - (id)_preferredLanguages;
 - (void)_resolveMapItemFromHandle:(id)arg1 withTraits:(id)arg2 cachePolicy:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_resolveMapItemFromHandle:(id)arg1 withTraits:(id)arg2 cachePolicy:(unsigned long long)arg3 coordinateOnlyRefinement:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_searchable_ticketForReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 floor:(int)arg2 includeEntryPoints:(BOOL)arg3 shiftLocationsIfNeeded:(BOOL)arg4 preserveOriginalLocation:(BOOL)arg5 traits:(id)arg6;
 - (id)_searchable_ticketForReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 includeEntryPoints:(BOOL)arg2 shiftLocationsIfNeeded:(BOOL)arg3 preserveOriginalLocation:(BOOL)arg4 traits:(id)arg5;
 - (void)_sendInvalidateDataToSiriAndParSec;
@@ -52,6 +53,7 @@
 - (void)resolveMapItemFromHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resolveMapItemFromHandle:(id)arg1 traits:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)resolveMapItemFromHandle:(id)arg1 withTraits:(id)arg2 useCache:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)resolveMapItemFromHandle:(id)arg1 withTraits:(id)arg2 useCache:(BOOL)arg3 coordinateOnlyRefinement:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)resolveMapItemLocallyFromHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)serializedClientMetadataForParsec;
 - (id)serializedClientMetadataForSiri;
@@ -85,6 +87,7 @@
 - (id)ticketForMUIDs:(id)arg1 resultProviderID:(int)arg2 contentProvider:(id)arg3 traits:(id)arg4;
 - (id)ticketForMUIDs:(id)arg1 traits:(id)arg2;
 - (id)ticketForMapItemToRefine:(id)arg1 traits:(id)arg2;
+- (id)ticketForMerchantCode:(id)arg1 rawMerchantCode:(id)arg2 industryCategory:(id)arg3 industryCode:(id)arg4 paymentNetwork:(id)arg5 transactionDate:(id)arg6 transactionLocation:(id)arg7 terminalId:(id)arg8 transactionCurrencyCode:(id)arg9 transactionType:(int)arg10 warsawMerchantDomain:(id)arg11 warsawMerchantName:(id)arg12 warsawMerchantId:(id)arg13 adamId:(id)arg14 merchantId:(id)arg15 merchantDoingBizAsName:(id)arg16 merchantEnhancedName:(id)arg17 merchantCity:(id)arg18 merchantRawCity:(id)arg19 merchantState:(id)arg20 merchantRawState:(id)arg21 merchantZip:(id)arg22 merchantAddress:(id)arg23 merchantRawAddress:(id)arg24 merchantCountryCode:(id)arg25 merchantType:(id)arg26 merchantCleanConfidenceLevel:(id)arg27 merchantAdditionalData:(id)arg28 traits:(id)arg29;
 - (id)ticketForMerchantCode:(id)arg1 rawMerchantCode:(id)arg2 industryCategory:(id)arg3 industryCode:(id)arg4 paymentNetwork:(id)arg5 transactionDate:(id)arg6 transactionLocation:(id)arg7 traits:(id)arg8;
 - (id)ticketForNearestTransitStation:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 traits:(id)arg3;
 - (id)ticketForNonExpiredIdentifier:(id)arg1 resultProviderID:(int)arg2 contentProvider:(id)arg3 traits:(id)arg4;

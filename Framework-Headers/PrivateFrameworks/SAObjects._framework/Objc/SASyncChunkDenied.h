@@ -31,6 +31,7 @@
 - (id)encodedClassName;
 - (id)groupIdentifier;
 - (id)initWithErrorCode:(long long)arg1;
+- (BOOL)mutatingCommand;
 - (BOOL)requiresResponse;
 
 @end

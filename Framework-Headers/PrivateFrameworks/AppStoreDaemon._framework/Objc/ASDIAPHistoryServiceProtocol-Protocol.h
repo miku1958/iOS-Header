@@ -9,7 +9,7 @@
 @protocol ASDIAPHistoryServiceProtocol
 - (void)getAllIAPsForActiveAccountWithReplyHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getIAPsForActiveAccountWithAdamIDs:(NSArray *)arg1 withReplyHandler:(void (^)(NSArray *, NSError *))arg2;
-- (void)getSubscriptionEntitlementsIgnoreCaches:(BOOL)arg1 forActiveAccountWithReplyHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)getSubscriptionEntitlementsIgnoreCaches:(BOOL)arg1 forActiveAccountWithReplyHandler:(void (^)(NSArray *, BOOL, NSError *))arg2;
 - (void)refreshIAPsForActiveAccountWithReplyHandler:(void (^)(NSError *))arg1;
 - (void)setSubscriptionEntitlementsWithDictionary:(NSDictionary *)arg1 forAccountID:(NSNumber *)arg2;
 @end

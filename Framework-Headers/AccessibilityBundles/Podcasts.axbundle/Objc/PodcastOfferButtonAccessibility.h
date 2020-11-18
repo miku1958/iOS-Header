@@ -13,9 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityActionButton;
 - (BOOL)_accessibilityPerformLibraryAddKeepLocalControl:(id)arg1;
 - (id)_accessibilityUserTestingChildren;
+- (id)_axActionButton;
 - (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

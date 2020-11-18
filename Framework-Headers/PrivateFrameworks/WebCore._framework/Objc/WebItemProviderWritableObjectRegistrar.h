@@ -9,19 +9,19 @@
 #import <WebCore/WebItemProviderRegistrar-Protocol.h>
 
 @class NSData, NSString;
-@protocol NSItemProviderWriting, UIItemProviderWriting;
+@protocol NSItemProviderWriting;
 
 __attribute__((visibility("hidden")))
 @interface WebItemProviderWritableObjectRegistrar : NSObject <WebItemProviderRegistrar>
 {
-    struct RetainPtr<id<UIItemProviderWriting>> _representingObject;
+    struct RetainPtr<id<NSItemProviderWriting>> _representingObject;
 }
 
 @property (readonly, nonatomic) NSData *dataForClient;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<UIItemProviderWriting> representingObject;
+@property (readonly, nonatomic) id<NSItemProviderWriting> representingObject;
 @property (readonly, nonatomic) id<NSItemProviderWriting> representingObjectForClient;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *typeIdentifierForClient;

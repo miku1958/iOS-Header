@@ -78,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (id)previousAnimatedBuildForInfo:(id)arg1 priorToBuild:(id)arg2;
 - (id)previousBuildInForInfo:(id)arg1 priorToBuild:(id)arg2;
 - (id)previousContentBuildForInfo:(id)arg1 priorToBuild:(id)arg2;
+- (id)previousRendererBeforeRenderer:(id)arg1;
 - (id)rendererForAnimatedBuild:(id)arg1;
 - (id)sortRenderers:(id)arg1;
 

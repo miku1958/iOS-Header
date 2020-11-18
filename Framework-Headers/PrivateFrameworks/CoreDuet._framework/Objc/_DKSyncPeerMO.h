@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSString, NSUUID;
+@class NSDate, NSString, NSUUID;
 
 @interface _DKSyncPeerMO : NSManagedObject
 {
@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSString *cloudID; // @dynamic cloudID;
 @property (copy, nonatomic) NSString *deviceID; // @dynamic deviceID;
+@property (copy, nonatomic) NSDate *lastSeenDate; // @dynamic lastSeenDate;
 @property (copy, nonatomic) NSString *rapportID; // @dynamic rapportID;
 @property (copy, nonatomic) NSUUID *uuid; // @dynamic uuid;
 

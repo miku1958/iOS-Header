@@ -40,6 +40,7 @@
 @property (readonly, nonatomic) BOOL isBeginWorkoutDonation;
 @property (readonly, nonatomic) BOOL isEndWorkoutDonation;
 @property (readonly, nonatomic) BOOL isMediaDonation;
+@property (readonly, nonatomic) BOOL isWorkoutDonation;
 @property (readonly, nonatomic) NSString *localBundleIdentifier;
 @property (readonly, nonatomic, getter=isLocalDonation) BOOL localDonation;
 @property (readonly, nonatomic) INRelevantShortcut *relevantShortcut; // @synthesize relevantShortcut=_relevantShortcut;
@@ -49,7 +50,6 @@
 @property (readonly, nonatomic) BOOL supportsLocalIntentExecution;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) NSUserActivity *userActivity; // @synthesize userActivity=_userActivity;
-@property (readonly, nonatomic) BOOL wantsThreeLineLayout;
 
 + (void)createWithDonatedAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;

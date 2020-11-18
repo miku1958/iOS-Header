@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)startNavigationForRouteDetails:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)stopNavigation;
 - (id)traceManager;
-- (unsigned long long)type;
+- (long long)type;
 
 @end
 

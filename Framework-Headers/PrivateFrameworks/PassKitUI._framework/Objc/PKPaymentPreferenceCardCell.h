@@ -11,7 +11,6 @@
 @interface PKPaymentPreferenceCardCell : PKPaymentPreferenceCell
 {
     BOOL _isRightToLeft;
-    UILabel *_displayLabel;
     UIImageView *_cardArtView;
     UIStackView *_stackView;
     BOOL _showBillingAddress;
@@ -22,6 +21,7 @@
     UIColor *_subTextLabelColor;
     UIColor *_disabledMainLabelColor;
     UIColor *_disabledSubTextLabelColor;
+    UILabel *_displayLabel;
     UILabel *_censoredPANLabel;
     NSString *_availabilityString;
 }
@@ -31,6 +31,7 @@
 @property (nonatomic) BOOL dimCardArt; // @synthesize dimCardArt=_dimCardArt;
 @property (strong, nonatomic) UIColor *disabledMainLabelColor; // @synthesize disabledMainLabelColor=_disabledMainLabelColor;
 @property (strong, nonatomic) UIColor *disabledSubTextLabelColor; // @synthesize disabledSubTextLabelColor=_disabledSubTextLabelColor;
+@property (readonly, nonatomic) UILabel *displayLabel; // @synthesize displayLabel=_displayLabel;
 @property (strong, nonatomic) UIColor *mainLabelColor; // @synthesize mainLabelColor=_mainLabelColor;
 @property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (strong, nonatomic) PKPassSnapshotter *passSnapshotter; // @synthesize passSnapshotter=_passSnapshotter;

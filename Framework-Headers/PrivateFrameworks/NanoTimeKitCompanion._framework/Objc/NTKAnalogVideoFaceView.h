@@ -47,6 +47,7 @@
 - (void)_cleanupAfterTransitionToOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (double)_complicationAlphaForEditMode:(long long)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
+- (id)_complicationsCompanionForegroundColor;
 - (id)_complicationsEditingColor;
 - (id)_complicationsForegroundColor;
 - (id)_complicationsPlatterColor;
@@ -94,7 +95,6 @@
 - (void)_transformVideoPlayerView:(unsigned long long)arg1;
 - (void)_unloadSnapshotContentViews;
 - (long long)_utilitySlotForSlot:(id)arg1;
-- (double)_verticalPaddingForStatusBar;
 - (void)customizeFaceViewForListing:(id)arg1 changeEvent:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)faceViewWasTapped:(id)arg1;
 - (id)imageForEditOption:(id)arg1;

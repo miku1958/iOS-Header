@@ -12,6 +12,8 @@
 {
 }
 
+@property (copy, nonatomic) NSArray *aliases;
+@property (nonatomic) BOOL inherited;
 @property (copy, nonatomic) NSArray *longhands;
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSArray *values;

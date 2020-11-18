@@ -6,7 +6,7 @@
 
 #import <Silex/SXComponent.h>
 
-@class NSString, SXDataRecordStore, SXJSONArray;
+@class SXDataRecordStore, SXJSONArray;
 
 @interface SXDataTableComponent : SXComponent
 {
@@ -16,7 +16,6 @@
 @property (readonly, nonatomic) unsigned long long dataOrientation; // @dynamic dataOrientation;
 @property (readonly, nonatomic) BOOL showDescriptorLabels; // @dynamic showDescriptorLabels;
 @property (readonly, nonatomic) SXJSONArray *sortBy; // @dynamic sortBy;
-@property (readonly, nonatomic) NSString *tableStyle; // @dynamic tableStyle;
 
 + (CDUnknownBlockType)valueClassBlockForPropertyWithName:(id)arg1;
 - (unsigned long long)dataOrientationWithValue:(id)arg1 withType:(int)arg2;

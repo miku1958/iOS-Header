@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
+#import <PassKitCore/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface PKDSPContext : NSObject <NSCopying>
+@interface PKDSPContext : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_secureElementID;
     NSString *_serverEndpointIdentifier;
@@ -31,9 +32,12 @@
 @property (copy, nonatomic) NSString *secureElementID; // @synthesize secureElementID=_secureElementID;
 @property (copy, nonatomic) NSString *serverEndpointIdentifier; // @synthesize serverEndpointIdentifier=_serverEndpointIdentifier;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)setPrimaryAppleAccount:(id)arg1;
 

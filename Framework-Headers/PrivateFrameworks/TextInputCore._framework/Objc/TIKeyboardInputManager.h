@@ -9,7 +9,7 @@
 #import <TextInputCore/TILanguageSelectionControllerDelegate-Protocol.h>
 #import <TextInputCore/TIRevisionHistoryDelegate-Protocol.h>
 
-@class NSArray, NSCharacterSet, NSMutableString, NSString, TIAutoshiftRegularExpressionLoader, TIEmojiCandidateGenerator, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardFeatureSpecialization, TIKeyboardInputManagerConfig, TIKeyboardInputManagerState, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardState, TILRUDictionary, TILanguageSelectionController, TIRevisionHistory, TITextCheckerExemptions;
+@class NSArray, NSCharacterSet, NSMutableString, NSNumber, NSString, TIAutoshiftRegularExpressionLoader, TIEmojiCandidateGenerator, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardFeatureSpecialization, TIKeyboardInputManagerConfig, TIKeyboardInputManagerState, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardState, TILRUDictionary, TILanguageSelectionController, TIRevisionHistory, TITextCheckerExemptions;
 
 @interface TIKeyboardInputManager : TIKeyboardInputManagerBase <TIRevisionHistoryDelegate, TILanguageSelectionControllerDelegate>
 {
@@ -46,6 +46,7 @@
     unsigned long long _linguisticResourceStatus;
     long long _deleteKeyCount;
     TIKeyboardCandidate *_hitTestCorrectedInputMatchingCandidate;
+    NSNumber *_isTrackingSentenceCountForPFL;
     struct _NSRange _candidateRange;
 }
 
@@ -66,6 +67,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TIKeyboardCandidate *hitTestCorrectedInputMatchingCandidate; // @synthesize hitTestCorrectedInputMatchingCandidate=_hitTestCorrectedInputMatchingCandidate;
 @property (nonatomic) BOOL isEditingWordPrefix; // @synthesize isEditingWordPrefix=_isEditingWordPrefix;
+@property (strong, nonatomic) NSNumber *isTrackingSentenceCountForPFL; // @synthesize isTrackingSentenceCountForPFL=_isTrackingSentenceCountForPFL;
 @property (strong, nonatomic) TIKeyboardLayout *keyLayout;
 @property (readonly, nonatomic) TIKeyboardFeatureSpecialization *keyboardFeatureSpecialization;
 @property (strong, nonatomic) TIKeyboardState *keyboardState; // @synthesize keyboardState=_keyboardState;
@@ -202,6 +204,7 @@
 - (BOOL)inHardwareKeyboardMode;
 - (void)incrementLanguageModelCount:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 saveToDifferentialPrivacy:(int)arg5;
 - (void)incrementUsageTrackingKey:(id)arg1;
+- (void)incrementUsageTrackingKeyForAppWithIsSentence:(BOOL)arg1;
 - (void)incrementUsageTrackingKeyForAutocorrectionStatistic:(id)arg1 autocorrectionTypes:(unsigned int)arg2;
 - (void)incrementUsageTrackingKeysForDeleteFromInput;
 - (id)indexTitlesForGroupTitles:(id)arg1 sortingMethod:(id)arg2;

@@ -44,6 +44,7 @@
 - (void)_didActivatePaymentPass:(id)arg1;
 - (void)_handleNextCredentialWithPresentationDelay:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handlePassSuccessfullyAdded:(id)arg1;
+- (void)_logNormalizedLevenshteinDistanceFromString:(id)arg1 toField:(id)arg2 forKey:(id)arg3 onQueue:(id)arg4;
 - (void)_passLibraryDidChange:(id)arg1;
 - (void)_performEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performFinishWithCompletion:(CDUnknownBlockType)arg1;

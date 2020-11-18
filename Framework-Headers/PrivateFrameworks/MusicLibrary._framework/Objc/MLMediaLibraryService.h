@@ -49,7 +49,6 @@
 - (void)performRestoreOfLatestBackupForDatabaseAtPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)recreateDatabaseAtPath:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)serviceTerminatedTransactionWithIdentifier:(id)arg1 error:(id)arg2;
-- (void)setDeviceSharedLibraryPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setOptions:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)unlockDatabaseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateSpotlightIndexForBundleID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

@@ -8,7 +8,7 @@
 
 #import <NewsToday/NTHeadlineProviding-Protocol.h>
 
-@class NSDate, NSString, NSURL, NTHeadlinePersonalizationMetadata, NTPBHeadlineAdElement, NTPBHeadlineAnalyticsElement, NTPBHeadlineBackingElement, SFSearchResult;
+@class NSArray, NSDate, NSString, NSURL, NTHeadlinePersonalizationMetadata, NTPBHeadlineAdElement, NTPBHeadlineAnalyticsElement, NTPBHeadlineBackingElement, SFSearchResult;
 
 @interface NTHeadline : NSObject <NTHeadlineProviding>
 {
@@ -25,6 +25,7 @@
     NSString *_sourceName;
     NSString *_compactSourceName;
     NSString *_sourceTagID;
+    NSString *_language;
     NSURL *_sourceNameImageRemoteURL;
     double _sourceNameImageScale;
     NSURL *_compactSourceNameImageRemoteURL;
@@ -33,6 +34,7 @@
     NSURL *_webURL;
     NSURL *_NewsURL;
     NSString *_storyType;
+    NSArray *_topicIDs;
     SFSearchResult *_searchResult;
     NSURL *_videoURL;
     double _videoDuration;
@@ -64,6 +66,7 @@
 @property (nonatomic, getter=isHiddenFromFeeds) BOOL hiddenFromFeeds; // @synthesize hiddenFromFeeds=_hiddenFromFeeds;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) unsigned long long itemType;
+@property (copy, nonatomic) NSString *language; // @synthesize language=_language;
 @property (nonatomic) BOOL needsSeenStateTracking; // @synthesize needsSeenStateTracking=_needsSeenStateTracking;
 @property (copy, nonatomic) NTHeadlinePersonalizationMetadata *personalizationMetadata; // @synthesize personalizationMetadata=_personalizationMetadata;
 @property (copy, nonatomic) SFSearchResult *searchResult; // @synthesize searchResult=_searchResult;
@@ -80,6 +83,7 @@
 @property (nonatomic) unsigned long long thumbnailSizePreset; // @synthesize thumbnailSizePreset=_thumbnailSizePreset;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *titleCompact; // @synthesize titleCompact=_titleCompact;
+@property (copy, nonatomic) NSArray *topicIDs; // @synthesize topicIDs=_topicIDs;
 @property (copy, nonatomic) NSString *videoCallToActionTitle; // @synthesize videoCallToActionTitle=_videoCallToActionTitle;
 @property (copy, nonatomic) NSURL *videoCallToActionURL; // @synthesize videoCallToActionURL=_videoCallToActionURL;
 @property (nonatomic) double videoDuration; // @synthesize videoDuration=_videoDuration;

@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL TTYHardwareEnabled;
 @property (nonatomic) BOOL TTYSoftwareEnabled;
 @property (strong, nonatomic) NSArray *cannedResponses;
+@property (nonatomic) BOOL continuityRTTIsSupported;
 @property (nonatomic) BOOL hasReceivedRTTCall;
 @property (nonatomic) BOOL incomingCallsTTY;
 @property (nonatomic) long long incomingTTYCallCount;
@@ -70,6 +71,7 @@
 - (BOOL)shouldMigrateSettings;
 - (BOOL)ttyShouldBeRealtimeForContext:(id)arg1;
 - (void)updateGizmoValueIfNeeded:(id)arg1 forPreferenceKey:(id)arg2;
+- (id)uuidFromContext:(id)arg1;
 - (id)valueForPreferenceKey:(id)arg1;
 
 @end

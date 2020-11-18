@@ -14,15 +14,14 @@
 }
 
 @property (nonatomic, readonly) NSString *description;
-@property (nonatomic, readonly) long long hashValue;
+@property (nonatomic, readonly) long long hash;
 @property (nonatomic, readonly) NSString *object;
 @property (nonatomic, readonly) NSString *predicate;
 @property (nonatomic, readonly) NSString *subject;
 @property (nonatomic, readonly) long long weight;
 
 + (BOOL)supportsSecureCoding;
-- (CDUnknownBlockType).cxx_destruct;
-- (id)dictionary;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

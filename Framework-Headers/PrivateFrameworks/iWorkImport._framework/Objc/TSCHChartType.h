@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSCHChartFeature *feature; // @synthesize feature=mFeature;
 @property (readonly, nonatomic) BOOL is3D;
 
++ (id)all3DChartTypes;
 + (id)allChartTypes;
 + (id)areaChart;
 + (id)areaChart3D;

@@ -50,7 +50,7 @@
 - (void)_evaluateHomeRegionStateForCurrentDeviceLocation:(id)arg1;
 - (id)_handleHomeLocationData:(id)arg1 message:(id)arg2;
 - (void)_handleLocationAuthorization:(int)arg1;
-- (void)_handleLocationAuthorizationMessage:(id)arg1;
+- (void)_handleLocationAuthorizationChangedNotification:(id)arg1;
 - (void)_handleRetrieveLocation:(id)arg1;
 - (BOOL)_needToExtractBatchLocations;
 - (void)_registerForMessages;

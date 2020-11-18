@@ -58,6 +58,7 @@
 - (id)backingStoreObjectsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)currentDevice;
+- (id)currentDeviceModelsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)deviceForHandle:(id)arg1;
 - (id)deviceForIdentifier:(id)arg1;
 - (id)deviceWithModelIdentifier:(id)arg1;
@@ -69,6 +70,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToAccount:(id)arg1;
 - (BOOL)isRelatedToAccount:(id)arg1;
+- (id)locallyTrackedAccountHandleModelsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
+- (id)locallyTrackedDeviceModelsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)logIdentifier;
 - (BOOL)mergeObject:(id)arg1;
 - (id)modelBackedObjects;

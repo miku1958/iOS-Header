@@ -118,6 +118,7 @@
 - (BOOL)usesCUISystemThemeRenditionKey;
 - (id)uuid;
 - (int)validateBitmapInfo;
+- (int)validatekeyformat;
 - (const char *)versionString;
 - (id)zeroCodeBezelList;
 - (id)zeroCodeGlyphList;

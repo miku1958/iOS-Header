@@ -9,25 +9,20 @@
 #import <Silex/SXBlueprintAnalyzer-Protocol.h>
 
 @class NSString;
-@protocol SXDocumentControllerProvider;
 
 @interface SXBlueprintAnalyzer : NSObject <SXBlueprintAnalyzer>
 {
-    id<SXDocumentControllerProvider> _documentControllerProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) id<SXDocumentControllerProvider> documentControllerProvider; // @synthesize documentControllerProvider=_documentControllerProvider;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
-- (void)analyzeBlueprint:(id)arg1 layoutDataProvider:(id)arg2 onMarkerFound:(CDUnknownBlockType)arg3 then:(CDUnknownBlockType)arg4 onEndReached:(CDUnknownBlockType)arg5;
+- (void)analyzeBlueprint:(id)arg1 DOMObjectProvider:(id)arg2 onMarkerFound:(CDUnknownBlockType)arg3 then:(CDUnknownBlockType)arg4 onEndReached:(CDUnknownBlockType)arg5;
 - (BOOL)componentPlacedAboveComponentBlueprint:(id)arg1 blueprint:(id)arg2;
-- (id)initWithDocumentControllerProvider:(id)arg1;
 - (void)iterateMarkers:(id)arg1 onMarkerFound:(CDUnknownBlockType)arg2 then:(CDUnknownBlockType)arg3 onEndReached:(CDUnknownBlockType)arg4;
-- (id)markersFromBlueprint:(id)arg1 layoutDataProvider:(id)arg2 cursor:(id)arg3;
+- (id)markersFromBlueprint:(id)arg1 components:(id)arg2 DOMObjectProvider:(id)arg3 cursor:(id)arg4;
 
 @end
 

@@ -27,7 +27,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *didStartVideoForVisibleParticipant;
     MISSING_TYPE *participantsMediaPrioritiesDidChange;
     MISSING_TYPE *participantAudioPowerDidChange;
-    MISSING_TYPE *audioRouteDidChanged;
+    MISSING_TYPE *audioRouteDidChange;
+    MISSING_TYPE *carPlayConnectedDidChange;
     MISSING_TYPE *didUpdateLocalParticipant;
     MISSING_TYPE *didStartVideoForLocalParticipant;
     MISSING_TYPE *conversationStateDidChange;
@@ -41,8 +42,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic, readonly) NSString *description;
 
-- (CDUnknownBlockType).cxx_destruct;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

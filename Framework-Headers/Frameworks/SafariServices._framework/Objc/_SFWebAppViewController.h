@@ -37,6 +37,7 @@
 - (void)initialLoadDidRedirectToURL:(id)arg1;
 - (void)loadWebAppWithIdentifier:(id)arg1;
 - (void)setRemoteSwipeGestureEnabled:(BOOL)arg1;
+- (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)willDismissServiceViewController;
 - (void)willOpenURLInHostApplication:(id)arg1;
 

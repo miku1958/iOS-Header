@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <SafariShared/WBSHistoryLoader-Protocol.h>
-#import <SafariShared/WBSHistoryLoaderDelegate-Protocol.h>
 #import <SafariShared/WBSHistoryStore-Protocol.h>
 
 @class NSArray, NSCountedSet, NSData, NSDate, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, NSTimer, NSURL, WBSHistoryCrypto, WBSPeriodicActivityScheduler, WBSSQLiteDatabase, WBSSQLiteStatementCache;
 @protocol OS_dispatch_queue, WBSHistoryStoreDelegate;
 
-@interface WBSHistorySQLiteStore : NSObject <WBSHistoryLoaderDelegate, WBSHistoryStore, WBSHistoryLoader>
+@interface WBSHistorySQLiteStore : NSObject <WBSHistoryStore, WBSHistoryLoader>
 {
     NSURL *_databaseURL;
     unsigned long long _itemCountLimit;
@@ -38,7 +37,6 @@
     NSArray *_loadedItems;
     NSArray *_discardedItems;
     NSCountedSet *_loadedStringsForUserTypedDomainExpansion;
-    int _importState;
     NSDate *_loadStartTime;
     NSTimer *_writeTimer;
     struct unique_ptr<SafariShared::SuddenTerminationDisabler, std::__1::default_delete<SafariShared::SuddenTerminationDisabler>> _suddenTerminationDisabler;
@@ -64,6 +62,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double historyAgeLimit; // @synthesize historyAgeLimit=_historyAgeLimit;
 @property (readonly, nonatomic) BOOL isUsingInMemoryDatabase;
+@property (copy, nonatomic) NSData *longLivedSaveOperationData;
 @property (nonatomic) BOOL pushNotificationsAreInitialized; // @synthesize pushNotificationsAreInitialized=_pushNotificationsAreInitialized;
 @property (copy, nonatomic) NSData *pushThrottlerData;
 @property (readonly, nonatomic) NSData *salt;
@@ -90,7 +89,6 @@
 - (void)_insertItem:(id)arg1;
 - (void)_insertTombstone:(id)arg1;
 - (void)_insertVisit:(id)arg1;
-- (id)_itemsOrderedForInsertion:(id)arg1;
 - (id)_lastSeenDateForCloudClientVersionOnDatabaseQueue:(unsigned long long)arg1;
 - (long long)_lastSyncedGeneration;
 - (void)_loadClientVersions;
@@ -127,7 +125,6 @@
 - (id)_visitsCreatedMatchingURLString:(id)arg1 afterDate:(id)arg2 beforeDate:(id)arg3;
 - (id)_visitsFromRows:(id)arg1 predicate:(CDUnknownBlockType)arg2;
 - (id)_visitsNeedingSyncWithVisitSyncWindow:(double)arg1;
-- (id)_visitsOrderedForInsertion:(id)arg1;
 - (id)_visitsWithOrigins:(id)arg1;
 - (void)_writeTimerFired;
 - (void)addOrUpdateItemsOnDatabaseQueue:(id)arg1;
@@ -145,8 +142,6 @@
 - (void)getServerChangeTokenDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getVisitsAndTombstonesNeedingSyncWithVisitSyncWindow:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getVisitsCreatedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)historyLoader:(id)arg1 didLoadItems:(id)arg2 discardedItems:(id)arg3 stringsForUserTypeDomainExpansion:(id)arg4;
-- (void)historyLoaderDidFinishLoading:(id)arg1;
 - (id)initWithURL:(id)arg1 itemCountLimit:(unsigned long long)arg2 historyAgeLimit:(double)arg3 historyItemClass:(Class)arg4;
 - (void)itemWasReplaced:(id)arg1 byItem:(id)arg2;
 - (void)itemsWereAdded:(id)arg1 byUserInitiatedAction:(BOOL)arg2;
@@ -157,7 +152,7 @@
 - (void)removeItemsOnDatabaseQueue:(id)arg1;
 - (void)removePastHistoryVisitsForItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeVisitsOnDatabaseQueue:(id)arg1;
-- (void)replayAndAddTombstone:(id)arg1;
+- (void)replayAndAddTombstones:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetCloudHistoryDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setLastSeenDate:(id)arg1 forCloudClientVersion:(unsigned long long)arg2;
 - (void)setServerChangeTokenData:(id)arg1;

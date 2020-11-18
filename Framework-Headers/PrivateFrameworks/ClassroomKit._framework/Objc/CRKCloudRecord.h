@@ -41,6 +41,7 @@
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2 isEncrypted:(BOOL)arg3;
 - (void)setReference:(id)arg1;
+- (void)setUnsignedInteger:(unsigned long long)arg1 forKey:(id)arg2;
 - (BOOL)validCloudObject:(id)arg1;
 
 @end

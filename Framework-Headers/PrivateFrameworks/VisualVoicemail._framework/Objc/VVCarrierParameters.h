@@ -15,13 +15,10 @@
 
 @property (readonly, nonatomic) NSDictionary *parameterValues; // @synthesize parameterValues=_parameterValues;
 
-+ (id)carrierServiceName;
 + (BOOL)ignoresRoamingSwitch;
 + (id)messageNotificationFallbackTimeout;
 + (id)retryIntervals;
 + (BOOL)supportsDetachedStorage;
-+ (BOOL)supportsGreetingChanges;
-+ (BOOL)supportsPasswordChanges;
 - (void).cxx_destruct;
 - (id)initWithService:(id)arg1;
 - (id)parameterValueForKey:(id)arg1;

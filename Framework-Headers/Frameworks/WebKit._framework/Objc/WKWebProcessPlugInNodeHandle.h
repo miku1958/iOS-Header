@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) struct CGRect elementBounds;
 @property (readonly, nonatomic) WKWebProcessPlugInFrame *frame;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isSelectElement;
 @property (readonly) Class superclass;
 
 + (id)nodeHandleWithJSValue:(id)arg1 inContext:(id)arg2;

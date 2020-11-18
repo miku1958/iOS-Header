@@ -13,22 +13,38 @@
 @interface HDMockIDSDevice : NSObject <NSCopying>
 {
     BOOL _isActive;
+    BOOL _supportsCinnamonHW;
     NSUUID *_nanoRegistryPairingID;
     NSUUID *_nsuuid;
     NSString *_uniqueIDOverride;
     NSString *_service;
     NSString *_name;
     NSString *_productBuildVersion;
+    NSString *_buildType;
+    NSString *_productType;
+    NSString *_modelNumber;
+    NSString *_systemVersion;
+    NSString *_regionCode;
+    NSString *_electrocardiogramVersion;
+    NSString *_backgroundAtrialFibrillationVersion;
 }
 
+@property (copy, nonatomic) NSString *backgroundAtrialFibrillationVersion; // @synthesize backgroundAtrialFibrillationVersion=_backgroundAtrialFibrillationVersion;
+@property (copy, nonatomic) NSString *buildType; // @synthesize buildType=_buildType;
+@property (copy, nonatomic) NSString *electrocardiogramVersion; // @synthesize electrocardiogramVersion=_electrocardiogramVersion;
 @property (nonatomic) BOOL isActive; // @synthesize isActive=_isActive;
 @property (readonly, nonatomic) BOOL isDefaultPairedDevice;
 @property (readonly, nonatomic) BOOL isLocallyPaired;
+@property (copy, nonatomic) NSString *modelNumber; // @synthesize modelNumber=_modelNumber;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSUUID *nanoRegistryPairingID; // @synthesize nanoRegistryPairingID=_nanoRegistryPairingID;
 @property (strong, nonatomic) NSUUID *nsuuid; // @synthesize nsuuid=_nsuuid;
 @property (copy, nonatomic) NSString *productBuildVersion; // @synthesize productBuildVersion=_productBuildVersion;
+@property (copy, nonatomic) NSString *productType; // @synthesize productType=_productType;
+@property (copy, nonatomic) NSString *regionCode; // @synthesize regionCode=_regionCode;
 @property (copy, nonatomic) NSString *service; // @synthesize service=_service;
+@property (nonatomic) BOOL supportsCinnamonHW; // @synthesize supportsCinnamonHW=_supportsCinnamonHW;
+@property (copy, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property (copy, nonatomic) NSString *uniqueIDOverride; // @synthesize uniqueIDOverride=_uniqueIDOverride;
 
 - (void).cxx_destruct;

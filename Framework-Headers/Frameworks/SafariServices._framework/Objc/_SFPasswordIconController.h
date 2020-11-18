@@ -27,6 +27,7 @@
 
 @property (weak, nonatomic) id<_SFPasswordIconControllerDelegate> delegate; // @synthesize delegate=_delegate;
 
++ (struct CGSize)preferredIconSize;
 - (void).cxx_destruct;
 - (void)_checkForLocalVisitToDomain:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_fetchAppIconForDomain:(id)arg1;

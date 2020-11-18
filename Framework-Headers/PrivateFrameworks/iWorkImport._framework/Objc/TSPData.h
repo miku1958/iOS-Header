@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <iWorkImport/TSPRemoteDataStorageDelegate-Protocol.h>
 #import <iWorkImport/TSPSplitableData-Protocol.h>
 
 @class NSDate, NSString, TSPDataAttributes, TSPDataManager, TSPDataMetadata, TSPDigest, TSPObjectContext;
 @protocol OS_dispatch_queue, TSPDataStorage;
 
 __attribute__((visibility("hidden")))
-@interface TSPData : NSObject <TSPSplitableData>
+@interface TSPData : NSObject <TSPSplitableData, TSPRemoteDataStorageDelegate>
 {
     _Atomic int _didCull;
     long long _identifier;
@@ -30,6 +31,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isAcknowledgedByServer) BOOL acknowledgedByServer;
 @property (copy) TSPDataAttributes *attributes;
 @property (readonly, nonatomic) TSPObjectContext *context;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) TSPDigest *digest;
 @property (readonly, nonatomic) NSString *digestString;
 @property (readonly, nonatomic) NSString *documentResourceLocator;
@@ -37,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long encodedLengthIfLocal;
 @property (readonly, nonatomic) NSString *filename;
 @property (readonly, nonatomic) BOOL gilligan_isRemote;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isApplicationData;
 @property (readonly, nonatomic) BOOL isEncrypted;
@@ -52,6 +56,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned char packageIdentifier;
 @property (readonly, nonatomic) NSString *packageLocator;
 @property (strong, nonatomic) id<TSPDataStorage> storage;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL tsd_allowedToConvertDataAlreadyInDocument;
 @property (nonatomic, setter=tsd_setShouldBeInterpretedAsGenericIfUntagged:) BOOL tsd_shouldBeInterpretedAsGenericIfUntagged;
 @property (readonly, nonatomic) unsigned long long tsp_length;
@@ -79,6 +84,7 @@ __attribute__((visibility("hidden")))
 + (id)readOnlyDataFromNSData:(id)arg1 filename:(id)arg2;
 + (id)readOnlyDataFromURL:(id)arg1;
 + (id)readOnlyDataWithPattern4:(const char *)arg1 filename:(id)arg2;
++ (id)remoteDataWithURL:(id)arg1 digest:(id)arg2 filename:(id)arg3 canDownload:(BOOL)arg4 downloadPriority:(long long)arg5 context:(id)arg6;
 + (void)removeCullingListener:(id)arg1;
 + (id)requiredAVAssetOptions;
 + (id)resourceNameForFilename:(id)arg1 identifier:(long long)arg2;
@@ -96,10 +102,12 @@ __attribute__((visibility("hidden")))
 - (id)copyWithContext:(id)arg1;
 - (id)createMetadataIfNeeded;
 - (void)dealloc;
-- (id)description;
+- (void)didReceiveRemoteData:(id)arg1 decryptionInfo:(id)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)didReceiveRemoteDataAtURL:(id)arg1 canMove:(BOOL)arg2 decryptionInfo:(id)arg3 completionQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)didReceiveRemoteDataWithHandler:(CDUnknownBlockType)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)didReceiveRemoteDataWithReadChannel:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)didReplaceDataContents;
 - (id)fallbackColor;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithIdentifier:(long long)arg1 digest:(id)arg2 filename:(id)arg3 lastModificationDate:(id)arg4 storage:(id)arg5 manager:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
@@ -117,6 +125,7 @@ __attribute__((visibility("hidden")))
 - (void)setFilename:(id)arg1 storage:(id)arg2;
 - (void)setFilename:(id)arg1 storage:(id)arg2 ifStorageIs:(id)arg3;
 - (void)setToCopyOfMetadataIfNil:(id)arg1;
+- (id)temporaryDataStorageURLForRemoteDataStorage:(id)arg1;
 - (void)tsp_splitDataWithMaxSize:(unsigned long long)arg1 subdataHandlerBlock:(CDUnknownBlockType)arg2;
 - (void)upgradeFallbackColorIfNeeded;
 - (void)willCull;

@@ -6,16 +6,18 @@
 
 #import <iWorkImport/TSPObject.h>
 
-@class TSTColumnRowUIDMap, TSTInfo;
+@class TSTColumnRowUIDMap, TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTCategoryOrder : TSPObject
 {
-    TSTInfo *_tableInfo;
+    BOOL _isRowOrderTemporary;
+    TSTTableInfo *_tableInfo;
     TSTColumnRowUIDMap *_uidMap;
 }
 
-@property (readonly, weak) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property BOOL isRowOrderTemporary; // @synthesize isRowOrderTemporary=_isRowOrderTemporary;
+@property (readonly, weak) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property (strong) TSTColumnRowUIDMap *uidMap; // @synthesize uidMap=_uidMap;
 
 + (UUIDData_5fbc143e)categoryColumnUID;
@@ -23,12 +25,13 @@ __attribute__((visibility("hidden")))
 - (id)columnRowUIDMap;
 - (id)copyWithContext:(id)arg1 tableInfo:(id)arg2;
 - (vector_4dc5f307)groupUidsGivenRowUids:(const vector_4dc5f307 *)arg1 selectedLevels:(const unordered_map_3e9d252a *)arg2;
+- (BOOL)hasValidInfo;
+- (BOOL)hasValidUidMap;
 - (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 tableInfo:(id)arg2 rowUids:(const vector_4dc5f307 *)arg3;
 - (id)initWithTableInfo:(id)arg1;
 - (id)initWithTableInfo:(id)arg1 rowUids:(const vector_4dc5f307 *)arg2;
 - (void)insertRowUids:(const vector_4dc5f307 *)arg1 beforeUid:(const UUIDData_5fbc143e *)arg2;
-- (BOOL)isValid;
 - (void)loadFromArchive:(const struct CategoryOrderArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (unsigned char)minimumCategoryLevelInRowRange:(struct _NSRange)arg1;
@@ -39,6 +42,8 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchive:(struct CategoryOrderArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)setRowOrder:(const vector_4dc5f307 *)arg1;
+- (vector_4dc5f307)setRowOrderUsingViewOrder;
+- (void)setTemporaryRowOrder:(const vector_4dc5f307 *)arg1;
 - (id)sortedArrayFromArray:(id)arg1;
 - (id)targetGroupFromRowIndex:(unsigned int)arg1 minSourceLevel:(unsigned char)arg2 templateRowUID:(UUIDData_5fbc143e *)arg3;
 

@@ -6,24 +6,26 @@
 
 #import <UIKit/UIView.h>
 
-@class MediaControlsContainerView;
+@class MediaControlsContainerView, MediaControlsTimeControl, MediaControlsTransportStackView;
 
 @interface MediaControlsParentContainerView : UIView
 {
     long long _style;
     long long _selectedMode;
-    MediaControlsContainerView *_mediaControlsContainerView;
+    MediaControlsContainerView *_containerView;
     UIView *_routingView;
     UIView *_mediaControlsRoutingPickerView;
     long long _routingViewControllerAnimationCount;
 }
 
-@property (strong, nonatomic) MediaControlsContainerView *mediaControlsContainerView; // @synthesize mediaControlsContainerView=_mediaControlsContainerView;
+@property (strong, nonatomic) MediaControlsContainerView *containerView; // @synthesize containerView=_containerView;
 @property (strong, nonatomic) UIView *mediaControlsRoutingPickerView; // @synthesize mediaControlsRoutingPickerView=_mediaControlsRoutingPickerView;
 @property (strong, nonatomic) UIView *routingView; // @synthesize routingView=_routingView;
 @property (nonatomic) long long routingViewControllerAnimationCount; // @synthesize routingViewControllerAnimationCount=_routingViewControllerAnimationCount;
 @property (nonatomic) long long selectedMode; // @synthesize selectedMode=_selectedMode;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (strong, nonatomic) MediaControlsTimeControl *timeControl;
+@property (strong, nonatomic) MediaControlsTransportStackView *transportStackView;
 
 - (void).cxx_destruct;
 - (void)_setInitialFrameForRoutingView:(id)arg1;

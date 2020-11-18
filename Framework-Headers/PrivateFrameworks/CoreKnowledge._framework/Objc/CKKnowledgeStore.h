@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSString, OS_dispatch_queue;
+@class MISSING_TYPE, NSString;
 @protocol CKKnowledgeStoreDelegate;
 
 @interface CKKnowledgeStore : NSObject
@@ -19,10 +19,8 @@
 
 @property (nonatomic, strong) id<CKKnowledgeStoreDelegate> delegate; // @synthesize delegate;
 @property (nonatomic, readonly) long long hash;
-@property (nonatomic, readonly) long long hashValue;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSString *path;
-@property (nonatomic, readonly) OS_dispatch_queue *sparqlQueue; // @synthesize sparqlQueue;
 
 + (id)defaultKnowledgeStore;
 + (id)defaultSynchedKnowledgeStore;
@@ -31,7 +29,7 @@
 + (id)knowledgeStoreWithName:(id)arg1;
 + (id)synchedKnowledgeStoreWithName:(id)arg1;
 + (id)userDefaultsKnowledgeStore;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)dictionaryRepresentationAndReturnError:(id *)arg1;
 - (void)dictionaryRepresentationForKeysMatching:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)dictionaryRepresentationForKeysMatching:(id)arg1 error:(id *)arg2;
@@ -40,9 +38,7 @@
 - (id)entitiesAndReturnError:(id *)arg1;
 - (void)entitiesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)entityWithIdentifier:(id)arg1;
-- (void)evaluateJSONLDEntryForEntity:(id)arg1 key:(id)arg2 value:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)importContentsOfJSONLDAtPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)importJSONLDWithData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)importTriplesFromFileAtPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)inferLinkTo:(id)arg1 withPredicate:(id)arg2 when:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)inferLinkTo:(id)arg1 withPredicate:(id)arg2 when:(id)arg3 error:(id *)arg4;
@@ -72,7 +68,6 @@
 - (void)valueForKey:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)valuesAndReturnError:(id *)arg1;
 - (void)valuesForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)valuesForKeys:(id)arg1 error:(id *)arg2;
 - (void)valuesForKeysMatching:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)valuesForKeysMatching:(id)arg1 error:(id *)arg2;
 - (void)valuesWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -8,5 +8,6 @@
 
 @interface _TtC15ConversationKit22ConversationController (ConversationKit2)
 - (void)handleLocalVideoPreviewFirstFrameArrived:(id)arg1;
+- (void)handleScreenConnectionDidUpdate:(id)arg1;
 @end
 

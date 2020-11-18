@@ -10,19 +10,23 @@
 #import <PassKitUI/PKPaymentAuthorizationHostProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationServiceViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupDelegate-Protocol.h>
+#import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 #import <PassKitUI/SBSHardwareButtonEventConsuming-Protocol.h>
 
-@class LAUIHorizontalArrowView, LAUIPhysicalButtonView, NSString, NSXPCConnection, PKAssertion, PKCompactNavigationContainerController, PKInAppPaymentService, PKPaymentAuthorizationRemoteAlertViewControllerExportedObject, PKPaymentAuthorizationServiceNavigationController, PKPaymentProvisioningController, PKPaymentRequest, PKPaymentSetupNavigationController;
+@class LAUIHorizontalArrowView, LAUIPhysicalButtonView, NSString, NSXPCConnection, PKAssertion, PKCompactNavigationContainerController, PKInAppPaymentService, PKPaymentAuthorizationRemoteAlertViewControllerExportedObject, PKPaymentAuthorizationServiceNavigationController, PKPaymentProvisioningController, PKPaymentRequest, PKPaymentSetupNavigationController, PKPeerPaymentAccount;
 @protocol BSInvalidatable;
 
-@interface PKPaymentAuthorizationRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKCompactNavigationContainerControllerDelegate, PKPaymentAuthorizationServiceViewControllerDelegate, PKPaymentAuthorizationHostProtocol, PKPaymentSetupDelegate, SBSHardwareButtonEventConsuming>
+@interface PKPaymentAuthorizationRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKCompactNavigationContainerControllerDelegate, PKPaymentAuthorizationServiceViewControllerDelegate, PKPaymentAuthorizationHostProtocol, PKPaymentSetupDelegate, SBSHardwareButtonEventConsuming, PKPaymentSetupViewControllerDelegate>
 {
     BOOL _didDismiss;
     BOOL _didSendAuthorizationDidPresent;
+    BOOL _didSendAuthorizationDidFinish;
     long long _hostAppInterfaceOrientation;
     NSString *_hostApplicationIdentifier;
     int _statusBarVisibility;
     PKAssertion *_notificationSuppressionAssertion;
+    NSString *_hostBundleIdentifier;
+    NSString *_hostTeamID;
     NSString *_hostLocalizedAppName;
     PKPaymentRequest *_paymentRequest;
     BOOL _paymentAuthorizationPresented;
@@ -35,6 +39,7 @@
     PKPaymentProvisioningController *_paymentProvisioningController;
     PKPaymentSetupNavigationController *_paymentSetupNavigationController;
     BOOL _paymentSetupWasRequired;
+    PKPeerPaymentAccount *_peerPaymentAccount;
     BOOL _shouldAcquireLockButtonObserver;
     id<BSInvalidatable> _lockButtonObserver;
     BOOL _dismissAfterPaymentSetup;
@@ -62,23 +67,29 @@
 - (void)_dismiss;
 - (void)_handlePaymentRequestPresentationResultType:(long long)arg1 relevantUniqueID:(id)arg2 firstAttempt:(BOOL)arg3;
 - (void)_invalidateLockButtonObserver;
+- (BOOL)_peerPaymentIdentityVerificationRequired;
 - (int)_preferredStatusBarVisibility;
 - (void)_presentActivatingPassAlertWithRelevantUniqueID:(id)arg1;
 - (void)_presentAddCardAlert;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 actionTitle:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 cancelTitle:(id)arg3 actionTitle:(id)arg4 actionHandler:(CDUnknownBlockType)arg5;
+- (void)_presentAmpEnrollmentAuthorization;
 - (void)_presentInvalidAlert;
 - (void)_presentLostModeAlertWithRelevantUniqueID:(id)arg1;
 - (void)_presentPassNotSupportedAlertWithRelevantUniqueID:(id)arg1;
 - (void)_presentPaymentAuthorization;
 - (void)_presentPaymentSetup;
+- (void)_presentPeerPaymentIdentityVerification;
+- (void)_presentPeerPaymentIdentityVerificationAlert;
 - (void)_presentVerifyPassAlertWithRelevantUniqueID:(id)arg1;
 - (id)_provisioningController;
 - (id)_remoteObjectProxy;
 - (void)_setStatusBarHidden:(BOOL)arg1;
+- (BOOL)_shouldBlockHardwareCancels;
 - (BOOL)_shouldRemoveViewFromHierarchyOnDisappear;
 - (void)_updatePearlViews;
 - (void)_willAppearInRemoteViewController;
+- (void)authorizationDidAuthorizeDisbursement:(id)arg1;
 - (void)authorizationDidAuthorizePayment:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuote:(id)arg1;
 - (void)authorizationDidAuthorizePurchase:(id)arg1;
@@ -105,6 +116,8 @@
 - (BOOL)shouldAutorotate;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)viewControllerDidCancelSetupFlow:(id)arg1;
+- (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

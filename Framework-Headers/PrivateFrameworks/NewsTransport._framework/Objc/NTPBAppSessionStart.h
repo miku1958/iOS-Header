@@ -27,6 +27,7 @@
     NSString *_notificationId;
     NSString *_notificationSenderChannelId;
     NSString *_notificationSourceChannelId;
+    int _notificationType;
     int _notitificationsEnabledChannelsCount;
     NSMutableArray *_paidSubscriptionChannelIds;
     int _portraitAutoSubscribeFeedCount;
@@ -43,6 +44,8 @@
     NTPBWidgetEngagement *_widgetEngagement;
     int _widgetSection;
     int _widgetSectionArticleRank;
+    BOOL _isMarketingNotificationEnabled;
+    BOOL _isNewIssuesNotificationEnabled;
     BOOL _startedFromNotification;
     struct {
         unsigned int lastAppSessionTimestamp:1;
@@ -50,6 +53,7 @@
         unsigned int channelSubscriptionCount:1;
         unsigned int internalAutoSubscribeFeedCount:1;
         unsigned int notificationEnabledChannelsCount:1;
+        unsigned int notificationType:1;
         unsigned int notitificationsEnabledChannelsCount:1;
         unsigned int portraitAutoSubscribeFeedCount:1;
         unsigned int safariAutoSubscribeFeedCount:1;
@@ -59,6 +63,8 @@
         unsigned int widgetArticleRank:1;
         unsigned int widgetSection:1;
         unsigned int widgetSectionArticleRank:1;
+        unsigned int isMarketingNotificationEnabled:1;
+        unsigned int isNewIssuesNotificationEnabled:1;
         unsigned int startedFromNotification:1;
     } _has;
 }
@@ -76,12 +82,15 @@
 @property (nonatomic) BOOL hasChannelSubscriptionCount;
 @property (readonly, nonatomic) BOOL hasCreativeId;
 @property (nonatomic) BOOL hasInternalAutoSubscribeFeedCount;
+@property (nonatomic) BOOL hasIsMarketingNotificationEnabled;
+@property (nonatomic) BOOL hasIsNewIssuesNotificationEnabled;
 @property (nonatomic) BOOL hasLastAppSessionTimestamp;
 @property (readonly, nonatomic) BOOL hasNotificationArticleId;
 @property (nonatomic) BOOL hasNotificationEnabledChannelsCount;
 @property (readonly, nonatomic) BOOL hasNotificationId;
 @property (readonly, nonatomic) BOOL hasNotificationSenderChannelId;
 @property (readonly, nonatomic) BOOL hasNotificationSourceChannelId;
+@property (nonatomic) BOOL hasNotificationType;
 @property (nonatomic) BOOL hasNotitificationsEnabledChannelsCount;
 @property (nonatomic) BOOL hasPortraitAutoSubscribeFeedCount;
 @property (readonly, nonatomic) BOOL hasReferringSourceApplication;
@@ -97,6 +106,8 @@
 @property (nonatomic) BOOL hasWidgetSection;
 @property (nonatomic) BOOL hasWidgetSectionArticleRank;
 @property (nonatomic) int internalAutoSubscribeFeedCount; // @synthesize internalAutoSubscribeFeedCount=_internalAutoSubscribeFeedCount;
+@property (nonatomic) BOOL isMarketingNotificationEnabled; // @synthesize isMarketingNotificationEnabled=_isMarketingNotificationEnabled;
+@property (nonatomic) BOOL isNewIssuesNotificationEnabled; // @synthesize isNewIssuesNotificationEnabled=_isNewIssuesNotificationEnabled;
 @property (nonatomic) long long lastAppSessionTimestamp; // @synthesize lastAppSessionTimestamp=_lastAppSessionTimestamp;
 @property (strong, nonatomic) NSString *notificationArticleId; // @synthesize notificationArticleId=_notificationArticleId;
 @property (strong, nonatomic) NSMutableArray *notificationChannelIds; // @synthesize notificationChannelIds=_notificationChannelIds;
@@ -104,6 +115,7 @@
 @property (strong, nonatomic) NSString *notificationId; // @synthesize notificationId=_notificationId;
 @property (strong, nonatomic) NSString *notificationSenderChannelId; // @synthesize notificationSenderChannelId=_notificationSenderChannelId;
 @property (strong, nonatomic) NSString *notificationSourceChannelId; // @synthesize notificationSourceChannelId=_notificationSourceChannelId;
+@property (nonatomic) int notificationType; // @synthesize notificationType=_notificationType;
 @property (nonatomic) int notitificationsEnabledChannelsCount; // @synthesize notitificationsEnabledChannelsCount=_notitificationsEnabledChannelsCount;
 @property (strong, nonatomic) NSMutableArray *paidSubscriptionChannelIds; // @synthesize paidSubscriptionChannelIds=_paidSubscriptionChannelIds;
 @property (nonatomic) int portraitAutoSubscribeFeedCount; // @synthesize portraitAutoSubscribeFeedCount=_portraitAutoSubscribeFeedCount;

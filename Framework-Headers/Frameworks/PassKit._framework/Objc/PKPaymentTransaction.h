@@ -23,6 +23,7 @@
     BOOL _processedForStations;
     BOOL _hasAssociatedPaymentApplication;
     BOOL _hasNotificationServiceData;
+    BOOL _originatedByDevice;
     NSString *_identifier;
     NSString *_serviceIdentifier;
     NSString *_paymentHash;
@@ -67,6 +68,7 @@
     NSString *_secondaryFundingSourceDPANSuffix;
     NSString *_secondaryFundingSourceFPANIdentifier;
     NSString *_secondaryFundingSourceDescription;
+    long long _secondaryFundingSourceType;
     NSUUID *_requestDeviceScoreIdentifier;
     NSUUID *_sendDeviceScoreIdentifier;
     NSString *_merchantProvidedDescription;
@@ -115,6 +117,7 @@
 @property (strong, nonatomic) PKMerchant *merchant; // @synthesize merchant=_merchant;
 @property (copy, nonatomic) NSString *merchantProvidedDescription; // @synthesize merchantProvidedDescription=_merchantProvidedDescription;
 @property (copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (nonatomic) BOOL originatedByDevice; // @synthesize originatedByDevice=_originatedByDevice;
 @property (copy, nonatomic) NSString *paymentHash; // @synthesize paymentHash=_paymentHash;
 @property (copy, nonatomic) NSString *peerPaymentCounterpartHandle; // @synthesize peerPaymentCounterpartHandle=_peerPaymentCounterpartHandle;
 @property (copy, nonatomic) NSString *peerPaymentMemo; // @synthesize peerPaymentMemo=_peerPaymentMemo;
@@ -135,6 +138,7 @@
 @property (copy, nonatomic) NSString *secondaryFundingSourceDescription; // @synthesize secondaryFundingSourceDescription=_secondaryFundingSourceDescription;
 @property (copy, nonatomic) NSString *secondaryFundingSourceFPANIdentifier; // @synthesize secondaryFundingSourceFPANIdentifier=_secondaryFundingSourceFPANIdentifier;
 @property (nonatomic) long long secondaryFundingSourceNetwork; // @synthesize secondaryFundingSourceNetwork=_secondaryFundingSourceNetwork;
+@property (nonatomic) long long secondaryFundingSourceType; // @synthesize secondaryFundingSourceType=_secondaryFundingSourceType;
 @property (copy, nonatomic) NSUUID *sendDeviceScoreIdentifier; // @synthesize sendDeviceScoreIdentifier=_sendDeviceScoreIdentifier;
 @property (copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
 @property (nonatomic) BOOL shouldSuppressDate; // @synthesize shouldSuppressDate=_shouldSuppressDate;

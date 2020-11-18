@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL ignoreDeviceLockState; // @dynamic ignoreDeviceLockState;
 @property (strong, nonatomic) RELocationManager *locationManager; // @dynamic locationManager;
 @property (copy, nonatomic) NSURL *modelFileURL; // @dynamic modelFileURL;
+@property (nonatomic) unsigned long long modelStorageBehavior; // @dynamic modelStorageBehavior;
 @property (copy, nonatomic) NSString *preferenceDomain; // @dynamic preferenceDomain;
 @property (copy, nonatomic) REFeatureSet *primaryFeatures; // @dynamic primaryFeatures;
 @property (nonatomic) unsigned long long trainingBehavior; // @dynamic trainingBehavior;

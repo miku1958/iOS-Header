@@ -13,7 +13,7 @@
     NSKeyedArchiver *_archiver;
 }
 
-@property (strong, nonatomic) NSKeyedArchiver *archiver; // @synthesize archiver=_archiver;
+@property (readonly, nonatomic) NSKeyedArchiver *archiver; // @synthesize archiver=_archiver;
 
 - (void).cxx_destruct;
 - (void)_configure;

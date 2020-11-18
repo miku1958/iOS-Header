@@ -43,29 +43,29 @@ __attribute__((visibility("hidden")))
 - (void)didProcessElements:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
 - (void)didRunForScene:(id)arg1 pipeline:(id)arg2;
 - (void)didSubmitSceneObject:(id)arg1 pipeline:(id)arg2;
-- (void)didTransformElement:(const struct RenderElementInfo *)arg1 sceneObject:(id)arg2;
+- (void)didTransformElement:(id)arg1 sceneObject:(id)arg2;
 - (id)initWithRep:(id)arg1 selection:(id)arg2;
 - (void)labelsResourcesSessionWillBeginForSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)labelsResourcesSessionWillEndForSceneObject:(id)arg1 pipeline:(id)arg2;
 - (BOOL)p_labelSelectedForType:(int)arg1 alignment:(unsigned long long)arg2 elementIndex:(long long)arg3;
 - (id)p_selectedSeries;
 - (BOOL)renderPassDelayDisallowedForSceneObject:(id)arg1 pipeline:(id)arg2;
-- (struct ElementRenderPass)renderPassForElement:(const struct RenderElementInfo *)arg1 sceneObject:(id)arg2;
+- (struct ElementRenderPass)renderPassForElement:(id)arg1 sceneObject:(id)arg2;
 - (struct ElementRenderPass)renderPassForSceneObject:(id)arg1;
 - (void)setOffset:(const tvec3_17f03ce0 *)arg1 labelType:(int)arg2 boundsIndex:(long long)arg3 forSceneObject:(id)arg4;
-- (void)updateExternalLabelAttribute:(struct ExternalLabelAttribute *)arg1 sceneObject:(id)arg2 labelRenderInfo:(const struct ChartLabelsContainingLabelRenderInfo *)arg3;
+- (void)updateExternalLabelAttribute:(id)arg1 sceneObject:(id)arg2 labelRenderInfo:(id)arg3;
 - (BOOL)willBeginProcessingSceneObject:(id)arg1;
-- (BOOL)willProcessElement:(const struct RenderElementInfo *)arg1 sceneObject:(id)arg2;
+- (BOOL)willProcessElement:(id)arg1 sceneObject:(id)arg2;
 - (BOOL)willProcessElements:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
 - (BOOL)willProcessSeries:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
-- (BOOL)willRenderElement:(const struct RenderElementInfo *)arg1 sceneObject:(id)arg2;
+- (BOOL)willRenderElement:(id)arg1 sceneObject:(id)arg2;
 - (void)willRunForScene:(id)arg1 pipeline:(id)arg2;
-- (BOOL)willSubmitElement:(const struct RenderElementInfo *)arg1 sceneObject:(id)arg2;
+- (BOOL)willSubmitElement:(id)arg1 sceneObject:(id)arg2;
 - (BOOL)willSubmitGeometry:(id)arg1;
-- (BOOL)willSubmitLabelForSceneObject:(id)arg1 labelRenderInfo:(const struct ChartLabelsContainingLabelRenderInfo *)arg2;
+- (BOOL)willSubmitLabelForSceneObject:(id)arg1 labelRenderInfo:(id)arg2;
 - (BOOL)willSubmitLabelType:(int)arg1 boundsIndex:(long long)arg2 alignment:(unsigned long long)arg3 elementIndex:(unsigned long long)arg4 forSceneObject:(id)arg5;
 - (BOOL)willSubmitSceneObject:(id)arg1 pipeline:(id)arg2;
-- (BOOL)willUpdateElementEffectsStatesForElement:(const struct RenderElementInfo *)arg1 sceneObject:(id)arg2;
+- (BOOL)willUpdateElementEffectsStatesForElement:(id)arg1 sceneObject:(id)arg2;
 
 @end
 

@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <PassKitCore/NSCopying-Protocol.h>
+#import <PassKitCore/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-@interface PKOSVersionRequirement : NSObject
+@interface PKOSVersionRequirement : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_iphone;
     NSString *_ipad;
@@ -26,9 +29,14 @@
 @property (readonly, nonatomic) NSString *watch; // @synthesize watch=_watch;
 
 + (id)fromDeviceVersion;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1 deviceClass:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)versionForDeviceClass:(id)arg1;
 
 @end
 

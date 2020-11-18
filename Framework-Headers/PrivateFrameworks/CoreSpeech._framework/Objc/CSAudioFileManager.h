@@ -15,6 +15,7 @@
 + (id)_getDateLabel;
 + (void)_readDataFromFileHandle:(id)arg1 toFileHandle:(id)arg2;
 + (id)_sharedAudioLoggingQueue;
++ (id)createAudioFileWriterForRemoteVADWithInputFormat:(struct AudioStreamBasicDescription)arg1 outputFormat:(struct AudioStreamBasicDescription)arg2;
 + (id)createAudioFileWriterFromWithInputFormat:(struct AudioStreamBasicDescription)arg1 outputFormat:(struct AudioStreamBasicDescription)arg2;
 + (void)generateDeviceAudioLogging:(id)arg1 numChannels:(unsigned int)arg2 speechId:(id)arg3;
 + (void)pruneNumberOfLogFilesTo:(unsigned long long)arg1;

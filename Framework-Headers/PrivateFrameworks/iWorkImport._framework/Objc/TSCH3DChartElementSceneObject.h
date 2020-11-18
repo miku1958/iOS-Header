@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)isHorizontalChart;
-+ (struct TSCH3DScenePart)partWithEnumerator:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
++ (id)partWithEnumerator:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
 + (id)resetSeriesStorage:(id)arg1 forSeries:(id)arg2;
 + (id)scenePropertiesKey;
 + (void)setLowDetailedGeometriesForScene:(id)arg1;
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)delegateFromScene:(id)arg1;
 - (float)depthForScene:(id)arg1;
 - (id)elementPropertiesFromScene:(id)arg1;
-- (struct GeometryResource)geometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2 scene:(id)arg3;
+- (id)geometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2 scene:(id)arg3;
 - (Class)getBounds3DClass;
 - (void)getBounds:(id)arg1;
 - (void)getSceneObjectElementsBounds:(id)arg1;
@@ -33,17 +33,17 @@ __attribute__((visibility("hidden")))
 - (id)modelEnumeratorFromScene:(id)arg1;
 - (BOOL)p_isRenderPassDelayedForDelegate:(id)arg1;
 - (void)p_processItems:(id)arg1 processItemsClass:(Class)arg2;
-- (void)postrenderElement:(const struct RenderElementInfo *)arg1;
-- (void)prerenderElement:(const struct RenderElementInfo *)arg1;
+- (void)postrenderElement:(id)arg1;
+- (void)prerenderElement:(id)arg1;
 - (void)rayPick:(id)arg1;
 - (void)render:(id)arg1;
-- (struct ElementRenderPass)render:(const struct RenderElementInfo *)arg1 pushMatrix:(BOOL)arg2 delayedPass:(BOOL)arg3;
-- (void)renderElement:(const struct RenderElementInfo *)arg1;
+- (struct ElementRenderPass)render:(id)arg1 pushMatrix:(BOOL)arg2 delayedPass:(BOOL)arg3;
+- (void)renderElement:(id)arg1;
 - (void)renderLabelsSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)renderSeriesLabelsSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)renderTwoPassGeometry:(BOOL)arg1 processor:(id)arg2 renderBlock:(CDUnknownBlockType)arg3;
 - (Class)resizer3DClass;
-- (struct TSCH3DScenePart)scenePartForScene:(id)arg1;
+- (id)scenePartForScene:(id)arg1;
 - (id)scenePropertiesKey;
 - (id)selectionPathForInfo:(id)arg1 scene:(id)arg2 pickedPoint:(id)arg3;
 - (void)setTransparencyBlendingForProcessor:(id)arg1;

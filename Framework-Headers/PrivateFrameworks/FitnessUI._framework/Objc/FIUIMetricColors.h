@@ -19,6 +19,7 @@
     UIColor *_buttonDisabledTextColor;
     UIColor *_valueDisplayColor;
     UIColor *_platterBackgroundColor;
+    UIColor *_platterInactiveBackgroundColor;
     NSString *_workoutRingColorIdentifier;
 }
 
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) UIColor *lightenedNonGradientColor; // @synthesize lightenedNonGradientColor=_lightenedNonGradientColor;
 @property (strong, nonatomic) UIColor *nonGradientTextColor; // @synthesize nonGradientTextColor=_nonGradientTextColor;
 @property (strong, nonatomic) UIColor *platterBackgroundColor; // @synthesize platterBackgroundColor=_platterBackgroundColor;
+@property (strong, nonatomic) UIColor *platterInactiveBackgroundColor; // @synthesize platterInactiveBackgroundColor=_platterInactiveBackgroundColor;
 @property (strong, nonatomic) UIColor *valueDisplayColor; // @synthesize valueDisplayColor=_valueDisplayColor;
 @property (strong, nonatomic) NSString *workoutRingColorIdentifier; // @synthesize workoutRingColorIdentifier=_workoutRingColorIdentifier;
 

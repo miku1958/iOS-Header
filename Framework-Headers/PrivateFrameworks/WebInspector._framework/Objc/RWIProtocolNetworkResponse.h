@@ -6,17 +6,16 @@
 
 #import <WebInspector/RWIProtocolJSONObject.h>
 
-@class NSString, RWIProtocolNetworkHeaders, RWIProtocolNetworkResourceTiming;
+@class NSString, RWIProtocolNetworkHeaders, RWIProtocolNetworkResourceTiming, RWIProtocolSecurity;
 
 @interface RWIProtocolNetworkResponse : RWIProtocolJSONObject
 {
 }
 
 @property (strong, nonatomic) RWIProtocolNetworkHeaders *headers;
-@property (copy, nonatomic) NSString *headersText;
 @property (copy, nonatomic) NSString *mimeType;
 @property (strong, nonatomic) RWIProtocolNetworkHeaders *requestHeaders;
-@property (copy, nonatomic) NSString *requestHeadersText;
+@property (strong, nonatomic) RWIProtocolSecurity *security;
 @property (nonatomic) long long source;
 @property (nonatomic) int status;
 @property (copy, nonatomic) NSString *statusText;

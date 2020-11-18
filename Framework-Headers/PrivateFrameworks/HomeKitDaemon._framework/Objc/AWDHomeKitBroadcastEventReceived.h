@@ -13,14 +13,18 @@
 @interface AWDHomeKitBroadcastEventReceived : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
+    int _certified;
     AWDHomeKitVendorInformation *_vendorDetails;
     BOOL _isExpectedGSN;
     struct {
         unsigned int timestamp:1;
+        unsigned int certified:1;
         unsigned int isExpectedGSN:1;
     } _has;
 }
 
+@property (nonatomic) int certified; // @synthesize certified=_certified;
+@property (nonatomic) BOOL hasCertified;
 @property (nonatomic) BOOL hasIsExpectedGSN;
 @property (nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) BOOL hasVendorDetails;
@@ -29,6 +33,8 @@
 @property (strong, nonatomic) AWDHomeKitVendorInformation *vendorDetails; // @synthesize vendorDetails=_vendorDetails;
 
 - (void).cxx_destruct;
+- (int)StringAsCertified:(id)arg1;
+- (id)certifiedAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

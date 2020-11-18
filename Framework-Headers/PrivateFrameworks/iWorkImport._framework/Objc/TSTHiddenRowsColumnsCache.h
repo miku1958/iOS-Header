@@ -63,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)previousNthVisibleRow:(unsigned int)arg1 fromRowIndex:(unsigned int)arg2;
 - (void)validate:(id)arg1;
 - (void)validateChangeDescriptors:(id)arg1;
-- (struct TSUCellCoord)visibleCellOffsetBy:(CDStruct_1ef3fb1f)arg1 fromCellID:(struct TSUCellCoord)arg2;
+- (struct TSUCellCoord)visibleCellOffsetBy:(struct TSUColumnRowOffset)arg1 fromCellID:(struct TSUCellCoord)arg2;
 
 @end
 

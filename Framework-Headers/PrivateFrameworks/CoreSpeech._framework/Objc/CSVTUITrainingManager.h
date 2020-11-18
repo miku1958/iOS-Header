@@ -45,10 +45,9 @@
 + (id)sharedtrainingSessionQueue;
 + (id)trainingManagerWithLocaleID:(id)arg1;
 - (void).cxx_destruct;
-- (void)CSVTUITrainingSession:(id)arg1 hasTrainUtterance:(id)arg2 languageCode:(id)arg3;
+- (BOOL)CSVTUITrainingSession:(id)arg1 hasTrainUtterance:(id)arg2 languageCode:(id)arg3 payload:(BOOL)arg4;
 - (void)CSVTUITrainingSessionRMSAvailable:(float)arg1;
 - (void)CSVTUITrainingSessionStopListen;
-- (void)VTUITrainingSessionStopListen;
 - (unsigned long long)_audioSource;
 - (void)_beginOfSpeechDetected;
 - (BOOL)_createAudioAnalyzer;
@@ -73,6 +72,7 @@
 - (void)endpointer:(id)arg1 didDetectHardEndpointAtTime:(double)arg2 withMetrics:(id)arg3;
 - (void)endpointer:(id)arg1 didDetectStartpointAtTime:(double)arg2;
 - (id)initWithLocaleIdentifier:(id)arg1 withAudioSession:(id)arg2;
+- (void)prepareWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reset;
 - (void)setLocaleIdentifier:(id)arg1;
 - (BOOL)shouldPerformRMS;

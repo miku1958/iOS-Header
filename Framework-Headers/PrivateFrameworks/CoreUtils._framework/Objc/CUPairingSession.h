@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUAppleIDClient, CUPairedPeer, NSData, NSDictionary, NSString;
+@class CUAppleIDClient, CUPairedPeer, NSArray, NSData, NSDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUPairingSession : NSObject
@@ -16,10 +16,13 @@
     struct LogCategory *_ucat;
     unsigned int _flags;
     unsigned int _pinType;
+    unsigned int _pinTypeActual;
     unsigned int _sessionType;
     NSDictionary *_acl;
+    NSDictionary *_aclActual;
     NSDictionary *_additionalPeerInfo;
     NSDictionary *_additionalSelfInfo;
+    NSArray *_allowedMACAddresses;
     unsigned long long _selfAppFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_fixedPIN;
@@ -43,8 +46,10 @@
 }
 
 @property (copy, nonatomic) NSDictionary *acl; // @synthesize acl=_acl;
+@property (readonly, copy, nonatomic) NSDictionary *aclActual; // @synthesize aclActual=_aclActual;
 @property (copy, nonatomic) NSDictionary *additionalPeerInfo; // @synthesize additionalPeerInfo=_additionalPeerInfo;
 @property (copy, nonatomic) NSDictionary *additionalSelfInfo; // @synthesize additionalSelfInfo=_additionalSelfInfo;
+@property (copy, nonatomic) NSArray *allowedMACAddresses; // @synthesize allowedMACAddresses=_allowedMACAddresses;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) NSString *fixedPIN; // @synthesize fixedPIN=_fixedPIN;
@@ -62,6 +67,7 @@
 @property (copy, nonatomic) NSString *peerAppleID; // @synthesize peerAppleID=_peerAppleID;
 @property (readonly, copy, nonatomic) NSDictionary *peerInfo; // @synthesize peerInfo=_peerInfo;
 @property (nonatomic) unsigned int pinType; // @synthesize pinType=_pinType;
+@property (readonly, nonatomic) unsigned int pinTypeActual; // @synthesize pinTypeActual=_pinTypeActual;
 @property (copy, nonatomic) CDUnknownBlockType promptForPINHandler; // @synthesize promptForPINHandler=_promptForPINHandler;
 @property (nonatomic) unsigned long long selfAppFlags; // @synthesize selfAppFlags=_selfAppFlags;
 @property (copy, nonatomic) CDUnknownBlockType sendDataHandler; // @synthesize sendDataHandler=_sendDataHandler;

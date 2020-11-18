@@ -12,7 +12,7 @@
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
 @class ADBannerView, NSError, NSString, SXAdController, SXIAdDebugView;
-@protocol SXHost;
+@protocol SXAnalyticsReporting, SXHost, SXLayoutInvalidator;
 
 @interface SXIAdComponentView : SXComponentView <ADBannerViewDelegate, SXAdDisplayInstructions, SXViewportChangeListener, SXAdDocumentStateObserver>
 {
@@ -22,6 +22,8 @@
     BOOL _didUnloadBannerView;
     int _opportunityError;
     SXAdController *_adController;
+    id<SXLayoutInvalidator> _layoutInvalidator;
+    id<SXAnalyticsReporting> _analyticsReporter;
     id<SXHost> _host;
     ADBannerView *_bannerView;
     CDUnknownBlockType _cancelHandler;
@@ -32,6 +34,7 @@
 }
 
 @property (readonly, weak, nonatomic) SXAdController *adController; // @synthesize adController=_adController;
+@property (readonly, nonatomic) id<SXAnalyticsReporting> analyticsReporter; // @synthesize analyticsReporter=_analyticsReporter;
 @property (strong, nonatomic) ADBannerView *bannerView; // @synthesize bannerView=_bannerView;
 @property (copy, nonatomic) CDUnknownBlockType cancelHandler; // @synthesize cancelHandler=_cancelHandler;
 @property (readonly, copy) NSString *debugDescription;
@@ -45,6 +48,7 @@
 @property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
 @property (nonatomic) BOOL isDisplayingBannerView; // @synthesize isDisplayingBannerView=_isDisplayingBannerView;
 @property (nonatomic) BOOL isReceivingViewportChanges; // @synthesize isReceivingViewportChanges=_isReceivingViewportChanges;
+@property (readonly, nonatomic) id<SXLayoutInvalidator> layoutInvalidator; // @synthesize layoutInvalidator=_layoutInvalidator;
 @property (nonatomic) int opportunityError; // @synthesize opportunityError=_opportunityError;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGSize viewportSizeOnAdRequest; // @synthesize viewportSizeOnAdRequest=_viewportSizeOnAdRequest;
@@ -60,7 +64,7 @@
 - (void)cancelAdRequest;
 - (void)displayBannerView;
 - (BOOL)hasRequestedBannerViewCurrentViewport;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 host:(id)arg6 adController:(id)arg7;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 adController:(id)arg5 layoutInvalidator:(id)arg6 analyticsReporting:(id)arg7 host:(id)arg8;
 - (void)invalidateLayoutIfNeeded;
 - (void)layoutBannerView;
 - (void)loadComponent:(id)arg1;

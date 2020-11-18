@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGRect frameInUnscaledCanvas;
 @property (readonly, nonatomic) struct CGRect frameInUnscaledCanvasIncludingChrome;
 @property (readonly, nonatomic) NSArray *hyperlinkRegions;
+@property (readonly, nonatomic) struct CGRect i_layerFrameInScaledCanvasIgnoringDragging;
 @property (readonly, nonatomic) NSObject<TSDInfo> *info;
 @property (readonly, nonatomic) BOOL isDrawingInFlippedContext;
 @property (readonly, nonatomic) BOOL isLocked;
@@ -61,12 +62,11 @@ __attribute__((visibility("hidden")))
 - (void)dynamicOverrideDidChange;
 - (BOOL)forcesPlacementOnTop;
 - (void)i_configureFontSmoothingForContext:(struct CGContext *)arg1 layer:(id)arg2;
-- (struct CGRect)i_layerFrameInScaledCanvasIgnoringDragging;
 - (struct CGRect)i_partition_deepClipRect;
 - (void)i_willBeRemoved;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (struct CGRect)layerFrameInScaledCanvasRelativeToParent;
-- (struct CGPath *)newPathInScaledCanvasFromNaturalRect:(struct CGRect)arg1;
+- (const struct CGPath *)newPathInScaledCanvasFromNaturalRect:(struct CGRect)arg1;
 - (void)recursivelyDrawChildrenInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (void)recursivelyDrawInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (void)recursivelyPerformSelector:(SEL)arg1;

@@ -11,6 +11,7 @@
 @protocol STUsageDetailsViewModelCoordinator <NSObject>
 
 @property (readonly, copy, nonatomic) NSArray *devices;
+@property (readonly, getter=isRefreshing) BOOL refreshing;
 @property (copy, nonatomic) NSString *selectedDeviceIdentifier;
 @property (readonly, nonatomic) STUsageDetailsViewModel *viewModel;
 

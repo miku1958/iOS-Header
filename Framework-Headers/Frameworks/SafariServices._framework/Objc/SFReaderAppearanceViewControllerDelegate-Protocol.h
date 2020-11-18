@@ -9,6 +9,8 @@
 @class _SFReaderAppearanceViewController;
 
 @protocol SFReaderAppearanceViewControllerDelegate <NSObject>
+- (BOOL)readerAppearanceViewControllerCanDecreaseTextSize:(_SFReaderAppearanceViewController *)arg1;
+- (BOOL)readerAppearanceViewControllerCanIncreaseTextSize:(_SFReaderAppearanceViewController *)arg1;
 - (void)readerAppearanceViewControllerDidChangeFont:(_SFReaderAppearanceViewController *)arg1;
 - (void)readerAppearanceViewControllerDidChangeTheme:(_SFReaderAppearanceViewController *)arg1;
 - (void)readerAppearanceViewControllerDidDecreaseTextSize:(_SFReaderAppearanceViewController *)arg1;

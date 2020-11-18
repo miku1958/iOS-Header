@@ -16,6 +16,7 @@
     NSLock *_observersLock;
     NSHashTable *_observers;
     BOOL _overridesContentOverlayInsets;
+    unsigned long long _style;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL overridesContentOverlayInsets; // @synthesize overridesContentOverlayInsets=_overridesContentOverlayInsets;
 @property (readonly, nonatomic) struct CGSize preferredContentSize;
+@property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -30,6 +32,8 @@
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
 - (void)addContentContainerObserver:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithStyle:(unsigned long long)arg1;
+- (void)loadView;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)removeContentContainerObserver:(id)arg1;

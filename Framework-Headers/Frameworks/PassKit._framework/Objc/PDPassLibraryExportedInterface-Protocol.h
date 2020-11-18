@@ -14,7 +14,7 @@
 - (void)canAddPassesOfType:(unsigned long long)arg1 handler:(void (^)(BOOL))arg2;
 - (void)countPassesOfType:(unsigned long long)arg1 handler:(void (^)(unsigned long long))arg2;
 - (void)defaultPaymentPassWithHandler:(void (^)(PKPaymentPass *))arg1;
-- (void)expressFelicaTransitPassWithHandler:(void (^)(PKPass *))arg1;
+- (void)expressTransitPassWithHandler:(void (^)(PKPass *))arg1;
 - (void)getContentForUniqueID:(NSString *)arg1 handler:(void (^)(PKContent *))arg2;
 - (void)getDataForBundleResourceNamed:(NSString *)arg1 withExtension:(NSString *)arg2 objectUniqueIdentifier:(NSString *)arg3 handler:(void (^)(NSData *))arg4;
 - (void)getImageSetForUniqueID:(NSString *)arg1 ofType:(long long)arg2 displayProfile:(PKDisplayProfile *)arg3 handler:(void (^)(PKImageSet *))arg4;

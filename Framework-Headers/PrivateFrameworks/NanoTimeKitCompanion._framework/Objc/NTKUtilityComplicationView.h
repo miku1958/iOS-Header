@@ -21,7 +21,9 @@
     NSDate *_timeTravelDate;
     BOOL _canUseCurvedText;
     BOOL _shouldUseBackgroundPlatter;
+    BOOL _alwaysEnforcePlatterInset;
     BOOL _useRoundedFontDesign;
+    BOOL _useBlockyHighlightCorners;
     BOOL _suppressesInternalColorOverrides;
     BOOL _editing;
     id<NTKComplicationDisplayObserver> displayObserver;
@@ -45,6 +47,7 @@
 }
 
 @property (strong, nonatomic) UIColor *accentColor; // @synthesize accentColor=_accentColor;
+@property (nonatomic) BOOL alwaysEnforcePlatterInset; // @synthesize alwaysEnforcePlatterInset=_alwaysEnforcePlatterInset;
 @property (strong, nonatomic) UIImageView *backgroundPlatter; // @synthesize backgroundPlatter=_backgroundPlatter;
 @property (nonatomic) BOOL canUseCurvedText; // @synthesize canUseCurvedText=_canUseCurvedText;
 @property (strong, nonatomic) NTKFaceColorScheme *colorScheme; // @synthesize colorScheme=_colorScheme;
@@ -75,6 +78,7 @@
 @property (nonatomic) BOOL suppressesInternalColorOverrides; // @synthesize suppressesInternalColorOverrides=_suppressesInternalColorOverrides;
 @property (readonly) NSDate *timeTravelDate; // @synthesize timeTravelDate=_timeTravelDate;
 @property (nonatomic) struct UIEdgeInsets touchEdgeInsets; // @synthesize touchEdgeInsets=_touchEdgeInsets;
+@property (nonatomic) BOOL useBlockyHighlightCorners; // @synthesize useBlockyHighlightCorners=_useBlockyHighlightCorners;
 @property (nonatomic) BOOL useRoundedFontDesign; // @synthesize useRoundedFontDesign=_useRoundedFontDesign;
 @property (nonatomic) BOOL usesLegibility; // @synthesize usesLegibility=_usesLegibility;
 
@@ -121,6 +125,7 @@
 - (void)setEditing:(BOOL)arg1;
 - (void)setMaxSize:(struct CGSize)arg1;
 - (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldUsePlatterInset;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

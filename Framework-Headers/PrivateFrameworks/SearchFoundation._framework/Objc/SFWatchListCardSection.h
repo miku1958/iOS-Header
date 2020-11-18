@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFWatchListCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFWatchListItem;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFUserReportRequest, SFWatchListItem;
 
 @interface SFWatchListCardSection : SFCardSection <SFWatchListCardSection, NSSecureCoding, NSCopying>
 {
@@ -48,6 +48,7 @@
 @property (nonatomic) int separatorStyle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 @property (strong, nonatomic) SFWatchListItem *watchListItem; // @synthesize watchListItem=_watchListItem;
 
 + (BOOL)supportsSecureCoding;

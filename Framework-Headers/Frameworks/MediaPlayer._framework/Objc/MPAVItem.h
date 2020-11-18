@@ -117,6 +117,7 @@
 @property (readonly, copy, nonatomic) NSArray *buyOffers; // @synthesize buyOffers=_buyOffers;
 @property (readonly, nonatomic) BOOL canReusePlayerItem; // @synthesize canReusePlayerItem=_canReusePlayerItem;
 @property (readonly, nonatomic) BOOL canSeedGenius;
+@property (readonly, nonatomic) BOOL canUseLoadedAsset;
 @property (strong, nonatomic) NSArray *chapterTimeMarkers; // @synthesize chapterTimeMarkers=_chapterTimeMarkers;
 @property (strong, nonatomic) NSArray *closedCaptionTimeMarkers;
 @property (readonly, nonatomic) NSString *cloudAlbumID;

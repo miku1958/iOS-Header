@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)absoluteCellTractRefForHostCell:(const struct TSUCellCoord *)arg1;
+- (id)absoluteCellTractRefForHostCell:(const struct TSUCellCoord *)arg1 offTable:(BOOL *)arg2;
 - (void)addColumn:(unsigned short)arg1;
 - (void)addColumnRange:(const struct TSUIndexRange *)arg1;
 - (void)addRelativeColumn:(short)arg1;
@@ -35,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)addRelativeRowRange:(const struct TSUIndexRange *)arg1;
 - (void)addRow:(unsigned int)arg1;
 - (void)addRowRange:(const struct TSUIndexRange *)arg1;
-- (void)adjustRelativeIndexesBy:(const CDStruct_1ef3fb1f *)arg1;
+- (void)adjustRelativeIndexesBy:(const struct TSUColumnRowOffset *)arg1;
 - (const struct TSUIndexSet *)columns;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
@@ -47,11 +48,14 @@ __attribute__((visibility("hidden")))
 - (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 preserveFlags:(const struct TSUPreserveFlags *)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isRectangularRange;
+- (BOOL)isSingleCellOrSpanningRange;
 - (unsigned int)numColumns;
 - (unsigned int)numRelativeColumns;
 - (unsigned int)numRelativeRows;
 - (unsigned int)numRows;
+- (void)preserveFlagsFixingInversionsForTract:(id)arg1 absFromRelColumns:(const struct TSUIndexSet *)arg2 absFromRelRows:(const struct TSUIndexSet *)arg3;
 - (struct TSCERelativeCellCoordinate)relativeBottomRight;
+- (CDStruct_d36d9755)relativeBoundingRangeWithContainingCell:(const struct TSUCellCoord *)arg1;
 - (const struct TSUIndexSet *)relativeColumns;
 - (const struct TSUIndexSet *)relativeRows;
 - (struct TSCERelativeCellCoordinate)relativeTopLeft;

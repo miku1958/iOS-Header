@@ -30,6 +30,7 @@
 - (id)description;
 - (id)groupUID;
 - (id)initWithOutputDevices:(id)arg1;
+- (BOOL)isAirPlayRoute;
 - (BOOL)isAppleTVRoute;
 - (BOOL)isCarplayRoute;
 - (BOOL)isDeviceRoute;

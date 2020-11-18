@@ -80,7 +80,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL supportsCollaborativeEditing;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
 @property (readonly, nonatomic) BOOL textIsLinked;
-@property (readonly, nonatomic) BOOL textIsVertical;
 @property (nonatomic) BOOL usesSingleHeaderFooter; // @synthesize usesSingleHeaderFooter=mUsesSingleHeaderFooter;
 @property (getter=isUsingStartPageNumber) BOOL usingStartPageNumber; // @synthesize usingStartPageNumber=_usingStartPageNumber;
 
@@ -154,6 +153,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldBeDisplayed;
 - (id)tableInfoForName:(id)arg1 caseSensitive:(BOOL)arg2;
 - (id)tableInfos;
+- (BOOL)textIsVerticalAtCharIndex:(unsigned long long)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

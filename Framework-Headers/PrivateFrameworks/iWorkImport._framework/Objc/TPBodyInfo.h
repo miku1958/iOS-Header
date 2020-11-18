@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
-@property (readonly, nonatomic) BOOL layoutVertically;
+@property (readonly, nonatomic) BOOL laysOutVertically;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (readonly, nonatomic) id<TSDHint> nextTargetFirstChildHint;
 @property (readonly, nonatomic) id<TSWPOffscreenColumn> nextTargetFirstColumn;

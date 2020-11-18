@@ -38,6 +38,7 @@
 + (BOOL)hasPriorityBoostForResourceType:(unsigned long long)arg1;
 + (unsigned long long)maxPixelSizeForResourceType:(unsigned long long)arg1;
 + (id)normalizedResourcesFromResources:(id)arg1 resourcePerResourceType:(id *)arg2;
++ (unsigned long long)resourceTypeFromShortDecription:(id)arg1;
 + (id)shortDescriptionForResourceType:(unsigned long long)arg1;
 + (BOOL)shouldIgnoreResourceTypeOnUpload:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;

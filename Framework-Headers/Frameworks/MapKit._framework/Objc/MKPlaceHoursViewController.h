@@ -10,32 +10,24 @@
 #import <MapKit/MKStackingViewControllerFixedHeightAware-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
-@class MKMapItem, MKPlaceSectionHeaderView, NSArray, NSMutableDictionary, NSString, NSTimeZone, _MKLocalizedHoursBuilder;
+@class MKMapItem, MKPlaceSectionHeaderView, NSArray, NSString, NSTimeZone;
 @protocol _MKInfoCardAnalyticsDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MKPlaceHoursViewController : MKPlaceSectionViewController <MKStackingViewControllerFixedHeightAware, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol>
 {
     BOOL _isExpanded;
     MKPlaceSectionHeaderView *_headerView;
-    NSMutableDictionary *_formattedData;
-    _MKLocalizedHoursBuilder *_localizedHoursBuilder;
-    NSArray *_completeHours;
-    NSString *_currentOpenHoursString;
-    NSString *_currentOpenStateString;
+    NSArray *_businessHours;
     BOOL _resizableViewsDisabled;
     id<_MKInfoCardAnalyticsDelegate> _analyticsDelegate;
     MKMapItem *_mapItem;
 }
 
 @property (weak, nonatomic) id<_MKInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
-@property (readonly, nonatomic) NSArray *completeHours;
-@property (readonly, nonatomic) NSString *currentOpenHoursString;
-@property (readonly, nonatomic) NSString *currentOpenStateString;
+@property (readonly, nonatomic) NSArray *businessHours;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) _MKLocalizedHoursBuilder *localizedHoursBuilder;
 @property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (nonatomic) BOOL resizableViewsDisabled; // @synthesize resizableViewsDisabled=_resizableViewsDisabled;
 @property (readonly) Class superclass;
@@ -45,13 +37,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_contentSizeDidChange;
 - (void)_setExpanded:(BOOL)arg1;
-- (BOOL)_shouldCollapseFurtherAndColorTopString;
 - (BOOL)_shouldOnlyShowExpanded;
 - (void)_toggleShowAllHours;
 - (void)_updateHoursAnimated:(BOOL)arg1;
-- (void)calculateWidthsForData:(id)arg1;
-- (id)formattedData;
+- (id)hoursBuilderWithHours:(id)arg1;
 - (id)infoCardChildPossibleActions;
+- (void)infoCardThemeChanged:(id)arg1;
 - (id)initWithMapItem:(id)arg1;
 - (id)titleString;
 - (void)viewDidLoad;

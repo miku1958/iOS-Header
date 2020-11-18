@@ -63,10 +63,11 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)adjustedInsetsForTarget:(id)arg1;
 - (BOOL)allowIntersectionOfChildLayout:(id)arg1;
 - (BOOL)allowsHeaderFooter;
-- (unsigned int)autosizeFlagsForTextLayout:(id)arg1;
+- (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
 - (Class)backgroundFillOwningInfoClass;
 - (void)beginResizeWrapInvalidationCluster;
+- (double)blockHeightAvailableForFootnotes;
 - (id)computeLayoutGeometry;
 - (void)dealloc;
 - (id)dependentLayouts;
@@ -80,7 +81,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasHeaders;
 - (id)headerFooterProvider;
 - (BOOL)headerFooterProviderValid;
-- (double)heightAvailableForFootnotes;
 - (void)inflateFootnotesInFootnoteContainer:(id)arg1;
 - (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)invalidateBodyAndMarginLayouts;
@@ -98,8 +98,8 @@ __attribute__((visibility("hidden")))
 - (id)layoutsCausingWrapOnTextLayoutTarget:(id)arg1 ignoreIntersection:(BOOL)arg2;
 - (id)layoutsForChildInfo:(id)arg1;
 - (id)layoutsForProvidingGuidesForChildLayouts;
-- (double)maxAutoGrowHeightForTextLayout:(id)arg1;
-- (double)maxAutoGrowWidthForTextLayout:(id)arg1;
+- (double)maxAutoGrowBlockHeightForTextLayout:(id)arg1;
+- (double)maxAutoGrowLineWidthForTextLayout:(id)arg1;
 - (struct CGSize)maximumFrameSizeForChild:(id)arg1;
 - (int)naturalAlignmentForTextLayout:(id)arg1;
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;

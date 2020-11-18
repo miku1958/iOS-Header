@@ -21,9 +21,9 @@ __attribute__((visibility("hidden")))
 - (void)renderSeriesLabelsSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)renderSeriesLabelsSceneObject:(id)arg1 pipeline:(id)arg2 enumerator:(id)arg3 properties:(id)arg4;
 - (BOOL)shouldRenderEachValue;
-- (void)sortElements:(vector_d7c2985b *)arg1 pipeline:(id)arg2;
-- (tvec3_17f03ce0)sortingPositionForElement:(const struct RenderElementInfo *)arg1;
-- (void)updateElementEffectsStates:(const struct RenderElementInfo *)arg1 depthToWidthRatio:(float)arg2;
+- (void)sortElements:(id *)arg1 pipeline:(id)arg2;
+- (tvec3_17f03ce0)sortingPositionForElement:(id)arg1;
+- (void)updateElementEffectsStates:(id)arg1 depthToWidthRatio:(float)arg2;
 - (void)updateTilingEffect:(struct TexCoordTilingShaderEffectState *)arg1 series:(id)arg2 properties:(id)arg3 textureTiling:(id)arg4 areaSize:(tvec3_17f03ce0 *)arg5 element:(tvec2_3b141483 *)arg6;
 
 @end

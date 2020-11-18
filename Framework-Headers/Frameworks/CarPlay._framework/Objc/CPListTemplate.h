@@ -9,7 +9,7 @@
 #import <CarPlay/CPBarButtonProviding-Protocol.h>
 #import <CarPlay/CPListClientTemplateDelegate-Protocol.h>
 
-@class NSArray, NSString;
+@class CPBarButton, NSArray, NSString;
 @protocol CPListTemplateDelegate, CPListTemplateProviding;
 
 @interface CPListTemplate : CPTemplate <CPListClientTemplateDelegate, CPBarButtonProviding>
@@ -19,6 +19,7 @@
     NSString *_title;
 }
 
+@property (strong, nonatomic) CPBarButton *backButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CPListTemplateDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithContext:(id)arg1;
 - (BOOL)isActive;
 - (BOOL)isPerformingCacheOperation;
+- (void)loadComponent:(const struct ComponentInfo *)arg1 package:(id)arg2;
 - (void)loadFromPackage:(id)arg1 metadata:(id)arg2;
 - (id)objectForIdentifier:(long long)arg1;
 - (unsigned long long)objectTargetType;

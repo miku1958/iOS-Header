@@ -48,7 +48,7 @@
 - (void)playbackStartedForVideoAdWithMetadata:(id)arg1;
 - (void)playbackStartedWithVideoItem:(id)arg1 metadata:(id)arg2;
 - (void)removeEventTracker:(id)arg1;
-- (void)sessionDidStart;
+- (void)sessionDidStartWithSessionID:(id)arg1;
 - (void)sessionWillEnd;
 - (void)userEngagedWithCallToActionBarWithVideoItem:(id)arg1;
 - (void)userEngagedWithCallToActionOfVideoAdWithMetadata:(id)arg1;

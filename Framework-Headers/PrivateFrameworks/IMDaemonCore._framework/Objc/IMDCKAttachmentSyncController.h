@@ -62,6 +62,8 @@
 - (void)_fetchAttachmentZoneRecords:(id)arg1 desiredKeys:(long long)arg2 useNonHSA2ManateeDatabase:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)_fetchedAllChangesFromCloudKit;
 - (void)_kickOffAssetFetchForTransfersIfNeeded;
+- (BOOL)_kickOffWriteIfNeededForSyncType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_kickOffWriteOnCKQueueWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_markAllUnsuccessFullSyncAttachmentsAsNeedingSync;
 - (void)_markAttachmentWithROWIDAsSyncedWithCloudKit:(id)arg1;
 - (void)_markTransferAsNotBeingAbleToSyncUsingCKRecord:(id)arg1;
@@ -91,7 +93,7 @@
 - (BOOL)_shouldMarkAttachmentsAsNeedingReupload;
 - (void)_updateAllAttachmentsAsNotNeedingReUpload;
 - (id)_updateAttachmentGUIDIfNeededAndReturnTransfersToForceMarkAsSync:(id)arg1 transfersToSyncRowIDs:(id)arg2;
-- (void)_updateDeviceCondictionsToCheckIfNeededForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
+- (void)_updateDeviceConditionsToCheckIfNeededForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
 - (void)_updateTransferUsingCKRecord:(id)arg1 wasFetched:(BOOL)arg2;
 - (void)_validateTransferFromCloudKit:(id)arg1 localTransfer:(id)arg2 validateCompletion:(CDUnknownBlockType)arg3;
 - (void)_writeAttachmentsToCloudKit:(CDUnknownBlockType)arg1;

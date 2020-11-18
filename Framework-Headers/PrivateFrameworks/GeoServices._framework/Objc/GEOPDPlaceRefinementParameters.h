@@ -23,7 +23,14 @@ __attribute__((visibility("hidden")))
     NSString *_placeNameHint;
     int _placeTypeHint;
     int _resultProviderId;
-    CDStruct_f8e30bfb _has;
+    BOOL _supportCoordinatesOnlyRefinement;
+    struct {
+        unsigned int muid:1;
+        unsigned int addressGeocodeAccuracyHint:1;
+        unsigned int placeTypeHint:1;
+        unsigned int resultProviderId:1;
+        unsigned int supportCoordinatesOnlyRefinement:1;
+    } _has;
 }
 
 @property (nonatomic) int addressGeocodeAccuracyHint; // @synthesize addressGeocodeAccuracyHint=_addressGeocodeAccuracyHint;
@@ -38,11 +45,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasPlaceNameHint;
 @property (nonatomic) BOOL hasPlaceTypeHint;
 @property (nonatomic) BOOL hasResultProviderId;
+@property (nonatomic) BOOL hasSupportCoordinatesOnlyRefinement;
 @property (strong, nonatomic) GEOLatLng *locationHint; // @synthesize locationHint=_locationHint;
 @property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
 @property (strong, nonatomic) NSString *placeNameHint; // @synthesize placeNameHint=_placeNameHint;
 @property (nonatomic) int placeTypeHint; // @synthesize placeTypeHint=_placeTypeHint;
 @property (nonatomic) int resultProviderId; // @synthesize resultProviderId=_resultProviderId;
+@property (nonatomic) BOOL supportCoordinatesOnlyRefinement; // @synthesize supportCoordinatesOnlyRefinement=_supportCoordinatesOnlyRefinement;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)formattedAddressLineHintType;

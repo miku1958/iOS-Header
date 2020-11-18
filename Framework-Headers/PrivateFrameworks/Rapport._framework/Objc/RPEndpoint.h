@@ -14,6 +14,7 @@
 {
     SFDevice *_bleDevice;
     CUBonjourDevice *_bonjourDevice;
+    unsigned int _hotspotInfo;
     NSString *_identifier;
     NSString *_idsDeviceIdentifier;
     NSString *_mediaRemoteIdentifier;
@@ -24,10 +25,13 @@
     NSString *_sourceVersion;
     BOOL _present;
     int _proximity;
+    NSString *_homeKitUserIdentifier;
 }
 
 @property (strong, nonatomic) SFDevice *bleDevice; // @synthesize bleDevice=_bleDevice;
 @property (strong, nonatomic) CUBonjourDevice *bonjourDevice; // @synthesize bonjourDevice=_bonjourDevice;
+@property (readonly, copy, nonatomic) NSString *homeKitUserIdentifier; // @synthesize homeKitUserIdentifier=_homeKitUserIdentifier;
+@property (readonly, nonatomic) unsigned int hotspotInfo; // @synthesize hotspotInfo=_hotspotInfo;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *idsDeviceIdentifier; // @synthesize idsDeviceIdentifier=_idsDeviceIdentifier;
 @property (copy, nonatomic) NSString *mediaRemoteIdentifier; // @synthesize mediaRemoteIdentifier=_mediaRemoteIdentifier;

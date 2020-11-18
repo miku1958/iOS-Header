@@ -15,6 +15,7 @@
     struct WebPreferencesPrivate *_private;
 }
 
+@property (nonatomic) BOOL CSSOMViewScrollingAPIEnabled;
 @property (nonatomic) BOOL accessibilityObjectModelEnabled;
 @property (nonatomic) BOOL allowCrossOriginSubresourcesToAskForCredentials;
 @property (nonatomic) BOOL allowMediaContentTypesRequiringHardwareSupportAsFallback;
@@ -23,6 +24,7 @@
 @property (nonatomic) BOOL allowsAnimatedImages;
 @property (nonatomic) BOOL allowsInlineMediaPlaybackAfterFullscreen;
 @property (nonatomic) BOOL animatedImageAsyncDecodingEnabled;
+@property (nonatomic) BOOL ariaReflectionEnabled;
 @property (nonatomic) BOOL attachmentElementEnabled;
 @property (nonatomic) BOOL autosaves;
 @property (nonatomic) unsigned long long cacheModel;
@@ -51,6 +53,7 @@
 @property (nonatomic) BOOL mediaCapabilitiesEnabled;
 @property (nonatomic) NSString *mediaContentTypesRequiringHardwareSupport;
 @property (nonatomic) BOOL mediaDataLoadsAutomatically;
+@property (nonatomic) BOOL mediaRecorderEnabled;
 @property (nonatomic) BOOL mediaUserGestureInheritsFromDocument;
 @property (nonatomic) BOOL menuItemElementEnabled;
 @property (nonatomic) int minimumFontSize;
@@ -62,6 +65,7 @@
 @property (nonatomic) BOOL resourceTimingEnabled;
 @property (copy, nonatomic) NSString *sansSerifFontFamily;
 @property (copy, nonatomic) NSString *serifFontFamily;
+@property (nonatomic) BOOL sourceBufferChangeTypeEnabled;
 @property (copy, nonatomic) NSString *standardFontFamily;
 @property (nonatomic) BOOL suppressesIncrementalRendering;
 @property (nonatomic) BOOL userStyleSheetEnabled;
@@ -71,7 +75,6 @@
 @property (nonatomic) BOOL viewportFitEnabled;
 @property (nonatomic) BOOL visualViewportAPIEnabled;
 @property (nonatomic) BOOL visualViewportEnabled;
-@property (nonatomic) BOOL webAuthenticationEnabled;
 
 + (id)_IBCreatorID;
 + (void)_checkLastReferenceForIdentifier:(id)arg1;
@@ -161,7 +164,6 @@
 - (BOOL)backspaceKeyNavigationEnabled;
 - (BOOL)cacheAPIEnabled;
 - (BOOL)canvasUsesAcceleratedDrawing;
-- (BOOL)crossOriginWindowPolicySupportEnabled;
 - (BOOL)customElementsEnabled;
 - (BOOL)customPasteboardDataEnabled;
 - (BOOL)dataTransferItemsEnabled;
@@ -244,6 +246,7 @@
 - (BOOL)readableByteStreamAPIEnabled;
 - (BOOL)requestAnimationFrameEnabled;
 - (BOOL)resourceLoadStatisticsEnabled;
+- (BOOL)selectionAcrossShadowBoundariesEnabled;
 - (BOOL)serverTimingEnabled;
 - (BOOL)serviceControlsEnabled;
 - (void)setAVFoundationEnabled:(BOOL)arg1;
@@ -268,7 +271,6 @@
 - (void)setBackspaceKeyNavigationEnabled:(BOOL)arg1;
 - (void)setCacheAPIEnabled:(BOOL)arg1;
 - (void)setCanvasUsesAcceleratedDrawing:(BOOL)arg1;
-- (void)setCrossOriginWindowPolicySupportEnabled:(BOOL)arg1;
 - (void)setCustomElementsEnabled:(BOOL)arg1;
 - (void)setCustomPasteboardDataEnabled:(BOOL)arg1;
 - (void)setDNSPrefetchingEnabled:(BOOL)arg1;
@@ -339,6 +341,7 @@
 - (void)setReadableByteStreamAPIEnabled:(BOOL)arg1;
 - (void)setRequestAnimationFrameEnabled:(BOOL)arg1;
 - (void)setResourceLoadStatisticsEnabled:(BOOL)arg1;
+- (void)setSelectionAcrossShadowBoundariesEnabled:(BOOL)arg1;
 - (void)setServerTimingEnabled:(BOOL)arg1;
 - (void)setServiceControlsEnabled:(BOOL)arg1;
 - (void)setShadowDOMEnabled:(BOOL)arg1;
@@ -371,7 +374,7 @@
 - (void)setWebGL2Enabled:(BOOL)arg1;
 - (void)setWebGLEnabled:(BOOL)arg1;
 - (void)setWebGPUEnabled:(BOOL)arg1;
-- (void)setWebRTCLegacyAPIEnabled:(BOOL)arg1;
+- (void)setWebMetalEnabled:(BOOL)arg1;
 - (void)setWebSecurityEnabled:(BOOL)arg1;
 - (void)setWritableStreamAPIEnabled:(BOOL)arg1;
 - (void)setXSSAuditorEnabled:(BOOL)arg1;
@@ -404,7 +407,7 @@
 - (BOOL)webGL2Enabled;
 - (BOOL)webGLEnabled;
 - (BOOL)webGPUEnabled;
-- (BOOL)webRTCLegacyAPIEnabled;
+- (BOOL)webMetalEnabled;
 - (void)willAddToWebView;
 - (BOOL)writableStreamAPIEnabled;
 - (BOOL)zoomsTextOnly;

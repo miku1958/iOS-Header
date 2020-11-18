@@ -8,12 +8,12 @@
 
 #import <WebUI/UIPrintInteractionControllerDelegate-Protocol.h>
 
-@class NSNumberFormatter, NSString, UIColor, UIFont, UIPrintFormatter, UIViewController, UIWebBrowserView, UIWebPaginationInfo, WebFrame;
+@class NSNumberFormatter, NSString, UIColor, UIFont, UIPrintFormatter;
+@protocol WBUPrintPageRendererDelegate;
 
 @interface WBUPrintPageRenderer : UIPrintPageRenderer <UIPrintInteractionControllerDelegate>
 {
     NSNumberFormatter *_numberFormatter;
-    UIWebPaginationInfo *_paginationInfo;
     double _URLWidth;
     NSString *_dateString;
     double _dateWidth;
@@ -23,34 +23,26 @@
     UIFont *_footerFont;
     UIColor *_footerColor;
     BOOL _printFooter;
-    UIWebBrowserView *_browserView;
-    WebFrame *_webFrame;
     NSString *_URLString;
     UIPrintFormatter *_contentFormatter;
-    UIViewController *_parentViewController;
+    id<WBUPrintPageRendererDelegate> _delegate;
 }
 
 @property (strong, nonatomic) NSString *URLString; // @synthesize URLString=_URLString;
-@property (strong, nonatomic) UIWebBrowserView *browserView; // @synthesize browserView=_browserView;
 @property (strong, nonatomic) UIPrintFormatter *contentFormatter; // @synthesize contentFormatter=_contentFormatter;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<WBUPrintPageRendererDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property (nonatomic) BOOL printFooter; // @synthesize printFooter=_printFooter;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) WebFrame *webFrame; // @synthesize webFrame=_webFrame;
 
 - (void).cxx_destruct;
-- (void)associateWithPrintController:(id)arg1;
 - (void)drawFooterForPageAtIndex:(long long)arg1 inRect:(struct CGRect)arg2;
 - (id)init;
-- (id)printControllerWithPageTitle:(id)arg1;
-- (id)printInfoWithPageTitle:(id)arg1;
 - (void)printInteractionControllerDidFinishJob:(id)arg1;
 - (id)printInteractionControllerParentViewController:(id)arg1;
 - (void)printInteractionControllerWillStartJob:(id)arg1;
-- (id)printingFrame;
 
 @end
 

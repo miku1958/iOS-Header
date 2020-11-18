@@ -14,8 +14,8 @@
 @property (readonly, copy, nonatomic) CDUnknownBlockType startHandler; // @synthesize startHandler=_startHandler;
 
 - (void).cxx_destruct;
+- (void)execute;
 - (id)initWithStartHandler:(CDUnknownBlockType)arg1;
-- (void)start;
 
 @end
 

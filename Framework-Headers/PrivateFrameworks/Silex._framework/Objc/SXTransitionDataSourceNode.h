@@ -6,19 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@protocol SXTransitionDataSource;
+#import <Silex/SXTransitionDataSource-Protocol.h>
 
-@interface SXTransitionDataSourceNode : NSObject
+@class NSString, UIView;
+@protocol SXTransitionableComponentView;
+
+@interface SXTransitionDataSourceNode : NSObject <SXTransitionDataSource>
 {
-    unsigned long long _type;
-    id<SXTransitionDataSource> _transitionDataSource;
+    BOOL _usesThumbnail;
+    unsigned long long _transitionType;
+    id<SXTransitionableComponentView> _componentView;
 }
 
-@property (readonly, nonatomic) id<SXTransitionDataSource> transitionDataSource; // @synthesize transitionDataSource=_transitionDataSource;
-@property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) id<SXTransitionableComponentView> componentView; // @synthesize componentView=_componentView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isTransitionable;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) struct CGRect transitionContainerFrame;
+@property (readonly, nonatomic) UIView *transitionContainerView;
+@property (readonly, nonatomic) struct CGRect transitionContentFrame;
+@property (readonly, nonatomic) UIView *transitionContentView;
+@property (readonly, nonatomic) unsigned long long transitionType; // @synthesize transitionType=_transitionType;
+@property (readonly, nonatomic) BOOL transitionViewIsVisible;
+@property (readonly, nonatomic) BOOL transitionViewShouldFadeInContent;
+@property (readonly, nonatomic) BOOL transitionViewUsesThumbnail;
+@property (readonly, nonatomic) struct CGRect transitionVisibleFrame;
+@property (readonly, nonatomic) BOOL usesThumbnail; // @synthesize usesThumbnail=_usesThumbnail;
 
-+ (id)nodeWithType:(unsigned long long)arg1 dataSource:(id)arg2;
 - (void).cxx_destruct;
+- (id)initWithComponentView:(id)arg1 transitionType:(unsigned long long)arg2 usesThumbnail:(BOOL)arg3;
 
 @end
 

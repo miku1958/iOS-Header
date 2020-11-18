@@ -8,17 +8,19 @@
 
 #import <iWorkImport/TSCETableTranslatorProtocol-Protocol.h>
 
-@class NSArray, NSString, TSTInfo, TSTTableModel;
+@class NSArray, NSString, TSCECoordMapper, TSTColumnRowUIDMap, TSTTableInfo, TSTTableModel;
 
 __attribute__((visibility("hidden")))
 @interface TSTTableTranslator : NSObject <TSCETableTranslatorProtocol>
 {
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     TSTTableModel *_baseTableModel;
+    TSCECoordMapper *_coordMapper;
 }
 
 @property (readonly, nonatomic) struct TSUViewCellRect actualHeaderColumnRange;
 @property (readonly, nonatomic) struct TSUViewCellRect baseColumnRange;
+@property (readonly, nonatomic) TSTColumnRowUIDMap *baseMap;
 @property (readonly, nonatomic) TSTTableModel *baseTableModel; // @synthesize baseTableModel=_baseTableModel;
 @property (readonly, nonatomic) struct TSUViewCellRect bodyColumnRange;
 @property (readonly, nonatomic) struct TSUViewCellRect bodyRange;
@@ -43,9 +45,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct TSUViewRowIndex numberOfRows;
 @property (readonly, nonatomic) struct TSUViewCellRect range;
 @property (readonly, strong, nonatomic) NSArray *rowHeights;
+@property (readonly, nonatomic) TSTColumnRowUIDMap *summaryMap;
 @property (readonly) Class superclass;
-@property (nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property (readonly, nonatomic) struct TSUViewCellRect topCornerRange;
+@property (readonly, nonatomic) TSTColumnRowUIDMap *viewMap;
 @property (nonatomic) BOOL wasCut;
 
 - (void).cxx_destruct;
@@ -63,7 +67,6 @@ __attribute__((visibility("hidden")))
 - (struct TSUModelColumnIndex)baseColumnIndexForViewColumnIndex:(struct TSUViewColumnIndex)arg1;
 - (id)baseColumnIndexesForUIDs:(const vector_4dc5f307 *)arg1;
 - (id)baseColumnIndexesForViewColumnIndexes:(id)arg1;
-- (id)baseMap;
 - (struct TSUModelRowIndex)baseRowIndexForChromeRowIndex:(struct TSUChromeRowIndex)arg1;
 - (struct TSUModelRowIndex)baseRowIndexForRowUID:(const UUIDData_5fbc143e *)arg1;
 - (struct TSUModelRowIndex)baseRowIndexForViewRowIndex:(struct TSUViewRowIndex)arg1;
@@ -72,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (id)baseShuffleMapForViewShuffleMap:(id)arg1;
 - (id)baseTractRefForChromeTractRef:(id)arg1;
 - (id)baseTractRefForViewTractRef:(id)arg1;
+- (struct TSUViewCellRect)bodyRangeForLowestLevelGroupEnclosingCellAtCellID:(struct TSUCellCoord)arg1;
 - (unsigned char)categoryGroupLevelAtLabelRow:(struct TSUViewRowIndex)arg1;
 - (unsigned char)categoryGroupLevelAtSummaryRow:(struct TSUViewRowIndex)arg1;
 - (id)cellAtGroupLevel:(unsigned char)arg1 columnUID:(const UUIDData_5fbc143e *)arg2;
@@ -92,9 +96,11 @@ __attribute__((visibility("hidden")))
 - (struct TSUChromeCellCoord)chromeCellCoordForViewCellCoord:(struct TSUViewCellCoord)arg1;
 - (RefTypeHolder_cfaab535)chromeCellRefForBaseCellRef:(const RefTypeHolder_a8d05c9a *)arg1;
 - (RefTypeHolder_cfaab535)chromeCellRefForViewCellRef:(const RefTypeHolder_adbccd1a *)arg1;
+- (struct TSUChromeColumnIndex)chromeColumnIndexForBaseColumnIndex:(struct TSUModelColumnIndex)arg1;
 - (struct TSUChromeColumnIndex)chromeColumnIndexForViewColumnIndex:(struct TSUViewColumnIndex)arg1;
 - (id)chromeColumnIndexesForViewColumnIndexes:(id)arg1;
 - (RefTypeHolder_8c6da553)chromeRangeRefForViewRangeRef:(const RefTypeHolder_45a2a752 *)arg1;
+- (struct TSUChromeRowIndex)chromeRowIndexForBaseRowIndex:(struct TSUModelRowIndex)arg1;
 - (struct TSUChromeRowIndex)chromeRowIndexForViewRowIndex:(struct TSUViewRowIndex)arg1;
 - (id)chromeRowIndexesForViewRowIndexes:(id)arg1;
 - (id)chromeTractRefForBaseTractRef:(id)arg1;
@@ -106,6 +112,7 @@ __attribute__((visibility("hidden")))
 - (id)commentHostingAtCellID:(struct TSUViewCellCoord)arg1 forCommentStorage:(id)arg2;
 - (double)computeDefaultFontHeightForTableStyleArea:(unsigned long long)arg1;
 - (id)conditionalStyleSetAtCellID:(struct TSUViewCellCoord)arg1;
+- (id)coordinateMapper;
 - (id)defaultCellStyleForCellID:(struct TSUViewCellCoord)arg1;
 - (id)defaultCellStyleForTableStyleArea:(unsigned long long)arg1;
 - (id)defaultTextStyleForCellID:(struct TSUViewCellCoord)arg1;
@@ -161,6 +168,8 @@ __attribute__((visibility("hidden")))
 - (id)populatedCategoryGroupLevelsInColumn:(struct TSUViewColumnIndex)arg1;
 - (void)postCommentNotificationForStorage:(id)arg1 atViewCellCoord:(struct TSUViewCellCoord)arg2 notificationKey:(id)arg3;
 - (id)regionForValueOrCommentCellsInRange:(struct TSUViewCellRect)arg1;
+- (void)removeAnnotationsFromColumnsAtIndexes:(id)arg1;
+- (void)removeAnnotationsFromRowsAtIndexes:(id)arg1;
 - (void)removeColumnsAtIndex:(struct TSUViewColumnIndex)arg1 count:(struct TSUViewColumnIndex)arg2;
 - (void)removeColumnsAtIndexes:(id)arg1;
 - (int)removeCommentStorageAtCellUID:(const struct TSTCellUID *)arg1;
@@ -178,14 +187,12 @@ __attribute__((visibility("hidden")))
 - (int)setCellsWithCellMap:(id)arg1 ignoreFormulas:(BOOL)arg2 skipDirtyingNonFormulaCells:(BOOL)arg3;
 - (int)setCommentStorage:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2;
 - (void)setHeight:(double)arg1 ofRowAtIndex:(struct TSUViewRowIndex)arg2;
-- (void)setStorageParentToInfo:(id)arg1;
 - (int)setTextStyle:(id)arg1 ofColumnAtUID:(const UUIDData_5fbc143e *)arg2;
 - (int)setTextStyle:(id)arg1 ofRowAtUID:(const UUIDData_5fbc143e *)arg2;
 - (void)setWidth:(double)arg1 ofColumnAtIndex:(struct TSUViewColumnIndex)arg2;
 - (id)shrinkReturningInverseForRegion:(id)arg1;
 - (id)stringAtCellID:(struct TSUViewCellCoord)arg1 optionalCell:(id)arg2;
 - (struct TSUModelColumnIndex)summaryColumnIndexForViewColumnIndex:(struct TSUViewColumnIndex)arg1;
-- (id)summaryMap;
 - (id)summaryRowIndexes;
 - (void)swapRowAtIndex:(struct TSUViewRowIndex)arg1 withRowAtIndex:(struct TSUViewRowIndex)arg2;
 - (unsigned long long)tableAreaForCellID:(struct TSUViewCellCoord)arg1;
@@ -195,6 +202,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)tableStyleAreaForCellID:(struct TSUViewCellCoord)arg1;
 - (unsigned long long)tableStyleAreaForCellUID:(const struct TSTCellUID *)arg1;
 - (unsigned long long)tableStyleAreaForRow:(struct TSUViewRowIndex)arg1;
+- (void)teardown;
 - (BOOL)textStyle:(id)arg1 isEqualToDefaultTextStyleForCellID:(struct TSUViewCellCoord)arg2;
 - (id)textStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleForCellWithEmptyStyleAtCellID:(struct TSUViewCellCoord)arg1 isDefault:(out BOOL *)arg2;
@@ -217,7 +225,6 @@ __attribute__((visibility("hidden")))
 - (id)viewColumnIndexesForBaseColumnIndexes:(id)arg1;
 - (id)viewColumnIndexesForChromeColumnIndexes:(id)arg1;
 - (id)viewColumnIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (id)viewMap;
 - (RefTypeHolder_45a2a752)viewRangeRefForChromeRangeRef:(const RefTypeHolder_8c6da553 *)arg1;
 - (struct TSUViewRowIndex)viewRowIndexForBaseRowIndex:(struct TSUModelRowIndex)arg1;
 - (struct TSUViewRowIndex)viewRowIndexForChromeRowIndex:(struct TSUChromeRowIndex)arg1;

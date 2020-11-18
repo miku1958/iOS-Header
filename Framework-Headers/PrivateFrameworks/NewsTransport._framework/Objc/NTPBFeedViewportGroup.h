@@ -15,14 +15,20 @@
     unsigned long long _mergeID;
     unsigned long long _options;
     NTPBColorGradient *_backgroundGradient;
+    NTPBColor *_cardBackgroundColor;
     NTPBDate *_creationDate;
+    int _ctaTextRef;
     NTPBDiscoverMoreVideosInfo *_discoverMoreVideosInfo;
     NTPBDate *_editionFeedEndDate;
     NTPBDate *_editionFeedStartDate;
     NTPBDate *_editionKeyDate;
+    int _eyebrowTextRef;
     NSMutableArray *_headlines;
     NSString *_identifier;
+    NSMutableArray *_issueIDs;
     int _l2TagIDRef;
+    NSString *_magazineGroupIdentifier;
+    NTPBColorGradient *_sauceGradient;
     int _sourceIdentifierRef;
     int _subtitleRef;
     NTPBColor *_titleColor;
@@ -33,6 +39,8 @@
     struct {
         unsigned int mergeID:1;
         unsigned int options:1;
+        unsigned int ctaTextRef:1;
+        unsigned int eyebrowTextRef:1;
         unsigned int l2TagIDRef:1;
         unsigned int sourceIdentifierRef:1;
         unsigned int subtitleRef:1;
@@ -43,22 +51,30 @@
 }
 
 @property (strong, nonatomic) NTPBColorGradient *backgroundGradient; // @synthesize backgroundGradient=_backgroundGradient;
+@property (strong, nonatomic) NTPBColor *cardBackgroundColor; // @synthesize cardBackgroundColor=_cardBackgroundColor;
 @property (strong, nonatomic) NTPBDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (nonatomic) int ctaTextRef; // @synthesize ctaTextRef=_ctaTextRef;
 @property (strong, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo; // @synthesize discoverMoreVideosInfo=_discoverMoreVideosInfo;
 @property (strong, nonatomic) NTPBDate *editionFeedEndDate; // @synthesize editionFeedEndDate=_editionFeedEndDate;
 @property (strong, nonatomic) NTPBDate *editionFeedStartDate; // @synthesize editionFeedStartDate=_editionFeedStartDate;
 @property (strong, nonatomic) NTPBDate *editionKeyDate; // @synthesize editionKeyDate=_editionKeyDate;
+@property (nonatomic) int eyebrowTextRef; // @synthesize eyebrowTextRef=_eyebrowTextRef;
 @property (readonly, nonatomic) BOOL hasBackgroundGradient;
+@property (readonly, nonatomic) BOOL hasCardBackgroundColor;
 @property (readonly, nonatomic) BOOL hasCreationDate;
+@property (nonatomic) BOOL hasCtaTextRef;
 @property (readonly, nonatomic) BOOL hasDiscoverMoreVideosInfo;
 @property (readonly, nonatomic) BOOL hasEditionFeedEndDate;
 @property (readonly, nonatomic) BOOL hasEditionFeedStartDate;
 @property (readonly, nonatomic) BOOL hasEditionKeyDate;
+@property (nonatomic) BOOL hasEyebrowTextRef;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasIsFirstFromEdition;
 @property (nonatomic) BOOL hasL2TagIDRef;
+@property (readonly, nonatomic) BOOL hasMagazineGroupIdentifier;
 @property (nonatomic) BOOL hasMergeID;
 @property (nonatomic) BOOL hasOptions;
+@property (readonly, nonatomic) BOOL hasSauceGradient;
 @property (nonatomic) BOOL hasSourceIdentifierRef;
 @property (nonatomic) BOOL hasSubtitleRef;
 @property (readonly, nonatomic) BOOL hasTitleColor;
@@ -67,9 +83,12 @@
 @property (strong, nonatomic) NSMutableArray *headlines; // @synthesize headlines=_headlines;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isFirstFromEdition; // @synthesize isFirstFromEdition=_isFirstFromEdition;
+@property (strong, nonatomic) NSMutableArray *issueIDs; // @synthesize issueIDs=_issueIDs;
 @property (nonatomic) int l2TagIDRef; // @synthesize l2TagIDRef=_l2TagIDRef;
+@property (strong, nonatomic) NSString *magazineGroupIdentifier; // @synthesize magazineGroupIdentifier=_magazineGroupIdentifier;
 @property (nonatomic) unsigned long long mergeID; // @synthesize mergeID=_mergeID;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
+@property (strong, nonatomic) NTPBColorGradient *sauceGradient; // @synthesize sauceGradient=_sauceGradient;
 @property (nonatomic) int sourceIdentifierRef; // @synthesize sourceIdentifierRef=_sourceIdentifierRef;
 @property (nonatomic) int subtitleRef; // @synthesize subtitleRef=_subtitleRef;
 @property (strong, nonatomic) NTPBColor *titleColor; // @synthesize titleColor=_titleColor;
@@ -78,10 +97,13 @@
 @property (strong, nonatomic) NSMutableArray *videoPlaylistHeadlines; // @synthesize videoPlaylistHeadlines=_videoPlaylistHeadlines;
 
 + (Class)headlinesType;
++ (Class)issueIDsType;
 + (Class)videoPlaylistHeadlinesType;
 - (void)addHeadlines:(id)arg1;
+- (void)addIssueIDs:(id)arg1;
 - (void)addVideoPlaylistHeadlines:(id)arg1;
 - (void)clearHeadlines;
+- (void)clearIssueIDs;
 - (void)clearVideoPlaylistHeadlines;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -91,6 +113,8 @@
 - (id)headlinesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)headlinesCount;
 - (BOOL)isEqual:(id)arg1;
+- (id)issueIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)issueIDsCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)videoPlaylistHeadlinesAtIndex:(unsigned long long)arg1;

@@ -35,7 +35,7 @@
     long long _overviewUnitsPerSecond;
 }
 
-@property (readonly, nonatomic) BOOL canceled; // @synthesize canceled=_canceled;
+@property (nonatomic) BOOL canceled; // @synthesize canceled=_canceled;
 @property (readonly, nonatomic) BOOL finished;
 @property (readonly, nonatomic) BOOL idle;
 @property (readonly, nonatomic) BOOL loadable;

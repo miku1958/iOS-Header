@@ -9,7 +9,7 @@
 #import <AvatarKit/NSCopying-Protocol.h>
 #import <AvatarKit/SCNSceneRendererDelegate-Protocol.h>
 
-@class AVTEyeSkinningDescriptor, AVTMemoji, AVTPhysicsController, AVTPupilReflectionCorrectionDescriptor, MISSING_TYPE, NSMutableArray, NSString, SCNNode;
+@class AVTEyeSkinningDescriptor, AVTMemoji, AVTPhysicsController, AVTPupilReflectionCorrectionDescriptor, CAAnimation, MISSING_TYPE, NSMutableArray, NSString, SCNAnimationPlayer, SCNNode;
 
 @interface AVTAvatar : NSObject <NSCopying, SCNSceneRendererDelegate>
 {
@@ -36,6 +36,8 @@
     MISSING_TYPE *_arOffset;
     float _arScale;
     double _physicsScaleFactor;
+    CAAnimation *_bakedAnimation;
+    SCNAnimationPlayer *_bakedAnimationPlayer_lazy;
 }
 
 @property (nonatomic) BOOL arMode;
@@ -56,6 +58,7 @@
 + (BOOL)canLoadDataRepresentation:(id)arg1;
 + (BOOL)canLoadDataRepresentationWithVersion:(unsigned short)arg1 minimumCompatibleVersion:(unsigned short)arg2 error:(id *)arg3;
 + (unsigned char)classIdentifier;
++ (void)initialize;
 + (void)preloadAvatar:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_decode:(id)arg1 error:(id *)arg2;
@@ -77,6 +80,8 @@
 - (MISSING_TYPE *)arOffset;
 - (float)arScale;
 - (void)avatarCommonInit;
+- (id)bakedAnimationCopy;
+- (id)bakedAnimationPlayer;
 - (id)cameraNode;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct SCNVector3)currentLookAt;
@@ -94,6 +99,7 @@
 - (CDStruct_b01a1f36)morphInfoForARKitBlendShapeIndex:(unsigned long long)arg1;
 - (BOOL)morphTargetNameIsDrivenByARKit:(id)arg1;
 - (BOOL)optimizeForSnapshot;
+- (void)pauseBakedAnimation;
 - (id)playAnimationClip:(id)arg1;
 - (id)playAnimationClip:(id)arg1 usingSceneTime:(BOOL)arg2;
 - (id)playAnimationClip:(id)arg1 usingSceneTime:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
@@ -112,8 +118,10 @@
 - (void)resetMorpherDrivenMaterials;
 - (void)resetMorphingSkinningControllers;
 - (void)resetPhysicalizedMorpherDescriptors;
+- (void)resumeBakedAnimation;
 - (void)rotateHead:(double)arg1;
 - (void)setAvatarNode:(id)arg1;
+- (void)setBakedAnimationReferenceTime:(double)arg1;
 - (void)setHeadNode:(id)arg1;
 - (void)setOptimizeForSnapshot:(BOOL)arg1;
 - (void)setPhysicsScaleFactor:(double)arg1;

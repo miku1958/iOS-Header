@@ -10,19 +10,20 @@
 
 @interface CPSManeuverView : CPSInheritedBackgroundColorView
 {
-    BOOL _minimalMode;
     CPManeuver *_representedManeuver;
     long long _style;
     CPTravelEstimates *_currentTravelEstimates;
+    unsigned long long _guidanceStyle;
 }
 
 @property (strong, nonatomic) CPTravelEstimates *currentTravelEstimates; // @synthesize currentTravelEstimates=_currentTravelEstimates;
-@property (readonly, nonatomic, getter=isMinimalMode) BOOL minimalMode; // @synthesize minimalMode=_minimalMode;
+@property (nonatomic) unsigned long long guidanceStyle; // @synthesize guidanceStyle=_guidanceStyle;
 @property (readonly, nonatomic) CPManeuver *representedManeuver; // @synthesize representedManeuver=_representedManeuver;
 @property (nonatomic) long long style; // @synthesize style=_style;
 
 - (void).cxx_destruct;
-- (id)initWithManeuver:(id)arg1 minimalMode:(BOOL)arg2 style:(long long)arg3;
+- (id)accessibilityName:(id)arg1;
+- (id)initWithManeuver:(id)arg1 style:(long long)arg2;
 
 @end
 

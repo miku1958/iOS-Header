@@ -25,6 +25,7 @@
 
 - (void)destroyWithBehaviorController:(id)arg1;
 - (id)initWithComponentView:(id)arg1 withBehavior:(id)arg2;
+- (BOOL)requiresContinuousUpdates;
 - (void)setupWithBehaviorController:(id)arg1;
 - (void)updateWithBehaviorController:(id)arg1;
 

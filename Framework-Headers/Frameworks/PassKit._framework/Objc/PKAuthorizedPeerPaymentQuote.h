@@ -8,16 +8,18 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, PKPeerPaymentQuote;
+@class NSData, NSDictionary, PKContact, PKPeerPaymentQuote;
 
 @interface PKAuthorizedPeerPaymentQuote : NSObject <NSSecureCoding>
 {
     PKPeerPaymentQuote *_peerPaymentQuote;
+    PKContact *_contact;
     NSData *_transactionData;
     NSDictionary *_certificates;
 }
 
 @property (readonly, nonatomic) NSDictionary *certificates; // @synthesize certificates=_certificates;
+@property (strong, nonatomic) PKContact *contact; // @synthesize contact=_contact;
 @property (readonly, nonatomic) PKPeerPaymentQuote *peerPaymentQuote; // @synthesize peerPaymentQuote=_peerPaymentQuote;
 @property (readonly, nonatomic) NSData *transactionData; // @synthesize transactionData=_transactionData;
 

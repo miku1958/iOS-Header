@@ -10,6 +10,7 @@
 {
 }
 
++ (id)ephemeralStore;
 + (id)extendedStoreWithDirectoryName:(id)arg1 store:(id)arg2;
 + (id)fileBasedKeyedDataStoreFromDirectoryURL:(id)arg1;
 + (BOOL)wipeStore:(id *)arg1;

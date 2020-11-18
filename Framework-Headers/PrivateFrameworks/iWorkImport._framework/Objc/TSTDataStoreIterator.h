@@ -10,7 +10,7 @@
 #import <iWorkImport/TSTCellRegionIterating-Protocol.h>
 #import <iWorkImport/TSTMutableCellIteratorDataUpdating-Protocol.h>
 
-@class NSString, TSTCell, TSTCellRegion, TSTInfo, TSTTableDataStore, TSTTableModel, TSTTableTile, TSTTableTileRowInfo;
+@class NSString, TSTCell, TSTCellRegion, TSTTableDataStore, TSTTableInfo, TSTTableModel, TSTTableTile, TSTTableTileRowInfo;
 @protocol TSTCellRegionIterating;
 
 __attribute__((visibility("hidden")))
@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL rightToLeft; // @synthesize rightToLeft=_rightToLeft;
 @property (nonatomic) unsigned long long searchMask; // @synthesize searchMask=_searchMask;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) TSTInfo *tableInfo;
+@property (readonly, strong, nonatomic) TSTTableInfo *tableInfo;
 @property (readonly, nonatomic) TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
 @property (nonatomic) BOOL terminated; // @synthesize terminated=_terminated;
 

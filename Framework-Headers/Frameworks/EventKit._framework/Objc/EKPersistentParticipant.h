@@ -6,7 +6,9 @@
 
 #import <EventKit/EKPersistentObject.h>
 
-@interface EKPersistentParticipant : EKPersistentObject
+#import <EventKit/EKParticipantSemanticIdentifierGeneratorDelegate-Protocol.h>
+
+@interface EKPersistentParticipant : EKPersistentObject <EKParticipantSemanticIdentifierGeneratorDelegate>
 {
 }
 
@@ -35,6 +37,7 @@
 - (void)setProposedStartDate:(id)arg1;
 - (void)setProposedStartDateStatus:(int)arg1;
 - (void)setUUID:(id)arg1;
+- (id)url;
 
 @end
 

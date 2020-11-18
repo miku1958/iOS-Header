@@ -69,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)addAttributionCell;
 - (id)attributionString;
 - (void)dealloc;
+- (id)formattedAttributionString;
 - (id)infoCardChildPossibleActions;
 - (void)infoCardThemeChanged:(id)arg1;
 - (id)initWithMapItem:(id)arg1 mode:(unsigned long long)arg2;
@@ -80,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (struct CGSize)sizeForIndex:(unsigned long long)arg1;
+- (void)updateAttributionCell;
 - (void)updateAttributionPositionWithOffset:(double)arg1;
 - (void)updateBottomHairlineVisibility;
 - (void)viewDidAppear:(BOOL)arg1;

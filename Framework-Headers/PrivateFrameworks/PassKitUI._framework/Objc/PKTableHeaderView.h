@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class UIActivityIndicatorView, UIButton, UIImageView, UILabel;
+@class PKCheckGlyphLayer, UIActivityIndicatorView, UIButton, UIImageView, UILabel;
 
 @interface PKTableHeaderView : UIView
 {
@@ -16,7 +16,7 @@
     UILabel *_subtitleLabel;
     UIButton *_actionButton;
     UIActivityIndicatorView *_activityIndicator;
-    UIImageView *_checkmarkView;
+    PKCheckGlyphLayer *_checkmarkLayer;
     BOOL _shouldResizeImageToFit;
     BOOL _accessoryViewsDisabled;
     unsigned long long _style;
@@ -28,7 +28,7 @@
 @property (readonly, nonatomic) UIButton *actionButton;
 @property (readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
-@property (readonly, nonatomic) UIImageView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
+@property (readonly, nonatomic) PKCheckGlyphLayer *checkmarkLayer; // @synthesize checkmarkLayer=_checkmarkLayer;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) BOOL shouldResizeImageToFit; // @synthesize shouldResizeImageToFit=_shouldResizeImageToFit;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;

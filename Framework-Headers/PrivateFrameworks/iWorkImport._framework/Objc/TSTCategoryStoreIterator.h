@@ -10,13 +10,14 @@
 #import <iWorkImport/TSTCellRegionIterating-Protocol.h>
 #import <iWorkImport/TSTMutableCellIteratorDataUpdating-Protocol.h>
 
-@class NSIndexSet, NSString, TSTCategoryTranslator, TSTCell, TSTCellRegion, TSTColumnRowUIDMap, TSTGroupBy, TSTInfo, TSTSummaryCellVendor, TSTTableDataStore, TSTTableTile, TSTTableTileRowInfo;
+@class NSIndexSet, NSString, TSTCategoryTranslator, TSTCell, TSTCellRegion, TSTColumnRowUIDMap, TSTGroupBy, TSTSummaryCellVendor, TSTTableDataStore, TSTTableInfo, TSTTableTile, TSTTableTileRowInfo;
 @protocol TSTCellRegionIterating;
 
 __attribute__((visibility("hidden")))
-@interface TSTCategoryStoreIterator : NSObject <TSTCellIterating, TSTCellRegionIterating, TSTMutableCellIteratorDataUpdating>
+@interface TSTCategoryStoreIterator : NSObject <TSTMutableCellIteratorDataUpdating, TSTCellIterating, TSTCellRegionIterating>
 {
     struct unordered_map<TSUViewColumnIndex, TSUModelColumnIndex, std::__1::hash<TSUViewColumnIndex>, std::__1::equal_to<TSUViewColumnIndex>, std::__1::allocator<std::__1::pair<const TSUViewColumnIndex, TSUModelColumnIndex>>> _mapFromViewToBaseColumnInCurrentRow;
+    TSTCell *_tempSummaryCell;
     BOOL _isSummaryRow;
     BOOL _isLabelRow;
     unsigned char _groupLevel;
@@ -25,7 +26,7 @@ __attribute__((visibility("hidden")))
     unsigned short _categoryColumnIndex;
     unsigned int _curRowIndex;
     unsigned int _baseRowIndex;
-    TSTInfo *_info;
+    TSTTableInfo *_info;
     TSTGroupBy *_groupBy;
     TSTCategoryTranslator *_translator;
     TSTTableDataStore *_baseDataStore;
@@ -65,7 +66,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak, nonatomic) TSTGroupBy *groupBy; // @synthesize groupBy=_groupBy;
 @property (nonatomic) unsigned char groupLevel; // @synthesize groupLevel=_groupLevel;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) TSTInfo *info; // @synthesize info=_info;
+@property (readonly, nonatomic) TSTTableInfo *info; // @synthesize info=_info;
 @property (nonatomic) BOOL isLabelRow; // @synthesize isLabelRow=_isLabelRow;
 @property (nonatomic) BOOL isSummaryRow; // @synthesize isSummaryRow=_isSummaryRow;
 @property (strong, nonatomic) NSIndexSet *populatedColumnsForGroupLevel1; // @synthesize populatedColumnsForGroupLevel1=_populatedColumnsForGroupLevel1;
@@ -80,7 +81,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak, nonatomic) TSTSummaryCellVendor *summaryCellVendor; // @synthesize summaryCellVendor=_summaryCellVendor;
 @property (readonly, weak, nonatomic) TSTColumnRowUIDMap *summaryMap; // @synthesize summaryMap=_summaryMap;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) TSTInfo *tableInfo;
+@property (readonly, strong, nonatomic) TSTTableInfo *tableInfo;
 @property (nonatomic) BOOL terminated; // @synthesize terminated=_terminated;
 @property (readonly, nonatomic) TSTCategoryTranslator *translator; // @synthesize translator=_translator;
 @property (nonatomic) UUIDData_5fbc143e uuid; // @synthesize uuid=_uuid;
@@ -97,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)iterateCellsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)nextCellData;
 - (BOOL)p_searchSummaryVendorCell:(id)arg1 searchFlags:(unsigned long long)arg2;
+- (id)tempSummaryCell;
 - (void)terminate;
 - (void)updateCellData:(id)arg1;
 

@@ -18,6 +18,7 @@
         BOOL shouldPassthroughPointInCoordinateSpace;
         BOOL wasTapped;
         BOOL wasDiscarded;
+        BOOL didAppear;
         BOOL didDisappear;
     } _delegateRespondsTo;
     id<PXContextualNotificationDelegate> _delegate;

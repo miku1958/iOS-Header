@@ -34,6 +34,7 @@
     BOOL _manifestSubmitted;
     NSString *_sessionID;
     NSString *_lastDeletedSUAssetID;
+    NSString *_lastAssetAudience;
 }
 
 @property (nonatomic) BOOL autodownloadNeedsOneTimeRetry; // @synthesize autodownloadNeedsOneTimeRetry=_autodownloadNeedsOneTimeRetry;
@@ -43,6 +44,7 @@
 @property (copy, nonatomic) SUDescriptor *failedPatchDescriptor; // @synthesize failedPatchDescriptor=_failedPatchDescriptor;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SUInstallPolicy *installPolicy; // @synthesize installPolicy=_installPolicy;
+@property (strong, nonatomic) NSString *lastAssetAudience; // @synthesize lastAssetAudience=_lastAssetAudience;
 @property (strong, nonatomic) _SUAutoInstallOperationModel *lastAutoInstallOperationModel; // @synthesize lastAutoInstallOperationModel=_lastAutoInstallOperationModel;
 @property (strong, nonatomic) NSString *lastDeletedSUAssetID; // @synthesize lastDeletedSUAssetID=_lastDeletedSUAssetID;
 @property (copy, nonatomic) SUDownload *lastDownload; // @synthesize lastDownload=_lastDownload;

@@ -10,6 +10,7 @@
 
 @interface SUDelayedNavigationItem : SUNavigationItem
 {
+    BOOL _delayedBackButtonHidden;
     id _delayedBackButtonTitle;
     id _delayedLeftBarButtonItems;
     NSNumber *_delayedLeftItemsSupplementBackButton;
@@ -36,6 +37,7 @@
 - (id)rightBarButtonItem;
 - (id)rightBarButtonItems;
 - (void)setBackButtonTitle:(id)arg1;
+- (void)setHidesBackButton:(BOOL)arg1;
 - (void)setLeftBarButtonItem:(id)arg1 animated:(BOOL)arg2;
 - (void)setLeftBarButtonItems:(id)arg1 animated:(BOOL)arg2;
 - (void)setLeftItemsSupplementBackButton:(BOOL)arg1;

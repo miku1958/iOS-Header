@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MFMessageLoadingContext, MFMessageLoadingContextEvent, MFMessageSigner;
+@class MFMessageLoadingContext, MFMessageLoadingContextEvent, MFMessageSigner, NSArray;
 
 @interface MFMessageLoadingContextSMIMEInfo : NSObject
 {
@@ -18,12 +18,12 @@
 @property (readonly, nonatomic) MFMessageLoadingContextEvent *loadEvent; // @synthesize loadEvent=_loadEvent;
 @property (readonly, nonatomic, getter=isMessageEncrypted) BOOL messageEncrypted;
 @property (readonly, nonatomic, getter=isMessageSigned) BOOL messageSigned;
+@property (readonly, nonatomic) NSArray *signers;
 
 + (id)smimeInfoForLoadEvent:(id)arg1;
 - (void)dealloc;
 - (id)initWithLoadEvent:(id)arg1;
 - (void)reevaluateTrustWithNetworkAccessAllowed;
-- (id)signers;
 
 @end
 

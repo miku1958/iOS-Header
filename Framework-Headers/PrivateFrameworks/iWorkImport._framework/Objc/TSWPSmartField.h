@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     TSWPStorage *_parentStorage;
 }
 
-@property (readonly, nonatomic) int attributeArrayKind;
+@property (readonly, nonatomic) unsigned long long attributeArrayKind;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

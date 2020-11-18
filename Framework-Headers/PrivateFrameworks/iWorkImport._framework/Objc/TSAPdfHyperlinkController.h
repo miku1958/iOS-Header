@@ -13,16 +13,14 @@ __attribute__((visibility("hidden")))
 {
     NSMutableArray *mHyperlinks;
     NSMutableArray *mDestinations;
-    NSMutableArray *mOutlines;
 }
 
+- (void).cxx_destruct;
 - (void)addHyperlinkForRect:(struct CGRect)arg1 withUrl:(id)arg2 context:(struct CGContext *)arg3;
 - (void)addHyperlinksForContents:(id)arg1 context:(struct CGContext *)arg2;
 - (void)addHyperlinksForRep:(id)arg1 context:(struct CGContext *)arg2;
 - (struct CGRect)canvasRect;
 - (void)commitHyperlinksToPDF:(struct CGContext *)arg1 targetRect:(struct CGRect)arg2;
-- (void)commitOutlinesToPDF:(struct CGContext *)arg1;
-- (void)dealloc;
 - (id)destinationFromUrl:(id)arg1;
 - (BOOL)ignoreUrl:(id)arg1;
 - (id)init;

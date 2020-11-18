@@ -53,6 +53,11 @@
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 forAsset:(id)arg2 withCPLResource:(id)arg3 adjusted:(BOOL)arg4 withCreationDate:(id)arg5;
 + (id)nonLocalResourcesInManagedObjectContext:(id)arg1 forAssetUUIDs:(id)arg2 cplResourceTypes:(id)arg3;
++ (id)nonOriginalResourceTypes;
++ (id)originalResourceTypes;
++ (id)prunePurgeablePredicateForResourceTypes:(id)arg1 urgency:(long long)arg2;
++ (id)purgeablePushedCloudResourcePredicateForResourceTypes:(id)arg1 urgency:(long long)arg2;
++ (id)purgeableUploadedCloudResourcePredicateForResourceTypes:(id)arg1 urgency:(long long)arg2;
 + (void)resetCloudResourcesStateForCloudInManagedObjectContext:(id)arg1 hardReset:(BOOL)arg2;
 + (void)resetPrefetchStateForResourcesWithResourceType:(long long)arg1 itemIdentifiers:(id)arg2 inLibrary:(id)arg3;
 - (void)_duplicatePropertiesFromCloudResource:(id)arg1 withFilePath:(id)arg2 forAssetUuid:(id)arg3;

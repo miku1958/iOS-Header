@@ -6,7 +6,7 @@
 
 #import <UIKit/UIScrollView.h>
 
-@class PKPassView, PKPaymentPass, PKPaymentSetupMoreInfoItem, PKTableHeaderView, UIImageView;
+@class PKPassView, PKPaymentPass, PKPaymentSetupMoreInfoItem, PKTableHeaderView, UIButton, UIImageView;
 
 @interface PKPaymentSetupMoreInfoView : UIScrollView
 {
@@ -17,15 +17,18 @@
     long long _context;
     UIImageView *_customImageView;
     PKTableHeaderView *_headerView;
+    UIButton *_linkButton;
 }
 
 @property (readonly, nonatomic) long long context; // @synthesize context=_context;
 @property (readonly, nonatomic) UIImageView *customImageView; // @synthesize customImageView=_customImageView;
 @property (readonly, nonatomic) PKTableHeaderView *headerView; // @synthesize headerView=_headerView;
+@property (readonly, nonatomic) UIButton *linkButton; // @synthesize linkButton=_linkButton;
 @property (readonly, nonatomic) PKPaymentSetupMoreInfoItem *moreInfoItem; // @synthesize moreInfoItem=_moreInfoItem;
 @property (readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 
 - (void).cxx_destruct;
+- (void)_linkButtonTapped:(id)arg1;
 - (id)initWithMoreInfoItem:(id)arg1 paymentPass:(id)arg2 context:(long long)arg3;
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;

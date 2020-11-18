@@ -30,6 +30,7 @@
 + (BOOL)isiTunesAccountAvailable;
 + (BOOL)isiTunesManagedAppleId;
 + (id)sharedInstance;
+- (void)dealloc;
 - (void)unregisterForiTunesAccountChanges;
 
 @end

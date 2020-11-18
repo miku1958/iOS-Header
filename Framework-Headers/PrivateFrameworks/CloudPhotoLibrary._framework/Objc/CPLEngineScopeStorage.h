@@ -86,6 +86,7 @@
 - (void)forceIncludeScopeIdentifierInMingling:(id)arg1;
 - (BOOL)hasFinishedAFullSyncForScope:(id)arg1;
 - (BOOL)hasFinishedInitialSyncForScope:(id)arg1;
+- (BOOL)hasScopeFetchedInitialSyncAnchor:(id)arg1;
 - (BOOL)hasScopesNeedingToPullChangesFromTransport;
 - (BOOL)hasScopesNeedingToPushChangesToTransport;
 - (BOOL)hasScopesNeedingToPushHighPriorityChangesToTransport;
@@ -125,6 +126,7 @@
 - (BOOL)setDeleteDate:(id)arg1 forScope:(id)arg2 error:(id *)arg3;
 - (BOOL)setDidDropSomeRecordsForScope:(id)arg1 error:(id *)arg2;
 - (BOOL)setDisabledDate:(id)arg1 forScope:(id)arg2 error:(id *)arg3;
+- (BOOL)setHasFetchedInitialSyncAnchor:(BOOL)arg1 forScope:(id)arg2 error:(id *)arg3;
 - (BOOL)setInitialSyncAnchor:(struct NSData *)arg1 forScope:(id)arg2 error:(id *)arg3;
 - (BOOL)setLibraryInfo:(id)arg1 forScope:(id)arg2 error:(id *)arg3;
 - (BOOL)setLocalScopeIndexOnChange:(id)arg1;

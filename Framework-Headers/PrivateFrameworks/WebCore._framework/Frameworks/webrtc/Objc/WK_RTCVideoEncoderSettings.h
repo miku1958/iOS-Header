@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WK_RTCVideoEncoderSettings : NSObject
 {
+    struct VideoCodec _nativeVideoCodec;
     unsigned short _width;
     unsigned short _height;
     unsigned int _startBitrate;
@@ -34,9 +35,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 @property (nonatomic) unsigned short width; // @synthesize width=_width;
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithNativeVideoCodec:(const VideoCodec_028860f0 *)arg1;
-- (VideoCodec_028860f0)nativeVideoCodec;
+- (id)initWithNativeVideoCodec:(const struct VideoCodec *)arg1;
+- (struct VideoCodec)nativeVideoCodec;
 
 @end
 

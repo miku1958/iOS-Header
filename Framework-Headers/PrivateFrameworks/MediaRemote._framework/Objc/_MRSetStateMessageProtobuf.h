@@ -12,6 +12,7 @@
 
 @interface _MRSetStateMessageProtobuf : PBCodable <NSCopying>
 {
+    double _playbackStateTimestamp;
     NSString *_displayID;
     NSString *_displayName;
     _MRNowPlayingInfoProtobuf *_nowPlayingInfo;
@@ -22,6 +23,7 @@
     _MRPlaybackQueueRequestProtobuf *_request;
     _MRSupportedCommandsProtobuf *_supportedCommands;
     struct {
+        unsigned int playbackStateTimestamp:1;
         unsigned int playbackState:1;
     } _has;
 }
@@ -34,6 +36,7 @@
 @property (readonly, nonatomic) BOOL hasPlaybackQueue;
 @property (readonly, nonatomic) BOOL hasPlaybackQueueCapabilities;
 @property (nonatomic) BOOL hasPlaybackState;
+@property (nonatomic) BOOL hasPlaybackStateTimestamp;
 @property (readonly, nonatomic) BOOL hasPlayerPath;
 @property (readonly, nonatomic) BOOL hasRequest;
 @property (readonly, nonatomic) BOOL hasSupportedCommands;
@@ -41,6 +44,7 @@
 @property (strong, nonatomic) _MRPlaybackQueueProtobuf *playbackQueue; // @synthesize playbackQueue=_playbackQueue;
 @property (strong, nonatomic) _MRPlaybackQueueCapabilitiesProtobuf *playbackQueueCapabilities; // @synthesize playbackQueueCapabilities=_playbackQueueCapabilities;
 @property (nonatomic) int playbackState; // @synthesize playbackState=_playbackState;
+@property (nonatomic) double playbackStateTimestamp; // @synthesize playbackStateTimestamp=_playbackStateTimestamp;
 @property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
 @property (strong, nonatomic) _MRPlaybackQueueRequestProtobuf *request; // @synthesize request=_request;
 @property (strong, nonatomic) _MRSupportedCommandsProtobuf *supportedCommands; // @synthesize supportedCommands=_supportedCommands;

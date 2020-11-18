@@ -42,6 +42,8 @@
 - (BOOL)isATrump;
 - (BOOL)isAnEmergency;
 - (BOOL)isAnEmergencyHandled;
+- (BOOL)isCarplayTrump;
+- (BOOL)isInEarTrump;
 - (BOOL)isSane;
 - (BOOL)isSlowdown;
 - (int)slowdownDelay;

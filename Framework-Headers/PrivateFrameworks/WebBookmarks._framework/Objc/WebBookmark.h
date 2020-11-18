@@ -128,6 +128,7 @@
 - (BOOL)isReadingListItem;
 - (BOOL)isWebFilterWhiteListFolder;
 - (id)localizedTitle;
+- (id)offlineArchiveDirectoryPath;
 - (void)setTitle:(id)arg1 previewText:(id)arg2 dateLastFetched:(id)arg3;
 - (id)shortTypeDescription;
 - (BOOL)shouldReattemptArchiveWithAutomaticArchivingEnabled:(BOOL)arg1;

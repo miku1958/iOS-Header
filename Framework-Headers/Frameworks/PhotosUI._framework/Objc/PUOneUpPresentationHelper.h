@@ -71,6 +71,7 @@
     PUPinchedTileTracker *__pinchedTileTracker;
     PUChangeDirectionValueFilter *__panDirectionValueFilter;
     PUCameraPreviewTransitionDelegate *__cameraPreviewTransitionDelegate;
+    long long __presentationOrigin;
 }
 
 @property (strong, nonatomic, setter=_setAssetReferencesDisplayedInTilingView:) NSSet *_assetReferencesDisplayedInTilingView; // @synthesize _assetReferencesDisplayedInTilingView=__assetReferencesDisplayedInTilingView;
@@ -85,6 +86,7 @@
 @property (strong, nonatomic, setter=_setPanDirectionValueFilter:) PUChangeDirectionValueFilter *_panDirectionValueFilter; // @synthesize _panDirectionValueFilter=__panDirectionValueFilter;
 @property (strong, nonatomic, setter=_setPinchedTileTracker:) PUPinchedTileTracker *_pinchedTileTracker; // @synthesize _pinchedTileTracker=__pinchedTileTracker;
 @property (nonatomic, setter=_setPresentationEndTimeoutIdentifier:) long long _presentationEndTimeoutIdentifier; // @synthesize _presentationEndTimeoutIdentifier=__presentationEndTimeoutIdentifier;
+@property (nonatomic) long long _presentationOrigin; // @synthesize _presentationOrigin=__presentationOrigin;
 @property (nonatomic, setter=_setShouldPauseLibraryChanges:) BOOL _shouldPauseLibraryChanges; // @synthesize _shouldPauseLibraryChanges=__shouldPauseLibraryChanges;
 @property (nonatomic, setter=_setState:) long long _state; // @synthesize _state=__state;
 @property (strong, nonatomic, setter=_setTapGestureRecognizer:) UITapGestureRecognizer *_tapGestureRecognizer; // @synthesize _tapGestureRecognizer=__tapGestureRecognizer;

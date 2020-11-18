@@ -22,6 +22,7 @@
     NSString *_tagName;
     NSString *_uniqueID;
     NSString *_nextControlUniqueID;
+    NSString *_placeholder;
     NSString *_value;
     NSString *_passwordRules;
     NSDictionary *_radioButtonInfo;
@@ -75,6 +76,7 @@
 @property (readonly, nonatomic) unsigned long long minLength;
 @property (readonly, copy, nonatomic) NSString *nextControlUniqueID; // @synthesize nextControlUniqueID=_nextControlUniqueID;
 @property (readonly, copy, nonatomic) NSString *passwordRules; // @synthesize passwordRules=_passwordRules;
+@property (readonly, copy, nonatomic) NSString *placeholder; // @synthesize placeholder=_placeholder;
 @property (readonly, copy, nonatomic) NSDictionary *radioButtonInfo; // @synthesize radioButtonInfo=_radioButtonInfo;
 @property (readonly, nonatomic, getter=isReadOnly) BOOL readOnly;
 @property (readonly, nonatomic) double rectHeight; // @synthesize rectHeight=_rectHeight;

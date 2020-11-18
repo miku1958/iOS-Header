@@ -9,6 +9,7 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
+@protocol OS_nw_activity;
 
 @interface PARRequest : NSObject <NSSecureCoding>
 {
@@ -20,11 +21,16 @@
     unsigned long long _triggerEvent;
     NSArray *_queryItems;
     NSDictionary *_headerItems;
+    NSObject<OS_nw_activity> *_nwActivity;
+    char *_nwActivityToken;
 }
 
 @property (readonly, nonatomic) unsigned long long clientQueryId;
 @property (copy, nonatomic) NSDictionary *headerItems; // @synthesize headerItems=_headerItems;
 @property (copy, nonatomic) NSString *keyboardInputMode; // @synthesize keyboardInputMode=_keyboardInputMode;
+@property (strong, nonatomic) NSObject<OS_nw_activity> *nwActivity; // @synthesize nwActivity=_nwActivity;
+@property (readonly, nonatomic) unsigned int nwActivityLabel;
+@property (readonly, nonatomic) char *nwActivityToken; // @synthesize nwActivityToken=_nwActivityToken;
 @property (nonatomic) BOOL pretend; // @synthesize pretend=_pretend;
 @property (readonly, nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property (copy, nonatomic) NSArray *queryItems; // @synthesize queryItems=_queryItems;

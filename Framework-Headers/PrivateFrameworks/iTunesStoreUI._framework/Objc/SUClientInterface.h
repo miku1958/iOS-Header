@@ -29,6 +29,7 @@
     NSString *_userAgent;
     SUViewControllerFactory *_viewControllerFactory;
     BOOL _wasLaunchedFromLibrary;
+    BOOL _ignoreDefaultKeyboardNotifications;
     BOOL inAskToBuyApprovalFlow;
 }
 
@@ -40,6 +41,7 @@
 @property (copy) NSString *clientIdentifier;
 @property (copy, nonatomic) UIColor *darkKeyColor; // @synthesize darkKeyColor=_darkKeyColor;
 @property (nonatomic) id<SUClientInterfaceDelegate> delegate; // @synthesize delegate=_delegate;
+@property BOOL ignoreDefaultKeyboardNotifications; // @synthesize ignoreDefaultKeyboardNotifications=_ignoreDefaultKeyboardNotifications;
 @property BOOL inAskToBuyApprovalFlow; // @synthesize inAskToBuyApprovalFlow;
 @property (copy, nonatomic) UIColor *lightKeyColor; // @synthesize lightKeyColor=_lightKeyColor;
 @property (copy) NSString *localStoragePath;

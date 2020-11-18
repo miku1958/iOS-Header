@@ -10,6 +10,10 @@
 {
 }
 
++ (id)font;
++ (double)height;
++ (struct CGSize)size;
++ (id)title;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (id)initWithFrame:(struct CGRect)arg1;

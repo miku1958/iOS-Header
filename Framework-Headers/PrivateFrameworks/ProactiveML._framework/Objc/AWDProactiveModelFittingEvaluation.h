@@ -41,6 +41,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (float)precisionAtK:(unsigned long long)arg1;
 - (id)precisionAtKAtIndex:(unsigned long long)arg1;
 - (unsigned long long)precisionAtKsCount;
 - (BOOL)readFrom:(id)arg1;

@@ -6,19 +6,27 @@
 
 #import <UIKit/UIView.h>
 
+#import <NanoTimeKitCompanion/NTKAstronomyVistaViewObserver-Protocol.h>
+
 @class NSDate, NTKAstronomyVistaView, NTKDelayedBlock;
 
-@interface NTKAstronomyRichComplicationContentView : UIView
+@interface NTKAstronomyRichComplicationContentView : UIView <NTKAstronomyVistaViewObserver>
 {
     NTKAstronomyVistaView *_astronomyVistaView;
     NSDate *_date;
-    BOOL _paused;
-    NTKDelayedBlock *_pauseDelayBlock;
+    unsigned int _isPaused:1;
+    unsigned int _isAnimating:1;
+    unsigned int _isRenderOneFrame:1;
+    NTKDelayedBlock *_stopAnimationDelayedBlock;
 }
 
 - (void).cxx_destruct;
 - (BOOL)_shouldAnimateWithTemplateUpdateReason:(long long)arg1;
+- (void)_startAnimating;
+- (void)_stopAnimating;
 - (void)applyPausedUpdate:(BOOL)arg1;
+- (void)astronomyVistaViewContentsAnimationFinished:(id)arg1;
+- (void)astronomyVistaViewWillDisplay:(id)arg1 forTime:(double)arg2;
 - (void)handleOrdinaryScreenWake;
 - (void)handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)handleWristRaiseScreenWake;

@@ -9,24 +9,19 @@
 #import <Silex/SXComponentSizerFactory-Protocol.h>
 
 @class NSString;
-@protocol SXDocumentControllerProvider;
 
 @interface SXAudioComponentSizerFactory : NSObject <SXComponentSizerFactory>
 {
-    id<SXDocumentControllerProvider> _documentControllerProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) id<SXDocumentControllerProvider> documentControllerProvider; // @synthesize documentControllerProvider=_documentControllerProvider;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int role;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *type;
 
-- (void).cxx_destruct;
-- (id)initWithDocumentControllerProvider:(id)arg1;
-- (id)sizerForComponent:(id)arg1 componentLayout:(id)arg2 layoutAttributes:(id)arg3;
+- (id)sizerForComponent:(id)arg1 componentLayout:(id)arg2 layoutOptions:(id)arg3 DOMObjectProvider:(id)arg4;
 
 @end
 

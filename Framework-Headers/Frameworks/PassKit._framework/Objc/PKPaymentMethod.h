@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSString, PKPaymentPass, PKRemotePaymentInstrument;
+@class NSString, PKDisbursementVoucher, PKPaymentPass, PKRemotePaymentInstrument;
 
 @interface PKPaymentMethod : NSObject <NSSecureCoding, NSCopying>
 {
@@ -19,8 +19,10 @@
     PKPaymentPass *_paymentPass;
     PKRemotePaymentInstrument *_remoteInstrument;
     NSString *_peerPaymentQuoteIdentifier;
+    PKDisbursementVoucher *_disbursementVoucher;
 }
 
+@property (strong, nonatomic) PKDisbursementVoucher *disbursementVoucher; // @synthesize disbursementVoucher=_disbursementVoucher;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *network; // @synthesize network=_network;
 @property (copy, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
@@ -36,6 +38,7 @@
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDisbursementVoucher:(id)arg1;
 - (id)initWithPaymentPass:(id)arg1 obfuscateNetworks:(BOOL)arg2;
 - (id)initWithPaymentPass:(id)arg1 paymentApplication:(id)arg2 obfuscateNetworks:(BOOL)arg3;
 - (id)initWithPeerPaymentQuote:(id)arg1;

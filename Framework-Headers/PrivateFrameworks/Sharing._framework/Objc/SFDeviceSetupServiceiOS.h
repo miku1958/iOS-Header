@@ -41,6 +41,7 @@
 - (void).cxx_destruct;
 - (void)_cleanup;
 - (void)_completed:(int)arg1;
+- (void)_handleConfigRequestReceived:(id)arg1;
 - (void)_handleSessionEnded:(id)arg1;
 - (void)_handleSessionSecured:(id)arg1;
 - (void)_handleSessionStarted:(id)arg1;

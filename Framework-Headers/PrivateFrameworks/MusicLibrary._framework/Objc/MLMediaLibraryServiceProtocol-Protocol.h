@@ -25,7 +25,6 @@
 - (void)performMaintenanceTasksForDatabaseAtPath:(NSString *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)performRestoreOfLatestBackupForDatabaseAtPath:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)recreateDatabaseAtPath:(NSString *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
-- (void)setDeviceSharedLibraryPath:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)setOptions:(NSDictionary *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)unlockDatabaseWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)updateSpotlightIndexForBundleID:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;

@@ -6,15 +6,15 @@
 
 #import <UIKitCore/UIEvent.h>
 
-@class NSMutableSet;
+@class NSHashTable;
 
 __attribute__((visibility("hidden")))
 @interface UIPencilEvent : UIEvent
 {
-    NSMutableSet *_trackedInteractions;
+    NSHashTable *_trackedInteractions;
 }
 
-@property (strong, nonatomic) NSMutableSet *trackedInteractions; // @synthesize trackedInteractions=_trackedInteractions;
+@property (strong, nonatomic) NSHashTable *trackedInteractions; // @synthesize trackedInteractions=_trackedInteractions;
 
 - (void).cxx_destruct;
 - (id)_init;

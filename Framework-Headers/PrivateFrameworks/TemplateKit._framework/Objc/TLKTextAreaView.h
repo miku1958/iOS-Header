@@ -9,21 +9,28 @@
 #import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
 #import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
-@class NSMutableArray, NSString, TLKRichTextField, TLKTitleContainerView;
+@class NSMutableArray, NSString, NUIContainerStackView, TLKRichTextField, TLKTitleContainerView, UIButton;
+@protocol TLKDetailsViewDelegate;
 
 @interface TLKTextAreaView : TLKStackView <NUIContainerStackViewDelegate, TLKTextAreaViewTesting>
 {
     BOOL _disableAllObservers;
+    id<TLKDetailsViewDelegate> _buttonDelegate;
     TLKTitleContainerView *_titleContainer;
     NSMutableArray *_detailsFields;
     TLKRichTextField *_footnoteLabel;
+    UIButton *_footnoteButton;
+    NUIContainerStackView *_footnoteContainer;
     unsigned long long _style;
 }
 
+@property (weak) id<TLKDetailsViewDelegate> buttonDelegate; // @synthesize buttonDelegate=_buttonDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong) NSMutableArray *detailsFields; // @synthesize detailsFields=_detailsFields;
 @property BOOL disableAllObservers; // @synthesize disableAllObservers=_disableAllObservers;
+@property (strong) UIButton *footnoteButton; // @synthesize footnoteButton=_footnoteButton;
+@property (strong) NUIContainerStackView *footnoteContainer; // @synthesize footnoteContainer=_footnoteContainer;
 @property (strong) TLKRichTextField *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
 @property (readonly) unsigned long long hash;
 @property unsigned long long style; // @synthesize style=_style;
@@ -45,7 +52,7 @@
 - (id)titleLabelString;
 - (id)titleView;
 - (void)updateDetails:(id)arg1;
-- (void)updateFootnote:(id)arg1;
+- (void)updateFootnote:(id)arg1 buttonText:(id)arg2;
 - (void)updateResultWithTitle:(id)arg1 secondaryTitle:(id)arg2 image:(id)arg3 detached:(BOOL)arg4;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;

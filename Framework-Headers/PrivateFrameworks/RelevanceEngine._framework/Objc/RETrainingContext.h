@@ -35,6 +35,7 @@
 - (id)attributeForKey:(id)arg1;
 - (void)becomeCurrent;
 - (void)dealloc;
+- (void)flushTraining;
 - (id)init;
 - (BOOL)performSimulationCommand:(id)arg1 withOptions:(id)arg2;
 - (void)setAttribute:(id)arg1 forKey:(id)arg2;

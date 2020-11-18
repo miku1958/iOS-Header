@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, NSString, PBUnknownFields;
+@class GEOLocation, GEOPDAdamAppIdentifier, GEOPDMerchantInformation, GEOPDWarsawMerchantIdentifier, NSString, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDMerchantLookupParameters : PBCodable <NSCopying>
@@ -17,37 +17,61 @@ __attribute__((visibility("hidden")))
     long long _industryCode;
     double _transactionLocationAge;
     double _transactionTimestamp;
+    GEOPDAdamAppIdentifier *_appIdentifier;
     NSString *_industryCategory;
     NSString *_merchantCode;
+    GEOPDMerchantInformation *_merchantInformation;
     NSString *_paymentNetwork;
     NSString *_rawMerchantCode;
+    NSString *_terminalId;
+    NSString *_transactionCurrencyCode;
     GEOLocation *_transactionLocation;
+    int _transactionType;
+    GEOPDWarsawMerchantIdentifier *_warsawMerchantIdentifier;
+    BOOL _enableBrandMuidFallback;
     struct {
         unsigned int industryCode:1;
         unsigned int transactionLocationAge:1;
         unsigned int transactionTimestamp:1;
+        unsigned int transactionType:1;
+        unsigned int enableBrandMuidFallback:1;
     } _has;
 }
 
+@property (strong, nonatomic) GEOPDAdamAppIdentifier *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
+@property (nonatomic) BOOL enableBrandMuidFallback; // @synthesize enableBrandMuidFallback=_enableBrandMuidFallback;
+@property (readonly, nonatomic) BOOL hasAppIdentifier;
+@property (nonatomic) BOOL hasEnableBrandMuidFallback;
 @property (readonly, nonatomic) BOOL hasIndustryCategory;
 @property (nonatomic) BOOL hasIndustryCode;
 @property (readonly, nonatomic) BOOL hasMerchantCode;
+@property (readonly, nonatomic) BOOL hasMerchantInformation;
 @property (readonly, nonatomic) BOOL hasPaymentNetwork;
 @property (readonly, nonatomic) BOOL hasRawMerchantCode;
+@property (readonly, nonatomic) BOOL hasTerminalId;
+@property (readonly, nonatomic) BOOL hasTransactionCurrencyCode;
 @property (readonly, nonatomic) BOOL hasTransactionLocation;
 @property (nonatomic) BOOL hasTransactionLocationAge;
 @property (nonatomic) BOOL hasTransactionTimestamp;
+@property (nonatomic) BOOL hasTransactionType;
+@property (readonly, nonatomic) BOOL hasWarsawMerchantIdentifier;
 @property (strong, nonatomic) NSString *industryCategory; // @synthesize industryCategory=_industryCategory;
 @property (nonatomic) long long industryCode; // @synthesize industryCode=_industryCode;
 @property (strong, nonatomic) NSString *merchantCode; // @synthesize merchantCode=_merchantCode;
+@property (strong, nonatomic) GEOPDMerchantInformation *merchantInformation; // @synthesize merchantInformation=_merchantInformation;
 @property (strong, nonatomic) NSString *paymentNetwork; // @synthesize paymentNetwork=_paymentNetwork;
 @property (strong, nonatomic) NSString *rawMerchantCode; // @synthesize rawMerchantCode=_rawMerchantCode;
+@property (strong, nonatomic) NSString *terminalId; // @synthesize terminalId=_terminalId;
+@property (strong, nonatomic) NSString *transactionCurrencyCode; // @synthesize transactionCurrencyCode=_transactionCurrencyCode;
 @property (strong, nonatomic) GEOLocation *transactionLocation; // @synthesize transactionLocation=_transactionLocation;
 @property (nonatomic) double transactionLocationAge; // @synthesize transactionLocationAge=_transactionLocationAge;
 @property (nonatomic) double transactionTimestamp; // @synthesize transactionTimestamp=_transactionTimestamp;
+@property (nonatomic) int transactionType; // @synthesize transactionType=_transactionType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) GEOPDWarsawMerchantIdentifier *warsawMerchantIdentifier; // @synthesize warsawMerchantIdentifier=_warsawMerchantIdentifier;
 
 - (void).cxx_destruct;
+- (int)StringAsTransactionType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -56,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)transactionTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

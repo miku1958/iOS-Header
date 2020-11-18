@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFScoreboardCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFSportsTeam;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFSportsTeam, SFUserReportRequest;
 
 @interface SFScoreboardCardSection : SFTitleCardSection <SFScoreboardCardSection, NSSecureCoding, NSCopying>
 {
@@ -60,6 +60,7 @@
 @property (strong, nonatomic) SFSportsTeam *team2; // @synthesize team2=_team2;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

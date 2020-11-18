@@ -28,10 +28,10 @@ __attribute__((visibility("hidden")))
 - (long long)identifierForObjectUUID:(id)arg1;
 - (id)init;
 - (id)initWithIdentifierToObjectUUIDDictionary:(id)arg1 objectUUIDToIdentifierDictionary:(id)arg2;
-- (id)initWithMessage:(const RepeatedPtrField_c964a194 *)arg1;
+- (id)initWithMessage:(const RepeatedPtrField_f8410f9e *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)objectUUIDForIdentifier:(long long)arg1;
-- (void)saveToMessage:(RepeatedPtrField_c964a194 *)arg1;
+- (void)saveToMessage:(RepeatedPtrField_f8410f9e *)arg1;
 
 @end
 

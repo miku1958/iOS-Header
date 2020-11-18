@@ -34,6 +34,7 @@
 - (id)quotedTextForStyle:(long long)arg1;
 - (long long)rendererStyle;
 - (id)topCaptionForStyle:(long long)arg1;
+- (id)unspecializedPresentationProperties;
 - (id)videoForStyle:(long long)arg1;
 
 @end

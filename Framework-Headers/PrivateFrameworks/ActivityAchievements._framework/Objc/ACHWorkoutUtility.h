@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, HDSQLitePredicate;
+@class HDDatabaseTransactionContext, HDProfile, HDSQLitePredicate;
 
 @interface ACHWorkoutUtility : NSObject
 {
+    HDDatabaseTransactionContext *_databaseContext;
     HDProfile *_profile;
     HDSQLitePredicate *_firstPartyPredicate;
 }
 
+@property (weak, nonatomic) HDDatabaseTransactionContext *databaseContext; // @synthesize databaseContext=_databaseContext;
 @property (strong, nonatomic) HDSQLitePredicate *firstPartyPredicate; // @synthesize firstPartyPredicate=_firstPartyPredicate;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 

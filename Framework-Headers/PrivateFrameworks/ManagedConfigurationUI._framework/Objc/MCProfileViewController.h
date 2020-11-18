@@ -13,6 +13,8 @@
 
 @interface MCProfileViewController : UITableViewController <PSStateRestoration>
 {
+    BOOL _wasSwizzled;
+    BOOL _installComplete;
     BOOL _profileOffersReenroll;
     BOOL _profileRemovable;
     id<MCProfileViewControllerDelegate> _profileViewControllerDelegate;
@@ -24,11 +26,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL installComplete; // @synthesize installComplete=_installComplete;
 @property (nonatomic) BOOL profileOffersReenroll; // @synthesize profileOffersReenroll=_profileOffersReenroll;
 @property (nonatomic) BOOL profileRemovable; // @synthesize profileRemovable=_profileRemovable;
 @property (weak, nonatomic) id<MCProfileViewControllerDelegate> profileViewControllerDelegate; // @synthesize profileViewControllerDelegate=_profileViewControllerDelegate;
 @property (nonatomic) long long profileViewMode; // @synthesize profileViewMode=_profileViewMode;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL wasSwizzled; // @synthesize wasSwizzled=_wasSwizzled;
 
 - (void).cxx_destruct;
 - (void)_profileChanged:(id)arg1;
@@ -40,7 +44,6 @@
 - (BOOL)canBeShownFromSuspendedState;
 - (void)contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)dealloc;
-- (void)didReceiveMemoryWarning;
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithStyle:(long long)arg1 profile:(id)arg2 profileViewMode:(long long)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;

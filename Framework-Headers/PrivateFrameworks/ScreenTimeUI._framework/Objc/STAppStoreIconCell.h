@@ -6,29 +6,25 @@
 
 #import <ScreenTimeUI/STTableCell.h>
 
-@class NSString, UIButton, UIImageView, UILabel;
+@class UIButton, UIImageView, UILabel;
 
 @interface STAppStoreIconCell : STTableCell
 {
-    NSString *_bundleIdentifier;
     UIImageView *_appIconView;
-    UILabel *_appNameLabel;
+    UILabel *_nameLabel;
     UIButton *_viewButton;
 }
 
 @property (readonly, nonatomic) UIImageView *appIconView; // @synthesize appIconView=_appIconView;
-@property (readonly, nonatomic) UILabel *appNameLabel; // @synthesize appNameLabel=_appNameLabel;
-@property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property (readonly, nonatomic) UIButton *viewButton; // @synthesize viewButton=_viewButton;
 
 - (void).cxx_destruct;
-- (void)_didFetchAppInfo:(id)arg1;
-- (void)_didFetchIcon:(id)arg1;
-- (void)_registerForAppInfoCacheNotifications;
-- (void)_registerForIconCacheNotifications;
+- (void)_didFetchAppInfoOrIcon:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 - (void)setValue:(id)arg1;
+- (id)value;
 - (void)viewAppInStore:(id)arg1;
 
 @end

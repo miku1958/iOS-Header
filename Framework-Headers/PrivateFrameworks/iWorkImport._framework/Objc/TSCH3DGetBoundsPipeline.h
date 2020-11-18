@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithScene:(id)arg1;
 - (id)initWithScene:(id)arg1 renderProcessor:(id)arg2;
 - (Class)labelsMeshRendererClassForLabelsRenderer:(id)arg1;
+- (void)p_replaceSceneOfPipeline:(id)arg1 replacement:(id)arg2 duringBlock:(CDUnknownBlockType)arg3;
 - (void)resetBounds;
 - (BOOL)run;
 - (void)runScene:(id)arg1 selector:(SEL)arg2;

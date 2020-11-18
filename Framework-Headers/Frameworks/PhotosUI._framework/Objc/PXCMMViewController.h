@@ -23,6 +23,7 @@
 {
     PXCMMAssetsProgressListener *_assetsProgressListener;
     BOOL _hasStartedPreloadingTasks;
+    BOOL _didIncrementNumberOfPresentedSendBacks;
     BOOL _showTitleInNavigationBar;
     BOOL _loadingPeopleSuggestions;
     PXCMMSession *_session;

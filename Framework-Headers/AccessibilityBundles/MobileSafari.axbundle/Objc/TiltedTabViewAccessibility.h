@@ -16,8 +16,8 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axUpdateScrollViewInfo;
 - (void)_layoutItemsWithTransition:(long long)arg1;
+- (void)dismissAnimated:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setPresented:(BOOL)arg1 animated:(BOOL)arg2;
 
 @end
 

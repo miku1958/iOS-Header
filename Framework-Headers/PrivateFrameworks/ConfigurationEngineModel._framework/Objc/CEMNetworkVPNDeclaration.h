@@ -8,7 +8,7 @@
 
 #import <ConfigurationEngineModel/CEMRegisteredTypeProtocol-Protocol.h>
 
-@class CEMNetworkVPNDeclaration_AlwaysOn, CEMNetworkVPNDeclaration_IKEv2, CEMNetworkVPNDeclaration_IPSec, CEMNetworkVPNDeclaration_IPv4, CEMNetworkVPNDeclaration_PPP, CEMNetworkVPNDeclaration_Proxies, CEMNetworkVPNDeclaration_VPN, CEMNetworkVPNDeclaration_VendorConfig, NSNumber, NSString;
+@class CEMNetworkVPNDeclaration_AlwaysOn, CEMNetworkVPNDeclaration_DNS, CEMNetworkVPNDeclaration_IKEv2, CEMNetworkVPNDeclaration_IPSec, CEMNetworkVPNDeclaration_IPv4, CEMNetworkVPNDeclaration_PPP, CEMNetworkVPNDeclaration_Proxies, CEMNetworkVPNDeclaration_VPN, CEMNetworkVPNDeclaration_VendorConfig, NSNumber, NSString;
 
 @interface CEMNetworkVPNDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
@@ -25,12 +25,14 @@
     CEMNetworkVPNDeclaration_AlwaysOn *_payloadAlwaysOn;
     NSNumber *_payloadDisconnectOnIdle;
     NSNumber *_payloadDisconnectOnIdleTimer;
+    CEMNetworkVPNDeclaration_DNS *_payloadDNS;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CEMNetworkVPNDeclaration_AlwaysOn *payloadAlwaysOn; // @synthesize payloadAlwaysOn=_payloadAlwaysOn;
+@property (copy, nonatomic) CEMNetworkVPNDeclaration_DNS *payloadDNS; // @synthesize payloadDNS=_payloadDNS;
 @property (copy, nonatomic) NSNumber *payloadDisconnectOnIdle; // @synthesize payloadDisconnectOnIdle=_payloadDisconnectOnIdle;
 @property (copy, nonatomic) NSNumber *payloadDisconnectOnIdleTimer; // @synthesize payloadDisconnectOnIdleTimer=_payloadDisconnectOnIdleTimer;
 @property (copy, nonatomic) CEMNetworkVPNDeclaration_IKEv2 *payloadIKEv2; // @synthesize payloadIKEv2=_payloadIKEv2;
@@ -47,7 +49,7 @@
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1 withVPNType:(id)arg2 withUserDefinedName:(id)arg3;
-+ (id)buildWithIdentifier:(id)arg1 withVPNType:(id)arg2 withVPNSubType:(id)arg3 withUserDefinedName:(id)arg4 withVendorConfig:(id)arg5 withVPN:(id)arg6 withIPv4:(id)arg7 withPPP:(id)arg8 withIPSec:(id)arg9 withIKEv2:(id)arg10 withProxies:(id)arg11 withAlwaysOn:(id)arg12 withDisconnectOnIdle:(id)arg13 withDisconnectOnIdleTimer:(id)arg14;
++ (id)buildWithIdentifier:(id)arg1 withVPNType:(id)arg2 withVPNSubType:(id)arg3 withUserDefinedName:(id)arg4 withVendorConfig:(id)arg5 withVPN:(id)arg6 withIPv4:(id)arg7 withPPP:(id)arg8 withIPSec:(id)arg9 withIKEv2:(id)arg10 withProxies:(id)arg11 withAlwaysOn:(id)arg12 withDisconnectOnIdle:(id)arg13 withDisconnectOnIdleTimer:(id)arg14 withDNS:(id)arg15;
 + (id)profileType;
 + (id)registeredClassName;
 + (id)registeredIdentifier;

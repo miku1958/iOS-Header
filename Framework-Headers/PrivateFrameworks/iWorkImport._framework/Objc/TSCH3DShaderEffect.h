@@ -19,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (void)addVariables:(id)arg1;
 - (BOOL)alwaysUploadData;
 - (unsigned long long)hash;
+- (void)injectCommonShaderInto:(id)arg1 context:(id)arg2;
+- (void)injectGLSLInto:(id)arg1 context:(id)arg2;
+- (void)injectMetalShaderInto:(id)arg1 context:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (Class)stateClass;
 - (id)stateSharingID;

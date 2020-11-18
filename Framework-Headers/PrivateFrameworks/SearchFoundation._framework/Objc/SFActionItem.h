@@ -20,10 +20,12 @@
         unsigned int latitude:1;
         unsigned int longitude:1;
         unsigned int isITunes:1;
+        unsigned int mediaEntityType:1;
     } _has;
     BOOL _isOverlay;
     BOOL _requiresLocalMedia;
     BOOL _isITunes;
+    int _mediaEntityType;
     NSString *_label;
     NSString *_labelForLocalMedia;
     NSArray *_storeIdentifiers;
@@ -45,6 +47,7 @@
     SFLatLng *_location;
     NSString *_messageIdentifier;
     NSURL *_messageURL;
+    NSString *_persistentID;
 }
 
 @property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
@@ -67,9 +70,11 @@
 @property (strong, nonatomic) SFLatLng *location; // @synthesize location=_location;
 @property (nonatomic) double longitude; // @synthesize longitude=_longitude;
 @property (copy, nonatomic) NSData *mapsData; // @synthesize mapsData=_mapsData;
+@property (nonatomic) int mediaEntityType; // @synthesize mediaEntityType=_mediaEntityType;
 @property (copy, nonatomic) NSString *messageIdentifier; // @synthesize messageIdentifier=_messageIdentifier;
 @property (copy, nonatomic) NSURL *messageURL; // @synthesize messageURL=_messageURL;
 @property (copy, nonatomic) NSString *offerType; // @synthesize offerType=_offerType;
+@property (copy, nonatomic) NSString *persistentID; // @synthesize persistentID=_persistentID;
 @property (copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (copy, nonatomic) NSString *provider; // @synthesize provider=_provider;
 @property (strong, nonatomic) SFPunchout *punchout; // @synthesize punchout=_punchout;
@@ -86,6 +91,7 @@
 - (BOOL)hasIsOverlay;
 - (BOOL)hasLatitude;
 - (BOOL)hasLongitude;
+- (BOOL)hasMediaEntityType;
 - (BOOL)hasRequiresLocalMedia;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;

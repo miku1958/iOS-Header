@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSDateInterval, NSNumber;
+@class NSArray, NSDate, NSDateInterval, NSNumber, NSString;
 
 @interface STUsageReportGraphDataPoint : NSObject
 {
@@ -15,11 +15,13 @@
     NSDateInterval *_dateInterval;
     NSNumber *_total;
     double _totalAsPercentageOfMax;
+    NSString *_indicatorImageName;
     NSArray *_segments;
 }
 
 @property (readonly, nonatomic) NSDate *date;
 @property (strong, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+@property (copy, nonatomic) NSString *indicatorImageName; // @synthesize indicatorImageName=_indicatorImageName;
 @property (nonatomic) unsigned long long itemType; // @synthesize itemType=_itemType;
 @property (copy, nonatomic) NSArray *segments; // @synthesize segments=_segments;
 @property (nonatomic) unsigned long long timePeriod; // @synthesize timePeriod=_timePeriod;

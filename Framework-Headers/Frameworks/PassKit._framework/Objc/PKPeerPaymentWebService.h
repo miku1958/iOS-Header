@@ -51,6 +51,7 @@
 - (void)_updateRequestWithCurrentTargetDevice:(id)arg1;
 - (id)badRequestErrorWithResponse:(id)arg1;
 - (BOOL)canBypassTrustExtendedValidation;
+- (unsigned long long)disbursementVoucherWithRequest:(id)arg1 certificates:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)forbiddenErrorWithResponse:(id)arg1;
 - (void)handleAuthenticationFailureWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleResponse:(id)arg1 withError:(id)arg2 data:(id)arg3 task:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -63,6 +64,7 @@
 - (unsigned long long)peerPaymentAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)peerPaymentBankLookupWithCountryCode:(id)arg1 query:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)peerPaymentDocumentSubmissionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)peerPaymentEmailTermsWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)peerPaymentIdentityVerificationRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)peerPaymentPassDetailsWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)peerPaymentPerformAction:(id)arg1 withPaymentIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;

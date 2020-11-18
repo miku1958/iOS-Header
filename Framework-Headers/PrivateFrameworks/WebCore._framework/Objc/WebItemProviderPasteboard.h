@@ -43,15 +43,15 @@
 - (void)doAfterLoadingProvidedContentIntoFileURLs:(CDUnknownBlockType)arg1;
 - (void)doAfterLoadingProvidedContentIntoFileURLs:(CDUnknownBlockType)arg1 synchronousTimeout:(double)arg2;
 - (void)enumerateItemProvidersWithBlock:(CDUnknownBlockType)arg1;
+- (id)fileUploadURLsAtIndex:(unsigned long long)arg1 fileTypes:(id *)arg2;
 - (void)incrementPendingOperationCount;
 - (id)init;
 - (id)itemProviderAtIndex:(unsigned long long)arg1;
 - (id)pasteboardTypes;
 - (id)pasteboardTypesByFidelityForItemAtIndex:(unsigned long long)arg1;
-- (id)preferredFileUploadURLAtIndex:(unsigned long long)arg1 fileType:(id *)arg2;
 - (void)stageRegistrationList:(id)arg1;
 - (id)takeRegistrationList;
-- (id)typeIdentifiersToLoadForRegisteredTypeIdentfiers:(id)arg1;
+- (id)typeIdentifiersToLoad:(id)arg1;
 - (void)updateSupportedTypeIdentifiers:(id)arg1;
 - (id)valuesForPasteboardType:(id)arg1 inItemSet:(id)arg2;
 

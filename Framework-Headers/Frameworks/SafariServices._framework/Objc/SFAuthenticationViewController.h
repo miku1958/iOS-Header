@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_presentViewController;
 - (void)_restartServiceViewController;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithURL:(id)arg1 callbackURLScheme:(id)arg2;
+- (id)initWithURL:(id)arg1 callbackURLScheme:(id)arg2 usingEphemeralSession:(BOOL)arg3;
 - (void)remoteViewController:(id)arg1 didDecideCookieSharingForURL:(id)arg2 shouldCancel:(BOOL)arg3;
 - (void)remoteViewController:(id)arg1 hostApplicationOpenURL:(id)arg2;
 - (void)setDefersAddingRemoteViewController:(BOOL)arg1;

@@ -17,7 +17,7 @@
 
 @property (nonatomic, readonly) long long preferredStatusBarStyle;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)didTapDone:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

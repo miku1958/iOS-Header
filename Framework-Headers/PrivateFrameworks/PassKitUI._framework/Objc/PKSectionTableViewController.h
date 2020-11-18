@@ -11,7 +11,10 @@
     unsigned long long _numberOfSections;
     CDStruct_826e8cf1 _currentMap;
     CDStruct_826e8cf1 _bufferedMap;
+    BOOL _useRoundedInsetSections;
 }
+
+@property (nonatomic) BOOL useRoundedInsetSections; // @synthesize useRoundedInsetSections=_useRoundedInsetSections;
 
 - (BOOL)_recomputeMappedSections;
 - (void)_swapBuffers;

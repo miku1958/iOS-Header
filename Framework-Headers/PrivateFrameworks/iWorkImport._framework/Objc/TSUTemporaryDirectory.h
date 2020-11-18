@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSignature:(id)arg1 subdirectory:(id)arg2 error:(id *)arg3;
 - (void)leakTemporaryDirectory;
 - (id)path;
+- (void)removeDirectory;
 
 @end
 

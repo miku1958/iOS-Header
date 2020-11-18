@@ -13,6 +13,7 @@
 - (void)navigateForwardKeyPressed;
 - (void)nextFindResultKeyPressed;
 - (void)previousFindResultKeyPressed;
+- (void)reloadFromOriginKeyPressed;
 - (void)reloadKeyPressed;
 - (void)toggleReaderKeyPressed;
 @end

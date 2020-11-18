@@ -9,7 +9,7 @@
 #import <Sharing/NSSecureCoding-Protocol.h>
 #import <Sharing/SFXPCInterface-Protocol.h>
 
-@class CUAppleIDClient, CUMessageSession, CUMessageSessionServer, NSDate, NSDictionary, NSMutableData, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListenerEndpoint, SFDevice, SFTRSession, TRSession;
+@class CUAppleIDClient, CUMessageSession, CUMessageSessionServer, NSDate, NSDictionary, NSMutableData, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListenerEndpoint, SFAppleIDContactInfo, SFDevice, SFTRSession, TRSession;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction;
 
 @interface SFSession : NSObject <NSSecureCoding, SFXPCInterface>
@@ -38,6 +38,9 @@
     BOOL _activateCalled;
     BOOL _activateInProgress;
     BOOL _activateCompleted;
+    CDUnknownBlockType _activateCompletion;
+    SFAppleIDContactInfo *_appleIDContactInfo;
+    BOOL _appleIDContactCompleted;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     unsigned int _heartbeatID;
@@ -144,9 +147,11 @@
 - (void).cxx_destruct;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_activated;
+- (void)_activatedIfReady:(id)arg1;
 - (void)_cleanup;
 - (void)_deregisterRequestID:(id)arg1;
 - (void)_ensureXPCStarted;
+- (void)_fetchInfo;
 - (void)_hearbeatTimer;
 - (void)_interrupted;
 - (void)_invalidated;

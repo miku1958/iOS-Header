@@ -12,13 +12,24 @@
 @interface CSAudioRouteChangeMonitor : CSEventMonitor
 {
     NSObject<OS_dispatch_queue> *_queue;
+    BOOL _isHearstConnected;
+    BOOL _isJarvisConnected;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (BOOL)_fetchHearstConnectionState;
+- (BOOL)_fetchJarvisConnectionState;
+- (void)_notifyHearstConnectionState:(BOOL)arg1;
+- (void)_notifyJarvisConnectionState:(BOOL)arg1;
 - (void)_startMonitoringWithQueue:(id)arg1;
 - (void)_stopMonitoring;
+- (void)getHearstConnected:(CDUnknownBlockType)arg1;
+- (void)getJarvisConnected:(CDUnknownBlockType)arg1;
+- (BOOL)hearstConnected;
 - (id)init;
+- (void)jarvisAudioRouteDidChange:(id)arg1;
+- (BOOL)jarvisConnected;
 - (void)preferredExternalRouteDidChange:(id)arg1;
 
 @end

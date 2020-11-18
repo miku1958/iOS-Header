@@ -26,6 +26,7 @@
     _MRAVOutputDeviceSourceInfoProtobuf *_sourceInfo;
     NSString *_uniqueIdentifier;
     float _volume;
+    int _volumeCapabilities;
     BOOL _canAccessAppleMusic;
     BOOL _canAccessRemoteAssets;
     BOOL _canAccessiCloudMusicLibrary;
@@ -33,6 +34,7 @@
     BOOL _canPlayEncryptedProgressiveDownloadAssets;
     BOOL _canRelayCommunicationChannel;
     BOOL _groupContainsGroupLeader;
+    BOOL _isAddedToHomeKit;
     BOOL _isAirPlayReceiverSessionActive;
     BOOL _isDeviceGroupable;
     BOOL _isGroupLeader;
@@ -52,6 +54,7 @@
         unsigned int deviceSubType:1;
         unsigned int deviceType:1;
         unsigned int volume:1;
+        unsigned int volumeCapabilities:1;
         unsigned int canAccessAppleMusic:1;
         unsigned int canAccessRemoteAssets:1;
         unsigned int canAccessiCloudMusicLibrary:1;
@@ -59,6 +62,7 @@
         unsigned int canPlayEncryptedProgressiveDownloadAssets:1;
         unsigned int canRelayCommunicationChannel:1;
         unsigned int groupContainsGroupLeader:1;
+        unsigned int isAddedToHomeKit:1;
         unsigned int isAirPlayReceiverSessionActive:1;
         unsigned int isDeviceGroupable:1;
         unsigned int isGroupLeader:1;
@@ -100,6 +104,7 @@
 @property (readonly, nonatomic) BOOL hasFirmwareVersion;
 @property (nonatomic) BOOL hasGroupContainsGroupLeader;
 @property (readonly, nonatomic) BOOL hasGroupID;
+@property (nonatomic) BOOL hasIsAddedToHomeKit;
 @property (nonatomic) BOOL hasIsAirPlayReceiverSessionActive;
 @property (nonatomic) BOOL hasIsDeviceGroupable;
 @property (nonatomic) BOOL hasIsGroupLeader;
@@ -123,6 +128,8 @@
 @property (nonatomic) BOOL hasSupportsExternalScreen;
 @property (readonly, nonatomic) BOOL hasUniqueIdentifier;
 @property (nonatomic) BOOL hasVolume;
+@property (nonatomic) BOOL hasVolumeCapabilities;
+@property (nonatomic) BOOL isAddedToHomeKit; // @synthesize isAddedToHomeKit=_isAddedToHomeKit;
 @property (nonatomic) BOOL isAirPlayReceiverSessionActive; // @synthesize isAirPlayReceiverSessionActive=_isAirPlayReceiverSessionActive;
 @property (nonatomic) BOOL isDeviceGroupable; // @synthesize isDeviceGroupable=_isDeviceGroupable;
 @property (nonatomic) BOOL isGroupLeader; // @synthesize isGroupLeader=_isGroupLeader;
@@ -146,6 +153,7 @@
 @property (nonatomic) BOOL supportsExternalScreen; // @synthesize supportsExternalScreen=_supportsExternalScreen;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (nonatomic) float volume; // @synthesize volume=_volume;
+@property (nonatomic) int volumeCapabilities; // @synthesize volumeCapabilities=_volumeCapabilities;
 
 - (void).cxx_destruct;
 - (int)StringAsDeviceSubType:(id)arg1;

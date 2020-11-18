@@ -32,6 +32,7 @@
     double _articleSelectionCornerRadius;
     double _articleSelectionInset;
     double _scaleValue;
+    double _lineHeightMultiplier;
     NFLCellGeneratorManager *_cellGeneratorManager;
     id<NFLFeedLayoutSearchConfiguration> _defaultFeedLayoutSearchConfiguration;
     NFLFontCache *_fontCache;
@@ -59,6 +60,7 @@
 @property (readonly, nonatomic) NFLFontCache *fontCache; // @synthesize fontCache=_fontCache;
 @property (readonly, nonatomic) double horizontalMarginWidth; // @synthesize horizontalMarginWidth=_horizontalMarginWidth;
 @property (readonly, nonatomic) unsigned long long layoutOptions; // @synthesize layoutOptions=_layoutOptions;
+@property (nonatomic) double lineHeightMultiplier; // @synthesize lineHeightMultiplier=_lineHeightMultiplier;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 @property (readonly, nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
 @property (readonly, nonatomic) double scaleValue; // @synthesize scaleValue=_scaleValue;
@@ -67,15 +69,16 @@
 @property (readonly, nonatomic) double verticalMarginInRows; // @synthesize verticalMarginInRows=_verticalMarginInRows;
 @property (readonly, nonatomic) struct CGSize viewportSize; // @synthesize viewportSize=_viewportSize;
 
++ (struct UIEdgeInsets)adjustedLayoutMargins:(struct UIEdgeInsets)arg1 viewportWidth:(double)arg2;
 - (void).cxx_destruct;
 - (double)cellHeightForRowSpan:(long long)arg1;
 - (double)cellWidthForColumnSpan:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)init;
-- (id)initWithViewportSize:(struct CGSize)arg1 defaultFeedLayoutSearchConfiguration:(id)arg2 columnCount:(long long)arg3 feedGutter:(double)arg4 feedTopMargin:(double)arg5 verticalMarginInRows:(double)arg6 preferredContentSizeCategory:(id)arg7 maximumContentInset:(double)arg8 selectionCornerRadius:(double)arg9 selectionInset:(double)arg10 showAccessoryText:(BOOL)arg11 layoutOptions:(unsigned long long)arg12;
-- (id)initWithViewportSize:(struct CGSize)arg1 viewportInsets:(struct UIEdgeInsets)arg2 preferredContentSizeCategory:(id)arg3 showAccessoryText:(BOOL)arg4;
-- (id)initWithViewportSize:(struct CGSize)arg1 viewportInsets:(struct UIEdgeInsets)arg2 preferredContentSizeCategory:(id)arg3 showAccessoryText:(BOOL)arg4 layoutType:(long long)arg5 layoutOptions:(unsigned long long)arg6;
+- (id)initWithViewportSize:(struct CGSize)arg1 defaultFeedLayoutSearchConfiguration:(id)arg2 columnCount:(long long)arg3 feedGutter:(double)arg4 feedTopMargin:(double)arg5 verticalMarginInRows:(double)arg6 preferredContentSizeCategory:(id)arg7 maximumContentInset:(double)arg8 selectionCornerRadius:(double)arg9 selectionInset:(double)arg10 showAccessoryText:(BOOL)arg11 lineHeightMultiplier:(double)arg12 layoutOptions:(unsigned long long)arg13;
+- (id)initWithViewportSize:(struct CGSize)arg1 viewportInsets:(struct UIEdgeInsets)arg2 preferredContentSizeCategory:(id)arg3 showAccessoryText:(BOOL)arg4 lineHeightMultiplier:(double)arg5;
+- (id)initWithViewportSize:(struct CGSize)arg1 viewportInsets:(struct UIEdgeInsets)arg2 preferredContentSizeCategory:(id)arg3 showAccessoryText:(BOOL)arg4 lineHeightMultiplier:(double)arg5 layoutType:(long long)arg6 layoutOptions:(unsigned long long)arg7;
 - (BOOL)preservesLayoutMargins:(struct UIEdgeInsets)arg1;
 - (BOOL)preservesTraitCollection:(id)arg1;
 

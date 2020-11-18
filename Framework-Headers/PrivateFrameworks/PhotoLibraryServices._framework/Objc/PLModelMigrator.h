@@ -223,7 +223,6 @@
 + (BOOL)_repushAssetsWithNewGroupingPropertiesInStore:(id)arg1;
 + (BOOL)_repushMemoriesWithNewFeaturesInStore:(id)arg1;
 + (BOOL)_repushPersonsWithMergeTargetInStore:(id)arg1;
-+ (BOOL)_repushVideoAssetsInStore:(id)arg1;
 + (BOOL)_resetAlbumToFolderOrderKeyForAlbums:(id)arg1;
 + (BOOL)_resetAnalysisStateForVideosInStore:(id)arg1;
 + (BOOL)_resetDupesAnalysisInStore:(id)arg1;

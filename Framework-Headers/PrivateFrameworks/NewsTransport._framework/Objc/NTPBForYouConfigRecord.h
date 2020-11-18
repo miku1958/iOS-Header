@@ -20,6 +20,7 @@
     NSMutableArray *_editorialSectionTagIDs;
     NSString *_moreVideosArticleListID;
     NSMutableArray *_specialEventArticleIDs;
+    NSString *_spotlightArticleID;
     NSMutableArray *_topStoriesCombinedArticleIDs;
     NSMutableArray *_topVideosArticleIDs;
     NSString *_trendingArticleListID;
@@ -35,9 +36,11 @@
 @property (readonly, nonatomic) BOOL hasConfiguration;
 @property (readonly, nonatomic) BOOL hasCoverArticlesArticleListID;
 @property (readonly, nonatomic) BOOL hasMoreVideosArticleListID;
+@property (readonly, nonatomic) BOOL hasSpotlightArticleID;
 @property (readonly, nonatomic) BOOL hasTrendingArticleListID;
 @property (strong, nonatomic) NSString *moreVideosArticleListID; // @synthesize moreVideosArticleListID=_moreVideosArticleListID;
 @property (strong, nonatomic) NSMutableArray *specialEventArticleIDs; // @synthesize specialEventArticleIDs=_specialEventArticleIDs;
+@property (strong, nonatomic) NSString *spotlightArticleID; // @synthesize spotlightArticleID=_spotlightArticleID;
 @property (strong, nonatomic) NSMutableArray *topStoriesCombinedArticleIDs; // @synthesize topStoriesCombinedArticleIDs=_topStoriesCombinedArticleIDs;
 @property (strong, nonatomic) NSMutableArray *topVideosArticleIDs; // @synthesize topVideosArticleIDs=_topVideosArticleIDs;
 @property (strong, nonatomic) NSString *trendingArticleListID; // @synthesize trendingArticleListID=_trendingArticleListID;

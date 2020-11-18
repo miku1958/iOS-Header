@@ -12,6 +12,7 @@
 {
     BOOL _fadeInComponents;
     BOOL _enableViewportDebugging;
+    BOOL _testingConditionEnabled;
     NSString *_contentSizeCategory;
     unsigned long long _presentationMode;
     struct CGSize _canvasSize;
@@ -23,6 +24,7 @@
 @property (nonatomic) BOOL fadeInComponents; // @synthesize fadeInComponents=_fadeInComponents;
 @property (readonly, nonatomic) BOOL fadeWhenTransitioning;
 @property (nonatomic) unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
+@property (nonatomic) BOOL testingConditionEnabled; // @synthesize testingConditionEnabled=_testingConditionEnabled;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

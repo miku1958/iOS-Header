@@ -8,11 +8,12 @@
 
 #import <NewsToday/NTSourceAvailabilityEntry-Protocol.h>
 
-@class NSString;
+@class FCNetworkReachability, NSString;
 
 @interface NTParsecSourceAvailabilityEntry : NSObject <NTSourceAvailabilityEntry>
 {
     CDUnknownBlockType _availabilityChangedNotificationBlock;
+    FCNetworkReachability *_networkReachability;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType availabilityChangedNotificationBlock; // @synthesize availabilityChangedNotificationBlock=_availabilityChangedNotificationBlock;
@@ -20,11 +21,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) FCNetworkReachability *networkReachability; // @synthesize networkReachability=_networkReachability;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) Class todayResultsFetchDescriptorClass;
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithNetworkReachability:(id)arg1;
 
 @end
 

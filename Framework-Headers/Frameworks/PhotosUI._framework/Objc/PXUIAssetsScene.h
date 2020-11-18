@@ -19,6 +19,7 @@
     } _needsUpdateFlags;
     BOOL __supressingColorSettings;
     PXDebugAssetBadgeManager *__debugBadgeManager;
+    struct CGSize _maximumImageSize;
 }
 
 @property (strong, nonatomic, setter=_setDebugBadgeManager:) PXDebugAssetBadgeManager *_debugBadgeManager; // @synthesize _debugBadgeManager=__debugBadgeManager;
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct CGSize maximumImageSize; // @synthesize maximumImageSize=_maximumImageSize;
 @property (readonly, nonatomic) PXUIMediaProvider *mediaProvider; // @dynamic mediaProvider;
 @property (readonly, nonatomic) PXUIScrollViewController *scrollViewController;
 @property (readonly) Class superclass;

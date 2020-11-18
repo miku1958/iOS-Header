@@ -4,45 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Sharing/SFXPCClient.h>
 
 #import <Sharing/SFActivityAdvertiserClient-Protocol.h>
-#import <Sharing/SFCompanionXPCManagerObserver-Protocol.h>
 
-@class NSString, SFInternalAdvertisement;
-@protocol SFActivityAdvertiserDelegate, SFActivityAdvertiserProtocol;
+@class NSString;
+@protocol SFActivityAdvertiserDelegate;
 
-@interface SFActivityAdvertiser : NSObject <SFCompanionXPCManagerObserver, SFActivityAdvertiserClient>
+@interface SFActivityAdvertiser : SFXPCClient <SFActivityAdvertiserClient>
 {
-    BOOL _xpcSetupInProgress;
     id<SFActivityAdvertiserDelegate> _delegate;
-    id<SFActivityAdvertiserProtocol> _connectionProxy;
-    SFInternalAdvertisement *_currentAdvertisement;
 }
 
-@property (strong) id<SFActivityAdvertiserProtocol> connectionProxy; // @synthesize connectionProxy=_connectionProxy;
-@property (strong) SFInternalAdvertisement *currentAdvertisement; // @synthesize currentAdvertisement=_currentAdvertisement;
 @property (readonly, copy) NSString *debugDescription;
 @property id<SFActivityAdvertiserDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property BOOL xpcSetupInProgress; // @synthesize xpcSetupInProgress=_xpcSetupInProgress;
 
 + (id)sharedAdvertiser;
-- (void).cxx_destruct;
+- (void)_getRemoteObjectProxyOnQueue:(CDUnknownBlockType)arg1;
 - (void)activityPayloadForAdvertisementPayload:(id)arg1 command:(id)arg2 requestedByDevice:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)advertiseAdvertisementPayload:(id)arg1 options:(id)arg2;
-- (void)dealloc;
 - (void)didSendPayloadForActivityIdentifier:(id)arg1 toDevice:(id)arg2 error:(id)arg3;
+- (id)exportedInterface;
 - (void)fetchLoginIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchPeerForUUID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchSFPeerDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)machServiceName;
 - (void)pairedDevicesChanged:(id)arg1;
-- (void)setupProxyIfNeeded;
-- (void)xpcManagerConnectionInterrupted;
-- (void)xpcManagerDidResumeConnection:(id)arg1;
+- (id)remoteObjectInterface;
+- (BOOL)shouldEscapeXpcTryCatch;
 
 @end
 

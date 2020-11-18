@@ -8,11 +8,10 @@
 
 #import <iAd/EKEventEditViewDelegate-Protocol.h>
 
-@class ADEventEditViewController, ADHomeButtonHandler, EKEvent, NSString;
+@class ADEventEditViewController, EKEvent, NSString;
 
 @interface ADCalendarEventActionViewController : ADActionViewController <EKEventEditViewDelegate>
 {
-    ADHomeButtonHandler *_homeButtonHandler;
     EKEvent *_calendarEvent;
     ADEventEditViewController *_eventKitEditViewController;
 }
@@ -22,7 +21,6 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) ADEventEditViewController *eventKitEditViewController; // @synthesize eventKitEditViewController=_eventKitEditViewController;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) ADHomeButtonHandler *homeButtonHandler; // @synthesize homeButtonHandler=_homeButtonHandler;
 @property (readonly) Class superclass;
 
 - (void)clientApplicationDidEnterBackground;

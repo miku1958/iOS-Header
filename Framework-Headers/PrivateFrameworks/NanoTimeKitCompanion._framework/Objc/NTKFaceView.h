@@ -340,6 +340,7 @@
 - (void)setComplicationPickerView:(id)arg1 forSlot:(id)arg2;
 - (void)setDetachedComplicationDisplayWrapper:(id)arg1 forSlot:(id)arg2;
 - (void)setNeedsRender;
+- (void)setNeedsRenderWithAdditionalWork:(CDUnknownBlockType)arg1;
 - (void)setNextRenderIsFirstAfterWake;
 - (void)setNormalComplicationDisplayWrapper:(id)arg1 forSlot:(id)arg2;
 - (void)setOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;

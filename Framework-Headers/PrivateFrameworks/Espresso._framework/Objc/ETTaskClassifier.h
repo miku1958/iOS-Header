@@ -24,6 +24,7 @@
 - (float)fit:(id)arg1 numberOfBatches:(unsigned int)arg2 withProgress:(CDUnknownBlockType)arg3;
 - (float)fit:(id)arg1 numberOfEpochs:(int)arg2 withProgress:(CDUnknownBlockType)arg3;
 - (id)initWithModelDef:(id)arg1 optimizerDef:(id)arg2 extractor:(id)arg3;
+- (id)initWithModelDef:(id)arg1 optimizerDef:(id)arg2 extractor:(id)arg3 needWeightsInitialization:(BOOL)arg4;
 - (void)saveNetwork:(id)arg1;
 
 @end

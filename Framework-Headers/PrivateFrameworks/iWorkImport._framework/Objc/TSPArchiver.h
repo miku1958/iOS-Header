@@ -55,6 +55,9 @@ __attribute__((visibility("hidden")))
 - (void)cleanup;
 - (void)fail;
 - (id)initWithObject:(id)arg1;
+- (id)initWithObject:(id)arg1 flags:(BOOL)arg2;
+- (BOOL)isSavingCollaborativeDocument;
+- (BOOL)isSavingDocumentAs;
 - (void)requiresDocumentReadVersion:(unsigned long long)arg1 writeVersion:(unsigned long long)arg2;
 - (void)requiresDocumentReadVersion:(unsigned long long)arg1 writeVersion:(unsigned long long)arg2 featureIdentifier:(id)arg3;
 - (void)requiresDocumentVersion:(unsigned long long)arg1;

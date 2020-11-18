@@ -203,6 +203,7 @@
 - (void)_presentLoadedPreviewCollection:(id)arg1;
 - (void)_presentPreviewCollection;
 - (void)_previousPreview;
+- (void)_promptUserAndOpenURLIfNeeded:(id)arg1;
 - (BOOL)_quickLookWillBecomeVisible;
 - (void)_refreshCurrentPreviewItemAnimated:(BOOL)arg1;
 - (void)_registerForApplicationStateChangesNotifications;

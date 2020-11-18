@@ -6,34 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSString, XCTestCase;
-@protocol VTKComparator, VTKReferenceItemsSource, VTKStoreManager;
+@class NSArray, NSString, VTKInternalConfiguration, XCTestCase;
 
 __attribute__((visibility("hidden")))
 @interface VTKAssert : NSObject
 {
-    NSMutableArray *_mutableDrawItems;
     XCTestCase *_testCase;
-    id<VTKReferenceItemsSource> _referenceItemsSource;
-    id<VTKStoreManager> _storeManager;
-    id<VTKComparator> _comparator;
+    VTKInternalConfiguration *_configuration;
 }
 
-@property (readonly, nonatomic) id<VTKComparator> comparator; // @synthesize comparator=_comparator;
+@property (copy, nonatomic) VTKInternalConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) NSArray *drawItems;
-@property (copy, nonatomic) NSString *referenceImagesDirectory;
-@property (readonly, nonatomic) id<VTKReferenceItemsSource> referenceItemsSource; // @synthesize referenceItemsSource=_referenceItemsSource;
-@property (readonly, nonatomic) id<VTKStoreManager> storeManager; // @synthesize storeManager=_storeManager;
+@property (readonly, nonatomic) NSString *referenceImagesDirectory;
 @property (readonly, weak, nonatomic) XCTestCase *testCase; // @synthesize testCase=_testCase;
 
 - (void).cxx_destruct;
-- (id)_drawItems:(id)arg1 atImageUnderTest:(id)arg2;
-- (void)addHorozontalGuideAt:(double)arg1 withColor:(id)arg2;
-- (void)addSquareGuideAt:(struct CGRect)arg1 withColor:(id)arg2;
-- (void)addVerticalGuideAt:(double)arg1 withColor:(id)arg2;
 - (void)assertView:(id)arg1 identifier:(id)arg2 filePath:(id)arg3 lineNumber:(unsigned long long)arg4;
 - (id)initWithTestCase:(id)arg1;
-- (id)initWithTestCase:(id)arg1 referenceItemsSource:(id)arg2 storeMnanager:(id)arg3 imageComparator:(id)arg4;
+- (id)initWithTestCase:(id)arg1 configuration:(id)arg2;
 
 @end
 

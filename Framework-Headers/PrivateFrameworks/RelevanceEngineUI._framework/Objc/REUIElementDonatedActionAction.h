@@ -39,6 +39,7 @@
 - (BOOL)siriActionsPerformer:(id)arg1 wantsToPresentViewController:(id)arg2;
 - (void)siriActionsPerformerDidSucceed:(id)arg1;
 - (id)siriActionsPerformerWantsAlertBackgroundImage:(id)arg1;
+- (id)siriActionsPerformerWantsBackgroundViewToBlur:(id)arg1;
 
 @end
 

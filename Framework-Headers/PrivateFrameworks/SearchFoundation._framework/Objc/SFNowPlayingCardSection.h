@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFNowPlayingCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFUserReportRequest;
 
 @interface SFNowPlayingCardSection : SFTitleCardSection <SFNowPlayingCardSection, NSSecureCoding, NSCopying>
 {
@@ -54,6 +54,7 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

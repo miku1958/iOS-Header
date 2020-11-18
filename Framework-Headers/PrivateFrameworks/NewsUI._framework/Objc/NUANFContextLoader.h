@@ -9,7 +9,7 @@
 #import <NewsUI/SXResourceDataSource-Protocol.h>
 
 @class FCAsyncOnceOperation, FCFlintManifest, FCFlintResourceManager, NSString, NUANFAssetLoader, SXContext;
-@protocol NUArticleResourceURLTranslator, SXHost;
+@protocol NUArticleResourceURLTranslator, OS_dispatch_queue, SXHost;
 
 @interface NUANFContextLoader : NSObject <SXResourceDataSource>
 {
@@ -20,6 +20,7 @@
     id<NUArticleResourceURLTranslator> _resourceURLTranslator;
     NUANFAssetLoader *_assetLoader;
     FCAsyncOnceOperation *_asyncOnceOperation;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (strong, nonatomic) NUANFAssetLoader *assetLoader; // @synthesize assetLoader=_assetLoader;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) FCFlintResourceManager *flintResourceManager; // @synthesize flintResourceManager=_flintResourceManager;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) id<NUArticleResourceURLTranslator> resourceURLTranslator; // @synthesize resourceURLTranslator=_resourceURLTranslator;
 @property (readonly) Class superclass;
 

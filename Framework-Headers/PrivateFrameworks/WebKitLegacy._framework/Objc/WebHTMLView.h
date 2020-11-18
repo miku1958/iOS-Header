@@ -41,8 +41,8 @@
 + (id)unsupportedTextMIMETypes;
 - (id)_accessibilityParentForSubview:(id)arg1;
 - (double)_adjustedBottomOfPageWithTop:(double)arg1 bottom:(double)arg2 limit:(double)arg3;
-- (void)_applyEditingStyleToSelection:(Ref_8e48ecf0 *)arg1 withUndoAction:(int)arg2;
-- (void)_applyStyleToSelection:(id)arg1 withUndoAction:(int)arg2;
+- (void)_applyEditingStyleToSelection:(Ref_8e48ecf0 *)arg1 withUndoAction:(unsigned char)arg2;
+- (void)_applyStyleToSelection:(id)arg1 withUndoAction:(unsigned char)arg2;
 - (BOOL)_beginPrintModeWithMinimumPageWidth:(double)arg1 height:(double)arg2 maximumPageWidth:(double)arg3;
 - (BOOL)_beginPrintModeWithPageWidth:(float)arg1 height:(float)arg2 shrinkToFit:(BOOL)arg3;
 - (BOOL)_beginScreenPaginationModeWithPageSize:(struct CGSize)arg1 shrinkToFit:(BOOL)arg2;

@@ -48,6 +48,9 @@
 @property (weak, nonatomic) id<ML3MusicLibraryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL downloadOnAddToLibrary;
+@property (readonly, nonatomic) BOOL hasAddedToLibraryAppleMusicContent;
+@property (readonly, nonatomic) BOOL hasUserPlaylists;
+@property (readonly, nonatomic) BOOL hasUserPlaylistsContainingAppleMusicContent;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isHomeSharingLibrary;
 @property (strong, nonatomic) NSArray *libraryContainerFilterPredicates; // @synthesize libraryContainerFilterPredicates=_libraryContainerFilterPredicates;

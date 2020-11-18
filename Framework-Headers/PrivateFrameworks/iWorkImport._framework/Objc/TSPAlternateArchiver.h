@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface TSPAlternateArchiver : TSPArchiverBase <TSPKnownFieldRuleProvider>
 {
-    RepeatedPtrField_5867f37b _fieldPathsToRemove;
+    RepeatedPtrField_02f83fb8 _fieldPathsToRemove;
     struct {
         unsigned int hasPreserveNewerValueRule:1;
         unsigned int hasPreserveNewerValueUntilModifiedRule:1;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long diffReadVersion; // @synthesize diffReadVersion=_diffReadVersion;
 @property (readonly, nonatomic) const struct FieldPath *fieldPath; // @synthesize fieldPath=_fieldPath;
-@property (readonly, nonatomic) const RepeatedPtrField_5867f37b *fieldPathsToRemove;
+@property (readonly, nonatomic) const RepeatedPtrField_02f83fb8 *fieldPathsToRemove;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isContentUnknown;
 @property (readonly, nonatomic) BOOL isDiff; // @synthesize isDiff=_isDiff;
@@ -45,6 +45,8 @@ __attribute__((visibility("hidden")))
 - (void)enumerateKnownFieldRulesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithObject:(id)arg1;
 - (id)initWithObject:(id)arg1 version:(unsigned long long)arg2 fieldPath:(const struct FieldPath *)arg3 isDiff:(BOOL)arg4 diffReadVersion:(unsigned long long)arg5 parentArchiver:(id)arg6;
+- (BOOL)isSavingCollaborativeDocument;
+- (BOOL)isSavingDocumentAs;
 - (void)p_setPreserveNewerValueRuleForFieldPath:(int *)arg1 fileFormatVersion:(unsigned long long)arg2 featureIdentifier:(id)arg3;
 - (void)p_setPreserveNewerValueUntilModifiedRuleForFieldPath:(int *)arg1 fileFormatVersion:(unsigned long long)arg2 featureIdentifier:(id)arg3;
 - (id)parentAlternateDiffToMergeBeforeVersion:(unsigned long long)arg1 fileFormatVersion:(unsigned long long)arg2 fieldPath:(int *)arg3;

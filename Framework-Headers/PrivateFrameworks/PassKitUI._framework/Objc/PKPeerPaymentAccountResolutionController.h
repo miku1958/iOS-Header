@@ -8,24 +8,25 @@
 
 #import <PassKitUI/MFMailComposeViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentAccountResolutionControllerDelegate-Protocol.h>
-#import <PassKitUI/PKPeerPaymentPerformActionViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKPeerPaymentActionViewControllerDelegate-Protocol.h>
 
-@class NSString, PKPeerPaymentAccount, PKPeerPaymentPerformActionViewController, PKPeerPaymentWebService;
+@class NSString, PKPeerPaymentAccount, PKPeerPaymentActionViewController, PKPeerPaymentWebService;
 @protocol PKPassLibraryDataProvider, PKPaymentSetupDelegate, PKPeerPaymentAccountResolutionControllerDelegate;
 
-@interface PKPeerPaymentAccountResolutionController : NSObject <MFMailComposeViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPeerPaymentPerformActionViewControllerDelegate>
+@interface PKPeerPaymentAccountResolutionController : NSObject <MFMailComposeViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPeerPaymentActionViewControllerDelegate>
 {
     id<PKPeerPaymentAccountResolutionControllerDelegate> _delegate;
     id<PKPassLibraryDataProvider> _passLibraryDataProvider;
     long long _context;
     PKPeerPaymentWebService *_webService;
-    PKPeerPaymentPerformActionViewController *_peerPaymentActionViewController;
+    PKPeerPaymentActionViewController *_peerPaymentActionViewController;
     PKPeerPaymentAccount *_account;
     id<PKPaymentSetupDelegate> _setupDelegate;
 }
 
 @property (strong, nonatomic) PKPeerPaymentAccount *account; // @synthesize account=_account;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PKPeerPaymentAccountResolutionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<PKPaymentSetupDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
@@ -61,9 +62,9 @@
 - (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
+- (void)peerPaymentActionViewControllerDidCancel:(id)arg1;
+- (void)peerPaymentActionViewControllerDidPerformAction:(id)arg1;
 - (BOOL)peerPaymentPassIsProvisionedOnDevice;
-- (void)peerPaymentPerformActionViewControllerDidCancel:(id)arg1;
-- (void)peerPaymentPerformActionViewControllerDidPerformAction:(id)arg1;
 - (void)presentFlowForAccountResolution:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentFlowForAccountResolution:(unsigned long long)arg1 manuallyTriggered:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentFlowForAccountResolution:(unsigned long long)arg1 manuallyTriggered:(BOOL)arg2 userInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;

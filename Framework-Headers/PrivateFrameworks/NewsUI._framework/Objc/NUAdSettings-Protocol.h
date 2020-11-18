@@ -6,10 +6,13 @@
 
 #import <NewsUI/NSObject-Protocol.h>
 
+@protocol SXAdvertisingSettings;
+
 @protocol NUAdSettings <NSObject>
 
-@property (nonatomic) BOOL debugAdSlotsEnabled;
-@property (nonatomic) BOOL debugInteractivityEnabled;
+@property (readonly, nonatomic) BOOL debugAdSlotsEnabled;
+@property (readonly, nonatomic) id<SXAdvertisingSettings> debugAdvertisementSettings;
+@property (readonly, nonatomic) BOOL debugInteractivityEnabled;
 
 @end
 

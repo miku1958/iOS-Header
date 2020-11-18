@@ -10,11 +10,13 @@
 #import <MediaControls/MPRequestResponseControllerDelegate-Protocol.h>
 
 @class MPAVEndpointRoute, MPAVRoutingController, MPCPlayerPath, MPCPlayerResponse, MPMediaControlsConfiguration, MPRequestResponseController, NSArray, NSString;
-@protocol MediaControlsEndpointControllerDelegate;
+@protocol MediaControlsEndpointControllerConnectionDelegate, MediaControlsEndpointControllerDelegate, MediaControlsEndpointObserverDelegate;
 
 @interface MediaControlsEndpointController : NSObject <MPRequestResponseControllerDelegate, MPAVRoutingControllerDelegate>
 {
     BOOL _allowsAutomaticResponseLoading;
+    BOOL _onScreen;
+    BOOL _deviceUnlocked;
     BOOL _hasEverReceivedResponse;
     BOOL _attemptingConnection;
     BOOL _automaticResponseLoading;
@@ -22,8 +24,10 @@
     NSArray *_routeNames;
     long long _state;
     id<MediaControlsEndpointControllerDelegate> _delegate;
+    id<MediaControlsEndpointObserverDelegate> _proxyDelegate;
     MPRequestResponseController *_requestController;
     MPAVRoutingController *_routingController;
+    id<MediaControlsEndpointControllerConnectionDelegate> _connectionDelegate;
 }
 
 @property (readonly, nonatomic, getter=isAirPlaying) BOOL airplaying;
@@ -32,15 +36,19 @@
 @property (nonatomic, getter=isAutomaticResponseLoading) BOOL automaticResponseLoading; // @synthesize automaticResponseLoading=_automaticResponseLoading;
 @property (readonly, copy, nonatomic) NSString *bundleID;
 @property (strong, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (weak, nonatomic) id<MediaControlsEndpointControllerConnectionDelegate> connectionDelegate; // @synthesize connectionDelegate=_connectionDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MediaControlsEndpointControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL deviceUnlocked; // @synthesize deviceUnlocked=_deviceUnlocked;
 @property (readonly, nonatomic) BOOL hasAvailableRoutes;
 @property (nonatomic) BOOL hasEverReceivedResponse; // @synthesize hasEverReceivedResponse=_hasEverReceivedResponse;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDeviceSystemRoute;
 @property (copy, nonatomic) NSString *label;
+@property (nonatomic) BOOL onScreen; // @synthesize onScreen=_onScreen;
 @property (readonly, nonatomic) MPCPlayerPath *playerPath;
+@property (weak, nonatomic) id<MediaControlsEndpointObserverDelegate> proxyDelegate; // @synthesize proxyDelegate=_proxyDelegate;
 @property (readonly, copy, nonatomic) NSString *representedBundleID;
 @property (readonly, nonatomic) MPRequestResponseController *requestController; // @synthesize requestController=_requestController;
 @property (readonly, nonatomic) MPCPlayerResponse *response;
@@ -66,6 +74,7 @@
 - (void)dealloc;
 - (id)initWithEndpoint:(id)arg1;
 - (void)launchNowPlayingApp;
+- (void)representsLongFormVideoContentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)routingController:(id)arg1 pickedRouteDidChange:(id)arg2;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)updateRoutePropertiesIfNeeded;

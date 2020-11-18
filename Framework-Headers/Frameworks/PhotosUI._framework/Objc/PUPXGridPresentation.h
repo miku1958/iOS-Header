@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)_assetCollectionToAssetsMapForAssets:(id)arg1;
 - (BOOL)_isEmpty:(id)arg1;
 - (id)createAlbumListViewControllerWithConfiguration:(id)arg1;
-- (void)createGridViewControllerWithAssets:(id)arg1 withTitle:(id)arg2 hideTabBar:(BOOL)arg3 containerViewController:(id)arg4 navigationItemDelegate:(id)arg5 andCompletion:(CDUnknownBlockType)arg6;
+- (void)createGridViewControllerWithAssets:(id)arg1 withTitle:(id)arg2 hideTabBar:(BOOL)arg3 gridPresentationContext:(long long)arg4 containerViewController:(id)arg5 navigationItemDelegate:(id)arg6 andCompletion:(CDUnknownBlockType)arg7;
 - (id)createImportHistoryGridViewControllerWithCollection:(id)arg1;
 - (id)createPanoramaViewController;
 - (id)createPhotosAlbumViewControllerForAlbum:(id)arg1 withFetchResult:(id)arg2;

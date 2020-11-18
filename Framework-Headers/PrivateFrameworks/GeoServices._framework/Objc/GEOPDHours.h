@@ -31,7 +31,6 @@
 + (id)_allHoursForPlaceData:(id)arg1;
 + (id)completeOperatingHoursForPlaceData:(id)arg1 withTimeZone:(id)arg2;
 + (BOOL)currentOperatingHoursAvailableForPlaceData:(id)arg1 withTimeZone:(id)arg2;
-+ (id)currentOperatingHoursForPlaceData:(id)arg1 withTimeZone:(id)arg2;
 + (BOOL)operatingHoursAvailableForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsDays:(id)arg1;

@@ -202,6 +202,7 @@
 - (void)accessoryServer:(id)arg1 promptUserForPasswordWithType:(unsigned long long)arg2;
 - (void)accessoryServer:(id)arg1 promtDialog:(id)arg2 forNotCertifiedAccessory:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)accessoryServer:(id)arg1 requestUserPermission:(long long)arg2 accessoryInfo:(id)arg3 error:(id)arg4;
+- (void)accessoryServer:(id)arg1 validateCert:(id)arg2 model:(id)arg3;
 - (void)accessoryServer:(id)arg1 validateUUID:(id)arg2 token:(id)arg3 model:(id)arg4;
 - (void)accessoryServerBrowser:(id)arg1 accessoryServer:(id)arg2 didUpdateValuesForCharacteristics:(id)arg3 stateNumber:(id)arg4 broadcast:(BOOL)arg5;
 - (void)accessoryServerBrowser:(id)arg1 didChangeReachability:(BOOL)arg2 forAccessoryServerWithIdentifier:(id)arg3;
@@ -296,7 +297,7 @@
 - (void)stopTrackingBTLEAccessoriesWithIdentifiers:(id)arg1;
 - (void)timerDidFire:(id)arg1;
 - (void)tombstoneAccessoryServer:(id)arg1;
-- (id)unassociatedHAPAccessories;
+- (id)unassociatedAccessoriesForNonEntitledClients;
 - (void)unassociatedWACAccessoryDidFinishAssociation:(id)arg1 withError:(id)arg2;
 - (void)unassociatedWACAccessoryDidStartAssociation:(id)arg1;
 - (id)unpairedAccessoryWithUUID:(id)arg1;

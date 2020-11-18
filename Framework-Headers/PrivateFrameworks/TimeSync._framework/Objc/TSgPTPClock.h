@@ -37,6 +37,7 @@
 - (void)_handleNotification:(unsigned int)arg1 withArg1:(unsigned long long)arg2 andArg2:(unsigned long long)arg3;
 - (BOOL)addLinkLayerPortOnInterfaceNamed:(id)arg1 allocatedPortNumber:(unsigned short *)arg2 error:(id *)arg3;
 - (BOOL)addLinkLayerPortOnInterfaceNamed:(id)arg1 error:(id *)arg2;
+- (BOOL)addReverseSyncOnInterfaceNamed:(id)arg1 withDomainNumner:(unsigned char)arg2 syncInterval:(unsigned int)arg3 error:(id *)arg4;
 - (BOOL)addUnicastLinkLayerEtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 allocatedPortNumber:(unsigned short *)arg3 error:(id *)arg4;
 - (BOOL)addUnicastLinkLayerEtEPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
 - (BOOL)addUnicastLinkLayerPtPPortOnInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 allocatedPortNumber:(unsigned short *)arg3 error:(id *)arg4;
@@ -65,6 +66,7 @@
 - (unsigned long long)machAbsoluteFromgPTPTime:(id)arg1;
 - (id)portWithPortNumber:(unsigned short)arg1;
 - (BOOL)removeLinkLayerPortFromInterfaceNamed:(id)arg1 error:(id *)arg2;
+- (BOOL)removeReverseSyncFromInterfaceNamed:(id)arg1 withDomainNumner:(unsigned char)arg2 error:(id *)arg3;
 - (BOOL)removeUnicastLinkLayerEtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
 - (BOOL)removeUnicastLinkLayerPtPPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(const char *)arg2 error:(id *)arg3;
 - (BOOL)removeUnicastUDPv4EtEPortFromInterfaceNamed:(id)arg1 withDestinationAddress:(unsigned int)arg2 error:(id *)arg3;

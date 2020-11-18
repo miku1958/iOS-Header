@@ -29,6 +29,7 @@
 @property (readonly) Class superclass;
 
 - (long long)appendData:(id)arg1;
+- (BOOL)containsSignedContent;
 - (id)data;
 - (void)dealloc;
 - (void)done;

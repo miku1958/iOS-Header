@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSTimeZone, UIColor;
+@class GEOBusinessHours, NSDate, NSString, NSTimeZone, UIColor;
 
 @interface _MKLocalizedHoursBuilder : NSObject
 {
@@ -14,28 +14,45 @@
     BOOL _isCurrentlyClosed;
     BOOL _isClosingSoon;
     BOOL _isOpeningSoon;
+    BOOL _isPermanentlyClosed;
+    BOOL _isTemporarilyClosed;
     NSString *_localizedOperatingHours;
+    NSString *_localizedOpenState;
     UIColor *_hoursStateLabelColor;
+    NSDate *_compareDate;
     unsigned long long _geoMapItemOpeningHourOptions;
     unsigned long long _localizedHoursStringOptions;
     NSTimeZone *_timeZone;
-    NSArray *_operatingHours;
+    GEOBusinessHours *_operatingHours;
 }
 
+@property (strong, nonatomic) NSDate *compareDate; // @synthesize compareDate=_compareDate;
 @property (nonatomic) unsigned long long geoMapItemOpeningHourOptions; // @synthesize geoMapItemOpeningHourOptions=_geoMapItemOpeningHourOptions;
 @property (readonly, nonatomic) UIColor *hoursStateLabelColor; // @synthesize hoursStateLabelColor=_hoursStateLabelColor;
 @property (nonatomic) unsigned long long localizedHoursStringOptions; // @synthesize localizedHoursStringOptions=_localizedHoursStringOptions;
+@property (readonly, nonatomic) NSString *localizedOpenState; // @synthesize localizedOpenState=_localizedOpenState;
 @property (readonly, nonatomic) NSString *localizedOperatingHours; // @synthesize localizedOperatingHours=_localizedOperatingHours;
-@property (strong, nonatomic) NSArray *operatingHours; // @synthesize operatingHours=_operatingHours;
+@property (strong, nonatomic) GEOBusinessHours *operatingHours; // @synthesize operatingHours=_operatingHours;
 @property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 
++ (id)localizedHoursDayRangeString:(id)arg1;
++ (id)localizedHoursStringNormalHours;
++ (id)localizedHoursStringSpecialHours;
++ (id)testGetDayOfWeekFormatterFull;
++ (id)testGetDayOfWeekFormatterShort;
++ (id)testGetHoursFormatter;
++ (id)testGetMonthAndDayFormatter;
 - (void).cxx_destruct;
+- (void)_commonInit;
+- (void)_resetLocalizedBuilder:(BOOL)arg1;
+- (id)_updateLocalizedOperatingHoursString:(unsigned long long)arg1;
 - (void)_updateLocalizedString;
-- (id)_updatedHoursLabelColor;
-- (id)_updatedLocalizedOperatingHoursString;
+- (void)calculateWidthsForData:(id)arg1;
+- (id)formatData:(id)arg1;
+- (id)initWithBusinessHours:(id)arg1 timeZone:(id)arg2 localizedHoursStringOptions:(unsigned long long)arg3;
 - (id)initWithMapItem:(id)arg1 localizedHoursStringOptions:(unsigned long long)arg2;
 - (id)initWithMapItemForMessageForBusiness:(id)arg1 localizedHoursStringOptions:(unsigned long long)arg2;
-- (id)initWithTimeZone:(id)arg1 operatingHours:(id)arg2 geoMapItemOpeningHourOptions:(unsigned long long)arg3 localizedHoursStringOptions:(unsigned long long)arg4;
+- (void)updateHoursLabelColor;
 
 @end
 

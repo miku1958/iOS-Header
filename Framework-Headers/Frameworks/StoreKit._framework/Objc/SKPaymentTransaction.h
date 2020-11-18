@@ -36,6 +36,7 @@
 - (void)_setTransactionState:(long long)arg1;
 - (BOOL)canMergeWithTransaction:(id)arg1;
 - (id)copyXPCEncoding;
+- (id)getPaymentDiscountFromTransactionXPCEncoding:(id)arg1;
 - (id)init;
 - (id)initWithPayment:(id)arg1;
 - (id)initWithServerTransaction:(id)arg1;

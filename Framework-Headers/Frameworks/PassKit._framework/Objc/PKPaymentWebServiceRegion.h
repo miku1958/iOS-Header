@@ -25,11 +25,13 @@
     long long _consistencyCheckBackoffLevel;
     NSString *_userNotificationPushTopic;
     NSURL *_peerPaymentServiceURL;
+    NSString *_deviceCheckInPushTopic;
 }
 
 @property (strong, nonatomic) NSURL *brokerURL; // @synthesize brokerURL=_brokerURL;
 @property (strong, nonatomic) NSArray *certificates; // @synthesize certificates=_certificates;
 @property (nonatomic) long long consistencyCheckBackoffLevel; // @synthesize consistencyCheckBackoffLevel=_consistencyCheckBackoffLevel;
+@property (strong, nonatomic) NSString *deviceCheckInPushTopic; // @synthesize deviceCheckInPushTopic=_deviceCheckInPushTopic;
 @property (nonatomic) BOOL hasPeerPaymentAccount; // @synthesize hasPeerPaymentAccount=_hasPeerPaymentAccount;
 @property (strong, nonatomic) NSURL *inAppPaymentServicesURL; // @synthesize inAppPaymentServicesURL=_inAppPaymentServicesURL;
 @property (strong, nonatomic) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;

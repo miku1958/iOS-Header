@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (id)p_effects;
-- (void)submit:(const struct PrimitiveInfo *)arg1;
-- (long long)texture:(id)arg1 attributes:(const struct TextureAttributes *)arg2;
+- (void)submit:(id)arg1;
+- (long long)texture:(id)arg1 resource:(id)arg2 attributes:(const struct TextureAttributes *)arg3;
 
 @end
 

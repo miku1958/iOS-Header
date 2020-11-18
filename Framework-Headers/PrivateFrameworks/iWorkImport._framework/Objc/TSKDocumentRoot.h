@@ -10,25 +10,26 @@
 #import <iWorkImport/TSKModel-Protocol.h>
 
 @class NSDictionary, NSMutableArray, NSString, TSCHTextCache, TSKAccessController, TSKAnnotationAuthor, TSKAnnotationAuthorStorage, TSKChangeNotifier, TSKDocumentSupport, TSKPasteboardController, TSKSelectionDispatcher, TSSStylesheet, TSSTheme, TSULocale;
-@protocol TSKDocumentRootDelegate;
+@protocol TSKDocumentRootDelegate, TSULogContext;
 
 __attribute__((visibility("hidden")))
 @interface TSKDocumentRoot : TSPObject <TSKAccessControllerDelegate, TSKModel>
 {
-    TSKAccessController *_accessController;
-    TSKChangeNotifier *_changeNotifier;
-    TSKSelectionDispatcher *_selectionDispatcher;
-    TSKPasteboardController *_pasteboardController;
-    TSKAnnotationAuthorStorage *_annotationAuthorStorage;
-    TSKAnnotationAuthor *_authorForFiltering;
-    BOOL _isFindActive;
-    NSMutableArray *_iCloudTeardownStack;
-    BOOL _preventImageConversionOnOpen;
     TSULocale *_documentLocale;
     BOOL _hasUserDefinedLocale;
     TSULocale *_documentCreationLocale;
     BOOL _isBeingLocalized;
     id<TSKDocumentRootDelegate> _delegate;
+    NSMutableArray *_iCloudTeardownStack;
+    BOOL _preventImageConversionOnOpen;
+    id<TSULogContext> _logContext;
+    BOOL _isFindActive;
+    TSKAccessController *_accessController;
+    TSKSelectionDispatcher *_selectionDispatcher;
+    TSKPasteboardController *_pasteboardController;
+    TSKAnnotationAuthorStorage *_annotationAuthorStorage;
+    TSKAnnotationAuthor *_authorForFiltering;
+    TSKChangeNotifier *_changeNotifier;
     TSKDocumentSupport *_documentSupport;
     TSKDocumentSupport *_documentSupportIfAvailable;
 }
@@ -36,7 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSKAccessController *accessController; // @synthesize accessController=_accessController;
 @property (readonly, nonatomic) NSDictionary *additionalDocumentPropertiesForWrite;
 @property (readonly, nonatomic) NSDictionary *additionalDocumentSupportPropertiesForWrite;
-@property (readonly, strong, nonatomic) TSKAnnotationAuthorStorage *annotationAuthorStorage; // @synthesize annotationAuthorStorage=_annotationAuthorStorage;
+@property (readonly, nonatomic) TSKAnnotationAuthorStorage *annotationAuthorStorage; // @synthesize annotationAuthorStorage=_annotationAuthorStorage;
 @property (readonly, nonatomic) unsigned long long applicationType;
 @property (strong, nonatomic) TSKAnnotationAuthor *authorForFiltering; // @synthesize authorForFiltering=_authorForFiltering;
 @property (readonly, nonatomic) BOOL canUseHEVC;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isBeingLocalized; // @synthesize isBeingLocalized=_isBeingLocalized;
 @property (readonly, nonatomic) BOOL isCollaborativeClient;
 @property (readonly, nonatomic) BOOL isCollaborativeClientOrServer;
+@property (readonly, nonatomic) id<TSULogContext> logContext;
 @property (readonly, nonatomic) unsigned long long maxMediaItemFileSize;
 @property (strong, nonatomic) TSKPasteboardController *pasteboardController; // @synthesize pasteboardController=_pasteboardController;
 @property (readonly, nonatomic) TSKSelectionDispatcher *selectionDispatcher; // @synthesize selectionDispatcher=_selectionDispatcher;
@@ -73,15 +75,16 @@ __attribute__((visibility("hidden")))
 - (id)UIStateForChart:(id)arg1;
 - (long long)addObserverForICloudTeardownSuspendingCollaboration:(BOOL)arg1 block:(CDUnknownBlockType)arg2;
 - (long long)addObserverForICloudTeardownWithBlock:(CDUnknownBlockType)arg1;
+- (void)backgroundDocumentDidLoad;
 - (id)calculationEngine;
 - (id)commandForRemovingCommentsFromDrawables:(id)arg1 context:(id)arg2;
 - (id)commandForUpdatingAfterInsertingDrawables:(id)arg1 context:(id)arg2;
+- (void)commonInit;
 - (id)customFormatList;
 - (id)dataFromDocumentCachePath:(id)arg1;
 - (void)dealloc;
 - (void)didAcquireReadLock;
-- (void)didConnectToServerWithCollaborationContext:(id)arg1;
-- (void)didDisconnectFromServerWithCollaborationContext:(id)arg1;
+- (void)didConnectToServerWithCollaborationSessionContext:(id)arg1;
 - (void)didSaveWithEncryptionChange;
 - (BOOL)documentAllowsPencilAnnotationsOnModel:(id)arg1;
 - (void)documentDidLoad;
@@ -115,6 +118,7 @@ __attribute__((visibility("hidden")))
 - (struct CGImageSource *)newImageSourceForDocumentCachePath:(id)arg1;
 - (void)notifyICloudTeardownObservers;
 - (BOOL)objectsNeedToBeMigrated:(id)arg1;
+- (void)p_setUpControllersForBackground:(BOOL)arg1;
 - (void)pauseRecalculation;
 - (void)pauseRecalculationForBlock:(CDUnknownBlockType)arg1;
 - (void)pauseRecalculationSometimeSoon;
@@ -127,7 +131,8 @@ __attribute__((visibility("hidden")))
 - (void)setTheme:(id)arg1;
 - (void)setThemeForTemplateImport:(id)arg1;
 - (void)setUIState:(id)arg1 forChart:(id)arg2;
-- (void)setupAccessController;
+- (void)setUpAccessControllerIfNeeded;
+- (BOOL)shouldDropOperationHistoryWithDocumentRevision:(id)arg1;
 - (BOOL)shouldShowComments;
 - (id)stylesToNotResizeInStylesheet:(id)arg1;
 - (id)tableIdRemappingCommandsForTablesInDrawables:(id)arg1;

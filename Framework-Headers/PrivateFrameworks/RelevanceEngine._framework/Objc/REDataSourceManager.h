@@ -22,6 +22,7 @@
     NSDictionary *_identifierOperatingSystemVersionMap;
     NSSet *_elementGroupSupportingConfigurations;
     REConcurrentDictionary *_elementGroupMap;
+    BOOL _completedFirstElementLoad;
     REDataSourceLoader *_loader;
     NSSet *_availableDataSourceIdentifiers;
     NSSet *_currentDataSourceIdentifiers;
@@ -30,6 +31,7 @@
 }
 
 @property (strong) NSSet *availableDataSourceIdentifiers; // @synthesize availableDataSourceIdentifiers=_availableDataSourceIdentifiers;
+@property (readonly, nonatomic, getter=hasCompletedFirstElementLoad) BOOL completedFirstElementLoad; // @synthesize completedFirstElementLoad=_completedFirstElementLoad;
 @property (strong) NSSet *currentDataSourceIdentifiers; // @synthesize currentDataSourceIdentifiers=_currentDataSourceIdentifiers;
 @property (strong) NSArray *currentDataSources; // @synthesize currentDataSources=_currentDataSources;
 @property (readonly, copy) NSString *debugDescription;

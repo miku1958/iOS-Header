@@ -19,6 +19,7 @@
     BOOL _requiresDeferredAuthorization;
     BOOL _inAppPINRequired;
     BOOL _auxiliary;
+    BOOL _supportsInstantFundsIn;
     NSString *_dpanIdentifier;
     NSString *_dpanSuffix;
     NSString *_sanitizedDPAN;
@@ -38,6 +39,7 @@
     long long _inAppPriority;
     NSString *_appletDataFormat;
     PKTransitPassProperties *_transitProperties;
+    NSArray *_supportedTransitNetworkIdentifiers;
 }
 
 @property (copy, nonatomic) NSString *appletCurrencyCode; // @synthesize appletCurrencyCode=_appletCurrencyCode;
@@ -65,13 +67,16 @@
 @property (readonly, nonatomic) NSString *stateAsString;
 @property (readonly, nonatomic) NSString *stationCodeProvider;
 @property (copy, nonatomic) NSArray *supportedExpressModes; // @synthesize supportedExpressModes=_supportedExpressModes;
+@property (copy, nonatomic) NSArray *supportedTransitNetworkIdentifiers; // @synthesize supportedTransitNetworkIdentifiers=_supportedTransitNetworkIdentifiers;
 @property (nonatomic) BOOL supportsContactlessPayment; // @synthesize supportsContactlessPayment=_supportsContactlessPayment;
 @property (readonly, nonatomic) BOOL supportsExpressSuica;
 @property (readonly, nonatomic) BOOL supportsExpressTransit;
 @property (nonatomic) BOOL supportsInAppPayment; // @synthesize supportsInAppPayment=_supportsInAppPayment;
+@property (nonatomic) BOOL supportsInstantFundsIn; // @synthesize supportsInstantFundsIn=_supportsInstantFundsIn;
 @property (nonatomic) BOOL supportsOptionalAuthentication; // @synthesize supportsOptionalAuthentication=_supportsOptionalAuthentication;
 @property (readonly, nonatomic) BOOL supportsSuica;
 @property (readonly, nonatomic) BOOL supportsTransit;
+@property (readonly, nonatomic) BOOL supportsTransitHistory;
 @property (copy, nonatomic) NSString *suspendedReason; // @synthesize suspendedReason=_suspendedReason;
 @property (copy, nonatomic) PKTransitPassProperties *transitProperties; // @synthesize transitProperties=_transitProperties;
 

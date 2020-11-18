@@ -13,11 +13,10 @@
 __attribute__((visibility("hidden")))
 @interface SFUIBarButtonItemPopoverSourceInfo : NSObject <_SFPopoverSourceInfo>
 {
-    struct UIEdgeInsets _adjustments;
-    UIView *_bar;
     UIBarButtonItem *_item;
 }
 
+@property (readonly, nonatomic) UIBarButtonItem *barButtonItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithItem:(id)arg1 inBar:(id)arg2 adjustments:(struct UIEdgeInsets)arg3;
+- (id)initWithItem:(id)arg1;
 
 @end
 

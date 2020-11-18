@@ -20,14 +20,14 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)flushCache;
 - (id)init;
-- (unsigned long long)p_indexForExternalAttribute:(const struct ExternalLabelAttribute *)arg1;
+- (unsigned long long)p_indexForExternalAttribute:(id)arg1;
 - (id)p_resourceAtIndex:(unsigned long long)arg1 childIndex:(unsigned long long)arg2 dimension:(unsigned long long)arg3 createIfAbsent:(BOOL)arg4;
 - (unsigned long long)p_resourceCount;
-- (id)p_resourceForExternalLabelAttribute:(const struct ExternalLabelAttribute *)arg1 index:(unsigned long long)arg2 createIfAbsent:(BOOL)arg3;
+- (id)p_resourceForExternalLabelAttribute:(id)arg1 index:(unsigned long long)arg2 createIfAbsent:(BOOL)arg3;
 - (void)p_submitExternalAttributesForIndex:(unsigned long long)arg1 processor:(id)arg2;
 - (id)p_texcoordResourceAtIndex:(unsigned long long)arg1 createIfAbsent:(BOOL)arg2;
 - (id)p_vertexResourceAtIndex:(unsigned long long)arg1 createIfAbsent:(BOOL)arg2;
-- (void)renderWithMeshRenderLabelInfo:(const struct LabelsMeshRendererLabelInfo *)arg1;
+- (void)renderWithMeshRenderLabelInfo:(id)arg1;
 - (void)submitResourcesWithProcessor:(id)arg1;
 
 @end

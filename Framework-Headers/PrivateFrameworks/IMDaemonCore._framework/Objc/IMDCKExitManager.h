@@ -35,16 +35,19 @@
 @property (strong, nonatomic) NSNumber *subscriptionCreatedOverride; // @synthesize subscriptionCreatedOverride=_subscriptionCreatedOverride;
 
 + (id)sharedInstance;
+- (BOOL)_analyticZoneCreated;
+- (BOOL)_canSubmitCloudKitMetric;
 - (void)_evalToggleiCloudSettingsSwitch;
 - (void)_fetchExitRecordDateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_modifiedOpGroupName:(id)arg1 useManatee:(BOOL)arg2;
 - (BOOL)_saltZoneCreated;
 - (void)_scheduleMetricOperation:(id)arg1 useManate:(BOOL)arg2;
 - (void)_scheduleOperation:(id)arg1;
-- (BOOL)_serverAllowsMetricSubmission;
 - (void)_setUpSubscription;
 - (id)_sharedCKUtilities;
+- (void)_submitCloudKitMetricWithOperationGroupName:(id)arg1 record:(id)arg2 useManatee:(BOOL)arg3 ignoreZoneNotFoundError:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (BOOL)_subscriptionCreated;
+- (id)analyticZoneRecordID;
 - (void)dealloc;
 - (void)deleteExitRecordWithCompletion:(CDUnknownBlockType)arg1;
 - (void)exitRecordDateWithCompletion:(CDUnknownBlockType)arg1;
@@ -52,6 +55,8 @@
 - (id)init;
 - (id)initRecordZoneManager:(id)arg1 databaseManager:(id)arg2;
 - (void)sendCloudKitZoneFetchRequestToNoteFeatureIsOn;
+- (void)submitCloudKitAnalyticWithDictionary:(id)arg1 operationGroupName:(id)arg2 useManatee:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)submitCloudKitAnalyticWithOperationGroupName:(id)arg1 useManatee:(BOOL)arg2 analyticDictionary:(id)arg3;
 - (void)submitCloudKitMetricWithData:(id)arg1 operationGroupName:(id)arg2 useManatee:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)submitCloudKitMetricWithOperationGroupName:(id)arg1 useManatee:(BOOL)arg2;
 - (id)syncCompleteRecordID;

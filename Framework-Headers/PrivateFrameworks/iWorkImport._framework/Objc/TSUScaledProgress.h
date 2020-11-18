@@ -12,18 +12,19 @@
 __attribute__((visibility("hidden")))
 @interface TSUScaledProgress : TSUProgress
 {
-    TSUScaledProgressStorage *mStorage;
-    TSUProgress *mProgress;
-    id mProgressObserver;
-    NSObject<OS_dispatch_queue> *mProgressQueue;
+    TSUScaledProgressStorage *_storage;
+    TSUProgress *_progress;
+    id _progressObserver;
+    NSObject<OS_dispatch_queue> *_progressQueue;
 }
 
 @property double maxValue;
 @property (strong) TSUProgress *progress;
 
+- (void).cxx_destruct;
 - (id)addProgressObserverWithValueInterval:(double)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)dealloc;
 - (id)init;
+- (id)initForSubclass;
 - (BOOL)isIndeterminate;
 - (void)p_addProgressObserverToProgressInQueue;
 - (void)p_removeProgressObserverFromProgressInQueue;

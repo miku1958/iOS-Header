@@ -16,6 +16,7 @@
 - (MFComposeRecipient *)composeRecipientView:(MFComposeRecipientTextView *)arg1 composeRecipientForRecord:(void *)arg2 identifier:(int)arg3;
 - (MFComposeRecipient *)composeRecipientView:(MFComposeRecipientTextView *)arg1 composeRecipientForRecord:(void *)arg2 property:(int)arg3 identifier:(int)arg4;
 - (void)composeRecipientView:(MFComposeRecipientTextView *)arg1 didAddRecipient:(MFComposeRecipient *)arg2;
+- (void)composeRecipientView:(MFComposeRecipientTextView *)arg1 didAddRecipients:(NSArray *)arg2;
 - (void)composeRecipientView:(MFComposeRecipientTextView *)arg1 didChangeSize:(struct CGSize)arg2;
 - (void)composeRecipientView:(MFComposeRecipientTextView *)arg1 didFinishEnteringAddress:(NSString *)arg2;
 - (void)composeRecipientView:(MFComposeRecipientTextView *)arg1 didRemoveRecipient:(MFComposeRecipient *)arg2;

@@ -47,6 +47,7 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)presentInvitationGadget:(id)arg1 animated:(BOOL)arg2;
 - (void)presentQuickActionsForInvitationGadget:(id)arg1;
+- (long long)shareOriginForSession:(id)arg1 workflowCoordinator:(id)arg2;
 - (void)workflowCoordinator:(id)arg1 workflowViewController:(id)arg2 didFinishSession:(id)arg3 withActivityState:(unsigned long long)arg4;
 
 @end

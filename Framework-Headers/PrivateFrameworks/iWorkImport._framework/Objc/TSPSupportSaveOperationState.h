@@ -26,10 +26,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL didWriteSupportBundleSuccessfuly; // @synthesize didWriteSupportBundleSuccessfuly=_didWriteSupportBundleSuccessfuly;
 @property (copy, nonatomic) NSUUID *documentUUID; // @synthesize documentUUID=_documentUUID;
 @property (readonly, nonatomic) BOOL isSameDocumentUpdate;
+@property (readonly, nonatomic) BOOL isSavingCurrentDocument;
 @property (readonly, nonatomic) NSUUID *originalDocumentUUID; // @synthesize originalDocumentUUID=_originalDocumentUUID;
 @property (copy, nonatomic) NSURL *originalURL; // @synthesize originalURL=_originalURL;
 @property (readonly, nonatomic) NSUUID *originalVersionUUID; // @synthesize originalVersionUUID=_originalVersionUUID;
-@property (readonly, nonatomic) BOOL preserveDocumentUUID;
 @property (strong, nonatomic) TSUSafeSaveAssistant *safeSaveAssistant; // @synthesize safeSaveAssistant=_safeSaveAssistant;
 @property (nonatomic) BOOL shouldLeavePendingEndSave; // @synthesize shouldLeavePendingEndSave=_shouldLeavePendingEndSave;
 @property (readonly, nonatomic) BOOL shouldUpdate;

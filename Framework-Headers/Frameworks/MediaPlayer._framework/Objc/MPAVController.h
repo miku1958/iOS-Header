@@ -234,7 +234,6 @@
 - (void)_delayedSetCurrentTime;
 - (void)_delayedUpdateScanningRate;
 - (void)_delayedUpdateTimeMarker;
-- (void)_delegateAuthorizationForItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_disconnectAVPlayerWithReason:(long long)arg1;
 - (void)_durationDidChange:(id)arg1;
 - (void)_endSeekAndChangeRate:(BOOL)arg1;

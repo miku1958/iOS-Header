@@ -48,10 +48,15 @@
 - (void).cxx_destruct;
 - (void)_routeVolumeControlCapabilitiesDidChangeNotification:(id)arg1;
 - (void)_routeVolumeDidChangeNotification:(id)arg1;
+- (void)_sendVolumeButtonEventWithUsagePage:(unsigned int)arg1 usage:(unsigned int)arg2 down:(BOOL)arg3;
 - (void)_setPendingVolumeIfNeeded;
 - (void)_updateVolumeControlCapabilities:(unsigned int)arg1;
 - (void)adjustVolumeValue:(float)arg1;
+- (void)beginDecreasingRelativeVolume;
+- (void)beginIncreasingRelativeVolume;
 - (void)dealloc;
+- (void)endDecreasingRelativeVolume;
+- (void)endIncreasingRelativeVolume;
 - (void)getVolumeValueWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithGroupRoute:(id)arg1 outputDeviceRoute:(id)arg2;
 - (void)initializeVolume;

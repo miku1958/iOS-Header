@@ -6,17 +6,25 @@
 
 #import <Silex/SXResource.h>
 
-@class NSString;
+#import <Silex/SXImageResource-Protocol.h>
 
-@interface SXImageResource : SXResource
+@class NSString, NSURL;
+
+@interface SXImageResource : SXResource <SXImageResource>
 {
 }
 
+@property (readonly, nonatomic) NSURL *URL;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct CGSize dimensions; // @dynamic dimensions;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *imageIdentifier; // @dynamic imageIdentifier;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL wideColorSpace;
 
 + (id)typeString;
-- (id)description;
 - (double)heightForImageWidth:(double)arg1;
 - (struct CGSize)sizeThatFills:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

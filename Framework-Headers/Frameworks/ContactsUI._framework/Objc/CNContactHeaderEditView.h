@@ -17,12 +17,14 @@
 {
     UITableView *_editingTable;
     BOOL _pinToReadableContentGuide;
+    BOOL _allowsEditPhoto;
     NSArray *_editingGroups;
     id<CNPropertyCellDelegate> _namePropertyDelegate;
     NSLayoutConstraint *_tableToTrailingEdgeConstraint;
     NSLayoutConstraint *_tableToTrailingReadableGuideConstraint;
 }
 
+@property (nonatomic) BOOL allowsEditPhoto; // @synthesize allowsEditPhoto=_allowsEditPhoto;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *editingGroups; // @synthesize editingGroups=_editingGroups;

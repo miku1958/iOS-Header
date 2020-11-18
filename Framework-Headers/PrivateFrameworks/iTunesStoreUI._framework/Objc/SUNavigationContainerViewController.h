@@ -6,15 +6,17 @@
 
 #import <iTunesStoreUI/SUViewController.h>
 
-@class UIViewController;
+@class AMSBinaryPromise, UIViewController;
 
 @interface SUNavigationContainerViewController : SUViewController
 {
     BOOL _bridgedNavigation;
     BOOL _shouldRunPopHandler;
+    AMSBinaryPromise *_appearancePromise;
     CDUnknownBlockType _popHandler;
 }
 
+@property (strong, nonatomic) AMSBinaryPromise *appearancePromise; // @synthesize appearancePromise=_appearancePromise;
 @property (nonatomic) BOOL bridgedNavigation; // @synthesize bridgedNavigation=_bridgedNavigation;
 @property (readonly, nonatomic) UIViewController *embeddedViewController;
 @property (copy, nonatomic) CDUnknownBlockType popHandler; // @synthesize popHandler=_popHandler;
@@ -27,6 +29,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

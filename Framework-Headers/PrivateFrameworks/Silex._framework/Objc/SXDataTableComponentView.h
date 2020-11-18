@@ -6,21 +6,20 @@
 
 #import <Silex/SXComponentView.h>
 
-#import <Silex/SXDataTableComponentControllerDataSource-Protocol.h>
 #import <Silex/SXDataTableViewDataSource-Protocol.h>
 #import <Silex/SXTangierControllerDelegate-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, NSString, STScrollView, SXComponentController, SXDataTableBlueprint, SXDataTableComponentController, SXDataTableDictionary, SXDataTableView, SXTangierController;
-@protocol SXComponentActionHandler, SXImageViewFactory, SXTextComponentLayoutHosting;
+@class CALayer, NSString, STScrollView, SXDataTableBlueprint, SXDataTableComponentController, SXDataTableDictionary, SXDataTableView, SXTangierController;
+@protocol SXComponentActionHandler, SXComponentController, SXImageViewFactory, SXTextComponentLayoutHosting;
 
-@interface SXDataTableComponentView : SXComponentView <SXDataTableComponentControllerDataSource, SXDataTableViewDataSource, SXTangierControllerDelegate, SXViewportChangeListener, UIGestureRecognizerDelegate>
+@interface SXDataTableComponentView : SXComponentView <SXDataTableViewDataSource, SXTangierControllerDelegate, SXViewportChangeListener, UIGestureRecognizerDelegate>
 {
     id<SXImageViewFactory> _imageViewFactory;
     id<SXComponentActionHandler> _componentActionHandler;
     id<SXTextComponentLayoutHosting> _textComponentLayoutHosting;
-    SXComponentController *_componentController;
+    id<SXComponentController> _componentController;
     SXDataTableView *_tableView;
     SXDataTableComponentController *_dataTableComponentController;
     SXDataTableBlueprint *_blueprint;
@@ -34,7 +33,7 @@
 
 @property (strong, nonatomic) SXDataTableBlueprint *blueprint; // @synthesize blueprint=_blueprint;
 @property (readonly, nonatomic) id<SXComponentActionHandler> componentActionHandler; // @synthesize componentActionHandler=_componentActionHandler;
-@property (readonly, weak, nonatomic) SXComponentController *componentController; // @synthesize componentController=_componentController;
+@property (readonly, weak, nonatomic) id<SXComponentController> componentController; // @synthesize componentController=_componentController;
 @property (strong, nonatomic) SXDataTableComponentController *dataTableComponentController; // @synthesize dataTableComponentController=_dataTableComponentController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -52,26 +51,20 @@
 
 - (void).cxx_destruct;
 - (void)addTextStorageForIndexPath:(CDStruct_2fea82da)arg1 toCollectior:(id)arg2;
-- (id)componentForDataTableComponentController:(id)arg1;
-- (id)contentSizeCategoryForDataTableComponentController:(id)arg1;
 - (id)contentViewForBehavior:(id)arg1;
 - (id)dataTableView:(id)arg1 viewForCellAtIndexPath:(CDStruct_2fea82da)arg2 constraintToSize:(struct CGSize)arg3;
 - (void)dealloc;
 - (id)descriptorForIndexPath:(CDStruct_2fea82da)arg1;
-- (id)documentColumnLayoutForDataTableComponentController:(id)arg1;
-- (id)documentControllerForDataTableComponentController:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 imageViewFactory:(id)arg6 componentActionHandler:(id)arg7 textComponentLayoutHosting:(id)arg8 componentController:(id)arg9;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 imageViewFactory:(id)arg5 componentActionHandler:(id)arg6 textComponentLayoutHosting:(id)arg7 componentController:(id)arg8;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
 - (void)setupShadowsIfNeeded;
 - (void)tangierControllerDidScroll:(id)arg1;
-- (id)textComponentLayoutHostingForDataTableComponentController:(id)arg1;
 - (void)updateShadowOpacity;
 - (void)updateTangierController;
 - (BOOL)userInteractable;
-- (double)widthForDataTableComponentController:(id)arg1;
 
 @end
 

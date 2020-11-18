@@ -157,6 +157,7 @@
 @property (readonly, nonatomic) BOOL shouldFixupBundleBitOnPackages;
 @property (readonly, nonatomic) BOOL shouldFixupTargetCZMAliases;
 @property (readonly, nonatomic) BOOL shouldPreparePCSMigration;
+@property (readonly, nonatomic) BOOL shouldReportAllPerItemFailures;
 @property (readonly, nonatomic) BOOL shouldSessionBeGreedy;
 @property (readonly, nonatomic) BOOL skipPerItemSyncUpThrottling;
 @property (readonly, nonatomic) BOOL skipServerSideThrottling;

@@ -190,6 +190,7 @@
 - (id)_selectedMediaOptionWithMediaCharacteristic:(id)arg1;
 - (void)_setMediaOption:(id)arg1 mediaCharacteristic:(id)arg2;
 - (void)_setMinTiming:(id)arg1 maxTiming:(id)arg2;
+- (void)_updateRateForScrubbingAndSeeking;
 - (void)_updateScanningBackwardRate;
 - (void)_updateScanningForwardRate;
 - (void)actuallySeekToTime;

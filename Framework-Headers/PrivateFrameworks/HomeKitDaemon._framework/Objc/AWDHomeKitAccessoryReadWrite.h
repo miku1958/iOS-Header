@@ -13,6 +13,7 @@
 @interface AWDHomeKitAccessoryReadWrite : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
+    int _certified;
     NSMutableArray *_characteristics;
     unsigned int _duration;
     int _errorCode;
@@ -26,6 +27,7 @@
     BOOL _isWrite;
     struct {
         unsigned int timestamp:1;
+        unsigned int certified:1;
         unsigned int duration:1;
         unsigned int errorCode:1;
         unsigned int source:1;
@@ -36,9 +38,11 @@
     } _has;
 }
 
+@property (nonatomic) int certified; // @synthesize certified=_certified;
 @property (strong, nonatomic) NSMutableArray *characteristics; // @synthesize characteristics=_characteristics;
 @property (nonatomic) unsigned int duration; // @synthesize duration=_duration;
 @property (nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
+@property (nonatomic) BOOL hasCertified;
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasErrorCode;
 @property (nonatomic) BOOL hasIsRemote;
@@ -62,9 +66,11 @@
 
 + (Class)characteristicsType;
 - (void).cxx_destruct;
+- (int)StringAsCertified:(id)arg1;
 - (int)StringAsSource:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
 - (void)addCharacteristics:(id)arg1;
+- (id)certifiedAsString:(int)arg1;
 - (id)characteristicsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)characteristicsCount;
 - (void)clearCharacteristics;

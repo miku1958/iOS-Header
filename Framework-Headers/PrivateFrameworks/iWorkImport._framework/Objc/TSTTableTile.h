@@ -6,7 +6,7 @@
 
 #import <iWorkImport/TSPObject.h>
 
-@class NSMutableArray;
+@class NSIndexSet, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface TSTTableTile : TSPObject
@@ -20,49 +20,52 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_rowInfos;
 }
 
-@property (readonly, nonatomic) BOOL lastSavedInBNC;
+@property (nonatomic) BOOL lastSavedInBNC; // @synthesize lastSavedInBNC=_lastSavedInBNC;
 @property (nonatomic) unsigned short maxColumn; // @synthesize maxColumn=_maxColumn;
 @property (nonatomic) unsigned int maxRow; // @synthesize maxRow=_maxRow;
-@property (readonly, nonatomic) unsigned int midpointForRowSplit;
 @property (nonatomic) unsigned short numCells; // @synthesize numCells=_numCells;
 @property (nonatomic) unsigned int numRows; // @synthesize numRows=_numRows;
+@property (readonly, nonatomic) NSIndexSet *populatedRows;
 @property (strong, nonatomic) NSMutableArray *rowInfos; // @synthesize rowInfos=_rowInfos;
-@property (readonly, nonatomic) BOOL shouldMergeRows;
-@property (readonly, nonatomic) BOOL shouldSplitRows;
 
 - (void).cxx_destruct;
+- (id)_addRowInfoAtTileRowIndex:(unsigned int)arg1;
+- (void)_insertRowInfo:(id)arg1 atTileRowIndex:(unsigned int)arg2;
+- (unsigned long long)_insertionIndexForTileRowIndex:(unsigned int)arg1;
+- (void)_recalculateCellCount;
+- (void)_recalculateMaxColumn;
+- (void)_recalculateMaxRow;
+- (void)_recalculateMaxRowAndColumn;
+- (void)_removeRowInfo:(id)arg1;
+- (void)_removeRowsAtTileRowIndex:(unsigned int)arg1 numberOfRows:(unsigned int)arg2 shiftingContent:(BOOL)arg3;
 - (struct TSTCellStorage *)cellStorageRefAtColumnIndex:(unsigned short)arg1 tileRowIndex:(unsigned int)arg2;
+- (void)clearRowsAtTileRowIndex:(unsigned int)arg1 numberOfRows:(unsigned int)arg2;
 - (id)description;
+- (void)enumerateRowsWithBlock:(CDUnknownBlockType)arg1;
+- (id)findOrAddRowInfoAtTileRowIndex:(unsigned int)arg1;
 - (id)initWithContext:(id)arg1;
 - (id)initWithRows:(id)arg1 context:(id)arg2;
 - (int)insertColumnsAtColumnIndex:(unsigned short)arg1 numberOfColumns:(unsigned int)arg2;
 - (void)insertRowsAtTileRowIndex:(unsigned int)arg1 numberOfRows:(unsigned int)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)mergeWithTile:(id)arg1 atRowOffset:(unsigned int)arg2;
 - (void)moveColumnsAtColumnIndex:(unsigned short)arg1 numberOfColumns:(unsigned int)arg2 toDestColumnIndex:(unsigned short)arg3;
-- (id)p_addRowInfoAtTileRowIndex:(unsigned int)arg1;
-- (void)p_insertRowInfo:(id)arg1 atTileRowIndex:(unsigned int)arg2;
-- (void)p_recalculateCellCount;
-- (void)p_recalculateMaxColumn;
-- (void)p_recalculateMaxRow;
-- (void)p_recalculateMaxRowAndColumn;
-- (void)p_removeRowInfo:(id)arg1;
 - (id)packageLocator;
 - (struct TSTCellStorage *)preBNCCellStorageRefAtColumnIndex:(unsigned short)arg1 tileRowIndex:(unsigned int)arg2;
 - (void)pruneEmptyRows;
 - (int)removeColumnsAtColumnIndex:(unsigned short)arg1 numberOfColumns:(unsigned int)arg2;
 - (void)removeRowsAtTileRowIndex:(unsigned int)arg1 numberOfRows:(unsigned int)arg2;
 - (id)rowInfoAtOrAfterTileRowIndex:(unsigned int)arg1 outTileRowIndex:(out unsigned int *)arg2;
-- (id)rowInfoForTileArrayIndex:(unsigned int)arg1;
-- (id)rowInfoForTileRowIndex:(unsigned int)arg1 createIfMissing:(BOOL)arg2;
+- (id)rowInfoForTileRowIndex:(unsigned int)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)setCell:(id)arg1 atColumnIndex:(unsigned short)arg2 tileRowIndex:(unsigned int)arg3 formatKeys:(CDStruct_c8ca99d5 *)arg4;
-- (BOOL)shouldMergeRowsWithTile:(id)arg1;
-- (void)spliceAtTileRowIndex:(unsigned int)arg1 withRowInfo:(id)arg2;
-- (id)splitAtRowIndex:(unsigned int)arg1;
+- (id)shiftUpAndYankBy:(unsigned int)arg1;
+- (void)shiftUpAtTileRowIndex:(unsigned int)arg1 count:(unsigned int)arg2;
+- (void)spliceRowInfo:(id)arg1 atTileRowIndex:(unsigned int)arg2 overwrite:(BOOL)arg3;
+- (void)spliceRows:(id)arg1 atTileRowIndex:(unsigned int)arg2;
 - (void)willModify;
 - (id)yankRowInfoAtTileRowIndex:(unsigned int)arg1;
-- (void)yankRowsAtTileRowIndex:(unsigned int)arg1 numberOfRows:(unsigned int)arg2 outRowArray:(id)arg3;
+- (id)yankRowsAtTileRowIndex:(unsigned int)arg1;
+- (id)yankRowsAtTileRowIndex:(unsigned int)arg1 count:(unsigned int)arg2;
 
 @end
 

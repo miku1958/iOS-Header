@@ -26,6 +26,7 @@
     UITapGestureRecognizer *_tapGestureRecognizer;
     BOOL _presentingNavigationController;
     PKCompactNavigationContainedNavigationController *_containedNavigationController;
+    unsigned long long _style;
     id<UICoordinateSpace> _exclusionCoordinateSpace;
     id<PKCompactNavigationContainerControllerDelegate> _delegate;
     struct CGRect _exclusionRect;
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) struct CGRect exclusionRect; // @synthesize exclusionRect=_exclusionRect;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isPresentingNavigationController) BOOL presentingNavigationController; // @synthesize presentingNavigationController=_presentingNavigationController;
+@property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 
 + (id)dimmingColor;
@@ -64,6 +66,7 @@
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)init;
 - (id)initWithNavigationController:(id)arg1;
+- (id)initWithNavigationController:(id)arg1 style:(unsigned long long)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (struct CGSize)modalPresentationSize;

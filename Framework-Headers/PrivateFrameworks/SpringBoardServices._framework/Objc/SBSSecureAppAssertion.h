@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <SpringBoardServices/SBSLockScreenContentAssertion.h>
 
-@class SBSLockScreenContentAssertion;
-
-@interface SBSSecureAppAssertion : NSObject
+@interface SBSSecureAppAssertion : SBSLockScreenContentAssertion
 {
     SBSLockScreenContentAssertion *_actualAssertion;
 }
@@ -17,9 +15,6 @@
 
 + (id)acquireSecureAppAssertionWithType:(unsigned long long)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
-- (void)dealloc;
-- (id)initWithType:(unsigned long long)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (void)invalidate;
 
 @end
 

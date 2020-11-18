@@ -16,12 +16,10 @@
 {
     long long _context;
     BOOL _privacyFooterShouldPin;
-    UIScrollView *_scrollView;
     UIImageView *_imageView;
     PKPaymentSetupDockView *_dockView;
     NSString *_titleText;
     UILabel *_titleLabel;
-    UITextView *_bodyTextView;
     UIActivityIndicatorView *_activityIndicator;
     PKCheckGlyphLayer *_checkmarkLayer;
     _UIBackdropView *_backdropView;
@@ -44,13 +42,16 @@
     NSAttributedString *_attributedBodyText;
     UIView *_bodyView;
     OBPrivacyLinkController *_privacyLink;
+    UIScrollView *_scrollView;
     UIImageView *_logoImageView;
+    UITextView *_bodyTextView;
 }
 
 @property (readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (copy, nonatomic) NSAttributedString *attributedBodyText; // @synthesize attributedBodyText=_attributedBodyText;
 @property (copy, nonatomic) NSString *bodyText; // @synthesize bodyText=_bodyText;
 @property (nonatomic) BOOL bodyTextIsLeftAlgined; // @synthesize bodyTextIsLeftAlgined=_bodyTextIsLeftAlgined;
+@property (strong, nonatomic) UITextView *bodyTextView; // @synthesize bodyTextView=_bodyTextView;
 @property (strong, nonatomic) UIView *bodyView; // @synthesize bodyView=_bodyView;
 @property (readonly, nonatomic) PKCheckGlyphLayer *checkmarkLayer; // @synthesize checkmarkLayer=_checkmarkLayer;
 @property (readonly, copy) NSString *debugDescription;
@@ -65,6 +66,7 @@
 @property (readonly, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImageView *logoImageView; // @synthesize logoImageView=_logoImageView;
 @property (strong, nonatomic) OBPrivacyLinkController *privacyLink; // @synthesize privacyLink=_privacyLink;
+@property (readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (nonatomic) BOOL showPrivacyView; // @synthesize showPrivacyView=_showPrivacyView;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;

@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
     struct __CFDictionary *mDictionary;
 }
 
++ (id)dictionary;
+- (void)addIntToIntDictionary:(id)arg1;
 - (id)allKeys;
 - (id)allValues;
 - (void)applyFromIntToIntDictionary:(id)arg1;
@@ -25,6 +27,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (void)enumerateKeysAndValuesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)incrementValueBy:(long long)arg1 forKey:(long long)arg2;
+- (void)incrementValueForKey:(long long)arg1;
 - (id)init;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (long long)intForKey:(long long)arg1;

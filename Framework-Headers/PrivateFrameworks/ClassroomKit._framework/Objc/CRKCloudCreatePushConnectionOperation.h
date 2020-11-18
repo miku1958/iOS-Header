@@ -19,10 +19,8 @@
 @property (readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (readonly, nonatomic) id<APSConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 
-+ (id)new;
 - (void).cxx_destruct;
 - (id)buildPushTopic;
-- (id)init;
 - (id)initWithDelegate:(id)arg1 container:(id)arg2;
 - (BOOL)isAsynchronous;
 - (void)main;

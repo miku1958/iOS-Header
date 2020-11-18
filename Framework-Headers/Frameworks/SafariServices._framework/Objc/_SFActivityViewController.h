@@ -13,7 +13,6 @@
 {
     LPMetadataProvider *_pendingMessageMetadataProvider;
     _SFPrintController *_printController;
-    BOOL _viewCanEarlyDismiss;
     _SFSafariSharingExtensionController *_sharingExtensionController;
     id<_SFActivityViewControllerDelegate> _delegate;
     NSURL *_sharingURL;
@@ -24,7 +23,6 @@
 @property (weak, nonatomic) id<_SFActivityViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (weak, nonatomic) _SFSafariSharingExtensionController *sharingExtensionController; // @synthesize sharingExtensionController=_sharingExtensionController;
 @property (strong, nonatomic) NSURL *sharingURL; // @synthesize sharingURL=_sharingURL;
-@property (readonly, nonatomic) BOOL viewCanEarlyDismiss; // @synthesize viewCanEarlyDismiss=_viewCanEarlyDismiss;
 
 + (id)activeWebPageExtensionItemForURL:(id)arg1 withPreviewImageHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
@@ -36,6 +34,7 @@
 - (void)_processJavaScriptFinalizeReturnedItems:(id)arg1 forExtension:(id)arg2;
 - (void)_updatePrintControllerWithActivityItems:(id)arg1;
 - (void)activityDidComplete:(id)arg1 withReturnedItems:(id)arg2 success:(BOOL)arg3;
+- (void)dealloc;
 - (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2 sharingURL:(id)arg3 sourceURL:(id)arg4;
 - (void)prepareJavaScriptExtensionItemForActivity:(id)arg1;
 - (void)prepareMessageActivity:(id)arg1 withWebView:(id)arg2 completion:(CDUnknownBlockType)arg3;

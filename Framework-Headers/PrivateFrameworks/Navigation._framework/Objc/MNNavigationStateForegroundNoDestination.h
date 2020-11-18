@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)desiredLocationProviderType;
 - (unsigned long long)desiredResourcePolicy;
 - (void)startPredictingDestinationsWithHandler:(CDUnknownBlockType)arg1;
-- (unsigned long long)type;
+- (long long)type;
 - (void)updateMapsActive:(BOOL)arg1;
 
 @end

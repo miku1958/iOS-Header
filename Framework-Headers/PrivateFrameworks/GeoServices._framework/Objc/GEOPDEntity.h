@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class GEOLocalizedString, GEOStyleAttributes, NSMutableArray, NSString, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDEntity : PBCodable <NSCopying>
@@ -26,7 +26,10 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_names;
     int _placeDisplayType;
     int _searchSection;
+    GEOLocalizedString *_secondaryName;
+    GEOLocalizedString *_secondarySpokenName;
     NSMutableArray *_spokenNames;
+    GEOStyleAttributes *_styleAttributes;
     NSString *_telephone;
     int _type;
     NSString *_url;
@@ -68,6 +71,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasIsStandaloneBrand;
 @property (nonatomic) BOOL hasPlaceDisplayType;
 @property (nonatomic) BOOL hasSearchSection;
+@property (readonly, nonatomic) BOOL hasSecondaryName;
+@property (readonly, nonatomic) BOOL hasSecondarySpokenName;
+@property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (readonly, nonatomic) BOOL hasTelephone;
 @property (nonatomic) BOOL hasTelephoneAdsOptOut;
 @property (nonatomic) BOOL hasType;
@@ -81,7 +87,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int *placeLookupCategorys;
 @property (readonly, nonatomic) unsigned long long placeLookupCategorysCount;
 @property (nonatomic) int searchSection; // @synthesize searchSection=_searchSection;
+@property (strong, nonatomic) GEOLocalizedString *secondaryName; // @synthesize secondaryName=_secondaryName;
+@property (strong, nonatomic) GEOLocalizedString *secondarySpokenName; // @synthesize secondarySpokenName=_secondarySpokenName;
 @property (strong, nonatomic) NSMutableArray *spokenNames; // @synthesize spokenNames=_spokenNames;
+@property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
 @property (strong, nonatomic) NSString *telephone; // @synthesize telephone=_telephone;
 @property (nonatomic) BOOL telephoneAdsOptOut; // @synthesize telephoneAdsOptOut=_telephoneAdsOptOut;
 @property (nonatomic) int type; // @synthesize type=_type;

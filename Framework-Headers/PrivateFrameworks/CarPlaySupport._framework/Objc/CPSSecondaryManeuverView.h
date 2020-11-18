@@ -21,7 +21,8 @@
 
 - (void).cxx_destruct;
 - (void)backgroundColorDidChange;
-- (id)initWithManeuver:(id)arg1 minimalMode:(BOOL)arg2 style:(long long)arg3;
+- (id)initWithManeuver:(id)arg1 style:(long long)arg2;
+- (struct CGSize)intrinsicContentSize;
 
 @end
 

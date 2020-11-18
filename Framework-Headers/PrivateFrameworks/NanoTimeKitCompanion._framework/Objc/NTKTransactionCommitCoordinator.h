@@ -14,10 +14,10 @@
 }
 
 + (id)_sharedInstance;
-+ (BOOL)addImplicitTransactionCommitHandler:(CDUnknownBlockType)arg1;
++ (BOOL)addTransactionCommitHandler:(CDUnknownBlockType)arg1;
 + (void)flushCommitHandlers;
 - (void).cxx_destruct;
-- (BOOL)_addImplicitTransactionCommitHandler:(CDUnknownBlockType)arg1;
+- (BOOL)_addTransactionCommitHandler:(CDUnknownBlockType)arg1;
 - (void)_registerCATransactionCommitHandler;
 - (id)init;
 

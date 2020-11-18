@@ -4,24 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ScreenTimeUI/STUsageGroupSpecifierProvider.h>
+#import <ScreenTimeUI/STShowMoreUsageGroupSpecifierProvider.h>
 
-@class PSSpecifier;
-
-@interface STDevicePickupsUsageGroupSpecifierProvider : STUsageGroupSpecifierProvider
+@interface STDevicePickupsUsageGroupSpecifierProvider : STShowMoreUsageGroupSpecifierProvider
 {
-    PSSpecifier *_pickupsSummaryGraphSpecifier;
 }
 
-@property (strong, nonatomic) PSSpecifier *pickupsSummaryGraphSpecifier; // @synthesize pickupsSummaryGraphSpecifier=_pickupsSummaryGraphSpecifier;
-
-- (void).cxx_destruct;
-- (id)getPickupInfo:(id)arg1;
+- (id)getPickupsInfo:(id)arg1;
+- (id)getUsageReport:(id)arg1;
 - (id)init;
-- (id)mostPickups:(id)arg1;
+- (id)newSpecifierWithUsageItem:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setCoordinator:(id)arg1;
-- (id)totalPickups:(id)arg1;
+- (void)showMostUsedDetailListController:(id)arg1;
+- (void)updateSpecifier:(id)arg1 usageItem:(id)arg2;
 
 @end
 

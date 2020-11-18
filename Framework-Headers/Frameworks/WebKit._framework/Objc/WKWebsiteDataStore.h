@@ -25,6 +25,8 @@
 @property (nonatomic, setter=_setResourceLoadStatisticsDebugMode:) BOOL _resourceLoadStatisticsDebugMode;
 @property (nonatomic, setter=_setResourceLoadStatisticsEnabled:) BOOL _resourceLoadStatisticsEnabled;
 @property (nonatomic, setter=_setServiceWorkerRegistrationDirectory:) NSString *_serviceWorkerRegistrationDirectory;
+@property (copy, nonatomic, setter=_setSourceApplicationBundleIdentifier:) NSString *_sourceApplicationBundleIdentifier;
+@property (copy, nonatomic, setter=_setSourceApplicationSecondaryIdentifier:) NSString *_sourceApplicationSecondaryIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -35,6 +37,7 @@
 + (id)_allWebsiteDataTypesIncludingPrivate;
 + (void)_allowWebsiteDataRecordsForAllOrigins;
 + (BOOL)_defaultDataStoreExists;
++ (void)_deleteDefaultDataStoreForTesting;
 + (id)allWebsiteDataTypes;
 + (id)defaultDataStore;
 + (id)nonPersistentDataStore;

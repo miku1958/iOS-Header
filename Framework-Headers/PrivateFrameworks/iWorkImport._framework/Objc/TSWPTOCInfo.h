@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface TSWPTOCInfo : TSWPShapeInfo <TSWPTextualEquivalentProvider>
 {
     TSWPTOCPartitioner *_partitioner;
+    BOOL _shouldSyncTOCSettingsWithTOCNavigator;
     NSArray *_tocEntries;
     TSWPTOCSettings *_tocSettings;
     NSArray *_pageNumberRanges;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *pageNumberRanges; // @synthesize pageNumberRanges=_pageNumberRanges;
 @property (readonly, nonatomic) NSSet *paragraphStylesShownInTOC;
+@property (nonatomic) BOOL shouldSyncTOCSettingsWithTOCNavigator; // @synthesize shouldSyncTOCSettingsWithTOCNavigator=_shouldSyncTOCSettingsWithTOCNavigator;
 @property (readonly) Class superclass;
 @property (strong, nonatomic, setter=setTOCEntries:) NSArray *tocEntries; // @synthesize tocEntries=_tocEntries;
 @property (strong, nonatomic, setter=setTOCSettings:) TSWPTOCSettings *tocSettings; // @synthesize tocSettings=_tocSettings;
@@ -35,7 +37,9 @@ __attribute__((visibility("hidden")))
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)containedStorageFormattedUsingParagraphStyle:(id)arg1;
 - (id)copyWithContext:(id)arg1;
+- (Class)editorClass;
 - (int)elementKind;
+- (BOOL)isSelectable;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)loadTOCInfoMessage:(const struct TOCInfoArchive *)arg1 unarchiver:(id)arg2;
 - (BOOL)p_startingTOCIsRTLForEntries:(id)arg1;

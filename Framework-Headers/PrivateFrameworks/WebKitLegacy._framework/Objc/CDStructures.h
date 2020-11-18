@@ -29,37 +29,9 @@ struct ApplicationManifest {
     struct String _field1;
     struct String _field2;
     struct String _field3;
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field4;
+    struct URL _field4;
     int _field5;
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field6;
+    struct URL _field6;
 };
 
 struct Archive;
@@ -67,21 +39,7 @@ struct Archive;
 struct ArchiveResource {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field3;
+    struct URL _field3;
     struct ResourceResponse _field4;
     struct Ref<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>> _field5;
     struct String _field6;
@@ -101,6 +59,8 @@ struct AtomicString {
 };
 
 struct AudioTrackList;
+
+struct AuthenticatorCoordinator;
 
 struct BackForwardController;
 
@@ -124,6 +84,8 @@ struct CGAffineTransform {
     double _field6;
 };
 
+struct CGPath;
+
 struct CGPoint {
     double x;
     double y;
@@ -142,17 +104,15 @@ struct CGSize {
 struct CSSAnimationController;
 
 struct CacheControlDirectives {
-    struct optional<WTF::Seconds> _field1;
-    struct optional<WTF::Seconds> _field2;
-    BOOL _field3;
-    BOOL _field4;
-    BOOL _field5;
-    BOOL _field6;
+    struct Markable<WTF::Seconds, WTF::Seconds::MarkableTraits> _field1;
+    struct Markable<WTF::Seconds, WTF::Seconds::MarkableTraits> _field2;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
 };
 
 struct CacheStorageProvider;
-
-struct CachedPage;
 
 struct CachedResource;
 
@@ -207,6 +167,13 @@ struct DatabaseProvider;
 struct Debugger;
 
 struct DebuggerCallFrame;
+
+struct DeferrableTask<WebCore::Timer> {
+    struct WeakPtrFactory<WebCore::DeferrableTask<WebCore::Timer>> _field1;
+    struct TaskDispatcher<WebCore::Timer> _field2;
+    BOOL _field3;
+    BOOL _field4;
+};
 
 struct Deque<WTF::Function<void ()>, 0> {
     unsigned long long _field1;
@@ -282,17 +249,22 @@ struct DocumentLoader {
     struct HashMap<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>, unsigned long long, WTF::PtrHash<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ApplicationManifestLoader, std::__1::default_delete<WebCore::ApplicationManifestLoader>>>, WTF::HashTraits<unsigned long long>> _field51;
     struct Vector<WebCore::HTTPHeaderField, 0, WTF::CrashOnOverflow, 16> _field52;
     BOOL _field53;
-    int _field54;
+    unsigned char _field54;
     struct unique_ptr<WebCore::ApplicationCacheHost, std::__1::default_delete<WebCore::ApplicationCacheHost>> _field55;
     struct unique_ptr<WebCore::ContentFilter, std::__1::default_delete<WebCore::ContentFilter>> _field56;
     struct unique_ptr<WebCore::PreviewConverter, std::__1::default_delete<WebCore::PreviewConverter>> _field57;
     struct HashMap<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>> _field58;
     struct HashMap<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>> _field59;
-    BOOL _field60;
-    int _field61;
-    struct OptionSet<WebCore::AutoplayQuirk> _field62;
-    int _field63;
-    struct optional<WebCore::ServiceWorkerRegistrationData> _field64;
+    struct String _field60;
+    struct String _field61;
+    BOOL _field62;
+    BOOL _field63;
+    int _field64;
+    struct OptionSet<WebCore::AutoplayQuirk> _field65;
+    int _field66;
+    struct Optional<WebCore::ServiceWorkerRegistrationData> _field67;
+    struct Optional<WebCore::DocumentLoader::TemporaryServiceWorkerClient> _field68;
+    BOOL _field69;
 };
 
 struct DocumentParser;
@@ -325,7 +297,8 @@ struct DragData {
 
 struct DragImage {
     struct RetainPtr<CGImage *> _field1;
-    struct optional<WebCore::TextIndicatorData> _field2;
+    struct Optional<WebCore::TextIndicatorData> _field2;
+    struct Optional<WebCore::Path> _field3;
 };
 
 struct DragItem {
@@ -336,24 +309,10 @@ struct DragItem {
     struct IntPoint _field5;
     struct IntPoint _field6;
     struct String _field7;
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field8;
+    struct URL _field8;
     struct IntRect _field9;
     struct PasteboardWriterData _field10;
-    struct PromisedBlobInfo _field11;
+    struct PromisedAttachmentInfo _field11;
 };
 
 struct EditingStyle;
@@ -499,20 +458,20 @@ struct Function<void ()> {
     struct unique_ptr<WTF::Function<void ()>::CallableWrapperBase, std::__1::default_delete<WTF::Function<void ()>::CallableWrapperBase>> _field1;
 };
 
-struct Function<void (WebCore::PolicyAction)> {
-    struct unique_ptr<WTF::Function<void (WebCore::PolicyAction)>::CallableWrapperBase, std::__1::default_delete<WTF::Function<void (WebCore::PolicyAction)>::CallableWrapperBase>> m_callableWrapper;
+struct Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)> {
+    struct unique_ptr<WTF::Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)>::CallableWrapperBase, std::__1::default_delete<WTF::Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)>::CallableWrapperBase>> m_callableWrapper;
 };
 
 struct GenericEventQueue {
     struct EventTarget *_field1;
-    struct GenericTaskQueue<WebCore::Timer> _field2;
+    struct GenericTaskQueue<WebCore::Timer, unsigned int> _field2;
     struct Deque<WTF::RefPtr<WebCore::Event, WTF::DumbPtrTraits<WebCore::Event>>, 0> _field3;
     BOOL _field4;
     BOOL _field5;
 };
 
-struct GenericTaskQueue<WebCore::Timer> {
-    struct WeakPtrFactory<WebCore::GenericTaskQueue<WebCore::Timer>> _field1;
+struct GenericTaskQueue<WebCore::Timer, unsigned int> {
+    struct WeakPtrFactory<WebCore::GenericTaskQueue<WebCore::Timer, unsigned int>> _field1;
     struct TaskDispatcher<WebCore::Timer> _field2;
     unsigned int _field3;
     BOOL _field4;
@@ -542,11 +501,11 @@ struct GeolocationPosition {
     double latitude;
     double longitude;
     double accuracy;
-    struct optional<double> altitude;
-    struct optional<double> altitudeAccuracy;
-    struct optional<double> heading;
-    struct optional<double> speed;
-    struct optional<double> floorLevel;
+    struct Optional<double> altitude;
+    struct Optional<double> altitudeAccuracy;
+    struct Optional<double> heading;
+    struct Optional<double> speed;
+    struct Optional<double> floorLevel;
 };
 
 struct Geoposition;
@@ -608,74 +567,65 @@ struct HTMLVideoElement {
     struct Timer _field32;
     struct Timer _field33;
     struct Timer _field34;
-    struct Timer _field35;
-    struct GenericTaskQueue<WebCore::Timer> _field36;
-    struct GenericTaskQueue<WebCore::Timer> _field37;
-    struct GenericTaskQueue<WebCore::Timer> _field38;
-    struct GenericTaskQueue<WebCore::Timer> _field39;
-    struct GenericTaskQueue<WebCore::Timer> _field40;
-    struct GenericTaskQueue<WebCore::Timer> _field41;
-    struct GenericTaskQueue<WebCore::Timer> _field42;
-    struct GenericTaskQueue<WebCore::Timer> _field43;
-    struct RefPtr<WebCore::TimeRanges, WTF::DumbPtrTraits<WebCore::TimeRanges>> _field44;
-    struct GenericEventQueue _field45;
-    struct Vector<WebCore::DOMPromiseDeferred<void>, 0, WTF::CrashOnOverflow, 16> _field46;
-    double _field47;
-    double _field48;
-    double _field49;
-    BOOL _field50;
-    int _field51;
-    int _field52;
-    int _field53;
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field54;
-    struct RefPtr<WebCore::MediaError, WTF::DumbPtrTraits<WebCore::MediaError>> _field55;
-    struct unique_ptr<WebCore::HTMLMediaElement::PendingSeek, std::__1::default_delete<WebCore::HTMLMediaElement::PendingSeek>> _field56;
+    struct DeferrableTask<WebCore::Timer> _field35;
+    struct DeferrableTask<WebCore::Timer> _field36;
+    struct DeferrableTask<WebCore::Timer> _field37;
+    struct DeferrableTask<WebCore::Timer> _field38;
+    struct DeferrableTask<WebCore::Timer> _field39;
+    struct DeferrableTask<WebCore::Timer> _field40;
+    struct DeferrableTask<WebCore::Timer> _field41;
+    struct DeferrableTask<WebCore::Timer> _field42;
+    struct GenericTaskQueue<WebCore::Timer, unsigned int> _field43;
+    struct GenericTaskQueue<WebCore::Timer, unsigned int> _field44;
+    struct GenericTaskQueue<WebCore::Timer, unsigned int> _field45;
+    struct GenericTaskQueue<WebCore::Timer, unsigned int> _field46;
+    struct GenericTaskQueue<WebCore::Timer, unsigned int> _field47;
+    struct GenericTaskQueue<WebCore::Timer, unsigned int> _field48;
+    struct RefPtr<WebCore::TimeRanges, WTF::DumbPtrTraits<WebCore::TimeRanges>> _field49;
+    struct GenericEventQueue _field50;
+    struct Vector<WebCore::DOMPromiseDeferred<void>, 0, WTF::CrashOnOverflow, 16> _field51;
+    double _field52;
+    double _field53;
+    double _field54;
+    BOOL _field55;
+    int _field56;
     int _field57;
-    double _field58;
-    BOOL _field59;
-    struct MediaTime _field60;
-    struct MonotonicTime _field61;
-    double _field62;
-    struct MonotonicTime _field63;
-    struct MediaTime _field64;
-    int _field65;
-    struct RefPtr<WebCore::HTMLSourceElement, WTF::DumbPtrTraits<WebCore::HTMLSourceElement>> _field66;
-    struct RefPtr<WebCore::HTMLSourceElement, WTF::DumbPtrTraits<WebCore::HTMLSourceElement>> _field67;
-    unsigned int _field68;
-    BOOL _field69;
-    BOOL _field70;
-    struct Function<void ()> _field71;
-    BOOL _field72;
-    struct RetainPtr<CALayer> _field73;
-    struct FloatRect _field74;
-    int _field75;
-    struct RefPtr<WebCore::MediaPlayer, WTF::DumbPtrTraits<WebCore::MediaPlayer>> _field76;
-    int _field77;
-    int _field78;
-    int _field79;
-    struct MediaTime _field80;
-    struct MonotonicTime _field81;
-    struct MonotonicTime _field82;
-    struct MediaTime _field83;
-    struct MediaTime _field84;
-    unsigned int _field85;
-    int _field86;
-    int _field87;
-    int _field88;
+    int _field58;
+    struct URL _field59;
+    struct RefPtr<WebCore::MediaError, WTF::DumbPtrTraits<WebCore::MediaError>> _field60;
+    struct unique_ptr<WebCore::HTMLMediaElement::PendingSeek, std::__1::default_delete<WebCore::HTMLMediaElement::PendingSeek>> _field61;
+    int _field62;
+    double _field63;
+    BOOL _field64;
+    struct MediaTime _field65;
+    struct MonotonicTime _field66;
+    double _field67;
+    struct MonotonicTime _field68;
+    struct MediaTime _field69;
+    int _field70;
+    struct RefPtr<WebCore::HTMLSourceElement, WTF::DumbPtrTraits<WebCore::HTMLSourceElement>> _field71;
+    struct RefPtr<WebCore::HTMLSourceElement, WTF::DumbPtrTraits<WebCore::HTMLSourceElement>> _field72;
+    unsigned int _field73;
+    BOOL _field74;
+    BOOL _field75;
+    struct Function<void ()> _field76;
+    BOOL _field77;
+    struct RetainPtr<CALayer> _field78;
+    struct FloatRect _field79;
+    int _field80;
+    struct RefPtr<WebCore::MediaPlayer, WTF::DumbPtrTraits<WebCore::MediaPlayer>> _field81;
+    int _field82;
+    int _field83;
+    int _field84;
+    struct MediaTime _field85;
+    struct MonotonicTime _field86;
+    struct MonotonicTime _field87;
+    struct MediaTime _field88;
+    struct MediaTime _field89;
+    unsigned int _field90;
+    int _field91;
+    int _field92;
+    int _field93;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -712,48 +662,47 @@ struct HTMLVideoElement {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :1;
-    int _field89;
-    struct optional<WTF::MediaTime> _field90;
-    struct String _field91;
-    struct MediaTime _field92;
-    struct optional<WebCore::CaptionUserPreferences::CaptionDisplayMode> _field93;
-    struct RefPtr<WebCore::AudioTrackList, WTF::DumbPtrTraits<WebCore::AudioTrackList>> _field94;
-    struct RefPtr<WebCore::TextTrackList, WTF::DumbPtrTraits<WebCore::TextTrackList>> _field95;
-    struct RefPtr<WebCore::VideoTrackList, WTF::DumbPtrTraits<WebCore::VideoTrackList>> _field96;
-    struct Vector<WTF::RefPtr<WebCore::TextTrack, WTF::DumbPtrTraits<WebCore::TextTrack>>, 0, WTF::CrashOnOverflow, 16> _field97;
-    struct PODIntervalTree<WTF::MediaTime, WebCore::TextTrackCue *> _field98;
-    struct Vector<WebCore::PODInterval<WTF::MediaTime, WebCore::TextTrackCue *>, 0, WTF::CrashOnOverflow, 16> _field99;
-    int _field100;
-    BOOL _field101;
-    struct MediaElementAudioSourceNode *_field102;
-    struct String _field103;
-    struct RefPtr<WebCore::MediaController, WTF::DumbPtrTraits<WebCore::MediaController>> _field104;
-    struct unique_ptr<PAL::SleepDisabler, std::__1::default_delete<PAL::SleepDisabler>> _field105;
-    struct WeakPtr<const WebCore::MediaResourceLoader> _field106;
-    struct RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>> _field107;
-    struct optional<WTF::Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>>> _field108;
-    struct RefPtr<WebCore::WebKitMediaKeys, WTF::DumbPtrTraits<WebCore::WebKitMediaKeys>> _field109;
-    struct RefPtr<WebCore::MediaKeys, WTF::DumbPtrTraits<WebCore::MediaKeys>> _field110;
-    BOOL _field111;
-    struct GenericTaskQueue<WebCore::Timer> _field112;
-    struct unique_ptr<WebCore::MediaElementSession, std::__1::default_delete<WebCore::MediaElementSession>> _field113;
-    unsigned long long _field114;
-    struct RefPtr<WTF::Logger, WTF::DumbPtrTraits<WTF::Logger>> _field115;
-    unsigned long long _field116;
-    struct RefPtr<WebCore::MediaControlsHost, WTF::DumbPtrTraits<WebCore::MediaControlsHost>> _field117;
-    struct RefPtr<WebCore::DOMWrapperWorld, WTF::DumbPtrTraits<WebCore::DOMWrapperWorld>> _field118;
-    struct RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>> _field119;
-    BOOL _field120;
-    unsigned int _field121;
-    BOOL _field122;
-    BOOL _field123;
-    BOOL _field124;
+    int _field94;
+    struct String _field95;
+    struct MediaTime _field96;
+    struct Optional<WebCore::CaptionUserPreferences::CaptionDisplayMode> _field97;
+    struct RefPtr<WebCore::AudioTrackList, WTF::DumbPtrTraits<WebCore::AudioTrackList>> _field98;
+    struct RefPtr<WebCore::TextTrackList, WTF::DumbPtrTraits<WebCore::TextTrackList>> _field99;
+    struct RefPtr<WebCore::VideoTrackList, WTF::DumbPtrTraits<WebCore::VideoTrackList>> _field100;
+    struct Vector<WTF::RefPtr<WebCore::TextTrack, WTF::DumbPtrTraits<WebCore::TextTrack>>, 0, WTF::CrashOnOverflow, 16> _field101;
+    struct PODIntervalTree<WTF::MediaTime, WebCore::TextTrackCue *> _field102;
+    struct Vector<WebCore::PODInterval<WTF::MediaTime, WebCore::TextTrackCue *>, 0, WTF::CrashOnOverflow, 16> _field103;
+    int _field104;
+    BOOL _field105;
+    struct MediaElementAudioSourceNode *_field106;
+    struct String _field107;
+    struct RefPtr<WebCore::MediaController, WTF::DumbPtrTraits<WebCore::MediaController>> _field108;
+    struct unique_ptr<PAL::SleepDisabler, std::__1::default_delete<PAL::SleepDisabler>> _field109;
+    struct WeakPtr<const WebCore::MediaResourceLoader> _field110;
+    struct RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>> _field111;
+    struct Optional<WTF::Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>>> _field112;
+    struct RefPtr<WebCore::WebKitMediaKeys, WTF::DumbPtrTraits<WebCore::WebKitMediaKeys>> _field113;
+    struct RefPtr<WebCore::MediaKeys, WTF::DumbPtrTraits<WebCore::MediaKeys>> _field114;
+    BOOL _field115;
+    BOOL _field116;
+    struct GenericTaskQueue<WebCore::Timer, unsigned int> _field117;
+    struct unique_ptr<WebCore::MediaElementSession, std::__1::default_delete<WebCore::MediaElementSession>> _field118;
+    unsigned long long _field119;
+    struct RefPtr<WTF::Logger, WTF::DumbPtrTraits<WTF::Logger>> _field120;
+    unsigned long long _field121;
+    struct RefPtr<WebCore::MediaControlsHost, WTF::DumbPtrTraits<WebCore::MediaControlsHost>> _field122;
+    struct RefPtr<WebCore::DOMWrapperWorld, WTF::DumbPtrTraits<WebCore::DOMWrapperWorld>> _field123;
+    struct RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>> _field124;
     BOOL _field125;
-    struct unique_ptr<WebCore::HTMLImageLoader, std::__1::default_delete<WebCore::HTMLImageLoader>> _field126;
-    struct AtomicString _field127;
-    unsigned int _field128;
-    unsigned int _field129;
+    unsigned int _field126;
+    BOOL _field127;
+    BOOL _field128;
+    BOOL _field129;
+    BOOL _field130;
+    struct unique_ptr<WebCore::HTMLImageLoader, std::__1::default_delete<WebCore::HTMLImageLoader>> _field131;
+    struct AtomicString _field132;
+    unsigned int _field133;
+    unsigned int _field134;
 };
 
 struct HTTPHeaderField;
@@ -790,8 +739,6 @@ struct HashMap<WTF::RetainPtr<WebView>, WTF::RetainPtr<id<WebGeolocationProvider
 struct HashMap<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>> {
     struct HashTable<WTF::String, WTF::KeyValuePair<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>>, WTF::StringHash, WTF::HashMap<WTF::String, WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RefPtr<WebCore::StyleSheetContents, WTF::DumbPtrTraits<WebCore::StyleSheetContents>>>>::KeyValuePairTraits, WTF::HashTraits<WTF::String>> _field1;
 };
-
-struct HashMap<WTF::String, WTF::RetainPtr<id>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RetainPtr<id>>>;
 
 struct HashMap<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>> {
     struct HashTable<WTF::String, WTF::KeyValuePair<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>>, WTF::StringHash, WTF::HashMap<WTF::String, WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::Vector<std::__1::pair<WTF::String, unsigned int>, 0, WTF::CrashOnOverflow, 16>>>::KeyValuePairTraits, WTF::HashTraits<WTF::String>> _field1;
@@ -1164,42 +1111,7 @@ struct Highlight {
     BOOL _field8;
 };
 
-struct HistoryItem {
-    unsigned int _field1;
-    struct String _field2;
-    struct String _field3;
-    struct String _field4;
-    struct String _field5;
-    struct String _field6;
-    struct String _field7;
-    struct IntPoint _field8;
-    float _field9;
-    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field10;
-    int _field11;
-    struct Vector<WTF::Ref<WebCore::HistoryItem, WTF::DumbPtrTraits<WebCore::HistoryItem>>, 0, WTF::CrashOnOverflow, 16> _field12;
-    BOOL _field13;
-    BOOL _field14;
-    BOOL _field15;
-    BOOL _field16;
-    long long _field17;
-    long long _field18;
-    struct RefPtr<WebCore::SerializedScriptValue, WTF::DumbPtrTraits<WebCore::SerializedScriptValue>> _field19;
-    struct RefPtr<WebCore::FormData, WTF::DumbPtrTraits<WebCore::FormData>> _field20;
-    struct String _field21;
-    struct unique_ptr<WebCore::CachedPage, std::__1::default_delete<WebCore::CachedPage>> _field22;
-    int _field23;
-    struct FloatRect _field24;
-    struct IntRect _field25;
-    struct FloatSize _field26;
-    struct IntSize _field27;
-    struct RectEdges<float> _field28;
-    float _field29;
-    BOOL _field30;
-    struct ViewportArguments _field31;
-    struct RetainPtr<id> _field32;
-    struct unique_ptr<WTF::HashMap<WTF::String, WTF::RetainPtr<id>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RetainPtr<id>>>, std::__1::default_delete<WTF::HashMap<WTF::String, WTF::RetainPtr<id>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RetainPtr<id>>>>> _field33;
-    struct BackForwardItemIdentifier _field34;
-};
+struct HistoryItem;
 
 struct HitTestLocation {
     struct LayoutPoint _field1;
@@ -1333,44 +1245,39 @@ struct KeyboardEvent {
     CDUnknownFunctionPointerType *_field1;
     struct Weak<WebCore::JSDOMObject> _field2;
     unsigned int _field3;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :2;
     struct AtomicString _field4;
-    BOOL _field5;
-    BOOL _field6;
-    BOOL _field7;
-    BOOL _field8;
-    BOOL _field9;
-    BOOL _field10;
-    BOOL _field11;
-    BOOL _field12;
-    BOOL _field13;
-    BOOL _field14;
-    BOOL _field15;
-    int _field16;
-    struct RefPtr<WebCore::EventTarget, WTF::DumbPtrTraits<WebCore::EventTarget>> _field17;
-    struct EventPath *_field18;
-    struct RefPtr<WebCore::EventTarget, WTF::DumbPtrTraits<WebCore::EventTarget>> _field19;
-    struct MonotonicTime _field20;
-    struct RefPtr<WebCore::Event, WTF::DumbPtrTraits<WebCore::Event>> _field21;
-    struct RefPtr<WebCore::WindowProxy, WTF::DumbPtrTraits<WebCore::WindowProxy>> _field22;
-    int _field23;
-    BOOL _field24;
-    BOOL _field25;
-    BOOL _field26;
-    BOOL _field27;
-    BOOL _field28;
-    BOOL _field29;
-    struct unique_ptr<WebCore::PlatformKeyboardEvent, std::__1::default_delete<WebCore::PlatformKeyboardEvent>> _field30;
-    struct String _field31;
-    struct String _field32;
-    struct String _field33;
-    unsigned int _field34;
-    BOOL _field35;
-    BOOL _field36;
-    struct optional<unsigned int> _field37;
-    struct optional<unsigned int> _field38;
-    struct optional<unsigned int> _field39;
-    BOOL _field40;
-    struct Vector<WebCore::KeypressCommand, 0, WTF::CrashOnOverflow, 16> _field41;
+    struct RefPtr<WebCore::EventTarget, WTF::DumbPtrTraits<WebCore::EventTarget>> _field5;
+    struct EventPath *_field6;
+    struct RefPtr<WebCore::EventTarget, WTF::DumbPtrTraits<WebCore::EventTarget>> _field7;
+    struct MonotonicTime _field8;
+    struct RefPtr<WebCore::Event, WTF::DumbPtrTraits<WebCore::Event>> _field9;
+    struct RefPtr<WebCore::WindowProxy, WTF::DumbPtrTraits<WebCore::WindowProxy>> _field10;
+    int _field11;
+    struct OptionSet<WebCore::PlatformEvent::Modifier> _field12;
+    struct unique_ptr<WebCore::PlatformKeyboardEvent, std::__1::default_delete<WebCore::PlatformKeyboardEvent>> _field13;
+    struct String _field14;
+    struct String _field15;
+    struct String _field16;
+    unsigned int _field17;
+    BOOL _field18;
+    BOOL _field19;
+    struct Optional<unsigned int> _field20;
+    struct Optional<unsigned int> _field21;
+    struct Optional<unsigned int> _field22;
+    BOOL _field23;
+    struct Vector<WebCore::KeypressCommand, 0, WTF::CrashOnOverflow, 16> _field24;
 };
 
 struct KeypressCommand;
@@ -1425,6 +1332,14 @@ struct Logger;
 
 struct LowPowerModeNotifier;
 
+struct Markable<WTF::Seconds, WTF::Seconds::MarkableTraits> {
+    struct Seconds _field1;
+};
+
+struct Markable<WTF::WallTime, WTF::WallTime::MarkableTraits> {
+    struct WallTime _field1;
+};
+
 struct MediaController;
 
 struct MediaControlsHost;
@@ -1471,24 +1386,25 @@ struct MouseEventData {
 
 struct Navigation {
     struct String _field1;
-    int _field2;
+    unsigned char _field2;
 };
 
 struct NavigationAction {
-    struct optional<WebCore::NavigationAction::Requester> _field1;
+    struct Optional<WebCore::NavigationAction::Requester> _field1;
     struct ResourceRequest _field2;
-    int _field3;
-    int _field4;
-    int _field5;
-    struct optional<WebCore::NavigationAction::UIEventWithKeyStateData> _field6;
-    struct optional<WebCore::NavigationAction::MouseEventData> _field7;
+    unsigned char _field3;
+    unsigned char _field4;
+    unsigned char _field5;
+    struct Optional<WebCore::NavigationAction::UIEventWithKeyStateData> _field6;
+    struct Optional<WebCore::NavigationAction::MouseEventData> _field7;
     struct RefPtr<WebCore::UserGestureToken, WTF::DumbPtrTraits<WebCore::UserGestureToken>> _field8;
     struct AtomicString _field9;
     BOOL _field10;
     BOOL _field11;
     BOOL _field12;
-    struct optional<std::__1::pair<unsigned long long, unsigned long long>> _field13;
-    struct optional<WebCore::BackForwardItemIdentifier> _field14;
+    struct Optional<WebCore::BackForwardItemIdentifier> _field13;
+    BOOL _field14;
+    BOOL _field15;
 };
 
 struct NavigationScheduler;
@@ -1503,16 +1419,16 @@ struct NetworkLoadMetrics {
     struct Seconds _field7;
     struct Seconds _field8;
     struct String _field9;
-    struct optional<WTF::String> _field10;
-    struct optional<WTF::String> _field11;
-    struct optional<WebCore::NetworkLoadPriority> _field12;
+    struct String _field10;
+    struct String _field11;
+    unsigned char _field12;
     BOOL _field13;
-    struct optional<WebCore::HTTPHeaderMap> _field14;
-    struct optional<unsigned long long> _field15;
-    struct optional<unsigned long long> _field16;
-    struct optional<unsigned long long> _field17;
-    struct optional<unsigned long long> _field18;
-    struct optional<unsigned long long> _field19;
+    struct HTTPHeaderMap _field14;
+    unsigned int _field15;
+    unsigned int _field16;
+    unsigned long long _field17;
+    unsigned long long _field18;
+    unsigned long long _field19;
 };
 
 struct Node;
@@ -1523,8 +1439,12 @@ struct ObjectIdentifier<WebCore::BackForwardItemIdentifier::ItemIdentifierType> 
     unsigned long long _field1;
 };
 
-struct ObjectIdentifier<WebCore::ProcessIdentifierType> {
+struct ObjectIdentifier<WebCore::DocumentIdentifierType> {
     unsigned long long _field1;
+};
+
+struct ObjectIdentifier<WebCore::ProcessIdentifierType> {
+    unsigned long long m_identifier;
 };
 
 struct ObjectIdentifier<WebCore::ServiceWorkerIdentifierType> {
@@ -1535,8 +1455,149 @@ struct ObjectIdentifier<WebCore::ServiceWorkerRegistrationIdentifierType> {
     unsigned long long _field1;
 };
 
+struct OptionSet<WebCore::ActivityState::Flag> {
+    unsigned int _field1;
+};
+
 struct OptionSet<WebCore::AutoplayQuirk> {
     unsigned int _field1;
+};
+
+struct OptionSet<WebCore::LayoutMilestone> {
+    unsigned int _field1;
+};
+
+struct OptionSet<WebCore::PaintBehavior> {
+    unsigned short _field1;
+};
+
+struct OptionSet<WebCore::PlatformEvent::Modifier> {
+    unsigned char _field1;
+};
+
+struct Optional<WTF::Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>>> {
+    BOOL _field1;
+    union storage_t<WTF::Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>>> _field2;
+};
+
+struct Optional<WTF::WallTime> {
+    BOOL _field1;
+    union constexpr_storage_t<WTF::WallTime> _field2;
+};
+
+struct Optional<WebCore::ApplicationManifest> {
+    BOOL _field1;
+    union storage_t<WebCore::ApplicationManifest> _field2;
+};
+
+struct Optional<WebCore::BackForwardItemIdentifier> {
+    BOOL _field1;
+    union constexpr_storage_t<WebCore::BackForwardItemIdentifier> _field2;
+};
+
+struct Optional<WebCore::CaptionUserPreferences::CaptionDisplayMode> {
+    BOOL _field1;
+    union constexpr_storage_t<WebCore::CaptionUserPreferences::CaptionDisplayMode> _field2;
+};
+
+struct Optional<WebCore::CertificateInfo> {
+    BOOL _field1;
+    union storage_t<WebCore::CertificateInfo> _field2;
+};
+
+struct Optional<WebCore::CompositingPolicy> {
+    BOOL _field1;
+    union constexpr_storage_t<WebCore::CompositingPolicy> _field2;
+};
+
+struct Optional<WebCore::DocumentLoader::TemporaryServiceWorkerClient> {
+    BOOL _field1;
+    union storage_t<WebCore::DocumentLoader::TemporaryServiceWorkerClient> _field2;
+};
+
+struct Optional<WebCore::EventThrottlingBehavior> {
+    BOOL _field1;
+    union constexpr_storage_t<WebCore::EventThrottlingBehavior> _field2;
+};
+
+struct Optional<WebCore::NavigationAction::MouseEventData> {
+    BOOL _field1;
+    union constexpr_storage_t<WebCore::NavigationAction::MouseEventData> _field2;
+};
+
+struct Optional<WebCore::NavigationAction::Requester> {
+    BOOL _field1;
+    union storage_t<WebCore::NavigationAction::Requester> _field2;
+};
+
+struct Optional<WebCore::NavigationAction::UIEventWithKeyStateData> {
+    BOOL _field1;
+    union constexpr_storage_t<WebCore::NavigationAction::UIEventWithKeyStateData> _field2;
+};
+
+struct Optional<WebCore::Page::Navigation> {
+    BOOL _field1;
+    union storage_t<WebCore::Page::Navigation> _field2;
+};
+
+struct Optional<WebCore::PasteboardWriterData::PlainText> {
+    BOOL _field1;
+    union storage_t<WebCore::PasteboardWriterData::PlainText> _field2;
+};
+
+struct Optional<WebCore::PasteboardWriterData::URLData> {
+    BOOL _field1;
+    union storage_t<WebCore::PasteboardWriterData::URLData> _field2;
+};
+
+struct Optional<WebCore::PasteboardWriterData::WebContent> {
+    BOOL _field1;
+    union storage_t<WebCore::PasteboardWriterData::WebContent> _field2;
+};
+
+struct Optional<WebCore::Path> {
+    BOOL _field1;
+    union storage_t<WebCore::Path> _field2;
+};
+
+struct Optional<WebCore::ServiceWorkerData> {
+    BOOL _field1;
+    union storage_t<WebCore::ServiceWorkerData> _field2;
+};
+
+struct Optional<WebCore::ServiceWorkerRegistrationData> {
+    BOOL _field1;
+    union storage_t<WebCore::ServiceWorkerRegistrationData> _field2;
+};
+
+struct Optional<WebCore::TextIndicatorData> {
+    BOOL _field1;
+    union storage_t<WebCore::TextIndicatorData> _field2;
+};
+
+struct Optional<bool> {
+    BOOL _field1;
+    union constexpr_storage_t<bool> _field2;
+};
+
+struct Optional<double> {
+    BOOL init_;
+    union constexpr_storage_t<double> storage_;
+};
+
+struct Optional<int> {
+    BOOL _field1;
+    union constexpr_storage_t<int> _field2;
+};
+
+struct Optional<unsigned int> {
+    BOOL _field1;
+    union constexpr_storage_t<unsigned int> _field2;
+};
+
+struct Optional<unsigned short> {
+    BOOL _field1;
+    union constexpr_storage_t<unsigned short> _field2;
 };
 
 struct PODInterval<WTF::MediaTime, WebCore::TextTrackCue *>;
@@ -1577,102 +1638,107 @@ struct Page {
     BOOL _field27;
     BOOL _field28;
     BOOL _field29;
-    unsigned int _field30;
-    BOOL _field31;
+    BOOL _field30;
+    unsigned int _field31;
     BOOL _field32;
-    float _field33;
-    unsigned int _field34;
-    float _field35;
+    BOOL _field33;
+    float _field34;
+    unsigned int _field35;
     float _field36;
     float _field37;
     float _field38;
     float _field39;
-    struct RectEdges<float> _field40;
+    float _field40;
     struct RectEdges<float> _field41;
     struct RectEdges<float> _field42;
-    struct Seconds _field43;
-    BOOL _field44;
+    struct RectEdges<float> _field43;
+    struct Seconds _field44;
     BOOL _field45;
     BOOL _field46;
-    float _field47;
-    BOOL _field48;
-    unsigned int :2;
-    unsigned int :2;
-    struct Pagination _field49;
+    BOOL _field47;
+    struct Optional<bool> _field48;
+    float _field49;
     BOOL _field50;
-    struct String _field51;
-    struct String _field52;
-    BOOL _field53;
-    long long _field54;
-    struct String _field55;
-    struct unique_ptr<WebCore::PageGroup, std::__1::default_delete<WebCore::PageGroup>> _field56;
-    struct PageGroup *_field57;
-    struct Debugger *_field58;
-    BOOL _field59;
-    struct RefPtr<WebCore::StorageNamespace, WTF::DumbPtrTraits<WebCore::StorageNamespace>> _field60;
-    struct RefPtr<WebCore::StorageNamespace, WTF::DumbPtrTraits<WebCore::StorageNamespace>> _field61;
-    int _field62;
-    struct MonotonicTime _field63;
-    struct Seconds _field64;
-    struct Timer _field65;
+    unsigned int :2;
+    unsigned int :2;
+    struct Pagination _field51;
+    BOOL _field52;
+    struct String _field53;
+    struct String _field54;
+    BOOL _field55;
+    struct Optional<WTF::WallTime> _field56;
+    struct String _field57;
+    struct unique_ptr<WebCore::PageGroup, std::__1::default_delete<WebCore::PageGroup>> _field58;
+    struct PageGroup *_field59;
+    struct Debugger *_field60;
+    BOOL _field61;
+    struct RefPtr<WebCore::StorageNamespace, WTF::DumbPtrTraits<WebCore::StorageNamespace>> _field62;
+    struct RefPtr<WebCore::StorageNamespace, WTF::DumbPtrTraits<WebCore::StorageNamespace>> _field63;
+    int _field64;
+    struct MonotonicTime _field65;
     struct Seconds _field66;
-    BOOL _field67;
-    BOOL _field68;
-    unsigned int _field69;
-    unsigned int _field70;
-    int _field71;
-    int _field72;
-    struct HashSet<WebCore::RenderObject *, WTF::PtrHash<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>> _field73;
-    struct Region _field74;
-    struct Region _field75;
+    struct Timer _field67;
+    struct Seconds _field68;
+    BOOL _field69;
+    BOOL _field70;
+    struct OptionSet<WebCore::ActivityState::Flag> _field71;
+    struct OptionSet<WebCore::LayoutMilestone> _field72;
+    int _field73;
+    int _field74;
+    struct HashSet<WebCore::RenderObject *, WTF::PtrHash<WebCore::RenderObject *>, WTF::HashTraits<WebCore::RenderObject *>> _field75;
     struct Region _field76;
-    BOOL _field77;
-    struct AlternativeTextClient *_field78;
+    struct Region _field77;
+    struct Region _field78;
     BOOL _field79;
-    struct unique_ptr<WebCore::PageConsoleClient, std::__1::default_delete<WebCore::PageConsoleClient>> _field80;
-    struct unique_ptr<WebCore::PageDebuggable, std::__1::default_delete<WebCore::PageDebuggable>> _field81;
-    struct RefPtr<WebCore::IDBClient::IDBConnectionToServer, WTF::DumbPtrTraits<WebCore::IDBClient::IDBConnectionToServer>> _field82;
-    struct HashSet<WTF::String, WTF::StringHash, WTF::HashTraits<WTF::String>> _field83;
-    struct HashSet<WTF::String, WTF::StringHash, WTF::HashTraits<WTF::String>> _field84;
-    unsigned int _field85;
-    unsigned int _field86;
-    struct Ref<WebCore::SocketProvider, WTF::DumbPtrTraits<WebCore::SocketProvider>> _field87;
-    struct Ref<WebCore::ApplicationCacheStorage, WTF::DumbPtrTraits<WebCore::ApplicationCacheStorage>> _field88;
-    struct Ref<WebCore::CacheStorageProvider, WTF::DumbPtrTraits<WebCore::CacheStorageProvider>> _field89;
-    struct Ref<WebCore::DatabaseProvider, WTF::DumbPtrTraits<WebCore::DatabaseProvider>> _field90;
-    struct Ref<WebCore::PluginInfoProvider, WTF::DumbPtrTraits<WebCore::PluginInfoProvider>> _field91;
-    struct Ref<WebCore::StorageNamespaceProvider, WTF::DumbPtrTraits<WebCore::StorageNamespaceProvider>> _field92;
-    struct Ref<WebCore::UserContentProvider, WTF::DumbPtrTraits<WebCore::UserContentProvider>> _field93;
-    struct Ref<WebCore::VisitedLinkStore, WTF::DumbPtrTraits<WebCore::VisitedLinkStore>> _field94;
-    struct RefPtr<WebCore::WheelEventTestTrigger, WTF::DumbPtrTraits<WebCore::WheelEventTestTrigger>> _field95;
-    struct HashSet<WebCore::ActivityStateChangeObserver *, WTF::PtrHash<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>> _field96;
-    struct unique_ptr<WebCore::ResourceUsageOverlay, std::__1::default_delete<WebCore::ResourceUsageOverlay>> _field97;
-    struct SessionID _field98;
-    BOOL _field99;
-    BOOL _field100;
-    unsigned int _field101;
-    struct Timer _field102;
+    struct AlternativeTextClient *_field80;
+    BOOL _field81;
+    struct unique_ptr<WebCore::PageConsoleClient, std::__1::default_delete<WebCore::PageConsoleClient>> _field82;
+    struct unique_ptr<WebCore::PageDebuggable, std::__1::default_delete<WebCore::PageDebuggable>> _field83;
+    struct RefPtr<WebCore::IDBClient::IDBConnectionToServer, WTF::DumbPtrTraits<WebCore::IDBClient::IDBConnectionToServer>> _field84;
+    struct HashSet<WTF::String, WTF::StringHash, WTF::HashTraits<WTF::String>> _field85;
+    struct HashSet<WTF::String, WTF::StringHash, WTF::HashTraits<WTF::String>> _field86;
+    unsigned int _field87;
+    unsigned int _field88;
+    struct Ref<WebCore::SocketProvider, WTF::DumbPtrTraits<WebCore::SocketProvider>> _field89;
+    struct Ref<WebCore::ApplicationCacheStorage, WTF::DumbPtrTraits<WebCore::ApplicationCacheStorage>> _field90;
+    struct Ref<WebCore::CacheStorageProvider, WTF::DumbPtrTraits<WebCore::CacheStorageProvider>> _field91;
+    struct Ref<WebCore::DatabaseProvider, WTF::DumbPtrTraits<WebCore::DatabaseProvider>> _field92;
+    struct Ref<WebCore::PluginInfoProvider, WTF::DumbPtrTraits<WebCore::PluginInfoProvider>> _field93;
+    struct Ref<WebCore::StorageNamespaceProvider, WTF::DumbPtrTraits<WebCore::StorageNamespaceProvider>> _field94;
+    struct Ref<WebCore::UserContentProvider, WTF::DumbPtrTraits<WebCore::UserContentProvider>> _field95;
+    struct Ref<WebCore::VisitedLinkStore, WTF::DumbPtrTraits<WebCore::VisitedLinkStore>> _field96;
+    struct RefPtr<WebCore::WheelEventTestTrigger, WTF::DumbPtrTraits<WebCore::WheelEventTestTrigger>> _field97;
+    struct HashSet<WebCore::ActivityStateChangeObserver *, WTF::PtrHash<WebCore::ActivityStateChangeObserver *>, WTF::HashTraits<WebCore::ActivityStateChangeObserver *>> _field98;
+    struct Vector<WTF::WeakPtr<WebCore::Document>, 0, WTF::CrashOnOverflow, 16> _field99;
+    struct Timer _field100;
+    struct unique_ptr<WebCore::ResourceUsageOverlay, std::__1::default_delete<WebCore::ResourceUsageOverlay>> _field101;
+    struct SessionID _field102;
     BOOL _field103;
     BOOL _field104;
-    BOOL _field105;
-    BOOL _field106;
+    unsigned int _field105;
+    struct Timer _field106;
     BOOL _field107;
     BOOL _field108;
     BOOL _field109;
-    int _field110;
-    struct optional<WebCore::EventThrottlingBehavior> _field111;
-    struct optional<WebCore::CompositingPolicy> _field112;
-    struct unique_ptr<WebCore::PerformanceMonitor, std::__1::default_delete<WebCore::PerformanceMonitor>> _field113;
-    struct unique_ptr<WebCore::LowPowerModeNotifier, std::__1::default_delete<WebCore::LowPowerModeNotifier>> _field114;
-    struct optional<bool> _field115;
-    struct optional<WebCore::Page::Navigation> _field116;
-    struct unique_ptr<WebCore::PerformanceLogging, std::__1::default_delete<WebCore::PerformanceLogging>> _field117;
-    struct unique_ptr<WebCore::WheelEventDeltaFilter, std::__1::default_delete<WebCore::WheelEventDeltaFilter>> _field118;
-    struct unique_ptr<WebCore::PageOverlayController, std::__1::default_delete<WebCore::PageOverlayController>> _field119;
-    struct unique_ptr<WebCore::PaymentCoordinator, std::__1::default_delete<WebCore::PaymentCoordinator>> _field120;
-    struct optional<WebCore::ApplicationManifest> _field121;
-    BOOL _field122;
-    BOOL _field123;
+    BOOL _field110;
+    BOOL _field111;
+    BOOL _field112;
+    BOOL _field113;
+    unsigned char _field114;
+    struct Optional<WebCore::EventThrottlingBehavior> _field115;
+    struct Optional<WebCore::CompositingPolicy> _field116;
+    struct unique_ptr<WebCore::PerformanceMonitor, std::__1::default_delete<WebCore::PerformanceMonitor>> _field117;
+    struct unique_ptr<WebCore::LowPowerModeNotifier, std::__1::default_delete<WebCore::LowPowerModeNotifier>> _field118;
+    struct Optional<bool> _field119;
+    struct Optional<WebCore::Page::Navigation> _field120;
+    struct unique_ptr<WebCore::PerformanceLogging, std::__1::default_delete<WebCore::PerformanceLogging>> _field121;
+    struct unique_ptr<WebCore::WheelEventDeltaFilter, std::__1::default_delete<WebCore::WheelEventDeltaFilter>> _field122;
+    struct unique_ptr<WebCore::PageOverlayController, std::__1::default_delete<WebCore::PageOverlayController>> _field123;
+    struct unique_ptr<WebCore::PaymentCoordinator, std::__1::default_delete<WebCore::PaymentCoordinator>> _field124;
+    struct UniqueRef<WebCore::AuthenticatorCoordinator> _field125;
+    struct Optional<WebCore::ApplicationManifest> _field126;
+    BOOL _field127;
+    BOOL _field128;
 };
 
 struct PageConsoleClient;
@@ -1734,9 +1800,13 @@ struct ParsedContentRange {
 };
 
 struct PasteboardWriterData {
-    struct optional<WebCore::PasteboardWriterData::PlainText> _field1;
-    struct optional<WebCore::PasteboardWriterData::URL> _field2;
-    struct optional<WebCore::PasteboardWriterData::WebContent> _field3;
+    struct Optional<WebCore::PasteboardWriterData::PlainText> _field1;
+    struct Optional<WebCore::PasteboardWriterData::URLData> _field2;
+    struct Optional<WebCore::PasteboardWriterData::WebContent> _field3;
+};
+
+struct Path {
+    struct CGPath *_field1;
 };
 
 struct PaymentCoordinator;
@@ -1774,6 +1844,11 @@ struct PluginInfo {
 
 struct PluginInfoProvider;
 
+struct PolicyCheckIdentifier {
+    struct ObjectIdentifier<WebCore::ProcessIdentifierType> m_process;
+    unsigned long long m_policyCheck;
+};
+
 struct Position {
     struct RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> _field1;
     int _field2;
@@ -1789,26 +1864,13 @@ struct ProfilingClient;
 
 struct ProgressTracker;
 
-struct PromisedBlobInfo {
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field1;
+struct PromisedAttachmentInfo {
+    struct URL _field1;
     struct String _field2;
     struct String _field3;
-    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field4;
-    struct Vector<WTF::RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>>, 0, WTF::CrashOnOverflow, 16> _field5;
+    struct String _field4;
+    struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> _field5;
+    struct Vector<WTF::RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>>, 0, WTF::CrashOnOverflow, 16> _field6;
 };
 
 struct QualifiedName {
@@ -1832,7 +1894,7 @@ struct Range {
 
 struct RangeBoundaryPoint {
     struct RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> _field1;
-    struct optional<unsigned int> _field2;
+    struct Optional<unsigned int> _field2;
     struct RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> _field3;
 };
 
@@ -1918,6 +1980,10 @@ struct Ref<WebCore::PluginInfoProvider, WTF::DumbPtrTraits<WebCore::PluginInfoPr
     struct PluginInfoProvider *_field1;
 };
 
+struct Ref<WebCore::SWClientConnection, WTF::DumbPtrTraits<WebCore::SWClientConnection>> {
+    struct SWClientConnection *_field1;
+};
+
 struct Ref<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>> {
     struct SharedBuffer *_field1;
 };
@@ -1962,8 +2028,12 @@ struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl>> {
     struct StringImpl *m_ptr;
 };
 
-struct RefPtr<WTF::WeakReference<WebCore::GenericTaskQueue<WebCore::Timer>>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::GenericTaskQueue<WebCore::Timer>>>> {
-    struct WeakReference<WebCore::GenericTaskQueue<WebCore::Timer>> *_field1;
+struct RefPtr<WTF::WeakReference<WebCore::DeferrableTask<WebCore::Timer>>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::DeferrableTask<WebCore::Timer>>>> {
+    struct WeakReference<WebCore::DeferrableTask<WebCore::Timer>> *_field1;
+};
+
+struct RefPtr<WTF::WeakReference<WebCore::GenericTaskQueue<WebCore::Timer, unsigned int>>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::GenericTaskQueue<WebCore::Timer, unsigned int>>>> {
+    struct WeakReference<WebCore::GenericTaskQueue<WebCore::Timer, unsigned int>> *_field1;
 };
 
 struct RefPtr<WTF::WeakReference<WebCore::HTMLMediaElement>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::HTMLMediaElement>>> {
@@ -2132,10 +2202,6 @@ struct RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigi
     struct SecurityOrigin *_field1;
 };
 
-struct RefPtr<WebCore::SerializedScriptValue, WTF::DumbPtrTraits<WebCore::SerializedScriptValue>> {
-    struct SerializedScriptValue *_field1;
-};
-
 struct RefPtr<WebCore::Settings, WTF::DumbPtrTraits<WebCore::Settings>> {
     struct Settings *_field1;
 };
@@ -2156,6 +2222,10 @@ struct RefPtr<WebCore::TextTrack, WTF::DumbPtrTraits<WebCore::TextTrack>>;
 
 struct RefPtr<WebCore::TextTrackList, WTF::DumbPtrTraits<WebCore::TextTrackList>> {
     struct TextTrackList *_field1;
+};
+
+struct RefPtr<WebCore::ThreadTimerHeapItem, WTF::DumbPtrTraits<WebCore::ThreadTimerHeapItem>> {
+    struct ThreadTimerHeapItem *_field1;
 };
 
 struct RefPtr<WebCore::TimeRanges, WTF::DumbPtrTraits<WebCore::TimeRanges>> {
@@ -2202,42 +2272,14 @@ struct Region {
 struct RenderObject;
 
 struct Requester {
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field1;
+    struct URL _field1;
     struct RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>> _field2;
     struct pair<unsigned long long, unsigned long long> _field3;
 };
 
 struct ResourceError {
     struct String _field1;
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field2;
+    struct URL _field2;
     struct String _field3;
     int _field4;
     unsigned char _field5;
@@ -2246,37 +2288,9 @@ struct ResourceError {
 };
 
 struct ResourceRequest {
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field1;
+    struct URL _field1;
     double _field2;
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field3;
+    struct URL _field3;
     struct String _field4;
     struct String _field5;
     struct String _field6;
@@ -2287,7 +2301,7 @@ struct ResourceRequest {
     unsigned char _field11;
     unsigned char _field12;
     unsigned char _field13;
-    BOOL _field14;
+    struct Optional<int> _field14;
     BOOL _field15;
     BOOL _field16;
     BOOL _field17;
@@ -2295,26 +2309,13 @@ struct ResourceRequest {
     BOOL _field19;
     BOOL _field20;
     BOOL _field21;
-    struct IntRect _field22;
-    struct RetainPtr<NSURLRequest> _field23;
+    BOOL _field22;
+    struct IntRect _field23;
+    struct RetainPtr<NSURLRequest> _field24;
 };
 
 struct ResourceResponse {
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field1;
+    struct URL _field1;
     struct AtomicString _field2;
     long long _field3;
     struct AtomicString _field4;
@@ -2322,29 +2323,28 @@ struct ResourceResponse {
     struct AtomicString _field6;
     struct HTTPHeaderMap _field7;
     struct NetworkLoadMetrics _field8;
-    struct optional<WebCore::CertificateInfo> _field9;
-    struct optional<WTF::Seconds> _field10;
-    struct optional<WTF::WallTime> _field11;
-    struct optional<WTF::WallTime> _field12;
-    struct optional<WTF::WallTime> _field13;
+    struct Optional<WebCore::CertificateInfo> _field9;
+    struct Markable<WTF::Seconds, WTF::Seconds::MarkableTraits> _field10;
+    struct Markable<WTF::WallTime, WTF::WallTime::MarkableTraits> _field11;
+    struct Markable<WTF::WallTime, WTF::WallTime::MarkableTraits> _field12;
+    struct Markable<WTF::WallTime, WTF::WallTime::MarkableTraits> _field13;
     struct ParsedContentRange _field14;
     struct CacheControlDirectives _field15;
-    struct optional<std::__1::array<unsigned char, 20>> _field16;
-    BOOL _field17;
-    BOOL _field18;
-    BOOL _field19;
-    BOOL _field20;
-    BOOL _field21;
-    BOOL _field22;
-    BOOL _field23;
-    unsigned char _field24;
-    unsigned char _field25;
-    unsigned char _field26;
-    BOOL _field27;
-    int _field28;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned char _field16;
+    unsigned char _field17;
+    unsigned char _field18;
+    int _field19;
     unsigned int :3;
-    BOOL _field29;
-    struct RetainPtr<NSURLResponse> _field30;
+    BOOL _field20;
+    struct RetainPtr<NSURLResponse> _field21;
 };
 
 struct ResourceUsageOverlay;
@@ -2441,9 +2441,7 @@ struct RetainPtr<const __CFArray *> {
     void *_field1;
 };
 
-struct RetainPtr<id> {
-    void *_field1;
-};
+struct SWClientConnection;
 
 struct ScriptController;
 
@@ -2478,29 +2476,13 @@ struct SecurityOrigin {
 struct SecurityOriginData {
     struct String _field1;
     struct String _field2;
-    struct optional<unsigned short> _field3;
+    struct Optional<unsigned short> _field3;
 };
-
-struct SerializedScriptValue;
 
 struct ServiceWorkerData {
     struct ObjectIdentifier<WebCore::ServiceWorkerIdentifierType> _field1;
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field2;
-    int _field3;
+    struct URL _field2;
+    unsigned char _field3;
     int _field4;
     struct ObjectIdentifier<WebCore::ServiceWorkerRegistrationIdentifierType> _field5;
 };
@@ -2508,45 +2490,17 @@ struct ServiceWorkerData {
 struct ServiceWorkerRegistrationData {
     struct ServiceWorkerRegistrationKey _field1;
     struct ObjectIdentifier<WebCore::ServiceWorkerRegistrationIdentifierType> _field2;
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field3;
-    int _field4;
+    struct URL _field3;
+    unsigned char _field4;
     struct WallTime _field5;
-    struct optional<WebCore::ServiceWorkerData> _field6;
-    struct optional<WebCore::ServiceWorkerData> _field7;
-    struct optional<WebCore::ServiceWorkerData> _field8;
+    struct Optional<WebCore::ServiceWorkerData> _field6;
+    struct Optional<WebCore::ServiceWorkerData> _field7;
+    struct Optional<WebCore::ServiceWorkerData> _field8;
 };
 
 struct ServiceWorkerRegistrationKey {
     struct SecurityOriginData _field1;
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field2;
+    struct URL _field2;
 };
 
 struct SessionID {
@@ -2582,26 +2536,12 @@ struct StringImpl;
 
 struct StringWithDirection {
     struct String _field1;
-    int _field2;
+    unsigned char _field2;
 };
 
 struct SubstituteData {
     struct RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>> _field1;
-    struct URL {
-        struct String _field1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :3;
-        unsigned int :26;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        unsigned int _field6;
-        unsigned int _field7;
-        unsigned int _field8;
-    } _field2;
+    struct URL _field2;
     struct ResourceResponse _field3;
     int _field4;
 };
@@ -2609,6 +2549,11 @@ struct SubstituteData {
 struct TaskDispatcher<WebCore::Timer> {
     struct WeakPtrFactory<WebCore::TaskDispatcher<WebCore::Timer>> _field1;
     struct Deque<WTF::Function<void ()>, 0> _field2;
+};
+
+struct TemporaryServiceWorkerClient {
+    struct ObjectIdentifier<WebCore::DocumentIdentifierType> _field1;
+    struct Ref<WebCore::SWClientConnection, WTF::DumbPtrTraits<WebCore::SWClientConnection>> _field2;
 };
 
 struct TextIndicatorData {
@@ -2633,19 +2578,18 @@ struct TextTrackList;
 
 struct Thread;
 
+struct ThreadTimerHeapItem;
+
 struct TimeRanges;
 
 struct Timer {
     CDUnknownFunctionPointerType *_field1;
     struct MonotonicTime _field2;
-    struct MonotonicTime _field3;
-    struct Seconds _field4;
-    int _field5;
-    unsigned int _field6;
-    BOOL _field7;
-    struct Vector<WebCore::TimerBase *, 0, WTF::CrashOnOverflow, 16> *_field8;
-    struct Ref<WTF::Thread, WTF::DumbPtrTraits<WTF::Thread>> _field9;
-    struct Function<void ()> _field10;
+    struct Seconds _field3;
+    BOOL _field4;
+    struct RefPtr<WebCore::ThreadTimerHeapItem, WTF::DumbPtrTraits<WebCore::ThreadTimerHeapItem>> _field5;
+    struct Ref<WTF::Thread, WTF::DumbPtrTraits<WTF::Thread>> _field6;
+    struct Function<void ()> _field7;
 };
 
 struct TreeScope;
@@ -2658,11 +2602,36 @@ struct UIEventWithKeyStateData {
     BOOL _field5;
 };
 
+struct URL {
+    struct String _field1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :3;
+    unsigned int :26;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+};
+
+struct URLData {
+    struct URL _field1;
+    struct String _field2;
+};
+
 struct UncommonHeader;
 
 struct UndoStep {
     CDUnknownFunctionPointerType *_field1;
     unsigned int _field2;
+};
+
+struct UniqueRef<WebCore::AuthenticatorCoordinator> {
+    struct unique_ptr<WebCore::AuthenticatorCoordinator, std::__1::default_delete<WebCore::AuthenticatorCoordinator>> _field1;
 };
 
 struct UniqueRef<WebCore::CSSAnimationController> {
@@ -2751,12 +2720,6 @@ struct Vector<WTF::Ref<WebCore::ArchiveResource, WTF::DumbPtrTraits<WebCore::Arc
     unsigned int _field3;
 };
 
-struct Vector<WTF::Ref<WebCore::HistoryItem, WTF::DumbPtrTraits<WebCore::HistoryItem>>, 0, WTF::CrashOnOverflow, 16> {
-    Ref_0785b76d *_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-};
-
 struct Vector<WTF::RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>>, 0, WTF::CrashOnOverflow, 16> {
     struct RefPtr<WebCore::SharedBuffer, WTF::DumbPtrTraits<WebCore::SharedBuffer>> *_field1;
     unsigned int _field2;
@@ -2771,6 +2734,12 @@ struct Vector<WTF::RefPtr<WebCore::TextTrack, WTF::DumbPtrTraits<WebCore::TextTr
 
 struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> {
     struct String *_field1;
+    unsigned int _field2;
+    unsigned int _field3;
+};
+
+struct Vector<WTF::WeakPtr<WebCore::Document>, 0, WTF::CrashOnOverflow, 16> {
+    struct WeakPtr<WebCore::Document> *_field1;
     unsigned int _field2;
     unsigned int _field3;
 };
@@ -2866,8 +2835,6 @@ struct Vector<WebCore::ResourceResponse, 0, WTF::CrashOnOverflow, 16> {
     unsigned int _field3;
 };
 
-struct Vector<WebCore::TimerBase *, 0, WTF::CrashOnOverflow, 16>;
-
 struct Vector<int, 32, WTF::CrashOnOverflow, 16> {
     int *_field1;
     unsigned int _field2;
@@ -2958,12 +2925,18 @@ struct Weak<WebCore::JSDOMObject> {
 
 struct WeakImpl;
 
+struct WeakPtr<WebCore::Document>;
+
 struct WeakPtr<const WebCore::MediaResourceLoader> {
     struct RefPtr<WTF::WeakReference<const WebCore::MediaResourceLoader>, WTF::DumbPtrTraits<WTF::WeakReference<const WebCore::MediaResourceLoader>>> _field1;
 };
 
-struct WeakPtrFactory<WebCore::GenericTaskQueue<WebCore::Timer>> {
-    struct RefPtr<WTF::WeakReference<WebCore::GenericTaskQueue<WebCore::Timer>>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::GenericTaskQueue<WebCore::Timer>>>> _field1;
+struct WeakPtrFactory<WebCore::DeferrableTask<WebCore::Timer>> {
+    struct RefPtr<WTF::WeakReference<WebCore::DeferrableTask<WebCore::Timer>>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::DeferrableTask<WebCore::Timer>>>> _field1;
+};
+
+struct WeakPtrFactory<WebCore::GenericTaskQueue<WebCore::Timer, unsigned int>> {
+    struct RefPtr<WTF::WeakReference<WebCore::GenericTaskQueue<WebCore::Timer, unsigned int>>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::GenericTaskQueue<WebCore::Timer, unsigned int>>>> _field1;
 };
 
 struct WeakPtrFactory<WebCore::HTMLMediaElement> {
@@ -2974,7 +2947,9 @@ struct WeakPtrFactory<WebCore::TaskDispatcher<WebCore::Timer>> {
     struct RefPtr<WTF::WeakReference<WebCore::TaskDispatcher<WebCore::Timer>>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::TaskDispatcher<WebCore::Timer>>>> _field1;
 };
 
-struct WeakReference<WebCore::GenericTaskQueue<WebCore::Timer>>;
+struct WeakReference<WebCore::DeferrableTask<WebCore::Timer>>;
+
+struct WeakReference<WebCore::GenericTaskQueue<WebCore::Timer, unsigned int>>;
 
 struct WeakReference<WebCore::HTMLMediaElement>;
 
@@ -3156,166 +3131,12 @@ struct array<float, 4> {
     float _field1[4];
 };
 
-struct array<unsigned char, 20> {
-    unsigned char _field1[20];
-};
-
 struct atomic<unsigned char> {
     _Atomic unsigned char __a_;
 };
 
 struct atomic<unsigned int> {
     _Atomic unsigned int _field1;
-};
-
-struct optional<WTF::MediaTime> {
-    BOOL _field1;
-    union storage_t<WTF::MediaTime> _field2;
-};
-
-struct optional<WTF::Seconds> {
-    BOOL _field1;
-    union constexpr_storage_t<WTF::Seconds> _field2;
-};
-
-struct optional<WTF::String> {
-    BOOL _field1;
-    union storage_t<WTF::String> _field2;
-};
-
-struct optional<WTF::Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>>> {
-    BOOL _field1;
-    union storage_t<WTF::Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>>> _field2;
-};
-
-struct optional<WTF::WallTime> {
-    BOOL _field1;
-    union constexpr_storage_t<WTF::WallTime> _field2;
-};
-
-struct optional<WebCore::ApplicationManifest> {
-    BOOL _field1;
-    union storage_t<WebCore::ApplicationManifest> _field2;
-};
-
-struct optional<WebCore::BackForwardItemIdentifier> {
-    BOOL _field1;
-    union constexpr_storage_t<WebCore::BackForwardItemIdentifier> _field2;
-};
-
-struct optional<WebCore::CaptionUserPreferences::CaptionDisplayMode> {
-    BOOL _field1;
-    union constexpr_storage_t<WebCore::CaptionUserPreferences::CaptionDisplayMode> _field2;
-};
-
-struct optional<WebCore::CertificateInfo> {
-    BOOL _field1;
-    union storage_t<WebCore::CertificateInfo> _field2;
-};
-
-struct optional<WebCore::CompositingPolicy> {
-    BOOL _field1;
-    union constexpr_storage_t<WebCore::CompositingPolicy> _field2;
-};
-
-struct optional<WebCore::EventThrottlingBehavior> {
-    BOOL _field1;
-    union constexpr_storage_t<WebCore::EventThrottlingBehavior> _field2;
-};
-
-struct optional<WebCore::HTTPHeaderMap> {
-    BOOL _field1;
-    union storage_t<WebCore::HTTPHeaderMap> _field2;
-};
-
-struct optional<WebCore::NavigationAction::MouseEventData> {
-    BOOL _field1;
-    union constexpr_storage_t<WebCore::NavigationAction::MouseEventData> _field2;
-};
-
-struct optional<WebCore::NavigationAction::Requester> {
-    BOOL _field1;
-    union storage_t<WebCore::NavigationAction::Requester> _field2;
-};
-
-struct optional<WebCore::NavigationAction::UIEventWithKeyStateData> {
-    BOOL _field1;
-    union constexpr_storage_t<WebCore::NavigationAction::UIEventWithKeyStateData> _field2;
-};
-
-struct optional<WebCore::NetworkLoadPriority> {
-    BOOL _field1;
-    union constexpr_storage_t<WebCore::NetworkLoadPriority> _field2;
-};
-
-struct optional<WebCore::Page::Navigation> {
-    BOOL _field1;
-    union storage_t<WebCore::Page::Navigation> _field2;
-};
-
-struct optional<WebCore::PasteboardWriterData::PlainText> {
-    BOOL _field1;
-    union storage_t<WebCore::PasteboardWriterData::PlainText> _field2;
-};
-
-struct optional<WebCore::PasteboardWriterData::URL> {
-    BOOL _field1;
-    union storage_t<WebCore::PasteboardWriterData::URL> _field2;
-};
-
-struct optional<WebCore::PasteboardWriterData::WebContent> {
-    BOOL _field1;
-    union storage_t<WebCore::PasteboardWriterData::WebContent> _field2;
-};
-
-struct optional<WebCore::ServiceWorkerData> {
-    BOOL _field1;
-    union storage_t<WebCore::ServiceWorkerData> _field2;
-};
-
-struct optional<WebCore::ServiceWorkerRegistrationData> {
-    BOOL _field1;
-    union storage_t<WebCore::ServiceWorkerRegistrationData> _field2;
-};
-
-struct optional<WebCore::TextIndicatorData> {
-    BOOL _field1;
-    union storage_t<WebCore::TextIndicatorData> _field2;
-};
-
-struct optional<bool> {
-    BOOL _field1;
-    union constexpr_storage_t<bool> _field2;
-};
-
-struct optional<double> {
-    BOOL init_;
-    union constexpr_storage_t<double> storage_;
-};
-
-struct optional<std::__1::array<unsigned char, 20>> {
-    BOOL _field1;
-    union constexpr_storage_t<std::__1::array<unsigned char, 20>> _field2;
-};
-
-struct optional<std::__1::pair<unsigned long long, unsigned long long>> {
-    BOOL _field1;
-    union constexpr_storage_t<std::__1::pair<unsigned long long, unsigned long long>> _field2;
-};
-
-struct optional<unsigned int> {
-    BOOL _field1;
-    union constexpr_storage_t<unsigned int> _field2;
-};
-
-struct optional<unsigned long long> {
-    BOOL _field1;
-    union constexpr_storage_t<unsigned long long> _field2;
-};
-
-struct optional<unsigned short> {
-    BOOL _field1;
-    union constexpr_storage_t<unsigned short> _field2;
 };
 
 struct pair<unsigned long long, unsigned long long> {
@@ -3343,16 +3164,10 @@ struct unique_ptr<WTF::Function<void ()>::CallableWrapperBase, std::__1::default
     } _field1;
 };
 
-struct unique_ptr<WTF::Function<void (WebCore::PolicyAction)>::CallableWrapperBase, std::__1::default_delete<WTF::Function<void (WebCore::PolicyAction)>::CallableWrapperBase>> {
-    struct __compressed_pair<WTF::Function<void (WebCore::PolicyAction)>::CallableWrapperBase *, std::__1::default_delete<WTF::Function<void (WebCore::PolicyAction)>::CallableWrapperBase>> {
+struct unique_ptr<WTF::Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)>::CallableWrapperBase, std::__1::default_delete<WTF::Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)>::CallableWrapperBase>> {
+    struct __compressed_pair<WTF::Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)>::CallableWrapperBase *, std::__1::default_delete<WTF::Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)>::CallableWrapperBase>> {
         struct CallableWrapperBase *__value_;
     } __ptr_;
-};
-
-struct unique_ptr<WTF::HashMap<WTF::String, WTF::RetainPtr<id>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RetainPtr<id>>>, std::__1::default_delete<WTF::HashMap<WTF::String, WTF::RetainPtr<id>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RetainPtr<id>>>>> {
-    struct __compressed_pair<WTF::HashMap<WTF::String, WTF::RetainPtr<id>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RetainPtr<id>>>*, std::__1::default_delete<WTF::HashMap<WTF::String, WTF::RetainPtr<id>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RetainPtr<id>>>>> {
-        struct HashMap<WTF::String, WTF::RetainPtr<id>, WTF::StringHash, WTF::HashTraits<WTF::String>, WTF::HashTraits<WTF::RetainPtr<id>>> *_field1;
-    } _field1;
 };
 
 struct unique_ptr<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::IntHash<unsigned long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>, std::__1::default_delete<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::IntHash<unsigned long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray>>>>> {
@@ -3391,6 +3206,12 @@ struct unique_ptr<WebCore::ArchiveResourceCollection, std::__1::default_delete<W
     } _field1;
 };
 
+struct unique_ptr<WebCore::AuthenticatorCoordinator, std::__1::default_delete<WebCore::AuthenticatorCoordinator>> {
+    struct __compressed_pair<WebCore::AuthenticatorCoordinator *, std::__1::default_delete<WebCore::AuthenticatorCoordinator>> {
+        struct AuthenticatorCoordinator *_field1;
+    } _field1;
+};
+
 struct unique_ptr<WebCore::BackForwardController, std::__1::default_delete<WebCore::BackForwardController>> {
     struct __compressed_pair<WebCore::BackForwardController *, std::__1::default_delete<WebCore::BackForwardController>> {
         struct BackForwardController *_field1;
@@ -3400,12 +3221,6 @@ struct unique_ptr<WebCore::BackForwardController, std::__1::default_delete<WebCo
 struct unique_ptr<WebCore::CSSAnimationController, std::__1::default_delete<WebCore::CSSAnimationController>> {
     struct __compressed_pair<WebCore::CSSAnimationController *, std::__1::default_delete<WebCore::CSSAnimationController>> {
         struct CSSAnimationController *_field1;
-    } _field1;
-};
-
-struct unique_ptr<WebCore::CachedPage, std::__1::default_delete<WebCore::CachedPage>> {
-    struct __compressed_pair<WebCore::CachedPage *, std::__1::default_delete<WebCore::CachedPage>> {
-        struct CachedPage *_field1;
     } _field1;
 };
 
@@ -3655,26 +3470,6 @@ struct unique_ptr<WebScriptDebugger, std::__1::default_delete<WebScriptDebugger>
     } __ptr_;
 };
 
-#if 0
-// Names with conflicting types:
-typedef struct {
-    struct String _field1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :3;
-    unsigned int :26;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-} URL_1c73cf8c;
-
-#endif
-
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -3682,9 +3477,9 @@ typedef struct {
 } CDStruct_6ad76789;
 
 // Template types
-typedef struct Function<void (WebCore::PolicyAction)> {
-    struct unique_ptr<WTF::Function<void (WebCore::PolicyAction)>::CallableWrapperBase, std::__1::default_delete<WTF::Function<void (WebCore::PolicyAction)>::CallableWrapperBase>> m_callableWrapper;
-} Function_b05ff6eb;
+typedef struct Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)> {
+    struct unique_ptr<WTF::Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)>::CallableWrapperBase, std::__1::default_delete<WTF::Function<void (WebCore::PolicyAction, WebCore::PolicyCheckIdentifier)>::CallableWrapperBase>> m_callableWrapper;
+} Function_f1cab3a8;
 
 typedef struct HashMap<CALayer *, CALayer *, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<CALayer *>> {
     struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, CALayer *>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, CALayer *>>, WTF::PtrHash<CALayer *>, WTF::HashMap<CALayer *, CALayer *, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<CALayer *>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> _field1;
@@ -3693,6 +3488,10 @@ typedef struct HashMap<CALayer *, CALayer *, WTF::PtrHash<CALayer *>, WTF::HashT
 typedef struct HashMap<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>> {
     struct HashTable<CALayer *, WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>, WTF::PtrHash<CALayer *>, WTF::HashMap<CALayer *, std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>, WTF::PtrHash<CALayer *>, WTF::HashTraits<CALayer *>, WTF::HashTraits<std::__1::unique_ptr<WebCore::ViewportConstraints, std::__1::default_delete<WebCore::ViewportConstraints>>>>::KeyValuePairTraits, WTF::HashTraits<CALayer *>> _field1;
 } HashMap_8e3a669a;
+
+typedef struct OptionSet<WebCore::PaintBehavior> {
+    unsigned short _field1;
+} OptionSet_8e32cbf3;
 
 typedef struct Ref<BackForwardList, WTF::DumbPtrTraits<BackForwardList>> {
     struct BackForwardList *_field1;
@@ -3760,11 +3559,6 @@ union EncodedValueDescriptor {
     } asBits;
 };
 
-union constexpr_storage_t<WTF::Seconds> {
-    unsigned char _field1;
-    struct Seconds _field2;
-};
-
 union constexpr_storage_t<WTF::WallTime> {
     unsigned char _field1;
     struct WallTime _field2;
@@ -3800,11 +3594,6 @@ union constexpr_storage_t<WebCore::NavigationAction::UIEventWithKeyStateData> {
     struct UIEventWithKeyStateData _field2;
 };
 
-union constexpr_storage_t<WebCore::NetworkLoadPriority> {
-    unsigned char _field1;
-    unsigned char _field2;
-};
-
 union constexpr_storage_t<bool> {
     unsigned char _field1;
     BOOL _field2;
@@ -3815,14 +3604,9 @@ union constexpr_storage_t<double> {
     double value_;
 };
 
-union constexpr_storage_t<std::__1::array<unsigned char, 20>> {
+union constexpr_storage_t<int> {
     unsigned char _field1;
-    struct array<unsigned char, 20> _field2;
-};
-
-union constexpr_storage_t<std::__1::pair<unsigned long long, unsigned long long>> {
-    unsigned char _field1;
-    struct pair<unsigned long long, unsigned long long> _field2;
+    int _field2;
 };
 
 union constexpr_storage_t<unsigned int> {
@@ -3830,24 +3614,9 @@ union constexpr_storage_t<unsigned int> {
     unsigned int _field2;
 };
 
-union constexpr_storage_t<unsigned long long> {
-    unsigned char _field1;
-    unsigned long long _field2;
-};
-
 union constexpr_storage_t<unsigned short> {
     unsigned char _field1;
     unsigned short _field2;
-};
-
-union storage_t<WTF::MediaTime> {
-    unsigned char _field1;
-    struct MediaTime _field2;
-};
-
-union storage_t<WTF::String> {
-    unsigned char _field1;
-    struct String _field2;
 };
 
 union storage_t<WTF::Variant<WTF::RefPtr<WebCore::MediaStream, WTF::DumbPtrTraits<WebCore::MediaStream>>, WTF::RefPtr<WebCore::Blob, WTF::DumbPtrTraits<WebCore::Blob>>>> {
@@ -3865,9 +3634,9 @@ union storage_t<WebCore::CertificateInfo> {
     struct CertificateInfo _field2;
 };
 
-union storage_t<WebCore::HTTPHeaderMap> {
+union storage_t<WebCore::DocumentLoader::TemporaryServiceWorkerClient> {
     unsigned char _field1;
-    struct HTTPHeaderMap _field2;
+    struct TemporaryServiceWorkerClient _field2;
 };
 
 union storage_t<WebCore::NavigationAction::Requester> {
@@ -3885,31 +3654,19 @@ union storage_t<WebCore::PasteboardWriterData::PlainText> {
     struct PlainText _field2;
 };
 
-union storage_t<WebCore::PasteboardWriterData::URL> {
+union storage_t<WebCore::PasteboardWriterData::URLData> {
     unsigned char _field1;
-    struct URL {
-        struct URL {
-            struct String _field1;
-            unsigned int :1;
-            unsigned int :1;
-            unsigned int :1;
-            unsigned int :3;
-            unsigned int :26;
-            unsigned int _field2;
-            unsigned int _field3;
-            unsigned int _field4;
-            unsigned int _field5;
-            unsigned int _field6;
-            unsigned int _field7;
-            unsigned int _field8;
-        } _field1;
-        struct String _field2;
-    } _field2;
+    struct URLData _field2;
 };
 
 union storage_t<WebCore::PasteboardWriterData::WebContent> {
     unsigned char _field1;
     struct WebContent _field2;
+};
+
+union storage_t<WebCore::Path> {
+    unsigned char _field1;
+    struct Path _field2;
 };
 
 union storage_t<WebCore::ServiceWorkerData> {

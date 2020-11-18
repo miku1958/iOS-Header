@@ -10,10 +10,6 @@
 {
 }
 
-+ (unsigned long long)addItem:(id)arg1 featuresToArray:(id)arg2;
-+ (void)enumerateNamesInArray:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-+ (void)featuresFromConversation:(id)arg1 withSupervision:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
-+ (id)featurizeString:(id)arg1 withLocale:(id)arg2 supervision:(id)arg3;
 + (id)newTransformerInstanceForLanguage:(id)arg1;
 + (id)temporaryKeyMap;
 

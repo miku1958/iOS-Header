@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, TSTCellRegion, TSTInfo, TSUWidthLimitedQueue;
+@class NSMutableArray, TSTCellRegion, TSTTableInfo, TSUWidthLimitedQueue;
 
 __attribute__((visibility("hidden")))
 @interface TSTConcurrentCellIterator : NSObject
 {
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     TSTCellRegion *_region;
     TSTCellRegion *_forcingRegion;
     TSUWidthLimitedQueue *_queue;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) TSUWidthLimitedQueue *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) TSTCellRegion *region; // @synthesize region=_region;
 @property (nonatomic) unsigned long long searchFlags; // @synthesize searchFlags=_searchFlags;
-@property (strong, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (strong, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 
 + (id)p_sharedQueue;
 - (void).cxx_destruct;

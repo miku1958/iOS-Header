@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) unsigned long long count; // @synthesize count=_count;
+@property (readonly, nonatomic) BOOL isEmpty;
 @property (strong, nonatomic) NSMutableIndexSet *mergeIndexes; // @synthesize mergeIndexes=_mergeIndexes;
 @property (weak, nonatomic) TSTMergeOwner *mergeOwner; // @synthesize mergeOwner=_mergeOwner;
 

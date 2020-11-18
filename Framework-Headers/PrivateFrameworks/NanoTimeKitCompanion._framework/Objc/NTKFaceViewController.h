@@ -165,6 +165,7 @@
 - (id)faceViewComplicationForSlot:(id)arg1;
 - (BOOL)faceViewComplicationIsEmptyForSlot:(id)arg1;
 - (id)faceViewComplicationSlots;
+- (void)faceViewDidChangeVerticalPaddingForStatusBar;
 - (void)faceViewDidChangeWantsStatusBarIconShadow;
 - (void)faceViewDidHideOrShowComplicationSlot;
 - (void)faceViewDidLayoutSubviews;

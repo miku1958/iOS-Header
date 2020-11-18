@@ -414,7 +414,7 @@
 - (void)_beginDisablingInterfaceAutorotation;
 - (long long)_bottomBarBackgroundStyleForMode:(long long)arg1;
 - (BOOL)_canUseFilteringForLayoutStyle:(long long)arg1;
-- (id)_captureFiltersForMode:(long long)arg1;
+- (id)_captureFiltersForMode:(long long)arg1 device:(long long)arg2;
 - (void)_captureOrientationChanged:(id)arg1;
 - (BOOL)_captureStillImageWithCurrentSettings;
 - (BOOL)_captureStillImageWithRequest:(id)arg1 error:(id *)arg2;
@@ -620,7 +620,6 @@
 - (BOOL)_isZoomAllowedCurrently;
 - (BOOL)_isZoomAllowedForGraphConfiguration:(id)arg1;
 - (long long)_lastCapturedFilterTypeForMode:(long long)arg1;
-- (long long)_lightingTypeForMode:(long long)arg1 device:(long long)arg2;
 - (double)_minimumExecutionTimeForChangeToGraphConfiguration:(id)arg1 fromGraphConfiguration:(id)arg2;
 - (BOOL)_modeChangeSwipeMatchesExposureBiasPanDirection;
 - (id)_mutableSupportedCaptureModes;
@@ -648,6 +647,7 @@
 - (void)_resolveAndUpdatePotentiallyConflictingControls:(BOOL)arg1;
 - (void)_resolvePotentiallyConflictingControlsForMode:(long long)arg1 device:(long long)arg2 resolvedFlashMode:(long long *)arg3 resolvedHDRMode:(long long *)arg4 resolvedLivePhotoMode:(long long *)arg5;
 - (void)_rotateTopBarAndControlsToOrientation:(long long)arg1 shouldAnimate:(BOOL)arg2;
+- (long long)_sanitizedLightingTypeForMode:(long long)arg1 device:(long long)arg2;
 - (long long)_sanitizedVideoConfigurationForMode:(long long)arg1 device:(long long)arg2;
 - (void)_setEffectFilterType:(long long)arg1 forMode:(long long)arg2;
 - (void)_setLightingType:(long long)arg1 forMode:(long long)arg2;

@@ -9,23 +9,17 @@
 #import <CoreKnowledge/CKEphemeralReadableEventSequence-Protocol.h>
 #import <CoreKnowledge/CKEphemeralWritableEventSequence-Protocol.h>
 
-@class CKEntity, MISSING_TYPE, OS_dispatch_queue;
+@class MISSING_TYPE;
 
 @interface CKEphemeralEventSequence : NSObject <CKEphemeralReadableEventSequence, CKEphemeralWritableEventSequence>
 {
     MISSING_TYPE *queue;
 }
 
-@property (nonatomic, readonly) CKEntity *historyStartEvent;
-@property (nonatomic, readonly) OS_dispatch_queue *queue; // @synthesize queue;
-
-+ (id)JOINER;
-+ (id)identifierDateFormat;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (BOOL)appendEvent:(id)arg1;
 - (id)eventsBetween:(id)arg1 and:(id)arg2;
 - (id)eventsWithIdentifier:(id)arg1;
-- (id)findEntityPreceding:(id)arg1 error:(id *)arg2;
 - (id)first;
 - (id)init;
 - (id)last;

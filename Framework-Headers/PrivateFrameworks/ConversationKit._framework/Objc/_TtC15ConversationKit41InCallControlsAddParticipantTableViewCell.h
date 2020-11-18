@@ -6,20 +6,24 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, _TtC15ConversationKit19InCallControlButton;
 
 __attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit41InCallControlsAddParticipantTableViewCell : UITableViewCell
 {
-    MISSING_TYPE *nameLabel;
-    MISSING_TYPE *icon;
+    MISSING_TYPE *titleLabel;
+    MISSING_TYPE *button;
     MISSING_TYPE *isAccessiblityConstraintsEnabled;
     MISSING_TYPE *nameLabelFirstBaselineLayoutConstraint;
     MISSING_TYPE *nameLabelLastBaselineLayoutConstraint;
-    MISSING_TYPE *enabled;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *isEnabled;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+@property (nonatomic, readonly) _TtC15ConversationKit19InCallControlButton *button; // @synthesize button;
+
+- (void).cxx_destruct;
+- (void)didTapButton:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;

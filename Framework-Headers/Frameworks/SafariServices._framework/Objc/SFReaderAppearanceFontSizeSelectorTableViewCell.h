@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)_createFontSizeSelectorButtons;
 - (void)_decreaseButtonAction:(id)arg1;
 - (void)_increaseButtonAction:(id)arg1;
+- (void)_updateButtons;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

@@ -12,8 +12,12 @@
 
 @interface RPIdentity : NSObject <NSSecureCoding>
 {
+    BOOL _userAdded;
+    BOOL _disabled;
     BOOL _present;
     int _type;
+    NSString *_accountID;
+    NSString *_contactID;
     NSDate *_dateAdded;
     NSDate *_dateRemoved;
     NSData *_deviceIRKData;
@@ -28,11 +32,14 @@
     NSDate *_dateRequested;
 }
 
+@property (copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
+@property (copy, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;
 @property (copy, nonatomic) NSDate *dateAcknowledged; // @synthesize dateAcknowledged=_dateAcknowledged;
 @property (copy, nonatomic) NSDate *dateAdded; // @synthesize dateAdded=_dateAdded;
 @property (copy, nonatomic) NSDate *dateRemoved; // @synthesize dateRemoved=_dateRemoved;
 @property (copy, nonatomic) NSDate *dateRequested; // @synthesize dateRequested=_dateRequested;
 @property (copy, nonatomic) NSData *deviceIRKData; // @synthesize deviceIRKData=_deviceIRKData;
+@property (nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
 @property (copy, nonatomic) NSData *edPKData; // @synthesize edPKData=_edPKData;
 @property (copy, nonatomic) NSData *edSKData; // @synthesize edSKData=_edSKData;
 @property (nonatomic) unsigned long long featureFlags; // @synthesize featureFlags=_featureFlags;
@@ -41,9 +48,8 @@
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL present; // @synthesize present=_present;
-@property (readonly, nonatomic) BOOL sufficientForFamilyIdentity;
-@property (readonly, nonatomic) BOOL sufficientForSelfIdentity;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (nonatomic) BOOL userAdded; // @synthesize userAdded=_userAdded;
 
 + (id)nullIdentity;
 + (BOOL)supportsSecureCoding;
@@ -54,6 +60,7 @@
 - (id)descriptionWithLevel:(int)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithType:(int)arg1;
 - (id)signData:(id)arg1 error:(id *)arg2;
 - (BOOL)signDataPtr:(const void *)arg1 dataLen:(unsigned long long)arg2 signatureBytes:(unsigned char [64])arg3 error:(id *)arg4;
 - (unsigned int)updateWithKeychainItem:(id)arg1 error:(id *)arg2;

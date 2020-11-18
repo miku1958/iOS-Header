@@ -96,6 +96,7 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)i_image;
 - (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 distortedToMatch:(BOOL)arg3 keepingChildrenPassingTest:(CDUnknownBlockType)arg4;
+- (void)i_layoutIfNeeded;
 - (void)i_layoutIfNeededUpdatingLayerTree;
 - (BOOL)i_needsLayout;
 - (struct CGImage *)i_newImageInContext:(struct CGContext *)arg1 bounds:(struct CGRect)arg2 integralBounds:(struct CGRect)arg3 distortedToMatch:(BOOL)arg4 keepingChildrenPassingTest:(CDUnknownBlockType)arg5;
@@ -120,8 +121,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isExportingFixedLayoutEPUB;
 - (BOOL)isPrinting;
 - (BOOL)isRenderingForKPF;
-- (void)layoutIfNeeded;
 - (void)layoutInvalidated;
+- (void)nonInteractiveLayoutIfNeeded;
 - (void)orderRepsForLayout:(id)arg1;
 - (struct CGRect)p_bounds;
 - (void)p_layoutWithReadLock;

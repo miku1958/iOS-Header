@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_showTextSelectionMenu;
 - (unsigned long long)_typeForGestureRecognizer:(id)arg1;
 - (void)_updateLollipopDragAtLocation:(struct CGPoint)arg1;
+- (void)_updateLollipopDragAtLocation:(struct CGPoint)arg1 locationOfFirstTouch:(struct CGPoint)arg2;
 - (void)_updateState:(int)arg1 forGesture:(unsigned long long)arg2 atLocation:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4;
 - (void)_updateWordDragAtLocation:(struct CGPoint)arg1;
 - (void)activateNextAnnotation:(BOOL)arg1;

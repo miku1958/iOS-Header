@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)baseDirectoryURL;
 + (id)sharedManager;
 - (id)newDirectoryForDocumentUUID:(id)arg1;
+- (id)newDirectoryWithFilename:(id)arg1;
 
 @end
 

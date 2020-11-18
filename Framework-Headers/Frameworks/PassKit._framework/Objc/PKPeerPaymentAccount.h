@@ -13,6 +13,7 @@
 @interface PKPeerPaymentAccount : NSObject <NSSecureCoding>
 {
     BOOL _accountStateDirty;
+    BOOL _identityVerificationForDisbursementsRequired;
     BOOL _identityVerificationRequired;
     BOOL _termsAcceptanceRequired;
     unsigned long long _state;
@@ -22,11 +23,11 @@
     NSDecimalNumber *_maximumBalance;
     NSDate *_lastUpdated;
     double _proactiveFetchPeriod;
-    NSString *_termsIdentifier;
-    NSURL *_termsURL;
     NSURL *_associatedPassURL;
     long long _pendingPaymentCount;
     NSArray *_supportedFeatureDescriptors;
+    NSString *_termsIdentifier;
+    NSURL *_termsURL;
     NSString *_associatedPassSerialNumber;
     NSString *_associatedPassTypeIdentifier;
 }
@@ -38,6 +39,7 @@
 @property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (copy, nonatomic) PKCurrencyAmount *currentBalance; // @synthesize currentBalance=_currentBalance;
 @property (readonly, copy, nonatomic) NSArray *defaultSuggestions;
+@property (nonatomic) BOOL identityVerificationForDisbursementsRequired; // @synthesize identityVerificationForDisbursementsRequired=_identityVerificationForDisbursementsRequired;
 @property (nonatomic) BOOL identityVerificationRequired; // @synthesize identityVerificationRequired=_identityVerificationRequired;
 @property (strong, nonatomic) NSDate *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
 @property (copy, nonatomic) NSDecimalNumber *maximumBalance; // @synthesize maximumBalance=_maximumBalance;
@@ -63,12 +65,14 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithDictionary:(id)arg1 lastUpdated:(id)arg2;
+- (id)instantWithdrawalPromotionFeatureDescriptor;
 - (BOOL)isAccountOutOfDate;
 - (BOOL)isEqual:(id)arg1;
 - (id)loadFromCardFeatureDescriptor;
 - (id)requestFromUserFeatureDescriptor;
 - (id)sendToUserFeatureDescriptor;
 - (BOOL)supportsCardBalancePromotion;
+- (BOOL)supportsInstantWithdrawal;
 - (BOOL)supportsLoadFromCard;
 - (BOOL)supportsRequestFromUser;
 - (BOOL)supportsSendToUser;

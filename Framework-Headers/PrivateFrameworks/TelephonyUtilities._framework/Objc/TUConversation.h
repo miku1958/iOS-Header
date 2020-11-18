@@ -29,6 +29,7 @@
     NSString *_messagesGroupName;
     long long _maxVideoDecodesAllowed;
     NSObject *_reportingHierarchyToken;
+    NSObject *_reportingHierarchySubToken;
 }
 
 @property (readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
@@ -44,6 +45,7 @@
 @property (strong, nonatomic) NSUUID *messagesGroupUUID; // @synthesize messagesGroupUUID=_messagesGroupUUID;
 @property (copy, nonatomic) NSSet *participantHandles; // @synthesize participantHandles=_participantHandles;
 @property (copy, nonatomic) NSSet *remoteMembers; // @synthesize remoteMembers=_remoteMembers;
+@property (strong, nonatomic) NSObject *reportingHierarchySubToken; // @synthesize reportingHierarchySubToken=_reportingHierarchySubToken;
 @property (strong, nonatomic) NSObject *reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled; // @synthesize videoEnabled=_videoEnabled;

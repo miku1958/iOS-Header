@@ -22,6 +22,7 @@
 - (void)deleteSavedRecordWithIdentfier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchSavedRecordInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;
+- (void)saveCoreDuetEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveRecordWithData:(id)arg1 recordInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)shouldMakeRecordWithFrequency:(unsigned long long)arg1;
 

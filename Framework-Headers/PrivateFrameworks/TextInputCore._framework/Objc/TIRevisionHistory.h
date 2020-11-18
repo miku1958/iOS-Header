@@ -40,6 +40,7 @@
 - (void)addRevisedTokenString:(id)arg1 withTokenID:(struct TITokenID)arg2 inDocumentRange:(struct _NSRange)arg3 toRevision:(id)arg4;
 - (void)adjustTokenOffsetAfterDeletedTokenRange:(struct _NSRange)arg1 withDeletedCharacterCount:(unsigned long long)arg2;
 - (void)annotateTokensCreatedFromDocumentState;
+- (void)collectPFLTelemetryForTokenAtIndex:(unsigned long long)arg1;
 - (id)currentUserTyping;
 - (id)currentWord;
 - (void)dealloc;

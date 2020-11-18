@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)chartSeriesType;
 + (BOOL)isHorizontalChart;
 + (BOOL)isStacked;
-+ (struct TSCH3DScenePart)partWithEnumerator:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
++ (id)partWithEnumerator:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
 - (tvec2_84d5962d)labelObjectSpacePosition:(unsigned int)arg1 axisValue:(double)arg2 intercept:(double)arg3;
 - (void)updateLightingEffectsState:(id)arg1 scene:(id)arg2;
 

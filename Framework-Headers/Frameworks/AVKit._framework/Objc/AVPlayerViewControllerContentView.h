@@ -17,6 +17,7 @@
     BOOL _canAutomaticallyZoomLetterboxVideos;
     BOOL _styleSheetShouldUseCompactFullScreenItemSize;
     BOOL _needsInitialLayout;
+    BOOL _backdropCaptureViewHidden;
     NSString *_automaticVideoGravity;
     NSString *_captureGroupName;
     _UIVisualEffectBackdropView *_captureView;
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic) UIImageView *audioOnlyIndicatorView; // @synthesize audioOnlyIndicatorView=_audioOnlyIndicatorView;
 @property (readonly, nonatomic) UIImageView *audioOnlyIndicatorViewIfLoaded;
 @property (copy, nonatomic) NSString *automaticVideoGravity; // @synthesize automaticVideoGravity=_automaticVideoGravity;
+@property (nonatomic) BOOL backdropCaptureViewHidden; // @synthesize backdropCaptureViewHidden=_backdropCaptureViewHidden;
 @property (nonatomic) struct CGRect boundsForLastLayoutSubviews; // @synthesize boundsForLastLayoutSubviews=_boundsForLastLayoutSubviews;
 @property (nonatomic) BOOL canAutomaticallyZoomLetterboxVideos; // @synthesize canAutomaticallyZoomLetterboxVideos=_canAutomaticallyZoomLetterboxVideos;
 @property (readonly, nonatomic) NSString *captureGroupName; // @synthesize captureGroupName=_captureGroupName;
@@ -108,6 +110,7 @@
 - (void)setShowsUnsupportedContentIndicator:(BOOL)arg1;
 - (void)setTargetVideoGravity:(id)arg1 forLayoutClass:(unsigned long long)arg2;
 - (void)setVideoGravityForTransitioningContent:(id)arg1;
+- (void)updateBackdropCaptureViewHidden;
 
 @end
 

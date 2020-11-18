@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _SFPBAppIconImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBURLImage;
+@class NSData, NSDictionary, NSString, _SFPBAppIconImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBURLImage;
 
 @protocol _SFPBImage <NSObject>
 
@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *keyColor;
 @property (strong, nonatomic) _SFPBLocalImage *localImage;
+@property (strong, nonatomic) _SFPBMediaArtworkImage *mediaArtworkImage;
 @property (strong, nonatomic) _SFPBMonogramImage *monogramImage;
 @property (strong, nonatomic) _SFPBGraphicalFloat *scale;
 @property (nonatomic) BOOL shouldCropToCircle;

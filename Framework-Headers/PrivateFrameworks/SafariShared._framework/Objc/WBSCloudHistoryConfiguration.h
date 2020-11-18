@@ -10,6 +10,8 @@
 
 @interface WBSCloudHistoryConfiguration : NSObject
 {
+    BOOL _shouldBatchSaveRecords;
+    BOOL _shouldUseLongLivedOperationsToSaveRecords;
     NSString *_singleDeviceSaveChangesThrottlingPolicyString;
     NSString *_multipleDeviceSaveChangesThrottlingPolicyString;
     NSString *_singleDeviceFetchChangesThrottlingPolicyString;
@@ -22,8 +24,8 @@
 @property unsigned long long maximumRequestCharacterCount; // @synthesize maximumRequestCharacterCount=_maximumRequestCharacterCount;
 @property (strong) NSString *multipleDeviceFetchChangesThrottlingPolicyString; // @synthesize multipleDeviceFetchChangesThrottlingPolicyString=_multipleDeviceFetchChangesThrottlingPolicyString;
 @property (strong) NSString *multipleDeviceSaveChangesThrottlingPolicyString; // @synthesize multipleDeviceSaveChangesThrottlingPolicyString=_multipleDeviceSaveChangesThrottlingPolicyString;
-@property (readonly) BOOL shouldBatchSaveRecords;
-@property (readonly) BOOL shouldUseLongLivedOperationsToSaveRecords;
+@property (readonly) BOOL shouldBatchSaveRecords; // @synthesize shouldBatchSaveRecords=_shouldBatchSaveRecords;
+@property (readonly) BOOL shouldUseLongLivedOperationsToSaveRecords; // @synthesize shouldUseLongLivedOperationsToSaveRecords=_shouldUseLongLivedOperationsToSaveRecords;
 @property (strong) NSString *singleDeviceFetchChangesThrottlingPolicyString; // @synthesize singleDeviceFetchChangesThrottlingPolicyString=_singleDeviceFetchChangesThrottlingPolicyString;
 @property (strong) NSString *singleDeviceSaveChangesThrottlingPolicyString; // @synthesize singleDeviceSaveChangesThrottlingPolicyString=_singleDeviceSaveChangesThrottlingPolicyString;
 @property (strong) NSString *syncCircleSizeRetrievalThrottlingPolicyString; // @synthesize syncCircleSizeRetrievalThrottlingPolicyString=_syncCircleSizeRetrievalThrottlingPolicyString;
@@ -36,7 +38,9 @@
 - (id)_sharedBuiltInConfiguration;
 - (void)applyPlatformConfiguration:(id)arg1 withTolerance:(long long)arg2;
 - (void)applyRemoteConfiguration:(id)arg1;
+- (id)dictionaryRepresentation;
 - (id)init;
+- (id)initWithDictionary:(id)arg1;
 - (id)platformBuiltInConfiguration;
 - (id)remoteConfiguration;
 

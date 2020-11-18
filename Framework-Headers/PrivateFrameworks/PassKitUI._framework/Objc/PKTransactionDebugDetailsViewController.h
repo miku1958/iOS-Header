@@ -14,30 +14,36 @@
     UITableViewCell *_mapsCell;
     NSDictionary *_transactionDetails;
     NSDictionary *_merchantDetails;
+    NSDictionary *_mapsMerchantDetails;
 }
 
+@property (copy, nonatomic) NSDictionary *mapsMerchantDetails; // @synthesize mapsMerchantDetails=_mapsMerchantDetails;
 @property (strong, nonatomic) NSDictionary *merchantDetails; // @synthesize merchantDetails=_merchantDetails;
 @property (strong, nonatomic) NSDictionary *transactionDetails; // @synthesize transactionDetails=_transactionDetails;
 
 - (void).cxx_destruct;
 - (id)_cellWithPrimaryText:(id)arg1 infoText:(id)arg2;
 - (void)_didSelectMap;
-- (BOOL)_hasMUID;
+- (void)_handleShareButton:(id)arg1;
+- (id)_mapsBrandInfoCellForIndex:(long long)arg1;
 - (id)_mapsCell;
+- (id)_mapsMerchantInfoCellForIndex:(long long)arg1;
 - (id)_merchantInfoCellForIndex:(long long)arg1;
 - (id)_stringForTechnologyType:(long long)arg1;
 - (id)_stringForTransactionSource:(unsigned long long)arg1;
 - (id)_stringForTransactionStatus:(long long)arg1;
 - (id)_stringForTransactionType:(long long)arg1;
 - (id)_transactionInfoCellForIndex:(long long)arg1;
-- (void)dealloc;
 - (id)initWithTransaction:(id)arg1;
+- (id)mapsBrandDetails;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (BOOL)tableView:(id)arg1 canPerformAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)tableView:(id)arg1 performAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
+- (BOOL)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
-- (void)viewDidLoad;
 
 @end
 

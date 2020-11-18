@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 + (id)purpleColor;
 + (id)randomColor;
 + (id)redColor;
++ (id)tsd_darkInsertSwatchBackgroundColor;
 + (id)whiteColor;
 + (id)yellowColor;
 - (id)blendedColorWithFraction:(double)arg1 ofColor:(id)arg2;
@@ -76,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)getRGBAComponents:(double *)arg1;
+- (BOOL)hasSimilarLuminanceToOtherColor:(id)arg1 minRatio:(double)arg2 maxRatio:(double)arg3;
 - (double)hueComponent;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
 - (id)initWithArchive:(const struct Color *)arg1 unarchiver:(id)arg2;

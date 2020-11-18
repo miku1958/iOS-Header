@@ -116,6 +116,7 @@
 - (void)gizmoFailedToCreatePasscode:(id)arg1;
 - (void)handleOfflineTermsResponse:(id)arg1;
 - (void)handlePerformanceResults:(id)arg1;
+- (void)handleRemoteActivationDetails:(id)arg1;
 - (void)handleWarrantySentinelResponse:(id)arg1;
 - (id)init;
 - (void)invalidateTimeoutTimer;

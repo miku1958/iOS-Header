@@ -19,8 +19,8 @@
 - (id)_accessibilityScrollStatusFormatString;
 - (void)_accessibilityThumbnailApplyScrollOffset:(struct CGPoint)arg1;
 - (struct CGPoint)_accessibilityThumbnailOffset;
+- (void)_dismissWithItemAtCurrentDecelerationFactor:(id)arg1;
 - (BOOL)_isClosingLastItem;
-- (void)_setDismissing:(BOOL)arg1;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (id)initWithFrame:(id)arg1;
 - (BOOL)isAccessibilityOpaqueElementProvider;

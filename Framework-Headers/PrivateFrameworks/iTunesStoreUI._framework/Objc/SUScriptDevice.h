@@ -121,11 +121,14 @@
 - (id)getMachineIdentifierForAccountIdentifier:(id)arg1;
 - (id)hasCapability:(id)arg1;
 - (id)init;
+- (id)isRestrictionLockedDown:(id)arg1;
 - (void)requestFreeSpaceWithBytes:(id)arg1 options:(id)arg2 completionHandler:(id)arg3;
+- (id)restrictionExplicitMedia;
 - (id)restrictionLevelForType:(id)arg1;
 - (id)scriptAttributeKeys;
 - (void)setAutomaticDownloadKinds:(id)arg1 withCompletionHandler:(id)arg2;
 - (void)setDiskUsageDictionary:(id)arg1;
+- (void)setValueForRestriction:(id)arg1 enabled:(id)arg2;
 - (id)valueForRestriction:(id)arg1;
 
 @end

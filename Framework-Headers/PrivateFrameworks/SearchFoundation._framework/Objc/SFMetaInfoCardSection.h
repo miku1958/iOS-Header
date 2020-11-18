@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFMetaInfoCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, NSURL, SFCard, SFColor, SFImage;
+@class NSArray, NSData, NSDictionary, NSString, NSURL, SFCard, SFColor, SFImage, SFUserReportRequest;
 
 @interface SFMetaInfoCardSection : SFCardSection <SFMetaInfoCardSection, NSSecureCoding, NSCopying>
 {
@@ -61,6 +61,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL trending; // @synthesize trending=_trending;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

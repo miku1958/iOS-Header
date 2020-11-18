@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (Color_1703f521)ambientColorAtIndex:(unsigned long long)arg1;
 - (struct Vector3)attenuationAtIndex:(unsigned long long)arg1;
 - (Color_1703f521)colorAtIndex:(unsigned long long)arg1 redKey:(id)arg2 greenKey:(id)arg3 blueKey:(id)arg4;
-- (int)coordinateSpaceAtIndex:(unsigned long long)arg1;
+- (long long)coordinateSpaceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;
 - (float)cutOffAngleAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)packageName;
 - (struct Vector3)positionAtIndex:(unsigned long long)arg1;
 - (Color_1703f521)specularColorAtIndex:(unsigned long long)arg1;
-- (int)typeAtIndex:(unsigned long long)arg1;
+- (long long)typeAtIndex:(unsigned long long)arg1;
 
 @end
 

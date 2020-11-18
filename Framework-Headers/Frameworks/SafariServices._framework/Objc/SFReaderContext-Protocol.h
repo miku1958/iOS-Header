@@ -6,15 +6,17 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, WBSReaderFontManager;
+@class NSDictionary, NSString, NSURL, WBSReaderConfigurationManager, WBSReaderFont, WBSReaderFontManager;
 
 @protocol SFReaderContext <NSObject>
 - (void)activateReader;
+- (BOOL)canDecreaseReaderTextSize;
+- (BOOL)canIncreaseReaderTextSize;
 - (void)clearAvailability;
 - (void)clearReaderWebView;
 - (void)clearUnusedReaderResourcesSoon;
 - (void)collectReaderContentForMailWithCompletion:(void (^)(NSString *))arg1;
-- (NSDictionary *)configuration;
+- (WBSReaderConfigurationManager *)configurationManager;
 - (void)createArticleFinder;
 - (void)deactivateReaderNow:(unsigned long long)arg1;
 - (void)decreaseReaderTextSize;
@@ -24,10 +26,11 @@
 - (BOOL)isReaderAvailable;
 - (void)loadNewArticle;
 - (NSURL *)readerURL;
+- (void)resetReaderTextSize;
 - (NSDictionary *)scrollPositionInformation;
-- (void)setReaderFont:(NSString *)arg1;
+- (void)setReaderFont:(WBSReaderFont *)arg1;
 - (void)setReaderLanguageTag:(NSString *)arg1;
-- (void)setReaderTheme:(NSString *)arg1;
+- (void)setReaderTheme:(long long)arg1 forAppearance:(long long)arg2;
 - (BOOL)shouldCreateArticleFinder;
 - (void)stopLoadingNextPage;
 @end

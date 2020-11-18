@@ -8,7 +8,7 @@
 
 #import <SafariServices/LAUIDelegate-Protocol.h>
 
-@class LAContext, NSHashTable, NSMapTable, NSMutableOrderedSet;
+@class LAContext, NSData, NSHashTable, NSMapTable, NSMutableOrderedSet;
 @protocol _SFAuthenticationClient, _SFAuthenticationContextDelegate;
 
 @interface _SFAuthenticationContext : NSObject <LAUIDelegate>
@@ -33,11 +33,11 @@
 }
 
 @property (weak, nonatomic) id<_SFAuthenticationContextDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) NSData *externalizedContext;
 @property (readonly, nonatomic) BOOL needsAuthentication;
 
 - (void).cxx_destruct;
 - (id)_authenticationContext;
-- (BOOL)_biometricProtectionEnabled;
 - (BOOL)_canInvalidateAuthentication;
 - (void)_cancelOngoingAndPendingAuthentications;
 - (void)_cancelOngoingAuthentication;
@@ -53,7 +53,6 @@
 - (void)applicationDidEnterBackground;
 - (void)applicationWillEnterForeground;
 - (void)authenticateForClient:(id)arg1 userInitiated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (BOOL)authenticateWithNoPromptForClient:(id)arg1;
 - (void)dealloc;
 - (void)event:(long long)arg1 params:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)init;

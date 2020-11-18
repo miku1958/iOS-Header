@@ -9,12 +9,13 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class AFSpeechRequestOptions, NSData, NSDictionary, NSNumber, NSString, SAStartLocalRequest, SAStartRequest;
+@class AFSpeechRequestOptions, NSData, NSDictionary, NSNumber, NSString, NSUUID, SAStartLocalRequest, SAStartRequest;
 
 @interface AFRequestInfo : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _handoffRequiresUserInteraction;
     unsigned long long _timestamp;
+    struct NSUUID *_turnIdentifier;
     unsigned long long _options;
     NSNumber *_notifyState;
     NSString *_text;
@@ -64,6 +65,7 @@
 @property (copy, nonatomic) SAStartRequest *startRequest; // @synthesize startRequest=_startRequest;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (readonly, nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (copy, nonatomic) NSUUID *turnIdentifier; // @synthesize turnIdentifier=_turnIdentifier;
 @property (copy, nonatomic) NSString *utteranceSource; // @synthesize utteranceSource=_utteranceSource;
 
 + (BOOL)supportsSecureCoding;

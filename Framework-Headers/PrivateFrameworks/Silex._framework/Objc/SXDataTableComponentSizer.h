@@ -9,17 +9,17 @@
 #import <Silex/SXDataTableComponentControllerDataSource-Protocol.h>
 
 @class NSString, SXDataTableComponentController, SXDataTableLayouter;
-@protocol SXTextComponentLayoutHosting;
+@protocol SXLayoutContext, SXTextComponentLayoutHosting;
 
 @interface SXDataTableComponentSizer : SXComponentSizer <SXDataTableComponentControllerDataSource>
 {
     id<SXTextComponentLayoutHosting> _textComponentLayoutHosting;
     SXDataTableLayouter *_layouter;
     SXDataTableComponentController *_dataTableComponentController;
-    double _currentWidth;
+    id<SXLayoutContext> _currentLayoutContext;
 }
 
-@property (nonatomic) double currentWidth; // @synthesize currentWidth=_currentWidth;
+@property (strong, nonatomic) id<SXLayoutContext> currentLayoutContext; // @synthesize currentLayoutContext=_currentLayoutContext;
 @property (strong, nonatomic) SXDataTableComponentController *dataTableComponentController; // @synthesize dataTableComponentController=_dataTableComponentController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,15 +29,15 @@
 @property (readonly, nonatomic) id<SXTextComponentLayoutHosting> textComponentLayoutHosting; // @synthesize textComponentLayoutHosting=_textComponentLayoutHosting;
 
 - (void).cxx_destruct;
-- (double)calculateHeightForWidth:(double)arg1 inColumnLayout:(id)arg2;
+- (id)DOMObjectProviderForDataTableComponentController:(id)arg1;
+- (double)calculateHeightForWidth:(double)arg1 layoutContext:(id)arg2;
 - (id)componentForDataTableComponentController:(id)arg1;
 - (id)contentSizeCategoryForDataTableComponentController:(id)arg1;
 - (id)documentColumnLayoutForDataTableComponentController:(id)arg1;
-- (id)documentControllerForDataTableComponentController:(id)arg1;
-- (id)initWithComponent:(id)arg1 componentLayout:(id)arg2 componentStyle:(id)arg3 documentController:(id)arg4 layoutAttributes:(id)arg5 textComponentLayoutHosting:(id)arg6 textSourceFactory:(id)arg7;
-- (id)tableStyleForComponent:(id)arg1 documentController:(id)arg2;
+- (id)initWithComponent:(id)arg1 componentLayout:(id)arg2 componentStyle:(id)arg3 DOMObjectProvider:(id)arg4 layoutOptions:(id)arg5 textComponentLayoutHosting:(id)arg6 textSourceFactory:(id)arg7 recordValueTransformerFactory:(id)arg8;
+- (id)tableStyleForComponent:(id)arg1;
 - (id)textComponentLayoutHostingForDataTableComponentController:(id)arg1;
-- (double)widthForDataTableComponentController:(id)arg1;
+- (id)unitConverterForDataTableComponentController:(id)arg1;
 
 @end
 

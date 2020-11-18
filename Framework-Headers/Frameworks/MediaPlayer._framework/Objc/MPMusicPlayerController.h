@@ -19,6 +19,7 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_group> *_pendingRequestGroup;
     MPMusicPlayerQueueDescriptor *_pendingQueueDescriptor;
+    BOOL _hasTracklistUIDChangedWhilePreparingToPlay;
     CDUnknownBlockType _pendingPrepareCompletion;
     NSMutableDictionary *_responseValidators;
     MPArtworkCatalog *_previousArtworkCatalog;
@@ -60,6 +61,8 @@
 - (id)_init;
 - (id)_mediaItemFromSong:(id)arg1;
 - (void)_preflightRequestIfNeeded;
+- (void)_queueDidChangeWithResponse:(id)arg1;
+- (void)adjustLoadedQueueRangeToReverseCount:(long long)arg1 forwardCount:(long long)arg2;
 - (void)appendQueueDescriptor:(id)arg1;
 - (void)beginGeneratingPlaybackNotifications;
 - (void)beginSeekingBackward;

@@ -9,7 +9,7 @@
 #import <CoreKnowledge/NSCopying-Protocol.h>
 #import <CoreKnowledge/NSSecureCoding-Protocol.h>
 
-@class MISSING_TYPE, NSDictionary;
+@class MISSING_TYPE;
 
 @interface CKAppInteractionsContext : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,17 +17,11 @@
     MISSING_TYPE *numberOfDiscardedDonationsByIntentTypeAndBundleId;
 }
 
-@property (nonatomic, copy) NSDictionary *_outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId; // @synthesize _outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId;
-@property (nonatomic, copy) NSDictionary *numberOfDiscardedDonationsByIntentTypeAndBundleId; // @synthesize numberOfDiscardedDonationsByIntentTypeAndBundleId;
-@property (nonatomic, readonly) NSDictionary *outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId;
-
 + (BOOL)supportsSecureCoding;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)copyWithZone:(void *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)incrementNumberOfOutOfAppLaunchBoundaryDonationsForBundleId:(id)arg1 intent:(id)arg2;
 - (id)init;
-- (id)init:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)updateDiscardedDonations:(double)arg1 forIntentType:(id)arg2 andBundleId:(id)arg3;
 

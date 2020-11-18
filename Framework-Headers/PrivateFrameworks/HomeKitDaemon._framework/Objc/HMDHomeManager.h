@@ -562,6 +562,7 @@
 - (void)handleMetadataDictionary:(id)arg1 message:(id)arg2;
 - (void)handleNoHomeKitAppInForeground:(id)arg1;
 - (void)handleVendorInfoUpdated:(id)arg1;
+- (id)homeUserFromMessage:(id)arg1 home:(id)arg2;
 - (id)identifiersOfAccessories:(id)arg1;
 - (id)identifiersOfAccessoriesForHome:(id)arg1;
 - (id)initWithMessageDispatcher:(id)arg1 remoteMessageDispatcher:(id)arg2 accessoryBrowser:(id)arg3 messageFilterChain:(id)arg4 homeData:(id)arg5 localDataDecryptionFailed:(BOOL)arg6 identityRegistry:(id)arg7 appRegistry:(id)arg8 accountRegistry:(id)arg9;

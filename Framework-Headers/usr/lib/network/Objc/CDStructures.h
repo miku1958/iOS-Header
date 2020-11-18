@@ -17,10 +17,6 @@ struct activity_bitmap {
     unsigned long long _field2[2];
 };
 
-struct atomic_flag {
-    _Atomic BOOL _Value;
-};
-
 struct ifnet_stats_per_flow {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -303,7 +299,8 @@ struct nw_connection_report_s {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :3;
+    unsigned int :1;
+    unsigned int :2;
     unsigned char _field47[7];
 };
 

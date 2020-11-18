@@ -41,8 +41,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL definedRightStroke; // @synthesize definedRightStroke=_definedRightStroke;
 @property (readonly, nonatomic) BOOL definedTopStroke; // @synthesize definedTopStroke=_definedTopStroke;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasContent;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, strong, nonatomic) TSDStroke *leftStroke; // @synthesize leftStroke=_leftStroke;
 @property (readonly, nonatomic) int leftStrokeOrder; // @synthesize leftStrokeOrder=_leftStrokeOrder;
 @property (readonly, strong, nonatomic) TSDStroke *rightStroke; // @synthesize rightStroke=_rightStroke;

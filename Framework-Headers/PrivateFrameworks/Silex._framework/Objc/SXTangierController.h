@@ -12,8 +12,8 @@
 #import <Silex/SXTextSelecting-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class NSMutableSet, NSString, STScrollView, STTangierRepDirectLayerHostProvider, STTangierTextRenderCollector, STTextTangierCanvasViewController, STTextTangierDocumentRoot, STTextTangierInteractiveCanvasController, SXComponentController, SXViewport, TSKDocumentRoot, TSWPSelection, UIView;
-@protocol OS_dispatch_semaphore, SXComponentActionHandler, SXComponentInteractionManager, SXTangierControllerDelegate, SXTangierDragItemProvider;
+@class NSMutableSet, NSString, STScrollView, STTangierRepDirectLayerHostProvider, STTangierTextRenderCollector, STTextTangierCanvasViewController, STTextTangierDocumentRoot, STTextTangierInteractiveCanvasController, SXViewport, TSKDocumentRoot, TSWPSelection, UIView;
+@protocol SXComponentActionHandler, SXComponentController, SXComponentInteractionManager, SXTangierControllerDelegate, SXTangierDragItemProvider;
 
 @interface SXTangierController : NSObject <STTextTangierInteractiveCanvasControllerDelegate, STTextTangierInteractiveCanvasControllerDataSource, SXViewportChangeListener, SXTextComponentLayoutHosting, SXTextSelecting>
 {
@@ -23,6 +23,7 @@
     BOOL _preventScrollViewDidScrollReentrance;
     BOOL _disableClippingForTiles;
     BOOL _performedInitialLayoutAndRender;
+    struct os_unfair_lock_s _unfairLock;
     id<SXTangierControllerDelegate> _delegate;
     STTextTangierCanvasViewController *_cvc;
     STTextTangierInteractiveCanvasController *_icc;
@@ -31,7 +32,7 @@
     STScrollView *_scrollView;
     id<SXComponentActionHandler> _componentActionHandler;
     id<SXTangierDragItemProvider> _dragItemProvider;
-    SXComponentController *_componentController;
+    id<SXComponentController> _componentController;
     id<SXComponentInteractionManager> _componentInteractionManager;
     STTangierTextRenderCollector *_textRenderCollector;
     STTangierRepDirectLayerHostProvider *_directLayerHostProvider;
@@ -40,14 +41,13 @@
     UIView *_overlayRepsHost;
     TSWPSelection *_storedSelection;
     NSMutableSet *_presentedTextViews;
-    NSObject<OS_dispatch_semaphore> *_semaphore;
 }
 
 @property (readonly, nonatomic) UIView *aboveRepsHost; // @synthesize aboveRepsHost=_aboveRepsHost;
 @property (readonly, nonatomic) BOOL allowEditMenuToAppear;
 @property (readonly, nonatomic) BOOL allowTextEditingToBegin;
 @property (readonly, nonatomic) id<SXComponentActionHandler> componentActionHandler; // @synthesize componentActionHandler=_componentActionHandler;
-@property (readonly, nonatomic) SXComponentController *componentController; // @synthesize componentController=_componentController;
+@property (readonly, nonatomic) id<SXComponentController> componentController; // @synthesize componentController=_componentController;
 @property (readonly, nonatomic) id<SXComponentInteractionManager> componentInteractionManager; // @synthesize componentInteractionManager=_componentInteractionManager;
 @property (readonly, nonatomic) STTextTangierCanvasViewController *cvc; // @synthesize cvc=_cvc;
 @property (readonly, copy) NSString *debugDescription;
@@ -66,11 +66,10 @@
 @property (readonly, nonatomic) BOOL isPrintingCanvas;
 @property (readonly, nonatomic) UIView *overlayRepsHost; // @synthesize overlayRepsHost=_overlayRepsHost;
 @property (nonatomic) BOOL performedInitialLayoutAndRender; // @synthesize performedInitialLayoutAndRender=_performedInitialLayoutAndRender;
-@property (strong, nonatomic) NSMutableSet *presentedTextViews; // @synthesize presentedTextViews=_presentedTextViews;
+@property (readonly, nonatomic) NSMutableSet *presentedTextViews; // @synthesize presentedTextViews=_presentedTextViews;
 @property (nonatomic) BOOL preventScrollViewDidScrollReentrance; // @synthesize preventScrollViewDidScrollReentrance=_preventScrollViewDidScrollReentrance;
 @property (nonatomic) BOOL rebuildFlows; // @synthesize rebuildFlows=_rebuildFlows;
 @property (strong, nonatomic) STScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property (readonly, nonatomic) NSObject<OS_dispatch_semaphore> *semaphore; // @synthesize semaphore=_semaphore;
 @property (readonly, nonatomic) BOOL shouldClipToScrollViewBoundsInVisibleBounds;
 @property (readonly, nonatomic) BOOL shouldPopKnobsOutsideEnclosingScrollView;
 @property (readonly, nonatomic) BOOL shouldResizeCanvasToScrollView;
@@ -83,6 +82,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) STTangierTextRenderCollector *textRenderCollector; // @synthesize textRenderCollector=_textRenderCollector;
 @property (readonly, nonatomic) UIView *underRepsHost; // @synthesize underRepsHost=_underRepsHost;
+@property (readonly, nonatomic) struct os_unfair_lock_s unfairLock; // @synthesize unfairLock=_unfairLock;
 @property (strong, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
 
 - (void).cxx_destruct;

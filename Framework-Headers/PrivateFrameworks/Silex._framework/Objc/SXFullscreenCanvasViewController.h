@@ -9,13 +9,16 @@
 @interface SXFullscreenCanvasViewController : UIViewController
 {
     BOOL _isTransitioning;
+    long long _statusBarStyle;
     CDUnknownBlockType _onTransition;
 }
 
 @property (nonatomic) BOOL isTransitioning; // @synthesize isTransitioning=_isTransitioning;
 @property (copy, nonatomic) CDUnknownBlockType onTransition; // @synthesize onTransition=_onTransition;
+@property (nonatomic) long long statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
 
 - (void).cxx_destruct;
+- (long long)preferredStatusBarStyle;
 - (long long)preferredStatusBarUpdateAnimation;
 - (BOOL)prefersStatusBarHidden;
 - (void)viewWillAppear:(BOOL)arg1;

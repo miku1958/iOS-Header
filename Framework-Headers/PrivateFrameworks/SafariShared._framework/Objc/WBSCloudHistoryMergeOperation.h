@@ -32,7 +32,7 @@
 - (void)_lookupRedirectChainSourcesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_mergeVisitsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_removeDuplicateVisits;
-- (void)_replayAndAddTombstones;
+- (void)_replayAndAddTombstones:(CDUnknownBlockType)arg1;
 - (void)_updateClientVersions;
 - (id)initWithHistory:(id)arg1 fetchResult:(id)arg2;
 - (void)mergeWithCompletion:(CDUnknownBlockType)arg1;

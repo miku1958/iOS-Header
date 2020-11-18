@@ -65,6 +65,7 @@
 - (id)binaryImagesDescription;
 - (id)binaryImagesDescriptionForBacktraces:(id)arg1;
 - (id)bundleIdentifier;
+- (void)cleansePathsIncludingBinaryImageList:(BOOL)arg1;
 - (void)clearCrashReporterInfo;
 - (int)cpuType;
 - (id)date;
@@ -79,7 +80,9 @@
 - (id)initWithTask:(unsigned int)arg1 getBinariesList:(BOOL)arg2;
 - (BOOL)is64Bit;
 - (BOOL)isAppleApplication;
+- (int)parentPid;
 - (id)parentProcessName;
+- (id)parentProcessPath;
 - (int)pid;
 - (id)processDescriptionHeader;
 - (id)processIdentifier;

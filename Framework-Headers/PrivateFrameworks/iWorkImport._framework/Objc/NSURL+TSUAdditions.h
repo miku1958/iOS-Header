@@ -11,9 +11,11 @@
 @property (readonly, getter=tsu_isInTrash) BOOL tsu_inTrash;
 
 + (id)tsu_fileURLWithPath:(id)arg1;
+- (id)tsu_URLExceptPrivate;
 - (id)tsu_contentModificationDateWithLogContext:(id)arg1;
 - (id)tsu_documentIdentifier;
-- (id)tsu_fileProviderBookmarkableString;
+- (id)tsu_fileProviderBookmarkableStringAndReturnError:(id *)arg1;
+- (void)tsu_fileProviderBookmarkableStringWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)tsu_fileSize;
 - (BOOL)tsu_fileSize:(out unsigned long long *)arg1 error:(id *)arg2;
 - (id)tsu_fileSystemTypeName;
@@ -26,6 +28,7 @@
 - (BOOL)tsu_isOnSameVolumeAs:(id)arg1;
 - (BOOL)tsu_isShared;
 - (BOOL)tsu_isShared:(out BOOL *)arg1 error:(id *)arg2;
+- (id)tsu_pathExceptPrivate;
 - (void)tsu_performSecurityScopedResourceAccessAsynchronouslyUsingBlock:(CDUnknownBlockType)arg1;
 - (void)tsu_performSecurityScopedResourceAccessUsingBlock:(CDUnknownBlockType)arg1;
 - (id)tsu_reachableFileURLByDeletingUnreachablePathComponents;

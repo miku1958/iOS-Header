@@ -15,12 +15,14 @@
     unsigned long long _numberOfWorkoutsPerformedToday;
     HKQuery *_workoutObservationQuery;
     REUpNextTimer *_workoutQueryCoalesceTimer;
-    NSDate *_lastWorkoutQueryDate;
     BOOL _hasActiveWorkout;
+    NSDate *_lastCompletedWorkoutDate;
 }
 
 @property (readonly, nonatomic, getter=isActiveWorkout) BOOL activeWorkout;
 @property BOOL hasActiveWorkout; // @synthesize hasActiveWorkout=_hasActiveWorkout;
+@property (strong) NSDate *lastCompletedWorkoutDate; // @synthesize lastCompletedWorkoutDate=_lastCompletedWorkoutDate;
+@property (readonly, nonatomic) NSDate *lastWorkoutDate;
 
 + (id)supportedFeatures;
 + (double)updateInterval;

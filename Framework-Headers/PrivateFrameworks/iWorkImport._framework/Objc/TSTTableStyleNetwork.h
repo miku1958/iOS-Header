@@ -119,7 +119,7 @@ __attribute__((visibility("hidden")))
 - (void)p_clearCategoryStyles;
 - (id)p_deriveCategoryCellStyleForTableStyleArea:(unsigned long long)arg1 fromCellStyle:(id)arg2 connectedToStylesheet:(BOOL)arg3;
 - (id)p_deriveCategoryTextStyleForTableStyleArea:(unsigned long long)arg1 fromTextStyle:(id)arg2 connectedToStylesheet:(BOOL)arg3;
-- (void)saveToArchive:(struct TableStyleNetworkArchive *)arg1 archiver:(id)arg2;
+- (void)p_saveToArchive:(struct TableStyleNetworkArchive *)arg1 archiver:(id)arg2 isPre30Alternate:(BOOL)arg3;
 - (void)saveToArchiver:(id)arg1;
 - (void)setCellStyle:(id)arg1 forTableStyleArea:(unsigned long long)arg2;
 - (void)setTextStyle:(id)arg1 forTableStyleArea:(unsigned long long)arg2;

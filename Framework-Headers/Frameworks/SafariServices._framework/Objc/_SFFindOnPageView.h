@@ -81,6 +81,7 @@
 - (id)longMatchLabelText;
 - (id)matchLabelText;
 - (void)next;
+- (void)prepareFindOnPage;
 - (void)prepareFindOnPageWithString:(id)arg1;
 - (void)previous;
 - (void)selectFindOnPageText;

@@ -26,19 +26,21 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSPPackage *package; // @synthesize package=_package;
 @property (readonly, nonatomic) long long packageType;
 
-+ (BOOL)convertDocumentAtURL:(id)arg1 toPackageType:(long long)arg2 error:(id *)arg3;
++ (BOOL)convertDocumentAtURL:(id)arg1 toPackageType:(long long)arg2 removeEntriesMatchingFilter:(id)arg3 error:(id *)arg4;
 + (id)newPackageConverterWithURL:(id)arg1 error:(id *)arg2;
 + (id)newPackageConverterWithURL:(id)arg1 preserveExtendedAttributes:(BOOL)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (BOOL)checkPassword:(id)arg1;
 - (BOOL)enumeratePackageEntriesWithZipArchive:(id)arg1 accessor:(CDUnknownBlockType)arg2;
+- (BOOL)hasEntriesMatchingFilter:(id)arg1;
 - (id)init;
 - (id)initWithURL:(id)arg1 package:(id)arg2 fileCoordinatorDelegate:(id)arg3 preserveExtendedAttributes:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)isDocumentPropertiesPath:(id)arg1;
 - (BOOL)isObjectArchivePath:(id)arg1;
 - (id)newWriteChannelAtPath:(id)arg1 lastModificationDate:(id)arg2 size:(unsigned long long)arg3 CRC:(unsigned int)arg4 packageWriter:(id)arg5 error:(id *)arg6;
+- (BOOL)path:(id)arg1 matchesFilter:(id)arg2;
 - (unsigned long long)progressTotalUnitCountWithZipArchive:(id)arg1;
-- (BOOL)writeToURL:(id)arg1 packageType:(long long)arg2 error:(id *)arg3;
+- (BOOL)writeToURL:(id)arg1 packageType:(long long)arg2 removeEntriesMatchingFilter:(id)arg3 error:(id *)arg4;
 
 @end
 

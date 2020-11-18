@@ -21,14 +21,10 @@
 @property int maxIterations; // @synthesize maxIterations;
 @property (readonly) Class superclass;
 
-- (void)addNoiseToDenseVector:(id)arg1;
-- (void)addNoiseToFeatureMatrix:(id)arg1;
-- (void)addNoiseToGradient:(id)arg1;
-- (void)addNoiseToObjectiveFeatures:(id)arg1;
 - (void)addNoiseToSparseMatrix:(id)arg1;
 - (void)addNoiseToSparseVector:(id)arg1;
-- (void)addNoiseToWeights:(id)arg1;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
+- (float)scaleAndAddNoiseToDenseVector:(id)arg1 usingNorm:(BOOL)arg2;
 - (id)toPlistWithChunks:(id)arg1;
 
 @end

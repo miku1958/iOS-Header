@@ -10,8 +10,6 @@
 
 @interface MCEDUClassroomPayload : MCPayload
 {
-    NSString *_resourcePayloadCertificateUUID;
-    NSData *_resourcePayloadCertificatePersistentID;
     CRKEDUPayload *_crk_payload;
 }
 
@@ -23,8 +21,8 @@
 @property (strong, nonatomic) NSArray *memberPayloadCertificateAnchorUUID;
 @property (strong, nonatomic) NSData *payloadCertificatePersistentID;
 @property (copy, nonatomic) NSString *payloadCertificateUUID;
-@property (strong, nonatomic) NSData *resourcePayloadCertificatePersistentID; // @synthesize resourcePayloadCertificatePersistentID=_resourcePayloadCertificatePersistentID;
-@property (copy, nonatomic) NSString *resourcePayloadCertificateUUID; // @synthesize resourcePayloadCertificateUUID=_resourcePayloadCertificateUUID;
+@property (strong, nonatomic) NSData *resourcePayloadCertificatePersistentID;
+@property (copy, nonatomic) NSString *resourcePayloadCertificateUUID;
 
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;

@@ -27,9 +27,12 @@
 - (BOOL)_addUserCookiesForResponse:(id)arg1 account:(id)arg2 error:(id *)arg3;
 - (id)_allCommerceiTunesAccounts;
 - (id)_alliTunesAccounts;
+- (id)_correspondingAccountWithAccountTypeIdentifier:(id)arg1 forAccount:(id)arg2;
 - (void)_createLocalAccount;
+- (id)ams_IDMSAccountForAccount:(id)arg1;
 - (BOOL)ams_addCookiesForResponse:(id)arg1 account:(id)arg2 error:(id *)arg3;
 - (BOOL)ams_addCookiesForResponse:(id)arg1 request:(id)arg2 account:(id)arg3 error:(id *)arg4;
+- (id)ams_cookiesForURL:(id)arg1;
 - (id)ams_iTunesAccountWithAltDSID:(id)arg1;
 - (id)ams_iTunesAccountWithAltDSID:(id)arg1 DSID:(id)arg2 username:(id)arg3;
 - (id)ams_iTunesAccountWithDSID:(id)arg1;

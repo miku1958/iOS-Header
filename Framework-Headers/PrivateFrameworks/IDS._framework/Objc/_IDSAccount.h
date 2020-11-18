@@ -42,7 +42,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) BOOL isInTransientRegistrationState;
-@property (readonly, nonatomic) BOOL isTransientCloudPairingAccount;
+@property (readonly, nonatomic) BOOL isTransientWhitelistedAccount;
 @property (readonly, nonatomic) BOOL isUsableForOuterMessaging;
 @property (readonly, nonatomic) BOOL isUserDisabled;
 @property (strong, nonatomic) NSString *loginID; // @synthesize loginID=_loginID;
@@ -77,6 +77,7 @@
 - (void)_callRegistrationDelegatesWithBlock:(CDUnknownBlockType)arg1;
 - (void)_connect;
 - (BOOL)_isInvisibleAlias:(id)arg1;
+- (BOOL)_isThumperService;
 - (BOOL)_isiCloudPairingService;
 - (id)_keychainRegistration;
 - (void)_loadCachedDevices;

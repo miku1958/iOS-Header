@@ -15,8 +15,8 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityLabelForPlaybackState:(long long)arg1;
 - (BOOL)_accessibilityPerformSummaryButton:(id)arg1;
-- (id)_accessibilitySummaryButton;
 - (id)_accessibilityUserTestingChildren;
+- (id)_axSummaryButton;
 - (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

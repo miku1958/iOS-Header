@@ -14,6 +14,7 @@
 {
     unsigned long long _epochTimestamp;
     unsigned long long _expiresAt;
+    NSData *_ampEnrollmentPinning;
     NSString *_displayName;
     NSString *_domain;
     NSString *_initiative;
@@ -30,10 +31,12 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSData *ampEnrollmentPinning; // @synthesize ampEnrollmentPinning=_ampEnrollmentPinning;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (strong, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property (nonatomic) unsigned long long epochTimestamp; // @synthesize epochTimestamp=_epochTimestamp;
 @property (nonatomic) unsigned long long expiresAt; // @synthesize expiresAt=_expiresAt;
+@property (readonly, nonatomic) BOOL hasAmpEnrollmentPinning;
 @property (readonly, nonatomic) BOOL hasDisplayName;
 @property (readonly, nonatomic) BOOL hasDomain;
 @property (nonatomic) BOOL hasEpochTimestamp;

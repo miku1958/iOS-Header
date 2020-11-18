@@ -65,7 +65,7 @@
 - (BOOL)canEnterFullscreen;
 - (void)discardContents;
 - (void)enterFullscreen;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 resourceDataSource:(id)arg7 reachabilityProvider:(id)arg8 adController:(id)arg9 scrollObserverManager:(id)arg10 volumeProvider:(id)arg11 videoPlayerViewControllerManager:(id)arg12 bookmarkManager:(id)arg13;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 resourceDataSource:(id)arg7 reachabilityProvider:(id)arg8 adController:(id)arg9 scrollObserverManager:(id)arg10 volumeProvider:(id)arg11 videoPlayerViewControllerManager:(id)arg12 bookmarkManager:(id)arg13;
 - (void)loadComponent:(id)arg1;
 - (void)loadPosterFrameImage;
 - (void)pauseMediaPlayback;
@@ -80,9 +80,9 @@
 - (void)setupVideoPlayerViewController:(id)arg1;
 - (struct CGRect)transitionContentFrame;
 - (id)transitionContentView;
-- (BOOL)transitionViewUsesThumbnail;
 - (void)unloadVideoPlayerIfShowingAd;
 - (void)unregisterForViewportDynamicBoundsChanges;
+- (BOOL)usesThumbnailWithImageIdentifier:(id)arg1;
 - (id)videoAdForVideoPlayerViewController:(id)arg1;
 - (CDUnknownBlockType)videoAdWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)videoForVideoPlayerViewController:(id)arg1;

@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class ML3DatabaseStatement, NSDictionary, NSString;
+@class ML3DatabaseConnection, ML3DatabaseStatement, NSDictionary, NSString;
 
 @interface ML3DatabaseResult : NSObject
 {
     ML3DatabaseStatement *_statement;
+    ML3DatabaseConnection *_connection;
     NSDictionary *_columnNameIndexMap;
     unsigned long long _limitIndex;
     NSString *_limitProperty;
@@ -27,7 +28,7 @@
 - (BOOL)hasAtLeastOneRow;
 - (unsigned long long)indexForColumnName:(id)arg1;
 - (id)init;
-- (id)initWithStatement:(id)arg1;
+- (id)initWithStatement:(id)arg1 connection:(id)arg2;
 - (long long)int64ValueForFirstRowAndColumn;
 - (id)objectForFirstRowAndColumn;
 - (id)objectsInColumn:(unsigned long long)arg1;

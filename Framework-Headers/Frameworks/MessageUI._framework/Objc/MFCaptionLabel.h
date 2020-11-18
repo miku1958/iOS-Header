@@ -17,12 +17,14 @@
     NSArray *_ccRecipients;
     NSArray *_bccRecipients;
     NSArray *_fromSenders;
+    NSArray *_otherSigners;
 }
 
 @property (strong, nonatomic) NSArray *bccRecipients; // @synthesize bccRecipients=_bccRecipients;
 @property (strong, nonatomic) NSArray *ccRecipients; // @synthesize ccRecipients=_ccRecipients;
 @property (weak, nonatomic) id<MFCaptionLabelDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (strong, nonatomic) NSArray *fromSenders; // @synthesize fromSenders=_fromSenders;
+@property (strong, nonatomic) NSArray *otherSigners; // @synthesize otherSigners=_otherSigners;
 @property (strong, nonatomic) NSArray *toRecipients; // @synthesize toRecipients=_toRecipients;
 
 + (id)attributedStringsCache;

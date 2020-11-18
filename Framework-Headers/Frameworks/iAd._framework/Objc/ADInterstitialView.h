@@ -8,12 +8,12 @@
 
 #import <iAd/ADDimmerViewDelegate-Protocol.h>
 
-@class ADDimmerView, ADInterstitialAd, ADPrivacyButton, NSString;
+@class ADDimmerView, ADInterstitialAd, ADPrivacyMarker, NSString;
 
 @interface ADInterstitialView : UIView <ADDimmerViewDelegate>
 {
     ADInterstitialAd *_interstitialAd;
-    ADPrivacyButton *_privacyButton;
+    ADPrivacyMarker *_privacyMarker;
     ADDimmerView *_dimmerView;
     struct CGRect _dismissButtonRect;
 }
@@ -24,7 +24,7 @@
 @property (nonatomic) struct CGRect dismissButtonRect; // @synthesize dismissButtonRect=_dismissButtonRect;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) ADInterstitialAd *interstitialAd;
-@property (strong, nonatomic) ADPrivacyButton *privacyButton; // @synthesize privacyButton=_privacyButton;
+@property (strong, nonatomic) ADPrivacyMarker *privacyMarker; // @synthesize privacyMarker=_privacyMarker;
 @property (readonly) Class superclass;
 
 + (BOOL)requiresConstraintBasedLayout;

@@ -12,7 +12,9 @@
 - (void)donationActionStoreReceivedDonation:(REDonatedAction *)arg1 isNewDonation:(BOOL)arg2;
 
 @optional
+- (void)donationActionStoreDidFinishLoadingData;
 - (void)donationActionStoreRemoveAllDonations;
 - (void)donationActionStoreRemovedDonation:(NSDictionary *)arg1;
+- (void)donationActionStoreWillBeginLoadingData;
 @end
 

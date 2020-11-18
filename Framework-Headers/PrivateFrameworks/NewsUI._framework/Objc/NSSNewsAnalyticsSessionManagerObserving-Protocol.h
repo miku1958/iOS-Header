@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSString;
+
 @protocol NSSNewsAnalyticsSessionManagerObserving
-- (void)sessionDidStart;
+- (void)sessionDidStartWithSessionID:(NSString *)arg1;
 - (void)sessionWillEnd;
 @end
 

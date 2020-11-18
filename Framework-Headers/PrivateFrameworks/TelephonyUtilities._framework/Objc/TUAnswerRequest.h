@@ -16,6 +16,7 @@
 {
     BOOL _wantsHoldMusic;
     BOOL _pauseVideoToStart;
+    BOOL _downgradeToAudio;
     NSString *_uniqueProxyIdentifier;
     NSString *_sourceIdentifier;
     long long _behavior;
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) NSDate *dateAnswered; // @synthesize dateAnswered=_dateAnswered;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL downgradeToAudio; // @synthesize downgradeToAudio=_downgradeToAudio;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property (nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;

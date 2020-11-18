@@ -7,53 +7,74 @@
 #import <objc/NSObject.h>
 
 #import <iTunesCloud/NSCopying-Protocol.h>
+#import <iTunesCloud/NSMutableCopying-Protocol.h>
+#import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary;
+@class NSArray, NSDate, NSDictionary, NSString;
 
-@interface ICMusicSubscriptionStatus : NSObject <NSCopying>
+@interface ICMusicSubscriptionStatus : NSObject <NSMutableCopying, NSCopying, NSSecureCoding>
 {
-    BOOL _minorAccountHolder;
+    NSDictionary *_responseDictionary;
+    BOOL _isMinorAccountHolder;
     BOOL _hasFamily;
     BOOL _hasFamilyGreaterThanOneMember;
-    BOOL _headOfHousehold;
-    BOOL _matchEnabled;
-    BOOL _hasOfflineSlots;
-    BOOL _inFreeTrial;
-    BOOL _eligibleForFreeTrial;
-    BOOL _purchaser;
-    BOOL _administrator;
-    NSDictionary *_dictionaryRepresentation;
+    BOOL _isHeadOfHousehold;
+    BOOL _isMatchEnabled;
     NSDate *_expirationDate;
+    BOOL _hasOfflineSlots;
+    BOOL _isInFreeTrial;
+    BOOL _isEligibleForFreeTrial;
+    BOOL _isPurchaser;
     long long _carrierBundlingStatusType;
     long long _reasonType;
+    long long _sourceType;
     long long _statusType;
+    BOOL _isAdministrator;
+    BOOL _isDiscoveryModeEligible;
     long long _statusCode;
     NSArray *_termsStatusList;
+    NSString *_phoneNumber;
+    NSString *_cellularOperatorName;
+    NSString *_sessionIdentifier;
+    long long _carrierBundlingErrorCode;
 }
 
-@property (readonly, nonatomic, getter=isAdministrator) BOOL administrator; // @synthesize administrator=_administrator;
+@property (readonly, nonatomic, getter=isAdministrator) BOOL administrator; // @synthesize administrator=_isAdministrator;
+@property (readonly, nonatomic) long long carrierBundlingErrorCode; // @synthesize carrierBundlingErrorCode=_carrierBundlingErrorCode;
 @property (readonly, nonatomic) long long carrierBundlingStatusType; // @synthesize carrierBundlingStatusType=_carrierBundlingStatusType;
-@property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation; // @synthesize dictionaryRepresentation=_dictionaryRepresentation;
-@property (readonly, nonatomic, getter=isEligibleForFreeTrial) BOOL eligibleForFreeTrial; // @synthesize eligibleForFreeTrial=_eligibleForFreeTrial;
+@property (readonly, copy, nonatomic) NSString *cellularOperatorName; // @synthesize cellularOperatorName=_cellularOperatorName;
+@property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly, nonatomic, getter=isDiscoveryModeEligible) BOOL discoveryModeEligible; // @synthesize discoveryModeEligible=_isDiscoveryModeEligible;
+@property (readonly, nonatomic, getter=isEligibleForFreeTrial) BOOL eligibleForFreeTrial; // @synthesize eligibleForFreeTrial=_isEligibleForFreeTrial;
 @property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, nonatomic) BOOL hasFamily; // @synthesize hasFamily=_hasFamily;
 @property (readonly, nonatomic) BOOL hasFamilyGreaterThanOneMember; // @synthesize hasFamilyGreaterThanOneMember=_hasFamilyGreaterThanOneMember;
 @property (readonly, nonatomic) BOOL hasOfflineSlots; // @synthesize hasOfflineSlots=_hasOfflineSlots;
-@property (readonly, nonatomic, getter=isHeadOfHousehold) BOOL headOfHousehold; // @synthesize headOfHousehold=_headOfHousehold;
-@property (readonly, nonatomic, getter=isInFreeTrial) BOOL inFreeTrial; // @synthesize inFreeTrial=_inFreeTrial;
-@property (readonly, nonatomic, getter=isMatchEnabled) BOOL matchEnabled; // @synthesize matchEnabled=_matchEnabled;
-@property (readonly, nonatomic, getter=isMinorAccountHolder) BOOL minorAccountHolder; // @synthesize minorAccountHolder=_minorAccountHolder;
-@property (readonly, nonatomic, getter=isPurchaser) BOOL purchaser; // @synthesize purchaser=_purchaser;
+@property (readonly, nonatomic, getter=isHeadOfHousehold) BOOL headOfHousehold; // @synthesize headOfHousehold=_isHeadOfHousehold;
+@property (readonly, nonatomic, getter=isInFreeTrial) BOOL inFreeTrial; // @synthesize inFreeTrial=_isInFreeTrial;
+@property (readonly, nonatomic, getter=isMatchEnabled) BOOL matchEnabled; // @synthesize matchEnabled=_isMatchEnabled;
+@property (readonly, nonatomic, getter=isMinorAccountHolder) BOOL minorAccountHolder; // @synthesize minorAccountHolder=_isMinorAccountHolder;
+@property (readonly, copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
+@property (readonly, nonatomic, getter=isPurchaser) BOOL purchaser; // @synthesize purchaser=_isPurchaser;
 @property (readonly, nonatomic) long long reasonType; // @synthesize reasonType=_reasonType;
+@property (readonly, copy, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
+@property (readonly, copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property (readonly, nonatomic) long long sourceType; // @synthesize sourceType=_sourceType;
 @property (readonly, nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
 @property (readonly, nonatomic) long long statusType; // @synthesize statusType=_statusType;
 @property (readonly, copy, nonatomic) NSArray *termsStatusList; // @synthesize termsStatusList=_termsStatusList;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_copySubscriptionStatusPropertiesToStatus:(id)arg1 withZone:(struct _NSZone *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithResponseDictionary:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToStatus:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end
 

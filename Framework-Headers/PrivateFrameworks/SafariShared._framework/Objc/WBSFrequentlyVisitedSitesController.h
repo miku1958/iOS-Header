@@ -28,7 +28,7 @@
 - (void)_postFrequentlyVisitedSitesDidChangeNotification;
 - (void)_recomputeFrequentlyVisitedSitesNow;
 - (BOOL)_saveFrequentlyVisitedSites:(id)arg1;
-- (float)_scoreForHistoryItemOnHistoryQueue:(id)arg1;
+- (float)_scoreForHistoryItem:(id)arg1;
 - (void)_updateFrequentlyVisitedSitesWithCandidates:(id)arg1;
 - (void)clearFrequentlyVisitedSites;
 - (id)initWithHistory:(id)arg1 bannedURLStore:(id)arg2;

@@ -45,6 +45,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUUID:(id)arg1 services:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

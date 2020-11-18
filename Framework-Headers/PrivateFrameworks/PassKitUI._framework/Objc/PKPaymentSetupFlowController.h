@@ -6,28 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class PKPaymentProvisioningController;
+#import <PassKitUI/PKSetupFlowControllerProtocol-Protocol.h>
+
+@class NSString, PKPaymentProvisioningController;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupFlowController : NSObject
+@interface PKPaymentSetupFlowController : NSObject <PKSetupFlowControllerProtocol>
 {
     PKPaymentProvisioningController *_provisioningController;
     long long _setupContext;
     id<PKPaymentSetupViewControllerDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) id<PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property (readonly, nonatomic) long long setupContext; // @synthesize setupContext=_setupContext;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_defaultPaymentSetupViewControllerAllowingManualEntry:(BOOL)arg1;
 - (id)_paymentSetupViewControllerForAssociatedCredential:(id)arg1 product:(id)arg2 allowsManualEntry:(BOOL)arg3;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 - (id)intialPaymentSetupViewControllerForMode:(long long)arg1 allowsManualEntry:(BOOL)arg2;
 - (id)manualEntryPaymentSetupViewControllerForProduct:(id)arg1 allowsSelectingBank:(BOOL)arg2;
 - (id)nextQueuedCredentialViewControllerWithSetupProduct:(id)arg1 allowsManualEntry:(BOOL)arg2;
+- (void)nextViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (id)paymentSetupViewControllerForAssociatedCredentials:(id)arg1 product:(id)arg2 allowsManualEntry:(BOOL)arg3;
-- (void)pushQueuedCredentialViewController:(id)arg1 ontoNavigationController:(id)arg2 pruningHierarchy:(BOOL)arg3 animated:(BOOL)arg4;
 
 @end
 

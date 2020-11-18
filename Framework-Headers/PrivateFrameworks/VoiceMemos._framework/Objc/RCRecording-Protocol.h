@@ -30,6 +30,7 @@
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSString *titleDisallowingEmptyString;
 @property (readonly, copy, nonatomic) NSString *uniqueID;
+@property (readonly, nonatomic) BOOL uploaded;
 @property (readonly, copy, nonatomic) NSURL *url;
 
 @end

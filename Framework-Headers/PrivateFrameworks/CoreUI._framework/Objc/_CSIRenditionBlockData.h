@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_makeReadOnly;
 - (const char *)bytes;
 - (void)dealloc;
-- (void)expandCSIBitmapData:(struct _csibitmap *)arg1 fromSlice:(struct _slice)arg2 makeReadOnly:(BOOL)arg3;
+- (BOOL)expandCSIBitmapData:(struct _csibitmap *)arg1 fromSlice:(struct _slice)arg2 makeReadOnly:(BOOL)arg3;
 - (unsigned long long)imageBytes;
 - (id)initWithBytes:(void *)arg1 pixelWidth:(unsigned int)arg2 pixelHeight:(unsigned int)arg3 sourceRowbytes:(unsigned long long)arg4 pixelFormat:(int)arg5;
 - (id)initWithPixelWidth:(unsigned int)arg1 pixelHeight:(unsigned int)arg2 sourceRowbytes:(unsigned long long)arg3 pixelFormat:(int)arg4;

@@ -6,25 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSDecimalNumber, NSLocale, SKProductSubscriptionPeriod;
+@class NSDecimalNumber, NSLocale, NSString, SKProductSubscriptionPeriod;
 
 @interface SKProductDiscount : NSObject
 {
     id _internal;
 }
 
+@property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) unsigned long long numberOfPeriods;
 @property (readonly, nonatomic) unsigned long long paymentMode;
 @property (readonly, nonatomic) NSDecimalNumber *price;
 @property (readonly, nonatomic) NSLocale *priceLocale;
 @property (readonly, nonatomic) SKProductSubscriptionPeriod *subscriptionPeriod;
+@property (readonly, nonatomic) unsigned long long type;
 
 - (void).cxx_destruct;
+- (void)_setIdentifier:(id)arg1;
 - (void)_setNumberOfPeriods:(unsigned long long)arg1;
 - (void)_setPaymentMode:(unsigned long long)arg1;
 - (void)_setPrice:(id)arg1;
 - (void)_setPriceLocale:(id)arg1;
 - (void)_setSubscriptionPeriod:(id)arg1;
+- (void)_setType:(unsigned long long)arg1;
 - (id)copyXPCEncoding;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;

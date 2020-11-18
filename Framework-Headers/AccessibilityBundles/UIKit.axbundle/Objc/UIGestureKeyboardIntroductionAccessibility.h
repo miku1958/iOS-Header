@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)showGestureKeyboardIntroduction;
+- (BOOL)showGestureKeyboardIntroduction;
 
 @end
 

@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=mSize;
 
 - (id).cxx_construct;
-- (struct GeometryResource)boundsGeometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
+- (id)boundsGeometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)createResources;
 - (void)dealloc;
-- (struct GeometryResource)geometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
+- (id)geometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
 - (id)normalsForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
 - (void)resetWithEnumerator:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
 - (id)texcoordsForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;

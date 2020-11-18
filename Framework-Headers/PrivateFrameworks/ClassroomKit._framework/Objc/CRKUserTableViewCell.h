@@ -54,7 +54,7 @@
 @property (nonatomic, getter=shouldShowFamilyNameFirst) BOOL showFamilyNameFirst; // @synthesize showFamilyNameFirst=_showFamilyNameFirst;
 @property (nonatomic, getter=shouldShowPhoneticName) BOOL showPhoneticName; // @synthesize showPhoneticName=_showPhoneticName;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) CRKUser *user; // @synthesize user=_user;
+@property (copy, nonatomic) CRKUser *user; // @synthesize user=_user;
 @property (readonly, nonatomic) CRKUserFullNameEditorView *userFullNameEditorView;
 @property (readonly, nonatomic) UIImageView *userImageView;
 @property (readonly, nonatomic) UIView *userImageWrapperView;

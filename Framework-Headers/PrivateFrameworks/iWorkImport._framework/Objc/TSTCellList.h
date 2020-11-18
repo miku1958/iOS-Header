@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSPointerArray *_cells;
 }
 
-@property (strong, nonatomic) NSPointerArray *cells; // @synthesize cells=_cells;
+@property (strong, nonatomic) NSPointerArray *cells;
 
 - (id)addCell:(id)arg1;
 - (id)cellAtIndex:(unsigned long long)arg1;

@@ -6,23 +6,22 @@
 
 #import <iWorkImport/TSCH3DShaderEffect.h>
 
-@class TSCH3DTexturePool, TSCH3DTexturesMaterial;
+@class TSCH3DMaterialShaderVariables, TSCH3DTexturePool, TSCH3DTexturesMaterial;
 
 __attribute__((visibility("hidden")))
 @interface TSCH3DMaterialShaderEffect : TSCH3DShaderEffect
 {
     TSCH3DTexturePool *mPool;
     TSCH3DTexturesMaterial *mMaterial;
-    struct MaterialShaderVariables mVariables;
+    TSCH3DMaterialShaderVariables *mVariables;
 }
 
-+ (id)effectWithPool:(id)arg1 material:(id)arg2 variables:(const struct MaterialShaderVariables *)arg3;
++ (id)effectWithPool:(id)arg1 material:(id)arg2 variables:(id)arg3;
 + (id)stateSharingID;
-- (id).cxx_construct;
 - (void)addVariables:(id)arg1;
 - (void)affectStates:(id)arg1;
 - (void)dealloc;
-- (id)initWithPool:(id)arg1 material:(id)arg2 variables:(const struct MaterialShaderVariables *)arg3;
+- (id)initWithPool:(id)arg1 material:(id)arg2 variables:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)stateSharingID;
 - (void)updateState:(id)arg1 effectsStates:(id)arg2;

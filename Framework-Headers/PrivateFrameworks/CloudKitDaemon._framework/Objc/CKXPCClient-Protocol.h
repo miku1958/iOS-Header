@@ -14,7 +14,7 @@
 - (void)handleOperationCheckpoint:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2;
 - (void)handleOperationCompletion:(CKOperationResult *)arg1 forOperationWithID:(NSString *)arg2;
 - (void)handleOperationProgress:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2;
-- (void)handleOperationProgress:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2 reply:(void (^)(void))arg3;
+- (void)handleOperationProgress:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)handleOperationStatistics:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2;
 - (void)openFileWithOpenInfo:(CKFileOpenInfo *)arg1 reply:(void (^)(CKFileOpenResult *, NSError *))arg2;
 @end

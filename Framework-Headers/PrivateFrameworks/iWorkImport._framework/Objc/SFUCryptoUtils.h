@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 + (id)decodePassphraseHint:(id)arg1;
 + (id)encodePassphraseHint:(id)arg1;
 + (id)generatePassphraseVerifierForKey:(id)arg1 verifierVersion:(unsigned short)arg2;
-+ (BOOL)generateRandomDataInBuffer:(char *)arg1 length:(unsigned long long)arg2;
 + (id)generateRandomSalt;
 + (id)generateRandomSaltWithLength:(unsigned long long)arg1;
 + (id)hashForPassphrase:(id)arg1 withSalt:(id)arg2;

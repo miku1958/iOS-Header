@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) NSDictionary *metaData; // @synthesize metaData=_metaData;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithComponent:(id)arg1;
 
 @end

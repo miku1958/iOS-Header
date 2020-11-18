@@ -20,6 +20,7 @@
 - (id)_accessibilityAttributedValueForRange:(struct _NSRange *)arg1;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (struct _NSRange)_accessibilityCheckRowRangeForTrait:(unsigned long long)arg1;
+- (id)_accessibilityColorDescription;
 - (id)_accessibilityContainerTypes;
 - (unsigned int)_accessibilityContextId;
 - (id)_accessibilityConvertDataArrayToTextMarkerArray:(id)arg1;

@@ -6,22 +6,23 @@
 
 #import <NewsToday/FCTagRanking-Protocol.h>
 
-@class FCFeedPersonalizedArticles, NSArray, NSString;
+@class FCFeedPersonalizedItems, NSArray, NSString;
 
 @protocol FCFeedPersonalizing <FCTagRanking>
 - (double)decayedPublisherDiversificationPenalty;
-- (NSArray *)diversifyArticles:(NSArray *)arg1 limit:(unsigned long long)arg2;
-- (NSArray *)diversifyArticles:(NSArray *)arg1 limit:(unsigned long long)arg2 preselectedArticles:(NSArray *)arg3;
-- (NSArray *)limitArticlesByFlowRate:(NSArray *)arg1 timeInterval:(double)arg2 publisherCount:(unsigned long long)arg3;
-- (NSArray *)limitArticlesByMinimumArticleQuality:(NSArray *)arg1;
-- (void)prepareAutoFavoritesWithCompletionHandler:(void (^)(void))arg1;
+- (NSArray *)diversifyItems:(NSArray *)arg1 limit:(unsigned long long)arg2;
+- (NSArray *)diversifyItems:(NSArray *)arg1 limit:(unsigned long long)arg2 preselectedItems:(NSArray *)arg3;
+- (NSArray *)limitItemsByFlowRate:(NSArray *)arg1 timeInterval:(double)arg2 publisherCount:(unsigned long long)arg3;
+- (NSArray *)limitItemsByMinimumItemQuality:(NSArray *)arg1;
 - (void)prepareForUseWithCompletionHandler:(void (^)(void))arg1;
-- (FCFeedPersonalizedArticles *)sortArticles:(NSArray *)arg1;
-- (FCFeedPersonalizedArticles *)sortArticles:(NSArray *)arg1 options:(long long)arg2;
+- (FCFeedPersonalizedItems *)sortItems:(NSArray *)arg1;
+- (FCFeedPersonalizedItems *)sortItems:(NSArray *)arg1 options:(long long)arg2;
 - (unsigned long long)whitelistLevelForTagID:(NSString *)arg1;
 
 @optional
-- (FCFeedPersonalizedArticles *)sortArticles:(NSArray *)arg1 configurationSet:(long long)arg2;
-- (FCFeedPersonalizedArticles *)sortArticles:(NSArray *)arg1 options:(long long)arg2 configurationSet:(long long)arg3;
+- (double)personalizedScoreForFeatureWithIdentifier:(NSString *)arg1 items:(NSArray *)arg2 baselineClicksMultiplier:(double)arg3;
+- (void)prepareFavorites:(void (^)(void))arg1;
+- (FCFeedPersonalizedItems *)sortItems:(NSArray *)arg1 configurationSet:(long long)arg2;
+- (FCFeedPersonalizedItems *)sortItems:(NSArray *)arg1 options:(long long)arg2 configurationSet:(long long)arg3;
 @end
 

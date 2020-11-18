@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/SwiftObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC15ConversationKit12RadarSession : SwiftObject
+@interface _TtC15ConversationKit12RadarSession : _TtCs12_SwiftObject
 {
     MISSING_TYPE *session;
     MISSING_TYPE *pendingTask;

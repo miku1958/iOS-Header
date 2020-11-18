@@ -24,8 +24,12 @@ __attribute__((visibility("hidden")))
     GEOPDAutocompleteEntryHighlightLine *_highlightMain;
     GEOPDAutocompleteEntryQuery *_query;
     GEOPDRetainedSearchMetadata *_retainSearch;
+    int _sortPriority;
     int _type;
-    CDStruct_f953fb60 _has;
+    struct {
+        unsigned int sortPriority:1;
+        unsigned int type:1;
+    } _has;
 }
 
 @property (strong, nonatomic) GEOPDAutocompleteEntryAddress *address; // @synthesize address=_address;
@@ -44,11 +48,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasHighlightMain;
 @property (readonly, nonatomic) BOOL hasQuery;
 @property (readonly, nonatomic) BOOL hasRetainSearch;
+@property (nonatomic) BOOL hasSortPriority;
 @property (nonatomic) BOOL hasType;
 @property (strong, nonatomic) GEOPDAutocompleteEntryHighlightLine *highlightExtra; // @synthesize highlightExtra=_highlightExtra;
 @property (strong, nonatomic) GEOPDAutocompleteEntryHighlightLine *highlightMain; // @synthesize highlightMain=_highlightMain;
 @property (strong, nonatomic) GEOPDAutocompleteEntryQuery *query; // @synthesize query=_query;
 @property (strong, nonatomic) GEOPDRetainedSearchMetadata *retainSearch; // @synthesize retainSearch=_retainSearch;
+@property (nonatomic) int sortPriority; // @synthesize sortPriority=_sortPriority;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 

@@ -26,6 +26,7 @@
     int _faceTimeIDStatus;
     int _transitionStatus;
     int _hardPauseDigitsState;
+    int _ttyType;
     NSDate *_dateCreated;
     NSDate *_dateAnsweredOrDialed;
     NSDate *_dateSentInvitation;
@@ -162,7 +163,7 @@
 @property (readonly, nonatomic, getter=isThirdPartyVideo) BOOL thirdPartyVideo;
 @property (nonatomic) int transitionStatus; // @synthesize transitionStatus=_transitionStatus;
 @property (readonly, nonatomic, getter=isTTY) BOOL tty;
-@property (readonly, nonatomic) int ttyType;
+@property (nonatomic) int ttyType; // @synthesize ttyType=_ttyType;
 @property (copy, nonatomic) NSString *uniqueProxyIdentifier; // @synthesize uniqueProxyIdentifier=_uniqueProxyIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uniqueProxyIdentifierUUID;
 @property (nonatomic, getter=isUplinkMuted) BOOL uplinkMuted;

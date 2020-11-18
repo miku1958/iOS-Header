@@ -13,6 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axGetLabelSubview;
+- (id)_axGetSubviewForPath;
+- (id)accessibilityLabel;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 

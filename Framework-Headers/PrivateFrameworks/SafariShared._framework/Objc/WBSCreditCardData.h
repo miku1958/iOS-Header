@@ -14,16 +14,20 @@
     NSString *_cardholderName;
     NSString *_cardNumber;
     NSDate *_expirationDate;
+    NSDate *_lastUsedDate;
 }
 
 @property (copy, nonatomic) NSString *cardName; // @synthesize cardName=_cardName;
 @property (copy, nonatomic) NSString *cardNumber; // @synthesize cardNumber=_cardNumber;
 @property (copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
 @property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (strong, nonatomic) NSDate *lastUsedDate; // @synthesize lastUsedDate=_lastUsedDate;
 
 - (void).cxx_destruct;
 - (id)creditCardDataByMergingCardholderNameAndExpirationDateFromCard:(id)arg1;
+- (id)creditCardDataByUpdatingLastUsedDate:(id)arg1;
 - (id)description;
+- (BOOL)hasSameCreditCardInformationAs:(id)arg1;
 - (id)initWithCardName:(id)arg1 number:(id)arg2 cardholderName:(id)arg3 expirationDate:(id)arg4;
 - (id)initWithKeychainRepresentation:(id)arg1;
 - (id)keychainRepresentation;

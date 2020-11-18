@@ -23,7 +23,12 @@
 + (id)keychainLabelForCertWithAccountID:(id)arg1 purpose:(long long)arg2;
 + (id)keychainLabelForKeyWithAccountID:(id)arg1 purpose:(long long)arg2;
 + (id)sharedInstance;
++ (BOOL)shouldUseAutoEnrollment;
++ (BOOL)shouldUseExtendedEnrollment;
 + (BOOL)shouldUseX509;
++ (void)tokenUpdateDidFinishWithLogKey:(id)arg1;
++ (BOOL)tokenUpdateShouldStartWithLogKey:(id)arg1;
++ (long long)tokenUpdateState;
 - (void).cxx_destruct;
 - (void)addContextToCache:(id)arg1 withToken:(id)arg2;
 - (long long)biometricAvailabilityForAccountIdentifier:(id)arg1;

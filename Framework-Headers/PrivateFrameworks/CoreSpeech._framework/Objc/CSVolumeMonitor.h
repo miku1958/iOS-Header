@@ -25,6 +25,7 @@
 - (void)fetchVolumeFromAVSystemControllerForAudioCategory:(id)arg1;
 - (id)init;
 - (float)musicVolume;
+- (void)musicVolumeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)startObservingSystemVolumes;
 - (void)systemControllerDied:(id)arg1;
 - (void)systemVolumeDidChange:(id)arg1;

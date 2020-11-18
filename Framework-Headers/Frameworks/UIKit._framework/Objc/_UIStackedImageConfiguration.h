@@ -18,6 +18,7 @@
     BOOL _allowsNonOpaqueShadow;
     BOOL _boostBrightness;
     BOOL _hueShift;
+    BOOL _disableMask;
     BOOL _focusCursorEnabled;
     BOOL _fullBleedCenteredGrowth;
     unsigned long long _maximumParallaxImages;
@@ -77,6 +78,7 @@
 @property (nonatomic) double defaultUnfocusedShadowOpacity; // @synthesize defaultUnfocusedShadowOpacity=_defaultUnfocusedShadowOpacity;
 @property (nonatomic) double defaultUnfocusedShadowRadius; // @synthesize defaultUnfocusedShadowRadius=_defaultUnfocusedShadowRadius;
 @property (nonatomic) double defaultUnfocusedShadowVerticalOffset; // @synthesize defaultUnfocusedShadowVerticalOffset=_defaultUnfocusedShadowVerticalOffset;
+@property (nonatomic) BOOL disableMask; // @synthesize disableMask=_disableMask;
 @property (nonatomic) BOOL flatImageContainsCornerRadius; // @synthesize flatImageContainsCornerRadius=_flatImageContainsCornerRadius;
 @property (readonly, copy, nonatomic) _UIFocusAnimationConfiguration *focusAnimationConfiguration;
 @property (nonatomic) double focusCursorBorderWidth; // @synthesize focusCursorBorderWidth=_focusCursorBorderWidth;

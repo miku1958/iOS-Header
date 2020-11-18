@@ -6,18 +6,23 @@
 
 #import <Preferences/PSListController.h>
 
+@class NSObject, STContentPrivacyListController;
 @protocol STContentPrivacyViewModelCoordinator;
 
 @interface STContentPrivacyStoreDetailController : PSListController
 {
-    id<STContentPrivacyViewModelCoordinator> _coordinator;
+    NSObject<STContentPrivacyViewModelCoordinator> *_coordinator;
+    STContentPrivacyListController *_contentPrivacyController;
 }
 
-@property (strong, nonatomic) id<STContentPrivacyViewModelCoordinator> coordinator; // @synthesize coordinator=_coordinator;
+@property (weak) STContentPrivacyListController *contentPrivacyController; // @synthesize contentPrivacyController=_contentPrivacyController;
+@property (strong, nonatomic) NSObject<STContentPrivacyViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)init;
-- (BOOL)shouldReloadSpecifiersOnResume;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)specifiers;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 
 @end

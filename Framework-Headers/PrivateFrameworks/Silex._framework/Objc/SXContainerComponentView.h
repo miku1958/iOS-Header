@@ -36,18 +36,17 @@
 - (id)contentViewForBehavior:(id)arg1;
 - (void)didApplyBehavior:(id)arg1;
 - (id)dragManager:(id)arg1 dragableAtLocation:(struct CGPoint)arg2;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 mediaSharingPolicyProvider:(id)arg6;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 mediaSharingPolicyProvider:(id)arg5;
 - (BOOL)isTransitionable;
 - (struct CGRect)originalFrameForContentView:(id)arg1 behavior:(id)arg2;
 - (void)prepareForTransitionType:(unsigned long long)arg1;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)removeComponentView:(id)arg1;
-- (double)suggestedContainerHeightForWidth:(double)arg1;
 - (struct CGRect)transitionContentFrame;
 - (id)transitionContentView;
 - (BOOL)transitionViewShouldFadeInContent;
-- (BOOL)transitionViewUsesThumbnail;
 - (BOOL)userInteractable;
+- (BOOL)usesThumbnailWithImageIdentifier:(id)arg1;
 - (id)viewForDragManager:(id)arg1;
 
 @end

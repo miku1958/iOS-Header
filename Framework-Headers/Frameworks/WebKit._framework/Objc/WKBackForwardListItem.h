@@ -26,6 +26,7 @@
 @property (readonly, copy) NSString *title;
 
 - (struct CGImage *)_copySnapshotForTesting;
+- (struct CGPoint)_scrollPosition;
 - (void)dealloc;
 
 @end

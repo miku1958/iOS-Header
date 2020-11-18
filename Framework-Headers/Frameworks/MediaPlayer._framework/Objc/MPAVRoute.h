@@ -39,12 +39,14 @@
     MPAVRouteConnection *_connection;
 }
 
+@property (readonly, nonatomic, getter=isAirPlayRoute) BOOL airPlayRoute;
 @property (readonly, nonatomic, getter=isAirPlayingToDevice) BOOL airPlayingToDevice;
 @property (readonly, nonatomic, getter=isAirpodsRoute) BOOL airpodsRoute;
 @property (readonly, nonatomic, getter=isAppleTVRoute) BOOL appleTVRoute;
 @property (readonly, nonatomic) NSArray *auxiliaryDevices; // @synthesize auxiliaryDevices=_auxiliaryDevices;
 @property (readonly, nonatomic) NSDictionary *avRouteDescription;
 @property (readonly, nonatomic, getter=isB238Route) BOOL b238Route;
+@property (readonly, nonatomic, getter=isB444Route) BOOL b444Route;
 @property (readonly, nonatomic) MPAVBatteryLevel *batteryLevel; // @synthesize batteryLevel=_batteryLevel;
 @property (readonly, nonatomic, getter=isBeatsSoloRoute) BOOL beatsSoloRoute;
 @property (readonly, nonatomic, getter=isBeatsStudioRoute) BOOL beatsStudioRoute;
@@ -59,7 +61,9 @@
 @property (readonly, nonatomic, getter=isDisplayedAsPicked) BOOL displayAsPicked;
 @property (nonatomic) long long displayRouteType;
 @property (readonly, nonatomic, getter=_externalDevice) void *externalDevice; // @synthesize externalDevice=_externalDevice;
+@property (readonly, nonatomic) NSString *groupLeaderAirplayIdentifier;
 @property (readonly, nonatomic) NSString *groupUID; // @synthesize groupUID=_groupUID;
+@property (readonly, nonatomic, getter=isHearingDeviceRoute) BOOL hearingDeviceRoute;
 @property (readonly, nonatomic, getter=isHomePodRoute) BOOL homePodRoute; // @synthesize homePodRoute=_homePodRoute;
 @property (readonly, nonatomic) BOOL isDeviceRoute;
 @property (readonly, nonatomic) long long passwordType;
@@ -84,8 +88,10 @@
 @property (readonly, nonatomic) BOOL supportsGrouping;
 @property (readonly, nonatomic) BOOL supportsRemoteControl;
 @property (readonly, nonatomic) BOOL supportsWirelessDisplay;
+@property (readonly, nonatomic, getter=isTVRoute) BOOL tvRoute;
 @property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable;
 @property (readonly, nonatomic, getter=isW1Route) BOOL w1Route;
+@property (readonly, nonatomic, getter=isW2Route) BOOL w2Route;
 @property (strong, nonatomic) MPAVRoute *wirelessDisplayRoute;
 
 + (BOOL)supportsSecureCoding;

@@ -69,6 +69,7 @@
 @property (readonly, nonatomic) BOOL isActivitySummary;
 @property (readonly, nonatomic) BOOL isCharacteristic;
 @property (readonly, nonatomic) BOOL isDocument;
+@property (readonly, nonatomic) BOOL isElectrocardiogram;
 @property (readonly, nonatomic) NSSet *keywords;
 @property (readonly, nonatomic) NSString *labelDisplayName;
 @property (readonly, nonatomic) UIImage *listIcon;

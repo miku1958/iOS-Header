@@ -54,6 +54,7 @@
     BOOL _bypassAuthenticator;
     double _keyboardHeight;
     BOOL _isPad;
+    BOOL _isAMPPayment;
     BOOL _needsFinalCallback;
     long long _preferencesStyle;
     struct __IOHIDEventSystemClient *_hidSystemClient;
@@ -62,6 +63,7 @@
     BOOL _peerPaymentBalanceIsInsufficient;
     NSMutableSet *_completionHandlers;
     CNContact *_lastUnservicableAddress;
+    double _authenticatorFingerOnTime;
     BOOL _userIntentRequired;
     BOOL _shouldIgnorePhysicalButton;
     BOOL _blockingHardwareCancels;
@@ -86,6 +88,7 @@
 @property (readonly, nonatomic, getter=isUserIntentRequired) BOOL userIntentRequired; // @synthesize userIntentRequired=_userIntentRequired;
 
 - (void).cxx_destruct;
+- (void)_abandonActiveEnrollmentAttempts;
 - (void)_addPassphraseViewControllerToHierarchy:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (long long)_authenticatorPolicy;
 - (id)_availabilityStringForPass:(id)arg1;
@@ -101,6 +104,7 @@
 - (void)_handleModelUpdate;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_hostApplicationWillEnterForeground;
+- (int)_iconVariantForScale:(double)arg1;
 - (void)_invalidPaymentDataWithParam:(id)arg1;
 - (void)_payWithPasswordPressed:(id)arg1;
 - (void)_processClientCallback:(id)arg1;
@@ -118,7 +122,7 @@
 - (void)_setupShippingAddress;
 - (void)_setupShippingContact;
 - (void)_setupShippingMethods;
-- (void)_setupWithPaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 andApplicationIdentifier:(id)arg3;
+- (void)_setupWithPaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 applicationIdentifier:(id)arg3 bundleIdentifier:(id)arg4 teamIdentifier:(id)arg5;
 - (void)_showUnservicableAddressAlertForErrors:(id)arg1;
 - (void)_startEvaluation;
 - (void)_startSimulatorHIDListener;
@@ -146,6 +150,7 @@
 - (void)authenticatorDidEncounterFingerOff:(id)arg1;
 - (void)authenticatorDidEncounterFingerOn:(id)arg1;
 - (void)authenticatorDidEncounterMatchMiss:(id)arg1;
+- (void)authorizationDidAuthorizeCashDisbursementWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePurchaseCompleteWithStatus:(long long)arg1;
@@ -168,6 +173,7 @@
 - (void)handleHostApplicationDidCancel;
 - (void)handleHostApplicationWillResignActive:(BOOL)arg1;
 - (id)handlePaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 andApplicationIdentifier:(id)arg3;
+- (id)handlePaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 applicationIdentifier:(id)arg3 bundleIdentifier:(id)arg4 teamIdentifier:(id)arg5;
 - (id)initWithLayout:(id)arg1;
 - (void)invalidate;
 - (void)keyboardWillHide:(id)arg1;

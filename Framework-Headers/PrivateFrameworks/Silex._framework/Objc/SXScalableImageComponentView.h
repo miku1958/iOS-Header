@@ -8,22 +8,19 @@
 
 #import <Silex/SXDragManagerDataSource-Protocol.h>
 #import <Silex/SXFullscreenCanvasShowable-Protocol.h>
+#import <Silex/SXFullscreenCaptionDataSource-Protocol.h>
 #import <Silex/SXImageViewDelegate-Protocol.h>
-#import <Silex/SXTextSourceDataSource-Protocol.h>
 
 @class NSString, SXDragManager, SXFullscreenCanvasController, SXImageResource, SXImageView, SXMediaViewEvent, UIView;
 @protocol SXFullscreenCanvasControllerFactory, SXImageViewFactory, SXMediaSharingPolicyProvider;
 
-@interface SXScalableImageComponentView : SXMediaComponentView <SXFullscreenCanvasShowable, SXImageViewDelegate, SXTextSourceDataSource, SXDragManagerDataSource>
+@interface SXScalableImageComponentView : SXMediaComponentView <SXFullscreenCanvasShowable, SXImageViewDelegate, SXFullscreenCaptionDataSource, SXDragManagerDataSource>
 {
-    BOOL _presentingOnFullScreenCanvas;
-    double _lastKnownPinchVelocity;
-    double _lastKnownRotationVelocity;
-    SXImageView *_imageView;
     id<SXImageViewFactory> _imageViewFactory;
     id<SXFullscreenCanvasControllerFactory> _canvasControllerFactory;
     id<SXMediaSharingPolicyProvider> _mediaSharingPolicyProvider;
     SXDragManager *_dragManager;
+    SXImageView *_imageView;
     SXImageResource *_imageResource;
     SXFullscreenCanvasController *_fullScreenCanvasController;
     SXMediaViewEvent *_activeViewEvent;
@@ -42,21 +39,17 @@
 @property (strong, nonatomic) SXImageResource *imageResource; // @synthesize imageResource=_imageResource;
 @property (readonly, nonatomic) SXImageView *imageView; // @synthesize imageView=_imageView;
 @property (readonly, nonatomic) id<SXImageViewFactory> imageViewFactory; // @synthesize imageViewFactory=_imageViewFactory;
-@property (nonatomic) double lastKnownPinchVelocity; // @synthesize lastKnownPinchVelocity=_lastKnownPinchVelocity;
-@property (nonatomic) double lastKnownRotationVelocity; // @synthesize lastKnownRotationVelocity=_lastKnownRotationVelocity;
 @property (readonly, nonatomic) id<SXMediaSharingPolicyProvider> mediaSharingPolicyProvider; // @synthesize mediaSharingPolicyProvider=_mediaSharingPolicyProvider;
-@property (nonatomic, getter=isPresentingOnFullScreenCanvas) BOOL presentingOnFullScreenCanvas; // @synthesize presentingOnFullScreenCanvas=_presentingOnFullScreenCanvas;
 @property (nonatomic) struct CGRect previousContentFrame; // @synthesize previousContentFrame=_previousContentFrame;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)additionsForTextSource:(id)arg1;
 - (BOOL)allowHierarchyRemoval;
 - (unsigned long long)analyticsMediaType;
-- (id)contentSizeCategoryForTextSource:(id)arg1;
+- (id)componentTextStyleForIdentifier:(id)arg1 inheritingFromComponentTextStyle:(id)arg2;
+- (id)contentSizeCategoryForCaption:(id)arg1;
 - (void)createMediaViewEvent;
 - (void)discardContents;
-- (id)documentControllerForTextSource:(id)arg1;
 - (id)dragManager:(id)arg1 dragableAtLocation:(struct CGPoint)arg2;
 - (void)finishMediaViewEvent;
 - (void)forceFullScreen;
@@ -76,8 +69,7 @@
 - (BOOL)gestureShouldBegin:(id)arg1;
 - (void)imageView:(id)arg1 didLoadAnimatedImage:(id)arg2;
 - (void)imageView:(id)arg1 didLoadImage:(id)arg2 ofQuality:(int)arg3;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7 canvasControllerFactory:(id)arg8 mediaSharingPolicyProvider:(id)arg9;
-- (id)inlineTextStylesForTextSource:(id)arg1;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7 canvasControllerFactory:(id)arg8 mediaSharingPolicyProvider:(id)arg9;
 - (void)layoutImageView;
 - (void)loadComponent:(id)arg1;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
@@ -86,12 +78,12 @@
 - (void)renderContents;
 - (BOOL)requestInteractivityFocusForFullScreenCanvasController:(id)arg1;
 - (void)submitEvents;
-- (id)textResizerForTextSource:(id)arg1;
-- (id)textRulesForTextSource:(id)arg1;
-- (id)textStyleForTextSource:(id)arg1;
+- (id)textResizerForCaption:(id)arg1;
+- (id)textRulesForCaption:(id)arg1;
+- (id)textStyleForIdentifier:(id)arg1;
 - (struct CGRect)transitionContentFrame;
 - (id)transitionContentView;
-- (BOOL)transitionViewUsesThumbnail;
+- (BOOL)usesThumbnailWithImageIdentifier:(id)arg1;
 - (id)viewForDragManager:(id)arg1;
 - (void)visibilityStateDidChangeFromState:(long long)arg1;
 

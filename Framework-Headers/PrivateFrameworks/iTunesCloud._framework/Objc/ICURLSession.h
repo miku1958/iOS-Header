@@ -22,8 +22,8 @@
     NSMutableDictionary *_completionHandlers;
     BOOL _paused;
     NSObject<OS_dispatch_source> *_requestTimeoutTimer;
-    unsigned long long _maxConcurrentRequests;
     NSURLSession *_urlSession;
+    unsigned long long _maxConcurrentRequests;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,8 +31,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long maxConcurrentRequests; // @synthesize maxConcurrentRequests=_maxConcurrentRequests;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSURLSession *urlSession; // @synthesize urlSession=_urlSession;
 
++ (unsigned long long)defaultMaximumConcurrentRequests;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 avAssetDownloadTask:(id)arg2 didReceiveAVAssetDownloadToken:(unsigned long long)arg3;
 - (void)URLSession:(id)arg1 avAssetDownloadTask:(id)arg2 didWriteData:(long long)arg3 totalBytesWritten:(long long)arg4 totalBytesExpectedToWrite:(long long)arg5;
@@ -67,8 +67,6 @@
 - (id)initWithConfiguration:(id)arg1 maxConcurrentRequests:(unsigned long long)arg2;
 - (id)initWithConfiguration:(id)arg1 maxConcurrentRequests:(unsigned long long)arg2 qualityOfService:(long long)arg3;
 - (void)pause;
-- (void)processCompletedResponse:(id)arg1 toRequest:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)processInitialResponse:(id)arg1 toRequest:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)resume;
 
 @end

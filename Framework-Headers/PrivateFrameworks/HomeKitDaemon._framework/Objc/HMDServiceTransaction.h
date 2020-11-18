@@ -10,6 +10,7 @@
 
 @interface HMDServiceTransaction : HMDBackingStoreModelObject
 {
+    NSString *_lastSeenConfiguredNameLocal;
 }
 
 @property (strong, nonatomic) NSString *associatedServiceType; // @dynamic associatedServiceType;
@@ -20,8 +21,11 @@
 @property (strong, nonatomic) NSNumber *instanceID; // @dynamic instanceID;
 @property (strong, nonatomic) NSNumber *labelIndex; // @dynamic labelIndex;
 @property (strong, nonatomic) NSNumber *labelNamespace; // @dynamic labelNamespace;
-@property (strong, nonatomic) NSString *lastSeenConfiguredName; // @dynamic lastSeenConfiguredName;
+@property (strong, nonatomic) NSNumber *lastKnownDiscoveryMode; // @dynamic lastKnownDiscoveryMode;
+@property (strong, nonatomic) NSString *lastSeenConfiguredNameLocal; // @synthesize lastSeenConfiguredNameLocal=_lastSeenConfiguredNameLocal;
 @property (strong, nonatomic) NSArray *linkedServices; // @dynamic linkedServices;
+@property (strong, nonatomic) NSArray *mediaSourceDisplayOrder; // @dynamic mediaSourceDisplayOrder;
+@property (strong, nonatomic) NSNumber *mediaSourceIdentifier; // @dynamic mediaSourceIdentifier;
 @property (strong, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) NSNumber *primary; // @dynamic primary;
 @property (strong, nonatomic) NSString *providedName; // @dynamic providedName;
@@ -29,6 +33,7 @@
 @property (strong, nonatomic) NSString *serviceType; // @dynamic serviceType;
 
 + (id)properties;
+- (void).cxx_destruct;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFTrackListCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFUserReportRequest;
 
 @interface SFTrackListCardSection : SFTitleCardSection <SFTrackListCardSection, NSSecureCoding, NSCopying>
 {
@@ -54,6 +54,7 @@
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSArray *tracks; // @synthesize tracks=_tracks;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

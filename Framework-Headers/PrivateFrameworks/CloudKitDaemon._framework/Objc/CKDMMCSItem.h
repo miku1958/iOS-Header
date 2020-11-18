@@ -60,6 +60,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _downloadTokenExpiration;
     NSDictionary *_assetChunkerOptions;
     CKDAssetZoneKey *_assetZoneKey;
+    NSURL *_constructedAssetDownloadURL;
+    unsigned long long _constructedAssetEstimatedSize;
     NSString *_trackingUUID;
 }
 
@@ -72,6 +74,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int chunkCount; // @synthesize chunkCount=_chunkCount;
 @property (strong, nonatomic) NSData *clearAssetKey; // @synthesize clearAssetKey=_clearAssetKey;
 @property (strong, nonatomic) NSFileHandle *clientOpenedFileHandle; // @synthesize clientOpenedFileHandle=_clientOpenedFileHandle;
+@property (strong, nonatomic) NSURL *constructedAssetDownloadURL; // @synthesize constructedAssetDownloadURL=_constructedAssetDownloadURL;
+@property (nonatomic) unsigned long long constructedAssetEstimatedSize; // @synthesize constructedAssetEstimatedSize=_constructedAssetEstimatedSize;
 @property (strong, nonatomic) NSURL *contentBaseURL; // @synthesize contentBaseURL=_contentBaseURL;
 @property (strong, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
 @property (strong, nonatomic) CKAssetDownloadPreauthorization *downloadPreauthorization; // @synthesize downloadPreauthorization=_downloadPreauthorization;

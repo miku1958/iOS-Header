@@ -40,6 +40,7 @@
 - (void).cxx_destruct;
 - (void)_dismissExpressTransitAlert;
 - (void)_scheduleDismissalOfExpressTransitAlertWithTimeout:(double)arg1;
+- (BOOL)candHandleExpressEventsFromPass:(id)arg1;
 - (void)dealloc;
 - (void)expressPassController:(id)arg1 didCompleteTransactionForPass:(id)arg2;
 - (void)expressPassController:(id)arg1 didFailTransactionForPass:(id)arg2;

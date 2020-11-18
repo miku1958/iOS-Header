@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     NSURL *_reportURL;
     NSArray *_events;
     NSArray *_eventDictionaries;
+    NSArray *_blacklistedEvents;
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (strong, nonatomic) NSArray *blacklistedEvents; // @synthesize blacklistedEvents=_blacklistedEvents;
 @property (strong, nonatomic) NSArray *eventDictionaries; // @synthesize eventDictionaries=_eventDictionaries;
 @property (strong, nonatomic) NSArray *events; // @synthesize events=_events;
 @property (strong, nonatomic) NSURL *reportURL; // @synthesize reportURL=_reportURL;

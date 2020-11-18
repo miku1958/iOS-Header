@@ -6,7 +6,7 @@
 
 #import <WebKit/NSObject-Protocol.h>
 
-@class NSData, NSString, UIScrollView, UIView, WKWebView;
+@class NSData, NSString, UIEvent, UIScrollView, UIView, WKWebView;
 
 @protocol WKWebViewContentProvider <NSObject>
 
@@ -28,6 +28,7 @@
 
 @optional
 - (void)web_beginAnimatedResizeWithUpdates:(void (^)(void))arg1;
+- (BOOL)web_handleKeyEvent:(UIEvent *)arg1;
 - (void)web_scrollViewDidEndZooming:(UIScrollView *)arg1 withView:(UIView *)arg2 atScale:(double)arg3;
 - (void)web_scrollViewDidScroll:(UIScrollView *)arg1;
 - (void)web_scrollViewDidZoom:(UIScrollView *)arg1;

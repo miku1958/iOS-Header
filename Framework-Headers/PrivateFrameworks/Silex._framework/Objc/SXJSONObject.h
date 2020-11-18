@@ -7,22 +7,19 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableDictionary, NSString;
-@protocol OS_dispatch_semaphore;
 
 @interface SXJSONObject : NSObject
 {
+    struct os_unfair_lock_s _unfairLock;
     NSDictionary *_jsonDictionary;
-    NSObject<OS_dispatch_semaphore> *_semaphore;
     NSString *_specificationVersion;
     NSMutableDictionary *_objectStorage;
-    id _backingObject;
 }
 
-@property (strong, nonatomic) id backingObject; // @synthesize backingObject=_backingObject;
-@property (strong, nonatomic) NSDictionary *jsonDictionary; // @synthesize jsonDictionary=_jsonDictionary;
-@property (strong, nonatomic) NSMutableDictionary *objectStorage; // @synthesize objectStorage=_objectStorage;
-@property (readonly, nonatomic) NSObject<OS_dispatch_semaphore> *semaphore; // @synthesize semaphore=_semaphore;
+@property (readonly, nonatomic) NSDictionary *jsonDictionary; // @synthesize jsonDictionary=_jsonDictionary;
+@property (readonly, nonatomic) NSMutableDictionary *objectStorage; // @synthesize objectStorage=_objectStorage;
 @property (readonly, nonatomic) NSString *specificationVersion; // @synthesize specificationVersion=_specificationVersion;
+@property (readonly, nonatomic) struct os_unfair_lock_s unfairLock; // @synthesize unfairLock=_unfairLock;
 
 + (Class)classForProtocolProperty:(id)arg1 withValue:(id)arg2;
 + (Class)classOverrideAtInitialization:(Class)arg1 type:(id)arg2;
@@ -37,16 +34,14 @@
 + (CDUnknownBlockType)purgeClassBlockForPropertyWithName:(id)arg1;
 + (CDUnknownBlockType)valueClassBlockForPropertyWithName:(id)arg1;
 - (void).cxx_destruct;
+- (id)JSONRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)explodedBackingObjects;
-- (id)flatCopy;
-- (BOOL)hasJSONStore;
-- (id)initWithBackingObject:(id)arg1 andVersion:(id)arg2;
+- (id)init;
 - (id)initWithJSONData:(id)arg1 andVersion:(id)arg2;
 - (id)initWithJSONObject:(id)arg1 andVersion:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (id)jsonData;
 - (id)objectForLookupKey:(id)arg1;
-- (void)setBackingObject:(id)arg1 forPropertiesOfClass:(Class)arg2;
 - (void)storeObject:(id)arg1 forLookupKey:(id)arg2;
 - (void)storeValue:(id)arg1 forLookupKey:(id)arg2;
 - (id)valueForLookupKey:(id)arg1;

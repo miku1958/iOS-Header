@@ -40,10 +40,12 @@
 - (void)notifyHaveSeenComplianceMessageWithLastLockDate:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)notifyStartComplianceTimer:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)openSensitiveURL:(NSString *)arg1 unlock:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
+- (void)peekProfileDataFromPurgatoryForDeviceType:(unsigned long long)arg1 withCompletion:(void (^)(NSData *, NSError *))arg2;
 - (void)popProfileDataFromHeadOfInstallationQueueWithCompletion:(void (^)(NSData *, NSError *))arg1;
+- (void)popProfileDataFromPurgatoryForDeviceType:(unsigned long long)arg1 withCompletion:(void (^)(NSData *, NSError *))arg2;
 - (void)popProvisioningProfileFromHeadOfInstallationQueueWithCompletion:(void (^)(NSData *, NSError *))arg1;
 - (void)profileDataStoredForPurpose:(int)arg1 completion:(void (^)(NSData *, NSError *))arg2;
-- (void)queueProfileDataForInstallation:(NSData *)arg1 originalFileName:(NSString *)arg2 originatingBundleID:(NSString *)arg3 transitionToUI:(BOOL)arg4 completion:(void (^)(NSString *, NSError *))arg5;
+- (void)queueProfileDataForInstallation:(NSData *)arg1 originalFileName:(NSString *)arg2 originatingBundleID:(NSString *)arg3 transitionToUI:(BOOL)arg4 completion:(void (^)(NSString *, unsigned long long, NSError *))arg5;
 - (void)recomputePerClientUserComplianceWithCompletion:(void (^)(NSError *))arg1;
 - (void)recomputeUserComplianceWarningWithCompletion:(void (^)(NSError *))arg1;
 - (void)removeBoolSetting:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
@@ -52,13 +54,13 @@
 - (void)removeProfileWithIdentifier:(NSString *)arg1 installationType:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeProtectedProfileWithIdentifier:(NSString *)arg1 installationType:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeProvisioningProfileWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)removeUninstalledProfileWithIdentifier:(NSString *)arg1 installationType:(long long)arg2 targetDeviceType:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
 - (void)removeValueSetting:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)removeWebContentFilterUserBlacklistedURLString:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)rereadManagedAppAttributesWithCompletion:(void (^)(NSError *))arg1;
 - (void)resetAllSettingsToDefaultsIsUserInitiated:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setAllowedURLStrings:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setAutoCorrectionAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
-- (void)setDictationAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setKeyboardShortcutsAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setParametersForSettingsByType:(NSDictionary *)arg1 configurationUUID:(NSString *)arg2 toSystem:(BOOL)arg3 user:(BOOL)arg4 passcode:(NSString *)arg5 credentialSet:(NSData *)arg6 completion:(void (^)(NSError *))arg7;
 - (void)setPredictiveKeyboardAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;

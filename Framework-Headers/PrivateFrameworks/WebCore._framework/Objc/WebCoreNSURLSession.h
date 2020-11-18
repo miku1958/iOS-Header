@@ -14,8 +14,8 @@
     struct RefPtr<WebCore::PlatformMediaResourceLoader, WTF::DumbPtrTraits<WebCore::PlatformMediaResourceLoader>> _loader;
     struct RetainPtr<id<NSURLSessionDelegate>> _delegate;
     struct RetainPtr<NSOperationQueue> _queue;
-    NSString *_sessionDescription;
-    struct HashSet<WTF::RetainPtr<WebCoreNSURLSessionDataTask>, WTF::PtrHash<WTF::RetainPtr<WebCoreNSURLSessionDataTask>>, WTF::HashTraits<WTF::RetainPtr<WebCoreNSURLSessionDataTask>>> _dataTasks;
+    struct RetainPtr<NSString> _sessionDescription;
+    struct HashSet<WTF::RetainPtr<const void *>, WTF::PtrHash<WTF::RetainPtr<const void *>>, WTF::HashTraits<WTF::RetainPtr<const void *>>> _dataTasks;
     struct HashSet<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>, WTF::PtrHash<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>>, WTF::HashTraits<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>>> _origins;
     struct Lock _dataTasksLock;
     BOOL _invalidated;
@@ -29,7 +29,7 @@
 @property (readonly, strong) NSOperationQueue *delegateQueue; // @dynamic delegateQueue;
 @property (readonly) BOOL didPassCORSAccessChecks; // @dynamic didPassCORSAccessChecks;
 @property (readonly) struct PlatformMediaResourceLoader *loader; // @dynamic loader;
-@property (copy) NSString *sessionDescription; // @synthesize sessionDescription=_sessionDescription;
+@property (copy) NSString *sessionDescription;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

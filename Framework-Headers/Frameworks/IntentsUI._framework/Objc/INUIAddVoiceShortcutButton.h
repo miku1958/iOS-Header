@@ -14,6 +14,7 @@
     unsigned long long _style;
     id<INUIAddVoiceShortcutButtonDelegate> _delegate;
     INShortcut *_shortcut;
+    double _cornerRadius;
     INVoiceShortcut *_voiceShortcut;
     CAFilter *_highlightFilter;
     UIImageView *_sphiriImageView;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) NSLayoutConstraint *addedToSiriLeadingConstraint; // @synthesize addedToSiriLeadingConstraint=_addedToSiriLeadingConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *checkmarkHeightConstraint; // @synthesize checkmarkHeightConstraint=_checkmarkHeightConstraint;
 @property (weak, nonatomic) UIImageView *checkmarkImageView; // @synthesize checkmarkImageView=_checkmarkImageView;
+@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (weak, nonatomic) id<INUIAddVoiceShortcutButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) CAFilter *highlightFilter; // @synthesize highlightFilter=_highlightFilter;
 @property (weak, nonatomic) UILabel *phraseLabel; // @synthesize phraseLabel=_phraseLabel;

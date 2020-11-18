@@ -6,40 +6,27 @@
 
 #import <iWorkImport/TSPObject.h>
 
-#import <iWorkImport/TSTTableHeaderStorage-Protocol.h>
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface TSTTableHeaderStorageBucket : TSPObject <TSTTableHeaderStorage>
+@interface TSTTableHeaderStorageBucket : TSPObject
 {
-    struct map<unsigned int, SFUtility::ObjcSharedPtr<NSObject>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, SFUtility::ObjcSharedPtr<NSObject>>>> *mMap;
-    double mHorizontalScaleFactor;
+    map_9aa73377 _map;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) double horizontalScaleFactor; // @synthesize horizontalScaleFactor=mHorizontalScaleFactor;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long count;
+@property (nonatomic) map_9aa73377 map; // @synthesize map=_map;
+@property (readonly, nonatomic) unsigned int maxIndex;
+@property (readonly, nonatomic) unsigned int minIndex;
 
-- (long long)count;
-- (void)dealloc;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)enumerateHeadersWithBlock:(CDUnknownBlockType)arg1;
-- (id)headerForKey:(unsigned int)arg1 willModify:(BOOL)arg2;
-- (id)headerForKey:(unsigned int)arg1 willModify:(BOOL)arg2 createIfNotThere:(BOOL)arg3;
-- (id)initWithContext:(id)arg1;
+- (id)headerAtIndex:(unsigned int)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (unsigned int)lowerBound:(unsigned int)arg1;
-- (unsigned int)maxKey;
-- (unsigned int)minKey;
+- (id)mutableHeaderAtIndex:(unsigned int)arg1 allowCreation:(BOOL)arg2;
 - (id)packageLocator;
-- (void)removeAllHeaders;
-- (void)removeHeaderForKey:(unsigned int)arg1;
 - (void)saveToArchiver:(id)arg1;
-- (void)setHeader:(id)arg1 forKey:(unsigned int)arg2;
-- (void)shiftKeysAtIndex:(unsigned int)arg1 amount:(int)arg2;
-- (unsigned int)upperBound:(unsigned int)arg1;
+- (void)setHeader:(id)arg1 atIndex:(unsigned int)arg2;
+- (void)shiftIndexesAtIndex:(unsigned int)arg1 amount:(int)arg2;
 
 @end
 

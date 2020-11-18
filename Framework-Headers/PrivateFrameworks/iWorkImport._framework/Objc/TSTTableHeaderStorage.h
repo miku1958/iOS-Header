@@ -6,38 +6,49 @@
 
 #import <iWorkImport/TSPContainedObject.h>
 
-#import <iWorkImport/TSTTableHeaderStorage-Protocol.h>
-
-@class NSString, TSTTableHeaderStorageBucket;
+@class TSPObject, TSTTableHeaderStorageBucket;
 
 __attribute__((visibility("hidden")))
-@interface TSTTableHeaderStorage : TSPContainedObject <TSTTableHeaderStorage>
+@interface TSTTableHeaderStorage : TSPContainedObject
 {
-    TSTTableHeaderStorageBucket *mBuckets[1];
+    TSTTableHeaderStorageBucket *_buckets[1];
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long count;
+@property (readonly, nonatomic) TSPObject *firstBucketForArchiving;
+@property (readonly, nonatomic) unsigned int maxIndex;
+@property (readonly, nonatomic) unsigned int minIndex;
 
-- (long long)count;
-- (void)dealloc;
-- (void)enumerateHeadersWithBlock:(CDUnknownBlockType)arg1;
-- (id)headerForKey:(unsigned int)arg1 willModify:(BOOL)arg2;
-- (id)headerForKey:(unsigned int)arg1 willModify:(BOOL)arg2 createIfNotThere:(BOOL)arg3;
-- (id)initWithArchive:(const struct HeaderStorage *)arg1 unarchiver:(id)arg2 owner:(id)arg3;
+- (void).cxx_destruct;
+- (id)_headerAtIndex:(unsigned int)arg1;
+- (id)_mutableHeaderAtIndex:(unsigned int)arg1;
+- (id)_mutableNoCreateHeaderAtIndex:(unsigned int)arg1;
+- (void)_setHeader:(id)arg1 atIndex:(unsigned int)arg2;
+- (unsigned long long)cellCountAtIndex:(unsigned int)arg1;
+- (id)cellStyleAtIndex:(unsigned int)arg1;
+- (BOOL)decrementCellCountAtIndex:(unsigned int)arg1 byAmount:(unsigned long long)arg2;
+- (void)encodeToArchive:(struct HeaderStorage *)arg1 archiver:(id)arg2;
+- (void)forceLoadHeaders;
+- (unsigned char)hidingStateAtIndex:(unsigned int)arg1;
+- (void)incrementCellCountAtIndex:(unsigned int)arg1 byAmount:(unsigned long long)arg2;
+- (id)initFromArchive:(const struct HeaderStorage *)arg1 unarchiver:(id)arg2 owner:(id)arg3;
+- (id)initWithBucket:(id)arg1 owner:(id)arg2;
 - (id)initWithOwner:(id)arg1;
-- (unsigned int)lowerBound:(unsigned int)arg1;
-- (unsigned int)maxKey;
-- (unsigned int)minKey;
-- (void)removeAllHeaders;
-- (void)removeHeaderForKey:(unsigned int)arg1;
-- (void)saveToArchive:(struct HeaderStorage *)arg1 archiver:(id)arg2;
-- (void)setHeader:(id)arg1 forKey:(unsigned int)arg2;
-- (void)shiftKeysAtIndex:(unsigned int)arg1 amount:(int)arg2;
-- (unsigned int)upperBound:(unsigned int)arg1;
-- (void)willModifyAllHeaders;
+- (id)metadataAtIndex:(unsigned int)arg1 hidingAction:(unsigned char)arg2 defaultSize:(double)arg3 uuid:(UUIDData_5fbc143e)arg4;
+- (void)moveIndexRange:(struct _NSRange)arg1 toIndex:(unsigned int)arg2;
+- (void)removeIndexesAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
+- (void)resetAllCellCounts;
+- (void)setCellStyle:(id)arg1 atIndex:(unsigned int)arg2;
+- (void)setHidingState:(unsigned char)arg1 atIndex:(unsigned int)arg2;
+- (void)setSize:(double)arg1 atIndex:(unsigned int)arg2;
+- (void)setTextStyle:(id)arg1 atIndex:(unsigned int)arg2;
+- (void)shiftIndexesAtIndex:(unsigned int)arg1 amount:(int)arg2;
+- (double)sizeAtIndex:(unsigned int)arg1;
+- (void)swapIndex:(unsigned int)arg1 withIndex:(unsigned int)arg2;
+- (id)textStyleAtIndex:(unsigned int)arg1;
+- (unsigned long long)totalCellCount;
+- (void)updateHeaderAtIndex:(unsigned int)arg1 fromMetadata:(id)arg2;
+- (void)updateStylesWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

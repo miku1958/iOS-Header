@@ -6,12 +6,12 @@
 
 #import <XCTest/XCTestCase.h>
 
-@class VTKAssert;
+@class VTKAssert, VTKInternalConfiguration;
 
 @interface XCTestCase (VisualTestKit)
 
 @property (readonly, nonatomic) VTKAssert *VisualTestKitAssert;
+@property (strong, nonatomic) VTKInternalConfiguration *VisualTestKitConfiguration;
 
-- (void)setVisualTestKitAssert:(id)arg1;
 @end
 

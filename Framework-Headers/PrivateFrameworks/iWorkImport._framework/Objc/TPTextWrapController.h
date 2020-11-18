@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)p_shouldTextFlowAroundWrappable:(id)arg1 inTarget:(id)arg2 inColumn:(id)arg3;
 - (unsigned int)p_splitLine:(struct CGRect)arg1 lineSegmentRects:(struct CGRect [128])arg2 wrappable:(id)arg3 cookie:(id)arg4 skipHint:(double *)arg5;
 - (id)p_wrapDrawables:(id)arg1 userInfo:(id)arg2;
+- (void)setUpCanvasToWrapSpaceAffineTransformationForColumn:(id)arg1 withTarget:(id)arg2;
 - (unsigned int)splitLine:(struct CGRect)arg1 lineSegmentRects:(out struct CGRect [128])arg2 wrappableAttachments:(id)arg3 ignoreFloatingGraphics:(BOOL)arg4 canvasCausedWrap:(out BOOL *)arg5 skipHint:(out double *)arg6 userInfo:(id)arg7;
 
 @end

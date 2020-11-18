@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)geometryOnly;
 - (void)processDelayedItemsWithOpacity:(float)arg1;
-- (void)processElementInfo:(const struct RenderElementInfo *)arg1 eachValue:(BOOL)arg2;
+- (void)processElementInfo:(id)arg1 eachValue:(BOOL)arg2;
 - (BOOL)processEnumeratorSeries:(id)arg1;
 - (BOOL)useBoundsGeometry;
 

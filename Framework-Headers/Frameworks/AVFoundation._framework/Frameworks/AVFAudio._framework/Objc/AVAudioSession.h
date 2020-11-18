@@ -23,6 +23,7 @@
 @property (readonly) NSString *mode;
 @property (readonly, getter=isOtherAudioPlaying) BOOL otherAudioPlaying;
 @property (readonly) AVAudioSessionPortDescription *preferredInput;
+@property (readonly) unsigned long long promptStyle;
 @property (readonly) unsigned long long recordPermission;
 @property (readonly) unsigned long long routeSharingPolicy;
 @property (readonly) BOOL secondaryAudioShouldBeSilencedHint;
@@ -118,9 +119,10 @@
 - (void)privateUpdateOutputVolume:(id)arg1;
 - (void)privateUpdatePiPAvailabilityChange:(id)arg1;
 - (void)privateUpdatePromptStyle:(id)arg1;
-- (unsigned long long)promptStyle;
+- (BOOL)recordingFromRemoteInput;
 - (oneway void)release;
 - (void)requestRecordPermission:(CDUnknownBlockType)arg1;
+- (BOOL)requiresNoAudioResources;
 - (id)retain;
 - (unsigned long long)retainCount;
 - (id)routingContextUID;
@@ -160,6 +162,8 @@
 - (BOOL)setPreferredOutputNumberOfChannels:(long long)arg1 error:(id *)arg2;
 - (BOOL)setPreferredOutputSampleRate:(double)arg1 error:(id *)arg2;
 - (BOOL)setPreferredSampleRate:(double)arg1 error:(id *)arg2;
+- (BOOL)setRecordingFromRemoteInput:(BOOL)arg1 error:(id *)arg2;
+- (BOOL)setRequiresNoAudioResources:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)setSpeakerThermalGain:(float)arg1 error:(id *)arg2;
 - (BOOL)silenceOutput:(unsigned long long)arg1 error:(id *)arg2;
 - (float)speakerThermalGain;

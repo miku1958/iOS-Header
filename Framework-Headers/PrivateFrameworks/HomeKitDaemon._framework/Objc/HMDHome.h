@@ -249,6 +249,7 @@
 + (id)zoneIDFromHomeUUID:(id)arg1;
 - (void).cxx_destruct;
 - (void)__addMediaSession:(id)arg1;
+- (void)__encodeAccessoriesWithCoder:(id)arg1 options:(unsigned long long)arg2;
 - (void)__handleAcceptedOutgoingInvitationResponse:(id)arg1 destinationAddress:(id)arg2 publicKey:(id)arg3 username:(id)arg4 presenceAuthStatus:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)__handleAddHAPAccessoryModel:(id)arg1 message:(id)arg2;
 - (void)__handleAddMediaAccessoryModel:(id)arg1 message:(id)arg2;
@@ -296,7 +297,7 @@
 - (BOOL)_ensureDevicesSymptomDiscoveryMessageCanBeHandled:(id)arg1;
 - (void)_evaluateShouldRelaunchAndSetRelaunch;
 - (id)_getContainerForAppData:(id)arg1 keyName:(id *)arg2;
-- (id)_getLogEventsForOperation:(BOOL)arg1 accessories:(id)arg2 readRequestMap:(id)arg3 identifier:(id)arg4;
+- (id)_getLogEventsForOperation:(BOOL)arg1 accessories:(id)arg2 requestMap:(id)arg3 identifier:(id)arg4 source:(unsigned long long)arg5;
 - (void)_getRunTimeStateUpdate:(BOOL)arg1 includeHAPAccessoryState:(BOOL)arg2 includeResidentDeviceState:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_getTunnelAccessoryUpdate:(id)arg1;
 - (void)_handleAccessoryReachabilityChange:(id)arg1;
@@ -554,6 +555,7 @@
 - (id)assistantObject;
 - (id)assistantUniqueIdentifier;
 - (void)auditUsersForNotifications:(id)arg1;
+- (BOOL)awdPrimaryReportingDevice;
 - (id)backingStoreObjects:(long long)arg1;
 - (void)btleAccessoryReachabilityProbeTimer:(BOOL)arg1;
 - (id)builtInActionSetInfo;

@@ -15,6 +15,7 @@
 }
 
 @property (strong, nonatomic) NSSet *configurations; // @dynamic configurations;
+@property (copy, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enabled; // @dynamic enabled;
@@ -24,6 +25,7 @@
 @property (nonatomic) BOOL invertUsageLimit; // @dynamic invertUsageLimit;
 @property (nonatomic) BOOL isDirty; // @dynamic isDirty;
 @property (nonatomic) BOOL isTombstoned; // @dynamic isTombstoned;
+@property (nonatomic) BOOL limitEnabled; // @dynamic limitEnabled;
 @property (strong, nonatomic) RMCoreOrganization *organization; // @dynamic organization;
 @property (strong, nonatomic) RMBlueprintSchedule *schedule; // @dynamic schedule;
 @property (readonly) Class superclass;

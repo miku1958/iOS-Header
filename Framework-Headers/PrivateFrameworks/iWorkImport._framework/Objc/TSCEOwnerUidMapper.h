@@ -9,7 +9,6 @@
 __attribute__((visibility("hidden")))
 @interface TSCEOwnerUidMapper : TSKSosBase
 {
-    UUIDMap_b66c2694 _uidMap;
     UUIDData_5fbc143e _tableUid;
     UUIDData_5fbc143e _nextTableUid;
     UUIDData_5fbc143e _hiddenStateForRowsOwnerUid;
@@ -30,6 +29,7 @@ __attribute__((visibility("hidden")))
     UUIDData_5fbc143e _nextCategoryAggregatesOwnerUid;
     UUIDData_5fbc143e _groupByUid;
     UUIDData_5fbc143e _nextGroupByUid;
+    UUIDMap_b66c2694 _uidMap;
     UUIDData_5fbc143e _pbTableUid;
 }
 

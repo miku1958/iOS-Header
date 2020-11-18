@@ -36,6 +36,7 @@
 - (void)beginSetupTransaction;
 - (void)cancelReachabilityTimer;
 - (void)checkReachability;
+- (void)clearPowerAssertionIfNotPairing:(id)arg1;
 - (BOOL)connectionStateWithDevices:(id)arg1 accounts:(id)arg2;
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
 - (void)endSetupTransaction;

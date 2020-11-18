@@ -42,6 +42,7 @@
     unsigned int _classInfosCount;
     VMUClassInfoMap *_classInfoIndexer;
     struct _VMUScanLocationCache **_scanCaches;
+    unsigned int _recordAutoreleasePoolBoundaries;
     BOOL _exactScanningEnabled;
     unsigned long long _maxInteriorOffset;
     unsigned int _scanningMask;
@@ -50,6 +51,7 @@
     BOOL _javaScriptCoreUsingPoisoning;
     NSString *_processName;
     NSString *_processDescriptionString;
+    NSString *_executablePath;
     NSString *_binaryImagesDescription;
     unsigned long long _physicalFootprint;
     unsigned long long _physicalFootprintPeak;
@@ -69,7 +71,9 @@
 @property (strong, nonatomic) VMUDebugTimer *debugTimer; // @synthesize debugTimer=_debugTimer;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL exactScanningEnabled; // @synthesize exactScanningEnabled=_exactScanningEnabled;
+@property (readonly, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL is64bit;
 @property (readonly, nonatomic) unsigned int mallocNodeCount;
 @property (nonatomic) unsigned long long maxInteriorOffset; // @synthesize maxInteriorOffset=_maxInteriorOffset;
 @property (readonly, nonatomic) VMUTaskMemoryCache *memoryCache; // @synthesize memoryCache=_memoryCache;
@@ -94,6 +98,8 @@
 + (id)nodeDescription:(CDStruct_599faf0f)arg1 withNodeOffset:(unsigned long long)arg2 sortedVMRegions:(id)arg3;
 + (id)referenceDescription:(CDStruct_8b65991f)arg1 withSourceNode:(CDStruct_599faf0f)arg2 destinationNode:(CDStruct_599faf0f)arg3 sortedVMRegions:(id)arg4 symbolicator:(struct _CSTypeRef)arg5 alignmentSpacing:(unsigned int)arg6;
 - (void).cxx_destruct;
+- (void)_addSpecialNodesFromTask;
+- (void)_addThreadNodesFromTask;
 - (void)_buildRegionPageBlockMaps;
 - (id)_cachedVariantForGenericInfo:(id)arg1 variantKey:(unsigned long long)arg2;
 - (void)_callRemoteMallocEnumerators:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
@@ -136,7 +142,8 @@
 - (id)nodeDescription:(unsigned int)arg1;
 - (id)nodeDescription:(unsigned int)arg1 withOffset:(unsigned long long)arg2;
 - (CDStruct_599faf0f)nodeDetails:(unsigned int)arg1;
-- (void)orderedNodeTraversal:(int)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (unsigned int)nodeForAddress:(unsigned long long)arg1;
+- (void)orderedNodeTraversal:(unsigned int)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)processSnapshotGraph;
 - (id)processSnapshotGraphWithMallocStackLogs:(BOOL)arg1;
 - (id)processSnapshotGraphWithOptions:(unsigned long long)arg1;

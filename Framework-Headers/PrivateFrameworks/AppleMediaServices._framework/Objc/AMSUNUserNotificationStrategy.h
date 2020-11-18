@@ -7,36 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <AppleMediaServices/AMSUserNotificationStrategy-Protocol.h>
-#import <AppleMediaServices/UNUserNotificationCenterDelegate-Protocol.h>
-
-@class AMSUserNotificationCenter, NSArray, NSString, UNUserNotificationCenter;
-@protocol AMSUserNotificationCenterDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AMSUNUserNotificationStrategy : NSObject <UNUserNotificationCenterDelegate, AMSUserNotificationStrategy>
+@interface AMSUNUserNotificationStrategy : NSObject <AMSUserNotificationStrategy>
 {
-    id<AMSUserNotificationCenterDelegate> _delegate;
-    AMSUserNotificationCenter *_originalCenter;
-    UNUserNotificationCenter *_center;
 }
 
-@property (readonly, nonatomic) NSArray *activeNotifications;
-@property (strong, nonatomic) UNUserNotificationCenter *center; // @synthesize center=_center;
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<AMSUserNotificationCenterDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, weak, nonatomic) AMSUserNotificationCenter *originalCenter; // @synthesize originalCenter=_originalCenter;
-@property (readonly) Class superclass;
-
-- (void).cxx_destruct;
-- (id)_createNoteFromNotification:(id)arg1;
-- (void)_requestPermissionWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithOriginalCenter:(id)arg1 bundleId:(id)arg2 runningInDaemon:(BOOL)arg3;
-- (id)postNotification:(id)arg1;
-- (id)removeNotification:(id)arg1;
-- (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)userNotificationCenter:(id)arg1 willPresentNotification:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
++ (id)_activeNotificationsWithCenterBundleId:(id)arg1;
++ (id)_centerForBundleId:(id)arg1;
++ (id)_postNotification:(id)arg1 centerBundleId:(id)arg2;
++ (id)_removeNotification:(id)arg1 centerBundleId:(id)arg2;
++ (id)_removeNotificationWithIdentifier:(id)arg1 centerBundleId:(id)arg2 logKey:(id)arg3;
 
 @end
 

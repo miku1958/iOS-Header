@@ -7,7 +7,7 @@
 #import <NewsCore/FCOperation.h>
 
 @class NSArray, NSDictionary, NSObject, NSSet, NTCatchUpOperationForYouFetchInfo;
-@protocol FCContentContext, FCFeedPersonalizing, FCNewsAppConfiguration, NTTodayResultOperationInfoProviding;
+@protocol FCContentContext, FCFeedPersonalizing, FCNewsAppConfiguration, FCTodayPrivateData, NTTodayResultOperationInfoProviding;
 
 @interface NTTodayItemOperation : FCOperation
 {
@@ -17,6 +17,7 @@
     NSSet *_itemIDsOfLeadingCells;
     NSDictionary *_slotAllocationByDynamicSlotItemID;
     id<FCFeedPersonalizing> _feedPersonalizer;
+    id<FCTodayPrivateData> _todayData;
     id<NTTodayResultOperationInfoProviding> _operationInfo;
     NTCatchUpOperationForYouFetchInfo *_forYouFetchInfo;
     CDUnknownBlockType _todayItemCompletion;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) NSObject *resultAssetsHoldToken; // @synthesize resultAssetsHoldToken=_resultAssetsHoldToken;
 @property (strong, nonatomic) NSDictionary *resultTodayItemsBySectionDescriptor; // @synthesize resultTodayItemsBySectionDescriptor=_resultTodayItemsBySectionDescriptor;
 @property (copy, nonatomic) NSDictionary *slotAllocationByDynamicSlotItemID; // @synthesize slotAllocationByDynamicSlotItemID=_slotAllocationByDynamicSlotItemID;
+@property (strong, nonatomic) id<FCTodayPrivateData> todayData; // @synthesize todayData=_todayData;
 @property (copy, nonatomic) CDUnknownBlockType todayItemCompletion; // @synthesize todayItemCompletion=_todayItemCompletion;
 
 - (void).cxx_destruct;

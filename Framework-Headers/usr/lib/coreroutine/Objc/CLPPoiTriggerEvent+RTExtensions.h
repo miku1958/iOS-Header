@@ -7,6 +7,7 @@
 #import <CoreLocationProtobuf/CLPPoiTriggerEvent.h>
 
 @interface CLPPoiTriggerEvent (RTExtensions)
++ (unsigned long long)mapItemSource:(int)arg1;
 + (int)subType:(unsigned long long)arg1;
 - (id)description;
 - (id)initWithMapItem:(id)arg1 date:(id)arg2;

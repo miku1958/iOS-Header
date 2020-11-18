@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isValidWithError:(id *)arg1;
 
 @end
 

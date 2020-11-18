@@ -6,21 +6,31 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _CPFeedbackPayload;
+@class NSArray, NSData, NSDictionary, NSString, _CPFeedbackPayload, _CPImagesUsagePropensity, _CPNewsUsagePropensity, _CPSafariUsagePropensity, _CPSpotlightUsagePropensity, _CPUsageSinceLookback;
 
 @protocol _CPClientSession <NSObject>
 
 @property (copy, nonatomic) NSString *agent;
+@property (copy, nonatomic) NSString *countryCode;
+@property (nonatomic) BOOL duEnabled;
 @property (copy, nonatomic) NSArray *feedbacks;
 @property (nonatomic) double firstUseDate;
 @property (nonatomic) BOOL firstUseOfTheDay;
+@property (strong, nonatomic) _CPImagesUsagePropensity *imagesPropensity;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSData *jsonFeedback;
+@property (copy, nonatomic) NSString *locale;
+@property (strong, nonatomic) _CPNewsUsagePropensity *newsPropensity;
 @property (copy, nonatomic) NSString *parsecDeveloperID;
 @property (nonatomic) int previousSessionEndReason;
 @property (nonatomic) BOOL removeTimestamps;
 @property (copy, nonatomic) NSDictionary *resourceVersions;
+@property (strong, nonatomic) _CPSafariUsagePropensity *safariPropensity;
 @property (nonatomic) double sessionStart;
+@property (strong, nonatomic) _CPSpotlightUsagePropensity *spotlightPropensity;
+@property (strong, nonatomic) _CPUsageSinceLookback *usageSinceLookback;
 @property (copy, nonatomic) NSString *userGuidString;
+@property (readonly, nonatomic) unsigned long long whichPropensity;
 
 - (void)addFeedback:(_CPFeedbackPayload *)arg1;
 - (void)clearFeedback;

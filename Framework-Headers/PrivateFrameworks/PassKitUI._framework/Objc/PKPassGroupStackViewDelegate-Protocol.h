@@ -23,5 +23,6 @@
 - (void)groupStackView:(PKPassGroupStackView *)arg1 wantsTopContentSeparatorWithVisibility:(double)arg2 animated:(BOOL)arg3;
 - (void)groupStackViewDidChangeCoachingState:(PKPassGroupStackView *)arg1;
 - (BOOL)groupStackViewShouldAllowReordering:(PKPassGroupStackView *)arg1;
+- (void)groupStackViewWantsForcedPayment:(PKPassGroupStackView *)arg1;
 @end
 

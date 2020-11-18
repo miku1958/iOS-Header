@@ -36,11 +36,13 @@
 - (void)cardViewDidDisappear:(id)arg1;
 - (void)didEngageCardSection:(id)arg1;
 - (void)didErrorOccur:(id)arg1;
+- (void)didReportUserResponseFeedback:(id)arg1;
 - (id)init;
 - (void)presentViewController:(id)arg1;
 - (void)reportFeedback:(id)arg1 queryId:(long long)arg2;
 - (void)sendCustomFeedback:(id)arg1;
 - (BOOL)shouldHandleCardSectionEngagement:(id)arg1;
+- (void)willDismissViewController:(id)arg1;
 
 @end
 

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_nrmQueue;
     TSCEReferenceTracker *_referenceTracker;
     TSCECalculationEngine *_calcEngine;
+    BOOL _markIndirectsDirtyInWritePhase;
 }
 
 @property (weak) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)beginTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1 limitedToRange:(struct TSCERangeCoordinate)arg2;
 - (id)cellRangeWasInserted:(const struct TSCERangeRef *)arg1;
 - (void)commonInit;
+- (void)endOfEvaluationWritePhase;
 - (void)endTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (void)headerCellContentWasModified:(id)arg1;

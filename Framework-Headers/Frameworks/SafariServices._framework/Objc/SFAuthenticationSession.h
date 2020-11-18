@@ -19,6 +19,7 @@
     SFAuthenticationViewController *_authViewController;
     NSString *_callbackURLScheme;
     BOOL _isSessionStarted;
+    BOOL _usingEphemeralSession;
     id<_SFAuthenticationSessionDelegate> __delegate;
 }
 
@@ -33,6 +34,7 @@
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1 callbackURLScheme:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithURL:(id)arg1 callbackURLScheme:(id)arg2 usingEphemeralSession:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)presentingViewControllerForAuthenticationViewController:(id)arg1;
 - (void)safariViewController:(id)arg1 didDecideCookieSharingForURL:(id)arg2 shouldCancel:(BOOL)arg3;
 - (void)safariViewController:(id)arg1 hostApplicationOpenURL:(id)arg2;

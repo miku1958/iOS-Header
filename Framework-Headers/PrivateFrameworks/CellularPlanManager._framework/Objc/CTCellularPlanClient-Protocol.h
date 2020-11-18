@@ -73,7 +73,7 @@
 - (void)remapSimLabel:(CTDanglingPlanItem *)arg1 to:(CTCellularPlanItem *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)remotePlanItemsWithUpdateFetch:(BOOL)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)remotePlanLaunchInfoForEid:(NSData *)arg1 completion:(void (^)(NSString *, NSDictionary *, NSError *))arg2;
-- (void)remoteUserDidProvideConsentResponse:(BOOL)arg1 plan:(CTCellularPlanItem *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)remoteUserDidProvideResponse:(BOOL)arg1 confirmationCode:(NSString *)arg2 plan:(CTCellularPlanItem *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)resolveSimLabel:(CTDanglingPlanItem *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)resumePlanProvisioning:(BOOL)arg1 userConsent:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)retrieveRequestSettings:(void (^)(NSDictionary *, NSDictionary *, NSDictionary *))arg1;
@@ -98,7 +98,7 @@
 - (void)startProvisioningWithCompletion:(void (^)(BOOL))arg1;
 - (void)startRemoteProvisioningWithCompletion:(void (^)(BOOL))arg1;
 - (void)triggerAddNewDataPlan:(void (^)(NSError *))arg1;
-- (void)userDidProvideConsentResponse:(long long)arg1 plan:(CTCellularPlanItem *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)userDidProvideResponse:(long long)arg1 confirmationCode:(NSString *)arg2 plan:(CTCellularPlanItem *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)willDisplayPlanItems;
 @end
 

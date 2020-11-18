@@ -36,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *mediaDisplayName;
 @property (readonly, nonatomic) NSString *mediaFileType;
 @property (nonatomic) struct CGSize originalSize; // @synthesize originalSize=_originalSize;
+@property (readonly, nonatomic) unsigned short propertyIdForFlagsCommand;
+@property (readonly, nonatomic) unsigned short propertyIdForOriginalSizeCommand;
 @property (readonly, nonatomic) NSString *propertyNameForFlagsCommand;
 @property (readonly, nonatomic) NSString *propertyNameForOriginalSizeCommand;
 @property (readonly, nonatomic) struct CGSize rawDataSize;

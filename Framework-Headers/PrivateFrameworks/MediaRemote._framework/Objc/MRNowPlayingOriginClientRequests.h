@@ -8,7 +8,7 @@
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, _MRDeviceInfoMessageProtobuf, _MROriginProtobuf;
+@class NSMutableArray, NSMutableDictionary, _MRDeviceInfoMessageProtobuf, _MRNowPlayingPlayerPathProtobuf, _MROriginProtobuf;
 @protocol OS_dispatch_queue;
 
 @interface MRNowPlayingOriginClientRequests : NSObject <MRNowPlayingClientState>
@@ -19,17 +19,21 @@
     float _volume;
     NSMutableArray *_nowPlayingClients;
     NSMutableDictionary *_transactionCallbacks;
+    NSMutableArray *_deviceInfoCompletions;
     _MROriginProtobuf *_origin;
+    _MRNowPlayingPlayerPathProtobuf *_playerPath;
 }
 
 @property (copy, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
 @property (readonly, nonatomic) _MROriginProtobuf *origin; // @synthesize origin=_origin;
+@property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
 @property (nonatomic) float volume;
 @property (nonatomic) unsigned int volumeCapabilities;
 
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)existingNowPlayingClientRequestsForPlayerPath:(id)arg1;
+- (void)handleDeviceInfoRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithOrigin:(id)arg1;
 - (id)nowPlayingClientRequestsForPlayerPath:(id)arg1;
 - (id)nowPlayingClients;

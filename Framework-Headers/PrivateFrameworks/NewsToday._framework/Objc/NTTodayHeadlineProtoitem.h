@@ -29,7 +29,7 @@
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 headline:(id)arg2 searchResult:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (id)itemWithContentContext:(id)arg1 operationInfo:(id)arg2 sectionDescriptor:(id)arg3 assetFileURLsByRemoteURL:(id)arg4 forLeadingCellAppearance:(BOOL)arg5 preferredDynamicSlotAllocation:(unsigned long long)arg6;
+- (id)itemWithContentContext:(id)arg1 operationInfo:(id)arg2 sectionDescriptor:(id)arg3 todayData:(id)arg4 assetFileURLsByRemoteURL:(id)arg5 forLeadingCellAppearance:(BOOL)arg6 preferredDynamicSlotAllocation:(unsigned long long)arg7;
 
 @end
 

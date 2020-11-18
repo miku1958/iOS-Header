@@ -6,33 +6,23 @@
 
 #import <PassKitUI/PKTableViewCell.h>
 
-@class NSString, PKContinuousImageView, UIImage, UILabel;
+@class PKPaymentTransaction, PKTransactionMapView, UIImageView, UILabel;
 
 @interface PKPaymentTransactionLocationTableViewCell : PKTableViewCell
 {
-    NSString *_postalAddressTitle;
-    NSString *_postalAddressString;
-    UIImage *_mapSnapshotImage;
-    UIImage *_mapPlaceholderImage;
     UILabel *_titleLabel;
-    UILabel *_postalAddressLabel;
-    PKContinuousImageView *_mapSnapshotImageView;
-    struct CGSize _snapshotSize;
+    PKTransactionMapView *_mapView;
+    UIImageView *_disclosureView;
+    PKPaymentTransaction *_transaction;
 }
 
-@property (strong, nonatomic) UIImage *mapPlaceholderImage; // @synthesize mapPlaceholderImage=_mapPlaceholderImage;
-@property (strong, nonatomic) UIImage *mapSnapshotImage; // @synthesize mapSnapshotImage=_mapSnapshotImage;
-@property (strong, nonatomic) PKContinuousImageView *mapSnapshotImageView; // @synthesize mapSnapshotImageView=_mapSnapshotImageView;
-@property (strong, nonatomic) UILabel *postalAddressLabel; // @synthesize postalAddressLabel=_postalAddressLabel;
-@property (strong, nonatomic) NSString *postalAddressString; // @synthesize postalAddressString=_postalAddressString;
-@property (strong, nonatomic) NSString *postalAddressTitle; // @synthesize postalAddressTitle=_postalAddressTitle;
-@property (nonatomic) struct CGSize snapshotSize; // @synthesize snapshotSize=_snapshotSize;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 
 - (void).cxx_destruct;
-- (void)_updateImageViewBoundsOrigin;
+- (id)_disclosureView;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (void)setTitleLabelColor:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

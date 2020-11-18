@@ -9,11 +9,15 @@
 @interface NSString (SafariCoreExtras)
 
 @property (readonly, copy, nonatomic) NSString *safari_domainFromHost;
+@property (readonly, copy, nonatomic) NSString *safari_highLevelDomainFromHost;
 @property (readonly, copy, nonatomic) NSString *safari_stringByNormalizingVersionString;
 @property (readonly, copy, nonatomic) NSString *safari_stringByReplacingHomoglyphForSpaceWithSpace;
+@property (readonly, copy, nonatomic) NSString *safari_suggestedFilenameFromTitleString;
 @property (readonly, copy, nonatomic) NSString *safari_userVisibleSafariBundleVersionFromFullVersion;
 
 + (void)safari_reverseEnumerateComponents:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
++ (id)safari_stringAsHexWithBuffer:(const char *)arg1 length:(unsigned long long)arg2;
++ (id)safari_stringAsHexWithData:(id)arg1;
 - (BOOL)safari_anyComponentSeparatedByString:(id)arg1 hasLocalizedCaseInsensitivePrefix:(id)arg2;
 - (id)safari_base64DecodedData;
 - (BOOL)safari_containsAllCharactersInString:(id)arg1;
@@ -25,7 +29,6 @@
 - (BOOL)safari_hasCaseInsensitiveSuffix:(id)arg1;
 - (BOOL)safari_hasLocalizedCaseInsensitivePrefix:(id)arg1;
 - (BOOL)safari_hasPrefix:(id)arg1;
-- (id)safari_highLevelDomainFromHost;
 - (BOOL)safari_isCaseAndDiacriticInsensitiveEqualToString:(id)arg1;
 - (BOOL)safari_isCaseInsensitiveEqualToString:(id)arg1;
 - (BOOL)safari_isVersionStringBetweenVersionString:(id)arg1 andVersionString:(id)arg2;

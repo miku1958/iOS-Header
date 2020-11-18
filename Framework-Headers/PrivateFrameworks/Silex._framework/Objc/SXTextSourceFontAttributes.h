@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Silex/SXFontAttributes.h>
 
 #import <Silex/SXFontAttributes-Protocol.h>
 
 @class NSString;
 
-@interface SXTextSourceFontAttributes : NSObject <SXFontAttributes>
+@interface SXTextSourceFontAttributes : SXFontAttributes <SXFontAttributes>
 {
     NSString *_familyName;
     long long _style;

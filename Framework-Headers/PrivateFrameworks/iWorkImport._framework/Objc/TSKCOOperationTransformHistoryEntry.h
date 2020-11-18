@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (BOOL)applyResult:(id)arg1;
+- (BOOL)applyResult:(const shared_ptr_f167ad79 *)arg1;
 - (id)description;
-- (id)initWithOriginalOperation:(id)arg1 transformingOperation:(id)arg2;
+- (id)initWithOriginalOperation:(const shared_ptr_f167ad79 *)arg1 transformingOperation:(const shared_ptr_f167ad79 *)arg2;
 
 @end
 

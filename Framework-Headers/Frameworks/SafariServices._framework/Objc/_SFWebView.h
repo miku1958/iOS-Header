@@ -17,6 +17,7 @@
     _SFDialogView *_dialogView;
     UIImageView *_placeholderView;
     NSTimer *_placeholderViewRemovalTimer;
+    double _placeholderOffset;
     long long _navigationGesturePolicy;
     id<_SFWebViewDelegate> _delegate;
     UIView *_clippingView;
@@ -51,6 +52,7 @@
 - (void)safeAreaInsetsDidChange;
 - (void)setAllowsBackForwardNavigationGestures:(BOOL)arg1;
 - (void)setPlaceholderImage:(id)arg1;
+- (void)setPlaceholderImage:(id)arg1 offset:(double)arg2;
 - (int)webProcessIDForDialogController:(id)arg1;
 
 @end

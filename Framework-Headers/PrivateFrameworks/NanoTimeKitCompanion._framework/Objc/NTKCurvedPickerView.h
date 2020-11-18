@@ -36,9 +36,8 @@
 - (void).cxx_destruct;
 - (double)_alphaForIndex:(unsigned long long)arg1;
 - (double)_angleForIndex:(unsigned long long)arg1;
-- (double)_fractionForSideIndex:(unsigned long long)arg1;
 - (void)_setCurrentFraction:(double)arg1;
-- (struct CGAffineTransform)_transformForIndex:(unsigned long long)arg1;
+- (struct CGAffineTransform)_transformForAngle:(double)arg1;
 - (void)enumerateSideViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)init;

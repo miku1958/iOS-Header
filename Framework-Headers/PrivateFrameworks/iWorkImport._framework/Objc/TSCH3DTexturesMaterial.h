@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)textureEnumerator;
 - (id)textures;
 - (id)tilings;
+- (id)variableTexture;
 
 @end
 

@@ -17,7 +17,7 @@
     PKPassGroupView *_groupView;
 }
 
-@property (nonatomic) id<PKPassDeleteAnimationControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPassDeleteAnimationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, strong, nonatomic) PKPassGroupView *groupView; // @synthesize groupView=_groupView;
 @property (readonly, strong, nonatomic) PKPassView *passView; // @synthesize passView=_passView;
 

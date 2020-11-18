@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)initWithPassType:(unsigned long long)arg1;
+- (id)initWithPassType:(unsigned long long)arg1 delegate:(id)arg2;
 
 @end
 

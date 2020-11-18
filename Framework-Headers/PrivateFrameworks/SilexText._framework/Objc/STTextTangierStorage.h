@@ -6,27 +6,26 @@
 
 #import <TSReading/TSWPStorage.h>
 
-@class NSCache, NSLocale, NSMutableArray, NSObject, NSSet;
-@protocol OS_dispatch_semaphore;
+@class NSCache, NSLocale, NSMutableArray, NSSet;
 
 @interface STTextTangierStorage : TSWPStorage
 {
     BOOL _isSelectable;
     BOOL _shouldHyphenate;
+    struct os_unfair_lock_s _unfairLock;
     NSLocale *_locale;
     NSSet *_rangedExclusionPaths;
     NSMutableArray *_attachments;
     NSCache *_tokenizersCache;
-    NSObject<OS_dispatch_semaphore> *_semaphore;
 }
 
 @property (strong, nonatomic) NSMutableArray *attachments; // @synthesize attachments=_attachments;
 @property (nonatomic) BOOL isSelectable; // @synthesize isSelectable=_isSelectable;
 @property (readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSSet *rangedExclusionPaths; // @synthesize rangedExclusionPaths=_rangedExclusionPaths;
-@property (readonly, nonatomic) NSObject<OS_dispatch_semaphore> *semaphore; // @synthesize semaphore=_semaphore;
 @property (nonatomic) BOOL shouldHyphenate; // @synthesize shouldHyphenate=_shouldHyphenate;
 @property (strong, nonatomic) NSCache *tokenizersCache; // @synthesize tokenizersCache=_tokenizersCache;
+@property (readonly, nonatomic) struct os_unfair_lock_s unfairLock; // @synthesize unfairLock=_unfairLock;
 
 - (void).cxx_destruct;
 - (void)dealloc;

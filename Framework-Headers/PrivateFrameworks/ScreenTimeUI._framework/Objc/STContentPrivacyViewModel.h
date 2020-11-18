@@ -13,6 +13,7 @@
     BOOL _isLoaded;
     BOOL _isLocalDevice;
     BOOL _restrictionsEnabled;
+    BOOL _shouldAllowEditing;
     NSString *_userName;
     NSNumber *_userDSID;
     NSMutableDictionary *_valuesByRestriction;
@@ -22,6 +23,7 @@
 @property (nonatomic) BOOL isLoaded; // @synthesize isLoaded=_isLoaded;
 @property (nonatomic) BOOL isLocalDevice; // @synthesize isLocalDevice=_isLocalDevice;
 @property (nonatomic) BOOL restrictionsEnabled; // @synthesize restrictionsEnabled=_restrictionsEnabled;
+@property (nonatomic) BOOL shouldAllowEditing; // @synthesize shouldAllowEditing=_shouldAllowEditing;
 @property (copy, nonatomic) NSNumber *userDSID; // @synthesize userDSID=_userDSID;
 @property (copy, nonatomic) NSString *userName; // @synthesize userName=_userName;
 @property (strong, nonatomic) NSMutableDictionary *valuesByRestriction; // @synthesize valuesByRestriction=_valuesByRestriction;

@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFSocialMediaPostCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor, SFImage, SFRichText;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor, SFImage, SFRichText, SFUserReportRequest;
 
 @interface SFSocialMediaPostCardSection : SFCardSection <SFSocialMediaPostCardSection, NSSecureCoding, NSCopying>
 {
@@ -72,6 +72,7 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *timestamp; // @synthesize timestamp=_timestamp;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 @property (strong, nonatomic) SFImage *verifiedGlyph; // @synthesize verifiedGlyph=_verifiedGlyph;
 
 + (BOOL)supportsSecureCoding;

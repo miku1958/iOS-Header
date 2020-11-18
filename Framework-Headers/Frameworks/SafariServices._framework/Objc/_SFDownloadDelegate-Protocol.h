@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <SafariServices/NSObject-Protocol.h>
+
 @class _SFDownload;
 
-@protocol _SFDownloadDelegate
+@protocol _SFDownloadDelegate <NSObject>
 - (void)downloadDidFail:(_SFDownload *)arg1;
 - (void)downloadDidFinish:(_SFDownload *)arg1;
 @end

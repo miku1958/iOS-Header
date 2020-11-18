@@ -6,6 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <HomeUI/HFExecutionEnvironmentObserver-Protocol.h>
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
 #import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPresentationDelegate-Protocol.h>
@@ -15,7 +16,7 @@
 @class AVPlayerLooper, HFCameraAudioManager, HFCameraItem, HFItem, HFItemManager, HUCameraDemoPlayerView, HUCameraFloatingMicrophoneButton, HUCameraMicrophoneButton, HUCameraStreamContentViewController, MPVolumeSlider, NSLayoutConstraint, NSString, PGPictureInPictureProxy, UIBarButtonItem, UIView;
 @protocol HUCameraStreamViewControllerDelegate, HUPresentationDelegate;
 
-@interface HUCameraStreamViewController : UIViewController <HFItemManagerDelegate, HUPresentationDelegate, PGPictureInPictureProxyDelegate, HUItemPresentationContainer, HUPresentationDelegateHost>
+@interface HUCameraStreamViewController : UIViewController <HFItemManagerDelegate, HUPresentationDelegate, HFExecutionEnvironmentObserver, PGPictureInPictureProxyDelegate, HUItemPresentationContainer, HUPresentationDelegateHost>
 {
     BOOL _navigationControllerSetup;
     BOOL _barsHidden;
@@ -95,6 +96,7 @@
 - (void)_updatePIPViewFrame;
 - (void)_updateTitleAndLoadingState;
 - (void)_updateVolumeSliderConstraintsIfNeeded;
+- (void)executionEnvironmentDidBecomeScreenLocked:(id)arg1;
 - (id)finishPresentation:(id)arg1 animated:(BOOL)arg2;
 - (id)initWithCameraItem:(id)arg1;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;

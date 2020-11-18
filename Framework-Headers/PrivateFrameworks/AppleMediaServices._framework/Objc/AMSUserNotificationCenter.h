@@ -6,30 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
-@protocol AMSUserNotificationCenterDelegate, AMSUserNotificationStrategy;
+@protocol AMSUserNotificationStrategy;
 
+__attribute__((visibility("hidden")))
 @interface AMSUserNotificationCenter : NSObject
 {
-    BOOL _runningInDaemon;
-    NSString *_bundleIdentifier;
-    id<AMSUserNotificationCenterDelegate> _delegate;
     id<AMSUserNotificationStrategy> _strategy;
 }
 
-@property (readonly, nonatomic) NSArray *activeNotifications;
-@property (readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (weak, nonatomic) id<AMSUserNotificationCenterDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) BOOL runningInDaemon; // @synthesize runningInDaemon=_runningInDaemon;
 @property (readonly, nonatomic) id<AMSUserNotificationStrategy> strategy; // @synthesize strategy=_strategy;
 
 + (Class)_determineStrategyForBundleId:(id)arg1;
-+ (id)currentCenter;
++ (id)activeNotificationsWithCenterBundleId:(id)arg1;
++ (id)postNotification:(id)arg1 centerBundleId:(id)arg2;
++ (id)removeNotification:(id)arg1 centerBundleId:(id)arg2;
++ (id)removeNotificationWithIdentifier:(id)arg1 centerBundleId:(id)arg2 logKey:(id)arg3;
 - (void).cxx_destruct;
-- (id)initWithBundleIdentifier:(id)arg1;
-- (id)initWithBundleIdentifier:(id)arg1 runningInDaemon:(BOOL)arg2;
-- (id)postNotification:(id)arg1;
-- (id)removeNotification:(id)arg1;
 
 @end
 

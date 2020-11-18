@@ -42,7 +42,9 @@
 - (id)init;
 - (id)keyForObject:(id)arg1;
 - (void)processTransactions;
+- (id)serviceWithClass:(Class)arg1;
 - (void)start;
+- (void)submitUptimeMetricsWithDefaultsMananger:(id)arg1;
 
 @end
 

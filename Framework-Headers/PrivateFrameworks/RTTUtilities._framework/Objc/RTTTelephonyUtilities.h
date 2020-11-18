@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <RTTUtilities/CoreTelephonyClientCarrierBundleDelegate-Protocol.h>
+#import <RTTUtilities/TUCallCapabilitiesDelegatePrivate-Protocol.h>
 
-@class CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSString;
+@class ACAccountStore, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSString;
 @protocol OS_dispatch_queue;
 
-@interface RTTTelephonyUtilities : NSObject <CoreTelephonyClientCarrierBundleDelegate>
+@interface RTTTelephonyUtilities : NSObject <CoreTelephonyClientCarrierBundleDelegate, TUCallCapabilitiesDelegatePrivate>
 {
+    ACAccountStore *_accountStore;
     BOOL _headphoneJackSupportsTTY;
     CTXPCServiceSubscriptionContext *_defaultVoiceContext;
     unsigned long long _activeContextCount;
@@ -58,13 +60,18 @@
 - (id)contactPathForCall:(id)arg1;
 - (BOOL)contactPathIsMe:(id)arg1;
 - (unsigned long long)currentPreferredTransportMethod;
+- (unsigned long long)currentPreferredTransportMethodForContext:(id)arg1;
 - (void)dealloc;
+- (void)didChangeOutgoingRelayCallerID;
 - (id)getCarrierValueForKey:(id)arg1 andContext:(id)arg2;
 - (id)getCarrierValueForKeyHierarchy:(id)arg1 andContext:(id)arg2;
 - (void)headphoneStateChangedNotification:(id)arg1;
+- (void)iCloudAccountDidChange:(id)arg1;
+- (void)iCloudRTTRelayDidChange:(id)arg1;
 - (id)init;
 - (BOOL)isTTYOverIMSSupportedForContext:(id)arg1;
 - (BOOL)isTTYSupportedForContext:(id)arg1;
+- (void)listenForCloudRelayChanges;
 - (void)mediaServerDied;
 - (id)myPhoneNumber;
 - (id)phoneNumberForContext:(id)arg1;
@@ -72,6 +79,7 @@
 - (void)registerNotifications;
 - (BOOL)relayIsSupported;
 - (id)relayNumberForContext:(id)arg1;
+- (BOOL)relayRTTIsSupported;
 - (void)reloadDefaultVoiceContext;
 - (void)reloadRelayPhoneNumbers;
 - (void)setTTYDictionaryAvailability:(BOOL)arg1;

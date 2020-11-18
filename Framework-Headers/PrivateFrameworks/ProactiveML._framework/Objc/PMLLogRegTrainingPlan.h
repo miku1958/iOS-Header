@@ -30,8 +30,6 @@
     double _threshold;
     BOOL _isMultiLabel;
     unsigned long long _positiveLabel;
-    long long _beforeNoiseScaling;
-    float _constantScaleFactor;
     unsigned long long _evaluationLevel;
     BOOL _reportScale;
     BOOL _isSynchronous;
@@ -39,8 +37,6 @@
     struct NSString *_planId;
 }
 
-@property (readonly, nonatomic) long long beforeNoiseScaling; // @synthesize beforeNoiseScaling=_beforeNoiseScaling;
-@property (readonly, nonatomic) float constantScaleFactor; // @synthesize constantScaleFactor=_constantScaleFactor;
 @property (readonly, nonatomic) PMLModelWeights *currentModelWeights; // @synthesize currentModelWeights=_currentModelWeights;
 @property (readonly, nonatomic) unsigned long long currentServerIteration; // @synthesize currentServerIteration=_currentServerIteration;
 @property (readonly, copy) NSString *debugDescription;
@@ -69,12 +65,11 @@
 - (id)evaluationMetricsForPredictions:(id)arg1 objectives:(id)arg2 predicate:(CDUnknownBlockType)arg3 start:(id)arg4;
 - (id)init;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
-- (id)initWithStore:(id)arg1 tracker:(id)arg2 noiseStrategy:(id)arg3 planId:(struct NSString *)arg4 isSynchronous:(BOOL)arg5 sessionDescriptor:(id)arg6 maxSessionsLimit:(unsigned long long)arg7 sessionsInBatch:(unsigned long long)arg8 currentServerIteration:(unsigned long long)arg9 currentModelWeights:(id)arg10 localLearningRate:(float)arg11 stoppingThreshold:(float)arg12 localMinimumIterations:(unsigned long long)arg13 localGradientIterations:(unsigned long long)arg14 useOnlyAppleInternalSessions:(BOOL)arg15 skew:(double)arg16 threshold:(double)arg17 isMultiLabel:(BOOL)arg18 intercept:(BOOL)arg19 positiveLabel:(unsigned long long)arg20 beforeNoiseScaling:(long long)arg21 constantScaleFactor:(float)arg22 evaluationLevel:(unsigned long long)arg23 reportScale:(BOOL)arg24;
-- (void)loadSessionsSince:(double)arg1 block:(CDUnknownBlockType)arg2;
+- (id)initWithStore:(id)arg1 tracker:(id)arg2 noiseStrategy:(id)arg3 planId:(struct NSString *)arg4 isSynchronous:(BOOL)arg5 sessionDescriptor:(id)arg6 maxSessionsLimit:(unsigned long long)arg7 sessionsInBatch:(unsigned long long)arg8 currentServerIteration:(unsigned long long)arg9 currentModelWeights:(id)arg10 localLearningRate:(float)arg11 stoppingThreshold:(float)arg12 localMinimumIterations:(unsigned long long)arg13 localGradientIterations:(unsigned long long)arg14 useOnlyAppleInternalSessions:(BOOL)arg15 skew:(double)arg16 threshold:(double)arg17 isMultiLabel:(BOOL)arg18 intercept:(BOOL)arg19 positiveLabel:(unsigned long long)arg20 evaluationLevel:(unsigned long long)arg21 reportScale:(BOOL)arg22;
+- (void)loadSessionsWithBlock:(CDUnknownBlockType)arg1;
 - (id)normalizeRegressor:(id)arg1;
 - (void)runUntilDoneForTesting;
 - (id)runWhile:(CDUnknownBlockType)arg1 didFinish:(BOOL *)arg2;
-- (float)scaleFactorFor:(id)arg1;
 - (id)toPlistWithChunks:(id)arg1;
 - (id)train;
 

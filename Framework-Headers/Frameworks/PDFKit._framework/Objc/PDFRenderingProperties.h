@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) struct CGColorSpace *deviceColorSpace;
 @property (nonatomic) long long displayBox;
+@property (nonatomic) BOOL enableBackgroundImages;
 @property (nonatomic) BOOL enablePageShadows;
 @property (nonatomic) BOOL enableTileUpdates;
 @property (nonatomic) double greekingThreshold;

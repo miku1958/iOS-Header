@@ -9,21 +9,21 @@
 #import <Silex/SXComponentTraitsProvider-Protocol.h>
 
 @class NSString;
-@protocol SXDocumentControllerProvider;
+@protocol SXDOMObjectProviding;
 
 @interface SXComponentTraitsProvider : NSObject <SXComponentTraitsProvider>
 {
-    id<SXDocumentControllerProvider> _documentControllerProvider;
+    id<SXDOMObjectProviding> _DOMObjectProvider;
 }
 
+@property (readonly, nonatomic) id<SXDOMObjectProviding> DOMObjectProvider; // @synthesize DOMObjectProvider=_DOMObjectProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) id<SXDocumentControllerProvider> documentControllerProvider; // @synthesize documentControllerProvider=_documentControllerProvider;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithDocumentControllerProvider:(id)arg1;
+- (id)initWithDOMObjectProvider:(id)arg1;
 - (unsigned long long)traitsForComponent:(id)arg1;
 
 @end

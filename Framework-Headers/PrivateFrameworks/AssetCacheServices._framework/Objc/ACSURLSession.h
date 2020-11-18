@@ -88,6 +88,7 @@
 - (void)_onqueue_resumeTask:(id)arg1;
 - (void)_onqueue_task:(id)arg1 willUseCachingServer:(BOOL)arg2 newRequest:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_onqueue_taskForNSURLTask:(id)arg1;
+- (id)_onqueue_uniqueTasks;
 - (void)_removeTask:(id)arg1;
 - (BOOL)_resumeData:(id)arg1 toNSURLResumeData:(id *)arg2 originalRequest:(id *)arg3 currentRequest:(id *)arg4 error:(id *)arg5;
 - (id)_resumeDataWithNSURLResumeData:(id)arg1 originalRequest:(id)arg2 currentRequest:(id)arg3 error:(id *)arg4;

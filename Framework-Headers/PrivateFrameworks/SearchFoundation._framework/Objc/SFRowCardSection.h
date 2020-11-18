@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFRowCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor, SFImage, SFRichText;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor, SFImage, SFRichText, SFUserReportRequest;
 
 @interface SFRowCardSection : SFCardSection <SFRowCardSection, NSSecureCoding, NSCopying>
 {
@@ -85,6 +85,7 @@
 @property (strong, nonatomic) SFRichText *trailingSubtitle; // @synthesize trailingSubtitle=_trailingSubtitle;
 @property (strong, nonatomic) SFRichText *trailingText; // @synthesize trailingText=_trailingText;
 @property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 @property (copy, nonatomic) NSString *value; // @synthesize value=_value;
 @property (nonatomic) BOOL valueNoWrap; // @synthesize valueNoWrap=_valueNoWrap;
 @property (copy, nonatomic) NSNumber *valueWeight; // @synthesize valueWeight=_valueWeight;

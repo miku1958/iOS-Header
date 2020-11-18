@@ -209,7 +209,6 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_itemSizeForHorizontalLayout:(BOOL)arg1 visualStyleRequiresActionRepresentationToFitItemSize:(BOOL *)arg2;
 - (double)_labelHorizontalInsets;
 - (void)_layoutAndPositionInParentIfNeeded;
-- (id)_layoutWidthDeterminationViewToSizeAgainst;
 - (double)_layoutWidthForHorizontalLayout:(BOOL)arg1;
 - (struct CGSize)_mainActionButtonSequenceViewSizeForHorizontalLayout:(BOOL)arg1 itemSize:(struct CGSize)arg2;
 - (double)_marginBetweenContentAndDiscreteCancelAction;

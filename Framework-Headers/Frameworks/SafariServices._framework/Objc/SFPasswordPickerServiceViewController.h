@@ -8,19 +8,18 @@
 
 #import <SafariServices/SFCredentialProviderExtensionManagerObserver-Protocol.h>
 #import <SafariServices/SFPasswordPickerServiceViewControllerProtocol-Protocol.h>
-#import <SafariServices/_ASCredentialProviderExtensionViewControllerDelegate-Protocol.h>
+#import <SafariServices/_ASCredentialListViewControllerDelegate-Protocol.h>
 #import <SafariServices/_ASPasswordCredentialAuthenticationViewControllerDelegate-Protocol.h>
 #import <SafariServices/_SFAuthenticationClient-Protocol.h>
 #import <SafariServices/_SFAuthenticationContextDelegate-Protocol.h>
 
-@class NSArray, NSString, NSURL, _ASPasswordCredentialAuthenticationViewController, _SFAuthenticationContext, _SFPasswordPickerViewController;
+@class NSArray, NSString, NSURL, SFPasswordPickerViewController, _ASPasswordCredentialAuthenticationViewController, _SFAuthenticationContext;
 
 __attribute__((visibility("hidden")))
-@interface SFPasswordPickerServiceViewController : SFPasswordServiceViewController <SFCredentialProviderExtensionManagerObserver, _ASCredentialProviderExtensionViewControllerDelegate, _ASPasswordCredentialAuthenticationViewControllerDelegate, _SFAuthenticationClient, _SFAuthenticationContextDelegate, SFPasswordPickerServiceViewControllerProtocol>
+@interface SFPasswordPickerServiceViewController : SFPasswordServiceViewController <SFCredentialProviderExtensionManagerObserver, _ASCredentialListViewControllerDelegate, _ASPasswordCredentialAuthenticationViewControllerDelegate, _SFAuthenticationClient, _SFAuthenticationContextDelegate, SFPasswordPickerServiceViewControllerProtocol>
 {
     _ASPasswordCredentialAuthenticationViewController *_externalCredentialViewController;
-    CDUnknownBlockType _credentialProviderDismissalHandler;
-    _SFPasswordPickerViewController *_passwordPickerViewController;
+    SFPasswordPickerViewController *_passwordPickerViewController;
     BOOL _presentInPopover;
     BOOL _hasAuthenticationForOtherPasswords;
     NSURL *_webViewURL;
@@ -30,7 +29,7 @@ __attribute__((visibility("hidden")))
     NSString *_remoteUnlocalizedAppName;
     NSArray *_externallyVerifiedAssociatedDomains;
     double _authenticationGracePeriod;
-    BOOL _credentialListPresentedDirectly;
+    CDUnknownBlockType _presentCredentialsHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -42,24 +41,21 @@ __attribute__((visibility("hidden")))
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
 - (id)_actionForPresentingPasswordManagerExtension:(id)arg1;
+- (void)_authenticateAndSetPresentCredentialsHandlerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_authenticateToViewOtherPasswordsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_context;
 - (void)_dismiss;
 - (void)_fillCredential:(id)arg1 needsAuthentication:(BOOL)arg2;
-- (void)_gatherAndShowPasswordsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_presentCredentialListForExtension:(id)arg1 animated:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_presentCredentialListForExtension:(id)arg1;
 - (void)_sendCredentialToClientAndDismiss:(id)arg1;
-- (BOOL)_shouldDismissOnCompletion;
 - (void)authenticateToPresentInPopover:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)authenticationCustomUIProgressObserverForContext:(id)arg1;
-- (BOOL)authenticationEnabledForContext:(id)arg1;
 - (id)authenticationMessageForContext:(id)arg1;
 - (BOOL)contextRequiresSessionBasedAuthentication:(id)arg1;
 - (BOOL)contextShouldAllowMultipleBiometricFailures:(id)arg1;
 - (BOOL)contextShouldAllowPasscodeFallback:(id)arg1;
+- (void)credentialListViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)credentialProviderExtensionManagerExtensionListDidChange:(id)arg1;
-- (void)credentialProviderExtensionViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)dealloc;
 - (BOOL)displayMessageAsTitleForContext:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)passcodePromptForContext:(id)arg1;
@@ -71,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)setRemoteLocalizedAppName:(id)arg1;
 - (void)setRemoteUnlocalizedAppName:(id)arg1;
 - (void)setWebViewURL:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 
 @end

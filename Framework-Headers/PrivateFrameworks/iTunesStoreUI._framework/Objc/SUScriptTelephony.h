@@ -6,13 +6,10 @@
 
 #import <iTunesStoreUI/SUScriptObject.h>
 
-@class NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class NSString;
 
 @interface SUScriptTelephony : SUScriptObject
 {
-    NSObject<OS_dispatch_queue> *_telephonyQueue;
-    struct __CTServerConnection *_telephonyServer;
 }
 
 @property (readonly, nonatomic, getter=isCellularRoaming) id cellularRoaming;
@@ -26,9 +23,11 @@
 + (void)initialize;
 + (id)webScriptNameForKeyName:(id)arg1;
 + (id)webScriptNameForSelector:(SEL)arg1;
-- (void).cxx_destruct;
 - (BOOL)_checkIfIsAllowed;
 - (id)_className;
+- (void)_handleOperatorNameChangedNotification:(id)arg1;
+- (void)_handlePhoneNumberChangedNotification:(id)arg1;
+- (void)_handleRegistrationChangedNotification:(id)arg1;
 - (id)attributeKeys;
 - (void)dealloc;
 - (id)formattedPhoneNumber:(id)arg1;

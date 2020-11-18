@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL allowsRemoteAutomation; // @synthesize allowsRemoteAutomation=_allowsRemoteAutomation;
 @property (readonly, nonatomic) unsigned long long applicationState; // @synthesize applicationState=_applicationState;
 @property (copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
-@property (strong, nonatomic) _RWIRelayConnectionToApplication *connection; // @synthesize connection=_connection;
+@property (nonatomic) _RWIRelayConnectionToApplication *connection; // @synthesize connection=_connection;
 @property (copy, nonatomic) NSString *debuggerConnectionIdentifier; // @synthesize debuggerConnectionIdentifier=_debuggerConnectionIdentifier;
 @property (readonly, nonatomic) BOOL hasRemoteDebugSession; // @synthesize hasRemoteDebugSession=_hasRemoteDebugSession;
 @property (readonly, nonatomic) BOOL hasUpdatedFromListing; // @synthesize hasUpdatedFromListing=_hasUpdatedFromListing;

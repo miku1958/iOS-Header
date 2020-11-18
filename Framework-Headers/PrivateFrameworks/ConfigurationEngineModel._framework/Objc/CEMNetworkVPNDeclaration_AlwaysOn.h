@@ -6,18 +6,28 @@
 
 #import <ConfigurationEngineModel/CEMPayloadBase.h>
 
-@class NSArray;
+@class NSArray, NSNumber;
 
 @interface CEMNetworkVPNDeclaration_AlwaysOn : CEMPayloadBase
 {
     NSArray *_payloadTunnelConfigurations;
+    NSNumber *_payloadUIToggleEnabled;
+    NSArray *_payloadServiceExceptions;
+    NSNumber *_payloadAllowCaptiveWebSheet;
+    NSNumber *_payloadAllowAllCaptiveNetworkPlugins;
+    NSArray *_payloadAllowedCaptiveNetworkPlugins;
 }
 
+@property (copy, nonatomic) NSNumber *payloadAllowAllCaptiveNetworkPlugins; // @synthesize payloadAllowAllCaptiveNetworkPlugins=_payloadAllowAllCaptiveNetworkPlugins;
+@property (copy, nonatomic) NSNumber *payloadAllowCaptiveWebSheet; // @synthesize payloadAllowCaptiveWebSheet=_payloadAllowCaptiveWebSheet;
+@property (copy, nonatomic) NSArray *payloadAllowedCaptiveNetworkPlugins; // @synthesize payloadAllowedCaptiveNetworkPlugins=_payloadAllowedCaptiveNetworkPlugins;
+@property (copy, nonatomic) NSArray *payloadServiceExceptions; // @synthesize payloadServiceExceptions=_payloadServiceExceptions;
 @property (copy, nonatomic) NSArray *payloadTunnelConfigurations; // @synthesize payloadTunnelConfigurations=_payloadTunnelConfigurations;
+@property (copy, nonatomic) NSNumber *payloadUIToggleEnabled; // @synthesize payloadUIToggleEnabled=_payloadUIToggleEnabled;
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithTunnelConfigurations:(id)arg1;
-+ (id)buildWithTunnelConfigurations:(id)arg1;
++ (id)buildWithTunnelConfigurations:(id)arg1 withUIToggleEnabled:(id)arg2 withServiceExceptions:(id)arg3 withAllowCaptiveWebSheet:(id)arg4 withAllowAllCaptiveNetworkPlugins:(id)arg5 withAllowedCaptiveNetworkPlugins:(id)arg6;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)loadPayload:(id)arg1 error:(id *)arg2;

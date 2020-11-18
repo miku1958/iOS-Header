@@ -7,13 +7,12 @@
 #import <AVConference/VCControlChannel.h>
 
 #import <AVConference/VCControlChannelTransactionDelegate-Protocol.h>
-#import <AVConference/VCControlChannelencryptionDelegate-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCControlChannelMultiWay : VCControlChannel <VCControlChannelencryptionDelegate, VCControlChannelTransactionDelegate>
+@interface VCControlChannelMultiWay : VCControlChannel <VCControlChannelTransactionDelegate>
 {
     unsigned int _transportSessionID;
     int _vfdMessage;
@@ -26,19 +25,16 @@ __attribute__((visibility("hidden")))
     BOOL _isEncryptionEnabled;
     NSMutableDictionary *_cryptors;
     void *_currentSendMKI;
+    void *_currentReceiveMKI;
     NSObject<OS_dispatch_queue> *_sequentialKeyMaterialQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSMutableDictionary *dialogs; // @synthesize dialogs=_dialogs;
 @property (readonly) unsigned long long hash;
-@property (readonly) unsigned long long hash;
 @property (readonly) BOOL isEncryptionEnabled; // @synthesize isEncryptionEnabled=_isEncryptionEnabled;
 @property (readonly) BOOL isRunning; // @synthesize isRunning=_isRunning;
-@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int transportSessionID; // @synthesize transportSessionID=_transportSessionID;
 @property (nonatomic) int vfdCancel; // @synthesize vfdCancel=_vfdCancel;
@@ -75,9 +71,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)sendReliableMessageAndWait:(id)arg1 participantID:(unsigned long long)arg2;
 - (void)sendUnreliableMessage:(id)arg1 participantID:(unsigned long long)arg2;
 - (void)setCurrentSendMKIWithKeyMaterial:(id)arg1;
+- (void)setEncryptionWithEncryptionMaterial:(CDStruct_791df8ea *)arg1;
 - (void)start;
 - (void)stop;
 - (int)updateEncryption:(CDStruct_5b6da142 *)arg1 derivedSSRC:(unsigned int)arg2;
+- (void)updateEncryptionWithEncryptionMaterial:(CDStruct_791df8ea *)arg1;
 - (void)updateEncryptionWithKeyMaterial:(id)arg1;
 
 @end

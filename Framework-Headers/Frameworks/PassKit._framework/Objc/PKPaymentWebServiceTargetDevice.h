@@ -28,15 +28,19 @@
 
 + (id)localTargetDevice;
 - (void).cxx_destruct;
+- (void)_paymentWebService:(id)arg1 pass:(id)arg2 withExpressInfo:(id)arg3 hasDisqualifyingConflicts:(CDUnknownBlockType)arg4;
 - (void)_validateCommonPreconditionsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)appleAccountInformation;
 - (id)bridgedClientInfo;
+- (id)cellularNetworkRegion;
 - (BOOL)claimSecureElementForCurrentUser;
 - (void)claimSecureElementForCurrentUserWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (id)deviceClass;
 - (id)deviceDescriptionForPaymentWebService:(id)arg1;
 - (id)deviceName;
 - (id)deviceRegion;
+- (id)deviceVersion;
 - (void)downloadAllPaymentPassesForPaymentWebService:(id)arg1;
 - (BOOL)felicaSecureElementIsAvailable;
 - (id)init;
@@ -74,6 +78,7 @@
 - (BOOL)secureElementIsAvailable;
 - (unsigned long long)secureElementOwnershipStateForCurrentUser;
 - (void)setMaximumPaymentCards:(unsigned long long)arg1;
+- (void)signatureForAuthToken:(id)arg1 webService:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
 - (BOOL)supportsAutomaticPassPresentation;
 - (BOOL)supportsCredentialType:(long long)arg1;

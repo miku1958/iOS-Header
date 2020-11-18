@@ -30,6 +30,7 @@
 - (id)logMsgEventForDirectionsFeedbacks:(id)arg1 finalLocation:(id)arg2 arrivedAtDestination:(BOOL)arg3 navigationAudioFeedback:(struct GEONavigationAudioFeedback)arg4 durationOfTrip:(double)arg5 durationsInNavigationModes:(id)arg6;
 - (id)logMsgEventForFullNavTraceWithData:(id)arg1;
 - (id)logMsgEventForGenericAppErrorDomain:(id)arg1 appErrorCode:(long long)arg2;
+- (id)logMsgEventForGridDuration:(double)arg1 endState:(int)arg2 errors:(id)arg3 previousState:(int)arg4 displayType:(int)arg5;
 - (id)logMsgEventForListInteractionSessionOfType:(int)arg1 listResultItems:(id)arg2 searchString:(id)arg3;
 - (id)logMsgEventForLogFrameworkMetricType:(int)arg1 metricState:(int)arg2 purgeReason:(int)arg3 logCollectionRequest:(id)arg4;
 - (id)logMsgEventForLogFrameworkMetricType:(int)arg1 metricState:(int)arg2 purgeReason:(int)arg3 logMessageType:(int)arg4;

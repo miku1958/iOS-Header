@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/SwiftObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC15ConversationKit29LargeMultiwayControllerLayout : SwiftObject
+@interface _TtC15ConversationKit29LargeMultiwayControllerLayout : _TtCs12_SwiftObject
 {
     MISSING_TYPE *containingView;
     MISSING_TYPE *constraintManagers;

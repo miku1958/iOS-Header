@@ -6,21 +6,16 @@
 
 #import <BiometricKit/BKDevice.h>
 
-@class NSObject;
-@protocol BKDevicePearlDelegate, OS_dispatch_queue;
+@protocol BKDevicePearlDelegate;
 
 @interface BKDevicePearl : BKDevice
 {
-    id<BKDevicePearlDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_queue;
     long long _pearlState;
 }
 
-@property (weak, nonatomic) id<BKDevicePearlDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<BKDevicePearlDelegate> delegate; // @dynamic delegate;
 @property (readonly, nonatomic) long long pearlState; // @synthesize pearlState=_pearlState;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
-- (void).cxx_destruct;
 - (BOOL)clearIdentityMigrationFailureForUser:(unsigned int)arg1 error:(id *)arg2;
 - (BOOL)disableFieldDiagnosticsWithError:(id *)arg1;
 - (id)eligibleForAugmentation:(id)arg1 error:(id *)arg2;

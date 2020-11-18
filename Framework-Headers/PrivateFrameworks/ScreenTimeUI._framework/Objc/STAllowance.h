@@ -12,20 +12,22 @@
 
 @interface STAllowance : NSObject <NSCopying>
 {
+    BOOL _allowanceEnabled;
+    BOOL _shouldAllowEditing;
     unsigned long long _allowanceType;
     NSString *_identifier;
-    NSDateComponents *_time;
-    NSDictionary *_timeByDay;
     NSArray *_budgetedIdentifiers;
     unsigned long long _behaviorOption;
-    NSArray *_iCloudPredicateUserDSIDs;
+    NSDateComponents *_time;
+    NSDictionary *_timeByDay;
 }
 
+@property BOOL allowanceEnabled; // @synthesize allowanceEnabled=_allowanceEnabled;
 @property (nonatomic) unsigned long long allowanceType; // @synthesize allowanceType=_allowanceType;
 @property (nonatomic) unsigned long long behaviorOption; // @synthesize behaviorOption=_behaviorOption;
 @property (copy, nonatomic) NSArray *budgetedIdentifiers; // @synthesize budgetedIdentifiers=_budgetedIdentifiers;
-@property (readonly, copy, nonatomic) NSArray *iCloudPredicateUserDSIDs; // @synthesize iCloudPredicateUserDSIDs=_iCloudPredicateUserDSIDs;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL shouldAllowEditing; // @synthesize shouldAllowEditing=_shouldAllowEditing;
 @property (copy, nonatomic) NSDateComponents *time; // @synthesize time=_time;
 @property (copy, nonatomic) NSDictionary *timeByDay; // @synthesize timeByDay=_timeByDay;
 @property (readonly, nonatomic) double timeToday;
@@ -37,14 +39,11 @@
 + (double)timeIntervalForAllowanceDateComponents:(id)arg1;
 + (id)usageLimitTypeForAllowanceType:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (void)_stAllowanceInitByParsingFamilyBudgetAllPredicate:(id)arg1;
-- (void)_stAllowanceInitByParsingPersonalBudgetPredicate:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)defaultBudgetTime;
 - (id)defaultTimeByDay;
 - (id)init;
 - (id)initWithBlueprint:(id)arg1;
-- (id)initWithBudget:(id)arg1;
 
 @end
 

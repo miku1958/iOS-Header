@@ -8,35 +8,32 @@
 
 #import <Preferences/STMSizeCacheDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, STMAppDynamicSizeCache, STMAppPurgeableSizeCache, STMAppStaticSizeCache;
-@protocol OS_dispatch_queue, STMAppSizerDelegate;
+@class NSArray, NSDictionary, NSString, STMAppDynamicSizer, STMAppPurgeableSizer, STMAppStaticSizer;
+@protocol STMAppSizerDelegate;
 
 @interface STMAppSizer : NSObject <STMSizeCacheDelegate>
 {
-    NSObject<OS_dispatch_queue> *_fsQueue;
-    struct __FSEventStream *_fsStream;
-    BOOL _streamRunning;
     struct os_unfair_lock_s _proxyLock;
     NSArray *_proxies;
     NSDictionary *_proxiesByDataPath;
     NSDictionary *_proxiesByBundlePath;
+    NSDictionary *_appContainersByPath;
+    NSDictionary *_dataContainersByPath;
     id<STMAppSizerDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_updateQueue;
-    STMAppStaticSizeCache *_staticSizes;
-    STMAppDynamicSizeCache *_dynamicSizes;
-    STMAppPurgeableSizeCache *_purgeableSizes;
+    STMAppStaticSizer *_staticSizer;
+    STMAppDynamicSizer *_dynamicSizer;
+    STMAppPurgeableSizer *_purgeableSizer;
 }
 
 @property (strong, nonatomic) NSArray *appProxies;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<STMAppSizerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong) STMAppDynamicSizeCache *dynamicSizes; // @synthesize dynamicSizes=_dynamicSizes;
+@property (strong) STMAppDynamicSizer *dynamicSizer; // @synthesize dynamicSizer=_dynamicSizer;
 @property (readonly) unsigned long long hash;
-@property (strong) STMAppPurgeableSizeCache *purgeableSizes; // @synthesize purgeableSizes=_purgeableSizes;
-@property (strong) STMAppStaticSizeCache *staticSizes; // @synthesize staticSizes=_staticSizes;
+@property (strong) STMAppPurgeableSizer *purgeableSizer; // @synthesize purgeableSizer=_purgeableSizer;
+@property (strong) STMAppStaticSizer *staticSizer; // @synthesize staticSizer=_staticSizer;
 @property (readonly) Class superclass;
-@property (strong) NSObject<OS_dispatch_queue> *updateQueue; // @synthesize updateQueue=_updateQueue;
 
 + (id)sharedSizer;
 - (void).cxx_destruct;
@@ -47,9 +44,7 @@
 - (id)dynamicSizeForApp:(id)arg1;
 - (id)init;
 - (void)notifySizesUpdated;
-- (void)pathChanged:(id)arg1 flags:(unsigned int)arg2 event:(unsigned long long)arg3;
 - (id)purgeableSizeForApp:(id)arg1;
-- (void)setRootPaths:(id)arg1;
 - (void)sizeCacheItemsUpdated:(id)arg1;
 - (void)sizeCacheSizesUpdated:(id)arg1;
 - (void)startSizer;

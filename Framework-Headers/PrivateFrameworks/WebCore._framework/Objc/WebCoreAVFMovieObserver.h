@@ -13,7 +13,8 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreAVFMovieObserver : NSObject <AVPlayerItemLegibleOutputPushDelegate>
 {
-    struct MediaPlayerPrivateAVFoundationObjC *m_callback;
+    WeakPtr_db8b46a6 m_player;
+    struct GenericTaskQueue<WebCore::Timer, std::__1::atomic<unsigned int>> m_taskQueue;
     int m_delayCallbacks;
 }
 
@@ -22,9 +23,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)didEnd:(id)arg1;
 - (void)disconnect;
-- (id)initWithCallback:(struct MediaPlayerPrivateAVFoundationObjC *)arg1;
+- (id)initWithPlayer:(WeakPtr_db8b46a6 *)arg1;
 - (void)legibleOutput:(id)arg1 didOutputAttributedStrings:(id)arg2 nativeSampleBuffers:(id)arg3 forItemTime:(CDStruct_198678f7)arg4;
 - (void)metadataLoaded;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(int)arg4;

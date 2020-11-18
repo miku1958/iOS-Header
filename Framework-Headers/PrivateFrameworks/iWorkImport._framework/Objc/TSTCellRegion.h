@@ -156,7 +156,7 @@ __attribute__((visibility("hidden")))
 - (id)regionByTrimmingAroundColumnIndices:(id)arg1;
 - (id)regionByTrimmingAroundRowIndices:(id)arg1;
 - (id)regionByUnioningEveryRangeInRegionWithRange:(struct TSUCellRect)arg1;
-- (id)regionOffsetBy:(CDStruct_1ef3fb1f)arg1;
+- (id)regionOffsetBy:(struct TSUColumnRowOffset)arg1;
 - (id)regionUpToColumnIndex:(unsigned short)arg1;
 - (id)regionUpToColumnIndexRtoL:(unsigned short)arg1 maxColumnIndex:(unsigned short)arg2;
 - (id)regionUpToRowIndex:(unsigned int)arg1;

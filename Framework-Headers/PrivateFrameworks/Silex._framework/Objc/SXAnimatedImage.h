@@ -46,8 +46,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long uncompressedByteSizePerFrame; // @synthesize uncompressedByteSizePerFrame=_uncompressedByteSizePerFrame;
 
-+ (id)animatedImageWithData:(id)arg1;
-+ (id)animatedImageWithData:(id)arg1 scale:(double)arg2;
++ (id)animatedImageWithData:(id)arg1 scale:(double)arg2 size:(struct CGSize)arg3;
++ (id)animatedImageWithData:(id)arg1 size:(struct CGSize)arg2;
 + (id)animatedImageWithURL:(id)arg1 scale:(double)arg2 type:(long long)arg3;
 + (id)animatedImageWithURL:(id)arg1 type:(long long)arg2;
 - (void).cxx_destruct;
@@ -58,8 +58,8 @@
 - (id)frameAtIndex:(unsigned long long)arg1;
 - (id)frameAtIndex:(unsigned long long)arg1 returnNearestPreloaded:(BOOL)arg2;
 - (void)generateFrames;
-- (id)initWithDataProvider:(struct CGDataProvider *)arg1 scale:(double)arg2 type:(long long)arg3;
-- (id)initWithImageSource:(struct CGImageSource *)arg1 scale:(double)arg2 type:(long long)arg3;
+- (id)initWithDataProvider:(struct CGDataProvider *)arg1 scale:(double)arg2 type:(long long)arg3 size:(struct CGSize)arg4;
+- (id)initWithImageSource:(struct CGImageSource *)arg1 scale:(double)arg2 type:(long long)arg3 size:(struct CGSize)arg4;
 - (void)setPreloadType:(long long)arg1 currentFrameIndex:(unsigned long long)arg2;
 
 @end

@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)CAAccelerationFromSFXActionAcceleration:(unsigned long long)arg1;
-+ (BOOL)areGLActionBuildsEnabled;
 + (id)customAttributesArrayWithDeliveryOptions:(id)arg1;
 + (id)customAttributesArrayWithJiggleIntensityOptions:(id)arg1;
 + (id)customAttributesArrayWithTextDeliveryOptions:(id)arg1;
@@ -22,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 + (BOOL)isAnimationTestingEnabled;
 + (BOOL)isCustomEffectTimingCurveEditingEnabled;
++ (BOOL)isDiscreteGPUNeededInShow:(id)arg1;
 + (BOOL)isDisplayLoggingEnabled;
 + (BOOL)isFPSGraphEnabled;
 + (BOOL)isFPSLoggingEnabled;

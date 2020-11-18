@@ -17,12 +17,13 @@
 @interface MKPlaceCardHeaderViewController : MKPlaceSectionViewController <_MKStackViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol, MKETAProviderObserver>
 {
     unsigned long long _layout;
-    MKPlaceSectionRowView *_titleOnlySectionView;
+    MKPlaceSectionRowView *_titleSectionView;
     MKPlaceSectionRowView *_labelsSectionView;
     UIImageView *_logoImageView;
     _MKUILabel *_titleOnlyLabel;
     _MKUILabel *_firstLabel;
     _MKUILabel *_secondLabel;
+    _MKUILabel *_secondaryNameLabel;
     _MKUILabel *_thirdLabel;
     UIView *_thirdDisplayedLabel;
     NSArray *_constraints;
@@ -30,6 +31,7 @@
     NSURL *_logoURL;
     _MKDataHeaderModel *_dataModel;
     _MKTokenAttributedString *_titleToken;
+    _MKTokenAttributedString *_secondaryNameToken;
     _MKTokenAttributedString *_distanceToken;
     _MKTokenAttributedString *_ratingsToken;
     _MKTokenAttributedString *_priceToken;
@@ -40,9 +42,13 @@
     _MKTokenAttributedString *_venueToken;
     _MKTokenAttributedString *_verifiedToken;
     NSLayoutConstraint *_titleTrailingConstraint;
+    NSLayoutConstraint *_secondLabelToFirstLabelConstraint;
+    double _secondLabelToFirstLabelConstraintConstantMax;
+    double _secondLabelToFirstLabelConstraintConstantMin;
     BOOL _isUserLocation;
     BOOL _optionSmallScreen;
     BOOL _constraintsCreated;
+    BOOL _notVerified;
     id<_MKPlaceItem> _placeItem;
     id<GEOTransitLineItem> _lineItem;
     id<MKPlaceCardHeaderViewControllerDelegate> _delegate;
@@ -66,23 +72,30 @@
 - (void)_contentSizeDidChange;
 - (void)_createViews;
 - (id)_currentTitle;
+- (BOOL)_hasSecondaryName;
 - (BOOL)_isLikelyToShowDistance;
 - (void)_loadLogo;
 - (id)_localizedHours;
 - (BOOL)_mapItemShouldDisplayDistance:(id)arg1;
 - (id)_openStateString;
 - (id)_reviewLabelText;
+- (id)_secondaryNameTitle;
 - (void)_setupDatas;
 - (id)_verifiedText;
+- (void)animateSecondLabelWithPercentage:(double)arg1;
 - (void)hideTitle:(BOOL)arg1;
 - (void)infoCardThemeChanged:(id)arg1;
 - (id)initWithLineItem:(id)arg1 layout:(unsigned long long)arg2;
 - (id)initWithPlaceItem:(id)arg1 layout:(unsigned long long)arg2;
 - (id)newLabel;
+- (double)secondaryNameLabelPadding;
+- (id)secondaryNameTimingFunction;
 - (void)setConstraints;
 - (id)titleFont;
+- (void)updateContent;
 - (void)updateHeaderTitle;
 - (void)updateViews;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

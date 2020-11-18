@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)shadowBoundsForRect:(struct CGRect)arg1 additionalTransform:(struct CGAffineTransform)arg2;
 - (unsigned long long)shadowType;
 - (BOOL)showForEditingText;
-- (BOOL)usesOpenGL;
 
 @end
 

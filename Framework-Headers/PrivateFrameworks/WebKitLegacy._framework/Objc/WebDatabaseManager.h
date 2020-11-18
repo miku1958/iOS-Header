@@ -21,6 +21,7 @@
 - (id)detailsForDatabase:(id)arg1 withOrigin:(id)arg2;
 - (id)init;
 - (id)origins;
+- (void)setIDBPerOriginQuota:(unsigned long long)arg1;
 
 @end
 

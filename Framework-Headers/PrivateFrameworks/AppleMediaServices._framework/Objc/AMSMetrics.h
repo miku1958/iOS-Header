@@ -12,6 +12,7 @@
 @interface AMSMetrics : NSObject
 {
     BOOL _flushCancelled;
+    BOOL _disableFlushing;
     BOOL _flushOnForeground;
     id<AMSMetricsBagContract> _bagContract;
     NSString *_containerId;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property (readonly, nonatomic) NSString *containerId; // @synthesize containerId=_containerId;
 @property (strong, nonatomic) AMSMetricsDatabase *database; // @synthesize database=_database;
+@property (nonatomic) BOOL disableFlushing; // @synthesize disableFlushing=_disableFlushing;
 @property (readonly, nonatomic) long long eventCount;
 @property (nonatomic) BOOL flushCancelled; // @synthesize flushCancelled=_flushCancelled;
 @property (readonly, nonatomic) double flushInterval;
@@ -49,9 +51,11 @@
 
 + (id)_sharedInstanceUsingContract:(id)arg1;
 + (id)_sharedTimerQueue;
++ (BOOL)disableBackgroundMetrics;
 + (BOOL)flushTimerEnabled;
 + (id)serverTimeFromDate:(id)arg1;
 + (id)serverTimeFromTimeInterval:(double)arg1;
++ (void)setDisableBackgroundMetrics:(BOOL)arg1;
 + (void)setFlushTimerEnabled:(BOOL)arg1;
 + (double)timeIntervalFromServerTime:(id)arg1;
 - (void).cxx_destruct;
@@ -59,7 +63,7 @@
 - (void)_applicationWillEnterForeground;
 - (id)_baseMetricsURL;
 - (void)_batchEventArray:(id)arg1 batchBlock:(CDUnknownBlockType)arg2;
-- (id)_createRequestWithURL:(id)arg1 canary:(id)arg2 account:(id)arg3 body:(id)arg4 signature:(id)arg5 logKey:(id)arg6;
+- (id)_createRequestWithURL:(id)arg1 canary:(id)arg2 account:(id)arg3 body:(id)arg4 signature:(id)arg5 logKey:(id)arg6 collectAdditonalMetrics:(BOOL)arg7;
 - (void)_flushDatabaseMetricsWithLockKey:(id)arg1 logKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_flushNextBatchWithTopic:(id)arg1 lockKey:(id)arg2 logKey:(id)arg3 requestCount:(long long)arg4 flushedEventCount:(long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_flushTimerInvalidate;
@@ -73,7 +77,7 @@
 - (void)_openDatabaseIfNeeded;
 - (void)_postEvents:(id)arg1 reportURL:(id)arg2 account:(id)arg3 logKey:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_prepareEvent:(id)arg1;
-- (BOOL)_shouldAllowEvent:(id)arg1;
+- (BOOL)_shouldBlacklistEvent:(id)arg1;
 - (BOOL)_shouldClearEventsDespiteError:(id)arg1 result:(id)arg2;
 - (void)cancel;
 - (void)dealloc;

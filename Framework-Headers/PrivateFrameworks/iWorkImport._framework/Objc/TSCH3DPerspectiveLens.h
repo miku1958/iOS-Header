@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 - (void)calculateCullingPlanes:(vector_5e6a89be *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (struct FrustumRect)frustumRect;
-- (struct FrustumRect)frustumRectAtDistance:(float)arg1;
+- (id)frustumRect;
+- (id)frustumRectAtDistance:(float)arg1;
 - (id)init;
 - (tmat4x4_3074befe)matrix;
 - (id)matrixDescription;

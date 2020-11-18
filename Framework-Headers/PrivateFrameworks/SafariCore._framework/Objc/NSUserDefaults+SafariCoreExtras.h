@@ -8,7 +8,11 @@
 
 @interface NSUserDefaults (SafariCoreExtras)
 + (id)safari_cloudBookmarksDefaults;
++ (id)safari_notificationNameForUserDefaultsKey:(id)arg1;
 - (id)safari_dateForKey:(id)arg1;
+- (void)safari_setBool:(BOOL)arg1 andNotifyForKey:(id)arg2;
 - (void)safari_setDate:(id)arg1 forKey:(id)arg2;
+- (BOOL)safari_toggleBoolAndNotifyForKey:(id)arg1;
+- (BOOL)safari_toggleBoolForKey:(id)arg1;
 @end
 

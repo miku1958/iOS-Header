@@ -39,6 +39,7 @@
 - (BOOL)inTextInputModeForSiriViewController:(id<SiriUIViewController>)arg1;
 - (BOOL)shouldEnableInteractionForSiriViewController:(id<SiriUIViewController>)arg1;
 - (void)showCorrectionScreenForSiriViewController:(id<SiriUIViewController>)arg1;
+- (void)siriViewController:(id<SiriUIViewController>)arg1 setTypeToSiriViewHidden:(BOOL)arg2;
 - (void)siriViewControllerDidResignFirstResponder:(id<SiriUIViewController>)arg1;
 - (AFUserUtterance *)updatedUserUtteranceForSiriViewController:(id<SiriUIViewController>)arg1;
 @end

@@ -9,7 +9,7 @@
 #import <PlatterKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <PlatterKit/UIPreviewInteractionDelegatePrivate-Protocol.h>
 
-@class NSString, UIPreviewInteraction, UIViewController, _UIPreviewInteractionViewControllerPresentation;
+@class NSString, UIGestureRecognizer, UIPreviewInteraction, UIViewController, _UIPreviewInteractionViewControllerPresentation;
 @protocol PLPreviewInteractionManagerDelegate, PLPreviewInteractionPresentable, PLPreviewInteractionPresenting;
 
 @interface PLPreviewInteractionManager : NSObject <UIGestureRecognizerDelegate, UIPreviewInteractionDelegatePrivate>
@@ -31,6 +31,7 @@
 @property (weak, nonatomic) id<PLPreviewInteractionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, setter=_setDidInteractionInitiateWithHint:) BOOL didInteractionInitiateWithHint; // @synthesize didInteractionInitiateWithHint=_didInteractionInitiateWithHint;
+@property (readonly, nonatomic) UIGestureRecognizer *gestureRecognizerForExclusionRelationship;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) UIViewController<PLPreviewInteractionPresentable> *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
 @property (readonly) Class superclass;
@@ -39,6 +40,7 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (BOOL)_dismissIfPossibleWithTrigger:(long long)arg1;
+- (id)_newPreviewInteractionWithView:(id)arg1;
 - (id)_previewInteraction:(id)arg1 viewControllerPresentationForPresentingViewController:(id)arg2;
 - (id)_previewInteractionHighlighterForPreviewTransition:(id)arg1;
 - (BOOL)_previewInteractionShouldAutomaticallyTransitionToPreviewAfterDelay:(id)arg1;

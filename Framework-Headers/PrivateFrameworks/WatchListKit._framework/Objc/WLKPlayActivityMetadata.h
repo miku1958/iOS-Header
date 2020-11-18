@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString;
+@class NSArray, NSNumber, NSString;
 
 @interface WLKPlayActivityMetadata : NSObject
 {
@@ -17,6 +17,7 @@
     NSString *_canonicalShowID;
     NSString *_internalLegID;
     NSString *_overrideChannelID;
+    NSArray *_siriActionsCategories;
     NSNumber *_isCurrentEpisode;
     NSNumber *_isShowClosed;
 }
@@ -30,6 +31,7 @@
 @property (readonly, copy, nonatomic) NSNumber *isShowClosed; // @synthesize isShowClosed=_isShowClosed;
 @property (readonly, nonatomic) NSString *key; // @synthesize key=_key;
 @property (readonly, nonatomic) NSString *overrideChannelID; // @synthesize overrideChannelID=_overrideChannelID;
+@property (readonly, copy, nonatomic) NSArray *siriActionsCategories; // @synthesize siriActionsCategories=_siriActionsCategories;
 
 - (void).cxx_destruct;
 - (id)initWithKey:(id)arg1 dictionary:(id)arg2;

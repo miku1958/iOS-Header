@@ -8,7 +8,7 @@
 
 #import <AvatarKit/AVTFaceTrackerDelegate-Protocol.h>
 
-@class AVAssetWriter, AVAssetWriterInput, AVCaptureMovieFileOutput, AVPlayer, CAAnimation, CAAnimationGroup, CALayer, NSLock, NSMutableArray, NSMutableData, NSObject, NSString;
+@class AVAssetWriter, AVAssetWriterInput, AVCaptureMovieFileOutput, AVPlayer, CAAnimationGroup, CALayer, NSLock, NSMutableArray, NSMutableData, NSObject, NSString;
 @protocol AVTRecordViewDelegate, OS_dispatch_queue;
 
 @interface AVTRecordView : AVTView <AVTFaceTrackerDelegate>
@@ -18,16 +18,15 @@
     BOOL _recording;
     int _isFading;
     NSObject<OS_dispatch_queue> *_preloadQueue;
-    CAAnimation *_backedAnimation;
-    BOOL _playBackedAnimation;
+    BOOL _playBakedAnimation;
     BOOL _disableRendering;
-    double _actionT0;
-    BOOL _actionStarted;
     float _maxRecordingDuration;
     NSMutableData *_rawTimesData;
     NSMutableData *_rawBlendShapesData;
     NSMutableData *_rawTransformsData;
     NSMutableData *_rawParametersData;
+    double _referenceAnimationBeginTime;
+    double _recordingStartTime;
     int _recordedCount;
     int _recordingCapacity;
     CAAnimationGroup *_recordedAnimationGroup;
@@ -81,13 +80,14 @@
 - (id)_tmpVideoURL;
 - (void)_updateFrameRateForThermalState:(long long)arg1;
 - (void)_updateTrackingState;
+- (void)addRecordedAnimationToAvatar:(id)arg1;
 - (BOOL)allowTrackSmoothing;
 - (void)audioPlayerItemDidReachEnd:(id)arg1;
 - (void)avatarDidChange;
 - (void)cancelMovieExport;
 - (void)cancelRecording;
 - (void)cancelRecordingAudio;
-- (id)convertRecordedDataToAnimationGroup;
+- (void)convertRecordedDataToAnimationGroup;
 - (struct opaqueCMSampleBuffer *)createSilentAudioAtFrame:(long long)arg1 nFrames:(int)arg2 sampleRate:(double)arg3 numChannels:(int)arg4;
 - (double)currentAudioTime;
 - (void)dealloc;
@@ -113,6 +113,7 @@
 - (id)puppetState;
 - (BOOL)recording;
 - (double)recordingDuration;
+- (void)removeRecordedAnimationFromAvatar:(id)arg1;
 - (void)renderer:(id)arg1 updateAtTime:(double)arg2;
 - (void)setAvatar:(id)arg1;
 - (void)setDisableRendering:(BOOL)arg1;

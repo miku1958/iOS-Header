@@ -55,6 +55,7 @@
 @property (readonly, nonatomic) int type; // @synthesize type=_type;
 @property (nonatomic) BOOL wasHandled; // @synthesize wasHandled=_wasHandled;
 
++ (unsigned int)modifierFlags;
 - (id)_eventDescription;
 - (id)_modiferFlagsDescription;
 - (id)_touchIdentifiersDescription;
@@ -64,7 +65,6 @@
 - (id)_typeDescription;
 - (void)dealloc;
 - (id)description;
-- (id)initWithKeyEventType:(int)arg1 timeStamp:(double)arg2 characters:(id)arg3 charactersIgnoringModifiers:(id)arg4 modifiers:(unsigned int)arg5 isRepeating:(BOOL)arg6 withFlags:(unsigned long long)arg7 keyCode:(unsigned short)arg8 isTabKey:(BOOL)arg9 characterSet:(int)arg10;
 - (id)initWithKeyEventType:(int)arg1 timeStamp:(double)arg2 characters:(id)arg3 charactersIgnoringModifiers:(id)arg4 modifiers:(unsigned int)arg5 isRepeating:(BOOL)arg6 withFlags:(unsigned long long)arg7 withInputManagerHint:(id)arg8 keyCode:(unsigned short)arg9 isTabKey:(BOOL)arg10;
 - (id)initWithMouseEventType:(int)arg1 timeStamp:(double)arg2 location:(struct CGPoint)arg3;
 - (id)initWithScrollWheelEventWithTimeStamp:(double)arg1 location:(struct CGPoint)arg2 deltaX:(float)arg3 deltaY:(float)arg4;

@@ -10,24 +10,36 @@
 
 @interface CPSPrimaryManeuverView : CPSManeuverView
 {
+    BOOL _usesWideImage;
     CPSAbridgableLabel *_distanceLabel;
     UIImageView *_symbolView;
     CPManeuver *_maneuver;
     CPSAbridgableLabel *_titleLabel;
     CPSAbridgableLabel *_instructionLabel;
+    UIImageView *_junctionImageView;
 }
 
 @property (readonly, nonatomic) CPSAbridgableLabel *distanceLabel; // @synthesize distanceLabel=_distanceLabel;
 @property (strong, nonatomic) CPSAbridgableLabel *instructionLabel; // @synthesize instructionLabel=_instructionLabel;
+@property (strong, nonatomic) UIImageView *junctionImageView; // @synthesize junctionImageView=_junctionImageView;
 @property (strong, nonatomic) CPManeuver *maneuver; // @synthesize maneuver=_maneuver;
 @property (strong, nonatomic) UIImageView *symbolView; // @synthesize symbolView=_symbolView;
 @property (strong, nonatomic) CPSAbridgableLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (nonatomic) BOOL usesWideImage; // @synthesize usesWideImage=_usesWideImage;
 
 - (void).cxx_destruct;
+- (void)_cleanupViews;
 - (id)_formattedDistance;
+- (void)_layoutLevelNoInstruction;
+- (void)_layoutMaxSize;
+- (void)_layoutMin;
+- (void)_layoutRemoveJunctionView;
+- (id)_maneuverSymbolImage;
 - (void)backgroundColorDidChange;
-- (id)initWithManeuver:(id)arg1 minimalMode:(BOOL)arg2 style:(long long)arg3;
+- (id)initWithManeuver:(id)arg1 style:(long long)arg2;
+- (struct CGSize)intrinsicContentSize;
 - (void)setCurrentTravelEstimates:(id)arg1;
+- (void)setManeuverViewSize:(unsigned long long)arg1;
 
 @end
 

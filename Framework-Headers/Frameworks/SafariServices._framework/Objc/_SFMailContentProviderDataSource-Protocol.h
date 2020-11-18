@@ -9,7 +9,7 @@
 @class _SFMailContentProvider;
 
 @protocol _SFMailContentProviderDataSource <NSObject>
-- (unsigned long long)availableContentTypeForMailContentProvider:(_SFMailContentProvider *)arg1;
+- (BOOL)mailContentProvider:(_SFMailContentProvider *)arg1 canProvideContentType:(long long)arg2;
 - (void)mailContentProvider:(_SFMailContentProvider *)arg1 getPDFDataWithCompletionHandler:(void (^)(NSData *, NSString *))arg2;
 - (void)mailContentProvider:(_SFMailContentProvider *)arg1 getReaderContentWithCompletionHandler:(void (^)(NSString *))arg2;
 - (void)mailContentProvider:(_SFMailContentProvider *)arg1 getWebArchiveDataWithCompletion:(void (^)(NSData *, NSString *, NSError *))arg2;

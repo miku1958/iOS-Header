@@ -6,11 +6,12 @@
 
 #import <Silex/SXJSONObject.h>
 
-@class NSString, SXDocumentLayout, SXDocumentStyle, SXJSONArray, SXJSONDictionary, SXMetaData;
-@protocol SXAdvertisingSettings, SXAutoPlacement;
+@class NSString, SXDocumentStyle, SXJSONArray, SXJSONDictionary, SXMetaData;
+@protocol SXAdvertisingSettings, SXAutoPlacement, SXDocumentLayout;
 
 @interface SXDocument : SXJSONObject
 {
+    NSString *_identifier;
 }
 
 @property (readonly, nonatomic) id<SXAdvertisingSettings> advertisingSettings; // @dynamic advertisingSettings;
@@ -21,13 +22,12 @@
 @property (readonly, nonatomic) SXJSONDictionary *componentTextStyles; // @dynamic componentTextStyles;
 @property (readonly, nonatomic) SXJSONArray *components; // @dynamic components;
 @property (readonly, nonatomic) SXDocumentStyle *documentStyle; // @dynamic documentStyle;
-@property (readonly, nonatomic) NSString *identifier; // @dynamic identifier;
+@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *language; // @dynamic language;
-@property (readonly, nonatomic) SXDocumentLayout *layout; // @dynamic layout;
+@property (readonly, nonatomic) id<SXDocumentLayout> layout; // @dynamic layout;
 @property (readonly, nonatomic) SXMetaData *metadata; // @dynamic metadata;
 @property (readonly, nonatomic) SXJSONDictionary *resources; // @dynamic resources;
 @property (readonly, nonatomic) NSString *specVersion; // @dynamic specVersion;
-@property (readonly, nonatomic) SXJSONDictionary *tableStyles; // @dynamic tableStyles;
 @property (readonly, nonatomic) SXJSONDictionary *textStyles; // @dynamic textStyles;
 @property (readonly, nonatomic) NSString *title; // @dynamic title;
 
@@ -35,6 +35,9 @@
 + (CDUnknownBlockType)objectValueClassBlockForPropertyWithName:(id)arg1;
 + (CDUnknownBlockType)purgeClassBlockForPropertyWithName:(id)arg1;
 + (CDUnknownBlockType)valueClassBlockForPropertyWithName:(id)arg1;
+- (void).cxx_destruct;
+- (id)initWithIdentifier:(id)arg1 JSONObject:(id)arg2 andVersion:(id)arg3;
+- (id)initWithJSONObject:(id)arg1 andVersion:(id)arg2;
 
 @end
 

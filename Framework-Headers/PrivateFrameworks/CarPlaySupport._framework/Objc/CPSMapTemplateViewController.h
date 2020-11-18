@@ -12,6 +12,7 @@
 #import <CarPlaySupport/CPSApplicationStateObserving-Protocol.h>
 #import <CarPlaySupport/CPSButtonDelegate-Protocol.h>
 #import <CarPlaySupport/CPSEventObserverDelegate-Protocol.h>
+#import <CarPlaySupport/CPSLayoutHelperViewDelegate-Protocol.h>
 #import <CarPlaySupport/CPSLinearFocusProviding-Protocol.h>
 #import <CarPlaySupport/CPSNavigationAlertQueueDelegate-Protocol.h>
 #import <CarPlaySupport/CPSNavigationDisplaying-Protocol.h>
@@ -19,10 +20,10 @@
 #import <CarPlaySupport/CPSTripInitiating-Protocol.h>
 #import <CarPlaySupport/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CARSessionStatus, CPMapTemplate, CPSApplicationStateMonitor, CPSEventObserver, CPSNavigationAlertQueue, CPSNavigationCardView, CPSNavigationETAView, CPSNavigator, CPSPanViewController, CPSTripPreviewsCardView, CPTripPreviewTextConfiguration, NSArray, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UIColor, UIFocusGuide, UIPanGestureRecognizer, UIStackView, UITapGestureRecognizer, UIView, _CPSFocusHoldingButton;
+@class CARSessionStatus, CPMapTemplate, CPSApplicationStateMonitor, CPSEventObserver, CPSLayoutHelperView, CPSNavigationAlertQueue, CPSNavigationCardView, CPSNavigationETAView, CPSNavigator, CPSPanViewController, CPSTripPreviewsCardView, CPTripPreviewTextConfiguration, NSArray, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UIColor, UIFocusGuide, UIPanGestureRecognizer, UIStackView, UITapGestureRecognizer, UIView, _CPSFocusHoldingButton;
 @protocol CPMapClientTemplateDelegate, CPSSafeAreaDelegate, UIFocusItem;
 
-@interface CPSMapTemplateViewController : CPSBaseTemplateViewController <CARSessionObserving, CPSButtonDelegate, CPSTripInitiating, UIGestureRecognizerDelegate, CPSPanEventDelegate, CPSNavigationAlertQueueDelegate, CPSNavigationDisplaying, CARNavigationOwnershipManagerDelegate, CPSEventObserverDelegate, CPSApplicationStateObserving, CPMapTemplateProviding, CPSLinearFocusProviding>
+@interface CPSMapTemplateViewController : CPSBaseTemplateViewController <CARSessionObserving, CPSButtonDelegate, CPSTripInitiating, UIGestureRecognizerDelegate, CPSPanEventDelegate, CPSNavigationAlertQueueDelegate, CPSNavigationDisplaying, CARNavigationOwnershipManagerDelegate, CPSEventObserverDelegate, CPSApplicationStateObserving, CPSLayoutHelperViewDelegate, CPMapTemplateProviding, CPSLinearFocusProviding>
 {
     BOOL _previewOnlyRouteChoices;
     BOOL _autoHidesNavigationBar;
@@ -35,9 +36,11 @@
     unsigned long long _maximumMapButtonCount;
     NSMutableArray *_mapButtons;
     CPSNavigationCardView *_navigationCardView;
-    NSLayoutConstraint *_cardViewBottomConstraint;
-    NSLayoutConstraint *_cardViewTopConstraint;
-    NSLayoutConstraint *_cardViewHeightConstraint;
+    CPSLayoutHelperView *_navigationCardViewLayoutHelperView;
+    NSLayoutConstraint *_navigationCardViewLayoutViewBottomConstraint;
+    NSLayoutConstraint *_navigationCardViewHeightConstraint;
+    NSLayoutConstraint *_navigationCardViewBottomConstraint;
+    NSLayoutConstraint *_navigationCardViewTopConstraint;
     CPSTripPreviewsCardView *_previewsView;
     CARSessionStatus *_sessionStatus;
     CPSNavigator *_navigator;
@@ -57,7 +60,8 @@
     NSLayoutConstraint *_navigationAlertHeightConstraint;
     CPSApplicationStateMonitor *_applicationStateMonitor;
     CPSNavigationETAView *_navigationETAView;
-    NSLayoutConstraint *_navigationETABottomConstraint;
+    CPSLayoutHelperView *_navigationETAViewLayoutHelperView;
+    NSLayoutConstraint *_navigationETAViewBottomConstraint;
     NSMutableDictionary *_lastTravelEstimatesByTrip;
     id<CPSSafeAreaDelegate> _safeAreaDelegate;
     CPSEventObserver *_eventObserver;
@@ -76,9 +80,6 @@
 @property (strong, nonatomic) NSMutableSet *autoHideDisabledReasons; // @synthesize autoHideDisabledReasons=_autoHideDisabledReasons;
 @property (strong, nonatomic) NSTimer *autoHideTimer; // @synthesize autoHideTimer=_autoHideTimer;
 @property (nonatomic) BOOL autoHidesNavigationBar; // @synthesize autoHidesNavigationBar=_autoHidesNavigationBar;
-@property (strong, nonatomic) NSLayoutConstraint *cardViewBottomConstraint; // @synthesize cardViewBottomConstraint=_cardViewBottomConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *cardViewHeightConstraint; // @synthesize cardViewHeightConstraint=_cardViewHeightConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *cardViewTopConstraint; // @synthesize cardViewTopConstraint=_cardViewTopConstraint;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL demoAutoHideTimerDisabled; // @synthesize demoAutoHideTimerDisabled=_demoAutoHideTimerDisabled;
 @property (readonly, copy) NSString *description;
@@ -103,8 +104,14 @@
 @property (strong, nonatomic) NSLayoutConstraint *navigationAlertHeightConstraint; // @synthesize navigationAlertHeightConstraint=_navigationAlertHeightConstraint;
 @property (strong, nonatomic) CPSNavigationAlertQueue *navigationAlertQueue; // @synthesize navigationAlertQueue=_navigationAlertQueue;
 @property (strong, nonatomic) CPSNavigationCardView *navigationCardView; // @synthesize navigationCardView=_navigationCardView;
-@property (strong, nonatomic) NSLayoutConstraint *navigationETABottomConstraint; // @synthesize navigationETABottomConstraint=_navigationETABottomConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *navigationCardViewBottomConstraint; // @synthesize navigationCardViewBottomConstraint=_navigationCardViewBottomConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *navigationCardViewHeightConstraint; // @synthesize navigationCardViewHeightConstraint=_navigationCardViewHeightConstraint;
+@property (strong, nonatomic) CPSLayoutHelperView *navigationCardViewLayoutHelperView; // @synthesize navigationCardViewLayoutHelperView=_navigationCardViewLayoutHelperView;
+@property (strong, nonatomic) NSLayoutConstraint *navigationCardViewLayoutViewBottomConstraint; // @synthesize navigationCardViewLayoutViewBottomConstraint=_navigationCardViewLayoutViewBottomConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *navigationCardViewTopConstraint; // @synthesize navigationCardViewTopConstraint=_navigationCardViewTopConstraint;
 @property (strong, nonatomic) CPSNavigationETAView *navigationETAView; // @synthesize navigationETAView=_navigationETAView;
+@property (strong, nonatomic) NSLayoutConstraint *navigationETAViewBottomConstraint; // @synthesize navigationETAViewBottomConstraint=_navigationETAViewBottomConstraint;
+@property (strong, nonatomic) CPSLayoutHelperView *navigationETAViewLayoutHelperView; // @synthesize navigationETAViewLayoutHelperView=_navigationETAViewLayoutHelperView;
 @property (strong, nonatomic) CPSNavigator *navigator; // @synthesize navigator=_navigator;
 @property (strong, nonatomic) NSLayoutConstraint *panContainerLeftConstraint; // @synthesize panContainerLeftConstraint=_panContainerLeftConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *panContainerRightConstraint; // @synthesize panContainerRightConstraint=_panContainerRightConstraint;
@@ -151,13 +158,13 @@
 - (void)_showBar;
 - (id)_tripDidBegin:(id)arg1 withEstimates:(id)arg2 forIdentifier:(id)arg3;
 - (void)_updateInterestingArea;
-- (void)_updateManeuverCardIfNeededForAlertShowing:(BOOL)arg1;
 - (void)_updateMapButtonVisibility;
 - (void)_updateMapButtonsWithButtons:(id)arg1;
 - (void)_updateSafeArea;
 - (void)applicationStateMonitor:(id)arg1 didBecomeActive:(BOOL)arg2;
 - (BOOL)canAnimateNavigationAlert;
 - (void)dealloc;
+- (void)didChangeLayout:(id)arg1;
 - (void)didSelectButton:(id)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)dismissNavigationAlertAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
@@ -193,6 +200,7 @@
 - (void)showNavigationAlert:(id)arg1 animated:(BOOL)arg2;
 - (void)tripView:(id)arg1 selectedTrip:(id)arg2 routeChoice:(id)arg3;
 - (void)tripView:(id)arg1 startedTrip:(id)arg2 routeChoice:(id)arg3;
+- (void)updateEstimates:(id)arg1 forManeuver:(id)arg2;
 - (void)updateNavigationAlert:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

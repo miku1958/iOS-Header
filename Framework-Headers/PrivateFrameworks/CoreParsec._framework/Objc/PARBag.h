@@ -8,17 +8,19 @@
 
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL, NSUserDefaults;
 
 @interface PARBag : NSObject <NSSecureCoding>
 {
     NSData *_bagData;
     NSString *_userAgent;
     NSString *_clientName;
+    NSUserDefaults *_userDefaults;
 }
 
 @property (readonly, nonatomic) NSArray *anonymousMetadataPreference;
 @property (readonly, copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
+@property (readonly, nonatomic) NSNumber *cohortsLookbackInDays;
 @property (readonly, nonatomic) BOOL collectAnonymousMetadata;
 @property (readonly, nonatomic) BOOL collectScores;
 @property (readonly, nonatomic) NSURL *crowdsourcingURL;
@@ -47,6 +49,7 @@
 @property (readonly, nonatomic) double minimumIntervalBetweenQueriesFromBag;
 @property (readonly, nonatomic) unsigned long long minimumQueryLength;
 @property (readonly, nonatomic) NSNumber *otherRenderTimeout;
+@property (readonly, copy, nonatomic) NSString *parsecFeedbackFormat;
 @property (readonly, copy, nonatomic) NSDictionary *rawBag;
 @property (readonly, copy, nonatomic) NSArray *recentlyUsedAppIdentifierWhitelist;
 @property (readonly, copy, nonatomic) NSDictionary *resources;
@@ -62,7 +65,6 @@
 @property (readonly, nonatomic) NSNumber *searchRenderTimeout;
 @property (readonly, nonatomic) NSURL *searchURL;
 @property (readonly, nonatomic) BOOL sendGeoEnvironmentHeader;
-@property (readonly, nonatomic) BOOL sendProtobuf;
 @property (readonly, nonatomic) unsigned long long smartHistoryCompletionReturnCount;
 @property (readonly, nonatomic) BOOL smartHistoryEnabled;
 @property (readonly, nonatomic) BOOL smartHistoryFeatureFeedbackEnabled;
@@ -79,6 +81,7 @@
 @property (readonly, nonatomic) NSDictionary *tuscanyConfiguration;
 @property (readonly, nonatomic) BOOL use2LayerRanking;
 @property (readonly, copy, nonatomic) NSString *userAgent; // @synthesize userAgent=_userAgent;
+@property (readonly, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property (readonly, copy, nonatomic) NSString *version;
 @property (readonly, nonatomic) NSURL *warmURL;
 
@@ -101,6 +104,7 @@
 - (id)initWithData:(id)arg1;
 - (id)initWithData:(id)arg1 userAgent:(id)arg2;
 - (id)initWithURL:(id)arg1 userAgent:(id)arg2;
+- (id)initWithURL:(id)arg1 userDefaults:(id)arg2;
 - (BOOL)isRefreshDisabled;
 - (unsigned long long)maximumSizeForFeedbackType:(id)arg1;
 - (id)personalizationParameters;

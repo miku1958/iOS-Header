@@ -70,9 +70,13 @@
 + (void)initialize;
 + (BOOL)isSystemSpeaking;
 + (void)refreshAllAvailableVoices;
++ (void)setVoiceAssetsForTesting:(id)arg1;
 + (id)speechMarkupStringForType:(long long)arg1 forIdentifier:(id)arg2 string:(id)arg3;
 + (id)supportedIPAPhonemeLanguages;
++ (id)testingLastRuleConversion;
 + (void)testingSetAllVoices:(id)arg1;
++ (void)testingSetLastRuleConversion:(id)arg1 replacement:(id)arg2;
++ (id)voiceAssetsForTesting;
 + (id)voiceForIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)_applySubstitution:(id)arg1 toText:(id)arg2 wordRange:(struct _NSRange)arg3 request:(id)arg4 phonemes:(id *)arg5;

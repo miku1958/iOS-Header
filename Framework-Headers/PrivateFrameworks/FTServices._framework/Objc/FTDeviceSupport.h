@@ -95,6 +95,7 @@
 @property (readonly, nonatomic) NSString *productOSVersion;
 @property (readonly, nonatomic) NSString *productVersion;
 @property (readonly, nonatomic) BOOL registrationSupported;
+@property (readonly, nonatomic) BOOL slowCPUDevice;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsAppleIDIdentification;
 @property (readonly, nonatomic) BOOL supportsApplePay;
@@ -145,6 +146,7 @@
 - (void)_updateManagedConfigurationSettings;
 - (BOOL)_wantsForcedCellularQueries;
 - (void)carrierBundleChange:(id)arg1;
+- (int)cpuFamily;
 - (void)dealloc;
 - (BOOL)inProcess_isCallingSupported;
 - (id)init;

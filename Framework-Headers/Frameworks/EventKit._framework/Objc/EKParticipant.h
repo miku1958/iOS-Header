@@ -7,11 +7,12 @@
 #import <EventKit/EKObject.h>
 
 #import <EventKit/EKIdentityProtocol-Protocol.h>
+#import <EventKit/EKParticipantSemanticIdentifierGeneratorDelegate-Protocol.h>
 #import <EventKit/NSCopying-Protocol.h>
 
 @class EKCalendarItem, NSPredicate, NSString, NSURL;
 
-@interface EKParticipant : EKObject <EKIdentityProtocol, NSCopying>
+@interface EKParticipant : EKObject <EKParticipantSemanticIdentifierGeneratorDelegate, EKIdentityProtocol, NSCopying>
 {
     EKCalendarItem *_owner;
 }
@@ -42,6 +43,7 @@
 - (void).cxx_destruct;
 - (const void *)ABRecordWithAddressBook:(void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)displayName;
 - (id)displayNameRaw;
 - (id)initWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 url:(id)arg4;
 - (id)invitedBy;
@@ -57,6 +59,7 @@
 - (void)setProposedStartDate:(id)arg1 forEvent:(id)arg2;
 - (void)setURL:(id)arg1;
 - (void)setUUID:(id)arg1;
+- (id)url;
 
 @end
 

@@ -14,6 +14,8 @@
 {
 }
 
+@property (nonatomic) BOOL activeTvUser;
+@property (nonatomic) BOOL ageVerificationRequired;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) SACalendar *expirationDate;

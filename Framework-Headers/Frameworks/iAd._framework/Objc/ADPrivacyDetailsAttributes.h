@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *transparencyRendererPayload; // @synthesize transparencyRendererPayload=_transparencyRendererPayload;
 @property (strong, nonatomic) NSString *transparencyRendererURL; // @synthesize transparencyRendererURL=_transparencyRendererURL;
 
+- (void)dealloc;
 
 @end
 

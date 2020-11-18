@@ -45,6 +45,7 @@
 - (void)_finishStreamTransport;
 - (void)_generateStreamKeys;
 - (id)_getActiveProtocolWithClass:(Class)arg1;
+- (void)_handleAccessoryIsReachable;
 - (void)_initiateStreamSetup;
 - (void)addBulkSendListener:(id)arg1 fileType:(id)arg2;
 - (BOOL)canAcceptBulkSendListeners;

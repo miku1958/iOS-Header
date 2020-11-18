@@ -28,6 +28,7 @@
 - (void)paymentPassesWithPrimaryAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)peerPaymentAccountForPairingID:(NSUUID *)arg1 withCompletion:(void (^)(PKPeerPaymentAccount *))arg2;
 - (void)redownloadAllPaymentPassesWithCompletion:(void (^)(void))arg1;
+- (void)registerDeviceWithCompletion:(void (^)(unsigned long long, unsigned long long, NSError *))arg1;
 - (void)removePaymentPassWithUniqueID:(NSString *)arg1 forPairingID:(NSUUID *)arg2 waitForConfirmation:(BOOL)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)savePaymentPassAtURL:(NSURL *)arg1 withUniqueID:(NSString *)arg2 forPairingID:(NSUUID *)arg3 completion:(void (^)(BOOL))arg4;
 - (void)setDefaultCard:(NSString *)arg1 completion:(void (^)(BOOL))arg2;

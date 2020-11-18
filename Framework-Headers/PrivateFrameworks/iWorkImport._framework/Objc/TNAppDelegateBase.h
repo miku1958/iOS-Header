@@ -46,11 +46,12 @@ __attribute__((visibility("hidden")))
 - (id)sharedReadOnlyAlertMessageWithUserName:(id)arg1;
 - (id)stringForApplicationUpdateError;
 - (id)stringForBoxCollaborationOptInMessage;
+- (id)stringForChangePasswordWhileConnectingAlertMessage;
 - (id)stringForCloseDocument;
 - (id)stringForCloseDocumentConfirmationAlertMessage;
 - (id)stringForCloseDocumentConfirmationWillContinueToUpdateInformativeText;
 - (id)stringForCollaborationConnecting;
-- (id)stringForCollaborationOffline;
+- (id)stringForCollaborationOfflinePlacard;
 - (id)stringForCollaborationOnline;
 - (id)stringForCollaborator1_6ConflictDetails;
 - (id)stringForCollaborator1_6ConflictWithKeepDetails;
@@ -72,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)stringForGenericServerUnreachable;
 - (id)stringForICloudUnreachable;
 - (id)stringForLearnMoreSharingURL;
+- (id)stringForNoItemsSyncingListItem;
 - (id)stringForOwnerHasCollabEnabledMessage;
 - (id)stringForOwnerHasCollabEnabledTitle;
 - (id)stringForOwnerPasswordOnConflictAlertMessage;
@@ -83,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (id)stringForRemoveSelfAlertConfirmationTitle;
 - (id)stringForStopSharingAlertConfirmationMessage;
 - (id)stringForStopSharingAlertConfirmationTitle;
+- (id)stringForSyncActivityPopoverTitle;
 - (id)stringForUpdatingDocumentWithoutServiceType;
 - (id)stringForUserActivityTitleForFilename:(id)arg1;
 - (BOOL)supportsRTL;

@@ -12,10 +12,15 @@
 - (void)applicationDidEnterBackground;
 - (void)applicationWillEnterForeground;
 - (void)bridgedRightButtonPressed;
+- (void)dismissPresentingBridgedViewController;
+- (void)keyboardDidChangeFrame:(struct CGRect)arg1 animationCurve:(long long)arg2 duration:(double)arg3;
+- (void)keyboardWillChangeFrame:(struct CGRect)arg1 animationCurve:(long long)arg2 duration:(double)arg3;
 - (void)loadWithURL:(NSURL *)arg1;
 - (void)performRedeemOperationWithCode:(NSString *)arg1 cameraRecognized:(BOOL)arg2 completion:(void (^)(SKUIRedeem *, NSError *))arg3;
+- (void)redeemCameraCodeDetected:(NSString *)arg1;
 - (void)setAccount:(ACAccount *)arg1;
-- (void)setBridgedNavigation:(BOOL)arg1;
 - (void)setLoadFromBridgedNavigation:(BOOL)arg1;
+- (void)setPresentationBounds:(struct CGRect)arg1;
+- (void)setType:(long long)arg1;
 @end
 

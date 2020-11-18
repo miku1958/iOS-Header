@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class HDActivitySummaryBuilder;
+@class HDActivitySummaryBuilder, HDDatabaseTransactionContext, HDProfile;
 
 @interface ACHActivitySummaryUtility : NSObject
 {
+    HDDatabaseTransactionContext *_databaseContext;
+    HDProfile *_profile;
     HDActivitySummaryBuilder *_summaryBuilder;
 }
 
+@property (weak, nonatomic) HDDatabaseTransactionContext *databaseContext; // @synthesize databaseContext=_databaseContext;
+@property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) HDActivitySummaryBuilder *summaryBuilder; // @synthesize summaryBuilder=_summaryBuilder;
 
 - (void).cxx_destruct;
+- (BOOL)_enumerateActivitySummariesForDateComponentInterval:(id)arg1 handler:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (void)enumerateActivitySummariesForDateComponentInterval:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)initWithProfile:(id)arg1 shouldIncludePrivateProperties:(BOOL)arg2;
 - (id)newEmptyActivitySummaryWithIndex:(long long)arg1 calorieGoal:(id)arg2;

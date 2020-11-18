@@ -31,6 +31,8 @@
 - (void)handleMessageError:(id)arg1 destructive:(BOOL)arg2;
 - (void)handleMessageWithPayload:(id)arg1 forIdentifier:(unsigned long long)arg2;
 - (id)init;
+- (void)registerForRemoteUpdates:(CDUnknownBlockType)arg1 forCallUID:(id)arg2;
+- (void)registerForServiceUpdates:(CDUnknownBlockType)arg1 forCallUID:(id)arg2;
 - (void)registerForUpdates:(CDUnknownBlockType)arg1 forCallUID:(id)arg2;
 - (void)registerResponseBlock:(CDUnknownBlockType)arg1 forUUID:(id)arg2;
 - (void)resetConnection;

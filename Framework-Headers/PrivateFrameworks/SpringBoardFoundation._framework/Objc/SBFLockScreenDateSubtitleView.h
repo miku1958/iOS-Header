@@ -12,17 +12,13 @@
 {
     SBUILegibilityLabel *_label;
     UIView *_accessoryView;
-    UIView *_backgroundView;
     _UILegibilitySettings *_legibilitySettings;
     double _strength;
-    double _customInterItemSpacing;
 }
 
 @property (strong, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
-@property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic) double baselineOffsetFromBottom;
 @property (readonly, nonatomic) double baselineOffsetFromOrigin;
-@property (nonatomic) double customInterItemSpacing; // @synthesize customInterItemSpacing=_customInterItemSpacing;
 @property (strong, nonatomic) UIFont *font;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) double strength; // @synthesize strength=_strength;
@@ -34,7 +30,6 @@
 - (void).cxx_destruct;
 - (void)_updateForCurrentSizeCategory;
 - (struct CGRect)accessoryViewFrame;
-- (struct CGRect)backgroundViewFrame;
 - (void)dealloc;
 - (id)init;
 - (id)initWithString:(id)arg1 accessoryView:(id)arg2;

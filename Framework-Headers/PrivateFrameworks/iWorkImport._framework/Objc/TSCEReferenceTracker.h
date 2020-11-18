@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface TSCEReferenceTracker : TSPObject <TSCEFormulaOwning>
 {
     UUIDData_5fbc143e _ownerUUID;
+    UUIDData_5fbc143e _baseOwnerUID;
     TSCECalculationEngine *_calculationEngine;
     BOOL _isRegisteredWithCalculationEngine;
     id<TSCEReferenceTrackerDelegate> _delegate;
@@ -24,7 +25,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _numberOfTrackedReferences;
 }
 
-@property (readonly, weak, nonatomic) TSCECalculationEngine *calculationEngine;
+@property (nonatomic) UUIDData_5fbc143e baseOwnerUID; // @synthesize baseOwnerUID=_baseOwnerUID;
+@property (readonly, nonatomic) TSCECalculationEngine *calculationEngine;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<TSCEReferenceTrackerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -49,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)loadFromUnarchiver:(id)arg1;
 - (unsigned long long)numberOfTrackedReferences;
 - (id)objectToArchiveInDependencyTracker;
-- (int)ownerKind;
+- (unsigned short)ownerKind;
 - (UUIDData_5fbc143e)ownerUID;
 - (CDStruct_2a4d9400)recalculateForCalcEngine:(id)arg1 atFormulaCoord:(struct TSUCellCoord)arg2 recalcOptions:(CDStruct_3d581f42)arg3;
 - (void)registerWithCalcEngine:(BOOL)arg1;

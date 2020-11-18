@@ -24,8 +24,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
-- (void)encodeToOwnedReferenceMessage:(RepeatedPtrField_a0d2dbe7 *)arg1 archiver:(id)arg2;
-- (void)encodeToReferenceMessage:(RepeatedPtrField_a0d2dbe7 *)arg1 archiver:(id)arg2;
+- (void)encodeToOwnedReferenceMessage:(RepeatedPtrField_54b3089c *)arg1 archiver:(id)arg2;
+- (void)encodeToReferenceMessage:(RepeatedPtrField_54b3089c *)arg1 archiver:(id)arg2;
 - (id)firstObject;
 - (BOOL)hasObjects;
 - (unsigned long long)hash;

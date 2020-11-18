@@ -23,7 +23,6 @@
 
 - (void)_sf_applicationDidEnterBackgroundOrWillTerminate:(id)arg1;
 - (void)_sf_saveUnsubmittedGeneratedPasswordAndRemoveFormMetadata;
-- (id)webui_formMetadataAndFrame:(id *)arg1 forLastPasswordGenerationOrSubmitEventInFrame:(id)arg2;
 - (id)webui_formMetadataForLastPasswordGenerationOrSubmitEventInFrame:(id)arg1;
 - (CDUnknownBlockType)webui_preventNavigationDuringAutoFillPrompt;
 - (void)webui_removeFormMetadataForLastPasswordGenerationOrSubmitEventInFrame:(id)arg1;

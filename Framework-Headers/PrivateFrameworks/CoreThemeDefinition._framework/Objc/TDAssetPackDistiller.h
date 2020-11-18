@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSSet *assetPackMap; // @synthesize assetPackMap;
 
-- (void)_storeRenditions;
+- (BOOL)_storeRenditions;
 - (id)assetPackForTags:(id)arg1;
 - (BOOL)assetStoreWriteToDisk;
 - (void)dealloc;

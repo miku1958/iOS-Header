@@ -21,7 +21,7 @@
 - (void)addRecord:(id)arg1;
 - (id)description;
 - (id)initWithRecords:(id)arg1;
-- (id)recordWithRecordType:(id)arg1;
+- (id)recordsWithRecordType:(id)arg1;
 
 @end
 

@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchive:(struct StyleDiffArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (id)styleDiffForTable:(int)arg1 storage:(id)arg2 currentObject:(id)arg3;
+- (id)styleDiffForTable:(unsigned long long)arg1 storage:(id)arg2 currentObject:(id)arg3;
 
 @end
 

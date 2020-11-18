@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (double)publicIdentitiesExpirationTimeoutForContainer:(id)arg1;
 - (BOOL)shouldSignForMessageType:(int)arg1 inDatabaseScope:(long long)arg2 forContainer:(id)arg3;
 - (long long)tokenRegisterDaysForContainer:(id)arg1;
+- (id)transcodeServerPublicKeyURLsForContainer:(id)arg1;
 - (id)valueForKeyPath:(id)arg1 forContainer:(id)arg2;
 
 @end

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)buildsToChunksMapForChunks:(id)arg1;
 + (id)chunksForInfos:(id)arg1;
 + (id)chunksInBuilds:(id)arg1;
++ (unsigned long long)countOfInfosThatSupportContentBuilds:(id)arg1;
 + (id)identifiersForChunks:(id)arg1;
 + (id)nonNilChunkIdentifierFromPossiblyNilChunk:(id)arg1;
 + (id)orderedBuildsFromUnorderedBuilds:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUNetLinkManager, NSString;
+@class CUBonjourAdvertiser, CUNetLinkManager, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CUTCPServer : NSObject
@@ -21,6 +21,8 @@
     unsigned int _maxConnectionCount;
     int _tcpListenPort;
     int _tcpListeningPort;
+    CUBonjourAdvertiser *_bonjourAdvertiser;
+    CDUnknownBlockType _connectionAcceptHandler;
     CDUnknownBlockType _connectionStartedHandler;
     CDUnknownBlockType _connectionEndedHandler;
     CDUnknownBlockType _connectionPrepareHandler;
@@ -28,13 +30,17 @@
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;
     CUNetLinkManager *_netLinkManager;
+    CDUnion_fab80606 _interfaceAddress;
 }
 
+@property (strong, nonatomic) CUBonjourAdvertiser *bonjourAdvertiser; // @synthesize bonjourAdvertiser=_bonjourAdvertiser;
+@property (copy, nonatomic) CDUnknownBlockType connectionAcceptHandler; // @synthesize connectionAcceptHandler=_connectionAcceptHandler;
 @property (copy, nonatomic) CDUnknownBlockType connectionEndedHandler; // @synthesize connectionEndedHandler=_connectionEndedHandler;
 @property (copy, nonatomic) CDUnknownBlockType connectionPrepareHandler; // @synthesize connectionPrepareHandler=_connectionPrepareHandler;
 @property (copy, nonatomic) CDUnknownBlockType connectionStartedHandler; // @synthesize connectionStartedHandler=_connectionStartedHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
+@property (nonatomic) CDUnion_fab80606 interfaceAddress; // @synthesize interfaceAddress=_interfaceAddress;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic) unsigned int maxConnectionCount; // @synthesize maxConnectionCount=_maxConnectionCount;

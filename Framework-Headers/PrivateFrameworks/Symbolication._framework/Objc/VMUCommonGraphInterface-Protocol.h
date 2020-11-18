@@ -11,6 +11,8 @@
 @protocol VMUCommonGraphInterface <NSObject>
 
 @property (readonly, nonatomic) NSString *binaryImagesDescription;
+@property (readonly, nonatomic) NSString *executablePath;
+@property (readonly, nonatomic) BOOL is64bit;
 @property (readonly, nonatomic) unsigned int nodeCount;
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize;
 @property (readonly, nonatomic) unsigned long long physicalFootprint;
@@ -33,6 +35,7 @@
 - (NSString *)labelForNode:(unsigned int)arg1;
 - (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2;
 - (CDStruct_599faf0f)nodeDetails:(unsigned int)arg1;
+- (unsigned int)nodeForAddress:(unsigned long long)arg1;
 - (void)refineTypesWithOverlay:(VMUScanOverlay *)arg1;
 - (NSString *)shortLabelForNode:(unsigned int)arg1;
 - (VMUVMRegion *)vmuVMRegionForAddress:(unsigned long long)arg1;

@@ -9,7 +9,7 @@
 #import <iWorkImport/NSFastEnumeration-Protocol.h>
 #import <iWorkImport/TSPMutableLargeArraySegmentDelegate-Protocol.h>
 
-@class NSMutableArray;
+@class NSArray, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface TSPAbstractMutableLargeArray : TSPObject <NSFastEnumeration, TSPMutableLargeArraySegmentDelegate>
@@ -25,15 +25,20 @@ __attribute__((visibility("hidden")))
     BOOL _shouldDelayArchiving;
     unsigned int _delayedArchivingPriority;
     BOOL _storeOutsideObjectArchive;
+    unsigned long long _estimatedByteSize;
 }
 
+@property (readonly, nonatomic) NSArray *allObjects;
 @property (readonly) unsigned long long count;
 @property (nonatomic) unsigned int delayedArchivingPriority;
+@property (readonly, nonatomic) unsigned long long estimatedByteSize; // @synthesize estimatedByteSize=_estimatedByteSize;
 @property (readonly, nonatomic) BOOL hasDelayedArchivingPriority;
 @property (readonly, nonatomic) BOOL hasMaxSegmentElementCount;
 @property (readonly, nonatomic) BOOL hasMaxSegmentSize;
 @property (nonatomic) unsigned long long maxSegmentElementCount;
 @property (nonatomic) unsigned long long maxSegmentSize;
+@property (readonly, nonatomic) NSMutableArray *mutableArrayWrapper;
+@property (readonly, nonatomic) NSString *packageLocatorForSegments;
 @property (readonly, nonatomic) unsigned long long segmentCount;
 @property (nonatomic) BOOL shouldDelayArchiving;
 @property (nonatomic) BOOL storeOutsideObjectArchive;

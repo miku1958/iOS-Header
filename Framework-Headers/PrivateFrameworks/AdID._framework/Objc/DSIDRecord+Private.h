@@ -30,7 +30,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)reconcileIDFAandLAT;
 - (void)removeIDForClientType:(long long)arg1;
-- (void)resetiAdIDs:(CDUnknownBlockType)arg1;
+- (void)resetiAdIDs;
+- (void)resetiAdIDsAndDPID:(CDUnknownBlockType)arg1;
 - (void)retrieveSegmentDataFromiTunes:(CDUnknownBlockType)arg1;
 - (void)sendLATStatusToAdPlatforms:(CDUnknownBlockType)arg1;
 - (void)sendSegmentDataToAdPlatforms:(CDUnknownBlockType)arg1;

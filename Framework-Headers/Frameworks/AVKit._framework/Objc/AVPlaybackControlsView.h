@@ -69,6 +69,7 @@
 @property (nonatomic, getter=isDoubleRowLayoutEnabled) BOOL doubleRowLayoutEnabled; // @synthesize doubleRowLayoutEnabled=_doubleRowLayoutEnabled;
 @property (nonatomic, getter=isFullScreen) BOOL fullScreen; // @synthesize fullScreen=_fullScreen;
 @property (readonly, nonatomic) AVButton *fullScreenButton; // @synthesize fullScreenButton=_fullScreenButton;
+@property (readonly, nonatomic) BOOL hasVisibleSubview;
 @property (nonatomic) long long includedContainers; // @synthesize includedContainers=_includedContainers;
 @property (readonly, nonatomic) AVButton *mediaSelectionButton; // @synthesize mediaSelectionButton=_mediaSelectionButton;
 @property (readonly, nonatomic) AVButton *miniPlayPauseButton; // @synthesize miniPlayPauseButton=_miniPlayPauseButton;

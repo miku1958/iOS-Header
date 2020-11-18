@@ -13,6 +13,7 @@
 @interface AWDHomeKitCameraSnapshot : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
+    int _certified;
     AWDHomeKitCameraSnapshotMessaging *_controllerMessaging;
     unsigned int _errorCode;
     AWDHomeKitCameraIDSSessionSetup *_idsSessionSetup;
@@ -30,6 +31,7 @@
     BOOL _isLocal;
     struct {
         unsigned int timestamp:1;
+        unsigned int certified:1;
         unsigned int errorCode:1;
         unsigned int receivedSnapshotFromAccessory:1;
         unsigned int sentSnapshotRequestToAccessory:1;
@@ -39,9 +41,11 @@
     } _has;
 }
 
+@property (nonatomic) int certified; // @synthesize certified=_certified;
 @property (strong, nonatomic) AWDHomeKitCameraSnapshotMessaging *controllerMessaging; // @synthesize controllerMessaging=_controllerMessaging;
 @property (nonatomic) unsigned int errorCode; // @synthesize errorCode=_errorCode;
 @property (nonatomic) BOOL forNotification; // @synthesize forNotification=_forNotification;
+@property (nonatomic) BOOL hasCertified;
 @property (readonly, nonatomic) BOOL hasControllerMessaging;
 @property (nonatomic) BOOL hasErrorCode;
 @property (nonatomic) BOOL hasForNotification;
@@ -73,6 +77,8 @@
 @property (strong, nonatomic) AWDHomeKitCameraSnapshotMessaging *watchMessaging; // @synthesize watchMessaging=_watchMessaging;
 
 - (void).cxx_destruct;
+- (int)StringAsCertified:(id)arg1;
+- (id)certifiedAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

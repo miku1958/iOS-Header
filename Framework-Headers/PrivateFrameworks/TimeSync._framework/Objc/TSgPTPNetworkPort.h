@@ -25,6 +25,7 @@
     BOOL _hasRemoteFrequencyTolerance;
     BOOL _hasLocalFrequencyStability;
     BOOL _hasRemoteFrequencyStability;
+    BOOL _enabled;
     BOOL _overridenReceiveMatching;
     unsigned short _remotePortNumber;
     unsigned short _overridenReceivePortNumber;
@@ -48,6 +49,7 @@
 @property (nonatomic, getter=isASCapable) BOOL asCapable; // @synthesize asCapable=_asCapable;
 @property (readonly, nonatomic) unsigned int connection;
 @property (copy, nonatomic) NSString *destinationAddressString; // @synthesize destinationAddressString=_destinationAddressString;
+@property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL hasLocalFrequencyStability; // @synthesize hasLocalFrequencyStability=_hasLocalFrequencyStability;
 @property (nonatomic) BOOL hasLocalFrequencyTolerance; // @synthesize hasLocalFrequencyTolerance=_hasLocalFrequencyTolerance;
 @property (nonatomic) BOOL hasRemoteFrequencyStability; // @synthesize hasRemoteFrequencyStability=_hasRemoteFrequencyStability;
@@ -82,6 +84,7 @@
 + (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
 - (BOOL)_commonInitWithService:(unsigned int)arg1;
 - (id)_destinationAddressString;
+- (BOOL)_enabled;
 - (BOOL)_hasLocalFrequencyStability;
 - (BOOL)_hasLocalFrequencyTolerance;
 - (BOOL)_hasRemoteFrequencyStability;
@@ -113,6 +116,8 @@
 - (unsigned char)_remoteTimestampingMode;
 - (id)_sourceAddressString;
 - (void)dealloc;
+- (BOOL)disablePortError:(id *)arg1;
+- (BOOL)enablePortError:(id *)arg1;
 - (BOOL)getCurrentPortInfo:(CDStruct_57c52001 *)arg1 error:(id *)arg2;
 - (id)initWithMatchingDictionary:(id)arg1;
 - (id)initWithService:(unsigned int)arg1;

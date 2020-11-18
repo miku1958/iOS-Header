@@ -12,6 +12,7 @@
 @interface _EARSpeechRecognizer : NSObject
 {
     struct unique_ptr<quasar::SpeechRecognizer, std::__1::default_delete<quasar::SpeechRecognizer>> _recognizer;
+    struct unique_ptr<quasar::TextTokenizer, std::__1::default_delete<quasar::TextTokenizer>> _tokenizer;
     _EARSpeechRecognitionAudioBuffer *_currentAudioBuffer;
     _EARFormatter *_formatter;
     NSObject<OS_dispatch_queue> *_formatterQueue;
@@ -51,11 +52,16 @@
 + (id)rawTokenResultsFromRecognitionResults:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (struct TextTokenizer *)_tokenizer;
 - (void)cancelRecognition;
 - (void)getFormatterWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithConfiguration:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 overrideConfigFiles:(id)arg2;
+- (id)initWithConfiguration:(id)arg1 overrideConfigFiles:(id)arg2 generalVoc:(id)arg3 lexiconEnh:(id)arg4 itnEnh:(id)arg5;
 - (id)initWithConfiguration:(id)arg1 overrides:(id)arg2;
 - (id)initWithConfiguration:(id)arg1 overrides:(id)arg2 generalVoc:(id)arg3 lexiconEnh:(id)arg4 itnEnh:(id)arg5;
+- (id)initWithConfiguration:(id)arg1 overrides:(id)arg2 overrideConfigFiles:(id)arg3;
+- (id)initWithConfiguration:(id)arg1 overrides:(id)arg2 overrideConfigFiles:(id)arg3 generalVoc:(id)arg4 lexiconEnh:(id)arg5 itnEnh:(id)arg6;
 - (id)initWithConfiguration:(id)arg1 useQuasarFormatter:(BOOL)arg2;
 - (id)initWithConfiguration:(id)arg1 withGeneralVoc:(id)arg2 withLexiconEnh:(id)arg3 withItnEnh:(id)arg4;
 - (id)initWithConfiguration:(id)arg1 withLanguage:(id)arg2 withSdapiConfig:(id)arg3;
@@ -67,6 +73,7 @@
 - (id)runRecognitionWithResultStream:(id)arg1 language:(id)arg2 task:(id)arg3 samplingRate:(unsigned long long)arg4;
 - (id)runRecognitionWithResultStream:(id)arg1 language:(id)arg2 task:(id)arg3 samplingRate:(unsigned long long)arg4 userProfileData:(id)arg5;
 - (void)setAlternateRawRecognitionTokenSausage:(id)arg1;
+- (void)setLeftContextText:(id)arg1;
 - (void)updateUserProfileData:(id)arg1;
 
 @end

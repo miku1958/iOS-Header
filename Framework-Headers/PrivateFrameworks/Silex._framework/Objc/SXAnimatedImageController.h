@@ -8,13 +8,12 @@
 
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class NSString, SXComponentView, SXImageView;
-@protocol SXPresentationDelegate;
+@class NSString, SXComponentView, SXImageView, SXViewport;
 
 @interface SXAnimatedImageController : NSObject <SXViewportChangeListener>
 {
     BOOL _isReceivingViewportChanges;
-    id<SXPresentationDelegate> _presentationDelegate;
+    SXViewport *_viewport;
     SXImageView *_imageView;
     double _previousYOffset;
     SXComponentView *_componentView;
@@ -26,12 +25,12 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SXImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) BOOL isReceivingViewportChanges; // @synthesize isReceivingViewportChanges=_isReceivingViewportChanges;
-@property (weak, nonatomic) id<SXPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (nonatomic) double previousYOffset; // @synthesize previousYOffset=_previousYOffset;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
 
 - (void).cxx_destruct;
-- (id)initWithImageComponentView:(id)arg1 presentationDelegate:(id)arg2 imageView:(id)arg3;
+- (id)initWithImageComponentView:(id)arg1 viewport:(id)arg2 imageView:(id)arg3;
 - (void)registerForViewportChanges;
 - (void)unregisterForViewportChanges;
 - (void)viewport:(id)arg1 dynamicBoundsDidChangeFromBounds:(struct CGRect)arg2;

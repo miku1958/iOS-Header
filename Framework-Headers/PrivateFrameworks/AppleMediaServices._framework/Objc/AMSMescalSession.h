@@ -24,13 +24,15 @@ __attribute__((visibility("hidden")))
 
 + (id)sessionWithType:(long long)arg1;
 - (void).cxx_destruct;
-- (BOOL)_cacheCertData:(id)arg1;
+- (BOOL)_cacheCertData:(id)arg1 expiration:(double)arg2;
 - (id)_cachedCertData;
+- (id)_cachedCertPath;
 - (id)_establishContextWithContract:(id)arg1 logKey:(id)arg2 error:(id *)arg3;
 - (id)_loadCertificateDataWithContract:(id)arg1 logKey:(id)arg2 error:(id *)arg3;
 - (id)_postExchangeData:(id)arg1 contract:(id)arg2 logKey:(id)arg3 error:(id *)arg4;
 - (void)_resetSession;
 - (BOOL)_shouldRetryFairPlayForError:(id)arg1;
+- (BOOL)_verifyEntitlements;
 - (BOOL)_verifyPrimeResponse:(id)arg1 error:(id *)arg2;
 - (id)initWithType:(long long)arg1;
 - (BOOL)primeTheConnectionWithContract:(id)arg1 logKey:(id)arg2 error:(id *)arg3;

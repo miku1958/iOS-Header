@@ -18,9 +18,11 @@
 @property (strong, nonatomic) PSSpecifier *weeklyTotalSpecifier; // @synthesize weeklyTotalSpecifier=_weeklyTotalSpecifier;
 
 - (void).cxx_destruct;
+- (void)_refreshingDidChange:(BOOL)arg1;
 - (id)getUsageInfo:(id)arg1;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)reloadScreenTimeSummarySpecifier;
 - (void)setCoordinator:(id)arg1;
 - (id)weeklyTotal:(id)arg1;
 

@@ -12,6 +12,8 @@
 + (BOOL)useCourierTime;
 - (long long)__im_nanosecondTimeInterval;
 - (long long)differenceFromDate:(id)arg1;
+- (long long)hoursDifferenceFromDate:(id)arg1;
 - (BOOL)isToday;
+- (long long)minutesDifferenceFromDate:(id)arg1;
 @end
 

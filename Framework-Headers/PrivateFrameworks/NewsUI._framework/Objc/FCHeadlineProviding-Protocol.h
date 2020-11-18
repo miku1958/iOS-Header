@@ -10,7 +10,7 @@
 #import <NewsUI/NFCopying-Protocol.h>
 #import <NewsUI/NSObject-Protocol.h>
 
-@class FCArticleContentManifest, FCCoverArt, FCFeedPersonalizedArticleScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@class FCArticleContentManifest, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
 @protocol FCChannelProviding, FCContentContext, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @protocol FCHeadlineProviding <NSObject, NFCopying, FCFeedElement, FCClassifiable, FCFeedTransformationItem>
@@ -24,6 +24,8 @@
 @property (readonly, nonatomic) NSData *backingArticleRecordData;
 @property (readonly, copy, nonatomic) NSArray *blockedStorefrontIDs;
 @property (readonly, nonatomic, getter=isBoundToContext) BOOL boundToContext;
+@property (readonly, nonatomic, getter=isBundlePaid) BOOL bundlePaid;
+@property (readonly, copy, nonatomic) NSString *callToActionText;
 @property (readonly, copy, nonatomic) NSString *clusterID;
 @property (readonly, nonatomic) unsigned long long contentType;
 @property (readonly, copy, nonatomic) NSURL *contentURL;
@@ -31,8 +33,7 @@
 @property (readonly, nonatomic, getter=isDeleted) BOOL deleted;
 @property (readonly, nonatomic, getter=isDisplayingAsNativeAd) BOOL displayAsNativeAd;
 @property (readonly, copy, nonatomic) NSDate *displayDate;
-@property (readonly, copy, nonatomic) NSArray *endOfArticleTopicIDs;
-@property (copy, nonatomic) FCHeadlineExperimentalTitleMetadata *experimentalTitleMetadata;
+@property (readonly, copy, nonatomic) FCHeadlineExperimentalTitleMetadata *experimentalTitleMetadata;
 @property (readonly, nonatomic, getter=isFeatureCandidate) BOOL featureCandidate;
 @property (readonly, nonatomic) unsigned long long feedOrder;
 @property (readonly, nonatomic) double globalUserFeedback;
@@ -45,10 +46,16 @@
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL isBlockedExplicitContent;
 @property (readonly, nonatomic) BOOL isDraft;
+@property (readonly, nonatomic) BOOL isLocalDraft;
 @property (readonly, nonatomic) BOOL isTopStory;
+@property (readonly, nonatomic, getter=isIssueOnly) BOOL issueOnly;
+@property (readonly, copy, nonatomic) NSString *language;
 @property (readonly, copy, nonatomic) NSDate *lastFetchedDate;
 @property (readonly, copy, nonatomic) NSDate *lastModifiedDate;
+@property (readonly, copy, nonatomic) NSArray *linkedArticleIDs;
+@property (readonly, copy, nonatomic) NSArray *linkedIssueIDs;
 @property (readonly, copy, nonatomic) NSString *localDraftPath;
+@property (readonly, copy, nonatomic) FCIssue *masterIssue;
 @property (readonly, nonatomic) long long minimumNewsVersion;
 @property (readonly, copy, nonatomic) NSArray *moreFromPublisherArticleIDs;
 @property (readonly, nonatomic) BOOL needsRapidUpdates;
@@ -59,9 +66,12 @@
 @property (readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
 @property (readonly, copy, nonatomic) NSString *referencedArticleID;
 @property (readonly, copy, nonatomic) NSArray *relatedArticleIDs;
-@property (readonly, nonatomic) FCFeedPersonalizedArticleScoreProfile *scoreProfile;
+@property (readonly, nonatomic) unsigned long long role;
+@property (readonly, nonatomic) FCFeedPersonalizedItemScoreProfile *scoreProfile;
 @property (readonly, copy, nonatomic) NSString *shortExcerpt;
+@property (readonly, nonatomic) BOOL showBundleSoftPaywall;
 @property (readonly, nonatomic) BOOL showMinimalChrome;
+@property (readonly, nonatomic) BOOL showPublisherLogo;
 @property (readonly, nonatomic) BOOL showSubscriptionRequiredText;
 @property (readonly, copy, nonatomic) id<FCChannelProviding> sourceChannel;
 @property (readonly, copy, nonatomic) NSString *sourceName;

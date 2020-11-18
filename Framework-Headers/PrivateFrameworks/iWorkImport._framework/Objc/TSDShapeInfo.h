@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 pathSource:(id)arg4;
 - (BOOL)isAllowedInFreehandDrawings;
+- (BOOL)isAutosizingTextBox;
 - (BOOL)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (BOOL)isLine;
 - (BOOL)isOpenPath;

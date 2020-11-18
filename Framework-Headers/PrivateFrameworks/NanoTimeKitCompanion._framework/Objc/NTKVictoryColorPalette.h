@@ -21,12 +21,14 @@
     UIColor *_digitalComplicationsColor;
     UIColor *_digitalComplicationsPlatterColor;
     UIColor *_platterColor;
+    unsigned long long _bleed;
     UIColor *_backgroundColor;
 }
 
 @property (readonly, nonatomic) UIColor *analogComplicationsColor; // @synthesize analogComplicationsColor=_analogComplicationsColor;
 @property (readonly, nonatomic) UIColor *analogDotColor; // @synthesize analogDotColor=_analogDotColor;
 @property (readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (readonly, nonatomic) unsigned long long bleed; // @synthesize bleed=_bleed;
 @property (readonly, nonatomic) UIColor *digitalComplicationsColor; // @synthesize digitalComplicationsColor=_digitalComplicationsColor;
 @property (readonly, nonatomic) UIColor *digitalComplicationsPlatterColor; // @synthesize digitalComplicationsPlatterColor=_digitalComplicationsPlatterColor;
 @property (readonly, nonatomic) UIColor *handInlayColor; // @synthesize handInlayColor=_handInlayColor;

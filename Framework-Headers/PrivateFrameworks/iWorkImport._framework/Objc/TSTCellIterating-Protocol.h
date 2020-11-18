@@ -6,12 +6,12 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class TSTInfo;
+@class TSTTableInfo;
 @protocol TSTCellIteratorData;
 
 @protocol TSTCellIterating <NSObject>
 
-@property (readonly, strong, nonatomic) TSTInfo *tableInfo;
+@property (readonly, strong, nonatomic) TSTTableInfo *tableInfo;
 
 - (BOOL)getNextCellData:(id *)arg1;
 - (void)iterateCellsUsingBlock:(void (^)(id<TSTCellIteratorData>, BOOL *))arg1;

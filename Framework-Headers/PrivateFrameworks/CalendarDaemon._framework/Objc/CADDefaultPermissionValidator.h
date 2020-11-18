@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL hasSyncClientEntitlement;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL internalAccessLevelGranted;
+@property (readonly) BOOL shouldTrustClientEnforcedManagedConfigurationAccess;
 @property (readonly) Class superclass;
 @property (readonly) BOOL testingAccessLevelGranted;
 

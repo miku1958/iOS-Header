@@ -46,9 +46,8 @@ __attribute__((visibility("hidden")))
 + (id)instanceWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
 + (id)presetKinds;
 - (void).cxx_destruct;
-- (void)applyToCALayer:(id)arg1 withScale:(double)arg2;
-- (BOOL)canApplyToCALayer;
-- (BOOL)canApplyToCALayerByAddingSublayers;
+- (BOOL)canApplyToRenderable;
+- (BOOL)canApplyToRenderableByAddingSubrenderables;
 - (id)copyWithNewImageData:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -67,7 +66,7 @@ __attribute__((visibility("hidden")))
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (id)p_cachedImageForSize:(struct CGSize)arg1 inContext:(struct CGContext *)arg2 orLayer:(id)arg3;
+- (id)p_cachedImageForSize:(struct CGSize)arg1 inContext:(struct CGContext *)arg2 orContentsScaleProvider:(id)arg3;
 - (void)p_clearTintedImageCache;
 - (void)p_drawBitmapImage:(struct CGImage *)arg1 withOrientation:(long long)arg2 inContext:(struct CGContext *)arg3 bounds:(struct CGRect)arg4;
 - (void)p_drawPDFWithProvider:(id)arg1 inContext:(struct CGContext *)arg2 bounds:(struct CGRect)arg3;
@@ -88,7 +87,6 @@ __attribute__((visibility("hidden")))
 - (id)referenceColor;
 - (struct CGSize)renderedImageSizeForObjectSize:(struct CGSize)arg1;
 - (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
-- (BOOL)shouldBeReappliedToCALayer:(id)arg1;
 - (BOOL)tsch_hasAllResources;
 
 @end

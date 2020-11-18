@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class WebSecurityOriginPrivate;
 @protocol WebQuotaManager;
 
 @interface WebSecurityOrigin : NSObject
 {
-    WebSecurityOriginPrivate *_private;
+    struct WebSecurityOriginPrivate *_private;
     id<WebQuotaManager> _applicationCacheQuotaManager;
     id<WebQuotaManager> _databaseQuotaManager;
 }

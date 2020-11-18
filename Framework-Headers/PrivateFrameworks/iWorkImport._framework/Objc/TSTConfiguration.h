@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
     BOOL _usesWholeChromeResizer;
     BOOL _showsChromeWhileEditingCell;
     BOOL _showsSelectionKnobsWhileEditingCell;
+    BOOL _showsCellWarningIndicator;
     BOOL _supportsCanvasReferenceEditing;
     BOOL _usesLimitedAutomaticFormatParsing;
     BOOL _supportsFormulaEditing;
@@ -82,6 +83,7 @@ __attribute__((visibility("hidden")))
     BOOL _forceZoomInOnBeginEditing;
     BOOL _supportsCategorization;
     BOOL _allowsBlackDragDropBackground;
+    BOOL _supportsAddBodyRowAtBottomSiriKitIntent;
     unsigned int _maxNumberOfRows;
     unsigned int _maxNumberOfColumns;
     unsigned int _maxNumberOfPopulatedCells;
@@ -126,12 +128,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL showReferenceHighlightsOnFormulaCellSelection; // @synthesize showReferenceHighlightsOnFormulaCellSelection=_showReferenceHighlightsOnFormulaCellSelection;
 @property (nonatomic) BOOL showsCellEditingToolbar; // @synthesize showsCellEditingToolbar=_showsCellEditingToolbar;
 @property (nonatomic) BOOL showsCellOverflowIndicator; // @synthesize showsCellOverflowIndicator=_showsCellOverflowIndicator;
+@property (nonatomic) BOOL showsCellWarningIndicator; // @synthesize showsCellWarningIndicator=_showsCellWarningIndicator;
 @property (nonatomic) BOOL showsChromeWhileEditingCell; // @synthesize showsChromeWhileEditingCell=_showsChromeWhileEditingCell;
 @property (nonatomic) BOOL showsHideUnhideUI; // @synthesize showsHideUnhideUI=_showsHideUnhideUI;
 @property (nonatomic) BOOL showsSelectionKnobsWhileEditingCell; // @synthesize showsSelectionKnobsWhileEditingCell=_showsSelectionKnobsWhileEditingCell;
 @property (nonatomic) double structuredTextImportConfidenceThreshold; // @synthesize structuredTextImportConfidenceThreshold=_structuredTextImportConfidenceThreshold;
 @property (nonatomic) double structuredTextImportConfidenceThresholdForCanvas; // @synthesize structuredTextImportConfidenceThresholdForCanvas=_structuredTextImportConfidenceThresholdForCanvas;
 @property (nonatomic) BOOL supportsActionMenu; // @synthesize supportsActionMenu=_supportsActionMenu;
+@property (nonatomic) BOOL supportsAddBodyRowAtBottomSiriKitIntent; // @synthesize supportsAddBodyRowAtBottomSiriKitIntent=_supportsAddBodyRowAtBottomSiriKitIntent;
 @property (nonatomic) BOOL supportsAutoResizedTables; // @synthesize supportsAutoResizedTables=_supportsAutoResizedTables;
 @property (nonatomic) BOOL supportsAutofill; // @synthesize supportsAutofill=_supportsAutofill;
 @property (nonatomic) BOOL supportsAutomaticNumberKeyboard; // @synthesize supportsAutomaticNumberKeyboard=_supportsAutomaticNumberKeyboard;

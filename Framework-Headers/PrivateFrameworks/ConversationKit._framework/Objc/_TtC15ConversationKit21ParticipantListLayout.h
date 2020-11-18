@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic, readonly) struct CGSize collectionViewContentSize;
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;

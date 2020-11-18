@@ -93,6 +93,7 @@
 - (void).cxx_destruct;
 - (struct CGImage *)CGImage;
 - (shared_ptr_bb77cfd9)_backingTexture;
+- (int)_convert_jet_texture_format_to_ci_format:(unsigned int)arg1;
 - (id)_copyImageData;
 - (struct CGImage *)_createCGImage;
 - (void)_ensureImageData;

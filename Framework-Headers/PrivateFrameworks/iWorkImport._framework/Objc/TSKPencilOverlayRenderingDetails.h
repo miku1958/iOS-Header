@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, PKDrawing, TSPData, TSUBezierPath, TSUImage;
+@class TSKPKDrawing, TSKPencilOverlayAnchorSelectionRectangle, TSPData, TSUBezierPath, TSUImage;
 @protocol TSKPencilAnnotationStorage;
 
 __attribute__((visibility("hidden")))
@@ -16,26 +16,26 @@ __attribute__((visibility("hidden")))
     id<TSKPencilAnnotationStorage> _pencilAnnotationStorage;
     TSUImage *_scaledImage;
     TSPData *_dataToInvalidateFromAfterDownload;
-    PKDrawing *_subDrawing;
+    TSKPKDrawing *_subDrawing;
     TSUBezierPath *_transformedPath;
-    NSMutableArray *_mutableUnscaledSelectionRectangles;
+    unsigned long long _pageIndex;
+    TSKPencilOverlayAnchorSelectionRectangle *_unscaledSelectionRectangle;
     struct CGRect _unscaledImageClipRect;
     struct CGRect _unscaledImageFrame;
 }
 
 @property (readonly, nonatomic) TSPData *dataToInvalidateFromAfterDownload; // @synthesize dataToInvalidateFromAfterDownload=_dataToInvalidateFromAfterDownload;
 @property (nonatomic) BOOL isSplit; // @synthesize isSplit=_isSplit;
-@property (strong, nonatomic) NSMutableArray *mutableUnscaledSelectionRectangles; // @synthesize mutableUnscaledSelectionRectangles=_mutableUnscaledSelectionRectangles;
+@property (nonatomic) unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
 @property (strong, nonatomic) id<TSKPencilAnnotationStorage> pencilAnnotationStorage; // @synthesize pencilAnnotationStorage=_pencilAnnotationStorage;
 @property (readonly, nonatomic) TSUImage *scaledImage; // @synthesize scaledImage=_scaledImage;
-@property (strong, nonatomic) PKDrawing *subDrawing; // @synthesize subDrawing=_subDrawing;
+@property (strong, nonatomic) TSKPKDrawing *subDrawing; // @synthesize subDrawing=_subDrawing;
 @property (strong, nonatomic) TSUBezierPath *transformedPath; // @synthesize transformedPath=_transformedPath;
 @property (nonatomic) struct CGRect unscaledImageClipRect; // @synthesize unscaledImageClipRect=_unscaledImageClipRect;
 @property (nonatomic) struct CGRect unscaledImageFrame; // @synthesize unscaledImageFrame=_unscaledImageFrame;
-@property (readonly, nonatomic) NSArray *unscaledSelectionRectangles; // @dynamic unscaledSelectionRectangles;
+@property (strong, nonatomic) TSKPencilOverlayAnchorSelectionRectangle *unscaledSelectionRectangle; // @synthesize unscaledSelectionRectangle=_unscaledSelectionRectangle;
 
 - (void).cxx_destruct;
-- (void)addUnscaledSelectionRectangle:(id)arg1;
 - (BOOL)containsPointForHitTesting:(struct CGPoint)arg1;
 - (id)description;
 - (id)initWithPencilAnnotation:(id)arg1 scaledImage:(id)arg2 dataToInvalidateFromAfterDownload:(id)arg3;

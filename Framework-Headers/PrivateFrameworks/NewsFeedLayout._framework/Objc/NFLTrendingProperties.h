@@ -27,7 +27,7 @@
 - (double)ageLabelToAccessoryLabelSpacingWithTemplate:(id)arg1;
 - (id)bylineFontColorWithTemplate:(id)arg1;
 - (id)bylineFontWithTemplate:(id)arg1;
-- (id)initWithLayout:(id)arg1 columnIrrespectiveProperties:(id)arg2 fontCache:(id)arg3 scaleValue:(double)arg4 headlineScales:(CDStruct_3d2913aa)arg5;
+- (id)initWithLayout:(id)arg1 columnIrrespectiveProperties:(id)arg2 fontCache:(id)arg3 scaleValue:(double)arg4 lineHeightMultiplier:(double)arg5 headlineScales:(CDStruct_3d2913aa)arg6;
 - (id)numberedCircleColor;
 - (double)numberedCircleTitleSpacingWithTemplate:(id)arg1;
 - (double)numberedCircleTopSpacingAboveLogoWithTemplate:(id)arg1;

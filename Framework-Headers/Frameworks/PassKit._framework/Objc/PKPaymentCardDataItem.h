@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) PKPaymentApplication *paymentApplication;
 @property (strong, nonatomic) PKCurrencyAmount *peerPaymentBalance; // @synthesize peerPaymentBalance=_peerPaymentBalance;
 @property (readonly, nonatomic) BOOL requiresBillingAddress;
+@property (readonly, nonatomic) BOOL shouldShowCardArt;
 @property (nonatomic) BOOL showPeerPaymentBalance; // @synthesize showPeerPaymentBalance=_showPeerPaymentBalance;
 
 + (long long)dataType;

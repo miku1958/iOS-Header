@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSUserDefaults.h>
 
 @protocol WeatherPreferencesPersistence;
 
-@interface WeatherInternalPreferences : NSObject
+@interface WeatherInternalPreferences : NSUserDefaults
 {
     id<WeatherPreferencesPersistence> _persistence;
 }
@@ -18,7 +18,6 @@
 
 + (id)sharedInternalPreferences;
 - (void).cxx_destruct;
-- (id)objectForKey:(id)arg1;
 
 @end
 

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 + (Class)classForName:(id)arg1;
 + (id)p_mapOfStrokeNamesToAlternatesForOldVersions;
 + (id)strokeWithName:(id)arg1 color:(id)arg2 width:(double)arg3;
-- (BOOL)canApplyDirectlyToRepCALayer;
+- (BOOL)canApplyDirectlyToRepRenderable;
 - (BOOL)canDrawWithOtherStroke:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

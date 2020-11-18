@@ -7,6 +7,7 @@
 #import <SearchFoundation/SFCardSection.h>
 
 @interface SFCardSection (SUICKPInteractiveCardSectionViewController)
+- (BOOL)_SUICKPInteractiveCardSectionViewController_shouldHandlePunchout;
 - (BOOL)_SUICKPInteractiveCardSectionViewController_shouldRenderButtonOverlay;
 @end
 

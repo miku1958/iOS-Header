@@ -17,13 +17,15 @@
 }
 
 @property (copy, nonatomic) NSString *CTDataConnectionServiceType;
+@property (nonatomic, getter=isJITEnabled) BOOL JITEnabled;
 @property (readonly) struct Object *_apiObject;
 @property (copy, nonatomic) NSArray *additionalReadAccessAllowedURLs;
-@property (nonatomic) BOOL allowsCellularAccess;
 @property (nonatomic) BOOL alwaysKeepAndReuseSwappedProcesses;
 @property (copy, nonatomic) NSArray *alwaysRevalidatedURLSchemes;
 @property (nonatomic) BOOL alwaysRunsAtBackgroundPriority;
+@property (nonatomic) BOOL attrStyleEnabled;
 @property (copy, nonatomic) NSArray *cachePartitionedURLSchemes;
+@property (copy, nonatomic) NSString *customWebContentServiceBundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long diskCacheSizeOverride;
@@ -34,6 +36,7 @@
 @property (nonatomic) unsigned long long maximumProcessCount;
 @property (nonatomic) BOOL pageCacheEnabled;
 @property (nonatomic) int presentingApplicationPID;
+@property (nonatomic) BOOL prewarmsProcessesAutomatically;
 @property (nonatomic) BOOL processSwapsOnNavigation;
 @property (nonatomic) BOOL processSwapsOnWindowOpenWithOpener;
 @property (nonatomic) BOOL shouldCaptureAudioInUIProcess;
@@ -42,6 +45,7 @@
 @property (copy, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressesConnectionTerminationOnSystemChange;
+@property (nonatomic) BOOL usesWebProcessCache;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

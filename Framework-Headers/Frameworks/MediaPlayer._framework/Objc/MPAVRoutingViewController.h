@@ -44,6 +44,7 @@
     BOOL _hasUserSelections;
     unsigned long long _updatesSincePresentation;
     long long _discoveryModeBeforeEnteringBackground;
+    BOOL _sortByIsVideoRoute;
     unsigned long long _style;
     id<MPAVRoutingViewControllerDelegate> _delegate;
     long long _avItemType;
@@ -76,6 +77,7 @@
 @property (nonatomic) unsigned long long iconStyle; // @synthesize iconStyle=_iconStyle;
 @property (nonatomic) unsigned long long mirroringStyle; // @synthesize mirroringStyle=_mirroringStyle;
 @property (strong, nonatomic) NSMapTable *outputDeviceVolumeSliders; // @synthesize outputDeviceVolumeSliders=_outputDeviceVolumeSliders;
+@property (nonatomic) BOOL sortByIsVideoRoute; // @synthesize sortByIsVideoRoute=_sortByIsVideoRoute;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<MPAVRoutingViewControllerThemeDelegate> themeDelegate; // @synthesize themeDelegate=_themeDelegate;
@@ -125,7 +127,7 @@
 - (void)routingCell:(id)arg1 mirroringSwitchValueDidChange:(BOOL)arg2;
 - (void)routingController:(id)arg1 didFailToPickRouteWithError:(id)arg2;
 - (void)routingController:(id)arg1 pickedRoutesDidChange:(id)arg2;
-- (void)routingController:(id)arg1 shouldHijackRoute:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)routingController:(id)arg1 shouldHijackRoute:(id)arg2 alertStyle:(long long)arg3 busyRouteName:(id)arg4 presentingAppName:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

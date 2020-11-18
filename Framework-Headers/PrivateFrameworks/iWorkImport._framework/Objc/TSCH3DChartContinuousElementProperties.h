@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long seriesCount;
 @property (readonly, nonatomic) float shadowCameraDepthLimitAdjustmentFactor; // @synthesize shadowCameraDepthLimitAdjustmentFactor=mShadowCameraDepthLimitAdjustmentFactor;
 
-- (BOOL)applyElementTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3 propertyAccessor:(const struct ChartScenePropertyAccessor *)arg4;
+- (BOOL)applyElementTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(tvec2_3b141483)arg3 propertyAccessor:(id)arg4;
 - (float)chartMinZForScene:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (float)depthForScene:(id)arg1;

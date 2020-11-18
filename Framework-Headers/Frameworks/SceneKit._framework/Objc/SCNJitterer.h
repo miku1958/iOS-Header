@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDelegate:(id)arg1;
 - (BOOL)isAborting;
 - (void)jitter;
+- (id)loadDelegate;
 - (void)restart;
 - (void)stopIfNeeded;
 - (void)update;

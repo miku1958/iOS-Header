@@ -26,6 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL outputObscuredDueToInsufficientExternalProtection;
+@property (nonatomic) BOOL preventsCapture;
 @property (readonly, getter=isReadyForMoreMediaData) BOOL readyForMoreMediaData;
 @property (readonly, nonatomic) long long status;
 @property (readonly) Class superclass;

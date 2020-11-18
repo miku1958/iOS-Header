@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString, NTPBAlternateHeadline;
+@class NSData, NSMutableArray, NSString, NTPBAlternateHeadline, NTPBIssueData, NTPBIssueExposureData, NTPBIssueViewData;
 
 @interface NTPBArticleScroll : PBCodable <NSCopying>
 {
@@ -18,6 +18,9 @@
     NSData *_articleViewingSessionId;
     NSData *_feedViewExposureId;
     NSMutableArray *_fractionalCohortMemberships;
+    NTPBIssueData *_issueData;
+    NTPBIssueExposureData *_issueExposureData;
+    NTPBIssueViewData *_issueViewData;
     NSString *_referencedArticleId;
     int _scrollHostViewType;
     NSString *_scrollVelocity;
@@ -51,6 +54,9 @@
 @property (readonly, nonatomic) BOOL hasArticleSessionId;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
+@property (readonly, nonatomic) BOOL hasIssueData;
+@property (readonly, nonatomic) BOOL hasIssueExposureData;
+@property (readonly, nonatomic) BOOL hasIssueViewData;
 @property (readonly, nonatomic) BOOL hasReferencedArticleId;
 @property (nonatomic) BOOL hasScrollHostViewType;
 @property (readonly, nonatomic) BOOL hasScrollVelocity;
@@ -61,6 +67,9 @@
 @property (nonatomic) BOOL hasVerticalScrollPositionEnding;
 @property (readonly, nonatomic) BOOL hasVerticalScrollPositionStart;
 @property (nonatomic) BOOL hasVerticalScrollPositionStarting;
+@property (strong, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
+@property (strong, nonatomic) NTPBIssueExposureData *issueExposureData; // @synthesize issueExposureData=_issueExposureData;
+@property (strong, nonatomic) NTPBIssueViewData *issueViewData; // @synthesize issueViewData=_issueViewData;
 @property (strong, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property (nonatomic) int scrollHostViewType; // @synthesize scrollHostViewType=_scrollHostViewType;
 @property (strong, nonatomic) NSString *scrollVelocity; // @synthesize scrollVelocity=_scrollVelocity;

@@ -24,6 +24,8 @@
     BOOL _proxyGroupPlayer;
     BOOL _canRelayCommunicationChannel;
     BOOL _supportsBufferedAirPlay;
+    BOOL _supportsRapport;
+    BOOL _isAddedToHomeKit;
     BOOL _deviceGroupable;
     BOOL _pickedOnPairedDevice;
     BOOL _hasBatteryLevel;
@@ -72,6 +74,7 @@
 @property (readonly, nonatomic, getter=isGroupLeader) BOOL groupLeader; // @synthesize groupLeader=_groupLeader;
 @property (readonly, nonatomic, getter=isGroupable) BOOL groupable; // @synthesize groupable=_groupable;
 @property (readonly, nonatomic) BOOL hasBatteryLevel; // @synthesize hasBatteryLevel=_hasBatteryLevel;
+@property (readonly, nonatomic) BOOL isAddedToHomeKit; // @synthesize isAddedToHomeKit=_isAddedToHomeKit;
 @property (readonly, nonatomic) NSDictionary *jsonEncodableDictionaryRepresentation;
 @property (readonly, nonatomic, getter=isLocalDevice) BOOL localDevice; // @synthesize localDevice=_localDevice;
 @property (readonly, nonatomic) NSString *logicalDeviceID; // @synthesize logicalDeviceID=_logicalDeviceID;
@@ -90,8 +93,10 @@
 @property (readonly, nonatomic) MRAVOutputDeviceSourceInfo *sourceInfo; // @synthesize sourceInfo=_sourceInfo;
 @property (readonly, nonatomic) BOOL supportsBufferedAirPlay; // @synthesize supportsBufferedAirPlay=_supportsBufferedAirPlay;
 @property (readonly, nonatomic) BOOL supportsExternalScreen; // @synthesize supportsExternalScreen=_supportsExternalScreen;
+@property (readonly, nonatomic) BOOL supportsRapport; // @synthesize supportsRapport=_supportsRapport;
 @property (readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;
 @property (nonatomic) float volume; // @synthesize volume=_volume;
+@property (readonly, nonatomic) unsigned int volumeCapabilities;
 @property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable; // @synthesize volumeControlAvailable=_volumeControlAvailable;
 
 + (id)localDeviceLocalizedName;

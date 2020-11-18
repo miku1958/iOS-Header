@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
     unsigned int _GLFormat;
     unsigned int _GLType;
     unsigned int _attachment;
-    struct __IOSurface *_backingSurface;
     NSString *_name;
     NSArray *_textureParameters;
+    struct __IOSurface *_backingSurface;
     struct CGSize _textureSize;
 }
 
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct __IOSurface *backingSurface; // @synthesize backingSurface=_backingSurface;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_textureSize;
+@property (readonly, nonatomic) unsigned int target;
 @property (readonly, nonatomic) NSArray *textureParameters; // @synthesize textureParameters=_textureParameters;
 
 + (id)textureConfigWithSize:(struct CGSize)arg1 attachment:(unsigned int)arg2 textureParameters:(id)arg3 name:(id)arg4;

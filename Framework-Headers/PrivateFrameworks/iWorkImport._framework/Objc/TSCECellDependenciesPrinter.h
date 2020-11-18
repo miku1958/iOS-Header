@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *ownerName; // @synthesize ownerName=_ownerName;
 @property (nonatomic) BOOL showCleanCells; // @synthesize showCleanCells=_showCleanCells;
 
-+ (id)stringForOwnerKind:(int)arg1;
++ (id)stringForOwnerKind:(unsigned short)arg1;
 - (void).cxx_destruct;
 - (void)addDependencyRow:(id)arg1;
 - (id)description;

@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString;
+@class NSData, NSMutableArray, NSString, NTPBChannelData, NTPBIssueData, NTPBIssueExposureData;
 
 @interface NTPBReadingListAddRemove : PBCodable <NSCopying>
 {
@@ -22,7 +22,9 @@
     int _backendArticleVersion;
     NSString *_campaignId;
     NSString *_campaignType;
+    NTPBChannelData *_channelData;
     int _characterCount;
+    int _contentType;
     NSString *_creativeId;
     int _feedType;
     NSMutableArray *_fractionalCohortMemberships;
@@ -33,6 +35,8 @@
     NSString *_iadNativeCampaign;
     NSString *_iadNativeCampaignAd;
     NSString *_iadNativeLine;
+    NTPBIssueData *_issueData;
+    NTPBIssueExposureData *_issueExposureData;
     NSString *_language;
     NSMutableArray *_namedEntities;
     NSString *_nativeCampaignData;
@@ -71,6 +75,7 @@
         unsigned int articleType:1;
         unsigned int backendArticleVersion:1;
         unsigned int characterCount:1;
+        unsigned int contentType:1;
         unsigned int feedType:1;
         unsigned int groupType:1;
         unsigned int nextArticleAffordanceType:1;
@@ -99,7 +104,9 @@
 @property (nonatomic) long long backendArticleVersionInt64; // @synthesize backendArticleVersionInt64=_backendArticleVersionInt64;
 @property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
 @property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
+@property (strong, nonatomic) NTPBChannelData *channelData; // @synthesize channelData=_channelData;
 @property (nonatomic) int characterCount; // @synthesize characterCount=_characterCount;
+@property (nonatomic) int contentType; // @synthesize contentType=_contentType;
 @property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
 @property (strong, nonatomic) NSMutableArray *fractionalCohortMemberships; // @synthesize fractionalCohortMemberships=_fractionalCohortMemberships;
@@ -114,7 +121,9 @@
 @property (nonatomic) BOOL hasBackendArticleVersionInt64;
 @property (readonly, nonatomic) BOOL hasCampaignId;
 @property (readonly, nonatomic) BOOL hasCampaignType;
+@property (readonly, nonatomic) BOOL hasChannelData;
 @property (nonatomic) BOOL hasCharacterCount;
+@property (nonatomic) BOOL hasContentType;
 @property (readonly, nonatomic) BOOL hasCreativeId;
 @property (nonatomic) BOOL hasFeedType;
 @property (nonatomic) BOOL hasFromNextArticleAffordanceTap;
@@ -136,6 +145,8 @@
 @property (nonatomic) BOOL hasIsSearchResultArticle;
 @property (nonatomic) BOOL hasIsTopStoryArticle;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
+@property (readonly, nonatomic) BOOL hasIssueData;
+@property (readonly, nonatomic) BOOL hasIssueExposureData;
 @property (readonly, nonatomic) BOOL hasLanguage;
 @property (readonly, nonatomic) BOOL hasNativeCampaignData;
 @property (nonatomic) BOOL hasNextArticleAffordanceType;
@@ -170,6 +181,8 @@
 @property (nonatomic) BOOL isSearchResultArticle; // @synthesize isSearchResultArticle=_isSearchResultArticle;
 @property (nonatomic) BOOL isTopStoryArticle; // @synthesize isTopStoryArticle=_isTopStoryArticle;
 @property (nonatomic) BOOL isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;
+@property (strong, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
+@property (strong, nonatomic) NTPBIssueExposureData *issueExposureData; // @synthesize issueExposureData=_issueExposureData;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
 @property (strong, nonatomic) NSMutableArray *namedEntities; // @synthesize namedEntities=_namedEntities;
 @property (strong, nonatomic) NSString *nativeCampaignData; // @synthesize nativeCampaignData=_nativeCampaignData;
@@ -195,6 +208,7 @@
 + (Class)namedEntitiesType;
 - (void).cxx_destruct;
 - (int)StringAsArticleType:(id)arg1;
+- (int)StringAsContentType:(id)arg1;
 - (int)StringAsFeedType:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
 - (int)StringAsNextArticleAffordanceType:(id)arg1;
@@ -204,6 +218,7 @@
 - (id)articleTypeAsString:(int)arg1;
 - (void)clearFractionalCohortMemberships;
 - (void)clearNamedEntities;
+- (id)contentTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

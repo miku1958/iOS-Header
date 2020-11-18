@@ -14,12 +14,13 @@
 }
 
 @property (readonly, nonatomic) unsigned long long numberOfCorruptedVideoFrames;
+@property (readonly, nonatomic) unsigned long long numberOfDisplayCompositedVideoFrames;
 @property (readonly, nonatomic) unsigned long long numberOfDroppedVideoFrames;
+@property (readonly, nonatomic) unsigned long long numberOfNonDisplayCompositedVideoFrames;
 @property (readonly, nonatomic) double totalFrameDelay;
 @property (readonly, nonatomic) unsigned long long totalNumberOfVideoFrames;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
 

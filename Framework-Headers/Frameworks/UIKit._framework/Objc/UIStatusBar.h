@@ -16,6 +16,7 @@
 {
     id<UIStatusBarStateProvider> _inProcessProvider;
     BOOL _showsForeground;
+    BOOL _observingDefaults;
     UIStatusBarBackgroundView *_backgroundView;
     UIStatusBarForegroundView *_foregroundView;
     UILabel *_doubleHeightLabel;
@@ -79,6 +80,7 @@
 - (id)_currentComposedData;
 - (id)_currentComposedDataForStyle:(id)arg1;
 - (id)_currentStyleAttributes;
+- (void)_dateTimePreferencesUpdated;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(BOOL)arg3;
 - (id)_doubleHeightStatusStringForStyle:(long long)arg1;
 - (void)_endDisablingRasterizationForReason:(id)arg1;
@@ -143,6 +145,7 @@
 - (void)jiggleLockIcon;
 - (void)layoutSubviews;
 - (void)noteStyleOverridesChangedLocally;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)requestStyle:(long long)arg1 animation:(int)arg2 startTime:(double)arg3 duration:(double)arg4 curve:(long long)arg5;
 - (void)setAction:(id)arg1 forPartWithIdentifier:(id)arg2;

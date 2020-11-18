@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)expressionStringForType:(struct TSCH3DShaderType)arg1;
 - (id)forceLinkageForType:(struct TSCH3DShaderType)arg1;
 - (id)initWithAssigneeLinkage:(id)arg1 statement:(id)arg2 dependees:(id)arg3 program:(id)arg4;
+- (BOOL)isMetal;
 - (id)resolve;
 - (id)resolveDependeesWithPreviousType:(struct TSCH3DShaderType)arg1;
 - (void)setAssigneeScopeToType:(struct TSCH3DShaderVariableScopeType)arg1;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)updateDependeesWithPreviousType:(struct TSCH3DShaderType)arg1;
 - (BOOL)updateLinkageTypeAddVaryingToAdditions:(id)arg1;
 - (id)updateVaryingAssignmentForLinkage:(id)arg1;
+- (id)variableDeclaration;
 - (id)varyingAssignmentForLinkage:(id)arg1;
 
 @end

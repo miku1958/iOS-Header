@@ -12,6 +12,7 @@
 {
     UILabel *_headerLabel;
     UIActivityIndicatorView *_spinner;
+    struct UIEdgeInsets _insets;
     BOOL _showSpinner;
     NSString *_headerText;
 }
@@ -23,7 +24,7 @@
 + (double)sectionHeight;
 - (void).cxx_destruct;
 - (void)_systemTextSizeChanged;
-- (id)initWithFrame:(struct CGRect)arg1 text:(id)arg2 showSpinner:(BOOL)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 text:(id)arg2 showSpinner:(BOOL)arg3 insets:(struct UIEdgeInsets)arg4;
 - (void)layoutSubviews;
 
 @end

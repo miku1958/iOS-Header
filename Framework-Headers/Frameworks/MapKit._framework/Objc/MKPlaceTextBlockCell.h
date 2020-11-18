@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_contentSizeDidChange;
 - (void)_refreshLayoutMargins;
+- (void)infoCardThemeChanged:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutMarginsDidChange;
 - (void)updateConstraints;

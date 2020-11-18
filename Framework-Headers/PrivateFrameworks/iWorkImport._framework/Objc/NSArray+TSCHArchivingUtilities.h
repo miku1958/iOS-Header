@@ -7,9 +7,9 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (TSCHArchivingUtilities)
-- (id)tsch_initTSCHChartGridValuesArrayWithProtobufGridRowArray:(const RepeatedPtrField_b5a3b001 *)arg1;
+- (id)tsch_initTSCHChartGridValuesArrayWithProtobufGridRowArray:(const RepeatedPtrField_36342b27 *)arg1;
 - (id)tsch_initTSCHChartGridValuesWithProtobufGridRow:(const struct GridRow *)arg1;
-- (void)tsch_saveTSCHChartGridValuesArrayToProtobufGridRowArray:(RepeatedPtrField_b5a3b001 *)arg1;
+- (void)tsch_saveTSCHChartGridValuesArrayToProtobufGridRowArray:(RepeatedPtrField_36342b27 *)arg1;
 - (void)tsch_saveTSCHChartGridValuesToProtobufGridRow:(struct GridRow *)arg1;
 @end
 

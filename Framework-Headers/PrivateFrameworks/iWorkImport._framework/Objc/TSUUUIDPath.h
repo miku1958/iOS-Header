@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *uuids; // @synthesize uuids=_uuids;
 
 + (id)lastUUIDFromUUIDPathString:(id)arg1;
++ (id)tokenizeUUIDPathString:(id)arg1;
 - (void).cxx_destruct;
 - (id)UUIDPathByAppendingUUID:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

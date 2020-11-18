@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
-+ (int)attributeArrayKind;
++ (unsigned long long)attributeArrayKind;
 - (void).cxx_destruct;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (BOOL)changesWithPageCount;

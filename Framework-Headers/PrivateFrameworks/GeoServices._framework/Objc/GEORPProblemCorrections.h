@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPCorrectedCoordinate, GEORPCorrectedLabel, GEORPCorrectedSearch, GEORPDirectionsProblem, GEORPMapLocation, GEORPPlaceProblem, NSMutableArray, NSString;
+@class GEORPCorrectedCoordinate, GEORPCorrectedLabel, GEORPCorrectedSearch, GEORPDirectionsProblem, GEORPMapLocation, GEORPMerchantLookupCorrections, GEORPPlaceProblem, NSMutableArray, NSString;
 
 @interface GEORPProblemCorrections : PBCodable <NSCopying>
 {
@@ -20,6 +20,7 @@
     GEORPMapLocation *_correctedMapLocation;
     GEORPCorrectedSearch *_correctedSearch;
     GEORPDirectionsProblem *_directionsProblem;
+    GEORPMerchantLookupCorrections *_merchantLookupCorrections;
     NSMutableArray *_photoWithMetadatas;
     GEORPPlaceProblem *_placeProblem;
     BOOL _delayed;
@@ -44,7 +45,9 @@
 @property (readonly, nonatomic) BOOL hasCorrectedSearch;
 @property (nonatomic) BOOL hasDelayed;
 @property (readonly, nonatomic) BOOL hasDirectionsProblem;
+@property (readonly, nonatomic) BOOL hasMerchantLookupCorrections;
 @property (readonly, nonatomic) BOOL hasPlaceProblem;
+@property (strong, nonatomic) GEORPMerchantLookupCorrections *merchantLookupCorrections; // @synthesize merchantLookupCorrections=_merchantLookupCorrections;
 @property (strong, nonatomic) NSMutableArray *photoWithMetadatas; // @synthesize photoWithMetadatas=_photoWithMetadatas;
 @property (strong, nonatomic) GEORPPlaceProblem *placeProblem; // @synthesize placeProblem=_placeProblem;
 

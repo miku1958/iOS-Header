@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class TSCH3DGLContext, TSCH3DRenderProcessor, TSCH3DSession;
+@class TSCH3DContext, TSCH3DRenderProcessor, TSCH3DSession;
 
 __attribute__((visibility("hidden")))
 @interface TSCH3DRenderPipeline : NSObject
@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     TSCH3DSession *mSession;
 }
 
-@property (readonly, nonatomic) TSCH3DGLContext *context;
+@property (readonly, nonatomic) TSCH3DContext *context;
 @property (strong, nonatomic) TSCH3DRenderProcessor *processor; // @synthesize processor=mProcessor;
 @property (readonly, nonatomic) TSCH3DSession *session; // @synthesize session=mSession;
 

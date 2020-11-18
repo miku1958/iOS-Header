@@ -22,7 +22,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSUBezierPath *interiorClippingPath; // @synthesize interiorClippingPath=_interiorClippingPath;
 @property (nonatomic) double viewScale; // @synthesize viewScale=_viewScale;
 
++ (id)correctionAndDictationMarkColor;
++ (id)grammarMarkColor;
++ (void)initialize;
 + (struct __CTFont *)invisiblesFont;
++ (id)spellingMarkColor;
 - (void).cxx_destruct;
 - (struct CGSize)convertSizeToDeviceSpace:(struct CGSize)arg1;
 - (void)dealloc;
@@ -44,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)p_drawInvisiblesAdornments:(id)arg1 lineFragment:(const struct TSWPLineFragment *)arg2 state:(const struct TSWPDrawingState *)arg3;
 - (void)p_drawInvisiblesBreakLine:(id)arg1 lineFragment:(const struct TSWPLineFragment *)arg2 state:(const struct TSWPDrawingState *)arg3;
 - (void)p_drawListLabelForFragment:(const struct TSWPLineFragment *)arg1 drawingState:(const struct TSWPDrawingState *)arg2 lineDrawFlags:(unsigned int)arg3;
-- (void)p_drawTextInRunsForLine:(struct __CTLine *)arg1 fragment:(const struct TSWPLineFragment *)arg2 state:(const struct TSWPDrawingState *)arg3 tateChuYoko:(BOOL)arg4 baseRange:(struct _NSRange)arg5 isFirstLineRef:(BOOL)arg6;
+- (void)p_drawTextInRunsForLine:(struct TSWPLineRef)arg1 fragment:(const struct TSWPLineFragment *)arg2 state:(const struct TSWPDrawingState *)arg3 tateChuYoko:(BOOL)arg4 baseRange:(struct _NSRange)arg5 isFirstLineRef:(BOOL)arg6;
 - (void)p_drawWordMarkingsForFragment:(const struct TSWPLineFragment *)arg1 color:(id)arg2 ranges:(id)arg3 suppressRange:(struct _NSRange)arg4 drawingState:(const struct TSWPDrawingState *)arg5;
 - (void)p_setCTMAndTextPositionForFragment:(const struct TSWPLineFragment *)arg1;
 - (BOOL)p_shouldClipFragment:(const struct TSWPLineFragment *)arg1 drawingState:(const struct TSWPDrawingState *)arg2 lineDrawFlags:(unsigned int)arg3 updateRect:(struct CGRect)arg4 outClipRect:(struct CGRect *)arg5;

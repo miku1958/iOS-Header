@@ -23,7 +23,7 @@
 
 + (id)elementWithContainer:(id)arg1 shape:(long long)arg2 labelBlock:(CDUnknownBlockType)arg3 frameBlock:(CDUnknownBlockType)arg4 pathBlock:(CDUnknownBlockType)arg5 activateBlock:(CDUnknownBlockType)arg6;
 - (void).cxx_destruct;
-- (int)_accessibilityScannerActivateBehavior;
+- (long long)_accessibilityScannerActivateBehavior;
 - (BOOL)accessibilityActivate;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;

@@ -9,6 +9,7 @@
 @interface GEOFeatureStyleAttributes (MapKitExtras)
 + (id)annotationViewProvidedCustomFeatureStyleAttributes;
 + (id)genericMarkerStyleAttributes;
++ (id)genericServiceStyleAttributes;
 + (id)markerStyleAttributes;
 + (id)styleAttributesForCalloutWithAttributes:(id)arg1;
 + (id)styleAttributesForDraggingWithAttributes:(id)arg1;

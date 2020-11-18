@@ -25,7 +25,6 @@
     BOOL _cachedIsActive;
     BOOL _cachedIsHotmailAccount;
     BOOL _cachedCalendarEnabled;
-    BOOL _cachedSecureMIMEEnabled;
     BOOL _cachedPerMessageEncryptionEnabled;
     BOOL _cachedSecureMIMEShouldSign;
     BOOL _cachedSecureMIMEShouldEncrypt;
@@ -109,6 +108,7 @@
 - (void)cancelSearchQuery:(id)arg1;
 - (void)changePushedMailboxUidsAdded:(id)arg1 deleted:(id)arg2;
 - (id)copyDataForRemoteEncryptionCertificatesForAddress:(id)arg1 error:(id *)arg2;
+- (id)copyDataForRemoteEncryptionCertificatesForAddresses:(id)arg1 errors:(id *)arg2;
 - (unsigned int)daysToSync;
 - (void)dealloc;
 - (id)deliveryAccount;
@@ -139,7 +139,7 @@
 - (id)moveMessages:(id)arg1 fromMailbox:(id)arg2 toMailbox:(id)arg3 markAsRead:(BOOL)arg4;
 - (BOOL)needsRemoteSearchResultsVerification;
 - (BOOL)newMailboxNameIsAcceptable:(id)arg1 reasonForFailure:(id *)arg2;
-- (BOOL)perMessageEncryptionEnabled;
+- (BOOL)perMessageEncryptionEnabledForAddress:(id)arg1;
 - (BOOL)performRequests:(id)arg1 mailbox:(id)arg2 consumers:(id)arg3;
 - (void)performSearchQuery:(id)arg1;
 - (id)primaryMailboxUid;
@@ -155,7 +155,6 @@
 - (BOOL)restrictedFromTransferingMessagesToOtherAccounts;
 - (int)secureCompositionEncryptionPolicyForAddress:(id)arg1;
 - (int)secureCompositionSigningPolicyForAddress:(id)arg1;
-- (BOOL)secureMIMEEnabled;
 - (void)setDAAccount:(id)arg1;
 - (void)setEncryptionIdentityPersistentReference:(id)arg1 forAddress:(id)arg2;
 - (void)setSigningIdentityPersistentReference:(id)arg1 forAddress:(id)arg2;

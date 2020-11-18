@@ -23,6 +23,7 @@
     int _deviceAvailabilityNotifyToken;
     BOOL _deviceAvailabilityOverrideState;
     BOOL _fetchAvailableRoutesSynchronously;
+    BOOL _representsLongFormVideoContent;
     id<MPAVRoutingControllerDelegate> _delegate;
     MPAVRoutingDataSource *_dataSource;
     NSString *_name;
@@ -31,6 +32,8 @@
     long long _routeTypes;
     MPAVRoute *_legacyCachedRoute;
     id<MPAVOutputDevicePlaybackDataSource> _playbackDataSource;
+    NSString *_presentedBundleID;
+    NSString *_representedBundleID;
 }
 
 @property (readonly, copy, nonatomic) NSArray *availableRoutes;
@@ -48,6 +51,9 @@
 @property (readonly, nonatomic) MPAVRoute *pickedRoute;
 @property (readonly, nonatomic) NSArray *pickedRoutes;
 @property (weak, nonatomic) id<MPAVOutputDevicePlaybackDataSource> playbackDataSource; // @synthesize playbackDataSource=_playbackDataSource;
+@property (copy, nonatomic) NSString *presentedBundleID; // @synthesize presentedBundleID=_presentedBundleID;
+@property (copy, nonatomic) NSString *representedBundleID; // @synthesize representedBundleID=_representedBundleID;
+@property (readonly, nonatomic) BOOL representsLongFormVideoContent; // @synthesize representsLongFormVideoContent=_representsLongFormVideoContent;
 @property (nonatomic) long long routeTypes; // @synthesize routeTypes=_routeTypes;
 @property (readonly, nonatomic) BOOL supportsMultipleSelection;
 @property (readonly, nonatomic) BOOL volumeControlIsAvailable;
@@ -57,6 +63,7 @@
 + (void)_getActiveRouteWithTimeout:(double)arg1 discoveredRoutes:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)_iconImageForRoute:(id)arg1;
 + (id)_sharedSerialQueue;
++ (BOOL)bundleIdRepresentsLongFormVideoContent:(id)arg1;
 + (void)getActiveRouteWithCompletion:(CDUnknownBlockType)arg1;
 + (void)getActiveRouteWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)setActiveRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;

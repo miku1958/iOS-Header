@@ -28,7 +28,8 @@ __attribute__((visibility("hidden")))
 - (id)effects;
 - (void)enumerateEffectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)inject:(id)arg1;
+- (void)injectGLSLInto:(id)arg1 context:(id)arg2;
+- (void)injectMetalShaderInto:(id)arg1 context:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isSectionEnabled:(int)arg1;
 - (void)prependEffect:(id)arg1;

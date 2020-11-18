@@ -72,7 +72,6 @@
 - (void)operationWillStart;
 - (void)start;
 - (id)stateDescription;
-- (void)waitUntilFinished;
 - (BOOL)whenStateIs:(int)arg1 atomicallySwapWith:(int)arg2;
 
 @end

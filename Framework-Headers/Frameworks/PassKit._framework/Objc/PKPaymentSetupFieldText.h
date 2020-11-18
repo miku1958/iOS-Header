@@ -14,12 +14,16 @@
     BOOL _secureVisibleText;
     BOOL _numeric;
     BOOL _luhnCheck;
+    BOOL _keepPaddingCharactersForSubmission;
     unsigned long long _minLength;
     unsigned long long _maxLength;
+    NSString *_currencyCode;
     NSString *_displayFormatPlaceholder;
 }
 
+@property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property (copy, nonatomic) NSString *displayFormatPlaceholder; // @synthesize displayFormatPlaceholder=_displayFormatPlaceholder;
+@property (nonatomic) BOOL keepPaddingCharactersForSubmission; // @synthesize keepPaddingCharactersForSubmission=_keepPaddingCharactersForSubmission;
 @property (nonatomic, getter=useLuhnCheck) BOOL luhnCheck; // @synthesize luhnCheck=_luhnCheck;
 @property (nonatomic) unsigned long long maxLength; // @synthesize maxLength=_maxLength;
 @property (nonatomic) unsigned long long minLength; // @synthesize minLength=_minLength;
@@ -28,6 +32,8 @@
 @property (nonatomic, getter=isSecureVisibleText) BOOL secureVisibleText; // @synthesize secureVisibleText=_secureVisibleText;
 
 - (void).cxx_destruct;
+- (id)_submissionStringForValue:(id)arg1;
+- (id)allowedCharacters;
 - (id)displayFormatPaddingCharacters;
 - (id)displayFormatPaddingPrefix;
 - (id)displayString;
@@ -36,7 +42,6 @@
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
 - (void)setCurrentValue:(id)arg1;
 - (id)stringByApplyingDisplayFormat:(id)arg1;
-- (id)submissionString;
 - (BOOL)submissionStringMeetsAllRequirements;
 - (void)updateDisplayFormat:(id)arg1;
 - (void)updateWithConfiguration:(id)arg1;

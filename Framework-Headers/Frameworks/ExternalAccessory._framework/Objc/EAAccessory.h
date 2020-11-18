@@ -75,6 +75,7 @@
 - (int)locationSentenceTypesMask;
 - (id)macAddress;
 - (BOOL)pointOfInterestHandoffEnabled;
+- (id)ppid;
 - (id)preferredApp;
 - (void)requestIAPAccessoryWiFiCredentials;
 - (void)resetIAPTimeSyncKalmanFilter;

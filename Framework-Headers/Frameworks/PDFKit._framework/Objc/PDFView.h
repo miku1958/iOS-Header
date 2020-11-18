@@ -74,6 +74,7 @@
 - (void)_setupPageViewController;
 - (BOOL)_shouldHandleAnnotationAtLocation:(struct CGPoint)arg1;
 - (void)_syncPageIndexToScrollView;
+- (void)_tileRefresh;
 - (struct CGAffineTransform)_transformFromPageToPageView:(id)arg1;
 - (struct CGAffineTransform)_transformFromPageViewToPage:(id)arg1;
 - (double)_unboundAutoScaleFactorForPage:(id)arg1;
@@ -95,8 +96,8 @@
 - (double)autoScaleFactor;
 - (double)autoScaleFactorForPage:(id)arg1;
 - (double)autoScaleFactorForPageWithSize:(struct CGSize)arg1;
-- (struct CGSize)autoScalePageSize;
 - (BOOL)automaticallyHandleGutter;
+- (BOOL)backgroundImagesEnabled;
 - (void)beginPDFViewRotation;
 - (void)callPageVisibilityDelegateMethod:(int)arg1 forPageView:(id)arg2 atPageIndex:(unsigned long long)arg3;
 - (void)callPageVisibilityDelegateMethodForOverlayAdaptorOnly:(int)arg1 forPageView:(id)arg2 atPageIndex:(unsigned long long)arg3;
@@ -126,7 +127,6 @@
 - (void)documentDidEndWrite:(id)arg1;
 - (struct UIEdgeInsets)documentMargins;
 - (id)documentScrollView;
-- (struct CGPoint)documentViewCenterBeforeRotation;
 - (id)documentViewController;
 - (struct CGRect)documentViewFrustumForSelection:(id)arg1;
 - (void)documentWasUnlocked;
@@ -138,6 +138,7 @@
 - (void)drawAccessibilityNodeType:(int)arg1 enableDrawing:(BOOL)arg2;
 - (void)drawPage:(id)arg1 toContext:(struct CGContext *)arg2;
 - (void)drawPagePost:(id)arg1 toContext:(struct CGContext *)arg2;
+- (void)enableBackgroundImages:(BOOL)arg1;
 - (BOOL)enableSelectionDrawing;
 - (void)enableTextSelectionHandles;
 - (void)encodeWithCoder:(id)arg1;
@@ -145,7 +146,6 @@
 - (void)endPDFViewRotation;
 - (struct CGRect)extendedRootViewBounds;
 - (struct CGRect)extensionViewBoundsInDocument;
-- (struct CGRect)extensionViewFrame;
 - (double)extensionViewZoomScale;
 - (void)findVisiblePages;
 - (BOOL)flipsTileContents;
@@ -175,7 +175,6 @@
 - (BOOL)handleTabInTextWidget:(id)arg1;
 - (void)hintScrollDirectionHorizontal:(unsigned long long)arg1 andVertical:(unsigned long long)arg2;
 - (id)history;
-- (double)horizontalScaleFactorBeforeRotation;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)interactWithAnnotation:(id)arg1;
@@ -229,6 +228,7 @@
 - (void)setAkAnnotationEditingEnabled:(BOOL)arg1;
 - (void)setAkToolbarViewItemTintColor:(id)arg1;
 - (void)setAkToolbarViewTintColor:(id)arg1;
+- (void)setBackgroundImage:(id)arg1 forPage:(id)arg2;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setCurrentSelection:(id)arg1 animate:(BOOL)arg2;
 - (void)setCurrentSelectionNoClear:(id)arg1;
@@ -240,8 +240,6 @@
 - (void)setEnablePageShadows:(BOOL)arg1;
 - (void)setEnableSelectionDrawing:(BOOL)arg1;
 - (void)setEnableTileUpdates:(BOOL)arg1;
-- (void)setExtensionViewFrame:(struct CGRect)arg1;
-- (void)setExtensionViewInsets:(struct UIEdgeInsets)arg1;
 - (void)setForcesTopAlignment:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setGreekingThreshold:(double)arg1;
@@ -273,7 +271,7 @@
 - (id)tapGestureRecognizer;
 - (int)textSelectionState;
 - (void)updateCurrentPageUsingViewCenter;
-- (void)updatePDFViewLayout:(struct CGRect)arg1 boundsInView:(struct CGRect)arg2 scrollViewFrame:(struct CGRect)arg3 zoomScale:(double)arg4;
+- (void)updatePDFViewLayout:(struct CGRect)arg1 scrollViewFrame:(struct CGRect)arg2 zoomScale:(double)arg3;
 - (void)usePageViewController:(BOOL)arg1 withViewOptions:(id)arg2;
 - (BOOL)usesPageLabels;
 - (id)viewForPage:(id)arg1;

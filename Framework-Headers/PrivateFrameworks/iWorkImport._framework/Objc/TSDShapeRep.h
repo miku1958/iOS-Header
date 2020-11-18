@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
     double mOverriddenValue;
     struct CGRect mLastDynamicInvalidRect;
     BOOL mFillChanged;
-    BOOL mShouldForceLayerGeometryUpdate;
+    BOOL mShouldForceRenderableGeometryUpdate;
     BOOL mIsInvisibleCacheValid;
     BOOL mIsInvisibleCache;
     BOOL mNeedsDisplay;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) BOOL isMoreOptimalToDrawWithOtherShapeRepsIfPossible;
+@property (readonly, nonatomic) BOOL isPartiallyAnimated;
 @property (readonly, nonatomic) TSDShapeInfo *shapeInfo;
 @property (readonly, nonatomic) TSDShapeLayout *shapeLayout;
 @property (readonly, nonatomic) double strokeEnd;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)drawInContext:(struct CGContext *)arg1 usingPathOverride:(id)arg2 patternOffsetsBySubpathOverride:(id)arg3 transparencyLayersBySubpath:(id)arg4;
 - (void)drawInContextWithoutEffects:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6 keepingChildrenPassingTest:(CDUnknownBlockType)arg7;
 - (void)drawInLayerContext:(struct CGContext *)arg1;
+- (void)dynamicOverrideDidChange;
 - (struct CGRect)frameInUnscaledCanvas;
 - (id)imageOfStroke:(struct CGRect *)arg1;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
@@ -68,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)p_isInsidePlayingFreehandDrawing;
 - (BOOL)p_isNormalShapeInsideFreehandDrawing;
 - (BOOL)p_shouldDrawStrokeWide:(id)arg1;
+- (BOOL)p_shouldUpgradeStrokeForPlayback:(id)arg1;
 - (id)p_strokeForRenderingIncludingPlaybackFromStroke:(id)arg1;
 - (void)recursivelyDrawChildrenInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (void)setTextureAttributes:(id)arg1 textureBounds:(struct CGRect)arg2;

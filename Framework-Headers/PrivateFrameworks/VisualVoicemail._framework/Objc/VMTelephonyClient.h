@@ -44,6 +44,7 @@
 - (void)performAtomicAccessorBlock:(CDUnknownBlockType)arg1;
 - (void)performAtomicDelegateBlock:(CDUnknownBlockType)arg1;
 - (void)removeDelegate:(id)arg1;
+- (void)subscriberCountryCodeDidChange:(id)arg1;
 - (void)subscriptionInfoDidChange;
 
 @end

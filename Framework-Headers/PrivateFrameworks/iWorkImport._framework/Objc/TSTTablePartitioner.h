@@ -8,12 +8,12 @@
 
 #import <iWorkImport/TSDPartitioner-Protocol.h>
 
-@class NSMutableDictionary, TSDInfoGeometry, TSTInfo, TSTLayout, TSUPointerKeyDictionary;
+@class NSMutableDictionary, TSDInfoGeometry, TSTLayout, TSTTableInfo, TSUPointerKeyDictionary;
 
 __attribute__((visibility("hidden")))
 @interface TSTTablePartitioner : NSObject <TSDPartitioner>
 {
-    TSTInfo *mTableInfo;
+    TSTTableInfo *mTableInfo;
     TSDInfoGeometry *mInfoGeometry;
     BOOL mTableIsLTR;
     BOOL mLayoutIsLTR;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL scaleIsValid;
 @property (nonatomic) struct CGSize scaleToFit; // @synthesize scaleToFit=mScaleToFit;
 @property (readonly, nonatomic) TSTLayout *scaledLayout;
-@property (readonly, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=mTableInfo;
+@property (readonly, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=mTableInfo;
 
 - (void)dealloc;
 - (BOOL)didHint:(id)arg1 syncWithNextHint:(id)arg2 horizontally:(BOOL)arg3 delta:(int)arg4;

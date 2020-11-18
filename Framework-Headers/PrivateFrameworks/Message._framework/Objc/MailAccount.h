@@ -199,6 +199,7 @@
 - (void)changePushedMailboxUidsAdded:(id)arg1 deleted:(id)arg2;
 - (id)connectionError;
 - (id)copyDataForRemoteEncryptionCertificatesForAddress:(id)arg1 error:(id *)arg2;
+- (id)copyDataForRemoteEncryptionCertificatesForAddresses:(id)arg1 errors:(id *)arg2;
 - (id)customSignature;
 - (void)dealloc;
 - (id)defaultEmailAddress;
@@ -268,7 +269,7 @@
 - (void)nowWouldBeAGoodTimeToStartBackgroundSynchronization;
 - (BOOL)ownsMailboxUidWithURL:(id)arg1;
 - (id)path;
-- (BOOL)perMessageEncryptionEnabled;
+- (BOOL)perMessageEncryptionEnabledForAddress:(id)arg1;
 - (void)persistentAccountDidChange:(id)arg1 previousAccount:(id)arg2;
 - (id)persistentNameForMailbox:(id)arg1;
 - (id)powerAssertionIdentifierWithPrefix:(id)arg1;
@@ -295,7 +296,6 @@
 - (void)saveState;
 - (int)secureCompositionEncryptionPolicyForAddress:(id)arg1;
 - (int)secureCompositionSigningPolicyForAddress:(id)arg1;
-- (BOOL)secureMIMEEnabled;
 - (void)setActive:(BOOL)arg1;
 - (void)setCachePolicy:(int)arg1;
 - (void)setCanUseCarrierDeliveryFallback:(BOOL)arg1;

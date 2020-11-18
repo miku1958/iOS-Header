@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (id)initWithBookLibraryProxy:(CDUnknownBlockType)arg1;
 - (id)initWithBookLibraryProxy:(CDUnknownBlockType)arg1 includeImages:(BOOL)arg2;
+- (id)initWithBookLibraryProxy:(CDUnknownBlockType)arg1 request:(id)arg2 error:(id *)arg3;
 - (BOOL)isAsynchronous;
 - (void)main;
 - (void)parseBookMetadataOperationDidFail:(id)arg1;

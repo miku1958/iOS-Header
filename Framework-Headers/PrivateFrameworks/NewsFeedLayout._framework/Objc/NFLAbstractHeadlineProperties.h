@@ -21,6 +21,7 @@
 - (double)_excerptTopOffsetWithTemplate:(id)arg1;
 - (double)_titleFontSizeWithTemplate:(id)arg1;
 - (double)_titleTopOffsetWithTemplate:(id)arg1;
+- (double)accessoryViewToBottomSpacing;
 - (double)ageLabelToAccessoryLabelSpacingWithTemplate:(id)arg1;
 - (BOOL)allowsExcerpt;
 - (BOOL)allowsExcerptInForYou;
@@ -32,14 +33,18 @@
 - (id)excerptFontNameWithTemplate:(id)arg1;
 - (id)excerptFontWithTemplate:(id)arg1;
 - (double)excerptLineHeightWithTemplate:(id)arg1;
+- (double)excerptToAccessorySpacing;
 - (double)excerptToAccessorySpacingWithTemplate:(id)arg1;
+- (double)imageToTitleSpacing;
 - (double)publisherLogoHeight;
 - (double)publisherLogoToTitleSpacingWithTemplate:(id)arg1;
 - (long long)rowSpan;
+- (double)segmentViewHeight;
 - (id)titleFontNameWithTemplate:(id)arg1;
 - (id)titleFontWithTemplate:(id)arg1;
 - (double)titleLineHeightWithTemplate:(id)arg1;
 - (double)titleToAccessorySpacingWithTemplate:(id)arg1;
+- (double)titleToExcerptSpacing;
 - (double)titleToExcerptSpacingWithTemplate:(id)arg1;
 
 @end

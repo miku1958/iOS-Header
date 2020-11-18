@@ -16,6 +16,7 @@
     PKPeerPayment3DTextView *_renderView;
     BOOL _renderViewRemovedByLossOfWindow;
     BOOL _snapshotInProgress;
+    BOOL _usedForSnapshotting;
     UILabel *_messageLabel;
     UILabel *_statusLabel;
     UIActivityIndicatorView *_actionSpinner;
@@ -83,6 +84,7 @@
 - (void)didMoveToWindow;
 - (id)generatedSnapshot;
 - (id)init;
+- (id)initForSnapshotting;
 - (id)initWithAmount:(id)arg1 currency:(id)arg2 state:(unsigned long long)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCurrencyAmount:(id)arg1 state:(unsigned long long)arg2;

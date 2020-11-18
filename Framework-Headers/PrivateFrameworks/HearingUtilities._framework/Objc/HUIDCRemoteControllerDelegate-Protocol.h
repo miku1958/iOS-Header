@@ -11,7 +11,7 @@
 
 @protocol HUIDCRemoteControllerDelegate <NSObject>
 
-@property (nonatomic) id<HUIDCManagerSecurityDelegate> securityDelegate;
+@property (weak, nonatomic) id<HUIDCManagerSecurityDelegate> securityDelegate;
 
 - (void)controller:(HUIDCRemoteController *)arg1 didCloseConnectionWithError:(NSError *)arg2;
 - (void)controller:(HUIDCRemoteController *)arg1 didFinishSendingData:(HUIDCMessage *)arg2;

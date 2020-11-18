@@ -19,13 +19,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak, nonatomic) id<TSWPFootnoteMarkProvider> footnoteMarkProvider;
 
 - (void).cxx_destruct;
-- (struct _NSRange)endnoteRangeForSectionCharRange:(struct _NSRange)arg1 isLastSection:(BOOL)arg2;
+- (struct _NSRange)endnoteRangeForSectionCharRange:(struct _NSRange)arg1 isLastSection:(BOOL)arg2 sectionHint:(id)arg3;
 - (struct _NSRange)footnoteLayoutRangeForPageCharRange:(struct _NSRange)arg1;
 - (void)inflateFootnotesInRange:(struct _NSRange)arg1 intoFootnoteContainer:(id)arg2;
 - (id)initWithDocumentRoot:(id)arg1;
-- (struct _NSRange)layoutFootnotesFromIndex:(unsigned long long)arg1 intoFootnoteContainer:(id)arg2 maxHeight:(double)arg3 pageCharRange:(struct _NSRange)arg4 sectionCharRange:(struct _NSRange)arg5 isLastSection:(BOOL)arg6;
+- (struct _NSRange)layoutFootnotesFromIndex:(unsigned long long)arg1 intoFootnoteContainer:(id)arg2 maxBlockHeight:(double)arg3 pageCharRange:(struct _NSRange)arg4 sectionCharRange:(struct _NSRange)arg5 isLastSection:(BOOL)arg6 sectionHint:(id)arg7 pageHintIndex:(unsigned long long)arg8;
 - (id)p_footnoteReferenceStoragesInFootnoteIndexRange:(struct _NSRange)arg1;
-- (unsigned long long)p_layoutFootnotesInRange:(struct _NSRange)arg1 intoFootnoteContainer:(id)arg2 maxHeight:(double)arg3 measure:(BOOL)arg4 inflating:(BOOL)arg5;
+- (unsigned long long)p_layoutFootnotesInRange:(struct _NSRange)arg1 intoFootnoteContainer:(id)arg2 maxBlockHeight:(double)arg3 measure:(BOOL)arg4 inflating:(BOOL)arg5;
 - (id)p_layoutForFootnoteReferenceStorage:(id)arg1;
 - (void)removeDeletedFootnoteInContainer:(id)arg1;
 

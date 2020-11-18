@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)setDelegate:(id)arg1;
 - (void)setPlayerController:(id)arg1;
 - (void)setShowsPlaybackControls:(BOOL)arg1;
+- (void)setWebKitOverrideRouteSharingPolicy:(unsigned long long)arg1 routingContextUID:(id)arg2;
 - (BOOL)showsPlaybackControls;
 - (void)startPictureInPicture;
 - (void)stopPictureInPicture;

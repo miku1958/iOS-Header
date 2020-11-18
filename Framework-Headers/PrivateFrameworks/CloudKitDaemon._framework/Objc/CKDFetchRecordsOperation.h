@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _URLOptions;
     CKDRecordCache *_cache;
     NSMutableArray *_recordIDsToRefetch;
+    NSMutableDictionary *_keyOrErrorForHostname;
     NSDictionary *_webSharingIdentityDataByRecordID;
 }
 
@@ -53,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL forcePCSDecrypt; // @synthesize forcePCSDecrypt=_forcePCSDecrypt;
 @property (strong, nonatomic) NSArray *fullRecordsToFetch; // @synthesize fullRecordsToFetch=_fullRecordsToFetch;
 @property (readonly, nonatomic) BOOL hasRecordDecryptOperation;
+@property (strong, nonatomic) NSMutableDictionary *keyOrErrorForHostname; // @synthesize keyOrErrorForHostname=_keyOrErrorForHostname;
 @property (readonly, nonatomic) CKDDecryptRecordsOperation *recordDecryptOperation;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchCommandBlock; // @synthesize recordFetchCommandBlock=_recordFetchCommandBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchCompletionBlock; // @synthesize recordFetchCompletionBlock=_recordFetchCompletionBlock;
@@ -74,11 +76,12 @@ __attribute__((visibility("hidden")))
 - (void)_decryptPropertiesOnRecord:(id)arg1 recordID:(id)arg2;
 - (void)_didDownloadAssetsWithError:(id)arg1;
 - (void)_downloadAssets;
+- (void)_fetchCloudCerts;
 - (void)_findSpecialParticipantsOnShare:(id)arg1 identityDelegate:(id)arg2;
 - (void)_finishAllDownloadTasksWithError:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleRecordFetch:(id)arg1 recordID:(id)arg2 etagMatched:(BOOL)arg3 responseCode:(id)arg4;
-- (BOOL)_prepareAsset:(id)arg1 record:(id)arg2 recordKey:(id)arg3 assetTransferOptions:(id)arg4;
+- (int)_prepareAsset:(id)arg1 record:(id)arg2 recordKey:(id)arg3 assetTransferOptions:(id)arg4;
 - (id)activityCreate;
 - (id)errorForRecordID:(id)arg1;
 - (void)fetchRecordsWithIDs:(id)arg1 andFullRecords:(id)arg2;

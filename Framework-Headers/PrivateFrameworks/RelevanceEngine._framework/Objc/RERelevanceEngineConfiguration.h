@@ -19,6 +19,7 @@
     BOOL _allowsUpdatingModelFile;
     REDataSourceLoader *_dataSourceLoader;
     unsigned long long _trainingBehavior;
+    unsigned long long _modelStorageBehavior;
     RELocationManager *_locationManager;
     NSMutableArray *_sectionDescriptions;
     NSMutableArray *_interactionDescriptions;
@@ -41,6 +42,7 @@
 @property (readonly, copy, nonatomic) NSArray *interactionDescriptors;
 @property (readonly, nonatomic) RELocationManager *locationManager;
 @property (readonly, copy, nonatomic) NSURL *modelFileURL;
+@property (readonly, nonatomic) unsigned long long modelStorageBehavior;
 @property (readonly, nonatomic) NSString *preferenceDomain;
 @property (readonly, copy, nonatomic) REFeatureSet *primaryFeatures;
 @property (readonly, copy, nonatomic) NSArray *sectionDescriptors;
@@ -53,7 +55,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionWithIndent:(unsigned long long)arg1;
-- (id)initWithModelFileURL:(id)arg1 baseModelFileURL:(id)arg2 allowsUpdatingModelFile:(BOOL)arg3 dataSourceLoader:(id)arg4 trainingBehavior:(unsigned long long)arg5 sectionDescriptions:(id)arg6 locationManager:(id)arg7 featureSet:(id)arg8 wantsImmutableContent:(BOOL)arg9 preferenceDomain:(id)arg10 interactionDescriptions:(id)arg11 allowsRemoteTraining:(BOOL)arg12 wantsBackup:(BOOL)arg13 ignoreDeviceLockState:(BOOL)arg14;
+- (id)initWithModelFileURL:(id)arg1 baseModelFileURL:(id)arg2 allowsUpdatingModelFile:(BOOL)arg3 dataSourceLoader:(id)arg4 trainingBehavior:(unsigned long long)arg5 modelStorageBehavior:(unsigned long long)arg6 sectionDescriptions:(id)arg7 locationManager:(id)arg8 featureSet:(id)arg9 wantsImmutableContent:(BOOL)arg10 preferenceDomain:(id)arg11 interactionDescriptions:(id)arg12 allowsRemoteTraining:(BOOL)arg13 wantsBackup:(BOOL)arg14 ignoreDeviceLockState:(BOOL)arg15;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

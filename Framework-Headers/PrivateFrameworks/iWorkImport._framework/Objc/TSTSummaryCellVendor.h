@@ -6,26 +6,25 @@
 
 #import <iWorkImport/TSPObject.h>
 
-@class TSTInfo;
+@class TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTSummaryCellVendor : TSPObject
 {
     BOOL _hasCustomFormatsToPaste;
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     unordered_map_7f472e10 _cellUIDMap;
 }
 
 @property (readonly, nonatomic) unordered_map_7f472e10 *cellUIDMap; // @synthesize cellUIDMap=_cellUIDMap;
 @property (nonatomic) BOOL hasCustomFormatsToPaste; // @synthesize hasCustomFormatsToPaste=_hasCustomFormatsToPaste;
-@property (weak, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (readonly, weak, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addPasteboardCustomFormatsToDocumentAndUpdateCells;
 - (id)cellAtCellUID:(const struct TSTCellUID *)arg1;
 - (id)cellMapForWildcardCells;
-- (id)copyWithContext:(id)arg1 tableInfo:(id)arg2;
 - (void)enumerateCellsUsingBlock:(CDUnknownBlockType)arg1;
 - (int)getCell:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2;
 - (id)initWithContext:(id)arg1;

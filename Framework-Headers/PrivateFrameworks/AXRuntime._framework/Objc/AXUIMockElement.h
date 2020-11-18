@@ -12,13 +12,14 @@
 
 @interface AXUIMockElement : AXUIElement <NSCopying>
 {
-    NSMutableDictionary *_attributes;
     NSMutableDictionary *_writableAttributes;
     NSMutableDictionary *_performActionLog;
     BOOL _usesCarriageReturnAsLinesSeparator;
+    NSMutableDictionary *_attributes;
     CDUnknownBlockType _cacheUpdatedCallback;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *attributes; // @synthesize attributes=_attributes;
 @property (copy, nonatomic) CDUnknownBlockType cacheUpdatedCallback; // @synthesize cacheUpdatedCallback=_cacheUpdatedCallback;
 @property (nonatomic) BOOL usesCarriageReturnAsLinesSeparator; // @synthesize usesCarriageReturnAsLinesSeparator=_usesCarriageReturnAsLinesSeparator;
 
@@ -31,6 +32,7 @@
 - (id)arrayWithAXAttribute:(long long)arg1;
 - (struct __AXUIElement *)axElement;
 - (BOOL)boolWithAXAttribute:(long long)arg1;
+- (id)cachedAttributes;
 - (BOOL)canPerformAXAction:(int)arg1;
 - (BOOL)canSetAXAttribute:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

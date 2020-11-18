@@ -31,7 +31,7 @@
 - (long long)dataOwnerForQuickLookDocumentView:(id)arg1;
 - (id)init;
 - (id)itemProviderForQuickLookDocumentView:(id)arg1;
-- (void)presentDocumentInteractionControllerFromRect:(struct CGRect)arg1 inView:(id)arg2;
+- (void)presentDocumentInteractionControllerFromSource:(id)arg1;
 - (void)quickLookDocumentView:(id)arg1 didSelectActionAtIndex:(long long)arg2;
 - (void)updateWithQuickLookDocument:(id)arg1;
 

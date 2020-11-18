@@ -28,6 +28,7 @@
     UIImage *_displayIcon;
     NSString *_displayName;
     NSString *_secondaryName;
+    NSString *_model;
 }
 
 @property (getter=isClassroom) BOOL classroom; // @synthesize classroom=_classroom;
@@ -39,6 +40,7 @@
 @property (strong) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, getter=isKnown) BOOL known;
 @property (getter=isMe) BOOL me; // @synthesize me=_me;
+@property (strong) NSString *model; // @synthesize model=_model;
 @property (getter=isMonogram) BOOL monogram; // @synthesize monogram=_monogram;
 @property (strong) id node; // @synthesize node=_node;
 @property (strong) NSString *realName; // @synthesize realName=_realName;

@@ -50,21 +50,26 @@
 @property (readonly, nonatomic) NSString *resourcePath; // @synthesize resourcePath=_resourcePath;
 
 + (id)assetForAssetType:(unsigned long long)arg1 resourcePath:(id)arg2 configVersion:(id)arg3;
++ (id)defaultFallBackAssetForHearst;
 + (id)defaultFallBackAssetForSmartSiriVolume;
 + (id)fallBackAssetResourcePath;
 + (id)hybridEndpointerAssetFilename;
 - (void).cxx_destruct;
-- (id)RTModel;
+- (id)RTModelWithFallbackLanguage:(id)arg1;
 - (id)_decodeJson:(id)arg1;
 - (id)_sha1:(id)arg1;
 - (id)_sha256:(id)arg1;
+- (BOOL)containsCategory:(id)arg1;
 - (BOOL)containsKey:(id)arg1 category:(id)arg2;
 - (id)description;
 - (BOOL)getBoolForKey:(id)arg1 category:(id)arg2 default:(BOOL)arg3;
 - (id)getNumberForKey:(id)arg1 category:(id)arg2 default:(id)arg3;
 - (id)getStringForKey:(id)arg1 category:(id)arg2 default:(id)arg3;
+- (id)hearstRTModelLocaleMap;
+- (id)hearstRTModelWithMajorVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 locale:(id)arg3;
 - (id)initWithResourcePath:(id)arg1 configFile:(id)arg2 configVersion:(id)arg3;
 - (BOOL)isEqualAsset:(id)arg1;
+- (id)latestHearstRTModelForLocale:(id)arg1;
 
 @end
 

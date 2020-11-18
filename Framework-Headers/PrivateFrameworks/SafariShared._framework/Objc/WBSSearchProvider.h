@@ -34,6 +34,7 @@
 - (BOOL)searchShouldUseSafeSearchTemplate;
 - (id)searchURLForUserTypedString:(id)arg1;
 - (id)suggestionsURLForUserTypedString:(id)arg1;
+- (id)urlAttributingToSafariIfValidSearchURL:(id)arg1;
 - (BOOL)urlIsValidSearch:(id)arg1;
 - (id)userVisibleQueryFromSearchURL:(id)arg1;
 - (id)userVisibleQueryFromSearchURL:(id)arg1 allowQueryThatLooksLikeURL:(BOOL)arg2;

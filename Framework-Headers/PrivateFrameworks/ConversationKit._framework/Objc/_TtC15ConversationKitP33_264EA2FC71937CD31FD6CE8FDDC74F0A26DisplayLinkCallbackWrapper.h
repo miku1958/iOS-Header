@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/SwiftObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC15ConversationKitP33_264EA2FC71937CD31FD6CE8FDDC74F0A26DisplayLinkCallbackWrapper : SwiftObject
+@interface _TtC15ConversationKitP33_264EA2FC71937CD31FD6CE8FDDC74F0A26DisplayLinkCallbackWrapper : _TtCs12_SwiftObject
 {
     MISSING_TYPE *callback;
 }

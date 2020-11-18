@@ -9,7 +9,7 @@
 #import <iWorkImport/TSCEFormulaOwning-Protocol.h>
 #import <iWorkImport/TSTGroupByChangeProtocol-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, TSKCustomFormatWrapper, TSTCategoryOwner, TSTGroupByChangeDistributor, TSTGroupNode, TSTInfo, TSULocale;
+@class NSArray, NSMutableArray, NSString, TSKCustomFormatWrapper, TSTCategoryOwner, TSTGroupByChangeDistributor, TSTGroupNode, TSTTableInfo, TSULocale;
 
 __attribute__((visibility("hidden")))
 @interface TSTGroupBy : TSKSosBase <TSCEFormulaOwning, TSTGroupByChangeProtocol>
@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
     struct TSUCellCoord _groupingColumnsFormulaCoord;
     struct TSUCellCoord _groupingColumnHeadersFormulaCoord;
     struct TSUCellCoord _allAggsInGroupRootFormulaCoord;
+    struct TSUCellCoord _columnOrderChangedCoord;
+    struct TSUCellCoord _rowOrderChangedCoord;
     TSTGroupByChangeDistributor *_groupByChangeDistributor;
     struct TSUCellCoord _nextAggFormulaCoord;
     struct os_unfair_lock_s _aggValuesLock;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UUIDData_5fbc143e baseTableUID;
 @property (weak, nonatomic) TSTCategoryOwner *categoryOwner; // @synthesize categoryOwner=_categoryOwner;
 @property (readonly, nonatomic) NSArray *columnAggregates; // @synthesize columnAggregates=_columnAggregates;
+@property (readonly, nonatomic) struct TSCECellRef columnOrderChangedPrecedent;
 @property (readonly, strong, nonatomic) TSKCustomFormatWrapper *customFormatForBlankGroup; // @synthesize customFormatForBlankGroup=_customFormatForBlankGroup;
 @property (readonly, strong, nonatomic) TSKCustomFormatWrapper *customFormatForErrorGroup; // @synthesize customFormatForErrorGroup=_customFormatForErrorGroup;
 @property (readonly, copy) NSString *debugDescription;
@@ -56,14 +59,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct TSUCellCoord groupingColumnsFormulaCoord; // @synthesize groupingColumnsFormulaCoord=_groupingColumnsFormulaCoord;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct TSUCellCoord indirectAggTypeChangeFormulaCoord; // @synthesize indirectAggTypeChangeFormulaCoord=_indirectAggTypeChangeFormulaCoord;
-@property (readonly, weak, nonatomic) TSTInfo *info;
 @property (readonly, nonatomic) BOOL isCategorized;
 @property (nonatomic) BOOL isEnabled; // @synthesize isEnabled=_isEnabled;
 @property (readonly, nonatomic) TSULocale *locale;
 @property (nonatomic) BOOL needsRebuildOfAggFormulas; // @synthesize needsRebuildOfAggFormulas=_needsRebuildOfAggFormulas;
 @property (readonly) unsigned char numberOfLevels;
+@property (readonly, nonatomic) struct TSCECellRef rowOrderChangedPrecedent;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) TSTInfo *tableInfo;
+@property (readonly, nonatomic) TSTTableInfo *tableInfo;
 @property (readonly, nonatomic) TSTGroupNode *topLevelGroupNode;
 @property (readonly, nonatomic) UUIDData_5fbc143e topLevelGroupUid;
 
@@ -80,9 +83,7 @@ __attribute__((visibility("hidden")))
 + (int)relativeLevelOfAncestorGroupUid:(const UUIDData_5fbc143e *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_addAggregates:(id)arg1;
 - (void)_addAggregates:(id)arg1 atLevel:(unsigned char)arg2;
-- (void)_moveAggregates:(id)arg1 toLevel:(unsigned char)arg2;
 - (void)_removeAggregates:(id)arg1;
 - (void)addAggregator:(id)arg1;
 - (id)aggNodeForAggFormulaCoord:(const struct TSUCellCoord *)arg1;
@@ -98,21 +99,23 @@ __attribute__((visibility("hidden")))
 - (BOOL)analyze;
 - (unsigned char)anyAggregateTypeForColumnUID:(const UUIDData_5fbc143e *)arg1;
 - (void)beginDeferringRebuildFormulas;
-- (vector_4dc5f307)bodyRowUidsForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2;
+- (vector_4dc5f307)bodyRowUidsForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2 ordered:(BOOL)arg3;
 - (id)calcEngine;
 - (vector_2431c21e)captureAnyCategoryRefsForViewRegion:(id)arg1 atLevel:(unsigned char)arg2 asSpanning:(BOOL)arg3;
 - (vector_2431c21e)captureCategoryLabelRefsForViewRegion:(id)arg1 atLevel:(unsigned char)arg2 asSpanning:(BOOL)arg3 forRows:(BOOL)arg4;
 - (vector_2431c21e)captureCategoryRefsForViewRange:(struct TSUCellRect)arg1 atLevel:(unsigned char)arg2 asSpanning:(BOOL)arg3;
 - (vector_2431c21e)captureCategoryRefsForViewRegion:(id)arg1 atLevel:(unsigned char)arg2 asSpanning:(BOOL)arg3;
 - (vector_2431c21e)captureCategoryRefsFromIterator:(id)arg1 atLevel:(unsigned char)arg2 asSpanning:(BOOL)arg3;
+- (vector_2431c21e)categoryRefsForSpanningCategoryRef:(const struct TSCECategoryRef *)arg1;
 - (id)cellDiffForCell:(id)arg1 applyingGroupCellValue:(id)arg2 groupingType:(int)arg3 toBeInGroup:(id)arg4;
 - (vector_4115f7f8)cellRefsForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2;
+- (vector_4115f7f8)cellRefsForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2 ordered:(BOOL)arg3;
 - (BOOL)changeCell:(id)arg1 atCellUID:(const struct TSTCellUID *)arg2 toBeInGroup:(id)arg3;
 - (id)changeCellDiffMapToMoveRows:(const vector_4dc5f307 *)arg1 toGroup:(id)arg2 templateRowUID:(const UUIDData_5fbc143e *)arg3;
 - (id)changeForMovingBaseRows:(const vector_4dc5f307 *)arg1 toDestGroup:(id)arg2;
 - (id)changeForSettingGroupingColumnList:(id)arg1;
 - (id)changeForUpdatingGroupValueOnNode:(const UUIDData_5fbc143e *)arg1 toValue:(id)arg2;
-- (unordered_map_a2587d2e)changesPerColumnMap;
+- (unordered_map_a2587d2e)changesPerColumnMapToBeInGroup:(id)arg1;
 - (void)checkForFormulaCoordUpgrade;
 - (id)childGroupUidsForGroupUids:(id)arg1;
 - (void)clearAggNode:(id)arg1 forFormulaCoord:(const struct TSUCellCoord *)arg2;
@@ -145,6 +148,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateAggregates:(CDUnknownBlockType)arg1;
 - (void)enumerateAggregatesAtLevel:(unsigned char)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateAllGroupsWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateGroupingColumnsForColumn:(const UUIDData_5fbc143e *)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateGroupsAtLevel:(unsigned char)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateRowsUidsAtLevel:(unsigned char)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)exitCalcEngineMode;
@@ -160,6 +164,7 @@ __attribute__((visibility("hidden")))
 - (struct TSCECategoryRef)groupValueHierarchyRefOnValue:(id)arg1 atLevel:(unsigned char)arg2;
 - (id)groupValueHierarchyStringForCategoryRef:(const struct TSCECategoryRef *)arg1 forHostCellRef:(const struct TSCECellRef *)arg2 namingContext:(id)arg3;
 - (struct TSCECategoryRef)groupValueRefOnValue:(id)arg1 atLevel:(unsigned char)arg2;
+- (id)groupValueTupleForRowUid:(const UUIDData_5fbc143e *)arg1 atLevel:(unsigned char)arg2;
 - (id)groupingColumnAtCategoryLevel:(unsigned char)arg1;
 - (vector_ae66d7ff)groupingColumnLevelsForColumn:(const UUIDData_5fbc143e *)arg1;
 - (id)groupingColumnListCopy;
@@ -168,6 +173,7 @@ __attribute__((visibility("hidden")))
 - (id)indexesOfGroupUidsInUids:(const vector_4dc5f307 *)arg1;
 - (id)initWithArchive:(const struct CategoryOwnerArchive_GroupByArchive *)arg1 forCategoryOwner:(id)arg2;
 - (id)initWithGroupings:(id)arg1 categoryOwner:(id)arg2;
+- (id)initWithGroupings:(id)arg1 categoryOwner:(id)arg2 groupByUid:(const UUIDData_5fbc143e *)arg3;
 - (void)insertRowUid:(const UUIDData_5fbc143e *)arg1 forGroupValue:(id)arg2;
 - (void)insertRowUids:(id)arg1;
 - (void)invalidateForCalcEngine:(id)arg1;
@@ -184,10 +190,11 @@ __attribute__((visibility("hidden")))
 - (id)labelRowUidsForGroupUids:(id)arg1;
 - (id)linkedResolver;
 - (void)mapGroupUidsForChange:(id)arg1;
+- (void)markAllAggregatesAsDirty;
 - (void)markAllDependentsAsDirty;
 - (void)markAllGroupNodesDirty;
 - (unsigned long long)numberOfGroupsAtLevel:(unsigned char)arg1;
-- (int)ownerKind;
+- (unsigned short)ownerKind;
 - (UUIDData_5fbc143e)ownerUID;
 - (id)p_cellDiffForFinishedCell:(id)arg1;
 - (id)p_columnNameForColumnUid:(const UUIDData_5fbc143e *)arg1;
@@ -230,7 +237,9 @@ __attribute__((visibility("hidden")))
 - (id)sortedValuesAtLevel:(unsigned char)arg1;
 - (void)startOfGroupingChangesBatch;
 - (id)stringForCategoryRef:(const struct TSCECategoryRef *)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2;
+- (void)teardown;
 - (id)uidRectRefForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2;
+- (vector_4115f7f8)unorderedCellRefsForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2;
 - (void)updateAggFormulaCoord:(struct TSUCellCoord)arg1;
 - (void)updateWithDocumentRoot:(id)arg1;
 - (void)usedAggFormulaCoord:(const struct TSUCellCoord *)arg1;
@@ -239,7 +248,6 @@ __attribute__((visibility("hidden")))
 - (vector_a1208d01)valuesForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2;
 - (id)viewCellTractRefForCategoryRef:(const struct TSCECategoryRef *)arg1;
 - (id)viewCellTractRefForCategoryRef:(const struct TSCECategoryRef *)arg1 atRowUid:(const UUIDData_5fbc143e *)arg2;
-- (void)willClose;
 - (void)willMakeGroupingChangesInRowUIDs:(id)arg1;
 - (void)willRemoveGroup:(id)arg1;
 - (void)willRemoveGroupNode:(id)arg1;

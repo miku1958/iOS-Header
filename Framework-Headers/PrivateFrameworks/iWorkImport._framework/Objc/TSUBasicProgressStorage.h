@@ -9,14 +9,14 @@
 __attribute__((visibility("hidden")))
 @interface TSUBasicProgressStorage : NSObject
 {
-    double mValue;
-    double mMaxValue;
-    BOOL mIndeterminate;
+    BOOL _indeterminate;
+    double _value;
+    double _maxValue;
 }
 
-@property (getter=isIndeterminate) BOOL indeterminate; // @synthesize indeterminate=mIndeterminate;
-@property double maxValue; // @synthesize maxValue=mMaxValue;
-@property double value; // @synthesize value=mValue;
+@property (getter=isIndeterminate) BOOL indeterminate; // @synthesize indeterminate=_indeterminate;
+@property double maxValue; // @synthesize maxValue=_maxValue;
+@property double value; // @synthesize value=_value;
 
 
 @end

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSData, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction;
 
 @interface SFBluetoothPairingSession : NSObject
 {
     char _btAddrStr[32];
+    BOOL _btConfigured;
     BOOL _btConnecting;
     struct BTDeviceImpl *_btDevice;
     struct BTPairingAgentImpl *_btPairingAgent;
@@ -28,15 +29,21 @@
     NSObject<OS_dispatch_source> *_timeoutTimer;
     NSObject<OS_os_transaction> *_transaction;
     struct LogCategory *_ucat;
+    BOOL _guestMode;
     CDUnknownBlockType _completionHandler;
     NSString *_deviceAddress;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    NSString *_guestAddress;
+    NSData *_guestKey;
     NSString *_name;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (copy, nonatomic) NSString *deviceAddress; // @synthesize deviceAddress=_deviceAddress;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (copy, nonatomic) NSString *guestAddress; // @synthesize guestAddress=_guestAddress;
+@property (copy, nonatomic) NSData *guestKey; // @synthesize guestKey=_guestKey;
+@property (nonatomic) BOOL guestMode; // @synthesize guestMode=_guestMode;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 
 - (void).cxx_destruct;

@@ -9,12 +9,14 @@
 #import <iWorkImport/TSWPObjectIndex-Protocol.h>
 
 @class EQKitEnvironment, NSUUID, TSULocale;
+@protocol TSWPTOCController;
 
 __attribute__((visibility("hidden")))
 @interface TSWPDocumentRoot : TSKDocumentRoot <TSWPObjectIndex>
 {
     NSUUID *_uuid;
     BOOL _didRemoveMissingAttachments;
+    id<TSWPTOCController> _tocController;
 }
 
 @property (readonly, nonatomic, getter=isChangeTrackingEnabled) BOOL changeTrackingEnabled;
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) EQKitEnvironment *equationEnvironment;
 @property (readonly, nonatomic) double stickyCommentScaleMultiplier;
 @property (readonly, nonatomic) BOOL supportHeaderFooterParagraphAlignmentInInspectors;
+@property (readonly, nonatomic) id<TSWPTOCController> tocController; // @synthesize tocController=_tocController;
 @property (readonly, nonatomic) TSULocale *typesettingLocale;
 
 - (void).cxx_destruct;
@@ -29,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)cellCommentsAllowedOnInfo:(id)arg1;
 - (id)changeSessionManagerForModel:(id)arg1;
 - (id)changeVisibility;
+- (BOOL)containsVerticalText;
 - (void)documentDidLoad;
 - (id)documentFonts;
 - (id)documentId;

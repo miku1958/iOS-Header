@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class TSCECellTractRef, TSTInfo, TSTTableModel;
+@class TSCECellTractRef, TSTTableInfo, TSTTableModel;
 
 __attribute__((visibility("hidden")))
 @interface TSTRangeRefPair : NSObject
 {
     TSCECellTractRef *_baseTractRef;
     TSCECellTractRef *_chromeTractRef;
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     TSTTableModel *_tableModel;
 }
 
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSCECellTractRef *baseTractRef; // @synthesize baseTractRef=_baseTractRef;
 @property (readonly, nonatomic) RefTypeHolder_8c6da553 chromeRangeRef;
 @property (strong, nonatomic) TSCECellTractRef *chromeTractRef; // @synthesize chromeTractRef=_chromeTractRef;
-@property (strong, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (strong, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property (strong, nonatomic) TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
 @property (readonly, nonatomic) UUIDData_5fbc143e tableUID;
 

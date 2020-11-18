@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *visualEffectView;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

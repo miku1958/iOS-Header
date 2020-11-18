@@ -13,6 +13,8 @@
 {
     NSObject<OS_xpc_object> *_clientConnection;
     NSObject<OS_dispatch_queue> *_sessionQueue;
+    NSObject<OS_xpc_object> *_event;
+    id _inputParameter2;
     TKToken *_token;
     id<TKTokenSessionDelegate> _delegate;
     LAContext *_LAContext;
@@ -24,6 +26,7 @@
 @property (strong) NSNumber *callerPID; // @synthesize callerPID=_callerPID;
 @property (readonly) NSObject<OS_xpc_object> *clientConnection; // @synthesize clientConnection=_clientConnection;
 @property (weak) id<TKTokenSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly) id inputParameter2;
 @property (readonly, nonatomic) NSString *name;
 @property (strong) NSDictionary *parameters; // @synthesize parameters=_parameters;
 @property (readonly) id<TKTokenSessionPrivateDelegate> privateDelegate;

@@ -12,14 +12,14 @@
 {
     NSCalendar *_calendar;
     NSDate *_overrideDate;
-    SKNode *_fontContainerNode;
-    NSArray *_fontHourNodes;
+    SKNode *_fontContainerNodes[2];
+    NSArray *_fontHourNodes[2];
     SKNode *_logoContainerNode;
     SKSpriteNode *_logo1Node;
     SKSpriteNode *_logo2Node;
     SKNode *_multicolorContainerNode;
     SKSpriteNode *_multicolorBackground;
-    SKSpriteNode *_multicolorSplit;
+    SKSpriteNode *_multicolorSplit[4];
     double _previousCorrectionTime;
     double _currentTime;
     double _startSplitRotation;
@@ -41,10 +41,11 @@
 - (void)_applyTransitionFraction:(double)arg1 fromHourLabelCollectionNode:(id)arg2 toHourLabelCollectionNode:(id)arg3;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (double)_contentAlphaForEditing:(BOOL)arg1;
+- (double)_contentAlphaForEditMode:(long long)arg1;
 - (double)_digitAlphaForEditMode:(long long)arg1;
 - (void)_displayZoomScale:(double)arg1 fraction:(double)arg2;
 - (id)_hoursNodeForStyle:(unsigned long long)arg1 bleed:(unsigned long long)arg2;
+- (struct CGPoint)_logoContainerPositionForStyle:(unsigned long long)arg1;
 - (double)_lowerComplicationAlphaForEditing:(BOOL)arg1;
 - (double)_secondHandAlphaForDensity:(unsigned long long)arg1 isEditing:(BOOL)arg2;
 - (void)_significantTimeChanged;
@@ -58,6 +59,7 @@
 - (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3;
 - (id)auxiliaryScrubbingObscuredNodes;
+- (struct CGPoint)centerOf4NumeralForStyle:(unsigned long long)arg1;
 - (unsigned long long)currentDensity;
 - (void)dealloc;
 - (void)endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;

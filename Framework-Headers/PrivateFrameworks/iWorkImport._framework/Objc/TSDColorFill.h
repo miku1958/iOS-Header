@@ -53,10 +53,6 @@ __attribute__((visibility("hidden")))
 + (id)whiteColor;
 + (id)yellowColor;
 - (id)UIColor;
-- (void)applyToCALayer:(id)arg1 withScale:(double)arg2;
-- (void)applyToCAShapeLayer:(id)arg1 withScale:(double)arg2;
-- (BOOL)canApplyToCALayer;
-- (BOOL)canApplyToCAShapeLayer;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (BOOL)drawsInOneStep;

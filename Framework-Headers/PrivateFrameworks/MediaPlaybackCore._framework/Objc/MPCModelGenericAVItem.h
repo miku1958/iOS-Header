@@ -148,6 +148,7 @@
 - (CDUnknownBlockType)artworkCatalogBlock;
 - (id)artworkTimeMarkers;
 - (id)bookmarkTime;
+- (BOOL)canUseLoadedAsset;
 - (id)chapterTimeMarkers;
 - (id)cloudAlbumID;
 - (unsigned long long)cloudID;

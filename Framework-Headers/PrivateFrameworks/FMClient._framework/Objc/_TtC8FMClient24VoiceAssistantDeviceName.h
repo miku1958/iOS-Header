@@ -17,12 +17,12 @@
 
 @property (nonatomic, readonly) NSString *description;
 @property (nonatomic, readonly) NSString *deviceName; // @synthesize deviceName;
-@property (nonatomic, readonly) long long hashValue;
+@property (nonatomic, readonly) long long hash;
 @property (nonatomic, readonly) NSString *ownerFirstName; // @synthesize ownerFirstName;
 @property (nonatomic, readonly) NSString *ownerLastName; // @synthesize ownerLastName;
 
 + (BOOL)supportsSecureCoding;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

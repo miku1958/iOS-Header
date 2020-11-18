@@ -9,18 +9,22 @@
 #import <Silex/SXComponentInsertionCondition-Protocol.h>
 
 @class NSString;
+@protocol SXComponent;
 
 @interface SXPastBodyComponentInsertionCondition : NSObject <SXComponentInsertionCondition>
 {
+    id<SXComponent> _firstBodyComponent;
     struct CGPoint _firstBodyComponentThreshold;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) id<SXComponent> firstBodyComponent; // @synthesize firstBodyComponent=_firstBodyComponent;
 @property (nonatomic) struct CGPoint firstBodyComponentThreshold; // @synthesize firstBodyComponentThreshold=_firstBodyComponentThreshold;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)findFirstBodyComponentInComponents:(id)arg1;
 - (void)prepareWithComponents:(id)arg1 layoutProvider:(id)arg2;
 - (BOOL)validateMarker:(id)arg1 componentTraits:(unsigned long long)arg2 layoutProvider:(id)arg3;

@@ -31,6 +31,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_cancelHideSnapshotTimer;
+- (void)_connectToService;
+- (void)_removeRemoteView;
 - (void)_setUpContentViewController:(id)arg1;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
@@ -43,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)timeLimitForLoadCompletionExpired;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)webAppViewController:(id)arg1 didChangeLoadingState:(BOOL)arg2;
+- (void)webAppViewController:(id)arg1 viewServiceDidTerminateWithError:(id)arg2;
 - (void)webAppViewControllerDidFinishInitialLoad:(id)arg1;
 
 @end

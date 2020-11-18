@@ -9,7 +9,7 @@
 #import <iWorkImport/TSCECalculationEngineRegistration-Protocol.h>
 #import <iWorkImport/TSCEFormulaOwning-Protocol.h>
 
-@class NSCondition, NSString, TNChartFormulaStorage, TNMutableChartFormulaStorage, TSCECalculationEngine, TSUIntToIntDictionary;
+@class NSCondition, NSDictionary, NSString, TNChartFormulaStorage, TNMutableChartFormulaStorage, TSCECalculationEngine, TSUIntToIntDictionary;
 
 __attribute__((visibility("hidden")))
 @interface TNChartMediator : TSCHChartMediator <TSCECalculationEngineRegistration, TSCEFormulaOwning>
@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
     BOOL mHasBlittedSinceConditionVarSet;
     BOOL mShouldFixAreaFormula;
     TSUIntToIntDictionary *mFormulaIndexToGridIndex;
+    NSDictionary *mTableUidToHeaderRowRangesInPrecedents;
+    BOOL mShouldResetFormulas;
 }
 
 @property (readonly, nonatomic) TSCECalculationEngine *calculationEngine;
@@ -77,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)dataFormatterFromFormatStruct:(CDStruct_b1066b25)arg1 in:(id)arg2;
 - (id)dataFormulas;
 - (id)errorBarCustomFormulaForSeriesIndex:(unsigned long long)arg1 dataType:(int)arg2;
+- (vector_5a16d233)expandSingleRangeForLabels:(const struct TSCERangeRef *)arg1 formulaType:(unsigned long long)arg2;
 - (vector_5a16d233)expandSingleRangeForProposedCategoryLabels:(const struct TSCERangeRef *)arg1;
 - (unsigned long long)formulaIndexForSeriesDimension:(id)arg1;
 - (UUIDData_5fbc143e)formulaOwnerUID;
@@ -102,7 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)localizeFormulaLiteralsWithBundle:(id)arg1;
 - (id)nonDefaultDataFormatterForSeries:(id)arg1 index:(unsigned long long)arg2 axisType:(int)arg3 documentRoot:(id)arg4;
 - (id)objectToArchiveInDependencyTracker;
-- (int)ownerKind;
+- (unsigned short)ownerKind;
 - (UUIDData_5fbc143e)ownerUID;
 - (id)ownerUIDMapper;
 - (id)p_chartFormulaStorageForEditingOverride;
@@ -110,27 +113,32 @@ __attribute__((visibility("hidden")))
 - (void)p_copyValuesIntoToChartModel:(id)arg1 formulaMap:(id)arg2;
 - (void)p_detectAndRepairInsertedCategoryConditionFromPreviousState:(id)arg1 andEditingState:(id)arg2 rewriteSpec:(id)arg3;
 - (void)p_detectAndRepairInsertedSeriesConditionFromPreviousState:(id)arg1 andEditingState:(id)arg2 rewriteSpec:(id)arg3;
+- (BOOL)p_didHeaderRowRangesChangeForCalcEngine:(id)arg1;
 - (void)p_disconnectLabelsInMap:(id)arg1 ofType:(unsigned long long)arg2;
+- (vector_5a16d233)p_expandSingleRangeForLabels:(const struct TSCERangeRef *)arg1 iterateOverRowsNotColumns:(BOOL)arg2;
 - (unsigned long long)p_formulaComponents:(id)arg1;
 - (unsigned long long)p_formulaComponentsInMap:(id)arg1 ofType:(unsigned long long)arg2;
 - (id)p_formulaWrapperFromTSTFormula:(id)arg1;
 - (void)p_hackSetCalcEngineLegacyGlobalID;
+- (struct TSCERangeRef)p_headerRowRangeRefForTableInfo:(id)arg1;
 - (BOOL)p_isScatterOrBubble;
 - (BOOL)p_labelsAreStaticInMap:(id)arg1 ofType:(unsigned long long)arg2;
 - (id)p_newStaticNameForCategoryAvoidingExistingNames:(id)arg1 runningCount:(unsigned long long *)arg2;
+- (unsigned long long)p_numberOfLabelsFromExpandedGeometricRangeRefsWithFormulas:(id)arg1 formulaType:(unsigned long long)arg2;
 - (void)p_promoteSpanningCategorizedCategoryLabelsInMap:(id)arg1;
 - (void)p_registerAreaFormulaForMap:(id)arg1 withCalcEngine:(id)arg2;
 - (void)p_registerFormulaeWithCalcEngine:(id)arg1;
 - (void)p_registerHubFormulaWithCalcEngine:(id)arg1;
 - (void)p_removeDeletedFormulas:(id)arg1;
+- (void)p_repairCategorizedCategoryLabelsInMap:(id)arg1;
 - (void)p_repairMissingCategoryLabelsInMap:(id)arg1;
 - (void)p_repairMissingStaticCategoryLabelsInMap:(id)arg1;
 - (void)p_repairMissingTabularCategoryLabelsIrregularInMap:(id)arg1;
 - (void)p_repairMissingTabularCategoryLabelsRegularInMap:(id)arg1;
 - (void)p_reregister:(BOOL)arg1 withCalculationEngine:(id)arg2;
 - (void)p_signalImportUpgradeCondition;
-- (BOOL)p_tableHasCell:(struct TSCECellRef)arg1 withCalcEngine:(id)arg2;
-- (BOOL)p_tableHasRange:(struct TSCERangeRef)arg1 withCalcEngine:(id)arg2;
+- (BOOL)p_tableHasBaseCell:(struct TSCECellRef)arg1 withCalcEngine:(id)arg2;
+- (BOOL)p_tableHasBaseRange:(struct TSCERangeRef)arg1 withCalcEngine:(id)arg2;
 - (BOOL)p_tabularCategoryLabelsAppearRegularInMap:(id)arg1;
 - (void)p_transposeSeriesAndCategoryLabelsInMap:(id)arg1;
 - (id)p_tstFormulaFromForumulaWrapper:(id)arg1;

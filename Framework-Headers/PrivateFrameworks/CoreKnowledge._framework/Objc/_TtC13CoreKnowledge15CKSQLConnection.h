@@ -16,21 +16,11 @@
     MISSING_TYPE *queueContext.storage;
 }
 
-@property (nonatomic, readonly) long long changes;
 @property (nonatomic, readonly) NSString *description;
-@property (nonatomic, readonly) void *handle;
-@property (nonatomic, readonly) NSString *path; // @synthesize path;
-@property (nonatomic, readonly) BOOL readonly;
-@property (nonatomic, readonly) long long totalChanges;
 
-- (CDUnknownBlockType).cxx_destruct;
-- (void)closeConnection;
+- (void).cxx_destruct;
 - (void)dealloc;
-- (BOOL)execute:(id)arg1 error:(id *)arg2;
 - (id)init;
-- (id)init:(id)arg1 readonly:(BOOL)arg2 error:(id *)arg3;
-- (id)initWithReadonlyFlag:(BOOL)arg1 error:(id *)arg2;
-- (void)interrupt;
 
 @end
 

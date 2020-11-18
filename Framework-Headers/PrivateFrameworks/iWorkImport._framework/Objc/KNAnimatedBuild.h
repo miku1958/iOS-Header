@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class KNBuildAttributeValue, KNBuildAttributes, NSArray, NSDictionary, NSString;
+@class KNBuildAttributes, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface KNAnimatedBuild : NSObject
@@ -53,9 +53,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double eventStartTime; // @synthesize eventStartTime=_eventStartTime;
 @property (copy, nonatomic) NSDictionary *finalAttributes; // @synthesize finalAttributes=_finalAttributes;
 @property (readonly, nonatomic) double finalScale;
-@property (readonly, nonatomic) KNBuildAttributeValue *finalScaleAttribute;
+@property (readonly, nonatomic) BOOL hasPreviousActionRotate;
+@property (readonly, nonatomic) BOOL hasPreviousActionScale;
 @property (readonly, nonatomic) double initialScale;
-@property (readonly, nonatomic) KNBuildAttributeValue *initialScaleAttribute;
 @property (readonly, nonatomic) BOOL isActionBuild;
 @property (readonly, nonatomic) BOOL isActionMotionPath;
 @property (readonly, nonatomic) BOOL isActionOpacity;
@@ -75,13 +75,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isVisibleAtBeginning; // @synthesize isVisibleAtBeginning=_isVisibleAtBeginning;
 @property (nonatomic) BOOL isVisibleAtEnd; // @synthesize isVisibleAtEnd=_isVisibleAtEnd;
 @property (readonly, nonatomic) double maxScale;
-@property (readonly, nonatomic) KNBuildAttributeValue *maxScaleAttribute;
 @property (nonatomic) KNAnimatedBuild *parentBuild; // @synthesize parentBuild=_parentBuild;
 @property (readonly, nonatomic) Class pluginClass; // @synthesize pluginClass=_pluginClass;
 @property (copy, nonatomic) NSDictionary *previousAttributes; // @synthesize previousAttributes=_previousAttributes;
-@property (readonly, nonatomic) NSArray *requiredScaleAttributes;
 @property (readonly, nonatomic) NSArray *requiredScales;
-@property (readonly, nonatomic) BOOL requiresMaxScale;
 @property (readonly, nonatomic) long long stageIndex; // @synthesize stageIndex=_stageIndex;
 @property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 
@@ -89,6 +86,8 @@ __attribute__((visibility("hidden")))
 - (void)addChildBuild:(id)arg1;
 - (id)description;
 - (id)initWithBuildType:(long long)arg1 effectIdentifier:(id)arg2 attributes:(id)arg3 pluginClass:(Class)arg4 deliveryStyle:(unsigned long long)arg5 eventIndex:(long long)arg6 stageIndex:(long long)arg7 startTime:(double)arg8 eventStartTime:(double)arg9 duration:(double)arg10 direction:(unsigned long long)arg11 automatic:(BOOL)arg12 animateAtEndOfPreviousBuild:(BOOL)arg13 parentBuild:(id)arg14;
+- (BOOL)isRelatedTo:(id)arg1;
+- (BOOL)isSiblingTo:(id)arg1;
 - (BOOL)p_isActionEffect:(id)arg1;
 
 @end

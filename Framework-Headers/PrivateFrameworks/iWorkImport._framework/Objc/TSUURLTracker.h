@@ -9,11 +9,13 @@
 #import <iWorkImport/TSUURLWrapper-Protocol.h>
 
 @class NSData, NSString, NSURL, TSUURLTrackerFilePresenter;
+@protocol TSULogContext;
 
 __attribute__((visibility("hidden")))
 @interface TSUURLTracker : NSObject <TSUURLWrapper>
 {
     TSUURLTrackerFilePresenter *_filePresenter;
+    id<TSULogContext> _logContext;
 }
 
 @property (readonly) NSURL *URL;
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL deleted;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<TSULogContext> logContext; // @synthesize logContext=_logContext;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -35,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 bookmarkData:(id)arg2 delegate:(id)arg3;
 - (id)initWithURL:(id)arg1 delegate:(id)arg2;
+- (id)p_filePresenterQueue;
 - (void)pause;
 - (void)resume;
 - (void)stop;

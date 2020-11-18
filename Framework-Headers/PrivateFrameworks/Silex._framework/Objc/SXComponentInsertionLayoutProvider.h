@@ -8,28 +8,33 @@
 
 #import <Silex/SXComponentInsertionLayoutProvider-Protocol.h>
 
-@class NSString, SXColumnLayout, SXLayoutBlueprint, SXLayoutDataProvider;
+@class NSString, SXColumnLayout, SXLayoutBlueprint;
+@protocol SXDOMObjectProviding, SXUnitConverterFactory;
 
 @interface SXComponentInsertionLayoutProvider : NSObject <SXComponentInsertionLayoutProvider>
 {
     SXLayoutBlueprint *_layoutBlueprint;
-    SXLayoutDataProvider *_layoutDataProvider;
+    id<SXDOMObjectProviding> _DOMObjectProvider;
+    id<SXUnitConverterFactory> _unitConverterFactory;
 }
 
+@property (readonly, nonatomic) id<SXDOMObjectProviding> DOMObjectProvider; // @synthesize DOMObjectProvider=_DOMObjectProvider;
 @property (readonly, nonatomic) SXColumnLayout *columnLayout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct CGSize documentSize;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SXLayoutBlueprint *layoutBlueprint; // @synthesize layoutBlueprint=_layoutBlueprint;
-@property (readonly, nonatomic) SXLayoutDataProvider *layoutDataProvider; // @synthesize layoutDataProvider=_layoutDataProvider;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<SXUnitConverterFactory> unitConverterFactory; // @synthesize unitConverterFactory=_unitConverterFactory;
 @property (readonly, nonatomic) struct CGSize viewportSize;
 
 - (void).cxx_destruct;
 - (struct CGRect)frameForComponent:(id)arg1;
-- (id)initWithBlueprint:(id)arg1 layoutDataProvider:(id)arg2;
+- (id)initWithBlueprint:(id)arg1 DOMObjectProvider:(id)arg2 unitConverterFactory:(id)arg3;
+- (id)layoutBlueprintForMarker:(id)arg1;
 - (id)suggestedMarginForMarker:(id)arg1;
+- (id)unitConverterForMarker:(id)arg1;
 
 @end
 

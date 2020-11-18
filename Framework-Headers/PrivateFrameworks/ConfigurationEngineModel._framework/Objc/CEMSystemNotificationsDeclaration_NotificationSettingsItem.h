@@ -20,6 +20,7 @@
     NSNumber *_payloadShowInCarPlay;
     NSNumber *_payloadEmergencyEnabled;
     NSNumber *_payloadCriticalAlertEnabled;
+    NSNumber *_payloadGroupingType;
 }
 
 @property (copy, nonatomic) NSNumber *payloadAlertType; // @synthesize payloadAlertType=_payloadAlertType;
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) NSString *payloadBundleIdentifier; // @synthesize payloadBundleIdentifier=_payloadBundleIdentifier;
 @property (copy, nonatomic) NSNumber *payloadCriticalAlertEnabled; // @synthesize payloadCriticalAlertEnabled=_payloadCriticalAlertEnabled;
 @property (copy, nonatomic) NSNumber *payloadEmergencyEnabled; // @synthesize payloadEmergencyEnabled=_payloadEmergencyEnabled;
+@property (copy, nonatomic) NSNumber *payloadGroupingType; // @synthesize payloadGroupingType=_payloadGroupingType;
 @property (copy, nonatomic) NSNumber *payloadNotificationsEnabled; // @synthesize payloadNotificationsEnabled=_payloadNotificationsEnabled;
 @property (copy, nonatomic) NSNumber *payloadShowInCarPlay; // @synthesize payloadShowInCarPlay=_payloadShowInCarPlay;
 @property (copy, nonatomic) NSNumber *payloadShowInLockScreen; // @synthesize payloadShowInLockScreen=_payloadShowInLockScreen;
@@ -35,7 +37,7 @@
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithBundleIdentifier:(id)arg1;
-+ (id)buildWithBundleIdentifier:(id)arg1 withNotificationsEnabled:(id)arg2 withShowInNotificationCenter:(id)arg3 withShowInLockScreen:(id)arg4 withAlertType:(id)arg5 withBadgesEnabled:(id)arg6 withSoundsEnabled:(id)arg7 withShowInCarPlay:(id)arg8 withEmergencyEnabled:(id)arg9 withCriticalAlertEnabled:(id)arg10;
++ (id)buildWithBundleIdentifier:(id)arg1 withNotificationsEnabled:(id)arg2 withShowInNotificationCenter:(id)arg3 withShowInLockScreen:(id)arg4 withAlertType:(id)arg5 withBadgesEnabled:(id)arg6 withSoundsEnabled:(id)arg7 withShowInCarPlay:(id)arg8 withEmergencyEnabled:(id)arg9 withCriticalAlertEnabled:(id)arg10 withGroupingType:(id)arg11;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)loadPayload:(id)arg1 error:(id *)arg2;

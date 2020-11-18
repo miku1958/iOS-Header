@@ -8,11 +8,15 @@
 
 #import <WebKit/WKFormPeripheral-Protocol.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface WKFormInputControl : NSObject <WKFormPeripheral>
 {
     struct RetainPtr<id<WKFormControl>> _control;
 }
+
+@property (readonly, nonatomic) NSString *dateTimePickerCalendarType;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

@@ -25,6 +25,7 @@
 @property (readonly, copy, nonatomic) NSArray *requiredPaymentSetupFields; // @synthesize requiredPaymentSetupFields=_requiredPaymentSetupFields;
 @property (readonly, nonatomic) long long status; // @synthesize status=_status;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)initWithData:(id)arg1;
 - (id)initWithProduct:(id)arg1;

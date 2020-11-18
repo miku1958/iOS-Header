@@ -8,12 +8,13 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort, NSData, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, NSData, NSMutableArray, NSString, NTPBDate, NTPBRecordBase;
 
 @interface NTPBArticleRecord : PBCodable <NSCopying>
 {
     long long _backendArticleVersion;
     long long _behaviorFlags;
+    unsigned long long _halfLifeMilliseconds;
     long long _minimumNewsVersion;
     long long _publisherArticleVersion;
     long long _thumbnailFocalFrame;
@@ -25,7 +26,6 @@
     long long _thumbnailWidgetHQMetadata;
     long long _thumbnailWidgetLQMetadata;
     long long _thumbnailWidgetMetadata;
-    double _videoDuration;
     NSString *_accessoryText;
     NSMutableArray *_allowedStorefrontIDs;
     NSData *_articleRecirculationConfiguration;
@@ -39,18 +39,23 @@
     NSMutableArray *_experimentalTitles;
     NSString *_flintDocumentURL;
     NSMutableArray *_flintFontResourceIDs;
-    COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *_globalCohort;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_globalCohorts;
     NSMutableArray *_iAdCategories;
     NSMutableArray *_iAdKeywords;
     NSMutableArray *_iAdSectionIDs;
+    NSString *_language;
+    NSMutableArray *_linkedArticleIDs;
+    NSMutableArray *_linkedIssueIDs;
     NSMutableArray *_moreFromPublisherArticleIDs;
+    NSString *_parentIssueID;
     NSString *_primaryAudience;
     NTPBDate *_publishDate;
     NSMutableArray *_publisherSpecifiedArticleIds;
     NSString *_referencedArticleID;
     NSMutableArray *_relatedArticleIDs;
+    int _role;
     NSString *_shortExcerpt;
-    COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *_sourceChannelCohort;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_sourceChannelCohorts;
     NSString *_sourceChannelTagID;
     NSString *_stocksClusterID;
     NSString *_stocksMetadata;
@@ -74,13 +79,16 @@
     NSString *_videoCallToActionTitle;
     NSString *_videoCallToActionURL;
     NSString *_videoURL;
+    BOOL _isBundlePaid;
     BOOL _isDraft;
     BOOL _isFeatureCandidate;
+    BOOL _isIssueOnly;
     BOOL _isPaid;
     BOOL _isSponsored;
     struct {
         unsigned int backendArticleVersion:1;
         unsigned int behaviorFlags:1;
+        unsigned int halfLifeMilliseconds:1;
         unsigned int minimumNewsVersion:1;
         unsigned int publisherArticleVersion:1;
         unsigned int thumbnailFocalFrame:1;
@@ -92,11 +100,13 @@
         unsigned int thumbnailWidgetHQMetadata:1;
         unsigned int thumbnailWidgetLQMetadata:1;
         unsigned int thumbnailWidgetMetadata:1;
-        unsigned int videoDuration:1;
         unsigned int contentType:1;
+        unsigned int role:1;
         unsigned int storyType:1;
+        unsigned int isBundlePaid:1;
         unsigned int isDraft:1;
         unsigned int isFeatureCandidate:1;
+        unsigned int isIssueOnly:1;
         unsigned int isPaid:1;
         unsigned int isSponsored:1;
     } _has;
@@ -117,7 +127,8 @@
 @property (strong, nonatomic) NSMutableArray *experimentalTitles; // @synthesize experimentalTitles=_experimentalTitles;
 @property (strong, nonatomic) NSString *flintDocumentURL; // @synthesize flintDocumentURL=_flintDocumentURL;
 @property (strong, nonatomic) NSMutableArray *flintFontResourceIDs; // @synthesize flintFontResourceIDs=_flintFontResourceIDs;
-@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *globalCohort; // @synthesize globalCohort=_globalCohort;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts; // @synthesize globalCohorts=_globalCohorts;
+@property (nonatomic) unsigned long long halfLifeMilliseconds; // @synthesize halfLifeMilliseconds=_halfLifeMilliseconds;
 @property (readonly, nonatomic) BOOL hasAccessoryText;
 @property (readonly, nonatomic) BOOL hasArticleRecirculationConfiguration;
 @property (nonatomic) BOOL hasBackendArticleVersion;
@@ -129,18 +140,24 @@
 @property (readonly, nonatomic) BOOL hasCoverArt;
 @property (readonly, nonatomic) BOOL hasExcerptURL;
 @property (readonly, nonatomic) BOOL hasFlintDocumentURL;
-@property (readonly, nonatomic) BOOL hasGlobalCohort;
+@property (readonly, nonatomic) BOOL hasGlobalCohorts;
+@property (nonatomic) BOOL hasHalfLifeMilliseconds;
+@property (nonatomic) BOOL hasIsBundlePaid;
 @property (nonatomic) BOOL hasIsDraft;
 @property (nonatomic) BOOL hasIsFeatureCandidate;
+@property (nonatomic) BOOL hasIsIssueOnly;
 @property (nonatomic) BOOL hasIsPaid;
 @property (nonatomic) BOOL hasIsSponsored;
+@property (readonly, nonatomic) BOOL hasLanguage;
 @property (nonatomic) BOOL hasMinimumNewsVersion;
+@property (readonly, nonatomic) BOOL hasParentIssueID;
 @property (readonly, nonatomic) BOOL hasPrimaryAudience;
 @property (readonly, nonatomic) BOOL hasPublishDate;
 @property (nonatomic) BOOL hasPublisherArticleVersion;
 @property (readonly, nonatomic) BOOL hasReferencedArticleID;
+@property (nonatomic) BOOL hasRole;
 @property (readonly, nonatomic) BOOL hasShortExcerpt;
-@property (readonly, nonatomic) BOOL hasSourceChannelCohort;
+@property (readonly, nonatomic) BOOL hasSourceChannelCohorts;
 @property (readonly, nonatomic) BOOL hasSourceChannelTagID;
 @property (readonly, nonatomic) BOOL hasStocksClusterID;
 @property (readonly, nonatomic) BOOL hasStocksMetadata;
@@ -171,25 +188,31 @@
 @property (readonly, nonatomic) BOOL hasTitleCompact;
 @property (readonly, nonatomic) BOOL hasVideoCallToActionTitle;
 @property (readonly, nonatomic) BOOL hasVideoCallToActionURL;
-@property (nonatomic) BOOL hasVideoDuration;
 @property (readonly, nonatomic) BOOL hasVideoURL;
 @property (strong, nonatomic) NSMutableArray *iAdCategories; // @synthesize iAdCategories=_iAdCategories;
 @property (strong, nonatomic) NSMutableArray *iAdKeywords; // @synthesize iAdKeywords=_iAdKeywords;
 @property (strong, nonatomic) NSMutableArray *iAdSectionIDs; // @synthesize iAdSectionIDs=_iAdSectionIDs;
+@property (nonatomic) BOOL isBundlePaid; // @synthesize isBundlePaid=_isBundlePaid;
 @property (nonatomic) BOOL isDraft; // @synthesize isDraft=_isDraft;
 @property (nonatomic) BOOL isFeatureCandidate; // @synthesize isFeatureCandidate=_isFeatureCandidate;
+@property (nonatomic) BOOL isIssueOnly; // @synthesize isIssueOnly=_isIssueOnly;
 @property (nonatomic) BOOL isPaid; // @synthesize isPaid=_isPaid;
 @property (nonatomic) BOOL isSponsored; // @synthesize isSponsored=_isSponsored;
+@property (strong, nonatomic) NSString *language; // @synthesize language=_language;
+@property (strong, nonatomic) NSMutableArray *linkedArticleIDs; // @synthesize linkedArticleIDs=_linkedArticleIDs;
+@property (strong, nonatomic) NSMutableArray *linkedIssueIDs; // @synthesize linkedIssueIDs=_linkedIssueIDs;
 @property (nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
 @property (strong, nonatomic) NSMutableArray *moreFromPublisherArticleIDs; // @synthesize moreFromPublisherArticleIDs=_moreFromPublisherArticleIDs;
+@property (strong, nonatomic) NSString *parentIssueID; // @synthesize parentIssueID=_parentIssueID;
 @property (strong, nonatomic) NSString *primaryAudience; // @synthesize primaryAudience=_primaryAudience;
 @property (strong, nonatomic) NTPBDate *publishDate; // @synthesize publishDate=_publishDate;
 @property (nonatomic) long long publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property (strong, nonatomic) NSMutableArray *publisherSpecifiedArticleIds; // @synthesize publisherSpecifiedArticleIds=_publisherSpecifiedArticleIds;
 @property (strong, nonatomic) NSString *referencedArticleID; // @synthesize referencedArticleID=_referencedArticleID;
 @property (strong, nonatomic) NSMutableArray *relatedArticleIDs; // @synthesize relatedArticleIDs=_relatedArticleIDs;
+@property (nonatomic) int role; // @synthesize role=_role;
 @property (strong, nonatomic) NSString *shortExcerpt; // @synthesize shortExcerpt=_shortExcerpt;
-@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *sourceChannelCohort; // @synthesize sourceChannelCohort=_sourceChannelCohort;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *sourceChannelCohorts; // @synthesize sourceChannelCohorts=_sourceChannelCohorts;
 @property (strong, nonatomic) NSString *sourceChannelTagID; // @synthesize sourceChannelTagID=_sourceChannelTagID;
 @property (strong, nonatomic) NSString *stocksClusterID; // @synthesize stocksClusterID=_stocksClusterID;
 @property (strong, nonatomic) NSString *stocksMetadata; // @synthesize stocksMetadata=_stocksMetadata;
@@ -221,7 +244,6 @@
 @property (strong, nonatomic) NSMutableArray *topics; // @synthesize topics=_topics;
 @property (strong, nonatomic) NSString *videoCallToActionTitle; // @synthesize videoCallToActionTitle=_videoCallToActionTitle;
 @property (strong, nonatomic) NSString *videoCallToActionURL; // @synthesize videoCallToActionURL=_videoCallToActionURL;
-@property (nonatomic) double videoDuration; // @synthesize videoDuration=_videoDuration;
 @property (strong, nonatomic) NSString *videoURL; // @synthesize videoURL=_videoURL;
 
 + (Class)allowedStorefrontIDsType;
@@ -231,6 +253,8 @@
 + (Class)iAdCategoriesType;
 + (Class)iAdKeywordsType;
 + (Class)iAdSectionIDsType;
++ (Class)linkedArticleIDsType;
++ (Class)linkedIssueIDsType;
 + (Class)moreFromPublisherArticleIDsType;
 + (Class)publisherSpecifiedArticleIdsType;
 + (Class)relatedArticleIDsType;
@@ -242,6 +266,8 @@
 - (void)addIAdCategories:(id)arg1;
 - (void)addIAdKeywords:(id)arg1;
 - (void)addIAdSectionIDs:(id)arg1;
+- (void)addLinkedArticleIDs:(id)arg1;
+- (void)addLinkedIssueIDs:(id)arg1;
 - (void)addMoreFromPublisherArticleIDs:(id)arg1;
 - (void)addPublisherSpecifiedArticleIds:(id)arg1;
 - (void)addRelatedArticleIDs:(id)arg1;
@@ -257,6 +283,8 @@
 - (void)clearIAdCategories;
 - (void)clearIAdKeywords;
 - (void)clearIAdSectionIDs;
+- (void)clearLinkedArticleIDs;
+- (void)clearLinkedIssueIDs;
 - (void)clearMoreFromPublisherArticleIDs;
 - (void)clearPublisherSpecifiedArticleIds;
 - (void)clearRelatedArticleIDs;
@@ -277,6 +305,10 @@
 - (id)iAdSectionIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)iAdSectionIDsCount;
 - (BOOL)isEqual:(id)arg1;
+- (id)linkedArticleIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)linkedArticleIDsCount;
+- (id)linkedIssueIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)linkedIssueIDsCount;
 - (void)mergeFrom:(id)arg1;
 - (id)moreFromPublisherArticleIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)moreFromPublisherArticleIDsCount;

@@ -11,16 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface TSWPStorageStyler : NSObject
 {
-    int _attributeArrayKind;
     TSWPStorage *_storage;
+    unsigned long long _attributeArrayKind;
 }
 
-@property (nonatomic) int attributeArrayKind; // @synthesize attributeArrayKind=_attributeArrayKind;
+@property (nonatomic) unsigned long long attributeArrayKind; // @synthesize attributeArrayKind=_attributeArrayKind;
 @property (strong, nonatomic) TSWPStorage *storage; // @synthesize storage=_storage;
 
 - (void).cxx_destruct;
 - (void)applyStyle:(id)arg1 range:(struct _NSRange)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3;
-- (id)initWithStorage:(id)arg1 attributeArrayKind:(int)arg2;
+- (id)initWithStorage:(id)arg1 attributeArrayKind:(unsigned long long)arg2;
 - (void)performStylingInRange:(struct _NSRange)arg1 undoTransaction:(struct TSWPStorageTransaction *)arg2;
 - (id)replacementStyleForStyle:(id)arg1 range:(struct _NSRange)arg2;
 

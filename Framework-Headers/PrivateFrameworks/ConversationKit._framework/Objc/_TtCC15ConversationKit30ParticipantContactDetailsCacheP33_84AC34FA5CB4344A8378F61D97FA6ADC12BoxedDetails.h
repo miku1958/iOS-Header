@@ -13,7 +13,7 @@
     MISSING_TYPE *details;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

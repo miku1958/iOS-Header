@@ -11,9 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)_encryptionKeys;
 + (void)_sync:(CDUnknownBlockType)arg1;
++ (id)encryptionKeyForDataProtectionClass:(unsigned long long)arg1;
 + (BOOL)isRunningUnitTests;
 + (id)protocolClasses;
++ (void)setEncryptionKey:(id)arg1 forDataProtectionClass:(unsigned long long)arg2;
 + (void)setProtocolClasses:(id)arg1;
 
 @end

@@ -4,70 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PassKitUI/PKPaymentDocumentSubmissionController.h>
 
 #import <PassKitUI/PKPeerPaymentAccountResolutionControllerDelegate-Protocol.h>
 
-@class NSString, PKPeerPaymentAccountResolutionController, PKPeerPaymentIdentityVerificationResponse, PKPeerPaymentWebService, UIImage;
-@protocol PKPaymentSetupViewControllerDelegate, PKPeerPaymentDocumentSubmissionControllerDelegate;
+@class NSString, PKPeerPaymentAccountResolutionController, PKPeerPaymentIdentityVerificationResponse, PKPeerPaymentWebService;
 
-@interface PKPeerPaymentDocumentSubmissionController : NSObject <PKPeerPaymentAccountResolutionControllerDelegate>
+@interface PKPeerPaymentDocumentSubmissionController : PKPaymentDocumentSubmissionController <PKPeerPaymentAccountResolutionControllerDelegate>
 {
-    BOOL _supportsBackID;
-    BOOL _supportsPassport;
-    long long _state;
-    id<PKPeerPaymentDocumentSubmissionControllerDelegate> _delegate;
-    long long _side;
-    unsigned long long _type;
     PKPeerPaymentWebService *_webService;
     PKPeerPaymentIdentityVerificationResponse *_identityVerificationResponse;
-    id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
-    long long _context;
     PKPeerPaymentAccountResolutionController *_accountResolutionController;
-    UIImage *_frontID;
-    UIImage *_backID;
-    NSString *_selectedCountryCode;
 }
 
 @property (strong, nonatomic) PKPeerPaymentAccountResolutionController *accountResolutionController; // @synthesize accountResolutionController=_accountResolutionController;
-@property (strong, nonatomic) UIImage *backID; // @synthesize backID=_backID;
-@property (nonatomic) long long context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PKPeerPaymentDocumentSubmissionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UIImage *frontID; // @synthesize frontID=_frontID;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKPeerPaymentIdentityVerificationResponse *identityVerificationResponse; // @synthesize identityVerificationResponse=_identityVerificationResponse;
-@property (strong, nonatomic) NSString *selectedCountryCode; // @synthesize selectedCountryCode=_selectedCountryCode;
-@property (strong, nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
-@property (nonatomic) long long side; // @synthesize side=_side;
-@property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL supportsBackID; // @synthesize supportsBackID=_supportsBackID;
-@property (nonatomic) BOOL supportsPassport; // @synthesize supportsPassport=_supportsPassport;
-@property (nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (strong, nonatomic) PKPeerPaymentWebService *webService; // @synthesize webService=_webService;
 
 - (void).cxx_destruct;
-- (void)_dismissViewController;
-- (void)_presentViewController:(id)arg1;
-- (void)captureFailedWithError:(id)arg1;
-- (void)capturedImage:(id)arg1;
 - (void)contactApplePressed;
-- (void)finishPressedFromViewController:(id)arg1;
-- (id)init;
 - (id)initWithPeerPaymentWebService:(id)arg1 identityVerificationResponse:(id)arg2 setupDelegate:(id)arg3 context:(long long)arg4;
-- (id)nextViewController;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
-- (void)scanAgain;
-- (void)stateChanged;
-- (void)tryUploadAgain;
 - (void)uploadID;
-- (void)userApprovedCapturedID;
-- (void)userRejectedCapturedID;
-- (void)userWantsToCancelFromViewController:(id)arg1;
-- (void)userWantsToContinue;
 
 @end
 

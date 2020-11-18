@@ -50,7 +50,7 @@
 - (void)_fetchContentForUniqueID:(id)arg1 usingSynchronousProxy:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_fetchImageSetContainerForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 usingSynchronousProxy:(BOOL)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)_fetchImageSetForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 usingSynchronousProxy:(BOOL)arg4 withCompletion:(CDUnknownBlockType)arg5;
-- (id)_filterPeerPaymentPass:(id)arg1;
+- (id)_filterPeerPaymentPass:(id)arg1 request:(id)arg2;
 - (void)_getPassesAndCatalogOfPassTypes:(unsigned long long)arg1 synchronously:(BOOL)arg2 limitResults:(BOOL)arg3 withRetries:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
 - (BOOL)_hasInterfaceOfType:(unsigned long long)arg1;
 - (BOOL)_hasRemoteLibrary;
@@ -66,10 +66,13 @@
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_setSetting:(unsigned long long)arg1 enabled:(BOOL)arg2 forPass:(id)arg3;
+- (BOOL)_shouldNotifyForParter:(id)arg1;
 - (id)_sortedPaymentPassesForPaymentRequest:(id)arg1;
 - (id)_synchronousExtendedRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_synchronousInAppRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)_transitDCIMessage:(id)arg1 paymentPasses:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_transitTopUpMessage:(id)arg1 passes:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)activatePaymentPass:(id)arg1 withActivationCode:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)activatePaymentPass:(id)arg1 withActivationData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addDelegate:(id)arg1;
@@ -179,8 +182,9 @@
 - (void)spotlightDeleteIndexEntriesForAllPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)spotlightReindexAllPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)spotlightReindexPassesWithUniqueIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)supportedPartnersForDigitalIssuance:(CDUnknownBlockType)arg1;
 - (void)supportedTransitPartnersForDigitalIssuance:(CDUnknownBlockType)arg1;
+- (void)transitMessageDidDisplay:(id)arg1;
+- (void)transitMessageForRouteInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateSettings:(unsigned long long)arg1 forObjectWithUniqueID:(id)arg2;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString, NTPBWidgetEngagement;
+@class NSData, NSMutableArray, NSString, NTPBChannelData, NTPBIssueData, NTPBIssueExposureData, NTPBWidgetEngagement;
 
 @interface NTPBShareResult : PBCodable <NSCopying>
 {
@@ -22,6 +22,7 @@
     int _backendArticleVersion;
     NSString *_campaignId;
     NSString *_campaignType;
+    NTPBChannelData *_channelData;
     int _characterCount;
     NSString *_contentId;
     int _contentType;
@@ -39,6 +40,8 @@
     NSString *_iadNativeCampaignAd;
     NSString *_iadNativeLine;
     NSString *_iosActivityType;
+    NTPBIssueData *_issueData;
+    NTPBIssueExposureData *_issueExposureData;
     NSString *_language;
     NSMutableArray *_namedEntities;
     NSString *_nativeCampaignData;
@@ -110,6 +113,7 @@
 @property (nonatomic) long long backendArticleVersionInt64; // @synthesize backendArticleVersionInt64=_backendArticleVersionInt64;
 @property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
 @property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
+@property (strong, nonatomic) NTPBChannelData *channelData; // @synthesize channelData=_channelData;
 @property (nonatomic) int characterCount; // @synthesize characterCount=_characterCount;
 @property (strong, nonatomic) NSString *contentId; // @synthesize contentId=_contentId;
 @property (nonatomic) int contentType; // @synthesize contentType=_contentType;
@@ -130,6 +134,7 @@
 @property (nonatomic) BOOL hasBackendArticleVersionInt64;
 @property (readonly, nonatomic) BOOL hasCampaignId;
 @property (readonly, nonatomic) BOOL hasCampaignType;
+@property (readonly, nonatomic) BOOL hasChannelData;
 @property (nonatomic) BOOL hasCharacterCount;
 @property (readonly, nonatomic) BOOL hasContentId;
 @property (nonatomic) BOOL hasContentType;
@@ -158,6 +163,8 @@
 @property (nonatomic) BOOL hasIsSearchResult;
 @property (nonatomic) BOOL hasIsTopStoryArticle;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
+@property (readonly, nonatomic) BOOL hasIssueData;
+@property (readonly, nonatomic) BOOL hasIssueExposureData;
 @property (readonly, nonatomic) BOOL hasLanguage;
 @property (readonly, nonatomic) BOOL hasNativeCampaignData;
 @property (nonatomic) BOOL hasNextArticleAffordanceType;
@@ -196,6 +203,8 @@
 @property (nonatomic) BOOL isSearchResult; // @synthesize isSearchResult=_isSearchResult;
 @property (nonatomic) BOOL isTopStoryArticle; // @synthesize isTopStoryArticle=_isTopStoryArticle;
 @property (nonatomic) BOOL isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;
+@property (strong, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
+@property (strong, nonatomic) NTPBIssueExposureData *issueExposureData; // @synthesize issueExposureData=_issueExposureData;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
 @property (strong, nonatomic) NSMutableArray *namedEntities; // @synthesize namedEntities=_namedEntities;
 @property (strong, nonatomic) NSString *nativeCampaignData; // @synthesize nativeCampaignData=_nativeCampaignData;

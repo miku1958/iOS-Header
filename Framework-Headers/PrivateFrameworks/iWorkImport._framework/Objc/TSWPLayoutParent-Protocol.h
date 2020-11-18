@@ -8,7 +8,7 @@
 @protocol NSFastEnumeration, TSWPStyleProvider;
 
 @protocol TSWPLayoutParent
-- (unsigned int)autosizeFlagsForTextLayout:(TSWPLayout *)arg1;
+- (unsigned long long)autosizeFlagsForTextLayout:(TSWPLayout *)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(TSWPLayout *)arg1 textSize:(struct CGSize)arg2;
 - (id<NSFastEnumeration>)dependentsOfTextLayout:(TSWPLayout *)arg1;
 - (void)invalidateForAutosizingTextLayout:(TSWPLayout *)arg1;
@@ -21,8 +21,8 @@
 - (unsigned long long)initialCharIndex;
 - (struct CGSize)initialTextSize;
 - (struct CGRect)maskRectForTextLayout:(TSWPLayout *)arg1;
-- (double)maxAutoGrowHeightForTextLayout:(TSWPLayout *)arg1;
-- (double)maxAutoGrowWidthForTextLayout:(TSWPLayout *)arg1;
+- (double)maxAutoGrowBlockHeightForTextLayout:(TSWPLayout *)arg1;
+- (double)maxAutoGrowLineWidthForTextLayout:(TSWPLayout *)arg1;
 - (int)naturalAlignmentForTextLayout:(TSWPLayout *)arg1;
 - (unsigned long long)pageCountForAttachment:(TSWPAttachment *)arg1;
 - (unsigned long long)pageNumberForAttachment:(TSWPAttachment *)arg1;

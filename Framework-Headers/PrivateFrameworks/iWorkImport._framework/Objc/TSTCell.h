@@ -46,9 +46,9 @@ __attribute__((visibility("hidden")))
     TSKFormat *_durationFormat;
     TSKFormat *_textFormat;
     TSKFormat *_booleanFormat;
+    TSTImportWarningSet *_importWarningSet;
     TSULocale *_locale;
     TSDCommentStorage *_commentStorage;
-    TSTImportWarningSet *_importWarningSet;
 }
 
 @property (nonatomic) BOOL boolValue;
@@ -96,6 +96,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *formulaSyntaxErrorString;
 @property (readonly, nonatomic) BOOL hasAnyCustomFormat;
 @property (readonly, nonatomic) BOOL hasAnyFormats;
+@property (readonly, nonatomic) BOOL hasAnyWarning;
 @property (readonly, nonatomic) BOOL hasBooleanFormat;
 @property (readonly, nonatomic) BOOL hasCellSpec;
 @property (readonly, nonatomic) BOOL hasCellStyle;
@@ -114,7 +115,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasMismatchedFormatAndValue;
 @property (readonly, nonatomic) BOOL hasNumberFormat;
 @property (readonly, nonatomic) BOOL hasRichText;
-@property (readonly, nonatomic) BOOL hasStockFormula;
+@property (readonly, nonatomic) BOOL hasStockFormulaForStockUI;
 @property (readonly, nonatomic) BOOL hasTextFormat;
 @property (readonly, nonatomic) BOOL hasTextStyle;
 @property (readonly, nonatomic) BOOL hasValueOrError;
@@ -158,6 +159,7 @@ __attribute__((visibility("hidden")))
 + (id)stringForCellValueType:(int)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2 supportsInlineAttachments:(BOOL)arg3;
 - (void)applyFormulaResult:(const struct TSCEValue *)arg1;
 - (void)applyFormulaResult:(const struct TSCEValue *)arg1 context:(id)arg2 hasWarnings:(BOOL)arg3 outWriteDidBeginOrEndWithTextCell:(BOOL *)arg4 propagateCheckboxesAndRatings:(BOOL)arg5;
 - (void)applyPopupChoiceIndex:(unsigned long long)arg1;
@@ -176,6 +178,7 @@ __attribute__((visibility("hidden")))
 - (void)copyAllFormatsToCell:(id)arg1;
 - (void)copyJustStrokesToCell:(id)arg1;
 - (void)copyJustStyleAndStrokesToCell:(id)arg1;
+- (void)copyJustValueToCell:(id)arg1;
 - (void)copyToCell:(id)arg1;
 - (void)copyValueAndFormatToCell:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

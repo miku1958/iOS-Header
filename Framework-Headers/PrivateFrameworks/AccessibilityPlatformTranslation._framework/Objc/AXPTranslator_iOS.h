@@ -54,6 +54,7 @@
 - (BOOL)_processPerformAction:(int)arg1 value:(id)arg2;
 - (BOOL)_processPerformCustomAction:(id)arg1;
 - (BOOL)_processPressAction:(id)arg1;
+- (id)_processRawElementDataRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processRoleAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (BOOL)_processScrollToVisibleAction:(id)arg1;
 - (BOOL)_processShowContextMenuAction:(id)arg1;

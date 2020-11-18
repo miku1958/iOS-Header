@@ -14,6 +14,7 @@
 
 - (void)deleteAllowance:(STAllowance *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)respondToAskForTime:(STAskForTimeRequestResponse *)arg1 withApproval:(BOOL)arg2 timeApproved:(NSNumber *)arg3 completionHandler:(void (^)(NSError *))arg4;
+- (void)saveAllAllowancesEnabled:(BOOL)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)saveAllowance:(STAllowance *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)saveAlwaysAllowList:(STAlwaysAllowList *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)saveDefaultAlwaysAllowListWithCompletionHandler:(void (^)(NSError *))arg1;

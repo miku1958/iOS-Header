@@ -42,7 +42,7 @@
 - (id)imageResource;
 - (void)imageView:(id)arg1 didLoadAnimatedImage:(id)arg2;
 - (void)imageView:(id)arg1 didLoadImage:(id)arg2;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7 mediaSharingPolicyProvider:(id)arg8;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7 mediaSharingPolicyProvider:(id)arg8;
 - (void)layoutImageView;
 - (void)loadComponent:(id)arg1;
 - (struct CGRect)originalFrameForContentView:(id)arg1 behavior:(id)arg2;
@@ -50,7 +50,7 @@
 - (void)renderContents;
 - (struct CGRect)transitionContentFrame;
 - (id)transitionContentView;
-- (BOOL)transitionViewUsesThumbnail;
+- (BOOL)usesThumbnailWithImageIdentifier:(id)arg1;
 - (id)viewForDragManager:(id)arg1;
 - (void)visibilityStateDidChangeFromState:(long long)arg1;
 

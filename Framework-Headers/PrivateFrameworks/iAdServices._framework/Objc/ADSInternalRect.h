@@ -17,8 +17,8 @@
     ADSInternalSize *_size;
 }
 
-@property (strong, nonatomic) ADSInternalPoint *origin; // @synthesize origin=_origin;
-@property (strong, nonatomic) ADSInternalSize *size; // @synthesize size=_size;
+@property (copy, nonatomic) ADSInternalPoint *origin; // @synthesize origin=_origin;
+@property (copy, nonatomic) ADSInternalSize *size; // @synthesize size=_size;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;

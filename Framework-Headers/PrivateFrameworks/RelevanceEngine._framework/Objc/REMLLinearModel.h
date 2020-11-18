@@ -22,7 +22,6 @@
 - (long long)_getNumberOfCoordinates;
 - (BOOL)_loadModelFromURL:(id)arg1 error:(id *)arg2;
 - (id)_predictWithFeatures:(id)arg1;
-- (BOOL)_saveDebugModelToURL:(id)arg1 error:(id *)arg2;
 - (BOOL)_saveModelToURL:(id)arg1 error:(id *)arg2;
 - (void)_trainWithFeatures:(id)arg1 positiveEvent:(id)arg2;
 - (void)collectLoggableState:(CDUnknownBlockType)arg1;

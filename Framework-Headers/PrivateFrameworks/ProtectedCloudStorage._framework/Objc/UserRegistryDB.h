@@ -78,14 +78,12 @@
 - (BOOL)replaceRecordID:(id)arg1 data:(id)arg2 publicKey:(id)arg3;
 - (BOOL)setEscrowKey:(id)arg1 escrowBlob:(id)arg2;
 - (BOOL)setMirrorKey:(id)arg1 service:(int)arg2 type:(int)arg3 publicIdentity:(id)arg4;
-- (BOOL)setUserVersion:(int)arg1;
 - (BOOL)setupDatabase;
 - (id)syncDevices;
 - (BOOL)syncedKeyToDevice:(id)arg1 type:(int)arg2 device:(id)arg3;
 - (BOOL)updateEscrowKey:(id)arg1 escrowBlob:(id)arg2;
 - (BOOL)updateMirrorKey:(id)arg1 service:(int)arg2 type:(int)arg3 newType:(int)arg4 current:(BOOL)arg5;
 - (BOOL)updateSyncDevice:(id)arg1 seen:(id)arg2 version:(id)arg3;
-- (int)userVersion;
 
 @end
 

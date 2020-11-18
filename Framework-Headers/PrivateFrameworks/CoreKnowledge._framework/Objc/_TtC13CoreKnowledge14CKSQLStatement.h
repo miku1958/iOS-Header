@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/SwiftObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC13CoreKnowledge14CKSQLStatement : SwiftObject
+@interface _TtC13CoreKnowledge14CKSQLStatement : _TtCs12_SwiftObject
 {
     MISSING_TYPE *handle;
     MISSING_TYPE *connection;

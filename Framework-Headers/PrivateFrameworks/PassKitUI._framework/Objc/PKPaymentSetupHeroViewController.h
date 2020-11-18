@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 
-@class ACAccountStore, NSString, PKPaymentHeroImageController, PKPaymentProvisioningController, PKPaymentSetupHeroView, PKPaymentWebService;
+@class ACAccountStore, NSArray, NSString, PKPaymentHeroImageController, PKPaymentProvisioningController, PKPaymentSetupHeroView, PKPaymentWebService;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKPaymentSetupHeroViewController : PKExplanationViewController <PKExplanationViewDelegate>
@@ -19,6 +19,7 @@
     BOOL _hideSetupLater;
     BOOL _hasFelicaSecureElement;
     BOOL _preflightComplete;
+    NSArray *_featuredImages;
     BOOL _allowsManualEntry;
     PKPaymentProvisioningController *_provisioningController;
     id<PKPaymentSetupViewControllerDelegate> _delegate;
@@ -39,16 +40,15 @@
 
 - (void).cxx_destruct;
 - (id)_bodyText;
-- (void)_credentialRenewalRequired:(id)arg1;
 - (void)_next:(id)arg1;
 - (void)_preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_terminateSetupFlow;
-- (void)dealloc;
 - (unsigned long long)edgesForExtendedLayout;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 - (void)loadView;
+- (void)setFeaturedHeroImages:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

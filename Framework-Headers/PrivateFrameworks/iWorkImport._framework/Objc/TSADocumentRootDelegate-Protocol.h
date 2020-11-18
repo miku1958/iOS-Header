@@ -16,15 +16,15 @@
 @property (readonly, nonatomic) TSADocumentInfo *documentInfo;
 @property (readonly, nonatomic) BOOL isClosedOrClosing;
 @property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) BOOL shouldSkipStartRecalculationOnLoad;
 
 
 @optional
-- (void)continueActivityUsingBlock:(void (^)(void))arg1;
-- (void)didAddObserverForICloudTeardown:(id)arg1;
+- (void)didMailboxShutdown;
 - (void)documentRoot:(TSADocumentRoot *)arg1 didReceiveDocumentStatusNotification:(TSKMailboxDocStatusMessage *)arg2;
+- (void)handleCollaborationErrorAction:(TSACollaborationErrorAction *)arg1 ignorePreviousErrors:(BOOL)arg2 documentRoot:(TSADocumentRoot *)arg3;
 - (BOOL)hasPersistenceWarningsOfKind:(long long)arg1;
 - (void)invalidateRestorableState;
-- (void)showCollaborationErrorAction:(TSACollaborationErrorAction *)arg1 documentRoot:(TSADocumentRoot *)arg2;
-- (void)willRemoveICloudTeardownObserver:(id)arg1;
+- (void)willPostUndoManagerNotificationsUsingBlock:(void (^)(void))arg1;
 @end
 

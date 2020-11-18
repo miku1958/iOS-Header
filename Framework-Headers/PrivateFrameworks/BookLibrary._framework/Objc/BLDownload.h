@@ -73,7 +73,7 @@
 @property (copy, nonatomic) NSDate *lastStateChangeTime; // @synthesize lastStateChangeTime=_lastStateChangeTime;
 @property (copy, nonatomic) NSString *md5HashStrings; // @synthesize md5HashStrings=_md5HashStrings;
 @property (nonatomic) long long numberOfBytesToHash; // @synthesize numberOfBytesToHash=_numberOfBytesToHash;
-@property (strong, nonatomic) NSString *originalURL; // @synthesize originalURL=_originalURL;
+@property (copy, nonatomic) NSString *originalURL; // @synthesize originalURL=_originalURL;
 @property (copy, nonatomic) NSString *permlink; // @synthesize permlink=_permlink;
 @property (strong, nonatomic) NSNumber *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
 @property (copy, nonatomic) NSNumber *publicationVersion; // @synthesize publicationVersion=_publicationVersion;

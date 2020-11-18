@@ -97,6 +97,7 @@
 @property (readonly, nonatomic) BOOL isFinished;
 @property (nonatomic) BOOL isIncoming; // @synthesize isIncoming=_isIncoming;
 @property (nonatomic) BOOL isLocation; // @synthesize isLocation=_isLocation;
+@property (readonly, nonatomic) BOOL isOpusAudioMessage;
 @property (readonly, nonatomic) BOOL isRecipeBasedSticker;
 @property (nonatomic) BOOL isSticker; // @synthesize isSticker=_isSticker;
 @property (strong, nonatomic, setter=_setLocalPath:) NSString *localPath;

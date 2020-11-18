@@ -10,7 +10,7 @@
 #import <iWorkImport/TSTTableRepInternal-Protocol.h>
 #import <iWorkImport/UITextFieldDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSMutableArray, NSMutableDictionary, NSSet, NSString, TSDTilingLayer, TSTAnimation, TSTCellSelection, TSTInfo, TSTLayout, TSTMasterLayout, TSTSelectionDragController, TSTTableReferences;
+@class CALayer, CAShapeLayer, NSMutableArray, NSMutableDictionary, NSSet, NSString, TSDTilingLayer, TSTAnimation, TSTCellSelection, TSTLayout, TSTMasterLayout, TSTSelectionDragController, TSTTableInfo, TSTTableReferences;
 @protocol TSTCanvasReferenceController, TSTTableAnimationController, TSTTableChromeProvider, TSTTableRepDelegate;
 
 __attribute__((visibility("hidden")))
@@ -95,9 +95,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldRepositionStockPopover; // @synthesize shouldRepositionStockPopover=_shouldRepositionStockPopover;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<TSTTableChromeProvider> tableChrome; // @synthesize tableChrome=_tableChrome;
-@property (readonly, nonatomic) TSTInfo *tableInfo;
+@property (readonly, nonatomic) TSTTableInfo *tableInfo;
 @property (readonly, nonatomic) TSTLayout *tableLayout;
-@property (readonly, nonatomic) TSTInfo *tableModel;
+@property (readonly, nonatomic) TSTTableInfo *tableModel;
 @property (nonatomic, getter=isTableNameValid) BOOL tableNameValid; // @synthesize tableNameValid=_tableNameValid;
 @property BOOL tableRepIsBeingRemovedFromBackgroundLayout; // @synthesize tableRepIsBeingRemovedFromBackgroundLayout=_tableRepIsBeingRemovedFromBackgroundLayout;
 @property (readonly, nonatomic) struct CGAffineTransform transformFromCanvas;
@@ -113,7 +113,6 @@ __attribute__((visibility("hidden")))
 + (Class)tableRepDelegateClass;
 - (void).cxx_destruct;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
-- (id)additionalLayersUnderLayer;
 - (void)asyncPostTextChangedInRange:(struct TSUCellRect)arg1;
 - (struct CGRect)boundsForCellSelection:(struct TSUCellCoord)arg1;
 - (BOOL)canDrawInBackgroundDuringScroll;
@@ -124,7 +123,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (struct CGRect)deviceBoundsForCellRange:(struct TSUCellRect)arg1;
 - (void)didDrawCellImageFill:(id)arg1 inCellRange:(struct TSUCellRect)arg2;
-- (void)didUpdateLayer:(id)arg1;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)editorSelection;
@@ -141,7 +139,6 @@ __attribute__((visibility("hidden")))
 - (struct TSUCellCoord)logicalCellIDForUnscaledCanvasPoint:(struct CGPoint)arg1;
 - (BOOL)mustDrawOnMainThreadForInteractiveCanvas;
 - (struct CGRect)naturalBoundsRectForHyperlinkField:(id)arg1;
-- (id)overlayLayers;
 - (void)p_addObservers;
 - (struct CGRect)p_alignedLayerFrameForLayoutSpace:(id)arg1 transform:(struct CGAffineTransform)arg2;
 - (struct TSUCellCoord)p_cellIDForHyperlinkField:(id)arg1;

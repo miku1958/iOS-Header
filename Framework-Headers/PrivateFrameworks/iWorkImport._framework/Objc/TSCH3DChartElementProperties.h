@@ -22,12 +22,12 @@ __attribute__((visibility("hidden")))
 - (void)addTexcoordsToProcessor:(id)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3;
 - (void)applyChartElementsTransform:(struct ObjectTransforms *)arg1;
 - (void)applyChartElementsTransformToProcessor:(id)arg1;
-- (BOOL)applyCombinedTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3 propertyAccessor:(const struct ChartScenePropertyAccessor *)arg4;
-- (BOOL)applyElementTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3 propertyAccessor:(const struct ChartScenePropertyAccessor *)arg4;
-- (BOOL)applyElementTransformToProcessor:(id)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3 propertyAccessor:(const struct ChartScenePropertyAccessor *)arg4;
+- (BOOL)applyCombinedTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3 propertyAccessor:(id)arg4;
+- (BOOL)applyElementTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(tvec2_3b141483)arg3 propertyAccessor:(id)arg4;
+- (BOOL)applyElementTransformToProcessor:(id)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3 propertyAccessor:(id)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (float)elementTransformDepthFromPropertyAccessor:(const struct ChartScenePropertyAccessor *)arg1;
+- (float)elementTransformDepthFromPropertyAccessor:(id)arg1;
 - (id)getPropertiesOfType:(Class)arg1;
 - (id)init;
 - (id)renderingLightingModelForSeries:(id)arg1;

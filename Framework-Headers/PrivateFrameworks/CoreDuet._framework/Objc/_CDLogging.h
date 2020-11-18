@@ -14,6 +14,7 @@
 + (id)autoSUChannel;
 + (id)communicatorChannel;
 + (id)contextChannel;
++ (id)dataCollectionChannel;
 + (id)instrumentationChannel;
 + (id)interactionChannel;
 + (id)interactionSignpost;

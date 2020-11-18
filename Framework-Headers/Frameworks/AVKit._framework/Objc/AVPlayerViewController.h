@@ -72,10 +72,14 @@
     AVPlayer *_contentTransitioningPlayer;
     AVObservationController *__observationController;
     long long __numberOfTrackedUserInteractions;
+    NSMutableDictionary *__localizedDiscoverabilityTitleForKeyCommandLocalizationKey;
+    unsigned long long _overrideRouteSharingPolicy;
+    NSString *_overrideRoutingContextUID;
     NSArray *_customControlItems;
 }
 
 @property (nonatomic) BOOL _hasBegunObservation; // @synthesize _hasBegunObservation=__hasBegunObservation;
+@property (readonly, nonatomic) NSMutableDictionary *_localizedDiscoverabilityTitleForKeyCommandLocalizationKey; // @synthesize _localizedDiscoverabilityTitleForKeyCommandLocalizationKey=__localizedDiscoverabilityTitleForKeyCommandLocalizationKey;
 @property (nonatomic, setter=_setNumberOfTrackedUserInteractions:) long long _numberOfTrackedUserInteractions; // @synthesize _numberOfTrackedUserInteractions=__numberOfTrackedUserInteractions;
 @property (readonly, nonatomic) AVObservationController *_observationController; // @synthesize _observationController=__observationController;
 @property (readonly, nonatomic) NSMutableDictionary *_targetVideoGravitiesForLayoutClass; // @synthesize _targetVideoGravitiesForLayoutClass=__targetVideoGravitiesForLayoutClass;
@@ -110,6 +114,8 @@
 @property (readonly, nonatomic) UIView *iAdPrerollView;
 @property (readonly, nonatomic) UIView *interactiveContentOverlayView;
 @property (copy, nonatomic) CDUnknownBlockType interactiveDismissalCompletionHandler; // @synthesize interactiveDismissalCompletionHandler=_interactiveDismissalCompletionHandler;
+@property (nonatomic) unsigned long long overrideRouteSharingPolicy; // @synthesize overrideRouteSharingPolicy=_overrideRouteSharingPolicy;
+@property (copy, nonatomic) NSString *overrideRoutingContextUID; // @synthesize overrideRoutingContextUID=_overrideRoutingContextUID;
 @property (readonly, nonatomic, getter=isPictureInPictureActive) BOOL pictureInPictureActive;
 @property (readonly, nonatomic, getter=isPictureInPicturePossible) BOOL pictureInPicturePossible;
 @property (readonly, nonatomic, getter=isPictureInPictureSuspended) BOOL pictureInPictureSuspended;
@@ -254,6 +260,7 @@
 - (void)setVideoGravity:(id)arg1 forLayoutClass:(unsigned long long)arg2;
 - (void)setVideoGravityForTransitioningContent:(id)arg1;
 - (void)setView:(id)arg1;
+- (void)setWebKitOverrideRouteSharingPolicy:(unsigned long long)arg1 routingContextUID:(id)arg2;
 - (void)showFullScreenPresentationFromView:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startContentTransition:(long long)arg1;
 - (void)startPictureInPicture;

@@ -27,6 +27,7 @@
 - (BOOL)canFetchMediaDataFromSender;
 - (BOOL)canPlayEncryptedProgressiveDownloadAssets;
 - (BOOL)canRelayCommunicationChannel;
+- (id)description;
 - (id)descriptor;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;
@@ -38,6 +39,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDescriptor:(id)arg1;
 - (id)initWithSkeleton:(id)arg1;
+- (BOOL)isAddedToHomeKit;
 - (BOOL)isAirPlayReceiverSessionActive;
 - (BOOL)isDeviceGroupable;
 - (BOOL)isGroupLeader;
@@ -59,6 +61,7 @@
 - (BOOL)supportsExternalScreen;
 - (id)uid;
 - (float)volume;
+- (unsigned int)volumeCapabilities;
 
 @end
 

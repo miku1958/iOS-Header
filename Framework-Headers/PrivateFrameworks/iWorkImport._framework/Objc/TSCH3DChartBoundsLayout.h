@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSCH3DScene *scene; // @synthesize scene=mScene;
 
 - (id).cxx_construct;
-- (void)cacheLabels;
 - (id)cacheableGetBoundsPipeline;
 - (void)dealloc;
 - (id)debugBounds;

@@ -30,11 +30,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)configurationForWidth:(double)arg1;
+- (id)configurationForSize:(struct CGSize)arg1 dataSources:(id)arg2;
 - (id)initWithPresentationAttributesProvider:(id)arg1 storeFrontProvider:(id)arg2 locale:(id)arg3;
 - (void)invokeChangeListener;
 - (void)onChange:(CDUnknownBlockType)arg1;
-- (void)presentationAttributesChangeFrom:(id)arg1 toAttributes:(id)arg2;
+- (void)presentationAttributesDidChangeFrom:(id)arg1 toAttributes:(id)arg2;
 
 @end
 

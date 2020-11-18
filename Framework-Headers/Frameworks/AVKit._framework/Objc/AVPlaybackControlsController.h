@@ -78,7 +78,6 @@
     double _loadingIndicatorTimerDelay;
     long long _timeControlStatus;
     long long _videoGravityButtonType;
-    NSString *_videoGravity;
     NSString *_uniqueIdentifer;
     struct CGRect _playbackViewFrame;
 }
@@ -169,7 +168,6 @@
 @property (readonly, nonatomic) AVPlaybackControlsVisibilityControllerItem *turboModePlaybackControlsVisibilityItem; // @synthesize turboModePlaybackControlsVisibilityItem=_turboModePlaybackControlsVisibilityItem;
 @property (readonly, nonatomic) NSString *uniqueIdentifer; // @synthesize uniqueIdentifer=_uniqueIdentifer;
 @property (nonatomic) BOOL updatesNowPlayingInfoCenter; // @synthesize updatesNowPlayingInfoCenter=_updatesNowPlayingInfoCenter;
-@property (copy, nonatomic) NSString *videoGravity; // @synthesize videoGravity=_videoGravity;
 @property (nonatomic) long long videoGravityButtonType; // @synthesize videoGravityButtonType=_videoGravityButtonType;
 @property (readonly, nonatomic) AVVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 @property (nonatomic) BOOL volumeControlsCanShowSlider; // @synthesize volumeControlsCanShowSlider=_volumeControlsCanShowSlider;

@@ -12,6 +12,9 @@ __attribute__((visibility("hidden")))
     struct TSCEFormula *_ptrToFormula;
     long long _cachedNumberOfValues;
     struct TSCEVector *_cachedOutputValueVector;
+    struct TSCEVector *_cachedOutputValueVectorWithoutHiddenData;
+    vector_38b190b0 _cachedChromeCoords;
+    vector_38b190b0 _cachedChromeCoordsWithoutHidden;
 }
 
 @property (readonly) struct TSCEFormula *formula;
@@ -24,6 +27,8 @@ __attribute__((visibility("hidden")))
 + (id)chartFormulaForTractReference:(id)arg1;
 + (id)chartFormulaWithCopyOfTSCEFormula:(const struct TSCEFormula *)arg1;
 + (id)emptyChartFormula;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)argumentCollectionWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2;
 - (id)argumentCollectionWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2 storeBadRef:(BOOL)arg3;
 - (void)clearCacheForCalculationEngine:(id)arg1;
@@ -37,11 +42,13 @@ __attribute__((visibility("hidden")))
 - (id)initWithCopyOfTSCEFormula:(const struct TSCEFormula *)arg1;
 - (BOOL)isAllStaticValuesWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (unsigned long long)numberOfTotalPlotwiseLabelValuesWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2 byRow:(BOOL)arg3 shouldSkipHiddenData:(BOOL)arg4;
 - (unsigned long long)numberOfValuesWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2;
-- (struct TSCEVector *)outputValueVector:(struct TSCEEvaluationContext *)arg1 inChromeOrder:(BOOL)arg2;
+- (struct TSCEVector *)outputValueVector:(struct TSCEEvaluationContext *)arg1 shouldSkipHiddenData:(BOOL)arg2;
+- (vector_06892659)outputVectorValuesWithChromeCoords:(struct TSCEEvaluationContext *)arg1 shouldSkipHiddenData:(BOOL)arg2;
+- (id)plotwiseLabelValuesWithEvaluationContext:(struct TSCEEvaluationContext *)arg1 byRow:(BOOL)arg2 shouldSkipHiddenData:(BOOL)arg3;
 - (struct TSCERangeRef)rangeCircumscribingPrecedentsWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
 - (id)stringValueForFormulaWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
-- (struct TSCEValue)valueAtIndex:(unsigned long long)arg1 withCalcEngine:(id)arg2 inChart:(const UUIDData_5fbc143e *)arg3;
 
 @end
 

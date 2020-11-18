@@ -11,6 +11,7 @@
 
 @protocol TSKPencilAnnotationSupportedDocument <TSKPencilAnnotationContainer>
 - (NSSet *)allPencilAnnotations;
+- (double)currentDesiredPencilAnnotationDrawingScale;
 - (BOOL)hasPencilAnnotations;
 - (void)removePencilAnnotations;
 - (void)removePencilAnnotationsFromDrawables:(id<NSFastEnumeration>)arg1;

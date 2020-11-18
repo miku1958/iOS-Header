@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)hasAnyDateArgumentsToFunction:(int)arg1;
 + (BOOL)isModeEnabled:(short)arg1 functionIndex:(short)arg2;
 + (id)specDictionary;
-+ (id)specWithFunctionName:(id)arg1 minArgs:(int)arg2 maxArgs:(int)arg3 repeatingGroupSize:(int)arg4 isOperator:(int)arg5 shipVersion:(int)arg6 arguments:(const vector_2a3fe66d *)arg7 functionIndex:(int)arg8;
++ (id)specWithFunctionName:(id)arg1 minArgs:(int)arg2 maxArgs:(int)arg3 repeatingGroupSize:(short)arg4 isOperator:(int)arg5 shipVersion:(int)arg6 arguments:(const vector_2a3fe66d *)arg7 functionIndex:(int)arg8;
 + (id)unsupportedFunctionNameForLocale:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -45,7 +45,8 @@ __attribute__((visibility("hidden")))
 - (struct TSCEFunctionArgSpec *)argumentSpecForIndex:(unsigned long long)arg1;
 - (id)description;
 - (id)displayStringForLocale:(id)arg1;
-- (id)initWithFunctionName:(id)arg1 minArgs:(int)arg2 maxArgs:(int)arg3 repeatingGroupSize:(int)arg4 isOperator:(BOOL)arg5 shipVersion:(int)arg6 arguments:(const vector_2a3fe66d *)arg7 functionIndex:(int)arg8;
+- (id)initWithFunctionName:(id)arg1 minArgs:(int)arg2 maxArgs:(int)arg3 repeatingGroupSize:(short)arg4 isOperator:(BOOL)arg5 shipVersion:(int)arg6 arguments:(const vector_2a3fe66d *)arg7 functionIndex:(int)arg8;
+- (void)loadRepeatingArguments;
 - (id)localizedFunctionNameForLocale:(id)arg1;
 - (id)localizedToolTipStringForLocale:(id)arg1;
 - (long long)modeNumberForLocalizedString:(id)arg1 argumentSpecIndex:(unsigned long long)arg2 attributeMax:(long long)arg3 locale:(id)arg4;

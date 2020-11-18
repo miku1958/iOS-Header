@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)flushDomainInAgents:(const char *)arg1;
 - (void)flushDomainInDaemon:(const char *)arg1;
 - (void)getShmemName:(char *)arg1 bufLen:(unsigned long long)arg2;
-- (void)handleAgentCheckInMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
+- (void)handleAgentCheckInMessage:(id)arg1;
 - (void)handleError:(id)arg1;
 - (void)handleFlushManagedMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)handleFlushSourceForDomainMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;

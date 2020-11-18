@@ -16,7 +16,7 @@
     MISSING_TYPE *didTapButton;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)didMoveToSuperview;
 - (void)didTapButton:(id)arg1;
 - (id)init;

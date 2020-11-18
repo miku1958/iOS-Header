@@ -8,7 +8,7 @@
 
 #import <WebCore/AVAssetResourceLoaderDelegate-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface WebCoreSharedBufferResourceLoaderDelegate : NSObject <AVAssetResourceLoaderDelegate>
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     struct Lock _dataLock;
 }
 
+@property (readonly) NSData *data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

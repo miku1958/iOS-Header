@@ -86,6 +86,7 @@
 - (id)newScriptInterface;
 - (id)newScriptInterfaceForWebViewManager:(id)arg1;
 - (void)parentViewControllerHierarchyDidChange;
+- (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)reloadWithStorePage:(id)arg1 forURL:(id)arg2;
 - (void)setScriptProperties:(id)arg1;
 - (void)setStorePageProtocol:(id)arg1;

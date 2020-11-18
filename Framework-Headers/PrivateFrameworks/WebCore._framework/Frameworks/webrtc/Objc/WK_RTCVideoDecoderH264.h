@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface WK_RTCVideoDecoderH264 : NSObject <WK_RTCVideoDecoder>
 {
     struct opaqueCMFormatDescription *_videoFormat;
+    struct OpaqueCMMemoryPool *_memoryPool;
     struct OpaqueVTDecompressionSession *_decompressionSession;
     CDUnknownBlockType _callback;
     int _error;
@@ -27,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)configureDecompressionSession;
 - (void)dealloc;
-- (long long)decode:(id)arg1 missingFrames:(BOOL)arg2 fragmentationHeader:(id)arg3 codecSpecificInfo:(id)arg4 renderTimeMs:(long long)arg5;
+- (long long)decode:(id)arg1 missingFrames:(BOOL)arg2 codecSpecificInfo:(id)arg3 renderTimeMs:(long long)arg4;
 - (void)destroyDecompressionSession;
 - (id)implementationName;
 - (id)init;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)setCallback:(CDUnknownBlockType)arg1;
 - (void)setError:(int)arg1;
 - (void)setVideoFormat:(struct opaqueCMFormatDescription *)arg1;
+- (long long)startDecodeWithNumberOfCores:(int)arg1;
 - (long long)startDecodeWithSettings:(id)arg1 numberOfCores:(int)arg2;
 
 @end

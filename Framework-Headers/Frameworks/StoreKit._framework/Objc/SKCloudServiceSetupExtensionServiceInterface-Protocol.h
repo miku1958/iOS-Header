@@ -6,11 +6,12 @@
 
 #import <StoreKit/NSObject-Protocol.h>
 
-@class NSURL, SKCloudServiceSetupConfiguration, SKCloudServiceSetupReloadContext;
+@class NSString, NSURL, SKCloudServiceSetupConfiguration, SKCloudServiceSetupReloadContext;
 
 @protocol SKCloudServiceSetupExtensionServiceInterface <NSObject>
 - (void)applyConfiguration:(SKCloudServiceSetupConfiguration *)arg1;
 - (void)handleSafariScriptURL:(NSURL *)arg1;
+- (void)redeemCameraCodeDetected:(NSString *)arg1;
 - (void)reloadWithContext:(SKCloudServiceSetupReloadContext *)arg1;
 @end
 

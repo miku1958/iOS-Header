@@ -10,7 +10,7 @@
 #import <iAd/ADPrerollTopBarDelegate-Protocol.h>
 #import <iAd/UIGestureRecognizerDelegate-Protocol.h>
 
-@class ADPrerollBottomBar, ADPrerollTopBar, ADPrivacyButton, NSString, NSTimer, UIImageView;
+@class ADPrerollBottomBar, ADPrerollTopBar, ADPrivacyMarker, NSString, NSTimer, UIImageView;
 @protocol ADPrerollViewDelegate;
 
 @interface ADPrerollView : UIView <UIGestureRecognizerDelegate, ADPrerollTopBarDelegate, ADPrerollBottomBarDelegate>
@@ -24,7 +24,7 @@
     UIImageView *_swooshView;
     NSTimer *_passiveWatchingTimer;
     double _accumulatedViewingTime;
-    ADPrivacyButton *_privacyButton;
+    ADPrivacyMarker *_privacyMarker;
 }
 
 @property (nonatomic) double accumulatedViewingTime; // @synthesize accumulatedViewingTime=_accumulatedViewingTime;
@@ -36,7 +36,7 @@
 @property (nonatomic) BOOL hasAction; // @synthesize hasAction=_hasAction;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSTimer *passiveWatchingTimer; // @synthesize passiveWatchingTimer=_passiveWatchingTimer;
-@property (strong, nonatomic) ADPrivacyButton *privacyButton; // @synthesize privacyButton=_privacyButton;
+@property (strong, nonatomic) ADPrivacyMarker *privacyMarker; // @synthesize privacyMarker=_privacyMarker;
 @property (nonatomic) BOOL skipButtonCountingDown; // @synthesize skipButtonCountingDown=_skipButtonCountingDown;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImageView *swooshView; // @synthesize swooshView=_swooshView;

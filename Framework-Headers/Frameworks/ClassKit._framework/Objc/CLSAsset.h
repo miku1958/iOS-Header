@@ -43,13 +43,17 @@
 + (id)relations;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_deleteFileAtURL:(id)arg1 error:(id *)arg2;
 - (id)_init;
+- (id)_initWithFileURL:(id)arg1;
 - (void)createShareIfNeeded:(CDUnknownBlockType)arg1;
 - (BOOL)deleteFile:(id *)arg1;
+- (void)deleteFileWithCompletion:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fetchUsersAndAddToShare:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFileURL:(id)arg1;
+- (id)initWithFileURL:(id)arg1 withOwnerPersonID:(id)arg2;
 - (id)initWithURL:(id)arg1;
 - (void)mergeWithObject:(id)arg1;
 - (id)uploadFileIfNeeded:(id *)arg1;

@@ -11,18 +11,18 @@
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 #import <PassKitUI/WLCardViewDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, PKGroup, PKPassView, PKReusablePassViewQueue, UILongPressGestureRecognizer, UIMotionEffectGroup, UIPageControl, UIPanGestureRecognizer, UIScrollView, UIViewController;
+@class NSMutableArray, NSMutableDictionary, NSString, PKGroup, PKPassView, PKReusablePassViewQueue, UILongPressGestureRecognizer, UIMotionEffectGroup, UIPageControl, UIPanGestureRecognizer, UIScrollView, UIViewController;
 @protocol PKPassGroupViewDelegate;
 
 @interface PKPassGroupView : UIView <WLCardViewDelegate, PKGroupDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
     unsigned short _animationCounter;
     unsigned short _pageControlAnimationCounter;
-    unsigned short _fanningAnimationCounter;
     unsigned short _frontFaceContentModePinningCounter;
     long long _presentationState;
     struct {
         unsigned int showingPageControl:1;
+        unsigned int scrollingEnabled:1;
         unsigned int indeterminateState:1;
         unsigned int fanningEnabled:1;
         unsigned int overridePriorContentOffset:1;
@@ -36,6 +36,7 @@
         struct CGRect bounds;
     } _layoutState;
     NSMutableDictionary *_passViewsByUniqueID;
+    NSMutableArray *_delayedAnimations;
     UIScrollView *_horizontalScrollView;
     UIPageControl *_pageControl;
     double _dimmerValue;
@@ -49,43 +50,56 @@
     NSString *_passBeingPresented;
     BOOL _groupWasMarkedDeleted;
     BOOL _passBeingPresentedWasDeleted;
+    BOOL _invalidated;
+    BOOL _effectivePaused;
     BOOL _modallyPresented;
-    BOOL _pageControlHidden;
+    BOOL _loaned;
+    BOOL _paused;
     PKPassView *_frontmostPassView;
     PKGroup *_group;
     PKReusablePassViewQueue *_passViewQueue;
+    UILongPressGestureRecognizer *_pressGestureRecognizer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PKPassGroupViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long displayIndex;
 @property (strong, nonatomic) PKPassView *frontmostPassView; // @synthesize frontmostPassView=_frontmostPassView;
 @property (readonly, nonatomic) PKGroup *group; // @synthesize group=_group;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isLoaned) BOOL loaned; // @synthesize loaned=_loaned;
 @property (nonatomic, getter=isModallyPresented) BOOL modallyPresented; // @synthesize modallyPresented=_modallyPresented;
 @property (readonly, nonatomic) struct UIOffset offsetForFrontmostPassWhileStacked;
-@property (readonly, nonatomic) UIPageControl *pageControl;
-@property (nonatomic) BOOL pageControlHidden; // @synthesize pageControlHidden=_pageControlHidden;
+@property (readonly, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
 @property (nonatomic) PKReusablePassViewQueue *passViewQueue; // @synthesize passViewQueue=_passViewQueue;
+@property (nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property (nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;
+@property (readonly, nonatomic) UILongPressGestureRecognizer *pressGestureRecognizer; // @synthesize pressGestureRecognizer=_pressGestureRecognizer;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addDelayedAnimation:(id)arg1 toLayer:(id)arg2 withRemovalAction:(CDUnknownBlockType)arg3;
 - (void)_addPanAndLongPressGestureRecognizers;
 - (void)_applyContentMode:(long long)arg1 toPassView:(id)arg2 animated:(BOOL)arg3;
 - (void)_beginTrackingAnimation;
 - (struct CGSize)_contentSize;
 - (long long)_defaultContentModeForIndex:(unsigned long long)arg1;
 - (void)_endTrackingAnimation;
-- (void)_enumeratePassIndicesInStackOrderWithBlock:(CDUnknownBlockType)arg1;
-- (void)_enumeratePassViewsInStackOrderWithBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateIndicesInStackOrderWithHandler:(CDUnknownBlockType)arg1;
+- (void)_enumeratePassViewsInStackOrderWithHandler:(CDUnknownBlockType)arg1;
 - (void)_handleLongPress:(id)arg1;
 - (void)_handlePanGesture:(id)arg1;
+- (void)_handlePress:(id)arg1;
+- (BOOL)_isOurGestureRecognizer:(id)arg1;
 - (id)_loadCardViewForIndex:(unsigned long long)arg1 contentMode:(long long)arg2;
 - (void)_pageControlChanged:(id)arg1;
 - (struct CGRect)_pagingFrameForCardView:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)_preparePageControlForReuse;
 - (struct _NSRange)_rangeOfPagingIndices;
 - (struct _NSRange)_rangeOfVisibleIndices;
+- (void)_removeDelayedAnimationTrackerWithKey:(id)arg1;
+- (void)_removeDelayedAnimations;
 - (void)_removePanAndLongPressGestureRecognizers;
 - (struct CGPoint)_stackingPositionForPassViewLayer:(id)arg1 atStackIndex:(unsigned long long)arg2 withSeparation:(BOOL)arg3;
 - (void)_updateCachedGroupState;
@@ -95,6 +109,7 @@
 - (void)_updateLoadedViews:(BOOL)arg1;
 - (void)_updatePageControlVisibilityWithDelay:(double)arg1;
 - (void)_updatePageControlWithDisplayIndex;
+- (void)_updatePausedState;
 - (void)applyContentModesAnimated:(BOOL)arg1;
 - (void)beginPinningFrontFaceContentMode;
 - (double)continuousShadowIndex;
@@ -110,6 +125,7 @@
 - (void)group:(id)arg1 didUpdatePass:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithGroup:(id)arg1 delegate:(id)arg2 presentationState:(long long)arg3;
+- (void)invalidate;
 - (void)layoutPagesAnimated:(BOOL)arg1;
 - (void)layoutStackAnimated:(BOOL)arg1;
 - (void)layoutSubviews;
@@ -120,8 +136,6 @@
 - (void)passView:(id)arg1 didPresentPassDetailsViewController:(id)arg2;
 - (void)passView:(id)arg1 willPresentPassDetailsViewController:(id)arg2;
 - (BOOL)passViewCanShowBarcode:(id)arg1;
-- (void)passViewDidBeginAuthenticating:(id)arg1;
-- (void)passViewDidEndAuthenticating:(id)arg1;
 - (id)passViewForIndex:(unsigned long long)arg1;
 - (void)passViewTapped:(id)arg1;
 - (void)passViewUpdateBarcodeVisibility:(id)arg1 animated:(BOOL)arg2;

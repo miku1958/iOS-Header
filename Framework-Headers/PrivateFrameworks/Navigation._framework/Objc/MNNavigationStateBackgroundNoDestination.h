@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)desiredCommuteSessionState;
 - (unsigned long long)desiredLocationProviderType;
 - (unsigned long long)desiredResourcePolicy;
-- (unsigned long long)type;
+- (long long)type;
 - (void)updateMapsActive:(BOOL)arg1;
 
 @end

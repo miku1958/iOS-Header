@@ -9,20 +9,23 @@
 #import <CarPlaySupport/CPBaseTemplateProviding-Protocol.h>
 #import <CarPlaySupport/CPSBaseTemplateViewController-Protocol.h>
 #import <CarPlaySupport/CPSButtonDelegate-Protocol.h>
+#import <CarPlaySupport/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CPTemplate, NSString;
+@class CPTemplate, NSString, UITapGestureRecognizer;
 @protocol CPSTemplateViewControllerDelegate, CPTemplateDelegate;
 
-@interface CPSBaseTemplateViewController : UIViewController <CPSButtonDelegate, CPBaseTemplateProviding, CPSBaseTemplateViewController>
+@interface CPSBaseTemplateViewController : UIViewController <CPSButtonDelegate, UIGestureRecognizerDelegate, CPBaseTemplateProviding, CPSBaseTemplateViewController>
 {
     BOOL _isPopping;
     BOOL _didDisappear;
     CPTemplate *_associatedTemplate;
     id<CPTemplateDelegate> _templateDelegate;
     id<CPSTemplateViewControllerDelegate> _viewControllerDelegate;
+    UITapGestureRecognizer *_backGestureRecognizer;
 }
 
 @property (strong, nonatomic) CPTemplate *associatedTemplate; // @synthesize associatedTemplate=_associatedTemplate;
+@property (strong, nonatomic) UITapGestureRecognizer *backGestureRecognizer; // @synthesize backGestureRecognizer=_backGestureRecognizer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didDisappear; // @synthesize didDisappear=_didDisappear;
@@ -33,14 +36,20 @@
 @property (weak, nonatomic) id<CPSTemplateViewControllerDelegate> viewControllerDelegate; // @synthesize viewControllerDelegate=_viewControllerDelegate;
 
 - (void).cxx_destruct;
+- (void)_addGestureRecognizerIfNecessary;
+- (void)_backGestureFired:(id)arg1;
 - (id)_barButtonItemForIdentifier:(id)arg1;
 - (void)_cps_viewControllerWasPopped;
 - (void)_dismissTemplateViewController;
+- (void)_updateLeadingBarButtons;
+- (void)_updateTrailingBarButtons;
 - (void)didSelectButton:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceivePress:(id)arg2;
 - (id)initWithTemplate:(id)arg1 templateDelegate:(id)arg2;
 - (void)setBarButton:(id)arg1 image:(id)arg2;
 - (void)setBarButton:(id)arg1 title:(id)arg2;
 - (void)setControl:(id)arg1 enabled:(BOOL)arg2;
+- (void)setHostBackButton:(id)arg1;
 - (void)setLeadingNavigationBarButtons:(id)arg1;
 - (void)setTrailingNavigationBarButtons:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSMutableArray, NSXPCConnection, REUpNextScheduler;
-@protocol OS_dispatch_queue, REPredictedActionServerObserver;
+@class NSArray, NSDate, NSMutableArray, NSXPCConnection, REObserverStore, REUpNextScheduler;
+@protocol OS_dispatch_queue;
 
 @interface REPredictedActionServer : NSObject
 {
@@ -19,25 +19,26 @@
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _fetchingData;
     NSMutableArray *_fetchCompletionBlocks;
-    id<REPredictedActionServerObserver> _observer;
+    REObserverStore *_observers;
 }
 
-@property (weak, nonatomic) id<REPredictedActionServerObserver> observer; // @synthesize observer=_observer;
-
++ (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_accessOrEnqueueDataRequest:(CDUnknownBlockType)arg1 error:(CDUnknownBlockType)arg2;
 - (void)_clearConnection;
 - (void)_finishProcessingData;
-- (void)_notifyObserver;
+- (void)_invalidateConnection;
+- (void)_notifyObservers;
 - (void)_queue_fetchPredicitions;
 - (void)_queue_setupConnection;
 - (void)_requestPredictions;
+- (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (void)fetchFirstPerformedActionDate:(CDUnknownBlockType)arg1;
 - (void)fetchPerformedTodayCountForActionWithBundleIdentifer:(id)arg1 actionIdentifier:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchPredictedActions:(CDUnknownBlockType)arg1;
-- (void)forceDonationsRefresh;
 - (id)init;
+- (void)removeObserver:(id)arg1;
 
 @end
 

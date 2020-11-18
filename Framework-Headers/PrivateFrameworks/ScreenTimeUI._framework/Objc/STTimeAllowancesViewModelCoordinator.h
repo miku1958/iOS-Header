@@ -51,6 +51,7 @@
 - (id)initWithPersistenceController:(id)arg1 organizationIdentifier:(id)arg2 userDSID:(id)arg3;
 - (void)loadViewModelWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)respondToAskForTime:(id)arg1 withApproval:(BOOL)arg2 timeApproved:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)saveAllAllowancesEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveAllowance:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveAlwaysAllowList:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveDefaultAlwaysAllowListWithCompletionHandler:(CDUnknownBlockType)arg1;

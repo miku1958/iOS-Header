@@ -22,7 +22,10 @@
 @property (readonly, nonatomic) NSNumber *userDataPreferred;
 @property (readonly, nonatomic) NSNumber *userDefaultVoice;
 @property (readonly, nonatomic) NSUUID *uuid;
+@property (readonly, nonatomic) NSString *vm_isoCountryCode;
 @property (readonly, nonatomic) NSUUID *vm_labelUUID;
+@property (readonly, nonatomic) NSString *vm_telephoneNumber;
 
++ (id)telephonyClient;
 @end
 

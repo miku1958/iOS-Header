@@ -6,23 +6,37 @@
 
 #import <MediaPlayer/MPMusicPlayerController.h>
 
-@class MPCPlayerPath, MPCRemotePlaybackEngine;
+@class MPCPlayerPath, MPCRemotePlaybackEngine, NSObject, _MPMusicPlayerQueueTransaction;
+@protocol OS_dispatch_queue;
 
 @interface MPMusicPlayerApplicationController : MPMusicPlayerController
 {
-    long long _notificationsCount;
+    _MPMusicPlayerQueueTransaction *_queueTransaction;
     MPCPlayerPath *_playerPath;
     MPCRemotePlaybackEngine *_playbackEngine;
+    long long _notificationsCount;
+    NSObject<OS_dispatch_queue> *_queueTransactionQueue;
 }
 
-@property (strong, nonatomic) MPCRemotePlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
-@property (strong, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
+@property (nonatomic) long long notificationsCount; // @synthesize notificationsCount=_notificationsCount;
+@property (readonly, nonatomic) MPCRemotePlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
+@property (readonly, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
+@property (strong, nonatomic) _MPMusicPlayerQueueTransaction *queueTransaction; // @synthesize queueTransaction=_queueTransaction;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queueTransactionQueue; // @synthesize queueTransactionQueue=_queueTransactionQueue;
 
 + (BOOL)_isPlayerInstalled;
 - (void).cxx_destruct;
 - (id)_init;
+- (id)_mutableQueueFromTracklist:(id)arg1 mediaToResponseItemMap:(id *)arg2;
+- (id)_onAccessQueue_beginQueueTransactionWithCompletionHandler:(CDUnknownBlockType)arg1 usingSemaphore:(id)arg2;
+- (void)_onAccessQueue_endQueueTransactionWithTracklist:(id)arg1 forReason:(long long)arg2 error:(id)arg3;
+- (BOOL)_onAccessQueue_isPerformingQueueTransactionWithID:(id)arg1;
+- (void)_onAccessQueue_transitionQueueTransactionToState:(long long)arg1;
 - (void)_playbackEngineDidDisconnect:(id)arg1;
 - (void)_playerPathDidChange:(id)arg1;
+- (void)_queueDidChangeWithResponse:(id)arg1;
+- (id)_queueFromTracklist:(id)arg1;
+- (id)_queueModificationRequestsFromTracklist:(id)arg1 withMutatedQueue:(id)arg2 mediaToResponseItemMap:(id)arg3;
 - (void)beginGeneratingPlaybackNotifications;
 - (void)endGeneratingPlaybackNotifications;
 - (void)performQueueTransaction:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;

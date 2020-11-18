@@ -7,18 +7,14 @@
 #import <PlatterKit/UIPreviewInteractionDelegate-Protocol.h>
 
 @class UIPreviewInteraction, UIView, UIViewController, _UIPreviewInteractionHighlighter, _UIPreviewInteractionViewControllerPresentation;
-@protocol _UIPreviewInteractionViewControllerTransition;
 
 @protocol UIPreviewInteractionDelegatePrivate <UIPreviewInteractionDelegate>
 
 @optional
-- (id<_UIPreviewInteractionViewControllerTransition>)_previewInteraction:(UIPreviewInteraction *)arg1 appearanceTransitionForViewController:(UIViewController *)arg2;
-- (id<_UIPreviewInteractionViewControllerTransition>)_previewInteraction:(UIPreviewInteraction *)arg1 disappearanceTransitionForViewController:(UIViewController *)arg2;
 - (_UIPreviewInteractionViewControllerPresentation *)_previewInteraction:(UIPreviewInteraction *)arg1 viewControllerPresentationForPresentingViewController:(UIViewController *)arg2;
 - (_UIPreviewInteractionHighlighter *)_previewInteractionHighlighterForPreviewTransition:(UIPreviewInteraction *)arg1;
+- (UIView *)_previewInteractionOverrideViewForCommitPhase:(UIPreviewInteraction *)arg1;
 - (BOOL)_previewInteractionShouldAutomaticallyTransitionToPreviewAfterDelay:(UIPreviewInteraction *)arg1;
 - (BOOL)_previewInteractionShouldFinishTransitionToPreview:(UIPreviewInteraction *)arg1;
-- (UIViewController *)_previewInteractionViewControllerForPreview:(UIPreviewInteraction *)arg1;
-- (UIView *)_previewInteractionViewForHighlight:(UIPreviewInteraction *)arg1;
 @end
 

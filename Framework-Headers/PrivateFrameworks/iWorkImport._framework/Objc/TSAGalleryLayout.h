@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)additionalGuides;
 - (struct CGSize)adjustedInsetsForTarget:(id)arg1;
 - (struct CGRect)alignmentFrameForProvidingGuidesInRoot;
-- (unsigned int)autosizeFlagsForTextLayout:(id)arg1;
+- (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
 - (struct CGRect)boundsForStandardKnobs;
 - (id)children;

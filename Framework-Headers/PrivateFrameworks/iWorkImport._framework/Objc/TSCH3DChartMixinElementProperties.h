@@ -14,14 +14,14 @@ __attribute__((visibility("hidden")))
 
 + (id)propertiesWithProperties:(id)arg1;
 - (void)applyChartElementsTransform:(struct ObjectTransforms *)arg1;
-- (BOOL)applyElementTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3 propertyAccessor:(const struct ChartScenePropertyAccessor *)arg4;
-- (struct GeometryResource)boundsGeometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
+- (BOOL)applyElementTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(tvec2_3b141483)arg3 propertyAccessor:(id)arg4;
+- (id)boundsGeometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
 - (id)chartTransform;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (float)elementTransformDepthFromPropertyAccessor:(const struct ChartScenePropertyAccessor *)arg1;
+- (float)elementTransformDepthFromPropertyAccessor:(id)arg1;
 - (id)elementsTransform;
-- (struct GeometryResource)geometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
+- (id)geometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
 - (id)getPropertiesOfType:(Class)arg1;
 - (id)initWithProperties:(id)arg1;
 - (id)labels;

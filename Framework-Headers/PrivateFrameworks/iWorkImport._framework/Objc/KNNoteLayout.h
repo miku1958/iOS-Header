@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)addChild:(id)arg1;
 - (struct CGSize)adjustedInsetsForTarget:(id)arg1;
-- (unsigned int)autosizeFlagsForTextLayout:(id)arg1;
+- (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
 - (struct CGPoint)capturedInfoPositionForAttachment;
 - (id)children;
@@ -57,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidatePadding;
 - (void)invalidateSize;
 - (id)layoutGeometryFromInfo;
-- (double)maxAutoGrowHeightForTextLayout:(id)arg1;
+- (double)maxAutoGrowBlockHeightForTextLayout:(id)arg1;
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;
 - (id)p_adjustedPaddingForBodyWidth:(double)arg1;
 - (BOOL)p_isForPrint;

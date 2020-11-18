@@ -9,7 +9,7 @@
 #import <iAd/ADAdRecipient-Protocol.h>
 #import <iAd/ADDimmerViewDelegate-Protocol.h>
 
-@class ADAdSpace, ADDimmerView, ADLayoutOptions, ADPrivacyButton, NSDate, NSString, NSTimer, NSURL, UILabel, UIViewController;
+@class ADAdSpace, ADDimmerView, ADLayoutOptions, ADPrivacyMarker, NSDate, NSString, NSTimer, NSURL, UILabel, UIViewController;
 @protocol ADBannerViewDelegate, ADBannerViewInternalDelegate;
 
 @interface ADBannerView : UIView <ADAdRecipient, ADDimmerViewDelegate>
@@ -42,7 +42,7 @@
     UIView *_highlightHittableView;
     UILabel *_idLbl;
     NSTimer *_highlightUpdateTimer;
-    ADPrivacyButton *_privacyButton;
+    ADPrivacyMarker *_privacyMarker;
     NSString *_authenticationUserName;
     NSURL *_serverURL;
     ADAdSpace *_adSpace;
@@ -98,7 +98,7 @@
 @property (copy, nonatomic) NSString *originID; // @synthesize originID=_originID;
 @property (nonatomic) struct CGSize portraitSize; // @synthesize portraitSize=_portraitSize;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
-@property (strong, nonatomic) ADPrivacyButton *privacyButton; // @synthesize privacyButton=_privacyButton;
+@property (strong, nonatomic) ADPrivacyMarker *privacyMarker; // @synthesize privacyMarker=_privacyMarker;
 @property (nonatomic) BOOL reUsed; // @synthesize reUsed=_reUsed;
 @property (nonatomic) BOOL requestCalledbackError; // @synthesize requestCalledbackError=_requestCalledbackError;
 @property (nonatomic) int screenfuls; // @synthesize screenfuls=_screenfuls;

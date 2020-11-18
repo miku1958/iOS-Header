@@ -15,6 +15,7 @@
 {
     id<MPVolumeControllerDataSource> _dataSource;
     int _volumeChangeCoalescingCount;
+    unsigned int _volumeCapabilities;
     id<MPVolumeControllerDelegate> _delegate;
 }
 
@@ -27,15 +28,21 @@
 @property (nonatomic, getter=isMuted) BOOL muted;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *volumeAudioCategory;
+@property (readonly, nonatomic) unsigned int volumeCapabilities; // @synthesize volumeCapabilities=_volumeCapabilities;
 @property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable;
 @property (readonly, copy, nonatomic) NSString *volumeControlLabel;
 @property (nonatomic) float volumeValue;
 @property (readonly, nonatomic) BOOL volumeWarningEnabled;
 @property (readonly, nonatomic) long long volumeWarningState;
 
++ (id)descriptionForWarningState:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_updateVolumeControlAvailability;
 - (void)adjustVolumeValue:(float)arg1;
+- (void)beginDecreasingRelativeVolume;
+- (void)beginIncreasingRelativeVolume;
+- (void)endDecreasingRelativeVolume;
+- (void)endIncreasingRelativeVolume;
 - (void)getVolumeValueWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithDataSource:(id)arg1;
@@ -48,6 +55,7 @@
 - (void)volumeControllerDataSource:(id)arg1 didChangeMuted:(BOOL)arg2;
 - (void)volumeControllerDataSource:(id)arg1 didChangeVolume:(float)arg2;
 - (void)volumeControllerDataSource:(id)arg1 didChangeVolumeAudioCategory:(id)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeVolumeCapabilities:(unsigned int)arg2;
 - (void)volumeControllerDataSource:(id)arg1 didChangeVolumeControlAvailability:(BOOL)arg2;
 - (void)volumeControllerDataSource:(id)arg1 didChangeVolumeLabel:(id)arg2;
 - (void)volumeControllerDataSource:(id)arg1 didChangeVolumeWarning:(long long)arg2;

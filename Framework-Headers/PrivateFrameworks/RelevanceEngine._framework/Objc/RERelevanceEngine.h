@@ -66,6 +66,7 @@
 @property (readonly, nonatomic) RETrainingManager *trainingManager;
 @property (readonly, nonatomic) BOOL wantsImmutableContent;
 
++ (void)prewarmWithConfiguration:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addSubsystem:(id)arg1;
 - (void)_captureAndStoreDiagnosticLogs:(CDUnknownBlockType)arg1;
@@ -100,6 +101,7 @@
 - (void)removeTrainingContext:(id)arg1;
 - (void)resume;
 - (void)resumeFromSimulation;
+- (void)saveModelFile;
 - (id)sectionForHistoricSection:(id)arg1;
 - (void)setPreferences:(id)arg1 forObject:(id)arg2;
 - (void)storeDiagnosticLogs:(CDUnknownBlockType)arg1;

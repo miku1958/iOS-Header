@@ -9,17 +9,21 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSSet, NSString;
+@class NSData, NSSet, NSString;
 
 @interface PKPassAutomaticSelectionCriterion : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _supportsExpress;
     NSString *_type;
     long long _technologyType;
+    NSSet *_primaryTCIs;
     NSSet *_TCIs;
+    NSData *_mask;
 }
 
 @property (copy, nonatomic) NSSet *TCIs; // @synthesize TCIs=_TCIs;
+@property (copy, nonatomic) NSData *mask; // @synthesize mask=_mask;
+@property (copy, nonatomic) NSSet *primaryTCIs; // @synthesize primaryTCIs=_primaryTCIs;
 @property (nonatomic) BOOL supportsExpress; // @synthesize supportsExpress=_supportsExpress;
 @property (nonatomic) long long technologyType; // @synthesize technologyType=_technologyType;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;

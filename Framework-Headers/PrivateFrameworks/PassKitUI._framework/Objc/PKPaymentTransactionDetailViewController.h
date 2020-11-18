@@ -9,11 +9,13 @@
 #import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentContactResolverDelegate-Protocol.h>
 
-@class NSArray, NSDateFormatter, NSString, PKPaymentPass, PKPaymentTransaction, PKPaymentTransactionDetailHeaderView, PKPaymentTransactionLocationSnapshotter, PKPeerPaymentBubbleView, PKPeerPaymentContactResolver, PKPeerPaymentController, PKPeerPaymentStatusResponse, UIImage;
+@class NSArray, NSDateFormatter, NSString, PKPaymentPass, PKPaymentTransaction, PKPaymentTransactionDetailHeaderView, PKPeerPaymentContactResolver, PKPeerPaymentController, PKPeerPaymentStatusResponse, UIImage;
 @protocol PKPaymentDataProvider;
 
 @interface PKPaymentTransactionDetailViewController : PKSectionTableViewController <PKPeerPaymentContactResolverDelegate, PKPaymentDataProviderDelegate>
 {
+    BOOL _reportingMapsIssue;
+    long long _detailViewStyle;
     BOOL _issuerAppDeepLinkingEnabled;
     BOOL _inBridge;
     PKPaymentTransaction *_transaction;
@@ -22,15 +24,12 @@
     PKPaymentTransactionDetailHeaderView *_headerView;
     PKPeerPaymentContactResolver *_contactResolver;
     PKPeerPaymentController *_peerPaymentController;
-    PKPaymentTransactionLocationSnapshotter *_merchantLocationSnapshotter;
     UIImage *_mapTilePlaceholderImage;
     NSArray *_lineItems;
     PKPeerPaymentStatusResponse *_peerPaymentStatusResponse;
-    PKPeerPaymentBubbleView *_bubbleView;
     NSDateFormatter *_transactionDateFormatter;
 }
 
-@property (strong, nonatomic) PKPeerPaymentBubbleView *bubbleView; // @synthesize bubbleView=_bubbleView;
 @property (strong, nonatomic) PKPeerPaymentContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -40,7 +39,6 @@
 @property (nonatomic) BOOL issuerAppDeepLinkingEnabled; // @synthesize issuerAppDeepLinkingEnabled=_issuerAppDeepLinkingEnabled;
 @property (strong, nonatomic) NSArray *lineItems; // @synthesize lineItems=_lineItems;
 @property (strong, nonatomic) UIImage *mapTilePlaceholderImage; // @synthesize mapTilePlaceholderImage=_mapTilePlaceholderImage;
-@property (strong, nonatomic) PKPaymentTransactionLocationSnapshotter *merchantLocationSnapshotter; // @synthesize merchantLocationSnapshotter=_merchantLocationSnapshotter;
 @property (readonly, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property (readonly, nonatomic) id<PKPaymentDataProvider> paymentServiceDataProvider; // @synthesize paymentServiceDataProvider=_paymentServiceDataProvider;
 @property (strong, nonatomic) PKPeerPaymentController *peerPaymentController; // @synthesize peerPaymentController=_peerPaymentController;
@@ -50,49 +48,36 @@
 @property (strong, nonatomic) NSDateFormatter *transactionDateFormatter; // @synthesize transactionDateFormatter=_transactionDateFormatter;
 
 - (void).cxx_destruct;
-- (unsigned long long)_accountInfoRowForRowIndex:(long long)arg1;
-- (BOOL)_accountInfoRowIsEnabled:(unsigned long long)arg1;
 - (unsigned long long)_actionRowForRowIndex:(long long)arg1;
 - (BOOL)_actionRowIsEnabled:(unsigned long long)arg1;
-- (id)_cellForPeerPaymentCounterpartInTableView:(id)arg1;
 - (id)_fraudRiskCellForTableView:(id)arg1;
-- (void)_handleBubbleAction:(unsigned long long)arg1 forPeerPaymentBubbleView:(id)arg2;
 - (void)_handlePeerPaymentDisplayableError:(id)arg1 withPeerPaymentController:(id)arg2;
-- (unsigned long long)_locationType;
 - (id)_mapTilePlaceholderImage;
 - (id)_merchantAddressCellForTableView:(id)arg1;
-- (long long)_numberOfAccountInfoRowsEnabled;
 - (long long)_numberOfActionRowsEnabled;
-- (long long)_numberOfStatusRowsEnabled;
 - (void)_openMessagesToPresentAction:(unsigned long long)arg1;
 - (void)_openTransactionInIssuerApp;
 - (void)_performPeerPaymentAction:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_reloadTableHeaderView;
-- (id)_reuseIdentifierForSection:(unsigned long long)arg1;
-- (long long)_rowIndexForAccountInfoRow:(unsigned long long)arg1;
 - (long long)_rowIndexForActionRow:(unsigned long long)arg1;
-- (long long)_rowIndexForStatusRow:(unsigned long long)arg1;
-- (BOOL)_shouldDisplayTransactionStatusChangedDate;
-- (unsigned long long)_statusRowForRowIndex:(long long)arg1;
-- (BOOL)_statusRowIsEnabled:(unsigned long long)arg1;
+- (BOOL)_shouldHighlightAction:(unsigned long long)arg1;
+- (id)_statusCellForTableView:(id)arg1;
+- (id)_subtitleCellWithTitle:(id)arg1 subtitle:(id)arg2;
 - (id)_tableView:(id)arg1 actionButtonCellForSection:(unsigned long long)arg2;
-- (id)_tableView:(id)arg1 cellForAccountInfoRowAtIndex:(long long)arg2;
 - (id)_tableView:(id)arg1 cellForActionAtIndex:(long long)arg2;
 - (id)_tableView:(id)arg1 cellForAmountDetailLineItemAtIndex:(long long)arg2;
-- (id)_tableView:(id)arg1 cellForStatusRowAtIndex:(long long)arg2;
 - (void)_tableView:(id)arg1 didSelectActionAtIndexPath:(id)arg2;
 - (void)_tableView:(id)arg1 didSelectMechantAddressAtIndexPath:(id)arg2;
 - (void)_tableView:(id)arg1 didSelectPeerPaymentAction:(id)arg2 atIndexPath:(id)arg3;
 - (void)_tableView:(id)arg1 willDisplayAmountDetailsCell:(id)arg2 atIndexPath:(id)arg3;
 - (id)_titleValueCellWithTitle:(id)arg1 value:(id)arg2;
-- (id)_transactionDateDescription;
 - (BOOL)_transactionHasNonZeroSecondaryFundingSourceAmount;
 - (id)_transactionIdentifierCellForTableView:(id)arg1;
 - (id)_transactionStatusString;
 - (void)_updatePeerPaymentTransactionStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateTableHeaderHeight;
 - (void)contactsDidChangeForContactResolver:(id)arg1;
-- (id)initWithTransaction:(id)arg1 paymentPass:(id)arg2 contactResolver:(id)arg3 peerPaymentController:(id)arg4 paymentServiceDataProvider:(id)arg5;
+- (id)initWithTransaction:(id)arg1 paymentPass:(id)arg2 contactResolver:(id)arg3 peerPaymentController:(id)arg4 paymentServiceDataProvider:(id)arg5 detailViewStyle:(long long)arg6;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 - (id)pkui_navigationBarTintColor;
@@ -102,8 +87,14 @@
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

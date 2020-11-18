@@ -32,7 +32,6 @@
 - (void)didReceiveMessage:(id)arg1 securityOrigin:(id)arg2;
 - (id)initWithMessageHandlerManager:(id)arg1 timeoutManager:(id)arg2 logger:(id)arg3;
 - (void)reportError:(id)arg1;
-- (void)simulateCrashForError:(id)arg1;
 
 @end
 
