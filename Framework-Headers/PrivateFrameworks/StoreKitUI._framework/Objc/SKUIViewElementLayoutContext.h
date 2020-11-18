@@ -23,6 +23,7 @@
     SKUIItemOfferButton *_itemOfferButton;
     NSMutableDictionary *_itemOfferButtonSizes;
     SKUIViewElementTextLayoutCache *_labelLayoutCache;
+    struct UIEdgeInsets _largeScreenElementPadding;
     NSMutableSet *_observedArtworkRequestIDs;
     UIViewController *_parentViewController;
     UIColor *_placeholderColor;
@@ -43,6 +44,7 @@
 @property (nonatomic) unsigned long long containerViewElementType; // @synthesize containerViewElementType=_containerViewElementType;
 @property (nonatomic) double displayScale; // @synthesize displayScale=_displayScale;
 @property (strong, nonatomic) SKUIViewElementTextLayoutCache *labelLayoutCache; // @synthesize labelLayoutCache=_labelLayoutCache;
+@property (readonly, nonatomic) struct UIEdgeInsets largeScreenElementPadding; // @synthesize largeScreenElementPadding=_largeScreenElementPadding;
 @property (weak, nonatomic) UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property (strong, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
 @property (strong, nonatomic) SKUIResourceLoader *resourceLoader; // @synthesize resourceLoader=_resourceLoader;
@@ -82,6 +84,7 @@
 - (id)requestIdentifierForViewElement:(id)arg1;
 - (void)setAggregateValue:(id)arg1 forKey:(id)arg2;
 - (void)setBlurColor:(id)arg1 cacheKey:(id)arg2;
+- (void)setLargeScreenElementPaddingFromContext:(id)arg1;
 - (struct CGSize)sizeForBadgeElement:(id)arg1;
 - (struct CGSize)sizeForImageElement:(id)arg1;
 - (struct CGSize)sizeForItemOfferButton:(id)arg1;

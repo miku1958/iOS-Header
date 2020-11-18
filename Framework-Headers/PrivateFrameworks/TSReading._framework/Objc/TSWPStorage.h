@@ -164,6 +164,7 @@
 - (id)extendSelectionToIncludeSmartFields:(id)arg1;
 - (void)filterInvalidContentForStorage:(id)arg1 undoTransaction:(struct TSWPStorageTransaction *)arg2;
 - (void)filterSectionBreaksFromStorage:(id)arg1 undoTransaction:(struct TSWPStorageTransaction *)arg2;
+- (double)filteredCoreTextAttributesFontScaleEffectiveRange:(struct _NSRange *)arg1 filterDelegate:(id)arg2;
 - (void)findChangesInRange:(struct _NSRange)arg1 onHit:(CDUnknownBlockType)arg2;
 - (unsigned long long)findCharIndexForAttachment:(id)arg1;
 - (unsigned long long)findCharIndexForFootnoteAttachment:(id)arg1;

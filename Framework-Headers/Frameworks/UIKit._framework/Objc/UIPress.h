@@ -16,6 +16,8 @@
     NSMutableArray *_forwardingRecord;
     BOOL _abandonForwardingRecord;
     BOOL __synthetic;
+    BOOL _isDelayed;
+    BOOL _sentPressesEnded;
     double _timestamp;
     long long _phase;
     long long _type;
@@ -32,8 +34,10 @@
 @property (nonatomic) double force; // @synthesize force=_force;
 @property (copy, nonatomic) NSArray *gestureRecognizers;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isDelayed; // @synthesize isDelayed=_isDelayed;
 @property (nonatomic) long long phase; // @synthesize phase=_phase;
 @property (strong, nonatomic) UIResponder *responder; // @synthesize responder=_responder;
+@property (nonatomic) BOOL sentPressesEnded; // @synthesize sentPressesEnded=_sentPressesEnded;
 @property (readonly) Class superclass;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) long long type; // @synthesize type=_type;
@@ -44,7 +48,9 @@
 - (id)_forwardingRecord;
 - (BOOL)_isAbandoningForwardingRecord;
 - (BOOL)_isDirectionalPress;
+- (void)_loadStateFromPress:(id)arg1;
 - (id)_mutableForwardingRecord;
+- (id)_phaseDescription;
 - (void)_removeGestureRecognizer:(id)arg1;
 - (SEL)_responderSelectorForPhase:(long long)arg1;
 - (BOOL)_wantsForwardingFromResponder:(id)arg1 toNextResponder:(id)arg2 withEvent:(id)arg3;

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)activeInstance;
 + (id)sharedInstance;
 - (id)assistantSwitch;
+- (unsigned long long)currentSelectedRow;
 - (void)dealloc;
 - (unsigned long long)defaultSelectedIndex;
 - (void)didSelectItemAtIndex:(unsigned long long)arg1;

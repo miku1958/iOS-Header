@@ -8,7 +8,7 @@
 
 #import <RadioUI/MPUQueueBehaviorManaging-Protocol.h>
 
-@class MPAVItem, MPPlaceholderAVItem, NSArray, NSMapTable, NSMutableSet, NSString, RURadioAdObserver, RadioStation, RadioStationSkipController, SSVPlaybackLease;
+@class MPAVItem, MPPlaceholderAVItem, NSArray, NSMapTable, NSMutableSet, NSString, RURadioAdObserver, RadioStation, RadioStationSkipController;
 
 @interface RURadioQueueFeeder : MPQueueFeeder <MPUQueueBehaviorManaging>
 {
@@ -26,7 +26,6 @@
     BOOL _isPreparingStation;
     long long _maximumGetTracksRetryCount;
     MPPlaceholderAVItem *_placeholderAVItem;
-    SSVPlaybackLease *_playbackLease;
     NSArray *_previousDatabaseTrackPlaybackDescriptorQueue;
     NSMapTable *_radioTrackToAdSlot;
     RadioStation *_station;

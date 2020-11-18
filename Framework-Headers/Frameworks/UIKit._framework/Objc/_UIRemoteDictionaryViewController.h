@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 - (id)_downloadArrowImage;
 - (id)_downloadButton;
 - (id)_downloadImageWithTintColor:(id)arg1;
-- (id)_downloadOptionsDictionary;
 - (void)_handleDownloadButton:(id)arg1;
+- (BOOL)_isStalledAutoDownloadAsset:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

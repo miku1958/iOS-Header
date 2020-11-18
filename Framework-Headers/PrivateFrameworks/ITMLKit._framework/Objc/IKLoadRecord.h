@@ -10,12 +10,14 @@
 
 @interface IKLoadRecord : NSObject
 {
+    BOOL _loadCompleted;
     NSURL *_URL;
     ISURLOperation *_opertaion;
     NSString *_scriptStr;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (nonatomic) BOOL loadCompleted; // @synthesize loadCompleted=_loadCompleted;
 @property (strong, nonatomic) ISURLOperation *opertaion; // @synthesize opertaion=_opertaion;
 @property (strong, nonatomic) NSString *scriptStr; // @synthesize scriptStr=_scriptStr;
 

@@ -13,6 +13,7 @@
 
 @interface MusicEntityVerticalLockupView : MusicEntityAbstractLockupView <MusicEntityContentDescriptorViewConfiguring>
 {
+    double _textLateralEdgePadding;
     id<MusicEntityVerticalLockupViewDelegate> _delegate;
 }
 
@@ -31,6 +32,7 @@
 - (BOOL)_shouldArtworkViewRespectHighlightProperty;
 - (BOOL)_shouldEnableArtworkViewUserInteraction;
 - (void)layoutSubviews;
+- (void)setTextLateralEdgePadding:(double)arg1;
 
 @end
 

@@ -6,10 +6,13 @@
 
 #import <NotesShared/ICCloudSyncingObject.h>
 
-@class NSData, NSDate, NSSet;
+@class NSData, NSDate, NSObject, NSSet;
+@protocol OS_dispatch_queue;
 
 @interface ICAttachmentPreviewImage : ICCloudSyncingObject
 {
+    NSObject<OS_dispatch_queue> *_fileQueue;
+    long long _fileQueueOnceToken;
     unsigned long long _imageID;
 }
 
@@ -25,7 +28,7 @@
 
 + (id)allCloudObjects;
 + (id)existingCloudObjectForRecordID:(id)arg1;
-+ (id)fileQueue;
++ (id)fileQueueGroup;
 + (id)identifierForContentIdentifier:(id)arg1 scale:(double)arg2 width:(double)arg3 height:(double)arg4;
 + (id)imageCache;
 + (id)newCloudObjectForRecord:(id)arg1;
@@ -33,13 +36,17 @@
 + (id)previewImageDirectoryURL;
 + (void)purgeAllPreviewImages;
 + (id)recordType;
-+ (void)waitUntilFileAccessIsFinished;
++ (void)waitUntilAllFileWritesAreFinished;
+- (void).cxx_destruct;
 - (struct UIImage *)cachedImage;
 - (struct UIImage *)cachedOrientedImage;
 - (void)deleteFromLocalDatabase;
+- (id)fileQueue;
 - (void)fixBrokenReferences;
 - (struct UIImage *)image;
+- (BOOL)imageIsValid;
 - (struct UIImage *)imageWithBackground:(int)arg1;
+- (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 - (void)invalidateImage;
 - (void)invalidateOrientedImage;
 - (BOOL)isInICloudAccount;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSBundle, NSMapTable, NSString;
+@class NSBundle, NSCache, NSMapTable, NSString;
 
 @interface CUICatalog : NSObject
 {
@@ -15,14 +15,15 @@
     NSBundle *_bundle;
     NSString *_assetStoreName;
     unsigned int _purgeWhenFinished:1;
+    NSCache *_lookupCache;
 }
 
-+ (id)_resolvedRenditionKeyFromThemeRef:(unsigned long long)arg1 withBaseKey:(id)arg2 scaleFactor:(double)arg3 deviceIdiom:(long long)arg4 deviceSubtype:(unsigned long long)arg5 sizeClassHorizontal:(long long)arg6 sizeClassVertical:(long long)arg7 memoryClass:(unsigned long long)arg8 graphicsClass:(unsigned long long)arg9 graphicsFallBackOrder:(id)arg10;
 + (id)bestMatchUsingImages:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 deviceSubtype:(unsigned long long)arg4;
 + (id)bestMatchUsingImages:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 deviceSubtype:(unsigned long long)arg4 sizeClassHorizontal:(long long)arg5 sizeClassVertical:(long long)arg6;
 + (id)bestMatchUsingObjects:(id)arg1 getAttributeValueUsing:(CDUnknownBlockType)arg2 scaleFactor:(double)arg3 deviceIdiom:(long long)arg4 deviceSubtype:(unsigned long long)arg5 sizeClassHorizontal:(long long)arg6 sizeClassVertical:(long long)arg7 memoryClass:(long long)arg8 graphicsFeatureSetClass:(long long)arg9 graphicsFallBackOrder:(id)arg10;
 + (id)defaultUICatalog;
 + (id)defaultUICatalogForBundle:(id)arg1;
++ (BOOL)isValidLCRWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 + (id)systemUICatalog;
 - (id)_baseAtlasContentsKeyForName:(id)arg1;
 - (id)_baseAtlasKeyForName:(id)arg1;
@@ -31,6 +32,7 @@
 - (BOOL)_doStyledQuartzDrawingInContext:(struct CGContext *)arg1 inBounds:(struct CGRect)arg2 stylePresetName:(id)arg3 styleConfiguration:(id)arg4 drawingHandler:(CDUnknownBlockType)arg5;
 - (id)_imageWithName:(id)arg1 scaleFactor:(double)arg2;
 - (id)_resolvedRenditionKeyForName:(id)arg1 scaleFactor:(double)arg2 deviceIdiom:(long long)arg3 deviceSubtype:(unsigned long long)arg4 sizeClassHorizontal:(long long)arg5 sizeClassVertical:(long long)arg6 memoryClass:(unsigned long long)arg7 graphicsClass:(unsigned long long)arg8 graphicsFallBackOrder:(id)arg9 withBaseKeySelector:(SEL)arg10;
+- (id)_resolvedRenditionKeyFromThemeRef:(unsigned long long)arg1 withBaseKey:(id)arg2 scaleFactor:(double)arg3 deviceIdiom:(long long)arg4 deviceSubtype:(unsigned long long)arg5 sizeClassHorizontal:(long long)arg6 sizeClassVertical:(long long)arg7 memoryClass:(unsigned long long)arg8 graphicsClass:(unsigned long long)arg9 graphicsFallBackOrder:(id)arg10;
 - (void)_resourceUnPinnedNotification:(id)arg1;
 - (unsigned long long)_storageRefForRendition:(id)arg1 representsODRContent:(BOOL *)arg2;
 - (unsigned long long)_themeRef;

@@ -8,18 +8,19 @@
 
 #import <SAObjects/SAAceSerializable-Protocol.h>
 
-@class NSLocale, NSString;
+@class NSArray, NSString;
 
 @interface SANPVideoLanguageOption : AceObject <SAAceSerializable>
 {
 }
 
+@property (copy, nonatomic) NSArray *characteristics;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *displayName;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier;
-@property (copy, nonatomic) NSLocale *languageTag;
+@property (copy, nonatomic) NSString *languageTag;
 @property (readonly) Class superclass;
 
 + (id)languageOption;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)drawFrame;
 - (id)factory;
 - (BOOL)hasRendered;
+- (long long)imageOrientationForLayer:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 - (id)key;
 - (id)keyplane;

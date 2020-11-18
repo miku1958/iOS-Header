@@ -15,7 +15,6 @@
     NSMutableArray *_originalPaths;
     BOOL _lastHitTestNearBorder;
     NSArray *_allPoints;
-    int _roadType;
     int _travelDirection;
     NSString *_roadDirection;
     NSArray *_intersectingRoads;
@@ -24,7 +23,6 @@
 @property (strong, nonatomic) NSArray *intersectingRoads; // @synthesize intersectingRoads=_intersectingRoads;
 @property (readonly, nonatomic) NSArray *originalPaths; // @synthesize originalPaths=_originalPaths;
 @property (strong, nonatomic) NSString *roadDirection; // @synthesize roadDirection=_roadDirection;
-@property int roadType; // @synthesize roadType=_roadType;
 @property (nonatomic) int travelDirection; // @synthesize travelDirection=_travelDirection;
 
 - (float)_accessibilityDistance:(struct CGPoint)arg1 forAngle:(float)arg2 toRoad:(id)arg3;

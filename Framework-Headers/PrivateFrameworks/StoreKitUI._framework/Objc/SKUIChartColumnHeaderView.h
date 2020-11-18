@@ -14,6 +14,7 @@
     long long _selectedTitleIndex;
 }
 
+@property (readonly, nonatomic) double edgePadding;
 @property (nonatomic) long long selectedTitleIndex; // @synthesize selectedTitleIndex=_selectedTitleIndex;
 @property (copy, nonatomic) NSArray *titles;
 

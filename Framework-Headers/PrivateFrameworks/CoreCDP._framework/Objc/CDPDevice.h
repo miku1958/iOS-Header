@@ -7,18 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <CoreCDP/NSCopying-Protocol.h>
+#import <CoreCDP/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSDate, NSNumber, NSString;
 
-@interface CDPDevice : NSObject <NSCopying>
+@interface CDPDevice : NSObject <NSSecureCoding, NSCopying>
 {
-    BOOL _hasRandomSecret;
-    BOOL _hasNumericSecret;
-    BOOL _isUsingMultipleiCSC;
     NSString *_localizedName;
     NSString *_model;
+    NSString *_modelVersion;
+    NSString *_modelClass;
+    unsigned long long _platform;
     NSString *_recordID;
+    NSDate *_recordDate;
+    BOOL _hasRandomSecret;
+    BOOL _hasNumericSecret;
     NSNumber *_numericSecretLength;
+    BOOL _isUsingMultipleiCSC;
     unsigned long long _remainingAttempts;
     NSString *_deviceColor;
     NSString *_enclosureColor;
@@ -30,18 +35,24 @@
 @property (nonatomic) BOOL hasNumericSecret; // @synthesize hasNumericSecret=_hasNumericSecret;
 @property (nonatomic) BOOL hasRandomSecret; // @synthesize hasRandomSecret=_hasRandomSecret;
 @property (nonatomic) BOOL isUsingMultipleiCSC; // @synthesize isUsingMultipleiCSC=_isUsingMultipleiCSC;
+@property (readonly, nonatomic) unsigned long long localSecretType;
 @property (copy, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
 @property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
+@property (copy, nonatomic) NSString *modelClass; // @synthesize modelClass=_modelClass;
+@property (copy, nonatomic) NSString *modelVersion; // @synthesize modelVersion=_modelVersion;
 @property (copy, nonatomic) NSNumber *numericSecretLength; // @synthesize numericSecretLength=_numericSecretLength;
+@property (nonatomic) unsigned long long platform; // @synthesize platform=_platform;
+@property (copy, nonatomic) NSDate *recordDate; // @synthesize recordDate=_recordDate;
 @property (copy, nonatomic) NSString *recordID; // @synthesize recordID=_recordID;
 @property (nonatomic) unsigned long long remainingAttempts; // @synthesize remainingAttempts=_remainingAttempts;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)initWithSecureBackupMetadataInfo:(id)arg1;
-- (id)initWithSecureBackupRecordInfo:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

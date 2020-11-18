@@ -109,6 +109,7 @@
 - (void)didDismissUI;
 - (void)endSession;
 - (void)forceAudioSessionActive;
+- (void)forceAudioSessionInactive;
 - (void)getDeferredObjectsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (float)peakPower;

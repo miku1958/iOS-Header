@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 - (void)_menuButtonPressed:(id)arg1;
 - (BOOL)canBeShownFromSuspendedState;
+- (void)loadView;
 - (void)setSupportedInterfaceOrientations:(unsigned long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLoad;

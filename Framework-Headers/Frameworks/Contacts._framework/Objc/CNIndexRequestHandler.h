@@ -27,7 +27,6 @@
 - (void).cxx_destruct;
 - (id)contactIdentifierFromPerson:(void *)arg1;
 - (void)dealloc;
-- (void)finishIndexingAllSearchableItemsIfNecessary;
 - (id)init;
 - (id)initWithAddressBook:(void *)arg1;
 - (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg2;

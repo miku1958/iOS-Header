@@ -13,7 +13,6 @@
 __attribute__((visibility("hidden")))
 @interface MRLanguageOptionGroup : NSObject <NSSecureCoding>
 {
-    struct __CFAllocator *_allocator;
     BOOL _allowEmptySelection;
     MRLanguageOption *_defaultLanguageOption;
     NSArray *_languageOptions;
@@ -23,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) MRLanguageOption *defaultLanguageOption; // @synthesize defaultLanguageOption=_defaultLanguageOption;
 @property (readonly, nonatomic) NSArray *languageOptions; // @synthesize languageOptions=_languageOptions;
 
-+ (id)allocWithAllocator:(const struct __CFAllocator *)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

@@ -6,13 +6,12 @@
 
 #import <MediaPlayer/MPPlaybackContext.h>
 
-@class MPAVItem, NSArray, NSMapTable, RadioStation, RadioStationMatchContext, SSVPlaybackLease;
+@class MPAVItem, NSArray, NSMapTable, RadioStation, RadioStationMatchContext;
 
 @interface RURadioPlaybackContext : MPPlaybackContext
 {
     NSMapTable *_preparedAdSlotByRadioTrack;
     NSArray *_allPreparedAdSlotRadioTracks;
-    SSVPlaybackLease *_playbackLease;
     MPAVItem *_prefixItem;
     RadioStation *_station;
     RadioStationMatchContext *_stationMatchContext;
@@ -20,19 +19,16 @@
 }
 
 @property (readonly, copy, nonatomic) NSArray *allPreparedAdSlotRadioTracks; // @synthesize allPreparedAdSlotRadioTracks=_allPreparedAdSlotRadioTracks;
-@property (strong, nonatomic) SSVPlaybackLease *playbackLease; // @synthesize playbackLease=_playbackLease;
 @property (strong, nonatomic) MPAVItem *prefixItem; // @synthesize prefixItem=_prefixItem;
 @property (strong, nonatomic) RadioStation *station; // @synthesize station=_station;
 @property (strong, nonatomic) RadioStationMatchContext *stationMatchContext; // @synthesize stationMatchContext=_stationMatchContext;
 @property (copy, nonatomic) NSArray *tracks; // @synthesize tracks=_tracks;
 
 + (Class)queueFeederClass;
-+ (void)setDefaultPlaybackLease:(id)arg1;
 - (void).cxx_destruct;
 - (void)addPreparedAdSlot:(id)arg1 forRadioTrack:(id)arg2;
 - (void)configureWithStationPlaybackMetadata:(id)arg1;
 - (id)descriptionComponents;
-- (id)init;
 - (id)preparedAdSlotForRadioTrack:(id)arg1;
 
 @end

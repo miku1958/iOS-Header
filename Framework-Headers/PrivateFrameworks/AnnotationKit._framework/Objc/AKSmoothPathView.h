@@ -76,6 +76,7 @@
 - (struct CGContext *)_getPlatformCGContext;
 - (void)_handleForwardedUIEvent:(id)arg1;
 - (MISSING_TYPE *)_pointForRecognizer:(id)arg1;
+- (MISSING_TYPE *)_pointForTouch:(id)arg1;
 - (void)_setupFilterChain;
 - (void)_setupShadowInContext:(struct CGContext *)arg1;
 - (void)_updateInterpolatingFifoLineWidth;

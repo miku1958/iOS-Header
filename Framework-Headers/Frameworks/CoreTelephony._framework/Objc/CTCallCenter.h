@@ -13,11 +13,14 @@
     void *_server;
     NSSet *_currentCalls;
     CDUnknownBlockType _callEventHandler;
+    struct queue _queue;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType callEventHandler;
 @property (strong) NSSet *currentCalls; // @dynamic currentCalls;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)broadcastCallStateChangesIfNeededWithFailureLogMessage:(id)arg1;
 - (BOOL)calculateCallStateChanges:(id)arg1;
 - (void)cleanUpServerConnection;
@@ -26,6 +29,7 @@
 - (BOOL)getCurrentCallSetFromServer:(id)arg1;
 - (void)handleNotificationFromConnection:(void *)arg1 ofType:(id)arg2 withInfo:(id)arg3;
 - (id)init;
+- (id)initWithQueue:(struct dispatch_queue_s *)arg1;
 - (BOOL)setUpServerConnection;
 
 @end

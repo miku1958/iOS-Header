@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableSet, NSString, SGRecordId;
+@class NSArray, NSMutableSet, NSString, SGRecordId, SGTuple3;
 
 @interface SGStorageContact : NSObject
 {
     NSMutableSet *_profiles;
-    NSArray *internalDetectedPhones;
-    NSArray *internalDetectedAddresses;
-    NSArray *internalDetectedEmailAddresses;
-    long long detectedDetailsOnce;
+    NSArray *_internalDetectedPhones;
+    NSArray *_internalDetectedAddresses;
+    NSArray *_internalDetectedEmailAddresses;
+    SGTuple3 *_internalDetectedDetails;
+    long long _detectedDetailsOnce;
     long long _masterEntityId;
     SGRecordId *_recordId;
 }

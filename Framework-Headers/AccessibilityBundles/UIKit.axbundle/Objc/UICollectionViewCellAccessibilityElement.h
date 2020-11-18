@@ -34,6 +34,7 @@
 - (void)_accessibilitySelect;
 - (void)_accessibilitySelectAll;
 - (struct _NSRange)_accessibilitySelectedTextRange;
+- (id)_accessibilitySemanticContextForElement:(id)arg1;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (BOOL)_accessibilityShouldAttemptScrollToFrameOnParentView;
 - (BOOL)_accessibilitySupportsActivateAction;
@@ -42,6 +43,8 @@
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)_accessibilityUserTestingIsCancelButton;
 - (BOOL)_accessibilityUserTestingIsDefaultButton;
+- (BOOL)_accessibilityUserTestingIsDestructiveButton;
+- (BOOL)_accessibilityUserTestingIsPreferredButton;
 - (id)_accessibilityUserTestingVisibleAncestor;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;

@@ -6,17 +6,25 @@
 
 #import <objc/NSObject.h>
 
+#import <GameplayKit/GKStrategist-Protocol.h>
+
+@class NSString;
 @protocol GKGameModel, GKRandom;
 
-@interface GKMinmaxStrategist : NSObject
+@interface GKMinmaxStrategist : NSObject <GKStrategist>
 {
     struct GKCMinmaxStrategist *_cppMinmax;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<GKGameModel> gameModel;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long maxLookAheadDepth;
 @property (strong, nonatomic) id<GKRandom> randomSource;
+@property (readonly) Class superclass;
 
+- (id)bestMoveForActivePlayer;
 - (id)bestMoveForPlayer:(id)arg1;
 - (void)dealloc;
 - (id)init;

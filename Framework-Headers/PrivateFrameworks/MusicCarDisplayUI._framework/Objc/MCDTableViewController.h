@@ -6,7 +6,7 @@
 
 #import <MediaPlayerUI/MPUTableViewController.h>
 
-@class AVExternalDevice, UIView;
+@class AVExternalDevice, MPMediaPredicate, UIView;
 
 @interface MCDTableViewController : MPUTableViewController
 {
@@ -14,6 +14,7 @@
     UIView *_nowPlayingButton;
     UIView *_snapshotView;
     BOOL _limiting;
+    MPMediaPredicate *_localPredicate;
     BOOL _shouldHideIndexTitles;
     BOOL _limitedUI;
     BOOL _showMore;
@@ -39,6 +40,7 @@
 - (BOOL)shouldScrollToFirstDataSourceSectionOnInitialAppearance;
 - (BOOL)shouldShowActionCellConfiguration:(Class)arg1;
 - (BOOL)tableView:(id)arg1 shouldChangeFocusedItem:(id)arg2 fromRowAtIndexPath:(id)arg3;
+- (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

@@ -36,6 +36,7 @@
 - (id)_newRootViewController;
 - (void)_showRootViewController;
 - (id)initWithRedeemCategory:(long long)arg1;
+- (struct CGSize)preferredContentSize;
 - (void)redeemAgainAnimated:(BOOL)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;

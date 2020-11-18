@@ -21,6 +21,7 @@
 
 + (id)newTestingInstanceWithSharedKVS:(id)arg1;
 + (void)reset;
++ (void)resetNoFlush;
 + (id)sharedSuggestHistory;
 - (void).cxx_destruct;
 - (BOOL)_anyHash:(id)arg1 inSet:(id)arg2;
@@ -78,6 +79,7 @@
 - (void)rejectEventFromExternalDevice:(id)arg1;
 - (void)rejectStorageEvent:(id)arg1;
 - (void)reset;
+- (void)resetNoFlush;
 - (id)setForKey:(id)arg1;
 - (void)setInternalStateAccordingToKVS;
 - (void)writeAndPushConfirmedEventHashes:(id)arg1;

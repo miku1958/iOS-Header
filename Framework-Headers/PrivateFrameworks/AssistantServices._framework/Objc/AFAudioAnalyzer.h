@@ -13,14 +13,19 @@
 
 @interface AFAudioAnalyzer : NSObject <Endpointer>
 {
-    BOOL _detectedStartPoint;
+    BOOL _detectedOneShotStartpoint;
+    BOOL _detectedRecurrentStartpoint;
     BOOL _communicatedStartPointDetection;
-    BOOL _detectedEndpoint;
+    BOOL _detectedOneShotEndpoint;
+    BOOL _detectedRecurrentEndpoint;
     BOOL _communicatedEndpointDetection;
     double _sampleRate;
     double _samplesSeen;
     unsigned int _frameRate;
-    double _lastEndOfVoiceActivityTime;
+    double _lastOneShotStartpoint;
+    double _lastOneShotEndpoint;
+    double _lastRecurrentStartpoint;
+    double _lastRecurrentEndpoint;
     NSMutableData *_floatSampleBuffer;
     NSDictionary *_topLevelParameterDict;
     NSString *_modelDictPath;
@@ -34,6 +39,7 @@
     double _endWaitTime;
     long long _style;
     double _automaticEndpointingSuspensionEndTime;
+    double _minimumDurationForEndpointer;
     id<AFAudioAnalyzerDelegate> _delegate;
 }
 
@@ -45,7 +51,8 @@
 @property int endpointMode; // @synthesize endpointMode=_endpointMode;
 @property (readonly) unsigned long long hash;
 @property double interspeechWaitTime; // @synthesize interspeechWaitTime=_interspeechWaitTime;
-@property (readonly, nonatomic) double lastEndOfVoiceActivityTime; // @synthesize lastEndOfVoiceActivityTime=_lastEndOfVoiceActivityTime;
+@property (readonly, nonatomic) double lastEndOfVoiceActivityTime;
+@property (nonatomic) double minimumDurationForEndpointer; // @synthesize minimumDurationForEndpointer=_minimumDurationForEndpointer;
 @property double startWaitTime; // @synthesize startWaitTime=_startWaitTime;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;

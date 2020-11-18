@@ -85,7 +85,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)commentsTableDataControllerShouldBeginEditing:(id)arg1;
 - (void)dealloc;
 - (void)didChangeActive;
-- (void)loadView;
+- (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end

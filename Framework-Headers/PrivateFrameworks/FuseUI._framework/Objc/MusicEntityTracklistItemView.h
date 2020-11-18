@@ -61,8 +61,8 @@
 - (void)_updatePlaybackIndicator;
 - (id)_viewForTextDescriptor:(id)arg1;
 - (void)dealloc;
-- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
+- (void)music_inheritedLayoutInsetsDidChange;
 - (void)setBackgroundColor:(id)arg1;
 - (void)textDrawingCacheWasInvalidated:(id)arg1;
 

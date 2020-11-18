@@ -14,25 +14,26 @@ __attribute__((visibility("hidden")))
 @interface PUTileTree : NSObject <NSCopying>
 {
     BOOL _useUniqueLeafs;
-    NSMutableDictionary *__objectsByIndexPathByTileKindByDataSourceIdentifier;
+    NSMutableDictionary *__objectsByTileIdentifier;
 }
 
-@property (readonly, nonatomic) NSMutableDictionary *_objectsByIndexPathByTileKindByDataSourceIdentifier; // @synthesize _objectsByIndexPathByTileKindByDataSourceIdentifier=__objectsByIndexPathByTileKindByDataSourceIdentifier;
+@property (readonly, nonatomic) NSMutableDictionary *_objectsByTileIdentifier; // @synthesize _objectsByTileIdentifier=__objectsByTileIdentifier;
 @property (readonly, nonatomic) BOOL useUniqueLeafs; // @synthesize useUniqueLeafs=_useUniqueLeafs;
 
 - (void).cxx_destruct;
-- (void)addObject:(id)arg1 atIndexPath:(id)arg2 tileKind:(id)arg3 dataSourceIdentifier:(id)arg4;
-- (BOOL)containsObject:(id)arg1 atIndexPath:(id)arg2 tileKind:(id)arg3 dataSourceIdentifier:(id)arg4;
+- (void)addObject:(id)arg1 withTileIdentifier:(id)arg2;
+- (BOOL)containsObject:(id)arg1 withTileIdentifier:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateObjectsWithTileIdentifier:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initUsingUniqueLeafs:(BOOL)arg1;
-- (id)objectAtIndexPath:(id)arg1 tileKind:(id)arg2 dataSourceIdentifier:(id)arg3;
-- (id)objectsAtIndexPath:(id)arg1 tileKind:(id)arg2 dataSourceIdentifier:(id)arg3;
+- (id)initWithTileTree:(id)arg1;
+- (id)objectWithTileIdentifier:(id)arg1;
 - (void)removeAllObjects;
-- (void)removeObject:(id)arg1 atIndexPath:(id)arg2 tileKind:(id)arg3 dataSourceIdentifier:(id)arg4;
-- (void)removeObjectAtIndexPath:(id)arg1 tileKind:(id)arg2 dataSourceIdentifier:(id)arg3;
+- (void)removeObject:(id)arg1 withTileIdentifier:(id)arg2;
+- (void)removeObjectWithTileIdentifier:(id)arg1;
 
 @end
 

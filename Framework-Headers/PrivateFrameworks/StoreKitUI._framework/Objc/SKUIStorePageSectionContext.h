@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (readonly, nonatomic) SKUIColorScheme *colorScheme; // @synthesize colorScheme=_colorScheme;
 @property (readonly, nonatomic) long long defaultPinningTransitionStyle; // @synthesize defaultPinningTransitionStyle=_defaultPinningTransitionStyle;
+@property (readonly, nonatomic) double horizontalPadding;
 @property (readonly, nonatomic) SKUIItemOfferButtonAppearance *itemOfferButtonAppearance;
 @property (readonly, nonatomic) double landscapePageWidth; // @synthesize landscapePageWidth=_landscapePageWidth;
 @property (readonly, nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;

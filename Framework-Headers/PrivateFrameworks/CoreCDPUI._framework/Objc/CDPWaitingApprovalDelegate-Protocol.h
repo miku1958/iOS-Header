@@ -7,6 +7,6 @@
 @class CDPWaitingApprovalViewController;
 
 @protocol CDPWaitingApprovalDelegate
-- (void)escapeHatchTappedFromWaitingApprovalViewController:(CDPWaitingApprovalViewController *)arg1;
+- (void)waitingApprovalViewController:(CDPWaitingApprovalViewController *)arg1 escapeHatchTappedWithOffer:(unsigned long long)arg2;
 @end
 

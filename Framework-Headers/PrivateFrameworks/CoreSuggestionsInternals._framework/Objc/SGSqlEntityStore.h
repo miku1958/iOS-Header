@@ -33,6 +33,7 @@
     SGSpotlightContactsAdapter *_spotlightContactsAdapter;
     CDUnknownBlockType _crLookup;
     NSCache *_recentlyDeletedDuplicateKeys;
+    unsigned long long _lostMessageOverflow;
     BOOL _isEphemeral;
     BOOL _executeJournals;
     BOOL _waitForMigrations;
@@ -155,6 +156,8 @@
 - (id)contactsWithIdentifiers:(id)arg1;
 - (BOOL)corruptionMarkerPresent;
 - (id)curatedRecordIds;
+- (BOOL)databasecheck_BrokenEntityIDReferences;
+- (BOOL)databasecheck_IntegrityCheck;
 - (id)dbHandleForTesting;
 - (id)dbStats;
 - (void)deleteAllCNContactMatches;
@@ -190,6 +193,7 @@
 - (double)incStatsCounterWithKey:(id)arg1;
 - (id)initForDbStatsOnlyWithError:(id *)arg1;
 - (id)initForMigratorTestWithEntityDb:(id)arg1 snippetDb:(id)arg2;
+- (id)initForRawDatabaseAccessWithEntityPath:(id)arg1 snippetsPath:(id)arg2 error:(id *)arg3;
 - (id)initWithEntityDbPath:(id)arg1 snippetDbPath:(id)arg2 isEphemeral:(BOOL)arg3 executeJournals:(BOOL)arg4 noMigrate:(BOOL)arg5;
 - (BOOL)isRecentlyDeleted:(id)arg1;
 - (id)journal;
@@ -246,6 +250,7 @@
 - (id)mostRecentParentKeyForDuplicateKey:(id)arg1;
 - (id)nextPendingGeocode;
 - (id)parentKeysForDuplicateKey:(id)arg1;
+- (BOOL)performDatabaseCheck;
 - (id)prematchedContactIdentifiers;
 - (void)prepMigrator;
 - (BOOL)processEntity:(id)arg1 recordId:(id)arg2;
@@ -282,6 +287,7 @@
 - (void)setCRLookupForTesting:(CDUnknownBlockType)arg1;
 - (void)setContactsEnabled:(BOOL)arg1;
 - (void)setEventsEnabled:(BOOL)arg1;
+- (void)setLostMessageOverflow:(unsigned long long)arg1;
 - (void)setParentMessagesLimitForTesting:(unsigned long long)arg1;
 - (long long)skipFromZeroSchema;
 - (id)snippetsDbHandleForTesting;

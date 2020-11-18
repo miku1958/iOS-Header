@@ -73,7 +73,7 @@
 - (id)_createLayoutInfoForTileWithIndexPath:(id)arg1 kind:(id)arg2;
 - (id)_displayTileTransformForItemAtIndexPath:(id)arg1;
 - (id)_displayTileTransformForItemAtIndexPath:(id)arg1 pageSize:(struct CGSize)arg2 secondaryDisplayTransform:(id)arg3;
-- (void)_getLayoutRect:(out struct CGRect *)arg1 transform:(out struct CGAffineTransform *)arg2 shouldIncludeBottomOffset:(BOOL)arg3 forContentOfItemAtIndexPath:(id)arg4;
+- (void)_getLayoutRect:(out struct CGRect *)arg1 transform:(out struct CGAffineTransform *)arg2 parallaxOffset:(out struct CGPoint *)arg3 shouldIncludeBottomOffset:(BOOL)arg4 forContentOfItemAtIndexPath:(id)arg5;
 - (id)_indexPathOfItemClosestToAbscissa:(double)arg1;
 - (BOOL)_isVideoPlacholderVisibleForItemAtIndexPath:(id)arg1;
 - (struct CGSize)_itemSize;

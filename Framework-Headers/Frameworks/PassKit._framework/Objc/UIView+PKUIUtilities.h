@@ -16,6 +16,7 @@
 - (void)addTransformSpringWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 startTime:(double)arg4 timing:(id)arg5;
 - (void)addTranslationSpringWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 startTime:(double)arg4 timing:(id)arg5;
 - (void)addTranslationSpringWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 startTime:(double)arg4 velocity:(double)arg5 timing:(id)arg6;
+- (struct CGRect)pkui_readableContentBoundsWithMargins:(struct UIEdgeInsets)arg1;
 - (void)pkui_shakeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)pkui_translationAnimation;
 - (id)pkui_viewControllerFromResponderChain;

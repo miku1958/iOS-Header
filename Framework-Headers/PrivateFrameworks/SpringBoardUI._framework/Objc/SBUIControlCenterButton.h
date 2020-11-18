@@ -28,12 +28,14 @@
     UIImage *_normalBGImage;
     UIImage *_sourceGlyphImage;
     UIImage *_sourceSelectedGlyphImage;
+    NSString *_glyphName;
     double _naturalHeight;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<SBUIControlCenterButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *glyphName; // @synthesize glyphName=_glyphName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isCircleButton; // @synthesize isCircleButton=_isCircleButton;
 @property (nonatomic) BOOL isRectButton; // @synthesize isRectButton=_isRectButton;
@@ -68,6 +70,7 @@
 - (void)_updateForStateChange;
 - (void)_updateGlyphForStateChange;
 - (void)dealloc;
+- (void)didMoveToSuperview;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 backgroundImage:(id)arg2 glyphImage:(id)arg3 naturalHeight:(double)arg4;
 - (void)setBackgroundImage:(id)arg1;
@@ -75,6 +78,7 @@
 - (void)setEnabled:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setGlyphImage:(id)arg1 selectedGlyphImage:(id)arg2;
+- (void)setGlyphImage:(id)arg1 selectedGlyphImage:(id)arg2 name:(id)arg3;
 - (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

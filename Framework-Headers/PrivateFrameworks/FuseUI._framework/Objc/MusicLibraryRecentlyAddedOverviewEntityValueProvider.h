@@ -9,9 +9,11 @@
 #import <FuseUI/MusicEntityValueProviding-Protocol.h>
 
 @class MPMediaQuery, NSString;
+@protocol OS_dispatch_queue;
 
 @interface MusicLibraryRecentlyAddedOverviewEntityValueProvider : NSObject <MusicEntityValueProviding>
 {
+    NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _hasValidItemCount;
     unsigned long long _itemCount;
     MPMediaQuery *_query;
@@ -23,6 +25,7 @@
 @property (readonly, copy, nonatomic) MPMediaQuery *query; // @synthesize query=_query;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsConcurrentLoadingOfEntityProperties;
 - (void).cxx_destruct;
 - (id)entityUniqueIdentifier;
 - (id)imageURLForEntityArtworkProperty:(id)arg1 fittingSize:(struct CGSize)arg2 destinationScale:(double)arg3;

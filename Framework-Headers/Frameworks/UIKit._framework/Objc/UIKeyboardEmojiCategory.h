@@ -24,10 +24,14 @@
 
 + (id)categories;
 + (id)categoryForType:(long long)arg1;
++ (unsigned long long)categoryIndexForCategoryType:(long long)arg1;
++ (long long)categoryTypeForCategoryIndex:(unsigned long long)arg1;
 + (id)computeEmojiFlagsSortedByLanguage;
 + (id)displayName:(long long)arg1;
 + (id)emojiRecentsFromPreferences;
 + (BOOL)emojiString:(id)arg1 inGroup:(unsigned int *)arg2 withGroupCount:(int)arg3;
++ (id)enabledCategoryIndexes;
++ (id)fallbackDisplayName:(long long)arg1;
 + (id)flagEmojiCountryCodesCommon;
 + (id)flagEmojiCountryCodesReadyToUse;
 + (unsigned long long)hasVariantsForEmoji:(id)arg1;

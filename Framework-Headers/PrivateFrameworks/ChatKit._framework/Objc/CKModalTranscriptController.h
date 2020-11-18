@@ -39,6 +39,7 @@
 - (void)setTextEntryContentsVisible:(BOOL)arg1;
 - (BOOL)shouldDismissAfterSend;
 - (void)transitionFromNewMessageToConversation;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

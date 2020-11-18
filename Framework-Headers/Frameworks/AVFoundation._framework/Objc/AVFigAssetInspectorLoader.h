@@ -67,6 +67,7 @@
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 keysForCollectionKeys:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)lyrics;
+- (id)originalNetworkContentURL;
 - (id)resolvedURL;
 - (long long)statusOfValueForKey:(id)arg1 error:(id *)arg2;
 

@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SAUIImageResource *image;
 @property (copy, nonatomic) NSArray *monogramName; // @dynamic monogramName;
+@property (nonatomic) BOOL sizeToFitImage;
 @property (copy, nonatomic) NSString *subtitleText;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *titleText;

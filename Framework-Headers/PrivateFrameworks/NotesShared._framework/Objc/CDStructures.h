@@ -134,10 +134,141 @@ struct Drawing {
 
 struct Font;
 
+struct ICDrawingAzimuthFilter {
+    CDUnknownFunctionPointerType *_field1;
+    struct ICDrawingInputProvider<ICDrawingInputPoint> *_field2;
+    BOOL _field3;
+    double _field4;
+    long long _field5;
+    long long _field6;
+    long long _field7;
+    vector_c0e7c5b2 _field8;
+    BOOL _field9;
+    id _field10;
+    long long _field11;
+};
+
 struct ICDrawingCommandID {
     unsigned int clock;
     NSUUID *replicaUUID;
     unsigned int subclock;
+};
+
+struct ICDrawingEndCapsFilter {
+    CDUnknownFunctionPointerType *_field1;
+    ICDrawingInputProvider_d48c6870 *_field2;
+    BOOL _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+};
+
+struct ICDrawingEndHookFilter {
+    CDUnknownFunctionPointerType *_field1;
+    struct ICDrawingInputProvider<ICDrawingInputPoint> *_field2;
+    BOOL _field3;
+    double _field4;
+    long long _field5;
+    BOOL _field6;
+};
+
+struct ICDrawingInputProvider<ICDrawingInputPoint>;
+
+struct ICDrawingInputProvider<ICDrawingOutputPoint> {
+    CDUnknownFunctionPointerType *_field1;
+};
+
+struct ICDrawingInputProviderInitial {
+    CDUnknownFunctionPointerType *_field1;
+    id _field2;
+};
+
+struct ICDrawingInputSmoother {
+    CDUnknownFunctionPointerType *_field1;
+    ICDrawingInputProvider_d48c6870 *_field2;
+    BOOL _field3;
+    double _field4;
+    long long _field5;
+    long long _field6;
+    long long _field7;
+    vector_82e5b66f _field8;
+    vector_82e5b66f _field9;
+    double _field10;
+    struct vector<ICSmoothingPoint, std::__1::allocator<ICSmoothingPoint>> _field11;
+    id _field12;
+};
+
+struct ICDrawingInputToOutputFilter {
+    CDUnknownFunctionPointerType *_field1;
+    struct ICDrawingInputProvider<ICDrawingInputPoint> *_field2;
+    BOOL _field3;
+    double _field4;
+    long long _field5;
+    long long _field6;
+    long long _field7;
+    vector_c0e7c5b2 _field8;
+    vector_82e5b66f _field9;
+    id _field10;
+};
+
+struct ICDrawingPixelSmoothingFilter {
+    CDUnknownFunctionPointerType *_field1;
+    struct ICDrawingInputProvider<ICDrawingInputPoint> *_field2;
+    BOOL _field3;
+    double _field4;
+    double _field5;
+    long long _field6;
+    id _field7;
+};
+
+struct ICDrawingPointReductionFilter {
+    CDUnknownFunctionPointerType *_field1;
+    struct ICDrawingInputProvider<ICDrawingInputPoint> *_field2;
+    BOOL _field3;
+    double _field4;
+    long long _field5;
+    long long _field6;
+    long long _field7;
+    vector_c0e7c5b2 _field8;
+    vector_c0e7c5b2 _field9;
+    long long _field10;
+    long long _field11;
+    long long _field12;
+    double _field13;
+    double _field14;
+    struct vector<std::__1::pair<long, double>, std::__1::allocator<std::__1::pair<long, double>>> _field15;
+    struct vector<long, std::__1::allocator<long>> _field16;
+};
+
+struct ICDrawingRulerExtremaFilter {
+    CDUnknownFunctionPointerType *_field1;
+    ICDrawingInputProvider_d48c6870 *_field2;
+    BOOL _field3;
+    double _field4;
+    long long _field5;
+    long long _field6;
+    long long _field7;
+    vector_82e5b66f _field8;
+    vector_82e5b66f _field9;
+    id _field10;
+};
+
+struct ICDrawingStartHookFilter {
+    CDUnknownFunctionPointerType *_field1;
+    struct ICDrawingInputProvider<ICDrawingInputPoint> *_field2;
+    BOOL _field3;
+    double _field4;
+    long long _field5;
+    BOOL _field6;
+};
+
+struct ICDrawingVelocityCalculationFilter {
+    CDUnknownFunctionPointerType *_field1;
+    struct ICDrawingInputProvider<ICDrawingInputPoint> *_field2;
+    BOOL _field3;
+    double _field4;
+    BOOL _field5;
 };
 
 struct ICSmoothingPoint;
@@ -392,6 +523,8 @@ struct pair<TopoIDRange, NSAttributedString *>;
 
 struct pair<TopoIDRange, NSDictionary *>;
 
+struct pair<long, double>;
+
 struct unique_ptr<std::__1::__hash_node<TopoSubstring *, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<TopoSubstring *, void *>*>>> {
     struct __compressed_pair<std::__1::__hash_node<TopoSubstring *, void *>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<TopoSubstring *, void *>*>>> {
         struct __hash_node<TopoSubstring *, void *> **_field1;
@@ -580,6 +713,14 @@ struct vector<_NSRange, std::__1::allocator<_NSRange>> {
     } _field3;
 };
 
+struct vector<long, std::__1::allocator<long>> {
+    long long *_field1;
+    long long *_field2;
+    struct __compressed_pair<long *, std::__1::allocator<long>> {
+        long long *_field1;
+    } _field3;
+};
+
 struct vector<std::__1::pair<TopoID, TopoID>, std::__1::allocator<std::__1::pair<TopoID, TopoID>>> {
     struct pair<TopoID, TopoID> *__begin_;
     struct pair<TopoID, TopoID> *__end_;
@@ -601,6 +742,14 @@ struct vector<std::__1::pair<TopoIDRange, NSDictionary *>, std::__1::allocator<s
     struct pair<TopoIDRange, NSDictionary *> *_field2;
     struct __compressed_pair<std::__1::pair<TopoIDRange, NSDictionary *>*, std::__1::allocator<std::__1::pair<TopoIDRange, NSDictionary *>>> {
         struct pair<TopoIDRange, NSDictionary *> *_field1;
+    } _field3;
+};
+
+struct vector<std::__1::pair<long, double>, std::__1::allocator<std::__1::pair<long, double>>> {
+    struct pair<long, double> *_field1;
+    struct pair<long, double> *_field2;
+    struct __compressed_pair<std::__1::pair<long, double>*, std::__1::allocator<std::__1::pair<long, double>>> {
+        struct pair<long, double> *_field1;
     } _field3;
 };
 
@@ -628,11 +777,10 @@ typedef struct {
     double _field4;
     double _field5;
     double _field6;
-    double _field7;
-    BOOL _field8;
-    BOOL _field9;
-    double _field10;
-} CDStruct_ad01986a;
+    BOOL _field7;
+    long long _field8;
+    double _field9;
+} CDStruct_d0a6eba3;
 
 typedef struct {
     struct CGPoint point;
@@ -641,9 +789,14 @@ typedef struct {
     double azimuth;
     double edgeWidth;
     double aspectRatio;
-} CDStruct_5b65a4b8;
+    double timestamp;
+} CDStruct_4a3d0796;
 
 // Template types
+typedef struct ICDrawingInputProvider<ICDrawingOutputPoint> {
+    CDUnknownFunctionPointerType *_field1;
+} ICDrawingInputProvider_d48c6870;
+
 typedef struct unordered_map<NSTextAlignment, topotext::ParagraphStyle_Alignment, std::__1::hash<int>, std::__1::equal_to<NSTextAlignment>, std::__1::allocator<std::__1::pair<const NSTextAlignment, topotext::ParagraphStyle_Alignment>>> {
     struct __hash_table<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::__unordered_map_hasher<NSTextAlignment, std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::hash<int>, true>, std::__1::__unordered_map_equal<NSTextAlignment, std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, std::__1::equal_to<NSTextAlignment>, true>, std::__1::allocator<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>>> {
         struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<NSTextAlignment, topotext::ParagraphStyle_Alignment>, void *>*>>> _field1;
@@ -744,14 +897,6 @@ typedef struct vector<ICDrawingOutputPoint, std::__1::allocator<ICDrawingOutputP
         CDStruct_183601bc *__first_;
     } __end_cap_;
 } vector_82e5b66f;
-
-typedef struct vector<ICSmoothingPoint, std::__1::allocator<ICSmoothingPoint>> {
-    struct ICSmoothingPoint *_field1;
-    struct ICSmoothingPoint *_field2;
-    struct __compressed_pair<ICSmoothingPoint *, std::__1::allocator<ICSmoothingPoint>> {
-        struct ICSmoothingPoint *_field1;
-    } _field3;
-} vector_31b177b4;
 
 typedef struct vector<TopoIDRange, std::__1::allocator<TopoIDRange>> {
     struct TopoIDRange *_field1;

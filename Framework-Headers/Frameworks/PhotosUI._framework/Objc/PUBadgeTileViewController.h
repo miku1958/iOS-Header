@@ -53,8 +53,9 @@ __attribute__((visibility("hidden")))
 - (void)applyLayoutInfo:(id)arg1;
 - (void)becomeReusable;
 - (void)irisBadgeTileInfo:(id)arg1 didTransitionToAppearanceState:(unsigned long long)arg2;
-- (void)loadView;
+- (id)loadView;
 - (void)prepareForReuse;
+- (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end

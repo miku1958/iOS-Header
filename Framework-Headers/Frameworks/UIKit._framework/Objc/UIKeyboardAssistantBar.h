@@ -21,10 +21,13 @@ __attribute__((visibility("hidden")))
     BOOL m_isLandscape;
     BOOL m_lightKeyboard;
     BOOL m_needsDismissButton;
+    BOOL m_show;
     BOOL _hideAssistantBar;
+    BOOL _shouldShow;
 }
 
 @property (nonatomic) BOOL hideAssistantBar; // @synthesize hideAssistantBar=_hideAssistantBar;
+@property (nonatomic) BOOL shouldShow; // @synthesize shouldShow=_shouldShow;
 @property (nonatomic) BOOL show;
 
 + (id)activeInstance;
@@ -60,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)setInputAssistantButtonItems;
 - (void)setInputAssistantButtonItemsForResponder:(id)arg1;
 - (BOOL)showSwitch;
-- (double)sideBarWidth;
+- (double)sideBarWidthForOrientation:(long long)arg1;
 - (BOOL)statisticForCalloutBarButtonSelection:(id)arg1;
 - (void)statisticForShortcutBarHideWithSwitcher;
 - (void)updateBar;

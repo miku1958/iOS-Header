@@ -8,8 +8,8 @@
 
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CADisplayLink, NSArray, NSMapTable, NSString, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, UIWindow, _UIFocusEnginePanGestureRecognizer, _UIFocusTouchDebugView;
-@protocol _UIFocusScrollAnimator;
+@class CADisplayLink, NSArray, NSMapTable, NSString, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, UIWindow, _UIFocusEnginePanGestureRecognizer, _UIFocusSoundPool, _UIFocusTouchDebugView;
+@protocol OS_dispatch_queue, _UIFocusScrollAnimator;
 
 @interface _UIFocusEngine : NSObject <UIGestureRecognizerDelegate>
 {
@@ -35,7 +35,11 @@
     struct CGSize _peekingScrollViewPeekSize;
     unsigned long long _peekingHeading;
     NSMapTable *_cachedViewSearchResults;
-    double _lastSoundStartTime;
+    NSObject<OS_dispatch_queue> *_soundQueue;
+    _UIFocusSoundPool *_smallSoundPool;
+    _UIFocusSoundPool *_largeSoundPool;
+    _UIFocusSoundPool *_appIconSoundPool;
+    _UIFocusSoundPool *_keyboardSoundPool;
     unsigned long long _currentGestureID;
     UIScrollView *_lastScrolledScroll;
     double _lastEdgeScrollEdgeValue;
@@ -80,9 +84,10 @@
 - (void)_activateControllerDisplayLink;
 - (void)_addGestureRecognizers;
 - (void)_addVisibleRect:(struct CGRect)arg1 toScrollViewForAnimation:(id)arg2;
-- (BOOL)_attemptToMoveFocusAlongVector:(struct CGVector)arg1 reportedVelocity:(struct CGVector)arg2 startingView:(id)arg3;
+- (void)_animateOffsetOfScrollView:(id)arg1 toShowFocusedView:(id)arg2;
+- (BOOL)_attemptToMoveFocusAlongHeading:(unsigned long long)arg1 reportedVelocity:(struct CGVector)arg2 startingView:(id)arg3;
 - (id)_bestFocusCandidateForFocusHeading:(unsigned long long)arg1 currentFocusView:(id)arg2 direction:(struct CGVector)arg3;
-- (id)_bestFocusCandidateStartingAtView:(id)arg1 inDirection:(struct CGVector)arg2;
+- (id)_bestFocusCandidateStartingAtView:(id)arg1 focusHeading:(unsigned long long)arg2;
 - (id)_cachedSearchResultForHeading:(unsigned long long)arg1;
 - (void)_cancelScrollingForScrollView:(id)arg1;
 - (void)_cleanUpSounds;
@@ -92,11 +97,10 @@
 - (struct CGPoint)_contentOffsetForScrollView:(id)arg1 toFocusView:(id)arg2;
 - (struct CGPoint)_contentOffsetForScrollView:(id)arg1 toFocusView:(id)arg2 targetOffset:(struct CGPoint)arg3 targetBounds:(struct CGRect)arg4;
 - (void)_continueTouchWithMomentum;
-- (id)_defaultFocusAnimationCoordinatorForContext:(id)arg1;
-- (double)_effortRequiredToMoveInDirection:(struct CGVector)arg1;
+- (double)_effortRequiredToMoveAlongHeading:(unsigned long long)arg1;
 - (void)_ensureFocusedViewIsOnscreen:(id)arg1;
-- (id)_findFocusCandidateByExhaustivelySearchingScrollView:(id)arg1 directionVector:(struct CGVector)arg2 startingView:(id)arg3;
-- (id)_findFocusCandidateStartingInRegionWithoutLoadingScrollViewContent:(id)arg1 directionVector:(struct CGVector)arg2 startingView:(id)arg3 minimumSearchArea:(struct CGRect)arg4;
+- (id)_findFocusCandidateByExhaustivelySearchingScrollView:(id)arg1 focusHeading:(unsigned long long)arg2 startingView:(id)arg3;
+- (id)_findFocusCandidateStartingInRegionWithoutLoadingScrollViewContent:(id)arg1 focusHeading:(unsigned long long)arg2 startingView:(id)arg3 minimumSearchArea:(struct CGRect)arg4;
 - (id)_focusedView;
 - (double)_frictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2 slope:(double)arg3 shortDistance:(double)arg4 longDistance:(double)arg5;
 - (void)_gestureRecognizerFailed:(id)arg1;
@@ -107,15 +111,18 @@
 - (void)_invalidateControllerDisplayLink;
 - (BOOL)_isContinuingTouchWithMomentum;
 - (BOOL)_isScrollingScrollView:(id)arg1;
-- (void)_loadScrollViewContentInDirection:(struct CGVector)arg1 fromView:(id)arg2;
+- (void)_loadScrollViewContentAlongHeading:(unsigned long long)arg1 fromView:(id)arg2;
 - (struct CGRect)_minimumSearchAreaForContainerView:(id)arg1;
 - (void)_momentumHeartbeat:(id)arg1;
-- (BOOL)_moveFocusAlongVector:(struct CGVector)arg1 withVelocity:(struct CGVector)arg2;
+- (BOOL)_moveFocusAlongHeading:(unsigned long long)arg1 withVelocity:(struct CGVector)arg2;
+- (id)_noCache_bestFocusCandidateStartingAtView:(id)arg1 focusHeading:(unsigned long long)arg2;
 - (void)_panGestureEnd:(id)arg1;
 - (id)_panGestureRecognizer;
 - (void)_panGestureStart:(id)arg1;
 - (void)_peekScrollViewStartingAtFocusedView:(id)arg1 progress:(struct CGVector)arg2;
+- (void)_performScrollingIfNeededForFocusUpdateContext:(id)arg1;
 - (void)_playFocusSound:(long long)arg1 withPan:(double)arg2 volume:(double)arg3;
+- (id)_poolForFocusSound:(long long)arg1;
 - (void)_recordMomentumForPoint:(struct CGPoint)arg1;
 - (void)_removeGestureRecognizers;
 - (void)_removeVisibleRect:(struct CGRect)arg1 fromScrollViewForAnimation:(id)arg2;
@@ -126,9 +133,8 @@
 - (void)_resetViewSearchCache;
 - (void)_runPerformanceTestWithName:(id)arg1 bySwipingAlongAxis:(int)arg2;
 - (void)_runPerformanceTestWithName:(id)arg1 fakeEvents:(CDStruct_37aeb80e *)arg2 count:(int)arg3;
-- (void)_scrollFromView:(id)arg1 toView:(id)arg2;
 - (void)_scrollView:(id)arg1 toOffset:(struct CGPoint)arg2;
-- (id)_scrollViewToPeekStartingAtFocusedView:(id)arg1 directionVector:(struct CGVector)arg2;
+- (id)_scrollViewToPeekStartingAtFocusedView:(id)arg1 focusHeading:(unsigned long long)arg2;
 - (void)_sendDelayedPressEventWithType:(long long)arg1 timestamp:(double)arg2;
 - (void)_sendFocusDirectionNotificationWithDirection:(struct CGPoint)arg1;
 - (void)_sendGestureBeginNotification;
@@ -140,10 +146,13 @@
 - (void)_setVisibleRect:(struct CGRect)arg1 forLoadingScrollViewContent:(id)arg2;
 - (void)_setupDebugOverlays;
 - (BOOL)_shouldEagerlyValidateFocusCandidates;
-- (BOOL)_speedBumpsAllowFocusToMoveInDirection:(struct CGVector)arg1;
+- (BOOL)_shouldPerformFocusUpdateWithCurrentMomentumStatus;
+- (BOOL)_speedBumpsAllowFocusToMoveAlongHeading:(unsigned long long)arg1;
 - (void)_startFocusDirectionRollbackForView:(id)arg1;
 - (void)_stickDrivenGestureEnd:(id)arg1;
 - (void)_stickDrivenGestureStart:(id)arg1;
+- (void)_stopMomentumAndPerformRollback;
+- (struct CGPoint)_targetContentOffsetForScrollView:(id)arg1;
 - (void)_teardownDebugOverlays;
 - (int)_touchRegionForDigitizerLocation:(struct CGPoint)arg1;
 - (struct CGSize)_touchSensitivityForView:(id)arg1;
@@ -151,13 +160,12 @@
 - (void)_updateDebugOverlayByRemovingTouchIndicators;
 - (void)_updateDebugOverlayWithTouchAtNormalizedPoint:(struct CGPoint)arg1 navigationBoundary:(struct CGRect)arg2;
 - (BOOL)_updateFocusWithContext:(id)arg1;
-- (BOOL)_updateFocusWithContext:(id)arg1 animationCoordinator:(id)arg2;
 - (BOOL)_updateFocusedViewAndScroll:(id)arg1 withSoundVolume:(double)arg2;
 - (void)_updatePanLocation:(struct CGPoint)arg1 reportedVelocity:(struct CGVector)arg2 wantsFocusDirection:(BOOL)arg3;
 - (double)_verticalFrictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2;
 - (struct CGRect)_visibleBoundsForScrollView:(id)arg1;
-- (BOOL)_wouldCrossSpeedBumpWhenMovingInDirection:(struct CGVector)arg1;
-- (BOOL)_wouldCrossSpeedBumpWhenMovingInDirection:(struct CGVector)arg1 fromView:(id)arg2 toView:(id)arg3;
+- (BOOL)_wouldCrossSpeedBumpWhenMovingAlongHeading:(unsigned long long)arg1;
+- (BOOL)_wouldCrossSpeedBumpWhenMovingAlongHeading:(unsigned long long)arg1 fromView:(id)arg2 toView:(id)arg3;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)init;

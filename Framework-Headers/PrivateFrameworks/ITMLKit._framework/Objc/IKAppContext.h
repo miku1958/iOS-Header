@@ -9,12 +9,13 @@
 #import <ITMLKit/ISURLOperationDelegate-Protocol.h>
 
 @class IKJSFoundation, JSContext, NSError, NSMutableArray, NSString;
-@protocol IKAppContextDelegate, IKApplication;
+@protocol IKAppContextDelegate, IKApplication, OS_dispatch_source;
 
 @interface IKAppContext : NSObject <ISURLOperationDelegate>
 {
     struct __CFRunLoop *_jsThreadRunLoop;
     struct __CFRunLoopSource *_jsThreadRunLoopSource;
+    NSObject<OS_dispatch_source> *_lowMemoryWarningSource;
     BOOL _isValid;
     BOOL _remoteInspectionEnabled;
     BOOL _mescalPrimeEnabledForXHRRequests;
@@ -61,6 +62,7 @@
 - (id)_errorWithMessage:(id)arg1;
 - (void)_evaluate:(CDUnknownBlockType)arg1;
 - (void)_evaluateFoundationWithDeviceConfig:(id)arg1;
+- (BOOL)_isAppTrusted;
 - (void)_jsThreadMain;
 - (id)_preferredLaunchURL;
 - (void)_sourceCanceledOnRunLoop:(struct __CFRunLoop *)arg1;
@@ -75,7 +77,6 @@
 - (void)evaluateFoundationJS;
 - (void)exitAppWithOptions:(id)arg1;
 - (void)handleReloadWithUrgencyType:(unsigned long long)arg1 data:(id)arg2;
-- (void)handleRestart;
 - (id)initWithApplication:(id)arg1 mode:(unsigned long long)arg2 delegate:(id)arg3;
 - (void)launchAppWithOptions:(id)arg1;
 - (void)openURLWithOptions:(id)arg1;

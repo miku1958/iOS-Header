@@ -35,10 +35,13 @@ struct SCRCFingerState {
     struct SCRCMathAverageValue distance;
     double velocityDistance;
     BOOL dragStalled;
+    unsigned long long type;
     struct CGPoint startPoint;
     struct CGPoint lastPoint;
     struct CGPoint lastDownPoint;
     double orbValue;
+    double altitude;
+    double azimuth;
 };
 
 struct SCRCMathAverageValue {

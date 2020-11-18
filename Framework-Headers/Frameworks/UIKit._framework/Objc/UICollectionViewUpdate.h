@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, UICollectionView, UICollectionViewData;
+@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, UICollectionView, UICollectionViewData;
 
 __attribute__((visibility("hidden")))
 @interface UICollectionViewUpdate : NSObject
@@ -34,6 +34,10 @@ __attribute__((visibility("hidden")))
     id *_animatedFooters;
     NSMutableArray *_viewAnimations;
     NSMutableArray *_gaps;
+    NSIndexPath *_oldFocusedIndexPath;
+    NSIndexPath *_newFocusedIndexPath;
+    long long _oldFocusedViewType;
+    long long _newFocusedViewType;
 }
 
 - (void).cxx_destruct;

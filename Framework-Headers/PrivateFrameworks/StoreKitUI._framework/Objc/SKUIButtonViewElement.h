@@ -64,6 +64,7 @@
 - (void).cxx_destruct;
 - (id)_parseButtonText;
 - (id)applyUpdatesWithElement:(id)arg1;
+- (void)dealloc;
 - (id)description;
 - (unsigned long long)elementType;
 - (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;

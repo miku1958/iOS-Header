@@ -15,6 +15,9 @@
     NSMutableArray *_names;
     NSMutableArray *_generators;
     CUIMutableCommonAssetStorage *_store;
+    double _radiosityCompressionQuaility;
+    double _flattenedCompressionQuality;
+    double _layersCompressionQuality;
 }
 
 @property (strong) NSMutableArray *generators; // @synthesize generators=_generators;
@@ -24,6 +27,7 @@
 @property CUIMutableCommonAssetStorage *store; // @synthesize store=_store;
 
 - (void)_addImage:(struct CGImage *)arg1 withBaseKey:(id)arg2 name:(id)arg3;
+- (void)_addImageAsJPEG:(struct CGImage *)arg1 withBaseKey:(id)arg2 withName:(id)arg3;
 - (void)_configureDefaultStorageParameters;
 - (id)_defaultBaseKey;
 - (BOOL)_distillNameEntries:(id *)arg1;
@@ -37,11 +41,20 @@
 - (id)_radiosityImageBaseKey;
 - (void)addFlattenedImage:(struct CGImage *)arg1 forLayerStackWithName:(id)arg2;
 - (void)addImage:(struct CGImage *)arg1 withName:(id)arg2;
+- (void)addImageAsJPEG:(struct CGImage *)arg1 withName:(id)arg2;
 - (void)addLayerReference:(id)arg1 forImage:(struct CGImage *)arg2 toLayerStackWithName:(id)arg3;
 - (void)addLayerStackWithSize:(struct CGSize)arg1 stackData:(id)arg2 name:(id)arg3;
+- (double)compressionQuality;
 - (void)dealloc;
 - (BOOL)distillAndSave:(id *)arg1;
+- (double)flattenedLossyCompressionQuality;
 - (id)initWithOutputURL:(id)arg1 versionString:(id)arg2;
+- (double)layersLossyCompressionQuality;
+- (double)radiosityLossyCompressionQuality;
+- (void)setCompressionQuality:(double)arg1;
+- (void)setFlattenedLossyCompressionQuality:(double)arg1;
+- (void)setLayersLossyCompressionQuality:(double)arg1;
+- (void)setRadiosityLossyCompressionQuality:(double)arg1;
 
 @end
 

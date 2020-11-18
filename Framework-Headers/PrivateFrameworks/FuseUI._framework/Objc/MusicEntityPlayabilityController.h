@@ -26,8 +26,8 @@
 - (long long)_networkType;
 - (void)_networkTypeDidChangeNotification:(id)arg1;
 - (void)dealloc;
+- (unsigned long long)entityPlayabilityResultForEntityValueContext:(id)arg1;
 - (id)init;
-- (BOOL)isEntityValueContextPlayable:(id)arg1;
 
 @end
 

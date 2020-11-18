@@ -63,11 +63,13 @@
 - (void).cxx_destruct;
 - (BOOL)_allowsLocalSearchOnly;
 - (void)_attachPaletteIfNecessary;
+- (void)_configureNavigationBar;
 - (void)_detachPalette;
 - (void)_dispatchSearchTextChangeWithTerm:(id)arg1 usingSubmitEventType:(BOOL)arg2;
 - (id)_extraInfoForStoreSearchEvent;
 - (void)_handleCanShowRadioDidChangeNotification:(id)arg1;
 - (void)_handleCanShowSubscriptionContentDidChangeNotification:(id)arg1;
+- (void)_handleCancelButtonPressed;
 - (void)_recordSearchRecent:(id)arg1;
 - (struct UIEdgeInsets)_searchSegmentedControlContentEdgeInsets;
 - (id)_storeSearchSegmentTitle;
@@ -93,6 +95,7 @@
 - (void)searchBarTextDidEndEditing:(id)arg1;
 - (void)searchHintsViewController:(id)arg1 didSelectSearchHintWithText:(id)arg2 URL:(id)arg3 index:(long long)arg4;
 - (void)searchRecentsViewController:(id)arg1 didSelectSearchTerm:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

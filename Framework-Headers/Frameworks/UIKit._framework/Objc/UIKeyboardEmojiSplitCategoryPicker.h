@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
     UIKeyboardEmojiCategoryController *_categoryController;
     BOOL _whiteText;
-    long long _currentSelected;
+    unsigned long long _currentSelected;
     long long _lastUsedCategory;
 }
 
@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)symbolForRow:(long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)titleForRow:(long long)arg1;
+- (id)titleForRow:(long long)arg1 fallback:(BOOL)arg2;
 - (void)updateCategorySelectedIndicator:(long long)arg1;
 
 @end

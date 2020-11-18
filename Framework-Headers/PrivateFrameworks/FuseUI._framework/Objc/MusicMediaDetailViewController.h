@@ -6,7 +6,6 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <FuseUI/MusicLayoutMarginProxyViewDelegate-Protocol.h>
 #import <FuseUI/MusicMediaDetailHeaderViewControllerDelegate-Protocol.h>
 #import <FuseUI/MusicMediaDetailSplitViewControllerDelegate-Protocol.h>
 #import <FuseUI/SKUINavigationBarDisplayConfiguring-Protocol.h>
@@ -15,24 +14,28 @@
 @class MusicHairlineView, MusicMediaDetailTintInformation, NSArray, NSMapTable, NSString, SKUIProxyScrollView, UIScrollView;
 @protocol MusicMediaDetailHeaderContentViewController, MusicMediaDetailHeaderViewController, MusicMediaDetailSplitViewController;
 
-@interface MusicMediaDetailViewController : UIViewController <MusicLayoutMarginProxyViewDelegate, SKUIProxyScrollViewDelegate, MusicMediaDetailHeaderViewControllerDelegate, MusicMediaDetailSplitViewControllerDelegate, SKUINavigationBarDisplayConfiguring>
+@interface MusicMediaDetailViewController : UIViewController <SKUIProxyScrollViewDelegate, MusicMediaDetailHeaderViewControllerDelegate, MusicMediaDetailSplitViewControllerDelegate, SKUINavigationBarDisplayConfiguring>
 {
     struct UIEdgeInsets _externalContentInset;
+    double _hairlineVisuallyInsetHorizontalLayoutInset;
     MusicHairlineView *_hairlineView;
     BOOL _hasAttemptedSplitDetailViewControllerCreation;
     BOOL _hasReceivedViewDidAppear;
     double _headerHeight;
     double _headerVerticalOffset;
     BOOL _isHandlingScrollViewUpdate;
+    BOOL _isSettingLayoutInsets;
     double _maximumHeaderHeight;
     SKUIProxyScrollView *_proxyScrollView;
     UIViewController<MusicMediaDetailSplitViewController> *_splitDetailViewController;
     NSArray *_splitScrollViews;
     NSMapTable *_splitScrollViewToScrollingContext;
     NSMapTable *_viewControllerToClippingView;
+    BOOL _allowsVisualInsetting;
     BOOL _showingSplitDetailViewController;
     BOOL _supportsSplitDetailViewController;
-    BOOL _hairlineRightInsetIgnoresLayoutMargin;
+    BOOL _hairlineRightInsetIgnoresLayoutInsets;
+    BOOL _visuallyInset;
     MusicMediaDetailTintInformation *_detailTintInformation;
     UIViewController<MusicMediaDetailHeaderContentViewController> *_headerContentViewController;
     UIViewController<MusicMediaDetailHeaderViewController> *_headerViewController;
@@ -43,11 +46,12 @@
     double _navigationTitleViewAlphaTransitionProgressDelay;
 }
 
+@property (nonatomic) BOOL allowsVisualInsetting; // @synthesize allowsVisualInsetting=_allowsVisualInsetting;
 @property (readonly, nonatomic) UIScrollView *currentPrimaryScrollView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) MusicMediaDetailTintInformation *detailTintInformation; // @synthesize detailTintInformation=_detailTintInformation;
-@property (nonatomic) BOOL hairlineRightInsetIgnoresLayoutMargin; // @synthesize hairlineRightInsetIgnoresLayoutMargin=_hairlineRightInsetIgnoresLayoutMargin;
+@property (nonatomic) BOOL hairlineRightInsetIgnoresLayoutInsets; // @synthesize hairlineRightInsetIgnoresLayoutInsets=_hairlineRightInsetIgnoresLayoutInsets;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIViewController<MusicMediaDetailHeaderContentViewController> *headerContentViewController; // @synthesize headerContentViewController=_headerContentViewController;
 @property (readonly, nonatomic) double headerTransitionProgress; // @synthesize headerTransitionProgress=_headerTransitionProgress;
@@ -62,6 +66,7 @@
 @property (strong, nonatomic) UIViewController<MusicMediaDetailSplitViewController> *splitMainViewController; // @synthesize splitMainViewController=_splitMainViewController;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsSplitDetailViewController; // @synthesize supportsSplitDetailViewController=_supportsSplitDetailViewController;
+@property (readonly, nonatomic, getter=isVisuallyInset) BOOL visuallyInset; // @synthesize visuallyInset=_visuallyInset;
 
 - (void).cxx_destruct;
 - (void)_addViewControllerViewToHierarchy:(id)arg1;
@@ -76,6 +81,7 @@
 - (double)_minimumHeaderHeight;
 - (void)_removeViewControllerViewFromHierarchy:(id)arg1;
 - (id)_scrollingContextForSplitScrollView:(id)arg1;
+- (void)_setChildLayoutInsets:(struct UIEdgeInsets)arg1;
 - (id)_splitDetailContentScrollView;
 - (id)_splitDetailViewController;
 - (id)_splitMainContentScrollView;
@@ -94,12 +100,11 @@
 - (void)dealloc;
 - (void)detailTintInformationDidChange;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)layoutMarginProxyViewLayoutMarginsDidChange:(id)arg1;
-- (void)loadView;
 - (void)maximumMediaDetailHeaderHeightDidChangeForHeaderViewController:(id)arg1;
 - (void)mediaDetailSplitViewController:(id)arg1 contentScrollViewWillEndDraggingWithVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)mediaDetailSplitViewControllerContentScrollViewContentSizeDidChange:(id)arg1;
 - (void)mediaDetailSplitViewControllerContentScrollViewDidScroll:(id)arg1;
+- (void)music_viewInheritedLayoutInsetsDidChange;
 - (long long)navigationBarTintAdjustmentMode;
 - (id)navigationBarTintColor;
 - (id)navigationBarTitleTextTintColor;
@@ -117,6 +122,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)visuallyInsetDidChange;
 
 @end
 

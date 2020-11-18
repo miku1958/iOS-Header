@@ -11,6 +11,7 @@
 }
 
 + (BOOL)isICDPEnabledForDSID:(id)arg1;
++ (BOOL)isICDPEnabledForDSID:(id)arg1 checkWithServer:(BOOL)arg2;
 
 @end
 

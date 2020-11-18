@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)_selectButton:(id)arg1;
 - (void)focusedViewDidChange;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)preferredFocusedView;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)prepareForReuse;
 - (void)setTextField:(id)arg1 horizontalMargin:(double)arg2;

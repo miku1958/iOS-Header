@@ -11,6 +11,7 @@
 @protocol SCNMaterialJSExport <JSExport>
 
 @property (readonly, nonatomic) SCNMaterialProperty *ambient;
+@property (readonly, nonatomic) SCNMaterialProperty *ambientOcclusion;
 @property (nonatomic) BOOL avoidsOverLighting;
 @property (nonatomic) long long cullMode;
 @property (readonly, nonatomic) SCNMaterialProperty *diffuse;
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) SCNProgram *program;
 @property (nonatomic) BOOL readsFromDepthBuffer;
 @property (readonly, nonatomic) SCNMaterialProperty *reflective;
+@property (readonly, nonatomic) SCNMaterialProperty *selfIllumination;
 @property (nonatomic) double shininess;
 @property (readonly, nonatomic) SCNMaterialProperty *specular;
 @property (nonatomic) double transparency;

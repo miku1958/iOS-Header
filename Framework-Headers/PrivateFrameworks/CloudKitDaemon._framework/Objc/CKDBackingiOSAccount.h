@@ -25,12 +25,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_initWithParentAccount:(id)arg1 inStore:(id)arg2;
 - (id)accountPropertiesForDataclass:(id)arg1;
-- (BOOL)allowsCellularAccess;
 - (id)cloudKitAuthToken;
 - (BOOL)cloudKitIsEnabled;
 - (BOOL)cloudPhotosIsEnabled;
 - (id)dsid;
 - (id)iCloudAuthToken;
+- (BOOL)iCloudDriveAllowsCellularAccess;
 - (id)identifier;
 - (id)primaryEmail;
 

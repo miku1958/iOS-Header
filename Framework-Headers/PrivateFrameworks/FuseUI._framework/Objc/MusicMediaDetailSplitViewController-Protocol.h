@@ -16,5 +16,6 @@
 
 @optional
 - (void)setMediaDetailTintInformation:(MusicMediaDetailTintInformation *)arg1;
+- (void)setPreferredMaximumContentWidth:(double)arg1;
 @end
 

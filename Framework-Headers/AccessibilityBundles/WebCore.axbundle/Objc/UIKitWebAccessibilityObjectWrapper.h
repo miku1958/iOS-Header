@@ -30,6 +30,7 @@
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (void)_accessibilityDecreaseSelection:(id)arg1;
 - (void)_accessibilityDetermineIfShouldUseParentLinkLabel;
+- (int)_accessibilityExpandedStatus;
 - (BOOL)_accessibilityHandwritingAttributeAcceptsContractedBraille;
 - (BOOL)_accessibilityHandwritingAttributeAcceptsRawInput;
 - (BOOL)_accessibilityHasTextOperations;

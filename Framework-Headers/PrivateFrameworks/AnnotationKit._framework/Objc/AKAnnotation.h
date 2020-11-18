@@ -13,6 +13,7 @@
 @interface AKAnnotation : NSObject <NSSecureCoding>
 {
     BOOL _isTranslating;
+    BOOL _isDraggingHandle;
     BOOL _isEditingText;
     BOOL _textIsFixedWidth;
     BOOL _textIsFixedHeight;
@@ -26,6 +27,7 @@
 @property (readonly) struct CGRect drawingBounds;
 @property (readonly) struct CGRect hitTestBounds;
 @property (readonly) struct CGRect integralDrawingBounds;
+@property BOOL isDraggingHandle; // @synthesize isDraggingHandle=_isDraggingHandle;
 @property BOOL isEditingText; // @synthesize isEditingText=_isEditingText;
 @property BOOL isTranslating; // @synthesize isTranslating=_isTranslating;
 @property (nonatomic) long long originalExifOrientation; // @synthesize originalExifOrientation=_originalExifOrientation;

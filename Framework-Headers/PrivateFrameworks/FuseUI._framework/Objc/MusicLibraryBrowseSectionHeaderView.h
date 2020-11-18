@@ -37,7 +37,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) double topContentInset; // @synthesize topContentInset=_topContentInset;
 
-+ (CDStruct_c3b9c2ee)_actionableHeaderMetrics;
++ (CDStruct_4a0565dd)_actionableHeaderMetricsForDisplayScale:(double)arg1;
 + (double)heightForTraitCollection:(id)arg1;
 - (void).cxx_destruct;
 - (void)_setupForCurrentFloatingState;
@@ -45,8 +45,9 @@
 - (void)dealloc;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
+- (void)music_inheritedLayoutInsetsDidChange;
 - (void)setFloating:(BOOL)arg1;
-- (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

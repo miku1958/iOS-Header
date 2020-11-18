@@ -7,9 +7,11 @@
 #import <objc/NSObject.h>
 
 @class ML3MusicLibrary, NSDictionary, NSString, NSURL;
+@protocol OS_dispatch_queue;
 
 @interface ML3Artwork : NSObject
 {
+    NSObject<OS_dispatch_queue> *_serialQueue;
     long long _artworkType;
     long long _sourceType;
     NSDictionary *_interestDictionary;
@@ -22,15 +24,15 @@
 @property (readonly, nonatomic) NSString *artworkToken; // @synthesize artworkToken=_artworkToken;
 @property (readonly, nonatomic) long long artworkType; // @synthesize artworkType=_artworkType;
 @property (strong, nonatomic) NSDictionary *interestDictionary; // @synthesize interestDictionary=_interestDictionary;
-@property (readonly, weak, nonatomic) ML3MusicLibrary *musicLibrary; // @synthesize musicLibrary=_musicLibrary;
+@property (readonly, nonatomic) ML3MusicLibrary *musicLibrary; // @synthesize musicLibrary=_musicLibrary;
 @property (readonly, nonatomic) NSURL *originalFileURL; // @synthesize originalFileURL=_originalFileURL;
 @property (readonly, nonatomic) NSString *relativePath; // @synthesize relativePath=_relativePath;
 @property (readonly, nonatomic) long long sourceType; // @synthesize sourceType=_sourceType;
 
 - (void).cxx_destruct;
-- (void)_faultInProperties;
 - (id)_interestDataFromInterestDictionary:(id)arg1;
 - (id)_interestDictionaryFromInterestData:(id)arg1;
+- (void)_onSerialQueue_faultInProperties;
 - (id)fileURLForSize:(struct CGSize)arg1;
 - (unsigned long long)hash;
 - (id)initWithToken:(id)arg1 artworkType:(long long)arg2 musicLibrary:(id)arg3;

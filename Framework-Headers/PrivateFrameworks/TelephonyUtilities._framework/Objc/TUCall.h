@@ -32,6 +32,7 @@
     BOOL _wasDialAssisted;
     BOOL _connecting;
     BOOL _hasSentInvitation;
+    BOOL _hasBegunAudioInterruption;
     BOOL _requiresAudioReinterruption;
     BOOL _hasUpdatedAudio;
     BOOL _hasAudioFinished;
@@ -49,6 +50,7 @@
     NSString *_sourceIdentifier;
     NSString *_isoCountryCode;
     long long _provisionalHoldStatus;
+    NSString *_prematurelySelectedAudioRouteUID;
     long long _soundRegion;
     double _hostCreationTime;
     double _hostMessageSendTime;
@@ -93,6 +95,7 @@
 @property (readonly, strong, nonatomic) NSString *hardPauseDigitsDisplayString;
 @property (nonatomic) int hardPauseDigitsState; // @synthesize hardPauseDigitsState=_hardPauseDigitsState;
 @property (nonatomic) BOOL hasAudioFinished; // @synthesize hasAudioFinished=_hasAudioFinished;
+@property (nonatomic) BOOL hasBegunAudioInterruption; // @synthesize hasBegunAudioInterruption=_hasBegunAudioInterruption;
 @property (readonly, nonatomic) BOOL hasReceivedFirstFrame;
 @property (nonatomic) BOOL hasSentInvitation; // @synthesize hasSentInvitation=_hasSentInvitation;
 @property (nonatomic) BOOL hasUpdatedAudio; // @synthesize hasUpdatedAudio=_hasUpdatedAudio;
@@ -110,6 +113,7 @@
 @property (readonly, nonatomic, getter=isMediaStalled) BOOL mediaStalled;
 @property (readonly, nonatomic) BOOL needsManualInCallSounds;
 @property (readonly, nonatomic, getter=isOutgoing) BOOL outgoing;
+@property (strong, nonatomic) NSString *prematurelySelectedAudioRouteUID; // @synthesize prematurelySelectedAudioRouteUID=_prematurelySelectedAudioRouteUID;
 @property (nonatomic) long long provisionalHoldStatus; // @synthesize provisionalHoldStatus=_provisionalHoldStatus;
 @property (readonly, nonatomic) struct CGSize remoteAspectRatio;
 @property (readonly, nonatomic) long long remoteCameraOrientation;

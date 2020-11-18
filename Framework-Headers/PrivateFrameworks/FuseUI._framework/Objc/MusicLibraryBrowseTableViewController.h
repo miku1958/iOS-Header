@@ -19,11 +19,12 @@
 #import <FuseUI/UIViewControllerPreviewingDelegate-Protocol.h>
 #import <FuseUI/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 
-@class MPAVController, MusicClientContext, MusicEditingEntityProvider, MusicEntityPlayabilityController, MusicEntityPlaybackStatusController, MusicEntityValueContext, MusicEntityViewDescriptor, MusicLibraryBrowseTableViewConfiguration, MusicLibraryViewConfiguration, MusicSectionEntityValueContext, MusicTableView, NSArray, NSMapTable, NSMutableArray, NSString, SKUIClientContext, UIColor;
+@class MPAVController, MusicAsynchronousPropertyLoadingController, MusicClientContext, MusicEditingEntityProvider, MusicEntityPlayabilityController, MusicEntityPlaybackStatusController, MusicEntityValueContext, MusicEntityViewDescriptor, MusicLibraryBrowseTableViewConfiguration, MusicLibraryViewConfiguration, MusicSectionEntityValueContext, MusicTableView, NSArray, NSMapTable, NSMutableArray, NSString, SKUIClientContext, UIColor;
 @protocol MusicLibraryBrowseTableViewControllerDelegate, UIViewControllerPreviewing;
 
 @interface MusicLibraryBrowseTableViewController : UIViewController <MusicLibraryBrowseSectionHeaderViewDelegate, MusicMediaPickerSearchDelegate, MusicEntityPlaybackStatusControllerObserving, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, MusicClientContextConsuming, MusicIndexBarDataSource, MusicIndexBarScrollDelegate, MusicLibraryViewConfigurationConsuming, MusicSplitInitialStateProviding, MusicTableViewDelegate, UITableViewDataSource>
 {
+    MusicAsynchronousPropertyLoadingController *_asynchronousPropertyLoadingController;
     NSArray *_contentDescriptors;
     UIColor *_defaultSelectionTintColor;
     BOOL _didIgnoreEntityProviderInvalidationDuringEditing;
@@ -78,24 +79,24 @@
 - (void)_configureEntityValueContextOutput:(id)arg1 forIndexPath:(id)arg2;
 - (void)_configureForEntityViewDescriptorProperties;
 - (void)_configureSectionEntityValueContextOutput:(id)arg1 forIndex:(unsigned long long)arg2;
-- (void)_contentDescriptorDidInvalidateNotification:(id)arg1;
 - (id)_dequeueCoalescingEntityValueProvider;
 - (void)_didFinishContentHeightAnimation;
 - (void)_didFinishEditingStateChangeAnimation;
 - (id)_effectiveEntityProvider;
 - (void)_endIgnoringEntityProviderInvalidation;
-- (void)_entityPlayabilityControllerDidChangeNotification:(id)arg1;
+- (unsigned long long)_entityPlayabilityResultForEntityValueContext:(id)arg1;
 - (id)_entityValueContextAtIndexPath:(id)arg1;
-- (void)_entityViewDescriptorDisplayValuesDidChangeNotification:(id)arg1;
+- (void)_handleContentDescriptorDidInvalidateNotification:(id)arg1;
 - (void)_handleContentSizeCategoryDidChangeNotification:(id)arg1;
+- (void)_handleEntityPlayabilityControllerDidChangeNotification:(id)arg1;
 - (void)_handleEntityProviderDidInvalidateNotification:(id)arg1;
+- (void)_handleEntityViewDescriptorDisplayValuesDidChangeNotification:(id)arg1;
+- (void)_handleSectionContentDescriptorDidInvalidateNotification:(id)arg1;
 - (void)_invalidateIndexBarDataSource;
-- (BOOL)_isEntityValueContextDisabled:(id)arg1;
 - (void)_presentContextualActionsWithEntityValueContext:(id)arg1 fromButton:(id)arg2;
 - (void)_recycleCoalescingEntityValueProvider:(id)arg1;
 - (void)_registerForNotificationsForContentDescriptors;
 - (void)_reloadTableViewData;
-- (void)_sectionContentDescriptorDidInvalidateNotification:(id)arg1;
 - (id)_sectionEntityValueContextForIndex:(unsigned long long)arg1;
 - (void)_setSelectedIndexPath:(id)arg1 entityValueContext:(id)arg2;
 - (void)_uninstallEditingEntityProviderIfAppropriate;
@@ -170,7 +171,6 @@
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (void)tableViewDataDidReload;
-- (void)tableViewLayoutMarginsDidChange:(id)arg1;
 - (id)tableViewThatNeedsSearchBarHeader;
 - (void)tableViewTintColorDidChange:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

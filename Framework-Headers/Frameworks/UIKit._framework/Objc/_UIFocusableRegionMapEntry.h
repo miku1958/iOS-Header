@@ -12,16 +12,18 @@ __attribute__((visibility("hidden")))
 @interface _UIFocusableRegionMapEntry : _UIFocusRegionMapEntry
 {
     BOOL _isFocusGuide;
+    BOOL _focusCandidate;
     id<_UIFocusRegion> _focusableRegion;
 }
 
+@property (nonatomic, getter=isFocusCandidate) BOOL focusCandidate; // @synthesize focusCandidate=_focusCandidate;
 @property (weak, nonatomic) id<_UIFocusRegion> focusableRegion; // @synthesize focusableRegion=_focusableRegion;
 @property (nonatomic) BOOL isFocusGuide; // @synthesize isFocusGuide=_isFocusGuide;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)drawVisualRepresentationInContext:(struct CGContext *)arg1 imageFrame:(struct CGRect)arg2 isFinal:(BOOL)arg3;
-- (id)mapEntrySliceWithFrame:(struct CGRect)arg1;
 - (id)visualRepresentationColor;
 
 @end

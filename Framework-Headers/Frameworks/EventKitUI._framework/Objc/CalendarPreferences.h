@@ -19,6 +19,7 @@
 @property (nonatomic) unsigned long long debugOccurrenceViewIconOverload;
 @property (strong, nonatomic) NSArray *deselectedCalendarSyncHashes;
 @property (nonatomic) BOOL disableContinuity;
+@property (nonatomic) BOOL disableTodayPushes;
 @property (nonatomic) BOOL drawDebugViewColors; // @synthesize drawDebugViewColors=_drawDebugViewColors;
 @property (nonatomic) BOOL hideInlineDayViewInEventDetails;
 @property (nonatomic) BOOL immediateAlarmCreation;

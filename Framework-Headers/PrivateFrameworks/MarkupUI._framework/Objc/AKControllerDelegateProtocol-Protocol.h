@@ -6,7 +6,7 @@
 
 #import <MarkupUI/NSObject-Protocol.h>
 
-@class AKAnnotation, AKController, AKPageModelController, NSArray, NSData, NSUndoManager, UIView;
+@class AKAnnotation, AKController, AKPageModelController, CALayer, NSArray, NSData, NSUndoManager, UIView;
 
 @protocol AKControllerDelegateProtocol <NSObject>
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromModelToOverlayWithPageIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
@@ -26,6 +26,7 @@
 - (void)controllerWillExitToolMode:(AKController *)arg1;
 - (void)controllerWillShowSignatureCaptureView:(AKController *)arg1;
 - (void)editCheckpointReachedForAnnotationController:(AKController *)arg1;
+- (CALayer *)layerContainingQuickBackgroundForLoupeOnOverlayAtPageIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
 - (double)modelBaseScaleFactorOfPageAtIndex:(unsigned long long)arg1 forAnnotationController:(AKController *)arg2;
 - (void)placeAuxiliaryView:(UIView *)arg1 forAnnotationController:(AKController *)arg2;
 - (struct CGRect)postioningRectForCandidatePicker;

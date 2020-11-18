@@ -17,6 +17,7 @@
 
 @property (nonatomic) BOOL CALayerDestinationIsTVOut;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) BOOL hasDiscoveredVideo;
 @property (readonly, nonatomic) AVPlayer *player; // @synthesize player=_player;
 @property (nonatomic, getter=isPlayingOnSecondScreen) BOOL playingOnSecondScreen;
 @property (readonly, nonatomic) long long status; // @synthesize status=_status;

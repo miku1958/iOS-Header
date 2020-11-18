@@ -12,7 +12,9 @@
 
 @interface MusicEntityViewContentDescriptor : NSObject <NSCopying>
 {
-    NSSet *_allPropertiesToPrefetch;
+    NSSet *_allPropertiesToLoadAsynchronously;
+    NSSet *_allPropertiesToPrefetchSynchronously;
+    BOOL _hasValidAllPropertiesToLoadAsynchronously;
     NSCountedSet *_textDescriptorsBeingObserved;
     BOOL _shouldForceBottomSeparatorVisible;
     BOOL _shouldDisableWhenUnplayable;
@@ -41,7 +43,8 @@
     long long _artworkVerticalAlignment;
 }
 
-@property (readonly, nonatomic) NSSet *allPropertiesToPrefetch;
+@property (readonly, nonatomic) NSSet *allPropertiesToLoadAsynchronously;
+@property (readonly, nonatomic) NSSet *allPropertiesToPrefetchSynchronously;
 @property (nonatomic) BOOL allowsDeletionWithoutEditingMode; // @synthesize allowsDeletionWithoutEditingMode=_allowsDeletionWithoutEditingMode;
 @property (strong, nonatomic) MusicEntityViewContentArtworkDescriptor *artworkDescriptor; // @synthesize artworkDescriptor=_artworkDescriptor;
 @property (nonatomic) long long artworkVerticalAlignment; // @synthesize artworkVerticalAlignment=_artworkVerticalAlignment;
@@ -75,7 +78,8 @@
 - (void).cxx_destruct;
 - (void)_handleArtworkDescriptorDidInvalidateNotification:(id)arg1;
 - (void)_handleTextDescriptorDidInvalidateNotification:(id)arg1;
-- (void)_invalidateAllPropertiesToPrefetch;
+- (void)_invalidateAllPropertiesToLoadAsynchronously;
+- (void)_invalidateAllPropertiesToPrefetchSynchronously;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;

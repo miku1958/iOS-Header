@@ -157,7 +157,6 @@
 - (void)addState:(id)arg1;
 - (void)addSublayer:(id)arg1;
 - (struct CGAffineTransform)affineTransform;
-- (BOOL)allowsExtendedColorRangeContent;
 - (BOOL)allowsWeakReference;
 - (id)ancestorSharedWithLayer:(id)arg1;
 - (id)animationForKey:(id)arg1;
@@ -227,7 +226,6 @@
 - (void)scrollPoint:(struct CGPoint)arg1;
 - (void)scrollRectToVisible:(struct CGRect)arg1;
 - (void)setAffineTransform:(struct CGAffineTransform)arg1;
-- (void)setAllowsExtendedColorRangeContent:(BOOL)arg1;
 - (void)setContentsChanged;
 - (void)setFlipped:(BOOL)arg1;
 - (void)setNeedsDisplay;
@@ -236,6 +234,7 @@
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (void)setWantsExtendedDynamicRangeContent:(BOOL)arg1;
 - (BOOL)shouldArchiveValueForKey:(id)arg1;
 - (struct CGSize)size;
 - (id)stateTransitionFrom:(id)arg1 to:(id)arg2;
@@ -243,6 +242,7 @@
 - (id)valueForKey:(id)arg1;
 - (id)valueForKeyPath:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
+- (BOOL)wantsExtendedDynamicRangeContent;
 
 @end
 

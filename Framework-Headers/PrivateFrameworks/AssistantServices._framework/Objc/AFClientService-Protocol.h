@@ -27,6 +27,7 @@
 - (oneway void)didDismissUI;
 - (oneway void)endSession;
 - (oneway void)forceAudioSessionActive;
+- (oneway void)forceAudioSessionInactive;
 - (oneway void)getDeferredObjectsWithIdentifiers:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)performGenericAceCommand:(NSDictionary *)arg1 interruptOutstandingRequest:(BOOL)arg2 reply:(void (^)(BOOL))arg3;
 - (oneway void)preheatWithStyle:(long long)arg1;

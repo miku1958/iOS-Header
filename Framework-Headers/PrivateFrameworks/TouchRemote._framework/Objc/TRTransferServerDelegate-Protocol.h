@@ -12,7 +12,7 @@
 
 @optional
 - (void)server:(TRTransferServer *)arg1 didFailToReceiveData:(NSError *)arg2;
-- (NSData *)server:(TRTransferServer *)arg1 didReceiveData:(NSData *)arg2;
+- (void)server:(TRTransferServer *)arg1 didReceiveData:(NSData *)arg2 replyHandler:(void (^)(NSData *))arg3;
 - (void)serverWillReceiveData:(TRTransferServer *)arg1;
 @end
 

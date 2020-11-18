@@ -10,15 +10,15 @@
 
 @interface MusicLibraryRecentlyAddedPlaylistsCollectionViewConfiguration : MusicLibraryBrowseCollectionViewConfiguration
 {
-    unsigned long long _entityLimit;
     MusicLibraryPlaylistsViewConfiguration *_playlistsViewConfiguration;
+    unsigned long long _entityLimit;
 }
 
 @property (readonly, nonatomic) unsigned long long entityLimit; // @synthesize entityLimit=_entityLimit;
-@property (strong, nonatomic) MusicLibraryPlaylistsViewConfiguration *playlistsViewConfiguration; // @synthesize playlistsViewConfiguration=_playlistsViewConfiguration;
 
 + (unsigned long long)defaultEntityLimit;
 - (void).cxx_destruct;
+- (id)_playlistsViewConfiguration;
 - (BOOL)canPreviewEntityValueContext:(id)arg1;
 - (void)handleCommitPreviewViewController:(id)arg1 fromViewController:(id)arg2;
 - (long long)handleSelectionOfEntityValueContext:(id)arg1 fromViewController:(id)arg2;

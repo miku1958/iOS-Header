@@ -12,6 +12,7 @@
 - (double)maximumDeceleration;
 - (long long)maximumNumberOfFrames;
 - (double)maximumRate;
+- (double)minimumDurationForColorMismatch;
 - (double)minimumVisibilityFactor;
 - (double)playbackRate;
 - (double)postDuration;

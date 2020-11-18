@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_dismissAnimated:(BOOL)arg1 finishPeeking:(BOOL)arg2 ignorePresentState:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)accessibilityElements;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityViewIsModal;
 - (void)presentAnimated:(BOOL)arg1;

@@ -18,11 +18,13 @@
     double _scale;
     BOOL _boldTextEnabled;
     BOOL _allowsPaddles;
+    BOOL _preferStringKeycapOverImage;
 }
 
 @property (nonatomic) BOOL allowsPaddles; // @synthesize allowsPaddles=_allowsPaddles;
 @property (readonly, nonatomic) BOOL boldTextEnabled; // @synthesize boldTextEnabled=_boldTextEnabled;
 @property (nonatomic) BOOL lightweightFactory; // @synthesize lightweightFactory=_lightweightFactory;
+@property (nonatomic) BOOL preferStringKeycapOverImage; // @synthesize preferStringKeycapOverImage=_preferStringKeycapOverImage;
 @property (strong, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 @property (nonatomic) double rivenSizeFactor; // @synthesize rivenSizeFactor=_rivenSizeFactor;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
@@ -41,6 +43,7 @@
 - (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderConfig:(id)arg3 keycapsFontName:(id)arg4;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (void)addLayoutSegment:(id)arg1;
+- (void)applyBoldTextForContent:(id)arg1 withKey:(id)arg2;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
 - (id)biuKeyImageName;
 - (id)boldKeyImageName;
@@ -94,11 +97,12 @@
 - (id)shiftOnKeyImageName;
 - (BOOL)shouldClearBaseDisplayStringForVariants:(id)arg1;
 - (double)skinnyKeyThreshold;
+- (BOOL)supportsInputTraits:(id)arg1 forKeyplane:(id)arg2;
 - (void)suppressLayoutSegments;
 - (id)thinKeycapsFontName;
 - (id)thinTextFontName;
 - (id)traitsForKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)traitsHashStringForKey:(id)arg1 withGeometry:(id)arg2 controlOpacities:(BOOL)arg3;
+- (id)traitsHashStringForKey:(id)arg1 withGeometry:(id)arg2 withSymbolStyle:(id)arg3 controlOpacities:(BOOL)arg4;
 - (double)translucentGapWidth;
 - (id)undoKeyImageName;
 - (BOOL)useBlueThemingForKey:(id)arg1;

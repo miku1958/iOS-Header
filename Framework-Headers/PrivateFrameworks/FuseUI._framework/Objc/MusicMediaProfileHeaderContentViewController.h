@@ -6,14 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <FuseUI/MusicLayoutMarginProxyViewDelegate-Protocol.h>
 #import <FuseUI/MusicMediaDetailHeaderContentViewController-Protocol.h>
 #import <FuseUI/MusicProfileDetailViewDelegate-Protocol.h>
 
 @class MusicEntityValueContext, MusicMediaDetailTintInformation, MusicProfileDetailView, NSOperationQueue, NSString, UIButton, UIImage, UIImageView;
 @protocol MusicEntityProviding, MusicMediaProfileHeaderContentViewControllerDelegate;
 
-@interface MusicMediaProfileHeaderContentViewController : UIViewController <MusicLayoutMarginProxyViewDelegate, MusicProfileDetailViewDelegate, MusicMediaDetailHeaderContentViewController>
+@interface MusicMediaProfileHeaderContentViewController : UIViewController <MusicProfileDetailViewDelegate, MusicMediaDetailHeaderContentViewController>
 {
     MusicEntityValueContext *_containerEntityValueContext;
     MusicProfileDetailView *_profileDetailView;
@@ -54,10 +53,10 @@
 - (void)_applyProfileImageTintInformation;
 - (void)_applyTintInformation;
 - (void)_applyTransitionProgress;
+- (struct UIEdgeInsets)_calculateProfileDetailViewLayoutInsets;
 - (void)_containerEntityValueProviderDidInvalidateNotification:(id)arg1;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
-- (struct UIEdgeInsets)_effectiveLayoutMargins;
-- (double)_profileImageBottomInset;
+- (struct UIEdgeInsets)_effectiveVerticalInsets;
 - (void)_reloadContainerEntityValueContextProperties;
 - (void)_reloadProfileImageView;
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
@@ -65,8 +64,7 @@
 - (void)configureArtworkCatalog:(id)arg1;
 - (void)dealloc;
 - (id)initWithContainerEntityProvider:(id)arg1;
-- (void)layoutMarginProxyViewLayoutMarginsDidChange:(id)arg1;
-- (void)loadView;
+- (void)music_viewInheritedLayoutInsetsDidChange;
 - (void)profileDetailView:(id)arg1 didUpdateFollowingState:(BOOL)arg2;
 - (void)profileDetailViewDidSelectContextualActionsButton:(id)arg1;
 - (void)profileDetailViewDidSelectEditButton:(id)arg1;

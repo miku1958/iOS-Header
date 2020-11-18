@@ -8,7 +8,7 @@
 
 #import <ITMLKit/IKJSPlayer-Protocol.h>
 
-@class IKAppPlayerBridge, IKDOMDocument, IKJSMediaItem, IKJSPlaylist, JSManagedValue, NSMutableDictionary, NSString;
+@class IKAppPlayerBridge, IKDOMDocument, IKJSMediaItem, IKJSPlaylist, NSMutableDictionary, NSString;
 
 @interface IKJSPlayer : IKJSEventListenerObject <IKJSPlayer>
 {
@@ -18,8 +18,6 @@
     NSMutableDictionary *_observedMetadataKeys;
     NSMutableDictionary *_timeListeners;
     NSMutableDictionary *_boundaryListeners;
-    JSManagedValue *_shouldHandleStateChangeListener;
-    JSManagedValue *_requestSeekToTimeListener;
     IKAppPlayerBridge *_bridge;
 }
 

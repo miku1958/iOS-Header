@@ -7,19 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <PhotosPlayer/ISInputControllerDelegate-Protocol.h>
+#import <PhotosPlayer/ISPlaybackControllerObserver-Protocol.h>
 #import <PhotosPlayer/ISPlaybackSpecObserver-Protocol.h>
+#import <PhotosPlayer/ISPlayerItemObserver-Protocol.h>
 
-@class ISInputController, ISPlaybackController, ISPlaybackSpec, ISPlayerItem, ISVitalityInput, NSError, NSHashTable, NSSet, NSString;
+@class AVPlayer, ISInputController, ISPlaybackController, ISPlaybackSpec, ISPlayerItem, ISVitalityInput, NSError, NSHashTable, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface ISPlayer : NSObject <ISInputControllerDelegate, ISPlaybackSpecObserver>
+@interface ISPlayer : NSObject <ISInputControllerDelegate, ISPlaybackSpecObserver, ISPlaybackControllerObserver, ISPlayerItemObserver>
 {
     BOOL _photoVisible;
     ISPlaybackSpec *_playbackSpec;
     NSObject<OS_dispatch_queue> *_audioSessionConfigurationQueue;
     NSObject<OS_dispatch_queue> *_observerQueue;
+    AVPlayer *_videoPlayer;
     BOOL _managesAudioSession;
     BOOL _forcesPhotoHidden;
+    BOOL _shouldManagePlayerItemLoading;
     BOOL __needsUpdateContent;
     BOOL __needsUpdateStatus;
     BOOL __needsUpdatePlayers;
@@ -61,12 +65,14 @@
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoTime; // @synthesize photoTime=_photoTime;
 @property (nonatomic) long long playbackState; // @synthesize playbackState=_playbackState;
 @property (strong, nonatomic) ISPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
+@property (nonatomic) BOOL shouldManagePlayerItemLoading; // @synthesize shouldManagePlayerItemLoading=_shouldManagePlayerItemLoading;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_audioSessionCategoryDidChange;
 - (void)_configurePlayerItemWithPlaybackSpec;
+- (void)_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleMediaServicesResetIfNecessaryForError:(id)arg1;
 - (void)_invalidateContent;
 - (void)_invalidatePlayers;
@@ -93,12 +99,18 @@
 - (CDStruct_1b6d18a9)duration;
 - (id)init;
 - (id)initWithManagesAudioSession:(BOOL)arg1;
+- (id)initWithManagesAudioSession:(BOOL)arg1 videoPlayer:(id)arg2;
+- (id)initWithVideoPlayer:(id)arg1;
 - (void)inputControllerDidChange:(id)arg1;
 - (BOOL)isPhotoVisible;
+- (BOOL)isPlayingVitalityHint;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)playVitalityHint;
+- (void)playbackControllerPlaybackStateDidChange:(id)arg1;
+- (void)playbackControllerPlayerStatusDidChange:(id)arg1;
 - (id)playbackSpec;
 - (void)playbackSpecDidChange:(id)arg1;
+- (void)playerItemStatusDidChange:(id)arg1;
 - (void)registerChangeObserver:(id)arg1;
 - (void)removeAllInputs;
 - (void)removeInput:(id)arg1;

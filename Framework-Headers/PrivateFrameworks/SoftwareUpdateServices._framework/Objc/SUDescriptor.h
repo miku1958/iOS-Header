@@ -9,7 +9,7 @@
 #import <SoftwareUpdateServices/NSCopying-Protocol.h>
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
-@class NSString, SUDocumentation;
+@class NSDictionary, NSString, SUDocumentation;
 
 @interface SUDescriptor : NSObject <NSSecureCoding, NSCopying>
 {
@@ -23,6 +23,7 @@
     unsigned long long _unarchiveSize;
     unsigned long long _msuPrepareSize;
     unsigned long long _installationSize;
+    unsigned long long _minimumSystemPartitionSize;
     int _updateType;
     BOOL _autoDownloadAllowableForCellular;
     BOOL _downloadAllowableForCellular;
@@ -30,6 +31,7 @@
     BOOL _disableSiriVoiceDeletion;
     BOOL _disableCDLevel4;
     BOOL _disableAppDemotion;
+    NSDictionary *_systemPartitionPadding;
     BOOL _downloadableOverCellular;
     BOOL _streamingZipCapable;
 }
@@ -43,12 +45,14 @@
 @property (nonatomic, getter=isDownloadable) BOOL downloadable; // @synthesize downloadable=_downloadable;
 @property (nonatomic, getter=isDownloadableOverCellular) BOOL downloadableOverCellular; // @synthesize downloadableOverCellular=_downloadableOverCellular;
 @property (nonatomic) unsigned long long installationSize; // @synthesize installationSize=_installationSize;
+@property (nonatomic) unsigned long long minimumSystemPartitionSize; // @synthesize minimumSystemPartitionSize=_minimumSystemPartitionSize;
 @property (nonatomic, getter=_msuPrepareSize, setter=_setMsuPrepareSize:) unsigned long long msuPrepareSize; // @synthesize msuPrepareSize=_msuPrepareSize;
 @property (strong, nonatomic) NSString *productBuildVersion; // @synthesize productBuildVersion=_productBuildVersion;
 @property (strong, nonatomic) NSString *productSystemName; // @synthesize productSystemName=_productSystemName;
 @property (strong, nonatomic) NSString *productVersion; // @synthesize productVersion=_productVersion;
 @property (strong, nonatomic) NSString *publisher; // @synthesize publisher=_publisher;
 @property (nonatomic, getter=_isStreamingZipCapable, setter=_setStreamingZipCapable:) BOOL streamingZipCapable; // @synthesize streamingZipCapable=_streamingZipCapable;
+@property (strong, nonatomic) NSDictionary *systemPartitionPadding; // @synthesize systemPartitionPadding=_systemPartitionPadding;
 @property (nonatomic, getter=_unarchiveSize, setter=_setUnarchiveSize:) unsigned long long unarchiveSize; // @synthesize unarchiveSize=_unarchiveSize;
 @property (nonatomic) int updateType; // @synthesize updateType=_updateType;
 

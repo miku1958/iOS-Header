@@ -15,8 +15,10 @@
     BOOL _hidden;
     BOOL _favorite;
     BOOL _complete;
+    BOOL _isPhotoIris;
     BOOL _hasAdjustments;
     BOOL _cloudIsDeletable;
+    unsigned short _videoCpVisibilityState;
     short _savedAssetType;
     int _exifOrientation;
     int _avalanchePickType;
@@ -35,6 +37,7 @@
     NSString *_filename;
     NSDate *_trashedDate;
     NSDate *_adjustmentTimestamp;
+    long long _videoCpDurationValue;
     NSArray *_faceRegions;
     NSString *_cloudIdentifier;
     long long _cloudPlaceholderKind;
@@ -63,13 +66,14 @@
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite; // @synthesize favorite=_favorite;
 @property (readonly, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property (readonly, nonatomic) BOOL hasAdjustments; // @synthesize hasAdjustments=_hasAdjustments;
+@property (readonly, nonatomic) BOOL hasPhotoColorAdjustments;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (readonly, nonatomic) long long imageOrientation;
 @property (readonly, nonatomic) BOOL isHDVideo;
 @property (readonly, nonatomic) BOOL isJPEG;
 @property (readonly, nonatomic) BOOL isPartOfBurst;
-@property (readonly, nonatomic) BOOL isPhotoIris;
+@property (readonly, nonatomic) BOOL isPhotoIris; // @synthesize isPhotoIris=_isPhotoIris;
 @property (readonly, nonatomic) BOOL isPhotoIrisPlaceholder;
 @property (readonly, nonatomic) BOOL isRAW;
 @property (readonly, nonatomic) CLLocation *location;
@@ -89,11 +93,15 @@
 @property (readonly, nonatomic, getter=isTrashed) BOOL trashed;
 @property (readonly, nonatomic) NSDate *trashedDate; // @synthesize trashedDate=_trashedDate;
 @property (readonly, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
+@property (readonly, nonatomic) long long videoCpDurationValue; // @synthesize videoCpDurationValue=_videoCpDurationValue;
+@property (readonly, nonatomic) unsigned short videoCpVisibilityState; // @synthesize videoCpVisibilityState=_videoCpVisibilityState;
 
 + (void)_computeFingerPrintsOfAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)_fetchAssetsMatchingAdjustedFingerPrint:(id)arg1;
 + (id)_fetchAssetsMatchingMasterFingerPrint:(id)arg1;
-+ (id)_transformMediaSubtypeComparisonPredicate:(id)arg1;
++ (BOOL)_isLivePhotoWithPhotoIris:(BOOL)arg1 hasAdjustments:(BOOL)arg2 videoCpDuration:(long long)arg3 videoCPVisibility:(unsigned short)arg4 sourceType:(unsigned long long)arg5;
++ (BOOL)_isPhotoIrisPlaceholderWithPhotoIris:(BOOL)arg1 videoCpDuration:(long long)arg2 sourceType:(unsigned long long)arg3;
++ (id)_transformMediaSubtypeComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)_transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyForPropertyKey:(id)arg1;
 + (id)fetchAssetsInAssetCollection:(id)arg1 options:(id)arg2;
@@ -104,7 +112,7 @@
 + (id)fetchAssetsWithMediaType:(long long)arg1 options:(id)arg2;
 + (id)fetchAssetsWithOptions:(id)arg1;
 + (id)fetchKeyAssetsInAssetCollection:(id)arg1 options:(id)arg2;
-+ (id)fetchPredicateFromComparisonPredicate:(id)arg1;
++ (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)identifierCode;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsBursts;
@@ -113,7 +121,6 @@
 + (BOOL)managedObjectSupportsTrashedState;
 + (BOOL)managedObjectSupportsVisibilityState;
 + (id)pl_managedAssetsForAssets:(id)arg1;
-+ (unsigned long long)pl_phAssetMediaSubtypeForPLAssetSubtype:(short)arg1;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)PTPProperties;

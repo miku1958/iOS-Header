@@ -51,7 +51,7 @@
 - (void)dealloc;
 - (void)didChangeAnimating;
 - (id)initWithReuseIdentifier:(id)arg1;
-- (void)loadView;
+- (id)loadView;
 - (void)userTransformView:(id)arg1 didChangeIsUserInteracting:(BOOL)arg2;
 - (void)userTransformView:(id)arg1 didChangeUserAffineTransform:(struct CGAffineTransform)arg2 isUserInteracting:(BOOL)arg3;
 - (BOOL)userTransformView:(id)arg1 shouldReceiveTouchAtPoint:(struct CGPoint)arg2;

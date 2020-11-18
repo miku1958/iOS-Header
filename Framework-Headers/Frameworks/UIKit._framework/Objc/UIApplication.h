@@ -367,6 +367,7 @@
 - (id)_fetchUserActivityWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_findBestActivityToMakeCurrent:(id)arg1;
 - (void)_finishButtonEvent:(id)arg1;
+- (id)_firstEligibleResponderForPress:(id)arg1;
 - (void)_fixupBackgroundHitTestWindow;
 - (long long)_frontMostAppOrientation;
 - (unsigned int)_frontmostApplicationPort;
@@ -502,6 +503,7 @@
 - (void)_registerForPreferredContentSizeChangedNotification;
 - (void)_registerForSignificantTimeChangeNotification;
 - (void)_registerForUserDefaultsChanges;
+- (void)_reloadKeyboardArbiterState;
 - (id)_remoteControlEvent;
 - (id)_remoteNotificationRegistrar;
 - (void)_removeDefaultInterfaceOrientatationOverride;
@@ -580,11 +582,11 @@
 - (void)_setUserDefaultsSyncEnabled:(BOOL)arg1;
 - (void)_setVirtualWindowSizeInSceneReferenceSpace:(struct CGSize)arg1 virtualHorizontalSizeClass:(long long)arg2 virtualVerticalSizeClass:(long long)arg3;
 - (void)_sheetWithRemoteIdentifierDidDismiss:(id)arg1;
+- (BOOL)_shouldAllowKeyboardArbiter;
 - (BOOL)_shouldAttemptOpenURL:(id)arg1;
 - (BOOL)_shouldBigify;
 - (BOOL)_shouldDelayTouchesForControlCenter;
 - (BOOL)_shouldDisableTouchCoalescing;
-- (BOOL)_shouldForceClassicForExtensions;
 - (BOOL)_shouldForceClassicMode;
 - (BOOL)_shouldHandleTestURL:(id)arg1;
 - (BOOL)_shouldIgnoreHeadsetClicks;

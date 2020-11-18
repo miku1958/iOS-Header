@@ -89,7 +89,6 @@
 - (BOOL)validateContentEditingOutput:(id)arg1 error:(id *)arg2;
 - (BOOL)validateContentURL:(id)arg1 error:(id *)arg2 writeAccessRequired:(BOOL)arg3;
 - (BOOL)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
-- (BOOL)validateVideoURL:(id)arg1 error:(id *)arg2;
 - (BOOL)validateVideoURLForAssetMutation:(id)arg1 error:(id *)arg2;
 
 @end

@@ -22,6 +22,7 @@
     double _tallestFontDescender;
     MPUTextDrawingCache *_textDrawingCache;
     NSMutableArray *_controlTargetActions;
+    BOOL _prefersAsynchronousLoading;
     BOOL _textColorFollowsTintColor;
     BOOL _useTextFallbackForEmptyString;
     BOOL _shouldBaselineAlignTrailingAccessoryImage;
@@ -64,6 +65,7 @@
 @property (readonly, nonatomic) double maximumHeight;
 @property (nonatomic) long long maximumNumberOfLines; // @synthesize maximumNumberOfLines=_maximumNumberOfLines;
 @property (nonatomic) long long maximumTextLengthForInput; // @synthesize maximumTextLengthForInput=_maximumTextLengthForInput;
+@property (nonatomic) BOOL prefersAsynchronousLoading; // @synthesize prefersAsynchronousLoading=_prefersAsynchronousLoading;
 @property (readonly, nonatomic) double scaledFirstBaselineOffset;
 @property (nonatomic) BOOL shouldBaselineAlignTrailingAccessoryImage; // @synthesize shouldBaselineAlignTrailingAccessoryImage=_shouldBaselineAlignTrailingAccessoryImage;
 @property (nonatomic) long long tag; // @synthesize tag=_tag;

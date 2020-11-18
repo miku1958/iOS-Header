@@ -12,10 +12,9 @@
 {
     NSMutableArray *_sourceObstacles;
     struct GKCObstacleGraph *_cObstacleGraph;
-    float _bufferRadius;
 }
 
-@property (readonly, nonatomic) float bufferRadius; // @synthesize bufferRadius=_bufferRadius;
+@property (readonly, nonatomic) float bufferRadius;
 @property (readonly, nonatomic) NSArray *obstacles;
 
 + (id)graphWithObstacles:(id)arg1 bufferRadius:(float)arg2;

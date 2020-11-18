@@ -172,6 +172,7 @@
 - (id)markNotificationsAlertedAndSave:(id)arg1;
 - (BOOL)markResourceChangeAlerted:(id)arg1 error:(id *)arg2;
 - (BOOL)moveDiagnosticsLogToCrashReporterFolder;
+- (BOOL)objectWithIDExists:(id)arg1;
 - (id)objectWithObjectID:(id)arg1;
 - (id)occurrenceCacheGetOccurrencesForCalendars:(id)arg1;
 - (id)occurrenceCacheGetOccurrencesForCalendars:(id)arg1 onDay:(double)arg2;

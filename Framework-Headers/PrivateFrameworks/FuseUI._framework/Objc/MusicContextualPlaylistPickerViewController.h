@@ -8,20 +8,22 @@
 
 #import <FuseUI/MusicContextualPlaylistPickerDelegate-Protocol.h>
 
-@class MusicContextualPlaylistPickerViewConfiguration, NSArray, NSString, UIViewController;
+@class MusicContextualPlaylistPickerViewConfiguration, MusicEntityValueContext, NSArray, NSString, UIViewController;
 
 @interface MusicContextualPlaylistPickerViewController : MusicNavigationController <MusicContextualPlaylistPickerDelegate>
 {
     MusicContextualPlaylistPickerViewConfiguration *_playlistsViewConfiguration;
     UIViewController *_playlistsViewController;
     CDUnknownBlockType _playlistSelectionHandler;
-    NSArray *_prepopulatedNewPlaylistMediaItems;
+    MusicEntityValueContext *_prepopulatedItemsEntityValueContext;
+    NSArray *_prepopulatedMediaItems;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSArray *prepopulatedNewPlaylistMediaItems; // @synthesize prepopulatedNewPlaylistMediaItems=_prepopulatedNewPlaylistMediaItems;
+@property (strong, nonatomic) MusicEntityValueContext *prepopulatedItemsEntityValueContext; // @synthesize prepopulatedItemsEntityValueContext=_prepopulatedItemsEntityValueContext;
+@property (strong, nonatomic) NSArray *prepopulatedMediaItems; // @synthesize prepopulatedMediaItems=_prepopulatedMediaItems;
 @property (readonly) Class superclass;
 
 + (BOOL)automaticallyInstallAccountBarButtonItem;

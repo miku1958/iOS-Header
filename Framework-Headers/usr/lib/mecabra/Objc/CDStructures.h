@@ -12,9 +12,8 @@ struct ConversionCandidate {
 };
 
 struct Lexicon {
-    CDUnknownFunctionPointerType *_field1;
+    void *_field1;
     void *_field2;
-    void *_field3;
 };
 
 struct MecabraCandidateBase {

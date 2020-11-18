@@ -13,5 +13,6 @@
 - (id)_countryCodeForCountryName:(id)arg1;
 - (id)backwardsCompatibleDictionaryRepresentation;
 - (id)redactedPostalAddress;
+- (id)redactedStreetAddress;
 @end
 

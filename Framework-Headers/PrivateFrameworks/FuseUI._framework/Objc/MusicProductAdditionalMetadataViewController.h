@@ -8,19 +8,20 @@
 
 #import <FuseUI/MusicProductDescriptionTableViewCellDelegate-Protocol.h>
 #import <FuseUI/MusicProductMetadataTableViewCellDelegate-Protocol.h>
+#import <FuseUI/MusicTableViewDelegate-Protocol.h>
 #import <FuseUI/UITableViewDataSource-Protocol.h>
 #import <FuseUI/UITableViewDelegate-Protocol.h>
 
-@class MusicMediaDetailTintInformation, MusicProductDescription, MusicProductDescriptionTableViewCell, NSIndexSet, NSMutableIndexSet, NSString, UIColor, UITableView;
+@class MusicMediaDetailTintInformation, MusicProductDescription, MusicProductDescriptionTableViewCell, MusicTableView, NSIndexSet, NSMutableIndexSet, NSString, UIColor;
 @protocol MusicProductAdditionalMetadataViewControllerDelegate;
 
-@interface MusicProductAdditionalMetadataViewController : UIViewController <MusicProductDescriptionTableViewCellDelegate, MusicProductMetadataTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface MusicProductAdditionalMetadataViewController : UIViewController <MusicProductDescriptionTableViewCellDelegate, MusicProductMetadataTableViewCellDelegate, MusicTableViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     UIColor *_customSelectionTintColor;
     UIColor *_defaultSelectionTintColor;
     NSMutableIndexSet *_metadataItems;
     MusicProductDescriptionTableViewCell *_productDescriptionTableViewCell;
-    UITableView *_tableView;
+    MusicTableView *_tableView;
     struct {
         unsigned int didSelectAddSongsButton:1;
         unsigned int didUpdateProductDescription:1;
@@ -31,12 +32,14 @@
         unsigned int shouldDeferContentHeightAnimationUpdates:1;
     } _delegateRespondsToSelector;
     BOOL _publicSwitchOn;
+    BOOL _trailingSeparatorInsetFollowsLayoutInsets;
     BOOL _visibleSwitchOn;
     NSIndexSet *_allowedMetadataItems;
     id<MusicProductAdditionalMetadataViewControllerDelegate> _delegate;
     MusicMediaDetailTintInformation *_detailTintInformation;
     MusicProductDescription *_productDescription;
     long long _productDescriptionMaximumLengthForTextInput;
+    long long _productDescriptionTextStyle;
     NSString *_publicSwitchDescription;
     NSString *_visibleSwitchDescription;
 }
@@ -50,9 +53,11 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) MusicProductDescription *productDescription; // @synthesize productDescription=_productDescription;
 @property (nonatomic) long long productDescriptionMaximumLengthForTextInput; // @synthesize productDescriptionMaximumLengthForTextInput=_productDescriptionMaximumLengthForTextInput;
+@property (nonatomic) long long productDescriptionTextStyle; // @synthesize productDescriptionTextStyle=_productDescriptionTextStyle;
 @property (copy, nonatomic) NSString *publicSwitchDescription; // @synthesize publicSwitchDescription=_publicSwitchDescription;
 @property (nonatomic, getter=isPublicSwitchOn) BOOL publicSwitchOn; // @synthesize publicSwitchOn=_publicSwitchOn;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL trailingSeparatorInsetFollowsLayoutInsets; // @synthesize trailingSeparatorInsetFollowsLayoutInsets=_trailingSeparatorInsetFollowsLayoutInsets;
 @property (copy, nonatomic) NSString *visibleSwitchDescription; // @synthesize visibleSwitchDescription=_visibleSwitchDescription;
 @property (nonatomic, getter=isVisibleSwitchOn) BOOL visibleSwitchOn; // @synthesize visibleSwitchOn=_visibleSwitchOn;
 
@@ -79,6 +84,7 @@
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldForceBottomSeparatorVisibleForSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;

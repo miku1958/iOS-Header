@@ -10,8 +10,5 @@
 
 @property (readonly, nonatomic, getter=is_isHighFramerate) BOOL is_highFramerate;
 
-+ (void)is_prepareIrisAudioWithAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)is_prepareIrisPlayerItemWithAsset:(id)arg1 includeVideo:(BOOL)arg2 includeAudio:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-+ (void)is_prepareIrisVideoWithAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @end
 

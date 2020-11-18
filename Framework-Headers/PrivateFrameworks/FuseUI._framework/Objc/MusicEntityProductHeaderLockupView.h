@@ -68,7 +68,6 @@
 - (void)_contextualActionsButtonTapped:(id)arg1;
 - (id)_currentAddToLibraryButtonImage;
 - (void)_editButtonTapped:(id)arg1;
-- (struct UIEdgeInsets)_effectiveLayoutMargins;
 - (id)_genericActionButtonWithImage:(id)arg1;
 - (id)_genericActionButtonWithImageName:(id)arg1;
 - (id)_genericActionButtonWithText:(id)arg1;
@@ -94,9 +93,9 @@
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)music_inheritedLayoutInsetsDidChange;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setEntityValueProvider:(id)arg1;
-- (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textViewDidChange:(id)arg1;
 - (void)tintColorDidChange;

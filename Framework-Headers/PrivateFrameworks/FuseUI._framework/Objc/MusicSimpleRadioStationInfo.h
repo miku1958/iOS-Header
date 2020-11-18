@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <FuseUI/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-@interface MusicSimpleRadioStationInfo : NSObject
+@interface MusicSimpleRadioStationInfo : NSObject <NSSecureCoding>
 {
     BOOL _isBeats1;
     NSString *_name;
@@ -19,8 +21,11 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *radioID; // @synthesize radioID=_radioID;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRadioID:(id)arg1 name:(id)arg2;
 
 @end

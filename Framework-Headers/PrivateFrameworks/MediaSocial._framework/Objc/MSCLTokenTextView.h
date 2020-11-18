@@ -23,6 +23,7 @@
 @property (readonly, copy, nonatomic) NSString *pendingTagForSelectedRange;
 @property (copy, nonatomic) NSString *tagDelimeter; // @synthesize tagDelimeter=_tagDelimeter;
 @property (copy, nonatomic) NSString *tagSuffix; // @synthesize tagSuffix=_tagSuffix;
+@property (readonly, nonatomic) struct CGRect textRectForSelectedRange;
 
 - (void).cxx_destruct;
 - (struct _NSRange)_tagRangeForRange:(struct _NSRange)arg1;

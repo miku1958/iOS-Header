@@ -12,35 +12,34 @@
 @interface MusicTableView : MusicBasicTableView
 {
     long long _highlightedSectionHeaderViewIndex;
+    BOOL _isUpdatingSeparatorInsets;
     long long _selectedSectionHeaderViewIndex;
-    BOOL _enforcesMinimumLayoutMargin;
-    BOOL _trailingSeparatorInsetFollowsLayoutMargin;
+    BOOL _trailingSeparatorInsetFollowsLayoutInsets;
     BOOL _shouldTreatContentOffsetChangesAsDeltas;
 }
 
 @property (nonatomic) id<MusicTableViewDelegate> delegate; // @dynamic delegate;
-@property (nonatomic) BOOL enforcesMinimumLayoutMargin; // @synthesize enforcesMinimumLayoutMargin=_enforcesMinimumLayoutMargin;
 @property (readonly, nonatomic) long long indexForSelectedSectionHeader;
 @property (nonatomic) BOOL shouldTreatContentOffsetChangesAsDeltas; // @synthesize shouldTreatContentOffsetChangesAsDeltas=_shouldTreatContentOffsetChangesAsDeltas;
-@property (nonatomic) BOOL trailingSeparatorInsetFollowsLayoutMargin; // @synthesize trailingSeparatorInsetFollowsLayoutMargin=_trailingSeparatorInsetFollowsLayoutMargin;
-@property (readonly, copy, nonatomic) NSArray *visibleSectionHeaderViews;
+@property (nonatomic) BOOL trailingSeparatorInsetFollowsLayoutInsets; // @synthesize trailingSeparatorInsetFollowsLayoutInsets=_trailingSeparatorInsetFollowsLayoutInsets;
+@property (readonly, copy, nonatomic) NSArray *visibleHeaderFooterViews;
 
 - (void)_clearHeaderViewHighlightAnimated:(BOOL)arg1;
 - (void)_clearHeaderViewSelectionAnimated:(BOOL)arg1;
+- (void)_rebuildGeometry;
 - (long long)_sectionForSelectableHeaderView:(id)arg1;
 - (BOOL)_shouldDrawSeparatorAtBottomOfSection:(long long)arg1;
 - (void)_touchesBegan:(id)arg1 withEvent:(id)arg2 onSelectableHeaderFooterView:(id)arg3;
 - (void)_touchesCancelled:(id)arg1 withEvent:(id)arg2 onSelectableHeaderFooterView:(id)arg3;
 - (void)_touchesEnded:(id)arg1 withEvent:(id)arg2 onSelectableHeaderFooterView:(id)arg3;
 - (void)_touchesMoved:(id)arg1 withEvent:(id)arg2 onSelectableHeaderFooterView:(id)arg3;
-- (void)_updateRightSeparatorInset;
+- (void)_updateChildSeparatorInsets;
+- (void)_updateSeparatorInset;
 - (void)deselectHeaderForSection:(long long)arg1 animated:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
-- (struct UIEdgeInsets)layoutMargins;
-- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
+- (void)music_inheritedLayoutInsetsDidChange;
 - (void)selectHeaderForSection:(long long)arg1 animated:(BOOL)arg2;
-- (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
 - (void)tintColorDidChange;
 
 @end

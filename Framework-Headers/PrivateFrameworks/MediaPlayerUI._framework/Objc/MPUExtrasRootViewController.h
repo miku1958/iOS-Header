@@ -91,6 +91,7 @@
 - (id)systemLanguage;
 - (id)timeZone;
 - (id)vendorIdentifier;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

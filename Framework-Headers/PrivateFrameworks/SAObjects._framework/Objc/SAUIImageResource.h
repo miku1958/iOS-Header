@@ -25,6 +25,7 @@
 @property (copy, nonatomic) NSURL *resourceUrl;
 @property (nonatomic) double scaleFactor;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *urlFormatString;
 @property (copy, nonatomic) NSString *userAgent;
 
 + (id)imageResource;

@@ -41,8 +41,9 @@
 - (void)_setHighlighted:(BOOL)arg1;
 - (void)_shareButtonAction:(id)arg1;
 - (id)_touchForEvent:(id)arg1;
-- (struct UIEdgeInsets)layoutMargins;
 - (void)layoutSubviews;
+- (struct UIEdgeInsets)music_inheritedLayoutInsets;
+- (void)music_inheritedLayoutInsetsDidChange;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

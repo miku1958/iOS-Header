@@ -18,6 +18,7 @@
 - (id)initWithIdentifier:(unsigned long long)arg1 location:(struct CGPoint)arg2 orbValue:(double)arg3;
 - (struct CGPoint)location;
 - (double)orbValue;
+- (unsigned long long)type;
 
 @end
 

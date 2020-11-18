@@ -24,6 +24,7 @@
 + (void)stopUsingMockSharedInstance;
 + (void)useMockSharedInstance:(id)arg1;
 - (void).cxx_destruct;
+- (id)activityForActivityId:(int)arg1;
 - (id)copyCriteria:(id)arg1;
 - (void)dealloc;
 - (long long)getState:(id)arg1;

@@ -35,6 +35,7 @@
 - (void).cxx_destruct;
 - (void)_updateITMLIDRecursivelyForNodePtr:(struct _xmlNode *)arg1;
 - (id)adoptNode:(id)arg1;
+- (id)createCDATASection:(id)arg1;
 - (id)createComment:(id)arg1;
 - (id)createDocumentFragment;
 - (id)createElement:(id)arg1;

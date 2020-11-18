@@ -6,7 +6,7 @@
 
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class IKDOMComment, IKDOMDocument, IKDOMDocumentFragment, IKDOMElement, IKDOMImplementation, IKDOMNode, IKDOMNodeList, IKDOMText, IKJSNavigationDocument, NSArray, NSDictionary, NSString;
+@class IKDOMCDATASection, IKDOMComment, IKDOMDocument, IKDOMDocumentFragment, IKDOMElement, IKDOMImplementation, IKDOMNode, IKDOMNodeList, IKDOMText, IKJSNavigationDocument, NSArray, NSDictionary, NSString;
 
 @protocol IKJSDOMDocument <JSExport>
 
@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSString *xmlVersion;
 
 - (IKDOMNode *)adoptNode:(IKDOMNode *)arg1;
+- (IKDOMCDATASection *)createCDATASection:(NSString *)arg1;
 - (IKDOMComment *)createComment:(NSString *)arg1;
 - (IKDOMDocumentFragment *)createDocumentFragment;
 - (IKDOMElement *)createElement:(NSString *)arg1;

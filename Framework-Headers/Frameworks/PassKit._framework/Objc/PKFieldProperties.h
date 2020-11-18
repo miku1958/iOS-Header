@@ -8,15 +8,17 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSError;
 
 @interface PKFieldProperties : NSObject <NSSecureCoding>
 {
+    NSError *_error;
     unsigned long long _technology;
     unsigned long long _mode;
     NSArray *_merchantIdentifiers;
 }
 
+@property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) NSArray *merchantIdentifiers; // @synthesize merchantIdentifiers=_merchantIdentifiers;
 @property (readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (readonly, nonatomic) unsigned long long technology; // @synthesize technology=_technology;
@@ -26,6 +28,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithTechnology:(unsigned long long)arg1 mode:(unsigned long long)arg2 error:(id)arg3;
 - (id)initWithTechnology:(unsigned long long)arg1 mode:(unsigned long long)arg2 merchantIdentifiers:(id)arg3;
 
 @end

@@ -12,6 +12,7 @@
 {
     UILabel *_bodyLabel;
     BOOL _requiresClearBackgroundColor;
+    BOOL _insetPrivacyFooter;
     UIImageView *_logo;
     PKPaymentSetupPrivacyFooterView *_privacyFooter;
     long long _context;
@@ -20,18 +21,21 @@
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView; // @synthesize activityIndicatorView=_activityIndicatorView;
 @property (nonatomic) long long context; // @synthesize context=_context;
+@property (nonatomic) BOOL insetPrivacyFooter; // @synthesize insetPrivacyFooter=_insetPrivacyFooter;
 @property (strong, nonatomic) UIImageView *logo; // @synthesize logo=_logo;
 @property (strong, nonatomic) PKPaymentSetupPrivacyFooterView *privacyFooter; // @synthesize privacyFooter=_privacyFooter;
 @property (nonatomic) BOOL requiresClearBackgroundColor; // @synthesize requiresClearBackgroundColor=_requiresClearBackgroundColor;
 
 - (id)_bodyFont;
 - (id)_titleFont;
+- (struct UIEdgeInsets)bodyInsetsForSize:(struct CGSize)arg1;
 - (id)bodyLabel;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2;
 - (BOOL)isBuddyiPad;
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(struct _PKAppearanceSpecifier *)arg1;
+- (struct UIEdgeInsets)privacyInsets;
 - (void)setBackgroundColor:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

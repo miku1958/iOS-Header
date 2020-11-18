@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)loadView;
+- (id)loadView;
 
 @end
 

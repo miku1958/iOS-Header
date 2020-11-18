@@ -11,7 +11,9 @@
 }
 
 - (id)init;
+- (struct CGSize)preferredContentSize;
 - (BOOL)showSimplePINCancelButtonOnLeft;
+- (id)stringsBundle;
 
 @end
 

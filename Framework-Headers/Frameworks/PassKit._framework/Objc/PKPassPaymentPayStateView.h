@@ -36,7 +36,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL touchRecognizingHint; // @synthesize touchRecognizingHint=_touchRecognizingHint;
 
-- (void)_applyStateWithTextOverride:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_applyStateWithTextOverride:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_canEmphasizeState:(long long)arg1;
 - (void)_configureLayoutMetrics;
 - (id)_labelForState:(long long)arg1 textOverride:(id)arg2;
@@ -46,7 +46,7 @@
 - (void)glyphView:(id)arg1 revealingCheckmark:(BOOL)arg2;
 - (id)initWithStyle:(long long)arg1 enhancedContrast:(BOOL)arg2;
 - (void)layoutSubviews;
-- (void)setState:(long long)arg1 textOverride:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setState:(long long)arg1 textOverride:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

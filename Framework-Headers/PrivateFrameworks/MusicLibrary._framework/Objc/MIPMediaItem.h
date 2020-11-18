@@ -64,6 +64,7 @@
     NSString *_title;
     MIPTVShow *_tvShow;
     int _year;
+    BOOL _cloudAssetAvailable;
     BOOL _explicitContent;
     BOOL _hasLocalAsset;
     BOOL _hidden;
@@ -105,6 +106,7 @@
         unsigned int skipCount:1;
         unsigned int skipCountDelta:1;
         unsigned int year:1;
+        unsigned int cloudAssetAvailable:1;
         unsigned int explicitContent:1;
         unsigned int hasLocalAsset:1;
         unsigned int hidden:1;
@@ -119,6 +121,7 @@
 @property (strong, nonatomic) NSString *artworkId; // @synthesize artworkId=_artworkId;
 @property (nonatomic) long long bookmarkTimeMilliseconds; // @synthesize bookmarkTimeMilliseconds=_bookmarkTimeMilliseconds;
 @property (strong, nonatomic) NSString *chapterMetadataUrl; // @synthesize chapterMetadataUrl=_chapterMetadataUrl;
+@property (nonatomic) BOOL cloudAssetAvailable; // @synthesize cloudAssetAvailable=_cloudAssetAvailable;
 @property (nonatomic) int cloudStatus; // @synthesize cloudStatus=_cloudStatus;
 @property (strong, nonatomic) NSString *comment; // @synthesize comment=_comment;
 @property (nonatomic) int contentRating; // @synthesize contentRating=_contentRating;
@@ -140,6 +143,7 @@
 @property (readonly, nonatomic) BOOL hasArtworkId;
 @property (nonatomic) BOOL hasBookmarkTimeMilliseconds;
 @property (readonly, nonatomic) BOOL hasChapterMetadataUrl;
+@property (nonatomic) BOOL hasCloudAssetAvailable;
 @property (nonatomic) BOOL hasCloudStatus;
 @property (readonly, nonatomic) BOOL hasComment;
 @property (nonatomic) BOOL hasContentRating;

@@ -69,6 +69,7 @@
 @property (strong) CKDMMCS *MMCS; // @synthesize MMCS=_MMCS;
 @property (strong) CKDAccount *account; // @synthesize account=_account;
 @property (readonly, nonatomic) CKAccountInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
+@property (readonly, nonatomic) BOOL allowsCellularAccess;
 @property (nonatomic) BOOL allowsPowerNapScheduling; // @synthesize allowsPowerNapScheduling=_allowsPowerNapScheduling;
 @property (strong, nonatomic) NSString *applicationAssetDbDirectory; // @synthesize applicationAssetDbDirectory=_applicationAssetDbDirectory;
 @property (readonly, nonatomic) NSBundle *applicationBundle; // @synthesize applicationBundle=_applicationBundle;

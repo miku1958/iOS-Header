@@ -7,10 +7,10 @@
 #import <Foundation/NSObject.h>
 
 @class NSArray, NSMapTable, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue;
 
 @interface BCBatteryDeviceController : NSObject
 {
-    NSArray *_orderedFirstPartyAccessoryIdentifiers;
     NSMutableDictionary *_devicesByIdentifier;
     NSArray *_sortedDevices;
     struct __CFRunLoopSource *_powerSourcesChangedRunLoopSource;
@@ -18,8 +18,7 @@
     struct __CFRunLoopSource *_accessoriesLimitedPowerRunLoopSource;
     NSMapTable *_handlersByIdentifier;
     BOOL _chargeChangeHandlingDisabled;
-    BOOL _didLoadAllowAllDevicesDefault;
-    struct CGSize _largestBatteryDeviceGlyphSize;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, nonatomic) NSArray *connectedDevices;
@@ -33,8 +32,6 @@
 + (id)_internalBatteryDeviceGlyph;
 + (id)sharedInstance;
 - (id)_baseIdentifierFromPowerSourceDescription:(id)arg1;
-- (id)_batteryDeviceWithIdentifier:(id)arg1;
-- (void)_callHandlersForDevice:(id)arg1;
 - (id)_deviceByCoalescingDevice:(id)arg1;
 - (int)_displayChargePercentForCurrentCapacity:(id)arg1 andMaxCapacity:(id)arg2 updateZeroValue:(BOOL)arg3;
 - (BOOL)_displayIsChargingFromPowerSourceDescription:(id)arg1;
@@ -43,26 +40,36 @@
 - (id)_fakeDevicePowerSourceDescriptions;
 - (void)_handlePSChange;
 - (void)_incrementPercentChargeForConnectedDevices:(BOOL)arg1;
-- (void)_invalidateConnectedDevices;
-- (BOOL)_isApprovedAccessoryBaseIdentifier:(id)arg1;
 - (BOOL)_isCompositeIdentifierValidForDeviceWithBaseIdentifier:(id)arg1;
 - (BOOL)_isDevicePartOfPairWithBaseIdentifier:(id)arg1 matchIdentifier:(id)arg2 andParts:(unsigned long long)arg3;
 - (struct CGSize)_largestBatteryDeviceGlyphSize;
+- (long long)_lowBatteryLevelForBaseIdentifier:(id)arg1 fromPowerSourceDescription:(id)arg2;
 - (id)_matchIdentifierFromPowerSourceDescription:(id)arg1;
 - (id)_orderedFirstPartyAccessoryIdentifiers;
 - (unsigned long long)_partsFromPowerSourceDescription:(id)arg1;
-- (void)_performUpdateWithPowerSourcesBlob:(void *)arg1 andPowerSourcesList:(struct __CFArray *)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_postDidChangeNotification;
 - (long long)_powerSourceStateFromPowerSourceDescription:(id)arg1;
 - (long long)_productIdentifierFromPowerSourceDescription:(id)arg1;
+- (void)_queue_addDeviceChangeHandler:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2;
+- (id)_queue_batteryDeviceWithIdentifier:(id)arg1;
+- (void)_queue_callHandlersForDevice:(id)arg1;
+- (id)_queue_connectedDevices;
+- (id)_queue_connectedDevicesIncludingMissingParts;
+- (void)_queue_handlePSChange;
+- (void)_queue_invalidateConnectedDevices;
+- (void)_queue_performUpdateWithPowerSourcesBlob:(void *)arg1 andPowerSourcesList:(struct __CFArray *)arg2;
+- (void)_queue_removeBatteryDevicesWithIdentifiers:(id)arg1;
+- (void)_queue_removeDeviceChangeHandlerWithIdentifier:(id)arg1;
+- (void)_queue_setBatteryDevice:(id)arg1 forIdentifier:(id)arg2;
 - (void)_reenableChargeChangeHandling;
 - (id)_remainingPartsOfDeviceWithPart:(id)arg1;
-- (void)_removeBatteryDevicesWithIdentifiers:(id)arg1;
-- (void)_setBatteryDevice:(id)arg1 forIdentifier:(id)arg2;
 - (BOOL)_shouldCoalesceDevices:(id)arg1 minimumPercentCharge:(long long *)arg2;
 - (BOOL)_shouldConsiderDeviceWithPowerSourceDescription:(id)arg1;
 - (long long)_transportTypeFromPowerSourceDescription:(id)arg1;
 - (long long)_vendorFromPowerSourceDescription:(id)arg1;
 - (void)addDeviceChangeHandler:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2;
+- (void)connectedDevicesIncludingMissingPartsWithResult:(CDUnknownBlockType)arg1;
+- (void)connectedDevicesWithResult:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)removeDeviceChangeHandlerWithIdentifier:(id)arg1;

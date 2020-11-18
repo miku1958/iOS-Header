@@ -8,7 +8,7 @@
 
 #import <StoreKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, UIControl, UITapGestureRecognizer;
+@class NSArray, NSMutableArray, NSString, UIColor, UIControl, UITapGestureRecognizer;
 @protocol SKUIOverlayContainerDelegate;
 
 @interface SKUIOverlayContainerViewController : UIViewController <UIGestureRecognizerDelegate>
@@ -26,18 +26,20 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SKUIOverlayContainerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIColor *dimmingViewColor;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSArray *viewControllers;
 
 - (void).cxx_destruct;
+- (struct CGRect)_centeredFrameForViewController:(id)arg1 inBounds:(struct CGRect)arg2;
 - (void)_fadeInViewController:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_frameAction:(id)arg1;
-- (struct CGRect)_frameToCenterViewController:(id)arg1;
 - (long long)_indexOfViewControllerForPoint:(struct CGPoint)arg1;
-- (double)_overlaySpacingForOrientation:(long long)arg1;
+- (struct CGSize)_overlaySizeForController:(id)arg1 atBoundsSize:(struct CGSize)arg2;
+- (double)_overlaySpacingForSize:(struct CGSize)arg1;
 - (void)_popViewControllers;
-- (void)_positionViewControllersForOrientation:(long long)arg1;
+- (void)_positionViewControllersForSize:(struct CGSize)arg1 traitCollection:(id)arg2;
 - (void)_pushViewController:(id)arg1;
 - (void)_removeChildren;
 - (id)_selectedViewController;
@@ -58,8 +60,9 @@
 - (void)showViewController:(id)arg1 withFlipTransition:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)showViewControllers:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

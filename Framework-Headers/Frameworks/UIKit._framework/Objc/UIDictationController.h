@@ -6,12 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
+#import <UIKit/AFDictationDelegate-Protocol.h>
 #import <UIKit/_UITouchPhaseChangeDelegate-Protocol.h>
 
 @class AFDictationConnection, AFDictationOptions, AFPreferences, CADisplayLink, NSArray, NSMutableArray, NSString, NSTimer, UIAlertView, UIDictationStreamingOperations, UIKeyboardInputMode, UIWindow, _UIDictationPrivacySheetController;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationController : NSObject <_UITouchPhaseChangeDelegate>
+@interface UIDictationController : NSObject <AFDictationDelegate, _UITouchPhaseChangeDelegate>
 {
     AFDictationConnection *_connection;
     AFDictationOptions *_options;

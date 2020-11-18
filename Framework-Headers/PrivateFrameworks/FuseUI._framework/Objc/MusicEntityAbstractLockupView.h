@@ -28,6 +28,7 @@
     NSMutableArray *_recycledTextDrawingViews;
     NSMapTable *_textDescriptorsToRecycledTextButtons;
     NSMapTable *_textDescriptorsToTextDrawingViews;
+    BOOL _wasUpdatedForAsynchronousPropertyLoadCompleted;
     BOOL _entityDisabled;
     BOOL _highlighted;
     BOOL _usingPlaceholderArt;
@@ -86,6 +87,7 @@
 - (void)textDrawingCacheWasInvalidated:(id)arg1;
 - (id)traitCollection;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateForAsynchronousPropertyLoadCompleted;
 
 @end
 

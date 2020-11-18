@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 
 + (BOOL)_shouldDefaultToTouches;
++ (BOOL)_shouldSupportStylusTouches;
 - (void).cxx_destruct;
 - (double)_edgeRegionSize;
 - (struct CGPoint)_locationForTouch:(id)arg1;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUI/UIActivityItemApplicationExtensionSource-Protocol.h>
 #import <PhotosUI/UIActivityItemDeferredSource-Protocol.h>
 #import <PhotosUI/UIActivityItemSource-Protocol.h>
 
 @class NSDictionary, NSString, NSURL, PHAsset, PLVideoRemaker, _PUActivityItemSourceOperation;
 
-@interface PUActivityItemSource : NSObject <UIActivityItemDeferredSource, UIActivityItemSource>
+@interface PUActivityItemSource : NSObject <UIActivityItemDeferredSource, UIActivityItemApplicationExtensionSource, UIActivityItemSource>
 {
     PHAsset *_asset;
     BOOL _hasRecognizedVideoAdjustments;
@@ -73,6 +74,7 @@
 - (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
+- (id)activityViewControllerApplicationExtensionItem:(id)arg1;
 - (id)activityViewControllerOperation:(id)arg1;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (void)cancel;

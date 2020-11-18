@@ -18,6 +18,8 @@
     UILayoutGuide *_flexibleSpaceEqualSizeLayoutGuide;
     UILayoutGuide *_minimumInterItemSpaceLayoutGuide;
     NSLayoutConstraint *_minimumInterItemSpaceConstraint;
+    UILayoutGuide *_minimumInterGroupSpaceLayoutGuide;
+    NSLayoutConstraint *_minimumInterGroupSpaceConstraint;
     _UIButtonBarLayoutMetrics *_layoutMetrics;
     NSMutableArray *_groupLayouts;
     NSMutableArray *_effectiveLayout;
@@ -31,6 +33,7 @@
     NSArray *_barButtonGroups;
     double _minimumInterItemSpace;
     _UIButtonBarButtonVisualProvider *_visualProvider;
+    double _minimumInterGroupSpace;
     CDUnknownBlockType _defaultActionFilter;
 }
 
@@ -42,6 +45,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=_itemsInGroupUseSameSize, setter=_setItemsInGroupUseSameSize:) BOOL itemsInGroupUseSameSize; // @synthesize itemsInGroupUseSameSize=_itemsInGroupUseSameSize;
 @property (readonly, nonatomic, getter=_layoutWidth) double layoutWidth;
+@property (nonatomic, getter=_minimumInterGroupSpace, setter=_setMinimumInterGroupSpace:) double minimumInterGroupSpace; // @synthesize minimumInterGroupSpace=_minimumInterGroupSpace;
 @property (nonatomic) double minimumInterItemSpace; // @synthesize minimumInterItemSpace=_minimumInterItemSpace;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIBarButtonItem *ultimateFallbackItem;

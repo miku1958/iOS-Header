@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 - (void)_setCropInsets:(struct UIEdgeInsets)arg1;
 - (id)clone;
 - (id)description;
-- (id)initWithIndexPath:(id)arg1 tileKind:(id)arg2 dataSourceIdentifier:(id)arg3 center:(struct CGPoint)arg4 size:(struct CGSize)arg5 alpha:(double)arg6 transform:(struct CGAffineTransform)arg7 zPosition:(double)arg8 coordinateSystem:(id)arg9;
-- (id)initWithIndexPath:(id)arg1 tileKind:(id)arg2 dataSourceIdentifier:(id)arg3 center:(struct CGPoint)arg4 size:(struct CGSize)arg5 cropInsets:(struct UIEdgeInsets)arg6 alpha:(double)arg7 transform:(struct CGAffineTransform)arg8 zPosition:(double)arg9 coordinateSystem:(id)arg10;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 coordinateSystem:(id)arg7;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 cropInsets:(struct UIEdgeInsets)arg4 alpha:(double)arg5 transform:(struct CGAffineTransform)arg6 zPosition:(double)arg7 coordinateSystem:(id)arg8;
 - (BOOL)isGeometryEqualToLayoutInfo:(id)arg1;
 - (id)layoutInfoByInterpolatingWithLayoutInfo:(id)arg1 mixFactor:(double)arg2 coordinateSystem:(id)arg3;
 

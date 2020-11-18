@@ -17,6 +17,7 @@
 #import <PhotosUI/UIScrollViewDelegate-Protocol.h>
 
 @class NSIndexPath, NSMutableDictionary, NSString, PUBrowsingSession, PUScrubberTilingLayout, PUTilingView, PUTouchingGestureRecognizer, PUVideoScrubberController, UIScrollView, UITapGestureRecognizer;
+@protocol PUScrubberViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUScrubberView : UIView <PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewScrollDelegate, UIScrollViewDelegate, PUBrowsingViewModelChangeObserver, PUScrubberTilingLayoutDelegate, PUVideoScrubberControllerDelegate, PUPlaybackTimeIndicatorTileViewControllerDelegate, UIGestureRecognizerDelegate>
@@ -30,6 +31,9 @@ __attribute__((visibility("hidden")))
     BOOL _scrubberLayoutNeedsTransition;
     PUTouchingGestureRecognizer *_touchingGestureRecognizer;
     NSMutableDictionary *_aspectRatioByIndexPath;
+    struct {
+        BOOL respondsToShouldIgnoreHitTestWithEvent;
+    } _delegateFlags;
     BOOL _isForPreview;
     BOOL __isHandlingUserScroll;
     BOOL __isScrubbingAwayFromContentEdge;
@@ -41,6 +45,7 @@ __attribute__((visibility("hidden")))
     BOOL __isHandlingScrollViewWillEndDragging;
     PUBrowsingSession *_browsingSession;
     long long _type;
+    id<PUScrubberViewDelegate> _delegate;
     PUScrubberTilingLayout *__scrubberLayout;
     PUTilingView *__tilingView;
     UITapGestureRecognizer *__tapGestureRecognizer;
@@ -71,6 +76,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setVideoScrubberController:) PUVideoScrubberController *_videoScrubberController; // @synthesize _videoScrubberController=__videoScrubberController;
 @property (strong, nonatomic) PUBrowsingSession *browsingSession; // @synthesize browsingSession=_browsingSession;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PUScrubberViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isForPreview; // @synthesize isForPreview=_isForPreview;
@@ -111,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (void)endPreviewing;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handleTouchGesture:(id)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (float)layout:(id)arg1 aspectRatioForItemAtIndexPath:(id)arg2;
 - (void)layoutSubviews;

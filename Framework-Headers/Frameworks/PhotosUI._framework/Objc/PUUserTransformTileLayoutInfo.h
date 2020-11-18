@@ -22,8 +22,8 @@
 - (void).cxx_destruct;
 - (id)clone;
 - (id)description;
-- (id)initWithIndexPath:(id)arg1 tileKind:(id)arg2 dataSourceIdentifier:(id)arg3 center:(struct CGPoint)arg4 size:(struct CGSize)arg5 alpha:(double)arg6 transform:(struct CGAffineTransform)arg7 zPosition:(double)arg8 coordinateSystem:(id)arg9;
-- (id)initWithIndexPath:(id)arg1 tileKind:(id)arg2 dataSourceIdentifier:(id)arg3 center:(struct CGPoint)arg4 size:(struct CGSize)arg5 alpha:(double)arg6 transform:(struct CGAffineTransform)arg7 zPosition:(double)arg8 coordinateSystem:(id)arg9 untransformedContentFrame:(struct CGRect)arg10 displayTileTransform:(id)arg11 passthroughRect:(struct CGRect)arg12;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 coordinateSystem:(id)arg7;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 coordinateSystem:(id)arg7 untransformedContentFrame:(struct CGRect)arg8 displayTileTransform:(id)arg9 passthroughRect:(struct CGRect)arg10;
 - (BOOL)isGeometryEqualToLayoutInfo:(id)arg1;
 
 @end

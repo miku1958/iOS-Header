@@ -19,6 +19,7 @@
     UIPDFPageImageCache *_pageImageCache;
     unsigned long long _imageCacheCount;
     unsigned long long _imageCacheLookAhead;
+    double _imageCacheResolution;
     int _lock;
     int _imageCacheLock;
     UIPDFPageImageCache *_thumbnailCache;
@@ -40,12 +41,13 @@
 - (id)copyPageAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithCGPDFDocument:(struct CGPDFDocument *)arg1;
+- (id)initWithCGPDFDocumentLimitedMemory:(struct CGPDFDocument *)arg1;
 - (id)initWithURL:(id)arg1;
 - (double)maxHeight;
 - (double)maxWidth;
 - (id)pageAtIndex:(unsigned long long)arg1;
 - (void)purgePagesBefore:(unsigned long long)arg1;
-- (void)setImageCacheCount:(unsigned long long)arg1 lookAhead:(unsigned long long)arg2;
+- (void)setImageCacheCount:(unsigned long long)arg1 lookAhead:(unsigned long long)arg2 withResolution:(double)arg3;
 - (double)sumHeight;
 - (double)sumWidth;
 

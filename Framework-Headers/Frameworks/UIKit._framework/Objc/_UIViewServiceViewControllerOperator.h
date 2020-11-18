@@ -172,7 +172,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)systemLayoutFittingSizeDidChangeForChildViewController:(id)arg1;
 - (void)viewDidLoad;
-- (void)viewWillMoveToWindow:(id)arg1;
 
 @end
 

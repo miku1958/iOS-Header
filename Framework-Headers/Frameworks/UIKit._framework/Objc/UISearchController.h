@@ -28,7 +28,7 @@
         unsigned int searchBarWasTableHeaderView:1;
         unsigned int searchBarWasFirstResponder:1;
     } _controllerFlags;
-    BOOL _dimsBackgroundDuringPresentation;
+    BOOL _obscuresBackgroundDuringPresentation;
     BOOL _hidesNavigationBarDuringPresentation;
     BOOL __showResultsForEmptySearch;
     UIView *_resultsControllerViewContainer;
@@ -50,9 +50,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UISearchControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL dimsBackgroundDuringPresentation; // @synthesize dimsBackgroundDuringPresentation=_dimsBackgroundDuringPresentation;
+@property (nonatomic) BOOL dimsBackgroundDuringPresentation;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesNavigationBarDuringPresentation; // @synthesize hidesNavigationBarDuringPresentation=_hidesNavigationBarDuringPresentation;
+@property (nonatomic) BOOL obscuresBackgroundDuringPresentation; // @synthesize obscuresBackgroundDuringPresentation=_obscuresBackgroundDuringPresentation;
 @property (readonly, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
 @property (readonly, nonatomic) UIViewController *searchResultsController; // @synthesize searchResultsController=_searchResultsController;
 @property (weak, nonatomic) id<UISearchResultsUpdating> searchResultsUpdater; // @synthesize searchResultsUpdater=_searchResultsUpdater;
@@ -98,6 +99,7 @@
 - (void)_sizeSearchViewToPresentingViewController:(id)arg1;
 - (void)_uninstallBackGestureRecognizer;
 - (void)_updateBackdropMaskViewsInScrollView:(id)arg1;
+- (void)_updateBarPresentationStyleForPresentingViewController:(id)arg1;
 - (void)_updateSearchBarMaskIfNecessary;
 - (void)_updateSearchResultsContentScrollViewWithDelta:(struct CGSize)arg1;
 - (void)_updateSearchResultsControllerWithDelta:(struct CGSize)arg1;
@@ -111,8 +113,8 @@
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)dealloc;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (void)focusedViewDidChange;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSearchResultsController:(id)arg1;
 - (void)loadView;

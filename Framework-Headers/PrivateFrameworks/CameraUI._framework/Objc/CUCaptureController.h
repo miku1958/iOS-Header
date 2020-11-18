@@ -54,6 +54,7 @@
     CAMKeyValueCoalescer *__exposureCoalescer;
     NSCountedSet *__numberOfInflightRequestsByType;
     long long __maximumNumberOfStillImageRequests;
+    NSMutableSet *__identifiersForShowingLivePhotoIndicatorForStillImageRequests;
     NSMutableSet *__identifiersForRecordingVideoForStillImageRequests;
     CAMLocationController *__locationController;
     CAMMotionController *__motionController;
@@ -72,6 +73,7 @@
 @property (readonly, nonatomic) CAMKeyValueCoalescer *_exposureCoalescer; // @synthesize _exposureCoalescer=__exposureCoalescer;
 @property (readonly, nonatomic) CAMKeyValueCoalescer *_focusCoalescer; // @synthesize _focusCoalescer=__focusCoalescer;
 @property (readonly, nonatomic) NSMutableSet *_identifiersForRecordingVideoForStillImageRequests; // @synthesize _identifiersForRecordingVideoForStillImageRequests=__identifiersForRecordingVideoForStillImageRequests;
+@property (readonly, nonatomic) NSMutableSet *_identifiersForShowingLivePhotoIndicatorForStillImageRequests; // @synthesize _identifiersForShowingLivePhotoIndicatorForStillImageRequests=__identifiersForShowingLivePhotoIndicatorForStillImageRequests;
 @property (nonatomic, getter=_isVideoCaptureAvailable, setter=_setVideoCaptureAvailable:) BOOL _isVideoCaptureAvailable; // @synthesize _isVideoCaptureAvailable=__isVideoCaptureAvailable;
 @property (readonly, nonatomic) CAMLocationController *_locationController; // @synthesize _locationController=__locationController;
 @property (nonatomic, setter=_setMaximumNumberOfStillImageRequests:) long long _maximumNumberOfStillImageRequests; // @synthesize _maximumNumberOfStillImageRequests=__maximumNumberOfStillImageRequests;
@@ -115,6 +117,7 @@
 @property (weak, nonatomic) id<CAMCaptureRecoveryDelegate> recoveryDelegate; // @synthesize recoveryDelegate=_recoveryDelegate;
 @property (weak, nonatomic) id<CAMCaptureRunningDelegate> runningDelegate; // @synthesize runningDelegate=_runningDelegate;
 @property (readonly, nonatomic) BOOL shouldAllowUserToChangeFocusAndExposure;
+@property (readonly, nonatomic) BOOL shouldShowLivePhotoIndicator;
 @property (weak, nonatomic) id<CAMStillImageCapturingVideoDelegate> stillImageCapturingVideoDelegate; // @synthesize stillImageCapturingVideoDelegate=_stillImageCapturingVideoDelegate;
 @property (weak, nonatomic) id<CAMSuggestionDelegate> suggestionDelegate; // @synthesize suggestionDelegate=_suggestionDelegate;
 @property (readonly) Class superclass;
@@ -171,6 +174,8 @@
 - (void)_setupFocusMonitoring;
 - (void)_setupSuggestionMonitoring;
 - (void)_setupZoomMonitoring;
+- (void)_startShowingLivePhotoIndicatorForStillImageRequest:(id)arg1;
+- (void)_stopShowingLivePhotoIndicatorForStillImageRequest:(id)arg1;
 - (void)_subjectAreaDidChange:(id)arg1;
 - (id)_suggestionKeyPaths;
 - (void)_suggestionResultChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
@@ -251,6 +256,7 @@
 - (void)stillImageRequestDidCompleteCapture:(id)arg1 error:(id)arg2;
 - (void)stillImageRequestDidStartCapturing:(id)arg1;
 - (void)stillImageRequestDidStopCapturing:(id)arg1;
+- (void)stillImageRequestDidStopCapturingVideo:(id)arg1;
 - (void)stillImageRequestWillStartCapturingVideo:(id)arg1;
 - (void)stopCaptureSession;
 - (void)stopCapturingBurst;

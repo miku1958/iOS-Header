@@ -55,6 +55,7 @@
 - (void)_backlightLevelChangedNotification:(id)arg1;
 - (void)_beginScrubberCommitTimer;
 - (void)_buyButtonActionForSender:(id)arg1 command:(unsigned int)arg2;
+- (BOOL)_canScrub;
 - (void)_commitCurrentScrubberValue;
 - (id)_imageForTransportButtonWithControlType:(long long)arg1;
 - (void)_invalidateSkipInformationRevealTimer;

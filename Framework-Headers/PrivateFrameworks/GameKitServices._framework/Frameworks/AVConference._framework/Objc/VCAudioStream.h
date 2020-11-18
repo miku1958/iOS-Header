@@ -64,7 +64,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (BOOL)isSameSRTPKey:(id)arg1 newKey:(id)arg2;
-- (unsigned int)AMRModeToBitrate;
+- (unsigned int)AMRModeToBitrate:(long long)arg1;
 - (int)SRTPCipherSuiteForLTECipherSuite:(long long)arg1;
 - (id)addAudioPayload:(int)arg1;
 - (BOOL)allocateBundleBuffer;
@@ -78,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (int)encodeAudio:(void *)arg1 numInputBytes:(int)arg2 outputBytes:(void *)arg3 numOutputBytes:(int)arg4 withPayload:(int *)arg5;
 - (int)getCryptoSet:(struct tagSRTPExchangeInfo *)arg1 withMasterKey:(id)arg2;
 - (int)getSRTPMasterKeyLength:(long long)arg1;
+- (void)handleAMRCodecModeChange:(unsigned char)arg1;
 - (id)init;
 - (void)initializeWRM;
 - (BOOL)isFrequencyMeteringEnabled:(int)arg1;
@@ -87,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)onPlaySound:(char *)arg1 numBytes:(int)arg2 numSamples:(int)arg3 timeStamp:(unsigned int)arg4 averagePower:(float)arg5;
 - (unsigned int)preferredAudioBitrate;
 - (void)pullDecodedMeshMode:(char *)arg1 timestamp:(unsigned int)arg2 numBytes:(int)arg3 numSamples:(int)arg4;
+- (void)registerCodecChangeNotifications;
 - (void)reportRTCPPackets:(struct tagRTCPPACKET *)arg1 withCount:(int)arg2;
 - (void)reportWRMMetrics:(const CDStruct_449de213 *)arg1;
 - (void)sendDTMFEvent:(id)arg1;
@@ -124,6 +126,7 @@ __attribute__((visibility("hidden")))
 - (id)supportedAudioPayloads;
 - (void)uninitializeWRM;
 - (void)unlock;
+- (void)unregisterCodecChangeNotifications;
 - (void)updateSoundMeter:(int)arg1 samples:(char *)arg2 numSamples:(int)arg3 averagePower:(float)arg4 voiceActivity:(unsigned int)arg5;
 
 @end

@@ -24,8 +24,11 @@
 + (id)cardViewControllerForResult:(id)arg1 style:(unsigned long long)arg2;
 + (double)separatorHeight;
 - (void).cxx_destruct;
+- (id)fallbackURLForIndexPath:(id)arg1;
 - (id)initWithResult:(id)arg1 style:(unsigned long long)arg2;
 - (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 inline:(BOOL)arg3;
+- (void)openPunchout:(id)arg1 fallbackURL:(id)arg2;
+- (id)punchoutsForIndexPath:(id)arg1;
 - (void)setupTableViewInsetsForTraitCollection:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

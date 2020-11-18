@@ -8,5 +8,6 @@
 
 @interface MPRemotePlaybackQueue (MusicAdditions)
 - (id)createPlaybackContext;
+- (void)createPlaybackContextWithCompletion:(CDUnknownBlockType)arg1;
 @end
 

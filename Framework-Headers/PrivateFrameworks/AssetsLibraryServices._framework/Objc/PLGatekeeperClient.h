@@ -119,7 +119,6 @@
 - (void)requestVideoURLForAsset:(id)arg1 format:(int)arg2 networkAccessAllowed:(BOOL)arg3 streamingAllowed:(BOOL)arg4 trackCPLDownload:(BOOL)arg5 handler:(CDUnknownBlockType)arg6;
 - (void)resetDupesAnalysis;
 - (void)revertToOriginalForAsset:(id)arg1;
-- (void)runPeriodicMaintenanceTasks;
 - (id)sandboxExtensionForAssetResourcePath:(id)arg1;
 - (void)saveAssetWithJobDictionary:(id)arg1 handler:(CDUnknownBlockType)arg2 imageSurface:(void *)arg3 previewImageSurface:(void *)arg4;
 - (void)sendDaemonJob:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;

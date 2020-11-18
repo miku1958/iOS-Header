@@ -24,6 +24,7 @@
 - (void)dealloc;
 - (id)deviceInfoScalable:(BOOL)arg1;
 - (id)init;
+- (double)maxSizeOfPreviewDeviceInfoImage;
 - (void)screensChangedNotification:(id)arg1;
 
 @end

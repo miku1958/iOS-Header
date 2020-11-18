@@ -12,12 +12,14 @@
 {
     NSString *_deviceName;
     NSNumber *_deviceID;
+    NSString *_UID;
     BOOL _inputAvailable;
     BOOL _outputAvailable;
     BOOL _preferredDevice;
     BOOL _isLineIn;
 }
 
+@property (readonly, nonatomic) NSString *UID; // @synthesize UID=_UID;
 @property (readonly, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
 @property (readonly, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property (readonly, nonatomic) BOOL inputAvailable; // @synthesize inputAvailable=_inputAvailable;
@@ -26,6 +28,7 @@
 
 - (void)createName;
 - (void)createNameForScope:(unsigned int)arg1;
+- (void)createUID;
 - (void)dealloc;
 - (unsigned long long)hash;
 - (id)initWithDeviceID:(id)arg1;

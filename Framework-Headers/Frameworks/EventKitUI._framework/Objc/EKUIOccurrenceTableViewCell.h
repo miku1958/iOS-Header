@@ -167,7 +167,6 @@
 - (struct UIEdgeInsets)layoutMargins;
 - (void)layoutSubviews;
 - (BOOL)needsReply;
-- (void)prepareForReuse;
 - (id)primaryTextLabelFont;
 - (id)reuseIdentifier;
 - (void)setFrame:(struct CGRect)arg1;

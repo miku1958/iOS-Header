@@ -29,6 +29,7 @@
     BOOL _allowsEditing;
     BOOL _hairlineVisible;
     BOOL _shouldDelayTransitionProgress;
+    BOOL _trailingSeparatorInsetFollowsLayoutInsets;
     MusicEntityValueContext *_containerEntityValueContext;
     MusicClientContext *_clientContext;
     id<MusicEntityProviding> _containerEntityProvider;
@@ -58,10 +59,11 @@
 @property (readonly, nonatomic) UIButton *shareButton;
 @property (nonatomic) BOOL shouldDelayTransitionProgress; // @synthesize shouldDelayTransitionProgress=_shouldDelayTransitionProgress;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL trailingSeparatorInsetFollowsLayoutInsets; // @synthesize trailingSeparatorInsetFollowsLayoutInsets=_trailingSeparatorInsetFollowsLayoutInsets;
 
 - (void).cxx_destruct;
 - (void)_applyLockupArtworkProperty;
-- (void)_applyProductHeaderLayoutMargins;
+- (void)_applyProductHeaderLayoutInsets;
 - (void)_applyTransitionProgress;
 - (BOOL)_calculateWantsRefreshButton;
 - (void)_configureProductHeaderLockupContentDescriptor:(id)arg1 withTintInformation:(id)arg2;
@@ -78,6 +80,7 @@
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
 - (void)_updateContentTaste;
 - (void)_updateHairline;
+- (void)_updateHairlineLayoutInsets;
 - (void)_updateNavigationTitle;
 - (void)_updatePlaybackStatusForLockupView;
 - (void)_updatePreferredContentSize;
@@ -85,6 +88,7 @@
 - (void)dealloc;
 - (id)initWithContainerEntityProvider:(id)arg1 presentationSource:(long long)arg2;
 - (void)makeEditableTitleBecomeFirstResponder;
+- (void)music_viewInheritedLayoutInsetsDidChange;
 - (void)playbackStatusControllerPlaybackStatusDidChange:(id)arg1;
 - (void)productHeaderLockupView:(id)arg1 didSelectCameraButton:(id)arg2;
 - (void)productHeaderLockupView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;

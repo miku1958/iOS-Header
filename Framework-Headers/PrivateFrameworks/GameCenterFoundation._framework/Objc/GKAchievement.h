@@ -15,7 +15,6 @@
 @interface GKAchievement : NSObject <NSCopying, NSCoding, NSSecureCoding>
 {
     BOOL _showsCompletionBanner;
-    BOOL _hidden;
     GKAchievementInternal *_internal;
     GKGame *_game;
     GKPlayer *_player;
@@ -24,7 +23,7 @@
 @property (readonly, nonatomic, getter=isCompleted) BOOL completed;
 @property (nonatomic) GKGame *game; // @synthesize game=_game;
 @property (readonly, copy, nonatomic) NSString *groupIdentifier; // @dynamic groupIdentifier;
-@property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
+@property (nonatomic, getter=isHidden) BOOL hidden; // @dynamic hidden;
 @property (copy, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (strong) GKAchievementInternal *internal; // @synthesize internal=_internal;
 @property (copy, nonatomic) NSDate *lastReportedDate; // @dynamic lastReportedDate;

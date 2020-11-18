@@ -23,6 +23,7 @@
     BOOL _doubleTapZoomAreaExcludesBars;
     BOOL _doubleTapZoomAreaExcludesBackground;
     BOOL _playVideoInScrubber;
+    BOOL _lockScrollDuringLivePhotoPlayback;
     BOOL _useDebuggingColors;
     BOOL _useDebuggingTitle;
     BOOL _useDebuggingBadge;
@@ -51,6 +52,7 @@
     double _maximumInitialZoomToFillScale;
     double _doubleTapZoomFactor;
     double _videoPauseThreshold;
+    double _livePhotoInteractionThreshold;
     unsigned long long _viewModelCacheCountLimit;
     double _visibilityDurationForEnteringQuickPagingRegime;
     double _visibilityDurationForExitingQuickPagingRegime;
@@ -90,6 +92,8 @@
 @property (nonatomic) BOOL doubleTapZoomAreaExcludesBars; // @synthesize doubleTapZoomAreaExcludesBars=_doubleTapZoomAreaExcludesBars;
 @property (nonatomic) double doubleTapZoomFactor; // @synthesize doubleTapZoomFactor=_doubleTapZoomFactor;
 @property (nonatomic) double interpageSpacing; // @synthesize interpageSpacing=_interpageSpacing;
+@property (nonatomic) double livePhotoInteractionThreshold; // @synthesize livePhotoInteractionThreshold=_livePhotoInteractionThreshold;
+@property (nonatomic) BOOL lockScrollDuringLivePhotoPlayback; // @synthesize lockScrollDuringLivePhotoPlayback=_lockScrollDuringLivePhotoPlayback;
 @property (nonatomic) double maximumInitialZoomToFillScale; // @synthesize maximumInitialZoomToFillScale=_maximumInitialZoomToFillScale;
 @property (nonatomic) long long minNavigationDistanceForFastRegime; // @synthesize minNavigationDistanceForFastRegime=_minNavigationDistanceForFastRegime;
 @property (nonatomic) long long minNavigationDistanceForQuickPagingRegime; // @synthesize minNavigationDistanceForQuickPagingRegime=_minNavigationDistanceForQuickPagingRegime;

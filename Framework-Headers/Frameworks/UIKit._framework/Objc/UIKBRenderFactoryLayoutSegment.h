@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
 @interface UIKBRenderFactoryLayoutSegment : NSObject
 {
     int _rectCount;
-    struct CGRect _rects[6];
-    int _triangleCorners[6];
+    struct CGRect _rects[10];
+    int _triangleCorners[10];
     int _edgeCount;
-    unsigned long long _edges[6];
-    NSString *_cachedKeyNames[6];
+    unsigned long long _edges[10];
+    NSString *_cachedKeyNames[10];
     BOOL _requireAllMatches;
     int _states;
     UIKBRenderTraits *_traits;

@@ -19,7 +19,6 @@
 - (void)lockDatabaseForReason:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)performDatabaseOperation:(unsigned long long)arg1 withAttributes:(NSDictionary *)arg2 options:(NSDictionary *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)performImport:(ML3DatabaseImport *)arg1 fromSource:(unsigned long long)arg2 withUUID:(NSUUID *)arg3 completionHandler:(void (^)(BOOL, NSError *, NSData *))arg4;
-- (void)pollCurrentImportStatus:(void (^)(float, NSError *))arg1;
 - (void)recreateDatabaseAtPath:(NSString *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)setDeviceSharedLibraryPath:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)setOptions:(NSDictionary *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;

@@ -13,23 +13,25 @@
 
 @interface TRDeviceSetupBrowser : NSObject <TRTransferBrowserDelegate>
 {
+    id<TRDeviceSetupBrowserDelegate> _delegate;
     TRTransferBrowser *_transferBrowser;
     TRDeviceSetupPeripheral *_peripheral;
-    id<TRDeviceSetupBrowserDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<TRDeviceSetupBrowserDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) TRDeviceSetupPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property (readonly, nonatomic) long long state;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) TRTransferBrowser *transferBrowser; // @synthesize transferBrowser=_transferBrowser;
 
 - (void).cxx_destruct;
-- (id)browser:(id)arg1 didReceiveData:(id)arg2;
+- (void)browser:(id)arg1 didReceiveData:(id)arg2 replyHandler:(CDUnknownBlockType)arg3;
+- (void)browser:(id)arg1 didStartTransferWithSendDataHandler:(CDUnknownBlockType)arg2;
 - (void)browserDidChangeState:(id)arg1;
 - (void)browserDidDisconnect:(id)arg1;
-- (id)browserDidStartTransfer:(id)arg1;
 - (void)defer;
 - (id)init;
 - (void)start;

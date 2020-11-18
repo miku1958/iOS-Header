@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_edgeToEdgeConstraints;
     NSMapTable *_relatedDimensionConstraints;
     NSMapTable *_hidingDimensionConstraints;
+    NSMapTable *_multilineTextWidthDisambiguationConstraints;
     double _proportionalFillDenominator;
     BOOL _itemOrderingChanged;
     BOOL _itemFittingSizeChanged;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_cleanUpWithoutResettingKeepAliveWorkaround;
 - (void)_clearAllConstraintsArrays;
 - (BOOL)_configurationRequiresCanvasConnectionFittingConstraint;
+- (double)_constantForMultilineTextWidthDisambiguationConstraintWithNumberOfVisibleItems:(unsigned long long)arg1;
 - (void)_didEvaluateMultilineHeightForView:(id)arg1;
 - (id)_dimensionRefItemFromConstraint:(id)arg1;
 - (id)_edgeToEdgeConstraintForGapBetweenPrecedingItem:(id)arg1 andFollowingItem:(id)arg2 isFirstGap:(BOOL)arg3 isLastGap:(BOOL)arg4;
@@ -74,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeIndividualGuidesAndConstraintsAsNecessary;
 - (void)_setUpDimensionConstraintForItem:(id)arg1 referenceItem:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)_setUpHidingDimensionConstraintForItem:(id)arg1;
+- (void)_setUpMultilineTextWidthDisambiguationConstraintForItem:(id)arg1;
 - (id)_setUpSpacingOrCenteringGuideForGapIndex:(unsigned long long)arg1;
 - (void)_systemLayoutFittingSizeDidChangeForItem:(id)arg1;
 - (id)_tallestItem;

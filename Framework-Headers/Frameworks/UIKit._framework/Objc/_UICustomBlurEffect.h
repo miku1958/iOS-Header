@@ -12,13 +12,11 @@ __attribute__((visibility("hidden")))
 @interface _UICustomBlurEffect : UIBlurEffect
 {
     _UIBackdropViewSettings *_blurEffect;
-    double _colorBurnTintLevel;
-    double _saturationDeltaFactor;
 }
 
 @property (nonatomic) double blurRadius;
 @property (nonatomic) double colorBurnTintAlpha;
-@property (nonatomic) double colorBurnTintLevel; // @synthesize colorBurnTintLevel=_colorBurnTintLevel;
+@property (nonatomic) double colorBurnTintLevel;
 @property (strong, nonatomic) UIColor *colorTint;
 @property (nonatomic) double colorTintAlpha;
 @property (nonatomic) BOOL darkenWithSourceOver;
@@ -28,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double grayscaleTintAlpha;
 @property (nonatomic) double grayscaleTintLevel;
 @property (nonatomic) BOOL lightenGrayscaleWithSourceOver;
-@property (nonatomic) double saturationDeltaFactor; // @synthesize saturationDeltaFactor=_saturationDeltaFactor;
+@property (nonatomic) double saturationDeltaFactor;
 @property (nonatomic) double scale;
 @property (nonatomic) double zoom;
 

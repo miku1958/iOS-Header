@@ -14,6 +14,7 @@
     UIColor *_borderColor;
     struct UIEdgeInsets _borderRadii;
     struct UIEdgeInsets _borderWidths;
+    struct UIEdgeInsets _borderMargins;
     IKColor *_iKBackgroundColor;
     struct UIEdgeInsets _imagePadding;
     struct CGSize _imageSize;
@@ -26,6 +27,7 @@
 
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
+@property (nonatomic) struct UIEdgeInsets borderMargins; // @synthesize borderMargins=_borderMargins;
 @property (nonatomic) struct UIEdgeInsets borderWidths; // @synthesize borderWidths=_borderWidths;
 @property (nonatomic) long long imageContentMode; // @synthesize imageContentMode=_imageContentMode;
 @property (nonatomic) struct UIEdgeInsets imagePadding; // @synthesize imagePadding=_imagePadding;

@@ -6,13 +6,13 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
-@class NSLocale;
+@class NSString;
 
 @interface SANPVideoGetAudioTracksAndSubtitleOptions : SABaseClientBoundCommand
 {
 }
 
-@property (copy, nonatomic) NSLocale *desiredLanguage;
+@property (copy, nonatomic) NSString *desiredLanguage;
 
 + (id)getAudioTracksAndSubtitleOptions;
 + (id)getAudioTracksAndSubtitleOptionsWithDictionary:(id)arg1 context:(id)arg2;

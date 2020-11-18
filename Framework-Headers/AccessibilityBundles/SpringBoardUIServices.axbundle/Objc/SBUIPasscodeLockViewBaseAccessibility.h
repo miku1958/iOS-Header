@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityHandwritingActivateKeyboardReturnKey;
 - (BOOL)_accessibilityHandwritingAttributeAcceptsRawInput;
 - (int)_accessibilityHandwritingAttributeAllowedCharacterSets;
 - (BOOL)_accessibilityHandwritingAttributeCanDeleteCharacter;

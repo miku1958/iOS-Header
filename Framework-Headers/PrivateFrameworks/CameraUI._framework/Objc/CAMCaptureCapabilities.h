@@ -50,6 +50,7 @@
     BOOL _lockButtonAppropriateForShutter;
     BOOL _shutterSoundRequired;
     BOOL _lowEndHardware;
+    BOOL __front720p30Supported;
     long long _maximumRecordedFileSize;
     long long _back720pMaxFPS;
     double __backVideoModeMaximumVideoZoomFactor;
@@ -60,6 +61,7 @@
 
 @property (readonly, nonatomic) double _backCaptureInterval; // @synthesize _backCaptureInterval=__backCaptureInterval;
 @property (readonly, nonatomic) double _backVideoModeMaximumVideoZoomFactor; // @synthesize _backVideoModeMaximumVideoZoomFactor=__backVideoModeMaximumVideoZoomFactor;
+@property (readonly, nonatomic, getter=_isFront720p30Supported) BOOL _front720p30Supported; // @synthesize _front720p30Supported=__front720p30Supported;
 @property (readonly, nonatomic) double _frontCaptureInterval; // @synthesize _frontCaptureInterval=__frontCaptureInterval;
 @property (readonly, nonatomic) double _frontVideoModeMaximumVideoZoomFactor; // @synthesize _frontVideoModeMaximumVideoZoomFactor=__frontVideoModeMaximumVideoZoomFactor;
 @property (readonly, nonatomic, getter=isBack1080p120Supported) BOOL back1080p120Supported; // @synthesize back1080p120Supported=_back1080p120Supported;

@@ -10,6 +10,7 @@
 
 @interface CRVehicleAccessory : NSObject
 {
+    BOOL _supportsUSBCarPlay;
     BOOL _supportsWirelessCarPlay;
     BOOL _supportsWiredBluetoothPairing;
     NSString *_vehicleName;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) NSString *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
 @property (strong, nonatomic) NSData *certificateSerialNumber; // @synthesize certificateSerialNumber=_certificateSerialNumber;
 @property (strong, nonatomic) NSNumber *connectionID; // @synthesize connectionID=_connectionID;
+@property (nonatomic) BOOL supportsUSBCarPlay; // @synthesize supportsUSBCarPlay=_supportsUSBCarPlay;
 @property (nonatomic) BOOL supportsWiredBluetoothPairing; // @synthesize supportsWiredBluetoothPairing=_supportsWiredBluetoothPairing;
 @property (nonatomic) BOOL supportsWirelessCarPlay; // @synthesize supportsWirelessCarPlay=_supportsWirelessCarPlay;
 @property (strong, nonatomic) NSString *vehicleName; // @synthesize vehicleName=_vehicleName;

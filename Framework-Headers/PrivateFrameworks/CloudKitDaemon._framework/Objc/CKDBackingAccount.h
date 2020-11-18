@@ -12,12 +12,12 @@
 {
 }
 
-@property (readonly, nonatomic) BOOL allowsCellularAccess;
 @property (readonly, nonatomic) NSString *cloudKitAuthToken;
 @property (readonly, nonatomic) BOOL cloudKitIsEnabled;
 @property (readonly, nonatomic) BOOL cloudPhotosIsEnabled;
 @property (readonly, nonatomic) NSString *dsid;
 @property (readonly, nonatomic) NSString *iCloudAuthToken;
+@property (readonly, nonatomic) BOOL iCloudDriveAllowsCellularAccess;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL isFakeAccount;
 @property (readonly, nonatomic) NSString *primaryEmail;

@@ -43,6 +43,7 @@
     BOOL _isInitialized;
     BOOL _hasCustomActiveFrame;
     BOOL _shadersAreCompiled;
+    BOOL _reduceMotionEnabled;
     BOOL _showAura;
     int _mode;
     int _state;
@@ -67,6 +68,7 @@
 - (BOOL)_initGLAndSetupDisplayLink:(BOOL)arg1;
 - (unsigned int)_numVerticesPerCircle;
 - (MISSING_TYPE *)_predeterminedVertexPositionForAuraWithPolarVertex: /* Error: Ran out of types for this method. */;
+- (void)_reduceMotionStatusChanged:(id)arg1;
 - (BOOL)_resizeFromLayer:(id)arg1;
 - (void)_setValuesForFidelity:(int)arg1;
 - (void)_setupDisplayLink;

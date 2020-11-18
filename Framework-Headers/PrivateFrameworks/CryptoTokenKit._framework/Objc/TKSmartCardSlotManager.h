@@ -9,12 +9,14 @@
 #import <CryptoTokenKit/TKProtocolSlotClientNotification-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 @interface TKSmartCardSlotManager : NSObject <TKProtocolSlotClientNotification>
 {
     NSXPCConnection *_connection;
     NSMutableDictionary *_endpoints;
     NSArray *_slotNames;
+    NSObject<OS_dispatch_queue> *_slotNamesQueue;
 }
 
 @property (readonly) NSArray *slotNames;

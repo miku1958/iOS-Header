@@ -31,5 +31,8 @@
 - (void)paymentWebService:(PKPaymentWebService *)arg1 validateAddPreconditionsWithCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)paymentWebServiceDidUpdateConfiguration:(PKPaymentWebService *)arg1;
 - (BOOL)supportsAutomaticPassPresentation;
+
+@optional
+- (void)paymentWebService:(PKPaymentWebService *)arg1 addPaymentPass:(PKPaymentPass *)arg2 withCompletionHandlerV2:(void (^)(PKPaymentPass *))arg3;
 @end
 

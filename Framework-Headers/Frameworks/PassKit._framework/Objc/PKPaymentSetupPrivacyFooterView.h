@@ -13,29 +13,29 @@
 
 @interface PKPaymentSetupPrivacyFooterView : UIView <UITextViewDelegate>
 {
+    long long _context;
+    UITextView *_messageView;
     id<PKPaymentSetupPrivacyFooterViewDelegate> _delegate;
     UIColor *_messageColor;
     UIColor *_linkColor;
-    UITextView *_message;
-    long long _context;
 }
 
-@property (nonatomic) long long context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PKPaymentSetupPrivacyFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) UIColor *linkColor; // @synthesize linkColor=_linkColor;
-@property (strong, nonatomic) UITextView *message; // @synthesize message=_message;
 @property (copy, nonatomic) UIColor *messageColor; // @synthesize messageColor=_messageColor;
 @property (readonly) Class superclass;
 
 - (id)_defaultLinkColor;
 - (id)_defaultMessageColor;
 - (id)_linkTextAttributes;
-- (void)_reloadMessage;
+- (void)_loadMessageView;
+- (void)_loadMessageViewIfNecessary;
 - (id)_textAttributes;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2;
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(struct _PKAppearanceSpecifier *)arg1;

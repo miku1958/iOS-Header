@@ -18,6 +18,7 @@
     NSString *category;
     NSString *mode;
     NSDictionary *activationContext;
+    BOOL usingLongFormAudio;
     id<AVAudioSessionDelegateMediaPlayerOnly> delegate;
 }
 

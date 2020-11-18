@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CDPContext;
+@class CDPContext, CDPDaemonConnection, CDPStateUIProviderProxy;
 @protocol CDPStateUIProvider;
 
 @interface CDPStateController : NSObject
 {
+    CDPDaemonConnection *_daemonConn;
+    CDPStateUIProviderProxy *_uiProviderProxy;
     CDPContext *_context;
     id<CDPStateUIProvider> _uiProvider;
 }
@@ -19,10 +21,13 @@
 @property (strong, nonatomic) id<CDPStateUIProvider> uiProvider; // @synthesize uiProvider=_uiProvider;
 
 - (void).cxx_destruct;
+- (void)_handleRejoinURLActionWithInfo:(id)arg1;
+- (void)finishOfflineLocalSecretChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)handleURLActionWithInfo:(id)arg1;
 - (id)initWithContext:(id)arg1;
 - (void)localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (BOOL)shouldAllowCDPEnrollment;
+- (void)repairCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

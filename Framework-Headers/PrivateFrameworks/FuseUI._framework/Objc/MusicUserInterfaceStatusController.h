@@ -36,6 +36,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDisplayingLocalLibrary) BOOL displayingLocalLibrary; // @synthesize displayingLocalLibrary=_displayingLocalLibrary;
+@property (readonly, nonatomic) BOOL hasLoadedStoreBag;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MusicSimpleRadioStationInfo *prominentRadioStationInfo;
 @property (readonly, nonatomic) RadioAvailabilityController *radioAvailabilityController; // @synthesize radioAvailabilityController=_radioAvailabilityController;
@@ -66,7 +67,9 @@
 - (id)init;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)profileConnectionDidReceiveRestrictionChangedNotification:(id)arg1 userInfo:(id)arg2;
+- (BOOL)shouldShowWelcomeScreen;
 - (id)supportedTabIdentifiersForTraitCollection:(id)arg1;
+- (void)updateWelcomeScreenAcknowledgmentDefaults:(BOOL)arg1;
 
 @end
 

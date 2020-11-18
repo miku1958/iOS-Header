@@ -65,6 +65,7 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
 
+- (id)_dataProvider;
 - (void)cancel;
 - (BOOL)conformsToType:(id)arg1;
 - (BOOL)contentTypeConformsToEvent;

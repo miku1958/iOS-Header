@@ -11,15 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface BRQueryStitch : NSObject
 {
-    NSArray *_queries;
+    NSArray *_contexts;
     NSNumber *_objid;
     BOOL _kind;
     NSURL *_fromURL;
     NSURL *_url;
 }
 
+@property (strong, nonatomic) NSArray *contexts; // @synthesize contexts=_contexts;
 @property (strong, nonatomic) NSURL *fromURL; // @synthesize fromURL=_fromURL;
-@property (strong, nonatomic) NSArray *queries; // @synthesize queries=_queries;
 
 - (void)_creationDone;
 - (void)_deletionDone;
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)done;
 - (id)initWithURL:(id)arg1 objid:(id)arg2 kind:(BOOL)arg3;
+- (void)setQueries:(id)arg1;
 
 @end
 

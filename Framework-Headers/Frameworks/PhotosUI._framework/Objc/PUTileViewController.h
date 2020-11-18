@@ -10,10 +10,13 @@
 
 @interface PUTileViewController : PUTileController
 {
+    BOOL _contentViewEnabled;
     BOOL _isReadyForDisplay;
+    BOOL __loadingView;
     BOOL __edgeAntialiasingEnabled;
     NSArray *_gestureRecognizers;
     UIView *_view;
+    UIView *_contentView;
     UIView *__tintView;
     UIView *__visibleRectView;
     CDUnknownBlockType __onReadyToDisplayBlock;
@@ -22,11 +25,14 @@
 }
 
 @property (nonatomic, setter=_setEdgeAntialiasingEnabled:) BOOL _edgeAntialiasingEnabled; // @synthesize _edgeAntialiasingEnabled=__edgeAntialiasingEnabled;
+@property (nonatomic, getter=_isLoadingView, setter=_setLoadingView:) BOOL _loadingView; // @synthesize _loadingView=__loadingView;
 @property (strong, nonatomic, setter=_setMaskView:) UIView *_maskView; // @synthesize _maskView=__maskView;
 @property (copy, nonatomic, setter=_setOnReadyToDisplayBlock:) CDUnknownBlockType _onReadyToDisplayBlock; // @synthesize _onReadyToDisplayBlock=__onReadyToDisplayBlock;
 @property (strong, nonatomic, setter=_setReadinessTimer:) NSTimer *_readinessTimer; // @synthesize _readinessTimer=__readinessTimer;
 @property (strong, nonatomic, setter=_setTintView:) UIView *_tintView; // @synthesize _tintView=__tintView;
 @property (strong, nonatomic, setter=_setVisibleRectView:) UIView *_visibleRectView; // @synthesize _visibleRectView=__visibleRectView;
+@property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (nonatomic, getter=isContentViewEnabled) BOOL contentViewEnabled; // @synthesize contentViewEnabled=_contentViewEnabled;
 @property (strong, nonatomic) NSArray *gestureRecognizers; // @synthesize gestureRecognizers=_gestureRecognizers;
 @property (nonatomic, setter=_setReadyForDisplay:) BOOL isReadyForDisplay; // @synthesize isReadyForDisplay=_isReadyForDisplay;
 @property (readonly, nonatomic) BOOL isViewLoaded;
@@ -35,6 +41,7 @@
 - (void).cxx_destruct;
 - (void)_handleReadinessForced:(BOOL)arg1;
 - (void)_invalidateTintView;
+- (void)_setContentView:(id)arg1;
 - (void)_setGestureRecognizers:(id)arg1;
 - (void)_setView:(id)arg1;
 - (void)_updateTintView;
@@ -45,7 +52,7 @@
 - (void)dealloc;
 - (void)didChangeVisibleRect;
 - (BOOL)isPresentationActive;
-- (void)loadView;
+- (id)loadView;
 - (void)notifyWhenReadyForDisplayWithTimeOut:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)prepareForReuse;
 - (id)presentationLayoutInfo;

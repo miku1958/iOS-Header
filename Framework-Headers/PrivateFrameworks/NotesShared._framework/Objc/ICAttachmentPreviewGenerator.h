@@ -12,6 +12,7 @@
 
 @interface ICAttachmentPreviewGenerator : NSObject <ICProgressIndicatorTrackerDelegate>
 {
+    BOOL _delayPreviewGeneration;
     NSOperationQueue *_asyncGeneratorQueue;
     NSOperationQueue *_costlyGeneratorQueue;
     NSOperationQueue *_generatorQueue;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) NSMutableSet *attachmentsToRetry; // @synthesize attachmentsToRetry=_attachmentsToRetry;
 @property (strong, nonatomic) NSOperationQueue *costlyGeneratorQueue; // @synthesize costlyGeneratorQueue=_costlyGeneratorQueue;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) BOOL delayPreviewGeneration; // @synthesize delayPreviewGeneration=_delayPreviewGeneration;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSOperationQueue *generatorQueue; // @synthesize generatorQueue=_generatorQueue;
 @property (readonly) unsigned long long hash;

@@ -26,6 +26,7 @@
     id<MusicProductDescriptionTableViewCellDelegate> _delegate;
     MusicMediaDetailTintInformation *_detailTintInformation;
     MusicProductDescription *_productDescription;
+    long long _productDescriptionTextStyle;
     NSString *_productDescriptionTitle;
     long long _productDescriptionMaximumLengthForTextInput;
 }
@@ -38,6 +39,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) MusicProductDescription *productDescription; // @synthesize productDescription=_productDescription;
 @property (nonatomic) long long productDescriptionMaximumLengthForTextInput; // @synthesize productDescriptionMaximumLengthForTextInput=_productDescriptionMaximumLengthForTextInput;
+@property (nonatomic) long long productDescriptionTextStyle; // @synthesize productDescriptionTextStyle=_productDescriptionTextStyle;
 @property (copy, nonatomic) NSString *productDescriptionTitle; // @synthesize productDescriptionTitle=_productDescriptionTitle;
 @property (readonly) Class superclass;
 
@@ -51,6 +53,7 @@
 - (void)_moreButtonAction:(id)arg1;
 - (id)_newTextView;
 - (id)_placeholderAttributedText;
+- (void)_updateForPreferredFontChange;
 - (void)_updateMaximumNumberOfLinesWithEditing:(BOOL)arg1;
 - (void)_updateMoreButtonPropertiesWithTextViewSize:(struct CGSize)arg1 positionYDelta:(double)arg2;
 - (void)_updatePlaceholderTextViewVisibility;

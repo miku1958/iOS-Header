@@ -22,6 +22,8 @@
 - (double)baselineInsetForHeaderTitle;
 - (struct UIEdgeInsets)edgeInsetsForHeader;
 - (struct UIEdgeInsets)edgeInsetsForTable:(id)arg1;
+- (double)headerIconBaselineOffset;
+- (double)headerTitleBaselineOffsetHasIcon:(BOOL)arg1;
 - (id)headerTitleFont;
 - (double)nonTableHorizontalMargin;
 - (double)singleLineCellHeightForTable:(id)arg1;

@@ -8,21 +8,37 @@
 
 #import <UIKit/UIAlertControllerBackgroundView-Protocol.h>
 
-@class NSString;
+@class NSMutableDictionary, NSString, _UIFloatingShadowView;
 
 __attribute__((visibility("hidden")))
 @interface _UIAlertControllerTVBackgroundView : UIView <UIAlertControllerBackgroundView>
 {
+    BOOL _isHighlighted;
+    BOOL _isPressed;
+    UIView *_backgroundView;
+    _UIFloatingShadowView *_shadowView;
+    NSMutableDictionary *_alphas;
     BOOL _shouldUseTintColorAsBackgroundColor;
+    BOOL _shouldShowShadow;
 }
 
 @property double cornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL shouldShowShadow; // @synthesize shouldShowShadow=_shouldShowShadow;
 @property (nonatomic) BOOL shouldUseTintColorAsBackgroundColor; // @synthesize shouldUseTintColorAsBackgroundColor=_shouldUseTintColorAsBackgroundColor;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
+- (double)_alphaForHighlighted:(BOOL)arg1 pressed:(BOOL)arg2;
+- (double)alphaForState:(unsigned long long)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
+- (void)setAlpha:(double)arg1 forState:(unsigned long long)arg2;
+- (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setPressed:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)tintColorDidChange;
 
 @end
 

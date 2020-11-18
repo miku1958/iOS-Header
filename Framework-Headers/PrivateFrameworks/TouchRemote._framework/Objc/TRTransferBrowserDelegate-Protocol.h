@@ -11,8 +11,8 @@
 @protocol TRTransferBrowserDelegate <NSObject>
 
 @optional
-- (NSData *)browser:(TRTransferBrowser *)arg1 didReceiveData:(NSData *)arg2;
+- (void)browser:(TRTransferBrowser *)arg1 didReceiveData:(NSData *)arg2 replyHandler:(void (^)(NSData *))arg3;
+- (void)browser:(TRTransferBrowser *)arg1 didStartTransferWithSendDataHandler:(void (^)(NSData *))arg2;
 - (void)browserDidDisconnect:(TRTransferBrowser *)arg1;
-- (NSData *)browserDidStartTransfer:(TRTransferBrowser *)arg1;
 @end
 

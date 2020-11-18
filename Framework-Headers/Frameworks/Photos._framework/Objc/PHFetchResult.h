@@ -54,7 +54,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (unsigned long long)countOfAssetsWithMediaType:(long long)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)enumerateObjectsAtIndexes:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;

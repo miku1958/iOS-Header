@@ -28,11 +28,13 @@
 - (id)_defaultTextBoxTypingAttributes;
 - (id)_defaultTypingAttributes;
 - (double)_modelBaseScaleFactorForNewAnnotation;
+- (void)_peripheralAvailabilityDidUpdate:(id)arg1;
 - (void)_setRectangleToFitTextOnTextAnnotation:(id)arg1;
 - (double)_strokeWidthForNewAnnotation;
 - (struct CGRect)_validatedRect:(struct CGRect)arg1 fitsInVisibleRegionOfOverlayView:(id)arg2 centeredAtPoint:(struct CGPoint)arg3;
 - (void)addNewAnnotation:(id)arg1 onPageController:(id)arg2 shouldSelect:(BOOL)arg3 shouldCascade:(BOOL)arg4;
 - (id)createAnnotationOfType:(long long)arg1 centeredAtPoint:(struct CGPoint)arg2;
+- (void)dealloc;
 - (id)initWithController:(id)arg1;
 - (void)performToolActionForSender:(id)arg1;
 - (void)resetToDefaultMode;

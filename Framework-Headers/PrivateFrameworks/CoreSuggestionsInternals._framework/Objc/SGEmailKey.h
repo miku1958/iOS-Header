@@ -30,7 +30,6 @@
 - (id)initWithSource:(id)arg1 messageId:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEmailKey:(id)arg1;
-- (id)messageURL;
 - (id)serialize;
 - (id)toMailMessageKey;
 

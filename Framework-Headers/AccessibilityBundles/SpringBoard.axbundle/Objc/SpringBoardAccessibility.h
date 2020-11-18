@@ -34,7 +34,11 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityLoadPIPInfo;
 - (id)_accessibilityPictureInPictureWindow;
+- (void)_accessibilitySetShouldCallAXStatusChangedOnAppLaunchFinish:(BOOL)arg1;
+- (void)_accessibilitySetShouldLoadAXInfoOnAppLaunchFinish:(BOOL)arg1;
 - (void)_accessibilitySetSpeakScreenGestureRecognizer:(id)arg1;
+- (BOOL)_accessibilityShouldCallAXStatusChangedOnAppLaunchFinish;
+- (BOOL)_accessibilityShouldLoadAXInfoOnAppLaunchFinish;
 - (id)_accessibilitySideAppDividerElement;
 - (id)_accessibilitySoftwareMimicKeyboard;
 - (id)_accessibilitySpeakScreenGestureRecognizer;
@@ -52,6 +56,7 @@
 - (void)accessibilityInitialize;
 - (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2;
 - (BOOL)accessibilityStartStopToggle;
+- (void)applicationDidFinishLaunching:(id)arg1;
 - (BOOL)handleDoubleHeightStatusBarTap:(long long)arg1;
 - (void)noteInterfaceOrientationChanged:(long long)arg1 duration:(double)arg2 updateMirroredDisplays:(BOOL)arg3 force:(BOOL)arg4;
 - (void)powerDown;

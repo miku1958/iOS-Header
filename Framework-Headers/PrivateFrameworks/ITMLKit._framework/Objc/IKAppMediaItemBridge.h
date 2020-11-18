@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSString *contentRatingDomain;
 @property (strong, nonatomic) NSNumber *contentRatingRanking;
 @property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *externalID;
 @property (strong, nonatomic) NSArray *interstitials;
 @property (nonatomic) BOOL isExplicit;
 @property (readonly, weak, nonatomic) IKJSMediaItem *jsMediaItem; // @synthesize jsMediaItem=_jsMediaItem;

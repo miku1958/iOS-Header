@@ -28,8 +28,8 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)init;
-- (void)setCurrentInputDeviceToDeviceWithID:(id)arg1;
-- (void)setCurrentOutputDeviceToDeviceWithID:(id)arg1;
+- (void)setCurrentInputDeviceToDeviceWithUID:(id)arg1;
+- (void)setCurrentOutputDeviceToDeviceWithUID:(id)arg1;
 
 @end
 

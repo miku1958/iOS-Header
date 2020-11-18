@@ -15,6 +15,7 @@
 @property (nonatomic) id<PKPaymentDataProviderDelegate> delegate;
 @property (readonly, nonatomic) BOOL isDeviceInRestrictedMode;
 @property (readonly, nonatomic) NSString *secureElementIdentifier;
+@property (readonly, nonatomic) BOOL secureElementIsProductionSigned;
 
 - (PKPaymentApplication *)defaultPaymentApplicationForPassUniqueIdentifier:(NSString *)arg1;
 - (void)setDefaultPaymentApplication:(PKPaymentApplication *)arg1 forPassUniqueIdentifier:(NSString *)arg2 completion:(void (^)(PKPass *))arg3;

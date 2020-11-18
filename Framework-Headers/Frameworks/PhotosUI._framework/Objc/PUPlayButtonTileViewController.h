@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateButtonVisibilityAnimated:(BOOL)arg1;
 - (void)becomeReusable;
 - (void)dealloc;
-- (void)loadView;
+- (id)loadView;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end

@@ -87,6 +87,7 @@
         unsigned int disappearingViewControllerIsBeingRemoved:1;
         unsigned int isWrappingDuringAdaptation:1;
         unsigned int cannotPerformShowViewController:1;
+        unsigned int navigationSoundsEnabled:1;
     } _navigationControllerFlags;
     BOOL _interactiveTransition;
     BOOL _hidesBarsWhenKeyboardAppears;
@@ -205,6 +206,7 @@
 - (void)_didBecomeContentViewControllerOfPopover:(id)arg1;
 - (void)_didGainChildScrollView:(id)arg1;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
+- (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_doesTopViewControllerSupportInterfaceOrientation:(long long)arg1;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (void)_executeNavigationHandler:(CDUnknownBlockType)arg1 deferred:(BOOL)arg2;
@@ -256,10 +258,13 @@
 - (id)_navigationBarForNestedNavigationController;
 - (id)_navigationBarHiddenByDefault:(BOOL)arg1;
 - (id)_navigationItems;
+- (BOOL)_navigationSoundsEnabled;
 - (long long)_navigationTransitionForUITransition:(int)arg1;
 - (void)_navigationTransitionView:(id)arg1 didCancelTransition:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4 wrapperView:(id)arg5;
+- (void)_notifyTransitionBegan:(id)arg1;
 - (id)_nthChildViewControllerFromTop:(unsigned long long)arg1;
 - (id)_outermostNavigationController;
+- (id)_overridingDestinationEnvironmentForFocusUpdateInContext:(id)arg1;
 - (void)_performBackGesture:(id)arg1;
 - (id)_pinningBarForPalette:(id)arg1;
 - (void)_playPopNavigationSound;
@@ -309,6 +314,7 @@
 - (void)_setNavigationBarHidden:(BOOL)arg1 edge:(unsigned long long)arg2 duration:(double)arg3;
 - (void)_setNavigationBarHidden:(BOOL)arg1 edgeIfNotNavigating:(unsigned long long)arg2 duration:(double)arg3;
 - (void)_setNavigationBarHidesCompletelyOffscreen:(BOOL)arg1;
+- (void)_setNavigationSoundsEnabled:(BOOL)arg1;
 - (void)_setPreferredContentSizeFromChildContentContainer:(id)arg1;
 - (void)_setSearchHidNavigationBar:(BOOL)arg1;
 - (void)_setToolbarHidden:(BOOL)arg1 edge:(unsigned long long)arg2 duration:(double)arg3;
@@ -451,6 +457,7 @@
 - (id)rotatingHeaderView;
 - (id)rotatingSnapshotViewForWindow:(id)arg1;
 - (BOOL)searchBarHidNavBar;
+- (id)segueForUnwindingToViewController:(id)arg1 fromViewController:(id)arg2 identifier:(id)arg3;
 - (id)separateSecondaryViewControllerForSplitViewController:(id)arg1;
 - (void)setAllowUserInteractionDuringTransition:(BOOL)arg1;
 - (void)setCondensesBarsOnSwipe:(BOOL)arg1;

@@ -6,13 +6,14 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSArray;
+@class NSArray, NSNumber;
 
 @interface SAUIDelayedActionCommand : SADomainCommand
 {
 }
 
 @property (copy, nonatomic) NSArray *commands;
+@property (copy, nonatomic) NSNumber *timerValue;
 
 + (id)delayedActionCommand;
 + (id)delayedActionCommandWithDictionary:(id)arg1 context:(id)arg2;

@@ -6,20 +6,24 @@
 
 #import <NotesShared/TTTextController.h>
 
-@class ICLayoutManager, ICNote, NSMutableDictionary;
+@class ICLayoutManager, ICNote, NSMutableArray, NSMutableDictionary;
 
 @interface ICTextController : TTTextController
 {
     BOOL _userChangedWritingDirection;
     BOOL _disableAddingExtraLinesIfNeeded;
+    BOOL _trackAddedExtraNewlineRanges;
     ICNote *_note;
     NSMutableDictionary *_trackedToDoParagraphs;
+    NSMutableArray *_trackedRangesForAddedExtraNewlines;
     ICLayoutManager *_layoutManager;
 }
 
 @property (nonatomic) BOOL disableAddingExtraLinesIfNeeded; // @synthesize disableAddingExtraLinesIfNeeded=_disableAddingExtraLinesIfNeeded;
 @property (weak, nonatomic) ICLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;
 @property (weak, nonatomic) ICNote *note; // @synthesize note=_note;
+@property (nonatomic) BOOL trackAddedExtraNewlineRanges; // @synthesize trackAddedExtraNewlineRanges=_trackAddedExtraNewlineRanges;
+@property (strong, nonatomic) NSMutableArray *trackedRangesForAddedExtraNewlines; // @synthesize trackedRangesForAddedExtraNewlines=_trackedRangesForAddedExtraNewlines;
 @property (readonly, nonatomic) NSMutableDictionary *trackedToDoParagraphs; // @synthesize trackedToDoParagraphs=_trackedToDoParagraphs;
 @property BOOL userChangedWritingDirection; // @synthesize userChangedWritingDirection=_userChangedWritingDirection;
 
@@ -62,6 +66,7 @@
 - (void)superscriptDelta:(long long)arg1 range:(struct _NSRange)arg2 inTextStorage:(id)arg3;
 - (void)superscriptUpdate:(CDUnknownBlockType)arg1 range:(struct _NSRange)arg2 inTextStorage:(id)arg3;
 - (id)todoForRange:(struct _NSRange)arg1 inTextStorage:(id)arg2;
+- (void)trackExtraNewLineRangeIfNecessary:(struct _NSRange)arg1;
 - (void)uniqueParagraphStylesInTextStorage:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)unscriptRange:(struct _NSRange)arg1 inTextStorage:(id)arg2;
 - (void)updateAttachmentsInNote;

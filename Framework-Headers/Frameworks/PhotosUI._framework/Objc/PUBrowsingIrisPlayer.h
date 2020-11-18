@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_cancelAllRequests;
 - (void)_configureAudioSession:(id)arg1;
+- (long long)_contentMode;
 - (void)_handlePlayerUnloadWithRequestId:(long long)arg1;
 - (void)_handleResultWithImage:(id)arg1 info:(id)arg2;
 - (void)_handleResultWithPlayerItem:(id)arg1 info:(id)arg2;

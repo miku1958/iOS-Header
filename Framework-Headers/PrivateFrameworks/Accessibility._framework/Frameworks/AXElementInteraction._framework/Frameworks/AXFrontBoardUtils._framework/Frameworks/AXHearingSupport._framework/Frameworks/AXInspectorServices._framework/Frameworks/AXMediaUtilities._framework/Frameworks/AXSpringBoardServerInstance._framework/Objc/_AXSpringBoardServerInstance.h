@@ -92,6 +92,7 @@
 - (id)_reachabilityActive:(id)arg1;
 - (id)_reachabilityHandling:(id)arg1;
 - (id)_reachabilityOffset:(id)arg1;
+- (void)_registerServerAndNotifyClients;
 - (void)_removeActionHandler:(unsigned int)arg1;
 - (void)_removeReachabilityHandler:(unsigned int)arg1;
 - (id)_resetDimTimer:(id)arg1;
@@ -107,6 +108,7 @@
 - (id)_showAlert:(id)arg1;
 - (id)_showControlCenter:(id)arg1;
 - (id)_showNotificationCenter:(id)arg1;
+- (void)_springBoardFinishedLaunching:(id)arg1;
 - (id)_startHearingAidServer:(id)arg1;
 - (id)_takeScreenshot:(id)arg1;
 - (id)_toggleHearingControl:(id)arg1;

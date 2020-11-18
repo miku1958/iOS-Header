@@ -125,6 +125,7 @@
 - (BOOL)registerFunctionName:(id)arg1 argumentCount:(int)arg2 functionPointer:(CDUnknownFunctionPointerType)arg3 userData:(void *)arg4;
 - (BOOL)registerModule:(id)arg1;
 - (BOOL)registerModuleName:(id)arg1 moduleMethods:(struct sqlite3_module *)arg2;
+- (BOOL)removeModuleNamed:(id)arg1;
 - (BOOL)schemaAddColumnDefinition:(id)arg1 toTable:(id)arg2;
 - (BOOL)schemaDeleteColumn:(id)arg1 inTable:(id)arg2;
 - (BOOL)schemaDeleteColumns:(id)arg1 inTable:(id)arg2;

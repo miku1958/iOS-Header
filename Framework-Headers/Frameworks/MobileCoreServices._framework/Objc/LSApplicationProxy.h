@@ -116,6 +116,7 @@
 @property (readonly, nonatomic) BOOL supportsOpenInPlace;
 @property (readonly, nonatomic) NSString *teamID; // @synthesize teamID=_teamID;
 @property (readonly, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
+@property (readonly, nonatomic, getter=isWhitelisted) BOOL whitelisted;
 
 + (id)applicationProxyForBundleURL:(id)arg1;
 + (id)applicationProxyForIdentifier:(id)arg1;

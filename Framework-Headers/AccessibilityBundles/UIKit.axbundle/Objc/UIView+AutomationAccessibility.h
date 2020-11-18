@@ -9,9 +9,13 @@
 @interface UIView (AutomationAccessibility)
 - (void)_accessibilitySetUserTestingIsCancelButton:(BOOL)arg1;
 - (void)_accessibilitySetUserTestingIsDefaultButton:(BOOL)arg1;
+- (void)_accessibilitySetUserTestingIsDestructiveButton:(BOOL)arg1;
+- (void)_accessibilitySetUserTestingIsPreferredButton:(BOOL)arg1;
 - (BOOL)_accessibilityUserTestingIsBackNavButton;
 - (BOOL)_accessibilityUserTestingIsCancelButton;
 - (BOOL)_accessibilityUserTestingIsDefaultButton;
+- (BOOL)_accessibilityUserTestingIsDestructiveButton;
+- (BOOL)_accessibilityUserTestingIsPreferredButton;
 - (BOOL)_accessibilityUserTestingIsRightNavButton;
 - (BOOL)_accessibilityUserTestingIsTypeOfButton:(id)arg1;
 @end

@@ -68,7 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateSubviewOrdering;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)becomeReusable;
-- (void)loadView;
+- (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end

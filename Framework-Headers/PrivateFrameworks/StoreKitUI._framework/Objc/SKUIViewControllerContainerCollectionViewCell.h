@@ -12,11 +12,13 @@
 {
     SKUIViewControllerContainerView *_viewControllerContainerView;
     BOOL _managesViewControllerContainerViewLayout;
+    double _maximumContentWidth;
     NSIndexPath *_indexPath;
 }
 
 @property (readonly, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 @property (nonatomic) BOOL managesViewControllerContainerViewLayout; // @synthesize managesViewControllerContainerViewLayout=_managesViewControllerContainerViewLayout;
+@property (nonatomic) double maximumContentWidth; // @synthesize maximumContentWidth=_maximumContentWidth;
 @property (strong, nonatomic) UIViewController *viewController;
 @property (readonly, nonatomic) UIView *viewControllerContainerView;
 

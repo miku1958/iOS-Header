@@ -11,14 +11,18 @@
 #import <AnnotationKit/UITableViewDataSource-Protocol.h>
 #import <AnnotationKit/UITableViewDelegate-Protocol.h>
 
-@class AKController, NSArray, NSString, UINavigationBar, UITableView;
+@class AKController, NSArray, NSString, UIColor, UINavigationBar, UITableView;
 @protocol AKSignaturesViewControllerDelegate;
 
 @interface AKSignaturesViewController_iOS : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationBarDelegate, AKSignatureCreationControllerDelegate>
 {
     BOOL _presentedInAlert;
+    BOOL _showsNavigationBar;
+    BOOL _allowsEdits;
+    BOOL _showAddEditButtonRow;
     AKController *_controller;
     id<AKSignaturesViewControllerDelegate> _delegate;
+    UIColor *_tableBackgroundColor;
     UITableView *_tableView;
     UINavigationBar *_navBar;
     NSArray *_rightBarItems;
@@ -26,6 +30,7 @@
     NSArray *_leftBarItems;
 }
 
+@property (nonatomic) BOOL allowsEdits; // @synthesize allowsEdits=_allowsEdits;
 @property (weak, nonatomic) AKController *controller; // @synthesize controller=_controller;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AKSignaturesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -37,7 +42,10 @@
 @property (strong, nonatomic) UINavigationBar *navBar; // @synthesize navBar=_navBar;
 @property (nonatomic) BOOL presentedInAlert; // @synthesize presentedInAlert=_presentedInAlert;
 @property (strong, nonatomic) NSArray *rightBarItems; // @synthesize rightBarItems=_rightBarItems;
+@property (nonatomic) BOOL showAddEditButtonRow; // @synthesize showAddEditButtonRow=_showAddEditButtonRow;
+@property (nonatomic) BOOL showsNavigationBar; // @synthesize showsNavigationBar=_showsNavigationBar;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UIColor *tableBackgroundColor; // @synthesize tableBackgroundColor=_tableBackgroundColor;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;

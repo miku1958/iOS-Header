@@ -63,6 +63,8 @@
 - (long long)_accessibilityUserTestingChildrenCount;
 - (BOOL)_accessibilityUserTestingIsCancelButton;
 - (BOOL)_accessibilityUserTestingIsDefaultButton;
+- (BOOL)_accessibilityUserTestingIsDestructiveButton;
+- (BOOL)_accessibilityUserTestingIsPreferredButton;
 - (id)_accessibilityUserTestingVisibleAncestor;
 - (BOOL)_allowCustomActionHintSpeakOverride;
 - (BOOL)accessibilityActivate;

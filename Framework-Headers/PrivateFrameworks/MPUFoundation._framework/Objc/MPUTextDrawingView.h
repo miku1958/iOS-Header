@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (double)_cachedDisplayScale;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

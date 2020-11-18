@@ -9,16 +9,18 @@
 @interface NSObject (UIStorage)
 - (void)_accessibilityActionBlock:(CDUnknownBlockType *)arg1 andValue:(id *)arg2 forKey:(unsigned int)arg3;
 - (id)_accessibilityAggregatedHeaderElements;
+- (id)_accessibilityAncestorFocusParcel;
 - (BOOL)_accessibilityCanBecomeNativeFocused;
 - (id)_accessibilityElementsWithSemanticContext;
 - (id)_accessibilityExplorerElements;
+- (unsigned long long)_accessibilityFocusParcelChildrenCount:(unsigned long long)arg1;
 - (id)_accessibilityFrameDelegate;
 - (BOOL)_accessibilityHandleMagicTap;
 - (BOOL)_accessibilityHasActionBlockForKey:(unsigned int)arg1;
 - (BOOL)_accessibilityHasNativeFocus;
 - (BOOL)_accessibilityIgnoreDelegate;
-- (BOOL)_accessibilityIgnoresChildrenForNativeFocus;
 - (BOOL)_accessibilityInternalHandleStartStopToggle;
+- (BOOL)_accessibilityIsFocusParcel;
 - (BOOL)_accessibilityMimicsTextInputResponder;
 - (id)_accessibilityNativeFocusAncestor;
 - (id)_accessibilityNativeFocusElement;
@@ -38,6 +40,9 @@
 - (unsigned long long)_accessibilitySpeakThisMaximumNumberOfElements;
 - (BOOL)_accessibilitySpeakThisShouldOnlyIncludeVisibleElements;
 - (BOOL)_accessibilitySpeakThisShouldScrollTextRects;
+- (id)_accessibilitySubviews;
+- (id)_accessibilitySupplementaryHeaderViewAtIndexPath:(id)arg1;
+- (id)_accessibilityTextForSubhierarchyIncludingHeaders:(BOOL)arg1 focusableItems:(BOOL)arg2;
 - (id)_accessibilityTextRectsForRange:(id)arg1 singleTextRect:(struct CGRect *)arg2;
 - (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1;
 - (BOOL)_isAccessibilityExplorerElement;

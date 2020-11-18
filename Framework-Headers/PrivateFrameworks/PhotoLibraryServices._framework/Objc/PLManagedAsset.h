@@ -203,6 +203,8 @@
 @property (readonly, strong, nonatomic) NSObject<NSCopying> *uniqueObjectID;
 @property (nonatomic) BOOL userCloudSharedLiked;
 @property (strong, nonatomic) id uuid; // @dynamic uuid;
+@property (nonatomic) long long videoCpDurationValue; // @dynamic videoCpDurationValue;
+@property (nonatomic) unsigned short videoCpVisibilityState; // @dynamic videoCpVisibilityState;
 @property (nonatomic) short visibilityState; // @dynamic visibilityState;
 @property (readonly, strong, nonatomic) UIImage *wallpaperFullScreenImage;
 @property (nonatomic) short width; // @dynamic width;
@@ -346,7 +348,6 @@
 - (id)_createJPEGResourcesFromFullSizeJPEGPath:(id)arg1 withItemIdentifier:(id)arg2 forMaster:(BOOL)arg3 forResourceTypes:(id)arg4;
 - (void)_createPhotoResourcesForMaster:(id)arg1 intoMasterResources:(id)arg2;
 - (void)_createTHMFileWithPreviewImage:(id)arg1 thumbnailImage:(id)arg2;
-- (id)_createVideoResourceFromVideoURL:(id)arg1 withResourceType:(unsigned long long)arg2 itemIdentifier:(id)arg3 applyVideoAdjustments:(BOOL)arg4 forMaster:(BOOL)arg5;
 - (id)_createVideoResourceFromVideoURL:(id)arg1 withResourceType:(unsigned long long)arg2 itemIdentifier:(id)arg3 applyVideoAdjustments:(BOOL)arg4 forMaster:(BOOL)arg5 forPhotoIris:(BOOL)arg6;
 - (void)_createVideoResourcesForMaster:(id)arg1 intoMasterResources:(id)arg2;
 - (void)_debugPrintAdjustmentState;
@@ -357,6 +358,7 @@
 - (BOOL)_hasPanoramaDimensions;
 - (BOOL)_hasScreenshotDimensions;
 - (BOOL)_hasScreenshotMetadata;
+- (BOOL)_hasVideoComplementData;
 - (id)_highDynamicRangeTypeDescription;
 - (id)_imageDataForThumbGeneration;
 - (id)_insertResource:(id)arg1 forOtherDuplicatedAssetInMaster:(id)arg2 inPhotoLibrary:(id)arg3;
@@ -383,6 +385,7 @@
 - (void)_setAdjustmentDataBlob:(id)arg1 formatIdentifier:(id)arg2 formatVersion:(id)arg3 baseVersion:(long long)arg4 editorBundleID:(id)arg5 renderedContentURL:(id)arg6 penultimateRenderedJPEGData:(id)arg7 isSubstandardRender:(BOOL)arg8 fullSizeRenderSize:(struct CGSize)arg9 shouldUpdateAttributes:(BOOL)arg10 useSecureMove:(BOOL)arg11 removeFileOnSuccess:(BOOL)arg12 inManagedObjectContext:(id)arg13;
 - (BOOL)_setDefaultSlowMotionAdjustments;
 - (void)_setLocationFromCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (void)_setVideoComplementData:(id)arg1;
 - (id)_settingsDictionaryFromFilter:(id)arg1;
 - (id)_settingsDictionaryFromFilters:(id)arg1 inputImageExtent:(struct CGRect)arg2;
 - (id)_sidecarFileMatchingUTI:(struct __CFString *)arg1 requireExactMatch:(BOOL)arg2 requireSort:(BOOL)arg3;
@@ -614,6 +617,7 @@
 - (id)userVisibleCloudResourceOfType:(unsigned long long)arg1;
 - (BOOL)validateForInsert:(id *)arg1;
 - (BOOL)validateForUpdate:(id *)arg1;
+- (id)videoComplementData;
 - (BOOL)visibilityStateIsEqualToState:(short)arg1;
 - (void)willSave;
 - (void)willTurnIntoFault;

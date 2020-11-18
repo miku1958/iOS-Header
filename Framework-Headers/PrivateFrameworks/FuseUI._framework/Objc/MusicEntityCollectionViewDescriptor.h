@@ -6,34 +6,30 @@
 
 #import <FuseUI/MusicEntityViewDescriptor.h>
 
+@class MPULayoutInterpolator;
+
 @interface MusicEntityCollectionViewDescriptor : MusicEntityViewDescriptor
 {
     BOOL _showsSectionHeaders;
     BOOL _shouldFlattenToSingleSectionInRegularWidthAndHeight;
     BOOL _shouldShowOnlyFirstRowOfContent;
-    BOOL _wantsEdgeToEdgeLayout;
     double _sectionHeaderBottomContentInset;
-    CDUnknownBlockType _layoutMetricsBlock;
-    double _verticalLockupMaximumWidth;
-    struct {
-        double multiplier;
-        double constant;
-    } _verticalLockupWidthFromCollectionViewWidthLinearRelation;
+    MPULayoutInterpolator *_lateralContentInsetFromCollectionViewContainerWidthInterpolator;
+    MPULayoutInterpolator *_verticalLockupWidthFromCollectionViewWidthInterpolator;
+    MPULayoutInterpolator *_textLateralEdgePaddingFromInteritemSpacingLayoutInterpolator;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType layoutMetricsBlock; // @synthesize layoutMetricsBlock=_layoutMetricsBlock;
+@property (copy, nonatomic) MPULayoutInterpolator *lateralContentInsetFromCollectionViewContainerWidthInterpolator; // @synthesize lateralContentInsetFromCollectionViewContainerWidthInterpolator=_lateralContentInsetFromCollectionViewContainerWidthInterpolator;
 @property (nonatomic) double sectionHeaderBottomContentInset; // @synthesize sectionHeaderBottomContentInset=_sectionHeaderBottomContentInset;
 @property (nonatomic) BOOL shouldFlattenToSingleSectionInRegularWidthAndHeight; // @synthesize shouldFlattenToSingleSectionInRegularWidthAndHeight=_shouldFlattenToSingleSectionInRegularWidthAndHeight;
 @property (nonatomic) BOOL shouldShowOnlyFirstRowOfContent; // @synthesize shouldShowOnlyFirstRowOfContent=_shouldShowOnlyFirstRowOfContent;
 @property (nonatomic) BOOL showsSectionHeaders; // @synthesize showsSectionHeaders=_showsSectionHeaders;
-@property (nonatomic) double verticalLockupMaximumWidth; // @synthesize verticalLockupMaximumWidth=_verticalLockupMaximumWidth;
-@property (nonatomic) CDStruct_c3b9c2ee verticalLockupWidthFromCollectionViewWidthLinearRelation; // @synthesize verticalLockupWidthFromCollectionViewWidthLinearRelation=_verticalLockupWidthFromCollectionViewWidthLinearRelation;
-@property (nonatomic) BOOL wantsEdgeToEdgeLayout; // @synthesize wantsEdgeToEdgeLayout=_wantsEdgeToEdgeLayout;
+@property (copy, nonatomic) MPULayoutInterpolator *textLateralEdgePaddingFromInteritemSpacingLayoutInterpolator; // @synthesize textLateralEdgePaddingFromInteritemSpacingLayoutInterpolator=_textLateralEdgePaddingFromInteritemSpacingLayoutInterpolator;
+@property (copy, nonatomic) MPULayoutInterpolator *verticalLockupWidthFromCollectionViewWidthInterpolator; // @synthesize verticalLockupWidthFromCollectionViewWidthInterpolator=_verticalLockupWidthFromCollectionViewWidthInterpolator;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)layoutMetricsForTraitCollection:(id)arg1 size:(struct CGSize)arg2;
 
 @end
 

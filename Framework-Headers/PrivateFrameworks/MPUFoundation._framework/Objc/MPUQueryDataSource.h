@@ -12,8 +12,10 @@
 {
     NSArray *_entities;
     NSMutableSet *_additionalUniqueItemPropertiesToFetch;
+    BOOL _hasValidEmpty;
     BOOL _hasValidRepresentativeCollection;
     BOOL _invalidateWhenEnteringForeground;
+    BOOL _isEmpty;
     MPMediaItemCollection *_representativeCollection;
     MPMediaQuerySectionInfo *_sectionInfo;
     BOOL _ignoringInvalidationDueToBackgroundApplicationState;

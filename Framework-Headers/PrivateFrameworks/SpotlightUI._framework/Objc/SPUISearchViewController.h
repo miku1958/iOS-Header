@@ -24,7 +24,7 @@
 #import <SpotlightUI/UITextFieldDelegate-Protocol.h>
 #import <SpotlightUI/_SFSpeechRecognitionTaskDelegatePrivate-Protocol.h>
 
-@class NSArray, NSDate, NSMutableSet, NSString, NSTimer, SFSpeechRecognitionTask, SFSpeechRecognizer, SPFeedbackVoiceSearch, SPUISearchDictationView, SPUISearchFirstTimeViewController, SPUISearchHeader, SPUISearchResultsActionManager, SPUISearchTableView, UIPanGestureRecognizer, UISwipeGestureRecognizer, UITapGestureRecognizer, _UIBackdropView;
+@class NSArray, NSDate, NSMutableSet, NSString, NSTimer, SFSpeechRecognitionTask, SFSpeechRecognizer, SPFeedbackVoiceSearch, SPUISearchDictationView, SPUISearchFirstTimeViewController, SPUISearchHeader, SPUISearchResultsActionManager, SPUISearchTableView, UIPanGestureRecognizer, UISwipeGestureRecognizer, UITapGestureRecognizer, UIView, _UIBackdropView;
 
 @interface SPUISearchViewController : UIViewController <SPUISearchResultsActionManagerDelegate, SPUISearchFirstTimeViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, SPUISearchTableViewDelegate, SPSearchAgentDelegate, UISearchBarDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, SPUISearchHeaderDelegate, _SFSpeechRecognitionTaskDelegatePrivate, SFSpeechRecognizerDelegate, SearchUIDelegate, SPUISearchViewControllerPresentation, SPUISearchPluginClientInterface, SPUISearchDictationViewProtocol>
 {
@@ -77,12 +77,14 @@
     unsigned long long _queryStartTime;
     NSMutableSet *_purgeableTableViewCells;
     _UIBackdropView *_zkwBackdropView;
+    double _zkwBackdropViewTransitionProgress;
     NSDate *_timeOfLastZKWUpdate;
     double _zkwExpirationInterval;
     NSTimer *_clearSearchTimer;
     double _clearSearchTimeInterval;
     double _clippingHeight;
     NSArray *_clippedCells;
+    UIView *_topDividerView;
     unsigned long long _currentPresentationSource;
     NSString *_lastSearchQuery;
 }
@@ -108,11 +110,13 @@
 @property unsigned long long queryStartTime; // @synthesize queryStartTime=_queryStartTime;
 @property (readonly) Class superclass;
 @property (strong) NSDate *timeOfLastZKWUpdate; // @synthesize timeOfLastZKWUpdate=_timeOfLastZKWUpdate;
+@property (strong) UIView *topDividerView; // @synthesize topDividerView=_topDividerView;
 @property double typingHysteresis; // @synthesize typingHysteresis=_typingHysteresis;
 @property BOOL userInitiatedScrollInProgress; // @synthesize userInitiatedScrollInProgress=_userInitiatedScrollInProgress;
 @property BOOL userIsTyping; // @synthesize userIsTyping=_userIsTyping;
 @property (readonly, nonatomic, getter=isVisible) BOOL visible;
 @property (strong) _UIBackdropView *zkwBackdropView; // @synthesize zkwBackdropView=_zkwBackdropView;
+@property double zkwBackdropViewTransitionProgress; // @synthesize zkwBackdropViewTransitionProgress=_zkwBackdropViewTransitionProgress;
 @property double zkwExpirationInterval; // @synthesize zkwExpirationInterval=_zkwExpirationInterval;
 
 + (void)openApplicationWithBundleID:(id)arg1;
@@ -122,6 +126,7 @@
 - (id)_actionManager;
 - (void)_addGaussianBlurWithRadius:(double)arg1;
 - (BOOL)_allowSwipeToDismiss;
+- (void)_animateZKWBlurOut:(BOOL)arg1;
 - (void)_cacheZKWQueryLive:(BOOL)arg1 allowInternet:(BOOL)arg2;
 - (void)_cleanUpAfterScrolling:(id)arg1;
 - (void)_clearSearchResults;
@@ -175,7 +180,8 @@
 - (void)activate;
 - (void)animateForReachabilityActivatedWithOffsetFactor:(double)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)animateForReachabilityDeactivatedWithHandler:(CDUnknownBlockType)arg1;
-- (void)animateOutZKWBlur;
+- (void)animateZKWIn;
+- (void)animateZKWOut;
 - (void)attributionButtonTapped:(id)arg1;
 - (float)audioLevelForFlamesView;
 - (void)backgroundResetToFullZKWSearchModeIfNeeded;
@@ -190,7 +196,7 @@
 - (void)dealloc;
 - (void)dictationButtonPressed;
 - (void)didFinishPresenting:(BOOL)arg1;
-- (void)didFinishZKWBlurWithZKWHidden:(BOOL)arg1;
+- (void)didFinishZKWBlur;
 - (void)didReceiveMemoryWarning;
 - (void)didSelectActionItemForResult:(id)arg1;
 - (void)dismiss;
@@ -265,7 +271,6 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 estimatedHeightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (struct CGPoint)tableView:(id)arg1 newContentOffsetAfterUpdate:(struct CGPoint)arg2 context:(id)arg3;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
@@ -273,6 +278,7 @@
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableViewDidFinishReload:(id)arg1;
+- (BOOL)tableViewIsShown;
 - (BOOL)textFieldShouldClear:(id)arg1;
 - (void)timeToStartDictation:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

@@ -77,7 +77,7 @@
 - (struct _xmlNode *)nodePtr;
 - (id)nodesForXPath:(id)arg1 error:(id *)arg2;
 - (void)notifyChildrenUpdatedWithUpdatedChildNodes:(id)arg1;
-- (void)notifyUpdated;
+- (void)notifyUpdatedAndMark:(BOOL)arg1;
 - (id)performDOMOperation:(unsigned long long)arg1 newNode:(id)arg2 refNode:(id)arg3;
 - (id)removeChild:(id)arg1;
 - (void)removeDOMObserver:(id)arg1;

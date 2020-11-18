@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
         BOOL respondsToDidBeginPlaying;
         BOOL respondsToWillEndPlaying;
         BOOL respondsToDidEndPlaying;
+        BOOL respondsToViewHostingGestureRecognizers;
+        BOOL respondsToDelegateForGestureRecognizer;
     } _delegateFlags;
     BOOL _canLoadIrisContent;
     BOOL __needUpdateIrisContent;
@@ -51,17 +53,18 @@ __attribute__((visibility("hidden")))
 - (void)_updateIrisIfNeeded;
 - (void)_updateIrisPlayerViewIfNeeded;
 - (void)_updateIrisPlayerViewWithVitalityEnabled;
+- (void)_updatePlayerViewInteractivePlaybackAllowed;
 - (void)_updatePlayerViewScrubOffset;
 - (void)assetViewModelDidChange;
 - (void)becomeReusable;
 - (void)dealloc;
 - (id)irisPlayerView:(id)arg1 delegateForGestureRecognizer:(id)arg2;
 - (id)irisPlayerViewViewHostingGestureRecognizers:(id)arg1;
-- (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)playerViewPlaybackStateDidChange:(id)arg1;
 - (void)setAssetViewModel:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end

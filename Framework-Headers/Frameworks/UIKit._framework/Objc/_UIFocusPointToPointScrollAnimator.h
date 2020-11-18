@@ -32,6 +32,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isAnimatingScrollView:(id)arg1;
 - (void)setPeekOffsetAdjustment:(struct CGPoint)arg1 forScrollView:(id)arg2;
 - (void)setTargetContentOffset:(struct CGPoint)arg1 forScrollView:(id)arg2 convergenceRate:(double)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGPoint)targetContentOffsetForScrollView:(id)arg1;
+- (struct CGPoint)velocityToScrollFromOffset:(struct CGPoint)arg1 toOffset:(struct CGPoint)arg2;
 
 @end
 

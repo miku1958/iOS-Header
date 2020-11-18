@@ -6,13 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSData, NSString, NSURL;
+@class NSData, NSString, NSURL, PFVideoComplement;
 
 @interface PLStreamShareSource : NSObject
 {
     NSData *_mediaData;
     NSString *_fileExtension;
     NSURL *_mediaURL;
+    PFVideoComplement *_videoComplement;
     long long _mediaType;
 }
 
@@ -20,6 +21,7 @@
 @property (strong, nonatomic) NSData *mediaData; // @synthesize mediaData=_mediaData;
 @property (nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;
 @property (strong, nonatomic) NSURL *mediaURL; // @synthesize mediaURL=_mediaURL;
+@property (strong, nonatomic) PFVideoComplement *videoComplement; // @synthesize videoComplement=_videoComplement;
 
 - (id)initWithDictionary:(id)arg1;
 - (id)serializedDictionary;

@@ -16,6 +16,7 @@
 - (id<PKPassLibraryDataProvider>)passLibraryDataProvider;
 - (id<PKPaymentDataProvider>)paymentDataProvider;
 - (NSString *)secureElementID;
+- (BOOL)secureElementIsProductionSigned;
 - (id<PKPaymentSetupDelegate>)setupDelegate;
 - (BOOL)showPassState;
 @end

@@ -10,10 +10,14 @@
 #import <PhotosPlayer/ISPlaybackStateTransitionManagerDelegate-Protocol.h>
 
 @class AVPlayer, AVPlayerItem, ISAVPlayerController, ISPlaybackSpec, ISPlaybackStateTransitionManager, ISReuseQueue, NSError, NSHashTable, NSSet, NSString;
+@protocol OS_dispatch_queue;
 
 @interface ISPlaybackController : NSObject <ISPlaybackStateTransitionManagerDelegate, ISAVPlayerControllerDelegate>
 {
     BOOL _videoVisible;
+    NSHashTable *_observers;
+    NSObject<OS_dispatch_queue> *_observerQueue;
+    BOOL _shouldReusePlayer;
     float _volume;
     float _timeOffset;
     float _vitalityPlayRate;
@@ -21,15 +25,13 @@
     float _hintProgress;
     float _playRate;
     ISPlaybackSpec *_playbackSpec;
+    double _prePhotoGapTime;
     AVPlayerItem *_videoPlayerItem;
-    AVPlayerItem *_audioPlayerItem;
     double _maximumVideoTransitionDelay;
     long long _playbackState;
     CDUnknownBlockType _playbackEndHandler;
-    long long _audioPlayerStatus;
     long long _videoPlayerStatus;
     NSError *_videoPlayerError;
-    NSError *_audioPlayerError;
     ISReuseQueue *__playerReuseQueue;
     NSHashTable *__outputs;
     long long __currentTransitionRequestID;
@@ -39,7 +41,6 @@
     id __videoTimeObserver;
     AVPlayer *__videoPlayer;
     id __videoPlayerPerformanceDiagnosticsTimeObserver;
-    AVPlayer *__audioPlayer;
     long long __currentPlaybackID;
     long long __hasStartedVideoForCurrentPlayback;
     double __videoPlaybackRequestTime;
@@ -48,7 +49,6 @@
     CDStruct_1b6d18a9 __videoDuration;
 }
 
-@property (readonly, nonatomic) AVPlayer *_audioPlayer; // @synthesize _audioPlayer=__audioPlayer;
 @property (readonly, nonatomic) ISAVPlayerController *_avPlayerController; // @synthesize _avPlayerController=__avPlayerController;
 @property (nonatomic, setter=_setCurrentPlaybackID:) long long _currentPlaybackID; // @synthesize _currentPlaybackID=__currentPlaybackID;
 @property (nonatomic, setter=_setCurrentTransitionRequestID:) long long _currentTransitionRequestID; // @synthesize _currentTransitionRequestID=__currentTransitionRequestID;
@@ -63,9 +63,6 @@
 @property (readonly, nonatomic) AVPlayer *_videoPlayer; // @synthesize _videoPlayer=__videoPlayer;
 @property (readonly, nonatomic) id _videoPlayerPerformanceDiagnosticsTimeObserver; // @synthesize _videoPlayerPerformanceDiagnosticsTimeObserver=__videoPlayerPerformanceDiagnosticsTimeObserver;
 @property (strong, nonatomic, setter=_setVideoTimeObserver:) id _videoTimeObserver; // @synthesize _videoTimeObserver=__videoTimeObserver;
-@property (strong, nonatomic) NSError *audioPlayerError; // @synthesize audioPlayerError=_audioPlayerError;
-@property (strong, nonatomic) AVPlayerItem *audioPlayerItem; // @synthesize audioPlayerItem=_audioPlayerItem;
-@property (nonatomic) long long audioPlayerStatus; // @synthesize audioPlayerStatus=_audioPlayerStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -77,6 +74,7 @@
 @property (copy, nonatomic) CDUnknownBlockType playbackEndHandler; // @synthesize playbackEndHandler=_playbackEndHandler;
 @property (strong, nonatomic) ISPlaybackSpec *playbackSpec; // @synthesize playbackSpec=_playbackSpec;
 @property (nonatomic) long long playbackState; // @synthesize playbackState=_playbackState;
+@property (nonatomic) double prePhotoGapTime; // @synthesize prePhotoGapTime=_prePhotoGapTime;
 @property (readonly) Class superclass;
 @property (nonatomic) float timeOffset; // @synthesize timeOffset=_timeOffset;
 @property (strong, nonatomic) NSError *videoPlayerError; // @synthesize videoPlayerError=_videoPlayerError;
@@ -93,12 +91,11 @@
 - (void)_callPlaybackEndHandler;
 - (void)_configureOutput:(id)arg1;
 - (void)_didEndTransitionToPlaybackState:(long long)arg1 forTransitionRequestID:(long long)arg2 finished:(BOOL)arg3;
+- (void)_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleMediaServiceResetIfNecessaryWithError:(id)arg1;
 - (void)_performBeginPlaybackTransition;
 - (CDStruct_1b6d18a9)_playbackEndTime;
 - (CDStruct_1b6d18a9)_playbackStartTime;
-- (void)_setAudioPlayerError:(id)arg1;
-- (void)_setAudioPlayerStatus:(long long)arg1;
 - (void)_setHintProgress:(float)arg1;
 - (void)_setPlayRate:(float)arg1;
 - (void)_setPlaybackState:(long long)arg1;
@@ -111,6 +108,7 @@
 - (void)_updatePlayerControllerVolume;
 - (void)_updateStatus;
 - (void)_videoDidPlayToEndTime;
+- (void)_videoWillPlayToEndTime;
 - (void)addOutput:(id)arg1;
 - (void)avPlayerControllerDidBeginPlaying:(id)arg1;
 - (void)avPlayerControllerDidEndPlaying:(id)arg1;
@@ -119,10 +117,13 @@
 - (CDStruct_1b6d18a9)cachedDuration;
 - (void)dealloc;
 - (id)init;
+- (id)initWithVideoPlayer:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)registerObserver:(id)arg1;
 - (void)removeOutput:(id)arg1;
 - (void)transitionManager:(id)arg1 didEndTransitionToPlaybackState:(long long)arg2 forRequestID:(long long)arg3 finished:(BOOL)arg4;
 - (void)transitionToPlaybackState:(long long)arg1 playRate:(float)arg2 withTimeOffset:(float)arg3 vitalityPlayRate:(float)arg4 hintProgress:(float)arg5;
+- (void)unregisterObserver:(id)arg1;
 
 @end
 

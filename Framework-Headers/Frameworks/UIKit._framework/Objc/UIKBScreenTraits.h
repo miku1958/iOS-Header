@@ -27,8 +27,9 @@
 @property (readonly, nonatomic) BOOL touchInput; // @synthesize touchInput=_touchInput;
 
 + (id)traitsWithScreen:(id)arg1 orientation:(long long)arg2;
+- (id)description;
 - (id)initWithScreen:(id)arg1 orientation:(long long)arg2;
-- (void)updateForTextInputTraits:(id)arg1;
+- (void)updateForTextInputTraits:(id)arg1 supportsTouchInput:(id)arg2;
 
 @end
 

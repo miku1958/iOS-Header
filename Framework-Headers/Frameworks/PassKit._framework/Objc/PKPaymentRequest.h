@@ -13,6 +13,7 @@
 @interface PKPaymentRequest : NSObject <NSSecureCoding>
 {
     BOOL _shippingEditable;
+    BOOL _requiresAddressPrecision;
     NSString *_merchantIdentifier;
     NSString *_countryCode;
     NSArray *_supportedNetworks;
@@ -41,6 +42,7 @@
 @property (copy, nonatomic) NSArray *paymentSummaryItems; // @synthesize paymentSummaryItems=_paymentSummaryItems;
 @property (nonatomic) unsigned long long requiredBillingAddressFields; // @synthesize requiredBillingAddressFields=_requiredBillingAddressFields;
 @property (nonatomic) unsigned long long requiredShippingAddressFields; // @synthesize requiredShippingAddressFields=_requiredShippingAddressFields;
+@property (nonatomic) BOOL requiresAddressPrecision; // @synthesize requiresAddressPrecision=_requiresAddressPrecision;
 @property (nonatomic) const void *shippingAddress; // @synthesize shippingAddress=_shippingAddress;
 @property (strong, nonatomic) PKContact *shippingContact; // @synthesize shippingContact=_shippingContact;
 @property (nonatomic, getter=isShippingEditable) BOOL shippingEditable; // @synthesize shippingEditable=_shippingEditable;

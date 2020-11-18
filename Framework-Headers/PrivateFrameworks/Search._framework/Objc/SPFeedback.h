@@ -13,6 +13,7 @@
 @interface SPFeedback : NSObject <NSSecureCoding>
 {
     unsigned int _domain;
+    unsigned int _geoUserSequenceNumber;
     double _timestamp;
     NSString *_identifier;
     NSString *_bundleID;
@@ -24,12 +25,17 @@
     NSString *_web_fbq;
     NSString *_predictionIdentifier;
     NSString *_keyboardLanguage;
+    NSString *_geoUserSessionIDString;
+    double _geoUserSessionStartTime;
 }
 
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (nonatomic) unsigned int domain; // @synthesize domain=_domain;
 @property (strong, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier=_externalIdentifier;
 @property (copy, nonatomic) NSString *fbq; // @synthesize fbq=_fbq;
+@property (nonatomic) unsigned int geoUserSequenceNumber; // @synthesize geoUserSequenceNumber=_geoUserSequenceNumber;
+@property (strong, nonatomic) NSString *geoUserSessionIDString; // @synthesize geoUserSessionIDString=_geoUserSessionIDString;
+@property (nonatomic) double geoUserSessionStartTime; // @synthesize geoUserSessionStartTime=_geoUserSessionStartTime;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *input; // @synthesize input=_input;
 @property (strong, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;

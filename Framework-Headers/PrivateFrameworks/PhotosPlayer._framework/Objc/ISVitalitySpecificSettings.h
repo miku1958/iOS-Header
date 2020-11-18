@@ -23,6 +23,7 @@
     double _playbackRate;
     double _endTimeOffset;
     double _minimumVisibilityFactor;
+    double _minimumDurationForColorMismatch;
 }
 
 @property (nonatomic) long long behavior; // @synthesize behavior=_behavior;
@@ -33,6 +34,7 @@
 @property (nonatomic) double maximumDeceleration; // @synthesize maximumDeceleration=_maximumDeceleration;
 @property (nonatomic) long long maximumNumberOfFrames; // @synthesize maximumNumberOfFrames=_maximumNumberOfFrames;
 @property (nonatomic) double maximumRate; // @synthesize maximumRate=_maximumRate;
+@property (nonatomic) double minimumDurationForColorMismatch; // @synthesize minimumDurationForColorMismatch=_minimumDurationForColorMismatch;
 @property (nonatomic) double minimumVisibilityFactor; // @synthesize minimumVisibilityFactor=_minimumVisibilityFactor;
 @property (nonatomic) double playbackRate; // @synthesize playbackRate=_playbackRate;
 @property (nonatomic) double postDuration; // @synthesize postDuration=_postDuration;

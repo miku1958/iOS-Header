@@ -31,6 +31,7 @@
 @property (nonatomic, getter=_fragmentMindingInterval, setter=_setFragmentMindingInterval:) double fragmentMindingInterval;
 @property (readonly, nonatomic) BOOL hasProtectedContent;
 @property (readonly, nonatomic) NSString *lyrics;
+@property (readonly, nonatomic) NSURL *originalNetworkContentURL;
 @property (readonly, nonatomic, getter=isPlayable) BOOL playable;
 @property (readonly, nonatomic, getter=_playbackItem) struct OpaqueFigPlaybackItem *playbackItem;
 @property (readonly, nonatomic, getter=isReadable) BOOL readable;

@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 @interface PUUIImageViewController : PLUIImageViewController <ISPlayerViewDelegate, UIGestureRecognizerDelegate>
 {
     BOOL _isIris;
+    BOOL _wantsLivePhotoResult;
+    BOOL _wantsVideoURLResult;
     PHAsset *_asset;
     int __imageManagerVideoRequestID;
     PUBrowsingIrisPlayer *__irisPlayer;
@@ -34,11 +36,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_fetchLivePhotoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchVideoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadIrisPlayerItem:(id)arg1;
 - (void)cropOverlayWasOKed:(id)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (id)initWithPhoto:(id)arg1 imagePickerProperties:(id)arg2;
+- (id)initWithPhoto:(id)arg1 imagePickerProperties:(id)arg2 expectsLivePhoto:(BOOL)arg3;
 - (id)irisPlayerView:(id)arg1 delegateForGestureRecognizer:(id)arg2;
 - (id)irisPlayerViewViewHostingGestureRecognizers:(id)arg1;
 - (void)loadView;

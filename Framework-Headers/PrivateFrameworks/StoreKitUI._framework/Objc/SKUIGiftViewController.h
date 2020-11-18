@@ -35,6 +35,7 @@
 - (void)_loadGiftConfiguration;
 - (id)_localizedString:(id)arg1;
 - (id)initWithGift:(id)arg1;
+- (struct CGSize)preferredContentSize;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

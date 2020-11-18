@@ -20,6 +20,7 @@
 + (id)_customPropertyHandlersCollection;
 + (void)registerCustomProperty:(id)arg1 withValueHandler:(CDUnknownBlockType)arg2;
 + (void)registerSupportedCustomProperties;
++ (BOOL)supportsConcurrentLoadingOfEntityProperties;
 - (id)_valuesForRegularEntityProperties:(id)arg1;
 - (id)entityUniqueIdentifier;
 - (id)imageURLForEntityArtworkProperty:(id)arg1 fittingSize:(struct CGSize)arg2 destinationScale:(double)arg3;

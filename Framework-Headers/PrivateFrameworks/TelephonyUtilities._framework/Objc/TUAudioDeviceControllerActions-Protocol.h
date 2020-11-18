@@ -6,10 +6,10 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSNumber;
+@class NSString;
 
 @protocol TUAudioDeviceControllerActions <NSObject>
-- (void)setCurrentInputDeviceToDeviceWithID:(NSNumber *)arg1;
-- (void)setCurrentOutputDeviceToDeviceWithID:(NSNumber *)arg1;
+- (void)setCurrentInputDeviceToDeviceWithUID:(NSString *)arg1;
+- (void)setCurrentOutputDeviceToDeviceWithUID:(NSString *)arg1;
 @end
 

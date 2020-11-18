@@ -50,6 +50,8 @@ __attribute__((visibility("hidden")))
     double _timeOfLastUpdate;
     BOOL _forceScanning;
     double _rateBeforeForceScanning;
+    unsigned int _hasDiscoveredVideo:1;
+    unsigned int _needsUpdateHasDiscoveredVideo:1;
     BOOL _scrubbing;
     BOOL _atMaxTime;
     BOOL _atMinTime;
@@ -145,7 +147,9 @@ __attribute__((visibility("hidden")))
 - (id)_seekTimer;
 - (id)_selectedMediaOptionWithMediaCharacteristic:(id)arg1;
 - (void)_setMediaOption:(id)arg1 mediaCharacteristic:(id)arg2;
+- (void)_setNeedsUpdateHasDiscoveredVideo;
 - (id)_subtitlesForOptions:(id)arg1;
+- (void)_updateHasDiscoveredVideoIfNeeded;
 - (void)_updateScanningBackwardRate;
 - (void)_updateScanningForwardRate;
 - (void)actuallySeekToTime;
@@ -191,6 +195,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasAudioMediaSelectionOptions;
 - (BOOL)hasContent;
 - (BOOL)hasContentChapters;
+- (BOOL)hasDiscoveredVideo;
 - (BOOL)hasEnabledAudio;
 - (BOOL)hasEnabledVideo;
 - (BOOL)hasLegibleMediaSelectionOptions;

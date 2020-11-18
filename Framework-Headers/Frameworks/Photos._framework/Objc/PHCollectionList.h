@@ -44,7 +44,7 @@
 + (id)fetchCollectionListsWithType:(long long)arg1 subtype:(long long)arg2 options:(id)arg3;
 + (id)fetchMomentListsWithSubtype:(long long)arg1 containingMoment:(id)arg2 options:(id)arg3;
 + (id)fetchMomentListsWithSubtype:(long long)arg1 options:(id)arg2;
-+ (id)fetchPredicateFromComparisonPredicate:(id)arg1;
++ (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchRootAlbumCollectionListWithOptions:(id)arg1;
 + (id)identifierCode;
 + (id)managedEntityName;

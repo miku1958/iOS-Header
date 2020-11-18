@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isShowing; // @synthesize isShowing=_isShowing;
 
 - (id)clone;
-- (id)initWithIndexPath:(id)arg1 tileKind:(id)arg2 dataSourceIdentifier:(id)arg3 center:(struct CGPoint)arg4 size:(struct CGSize)arg5 alpha:(double)arg6 transform:(struct CGAffineTransform)arg7 zPosition:(double)arg8 coordinateSystem:(id)arg9;
-- (id)initWithIndexPath:(id)arg1 tileKind:(id)arg2 dataSourceIdentifier:(id)arg3 center:(struct CGPoint)arg4 size:(struct CGSize)arg5 alpha:(double)arg6 transform:(struct CGAffineTransform)arg7 zPosition:(double)arg8 coordinateSystem:(id)arg9 insets:(struct UIEdgeInsets)arg10 contentBaseline:(double)arg11 isShowing:(BOOL)arg12;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 coordinateSystem:(id)arg7;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 coordinateSystem:(id)arg7 insets:(struct UIEdgeInsets)arg8 contentBaseline:(double)arg9 isShowing:(BOOL)arg10;
 - (BOOL)isGeometryEqualToLayoutInfo:(id)arg1;
 
 @end

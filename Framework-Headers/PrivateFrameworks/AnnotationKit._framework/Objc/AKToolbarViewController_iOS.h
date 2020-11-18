@@ -75,6 +75,7 @@
 - (id)_doodleModeToolbarImage;
 - (void)_layoutAttributeContainer;
 - (void)_layoutToolbarForTraitCollection:(id)arg1;
+- (void)_peripheralAvailabilityDidUpdate:(id)arg1;
 - (void)_setupPassthroughViewsForViewController:(id)arg1;
 - (void)_showColorPickerPopover:(id)arg1;
 - (void)_showLineStylePopover:(id)arg1;
@@ -91,7 +92,9 @@
 - (BOOL)_validateUndoButton;
 - (void)dealloc;
 - (void)dismissAttributeToolbarForSelectedAnnotations;
+- (void)dismissPresentedPopovers;
 - (id)initWithController:(id)arg1;
+- (BOOL)isPresentingPopovers;
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)popoverPresentationControllerShouldDismissPopover:(id)arg1;

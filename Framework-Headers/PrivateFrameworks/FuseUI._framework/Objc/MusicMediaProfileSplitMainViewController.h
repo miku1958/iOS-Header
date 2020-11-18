@@ -41,11 +41,13 @@
     BOOL _shouldAutomaticallySelectMyMusicSegment;
     BOOL _segmentedControlVisible;
     BOOL _shouldShowStoreSegments;
+    BOOL _visuallyInset;
     MusicClientContext *_clientContext;
     double _headerTransitionProgress;
     id<MusicMediaProfileSplitMainViewControllerDelegate> _mediaSplitViewControllerDelegate;
     NSDictionary *_availableContentFlags;
     MusicMediaDetailTintInformation *_mediaDetailTintInformation;
+    double _preferredMaximumContentWidth;
 }
 
 @property (copy, nonatomic) NSArray *allowedSegments;
@@ -57,17 +59,21 @@
 @property (nonatomic) double headerTransitionProgress; // @synthesize headerTransitionProgress=_headerTransitionProgress;
 @property (copy, nonatomic) MusicMediaDetailTintInformation *mediaDetailTintInformation; // @synthesize mediaDetailTintInformation=_mediaDetailTintInformation;
 @property (weak, nonatomic) id<MusicMediaProfileSplitMainViewControllerDelegate> mediaSplitViewControllerDelegate; // @synthesize mediaSplitViewControllerDelegate=_mediaSplitViewControllerDelegate;
+@property (nonatomic) double preferredMaximumContentWidth; // @synthesize preferredMaximumContentWidth=_preferredMaximumContentWidth;
 @property (readonly, nonatomic) SKUIScrollingSegmentedController *scrollingSegmentedController;
 @property (readonly, nonatomic, getter=isSegmentedControlVisible) BOOL segmentedControlVisible; // @synthesize segmentedControlVisible=_segmentedControlVisible;
 @property (copy, nonatomic) NSString *selectedSegmentIdentifier;
 @property (nonatomic) BOOL shouldAutomaticallySelectMyMusicSegment; // @synthesize shouldAutomaticallySelectMyMusicSegment=_shouldAutomaticallySelectMyMusicSegment;
 @property (nonatomic) BOOL shouldShowStoreSegments; // @synthesize shouldShowStoreSegments=_shouldShowStoreSegments;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isVisuallyInset) BOOL visuallyInset; // @synthesize visuallyInset=_visuallyInset;
 
 - (void).cxx_destruct;
 - (struct CGPoint)_adjustContentOffsetForBounds:(struct CGRect)arg1 inScrollView:(id)arg2 withContentInset:(struct UIEdgeInsets)arg3;
 - (void)_applyHairlineTintInformation;
 - (void)_applyTintInformation;
+- (void)_containerScrollViewDidBeginScrolling;
+- (void)_containerScrollViewDidFinishScrolling;
 - (struct UIEdgeInsets)_currentSegmentedControlContentEdgeInsets;
 - (void)_handleCanShowConnectDidChangeNotification:(id)arg1;
 - (void)_handleCanShowSubscriptionContentDidChangeNotification:(id)arg1;
@@ -86,14 +92,17 @@
 - (id)contentScrollView;
 - (void)dealloc;
 - (id)initWithProfileType:(unsigned long long)arg1 artistEntity:(id)arg2;
-- (void)loadView;
 - (BOOL)music_handleUserActivityContext:(id)arg1 containerItem:(id)arg2;
+- (void)music_viewInheritedLayoutInsetsDidChange;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollingSegmentedController:(id)arg1 contentScrollViewDidChangeForViewControllerAtIndex:(unsigned long long)arg2;
 - (void)scrollingSegmentedController:(id)arg1 didFocusViewControllerAtIndex:(unsigned long long)arg2;
 - (void)scrollingSegmentedController:(id)arg1 willDisplayViewControllerAtIndex:(unsigned long long)arg2;
+- (void)scrollingSegmentedControllerDidEndDecelerating:(id)arg1;
+- (void)scrollingSegmentedControllerDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
+- (void)scrollingSegmentedControllerWillBeginDragging:(id)arg1;
 - (void)setViewController:(id)arg1 forSegmentIdentifier:(id)arg2;
 - (id)viewControllerForSegmentIdentifier:(id)arg1;
 - (void)viewDidLayoutSubviews;

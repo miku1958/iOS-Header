@@ -13,6 +13,7 @@
     UIImageView *_iconView;
     UIButton *_linkButton;
     CDUnknownBlockType _linkHandler;
+    BOOL _textLabelAlignedByLastBaseline;
     UIImage *_icon;
     UILabel *_textLabel;
     UILabel *_detailTextLabel;
@@ -23,6 +24,7 @@
 @property (nonatomic) double flexibleHeight; // @synthesize flexibleHeight=_flexibleHeight;
 @property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property (readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
+@property (nonatomic, getter=isTextLabelAlignedByLastBaseline) BOOL textLabelAlignedByLastBaseline; // @synthesize textLabelAlignedByLastBaseline=_textLabelAlignedByLastBaseline;
 
 - (void).cxx_destruct;
 - (double)_detailLabelBaselineOffsetFromTop;

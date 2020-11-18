@@ -8,7 +8,7 @@
 
 #import <UIKit/_UIKeyboardAutoRespondingScrollView-Protocol.h>
 
-@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UICollectionReusableView, UICollectionViewData, UICollectionViewLayout, UICollectionViewLayoutAttributes, UICollectionViewUpdate, UIFocusContainerGuide, UITouch, UIView, _UIDynamicAnimationGroup;
+@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UICollectionReusableView, UICollectionViewCell, UICollectionViewData, UICollectionViewLayout, UICollectionViewLayoutAttributes, UICollectionViewUpdate, UIFocusContainerGuide, UITouch, UIView, _UIDynamicAnimationGroup;
 @protocol UICollectionViewDataSource, UICollectionViewDataSource_Private, UICollectionViewDelegate;
 
 @interface UICollectionView : UIScrollView <_UIKeyboardAutoRespondingScrollView>
@@ -144,6 +144,8 @@
     } _collectionViewFlags;
     struct CGPoint _lastLayoutOffset;
     CDUnknownBlockType _navigationCompletion;
+    UIFocusContainerGuide *_endOfContentFocusContainerGuide;
+    UICollectionViewCell *_currentPromiseFulfillmentCell;
     NSIndexPath *_focusedCellIndexPath;
     UICollectionReusableView *_focusedCell;
 }
@@ -153,6 +155,7 @@
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic, getter=_collectionViewData) UICollectionViewData *collectionViewData;
 @property (strong, nonatomic) UICollectionViewLayout *collectionViewLayout; // @synthesize collectionViewLayout=_layout;
+@property (strong, nonatomic, getter=_currentPromiseFulfillmentCell, setter=_setCurrentPromiseFulfillmentCell:) UICollectionViewCell *currentPromiseFulfillmentCell; // @synthesize currentPromiseFulfillmentCell=_currentPromiseFulfillmentCell;
 @property (strong, nonatomic, getter=_currentTouch, setter=_setCurrentTouch:) UITouch *currentTouch; // @synthesize currentTouch=_currentTouch;
 @property (readonly, nonatomic, getter=_currentUpdate) UICollectionViewUpdate *currentUpdate;
 @property (weak, nonatomic) id<UICollectionViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
@@ -160,6 +163,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UICollectionViewDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=_endOfContentFocusContainerGuide) UIFocusContainerGuide *endOfContentFocusContainerGuide; // @synthesize endOfContentFocusContainerGuide=_endOfContentFocusContainerGuide;
 @property (strong, nonatomic, getter=_focusedCell, setter=_setFocusedCell:) UICollectionReusableView *focusedCell; // @synthesize focusedCell=_focusedCell;
 @property (copy, nonatomic, getter=_focusedCellIndexPath, setter=_setFocusedCellIndexPath:) NSIndexPath *focusedCellIndexPath; // @synthesize focusedCellIndexPath=_focusedCellIndexPath;
 @property (readonly) unsigned long long hash;
@@ -192,6 +196,7 @@
 - (void)_cellDidBecomeUnfocused:(id)arg1;
 - (void)_cellMenuDismissed;
 - (void)_checkForPreferredAttributesInView:(id)arg1 originalAttributes:(id)arg2;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1;
 - (void)_cleanUpAfterInteractiveTransitionDidFinish:(BOOL)arg1;
 - (id)_contentFocusContainerGuide;
 - (struct CGPoint)_contentOffsetForNewFrame:(struct CGRect)arg1 oldFrame:(struct CGRect)arg2 newContentSize:(struct CGSize)arg3 andOldContentSize:(struct CGSize)arg4;
@@ -213,11 +218,10 @@
 - (void)_ensureViewsAreLoadedInRect:(struct CGRect)arg1;
 - (void)_finishInteractiveTransitionShouldFinish:(BOOL)arg1 finalAnimation:(BOOL)arg2;
 - (void)_finishInteractiveTransitionWithFinalAnimation:(BOOL)arg1;
-- (BOOL)_focusedCellContainedInRowsAtIndexPaths:(id)arg1;
-- (BOOL)_focusedCellContainedInSections:(id)arg1;
 - (void)_focusedView:(id)arg1 isMinX:(BOOL *)arg2 isMaxX:(BOOL *)arg3 isMinY:(BOOL *)arg4 isMaxY:(BOOL *)arg5;
+- (id)_fulfillPromisedFocusRegionForCell:(id)arg1;
 - (void)_getOriginalReorderingIndexPaths:(id *)arg1 targetIndexPaths:(id *)arg2;
-- (BOOL)_hasFocusedCellForIndexPath:(id)arg1;
+- (BOOL)_hasFocusedCellForIndexPath:(id)arg1 shouldUsePreUpdateData:(BOOL)arg2;
 - (void)_highlightFirstVisibleItemIfAppropriate;
 - (BOOL)_highlightItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(unsigned long long)arg3;
 - (BOOL)_highlightItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(long long)arg3 notifyDelegate:(BOOL)arg4;
@@ -259,7 +263,6 @@
 - (void)_setNeedsVisibleCellsUpdate:(BOOL)arg1 withLayoutAttributes:(BOOL)arg2;
 - (void)_setObject:(id)arg1 inDictionary:(id)arg2 forKind:(id)arg3 indexPath:(id)arg4;
 - (void)_setRemembersPreviouslyFocusedItem:(BOOL)arg1;
-- (void)_setUpContentFocusContainerGuide;
 - (void)_setVisibleView:(id)arg1 forLayoutAttributes:(id)arg2;
 - (void)_setupCellAnimations;
 - (BOOL)_shouldFadeCellsForBoundChangeWhileRotating;
@@ -276,6 +279,7 @@
 - (void)_unhighlightItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 notifyDelegate:(BOOL)arg3;
 - (void)_updateAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_updateBackgroundView;
+- (void)_updateContentFocusContainerGuides;
 - (void)_updateFocusedCellIndexPathIfNecessaryWithLastFocusedRect:(struct CGRect)arg1;
 - (void)_updateReorderingTargetPosition:(struct CGPoint)arg1;
 - (void)_updateReorderingTargetPosition:(struct CGPoint)arg1 forced:(BOOL)arg2;

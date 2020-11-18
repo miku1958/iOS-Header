@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <StreamingZip/StreamingUnzipProtocol-Protocol.h>
 
@@ -13,6 +13,7 @@
 
 @interface StreamingUnzipper : NSObject <StreamingUnzipProtocol>
 {
+    long long _sandboxToken;
     void *_decompressionOutputBuffer;
     StreamingUnzipState *_currentState;
     int _activeCallbacks;

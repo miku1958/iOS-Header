@@ -16,7 +16,7 @@
 #import <StoreKitUI/UICollectionViewDataSource-Protocol.h>
 #import <StoreKitUI/UICollectionViewDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, SKUICrossFadingTabBar, SKUIDynamicBarAnimator, SKUIProxyScrollView, SKUIScrollingTabBarBackgroundView, SKUIScrollingTabBarContentCollectionView, SKUIScrollingTabBarControllerItemContext, SKUIScrollingTabBarPalette, UINavigationController, UIScrollView, UIView, UIViewController;
+@class NSArray, NSMapTable, NSString, SKUICrossFadingTabBar, SKUIDynamicBarAnimator, SKUIProxyScrollView, SKUIScrollingTabBarBackgroundView, SKUIScrollingTabBarContentCollectionView, SKUIScrollingTabBarControllerItemContext, SKUIScrollingTabBarPalette, UINavigationController, UIScrollView, UIView, UIViewController;
 @protocol SKUITabBarControllerDelegate;
 
 @interface SKUIScrollingTabBarController : SKUIViewController <SKUIDynamicBarAnimatorDelegate, SKUIProxyScrollViewDelegate, SKUIScrollingTabBarContentCollectionViewDelegate, SKUIScrollingTabBarControllerItemContextDelegate, SKUIScrollingTabBarPaletteDelegate, SKUIScrollViewDelegateObserver, UICollectionViewDataSource, UICollectionViewDelegate, SKUITabBarController>
@@ -27,7 +27,6 @@
     BOOL _canHideBarsOnSwipe;
     struct CGSize _contentCollectionViewItemSize;
     SKUIScrollingTabBarContentCollectionView *_contentCollectionView;
-    NSMutableArray *_contentCollectionViewCells;
     SKUIDynamicBarAnimator *_dynamicBarAnimator;
     UIScrollView *_focusedContentScrollView;
     UIViewController *_focusedViewController;

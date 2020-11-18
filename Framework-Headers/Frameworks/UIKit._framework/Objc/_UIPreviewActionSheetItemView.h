@@ -23,9 +23,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL selected; // @synthesize selected=_selected;
 
 - (void).cxx_destruct;
+- (void)_contentSizeChanged:(id)arg1;
 - (void)_updateConstraints;
 - (void)_updateImageFromAction;
+- (void)_updateLabelFont;
 - (void)_updateTitleFromAction;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 action:(id)arg2;

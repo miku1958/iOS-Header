@@ -66,6 +66,7 @@
 @property (nonatomic) BOOL shouldRunContinuousDiscovery; // @synthesize shouldRunContinuousDiscovery=_shouldRunContinuousDiscovery;
 @property (readonly) NSArray *supportedInputModeIdentifiers;
 
++ (id)inputModeIdentifierForPreferredLanguages:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 + (id)sharedInputModeController;
 - (id)_MCFilteredExtensionIdentifiers;
 - (id)_allExtensionsFromMatchingExtensions:(id)arg1;
@@ -89,6 +90,8 @@
 - (BOOL)identifierIsValidSystemInputMode:(id)arg1;
 - (id)identifiersFromInputModes:(id)arg1;
 - (id)init;
+- (id)inputModeIdentifierLastUsedForLanguage:(id)arg1;
+- (id)inputModeLastUsedForLanguage:(id)arg1;
 - (id)inputModeWithIdentifier:(id)arg1;
 - (id)inputModesFromIdentifiers:(id)arg1;
 - (void)keyboardsPreferencesChanged:(id)arg1;

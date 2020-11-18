@@ -32,12 +32,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2;
 - (id)accountPropertiesForDataclass:(id)arg1;
-- (BOOL)allowsCellularAccess;
 - (id)ckAccount;
 - (id)cloudKitAuthToken;
 - (BOOL)cloudKitIsEnabled;
 - (BOOL)cloudPhotosIsEnabled;
 - (id)iCloudAuthToken;
+- (BOOL)iCloudDriveAllowsCellularAccess;
 - (BOOL)isFakeAccount;
 - (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

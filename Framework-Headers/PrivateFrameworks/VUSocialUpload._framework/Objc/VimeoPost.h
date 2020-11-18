@@ -17,7 +17,7 @@
     NSString *_ticketID;
     NSURL *_uploadEndpoint;
     BOOL _continuingUpload;
-    unsigned long long _lastByteStored;
+    unsigned long long _countOfBytesStored;
     int _retryCount;
     BOOL _canUploadOverCellular;
     ALAssetsLibrary *_assetsLibrary;

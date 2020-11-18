@@ -18,6 +18,7 @@
 }
 
 - (void)addFingerWithIdentifier:(unsigned long long)arg1 location:(struct CGPoint)arg2 orbValue:(double)arg3;
+- (void)addStylusWithIdentifier:(unsigned long long)arg1 location:(struct CGPoint)arg2 pressure:(double)arg3 altitude:(double)arg4 azimuth:(double)arg5;
 - (struct CGPoint)averageLocation;
 - (struct CGPoint)balancedLocation;
 - (void)dealloc;

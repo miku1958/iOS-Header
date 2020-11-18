@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateColorIfNeeded;
 - (void)_updateEmptyPlaceholderAnimated:(BOOL)arg1;
 - (void)applyLayoutInfo:(id)arg1;
-- (void)loadView;
+- (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end

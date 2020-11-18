@@ -11,39 +11,36 @@
 
 @interface MusicActionableHeaderView : UIView
 {
-    MusicImageAccessoryButton *_imageAccessoryButton;
     MPUFontDescriptor *_headerFontDescriptor;
+    MusicImageAccessoryButton *_imageAccessoryButton;
     BOOL _actionable;
-    BOOL _enforceMinimumLayoutMargins;
     NSString *_headerTitle;
     UIColor *_headerTitleColor;
     id<MusicActionableHeaderViewDelegate> _delegate;
-    struct {
-        double titleBaselineOffsetFromBottom;
-        double titleBaselineOffsetFromTop;
-    } _actionableHeaderMetrics;
+    CDStruct_4a0565dd _actionableHeaderMetrics;
 }
 
 @property (nonatomic, getter=isActionable) BOOL actionable; // @synthesize actionable=_actionable;
-@property (nonatomic) CDStruct_c3b9c2ee actionableHeaderMetrics; // @synthesize actionableHeaderMetrics=_actionableHeaderMetrics;
+@property (nonatomic) CDStruct_4a0565dd actionableHeaderMetrics; // @synthesize actionableHeaderMetrics=_actionableHeaderMetrics;
 @property (weak, nonatomic) id<MusicActionableHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) BOOL enforceMinimumLayoutMargins; // @synthesize enforceMinimumLayoutMargins=_enforceMinimumLayoutMargins;
 @property (copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
 @property (strong, nonatomic) UIColor *headerTitleColor; // @synthesize headerTitleColor=_headerTitleColor;
 
-+ (CDStruct_c3b9c2ee)defaultActionableHeaderMetrics;
++ (CDStruct_4a0565dd)actionableHeaderMetricsForContainerViewController:(id)arg1;
++ (CDStruct_4a0565dd)defaultActionableHeaderMetrics;
 + (double)heightForTraitCollection:(id)arg1;
-+ (double)heightForTraitCollection:(id)arg1 withActionableHeaderMetrics:(CDStruct_c3b9c2ee)arg2;
++ (double)heightForTraitCollection:(id)arg1 withActionableHeaderMetrics:(CDStruct_4a0565dd)arg2;
 - (void).cxx_destruct;
 - (void)_handleButtonTapped:(id)arg1;
 - (void)_handleContentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)_headerTitleColorDidChange;
 - (void)_updateHeaderAttributedText;
+- (void)_updateHeaderFontDescriptor;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
-- (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
+- (void)music_inheritedLayoutInsetsDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

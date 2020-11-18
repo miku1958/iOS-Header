@@ -35,7 +35,6 @@
 @property (strong, nonatomic) NSString *exifTimestampString; // @dynamic exifTimestampString;
 @property (strong, nonatomic) NSNumber *externalUsageIntent; // @dynamic externalUsageIntent;
 @property (strong, nonatomic) NSData *faceRegions; // @dynamic faceRegions;
-@property (readonly, nonatomic) BOOL hasVideoComplementData;
 @property (strong, nonatomic) id importSessionID; // @dynamic importSessionID;
 @property (strong, nonatomic) NSSet *keywords; // @dynamic keywords;
 @property (strong, nonatomic) NSDate *lastUploadAttemptDate; // @dynamic lastUploadAttemptDate;
@@ -64,12 +63,9 @@
 @property (strong, nonatomic) NSString *title; // @dynamic title;
 @property (strong, nonatomic) PLUnmanagedAdjustment *unmanagedAdjustment; // @dynamic unmanagedAdjustment;
 @property (strong, nonatomic) NSNumber *uploadAttempts; // @dynamic uploadAttempts;
-@property (strong, nonatomic) NSData *videoComplementData;
 @property (nonatomic) int videoCpDisplayTimescale; // @dynamic videoCpDisplayTimescale;
 @property (nonatomic) long long videoCpDisplayValue; // @dynamic videoCpDisplayValue;
 @property (nonatomic) int videoCpDurationTimescale; // @dynamic videoCpDurationTimescale;
-@property (nonatomic) long long videoCpDurationValue; // @dynamic videoCpDurationValue;
-@property (nonatomic) unsigned short videoCpVisibilityState; // @dynamic videoCpVisibilityState;
 
 + (void)fromExtraDurationData:(id)arg1 getStillDisplayTime:(CDStruct_198678f7 *)arg2 videoDuration:(CDStruct_198678f7 *)arg3;
 + (id)listOfSyncedProperties;

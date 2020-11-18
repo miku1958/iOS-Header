@@ -13,15 +13,18 @@
     BOOL _animated;
     BOOL _wasAutomaticallySelected;
     NSArray *_additionalPassUniqueIdentifiers;
+    id _userInfo;
 }
 
 @property (copy, nonatomic) NSArray *additionalPassUniqueIdentifiers; // @synthesize additionalPassUniqueIdentifiers=_additionalPassUniqueIdentifiers;
 @property (nonatomic) BOOL animated; // @synthesize animated=_animated;
+@property (copy, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 @property (nonatomic) BOOL wasAutomaticallySelected; // @synthesize wasAutomaticallySelected=_wasAutomaticallySelected;
 
 + (id)contextWithAnimation:(BOOL)arg1;
 + (id)contextWithAnimation:(BOOL)arg1 additionalPassUniqueIdentifiers:(id)arg2;
 + (id)contextWithAnimation:(BOOL)arg1 wasAutomaticallySelected:(BOOL)arg2 additionalPassUniqueIdentifiers:(id)arg3;
++ (id)contextWithAnimation:(BOOL)arg1 wasAutomaticallySelected:(BOOL)arg2 additionalPassUniqueIdentifiers:(id)arg3 userInfo:(id)arg4;
 - (void)dealloc;
 - (id)description;
 

@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class PUTilingDataSource, PUTilingScrollInfo, PUTilingView;
+@class NSMutableDictionary, PUTilingDataSource, PUTilingScrollInfo, PUTilingView;
 @protocol PUTilingCoordinateSystem;
 
 @interface PUTilingLayout : NSObject
 {
+    NSMutableDictionary *_tileIdentifierByIndexPathByKind;
     PUTilingDataSource *_dataSource;
     id<PUTilingCoordinateSystem> _coordinateSystem;
     PUTilingView *_tilingView;
@@ -36,6 +37,7 @@
 - (id)layoutInfoForTileWithIndexPath:(id)arg1 kind:(id)arg2;
 - (id)layoutInfosForTilesInRect:(struct CGRect)arg1;
 - (void)prepareLayout;
+- (id)tileIdentifierForTileWithIndexPath:(id)arg1 kind:(id)arg2;
 - (struct CGRect)visibleRectForScrollingToItemAtIndexPath:(id)arg1 scrollPosition:(long long)arg2;
 
 @end

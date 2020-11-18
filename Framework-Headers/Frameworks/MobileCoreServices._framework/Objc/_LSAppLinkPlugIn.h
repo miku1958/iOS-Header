@@ -6,17 +6,19 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSURLComponents;
+@class NSError, NSURLComponents;
 @protocol OS_xpc_object;
 
 @interface _LSAppLinkPlugIn : NSObject
 {
     NSURLComponents *_URLComponents;
     NSObject<OS_xpc_object> *_XPCConnection;
+    NSError *_previousPlugInError;
 }
 
 @property (strong) NSURLComponents *URLComponents; // @synthesize URLComponents=_URLComponents;
 @property (strong) NSObject<OS_xpc_object> *XPCConnection; // @synthesize XPCConnection=_XPCConnection;
+@property (strong) NSError *previousPlugInError; // @synthesize previousPlugInError=_previousPlugInError;
 
 + (BOOL)canHandleURLComponents:(id)arg1;
 + (Class)plugInClasses;

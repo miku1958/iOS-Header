@@ -6,19 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class UIActivityIndicatorView, UIButton;
+@class UIActivityIndicatorView, UIButton, UILabel;
 
 @interface PKWelcomeHeaderView : UIView
 {
     UIView *_titleView;
+    UILabel *_environmentLabel;
     UIButton *_actionButton;
     UIActivityIndicatorView *_activityIndicator;
     BOOL _showActivityIndicator;
+    BOOL _showSEHinting;
     unsigned long long _passType;
 }
 
 @property (readonly, nonatomic) unsigned long long passType; // @synthesize passType=_passType;
 @property (nonatomic) BOOL showActivityIndicator; // @synthesize showActivityIndicator=_showActivityIndicator;
+@property (nonatomic) BOOL showSEHinting; // @synthesize showSEHinting=_showSEHinting;
 
 - (void)_addTapped;
 - (void)addTapped;

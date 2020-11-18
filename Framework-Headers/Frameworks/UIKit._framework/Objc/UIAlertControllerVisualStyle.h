@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)backgroundView;
 - (id)backgroundViewForAction:(id)arg1 withViewRepresentation:(id)arg2 inAlertController:(id)arg3;
 - (struct UIEdgeInsets)collectionViewContentInsets;
+- (struct UIEdgeInsets)collectionViewGradientMaskInsets;
 - (struct CGSize)collectionViewOutsetSize;
 - (struct UIEdgeInsets)contentInsets;
 - (id)defaultActionFont;

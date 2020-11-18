@@ -92,7 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)didChangeVisibleRect;
 - (id)generateAssetTransitionInfo;
 - (void)imageRequester:(id)arg1 didChange:(id)arg2;
-- (void)loadView;
+- (id)loadView;
 - (void)mediaProviderDidChange;
 - (void)setEdgeAntialiasingEnabled:(BOOL)arg1;
 - (void)setPreloadedImage:(id)arg1;

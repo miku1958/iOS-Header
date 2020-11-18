@@ -13,11 +13,11 @@
     UIImageView *_shellImageView;
     UIImageView *_highCapacityFillImageView;
     UIImageView *_lowCapacityFillImageView;
+    BOOL _lowBattery;
     unsigned long long _percentCharge;
-    unsigned long long _lowCharge;
 }
 
-@property (nonatomic) unsigned long long lowCharge; // @synthesize lowCharge=_lowCharge;
+@property (nonatomic, getter=isLowBattery) BOOL lowBattery; // @synthesize lowBattery=_lowBattery;
 @property (nonatomic) unsigned long long percentCharge; // @synthesize percentCharge=_percentCharge;
 
 + (id)chargeGlyph;

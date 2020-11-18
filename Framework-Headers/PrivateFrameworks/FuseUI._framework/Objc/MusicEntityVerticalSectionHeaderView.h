@@ -31,15 +31,14 @@
 @property (readonly) Class superclass;
 @property (nonatomic) double topContentInset; // @synthesize topContentInset=_topContentInset;
 
-+ (CDStruct_c3b9c2ee)_actionableHeaderMetrics;
-+ (Class)actionableHeaderViewClass;
++ (CDStruct_4a0565dd)_actionableHeaderMetricsForDisplayScale:(double)arg1;
 + (double)heightForTraitCollection:(id)arg1;
 - (void).cxx_destruct;
 - (void)actionableHeaderViewDidSelectButton:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
-- (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
+- (void)music_inheritedLayoutInsetsDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

@@ -18,6 +18,7 @@
     BOOL _charging;
     NSDictionary *_glyphs;
     BOOL _connected;
+    BOOL _lowBattery;
     BOOL _internal;
     BOOL _powerSource;
     BOOL _fake;
@@ -38,6 +39,7 @@
 @property (readonly, strong, nonatomic) UIImage *glyph;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic, getter=isInternal) BOOL internal; // @synthesize internal=_internal;
+@property (nonatomic, getter=isLowBattery) BOOL lowBattery; // @synthesize lowBattery=_lowBattery;
 @property (readonly, copy, nonatomic) NSString *matchIdentifier; // @synthesize matchIdentifier=_matchIdentifier;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned long long parts; // @synthesize parts=_parts;

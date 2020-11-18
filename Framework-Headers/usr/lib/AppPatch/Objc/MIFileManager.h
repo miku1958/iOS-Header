@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)dataProtectionClassOfItemAtURL:(id)arg1 class:(int *)arg2 error:(id *)arg3;
 - (id)destinationOfSymbolicLinkAtURL:(id)arg1 error:(id *)arg2;
 - (unsigned long long)diskUsageForURL:(id)arg1;
+- (id)installTypeForBundle:(id)arg1 error:(id *)arg2;
 - (BOOL)itemDoesNotExistAtURL:(id)arg1;
 - (BOOL)itemExistsAtURL:(id)arg1;
 - (BOOL)markBundleAsPlaceholder:(id)arg1 withError:(id *)arg2;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)realPathForURL:(id)arg1 ifChildOfURL:(id)arg2;
 - (BOOL)removeItemAtURL:(id)arg1 error:(id *)arg2;
 - (BOOL)setDataProtectionClassOfItemAtURL:(id)arg1 toClass:(int)arg2 ifPredicate:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (BOOL)setInstallType:(id)arg1 onBundle:(id)arg2 error:(id *)arg3;
 - (BOOL)standardizeOwnershipAndValidateSymlinksAtURL:(id)arg1 toUID:(unsigned int)arg2 GID:(unsigned int)arg3 error:(id *)arg4;
 - (id)urlsForItemsInDirectoryAtURL:(id)arg1 ignoringSymlinks:(BOOL)arg2 error:(id *)arg3;
 

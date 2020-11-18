@@ -19,8 +19,9 @@
     BOOL _selected;
     BOOL _showsBottomSeparator;
     BOOL _showsTopSeparator;
-    UIColor *_selectionTintColor;
     UIColor *_separatorColor;
+    UIColor *_selectionTintColor;
+    struct UIEdgeInsets _musicSeparatorInset;
 }
 
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
@@ -28,6 +29,7 @@
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property (strong, nonatomic) UIColor *selectionTintColor; // @synthesize selectionTintColor=_selectionTintColor;
 @property (strong, nonatomic) UIColor *separatorColor; // @synthesize separatorColor=_separatorColor;
+@property (nonatomic) struct UIEdgeInsets separatorInset; // @synthesize separatorInset=_musicSeparatorInset;
 @property (nonatomic) BOOL showsBottomSeparator; // @synthesize showsBottomSeparator=_showsBottomSeparator;
 @property (nonatomic) BOOL showsTopSeparator; // @synthesize showsTopSeparator=_showsTopSeparator;
 

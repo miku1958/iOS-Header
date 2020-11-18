@@ -12,8 +12,8 @@
 {
 }
 
-@property (copy, nonatomic) NSData *pairingPublicKey;
-@property (copy, nonatomic) NSData *wirelessProximityIdentifier;
+@property (copy, nonatomic) NSData *pairingPublicKey; // @dynamic pairingPublicKey;
+@property (copy, nonatomic) NSData *wirelessProximityIdentifier; // @dynamic wirelessProximityIdentifier;
 
 
 @end

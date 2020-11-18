@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSMutableDictionary *_progressByRequestIdentifier;
     CDUnknownBlockType _downloadCompletionHandler;
+    BOOL _shouldTreatLivePhotosAsStills;
     BOOL __downloadCanceled;
     PHAsset *_asset;
     long long _requestType;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (copy, nonatomic) CDUnknownBlockType progressChangeHandler; // @synthesize progressChangeHandler=_progressChangeHandler;
 @property (readonly) long long requestType; // @synthesize requestType=_requestType;
+@property (nonatomic) BOOL shouldTreatLivePhotosAsStills; // @synthesize shouldTreatLivePhotosAsStills=_shouldTreatLivePhotosAsStills;
 
 - (void).cxx_destruct;
 - (void)_didFinishDownloadWithSuccess:(BOOL)arg1 error:(id)arg2;

@@ -41,12 +41,15 @@
     struct CGSize _originalUncroppedSize;
     struct CGRect _alphaCroppedFrame;
     NSArray *_explicitlyPackedContents;
+    double _compressionQuality;
+    BOOL _useBlurredImageEncoding;
 }
 
 @property (nonatomic) BOOL allowsMultiPassEncoding; // @synthesize allowsMultiPassEncoding=_allowsMultiPassEncoding;
 @property (nonatomic) struct CGRect alphaCroppedFrame; // @synthesize alphaCroppedFrame=_alphaCroppedFrame;
 @property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
 @property (nonatomic) short colorSpaceID; // @synthesize colorSpaceID=_colorSpaceID;
+@property (nonatomic) double compressionQuality; // @synthesize compressionQuality=_compressionQuality;
 @property (strong, nonatomic) CUIShapeEffectPreset *effectPreset; // @synthesize effectPreset=_effectPreset;
 @property (nonatomic, getter=isExcludedFromContrastFilter) BOOL excludedFromContrastFilter; // @synthesize excludedFromContrastFilter=_isExcludedFromFilter;
 @property (nonatomic) int exifOrientation; // @synthesize exifOrientation=_exifOrientation;
@@ -62,6 +65,7 @@
 @property (nonatomic) unsigned int scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (nonatomic) long long templateRenderingMode; // @synthesize templateRenderingMode=_templateRenderingMode;
+@property BOOL useBlurredImageEncoding; // @synthesize useBlurredImageEncoding=_useBlurredImageEncoding;
 @property (copy, nonatomic) NSString *utiType; // @synthesize utiType=_utiType;
 
 + (int)fileEncoding;

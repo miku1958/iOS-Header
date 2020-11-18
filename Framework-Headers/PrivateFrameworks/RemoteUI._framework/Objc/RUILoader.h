@@ -6,7 +6,7 @@
 
 #import <RemoteUI/RUIHTTPRequest.h>
 
-@class NSURL, RUIParser;
+@class NSURL, RUIParser, RUIStyle;
 @protocol RUIParserDelegate;
 
 @interface RUILoader : RUIHTTPRequest
@@ -15,13 +15,16 @@
     NSURL *_url;
     BOOL _allowNonSecureHTTP;
     id<RUIParserDelegate> _parserDelegate;
+    RUIStyle *_style;
 }
 
 @property (nonatomic) BOOL allowNonSecureHTTP; // @synthesize allowNonSecureHTTP=_allowNonSecureHTTP;
 @property (weak, nonatomic) id<RUIParserDelegate> parserDelegate; // @synthesize parserDelegate=_parserDelegate;
+@property (strong, nonatomic) RUIStyle *style; // @synthesize style=_style;
 
 - (void).cxx_destruct;
 - (id)URL;
+- (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_finishLoad;
 - (void)allWebViewsFinishedLoading;

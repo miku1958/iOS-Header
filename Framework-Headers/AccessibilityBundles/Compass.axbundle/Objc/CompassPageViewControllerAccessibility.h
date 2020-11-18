@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnounceDegreesIfNeeded:(double)arg1;
-- (void)_updateDegreesLabel;
+- (void)_updateDegreesLabel:(BOOL)arg1;
 - (id)init;
 - (void)setCrosshairLevelForData:(CDStruct_39925896)arg1;
 

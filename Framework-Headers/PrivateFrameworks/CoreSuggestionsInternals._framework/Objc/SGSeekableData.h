@@ -25,9 +25,10 @@
 
 - (void).cxx_destruct;
 - (const void *)dataOfLength:(unsigned long long)arg1;
+- (id)init;
 - (id)initWithData:(id)arg1;
 - (id)initWithMemoryMappedPath:(id)arg1;
-- (id)initWithMemoryMappedURL:(id)arg1;
+- (id)initWithMemoryMappedPath:(id)arg1 error:(id *)arg2;
 - (void)seekToFileOffset:(unsigned long long)arg1;
 
 @end

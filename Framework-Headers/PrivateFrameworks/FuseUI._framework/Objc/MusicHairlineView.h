@@ -4,26 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKit/UIView.h>
 
-@class UIColor, UIView;
+@class UIColor;
 
-@interface MusicHairlineView : UIImageView
+@interface MusicHairlineView : UIView
 {
     UIView *_lineView;
-    BOOL _rightInsetIgnoresLayoutMargin;
     UIColor *_lineColor;
-    struct UIOffset _lineOffset;
+    long long _verticalAlignment;
 }
 
 @property (strong, nonatomic) UIColor *lineColor; // @synthesize lineColor=_lineColor;
-@property (nonatomic) struct UIOffset lineOffset; // @synthesize lineOffset=_lineOffset;
-@property (nonatomic) BOOL rightInsetIgnoresLayoutMargin; // @synthesize rightInsetIgnoresLayoutMargin=_rightInsetIgnoresLayoutMargin;
+@property (nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 
 - (void).cxx_destruct;
-- (struct UIEdgeInsets)layoutMargins;
-- (void)layoutMarginsDidChange;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)music_inheritedLayoutInsetsDidChange;
 
 @end
 

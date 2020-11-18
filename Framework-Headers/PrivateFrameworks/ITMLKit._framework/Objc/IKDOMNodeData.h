@@ -13,10 +13,12 @@
     BOOL _updated;
     BOOL _childrenUpdated;
     BOOL _subtreeUpdated;
+    BOOL _autoHighlightUpdated;
     IKDOMNode *_ownerJSNode;
     NSMutableDictionary *_featuresMap;
 }
 
+@property (nonatomic, getter=isAutoHighlightUpdated) BOOL autoHighlightUpdated; // @synthesize autoHighlightUpdated=_autoHighlightUpdated;
 @property (nonatomic, getter=isChildrenUpdated) BOOL childrenUpdated; // @synthesize childrenUpdated=_childrenUpdated;
 @property (strong, nonatomic) NSMutableDictionary *featuresMap; // @synthesize featuresMap=_featuresMap;
 @property (weak, nonatomic) IKDOMNode *ownerJSNode; // @synthesize ownerJSNode=_ownerJSNode;

@@ -11,12 +11,13 @@
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PUOverOneUpPresentationSessionBarsDelegate-Protocol.h>
 #import <PhotosUI/PUPlayPauseBarItemsControllerChangeObserver-Protocol.h>
+#import <PhotosUI/PUScrubberViewDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
 @class NSCache, NSDictionary, NSMutableIndexSet, NSObject, NSString, PUAssetActionPerformer, PUBarButtonItemCollection, PUBrowsingSession, PUPhotoBrowserTitleView, PUPlayPauseBarItemsController, PUScrubberView, UITapGestureRecognizer, UIView;
 @protocol OS_dispatch_queue;
 
-@interface PUOneUpBarsController : PUBarsController <PUBrowsingViewModelChangeObserver, PUAssetActionPerformerDelegate, UIPopoverPresentationControllerDelegate, PUPlayPauseBarItemsControllerChangeObserver, PUOverOneUpPresentationSessionBarsDelegate, PUBarButtonItemCollectionDataSource>
+@interface PUOneUpBarsController : PUBarsController <PUBrowsingViewModelChangeObserver, PUAssetActionPerformerDelegate, UIPopoverPresentationControllerDelegate, PUPlayPauseBarItemsControllerChangeObserver, PUOverOneUpPresentationSessionBarsDelegate, PUBarButtonItemCollectionDataSource, PUScrubberViewDelegate>
 {
     struct {
         BOOL respondsToDidChangeShowingPlayPauseButton;
@@ -156,6 +157,7 @@
 - (long long)preferredBarStyle;
 - (BOOL)prefersStatusBarHidden;
 - (void)prepareForPopoverPresentation:(id)arg1;
+- (BOOL)scrubberView:(id)arg1 shouldIgnoreHitTest:(struct CGPoint)arg2 withEvent:(id)arg3;
 - (void)setDelegate:(id)arg1;
 - (void)setViewController:(id)arg1;
 - (BOOL)shouldTapBeginAtLocationFromProvider:(id)arg1;

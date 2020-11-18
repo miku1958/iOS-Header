@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class AVPlayer, AVPlayerItem, AVPlayerLayer, CALayer, FigSubtitleCALayer, FigVideoContainerLayer, NSDictionary, NSString;
+@class AVNetworkPlaybackPerfHUDLayer, AVPlayer, AVPlayerItem, AVPlayerLayer, CALayer, FigSubtitleCALayer, FigVideoContainerLayer, NSDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface AVPlayerLayerInternal : NSObject
@@ -25,6 +25,7 @@
     NSString *videoGravity;
     NSString *subtitleGravity;
     FigSubtitleCALayer *subtitleLayer;
+    AVNetworkPlaybackPerfHUDLayer *hudLayer;
     struct CGRect latestPlayerLayerBoundsAtRendering;
     struct CGRect latestSubtitleLayoutAtRendering;
     BOOL shouldObservePlayer;

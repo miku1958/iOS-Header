@@ -17,6 +17,7 @@
     BOOL _dashed;
     BOOL _hasShadow;
     BOOL _pathIsPrestroked;
+    BOOL _pathIsDot;
     double _rotationAngle;
     double _strokeWidth;
     UIColor *_strokeColor;
@@ -32,6 +33,7 @@
 @property BOOL hasShadow; // @synthesize hasShadow=_hasShadow;
 @property (readonly) unsigned long long hash;
 @property (strong) UIBezierPath *path; // @synthesize path=_path;
+@property BOOL pathIsDot; // @synthesize pathIsDot=_pathIsDot;
 @property BOOL pathIsPrestroked; // @synthesize pathIsPrestroked=_pathIsPrestroked;
 @property struct CGRect rectangle; // @synthesize rectangle=_rectangle;
 @property double rotationAngle; // @synthesize rotationAngle=_rotationAngle;

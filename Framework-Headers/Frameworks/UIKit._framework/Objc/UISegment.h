@@ -6,13 +6,14 @@
 
 #import <UIKit/UIImageView.h>
 
-@class NSArray, NSString, UIView, _UIBadgeView, _UISegmentedControlAppearanceStorage;
+@class NSArray, NSString, UIView, _UIBadgeView, _UIFloatingContentView, _UISegmentedControlAppearanceStorage;
 
 __attribute__((visibility("hidden")))
 @interface UISegment : UIImageView
 {
     UIView *_info;
     _UISegmentedControlAppearanceStorage *_appearanceStorage;
+    _UIFloatingContentView *_floatingContentView;
     double _width;
     struct CGSize _contentOffset;
     long long _barStyle;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)_dividerImageIsCustom:(BOOL *)arg1;
 - (id)_effectiveContentView;
 - (id)_encodableSubviews;
+- (id)_floatingContentView;
 - (void)_forceInfoDisplay;
 - (BOOL)_hasSelectedColor;
 - (double)_idealWidth;
@@ -75,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (id)_tintColorArchivingKey;
 - (void)_updateBackgroundAndContentViews;
 - (void)_updateBackgroundAndContentViewsIfNeeded;
+- (void)_updateFloatingContentControlState:(unsigned long long)arg1 context:(id)arg2 withAnimationCoordinator:(id)arg3 animated:(BOOL)arg4;
 - (void)_updateTextColors;
 - (void)animateAdd:(BOOL)arg1;
 - (void)animateRemoveForWidth:(double)arg1;
@@ -82,7 +85,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)contentRect;
 - (struct CGSize)contentSize;
 - (void)dealloc;
-- (void)didUpdateFocusFromView:(id)arg1;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)disabledTextColor;
 - (void)encodeWithCoder:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;

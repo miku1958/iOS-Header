@@ -22,6 +22,7 @@
     MusicProductTracklistTableViewConfiguration *_tracklistTableViewConfiguration;
     struct UIEdgeInsets _verticalScrollingContainerContentInsetAdditions;
     BOOL _forContentCreation;
+    BOOL _trailingSeparatorInsetFollowsLayoutInsets;
     MusicEntityValueContext *_containerEntityValueContext;
     MusicProductTracklistTableViewController *_tracklistTableViewController;
     MusicVerticalScrollingContainerViewController *_verticalScrollingContainerViewController;
@@ -30,6 +31,7 @@
     UIViewController *_headerContentViewController;
     MusicMediaDetailTintInformation *_mediaDetailTintInformation;
     id<MusicMediaDetailSplitViewControllerDelegate> _mediaSplitViewControllerDelegate;
+    long long _productDescriptionTextStyle;
     id<MusicEntityProviding> _tracklistEntityProvider;
     unsigned long long _editableComponents;
     UIImage *_editedContentArtworkImage;
@@ -56,9 +58,11 @@
 @property (copy, nonatomic) MusicMediaDetailTintInformation *mediaDetailTintInformation; // @synthesize mediaDetailTintInformation=_mediaDetailTintInformation;
 @property (weak, nonatomic) id<MusicMediaDetailSplitViewControllerDelegate> mediaSplitViewControllerDelegate; // @synthesize mediaSplitViewControllerDelegate=_mediaSplitViewControllerDelegate;
 @property (readonly, nonatomic) long long presentationSource; // @synthesize presentationSource=_presentationSource;
+@property (nonatomic) long long productDescriptionTextStyle; // @synthesize productDescriptionTextStyle=_productDescriptionTextStyle;
 @property (strong, nonatomic) UIViewController *relatedContentViewController; // @synthesize relatedContentViewController=_relatedContentViewController;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<MusicEntityProviding> tracklistEntityProvider; // @synthesize tracklistEntityProvider=_tracklistEntityProvider;
+@property (nonatomic) BOOL trailingSeparatorInsetFollowsLayoutInsets; // @synthesize trailingSeparatorInsetFollowsLayoutInsets=_trailingSeparatorInsetFollowsLayoutInsets;
 
 - (void).cxx_destruct;
 - (void)_commitEditingWithTracklistEntityProviderChangeRecords:(id)arg1;

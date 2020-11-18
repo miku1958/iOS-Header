@@ -72,6 +72,7 @@
 @property (strong) UIView *whiteView; // @synthesize whiteView=_whiteView;
 
 + (id)_exportedInterface;
++ (BOOL)_isInLowMemoryEnvironment;
 + (id)_remoteViewControllerInterface;
 + (Class)viewControllerClassForUTI:(struct __CFString *)arg1;
 - (void).cxx_destruct;
@@ -81,11 +82,13 @@
 - (void)_animateExitWithInfo:(id)arg1;
 - (id)_backgroundColor;
 - (void)_bailFailedAnimateEnterMarkup;
+- (void)_cancel;
 - (void)_commonInit;
 - (struct CGRect)_containerBounds;
 - (void)_createCancelDoneNavBar;
 - (void)_installContentViewControllerForUTI:(id)arg1;
 - (void)_loadSourceContentWithCompletion:(CDUnknownBlockType)arg1;
+- (struct CGSize)_minimumFormSheetDimensions;
 - (id)_navBarTitleColor;
 - (struct CGRect)_rectBetweenNavAndToolbar;
 - (void)_saveEditing:(id)arg1;
@@ -118,6 +121,7 @@
 - (void)editTextAnnotation:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)layerContainingQuickBackgroundForLoupeOnOverlayAtPageIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
 - (struct CGRect)maxPageRectWithPageIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
 - (double)modelBaseScaleFactorOfPageAtIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
 - (void)motionEnded:(long long)arg1 withEvent:(id)arg2;

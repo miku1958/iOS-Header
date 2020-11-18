@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SAObjects/SABaseClientBoundCommand.h>
+#import <SAObjects/SAAceView.h>
 
 @class NSString;
 
-@interface SAVCSPlayTrailer : SABaseClientBoundCommand
+@interface SAVCSPlayTrailer : SAAceView
 {
 }
 
+@property (copy, nonatomic) NSString *contentType;
 @property (copy, nonatomic) NSString *utsId;
 
 + (id)playTrailer;
 + (id)playTrailerWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
-- (BOOL)requiresResponse;
 
 @end
 

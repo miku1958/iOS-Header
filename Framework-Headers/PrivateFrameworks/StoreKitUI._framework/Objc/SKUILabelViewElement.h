@@ -15,7 +15,6 @@
 {
     NSArray *_badges;
     BOOL _containsLinks;
-    BOOL _hasValidEntityText;
     long long _labelViewStyle;
     long long _linkCounter;
     id<SKUILinkHandler> _linkDelegate;
@@ -43,15 +42,13 @@
 
 + (BOOL)shouldParseChildDOMElements;
 - (void).cxx_destruct;
-- (void)_createText;
-- (void)_loadEntityValuesIfNeeded;
+- (void)_createText:(id)arg1;
 - (id)_stringFromDateElement:(id)arg1;
 - (id)_stringFromDurationElement:(id)arg1;
 - (id)_stringFromNumberElement:(id)arg1;
 - (void)_walkDOM:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;
 - (id)applyUpdatesWithElement:(id)arg1;
-- (id)entityValueProperties;
-- (void)entityValueProviderDidChange;
+- (void)dealloc;
 - (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;
 - (void)linkTapped:(id)arg1 range:(struct _NSRange)arg2;
 - (long long)pageComponentType;

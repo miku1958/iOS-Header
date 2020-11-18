@@ -13,10 +13,14 @@ __attribute__((visibility("hidden")))
 
 - (struct CGRect)_insetRectForSpaceKeyRect:(struct CGRect)arg1 yOffset:(double)arg2;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
+- (BOOL)forceVariantsInsideKeyplane;
 - (BOOL)includeDeleteInVariants;
 - (BOOL)preferGlyphForClear;
 - (BOOL)preferGlyphForDelete;
+- (BOOL)smallTextForSpaceAndClear;
 - (BOOL)spaceKeyIsPressed;
+- (double)tldKeyFontSize;
+- (double)tldKeyFontWeight;
 
 @end
 

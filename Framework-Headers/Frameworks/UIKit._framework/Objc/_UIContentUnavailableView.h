@@ -35,6 +35,7 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) unsigned long long vibrantOptions; // @synthesize vibrantOptions=_vibrantOptions;
 
++ (id)allocWithZone:(struct _NSZone *)arg1;
 - (void).cxx_destruct;
 - (void)_actionButtonPressed:(id)arg1;
 - (double)_buttonAlpha;

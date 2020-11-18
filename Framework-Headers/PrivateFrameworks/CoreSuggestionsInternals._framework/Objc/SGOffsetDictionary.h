@@ -9,14 +9,14 @@
 @interface SGOffsetDictionary : NSObject
 {
     unsigned short _count;
-    CDStruct_fcaecfc9 *_carrierEntries;
-    CDStruct_fcaecfc9 *_mruCarrierEntry;
+    CDStruct_e59a5d79 *_carrierEntries;
+    CDStruct_e59a5d79 *_mruCarrierEntry;
     unsigned long long _payloadOffset;
     unsigned long long _totalPayloadSize;
     unsigned long long _sizeFactor;
 }
 
-- (CDStruct_fcaecfc9 *)carrierEntryForKey:(const char *)arg1;
+- (CDStruct_e59a5d79 *)carrierEntryForKey:(const char *)arg1;
 - (void)dealloc;
 - (id)fullMappingFromFile:(id)arg1;
 - (id)initWithFilehandle:(id)arg1 sizeFactor:(unsigned long long)arg2 keyLength:(int)arg3 singleByteOffset:(BOOL)arg4;

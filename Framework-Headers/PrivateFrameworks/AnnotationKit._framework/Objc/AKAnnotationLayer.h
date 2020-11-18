@@ -12,12 +12,14 @@
 {
     BOOL _isObservingAnnotation;
     BOOL _wasLastDrawingClipped;
+    BOOL _lastRedrawWasForDrawingBounds;
     AKAnnotation *_annotation;
     AKPageController *_pageController;
 }
 
 @property (strong) AKAnnotation *annotation; // @synthesize annotation=_annotation;
 @property BOOL isObservingAnnotation; // @synthesize isObservingAnnotation=_isObservingAnnotation;
+@property BOOL lastRedrawWasForDrawingBounds; // @synthesize lastRedrawWasForDrawingBounds=_lastRedrawWasForDrawingBounds;
 @property (weak) AKPageController *pageController; // @synthesize pageController=_pageController;
 @property BOOL wasLastDrawingClipped; // @synthesize wasLastDrawingClipped=_wasLastDrawingClipped;
 
@@ -26,7 +28,7 @@
 - (id)_initWithAnnotation:(id)arg1 andPageController:(id)arg2;
 - (void)_startObservingAnnotation;
 - (void)_stopObservingAnnotation;
-- (void)_updateAnnotationLayer;
+- (void)_updateAnnotationLayerWithLoupeFastPath:(BOOL)arg1;
 - (id)actionForKey:(id)arg1;
 - (void)dealloc;
 - (void)drawInContext:(struct CGContext *)arg1;

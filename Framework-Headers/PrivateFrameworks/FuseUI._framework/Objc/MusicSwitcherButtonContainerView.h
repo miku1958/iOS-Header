@@ -49,8 +49,8 @@
 - (id)_helperButtonsFont;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
+- (void)music_inheritedLayoutInsetsDidChange;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

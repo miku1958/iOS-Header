@@ -110,6 +110,7 @@
 - (BOOL)ignoresShiftState;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAlphabeticPlane;
+- (BOOL)isEmojiKeyplane;
 - (BOOL)isShiftKeyBeingHeld;
 - (BOOL)isShiftKeyPlaneChooser;
 - (BOOL)keyplaneContainsEmojiKey;

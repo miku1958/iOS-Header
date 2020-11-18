@@ -44,7 +44,6 @@
 - (void)basicLoginAlertControllerDidPresent:(id)arg1;
 - (void)basicLoginAlertControllerWillDismiss:(id)arg1;
 - (void)dealloc;
-- (void)didReceiveObjectModel:(id)arg1;
 - (void)dismissBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissKeepUsingUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;
@@ -57,11 +56,13 @@
 - (void)presentServerProvidedUIWithURLRequest:(id)arg1 delegate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remoteUIController:(id)arg1 didDismissModalNavigationWithObjectModels:(id)arg2;
 - (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2;
+- (void)remoteUIController:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(int *)arg3;
 - (BOOL)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3;
 - (void)remoteUIController:(id)arg1 willPresentModalNavigationController:(id)arg2;
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(BOOL)arg3;
+- (id)remoteUIStyle;
 - (id)serverDataHarvester;
 - (void)willPresentModalNavigationController:(id)arg1;
 

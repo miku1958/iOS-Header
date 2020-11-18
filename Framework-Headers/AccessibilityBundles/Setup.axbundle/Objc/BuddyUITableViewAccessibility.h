@@ -10,9 +10,13 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySupplementaryHeaderViews;
+- (id)_axChoiceController;
+- (id)_axPrimaryChoiceButton;
+- (id)_axSecondaryChoiceButton;
 - (id)_axSortedAccessibleSubviews;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;

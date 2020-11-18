@@ -19,7 +19,6 @@
     NSMutableArray *_attachmentViews;
     UILabel *_characterCountLabel;
     id<MSCLComposePostViewDataSource> _dataSource;
-    id<MSCLComposePostViewDelegate> _delegate;
     NSArray *_footerViews;
     NSArray *_headerViews;
     long long _numberOfAttachments;
@@ -35,7 +34,7 @@
 @property (copy, nonatomic) NSArray *attachmentViews; // @synthesize attachmentViews=_attachmentViews;
 @property (weak, nonatomic) id<MSCLComposePostViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<MSCLComposePostViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<MSCLComposePostViewDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *footerViews; // @synthesize footerViews=_footerViews;
 @property (readonly) unsigned long long hash;

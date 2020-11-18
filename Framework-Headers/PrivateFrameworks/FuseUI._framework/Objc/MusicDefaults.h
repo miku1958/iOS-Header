@@ -6,7 +6,7 @@
 
 #import <MediaPlayerUI/MPUApplicationDefaults.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface MusicDefaults : MPUApplicationDefaults
 {
@@ -14,10 +14,12 @@
 }
 
 @property (readonly, nonatomic, getter=isActivityContinuationEnabled) BOOL activityContinuationEnabled;
+@property (strong, nonatomic) NSDate *dateWhenUserLastSawWelcomeScreen;
 @property (readonly, nonatomic) int eqPreset;
 @property (nonatomic, getter=isGeniusUserEnabled) BOOL geniusUserEnabled;
 @property (readonly, nonatomic, getter=isGroupByAlbumArtistEnabled) BOOL groupByAlbumArtistEnabled;
-@property (nonatomic) BOOL hasUserAcknowledgedWelcomeScreen;
+@property (readonly, nonatomic) BOOL hasSetVersionOfNoThanksOption;
+@property (readonly, nonatomic) BOOL hasSetVersionOfNotNowOption;
 @property (nonatomic) BOOL hasUserBeenNotifiedThatAudioBooksHaveMoved;
 @property (nonatomic) BOOL hasUserRequestedSubscriptionHidden;
 @property (nonatomic, getter=isInternalInstall) BOOL internalInstall; // @synthesize internalInstall=_internalInstall;
@@ -39,6 +41,8 @@
 @property (readonly, nonatomic, getter=isSortByArtistEnabled) BOOL sortByArtistEnabled;
 @property (readonly, nonatomic, getter=isSoundCheckEnabled) BOOL soundCheckEnabled;
 @property (copy, nonatomic) NSArray *tabBarOrdering;
+@property (nonatomic) long long versionOfNoThanksOptionWhenUserLastSawWelcomeScreen;
+@property (nonatomic) long long versionOfNotNowOptionWhenUserLastSawWelcomeScreen;
 
 + (id)sharedDefaults;
 - (void)beginObservingDefaultsChanges;

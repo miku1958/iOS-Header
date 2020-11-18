@@ -14,6 +14,7 @@
 @interface ICAttachment : ICCloudSyncingObject <ICSearchIndexable, ICCloudObject>
 {
     ICAttachmentModel *_attachmentModel;
+    BOOL previewImagesIntegrityChecked;
     BOOL doNotSendToCloud;
     struct AVAsset *_movie;
 }
@@ -38,6 +39,7 @@
 @property (nonatomic) double originX; // @dynamic originX;
 @property (nonatomic) double originY; // @dynamic originY;
 @property (strong, nonatomic) NSSet *previewImages; // @dynamic previewImages;
+@property (nonatomic) BOOL previewImagesIntegrityChecked; // @synthesize previewImagesIntegrityChecked;
 @property (strong, nonatomic) NSDate *previewUpdateDate; // @dynamic previewUpdateDate;
 @property (strong, nonatomic) NSURL *remoteFileURL; // @dynamic remoteFileURL;
 @property (nonatomic) short section; // @dynamic section;
@@ -72,6 +74,7 @@
 - (id)attachmentModel;
 - (id)attributedString;
 - (struct CGRect)bounds;
+- (void)checkPreviewImagesIntegrity;
 - (void)deleteFromLocalDatabase;
 - (void)deleteFromNoteContextUsingIndexerContext:(id)arg1;
 - (void)didUpdateLocationPlace;
@@ -126,6 +129,7 @@
 - (BOOL)supportsSavingAttachmentToExternalFile;
 - (id)threadUnsafeNewlyCreatedRecord;
 - (BOOL)thumbnailImage:(struct UIImage **)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 imageScaling:(unsigned long long *)arg4 showAsFileIcon:(BOOL *)arg5 isMovie:(BOOL *)arg6 movieDuration:(CDStruct_198678f7 *)arg7;
+- (void)unmarkForDeletion;
 - (void)updatePreviewsFromRecord:(id)arg1;
 - (long long)visibilityTestingType;
 - (void)willSave;

@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface FUPlaneTrackerAnnotationView : MKAnnotationView <MKAnnotation>
 {
+    BOOL _showsPlane;
     NSMutableArray *_viewAddedBlock;
     CDStruct_2c43369c _coordinate;
 }
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)notifyWhenIsVisibleWithBlock:(CDUnknownBlockType)arg1;
 - (id)planeLayer;
 - (void)setPlaneImage:(id)arg1;
+- (void)setShowsPlane:(BOOL)arg1;
 - (void)setStartLatitude:(double)arg1 startLongitude:(double)arg2 endLatitude:(double)arg3 endLongitude:(double)arg4;
 
 @end

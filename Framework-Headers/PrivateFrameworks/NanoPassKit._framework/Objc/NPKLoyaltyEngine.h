@@ -26,9 +26,10 @@
 + (id)shouldAutomaticallyPresentForSettings:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_init;
+- (void)_postLoyaltyEngineConfigurationChanged;
 - (id)init;
 - (void)moveCardDescriptionFromGreylistToWhitelist:(id)arg1;
-- (void)removeCardDescriptionFromGreylist:(id)arg1;
+- (void)removeCardDescriptionFromGreylistAndWhitelist:(id)arg1;
 - (void)reset;
 
 @end

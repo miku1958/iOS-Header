@@ -6,16 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface UIAXDelegateClearer : NSObject
 {
     id delegatee;
     id delegate;
     SEL clearMethod;
+    NSString *key;
 }
 
 @property (nonatomic) SEL clearMethod; // @synthesize clearMethod;
 @property (nonatomic) id delegate; // @synthesize delegate;
 @property (nonatomic) id delegatee; // @synthesize delegatee;
+@property (strong, nonatomic) NSString *key; // @synthesize key;
 
 - (void)dealloc;
 

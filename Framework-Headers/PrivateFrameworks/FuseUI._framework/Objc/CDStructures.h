@@ -78,6 +78,13 @@ struct vector<std::__1::shared_ptr<std::__1::vector<Music::EditingEntityProvider
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    double titleBaselineOffsetFromBottom;
+    double titleBaselineOffsetFromTop;
+    long long titleFontTextStyle;
+    long long titleFontWeight;
+} CDStruct_4a0565dd;
+
+typedef struct {
     long long _field1;
     unsigned long long _field2;
 } CDStruct_1dee9796;
@@ -88,9 +95,9 @@ typedef struct {
     double _field3;
 } CDStruct_8ff95007;
 
-// Ambiguous groups
 typedef struct {
-    double _field1;
-    double _field2;
-} CDStruct_c3b9c2ee;
+    struct CGRect _field1;
+    struct CGRect _field2;
+    struct CGRect _field3;
+} CDStruct_6b60c6e5;
 

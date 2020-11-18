@@ -13,27 +13,34 @@
 
 @interface MusicCoalescingEntityValueProvider : NSObject <MusicEntityValueProviding>
 {
-    NSDictionary *_cachedPropertyValues;
-    NSSet *_propertiesToPrefetch;
+    NSDictionary *_cachedPropertyValuesLoadedAsynchronously;
+    NSDictionary *_cachedPropertyValuesLoadedSynchronously;
+    NSSet *_propertiesToLoadAsynchronously;
+    NSSet *_propertiesToPrefetchSynchronously;
     id<MusicEntityValueProviding> _baseEntityValueProvider;
     MusicEntityViewContentDescriptor *_contentDescriptor;
 }
 
-@property (strong, nonatomic) id<MusicEntityValueProviding> baseEntityValueProvider; // @synthesize baseEntityValueProvider=_baseEntityValueProvider;
-@property (strong, nonatomic) MusicEntityViewContentDescriptor *contentDescriptor; // @synthesize contentDescriptor=_contentDescriptor;
+@property (readonly, nonatomic) id<MusicEntityValueProviding> baseEntityValueProvider; // @synthesize baseEntityValueProvider=_baseEntityValueProvider;
+@property (readonly, nonatomic) MusicEntityViewContentDescriptor *contentDescriptor; // @synthesize contentDescriptor=_contentDescriptor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_cachedPropertyValues;
+- (id)_cachedPropertyValuesLoadedSynchronously;
 - (void)_handleContentDescriptorDidInvalidateNotification:(id)arg1;
-- (void)_invalidateCachedPropertyValues;
-- (void)_updatePropertiesToPrefetch;
+- (void)_invalidateCachedPropertyValuesLoadedAsynchronously;
+- (void)_invalidateCachedPropertyValuesLoadedSynchronously;
+- (void)_updatePropertiesToLoadAndPrefetch;
+- (void)_updateWithBaseEntityValueProvider:(id)arg1 contentDescriptor:(id)arg2;
 - (void)dealloc;
 - (id)entityUniqueIdentifier;
 - (id)imageURLForEntityArtworkProperty:(id)arg1 fittingSize:(struct CGSize)arg2 destinationScale:(double)arg3;
+- (void)reloadWithBaseEntityValueProvider:(id)arg1 contentDescriptor:(id)arg2;
+- (void)reset;
+- (void)updateWithAsynchronouslyLoadedPropertyValues:(id)arg1;
 - (id)valueForEntityProperty:(id)arg1;
 - (id)valuesForEntityProperties:(id)arg1;
 

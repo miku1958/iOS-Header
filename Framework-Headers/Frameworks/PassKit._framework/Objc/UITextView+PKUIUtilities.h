@@ -7,8 +7,10 @@
 #import <UIKit/UITextView.h>
 
 @interface UITextView (PKUIUtilities)
-+ (id)pkui_plainNonInteractiveTextView;
-- (struct CGSize)pkui_frameSizeForTextSize:(struct CGSize)arg1;
++ (id)pkui_plainInteractiveTextViewWithFrame:(struct CGRect)arg1;
++ (id)pkui_plainNonInteractiveTextViewWithFrame:(struct CGRect)arg1;
+- (struct CGRect)pkui_frameForTextFrame:(struct CGRect)arg1;
+- (struct CGRect)pkui_textFrame;
 - (struct CGSize)pkui_textSizeThatFits:(struct CGSize)arg1;
 @end
 

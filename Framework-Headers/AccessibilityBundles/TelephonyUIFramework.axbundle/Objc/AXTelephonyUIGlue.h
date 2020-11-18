@@ -11,8 +11,6 @@
 }
 
 + (void)accessibilityInitializeBundle;
-- (int)_keyForPoint:(struct CGPoint)arg1;
-- (struct CGRect)_rectForKey:(int)arg1;
 
 @end
 

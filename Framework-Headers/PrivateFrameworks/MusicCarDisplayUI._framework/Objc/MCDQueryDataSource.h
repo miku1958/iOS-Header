@@ -6,11 +6,15 @@
 
 #import <MediaPlayerUI/MPUCompletionQueryDataSource.h>
 
+@class MPMediaPredicate;
+
 @interface MCDQueryDataSource : MPUCompletionQueryDataSource
 {
+    MPMediaPredicate *_localPredicate;
 }
 
-- (void)_defaultsDidChangeNotification:(id)arg1;
+- (void).cxx_destruct;
+- (void)_predicateBehaviorsChangedNotification:(id)arg1;
 - (id)_queryForNowPlayingComparisonAtIndex:(unsigned long long)arg1;
 - (BOOL)_updateQueryPredicatesAndOrdering;
 - (void)dealloc;

@@ -6,17 +6,23 @@
 
 #import <UIKit/UIPanGestureRecognizer.h>
 
+@class NSArray, NSMutableArray;
+
 @interface AKPanGestureRecognizer : UIPanGestureRecognizer
 {
     double _currentWeight;
     double _currentMaxWeight;
+    NSMutableArray *_accumulatedTouches;
     struct CGPoint _locationOfFirstTouch;
 }
 
+@property (strong, nonatomic) NSMutableArray *accumulatedTouches; // @synthesize accumulatedTouches=_accumulatedTouches;
 @property (nonatomic) double currentMaxWeight; // @synthesize currentMaxWeight=_currentMaxWeight;
 @property (nonatomic) double currentWeight; // @synthesize currentWeight=_currentWeight;
 @property (nonatomic) struct CGPoint locationOfFirstTouch; // @synthesize locationOfFirstTouch=_locationOfFirstTouch;
+@property (readonly, nonatomic) NSArray *touchesBeforeRecognition;
 
+- (void).cxx_destruct;
 - (struct CGPoint)locationOfFirstTouchInView:(id)arg1;
 - (void)reset;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

@@ -13,10 +13,12 @@
     PUResourceDownloadRequest *_currentResourceDownloadRequest;
     NSString *_currentGridProgressIdentifier;
     CDUnknownBlockType _currentDownloadSuccessHandler;
+    BOOL _shouldTreatLivePhotosAsStills;
     PUPhotosGridViewController *_gridViewController;
 }
 
 @property (readonly, weak, nonatomic) PUPhotosGridViewController *gridViewController; // @synthesize gridViewController=_gridViewController;
+@property (nonatomic) BOOL shouldTreatLivePhotosAsStills; // @synthesize shouldTreatLivePhotosAsStills=_shouldTreatLivePhotosAsStills;
 
 - (void).cxx_destruct;
 - (void)_downloadForRequest:(id)arg1 didCompleteWithSuccess:(BOOL)arg2 canceled:(BOOL)arg3 error:(id)arg4;

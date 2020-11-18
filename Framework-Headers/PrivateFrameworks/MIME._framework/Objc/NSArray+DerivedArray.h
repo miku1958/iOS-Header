@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (DerivedArray)
+- (void)mf_enumerateObjectsInBatchesOfSize:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (id)mf_indicesOfStringsWithPrefix:(id)arg1;
 - (id)mf_objectsPassingTest:(CDUnknownBlockType)arg1;
 @end

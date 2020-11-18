@@ -13,9 +13,11 @@
     NSURL *_fileURL;
     NSString *_originalFileName;
     NSString *_uti;
+    unsigned long long _cplResourceType;
     PHSandboxExtensionWrapper *_sandboxExtensionWrapper;
 }
 
+@property (readonly, nonatomic) unsigned long long cplResourceType; // @synthesize cplResourceType=_cplResourceType;
 @property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (readonly, nonatomic) NSString *originalFileName; // @synthesize originalFileName=_originalFileName;
 @property (readonly, nonatomic) PHSandboxExtensionWrapper *sandboxExtensionWrapper; // @synthesize sandboxExtensionWrapper=_sandboxExtensionWrapper;
@@ -24,7 +26,7 @@
 - (void).cxx_destruct;
 - (void)acquireSandboxExtensionIfNeeded;
 - (id)description;
-- (id)initWithFileURL:(id)arg1 fileName:(id)arg2 uti:(id)arg3;
+- (id)initWithFileURL:(id)arg1 fileName:(id)arg2 uti:(id)arg3 cplResourceType:(unsigned long long)arg4;
 
 @end
 

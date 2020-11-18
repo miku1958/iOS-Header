@@ -19,7 +19,6 @@
 - (void)appContext:(IKAppContext *)arg1 evaluateAppJavaScriptInContext:(JSContext *)arg2;
 - (void)appContext:(IKAppContext *)arg1 needsReloadWithUrgency:(unsigned long long)arg2;
 - (BOOL)appContext:(IKAppContext *)arg1 validateDOMDocument:(IKDOMDocument *)arg2 inContext:(JSContext *)arg3 error:(id *)arg4;
-- (void)appContextNeedsRestart:(IKAppContext *)arg1;
 - (id<IKAppNavigationController>)modalControllerForContext:(IKAppContext *)arg1;
 - (id<IKAppNavigationController>)navigationControllerForContext:(IKAppContext *)arg1;
 - (id<IKAppMediaItem>)objectForMediaItem:(IKAppMediaItemBridge *)arg1;

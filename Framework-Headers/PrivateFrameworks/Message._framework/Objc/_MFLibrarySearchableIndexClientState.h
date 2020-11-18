@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString;
+@class NSDate, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _MFLibrarySearchableIndexClientState : NSObject
 {
+    NSNumber *_transactionValue;
     long long _transaction;
     NSDate *_transactionDate;
     NSString *_systemBuildVersion;
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *systemBuildVersion; // @synthesize systemBuildVersion=_systemBuildVersion;
 @property (nonatomic) long long transaction; // @synthesize transaction=_transaction;
 @property (strong, nonatomic) NSDate *transactionDate; // @synthesize transactionDate=_transactionDate;
+@property (readonly, nonatomic) NSNumber *transactionValue;
 
 + (id)clientState;
 + (id)clientStateFromData:(id)arg1;

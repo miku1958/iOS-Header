@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)handleTap;
 - (id)hostViewForSheet:(id)arg1;
 - (struct CGRect)initialPresentationRectInHostViewForSheet:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (struct CGRect)presentationRectInHostViewForSheet:(id)arg1;
 
 @end

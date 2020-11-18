@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)getAppLinkWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

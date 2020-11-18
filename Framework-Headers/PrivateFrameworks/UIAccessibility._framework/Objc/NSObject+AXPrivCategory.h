@@ -108,6 +108,7 @@
 - (id)_accessibilityElementsForSearchParameter:(id)arg1;
 - (void)_accessibilityEnumerateAllCustomRotorTitlesWithAccumulator:(id *)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_accessibilityEquivalenceTag;
+- (int)_accessibilityExpandedStatus;
 - (id)_accessibilityFindAXDescendants:(CDUnknownBlockType)arg1 byAddingElements:(CDUnknownBlockType)arg2;
 - (id)_accessibilityFindAncestor:(CDUnknownBlockType)arg1 startWithSelf:(BOOL)arg2;
 - (id)_accessibilityFindAnyAXDescendant:(CDUnknownBlockType)arg1 byAddingElements:(CDUnknownBlockType)arg2;
@@ -116,6 +117,7 @@
 - (void)_accessibilityFindSearchResult:(BOOL)arg1 withString:(id)arg2;
 - (id)_accessibilityFindSubviewDescendant:(CDUnknownBlockType)arg1;
 - (id)_accessibilityFindSubviewDescendantsPassingTest:(CDUnknownBlockType)arg1;
+- (id)_accessibilityFindUnsortedSubviewDescendantsPassingTest:(CDUnknownBlockType)arg1;
 - (id)_accessibilityFirstElementForFocus;
 - (id)_accessibilityFirstOpaqueElement;
 - (id)_accessibilityFirstOpaqueElementForFocus;
@@ -285,6 +287,7 @@
 - (void)_accessibilityRemoveTrait:(unsigned long long)arg1;
 - (void)_accessibilityReplace;
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
+- (BOOL)_accessibilityRepresentsInfiniteCollection;
 - (void)_accessibilityResetContainerElements;
 - (BOOL)_accessibilityRespectsTableScrollEnabledFlag;
 - (id)_accessibilityResponderElement;
@@ -303,10 +306,13 @@
 - (BOOL)_accessibilityScrollLeftPage;
 - (BOOL)_accessibilityScrollNextPage;
 - (void)_accessibilityScrollOpaqueElementIntoView:(int)arg1 previousScroller:(id)arg2;
+- (BOOL)_accessibilityScrollPageInDirection:(long long)arg1 shouldSendScrollFailed:(BOOL)arg2;
 - (id)_accessibilityScrollParent;
+- (id)_accessibilityScrollParentForComparingByXAxis;
 - (BOOL)_accessibilityScrollPreviousPage;
 - (struct CGPoint)_accessibilityScrollRectToVisible:(struct CGRect)arg1;
 - (BOOL)_accessibilityScrollRightPage;
+- (SEL)_accessibilityScrollSelectorForDirection:(long long)arg1;
 - (id)_accessibilityScrollStatus;
 - (BOOL)_accessibilityScrollToFrame:(struct CGRect)arg1 forView:(id)arg2;
 - (void)_accessibilityScrollToPoint:(struct CGPoint)arg1;
@@ -402,7 +408,7 @@
 - (id)_accessibilityTraitsAsHumanReadableStrings:(unsigned long long)arg1;
 - (id)_accessibilityTraitsInspectorHumanReadable;
 - (BOOL)_accessibilityTriggerDictationFromPath:(id)arg1;
-- (BOOL)_accessibilityTryScrollWithSelector:(SEL)arg1;
+- (BOOL)_accessibilityTryScrollWithSelector:(SEL)arg1 shouldSendScrollFailed:(BOOL)arg2;
 - (id)_accessibilityUnignoredDescendant;
 - (void)_accessibilityUnregister;
 - (id)_accessibilityUpcomingRoadsForPoint:(struct CGPoint)arg1 forAngle:(float)arg2;

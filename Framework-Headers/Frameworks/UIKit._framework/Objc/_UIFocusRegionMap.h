@@ -25,17 +25,20 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_closestFocusableRegionInArray:(id)arg1 toPoint:(struct CGPoint)arg2 usingHeading:(unsigned long long)arg3;
 - (id)_closestFocusableRegionInArray:(id)arg1 toPoint:(struct CGPoint)arg2 usingHeading:(unsigned long long)arg3 withFocusedView:(id)arg4 consideringFavoredRegion:(BOOL)arg5 includingFocusedView:(BOOL)arg6;
+- (BOOL)_containsFocusableRegionForView:(id)arg1;
 - (struct CGPoint)_focusCandidateSearchOriginForFocusedFrame:(struct CGRect)arg1 heading:(unsigned long long)arg2 minimumSearchArea:(struct CGRect)arg3;
 - (struct CGRect)_focusCandidateSearchRectForFocusedFrame:(struct CGRect)arg1 heading:(unsigned long long)arg2 minimumSearchArea:(struct CGRect)arg3;
-- (id)_nearestFocusCandidateFromFocusedView:(id)arg1 withFocusedRect:(struct CGRect)arg2 inDirection:(struct CGVector)arg3 includingFocusedView:(BOOL)arg4;
+- (id)_nearestFocusCandidateFromFocusedView:(id)arg1 withFocusedRect:(struct CGRect)arg2 usingHeading:(unsigned long long)arg3 includingFocusedView:(BOOL)arg4;
 - (struct CGRect)_rectThatJustBarelyIntersectsRect:(struct CGRect)arg1 startingRect:(struct CGRect)arg2;
 - (struct CGRect)_viewSearchRectForFocusedFrame:(struct CGRect)arg1 focusCandidateSearchRect:(struct CGRect)arg2 includesFocusedFrame:(BOOL)arg3;
+- (struct CGRect)_viewSearchRectForSnapshotRect:(struct CGRect)arg1;
 - (id)debugQuickLookObject;
+- (id)inferredPreferredFocusedSubviewForView:(id)arg1;
 - (id)initWithRootView:(id)arg1;
 - (id)linearlyOrderedFocusCandidatesFromView:(id)arg1 usingHeading:(unsigned long long)arg2 indexForFocusedView:(unsigned long long *)arg3;
 - (id)linearlyOrderedFocusRegionMapEntriesFromView:(id)arg1 usingHeading:(unsigned long long)arg2;
-- (id)nearestFocusCandidateFromRect:(struct CGRect)arg1 inDirection:(struct CGVector)arg2;
-- (id)nearestFocusCandidateFromView:(id)arg1 inDirection:(struct CGVector)arg2;
+- (id)nearestFocusCandidateFromRect:(struct CGRect)arg1 usingHeading:(unsigned long long)arg2;
+- (id)nearestFocusCandidateFromView:(id)arg1 usingHeading:(unsigned long long)arg2;
 
 @end
 

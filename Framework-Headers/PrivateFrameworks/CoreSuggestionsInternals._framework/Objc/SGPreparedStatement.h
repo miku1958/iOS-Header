@@ -18,7 +18,6 @@
 
 @property (readonly, nonatomic) struct sqlite3_stmt *stmt; // @synthesize stmt=_stmt;
 
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithStatementPointer:(struct sqlite3_stmt *)arg1 owner:(id)arg2;

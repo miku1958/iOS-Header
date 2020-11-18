@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityNativeFocusElement;
-- (BOOL)_updateFocusWithContext:(id)arg1 animationCoordinator:(id)arg2;
+- (BOOL)_updateFocusWithContext:(id)arg1;
 
 @end
 

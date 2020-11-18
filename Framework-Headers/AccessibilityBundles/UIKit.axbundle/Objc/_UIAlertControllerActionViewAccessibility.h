@@ -15,6 +15,8 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityUserTestingIsCancelButton;
 - (BOOL)_accessibilityUserTestingIsDefaultButton;
+- (BOOL)_accessibilityUserTestingIsDestructiveButton;
+- (BOOL)_accessibilityUserTestingIsPreferredButton;
 - (id)accessibilityLabel;
 - (id)accessibilityLanguage;
 - (unsigned long long)accessibilityTraits;

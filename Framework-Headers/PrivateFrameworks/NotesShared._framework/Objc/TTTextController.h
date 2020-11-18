@@ -33,8 +33,11 @@
 - (id)bodyAttributes;
 - (id)captionAttributes;
 - (id)checklistAttributes;
+- (id)copyAttribute:(id)arg1 fromAttributes:(id)arg2 toAttributes:(id)arg3;
+- (id)copyNSParagraphStylefromAttributes:(id)arg1 toAttributes:(id)arg2;
 - (id)defaultListAttributes;
 - (id)defaultParagraphStyle;
+- (id)defaultTypingAttributesForEmptyDocument;
 - (id)filterStyleAttributes:(id)arg1 range:(struct _NSRange)arg2;
 - (void)fixModelAttributesInTextStorage:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)fixedWidthAttributes;
@@ -44,7 +47,10 @@
 - (id)modelForStyleAttributes:(id)arg1 filterAttributes:(BOOL)arg2;
 - (id)preferredAttributesForTTTextStyle:(unsigned int)arg1;
 - (struct UIFont *)preferredFontForTTTextStyle:(unsigned int)arg1;
+- (id)referenceAttributesForLocation:(unsigned long long)arg1 textStorage:(id)arg2 currentParagraphStart:(unsigned long long)arg3;
+- (id)removeAttribute:(id)arg1 ifInconsistentAtLocation:(unsigned long long)arg2 inTextStorage:(id)arg3 forNewTypingAttributes:(id)arg4;
 - (void)resetGuessedFontSizes;
+- (id)strippedTypingAttributesForEmptyParagraphAtTheEndOfDocument:(id)arg1 isTyping:(BOOL)arg2;
 - (void)styleFontInTextStorage:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)styleForModelAttributes:(id)arg1;
 - (void)styleListsAndIndentsInAttributedString:(id)arg1 inRange:(struct _NSRange)arg2;

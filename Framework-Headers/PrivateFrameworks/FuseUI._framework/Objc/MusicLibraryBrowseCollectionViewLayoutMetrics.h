@@ -8,10 +8,10 @@
 
 @interface MusicLibraryBrowseCollectionViewLayoutMetrics : NSObject
 {
-    BOOL _wantsEdgeToEdgeLayout;
     double _itemWidth;
     double _itemHeight;
     double _minimumInteritemSpacing;
+    double _textLateralEdgePadding;
     struct CGSize _headerSize;
     struct UIEdgeInsets _contentInsets;
     struct UIEdgeInsets _sectionInsets;
@@ -26,11 +26,10 @@
 @property (nonatomic) double itemWidth; // @synthesize itemWidth=_itemWidth;
 @property (nonatomic) double minimumInteritemSpacing; // @synthesize minimumInteritemSpacing=_minimumInteritemSpacing;
 @property (nonatomic) struct UIEdgeInsets sectionInsets; // @synthesize sectionInsets=_sectionInsets;
-@property (nonatomic) BOOL wantsEdgeToEdgeLayout; // @synthesize wantsEdgeToEdgeLayout=_wantsEdgeToEdgeLayout;
+@property (nonatomic) double textLateralEdgePadding; // @synthesize textLateralEdgePadding=_textLateralEdgePadding;
 
 - (id)description;
-- (void)populateHorizontalMetricsWithSize:(struct CGSize)arg1 linearRelationWidth:(CDStruct_c3b9c2ee)arg2 maximumWidth:(double)arg3;
-- (void)populateHorizontalMetricsWithSize:(struct CGSize)arg1 minimumHorizontalEdgeSpacing:(double)arg2 maximumColumnCount:(long long)arg3 interitemSpacing:(double)arg4 minimumCellWidth:(double)arg5 traitCollection:(id)arg6;
+- (id)init;
 
 @end
 

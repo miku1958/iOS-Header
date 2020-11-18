@@ -11,6 +11,7 @@
 @interface MFLibrarySearchableIndexItem : NSObject
 {
     BOOL _hasCompleteBodyData;
+    NSString *_identifier;
     MFMailMessage *_message;
     NSData *_bodyData;
 }
@@ -18,16 +19,19 @@
 @property (strong, nonatomic) NSData *bodyData; // @synthesize bodyData=_bodyData;
 @property (readonly, copy, nonatomic) NSString *domainIdentifier;
 @property (nonatomic) BOOL hasCompleteBodyData; // @synthesize hasCompleteBodyData=_hasCompleteBodyData;
-@property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, strong, nonatomic) MFMailMessage *message; // @synthesize message=_message;
 @property (readonly, strong, nonatomic) CSSearchableItem *searchableItem;
 
 + (id)itemWithMessage:(id)arg1 bodyData:(id)arg2;
++ (id)transactionAttributeKey;
 - (BOOL)_isMessagePartOfExistingThreadWithHeaders:(id)arg1;
 - (long long)compare:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithIdentifier:(id)arg1;
 - (id)initWithMessage:(id)arg1 bodyData:(id)arg2;
+- (id)searchableItemWithClientState:(id)arg1;
 
 @end
 

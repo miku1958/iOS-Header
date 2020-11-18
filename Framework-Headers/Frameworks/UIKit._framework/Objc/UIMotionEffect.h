@@ -9,14 +9,16 @@
 #import <UIKit/NSCoding-Protocol.h>
 #import <UIKit/NSCopying-Protocol.h>
 
-@class _UIMotionAnalyzerSettings;
+@class NSString, _UIMotionAnalyzerSettings;
 
 @interface UIMotionEffect : NSObject <NSCopying, NSCoding>
 {
     _UIMotionAnalyzerSettings *_preferredMotionAnalyzerSettings;
+    NSString *_animationIdentifier;
 }
 
 - (void).cxx_destruct;
+- (id)_animationIdentifier;
 - (id)_keyPathsAndRelativeValuesForPose:(id)arg1;
 - (id)_preferredMotionAnalyzerSettings;
 - (void)_setPreferredMotionAnalyzerSettings:(id)arg1;

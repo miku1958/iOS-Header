@@ -30,26 +30,26 @@
     float _playRate;
     float __hintPlayRate;
     AVPlayer *_videoPlayer;
-    AVPlayer *_audioPlayer;
     long long _state;
     id<ISAVPlayerControllerDelegate> _delegate;
+    double _prePhotoGapTime;
     long long __seekRequestID;
     id __didBeginPlaybackObserver;
     AVPlayerItem *__playerItemToObservePlaybackEnd;
-    AVPlayerItem *__currentAudioPlayerItem;
     AVPlayerItem *__currentVideoPlayerItem;
     CDStruct_1b6d18a9 __lastResetTime;
     CDStruct_1b6d18a9 __forwardPlaybackEndTime;
+    CDStruct_1b6d18a9 __lastSetForwardPlaybackEndTime;
     CDStruct_1b6d18a9 __observedPlaybackNearEndTime;
 }
 
-@property (strong, nonatomic, setter=_setCurrentAudioPlayerItem:) AVPlayerItem *_currentAudioPlayerItem; // @synthesize _currentAudioPlayerItem=__currentAudioPlayerItem;
 @property (strong, nonatomic, setter=_setCurrentVideoPlayerItem:) AVPlayerItem *_currentVideoPlayerItem; // @synthesize _currentVideoPlayerItem=__currentVideoPlayerItem;
 @property (strong, nonatomic, setter=_setDidBeginPlaybackObserver:) id _didBeginPlaybackObserver; // @synthesize _didBeginPlaybackObserver=__didBeginPlaybackObserver;
 @property (nonatomic, setter=_setForwardPlaybackEndTime:) CDStruct_1b6d18a9 _forwardPlaybackEndTime; // @synthesize _forwardPlaybackEndTime=__forwardPlaybackEndTime;
 @property (nonatomic, setter=_setHintPlayRate:) float _hintPlayRate; // @synthesize _hintPlayRate=__hintPlayRate;
 @property (nonatomic, setter=_setPerformingChanges:) BOOL _isPerfomingChanges; // @synthesize _isPerfomingChanges=__isPerfomingChanges;
 @property (nonatomic, setter=_setLastResetTime:) CDStruct_1b6d18a9 _lastResetTime; // @synthesize _lastResetTime=__lastResetTime;
+@property (nonatomic, setter=_setLastSetForwardPlaybackEndTime:) CDStruct_1b6d18a9 _lastSetForwardPlaybackEndTime; // @synthesize _lastSetForwardPlaybackEndTime=__lastSetForwardPlaybackEndTime;
 @property (nonatomic, setter=_setObservedPlaybackNearEndTime:) CDStruct_1b6d18a9 _observedPlaybackNearEndTime; // @synthesize _observedPlaybackNearEndTime=__observedPlaybackNearEndTime;
 @property (nonatomic, getter=_hasPendingReset, setter=_setPendingReset:) BOOL _pendingReset; // @synthesize _pendingReset=__pendingReset;
 @property (strong, nonatomic, setter=_setPlayerItemToObservePlaybackEnd:) AVPlayerItem *_playerItemToObservePlaybackEnd; // @synthesize _playerItemToObservePlaybackEnd=__playerItemToObservePlaybackEnd;
@@ -58,11 +58,11 @@
 @property (nonatomic, getter=_isSeekingVideo, setter=_setSeekingVideo:) BOOL _seekingVideo; // @synthesize _seekingVideo=__seekingVideo;
 @property (nonatomic, setter=_setShouldPlayAudio:) BOOL _shouldPlayAudio; // @synthesize _shouldPlayAudio=__shouldPlayAudio;
 @property (nonatomic, setter=_setShouldPreroll:) BOOL _shouldPreroll; // @synthesize _shouldPreroll=__shouldPreroll;
-@property (strong, nonatomic) AVPlayer *audioPlayer; // @synthesize audioPlayer=_audioPlayer;
 @property (weak, nonatomic) id<ISAVPlayerControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL isSeeking;
 @property (nonatomic) float playRate; // @synthesize playRate=_playRate;
 @property (nonatomic) float playVolume; // @synthesize playVolume=_playVolume;
+@property (nonatomic) double prePhotoGapTime; // @synthesize prePhotoGapTime=_prePhotoGapTime;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (strong, nonatomic) AVPlayer *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
 
@@ -76,7 +76,6 @@
 - (void)_playerItemWillFinishPlaying;
 - (void)_safelyUpdateRateForPlayers;
 - (void)_seekToDesiredTimeIfReady;
-- (void)_setAudioPlayer:(id)arg1;
 - (void)_setState:(long long)arg1;
 - (void)_setVideoPlayer:(id)arg1;
 - (void)_startPlayingFromTime:(CDStruct_1b6d18a9)arg1 toTime:(CDStruct_1b6d18a9)arg2 withRate:(float)arg3 shouldPlayAudio:(BOOL)arg4;
@@ -84,15 +83,13 @@
 - (void)_videoPlayerDidBeginPlaybackWithObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)initWithVideoPlayer:(id)arg1 audioPlayer:(id)arg2;
+- (id)initWithVideoPlayer:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pause;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)playFromTime:(CDStruct_1b6d18a9)arg1 toTime:(CDStruct_1b6d18a9)arg2 withRate:(float)arg3 shouldPlayAudio:(BOOL)arg4;
 - (void)resetToTime:(CDStruct_1b6d18a9)arg1;
 - (void)resetToTime:(CDStruct_1b6d18a9)arg1 hintEndTime:(CDStruct_1b6d18a9)arg2 hintPlayRate:(float)arg3;
-- (void)startObservingVideoPlayerItem:(id)arg1 audioPlayerItem:(id)arg2;
-- (void)stopObservingVideoPlayerItem:(id)arg1 audioPlayerItem:(id)arg2;
 
 @end
 

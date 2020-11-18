@@ -13,10 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)fade;
 - (void)fadeAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
-- (void)fadeWithDelay:(double)arg1;
-- (void)highlightRow:(unsigned long long)arg1;
 
 @end
 

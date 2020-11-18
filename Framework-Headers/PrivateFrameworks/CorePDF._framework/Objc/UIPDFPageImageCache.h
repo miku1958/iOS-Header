@@ -12,6 +12,7 @@
 {
     UIPDFDocument *_document;
     unsigned long long _lookAhead;
+    double _lookAheadResolution;
     unsigned long long _jobCount;
     id *_jobsPrioritized;
     unsigned long long _nextJobIndex;
@@ -23,6 +24,7 @@
 
 @property (readonly) UIPDFDocument *document; // @synthesize document=_document;
 @property (readonly) unsigned long long lookAhead; // @synthesize lookAhead=_lookAhead;
+@property (readonly) double lookAheadResolution; // @synthesize lookAheadResolution=_lookAheadResolution;
 @property (readonly) unsigned long long pageCount; // @synthesize pageCount=_pageCount;
 
 - (void)addRenderJob:(id)arg1;
@@ -35,7 +37,7 @@
 - (void)didReceiveMemoryWarning:(id)arg1;
 - (id)getImageIfAvailableForPage:(unsigned long long)arg1;
 - (id)initWithDocument:(id)arg1;
-- (id)initWithDocument:(id)arg1 cacheCount:(unsigned long long)arg2 lookAhead:(unsigned long long)arg3;
+- (id)initWithDocument:(id)arg1 cacheCount:(unsigned long long)arg2 lookAhead:(unsigned long long)arg3 withLookAheadResolution:(double)arg4;
 
 @end
 

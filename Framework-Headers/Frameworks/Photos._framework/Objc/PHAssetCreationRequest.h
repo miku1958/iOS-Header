@@ -8,15 +8,17 @@
 
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 
-@class NSManagedObjectID, NSMutableArray, NSString, PHAssetCreationPhotoStreamPublishingRequest, PHAssetResourceBag;
+@class NSDictionary, NSManagedObjectID, NSMutableArray, NSMutableDictionary, NSString, PHAssetCreationPhotoStreamPublishingRequest, PHAssetResourceBag;
 
 @interface PHAssetCreationRequest : PHAssetChangeRequest <PHInsertChangeRequest>
 {
     NSMutableArray *_assetResources;
     PHAssetResourceBag *_assetResourceBag;
+    NSMutableDictionary *_movedFiles;
     PHAssetCreationPhotoStreamPublishingRequest *__photoStreamPublishingRequest;
 }
 
+@property (readonly, nonatomic) NSDictionary *_movedFiles;
 @property (strong, nonatomic, setter=_setPhotoStreamPublishingRequest:) PHAssetCreationPhotoStreamPublishingRequest *_photoStreamPublishingRequest; // @synthesize _photoStreamPublishingRequest=__photoStreamPublishingRequest;
 @property (readonly, nonatomic) NSString *clientName;
 @property (readonly, nonatomic) int clientProcessID;
@@ -45,8 +47,11 @@
 - (BOOL)_createAssetAsAdjusted:(id)arg1 fromValidatedResources:(id)arg2 error:(id *)arg3;
 - (BOOL)_createAssetAsPhotoIris:(id)arg1 fromValidatedResources:(id)arg2 error:(id *)arg3;
 - (BOOL)_createAssetFromValidatedResources:(id)arg1 uuid:(id)arg2 photoLibrary:(id)arg3 error:(id *)arg4;
+- (void)_didMoveFileFromURL:(id)arg1 toURL:(id)arg2;
 - (id)_managedAssetFromData:(id)arg1 photoLibrary:(id)arg2 getImageSource:(struct CGImageSource **)arg3 imageData:(id *)arg4;
 - (long long)_mediaTypeForCreatedAsset;
+- (void)_resetMovedFiles;
+- (BOOL)_restoreMovedFilesOnFailure;
 - (id)_secureMove:(BOOL)arg1 assetResource:(id)arg2 error:(id *)arg3;
 - (id)_secureMove:(BOOL)arg1 fileAtURL:(id)arg2 toURL:(id)arg3 error:(id *)arg4;
 - (void)addResourceWithType:(long long)arg1 data:(id)arg2 options:(id)arg3;

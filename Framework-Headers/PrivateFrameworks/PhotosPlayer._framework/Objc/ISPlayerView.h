@@ -7,29 +7,38 @@
 #import <UIKit/UIView.h>
 
 #import <PhotosPlayer/ISGestureInputDelegate-Protocol.h>
+#import <PhotosPlayer/ISPlayerChangeObserver-Protocol.h>
 #import <PhotosPlayer/ISPlayerOutput-Protocol.h>
 #import <PhotosPlayer/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AVPlayerLayer, CALayer, ISCrossfadeLayer, ISGestureInput, ISMutedAudioInput, ISPlaybackSpec, ISPlayer, ISVitalityFilter, ISVitalityInput, NSError, NSMutableSet, NSString, UIGestureRecognizer, UIScrollView, _ISAVPlayerView, _ISCrossfadeView, _ISPlayerDebugView, _ISTargetView;
-@protocol ISPlayerViewDelegate, NSObject;
+@class AVPlayer, AVPlayerLayer, CALayer, ISCrossfadeLayer, ISGestureInput, ISMutedAudioInput, ISPlaybackSpec, ISPlayer, ISVitalityFilter, ISVitalityInput, NSError, NSHashTable, NSMutableSet, NSObject, NSString, UIGestureRecognizer, UIScrollView, _ISAVPlayerView, _ISCrossfadeView, _ISPlayerDebugView, _ISTargetView;
+@protocol ISPlayerViewDelegate, NSObject, OS_dispatch_queue;
 
-@interface ISPlayerView : UIView <ISGestureInputDelegate, ISPlayerOutput, UIGestureRecognizerDelegate>
+@interface ISPlayerView : UIView <ISGestureInputDelegate, ISPlayerOutput, UIGestureRecognizerDelegate, ISPlayerChangeObserver>
 {
     ISPlayer *_player;
+    NSHashTable *_observers;
+    NSObject<OS_dispatch_queue> *_observerQueue;
+    AVPlayer *_videoPlayer;
     BOOL _photoViewHidden;
     struct {
         unsigned int respondsToStateDidChange:1;
         unsigned int respondsToWillBeginVisualPlayback:1;
         unsigned int respondsToDidEndVisualPlayback:1;
         unsigned int respondsToDidPlaybackVideoAssetToEnd:1;
+        unsigned int respondsToWillPlaybackVideoAssetToEnd:1;
         unsigned int respondsToDelegateForGestureReognizer:1;
         unsigned int respondsToViewHostingGestureRecognizer:1;
         unsigned int respondsToIsInteractingDidChange:1;
+        unsigned int respondsToGestureRecognizerDidChange:1;
     } _delegateFlags;
+    BOOL _interactivePlaybackAllowed;
     BOOL _isReadyForDisplay;
     BOOL _isInteracting;
+    BOOL _useSingletonPlayer;
     BOOL _vitalityAllowed;
     BOOL _allowReversePlayback;
+    BOOL _shouldManagePlayerItemLoading;
     BOOL _showCrossfadeBorder;
     BOOL _showVideoBorder;
     BOOL _showDebugInfo;
@@ -48,7 +57,8 @@
     ISPlaybackSpec *_playbackSpec;
     UIScrollView *_vitalityScrollView;
     ISVitalityFilter *_vitalityFilter;
-    UIView *__contentContainerView;
+    UIView *__photoContainerView;
+    UIView *__videoContainerView;
     _ISTargetView *__photoView;
     _ISAVPlayerView *__videoView;
     _ISCrossfadeView *__crossfadeView;
@@ -64,7 +74,6 @@
 }
 
 @property (readonly, nonatomic) NSMutableSet *_activeGestures; // @synthesize _activeGestures=__activeGestures;
-@property (strong, nonatomic, setter=_setContentContainerView:) UIView *_contentContainerView; // @synthesize _contentContainerView=__contentContainerView;
 @property (nonatomic, getter=_isCrossfadeEnabled, setter=_setCrossfadeEnabled:) BOOL _crossfadeEnabled; // @synthesize _crossfadeEnabled=__crossfadeEnabled;
 @property (strong, nonatomic, setter=_setCrossfadeView:) _ISCrossfadeView *_crossfadeView; // @synthesize _crossfadeView=__crossfadeView;
 @property (strong, nonatomic, setter=_setDebugInfoView:) _ISPlayerDebugView *_debugInfoView; // @synthesize _debugInfoView=__debugInfoView;
@@ -72,10 +81,12 @@
 @property (strong, nonatomic, setter=_setMutedAudioInput:) ISMutedAudioInput *_mutedAudioInput; // @synthesize _mutedAudioInput=__mutedAudioInput;
 @property (nonatomic, setter=_setNeedsNewDriver:) BOOL _needsNewDriver; // @synthesize _needsNewDriver=__needsNewDriver;
 @property (nonatomic, setter=_setNeedsUpdateDebugView:) BOOL _needsUpdateDebugView; // @synthesize _needsUpdateDebugView=__needsUpdateDebugView;
+@property (strong, nonatomic, setter=_setPhotoContainerView:) UIView *_photoContainerView; // @synthesize _photoContainerView=__photoContainerView;
 @property (strong, nonatomic, setter=_setPhotoView:) _ISTargetView *_photoView; // @synthesize _photoView=__photoView;
 @property (strong, nonatomic, setter=_setPlaybackInput:) ISGestureInput *_playbackInput; // @synthesize _playbackInput=__playbackInput;
 @property (strong, nonatomic, setter=_setPlayerObservationToken:) id<NSObject> _playerObservationToken; // @synthesize _playerObservationToken=__playerObservationToken;
 @property (nonatomic, getter=_isPlayerTransitioning, setter=_setPlayerTransitioning:) BOOL _playerTransitioning; // @synthesize _playerTransitioning=__playerTransitioning;
+@property (strong, nonatomic, setter=_setVideoContainerView:) UIView *_videoContainerView; // @synthesize _videoContainerView=__videoContainerView;
 @property (nonatomic, setter=_setVideoSize:) struct CGSize _videoSize; // @synthesize _videoSize=__videoSize;
 @property (strong, nonatomic, setter=_setVideoView:) _ISAVPlayerView *_videoView; // @synthesize _videoView=__videoView;
 @property (strong, nonatomic, setter=_setVitalityInput:) ISVitalityInput *_vitalityInput; // @synthesize _vitalityInput=__vitalityInput;
@@ -89,6 +100,7 @@
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) UIGestureRecognizer *gestureRecognizer;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isInteractivePlaybackAllowed) BOOL interactivePlaybackAllowed; // @synthesize interactivePlaybackAllowed=_interactivePlaybackAllowed;
 @property (nonatomic) BOOL isInteracting; // @synthesize isInteracting=_isInteracting;
 @property (nonatomic) BOOL isReadyForDisplay; // @synthesize isReadyForDisplay=_isReadyForDisplay;
 @property (readonly, nonatomic) CALayer *photoLayer;
@@ -99,14 +111,17 @@
 @property (nonatomic) long long playbackState; // @synthesize playbackState=_playbackState;
 @property (nonatomic) unsigned long long playbackStyle; // @synthesize playbackStyle=_playbackStyle;
 @property (strong, nonatomic) ISPlayer *player;
+@property (readonly, nonatomic, getter=isPlayingVitalityHint) BOOL playingVitalityHint;
 @property (nonatomic) double scrubOffset; // @synthesize scrubOffset=_scrubOffset;
 @property (nonatomic) long long scrubRegion; // @synthesize scrubRegion=_scrubRegion;
 @property (nonatomic) double scrubThreshold;
+@property (nonatomic) BOOL shouldManagePlayerItemLoading; // @synthesize shouldManagePlayerItemLoading=_shouldManagePlayerItemLoading;
 @property (nonatomic) BOOL showCrossfadeBorder; // @synthesize showCrossfadeBorder=_showCrossfadeBorder;
 @property (nonatomic) BOOL showDebugInfo; // @synthesize showDebugInfo=_showDebugInfo;
 @property (nonatomic) BOOL showVideoBorder; // @synthesize showVideoBorder=_showVideoBorder;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isUsingSingletonPlayer) BOOL useSingletonPlayer; // @synthesize useSingletonPlayer=_useSingletonPlayer;
 @property (readonly, nonatomic) AVPlayerLayer *videoLayer;
 @property (nonatomic, getter=isVitalityAllowed) BOOL vitalityAllowed; // @synthesize vitalityAllowed=_vitalityAllowed;
 @property (strong, nonatomic) ISVitalityFilter *vitalityFilter; // @synthesize vitalityFilter=_vitalityFilter;
@@ -114,10 +129,12 @@
 
 + (void)initialize;
 + (void)resetCaches;
++ (void)setAllowPlayerReuse:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_addPlayerObservers;
 - (double)_backingScaleFactor;
 - (void)_configureForPlaybackSpec:(id)arg1;
+- (void)_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)_forceTouchStatusDidChange:(id)arg1;
 - (void)_handleGesture:(id)arg1;
 - (void)_handleTracksLoadedForPlayerItem:(id)arg1;
@@ -135,7 +152,7 @@
 - (void)_setPlaybackState:(long long)arg1;
 - (void)_setStatus:(long long)arg1;
 - (struct CGSize)_uncachedVideoSize;
-- (void)_updateContentContainerView;
+- (void)_updateContainerViews;
 - (void)_updateCrossfadeLayer;
 - (void)_updateDebugViewIfNeeded;
 - (void)_updatePhotoViewVisibility;
@@ -152,27 +169,35 @@
 - (id)contentLayer;
 - (void)dealloc;
 - (id)gestureInput:(id)arg1 delegateForGestureRecognizer:(id)arg2;
+- (void)gestureInputGestureRecognizerDidChange:(id)arg1;
 - (id)gestureInputViewHostingGestureRecognizers:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithVideoPlayer:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)invalidateGestureRecognizers;
 - (BOOL)isSupportedContentMode:(long long)arg1;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)playVitalityHint;
+- (void)player:(id)arg1 didChangePlaybackState:(long long)arg2;
+- (void)player:(id)arg1 didChangePlayerItem:(id)arg2;
+- (void)player:(id)arg1 didChangePlayerStatus:(long long)arg2;
 - (void)playerDidEndTransitionToPlaybackState:(long long)arg1;
 - (void)playerDidPlayVideoToEnd;
 - (void)playerWillBeginTransitionToPlaybackState:(long long)arg1;
+- (void)playerWillPlayVideoToEnd;
 - (void)prepareWithBundleURL:(id)arg1;
 - (void)prepareWithPhoto:(struct CGImage *)arg1 videoAsset:(id)arg2 photoTime:(double)arg3;
 - (void)prepareWithPhoto:(struct CGImage *)arg1 videoAsset:(id)arg2 photoTime:(double)arg3 photoEXIFOrientation:(int)arg4;
 - (void)prepareWithPlayerItem:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (void)seekForVitalityHintIfNeeded;
 - (void)setContentMode:(long long)arg1;
 - (void)setVitalityEnabled:(BOOL)arg1 inScrollView:(id)arg2;
 - (long long)state;
 - (id)supportedContentModes;
+- (void)unregisterObserver:(id)arg1;
 
 @end
 

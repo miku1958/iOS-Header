@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSString *contentType;
 @property (copy, nonatomic) NSString *utsId;
 
 + (id)playContent;

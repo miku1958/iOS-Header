@@ -26,10 +26,12 @@
     NSDate *_displayETA;
     BOOL _shouldSendRouteWithStatus;
     NSData *_lastSentRouteContext;
+    CDUnknownBlockType _companionRouteFilterBlock;
 }
 
 @property (nonatomic) unsigned long long announcementStage;
 @property (readonly, nonatomic) NSDate *arrivalDate; // @synthesize arrivalDate=_arrivalDate;
+@property (copy, nonatomic) CDUnknownBlockType companionRouteFilterBlock; // @synthesize companionRouteFilterBlock=_companionRouteFilterBlock;
 @property (readonly, nonatomic) NSString *destinationName;
 @property (nonatomic) long long displayStep;
 @property (readonly, nonatomic) double distanceRemainingOnRoute;

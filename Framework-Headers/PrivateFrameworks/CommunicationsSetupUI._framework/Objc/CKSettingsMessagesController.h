@@ -41,6 +41,7 @@
 - (void)_startListeningForProfileChanges;
 - (void)_stopListeningForProfileChanges;
 - (id)_switchFooterText:(BOOL *)arg1;
+- (id)_syncManager;
 - (void)_updateSwitch;
 - (void)_updateSwitchDelayed;
 - (void)_updateUIWithError:(id)arg1;
@@ -50,6 +51,7 @@
 - (id)blacklistSettingsSpecifierIdentifiers;
 - (id)bundle;
 - (id)characterCountSpecifierIdentifiers;
+- (id)contactPhotoSettingsSpecifierIdentifiers;
 - (id)controllerForSpecifier:(id)arg1;
 - (void)dealloc;
 - (id)deliveryReceiptSpecifierIdentifiers;
@@ -92,6 +94,7 @@
 - (BOOL)shouldShowAudioMessageSettings;
 - (BOOL)shouldShowBlacklistSettings;
 - (BOOL)shouldShowCharacterCount;
+- (BOOL)shouldShowContactPhotoSettings;
 - (BOOL)shouldShowDeliveryReceipts;
 - (BOOL)shouldShowGenericSettings;
 - (BOOL)shouldShowMadridAccounts;

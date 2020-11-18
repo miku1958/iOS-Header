@@ -8,14 +8,12 @@
 
 #import <PhotosUI/NSCopying-Protocol.h>
 
-@class NSIndexPath, NSString;
+@class NSIndexPath, NSString, PUTileIdentifier;
 @protocol PUTilingCoordinateSystem;
 
 @interface PUTileLayoutInfo : NSObject <NSCopying>
 {
-    NSIndexPath *_indexPath;
-    NSString *_tileKind;
-    NSString *_dataSourceIdentifier;
+    PUTileIdentifier *_tileIdentifier;
     double _alpha;
     double _zPosition;
     id<PUTilingCoordinateSystem> _coordinateSystem;
@@ -28,12 +26,13 @@
 @property (nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property (nonatomic) struct CGPoint center; // @synthesize center=_center;
 @property (strong, nonatomic) id<PUTilingCoordinateSystem> coordinateSystem; // @synthesize coordinateSystem=_coordinateSystem;
-@property (strong, nonatomic) NSString *dataSourceIdentifier; // @synthesize dataSourceIdentifier=_dataSourceIdentifier;
+@property (readonly, nonatomic) NSString *dataSourceIdentifier;
 @property (nonatomic) CDStruct_6c514524 expandedRectInsets; // @synthesize expandedRectInsets=_expandedRectInsets;
 @property (readonly, nonatomic) struct CGRect frame;
-@property (strong, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
+@property (readonly, nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
-@property (strong, nonatomic) NSString *tileKind; // @synthesize tileKind=_tileKind;
+@property (strong, nonatomic) PUTileIdentifier *tileIdentifier; // @synthesize tileIdentifier=_tileIdentifier;
+@property (readonly, nonatomic) NSString *tileKind;
 @property (nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
 @property (nonatomic) double zPosition; // @synthesize zPosition=_zPosition;
 
@@ -41,10 +40,8 @@
 - (void)_setAlpha:(double)arg1;
 - (void)_setCenter:(struct CGPoint)arg1;
 - (void)_setCoordinateSystem:(id)arg1;
-- (void)_setDataSourceIdentifier:(id)arg1;
-- (void)_setIndexPath:(id)arg1;
 - (void)_setSize:(struct CGSize)arg1;
-- (void)_setTileKind:(id)arg1;
+- (void)_setTileIdentifier:(id)arg1;
 - (void)_setTransform:(struct CGAffineTransform)arg1;
 - (void)_setZPosition:(double)arg1;
 - (id)clone;
@@ -53,7 +50,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithIndexPath:(id)arg1 tileKind:(id)arg2 dataSourceIdentifier:(id)arg3 center:(struct CGPoint)arg4 size:(struct CGSize)arg5 alpha:(double)arg6 transform:(struct CGAffineTransform)arg7 zPosition:(double)arg8 coordinateSystem:(id)arg9;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 coordinateSystem:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isGeometryEqualToLayoutInfo:(id)arg1;
 - (id)layoutInfoByInterpolatingWithLayoutInfo:(id)arg1 mixFactor:(double)arg2 coordinateSystem:(id)arg3;

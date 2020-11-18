@@ -37,6 +37,7 @@
 - (void)markAllAppletsForDeletionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)markAppletWithIdentifierForDeletion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)markAppletsWithIdentifiersForDeletion:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)pairingStateWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)queueConnectionToSeverForAppletIdentifiers:(id)arg1;
 - (BOOL)queueConnectionToSeverWithPushTopic:(id)arg1;
 - (void)registerObserver:(id)arg1;

@@ -28,6 +28,7 @@
 @property (nonatomic) double padding; // @synthesize padding=_padding;
 
 + (id)dropCapSpacingWithLineCount:(unsigned long long)arg1 elevatedLineCount:(unsigned long long)arg2;
+- (unsigned long long)computedFlagsWithPropertyMap:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

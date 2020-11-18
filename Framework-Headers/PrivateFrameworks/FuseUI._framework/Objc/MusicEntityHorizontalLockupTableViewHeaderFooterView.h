@@ -32,6 +32,7 @@
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
 - (void)setEntityDisabled:(BOOL)arg1;
+- (void)updateForAsynchronousPropertyLoadCompleted;
 
 @end
 

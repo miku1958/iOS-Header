@@ -33,7 +33,6 @@
 - (void)_unregisterForNotificationsForContentScrollView:(id)arg1;
 - (void)_updateContentSize;
 - (void)dealloc;
-- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setContentSize:(struct CGSize)arg1;

@@ -25,7 +25,6 @@
 - (void)_runOnAgentQueueWithTransaction:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_runOnAgentQueueWithTransaction:(id)arg1 delay:(double)arg2 block:(CDUnknownBlockType)arg3;
 - (void)activate;
-- (void)appInForeground:(id)arg1;
 - (unsigned long long)batchSize;
 - (void)beginPruningResourcesOfType:(unsigned long long)arg1 withFetchRequest:(id)arg2 then:(CDUnknownBlockType)arg3;
 - (void)cplResourcesForFetchRequest:(id)arg1 ofType:(unsigned long long)arg2 startingAtOffset:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -40,9 +39,9 @@
 - (void)pruneResourcesOfType:(unsigned long long)arg1 then:(CDUnknownBlockType)arg2;
 - (BOOL)pruningEnabled;
 - (void)resetWalkStatus;
+- (void)runningCloudMaintenance:(id)arg1;
 - (void)settingsChanged:(id)arg1;
 - (BOOL)spaceAvailable:(long long *)arg1 totalSpace:(long long *)arg2;
-- (void)standardPruningKick:(id)arg1;
 - (void)systemStarted:(id)arg1;
 - (int)typeToIndex:(unsigned long long)arg1;
 

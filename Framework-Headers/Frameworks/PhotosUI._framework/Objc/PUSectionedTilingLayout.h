@@ -15,11 +15,13 @@
     struct _NSRange _computedSections;
     long long _seedSection;
     struct CGPoint _seedSectionOrigin;
+    BOOL _leftToRight;
     struct CGSize _interSectionSpacing;
 }
 
 @property (readonly, nonatomic) struct _NSRange computedSections;
 @property (nonatomic) struct CGSize interSectionSpacing; // @synthesize interSectionSpacing=_interSectionSpacing;
+@property (nonatomic) BOOL leftToRight; // @synthesize leftToRight=_leftToRight;
 
 - (void).cxx_destruct;
 - (void)_computeSeedSectionIfNeeded;

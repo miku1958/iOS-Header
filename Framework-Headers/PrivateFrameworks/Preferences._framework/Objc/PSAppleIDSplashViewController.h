@@ -6,9 +6,11 @@
 
 #import <Preferences/PSListController.h>
 
-@class ABMonogrammer, AKAppleIDAuthenticationController, NSString, NSTimer, PSSpecifier, UIActivityIndicatorView, UIBarButtonItem, UIImageView;
+#import <Preferences/RemoteUIControllerDelegate-Protocol.h>
 
-@interface PSAppleIDSplashViewController : PSListController
+@class ABMonogrammer, AKAppleIDAuthenticationController, NSString, NSTimer, PSSpecifier, RemoteUIController, UIActivityIndicatorView, UIBarButtonItem, UIImageView;
+
+@interface PSAppleIDSplashViewController : PSListController <RemoteUIControllerDelegate>
 {
     AKAppleIDAuthenticationController *_authController;
     UIImageView *_silhouetteView;
@@ -26,16 +28,23 @@
     BOOL _shouldHideBackButton;
     void *_powerAssertion;
     NSTimer *_idleJiggleTimer;
+    RemoteUIController *_remoteUIController;
+    CDUnknownBlockType _remoteUICompletion;
     BOOL _isPresentedModally;
     BOOL _shouldShowCreateAppleIDButton;
 }
 
 @property (readonly, nonatomic) AKAppleIDAuthenticationController *authenticationController;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, setter=setPresentedModally:) BOOL isPresentedModally; // @synthesize isPresentedModally=_isPresentedModally;
 @property (nonatomic) BOOL shouldShowCreateAppleIDButton; // @synthesize shouldShowCreateAppleIDButton=_shouldShowCreateAppleIDButton;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_allowSleepAndDimming;
+- (void)_beginiCloudCreationFlowWithContinuationData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_cancelButtonWasTapped:(id)arg1;
 - (void)_createNewAppleIDButtonWasTapped:(id)arg1;
 - (double)_heightForCreateNewAccountFooterWithWidth:(double)arg1;
@@ -48,6 +57,7 @@
 - (void)_presentInvalidUsernameAlert;
 - (void)_preventSleepAndDimming;
 - (BOOL)_runningInMail;
+- (void)_setInteractionEnabled:(BOOL)arg1;
 - (void)_setPassword:(id)arg1 withSpecifier:(id)arg2;
 - (void)_setUsername:(id)arg1 withSpecifier:(id)arg2;
 - (BOOL)_shouldShowCancelDone;
@@ -65,6 +75,7 @@
 - (void)didFinishAuthWithContext:(id)arg1 results:(id)arg2 error:(id)arg3;
 - (void)handleAuthCompletionWithResults:(id)arg1;
 - (void)hideBusyUI;
+- (void)remoteUIControllerDidDismiss:(id)arg1;
 - (void)returnPressedAtEnd;
 - (id)serviceDescription;
 - (id)serviceIcon;

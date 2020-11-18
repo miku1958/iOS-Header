@@ -8,24 +8,29 @@
 
 #import <FuseUI/MusicNoContentViewDelegate-Protocol.h>
 
-@class MusicNoContentView, NSArray, NSString;
+@class MusicEntityValueContext, MusicNoContentView, NSArray, NSOperationQueue, NSString;
 
 @interface MusicAddToPlaylistBrowseTableViewController : MusicLibraryBrowseTableViewController <MusicNoContentViewDelegate>
 {
     MusicNoContentView *_noContentView;
-    NSArray *_prepopulatedNewPlaylistMediaItems;
+    NSOperationQueue *_platformLookupQueue;
+    MusicEntityValueContext *_prepopulatedItemsEntityValueContext;
+    NSArray *_prepopulatedMediaItems;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSArray *prepopulatedNewPlaylistMediaItems; // @synthesize prepopulatedNewPlaylistMediaItems=_prepopulatedNewPlaylistMediaItems;
+@property (strong, nonatomic) MusicEntityValueContext *prepopulatedItemsEntityValueContext; // @synthesize prepopulatedItemsEntityValueContext=_prepopulatedItemsEntityValueContext;
+@property (strong, nonatomic) NSArray *prepopulatedMediaItems; // @synthesize prepopulatedMediaItems=_prepopulatedMediaItems;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_performBlockAfterDerivingPrepopulatedItems:(CDUnknownBlockType)arg1;
 - (void)_updateNoContentViewVisibility;
 - (void)dealloc;
 - (void)handleEntityProviderDidInvalidate;
+- (id)initWithLibraryViewConfiguration:(id)arg1;
 - (id)noContentView;
 - (void)noContentViewDidTapButton:(id)arg1;
 - (void)viewDidLoad;

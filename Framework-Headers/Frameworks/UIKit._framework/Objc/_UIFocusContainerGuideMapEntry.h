@@ -21,9 +21,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGRect focusContainmentFrame; // @synthesize focusContainmentFrame=_focusContainmentFrame;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)drawVisualRepresentationInContext:(struct CGContext *)arg1 imageFrame:(struct CGRect)arg2;
-- (id)mapEntrySliceWithFrame:(struct CGRect)arg1;
+- (id)visualRepresentationColor;
 
 @end
 

@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class ISPlaybackSpec, NSArray, NSHashTable;
+#import <PhotosPlayer/ISPlaybackSpecObserver-Protocol.h>
+
+@class ISPlaybackSpec, NSArray, NSHashTable, NSString;
 @protocol ISPlaybackStateTransitionManagerDelegate;
 
-@interface ISPlaybackStateTransitionManager : NSObject
+@interface ISPlaybackStateTransitionManager : NSObject <ISPlaybackSpecObserver>
 {
     struct {
         BOOL respondsToDidEndTransition;
@@ -20,6 +22,7 @@
     ISPlaybackSpec *_playbackSpec;
     NSHashTable *_outputs;
     long long _currentPlaybackState;
+    double _endVitalityTransitionDuration;
     id<ISPlaybackStateTransitionManagerDelegate> _delegate;
     NSArray *__stillImageFilters;
     NSArray *__stillImageAnimationsForBeginningPlayback;
@@ -48,19 +51,25 @@
 @property (strong, nonatomic, setter=_setVideoAnimationsForEndingVitality:) NSArray *_videoAnimationsForEndingVitality; // @synthesize _videoAnimationsForEndingVitality=__videoAnimationsForEndingVitality;
 @property (strong, nonatomic, setter=_setVideoFilters:) NSArray *_videoFilters; // @synthesize _videoFilters=__videoFilters;
 @property (readonly, nonatomic) long long currentPlaybackState; // @synthesize currentPlaybackState=_currentPlaybackState;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ISPlaybackStateTransitionManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) double endVitalityTransitionDuration; // @synthesize endVitalityTransitionDuration=_endVitalityTransitionDuration;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSHashTable *outputs; // @synthesize outputs=_outputs;
 @property (strong, nonatomic) ISPlaybackSpec *playbackSpec; // @synthesize playbackSpec=_playbackSpec;
 @property (readonly, nonatomic) float progress; // @synthesize progress=_progress;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_invalidateAnimations;
 - (void)_notifyDelegateDidEndTransitionToPlaybackState:(long long)arg1 forRequestID:(long long)arg2 finished:(BOOL)arg3;
 - (void)_updateAnimationsIfNeeded;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
-- (void)hideCrossfadeContentForTransitionToVideo:(BOOL)arg1 subtractingDuration:(double)arg2;
+- (void)hideCrossfadeContentWithBlurAndScale:(BOOL)arg1 withDuration:(double)arg2;
 - (id)init;
 - (long long)performTransitionToPlaybackState:(long long)arg1 withProgress:(float)arg2;
+- (void)playbackSpecDidChange:(id)arg1;
 - (void)willTransitionToPlaybackState:(long long)arg1 withProgress:(float)arg2;
 
 @end

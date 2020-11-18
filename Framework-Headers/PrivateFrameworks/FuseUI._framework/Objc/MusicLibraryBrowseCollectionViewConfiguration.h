@@ -11,11 +11,9 @@
 @interface MusicLibraryBrowseCollectionViewConfiguration : MusicLibraryViewConfiguration
 {
     MusicEntityCollectionViewDescriptor *_entityCollectionViewDescriptor;
-    BOOL _wantsEdgeToEdgeLayout;
 }
 
 @property (readonly, nonatomic) MusicEntityCollectionViewDescriptor *entityViewDescriptor;
-@property (nonatomic) BOOL wantsEdgeToEdgeLayout; // @synthesize wantsEdgeToEdgeLayout=_wantsEdgeToEdgeLayout;
 
 - (void).cxx_destruct;
 - (id)init;

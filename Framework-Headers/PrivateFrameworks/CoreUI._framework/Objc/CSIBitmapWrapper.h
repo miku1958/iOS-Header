@@ -19,10 +19,14 @@
     unsigned long long _rowbytes;
     BOOL _allowsMultiPassEncoding;
     unsigned int _imageAlpha;
+    double _compressionQuality;
+    BOOL _useBlurredImageEncoding;
 }
 
 @property BOOL allowsMultiPassEncoding; // @synthesize allowsMultiPassEncoding=_allowsMultiPassEncoding;
+@property (nonatomic) double compressionQuality; // @synthesize compressionQuality=_compressionQuality;
 @property (nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+@property BOOL useBlurredImageEncoding; // @synthesize useBlurredImageEncoding=_useBlurredImageEncoding;
 
 - (struct CGContext *)bitmapContext;
 - (id)compressedData:(BOOL)arg1 usedEncoding:(int *)arg2 andRowChunkSize:(unsigned int *)arg3;

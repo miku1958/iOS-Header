@@ -59,6 +59,7 @@
 @property (copy, nonatomic) NSURL *serverURL; // @synthesize serverURL=_serverURL;
 @property (readonly) Class superclass;
 
++ (struct CGRect)_adWindowBounds;
 + (struct CGRect)_frameThatFits:(struct CGRect)arg1 adType:(int)arg2 statusBarOrientationIsPortrait:(BOOL)arg3;
 + (struct CGSize)_landscapeBannerSize;
 + (struct CGSize)_portraitBannerSize;
@@ -145,6 +146,7 @@
 - (id)staticImageURL;
 - (void)storyboardViewControllerDidPresent;
 - (void)suspendImpressionCycling;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)uniqueIdentifier;
 - (void)updateConstraints;
 - (void)userDidSkipPreroll;

@@ -6,31 +6,46 @@
 
 #import <UIKit/UIAccessibilityElement.h>
 
-@class NSArray, UIKBTree;
+#import <UIKit/UIAccessibilityElementKBKeyPanAlternateDelegate-Protocol.h>
 
-@interface UIAccessibilityElementKBKey : UIAccessibilityElement
+@class NSArray, NSString, UIKBTree;
+
+@interface UIAccessibilityElementKBKey : UIAccessibilityElement <UIAccessibilityElementKBKeyPanAlternateDelegate>
 {
     UIKBTree *_key;
     BOOL _changesOnShiftDown;
+    BOOL _isWithinPanAlternatesKey;
     NSArray *_cachedVariantKeys;
+    NSArray *_cachedAccessibilityElements;
 }
 
+@property (strong, nonatomic) NSArray *cachedAccessibilityElements; // @synthesize cachedAccessibilityElements=_cachedAccessibilityElements;
 @property (strong, nonatomic) NSArray *cachedVariantKeys; // @synthesize cachedVariantKeys=_cachedVariantKeys;
 @property (nonatomic) BOOL changesOnShiftDown; // @synthesize changesOnShiftDown=_changesOnShiftDown;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isPanAlternatesKey;
+@property (nonatomic) BOOL isWithinPanAlternatesKey; // @synthesize isWithinPanAlternatesKey=_isWithinPanAlternatesKey;
 @property (strong, nonatomic) UIKBTree *key; // @synthesize key=_key;
+@property (readonly) Class superclass;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (id)variantKeysForKey:(id)arg1;
+- (BOOL)_accessibilityActivateForPanAlternate:(BOOL)arg1 isSecondAlternate:(BOOL)arg2;
 - (BOOL)_accessibilityAllowsAlternativeCharacterActivation;
 - (BOOL)_accessibilityDismissAlternativeKeyPicker;
 - (BOOL)_accessibilityHasVariantKeys;
 - (BOOL)_accessibilityIsDeleteKey;
 - (BOOL)_accessibilityIsInternationalKeyboardKey;
+- (BOOL)_accessibilityIsKeySelected;
+- (id)_accessibilityKeyComponentName;
 - (BOOL)_accessibilityKeyboardKeyAllowsTouchTyping;
 - (id)_accessibilityKeyboardKeyEnteredString;
 - (BOOL)_accessibilityKeyboardKeyHasSignificantAlternateActions;
 - (BOOL)_accessibilityKeyboardSupportsGestureMode;
 - (id)_accessibilityLabel;
+- (id)_accessibilityLayoutCursorKeyplaneComponentName;
 - (id)_accessibilityLocalizedStringForKeyboardLocale:(id)arg1;
 - (id)_accessibilitySupportGesturesAttributes;
 - (BOOL)_accessibilitySupportsActivateAction;
@@ -38,20 +53,26 @@
 - (BOOL)_accessibilityWasForcedToUseForeignKB;
 - (BOOL)_allowCachingAccessibilityLabel;
 - (void)_applyCapitalLetterTransform;
+- (id)_axDualStringLabel;
 - (BOOL)_axIsDictationKey;
+- (id)_axLayoutStar;
+- (void)_clearDelegateForCachedPanAlternates;
 - (BOOL)_performCapsLockDoubleTap;
 - (BOOL)accessibilityActivate;
+- (BOOL)accessibilityActivateForPanAlternate:(id)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityCustomActions;
+- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
+- (struct CGRect)accessibilityFrameForPanAlternate:(id)arg1;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (id)accessibilityLabelForPanAlternate:(id)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)allowsCaseChangeOnShift;
 - (void)dealloc;
-- (id)description;
 - (id)initWithAccessibilityContainer:(id)arg1 key:(id)arg2;
 - (BOOL)isAccessibilityElement;
 - (BOOL)isButtonType;

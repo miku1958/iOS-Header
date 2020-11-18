@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *accountIdentifier;
 @property (readonly, nonatomic) ACAccountStore *accountStore;
 @property (nonatomic) BOOL accountWantsPushRegistration; // @synthesize accountWantsPushRegistration=_accountWantsPushRegistration;
-@property (readonly, nonatomic) BOOL allowsCellularAccess;
 @property (readonly, nonatomic) CKDBackingAccount *backingAccount; // @synthesize backingAccount=_backingAccount;
 @property (readonly, nonatomic) BOOL canAccessAccount;
 @property (readonly, nonatomic) BOOL cloudKitIsEnabled;
@@ -37,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL haveWarnedAboutServerPreferredPushEnvironment; // @synthesize haveWarnedAboutServerPreferredPushEnvironment=_haveWarnedAboutServerPreferredPushEnvironment;
+@property (readonly, nonatomic) BOOL iCloudDriveAllowsCellularAccess;
 @property (nonatomic) BOOL isAnonymousAccount; // @synthesize isAnonymousAccount=_isAnonymousAccount;
 @property (readonly, nonatomic) BOOL isFakeAccount;
 @property (nonatomic) BOOL isUnitTestingAccount; // @synthesize isUnitTestingAccount=_isUnitTestingAccount;

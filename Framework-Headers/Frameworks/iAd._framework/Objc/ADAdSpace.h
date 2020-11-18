@@ -22,6 +22,8 @@
     BOOL _shouldPresentActionViewControllerWhenReady;
     BOOL _actionViewControllerReadyForPresentation;
     BOOL _actionViewControllerWantsDismissal;
+    BOOL _requiresFastVisibiltyTestOnly;
+    BOOL _fastVisibilityContextIsFeed;
     NSString *_identifier;
     NSURL *_serverURL;
     NSString *_advertisingSection;
@@ -51,6 +53,7 @@
 @property (strong, nonatomic) ADAdImpressionPublicAttributes *currentAdImpressionPublicAttributes; // @synthesize currentAdImpressionPublicAttributes=_currentAdImpressionPublicAttributes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL fastVisibilityContextIsFeed; // @synthesize fastVisibilityContextIsFeed=_fastVisibilityContextIsFeed;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isModalInterstitial; // @synthesize isModalInterstitial=_isModalInterstitial;
@@ -59,6 +62,7 @@
 @property (readonly, nonatomic) id<ADAdRecipient> recipient;
 @property (strong, nonatomic) _ADRemoteViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property (strong, nonatomic) _UIAsyncInvocation *remoteViewControllerRequestCancelationInvocation; // @synthesize remoteViewControllerRequestCancelationInvocation=_remoteViewControllerRequestCancelationInvocation;
+@property (nonatomic) BOOL requiresFastVisibiltyTestOnly; // @synthesize requiresFastVisibiltyTestOnly=_requiresFastVisibiltyTestOnly;
 @property (copy, nonatomic) NSURL *serverURL; // @synthesize serverURL=_serverURL;
 @property (readonly, nonatomic) id<ADSAdSpace_RPC><NSObject> serviceAdSpace;
 @property (nonatomic) BOOL serviceAdSpaceRequestInProgress; // @synthesize serviceAdSpaceRequestInProgress=_serviceAdSpaceRequestInProgress;
@@ -72,6 +76,7 @@
 - (void)_clientApplicationDidEnterBackground;
 - (void)_closeConnectionIfNecessary;
 - (void)_considerPresentingActionViewController;
+- (BOOL)_contextForFeldsparClientIsFeed:(id)arg1;
 - (void)_remote_actionViewControllerReadyForPresentation;
 - (void)_remote_adImpressionDidLoadWithPublicAttributes:(id)arg1;
 - (void)_remote_close;
@@ -79,11 +84,13 @@
 - (void)_remote_creativeWillLoad;
 - (void)_remote_dismissPortraitOnlyViewController;
 - (void)_remote_dismissViewController;
+- (void)_remote_dismissViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_remote_openURL:(id)arg1;
 - (void)_remote_pauseBannerMedia;
 - (void)_remote_requestPortraitOnlyViewController;
 - (void)_remote_requestViewControllerWithClassName:(id)arg1 forAdSpaceControllerWithIdentifier:(id)arg2;
 - (void)_remote_resumeBannerMedia;
+- (void)_remote_setRequiresFastVisibilityTestOnly:(BOOL)arg1;
 - (void)_remote_updateViewControllerSupportedOrientations:(unsigned long long)arg1;
 - (void)_requestServiceAdSpace;
 - (void)_updateAllProperties;

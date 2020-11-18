@@ -6,19 +6,26 @@
 
 #import <CoreCDPUI/CDPPassphraseEntryViewController.h>
 
+#import <CoreCDPUI/CDPRemoteSecretEntryPaneDelegate-Protocol.h>
 #import <CoreCDPUI/DevicePINControllerDelegate-Protocol.h>
 
-@class CDPDevice, CDPRemoteDeviceSecretValidator, NSString;
+@class CDPDevice, CDPRemoteDeviceSecretValidator, NSNumber, NSString;
 @protocol CDPRemoteSecretEntryDelegate;
 
-@interface CDPRemoteSecretEntryViewController : CDPPassphraseEntryViewController <DevicePINControllerDelegate>
+@interface CDPRemoteSecretEntryViewController : CDPPassphraseEntryViewController <DevicePINControllerDelegate, CDPRemoteSecretEntryPaneDelegate>
 {
+    BOOL _hasNumericSecret;
+    NSNumber *_numericSecretLength;
     CDPDevice *_device;
+    long long _remainingAttempts;
     CDPRemoteDeviceSecretValidator *_validator;
+    unsigned long long _escapeOffer;
     id<CDPRemoteSecretEntryDelegate> _delegate;
     unsigned long long _validationState;
+    BOOL _cancelValidationOnBack;
 }
 
+@property (nonatomic) BOOL cancelValidationOnBack; // @synthesize cancelValidationOnBack=_cancelValidationOnBack;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,20 +33,25 @@
 @property (readonly, nonatomic) CDPRemoteDeviceSecretValidator *validator; // @synthesize validator=_validator;
 
 - (void).cxx_destruct;
-- (void)depletedRemainingAttemptsForRecord;
 - (void)didAcceptEnteredPIN:(id)arg1;
 - (void)didCancelEnteringPIN;
 - (void)didEnterValidRemoteSecret:(id)arg1;
-- (void)exceededMaximumAttemptsForValidation;
-- (id)initWithDevice:(id)arg1 validator:(id)arg2 delegate:(id)arg3;
+- (void)disableUserInteractionAndStartSpinner;
+- (void)enableUserInteractionAndStopSpinner;
+- (id)initWithDevice:(id)arg1 validator:(id)arg2 escapeOffer:(unsigned long long)arg3 delegate:(id)arg4;
+- (id)initWithIsNumeric:(BOOL)arg1 numericLength:(id)arg2 validator:(id)arg3 escapeOffer:(unsigned long long)arg4 delegate:(id)arg5;
 - (id)initWithValidator:(id)arg1;
 - (id)pinInstructionsPrompt;
 - (BOOL)pinIsAcceptable:(id)arg1 outError:(id *)arg2;
-- (void)showIncorrectRemoteSecretAlert;
+- (void)remoteSecretPane:(id)arg1 escapeHatchTappedWithOffer:(unsigned long long)arg2 device:(id)arg3;
+- (void)setPane:(id)arg1;
+- (void)showIncorrectRemoteSecretAlertWithIsLocalSecret:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)simplePIN;
 - (id)title;
 - (BOOL)useProgressiveDelays;
 - (BOOL)validatePIN:(id)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

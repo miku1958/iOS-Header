@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)initialize;
++ (BOOL)isValidAssetStorageWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (void)_bringHeaderInfoUpToDate;
 - (BOOL)_commonInitWithStorage:(struct _BOMStorage *)arg1 forWritting:(BOOL)arg2;
 - (const struct FontValue *)_fontValueForFontType:(id)arg1;

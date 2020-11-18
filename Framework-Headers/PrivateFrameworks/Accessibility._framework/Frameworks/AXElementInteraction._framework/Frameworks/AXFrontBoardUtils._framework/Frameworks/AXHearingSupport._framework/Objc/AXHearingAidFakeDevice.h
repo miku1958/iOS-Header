@@ -12,6 +12,7 @@
 {
     NSMutableArray *_leftFakePrograms;
     NSMutableArray *_rightFakePrograms;
+    CDUnknownBlockType _writeBlock;
     BOOL _isConnecting;
     BOOL _connected;
     int _type;
@@ -66,6 +67,7 @@
 - (id)modelForType;
 - (void)persist;
 - (id)persistentRepresentation;
+- (void)registerWriteBlock:(CDUnknownBlockType)arg1;
 - (BOOL)rightAvailable;
 - (id)rightPrograms;
 - (void)setValue:(id)arg1 forProperty:(unsigned long long)arg2;

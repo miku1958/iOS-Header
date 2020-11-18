@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSDate *_actualTime;
     NSDate *_scheduledTime;
     NSTimeZone *_timeZone;
+    long long _timeAccuracy;
 }
 
 @property (strong) NSDate *actualTime; // @synthesize actualTime=_actualTime;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (strong) NSString *gate; // @synthesize gate=_gate;
 @property (strong) NSDate *scheduledTime; // @synthesize scheduledTime=_scheduledTime;
 @property (strong) NSString *terminal; // @synthesize terminal=_terminal;
+@property long long timeAccuracy; // @synthesize timeAccuracy=_timeAccuracy;
 @property (strong) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 
 - (void).cxx_destruct;

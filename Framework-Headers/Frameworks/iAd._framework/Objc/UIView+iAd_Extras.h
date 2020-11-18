@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (iAd_Extras)
+- (BOOL)_iAd_isFeldsparClientVisibleFast;
 - (BOOL)_iAd_isVisible:(CDUnknownBlockType)arg1;
 - (BOOL)_iAd_isVisibleFast;
 - (struct CGRect)_iAd_screenFrame;

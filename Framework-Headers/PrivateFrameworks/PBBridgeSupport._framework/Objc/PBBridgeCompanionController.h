@@ -11,7 +11,7 @@
 #import <PBBridgeSupport/PBBridgeCompanionProtocol-Protocol.h>
 #import <PBBridgeSupport/RUILoaderDelegate-Protocol.h>
 
-@class NSMutableData, NSMutableURLRequest, NSString, NSTimer, NSURLConnection, RUILoader;
+@class NSMutableData, NSMutableURLRequest, NSString, NSTimer, NSURLConnection, RUILoader, RUIStyle;
 @protocol PBBridgeConnectionDelegate, RUILoaderDelegate;
 
 @interface PBBridgeCompanionController : PBBridgeIDSServiceDelegate <IDSServiceDelegate, NSURLConnectionDelegate, RUILoaderDelegate, PBBridgeCompanionProtocol>
@@ -25,6 +25,7 @@
     BOOL _allowAnyHTTPSCertificate;
     unsigned short _granularActivationState;
     int _activationState;
+    RUIStyle *_remoteUIStyle;
     id<RUILoaderDelegate> _ruiDelegate;
     id<PBBridgeConnectionDelegate> _delegate;
     NSURLConnection *_activationConnection;
@@ -60,6 +61,7 @@
 @property (nonatomic) BOOL nonSilentActivation; // @synthesize nonSilentActivation=_nonSilentActivation;
 @property (nonatomic) BOOL passcodeSet; // @synthesize passcodeSet=_passcodeSet;
 @property (copy, nonatomic) NSString *remoteActivationUserAgent; // @synthesize remoteActivationUserAgent=_remoteActivationUserAgent;
+@property (strong, nonatomic) RUIStyle *remoteUIStyle; // @synthesize remoteUIStyle=_remoteUIStyle;
 @property (weak, nonatomic) id<RUILoaderDelegate> ruiDelegate; // @synthesize ruiDelegate=_ruiDelegate;
 @property (strong, nonatomic) RUILoader *ruiLoader; // @synthesize ruiLoader=_ruiLoader;
 @property (nonatomic) BOOL selectedPairedUnlock; // @synthesize selectedPairedUnlock=_selectedPairedUnlock;

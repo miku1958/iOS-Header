@@ -11,6 +11,7 @@
 }
 
 + (BOOL)isUserVisibleKeychainSyncEnabled;
++ (void)removeNonViewAwarePeersFromCircleWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)setUserVisibleKeychainSyncEnabled:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end

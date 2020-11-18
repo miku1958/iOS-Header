@@ -14,6 +14,7 @@
     struct {
         BOOL respondsToViewHostingGestureRecognizer;
         BOOL respondsToDelegateForGestureRecognizer;
+        BOOL respondsToGestureRecognizerDidChange;
     } _delegateFlags;
     BOOL __needsUpdateGestureRecognizer;
     UIGestureRecognizer *_gestureRecognizer;

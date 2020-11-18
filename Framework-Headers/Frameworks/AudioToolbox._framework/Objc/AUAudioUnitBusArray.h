@@ -30,6 +30,7 @@
 - (void)addObserverToAllBusses:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
+- (void)indexBusses;
 - (id)init;
 - (id)initWithAudioUnit:(id)arg1 busType:(long long)arg2;
 - (id)initWithAudioUnit:(id)arg1 busType:(long long)arg2 busses:(id)arg3;

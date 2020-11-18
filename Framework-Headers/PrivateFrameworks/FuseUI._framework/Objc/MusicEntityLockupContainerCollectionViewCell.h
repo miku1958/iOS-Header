@@ -17,11 +17,13 @@
 @interface MusicEntityLockupContainerCollectionViewCell : UICollectionViewCell <MusicEntityVerticalLockupViewDelegate, MusicEntityHorizontalLockupViewDelegate, MusicEntityContentDescriptorViewConfiguring, MusicEntityViewPlaybackStatusObserving>
 {
     UITraitCollection *_cachedTraitCollection;
+    BOOL _entityDisabled;
     UIImageView *_highlightBackgroundView;
     BOOL _highlightBackgroundViewVisible;
     unsigned long long _highlightBackgroundVisibilityTransactionCount;
     MusicEntityVerticalLockupView *_lockupView;
     UIView *_hairlineView;
+    double _textLateralEdgePadding;
     BOOL _showsHairline;
     UIColor *_hairlineColor;
 }
@@ -46,15 +48,16 @@
 - (void)horizontalLockupViewDidSelectAddButton:(id)arg1 events:(unsigned long long)arg2;
 - (void)horizontalLockupViewDidSelectContextualActionsButton:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setEntityDisabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setPlaybackStatus:(id)arg1;
 - (void)setSelected:(BOOL)arg1;
+- (void)setTextLateralEdgePadding:(double)arg1;
 - (id)traitCollection;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateForAsynchronousPropertyLoadCompleted;
 - (void)verticalLockupView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;
 
 @end

@@ -26,7 +26,6 @@
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityViewForComponent;
-- (void)_axPostScrollChange;
 - (void)accessibilityDecrement;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;

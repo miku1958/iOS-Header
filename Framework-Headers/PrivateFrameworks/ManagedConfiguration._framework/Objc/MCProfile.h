@@ -99,6 +99,8 @@
 - (struct __SecCertificate *)copyCertificateWithPersistentID:(id)arg1;
 - (unsigned long long)countOfPayloadsOfClass:(Class)arg1;
 - (id)description;
+- (BOOL)doesSigningAllowReplacementWithProfile:(id)arg1;
+- (BOOL)doesSigningAllowReplacementWithProfile:(id)arg1 useOriginalCheck:(BOOL)arg2;
 - (void)evaluateSignerTrust;
 - (void)evaluateSignerTrustAsynchronouslyWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithDictionary:(id)arg1 allowEmptyPayload:(BOOL)arg2 outError:(id *)arg3;

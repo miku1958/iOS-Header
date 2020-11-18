@@ -27,9 +27,12 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) UIPresentationController<_UISearchControllerPresenting> *adaptivePresentationController;
+@property (readonly, nonatomic) UIView *backgroundObscuringView;
+@property (readonly, nonatomic) BOOL backgroundObscuringViewShouldObeyPresentationContextBounds;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct CGRect finalFrameForContainerView; // @synthesize finalFrameForContainerView=_finalFrameForContainerView;
+@property (readonly, nonatomic) BOOL forceObeyNavigationBarInsets;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double resultsControllerContentOffset;
 @property (readonly, nonatomic) BOOL resultsUnderlapsSearchBar;
@@ -42,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (BOOL)shouldExciseSearchBar:(id)arg1 duringPresentationWithPresenter:(id)arg2;
+- (id)_constraintCopyOfConstraint:(id)arg1 replaceItem:(id)arg2 withItem:(id)arg3;
 - (void)_exciseSearchBarFromCurrentContext;
 - (void)_placeSearchBarBackIntoOriginalContext;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
@@ -61,12 +65,14 @@ __attribute__((visibility("hidden")))
 - (void)dismissalTransitionDidEnd:(BOOL)arg1;
 - (void)dismissalTransitionWillBegin;
 - (struct CGRect)frameOfPresentedViewInContainerView;
+- (void)hideBackgroundObscuringView;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
 - (void)presentationTransitionDidEnd:(BOOL)arg1;
 - (void)presentationTransitionWillBegin;
 - (void)setContentVisible:(BOOL)arg1;
 - (BOOL)shouldPresentInFullscreen;
 - (BOOL)shouldRemovePresentersView;
+- (void)showBackgroundObscuringView;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

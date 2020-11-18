@@ -505,7 +505,7 @@ struct Transaction {
     struct __CFRunLoopObserver *_field14;
     struct LayoutList *_field15;
     struct List<CA::Layer *> *_field16;
-    unsigned int :1;
+    struct Atomic _field17;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;

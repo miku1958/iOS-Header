@@ -40,6 +40,7 @@
 - (void)_contentInsetDidChange:(id)arg1;
 - (void)_endAllPendingActiveImpression;
 - (void)_getPageComponents:(id *)arg1 title:(id *)arg2 forViewControllerAtIndex:(long long)arg3;
+- (double)_leftColumnWidth;
 - (id)_leftPageComponentsAtIndex:(long long)arg1;
 - (id)_newSectionsViewControllerAtIndex:(long long)arg1;
 - (id)_pageComponentsAtIndex:(long long)arg1;

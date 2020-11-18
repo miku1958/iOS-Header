@@ -14,6 +14,7 @@
 @interface ICNoteContext : NSObject <ICNoteContainer>
 {
     NSString *_localizedLocalAccountName;
+    BOOL _delaySaving;
     BOOL _didResumeIndexing;
     BOOL _saving;
     id<ICNoteContextDelegate> _delegate;
@@ -46,6 +47,7 @@
 @property (strong, nonatomic) ICNote *currentNote; // @synthesize currentNote=_currentNote;
 @property (strong, nonatomic) ICPerson *currentPerson; // @synthesize currentPerson=_currentPerson;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) BOOL delaySaving; // @synthesize delaySaving=_delaySaving;
 @property (strong) id<ICNoteContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didResumeIndexing; // @synthesize didResumeIndexing=_didResumeIndexing;
@@ -250,6 +252,7 @@
 - (void)resumeIndexingAfterDelay;
 - (BOOL)save;
 - (BOOL)save:(id *)arg1;
+- (BOOL)saveImmediately;
 - (id)searchIndexableObjectInMainContextForObjectIdentifier:(id)arg1 refreshObject:(BOOL)arg2 includeDeleted:(BOOL)arg3;
 - (id)searchIndexer;
 - (id)searchIndexerContext;

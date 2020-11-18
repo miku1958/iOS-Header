@@ -10,8 +10,10 @@
 {
     BOOL _itemsFillRow;
     unsigned long long _numberOfItemsPerRow;
+    double _itemPadding;
 }
 
+@property (nonatomic) double itemPadding; // @synthesize itemPadding=_itemPadding;
 @property (nonatomic) BOOL itemsFillRow; // @synthesize itemsFillRow=_itemsFillRow;
 @property (nonatomic) unsigned long long numberOfItemsPerRow; // @synthesize numberOfItemsPerRow=_numberOfItemsPerRow;
 

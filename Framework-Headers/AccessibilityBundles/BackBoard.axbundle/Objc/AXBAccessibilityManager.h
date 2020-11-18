@@ -34,6 +34,7 @@
 - (id)_accessibilitySystemAppApplicationPid;
 - (id)_accessibilityUIServerApplication;
 - (struct CGPoint)_accessibilityViewPointFromHostedViewContext:(struct CGPoint)arg1;
+- (id)_commonEventRepForTouchEventWithType:(unsigned int)arg1 location:(struct CGPoint)arg2 force:(double)arg3 flags:(unsigned int)arg4 contextId:(unsigned int)arg5;
 - (BOOL)_handleItemChooserVisible:(unsigned int)arg1;
 - (int)_handlePidForSpecialCases:(unsigned int)arg1;
 - (double)_processPassiveEventQueue;
@@ -41,8 +42,10 @@
 - (BOOL)_screenReaderCapture:(id)arg1;
 - (void)_sendCancelTouchEvent;
 - (void)_sendDeviceChangeEvent:(int)arg1;
+- (void)_sendEventRep:(id)arg1;
 - (void)_sendFingerEvent:(unsigned int)arg1 location:(struct CGPoint)arg2 force:(double)arg3 flags:(unsigned int)arg4 contextId:(unsigned int)arg5;
 - (void)_sendPressFingerEvent:(BOOL)arg1 location:(struct CGPoint)arg2 force:(double)arg3 flags:(unsigned int)arg4 contextId:(unsigned int)arg5;
+- (void)_sendStylusEvent:(unsigned int)arg1 location:(struct CGPoint)arg2 force:(double)arg3 altitude:(double)arg4 azimuth:(double)arg5 flags:(unsigned int)arg6 contextId:(unsigned int)arg7;
 - (void)_setDeviceOrientationCapability:(BOOL)arg1;
 - (void)_startPassiveResendThread;
 - (void)_undoContextShiftedPoints:(id)arg1;

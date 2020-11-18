@@ -9,7 +9,7 @@
 #import <MarkupUI/MUContentViewControllerProtocol-Protocol.h>
 #import <MarkupUI/UIScrollViewDelegate-Protocol.h>
 
-@class AKController, NSArray, NSString, NSURL, UIImageView, UIScrollView;
+@class AKController, NSArray, NSString, NSURL, UIImageView, UIScrollView, UIView;
 
 @interface MUImageContentViewController : UIViewController <UIScrollViewDelegate, MUContentViewControllerProtocol>
 {
@@ -18,6 +18,7 @@
     BOOL _inDoubleTapZoom;
     AKController *_annotationController;
     UIScrollView *_scrollView;
+    UIView *_combinedContentView;
     UIImageView *_imageView;
     double _initialContentScaleInModel;
     double _downsampledImageScale;
@@ -27,6 +28,7 @@
 }
 
 @property (weak) AKController *annotationController; // @synthesize annotationController=_annotationController;
+@property (strong, nonatomic) UIView *combinedContentView; // @synthesize combinedContentView=_combinedContentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property double downsampledImageScale; // @synthesize downsampledImageScale=_downsampledImageScale;
@@ -65,6 +67,7 @@
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
 - (id)init;
+- (id)layerContainingQuickBackgroundForLoupeOnOverlayAtPageIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
 - (void)loadView;
 - (struct CGRect)maxPageRectWithPageIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
 - (double)modelBaseScaleFactorOfPageAtIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;

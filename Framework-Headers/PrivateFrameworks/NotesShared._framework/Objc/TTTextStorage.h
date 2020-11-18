@@ -26,13 +26,15 @@
     BOOL _disableUndoCoalesceBreaking;
     BOOL _isDictating;
     BOOL _isHandlingTextCheckingResults;
-    BOOL _isTypingSelectingOrMarkingText;
+    BOOL _isTypingOrMarkingText;
+    BOOL _isSelectingText;
     BOOL _isDragging;
     BOOL _isResettingBaseWritingDirection;
     BOOL _isEndingEditing;
     BOOL _isFixing;
     BOOL _isApplyingUndoCommand;
     BOOL _pendingFixupAfterEditing;
+    BOOL _delayedFixupAfterEditingWantsUndoCommand;
     NSUndoManager *_undoManager;
     id<TTTextStorageStyler> _styler;
     NSMutableArray *_deletedRanges;
@@ -53,6 +55,7 @@
 @property (strong, nonatomic) NSMutableArray *coalescingUndoCommands; // @synthesize coalescingUndoCommands=_coalescingUndoCommands;
 @property (nonatomic) BOOL convertAttributes; // @synthesize convertAttributes=_convertAttributes;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) BOOL delayedFixupAfterEditingWantsUndoCommand; // @synthesize delayedFixupAfterEditingWantsUndoCommand=_delayedFixupAfterEditingWantsUndoCommand;
 @property (readonly, nonatomic) NSMutableArray *deletedRanges; // @synthesize deletedRanges=_deletedRanges;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableUndoCoalesceBreaking; // @synthesize disableUndoCoalesceBreaking=_disableUndoCoalesceBreaking;
@@ -70,7 +73,8 @@
 @property (nonatomic) BOOL isFixing; // @synthesize isFixing=_isFixing;
 @property (nonatomic) BOOL isHandlingTextCheckingResults; // @synthesize isHandlingTextCheckingResults=_isHandlingTextCheckingResults;
 @property (nonatomic) BOOL isResettingBaseWritingDirection; // @synthesize isResettingBaseWritingDirection=_isResettingBaseWritingDirection;
-@property (nonatomic) BOOL isTypingSelectingOrMarkingText; // @synthesize isTypingSelectingOrMarkingText=_isTypingSelectingOrMarkingText;
+@property (nonatomic) BOOL isSelectingText; // @synthesize isSelectingText=_isSelectingText;
+@property (nonatomic) BOOL isTypingOrMarkingText; // @synthesize isTypingOrMarkingText=_isTypingOrMarkingText;
 @property (nonatomic) struct _NSRange lastUndoEditRange; // @synthesize lastUndoEditRange=_lastUndoEditRange;
 @property (readonly, nonatomic) TTMergeableAttributedString *mergeableString;
 @property (nonatomic) BOOL pendingFixupAfterEditing; // @synthesize pendingFixupAfterEditing=_pendingFixupAfterEditing;

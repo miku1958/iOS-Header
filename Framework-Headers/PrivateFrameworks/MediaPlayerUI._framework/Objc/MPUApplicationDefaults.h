@@ -24,6 +24,7 @@
 - (void)_setObject:(id)arg1 forKey:(id)arg2;
 - (id)arrayForKey:(id)arg1;
 - (BOOL)boolForKey:(id)arg1;
+- (id)dateForKey:(id)arg1;
 - (void)dealloc;
 - (id)dictionaryForKey:(id)arg1;
 - (id)initWithApplicationIdentifier:(id)arg1;
@@ -33,6 +34,7 @@
 - (void)removeValueForKey:(id)arg1;
 - (void)setArray:(id)arg1 forKey:(id)arg2;
 - (void)setBool:(BOOL)arg1 forKey:(id)arg2;
+- (void)setDate:(id)arg1 forKey:(id)arg2;
 - (void)setDictionary:(id)arg1 forKey:(id)arg2;
 - (void)setInteger:(long long)arg1 forKey:(id)arg2;
 - (void)setNumber:(id)arg1 forKey:(id)arg2;

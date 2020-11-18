@@ -13,6 +13,7 @@
 @interface AKMainEventHandler : UIResponder <AKFormFeatureDetectorDelegate>
 {
     BOOL _mainEventHandlerIsInTrackingLoop;
+    BOOL _mainEventHandlerIsInDoodleTrackingLoop;
     BOOL _mainEventHandlerIsInRotationLoop;
     BOOL _shouldEatNextLeftMouseUp;
     BOOL _shouldEatNextRightMouseUp;
@@ -52,6 +53,7 @@
 @property (strong) UIEvent *lastEventWithValidLocationForAutoscroll; // @synthesize lastEventWithValidLocationForAutoscroll=_lastEventWithValidLocationForAutoscroll;
 @property (strong) UIEvent *lastLeftMouseDownEvent; // @synthesize lastLeftMouseDownEvent=_lastLeftMouseDownEvent;
 @property struct CGPoint leftMouseDownPoint; // @synthesize leftMouseDownPoint=_leftMouseDownPoint;
+@property BOOL mainEventHandlerIsInDoodleTrackingLoop; // @synthesize mainEventHandlerIsInDoodleTrackingLoop=_mainEventHandlerIsInDoodleTrackingLoop;
 @property BOOL mainEventHandlerIsInRotationLoop; // @synthesize mainEventHandlerIsInRotationLoop=_mainEventHandlerIsInRotationLoop;
 @property BOOL mainEventHandlerIsInTrackingLoop; // @synthesize mainEventHandlerIsInTrackingLoop=_mainEventHandlerIsInTrackingLoop;
 @property struct CGPoint panGestureStartPointInWindow; // @synthesize panGestureStartPointInWindow=_panGestureStartPointInWindow;
@@ -76,6 +78,7 @@
 - (BOOL)continueRotateEventTrackingLoopWithEvent:(id)arg1 orRecognizer:(id)arg2;
 - (BOOL)enterDragEventTrackingLoopWithEvent:(id)arg1 orRecognizer:(id)arg2;
 - (BOOL)enterRotateEventTrackingLoopWithEvent:(id)arg1 orRecognizer:(id)arg2;
+- (void)finishTranslationOfAllSelectedAnnotations;
 - (BOOL)handleDoubleDownEvent:(id)arg1 orRecognizer:(id)arg2;
 - (BOOL)handleDownEvent:(id)arg1 orRecognizer:(id)arg2;
 - (BOOL)handleKeyboardEvent:(id)arg1;

@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     AUAudioUnitBusArray_XH *_outputBusses;
     struct unique_ptr<AUProcAndUserData, std::__1::default_delete<AUProcAndUserData>> _elementCountListenerToken;
     struct unique_ptr<AUSyncCaller, std::__1::default_delete<AUSyncCaller>> _syncCaller;
-    BOOL _initialized;
     NSObject<OS_dispatch_queue> *_propListenerQueue;
     struct vector<AUAudioUnit_XH_PropListener, std::__1::allocator<AUAudioUnit_XH_PropListener>> _propListeners;
     struct IPCAURenderingClient _renderClient;

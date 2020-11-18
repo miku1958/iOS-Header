@@ -24,10 +24,20 @@
     float _pathDensity;
     unsigned int _pathEventMask;
     float _orbValue;
+    unsigned int _transducerType;
+    float _altitude;
+    float _azimuth;
+    float _barrelPressure;
+    unsigned int _willUpdateMask;
+    unsigned int _didUpdateMask;
     void *_pathWindow;
     struct CGPoint _pathLocation;
 }
 
+@property (nonatomic) float altitude; // @synthesize altitude=_altitude;
+@property (nonatomic) float azimuth; // @synthesize azimuth=_azimuth;
+@property (nonatomic) float barrelPressure; // @synthesize barrelPressure=_barrelPressure;
+@property (nonatomic) unsigned int didUpdateMask; // @synthesize didUpdateMask=_didUpdateMask;
 @property (nonatomic) float orbValue; // @synthesize orbValue=_orbValue;
 @property (nonatomic) float pathDensity; // @synthesize pathDensity=_pathDensity;
 @property (nonatomic) unsigned int pathEventMask; // @synthesize pathEventMask=_pathEventMask;
@@ -43,6 +53,8 @@
 @property (nonatomic) float pathTwist; // @synthesize pathTwist=_pathTwist;
 @property (nonatomic) void *pathWindow; // @synthesize pathWindow=_pathWindow;
 @property (nonatomic) unsigned int pathWindowContextID; // @synthesize pathWindowContextID=_pathWindowContextID;
+@property (nonatomic) unsigned int transducerType; // @synthesize transducerType=_transducerType;
+@property (nonatomic) unsigned int willUpdateMask; // @synthesize willUpdateMask=_willUpdateMask;
 
 + (id)representationWithPathInfo:(CDStruct_723b0d29 *)arg1;
 + (BOOL)supportsSecureCoding;

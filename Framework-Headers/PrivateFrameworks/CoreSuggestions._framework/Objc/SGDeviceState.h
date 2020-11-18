@@ -17,8 +17,8 @@
 + (BOOL)isDeviceFormattedForProtection;
 + (BOOL)isUnlocked;
 + (int)lockState;
-+ (void)registerBlockForFirstUnlock:(CDUnknownBlockType)arg1;
 + (void)registerForLockStateChangeNotifications:(CDUnknownBlockType)arg1;
++ (void)runBlockWhenDeviceIsReadyForSuggestions:(CDUnknownBlockType)arg1;
 
 @end
 

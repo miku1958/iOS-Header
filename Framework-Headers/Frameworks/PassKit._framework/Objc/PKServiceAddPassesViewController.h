@@ -25,14 +25,11 @@
     BOOL _alreadyAdding;
     long long _groupLoadState;
     CDUnknownBlockType _loadedGroupsCallback;
-    BOOL _haveStartedCardAnimation;
-    BOOL _viewAppeared;
     NSMutableArray *_localPasses;
     NSArray *_localPassDatas;
     PKPassGroupStackView *_cardStackView;
     PKGroupsController *_groupsController;
     NSMutableArray *_minimumCardHeightFromHereToTop;
-    long long _presentationState;
     UIProgressView *_progressView;
 }
 
@@ -41,14 +38,11 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PKGroupsController *groupsController; // @synthesize groupsController=_groupsController;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL haveStartedCardAnimation; // @synthesize haveStartedCardAnimation=_haveStartedCardAnimation;
 @property (strong, nonatomic) NSArray *localPassDatas; // @synthesize localPassDatas=_localPassDatas;
 @property (strong, nonatomic) NSMutableArray *localPasses; // @synthesize localPasses=_localPasses;
 @property (strong, nonatomic) NSMutableArray *minimumCardHeightFromHereToTop; // @synthesize minimumCardHeightFromHereToTop=_minimumCardHeightFromHereToTop;
-@property (nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;
 @property (strong, nonatomic) UIProgressView *progressView; // @synthesize progressView=_progressView;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL viewAppeared; // @synthesize viewAppeared=_viewAppeared;
 
 + (id)_exportedInterface;
 + (BOOL)_preventsAppearanceProxyCustomization;

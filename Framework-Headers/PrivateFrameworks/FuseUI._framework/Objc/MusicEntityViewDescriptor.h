@@ -13,7 +13,7 @@
 
 @interface MusicEntityViewDescriptor : NSObject <NSCopying>
 {
-    BOOL _trailingSeparatorInsetFollowsLayoutMargin;
+    BOOL _trailingSeparatorInsetFollowsLayoutInsets;
     BOOL _defaultAllowsSectionHeaders;
     BOOL _sectionHeaderViewsFloat;
     BOOL _usesUppercaseLettersForSectionHeaderTitles;
@@ -35,7 +35,7 @@
 @property (strong, nonatomic) UIColor *sectionHeaderTextColorForNonFloatingState; // @synthesize sectionHeaderTextColorForNonFloatingState=_sectionHeaderTextColorForNonFloatingState;
 @property (nonatomic) double sectionHeaderTopContentInset; // @synthesize sectionHeaderTopContentInset=_sectionHeaderTopContentInset;
 @property (nonatomic) BOOL sectionHeaderViewsFloat; // @synthesize sectionHeaderViewsFloat=_sectionHeaderViewsFloat;
-@property (nonatomic) BOOL trailingSeparatorInsetFollowsLayoutMargin; // @synthesize trailingSeparatorInsetFollowsLayoutMargin=_trailingSeparatorInsetFollowsLayoutMargin;
+@property (nonatomic) BOOL trailingSeparatorInsetFollowsLayoutInsets; // @synthesize trailingSeparatorInsetFollowsLayoutInsets=_trailingSeparatorInsetFollowsLayoutInsets;
 @property (nonatomic) BOOL usesUppercaseLettersForSectionHeaderTitles; // @synthesize usesUppercaseLettersForSectionHeaderTitles=_usesUppercaseLettersForSectionHeaderTitles;
 
 - (void).cxx_destruct;
@@ -44,6 +44,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateContentDescriptorsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSectionHeaderContentDescriptorsUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)includesShuffleAction;
 - (id)init;
 - (id)sectionHeaderContentDescriptorForSectionIndex:(unsigned long long)arg1;
 

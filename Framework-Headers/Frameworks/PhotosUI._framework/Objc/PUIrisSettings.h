@@ -8,6 +8,7 @@
 
 @interface PUIrisSettings : PUSettings
 {
+    BOOL _showStatusBorder;
     BOOL _audioEnabled;
     BOOL _vitalityAllowed;
     BOOL _useVitalityBuffer;
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL shouldAlwaysBadge; // @synthesize shouldAlwaysBadge=_shouldAlwaysBadge;
 @property (nonatomic) BOOL showCrossfadeBorder; // @synthesize showCrossfadeBorder=_showCrossfadeBorder;
 @property (nonatomic) BOOL showDebugInfo; // @synthesize showDebugInfo=_showDebugInfo;
+@property (nonatomic, getter=showStatusBorder) BOOL showStatusBorder; // @synthesize showStatusBorder=_showStatusBorder;
 @property (nonatomic) BOOL showVideoBorder; // @synthesize showVideoBorder=_showVideoBorder;
 @property (nonatomic) float transitionBlurRadius; // @synthesize transitionBlurRadius=_transitionBlurRadius;
 @property (nonatomic) double transitionDuration; // @synthesize transitionDuration=_transitionDuration;

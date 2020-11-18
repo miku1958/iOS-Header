@@ -13,12 +13,14 @@
 @interface CDPLocalSecretEntryViewController : CDPPassphraseEntryViewController <DevicePINControllerDelegate>
 {
     UIViewController *_presentingViewController;
+    BOOL _inlineMode;
     CDUnknownBlockType _validSecretHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL inlineMode; // @synthesize inlineMode=_inlineMode;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType validSecretHandler; // @synthesize validSecretHandler=_validSecretHandler;
 
@@ -28,6 +30,8 @@
 - (id)init;
 - (id)pinInstructionsPrompt;
 - (id)title;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

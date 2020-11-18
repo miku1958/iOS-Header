@@ -18,13 +18,13 @@
     UIActivityIndicatorView *_spinner;
     UILabel *_waitingLabel;
     UIButton *_escapeButton;
-    BOOL _shouldOfferDevicePicker;
+    unsigned long long _escapeOffer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned long long escapeOffer; // @synthesize escapeOffer=_escapeOffer;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL shouldOfferDevicePicker; // @synthesize shouldOfferDevicePicker=_shouldOfferDevicePicker;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -32,6 +32,7 @@
 - (id)initWithDelegate:(id)arg1;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)remoteApprovalSucceeded;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

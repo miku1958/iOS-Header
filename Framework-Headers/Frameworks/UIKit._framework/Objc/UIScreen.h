@@ -49,6 +49,8 @@
         unsigned int queriedDeviceContentMargins:1;
         unsigned int hasCalculatedPointsPerInch:1;
         unsigned int screenCreatedFBSDisplay:1;
+        unsigned int ignoreFocusUpdateIfNeeded:1;
+        unsigned int forceFocusedViewMayRemainFocused:1;
     } _screenFlags;
     BOOL _performingSystemSnapshot;
     BOOL _wantsSoftwareDimming;
@@ -84,8 +86,9 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) FBSDisplay *fbsDisplay; // @synthesize fbsDisplay=_fbsDisplay;
 @property (readonly) id<UICoordinateSpace> fixedCoordinateSpace;
-@property (readonly, weak, nonatomic) UIView *focusedView; // @synthesize focusedView=_focusedView;
+@property (readonly, weak, nonatomic) UIView *focusedView;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=_ignoreFocusUpdateIfNeeded, setter=_setIgnoreFocusUpdateIfNeeded:) BOOL ignoreFocusUpdateIfNeeded;
 @property (readonly, nonatomic, getter=_lastFocusStartTime) double lastFocusStartTime; // @synthesize lastFocusStartTime=_lastFocusStartTime;
 @property (strong, nonatomic, getter=_lastNotifiedTraitCollection, setter=_setLastNotifiedTraitCollection:) UITraitCollection *lastNotifiedTraitCollection; // @synthesize lastNotifiedTraitCollection=_lastNotifiedTraitCollection;
 @property (readonly, nonatomic) UIScreen *mirroredScreen;
@@ -152,6 +155,7 @@
 - (void)_computeMetrics:(BOOL)arg1;
 - (void)_connectScreen;
 - (id)_contextForCurrentFocusState;
+- (id)_contextForProgrammaticFocusUpdateToEnvironment:(id)arg1;
 - (id)_defaultTraitCollectionForInterfaceOrientation:(long long)arg1;
 - (id)_defaultTraitCollectionForInterfaceOrientation:(long long)arg1 inBounds:(struct CGRect)arg2;
 - (void)_disableScreenUpdates:(BOOL)arg1;
@@ -178,6 +182,7 @@
 - (BOOL)_isRightHandDrive;
 - (BOOL)_isRotatable;
 - (BOOL)_isUIElementLimited:(CDUnknownBlockType)arg1;
+- (BOOL)_isValidInterfaceOrientation:(long long)arg1;
 - (BOOL)_isWorkspaceCapable;
 - (id)_launchImageTraitCollectionForInterfaceOrientation:(long long)arg1 inBounds:(struct CGRect)arg2;
 - (id)_lazySoftwareDimmingWindow;
@@ -200,6 +205,7 @@
 - (id)_pendingFocusUpdateEnvironment;
 - (id)_pendingPreferredFocusedItem;
 - (double)_pointsPerInch;
+- (void)_possibleFocusedViewAncestor:(id)arg1 willBeRemovedFromSuperview:(id)arg2;
 - (void)_postBrightnessDidChangeNotificationIfAppropriate;
 - (void)_prepareForWindow;
 - (double)_refreshRate;
@@ -230,7 +236,7 @@
 - (void)_updateAvailableDisplayModes;
 - (void)_updateCapabilities;
 - (BOOL)_updateFocusToView:(id)arg1;
-- (BOOL)_updateFocusWithContext:(id)arg1 animationCoordinator:(id)arg2;
+- (BOOL)_updateFocusWithContext:(id)arg1;
 - (void)_updateOverscanCompensationAllowingBackgroundUpdate:(BOOL)arg1;
 - (void)_updateReferenceBoundsToSceneReferenceBounds:(struct CGRect)arg1 fromInterfaceOrientation:(long long)arg2 animated:(BOOL)arg3;
 - (void)_updateTraits;

@@ -17,6 +17,7 @@
 + (id)re2WithRegexpLazy:(id)arg1;
 + (id)re2WithSubregexps:(id)arg1;
 + (id)re2WithSubregexps:(id)arg1 prefilter:(id)arg2;
++ (void)setCacheLimitForTesting:(unsigned long long)arg1;
 - (BOOL)_enumerateMatchesInUtf8:(const char *)arg1 fromString:(id)arg2 ngroups:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
 - (void)enumerateMatchesInString:(id)arg1 ngroups:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 - (void)enumerateMatchesInUtf8:(const char *)arg1 fromString:(id)arg2 ngroups:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;

@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString *contentRatingDomain;
 @property (strong, nonatomic) NSNumber *contentRatingRanking;
 @property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *externalID;
 @property (strong, nonatomic) NSArray *highlightGroups;
 @property (strong, nonatomic) NSArray *interstitials;
 @property (nonatomic) BOOL isExplicit;

@@ -8,7 +8,7 @@
 
 #import <StoreKitUI/SKUINavigationStackObserver-Protocol.h>
 
-@class NSString, UIScrollView, UIViewController;
+@class NSString, SKUIViewControllerContainerCollectionViewCell, UIScrollView, UIViewController;
 @protocol SKUIScrollingTabBarControllerItemContextDelegate;
 
 @interface SKUIScrollingTabBarControllerItemContext : NSObject <SKUINavigationStackObserver>
@@ -23,11 +23,13 @@
     unsigned long long _originalAutoresizingMask;
     BOOL _readyForDisplay;
     BOOL _viewControllerIsNavigationController;
+    SKUIViewControllerContainerCollectionViewCell *_collectionViewCell;
     id<SKUIScrollingTabBarControllerItemContextDelegate> _delegate;
     unsigned long long _lastSelectedPageIndex;
     UIViewController *_viewController;
 }
 
+@property (strong, nonatomic) SKUIViewControllerContainerCollectionViewCell *collectionViewCell; // @synthesize collectionViewCell=_collectionViewCell;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SKUIScrollingTabBarControllerItemContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

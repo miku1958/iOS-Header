@@ -12,7 +12,8 @@
 
 + (struct CGRect)magnifiedRectForUnmagnifiedRect:(struct CGRect)arg1 ofLoupeAnnotation:(id)arg2 onPageController:(id)arg3;
 + (struct CGRect)unmagnifiedRectForMagnifiedRect:(struct CGRect)arg1 ofLoupeAnnotation:(id)arg2;
-+ (void)updateImageOnLoupeAnnotation:(id)arg1 onPageController:(id)arg2;
++ (void)updateFastPathImageOnLoupeAnnotation:(id)arg1 onPageController:(id)arg2;
++ (void)updateModelImageOnLoupeAnnotation:(id)arg1 onPageController:(id)arg2;
 
 @end
 

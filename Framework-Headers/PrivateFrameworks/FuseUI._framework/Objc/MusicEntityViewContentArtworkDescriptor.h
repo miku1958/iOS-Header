@@ -8,12 +8,15 @@
 
 #import <FuseUI/NSCopying-Protocol.h>
 
-@class MusicArtworkPlaceholderKey, NSMutableDictionary, NSSet, NSString, UIColor;
+@class MPULayoutInterpolator, MusicArtworkPlaceholderKey, NSMutableDictionary, NSSet, NSString, UIColor;
 
 @interface MusicEntityViewContentArtworkDescriptor : NSObject <NSCopying>
 {
     NSMutableDictionary *_cachedArtworkPlaceholderImages;
+    BOOL _hasValidLastUsedArtworkEdgeInsets;
     MusicArtworkPlaceholderKey *_lastUsedArtworkPlaceholderKey;
+    double _lastUsedContainerViewLeadingLayoutInset;
+    struct UIEdgeInsets _lastUsedArtworkEdgeInsets;
     NSString *_artworkAllowsUserInteractionProperty;
     NSString *_artworkProperty;
     NSSet *_artworkAdditionalPropertiesToPrefetch;
@@ -22,8 +25,10 @@
     UIColor *_artworkBorderColor;
     UIColor *_artworkHighlightedBackgoundColor;
     long long _artworkContentMode;
-    NSString *_wantsToHideBorderProperty;
+    MPULayoutInterpolator *_artworkTrailingEdgeInsetFromLeadingLayoutInsetLayoutInterpolator;
     long long _artworkPlaceholderStyle;
+    NSString *_wantsToHideBorderProperty;
+    double _displayScale;
     struct CGSize _artworkSize;
     struct UIEdgeInsets _artworkEdgeInsets;
 }
@@ -39,13 +44,17 @@
 @property (nonatomic) long long artworkPlaceholderStyle; // @synthesize artworkPlaceholderStyle=_artworkPlaceholderStyle;
 @property (copy, nonatomic) NSString *artworkProperty; // @synthesize artworkProperty=_artworkProperty;
 @property (nonatomic) struct CGSize artworkSize; // @synthesize artworkSize=_artworkSize;
+@property (copy, nonatomic) MPULayoutInterpolator *artworkTrailingEdgeInsetFromLeadingLayoutInsetLayoutInterpolator; // @synthesize artworkTrailingEdgeInsetFromLeadingLayoutInsetLayoutInterpolator=_artworkTrailingEdgeInsetFromLeadingLayoutInsetLayoutInterpolator;
+@property (nonatomic) double displayScale; // @synthesize displayScale=_displayScale;
 @property (copy, nonatomic) NSString *wantsToHideBorderProperty; // @synthesize wantsToHideBorderProperty=_wantsToHideBorderProperty;
 
 - (void).cxx_destruct;
 - (id)_grayArtworkPlaceholderImageForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)_missingArtworkImageNamed:(id)arg1 forSize:(struct CGSize)arg2;
+- (struct UIEdgeInsets)artworkEdgeInsetsForContainerViewLayoutInsets:(struct UIEdgeInsets)arg1;
 - (id)artworkPlaceholderImageForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 
 @end
 

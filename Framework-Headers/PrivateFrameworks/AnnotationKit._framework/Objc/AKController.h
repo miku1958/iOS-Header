@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AKActionController, AKAttributeController, AKFormFeatureDetectorController, AKIntelligentSketchController, AKMainEventHandler, AKModelController, AKPageController, AKSignatureModelController, AKTextEditorController, AKToolController, AKToolbarViewController, AKUndoController, NSMapTable, NSMutableArray, UIView;
+@class AKActionController, AKAttributeController, AKFormFeatureDetectorController, AKIntelligentSketchController, AKMainEventHandler, AKModelController, AKPageController, AKPeripheralAvailabilityManager_iOS, AKSignatureModelController, AKTextEditorController, AKToolController, AKToolbarViewController, AKUndoController, NSMapTable, NSMutableArray, UIView;
 @protocol AKControllerDelegateProtocol;
 
 @interface AKController : NSObject
@@ -30,6 +30,7 @@
     AKIntelligentSketchController *_intelligentSketchController;
     AKSignatureModelController *_signatureModelController;
     AKFormFeatureDetectorController *_formDetectionController;
+    AKPeripheralAvailabilityManager_iOS *_peripheralAvailabilityManager;
     unsigned long long _pasteCascadingMultiplier;
     long long _lastPasteboardChangeCount;
     unsigned long long _creationCascadingMultiplier;
@@ -52,6 +53,7 @@
 @property (strong) NSMutableArray *pageControllers; // @synthesize pageControllers=_pageControllers;
 @property (strong) NSMapTable *pageModelControllersToPageControllers; // @synthesize pageModelControllersToPageControllers=_pageModelControllersToPageControllers;
 @property unsigned long long pasteCascadingMultiplier; // @synthesize pasteCascadingMultiplier=_pasteCascadingMultiplier;
+@property (strong) AKPeripheralAvailabilityManager_iOS *peripheralAvailabilityManager; // @synthesize peripheralAvailabilityManager=_peripheralAvailabilityManager;
 @property (getter=isShowingMenu) BOOL showingMenu; // @synthesize showingMenu=_showingMenu;
 @property (strong) AKSignatureModelController *signatureModelController; // @synthesize signatureModelController=_signatureModelController;
 @property (strong) AKTextEditorController *textEditorController; // @synthesize textEditorController=_textEditorController;
@@ -63,6 +65,7 @@
 + (void)adjustAnnotationBoundsToFitText:(id)arg1;
 + (id)akBundle;
 + (id)akBundleIdentifier;
++ (BOOL)canConnectToStylus;
 + (id)controllerWithDelegate:(id)arg1;
 + (BOOL)hasPressureCapableHardware;
 + (void)renderAnnotation:(id)arg1 inContext:(struct CGContext *)arg2;
@@ -102,6 +105,7 @@
 - (void)resetToDefaultToolMode;
 - (id)rotationGestureRecognizer;
 - (void)selectAll:(id)arg1;
+- (BOOL)shouldDrawVariableStrokeDoodles;
 - (void)showAttributeInspector:(id)arg1;
 - (void)showSelectionMenu:(id)arg1;
 - (id)tapGestureRecognizer;

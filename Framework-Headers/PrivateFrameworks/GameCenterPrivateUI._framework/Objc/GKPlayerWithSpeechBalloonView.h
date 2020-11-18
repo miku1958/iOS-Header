@@ -32,6 +32,7 @@
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (id)metrics;
 - (void)setupSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

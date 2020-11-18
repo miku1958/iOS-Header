@@ -18,5 +18,6 @@
 - (void)playerDidEndTransitionToPlaybackState:(long long)arg1;
 - (void)playerDidPlayVideoToEnd;
 - (void)playerWillBeginTransitionToPlaybackState:(long long)arg1;
+- (void)playerWillPlayVideoToEnd;
 @end
 

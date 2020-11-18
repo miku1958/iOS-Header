@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)_setNeedsUpdate;
 - (void)_updateIfNeeded;
 - (void)_updateLoadingStatusForItem:(id)arg1;
+- (void)_updateLoadingStatusForItemIfNeeded:(id)arg1;
 - (void)_updateLoadingStatusForItemsIfNeeded;
 - (void)_updateNowIfNeeded;
 - (void)didCancelLoadOperationWithTrackingID:(struct NSString *)arg1;

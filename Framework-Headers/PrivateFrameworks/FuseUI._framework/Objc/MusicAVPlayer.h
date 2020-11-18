@@ -6,11 +6,15 @@
 
 #import <RadioUI/RURadioAVPlayer.h>
 
+@class MPPlaybackContext;
+
 @interface MusicAVPlayer : RURadioAVPlayer
 {
+    MPPlaybackContext *_lastPlaybackContext;
 }
 
 + (id)sharedAVPlayer;
+- (void).cxx_destruct;
 - (void)_connectAVPlayer;
 - (id)_expectedAssetTypesForPlaybackMode:(long long)arg1;
 - (void)_musicPlayer_defaultsDidChangeNotification:(id)arg1;
@@ -20,6 +24,7 @@
 - (void)dealloc;
 - (BOOL)hasVolumeControl;
 - (id)init;
+- (void)reloadWithPlaybackContext:(id)arg1;
 - (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)seekAlbum:(int)arg1;
 - (void)seekPlaylist:(int)arg1;

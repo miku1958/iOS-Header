@@ -26,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (id)_childFocusRegions;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1;
 - (id)_focusDebugOverlayParentView;
 - (BOOL)_focusRegionCanBecomeFocused;
 - (struct CGRect)_focusRegionFrame;
@@ -33,6 +34,8 @@
 - (BOOL)_focusRegionIsEligibleForFocus;
 - (id)_focusRegionItem;
 - (id)_focusRegionView;
+- (id)_fulfillPromisedFocusRegion;
+- (BOOL)_isPromiseFocusRegion;
 - (BOOL)_isTransparentFocusRegion;
 - (id)init;
 - (id)initWithFocusItem:(id)arg1;

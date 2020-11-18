@@ -12,7 +12,6 @@
 #import <FuseUI/MusicEntityVerticalSectionHeaderViewDelegate-Protocol.h>
 #import <FuseUI/MusicIndexBarDataSource-Protocol.h>
 #import <FuseUI/MusicIndexBarScrollDelegate-Protocol.h>
-#import <FuseUI/MusicLayoutMarginProxyViewDelegate-Protocol.h>
 #import <FuseUI/MusicLibraryViewConfigurationConsuming-Protocol.h>
 #import <FuseUI/MusicSplitInitialStateProviding-Protocol.h>
 #import <FuseUI/UICollectionViewDataSource-Protocol.h>
@@ -20,11 +19,12 @@
 #import <FuseUI/UIViewControllerPreviewingDelegate-Protocol.h>
 #import <FuseUI/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 
-@class MPAVController, MusicClientContext, MusicCollectionView, MusicEntityCollectionViewDescriptor, MusicEntityPlayabilityController, MusicEntityPlaybackStatusController, MusicEntityValueContext, MusicLibraryBrowseCollectionViewConfiguration, MusicLibraryBrowseCollectionViewLayoutMetrics, MusicSectionEntityValueContext, NSMutableArray, NSString, SKUIClientContext, SKUIDynamicPageSectionIndexMapper, UICollectionView, UICollectionViewFlowLayout;
+@class MPAVController, MusicAsynchronousPropertyLoadingController, MusicClientContext, MusicCollectionView, MusicEntityCollectionViewDescriptor, MusicEntityPlayabilityController, MusicEntityPlaybackStatusController, MusicEntityValueContext, MusicLibraryBrowseCollectionViewConfiguration, MusicLibraryBrowseCollectionViewLayoutMetrics, MusicSectionEntityValueContext, NSMutableArray, NSString, SKUIClientContext, SKUIDynamicPageSectionIndexMapper, UICollectionView, UICollectionViewFlowLayout;
 @protocol MusicLibraryBrowseCollectionViewControllerDelegate, UIViewControllerPreviewing;
 
-@interface MusicLibraryBrowseCollectionViewController : UIViewController <MusicCollectionViewDelegate, MusicEntityPlaybackStatusControllerObserving, MusicLayoutMarginProxyViewDelegate, MusicEntityVerticalSectionHeaderViewDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, MusicClientContextConsuming, MusicIndexBarDataSource, MusicIndexBarScrollDelegate, MusicLibraryViewConfigurationConsuming, MusicSplitInitialStateProviding, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface MusicLibraryBrowseCollectionViewController : UIViewController <MusicCollectionViewDelegate, MusicEntityPlaybackStatusControllerObserving, MusicEntityVerticalSectionHeaderViewDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, MusicClientContextConsuming, MusicIndexBarDataSource, MusicIndexBarScrollDelegate, MusicLibraryViewConfigurationConsuming, MusicSplitInitialStateProviding, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
+    MusicAsynchronousPropertyLoadingController *_asynchronousPropertyLoadingController;
     MusicCollectionView *_collectionView;
     MusicLibraryBrowseCollectionViewConfiguration *_collectionViewConfiguration;
     MusicEntityCollectionViewDescriptor *_entityViewDescriptor;
@@ -60,22 +60,24 @@
 
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)_collectionViewLayoutMargins;
+- (struct UIEdgeInsets)_collectionViewLayoutMarginsForLayoutMetricsContentInsets:(struct UIEdgeInsets)arg1;
 - (void)_configureEntityValueContextOutput:(id)arg1 forIndexPath:(id)arg2;
 - (id)_dequeueCoalescingEntityValueProvider;
-- (void)_entityPlayabilityControllerDidChangeNotification:(id)arg1;
+- (unsigned long long)_entityPlayabilityResultForEntityValueContext:(id)arg1;
 - (id)_entityValueContextAtIndexPath:(id)arg1;
 - (void)_handleContentSizeCategoryDidChangeNotification:(id)arg1;
+- (void)_handleEntityPlayabilityControllerDidChangeNotification:(id)arg1;
 - (void)_handleEntityProviderDidInvalidateNotification:(id)arg1;
 - (void)_invalidateLayoutMetrics;
-- (BOOL)_isEntityValueContextDisabled:(id)arg1;
 - (id)_layoutMetrics;
 - (void)_presentContextualActionsWithEntityValueContext:(id)arg1 fromButton:(id)arg2;
 - (void)_recycleCoalescingEntityValueProvider:(id)arg1;
+- (double)_secondaryReferenceMetricForQueryingLayoutInterpolators;
 - (id)_sectionEntityValueContextForIndex:(unsigned long long)arg1;
+- (void)_updateCollectionViewFlowLayoutMetricsAndNotifyDelegate:(BOOL)arg1;
 - (void)_updateEntityDisabledStateForCell:(id)arg1 withEntityValueContext:(id)arg2;
 - (void)_updateEntityDisabledStateForVisibleCells;
 - (void)_updateFlatteningToSingleSectionPolicyAllowingCollectionViewReload:(BOOL)arg1;
-- (void)_updateMetricsOfCollectionViewFlowLayout:(id)arg1 notifyDelegate:(BOOL)arg2;
 - (void)_updatePlaybackStatusForCell:(id)arg1 withEntityValueContext:(id)arg2;
 - (void)_updatePlaybackStatusForVisibleCells;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
@@ -102,11 +104,10 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLibraryViewConfiguration:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)layoutMarginProxyViewLayoutMarginsDidChange:(id)arg1;
 - (id)loadEntityViewDescriptor;
-- (void)loadView;
 - (unsigned long long)maximumItemsPerRow;
 - (BOOL)music_handleUserActivityContext:(id)arg1 containerItem:(id)arg2;
+- (void)music_viewInheritedLayoutInsetsDidChange;
 - (unsigned long long)numberOfIndexBarEntries;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)playbackStatusControllerPlaybackStatusDidChange:(id)arg1;
@@ -116,6 +117,7 @@
 - (void)showInitialStateForSplitViewController;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

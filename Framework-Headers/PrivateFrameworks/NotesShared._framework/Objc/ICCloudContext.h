@@ -64,7 +64,6 @@
 @property (strong, nonatomic) ICThreadSafeMutableDictionary *retryCountByZoneID; // @synthesize retryCountByZoneID=_retryCountByZoneID;
 @property (nonatomic) BOOL syncDisabledByServer; // @synthesize syncDisabledByServer=_syncDisabledByServer;
 
-+ (void)clearSharedContext;
 + (void)deleteAllServerChangeTokens;
 + (id)errorForDisabledCloudSyncing;
 + (id)errorFromErrors:(id)arg1;
@@ -73,7 +72,6 @@
 + (id)newNotesContainer;
 + (id)notesZoneID;
 + (id)sharedContext;
-+ (void)startSharedContext;
 - (void).cxx_destruct;
 - (void)addDependenciesForModifyRecordsOperation:(id)arg1;
 - (void)addProcessObjectsOperationWithName:(id)arg1 block:(CDUnknownBlockType)arg2;

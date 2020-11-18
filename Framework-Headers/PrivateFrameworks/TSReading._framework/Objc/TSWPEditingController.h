@@ -185,6 +185,7 @@
 - (BOOL)editorKeyboardLanguageIsRTL;
 - (void)endEditing;
 - (void)endEditingAndSelectParent:(id)arg1;
+- (void)endHardPressGestureRecognizer:(id)arg1;
 - (void)extendSelectionLeft;
 - (void)extendSelectionRight;
 - (id)extendSelectionToParagraphs:(id)arg1;

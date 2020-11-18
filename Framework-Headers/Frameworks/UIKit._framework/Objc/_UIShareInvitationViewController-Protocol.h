@@ -9,6 +9,7 @@
 @class NSString, UIColor, UIImage, _UIDocumentPickerNSURLWrapper;
 
 @protocol _UIShareInvitationViewController <NSObject>
+- (void)_prepareForDisplayWithCompletion:(void (^)(void))arg1;
 - (void)_setAppName:(NSString *)arg1;
 - (void)_setAuxiliaryActionTitle:(NSString *)arg1;
 - (void)_setCollaborationUIEnabled:(BOOL)arg1;

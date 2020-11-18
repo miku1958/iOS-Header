@@ -16,12 +16,14 @@
 @interface MusicEntityTracklistItemTableViewCell : UITableViewCell <MusicEntityTracklistItemViewDelegate, MusicEntityContentDescriptorViewConfiguring, MusicEntityViewPlaybackStatusObserving>
 {
     MusicEntityTracklistItemView *_tracklistItemView;
+    BOOL _entityDisabled;
     double _leadingTextColumnWidth;
 }
 
 @property (strong, nonatomic) MusicEntityViewContentDescriptor *contentDescriptor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isEntityDisabled) BOOL entityDisabled; // @synthesize entityDisabled=_entityDisabled;
 @property (strong, nonatomic) id<MusicEntityValueProviding> entityValueProvider;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double leadingTextColumnWidth; // @synthesize leadingTextColumnWidth=_leadingTextColumnWidth;
@@ -29,13 +31,14 @@
 
 + (double)maximumHeightForContentDescriptor:(id)arg1 width:(double)arg2 traitCollection:(id)arg3;
 - (void).cxx_destruct;
+- (void)_setShouldHaveFullLengthBottomSeparator:(BOOL)arg1;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)setBackgroundColor:(id)arg1;
-- (void)setEntityDisabled:(BOOL)arg1;
+- (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setPlaybackStatus:(id)arg1;
+- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)tracklistItemView:(id)arg1 didSelectPlayButtonAction:(unsigned long long)arg2;
 - (void)tracklistItemViewDidSelectContextualActionsButton:(id)arg1;
 - (BOOL)tracklistItemViewShouldLayoutAsEditing:(id)arg1;

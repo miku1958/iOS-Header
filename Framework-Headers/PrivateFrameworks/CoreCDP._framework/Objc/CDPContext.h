@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreCDP/NSSecureCoding-Protocol.h>
+
 @class NSDictionary, NSNumber, NSString;
 
-@interface CDPContext : NSObject
+@interface CDPContext : NSObject <NSSecureCoding>
 {
     BOOL _isHSA2Account;
     BOOL _didUseSMSVerification;
@@ -33,8 +35,12 @@
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (copy, nonatomic) NSString *passwordEquivToken; // @synthesize passwordEquivToken=_passwordEquivToken;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithAuthenticationResults:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)updateWithAuthenticationResults:(id)arg1;
 
 @end
 

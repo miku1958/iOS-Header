@@ -14,6 +14,7 @@
 {
     SUDownload *_lastDownload;
     SUDescriptor *_lastScannedDescriptor;
+    SUDescriptor *_currentDescriptor;
     NSDate *_lastScannedDescriptorTime;
     NSDate *_scheduledManualDownloadWifiPeriodEndTime;
     NSDate *_scheduledAutodownloadWifiPeriodEndTime;
@@ -28,6 +29,7 @@
 }
 
 @property (nonatomic) BOOL autodownloadNeedsOneTimeRetry; // @synthesize autodownloadNeedsOneTimeRetry=_autodownloadNeedsOneTimeRetry;
+@property (copy, nonatomic) SUDescriptor *currentDescriptor; // @synthesize currentDescriptor=_currentDescriptor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

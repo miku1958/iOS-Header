@@ -21,10 +21,12 @@ __attribute__((visibility("hidden")))
     struct __CFDictionary *_observedTouches;
     struct __CFDictionary *_predictedTouches;
     _UITouchPredictionManager *_predictionManager;
+    long long _singleAllowableExternalTouchPathIndex;
 }
 
 @property (readonly, nonatomic) double _initialTouchTimestamp;
 @property (readonly, nonatomic) unsigned int _windowServerHitTestContextId;
+@property (nonatomic) long long singleAllowableExternalTouchPathIndex; // @synthesize singleAllowableExternalTouchPathIndex=_singleAllowableExternalTouchPathIndex;
 
 - (void).cxx_destruct;
 - (void)_addCoalescedTouch:(id)arg1 forIndex:(long long)arg2 hidEvent:(struct __IOHIDEvent *)arg3;

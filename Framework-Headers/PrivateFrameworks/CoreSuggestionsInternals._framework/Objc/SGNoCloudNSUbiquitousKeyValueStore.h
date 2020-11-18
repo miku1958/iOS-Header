@@ -11,6 +11,7 @@
 @interface SGNoCloudNSUbiquitousKeyValueStore : NSUbiquitousKeyValueStore
 {
     NSMutableDictionary *_kv;
+    int _lock;
 }
 
 - (void).cxx_destruct;

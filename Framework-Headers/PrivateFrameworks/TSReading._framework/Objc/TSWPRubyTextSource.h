@@ -42,6 +42,7 @@
 - (unsigned int)composedCharacterAtCharIndex:(unsigned long long)arg1 isSurrogatePair:(BOOL *)arg2;
 - (struct __CFDictionary *)createFilteredCoreTextAttributes:(struct __CFDictionary *)arg1 effectiveRange:(struct _NSRange *)arg2 filterDelegate:(id)arg3;
 - (void)dealloc;
+- (double)filteredCoreTextAttributesFontScaleEffectiveRange:(struct _NSRange *)arg1 filterDelegate:(id)arg2;
 - (id)footnoteReferenceAtCharIndex:(unsigned long long)arg1;
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (BOOL)hasColumnBreakAtCharIndex:(unsigned long long)arg1;

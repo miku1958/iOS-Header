@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+@class PSSSSubscriptionManager;
+
 @interface CSSubscriptionManager : NSObject
 {
-    id _internal;
+    PSSSSubscriptionManager *_internal;
 }
 
 + (id)sharedManager;

@@ -42,8 +42,6 @@
     id _dropShadowView;
     id _currentAction;
     UIStoryboard *_storyboard;
-    NSArray *_storyboardSegueTemplates;
-    NSArray *_forceTouchPreviewingRegistrants;
     NSDictionary *_externalObjectsTableForViewLoading;
     NSArray *_topLevelObjectsToKeepAliveFromStoryboard;
     UIView *_savedHeaderSuperview;
@@ -140,11 +138,15 @@
     _UILayoutGuide *_rightLayoutGuide;
     NSLayoutConstraint *_leftMarginGuideConstraint;
     NSLayoutConstraint *_rightMarginGuideConstraint;
+    NSArray *_storyboardSegueTemplates;
     UIStoryboardSegue *_segueResponsibleForModalPresentation;
     UIViewController *_sourceViewControllerIfPresentedViaPopoverSegue;
     UIViewController *_modalSourceViewController;
     UIViewController *_presentedStatusBarViewController;
     unsigned long long _edgesForExtendedLayout;
+    NSArray *_storyboardPreviewSegueTemplates;
+    NSArray *_storyboardCommitSegueTemplates;
+    NSArray *_storyboardPreviewingRegistrants;
     UIView *__embeddedView;
     UIView *__embeddingView;
     id<_UIViewControllerContentViewEmbedding> __embeddedDelegate;
@@ -220,7 +222,6 @@
 @property (readonly, nonatomic) NSExtensionContext *extensionContext; // @dynamic extensionContext;
 @property (strong, nonatomic, setter=_setExtensionContext:) NSExtensionContext *extensionContext; // @dynamic extensionContext;
 @property (nonatomic, getter=isFinishingModalTransition) BOOL finishingModalTransition;
-@property (readonly, nonatomic) NSArray *forceTouchPreviewingRegistrants; // @synthesize forceTouchPreviewingRegistrants=_forceTouchPreviewingRegistrants;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -261,6 +262,9 @@
 @property (strong, nonatomic) UISearchDisplayController *searchDisplayController; // @dynamic searchDisplayController;
 @property (readonly, nonatomic) UISplitViewController *splitViewController;
 @property (strong, nonatomic) UIStoryboard *storyboard; // @synthesize storyboard=_storyboard;
+@property (readonly, nonatomic) NSArray *storyboardCommitSegueTemplates; // @synthesize storyboardCommitSegueTemplates=_storyboardCommitSegueTemplates;
+@property (readonly, nonatomic) NSArray *storyboardPreviewSegueTemplates; // @synthesize storyboardPreviewSegueTemplates=_storyboardPreviewSegueTemplates;
+@property (readonly, nonatomic) NSArray *storyboardPreviewingRegistrants; // @synthesize storyboardPreviewingRegistrants=_storyboardPreviewingRegistrants;
 @property (readonly, nonatomic) NSArray *storyboardSegueTemplates; // @synthesize storyboardSegueTemplates=_storyboardSegueTemplates;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -377,6 +381,7 @@
 - (struct CGPoint)_centerForOrientation:(long long)arg1;
 - (BOOL)_checkIfViewControllerIsBeingDismissed:(id)arg1;
 - (id)_childFocusRegions;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1;
 - (id)_childViewControllersToSendViewWillTransitionToSize;
 - (void)_cleanupLayoutGuides;
 - (void)_cleanupPresentation;
@@ -413,6 +418,7 @@
 - (void)_didRotateFromInterfaceOrientation;
 - (void)_didRotateFromInterfaceOrientation:(long long)arg1 forwardToChildControllers:(BOOL)arg2 skipSelf:(BOOL)arg3;
 - (BOOL)_didSelfOrAncestorBeginAppearanceTransition;
+- (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_disallowMixedOrientationPresentations;
 - (void)_dismissViewControllerWithAnimationController:(id)arg1 interactionController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_dismissViewControllerWithTransition:(int)arg1 from:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -449,6 +455,7 @@
 - (BOOL)_forwardRotationMethods;
 - (struct CGRect)_frameForContainerViewInSheetForBounds:(struct CGRect)arg1;
 - (struct CGRect)_frameForContainerViewInSheetForBounds:(struct CGRect)arg1 displayingTopView:(BOOL)arg2 andBottomView:(BOOL)arg3;
+- (id)_fulfillPromisedFocusRegion;
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
 - (BOOL)_hackFor11408026_beginAppearanceTransition:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)_hackFor11408026_endAppearanceTransition;
@@ -478,6 +485,7 @@
 - (BOOL)_isNestedNavigationController;
 - (BOOL)_isPresentationContextByDefault;
 - (BOOL)_isPresentingInWindow:(id)arg1;
+- (BOOL)_isPromiseFocusRegion;
 - (BOOL)_isRootViewController;
 - (BOOL)_isSupportedInterfaceOrientation:(long long)arg1;
 - (BOOL)_isTransparentFocusRegion;
@@ -512,6 +520,7 @@
 - (id)_nonPresentationAppearanceContainer;
 - (void)_overlayPresentAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (long long)_overrideInterfaceOrientationMechanics;
+- (id)_overridingDestinationEnvironmentForFocusUpdateInContext:(id)arg1;
 - (void)_parent:(id)arg1 willTransitionToTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;
 - (id)_parentContentContainer;
 - (id)_parentFocusEnvironment;
@@ -527,6 +536,7 @@
 - (long long)_preferredInterfaceOrientationGivenStatusBarAndDeviceOrientationAndMask:(unsigned long long *)arg1;
 - (id)_preferredStatusBarHideAnimationParameters;
 - (id)_preferredStatusBarStyleAnimationParameters;
+- (void)_prepareForContainerTransition:(id)arg1;
 - (void)_prepareForDismissalInPopover:(id)arg1;
 - (void)_prepareForNestedDisplayWithNavigationController:(id)arg1;
 - (void)_prepareForNormalDisplayWithNavigationController:(id)arg1;
@@ -537,7 +547,6 @@
 - (void)_presentViewControllerForStateRestoration:(id)arg1 animated:(BOOL)arg2;
 - (id)_presentationControllerClassName;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
-- (id)_presentedFocusEnvironment;
 - (void)_presentingViewControllerDidChange:(id)arg1;
 - (void)_presentingViewControllerWillChange:(id)arg1;
 - (id)_previousRootViewController;
@@ -644,6 +653,8 @@
 - (void)_traverseViewControllerHierarchyFromLevel:(long long)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (BOOL)_tryBecomeRootViewControllerInWindow:(id)arg1;
 - (BOOL)_tryRetain;
+- (BOOL)_tvTabBarShouldAutohide;
+- (BOOL)_tvTabBarShouldOverlap;
 - (id)_uiCollectionView;
 - (void)_unembedContentView;
 - (void)_unembedContentViewSettingDelegate:(id)arg1;

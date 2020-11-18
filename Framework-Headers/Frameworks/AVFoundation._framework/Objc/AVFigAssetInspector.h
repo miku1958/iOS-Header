@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) NSArray *figChapters;
 @property (readonly, nonatomic, getter=_formatReader) struct OpaqueFigFormatReader *formatReader;
 @property (readonly, nonatomic) BOOL hasProtectedContent;
+@property (readonly, nonatomic) NSURL *originalNetworkContentURL;
 @property (readonly, nonatomic) NSURL *resolvedURL;
 @property (readonly, nonatomic, getter=_isStreaming) BOOL streaming;
 

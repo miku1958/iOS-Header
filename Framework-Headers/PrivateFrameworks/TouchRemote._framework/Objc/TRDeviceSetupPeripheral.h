@@ -6,41 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString, _TRUserNotfication;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, TRDeviceSetupPeripheralDelegate;
+@class NSString;
+@protocol OS_dispatch_queue, TRDeviceSetupPeripheralDelegate;
 
 @interface TRDeviceSetupPeripheral : NSObject
 {
-    _TRUserNotfication *_activeUserNotification;
-    NSString *_authenticationAppleID;
-    unsigned long long _authenticationAttemptCount;
-    NSData *_dataToSend;
-    NSObject<OS_dispatch_semaphore> *_dataToSendSemaphore;
-    NSString *_deviceGUID;
     BOOL _performingSetup;
     BOOL _preparingForSetup;
     NSObject<OS_dispatch_queue> *_queue;
-    NSString *_userAgent;
     id<TRDeviceSetupPeripheralDelegate> _delegate;
+    CDUnknownBlockType _pendingSendDataHandler;
+    NSString *_authenticatediTunesStoreID;
 }
 
+@property (copy, nonatomic) NSString *authenticatediTunesStoreID; // @synthesize authenticatediTunesStoreID=_authenticatediTunesStoreID;
 @property (weak, nonatomic) id<TRDeviceSetupPeripheralDelegate> delegate; // @synthesize delegate=_delegate;
+@property (copy) CDUnknownBlockType pendingSendDataHandler; // @synthesize pendingSendDataHandler=_pendingSendDataHandler;
 
 - (void).cxx_destruct;
-- (void)_authenticateWithParameters:(id)arg1;
-- (BOOL)_canPerformSetupReturningHasWiFiNetwork:(BOOL *)arg1;
+- (void)_authenticateWithAction:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_canPerformSetupReturningHasWiFiNetwork:(BOOL *)arg1 ssid:(id *)arg2 password:(id *)arg3;
+- (void)_cancelAuthenticationWithReceivedAction:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
+- (void)_cancelSetupWithAction:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)_didDisconnect;
-- (id)_didReceiveData:(id)arg1;
-- (id)_didTap;
-- (void)_sendSetupDataWithAuthInfo:(id)arg1 diagnosticSubmissionEnabled:(BOOL)arg2 rememberPasswordEnabled:(BOOL)arg3;
-- (void)_setupDidComplete;
-- (void)_setupDidFailWithError:(id)arg1;
-- (BOOL)_showUserNotificationForAppleID:(id)arg1 returningAppleID:(id *)arg2 password:(id *)arg3;
-- (void)_showUserNotificationForAuthenticationFailure:(id)arg1;
-- (BOOL)_showUserNotificationForDiagnosticSubmission;
-- (void)_showUserNotificationForErrorWithTitle:(id)arg1 message:(id)arg2;
-- (BOOL)_showUserNotificationForRememberPasswordForAppleID:(id)arg1;
-- (void)_startAuthentication;
+- (void)_didReceiveData:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
+- (void)_didTapWithSendDataHandler:(CDUnknownBlockType)arg1;
+- (void)_finishSetupWithAction:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
+- (void)_legacyAuthenticateWithAction:(id)arg1 attemptCount:(unsigned long long)arg2 replyHandler:(CDUnknownBlockType)arg3;
+- (void)_legacyAuthenticateWithUserAgent:(id)arg1 deviceGUID:(id)arg2 accountID:(id)arg3 password:(id)arg4 attemptCount:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (BOOL)_sendAction:(id)arg1 sendDataHandler:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (void)_setUpWithAction:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
+- (void)_setupDidFailWithError:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
+- (void)_startAuthenticationWithReceivedAction:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)cancelPreparingForSetup;
 - (void)cancelSetupForStateChange;
 - (void)cancelSetupForTimeout;

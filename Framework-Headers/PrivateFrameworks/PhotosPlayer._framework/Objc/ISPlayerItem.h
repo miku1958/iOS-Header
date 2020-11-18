@@ -6,34 +6,43 @@
 
 #import <objc/NSObject.h>
 
-@class AVPlayerItem, ISAsset, ISCrossfadeItem, NSError;
+@class AVPlayerItem, ISAsset, ISCrossfadeItem, NSError, NSHashTable;
+@protocol OS_dispatch_queue;
 
 @interface ISPlayerItem : NSObject
 {
-    BOOL __needToLoadContent;
-    BOOL _shouldLoadCrossfadeContent;
+    NSObject<OS_dispatch_queue> *_observerQueue;
+    NSHashTable *_observers;
+    BOOL __needsToLoadVideoPlayerItem;
+    BOOL __needsToLoadCrossfadeItem;
+    BOOL __loadingCancelled;
     BOOL _reversesMoreVideoFramesInMemory;
     BOOL _aggressivelyCacheVideoFrames;
+    BOOL _shouldLoadCrossfadeContent;
     ISAsset *_asset;
     long long _status;
     NSError *_error;
-    AVPlayerItem *_audioPlayerItem;
+    long long _loadingTarget;
     AVPlayerItem *_videoPlayerItem;
     ISCrossfadeItem *_crossfadeItem;
     double _photoTime;
     struct CGImage *_photo;
-    CDUnknownBlockType __loadingCompletionHandler;
     double _period;
+    long long __crossfadeItemRequestID;
+    long long __videoPlayerItemRequestID;
     struct CGSize _targetSize;
 }
 
-@property (copy, nonatomic, setter=_setLoadingCompletionHandler:) CDUnknownBlockType _loadingCompletionHandler; // @synthesize _loadingCompletionHandler=__loadingCompletionHandler;
-@property (nonatomic, setter=_setNeedsToLoadContent:) BOOL _needToLoadContent; // @synthesize _needToLoadContent=__needToLoadContent;
+@property (nonatomic, setter=_setCrossfadeItemRequestID:) long long _crossfadeItemRequestID; // @synthesize _crossfadeItemRequestID=__crossfadeItemRequestID;
+@property (nonatomic, getter=_isLoadingCancelled, setter=_setLoadingCancelled:) BOOL _loadingCancelled; // @synthesize _loadingCancelled=__loadingCancelled;
+@property (nonatomic, setter=_setNeedsToLoadCrossfadeItem:) BOOL _needsToLoadCrossfadeItem; // @synthesize _needsToLoadCrossfadeItem=__needsToLoadCrossfadeItem;
+@property (nonatomic, setter=_setNeedsToLoadVideoPlayerItem:) BOOL _needsToLoadVideoPlayerItem; // @synthesize _needsToLoadVideoPlayerItem=__needsToLoadVideoPlayerItem;
+@property (nonatomic, setter=_setVideoPlayerItemRequestID:) long long _videoPlayerItemRequestID; // @synthesize _videoPlayerItemRequestID=__videoPlayerItemRequestID;
 @property (nonatomic) BOOL aggressivelyCacheVideoFrames; // @synthesize aggressivelyCacheVideoFrames=_aggressivelyCacheVideoFrames;
 @property (readonly) ISAsset *asset; // @synthesize asset=_asset;
-@property (strong, nonatomic, setter=_setAudioPlayerItem:) AVPlayerItem *audioPlayerItem; // @synthesize audioPlayerItem=_audioPlayerItem;
 @property (strong, nonatomic, setter=_setCrossfadeItem:) ISCrossfadeItem *crossfadeItem; // @synthesize crossfadeItem=_crossfadeItem;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (nonatomic) long long loadingTarget; // @synthesize loadingTarget=_loadingTarget;
 @property (nonatomic, setter=_setPeriod:) double period; // @synthesize period=_period;
 @property (strong, nonatomic, setter=_setPhoto:) struct CGImage *photo; // @synthesize photo=_photo;
 @property (nonatomic, setter=_setphotoTime:) double photoTime; // @synthesize photoTime=_photoTime;
@@ -46,14 +55,23 @@
 + (id)playerItemWithAsset:(id)arg1 targetSize:(struct CGSize)arg2;
 - (void).cxx_destruct;
 - (void)_configureVideoPlayerItem;
-- (void)_handleLoadValuesAsynchronouslyForKeysCompleted;
+- (void)_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
+- (void)_handleCrossfadeLoadingResultWithSuccess:(BOOL)arg1 crossfadeItem:(id)arg2 error:(id)arg3;
+- (void)_handleVideoPlayerItemLoadResultWithSuccess:(BOOL)arg1 playerItem:(id)arg2 error:(id)arg3;
+- (void)_loadCrossfadeItemIfNeeded;
+- (void)_loadNextResourceIfNeeded;
+- (void)_loadVideoPlayerItemIfNeeded;
+- (BOOL)_needsToLoadContent;
 - (void)_setError:(id)arg1;
 - (void)_setStatus:(long long)arg1;
 - (void)_updateStatus;
+- (void)cancelLoading;
+- (void)dealloc;
 - (id)init;
 - (id)initWithAsset:(id)arg1 targetSize:(struct CGSize)arg2;
-- (void)loadAsynchronouslyWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)registerObserver:(id)arg1;
 - (void)resetAVObjects;
+- (void)unregisterObserver:(id)arg1;
 
 @end
 

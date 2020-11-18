@@ -21,7 +21,7 @@
     BOOL _shouldDrawFullWidthSeperator;
     id<PKPaymentSetupFieldCellDelegate> _delegate;
     PKPaymentSetupField *_paymentSetupField;
-    double _editableTextFieldOffset;
+    double _minimumTextLabelWidth;
     UIColor *_editableTextFieldTextColor;
     UIColor *_editableTextFieldDisabledTextColor;
     UIColor *_editableTextFieldCameraCapturedTextColor;
@@ -32,10 +32,10 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) UIColor *editableTextFieldCameraCapturedTextColor; // @synthesize editableTextFieldCameraCapturedTextColor=_editableTextFieldCameraCapturedTextColor;
 @property (copy, nonatomic) UIColor *editableTextFieldDisabledTextColor; // @synthesize editableTextFieldDisabledTextColor=_editableTextFieldDisabledTextColor;
-@property (nonatomic) double editableTextFieldOffset; // @synthesize editableTextFieldOffset=_editableTextFieldOffset;
 @property (copy, nonatomic) UIColor *editableTextFieldTextColor; // @synthesize editableTextFieldTextColor=_editableTextFieldTextColor;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double minimumTextLabelWidth; // @synthesize minimumTextLabelWidth=_minimumTextLabelWidth;
 @property (strong, nonatomic) PKPaymentSetupField *paymentSetupField; // @synthesize paymentSetupField=_paymentSetupField;
 @property (nonatomic) BOOL shouldDrawFullWidthSeperator; // @synthesize shouldDrawFullWidthSeperator=_shouldDrawFullWidthSeperator;
 @property (nonatomic) BOOL shouldDrawSeperator; // @synthesize shouldDrawSeperator=_shouldDrawSeperator;

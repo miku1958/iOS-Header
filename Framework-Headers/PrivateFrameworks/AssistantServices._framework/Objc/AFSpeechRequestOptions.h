@@ -17,6 +17,7 @@
     BOOL _useStreamingDictation;
     BOOL _isInitialBringUp;
     BOOL _acousticIdEnabled;
+    BOOL _releaseAudioSessionOnRecordingCompletion;
     long long _activationEvent;
     NSString *_btDeviceAddress;
     NSString *_serverCommandId;
@@ -40,6 +41,7 @@
 @property (copy, nonatomic) NSNumber *homeButtonUpFromBeep; // @synthesize homeButtonUpFromBeep=_homeButtonUpFromBeep;
 @property (nonatomic) BOOL isEyesFree; // @synthesize isEyesFree=_isEyesFree;
 @property (nonatomic) BOOL isInitialBringUp; // @synthesize isInitialBringUp=_isInitialBringUp;
+@property (nonatomic) BOOL releaseAudioSessionOnRecordingCompletion; // @synthesize releaseAudioSessionOnRecordingCompletion=_releaseAudioSessionOnRecordingCompletion;
 @property (copy, nonatomic) NSString *serverCommandId; // @synthesize serverCommandId=_serverCommandId;
 @property (nonatomic) BOOL useAutomaticEndpointing; // @synthesize useAutomaticEndpointing=_useAutomaticEndpointing;
 @property (nonatomic) BOOL useStreamingDictation; // @synthesize useStreamingDictation=_useStreamingDictation;
@@ -47,6 +49,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithActivationEvent:(long long)arg1;

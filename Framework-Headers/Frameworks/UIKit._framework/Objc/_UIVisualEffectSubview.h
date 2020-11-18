@@ -15,9 +15,9 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic, setter=_setGroupName:) NSString *_groupName;
+@property (strong, nonatomic, setter=_setLayerConfig:) _UIVisualEffectLayerConfig *_layerConfig; // @synthesize _layerConfig;
 
 - (void).cxx_destruct;
-- (void)_setLayerConfig:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

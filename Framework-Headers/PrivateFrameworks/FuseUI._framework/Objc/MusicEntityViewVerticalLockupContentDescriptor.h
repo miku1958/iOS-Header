@@ -8,12 +8,8 @@
 
 @interface MusicEntityViewVerticalLockupContentDescriptor : MusicEntityViewContentDescriptor
 {
-    double _textEdgePadding;
 }
 
-@property (nonatomic) double textEdgePadding; // @synthesize textEdgePadding=_textEdgePadding;
-
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 
 @end

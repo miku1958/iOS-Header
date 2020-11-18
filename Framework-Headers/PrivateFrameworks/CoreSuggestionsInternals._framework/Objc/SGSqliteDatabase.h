@@ -50,6 +50,7 @@
 - (void).cxx_destruct;
 - (BOOL)_transactionWithExclusivity:(BOOL)arg1 transaction:(CDUnknownBlockType)arg2;
 - (void)clearCaches;
+- (void)closePermanently;
 - (id)corruptionMarkerPath;
 - (BOOL)createSnapshot:(id)arg1;
 - (void)dealloc;
@@ -71,6 +72,7 @@
 - (BOOL)runQuery:(struct sqlite3_stmt *)arg1 onRow:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
 - (void)setUserVersion:(unsigned long long)arg1;
 - (void)simulateOnDiskDatabase;
+- (id)tablesWithColumnNamed:(id)arg1;
 - (unsigned long long)userVersion;
 - (void)writeTransaction:(CDUnknownBlockType)arg1;
 

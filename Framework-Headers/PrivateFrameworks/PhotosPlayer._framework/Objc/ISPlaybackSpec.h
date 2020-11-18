@@ -11,6 +11,8 @@
 @interface ISPlaybackSpec : NSObject
 {
     NSHashTable *_observers;
+    BOOL _shouldScaleAndBlurForPlayback;
+    BOOL _shouldSettleAutomatically;
     BOOL _allowVitality;
     BOOL _allowAudio;
     BOOL _useTransition;
@@ -21,6 +23,7 @@
     BOOL _wantsCrossfadeLayer;
     BOOL _aggressivelyCachesVideoFrames;
     BOOL _reversesMoreVideoFramesInMemory;
+    double _preCrossfadeDuration;
     double _playbackTransitionBlurRadius;
     double _playbackTransitionScale;
     double _vitalityPreDuration;
@@ -31,6 +34,7 @@
     double _playbackTransitionCrossfadeDelay;
     double _settleTransitionDuration;
     double _vitalityTransitionDuration;
+    double _endVitalityTransitionDuration;
     struct CGPoint _transitionBlurTimingFunctionControlPoint1;
     struct CGPoint _transitionBlurTimingFunctionControlPoint2;
     struct CGPoint _transitionScaleTimingFunctionControlPoint1;
@@ -42,14 +46,18 @@
 @property (nonatomic) BOOL aggressivelyCachesVideoFrames; // @synthesize aggressivelyCachesVideoFrames=_aggressivelyCachesVideoFrames;
 @property (nonatomic) BOOL allowAudio; // @synthesize allowAudio=_allowAudio;
 @property (nonatomic) BOOL allowVitality; // @synthesize allowVitality=_allowVitality;
+@property (nonatomic) double endVitalityTransitionDuration; // @synthesize endVitalityTransitionDuration=_endVitalityTransitionDuration;
 @property (nonatomic) double playbackPostDuration; // @synthesize playbackPostDuration=_playbackPostDuration;
 @property (nonatomic) double playbackPreDuration; // @synthesize playbackPreDuration=_playbackPreDuration;
 @property (nonatomic) double playbackTransitionBlurRadius; // @synthesize playbackTransitionBlurRadius=_playbackTransitionBlurRadius;
 @property (nonatomic) double playbackTransitionCrossfadeDelay; // @synthesize playbackTransitionCrossfadeDelay=_playbackTransitionCrossfadeDelay;
 @property (nonatomic) double playbackTransitionDuration; // @synthesize playbackTransitionDuration=_playbackTransitionDuration;
 @property (nonatomic) double playbackTransitionScale; // @synthesize playbackTransitionScale=_playbackTransitionScale;
+@property (nonatomic) double preCrossfadeDuration; // @synthesize preCrossfadeDuration=_preCrossfadeDuration;
 @property (nonatomic) BOOL reversesMoreVideoFramesInMemory; // @synthesize reversesMoreVideoFramesInMemory=_reversesMoreVideoFramesInMemory;
 @property (nonatomic) double settleTransitionDuration; // @synthesize settleTransitionDuration=_settleTransitionDuration;
+@property (nonatomic) BOOL shouldScaleAndBlurForPlayback; // @synthesize shouldScaleAndBlurForPlayback=_shouldScaleAndBlurForPlayback;
+@property (nonatomic) BOOL shouldSettleAutomatically; // @synthesize shouldSettleAutomatically=_shouldSettleAutomatically;
 @property (nonatomic) struct CGPoint transitionBlurTimingFunctionControlPoint1; // @synthesize transitionBlurTimingFunctionControlPoint1=_transitionBlurTimingFunctionControlPoint1;
 @property (nonatomic) struct CGPoint transitionBlurTimingFunctionControlPoint2; // @synthesize transitionBlurTimingFunctionControlPoint2=_transitionBlurTimingFunctionControlPoint2;
 @property (nonatomic) struct CGPoint transitionFadeTimingFunctionControlPoint1; // @synthesize transitionFadeTimingFunctionControlPoint1=_transitionFadeTimingFunctionControlPoint1;
@@ -68,7 +76,6 @@
 
 - (void).cxx_destruct;
 - (void)_didChange;
-- (void)didChangeValueForKey:(id)arg1;
 - (id)init;
 - (void)registerObserver:(id)arg1;
 - (void)setDefaultValues;

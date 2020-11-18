@@ -14,6 +14,7 @@
 @interface AXEventRepresentation : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _isBuiltIn;
+    BOOL _isDisplayIntegrated;
     BOOL _isGeneratedEvent;
     BOOL _useOriginalHIDTime;
     unsigned int _type;
@@ -22,6 +23,8 @@
     unsigned int _taskPort;
     int _pid;
     unsigned int _contextId;
+    unsigned int _willUpdateMask;
+    unsigned int _didUpdateMask;
     unsigned long long _time;
     unsigned long long _senderID;
     AXEventHandInfoRepresentation *_handInfo;
@@ -33,6 +36,7 @@
     NSData *_HIDAttributeData;
     long long _scrollAmount;
     unsigned long long _additionalFlags;
+    long long _generationCount;
     struct __IOHIDEvent *_creatorHIDEvent;
     void *_window;
     NSData *_data;
@@ -48,19 +52,23 @@
 @property (nonatomic) unsigned int contextId; // @synthesize contextId=_contextId;
 @property (strong, nonatomic) struct __IOHIDEvent *creatorHIDEvent; // @synthesize creatorHIDEvent=_creatorHIDEvent;
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
+@property (nonatomic) unsigned int didUpdateMask; // @synthesize didUpdateMask=_didUpdateMask;
 @property (readonly, nonatomic) unsigned long long fingerCount;
 @property (nonatomic) int flags; // @synthesize flags=_flags;
 @property (strong, nonatomic) AXEventGameControllerInfoRepresentation *gameControllerInfo; // @synthesize gameControllerInfo=_gameControllerInfo;
+@property (nonatomic) long long generationCount; // @synthesize generationCount=_generationCount;
 @property (strong, nonatomic) AXEventHandInfoRepresentation *handInfo; // @synthesize handInfo=_handInfo;
 @property (nonatomic) BOOL isBuiltIn; // @synthesize isBuiltIn=_isBuiltIn;
 @property (readonly, nonatomic) BOOL isCancel;
 @property (readonly, nonatomic) BOOL isChordChange;
+@property (nonatomic) BOOL isDisplayIntegrated; // @synthesize isDisplayIntegrated=_isDisplayIntegrated;
 @property (nonatomic) BOOL isGeneratedEvent; // @synthesize isGeneratedEvent=_isGeneratedEvent;
 @property (readonly, nonatomic) BOOL isInRange;
 @property (readonly, nonatomic) BOOL isInRangeLift;
 @property (readonly, nonatomic) BOOL isLift;
 @property (readonly, nonatomic) BOOL isMove;
 @property (readonly, nonatomic) BOOL isTouchDown;
+@property (readonly, nonatomic) BOOL isUpdate;
 @property (strong, nonatomic) AXEventKeyInfoRepresentation *keyInfo; // @synthesize keyInfo=_keyInfo;
 @property (nonatomic) struct CGPoint location; // @synthesize location=_location;
 @property (nonatomic) int pid; // @synthesize pid=_pid;
@@ -71,6 +79,8 @@
 @property (nonatomic) unsigned long long time; // @synthesize time=_time;
 @property (nonatomic) unsigned int type; // @synthesize type=_type;
 @property (nonatomic) BOOL useOriginalHIDTime; // @synthesize useOriginalHIDTime=_useOriginalHIDTime;
+@property (readonly, nonatomic) BOOL willBeUpdated;
+@property (nonatomic) unsigned int willUpdateMask; // @synthesize willUpdateMask=_willUpdateMask;
 @property (nonatomic) void *window; // @synthesize window=_window;
 @property (nonatomic) struct CGPoint windowLocation; // @synthesize windowLocation=_windowLocation;
 
@@ -106,6 +116,7 @@
 - (unsigned int)firstPathContextId;
 - (id)initWithCoder:(id)arg1;
 - (void)modifyPoints:(CDUnknownBlockType)arg1;
+- (void)neuterUpdates;
 - (CDStruct_7f3c0925 *)newEventRecord;
 - (struct __GSEvent *)newGSEventRef;
 - (struct __IOHIDEvent *)newHIDEventRef;

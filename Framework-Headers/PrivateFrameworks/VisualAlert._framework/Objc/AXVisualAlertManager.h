@@ -33,6 +33,9 @@
 }
 
 + (id)sharedVisualAlertManager;
+- (void)addBulletin:(id)arg1;
+- (id)existingBulletinForBulletin:(id)arg1;
+- (void)removeBulletin:(id)arg1;
 - (void)startForAlertTypes:(unsigned long long)arg1 cameraTorchManager:(id)arg2;
 - (void)stop;
 

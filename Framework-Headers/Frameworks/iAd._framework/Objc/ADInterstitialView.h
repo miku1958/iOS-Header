@@ -36,6 +36,7 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(BOOL)arg1;
 - (void)setTransform:(struct CGAffineTransform)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

@@ -26,6 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDeviceInRestrictedMode;
 @property (readonly, nonatomic) NSString *secureElementIdentifier;
+@property (readonly, nonatomic) BOOL secureElementIsProductionSigned;
 @property (readonly) Class superclass;
 
 - (void)dealloc;

@@ -18,12 +18,14 @@
     struct UIEdgeInsets _previousContentInsetAdditions;
     struct UIEdgeInsets _previousContentScrollInsetAdditions;
     struct UIEdgeInsets _previousExternalContentInset;
+    struct UIEdgeInsets _previousMaximumContentSizeScrollIndicatorInsetAdditions;
 }
 
 @property (nonatomic) struct UIEdgeInsets previousContentInsetAdditions; // @synthesize previousContentInsetAdditions=_previousContentInsetAdditions;
 @property (nonatomic) struct CGPoint previousContentOffset; // @synthesize previousContentOffset=_previousContentOffset;
 @property (nonatomic) struct UIEdgeInsets previousContentScrollInsetAdditions; // @synthesize previousContentScrollInsetAdditions=_previousContentScrollInsetAdditions;
 @property (nonatomic) struct UIEdgeInsets previousExternalContentInset; // @synthesize previousExternalContentInset=_previousExternalContentInset;
+@property (nonatomic) struct UIEdgeInsets previousMaximumContentSizeScrollIndicatorInsetAdditions; // @synthesize previousMaximumContentSizeScrollIndicatorInsetAdditions=_previousMaximumContentSizeScrollIndicatorInsetAdditions;
 @property (nonatomic) double previousMaximumHeaderHeight; // @synthesize previousMaximumHeaderHeight=_previousMaximumHeaderHeight;
 @property (nonatomic) double previousStabilizingBottomAdditions; // @synthesize previousStabilizingBottomAdditions=_previousStabilizingBottomAdditions;
 @property (nonatomic) long long snapDecelerationVeloctiyOverrideState; // @synthesize snapDecelerationVeloctiyOverrideState=_snapDecelerationVeloctiyOverrideState;

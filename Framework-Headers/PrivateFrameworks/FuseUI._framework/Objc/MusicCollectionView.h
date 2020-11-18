@@ -19,8 +19,6 @@
 @property (nonatomic) BOOL shouldTreatContentOffsetChangesAsDeltas; // @synthesize shouldTreatContentOffsetChangesAsDeltas=_shouldTreatContentOffsetChangesAsDeltas;
 
 - (void).cxx_destruct;
-- (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
-- (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
 - (void)tintColorDidChange;
 - (id)traitCollection;
 - (void)traitCollectionDidChange:(id)arg1;

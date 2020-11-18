@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, TRTransferBrowserDelegate;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore, TRTransferBrowserDelegate;
 
 @interface TRTransferBrowser : NSObject
 {
@@ -14,7 +14,9 @@
     struct AirPlayPairingSessionPrivate *_pairingSession;
     long long _pairingState;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_semaphore> *_responseSemaphore;
     BOOL _started;
+    BOOL _waitingOnSemaphore;
     id<TRTransferBrowserDelegate> _delegate;
     long long _state;
 }

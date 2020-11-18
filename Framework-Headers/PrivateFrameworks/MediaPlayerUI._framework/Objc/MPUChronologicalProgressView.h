@@ -54,6 +54,7 @@
 - (id)_createIndicatorViewWithStyle:(long long)arg1;
 - (id)_createTimeLabelWithStyle:(long long)arg1;
 - (double)_estimatedTimeLabelsWidth;
+- (double)_estimatedWideTimeLabelsWidth;
 - (void)_internalSetCurrentTime:(double)arg1;
 - (float)_sliderNormalizedValueForTime:(double)arg1;
 - (id)_stringForTime:(double)arg1 isTimeRemaining:(BOOL)arg2;

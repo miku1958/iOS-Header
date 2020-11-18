@@ -11,7 +11,7 @@
 #import <RemoteUI/RUIParserDelegate-Protocol.h>
 #import <RemoteUI/UINavigationControllerDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, NSURLSessionConfiguration, RUILoader, RUINavigationController, RUIPage, UINavigationController, UIViewController;
+@class NSMutableArray, NSMutableDictionary, NSString, NSURLSessionConfiguration, RUILoader, RUINavigationController, RUIPage, RUIStyle, UINavigationController, UIViewController;
 @protocol RemoteUIControllerDelegate;
 
 @interface RemoteUIController : NSObject <RUILoaderDelegate, RUIObjectModelDelegate, RUIParserDelegate, UINavigationControllerDelegate>
@@ -29,6 +29,7 @@
     id<RemoteUIControllerDelegate> _delegate;
     CDUnknownBlockType _loadCompletion;
     NSURLSessionConfiguration *_sessionConfiguration;
+    RUIStyle *_style;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) RUILoader *loader; // @synthesize loader=_loader;
 @property (weak, nonatomic) UINavigationController *navigationController;
 @property (copy, nonatomic) NSURLSessionConfiguration *sessionConfiguration; // @synthesize sessionConfiguration=_sessionConfiguration;
+@property (strong, nonatomic) RUIStyle *style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *userAgentString; // @synthesize userAgentString=_userAgentString;
 
@@ -63,6 +65,7 @@
 - (void)loadURL:(id)arg1 postBody:(id)arg2;
 - (void)loadURL:(id)arg1 postBody:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)loader:(id)arg1 didFailWithError:(id)arg2;
+- (void)loader:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)loader:(id)arg1 didReceiveHTTPResponse:(id)arg2;
 - (void)loader:(id)arg1 receivedObjectModel:(id)arg2 actionSignal:(int)arg3;
 - (id)loader:(id)arg1 willLoadRequest:(id)arg2 redirectResponse:(id)arg3;

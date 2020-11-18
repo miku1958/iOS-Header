@@ -41,6 +41,7 @@
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly, nonatomic) unsigned long long fullsizeDataFormat;
+@property (readonly, nonatomic) BOOL hasPhotoColorAdjustments;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isPhotoIrisPlaceholder; // @synthesize isPhotoIrisPlaceholder=_isPhotoIrisPlaceholder;
 @property (readonly, nonatomic) BOOL isTemporaryPlaceholder;

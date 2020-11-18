@@ -14,11 +14,13 @@
 @interface IKJSITunesStore : IKJSObject <IKJSITunesStore, JSExport>
 {
     NSNumber *_lastAccountDSID;
+    NSDictionary *_lastKnownStatusDictionary;
     SSMetricsController *_metricsController;
     int _bagOperationLock;
     NSString *_storeFrontSuffix;
     id _ssAccountStoreChangedToken;
     id _isURLBagDidLoadToken;
+    id _subscriptionStatusDidChangeToken;
     NSString *_cookieURL;
     ISLoadURLBagOperation *_pendingBagOperation;
 }
@@ -38,6 +40,7 @@
 - (void).cxx_destruct;
 - (void)_accountStoreChanged;
 - (void)_bagDidLoadNotification:(id)arg1;
+- (void)_subscriptionStatusChanged;
 - (id)_subscriptionStatusDictionaryWithStatus:(id)arg1 isFinal:(BOOL)arg2;
 - (void)_updateBag:(BOOL)arg1;
 - (void)_updateWithBag:(id)arg1;

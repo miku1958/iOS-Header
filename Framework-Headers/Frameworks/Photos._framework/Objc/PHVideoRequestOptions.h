@@ -14,12 +14,16 @@
     long long _version;
     long long _deliveryMode;
     CDUnknownBlockType _progressHandler;
+    long long _contentMode;
+    struct CGSize _targetSize;
 }
 
+@property (nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property (nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (nonatomic, getter=isStreamingAllowed) BOOL streamingAllowed; // @synthesize streamingAllowed=_streamingAllowed;
+@property (nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property (nonatomic) long long version; // @synthesize version=_version;
 @property (nonatomic, getter=isVideoComplementAllowed) BOOL videoComplementAllowed; // @synthesize videoComplementAllowed=_videoComplementAllowed;
 

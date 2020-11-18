@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     struct CGSize _slitSize;
     NSIndexPath *_currentItemIndexPath;
+    double _loupeWidth;
     NSIndexPath *_loupeNeighborIndexPath;
     double _loupeTransitionProgress;
     double _expandedItemWidth;

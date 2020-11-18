@@ -13,6 +13,7 @@
 
 @property (readonly, nonatomic) UIPresentationController<_UISearchControllerPresenting> *adaptivePresentationController;
 @property (readonly, nonatomic) struct CGRect finalFrameForContainerView;
+@property (readonly, nonatomic) BOOL forceObeyNavigationBarInsets;
 @property (readonly, nonatomic) double resultsControllerContentOffset;
 @property (readonly, nonatomic) BOOL resultsUnderlapsSearchBar;
 @property (readonly, nonatomic) BOOL searchBarCanContainScopeBar;

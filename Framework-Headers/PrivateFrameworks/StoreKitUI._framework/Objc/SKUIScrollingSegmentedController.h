@@ -33,6 +33,7 @@
     BOOL _wantsWhiteBackgroundBeyondLeftEdgeWhenBouncing;
     BOOL _wantsWhiteBackgroundBeyondRightEdgeWhenBouncing;
     id<SKUIScrollingSegmentedControllerDelegate> _delegate;
+    double _maximumContentWidth;
     NSArray *_viewControllers;
     double _segmentedControlHeight;
     long long _segmentedControlLayoutStyle;
@@ -46,6 +47,7 @@
 @property (readonly, nonatomic) UIViewController *focusedViewController;
 @property (readonly, nonatomic) unsigned long long focusedViewControllerIndex; // @synthesize focusedViewControllerIndex=_focusedViewControllerIndex;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double maximumContentWidth; // @synthesize maximumContentWidth=_maximumContentWidth;
 @property (readonly, nonatomic) UIView *navigationBarTitleView; // @synthesize navigationBarTitleView=_navigationBarTitleView;
 @property (readonly, nonatomic) UIScrollView *scrollingTabNestedPagingScrollView;
 @property (nonatomic) struct UIEdgeInsets segmentedControlContentEdgeInsets; // @synthesize segmentedControlContentEdgeInsets=_segmentedControlContentEdgeInsets;
@@ -86,8 +88,12 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)replaceViewControllerAtIndex:(unsigned long long)arg1 withViewController:(id)arg2;
 - (void)scrollViewDidChangeContentInset:(id)arg1;
+- (void)scrollViewDidEndDecelerating:(id)arg1;
+- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidMoveToWindow:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillBeginDecelerating:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollingSegmentedControllerCollectionViewDidLayoutSubviews:(id)arg1;
 - (void)scrollingTabAppearanceStatusWasUpdated:(CDStruct_19149c72)arg1;
 - (id)scrollingTabViewControllerInNestedPagingScrollViewAtPageIndex:(unsigned long long)arg1;

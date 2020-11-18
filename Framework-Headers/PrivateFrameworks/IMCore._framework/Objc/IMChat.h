@@ -217,7 +217,7 @@
 - (void)didUnregisterFromRegistry:(id)arg1;
 - (void)endHoldingUpdatesForAllKeys;
 - (void)endHoldingUpdatesForKey:(id)arg1;
-- (BOOL)hasSentMessageWithGUID:(id)arg1;
+- (BOOL)hasStoredMessageWithGUID:(id)arg1;
 - (id)init;
 - (void)inviteParticipants:(id)arg1 reason:(id)arg2;
 - (BOOL)isDowngraded;

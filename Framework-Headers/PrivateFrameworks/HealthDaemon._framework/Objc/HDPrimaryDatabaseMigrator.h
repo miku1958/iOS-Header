@@ -39,6 +39,7 @@
 - (long long)_fixDanglingSourcesAndProvenancesWithError:(id *)arg1;
 - (long long)_fixObjectsProvenanceForeignKeyWithError:(id *)arg1;
 - (long long)_fixProvenancesWithZeroSourceOrDeviceWithError:(id *)arg1;
+- (long long)_fixSyncProvenanceForPostOkemoZurs:(id *)arg1;
 - (long long)_fixupMigratedProtectedSchemaWithError:(id *)arg1;
 - (long long)_initializeDatabaseIdentifiersWithHealthDaemon:(id)arg1 error:(id *)arg2;
 - (id)_lastReceivedNatalieDatum:(id *)arg1;

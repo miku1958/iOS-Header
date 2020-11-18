@@ -22,12 +22,16 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_keyLayers;
     int _renderedKeyState;
     NSString *_cachedTraitsHashString;
+    BOOL _cachedControlKeyRenderingPreference;
     BOOL _renderAsMask;
+    int _cachedAnchorCorner;
     UIKeyboardMenuView *_popupMenu;
 }
 
 @property (readonly, nonatomic) BOOL cacheDeferable;
 @property (readonly, nonatomic) NSString *cacheKey;
+@property (nonatomic) int cachedAnchorCorner; // @synthesize cachedAnchorCorner=_cachedAnchorCorner;
+@property (nonatomic) BOOL cachedControlKeyRenderingPreference; // @synthesize cachedControlKeyRenderingPreference=_cachedControlKeyRenderingPreference;
 @property (readonly) long long cachedRenderFlags;
 @property (strong, nonatomic) NSString *cachedTraitsHashString; // @synthesize cachedTraitsHashString=_cachedTraitsHashString;
 @property (readonly, nonatomic) double cachedWidth;
@@ -61,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)displayLayer:(id)arg1;
 - (void)drawContentsOfRenderers:(id)arg1;
 - (unsigned long long)focusableVariantCount;
+- (long long)imageOrientationForLayer:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 - (id)layerForRenderFlags:(long long)arg1;
 - (void)prepareForDisplay;

@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_applyStateWithTextOverride:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_applyStateWithTextOverride:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)emphasizeStateIfPossible:(long long)arg1 withTextOverride:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 

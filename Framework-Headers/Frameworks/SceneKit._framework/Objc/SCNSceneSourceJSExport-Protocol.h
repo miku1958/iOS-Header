@@ -18,8 +18,6 @@
 - (NSArray *)entriesPassingTest:(BOOL (^)(id, NSString *, BOOL *))arg1;
 - (id)entryWithIdentifier:(NSString *)arg1 withClass:(Class)arg2;
 - (NSArray *)identifiersOfEntriesWithClass:(Class)arg1;
-- (id)initWithData:(NSData *)arg1 options:(NSDictionary *)arg2;
-- (id)initWithURL:(NSURL *)arg1 options:(NSDictionary *)arg2;
 - (id)propertyForKey:(NSString *)arg1;
 - (SCNScene *)sceneWithOptions:(NSDictionary *)arg1 error:(id *)arg2;
 - (SCNScene *)sceneWithOptions:(NSDictionary *)arg1 statusHandler:(void (^)(float, long long, NSError *, BOOL *))arg2;

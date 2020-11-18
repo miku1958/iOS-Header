@@ -27,7 +27,7 @@
 @property (strong, nonatomic) NSMutableArray *subtrees; // @synthesize subtrees;
 @property (nonatomic) int type; // @synthesize type;
 
-+ (long long)extraIPhoneIdiom:(long long)arg1 width:(double)arg2 landscape:(BOOL)arg3;
++ (long long)extraIdiomForVisualStyling:(CDStruct_961fb75c)arg1 width:(double)arg2;
 + (id)key;
 + (id)keyboard;
 + (id)mergeStringForKeyName:(id)arg1;
@@ -56,6 +56,7 @@
 - (BOOL)boolForProperty:(id)arg1;
 - (id)cacheDisplayString;
 - (void)cacheKey:(id)arg1;
+- (id)cacheSecondaryDisplayString;
 - (id)cachedKeysByKeyName:(id)arg1;
 - (void)clearTransientCaches;
 - (int)clipCorners;

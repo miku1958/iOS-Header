@@ -11,7 +11,7 @@
 #import <UIKit/_UIPlatterMenuDynamicsControllerDelegate-Protocol.h>
 #import <UIKit/_UIPreviewActionSheetViewDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, UIGestureRecognizer, UIImageView, UIInteractionProgress, UIPreviewForceInteractionProgress, UIScrollView, UITapGestureRecognizer, UIView, UIVisualEffectView, _UIPlatterMenuDynamicsController, _UIPlatterPanningVelocityIntegrator, _UIPreviewActionSheetView, _UIPreviewPresentationAnimator, _UIPreviewPresentationContainerView, _UIPreviewPresentationEffectView, _UIPreviewQuickActionView;
+@class NSArray, NSLayoutConstraint, NSString, UIGestureRecognizer, UIImageView, UIInteractionProgress, UIPreviewAction, UIPreviewForceInteractionProgress, UIScrollView, UITapGestureRecognizer, UIView, UIVisualEffectView, _UIPlatterMenuDynamicsController, _UIPlatterPanningVelocityIntegrator, _UIPreviewActionSheetView, _UIPreviewPresentationAnimator, _UIPreviewPresentationContainerView, _UIPreviewPresentationEffectView, _UIPreviewQuickActionView;
 @protocol _UIForcePresentationControllerDelegate;
 
 @interface UIPreviewPresentationController : UIPresentationController <UIInteractionProgressObserver, _UIPreviewActionSheetViewDelegate, _UIPlatterMenuDynamicsControllerDelegate, UIForcePresentationController>
@@ -42,6 +42,9 @@
     UIView *_highlightedPreviewCellSnapshotView;
     UIView *_initialPreviewCellSnapshotView;
     UIView *_updatedPreviewCellSnapshotView;
+    NSArray *_previewActionItems;
+    UIPreviewAction *_leadingPreviewAction;
+    UIPreviewAction *_trailingPreviewAction;
     _UIPreviewQuickActionView *_leadingQuickActionView;
     _UIPreviewQuickActionView *_trailingQuickActionView;
     NSLayoutConstraint *_leadingQuickActionViewEdgeConstraint;
@@ -76,6 +79,7 @@
 @property (strong, nonatomic) UIPreviewForceInteractionProgress *interactionProgressForCommit; // @synthesize interactionProgressForCommit=_interactionProgressForCommit;
 @property (strong, nonatomic) UIInteractionProgress *interactionProgressForPresentation; // @synthesize interactionProgressForPresentation=_interactionProgressForPresentation;
 @property (nonatomic) BOOL isAnimatingActionSheet; // @synthesize isAnimatingActionSheet=_isAnimatingActionSheet;
+@property (copy, nonatomic) UIPreviewAction *leadingPreviewAction; // @synthesize leadingPreviewAction=_leadingPreviewAction;
 @property (strong, nonatomic) _UIPreviewQuickActionView *leadingQuickActionView; // @synthesize leadingQuickActionView=_leadingQuickActionView;
 @property (strong, nonatomic) NSLayoutConstraint *leadingQuickActionViewEdgeConstraint; // @synthesize leadingQuickActionViewEdgeConstraint=_leadingQuickActionViewEdgeConstraint;
 @property (nonatomic) BOOL leadingQuickActionViewSelected; // @synthesize leadingQuickActionViewSelected=_leadingQuickActionViewSelected;
@@ -88,11 +92,13 @@
 @property (strong, nonatomic) _UIPreviewPresentationContainerView *presentationContainerView; // @synthesize presentationContainerView=_presentationContainerView;
 @property (copy, nonatomic) CDUnknownBlockType presentationPhaseCompletionBlock; // @synthesize presentationPhaseCompletionBlock=_presentationPhaseCompletionBlock;
 @property (nonatomic) double presentationViewCornerRadius; // @dynamic presentationViewCornerRadius;
+@property (copy, nonatomic) NSArray *previewActionItems; // @synthesize previewActionItems=_previewActionItems;
 @property (strong, nonatomic) _UIPreviewActionSheetView *previewActionSheet; // @synthesize previewActionSheet=_previewActionSheet;
 @property (strong, nonatomic) _UIPreviewPresentationEffectView *revealContainerView; // @synthesize revealContainerView=_revealContainerView;
 @property (strong, nonatomic) _UIPlatterPanningVelocityIntegrator *revealPanningVelocityIntegrator; // @synthesize revealPanningVelocityIntegrator=_revealPanningVelocityIntegrator;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITapGestureRecognizer *tapToDismissGestureRecognizer; // @synthesize tapToDismissGestureRecognizer=_tapToDismissGestureRecognizer;
+@property (copy, nonatomic) UIPreviewAction *trailingPreviewAction; // @synthesize trailingPreviewAction=_trailingPreviewAction;
 @property (strong, nonatomic) _UIPreviewQuickActionView *trailingQuickActionView; // @synthesize trailingQuickActionView=_trailingQuickActionView;
 @property (strong, nonatomic) NSLayoutConstraint *trailingQuickActionViewEdgeConstraint; // @synthesize trailingQuickActionViewEdgeConstraint=_trailingQuickActionViewEdgeConstraint;
 @property (nonatomic) BOOL trailingQuickActionViewSelected; // @synthesize trailingQuickActionViewSelected=_trailingQuickActionViewSelected;

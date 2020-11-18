@@ -42,6 +42,7 @@
 - (void)handleMessage:(id)arg1 forIdentifier:(unsigned long long)arg2;
 - (void)handleNewConnection:(id)arg1;
 - (BOOL)hearingAidsPaired;
+- (id)init;
 - (id)liveListenController;
 - (BOOL)message:(id)arg1 hasEntitlement:(id)arg2;
 - (void)passConnectionToController:(id)arg1 withReason:(long long)arg2;
@@ -49,6 +50,7 @@
 - (id)readAvailableDevices:(id)arg1;
 - (id)readDeviceProperty:(id)arg1;
 - (void)readLiveListenLevels;
+- (void)registerFakeClient:(id)arg1;
 - (id)registerForAvailableDevicesUpdates:(id)arg1;
 - (id)registerForDeviceUpdates:(id)arg1;
 - (id)registerForLiveListenUpdates:(id)arg1;

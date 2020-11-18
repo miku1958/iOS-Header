@@ -17,6 +17,7 @@
     BOOL _sourceIsManaged;
     BOOL _hasAnyAccount;
     BOOL _hasFilteredAccount;
+    NSString *_subject;
     NSString *_autosaveIdentifier;
     MFMailComposeViewController *_mailComposeViewController;
 }
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) Class objectRestorationClass;
 @property (readonly, nonatomic) id<UIStateRestoring> restorationParent;
 @property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
+@property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (readonly) Class superclass;
 
 + (long long)activityCategory;
@@ -56,7 +58,6 @@
 - (id)init;
 - (void)mailComposeController:(id)arg1 didFinishWithResult:(int)arg2 error:(id)arg3;
 - (void)prepareWithActivityItems:(id)arg1;
-- (void)setSubject:(id)arg1;
 
 @end
 

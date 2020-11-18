@@ -238,7 +238,6 @@
 
 - (void).cxx_destruct;
 - (struct __CFString *)_aggregateDictionaryKeyForCameraMode:(long long)arg1 device:(long long)arg2;
-- (struct __CFString *)_aggregateDictionaryKeyForFlashMode:(long long)arg1 flashFired:(BOOL)arg2;
 - (struct __CFString *)_aggregateDictionaryKeyForPhysicalButtonType:(long long)arg1;
 - (BOOL)_allowsPhysicalCaptureInteraction;
 - (void)_applyAutorotationCorrectingTransformForOrientation:(long long)arg1;
@@ -585,12 +584,14 @@
 - (void)remoteShutterCancelCountdown:(id)arg1;
 - (void)remoteShutterEndVideo:(id)arg1;
 - (BOOL)shouldAutorotate;
+- (void)startShowingLivePhotoIndicator;
 - (void)stillImageRequestDidCompleteStillImageCapture:(id)arg1 withResponse:(id)arg2 error:(id)arg3;
 - (void)stillImageRequestDidCompleteStillImageLocalPersistence:(id)arg1 withResponse:(id)arg2 error:(id)arg3;
 - (void)stillImageRequestDidCompleteStillImageRemotePersistence:(id)arg1 withResponse:(id)arg2 error:(id)arg3;
 - (void)stillImageRequestDidCompleteVideoCapture:(id)arg1 withResponse:(id)arg2 error:(id)arg3;
 - (void)stillImageRequestDidStartCapturing:(id)arg1;
 - (void)stillImageRequestDidStopCapturing:(id)arg1;
+- (void)stopShowingLivePhotoIndicator;
 - (unsigned long long)supportedInterfaceOrientations;
 - (double)timeIntervalForDuration:(long long)arg1;
 - (void)timelapseController:(id)arg1 generatedThumbnailImage:(id)arg2 forAssetUUID:(id)arg3 inCaptureSession:(unsigned short)arg4;

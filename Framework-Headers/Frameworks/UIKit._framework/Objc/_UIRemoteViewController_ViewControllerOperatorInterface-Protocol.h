@@ -10,7 +10,6 @@
 - (void)__dismissActionSheetWithClickedButtonIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)__dismissTextServiceSessionAnimated:(BOOL)arg1;
 - (void)__presentActionSheetFromYCoordinate:(double)arg1 withTitle:(NSString *)arg2 buttonTitles:(NSArray *)arg3 cancelButtonIndex:(long long)arg4 destructiveButtonIndex:(long long)arg5 style:(long long)arg6;
-- (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
 - (void)__setSupportedInterfaceOrientations:(NSArray *)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (void)__showServiceForText:(NSString *)arg1 type:(long long)arg2 fromRectValue:(NSValue *)arg3 replyHandler:(void (^)(id, NSError *))arg4;

@@ -130,10 +130,10 @@ struct map<std::__1::basic_string<char>, int, std::__1::less<std::__1::basic_str
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    char _field1[3];
-    unsigned long long _field2;
-    unsigned short _field3;
-} CDStruct_fcaecfc9;
+    unsigned long long _field1;
+    unsigned short _field2;
+    char _field3[3];
+} CDStruct_e59a5d79;
 
 typedef struct {
     struct {

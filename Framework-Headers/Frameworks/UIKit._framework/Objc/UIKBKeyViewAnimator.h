@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)keycapRightSelectRightTransform;
 - (id)keycapRightStandardTransform;
 - (void)reset;
+- (BOOL)shouldAssertCurrentKeyState:(id)arg1;
 - (BOOL)shouldTransitionKeyView:(id)arg1 fromState:(int)arg2 toState:(int)arg3;
 - (void)transitionEndedForKeyView:(id)arg1 alternateCount:(unsigned long long)arg2;
 - (void)transitionKeyView:(id)arg1 fromState:(int)arg2 toState:(int)arg3 completion:(CDUnknownBlockType)arg4;

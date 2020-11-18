@@ -15,30 +15,31 @@
     MusicEntityValueContext *_itemEntityValueContext;
     MusicLibrarySearchResultsEntityProviderConfiguration *_searchResultsEntityProviderConfiguration;
     NSMutableDictionary *_layoutMetricsForSection;
+    struct CGSize _sizeForLayoutMetrics;
     NSString *_searchTerm;
     MusicSectionEntityValueContext *_sectionEntityValueContext;
+    BOOL _showsAllSectionResults;
     id<MusicLibrarySearchResultsViewControllerDelegate> _searchResultsDelegate;
-    unsigned long long _maximumNumberOfSectionResults;
 }
 
 @property (readonly, nonatomic) BOOL hasResults;
 @property (readonly, nonatomic) MusicLibrarySearchResultsEntityProviderConfiguration *libraryViewConfiguration;
-@property (nonatomic) unsigned long long maximumNumberOfSectionResults; // @synthesize maximumNumberOfSectionResults=_maximumNumberOfSectionResults;
 @property (readonly, nonatomic, getter=isResultsViewVisible) BOOL resultsViewVisible;
 @property (weak, nonatomic) id<MusicLibrarySearchResultsViewControllerDelegate> searchResultsDelegate; // @synthesize searchResultsDelegate=_searchResultsDelegate;
 @property (copy, nonatomic) NSString *searchTerm; // @synthesize searchTerm=_searchTerm;
+@property (nonatomic) BOOL showsAllSectionResults; // @synthesize showsAllSectionResults=_showsAllSectionResults;
 
 - (void).cxx_destruct;
 - (id)_collectionViewDescriptorForSection:(unsigned long long)arg1 traitCollection:(id)arg2;
 - (id)_layoutMetricsForCollectionViewDescriptor:(id)arg1;
+- (unsigned long long)_overrideMaximumNumberOfEntitesForSection:(unsigned long long)arg1;
 - (void)_recordRecentForIndexPath:(id)arg1;
 - (void)_updateForResultsCount;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
-- (double)collectionView:(id)arg1 layout:(id)arg2 minimumInteritemSpacingForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
-- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
+- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplaySupplementaryView:(id)arg2 forElementKind:(id)arg3 atIndexPath:(id)arg4;
 - (void)didSelectActionButtonInBrowseSectionHeaderView:(id)arg1 forSection:(long long)arg2;

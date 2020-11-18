@@ -6,22 +6,36 @@
 
 #import <SpringBoardFoundation/SBFStaticWallpaperView.h>
 
-@class AVAsset, ISPlayerView;
+@class AVAsset, ISAVPlayer, ISPlayerView, NSURL, UIImageView;
 
 @interface SBFIrisWallpaperView : SBFStaticWallpaperView
 {
     AVAsset *_video;
+    NSURL *_videoFileURL;
+    double _stillTimeInVideo;
+    BOOL _prewireMemory;
+    BOOL _useRewindPlaybackStyle;
+    UIImageView *_imageView;
+    ISAVPlayer *_prewiredAVPlayer;
+    BOOL _playerPrepared;
     ISPlayerView *_playerView;
+    unsigned long long _currentMode;
 }
 
+@property (readonly, nonatomic) unsigned long long currentMode; // @synthesize currentMode=_currentMode;
+@property (readonly, nonatomic) BOOL isPlaying;
 @property (readonly, nonatomic) ISPlayerView *playerView; // @synthesize playerView=_playerView;
 
++ (void)initialize;
+- (void)_populateContentView;
 - (void)_setImage:(id)arg1;
 - (void)_setupContentView;
+- (BOOL)_setupContentViewForMode:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 wallpaperVideo:(id)arg3 stillTimeInVideo:(double)arg4 treatWallpaper:(BOOL)arg5 variant:(long long)arg6 prewireMemory:(BOOL)arg7 useRewindPlaybackStyle:(BOOL)arg8;
 - (id)irisGestureRecognizer;
+- (void)switchToMode:(unsigned long long)arg1;
 
 @end
 

@@ -10,7 +10,7 @@
 #import <UIKit/UIInteractionProgressObserver-Protocol.h>
 #import <UIKit/_UIForcePresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIGestureRecognizer, UIInteractionProgress, UIPresentationController, UIPreviewForceInteractionProgress, UIView, UIViewController, UIWindow, _UITapticEngine;
+@class NSArray, NSString, UIGestureRecognizer, UIInteractionProgress, UIPresentationController, UIPreviewForceInteractionProgress, UIView, UIViewController, UIWindow, _UIPreviewGestureRecognizer, _UIRevealGestureRecognizer, _UITapticEngine;
 @protocol UIForcePresentationController, UIForceTransitioningDelegate, UIPreviewInteractionControllerDelegate;
 
 @interface UIPreviewInteractionController : NSObject <UIGestureRecognizerDelegate, UIInteractionProgressObserver, _UIForcePresentationControllerDelegate>
@@ -22,8 +22,8 @@
     UIView *_sourceView;
     UIViewController *_presentingViewController;
     UIPreviewForceInteractionProgress *_interactionProgressForCommit;
-    UIGestureRecognizer *_revealGestureRecognizer;
-    UIGestureRecognizer *_previewGestureRecognizer;
+    _UIRevealGestureRecognizer *_revealGestureRecognizer;
+    _UIPreviewGestureRecognizer *_previewGestureRecognizer;
     UIGestureRecognizer *_touchObservingGestureRecognizer;
     UIViewController *_currentPreviewViewController;
     UIPresentationController<UIForcePresentationController> *_currentPresentationController;
@@ -49,8 +49,8 @@
 @property (nonatomic) struct CGPoint location; // @synthesize location=_location;
 @property (readonly, nonatomic) UIGestureRecognizer *presentationGestureRecognizer;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
-@property (strong, nonatomic) UIGestureRecognizer *previewGestureRecognizer; // @synthesize previewGestureRecognizer=_previewGestureRecognizer;
-@property (strong, nonatomic) UIGestureRecognizer *revealGestureRecognizer; // @synthesize revealGestureRecognizer=_revealGestureRecognizer;
+@property (strong, nonatomic) _UIPreviewGestureRecognizer *previewGestureRecognizer; // @synthesize previewGestureRecognizer=_previewGestureRecognizer;
+@property (strong, nonatomic) _UIRevealGestureRecognizer *revealGestureRecognizer; // @synthesize revealGestureRecognizer=_revealGestureRecognizer;
 @property (weak, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property (nonatomic) BOOL statusBarWasHidden; // @synthesize statusBarWasHidden=_statusBarWasHidden;
 @property (readonly) Class superclass;
@@ -86,7 +86,7 @@
 - (void)initGestureRecognizers;
 - (void)interactionProgress:(id)arg1 didEnd:(BOOL)arg2;
 - (void)interactionProgressDidUpdate:(id)arg1;
-- (BOOL)startInteractivePreviewAtPosition:(struct CGPoint)arg1 inView:(id)arg2;
+- (BOOL)startInteractivePreviewAtLocation:(struct CGPoint)arg1 inView:(id)arg2;
 - (BOOL)startInteractivePreviewWithGestureRecognizer:(id)arg1;
 
 @end

@@ -31,10 +31,12 @@ __attribute__((visibility("hidden")))
     GEOCompanionRouteDetails *_companionRoute;
     GEOCompanionRouteStatus *_companionStatus;
     BOOL _guidancePromptsEnabled;
+    CDUnknownBlockType _companionRouteFilterBlock;
 }
 
 @property (nonatomic) unsigned long long announcementStage; // @synthesize announcementStage=_annoucementStage;
 @property (readonly, nonatomic) GEOCompanionRouteDetails *companionRoute; // @synthesize companionRoute=_companionRoute;
+@property (copy, nonatomic) CDUnknownBlockType companionRouteFilterBlock; // @synthesize companionRouteFilterBlock=_companionRouteFilterBlock;
 @property (readonly, nonatomic) GEOCompanionRouteStatus *companionStatus; // @synthesize companionStatus=_companionStatus;
 @property (readonly, nonatomic) NSString *destinationName; // @synthesize destinationName=_destinationName;
 @property (nonatomic) long long displayStep; // @synthesize displayStep=_displayStep;

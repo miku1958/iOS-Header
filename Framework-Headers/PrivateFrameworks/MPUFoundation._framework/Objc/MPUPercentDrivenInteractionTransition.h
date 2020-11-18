@@ -11,6 +11,7 @@
 @interface MPUPercentDrivenInteractionTransition : UIPercentDrivenInteractiveTransition
 {
     CADisplayLink *_displayLink;
+    double _displayLinkLastMediaTime;
     NSUUID *_transitionUUID;
     NSArray *_persistentAnimationLayers;
 }

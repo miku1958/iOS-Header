@@ -62,6 +62,20 @@ struct GKCGridGraphNode {
     id _field7;
 };
 
+struct GKCHybridStrategist {
+    struct vector<id<GKGameModel>, std::__1::allocator<id<GKGameModel>>> _field1;
+    struct vector<std::__1::vector<long, std::__1::allocator<long>>, std::__1::allocator<std::__1::vector<long, std::__1::allocator<long>>>> _field2;
+    id _field3;
+    id _field4;
+    id _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    BOOL _field10;
+    BOOL _field11;
+};
+
 struct GKCMinmaxStrategist {
     struct vector<id<GKGameModel>, std::__1::allocator<id<GKGameModel>>> _field1;
     struct list<GKCMoveData, std::__1::allocator<GKCMoveData>> _field2;
@@ -82,6 +96,16 @@ struct GKCMinmaxStrategist {
     long long _field17;
     BOOL _field18;
     BOOL _field19;
+    BOOL _field20;
+};
+
+struct GKCMonteCarloStrategist {
+    id _field1;
+    id _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    BOOL _field5;
+    BOOL _field6;
 };
 
 struct GKCObstacleGraph {
@@ -104,6 +128,13 @@ struct GKCPolygonObstacle {
     struct PolygonObstacle _field3;
     id _field4;
 };
+
+struct GKCQuadTree<NSObject> {
+    CDUnknownFunctionPointerType *_field1;
+    struct GKCQuadTreeNode<NSObject> *_field2;
+};
+
+struct GKCQuadTreeNode<NSObject>;
 
 struct GKConnection;
 

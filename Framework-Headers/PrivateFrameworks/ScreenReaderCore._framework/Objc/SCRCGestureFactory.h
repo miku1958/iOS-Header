@@ -26,6 +26,7 @@
     double _echoWaitTime;
     struct CGRect _tapSpeedRegion;
     double _tapVelocityThresholdForRegion;
+    long long _tapSpeedFingerCount;
     BOOL _inTapSpeedRegionForDownEvent;
     struct CGRect _mainFrame;
     struct CGRect _gutterFrame;
@@ -116,6 +117,8 @@
 - (double)distance;
 - (struct CGPoint)endLocation;
 - (unsigned long long)fingerCount;
+- (double)firstFingerAltitude;
+- (double)firstFingerAzimuth;
 - (double)firstFingerOrbValue;
 - (double)flickSpeed;
 - (int)gestureState;
@@ -132,7 +135,7 @@
 - (void)setFlickSpeed:(double)arg1;
 - (void)setOrientation:(int)arg1;
 - (void)setTapSpeed:(double)arg1;
-- (void)setTapSpeedTimeThreshold:(double)arg1 forRegion:(struct CGRect)arg2;
+- (void)setTapSpeedTimeThreshold:(double)arg1 forRegion:(struct CGRect)arg2 fingerCount:(long long)arg3;
 - (struct CGPoint)startLocation;
 - (unsigned long long)tapCount;
 - (struct CGRect)tapFrame;

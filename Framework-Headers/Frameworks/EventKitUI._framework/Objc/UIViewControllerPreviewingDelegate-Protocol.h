@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <EventKitUI/UIViewControllerPreviewingDelegate_Deprecated-Protocol.h>
+#import <EventKitUI/NSObject-Protocol.h>
 
 @class UIViewController;
 @protocol UIViewControllerPreviewing;
 
-@protocol UIViewControllerPreviewingDelegate <UIViewControllerPreviewingDelegate_Deprecated>
-
-@optional
+@protocol UIViewControllerPreviewingDelegate <NSObject>
 - (void)previewingContext:(id<UIViewControllerPreviewing>)arg1 commitViewController:(UIViewController *)arg2;
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 @end

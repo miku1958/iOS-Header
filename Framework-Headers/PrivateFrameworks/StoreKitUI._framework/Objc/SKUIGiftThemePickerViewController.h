@@ -32,9 +32,11 @@
 - (void).cxx_destruct;
 - (void)_backgroundTapAction:(id)arg1;
 - (double)_cardHeight:(id)arg1;
+- (double)_cardWidth;
 - (id)_collectionView;
 - (double)_collectionViewWidth:(id)arg1;
 - (id)_flowLayout;
+- (BOOL)_isIPadLarge;
 - (void)_layoutCollectionViewWithTraits:(id)arg1;
 - (void)_nextAction:(id)arg1;
 - (double)_scrollInsetHorizontal:(id)arg1;

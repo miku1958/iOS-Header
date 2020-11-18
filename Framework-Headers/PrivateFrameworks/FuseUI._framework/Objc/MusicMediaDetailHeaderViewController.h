@@ -16,11 +16,14 @@
     MusicInteractiveContentEffectView *_contentEffectView;
     UISnapshotView *_contentEffectSnapshotView;
     UIView *_contentEffectClippingView;
+    unsigned long long _contentEffectRevisionID;
     UIView *_darkeningTintView;
     struct CGRect _focusRect;
     BOOL _hasReceivedHeaderInformation;
     double _headerHeight;
     double _headerVerticalOffset;
+    unsigned long long _ignoreContentEffectSnapshotCount;
+    struct CGRect _lastContentEffectViewInputBounds;
     struct CGSize _lastContentEffectViewSnapshotSize;
     MusicMediaUberHeaderLegibilityOverlayView *_legibilityOverlayView;
     double _maximumHeaderHeight;
@@ -60,6 +63,7 @@
 - (void)setMediaDetailHeaderHeight:(double)arg1 withMaximumHeaderHeight:(double)arg2 headerVerticalOffset:(double)arg3 transitionProgress:(double)arg4;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

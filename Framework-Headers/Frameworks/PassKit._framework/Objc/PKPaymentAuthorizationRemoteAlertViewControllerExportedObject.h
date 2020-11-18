@@ -8,15 +8,18 @@
 
 #import <PassKit/PKPaymentAuthorizationServiceProtocol-Protocol.h>
 
-@class NSString, PKPaymentAuthorizationRemoteAlertViewController;
+@class NSMutableSet, NSString, PKPaymentAuthorizationRemoteAlertViewController;
 @protocol PKPaymentAuthorizationServiceProtocol;
 
 @interface PKPaymentAuthorizationRemoteAlertViewControllerExportedObject : NSObject <PKPaymentAuthorizationServiceProtocol>
 {
+    BOOL _didForceDismiss;
+    NSMutableSet *_completionHandlers;
     id<PKPaymentAuthorizationServiceProtocol> _delegate;
     PKPaymentAuthorizationRemoteAlertViewController *_controller;
 }
 
+@property (strong, nonatomic) NSMutableSet *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
 @property (nonatomic) PKPaymentAuthorizationRemoteAlertViewController *controller; // @synthesize controller=_controller;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PKPaymentAuthorizationServiceProtocol> delegate; // @synthesize delegate=_delegate;
@@ -28,6 +31,8 @@
 - (void)authorizationDidSelectPaymentMethodCompleteWithPaymentSummaryItems:(id)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithStatus:(long long)arg1 shippingMethods:(id)arg2 paymentSummaryItems:(id)arg3;
 - (void)authorizationDidSelectShippingMethodCompleteWithStatus:(long long)arg1 paymentSummaryItems:(id)arg2;
+- (void)dealloc;
+- (void)forceDismissDidComplete;
 - (void)handleDismissWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleHostApplicationDidBecomeActive;
 - (void)handleHostApplicationDidCancel;

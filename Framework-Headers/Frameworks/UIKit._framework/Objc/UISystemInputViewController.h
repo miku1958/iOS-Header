@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableDictionary, UIButton, UIInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UIResponder, UIView;
+@class NSArray, NSLayoutConstraint, NSMutableDictionary, UIButton, UICompatibilityInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UIResponder, UIView;
 @protocol UITextInput;
 
 @interface UISystemInputViewController : UIViewController
@@ -21,7 +21,7 @@
     UIResponder<UITextInput> *_persistentDelegate;
     UIKeyboard *_keyboard;
     NSArray *_keyboardConstraints;
-    UIInputViewController *_keyboardVC;
+    UICompatibilityInputViewController *_keyboardVC;
     NSArray *_editorConstraints;
     UIKBSystemLayoutViewController *_editorVC;
     UIButton *_doneButton;
@@ -43,10 +43,11 @@
 @property (nonatomic) BOOL isAutomaticResponderTransition; // @synthesize isAutomaticResponderTransition=_isAutomaticResponderTransition;
 @property (strong, nonatomic) UIKeyboard *keyboard; // @synthesize keyboard=_keyboard;
 @property (strong, nonatomic) NSArray *keyboardConstraints; // @synthesize keyboardConstraints=_keyboardConstraints;
-@property (strong, nonatomic) UIInputViewController *keyboardVC; // @synthesize keyboardVC=_keyboardVC;
+@property (strong, nonatomic) UICompatibilityInputViewController *keyboardVC; // @synthesize keyboardVC=_keyboardVC;
 @property (strong, nonatomic) UIResponder<UITextInput> *nextInputDelegate; // @synthesize nextInputDelegate=_nextInputDelegate;
 @property (strong, nonatomic) UIResponder<UITextInput> *persistentDelegate; // @synthesize persistentDelegate=_persistentDelegate;
 @property (nonatomic) BOOL supportsTouchInput; // @synthesize supportsTouchInput=_supportsTouchInput;
+@property (nonatomic) struct UIEdgeInsets unfocusedFocusGuideOutsets;
 @property (strong, nonatomic) NSLayoutConstraint *verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 @property (nonatomic) BOOL willPresentFullscreen; // @synthesize willPresentFullscreen=_willPresentFullscreen;
 

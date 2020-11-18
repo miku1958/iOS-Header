@@ -13,6 +13,8 @@
 - (id)_accessibilityKeyboardKeyEnteredString;
 - (void)_accessibilitySetUserTestingIsCancelButton:(BOOL)arg1;
 - (void)_accessibilitySetUserTestingIsDefaultButton:(BOOL)arg1;
+- (void)_accessibilitySetUserTestingIsDestructiveButton:(BOOL)arg1;
+- (void)_accessibilitySetUserTestingIsPreferredButton:(BOOL)arg1;
 - (id)_accessibilityUserTestingChildren;
 - (long long)_accessibilityUserTestingChildrenCount;
 - (id)_accessibilityUserTestingChildrenWithRange:(struct _NSRange)arg1;
@@ -23,6 +25,8 @@
 - (BOOL)_accessibilityUserTestingIsCancelButton;
 - (BOOL)_accessibilityUserTestingIsContinuityButton;
 - (BOOL)_accessibilityUserTestingIsDefaultButton;
+- (BOOL)_accessibilityUserTestingIsDestructiveButton;
+- (BOOL)_accessibilityUserTestingIsPreferredButton;
 - (BOOL)_accessibilityUserTestingIsRightNavButton;
 - (id)_accessibilityUserTestingParent;
 - (id)_accessibilityUserTestingSnapshot;

@@ -13,7 +13,9 @@
 + (id)userErrorForCode:(long long)arg1 underlyingError:(id)arg2;
 + (id)userErrorForCode:(long long)arg1 userInfo:(id)arg2;
 + (id)userErrorForServerCode:(long long)arg1 reason:(id)arg2;
++ (id)userErrorForServerCode:(long long)arg1 reason:(id)arg2 userInfo:(id)arg3;
 + (id)userErrorForServerError:(id)arg1;
++ (id)userErrorForServerError:(id)arg1 userInfo:(id)arg2;
 - (BOOL)_gkIsUnauthenticatedError;
 @end
 

@@ -24,6 +24,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateContentDescriptorsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSectionHeaderContentDescriptorsUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)includesShuffleAction;
 - (id)initWithEntityViewDescriptors:(id)arg1;
 - (id)sectionHeaderContentDescriptorForSectionIndex:(unsigned long long)arg1;
 - (void)setEntityProvider:(id)arg1;

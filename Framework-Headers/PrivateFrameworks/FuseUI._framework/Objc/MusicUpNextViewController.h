@@ -47,7 +47,6 @@
 @property (readonly, nonatomic) BOOL shouldDismissOnItemChange; // @synthesize shouldDismissOnItemChange=_shouldDismissOnItemChange;
 @property (readonly) Class superclass;
 
-+ (struct UIEdgeInsets)defaultContentInsets;
 + (id)upNextViewControllerWithPlayer:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dismissUpNext;

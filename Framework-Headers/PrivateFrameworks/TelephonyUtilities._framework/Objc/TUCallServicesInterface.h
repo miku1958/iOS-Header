@@ -93,8 +93,8 @@
 - (void)sendHardPauseDigitsForCallWithUniqueProxyIdentifier:(id)arg1;
 - (void)sendTelephonyDigits:(id)arg1;
 - (void)setClientCapabilities:(id)arg1;
-- (void)setCurrentInputDeviceToDeviceWithID:(id)arg1;
-- (void)setCurrentOutputDeviceToDeviceWithID:(id)arg1;
+- (void)setCurrentInputDeviceToDeviceWithUID:(id)arg1;
+- (void)setCurrentOutputDeviceToDeviceWithUID:(id)arg1;
 - (void)setProxyCall:(id)arg1 forUniqueProxyIdentifier:(id)arg2;
 - (void)swapCalls;
 - (void)unconferenceCallWithUniqueProxyIdentifier:(id)arg1;

@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_addSpinnerToContentView;
-- (void)loadView;
+- (void)viewDidLoad;
 
 @end
 

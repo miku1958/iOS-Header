@@ -44,6 +44,8 @@ __attribute__((visibility("hidden")))
 + (id)_defaultLabelColor;
 - (void)_UIAppearance_setTitlePositionAdjustment:(struct UIOffset)arg1;
 - (void)_UIAppearance_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
+- (void)_appleTV_layoutSubviews;
+- (struct CGSize)_appleTV_sizeThatFits:(struct CGSize)arg1;
 - (void)_applyTabBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
 - (void)_badgeAnimationDidStop:(id)arg1 finished:(id)arg2;
 - (id)_buttonTintColorForState:(unsigned long long)arg1;
@@ -80,7 +82,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_useBarHeight;
 - (BOOL)canBecomeFocused;
 - (void)dealloc;
-- (void)didUpdateFocusFromView:(id)arg1;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithImage:(id)arg1 selectedImage:(id)arg2 label:(id)arg3 withInsets:(struct UIEdgeInsets)arg4;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
@@ -89,6 +91,8 @@ __attribute__((visibility("hidden")))
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setImage:(id)arg1;
+- (BOOL)shouldUpdateFocusInContext:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

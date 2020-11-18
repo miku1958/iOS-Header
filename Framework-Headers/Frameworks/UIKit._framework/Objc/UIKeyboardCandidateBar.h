@@ -11,7 +11,7 @@
 #import <UIKit/UIKeyboardCandidateList-Protocol.h>
 #import <UIKit/UIKeyboardCandidateListDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, TIKeyboardCandidateResultSet, UIImageView, UIKBCandidateCollectionView, UIKBThemedView;
+@class NSArray, NSIndexPath, NSString, TIKeyboardCandidateResultSet, UIImageView, UIKBCandidateCollectionView, UIKBThemedView, UIKeyboardCandidatePocketShadow;
 @protocol UIKeyboardCandidateBarDelegate, UIKeyboardCandidateListDelegate;
 
 __attribute__((visibility("hidden")))
@@ -31,6 +31,8 @@ __attribute__((visibility("hidden")))
     UIKBThemedView *_secondaryCandidatesViewEdgeGradient;
     TIKeyboardCandidateResultSet *_candidateResultSet;
     NSArray *_filteredCandidates;
+    UIKeyboardCandidatePocketShadow *_leftBorder;
+    UIKeyboardCandidatePocketShadow *_rightBorder;
     NSIndexPath *_dragStartNextPageIndexPath;
     NSIndexPath *_dragStartPreviousPageIndexPath;
     CDUnknownBlockType _skippedSetCandidatesBlock;
@@ -56,6 +58,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL forceReloadInitiallyHiddenCandidates; // @synthesize forceReloadInitiallyHiddenCandidates=_forceReloadInitiallyHiddenCandidates;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *inlineText; // @synthesize inlineText=_inlineText;
+@property (strong, nonatomic) UIKeyboardCandidatePocketShadow *leftBorder; // @synthesize leftBorder=_leftBorder;
+@property (strong, nonatomic) UIKeyboardCandidatePocketShadow *rightBorder; // @synthesize rightBorder=_rightBorder;
 @property (strong, nonatomic) UIKBThemedView *secondaryCandidatesViewEdgeGradient; // @synthesize secondaryCandidatesViewEdgeGradient=_secondaryCandidatesViewEdgeGradient;
 @property (nonatomic) BOOL shouldSkipLayoutUntilScrollViewAnimationEnds; // @synthesize shouldSkipLayoutUntilScrollViewAnimationEnds=_shouldSkipLayoutUntilScrollViewAnimationEnds;
 @property (copy, nonatomic) CDUnknownBlockType skippedSetCandidatesBlock; // @synthesize skippedSetCandidatesBlock=_skippedSetCandidatesBlock;
@@ -74,6 +78,7 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)numberOfRows;
 + (unsigned long long)numberOfRowsForInterfaceOrientation:(long long)arg1;
 + (void)setScreenTraits:(id)arg1;
++ (double)widthForCurrentScreenTraits;
 - (Class)_barCellClassForSection:(long long)arg1;
 - (id)_candidateViewForSection:(long long)arg1;
 - (void)_clearData;
@@ -97,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_showingInitiallyHiddenCandidates;
 - (void)_stepSelectedCandidateInDirection:(BOOL)arg1;
 - (void)_stepSelectedCandidateInDirection:(BOOL)arg1 candidateView:(id)arg2 section:(long long)arg3;
+- (void)_updateBorders;
 - (void)_updateCanExtendState;
 - (void)_updateCandidateViews;
 - (double)_widthOfItemAtIndex:(unsigned long long)arg1 inSection:(long long)arg2;

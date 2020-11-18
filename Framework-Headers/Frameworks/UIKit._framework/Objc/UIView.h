@@ -21,7 +21,7 @@
 #import <UIKit/_UIScrollNotification-Protocol.h>
 #import <UIKit/_UITraitEnvironmentInternal-Protocol.h>
 
-@class CALayer, NSArray, NSISEngine, NSISVariable, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMutableArray, NSString, UIBezierPath, UIColor, UIKBRenderConfig, UILayoutGuide, UIPresentationController, UITraitCollection, UIViewController, _UITouchForceObservable;
+@class CALayer, NSArray, NSISEngine, NSISVariable, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMutableArray, NSString, UIBezierPath, UIColor, UIKBRenderConfig, UILayoutGuide, UIPresentationController, UIStoryboardPreviewingSegueTemplateStorage, UITraitCollection, UIViewController, _UITouchForceObservable;
 
 @interface UIView : UIResponder <_UIScrollNotification, UITextEffectsOrdering, NSISVariableDelegate, _UILayoutItem, NSISEngineDelegate, _UITraitEnvironmentInternal, _UIFocusEnvironmentInternal, NSCoding, UIAppearance, UIAppearanceContainer, UIDynamicItem, UITraitEnvironment, UICoordinateSpace, UIFocusEnvironment>
 {
@@ -153,6 +153,7 @@
     unsigned long long _countOfFocusedAncestorTrackingViewsInSubtree;
     long long _semanticContentAttribute;
     UIPresentationController *__presentationControllerToNotifyOnLayoutSubviews;
+    UIStoryboardPreviewingSegueTemplateStorage *_previewingSegueTemplateStorage;
     id _contentSizeNotificationToken;
     UILayoutGuide *_readableContentGuide;
     struct UIEdgeInsets _rawLayoutMargins;
@@ -236,6 +237,7 @@
 @property (strong, nonatomic, getter=_maskView, setter=_setMaskView:) UIView *maskView;
 @property (nonatomic, getter=_monitorsSubtree, setter=_setMonitorsSubtree:) BOOL monitorsSubtree;
 @property (readonly, weak, nonatomic) UIView *preferredFocusedView;
+@property (strong, nonatomic) UIStoryboardPreviewingSegueTemplateStorage *previewingSegueTemplateStorage; // @synthesize previewingSegueTemplateStorage=_previewingSegueTemplateStorage;
 @property (strong, nonatomic, setter=_setReadableContentGuide:) UILayoutGuide *readableContentGuide; // @synthesize readableContentGuide=_readableContentGuide;
 @property (readonly) NSLayoutXAxisAnchor *rightAnchor;
 @property (nonatomic) long long semanticContentAttribute; // @synthesize semanticContentAttribute=_semanticContentAttribute;
@@ -461,13 +463,13 @@
 - (BOOL)_canBeReusedInPickerView;
 - (BOOL)_canBecomeFirstResponderWhenPossible;
 - (BOOL)_canBecomeLayoutEngineDelegate;
-- (BOOL)_canBecomePreferredFocusedView;
 - (BOOL)_canDrawContent;
 - (BOOL)_canHandleStatusBarTouchAtLocation:(struct CGPoint)arg1;
 - (BOOL)_canStartRotationFromEvent:(struct __GSEvent *)arg1;
 - (BOOL)_canStartZoomFromEvent:(struct __GSEvent *)arg1;
 - (id)_centerExpressionInContainer:(id)arg1 vertical:(BOOL)arg2 contentInsetScale:(double)arg3;
 - (id)_childFocusRegions;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1;
 - (void)_cleanUpLayoutArrangements;
 - (void)_clearAnimationFilters;
 - (void)_clearBecomeFirstResponderWhenCapable;
@@ -589,6 +591,7 @@
 - (void)_focusedViewDidChange:(id)arg1;
 - (void)_focusedViewWillChange:(id)arg1;
 - (BOOL)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
+- (id)_fulfillPromisedFocusRegion;
 - (id)_generateBackdropMaskImage;
 - (id)_generateBackdropMaskViewForFlag:(long long)arg1;
 - (id)_generateContentSizeConstraints;
@@ -638,7 +641,6 @@
 - (BOOL)_isAlphaHittableAndHasAlphaHittableAncestors;
 - (BOOL)_isAncestorOfFirstResponder;
 - (BOOL)_isChargeEnabled;
-- (BOOL)_isContainedInUCB;
 - (BOOL)_isDeallocating;
 - (BOOL)_isEligibleForFocus;
 - (BOOL)_isFloatingLayoutItem;
@@ -654,6 +656,7 @@
 - (BOOL)_isInVisibleHierarchy;
 - (BOOL)_isInteractiveElement;
 - (BOOL)_isMemberOfViewControllerHierarchy:(id)arg1;
+- (BOOL)_isPromiseFocusRegion;
 - (BOOL)_isRootForKeyResponderCycle;
 - (BOOL)_isRubberBanding;
 - (BOOL)_isScrollingEnabled;
@@ -717,6 +720,7 @@
 - (double)_preferredDurationScaleFactorForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (struct CGSize)_preferredLayoutEngineToUserScalingCoefficients;
 - (void)_prepareToAppearInNavigationItem:(id)arg1 onLeft:(BOOL)arg2;
+- (id)_previewingSegueTemplateStorageForLocation:(struct CGPoint)arg1 inView:(id)arg2;
 - (id)_previousKeyResponder;
 - (id)_primitiveContentCompressionResistancePrioritiesValue;
 - (id)_primitiveContentHuggingPrioritiesValue;
@@ -850,6 +854,7 @@
 - (BOOL)_shouldResignFirstResponderWithInteractionDisabled;
 - (BOOL)_shouldTryPromoteDescendantToFirstResponder;
 - (BOOL)_shouldUpdateFocusInContext:(id)arg1;
+- (BOOL)_shouldUseKeyboardBackground;
 - (unsigned long long)_speedBumpEdges;
 - (void)_startGesture:(int)arg1 event:(struct __GSEvent *)arg2;
 - (BOOL)_startRotationFromEvent:(struct __GSEvent *)arg1;
@@ -934,6 +939,9 @@
 - (void)_webCustomViewWasAddedAsSubviewOfView:(id)arg1;
 - (void)_webCustomViewWasRemovedFromSuperview:(id)arg1;
 - (void)_webCustomViewWillBeRemovedFromSuperview;
+- (id)_whyIsThisViewNotEligibleForFocus;
+- (id)_whyIsThisViewNotEligibleForFocusWithLinePrefix:(id)arg1;
+- (id)_whyIsThisViewNotFocusable;
 - (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
 - (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(BOOL)arg3;
 - (void)_willChangeToIdiomOnScreen:(id)arg1 traverseHierarchy:(BOOL)arg2;

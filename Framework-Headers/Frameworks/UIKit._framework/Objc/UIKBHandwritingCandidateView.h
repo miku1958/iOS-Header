@@ -16,11 +16,11 @@
 __attribute__((visibility("hidden")))
 @interface UIKBHandwritingCandidateView : UIKBKeyView <UIKeyboardCandidateList, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
-    BOOL _usesCandidateSelection;
     id<UIKeyboardCandidateListDelegate> _delegate;
     TIKeyboardCandidateResultSet *_candidateResultSet;
     UIKBCandidateCollectionView *_candidatesCollectionView;
     UIKeyboardCandidatePocketShadow *_pocketShadow;
+    UIKeyboardCandidatePocketShadow *_leftBorder;
     CDStruct_961fb75c _visualStyling;
     UIKeyboardCandidateLogButton *_logButton;
     unsigned long long _dummyCellCount;
@@ -37,10 +37,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long dummyCellCount; // @synthesize dummyCellCount=_dummyCellCount;
 @property (nonatomic) double dummyCellWidth; // @synthesize dummyCellWidth=_dummyCellWidth;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIKeyboardCandidatePocketShadow *leftBorder; // @synthesize leftBorder=_leftBorder;
 @property (strong, nonatomic) UIKeyboardCandidateLogButton *logButton; // @synthesize logButton=_logButton;
 @property (strong, nonatomic) UIKeyboardCandidatePocketShadow *pocketShadow; // @synthesize pocketShadow=_pocketShadow;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL usesCandidateSelection; // @synthesize usesCandidateSelection=_usesCandidateSelection;
 @property (nonatomic) CDStruct_961fb75c visualStyling; // @synthesize visualStyling=_visualStyling;
 
 + (Class)cellClass;
@@ -82,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)showPreviousRow;
 - (id)statisticsIdentifier;
 - (void)updateForKeyplane:(id)arg1 key:(id)arg2;
+- (void)updateLeftBorderForKeyplane:(id)arg1;
 - (void)updatePocketShadowForKeyplane:(id)arg1;
 
 @end

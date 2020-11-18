@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic) BOOL browseResults;
+@property (nonatomic) BOOL fullScreenEnabled;
 @property (copy, nonatomic) NSArray *shelves;
 
 + (id)contentCabinet;

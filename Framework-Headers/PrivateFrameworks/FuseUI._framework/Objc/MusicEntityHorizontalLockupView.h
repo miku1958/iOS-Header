@@ -60,9 +60,8 @@
 - (BOOL)_shouldLayoutAsEditing;
 - (BOOL)_shouldShowPlayButton;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
+- (void)music_inheritedLayoutInsetsDidChange;
 - (void)trackDownloadViewWillTransition:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

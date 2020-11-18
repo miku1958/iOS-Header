@@ -20,6 +20,7 @@
     unsigned long long _transactionStartTime;
     BOOL _fieldPresent;
     BOOL _fieldPropertiesLookupActive;
+    BOOL _fieldPropertiesLookupProcessed;
     unsigned long long _fieldPropertiesLookupValueAddedServiceMode;
     unsigned long long _fieldPropertiesLookupTechnology;
     unsigned long long _state;
