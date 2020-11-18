@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) long long state; // @synthesize state;
 
 + (id)operationRecordWithDescription:(id)arg1;
+- (id)_reactorQueue;
 - (void)dealloc;
 - (id)description;
 - (void)didBegin;

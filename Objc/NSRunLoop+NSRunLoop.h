@@ -30,6 +30,8 @@
 - (struct __CFRunLoop *)getCFRunLoop;
 - (id)init;
 - (id)limitDateForMode:(id)arg1;
+- (void)performBlock:(CDUnknownBlockType)arg1;
+- (void)performInModes:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)portsForMode:(id)arg1;
 - (void)removePort:(id)arg1 forMode:(id)arg2;
 - (void)removeTimer:(id)arg1 forMode:(id)arg2;

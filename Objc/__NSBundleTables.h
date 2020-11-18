@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)bundleForClass:(Class)arg1;
 - (id)bundleForPath:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)loadedBundles;
 - (void)removeBundle:(id)arg1 forPath:(id)arg2 type:(unsigned long long)arg3;

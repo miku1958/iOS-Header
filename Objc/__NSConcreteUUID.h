@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_bd2f613f)_cfUUIDBytes;
 - (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescription;
 - (id)description;
 - (void)getUUIDBytes:(unsigned char [16])arg1;
 - (id)init;

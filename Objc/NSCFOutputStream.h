@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)allowsWeakReference;
 - (void)close;
 - (id)delegate;
-- (void)finalize;
 - (BOOL)hasSpaceAvailable;
 - (unsigned long long)hash;
 - (id)initToBuffer:(char *)arg1 capacity:(unsigned long long)arg2;

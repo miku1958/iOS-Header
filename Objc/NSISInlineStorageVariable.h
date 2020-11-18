@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     int _valueRestriction;
     BOOL _shouldBeMinimized;
+    BOOL _valueIsUserObservable;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,9 +25,12 @@ __attribute__((visibility("hidden")))
 @property (copy) NSString *name; // @synthesize name=_name;
 @property BOOL shouldBeMinimized; // @synthesize shouldBeMinimized=_shouldBeMinimized;
 @property (readonly) Class superclass;
+@property BOOL valueIsUserObservable; // @synthesize valueIsUserObservable=_valueIsUserObservable;
 @property int valueRestriction; // @synthesize valueRestriction=_valueRestriction;
 
 - (oneway void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)markedConstraint;
 - (id)nsis_descriptionOfVariable:(id)arg1;
 - (BOOL)nsis_shouldIntegralizeVariable:(id)arg1;

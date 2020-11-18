@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (void)appendUTF16Char:(unsigned short)arg1;
 - (void)appendUTF32Char:(unsigned int)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithNSStringEncoding:(unsigned long long)arg1 CFStringEncoding:(unsigned int)arg2 stackBuffer:(char *)arg3 bufferLength:(unsigned long long)arg4 placeholder:(id)arg5;
 - (id)stringWithLossySubsitutionString:(id)arg1;
 

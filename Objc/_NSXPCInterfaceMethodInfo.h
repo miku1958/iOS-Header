@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property int replyPosition; // @synthesize replyPosition=_replyPosition;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (const char *)replySignature;
 - (void)setReplySignature:(id)arg1;

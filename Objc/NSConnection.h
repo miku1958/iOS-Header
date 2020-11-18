@@ -95,7 +95,6 @@
 - (void)dispatchWithComponents:(id)arg1;
 - (void)enableMultipleThreads;
 - (void)encodeReleasedProxies:(id)arg1;
-- (void)finalize;
 - (void)handleKeyedReleasedProxies:(id)arg1;
 - (void)handlePortCoder:(id)arg1;
 - (void)handlePortMessage:(id)arg1;

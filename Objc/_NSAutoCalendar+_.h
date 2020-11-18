@@ -4,21 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSCalendar.h>
+#import <CoreFoundation/_NSAutoCalendar.h>
 
-@class NSDate, NSLocale, NSTimeZone;
-
-__attribute__((visibility("hidden")))
-@interface NSAutoCalendar : NSCalendar
-{
-    NSCalendar *cal;
-    NSLocale *changedLocale;
-    NSTimeZone *changedTimeZone;
-    unsigned long long changedFirstWeekday;
-    unsigned long long changedMinimumDaysinFirstWeek;
-    NSDate *changedGregorianStartDate;
-}
-
+@interface _NSAutoCalendar (_)
 + (BOOL)supportsSecureCoding;
 - (id)_init;
 - (void)_update:(id)arg1;
@@ -53,6 +41,5 @@ __attribute__((visibility("hidden")))
 - (void)setMinimumDaysInFirstWeek:(unsigned long long)arg1;
 - (void)setTimeZone:(id)arg1;
 - (id)timeZone;
-
 @end
 

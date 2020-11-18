@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     BOOL needsCompaction;
 }
 
-- (void)_initBlock;
 - (void)_markNeedsCompaction;
 - (void)addPointer:(void *)arg1;
 - (void)arrayGrow:(unsigned long long)arg1;
@@ -28,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (unsigned long long)hash;
 - (unsigned long long)indexOfPointer:(void *)arg1;
 - (id)init;

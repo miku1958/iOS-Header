@@ -19,7 +19,6 @@
 + (id)blockOperationWithBlock:(CDUnknownBlockType)arg1;
 - (void)addExecutionBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (void)main;

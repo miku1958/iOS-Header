@@ -78,7 +78,6 @@
 - (Class)classNamed:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)findBundleResourceURLsCallingMethod:(SEL)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)initWithPath:(id)arg1;
 - (id)initWithURL:(id)arg1;

@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (void)addReplyCompletionBlockOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)decrementOutstandingReplyCount;
-- (void)finalize;
 - (void)incrementOutstandingReplyCount;
 - (id)init;
 - (id)progressForSequence:(unsigned long long)arg1;

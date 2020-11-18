@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, NSURL;
 @protocol NSFileManagerDelegate, NSObject><NSCopying><NSCoding;
 
 @interface NSFileManager : NSObject
@@ -15,6 +15,8 @@
 
 @property (readonly, copy) NSString *currentDirectoryPath;
 @property id<NSFileManagerDelegate> delegate;
+@property (readonly, copy) NSURL *homeDirectoryForCurrentUser;
+@property (readonly, copy) NSURL *temporaryDirectory;
 @property (readonly, copy) id<NSObject><NSCopying><NSCoding> ubiquityIdentityToken;
 
 + (id)defaultManager;
@@ -29,6 +31,7 @@
 - (id)_displayPathForPath:(id)arg1;
 - (id)_info;
 - (void)_performRemoveFileAtPath:(id)arg1;
+- (void)_postUbiquityAccountChangeNotification:(id)arg1;
 - (BOOL)_processCanAccessUbiquityIdentityToken;
 - (BOOL)_processHasUbiquityContainerEntitlement;
 - (BOOL)_processUsesCloudServices;
@@ -59,7 +62,9 @@
 - (id)contentsOfDirectoryAtPath:(id)arg1 error:(id *)arg2;
 - (id)contentsOfDirectoryAtURL:(id)arg1 includingPropertiesForKeys:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)copyItemAtPath:(id)arg1 toPath:(id)arg2 error:(id *)arg3;
+- (BOOL)copyItemAtPath:(id)arg1 toPath:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)copyItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
+- (BOOL)copyItemAtURL:(id)arg1 toURL:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (BOOL)createDirectoryAtPath:(id)arg1 attributes:(id)arg2;
 - (BOOL)createDirectoryAtPath:(id)arg1 withIntermediateDirectories:(BOOL)arg2 attributes:(id)arg3 error:(id *)arg4;
 - (BOOL)createDirectoryAtURL:(id)arg1 withIntermediateDirectories:(BOOL)arg2 attributes:(id)arg3 error:(id *)arg4;
@@ -105,6 +110,7 @@
 - (id)mountedVolumeURLsIncludingResourceValuesForKeys:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)moveItemAtPath:(id)arg1 toPath:(id)arg2 error:(id *)arg3;
 - (BOOL)moveItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
+- (BOOL)moveItemAtURL:(id)arg1 toURL:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (id)pathContentOfSymbolicLinkAtPath:(id)arg1;
 - (BOOL)removeExtendedAttributeForKey:(id)arg1 atPath:(id)arg2 error:(id *)arg3;
 - (BOOL)removeFileAtPath:(id)arg1 handler:(id)arg2;

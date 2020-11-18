@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSLocale, NSPersonNameComponentsFormatter, NSSet;
+@class NSArray, NSLocale, NSPersonNameComponentsFormatter, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface _NSPersonNameComponentsStyleFormatter : NSObject
 {
-    NSDictionary *_alterations;
+    NSSet *_abbreviatedKeys;
     _NSPersonNameComponentsStyleFormatter *_fallbackStyleFormatter;
     NSSet *_keysOfInterest;
     BOOL _shouldFallBack;
@@ -21,13 +21,11 @@ __attribute__((visibility("hidden")))
     NSArray *_orderedTemplate;
     NSArray *_fallbackDescriptor;
     NSPersonNameComponentsFormatter *_masterFormatter;
-    BOOL _ignoreDelimiter;
 }
 
-@property (readonly) NSDictionary *alterations;
+@property (readonly) NSSet *abbreviatedKeys;
 @property (readonly, copy) NSArray *fallbackDescriptor;
 @property (strong) _NSPersonNameComponentsStyleFormatter *fallbackStyleFormatter; // @synthesize fallbackStyleFormatter=_fallbackStyleFormatter;
-@property BOOL ignoreDelimiter;
 @property (readonly) BOOL isEnabled;
 @property (readonly) NSSet *keysOfInterest;
 @property (readonly, copy) NSPersonNameComponentsFormatter *masterFormatter; // @synthesize masterFormatter=_masterFormatter;
@@ -35,14 +33,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSArray *orderedTemplate;
 @property long long ordering;
 @property (readonly) BOOL shouldFallBack;
+@property (readonly) BOOL shouldIgnoreComponentsContainingSpecialCharacters;
 
+- (id)_delimiterBetweenString:(id)arg1 andString:(id)arg2 isPhonetic:(BOOL)arg3;
 - (id)_formattedStringFromOrderedKeys:(id)arg1 components:(id)arg2 attributesByRange:(id)arg3;
 - (id)_orderedNonEmptyKeysFromComponents:(id)arg1;
 - (void)_releaseIvars;
 - (id)annotatedStringFromPersonNameComponents:(id)arg1;
 - (void)dealloc;
-- (CDUnknownBlockType)defaultInitialsCreator;
-- (void)finalize;
 - (BOOL)fullComponentsAreValid:(id)arg1;
 - (id)initWithMasterFormatter:(id)arg1;
 - (id)stringFromComponents:(id)arg1 attributesByRange:(id)arg2;

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     struct NSSlice slice;
 }
 
-+ (void)initializeBackingStore:(struct NSSlice *)arg1 sentinel:(BOOL)arg2 compactable:(BOOL)arg3;
++ (void)initializeBackingStore:(struct NSSlice *)arg1 sentinel:(BOOL)arg2;
 + (BOOL)initializeSlice:(struct NSSlice *)arg1 withOptions:(unsigned long long)arg2;
 - (CDUnknownFunctionPointerType)acquireFunction;
 - (id)copyWithZone:(struct _NSZone *)arg1;

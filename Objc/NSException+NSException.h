@@ -7,6 +7,7 @@
 #import <Foundation/NSException.h>
 
 @interface NSException (NSException)
+- (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @end

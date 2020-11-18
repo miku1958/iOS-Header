@@ -21,6 +21,7 @@
 @property (readonly, copy) NSArray *arguments;
 @property BOOL automaticTerminationSupportEnabled;
 @property (readonly, copy) NSDictionary *environment;
+@property (readonly, copy) NSString *fullUserName;
 @property (readonly, copy) NSString *globallyUniqueString;
 @property (readonly, copy) NSString *hostName;
 @property (readonly) CDStruct_2ec95fd7 operatingSystemVersion;
@@ -30,6 +31,7 @@
 @property (copy) NSString *processName;
 @property (readonly) unsigned long long processorCount;
 @property (readonly) double systemUptime;
+@property (readonly, copy) NSString *userName;
 
 + (id)processInfo;
 - (void)_disableAutomaticTerminationOnly:(id)arg1;
@@ -59,7 +61,6 @@
 - (void)setArguments:(id)arg1;
 - (id)userFullName;
 - (id)userHomeDirectory;
-- (id)userName;
 
 @end
 

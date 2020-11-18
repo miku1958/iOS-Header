@@ -28,6 +28,7 @@
     void *_reserved0;
 }
 
+@property long long decodingFailurePolicy;
 @property id<NSKeyedUnarchiverDelegate> delegate;
 @property BOOL requiresSecureCoding;
 
@@ -40,6 +41,7 @@
 + (id)unarchiveTopLevelObjectWithData:(id)arg1 error:(id *)arg2;
 - (void)__setError:(id)arg1;
 - (id)_allowedClassNames;
+- (BOOL)_allowsValueCoding;
 - (id)_blobForCurrentObject;
 - (unsigned int)_currentUniqueIdentifier;
 - (id)_decodeArrayOfObjectsForKey:(id)arg1;
@@ -48,6 +50,7 @@
 - (void)_replaceObject:(id)arg1 withObject:(id)arg2;
 - (void)_setAllowedClassNames:(id)arg1;
 - (void)_temporaryMapReplaceObject:(id)arg1 withObject:(id)arg2;
+- (BOOL)_validatePropertyListClass:(Class)arg1 forKey:(id)arg2;
 - (id)allowedClasses;
 - (BOOL)allowsKeyedCoding;
 - (Class)classForClassName:(id)arg1;
@@ -69,10 +72,8 @@
 - (id)decodeObjectOfClasses:(id)arg1 forKey:(id)arg2;
 - (void)decodeValueOfObjCType:(const char *)arg1 at:(void *)arg2;
 - (void)decodeValuesOfObjCTypes:(const char *)arg1;
-- (long long)decodingFailurePolicy;
 - (id)description;
 - (id)error;
-- (void)finalize;
 - (void)finishDecoding;
 - (id)init;
 - (id)initForReadingWithData:(id)arg1;
@@ -80,7 +81,6 @@
 - (void)replaceObject:(id)arg1 withObject:(id)arg2;
 - (void)setAllowedClasses:(id)arg1;
 - (void)setClass:(Class)arg1 forClassName:(id)arg2;
-- (void)setDecodingFailurePolicy:(long long)arg1;
 - (unsigned int)systemVersion;
 - (long long)versionForClassName:(id)arg1;
 

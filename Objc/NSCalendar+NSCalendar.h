@@ -7,7 +7,6 @@
 #import <Foundation/NSCalendar.h>
 
 @interface NSCalendar (NSCalendar)
-+ (id)autoupdatingCurrentCalendar;
 - (Class)classForCoder;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -21,7 +21,6 @@
 - (void)broadcast;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (void)lock;
 - (void)signal;

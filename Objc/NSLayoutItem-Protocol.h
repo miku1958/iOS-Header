@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject-Protocol.h>
 
-@class NSArray, NSISEngine, NSISLinearExpression, NSISVariable, NSLayoutConstraint, NSString;
+@class NSArray, NSISEngine, NSISLinearExpression, NSISVariable, NSLayoutAnchor, NSLayoutConstraint, NSString;
 @protocol NSLayoutItem;
 
 @protocol NSLayoutItem <NSObject>
@@ -25,8 +25,18 @@
 @optional
 - (void)nsli_addConstraint:(NSLayoutConstraint *)arg1;
 - (void)nsli_addConstraint:(NSLayoutConstraint *)arg1 mutuallyExclusiveConstraints:(id *)arg2;
+- (id<NSLayoutItem>)nsli_ancestorSharedWithItem:(id<NSLayoutItem>)arg1;
+- (NSISVariable *)nsli_boundsHeightVariable;
+- (NSISVariable *)nsli_boundsWidthVariable;
+- (BOOL)nsli_canHostIndependentVariableAnchor;
+- (struct CGSize)nsli_engineToUserScalingCoefficients;
 - (NSISVariable *)nsli_heightVariable;
 - (NSArray *)nsli_installedConstraints;
+- (BOOL)nsli_isLegalConstraintItem;
+- (BOOL)nsli_isRTL;
+- (id<NSLayoutItem>)nsli_itemDescribingLayoutDirectionForConstraint:(NSLayoutConstraint *)arg1 toItem:(id<NSLayoutItem>)arg2;
+- (NSLayoutAnchor *)nsli_layoutAnchorForAttribute:(long long)arg1;
+- (BOOL)nsli_lowersExpressionRelativeToConstraintContainer;
 - (double)nsli_marginOffsetForAttribute:(long long)arg1;
 - (NSISVariable *)nsli_minXVariable;
 - (NSISVariable *)nsli_minYVariable;

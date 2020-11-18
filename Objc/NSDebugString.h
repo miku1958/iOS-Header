@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (id)initWithString:(id)arg1;
 - (unsigned long long)length;

@@ -25,7 +25,6 @@
 - (void)_freeClients;
 - (BOOL)_isAbsolute;
 - (BOOL)_isDeallocating;
-- (id)_relativeURLPath;
 - (BOOL)_tryRetain;
 - (id)absoluteString;
 - (id)absoluteURL;
@@ -36,7 +35,6 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (const char *)fileSystemRepresentation;
-- (void)finalize;
 - (id)fragment;
 - (BOOL)getFileSystemRepresentation:(char *)arg1 maxLength:(unsigned long long)arg2;
 - (BOOL)hasDirectoryPath;

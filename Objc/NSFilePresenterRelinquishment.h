@@ -6,17 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSCountedSet;
+@class NSCountedSet, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface NSFilePresenterRelinquishment : NSObject
 {
     NSCountedSet *_blockingAccessClaimIDs;
+    NSMutableArray *_relinquishReplies;
     CDUnknownBlockType _reacquirer;
+    BOOL _prerelinquishInProgress;
+    NSMutableArray *_blockingPrerelinquishReplies;
 }
 
-- (BOOL)addBlockingAccessClaimID:(id)arg1;
+- (void)addPrerelinquishReply:(CDUnknownBlockType)arg1;
+- (void)addRelinquishReply:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)didRelinquish;
+- (void)performRelinquishmentToAccessClaimIfNecessary:(id)arg1 usingBlock:(CDUnknownBlockType)arg2 withReply:(CDUnknownBlockType)arg3;
+- (void)performRemoteDeletePrerelinquishmentIfNecessaryUsingBlock:(CDUnknownBlockType)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)removeAllBlockingAccessClaimIDs;
 - (void)removeBlockingAccessClaimID:(id)arg1;
 - (void)removeBlockingAccessClaimID:(id)arg1 thenContinue:(CDUnknownBlockType)arg2;

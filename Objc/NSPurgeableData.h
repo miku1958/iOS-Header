@@ -23,7 +23,6 @@
 - (id)description;
 - (void)discardContentIfPossible;
 - (void)endContentAccess;
-- (void)finalize;
 - (id)init;
 - (id)initWithBytes:(void *)arg1 length:(unsigned long long)arg2 copy:(BOOL)arg3 deallocator:(CDUnknownBlockType)arg4;
 - (id)initWithCapacity:(unsigned long long)arg1;

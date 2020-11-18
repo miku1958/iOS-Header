@@ -19,7 +19,6 @@
 + (id)dataWithContentsOfURL:(id)arg1;
 + (id)dataWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 + (id)dataWithData:(id)arg1;
-+ (BOOL)supportsSecureCoding;
 - (BOOL)_allowsDirectEncoding;
 - (id)_asciiDescription;
 - (id)_base64EncodingAsString:(BOOL)arg1 withOptions:(unsigned long long)arg2;
@@ -30,7 +29,6 @@
 - (BOOL)_decodeBase64EncodedCharacterBuffer:(const char *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3 buffer:(char *)arg4 bufferLength:(unsigned long long)arg5 state:(CDStruct_6243051c *)arg6;
 - (id)_initWithBase64EncodedObject:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)_isCompact;
-- (BOOL)_isCompactAndReturnBytes:(const void **)arg1;
 - (BOOL)_isDispatchData;
 - (id)base64EncodedDataWithOptions:(unsigned long long)arg1;
 - (id)base64EncodedStringWithOptions:(unsigned long long)arg1;

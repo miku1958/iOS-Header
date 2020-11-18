@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSFileAccessProcessManager, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_xpc_object;
+#import <Foundation/NSSecureCoding-Protocol.h>
+
+@class NSError, NSFileAccessProcessManager, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, NSXPCConnection;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface NSFileAccessClaim : NSObject
+@interface NSFileAccessClaim : NSObject <NSSecureCoding>
 {
-    NSObject<OS_xpc_object> *_client;
+    NSXPCConnection *_client;
     NSString *_claimID;
     NSString *_purposeIDOrNil;
     BOOL _cameFromSuperarbiter;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_semaphore> *_claimerWaiter;
     BOOL _hasInvokedClaimer;
     id _claimerOrNil;
+    CDUnknownBlockType _serverClaimerOrNil;
     NSMutableArray *_sandboxTokens;
     NSObject<OS_dispatch_queue> *_arbiterQueue;
 }
@@ -41,9 +44,10 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)canReadingItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapWritingItemAtLocation:(id)arg3 options:(unsigned long long)arg4;
 + (BOOL)canWritingItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapWritingItemAtLocation:(id)arg3 options:(unsigned long long)arg4;
-+ (BOOL)readingItemAtLocation:(id)arg1 withPurposeID:(id)arg2 requiresOnlyPhysicalItemWithOptions:(unsigned long long)arg3;
-+ (BOOL)writingItemAtLocation:(id)arg1 withPurposeID:(id)arg2 requiresOnlyPhysicalItemWithOptions:(unsigned long long)arg3;
++ (BOOL)supportsSecureCoding;
+- (void)_setupWithClaimID:(id)arg1 purposeID:(id)arg2;
 - (BOOL)_writeArchiveOfDirectoryAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
+- (void)acceptClaimFromClient:(id)arg1 arbiterQueue:(id)arg2 grantHandler:(CDUnknownBlockType)arg3;
 - (void)addPendingClaim:(id)arg1;
 - (id)allURLs;
 - (void)block;
@@ -63,14 +67,15 @@ __attribute__((visibility("hidden")))
 - (void)devalueOldClaim:(id)arg1;
 - (void)devalueSelf;
 - (BOOL)didWait;
+- (void)disavowed;
+- (void)encodeWithCoder:(id)arg1;
 - (void)evaluateNewClaim:(id)arg1;
 - (BOOL)evaluateSelfWithRootNode:(id)arg1 checkSubarbitrability:(BOOL)arg2;
-- (void)finalize;
 - (void)finished;
-- (void)forwardUsingMessageSender:(CDUnknownBlockType)arg1 crashHandler:(CDUnknownBlockType)arg2;
+- (void)forwardUsingConnection:(id)arg1 crashHandler:(CDUnknownBlockType)arg2;
 - (void)granted;
-- (id)initWithClient:(id)arg1 claimID:(id)arg2 purposeID:(id)arg3 arbiterQueue:(id)arg4;
-- (id)initWithClient:(id)arg1 messageParameters:(id)arg2 arbiterQueue:(id)arg3 replySender:(CDUnknownBlockType)arg4;
+- (id)initWithClient:(id)arg1 claimID:(id)arg2 purposeID:(id)arg3;
+- (id)initWithCoder:(id)arg1;
 - (void)invokeClaimer;
 - (BOOL)isBlockedByClaimWithPurposeID:(id)arg1;
 - (BOOL)isBlockedByReadingItemAtLocation:(id)arg1 options:(unsigned long long)arg2;
@@ -79,8 +84,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)isRevoked;
 - (void)itemAtLocation:(id)arg1 wasReplacedByItemAtLocation:(id)arg2;
 - (void)makePresentersOfItemAtLocation:(id)arg1 orContainedItem:(BOOL)arg2 relinquishUsingProcedureGetter:(CDUnknownBlockType)arg3;
+- (void)makeProviderOfItemAtLocation:(id)arg1 provideIfNecessaryWithOptions:(unsigned long long)arg2 thenContinue:(CDUnknownBlockType)arg3;
+- (void)makeProviderOfItemAtLocation:(id)arg1 provideOrAttachPhysicalURLIfNecessaryForPurposeID:(id)arg2 readingOptions:(unsigned long long)arg3 thenContinue:(CDUnknownBlockType)arg4;
+- (void)makeProviderOfItemAtLocation:(id)arg1 provideOrAttachPhysicalURLIfNecessaryForPurposeID:(id)arg2 writingOptions:(unsigned long long)arg3 thenContinue:(CDUnknownBlockType)arg4;
 - (void)makeProviderOfItemAtLocation:(id)arg1 providePhysicalURLThenContinue:(CDUnknownBlockType)arg2;
-- (void)makeProviderOfItemAtLocation:(id)arg1 provideWithOptions:(unsigned long long)arg2 thenContinue:(CDUnknownBlockType)arg3;
 - (id)pendingClaims;
 - (void)prepareItemForUploadingFromURL:(id)arg1 thenContinue:(CDUnknownBlockType)arg2;
 - (id)purposeID;
@@ -91,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)setCameFromSuperarbiter;
 - (void)setClaimerError:(id)arg1;
 - (BOOL)shouldBeRevokedPriorToInvokingAccessor;
+- (BOOL)shouldCancelInsteadOfWaiting;
 - (BOOL)shouldReadingWithOptions:(unsigned long long)arg1 causePresenterToRelinquish:(id)arg2;
 - (void)startObservingClientState;
 - (void)unblock;

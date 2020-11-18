@@ -32,7 +32,9 @@
 @property unsigned long long timeStyle;
 @property (copy) NSTimeZone *timeZone;
 
+- (id)_stringFromDate:(id)arg1 toDate:(id)arg2;
 - (id)attributedStringForObjectValue:(id)arg1 withDefaultAttributes:(id)arg2;
+- (unsigned long long)boundaryStyle;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)editingStringForObjectValue:(id)arg1;
@@ -43,8 +45,10 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isPartialStringValid:(id)arg1 newEditingString:(id *)arg2 errorDescription:(id *)arg3;
 - (BOOL)isPartialStringValid:(id *)arg1 proposedSelectedRange:(struct _NSRange *)arg2 originalString:(id)arg3 originalSelectedRange:(struct _NSRange)arg4 errorDescription:(id *)arg5;
+- (void)setBoundaryStyle:(unsigned long long)arg1;
 - (id)stringForObjectValue:(id)arg1;
 - (id)stringFromDate:(id)arg1 toDate:(id)arg2;
+- (id)stringFromDateInterval:(id)arg1;
 
 @end
 

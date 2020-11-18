@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (void)appendData:(id)arg1;
 - (const void *)bytes;
 - (void)dealloc;
-- (void)finalize;
 - (void)increaseLengthBy:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithBytes:(void *)arg1 length:(unsigned long long)arg2 copy:(BOOL)arg3 deallocator:(CDUnknownBlockType)arg4;

@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCoding-Protocol.h>
 #import <Foundation/NSCopying-Protocol.h>
 #import <Foundation/NSMutableCopying-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSData;
 
-@interface NSCharacterSet : NSObject <NSCopying, NSMutableCopying, NSCoding>
+@interface NSCharacterSet : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
 }
 
@@ -41,6 +41,7 @@
 + (id)newlineCharacterSet;
 + (id)nonBaseCharacterSet;
 + (id)punctuationCharacterSet;
++ (BOOL)supportsSecureCoding;
 + (id)symbolCharacterSet;
 + (id)uppercaseLetterCharacterSet;
 + (id)whitespaceAndNewlineCharacterSet;

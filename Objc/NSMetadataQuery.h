@@ -47,6 +47,7 @@
 - (void)_enableAutoUpdates;
 - (id)_externalDocumentsBundleIdentifier;
 - (void)_inOriginalContextInvokeBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_isMDQuery;
 - (void)_noteNote1:(id)arg1;
 - (void)_noteNote2:(id)arg1;
 - (void)_noteNote3:(id)arg1;
@@ -69,7 +70,6 @@
 - (void)enableUpdates;
 - (void)enumerateResultsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateResultsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)finalize;
 - (unsigned long long)indexOfResult:(id)arg1;
 - (id)init;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;

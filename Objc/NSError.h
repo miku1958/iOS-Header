@@ -55,7 +55,6 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

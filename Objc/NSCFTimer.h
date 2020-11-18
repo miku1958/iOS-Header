@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (unsigned long long)_cfTypeID;
 - (BOOL)allowsWeakReference;
-- (void)finalize;
 - (void)fire;
 - (id)fireDate;
 - (unsigned long long)hash;

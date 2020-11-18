@@ -18,7 +18,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (void)dealloc;
-- (void)finalize;
 - (id)keyEnumerator;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)newWithKey:(id)arg1 object:(id)arg2;

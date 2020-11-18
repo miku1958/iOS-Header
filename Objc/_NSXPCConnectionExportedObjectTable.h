@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (id)exportedObjectForProxyNumber:(unsigned long long)arg1;
-- (void)finalize;
 - (id)init;
 - (id)interfaceForProxyNumber:(unsigned long long)arg1;
 - (void)invalidate;

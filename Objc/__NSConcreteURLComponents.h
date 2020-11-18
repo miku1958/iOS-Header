@@ -40,9 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)fragment;
-- (void)freeIvars;
 - (unsigned long long)hash;
 - (id)host;
 - (id)init;

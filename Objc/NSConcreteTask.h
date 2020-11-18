@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (id)currentDirectoryPath;
 - (void)dealloc;
 - (id)environment;
-- (void)finalize;
 - (id)init;
 - (void)interrupt;
 - (BOOL)isRunning;

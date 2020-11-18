@@ -27,7 +27,6 @@
 - (id)classesForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2 ofReply:(BOOL)arg3;
 - (void)dealloc;
 - (id)debugDescription;
-- (void)finalize;
 - (id)init;
 - (id)interfaceForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2 ofReply:(BOOL)arg3;
 - (id)replyBlockSignatureForSelector:(SEL)arg1;

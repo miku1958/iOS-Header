@@ -19,7 +19,6 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (BOOL)isEmpty;
 - (void)postNotification:(id)arg1;

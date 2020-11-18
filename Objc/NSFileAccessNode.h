@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSFileProviderProxy, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface NSFileAccessNode : NSObject
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _symbolicLinkReferenceCount;
     NSMutableDictionary *_childrenByNormalizedName;
     id _presenterOrPresenters;
-    id _provider;
+    NSFileProviderProxy *_provider;
     id _accessClaimOrClaims;
     BOOL _isArbitrationBoundary;
     BOOL _isFilePackageIsFigured;
@@ -29,8 +29,8 @@ __attribute__((visibility("hidden")))
     id _progressSubscriberOrSubscribers;
 }
 
-- (id)_childrenExcludingExcessNodes:(BOOL)arg1;
-- (BOOL)_mayContainCriticalDebuggingInformation;
+- (id)_childrenExcludingExcessNodes:(BOOL)arg1 excludingReactors:(BOOL)arg2;
+- (BOOL)_mayContainCriticalDebuggingInformationExcludingReactors:(BOOL)arg1;
 - (void)addAccessClaim:(id)arg1;
 - (void)addPresenter:(id)arg1;
 - (void)addProgressPublisher:(id)arg1;
@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)descendantAtPath:(id)arg1 componentRange:(struct _NSRange)arg2 forAddingLeafNode:(id)arg3 create:(BOOL)arg4;
 - (id)descendantForFileURL:(id)arg1;
 - (id)description;
-- (id)descriptionWithIndenting:(id)arg1 excludingExcessNodes:(BOOL)arg2;
+- (id)descriptionWithIndenting:(id)arg1 excludingExcessNodes:(BOOL)arg2 excludingReactors:(BOOL)arg3;
 - (void)forEachAccessClaimOnItemOrContainedItemPerformProcedure:(CDUnknownBlockType)arg1;
 - (void)forEachAccessClaimOnItemPerformProcedure:(CDUnknownBlockType)arg1;
 - (void)forEachDescendantPerformProcedure:(CDUnknownBlockType)arg1;
@@ -78,14 +78,17 @@ __attribute__((visibility("hidden")))
 - (void)removePresenter:(id)arg1;
 - (void)removeProgressPublisher:(id)arg1;
 - (void)removeProgressSubscriber:(id)arg1;
+- (void)removeProvider:(id)arg1;
 - (void)removeSelfIfUseless;
 - (id)sensitiveDescription;
+- (id)sensitiveSubarbiterDescription;
 - (void)setArbitrationBoundary;
 - (void)setChild:(id)arg1 forName:(id)arg2 normalizedName:(id)arg3;
 - (void)setParent:(id)arg1 name:(id)arg2;
-- (void)setProvider:(id)arg1;
+- (BOOL)setProvider:(id)arg1;
 - (void)setSymbolicLinkDestination:(id)arg1;
 - (id)standardizedURL;
+- (id)subarbiterDescription;
 - (id)url;
 - (id)urlOfSubitemAtPath:(id)arg1 plusPath:(id)arg2;
 

@@ -14,13 +14,13 @@
     NSString *_keyPath;
 }
 
+@property (readonly) NSString *keyPath;
 @property id rootObject;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)keyPathWithRootObject:(id)arg1 path:(const char *)arg2;
 + (id)newKeyPathWithRootObject:(id)arg1 keyPathString:(id)arg2;
 - (void)dealloc;
-- (void)finalize;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableArrayValue;

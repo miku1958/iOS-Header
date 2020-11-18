@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)count;
 - (void)dealloc;
 - (id)descriptionWithLocale:(id)arg1 indent:(unsigned long long)arg2;
-- (void)finalize;
 - (id)objectAtIndex:(unsigned long long)arg1;
 
 @end

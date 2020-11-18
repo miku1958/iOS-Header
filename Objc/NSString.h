@@ -45,6 +45,7 @@
 + (BOOL)supportsSecureCoding;
 - (const char *)UTF8String;
 - (id)__escapeString5991;
+- (unsigned long long)__graphemeCount;
 - (BOOL)_allowsDirectEncoding;
 - (unsigned long long)_cfTypeID;
 - (id)_copyFormatStringWithConfiguration:(id)arg1;
@@ -250,7 +251,6 @@
 - (id)substringWithRange:(struct _NSRange)arg1;
 - (id)uppercaseString;
 - (id)uppercaseStringWithLocale:(id)arg1;
-- (id)urlPathRelativeToPath:(id)arg1;
 - (id)variantFittingPresentationWidth:(long long)arg1;
 - (BOOL)writeToFile:(id)arg1 atomically:(BOOL)arg2;
 - (BOOL)writeToFile:(id)arg1 atomically:(BOOL)arg2 encoding:(unsigned long long)arg3 error:(id *)arg4;

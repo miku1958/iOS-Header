@@ -39,7 +39,6 @@
 - (void)cancel;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (void)main;
 - (void *)observationInfo;

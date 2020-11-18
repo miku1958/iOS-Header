@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     unsigned long long mutations;
 }
 
-- (void)_initBlock;
 - (void)addObject:(id)arg1;
 - (id)allObjects;
 - (void)assign:(unsigned long long)arg1 key:(const void *)arg2;
@@ -27,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (void *)getItem:(const void *)arg1;
 - (void)getKeys:(const void **)arg1 count:(unsigned long long *)arg2;
 - (unsigned long long)hash;

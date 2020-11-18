@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
-@interface NSWeakCallback : NSObject
+@interface _NSTimerBlockTarget : NSObject
 {
-    id _callback_next;
-    CDUnknownFunctionPointerType _callback_function;
-    id _callback_target;
+    CDUnknownBlockType _block;
 }
+
+- (void)dealloc;
+- (void)fire:(id)arg1;
+- (id)initWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

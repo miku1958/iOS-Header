@@ -8,7 +8,7 @@
 
 #import <Foundation/NSProgressSubscriber-Protocol.h>
 
-@class NSLock, NSMutableDictionary, NSString, NSXPCConnection;
+@class NSLock, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _NSProgressSubscriber : NSObject <NSProgressSubscriber>
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _publishingHandler;
     NSString *_subscriberID;
     NSMutableDictionary *_proxiesByPublisherID;
-    NSXPCConnection *_connection;
+    BOOL _started;
     NSLock *_lock;
 }
 

@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (double)_timestamp;
 - (struct addrinfo *)addrinfo;
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

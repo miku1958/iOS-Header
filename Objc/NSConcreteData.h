@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (const void *)bytes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (void)getBytes:(void *)arg1;
 - (void)getBytes:(void *)arg1 length:(unsigned long long)arg2;
 - (void)getBytes:(void *)arg1 range:(struct _NSRange)arg2;

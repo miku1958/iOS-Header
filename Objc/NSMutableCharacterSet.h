@@ -8,8 +8,9 @@
 
 #import <Foundation/NSCopying-Protocol.h>
 #import <Foundation/NSMutableCopying-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
-@interface NSMutableCharacterSet : NSCharacterSet <NSCopying, NSMutableCopying>
+@interface NSMutableCharacterSet : NSCharacterSet <NSCopying, NSMutableCopying, NSSecureCoding>
 {
 }
 
@@ -28,6 +29,7 @@
 + (id)newlineCharacterSet;
 + (id)nonBaseCharacterSet;
 + (id)punctuationCharacterSet;
++ (BOOL)supportsSecureCoding;
 + (id)symbolCharacterSet;
 + (id)uppercaseLetterCharacterSet;
 + (id)whitespaceAndNewlineCharacterSet;

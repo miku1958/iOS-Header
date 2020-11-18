@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)allowsWeakReference;
 - (const void *)bytes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)finalize;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)length;

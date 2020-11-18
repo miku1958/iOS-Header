@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithTarget:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)invoke;
 

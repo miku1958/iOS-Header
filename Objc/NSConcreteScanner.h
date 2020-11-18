@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)caseSensitive;
 - (id)charactersToBeSkipped;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithString:(id)arg1;
 - (id)locale;
 - (BOOL)scanInt:(int *)arg1;

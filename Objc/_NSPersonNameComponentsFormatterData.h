@@ -9,7 +9,7 @@
 #import <Foundation/NSCopying-Protocol.h>
 #import <Foundation/NSSecureCoding-Protocol.h>
 
-@class NSLocale;
+@class NPNameParser, NSLocale;
 
 __attribute__((visibility("hidden")))
 @interface _NSPersonNameComponentsFormatterData : NSObject <NSCopying, NSSecureCoding>
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _forceGivenNameFirst;
     BOOL _ignoresFallbacks;
     NSLocale *_locale;
+    NPNameParser *_nameParser;
 }
 
 @property BOOL forceFamilyNameFirst; // @synthesize forceFamilyNameFirst=_forceFamilyNameFirst;

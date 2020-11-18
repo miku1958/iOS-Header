@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)setWhitelist:(id)arg1;
 

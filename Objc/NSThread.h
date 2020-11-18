@@ -28,6 +28,7 @@
 + (id)callStackSymbols;
 + (id)currentThread;
 + (void)detachNewThreadSelector:(SEL)arg1 toTarget:(id)arg2 withObject:(id)arg3;
++ (void)detachNewThreadWithBlock:(CDUnknownBlockType)arg1;
 + (void)exit;
 + (BOOL)isDying;
 + (BOOL)isMainThread;
@@ -45,6 +46,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)init;
+- (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
 - (BOOL)isDying;
 - (void)main;

@@ -6,30 +6,39 @@
 
 #import <Foundation/NSFormatter.h>
 
-@class NSNumberFormatter, NSString;
+#import <Foundation/NSSecureCoding-Protocol.h>
+
+@class NSLocale, NSNumberFormatter;
 
 __attribute__((visibility("hidden")))
-@interface NSUnitFormatter : NSFormatter
+@interface NSUnitFormatter : NSFormatter <NSSecureCoding>
 {
     NSNumberFormatter *_numberFormatter;
+    unsigned long long _unitOptions;
     long long _unitStyle;
     struct UAMeasureFormat *_formatter;
     struct UPluralRules *_prules;
     BOOL _modified;
-    NSString *_localeID;
+    NSLocale *_locale;
 }
 
+@property (copy) NSLocale *locale;
 @property (copy) NSNumberFormatter *numberFormatter;
+@property unsigned long long unitOptions;
 @property long long unitStyle;
 
++ (BOOL)supportsSecureCoding;
+- (int)_determineUnitsToFormat:(int *)arg1 fromMeasurement:(id)arg2;
+- (void)checkIfModified;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)stringForObjectValue:(id)arg1;
 - (id)stringForValue1:(double)arg1 unit1:(unsigned long long)arg2 value2:(double)arg3 unit2:(unsigned long long)arg4;
 - (id)stringForValue:(double)arg1 unit:(unsigned long long)arg2;
+- (id)stringFromUnit:(id)arg1;
 - (id)unitStringFromValue:(double)arg1 unit:(unsigned long long)arg2;
 
 @end

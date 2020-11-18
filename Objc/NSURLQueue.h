@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)clear;
 - (unsigned long long)count;
 - (void)dealloc;
-- (void)finalize;
 - (long long)indexOf:(id)arg1;
 - (id)init;
 - (BOOL)isEmpty;

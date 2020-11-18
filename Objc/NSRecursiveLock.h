@@ -20,7 +20,6 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (BOOL)isLocking;
 - (void)lock;

@@ -70,7 +70,6 @@ __attribute__((visibility("hidden")))
 - (void)_waitUntilFinished:(id)arg1;
 - (void)_waitUntilFinishedOrTimeout:(double)arg1 outer:(id)arg2;
 - (void)dealloc;
-- (void)finalize;
 - (id)init:(id)arg1;
 
 @end

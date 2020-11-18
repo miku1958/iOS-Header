@@ -11,8 +11,10 @@ __attribute__((visibility("hidden")))
 {
     id _block;
     int _tag;
+    id _observers;
 }
 
+- (id *)_observerStorage;
 - (void)_receiveBox:(id)arg1;
 - (void)dealloc;
 - (id)initWithBlock:(id)arg1 tag:(int)arg2;

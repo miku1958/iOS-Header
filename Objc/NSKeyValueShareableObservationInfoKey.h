@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSObject *_additionOriginalObservable;
     NSKeyValueObservance *_removalObservance;
     unsigned long long _removalObservanceIndex;
+    unsigned long long _cachedHash;
 }
 
 @end

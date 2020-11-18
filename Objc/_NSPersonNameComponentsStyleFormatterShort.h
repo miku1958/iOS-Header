@@ -23,14 +23,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) _NSPersonNameComponentsStyleFormatterShortVariantGeneral *variantFormatter;
 
 - (id)_formattedStringFromOrderedKeys:(id)arg1 components:(id)arg2 attributesByRange:(id)arg3;
-- (id)alterations;
+- (id)abbreviatedKeys;
 - (void)dealloc;
 - (id)fallbackStyleFormatter;
 - (id)initWithMasterFormatter:(id)arg1;
 - (BOOL)isEnabled;
 - (id)keysOfInterest;
 - (id)orderedKeysOfInterest;
-- (BOOL)shouldFallBack;
 
 @end
 

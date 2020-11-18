@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 + (id)placeholderForDetector:(id)arg1;
 - (void)dealloc;
 - (id)debugDescription;
-- (void)finalize;
 
 @end
 

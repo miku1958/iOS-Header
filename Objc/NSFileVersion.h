@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString, NSURL;
+@class NSDate, NSPersonNameComponents, NSString, NSURL;
 @protocol NSCoding;
 
 @interface NSFileVersion : NSObject
@@ -39,6 +39,7 @@
 @property (readonly, copy) NSDate *modificationDate;
 @property (readonly, copy) NSString *originalPOSIXName;
 @property (readonly, copy) NSString *originatorName;
+@property (readonly, copy) NSPersonNameComponents *originatorNameComponents;
 @property (readonly, strong) id<NSCoding> persistentIdentifier;
 @property (getter=isResolved) BOOL resolved;
 @property (readonly) unsigned long long size;
@@ -88,6 +89,7 @@
 - (BOOL)_preserveConflictVersionLocally;
 - (BOOL)_setDocumentInfo:(id)arg1;
 - (void)dealloc;
+- (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

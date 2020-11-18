@@ -17,14 +17,16 @@ __attribute__((visibility("hidden")))
     NSFileAccessNode *_location;
 }
 
++ (BOOL)supportsSecureCoding;
 - (id)allURLs;
 - (BOOL)blocksClaim:(id)arg1;
 - (void)dealloc;
 - (void)devalueSelf;
+- (void)encodeWithCoder:(id)arg1;
 - (BOOL)evaluateSelfWithRootNode:(id)arg1 checkSubarbitrability:(BOOL)arg2;
-- (void)forwardUsingMessageSender:(CDUnknownBlockType)arg1 crashHandler:(CDUnknownBlockType)arg2;
+- (void)forwardUsingConnection:(id)arg1 crashHandler:(CDUnknownBlockType)arg2;
 - (void)granted;
-- (id)initWithClient:(id)arg1 messageParameters:(id)arg2 arbiterQueue:(id)arg3 replySender:(CDUnknownBlockType)arg4;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithPurposeID:(id)arg1 url:(id)arg2 options:(unsigned long long)arg3 claimer:(CDUnknownBlockType)arg4;
 - (void)invokeClaimer;
 - (BOOL)isBlockedByReadingItemAtLocation:(id)arg1 options:(unsigned long long)arg2;

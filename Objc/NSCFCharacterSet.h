@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (Class)classForKeyedArchiver;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (void)formIntersectionWithCharacterSet:(id)arg1;
 - (void)formUnionWithCharacterSet:(id)arg1;
 - (BOOL)hasMemberInPlane:(unsigned char)arg1;

@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_allowsDirectEncoding;
 - (id)_createDispatchData;
 - (BOOL)_isDispatchData;
-- (const void *)bytes;
 - (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -25,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (void)getBytes:(void *)arg1 range:(struct _NSRange)arg2;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (unsigned long long)length;
 - (id)subdataWithRange:(struct _NSRange)arg1;
 
 @end

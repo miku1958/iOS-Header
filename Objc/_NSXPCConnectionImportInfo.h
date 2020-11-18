@@ -14,12 +14,10 @@ __attribute__((visibility("hidden")))
     unsigned long long _generationCount;
     NSLock *_lock;
     struct __CFDictionary *_proxyNumberToCount;
-    struct __CFSet *_knownProxies;
 }
 
 - (void)addProxy:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (BOOL)removeProxy:(id)arg1;
 

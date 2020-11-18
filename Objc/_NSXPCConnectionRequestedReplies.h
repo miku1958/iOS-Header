@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (void)addSequence:(unsigned long long)arg1 withProgress:(id)arg2 cleanupBlock:(CDUnknownBlockType)arg3;
 - (void)cleanup;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)progressForSequence:(unsigned long long)arg1;
 - (BOOL)removeSequence:(unsigned long long)arg1;

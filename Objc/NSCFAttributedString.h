@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)deleteCharactersInRange:(struct _NSRange)arg1;
-- (void)finalize;
 - (void)insertAttributedString:(id)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToAttributedString:(id)arg1;

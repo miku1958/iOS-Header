@@ -19,7 +19,6 @@
 - (id)attributesAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithAttributedString:(id)arg1;
 - (id)initWithString:(id)arg1;

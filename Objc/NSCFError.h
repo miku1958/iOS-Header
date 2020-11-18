@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (Class)classForCoder;
 - (long long)code;
 - (id)domain;
-- (void)finalize;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (oneway void)release;

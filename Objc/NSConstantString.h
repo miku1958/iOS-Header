@@ -23,7 +23,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (unsigned long long)fastestEncoding;
-- (void)finalize;
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (unsigned long long)hash;
 - (id)initWithCharactersNoCopy:(unsigned short *)arg1 length:(unsigned long long)arg2;

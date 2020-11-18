@@ -6,30 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSFileAccessNode;
-@protocol OS_xpc_object;
+@class NSFileAccessNode, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
 @interface NSFileReactorProxy : NSObject
 {
-    NSObject<OS_xpc_object> *_client;
+    NSXPCConnection *_client;
     id _reactorID;
-    CDUnknownBlockType _messageSender;
     NSFileAccessNode *_itemLocation;
 }
 
++ (void)_enumerateParentDirectoriesStartingAtURL:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)_clientProxy;
+- (BOOL)allowedForURL:(id)arg1;
 - (id)client;
 - (void)collectDebuggingInformationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)descriptionWithIndenting:(id)arg1;
-- (void)finalize;
-- (void)forwardUsingMessageSender:(CDUnknownBlockType)arg1;
-- (id)initWithClient:(id)arg1 reactorID:(id)arg2 messageSender:(CDUnknownBlockType)arg3;
+- (void)forwardUsingProxy:(id)arg1;
+- (id)initWithClient:(id)arg1 reactorID:(id)arg2;
+- (void)invalidate;
 - (id)itemLocation;
-- (CDUnknownBlockType)messageSender;
 - (id)reactorID;
-- (void)sendMessageKind:(id)arg1 parameters:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (void)setItemLocation:(id)arg1;
 
 @end

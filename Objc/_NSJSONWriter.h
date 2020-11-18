@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (long long)appendString:(id)arg1 range:(struct _NSRange)arg2;
 - (id)dataWithRootObject:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)resizeTemporaryBuffer:(unsigned long long)arg1;
 - (long long)writeRootObject:(id)arg1 toStream:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;

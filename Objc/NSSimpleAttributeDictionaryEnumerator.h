@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithAttributeDictionary:(id)arg1;
 - (id)nextObject;
 

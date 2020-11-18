@@ -16,6 +16,7 @@
 - (void)__failWithExternalError:(id)arg1;
 - (void)__setError:(id)arg1;
 - (id)__tryDecodeObjectForKey:(id)arg1 error:(id *)arg2 decodeBlock:(CDUnknownBlockType)arg3;
+- (BOOL)_allowsValueCoding;
 - (BOOL)_validateAllowedClass:(Class)arg1 forKey:(id)arg2 allowingInvocations:(BOOL)arg3;
 - (id)allowedClasses;
 - (BOOL)allowsKeyedCoding;

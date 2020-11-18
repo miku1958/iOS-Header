@@ -44,7 +44,6 @@
 - (id)decodeObject;
 - (void)decodeValueOfObjCType:(const char *)arg1 at:(void *)arg2;
 - (void)decodeValuesOfObjCTypes:(const char *)arg1;
-- (void)finalize;
 - (id)initForReadingWithData:(id)arg1;
 - (struct _NSZone *)objectZone;
 - (void)replaceObject:(id)arg1 withObject:(id)arg2;

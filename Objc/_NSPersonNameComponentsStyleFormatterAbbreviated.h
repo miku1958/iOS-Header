@@ -11,10 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)alterations;
+- (id)_delimiterBetweenString:(id)arg1 andString:(id)arg2 isPhonetic:(BOOL)arg3;
+- (id)_formattedStringFromOrderedKeys:(id)arg1 components:(id)arg2 attributesByRange:(id)arg3;
+- (id)abbreviatedKeys;
 - (id)fallbackStyleFormatter;
-- (BOOL)ignoreDelimiter;
 - (id)keysOfInterest;
+- (BOOL)shouldIgnoreComponentsContainingSpecialCharacters;
 
 @end
 

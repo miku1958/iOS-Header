@@ -51,7 +51,6 @@
 - (void)abortParsing;
 - (long long)columnNumber;
 - (void)dealloc;
-- (void)finalize;
 - (BOOL)finishIncrementalParse;
 - (id)initForIncrementalParsing;
 - (id)initWithContentsOfURL:(id)arg1;

@@ -34,7 +34,6 @@
 - (id)_xpcConnection;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)initWithMachServiceName:(id)arg1;
 - (id)initWithServiceName:(id)arg1;
 - (void)invalidate;

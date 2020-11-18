@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (unsigned long long)__capacity;
-- (void)_initBlock;
 - (void)_setBackingStore;
 - (id)allKeys;
 - (id)allValues;
@@ -37,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (id)dump;
 - (void)encodeWithCoder:(id)arg1;
 - (void *)existingItemForSetItem:(const void *)arg1 forAbsentKey:(const void *)arg2;
-- (void)finalize;
 - (unsigned long long)getKeys:(const void **)arg1 values:(const void **)arg2;
 - (void)grow;
 - (unsigned long long)hash;
@@ -62,7 +60,6 @@ __attribute__((visibility("hidden")))
 - (void)setItem:(const void *)arg1 forKnownAbsentKey:(const void *)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (id)valuePointerFunctions;
-- (void)zeroPairedEntries;
 
 @end
 

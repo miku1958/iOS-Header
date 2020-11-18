@@ -6,6 +6,7 @@
 
 #import <Foundation/NSCoder.h>
 
+@class NSXPCConnection;
 @protocol NSObject;
 
 @interface NSXPCCoder : NSCoder
@@ -14,6 +15,7 @@
     id _reserved1;
 }
 
+@property (readonly) NSXPCConnection *connection;
 @property (strong) id<NSObject> userInfo; // @synthesize userInfo=_userInfo;
 
 - (void)dealloc;

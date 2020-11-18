@@ -6,12 +6,9 @@
 
 #import <Foundation/NSFormatter.h>
 
-#import <Foundation/NSObservable-Protocol.h>
-#import <Foundation/NSObserver-Protocol.h>
-
 @class NSCalendar, NSDate, NSNumberFormatter, NSString;
 
-@interface NSDateComponentsFormatter : NSFormatter <NSObservable, NSObserver>
+@interface NSDateComponentsFormatter : NSFormatter
 {
     struct _opaque_pthread_mutex_t _lock;
     void *_fmt;
@@ -36,15 +33,11 @@
 @property BOOL allowsFractionalUnits;
 @property (copy) NSCalendar *calendar;
 @property BOOL collapsesLargestUnit;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property long long formattingContext;
-@property (readonly) unsigned long long hash;
 @property BOOL includesApproximationPhrase;
 @property BOOL includesTimeRemainingPhrase;
 @property long long maximumUnitCount;
 @property (copy) NSDate *referenceDate;
-@property (readonly) Class superclass;
 @property long long unitsStyle;
 @property unsigned long long zeroFormattingBehavior;
 
@@ -65,7 +58,6 @@
 - (BOOL)getObjectValue:(out id *)arg1 forString:(id)arg2 errorDescription:(out id *)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)receiveObservedValue:(id)arg1;
 - (id)stringForObjectValue:(id)arg1;
 - (id)stringFromDate:(id)arg1 toDate:(id)arg2;
 - (id)stringFromDateComponents:(id)arg1;

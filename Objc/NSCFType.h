@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (BOOL)allowsWeakReference;
-- (void)finalize;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (oneway void)release;

@@ -53,7 +53,6 @@
 - (void)dealloc;
 - (id)dictionaryForKey:(id)arg1;
 - (double)doubleForKey:(id)arg1;
-- (void)finalize;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1 storeIdentifier:(id)arg2;
