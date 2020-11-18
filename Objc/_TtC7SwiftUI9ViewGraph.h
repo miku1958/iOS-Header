@@ -16,6 +16,7 @@
     MISSING_TYPE *rootViewType;
     MISSING_TYPE *makeRootView;
     MISSING_TYPE *delegate;
+    MISSING_TYPE *centersRootView;
     MISSING_TYPE *inputs;
     MISSING_TYPE *rootView;
     MISSING_TYPE *time;

@@ -1496,19 +1496,19 @@
 
  class SwiftUI.RenderBoxView : _UIGraphicsView {
 	// ObjC -> Swift bridged methods
-	0xa350  @objc RenderBoxView.init(frame:)
-	0xa3e0  @objc RenderBoxView.init(coder:)
-	0xa500  @objc RenderBoxView.__deallocating_deinit
-	0xa520  @objc RenderBoxView.isOpaque.getter
-	0xa590  @objc RenderBoxView.isOpaque.setter
-	0xa730  @objc RenderBoxView.didMoveToWindow()
-	0xa7a0  @objc RenderBoxView.setNeedsDisplay()
-	0xa800  @objc RenderBoxView.rbLayerDraw(_:inDisplayList:)
+	0xa4c0  @objc RenderBoxView.init(frame:)
+	0xa550  @objc RenderBoxView.init(coder:)
+	0xa670  @objc RenderBoxView.__deallocating_deinit
+	0xa690  @objc RenderBoxView.isOpaque.getter
+	0xa700  @objc RenderBoxView.isOpaque.setter
+	0xa8a0  @objc RenderBoxView.didMoveToWindow()
+	0xa910  @objc RenderBoxView.setNeedsDisplay()
+	0xa970  @objc RenderBoxView.rbLayerDraw(_:inDisplayList:)
 
 	// Swift methods
-	0xa410  func RenderBoxView.rbInit() // method 
-	0xa7d0  func RenderBoxView.draw(inDisplayList:) // method 
-	0xa7e0  func RenderBoxView.rbLayerDraw(_:inDisplayList:) // method 
+	0xa580  func RenderBoxView.rbInit() // method 
+	0xa940  func RenderBoxView.draw(inDisplayList:) // method 
+	0xa950  func RenderBoxView.rbLayerDraw(_:inDisplayList:) // method 
  }
 
  struct SwiftUI._DatePickerStyleLabel { }
@@ -1557,43 +1557,43 @@
 	var focusableAncestor : AccessibilityNode // +0x60 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd900  @objc AccessibilityNode.__deallocating_deinit
-	0x13150  @objc AccessibilityNode.init()
-	0xd920  @objc AccessibilityNode.__ivar_destroyer
+	0xda70  @objc AccessibilityNode.__deallocating_deinit
+	0x132c0  @objc AccessibilityNode.init()
+	0xda90  @objc AccessibilityNode.__ivar_destroyer
 
 	// Swift methods
-	0xd600  func AccessibilityNode.children.setter // setter 
-	0xd620  func AccessibilityNode.oldAttachmentForNotification.setter // setter 
-	0xd640  func AccessibilityNode.attachmentsStorage.setter // setter 
-	0xd680  func AccessibilityNode.cachedCombinedAttachment.setter // setter 
-	0xd9b0  func AccessibilityNode.properties.getter // getter 
-	0xdaf0  func AccessibilityNode.updatePlatformProperties(includingRelations:) // method 
-	0xdcc0  func AccessibilityNode.attachment.getter // getter 
-	0xdef0  func AccessibilityNode.addAttachment(_:reference:token:) // method 
-	0xe480  func AccessibilityNode.removeAttachment(token:) // method 
-	0xe820  func AccessibilityNode.removeAttachments(after:) // method 
-	0xe930  func AccessibilityNode.hasAttachment(token:) // method 
-	0xe9e0  func AccessibilityNode.updateAttachment(_:reference:token:) // method 
-	0xec80  func AccessibilityNode.updateSize(_:token:) // method 
-	0xedb0  func AccessibilityNode.updateTransform(_:token:) // method 
-	0xef60  func AccessibilityNode.updateEnvironment(_:token:) // method 
-	0xf080  func AccessibilityNode.updateGlobalFrame() // method 
-	0xf0d0  func AccessibilityNode.updateGlobalFrame(at:) // method 
-	0x10040  func AccessibilityNode.sendAction(named:) // method 
-	0x10b80  func AccessibilityNode.namedActions.getter // getter 
-	0x11310  func AccessibilityNode.sortedChildren.getter // getter 
-	0x117c0  func AccessibilityNode.childrenOrNativeViews.getter // getter 
-	0x119d0  func AccessibilityNode.visibility.getter // getter 
-	0x11ad0  func AccessibilityNode.environment.getter // getter 
-	0x11d70  func AccessibilityNode.globalFrame.getter // getter 
-	0x11f70  func AccessibilityNode.outlineFrame.getter // getter 
-	0x12960  func AccessibilityNode.activationPoint.getter // getter 
-	0x12df0  func AccessibilityNode.resolvedAttributedValue.getter // getter 
-	0x12ed0  func AccessibilityNode.resolvedPlainTextValue.getter // getter 
-	0x12f50  func AccessibilityNode.resolvedAttributedHint.getter // getter 
-	0x12f70  func AccessibilityNode.resolvedPlainTextHint.getter // getter 
-	0x12f90  func AccessibilityNode.resolvedAttributedLabel.getter // getter 
-	0x13090  func AccessibilityNode.resolvedPlainTextLabel.getter // getter 
+	0xd770  func AccessibilityNode.children.setter // setter 
+	0xd790  func AccessibilityNode.oldAttachmentForNotification.setter // setter 
+	0xd7b0  func AccessibilityNode.attachmentsStorage.setter // setter 
+	0xd7f0  func AccessibilityNode.cachedCombinedAttachment.setter // setter 
+	0xdb20  func AccessibilityNode.properties.getter // getter 
+	0xdc60  func AccessibilityNode.updatePlatformProperties(includingRelations:) // method 
+	0xde30  func AccessibilityNode.attachment.getter // getter 
+	0xe060  func AccessibilityNode.addAttachment(_:reference:token:) // method 
+	0xe5f0  func AccessibilityNode.removeAttachment(token:) // method 
+	0xe990  func AccessibilityNode.removeAttachments(after:) // method 
+	0xeaa0  func AccessibilityNode.hasAttachment(token:) // method 
+	0xeb50  func AccessibilityNode.updateAttachment(_:reference:token:) // method 
+	0xedf0  func AccessibilityNode.updateSize(_:token:) // method 
+	0xef20  func AccessibilityNode.updateTransform(_:token:) // method 
+	0xf0d0  func AccessibilityNode.updateEnvironment(_:token:) // method 
+	0xf1f0  func AccessibilityNode.updateGlobalFrame() // method 
+	0xf240  func AccessibilityNode.updateGlobalFrame(at:) // method 
+	0x101b0  func AccessibilityNode.sendAction(named:) // method 
+	0x10cf0  func AccessibilityNode.namedActions.getter // getter 
+	0x11480  func AccessibilityNode.sortedChildren.getter // getter 
+	0x11930  func AccessibilityNode.childrenOrNativeViews.getter // getter 
+	0x11b40  func AccessibilityNode.visibility.getter // getter 
+	0x11c40  func AccessibilityNode.environment.getter // getter 
+	0x11ee0  func AccessibilityNode.globalFrame.getter // getter 
+	0x120e0  func AccessibilityNode.outlineFrame.getter // getter 
+	0x12ad0  func AccessibilityNode.activationPoint.getter // getter 
+	0x12f60  func AccessibilityNode.resolvedAttributedValue.getter // getter 
+	0x13040  func AccessibilityNode.resolvedPlainTextValue.getter // getter 
+	0x130c0  func AccessibilityNode.resolvedAttributedHint.getter // getter 
+	0x130e0  func AccessibilityNode.resolvedPlainTextHint.getter // getter 
+	0x13100  func AccessibilityNode.resolvedAttributedLabel.getter // getter 
+	0x13200  func AccessibilityNode.resolvedPlainTextLabel.getter // getter 
  }
 
  struct SwiftUI.AccessibilityAttachmentStorage {
@@ -1717,11 +1717,11 @@
 	let next : PreferenceNode // +0x20 (0x8)
 
 	// Swift methods
-	0x36bc0  func PreferenceNode.find(from:) // method 
-	0x36c10  func PreferenceNode.combine(from:next:) // method 
-	0x36c60  func PreferenceNode.copy(next:) // method 
-	0x36cb0  class func static PreferenceNode._includesRemovedValues.getter // getter 
-	0x36d00  func PreferenceNode.description.getter // getter 
+	0x36dd0  func PreferenceNode.find(from:) // method 
+	0x36e20  func PreferenceNode.combine(from:next:) // method 
+	0x36e70  func PreferenceNode.copy(next:) // method 
+	0x36ec0  class func static PreferenceNode._includesRemovedValues.getter // getter 
+	0x36f10  func PreferenceNode.description.getter // getter 
  }
 
  class SwiftUI._PreferenceNode {
@@ -1808,10 +1808,10 @@
 
  class SwiftUI.AnyColorBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x3d4c0  func AnyColorBox.resolve(in:) // method 
-	0x3d500  func AnyColorBox.isEqual(to:) // method 
-	0x3d540  func AnyColorBox.hash(into:) // method 
-	0x3d580  func AnyColorBox.description.getter // getter 
+	0x3d6d0  func AnyColorBox.resolve(in:) // method 
+	0x3d710  func AnyColorBox.isEqual(to:) // method 
+	0x3d750  func AnyColorBox.hash(into:) // method 
+	0x3d790  func AnyColorBox.description.getter // getter 
  }
 
  class SwiftUI.ColorBox {
@@ -1881,7 +1881,7 @@
  struct SwiftUI.StyleBody {
 
 	// Properties
-	var style : A // +0x6f80b4
+	var style : A // +0x6fc874
  }
 
  struct SwiftUI.MenuButtonStyleInput { }
@@ -2058,8 +2058,8 @@
 
  class SwiftUI.AnyTextStorage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x553d0  func AnyTextStorage.resolve(into:in:) // method 
-	0x55420  func AnyTextStorage.isEqual(to:) // method 
+	0x555e0  func AnyTextStorage.resolve(into:in:) // method 
+	0x55630  func AnyTextStorage.isEqual(to:) // method 
  }
 
  class SwiftUI.LocalizedTextStorage : AnyTextStorage {
@@ -2083,8 +2083,8 @@
 
  class SwiftUI.AnyTextModifier : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x55d80  func AnyTextModifier.modify(style:) // method 
-	0x55dd0  func AnyTextModifier.isEqual(to:) // method 
+	0x55f90  func AnyTextModifier.modify(style:) // method 
+	0x55fe0  func AnyTextModifier.isEqual(to:) // method 
  }
 
  class SwiftUI.StrikethroughTextModifier : AnyTextModifier {
@@ -2212,9 +2212,9 @@
 
  class SwiftUI.AnyFontBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x61940  func AnyFontBox.resolve(in:) // method 
-	0x61990  func AnyFontBox.isEqual(to:) // method 
-	0x619e0  func AnyFontBox.hash(into:) // method 
+	0x61b50  func AnyFontBox.resolve(in:) // method 
+	0x61ba0  func AnyFontBox.isEqual(to:) // method 
+	0x61bf0  func AnyFontBox.hash(into:) // method 
  }
 
  class SwiftUI.FontBox {
@@ -2334,9 +2334,9 @@
 	// Properties
 	var size : CGSize // +0x0
 	var data : A? // +0x0
-	var transform : ViewTransform // +0x77a20
+	var transform : ViewTransform // +0x77c30
 	var observers : ContentPathObservers // +0x0
-	var cache : ViewResponder.ContainsPointsCache // +0x77b40
+	var cache : ViewResponder.ContainsPointsCache // +0x77d50
  }
 
  struct SwiftUI.LeafResponderFilter {
@@ -2508,8 +2508,8 @@
 	var phase : TransitionPhase?
 
 	// Swift methods
-	0xe34b0  func DynamicContainer.ItemInfo.layoutPriority.getter // getter 
-	0xe3500  func DynamicContainer.ItemInfo.destroy() // method 
+	0xe3420  func DynamicContainer.ItemInfo.layoutPriority.getter // getter 
+	0xe3470  func DynamicContainer.ItemInfo.destroy() // method 
  }
 
  class SwiftUI._ItemInfo {
@@ -2723,7 +2723,7 @@
 	var link : CADisplayLink? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x108d70  @objc DisplayLink.displayLinkTimer(_:)
+	0x108ce0  @objc DisplayLink.displayLinkTimer(_:)
 
 	// Swift methods
  }
@@ -2994,14 +2994,14 @@
 	var _isOn : Binding<Bool> // +0x8 (0x11)
 
 	// ObjC -> Swift bridged methods
-	0x15d4c0  @objc PlatformSwitchCoordinator.isOnChanged(_:)
-	0x15d540  @objc PlatformSwitchCoordinator.init()
-	0x15d5c0  @objc PlatformSwitchCoordinator.__ivar_destroyer
+	0x15db80  @objc PlatformSwitchCoordinator.isOnChanged(_:)
+	0x15dc00  @objc PlatformSwitchCoordinator.init()
+	0x15dc80  @objc PlatformSwitchCoordinator.__ivar_destroyer
 
 	// Swift methods
-	0x15d250  func PlatformSwitchCoordinator._isOn.getter // getter 
-	0x15d2a0  func PlatformSwitchCoordinator._isOn.setter // setter 
-	0x15d370  func PlatformSwitchCoordinator.isOnChanged(_:) // method 
+	0x15d910  func PlatformSwitchCoordinator._isOn.getter // getter 
+	0x15d960  func PlatformSwitchCoordinator._isOn.setter // setter 
+	0x15da30  func PlatformSwitchCoordinator.isOnChanged(_:) // method 
  }
 
  struct SwiftUI.Switch {
@@ -3422,7 +3422,7 @@
 
  class SwiftUI.FindClass : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x192f40  @objc FindClass.init()
+	0x193a50  @objc FindClass.init()
  }
 
  struct SwiftUI._ModifiersGesture {
@@ -3704,16 +3704,16 @@
 	var isUpdating : Bool // +0x30 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x1aa3a0  @objc Coordinator.valueChanged(_:)
-	0x1aa4a0  @objc Coordinator.editingEnded(_:)
-	0x1aa520  @objc Coordinator.init()
-	0x1aa5b0  @objc Coordinator.__ivar_destroyer
+	0x1ab460  @objc Coordinator.valueChanged(_:)
+	0x1ab560  @objc Coordinator.editingEnded(_:)
+	0x1ab5e0  @objc Coordinator.init()
+	0x1ab670  @objc Coordinator.__ivar_destroyer
 
 	// Swift methods
-	0x1a9f50  func Coordinator.configuration.getter // getter 
-	0x1a9fa0  func Coordinator.configuration.setter // setter 
-	0x1aa1a0  func Coordinator.valueChanged(_:) // method 
-	0x1aa3f0  func Coordinator.editingEnded(_:) // method 
+	0x1ab010  func Coordinator.configuration.getter // getter 
+	0x1ab060  func Coordinator.configuration.setter // setter 
+	0x1ab260  func Coordinator.valueChanged(_:) // method 
+	0x1ab4b0  func Coordinator.editingEnded(_:) // method 
  }
 
  struct SwiftUI.SystemSlider {
@@ -4021,7 +4021,7 @@
 	var testRunner : ScrollTestRunner
 
 	// Swift methods
-	0x1dfcb0  func ScrollTest.run<A>(in:completion:) // method 
+	0x1e0e30  func ScrollTest.run<A>(in:completion:) // method 
  }
 
  class SwiftUI.ScrollProxyScrollTestRunner : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ScrollTestRunner {
@@ -4033,11 +4033,11 @@
 	var completion : ()
 
 	// ObjC -> Swift bridged methods
-	0x1e0bc0  @objc ScrollProxyScrollTestRunner.incrementScrollTest()
+	0x1e1d40  @objc ScrollProxyScrollTestRunner.incrementScrollTest()
 
 	// Swift methods
-	0x1e05c0  func ScrollProxyScrollTestRunner.run() // method 
-	0x1e0770  func ScrollProxyScrollTestRunner.incrementScrollTest() // method 
+	0x1e1740  func ScrollProxyScrollTestRunner.run() // method 
+	0x1e18f0  func ScrollProxyScrollTestRunner.incrementScrollTest() // method 
  }
 
  struct SwiftUI.Parameters {
@@ -4177,6 +4177,7 @@
 	let rootViewType : Any.Type
 	let makeRootView : (_:_:_:)
 	var delegate : ViewGraphDelegate
+	var centersRootView : Bool
 	var inputs : _ViewInputs
 	let rootView : AGAttribute
 	let time : Attribute<Time>
@@ -4230,7 +4231,7 @@
 	var sharedInvalidationCallback : ()?
 
 	// Swift methods
-	0x1fb670  class func ViewGraph.__allocating_init<A>(rootViewType:outputs:) // init 
+	0x1fc7f0  class func ViewGraph.__allocating_init<A>(rootViewType:outputs:) // init 
  }
 
  class SwiftUI.AsyncTransaction : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4287,9 +4288,9 @@
 
  class SwiftUI.UISegmentedControl : UISegmentedControl /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x210d10  @objc SystemSegmentedControl.UISegmentedControl.init(items:)
-	0x210dd0  @objc SystemSegmentedControl.UISegmentedControl.init(frame:)
-	0x210e50  @objc SystemSegmentedControl.UISegmentedControl.init(coder:)
+	0x211fd0  @objc SystemSegmentedControl.UISegmentedControl.init(items:)
+	0x212090  @objc SystemSegmentedControl.UISegmentedControl.init(frame:)
+	0x212110  @objc SystemSegmentedControl.UISegmentedControl.init(coder:)
  }
 
  class SwiftUI.SegmentedControlCoordinator : PlatformViewCoordinator {
@@ -4299,16 +4300,16 @@
 	var itemChanges : CollectionChanges<Int, Int>
 
 	// ObjC -> Swift bridged methods
-	0x211820  @objc SegmentedControlCoordinator.selectionChanged(_:)
-	0x2118a0  @objc SegmentedControlCoordinator.init()
-	0x211960  @objc SegmentedControlCoordinator.__ivar_destroyer
+	0x212ae0  @objc SegmentedControlCoordinator.selectionChanged(_:)
+	0x212b60  @objc SegmentedControlCoordinator.init()
+	0x212c20  @objc SegmentedControlCoordinator.__ivar_destroyer
 
 	// Swift methods
-	0x210ec0  func SegmentedControlCoordinator.configuration.getter // getter 
-	0x210f20  func SegmentedControlCoordinator.configuration.setter // setter 
-	0x2111a0  func SegmentedControlCoordinator.update(configuration:) // method 
-	0x2112b0  func SegmentedControlCoordinator.apply(_:to:in:) // method 
-	0x2116a0  func SegmentedControlCoordinator.selectionChanged(_:) // method 
+	0x212180  func SegmentedControlCoordinator.configuration.getter // getter 
+	0x2121e0  func SegmentedControlCoordinator.configuration.setter // setter 
+	0x212460  func SegmentedControlCoordinator.update(configuration:) // method 
+	0x212570  func SegmentedControlCoordinator.apply(_:to:in:) // method 
+	0x212960  func SegmentedControlCoordinator.selectionChanged(_:) // method 
  }
 
  struct SwiftUI.SystemSegmentedControl {
@@ -4333,10 +4334,10 @@
 	var clipTransform : CGAffineTransform // +0x10 (0x30)
 
 	// ObjC -> Swift bridged methods
-	0x213950  @objc MaskLayer.init()
-	0x213a30  @objc MaskLayer.init(layer:)
-	0x213b20  @objc MaskLayer.init(coder:)
-	0x213b80  @objc MaskLayer.__ivar_destroyer
+	0x214c10  @objc MaskLayer.init()
+	0x214cf0  @objc MaskLayer.init(layer:)
+	0x214de0  @objc MaskLayer.init(coder:)
+	0x214e40  @objc MaskLayer.__ivar_destroyer
  }
 
  struct SwiftUI._DigitalCrownModifier {
@@ -4374,7 +4375,7 @@
 	var tableViews : WeakTableView // +0x10 (0x8)
 
 	// Swift methods
-	0x217ed0  func TableViewRegistry.add(_:) // method 
+	0x219190  func TableViewRegistry.add(_:) // method 
  }
 
  struct SwiftUI._WKStoryboardContent {
@@ -4441,14 +4442,14 @@
 	let id : ViewIdentity // +0x8 (0x4)
 
 	// ObjC -> Swift bridged methods
-	0x220db0  @objc ViewIdentityWrapper.copy(with:)
-	0x220ea0  @objc ViewIdentityWrapper.isEqual(_:)
-	0x220f40  @objc ViewIdentityWrapper.hash.getter
-	0x220fc0  @objc ViewIdentityWrapper.description.getter
-	0x221100  @objc ViewIdentityWrapper.init()
+	0x222850  @objc ViewIdentityWrapper.copy(with:)
+	0x222940  @objc ViewIdentityWrapper.isEqual(_:)
+	0x2229e0  @objc ViewIdentityWrapper.hash.getter
+	0x222a60  @objc ViewIdentityWrapper.description.getter
+	0x222ba0  @objc ViewIdentityWrapper.init()
 
 	// Swift methods
-	0x220d40  func ViewIdentityWrapper.copy(with:) // method 
+	0x2227e0  func ViewIdentityWrapper.copy(with:) // method 
  }
 
  struct SwiftUI.AccessibilityChildBehavior {
@@ -4459,10 +4460,10 @@
 
  class SwiftUI.AnyBehaviorBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x223b60  func AnyBehaviorBox.parentProperties(children:environment:) // method 
-	0x223bb0  func AnyBehaviorBox.shouldCreateNode(for:) // method 
-	0x223c00  func AnyBehaviorBox.isEqual(to:) // method 
-	0x223c50  func AnyBehaviorBox.hash(into:) // method 
+	0x225600  func AnyBehaviorBox.parentProperties(children:environment:) // method 
+	0x225650  func AnyBehaviorBox.shouldCreateNode(for:) // method 
+	0x2256a0  func AnyBehaviorBox.isEqual(to:) // method 
+	0x2256f0  func AnyBehaviorBox.hash(into:) // method 
  }
 
  class SwiftUI.BehaviorBox {
@@ -4509,8 +4510,8 @@
 
  class SwiftUI.AnyImageProviderBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x22d760  func AnyImageProviderBox.resolve(in:) // method 
-	0x22d7a0  func AnyImageProviderBox.isEqual(to:) // method 
+	0x22f200  func AnyImageProviderBox.resolve(in:) // method 
+	0x22f240  func AnyImageProviderBox.isEqual(to:) // method 
  }
 
  class SwiftUI.ImageProviderBox {
@@ -4700,9 +4701,9 @@
 	var preferencesNeedUpdate : Bool // +0x40 (0x1)
 
 	// Swift methods
-	0x249f40  func PreferenceBridge.wrapOutputs(_:inputs:in:) // method 
-	0x24a1f0  func PreferenceBridge.addValue(_:in:for:update:) // method 
-	0x24a460  func PreferenceBridge.invalidatePreferenceValues(transaction:) // method 
+	0x24b9e0  func PreferenceBridge.wrapOutputs(_:inputs:in:) // method 
+	0x24bc90  func PreferenceBridge.addValue(_:in:for:update:) // method 
+	0x24bf00  func PreferenceBridge.invalidatePreferenceValues(transaction:) // method 
  }
 
  struct SwiftUI.BridgedPreference {
@@ -4957,18 +4958,18 @@
 	var configuration : StepperWidget // +0x8 (0x30)
 
 	// ObjC -> Swift bridged methods
-	0x25cd60  @objc Coordinator.valueChanged(_:)
-	0x25cdc0  @objc Coordinator.editingBegan(_:)
-	0x25ced0  @objc Coordinator.editingEnded(_:)
-	0x25cf50  @objc Coordinator.init()
-	0x25cff0  @objc Coordinator.__ivar_destroyer
+	0x25e800  @objc Coordinator.valueChanged(_:)
+	0x25e860  @objc Coordinator.editingBegan(_:)
+	0x25e970  @objc Coordinator.editingEnded(_:)
+	0x25e9f0  @objc Coordinator.init()
+	0x25ea90  @objc Coordinator.__ivar_destroyer
 
 	// Swift methods
-	0x25c960  func Coordinator.configuration.getter // getter 
-	0x25c9f0  func Coordinator.configuration.setter // setter 
-	0x25cc50  func Coordinator.valueChanged(_:) // method 
-	0x25cdb0  func Coordinator.editingBegan(_:) // method 
-	0x25ce10  func Coordinator.editingEnded(_:) // method 
+	0x25e400  func Coordinator.configuration.getter // getter 
+	0x25e490  func Coordinator.configuration.setter // setter 
+	0x25e6f0  func Coordinator.valueChanged(_:) // method 
+	0x25e850  func Coordinator.editingBegan(_:) // method 
+	0x25e8b0  func Coordinator.editingEnded(_:) // method 
  }
 
  struct SwiftUI.StepperWidget {
@@ -5066,7 +5067,7 @@
 
  class SwiftUI.PlatformViewCoordinator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2603b0  @objc PlatformViewCoordinator.init()
+	0x261e50  @objc PlatformViewCoordinator.init()
  }
 
  struct SwiftUI._HueRotationEffect {
@@ -5826,12 +5827,12 @@
 
  class SwiftUI.DynamicStorage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x2a4780  func DynamicStorage.contentType.getter // getter 
-	0x2a47d0  func DynamicStorage.identifier.getter // getter 
-	0x2a4820  func DynamicStorage.needsTransitions.getter // getter 
-	0x2a4870  func DynamicStorage.matchesIdentity(of:) // method 
-	0x2a48c0  func DynamicStorage.makeView<A>(in:uniqueId:container:inputs:adaptor:) // method 
-	0x2a4910  func DynamicStorage.visitContent<A>(_:phase:) // method 
+	0x2a6240  func DynamicStorage.contentType.getter // getter 
+	0x2a6290  func DynamicStorage.identifier.getter // getter 
+	0x2a62e0  func DynamicStorage.needsTransitions.getter // getter 
+	0x2a6330  func DynamicStorage.matchesIdentity(of:) // method 
+	0x2a6380  func DynamicStorage.makeView<A>(in:uniqueId:container:inputs:adaptor:) // method 
+	0x2a63d0  func DynamicStorage.visitContent<A>(_:phase:) // method 
  }
 
  class SwiftUI.IdentifiedItemStorage {
@@ -6316,13 +6317,13 @@
 	var visibleCellsUpdate : VisibleCellsUpdate
 
 	// ObjC -> Swift bridged methods
-	0x2d2af0  @objc UpdateCoalescingTableView.init(frame:style:)
-	0x2d2b80  @objc UpdateCoalescingTableView.init(coder:)
-	0x2d2d60  @objc UpdateCoalescingTableView.layoutSubviews()
-	0x2d3040  @objc UpdateCoalescingTableView.performBatchUpdates(_:completion:)
+	0x2d45b0  @objc UpdateCoalescingTableView.init(frame:style:)
+	0x2d4640  @objc UpdateCoalescingTableView.init(coder:)
+	0x2d4820  @objc UpdateCoalescingTableView.layoutSubviews()
+	0x2d4b00  @objc UpdateCoalescingTableView.performBatchUpdates(_:completion:)
 
 	// Swift methods
-	0x2d3150  func UpdateCoalescingTableView.scheduleVisibleCellsUpdate() // method 
+	0x2d4c10  func UpdateCoalescingTableView.scheduleVisibleCellsUpdate() // method 
  }
 
  class SwiftUI.TableWrapper : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6331,13 +6332,13 @@
 	var base : UpdateCoalescingTableView
 
 	// ObjC -> Swift bridged methods
-	0x2d33c0  @objc TableWrapper.layoutSubviews()
-	0x2d3480  @objc TableWrapper.init(frame:)
-	0x2d34b0  @objc TableWrapper.init(coder:)
-	0x2d3540  @objc TableWrapper.__ivar_destroyer
+	0x2d4e80  @objc TableWrapper.layoutSubviews()
+	0x2d4f40  @objc TableWrapper.init(frame:)
+	0x2d4f70  @objc TableWrapper.init(coder:)
+	0x2d5000  @objc TableWrapper.__ivar_destroyer
 
 	// Swift methods
-	0x2d31d0  func TableWrapper.base.setter // setter 
+	0x2d4c90  func TableWrapper.base.setter // setter 
  }
 
  class SwiftUI.ListCoreCoordinator {
@@ -6350,17 +6351,17 @@
 	var contextMenuOptions : PlatformItemList
 
 	// ObjC -> Swift bridged methods
-	0x2d9d70  @objc ListCoreCellHost.sizeThatFits(_:)
-	0x2d9dc0  @objc ListCoreCellHost._setHidden(forReuse:)
-	0x2da170  @objc ListCoreCellHost.init(style:reuseIdentifier:)
-	0x2da260  @objc ListCoreCellHost.init(coder:)
-	0x2da2b0  @objc ListCoreCellHost.__ivar_destroyer
+	0x2db830  @objc ListCoreCellHost.sizeThatFits(_:)
+	0x2db880  @objc ListCoreCellHost._setHidden(forReuse:)
+	0x2dbc30  @objc ListCoreCellHost.init(style:reuseIdentifier:)
+	0x2dbd20  @objc ListCoreCellHost.init(coder:)
+	0x2dbd70  @objc ListCoreCellHost.__ivar_destroyer
 
 	// Swift methods
-	0x2d9c20  func ListCoreCellHost.host.setter // setter 
-	0x2d9cc0  func ListCoreCellHost.selectionBehavior.setter // setter 
-	0x2d9de0  func ListCoreCellHost.contextMenuOptions.setter // setter 
-	0x2d9e20  func ListCoreCellHost.hostingViewDidChangePreferences(_:) // method 
+	0x2db6e0  func ListCoreCellHost.host.setter // setter 
+	0x2db780  func ListCoreCellHost.selectionBehavior.setter // setter 
+	0x2db8a0  func ListCoreCellHost.contextMenuOptions.setter // setter 
+	0x2db8e0  func ListCoreCellHost.hostingViewDidChangePreferences(_:) // method 
  }
 
  class SwiftUI.ListCoreHeaderHost : UITableViewHeaderFooterView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6369,14 +6370,14 @@
 	var host : _UIHostingView<ModifiedContent<AnyView, DisappearedModifier>>?
 
 	// ObjC -> Swift bridged methods
-	0x2da3b0  @objc ListCoreHeaderHost.sizeThatFits(_:)
-	0x2da440  @objc ListCoreHeaderHost._setHidden(forReuse:)
-	0x2da530  @objc ListCoreHeaderHost.init(reuseIdentifier:)
-	0x2da5b0  @objc ListCoreHeaderHost.init(coder:)
-	0x2da610  @objc ListCoreHeaderHost.__ivar_destroyer
+	0x2dbe70  @objc ListCoreHeaderHost.sizeThatFits(_:)
+	0x2dbf00  @objc ListCoreHeaderHost._setHidden(forReuse:)
+	0x2dbff0  @objc ListCoreHeaderHost.init(reuseIdentifier:)
+	0x2dc070  @objc ListCoreHeaderHost.init(coder:)
+	0x2dc0d0  @objc ListCoreHeaderHost.__ivar_destroyer
 
 	// Swift methods
-	0x2da320  func ListCoreHeaderHost.host.setter // setter 
+	0x2dbde0  func ListCoreHeaderHost.host.setter // setter 
  }
 
  struct SwiftUI.VisibleCellsUpdate {
@@ -6507,9 +6508,9 @@
 
  class SwiftUI.AnyOptionButtonCollection : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x2eb830  func AnyOptionButtonCollection.startIndex.getter // getter 
-	0x2eb880  func AnyOptionButtonCollection.endIndex.getter // getter 
-	0x2eb8d0  func AnyOptionButtonCollection.subscript.getter // getter 
+	0x2ed2c0  func AnyOptionButtonCollection.startIndex.getter // getter 
+	0x2ed310  func AnyOptionButtonCollection.endIndex.getter // getter 
+	0x2ed360  func AnyOptionButtonCollection.subscript.getter // getter 
  }
 
  class SwiftUI.OptionButtonCollection {
@@ -6972,8 +6973,8 @@
 
  class SwiftUI.AnyResolvedPaint : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x3251e0  func AnyResolvedPaint.fill(_:style:in:bounds:) // method 
-	0x3251f0  func AnyResolvedPaint.visit<A>(_:) // method 
+	0x326980  func AnyResolvedPaint.fill(_:style:in:bounds:) // method 
+	0x326990  func AnyResolvedPaint.visit<A>(_:) // method 
  }
 
  class SwiftUI._AnyResolvedPaint {
@@ -7093,19 +7094,19 @@
 	var parent : ViewResponder // +0x20 (0x8)
 
 	// Swift methods
-	0x339520  func ViewResponder.bindEvent(_:) // method 
-	0x339530  func ViewResponder.makeGesture(gesture:inputs:) // method 
-	0x339560  func ViewResponder.resetGesture() // method 
-	0x339570  func ViewResponder.opacity.getter // getter 
-	0x339580  func ViewResponder.allowsHitTesting.getter // getter 
-	0x3395a0  func ViewResponder.isRemoved.getter // getter 
-	0x3395b0  func ViewResponder.isEmptyResponder.getter // getter 
-	0x3398c0  func ViewResponder.containsGlobalPoints(_:cacheKey:) // method 
-	0x3395c0  func ViewResponder.childCount.getter // getter 
-	0x3395d0  func ViewResponder.child(at:) // method 
-	0x3395e0  func ViewResponder.description.getter // getter 
-	0x339880  func ViewResponder.extendPrintTree(string:) // method 
-	0x3396c0  func ViewResponder.printSubtree(depth:) // method 
+	0x33ad20  func ViewResponder.bindEvent(_:) // method 
+	0x33ad30  func ViewResponder.makeGesture(gesture:inputs:) // method 
+	0x33ad60  func ViewResponder.resetGesture() // method 
+	0x33ad70  func ViewResponder.opacity.getter // getter 
+	0x33ad80  func ViewResponder.allowsHitTesting.getter // getter 
+	0x33ada0  func ViewResponder.isRemoved.getter // getter 
+	0x33adb0  func ViewResponder.isEmptyResponder.getter // getter 
+	0x33b0c0  func ViewResponder.containsGlobalPoints(_:cacheKey:) // method 
+	0x33adc0  func ViewResponder.childCount.getter // getter 
+	0x33add0  func ViewResponder.child(at:) // method 
+	0x33ade0  func ViewResponder.description.getter // getter 
+	0x33b080  func ViewResponder.extendPrintTree(string:) // method 
+	0x33aec0  func ViewResponder.printSubtree(depth:) // method 
  }
 
  struct SwiftUI.ContainsPointsCache {
@@ -7275,12 +7276,12 @@
 	var configuration : DatePicker<_DatePickerStyleLabel>
 
 	// ObjC -> Swift bridged methods
-	0x35c240  @objc UIKitDatePicker.Coordinator.dateChanged(_:)
-	0x35c2c0  @objc UIKitDatePicker.Coordinator.init()
-	0x35c330  @objc UIKitDatePicker.Coordinator.__ivar_destroyer
+	0x35daa0  @objc UIKitDatePicker.Coordinator.dateChanged(_:)
+	0x35db20  @objc UIKitDatePicker.Coordinator.init()
+	0x35db90  @objc UIKitDatePicker.Coordinator.__ivar_destroyer
 
 	// Swift methods
-	0x35be30  func UIKitDatePicker.Coordinator.dateChanged(_:) // method 
+	0x35d690  func UIKitDatePicker.Coordinator.dateChanged(_:) // method 
  }
 
  struct SwiftUI.Body {
@@ -7352,15 +7353,15 @@
 
  class SwiftUI._UIGraphicsView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x3685c0  @objc _UIGraphicsView.init(frame:)
-	0x368600  @objc _UIGraphicsView.init(coder:)
+	0x369e20  @objc _UIGraphicsView.init(frame:)
+	0x369e60  @objc _UIGraphicsView.init(coder:)
  }
 
  class SwiftUI._UIInheritedView : _UIGraphicsView {
 	// ObjC -> Swift bridged methods
-	0x368700  @objc _UIInheritedView.hitTest(_:with:)
-	0x3687a0  @objc _UIInheritedView.init(frame:)
-	0x368830  @objc _UIInheritedView.init(coder:)
+	0x369f60  @objc _UIInheritedView.hitTest(_:with:)
+	0x36a000  @objc _UIInheritedView.init(frame:)
+	0x36a090  @objc _UIInheritedView.init(coder:)
  }
 
  class SwiftUI._UIShapeHitTestingView : _UIGraphicsView {
@@ -7369,10 +7370,10 @@
 	var path : Path
 
 	// ObjC -> Swift bridged methods
-	0x368980  @objc _UIShapeHitTestingView.hitTest(_:with:)
-	0x368ad0  @objc _UIShapeHitTestingView.init(frame:)
-	0x368b70  @objc _UIShapeHitTestingView.init(coder:)
-	0x368bf0  @objc _UIShapeHitTestingView.__ivar_destroyer
+	0x36a1e0  @objc _UIShapeHitTestingView.hitTest(_:with:)
+	0x36a330  @objc _UIShapeHitTestingView.init(frame:)
+	0x36a3d0  @objc _UIShapeHitTestingView.init(coder:)
+	0x36a450  @objc _UIShapeHitTestingView.__ivar_destroyer
  }
 
  struct SwiftUI.EmbeddedDynamicPropertyBox: DynamicPropertyBox { }
@@ -7393,12 +7394,12 @@
 	let index : Int?
 
 	// Swift methods
-	0x36a890  func AnyViewStorageBase.type.getter // getter 
-	0x36a8e0  func AnyViewStorageBase.matches(_:) // method 
-	0x36a930  func AnyViewStorageBase.makeChild(graph:uniqueId:container:inputs:) // method 
-	0x36a980  func AnyViewStorageBase.updateChild<A>(context:) // method 
-	0x36a9d0  func AnyViewStorageBase.makeViewList(view:inputs:) // method 
-	0x36aa20  func AnyViewStorageBase.visitContent<A>(_:) // method 
+	0x36c0f0  func AnyViewStorageBase.type.getter // getter 
+	0x36c140  func AnyViewStorageBase.matches(_:) // method 
+	0x36c190  func AnyViewStorageBase.makeChild(graph:uniqueId:container:inputs:) // method 
+	0x36c1e0  func AnyViewStorageBase.updateChild<A>(context:) // method 
+	0x36c230  func AnyViewStorageBase.makeViewList(view:inputs:) // method 
+	0x36c280  func AnyViewStorageBase.visitContent<A>(_:) // method 
  }
 
  class SwiftUI.AnyViewStorage {
@@ -7618,9 +7619,9 @@
  class SwiftUI.Coordinator {
  class SwiftUI.NotificationSendingSplitViewController : UISplitViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x37cb30  @objc NotificationSendingSplitViewController.showDetailViewController(_:sender:)
-	0x37cc80  @objc NotificationSendingSplitViewController.init(nibName:bundle:)
-	0x37cd20  @objc NotificationSendingSplitViewController.init(coder:)
+	0x37e390  @objc NotificationSendingSplitViewController.showDetailViewController(_:sender:)
+	0x37e4e0  @objc NotificationSendingSplitViewController.init(nibName:bundle:)
+	0x37e580  @objc NotificationSendingSplitViewController.init(coder:)
  }
 
  struct SwiftUI.DoubleColumnNavigationView { }
@@ -8111,11 +8112,11 @@
 
  class SwiftUI.InteropResponder : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3b10c0  @objc InteropResponder.cut(_:)
-	0x3b10c0  @objc InteropResponder.cut(_:)
-	0x3b10c0  @objc InteropResponder.cut(_:)
-	0x3b10c0  @objc InteropResponder.cut(_:)
-	0x3b1160  @objc InteropResponder.init()
+	0x3b2920  @objc InteropResponder.cut(_:)
+	0x3b2920  @objc InteropResponder.cut(_:)
+	0x3b2920  @objc InteropResponder.cut(_:)
+	0x3b2920  @objc InteropResponder.cut(_:)
+	0x3b29c0  @objc InteropResponder.init()
  }
 
  struct SwiftUI.StandardCommandAction: CommandAction {
@@ -8173,13 +8174,13 @@
 	let phase : _GraphInputs.Phase // +0x18 (0x4)
 
 	// ObjC -> Swift bridged methods
-	0x3b6310  @objc EnvironmentWrapper.init(coder:)
-	0x3b6350  @objc EnvironmentWrapper.encode(with:)
-	0x3b63a0  @objc EnvironmentWrapper.init()
-	0x3b63f0  @objc EnvironmentWrapper.__ivar_destroyer
+	0x3b7b70  @objc EnvironmentWrapper.init(coder:)
+	0x3b7bb0  @objc EnvironmentWrapper.encode(with:)
+	0x3b7c00  @objc EnvironmentWrapper.init()
+	0x3b7c50  @objc EnvironmentWrapper.__ivar_destroyer
 
 	// Swift methods
-	0x3b6340  func EnvironmentWrapper.encode(with:) // method 
+	0x3b7ba0  func EnvironmentWrapper.encode(with:) // method 
  }
 
  struct SwiftUI.ScrollGesture {
@@ -8430,13 +8431,13 @@
 
  class SwiftUI.Delegate : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayoutComputerDelegate {
 	// Swift methods
-	0x4b4cd0  func LayoutComputer.Delegate.layoutPriority() // method 
-	0x4b5ed0  func LayoutComputer.Delegate.spacing() // method 
-	0x4b4ce0  func LayoutComputer.Delegate.lengthThatFits(_:in:) // method 
-	0x4b5f10  func LayoutComputer.Delegate.sizeThatFits(_:) // method 
-	0x4b4d00  func LayoutComputer.Delegate.finalize(_:in:finalizer:) // method 
-	0x4b5f50  func LayoutComputer.Delegate.childGeometries(at:) // method 
-	0x4b5fa0  func LayoutComputer.Delegate.explicitAlignment(_:at:) // method 
+	0x4b8dd0  func LayoutComputer.Delegate.layoutPriority() // method 
+	0x4b9fd0  func LayoutComputer.Delegate.spacing() // method 
+	0x4b8de0  func LayoutComputer.Delegate.lengthThatFits(_:in:) // method 
+	0x4ba010  func LayoutComputer.Delegate.sizeThatFits(_:) // method 
+	0x4b8e00  func LayoutComputer.Delegate.finalize(_:in:finalizer:) // method 
+	0x4ba050  func LayoutComputer.Delegate.childGeometries(at:) // method 
+	0x4ba0a0  func LayoutComputer.Delegate.explicitAlignment(_:at:) // method 
  }
 
  class SwiftUI.EngineDelegate {
@@ -8503,8 +8504,8 @@
 
  class SwiftUI.AnyTransitionBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x4cd370  func AnyTransitionBox.visitBase<A>(applying:) // method 
-	0x4cd3c0  func AnyTransitionBox.isIdentity.getter // getter 
+	0x4d1470  func AnyTransitionBox.visitBase<A>(applying:) // method 
+	0x4d14c0  func AnyTransitionBox.isIdentity.getter // getter 
  }
 
  class SwiftUI.TransitionBox {
@@ -8516,7 +8517,7 @@
 	var observers : ContentPathObservers // +0x48 (0x8)
 
 	// Swift methods
-	0x4cdce0  func MultiViewResponder.childrenDidChange() // method 
+	0x4d1de0  func MultiViewResponder.childrenDidChange() // method 
  }
 
  struct SwiftUI.SpacingLayout {
@@ -8527,7 +8528,7 @@
 
  class SwiftUI.StyleBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x4cfb30  func StyleBox.body(configuration:) // method 
+	0x4d3c30  func StyleBox.body(configuration:) // method 
  }
 
  class SwiftUI.GenericStyleBox {
@@ -8803,13 +8804,13 @@
 	var configuration : ScrollViewConfiguration // +0x10 (0x29)
 
 	// ObjC -> Swift bridged methods
-	0x4dfd70  @objc HostingScrollView.init(coder:)
-	0x4dfd80  @objc HostingScrollView.bounds.getter
-	0x4dfda0  @objc HostingScrollView.bounds.setter
-	0x4dfdc0  @objc HostingScrollView.frame.getter
-	0x4dfeb0  @objc HostingScrollView.frame.setter
-	0x4e00e0  @objc HostingScrollView.init(frame:)
-	0x4e0120  @objc HostingScrollView.__ivar_destroyer
+	0x4e3e90  @objc HostingScrollView.init(coder:)
+	0x4e3ea0  @objc HostingScrollView.bounds.getter
+	0x4e3ec0  @objc HostingScrollView.bounds.setter
+	0x4e3ee0  @objc HostingScrollView.frame.getter
+	0x4e3fd0  @objc HostingScrollView.frame.setter
+	0x4e4200  @objc HostingScrollView.init(frame:)
+	0x4e4240  @objc HostingScrollView.__ivar_destroyer
 
 	// Swift methods
  }
@@ -9208,15 +9209,15 @@
 	var hostingController : UIHostingController<_ViewList_View>? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x51d0f0  @objc Coordinator.tabBarController(_:didSelect:)
-	0x51d190  @objc Coordinator.init()
-	0x51d220  @objc Coordinator.__ivar_destroyer
+	0x521210  @objc Coordinator.tabBarController(_:didSelect:)
+	0x5212b0  @objc Coordinator.init()
+	0x521340  @objc Coordinator.__ivar_destroyer
 
 	// Swift methods
-	0x51cec0  func Coordinator.selected.getter // getter 
-	0x51cf10  func Coordinator.selected.setter // setter 
-	0x51cfa0  func Coordinator.hostingController.setter // setter 
-	0x51d060  func Coordinator.tabBarController(_:didSelect:) // method 
+	0x520fe0  func Coordinator.selected.getter // getter 
+	0x521030  func Coordinator.selected.setter // setter 
+	0x5210c0  func Coordinator.hostingController.setter // setter 
+	0x521180  func Coordinator.tabBarController(_:didSelect:) // method 
  }
 
  struct SwiftUI.BodyContent {
@@ -9658,7 +9659,7 @@
 
  class SwiftUI.AnyStyleBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x54d190  func AnyStyleBox.body(configuration:) // method 
+	0x551750  func AnyStyleBox.body(configuration:) // method 
  }
 
  class SwiftUI.StyleBox {
@@ -9741,10 +9742,10 @@
 	var lastResolvedSize : CGSize? // +0x98 (0x11)
 
 	// ObjC -> Swift bridged methods
-	0x561f50  @objc ImageLayer.init()
-	0x562050  @objc ImageLayer.init(layer:)
-	0x562160  @objc ImageLayer.init(coder:)
-	0x5621c0  @objc ImageLayer.__ivar_destroyer
+	0x566540  @objc ImageLayer.init()
+	0x566640  @objc ImageLayer.init(layer:)
+	0x566750  @objc ImageLayer.init(coder:)
+	0x5667b0  @objc ImageLayer.__ivar_destroyer
  }
 
  class SwiftUI.GradientLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -9756,11 +9757,11 @@
 	var $__lazy_storage_$_gradientLayer : CAGradientLayer? // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x562f00  @objc GradientLayer.layoutSublayers()
-	0x562fe0  @objc GradientLayer.init()
-	0x5630e0  @objc GradientLayer.init(layer:)
-	0x5631f0  @objc GradientLayer.init(coder:)
-	0x563250  @objc GradientLayer.__ivar_destroyer
+	0x5674f0  @objc GradientLayer.layoutSublayers()
+	0x5675d0  @objc GradientLayer.init()
+	0x5676d0  @objc GradientLayer.init(layer:)
+	0x5677e0  @objc GradientLayer.init(coder:)
+	0x567840  @objc GradientLayer.__ivar_destroyer
  }
 
  enum SwiftUI.Function {
@@ -9793,10 +9794,10 @@
 	let isDataDependent : Bool
 
 	// Swift methods
-	0x56ef60  func _ViewList_ID.Views.endIndex.getter // getter 
-	0x56efb0  func _ViewList_ID.Views.subscript.getter // getter 
-	0x56f000  func _ViewList_ID.Views.isEqual(to:) // method 
-	0x56f050  func _ViewList_ID.Views.withDataDependency() // method 
+	0x573550  func _ViewList_ID.Views.endIndex.getter // getter 
+	0x5735a0  func _ViewList_ID.Views.subscript.getter // getter 
+	0x5735f0  func _ViewList_ID.Views.isEqual(to:) // method 
+	0x573640  func _ViewList_ID.Views.withDataDependency() // method 
  }
 
  class SwiftUI._Views {
@@ -9816,7 +9817,7 @@
 	var refcount : UInt32
 
 	// Swift methods
-	0x5651a0  func _ViewList_Subgraph.invalidate() // method 
+	0x569790  func _ViewList_Subgraph.invalidate() // method 
  }
 
  class SwiftUI._ViewList_IndirectMap : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -9825,7 +9826,7 @@
 	var map : [AnyGraphValue : AnyGraphValue]
 
 	// Swift methods
-	0x56dd10  class func _ViewList_IndirectMap.__allocating_init() // init 
+	0x572300  class func _ViewList_IndirectMap.__allocating_init() // init 
  }
 
  struct SwiftUI.Options {
@@ -9962,7 +9963,7 @@
 	let children : _VariadicView_Children // +0x10 (0x30)
 
 	// Swift methods
-	0x58ad20  func ChildIndexProjection.hashValue.getter // getter 
+	0x58f310  func ChildIndexProjection.hashValue.getter // getter 
  }
 
  struct SwiftUI.TabItemTraitKey { }
@@ -10053,11 +10054,11 @@
 
  class SwiftUI.UIKitRendererAppDelegate : UIResponder /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x5e4c30  @objc UIKitRendererAppDelegate.application(_:didFinishLaunchingWithOptions:)
-	0x5e4d00  @objc UIKitRendererAppDelegate.application(_:configurationForConnecting:options:)
-	0x5e4df0  @objc UIKitRendererAppDelegate.application(_:statusBarTouchesEnded:)
-	0x5e4e80  @objc UIKitRendererAppDelegate.init()
-	0x5e4ec0  @objc UIKitRendererAppDelegate.__ivar_destroyer
+	0x5e9220  @objc UIKitRendererAppDelegate.application(_:didFinishLaunchingWithOptions:)
+	0x5e92f0  @objc UIKitRendererAppDelegate.application(_:configurationForConnecting:options:)
+	0x5e93e0  @objc UIKitRendererAppDelegate.application(_:statusBarTouchesEnded:)
+	0x5e9470  @objc UIKitRendererAppDelegate.init()
+	0x5e94b0  @objc UIKitRendererAppDelegate.__ivar_destroyer
  }
 
  class SwiftUI.UIKitRendererSceneDelegate : UIResponder /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -10066,16 +10067,16 @@
 	var window : UIWindow?
 
 	// ObjC -> Swift bridged methods
-	0x5e4f10  @objc UIKitRendererSceneDelegate.window.getter
-	0x5e4f80  @objc UIKitRendererSceneDelegate.window.setter
-	0x5e50f0  @objc UIKitRendererSceneDelegate.scene(_:willConnectTo:options:)
-	0x5e51b0  @objc UIKitRendererSceneDelegate.init()
-	0x5e5220  @objc UIKitRendererSceneDelegate.__ivar_destroyer
+	0x5e9500  @objc UIKitRendererSceneDelegate.window.getter
+	0x5e9570  @objc UIKitRendererSceneDelegate.window.setter
+	0x5e96e0  @objc UIKitRendererSceneDelegate.scene(_:willConnectTo:options:)
+	0x5e97a0  @objc UIKitRendererSceneDelegate.init()
+	0x5e9810  @objc UIKitRendererSceneDelegate.__ivar_destroyer
 
 	// Swift methods
-	0x5e4f50  func UIKitRendererSceneDelegate.window.getter // getter 
-	0x5e4fc0  func UIKitRendererSceneDelegate.window.setter // setter 
-	0x5e4fe0  func UIKitRendererSceneDelegate.scene(_:willConnectTo:options:) // method 
+	0x5e9540  func UIKitRendererSceneDelegate.window.getter // getter 
+	0x5e95b0  func UIKitRendererSceneDelegate.window.setter // setter 
+	0x5e95d0  func UIKitRendererSceneDelegate.scene(_:willConnectTo:options:) // method 
  }
 
  struct SwiftUI.ScrollViewBehavior {
@@ -10236,18 +10237,18 @@
 	var responderWasBoundHandler : (_:)? // +0x10 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x5f15b0  @objc UIKitGestureRecognizer.init(coder:)
-	0x5f1610  @objc UIKitGestureRecognizer.reset()
-	0x5f1b30  @objc UIKitGestureRecognizer.touchesBegan(_:with:)
-	0x5f1b80  @objc UIKitGestureRecognizer.touchesMoved(_:with:)
-	0x5f1bd0  @objc UIKitGestureRecognizer.touchesEnded(_:with:)
-	0x5f1c20  @objc UIKitGestureRecognizer.touchesCancelled(_:with:)
-	0x5f2230  @objc UIKitGestureRecognizer.pressesBegan(_:with:)
-	0x5f2320  @objc UIKitGestureRecognizer.pressesEnded(_:with:)
-	0x5f2320  @objc UIKitGestureRecognizer.pressesEnded(_:with:)
-	0x5f2320  @objc UIKitGestureRecognizer.pressesEnded(_:with:)
-	0x5f2910  @objc UIKitGestureRecognizer.init(target:action:)
-	0x5f2990  @objc UIKitGestureRecognizer.__ivar_destroyer
+	0x5f5ba0  @objc UIKitGestureRecognizer.init(coder:)
+	0x5f5c00  @objc UIKitGestureRecognizer.reset()
+	0x5f6120  @objc UIKitGestureRecognizer.touchesBegan(_:with:)
+	0x5f6170  @objc UIKitGestureRecognizer.touchesMoved(_:with:)
+	0x5f61c0  @objc UIKitGestureRecognizer.touchesEnded(_:with:)
+	0x5f6210  @objc UIKitGestureRecognizer.touchesCancelled(_:with:)
+	0x5f6820  @objc UIKitGestureRecognizer.pressesBegan(_:with:)
+	0x5f6910  @objc UIKitGestureRecognizer.pressesEnded(_:with:)
+	0x5f6910  @objc UIKitGestureRecognizer.pressesEnded(_:with:)
+	0x5f6910  @objc UIKitGestureRecognizer.pressesEnded(_:with:)
+	0x5f6f00  @objc UIKitGestureRecognizer.init(target:action:)
+	0x5f6f80  @objc UIKitGestureRecognizer.__ivar_destroyer
 
 	// Swift methods
  }
@@ -10729,12 +10730,12 @@
 
  class SwiftUI.BoxVTableBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x62cc00  class func static BoxVTableBase.moveInitialize(ptr:from:) // method 
-	0x62cc50  class func static BoxVTableBase.deinitialize(ptr:) // method 
-	0x62cc60  class func static BoxVTableBase.reset(ptr:) // method 
-	0x62cc70  class func static BoxVTableBase.mount<A>(ptr:child:) // method 
-	0x62cc80  class func static BoxVTableBase.update(ptr:property:context:) // method 
-	0x62cc90  class func static BoxVTableBase.getState<A>(ptr:type:in:) // method 
+	0x6311f0  class func static BoxVTableBase.moveInitialize(ptr:from:) // method 
+	0x631240  class func static BoxVTableBase.deinitialize(ptr:) // method 
+	0x631250  class func static BoxVTableBase.reset(ptr:) // method 
+	0x631260  class func static BoxVTableBase.mount<A>(ptr:child:) // method 
+	0x631270  class func static BoxVTableBase.update(ptr:property:context:) // method 
+	0x631280  class func static BoxVTableBase.getState<A>(ptr:type:in:) // method 
  }
 
  class SwiftUI.BoxVTable {
@@ -10823,10 +10824,10 @@
 	var usedElements : Element
 
 	// Swift methods
-	0x65f0e0  func PropertyList.Tracker.reset() // method 
-	0x666b70  func PropertyList.Tracker.value<A>(_:for:) // method 
-	0x666d50  func PropertyList.Tracker.hasDifferentUsedValues(_:) // method 
-	0x645660  class func PropertyList.Tracker.__allocating_init() // init 
+	0x6636d0  func PropertyList.Tracker.reset() // method 
+	0x66b160  func PropertyList.Tracker.value<A>(_:for:) // method 
+	0x66b340  func PropertyList.Tracker.hasDifferentUsedValues(_:) // method 
+	0x649c50  class func PropertyList.Tracker.__allocating_init() // init 
  }
 
  class SwiftUI.Element : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -10839,10 +10840,10 @@
 	let keyFilter : BloomFilter
 
 	// Swift methods
-	0x666ed0  func PropertyList.Element.description.getter // getter 
-	0x666f20  func PropertyList.Element.matches(_:) // method 
-	0x666f70  func PropertyList.Element.hasMatchingValue(in:) // method 
-	0x666fc0  func PropertyList.Element.copy(before:after:) // method 
+	0x66b4c0  func PropertyList.Element.description.getter // getter 
+	0x66b510  func PropertyList.Element.matches(_:) // method 
+	0x66b560  func PropertyList.Element.hasMatchingValue(in:) // method 
+	0x66b5b0  func PropertyList.Element.copy(before:after:) // method 
  }
 
  class SwiftUI.TypedElement {
@@ -11006,10 +11007,10 @@
 
  class SwiftUI.AnyAccessibilityActionHandlerBoxBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x67d890  func AnyAccessibilityActionHandlerBoxBase.perform<A>(action:value:) // method 
-	0x67d8d0  func AnyAccessibilityActionHandlerBoxBase.matches<A>(action:) // method 
-	0x67d910  func AnyAccessibilityActionHandlerBoxBase.namedAction() // method 
-	0x67d950  func AnyAccessibilityActionHandlerBoxBase.handler<A>(for:) // method 
+	0x681e50  func AnyAccessibilityActionHandlerBoxBase.perform<A>(action:value:) // method 
+	0x681e90  func AnyAccessibilityActionHandlerBoxBase.matches<A>(action:) // method 
+	0x681ed0  func AnyAccessibilityActionHandlerBoxBase.namedAction() // method 
+	0x681f10  func AnyAccessibilityActionHandlerBoxBase.handler<A>(for:) // method 
  }
 
  class SwiftUI.AnyAccessibilityActionHandlerBox {
@@ -11028,7 +11029,7 @@
 
  class SwiftUI.AnyStyleBox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x67e980  func AnyStyleBox.body(configuration:) // method 
+	0x682f40  func AnyStyleBox.body(configuration:) // method 
  }
 
  class SwiftUI.StyleBox {
@@ -11183,10 +11184,10 @@
 	var options : RasterizationOptions
 
 	// ObjC -> Swift bridged methods
-	0x698a90  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.init(coder:)
-	0x698b60  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.draw(_:)
-	0x698be0  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.init(frame:)
-	0x698c30  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.__ivar_destroyer
+	0x69cf80  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.init(coder:)
+	0x69d050  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.draw(_:)
+	0x69d0d0  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.init(frame:)
+	0x69d120  @objc DisplayList.ViewUpdater.Platform.CGDrawingView.__ivar_destroyer
 
 	// Swift methods
  }
@@ -11199,9 +11200,9 @@
 	var options : RasterizationOptions
 
 	// ObjC -> Swift bridged methods
-	0x699130  @objc DisplayList.ViewUpdater.Platform.RBDrawingView.init(coder:)
-	0x6992e0  @objc DisplayList.ViewUpdater.Platform.RBDrawingView.init(frame:)
-	0x6993a0  @objc DisplayList.ViewUpdater.Platform.RBDrawingView.__ivar_destroyer
+	0x69d620  @objc DisplayList.ViewUpdater.Platform.RBDrawingView.init(coder:)
+	0x69d7d0  @objc DisplayList.ViewUpdater.Platform.RBDrawingView.init(frame:)
+	0x69d890  @objc DisplayList.ViewUpdater.Platform.RBDrawingView.__ivar_destroyer
 
 	// Swift methods
  }
@@ -11484,9 +11485,9 @@
 
  class SwiftUI.AnimationBoxBase : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x6bfe80  func AnimationBoxBase.makeAnimator<A>(of:) // method 
-	0x6bfed0  func AnimationBoxBase.base.getter // getter 
-	0x6bff20  func AnimationBoxBase.isEqual(to:) // method 
+	0x6c4610  func AnimationBoxBase.makeAnimator<A>(of:) // method 
+	0x6c4660  func AnimationBoxBase.base.getter // getter 
+	0x6c46b0  func AnimationBoxBase.isEqual(to:) // method 
  }
 
  class SwiftUI.AnimationBox {
@@ -11535,9 +11536,9 @@
 	var onTrigger : () // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x6c5cc0  @objc Coordinator.primaryActionTriggered(_:)
-	0x6c5d40  @objc Coordinator.init()
-	0x6c5db0  @objc Coordinator.__ivar_destroyer
+	0x6ca450  @objc Coordinator.primaryActionTriggered(_:)
+	0x6ca4d0  @objc Coordinator.init()
+	0x6ca540  @objc Coordinator.__ivar_destroyer
 
 	// Swift methods
  }
@@ -11633,9 +11634,9 @@
 
  class SwiftUI.ColorShapeLayer : CAShapeLayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-	0x6d06f0  @objc ColorShapeLayer.init()
-	0x6d0710  @objc ColorShapeLayer.init(layer:)
-	0x6d0780  @objc ColorShapeLayer.init(coder:)
+	0x6d4e80  @objc ColorShapeLayer.init()
+	0x6d4ea0  @objc ColorShapeLayer.init(layer:)
+	0x6d4f10  @objc ColorShapeLayer.init(coder:)
  }
 
  class SwiftUI.PaintShapeLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -11648,19 +11649,19 @@
 	var fillStyle : FillStyle
 
 	// ObjC -> Swift bridged methods
-	0x6d0890  @objc PaintShapeLayer.init()
-	0x6d0980  @objc PaintShapeLayer.init(coder:)
-	0x6d0a90  @objc PaintShapeLayer.init(layer:)
-	0x6d0ca0  @objc PaintShapeLayer.draw(in:)
-	0x6d0d40  @objc PaintShapeLayer.__ivar_destroyer
+	0x6d5020  @objc PaintShapeLayer.init()
+	0x6d5110  @objc PaintShapeLayer.init(coder:)
+	0x6d5220  @objc PaintShapeLayer.init(layer:)
+	0x6d5430  @objc PaintShapeLayer.draw(in:)
+	0x6d54d0  @objc PaintShapeLayer.__ivar_destroyer
  }
 
  class SwiftUI.ShadowGradientLayer : CALayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
 	// ObjC -> Swift bridged methods
-	0x6d0e60  @objc ShadowGradientLayer.init()
-	0x6d0eb0  @objc ShadowGradientLayer.init(coder:)
-	0x6d0f60  @objc ShadowGradientLayer.init(layer:)
-	0x6d1080  @objc ShadowGradientLayer.layoutSublayers()
+	0x6d55f0  @objc ShadowGradientLayer.init()
+	0x6d5640  @objc ShadowGradientLayer.init(coder:)
+	0x6d56f0  @objc ShadowGradientLayer.init(layer:)
+	0x6d5810  @objc ShadowGradientLayer.layoutSublayers()
  }
 
  struct SwiftUI.Visitor {
@@ -11805,7 +11806,7 @@
  struct __C.CGRect {
 
 	// Properties
-	var origin : CGPoint // +0x5ac0
+	var origin : CGPoint // +0x5c30
 	var size : CGSize // +0x0
  }
 
