@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PHAsset, PHFace, PHObject;
+@class NSDate, NSString, PHAsset, PHFace, PHObject;
 
 @interface PXFaceTileImageRequest : NSObject
 {
@@ -18,6 +18,7 @@
     NSString *_cacheKey;
     PHObject *_originalRequestObject;
     PHAsset *_assetContainingFace;
+    NSDate *_ppt_requestStartDate;
     struct CGSize _lastDeliveredSize;
     struct PXFaceTileImageParams _params;
     struct CGRect _normalizedFaceCropRect;
@@ -35,11 +36,13 @@
 @property (nonatomic) struct CGRect normalizedFaceCropRect; // @synthesize normalizedFaceCropRect=_normalizedFaceCropRect;
 @property (strong, nonatomic) PHObject *originalRequestObject; // @synthesize originalRequestObject=_originalRequestObject;
 @property (readonly, nonatomic) struct PXFaceTileImageParams params; // @synthesize params=_params;
+@property (copy, nonatomic, setter=ppt_setRequestStartDate:) NSDate *ppt_requestStartDate; // @synthesize ppt_requestStartDate=_ppt_requestStartDate;
 @property (readonly, nonatomic) int requestID; // @synthesize requestID=_requestID;
 
 - (void).cxx_destruct;
 - (void)cancel;
 - (id)initWithFace:(id)arg1 cacheKey:(id)arg2 params:(struct PXFaceTileImageParams)arg3;
+- (void)ppt_reportMeasurementsForImageQuality:(long long)arg1;
 
 @end
 

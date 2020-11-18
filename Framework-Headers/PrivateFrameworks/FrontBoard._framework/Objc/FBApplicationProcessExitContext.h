@@ -11,7 +11,6 @@
 @interface FBApplicationProcessExitContext : NSObject
 {
     FBProcessState *_stateBeforeExiting;
-    unsigned long long _launchdExitReason;
     unsigned long long _exitReason;
     long long _terminationReason;
 }
@@ -25,7 +24,6 @@
 @property (readonly, nonatomic) int terminationSignal;
 
 + (id)descriptionForExitReason:(unsigned long long)arg1;
-+ (unsigned long long)exitReasonForLaunchdExitReason:(unsigned long long)arg1;
 - (BOOL)consideredJetsam;
 - (void)dealloc;
 - (id)description;

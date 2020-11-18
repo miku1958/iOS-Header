@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MediaPlayer/NSCopying-Protocol.h>
+
 @class MPMediaLibrary;
 
-@interface MPMediaLibraryView : NSObject
+@interface MPMediaLibraryView : NSObject <NSCopying>
 {
     shared_ptr_f45adb51 _coreView;
     MPMediaLibrary *_library;
@@ -22,7 +24,8 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (shared_ptr_56e9c9de)_performCoreQuery:(shared_ptr_34add297)arg1 error:(id *)arg2;
-- (BOOL)hasEntitiesForModelClass:(Class)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)hasEntitiesForModelKind:(id)arg1;
 - (id)initWithLibrary:(id)arg1 filteringOptions:(unsigned long long)arg2;
 - (void)performCoreQuery:(shared_ptr_34add297)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)performCoreSearchQuery:(shared_ptr_299ddd6f)arg1 withCompletion:(CDUnknownBlockType)arg2;

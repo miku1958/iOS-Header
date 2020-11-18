@@ -6,17 +6,21 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSSet, NSString;
+@class NSNumber, NSSet, NSString;
 
 @interface _DKSourceMO : NSManagedObject
 {
 }
 
-@property (strong, nonatomic) NSString *bundleId; // @dynamic bundleId;
-@property (strong, nonatomic) NSString *deviceId; // @dynamic deviceId;
-@property (strong, nonatomic) NSSet *object; // @dynamic object;
-@property (nonatomic) long long sourceHash; // @dynamic sourceHash;
-@property (nonatomic) short userId; // @dynamic userId;
+@property (copy, nonatomic) NSString *bundleID; // @dynamic bundleID;
+@property (copy, nonatomic) NSString *deviceID; // @dynamic deviceID;
+@property (copy, nonatomic) NSString *groupID; // @dynamic groupID;
+@property (copy, nonatomic) NSString *itemID; // @dynamic itemID;
+@property (strong, nonatomic) NSSet *product; // @dynamic product;
+@property (copy, nonatomic) NSString *sourceID; // @dynamic sourceID;
+@property (copy, nonatomic) NSNumber *userID; // @dynamic userID;
+
++ (id)fetchRequest;
 
 @end
 

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     QLOverlayPlayButton *_playButton;
     AVPlayerViewController *_playerViewController;
     BOOL _fullScreen;
+    BOOL _mediaWasPausedOnResignActive;
     AVPlayer *_player;
     struct CGSize _imageSize;
 }
@@ -28,6 +29,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)canEnterFullScreen;
 - (void)enterFullScreen:(BOOL)arg1;
+- (void)hostApplicationDidBecomeActive;
+- (void)hostApplicationDidEnterBackground:(id)arg1;
 - (struct CGSize)imageSize;
 - (void)loadPreviewControllerWithPreviewItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pause;

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
         BOOL respondsToViewHostingGestureRecognizers;
         BOOL respondsToDelegateForGestureRecognizer;
     } _delegateFlags;
+    CDUnknownBlockType _ppt_didEndPlayingHandler;
     id<PUIrisImageTileViewControllerDelegate> _delegate;
     PHLivePhotoView *__livePhotoView;
 }
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)livePhotoViewDidBeginHinting:(id)arg1;
 - (void)livePhotoViewDidEndPlayingVitality:(id)arg1;
 - (id)loadView;
+- (void)ppt_playLivePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeAllAnimations;
 - (void)setAssetViewModel:(id)arg1;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;

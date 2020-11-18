@@ -16,6 +16,7 @@
 - (void)fc_enumerateObjectsPairwiseUsingBlock:(CDUnknownBlockType)arg1;
 - (id)fc_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)fc_indexesOfObjectsInOrderedSet:(id)arg1;
+- (BOOL)fc_isEqualToOrderedSet:(id)arg1 inRange:(struct _NSRange)arg2;
 - (BOOL)fc_isSortedUsingComparator:(CDUnknownBlockType)arg1;
 - (id)fc_orderedSetByCollectingObjectsWithBlock:(CDUnknownBlockType)arg1;
 - (id)fc_orderedSetByMinusingOrderedSet:(id)arg1;

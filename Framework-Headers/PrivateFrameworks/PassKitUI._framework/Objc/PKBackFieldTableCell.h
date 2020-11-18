@@ -6,23 +6,17 @@
 
 #import <PassKitUI/PKTableViewCell.h>
 
-#import <PassKitUI/UITextViewDelegate-Protocol.h>
+@class PKPassField, UITextView;
 
-@class NSString, PKPassField, UITextView;
-
-@interface PKBackFieldTableCell : PKTableViewCell <UITextViewDelegate>
+@interface PKBackFieldTableCell : PKTableViewCell
 {
     PKPassField *_field;
     UITextView *_valueTextView;
     BOOL _showLinks;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PKPassField *field; // @synthesize field=_field;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL showLinks; // @synthesize showLinks=_showLinks;
-@property (readonly) Class superclass;
 
 + (id)_linkColor;
 + (id)_linkTextAttributes;
@@ -37,7 +31,6 @@
 - (id)initWithField:(id)arg1 showLinks:(BOOL)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 
 @end
 

@@ -15,18 +15,18 @@
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSOperationQueue *_fetchQueue;
+    NSArray *_orderedChannels;
     NSDictionary *_channelsByID;
     NSDictionary *_dictionary;
     int _didChangeNotificationToken;
     NSDictionary *_endpointsDictionary;
     NSOperationQueue *_operationQueue;
     NSDictionary *_requiredRequestKeyValuePairsDictionary;
+    NSDictionary *_serverRoutesDictionary;
     NSMutableDictionary *_completions;
     unsigned long long _cachedEnvironmentHash;
     NSString *_nextEK;
     BOOL _loaded;
-    NSArray *_orderedChannels;
-    NSDictionary *_serverRoutesDictionary;
     NSDate *_expirationDate;
     CDUnknownBlockType _fetchCompletionHandler;
 }
@@ -39,9 +39,9 @@
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded; // @synthesize loaded=_loaded;
-@property (readonly, copy, nonatomic) NSArray *orderedChannels; // @synthesize orderedChannels=_orderedChannels;
+@property (readonly, copy, nonatomic) NSArray *orderedChannels;
 @property (strong, nonatomic) NSDictionary *requiredRequestKeyValuePairsDictionary; // @synthesize requiredRequestKeyValuePairsDictionary=_requiredRequestKeyValuePairsDictionary;
-@property (readonly, copy, nonatomic) NSDictionary *serverRoutesDictionary; // @synthesize serverRoutesDictionary=_serverRoutesDictionary;
+@property (readonly, copy, nonatomic) NSDictionary *serverRoutesDictionary;
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
@@ -65,6 +65,7 @@
 - (id)_readFromDiskPath:(id)arg1;
 - (void)_setNextEK:(id)arg1;
 - (void)_synchronizeWithCacheAndNotifySelf:(BOOL)arg1 others:(BOOL)arg2;
+- (void)_synchronizeWithCacheAndNotifySelf:(BOOL)arg1 others:(BOOL)arg2 ignoreValidation:(BOOL)arg3;
 - (void)_updateWithResponse:(id)arg1 expirationDate:(id)arg2 environmentHash:(unsigned long long)arg3;
 - (BOOL)_writeToDisk:(id)arg1;
 - (void)applicationConfigRequestOperationDidFail:(id)arg1;

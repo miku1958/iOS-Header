@@ -11,9 +11,9 @@
 @interface ProblemReportingController : PSListController
 {
     PrefsUILinkLabel *_aboutDiagnosticsLinkLabel;
-    PSSpecifier *_diagnosticDataGroupSpecifier;
     PSSpecifier *_filesystemMetadataSnapshotSpecifier;
     NSArray *_appActivitySpecifiers;
+    NSArray *_iCloudSpecifiers;
     PSSpecifier *_spinnerSpecifier;
     NSArray *_healthDataSpecifiers;
     NSArray *_wheelchairDataSpecifiers;
@@ -29,24 +29,30 @@
 - (void).cxx_destruct;
 - (void)checkDiagnosticsSessionAvailability;
 - (void)dismissAboutSheet:(id)arg1;
+- (id)iCloudSpecifiers;
 - (void)launchDiagnosticsSession:(id)arg1;
+- (id)problemReportingEnabled:(id)arg1;
+- (void)setBoolValue:(BOOL)arg1 forIdMSConfigKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setProblemReportingEnabled:(BOOL)arg1;
+- (void)setProblemReportingEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setShouldShareAppActivityWithAppDevelopers:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareHealthData:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareWheelchairData:(id)arg1 specifier:(id)arg2;
-- (BOOL)shouldEnableProblemReportingForCheckedSpecifier;
+- (void)setShouldShareiCloudAnalytics:(id)arg1 specifier:(id)arg2;
 - (id)shouldShareAppActivityWithAppDevelopers;
 - (id)shouldShareHealthDataForSpecifier:(id)arg1;
 - (id)shouldShareWheelchairDataForSpecifier:(id)arg1;
+- (id)shouldShareiCloudAnalytics:(id)arg1;
 - (void)showAboutAppAnalyticsSheet;
 - (void)showAboutDiagnosticsSheet;
 - (void)showAboutHealthDataSheet;
 - (void)showAboutSheetWithTitle:(id)arg1 content:(id)arg2;
 - (void)showAboutWheelchairDataSheet;
+- (void)showAboutiCloudAnalyticsSheet;
 - (void)snapshot:(id)arg1;
 - (id)specifiers;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
+- (void)updateiCloudAnalyticsForSpecifierID:(id)arg1;
 
 @end
 

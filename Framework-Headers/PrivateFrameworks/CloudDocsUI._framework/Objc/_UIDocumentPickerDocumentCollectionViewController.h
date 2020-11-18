@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     long long _displayMode;
     id<_UIDocumentPickerServiceViewController> _serviceViewController;
     _UIDocumentPickerContainerModel *_model;
+    NSArray *_actions;
     _UIDocumentPickerFlowLayout *_gridLayout;
     _UIDocumentPickerTableLayout *_tableLayout;
     _UIDocumentPickerSortOrderView *_sortView;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
     UIActivityIndicatorView *_initialActivityView;
 }
 
+@property (strong, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long displayMode; // @synthesize displayMode=_displayMode;

@@ -76,6 +76,7 @@
 @property BOOL _preventsDirectWiFiAccess; // @dynamic _preventsDirectWiFiAccess;
 @property BOOL _preventsIdleSleep; // @dynamic _preventsIdleSleep;
 @property BOOL _preventsIdleSleepOnceConnected; // @dynamic _preventsIdleSleepOnceConnected;
+@property BOOL _preventsSystemHTTPProxyAuthentication; // @dynamic _preventsSystemHTTPProxyAuthentication;
 @property (getter=_isProxySession) BOOL _proxySession; // @dynamic _proxySession;
 @property BOOL _requiresClientToOpenFiles; // @dynamic _requiresClientToOpenFiles;
 @property BOOL _requiresPowerPluggedIn; // @dynamic _requiresPowerPluggedIn;

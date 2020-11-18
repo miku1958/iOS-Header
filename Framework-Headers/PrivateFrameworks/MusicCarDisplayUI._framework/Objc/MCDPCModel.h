@@ -38,6 +38,7 @@
 - (void)_endMediaRemoteAccess;
 - (void)_finishLoadingNotification:(id)arg1;
 - (void)_mediaRemoteCommunicationWithIndexPath:(id)arg1 work:(CDUnknownBlockType)arg2;
+- (void)_nowPlayingAppDidChangeNotification:(id)arg1;
 - (void)_nowPlayingDidChangeNotification:(id)arg1;
 - (void)_performMediaRemoteAccess:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (void)_playbackInitiatedNotification:(id)arg1;

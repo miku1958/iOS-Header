@@ -15,9 +15,11 @@
     BOOL _lastRedrawWasForDrawingBounds;
     AKAnnotation *_annotation;
     AKPageController *_pageController;
+    CALayer *_fastPathLayer;
 }
 
 @property (strong) AKAnnotation *annotation; // @synthesize annotation=_annotation;
+@property (strong, nonatomic) CALayer *fastPathLayer; // @synthesize fastPathLayer=_fastPathLayer;
 @property BOOL isObservingAnnotation; // @synthesize isObservingAnnotation=_isObservingAnnotation;
 @property BOOL lastRedrawWasForDrawingBounds; // @synthesize lastRedrawWasForDrawingBounds=_lastRedrawWasForDrawingBounds;
 @property (weak) AKPageController *pageController; // @synthesize pageController=_pageController;

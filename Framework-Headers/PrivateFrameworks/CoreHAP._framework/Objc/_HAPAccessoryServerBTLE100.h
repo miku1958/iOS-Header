@@ -120,6 +120,7 @@
 - (void)_establishSecureSession;
 - (void)_getAttributeDatabase;
 - (void)_handleConnectionLifetimeTimeout;
+- (void)_handleConnectionWithError:(id)arg1;
 - (void)_handleDescriptorDiscovery;
 - (void)_handleDisconnectionWithQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleHAPCharacteristicDiscoveryForService:(id)arg1 error:(id)arg2;
@@ -163,7 +164,7 @@
 - (void)discoverAccessories;
 - (void)enableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (id)getLocalPairingIdentityAndAllowCreation:(BOOL)arg1 error:(id *)arg2;
-- (void)handleConnectionWithError:(id)arg1;
+- (void)handleConnectionWithPeripheral:(id)arg1 withError:(id)arg2;
 - (void)handleDisconnectionWithError:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)hapBLEProtocolVersion;
 - (void)identifyWithCompletion:(CDUnknownBlockType)arg1;

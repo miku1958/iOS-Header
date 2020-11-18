@@ -6,16 +6,16 @@
 
 #import <UIKit/UIButton.h>
 
-@class CALayer, NSString;
+@class CALayer;
 
 @interface MCDButton : UIButton
 {
     CALayer *_focusColorLayer;
     BOOL _showBezelInTouch;
-    NSString *_labelTemplateString;
+    BOOL _hideBezelInKnob;
 }
 
-@property (copy, nonatomic) NSString *labelTemplateString; // @synthesize labelTemplateString=_labelTemplateString;
+@property (nonatomic) BOOL hideBezelInKnob; // @synthesize hideBezelInKnob=_hideBezelInKnob;
 @property (nonatomic, getter=isSelected) BOOL selected; // @dynamic selected;
 @property (nonatomic) BOOL showBezelInTouch; // @synthesize showBezelInTouch=_showBezelInTouch;
 

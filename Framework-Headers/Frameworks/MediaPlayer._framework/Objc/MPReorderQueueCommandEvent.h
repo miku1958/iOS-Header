@@ -6,13 +6,15 @@
 
 #import <MediaPlayer/MPRemoteCommandEvent.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
 @interface MPReorderQueueCommandEvent : MPRemoteCommandEvent
 {
     NSString *_insertAfterContextItemID;
+    NSNumber *_destinationOffset;
 }
 
+@property (readonly, nonatomic) NSNumber *destinationOffset; // @synthesize destinationOffset=_destinationOffset;
 @property (readonly, nonatomic) NSString *insertAfterContextItemID; // @synthesize insertAfterContextItemID=_insertAfterContextItemID;
 
 - (void).cxx_destruct;

@@ -31,7 +31,7 @@
 - (void).cxx_destruct;
 - (id)_initWithQuery:(id)arg1 supportsIncrementalUpdate:(BOOL)arg2;
 - (void)_loadCurrentFullResults;
-- (void)_mergeChangesWithFromNewPIDs:(const vector_c1c297d2 *)arg1 changedPIDs:(unordered_set_f2692727 *)arg2;
+- (void)_mergeChangesWithFromNewPIDs:(const vector_c1c297d2 *)arg1 changedPIDs:(unordered_set_9227d2bb *)arg2;
 - (void)_onQueueAddUpdateFinishedBlock:(CDUnknownBlockType)arg1;
 - (void)_onQueueInvokeAndClearUpdateFinishedBlocksWithDidUpdateResult:(BOOL)arg1;
 - (BOOL)_updateToLibraryCurrentRevision;

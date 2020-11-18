@@ -12,6 +12,7 @@
 {
 }
 
+@property (readonly, nonatomic) NSString *altDSID;
 @property (readonly, nonatomic) NSString *dsid;
 @property (readonly, nonatomic) NSDictionary *responseParameters;
 @property (readonly, nonatomic) NSNumber *status;

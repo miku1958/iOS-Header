@@ -15,13 +15,9 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAudioRouteNameCommandChanged:(id)arg1;
-- (id)_axCommandCenter;
 - (id)_axLikedBannedValueForState:(long long)arg1;
 - (void)_axLikedStateCommandChanged:(id)arg1;
-- (void)_axMediaRemoteCommandChanged:(id)arg1;
 - (id)_axPlayer;
-- (id)_axRepeatButtonValue;
-- (id)_axShuffleButtonValue;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)axAudioRouteNotificationRegistered;
 - (BOOL)axLikedStateNotificationRegistered;

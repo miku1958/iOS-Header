@@ -25,6 +25,7 @@
 @property (readonly, nonatomic, getter=isAutoFillAvailable) BOOL autoFillAvailable; // @synthesize autoFillAvailable=_autoFillAvailable;
 @property (readonly, nonatomic, getter=isBookmarksAvailable) BOOL bookmarksAvailable; // @synthesize bookmarksAvailable=_bookmarksAvailable;
 @property (readonly, nonatomic, getter=isCloudHistorySyncAvailable) BOOL cloudHistorySyncAvailable;
+@property (readonly, nonatomic, getter=isCloudKitBookmarksAvailable) BOOL cloudKitBookmarksAvailable;
 @property (readonly, nonatomic, getter=isCloudSyncAvailable) BOOL cloudSyncAvailable; // @synthesize cloudSyncAvailable=_cloudSyncAvailable;
 @property (readonly, nonatomic, getter=isCloudTabsAvailable) BOOL cloudTabsAvailable;
 @property (readonly, nonatomic, getter=isCreditCardStorageAvailable) BOOL creditCardStorageAvailable;

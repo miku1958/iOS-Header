@@ -34,6 +34,7 @@
     BOOL _forMultipleAsset;
     BOOL _allMultipleAssetIsMine;
     BOOL _isMixedType;
+    BOOL _offerToReportAsJunk;
     unsigned long long _recordID;
     unsigned long long _replacedBulletinRecordID;
     unsigned long long _originalRecordID;

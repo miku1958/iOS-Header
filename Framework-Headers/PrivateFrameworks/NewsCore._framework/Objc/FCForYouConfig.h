@@ -24,6 +24,7 @@
 @property (strong, nonatomic) FCGroupConfig *coverArticlesGroupConfig; // @synthesize coverArticlesGroupConfig=_coverArticlesGroupConfig;
 @property (readonly, nonatomic) NSArray *editorialArticleListIDs;
 @property (strong, nonatomic) NSArray *editorialGroupConfigs; // @synthesize editorialGroupConfigs=_editorialGroupConfigs;
+@property (readonly, nonatomic) NSArray *editorialSectionTagIDs;
 @property (readonly, nonatomic) NSDate *fetchedDate;
 @property (strong, nonatomic) NTPBForYouConfigRecord *forYouConfigRecord; // @synthesize forYouConfigRecord=_forYouConfigRecord;
 @property (strong, nonatomic) FCInterestToken *interestToken; // @synthesize interestToken=_interestToken;

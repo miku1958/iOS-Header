@@ -8,11 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOETAServiceResponseSummary, NSData, NSMutableArray;
+@class GEOETAServiceResponseSummary, GEOPDDatasetABStatus, NSData, NSMutableArray;
 
 @interface GEOETATrafficUpdateResponse : PBCodable <NSCopying>
 {
     unsigned long long _debugServerLatencyMs;
+    GEOPDDatasetABStatus *_datasetAbStatus;
     GEOETAServiceResponseSummary *_etaServiceSummary;
     NSMutableArray *_routes;
     NSData *_sessionState;
@@ -20,8 +21,10 @@
     CDStruct_00a28cb6 _has;
 }
 
+@property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
 @property (nonatomic) unsigned long long debugServerLatencyMs;
 @property (strong, nonatomic) GEOETAServiceResponseSummary *etaServiceSummary;
+@property (readonly, nonatomic) BOOL hasDatasetAbStatus;
 @property (nonatomic) BOOL hasDebugServerLatencyMs;
 @property (readonly, nonatomic) BOOL hasEtaServiceSummary;
 @property (readonly, nonatomic) BOOL hasSessionState;

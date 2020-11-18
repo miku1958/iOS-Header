@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/_PLManagedAdjustment.h>
 
-@class NSDictionary, NSString, PLManagedAsset;
+@class NSDictionary, NSNumber, NSString, PLManagedAsset;
 
 @interface PLManagedAdjustment : _PLManagedAdjustment
 {
@@ -16,6 +16,7 @@
 @property (strong, nonatomic) PLManagedAsset *asset; // @dynamic asset;
 @property (copy, nonatomic) NSString *filterName; // @dynamic filterName;
 @property (copy, nonatomic) NSDictionary *filterSettings; // @dynamic filterSettings;
+@property (copy, nonatomic) NSNumber *identifier; // @dynamic identifier;
 
 + (id)ciFiltersForAdjustmentsOnManagedAsset:(id)arg1 forDestinationImageSize:(struct CGSize)arg2;
 + (id)ciFiltersForAdjustmentsOnManagedAsset:(id)arg1 forDestinationImageSize:(struct CGSize)arg2 effectFilterCount:(unsigned long long *)arg3;

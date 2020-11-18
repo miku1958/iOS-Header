@@ -4,29 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBUFormAutoFillWebView.h>
+#import <WebKit/WKWebView.h>
 
-#import <SafariServices/_SFDialogPresenting-Protocol.h>
+#import <SafariServices/_SFDialogViewPresenting-Protocol.h>
+#import <SafariServices/_SFKillWebContentProcessUIActivityDelegate-Protocol.h>
 
-@class NSString, _SFDialogView;
+@class NSString, NSTimer, UIImageView, _SFDialogView;
 
-@interface _SFWebView : WBUFormAutoFillWebView <_SFDialogPresenting>
+@interface _SFWebView : WKWebView <_SFDialogViewPresenting, _SFKillWebContentProcessUIActivityDelegate>
 {
     _SFDialogView *_dialogView;
+    UIImageView *_placeholderView;
+    NSTimer *_placeholderViewRemovalTimer;
+    struct UIEdgeInsets _hitTestInsets;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *evOrganizationName;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct UIEdgeInsets hitTestInsets; // @synthesize hitTestInsets=_hitTestInsets;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_close;
+- (struct __SecTrust *)_serverTrust;
 - (void)_setObscuredInsets:(struct UIEdgeInsets)arg1;
-- (void)dismissDialogView:(id)arg1 forDialogController:(id)arg2;
+- (void)dealloc;
+- (void)dismissDialogView:(id)arg1 withAdditionalAnimations:(CDUnknownBlockType)arg2 forDialogController:(id)arg3;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2;
 - (void)layoutSubviews;
-- (void)presentDialogView:(id)arg1 forDialogController:(id)arg2;
+- (void)presentDialogView:(id)arg1 withAdditionalAnimations:(CDUnknownBlockType)arg2 forDialogController:(id)arg3;
+- (void)safariKillWebContentProcessUIActivityKillWebProcess:(id)arg1;
 - (void)setAllowsBackForwardNavigationGestures:(BOOL)arg1;
-- (int)webProcessIdentifierForDialogController:(id)arg1;
+- (void)setPlaceholderImage:(id)arg1;
+- (int)webProcessIDForDialogController:(id)arg1;
 
 @end
 

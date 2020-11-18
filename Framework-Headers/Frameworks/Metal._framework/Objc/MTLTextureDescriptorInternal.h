@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)depth;
 - (id)description;
 - (const struct MTLTextureDescriptorPrivate *)descriptorPrivate;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (BOOL)framebufferOnly;
 - (unsigned long long)getSwizzle;
 - (unsigned long long)hash;

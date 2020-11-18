@@ -12,16 +12,18 @@
 {
     AVAssetReader *_assetReader;
     AVAssetReaderSampleReferenceOutput *_assetReaderOutput;
+    int _trackID;
     AVAsset *_asset;
     CDUnknownBlockType _resultHandler;
 }
 
 @property (readonly, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
 @property (readonly, copy, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
+@property (readonly, nonatomic) int trackID; // @synthesize trackID=_trackID;
 
 - (void).cxx_destruct;
 - (void)_handleAssetDidLoadValues;
-- (id)initWithAsset:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (id)initWithAsset:(id)arg1 trackID:(int)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (void)main;
 
 @end

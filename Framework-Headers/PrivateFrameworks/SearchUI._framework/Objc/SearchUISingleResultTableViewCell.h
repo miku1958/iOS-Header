@@ -40,15 +40,15 @@
 - (BOOL)arrangedViewMustCenter:(id)arg1;
 - (struct UIEdgeInsets)computeLayoutMargins;
 - (id)contactInlineActionViewController;
-- (struct CGRect)containerStackView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (struct UIEdgeInsets)containerStackView:(id)arg1 minimumSpacingAdjecentToArrangedSubview:(id)arg2;
-- (struct CGSize)containerStackView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
+- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
+- (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
+- (void)containerViewDidInvalidateIntrinsicContentSize:(id)arg1;
 - (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)stackViewDidInvalidateIntrinsicContentSize:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateForceTouchRecognizerWithResult:(id)arg1;
 - (void)updateThumbnailWithResult:(id)arg1;

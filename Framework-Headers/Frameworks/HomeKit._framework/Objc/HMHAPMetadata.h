@@ -41,6 +41,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)serviceTypeDescription:(id)arg1;
 - (id)serviceTypeLocalizedDescription:(id)arg1;
+- (BOOL)shouldNotCacheCharacteristicOfType:(id)arg1;
 
 @end
 

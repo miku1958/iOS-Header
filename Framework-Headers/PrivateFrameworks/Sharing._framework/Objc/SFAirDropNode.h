@@ -14,6 +14,9 @@
     BOOL _me;
     BOOL _unknown;
     BOOL _monogram;
+    BOOL _classroom;
+    BOOL _classroomCourse;
+    BOOL _classroomGroup;
     BOOL _supportsFMF;
     BOOL _supportsPasses;
     BOOL _supportsMixedTypes;
@@ -25,6 +28,9 @@
     NSString *_secondaryName;
 }
 
+@property (getter=isClassroom) BOOL classroom; // @synthesize classroom=_classroom;
+@property (getter=isClassroomCourse) BOOL classroomCourse; // @synthesize classroomCourse=_classroomCourse;
+@property (getter=isclassroomGroup) BOOL classroomGroup; // @synthesize classroomGroup=_classroomGroup;
 @property (strong) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (strong) UIImage *displayIcon; // @synthesize displayIcon=_displayIcon;
 @property (strong) NSString *displayName; // @synthesize displayName=_displayName;

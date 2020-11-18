@@ -6,13 +6,15 @@
 
 #import <Catalyst/CATTaskRequest.h>
 
-@class NSURL;
+@class NSString, NSURL;
 
 @interface DMFOpenURLRequest : CATTaskRequest
 {
     NSURL *_url;
+    NSString *_URLDisplayName;
 }
 
+@property (copy, nonatomic) NSString *URLDisplayName; // @synthesize URLDisplayName=_URLDisplayName;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
 
 + (BOOL)supportsSecureCoding;

@@ -6,20 +6,34 @@
 
 #import <iTunesStore/ISOperation.h>
 
+@class ISURLBag, NSObject, NSString;
+@protocol OS_dispatch_queue;
+
 @interface ISBiometricOptInOperation : ISOperation
 {
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
     BOOL _promptUser;
     CDUnknownBlockType _resultBlock;
+    ISURLBag *_urlBag;
+    NSString *_topicName;
+    NSString *_userAgent;
 }
 
 @property BOOL promptUser;
 @property (copy) CDUnknownBlockType resultBlock;
+@property (copy) NSString *topicName; // @synthesize topicName=_topicName;
+@property (copy) NSString *userAgent; // @synthesize userAgent=_userAgent;
 
 - (void).cxx_destruct;
+- (id)_clientIDForMetrics;
+- (id)_clientIDForUserID:(id)arg1;
+- (void)_loadURLBag;
 - (id)_newSourceByStartingTimeoutTimer;
+- (void)_performOptInDialogMetricsWithResult:(BOOL)arg1 error:(id)arg2;
 - (BOOL)_performOptInDialogOperationWithError:(id *)arg1;
 - (BOOL)_performPasscodeDialogOperationWithError:(id *)arg1;
 - (void)_updateTouchIDSettingsForAccount:(id)arg1;
+- (id)init;
 - (void)run;
 
 @end

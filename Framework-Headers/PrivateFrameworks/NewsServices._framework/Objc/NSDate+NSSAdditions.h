@@ -7,6 +7,6 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (NSSAdditions)
-- (void)nss_gregorianDescriptionWithFlags:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)nss_gregorianDescriptionWithFlags:(long long)arg1 options:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 @end
 

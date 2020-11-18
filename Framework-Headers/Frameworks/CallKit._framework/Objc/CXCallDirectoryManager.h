@@ -12,24 +12,27 @@
 @interface CXCallDirectoryManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
-    NSXPCConnection *_connection;
+    NSXPCConnection *_defaultConnection;
+    NSXPCConnection *_maintenanceConnection;
 }
 
-@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (strong, nonatomic) NSXPCConnection *defaultConnection; // @synthesize defaultConnection=_defaultConnection;
+@property (strong, nonatomic) NSXPCConnection *maintenanceConnection; // @synthesize maintenanceConnection=_maintenanceConnection;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)compactStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (void)firstIdentificationEntriesForPhoneNumbers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)firstIdentificationEntryForPhoneNumber:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)defaultConnectionRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)firstIdentificationEntriesForEnabledExtensionsWithPhoneNumbers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)firstIdentificationEntryForEnabledExtensionWithPhoneNumber:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getEnabledStatusForExtensionWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getPrioritizedExtensionIdentifiersWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getExtensionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)maintenanceConnectionRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)reloadExtensionWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)remoteObjectProxy;
-- (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)removeDataForExtensionWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setEnabled:(BOOL)arg1 forExtensionWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setPrioritizedExtensionIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)synchronizeExtensionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 

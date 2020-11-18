@@ -29,7 +29,6 @@
     BOOL _lockScrollDuringLivePhotoPlayback;
     BOOL _useDebuggingColors;
     BOOL _useDebuggingTitle;
-    BOOL _useDebuggingBadge;
     BOOL _useDebuggingProgressLabel;
     BOOL _showBufferingIndicatorDuringPlay;
     BOOL _simulateAssetContentDownload;
@@ -73,6 +72,8 @@
     double _bounceDelay;
     double _bounceSpringDamping;
     double _bounceInitialVelocity;
+    unsigned long long _debuggingBadges;
+    unsigned long long _debuggingBadgesWhenFavorite;
 }
 
 @property (nonatomic) double accessoryInitialTopPosition; // @synthesize accessoryInitialTopPosition=_accessoryInitialTopPosition;
@@ -98,6 +99,8 @@
 @property (nonatomic) long long chromeBackgroundAnimationType; // @synthesize chromeBackgroundAnimationType=_chromeBackgroundAnimationType;
 @property (nonatomic) double chromeDefaultAnimationDuration; // @synthesize chromeDefaultAnimationDuration=_chromeDefaultAnimationDuration;
 @property (nonatomic) double chromeTimedAutoHideAnimationDuration; // @synthesize chromeTimedAutoHideAnimationDuration=_chromeTimedAutoHideAnimationDuration;
+@property (nonatomic) unsigned long long debuggingBadges; // @synthesize debuggingBadges=_debuggingBadges;
+@property (nonatomic) unsigned long long debuggingBadgesWhenFavorite; // @synthesize debuggingBadgesWhenFavorite=_debuggingBadgesWhenFavorite;
 @property (nonatomic) double defaultMaximumZoomFactor; // @synthesize defaultMaximumZoomFactor=_defaultMaximumZoomFactor;
 @property (nonatomic) BOOL doubleTapZoomAreaExcludesBackground; // @synthesize doubleTapZoomAreaExcludesBackground=_doubleTapZoomAreaExcludesBackground;
 @property (nonatomic) BOOL doubleTapZoomAreaExcludesBars; // @synthesize doubleTapZoomAreaExcludesBars=_doubleTapZoomAreaExcludesBars;
@@ -125,7 +128,6 @@
 @property (nonatomic) BOOL simulateAssetContentDownloadFailure; // @synthesize simulateAssetContentDownloadFailure=_simulateAssetContentDownloadFailure;
 @property (strong, nonatomic) PUSwipeDownSettings *swipeDownSettings; // @synthesize swipeDownSettings=_swipeDownSettings;
 @property (nonatomic) long long titleTapAction; // @synthesize titleTapAction=_titleTapAction;
-@property (nonatomic) BOOL useDebuggingBadge; // @synthesize useDebuggingBadge=_useDebuggingBadge;
 @property (nonatomic) BOOL useDebuggingColors; // @synthesize useDebuggingColors=_useDebuggingColors;
 @property (nonatomic) BOOL useDebuggingProgressLabel; // @synthesize useDebuggingProgressLabel=_useDebuggingProgressLabel;
 @property (nonatomic) BOOL useDebuggingTitle; // @synthesize useDebuggingTitle=_useDebuggingTitle;

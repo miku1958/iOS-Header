@@ -51,6 +51,7 @@
 - (void)setServerComplianceClasses:(id)arg1;
 - (BOOL)shouldLogTransmittedData;
 - (id)spinnerIdentifiers;
+- (void)triggerOSLogFault;
 - (id)userAgentHeader;
 - (id)wellKnownPaths;
 

@@ -165,6 +165,7 @@
 @property (nonatomic) float reduceWhitePointLevel; // @synthesize reduceWhitePointLevel=_reduceWhitePointLevel;
 @property (strong, nonatomic) NSMutableSet *registeredNotifications; // @synthesize registeredNotifications=_registeredNotifications;
 @property (nonatomic) BOOL shouldFlashForAlertInSilentMode;
+@property (nonatomic) BOOL shouldLimitDisplayRefreshRate;
 @property (nonatomic) BOOL shouldStreamToLeftAid;
 @property (nonatomic) BOOL shouldStreamToRightAid;
 @property BOOL siriSemanticContextEnabled;

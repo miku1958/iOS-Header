@@ -199,6 +199,7 @@
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
 - (id)simulateTouch:(struct CGPoint)arg1;
 - (id)simulateTouchForCharacter:(id)arg1 errorVector:(struct CGPoint)arg2 shouldTypeVariants:(BOOL)arg3 baseKeyForVariants:(BOOL)arg4;
+- (struct CGSize)stretchFactor;
 - (BOOL)supportsEmoji;
 - (BOOL)supportsVirtualDrift;
 - (unsigned long long)targetEdgesForScreenGestureRecognition;

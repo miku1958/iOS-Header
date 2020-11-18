@@ -6,9 +6,15 @@
 
 #import <StoreKitUI/SKUIViewElement.h>
 
+@class SKUIDialogTemplateViewElement, SKUIResponseViewElement;
+
 @interface SKUIReviewViewElement : SKUIViewElement
 {
 }
+
+@property (readonly, nonatomic) SKUIDialogTemplateViewElement *dialogTemplate;
+@property (readonly, nonatomic) SKUIResponseViewElement *response;
+
 
 @end
 

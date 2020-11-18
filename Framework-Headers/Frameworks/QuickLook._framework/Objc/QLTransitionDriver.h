@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface QLTransitionDriver : NSObject
 {
+    BOOL _transitionContainerMasksToBounds;
     BOOL _presenting;
     QLItem *_transitionPreviewItem;
     UIView *_transitionContainer;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _transitionPreviewSize;
     struct CGRect _sourceViewFrame;
     struct CGRect _uncroppedFrame;
+    struct CGRect _transitionContainerOriginalFrame;
 }
 
 @property (strong) UIView *destinationView; // @synthesize destinationView=_destinationView;
@@ -35,6 +37,8 @@ __attribute__((visibility("hidden")))
 @property struct CGRect sourceViewFrame; // @synthesize sourceViewFrame=_sourceViewFrame;
 @property double topNavigationOffset; // @synthesize topNavigationOffset=_topNavigationOffset;
 @property (strong) UIView *transitionContainer; // @synthesize transitionContainer=_transitionContainer;
+@property BOOL transitionContainerMasksToBounds; // @synthesize transitionContainerMasksToBounds=_transitionContainerMasksToBounds;
+@property struct CGRect transitionContainerOriginalFrame; // @synthesize transitionContainerOriginalFrame=_transitionContainerOriginalFrame;
 @property (strong) QLItem *transitionPreviewItem; // @synthesize transitionPreviewItem=_transitionPreviewItem;
 @property struct CGSize transitionPreviewSize; // @synthesize transitionPreviewSize=_transitionPreviewSize;
 @property struct CGRect uncroppedFrame; // @synthesize uncroppedFrame=_uncroppedFrame;

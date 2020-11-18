@@ -6,15 +6,14 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class VSFailable;
+@class VSOptional;
 
-__attribute__((visibility("hidden")))
 @interface VSVerificationDataOperation : VSAsyncOperation
 {
-    VSFailable *_result;
+    VSOptional *_result;
 }
 
-@property (strong, nonatomic) VSFailable *result; // @synthesize result=_result;
+@property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
 
 - (void).cxx_destruct;
 - (void)_finishWithData:(id)arg1;

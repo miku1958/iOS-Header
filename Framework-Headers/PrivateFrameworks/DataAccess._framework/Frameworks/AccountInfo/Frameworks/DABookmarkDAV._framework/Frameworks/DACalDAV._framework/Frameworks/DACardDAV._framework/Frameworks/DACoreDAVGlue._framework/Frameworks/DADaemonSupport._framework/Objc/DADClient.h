@@ -70,6 +70,7 @@
 - (void)_removeStoresForAccountWithID:(id)arg1;
 - (void)_removeWatchedFolderIDs:(id)arg1 forAccountWithID:(id)arg2;
 - (void)_reportFolderItemsSyncResult:(id)arg1;
+- (void)_reportSharedCalendarAsJunkEvent:(id)arg1 eventDict:(id)arg2;
 - (void)_requestAllFolderContentsUpdate:(id)arg1;
 - (void)_requestAllFolderContentsUpdateForAccountId:(id)arg1 dataclasses:(long long)arg2 isUserRequested:(BOOL)arg3;
 - (void)_requestCalendarAvailability:(id)arg1 eventDict:(id)arg2;

@@ -8,7 +8,7 @@
 
 #import <UserNotificationsUIKit/NCLongLookAnimator-Protocol.h>
 
-@class NSString, UILabel, UIView, UIViewController, _UIBackdropView, _UIBackdropViewSettings, _UIFeedbackStatesBehavior;
+@class BSUIBackdropView, NSString, UILabel, UIView, UIViewController, _UIBackdropViewSettings, _UIFeedbackStatesBehavior;
 @protocol NCLongLookAnimatorDelegate, NCLongLookPresentationControllerDelegate, NCViewControllerAnimatedTransitioningDelegate, UIViewControllerContextTransitioning, UIViewControllerTransitionCoordinator;
 
 @interface NCLongLookPresentationController : UIPresentationController <NCLongLookAnimator>
@@ -17,7 +17,9 @@
     UIViewController *_sourceViewController;
     UIView *_sourceView;
     struct CGRect _sourceViewInitialFrame;
-    _UIBackdropView *_backgroundBlurView;
+    BSUIBackdropView *_backgroundBlurView;
+    BSUIBackdropView *_backgroundCapturingBlurView;
+    _UIBackdropViewSettings *_presentedBackgroundBlurSettingsIncludingZoom;
     _UIBackdropViewSettings *_presentedBackgroundBlurSettings;
     UIView *_revealShortLook;
     UIView *_backgroundDarkeningView;
@@ -62,15 +64,17 @@
 - (struct CGRect)_dismissLabelContainerViewFrameForPresentedViewFrame:(struct CGRect)arg1;
 - (struct CGRect)_frameForTransitionViewInPresentationSuperview:(id)arg1;
 - (struct CGRect)_frameOfPresentedViewInContainerViewWithBounds:(struct CGRect)arg1;
-- (id)_initialBackgroundBlurSettings;
+- (id)_initialBackgroundBlurSettingsWithZoom:(BOOL)arg1;
 - (BOOL)_isTransitionAnimated;
+- (id)_newPresentedBackgroundBlurSettingsWithZoom:(BOOL)arg1;
 - (void)_popDismissLabel;
 - (id)_presentedAnimatableBlurringView;
-- (id)_presentedBackgroundBlurSettings;
+- (id)_presentedBackgroundBlurSettingsWithZoom:(BOOL)arg1;
 - (id)_presentedNotificationViewController;
 - (BOOL)_shouldMakePresentedViewControllerFirstResponder;
 - (BOOL)_shouldPresentInCurrentContext;
 - (BOOL)_shouldRespectDefinesPresentationContext;
+- (BOOL)_usesNonDefaultBackdropScale;
 - (void)animateTransition:(id)arg1;
 - (void)animationEnded:(BOOL)arg1;
 - (void)cancelInteractiveTransition;

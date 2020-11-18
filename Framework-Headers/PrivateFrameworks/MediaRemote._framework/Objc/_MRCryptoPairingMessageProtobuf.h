@@ -13,15 +13,27 @@
 @interface _MRCryptoPairingMessageProtobuf : PBCodable <NSCopying>
 {
     NSData *_pairingData;
+    int _state;
     int _status;
+    BOOL _isRetrying;
+    BOOL _isUsingSystemPairing;
     struct {
+        unsigned int state:1;
         unsigned int status:1;
+        unsigned int isRetrying:1;
+        unsigned int isUsingSystemPairing:1;
     } _has;
 }
 
+@property (nonatomic) BOOL hasIsRetrying;
+@property (nonatomic) BOOL hasIsUsingSystemPairing;
 @property (readonly, nonatomic) BOOL hasPairingData;
+@property (nonatomic) BOOL hasState;
 @property (nonatomic) BOOL hasStatus;
+@property (nonatomic) BOOL isRetrying; // @synthesize isRetrying=_isRetrying;
+@property (nonatomic) BOOL isUsingSystemPairing; // @synthesize isUsingSystemPairing=_isUsingSystemPairing;
 @property (strong, nonatomic) NSData *pairingData; // @synthesize pairingData=_pairingData;
+@property (nonatomic) int state; // @synthesize state=_state;
 @property (nonatomic) int status; // @synthesize status=_status;
 
 - (void)copyTo:(id)arg1;

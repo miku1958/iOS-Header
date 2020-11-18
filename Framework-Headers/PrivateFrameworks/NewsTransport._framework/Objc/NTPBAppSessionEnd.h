@@ -20,6 +20,7 @@
     int _notitificationsEnabledChannelsCount;
     NSMutableArray *_paidSubscriptionChannelIds;
     int _sessionEndReason;
+    NSMutableArray *_subscribedFeedIds;
     int _topicSubscriptionCount;
     struct {
         unsigned int appSessionDuration:1;
@@ -45,18 +46,22 @@
 @property (nonatomic) int notitificationsEnabledChannelsCount; // @synthesize notitificationsEnabledChannelsCount=_notitificationsEnabledChannelsCount;
 @property (strong, nonatomic) NSMutableArray *paidSubscriptionChannelIds; // @synthesize paidSubscriptionChannelIds=_paidSubscriptionChannelIds;
 @property (nonatomic) int sessionEndReason; // @synthesize sessionEndReason=_sessionEndReason;
+@property (strong, nonatomic) NSMutableArray *subscribedFeedIds; // @synthesize subscribedFeedIds=_subscribedFeedIds;
 @property (nonatomic) int topicSubscriptionCount; // @synthesize topicSubscriptionCount=_topicSubscriptionCount;
 
 + (Class)lastVisibleViewsType;
 + (Class)notificationChannelIdsType;
 + (Class)paidSubscriptionChannelIdsType;
++ (Class)subscribedFeedIdsType;
 - (void).cxx_destruct;
 - (void)addLastVisibleViews:(id)arg1;
 - (void)addNotificationChannelIds:(id)arg1;
 - (void)addPaidSubscriptionChannelIds:(id)arg1;
+- (void)addSubscribedFeedIds:(id)arg1;
 - (void)clearLastVisibleViews;
 - (void)clearNotificationChannelIds;
 - (void)clearPaidSubscriptionChannelIds;
+- (void)clearSubscribedFeedIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -70,6 +75,8 @@
 - (id)paidSubscriptionChannelIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)paidSubscriptionChannelIdsCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)subscribedFeedIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)subscribedFeedIdsCount;
 - (void)writeTo:(id)arg1;
 
 @end

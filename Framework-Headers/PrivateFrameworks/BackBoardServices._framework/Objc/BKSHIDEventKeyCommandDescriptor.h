@@ -31,7 +31,7 @@
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (long long)describes:(id)arg1;
-- (id)description;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

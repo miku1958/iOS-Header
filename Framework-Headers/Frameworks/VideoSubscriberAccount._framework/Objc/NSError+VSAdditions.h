@@ -7,7 +7,6 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (VSAdditions)
-- (id)_secureCodingSafeObject:(id)arg1;
 - (id)vs_secureCodingSafeError;
 @end
 

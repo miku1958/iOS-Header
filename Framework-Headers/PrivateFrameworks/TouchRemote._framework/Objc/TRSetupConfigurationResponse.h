@@ -17,6 +17,7 @@
 @property (nonatomic) BOOL needsNetwork; // @synthesize needsNetwork=_needsNetwork;
 @property (copy, nonatomic) NSSet *unauthenticatedAccountServices; // @synthesize unauthenticatedAccountServices=_unauthenticatedAccountServices;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_stringFromAccountServices:(id)arg1;
 - (id)description;

@@ -6,9 +6,11 @@
 
 #import <PhotoVision/PVObject.h>
 
+#import <PhotoVision/CVMLPhotosFaceRepresentation-Protocol.h>
+
 @class NSString, PVFaceprint;
 
-@interface PVFace : PVObject
+@interface PVFace : PVObject <CVMLPhotosFaceRepresentation>
 {
     BOOL _hidden;
     BOOL _isInTrash;
@@ -18,8 +20,8 @@
     BOOL _isRightEyeClosed;
     unsigned int _faceAlgorithmVersion;
     NSString *_personLocalIdentifier;
-    unsigned long long _sourceWidth;
-    unsigned long long _sourceHeight;
+    long long _sourceWidth;
+    long long _sourceHeight;
     double _centerX;
     double _centerY;
     double _size;
@@ -80,14 +82,25 @@
 @property (nonatomic) double rightEyeX; // @synthesize rightEyeX=_rightEyeX;
 @property (nonatomic) double rightEyeY; // @synthesize rightEyeY=_rightEyeY;
 @property (nonatomic) double size; // @synthesize size=_size;
-@property (nonatomic) unsigned long long sourceHeight; // @synthesize sourceHeight=_sourceHeight;
-@property (nonatomic) unsigned long long sourceWidth; // @synthesize sourceWidth=_sourceWidth;
+@property (nonatomic) long long sourceHeight; // @synthesize sourceHeight=_sourceHeight;
+@property (nonatomic) long long sourceWidth; // @synthesize sourceWidth=_sourceWidth;
 
++ (id)faceForCVMLFaceObservation:(id)arg1 fromImage:(id)arg2 error:(id *)arg3;
++ (id)faceForCVMLFaceObservation:(id)arg1 fromImageWithPixelWidth:(unsigned long long)arg2 pixelHeight:(unsigned long long)arg3 error:(id *)arg4;
 + (id)faceWithFace:(id)arg1 copyPropertiesOption:(long long)arg2;
 - (void).cxx_destruct;
 - (void)_copyPropertiesFrom:(id)arg1 copyPropertiesOption:(long long)arg2;
+- (struct CGRect)absoluteFaceRect;
+- (struct CGRect)absoluteFaceRectForImageSize:(struct CGSize)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (double)cvmlPhotosFaceRepresentationCenterX;
+- (double)cvmlPhotosFaceRepresentationCenterY;
+- (double)cvmlPhotosFaceRepresentationSize;
+- (long long)cvmlPhotosFaceRepresentationSourceHeight;
+- (long long)cvmlPhotosFaceRepresentationSourceWidth;
 - (id)description;
+- (struct CGRect)normalizedFaceRect;
+- (BOOL)setCenterAndSizeFromNormalizedFaceRect:(struct CGRect)arg1;
 - (void)setCoordinatesAndFeaturesFromFace:(id)arg1;
 
 @end

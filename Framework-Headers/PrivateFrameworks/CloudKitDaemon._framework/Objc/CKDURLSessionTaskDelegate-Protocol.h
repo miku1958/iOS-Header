@@ -6,14 +6,14 @@
 
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
-@class NSData, NSError, NSHTTPURLResponse, NSObject, NSOperationQueue, NSString, NSURLRequest, NSURLResponse, NSURLSessionDataTask, NSURLSessionTask;
-@protocol OS_voucher;
+@class NSData, NSError, NSHTTPURLResponse, NSObject, NSString, NSURLRequest, NSURLResponse, NSURLSessionDataTask, NSURLSessionTask;
+@protocol OS_dispatch_queue, OS_voucher;
 
 @protocol CKDURLSessionTaskDelegate <NSObject>
 
-@property (readonly, nonatomic) NSOperationQueue *delegateQueue;
 @property (readonly, nonatomic) long long qualityOfService;
 @property (readonly, nonatomic) NSString *sectionID;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionCallbackQueue;
 @property (readonly, nonatomic) NSObject<OS_voucher> *voucher;
 
 - (void)URLSessionDataTask:(NSURLSessionDataTask *)arg1 didReceiveData:(NSData *)arg2;

@@ -30,8 +30,8 @@
 - (void).cxx_destruct;
 - (id)copyWithPixelFormat:(unsigned long long)arg1 options:(id)arg2 bufferAllocator:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)exportToURL:(id)arg1 error:(id *)arg2;
-- (id)exportToXCAssetWithName:(id)arg1 setAttributes:(id)arg2 textureConfigList:(id)arg3 location:(id)arg4 error:(id *)arg5;
+- (id)exportToAssetCatalogWithName:(id)arg1 location:(id)arg2 error:(id *)arg3;
+- (BOOL)exportToURL:(id)arg1 error:(id *)arg2;
 - (void)generateMipmapsForRange:(struct _NSRange)arg1 filter:(unsigned long long)arg2 error:(id *)arg3;
 - (id)initWithContentsOfURL:(id)arg1 bufferAllocator:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)initWithData:(id)arg1 bufferAllocator:(id)arg2 options:(id)arg3 error:(id *)arg4;

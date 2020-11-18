@@ -9,7 +9,7 @@
 #import <PhotosUICore/PXPeopleDataSourceDelegate-Protocol.h>
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, PHPhotoLibrary, PXPeoplePersonDataSource, PXPeopleProgressManager;
+@class NSMutableDictionary, NSString, PHPhotoLibrary, PXPeoplePersonDataSource, PXPeopleProgressManager;
 @protocol OS_dispatch_queue;
 
 @interface PXPeopleAlbumProvider : NSObject <PXPeopleDataSourceDelegate, PXPhotoLibraryUIChangeObserver>
@@ -18,27 +18,27 @@
     BOOL _didInitiatePeopleCountFetchRequest;
     BOOL _didPrepareDataSource;
     NSObject<OS_dispatch_queue> *_isolationQueue;
+    NSObject<OS_dispatch_queue> *_cacheIsolationQueue;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
     PHPhotoLibrary *_photoLibrary;
-    NSObject<OS_dispatch_queue> *_fetchedContainersIsolationQueue;
+    _Atomic int _currentRequestId;
     PXPeoplePersonDataSource *_favoriteDS;
     PXPeoplePersonDataSource *_otherDS;
-    NSMutableArray *_imageCache;
-    NSMutableDictionary *_fetchedContainers;
     PXPeopleProgressManager *_progressMgr;
     CDUnknownBlockType _requestCompletion;
     long long _cachedPeopleCount;
+    NSMutableDictionary *_imageCache;
     struct CGSize _imageSize;
 }
 
 @property (nonatomic) long long cachedPeopleCount; // @synthesize cachedPeopleCount=_cachedPeopleCount;
 @property (readonly, nonatomic, getter=isCountAvailable) BOOL countAvailable;
+@property _Atomic int currentRequestId; // @synthesize currentRequestId=_currentRequestId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PXPeoplePersonDataSource *favoriteDS; // @synthesize favoriteDS=_favoriteDS;
-@property (strong, nonatomic) NSMutableDictionary *fetchedContainers; // @synthesize fetchedContainers=_fetchedContainers;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableArray *imageCache; // @synthesize imageCache=_imageCache;
+@property (strong) NSMutableDictionary *imageCache; // @synthesize imageCache=_imageCache;
 @property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property (strong, nonatomic) PXPeoplePersonDataSource *otherDS; // @synthesize otherDS=_otherDS;
 @property (readonly, nonatomic) long long peopleCount;
@@ -49,6 +49,7 @@
 - (void).cxx_destruct;
 - (void)_appWillEnterForeground;
 - (void)_asyncAddImagesToCacheWithItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleRequestResult:(id)arg1 forRequestID:(_Atomic int)arg2 person:(id)arg3 atIndex:(long long)arg4 error:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_invalidateCache;
 - (id)_members;
 - (void)_prepareIfNeeded;

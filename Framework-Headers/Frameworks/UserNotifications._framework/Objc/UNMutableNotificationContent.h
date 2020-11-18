@@ -18,6 +18,7 @@
 @property (copy, nonatomic) NSString *categoryIdentifier; // @dynamic categoryIdentifier;
 @property (copy, nonatomic) NSString *darwinNotificationName; // @dynamic darwinNotificationName;
 @property (copy, nonatomic) NSString *darwinSnoozedNotificationName; // @dynamic darwinSnoozedNotificationName;
+@property (copy, nonatomic) NSString *defaultActionTitle; // @dynamic defaultActionTitle;
 @property (nonatomic, getter=isFromSnooze) BOOL fromSnooze; // @dynamic fromSnooze;
 @property (nonatomic) BOOL hasDefaultAction; // @dynamic hasDefaultAction;
 @property (copy, nonatomic) NSString *launchImageName; // @dynamic launchImageName;

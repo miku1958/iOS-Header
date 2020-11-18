@@ -19,15 +19,15 @@
 @property (readonly, nonatomic) NSArray *subscribed;
 @property (readonly, nonatomic) NSArray *test;
 
++ (BOOL)_appInstallationAllowed;
 - (void).cxx_destruct;
 - (id)_appDictionariesForBundleIDs:(id)arg1;
 - (id)_appDictionaryForBundleID:(id)arg1;
-- (void)_openAppWithBundleID:(id)arg1 retryCount:(long long)arg2;
+- (void)_invalidateAppDictionaryCache;
 - (void)dealloc;
 - (id)initWithAppContext:(id)arg1;
 - (void)installAppForChannel:(id)arg1:(id)arg2;
 - (void)installAppForChannel:(id)arg1:(id)arg2:(id)arg3;
-- (void)openAppWithBundleID:(id)arg1;
 
 @end
 

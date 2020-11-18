@@ -14,7 +14,6 @@
 
 @interface MTKView : UIView <NSCoding, CALayerDelegate>
 {
-    long long _frameInterval;
     BOOL _framebufferOnly;
     BOOL _presentsWithTransaction;
     BOOL _enableSetNeedsDisplay;

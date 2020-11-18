@@ -81,7 +81,9 @@
 - (BOOL)performAction:(id)arg1 forNotification:(id)arg2 withUserInfo:(id)arg3;
 - (void)playAudioMessage;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (void)preserveInputViews;
 - (BOOL)resignFirstResponder;
+- (BOOL)restoreInputViews;
 - (void)setTitle:(id)arg1;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)viewDidDisappear:(BOOL)arg1;

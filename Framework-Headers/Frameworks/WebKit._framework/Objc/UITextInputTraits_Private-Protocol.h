@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSString *autocorrectionContext;
 @property (nonatomic) BOOL contentsIsSingleValue;
 @property (nonatomic) BOOL deferBecomingResponder;
+@property (nonatomic, getter=isDevicePasscodeEntry) BOOL devicePasscodeEntry;
 @property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText;

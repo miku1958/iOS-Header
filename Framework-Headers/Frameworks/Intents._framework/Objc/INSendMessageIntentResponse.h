@@ -8,7 +8,7 @@
 
 #import <Intents/INSendMessageIntentResponseExport-Protocol.h>
 
-@class NSString, _INPBSendMessageIntentResponse;
+@class INMessage, NSString, _INPBSendMessageIntentResponse;
 
 @interface INSendMessageIntentResponse : INIntentResponse <INSendMessageIntentResponseExport>
 {
@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) INMessage *sentMessage;
 @property (readonly) Class superclass;
 
 + (BOOL)_appLaunchRequestedFromCode:(long long)arg1;

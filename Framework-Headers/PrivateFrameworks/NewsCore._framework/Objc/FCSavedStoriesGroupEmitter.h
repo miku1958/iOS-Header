@@ -30,6 +30,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)backingChannelTagIDWithAppConfig:(id)arg1;
 - (BOOL)canEmitGroupsWithType:(long long)arg1;
 - (id)initWithDesiredArticlesCount:(long long)arg1;
 - (id)operationToEmitGroupWithContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;

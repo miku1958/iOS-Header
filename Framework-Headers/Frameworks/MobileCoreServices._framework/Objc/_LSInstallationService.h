@@ -6,14 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-#import <MobileCoreServices/LSInstalationServiceProtocol-Protocol.h>
 #import <MobileCoreServices/NSXPCListenerDelegate-Protocol.h>
 
 @class NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _LSInstallationService : NSObject <LSInstalationServiceProtocol, NSXPCListenerDelegate>
+@interface _LSInstallationService : NSObject <NSXPCListenerDelegate>
 {
     NSObject<OS_dispatch_queue> *_databaseQueue;
     NSObject<OS_dispatch_queue> *_serialQueue;
@@ -30,8 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)removeSystemApplicationWithBundleIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)restoreSystemApplicationWithBundleIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end
 

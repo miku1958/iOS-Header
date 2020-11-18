@@ -6,29 +6,24 @@
 
 #import <NewsCore/FCPrivateZoneController.h>
 
-#import <NewsCore/FCMutedTagIDsProviding-Protocol.h>
+@class FCMutexLock, NSDictionary, NSMutableDictionary, NSSet;
 
-@class NSDictionary, NSMutableDictionary, NSSet, NSString;
-
-@interface FCSubscriptionList : FCPrivateZoneController <FCMutedTagIDsProviding>
+@interface FCSubscriptionList : FCPrivateZoneController
 {
-    NSDictionary *_subscriptionsBySubscriptionID;
-    NSSet *_subscribedTagIDs;
     NSDictionary *_pendingSubscriptionsBySubscriptionID;
-    NSSet *_mutedSubscribedTagIDs;
+    NSSet *_subscribedTagIDs;
+    NSSet *_mutedTagIDs;
+    NSDictionary *_subscriptionsBySubscriptionID;
     NSMutableDictionary *_mutableSubscriptionsBySubscriptionID;
+    FCMutexLock *_itemsLock;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) FCMutexLock *itemsLock; // @synthesize itemsLock=_itemsLock;
 @property (strong, nonatomic) NSMutableDictionary *mutableSubscriptionsBySubscriptionID; // @synthesize mutableSubscriptionsBySubscriptionID=_mutableSubscriptionsBySubscriptionID;
-@property (copy, nonatomic) NSSet *mutedSubscribedTagIDs; // @synthesize mutedSubscribedTagIDs=_mutedSubscribedTagIDs;
-@property (readonly, copy, nonatomic) NSSet *mutedTagIDs;
+@property (copy, nonatomic) NSSet *mutedTagIDs; // @synthesize mutedTagIDs=_mutedTagIDs;
 @property (copy, nonatomic) NSDictionary *pendingSubscriptionsBySubscriptionID; // @synthesize pendingSubscriptionsBySubscriptionID=_pendingSubscriptionsBySubscriptionID;
 @property (copy, nonatomic) NSSet *subscribedTagIDs; // @synthesize subscribedTagIDs=_subscribedTagIDs;
 @property (copy, nonatomic) NSDictionary *subscriptionsBySubscriptionID; // @synthesize subscriptionsBySubscriptionID=_subscriptionsBySubscriptionID;
-@property (readonly) Class superclass;
 
 + (long long)commandQueueUrgency;
 + (id)commandStoreFileName;
@@ -44,29 +39,31 @@
 + (id)subscriptionIDForUrl:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addRemoteSubscriptions:(id)arg1;
-- (void)_localAddSubscriptions:(id)arg1 changeSubscriptions:(id)arg2 removeSubscriptions:(id)arg3;
+- (void)_localAddSubscriptions:(id)arg1 changeSubscriptions:(id)arg2 removeSubscriptions:(id)arg3 eventInitiationLevel:(long long)arg4;
 - (void)_modifyRemoteSubscriptions:(id)arg1;
 - (void)_regenerateSortedSubscriptions;
 - (void)_removeRemoteSubscription:(id)arg1;
 - (id)_subscriptionFromRecord:(id)arg1;
-- (BOOL)addMutedSubscriptionForTagID:(id)arg1;
+- (BOOL)addMutedSubscriptionForTagID:(id)arg1 eventInitiationLevel:(long long)arg2;
+- (BOOL)addMutedSubscriptionForTagID:(id)arg1 groupID:(id)arg2 eventInitiationLevel:(long long)arg3;
 - (void)addObserver:(id)arg1;
 - (void)addPendingSubscription:(id)arg1;
-- (id)addSubscriptionForTagID:(id)arg1;
-- (id)addSubscriptionForTagID:(id)arg1 notificationsEnabled:(BOOL)arg2;
-- (id)addSubscriptionForTagID:(id)arg1 replacingPendingSubscriptionWithPollingURL:(id)arg2;
+- (id)addSubscriptionForTagID:(id)arg1 eventInitiationLevel:(long long)arg2;
+- (id)addSubscriptionForTagID:(id)arg1 notificationsEnabled:(BOOL)arg2 eventInitiationLevel:(long long)arg3;
+- (id)addSubscriptionForTagID:(id)arg1 replacingPendingSubscriptionWithPollingURL:(id)arg2 eventInitiationLevel:(long long)arg3;
 - (BOOL)canAddSubscription;
 - (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
 - (BOOL)hasMutedSubscriptionForTagID:(id)arg1;
 - (BOOL)hasNotificationsEnabledForTagID:(id)arg1;
 - (BOOL)hasSubscriptionForTagID:(id)arg1;
+- (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 recordZone:(id)arg3 storeDirectory:(id)arg4;
 - (void)loadLocalCachesFromStore;
 - (void)modifyPendingSubscription:(id)arg1;
 - (id)pendingSubscriptionForPollingURL:(id)arg1;
-- (void)removeMutedSubscriptionForTagID:(id)arg1;
+- (void)removeMutedSubscriptionForTagID:(id)arg1 eventInitiationLevel:(long long)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)removePendingSubscription:(id)arg1;
-- (void)removeSubscriptionForTagID:(id)arg1;
+- (void)removeSubscriptionForTagID:(id)arg1 eventInitiationLevel:(long long)arg2;
 - (BOOL)setNotificationsEnabled:(BOOL)arg1 forTagID:(id)arg2;
 - (id)subscriptionForTagID:(id)arg1;
 

@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsApplicationSceneView;
 - (BOOL)_accessibilityIsFirstElementForFocus;
+- (BOOL)_accessibilityUseAccessibilityFrameForHittest;
 - (id)accessibilityElements;
 
 @end

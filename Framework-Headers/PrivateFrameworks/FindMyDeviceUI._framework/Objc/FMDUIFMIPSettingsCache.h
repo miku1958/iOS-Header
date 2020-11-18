@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)_loadFMIPState;
 - (void)_loadLowBatteryState;
 - (id)init;
+- (void)invalidateCache;
 
 @end
 

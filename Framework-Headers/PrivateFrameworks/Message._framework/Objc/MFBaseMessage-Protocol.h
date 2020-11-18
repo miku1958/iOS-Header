@@ -13,11 +13,11 @@
 @property (readonly, nonatomic) unsigned int dateSentInterval;
 @property (readonly, nonatomic) BOOL deleted;
 @property (readonly, nonatomic) BOOL flagged;
-@property (readonly, nonatomic) BOOL isVIP;
 @property (readonly, nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
 @property (readonly, nonatomic) unsigned int mailboxID;
 @property (readonly, nonatomic) long long messageIDHash;
 @property (readonly, nonatomic) BOOL read;
+@property (readonly, nonatomic) BOOL senderVIP;
 @property (readonly, nonatomic) unsigned int uid;
 
 @end

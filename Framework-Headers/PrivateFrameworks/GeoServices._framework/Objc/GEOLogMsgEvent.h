@@ -8,13 +8,15 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLogMsgEventCacheHit, GEOLogMsgEventDirections, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventNetwork, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStaleResource, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventUserAction, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray;
+@class GEOLogMsgEventCacheHit, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventDirections, GEOLogMsgEventFullNavTrace, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventNetwork, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStaleResource, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventUserAction, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray;
 
 @interface GEOLogMsgEvent : PBCodable <NSCopying>
 {
     GEOLogMsgEventCacheHit *_cacheHitEvent;
+    GEOLogMsgEventClientACSuggestions *_clientAcSuggestions;
     GEOLogMsgEventDirections *_directionsEvent;
     int _eventType;
+    GEOLogMsgEventFullNavTrace *_fullNavTrace;
     GEOLogMsgEventListInteractionSession *_listInteractionSession;
     GEOLogMsgEventLogFramework *_logFrameworkEvent;
     NSMutableArray *_logMsgStates;
@@ -42,11 +44,15 @@
 }
 
 @property (strong, nonatomic) GEOLogMsgEventCacheHit *cacheHitEvent; // @synthesize cacheHitEvent=_cacheHitEvent;
+@property (strong, nonatomic) GEOLogMsgEventClientACSuggestions *clientAcSuggestions; // @synthesize clientAcSuggestions=_clientAcSuggestions;
 @property (strong, nonatomic) GEOLogMsgEventDirections *directionsEvent; // @synthesize directionsEvent=_directionsEvent;
 @property (nonatomic) int eventType; // @synthesize eventType=_eventType;
+@property (strong, nonatomic) GEOLogMsgEventFullNavTrace *fullNavTrace; // @synthesize fullNavTrace=_fullNavTrace;
 @property (readonly, nonatomic) BOOL hasCacheHitEvent;
+@property (readonly, nonatomic) BOOL hasClientAcSuggestions;
 @property (readonly, nonatomic) BOOL hasDirectionsEvent;
 @property (nonatomic) BOOL hasEventType;
+@property (readonly, nonatomic) BOOL hasFullNavTrace;
 @property (readonly, nonatomic) BOOL hasListInteractionSession;
 @property (readonly, nonatomic) BOOL hasLogFrameworkEvent;
 @property (readonly, nonatomic) BOOL hasMapLaunchEvent;
@@ -109,6 +115,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isFullCarPlayStateAllowed;
+- (BOOL)isFullExperimentsStateAllowed;
 - (BOOL)isNavigationSessionAllowed;
 - (id)logMsgStateAtIndex:(unsigned long long)arg1;
 - (id)logMsgStateOfType:(int)arg1;

@@ -15,6 +15,8 @@
 {
     NSURL *_bookmarkURL;
     NSURL *_serverID;
+    NSURL *_sourceURL;
+    NSURL *_destinationURL;
     NSString *_name;
     NSString *_syncKey;
     NSMutableString *_appleAttributeString;
@@ -31,9 +33,11 @@
 @property (readonly, nonatomic) NSData *dataPayload;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSURL *serverID; // @synthesize serverID=_serverID;
+@property (strong, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *syncKey; // @synthesize syncKey=_syncKey;
 

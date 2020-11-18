@@ -56,6 +56,7 @@
 - (CDStruct_c3b9c2ee)convertPointToMapPoint:(struct CGPoint)arg1;
 - (void)debugHighlightFeatureMarker:(const shared_ptr_430519ce *)arg1;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
+- (NSString *)debugLabelString:(BOOL)arg1;
 - (void)deselectLabelMarker;
 - (void)deselectTransitLineMarker;
 - (NSString *)detailedDescription;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     MNNavigationServiceReconnector *_reconnector;
     NSDate *_lastReconnectionDate;
     MNSettings *_settings;
+    BOOL _navigationStopCalled;
     id<MNNavigationServiceRemoteProxyDelegate> _delegate;
 }
 

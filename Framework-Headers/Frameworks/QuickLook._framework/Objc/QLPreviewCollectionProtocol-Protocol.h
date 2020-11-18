@@ -9,6 +9,8 @@
 
 @protocol QLPreviewCollectionProtocol
 - (void)configureWithNumberOfItems:(long long)arg1 currentPreviewItemIndex:(unsigned long long)arg2 itemProvider:(id<QLPreviewItemProvider>)arg3 stateManager:(id<QLPreviewControllerStateProtocol>)arg4;
+- (void)hostApplicationDidBecomeActive;
+- (void)hostApplicationDidEnterBackground:(BOOL)arg1;
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)invalidatePreviewCollection;
 - (void)keyCommandWasPerformed:(UIKeyCommand *)arg1;

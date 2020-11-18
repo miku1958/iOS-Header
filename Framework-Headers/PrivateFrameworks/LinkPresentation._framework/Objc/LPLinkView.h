@@ -16,6 +16,7 @@
 
 @interface LPLinkView : UIView <UIGestureRecognizerDelegate, CAAnimationDelegate, LPTapToLoadViewDelegate, LPThemeClient>
 {
+    unsigned int _loggingID;
     LPMetadataProvider *_pendingMetadataProvider;
     BOOL _mayReceiveAdditionalMetadata;
     BOOL _usesComputedPresentationProperties;
@@ -69,7 +70,6 @@
 @property (nonatomic, setter=_setDisablePlayback:) BOOL _disablePlayback; // @synthesize _disablePlayback;
 @property (nonatomic, setter=_setDisableTapGesture:) BOOL _disableTapGesture; // @synthesize _disableTapGesture;
 @property (nonatomic, setter=_setForceFlexibleWidth:) BOOL _forceFlexibleWidth; // @synthesize _forceFlexibleWidth;
-@property (readonly, copy, nonatomic) NSString *_storeIdentifier;
 @property (nonatomic, setter=_setUsesDeferredLayout:) BOOL _usesDeferredLayout; // @synthesize _usesDeferredLayout;
 @property (nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 @property (readonly, copy) NSString *debugDescription;
@@ -82,6 +82,7 @@
 - (void).cxx_destruct;
 - (void)_addHighlightRecognizersToView:(id)arg1;
 - (void)_addTapRecognizerToView:(id)arg1;
+- (void)_commonInitWithURL:(id)arg1;
 - (void)_computePresentationPropertiesFromMetadataIfNeeded;
 - (id)_createCaptionBar;
 - (id)_createMediaBottomCaptionBarView;

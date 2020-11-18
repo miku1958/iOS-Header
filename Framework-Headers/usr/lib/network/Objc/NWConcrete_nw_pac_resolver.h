@@ -16,6 +16,8 @@
     struct __CFURL *endpointURL;
     struct __CFURL *pacURL;
     struct __CFString *pacScript;
+    struct __CFData *auditToken;
+    struct __CFString *bundleIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -14,6 +14,7 @@
 
 @interface LPiTunesMediaSoftwareMetadata : LPSpecializationMetadata <LPLinkMetadataPresentationTransformerAdaptor, LPLinkMetadataPreviewTransformerAdaptor, LPLinkMetadataStoreTransformerAdaptor>
 {
+    BOOL _isMessagesOnlyApp;
     NSString *_storeFrontIdentifier;
     NSString *_storeIdentifier;
     NSString *_name;
@@ -21,10 +22,13 @@
     NSString *_platform;
     LPImage *_icon;
     NSArray *_screenshots;
+    LPImage *_messagesAppIcon;
 }
 
 @property (copy, nonatomic) NSString *genre; // @synthesize genre=_genre;
 @property (strong, nonatomic) LPImage *icon; // @synthesize icon=_icon;
+@property (nonatomic) BOOL isMessagesOnlyApp; // @synthesize isMessagesOnlyApp=_isMessagesOnlyApp;
+@property (strong, nonatomic) LPImage *messagesAppIcon; // @synthesize messagesAppIcon=_messagesAppIcon;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *platform; // @synthesize platform=_platform;
 @property (strong, nonatomic) NSArray *screenshots; // @synthesize screenshots=_screenshots;

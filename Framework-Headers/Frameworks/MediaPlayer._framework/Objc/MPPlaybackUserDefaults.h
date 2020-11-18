@@ -25,6 +25,8 @@
 @property (readonly, nonatomic) int musicEQPreset; // @synthesize musicEQPreset=_musicEQPreset;
 @property (nonatomic) long long musicRepeatType;
 @property (nonatomic) long long musicShuffleType;
+@property (readonly, nonatomic) unsigned long long preferredVideosAssetQualityOnCellular;
+@property (readonly, nonatomic) unsigned long long preferredVideosAssetQualityOnWifi;
 @property (readonly, nonatomic) BOOL soundCheckEnabled;
 
 + (id)standardUserDefaults;

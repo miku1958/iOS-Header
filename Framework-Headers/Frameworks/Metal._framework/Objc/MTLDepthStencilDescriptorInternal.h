@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (unsigned long long)depthCompareFunction;
 - (id)description;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)frontFaceStencil;
 - (unsigned long long)hash;
 - (id)init;

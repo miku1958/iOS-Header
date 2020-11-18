@@ -4,20 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/LSApplicationWorkspaceObserver.h>
+#import <Foundation/NSObject.h>
 
-@class NSHashTable, NSObject;
+#import <MobileCoreServices/LSInternalWorkspaceObserverProtocol-Protocol.h>
+#import <MobileCoreServices/NSSecureCoding-Protocol.h>
+
+@class NSHashTable, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface LSApplicationWorkspaceRemoteObserver : LSApplicationWorkspaceObserver
+@interface LSApplicationWorkspaceRemoteObserver : NSObject <LSInternalWorkspaceObserverProtocol, NSSecureCoding>
 {
     BOOL _observinglsd;
+    NSUUID *_uuid;
     NSHashTable *_observers;
     NSObject<OS_dispatch_queue> *_progressSubscriptionsQueue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+
++ (BOOL)supportsSecureCoding;
 - (void)addLocalObserver:(id)arg1;
+- (void)applicationIconDidChange:(id)arg1;
 - (void)applicationInstallsArePrioritized:(id)arg1 arePaused:(id)arg2;
 - (void)applicationInstallsDidCancel:(id)arg1;
 - (void)applicationInstallsDidChange:(id)arg1;
@@ -35,7 +47,9 @@ __attribute__((visibility("hidden")))
 - (void)applicationsWillUninstall:(id)arg1;
 - (unsigned long long)currentObserverCount;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isObservinglsd;
 - (id)localObservers;
 - (BOOL)messageObserversWithSelector:(SEL)arg1 andApps:(id)arg2;

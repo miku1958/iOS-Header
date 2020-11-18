@@ -31,7 +31,9 @@
 + (Class)contactType;
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsAudioRoute:(id)arg1;
 - (void)addContact:(id)arg1;
+- (id)audioRouteAsString:(int)arg1;
 - (void)clearContacts;
 - (id)contactAtIndex:(unsigned long long)arg1;
 - (unsigned long long)contactsCount;

@@ -25,11 +25,13 @@
     BOOL _hasPersistentPreferences;
 }
 
+@property (readonly, nonatomic) BOOL allowsAlternateIcons;
 @property (readonly, nonatomic, getter=isAppleInternal) BOOL appleInternal; // @synthesize appleInternal=_appleInternal;
 @property (readonly) unsigned int currentSchemaVersion;
 @property (readonly) double databaseSaveInterval;
 @property (readonly) double databaseSaveLatency;
 @property (readonly) NSURL *databaseStoreFileURL;
+@property (readonly) NSURL *dbRecoveryFileURL;
 @property (readonly) NSURL *dbSentinelFileURL;
 @property (readonly) BOOL hasPersistentPreferences; // @synthesize hasPersistentPreferences=_hasPersistentPreferences;
 @property BOOL hasServer; // @synthesize hasServer=_hasServer;

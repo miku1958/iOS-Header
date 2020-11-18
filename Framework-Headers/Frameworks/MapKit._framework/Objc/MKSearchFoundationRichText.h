@@ -9,15 +9,18 @@
 __attribute__((visibility("hidden")))
 @interface MKSearchFoundationRichText : SFRichText
 {
-    CDUnknownBlockType _requestUIUpdateBlock;
+    CDUnknownBlockType _completionHandlers;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType requestUIUpdateBlock; // @synthesize requestUIUpdateBlock=_requestUIUpdateBlock;
+@property (copy, nonatomic) CDUnknownBlockType completionHandlers; // @synthesize completionHandlers=_completionHandlers;
 
 - (void).cxx_destruct;
+- (void)_invokeCompletionHandlers;
 - (id)initRichTextTitleWithMapItem:(id)arg1 resultsType:(unsigned long long)arg2;
 - (id)initWithString:(id)arg1;
+- (BOOL)isRichTextResolved;
 - (void)loadRichTextWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)setText:(id)arg1;
 
 @end
 

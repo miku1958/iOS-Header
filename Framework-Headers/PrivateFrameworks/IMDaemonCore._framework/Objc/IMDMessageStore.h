@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSNumber, NSString, NSTimer;
 
@@ -45,6 +45,7 @@
 - (id)chatsForMessage:(id)arg1;
 - (id)chatsForMessageGUID:(id)arg1;
 - (void)cleanseAttachments;
+- (void)databaseChatSpamUpdated:(id)arg1;
 - (void)dealloc;
 - (id)deleteMessageGUIDs:(id)arg1;
 - (id)deleteMessageGUIDs:(id)arg1 inChat:(id)arg2;

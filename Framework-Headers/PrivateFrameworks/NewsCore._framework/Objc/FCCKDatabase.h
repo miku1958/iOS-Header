@@ -27,7 +27,6 @@
     NSArray *_recordMiddleware;
     NSMutableArray *_pendingOperations;
     long long _status;
-    CDUnknownBlockType _startUpCompletion;
 }
 
 @property (readonly, nonatomic) long long containerEnvironment;
@@ -46,7 +45,6 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic, getter=isReady) BOOL ready; // @synthesize ready=_ready;
 @property (strong, nonatomic) NSArray *recordMiddleware; // @synthesize recordMiddleware=_recordMiddleware;
-@property (copy, nonatomic) CDUnknownBlockType startUpCompletion; // @synthesize startUpCompletion=_startUpCompletion;
 @property (strong, nonatomic) NSArray *startUpMiddleware; // @synthesize startUpMiddleware=_startUpMiddleware;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
@@ -64,7 +62,7 @@
 - (BOOL)_isEnabled;
 - (id)_mapObjects:(id)arg1 withRecordMiddlewareBlock:(CDUnknownBlockType)arg2;
 - (id)_mapRecords:(id)arg1 client:(BOOL)arg2;
-- (void)_performStartUpWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performStartUp;
 - (BOOL)_preflightOperation:(id)arg1;
 - (void)_preflightRecordsInFetchOperation:(id)arg1;
 - (void)_preflightRecordsInModifyOperation:(id)arg1;

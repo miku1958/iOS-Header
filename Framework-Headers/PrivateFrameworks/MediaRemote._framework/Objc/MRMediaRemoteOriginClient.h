@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MRNowPlayingArtwork, NSArray, NSDictionary, NSMutableDictionary;
+@class MRNowPlayingArtwork, MRPlaybackQueueOriginClient, NSArray, NSDictionary, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MRMediaRemoteOriginClient : NSObject
@@ -24,9 +24,10 @@
     NSMutableDictionary *_transactionCallbacks;
     unsigned int _routeDiscoveryMode;
     NSArray *_applicationPickedRoutes;
-    CDUnknownBlockType _playbackQueueCallback;
+    NSString *_parentApplication;
     CDUnknownBlockType _videoThumbnailsCallback;
     CDUnknownBlockType _audioAmplitudeSamplesCallback;
+    MRPlaybackQueueOriginClient *_playbackQueueClient;
 }
 
 @property (copy, nonatomic) NSArray *applicationPickedRoutes; // @synthesize applicationPickedRoutes=_applicationPickedRoutes;
@@ -37,7 +38,8 @@
 @property (strong, nonatomic) MRNowPlayingArtwork *nowPlayingArtwork; // @synthesize nowPlayingArtwork=_nowPlayingArtwork;
 @property (copy, nonatomic) NSDictionary *nowPlayingInfo; // @synthesize nowPlayingInfo=_nowPlayingInfo;
 @property (readonly, nonatomic) struct _MROrigin *origin; // @synthesize origin=_origin;
-@property (copy, nonatomic) CDUnknownBlockType playbackQueueCallback; // @synthesize playbackQueueCallback=_playbackQueueCallback;
+@property (copy, nonatomic) NSString *parentApplication; // @synthesize parentApplication=_parentApplication;
+@property (readonly, nonatomic) MRPlaybackQueueOriginClient *playbackQueueClient; // @synthesize playbackQueueClient=_playbackQueueClient;
 @property (nonatomic) unsigned int routeDiscoveryMode; // @synthesize routeDiscoveryMode=_routeDiscoveryMode;
 @property (copy, nonatomic) NSArray *supportedCommands; // @synthesize supportedCommands=_supportedCommands;
 @property (copy, nonatomic) CDUnknownBlockType videoThumbnailsCallback; // @synthesize videoThumbnailsCallback=_videoThumbnailsCallback;
@@ -45,11 +47,12 @@
 - (void)_avSystemControllerServerConnectionDiedNotification:(id)arg1;
 - (void)_registerDefaultCallbacks;
 - (void)addCommandHandlerBlock:(CDUnknownBlockType)arg1 forKey:(id)arg2;
+- (void)addTransactionCallback:(CDUnknownBlockType)arg1 forName:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)initWithOrigin:(struct _MROrigin *)arg1;
 - (void)removeCommandHandlerBlockForKey:(id)arg1;
 - (void)setTransactionCallback:(CDUnknownBlockType)arg1 forName:(unsigned long long)arg2;
-- (CDUnknownBlockType)transactionCallbackForName:(unsigned long long)arg1;
+- (id)transactionCallbacksForName:(unsigned long long)arg1;
 
 @end
 

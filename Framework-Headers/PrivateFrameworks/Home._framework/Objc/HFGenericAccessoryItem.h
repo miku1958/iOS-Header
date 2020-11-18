@@ -14,6 +14,7 @@
 
 @interface HFGenericAccessoryItem : HFItem <HFServiceLikeItem, HFServiceLikeBuilderCreating>
 {
+    id<HFCharacteristicValueSource> _valueSource;
     HMAccessory *_accessory;
 }
 
@@ -23,7 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource;
+@property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
@@ -33,7 +34,7 @@
 - (id)copyWithValueSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)incrementalStateControlItem;
-- (id)initWithAccessory:(id)arg1;
+- (id)initWithAccessory:(id)arg1 valueSource:(id)arg2;
 - (id)primaryStateControlItem;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)services;

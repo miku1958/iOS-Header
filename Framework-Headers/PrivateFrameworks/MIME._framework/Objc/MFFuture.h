@@ -45,7 +45,7 @@
 - (BOOL)_nts_isFinished;
 - (void)addFailureBlock:(CDUnknownBlockType)arg1;
 - (void)addSuccessBlock:(CDUnknownBlockType)arg1;
-- (BOOL)cancel;
+- (void)cancel;
 - (void)dealloc;
 - (void)didCancel;
 - (BOOL)finishWithError:(id)arg1;
@@ -62,6 +62,7 @@
 - (id)resultBeforeDate:(id)arg1 error:(id *)arg2;
 - (id)resultWithTimeout:(double)arg1 error:(id *)arg2;
 - (id)then:(CDUnknownBlockType)arg1;
+- (BOOL)tryCancel;
 
 @end
 

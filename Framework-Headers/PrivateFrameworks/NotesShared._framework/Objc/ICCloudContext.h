@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKContainer, ICSelectorDelayer, NSDate, NSDictionary, NSMutableSet, NSOperationQueue, NSTimer;
+@class CKContainer, ICSelectorDelayer, NSDate, NSDictionary, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSTimer;
 @protocol ICCloudContextDelegate, OS_dispatch_queue;
 
 @interface ICCloudContext : NSObject
@@ -27,6 +27,7 @@
     NSObject<OS_dispatch_queue> *_processingQueue;
     NSMutableSet *_objectIDsToRetry;
     NSTimer *_retryTimer;
+    NSMutableDictionary *_retryCountsByOperationType;
     NSMutableSet *_objectIDsToProcess;
     ICSelectorDelayer *_processingSelectorDelayer;
     ICSelectorDelayer *_pollingSelectorDelayer;
@@ -55,6 +56,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 @property (strong) ICSelectorDelayer *processingSelectorDelayer; // @synthesize processingSelectorDelayer=_processingSelectorDelayer;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
+@property (strong, nonatomic) NSMutableDictionary *retryCountsByOperationType; // @synthesize retryCountsByOperationType=_retryCountsByOperationType;
 @property (strong) NSTimer *retryTimer; // @synthesize retryTimer=_retryTimer;
 @property (strong) NSMutableSet *subscribedSubscriptionIDs; // @synthesize subscribedSubscriptionIDs=_subscribedSubscriptionIDs;
 @property (nonatomic) BOOL syncDisabledByServer; // @synthesize syncDisabledByServer=_syncDisabledByServer;
@@ -94,6 +96,7 @@
 - (void)cancelEverythingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)checkForLongLivedOperations;
 - (void)clearPendingActivity;
+- (void)clearRetryCountForOperationType:(id)arg1;
 - (void)clearSubscribedSubscriptionIDs;
 - (void)clearZoneFetchState;
 - (void)cloudKitAccountChanged:(id)arg1;
@@ -133,6 +136,8 @@
 - (void)handleGenericPartialFailuresForError:(id)arg1 operation:(id)arg2;
 - (void)handleNotification:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)hasPendingOperations;
+- (void)incrementOrClearRetryCountForOperationType:(id)arg1 error:(id)arg2;
+- (void)incrementRetryCountForOperationType:(id)arg1;
 - (id)init;
 - (BOOL)isCloudKitAccountAvailable;
 - (BOOL)isFetchingAllRecordZones;
@@ -186,7 +191,7 @@
 - (void)updateCloudContextState;
 - (void)updateConfiguration;
 - (void)updateSelectorDelayers;
-- (void)updateSubscriptions;
+- (void)updateSubscriptionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

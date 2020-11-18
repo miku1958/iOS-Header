@@ -6,7 +6,7 @@
 
 #import <SpringBoardFoundation/NSObject-Protocol.h>
 
-@class NSString;
+@class NSError, NSString;
 
 @protocol SBFAuthenticationPolicy <NSObject>
 - (BOOL)allowAuthenticationRevocation;
@@ -17,5 +17,6 @@
 @optional
 - (void)cachePasscode:(NSString *)arg1;
 - (void)clearPasscodeCache;
+- (void)passcodeAuthenticationFailedWithError:(NSError *)arg1;
 @end
 

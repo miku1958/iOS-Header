@@ -17,21 +17,21 @@ __attribute__((visibility("hidden")))
     NSOperationQueue *_queue;
     NSMutableArray *_queuedFetches;
     NSMutableArray *_runningFetches;
-    NSObject<OS_dispatch_source> *_timerSource;
+    NSObject<OS_dispatch_source> *_fetchSource;
 }
 
 @property (weak, nonatomic) CKDClientContext *context; // @synthesize context=_context;
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *fetchSource; // @synthesize fetchSource=_fetchSource;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *opQueue; // @synthesize opQueue=_opQueue;
 @property (strong, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMutableArray *queuedFetches; // @synthesize queuedFetches=_queuedFetches;
 @property (strong, nonatomic) NSMutableArray *runningFetches; // @synthesize runningFetches=_runningFetches;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *timerSource; // @synthesize timerSource=_timerSource;
 
 - (void).cxx_destruct;
-- (void)_lockedFireReadyQueuedFetches;
+- (void)_lockedFetchesAreReady;
 - (id)_lockedGetQueuedFetchForOperation:(id)arg1 ofClass:(Class)arg2;
-- (void)_lockedRescheduleQueuedFetchesTimer;
 - (void)dealloc;
+- (BOOL)fetchRequestForExistingOperation:(id)arg1 isDependentOnOperation:(id)arg2;
 - (id)init;
 - (id)initWithContext:(id)arg1;
 - (void)requestFetchOfRecordWithID:(id)arg1 forOperation:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

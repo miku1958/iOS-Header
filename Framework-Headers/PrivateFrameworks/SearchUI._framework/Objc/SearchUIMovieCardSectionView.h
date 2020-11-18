@@ -4,23 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUICardSectionView.h>
+#import <SearchUI/SearchUILayoutFreeSectionView.h>
 
-@class SearchUIMovieCardSectionBuyButtonView;
+@class SFMediaInfoCardSection;
 
-@interface SearchUIMovieCardSectionView : SearchUICardSectionView
+@interface SearchUIMovieCardSectionView : SearchUILayoutFreeSectionView
 {
-    SearchUIMovieCardSectionBuyButtonView *_watchListButton;
-    SearchUIMovieCardSectionBuyButtonView *_playButton;
 }
 
-@property (strong) SearchUIMovieCardSectionBuyButtonView *playButton; // @synthesize playButton=_playButton;
-@property (strong) SearchUIMovieCardSectionBuyButtonView *watchListButton; // @synthesize watchListButton=_watchListButton;
+@property (strong) SFMediaInfoCardSection *section; // @dynamic section;
 
-- (void).cxx_destruct;
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2;
-- (void)lookupWatchListStatusForCardSection:(id)arg1;
-- (void)updateButtonsIsWatchListed:(BOOL)arg1 playables:(id)arg2 continuationText:(id)arg3;
+- (id)buttonForChannelDetails:(id)arg1 punchoutURLs:(id)arg2 isEntitled:(BOOL)arg3 isContinuing:(BOOL)arg4 isContainerItem:(BOOL)arg5 seasonNumber:(id)arg6 episodeNumber:(id)arg7;
+- (id)buttonForOffer:(id)arg1 playable:(id)arg2;
+- (id)buttonForPlayable:(id)arg1;
+- (id)buttonWithTitle:(id)arg1 subtitle:(id)arg2 punchoutURL:(id)arg3;
+- (id)buttonsForPlayables:(id)arg1 channels:(id)arg2 currentEpisode:(id)arg3 isUpNextable:(BOOL)arg4 isUpNexted:(BOOL)arg5;
+- (BOOL)channelHasBeenSeen:(id)arg1 seenChannels:(id)arg2;
+- (void)fetchButtonsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
 
 @end
 

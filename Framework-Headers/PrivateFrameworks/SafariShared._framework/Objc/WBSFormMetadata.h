@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <SafariShared/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSDictionary, NSString, NSURL;
 
-@interface WBSFormMetadata : NSObject
+@interface WBSFormMetadata : NSObject <NSSecureCoding>
 {
     BOOL _allowsAutocomplete;
     BOOL _containsActiveElement;
@@ -27,7 +29,6 @@
     long long _uniqueID;
     NSString *_oldPasswordElementUniqueID;
     NSString *_passwordElementUniqueID;
-    NSDictionary *_radioButtonInfo;
     NSString *_textSample;
     NSString *_userNameElementUniqueID;
     unsigned long long _requestType;
@@ -46,7 +47,6 @@
 @property (readonly, nonatomic) BOOL isSearchForm; // @synthesize isSearchForm=_isSearchForm;
 @property (readonly, copy, nonatomic) NSString *oldPasswordElementUniqueID; // @synthesize oldPasswordElementUniqueID=_oldPasswordElementUniqueID;
 @property (readonly, copy, nonatomic) NSString *passwordElementUniqueID; // @synthesize passwordElementUniqueID=_passwordElementUniqueID;
-@property (readonly, copy, nonatomic) NSDictionary *radioButtonInfo; // @synthesize radioButtonInfo=_radioButtonInfo;
 @property (readonly, nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (readonly, copy, nonatomic) NSString *textSample; // @synthesize textSample=_textSample;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
@@ -56,8 +56,15 @@
 @property (readonly, nonatomic) BOOL usesRelAsync; // @synthesize usesRelAsync=_usesRelAsync;
 @property (readonly, nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_init;
+- (void)encodeWithCoder:(id)arg1;
+- (id)formMetadataByReplacingControlsWith:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithJSValue:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

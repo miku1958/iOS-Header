@@ -18,6 +18,7 @@
     long long _feedType;
     NSString *_identifier;
     id<FCContentContext> _context;
+    NSArray *_otherArticleIDs;
 }
 
 @property (readonly, nonatomic) NSString *backingChannelID;
@@ -45,6 +46,7 @@
 @property (readonly, nonatomic) BOOL isSubscribable;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSArray *offlineFeedGroupEmitters;
+@property (strong, nonatomic) NSArray *otherArticleIDs; // @synthesize otherArticleIDs=_otherArticleIDs;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<FCFeedTheming> theme;
 
@@ -58,12 +60,15 @@
 - (id)init;
 - (id)initWithIdentifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isMutedWithSubscriptionController:(id)arg1;
 - (BOOL)isSubscribedToWithSubscriptionController:(id)arg1;
 - (id)latestHeadlineResultsWithContext:(id)arg1;
+- (void)prepareToFilterFeedGroupEmittersWithCallbackQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)shouldFilterFeedGroupEmitter:(id)arg1;
 - (id)streamOfHeadlinesWithIDs:(id)arg1 context:(id)arg2 cachedOnly:(BOOL)arg3 maxCachedAge:(double)arg4;
 - (id)streamOfLatestHeadlinesWithContext:(id)arg1;
-- (BOOL)subscribeToWithSubscriptionController:(id)arg1 error:(id *)arg2;
-- (void)unsubscribeToWithSubscriptionController:(id)arg1;
+- (BOOL)subscribeToWithSubscriptionController:(id)arg1 eventInitiationLevel:(long long)arg2 error:(id *)arg3;
+- (void)unsubscribeToWithSubscriptionController:(id)arg1 eventInitiationLevel:(long long)arg2;
 
 @end
 

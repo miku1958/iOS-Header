@@ -19,8 +19,6 @@
 - (oneway void)deleteAccountWithIdentifier:(NSString *)arg1;
 - (oneway void)disableDESWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)fetchEventRecordsFromAnalyticsStoreAtPath:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (oneway void)fetchSiriDisabledAppIDsWithCompletion:(void (^)(NSArray *))arg1;
-- (oneway void)fetchSiriIntegrationEnabledForAppID:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (oneway void)fetchSupportedLanguagesWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (oneway void)getAvailableVoicesIncludingAssetInfo:(BOOL)arg1 completion:(void (^)(NSArray *))arg2;
 - (oneway void)getOfflineDictationStatusWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
@@ -30,6 +28,7 @@
 - (oneway void)runAdaptationRecipeEvaluation:(NSDictionary *)arg1 language:(NSString *)arg2 completion:(void (^)(NSArray *, NSArray *))arg3;
 - (oneway void)runLiveAdaptationRecipeEvaluationWithBaseURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)saveAccountWithMessageDictionary:(NSDictionary *)arg1 setActive:(BOOL)arg2;
+- (oneway void)sendMetricsToServerWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)setActiveAccountIdentifier:(NSString *)arg1;
 - (oneway void)setAssistantEnabled:(BOOL)arg1;
 - (oneway void)setDESLotteryWinOverrideEnabled:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
@@ -40,7 +39,6 @@
 - (oneway void)setLanguage:(NSString *)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setOfflineDictationProfileOverridePath:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)setOutputVoice:(AFVoiceInfo *)arg1 withCompletion:(void (^)(void))arg2;
-- (oneway void)setSiriAccess:(BOOL)arg1 forAppID:(NSString *)arg2;
 - (oneway void)startRemoteRequest:(AFRequestInfo *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)startUIRequest:(NSString *)arg1;
 @end

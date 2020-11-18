@@ -34,6 +34,7 @@
 + (id)options;
 + (Class)recipientsType;
 - (void).cxx_destruct;
+- (int)StringAsShareMode:(id)arg1;
 - (void)addEntityName:(id)arg1;
 - (void)addRecipients:(id)arg1;
 - (void)clearEntityNames;
@@ -49,6 +50,7 @@
 - (BOOL)readFrom:(id)arg1;
 - (id)recipientsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)recipientsCount;
+- (id)shareModeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

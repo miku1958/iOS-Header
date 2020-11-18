@@ -8,20 +8,26 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString, _MRPlaybackQueueContextProtobuf;
 
 @interface _MRPlaybackQueueProtobuf : PBCodable <NSCopying>
 {
     NSMutableArray *_contentItems;
+    _MRPlaybackQueueContextProtobuf *_context;
     int _location;
+    NSString *_requestID;
     struct {
         unsigned int location:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *contentItems; // @synthesize contentItems=_contentItems;
+@property (strong, nonatomic) _MRPlaybackQueueContextProtobuf *context; // @synthesize context=_context;
+@property (readonly, nonatomic) BOOL hasContext;
 @property (nonatomic) BOOL hasLocation;
+@property (readonly, nonatomic) BOOL hasRequestID;
 @property (nonatomic) int location; // @synthesize location=_location;
+@property (strong, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
 
 + (Class)contentItemType;
 - (void)addContentItem:(id)arg1;

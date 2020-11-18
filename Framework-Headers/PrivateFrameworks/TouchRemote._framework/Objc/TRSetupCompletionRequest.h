@@ -15,6 +15,7 @@
 @property (nonatomic) BOOL completedSuccessfully; // @synthesize completedSuccessfully=_completedSuccessfully;
 @property (nonatomic) long long errorCode; // @synthesize errorCode=_errorCode;
 
++ (BOOL)supportsSecureCoding;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

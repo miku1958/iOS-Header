@@ -14,6 +14,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityClearChildren;
 - (void)_accessibilityDecrementMockSlider:(id)arg1 largeStep:(BOOL)arg2;
+- (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (void)_accessibilityIncrementMockSlider:(id)arg1 largeStep:(BOOL)arg2;
 - (void)_accessibilityNotifyDelegateEditingEndValueDidChange:(double)arg1;
 - (void)_accessibilityNotifyDelegateEditingStartValueDidChange:(double)arg1;
@@ -27,6 +28,8 @@
 - (void)_trimAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_updateThumbLocation;
 - (id)accessibilityElements;
+- (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)dealloc;
 - (BOOL)isAccessibilityElement;

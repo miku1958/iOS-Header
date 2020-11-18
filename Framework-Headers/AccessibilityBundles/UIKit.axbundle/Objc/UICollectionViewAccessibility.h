@@ -34,6 +34,7 @@
 - (BOOL)_accessibilityShouldUseCollectionViewCellAccessibilityElements;
 - (id)_accessibilitySortedElementsWithin;
 - (BOOL)_accessibilitySpeakThisShouldOnlyIncludeVisibleElements;
+- (id)_accessibilitySupplementaryFooterViews;
 - (id)_accessibilitySupplementaryHeaderViewAtIndexPath:(id)arg1;
 - (id)_accessibilityUserTestingVisibleCells;
 - (long long)_axGlobalRowForIndexPath:(id)arg1;

@@ -13,10 +13,10 @@
 
 @property BOOL hasBeenDisplayed; // @synthesize hasBeenDisplayed=_hasBeenDisplayed;
 
++ (void)dismissForever;
 + (BOOL)needsDisplay;
 + (void)updateViewCountToCount:(long long)arg1;
 + (long long)viewCount;
-- (void)dismissForever;
 - (id)initWithSupportedDomains:(unsigned long long)arg1 explanationText:(id)arg2 learnMoreText:(id)arg3 continueButtonTitle:(id)arg4;
 - (void)updateViewCount;
 

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (const struct __CFDictionary **)_DuetActivityProperties;
+- (const struct __CFData **)_TCPConnectionMetadata;
 - (unsigned long long)_allowedProtocolTypes;
 - (id)_allowsCellular;
 - (id)_backgroundTaskTimingData;
@@ -60,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (struct __PerformanceTiming *)_performanceTiming;
 - (void)_prepareNewTimingDataContainer;
 - (unsigned char)_preventsIdleSystemSleep;
+- (BOOL)_preventsSystemHTTPProxyAuthentication;
 - (id)_priorityValue;
 - (void)_processConnectionProperties;
 - (id)_prohibitAuthUI;
@@ -97,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (id)originalRequest;
 - (float)priority;
 - (id)session;
+- (void)set_TCPConnectionMetadata:(id)arg1;
 - (void)set_protocolForTask:(id)arg1;
 - (void)set_trailers:(id)arg1;
 - (BOOL)shouldHandleCookiesAndSchemeIsAppropriate;

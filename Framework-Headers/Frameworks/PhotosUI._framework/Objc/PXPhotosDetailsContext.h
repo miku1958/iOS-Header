@@ -21,6 +21,7 @@
     PXDisplayTitleInfo *_displayTitleInfo;
     PXPhotosDetailsContext *_parentContext;
     PHFetchResult *_keyAssetsFetchResult;
+    unsigned long long _viewSourceOrigin;
     PHFetchResult *_assetCollections;
     NSDictionary *_assetsByCollection;
     PHFetchResult *_people;
@@ -46,6 +47,7 @@
 @property (readonly, nonatomic) BOOL shouldUseKeyFace; // @synthesize shouldUseKeyFace=_shouldUseKeyFace;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *titleFontName; // @synthesize titleFontName=_titleFontName;
+@property (readonly, nonatomic) unsigned long long viewSourceOrigin; // @synthesize viewSourceOrigin=_viewSourceOrigin;
 
 - (void).cxx_destruct;
 - (void)_updatePropertiesDerivedFromDisplayTitleInfo;
@@ -64,6 +66,7 @@
 - (void)setPeople:(id)arg1;
 - (void)setShouldShowMovieHeader:(BOOL)arg1;
 - (void)setTitleFontName:(id)arg1;
+- (void)setViewSourceOrigin:(unsigned long long)arg1;
 
 @end
 

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSString *_cachedSortPath;
     NSString *_cachedContentType;
     NSDate *_cachedContentModifiedDate;
+    BOOL _cachedIsAlias;
     id _generationIdentifier;
 }
 
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)contentType;
 - (unsigned long long)indentationLevel;
 - (id)initWithURL:(id)arg1;
+- (BOOL)isAlias;
 - (id)modificationDate;
 - (BOOL)renameable;
 - (id)sortDate;

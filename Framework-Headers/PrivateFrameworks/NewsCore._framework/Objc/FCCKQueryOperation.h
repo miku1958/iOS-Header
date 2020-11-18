@@ -18,6 +18,7 @@
     CDUnknownBlockType _recordFetchedBlock;
     CDUnknownBlockType _queryCompletionBlock;
     NSArray *_requestUUIDs;
+    long long _networkEventType;
     NSArray *_networkEvents;
     CKQueryCursor *_resultCursor;
 }
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property (strong, nonatomic) FCCKDatabase *database; // @synthesize database=_database;
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
+@property (nonatomic) long long networkEventType; // @synthesize networkEventType=_networkEventType;
 @property (copy, nonatomic) NSArray *networkEvents; // @synthesize networkEvents=_networkEvents;
 @property (strong, nonatomic) CKQuery *query; // @synthesize query=_query;
 @property (copy, nonatomic) CDUnknownBlockType queryCompletionBlock; // @synthesize queryCompletionBlock=_queryCompletionBlock;

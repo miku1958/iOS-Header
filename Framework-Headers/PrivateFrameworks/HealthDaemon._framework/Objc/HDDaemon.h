@@ -26,7 +26,6 @@
     HDProcessStateManager *_processStateManager;
     HDPluginManager *_pluginManager;
     HDAWDSubmissionManager *_awdSubmissionManager;
-    HDAchievementDoctorManager *_achievementDoctorManager;
     HDAchievementDefinitionAlertManager *_achievementDefinitionAlertManager;
     id<HDAchievementDefinitionAlertSuppressor> _achievementDefinitionAlertSuppressor;
     id<HDAchievementDefinitionAlertNotifier> _achievementDefinitionAlertNotifier;
@@ -41,6 +40,7 @@
     int _didStart;
     _HKBehavior *_behavior;
     HDAchievementAssetManager *_achievementAssetManager;
+    HDAchievementDoctorManager *_achievementDoctorManager;
     HDAppLauncher *_appLauncher;
     HDAuthorizationManager *_authorizationManager;
     HDCompanionWorkoutCreditManager *_companionWorkoutCreditManager;
@@ -61,6 +61,7 @@
 
 @property (strong, nonatomic) HDAchievementAssetManager *achievementAssetManager; // @synthesize achievementAssetManager=_achievementAssetManager;
 @property (strong, nonatomic) HDAchievementDefinitionAlertManager *achievementDefinitionAlertManager; // @synthesize achievementDefinitionAlertManager=_achievementDefinitionAlertManager;
+@property (strong, nonatomic) HDAchievementDoctorManager *achievementDoctorManager; // @synthesize achievementDoctorManager=_achievementDoctorManager;
 @property (strong, nonatomic) id<HDNanoAlertSuppressionService> alertSuppressionService; // @synthesize alertSuppressionService=_alertSuppressionService;
 @property (strong, nonatomic) HDAppLauncher *appLauncher; // @synthesize appLauncher=_appLauncher;
 @property (strong, nonatomic) HDAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;

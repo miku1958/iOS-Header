@@ -16,6 +16,7 @@
     BOOL _hasSmile;
     BOOL _leftEyeClosed;
     BOOL _rightEyeClosed;
+    short _confirmedFaceCropGenerationState;
     double _size;
     double _centerX;
     double _centerY;
@@ -51,6 +52,8 @@
 @property (readonly, nonatomic) double centerX; // @synthesize centerX=_centerX;
 @property (readonly, nonatomic) double centerY; // @synthesize centerY=_centerY;
 @property (readonly, nonatomic) long long clusterSequenceNumber; // @synthesize clusterSequenceNumber=_clusterSequenceNumber;
+@property (readonly, nonatomic, getter=isConfirmedFaceCropGenerationPending) BOOL confirmedFaceCropGenerationPending;
+@property (readonly, nonatomic) short confirmedFaceCropGenerationState; // @synthesize confirmedFaceCropGenerationState=_confirmedFaceCropGenerationState;
 @property (nonatomic) double expressionConfidence; // @synthesize expressionConfidence=_expressionConfidence;
 @property (nonatomic) double expressionScore1; // @synthesize expressionScore1=_expressionScore1;
 @property (nonatomic) double expressionScore2; // @synthesize expressionScore2=_expressionScore2;
@@ -87,6 +90,7 @@
 + (id)corePropertiesToFetch;
 + (id)croppingPropertiesToFetch;
 + (id)entityKeyForPropertyKey:(id)arg1;
++ (id)fetchFacesForFaceCrop:(id)arg1 options:(id)arg2;
 + (id)fetchFacesForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchFacesGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchFacesInAsset:(id)arg1 options:(id)arg2;
@@ -106,7 +110,9 @@
 + (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
++ (BOOL)managedObjectSupportsFaceCropGeneration;
 + (BOOL)managedObjectSupportsFaceVisibility;
++ (id)personBuilderPropertiesToFetch;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
 + (unsigned long long)propertyFetchHintsForPropertySets:(id)arg1;
 + (id)propertySetAccessorsByPropertySet;

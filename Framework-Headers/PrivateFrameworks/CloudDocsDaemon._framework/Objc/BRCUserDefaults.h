@@ -38,6 +38,8 @@
 @property (readonly, nonatomic) double cacheDeleteRecomputeInterval;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *configurationUpdateXPCActivity;
 @property (readonly, nonatomic) unsigned long long copyShareIDsBatchSize;
+@property (readonly, nonatomic) long long dbAutovacuumBatchSize;
+@property (readonly, nonatomic) float dbAutovacuumRatio;
 @property (readonly, nonatomic) double dbBatchDelay;
 @property (readonly, nonatomic) int dbBatchSize;
 @property (readonly, nonatomic) BOOL dbProfiled;
@@ -96,6 +98,7 @@
 @property (readonly, nonatomic) NSSet *nonAutoEvictableExtensions;
 @property (readonly, nonatomic) NSSet *nonAutoEvictableUTIs;
 @property (readonly, nonatomic) NSSet *nonEvictableExtensions;
+@property (readonly, nonatomic) NSSet *nonEvictablePathComponents;
 @property (readonly, nonatomic) unsigned long long notifBatchSize;
 @property (readonly, nonatomic) unsigned long long notifGatherUpTo;
 @property (readonly, nonatomic) unsigned long long notifOverflowLimit;
@@ -134,6 +137,7 @@
 @property (readonly, nonatomic) BOOL shouldDisplayUploadNotification;
 @property (readonly, nonatomic) BOOL shouldFetchAllChanges;
 @property (readonly, nonatomic) BOOL shouldFixupBundleBitOnPackages;
+@property (readonly, nonatomic) BOOL shouldFixupTargetCZMAliases;
 @property (readonly, nonatomic) BOOL shouldPreparePCSMigration;
 @property (readonly, nonatomic) BOOL skipServerSideThrottling;
 @property (readonly, nonatomic) unsigned long long spotlightIndexerBatchSize;

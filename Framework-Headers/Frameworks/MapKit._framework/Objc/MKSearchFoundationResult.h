@@ -8,16 +8,14 @@
 
 #import <MapKit/MKLocationManagerObserver-Protocol.h>
 
-@class MKLocationManager, MKMapItem, MKSearchFoundationRichText, NSArray, NSBundle, NSData, NSMutableArray, NSString, SFActionItem, SFImage, SFText;
+@class MKLocationManager, MKMapItem, MKSearchFoundationBusinessHoursAndDistanceRichText, MKSearchFoundationBusinessReviewRichText, MKSearchFoundationRichText, NSArray, NSBundle, NSData, NSMutableArray, NSString, SFActionItem, SFImage, SFText;
 
 @interface MKSearchFoundationResult : SFSearchResult <MKLocationManagerObserver>
 {
     BOOL _optionSmallerScreen;
     NSData *_mapsData;
     MKMapItem *_mapItem;
-    MKSearchFoundationRichText *_secondLineDisplayedText;
-    NSString *_distanceString;
-    NSString *_temporaryReviewString;
+    MKSearchFoundationBusinessReviewRichText *_secondLineDisplayedText;
     NSArray *_descriptions;
     MKSearchFoundationRichText *_thirdLineDisplayedText;
     unsigned long long _iconSize;
@@ -25,9 +23,7 @@
     NSBundle *_bundle;
     NSString *_bundleID;
     MKLocationManager *_locationManager;
-    MKSearchFoundationRichText *_fourthLineDisplayedText;
-    NSMutableArray *_secondLineText;
-    NSMutableArray *_thirdLineText;
+    MKSearchFoundationBusinessHoursAndDistanceRichText *_fourthLineDisplayedText;
     NSMutableArray *_fourthLineText;
     id _attributionObserver;
     SFText *_title;
@@ -40,9 +36,8 @@
 @property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) NSString *distanceString; // @synthesize distanceString=_distanceString;
-@property (strong, nonatomic) MKSearchFoundationRichText *fourthLineDisplayedText; // @synthesize fourthLineDisplayedText=_fourthLineDisplayedText;
-@property (copy, nonatomic) NSMutableArray *fourthLineText; // @synthesize fourthLineText=_fourthLineText;
+@property (strong, nonatomic) MKSearchFoundationBusinessHoursAndDistanceRichText *fourthLineDisplayedText; // @synthesize fourthLineDisplayedText=_fourthLineDisplayedText;
+@property (strong, nonatomic) NSMutableArray *fourthLineText; // @synthesize fourthLineText=_fourthLineText;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long iconSize; // @synthesize iconSize=_iconSize;
 @property (strong, nonatomic) MKLocationManager *locationManager; // @synthesize locationManager=_locationManager;
@@ -50,14 +45,15 @@
 @property (strong, nonatomic) NSData *mapsData; // @synthesize mapsData=_mapsData;
 @property (nonatomic) unsigned long long mksfResultType; // @synthesize mksfResultType=_mksfResultType;
 @property (nonatomic) BOOL optionSmallerScreen; // @synthesize optionSmallerScreen=_optionSmallerScreen;
-@property (strong, nonatomic) MKSearchFoundationRichText *secondLineDisplayedText; // @synthesize secondLineDisplayedText=_secondLineDisplayedText;
-@property (copy, nonatomic) NSMutableArray *secondLineText; // @synthesize secondLineText=_secondLineText;
+@property (strong, nonatomic) MKSearchFoundationBusinessReviewRichText *secondLineDisplayedText; // @synthesize secondLineDisplayedText=_secondLineDisplayedText;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSString *temporaryReviewString; // @synthesize temporaryReviewString=_temporaryReviewString;
 @property (strong, nonatomic) MKSearchFoundationRichText *thirdLineDisplayedText; // @synthesize thirdLineDisplayedText=_thirdLineDisplayedText;
-@property (copy, nonatomic) NSMutableArray *thirdLineText; // @synthesize thirdLineText=_thirdLineText;
 
++ (id)styledStringFromStringArray:(id)arg1;
 - (void).cxx_destruct;
+- (id)_businessAddress;
+- (id)_businessHoursAndDistance;
+- (id)_businessPriceAndReviewText;
 - (void)_commonInit;
 - (id)_defaultRichTextItems;
 - (BOOL)_isSmallerScreen;
@@ -87,7 +83,6 @@
 - (void)setDescriptions:(id)arg1;
 - (void)setThumbnail:(id)arg1;
 - (void)setTitle:(id)arg1;
-- (id)styledStringFromStringArray:(id)arg1;
 - (id)thumbnail;
 - (id)title;
 

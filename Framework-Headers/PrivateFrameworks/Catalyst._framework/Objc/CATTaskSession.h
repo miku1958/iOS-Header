@@ -9,7 +9,7 @@
 #import <Catalyst/CATTaskOperationNotificationDelegate-Protocol.h>
 #import <Catalyst/CATTransportDelegate-Protocol.h>
 
-@class CATOperationQueue, CATStateMachine, CATTransport, NSDictionary, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
+@class CATOperationQueue, CATStateMachine, CATTransport, NSDictionary, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
 @protocol CATTaskSessionDelegate, OS_dispatch_group;
 
 @interface CATTaskSession : NSObject <CATTransportDelegate, CATTaskOperationNotificationDelegate>
@@ -23,6 +23,7 @@
     NSHashTable *mOrphanedTransports;
     CATOperationQueue *mOrphanedOperationQueue;
     NSDictionary *mPreviousSessionInfo;
+    NSMapTable *mRemoteUUIDsByFinishedOperationProgressUpdates;
     NSObject<OS_dispatch_group> *mSessionDidInvalidateGroup;
     BOOL mIsStarting;
     CATOperationQueue *mDelegationQueue;
@@ -62,6 +63,7 @@
 - (void)delegateWillInvalidate;
 - (void)delegateWillInvalidateAndInvalidateSessionWithError:(id)arg1;
 - (void)delegatedidReceiveNotificationWithName:(id)arg1;
+- (void)didCompleteSendForMessage:(id)arg1;
 - (void)discardPreviousSessionInfo;
 - (void)disconnect;
 - (void)enqueueDelegateDidInterruptWithError:(id)arg1;

@@ -65,10 +65,6 @@
 @property (readonly, nonatomic) Class PLStaticWallpaperImageViewController;
 @property (readonly, nonatomic) NSString *SKStoreProductParameterITunesItemIdentifier;
 @property (readonly, nonatomic) Class SKStoreProductViewController;
-@property (readonly, nonatomic) Class SLComposeViewController;
-@property (readonly, nonatomic) Class SLRequest;
-@property (readonly, nonatomic) Class SLService;
-@property (readonly, nonatomic) NSString *SLServiceTypeTwitter;
 @property (readonly, nonatomic) Class TLToneManager;
 @property (readonly, nonatomic) Class WBUFormDataControllerWK1;
 @property (readonly, nonatomic) NSMutableDictionary *boundSymbols; // @synthesize boundSymbols=_boundSymbols;

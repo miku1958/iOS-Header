@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMCSSStyleDeclaration.h>
+#import <WebKit/DOMCSSStyleDeclaration.h>
 
 @interface DOMCSSStyleDeclaration (MailExtras)
 

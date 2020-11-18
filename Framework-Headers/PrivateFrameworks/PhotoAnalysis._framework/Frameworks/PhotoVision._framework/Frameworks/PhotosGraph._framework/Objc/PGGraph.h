@@ -33,6 +33,10 @@
     NSMutableDictionary *_isCelebratingInGeneralCache;
     BOOL _canWrite;
     PGManager *_manager;
+    unsigned long long _numberOfUtilityAssets;
+    unsigned long long _numberOfDefaultAssets;
+    unsigned long long _numberOfImprovedAssets;
+    unsigned long long _numberOfBetterAssets;
     NSObject<OS_dispatch_queue> *_graphQueue;
 }
 
@@ -48,6 +52,10 @@
 @property (strong, nonatomic) NSString *locale;
 @property (weak) PGManager *manager; // @synthesize manager=_manager;
 @property (nonatomic) unsigned long long memoriesAlgorithmsVersion;
+@property (nonatomic) unsigned long long numberOfBetterAssets; // @synthesize numberOfBetterAssets=_numberOfBetterAssets;
+@property (nonatomic) unsigned long long numberOfDefaultAssets; // @synthesize numberOfDefaultAssets=_numberOfDefaultAssets;
+@property (nonatomic) unsigned long long numberOfImprovedAssets; // @synthesize numberOfImprovedAssets=_numberOfImprovedAssets;
+@property (nonatomic) unsigned long long numberOfUtilityAssets; // @synthesize numberOfUtilityAssets=_numberOfUtilityAssets;
 @property (nonatomic) unsigned long long relatedAlgorithmsVersion;
 @property (readonly, nonatomic) NSObject<OS_os_log> *relatedLoggingConnection;
 @property (readonly, nonatomic) NSSet *stateNodesOfSupersetCities;

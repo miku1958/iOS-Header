@@ -16,6 +16,7 @@
 
 @property (readonly, nonatomic) WBSParsecSearchSportsAttributionExtraCompletionItem *extraCompletionItem; // @synthesize extraCompletionItem=_extraCompletionItem;
 @property (readonly, copy, nonatomic) NSArray *images;
+@property (readonly, copy, nonatomic) NSArray *individualScores;
 @property (readonly, copy, nonatomic) NSString *subtitle;
 
 + (id)_specializedSchema;

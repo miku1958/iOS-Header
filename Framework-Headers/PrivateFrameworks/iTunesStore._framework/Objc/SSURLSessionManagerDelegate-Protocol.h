@@ -6,7 +6,7 @@
 
 #import <iTunesStore/NSObject-Protocol.h>
 
-@class NSData, NSError, NSHTTPURLResponse, NSString, NSURLAuthenticationChallenge, NSURLCache, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionDataTask, NSURLSessionTask, SSMetricsLoadURLEvent;
+@class NSData, NSError, NSHTTPURLResponse, NSString, NSURLAuthenticationChallenge, NSURLCache, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionDataTask, NSURLSessionTask, SSHTTPArchive, SSMetricsLoadURLEvent;
 
 @protocol SSURLSessionManagerDelegate <NSObject>
 
@@ -22,7 +22,9 @@
 @optional
 - (void)URLSession:(NSURLSession *)arg1 dataTask:(NSURLSessionDataTask *)arg2 didReceiveData:(NSData *)arg3;
 - (void)URLSession:(NSURLSession *)arg1 dataTask:(NSURLSessionDataTask *)arg2 didReceiveResponse:(NSURLResponse *)arg3 completionHandler:(void (^)(long long))arg4;
+- (NSData *)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 decodedDataForResponseData:(NSData *)arg3;
 - (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 didCompleteWithEvent:(SSMetricsLoadURLEvent *)arg3 error:(NSError *)arg4;
+- (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 didFinishCreatingHTTPArchive:(SSHTTPArchive *)arg3;
 - (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 didReceiveChallenge:(NSURLAuthenticationChallenge *)arg3 completionHandler:(void (^)(long long, NSURLCredential *))arg4;
 - (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
 - (void)URLSession:(NSURLSession *)arg1 task:(NSURLSessionTask *)arg2 needNewBodyStream:(void (^)(NSInputStream *))arg3;

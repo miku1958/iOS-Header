@@ -143,6 +143,7 @@
     unsigned long long __remainingCaptureTimerTicks;
     NSDate *__lastTimerIndicatorFaceUpdateDate;
     CAMTorchPatternController *__torchPatternController;
+    unsigned long long __lastShutterButtonTouchDownTime;
     UIAlertController *__diskSpaceAlertController;
     UIAlertController *__flashOrTorchUnavailableAlertController;
     CAMDisabledModeOverlayView *__disabledModeOverlayView;
@@ -204,6 +205,7 @@
 @property (readonly, nonatomic) CAMIrisButton *_irisButton; // @synthesize _irisButton=__irisButton;
 @property (readonly, nonatomic) CAMKeepAliveController *_keepAliveController; // @synthesize _keepAliveController=__keepAliveController;
 @property (nonatomic, setter=_setLastConfigurationRequestID:) int _lastConfigurationRequestID; // @synthesize _lastConfigurationRequestID=__lastConfigurationRequestID;
+@property (nonatomic, setter=_setLastShutterButtonTouchDownTime:) unsigned long long _lastShutterButtonTouchDownTime; // @synthesize _lastShutterButtonTouchDownTime=__lastShutterButtonTouchDownTime;
 @property (strong, nonatomic, setter=_setLastTimerIndicatorFaceUpdateDate:) NSDate *_lastTimerIndicatorFaceUpdateDate; // @synthesize _lastTimerIndicatorFaceUpdateDate=__lastTimerIndicatorFaceUpdateDate;
 @property (nonatomic, setter=_setLayoutStyle:) long long _layoutStyle; // @synthesize _layoutStyle=__layoutStyle;
 @property (readonly, nonatomic) CAMLivePhotoBadge *_livePhotoBadge; // @synthesize _livePhotoBadge=__livePhotoBadge;
@@ -367,6 +369,7 @@
 - (long long)_currentCaptureRequestOrigin;
 - (double)_currentMaximumZoomFactor;
 - (id)_debugEnabledDescriptionForControl:(id)arg1 withReason:(id)arg2;
+- (id)_debugStringForApplicationDeactivationReason:(int)arg1;
 - (void)_destroyGestureRecognizersRequiringStandardControls;
 - (void)_destroyGridViewIfNecessary;
 - (long long)_deviceForModeChange;
@@ -412,6 +415,7 @@
 - (id)_graphConfigurationForChangeToMode:(long long)arg1 device:(long long)arg2 fromGraphConfiguration:(id)arg3;
 - (void)_handleApplicationDidBecomeActive:(id)arg1;
 - (void)_handleApplicationDidEnterBackground:(id)arg1;
+- (void)_handleApplicationWillAddDeactivationReason:(id)arg1;
 - (void)_handleApplicationWillEnterForeground:(id)arg1;
 - (void)_handleApplicationWillResignActive:(id)arg1;
 - (void)_handleBurstTimerFired:(id)arg1;
@@ -431,7 +435,9 @@
 - (void)_handleShutterButtonCancelled:(id)arg1;
 - (void)_handleShutterButtonPressed:(id)arg1;
 - (void)_handleShutterButtonReleased:(id)arg1;
+- (void)_handleStillDuringVideoButtonPressed:(id)arg1;
 - (void)_handleStillDuringVideoButtonReleased:(id)arg1;
+- (void)_handleTimelapseLowDiskSpaceNotification:(id)arg1;
 - (void)_handleUserChangedToDevice:(long long)arg1;
 - (void)_handleUserChangedToMode:(long long)arg1;
 - (void)_handleUserChangedToMode:(long long)arg1 device:(long long)arg2;
@@ -439,6 +445,7 @@
 - (void)_handleUserSetDesiredTorchMode:(long long)arg1;
 - (void)_handleZoomButtonWasTapped:(id)arg1;
 - (void)_handleZoomPinchGestureRecognizer:(id)arg1;
+- (BOOL)_hasBeenPromptedForICPLToday;
 - (BOOL)_hasInFlightConfiguration;
 - (void)_hdrButtonDidChangeHDRMode:(id)arg1;
 - (void)_hideBurstIndicatorView;
@@ -484,6 +491,7 @@
 - (void)_setTimerDurationAndUpdateUI:(long long)arg1;
 - (void)_setupAndStartSynchronizedCaptureTimerDelegate;
 - (void)_setupBurstTimerWithDelay:(double)arg1;
+- (BOOL)_shouldAnimateViewfinderCloseForReason:(long long)arg1;
 - (BOOL)_shouldApplyTopBarRotationForGraphConfiguration:(id)arg1;
 - (BOOL)_shouldCreateGridViewForMode:(long long)arg1;
 - (BOOL)_shouldDisableModeForMultitaskingAndGraphConfiguration:(id)arg1;
@@ -621,6 +629,7 @@
 - (void)_updateTorchModeOnControllerIfNecessaryForMode:(long long)arg1;
 - (void)_updateUIForCaptureOrientationAnimated:(BOOL)arg1;
 - (void)_updateUIForCapturing:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_updateUserInitiationTimeForRequest:(id)arg1;
 - (void)_updateVideoConfigurationAggregateDictionaryForRequest:(id)arg1 response:(id)arg2;
 - (void)_updateZoomAggregateDictionaryForRequest:(id)arg1 response:(id)arg2;
 - (void)_updateZoomButtonTelephotoToggleForDevice:(long long)arg1;
@@ -729,6 +738,7 @@
 - (void)remoteShutterEndVideo:(id)arg1;
 - (void)resumeCameraSession;
 - (BOOL)shouldAutorotate;
+- (void)simulateImageWellTap;
 - (BOOL)startRecording;
 - (void)startShowingLivePhotoIndicator;
 - (void)stillImageRequestDidCompleteCapture:(id)arg1 error:(id)arg2;

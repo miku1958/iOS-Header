@@ -8,17 +8,15 @@
 
 #import <RemoteUI/RemoteUITableFooter-Protocol.h>
 
-@class NSString, NSURL, UIButton, UILabel;
+@class NSString, NSURL, RUILinkLabel, UIButton, UILabel;
 @protocol RUITableFooterDelegate;
 
 @interface RemoteUISectionFooter : UIView <RemoteUITableFooter>
 {
-    UIButton *_linkButton;
-    long long _textAlignment;
+    RUILinkLabel *_linkLabel;
     BOOL _usesCustomTextAlignment;
     id<RUITableFooterDelegate> _delegate;
     NSURL *_linkURL;
-    UILabel *_textLabel;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,9 +24,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIButton *linkButton;
+@property (readonly, nonatomic) RUILinkLabel *linkLabel; // @synthesize linkLabel=_linkLabel;
 @property (strong, nonatomic) NSURL *linkURL; // @synthesize linkURL=_linkURL;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
+@property (readonly, nonatomic) UILabel *textLabel;
 
 - (void).cxx_destruct;
 - (void)_linkPressed;

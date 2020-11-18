@@ -32,6 +32,7 @@
 @property (nonatomic) BOOL enableHWChecksum;
 @property (nonatomic) BOOL enableSFO;
 @property (nonatomic) BOOL enableTFO;
+@property (nonatomic) BOOL enableTFONoCookie;
 @property (nonatomic) BOOL enableTLS;
 @property (nonatomic) BOOL enableTLSSessionTicket;
 @property (nonatomic) BOOL indefinite;
@@ -87,6 +88,7 @@
 - (BOOL)hasPreferredNetworkAgents;
 - (BOOL)hasProhibitedNetworkAgents;
 - (BOOL)hasRequiredNetworkAgents;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithParameters:(id)arg1;

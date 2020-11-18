@@ -8,30 +8,24 @@
 
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSString;
+@class AFAnalyticsEvent, NSDate, NSString;
 
 @interface AFAnalyticsEventRecord : NSObject <NSSecureCoding>
 {
+    AFAnalyticsEvent *_event;
     NSString *_streamUID;
-    long long _type;
-    unsigned long long _timestamp;
-    NSData *_contextData;
-    long long _contextDataType;
     NSDate *_dateCreated;
 }
 
-@property (readonly, copy, nonatomic) NSData *contextData; // @synthesize contextData=_contextData;
-@property (readonly, nonatomic) long long contextDataType; // @synthesize contextDataType=_contextDataType;
 @property (readonly, copy, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property (readonly, copy, nonatomic) AFAnalyticsEvent *event; // @synthesize event=_event;
 @property (readonly, copy, nonatomic) NSString *streamUID; // @synthesize streamUID=_streamUID;
-@property (readonly, nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
-@property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStreamUID:(id)arg1 type:(long long)arg2 timestamp:(unsigned long long)arg3 contextData:(id)arg4 contextDataType:(long long)arg5 dateCreated:(id)arg6 noCopy:(BOOL)arg7;
+- (id)initWithEvent:(id)arg1 streamUID:(id)arg2 dateCreated:(id)arg3;
 
 @end
 

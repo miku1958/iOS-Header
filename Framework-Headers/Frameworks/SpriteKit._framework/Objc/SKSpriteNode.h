@@ -18,7 +18,7 @@
 }
 
 @property (nonatomic) struct CGPoint anchorPoint;
-@property (copy, nonatomic) NSDictionary *attributeValues;
+@property (copy, nonatomic) NSDictionary *attributeValues; // @dynamic attributeValues;
 @property (nonatomic) long long blendMode;
 @property (nonatomic) struct CGRect centerRect;
 @property (strong, nonatomic) UIColor *color;
@@ -63,6 +63,8 @@
 - (void)scaleToSize:(struct CGSize)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setRepeatTexture:(BOOL)arg1;
+- (void)setValue:(id)arg1 forAttributeNamed:(id)arg2;
+- (id)valueForAttributeNamed:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSString;
 @protocol MTLDevice;
@@ -20,6 +20,7 @@
 
 - (void)dealloc;
 - (id)description;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithDevice:(id)arg1 pipelineStateDescriptor:(id)arg2;
 
 @end

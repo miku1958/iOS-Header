@@ -12,12 +12,10 @@
 
 @interface MSPMutableHistoryEntrySearch : MSPMutableHistoryEntry <MSPHistoryEntrySearch>
 {
-    BOOL _failed;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isFailed) BOOL failed; // @synthesize failed=_failed;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *languageCode;
 @property (copy, nonatomic) NSString *locationDisplayString;

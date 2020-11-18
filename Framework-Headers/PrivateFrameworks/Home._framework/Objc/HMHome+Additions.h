@@ -10,6 +10,7 @@
 - (id)hf_accessoryWithIdentifier:(id)arg1;
 - (id)hf_allBridgeAccessories;
 - (id)hf_allNonEmptyActionSets;
+- (id)hf_allProgrammableSwitchAccessories;
 - (id)hf_allRooms;
 - (id)hf_allServices;
 - (id)hf_cameraProfileWithIdentifier:(id)arg1;

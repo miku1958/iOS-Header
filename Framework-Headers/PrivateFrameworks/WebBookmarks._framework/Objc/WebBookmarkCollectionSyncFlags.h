@@ -12,16 +12,18 @@ __attribute__((visibility("hidden")))
 @interface WebBookmarkCollectionSyncFlags : NSObject
 {
     BOOL _syncAllowed;
-    BOOL _postDAVSyncNotificationWhenUnlocking;
+    BOOL _postSyncNotificationWhenUnlocking;
     BOOL _unlockSyncRequested;
     int _syncLockFileDescriptor;
+    long long _syncNotificationType;
     NSMutableSet *_lockSyncHoldRequestorPointers;
 }
 
 @property (readonly, nonatomic) NSMutableSet *lockSyncHoldRequestorPointers; // @synthesize lockSyncHoldRequestorPointers=_lockSyncHoldRequestorPointers;
-@property (nonatomic) BOOL postDAVSyncNotificationWhenUnlocking; // @synthesize postDAVSyncNotificationWhenUnlocking=_postDAVSyncNotificationWhenUnlocking;
+@property (nonatomic) BOOL postSyncNotificationWhenUnlocking; // @synthesize postSyncNotificationWhenUnlocking=_postSyncNotificationWhenUnlocking;
 @property (readonly, nonatomic) BOOL syncAllowed; // @synthesize syncAllowed=_syncAllowed;
 @property (nonatomic) int syncLockFileDescriptor; // @synthesize syncLockFileDescriptor=_syncLockFileDescriptor;
+@property (nonatomic) long long syncNotificationType; // @synthesize syncNotificationType=_syncNotificationType;
 @property (nonatomic) BOOL unlockSyncRequested; // @synthesize unlockSyncRequested=_unlockSyncRequested;
 
 - (void).cxx_destruct;

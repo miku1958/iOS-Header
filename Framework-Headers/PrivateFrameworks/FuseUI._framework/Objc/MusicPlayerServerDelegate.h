@@ -8,13 +8,13 @@
 
 #import <FuseUI/MPMusicPlayerControllerServerDelegate-Protocol.h>
 
-@class MPAVController, MPCMediaPlayerLegacyReportingController, MPMediaItem, MPNowPlayingObserver, NSDictionary, NSString;
+@class MPAVController, MPCMediaPlayerLegacyPlayer, MPCMediaPlayerLegacyReportingController, MPCMediaRemoteMuxer, MPMediaItem, MPNowPlayingObserver, NSDictionary, NSString;
 
 @interface MusicPlayerServerDelegate : NSObject <MPMusicPlayerControllerServerDelegate>
 {
     NSDictionary *_assetStoreFrontOverrides;
     MPAVController *_systemPlayer;
-    MPAVController *_applicationPlayer;
+    MPCMediaPlayerLegacyPlayer *_applicationPlayer;
     MPCMediaPlayerLegacyReportingController *_applicationPlayerReportingController;
     MPMediaItem *_firstItem;
     NSString *_firstItemIdentifier;
@@ -27,6 +27,8 @@
     MPAVController *_shuffleChangeHandlerPlayer;
     long long _shuffleMode;
     NSDictionary *_timeModifications;
+    MPCMediaRemoteMuxer *_mediaRemoteMuxer;
+    int _currentApplicationClientPid;
     MPAVController *_player;
 }
 
@@ -38,17 +40,22 @@
 
 - (void).cxx_destruct;
 - (void)_appDefaultsChanged:(id)arg1;
+- (void)_musicPlayerServer:(id)arg1 insertPlaybackContext:(id)arg2 insertionType:(long long)arg3;
 - (id)currentMediaQueryForMusicPlayerServer:(id)arg1;
+- (id)currentQueueUUIDForMusicPlayerServer:(id)arg1;
 - (id)currentRadioStationForMusicPlayerServer:(id)arg1;
 - (void)dealloc;
 - (unsigned long long)indexOfNowPlayingItemForMusicPlayerServer:(id)arg1;
 - (id)init;
-- (id)initWithSystemPlayer:(id)arg1;
+- (id)initWithSystemPlayer:(id)arg1 mediaRemoteMuxer:(id)arg2;
 - (BOOL)isNowPlayingItemFromGeniusMixForMusicPlayerServer:(id)arg1;
+- (void)musicPlayerServer:(id)arg1 appendQueueDescriptor:(id)arg2;
 - (void)musicPlayerServer:(id)arg1 prepareQueueWithGeniusMixPlaylist:(id)arg2;
 - (void)musicPlayerServer:(id)arg1 prepareQueueWithQuery:(id)arg2;
 - (void)musicPlayerServer:(id)arg1 prepareQueueWithRadioStation:(id)arg2;
 - (void)musicPlayerServer:(id)arg1 prepareQueueWithStoreIDs:(id)arg2;
+- (void)musicPlayerServer:(id)arg1 prependQueueDescriptor:(id)arg2;
+- (id)musicPlayerServer:(id)arg1 queueForUUID:(id)arg2;
 - (void)musicPlayerServer:(id)arg1 registerForRepeatModeChangesWithChangeHandler:(CDUnknownBlockType)arg2;
 - (void)musicPlayerServer:(id)arg1 registerForShuffleModeChangesWithChangeHandler:(CDUnknownBlockType)arg2;
 - (void)musicPlayerServer:(id)arg1 setAssetStoreFrontOverrides:(id)arg2;
@@ -56,12 +63,14 @@
 - (void)musicPlayerServer:(id)arg1 setFirstItemIdentifier:(id)arg2;
 - (void)musicPlayerServer:(id)arg1 setNowPlayingItem:(id)arg2;
 - (void)musicPlayerServer:(id)arg1 setPlaybackSpeed:(long long)arg2;
+- (BOOL)musicPlayerServer:(id)arg1 setQueue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)musicPlayerServer:(id)arg1 setShuffleMode:(long long)arg2;
 - (void)musicPlayerServer:(id)arg1 setTimeModifications:(id)arg2;
 - (void)musicPlayerServer:(id)arg1 setUserQueueModificationsDisabled:(BOOL)arg2;
 - (id)nowPlayingItemForMusicPlayerServer:(id)arg1;
 - (long long)playbackSpeedForMusicPlayerServer:(id)arg1;
 - (id)playerForMusicPlayerServer:(id)arg1 usingApplicationSpecificQueue:(BOOL)arg2;
+- (void)requestQueueForMusicPlayerServer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)unshuffledIndexOfNowPlayingItemForMusicPlayerServer:(id)arg1;
 - (BOOL)userQueueModificationsDisabledForMusicPlayerServer:(id)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class CADisplay;
 
@@ -19,7 +19,6 @@
 @property (readonly, nonatomic) double heartbeatRate;
 @property (readonly, nonatomic) double maximumRefreshRate;
 @property (readonly, nonatomic) long long minimumFrameDuration;
-@property (readonly, nonatomic) double minimumRefreshRate;
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (nonatomic) long long preferredFramesPerSecond;
 @property (readonly, nonatomic) double targetTimestamp;
@@ -29,12 +28,11 @@
 + (id)displayLinkWithDisplay:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 + (id)displayLinkWithTarget:(id)arg1 selector:(SEL)arg2;
 - (id)_initWithDisplayLinkItem:(struct DisplayLinkItem *)arg1;
+- (long long)actualFramesPerSecond;
 - (void)addToRunLoop:(id)arg1 forMode:(id)arg2;
 - (void)dealloc;
 - (void)invalidate;
-- (float)preferredFrameRate;
 - (void)removeFromRunLoop:(id)arg1 forMode:(id)arg2;
-- (void)setPreferredFrameRate:(float)arg1;
 
 @end
 

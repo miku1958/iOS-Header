@@ -6,24 +6,24 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSURLSessionTask, VSFailable, VSStoreURLBag;
+@class NSURLSessionTask, VSOptional, VSStoreURLBag;
 
-__attribute__((visibility("hidden")))
 @interface VSVerificationStateResetOperation : VSAsyncOperation
 {
-    VSFailable *_result;
+    VSOptional *_result;
     VSStoreURLBag *_bag;
     NSURLSessionTask *_resetStateTask;
 }
 
 @property (strong, nonatomic) VSStoreURLBag *bag; // @synthesize bag=_bag;
 @property (strong, nonatomic) NSURLSessionTask *resetStateTask; // @synthesize resetStateTask=_resetStateTask;
-@property (strong, nonatomic) VSFailable *result; // @synthesize result=_result;
+@property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
 
 - (void).cxx_destruct;
 - (void)_resetVerificationStateWithURL:(id)arg1;
 - (void)cancel;
 - (void)executionDidBegin;
+- (id)init;
 
 @end
 

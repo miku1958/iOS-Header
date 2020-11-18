@@ -106,6 +106,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKTimeLogger *timeLogger; // @synthesize timeLogger=_timeLogger;
 @property (nonatomic) double timeoutIntervalForRequest; // @synthesize timeoutIntervalForRequest=_timeoutIntervalForRequest;
 @property (nonatomic) double timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
+@property (readonly, weak, nonatomic) CKDOperation *topmostParentOperation;
 @property (nonatomic) BOOL useEncryption; // @synthesize useEncryption=_useEncryption;
 @property (readonly, nonatomic) BOOL usesBackgroundSession;
 @property (strong, nonatomic) NSMutableDictionary *w3cNavigationTimingByRequestUUID; // @synthesize w3cNavigationTimingByRequestUUID=_w3cNavigationTimingByRequestUUID;

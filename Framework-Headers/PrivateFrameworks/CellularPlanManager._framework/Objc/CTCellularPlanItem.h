@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CellularPlanManager/NSCopying-Protocol.h>
 #import <CellularPlanManager/NSSecureCoding-Protocol.h>
@@ -19,6 +19,7 @@
     BOOL _shouldAutoSelectWhenInRange;
     BOOL _isSimStateValid;
     BOOL _shouldDisplay;
+    BOOL _shouldAppearDisabled;
     BOOL _isSelectable;
     CTCellularPlan *_plan;
     long long _type;
@@ -36,6 +37,7 @@
 @property (nonatomic) long long lockState; // @synthesize lockState=_lockState;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) CTCellularPlan *plan; // @synthesize plan=_plan;
+@property (nonatomic) BOOL shouldAppearDisabled; // @synthesize shouldAppearDisabled=_shouldAppearDisabled;
 @property (nonatomic) BOOL shouldAutoSelectWhenInRange; // @synthesize shouldAutoSelectWhenInRange=_shouldAutoSelectWhenInRange;
 @property (readonly, nonatomic) BOOL shouldDisplay; // @synthesize shouldDisplay=_shouldDisplay;
 @property (nonatomic) BOOL shouldDisplayType; // @synthesize shouldDisplayType=_shouldDisplayType;

@@ -31,6 +31,8 @@
     NSPointerArray *_observers;
     WGWidgetPersistentStateController *_persistentStateController;
     NSObject<OS_dispatch_queue> *_newWidgetsCountPostQueue;
+    BOOL _shouldPurgeNonCAMLSnapshots;
+    BOOL _shouldPurgeNonASTCSnapshots;
     id<WGWidgetDiscoveryControllerDelegate> _delegate;
     long long _columnModes;
     NSMutableDictionary *_widgetIDsToPendingTestCompletions;
@@ -59,6 +61,7 @@
 + (CDUnknownBlockType)generatorForWidgetViewControllerWithBundleID:(id)arg1 containingBundleID:(id)arg2 timeout:(unsigned long long)arg3;
 + (long long)layoutModeForSize:(struct CGSize)arg1;
 - (void).cxx_destruct;
+- (void)_applicationIconChanged:(id)arg1;
 - (void)_beginObservingDataSourcesIfNecessary;
 - (void)_calculateAndPostNewWidgetsCount;
 - (void)_dataSourcesDidChange:(id)arg1;
@@ -87,6 +90,8 @@
 - (void)_requestUnlockWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_setEnabled:(BOOL)arg1 forElementWithIdentifier:(id)arg2;
 - (id)_updatePublicationStateOfDatumWithIdentifier:(id)arg1 visibilityChanged:(BOOL)arg2 contentStateChanged:(BOOL)arg3 insertAtTop:(BOOL)arg4 notifyingObservers:(BOOL)arg5;
+- (void)_widget:(id)arg1 withIdentifier:(id)arg2 didRemoveSnapshotAtURL:(id)arg3;
+- (void)_widgetViewControllerDidRemoveSnapshot:(id)arg1;
 - (void)_widgetViewControllerRequestsAdd:(id)arg1;
 - (id)_widgetViewControllerWithBundleID:(id)arg1 containingBundleID:(id)arg2 didConnect:(CDUnknownBlockType)arg3 canTearDown:(CDUnknownBlockType)arg4;
 - (void)addDiscoveryObserver:(id)arg1;
@@ -113,6 +118,9 @@
 - (void)setWidgetLoggingEnabled:(BOOL)arg1;
 - (void)setWidgetSnapshotTimestampsEnabled:(BOOL)arg1;
 - (BOOL)shouldPurgeArchivedSnapshotsForWidget:(id)arg1;
+- (BOOL)shouldPurgeNonASTCSnapshotsForWidget:(id)arg1;
+- (BOOL)shouldPurgeNonCAMLSnapshotsForWidget:(id)arg1;
+- (BOOL)shouldRemoveSnapshotWhenNotVisibleForWidget:(id)arg1;
 - (long long)userSpecifiedDisplayModeForWidget:(id)arg1;
 - (long long)userSpecifiedDisplayModeForWidgetWithIdentifier:(id)arg1;
 - (id)visibleWidgetIdentifiersForGroup:(id)arg1;
@@ -120,6 +128,7 @@
 - (void)widget:(id)arg1 didChangeLargestAvailableDisplayMode:(long long)arg2;
 - (void)widget:(id)arg1 didChangeUserSpecifiedDisplayMode:(long long)arg2;
 - (void)widget:(id)arg1 didEncounterProblematicSnapshotAtURL:(id)arg2;
+- (void)widget:(id)arg1 didRemoveSnapshotAtURL:(id)arg2;
 - (void)widgetDataSource:(id)arg1 removeDatum:(id)arg2;
 - (void)widgetDataSource:(id)arg1 replaceWithDatum:(id)arg2;
 - (void)widgetListEditViewController:(id)arg1 acknowledgeInterfaceItemsWithIdentifiers:(id)arg2;

@@ -8,25 +8,37 @@
 
 #import <StoreKitUI/SKUIViewElementView-Protocol.h>
 
-@class NSString;
+@class NSString, SKUIResponseView, SKUITextBoxView;
 
 @interface SKUIReviewCollectionViewCell : SKUIViewReuseCollectionViewCell <SKUIViewElementView>
 {
+    CDUnknownBlockType _descriptionTapAction;
+    CDUnknownBlockType _responseDescriptionTapAction;
+    SKUITextBoxView *_descriptionView;
+    SKUIResponseView *_responseView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType descriptionTapAction; // @synthesize descriptionTapAction=_descriptionTapAction;
+@property (strong, nonatomic) SKUITextBoxView *descriptionView; // @synthesize descriptionView=_descriptionView;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType responseDescriptionTapAction; // @synthesize responseDescriptionTapAction=_responseDescriptionTapAction;
+@property (strong, nonatomic) SKUIResponseView *responseView; // @synthesize responseView=_responseView;
 @property (readonly) Class superclass;
 
++ (id)_attributedStringForDateLabel:(id)arg1 context:(id)arg2;
 + (id)_attributedStringForTitleLabel:(id)arg1 context:(id)arg2;
-+ (id)expandableLabelElementForViewElement:(id)arg1 width:(double)arg2 context:(id)arg3;
 + (struct CGSize)preferredSizeForViewElement:(id)arg1 context:(id)arg2;
 + (BOOL)prefetchResourcesForViewElement:(id)arg1 reason:(long long)arg2 context:(id)arg3;
 + (void)requestLayoutForViewElement:(id)arg1 width:(double)arg2 context:(id)arg3;
 + (struct CGSize)sizeThatFitsWidth:(double)arg1 viewElement:(id)arg2 context:(id)arg3;
+- (void).cxx_destruct;
+- (void)_resetTapGestures;
+- (void)contentViewTapped:(id)arg1;
 - (void)layoutSubviews;
 - (void)reloadWithViewElement:(id)arg1 width:(double)arg2 context:(id)arg3;
+- (void)setHighlighted:(BOOL)arg1;
 - (BOOL)setImage:(id)arg1 forArtworkRequest:(id)arg2 context:(id)arg3;
 - (BOOL)updateWithItemState:(id)arg1 context:(id)arg2 animated:(BOOL)arg3;
 - (id)viewForElementIdentifier:(id)arg1;

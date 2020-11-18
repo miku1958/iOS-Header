@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldReverseLayoutDirection;
 - (double)addContentOverlap:(double)arg1;
 - (double)adjustFrameToNewSize:(double)arg1;
+- (BOOL)allowsUserInteraction;
 - (BOOL)animatesDataChange;
 - (void)beginDisablingRasterization;
 - (void)beginImageContextWithMinimumWidth:(double)arg1;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)endImageContext;
 - (double)extraLeftPadding;
 - (double)extraRightPadding;
+- (id)foregroundView;
 - (id)imageFromImageContextClippedToWidth:(double)arg1;
 - (id)imageWithShadowNamed:(id)arg1;
 - (id)imageWithText:(id)arg1;
@@ -76,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (long long)textStyle;
 - (double)updateContentsAndWidth;
 - (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
+- (void)updateForNewStyle:(id)arg1;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

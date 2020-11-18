@@ -18,9 +18,11 @@
 
 @property (copy, nonatomic) NSDate *lastCheckInAttemptDate;
 @property (copy, nonatomic) NSDate *lastCheckInSuccessDate;
+@property (nonatomic) long long shouldAddHSA2CreateHeader;
 @property (nonatomic) long long shouldDisablePETs;
 @property (nonatomic) long long shouldDisablePiggybacking;
 @property (nonatomic) long long shouldFakeAuthSuccess;
+@property (nonatomic) long long shouldSuppressHSA2Suggestions;
 
 + (id)sharedConfiguration;
 - (void).cxx_destruct;

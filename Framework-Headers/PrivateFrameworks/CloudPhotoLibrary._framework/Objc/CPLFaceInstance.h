@@ -28,20 +28,17 @@
 
 @property (nonatomic) double centerX; // @synthesize centerX=_centerX;
 @property (nonatomic) double centerY; // @synthesize centerY=_centerY;
-@property (nonatomic, getter=isConfirmed) BOOL confirmed;
 @property (nonatomic) unsigned int faceState; // @synthesize faceState=_faceState;
 @property (nonatomic) BOOL hasCenterX;
 @property (nonatomic) BOOL hasCenterY;
 @property (nonatomic) BOOL hasFaceState;
 @property (readonly, nonatomic) BOOL hasPersonIdentifier;
 @property (nonatomic) BOOL hasSize;
-@property (nonatomic, getter=isHidden) BOOL hidden;
+@property (nonatomic, getter=isKeyFace) BOOL keyFace;
 @property (nonatomic, getter=isManual) BOOL manual;
-@property (nonatomic, getter=isNameSourceAuto) BOOL nameSourceAuto;
 @property (readonly, nonatomic, getter=isNoneState) BOOL noneState;
 @property (strong, nonatomic) NSString *personIdentifier; // @synthesize personIdentifier=_personIdentifier;
 @property (strong, nonatomic) NSMutableArray *rejectedPersonIdentifiers; // @synthesize rejectedPersonIdentifiers=_rejectedPersonIdentifiers;
-@property (nonatomic, getter=isRepresentativeFace) BOOL representativeFace;
 @property (nonatomic) double size; // @synthesize size=_size;
 
 + (Class)rejectedPersonIdentifiersType;

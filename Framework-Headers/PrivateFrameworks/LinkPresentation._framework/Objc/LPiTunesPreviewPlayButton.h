@@ -27,13 +27,16 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isMuted;
 @property (readonly, nonatomic) BOOL isPlaying;
+@property (readonly, nonatomic) unsigned long long lastInteractionTimestamp;
+@property (readonly, nonatomic) BOOL shouldUnmuteWhenUserAdjustsVolume;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) double unobscuredAreaFraction;
 @property (readonly, nonatomic) BOOL usesSharedAudioSession;
 
 - (void).cxx_destruct;
 - (void)buttonPressed:(id)arg1;
 - (void)dealloc;
-- (id)initWithPreviewURL:(id)arg1;
+- (id)initWithPreviewURL:(id)arg1 style:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)updateToState:(long long)arg1;
 

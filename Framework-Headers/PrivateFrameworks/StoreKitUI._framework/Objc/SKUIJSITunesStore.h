@@ -30,10 +30,10 @@
 - (void).cxx_destruct;
 - (void)_displayWifiConnectionRequiredAlert;
 - (void)_finishPurchaseForOptions:(id)arg1 purchaseResponse:(id)arg2;
+- (void)_finishSoftwarePurchaseForOptions:(id)arg1 purchaseResponse:(id)arg2;
 - (id)_millisecondsFromTimeInterval:(double)arg1;
 - (void)_purchaseRequestDidSucceedNotification:(id)arg1;
 - (id)_rentalInfoFromMediaItems:(id)arg1;
-- (void)_rentalInformationUpdated:(id)arg1;
 - (void)approveInPerson:(id)arg1:(id)arg2;
 - (BOOL)areVideosCloudPurchasesEnabled;
 - (void)attemptLocalAskToBuyApproval:(id)arg1;
@@ -44,9 +44,11 @@
 - (void)download:(id)arg1;
 - (void)downloadExistsFor:(id)arg1:(id)arg2;
 - (void)exit:(id)arg1;
+- (void)fetchMSOProviderStatus:(id)arg1;
 - (void)fetchTemplates:(id)arg1:(id)arg2;
 - (void)findApps:(id)arg1:(id)arg2:(id)arg3;
 - (void)findLibraryItems:(id)arg1:(id)arg2:(id)arg3;
+- (void)findOwnedItems:(id)arg1:(id)arg2;
 - (void)findToggleStateForItem:(id)arg1:(id)arg2;
 - (void)getAdminStatus:(id)arg1:(id)arg2;
 - (void)getBookSample:(id)arg1;

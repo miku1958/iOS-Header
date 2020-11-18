@@ -46,6 +46,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithResultSection:(id)arg1;
 - (id)objectForFeedback;
+- (id)objectForFeedbackWithResultsArray:(id)arg1;
 - (void)removeResults:(id)arg1;
 - (void)removeResultsAtIndex:(unsigned long long)arg1;
 - (void)removeResultsInArray:(id)arg1;

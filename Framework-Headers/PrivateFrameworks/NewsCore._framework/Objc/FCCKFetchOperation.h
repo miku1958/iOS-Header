@@ -10,6 +10,7 @@
 
 @interface FCCKFetchOperation : FCNetworkOperation
 {
+    BOOL _getPermanentAssetURLs;
     FCCKDatabase *_database;
     NSArray *_recordIDs;
     NSDictionary *_recordIDsToETags;
@@ -17,12 +18,15 @@
     CDUnknownBlockType _perRecordCompletionBlock;
     CDUnknownBlockType _fetchRecordsCompletionBlock;
     NSArray *_requestUUIDs;
+    long long _networkEventType;
     NSDictionary *_resultRecordsByRecordID;
 }
 
 @property (strong, nonatomic) FCCKDatabase *database; // @synthesize database=_database;
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (copy, nonatomic) CDUnknownBlockType fetchRecordsCompletionBlock; // @synthesize fetchRecordsCompletionBlock=_fetchRecordsCompletionBlock;
+@property (nonatomic) BOOL getPermanentAssetURLs; // @synthesize getPermanentAssetURLs=_getPermanentAssetURLs;
+@property (nonatomic) long long networkEventType; // @synthesize networkEventType=_networkEventType;
 @property (copy, nonatomic) CDUnknownBlockType perRecordCompletionBlock; // @synthesize perRecordCompletionBlock=_perRecordCompletionBlock;
 @property (copy, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property (strong, nonatomic) NSDictionary *recordIDsToETags; // @synthesize recordIDsToETags=_recordIDsToETags;

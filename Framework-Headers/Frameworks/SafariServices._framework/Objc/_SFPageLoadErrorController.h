@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSTimer, NSURLRequest, WKWebView;
+@class NSMutableArray, NSTimer, NSURLRequest, WKWebView, _SFDialog;
 @protocol _SFPageLoadErrorControllerDelegate;
 
 @interface _SFPageLoadErrorController : NSObject
 {
-    NSMutableArray *_alerts;
+    NSMutableArray *_dialogs;
     BOOL _reloadAfterResume;
     WKWebView *_webView;
     NSTimer *_crashCountResetTimer;
@@ -22,6 +22,7 @@
 }
 
 @property (readonly, nonatomic) unsigned long long crashesSinceLastSuccessfulLoad; // @synthesize crashesSinceLastSuccessfulLoad=_crashesSinceLastSuccessfulLoad;
+@property (readonly, nonatomic) _SFDialog *currentDialog;
 @property (weak, nonatomic) id<_SFPageLoadErrorControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSURLRequest *failedRequest; // @synthesize failedRequest=_failedRequest;
 @property (readonly, nonatomic) BOOL reloadingFailedRequest; // @synthesize reloadingFailedRequest=_reloadingFailedRequest;
@@ -41,13 +42,17 @@
 - (id)_titleForError:(id)arg1;
 - (void)addAlert:(id)arg1;
 - (void)addAlertWithTitle:(id)arg1 bodyText:(id)arg2;
+- (void)addDialog:(id)arg1;
+- (void)addDisallowedFileURLAlert;
 - (void)addDisallowedUseOfJavaScriptAlert;
 - (void)addFormAlertWithTitle:(id)arg1 decisionHandler:(CDUnknownBlockType)arg2;
 - (void)addInvalidURLAlert;
-- (id)alert;
+- (void)cancelAllDialogsIfNeeded;
 - (void)clearCrashCountResetTimer;
 - (void)clearFailedRequest;
 - (void)dealloc;
+- (void)didDismissDialog:(id)arg1;
+- (void)handleClientCertificateAuthenticationChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleFrameLoadError:(id)arg1;
 - (void)handleSubframeCertificateError:(id)arg1;
 - (id)initWithWebView:(id)arg1;

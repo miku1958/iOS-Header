@@ -24,7 +24,7 @@
 - (void)addGlobalPlaylistWithID:(NSString *)arg1 andAddToCloudLibrary:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
 - (void)addItemWithIdentifier:(long long)arg1 toPlaylistWithIdentifier:(long long)arg2 completionBlock:(void (^)(BOOL))arg3;
 - (void)addItemsWithIdentifiers:(NSArray *)arg1 toPlaylistWithIdentifier:(long long)arg2 completionBlock:(void (^)(BOOL))arg3;
-- (void)addNonLibraryOwnedPlaylistWithGlobalID:(NSString *)arg1 completion:(void (^)(long long, NSError *))arg2;
+- (void)addNonLibraryOwnedPlaylistsWithGlobalIDs:(NSArray *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)addPlaylistStoreItemsForLookupItems:(NSArray *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (long long)addPlaylistWithValuesForProperties:(NSDictionary *)arg1;
 - (void)addTracksToMyLibrary:(NSArray *)arg1;
@@ -72,6 +72,7 @@
 - (void)setValue:(id)arg1 forProperty:(NSString *)arg2 ofCollectionWithIdentifier:(long long)arg3 groupingType:(long long)arg4 completionBlock:(void (^)(BOOL, NSError *))arg5;
 - (void)setValue:(id)arg1 forProperty:(NSString *)arg2 ofItemWithIdentifier:(long long)arg3 completionBlock:(void (^)(BOOL, NSError *))arg4;
 - (void)setValue:(id)arg1 forProperty:(NSString *)arg2 ofPlaylistWithIdentifier:(long long)arg3 completionBlock:(void (^)(BOOL, NSError *))arg4;
+- (void)setValues:(NSArray *)arg1 forProperties:(NSArray *)arg2 forItemPersistentIDs:(NSArray *)arg3;
 - (BOOL)supportsEntityChangeTrackingForMediaEntityType:(long long)arg1 collectionGroupingType:(long long)arg2 dataProviderClass:(out Class *)arg3;
 - (void)updateEntitesToCurrentRevision;
 - (id)valueForDatabaseProperty:(NSString *)arg1;

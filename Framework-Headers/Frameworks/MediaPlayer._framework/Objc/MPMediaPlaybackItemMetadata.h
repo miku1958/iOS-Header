@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class MPMediaItem, MPModelSong, NSNumber, NSString, NSURL;
+@class MPMediaItem, MPModelGenericObject, NSNumber, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface MPMediaPlaybackItemMetadata : NSObject
@@ -19,6 +19,7 @@
     BOOL _showComposer;
     BOOL _shouldReportPlayEventsToStore;
     BOOL _shouldRememberBookmarkTime;
+    BOOL _subscriptionRequired;
     float _volumeNormalization;
     NSString *_albumArtistName;
     long long _albumStoreAdamID;
@@ -37,8 +38,10 @@
     NSURL *_localNetworkContentURL;
     MPMediaItem *_mediaItem;
     long long _mediaLibraryPersistentID;
-    MPModelSong *_modelSong;
+    MPModelGenericObject *_modelGenericObject;
     NSURL *_protectedContentSupportStorageURL;
+    double _bookmarkTime;
+    NSString *_storeUbiquitousIdentifier;
     unsigned long long _storeAccountID;
     long long _storeAdamID;
     long long _storeSubscriptionAdamID;
@@ -56,6 +59,7 @@
 @property (readonly, nonatomic) BOOL allowsInitiatingPlayWhileDownload; // @synthesize allowsInitiatingPlayWhileDownload=_allowsInitiatingPlayWhileDownload;
 @property (readonly, copy, nonatomic) NSString *artistName; // @synthesize artistName=_artistName;
 @property (readonly, nonatomic) long long artistStoreAdamID; // @synthesize artistStoreAdamID=_artistStoreAdamID;
+@property (readonly, nonatomic) double bookmarkTime; // @synthesize bookmarkTime=_bookmarkTime;
 @property (readonly, nonatomic) NSString *buyParameters; // @synthesize buyParameters=_buyParameters;
 @property (readonly, copy, nonatomic) NSString *composerName; // @synthesize composerName=_composerName;
 @property (readonly, copy, nonatomic) NSString *contentTitle; // @synthesize contentTitle=_contentTitle;
@@ -76,7 +80,7 @@
 @property (readonly, copy, nonatomic) NSURL *localNetworkContentURL; // @synthesize localNetworkContentURL=_localNetworkContentURL;
 @property (readonly, nonatomic) MPMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (readonly, nonatomic) long long mediaLibraryPersistentID; // @synthesize mediaLibraryPersistentID=_mediaLibraryPersistentID;
-@property (readonly, nonatomic) MPModelSong *modelSong; // @synthesize modelSong=_modelSong;
+@property (readonly, nonatomic) MPModelGenericObject *modelGenericObject; // @synthesize modelGenericObject=_modelGenericObject;
 @property (readonly, copy, nonatomic) NSURL *protectedContentSupportStorageURL; // @synthesize protectedContentSupportStorageURL=_protectedContentSupportStorageURL;
 @property (readonly, nonatomic, getter=_rentalIdentifier) NSNumber *rentalIdentifier; // @synthesize rentalIdentifier=_rentalIdentifier;
 @property (readonly, nonatomic) BOOL requiresPlayWhileDownload; // @synthesize requiresPlayWhileDownload=_requiresPlayWhileDownload;
@@ -87,6 +91,8 @@
 @property (readonly, nonatomic) long long storeAdamID; // @synthesize storeAdamID=_storeAdamID;
 @property (readonly, nonatomic) unsigned long long storeSagaID; // @synthesize storeSagaID=_storeSagaID;
 @property (readonly, nonatomic) long long storeSubscriptionAdamID; // @synthesize storeSubscriptionAdamID=_storeSubscriptionAdamID;
+@property (readonly, copy, nonatomic) NSString *storeUbiquitousIdentifier; // @synthesize storeUbiquitousIdentifier=_storeUbiquitousIdentifier;
+@property (readonly, nonatomic, getter=isSubscriptionRequired) BOOL subscriptionRequired; // @synthesize subscriptionRequired=_subscriptionRequired;
 @property (readonly, nonatomic) float volumeNormalization; // @synthesize volumeNormalization=_volumeNormalization;
 
 + (BOOL)_shouldRespectMusicCellularDataSetting;

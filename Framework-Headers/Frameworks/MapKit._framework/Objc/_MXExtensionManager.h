@@ -32,6 +32,10 @@
 + (id)_lookupPolicyForUIExtension;
 + (id)_lookupPolicyWithBlock:(CDUnknownBlockType)arg1;
 + (id)_lookupPolicyWithExtensionPointNames:(id)arg1;
++ (id)_maps_lookupPolicyForEnabledRidesharingNonUIExtensions;
++ (id)_maps_lookupPolicyForRidesharingNonUIExtensions;
++ (id)_maps_ridesharingIntentClassesForNonUIHandling;
++ (id)_maps_ridesharingIntentClassesForUIInteraction;
 + (void)imageForKey:(id)arg1 extension:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)lookupPolicyForExtensionWithCapabilities:(id)arg1;
 + (id)lookupPolicyForExtensionWithCapability:(id)arg1;

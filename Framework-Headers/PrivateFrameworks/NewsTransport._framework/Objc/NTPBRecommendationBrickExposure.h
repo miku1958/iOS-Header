@@ -14,21 +14,30 @@
 {
     NSString *_feedId;
     int _feedType;
+    int _recommendationBrickType;
     NSMutableArray *_recommendedFeedIds;
+    BOOL _exposedFromReferredUser;
     struct {
         unsigned int feedType:1;
+        unsigned int recommendationBrickType:1;
+        unsigned int exposedFromReferredUser:1;
     } _has;
 }
 
+@property (nonatomic) BOOL exposedFromReferredUser; // @synthesize exposedFromReferredUser=_exposedFromReferredUser;
 @property (strong, nonatomic) NSString *feedId; // @synthesize feedId=_feedId;
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
+@property (nonatomic) BOOL hasExposedFromReferredUser;
 @property (readonly, nonatomic) BOOL hasFeedId;
 @property (nonatomic) BOOL hasFeedType;
+@property (nonatomic) BOOL hasRecommendationBrickType;
+@property (nonatomic) int recommendationBrickType; // @synthesize recommendationBrickType=_recommendationBrickType;
 @property (strong, nonatomic) NSMutableArray *recommendedFeedIds; // @synthesize recommendedFeedIds=_recommendedFeedIds;
 
 + (Class)recommendedFeedIdsType;
 - (void).cxx_destruct;
 - (int)StringAsFeedType:(id)arg1;
+- (int)StringAsRecommendationBrickType:(id)arg1;
 - (void)addRecommendedFeedIds:(id)arg1;
 - (void)clearRecommendedFeedIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -39,6 +48,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)recommendationBrickTypeAsString:(int)arg1;
 - (id)recommendedFeedIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)recommendedFeedIdsCount;
 - (void)writeTo:(id)arg1;

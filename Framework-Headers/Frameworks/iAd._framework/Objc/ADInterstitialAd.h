@@ -17,20 +17,23 @@
     id<ADInterstitialAdDelegate> _internalDelegate;
     UIViewController *_internalPresentingViewController;
     BOOL _loaded;
+    BOOL _displayed;
     BOOL _actionInProgress;
     BOOL _dimmingEnabled;
     BOOL _canLoadMoreThanOnce;
     BOOL _hasLoadedFirstAd;
+    int _screenfuls;
     int _creativeType;
-    int _state;
     long long _options;
+    NSString *_adResponseId;
+    long long _lastErrorCode;
     ADInterstitialAdPresentationViewController *_presentationViewController;
-    CDUnknownBlockType _stateChangedBlock;
     ADInterstitialView *_interstitialView;
     ADAdSpace *_adSpace;
 }
 
 @property (nonatomic, getter=isActionInProgress) BOOL actionInProgress; // @synthesize actionInProgress=_actionInProgress;
+@property (copy, nonatomic) NSString *adResponseId; // @synthesize adResponseId=_adResponseId;
 @property (strong, nonatomic) ADAdSpace *adSpace; // @synthesize adSpace=_adSpace;
 @property (readonly, nonatomic) UIView *adSpaceView;
 @property (nonatomic) BOOL canLoadMoreThanOnce; // @synthesize canLoadMoreThanOnce=_canLoadMoreThanOnce;
@@ -39,18 +42,20 @@
 @property (weak, nonatomic) id<ADInterstitialAdDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL dimmingEnabled; // @synthesize dimmingEnabled=_dimmingEnabled;
+@property (nonatomic) BOOL displayed; // @synthesize displayed=_displayed;
 @property (nonatomic) BOOL hasLoadedFirstAd; // @synthesize hasLoadedFirstAd=_hasLoadedFirstAd;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int internalAdType;
 @property (weak, nonatomic) id<ADInterstitialAdDelegate> internalDelegate;
 @property (weak, nonatomic) UIViewController *internalPresentingViewController;
 @property (strong, nonatomic) ADInterstitialView *interstitialView; // @synthesize interstitialView=_interstitialView;
+@property (nonatomic) long long lastErrorCode; // @synthesize lastErrorCode=_lastErrorCode;
 @property (nonatomic, getter=isLoaded) BOOL loaded; // @synthesize loaded=_loaded;
 @property (readonly, nonatomic) long long options; // @synthesize options=_options;
 @property (strong, nonatomic) ADInterstitialAdPresentationViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
-@property (nonatomic) int state; // @synthesize state=_state;
-@property (copy, nonatomic) CDUnknownBlockType stateChangedBlock; // @synthesize stateChangedBlock=_stateChangedBlock;
+@property (readonly, nonatomic) BOOL requiresMRAID;
+@property (nonatomic) int screenfuls; // @synthesize screenfuls=_screenfuls;
 @property (readonly) Class superclass;
 
 - (BOOL)_considerClosingAdSpace;
@@ -58,10 +63,11 @@
 - (void)_notifyDelegateOfBannerLoad;
 - (void)_presentFromViewController:(id)arg1;
 - (void)bannerTappedAtPoint:(struct CGPoint)arg1;
+- (void)bannerTappedAtPoint:(struct CGPoint)arg1 withMRAIDAction:(id)arg2;
 - (void)cancelAction;
-- (void)changeBannerViewState:(int)arg1;
 - (int)clickAction;
 - (id)context;
+- (void)creativeControllerViewWasTappedAtPoint:(struct CGPoint)arg1 withMRAIDAction:(id)arg2;
 - (void)dealloc;
 - (id)identifier;
 - (id)init;

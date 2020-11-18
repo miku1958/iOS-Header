@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/NSObject-Protocol.h>
+#import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
 @class NUIContainerStackView, UIView;
 
-@protocol NUIContainerStackViewDelegate <NSObject>
+@protocol NUIContainerStackViewDelegate <NUIContainerViewDelegate>
 
 @optional
-- (struct CGRect)containerStackView:(NUIContainerStackView *)arg1 layoutFrameForArrangedSubview:(UIView *)arg2 withProposedFrame:(struct CGRect)arg3;
+- (long long)containerStackView:(NUIContainerStackView *)arg1 alignmentForArrangedSubview:(UIView *)arg2;
 - (struct UIEdgeInsets)containerStackView:(NUIContainerStackView *)arg1 minimumSpacingAdjecentToArrangedSubview:(UIView *)arg2;
-- (struct CGSize)containerStackView:(NUIContainerStackView *)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(UIView *)arg3;
-- (void)containerStackViewDidInvalidateIntrinsicContentSize:(NUIContainerStackView *)arg1;
-- (void)containerStackViewDidLayoutArrangedSubviews:(NUIContainerStackView *)arg1;
 @end
 

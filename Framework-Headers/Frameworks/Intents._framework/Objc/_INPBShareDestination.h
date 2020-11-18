@@ -28,8 +28,10 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsDeviceType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)deviceTypeAsString:(int)arg1;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

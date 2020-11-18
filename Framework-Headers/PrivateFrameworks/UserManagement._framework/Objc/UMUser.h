@@ -37,6 +37,12 @@
     unsigned long long _dataQuota;
     unsigned long long _dataUsed;
     NSError *_errorCausingLogout;
+    NSDate *_firstLoginStartDate;
+    NSDate *_firstLoginEndDate;
+    NSDate *_lastCachedLoginStartDate;
+    NSDate *_lastCachedLoginEndDate;
+    NSDate *_lastLogoutStartDate;
+    NSDate *_lastLogoutEndDate;
 }
 
 @property (copy, nonatomic) id _photo; // @synthesize _photo=__photo;
@@ -47,6 +53,8 @@
 @property (copy, nonatomic) NSString *displayName;
 @property (strong, nonatomic) NSError *errorCausingLogout; // @synthesize errorCausingLogout=_errorCausingLogout;
 @property (copy, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;
+@property (copy, nonatomic) NSDate *firstLoginEndDate; // @synthesize firstLoginEndDate=_firstLoginEndDate;
+@property (copy, nonatomic) NSDate *firstLoginStartDate; // @synthesize firstLoginStartDate=_firstLoginStartDate;
 @property (nonatomic) unsigned int gid; // @synthesize gid=_gid;
 @property (copy, nonatomic) NSString *givenName; // @synthesize givenName=_givenName;
 @property (nonatomic) BOOL hasDataToSync; // @synthesize hasDataToSync=_hasDataToSync;
@@ -55,7 +63,11 @@
 @property (nonatomic) BOOL isDisabled; // @synthesize isDisabled=_isDisabled;
 @property (nonatomic) BOOL isLoginUser; // @synthesize isLoginUser=_isLoginUser;
 @property (copy, nonatomic) NSArray *languages; // @synthesize languages=_languages;
+@property (copy, nonatomic) NSDate *lastCachedLoginEndDate; // @synthesize lastCachedLoginEndDate=_lastCachedLoginEndDate;
+@property (copy, nonatomic) NSDate *lastCachedLoginStartDate; // @synthesize lastCachedLoginStartDate=_lastCachedLoginStartDate;
 @property (copy, nonatomic) NSDate *lastLoginDate; // @synthesize lastLoginDate=_lastLoginDate;
+@property (copy, nonatomic) NSDate *lastLogoutEndDate; // @synthesize lastLogoutEndDate=_lastLogoutEndDate;
+@property (copy, nonatomic) NSDate *lastLogoutStartDate; // @synthesize lastLogoutStartDate=_lastLogoutStartDate;
 @property (copy, nonatomic) NSDate *lastRemoteAuthDate; // @synthesize lastRemoteAuthDate=_lastRemoteAuthDate;
 @property (readonly, nonatomic) double passcodeBackOffInterval;
 @property (nonatomic) unsigned long long passcodeLockGracePeriod; // @synthesize passcodeLockGracePeriod=_passcodeLockGracePeriod;
@@ -66,6 +78,7 @@
 @property (readonly, nonatomic) unsigned long long userType;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
++ (id)userWithUID:(unsigned int)arg1;
 - (void).cxx_destruct;
 - (struct dqblk)_diskQuota;
 - (BOOL)commitChanges;

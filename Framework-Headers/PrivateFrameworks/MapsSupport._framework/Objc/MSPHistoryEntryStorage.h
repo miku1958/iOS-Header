@@ -22,10 +22,12 @@
     MSPRidesharingTrip *_ridesharingTrip;
     int _searchType;
     MSPTransitStorageLineItem *_transitLineItem;
+    BOOL _tracksRAPRecordingOnly;
     struct {
         unsigned int position:1;
         unsigned int timestamp:1;
         unsigned int searchType:1;
+        unsigned int tracksRAPRecordingOnly:1;
     } _has;
 }
 
@@ -38,6 +40,7 @@
 @property (readonly, nonatomic) BOOL hasRidesharingTrip;
 @property (nonatomic) BOOL hasSearchType;
 @property (nonatomic) BOOL hasTimestamp;
+@property (nonatomic) BOOL hasTracksRAPRecordingOnly;
 @property (readonly, nonatomic) BOOL hasTransitLineItem;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) MSPPlaceDisplay *placeDisplay; // @synthesize placeDisplay=_placeDisplay;
@@ -46,6 +49,7 @@
 @property (strong, nonatomic) MSPRidesharingTrip *ridesharingTrip; // @synthesize ridesharingTrip=_ridesharingTrip;
 @property (nonatomic) int searchType; // @synthesize searchType=_searchType;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) BOOL tracksRAPRecordingOnly; // @synthesize tracksRAPRecordingOnly=_tracksRAPRecordingOnly;
 @property (strong, nonatomic) MSPTransitStorageLineItem *transitLineItem; // @synthesize transitLineItem=_transitLineItem;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 

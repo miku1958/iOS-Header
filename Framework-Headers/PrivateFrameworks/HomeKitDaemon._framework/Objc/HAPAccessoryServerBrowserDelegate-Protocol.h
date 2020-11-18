@@ -9,9 +9,10 @@
 @class HAPAccessoryServer, HAPAccessoryServerBrowser, NSError, NSNumber, NSString;
 
 @protocol HAPAccessoryServerBrowserDelegate <NSObject>
+- (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didChangeReachability:(BOOL)arg2 forAccessoryServerWithIdentifier:(NSString *)arg3;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didFailToDiscoverAccessoryServerWithIdentifier:(NSString *)arg2;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didFindAccessoryServer:(HAPAccessoryServer *)arg2 stateChanged:(BOOL)arg3 stateNumber:(NSNumber *)arg4;
-- (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didRemoveAccessoryServer:(HAPAccessoryServer *)arg2;
+- (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didRemoveAccessoryServer:(HAPAccessoryServer *)arg2 error:(NSError *)arg3;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didStartDiscoveringWithError:(NSError *)arg2;
 - (void)accessoryServerBrowser:(HAPAccessoryServerBrowser *)arg1 didStopDiscoveringWithError:(NSError *)arg2;
 @end

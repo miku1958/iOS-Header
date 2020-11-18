@@ -36,10 +36,12 @@
     long long _cachedLibraryID;
     MFLock *_cachedLibraryIDLock;
     NSString *_lastKnownHostname;
+    BOOL _supportsFastRemoteBodySearch;
 }
 
 @property (readonly) BOOL shouldArchiveByDefault;
 @property (readonly) BOOL sourceIsManaged;
+@property (readonly, nonatomic) BOOL supportsFastRemoteBodySearch; // @synthesize supportsFastRemoteBodySearch=_supportsFastRemoteBodySearch;
 
 + (id)URLForInfo:(id)arg1;
 + (id)_accountContainingEmailAddress:(id)arg1 matchingAddress:(id *)arg2 fullUserName:(id *)arg3 includingInactive:(BOOL)arg4;

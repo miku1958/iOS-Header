@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)interactiveTransition:(id)arg1 gestureRecognizer:(id)arg2 shouldReceiveTouch:(id)arg3;
 - (BOOL)interactiveTransition:(id)arg1 gestureRecognizer:(id)arg2 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg3;
 - (void)invalidate;
+- (BOOL)isNavigationSwipeGestureRecognizer:(id)arg1;
 - (BOOL)shouldBeginInteractiveTransition:(id)arg1;
 - (void)startInteractiveTransition:(id)arg1;
 

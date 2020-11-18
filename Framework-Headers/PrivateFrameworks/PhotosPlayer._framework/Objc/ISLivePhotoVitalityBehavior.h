@@ -10,36 +10,45 @@
 
 @interface ISLivePhotoVitalityBehavior : ISBehavior
 {
+    id _easeOutObserver;
+    id _transitionToPhotoObserver;
     BOOL _prepared;
     BOOL _playing;
+    BOOL _playingBeyondPhoto;
     BOOL _preparing;
     BOOL __shouldPlayAfterPreparation;
     float _playRate;
-    double _photoTime;
     double _photoTransitionDuration;
+    CDStruct_1b6d18a9 _photoTime;
     CDStruct_1b6d18a9 _playDuration;
 }
 
 @property (nonatomic, setter=_setShouldPlayAfterPreparation:) BOOL _shouldPlayAfterPreparation; // @synthesize _shouldPlayAfterPreparation=__shouldPlayAfterPreparation;
 @property (weak, nonatomic) id<ISLivePhotoVitalityBehaviorDelegate> delegate; // @dynamic delegate;
-@property (readonly, nonatomic) double photoTime; // @synthesize photoTime=_photoTime;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 photoTime; // @synthesize photoTime=_photoTime;
 @property (readonly, nonatomic) double photoTransitionDuration; // @synthesize photoTransitionDuration=_photoTransitionDuration;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 playDuration; // @synthesize playDuration=_playDuration;
 @property (readonly, nonatomic) float playRate; // @synthesize playRate=_playRate;
 @property (readonly, nonatomic, getter=isPlaying) BOOL playing; // @synthesize playing=_playing;
+@property (nonatomic, getter=isPlayingBeyondPhoto, setter=_setPlayingBeyondPhoto:) BOOL playingBeyondPhoto; // @synthesize playingBeyondPhoto=_playingBeyondPhoto;
 @property (nonatomic, getter=isPrepared, setter=_setPrepared:) BOOL prepared; // @synthesize prepared=_prepared;
 @property (nonatomic, getter=_isPreparing, setter=_setPreparing:) BOOL preparing; // @synthesize preparing=_preparing;
 
+- (void).cxx_destruct;
+- (void)_didReachTransitionTime;
+- (void)_didReachTransitionToPhotoTime;
 - (void)_handleDidFinishPreroll;
 - (void)_handleDidSeekToStartTime;
+- (void)_startObservingVideo;
 - (void)_startVideoPlayback;
+- (void)_stopObservingVideo;
 - (void)activeDidChange;
 - (long long)behaviorType;
-- (id)initWithInitialLayoutInfo:(id)arg1 photoTime:(double)arg2 playDuration:(CDStruct_1b6d18a9)arg3 playRate:(float)arg4 photoTransitionDuration:(double)arg5;
+- (void)cancelSettleToPhoto;
+- (void)dealloc;
+- (id)initWithInitialLayoutInfo:(id)arg1 photoTime:(CDStruct_1b6d18a9)arg2 playDuration:(CDStruct_1b6d18a9)arg3 playRate:(float)arg4 photoTransitionDuration:(double)arg5;
 - (void)playVitality;
 - (void)prepareForVitality;
-- (void)videoDidPlayToEnd;
-- (void)videoWillPlayToEnd;
 
 @end
 

@@ -30,7 +30,7 @@
 - (void)main;
 - (void)postNotificationWithName:(id)arg1 userInfo:(id)arg2;
 - (void)processMessage:(id)arg1;
-- (void)processNotificationMessage:(id)arg1;
+- (void)processNotificationWithName:(id)arg1 userInfo:(id)arg2;
 
 @end
 

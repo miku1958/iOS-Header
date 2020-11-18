@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *themeName; // @synthesize themeName=_themeName;
 
 - (void).cxx_destruct;
+- (BOOL)_canSelectRowAtIndexPath:(id)arg1;
 - (void)_determineSelectedFontIndex;
 - (void)_determineSelectedTheme;
 - (void)_determineSelectedValues;

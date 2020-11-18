@@ -8,21 +8,21 @@
 
 #import <PhotosUI/NSCopying-Protocol.h>
 
-@class NSDictionary, NSMapTable, NSMutableSet, NSOrderedSet, NSSet, PXSelectionSnapshot;
-@protocol PHAssetCollectionDataSource, PUPhotoSelectionManagerDelegate;
+@class NSDictionary, NSHashTable, NSMapTable, NSMutableSet, NSOrderedSet, NSSet, PXSelectionSnapshot;
+@protocol PHAssetCollectionDataSource;
 
 @interface PUPhotoSelectionManager : NSObject <NSCopying>
 {
+    NSHashTable *_changeObservers;
     NSMapTable *_selectionEntriesByAssetCollection;
     NSMutableSet *_uniqueAssetSelection;
     long long _selectionChangeCount;
     long long _options;
-    id<PUPhotoSelectionManagerDelegate> _delegate;
     id<PHAssetCollectionDataSource> _dataSource;
 }
 
 @property (weak, nonatomic) id<PHAssetCollectionDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property (weak, nonatomic) id<PUPhotoSelectionManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) BOOL isAnyAssetSelected;
 @property (readonly, nonatomic) long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) NSOrderedSet *orderedSelectedAssets;
 @property (readonly, nonatomic) NSSet *selectedAssets;
@@ -50,11 +50,13 @@
 - (BOOL)isAnyAssetSelectedInAssetCollections:(id)arg1;
 - (BOOL)isAssetAtIndexSelected:(unsigned long long)arg1 inAssetCollection:(id)arg2;
 - (id)localizedSelectionString;
+- (void)registerChangeObserver:(id)arg1;
 - (void)selectAllAssetsInAssetCollections:(id)arg1;
 - (void)selectAssetAtIndex:(unsigned long long)arg1 inAssetCollection:(id)arg2;
 - (void)selectAssetsAtIndexes:(id)arg1 inAssetCollection:(id)arg2;
 - (id)selectedAssetIndexesWithAssetCollectionOrdering:(id)arg1;
 - (id)selectedAssetsWithAssetCollectionOrdering:(id)arg1;
+- (void)unregisterChangeObserver:(id)arg1;
 
 @end
 

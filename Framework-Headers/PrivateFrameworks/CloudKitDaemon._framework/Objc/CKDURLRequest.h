@@ -11,7 +11,7 @@
 #import <CloudKitDaemon/CKDURLSessionTaskDelegate-Protocol.h>
 #import <CloudKitDaemon/CKDZoneGatekeeperWaiter-Protocol.h>
 
-@class CKDClientContext, CKDOperationMetrics, CKDProtobufStreamWriter, CKDProtocolTranslator, CKDResponseBodyParser, CKDTrafficLogger, CKTimeLogger, NSArray, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSInputStream, NSMutableArray, NSMutableData, NSMutableDictionary, NSOperationQueue, NSString, NSURL, NSURLRequest, NSURLSessionConfiguration, NSURLSessionDataTask;
+@class CKDClientContext, CKDOperationMetrics, CKDProtobufStreamWriter, CKDProtocolTranslator, CKDResponseBodyParser, CKDTrafficLogger, CKTimeLogger, NSArray, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSInputStream, NSMutableArray, NSMutableData, NSMutableDictionary, NSString, NSURL, NSURLRequest, NSURLSessionConfiguration, NSURLSessionDataTask;
 @protocol CKDAccountInfoProvider, CKDURLRequestAuthRetryDelegate, CKDURLRequestMetricsDelegate, OS_dispatch_queue, OS_os_activity, OS_voucher;
 
 __attribute__((visibility("hidden")))
@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
     BOOL _cancelled;
     BOOL _haveCachedServerType;
     BOOL _haveCachedPartitionType;
+    BOOL _shouldTriggerAutoBugCapture;
     NSDictionary *_requestProperties;
     CKTimeLogger *_timeLogger;
     id<CKDURLRequestMetricsDelegate> _metricsDelegate;
@@ -63,13 +64,14 @@ __attribute__((visibility("hidden")))
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_authPromptReason;
+    NSString *_operationID;
     NSDictionary *_clientProvidedAdditionalHeaderValues;
     NSArray *_requestOperations;
     NSString *_flowControlKey;
     NSString *_hardwareIDOverride;
     NSDictionary *_fakeResponseOperationResultByItemID;
     NSError *_error;
-    NSOperationQueue *_delegateQueue;
+    NSObject<OS_dispatch_queue> *_sessionCallbackQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSURLSessionConfiguration *_sessionConfiguration;
     NSString *_sessionConfigurationName;
@@ -108,7 +110,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
 @property (strong) NSDate *dateRequestWentOut; // @synthesize dateRequestWentOut=_dateRequestWentOut;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) NSOperationQueue *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property (strong) NSError *error; // @synthesize error=_error;
@@ -129,6 +130,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<CKDURLRequestMetricsDelegate> metricsDelegate; // @synthesize metricsDelegate=_metricsDelegate;
 @property BOOL needsAuthRetry; // @synthesize needsAuthRetry=_needsAuthRetry;
 @property (nonatomic) unsigned long long numDownloadedElements; // @synthesize numDownloadedElements=_numDownloadedElements;
+@property (strong, nonatomic) NSString *operationID; // @synthesize operationID=_operationID;
 @property (readonly, nonatomic) int operationType;
 @property (readonly, nonatomic) long long partitionType;
 @property (readonly, nonatomic) NSString *path;
@@ -150,9 +152,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
 @property (readonly, nonatomic) NSString *sectionID;
 @property (readonly, nonatomic) long long serverType;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *sessionCallbackQueue; // @synthesize sessionCallbackQueue=_sessionCallbackQueue;
 @property (strong) NSURLSessionConfiguration *sessionConfiguration; // @synthesize sessionConfiguration=_sessionConfiguration;
 @property (strong) NSString *sessionConfigurationName; // @synthesize sessionConfigurationName=_sessionConfigurationName;
 @property (readonly, nonatomic) BOOL shouldCompressBody;
+@property BOOL shouldTriggerAutoBugCapture; // @synthesize shouldTriggerAutoBugCapture=_shouldTriggerAutoBugCapture;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
 @property (readonly, nonatomic) CKDProtobufStreamWriter *streamWriter; // @synthesize streamWriter=_streamWriter;

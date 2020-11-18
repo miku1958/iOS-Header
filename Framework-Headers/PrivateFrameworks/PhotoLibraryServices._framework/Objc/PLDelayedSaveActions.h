@@ -24,6 +24,7 @@
     NSMutableDictionary *_delayedSearchIndexUpdateUUIDs;
     NSMutableSet *_delayedAlbumCountUpdates;
     NSMutableDictionary *_delayedWorkerTypesToAnalyzeByAssetUUID;
+    BOOL _needsUpdateUnverifiedFaceCountThreshold;
     PLClientServerTransaction *_clientTransaction;
 }
 
@@ -69,6 +70,7 @@
 - (void)popDelayedDupeAnalysisNormalInserts:(id *)arg1 cloudInserts:(id *)arg2;
 - (void)popDelayedMomentInsertsAndUpdates:(id *)arg1 deletes:(id *)arg2;
 - (void)popDelayedSearchIndexUpdates:(id *)arg1;
+- (BOOL)popNeedsUdpateUnverifiedFaceCountThreshold;
 - (void)recordAdditionalAssetAttributesForSearchIndexUpdate:(id)arg1;
 - (void)recordAlbumCountUpdate:(id)arg1;
 - (void)recordAlbumForCloudFeedUpdate:(id)arg1;
@@ -84,6 +86,7 @@
 - (void)recordDetectedFaceForSearchIndexUpdate:(id)arg1;
 - (void)recordInvitationRecordForCloudFeedUpdate:(id)arg1;
 - (void)recordMemoryForSearchIndexUpdate:(id)arg1;
+- (void)recordNeedsUpdateUnverifiedFaceCountThreshold;
 - (void)recordPersonForSearchIndexUpdate:(id)arg1;
 - (void)recordPersonReferenceForSearchIndexUpdate:(id)arg1;
 

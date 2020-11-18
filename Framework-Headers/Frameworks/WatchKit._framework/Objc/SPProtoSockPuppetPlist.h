@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *objects; // @synthesize objects=_objects;
 
++ (Class)objectType;
 - (void).cxx_destruct;
 - (void)addObject:(id)arg1;
 - (void)clearObjects;

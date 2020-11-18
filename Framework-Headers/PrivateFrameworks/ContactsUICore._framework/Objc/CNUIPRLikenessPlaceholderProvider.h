@@ -9,11 +9,9 @@
 #import <ContactsUICore/CNUIPRLikenessProvider-Protocol.h>
 
 @class CNCache, NSString;
-@protocol CNScheduler;
 
 @interface CNUIPRLikenessPlaceholderProvider : NSObject <CNUIPRLikenessProvider>
 {
-    id<CNScheduler> _resourceLock;
     CNCache *_cache;
 }
 
@@ -21,11 +19,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<CNScheduler> resourceLock; // @synthesize resourceLock=_resourceLock;
 @property (readonly) Class superclass;
 
 + (id)imageNameForDiameter:(double)arg1;
 - (void).cxx_destruct;
+- (struct CGImage *)_cnui_imageForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)_cnui_likenessForSize:(struct CGSize)arg1;
 - (id)_cnui_likenessForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (unsigned long long)_cnui_likenessType;

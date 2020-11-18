@@ -17,6 +17,7 @@
     NSDate *_currentAssetReferenceChangedDate;
     double _lastAssetWasCurrentForDuration;
     BOOL _browsingSpeedRegimeIsValid;
+    BOOL _isBrowsingSpeedRegimeInvalidationScheduled;
     PUCachedMapTable *_viewModelByAssetReference;
     NSMutableSet *_invalidAssetViewModels;
     BOOL _allAssetViewModelsAreInvalid;
@@ -73,14 +74,15 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (id)_assetSharedViewModelForAsset:(id)arg1 createIfNeeded:(BOOL)arg2;
-- (id)_badgeInfoForAssetReference:(id)arg1;
+- (id)_badgeInfoPromiseForAssetReference:(id)arg1;
 - (double)_focusValueForAsset:(id)arg1;
 - (void)_handleAssetSharedViewModel:(id)arg1 didChange:(id)arg2;
 - (void)_handleAssetViewModel:(id)arg1 didChange:(id)arg2;
-- (void)_handleAsyncScrubRegimeInvalidation;
+- (void)_handleAsyncBrowsingSpeedRegimeInvalidation;
 - (void)_invalidateAllAssetViewModels;
 - (void)_invalidateAssetViewModel:(id)arg1;
 - (void)_invalidateBrowsingSpeedRegime;
+- (void)_invalidateBrowsingSpeedRegimeAfterMaximumDelay:(double)arg1;
 - (void)_invalidateNeighboringAssetViewModels;
 - (BOOL)_isAssetInFocus:(id)arg1;
 - (BOOL)_needsUpdate;

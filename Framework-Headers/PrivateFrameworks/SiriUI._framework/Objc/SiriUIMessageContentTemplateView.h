@@ -10,10 +10,12 @@
 
 @interface SiriUIMessageContentTemplateView : SiriUIBaseTemplateView
 {
+    id _textBalloonView;
 }
 
 @property (weak, nonatomic) id<SiriUIMessageContentTemplateModel> dataSource; // @dynamic dataSource;
 
+- (void).cxx_destruct;
 - (struct CGSize)_textBalloonViewBoundingSize;
 - (double)desiredHeight;
 - (id)initWithDataSource:(id)arg1;

@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) NSArray *limitedUIElements;
 @property (readonly, nonatomic) NSString *modelName;
 @property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) long long navigationAidedDriving;
 @property (readonly, nonatomic) BOOL nightMode;
 @property (readonly, nonatomic) BOOL nightModeSupported;
 @property (readonly, nonatomic) BOOL ownsScreen;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 {
     WKWebView *_webView;
     id<_LPResolvable> _resolvable;
+    unsigned int _loggingID;
     CDUnknownBlockType _completionHandler;
 }
 

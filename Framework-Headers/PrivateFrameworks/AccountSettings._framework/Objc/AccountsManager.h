@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary;
 
@@ -19,7 +19,6 @@
     NSArray *_runtimeFixers;
 }
 
-+ (void)_migrateAccountsIfNeeded;
 + (id)_notifierClassNamesForAccountType:(id)arg1 dataclass:(id)arg2;
 + (BOOL)_oldDAAccountsInformationFound;
 + (BOOL)_oldMailAccountsInformationFound;
@@ -31,7 +30,6 @@
 + (unsigned long long)currentVersion;
 + (id)displayNameForGroupOfAccountType:(id)arg1 forBeginningOfSentence:(BOOL)arg2;
 + (id)fullPathToAccountSettingsPlist;
-+ (void)killDataAccessIfNecessary;
 + (void)releaseMigrationLock:(id)arg1;
 + (void)removeNewAccountSettingsToMigrateOldAccountInformation;
 + (void)shouldMigrateOldMailAccounts:(BOOL *)arg1 oldDAAccounts:(BOOL *)arg2 newAccountSettings:(BOOL *)arg3;

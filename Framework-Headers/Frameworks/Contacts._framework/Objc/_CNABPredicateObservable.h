@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)globalQueue;
++ (id)observableWithPredicates:(id)arg1 sortOrdering:(unsigned int)arg2 options:(unsigned long long)arg3 addressBook:(void *)arg4;
 - (void)dealloc;
 - (id)initWithPredicate:(id)arg1 sortOrdering:(unsigned int)arg2 options:(unsigned long long)arg3 addressBook:(void *)arg4;
 - (BOOL)predicateShouldContinue:(id)arg1;

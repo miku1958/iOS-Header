@@ -15,6 +15,7 @@
     NSNumber *_keepAliveDelay;
     NSNumber *_keepAliveInterval;
     NSNumber *_keepAliveCount;
+    NSNumber *_netServiceType;
 }
 
 @property (copy, nonatomic) NSNumber *adaptiveWriteTimeout; // @synthesize adaptiveWriteTimeout=_adaptiveWriteTimeout;
@@ -22,6 +23,7 @@
 @property (copy, nonatomic) NSNumber *keepAliveDelay; // @synthesize keepAliveDelay=_keepAliveDelay;
 @property (copy, nonatomic) NSNumber *keepAliveEnabled; // @synthesize keepAliveEnabled=_keepAliveEnabled;
 @property (copy, nonatomic) NSNumber *keepAliveInterval; // @synthesize keepAliveInterval=_keepAliveInterval;
+@property (copy, nonatomic) NSNumber *netServiceType; // @synthesize netServiceType=_netServiceType;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

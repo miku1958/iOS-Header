@@ -20,6 +20,7 @@
 - (struct __CFNumber *)copyNumberFromDeviceTree:(id)arg1 withFirstChar:(BOOL)arg2 propertyName:(id)arg3 withPropertyFirstChar:(BOOL)arg4;
 - (void *)copyPropertyFromServiceTree:(id)arg1 withFirstChar:(BOOL)arg2 propertyName:(id)arg3 withPropertyFirstChar:(BOOL)arg4;
 - (void *)copyServiceTreeProperty:(id)arg1 withFirstChar:(BOOL)arg2 propertyName:(id)arg3 withPropertyFirstChar:(BOOL)arg4;
+- (struct __CFString *)copyStringFromDeviceTree:(id)arg1 withFirstChar:(BOOL)arg2 propertyName:(id)arg3 withPropertyFirstChar:(BOOL)arg4;
 - (struct __CFString *)copyStringFromServiceTree:(id)arg1 withFirstChar:(BOOL)arg2 propertyName:(id)arg3 withPropertyFirstChar:(BOOL)arg4;
 - (BOOL)createServicesIteratorByNameMatch:(const char *)arg1;
 - (BOOL)createTreeIterator:(const char *)arg1;

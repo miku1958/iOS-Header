@@ -8,7 +8,7 @@
 
 #import <MediaPlaybackCore/AVAssetResourceLoaderDelegate-Protocol.h>
 
-@class NSArray, NSData, NSString, _MPCRadioStreamMetadata;
+@class NSArray, NSData, NSOperationQueue, NSString, _MPCRadioStreamMetadata;
 
 @interface MPCRadioStreamTrackAVItem : MPCRadioAVItem <AVAssetResourceLoaderDelegate>
 {
@@ -17,6 +17,7 @@
     NSArray *_buyOffers;
     _MPCRadioStreamMetadata *_effectiveMetadata;
     NSData *_jingleTimedMetadata;
+    NSOperationQueue *_secureKeyDeliveryOperationQueue;
     double _playStartDateTimeSinceReferenceDate;
     NSData *_previousAdamIDBlob;
     _MPCRadioStreamMetadata *_radioStreamTrackMetadata;
@@ -46,6 +47,8 @@
 - (id)albumBuyButtonText;
 - (long long)albumBuyButtonType;
 - (long long)albumStoreID;
+- (BOOL)allowsAirPlayFromCloud;
+- (BOOL)allowsExternalPlayback;
 - (id)artist;
 - (id)buyOffers;
 - (void)dealloc;
@@ -60,6 +63,8 @@
 - (BOOL)mpcReporting_shouldUseRelativeTimePositions;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
+- (long long)rtcReportingAssetType;
+- (id)rtcReportingServiceIdentifier;
 - (void)setPlayerItem:(id)arg1;
 - (long long)storeItemInt64ID;
 - (id)streamTrack;

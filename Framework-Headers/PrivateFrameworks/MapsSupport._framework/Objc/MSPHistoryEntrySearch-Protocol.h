@@ -9,7 +9,6 @@
 @class GEOMapRegion, NSString;
 
 @protocol MSPHistoryEntrySearch <MSPHistoryEntry>
-- (BOOL)isFailed;
 - (NSString *)languageCode;
 - (NSString *)locationDisplayString;
 - (GEOMapRegion *)mapRegion;

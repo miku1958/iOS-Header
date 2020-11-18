@@ -26,7 +26,6 @@
     unsigned long long _contentType;
     NSString *_title;
     NSString *_primaryAudience;
-    NSString *_subtitle;
     NSDate *_publishDate;
     unsigned long long _publisherArticleVersion;
     unsigned long long _backendArticleVersion;
@@ -128,7 +127,6 @@
 - (id)sourceName;
 - (id)storyStyle;
 - (unsigned long long)storyType;
-- (id)subtitle;
 - (id)thumbnail;
 - (struct CGRect)thumbnailFocalFrame;
 - (id)thumbnailHQ;

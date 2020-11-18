@@ -6,9 +6,11 @@
 
 #import <Photos/PHAssetResource.h>
 
+#import <Photos/PHCPLAssetResource-Protocol.h>
+
 @class NSData, PHAssetResourceCreationOptions;
 
-@interface PHExternalAssetResource : PHAssetResource
+@interface PHExternalAssetResource : PHAssetResource <PHCPLAssetResource>
 {
     BOOL _duplicateAllowsReadAccess;
     BOOL _isLibraryAssetResource;

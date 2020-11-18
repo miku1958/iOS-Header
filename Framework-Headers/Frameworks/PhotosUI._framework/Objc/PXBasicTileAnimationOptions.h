@@ -15,10 +15,12 @@
     double _delay;
     double _duration;
     long long _style;
+    unsigned long long _flags;
 }
 
 @property (nonatomic) double delay; // @synthesize delay=_delay;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
+@property (nonatomic) unsigned long long flags; // @synthesize flags=_flags;
 @property (nonatomic) BOOL shouldNotifyTiles; // @synthesize shouldNotifyTiles=_shouldNotifyTiles;
 @property (nonatomic) BOOL shouldSnapshotDynamicContents; // @synthesize shouldSnapshotDynamicContents=_shouldSnapshotDynamicContents;
 @property (nonatomic) long long style; // @synthesize style=_style;

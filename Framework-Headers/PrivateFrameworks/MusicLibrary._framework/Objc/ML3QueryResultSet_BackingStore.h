@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)backingStoreByRemovingPersistentIDs:(const unordered_set_f2692727 *)arg1;
-- (BOOL)containsPersistentIDs:(const unordered_set_f2692727 *)arg1;
+- (id)backingStoreByRemovingPersistentIDs:(const unordered_set_9227d2bb *)arg1;
+- (BOOL)containsPersistentIDs:(const unordered_set_9227d2bb *)arg1;
 - (void)enumeratePersistentIDsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSectionsUsingBlock:(CDUnknownBlockType)arg1;
 - (long long)persistentIDAtIndex:(unsigned long long)arg1;

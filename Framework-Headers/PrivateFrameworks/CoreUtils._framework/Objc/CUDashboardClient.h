@@ -24,7 +24,7 @@
     NSString *_server;
 }
 
-@property (strong, nonatomic) NSString *server; // @synthesize server=_server;
+@property (copy, nonatomic) NSString *server; // @synthesize server=_server;
 
 - (void).cxx_destruct;
 - (int)_activate;

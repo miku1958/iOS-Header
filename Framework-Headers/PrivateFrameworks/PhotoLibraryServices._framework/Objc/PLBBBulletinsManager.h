@@ -82,6 +82,7 @@
 - (void)noteUserDidNavigateIntoSharedAlbum:(id)arg1;
 - (void)noteUserDidReadCommentOnSharedAsset:(id)arg1;
 - (void)noteUserDidViewCloudFeedContent:(long long)arg1;
+- (void)reportAsJunkPhotoStreamInvitationForAlbumWithCloudGUID:(id)arg1;
 - (void)sendResponse:(BOOL)arg1 toPhotoStreamInvitationForAlbumWithCloudGUID:(id)arg2;
 - (void)setEnableTemporaryDebugMode:(BOOL)arg1;
 - (void)userViewedBulletinWithRecordID:(unsigned long long)arg1;

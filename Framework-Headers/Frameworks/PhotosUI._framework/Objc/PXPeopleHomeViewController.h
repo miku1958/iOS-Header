@@ -93,9 +93,8 @@
 - (unsigned long long)_plusButtonCount;
 - (id)_plusButtonIndexPath;
 - (void)_postTemporaryActions:(id)arg1;
-- (void)_presentAddViewController;
+- (void)_presentAddViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_progressChanged:(id)arg1;
-- (void)_redetectFaces;
 - (unsigned long long)_requiredFooterStyle;
 - (void)_resetDragFlags;
 - (id)_rightBarItemsForMode:(unsigned long long)arg1;
@@ -141,7 +140,8 @@
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)peopleHomeDataSourceDidReceivePersonChanges:(id)arg1;
 - (void)peopleHomeDataSourceMembersChanged:(id)arg1;
-- (void)peoplePreviewActionViewController:(id)arg1 wantsToChangePerson:(id)arg2 ofType:(long long)arg3 toType:(long long)arg4;
+- (void)peoplePreviewActionViewController:(id)arg1 wantsToChangePerson:(id)arg2 toType:(long long)arg3;
+- (void)ppt_navigateToAddPeopleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)ppt_navigateToPhotosDetails;
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;

@@ -11,6 +11,7 @@
 @interface MPModelRadioStation : MPModelObject
 {
     BOOL _beats1;
+    BOOL _hasExplicitContent;
     NSString *_name;
     NSString *_editorNotes;
     NSString *_shortEditorNotes;
@@ -20,17 +21,20 @@
 @property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @synthesize artworkCatalogBlock=_artworkCatalogBlock;
 @property (nonatomic, getter=isBeats1) BOOL beats1; // @synthesize beats1=_beats1;
 @property (copy, nonatomic) NSString *editorNotes; // @synthesize editorNotes=_editorNotes;
+@property (nonatomic) BOOL hasExplicitContent; // @synthesize hasExplicitContent=_hasExplicitContent;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *shortEditorNotes; // @synthesize shortEditorNotes=_shortEditorNotes;
 
 + (id)__MPModelPropertyRadioStationArtwork__PROPERTY;
 + (id)__MPModelPropertyRadioStationBeats1__PROPERTY;
 + (id)__MPModelPropertyRadioStationEditorNotes__PROPERTY;
++ (id)__MPModelPropertyRadioStationHasExplicitContent__PROPERTY;
 + (id)__MPModelPropertyRadioStationName__PROPERTY;
 + (id)__MPModelPropertyRadioStationShortEditorNotes__PROPERTY;
 + (id)__artworkCatalogBlock__KEY;
 + (id)__beats1__KEY;
 + (id)__editorNotes__KEY;
++ (id)__hasExplicitContent__KEY;
 + (id)__name__KEY;
 + (id)__shortEditorNotes__KEY;
 - (void).cxx_destruct;

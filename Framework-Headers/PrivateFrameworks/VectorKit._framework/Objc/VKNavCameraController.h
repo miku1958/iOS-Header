@@ -86,7 +86,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _lastTargetStyleIdentifier;
     double _desiredZoomScale;
     float _animationTime;
-    BOOL _pouncing;
     BOOL _isTracking;
     VKMapModel *_mapModel;
     VKMapCanvas *_mapCanvas;
@@ -128,11 +127,11 @@ __attribute__((visibility("hidden")))
 - (void)_updateDebugOverlay;
 - (void)_updateDebugText;
 - (void)_updateRouteMatch;
-- (void)_updateSceneStyles;
+- (void)_updateSceneStyles:(BOOL)arg1;
 - (BOOL)_updateSprings:(double)arg1;
 - (void)_updateStyles;
 - (void)_updateZoomScaleLimts;
-- (void)animateCameraWithDuration:(float)arg1;
+- (void)animateCameraWithDuration:(float)arg1 fromFrame:(const CameraFrame_e4e5578c *)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (Unit_3d259e8a)calculateHeading;
 - (Box_3d7e3c2c)calculateViewableScreenRect;
 - (CameraFrame_e4e5578c)cameraFrame;
@@ -179,7 +178,7 @@ __attribute__((visibility("hidden")))
 - (void)startPinchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)startPitchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)startRotatingWithFocusPoint:(struct CGPoint)arg1;
-- (void)startWithPounce:(BOOL)arg1 startLocation:(CDStruct_c3b9c2ee)arg2 pounceCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)startWithPounce:(BOOL)arg1 startLocation:(CDStruct_c3b9c2ee)arg2 startCourse:(double)arg3 pounceCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)stop;
 - (void)stopAnimations;
 - (void)stopPanningAtPoint:(struct CGPoint)arg1;

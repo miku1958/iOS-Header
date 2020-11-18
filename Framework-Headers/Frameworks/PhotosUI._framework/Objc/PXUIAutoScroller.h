@@ -4,43 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosUICore/PXAutoScroller.h>
 
-@class NSTimer, UIScrollView;
-@protocol PXAutoScrollerDelegate;
+@class CADisplayLink;
 
-@interface PXUIAutoScroller : NSObject
+@interface PXUIAutoScroller : PXAutoScroller
 {
-    id<PXAutoScrollerDelegate> _delegate;
-    double _autoScrollerInset;
-    double _autoScrollerTimerInterval;
-    double _autoScrollerMaximumSpeed;
-    UIScrollView *_scrollView;
-    NSTimer *_timer;
-    long long _updateTrigger;
-    struct CGPoint _distanceFromCenterFrame;
-    struct CGPoint _speed;
+    CADisplayLink *__displayLink;
 }
 
-@property (nonatomic) double autoScrollerInset; // @synthesize autoScrollerInset=_autoScrollerInset;
-@property (nonatomic) double autoScrollerMaximumSpeed; // @synthesize autoScrollerMaximumSpeed=_autoScrollerMaximumSpeed;
-@property (nonatomic) double autoScrollerTimerInterval; // @synthesize autoScrollerTimerInterval=_autoScrollerTimerInterval;
-@property (weak, nonatomic) id<PXAutoScrollerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) struct CGPoint distanceFromCenterFrame; // @synthesize distanceFromCenterFrame=_distanceFromCenterFrame;
-@property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property (nonatomic) struct CGPoint speed; // @synthesize speed=_speed;
-@property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
-@property (nonatomic) long long updateTrigger; // @synthesize updateTrigger=_updateTrigger;
+@property (strong, nonatomic, setter=_setDisplayLink:) CADisplayLink *_displayLink; // @synthesize _displayLink=__displayLink;
 
 - (void).cxx_destruct;
-- (void)_handlerTimer:(id)arg1;
-- (void)_startTimer;
-- (void)_stopTimer;
-- (void)dealloc;
-- (id)init;
-- (id)initWithTargetScrollView:(id)arg1;
-- (void)stopAndInvalidate;
+- (void)_handleDisplayLink:(id)arg1;
+- (BOOL)autoscrollWithOffset:(struct CGPoint)arg1;
+- (void)startRepeating;
+- (void)stopRepeating;
 - (void)updateWithGestureRecognizer:(id)arg1;
+- (struct CGRect)visibleRectForScrollView:(id)arg1;
 
 @end
 

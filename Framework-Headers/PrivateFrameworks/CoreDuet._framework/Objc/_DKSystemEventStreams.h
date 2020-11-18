@@ -13,6 +13,7 @@
 + (id)appActivityStream;
 + (id)appBulletinStream;
 + (id)appInFocusStream;
++ (id)appIntentsStream;
 + (id)appViewedInDockStream;
 + (id)audioInputRouteStream;
 + (id)audioOutputRoutStream;
@@ -34,6 +35,7 @@
 + (id)homeKitAccessoryControlStream;
 + (id)homeKitAppViewStream;
 + (id)homeKitSceneStream;
++ (id)internalQueryDataCollectionStream;
 + (id)isSleepEventStream;
 + (id)isWeekendEventStream;
 + (id)locationVisitStream;

@@ -4,29 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <MediaRemote/_MRLanguageOptionGroupProtobuf.h>
 
-#import <MediaRemote/NSSecureCoding-Protocol.h>
-
-@class MRLanguageOption, NSArray;
+#import <MediaRemote/NSCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface MRLanguageOptionGroup : NSObject <NSSecureCoding>
+@interface MRLanguageOptionGroup : _MRLanguageOptionGroupProtobuf <NSCoding>
 {
-    BOOL _allowEmptySelection;
-    MRLanguageOption *_defaultLanguageOption;
-    NSArray *_languageOptions;
 }
 
-@property (readonly, nonatomic) BOOL allowEmptySelection; // @synthesize allowEmptySelection=_allowEmptySelection;
-@property (readonly, nonatomic) MRLanguageOption *defaultLanguageOption; // @synthesize defaultLanguageOption=_defaultLanguageOption;
-@property (readonly, nonatomic) NSArray *languageOptions; // @synthesize languageOptions=_languageOptions;
-
-+ (BOOL)supportsSecureCoding;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithLanguageOptions:(id)arg1 defaultLanguageOption:(void *)arg2 allowEmptySelection:(BOOL)arg3;
 
 @end
 

@@ -8,13 +8,16 @@
 
 #import <Intents/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class PBUnknownFields, _INPBMessage;
 
 @interface _INPBSendMessageIntentResponse : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    _INPBMessage *_sentMessage;
 }
 
+@property (readonly, nonatomic) BOOL hasSentMessage;
+@property (strong, nonatomic) _INPBMessage *sentMessage; // @synthesize sentMessage=_sentMessage;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)options;

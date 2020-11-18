@@ -21,6 +21,7 @@
     NTPBEventObject *_eventObject;
     int _gestureType;
     int _interfaceOrientation;
+    NSString *_notwUserId;
     int _reachabilityStatus;
     NSString *_referringSource;
     NSString *_referringType;
@@ -28,6 +29,10 @@
     NSString *_userId;
     NSString *_userStorefrontId;
     NSString *_windowFrameInScreen;
+    BOOL _isPaidSubscriberDuringEvent;
+    BOOL _isPaidSubscriberFromAppStoreDuringEvent;
+    BOOL _isPaidSubscriberFromNewsDuringEvent;
+    BOOL _isPaidSubscriberFromThirdPartyDuringEvent;
     struct {
         unsigned int duration:1;
         unsigned int personalizationTreatmentId:1;
@@ -38,6 +43,10 @@
         unsigned int gestureType:1;
         unsigned int interfaceOrientation:1;
         unsigned int reachabilityStatus:1;
+        unsigned int isPaidSubscriberDuringEvent:1;
+        unsigned int isPaidSubscriberFromAppStoreDuringEvent:1;
+        unsigned int isPaidSubscriberFromNewsDuringEvent:1;
+        unsigned int isPaidSubscriberFromThirdPartyDuringEvent:1;
     } _has;
 }
 
@@ -52,6 +61,11 @@
 @property (readonly, nonatomic) BOOL hasEventObject;
 @property (nonatomic) BOOL hasGestureType;
 @property (nonatomic) BOOL hasInterfaceOrientation;
+@property (nonatomic) BOOL hasIsPaidSubscriberDuringEvent;
+@property (nonatomic) BOOL hasIsPaidSubscriberFromAppStoreDuringEvent;
+@property (nonatomic) BOOL hasIsPaidSubscriberFromNewsDuringEvent;
+@property (nonatomic) BOOL hasIsPaidSubscriberFromThirdPartyDuringEvent;
+@property (readonly, nonatomic) BOOL hasNotwUserId;
 @property (nonatomic) BOOL hasPersonalizationTreatmentId;
 @property (nonatomic) BOOL hasPersonalizedTreatmentId;
 @property (nonatomic) BOOL hasReachabilityStatus;
@@ -63,6 +77,11 @@
 @property (readonly, nonatomic) BOOL hasUserStorefrontId;
 @property (readonly, nonatomic) BOOL hasWindowFrameInScreen;
 @property (nonatomic) int interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
+@property (nonatomic) BOOL isPaidSubscriberDuringEvent; // @synthesize isPaidSubscriberDuringEvent=_isPaidSubscriberDuringEvent;
+@property (nonatomic) BOOL isPaidSubscriberFromAppStoreDuringEvent; // @synthesize isPaidSubscriberFromAppStoreDuringEvent=_isPaidSubscriberFromAppStoreDuringEvent;
+@property (nonatomic) BOOL isPaidSubscriberFromNewsDuringEvent; // @synthesize isPaidSubscriberFromNewsDuringEvent=_isPaidSubscriberFromNewsDuringEvent;
+@property (nonatomic) BOOL isPaidSubscriberFromThirdPartyDuringEvent; // @synthesize isPaidSubscriberFromThirdPartyDuringEvent=_isPaidSubscriberFromThirdPartyDuringEvent;
+@property (strong, nonatomic) NSString *notwUserId; // @synthesize notwUserId=_notwUserId;
 @property (nonatomic) long long personalizationTreatmentId; // @synthesize personalizationTreatmentId=_personalizationTreatmentId;
 @property (nonatomic) long long personalizedTreatmentId; // @synthesize personalizedTreatmentId=_personalizedTreatmentId;
 @property (nonatomic) int reachabilityStatus; // @synthesize reachabilityStatus=_reachabilityStatus;

@@ -8,6 +8,7 @@
 
 #import <CoreDAV/CoreDAVDeleteTaskDelegate-Protocol.h>
 #import <CoreDAV/CoreDAVMkcolTaskDelegate-Protocol.h>
+#import <CoreDAV/CoreDAVMoveTaskDelegate-Protocol.h>
 #import <CoreDAV/CoreDAVPropPatchTaskDelegate-Protocol.h>
 #import <CoreDAV/CoreDAVPutTaskDelegate-Protocol.h>
 #import <CoreDAV/CoreDAVTaskGroupDelegate-Protocol.h>
@@ -15,7 +16,7 @@
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSURL;
 @protocol CoreDAVLocalDBTreeInfoProvider;
 
-@interface CoreDAVRecursiveContainerSyncTaskGroup : CoreDAVTaskGroup <CoreDAVDeleteTaskDelegate, CoreDAVPutTaskDelegate, CoreDAVTaskGroupDelegate, CoreDAVMkcolTaskDelegate, CoreDAVPropPatchTaskDelegate>
+@interface CoreDAVRecursiveContainerSyncTaskGroup : CoreDAVTaskGroup <CoreDAVDeleteTaskDelegate, CoreDAVPutTaskDelegate, CoreDAVTaskGroupDelegate, CoreDAVMkcolTaskDelegate, CoreDAVPropPatchTaskDelegate, CoreDAVMoveTaskDelegate>
 {
     int _phase;
     NSURL *_folderURL;
@@ -76,6 +77,7 @@
 - (id)initWithFolderURL:(id)arg1 previousCTag:(id)arg2 previousPTag:(id)arg3 previousSyncToken:(id)arg4 actions:(id)arg5 syncItemOrder:(BOOL)arg6 context:(id)arg7 accountInfoProvider:(id)arg8 taskManager:(id)arg9;
 - (BOOL)isWhitelistedError:(id)arg1;
 - (void)mkcolTask:(id)arg1 parsedPropStats:(id)arg2 error:(id)arg3;
+- (void)moveTask:(id)arg1 parsedResponses:(id)arg2 error:(id)arg3;
 - (void)propFindTask:(id)arg1 parsedResponses:(id)arg2 error:(id)arg3;
 - (void)propPatchTask:(id)arg1 parsedResponses:(id)arg2 error:(id)arg3;
 - (void)putTask:(id)arg1 completedWithNewETag:(id)arg2 error:(id)arg3;

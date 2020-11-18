@@ -10,14 +10,18 @@
 - (void)_performUpdateRequestWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)aa_accountsEnabledForDataclass:(id)arg1;
 - (id)aa_appleAccountType;
+- (id)aa_appleAccountWithAltDSID:(id)arg1;
 - (id)aa_appleAccountWithPersonID:(id)arg1;
 - (id)aa_appleAccountWithUsername:(id)arg1;
 - (id)aa_appleAccounts;
+- (void)aa_appleAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)aa_authKitAccountForAltDSID:(id)arg1;
+- (id)aa_grandSlamAccountForAltDSID:(id)arg1;
 - (id)aa_grandSlamAccountForiCloudAccount:(id)arg1;
 - (BOOL)aa_isUsingiCloud;
 - (void)aa_lookupEmailAddresses:(id)arg1 withAppleAccount:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)aa_primaryAppleAccount;
+- (void)aa_primaryAppleAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (id)aa_primaryAppleAccountWithPreloadedDataclasses;
 - (id)aa_recommendedAppleIDForAccountSignInWithTypeIdentifier:(id)arg1;
 - (void)aa_registerAppleAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

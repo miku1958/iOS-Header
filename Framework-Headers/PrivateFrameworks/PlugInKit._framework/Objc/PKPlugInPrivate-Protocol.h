@@ -10,6 +10,7 @@
 
 @protocol PKPlugInPrivate <PKPlugIn>
 
+@property (strong) NSDictionary *environment;
 @property (strong) NSDictionary *extensionState;
 @property (readonly) NSXPCConnection *pluginConnection;
 @property (readonly) NSDate *timestamp;

@@ -6,22 +6,21 @@
 
 #import <MediaPlayer/MPStoreModelRequest.h>
 
-@class MusicForYouRecommendationsResponse;
+@class NSURL;
 
 @interface MusicForYouRecommendationsRequest : MPStoreModelRequest
 {
-    unsigned long long _recommendationsRequestType;
-    MusicForYouRecommendationsResponse *_previousResponse;
+    NSURL *_customForYouURL;
 }
 
-@property (strong, nonatomic) MusicForYouRecommendationsResponse *previousResponse; // @synthesize previousResponse=_previousResponse;
-@property (nonatomic) unsigned long long recommendationsRequestType; // @synthesize recommendationsRequestType=_recommendationsRequestType;
+@property (copy, nonatomic) NSURL *customForYouURL; // @synthesize customForYouURL=_customForYouURL;
 
 + (id)allSupportedItemProperties;
 + (id)allSupportedSectionProperties;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;
 

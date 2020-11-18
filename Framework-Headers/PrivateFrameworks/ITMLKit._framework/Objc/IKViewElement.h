@@ -84,7 +84,6 @@
 + (id)supportedFeatures;
 + (void)willParseDOMElement:(id)arg1;
 - (void).cxx_destruct;
-- (void)_propagateUpdateType:(unsigned long long)arg1;
 - (void)_resetUpdates;
 - (void)_setAppDocument:(id)arg1;
 - (void)_updateSubtreeWithElement:(id)arg1;
@@ -98,14 +97,15 @@
 - (void)dealloc;
 - (void)dispatchEvent:(id)arg1 eventAttribute:(id)arg2 canBubble:(BOOL)arg3 isCancelable:(BOOL)arg4 extraInfo:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (void)dispatchEventOfType:(unsigned long long)arg1 canBubble:(BOOL)arg2 isCancelable:(BOOL)arg3 extraInfo:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)disperseUpdateType:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;
 - (id)initWithPrototypeElement:(id)arg1 parent:(id)arg2 appDataItem:(id)arg3;
 - (id)objectForKeyedSubscript:(id)arg1;
+- (void)propagateUpdateType:(unsigned long long)arg1;
 - (void)resetProperty:(unsigned long long)arg1;
 - (void)retrievePresentationDocument:(CDUnknownBlockType)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
-- (void)setViewElementUpdateType:(unsigned long long)arg1;
 - (BOOL)shouldResolveDataForDOMBindingController:(id)arg1;
 
 @end

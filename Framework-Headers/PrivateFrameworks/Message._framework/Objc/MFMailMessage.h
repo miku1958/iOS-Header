@@ -6,12 +6,14 @@
 
 #import <MIME/MFMessage.h>
 
+#import <Message/ECMessage-Protocol.h>
 #import <Message/MFBaseMessage-Protocol.h>
 #import <Message/MFMailboxPredictionMessage-Protocol.h>
 
-@class MFMessageInfo, NSString;
+@class MFMessageInfo, NSArray, NSDate, NSString;
+@protocol ECMailbox, ECMimePart;
 
-@interface MFMailMessage : MFMessage <MFBaseMessage, MFMailboxPredictionMessage>
+@interface MFMailMessage : MFMessage <ECMessage, MFBaseMessage, MFMailboxPredictionMessage>
 {
     unsigned long long _messageFlags;
     unsigned char _subjectPrefixLength;
@@ -20,7 +22,13 @@
     BOOL _shouldUseMailDrop;
 }
 
+@property (readonly, nonatomic) BOOL answered;
+@property (readonly, copy, nonatomic) NSArray *cc;
 @property (readonly, nonatomic) long long conversationHash; // @dynamic conversationHash;
+@property (readonly, nonatomic) long long conversationID;
+@property (readonly, nonatomic) BOOL conversationMuted;
+@property (readonly, nonatomic) BOOL conversationVIP;
+@property (readonly, nonatomic) NSDate *dateReceived;
 @property (readonly, nonatomic) unsigned int dateReceivedInterval; // @dynamic dateReceivedInterval;
 @property (readonly, nonatomic) unsigned int dateSentInterval; // @dynamic dateSentInterval;
 @property (readonly, copy) NSString *debugDescription;
@@ -29,17 +37,26 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL flagged;
+@property (readonly, copy, nonatomic) NSArray *from;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isVIP;
+@property (readonly, nonatomic) BOOL junk;
 @property (readonly, nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
+@property (readonly, copy, nonatomic) NSArray *listUnsubscribe;
+@property (readonly, nonatomic) id<ECMailbox> mailbox;
 @property (readonly, nonatomic) unsigned int mailboxID; // @dynamic mailboxID;
+@property (readonly, nonatomic) id<ECMimePart> messageBody;
 @property (readonly, nonatomic) long long messageIDHash; // @dynamic messageIDHash;
 @property unsigned long long modSequenceNumber;
+@property (readonly, copy, nonatomic) NSString *persistentID;
 @property (readonly, nonatomic) BOOL read;
+@property (readonly, copy, nonatomic) NSString *remoteID;
+@property (readonly, nonatomic) BOOL senderVIP;
 @property (nonatomic) BOOL shouldUseMailDrop; // @synthesize shouldUseMailDrop=_shouldUseMailDrop;
+@property (readonly, copy, nonatomic) NSString *subject;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSArray *to;
 @property (readonly, nonatomic) unsigned int uid;
 
 + (Class)dataMessageStoreToUse;
@@ -61,7 +78,6 @@
 - (id)loadMeetingExternalID;
 - (id)loadMeetingMetadata;
 - (id)mailMessageStore;
-- (id)mailbox;
 - (void)markAsFlagged;
 - (void)markAsForwarded;
 - (void)markAsNotFlagged;
@@ -83,7 +99,6 @@
 - (void)setSubject:(id)arg1 to:(id)arg2 cc:(id)arg3 bcc:(id)arg4 sender:(id)arg5 dateReceived:(double)arg6 dateSent:(double)arg7 messageIDHash:(long long)arg8 conversationIDHash:(long long)arg9 summary:(id)arg10 withOptions:(unsigned int)arg11;
 - (void)setSummary:(id)arg1;
 - (BOOL)shouldSetSummary;
-- (id)subject;
 - (id)subjectAndPrefixLength:(unsigned int *)arg1;
 - (id)subjectNotIncludingReAndFwdPrefix;
 - (id)toAddressList;

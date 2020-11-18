@@ -7,21 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <StoreKitUI/AAUIFamilySetupDelegate-Protocol.h>
-#import <StoreKitUI/SKComposeReviewDelegate-Protocol.h>
+#import <StoreKitUI/SKUIComposeReviewDelegate-Protocol.h>
 #import <StoreKitUI/SKUIGiftViewControllerDelegate-Protocol.h>
 #import <StoreKitUI/SKUIModalDocumentController-Protocol.h>
 #import <StoreKitUI/SKUIOverlayContainerDelegate-Protocol.h>
 #import <StoreKitUI/UIPopoverControllerDelegate-Protocol.h>
 #import <StoreKitUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, SKUIClientContext, SKUIOverlayContainerViewController, UINavigationController, UIPopoverController, UIViewController;
+@class NSArray, NSMutableArray, NSString, SKUIClientContext, SKUIOverlayContainerViewController, SKUIReportAConcernViewController, SKUIStoreDialogController, UINavigationController, UIPopoverController, UIViewController;
 @protocol SKUIModalDocumentDataSource, SKUIModalDocumentDelegate, SKUIModalSourceViewProvider, UINavigationControllerDelegate;
 
-@interface SKUIModalDocumentController : NSObject <AAUIFamilySetupDelegate, SKComposeReviewDelegate, SKUIGiftViewControllerDelegate, SKUIModalDocumentController, SKUIOverlayContainerDelegate, UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate>
+@interface SKUIModalDocumentController : NSObject <AAUIFamilySetupDelegate, SKUIComposeReviewDelegate, SKUIGiftViewControllerDelegate, SKUIModalDocumentController, SKUIOverlayContainerDelegate, UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate>
 {
     SKUIClientContext *_clientContext;
     NSMutableArray *_composeReviewViewControllers;
     id<SKUIModalDocumentDelegate> _delegate;
+    SKUIStoreDialogController *_dialogController;
+    SKUIReportAConcernViewController *_reportAConcernViewController;
     NSMutableArray *_giftViewControllers;
     id<SKUIModalSourceViewProvider> _modalSourceViewProvider;
     UINavigationController *_overlayNavigationController;
@@ -49,9 +51,11 @@
 
 - (void).cxx_destruct;
 - (struct CGRect)_centerRect:(id)arg1 adjust:(BOOL)arg2;
+- (void)_composeReviewViewControllerDidFinish:(id)arg1 finished:(BOOL)arg2;
 - (void)_dismissOverlayControllerWithStackItem:(id)arg1 animated:(BOOL)arg2;
 - (void)_garbageCollectActivityViewController:(id)arg1;
 - (id)_imageForImageViewElement:(id)arg1;
+- (id)_modalSourceViewProviderFromStackItems;
 - (void)_overlayControllerBackstopAction:(id)arg1;
 - (id)_overlayStackItems;
 - (void)_popDocument:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
@@ -59,9 +63,11 @@
 - (void)_popOverlayStackItem:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_popPopoverStackItem:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_popoverController:(id)arg1 containsStackItem:(id)arg2;
+- (void)_presentAlertForDialog:(id)arg1;
 - (void)_presentOverlayViewControllersFromNavigationController:(id)arg1;
 - (id)_presenterViewController;
 - (void)_presetPopoverSheetDocument:(id)arg1 viewController:(id)arg2 popoverPresentationController:(id)arg3;
+- (void)_promptForStarRating:(id)arg1;
 - (void)_pushCharityDocument:(id)arg1 options:(id)arg2;
 - (void)_pushDialogDocument:(id)arg1 options:(id)arg2;
 - (void)_pushFamilySetupDocument:(id)arg1 options:(id)arg2;
@@ -73,11 +79,15 @@
 - (void)_pushRedeemDocument:(id)arg1 options:(id)arg2;
 - (void)_pushSheetDocument:(id)arg1 viewController:(id)arg2;
 - (void)_pushSheetStackItem:(id)arg1;
-- (void)_pushWriteAReviewDocument:(id)arg1 viewController:(id)arg2;
 - (void)_sendDidFinishIfApplicable;
 - (id)_showOverlayContainerViewController;
 - (void)_unloadDocumentForPopoverController:(id)arg1;
 - (void)_unloadDocumentForViewController:(id)arg1;
+- (void)composeReviewViewController:(id)arg1 didFailWithDialog:(id)arg2;
+- (void)composeReviewViewController:(id)arg1 didSubmitWithEdit:(BOOL)arg2;
+- (void)composeReviewViewController:(id)arg1 presentDialog:(id)arg2;
+- (BOOL)composeReviewViewController:(id)arg1 shouldSubmitReview:(id)arg2;
+- (void)composeReviewViewControllerDidCancel:(id)arg1;
 - (void)dealloc;
 - (void)ensureOverlayNavigationControllerStackConsistencyForNavigationController:(id)arg1;
 - (void)familySetupViewController:(id)arg1 didCompleteWithSuccess:(BOOL)arg2;
@@ -95,7 +105,6 @@
 - (void)presentOverlayViewControllersFromNavigationController:(id)arg1;
 - (void)pushDocument:(id)arg1 options:(id)arg2;
 - (void)replaceDocument:(id)arg1 withDocument:(id)arg2 options:(id)arg3;
-- (void)reviewComposeViewControllerDidFinish:(id)arg1;
 - (void)setOverlayNavigationController:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)unloadDocumentForViewController:(id)arg1;
 

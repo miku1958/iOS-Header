@@ -8,7 +8,14 @@
 
 @interface TTVersionedDocument : NSObject
 {
-    struct Document *_documentArchive;
+    struct Document {
+        CDUnknownFunctionPointerType *;
+        basic_string_a1f69cfb;
+        unsigned int [1];
+        int;
+        struct RepeatedPtrField<versioned_document::Version>;
+        unsigned int;
+    } *_documentArchive;
 }
 
 @property (nonatomic) struct Document *documentArchive; // @synthesize documentArchive=_documentArchive;
@@ -18,16 +25,16 @@
 + (unsigned int)serializationVersion;
 + (unsigned int)versionedDocumentSerializationVersion;
 - (void)dealloc;
-- (id)initWithArchive:(const struct Document *)arg1;
+- (id)initWithArchive:(const Document_0e94f2f5 *)arg1;
 - (id)initWithData:(id)arg1;
-- (void)loadArchive:(const struct Document *)arg1;
+- (void)loadArchive:(const Document_0e94f2f5 *)arg1;
 - (void)loadData:(id)arg1;
-- (void)loadDocumentArchive:(struct Document *)arg1;
+- (void)loadDocumentArchive:(Document_0e94f2f5 *)arg1;
 - (unsigned int)maxDocumentVersion;
 - (void)mergeVersion:(unsigned int)arg1 fromData:(id)arg2;
 - (unsigned long long)mergeWithVersionedDocument:(id)arg1;
 - (void)saveCurrentVersion:(struct Version *)arg1;
-- (void)saveToArchive:(struct Document *)arg1;
+- (void)saveToArchive:(Document_0e94f2f5 *)arg1;
 - (id)serialize;
 - (id)serializeCurrentVersion:(unsigned int *)arg1;
 

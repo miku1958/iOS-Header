@@ -22,6 +22,9 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_keyLayers;
     int _renderedKeyState;
     NSString *_cachedTraitsHashString;
+    struct CGColor *_activeBackgroundColor;
+    id _activeCompositingFilter;
+    BOOL _singleRerender;
     BOOL _cachedControlKeyRenderingPreference;
     BOOL _renderAsMask;
     int _cachedAnchorCorner;
@@ -66,6 +69,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)_viewShouldBeOpaque;
 - (BOOL)allowBackgroundCachingForRenderFlags:(long long)arg1;
 - (id)cacheKeysForRenderFlags:(id)arg1;
+- (void)changeBackgroundToActiveIfNecessary;
+- (void)changeBackgroundToEnabled;
 - (void)dealloc;
 - (long long)didInputSubTree:(id)arg1;
 - (void)dimKeys:(id)arg1;

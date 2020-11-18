@@ -19,8 +19,10 @@
 @property (nonatomic) BOOL hasActiveRequest; // @synthesize hasActiveRequest=_hasActiveRequest;
 
 + (id)_fullAggDKeyWithPrefix:(id)arg1 error:(id)arg2;
++ (BOOL)_hadUserEventSinceIntervalAgo:(double)arg1;
 + (void)_logFeature:(id)arg1 setTo:(BOOL)arg2 by:(id)arg3;
 + (id)_stringForGatekeeperType:(unsigned long long)arg1;
++ (BOOL)_timestamp:(id)arg1 isAfter:(id)arg2;
 + (void)logAssistantEnabledSetTo:(BOOL)arg1 by:(id)arg2;
 + (void)logCreateAssistant;
 + (void)logDESEvaluationForLanguage:(id)arg1 error:(id)arg2;
@@ -43,6 +45,7 @@
 + (void)logLocalRecognitionLostForLanguage:(id)arg1;
 + (void)logLocalRecognitionWonForLanguage:(id)arg1;
 + (void)logLocalSpeechStartedWithDuration:(double)arg1;
++ (void)logPeriodicUsageIfNeeded;
 + (void)logPingTimeout;
 + (void)logRequestCancelAfterSeconds:(double)arg1;
 + (void)logRequestCompletedWithDuration:(double)arg1;
@@ -58,6 +61,8 @@
 + (void)logUILockCanceledVTActivation;
 + (void)missedAlertContextForRequest;
 + (void)missedAppContextForRequest;
++ (void)noteConnectedToCarPlayHeadunit;
++ (void)noteSuccessOfRequest:(id)arg1 inCar:(BOOL)arg2;
 - (void)beginSessionRetryPreferringWWAN:(BOOL)arg1;
 - (void)connectionDidDrop;
 - (void)connectionDidFail;

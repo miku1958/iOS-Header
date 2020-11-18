@@ -10,6 +10,7 @@
 
 @protocol SKUIJSApplication <JSExport>
 
+@property (readonly) BOOL isRunningTests;
 @property (readonly, nonatomic) BOOL pageRenderMetricsEnabled;
 
 - (void)launchComplete:(NSDictionary *)arg1;

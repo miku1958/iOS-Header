@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKAsset, CKDMMCSItemCommandWriter, CKPackage, CKRecordID, NSData, NSError, NSMutableArray, NSNumber, NSString, NSURL;
+@class CKAsset, CKDMMCSItemCommandWriter, CKPackage, CKRecordID, NSData, NSDictionary, NSError, NSMutableArray, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface CKDMMCSItem : NSObject
@@ -52,10 +52,12 @@ __attribute__((visibility("hidden")))
     CKDMMCSItemCommandWriter *_writer;
     unsigned long long _uploadTokenExpiration;
     unsigned long long _downloadTokenExpiration;
+    NSDictionary *_assetChunkerOptions;
     NSString *_trackingUUID;
 }
 
 @property (strong, nonatomic) CKAsset *asset; // @synthesize asset=_asset;
+@property (strong, nonatomic) NSDictionary *assetChunkerOptions; // @synthesize assetChunkerOptions=_assetChunkerOptions;
 @property (strong, nonatomic) NSData *assetKey; // @synthesize assetKey=_assetKey;
 @property (strong, nonatomic) NSData *authRequest; // @synthesize authRequest=_authRequest;
 @property (strong, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;

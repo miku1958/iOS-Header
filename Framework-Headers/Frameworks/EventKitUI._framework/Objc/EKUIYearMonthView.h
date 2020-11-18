@@ -15,7 +15,6 @@
     long long _firstDayIndex;
     long long _daysInWeek;
     long long _todayIndex;
-    double _smallestUsedFontSize;
     NSSet *_firstOfOverlayMonthIndices;
     NSSet *_firstOfOverlayYearIndices;
     NSCalendar *_calendar;
@@ -78,6 +77,7 @@
 - (struct CGRect)frameForTodayHighlight;
 - (struct CGPoint)headerOrigin;
 - (id)initWithCalendarDate:(id)arg1 calendar:(id)arg2;
+- (void)localeChanged;
 - (id)monthString;
 - (void)overlaySignificantDatesChangedInRange:(id)arg1;
 - (BOOL)pointIsAboveMonthNameBaseline:(struct CGPoint)arg1;

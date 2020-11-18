@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class BSAuditToken, NSDate, NSMapTable, NSMutableDictionary, NSObject, NSString, NSTimer, UIImage, UIView, WGWidgetInfo, WGWidgetLifeCycleSequence, _WGBrokenWidgetView, _WGWidgetRemoteViewController;
+@class BSAuditToken, NSDate, NSMapTable, NSMutableDictionary, NSObject, NSString, NSTimer, UIImage, UIView, WGWidgetInfo, WGWidgetLifeCycleSequence, _WGBrokenWidgetView, _WGCAPackageView, _WGWidgetRemoteViewController;
 @protocol NSCopying, OS_dispatch_queue, OS_dispatch_semaphore, WGWidgetHostingViewControllerDelegate, WGWidgetHostingViewControllerHost;
 
 @interface WGWidgetHostingViewController : UIViewController
@@ -33,7 +33,7 @@
     _WGWidgetRemoteViewController *_remoteViewController;
     id<NSCopying> _extensionRequest;
     UIView *_contentProvidingView;
-    UIView *_snapshotView;
+    _WGCAPackageView *_snapshotView;
     NSTimer *_disconnectionTimer;
     NSObject<OS_dispatch_semaphore> *_viewWillAppearSemaphore;
     NSObject<OS_dispatch_semaphore> *_viewWillDisappearSemaphore;
@@ -85,7 +85,7 @@
 @property (strong, nonatomic, getter=_sequenceIDsToOutstandingWidgetUpdateCompletionHandlers, setter=_setSequenceIDsToOutstandingWidgetUpdateCompletionHandlers:) NSMutableDictionary *sequenceIDsToOutstandingWidgetUpdateCompletionHandlers; // @synthesize sequenceIDsToOutstandingWidgetUpdateCompletionHandlers=_sequenceIDsToOutstandingWidgetUpdateCompletionHandlers;
 @property (readonly, nonatomic) UIImage *settingsIcon;
 @property (readonly, nonatomic, getter=isSnapshotLoaded) BOOL snapshotLoaded;
-@property (strong, nonatomic, getter=_snapshotView, setter=_setSnapshotView:) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
+@property (strong, nonatomic, getter=_snapshotView, setter=_setSnapshotView:) _WGCAPackageView *snapshotView; // @synthesize snapshotView=_snapshotView;
 @property (nonatomic, getter=_snapshotViewBounds, setter=_setSnapshotBounds:) struct CGRect snapshotViewBounds; // @synthesize snapshotViewBounds=_snapshotViewBounds;
 @property (nonatomic) long long userSpecifiedDisplayMode;
 @property (strong, nonatomic, getter=_viewWillAppearSemaphore, setter=_setViewWillAppearSemaphore:) NSObject<OS_dispatch_semaphore> *viewWillAppearSemaphore; // @synthesize viewWillAppearSemaphore=_viewWillAppearSemaphore;
@@ -131,7 +131,7 @@
 - (void)_insertSnapshotViewIfAppropriate;
 - (void)_insertSnapshotWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_invalidateDisconnectionTimer;
-- (void)_invalidateSnapshotWithForce:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_invalidateSnapshotWithForce:(BOOL)arg1 removingSnapshotFilesForActiveDisplayMode:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_isActiveSequence:(id)arg1;
 - (void)_loadSnapshotViewFromDiskIfNecessary:(CDUnknownBlockType)arg1;
 - (struct UIEdgeInsets)_marginInsets;
@@ -140,10 +140,12 @@
 - (void)_packageViewFromURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_packageViewWithBlock:(CDUnknownBlockType)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_performUpdateForSequence:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_purgeLegacySnapshotsIfNecessary;
 - (void)_registerUpdateRequestCompletionHandler:(CDUnknownBlockType)arg1 forSequence:(id)arg2;
-- (void)_removeAllSnapshotsDueToIssue:(BOOL)arg1;
-- (void)_removeAllSnapshotsForActiveDisplayMode;
-- (void)_removeAllSnapshotsMatchingPredicate:(id)arg1 dueToIssue:(BOOL)arg2;
+- (void)_removeAllSnapshotFilesDueToIssue:(BOOL)arg1;
+- (void)_removeAllSnapshotFilesForActiveDisplayMode;
+- (void)_removeAllSnapshotFilesMatchingPredicate:(id)arg1 dueToIssue:(BOOL)arg2;
+- (void)_removeItemAsynchronouslyAtURL:(id)arg1;
 - (void)_removeItemAtURL:(id)arg1;
 - (void)_requestInsertionOfRemoteViewAfterViewWillAppearForSequence:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_requestRemoteViewControllerForSequence:(id)arg1 completionHander:(CDUnknownBlockType)arg2;
@@ -151,8 +153,8 @@
 - (void)_rowHeightDidChange:(id)arg1;
 - (void)_scheduleDisconnectionTimerForSequence:(id)arg1 endTransitionBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setLargestAvailableDisplayMode:(long long)arg1;
-- (void)_setSnapshotView:(id)arg1 forLayoutMode:(long long)arg2;
 - (void)_setupRequestQueue;
+- (BOOL)_shouldRemoveSnapshotWhenNotVisible;
 - (id)_snapshotIdentifierForLayoutMode:(long long)arg1;
 - (void)_synchronizeGeometryWithSnapshot;
 - (double)_updatePreferredContentSizeWithHeight:(double)arg1;
@@ -161,13 +163,18 @@
 - (void)_validateSnapshotViewForActiveLayoutMode;
 - (double)_validatedHeightForHeight:(double)arg1 enforcingDisplayMode:(BOOL)arg2;
 - (id)_widgetSnapshotURLForLayoutMode:(long long)arg1 ensuringDirectoryExists:(BOOL)arg2;
+- (id)_widgetSnapshotURLForSnapshotIdentifier:(id)arg1;
+- (id)_widgetSnapshotURLForSnapshotIdentifier:(id)arg1 ensuringDirectoryExists:(BOOL)arg2;
 - (void)dealloc;
 - (id)description;
 - (void)handleReconnectionRequest:(id)arg1;
 - (id)initWithWidgetInfo:(id)arg1 delegate:(id)arg2 host:(id)arg3;
 - (void)invalidateCachedSnapshotWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)invalidateCachedSnapshotWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)isLinkedOnOrAfterSystemVersion:(id)arg1;
 - (void)maximumSizeDidChangeForDisplayMode:(long long)arg1;
+- (void)parentContainerDidDisappear:(id)arg1;
+- (void)parentContainerWillAppear:(id)arg1;
 - (void)setActiveDisplayMode:(long long)arg1;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;

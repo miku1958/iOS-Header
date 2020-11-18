@@ -31,12 +31,15 @@
     } _stateFlags;
     long long _attachedBehaviorType;
     double _frictionTorque;
-    CDStruct_ef18196a _attachmentRange;
+    struct {
+        double minimum;
+        double maximum;
+    } _attachmentRange;
 }
 
 @property (nonatomic) struct CGPoint anchorPoint;
 @property (readonly, nonatomic) long long attachedBehaviorType; // @synthesize attachedBehaviorType=_attachedBehaviorType;
-@property (nonatomic) CDStruct_ef18196a attachmentRange; // @synthesize attachmentRange=_attachmentRange;
+@property (nonatomic) CDStruct_c3b9c2ee attachmentRange; // @synthesize attachmentRange=_attachmentRange;
 @property (nonatomic) double damping;
 @property (nonatomic) double frequency;
 @property (nonatomic) double frictionTorque; // @synthesize frictionTorque=_frictionTorque;
@@ -54,7 +57,7 @@
 - (void)_changedParameter;
 - (void)_dissociate;
 - (void)_reevaluateJoint;
-- (void)_updateJointWithRange:(CDStruct_ef18196a)arg1;
+- (void)_updateJointWithRange:(CDStruct_c3b9c2ee)arg1;
 - (id)description;
 - (id)init;
 - (id)initWithItem:(id)arg1 attachedToAnchor:(struct CGPoint)arg2;

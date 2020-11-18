@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString;
+@class NSNumber, NSString, PKPaymentInstructions;
 
 @interface PKAuthenticatorEvaluationRequest : NSObject
 {
@@ -15,10 +15,12 @@
     NSNumber *_processIdentifier;
     NSString *_PINTitle;
     NSNumber *_PINLength;
+    PKPaymentInstructions *_instructions;
 }
 
 @property (copy, nonatomic) NSNumber *PINLength; // @synthesize PINLength=_PINLength;
 @property (copy, nonatomic) NSString *PINTitle; // @synthesize PINTitle=_PINTitle;
+@property (strong, nonatomic) PKPaymentInstructions *instructions; // @synthesize instructions=_instructions;
 @property (copy, nonatomic) NSNumber *processIdentifier; // @synthesize processIdentifier=_processIdentifier;
 @property (copy, nonatomic) NSString *processName; // @synthesize processName=_processName;
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;

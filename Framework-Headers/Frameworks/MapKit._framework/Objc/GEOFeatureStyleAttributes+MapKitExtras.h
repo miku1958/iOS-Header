@@ -7,6 +7,7 @@
 #import <GeoServices/GEOFeatureStyleAttributes.h>
 
 @interface GEOFeatureStyleAttributes (MapKitExtras)
++ (id)genericMarkerStyleAttributes;
 + (id)markerStyleAttributes;
 + (id)styleAttributesForCalloutWithAttributes:(id)arg1;
 + (id)styleAttributesForTrafficIncidentType:(long long)arg1;

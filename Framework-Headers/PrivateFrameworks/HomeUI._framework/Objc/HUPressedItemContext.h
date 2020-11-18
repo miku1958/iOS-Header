@@ -6,23 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class HFItem, HUElasticApplier;
+@class HFItem, HUElasticApplier, NSTimer;
 
 @interface HUPressedItemContext : NSObject
 {
     BOOL _active;
+    BOOL _isUserInitiated;
     HFItem *_item;
     HUElasticApplier *_applier;
     double _beginTime;
     double _rawInputProgress;
     double _currentViewScale;
+    NSTimer *_programmaticBounceTimer;
 }
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (strong, nonatomic) HUElasticApplier *applier; // @synthesize applier=_applier;
 @property (nonatomic) double beginTime; // @synthesize beginTime=_beginTime;
 @property (nonatomic) double currentViewScale; // @synthesize currentViewScale=_currentViewScale;
+@property (nonatomic) BOOL isUserInitiated; // @synthesize isUserInitiated=_isUserInitiated;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
+@property (strong, nonatomic) NSTimer *programmaticBounceTimer; // @synthesize programmaticBounceTimer=_programmaticBounceTimer;
 @property (nonatomic) double rawInputProgress; // @synthesize rawInputProgress=_rawInputProgress;
 
 - (void).cxx_destruct;

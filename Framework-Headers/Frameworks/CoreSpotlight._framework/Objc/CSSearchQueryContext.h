@@ -15,6 +15,7 @@
 {
     BOOL _grouped;
     BOOL _internal;
+    BOOL _lowPriority;
     NSString *_clientBundleID;
     NSArray *_fetchAttributes;
     NSArray *_protectionClasses;
@@ -38,6 +39,7 @@
 @property (nonatomic) BOOL grouped; // @synthesize grouped=_grouped;
 @property (nonatomic) BOOL internal; // @synthesize internal=_internal;
 @property (strong, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
+@property (nonatomic) BOOL lowPriority; // @synthesize lowPriority=_lowPriority;
 @property (strong, nonatomic) NSArray *markedTextArray; // @synthesize markedTextArray=_markedTextArray;
 @property (nonatomic) long long maxCount; // @synthesize maxCount=_maxCount;
 @property (copy, nonatomic) NSDictionary *options;

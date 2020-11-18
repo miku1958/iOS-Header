@@ -8,10 +8,12 @@
 
 #import <MediaPlayer/MPModelLazySectionedCollectionDataSource-Protocol.h>
 
-@class MPModelLibraryRequest, NSString;
+@class MPMediaLibraryEntityTranslationContext, MPModelLibraryRequest, NSString;
 
 @interface MPModelLibraryModelSectionedCollectionDataSource : NSObject <MPModelLazySectionedCollectionDataSource>
 {
+    MPMediaLibraryEntityTranslationContext *_itemTranslationContext;
+    MPMediaLibraryEntityTranslationContext *_sectionTranslationContext;
     MPModelLibraryRequest *_request;
     shared_ptr_87e3a99b _itemEntityQueryResults;
     shared_ptr_274c5e8b _sectionEntityQueryResult;
@@ -31,7 +33,7 @@
 - (id)identifiersForItemAtIndexPath:(id)arg1;
 - (id)identifiersForSectionAtIndex:(long long)arg1;
 - (id)indexPathForItemWithIdentifiersIntersectingSet:(id)arg1;
-- (id)initWithRequest:(id)arg1 sectionQueryResults:(shared_ptr_274c5e8b)arg2 itemQueryResults:(map_a2b78f9e *)arg3;
+- (id)initWithRequest:(id)arg1 sectionQueryResults:(shared_ptr_274c5e8b)arg2 itemQueryResults:(map_be45dc27 *)arg3;
 - (id)itemAtIndexPath:(id)arg1;
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;
 - (unsigned long long)numberOfSections;

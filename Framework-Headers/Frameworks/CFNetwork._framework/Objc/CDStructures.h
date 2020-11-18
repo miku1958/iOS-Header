@@ -309,13 +309,15 @@ struct PerformanceTiming {
     BOOL _field61;
     BOOL _field62;
     struct unique_ptr<const __CFString, Deleter_CFRelease> _field63;
-    struct unique_ptr<__CFDictionary, Deleter_CFRelease> _field64;
-    BOOL _field65;
-    struct unique_ptr<const void, Deleter_CFRelease> _field66;
-    struct unique_ptr<const void, Deleter_CFRelease> _field67;
-    BOOL _field68;
-    BOOL _field69;
+    struct unique_ptr<const __CFString, Deleter_CFRelease> _field64;
+    struct unique_ptr<const __CFString, Deleter_CFRelease> _field65;
+    struct unique_ptr<__CFDictionary, Deleter_CFRelease> _field66;
+    BOOL _field67;
+    struct unique_ptr<const void, Deleter_CFRelease> _field68;
+    struct unique_ptr<const void, Deleter_CFRelease> _field69;
     BOOL _field70;
+    BOOL _field71;
+    BOOL _field72;
 };
 
 struct RedirectionRecorder;

@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface LPYouTubeVideoView : LPVideoView <LPYouTubePlayerDelegate>
 {
     LPYouTubePlayerView *_platformYouTubeView;
-    BOOL _hasEverPlayed;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,12 +23,18 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)createVideoPlayerView;
+- (void)enterCustomFullScreen;
 - (id)initWithVideo:(id)arg1 style:(id)arg2 posterFrame:(id)arg3 posterFrameStyle:(id)arg4 disablePlayback:(BOOL)arg5;
 - (BOOL)isMuted;
+- (void)layoutComponentView;
 - (void)setMuted:(BOOL)arg1;
 - (void)setPlaying:(BOOL)arg1;
+- (void)setVolume:(double)arg1;
 - (BOOL)shouldShowMuteButton;
+- (BOOL)usesCustomFullScreenImplementation;
 - (BOOL)usesSharedAudioSession;
+- (double)volume;
+- (void)youTubePlayer:(id)arg1 didChangeToFullScreen:(BOOL)arg2;
 - (void)youTubePlayer:(id)arg1 didChangeToState:(long long)arg2;
 - (void)youTubePlayer:(id)arg1 didReceiveError:(id)arg2;
 

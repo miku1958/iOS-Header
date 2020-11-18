@@ -6,22 +6,22 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSData, NSError, NSURL;
+@class NSError, VSOptional;
 
-__attribute__((visibility("hidden")))
 @interface VSFileWriteOperation : VSAsyncOperation
 {
-    NSData *_data;
-    NSURL *_destination;
+    VSOptional *_data;
+    VSOptional *_destination;
     NSError *_error;
 }
 
-@property (copy, nonatomic) NSData *data; // @synthesize data=_data;
-@property (copy, nonatomic) NSURL *destination; // @synthesize destination=_destination;
+@property (strong, nonatomic) VSOptional *data; // @synthesize data=_data;
+@property (strong, nonatomic) VSOptional *destination; // @synthesize destination=_destination;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 
 - (void).cxx_destruct;
 - (void)executionDidBegin;
+- (id)init;
 
 @end
 

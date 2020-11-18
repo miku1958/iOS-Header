@@ -42,7 +42,7 @@ struct HashTable<OpaqueFormAutoFillFrame *, WTF::KeyValuePair<OpaqueFormAutoFill
 };
 
 struct HistoryURLCompletionItem {
-    struct atomic<int> _field1;
+    struct atomic<unsigned int> _field1;
     long long _field2;
     long long _field3;
     long long _field4;
@@ -60,6 +60,14 @@ struct HistoryURLCompletionItem {
 };
 
 struct KeyValuePair<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>;
+
+struct NSMutableArray {
+    Class _field1;
+};
+
+struct NSMutableSet {
+    Class _field1;
+};
 
 struct OpaqueJSContext;
 
@@ -140,8 +148,8 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct atomic<int> {
-    _Atomic int _field1;
+struct atomic<unsigned int> {
+    _Atomic unsigned int _field1;
 };
 
 struct duration<long long, std::__1::ratio<1, 1000000000>> {
@@ -191,6 +199,18 @@ struct vector<int, std::__1::allocator<int>> {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
+
+typedef struct {
+    int webProcessID;
+    unsigned long long tabID;
+} CDStruct_497cfc99;
 
 typedef struct {
     struct {

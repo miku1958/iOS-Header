@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (struct WebAccessibilityObjectWrapper *)_accessibilityTableAncestor;
 - (unsigned long long)_accessibilityTextEntryTraits;
 - (unsigned long long)_accessibilityTraitsFromAncestors;
+- (struct WebAccessibilityObjectWrapper *)_accessibilityTreeAncestor;
 - (BOOL)_accessibilityValueIsAutofilled;
 - (id)_accessibilityWebDocumentView;
 - (BOOL)_addAccessibilityObject:(struct AccessibilityObject *)arg1 toTextMarkerArray:(id)arg2;
@@ -92,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (void)accessibilityElementDidBecomeFocused;
 - (id)accessibilityElementForRow:(long long)arg1 andColumn:(long long)arg2;
 - (struct CGRect)accessibilityElementRect;
+- (id)accessibilityExpandedTextValue;
 - (id)accessibilityFlowToElements;
 - (id)accessibilityFocusedUIElement;
 - (struct CGRect)accessibilityFrame;
@@ -139,6 +141,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)accessibilityRowCount;
 - (struct _NSRange)accessibilityRowRange;
 - (BOOL)accessibilityScroll:(long long)arg1;
+- (id)accessibilitySortDirection;
 - (id)accessibilitySpeechHint;
 - (BOOL)accessibilitySupportsARIAExpanded;
 - (BOOL)accessibilitySupportsARIAPressed;
@@ -203,6 +206,7 @@ __attribute__((visibility("hidden")))
 - (id)textMarkerRangeForMarkers:(id)arg1;
 - (id)textMarkerRangeForSelection;
 - (id)textMarkersForRange:(RefPtr_59db400e)arg1;
+- (struct AccessibilityObject *)treeItemParentForObject:(struct AccessibilityObject *)arg1;
 
 @end
 

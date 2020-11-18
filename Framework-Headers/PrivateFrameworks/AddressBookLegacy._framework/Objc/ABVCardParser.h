@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class ABVCardLexer, ABVCardValueSetter, NSData, NSMutableArray, NSMutableDictionary, NSMutableString, NSString;
+@class ABVCardLexer, ABVCardValueSetter, ABVCardWatchdogTimer, NSData, NSMutableArray, NSMutableDictionary, NSMutableString, NSString;
 
 @interface ABVCardParser : NSObject
 {
@@ -52,6 +52,7 @@
     unsigned long long _encoding;
     BOOL _quotedPrintable;
     BOOL _base64;
+    ABVCardWatchdogTimer *_timer;
 }
 
 @property (nonatomic) void *source;
@@ -66,6 +67,7 @@
 - (BOOL)_setMultiValuesOrNoteIfNull:(id)arg1 forProperty:(unsigned int)arg2 valueComparator:(CDUnknownBlockType)arg3;
 - (BOOL)_setPersonSounds:(void *)arg1 identifier:(int)arg2 fromActivity:(id)arg3 alert:(id)arg4 otherValue:(id)arg5;
 - (BOOL)_setStringValueOrNoteIfNull:(id)arg1 forProperty:(unsigned int)arg2;
+- (void)_setValueFromExtension:(id)arg1 forKey:(id)arg2 onAddress:(id)arg3 toKey:(id)arg4;
 - (id)_socialProfileBundleIdentifiers;
 - (id)_socialProfileDisplayName;
 - (id)_socialProfileService;
@@ -94,6 +96,7 @@
 - (BOOL)importToPerson:(void *)arg1 foundProperties:(const struct __CFArray **)arg2;
 - (BOOL)importToValueSetter:(id)arg1;
 - (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 watchdogTimer:(id)arg2;
 - (void)noteLackOfValueForImageData;
 - (void)noteLackOfValueForProperty:(unsigned int)arg1;
 - (BOOL)parseABDATE;

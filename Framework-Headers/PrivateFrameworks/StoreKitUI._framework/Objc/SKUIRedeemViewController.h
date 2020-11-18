@@ -23,6 +23,7 @@
     SKUIRedeemConfiguration *_redeemConfiguration;
     SKUIRedeemStepViewController *_inputViewController;
     long long _initialBarStyle;
+    BOOL _shouldPerformInitialOperationOnAppear;
     UIBarButtonItem *_cancelButtonItem;
 }
 
@@ -35,8 +36,10 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *initialCode; // @synthesize initialCode=_initialCode;
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property (nonatomic) BOOL shouldPerformInitialOperationOnAppear; // @synthesize shouldPerformInitialOperationOnAppear=_shouldPerformInitialOperationOnAppear;
 @property (readonly) Class superclass;
 
++ (BOOL)redeemRequiresNationalId:(id)arg1;
 - (void).cxx_destruct;
 - (void)_attemptAutomaticRedeemWithMetadata:(id)arg1;
 - (void)_cancelButtonAction:(id)arg1;
@@ -47,7 +50,6 @@
 - (void)_loadInputViewController;
 - (id)_newInputViewController;
 - (void)_performInitialRedeemOperation;
-- (BOOL)_redeemRequiresNationalId;
 - (void)_showInputViewController;
 - (void)_showNationalIdLoadingPage;
 - (void)_showNationalIdVerificationPage;

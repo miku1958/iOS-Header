@@ -23,7 +23,7 @@
 @property (copy, nonatomic) NSArray *orphanedHeadlines; // @synthesize orphanedHeadlines=_orphanedHeadlines;
 
 - (void).cxx_destruct;
-- (id)d_JSONRepresentationWithTagController:(id)arg1 subscribedTagIDs:(id)arg2;
+- (id)d_JSONRepresentationWithTagController:(id)arg1 subscribedTopicIDs:(id)arg2 blacklistedTopicIDs:(id)arg3;
 - (void)d_sanityCheckAgainstInputHeadlines:(id)arg1;
 - (void)filterClustersToTopicIDs:(id)arg1;
 

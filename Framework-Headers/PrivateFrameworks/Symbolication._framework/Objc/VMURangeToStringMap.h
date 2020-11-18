@@ -21,7 +21,7 @@
 + (void)_claimUnarchivingOfClass:(id)arg1;
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
-- (unsigned int)_indexForString:(id)arg1;
+- (unsigned int)_indexForString:(id)arg1 insertIfMissing:(BOOL)arg2;
 - (unsigned int)count;
 - (void)dealloc;
 - (id)description;
@@ -29,6 +29,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (struct _VMURange)rangeContainingAddress:(unsigned long long)arg1;
+- (struct _VMURange)rangeForString:(id)arg1 startingAtAddress:(unsigned long long)arg2;
 - (void)setString:(id)arg1 forRange:(struct _VMURange)arg2;
 - (void)sort;
 - (id)stringForAddress:(unsigned long long)arg1;

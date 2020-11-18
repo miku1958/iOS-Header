@@ -17,10 +17,12 @@
     BOOL _waitingForPing;
     NSObject<OS_dispatch_semaphore> *_checkinSemaphore;
     NSObject<OS_dispatch_semaphore> *_pingSemaphore;
+    double _systemIdleSleepInterval;
     id<BKSSystemApplicationClientDelegate> _delegate;
 }
 
 @property (nonatomic) id<BKSSystemApplicationClientDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) double systemIdleSleepInterval; // @synthesize systemIdleSleepInterval=_systemIdleSleepInterval;
 
 - (void)_connect;
 - (void)_queue_handleWatchdogPing:(id)arg1;

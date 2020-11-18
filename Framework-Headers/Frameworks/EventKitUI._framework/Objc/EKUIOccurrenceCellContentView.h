@@ -6,7 +6,7 @@
 
 #import <EventKitUI/EKUICellContentViewWithPrimaryAndSecondaryFonts.h>
 
-@class EKCalendarDate, EKUICellColorBarView, EKUIOccurrenceCellLabel, NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSObject, NSString, UIColor, UIImageView, UIView, UIVisualEffect, UIVisualEffectView;
+@class EKCalendarDate, EKUICellColorBarView, EKUIOccurrenceCellLabel, NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSMutableArray, NSObject, NSString, UIColor, UIImageView, UIView, UIVisualEffect;
 @protocol OS_dispatch_source;
 
 @interface EKUIOccurrenceCellContentView : EKUICellContentViewWithPrimaryAndSecondaryFonts
@@ -23,8 +23,8 @@
     UIImageView *_angleStripeBackgroundView;
     UIImageView *_accessoryImageView;
     NSArray *_ekUIOccurrenceCellConstraints;
-    UIVisualEffectView *_primaryVisualEffectParentView;
-    UIVisualEffectView *_secondaryVisualEffectParentView;
+    NSMutableArray *_primaryVisualEffectViews;
+    NSMutableArray *_secondaryVisualEffectViews;
     BOOL _travelTimeTemplate;
     BOOL _invitationTemplate;
     NSLayoutConstraint *_contentTop_to_travelTextBaseline_Constraint;
@@ -120,6 +120,7 @@
 + (id)tentativeStripeColor;
 + (BOOL)vibrant;
 - (void).cxx_destruct;
+- (void)_addVibrantSubview:(id)arg1 usingPrimaryEffect:(BOOL)arg2;
 - (void)_countdownTimerFired;
 - (id)_createParentVisualEffectViewWithVisualEffect:(id)arg1;
 - (void)_createViews;

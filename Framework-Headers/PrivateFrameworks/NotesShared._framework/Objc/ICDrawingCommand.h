@@ -26,7 +26,7 @@
 - (id)initWithArchive:(const struct Command *)arg1 version:(unsigned int)arg2 sortedUUIDs:(id)arg3;
 - (id)initWithCommand:(id)arg1 hidden:(BOOL)arg2 timestamp:(struct TopoID)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualDrawingVisibleCommand:(id)arg1;
+- (BOOL)isEqualDrawingCommand:(id)arg1;
 - (unsigned int)saveToArchive:(struct Command *)arg1 sortedUUIDs:(id)arg2 withPathData:(BOOL)arg3;
 
 @end

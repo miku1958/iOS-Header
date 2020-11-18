@@ -11,7 +11,7 @@
 }
 
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 title:(id)arg2 subtitle:(id)arg3;
+- (id)initWithTitle:(id)arg1 subtitle:(id)arg2;
 
 @end
 

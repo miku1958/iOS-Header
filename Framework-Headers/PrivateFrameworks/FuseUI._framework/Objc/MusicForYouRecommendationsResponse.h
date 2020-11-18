@@ -6,16 +6,9 @@
 
 #import <MediaPlayer/MPModelResponse.h>
 
-@class MPChangeDetails;
-
 @interface MusicForYouRecommendationsResponse : MPModelResponse
 {
-    MPChangeDetails *_changeDetails;
 }
-
-@property (strong, nonatomic) MPChangeDetails *changeDetails; // @synthesize changeDetails=_changeDetails;
-
-- (void).cxx_destruct;
 
 @end
 

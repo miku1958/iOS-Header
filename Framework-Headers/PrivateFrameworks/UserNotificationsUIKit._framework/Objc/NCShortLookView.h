@@ -10,7 +10,7 @@
 #import <UserNotificationsUIKit/NCLookViewInternal-Protocol.h>
 #import <UserNotificationsUIKit/_UISettingsKeyObserver-Protocol.h>
 
-@class NCLookHeaderContentView, NCMaterialSettings, NSDate, NSString, NSTimeZone, UIButton, UIImage, UIImageView;
+@class MTMaterialSettings, NCLookHeaderContentView, NSDate, NSString, NSTimeZone, UIButton, UIImage, UIImageView;
 
 @interface NCShortLookView : UIView <NCLookViewInternal, _UISettingsKeyObserver, NCLookView>
 {
@@ -21,7 +21,7 @@
     UIView *_mainContainerView;
     UIView *_mainOverlayView;
     UIView *_customContentView;
-    NCMaterialSettings *_materialSettings;
+    MTMaterialSettings *_materialSettings;
     BOOL _banner;
     BOOL _backgroundBlurred;
     BOOL _usesBackgroundView;
@@ -54,6 +54,7 @@
 
 + (struct CGRect)_shadowImage:(id)arg1 frameForShortLookBounds:(struct CGRect)arg2;
 + (id)_shadowImageMask;
++ (unsigned long long)_styleOptionsForBackgroundWithBlur:(BOOL)arg1;
 + (double)titleInset;
 - (void).cxx_destruct;
 - (id)_backgroundMaterialView;

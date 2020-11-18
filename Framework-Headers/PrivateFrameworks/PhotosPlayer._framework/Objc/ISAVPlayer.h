@@ -4,13 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AVFoundation/AVPlayer.h>
+#import <AVFoundation/AVQueuePlayer.h>
 
-@interface ISAVPlayer : AVPlayer
+@class ISRateCurveRequest;
+
+@interface ISAVPlayer : AVQueuePlayer
 {
+    ISRateCurveRequest *_currentRequest;
 }
 
+- (void).cxx_destruct;
+- (void)_cancelRateCurveRequest;
+- (void)_setRate:(float)arg1;
+- (void)dealloc;
 - (id)initWithDispatchQueue:(id)arg1;
+- (void)playToTime:(CDStruct_1b6d18a9)arg1 withInitialRate:(float)arg2 overDuration:(double)arg3 progressHandler:(CDUnknownBlockType)arg4;
+- (void)setRate:(float)arg1;
 
 @end
 

@@ -27,10 +27,8 @@
 - (id)initWithInitialLayoutInfo:(id)arg1;
 - (BOOL)prerollVideoAtRate:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resignActive;
-- (void)seekCrossfadeToTime:(double)arg1;
 - (BOOL)seekVideoPlayerToTime:(CDStruct_1b6d18a9)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setAudioEnabled:(BOOL)arg1;
-- (void)setCrossfadePlayRate:(float)arg1;
+- (BOOL)seekVideoPlayerToTime:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setOutputInfo:(id)arg1 withTransitionOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setVideoForwardPlaybackEndTime:(CDStruct_1b6d18a9)arg1;
 - (void)setVideoPlayRate:(float)arg1;
@@ -38,6 +36,7 @@
 - (void)videoDidPlayToEnd;
 - (void)videoPlayerItemDidChange;
 - (void)videoWillPlayToEnd;
+- (void)videoWillPlayToPhoto;
 
 @end
 

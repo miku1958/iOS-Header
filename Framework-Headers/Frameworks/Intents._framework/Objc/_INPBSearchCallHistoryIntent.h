@@ -37,8 +37,12 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsCallCapabilities:(id)arg1;
+- (int)StringAsCallType:(id)arg1;
 - (void)addCallCapabilities:(int)arg1;
+- (id)callCapabilitiesAsString:(int)arg1;
 - (int)callCapabilitiesAtIndex:(unsigned long long)arg1;
+- (id)callTypeAsString:(int)arg1;
 - (void)clearCallCapabilities;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

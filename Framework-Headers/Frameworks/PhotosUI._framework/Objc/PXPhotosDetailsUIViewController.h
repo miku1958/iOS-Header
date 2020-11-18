@@ -113,6 +113,7 @@
 - (void)_updateTitleAndSubtitle;
 - (void)_updateWidgetDisablingWithAnimationOptions:(id)arg1;
 - (void)_updateWidgetSpec;
+- (unsigned long long)_userEventSourceForDetailView:(id)arg1;
 - (id)_widgetAtLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (id)contentScrollView;
@@ -124,6 +125,7 @@
 - (id)initWithContext:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)ppt_navigateToMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)ppt_performBlockAfterAllWidgetLoadingCompletes:(CDUnknownBlockType)arg1;
 - (void)ppt_toggleDiscloseWidgets;
 - (struct CGSize)preferredContentSize;

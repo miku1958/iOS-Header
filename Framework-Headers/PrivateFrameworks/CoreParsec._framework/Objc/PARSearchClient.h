@@ -35,6 +35,7 @@
 @property (strong) id<PARDaemonXPC> remoteObject; // @synthesize remoteObject=_remoteObject;
 @property (readonly) Class superclass;
 
++ (id)_deafListenerEndpoint;
 + (id)daemonConnection;
 - (void).cxx_destruct;
 - (void)_invalidateConnection;

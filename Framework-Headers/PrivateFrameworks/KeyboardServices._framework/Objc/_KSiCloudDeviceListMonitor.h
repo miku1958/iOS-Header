@@ -29,11 +29,10 @@
 
 + (id)iCloudDeviceListMonitor;
 - (void).cxx_destruct;
-- (void)accountStoreDidChange:(id)arg1;
 - (BOOL)canMigrateToCloudKit;
 - (void)dealloc;
 - (void)fetchCloudKitDevicesWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)fetchSoftwareVersionsFromICloudWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)fetchICloudDevicesWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)isAccountCompatibleForCloudKitSyncingWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (BOOL)isSWVersionCloudKitSyncCompatible:(id)arg1;

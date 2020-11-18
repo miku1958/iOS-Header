@@ -6,25 +6,39 @@
 
 #import <MediaPlayer/MPModelObject.h>
 
-@class MPModelPlaylist, MPModelSong;
+@class MPArtworkCatalog, MPModelMovie, MPModelPlaylist, MPModelSong, MPModelTVEpisode;
 
 @interface MPModelPlaylistEntry : MPModelObject
 {
     long long _position;
     MPModelPlaylist *_playlist;
     MPModelSong *_song;
+    MPModelTVEpisode *_tvEpisode;
+    MPModelMovie *_movie;
+    MPArtworkCatalog *__artworkCatalog;
 }
 
+@property (strong, nonatomic) MPArtworkCatalog *_artworkCatalog; // @synthesize _artworkCatalog=__artworkCatalog;
+@property (strong, nonatomic) MPModelMovie *movie; // @synthesize movie=_movie;
 @property (strong, nonatomic) MPModelPlaylist *playlist; // @synthesize playlist=_playlist;
 @property (nonatomic) long long position; // @synthesize position=_position;
 @property (strong, nonatomic) MPModelSong *song; // @synthesize song=_song;
+@property (strong, nonatomic) MPModelTVEpisode *tvEpisode; // @synthesize tvEpisode=_tvEpisode;
 
 + (id)__MPModelPropertyPlaylistEntryPosition__PROPERTY;
++ (id)__MPModelRelationshipPlaylistEntryMovie__PROPERTY;
 + (id)__MPModelRelationshipPlaylistEntryPlaylist__PROPERTY;
 + (id)__MPModelRelationshipPlaylistEntrySong__PROPERTY;
++ (id)__MPModelRelationshipPlaylistEntryTVEpisode__PROPERTY;
++ (id)___MPModelPropertyPlaylistEntryArtwork__PROPERTY;
++ (id)___artworkCatalog__KEY;
++ (id)__movie__KEY;
 + (id)__playlist__KEY;
 + (id)__position__KEY;
 + (id)__song__KEY;
++ (id)__tvEpisode__KEY;
++ (id)kindWithKinds:(id)arg1;
++ (id)mqf_requiredPlaybackProperties;
 + (id)requiredKeepLocalStatusObservationProperties;
 + (id)requiredLibraryAddStatusObservationProperties;
 + (id)requiredLibraryRemovalProperties;
@@ -35,6 +49,10 @@
 - (void).cxx_destruct;
 - (struct MPLibraryAddStatusObserverConfiguration)libraryAddStatusObserverConfiguration;
 - (long long)libraryRemovalSupportedOptions;
+- (id)mediaItemPropertyValues;
+- (void)mqf_configurePlaybackItemMetadata:(id)arg1;
+- (id)mqf_newPlaybackItemMetadata;
+- (id)mqf_playbackItemMetadataModelObject;
 - (id)newKeepLocalStatusObserverConfiguration;
 - (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
 - (id)personalizationScopedPropertiesForProperties:(id)arg1;

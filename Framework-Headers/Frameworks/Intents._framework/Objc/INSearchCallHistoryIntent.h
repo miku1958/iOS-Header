@@ -27,11 +27,17 @@
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
+- (id)domain;
 - (id)initWithCallType:(long long)arg1 dateCreated:(id)arg2 recipient:(id)arg3 callCapabilities:(unsigned long long)arg4;
+- (id)parametersByName;
 - (void)setCallCapabilities:(unsigned long long)arg1;
 - (void)setCallType:(long long)arg1;
 - (void)setDateCreated:(id)arg1;
+- (void)setDomain:(id)arg1;
+- (void)setParametersByName:(id)arg1;
 - (void)setRecipient:(id)arg1;
+- (void)setVerb:(id)arg1;
+- (id)verb;
 
 @end
 

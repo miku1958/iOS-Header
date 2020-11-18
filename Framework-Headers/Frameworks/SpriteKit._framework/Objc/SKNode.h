@@ -99,7 +99,7 @@
 - (id)_parentFocusEnvironment;
 - (BOOL)_pathFromPhysicsBodyToPoints:(MISSING_TYPE ***)arg1 outSize:(unsigned long long *)arg2;
 - (void)_performCleanup;
-- (void)_processSearchTokens:(vector_408ca79d)arg1 visited:(set_23ab0f84 *)arg2 usingBlock:(CDUnknownBlockType)arg3 stopPointer:(BOOL *)arg4;
+- (void)_processSearchTokens:(vector_408ca79d)arg1 visited:(set_3449d313 *)arg2 usingBlock:(CDUnknownBlockType)arg3 stopPointer:(BOOL *)arg4;
 - (void)_removeAction:(id)arg1;
 - (void)_removeChild:(id)arg1;
 - (void)_runAction:(id)arg1;

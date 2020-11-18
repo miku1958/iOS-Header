@@ -27,6 +27,10 @@ typedef struct {
 } CDStruct_bb0d9f0d;
 
 typedef struct {
+    unsigned int moduloForHashing:1;
+} CDStruct_3f5c4e18;
+
+typedef struct {
     unsigned int type:1;
 } CDStruct_f953fb60;
 

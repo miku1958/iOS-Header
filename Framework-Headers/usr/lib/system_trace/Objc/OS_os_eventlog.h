@@ -11,10 +11,5 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)load;
-- (void)_dispose;
-- (id)description;
-- (id)init;
-
 @end
 

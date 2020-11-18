@@ -84,6 +84,7 @@
 - (void)clientInterface:(id)arg1 dispatchXEvent:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)clientInterface:(id)arg1 presentDialog:(id)arg2;
 - (void)customizePurchase:(id)arg1;
+- (void)customizeSoftwarePurchase:(id)arg1;
 - (void)dealloc;
 - (id)documentViewControllerForTemplateViewElement:(id)arg1;
 - (id)existingBagValueForKey:(id)arg1;

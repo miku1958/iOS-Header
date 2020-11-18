@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <SearchUI/SearchUIStackView.h>
 
-@class SFMediaPlayerCardSection, SFPunchout, SKUIPlayButton, SearchUICardViewController, UILabel;
+@class SFMediaPlayerCardSection, SFPunchout, SKUIPlayButton, SearchUICardViewController, UILabel, UIView;
 
-@interface SearchUITrailerView : UIView
+@interface SearchUITrailerView : SearchUIStackView
 {
     UILabel *_titleLabel;
     SKUIPlayButton *_playButton;
     SFPunchout *_punchout;
     SearchUICardViewController *_controller;
     SFMediaPlayerCardSection *_section;
+    UIView *_centeredBoxView;
 }
 
+@property (strong) UIView *centeredBoxView; // @synthesize centeredBoxView=_centeredBoxView;
 @property (weak) SearchUICardViewController *controller; // @synthesize controller=_controller;
 @property (strong) SKUIPlayButton *playButton; // @synthesize playButton=_playButton;
 @property (strong) SFPunchout *punchout; // @synthesize punchout=_punchout;

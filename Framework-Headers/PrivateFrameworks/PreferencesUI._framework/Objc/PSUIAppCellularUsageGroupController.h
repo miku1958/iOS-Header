@@ -9,7 +9,7 @@
 #import <PreferencesUI/PSSpecifierGroupController-Protocol.h>
 #import <PreferencesUI/PSUIWirelessDataOptionsDelegate-Protocol.h>
 
-@class AppWirelessDataUsageManager, NSArray, NSNumber, NSString, PSExpandableAppListGroupController, WirelessDataUsageWorkspace;
+@class ACAccountStore, AppWirelessDataUsageManager, NSArray, NSNumber, NSString, PSExpandableAppListGroupController, WirelessDataUsageWorkspace;
 
 @interface PSUIAppCellularUsageGroupController : NSObject <PSSpecifierGroupController, PSUIWirelessDataOptionsDelegate>
 {
@@ -22,8 +22,10 @@
     PSExpandableAppListGroupController *_appGroupController;
     NSArray *_managedBundleIDs;
     AppWirelessDataUsageManager *_wirelessManager;
+    ACAccountStore *_accountStore;
 }
 
+@property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (strong, nonatomic) PSExpandableAppListGroupController *appGroupController; // @synthesize appGroupController=_appGroupController;
 @property (getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (readonly, copy) NSString *debugDescription;
@@ -40,8 +42,11 @@
 
 + (id)nameForSpecialCategory:(id)arg1;
 - (void).cxx_destruct;
+- (id)_appleAccount;
 - (void)_createAppSpecifiersForVisibleApps:(id)arg1 hiddenApps:(id)arg2 unknownApps:(id)arg3 internalProcesses:(id)arg4 wifiAssist:(id)arg5;
+- (void)_setUseCellularForCloudDrive:(id)arg1 forSpecifier:(id)arg2;
 - (void)_updateTotalBytesUsed:(double)arg1 roamingBytesUsed:(double)arg2;
+- (id)_useCellularForCloudDrive:(id)arg1;
 - (id)appCellularDataEnabledForSpecifier:(id)arg1;
 - (void)cancel;
 - (id)dataUsageForApplicationSpecifier:(id)arg1;
@@ -52,6 +57,7 @@
 - (void)setAppCellularDataEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setReliableNetworkFallbackIsEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setSwitchesEnabled:(BOOL)arg1;
+- (BOOL)shouldShowCloudDrive;
 - (BOOL)shouldShowWifiAssist;
 - (id)specifierForApp:(id)arg1 enabled:(BOOL)arg2;
 - (id)specifierForSpecialCategory:(id)arg1 bytesUsed:(id)arg2;

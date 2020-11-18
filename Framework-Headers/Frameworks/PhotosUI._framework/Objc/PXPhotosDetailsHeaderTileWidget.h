@@ -124,6 +124,7 @@
 - (id)_contentRegionOfInterestForTileWithIdentifier:(struct PXTileIdentifier)arg1;
 - (void)_didFinishPreparingSlideshowSession:(id)arg1;
 - (void)_filterOutVideosFromAssetCollection:(id)arg1 filteredAssetCollection:(id *)arg2 assets:(id *)arg3;
+- (void)_handleTapGesture:(id)arg1;
 - (void)_headerSpecDidChange;
 - (void)_invalidateAssetCollection;
 - (void)_invalidateCuratedAssetCollection;
@@ -137,7 +138,7 @@
 - (id)_scrollViewController;
 - (BOOL)_showPlaceholder;
 - (void)_slideshowStartingDelayDidFinish;
-- (void)_startMiroMovie:(id)arg1;
+- (id)_startMiroMovie;
 - (id)_subtitle;
 - (void *)_tileForIdentifier:(struct PXTileIdentifier)arg1 layout:(id)arg2;
 - (id)_title;
@@ -168,6 +169,7 @@
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 - (struct CGRect)photosDetailsHeaderTileLayout:(id)arg1 contentsRectForAspectRatio:(double)arg2;
 - (id)photosDetailsHeaderTileLayoutFontName:(id)arg1;
+- (void)ppt_navigateToMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (double)preferredContentHeightForWidth:(double)arg1;
 - (void)preloadWithSourceRegionOfInterest:(id)arg1 forContext:(id)arg2;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;

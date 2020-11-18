@@ -107,7 +107,6 @@
 - (id)dialRequestByReplacingProvider:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)forceAssistURLQueryItem;
-- (id)handleForPersonHandle:(id)arg1;
 - (id)handleFromURL:(id)arg1;
 - (id)handleTypeURLQueryItem;
 - (id)init;
@@ -124,7 +123,6 @@
 - (id)isVoicemailURLQueryItem;
 - (id)noPromptURLQueryItem;
 - (id)originatingUIURLQueryItem;
-- (id)personHandleForHandle:(id)arg1;
 - (id)providerCustomIdentifierURLQueryItem;
 - (int)serviceFromURLComponents:(id)arg1;
 - (id)sosURLQueryItem;

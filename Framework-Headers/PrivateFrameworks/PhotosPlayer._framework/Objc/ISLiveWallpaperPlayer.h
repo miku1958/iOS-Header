@@ -30,6 +30,7 @@
 
 - (void)_handleDidFinishSeeking:(BOOL)arg1;
 - (void)_seekVideoToBeginning;
+- (void)_seekVideoToEnd;
 - (void)_update;
 - (void)_updatePlayer;
 - (void)_updatePlayerItem;

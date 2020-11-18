@@ -12,7 +12,7 @@
 #import <PhotosUICore/PXReusableObject-Protocol.h>
 #import <PhotosUICore/PXUIViewBasicTile-Protocol.h>
 
-@class NSString, PXAssetBadgeManager, PXAssetBadgeUIView, PXImageRequester;
+@class NSString, PXAssetBadgeManager, PXImageRequester, PXUIAssetBadgeView;
 
 @interface PXOverlayBadgeUIViewTile : UIView <PXChangeObserver, PXReusableObject, PXAssetTile, PXOverlayBadgeTile, PXUIViewBasicTile>
 {
@@ -22,11 +22,11 @@
     PXImageRequester *_imageRequester;
     PXAssetBadgeManager *_badgeManager;
     unsigned long long __badgeOptions;
-    PXAssetBadgeUIView *__badgeView;
+    PXUIAssetBadgeView *__badgeView;
 }
 
 @property (nonatomic, setter=_setBadgeOptions:) unsigned long long _badgeOptions; // @synthesize _badgeOptions=__badgeOptions;
-@property (strong, nonatomic, setter=_setBadgeView:) PXAssetBadgeUIView *_badgeView; // @synthesize _badgeView=__badgeView;
+@property (readonly, nonatomic) PXUIAssetBadgeView *_badgeView; // @synthesize _badgeView=__badgeView;
 @property (strong, nonatomic) PXAssetBadgeManager *badgeManager; // @synthesize badgeManager=_badgeManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,6 +35,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIView *view;
 
++ (void)preloadResources;
 - (void).cxx_destruct;
 - (void)_invalidateBadgeView;
 - (void)_updateBadgeViewIfNeeded;

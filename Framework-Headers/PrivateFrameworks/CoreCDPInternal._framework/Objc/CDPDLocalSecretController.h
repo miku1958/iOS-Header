@@ -30,10 +30,11 @@
 - (void).cxx_destruct;
 - (id)_cdpStateMachine;
 - (void)_collectLocalSecretWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_createContextWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_createContextForSecret:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleCompletionStatus:(BOOL)arg1;
 - (void)_localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_repairWithStateMachine:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_setContextWithAuthResults:(id)arg1;
 - (void)circleController:(id)arg1 secureBackupRecordsArePresentWithCompletion:(CDUnknownBlockType)arg2;
 - (id)circlePeerIDForSecureBackupController:(id)arg1;
 - (id)contextForController:(id)arg1;

@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)bufferDataType;
 - (id)bufferStructType;
 - (void)dealloc;
-- (id)describe;
 - (id)description;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)index;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 access:(unsigned long long)arg3 index:(unsigned long long)arg4 active:(BOOL)arg5;
 - (BOOL)isActive;

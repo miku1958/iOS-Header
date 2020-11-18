@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL appliesOneTimeUserInitiatedActionPolicy;
 @property (readonly, nonatomic) LSApplicationProxy *externalApplication; // @synthesize externalApplication=_externalApplication;
 @property (readonly, nonatomic) long long externalApplicationCategory; // @synthesize externalApplicationCategory=_externalApplicationCategory;
+@property (readonly, nonatomic) BOOL isRedirectToAppStore;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)resultOfLoadingRequest:(id)arg1 isMainFrame:(BOOL)arg2 disallowRedirectToExternalApps:(BOOL)arg3;
@@ -27,6 +28,7 @@
 + (id)resultWithRedirectToExternalURL:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithType:(long long)arg1 URL:(id)arg2 externalApplication:(id)arg3;
+- (BOOL)shouldPromptWithPolicy:(long long)arg1 telephonyNavigationPolicy:(id)arg2 userAction:(id)arg3;
 
 @end
 

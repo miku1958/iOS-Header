@@ -7,9 +7,12 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
+@class INMessage;
+
 @protocol INSendMessageIntentResponseExport <NSObject, JSExport>
 
 @property (readonly, nonatomic) long long code;
+@property (copy, nonatomic) INMessage *sentMessage;
 
 @end
 

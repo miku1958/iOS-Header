@@ -9,7 +9,6 @@
 __attribute__((visibility("hidden")))
 @interface VKGroundMapModel : VKVectorMapModel
 {
-    shared_ptr_c5d816ee _groundCoverStyle;
     shared_ptr_696716c4 _groundCoverViewConstantData;
     struct shared_ptr<ggl::ConstantDataTyped<ggl::PolygonFill::Fill>> _groundCoverPolygonConstantData;
     struct shared_ptr<ggl::PolygonFill::MeshPipelineState> _groundCoverPipelineState;
@@ -30,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)mapLayerPosition;
 - (void)reserveStencilRangeForScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
 - (void)stylesheetDidChange;
-- (void)updateGroundCoverStyle;
 
 @end
 

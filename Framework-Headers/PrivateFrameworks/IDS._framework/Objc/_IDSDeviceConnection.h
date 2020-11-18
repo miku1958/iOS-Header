@@ -8,7 +8,7 @@
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
-@class NSInputStream, NSOutputStream, NSString;
+@class NSInputStream, NSMutableDictionary, NSOutputStream, NSString;
 @protocol OS_dispatch_queue;
 
 @interface _IDSDeviceConnection : NSObject <IDSDaemonListenerProtocol>
@@ -27,6 +27,7 @@
     NSInputStream *_inputStreamForSocket;
     NSOutputStream *_outputStreamForSocket;
     BOOL _hasTimedOut;
+    NSMutableDictionary *_awdMetrics;
 }
 
 @property (readonly, copy) NSString *debugDescription;

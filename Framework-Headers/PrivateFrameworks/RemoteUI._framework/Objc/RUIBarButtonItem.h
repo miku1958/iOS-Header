@@ -6,11 +6,20 @@
 
 #import <RemoteUI/RUIElement.h>
 
+@class UIBarButtonItem;
+
 @interface RUIBarButtonItem : RUIElement
 {
+    UIBarButtonItem *_barButtonItem;
+    CDUnknownBlockType _action;
 }
 
-- (id)newBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
+@property (copy, nonatomic) CDUnknownBlockType action; // @synthesize action=_action;
+@property (readonly, nonatomic) UIBarButtonItem *barButtonItem;
+
+- (void).cxx_destruct;
+- (void)_buttonPressed:(id)arg1;
+- (void)setEnabled:(BOOL)arg1;
 
 @end
 

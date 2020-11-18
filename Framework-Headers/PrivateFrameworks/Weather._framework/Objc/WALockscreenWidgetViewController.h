@@ -55,9 +55,8 @@
 - (void)_updateTimerFired:(id)arg1;
 - (void)_updateTodayView;
 - (void)_updateWithReason:(id)arg1;
+- (void)getLocationServicesAuthorizationStatus:(CDUnknownBlockType)arg1;
 - (id)init;
-- (BOOL)locationServicesAreAuthorized;
-- (BOOL)locationServicesAreForbidden;
 - (BOOL)shouldFakeWeather;
 - (void)todayModel:(id)arg1 forecastWasUpdated:(id)arg2;
 - (void)todayModelWantsUpdate:(id)arg1;

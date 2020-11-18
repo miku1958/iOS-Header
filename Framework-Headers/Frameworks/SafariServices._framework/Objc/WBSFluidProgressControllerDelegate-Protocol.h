@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <SafariServices/NSObject-Protocol.h>
+
 @class WBSFluidProgressController, WBSFluidProgressState;
 
-@protocol WBSFluidProgressControllerDelegate
+@protocol WBSFluidProgressControllerDelegate <NSObject>
 - (void)fluidProgressController:(WBSFluidProgressController *)arg1 setProgressToCurrentPosition:(WBSFluidProgressState *)arg2;
 - (void)fluidProgressController:(WBSFluidProgressController *)arg1 startFluidProgressBar:(WBSFluidProgressState *)arg2 animateFillFade:(BOOL)arg3;
 - (void)fluidProgressController:(WBSFluidProgressController *)arg1 updateFluidProgressBar:(WBSFluidProgressState *)arg2;

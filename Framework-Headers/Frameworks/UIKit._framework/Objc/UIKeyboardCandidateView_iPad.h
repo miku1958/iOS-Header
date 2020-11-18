@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (double)defaultExtendedControlHeight;
++ (double)extendedHeight;
 - (double)_additionalClipHeight;
 - (int)_clipCornersOfView:(id)arg1;
 - (unsigned long long)_numberOfColumns:(BOOL)arg1;

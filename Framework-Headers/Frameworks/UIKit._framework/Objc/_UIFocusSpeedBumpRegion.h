@@ -14,8 +14,8 @@
 @property (nonatomic) unsigned long long speedBumpEdges; // @synthesize speedBumpEdges=_speedBumpEdges;
 
 - (unsigned long long)_boundariesBlockingFocusMovement:(id)arg1;
-- (BOOL)_shouldBeOccludedByRegion:(id)arg1;
-- (BOOL)_shouldOccludeRegion:(id)arg1;
+- (BOOL)_canBeOccludedByRegionsAbove;
+- (BOOL)_canOccludeRegionsBelow;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 speedBumpEdges:(unsigned long long)arg2;

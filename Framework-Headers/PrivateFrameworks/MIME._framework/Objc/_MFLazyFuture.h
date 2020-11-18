@@ -17,7 +17,6 @@
 
 - (void)addFailureBlock:(CDUnknownBlockType)arg1;
 - (void)addSuccessBlock:(CDUnknownBlockType)arg1;
-- (BOOL)cancel;
 - (void)dealloc;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)isCancelled;
@@ -26,6 +25,7 @@
 - (void)onScheduler:(id)arg1 addSuccessBlock:(CDUnknownBlockType)arg2;
 - (id)resultBeforeDate:(id)arg1 error:(id *)arg2;
 - (BOOL)run;
+- (BOOL)tryCancel;
 
 @end
 

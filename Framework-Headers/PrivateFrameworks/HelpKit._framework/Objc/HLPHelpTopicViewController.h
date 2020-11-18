@@ -11,7 +11,7 @@
 #import <HelpKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <HelpKit/UIWebViewDelegate-Protocol.h>
 
-@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpTopicHistoryItem, HLPHelpUsageController, HLPURLSession, NSArray, NSCache, NSMutableArray, NSString, NSURL, UIBarButtonItem, UITapGestureRecognizer, UIWebView;
+@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocale, HLPHelpTopicHistoryItem, HLPHelpUsageController, HLPURLSession, NSArray, NSCache, NSMutableArray, NSString, NSURL, UIBarButtonItem, UITapGestureRecognizer, UIWebView;
 @protocol HLPHelpTopicViewControllerDelegate;
 
 @interface HLPHelpTopicViewController : UIViewController <UIGestureRecognizerDelegate, UIWebViewDelegate, HLPHelpTopicViewControllerDelegate, HLPHelpLoadingViewDelegate>
@@ -34,6 +34,7 @@
     id<HLPHelpTopicViewControllerDelegate> _delegate;
     NSURL *_helpBookURL;
     UIWebView *_webView;
+    HLPHelpLocale *_locale;
     HLPHelpTopicHistoryItem *_currentTopicHistoryItem;
     HLPHelpLoadingView *_loadingView;
     HLPHelpUsageController *_usageController;
@@ -50,6 +51,7 @@
 @property (strong, nonatomic) NSURL *helpBookURL; // @synthesize helpBookURL=_helpBookURL;
 @property (nonatomic) BOOL hideDoneButton; // @synthesize hideDoneButton=_hideDoneButton;
 @property (strong, nonatomic) HLPHelpLoadingView *loadingView; // @synthesize loadingView=_loadingView;
+@property (strong, nonatomic) HLPHelpLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSArray *searchTerms; // @synthesize searchTerms=_searchTerms;
 @property (nonatomic) BOOL showTopicNameAsTitle; // @synthesize showTopicNameAsTitle=_showTopicNameAsTitle;
 @property (readonly) Class superclass;

@@ -8,33 +8,43 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPRecordFieldIdentifier, CKDPRecordType, NSMutableArray;
+@class CKDPRecordFieldIdentifier, CKDPRecordType, NSData, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface CKDPAssetUploadTokenRetrieveRequest : PBRequest <NSCopying>
 {
     NSMutableArray *_assets;
+    NSData *_authPutRequest;
+    NSMutableArray *_authPutRequestHeaders;
     CKDPRecordFieldIdentifier *_field;
     CKDPRecordType *_type;
     NSMutableArray *_uploads;
 }
 
 @property (strong, nonatomic) NSMutableArray *assets; // @synthesize assets=_assets;
+@property (strong, nonatomic) NSData *authPutRequest; // @synthesize authPutRequest=_authPutRequest;
+@property (strong, nonatomic) NSMutableArray *authPutRequestHeaders; // @synthesize authPutRequestHeaders=_authPutRequestHeaders;
 @property (strong, nonatomic) CKDPRecordFieldIdentifier *field; // @synthesize field=_field;
+@property (readonly, nonatomic) BOOL hasAuthPutRequest;
 @property (readonly, nonatomic) BOOL hasField;
 @property (readonly, nonatomic) BOOL hasType;
 @property (strong, nonatomic) CKDPRecordType *type; // @synthesize type=_type;
 @property (strong, nonatomic) NSMutableArray *uploads; // @synthesize uploads=_uploads;
 
 + (Class)assetsType;
++ (Class)authPutRequestHeadersType;
 + (id)options;
 + (Class)uploadsType;
 - (void).cxx_destruct;
 - (void)addAssets:(id)arg1;
+- (void)addAuthPutRequestHeaders:(id)arg1;
 - (void)addUploads:(id)arg1;
 - (id)assetsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)assetsCount;
+- (id)authPutRequestHeadersAtIndex:(unsigned long long)arg1;
+- (unsigned long long)authPutRequestHeadersCount;
 - (void)clearAssets;
+- (void)clearAuthPutRequestHeaders;
 - (void)clearUploads;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

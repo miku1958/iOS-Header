@@ -17,12 +17,12 @@
 @property (readonly, weak, nonatomic) id<UIFocusItem> item; // @synthesize item=_item;
 
 - (void).cxx_destruct;
+- (BOOL)_canBeOccludedByRegionsAbove;
 - (id)_defaultFocusItem;
 - (id)_destinationItemForFocusMovement:(id)arg1 inMap:(id)arg2;
 - (void)_drawDebugQuickLookImageWithInfo:(id)arg1 inContext:(struct CGContext *)arg2;
 - (unsigned long long)_focusableBoundaries;
 - (long long)_preferredDistanceComparisonType;
-- (BOOL)_shouldBeOccludedByRegion:(id)arg1;
 - (BOOL)_shouldCropRegionToSearchArea;
 - (BOOL)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;
 - (id)_visualRepresentationColor;

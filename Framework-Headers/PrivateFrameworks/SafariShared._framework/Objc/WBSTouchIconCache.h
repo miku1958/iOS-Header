@@ -27,14 +27,13 @@
     NSMutableSet *_pendingTouchIconRequestHosts;
     WBSTouchIconCacheSettingsSQLiteStore *_cacheSettingsStore;
     BOOL _readOnly;
-    BOOL _alwaysRequestTouchIcons;
     BOOL _internalQueueBusy;
     id<WBSSiteMetadataProviderDelegate> _providerDelegate;
     NSURL *_cacheDirectoryURL;
 }
 
-@property (nonatomic) BOOL alwaysRequestTouchIcons; // @synthesize alwaysRequestTouchIcons=_alwaysRequestTouchIcons;
 @property (readonly, nonatomic) NSURL *cacheDirectoryURL; // @synthesize cacheDirectoryURL=_cacheDirectoryURL;
+@property (nonatomic, getter=isCachingDisabled) BOOL cachingDisabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -59,6 +58,7 @@
 - (id)_imageCacheSettingsDatabaseURL;
 - (double)_maximumScreenScale;
 - (void)_notifyImageWasLoaded:(id)arg1 forHost:(id)arg2;
+- (void)_openCacheSettingsDatabaseIfNeeded;
 - (id)_operationWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_registerRequest:(id)arg1;
 - (void)_removeTouchIconsDataForHost:(id)arg1;
@@ -79,14 +79,14 @@
 - (void)cacheFirstAvailableTouchIcon:(id)arg1 forURL:(id)arg2;
 - (BOOL)canHandleRequest:(id)arg1;
 - (void)dealloc;
-- (void)emptyCache;
+- (void)emptyCaches;
 - (BOOL)hasDeterminedIconAvailabilityForURL:(id)arg1;
 - (id)init;
 - (id)initWithCacheDirectoryURL:(id)arg1;
 - (id)initWithCacheDirectoryURL:(id)arg1 isReadOnly:(BOOL)arg2;
 - (id)operationForRequest:(id)arg1;
 - (void)prepareResponseForRequest:(id)arg1 allowDelayedResponse:(BOOL)arg2;
-- (void)purgeUnneededImages;
+- (void)purgeUnneededCacheEntries;
 - (void)releaseTouchIconForHost:(id)arg1;
 - (void)releaseTouchIconForURLString:(id)arg1;
 - (void)releaseTouchIconsForHosts:(id)arg1;

@@ -12,6 +12,7 @@
 
 @property (readonly, copy, nonatomic) NSDate *dateForComparingAdjustmentVersions;
 @property (strong, nonatomic) NSSet *detectedFaces;
+@property (readonly, nonatomic) BOOL faceProcessed;
 @property (readonly, nonatomic) short height;
 @property (readonly, nonatomic) short width;
 

@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
 @interface VKSelectedTransitLineTileSource : VKTransitLineTileSource <GEOTileRequesterDelegate>
 {
     unsigned long long _selectedLineIDSequenceCounter;
-    unordered_set_6cd805f9 _selectedLineIDs;
+    unordered_set_65896b03 _selectedLineIDs;
     unsigned int _maxZ;
     NSMutableArray *_inProgress;
 }
 
 @property (nonatomic) unsigned int maxZ; // @synthesize maxZ=_maxZ;
-@property (nonatomic) const unordered_set_6cd805f9 *selectedLineIDs; // @synthesize selectedLineIDs=_selectedLineIDs;
+@property (nonatomic) const unordered_set_65896b03 *selectedLineIDs; // @synthesize selectedLineIDs=_selectedLineIDs;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

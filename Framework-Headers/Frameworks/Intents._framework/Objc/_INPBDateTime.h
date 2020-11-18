@@ -34,6 +34,8 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsCalendarSystem:(id)arg1;
+- (id)calendarSystemAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

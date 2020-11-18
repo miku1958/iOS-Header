@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIVisualEffectView.h>
+#import <UIKit/UIView.h>
 
 #import <EventKitUI/EKDayOccurrenceTravelTimeViewMetricsDelegate-Protocol.h>
 #import <EventKitUI/NSCopying-Protocol.h>
 
-@class EKDayOccurrenceContentView, EKDayOccurrenceTravelTimeView, EKEvent, NSObject, NSString, UIColor, UIImageView, UIView;
+@class EKDayOccurrenceContentView, EKDayOccurrenceTravelTimeView, EKEvent, NSObject, NSString, UIColor, UIImageView;
 @protocol EKDayOccurrenceViewDelegate;
 
-@interface EKDayOccurrenceView : UIVisualEffectView <NSCopying, EKDayOccurrenceTravelTimeViewMetricsDelegate>
+@interface EKDayOccurrenceView : UIView <NSCopying, EKDayOccurrenceTravelTimeViewMetricsDelegate>
 {
     double _visibleHeight;
     UIImageView *_eventBackgroundView;
@@ -178,7 +178,6 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
-- (double)unconstrainedWidth;
 - (double)viewMaxNaturalTextHeight;
 
 @end

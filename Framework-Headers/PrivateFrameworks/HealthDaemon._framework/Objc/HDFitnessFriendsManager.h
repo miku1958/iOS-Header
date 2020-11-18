@@ -60,12 +60,12 @@
 - (void)acceptInviteRequestFromFriendWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addFriendsListObserver:(id)arg1;
 - (void)clearFriendListWithCompletion:(CDUnknownBlockType)arg1;
-- (void)cloudKitAccountStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)daemonReady:(id)arg1;
 - (void)dealloc;
 - (void)fetchAllDataIfTimeSinceLastFetchIsGreaterThan:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAllDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchAreMultipleDevicesSharingDataForSnapshotIndex:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)fetchCloudKitAccountStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)friends;
 - (BOOL)hasFriendsToShareWith;
 - (void)ignoreInviteRequestFromFriendWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;

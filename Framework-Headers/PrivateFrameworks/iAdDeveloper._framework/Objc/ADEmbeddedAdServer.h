@@ -69,7 +69,6 @@
 - (id)_handleLogAdEventRequest:(id)arg1 message:(id)arg2;
 - (id)_handleLogAggregateMetricsRequest:(id)arg1 message:(id)arg2;
 - (id)_handleLogImpressionRequest:(id)arg1 message:(id)arg2;
-- (id)_handleLogPassEventRequest:(id)arg1 message:(id)arg2;
 - (id)_handleLogStationClientEventRequest:(id)arg1 message:(id)arg2;
 - (id)_handleLogSysEventRequest:(id)arg1 message:(id)arg2;
 - (id)_handleLogTileImpressionEventRequest:(id)arg1 message:(id)arg2;
@@ -82,8 +81,10 @@
 - (id)_handleRewardsCodeResultRequest:(id)arg1 message:(id)arg2;
 - (id)_handleSegmentUpdateRequest:(id)arg1 message:(id)arg2;
 - (id)_handleServerErrorRequest:(id)arg1 message:(id)arg2;
+- (id)_handleUserTargetingRequest:(id)arg1 message:(id)arg2;
 - (id)_integerColorFromStringColor:(id)arg1;
 - (id)_mimeTypeForExtension:(id)arg1;
+- (BOOL)_tryAddingAdTagContentStringForCreative:(id)arg1 toAdReponse:(id)arg2 withAdPath:(id)arg3;
 - (id)_webArchiveFilenameForDirectory:(id)arg1 withBaseURL:(id)arg2;
 - (id)_webResourceForPath:(id)arg1 url:(id)arg2;
 - (id)_webResourcesInDirectory:(id)arg1 baseURL:(id)arg2;

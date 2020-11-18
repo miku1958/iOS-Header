@@ -6,13 +6,42 @@
 
 #import <MapKit/MKShape.h>
 
-@interface MKPointAnnotation : MKShape
+#import <MapKit/MKAnnotationPrivate-Protocol.h>
+#import <MapKit/MKAnnotationRepresentation-Protocol.h>
+#import <MapKit/MKCustomFeatureAnnotation-Protocol.h>
+
+@class NSString, VKCustomFeature;
+
+@interface MKPointAnnotation : MKShape <MKCustomFeatureAnnotation, MKAnnotationRepresentation, MKAnnotationPrivate>
 {
     struct CLLocationCoordinate2D _coordinate;
+    long long _representation;
+    VKCustomFeature *_customFeature;
 }
 
 @property (nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
+@property (nonatomic) double course;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) long long representation; // @synthesize representation=_representation;
+@property (readonly, nonatomic) BOOL showsBalloonCallout;
+@property (readonly, copy, nonatomic) NSString *subtitle;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *title;
 
+- (void).cxx_destruct;
+- (void)_invalidateCachedCoordinate;
+- (BOOL)_isPendingSelectionAnimated;
+- (void)_setHiddenForOffscreen:(BOOL)arg1;
+- (id)annotation;
+- (id)feature;
+- (BOOL)isPersistent;
+- (void)prepareForReuse;
+- (id)reuseIdentifier;
+- (void)setShowsBalloonCallout:(BOOL)arg1;
+- (BOOL)shouldRepresentSelf;
+- (id)viewRepresentation;
 
 @end
 

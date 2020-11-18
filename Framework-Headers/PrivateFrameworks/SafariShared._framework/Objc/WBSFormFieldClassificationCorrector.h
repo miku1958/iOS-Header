@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, WBSFormAutoFillClassificationToCorrectionsTransformer;
+@class NSDictionary, NSString, WBSFormAutoFillClassificationToCorrectionsTransformer, WBSFormMetadata;
 @protocol WBSFormFieldClassificationCorrectorDelegate;
 
 @interface WBSFormFieldClassificationCorrector : NSObject
@@ -14,13 +14,13 @@
     WBSFormAutoFillClassificationToCorrectionsTransformer *_classificationToCorrectionsTransformer;
     id<WBSFormFieldClassificationCorrectorDelegate> _delegate;
     NSString *_domain;
-    NSDictionary *_formMetadata;
+    WBSFormMetadata *_formMetadata;
     NSDictionary *_formValues;
 }
 
 @property (weak, nonatomic) id<WBSFormFieldClassificationCorrectorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
-@property (readonly, copy, nonatomic) NSDictionary *formMetadata; // @synthesize formMetadata=_formMetadata;
+@property (readonly, copy, nonatomic) WBSFormMetadata *formMetadata; // @synthesize formMetadata=_formMetadata;
 @property (readonly, copy, nonatomic) NSDictionary *formValues; // @synthesize formValues=_formValues;
 
 - (void).cxx_destruct;

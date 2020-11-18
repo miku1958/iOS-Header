@@ -6,20 +6,27 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsCore/FCHeadlineMetadata-Protocol.h>
+
 @class NSDate, NSDictionary, NSString;
 
-@interface FCArticleListArticleMetadata : NSObject
+@interface FCArticleListArticleMetadata : NSObject <FCHeadlineMetadata>
 {
-    NSDate *_displayDate;
     NSDictionary *_dictionary;
+    NSDate *_displayDate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property (strong, nonatomic) NSDate *displayDate; // @synthesize displayDate=_displayDate;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isTreatedAsNew;
 @property (readonly, nonatomic) NSString *storyType;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithDictionary:(id)arg1;
 
 @end

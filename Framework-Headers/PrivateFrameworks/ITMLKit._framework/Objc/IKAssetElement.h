@@ -6,7 +6,7 @@
 
 #import <ITMLKit/IKViewElement.h>
 
-@class NSString, NSURL;
+@class NSNumber, NSString, NSURL;
 
 @interface IKAssetElement : IKViewElement
 {
@@ -18,13 +18,17 @@
 @property (readonly, strong, nonatomic) NSString *bookmarkID;
 @property (readonly, strong, nonatomic) NSString *contentID;
 @property (readonly, strong, nonatomic) NSString *externalID;
+@property (readonly, strong, nonatomic) NSURL *extrasURL;
 @property (readonly, nonatomic, getter=isInfiniteDuration) BOOL infiniteDuration; // @synthesize infiniteDuration=_infiniteDuration;
 @property (readonly, nonatomic) long long keyDelivery;
+@property (readonly, strong, nonatomic) NSNumber *persistentID;
+@property (readonly, strong, nonatomic) NSNumber *rentalAdamID;
 @property (readonly, strong, nonatomic) NSString *serviceID;
 @property (readonly, nonatomic) long long type;
 @property (readonly, strong, nonatomic) NSURL *url;
 
 + (BOOL)shouldParseChildDOMElements;
+- (id)_numberForAttribute:(id)arg1;
 - (BOOL)infiniteDuration;
 
 @end

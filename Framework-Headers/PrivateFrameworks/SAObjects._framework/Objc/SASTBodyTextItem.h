@@ -8,16 +8,19 @@
 
 #import <SAObjects/SASTTemplateItem-Protocol.h>
 
-@class NSString;
+@class NSString, SADecoratedString;
 
 @interface SASTBodyTextItem : AceObject <SASTTemplateItem>
 {
 }
 
+@property (copy, nonatomic) NSString *alignment;
 @property (copy, nonatomic) NSString *bodyText;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) SADecoratedString *decoratedBodyText;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *position;
 @property (readonly) Class superclass;
 
 + (id)bodyTextItem;

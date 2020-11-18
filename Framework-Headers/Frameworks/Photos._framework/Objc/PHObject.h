@@ -40,6 +40,7 @@
 + (id)localIdentifierWithUUID:(id)arg1;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsBursts;
++ (BOOL)managedObjectSupportsFaceCropGeneration;
 + (BOOL)managedObjectSupportsFaceVisibility;
 + (BOOL)managedObjectSupportsHiddenState;
 + (BOOL)managedObjectSupportsMontage;

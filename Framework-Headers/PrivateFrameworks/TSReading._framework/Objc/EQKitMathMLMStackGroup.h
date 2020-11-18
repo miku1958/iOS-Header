@@ -26,7 +26,7 @@
 - (id)initWithChildren:(id)arg1;
 - (BOOL)isBaseFontNameUsed;
 - (struct Schemata)layoutSchemata;
-- (const set_386565a4 *)mathMLAttributes;
+- (const set_25e6ba53 *)mathMLAttributes;
 - (id)schemataChildren;
 
 @end

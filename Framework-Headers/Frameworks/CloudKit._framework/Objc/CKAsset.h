@@ -9,7 +9,7 @@
 #import <CloudKit/CKRecordValue-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKRecord, CKRecordID, NSData, NSDate, NSNumber, NSString, NSURL;
+@class CKAssetTransferOptions, CKRecord, CKRecordID, NSData, NSDate, NSDictionary, NSNumber, NSString, NSURL;
 
 @interface CKAsset : NSObject <CKRecordValue, NSSecureCoding>
 {
@@ -34,8 +34,10 @@
     NSData *_referenceSignature;
     NSString *_uploadReceipt;
     long long _storageGroupingPolicy;
+    CKAssetTransferOptions *_assetTransferOptions;
     long long _arrayIndex;
     CKRecordID *_recordID;
+    NSDictionary *_assetChunkerOptions;
     CKRecord *_record;
     NSString *_recordKey;
     NSURL *_contentBaseURL;
@@ -51,9 +53,11 @@
 
 @property (strong, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property (nonatomic) long long arrayIndex; // @synthesize arrayIndex=_arrayIndex;
+@property (strong, nonatomic) NSDictionary *assetChunkerOptions; // @synthesize assetChunkerOptions=_assetChunkerOptions;
 @property (copy, nonatomic) NSData *assetContent; // @synthesize assetContent=_assetContent;
 @property (readonly, nonatomic) NSString *assetHandleUUID;
 @property (strong, nonatomic) NSData *assetKey; // @synthesize assetKey=_assetKey;
+@property (strong, nonatomic) CKAssetTransferOptions *assetTransferOptions; // @synthesize assetTransferOptions=_assetTransferOptions;
 @property (copy, nonatomic) NSData *authRequest; // @synthesize authRequest=_authRequest;
 @property (copy, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;
 @property (strong, nonatomic) NSURL *contentBaseURL; // @synthesize contentBaseURL=_contentBaseURL;

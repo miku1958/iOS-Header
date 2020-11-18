@@ -19,13 +19,11 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 @property (strong, nonatomic) NSURL *metadataURL; // @synthesize metadataURL=_metadataURL;
 
-+ (BOOL)_isHiddenFaceMetadataExtension:(id)arg1;
 + (id)hiddenFacesToArchiveInManagedObjectContext:(id)arg1;
-+ (BOOL)isHiddenFaceMetadataPath:(id)arg1;
 + (BOOL)isValidPath:(id)arg1;
 - (void).cxx_destruct;
 - (id)_metadataData;
-- (void)_readMetadata;
+- (BOOL)_readMetadata;
 - (void)_saveMetadata;
 - (id)description;
 - (id)init;

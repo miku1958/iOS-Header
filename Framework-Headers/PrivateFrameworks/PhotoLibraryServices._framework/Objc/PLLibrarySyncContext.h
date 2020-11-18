@@ -26,7 +26,7 @@
 - (void)deleteFaces:(id)arg1;
 - (id)initWithPhotoLibrary:(id)arg1;
 - (id)makeFace;
-- (id)personForUUID:(id)arg1 createIfMissing:(BOOL)arg2;
+- (id)personForUUID:(id)arg1;
 
 @end
 

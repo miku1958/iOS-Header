@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
 
 - (unsigned long long)arrayLength;
 - (void)dealloc;
-- (id)describe;
 - (id)elementArrayType;
 - (id)elementStructType;
 - (unsigned long long)elementType;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithArrayLength:(unsigned long long)arg1 elementType:(unsigned long long)arg2 stride:(unsigned long long)arg3 details:(id)arg4;
 - (unsigned long long)stride;
 

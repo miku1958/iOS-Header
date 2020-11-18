@@ -38,7 +38,9 @@
 - (id)addLabelViewWithOrdinalElement:(id)arg1 width:(double)arg2 context:(id)arg3;
 - (id)addMenuButtonWithTitleItem:(id)arg1 width:(double)arg2 context:(id)arg3;
 - (id)addOfferViewWithViewElement:(id)arg1 width:(double)arg2 context:(id)arg3;
+- (id)addResponseViewWithViewElement:(id)arg1 width:(double)arg2 context:(id)arg3;
 - (id)addReusableViewWithReuseIdentifier:(id)arg1;
+- (id)addReviewListTitleViewWithViewElement:(id)arg1 width:(double)arg2 context:(id)arg3;
 - (id)addStackItemViewWithElement:(id)arg1 width:(double)arg2 context:(id)arg3;
 - (id)addStackListViewWithElement:(id)arg1 width:(double)arg2 context:(id)arg3;
 - (id)addStarRatingControlViewWithViewElement:(id)arg1 width:(double)arg2 context:(id)arg3;

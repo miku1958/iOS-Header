@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *rawPassword; // @synthesize rawPassword=_rawPassword;
 @property (strong, nonatomic) NSSet *targetedAccountServices; // @synthesize targetedAccountServices=_targetedAccountServices;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

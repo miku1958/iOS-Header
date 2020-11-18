@@ -9,7 +9,7 @@
 #import <Network/NWPrettyDescription-Protocol.h>
 
 @class NSArray, NSString, NSUUID, NWEndpoint, NWInterface, NWParameters;
-@protocol OS_nw_path, OS_xpc_object;
+@protocol OS_nw_path;
 
 @interface NWPath : NSObject <NWPrettyDescription>
 {
@@ -27,6 +27,7 @@
 @property (readonly, nonatomic, getter=isEligibleForCrazyIvan46) BOOL eligibleForCrazyIvan46;
 @property (readonly, nonatomic) NWEndpoint *endpoint;
 @property (readonly, nonatomic, getter=isExpensive) BOOL expensive;
+@property (readonly, nonatomic) BOOL fallbackEligible;
 @property (readonly, nonatomic) NWInterface *fallbackInterface;
 @property (readonly, nonatomic) unsigned int fallbackInterfaceIndex;
 @property (readonly, nonatomic) BOOL fallbackIsWeak;
@@ -41,7 +42,7 @@
 @property (readonly, nonatomic) NWParameters *parameters;
 @property (readonly, nonatomic) unsigned int policyID;
 @property (readonly, copy, nonatomic) NSString *privateDescription;
-@property (strong, nonatomic) NSObject<OS_xpc_object> *proxySettings;
+@property (readonly, nonatomic) NSArray *proxySettings;
 @property (readonly, nonatomic) long long reason;
 @property (readonly, nonatomic) NSString *reasonDescription;
 @property (readonly, nonatomic, getter=isRoaming) BOOL roaming;

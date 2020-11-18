@@ -6,43 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSTimer, UIScrollView;
-@protocol PXAutoScrollerDelegate;
+@protocol PXAnonymousScrollView, PXAutoScrollerDelegate;
 
 @interface PXAutoScroller : NSObject
 {
+    struct {
+        BOOL didAutoscrollWithTimestamp;
+    } _delegateRespondsTo;
+    BOOL __repeating;
+    struct NSObject *_scrollView;
     id<PXAutoScrollerDelegate> _delegate;
-    double _autoScrollerInset;
-    double _autoScrollerTimerInterval;
-    double _autoScrollerMaximumSpeed;
-    UIScrollView *_scrollView;
-    NSTimer *_timer;
-    long long _updateTrigger;
-    struct CGPoint _distanceFromCenterFrame;
-    struct CGPoint _speed;
+    double __margin;
+    double __maximumSpeed;
+    double __lastUpdateTimestamp;
+    struct CGPoint __autoscrollDirection;
 }
 
-@property (nonatomic) double autoScrollerInset; // @synthesize autoScrollerInset=_autoScrollerInset;
-@property (nonatomic) double autoScrollerMaximumSpeed; // @synthesize autoScrollerMaximumSpeed=_autoScrollerMaximumSpeed;
-@property (nonatomic) double autoScrollerTimerInterval; // @synthesize autoScrollerTimerInterval=_autoScrollerTimerInterval;
+@property (nonatomic, setter=_setAutoscrollDirection:) struct CGPoint _autoscrollDirection; // @synthesize _autoscrollDirection=__autoscrollDirection;
+@property (nonatomic, setter=_setLastUpdateTimestamp:) double _lastUpdateTimestamp; // @synthesize _lastUpdateTimestamp=__lastUpdateTimestamp;
+@property (readonly, nonatomic) double _margin; // @synthesize _margin=__margin;
+@property (readonly, nonatomic) double _maximumSpeed; // @synthesize _maximumSpeed=__maximumSpeed;
+@property (nonatomic, getter=_isRepeating, setter=_setRepeating:) BOOL _repeating; // @synthesize _repeating=__repeating;
 @property (weak, nonatomic) id<PXAutoScrollerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) struct CGPoint distanceFromCenterFrame; // @synthesize distanceFromCenterFrame=_distanceFromCenterFrame;
-@property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property (nonatomic) struct CGPoint speed; // @synthesize speed=_speed;
-@property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
-@property (nonatomic) long long updateTrigger; // @synthesize updateTrigger=_updateTrigger;
+@property (readonly, nonatomic) NSObject<PXAnonymousScrollView> *scrollView; // @synthesize scrollView=_scrollView;
 
-+ (void)_scrollTestFire;
-+ (void)performScrollTest:(id)arg1 iterations:(unsigned long long)arg2 length:(double)arg3 delta:(double)arg4 vertical:(BOOL)arg5;
 - (void).cxx_destruct;
-- (void)_handlerTimer:(id)arg1;
-- (void)_startTimer;
-- (void)_stopTimer;
-- (void)dealloc;
-- (id)initWithTargetScrollView:(id)arg1;
-- (void)stopAndInvalidate;
-- (void)updateWithGestureRecognizer:(id)arg1;
-- (void)updateWithPoint:(struct CGPoint)arg1;
+- (BOOL)autoscrollWithOffset:(struct CGPoint)arg1;
+- (id)init;
+- (id)initWithTargetScrollView:(struct NSObject *)arg1;
+- (void)startRepeating;
+- (void)stop;
+- (void)stopRepeating;
+- (void)updateWithTimestamp:(double)arg1;
+- (void)updateWithUserInteractionLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (struct CGRect)visibleRectForScrollView:(struct NSObject *)arg1;
 
 @end
 

@@ -6,21 +6,22 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSString;
+@class NSArray;
 @protocol MRCryptoPairingSessionDelegate;
 
 @interface MRCryptoPairingSession : NSObject
 {
-    BOOL _valid;
+    void *_device;
     unsigned long long _role;
-    NSString *_peerIdentifier;
     id<MRCryptoPairingSessionDelegate> _delegate;
 }
 
 @property (nonatomic) id<MRCryptoPairingSessionDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) NSString *peerIdentifier; // @synthesize peerIdentifier=_peerIdentifier;
+@property (readonly, nonatomic) void *device; // @synthesize device=_device;
+@property (readonly, nonatomic, getter=isPaired) BOOL paired;
+@property (readonly, nonatomic) NSArray *pairedDevices;
 @property (readonly, nonatomic) unsigned long long role; // @synthesize role=_role;
-@property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
+@property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void)close;
@@ -31,8 +32,10 @@
 - (void)handlePairingExchangeData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handlePairingFailureWithStatus:(int)arg1;
 - (id)init;
-- (id)initWithRole:(unsigned long long)arg1 peerIdentifier:(id)arg2;
+- (id)initWithRole:(unsigned long long)arg1 device:(void *)arg2;
 - (void)open;
+- (id)removePeer;
+- (id)updatePeer;
 
 @end
 

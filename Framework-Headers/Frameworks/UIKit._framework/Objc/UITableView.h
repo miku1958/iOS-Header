@@ -555,8 +555,13 @@
 - (double)_estimatedHeightForRowAtIndexPath:(id)arg1;
 - (id)_existingCellForRowAtIndexPath:(id)arg1;
 - (double)_externalIndexWidth;
+- (struct UIEdgeInsets)_fastScrollingIndexBarInsets;
 - (void)_finishedAnimatingCellReorder:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_finishedRemovingRemovalButtonForTableCell:(id)arg1;
+- (id)_focusFastScrollingDestinationItemAtContentEnd;
+- (id)_focusFastScrollingDestinationItemAtContentStart;
+- (id)_focusFastScrollingDestinationItemForIndexEntry:(id)arg1;
+- (id)_focusFastScrollingIndexEntries;
 - (void)_focusedView:(id)arg1 isMinX:(BOOL *)arg2 isMaxX:(BOOL *)arg3 isMinY:(BOOL *)arg4 isMaxY:(BOOL *)arg5;
 - (struct CGRect)_frameForWrapper;
 - (id)_fulfillPromisedFocusRegionForCell:(id)arg1;

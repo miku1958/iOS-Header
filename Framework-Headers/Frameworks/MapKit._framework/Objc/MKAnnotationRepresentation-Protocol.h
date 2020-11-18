@@ -6,7 +6,8 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class NSString;
+@class MKAnnotationView, NSString;
+@protocol MKAnnotationRepresentation;
 
 @protocol MKAnnotationRepresentation <NSObject>
 - (void)_invalidateCachedCoordinate;
@@ -15,5 +16,6 @@
 - (BOOL)isPersistent;
 - (void)prepareForReuse;
 - (NSString *)reuseIdentifier;
+- (MKAnnotationView<MKAnnotationRepresentation> *)viewRepresentation;
 @end
 

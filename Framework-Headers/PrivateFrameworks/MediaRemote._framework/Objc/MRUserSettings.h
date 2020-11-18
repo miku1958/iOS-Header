@@ -11,26 +11,33 @@
 @interface MRUserSettings : NSObject
 {
     NSUserDefaults *_userDefaults;
+    BOOL _televisionPairingAllowed;
 }
 
 @property (readonly, nonatomic) double bluetoothDeviceResumeDuration;
 @property (readonly, nonatomic) double broadcastCommandWaitDuration;
 @property (readonly, nonatomic) BOOL hasTelevisionSocketQOSLevelSet;
+@property (readonly, nonatomic) long long maxTransactionMemorySize;
 @property (readonly, nonatomic) double televisionDisconnectSleepDuration;
 @property (readonly, nonatomic) double televisionDisconnectWaitDuration;
 @property (readonly, nonatomic) double televisionNowPlayingInfoArtworkCoalesceDuration;
 @property (readonly, nonatomic) double televisionNowPlayingInfoCoalesceDuration;
-@property (nonatomic, getter=isTelevisionPairingAllowed) BOOL televisionPairingAllowed;
+@property (nonatomic, getter=isTelevisionPairingAllowed) BOOL televisionPairingAllowed; // @synthesize televisionPairingAllowed=_televisionPairingAllowed;
 @property (readonly, nonatomic) double televisionSleepAssertionOnClientConnectDuration;
 @property (readonly, nonatomic) long long televisionSocketQOSLevel;
 @property (readonly, nonatomic) double televisionTimeoutDuration;
+@property (readonly, nonatomic) double transactionWaitDurationOnNetworkSend;
+@property (readonly, nonatomic) double transactionWaitDurationOnOutOfMemory;
+@property (readonly, nonatomic) double transactionWaitDurationOnXpcSend;
 @property (readonly, nonatomic) BOOL useDebugAVRouteWithoutVolumeControl;
 @property (readonly, nonatomic) BOOL useNoDelayOptionForTelevisionSockets;
 @property (readonly, nonatomic) BOOL usePeerToPeerTelevisionConnections;
+@property (readonly, nonatomic) BOOL useTelevisionSystemPairing;
 
 + (id)currentSettings;
 - (BOOL)_boolValueForKey:(id)arg1 usingDefaultValue:(BOOL)arg2;
-- (double)_doubleValueForKey:(id)arg1 usingDefaultValue:(BOOL)arg2;
+- (double)_doubleValueForKey:(id)arg1 usingDefaultValue:(double)arg2;
+- (long long)_integerValueForKey:(id)arg1 usingDefaultValue:(long long)arg2;
 - (void)dealloc;
 - (id)init;
 

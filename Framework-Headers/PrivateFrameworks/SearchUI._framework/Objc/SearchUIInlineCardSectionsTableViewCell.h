@@ -6,11 +6,19 @@
 
 #import <SearchUI/SearchUITableViewCell.h>
 
+@class UIView;
+
 @interface SearchUIInlineCardSectionsTableViewCell : SearchUITableViewCell
 {
+    UIView *_container;
 }
 
+@property (strong) UIView *container; // @synthesize container=_container;
+
+- (void).cxx_destruct;
 - (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)supportsRecycling;
 
 @end

@@ -6,13 +6,23 @@
 
 #import <SearchFoundation/SFStartNetworkSearchFeedback.h>
 
-@interface PARLookupStartNetworkSearchFeedback : SFStartNetworkSearchFeedback
+#import <CoreParsec/SFProtobufObject-Protocol.h>
+
+@class NSString, PBCodable;
+
+@interface PARLookupStartNetworkSearchFeedback : SFStartNetworkSearchFeedback <SFProtobufObject>
 {
     long long _lookupSelectionType;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long lookupSelectionType; // @synthesize lookupSelectionType=_lookupSelectionType;
+@property (readonly, nonatomic) PBCodable *protobufMessage;
+@property (readonly) Class superclass;
 
++ (Class)protobufClass;
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

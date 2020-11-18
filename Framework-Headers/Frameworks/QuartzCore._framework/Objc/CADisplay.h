@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class CADisplayMode, NSArray, NSString;
 
@@ -27,9 +27,7 @@
 @property (readonly, getter=isExternal) BOOL external;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly) double heartbeatRate;
-@property (readonly) double maximumRefreshRate;
 @property (readonly) long long minimumFrameDuration;
-@property (readonly) double minimumRefreshRate;
 @property (readonly, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *overscanAdjustment;
 @property (readonly) double overscanAmount;

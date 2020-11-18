@@ -21,6 +21,7 @@
     BOOL _parallaxEnabled;
     BOOL _allowsInfiniteScrolling;
     BOOL _forceAllItemsAsVideo;
+    BOOL _forceLivePhotoBadges;
     BOOL _simulateSharedStreamsEnabled;
     BOOL _vitalityEnabled;
     double _smallTileSizeTolerance;
@@ -46,6 +47,7 @@
 @property (nonatomic) long long feedContent; // @synthesize feedContent=_feedContent;
 @property (nonatomic) BOOL forceAllItemsAsVideo; // @synthesize forceAllItemsAsVideo=_forceAllItemsAsVideo;
 @property (nonatomic) BOOL forceDefaultPreheatManager; // @synthesize forceDefaultPreheatManager=_forceDefaultPreheatManager;
+@property (nonatomic) BOOL forceLivePhotoBadges; // @synthesize forceLivePhotoBadges=_forceLivePhotoBadges;
 @property (nonatomic) BOOL ignoresCaptions; // @synthesize ignoresCaptions=_ignoresCaptions;
 @property (nonatomic) long long infiniteScrollingWindowSizeIncrement; // @synthesize infiniteScrollingWindowSizeIncrement=_infiniteScrollingWindowSizeIncrement;
 @property (nonatomic) long long initialWindowSize; // @synthesize initialWindowSize=_initialWindowSize;

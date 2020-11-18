@@ -15,6 +15,7 @@
 + (BOOL)canAuthenticate;
 - (BOOL)anyPeerHasEnabledViewsInSet:(NSSet *)arg1 error:(id *)arg2;
 - (int)circleStatus:(id *)arg1;
+- (NSString *)generateRecoveryKeyWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (BOOL)hasNonViewAwarePeers;
 - (id)initWithContext:(CDPContext *)arg1;
 - (BOOL)isLastBackupMakingPeer:(id *)arg1;

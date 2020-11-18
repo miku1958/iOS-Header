@@ -6,7 +6,7 @@
 
 #import <Photos/PHObject.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface PHPerson : PHObject
 {
@@ -18,8 +18,10 @@
     long long _manualOrder;
     NSString *_personUri;
     long long _faceCount;
+    NSDictionary *_contactMatchingDictionary;
 }
 
+@property (readonly, nonatomic) NSDictionary *contactMatchingDictionary; // @synthesize contactMatchingDictionary=_contactMatchingDictionary;
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) long long faceCount; // @synthesize faceCount=_faceCount;
 @property (readonly, nonatomic, getter=isInPersonNamingModel) BOOL inPersonNamingModel; // @synthesize inPersonNamingModel=_inPersonNamingModel;
@@ -27,7 +29,7 @@
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *personUri; // @synthesize personUri=_personUri;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
-@property (readonly, nonatomic) BOOL verified; // @synthesize verified=_verified;
+@property (readonly, nonatomic, getter=isVerified) BOOL verified; // @synthesize verified=_verified;
 
 + (id)_convertFaceSuggestionToFaceCollection:(id)arg1 options:(id)arg2;
 + (long long)_faceSuggestionForPerson:(id)arg1 confirmedFaceCollections:(id)arg2 rejectedFaceCollections:(id)arg3 options:(id)arg4 fromClient:(id)arg5 completion:(CDUnknownBlockType)arg6;
@@ -49,6 +51,7 @@
 + (id)fetchPersonsWithOptions:(id)arg1;
 + (id)fetchPersonsWithType:(long long)arg1 options:(id)arg2;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
++ (id)fetchRejectedPersonsForFace:(id)arg1 options:(id)arg2;
 + (id)fetchType;
 + (id)fullNameFromContact:(id)arg1;
 + (id)identifierCode;

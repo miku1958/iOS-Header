@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLSyncableDetectedFace-Protocol.h>
 
-@class NSDate, NSSet, NSString, PLDetectedFaceGroup, PLDetectedFaceprint, PLManagedAsset, PLPerson;
+@class NSDate, NSSet, NSString, PLDetectedFaceGroup, PLDetectedFaceprint, PLFaceCrop, PLManagedAsset, PLPerson;
 @protocol PLSyncablePerson;
 
 @interface PLDetectedFace : PLManagedObject <PLSyncableDetectedFace>
@@ -18,6 +18,7 @@
 @property (copy, nonatomic) NSDate *adjustmentVersion;
 @property (strong, nonatomic) NSDate *adjustmentVersion; // @dynamic adjustmentVersion;
 @property (strong, nonatomic) PLManagedAsset *asset; // @dynamic asset;
+@property (readonly, nonatomic) BOOL assetVisible; // @dynamic assetVisible;
 @property (nonatomic) double blurScore; // @dynamic blurScore;
 @property (nonatomic) double centerX;
 @property (nonatomic) double centerX; // @dynamic centerX;
@@ -26,6 +27,7 @@
 @property (nonatomic) short cloudLocalState;
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
 @property (nonatomic) int clusterSequenceNumber; // @dynamic clusterSequenceNumber;
+@property (nonatomic) short confirmedFaceCropGenerationState; // @dynamic confirmedFaceCropGenerationState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double expressionConfidence; // @dynamic expressionConfidence;
@@ -37,8 +39,9 @@
 @property (nonatomic) int expressionType3; // @dynamic expressionType3;
 @property (nonatomic) int faceAlgorithmVersion;
 @property (nonatomic) int faceAlgorithmVersion; // @dynamic faceAlgorithmVersion;
+@property (strong, nonatomic) PLFaceCrop *faceCrop; // @dynamic faceCrop;
+@property (strong, nonatomic) PLDetectedFaceGroup *faceGroup; // @dynamic faceGroup;
 @property (strong, nonatomic) PLDetectedFaceGroup *faceGroupBeingKeyFace; // @dynamic faceGroupBeingKeyFace;
-@property (strong, nonatomic) NSSet *faceGroups; // @dynamic faceGroups;
 @property (strong, nonatomic) PLDetectedFaceprint *faceprint; // @dynamic faceprint;
 @property (nonatomic) BOOL hasSmile; // @dynamic hasSmile;
 @property (readonly) unsigned long long hash;
@@ -55,7 +58,7 @@
 @property (nonatomic) double mouthX; // @dynamic mouthX;
 @property (nonatomic) double mouthY; // @dynamic mouthY;
 @property (nonatomic) int nameSource; // @dynamic nameSource;
-@property (nonatomic) BOOL nameSourceAuto;
+@property (nonatomic) BOOL nameSourceUser;
 @property (strong, nonatomic) id<PLSyncablePerson> person;
 @property (strong, nonatomic) PLPerson *person; // @dynamic person;
 @property (strong, nonatomic) id<PLSyncablePerson> personBeingKeyFace;
@@ -64,7 +67,9 @@
 @property (nonatomic) double poseRoll; // @dynamic poseRoll;
 @property (nonatomic) double poseYaw; // @dynamic poseYaw;
 @property (nonatomic) int qualityMeasure; // @dynamic qualityMeasure;
-@property (strong, nonatomic) NSSet *rejectedPeople;
+@property (strong, nonatomic) NSSet *rejectedPersons;
+@property (strong, nonatomic) NSSet *rejectedPersons; // @dynamic rejectedPersons;
+@property (strong, nonatomic) NSSet *rejectedPersonsNeedingFaceCrops; // @dynamic rejectedPersonsNeedingFaceCrops;
 @property (nonatomic) double rightEyeX; // @dynamic rightEyeX;
 @property (nonatomic) double rightEyeY; // @dynamic rightEyeY;
 @property (nonatomic) double size;
@@ -76,7 +81,8 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
 
-+ (id)_allSyncableFacesInManagedObjectContext:(id)arg1;
++ (id)_facesMatchingPredicate:(id)arg1 limit:(unsigned long long)arg2 inPhotoLibrary:(id)arg3;
++ (id)_syncableFacesPredicate;
 + (void)batchFetchDetectedFacesByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)batchFetchKeyFacesByPersonUUIDWithPersonUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (unsigned long long)countOfHiddenFacesOnAssetsWithObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2;
@@ -84,19 +90,32 @@
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (void)enumerateAssetUUIDsForSearchIndexingWithDetctedFaceUUIDs:(id)arg1 managedObjectContext:(id)arg2 assetUUIDHandler:(CDUnknownBlockType)arg3;
-+ (id)findExistingFaceMatchingDimension:(struct PLFaceDimension)arg1 inFaces:(id)arg2 inAsset:(id)arg3;
-+ (id)findExistingFaceMatchingRef:(id)arg1 inFaces:(id)arg2 inAsset:(id)arg3;
++ (BOOL)facesSyncFeatureEnabled;
++ (id)findExistingFaceMatchingDimension:(id)arg1 inFaces:(id)arg2;
 + (id)insertInManagedObjectContext:(id)arg1;
++ (id)predicatesForFacesNeedingFaceCropGeneration;
 + (id)predicatesToExcludeNonVisibleFaces;
 + (long long)resetAssetForAllSyncableFacesInManagedObjectContext:(id)arg1 error:(id *)arg2;
++ (void)resetCloudStateInPhotoLibrary:(id)arg1;
++ (id)syncableFacesToUploadInitiallyInLibrary:(id)arg1 limit:(unsigned long long)arg2;
 + (id)userCuratedFacePredicate;
+- (BOOL)_isTrainingFace;
 - (void)_updateFaceGroupIfNeeded;
-- (void)_updateFileSystemPersistenceIfNeeded;
+- (void)_updateFileSystemPersistenceIfNeededWithManagedObjectContext:(id)arg1;
 - (void)_verifyAssetRelationship;
+- (void)addRejectedPerson:(id)arg1;
+- (void)addRejectedPersonNeedingFaceCrops:(id)arg1;
 - (void)awakeFromInsert;
+- (double)cvmlPhotosFaceRepresentationCenterX;
+- (double)cvmlPhotosFaceRepresentationCenterY;
+- (double)cvmlPhotosFaceRepresentationSize;
+- (long long)cvmlPhotosFaceRepresentationSourceHeight;
+- (long long)cvmlPhotosFaceRepresentationSourceWidth;
 - (id)debugLogDescription;
 - (void)delete;
+- (BOOL)isSyncableChange;
 - (void)removeFaceprint;
+- (BOOL)supportsCloudUpload;
 - (void)willSave;
 
 @end

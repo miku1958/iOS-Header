@@ -11,14 +11,14 @@
 @interface PVFaceGroup : PVObject
 {
     long long _personModelId;
+    long long _personBuilderState;
     NSString *_personLocalIdentifier;
-    long long _faceGroupType;
     NSString *_representativeFaceLocalIdentifier;
     NSArray *_faces;
 }
 
-@property (nonatomic) long long faceGroupType; // @synthesize faceGroupType=_faceGroupType;
 @property (strong, nonatomic) NSArray *faces; // @synthesize faces=_faces;
+@property (nonatomic) long long personBuilderState; // @synthesize personBuilderState=_personBuilderState;
 @property (copy, nonatomic) NSString *personLocalIdentifier; // @synthesize personLocalIdentifier=_personLocalIdentifier;
 @property (nonatomic) long long personModelId; // @synthesize personModelId=_personModelId;
 @property (copy, nonatomic) NSString *representativeFaceLocalIdentifier; // @synthesize representativeFaceLocalIdentifier=_representativeFaceLocalIdentifier;

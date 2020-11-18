@@ -15,10 +15,10 @@
 }
 
 - (void).cxx_destruct;
-- (void)__reallySetPlayer:(id)arg1;
 - (id)init;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setPlayer:(id)arg1;
+- (void)setWrappedPlayer:(id)arg1;
 
 @end
 

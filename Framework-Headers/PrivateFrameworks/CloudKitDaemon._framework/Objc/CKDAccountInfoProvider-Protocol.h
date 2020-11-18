@@ -36,7 +36,7 @@
 - (NSString *)languageCode;
 - (CKDMescalSession *)mescalSession;
 - (NSString *)regionCode;
-- (void)renewAuthTokenWithReason:(NSString *)arg1 failedToken:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
+- (void)renewAuthTokenWithReason:(NSString *)arg1 shouldForce:(BOOL)arg2 failedToken:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)renewMescalSessionForRequest:(CKDURLRequest *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)resetMescalSession;
 - (NSString *)serverPreferredPushEnvironment;

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_recordsNeedingNewSharingProtectionInfo;
     NSMutableArray *_recordsNeedingUpdatedSharingProtectionInfo;
     NSMutableDictionary *_recordIDsToDeleteToEtags;
+    NSMutableDictionary *_pluginFieldsForRecordDeletesByID;
     BRCLocalItem *_itemNeedingPCSChaining;
     NSMutableDictionary *_conflictLosersToResolveByRecordID;
     NSString *_stageID;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *iworkRenamedShareIDsToNames; // @synthesize iworkRenamedShareIDsToNames=_iworkRenamedShareIDsToNames;
 @property (strong, nonatomic) NSMutableArray *iworkUnsharedShareIDs; // @synthesize iworkUnsharedShareIDs=_iworkUnsharedShareIDs;
 @property (strong, nonatomic) NSMutableArray *packagesInFlight; // @synthesize packagesInFlight=_packagesInFlight;
+@property (strong, nonatomic) NSMutableDictionary *pluginFieldsForRecordDeletesByID; // @synthesize pluginFieldsForRecordDeletesByID=_pluginFieldsForRecordDeletesByID;
 @property (strong, nonatomic) NSMutableDictionary *recordIDsToDeleteToEtags; // @synthesize recordIDsToDeleteToEtags=_recordIDsToDeleteToEtags;
 @property (strong, nonatomic) NSMutableArray *recordsNeedingNewSharingProtectionInfo; // @synthesize recordsNeedingNewSharingProtectionInfo=_recordsNeedingNewSharingProtectionInfo;
 @property (strong, nonatomic) NSMutableArray *recordsNeedingUpdatedSharingProtectionInfo; // @synthesize recordsNeedingUpdatedSharingProtectionInfo=_recordsNeedingUpdatedSharingProtectionInfo;

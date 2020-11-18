@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMRange.h>
+#import <WebKit/DOMRange.h>
 
 @interface DOMRange (MailExtras)
 - (id)mf_attachmentURLs;

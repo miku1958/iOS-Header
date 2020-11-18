@@ -12,6 +12,7 @@
 {
 }
 
+@property (nonatomic) BOOL allowsPunchOut;
 @property (strong, nonatomic) SAIntentGroupProtobufMessage *intent;
 
 + (id)handleIntent;

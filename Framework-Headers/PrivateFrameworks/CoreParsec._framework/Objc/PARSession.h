@@ -9,12 +9,11 @@
 #import <CoreParsec/PARClientXPC-Protocol.h>
 #import <CoreParsec/SFFeedbackListener-Protocol.h>
 
-@class MKSearchFoundationFeedbackListener, NSString, NSXPCConnection, PARBag, PARRanker, PARSearchClient, PARSessionConfiguration;
+@class NSString, NSXPCConnection, PARBag, PARRanker, PARSearchClient, PARSessionConfiguration;
 @protocol PARSessionDelegate;
 
 @interface PARSession : NSObject <PARClientXPC, SFFeedbackListener>
 {
-    MKSearchFoundationFeedbackListener *_mapsListener;
     PARBag *_bag;
     PARSearchClient *_client;
     PARSessionConfiguration *_configuration;
@@ -40,7 +39,6 @@
 - (void).cxx_destruct;
 - (void)_addTopicsToSearchRequest:(id)arg1;
 - (void)_setupRanker;
-- (unsigned long long)_userAgentToMKSearchFoundationFeedbackClientType:(id)arg1;
 - (id)awaitBag;
 - (void)bagDidLoad:(id)arg1 error:(id)arg2;
 - (void)captureMapsResultsDisplayedFeedback:(id)arg1;
@@ -53,7 +51,9 @@
 - (void)didEngageSection:(id)arg1;
 - (void)didEngageSuggestion:(id)arg1;
 - (void)didErrorOccur:(id)arg1;
+- (void)didGoToSearch:(id)arg1;
 - (void)didGoToSite:(id)arg1;
+- (void)didGradeResultRelevancy:(id)arg1;
 - (void)didRankSections:(id)arg1;
 - (void)didReceiveResultsAfterTimeout:(id)arg1;
 - (void)didStartSearch:(id)arg1;

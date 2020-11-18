@@ -13,7 +13,7 @@
 - (NSNumber *)size;
 
 @optional
-- (long long)changeType;
+- (unsigned long long)changeType;
 - (NSString *)clientId;
 - (NSString *)contentType;
 - (NSString *)data;

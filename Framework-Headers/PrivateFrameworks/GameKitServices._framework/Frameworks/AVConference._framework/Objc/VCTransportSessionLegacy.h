@@ -63,10 +63,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL initialSecondaryRelaySetupDone; // @synthesize initialSecondaryRelaySetupDone;
 @property BOOL isCaller; // @synthesize isCaller=_isCaller;
-@property (strong, nonatomic) NSData *localConnectionData; // @synthesize localConnectionData=_localConnectionData;
+@property (strong) NSData *localConnectionData; // @synthesize localConnectionData=_localConnectionData;
 @property (copy) NSString *localParticipantID; // @synthesize localParticipantID=_localParticipantID;
-@property (strong, nonatomic) NSData *localRelayConnectionData; // @synthesize localRelayConnectionData=_localRelayConnectionData;
-@property (strong, nonatomic) NSMutableDictionary *localRelayRequestResponse; // @synthesize localRelayRequestResponse=_localRelayRequestResponse;
+@property (strong) NSData *localRelayConnectionData; // @synthesize localRelayConnectionData=_localRelayConnectionData;
+@property (strong) NSMutableDictionary *localRelayRequestResponse; // @synthesize localRelayRequestResponse=_localRelayRequestResponse;
 @property (strong, nonatomic) NSDictionary *localRelayUpdate; // @synthesize localRelayUpdate=_localRelayUpdate;
 @property (nonatomic) int pendingRelayCount; // @synthesize pendingRelayCount;
 @property unsigned int remoteCallID; // @synthesize remoteCallID=_remoteCallID;
@@ -80,10 +80,10 @@ __attribute__((visibility("hidden")))
 
 - (struct tagIPPORT)IPPortForPrimaryConnectionOnLocalInterface:(BOOL)arg1;
 - (void)connectionCallback:(id)arg1 isInitialConnection:(BOOL)arg2;
+- (id)connectionDataUsingRelay:(BOOL)arg1 isInitialRelay:(BOOL)arg2 nonCellularCandidateTimeout:(double)arg3 error:(id *)arg4;
 - (void)connectionResultCallback:(struct tagCONNRESULT *)arg1 didReceiveICEPacket:(BOOL)arg2 didUseRelay:(BOOL)arg3 secretKey:(id)arg4 skeResult:(int)arg5;
 - (unsigned int)connectionSetupRTTEstimate;
 - (unsigned int)connectionTypeForConnectionResult:(struct tagCONNRESULT *)arg1;
-- (BOOL)createConnectionDataUsingRelay:(BOOL)arg1 isInitialRelay:(BOOL)arg2 nonCellularCandidateTimeout:(double)arg3 error:(id *)arg4;
 - (id)createInitiateRelayDictionary;
 - (id)createInitiateRelayDictionaryForCall:(unsigned int)arg1 primaryConnection:(struct tagCONNRESULT *)arg2;
 - (id)createRelayUpdateDictionary:(id)arg1;
@@ -95,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (int)detailedErrorCode;
 - (void)didEnableDuplication:(BOOL)arg1 activeConnection:(id)arg2;
 - (int)generateConnectionData:(char **)arg1 forCallID:(unsigned int)arg2 connectionDataSize:(int *)arg3 nonCellularCandidateTimeout:(double)arg4;
+- (void)getConnectionDataUsingRelay:(BOOL)arg1 isInitialRelay:(BOOL)arg2 nonCellularCandidateTimeout:(double)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)getConnectionSetupData:(id *)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (void)handleConnectionSetupDataChangeMessageDelivered;
 - (BOOL)handleExchangedKey:(id)arg1 result:(int)arg2;

@@ -8,7 +8,7 @@
 
 #import <SoftwareUpdateServices/NSKeyedUnarchiverDelegate-Protocol.h>
 
-@class NSDate, NSDictionary, NSString, SUDescriptor, SUDownload, _SUAutoInstallOperationModel;
+@class NSDate, NSDictionary, NSString, SUDescriptor, SUDownload, SUInstallPolicy, SUManagedDeviceUpdateDelay, _SUAutoInstallOperationModel;
 
 @interface SUState : NSObject <NSKeyedUnarchiverDelegate>
 {
@@ -28,6 +28,8 @@
     NSString *_lastReleaseType;
     NSDictionary *_unlockCallbacks;
     _SUAutoInstallOperationModel *_lastAutoInstallOperationModel;
+    SUManagedDeviceUpdateDelay *_mdmDelay;
+    SUInstallPolicy *_installPolicy;
     BOOL _manifestSubmitted;
 }
 
@@ -37,6 +39,7 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) SUDescriptor *failedPatchDescriptor; // @synthesize failedPatchDescriptor=_failedPatchDescriptor;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SUInstallPolicy *installPolicy; // @synthesize installPolicy=_installPolicy;
 @property (strong, nonatomic) _SUAutoInstallOperationModel *lastAutoInstallOperationModel; // @synthesize lastAutoInstallOperationModel=_lastAutoInstallOperationModel;
 @property (copy, nonatomic) SUDownload *lastDownload; // @synthesize lastDownload=_lastDownload;
 @property (strong, nonatomic) NSString *lastProductBuild; // @synthesize lastProductBuild=_lastProductBuild;
@@ -46,6 +49,7 @@
 @property (copy, nonatomic) SUDescriptor *lastScannedDescriptor; // @synthesize lastScannedDescriptor=_lastScannedDescriptor;
 @property (strong, nonatomic) NSDate *lastScannedDescriptorTime; // @synthesize lastScannedDescriptorTime=_lastScannedDescriptorTime;
 @property (nonatomic) BOOL manifestSubmitted; // @synthesize manifestSubmitted=_manifestSubmitted;
+@property (strong, nonatomic) SUManagedDeviceUpdateDelay *mdmDelay; // @synthesize mdmDelay=_mdmDelay;
 @property (strong, nonatomic) NSDate *scheduledAutodownloadPolicyChangeTime; // @synthesize scheduledAutodownloadPolicyChangeTime=_scheduledAutodownloadPolicyChangeTime;
 @property (strong, nonatomic) NSDate *scheduledAutodownloadWifiPeriodEndTime; // @synthesize scheduledAutodownloadWifiPeriodEndTime=_scheduledAutodownloadWifiPeriodEndTime;
 @property (strong, nonatomic) NSDate *scheduledManualDownloadWifiPeriodEndTime; // @synthesize scheduledManualDownloadWifiPeriodEndTime=_scheduledManualDownloadWifiPeriodEndTime;

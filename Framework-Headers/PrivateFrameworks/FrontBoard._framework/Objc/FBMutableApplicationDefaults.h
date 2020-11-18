@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic) long long backgroundStyle; // @dynamic backgroundStyle;
+@property (nonatomic) BOOL canChangeBackgroundStyle; // @dynamic canChangeBackgroundStyle;
 @property (nonatomic) long long interfaceOrientation; // @dynamic interfaceOrientation;
 @property (copy, nonatomic) NSString *launchImageFile; // @dynamic launchImageFile;
 @property (nonatomic) BOOL statusBarHidden; // @dynamic statusBarHidden;

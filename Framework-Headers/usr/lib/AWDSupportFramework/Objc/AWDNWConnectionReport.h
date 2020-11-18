@@ -23,6 +23,8 @@
     unsigned long long _timestamp;
     unsigned long long _tlsMilliseconds;
     unsigned long long _trafficClass;
+    int _appleApp;
+    int _appleHost;
     int _connectedAddressFamily;
     int _connectedInterfaceType;
     int _connectionMode;
@@ -54,6 +56,8 @@
         unsigned int timestamp:1;
         unsigned int tlsMilliseconds:1;
         unsigned int trafficClass:1;
+        unsigned int appleApp:1;
+        unsigned int appleHost:1;
         unsigned int connectedAddressFamily:1;
         unsigned int connectedInterfaceType:1;
         unsigned int connectionMode:1;
@@ -74,6 +78,8 @@
     } _has;
 }
 
+@property (nonatomic) int appleApp; // @synthesize appleApp=_appleApp;
+@property (nonatomic) int appleHost; // @synthesize appleHost=_appleHost;
 @property (nonatomic) int connectedAddressFamily; // @synthesize connectedAddressFamily=_connectedAddressFamily;
 @property (nonatomic) unsigned long long connectedAddressIndex; // @synthesize connectedAddressIndex=_connectedAddressIndex;
 @property (nonatomic) int connectedInterfaceType; // @synthesize connectedInterfaceType=_connectedInterfaceType;
@@ -86,6 +92,8 @@
 @property (nonatomic) int firstAddressFamily; // @synthesize firstAddressFamily=_firstAddressFamily;
 @property (nonatomic) unsigned long long flowConnectMilliseconds; // @synthesize flowConnectMilliseconds=_flowConnectMilliseconds;
 @property (nonatomic) unsigned long long flowDurationMilliseconds; // @synthesize flowDurationMilliseconds=_flowDurationMilliseconds;
+@property (nonatomic) BOOL hasAppleApp;
+@property (nonatomic) BOOL hasAppleHost;
 @property (nonatomic) BOOL hasConnectedAddressFamily;
 @property (nonatomic) BOOL hasConnectedAddressIndex;
 @property (nonatomic) BOOL hasConnectedInterfaceType;
@@ -135,12 +143,16 @@
 @property (nonatomic) int usedProxyType; // @synthesize usedProxyType=_usedProxyType;
 @property (nonatomic) BOOL weakFallback; // @synthesize weakFallback=_weakFallback;
 
+- (int)StringAsAppleApp:(id)arg1;
+- (int)StringAsAppleHost:(id)arg1;
 - (int)StringAsConnectedAddressFamily:(id)arg1;
 - (int)StringAsConnectedInterfaceType:(id)arg1;
 - (int)StringAsConnectionMode:(id)arg1;
 - (int)StringAsFailureReason:(id)arg1;
 - (int)StringAsFirstAddressFamily:(id)arg1;
 - (int)StringAsUsedProxyType:(id)arg1;
+- (id)appleAppAsString:(int)arg1;
+- (id)appleHostAsString:(int)arg1;
 - (id)connectedAddressFamilyAsString:(int)arg1;
 - (id)connectedInterfaceTypeAsString:(int)arg1;
 - (id)connectionModeAsString:(int)arg1;

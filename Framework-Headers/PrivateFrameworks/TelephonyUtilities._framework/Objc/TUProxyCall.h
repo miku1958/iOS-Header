@@ -31,6 +31,7 @@
     BOOL _needsManualInCallSounds;
     BOOL _uplinkMuted;
     BOOL _downlinkMuted;
+    BOOL _requiresRemoteVideo;
     int _callStatus;
     int _callIdentifier;
     int _ttyType;
@@ -120,7 +121,7 @@
 - (long long)_cameraTypeForVideoAttributeCamera:(int)arg1;
 - (void)_createRemoteVideoIfNecessary;
 - (long long)_orientationForVideoAttributesOrientation:(int)arg1;
-- (void)_synchronizeRemoteVideoLayers;
+- (void)_synchronizeRemoteVideo;
 - (void)_updateVideoStreamToken:(long long)arg1;
 - (void)answerWithRequest:(id)arg1;
 - (int)avcRemoteVideoModeForMode:(long long)arg1;
@@ -139,6 +140,7 @@
 - (void)remoteVideoClient:(id)arg1 remoteVideoAttributesDidChange:(id)arg2;
 - (void)remoteVideoClient:(id)arg1 remoteVideoDidPause:(BOOL)arg2;
 - (void)remoteVideoClient:(id)arg1 videoDidDegrade:(BOOL)arg2;
+- (BOOL)requiresRemoteVideo;
 - (void)sendHardPauseDigits;
 - (void)setCallDisconnectedDueToComponentCrash;
 - (void)setDisconnectedReason:(int)arg1;
@@ -148,6 +150,7 @@
 - (void)setRemoteVideoLayer:(id)arg1 forMode:(long long)arg2;
 - (void)setRemoteVideoPresentationSize:(struct CGSize)arg1;
 - (void)setRemoteVideoPresentationState:(int)arg1;
+- (void)setRequiresRemoteVideo:(BOOL)arg1;
 - (void)setShouldSuppressRingtone:(BOOL)arg1;
 - (void)setTransitionStatus:(int)arg1;
 - (void)setUplinkMuted:(BOOL)arg1;

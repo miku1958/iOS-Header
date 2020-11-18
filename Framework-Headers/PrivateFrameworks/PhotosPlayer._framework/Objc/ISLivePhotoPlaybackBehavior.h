@@ -12,12 +12,12 @@
 {
     struct {
         BOOL respondsToDidFinish;
+        BOOL respondsToDidBeginPlaying;
     } _delegateFlags;
     BOOL _immediatelyShowsPhotoWhenPlaybackEnds;
     BOOL __videoReadyToPlay;
     BOOL __preparing;
     long long _playbackStyle;
-    double _crossfadeDuration;
     double _photoTransitionDuration;
     long long __currentPlaybackID;
     long long __readyToPlayPlaybackID;
@@ -28,7 +28,6 @@
 @property (nonatomic, getter=_isPreparing, setter=_setPreparing:) BOOL _preparing; // @synthesize _preparing=__preparing;
 @property (nonatomic, setter=_setReadyToPlayPlaybackID:) long long _readyToPlayPlaybackID; // @synthesize _readyToPlayPlaybackID=__readyToPlayPlaybackID;
 @property (nonatomic, getter=_isVideoReadyToPlay, setter=_setVideoReadyToPlay:) BOOL _videoReadyToPlay; // @synthesize _videoReadyToPlay=__videoReadyToPlay;
-@property (readonly, nonatomic) double crossfadeDuration; // @synthesize crossfadeDuration=_crossfadeDuration;
 @property (weak, nonatomic) id<ISLivePhotoPlaybackBehaviorDelegate> delegate; // @dynamic delegate;
 @property (readonly, nonatomic) BOOL immediatelyShowsPhotoWhenPlaybackEnds; // @synthesize immediatelyShowsPhotoWhenPlaybackEnds=_immediatelyShowsPhotoWhenPlaybackEnds;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 keyTime; // @synthesize keyTime=_keyTime;
@@ -36,7 +35,6 @@
 @property (readonly, nonatomic) long long playbackStyle; // @synthesize playbackStyle=_playbackStyle;
 
 - (void)_didFinishPreparing;
-- (void)_didTransitionToPhoto;
 - (void)_handleDidFinishPreroll;
 - (void)_handleDidSeekToBeginning;
 - (void)_prepareVideoForPlaybackIfNeeded;
@@ -46,9 +44,8 @@
 - (void)_transitionToVideoWithPlaybackID:(long long)arg1;
 - (void)activeDidChange;
 - (long long)behaviorType;
-- (id)initWithInitialLayoutInfo:(id)arg1 playbackStyle:(long long)arg2 keyTime:(CDStruct_1b6d18a9)arg3 photoTransitionDuration:(double)arg4 crossfadeDuration:(double)arg5 immediatelyShowsPhotoWhenPlaybackEnds:(BOOL)arg6;
+- (id)initWithInitialLayoutInfo:(id)arg1 playbackStyle:(long long)arg2 keyTime:(CDStruct_1b6d18a9)arg3 photoTransitionDuration:(double)arg4 immediatelyShowsPhotoWhenPlaybackEnds:(BOOL)arg5;
 - (void)startPlayback;
-- (void)videoDidPlayToEnd;
 - (void)videoWillPlayToEnd;
 
 @end

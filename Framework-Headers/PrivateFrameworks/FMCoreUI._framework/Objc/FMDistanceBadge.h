@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FMCoreUI/FMDynamicTypeLabel.h>
+#import <UIKit/UILabel.h>
 
 @class UIColor;
 
-@interface FMDistanceBadge : FMDynamicTypeLabel
+@interface FMDistanceBadge : UILabel
 {
     UIColor *_badgeColor;
     struct UIEdgeInsets _insets;

@@ -20,6 +20,7 @@
     unsigned long long _indexForMetrics;
 }
 
+@property (readonly, nonatomic, getter=isOTAWordListCandidate) BOOL OTAWordListCandidate;
 @property (copy, nonatomic) NSString *alternativeText; // @synthesize alternativeText=_alternativeText;
 @property (copy, nonatomic) NSString *annotationText; // @synthesize annotationText=_annotationText;
 @property (readonly, nonatomic) NSString *candidate;
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isEmojiCandidate) BOOL emojiCandidate;
 @property (readonly, nonatomic, getter=isExtensionCandidate) BOOL extensionCandidate;
+@property (readonly, nonatomic, getter=isFacemarkCandidate) BOOL facemarkCandidate;
 @property (readonly, nonatomic, getter=isFullwidthCandidate) BOOL fullwidthCandidate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long indexForMetrics; // @synthesize indexForMetrics=_indexForMetrics;

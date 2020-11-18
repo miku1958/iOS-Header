@@ -14,6 +14,7 @@
 - (void)addUserSyncTask:(NSDictionary *)arg1 forPID:(int)arg2;
 - (void)addUserSyncTask:(NSDictionary *)arg1 forPID:(int)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)fetchUserSwitchBlockingTaskListWithCompletionHandler:(void (^)(NSArray *))arg1;
+- (void)loginComplete;
 - (void)reengageUserQuotaForPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)registerCriticalUserSwitchStakeholderForPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)registerUserSwitchStakeholderForPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
@@ -26,6 +27,7 @@
 - (void)suspendUserQuotaForPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)switchToLoginUserWithPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)switchToUser:(NSDictionary *)arg1 passcodeData:(NSData *)arg2 context:(NSData *)arg3 pid:(int)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)switchToUser:(NSDictionary *)arg1 passcodeData:(NSData *)arg2 context:(NSData *)arg3 preferences:(NSDictionary *)arg4 pid:(int)arg5 completionHandler:(void (^)(NSError *))arg6;
 - (void)terminateSyncBubbleForPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)unregisterStakeholderForPID:(int)arg1 status:(unsigned long long)arg2 reason:(NSString *)arg3 completionHandler:(void (^)(NSError *))arg4;
 @end

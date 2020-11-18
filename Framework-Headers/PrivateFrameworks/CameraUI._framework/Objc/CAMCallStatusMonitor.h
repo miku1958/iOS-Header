@@ -6,25 +6,29 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableSet;
 @protocol OS_dispatch_queue;
 
 @interface CAMCallStatusMonitor : NSObject
 {
-    BOOL __mutexQueue_enabled;
     BOOL __mutexQueue_callActive;
     BOOL __mutexQueue_mustQueryInitialValueForCallActive;
+    NSMutableSet *__mutexQueue_disabledReasons;
     NSObject<OS_dispatch_queue> *__mutexQueue;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_mutexQueue; // @synthesize _mutexQueue=__mutexQueue;
 @property (nonatomic, getter=_mutexQueue_isCallActive, setter=_mutexQueue_setCallActive:) BOOL _mutexQueue_callActive; // @synthesize _mutexQueue_callActive=__mutexQueue_callActive;
-@property (nonatomic, getter=_mutexQueue_isEnabled, setter=_mutexQueue_setEnabled:) BOOL _mutexQueue_enabled; // @synthesize _mutexQueue_enabled=__mutexQueue_enabled;
+@property (readonly, nonatomic) NSMutableSet *_mutexQueue_disabledReasons; // @synthesize _mutexQueue_disabledReasons=__mutexQueue_disabledReasons;
 @property (nonatomic, setter=_mutexQueue_setMustQueryInitialValueForCallActive:) BOOL _mutexQueue_mustQueryInitialValueForCallActive; // @synthesize _mutexQueue_mustQueryInitialValueForCallActive=__mutexQueue_mustQueryInitialValueForCallActive;
 @property (readonly, nonatomic, getter=isCallActive) BOOL callActive;
-@property (nonatomic, getter=isEnabled) BOOL enabled;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)_descriptionForReasons:(id)arg1;
+- (id)_descriptionStringForReason:(long long)arg1;
+- (void)_handleApplicationDidEnterBackground:(id)arg1;
+- (void)_handleApplicationWillEnterForeground:(id)arg1;
 - (void)_handleCallIsActiveDidChangeNotification:(id)arg1;
 - (void)_handleServerConnectionDiedNotification:(id)arg1;
 - (void)_queryCallActiveStatusForReason:(id)arg1;
@@ -32,8 +36,10 @@
 - (void)_registerForAVSystemControllerNotifications;
 - (void)_setCallActive:(BOOL)arg1;
 - (void)_unregisterForAVSystemControllerNotifications;
+- (void)addDisabledReason:(long long)arg1;
 - (void)dealloc;
 - (id)init;
+- (void)removeDisabledReason:(long long)arg1;
 
 @end
 

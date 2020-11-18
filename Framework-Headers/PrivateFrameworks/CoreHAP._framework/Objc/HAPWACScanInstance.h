@@ -14,7 +14,6 @@
 @interface HAPWACScanInstance : NSObject <HMFTimerDelegate>
 {
     BOOL _shouldContinueScan;
-    BOOL _fastAgeOut;
     HAPWACScanFilter *_scanFilter;
     HMFTimer *_scanRepeatTimer;
     double _scanInterval;
@@ -22,12 +21,13 @@
     unsigned long long _filterMethod;
     CDUnknownBlockType _completion;
     NSObject<OS_dispatch_queue> *_queue;
+    unsigned long long _ageOut;
 }
 
+@property (nonatomic) unsigned long long ageOut; // @synthesize ageOut=_ageOut;
 @property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL fastAgeOut; // @synthesize fastAgeOut=_fastAgeOut;
 @property (nonatomic) unsigned long long filterMethod; // @synthesize filterMethod=_filterMethod;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
@@ -40,7 +40,7 @@
 
 - (void).cxx_destruct;
 - (void)_addScanRequest;
-- (void)_handleFastAgeOutChange;
+- (void)_handleAgeOutChange;
 - (void)dealloc;
 - (id)initWithFilter:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startWACScan;

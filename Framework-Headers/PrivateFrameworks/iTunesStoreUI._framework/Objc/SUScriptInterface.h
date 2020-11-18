@@ -6,13 +6,14 @@
 
 #import <iTunesStoreUI/SUScriptObject.h>
 
+#import <iTunesStoreUI/SFSafariViewControllerDelegate-Protocol.h>
 #import <iTunesStoreUI/SUScriptModalDialogDelegate-Protocol.h>
 #import <iTunesStoreUI/SUScriptXMLHTTPRequestDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, SSAuthenticationContext, SUClientInterface, SUScriptAccount, SUScriptAccountManager, SUScriptAppleAccountStore, SUScriptApplication, SUScriptCarrierBundlingController, SUScriptDevice, SUScriptDictionary, SUScriptFairPlayContext, SUScriptKeyValueStore, SUScriptMediaLibrary, SUScriptMetricsController, SUScriptNavigationBar, SUScriptNotificationObserver, SUScriptOperationDelegate, SUScriptPassbookLibrary, SUScriptPreviewOverlay, SUScriptProtocol, SUScriptPurchaseManager, SUScriptSectionsController, SUScriptStoreBagLoader, SUScriptSubscriptionStatusCoordinator, SUScriptTelephony, SUScriptViewController, SUScriptWindow, SUScriptWindowContext, WebFrame;
+@class NSArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, SFSafariViewController, SSAuthenticationContext, SUClientInterface, SUScriptAccount, SUScriptAccountManager, SUScriptAppleAccountStore, SUScriptApplication, SUScriptCarrierBundlingController, SUScriptDevice, SUScriptDictionary, SUScriptFairPlayContext, SUScriptKeyValueStore, SUScriptMediaLibrary, SUScriptMetricsController, SUScriptNavigationBar, SUScriptNotificationObserver, SUScriptOperationDelegate, SUScriptPassbookLibrary, SUScriptPreviewOverlay, SUScriptProtocol, SUScriptPurchaseManager, SUScriptSectionsController, SUScriptStoreBagLoader, SUScriptSubscriptionStatusCoordinator, SUScriptTelephony, SUScriptViewController, SUScriptWindow, SUScriptWindowContext, WebFrame;
 @protocol SUScriptInterfaceDelegate;
 
-@interface SUScriptInterface : SUScriptObject <SUScriptModalDialogDelegate, SUScriptXMLHTTPRequestDelegate>
+@interface SUScriptInterface : SUScriptObject <SUScriptModalDialogDelegate, SUScriptXMLHTTPRequestDelegate, SFSafariViewControllerDelegate>
 {
     SUScriptAccountManager *_accountManager;
     SUScriptKeyValueStore *_applicationLocalStorage;
@@ -34,6 +35,8 @@
     SUScriptWindowContext *_scriptWindowContext;
     SUScriptSubscriptionStatusCoordinator *_subscriptionStatusCoordinator;
     id _threadSafeDelegate;
+    NSString *_safariViewControllerIdentifier;
+    SFSafariViewController *_safariViewController;
 }
 
 @property (readonly) SUScriptFairPlayContext *accountCreationSecureContext;
@@ -74,6 +77,9 @@
 @property (readonly) SUScriptPurchaseManager *purchaseManager;
 @property (readonly) NSString *referrerURL;
 @property (readonly) NSString *referringUserAgent;
+@property (strong, nonatomic) SFSafariViewController *safariViewController; // @synthesize safariViewController=_safariViewController;
+@property (strong, nonatomic) NSString *safariViewControllerIdentifier; // @synthesize safariViewControllerIdentifier=_safariViewControllerIdentifier;
+@property (readonly) NSString *safariViewControllerIdentifierQueryParameterName;
 @property (readonly) id screenReaderRunning;
 @property (readonly) SUScriptDictionary *scriptStoreBagDictionary;
 @property (strong) SUScriptWindowContext *scriptWindowContext;
@@ -96,10 +102,13 @@
 - (id)DOMElementWithElement:(id)arg1;
 - (void)_accessibilityPostLayoutChange;
 - (id)_className;
+- (void)_cleanUpSafariViewController;
 - (id)_cookieForURL:(id)arg1;
 - (id)_copyDialogWithMessage:(id)arg1 title:(id)arg2 cancelButtonTitle:(id)arg3 okButtonTitle:(id)arg4;
+- (void)_dismissSafariViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_getSoftwareApplicationWithCompletionFunction:(id)arg1 lookupBlock:(CDUnknownBlockType)arg2;
 - (void)_globalEventNotification:(id)arg1;
+- (void)_presentSafariViewControllerWithURL:(id)arg1 safariIdentifier:(id)arg2 animated:(BOOL)arg3;
 - (void)_scriptUserInfoDidChangeNotification:(id)arg1;
 - (void)accessibilityPostLayoutChange;
 - (void)accessibilityPostScreenChange;
@@ -130,6 +139,7 @@
 - (void)deallocSubscriptionStatusCoordinator;
 - (long long)dialogDisplayCountForKey:(id)arg1;
 - (id)diskSpaceAvailable;
+- (void)dismissSafariViewControllerAnimated:(BOOL)arg1;
 - (void)dismissSheet;
 - (void)dismissWindowsWithOptions:(id)arg1;
 - (void)dispatchGlobalEventWithName:(id)arg1 payload:(id)arg2;
@@ -214,6 +224,8 @@
 - (id)requestInfo;
 - (void)requireCellularForResourceWithURL:(id)arg1;
 - (void)retryAllRestoreDownloads;
+- (void)safariViewController:(id)arg1 didCompleteInitialLoad:(BOOL)arg2;
+- (void)safariViewControllerDidFinish:(id)arg1;
 - (id)scriptAttributeKeys;
 - (BOOL)scriptXMLHTTPRequest:(id)arg1 requiresCellularForURL:(id)arg2;
 - (void)selectSectionWithIdentifier:(id)arg1;
@@ -242,6 +254,7 @@
 - (void)showMediaPlayerWithURLString:(id)arg1 orientation:(id)arg2 title:(id)arg3 subtitle:(id)arg4 bookmarkID:(id)arg5 duration:(id)arg6 type:(id)arg7 imageURL:(id)arg8;
 - (void)showMediaPreviewWithURLString:(id)arg1;
 - (id)showPromptWithMessage:(id)arg1 initialValue:(id)arg2 title:(id)arg3 okButtonTitle:(id)arg4 cancelButtonTitle:(id)arg5;
+- (void)showSafariViewControllerWithURLString:(id)arg1 identifier:(id)arg2 animated:(BOOL)arg3;
 - (void)signOutPrimaryAccount;
 - (id)softwareApplicationWithAdamID:(id)arg1;
 - (id)softwareApplicationWithBundleID:(id)arg1;

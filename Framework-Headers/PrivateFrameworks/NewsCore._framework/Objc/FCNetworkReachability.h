@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSString, Reachability;
+@class FCReachability, NSHashTable, NSString;
 
 @interface FCNetworkReachability : NSObject
 {
@@ -22,7 +22,7 @@
     NSHashTable *_observers;
     long long _currentRadioAccessTechnology;
     NSString *_currentCellularCarrierName;
-    Reachability *_internetReachability;
+    FCReachability *_internetReachability;
 }
 
 @property (nonatomic) BOOL accessRestrictedBecauseOfAppVersion; // @synthesize accessRestrictedBecauseOfAppVersion=_accessRestrictedBecauseOfAppVersion;
@@ -33,7 +33,7 @@
 @property (readonly, nonatomic) long long cellularRadioAccessTechnology;
 @property (strong, nonatomic) NSString *currentCellularCarrierName; // @synthesize currentCellularCarrierName=_currentCellularCarrierName;
 @property (nonatomic) long long currentRadioAccessTechnology; // @synthesize currentRadioAccessTechnology=_currentRadioAccessTechnology;
-@property (strong, nonatomic) Reachability *internetReachability; // @synthesize internetReachability=_internetReachability;
+@property (strong, nonatomic) FCReachability *internetReachability; // @synthesize internetReachability=_internetReachability;
 @property (nonatomic) BOOL isCloudKitAccessAllowed; // @synthesize isCloudKitAccessAllowed=_isCloudKitAccessAllowed;
 @property (readonly, nonatomic) BOOL isCloudKitReachable;
 @property (readonly, nonatomic) BOOL isNetworkOnlyReachableViaCellular;

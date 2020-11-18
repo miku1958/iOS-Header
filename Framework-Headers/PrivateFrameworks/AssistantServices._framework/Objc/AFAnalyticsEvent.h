@@ -9,30 +9,29 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSData;
 
 @interface AFAnalyticsEvent : NSObject <NSCopying, NSSecureCoding>
 {
     long long _type;
-    unsigned long long _machAbsoluteTime;
-    long long _categoryType;
-    NSDictionary *_context;
+    unsigned long long _timestamp;
+    long long _contextDataType;
+    NSData *_contextData;
 }
 
-@property (readonly, nonatomic) long long categoryType; // @synthesize categoryType=_categoryType;
-@property (readonly, nonatomic) NSDictionary *context; // @synthesize context=_context;
-@property (readonly, nonatomic) unsigned long long machAbsoluteTime; // @synthesize machAbsoluteTime=_machAbsoluteTime;
+@property (readonly, copy, nonatomic) NSData *contextData; // @synthesize contextData=_contextData;
+@property (readonly, nonatomic) long long contextDataType; // @synthesize contextDataType=_contextDataType;
+@property (readonly, nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 categoryType:(long long)arg3 context:(id)arg4;
+- (id)initWithType:(long long)arg1 timestamp:(unsigned long long)arg2 contextDataType:(long long)arg3 contextData:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

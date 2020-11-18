@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_errorsByRecordID;
     NSMapTable *_downloadTasksByRecordID;
     NSDictionary *_signaturesOfAssetsByRecordIDAndKey;
+    NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
     NSSet *_assetFieldNamesToPublishURLs;
     unsigned long long _requestedTTL;
     unsigned long long _URLOptions;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
 @property (strong, nonatomic) NSSet *assetFieldNamesToPublishURLs; // @synthesize assetFieldNamesToPublishURLs=_assetFieldNamesToPublishURLs;
+@property (strong, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property (strong, nonatomic) CKDRecordCache *cache; // @synthesize cache=_cache;
 @property (strong, nonatomic) NSMutableDictionary *cachedRecords; // @synthesize cachedRecords=_cachedRecords;
 @property (strong, nonatomic) NSSet *desiredKeySet; // @synthesize desiredKeySet=_desiredKeySet;
@@ -75,7 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)_finishAllDownloadTasksWithError:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleRecordFetch:(id)arg1 recordID:(id)arg2 etagMatched:(BOOL)arg3 responseCode:(id)arg4;
-- (BOOL)_prepareAsset:(id)arg1 record:(id)arg2 recordKey:(id)arg3 signature:(id)arg4;
+- (BOOL)_prepareAsset:(id)arg1 record:(id)arg2 recordKey:(id)arg3 signature:(id)arg4 assetTransferOptions:(id)arg5;
 - (id)activityCreate;
 - (id)errorForRecordID:(id)arg1;
 - (void)finishWithError:(id)arg1;

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     EKEventStore *_store;
     EKEvent *_event;
+    EKEvent *_lastEventUpdated;
     UIViewController<EKEditItemViewControllerProtocol> *_viewController;
     EKUIRecurrenceAlertController *_recurrenceAlertController;
     BOOL _allowsEditing;

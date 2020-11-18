@@ -35,6 +35,7 @@
 @property (readonly, copy, nonatomic) NSString *primarySubtitleText;
 @property (readonly, copy, nonatomic) NSString *primaryText;
 @property (readonly, copy, nonatomic) NSString *secondaryText;
+@property (readonly, nonatomic) BOOL showsTextInputOnAppearance;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIImage *thumbnail;
 @property (readonly, copy, nonatomic) NSTimeZone *timeZone;

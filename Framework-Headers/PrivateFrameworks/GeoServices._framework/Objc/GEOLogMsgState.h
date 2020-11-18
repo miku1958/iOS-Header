@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLogMsgStateApplicationIdentifier, GEOLogMsgStateCarPlay, GEOLogMsgStateDeviceBase, GEOLogMsgStateDeviceConnection, GEOLogMsgStateDeviceIdentifier, GEOLogMsgStateDeviceLocale, GEOLogMsgStateExperiments, GEOLogMsgStateExtension, GEOLogMsgStateFlyover, GEOLogMsgStateMapRestore, GEOLogMsgStateMapSettings, GEOLogMsgStateMapUI, GEOLogMsgStateMapUIShown, GEOLogMsgStateMapView, GEOLogMsgStateMapViewLocation, GEOLogMsgStateMapsServer, GEOLogMsgStateNavigation, GEOLogMsgStatePairedDevice, GEOLogMsgStatePlaceCard, GEOLogMsgStatePlaceRequest, GEOLogMsgStateRoute, GEOLogMsgStateSuggestions, GEOLogMsgStateTileSet, GEOLogMsgStateTransit, GEOLogMsgStateUserSession, NSString;
+@class GEOLogMsgStateApplicationIdentifier, GEOLogMsgStateCarPlay, GEOLogMsgStateDeviceBase, GEOLogMsgStateDeviceConnection, GEOLogMsgStateDeviceIdentifier, GEOLogMsgStateDeviceLocale, GEOLogMsgStateExperiments, GEOLogMsgStateExtension, GEOLogMsgStateFlyover, GEOLogMsgStateMapRestore, GEOLogMsgStateMapSettings, GEOLogMsgStateMapUI, GEOLogMsgStateMapUIShown, GEOLogMsgStateMapView, GEOLogMsgStateMapViewLocation, GEOLogMsgStateMapsServer, GEOLogMsgStateNavigation, GEOLogMsgStatePairedDevice, GEOLogMsgStatePlaceCard, GEOLogMsgStatePlaceRequest, GEOLogMsgStateReportAnIssue, GEOLogMsgStateRoute, GEOLogMsgStateSuggestions, GEOLogMsgStateTileSet, GEOLogMsgStateTransit, GEOLogMsgStateUserSession, NSString;
 
 @interface GEOLogMsgState : PBCodable <NSCopying>
 {
@@ -32,6 +32,7 @@
     GEOLogMsgStatePairedDevice *_pairedDevice;
     GEOLogMsgStatePlaceCard *_placeCard;
     GEOLogMsgStatePlaceRequest *_placeRequest;
+    GEOLogMsgStateReportAnIssue *_reportAnIssue;
     GEOLogMsgStateRoute *_route;
     NSString *_stateOrigin;
     int _stateType;
@@ -73,6 +74,7 @@
 @property (readonly, nonatomic) BOOL hasPairedDevice;
 @property (readonly, nonatomic) BOOL hasPlaceCard;
 @property (readonly, nonatomic) BOOL hasPlaceRequest;
+@property (readonly, nonatomic) BOOL hasReportAnIssue;
 @property (readonly, nonatomic) BOOL hasRoute;
 @property (readonly, nonatomic) BOOL hasStateOrigin;
 @property (nonatomic) BOOL hasStateType;
@@ -91,6 +93,7 @@
 @property (strong, nonatomic) GEOLogMsgStatePairedDevice *pairedDevice; // @synthesize pairedDevice=_pairedDevice;
 @property (strong, nonatomic) GEOLogMsgStatePlaceCard *placeCard; // @synthesize placeCard=_placeCard;
 @property (strong, nonatomic) GEOLogMsgStatePlaceRequest *placeRequest; // @synthesize placeRequest=_placeRequest;
+@property (strong, nonatomic) GEOLogMsgStateReportAnIssue *reportAnIssue; // @synthesize reportAnIssue=_reportAnIssue;
 @property (strong, nonatomic) GEOLogMsgStateRoute *route; // @synthesize route=_route;
 @property (strong, nonatomic) NSString *stateOrigin; // @synthesize stateOrigin=_stateOrigin;
 @property (nonatomic) int stateType; // @synthesize stateType=_stateType;

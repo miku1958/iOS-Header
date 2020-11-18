@@ -12,10 +12,13 @@
 {
     int _overwrite;
     NSURL *_destinationURL;
+    NSURL *_priorOrderedURL;
+    BOOL _shouldSendOrder;
 }
 
 @property (strong, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property (nonatomic) int overwrite; // @synthesize overwrite=_overwrite;
+@property (strong, nonatomic) NSURL *priorOrderedURL; // @synthesize priorOrderedURL=_priorOrderedURL;
 
 + (id)stringFromOverwriteValue:(int)arg1;
 - (void)_callBackToDelegateWithResponses:(id)arg1 error:(id)arg2;

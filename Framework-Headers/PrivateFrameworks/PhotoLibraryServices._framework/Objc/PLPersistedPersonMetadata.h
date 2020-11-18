@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSString, NSURL, PLPerson;
+@class NSArray, NSDictionary, NSString, NSURL, PLPerson;
 
 @interface PLPersistedPersonMetadata : NSObject
 {
@@ -18,10 +18,12 @@
     NSString *_personUri;
     NSArray *_detectedFaces;
     NSArray *_rejectedFaces;
+    NSDictionary *_contactMatchingDictionary;
     PLPerson *_person;
     NSURL *_metadataURL;
 }
 
+@property (copy, nonatomic) NSDictionary *contactMatchingDictionary; // @synthesize contactMatchingDictionary=_contactMatchingDictionary;
 @property (strong, nonatomic) NSArray *detectedFaces; // @synthesize detectedFaces=_detectedFaces;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (strong, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
@@ -33,11 +35,9 @@
 @property (strong, nonatomic) NSArray *rejectedFaces; // @synthesize rejectedFaces=_rejectedFaces;
 @property (nonatomic) int type; // @synthesize type=_type;
 
-+ (BOOL)_isFaceMetadataExtension:(id)arg1;
 + (id)_persistedFaceMetadataWithFaces:(id)arg1 keyFace:(id)arg2;
 + (id)detectedFacesToArchiveWithPerson:(id)arg1;
 + (BOOL)isFacePersistable:(id)arg1;
-+ (BOOL)isPersonMetadataPath:(id)arg1;
 + (BOOL)isValidPath:(id)arg1;
 + (id)rejectedFacesToArchiveWithPerson:(id)arg1;
 + (unsigned long long)writeMetadataForVerifiedPeopleOnAssetObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2;
@@ -46,7 +46,7 @@
 - (BOOL)_insertDetectedFacesOnPerson:(id)arg1 fromDataInManagedObjectContext:(id)arg2 deferUnmatched:(BOOL)arg3;
 - (BOOL)_insertRejectedFacesOnPerson:(id)arg1 fromDataInManagedObjectContext:(id)arg2 deferUnmatched:(BOOL)arg3;
 - (id)_metadataData;
-- (void)_readMetadata;
+- (BOOL)_readMetadata;
 - (void)_saveMetadata;
 - (id)description;
 - (BOOL)hasAllAssetsAvailableInManagedObjectContext:(id)arg1 includePendingAssetChanges:(BOOL)arg2;

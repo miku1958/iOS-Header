@@ -36,10 +36,10 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_lastTilesInScene;
     NSMutableSet *_tilesEnteringScene;
     NSMutableSet *_tilesLeavingScene;
-    unordered_set_6cd805f9 _selectedLineIDs;
-    unordered_set_6cd805f9 _selectedNodeIDs;
-    unordered_set_6cd805f9 _linesOnSelectedNodes;
-    unordered_set_6cd805f9 _nodesOnSelectedLines;
+    unordered_set_65896b03 _selectedLineIDs;
+    unordered_set_65896b03 _selectedNodeIDs;
+    unordered_set_65896b03 _linesOnSelectedNodes;
+    unordered_set_65896b03 _nodesOnSelectedLines;
     struct shared_ptr<md::TransitLineSharedResources> _transitLineSharedResources;
     struct ClearItem *_clearItem;
     Matrix_08d701e4 _screenProjectionMatrix;
@@ -55,8 +55,8 @@ __attribute__((visibility("hidden")))
     BOOL _disableIntraLinkLineCrossings;
 }
 
-@property (readonly, nonatomic) const unordered_set_6cd805f9 *nodesOnSelectedLines; // @synthesize nodesOnSelectedLines=_nodesOnSelectedLines;
-@property (readonly, nonatomic) const unordered_set_6cd805f9 *selectedLines; // @synthesize selectedLines=_selectedLineIDs;
+@property (readonly, nonatomic) const unordered_set_65896b03 *nodesOnSelectedLines; // @synthesize nodesOnSelectedLines=_nodesOnSelectedLines;
+@property (readonly, nonatomic) const unordered_set_65896b03 *selectedLines; // @synthesize selectedLines=_selectedLineIDs;
 @property (readonly, nonatomic) shared_ptr_f4e206f4 transitLineSharedResources;
 
 - (id).cxx_construct;
@@ -83,12 +83,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithTarget:(id)arg1 sharedResources:(id)arg2 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg3;
 - (id)initWithTarget:(id)arg1 sharedResources:(id)arg2 labelExternalObjectsModerator:(struct LabelExternalObjectsModerator *)arg3 supportedPassIds:(pair_4be19211)arg4;
 - (unsigned long long)mapLayerPosition;
-- (unsigned int)minSelectedLineZoomForIDs:(const unordered_set_6cd805f9 *)arg1;
+- (unsigned int)minSelectedLineZoomForIDs:(const unordered_set_65896b03 *)arg1;
 - (void)populateSelectedLineBounds:(id)arg1;
 - (void)reserveStencilRangeForScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
 - (void)reset;
 - (void)setContentScale:(double)arg1;
-- (void)setSelectedLines:(const unordered_set_6cd805f9 *)arg1;
+- (void)setSelectedLines:(const unordered_set_65896b03 *)arg1;
 - (void)stopFadeOut;
 - (void)stylesheetDidChange;
 - (id)transitLineMarkersForSelectionAtPoint:(struct CGPoint)arg1;

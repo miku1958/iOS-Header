@@ -11,6 +11,7 @@
     BOOL _networkAccessAllowed;
     BOOL _streamingAllowed;
     BOOL _videoComplementAllowed;
+    BOOL _restrictToPlayableOnCurrentDevice;
     long long _version;
     long long _deliveryMode;
     CDUnknownBlockType _progressHandler;
@@ -22,6 +23,7 @@
 @property (nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (nonatomic) BOOL restrictToPlayableOnCurrentDevice; // @synthesize restrictToPlayableOnCurrentDevice=_restrictToPlayableOnCurrentDevice;
 @property (nonatomic, getter=isStreamingAllowed) BOOL streamingAllowed; // @synthesize streamingAllowed=_streamingAllowed;
 @property (nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property (nonatomic) long long version; // @synthesize version=_version;

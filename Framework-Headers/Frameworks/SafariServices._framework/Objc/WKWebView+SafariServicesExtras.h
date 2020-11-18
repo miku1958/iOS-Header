@@ -6,11 +6,27 @@
 
 #import <WebKit/WKWebView.h>
 
-@class _SFSecurityInfo;
+#import <SafariServices/WBUFormAutoFillWebView-Protocol.h>
 
-@interface WKWebView (SafariServicesExtras)
+@class NSString, UIViewController, _SFSecurityInfo;
+
+@interface WKWebView (SafariServicesExtras) <WBUFormAutoFillWebView>
 
 @property (strong, nonatomic, setter=_sf_setSecurityInfo:) _SFSecurityInfo *_sf_securityInfo;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (copy, nonatomic, setter=webui_setLastGeneratedPasswordForCurrentBackForwardItem:) NSString *webui_lastGeneratedPasswordForCurrentBackForwardItem;
+@property (readonly, nonatomic) UIViewController *webui_presentingViewController;
+@property (readonly, nonatomic) BOOL webui_privateBrowsingEnabled;
 
+- (void)_sf_applicationDidEnterBackgroundOrWillTerminate:(id)arg1;
+- (void)_sf_saveUnsubmittedGeneratedPasswordAndRemoveFormMetadata;
+- (id)webui_formMetadataAndFrame:(id *)arg1 forLastPasswordGenerationOrSubmitEventInFrame:(id)arg2;
+- (id)webui_formMetadataForLastPasswordGenerationOrSubmitEventInFrame:(id)arg1;
+- (CDUnknownBlockType)webui_preventNavigationDuringAutoFillPrompt;
+- (void)webui_removeFormMetadataForLastPasswordGenerationOrSubmitEventInFrame:(id)arg1;
+- (void)webui_setFormMetadata:(id)arg1 forLastPasswordGenerationOrSubmitEventInFrame:(id)arg2;
 @end
 

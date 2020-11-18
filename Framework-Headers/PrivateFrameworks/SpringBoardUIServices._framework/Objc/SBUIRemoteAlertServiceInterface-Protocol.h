@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary, NSSet, NSString, NSUUID, SBSRemoteAlertActivationContext;
+@class NSDictionary, NSSet, NSUUID, SBSRemoteAlertActivationContext, SBSRemoteAlertConfigurationContext;
 
 @protocol SBUIRemoteAlertServiceInterface
+- (void)configureWithContext:(SBSRemoteAlertConfigurationContext *)arg1 completion:(void (^)(void))arg2;
 
 @optional
 - (void)handleButtonActions:(NSSet *)arg1;
@@ -17,7 +18,6 @@
 - (void)handleVolumeDownButtonPressed;
 - (void)handleVolumeUpButtonPressed;
 - (void)noteActivatedForActivityContinuationWithIdentifier:(NSUUID *)arg1;
-- (void)noteActivatedForCustomReason:(NSString *)arg1;
 - (void)prepareForActivationWithContext:(SBSRemoteAlertActivationContext *)arg1 completion:(void (^)(void))arg2;
 - (void)setUserInfo:(NSDictionary *)arg1;
 @end

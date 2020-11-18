@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUICardSectionView.h>
+#import <SearchUI/SearchUILayoutFreeSectionView.h>
 
-@interface SearchUIScoreSummaryCardSectionView : SearchUICardSectionView
+@interface SearchUIScoreSummaryCardSectionView : SearchUILayoutFreeSectionView
 {
 }
 
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2;
+- (id)firstRowOfViewsForSection:(id)arg1;
+- (id)gridOfViewsForSection:(id)arg1;
+- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
+- (id)labelForTeamRecord:(id)arg1;
+- (id)secondRowOfViewsForSection:(id)arg1;
 
 @end
 

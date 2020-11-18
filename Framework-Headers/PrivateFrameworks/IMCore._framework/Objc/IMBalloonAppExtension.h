@@ -25,6 +25,8 @@
 - (id)initWithPluginBundle:(id)arg1 extension:(id)arg2;
 - (id)initWithPluginBundle:(id)arg1 pluginKitProxy:(id)arg2;
 - (BOOL)isBetaPlugin;
+- (BOOL)isEnabled;
+- (BOOL)isStickerPackOnly;
 - (id)proxyWithErrorHandle:(CDUnknownBlockType)arg1;
 - (id)version;
 

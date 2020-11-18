@@ -13,6 +13,7 @@
 
 @property (nonatomic) BOOL didSucceed; // @synthesize didSucceed=_didSucceed;
 
++ (BOOL)supportsSecureCoding;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

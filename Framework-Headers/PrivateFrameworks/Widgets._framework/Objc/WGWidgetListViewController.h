@@ -12,7 +12,7 @@
 #import <Widgets/WGWidgetExtensionVisibilityProviding-Protocol.h>
 #import <Widgets/WGWidgetHostingViewControllerDelegate-Protocol.h>
 
-@class NCMaterialSettings, NSArray, NSMutableDictionary, NSString, UIScrollView, UIStackView, WGWidgetDiscoveryController, WGWidgetShortLookView;
+@class MTMaterialSettings, NSArray, NSMutableDictionary, NSString, UIScrollView, UIStackView, WGWidgetDiscoveryController, WGWidgetShortLookView;
 @protocol WGWidgetListViewControllerDelegate, WGWidgetListViewControllerDelegatePrivate;
 
 @interface WGWidgetListViewController : UIViewController <WGWidgetDebugging, UIScrollViewDelegate, WGWidgetDiscoveryObserving, WGWidgetHostingViewControllerDelegate, WGWidgetExtensionVisibilityProviding>
@@ -22,7 +22,7 @@
     NSMutableDictionary *_cancelTouchesAssertionsByWidgetID;
     NSMutableDictionary *_shortLookViewsByWidgetID;
     WGWidgetShortLookView *_shortLookViewForMeasuring;
-    NCMaterialSettings *_materialSettings;
+    MTMaterialSettings *_materialSettings;
     BOOL _shouldBlurContent;
     id<WGWidgetListViewControllerDelegate> _delegate;
     NSArray *_previouslyVisibleWidgetIDs;
@@ -46,13 +46,13 @@
 @property (readonly, nonatomic) UIScrollView *widgetListView;
 
 - (void).cxx_destruct;
-- (CDUnknownBlockType)_beginInsertion:(BOOL)arg1 ofWidgetView:(id)arg2 withOrderedIdentifiers:(id)arg3 removingViewIfPossible:(BOOL)arg4;
+- (CDUnknownBlockType)_beginInsertion:(BOOL)arg1 ofWidgetView:(id)arg2 forWidgetWithIdentifier:(id)arg3 withOrderedIdentifiers:(id)arg4 removingViewIfPossible:(BOOL)arg5;
 - (void)_cancelTouchesForHitWidgetIfNecessary;
 - (void)_cancelTouchesForWidget:(id)arg1;
 - (void)_configureStackView;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
-- (CDUnknownBlockType)_insert:(BOOL)arg1 widgetView:(id)arg2 withOrderedIdentifiers:(id)arg3 animated:(BOOL)arg4;
-- (unsigned long long)_insertionIndexOfWidgetView:(id)arg1 intoWidgetViews:(id)arg2 withOrderedIdentifiers:(id)arg3;
+- (CDUnknownBlockType)_insert:(BOOL)arg1 widgetView:(id)arg2 forWidgetWithIdentifier:(id)arg3 withOrderedIdentifiers:(id)arg4 animated:(BOOL)arg5;
+- (unsigned long long)_insertionIndexOfWidgetView:(id)arg1 forWidgetWithIdentifier:(id)arg2 intoWidgetViews:(id)arg3 withOrderedIdentifiers:(id)arg4;
 - (void)_invalidateAllCancelTouchesAssertions;
 - (void)_invokeBlock:(CDUnknownBlockType)arg1 withShortLookViewsPassingTest:(CDUnknownBlockType)arg2;
 - (void)_invokeBlockWithShortLookViewsVisibleInBounds:(CDUnknownBlockType)arg1;

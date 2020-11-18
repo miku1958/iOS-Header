@@ -18,11 +18,11 @@
     NSString *_serverID;
     NSString *_parentID;
     NSString *_displayName;
-    long long _changeType;
+    unsigned long long _changeType;
     long long _dataclass;
 }
 
-@property (nonatomic) long long changeType; // @synthesize changeType=_changeType;
+@property (nonatomic) unsigned long long changeType; // @synthesize changeType=_changeType;
 @property (nonatomic) long long dataclass; // @synthesize dataclass=_dataclass;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (nonatomic) int folderType; // @synthesize folderType=_folderType;

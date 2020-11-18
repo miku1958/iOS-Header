@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (void)activityPayloadFromDeviceUniqueID:(id)arg1 forAdvertisementPayload:(id)arg2 command:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)activityPayloadFromDeviceUniqueID:(id)arg1 forAdvertisementPayload:(id)arg2 command:(id)arg3 timeout:(long long)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
 - (void)addObserver:(id)arg1;
 - (void)foundDeviceWithDevice:(id)arg1;
 - (id)init;

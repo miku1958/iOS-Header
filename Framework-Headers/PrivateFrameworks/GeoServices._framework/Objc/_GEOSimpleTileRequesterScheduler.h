@@ -15,10 +15,13 @@ __attribute__((visibility("hidden")))
     NSPointerArray *_requesters;
     NSMutableArray *_inProgress;
     NSObject<OS_dispatch_queue> *_isolation;
+    unsigned long long _maxConcurrentRequests;
 }
 
++ (unsigned long long)maxConcurrentRequests;
 + (id)sharedScheduler;
 - (id)_highestPriorityRequester;
+- (void)_networkDefaultsDidChange:(id)arg1;
 - (void)addTileRequester:(id)arg1;
 - (void)dealloc;
 - (id)init;

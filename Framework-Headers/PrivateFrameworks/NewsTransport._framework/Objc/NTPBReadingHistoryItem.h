@@ -13,23 +13,33 @@
 @interface NTPBReadingHistoryItem : PBCodable <NSCopying>
 {
     unsigned long long _maxVersionRead;
+    unsigned long long _maxVersionSeen;
     NSString *_articleID;
+    NTPBDate *_firstSeenDate;
+    NTPBDate *_firstSeenDateOfMaxVersionSeen;
     unsigned int _flags;
     NTPBDate *_lastVisitedDate;
     struct {
         unsigned int maxVersionRead:1;
+        unsigned int maxVersionSeen:1;
         unsigned int flags:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSString *articleID; // @synthesize articleID=_articleID;
+@property (strong, nonatomic) NTPBDate *firstSeenDate; // @synthesize firstSeenDate=_firstSeenDate;
+@property (strong, nonatomic) NTPBDate *firstSeenDateOfMaxVersionSeen; // @synthesize firstSeenDateOfMaxVersionSeen=_firstSeenDateOfMaxVersionSeen;
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (readonly, nonatomic) BOOL hasArticleID;
+@property (readonly, nonatomic) BOOL hasFirstSeenDate;
+@property (readonly, nonatomic) BOOL hasFirstSeenDateOfMaxVersionSeen;
 @property (nonatomic) BOOL hasFlags;
 @property (readonly, nonatomic) BOOL hasLastVisitedDate;
 @property (nonatomic) BOOL hasMaxVersionRead;
+@property (nonatomic) BOOL hasMaxVersionSeen;
 @property (strong, nonatomic) NTPBDate *lastVisitedDate; // @synthesize lastVisitedDate=_lastVisitedDate;
 @property (nonatomic) unsigned long long maxVersionRead; // @synthesize maxVersionRead=_maxVersionRead;
+@property (nonatomic) unsigned long long maxVersionSeen; // @synthesize maxVersionSeen=_maxVersionSeen;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

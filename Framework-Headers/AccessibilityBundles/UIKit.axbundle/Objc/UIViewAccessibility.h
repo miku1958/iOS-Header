@@ -29,6 +29,7 @@
 - (long long)_accessibilityHorizontalSizeClass;
 - (BOOL)_accessibilityIsIgnored;
 - (BOOL)_accessibilityIsUserInteractionEnabled;
+- (BOOL)_accessibilityIsUserInteractionEnabledChain;
 - (double)_accessibilityMaxFuzzyHitTestDistance;
 - (BOOL)_accessibilityModalViewBlocksView:(id)arg1 blockerView:(id *)arg2;
 - (id)_accessibilityObscuredScreenAllowedViews;

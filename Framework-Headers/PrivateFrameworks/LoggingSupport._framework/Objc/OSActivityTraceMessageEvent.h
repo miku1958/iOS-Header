@@ -16,9 +16,9 @@
     unsigned long long _senderProgramCounter;
 }
 
-@property (readonly) unsigned char messageType; // @synthesize messageType=_messageType;
-@property (readonly) NSObject<OS_xpc_object> *payload; // @synthesize payload=_payload;
-@property (readonly) unsigned long long senderProgramCounter; // @synthesize senderProgramCounter=_senderProgramCounter;
+@property (readonly, nonatomic) unsigned char messageType; // @synthesize messageType=_messageType;
+@property (readonly, nonatomic) NSObject<OS_xpc_object> *payload; // @synthesize payload=_payload;
+@property (readonly, nonatomic) unsigned long long senderProgramCounter; // @synthesize senderProgramCounter=_senderProgramCounter;
 
 - (void).cxx_destruct;
 - (void)_addProperties:(id)arg1;

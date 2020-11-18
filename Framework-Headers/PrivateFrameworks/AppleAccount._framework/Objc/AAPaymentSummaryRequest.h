@@ -11,12 +11,15 @@
 @interface AAPaymentSummaryRequest : AAAppleIDSettingsRequest
 {
     NSString *_secondaryAuthToken;
+    NSString *_heartbeatToken;
 }
 
+@property (copy, nonatomic) NSString *heartbeatToken; // @synthesize heartbeatToken=_heartbeatToken;
 @property (copy, nonatomic) NSString *secondaryAuthToken; // @synthesize secondaryAuthToken=_secondaryAuthToken;
 
 + (Class)responseClass;
 - (void).cxx_destruct;
+- (BOOL)forceGSToken;
 - (id)urlRequest;
 - (id)urlString;
 

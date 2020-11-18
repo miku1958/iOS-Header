@@ -20,8 +20,8 @@
     BOOL _reachable;
     BOOL _allowAnonymousConnection;
     NSURL *_baseURL;
-    id<HMFHTTPClientDelegate> _delegate;
     HMFNetService *_netService;
+    id<HMFHTTPClientDelegate> _delegate;
     unsigned long long _options;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
@@ -33,14 +33,14 @@
 }
 
 @property (nonatomic) BOOL allowAnonymousConnection; // @synthesize allowAnonymousConnection=_allowAnonymousConnection;
-@property (readonly, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
+@property (readonly, copy, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMFHTTPClientDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) HMFExponentialBackoffTimer *delegatedPingTimer; // @synthesize delegatedPingTimer=_delegatedPingTimer;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMFNetService *netService; // @synthesize netService=_netService;
+@property (readonly, copy, nonatomic) HMFNetService *netService; // @synthesize netService=_netService;
 @property (readonly, nonatomic) _HMFNetServiceMonitor *netServiceMonitor; // @synthesize netServiceMonitor=_netServiceMonitor;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
@@ -58,7 +58,7 @@
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)__initializeWithOptions:(unsigned long long)arg1;
-- (id)currentNetService;
+- (void)cancelPendingRequests;
 - (void)dealloc;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
@@ -74,6 +74,7 @@
 - (BOOL)requestClientReachabilityPingWithRetry:(BOOL)arg1;
 - (void)resolveWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)sendRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setNetService:(id)arg1;
 - (id)shortDescription;
 - (void)startDelegatedPingTimer;
 - (void)startReachabilityProbe;

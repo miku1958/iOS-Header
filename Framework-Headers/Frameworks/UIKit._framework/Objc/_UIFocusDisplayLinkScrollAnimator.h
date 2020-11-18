@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateDisplayLinkConfiguration;
 - (void)cancelPeekAdjustmentForScrollView:(id)arg1 performRollback:(BOOL)arg2;
 - (void)cancelScrollingForScrollView:(id)arg1;
+- (struct CGPoint)currentVelocityForScrollView:(id)arg1;
 - (void)dealloc;
 - (id)initWithScreen:(id)arg1;
 - (BOOL)isAnimatingScrollView:(id)arg1;

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseGetCalendarItemWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetContactIdentifierForCalendarItem:(CDStruct_1ef3fb1f)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseRemoveContactIdentifier:(id)arg1 forCalendarItem:(CDStruct_1ef3fb1f)arg2 withReply:(CDUnknownBlockType)arg3;
+- (id)_resultsFilteredForJunkEvents:(id)arg1;
 - (id)_resultsFilteredForTCCAccess:(id)arg1;
 
 @end

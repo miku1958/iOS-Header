@@ -12,12 +12,14 @@
     BOOL _enableGenericService;
     BOOL _enableMemoriesRelatedService;
     BOOL _enableTitleFontService;
+    BOOL _simulateLaunchedToTest;
 }
 
 @property (nonatomic) BOOL enableContextualGesture; // @synthesize enableContextualGesture=_enableContextualGesture;
 @property (nonatomic) BOOL enableGenericService; // @synthesize enableGenericService=_enableGenericService;
 @property (nonatomic) BOOL enableMemoriesRelatedService; // @synthesize enableMemoriesRelatedService=_enableMemoriesRelatedService;
 @property (nonatomic) BOOL enableTitleFontService; // @synthesize enableTitleFontService=_enableTitleFontService;
+@property (nonatomic) BOOL simulateLaunchedToTest; // @synthesize simulateLaunchedToTest=_simulateLaunchedToTest;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;

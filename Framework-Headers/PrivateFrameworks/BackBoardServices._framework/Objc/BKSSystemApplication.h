@@ -16,6 +16,8 @@
     NSObject<OS_dispatch_queue> *_queue;
     BKSSystemApplicationClient *_client;
     id<BKSSystemApplicationDelegate> _delegate;
+    BOOL _waitForDataMigration;
+    double _systemIdleSleepInterval;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +25,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) double systemIdleSleepInterval; // @synthesize systemIdleSleepInterval=_systemIdleSleepInterval;
+@property (nonatomic) BOOL waitForDataMigration; // @synthesize waitForDataMigration=_waitForDataMigration;
 
 - (void)bootstrap;
 - (BOOL)clientIsAliveForWatchdog:(id)arg1;

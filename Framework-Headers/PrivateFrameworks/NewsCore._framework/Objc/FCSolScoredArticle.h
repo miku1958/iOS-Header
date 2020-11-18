@@ -11,17 +11,15 @@
 @interface FCSolScoredArticle : NSObject
 {
     FCSolArticleID *_articleId;
-    double _rawScore;
     double _score;
 }
 
-@property (strong, nonatomic) FCSolArticleID *articleId; // @synthesize articleId=_articleId;
-@property (readonly, nonatomic) double rawScore; // @synthesize rawScore=_rawScore;
-@property (nonatomic) double score; // @synthesize score=_score;
+@property (readonly, nonatomic) FCSolArticleID *articleId; // @synthesize articleId=_articleId;
+@property (readonly, nonatomic) double score; // @synthesize score=_score;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithArticleId:(id)arg1 rawScore:(double)arg2;
+- (id)initWithArticleId:(id)arg1 score:(double)arg2;
 
 @end
 

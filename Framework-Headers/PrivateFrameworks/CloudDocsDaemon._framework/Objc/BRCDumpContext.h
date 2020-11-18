@@ -14,12 +14,14 @@
     BRCDumper *_dumper;
     BOOL _liveDaemon;
     BOOL _onlyActiveStuff;
+    BOOL _dumpTrackedPendingDownloads;
     struct __sFILE *_fp;
     PQLConnection *_db;
     NSString *_indentationBaseString;
 }
 
 @property (readonly, nonatomic) PQLConnection *db; // @synthesize db=_db;
+@property (nonatomic) BOOL dumpTrackedPendingDownloads; // @synthesize dumpTrackedPendingDownloads=_dumpTrackedPendingDownloads;
 @property (readonly, nonatomic) struct __sFILE *fp; // @synthesize fp=_fp;
 @property (strong, nonatomic) NSString *indentationBaseString; // @synthesize indentationBaseString=_indentationBaseString;
 @property (nonatomic) BOOL liveDaemon; // @synthesize liveDaemon=_liveDaemon;

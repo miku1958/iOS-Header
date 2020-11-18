@@ -8,5 +8,6 @@
 
 @protocol CTCellularPlanClientDelegate <NSObject>
 - (void)planInfoDidUpdate;
+- (void)remoteProvisioningDidBecomeAvailable;
 @end
 

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)attributeType;
 - (void)dealloc;
 - (id)description;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithName:(id)arg1 attributeIndex:(unsigned long long)arg2 attributeType:(unsigned long long)arg3 flags:(struct MTLAttributeFlags)arg4;
 - (BOOL)isActive;
 - (BOOL)isPatchControlPointData;

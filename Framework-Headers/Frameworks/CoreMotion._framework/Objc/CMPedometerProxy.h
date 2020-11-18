@@ -47,6 +47,7 @@
 - (void)_stopPedometerEventUpdates;
 - (void)_stopPedometerUpdates;
 - (void)_stopWatchdogCheckins;
+- (id)_strideCalibrationDump;
 - (void)_teardown;
 - (void)dealloc;
 - (id)init;

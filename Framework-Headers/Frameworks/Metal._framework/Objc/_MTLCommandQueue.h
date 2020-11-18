@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSMutableArray, NSString, _MTLDevice;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)enqueueCommandBuffer:(id)arg1;
 - (void)finish;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)getAndIncrementNumCommandBuffers;
 - (id)initWithDevice:(id)arg1;
 - (id)initWithDevice:(id)arg1 descriptor:(id)arg2;

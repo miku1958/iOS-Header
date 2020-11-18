@@ -9,7 +9,7 @@
 @class NSData, NSString;
 
 @protocol SFContinuityScannerProtocol <NSObject>
-- (void)activityPayloadFromDeviceUniqueID:(NSString *)arg1 forAdvertisementPayload:(NSData *)arg2 command:(NSString *)arg3 withCompletionHandler:(void (^)(NSData *, NSError *))arg4;
+- (void)activityPayloadFromDeviceUniqueID:(NSString *)arg1 forAdvertisementPayload:(NSData *)arg2 command:(NSString *)arg3 timeout:(long long)arg4 withCompletionHandler:(void (^)(NSData *, NSError *))arg5;
 - (void)scanForTypes:(unsigned long long)arg1;
 @end
 

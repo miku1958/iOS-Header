@@ -21,6 +21,7 @@
 - (void)CADDatabaseRemoveSuggestedEventCalendarWithReply:(void (^)(int))arg1;
 - (void)CADDatabaseSetDefaultCalendarForNewEvents:(CDStruct_f683c4ba)arg1;
 - (void)CADDatabaseSetShowsDeclinedEvents:(BOOL)arg1;
+- (void)CADDatabaseShouldWhitelistOrganizerEmailFromJunkChecks:(NSString *)arg1 reply:(void (^)(int, BOOL))arg2;
 - (void)CADOccurrenceCacheAreOccurrencesBeingGenerated:(void (^)(int, BOOL))arg1;
 - (void)CADOccurrenceCacheCancelSearchWithReplyID:(int)arg1;
 - (void)CADOccurrenceCacheDoEvents:(NSArray *)arg1 haveOccurrencesAfterDate:(NSDate *)arg2 reply:(void (^)(int, NSArray *))arg3;

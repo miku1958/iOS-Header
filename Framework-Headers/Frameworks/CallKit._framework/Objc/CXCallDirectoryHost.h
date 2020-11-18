@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <CallKit/CXCallDirectoryManagerHostProtocol-Protocol.h>
+#import <CallKit/CXCallDirectoryManagerDefaultHostProtocol-Protocol.h>
+#import <CallKit/CXCallDirectoryManagerMaintenanceHostProtocol-Protocol.h>
 
 @class NSString, NSXPCListener;
 @protocol CXCallDirectoryHostDelegate, OS_dispatch_queue;
 
-@interface CXCallDirectoryHost : NSObject <CXCallDirectoryManagerHostProtocol>
+@interface CXCallDirectoryHost : NSObject <CXCallDirectoryManagerDefaultHostProtocol, CXCallDirectoryManagerMaintenanceHostProtocol>
 {
     NSObject<OS_dispatch_queue> *_queue;
     id<CXCallDirectoryHostDelegate> _delegate;
@@ -30,16 +31,17 @@
 
 - (void).cxx_destruct;
 - (BOOL)_connectionContainsCallDirectoryHostEntitlementCapability:(id)arg1;
-- (void)_extensionWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (oneway void)firstIdentificationEntriesForPhoneNumbers:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (oneway void)getEnabledStatusForCallDirectoryExtensionWithIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (oneway void)getPrioritizedExtensionIdentifiersWithReply:(CDUnknownBlockType)arg1;
+- (void)_nsExtensionWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)compactStoreWithReply:(CDUnknownBlockType)arg1;
+- (oneway void)firstIdentificationEntriesForEnabledExtensionsWithPhoneNumbers:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (oneway void)getEnabledStatusForExtensionWithIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (oneway void)getExtensionsWithReply:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)performDelegateCallback:(CDUnknownBlockType)arg1;
-- (void)performMigrationsIfNecessary;
-- (oneway void)reloadCallDirectoryExtensionWithIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (oneway void)removeDataForCallDirectoryExtensionWithIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)prepareStoreIfNecessary;
+- (oneway void)reloadExtensionWithIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
+- (oneway void)setEnabled:(BOOL)arg1 forExtensionWithIdentifier:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (oneway void)setPrioritizedExtensionIdentifiers:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)synchronizeExtensionsWithReply:(CDUnknownBlockType)arg1;
 

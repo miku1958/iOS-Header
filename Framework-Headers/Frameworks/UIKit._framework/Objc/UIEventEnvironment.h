@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     double _externalTouchScaleFactor;
     long long _currentNudgePressType;
     NSMutableDictionary *_pressesMap;
+    double _commitTimeForTouchEvents;
     BOOL _hasSeenAnyStylusEvents;
     BOOL _shouldRoundTouchLocation;
     long long _disableTouchCoalescingCount;

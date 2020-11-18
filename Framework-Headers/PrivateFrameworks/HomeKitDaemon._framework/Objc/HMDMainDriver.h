@@ -37,6 +37,7 @@
 - (void)executeBTAJob:(const char *)arg1 withXPCDict:(id)arg2;
 - (id)init;
 - (void)initBackgroundTaskAgent;
+- (void)localeChanged;
 - (void)logError:(id)arg1 component:(id)arg2;
 - (void)start;
 

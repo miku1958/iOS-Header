@@ -6,13 +6,14 @@
 
 #import <LinkPresentation/LPComponentView.h>
 
+#import <LinkPresentation/CALayerDelegate-Protocol.h>
 #import <LinkPresentation/LPMediaPlayer-Protocol.h>
 #import <LinkPresentation/UIGestureRecognizerDelegate-Protocol.h>
 
-@class LPImage, LPImageViewStyle, LPStatisticsTimingToken, LPVideo, LPVideoViewStyle, NSString, UIImageView, UIView;
+@class LPFullScreenVideoViewController, LPImage, LPImageViewStyle, LPStatisticsTimingToken, LPVideo, LPVideoViewStyle, NSString, UIImageView, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface LPVideoView : LPComponentView <UIGestureRecognizerDelegate, LPMediaPlayer>
+@interface LPVideoView : LPComponentView <CALayerDelegate, UIGestureRecognizerDelegate, LPMediaPlayer>
 {
     LPVideo *_video;
     LPVideoViewStyle *_style;
@@ -20,33 +21,51 @@ __attribute__((visibility("hidden")))
     LPImageViewStyle *_posterFrameStyle;
     UIView *_playButtonContainerView;
     UIView *_playButtonView;
+    UIView *_muteButtonContainerView;
     UIImageView *_muteButtonView;
     UIView *_videoPlaceholderView;
-    UIView *_videoView;
     UIView *_visualEffectView;
     UIView *_pulsingLoadView;
+    UIView *_containerView;
+    LPFullScreenVideoViewController *_fullScreenViewController;
+    UIWindow *_fullScreenWindow;
     LPStatisticsTimingToken *_playbackDelayTimingToken;
     BOOL _playing;
     BOOL _hasBuilt;
-    BOOL _wasPlayingWhenUnparented;
+    BOOL _hasCreatedVideoView;
+    BOOL _wasPlayingOrWaitingToPlayWhenUnparented;
     BOOL _wasPlayingWhenSuspended;
     BOOL _disablePlayback;
+    BOOL _fullScreen;
+    BOOL _showingPlayButton;
+    unsigned long long _lastInteractionTimestamp;
     BOOL _usesSharedAudioSession;
+    BOOL _waitingForPlayback;
+    BOOL _hasEverPlayed;
+    double _volume;
 }
 
 @property (nonatomic, getter=isActive) BOOL active;
+@property (readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isFullScreen) BOOL fullScreen; // @synthesize fullScreen=_fullScreen;
+@property (nonatomic) BOOL hasEverPlayed; // @synthesize hasEverPlayed=_hasEverPlayed;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isMuted;
 @property (readonly, nonatomic) BOOL isPlaying;
+@property (readonly, nonatomic) unsigned long long lastInteractionTimestamp;
 @property (nonatomic, getter=isMuted) BOOL muted;
 @property (nonatomic, getter=isPlaying) BOOL playing;
 @property (readonly, nonatomic) BOOL shouldAutoPlay;
 @property (readonly, nonatomic) BOOL shouldShowMuteButton;
+@property (readonly, nonatomic) BOOL shouldUnmuteWhenUserAdjustsVolume;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) double unobscuredAreaFraction;
 @property (readonly, nonatomic) BOOL usesSharedAudioSession; // @synthesize usesSharedAudioSession=_usesSharedAudioSession;
 @property (readonly, nonatomic) LPVideo *video; // @synthesize video=_video;
+@property (nonatomic) double volume; // @synthesize volume=_volume;
+@property (nonatomic, getter=isWaitingForPlayback) BOOL waitingForPlayback; // @synthesize waitingForPlayback=_waitingForPlayback;
 
 - (void).cxx_destruct;
 - (void)_buildVideoPlaceholderView;
@@ -54,24 +73,38 @@ __attribute__((visibility("hidden")))
 - (id)_createPulsingLoadIndicator;
 - (void)_muteButtonHighlightLongPressRecognized:(id)arg1;
 - (void)_muteButtonTapRecognized:(id)arg1;
-- (void)_swapVideoPlaceholderForVideo;
+- (void)_swapVideoPlaceholderForVideoForAutoPlay:(BOOL)arg1;
 - (void)applicationDidBecomeActive:(id)arg1;
 - (void)applicationWillResignActive:(id)arg1;
 - (void)componentViewDidMoveToWindow;
+- (id)createFullScreenVideoViewController;
 - (id)createVideoPlayerView;
 - (void)dealloc;
 - (void)didChangeMutedState:(BOOL)arg1;
 - (void)didChangePlayingState:(BOOL)arg1;
 - (void)didEncounterPlaybackError;
+- (void)enterCustomFullScreen;
+- (void)fadeInMuteButton;
+- (void)fullScreenVideoDidDismiss;
+- (void)fullScreenVideoDidPresent;
+- (void)fullScreenVideoWillDismiss;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)hideMuteButton;
+- (void)hidePlayButtonAnimated:(BOOL)arg1;
 - (id)init;
 - (id)initWithVideo:(id)arg1 style:(id)arg2 posterFrame:(id)arg3 posterFrameStyle:(id)arg4 disablePlayback:(BOOL)arg5;
+- (BOOL)isParented;
 - (void)layoutComponentView;
+- (void)prepareForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removePlaceholderViews;
+- (void)setShowPlayButton:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showMuteButton;
+- (void)showPlayButtonAnimated:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tapRecognized:(id)arg1;
 - (void)updateMuteButtonImage;
+- (void)userInteractedWithVideoView;
+- (BOOL)usesCustomFullScreenImplementation;
 
 @end
 

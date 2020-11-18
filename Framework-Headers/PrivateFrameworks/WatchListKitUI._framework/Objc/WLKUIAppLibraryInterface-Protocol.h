@@ -16,6 +16,5 @@
 
 - (void)installAppForChannel:(NSString *)arg1:(JSValue *)arg2;
 - (void)installAppForChannel:(NSString *)arg1:(JSValue *)arg2:(JSValue *)arg3;
-- (void)openAppWithBundleID:(NSString *)arg1;
 @end
 

@@ -36,7 +36,7 @@
 - (id)initWithContent:(id)arg1;
 - (id)initWithString:(id)arg1 environment:(id)arg2;
 - (BOOL)isNumber;
-- (const set_386565a4 *)mathMLAttributes;
+- (const set_25e6ba53 *)mathMLAttributes;
 - (id)schemataFontStyling;
 - (id)schemataTokenString;
 - (unsigned int)schemataUnicharOrNul;

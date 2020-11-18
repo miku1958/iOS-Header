@@ -6,27 +6,38 @@
 
 #import <iTunesStore/ISOperation.h>
 
-@class ISBiometricAuthenticationContext, ISDialog, ISDialogButton, ISTouchIDDialog, NSURL;
+@class ISBiometricAuthenticationContext, ISDialog, ISDialogButton, ISTouchIDDialog, ISURLBag, NSDictionary, NSObject, NSString, NSURL;
+@protocol OS_dispatch_queue;
 
 @interface ISBiometricTouchIDDialogOperation : ISOperation
 {
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
+    ISURLBag *_urlBag;
     ISBiometricAuthenticationContext *_context;
     ISDialog *_dialog;
     NSURL *_redirectURL;
     ISDialogButton *_selectedButton;
+    NSDictionary *_buyParams;
+    NSString *_userAgent;
     ISDialog *_fallbackDialog;
     ISTouchIDDialog *_touchIDDialog;
 }
 
 @property (strong) ISBiometricAuthenticationContext *biometricAuthenticationContext; // @synthesize biometricAuthenticationContext=_context;
+@property (copy) NSDictionary *buyParams; // @synthesize buyParams=_buyParams;
 @property (readonly) ISDialog *dialog; // @synthesize dialog=_dialog;
 @property (strong) ISDialog *fallbackDialog; // @synthesize fallbackDialog=_fallbackDialog;
 @property (readonly) NSURL *redirectURL; // @synthesize redirectURL=_redirectURL;
 @property (readonly) ISDialogButton *selectedButton; // @synthesize selectedButton=_selectedButton;
 @property (strong) ISTouchIDDialog *touchIDDialog; // @synthesize touchIDDialog=_touchIDDialog;
+@property (copy) NSString *userAgent; // @synthesize userAgent=_userAgent;
 
 - (void).cxx_destruct;
+- (id)_clientIDForMetrics;
+- (id)_clientIDForUserID:(id)arg1;
 - (void)_findSelectedButtonForButtons:(id)arg1;
+- (void)_loadURLBag;
+- (void)_performMetricsWithBiometricMatch:(unsigned long long)arg1 didBiometricsFail:(BOOL)arg2;
 - (BOOL)_runAuthkitOperationWithError:(id)arg1 returningError:(id *)arg2;
 - (BOOL)_runSignatureOperationReturningError:(id *)arg1;
 - (id)initWithTouchIDDialog:(id)arg1 fallbackDialog:(id)arg2;

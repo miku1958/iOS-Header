@@ -38,6 +38,7 @@
 - (void)handleSliderChangedEvent:(id)arg1;
 - (void)handleSliderTouchUpEvent:(id)arg1;
 - (id)init;
+- (id)isEnabledAppActivationLogging:(id)arg1;
 - (id)isEnabledExcResourceHUD:(id)arg1;
 - (id)isEnabledHUD:(id)arg1;
 - (id)isEnabledTakeStackshots:(id)arg1;
@@ -45,6 +46,7 @@
 - (id)launchDurationText:(id)arg1;
 - (id)logLevelText:(id)arg1;
 - (id)runloopDuration:(id)arg1;
+- (void)setAppActivationLoggingEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setExcResourceHUD:(id)arg1 specifier:(id)arg2;
 - (void)setHUDEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setLaunchDuration:(id)arg1 specifier:(id)arg2;

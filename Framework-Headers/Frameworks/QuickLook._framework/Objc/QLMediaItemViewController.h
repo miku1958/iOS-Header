@@ -8,7 +8,7 @@
 
 #import <QuickLook/QLToolbarButtonAction-Protocol.h>
 
-@class AVPlayer, AVPlayerLayer, NSError, NSLayoutConstraint, NSObject, NSString, NSTimer, UILabel, UIScrollView, UIView;
+@class AVAsset, AVPlayer, AVPlayerLayer, NSError, NSLayoutConstraint, NSMutableDictionary, NSObject, NSString, NSTimer, UILabel, UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface QLMediaItemViewController : QLScrollableContentItemViewController <QLToolbarButtonAction>
@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     BOOL _mediaWasPausedOnResignActive;
     NSObject *_playbackTimeObserver;
     CDUnknownBlockType _previewItemLoadingBlock;
+    AVAsset *_mediaAsset;
+    NSMutableDictionary *_playingInfo;
     struct CGSize _imageSize;
     UIView *_timeLabelBackground;
     UILabel *_timeLabel;
@@ -59,10 +61,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL visualTracksEnabled; // @synthesize visualTracksEnabled=_visualTracksEnabled;
 
 - (void).cxx_destruct;
+- (id)_playingInfoWithPlaybackDuration:(double)arg1 elapsedTime:(double)arg2;
+- (void)_registerForCommandCenterHandlers;
+- (void)_unregisterForCommandCenterHandlers;
+- (void)_updateCommandCencerPlayingInfoWithCurrentPlaybackTimeInformation;
 - (void)_updateExternalPlayback;
 - (void)_updatePlayingStatus;
-- (void)applicationDidBecomeActive:(id)arg1;
-- (void)applicationWillResignActive:(id)arg1;
 - (void)buttonPressedWithIdentifier:(id)arg1;
 - (void)dealloc;
 - (void)didChangePlayingStatus;
@@ -70,6 +74,8 @@ __attribute__((visibility("hidden")))
 - (void)hideTimeLabel;
 - (void)hideTimeLabelAfterDelay;
 - (void)hideTimeLabelAnimated:(BOOL)arg1;
+- (void)hostApplicationDidBecomeActive;
+- (void)hostApplicationDidEnterBackground:(id)arg1;
 - (struct CGSize)imageSize;
 - (id)labelTextWithFormat:(long long)arg1 elapsedInterval:(double)arg2 remainingInterval:(double)arg3;
 - (void)loadPreviewControllerWithPreviewItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -91,7 +97,6 @@ __attribute__((visibility("hidden")))
 - (void)setMediaVolume:(double)arg1;
 - (void)setTimeLabelNeedsUpdate;
 - (void)setUpTimeLabelIfNeeded;
-- (BOOL)shouldPauseOnDisappear;
 - (void)showTimeLabel;
 - (void)showTimeLabelIfNeeded;
 - (void)stop;
@@ -100,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)togglePlayback;
 - (id)toolbarButtons;
 - (void)transitionDidFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
+- (void)userScrubbedInControlCenter:(id)arg1;
 
 @end
 

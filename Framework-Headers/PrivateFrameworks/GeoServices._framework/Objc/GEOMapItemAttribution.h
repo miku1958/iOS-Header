@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) NSString *providerID;
 @property (readonly, nonatomic) NSString *providerName;
 @property (readonly, nonatomic) BOOL requiresAttributionInCallout;
+@property (readonly, nonatomic) BOOL shouldOpenInAppStore;
 @property (readonly, nonatomic) NSString *webBaseActionURL;
 
 - (id)_yelpHTTPURLForRequirement:(int)arg1 withUID:(id)arg2 writeAReview:(BOOL)arg3;

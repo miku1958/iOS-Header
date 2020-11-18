@@ -11,7 +11,7 @@
 #import <UIKit/UIPreviewInteractionControllerDelegate-Protocol.h>
 #import <UIKit/_UIAlertControllerTextFieldViewControllerContaining-Protocol.h>
 
-@class NSArray, NSAttributedString, NSIndexSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, UIAlertAction, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
+@class NSArray, NSAttributedString, NSIndexSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSPointerArray, NSSet, NSString, UIAlertAction, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
 @protocol UIAlertControllerCoordinatedActionPerforming, UIAlertControllerSystemProvidedPresentationDelegate, UIAlertControllerVisualStyleProviding;
 
 @interface UIAlertController : UIViewController <UIAlertControllerContaining, _UIAlertControllerTextFieldViewControllerContaining, UIPreviewInteractionControllerDelegate, UIAlertControllerVisualStyleProviding>
@@ -32,6 +32,7 @@
     id _ownedTransitioningDelegate;
     BOOL _shouldInformViewOfAddedContentViewController;
     BOOL _isInSupportedInterfaceOrientations;
+    NSPointerArray *_actionsWithInvokedHandlers;
     BOOL _shouldEnsureContentControllerViewIsVisibleOnAppearance;
     BOOL _hidden;
     BOOL __shouldFlipFrameForShimDismissal;

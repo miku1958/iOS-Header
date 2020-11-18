@@ -32,7 +32,9 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsDefroster:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)defrosterAsString:(int)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

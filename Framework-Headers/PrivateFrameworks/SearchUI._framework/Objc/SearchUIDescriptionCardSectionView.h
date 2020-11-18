@@ -4,25 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUICardSectionView.h>
+#import <SearchUI/SearchUILayoutFreeSectionView.h>
 
-@class NSLayoutConstraint, SearchUICardDetailsView, UIButton;
+@class UIButton, UITextView;
 
-@interface SearchUIDescriptionCardSectionView : SearchUICardSectionView
+@interface SearchUIDescriptionCardSectionView : SearchUILayoutFreeSectionView
 {
     UIButton *_moreButton;
-    SearchUICardDetailsView *_detailsView;
-    NSLayoutConstraint *_moreButtonHorizontalInsetConstraint;
+    UITextView *_detailsTextView;
 }
 
-@property (strong) SearchUICardDetailsView *detailsView; // @synthesize detailsView=_detailsView;
+@property (strong) UITextView *detailsTextView; // @synthesize detailsTextView=_detailsTextView;
 @property (strong) UIButton *moreButton; // @synthesize moreButton=_moreButton;
-@property (strong) NSLayoutConstraint *moreButtonHorizontalInsetConstraint; // @synthesize moreButtonHorizontalInsetConstraint=_moreButtonHorizontalInsetConstraint;
 
 - (void).cxx_destruct;
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2;
+- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
 - (void)layoutSubviews;
 - (void)moreButtonPressed;
+- (void)setMoreButtonFrameWithTextView:(id)arg1 inset:(double)arg2 lastLineYOrigin:(double)arg3;
+- (BOOL)shouldHideMoreButtonForTextView:(id)arg1;
 
 @end
 

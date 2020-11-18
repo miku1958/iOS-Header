@@ -7,6 +7,7 @@
 #import <AVFoundation/AVMediaSelectionOption.h>
 
 @interface AVMediaSelectionOption (MPNowPlayingInfoLanguageOptionAdditions)
+- (id)_languageOptionIdentifier;
 - (id)makeNowPlayingInfoLanguageOption;
 @end
 

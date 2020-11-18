@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)depthFailureOperation;
 - (unsigned long long)depthStencilPassOperation;
 - (id)description;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

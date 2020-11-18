@@ -31,7 +31,6 @@
 - (void)messageEntryViewSendButtonHit:(id)arg1;
 - (void)sendSticker:(id)arg1 withDragTarget:(id)arg2;
 - (void)setEffectPickerWindow:(id)arg1;
-- (BOOL)transcriptCollectionViewController:(id)arg1 shouldSetupFullscreenEffectUI:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 willBeginImpactEffectAnimationWithSendAnimationContext:(id)arg2;
 
 @end

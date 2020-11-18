@@ -62,6 +62,7 @@
 - (id)_handleRegisterAssistiveTouchPID:(id)arg1;
 - (id)_handleRegisterSiriViewServicePID:(id)arg1;
 - (id)_handleRegisterZoomConflict:(id)arg1;
+- (id)_handleResetAccessibilityFeatures:(id)arg1;
 - (id)_handleRestoreCachedBrightnessFilters:(id)arg1;
 - (id)_handleSessionIsLoginSession:(id)arg1;
 - (id)_handleSetCapsLockLightOn:(id)arg1;
@@ -89,6 +90,7 @@
 - (void)disableBrightnessFilters;
 - (void)eventListener:(id)arg1;
 - (void)forceLoadGAXBundle;
+- (void)resetAccessibilityFeatures;
 - (void)restoreCachedBrightnessFilters;
 - (BOOL)supportsAdaptation;
 - (BOOL)supportsBlueLightReduction;

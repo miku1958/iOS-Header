@@ -17,10 +17,14 @@
     NSString *_articleSessionIdDeprecated;
     NSData *_articleViewingSessionId;
     NSString *_articleViewingSessionIdDeprecated;
+    NSString *_campaignId;
+    NSString *_campaignType;
     NSString *_channelMuteUnmuteFeedId;
+    NSString *_creativeId;
     int _feedType;
     NSData *_feedViewExposureId;
     NSString *_feedViewExposureIdDeprecated;
+    int _groupType;
     int _muteUnmuteLocation;
     NSString *_referencedArticleId;
     NSString *_sourceChannelId;
@@ -28,6 +32,7 @@
     BOOL _isUserSubscribedToFeed;
     struct {
         unsigned int feedType:1;
+        unsigned int groupType:1;
         unsigned int muteUnmuteLocation:1;
         unsigned int userAction:1;
         unsigned int isUserSubscribedToFeed:1;
@@ -39,19 +44,27 @@
 @property (strong, nonatomic) NSString *articleSessionIdDeprecated; // @synthesize articleSessionIdDeprecated=_articleSessionIdDeprecated;
 @property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
 @property (strong, nonatomic) NSString *articleViewingSessionIdDeprecated; // @synthesize articleViewingSessionIdDeprecated=_articleViewingSessionIdDeprecated;
+@property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
+@property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
 @property (strong, nonatomic) NSString *channelMuteUnmuteFeedId; // @synthesize channelMuteUnmuteFeedId=_channelMuteUnmuteFeedId;
+@property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (strong, nonatomic) NSString *feedViewExposureIdDeprecated; // @synthesize feedViewExposureIdDeprecated=_feedViewExposureIdDeprecated;
+@property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleSessionId;
 @property (readonly, nonatomic) BOOL hasArticleSessionIdDeprecated;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionIdDeprecated;
+@property (readonly, nonatomic) BOOL hasCampaignId;
+@property (readonly, nonatomic) BOOL hasCampaignType;
 @property (readonly, nonatomic) BOOL hasChannelMuteUnmuteFeedId;
+@property (readonly, nonatomic) BOOL hasCreativeId;
 @property (nonatomic) BOOL hasFeedType;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureIdDeprecated;
+@property (nonatomic) BOOL hasGroupType;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
 @property (nonatomic) BOOL hasMuteUnmuteLocation;
 @property (readonly, nonatomic) BOOL hasReferencedArticleId;
@@ -65,10 +78,12 @@
 
 - (void).cxx_destruct;
 - (int)StringAsFeedType:(id)arg1;
+- (int)StringAsGroupType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)feedTypeAsString:(int)arg1;
+- (id)groupTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

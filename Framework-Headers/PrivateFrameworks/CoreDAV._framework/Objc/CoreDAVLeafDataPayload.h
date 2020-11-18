@@ -21,8 +21,10 @@
 @property (readonly, nonatomic) NSData *dataPayload; // @synthesize dataPayload=_dataPayload;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSURL *destinationURL;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSURL *serverID; // @synthesize serverID=_serverID;
+@property (strong, nonatomic) NSURL *sourceURL;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *syncKey; // @synthesize syncKey=_syncKey;
 

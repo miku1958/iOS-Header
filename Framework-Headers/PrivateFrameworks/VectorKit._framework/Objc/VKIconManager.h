@@ -34,14 +34,14 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_allResourceNames;
-- (id)_artworkForStyleAttributes:(id)arg1 labelStyle:(struct VKLabelStyle)arg2 contentScale:(double)arg3 size:(long long)arg4 customIconID:(unsigned long long)arg5 transparent:(BOOL)arg6;
+- (id)_artworkForStyleAttributes:(id)arg1 iconStyleDescriptor:(struct VKIconStyleDescriptor)arg2 contentScale:(double)arg3 size:(long long)arg4 customIconID:(unsigned long long)arg5 transparent:(BOOL)arg6;
 - (id)_atlasForName:(id)arg1;
 - (void)_didReceiveMemoryWarning:(id)arg1;
 - (id)_forEachIconPackWithContentScale:(double)arg1 iconSize:(long long)arg2 resourceNames:(id)arg3 allowSizeFallback:(BOOL)arg4 visitUntilMatch:(CDUnknownBlockType)arg5;
 - (id)_forEachIconPackWithContentScale:(double)arg1 iconSize:(long long)arg2 resourceNames:(id)arg3 visitUntilMatch:(CDUnknownBlockType)arg4;
-- (BOOL)_getLabelStyleForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 labelStyle:(struct VKLabelStyle *)arg4;
-- (BOOL)_getLabelStyleForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 labelStyle:(struct VKLabelStyle *)arg4 transitMode:(BOOL)arg5;
-- (BOOL)_getLabelStyleForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 labelStyle:(struct VKLabelStyle *)arg4 transitMode:(BOOL)arg5 interactive:(BOOL)arg6;
+- (BOOL)_getIconStyleDescriptorForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 iconStyleDescriptor:(struct VKIconStyleDescriptor *)arg4;
+- (BOOL)_getIconStyleDescriptorForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 iconStyleDescriptor:(struct VKIconStyleDescriptor *)arg4 transitMode:(BOOL)arg5;
+- (BOOL)_getIconStyleDescriptorForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(double)arg3 iconStyleDescriptor:(struct VKIconStyleDescriptor *)arg4 transitMode:(BOOL)arg5 interactive:(BOOL)arg6;
 - (id)_nonRegionalPacks;
 - (id)artworkForFeatureID:(unsigned long long)arg1 withResourceNames:(id)arg2 style:(struct VKIconStyleInfo *)arg3 contentScale:(double)arg4 size:(long long)arg5;
 - (id)artworkForName:(id)arg1 withResourceNames:(id)arg2 style:(struct VKIconStyleInfo *)arg3 contentScale:(double)arg4 size:(long long)arg5;

@@ -158,6 +158,7 @@
 - (id)boundsContextForSelectedTransitLines;
 - (BOOL)buildingFootprintsDisabled;
 - (shared_ptr_430519ce)buildingMarkerAtPoint:(struct CGPoint)arg1;
+- (BOOL)canEnter3DModeFlyoverForTileSize:(long long)arg1;
 - (BOOL)canRotate;
 - (BOOL)canZoomInForTileSize:(long long)arg1;
 - (BOOL)canZoomOutForTileSize:(long long)arg1;
@@ -177,6 +178,7 @@
 - (void)dealloc;
 - (void)debugHighlightFeatureMarker:(const shared_ptr_430519ce *)arg1;
 - (void)debugHighlightLabelAtPoint:(struct CGPoint)arg1;
+- (id)debugLabelString:(BOOL)arg1;
 - (void)debugRunPerformanceTestWithOutputHeader:(id)arg1;
 - (void)deselectLabelMarker;
 - (void)deselectTransitLineMarker;
@@ -343,7 +345,8 @@
 - (id)transitLineMarkersForSelectionAtPoint:(struct CGPoint)arg1;
 - (id)transitLineMarkersInCurrentViewport;
 - (BOOL)transitLinesDisabled;
-- (void)transitionToTracking:(BOOL)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 pounceCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)transitionToTracking:(BOOL)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 pounceCompletionHandler:(CDUnknownBlockType)arg5;
+- (void)updateAnalyticsOnEnteringForeground;
 - (BOOL)updateDisplayLinkStatus;
 - (void)updateOnscreenTimestamps;
 - (void)updatePanWithTranslation:(struct CGPoint)arg1;

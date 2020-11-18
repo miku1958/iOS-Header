@@ -6,13 +6,13 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class SFReaderAppearanceFontSizeSeparatorView, UIButton;
+@class UIButton, UIView;
 @protocol SFReaderAppearanceFontSizeSelectorDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SFReaderAppearanceFontSizeSelectorTableViewCell : UITableViewCell
 {
-    SFReaderAppearanceFontSizeSeparatorView *_verticalSeparatorView;
+    UIView *_verticalSeparatorView;
     UIButton *_decreaseFontSizeButton;
     UIButton *_increaseFontSizeButton;
     id<SFReaderAppearanceFontSizeSelectorDelegate> _delegate;

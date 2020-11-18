@@ -18,6 +18,7 @@
 - (id)_accessibilityRetrieveDelegate;
 - (void)_didCompleteTransition:(BOOL)arg1;
 - (BOOL)accessibilityPerformEscape;
+- (BOOL)accessibilityViewIsModal;
 
 @end
 

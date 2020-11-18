@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)addStringToFailedSuffixes:(id)arg1;
 - (void)dealloc;
 - (BOOL)hasSuffix:(id)arg1;
+- (BOOL)hasSuffix:(id)arg1 remainingPrefix:(id *)arg2;
 - (id)initWithSuffixes:(id)arg1;
 - (BOOL)insertString:(id)arg1 intoTrieWithCache:(CDStruct_f2b84ca7 *)arg2;
 

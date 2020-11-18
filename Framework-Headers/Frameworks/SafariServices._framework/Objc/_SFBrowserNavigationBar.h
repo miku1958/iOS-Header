@@ -15,12 +15,11 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) _SFBrowserToolbar *toolbar;
 
-- (double)URLFieldHorizontalMargin;
 - (id)newTextField;
 - (double)placeholderHorizontalInset;
 - (void)tintColorDidChange;
 - (id)toolbarPlacedOnTop;
-- (void)updateToobarTintColor;
+- (void)updateToolbarTintColor;
 
 @end
 

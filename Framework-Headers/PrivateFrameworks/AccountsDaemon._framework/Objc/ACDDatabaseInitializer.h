@@ -117,6 +117,7 @@
 - (void)_setCloudKitCredentialType;
 - (void)_setOwningBundleIDForNativeAccountTypes;
 - (void)_setSupportedDataclassesForAOLAccountType;
+- (void)_setYahooAccountsProvisionedDataclassesToSupportedOnes;
 - (void)_supportiCloudKeychainSyncDataclass;
 - (void)_supportiCloudNewsDataclass;
 - (void)_switchGoogleToOAuthAuthentication;

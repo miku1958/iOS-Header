@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AssertionServices/BKSProcessAssertionClientHandler-Protocol.h>
 
@@ -14,7 +14,6 @@
 @interface BKSProcessAssertion : NSObject <BKSProcessAssertionClientHandler>
 {
     BSSignal *_invalidationSignal;
-    BOOL _acquiring;
     BOOL _acquired;
     int _pid;
     NSString *_identifier;
@@ -34,15 +33,13 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler;
 @property (copy, nonatomic) NSString *name;
-@property (readonly, nonatomic) unsigned int reason;
+@property (readonly, nonatomic) unsigned int reason; // @synthesize reason=_reason;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL valid;
 
 + (id)NameForReason:(unsigned int)arg1;
-- (BOOL)_acquireAssertionSync;
-- (void)_clientQueue_acquireAssertion;
+- (BOOL)_clientQueue_acquireAssertion;
 - (void)_clientQueue_invalidate:(BOOL)arg1;
-- (void)_clientQueue_notifyAssertionAcquired:(BOOL)arg1;
 - (void)_clientQueue_updateAssertion;
 - (BOOL)acquire;
 - (void)assertionDidInvalidate;
@@ -55,8 +52,6 @@
 - (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5 acquire:(BOOL)arg6;
 - (void)invalidate;
-- (id)newCreateEvent;
-- (void)setReason:(unsigned int)arg1;
 
 @end
 

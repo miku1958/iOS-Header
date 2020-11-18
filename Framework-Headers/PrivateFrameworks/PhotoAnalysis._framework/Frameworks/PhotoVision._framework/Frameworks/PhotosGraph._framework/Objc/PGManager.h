@@ -175,6 +175,7 @@
 - (BOOL)isCelebratingHolidayEventInGeneralForEventRule:(id)arg1;
 - (BOOL)isCelebratingHolidayEventInYear:(long long)arg1 forEventRule:(id)arg2;
 - (BOOL)isLocationNearHomeOrWork:(id)arg1;
+- (BOOL)isMemoryTriggered:(id)arg1;
 - (BOOL)isReady;
 - (id)keywordsForAsset:(id)arg1 relatedType:(unsigned long long)arg2;
 - (id)keywordsForMoment:(id)arg1 relatedType:(unsigned long long)arg2;

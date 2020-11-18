@@ -16,6 +16,7 @@
     unsigned long long _resultsLimit;
     long long _queryPriority;
     NSArray *_articleKeysMappingToTag;
+    NSArray *_networkEvents;
     CDUnknownBlockType _queryCompletionHandler;
     NSArray *_resultFeedItemAndArticleRecords;
     NSArray *_resultTagRecords;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) FCCKDatabase *database; // @synthesize database=_database;
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (copy, nonatomic) NSArray *feedRequests; // @synthesize feedRequests=_feedRequests;
+@property (copy, nonatomic) NSArray *networkEvents; // @synthesize networkEvents=_networkEvents;
 @property (copy, nonatomic) CDUnknownBlockType queryCompletionHandler; // @synthesize queryCompletionHandler=_queryCompletionHandler;
 @property (nonatomic) long long queryPriority; // @synthesize queryPriority=_queryPriority;
 @property (strong, nonatomic) NSError *resultError; // @synthesize resultError=_resultError;

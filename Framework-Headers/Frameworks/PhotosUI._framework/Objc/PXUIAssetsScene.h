@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) PXUIScrollViewController *scrollViewController;
 @property (readonly) Class superclass;
 
++ (void)preloadResources;
 - (void).cxx_destruct;
 - (id)_assetsBySizeWithTileIdentifiers:(const struct PXTileIdentifier *)arg1 withGeometries:(const struct PXTileGeometry *)arg2 count:(unsigned long long)arg3;
 - (id)_imageRequesterForIndexPath:(struct PXSimpleIndexPath)arg1 inDataSource:(id)arg2;

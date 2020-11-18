@@ -8,7 +8,7 @@
 
 @interface UIDevice (NotesDeviceSupport)
 - (struct CGSize)_notesDeviceDrawingSize;
-- (BOOL)_notesDeviceSupportsBodyLettpress;
+- (BOOL)_notesDeviceSupportsLetterpress;
 - (BOOL)_notesLowEndHardware;
 - (id)_notesProductType;
 @end

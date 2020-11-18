@@ -6,14 +6,14 @@
 
 #import <RemoteUI/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, UIImage, UILabel, UITableView, UIView;
+@class NSDictionary, NSString, RUILinkLabel, UIImage, UILabel, UITableView, UIView;
 @protocol RUIHeaderDelegate;
 
 @protocol RUIHeader <NSObject>
 - (id)initWithAttributes:(NSDictionary *)arg1;
 
 @optional
-- (UILabel *)detailHeaderLabel;
+- (RUILinkLabel *)detailHeaderLabel;
 - (double)headerHeightForWidth:(double)arg1 inTableView:(UITableView *)arg2;
 - (double)headerHeightForWidth:(double)arg1 inView:(UIView *)arg2;
 - (UILabel *)headerLabel;

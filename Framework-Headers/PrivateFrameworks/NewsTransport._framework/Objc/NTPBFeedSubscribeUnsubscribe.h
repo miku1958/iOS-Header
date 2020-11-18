@@ -24,6 +24,7 @@
     int _feedViewPresentationReason;
     NSString *_groupFeedId;
     int _groupType;
+    int _recommendationBrickType;
     NSString *_searchString;
     int _subscribeUnsubscribeLocation;
     NSMutableArray *_subscribedFeedIds;
@@ -37,6 +38,7 @@
         unsigned int feedType:1;
         unsigned int feedViewPresentationReason:1;
         unsigned int groupType:1;
+        unsigned int recommendationBrickType:1;
         unsigned int subscribeUnsubscribeLocation:1;
         unsigned int userAction:1;
         unsigned int cameFromGroup:1;
@@ -71,10 +73,12 @@
 @property (readonly, nonatomic) BOOL hasGroupFeedId;
 @property (nonatomic) BOOL hasGroupType;
 @property (nonatomic) BOOL hasIsPaidSubscriberToFeed;
+@property (nonatomic) BOOL hasRecommendationBrickType;
 @property (readonly, nonatomic) BOOL hasSearchString;
 @property (nonatomic) BOOL hasSubscribeUnsubscribeLocation;
 @property (nonatomic) BOOL hasUserAction;
 @property (nonatomic) BOOL isPaidSubscriberToFeed; // @synthesize isPaidSubscriberToFeed=_isPaidSubscriberToFeed;
+@property (nonatomic) int recommendationBrickType; // @synthesize recommendationBrickType=_recommendationBrickType;
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property (nonatomic) int subscribeUnsubscribeLocation; // @synthesize subscribeUnsubscribeLocation=_subscribeUnsubscribeLocation;
 @property (strong, nonatomic) NSMutableArray *subscribedFeedIds; // @synthesize subscribedFeedIds=_subscribedFeedIds;
@@ -87,6 +91,7 @@
 - (int)StringAsFeedType:(id)arg1;
 - (int)StringAsFeedViewPresentationReason:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
+- (int)StringAsRecommendationBrickType:(id)arg1;
 - (void)addSubscribedFeedIds:(id)arg1;
 - (void)clearSubscribedFeedIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -101,6 +106,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)recommendationBrickTypeAsString:(int)arg1;
 - (id)subscribedFeedIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)subscribedFeedIdsCount;
 - (void)writeTo:(id)arg1;

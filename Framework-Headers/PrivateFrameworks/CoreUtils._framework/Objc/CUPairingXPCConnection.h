@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _pmEntitledRemovePeer;
     BOOL _pmEntitledWrite;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    BOOL _monitoring;
     NSXPCConnection *_xpcCnx;
 }
 
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)removePairedPeer:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)savePairedPeer:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)showWithCompletion:(CDUnknownBlockType)arg1;
+- (void)startMonitoringWithOptions:(unsigned long long)arg1;
 
 @end
 

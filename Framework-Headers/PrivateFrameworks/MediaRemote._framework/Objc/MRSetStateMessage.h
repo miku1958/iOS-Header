@@ -12,7 +12,6 @@
 {
     NSArray *_supportedCommands;
     NSDictionary *_nowPlayingInfo;
-    void *_playbackQueue;
 }
 
 @property (readonly, nonatomic) NSString *displayID;

@@ -34,12 +34,12 @@
 + (id)sharedAppLibrary;
 - (void).cxx_destruct;
 - (void)_iterateObserversWithBlock:(CDUnknownBlockType)arg1;
-- (void)_notifyAppAdded:(id)arg1;
-- (void)_notifyAppIconUpdated:(id)arg1;
-- (void)_notifyAppRemoved:(id)arg1;
-- (void)_notifyAppUpdated:(id)arg1;
-- (id)_thirdPartyAppsWithComplicationBundle;
-- (void)_updateAllGalleryFeaturedComplicationApps;
+- (void)_queue_notifyAppAdded:(id)arg1;
+- (void)_queue_notifyAppIconUpdated:(id)arg1;
+- (void)_queue_notifyAppRemoved:(id)arg1;
+- (void)_queue_notifyAppUpdated:(id)arg1;
+- (id)_queue_thirdPartyAppsWithComplicationBundle;
+- (void)_queue_updateAllGalleryFeaturedComplicationApps;
 - (void)addObserver:(id)arg1;
 - (void)appLibrary:(id)arg1 didAddApp:(id)arg2;
 - (void)appLibrary:(id)arg1 didRemoveApp:(id)arg2;

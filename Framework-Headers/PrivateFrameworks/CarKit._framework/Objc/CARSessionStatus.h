@@ -7,26 +7,38 @@
 #import <objc/NSObject.h>
 
 @class CARSession;
-@protocol CARSessionObserving, OS_dispatch_queue;
+@protocol CARSessionObserving, OS_dispatch_queue, OS_dispatch_source;
 
 @interface CARSessionStatus : NSObject
 {
     id<CARSessionObserving> _sessionObserver;
     CARSession *_session;
     NSObject<OS_dispatch_queue> *_sessionUpdatesQueue;
+    NSObject<OS_dispatch_source> *_connectingTimer;
+    unsigned long long _timeoutInterval;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *connectingTimer; // @synthesize connectingTimer=_connectingTimer;
 @property (readonly, nonatomic) CARSession *currentSession;
 @property (strong, nonatomic) CARSession *session; // @synthesize session=_session;
 @property (weak, nonatomic) id<CARSessionObserving> sessionObserver; // @synthesize sessionObserver=_sessionObserver;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *sessionUpdatesQueue; // @synthesize sessionUpdatesQueue=_sessionUpdatesQueue;
+@property (nonatomic) unsigned long long timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 
 - (void).cxx_destruct;
+- (void)_handleAuthenticationSucceeded:(id)arg1;
+- (void)_handleConnectingTimeout;
+- (void)_handleInCarNotification;
+- (void)_notifyCancelledConnectionAttemptOnTransport:(unsigned long long)arg1;
 - (void)_notifyDidConnectSession:(id)arg1;
 - (void)_notifyDidDisconnectSession:(id)arg1;
+- (void)_notifyStartedConnectionAttemptOnTransport:(unsigned long long)arg1;
+- (void)_startConnectingTimer;
+- (void)_stopConnectingTimer;
 - (void)_updateSession;
 - (void)dealloc;
 - (id)init;
+- (void)waitForSessionInitialization;
 
 @end
 

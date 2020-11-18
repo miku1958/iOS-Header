@@ -12,6 +12,7 @@
 
 + (id)concatenate:(id)arg1;
 + (id)emptyObservable;
++ (id)merge:(id)arg1;
 + (id)neverObservable;
 + (id)observableObserver;
 + (id)observableOnDefaultNotificationCenterWithName:(id)arg1 object:(id)arg2;
@@ -45,6 +46,7 @@
 - (id)startWith:(id)arg1;
 - (id)startWith:(id)arg1 scheduler:(id)arg2;
 - (id)subscribeOn:(id)arg1;
+- (id)subscribeWithResultBlock:(CDUnknownBlockType)arg1;
 
 @end
 

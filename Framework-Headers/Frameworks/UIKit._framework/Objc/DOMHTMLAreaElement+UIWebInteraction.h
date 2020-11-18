@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMHTMLAreaElement.h>
+#import <WebKitLegacy/DOMHTMLAreaElement.h>
 
 @interface DOMHTMLAreaElement (UIWebInteraction)
 - (id)absoluteQuadsAtPoint:(struct CGPoint)arg1;

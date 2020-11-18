@@ -47,6 +47,7 @@
 @property (readonly) Class superclass;
 
 + (id)parseBinaryImagesDescription:(id)arg1;
++ (struct _CSTypeRef)symbolicatorFromBinaryImagesDescription:(id)arg1;
 - (id)_binaryImagesDescriptionForRanges:(id)arg1;
 - (id)_buildInfoDescription;
 - (id)_buildVersionDictionary;

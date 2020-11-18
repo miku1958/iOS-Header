@@ -12,9 +12,11 @@
 {
     NSArray *_images;
     NSString *_subtitle;
+    NSArray *_scores;
 }
 
 @property (readonly, copy, nonatomic) NSArray *images; // @synthesize images=_images;
+@property (readonly, copy, nonatomic) NSArray *scores; // @synthesize scores=_scores;
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 
 + (id)schema;

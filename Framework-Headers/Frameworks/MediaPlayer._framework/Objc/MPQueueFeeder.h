@@ -22,6 +22,8 @@
     unsigned long long _state;
     NSString *_playActivityFeatureName;
     NSData *_playActivityRecommendationData;
+    NSString *_siriReferenceIdentifier;
+    NSString *_playbackContextUniqueIdentifier;
     long long _activeShuffleType;
     MPModelPlayEvent *_modelPlayEvent;
     CDStruct_dcf4dde6 _skipLimit;
@@ -41,6 +43,7 @@
 @property (readonly, nonatomic) MPModelPlayEvent *modelPlayEvent; // @synthesize modelPlayEvent=_modelPlayEvent;
 @property (copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 @property (copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
+@property (copy, nonatomic) NSString *playbackContextUniqueIdentifier; // @synthesize playbackContextUniqueIdentifier=_playbackContextUniqueIdentifier;
 @property (readonly, nonatomic) long long playbackMode;
 @property (readonly, nonatomic) BOOL playerPreparesItemsForPlaybackAsynchronously;
 @property (readonly, nonatomic) long long realRepeatType;
@@ -48,6 +51,7 @@
 @property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property (nonatomic) BOOL requiresQueueChangeVerification; // @synthesize requiresQueueChangeVerification=_requiresQueueChangeVerification;
 @property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
+@property (copy, nonatomic) NSString *siriReferenceIdentifier; // @synthesize siriReferenceIdentifier=_siriReferenceIdentifier;
 @property (nonatomic) CDStruct_dcf4dde6 skipLimit; // @synthesize skipLimit=_skipLimit;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
@@ -82,6 +86,7 @@
 - (id)localizedAttributedPositionInPlaylistStringForItem:(id)arg1 withRegularTextAttributes:(id)arg2 emphasizedTextAttributes:(id)arg3;
 - (id)localizedPositionInPlaylistString:(id)arg1;
 - (id)mediaItemAtIndex:(unsigned long long)arg1;
+- (id)mediaItemForIdentifier:(id)arg1;
 - (id)metadataItemForIdentifier:(id)arg1;
 - (id)pathAtIndex:(unsigned long long)arg1;
 - (id)playbackInfoForIdentifier:(id)arg1;

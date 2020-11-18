@@ -6,33 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-
 @interface _SFDialog : NSObject
 {
-    CDUnknownBlockType _completionHandler;
-    BOOL _completionHandlerBlocksWebProcess;
-    NSString *_message;
-    NSString *_defaultText;
-    NSString *_primaryActionTitle;
-    NSString *_secondaryActionTitle;
+    BOOL _completed;
 }
 
-@property (readonly, nonatomic) BOOL completionHandlerBlocksWebProcess; // @synthesize completionHandlerBlocksWebProcess=_completionHandlerBlocksWebProcess;
-@property (readonly, copy, nonatomic) NSString *defaultText; // @synthesize defaultText=_defaultText;
-@property (readonly, copy, nonatomic) NSString *message; // @synthesize message=_message;
-@property (readonly, copy, nonatomic) NSString *primaryActionTitle; // @synthesize primaryActionTitle=_primaryActionTitle;
-@property (readonly, copy, nonatomic) NSString *secondaryActionTitle; // @synthesize secondaryActionTitle=_secondaryActionTitle;
+@property (readonly, nonatomic) BOOL canceledOnNavigation;
+@property (readonly, nonatomic) BOOL completionHandlerBlocksWebProcess;
+@property (readonly, nonatomic) long long presentationStyle;
 
++ (id)_dialogWithTitle:(id)arg1 message:(id)arg2 primaryAction:(id)arg3 secondaryAction:(id)arg4 applicationModal:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
++ (id)authenticationDialogWithAuthenticationChallenge:(id)arg1 committedURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)continuePrintingDialogWithTitle:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)dialogWithWebUIAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)formSubmissionDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)genericErrorDialogWithTitle:(id)arg1 message:(id)arg2;
 + (id)javaScriptAlertDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)javaScriptConfirmDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)javaScriptPromptDialogWithMessage:(id)arg1 defaultText:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)mailNavigationDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (id)noFeedAppDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (id)pageLoadErrorWithMessage:(id)arg1;
++ (id)redirectDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)telephonyNavigationDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void).cxx_destruct;
-- (void)cancel;
-- (void)finishWithPrimaryAction:(BOOL)arg1 text:(id)arg2;
-- (id)initWithMessage:(id)arg1 defaultText:(id)arg2 primaryActionTitle:(id)arg3 secondaryActionTitle:(id)arg4 completionHandlerBlocksWebProcess:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)completeWithResponse:(id)arg1;
+- (void)didCompleteWithResponse:(id)arg1;
+- (id)newDialogViewRepresentation;
+- (id)newViewControllerRepresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

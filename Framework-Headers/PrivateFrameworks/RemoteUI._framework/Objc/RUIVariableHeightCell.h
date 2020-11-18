@@ -13,11 +13,9 @@
 
 @property (nonatomic) BOOL supportsAccessory; // @synthesize supportsAccessory=_supportsAccessory;
 
-- (double)contentWidth;
-- (struct CGSize)detailLabelSizeForWidth:(double)arg1;
 - (double)height;
 - (void)layoutSubviews;
-- (struct CGSize)textLabelSizeForWidth:(double)arg1;
+- (struct CGSize)sizeForTextLabel:(id)arg1 width:(double)arg2;
 
 @end
 

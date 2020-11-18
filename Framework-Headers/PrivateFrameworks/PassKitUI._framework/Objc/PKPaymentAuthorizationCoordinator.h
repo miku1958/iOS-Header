@@ -45,8 +45,8 @@
 @property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
 
 + (BOOL)canMakePayments;
-+ (BOOL)canMakePaymentsUsingNetworks:(id)arg1 capabilities:(unsigned long long)arg2 isWebPayment:(BOOL)arg3;
-+ (BOOL)canMakePaymentsUsingNetworks:(id)arg1 isWebPayment:(BOOL)arg2;
++ (BOOL)canMakePaymentsUsingNetworks:(id)arg1 capabilities:(unsigned long long)arg2 webDomain:(id)arg3;
++ (BOOL)canMakePaymentsUsingNetworks:(id)arg1 webDomain:(id)arg2;
 - (void).cxx_destruct;
 - (void)_invokeCallbackWithSuccess:(BOOL)arg1;
 - (id)_remoteObjectProxy;

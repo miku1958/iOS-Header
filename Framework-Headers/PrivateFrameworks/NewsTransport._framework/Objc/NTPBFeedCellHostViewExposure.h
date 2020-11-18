@@ -8,10 +8,16 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface NTPBFeedCellHostViewExposure : PBCodable <NSCopying>
 {
     int _areaPresentationReason;
+    NSString *_campaignId;
+    NSString *_campaignType;
+    NSString *_creativeId;
     int _feedCellHostType;
+    NSString *_topicFeedId;
     struct {
         unsigned int areaPresentationReason:1;
         unsigned int feedCellHostType:1;
@@ -19,10 +25,19 @@
 }
 
 @property (nonatomic) int areaPresentationReason; // @synthesize areaPresentationReason=_areaPresentationReason;
+@property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
+@property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
+@property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
 @property (nonatomic) int feedCellHostType; // @synthesize feedCellHostType=_feedCellHostType;
 @property (nonatomic) BOOL hasAreaPresentationReason;
+@property (readonly, nonatomic) BOOL hasCampaignId;
+@property (readonly, nonatomic) BOOL hasCampaignType;
+@property (readonly, nonatomic) BOOL hasCreativeId;
 @property (nonatomic) BOOL hasFeedCellHostType;
+@property (readonly, nonatomic) BOOL hasTopicFeedId;
+@property (strong, nonatomic) NSString *topicFeedId; // @synthesize topicFeedId=_topicFeedId;
 
+- (void).cxx_destruct;
 - (int)StringAsAreaPresentationReason:(id)arg1;
 - (int)StringAsFeedCellHostType:(id)arg1;
 - (id)areaPresentationReasonAsString:(int)arg1;

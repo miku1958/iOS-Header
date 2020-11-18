@@ -22,6 +22,7 @@
     NSArray *_subFieldArray;
 }
 
+@property (readonly) unsigned int bitfieldWidth;
 @property (readonly) VMUClassInfo *destinationLayout;
 @property (readonly, nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (readonly, nonatomic) BOOL isArrayEntries;
@@ -56,6 +57,7 @@
 - (void)_setTypeName:(id)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)descriptionOfFieldValueInObjectMemory:(void *)arg1 scanner:(id)arg2;
 - (id)getLeafFieldAtOffset:(unsigned int)arg1 leafOffset:(unsigned int *)arg2;
 - (unsigned long long)hash;
 - (id)initStorageEntryFieldWithName:(id)arg1 type:(id)arg2 kind:(unsigned int)arg3 scan:(unsigned int)arg4 offset:(unsigned int)arg5 size:(unsigned int)arg6 stride:(unsigned int)arg7 subFieldArray:(id)arg8;

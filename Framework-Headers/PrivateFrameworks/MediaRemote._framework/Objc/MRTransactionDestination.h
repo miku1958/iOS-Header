@@ -16,7 +16,6 @@
 
 @property (readonly, nonatomic) unsigned long long name; // @synthesize name=_name;
 
-- (void)_cleanUp;
 - (void)dealloc;
 - (id)initWithName:(unsigned long long)arg1;
 - (void)packetsFromMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;

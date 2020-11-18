@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MIME/NSObject-Protocol.h>
+#import <MIME/MFCancelable-Protocol.h>
 
 @class NSDate;
 @protocol MFFuture, MFScheduler;
 
-@protocol MFFuture <NSObject>
+@protocol MFFuture <MFCancelable>
 
 @property (readonly, getter=isCancelled) BOOL cancelled;
 @property (readonly, getter=isFinished) BOOL finished;
 
 - (void)addFailureBlock:(void (^)(NSError *))arg1;
 - (void)addSuccessBlock:(void (^)(id))arg1;
-- (BOOL)cancel;
 - (id<MFFuture>)map:(id (^)(id))arg1;
 - (void)onScheduler:(id<MFScheduler>)arg1 addFailureBlock:(void (^)(NSError *))arg2;
 - (void)onScheduler:(id<MFScheduler>)arg1 addSuccessBlock:(void (^)(id))arg2;
@@ -27,5 +26,6 @@
 - (id)resultBeforeDate:(NSDate *)arg1 error:(id *)arg2;
 - (id)resultWithTimeout:(double)arg1 error:(id *)arg2;
 - (id<MFFuture>)then:(id<MFFuture> (^)(id))arg1;
+- (BOOL)tryCancel;
 @end
 

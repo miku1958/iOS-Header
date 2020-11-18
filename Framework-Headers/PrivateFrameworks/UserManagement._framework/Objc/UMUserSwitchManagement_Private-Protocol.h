@@ -6,11 +6,14 @@
 
 #import <UserManagement/NSObject-Protocol.h>
 
+@class NSData, NSDictionary, UMUser, UMUserSwitchContext;
 @protocol UMCriticalUserSwitchStakeholder;
 
 @protocol UMUserSwitchManagement_Private <NSObject>
 - (void)registerCriticalUserSwitchStakeHolder:(id<UMCriticalUserSwitchStakeholder>)arg1;
 - (void)resumeQuotas;
 - (void)suspendQuotasWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)switchToUser:(UMUser *)arg1 passcodeData:(NSData *)arg2 context:(UMUserSwitchContext *)arg3 preferences:(NSDictionary *)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)userInteractionIsEnabled;
 @end
 

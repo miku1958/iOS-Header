@@ -34,6 +34,7 @@
 - (BOOL)_hasQTSaveRestriction;
 - (id)_instanceIdentifier;
 - (id)_mediaSelectionGroupDictionaries;
+- (id)_nameForProxy;
 - (void *)_valueAsCFTypeForProperty:(struct __CFString *)arg1;
 - (id)alternateTrackGroups;
 - (id)availableMetadataFormats;
@@ -45,6 +46,7 @@
 - (CDStruct_1b6d18a9)duration;
 - (void)finalize;
 - (unsigned long long)hash;
+- (id)identifyingTag;
 - (id)identifyingTagClass;
 - (id)initWithFigAsset:(struct OpaqueFigAsset *)arg1;
 - (BOOL)isCompatibleWithAirPlayVideo;

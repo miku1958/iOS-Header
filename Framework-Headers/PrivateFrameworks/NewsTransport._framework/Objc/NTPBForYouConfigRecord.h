@@ -16,6 +16,7 @@
     NSString *_configuration;
     NSString *_coverArticlesArticleListID;
     NSMutableArray *_editorialArticleListIDs;
+    NSMutableArray *_editorialSectionTagIDs;
     NSString *_topStoriesArticleListID;
     NSString *_trendingArticleListID;
 }
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) NSString *configuration; // @synthesize configuration=_configuration;
 @property (strong, nonatomic) NSString *coverArticlesArticleListID; // @synthesize coverArticlesArticleListID=_coverArticlesArticleListID;
 @property (strong, nonatomic) NSMutableArray *editorialArticleListIDs; // @synthesize editorialArticleListIDs=_editorialArticleListIDs;
+@property (strong, nonatomic) NSMutableArray *editorialSectionTagIDs; // @synthesize editorialSectionTagIDs=_editorialSectionTagIDs;
 @property (readonly, nonatomic) BOOL hasBase;
 @property (readonly, nonatomic) BOOL hasConfiguration;
 @property (readonly, nonatomic) BOOL hasCoverArticlesArticleListID;
@@ -33,14 +35,19 @@
 @property (strong, nonatomic) NSString *trendingArticleListID; // @synthesize trendingArticleListID=_trendingArticleListID;
 
 + (Class)editorialArticleListIDsType;
++ (Class)editorialSectionTagIDsType;
 - (void)addEditorialArticleListIDs:(id)arg1;
+- (void)addEditorialSectionTagIDs:(id)arg1;
 - (void)clearEditorialArticleListIDs;
+- (void)clearEditorialSectionTagIDs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)editorialArticleListIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)editorialArticleListIDsCount;
+- (id)editorialSectionTagIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)editorialSectionTagIDsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

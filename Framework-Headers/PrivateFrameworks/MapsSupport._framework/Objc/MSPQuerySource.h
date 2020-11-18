@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MSPContainer *_owningContainer;
     MSPQuerySource *_parentSource;
     CDUnknownBlockType _mappingBlock;
+    CDUnknownBlockType _preprocessingBlock;
     NSHashTable *_observers;
     NSArray *_lastContents;
     NSArray *_lastUnmappedContents;
@@ -33,11 +34,12 @@ __attribute__((visibility("hidden")))
 - (void)_didChangeSourceWithContents:(id)arg1 unmappedContents:(id)arg2 map:(id)arg3 forContext:(id)arg4;
 - (void)_didReceiveContainerContents:(id)arg1 context:(id)arg2;
 - (id)_initWithOwningContainer:(id)arg1;
-- (id)_initWithParentSource:(id)arg1 mappingBlock:(CDUnknownBlockType)arg2;
+- (id)_initWithParentSource:(id)arg1 preprocessingBlock:(CDUnknownBlockType)arg2 mappingBlock:(CDUnknownBlockType)arg3;
 - (void)_removeObserver:(id)arg1;
 - (void)container:(id)arg1 didEditWithNewContents:(id)arg2 orderedEdits:(id)arg3 cause:(long long)arg4 context:(id)arg5;
 - (id)newQuery;
 - (id)sourceByMappingContentsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)sourceByMappingContentsUsingPreprocessingBlock:(CDUnknownBlockType)arg1 mappingBlock:(CDUnknownBlockType)arg2;
 
 @end
 

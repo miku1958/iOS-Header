@@ -11,18 +11,22 @@
 @interface _ICQUpgradeOfferPageSpecification : _ICQPageSpecification
 {
     NSDictionary *_serverDict;
+    NSString *_iconBundleIdentifier;
     NSString *_title;
     NSString *_message;
+    NSString *_altMessage;
     NSArray *_services;
     ICQLink *_purchaseLink;
-    ICQLink *_learnMoreLink;
+    ICQLink *_bottomLink;
     NSString *_finePrintFormat;
     NSArray *_finePrintLinks;
 }
 
+@property (strong, nonatomic) NSString *altMessage; // @synthesize altMessage=_altMessage;
+@property (strong, nonatomic) ICQLink *bottomLink; // @synthesize bottomLink=_bottomLink;
 @property (strong, nonatomic) NSString *finePrintFormat; // @synthesize finePrintFormat=_finePrintFormat;
 @property (strong, nonatomic) NSArray *finePrintLinks; // @synthesize finePrintLinks=_finePrintLinks;
-@property (strong, nonatomic) ICQLink *learnMoreLink; // @synthesize learnMoreLink=_learnMoreLink;
+@property (strong, nonatomic) NSString *iconBundleIdentifier; // @synthesize iconBundleIdentifier=_iconBundleIdentifier;
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;
 @property (strong, nonatomic) ICQLink *purchaseLink; // @synthesize purchaseLink=_purchaseLink;
 @property (readonly, nonatomic) NSDictionary *serverDict; // @synthesize serverDict=_serverDict;
@@ -33,7 +37,7 @@
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)initWithServerDictionary:(id)arg1;
-- (id)pageIdentifier;
+- (id)initWithServerDictionary:(id)arg1 pageIdentifier:(id)arg2;
 
 @end
 

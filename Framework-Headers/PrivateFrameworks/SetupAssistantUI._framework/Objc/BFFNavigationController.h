@@ -6,11 +6,13 @@
 
 #import <Preferences/PSRootController.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSMutableDictionary;
 
 @interface BFFNavigationController : PSRootController
 {
     NSMutableArray *_observers;
+    NSMutableDictionary *_appearanceHandlers;
+    long long _pendingWillShowOperation;
     BOOL _animating;
 }
 
@@ -25,8 +27,12 @@
 - (id)init;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
+- (id)popToRootViewControllerAnimated:(BOOL)arg1;
+- (id)popToViewController:(id)arg1 animated:(BOOL)arg2;
+- (id)popViewControllerAnimated:(BOOL)arg1;
 - (long long)preferredStatusBarStyle;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
+- (void)pushViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeDelegateObserver:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setViewControllers:(id)arg1 animated:(BOOL)arg2;

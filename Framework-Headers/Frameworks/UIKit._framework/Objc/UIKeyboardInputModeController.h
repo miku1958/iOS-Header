@@ -79,7 +79,8 @@
 - (id)_MCFilteredExtensionIdentifiers;
 - (id)_allExtensionsFromMatchingExtensions:(id)arg1;
 - (void)_beginContinuousDiscoveryIfNeeded;
-- (void)_clearAllExtensionIfNeeded;
+- (void)_clearAllExtensions;
+- (void)_clearAllExtensionsIfNeeded;
 - (BOOL)_mayContainExtensionInputModes;
 - (void)_removeInputModes:(id)arg1;
 - (void)_setCurrentAndNextInputModePreference;

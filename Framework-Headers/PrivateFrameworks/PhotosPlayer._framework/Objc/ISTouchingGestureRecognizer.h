@@ -8,6 +8,7 @@
 
 @interface ISTouchingGestureRecognizer : UIGestureRecognizer
 {
+    BOOL _requireSingleTouch;
     double _minimumTouchDuration;
     double _maximumTouchMovement;
     double _distanceFromInitialPoint;
@@ -22,10 +23,12 @@
 @property (readonly, nonatomic) double distanceFromInitialPoint; // @synthesize distanceFromInitialPoint=_distanceFromInitialPoint;
 @property (nonatomic) double maximumTouchMovement; // @synthesize maximumTouchMovement=_maximumTouchMovement;
 @property (nonatomic) double minimumTouchDuration; // @synthesize minimumTouchDuration=_minimumTouchDuration;
+@property (nonatomic) BOOL requireSingleTouch; // @synthesize requireSingleTouch=_requireSingleTouch;
 
 - (void)_beginWithRequestID:(unsigned long long)arg1;
 - (void)_decrementTouchesBy:(unsigned long long)arg1;
 - (void)_incrementTouchesBy:(unsigned long long)arg1;
+- (void)_updateDistanceFromInitialPoint;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;

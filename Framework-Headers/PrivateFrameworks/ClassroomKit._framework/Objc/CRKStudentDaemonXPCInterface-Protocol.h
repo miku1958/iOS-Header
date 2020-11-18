@@ -7,9 +7,13 @@
 @class NSDictionary, NSString, NSURL;
 
 @protocol CRKStudentDaemonXPCInterface
+- (void)fetchAdHocConfiguration:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)fetchConfiguration:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)fetchConfigurationType:(void (^)(unsigned long long, NSError *))arg1;
 - (void)fetchResourceFromURL:(NSURL *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (void)fetchSetOfActiveRestrictionUUIDsForClientType:(NSString *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
 - (void)setActiveStudentIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)setAdHocConfiguration:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setConfiguration:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)studentDidAuthenticate:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 @end

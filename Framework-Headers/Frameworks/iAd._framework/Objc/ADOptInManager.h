@@ -23,6 +23,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedManager;
+- (void)adSheetConnectionInterrupted;
 - (id)adSheetMachServiceName;
 - (id)additionalAdSheetLaunchOptions;
 - (void)configureConnection:(id)arg1;

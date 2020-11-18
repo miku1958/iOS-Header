@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) double estimatedProgress;
 @property (readonly, nonatomic) BOOL hasOnlySecureContent;
 @property (readonly, nonatomic, getter=isLoading) BOOL loading;
+@property (readonly, nonatomic) struct __SecTrust *serverTrust;
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) NSURL *unreachableURL;
 

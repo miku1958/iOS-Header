@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)init;
+- (id)initWithStyle:(id)arg1;
 
 @end
 

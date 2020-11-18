@@ -43,6 +43,8 @@
 - (id)currentSectionIdentifiers;
 - (id)initWithDelegate:(id)arg1 shouldGroupByRoom:(BOOL)arg2 itemProvidersCreator:(CDUnknownBlockType)arg3;
 - (id)initWithDelegate:(id)arg1 shouldGroupByRoom:(BOOL)arg2 shouldShowSectionHeaders:(BOOL)arg3 itemProvidersCreator:(CDUnknownBlockType)arg4;
+- (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
+- (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2 shouldGroupByRoom:(BOOL)arg3 shouldShowSectionHeaders:(BOOL)arg4 itemProvidersCreator:(CDUnknownBlockType)arg5;
 
 @end
 

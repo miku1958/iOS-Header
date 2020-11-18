@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <Accounts/NSCoding-Protocol.h>
 #import <Accounts/NSCopying-Protocol.h>
 #import <Accounts/NSSecureCoding-Protocol.h>
 
 @class ACAccountCredential, ACAccountStore, ACAccountType, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSURL;
 
-@interface ACAccount : NSObject <NSSecureCoding, NSCopying>
+@interface ACAccount : NSObject <NSCoding, NSCopying, NSSecureCoding>
 {
     ACAccountStore *_store;
     NSString *_identifier;
@@ -115,6 +116,7 @@
 - (id)enabledAndSyncableDataclasses;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fullDescription;
+- (id)init;
 - (id)initWithAccountType:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithManagedAccount:(id)arg1;

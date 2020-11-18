@@ -35,12 +35,12 @@
     unsigned long long _lastCharacterStrokeCount;
     NSMutableIndexSet *_lastCharacterStrokeIndexes;
     struct CGSize _minimumDrawingSize;
-    map_6bca5f83 _cachedResults;
+    map_4a1e39a4 _cachedResults;
 }
 
 @property (strong, nonatomic) NSCharacterSet *activeCharacterSet; // @synthesize activeCharacterSet=_activeCharacterSet;
 @property (copy, nonatomic) CHDrawing *cachedDrawing; // @synthesize cachedDrawing=_cachedDrawing;
-@property (nonatomic) map_6bca5f83 cachedResults; // @synthesize cachedResults=_cachedResults;
+@property (nonatomic) map_4a1e39a4 cachedResults; // @synthesize cachedResults=_cachedResults;
 @property (nonatomic) struct CHNeuralNetwork *engine; // @synthesize engine=_engine;
 @property (nonatomic) struct Network *formatGrammarFST; // @synthesize formatGrammarFST=_formatGrammarFST;
 @property (nonatomic) struct CHNeuralNetwork *freeformEngine; // @synthesize freeformEngine=_freeformEngine;

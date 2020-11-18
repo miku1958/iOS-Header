@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) NSURL *URL;
 @property (readonly, nonatomic) unsigned long long availableFileSize;
+@property (readonly, nonatomic) unsigned long long countOfBytesReceived;
 @property (readonly, nonatomic) NSURL *destinationURL;
 @property (readonly, nonatomic) unsigned long long downloadToken;
 @property (readonly, nonatomic) NSError *error;

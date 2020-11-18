@@ -23,6 +23,7 @@
         BOOL blurEffectView;
     } _needsUpdateFlags;
     PXUIImageView *_imageView;
+    unsigned long long _animationFlags;
     BOOL _applyBlurEffect;
     PXImageRequester *_imageRequester;
     PXImageViewSpec *__spec;

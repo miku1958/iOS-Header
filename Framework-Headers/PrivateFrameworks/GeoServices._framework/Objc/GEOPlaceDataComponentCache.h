@@ -28,6 +28,7 @@
 - (void)evictAllEntries;
 - (void)evictPlaceDataForKey:(struct _GEOTileKey)arg1;
 - (void)evictPlaceDataForMUID:(unsigned long long)arg1;
+- (void)flushPendingWritesSynchronously;
 - (void)forgetComponentForKey:(union _GEOPlaceDataComponentKey)arg1;
 - (id)init;
 - (id)initWithPath:(id)arg1 resultProviderID:(int)arg2;

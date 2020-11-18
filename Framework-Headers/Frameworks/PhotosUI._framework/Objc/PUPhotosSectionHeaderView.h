@@ -6,12 +6,11 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class NSArray, NSDate, NSString, PUPhotosSectionHeaderContentView, UIButton, UIImageView, UILabel, UIView, _UIBackdropView;
+@class NSArray, NSDate, NSString, UIButton, UIImageView, UILabel, UIView, _UIBackdropView;
 @protocol PUPhotosSectionHeaderViewDelegate;
 
 @interface PUPhotosSectionHeaderView : UICollectionReusableView
 {
-    PUPhotosSectionHeaderContentView *_contentView;
     UILabel *_titleLabel;
     UILabel *_locationsLabel;
     UILabel *_separatorLabel;

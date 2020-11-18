@@ -19,10 +19,7 @@
 - (void)frameStartedLoadingWithFrameId:(id)arg1;
 - (void)frameStoppedLoadingWithFrameId:(id)arg1;
 - (id)initWithController:(struct AugmentableInspectorController *)arg1;
-- (void)javascriptDialogClosed;
-- (void)javascriptDialogOpeningWithMessage:(id)arg1;
 - (void)loadEventFiredWithTimestamp:(double)arg1;
-- (void)scriptsEnabledWithIsEnabled:(BOOL)arg1;
 
 @end
 

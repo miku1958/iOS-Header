@@ -8,20 +8,20 @@
 
 #import <MediaPlaybackCore/NSCopying-Protocol.h>
 
-@class MPModelPlayEvent, MPModelSong;
+@class MPModelGenericObject, MPModelPlayEvent;
 
 @interface MPCPlaybackHistoryRecordChangeRequest : NSObject <NSCopying>
 {
     BOOL _allowsStoreContainerImport;
     MPModelPlayEvent *_playEvent;
-    MPModelSong *_song;
+    MPModelGenericObject *_itemGenericObject;
     long long _repeatType;
 }
 
 @property (nonatomic) BOOL allowsStoreContainerImport; // @synthesize allowsStoreContainerImport=_allowsStoreContainerImport;
+@property (strong, nonatomic) MPModelGenericObject *itemGenericObject; // @synthesize itemGenericObject=_itemGenericObject;
 @property (strong, nonatomic) MPModelPlayEvent *playEvent; // @synthesize playEvent=_playEvent;
 @property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
-@property (strong, nonatomic) MPModelSong *song; // @synthesize song=_song;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

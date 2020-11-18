@@ -7,6 +7,8 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (FCAdditions)
++ (id)fc_articleListDirectoryWithFileName:(id)arg1;
++ (id)fc_safeURLWithString:(id)arg1;
 + (id)fc_urlForUserDomainCachesDirectory;
 + (id)fc_urlForUserDomainDocumentsDirectory;
 + (id)fc_urlForUserDomainLibraryDirectory;

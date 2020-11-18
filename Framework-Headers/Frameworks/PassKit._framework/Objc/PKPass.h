@@ -38,7 +38,6 @@
     NSURL *_sharingURL;
     NSString *_sharingText;
     NSSet *_associatedPassTypeIdentifiers;
-    NSString *_iAdReportingIdentifier;
     PKNFCPayload *_nfcPayload;
     PKImage *_partialFrontFaceImagePlaceholder;
     NSDate *_ingestedDate;
@@ -61,7 +60,6 @@
 @property (readonly, nonatomic) NSArray *frontFieldBuckets;
 @property (copy, nonatomic) NSString *groupingID; // @synthesize groupingID=_groupingID;
 @property (nonatomic) BOOL hasStoredValue; // @synthesize hasStoredValue=_hasStoredValue;
-@property (copy, nonatomic, setter=setiAdReportingIdentifier:) NSString *iAdReportingIdentifier; // @synthesize iAdReportingIdentifier=_iAdReportingIdentifier;
 @property (readonly, copy, nonatomic) UIImage *icon; // @dynamic icon;
 @property (readonly, nonatomic) PKImage *iconImage;
 @property (strong, nonatomic) NSDate *ingestedDate; // @synthesize ingestedDate=_ingestedDate;

@@ -102,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)debugHighlightFeatureMarker:(const shared_ptr_430519ce *)arg1;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
+- (id)debugLabelString:(BOOL)arg1;
 - (void)deselectLabelMarker;
 - (void)deselectTransitLineMarker;
 - (id)detailedDescription;
@@ -182,7 +183,7 @@ __attribute__((visibility("hidden")))
 - (void)transferStateFromCanvas:(id)arg1;
 - (id)transitLineMarkersForSelectionAtPoint:(struct CGPoint)arg1;
 - (id)transitLineMarkersInCurrentViewport;
-- (void)transitionToTracking:(BOOL)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 cameraController:(id)arg4 pounceCompletionHandler:(CDUnknownBlockType)arg5;
+- (void)transitionToTracking:(BOOL)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(id)arg5 pounceCompletionHandler:(CDUnknownBlockType)arg6;
 - (void)updateCameraForFrameResize;
 - (struct VehicleState)vehicleState;
 

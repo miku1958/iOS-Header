@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <BaseBoard/BSZeroingWeakReference.h>
+#import <FrontBoardServices/BSZeroingWeakReference.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/FBSceneManagerDelegate-Protocol.h>

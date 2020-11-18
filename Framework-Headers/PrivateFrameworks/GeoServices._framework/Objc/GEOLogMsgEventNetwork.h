@@ -8,43 +8,73 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class GEONetworkSessionTaskTransactionMetrics, NSString;
 
 @interface GEOLogMsgEventNetwork : PBCodable <NSCopying>
 {
+    double _requestEnd;
     long long _requestErrorCode;
+    double _requestStart;
+    int _decodeTime;
+    int _httpResponseCode;
     int _networkService;
+    int _queuedTime;
+    int _redirectCount;
     NSString *_requestAppIdentifier;
     int _requestDataSize;
     NSString *_requestErrorDescription;
     NSString *_requestErrorDomain;
     int _responseDataSize;
-    int _responseTime;
+    NSString *_serviceIpAddress;
+    GEONetworkSessionTaskTransactionMetrics *_taskMetrics;
+    int _totalTime;
     struct {
+        unsigned int requestEnd:1;
         unsigned int requestErrorCode:1;
+        unsigned int requestStart:1;
+        unsigned int decodeTime:1;
+        unsigned int httpResponseCode:1;
         unsigned int networkService:1;
+        unsigned int queuedTime:1;
+        unsigned int redirectCount:1;
         unsigned int requestDataSize:1;
         unsigned int responseDataSize:1;
-        unsigned int responseTime:1;
+        unsigned int totalTime:1;
     } _has;
 }
 
+@property (nonatomic) int decodeTime; // @synthesize decodeTime=_decodeTime;
+@property (nonatomic) BOOL hasDecodeTime;
+@property (nonatomic) BOOL hasHttpResponseCode;
 @property (nonatomic) BOOL hasNetworkService;
+@property (nonatomic) BOOL hasQueuedTime;
+@property (nonatomic) BOOL hasRedirectCount;
 @property (readonly, nonatomic) BOOL hasRequestAppIdentifier;
 @property (nonatomic) BOOL hasRequestDataSize;
+@property (nonatomic) BOOL hasRequestEnd;
 @property (nonatomic) BOOL hasRequestErrorCode;
 @property (readonly, nonatomic) BOOL hasRequestErrorDescription;
 @property (readonly, nonatomic) BOOL hasRequestErrorDomain;
+@property (nonatomic) BOOL hasRequestStart;
 @property (nonatomic) BOOL hasResponseDataSize;
-@property (nonatomic) BOOL hasResponseTime;
+@property (readonly, nonatomic) BOOL hasServiceIpAddress;
+@property (readonly, nonatomic) BOOL hasTaskMetrics;
+@property (nonatomic) BOOL hasTotalTime;
+@property (nonatomic) int httpResponseCode; // @synthesize httpResponseCode=_httpResponseCode;
 @property (nonatomic) int networkService; // @synthesize networkService=_networkService;
+@property (nonatomic) int queuedTime; // @synthesize queuedTime=_queuedTime;
+@property (nonatomic) int redirectCount; // @synthesize redirectCount=_redirectCount;
 @property (strong, nonatomic) NSString *requestAppIdentifier; // @synthesize requestAppIdentifier=_requestAppIdentifier;
 @property (nonatomic) int requestDataSize; // @synthesize requestDataSize=_requestDataSize;
+@property (nonatomic) double requestEnd; // @synthesize requestEnd=_requestEnd;
 @property (nonatomic) long long requestErrorCode; // @synthesize requestErrorCode=_requestErrorCode;
 @property (strong, nonatomic) NSString *requestErrorDescription; // @synthesize requestErrorDescription=_requestErrorDescription;
 @property (strong, nonatomic) NSString *requestErrorDomain; // @synthesize requestErrorDomain=_requestErrorDomain;
+@property (nonatomic) double requestStart; // @synthesize requestStart=_requestStart;
 @property (nonatomic) int responseDataSize; // @synthesize responseDataSize=_responseDataSize;
-@property (nonatomic) int responseTime; // @synthesize responseTime=_responseTime;
+@property (strong, nonatomic) NSString *serviceIpAddress; // @synthesize serviceIpAddress=_serviceIpAddress;
+@property (strong, nonatomic) GEONetworkSessionTaskTransactionMetrics *taskMetrics; // @synthesize taskMetrics=_taskMetrics;
+@property (nonatomic) int totalTime; // @synthesize totalTime=_totalTime;
 
 - (int)StringAsNetworkService:(id)arg1;
 - (void)copyTo:(id)arg1;

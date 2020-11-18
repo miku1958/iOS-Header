@@ -8,15 +8,15 @@
 
 #import <MediaPlayer/MPModelLazySectionedCollectionDataSource-Protocol.h>
 
-@class MPMediaLibraryView, MPModelRequest, MPSectionedCollection, NSMapTable, NSMutableDictionary, NSString;
-@protocol MPMediaLibraryEntityTranslatingContext;
+@class MPMediaLibraryEntityTranslationContext, MPMediaLibraryView, MPModelRequest, MPSectionedCollection, NSMapTable, NSMutableDictionary, NSString;
 
 @interface MPStoreLibraryPersonalizationCollectionDataSource : NSObject <MPModelLazySectionedCollectionDataSource>
 {
+    struct vector<std::__1::shared_ptr<mlcore::EntityCache>, std::__1::allocator<std::__1::shared_ptr<mlcore::EntityCache>>> _entityCaches;
     MPSectionedCollection *_unpersonalizedContentDescriptors;
     MPModelRequest *_unpersonalizedRequest;
     MPMediaLibraryView *_libraryView;
-    id<MPMediaLibraryEntityTranslatingContext> _translatingContext;
+    MPMediaLibraryEntityTranslationContext *_translatingContext;
     NSMapTable *_relativeModelClassToMappingResponse;
     NSMutableDictionary *_sectionToLibraryAddedOverride;
 }
@@ -28,17 +28,23 @@
 @property (copy, nonatomic) NSMapTable *relativeModelClassToMappingResponse; // @synthesize relativeModelClassToMappingResponse=_relativeModelClassToMappingResponse;
 @property (copy, nonatomic) NSMutableDictionary *sectionToLibraryAddedOverride; // @synthesize sectionToLibraryAddedOverride=_sectionToLibraryAddedOverride;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) id<MPMediaLibraryEntityTranslatingContext> translatingContext; // @synthesize translatingContext=_translatingContext;
+@property (strong, nonatomic) MPMediaLibraryEntityTranslationContext *translatingContext; // @synthesize translatingContext=_translatingContext;
 @property (strong, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors; // @synthesize unpersonalizedContentDescriptors=_unpersonalizedContentDescriptors;
 @property (copy, nonatomic) MPModelRequest *unpersonalizedRequest; // @synthesize unpersonalizedRequest=_unpersonalizedRequest;
 
 + (id)_completePersonalizedObjectWithLibraryObject:(id)arg1 personalizationProperties:(id)arg2 overrideLibraryAddedStatus:(long long)arg3;
 + (id)_identifiersByCombiningPersonalizedIdentifiers:(id)arg1 unpersonalizedIdentifiers:(id)arg2;
 + (id)_intersectingLightweightPersonalizationPropertiesForModelClass:(Class)arg1;
-+ (id)_intersectingLightweightPersonalizationPropertiesForProperties:(id)arg1 modelObject:(id)arg2 relativeModelObject:(id)arg3;
++ (id)_intersectingPlaybackPositionLightweightPersonalizationProperties;
++ (id)_intersectingStoreAssetLightweightPersonalizationProperties;
 + (id)_lightweightPersonalizedObjectWithUnpersonalizedObject:(id)arg1 libraryObject:(id)arg2 personalizationProperties:(id)arg3 overrideLibraryAddedStatus:(long long)arg4;
-+ (id)_requiredLightweightPersonalizationPropertiesForModelClass:(Class)arg1;
++ (id)_lightweightPersonalizedPlaybackPositionWithUnpersonalizedPlaybackPosition:(id)arg1 identifiers:(id)arg2 personalizationProperties:(id)arg3;
++ (id)_lightweightPersonalizedPlaybackPositionWithUnpersonalizedPlaybackPosition:(id)arg1 libraryPlaybackPosition:(id)arg2 personalizationProperties:(id)arg3;
++ (id)_lightweightPersonalizedStoreAssetWithUnpersonalizedAsset:(id)arg1 libraryAsset:(id)arg2 personalizationProperties:(id)arg3;
++ (id)_requiredLightweightPersonalizationPropertiesForModelClass:(Class)arg1 requestedProperties:(id)arg2;
+- (id).cxx_construct;
 - (void).cxx_destruct;
+- (shared_ptr_1c86f238)_entityCacheForEntityClass:(struct EntityClass *)arg1 propertiesToFetch:(vector_90d4f7ff)arg2;
 - (id)_libraryObjectWithRelativeModelClass:(Class)arg1 identifierSet:(id)arg2 propertySet:(id)arg3;
 - (id)indexPathForItemWithIdentifiersIntersectingSet:(id)arg1;
 - (id)itemAtIndexPath:(id)arg1;

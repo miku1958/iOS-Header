@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)depthPlane;
 - (unsigned long long)depthResolveFilter;
 - (id)description;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

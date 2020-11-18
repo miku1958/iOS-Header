@@ -14,8 +14,10 @@
     void *_dataStart;
     unsigned long long _stride;
     unsigned long long _format;
+    unsigned long long _bufferSize;
 }
 
+@property (nonatomic) unsigned long long bufferSize; // @synthesize bufferSize=_bufferSize;
 @property (nonatomic) void *dataStart;
 @property (nonatomic) unsigned long long format;
 @property (strong, nonatomic) MDLMeshBufferMap *map;
@@ -23,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)setbufferSize:(unsigned long long)arg1;
 
 @end
 

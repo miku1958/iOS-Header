@@ -10,19 +10,23 @@
 
 @interface _KSDeviceInfo : NSObject
 {
-    BOOL _incompatible;
     BOOL _needsUpdate;
     NSString *_name;
     NSString *_swVersion;
+    NSString *_model;
+    NSString *_modelDisplayName;
 }
 
-@property (nonatomic) BOOL incompatible; // @synthesize incompatible=_incompatible;
+@property (copy, nonatomic) NSString *model; // @synthesize model=_model;
+@property (copy, nonatomic) NSString *modelDisplayName; // @synthesize modelDisplayName=_modelDisplayName;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL needsUpdate; // @synthesize needsUpdate=_needsUpdate;
 @property (copy, nonatomic) NSString *swVersion; // @synthesize swVersion=_swVersion;
 
++ (id)ksDecviceWithName:(id)arg1 swVersion:(id)arg2 model:(id)arg3 modelDisplayName:(id)arg4;
++ (id)ksDecviceWithiCloudDeviceInfo:(id)arg1;
++ (id)ksDeviceWithName:(id)arg1 needsUpgrade:(BOOL)arg2;
 + (id)ksDeviceWithName:(id)arg1 swVersion:(id)arg2;
-+ (id)ksDeviceWithName:(id)arg1 swVersion:(id)arg2 needsUpgrade:(BOOL)arg3 incompatible:(BOOL)arg4;
 - (void).cxx_destruct;
 
 @end

@@ -19,6 +19,7 @@
 - (oneway void)_pingServiceForIdentifier:(NSString *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (oneway void)_refreshAssistantValidation;
 - (oneway void)_requestBarrierWithReply:(void (^)(void))arg1;
+- (oneway void)_sendFeedbackToAppPreferencesPredictorForMetricsContext:(NSString *)arg1 selectedBundleId:(NSString *)arg2;
 - (oneway void)_sendLargeData:(NSData *)arg1 reply:(void (^)(NSString *, NSData *))arg2;
 - (oneway void)_startSpeechWithURL:(NSURL *)arg1 isNarrowBand:(BOOL)arg2;
 - (oneway void)boostedPreheatWithStyle:(long long)arg1 completion:(void (^)(void))arg2;

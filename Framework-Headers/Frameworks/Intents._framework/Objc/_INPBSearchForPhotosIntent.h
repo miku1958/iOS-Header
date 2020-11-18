@@ -43,6 +43,8 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsExcludedAttributes:(id)arg1;
+- (int)StringAsIncludedAttributes:(id)arg1;
 - (void)addExcludedAttribute:(int)arg1;
 - (void)addIncludedAttribute:(int)arg1;
 - (void)clearExcludedAttributes;
@@ -52,8 +54,10 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (int)excludedAttributeAtIndex:(unsigned long long)arg1;
+- (id)excludedAttributesAsString:(int)arg1;
 - (unsigned long long)hash;
 - (int)includedAttributeAtIndex:(unsigned long long)arg1;
+- (id)includedAttributesAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

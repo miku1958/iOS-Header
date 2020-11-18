@@ -17,7 +17,6 @@
 @property (readonly, nonatomic) id<_WKFocusedElementInfo> focusedElementInfo;
 @property (nonatomic) BOOL forceSecureTextEntry;
 @property (copy, nonatomic) NSArray *suggestions;
-@property (copy, nonatomic) NSString *textContentType;
 @property (readonly, nonatomic) NSObject<NSSecureCoding> *userObject;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 

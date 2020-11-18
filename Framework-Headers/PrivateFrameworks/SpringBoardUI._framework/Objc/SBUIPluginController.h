@@ -40,6 +40,7 @@
 - (BOOL)handledWiredMicButtonTap;
 - (void)prepareForActivationEvent:(int)arg1 eventSource:(int)arg2 afterInterval:(double)arg3;
 - (void)registeredWithHost;
+- (BOOL)shouldBreadcrumbLaunchedApplicationWithBundleIdentifier:(id)arg1;
 - (BOOL)supportedAndEnabled;
 - (id)viewControllerForActivationContext:(id)arg1;
 - (void)viewPartiallyRevealedWithPercentRevealed:(double)arg1;

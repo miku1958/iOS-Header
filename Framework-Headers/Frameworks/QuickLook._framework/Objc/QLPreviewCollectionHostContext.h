@@ -19,6 +19,8 @@
 - (void)configureWithNumberOfItems:(long long)arg1 currentPreviewItemIndex:(unsigned long long)arg2 itemProvider:(id)arg3 stateManager:(id)arg4;
 - (void)getNetworkObserverWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)getPreviewCollectionUUIDWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)hostApplicationDidBecomeActive;
+- (void)hostApplicationDidEnterBackground:(BOOL)arg1;
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)invalidatePreviewCollection;
 - (void)keyCommandWasPerformed:(id)arg1;

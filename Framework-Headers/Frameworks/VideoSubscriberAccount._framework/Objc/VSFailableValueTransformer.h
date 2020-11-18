@@ -6,7 +6,6 @@
 
 #import <Foundation/NSValueTransformer.h>
 
-__attribute__((visibility("hidden")))
 @interface VSFailableValueTransformer : NSValueTransformer
 {
     NSValueTransformer *_objectValueTransformer;

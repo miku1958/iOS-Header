@@ -8,7 +8,7 @@
 
 #import <ITMLKit/IKAppContextInternalDelegate-Protocol.h>
 
-@class IKAppContext, NSString, NSURL;
+@class IKAppContext, NSArray, NSString, NSURL;
 @protocol IKAppCacheDelegate, IKAppContextDelegate, IKApplication, OS_dispatch_queue;
 
 @interface IKAppCache : NSObject <IKAppContextInternalDelegate>
@@ -21,6 +21,7 @@
     NSString *_appJSChecksum;
     NSString *_cacheAppLocalJSChecksum;
     NSString *_cacheAppJSChecksum;
+    NSArray *_cacheAppJSChecksumHistory;
     unsigned long long _status;
     IKAppContext *_validationContext;
     CDUnknownBlockType _validationCompletionHandler;
@@ -35,6 +36,7 @@
 @property (readonly, nonatomic) NSURL *appJSURL; // @synthesize appJSURL=_appJSURL;
 @property (readonly, copy, nonatomic) NSURL *appLocalJSFileURL; // @synthesize appLocalJSFileURL=_appLocalJSFileURL;
 @property (readonly, nonatomic) NSString *cacheAppJSChecksum; // @synthesize cacheAppJSChecksum=_cacheAppJSChecksum;
+@property (readonly, nonatomic) NSArray *cacheAppJSChecksumHistory; // @synthesize cacheAppJSChecksumHistory=_cacheAppJSChecksumHistory;
 @property (readonly, nonatomic) NSString *cacheAppLocalJSChecksum; // @synthesize cacheAppLocalJSChecksum=_cacheAppLocalJSChecksum;
 @property (readonly, copy, nonatomic) NSURL *cacheFileURL; // @synthesize cacheFileURL=_cacheFileURL;
 @property (readonly, copy) NSString *debugDescription;
@@ -49,19 +51,22 @@
 
 + (id)_appContextDelegateSelectors;
 - (void).cxx_destruct;
+- (id)_cacheFileURLForAppJS:(id)arg1 checksum:(id)arg2 error:(id *)arg3;
 - (void)_checkManifest;
 - (void)_cleanupValidationContext;
 - (void)_loadManifest;
 - (void)_performAsync:(CDUnknownBlockType)arg1;
 - (void)_storeManifest;
-- (id)_writeCacheAppJS:(id)arg1 checksum:(id)arg2 error:(id *)arg3;
+- (id)_validatedChecksumForScript:(id)arg1 error:(id *)arg2;
 - (void)appContext:(id)arg1 didFailWithError:(id)arg2;
 - (void)appContext:(id)arg1 didStartWithOptions:(id)arg2 validatedJSString:(id)arg3;
 - (void)appContext:(id)arg1 didStopWithOptions:(id)arg2;
 - (void)appContext:(id)arg1 evaluateAppJavaScriptInContext:(id)arg2;
 - (void)appContext:(id)arg1 needsReloadWithUrgency:(unsigned long long)arg2 options:(id)arg3;
+- (BOOL)appContext:(id)arg1 shouldStartWithScript:(id)arg2 scriptURL:(id)arg3 loadedFromFallback:(BOOL)arg4;
 - (BOOL)appContext:(id)arg1 validateDOMDocument:(id)arg2 inContext:(id)arg3 error:(id *)arg4;
 - (void)appJSURLWithCompletion:(CDUnknownBlockType)arg1;
+- (void)cleanBlobStorageWithCompletion:(CDUnknownBlockType)arg1;
 - (id)deviceConfigForContext:(id)arg1;
 - (id)initWithApplication:(id)arg1;
 - (BOOL)isOurDispatchQueue;

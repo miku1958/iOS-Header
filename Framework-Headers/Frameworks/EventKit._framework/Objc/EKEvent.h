@@ -21,6 +21,7 @@
     EKCalendarDate *_originalOccurrenceEndDate;
     NSNumber *_originalOccurrenceIsAllDay;
     NSString *_birthdayPersonUniqueID;
+    unsigned long long _cachedJunkStatus;
 }
 
 @property (nonatomic, getter=isAllDay) BOOL allDay;
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) NSString *birthdayContactIdentifier;
 @property (readonly, nonatomic) long long birthdayPersonID;
 @property (readonly, nonatomic) NSString *birthdayPersonUniqueID; // @synthesize birthdayPersonUniqueID=_birthdayPersonUniqueID;
+@property (nonatomic) unsigned long long cachedJunkStatus; // @synthesize cachedJunkStatus=_cachedJunkStatus;
 @property (copy, nonatomic) NSDate *endDate;
 @property (readonly, nonatomic) NSString *eventIdentifier;
 @property (readonly, nonatomic) BOOL isDetached;
@@ -97,9 +99,11 @@
 - (void)clearInvitationStatus;
 - (BOOL)commitWithSpan:(long long)arg1 error:(id *)arg2;
 - (id)committedValueForKey:(id)arg1;
+- (long long)compareStartDateIncludingTravelWithEvent:(id)arg1;
 - (long long)compareStartDateWithEvent:(id)arg1;
 - (void)confirmPredictedLocation:(id)arg1;
 - (BOOL)conformsToRecurrenceRules:(id)arg1;
+- (BOOL)couldBeJunk;
 - (BOOL)dateChanged;
 - (void)dealloc;
 - (id)description;
@@ -134,6 +138,7 @@
 - (BOOL)isStartDateDirty;
 - (BOOL)isStatusDirty;
 - (BOOL)isTentative;
+- (unsigned long long)junkStatus;
 - (BOOL)locationChanged;
 - (BOOL)locationIsAConferenceRoom;
 - (long long)locationPredictionState;
@@ -159,9 +164,12 @@
 - (void)revert;
 - (void)rollback;
 - (id)scanForConflicts;
+- (id)sendersEmail;
 - (BOOL)serverSupportedProposeNewTime;
 - (void)setFiredTTL:(BOOL)arg1;
 - (void)setInvitationStatus:(unsigned long long)arg1;
+- (void)setIsJunk:(BOOL)arg1 shouldSave:(BOOL)arg2;
+- (void)setJunkStatus:(unsigned long long)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setLocationPredictionState:(long long)arg1;
 - (void)setNeedsOccurrenceCacheUpdate:(BOOL)arg1;
@@ -185,6 +193,7 @@
 - (CDStruct_79f9e052)startDatePinnedForAllDay;
 - (id)structuredLocationWithoutPrediction;
 - (id)suggestionInfo;
+- (BOOL)supportsJunkReporting;
 - (BOOL)timeChanged;
 - (id)title;
 - (BOOL)titleChanged;

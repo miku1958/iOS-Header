@@ -10,7 +10,6 @@
 
 @class NSError;
 
-__attribute__((visibility("hidden")))
 @interface VSFailable : NSObject <NSSecureCoding>
 {
     long long _kind;

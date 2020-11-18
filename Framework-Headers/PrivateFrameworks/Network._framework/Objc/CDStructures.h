@@ -130,6 +130,8 @@ struct nw_connection_report_s {
     unsigned int connection_reuse_count;
     unsigned int data_stall_count;
     int connection_mode;
+    int apple_host;
+    int apple_app;
 };
 
 struct nw_protocol_identifier {
@@ -182,6 +184,7 @@ struct tcp_connection_info {
     unsigned long long _field20;
     unsigned long long _field21;
     unsigned long long _field22;
+    unsigned long long _field23;
 };
 
 #pragma mark Typedef'd Structures

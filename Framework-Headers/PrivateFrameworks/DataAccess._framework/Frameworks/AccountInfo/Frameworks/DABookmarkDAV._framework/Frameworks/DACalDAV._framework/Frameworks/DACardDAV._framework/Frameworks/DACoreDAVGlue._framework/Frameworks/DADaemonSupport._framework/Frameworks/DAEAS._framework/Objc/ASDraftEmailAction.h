@@ -14,7 +14,7 @@
 @property (nonatomic) BOOL send; // @synthesize send=_send;
 
 - (void)appendApplicationDataForTask:(id)arg1 toWBXMLData:(id)arg2;
-- (id)initWithItemChangeType:(long long)arg1 changedItem:(id)arg2 send:(BOOL)arg3;
+- (id)initWithItemChangeType:(unsigned long long)arg1 changedItem:(id)arg2 send:(BOOL)arg3;
 
 @end
 

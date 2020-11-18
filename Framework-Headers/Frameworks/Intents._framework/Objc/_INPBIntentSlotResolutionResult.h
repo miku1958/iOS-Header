@@ -8,7 +8,7 @@
 
 #import <Intents/NSCopying-Protocol.h>
 
-@class PBUnknownFields, _INPBPayloadConfirmation, _INPBPayloadNeedsDisambiguation, _INPBPayloadNeedsValue, _INPBPayloadNotSpecificEnough, _INPBPayloadSuccess, _INPBPayloadUnsupported;
+@class PBUnknownFields, _INPBPayloadConfirmation, _INPBPayloadNeedsDisambiguation, _INPBPayloadNeedsValue, _INPBPayloadSuccess, _INPBPayloadUnsupported;
 
 @interface _INPBIntentSlotResolutionResult : PBCodable <NSCopying>
 {
@@ -16,7 +16,6 @@
     _INPBPayloadConfirmation *_PayloadConfirmation;
     _INPBPayloadNeedsDisambiguation *_PayloadNeedsDisambiguation;
     _INPBPayloadNeedsValue *_PayloadNeedsValue;
-    _INPBPayloadNotSpecificEnough *_PayloadNotSpecificEnough;
     _INPBPayloadSuccess *_PayloadSuccess;
     _INPBPayloadUnsupported *_PayloadUnsupported;
     int _type;
@@ -26,13 +25,11 @@
 @property (strong, nonatomic) _INPBPayloadConfirmation *PayloadConfirmation; // @synthesize PayloadConfirmation=_PayloadConfirmation;
 @property (strong, nonatomic) _INPBPayloadNeedsDisambiguation *PayloadNeedsDisambiguation; // @synthesize PayloadNeedsDisambiguation=_PayloadNeedsDisambiguation;
 @property (strong, nonatomic) _INPBPayloadNeedsValue *PayloadNeedsValue; // @synthesize PayloadNeedsValue=_PayloadNeedsValue;
-@property (strong, nonatomic) _INPBPayloadNotSpecificEnough *PayloadNotSpecificEnough; // @synthesize PayloadNotSpecificEnough=_PayloadNotSpecificEnough;
 @property (strong, nonatomic) _INPBPayloadSuccess *PayloadSuccess; // @synthesize PayloadSuccess=_PayloadSuccess;
 @property (strong, nonatomic) _INPBPayloadUnsupported *PayloadUnsupported; // @synthesize PayloadUnsupported=_PayloadUnsupported;
 @property (readonly, nonatomic) BOOL hasPayloadConfirmation;
 @property (readonly, nonatomic) BOOL hasPayloadNeedsDisambiguation;
 @property (readonly, nonatomic) BOOL hasPayloadNeedsValue;
-@property (readonly, nonatomic) BOOL hasPayloadNotSpecificEnough;
 @property (readonly, nonatomic) BOOL hasPayloadSuccess;
 @property (readonly, nonatomic) BOOL hasPayloadUnsupported;
 @property (nonatomic) BOOL hasType;
@@ -40,6 +37,7 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -47,6 +45,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

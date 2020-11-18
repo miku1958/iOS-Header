@@ -15,19 +15,19 @@ __attribute__((visibility("hidden")))
 {
     double _timeStamp;
     NSTimeZone *_timeZone;
-    BOOL _displayTimeZone;
+    NSString *_formatPattern;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL displayTimeZone;
+@property (readonly, nonatomic) NSString *formatPattern;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeStamp;
 @property (readonly, nonatomic) NSTimeZone *timeZone;
 
 - (void).cxx_destruct;
-- (id)initWithTimeStamp:(double)arg1 timeZone:(id)arg2 displayTimeZone:(BOOL)arg3;
+- (id)initWithTimeStamp:(double)arg1 timeZone:(id)arg2 formatPattern:(id)arg3;
 
 @end
 

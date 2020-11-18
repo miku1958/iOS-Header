@@ -81,6 +81,7 @@
 - (BOOL)canServiceGraphCurationRequestsInCurrentStateLoadingGraphIfNeeded;
 - (BOOL)canServiceGraphRequestsInCurrentStateLoadingGraphIfNeeded;
 - (BOOL)canServiceGraphStatusRequestsInCurrentStateLoadingGraphIfNeeded;
+- (BOOL)checkForWritablePersistentStorageDirectoryURL;
 - (void)computeDiffWithProgressHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cooldown;
 - (id)currentlyUnavailableError;
@@ -155,6 +156,7 @@
 - (void)requestTitleForMemoryWithLocalIdentifier:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestTitleForPersonIdentifiers:(id)arg1 format:(long long)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)requestWriteAdditionalDataToSnapshotResults:(id)arg1 forFilenameKey:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (BOOL)retryStartup;
 - (void)setupGraphManager;
 - (void)setupLibraryChangeListener;
 - (void)setupPredicateValidator;

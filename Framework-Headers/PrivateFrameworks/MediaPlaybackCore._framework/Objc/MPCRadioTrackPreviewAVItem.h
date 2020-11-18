@@ -11,6 +11,8 @@
 }
 
 - (void)loadAssetAndPlayerItem;
+- (long long)rtcReportingAssetType;
+- (id)rtcReportingServiceIdentifier;
 
 @end
 

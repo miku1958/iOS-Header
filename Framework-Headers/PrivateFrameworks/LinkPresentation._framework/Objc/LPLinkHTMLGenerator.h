@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DOMDocument, DOMDocumentFragment, DOMElement, LPCSSResolver, LPCaptionBarPresentationProperties, LPHTMLComponent, LPImage, LPLinkMetadata, LPMetadataProvider, LPTheme, LPVideo, NSString, NSURL, UIColor;
+@class DOMDocument, DOMDocumentFragment, DOMElement, LPCSSResolver, LPCaptionBarPresentationProperties, LPHTMLComponent, LPHTMLVideoComponent, LPImage, LPLinkMetadata, LPMetadataProvider, LPTheme, LPVideo, NSString, NSURL, UIColor;
 @protocol LPLinkHTMLGeneratorDelegate;
 
 @interface LPLinkHTMLGenerator : NSObject
@@ -23,6 +23,7 @@
     UIColor *_backgroundColor;
     DOMElement *_rootElement;
     LPHTMLComponent *_linkComponent;
+    LPHTMLVideoComponent *_videoComponent;
     BOOL _everBuiltView;
     BOOL _useVariablesWhenUsingInlineStyles;
     BOOL _includeClassNamesWhenUsingInlineStyles;
@@ -72,6 +73,7 @@
 - (id)_createMediaComponent;
 - (id)_createMediaTopCaptionBar;
 - (id)_createQuoteComponent;
+- (void)_didFollowLink;
 - (void)_fetchMetadata;
 - (void)_rebuildView;
 - (void)_setMetadata:(id)arg1 isFinal:(BOOL)arg2;

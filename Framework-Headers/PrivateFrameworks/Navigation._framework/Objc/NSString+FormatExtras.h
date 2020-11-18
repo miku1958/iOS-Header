@@ -30,7 +30,7 @@
 + (id)_navigation_replacementForFormatToken:(id)arg1 timeStampTimeZone:(id)arg2 abbreviatedUnits:(BOOL)arg3 detail:(long long)arg4 spoken:(BOOL)arg5;
 + (id)_navigation_selectInstructionWithServerString:(id)arg1 isSpoken:(BOOL)arg2 clientBlock:(CDUnknownBlockType)arg3;
 + (id)_navigation_selectInstructionWithServerStringArray:(id)arg1 isSpoken:(BOOL)arg2 clientBlock:(CDUnknownBlockType)arg3;
-+ (id)_navigation_stringForDistance:(double)arg1 formatter:(id)arg2;
++ (id)_navigation_stringForDistance:(double)arg1 formatter:(id)arg2 locale:(id)arg3;
 + (id)_navigation_stringForExpectedTravelTime:(double)arg1 dateUnitStyle:(long long)arg2;
 + (id)_navigation_stringForServerFormattedString:(id)arg1;
 + (id)_navigation_stringForServerFormattedString:(id)arg1 timeZone:(id)arg2 abbreviatedUnits:(BOOL)arg3 detail:(long long)arg4 spoken:(BOOL)arg5 overrideVariables:(id)arg6;

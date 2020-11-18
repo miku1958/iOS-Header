@@ -18,7 +18,7 @@
 #import <MapKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <MapKit/VKMapViewDelegate-Protocol.h>
 
-@class CLLocation, GEOMapRegion, GEOResourceManifestConfiguration, MKAnnotationContainerView, MKAnnotationView, MKAttributionLabel, MKBasicMapView, MKCompassView, MKDebugLocationConsole, MKMapAnnotationManager, MKMapCamera, MKMapGestureController, MKMapViewInternal, MKOverlayContainerView, MKScaleView, MKUserLocation, NSArray, NSDictionary, NSLayoutConstraint, NSString, NSTimer, UIGestureRecognizer, UIImageView, UILayoutGuide, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIPopoverController, UIRotationGestureRecognizer, UITapGestureRecognizer, UITextView, VKLabelMarker, VKMapView, VKNavContext, VKRouteContext, _MKEnvironmentLabel;
+@class CLLocation, GEOMapRegion, GEOResourceManifestConfiguration, MKAnnotationContainerView, MKAnnotationView, MKAttributionLabel, MKBasicMapView, MKCompassView, MKDebugLocationConsole, MKMapAnnotationManager, MKMapCamera, MKMapGestureController, MKMapViewInternal, MKOverlayContainerView, MKScaleView, MKUserLocation, NSArray, NSDictionary, NSLayoutConstraint, NSString, NSTimer, UIGestureRecognizer, UIImageView, UILayoutGuide, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIPopoverController, UIRotationGestureRecognizer, UITapGestureRecognizer, UITextView, VKLabelMarker, VKMapView, VKNavContext, VKRouteContext, _MKCustomFeatureStore, _MKEnvironmentLabel;
 @protocol MKMapViewDelegate, MKMapViewDelegate><MKMapViewDelegatePrivate;
 
 @interface MKMapView : UIView <MKOverlayContainerViewDelegate, MKAnnotationContainerViewDelegate, VKMapViewDelegate, MKMapGestureControllerDelegate, MKAnnotationMarkerContainer, MKAnnotationManagerDelegate, GEOLogContextDelegate, UIGestureRecognizerDelegate, MKVariableDelayTapRecognizerDelegate, GEOResourceManifestTileGroupObserver, NSCoding>
@@ -159,6 +159,7 @@
     struct UIEdgeInsets _compassInsets;
     unsigned long long _compassInsetEdges;
     BOOL _useBalloonCalloutsForLabels;
+    _MKCustomFeatureStore *_annotationsCustomFeatureStore;
     long long _interactionMode;
     unsigned long long _currentFlyoverAnimationID;
 }
@@ -183,6 +184,7 @@
 @property (readonly, nonatomic, getter=_calloutPopoverTargetRect) struct CGRect calloutPopoverTargetRect;
 @property (copy, nonatomic) MKMapCamera *camera;
 @property (readonly, nonatomic, getter=_canEnter3DMode) BOOL canEnter3DMode;
+@property (readonly, nonatomic, getter=_canEnter3DModeFlyover) BOOL canEnter3DModeFlyover;
 @property (readonly, nonatomic, getter=_canEnterNightMode) BOOL canEnterNightMode;
 @property (nonatomic, getter=_canSelectAllLabels, setter=_setCanSelectAllLabels:) BOOL canSelectAllLabels;
 @property (nonatomic, getter=_canSelectPOIs, setter=_setCanSelectPOIs:) BOOL canSelectPOIs;
@@ -284,6 +286,7 @@
 - (void).cxx_destruct;
 - (void)_addAnnotation:(id)arg1 allowAnimation:(BOOL)arg2;
 - (void)_addAnnotations:(id)arg1 allowAnimation:(BOOL)arg2;
+- (void)_addAnnotationsCustomFeatureStoreIfNeeded;
 - (void)_addCustomFeatureDataSource:(id)arg1;
 - (void)_addDebugGesture;
 - (void)_addPersistentVectorOverlay:(id)arg1;
@@ -348,6 +351,7 @@
 - (BOOL)_isUserLocationInView:(BOOL)arg1;
 - (BOOL)_isUserLocationViewCentered:(double)arg1;
 - (BOOL)_isUsingDevResourceStyleSheet;
+- (void)_issueDatasetCheckinCall;
 - (id)_labelMarkerAtPoint:(struct CGPoint)arg1;
 - (id)_labelMarkerForCustomFeatureAnnotation:(id)arg1;
 - (id)_labelMarkersInCurrentViewport;

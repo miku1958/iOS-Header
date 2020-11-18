@@ -6,11 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, RTCReporting, VCAggregator;
+#import <ViceroyTrace/VCAggregatorDelegate-Protocol.h>
+
+@class NSArray, NSString, RTCReporting, VCAggregator;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface RTCReportingAgent : NSObject
+@interface RTCReportingAgent : NSObject <VCAggregatorDelegate>
 {
     RTCReporting *_reportingObject;
     int _client;
@@ -24,13 +26,18 @@ __attribute__((visibility("hidden")))
 @property (strong) VCAggregator *aggregator; // @synthesize aggregator=_aggregator;
 @property (copy) NSArray *backends; // @synthesize backends=_backends;
 @property int client; // @synthesize client=_client;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property BOOL isUserInfoSet; // @synthesize isUserInfoSet=_isUserInfoSet;
 @property (strong) RTCReporting *reportingObject; // @synthesize reportingObject=_reportingObject;
 @property (readonly) NSObject<OS_dispatch_queue> *reportingQueue; // @synthesize reportingQueue=_reportingQueue;
+@property (readonly) Class superclass;
 
 - (void)dealloc;
 - (id)initWithCallID:(unsigned int)arg1 clientType:(int)arg2;
 - (void)releaseReportingObject;
+- (void)report:(id)arg1;
 - (void)sendAggregatedReport;
 
 @end

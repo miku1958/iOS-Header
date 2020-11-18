@@ -41,6 +41,8 @@
 
 - (void).cxx_destruct;
 - (int)RequiredEntitlementAtIndex:(unsigned long long)arg1;
+- (id)RequiredEntitlementsAsString:(int)arg1;
+- (int)StringAsRequiredEntitlements:(id)arg1;
 - (void)addRequiredEntitlement:(int)arg1;
 - (void)clearRequiredEntitlements;
 - (id)copyWithZone:(struct _NSZone *)arg1;

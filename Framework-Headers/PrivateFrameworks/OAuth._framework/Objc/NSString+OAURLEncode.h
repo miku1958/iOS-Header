@@ -7,6 +7,6 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (OAURLEncode)
-- (id)urlEncodedString;
+- (id)oauth_urlEncodedString;
 @end
 

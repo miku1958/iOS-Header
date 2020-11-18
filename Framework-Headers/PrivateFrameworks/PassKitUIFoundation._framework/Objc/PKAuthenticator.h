@@ -35,6 +35,8 @@
 - (BOOL)_delegateSupportsPasscodePresentation;
 - (BOOL)_delegateSupportsPassphrasePresentation;
 - (void)accessExternalizedContextWithCompletion:(CDUnknownBlockType)arg1;
+- (void)applyDynamicFunctionRowScene:(long long)arg1;
+- (void)applyPaymentInstructions:(id)arg1;
 - (void)cancelEvaluation;
 - (void)dealloc;
 - (void)evaluatePolicy:(long long)arg1 completion:(CDUnknownBlockType)arg2;

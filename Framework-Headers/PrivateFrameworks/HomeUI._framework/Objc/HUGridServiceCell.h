@@ -61,7 +61,7 @@
 - (void)_getDescription:(id *)arg1 nameTextColor:(id *)arg2 descriptionTextColor:(id *)arg3 forPrimaryState:(long long)arg4;
 - (void)_setServiceItem:(id)arg1 updateUI:(BOOL)arg2;
 - (void)_setupServiceCell;
-- (void)_updateAccessoryView;
+- (void)_updateAccessoryViewWithPrimaryState:(long long)arg1;
 - (void)_updateIconWithPrimaryState:(long long)arg1 animated:(BOOL)arg2;
 - (void)_updateSecondaryContentDisplayStyle;
 - (void)_updateTextWithPrimaryState:(long long)arg1;

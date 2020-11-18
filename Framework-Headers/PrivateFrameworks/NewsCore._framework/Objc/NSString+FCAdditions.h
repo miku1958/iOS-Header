@@ -14,11 +14,10 @@
 + (id)stringWithValue:(id)arg1;
 - (id)fc_lowerCaseStringByTrimmingWhiteSpace;
 - (id)fc_lowercaseTokensWithMinimumLength:(unsigned long long)arg1;
-- (id)fc_sanitizeWithOffendingCharacterSet:(id)arg1;
+- (id)fc_numberFollowingString:(id)arg1;
 - (id)fc_stringByMultiplyingStringByCount:(unsigned long long)arg1;
 - (id)fc_stringByPrefixingLinesWithString:(id)arg1;
 - (id)fc_stringByRemovingPunctuation;
-- (BOOL)fc_validateWithRegexPattern:(id)arg1;
 - (id)stringByRemovingCharactersInSet:(id)arg1;
 - (id)stringByReplacingPrefix:(id)arg1 withString:(id)arg2;
 - (id)tokenizedLowerCaseStringWithMinimumLength:(unsigned long long)arg1;

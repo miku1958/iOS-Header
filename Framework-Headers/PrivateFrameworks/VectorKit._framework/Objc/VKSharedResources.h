@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<ggl::IsoAlphaAtlas, std::__1::default_delete<ggl::IsoAlphaAtlas>> _isoAlphaAtlas;
     struct unique_ptr<ggl::DistanceAtlas, std::__1::default_delete<ggl::DistanceAtlas>> _distanceAtlas;
     shared_ptr_1ddd16cb _shaderLibrary;
-    struct mutex _referenceCountingLock;
     unsigned int _referenceCount;
 }
 
@@ -39,14 +38,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) VKShieldManager *shieldManager; // @synthesize shieldManager=_shieldManager;
 @property (readonly, nonatomic) shared_ptr_dd2d1f5e stylesheetVendor; // @synthesize stylesheetVendor=_stylesheetVendor;
 
-+ (id)sharedResourcesForConfiguration:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_addResourceUser;
+- (BOOL)_hasResourceUsers;
 - (id)_initWithConfiguration:(id)arg1 device:(const shared_ptr_807ec9ac *)arg2 standardLibrary:(const shared_ptr_1ddd16cb *)arg3;
-- (void)addResourceUser;
+- (void)_removeResourceUser;
 - (void)dealloc;
 - (void)purge;
-- (void)removeResourceUser;
 
 @end
 

@@ -57,6 +57,7 @@
 - (void)_refreshTimerFired:(id)arg1;
 - (void)_removeRefreshTimerForEventWithExternalURL:(id)arg1;
 - (id)_reportAProblemActionForAlertInfo:(id)arg1;
+- (void)_reportJunkCalendarItemForRecordID:(id)arg1;
 - (id)_representationForRequest:(id)arg1 timeToLeaveString:(id)arg2 eventIfExists:(id)arg3 displayTimeZone:(id)arg4;
 - (id)_resourceChangeURIFromBulletin:(id)arg1;
 - (void)_setEventRepresentationForNotification:(id)arg1 bulletin:(id)arg2;
@@ -102,7 +103,7 @@
 - (id)protectedItemForBulletinRecordID:(id)arg1;
 - (void)protectedRemoveBulletinForID:(id)arg1;
 - (void)protectedSaveBulletin:(id)arg1 forAlertInfo:(id)arg2 usingID:(id)arg3;
-- (void)respond:(BOOL)arg1 toCalendarInvite:(id)arg2;
+- (void)respond:(BOOL)arg1 toCalendarInvite:(id)arg2 isJunk:(BOOL)arg3;
 - (id)sectionIdentifier;
 - (id)sectionParameters;
 - (BOOL)shouldModfyBulletinForAlert:(id)arg1;

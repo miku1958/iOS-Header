@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet, NSString;
-@protocol AXRemoteElementChildrenDelegate;
+@protocol AXRemoteElementChildrenDelegate, OS_dispatch_queue;
 
 @interface AXRemoteElement : NSObject
 {
@@ -20,6 +20,7 @@
     unsigned int _machPort;
     id<AXRemoteElementChildrenDelegate> _remoteChildrenDelegate;
     id _accessibilityContainer;
+    NSObject<OS_dispatch_queue> *_remoteQueue;
 }
 
 @property (weak, nonatomic) id accessibilityContainer; // @synthesize accessibilityContainer=_accessibilityContainer;
@@ -29,6 +30,7 @@
 @property (nonatomic) BOOL onClientSide; // @synthesize onClientSide=_onClientSide;
 @property (weak, nonatomic) id<AXRemoteElementChildrenDelegate> remoteChildrenDelegate; // @synthesize remoteChildrenDelegate=_remoteChildrenDelegate;
 @property (nonatomic) int remotePid; // @synthesize remotePid=_remotePid;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *remoteQueue; // @synthesize remoteQueue=_remoteQueue;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (readonly, nonatomic) unsigned long long uuidHash;
 

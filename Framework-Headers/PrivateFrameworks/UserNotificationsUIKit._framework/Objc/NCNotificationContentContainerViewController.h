@@ -39,9 +39,9 @@
 - (void)_setupContentViewController:(id)arg1;
 - (void)_setupQuickReplyForNotificationAction:(id)arg1;
 - (void)_setupQuickReplyForNotificationRequest:(id)arg1;
-- (BOOL)_shouldShowTextInputOnAppearance;
 - (id)_textInputActionInNotification:(id)arg1;
 - (BOOL)allowManualDismiss;
+- (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (void)customContent:(id)arg1 didLoadAudioAccessoryView:(id)arg2;
 - (void)customContent:(id)arg1 forwardAction:(id)arg2 forNotification:(id)arg3 withUserInfo:(id)arg4;
@@ -60,8 +60,9 @@
 - (BOOL)performAction:(id)arg1 forNotification:(id)arg2 withUserInfo:(id)arg3;
 - (void)playAudioMessage;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (void)preserveInputViews;
+- (BOOL)restoreInputViews;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
-- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

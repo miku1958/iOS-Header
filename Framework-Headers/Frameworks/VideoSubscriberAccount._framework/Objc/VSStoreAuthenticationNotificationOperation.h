@@ -8,7 +8,6 @@
 
 @class NSURL, VSAuthenticationBulletinOperation, VSIdentityProvider;
 
-__attribute__((visibility("hidden")))
 @interface VSStoreAuthenticationNotificationOperation : VSAsyncOperation
 {
     VSIdentityProvider *_identityProvider;

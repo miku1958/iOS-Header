@@ -33,6 +33,10 @@ struct LogCategoryPrivate;
 
 struct LogOutput;
 
+struct NSMutableDictionary {
+    Class _field1;
+};
+
 struct NSMutableSet {
     Class _field1;
 };

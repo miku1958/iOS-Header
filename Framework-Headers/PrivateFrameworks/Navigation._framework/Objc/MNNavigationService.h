@@ -61,6 +61,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *traceBookmarks;
 @property (readonly, nonatomic) double traceDuration;
+@property (readonly, nonatomic) NSString *traceFileName;
 @property (nonatomic) BOOL traceIsPlaying;
 @property (readonly, nonatomic) NSString *tracePath;
 @property (nonatomic) double tracePosition;

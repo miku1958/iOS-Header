@@ -19,6 +19,7 @@
     unsigned long long _coverArticlesPrecedingGroupsCount;
     unsigned long long _editorialPosition;
     unsigned long long _editorialPrecedingGroupsCount;
+    double _weekendGreatStoriesYouMissedTimeRange;
 }
 
 @property (readonly, nonatomic) unsigned long long coverArticlesPosition; // @synthesize coverArticlesPosition=_coverArticlesPosition;
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) unsigned long long topStoriesPrecedingGroupsCount; // @synthesize topStoriesPrecedingGroupsCount=_topStoriesPrecedingGroupsCount;
 @property (readonly, nonatomic) unsigned long long trendingStoriesPosition; // @synthesize trendingStoriesPosition=_trendingStoriesPosition;
 @property (readonly, nonatomic) unsigned long long trendingStoriesPrecedingGroupsCount; // @synthesize trendingStoriesPrecedingGroupsCount=_trendingStoriesPrecedingGroupsCount;
+@property (readonly, nonatomic) double weekendGreatStoriesYouMissedTimeRange; // @synthesize weekendGreatStoriesYouMissedTimeRange=_weekendGreatStoriesYouMissedTimeRange;
 
 - (void).cxx_destruct;
 - (unsigned long long)hash;

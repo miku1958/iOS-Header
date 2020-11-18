@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _keyWebEventHandler;
     struct CGPoint _lastInteractionLocation;
     struct WKSelectionDrawingInfo _lastSelectionDrawingInfo;
+    struct optional<WebKit::InteractionInformationRequest> _outstandingPositionInformationRequest;
     BOOL _isEditable;
     BOOL _showingTextStyleOptions;
     BOOL _hasValidPositionInformation;
@@ -76,7 +77,7 @@ __attribute__((visibility("hidden")))
     BOOL _isExpectingFastSingleTapCommit;
     BOOL _showDebugTapHighlightsForFastClicking;
     BOOL _resigningFirstResponder;
-    BOOL _forceIPadStyleZoomOnInputFocus;
+    BOOL _needsDeferredEndScrollingSelectionUpdate;
     struct unique_ptr<WebKit::PageClientImpl, std::__1::default_delete<WebKit::PageClientImpl>> _pageClient;
     struct RetainPtr<WKBrowsingContextController> _browsingContextController;
     struct RetainPtr<UIView> _rootContentView;
@@ -112,6 +113,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDevicePasscodeEntry) BOOL devicePasscodeEntry;
 @property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText;
@@ -124,7 +126,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long forceDictationKeyboardType;
 @property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
-@property (nonatomic) BOOL forceIPadStyleZoomOnInputFocus;
 @property (readonly, nonatomic) UIWebFormAccessory *formAccessoryView;
 @property (nonatomic) BOOL hasDefaultContents;
 @property (readonly, nonatomic) BOOL hasText;
@@ -163,6 +164,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long selectionGranularity;
 @property (strong, nonatomic) UIColor *selectionHighlightColor;
 @property (nonatomic) int shortcutConversionType;
+@property (readonly, nonatomic) BOOL shouldHideSelectionWhenScrolling;
 @property (nonatomic, getter=isShowingInspectorIndication) BOOL showingInspectorIndication;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
@@ -187,6 +189,7 @@ __attribute__((visibility("hidden")))
 - (SEL)_actionForLongPress;
 - (void)_addDefaultGestureRecognizers;
 - (void)_addShortcut:(id)arg1;
+- (BOOL)_allowAnimatedUpdateSelectionRectViews;
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationDidCreateWindowContext;
 - (void)_applicationDidEnterBackground;
@@ -202,6 +205,8 @@ __attribute__((visibility("hidden")))
 - (unsigned int)_characterInRelationToCaretSelection:(int)arg1;
 - (void)_commitPotentialTapFailed;
 - (id)_commonInitializationWithProcessPool:(struct WebProcessPool *)arg1 configuration:(Ref_f9f79aa9 *)arg2;
+- (struct CGRect)_computeUnobscuredContentRectRespectingInputViewBounds:(struct CGRect)arg1 unobscuredContentRect:(struct CGRect)arg2 inputViewBounds:(struct CGRect)arg3 scale:(double)arg4;
+- (id)_contentsOfUserInterfaceItem:(id)arg1;
 - (void)_createAndConfigureDoubleTapGestureRecognizer;
 - (unique_ptr_54a90528)_createDrawingAreaProxy;
 - (id)_dataDetectionResults;
@@ -210,6 +215,7 @@ __attribute__((visibility("hidden")))
 - (void)_didCommitLayerTree:(const struct RemoteLayerTreeTransaction *)arg1;
 - (void)_didCommitLoadForMainFrame;
 - (void)_didEndScrollingOrZooming;
+- (void)_didExitStableState;
 - (void)_didGetTapHighlightForRequest:(unsigned long long)arg1 color:(const struct Color *)arg2 quads:(const Vector_c1077595 *)arg3 topLeftRadius:(const struct IntSize *)arg4 topRightRadius:(const struct IntSize *)arg5 bottomLeftRadius:(const struct IntSize *)arg6 bottomRightRadius:(const struct IntSize *)arg7;
 - (void)_didHandleKeyEvent:(id)arg1 eventWasHandled:(BOOL)arg2;
 - (void)_didNotHandleTapAsClick:(const struct IntPoint *)arg1;
@@ -273,7 +279,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_requiresKeyboardWhenFirstResponder;
 - (void)_resetIsDoubleTapPending;
 - (void)_resetShowingTextStyle:(id)arg1;
-- (Optional_dd601f4a)_scrollOffsetForEvent:(id)arg1;
+- (optional_cd26f1c9)_scrollOffsetForEvent:(id)arg1;
 - (BOOL)_scrollToRect:(struct CGRect)arg1 withOrigin:(struct CGPoint)arg2 minimumScrollDistance:(double)arg3;
 - (id)_scroller;
 - (BOOL)_selectionAtDocumentStart;
@@ -304,6 +310,7 @@ __attribute__((visibility("hidden")))
 - (void)_transliterateChinese:(id)arg1;
 - (void)_twoFingerDoubleTapRecognized:(id)arg1;
 - (void)_twoFingerSingleTapGestureRecognized:(id)arg1;
+- (id)_uiTextSelectionRects;
 - (void)_unregisterPreview;
 - (void)_updateAccessory;
 - (void)_updateChangedSelection;
@@ -317,7 +324,7 @@ __attribute__((visibility("hidden")))
 - (void)_windowDidMoveToScreenNotification:(id)arg1;
 - (unsigned long long)_wk_pageCountForPrintFormatter:(id)arg1;
 - (void)_zoomOutWithOrigin:(struct CGPoint)arg1;
-- (void)_zoomToFocusRect:(struct CGRect)arg1 selectionRect:(struct CGRect)arg2 fontSize:(float)arg3 minimumScale:(double)arg4 maximumScale:(double)arg5 allowScaling:(BOOL)arg6 forceScroll:(BOOL)arg7;
+- (void)_zoomToFocusRect:(struct CGRect)arg1 selectionRect:(struct CGRect)arg2 insideFixed:(BOOL)arg3 fontSize:(float)arg4 minimumScale:(double)arg5 maximumScale:(double)arg6 allowScaling:(BOOL)arg7 forceScroll:(BOOL)arg8;
 - (void)_zoomToInitialScaleWithOrigin:(struct CGPoint)arg1;
 - (BOOL)_zoomToRect:(struct CGRect)arg1 withOrigin:(struct CGPoint)arg2 fitEntireRect:(BOOL)arg3 minimumScale:(double)arg4 maximumScale:(double)arg5 minimumScrollDistance:(double)arg6;
 - (void)accessibilityRetrieveSpeakSelectionContent;
@@ -363,10 +370,10 @@ __attribute__((visibility("hidden")))
 - (void)didFinishScrolling;
 - (void)didInterruptScrolling;
 - (void)didMoveToWindow;
-- (void)didUpdateVisibleRect:(struct CGRect)arg1 unobscuredRect:(struct CGRect)arg2 unobscuredRectInScrollViewCoordinates:(struct CGRect)arg3 obscuredInset:(struct CGSize)arg4 scale:(double)arg5 minimumScale:(double)arg6 inStableState:(BOOL)arg7 isChangingObscuredInsetsInteractively:(BOOL)arg8 enclosedInScrollableAncestorView:(BOOL)arg9;
+- (void)didUpdateVisibleRect:(struct CGRect)arg1 unobscuredRect:(struct CGRect)arg2 unobscuredRectInScrollViewCoordinates:(struct CGRect)arg3 obscuredInset:(struct CGSize)arg4 inputViewBounds:(struct CGRect)arg5 scale:(double)arg6 minimumScale:(double)arg7 inStableState:(BOOL)arg8 isChangingObscuredInsetsInteractively:(BOOL)arg9 enclosedInScrollableAncestorView:(BOOL)arg10;
 - (void)didZoomToScale:(double)arg1;
 - (void)endSelectionChange;
-- (void)ensurePositionInformationIsUpToDate:(struct CGPoint)arg1;
+- (void)ensurePositionInformationIsUpToDate:(struct InteractionInformationRequest)arg1;
 - (void)executeEditCommandWithCallback:(id)arg1;
 - (void)fileUploadPanelDidDismiss:(id)arg1;
 - (struct CGRect)firstRectForRange:(id)arg1;
@@ -374,6 +381,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)gestureRecognizer:(id)arg1 canBePreventedByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 canPreventGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handleKeyEvent:(id)arg1;
 - (void)handleKeyWebEvent:(id)arg1;
@@ -420,16 +428,18 @@ __attribute__((visibility("hidden")))
 - (void)replaceRange:(id)arg1 withText:(id)arg2;
 - (void)replaceRangeWithTextWithoutClosingTyping:(id)arg1 replacementText:(id)arg2;
 - (void)replaceText:(id)arg1 withText:(id)arg2;
+- (void)requestAsynchronousPositionInformationUpdate:(struct InteractionInformationRequest)arg1;
 - (void)requestAutocorrectionContextWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestAutocorrectionRectsForString:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestDictationContext:(CDUnknownBlockType)arg1;
-- (BOOL)requiresAccessoryView:(BOOL)arg1;
+- (BOOL)requiresAccessoryView;
 - (BOOL)requiresKeyEvents;
 - (BOOL)resignFirstResponder;
 - (void)scrollViewWillStartPanOrPinchGesture;
 - (void)select:(id)arg1;
 - (void)selectAll;
 - (void)selectAll:(id)arg1;
+- (void)selectFormAccessoryPickerRow:(long long)arg1;
 - (void)selectPositionAtBoundary:(long long)arg1 inDirection:(long long)arg2 fromPoint:(struct CGPoint)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)selectPositionAtPoint:(struct CGPoint)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)selectTextWithGranularity:(long long)arg1 atPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -443,6 +453,7 @@ __attribute__((visibility("hidden")))
 - (id)selectionRectsForRange:(id)arg1;
 - (void)setBaseWritingDirection:(long long)arg1 forRange:(id)arg2;
 - (void)setBottomBufferHeight:(double)arg1;
+- (BOOL)setIsEditable:(BOOL)arg1;
 - (void)setMarkedText:(id)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)setSelectedDOMRange:(id)arg1 affinityDownstream:(BOOL)arg2;

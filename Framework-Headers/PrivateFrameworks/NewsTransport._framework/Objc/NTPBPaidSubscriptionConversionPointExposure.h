@@ -14,6 +14,7 @@
 {
     NSString *_articleId;
     NSData *_articleViewingSessionId;
+    NSData *_feedViewExposureId;
     NSString *_iadQtoken;
     int _paidSubscriptionConversionPointExposureLocation;
     int _paidSubscriptionConversionPointExposurePresentationReason;
@@ -39,9 +40,11 @@
 @property (nonatomic) BOOL arrivedFromAd; // @synthesize arrivedFromAd=_arrivedFromAd;
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
+@property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (nonatomic) BOOL hasArrivedFromAd;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
+@property (readonly, nonatomic) BOOL hasFeedViewExposureId;
 @property (readonly, nonatomic) BOOL hasIadQtoken;
 @property (nonatomic) BOOL hasPaidSubscriptionConversionPointExposureLocation;
 @property (nonatomic) BOOL hasPaidSubscriptionConversionPointExposurePresentationReason;

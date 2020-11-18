@@ -17,6 +17,7 @@
 @property (strong, nonatomic) SASyncAppIdentifyingInfo *appIdentifyingInfo;
 @property (copy, nonatomic) NSString *appName;
 @property (copy, nonatomic) NSDictionary *appNameMap;
+@property (copy, nonatomic) NSDictionary *appNameSynonymsMap;
 @property (copy, nonatomic) NSString *appVersion;
 @property (nonatomic) BOOL betaApp;
 @property (copy, nonatomic) NSString *carPlayAlternativeDisplayName;

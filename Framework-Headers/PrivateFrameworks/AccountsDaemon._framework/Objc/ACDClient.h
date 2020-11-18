@@ -36,7 +36,7 @@
 + (id)clientWithBundleID:(id)arg1;
 - (void).cxx_destruct;
 - (id)_displayNameFromBundleInfoDictionaryForPID:(int)arg1;
-- (id)_displayNameFromSpringBoardForPID:(int)arg1;
+- (id)_displayNameFromLaunchServicesForPID:(int)arg1;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)description;

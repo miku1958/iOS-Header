@@ -8,5 +8,8 @@
 
 @interface NSDictionary (AuthKit)
 + (id)ak_dictionaryWithResponseData:(id)arg1;
+- (id)_ak_truncatedTokensCopy;
+- (id)ak_map:(CDUnknownBlockType)arg1;
+- (id)ak_redactedCopy;
 @end
 

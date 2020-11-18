@@ -19,6 +19,7 @@
     BOOL _needStatusTextUpdate;
     BOOL _playsKeypadSounds;
     BOOL _showsEmergencyCallButton;
+    BOOL _showsCancelButton;
     BOOL _showsStatusField;
     BOOL _becameVisible;
     double _backgroundAlpha;
@@ -70,6 +71,7 @@
 @property (strong, nonatomic) NSTimer *screenBrightnessChangedTimer; // @synthesize screenBrightnessChangedTimer=_screenBrightnessChangedTimer;
 @property (nonatomic, getter=isScreenOn) BOOL screenOn; // @synthesize screenOn=_screenOn;
 @property (nonatomic) BOOL shouldResetForFailedPasscodeAttempt; // @synthesize shouldResetForFailedPasscodeAttempt=_shouldResetForFailedPasscodeAttempt;
+@property (nonatomic) BOOL showsCancelButton; // @synthesize showsCancelButton=_showsCancelButton;
 @property (nonatomic) BOOL showsEmergencyCallButton; // @synthesize showsEmergencyCallButton=_showsEmergencyCallButton;
 @property (nonatomic) BOOL showsStatusField; // @synthesize showsStatusField=_showsStatusField;
 @property (nonatomic, getter=_statusState, setter=_setStatusState:) unsigned long long statusState; // @synthesize statusState=_statusState;

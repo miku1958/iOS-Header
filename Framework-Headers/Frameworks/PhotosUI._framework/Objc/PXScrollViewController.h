@@ -17,7 +17,7 @@
     id<PXTilingScrollControllerUpdateDelegate> _updateDelegate;
     PXTilingScrollInfo *_scrollInfo;
     struct NSObject *_scrollView;
-    id<UICoordinateSpace> _contentCoordinateSpace;
+    NSObject<UICoordinateSpace> *_contentCoordinateSpace;
     NSHashTable *__observers;
     struct CGSize _scrollViewContentSize;
     struct UIEdgeInsets _contentInset;
@@ -27,7 +27,7 @@
 @property (readonly, nonatomic) struct CGRect activeRect;
 @property (readonly, nonatomic) struct CGRect constrainedVisibleRect;
 @property (nonatomic) struct CGRect contentBounds;
-@property (readonly, nonatomic) id<UICoordinateSpace> contentCoordinateSpace; // @synthesize contentCoordinateSpace=_contentCoordinateSpace;
+@property (readonly, nonatomic) NSObject<UICoordinateSpace> *contentCoordinateSpace; // @synthesize contentCoordinateSpace=_contentCoordinateSpace;
 @property (nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -68,9 +68,11 @@
 - (BOOL)_boundsAndInsetsAreValidForReferenceDimension;
 - (void)_calculateAttributesForRect:(struct CGRect)arg1;
 - (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
+- (struct CGPoint)_contentOffsetForScrollingToSection:(long long)arg1;
 - (double)_dimensionFromCollectionView;
 - (struct CGSize)_effectiveEstimatedItemSize;
 - (id)_existingLayoutAttributesForItemAtIndexPath:(id)arg1;
+- (struct UIEdgeInsets)_fastScrollingIndexBarInsets;
 - (id)_fetchAndCacheNewLayoutAttributesForCellWithIndexPath:(id)arg1 frame:(struct CGRect)arg2;
 - (void)_fetchItemsInfoForRect:(struct CGRect)arg1;
 - (BOOL)_footerFollowsSectionMargins;

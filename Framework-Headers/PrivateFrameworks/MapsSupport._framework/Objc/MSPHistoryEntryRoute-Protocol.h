@@ -10,7 +10,6 @@
 
 @protocol MSPHistoryEntryRoute <MSPHistoryEntry>
 - (GEOComposedWaypoint *)endWaypoint;
-- (BOOL)isFailed;
 - (BOOL)navigationWasInterrupted;
 - (GEOURLRouteHandle *)routeHandle;
 - (GEOComposedWaypoint *)startWaypoint;

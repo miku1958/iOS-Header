@@ -6,14 +6,16 @@
 
 #import <SAObjects/AceObject.h>
 
-#import <SAObjects/SASTTemplateItem-Protocol.h>
+#import <SAObjects/SASTActionableTemplateItem-Protocol.h>
 
 @class NSString;
+@protocol SASTTemplateAction;
 
-@interface SASTApplicationBannerItem : AceObject <SASTTemplateItem>
+@interface SASTApplicationBannerItem : AceObject <SASTActionableTemplateItem>
 {
 }
 
+@property (strong, nonatomic) id<SASTTemplateAction> action; // @dynamic action;
 @property (copy, nonatomic) NSString *bundleId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

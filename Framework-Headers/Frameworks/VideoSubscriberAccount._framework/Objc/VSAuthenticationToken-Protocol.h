@@ -12,10 +12,10 @@
 
 @property (copy, nonatomic) NSString *body;
 @property (readonly, copy, nonatomic) NSDate *expirationDate;
+@property (readonly, copy, nonatomic) NSData *serializedData;
 
 - (id)initWithSerializedData:(NSData *)arg1;
 - (BOOL)isOpaque;
 - (BOOL)isValid;
-- (NSData *)serializedData;
 @end
 

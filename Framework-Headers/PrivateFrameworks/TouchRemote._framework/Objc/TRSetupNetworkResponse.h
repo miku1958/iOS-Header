@@ -13,6 +13,7 @@
 
 @property (nonatomic) BOOL hasNetwork; // @synthesize hasNetwork=_hasNetwork;
 
++ (BOOL)supportsSecureCoding;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

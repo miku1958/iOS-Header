@@ -171,7 +171,8 @@ typedef struct {
     unsigned int allowsProposeNewTime:1;
     unsigned int prohibitsICSImport:1;
     unsigned int supportsAutoGeocodingStructuredLocations:1;
-} CDStruct_b9f583c3;
+    unsigned int supportsJunkReporting:1;
+} CDStruct_ce1b7935;
 
 typedef struct {
     int _field1;

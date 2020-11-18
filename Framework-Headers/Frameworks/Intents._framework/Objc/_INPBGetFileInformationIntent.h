@@ -39,12 +39,18 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsEntityType:(id)arg1;
+- (int)StringAsPropertyName:(id)arg1;
+- (int)StringAsQualifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)entityTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)propertyNameAsString:(int)arg1;
+- (id)qualifierAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

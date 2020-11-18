@@ -28,10 +28,12 @@
 
 - (void)_debug_fetchAllAvailableExperiments:(CDUnknownBlockType)arg1;
 - (void)_debug_setActiveExperimentBranchDictionaryRepresentation:(id)arg1;
+- (void)_debug_setBucketIdDictionaryRepresentation:(id)arg1;
 - (void)_debug_setQuerySubstring:(id)arg1 forExperimentType:(long long)arg2 dispatcherRequestType:(int)arg3;
 - (void)dealloc;
 - (void)forceUpdate;
 - (id)initWithDelegate:(id)arg1;
+- (void)refreshDatasetABStatus:(id)arg1;
 
 @end
 

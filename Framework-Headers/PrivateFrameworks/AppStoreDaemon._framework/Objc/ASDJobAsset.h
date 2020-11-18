@@ -9,7 +9,7 @@
 #import <AppStoreDaemon/NSCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSNumber, NSString;
+@class NSData, NSNumber, NSString;
 
 @interface ASDJobAsset : NSObject <NSCopying, NSSecureCoding>
 {
@@ -22,7 +22,7 @@
     NSData *_hashArrayData;
     NSNumber *_initialODRSize;
     NSNumber *_numberOfBytesToHash;
-    NSArray *_sinfs;
+    NSData *_sinfs;
     NSString *_variantID;
 }
 
@@ -35,7 +35,7 @@
 @property (nonatomic) BOOL isLocallyCacheable; // @synthesize isLocallyCacheable=_isLocallyCacheable;
 @property (nonatomic) BOOL isZipStreamable; // @synthesize isZipStreamable=_isZipStreamable;
 @property (copy, nonatomic) NSNumber *numberOfBytesToHash; // @synthesize numberOfBytesToHash=_numberOfBytesToHash;
-@property (copy, nonatomic) NSArray *sinfs; // @synthesize sinfs=_sinfs;
+@property (copy, nonatomic) NSData *sinfs; // @synthesize sinfs=_sinfs;
 @property (copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
 
 + (BOOL)supportsSecureCoding;

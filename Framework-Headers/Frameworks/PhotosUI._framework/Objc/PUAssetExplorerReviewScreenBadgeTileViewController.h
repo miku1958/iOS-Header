@@ -6,13 +6,14 @@
 
 #import <PhotosUI/PUTileViewController.h>
 
-#import <PhotosUI/PUViewModelChangeObserver-Protocol.h>
+#import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
+#import <PhotosUI/PXUIAssetBadgeViewDelegate-Protocol.h>
 
-@class NSString, PLPhotoTileBadgeView, PUAssetActionManager, PUAssetReference, PUBrowsingViewModel;
+@class NSString, PUAssetActionManager, PUAssetReference, PUBrowsingViewModel, PXUIAssetBadgeView;
 
 __attribute__((visibility("hidden")))
-@interface PUAssetExplorerReviewScreenBadgeTileViewController : PUTileViewController <PXChangeObserver, PUViewModelChangeObserver>
+@interface PUAssetExplorerReviewScreenBadgeTileViewController : PUTileViewController <PXChangeObserver, PUBrowsingViewModelChangeObserver, PXUIAssetBadgeViewDelegate>
 {
     BOOL __performingChanges;
     BOOL __needsUpdateBadgeView;
@@ -20,10 +21,10 @@ __attribute__((visibility("hidden")))
     PUBrowsingViewModel *_browsingViewModel;
     PUAssetReference *_assetReference;
     PUAssetActionManager *_actionManager;
-    PLPhotoTileBadgeView *__badgeView;
+    PXUIAssetBadgeView *__badgeView;
 }
 
-@property (readonly, nonatomic) PLPhotoTileBadgeView *_badgeView; // @synthesize _badgeView=__badgeView;
+@property (readonly, nonatomic) PXUIAssetBadgeView *_badgeView; // @synthesize _badgeView=__badgeView;
 @property (nonatomic, setter=_setOverContent:) BOOL _isOverContent; // @synthesize _isOverContent=__isOverContent;
 @property (nonatomic, setter=_setNeedsUpdateBadgeView:) BOOL _needsUpdateBadgeView; // @synthesize _needsUpdateBadgeView=__needsUpdateBadgeView;
 @property (nonatomic, getter=_isPerformingChanges, setter=_setPerformingChanges:) BOOL _performingChanges; // @synthesize _performingChanges=__performingChanges;
@@ -35,17 +36,17 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)_configureBadgeView:(id)arg1 isOverContent:(BOOL)arg2;
++ (void)_configureBadgeView:(id)arg1 isOverContent:(BOOL)arg2 isLivePhotoDisabled:(BOOL)arg3;
 + (struct CGSize)badgeTileSize;
 - (void).cxx_destruct;
 - (id)_disableLivePhotosSelectionManager;
-- (void)_handleLivePhotoButtonTapped:(id)arg1;
 - (void)_invalidateBadgeView;
 - (BOOL)_needsUpdate;
 - (id)_reviewActionManager;
 - (void)_updateBadgeViewIfNeeded;
 - (void)_updateIfNeeded;
 - (void)applyLayoutInfo:(id)arg1;
+- (void)assetBadgeView:(id)arg1 userDidSelectBadges:(unsigned long long)arg2;
 - (void)becomeReusable;
 - (id)loadView;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;

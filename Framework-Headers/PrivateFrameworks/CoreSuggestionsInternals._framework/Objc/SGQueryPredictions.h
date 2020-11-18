@@ -9,12 +9,13 @@
 #import <CoreSuggestionsInternals/SFFeedbackListener-Protocol.h>
 #import <CoreSuggestionsInternals/SGQPAssetUpdateDelegate-Protocol.h>
 
-@class NSString, SGQPAssetManager, SGQPLanguageContext, SGQPMetricsTracker, SGSqlEntityStore;
+@class NSString, SGQPAssetManager, SGQPLanguageContext, SGQPMetricsTracker, SGQPSessionTracker, SGSqlEntityStore;
 
 @interface SGQueryPredictions : NSObject <SFFeedbackListener, SGQPAssetUpdateDelegate>
 {
     SGSqlEntityStore *_harvestStore;
     SGQPAssetManager *_assetManager;
+    SGQPSessionTracker *_sessionTracker;
     SGQPMetricsTracker *_metricsTracker;
     SGQPLanguageContext *_noLanguageContext;
     SGQPLanguageContext *_primaryLanguageContext;

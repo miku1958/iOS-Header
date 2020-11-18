@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <Metal/MTLLibrary-Protocol.h>
 
@@ -32,6 +32,7 @@
 @property (readonly) Class superclass;
 
 - (void)dealloc;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithLibraryContainer:(struct MTLLibraryContainer *)arg1 device:(id)arg2;
 - (id)newFunctionWithName:(id)arg1;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

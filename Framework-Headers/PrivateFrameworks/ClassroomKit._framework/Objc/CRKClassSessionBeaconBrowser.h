@@ -11,13 +11,13 @@
 
 @interface CRKClassSessionBeaconBrowser : NSObject
 {
+    BOOL _allowInvitationSessions;
     BOOL _isBrowsing;
     id<CRKClassSessionBeaconBrowserDelegate> _delegate;
     NSSet *_organizationUUIDs;
-    NSSet *_controlGroupIdentifiers;
 }
 
-@property (copy, nonatomic) NSSet *controlGroupIdentifiers; // @synthesize controlGroupIdentifiers=_controlGroupIdentifiers;
+@property (nonatomic) BOOL allowInvitationSessions; // @synthesize allowInvitationSessions=_allowInvitationSessions;
 @property (weak, nonatomic) id<CRKClassSessionBeaconBrowserDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL isBrowsing; // @synthesize isBrowsing=_isBrowsing;
 @property (copy, nonatomic) NSSet *organizationUUIDs; // @synthesize organizationUUIDs=_organizationUUIDs;

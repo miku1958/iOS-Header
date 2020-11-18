@@ -16,16 +16,14 @@
 
 @interface NCNotificationLongLookView : NCAnimatableBlurringView <UIGestureRecognizerDelegate, UIScrollViewDelegate, NCNotificationStaticContentAccepting, NCCustomContentContainingLookView, NCContentSizeCategoryAdjusting>
 {
-    UIView *_headerClippingView;
     NCLookHeaderContentView *_headerContentView;
     UIView *_headerDivider;
+    UIView *_contentView;
     UIView *_mainContentView;
-    UIView *_mainContentClippingView;
     UIView *_topRubberbandingView;
     UIView *_customContentView;
     NCNotificationContentView *_notificationContentView;
     NCKeyLineView *_actionsKeyLineView;
-    UIView *_actionsClippingView;
     UIView *_actionsBackgroundView;
     UIInterfaceActionGroupView *_actionsView;
     UITapGestureRecognizer *_lookViewTapGestureRecognizer;
@@ -71,24 +69,23 @@
 @property (readonly, nonatomic) UIButton *utilityButton;
 
 - (void).cxx_destruct;
+- (struct CGSize)_actionsSizeThatFits:(struct CGSize)arg1 includingPadding:(BOOL)arg2;
 - (void)_configureActionViewIfNecessaryWithActions:(id)arg1;
 - (void)_configureActionsBackgroundViewIfNecessaryWithActions:(id)arg1;
-- (void)_configureActionsClippingViewIfNecessaryWithActions:(id)arg1;
 - (void)_configureActionsKeyLineViewIfNecessaryWithActions:(id)arg1;
+- (void)_configureContentViewIfNecessary;
 - (void)_configureCustomContentViewIfNecessary;
-- (void)_configureHeaderClippingViewIfNecessary;
 - (void)_configureHeaderContentViewIfNecessary;
 - (void)_configureLookViewTapGestureRecognizerIfNecessary;
-- (void)_configureMainContentClippingViewIfNecessary;
 - (void)_configureMainContentViewIfNecessary;
 - (void)_configureNotificationContentViewIfNecessary;
 - (void)_configureScrollViewIfNecessary;
 - (struct CGSize)_contentSizeThatFitsContentWithSizeExcludingActions:(struct CGSize)arg1;
 - (void)_layoutActionsView;
+- (void)_layoutContentView;
 - (void)_layoutCustomContentView;
 - (void)_layoutCustomContentViewInRelationToContentView;
 - (void)_layoutHeader;
-- (void)_layoutMainContentClippingView;
 - (void)_layoutMainContentView;
 - (void)_layoutNotificationContentView;
 - (void)_layoutScrollView;

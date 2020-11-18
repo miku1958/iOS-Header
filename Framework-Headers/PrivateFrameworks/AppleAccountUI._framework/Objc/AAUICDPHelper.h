@@ -11,10 +11,13 @@
 @interface AAUICDPHelper : NSObject
 {
     UIViewController *_presentingViewController;
+    BOOL _forceInline;
 }
 
+@property (nonatomic) BOOL forceInline; // @synthesize forceInline=_forceInline;
 @property (readonly, weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 
++ (id)cdpContextForAccount:(id)arg1;
 + (id)cdpContextForPrimaryAccount;
 + (id)helperWithPresenter:(id)arg1;
 - (void).cxx_destruct;

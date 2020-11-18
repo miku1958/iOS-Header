@@ -111,6 +111,7 @@
 - (id)initWithProductPageStyle:(long long)arg1;
 - (id)initWithTabBarItem:(id)arg1;
 - (void)itemStateCenter:(id)arg1 didFinishPurchases:(id)arg2;
+- (void)itemStateCenter:(id)arg1 didFinishSoftwarePurchases:(id)arg2;
 - (void)loadProductWithParameters:(id)arg1;
 - (void)loadProductWithRequest:(id)arg1;
 - (void)loadView;

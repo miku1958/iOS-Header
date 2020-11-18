@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <Message/ECMailbox-Protocol.h>
 #import <Message/MFMailboxPredictionMailbox-Protocol.h>
 #import <Message/NSCopying-Protocol.h>
 
 @class MFInvocationQueue, MFMessageCriterion, MFWeakReferenceHolder, MailAccount, NSArray, NSMutableArray, NSMutableDictionary, NSNumber, NSString;
 
-@interface MFMailboxUid : NSObject <MFMailboxPredictionMailbox, NSCopying>
+@interface MFMailboxUid : NSObject <MFMailboxPredictionMailbox, ECMailbox, NSCopying>
 {
     NSString *uniqueId;
     unsigned int _mailboxID;
@@ -36,10 +37,13 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *extraAttributes; // @synthesize extraAttributes=_extraAttributes;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *permanentTag; // @synthesize permanentTag=_permanentTag;
+@property (readonly, copy, nonatomic) NSString *persistentID;
 @property (readonly, nonatomic) unsigned long long suggestionsLostMessageSearchResultCount;
 @property (readonly, nonatomic) double suggestionsLostMessageSearchTimestamp;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) long long type;
 
 + (BOOL)isDraftsMailboxType:(int)arg1;
 + (BOOL)isOutgoingMailboxType:(int)arg1;
@@ -93,6 +97,7 @@
 - (BOOL)isOutgoingMailboxUid;
 - (BOOL)isSelectable;
 - (BOOL)isSentMailboxUid;
+- (BOOL)isShared;
 - (BOOL)isSpecialMailboxUid;
 - (BOOL)isStandardizedMailboxUid;
 - (BOOL)isStore;
@@ -103,7 +108,6 @@
 - (unsigned int)mailboxID;
 - (BOOL)mergeWithUserInfo:(id)arg1;
 - (id)mutableCopyOfChildren;
-- (id)name;
 - (unsigned long long)nonDeletedCount;
 - (unsigned long long)numberOfChildren;
 - (unsigned long long)numberOfDescendants;
@@ -111,7 +115,6 @@
 - (id)parent;
 - (id)pathRelativeToMailbox:(id)arg1;
 - (id)pathRelativeToMailboxForDisplay:(id)arg1;
-- (id)persistentID;
 - (id)realFullPath;
 - (void)removeChild:(id)arg1;
 - (id)representedAccount;
@@ -134,7 +137,6 @@
 - (id)store;
 - (id)tildeAbbreviatedPath;
 - (id)topMailbox;
-- (int)type;
 - (id)uniqueId;
 - (unsigned long long)unreadCount;
 - (unsigned long long)unreadCountMatchingCriterion:(id)arg1;

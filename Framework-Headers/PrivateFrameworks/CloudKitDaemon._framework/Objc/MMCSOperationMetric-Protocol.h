@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
-@class NSArray, NSDate;
+@class NSArray, NSDate, NSMutableSet;
 @protocol MMCSOperationStateTimeRange;
 
 @protocol MMCSOperationMetric <NSObject>
@@ -19,6 +19,7 @@
 @property double executing;
 @property double queueing;
 @property (readonly) NSArray *rangesCopy;
+@property (readonly) NSMutableSet *requestUUIDs;
 @property (readonly) NSDate *startDate;
 
 - (void)addRange:(id<MMCSOperationStateTimeRange>)arg1;

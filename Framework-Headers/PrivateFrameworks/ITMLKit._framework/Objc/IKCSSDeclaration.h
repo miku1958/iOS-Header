@@ -14,13 +14,12 @@
     unsigned long long _type;
     NSString *_name;
     NSString *_aliasedName;
-    NSString *_stringValue;
 }
 
 @property (strong, nonatomic) NSString *aliasedName; // @synthesize aliasedName=_aliasedName;
 @property BOOL important; // @synthesize important=_important;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
+@property (readonly, nonatomic) NSString *stringValue;
 @property unsigned long long type; // @synthesize type=_type;
 
 + (id)typeString:(unsigned long long)arg1;

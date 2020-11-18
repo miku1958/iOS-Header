@@ -8,7 +8,7 @@
 
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, PUAutoScroller, UILongPressGestureRecognizer, UIView, _UIFeedbackDragSnappingBehavior;
+@class NSIndexPath, NSString, PXUIAutoScroller, UILongPressGestureRecognizer, UIView, _UIFeedbackDragSnappingBehavior;
 @protocol PUCollectionViewReorderDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     NSIndexPath *_dragTargetIndexPath;
     UIView *_draggedView;
     struct CGPoint _draggedViewCenterOffset;
-    PUAutoScroller *_autoScroller;
+    PXUIAutoScroller *_autoScroller;
     id<PUCollectionViewReorderDelegate> _reorderDelegate;
     _UIFeedbackDragSnappingBehavior *__feedbackDragBehavior;
 }

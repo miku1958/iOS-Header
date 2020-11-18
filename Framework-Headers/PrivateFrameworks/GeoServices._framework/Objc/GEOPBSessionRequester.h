@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableData, NSMutableDictionary, NSOperationQueue, NSString, NSURL, NSURLSession, NSURLSessionTask, PBDataReader;
+@class GEONSURLSharedSession, NSArray, NSDictionary, NSMutableArray, NSMutableData, NSMutableDictionary, NSOperationQueue, NSString, NSURL, NSURLSessionTask, NSURLSessionTaskMetrics, PBDataReader;
 @protocol GEOPBSessionRequesterDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     NSURL *_URL;
     id<GEOPBSessionRequesterDelegate> _delegate;
     NSOperationQueue *_delegateQueue;
-    NSURLSession *_session;
+    GEONSURLSharedSession *_session;
     NSURLSessionTask *_currentTask;
     NSOperationQueue *_sessionDelegateQ;
     NSMutableData *_data;
@@ -25,9 +25,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _lastGoodDataOffset;
     unsigned long long _uploadPayloadSize;
     unsigned long long _downloadPayloadSize;
+    int _requestBodySize;
     unsigned long long _timeRequestSent;
     unsigned long long _timeResponseReceived;
-    long long _responseStatusCode;
+    NSURLSessionTaskMetrics *_taskMetrics;
+    int _responseStatusCode;
     NSMutableArray *_requests;
     NSMutableArray *_responses;
     NSMutableArray *_internalRequests;
@@ -38,14 +40,24 @@ __attribute__((visibility("hidden")))
     NSString *_logRequestToFile;
     NSString *_logResponseToFile;
     BOOL _didNotifyRequestCompleted;
-    NSArray *_clientCertificates;
     NSDictionary *_connectionProperties;
     BOOL _shouldHandleCookies;
-    CDStruct_dca542ad _flags;
+    struct {
+        unsigned int ignoresResponse:1;
+        unsigned int loading:1;
+        unsigned int needsCancel:1;
+        unsigned int responseStatusSet:1;
+        unsigned int parsedResponseHeader:1;
+        unsigned int delegateDidReceiveResponse:1;
+        unsigned int delegateDidFinish:1;
+        unsigned int delegateDidCancel:1;
+        unsigned int delegateDidFailWithError:1;
+        unsigned int paused:1;
+        unsigned int resuming:1;
+    } _flags;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-@property (strong, nonatomic) NSArray *clientCertificates; // @synthesize clientCertificates=_clientCertificates;
 @property (strong, nonatomic) NSURLSessionTask *currentTask; // @synthesize currentTask=_currentTask;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<GEOPBSessionRequesterDelegate> delegate;
@@ -53,14 +65,17 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long downloadPayloadSize; // @synthesize downloadPayloadSize=_downloadPayloadSize;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSDictionary *httpRequestHeaders;
-@property (strong, nonatomic) NSDictionary *httpResponseHeaders; // @synthesize httpResponseHeaders=_httpResponseHeaders;
+@property (copy, nonatomic) NSDictionary *httpResponseHeaders; // @synthesize httpResponseHeaders=_httpResponseHeaders;
+@property (readonly, nonatomic) int httpResponseStatusCode;
 @property (nonatomic) BOOL ignoresResponse;
 @property (strong, nonatomic) NSString *logRequestToFile; // @synthesize logRequestToFile=_logRequestToFile;
 @property (strong, nonatomic) NSString *logResponseToFile; // @synthesize logResponseToFile=_logResponseToFile;
 @property BOOL needsCancel;
+@property (readonly, nonatomic) NSString *remoteAddressAndPort;
+@property (readonly, nonatomic) int requestBodySize;
 @property (readonly, nonatomic) unsigned long long requestResponseTime;
 @property (readonly, nonatomic) NSArray *requests;
-@property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
+@property (strong, nonatomic) GEONSURLSharedSession *session; // @synthesize session=_session;
 @property (nonatomic) BOOL shouldHandleCookies; // @synthesize shouldHandleCookies=_shouldHandleCookies;
 @property (readonly) Class superclass;
 @property (nonatomic) double timeoutSeconds; // @synthesize timeoutSeconds=_timeoutSeconds;
@@ -69,9 +84,9 @@ __attribute__((visibility("hidden")))
 + (BOOL)usesEncodedMessages;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 _willSendRequestForEstablishedConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (id)_applicationID;
 - (void)_cancelNoNotify;
 - (void)_cancelWithErrorDomain:(id)arg1 errorCode:(long long)arg2 userInfo:(id)arg3;
@@ -83,7 +98,6 @@ __attribute__((visibility("hidden")))
 - (void)_logErrorIfNecessary:(id)arg1;
 - (void)_logRequestsIfNecessary:(id)arg1;
 - (void)_logResponsesIfNecessary:(id)arg1;
-- (id)_newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2 connectionProperties:(id)arg3;
 - (id)_osVersion;
 - (void)_performOnDelegateQueue:(CDUnknownBlockType)arg1;
 - (void)_scheduleThrottlingError;
@@ -106,15 +120,13 @@ __attribute__((visibility("hidden")))
 - (id)internalRequests;
 - (BOOL)isPaused;
 - (id)newMutableURLRequestWithURL:(id)arg1;
-- (id)newSessionTaskOnSession:(id)arg1 withURLRequest:(id)arg2;
-- (id)newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2;
-- (id)newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2 connectionProperties:(id)arg3;
 - (void)pause;
 - (BOOL)readResponsePreamble:(id)arg1;
 - (id)requestPreamble;
 - (id)responseForInternalRequest:(id)arg1;
 - (id)responseForRequest:(id)arg1;
 - (void)resume;
+- (id)sessionWithConnectionProperties:(id)arg1;
 - (void)setHttpRequestHeader:(id)arg1 forKey:(id)arg2;
 - (void)setNeedsCancel;
 - (void)start;

@@ -13,6 +13,12 @@ typedef struct {
 } CDStruct_9f2792e4;
 
 typedef struct {
+    unsigned long long *list;
+    unsigned long long count;
+    unsigned long long size;
+} CDStruct_62a50c50;
+
+typedef struct {
     int *list;
     unsigned long long count;
     unsigned long long size;

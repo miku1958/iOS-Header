@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUFeedCell.h>
 
-@class PLPhotoTileBadgeView, PUImageViewExtraction, UIButton, UIImage, UIImageView, UIView;
+@class PUImageViewExtraction, PXUIAssetBadgeView, UIButton, UIImage, UIImageView, UIView;
 @protocol PXVideoOverlayButton;
 
 __attribute__((visibility("hidden")))
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
     PUImageViewExtraction *__overlayPlayButtonBackgroundExtraction;
     UIImageView *__centerOverlayImageView;
     UIButton *__commentButton;
-    PLPhotoTileBadgeView *__photoIrisBadgeView;
+    PXUIAssetBadgeView *__photoIrisBadgeView;
     struct CGSize _maximumImageSize;
     struct CGRect __imageFrame;
 }
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setOverlayPlayButton:) UIView<PXVideoOverlayButton> *_overlayPlayButton; // @synthesize _overlayPlayButton=__overlayPlayButton;
 @property (strong, nonatomic, setter=_setOverlayPlayButtonBackgroundExtraction:) PUImageViewExtraction *_overlayPlayButtonBackgroundExtraction; // @synthesize _overlayPlayButtonBackgroundExtraction=__overlayPlayButtonBackgroundExtraction;
 @property (strong, nonatomic, setter=_setOverlayPlayButtonBackgroundImageView:) UIImageView *_overlayPlayButtonBackgroundImageView; // @synthesize _overlayPlayButtonBackgroundImageView=__overlayPlayButtonBackgroundImageView;
-@property (strong, nonatomic, setter=_setPhotoIrisBadgeView:) PLPhotoTileBadgeView *_photoIrisBadgeView; // @synthesize _photoIrisBadgeView=__photoIrisBadgeView;
+@property (strong, nonatomic, setter=_setPhotoIrisBadgeView:) PXUIAssetBadgeView *_photoIrisBadgeView; // @synthesize _photoIrisBadgeView=__photoIrisBadgeView;
 @property (nonatomic, setter=_setShouldHideCenterOverlayImageView:) BOOL _shouldHideCenterOverlayImageView; // @synthesize _shouldHideCenterOverlayImageView=__shouldHideCenterOverlayImageView;
 @property (nonatomic, setter=_setShouldHideCommentButton:) BOOL _shouldHideCommentButton; // @synthesize _shouldHideCommentButton=__shouldHideCommentButton;
 @property (nonatomic, setter=_setShouldHideOverlayPlayButton:) BOOL _shouldHideOverlayPlayButton; // @synthesize _shouldHideOverlayPlayButton=__shouldHideOverlayPlayButton;
@@ -55,7 +55,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGSize maximumImageSize; // @synthesize maximumImageSize=_maximumImageSize;
 @property (nonatomic) long long overlayOptions; // @synthesize overlayOptions=_overlayOptions;
 
++ (BOOL)_allowHighQualityVideoOverlayButton;
 + (Class)_contentViewClass;
++ (long long)_videoOverlayButtonStyle;
++ (void)preloadResources;
 - (void).cxx_destruct;
 - (void)_handleCommentButton:(id)arg1;
 - (void)_handlePlayButton:(id)arg1;

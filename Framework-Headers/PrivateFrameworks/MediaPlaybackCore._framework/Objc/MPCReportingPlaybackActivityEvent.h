@@ -14,14 +14,12 @@
 {
     BOOL _shouldReportToStore;
     SSVPlayActivityEvent *_playActivityEvent;
-    NSString *_playbackSessionID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) SSVPlayActivityEvent *playActivityEvent; // @synthesize playActivityEvent=_playActivityEvent;
-@property (copy, nonatomic) NSString *playbackSessionID; // @synthesize playbackSessionID=_playbackSessionID;
 @property (nonatomic) BOOL shouldReportToStore; // @synthesize shouldReportToStore=_shouldReportToStore;
 @property (readonly) Class superclass;
 

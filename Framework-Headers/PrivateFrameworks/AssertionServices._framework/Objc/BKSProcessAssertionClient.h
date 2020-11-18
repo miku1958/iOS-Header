@@ -6,20 +6,21 @@
 
 #import <BaseBoard/BSBaseXPCClient.h>
 
-@class NSMapTable;
+@class NSMapTable, NSObject;
+@protocol OS_dispatch_queue;
 
 @interface BKSProcessAssertionClient : BSBaseXPCClient
 {
     NSMapTable *_assertionHandlersByIdentifier;
+    NSObject<OS_dispatch_queue> *_assertionQueue;
 }
 
-+ (id)clientQueue;
++ (id)assertionQueue;
 + (id)sharedInstance;
-- (void)_dispatchClientCalloutBlock:(CDUnknownBlockType)arg1;
-- (id)_errorWithCode:(unsigned long long)arg1;
-- (void)_handleDestroy:(id)arg1;
-- (void)_invalidate;
-- (void)_sendEvent:(id)arg1 forMessageType:(unsigned long long)arg2 responseHandler:(CDUnknownBlockType)arg3;
+- (void)_assertionQueue_sendEvent:(id)arg1 forMessageType:(unsigned long long)arg2 responseHandler:(CDUnknownBlockType)arg3;
+- (void)_assertionQueue_unregisterHandlerWithIdentifier:(id)arg1 andNotify:(BOOL)arg2;
+- (void)_connectionQueue_handleDestroy:(id)arg1;
+- (void)_connectionQueue_invalidateAllAssertions;
 - (double)backgroundTimeRemaining:(int)arg1;
 - (void)dealloc;
 - (id)description;
@@ -27,8 +28,7 @@
 - (void)queue_connectionWasDestroyed;
 - (void)queue_handleMessage:(id)arg1;
 - (void)registerClientHandler:(id)arg1 forAssertionIdentifier:(id)arg2;
-- (void)sendCreateAssertion:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
-- (id)sendCreateAssertionSync:(id)arg1;
+- (BOOL)sendCreateAssertion:(id)arg1;
 - (void)sendDestroyAssertion:(id)arg1;
 - (void)sendUpdateAssertion:(id)arg1;
 - (void)unregisterClientHandlerForAssertionIdentifier:(id)arg1;

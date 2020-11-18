@@ -15,6 +15,7 @@
 - (void)cancelValidationWithError:(NSError *)arg1;
 - (void)resetAccountCDPState;
 - (void)supportedEscapeOfferMaskCompletion:(void (^)(unsigned long long))arg1;
+- (void)validateRecoveryKey:(NSString *)arg1 withCompletion:(void (^)(BOOL, BOOL, NSError *))arg2;
 - (void)validateSecret:(NSString *)arg1 devices:(NSArray *)arg2 type:(unsigned long long)arg3 withCompletion:(void (^)(BOOL, BOOL, NSError *))arg4;
 @end
 

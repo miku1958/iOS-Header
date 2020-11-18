@@ -13,8 +13,9 @@
 
 @interface PSPasscodeField : UIView <UIKeyInput>
 {
+    NSMutableArray *_dotOutlineViews;
+    NSMutableArray *_dotFullViews;
     NSMutableArray *_dashViews;
-    NSMutableArray *_dotViews;
     NSMutableArray *_digitViews;
     NSMutableString *_stringValue;
     BOOL _securePasscodeEntry;

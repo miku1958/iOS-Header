@@ -6,17 +6,20 @@
 
 #import <MessageUI/MFComposeHeaderView.h>
 
-@class UISegmentedControl;
+@class NSMutableArray, UISegmentedControl;
 
 @interface MFComposeImageSizeView : MFComposeHeaderView
 {
     UISegmentedControl *_segmentedControl;
+    NSMutableArray *_visibleScales;
 }
 
-- (unsigned long long)_segmentIndexForScale:(unsigned long long)arg1;
+- (unsigned long long)_insertIndexForScale:(unsigned long long)arg1;
+- (unsigned long long)_scaleLabelIndexForScale:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)removeSizeDescriptionForScale:(unsigned long long)arg1;
 - (void)segmentedControlChanged;
 - (void)setScale:(unsigned long long)arg1;
 - (void)setSizeDescription:(id)arg1 forScale:(unsigned long long)arg2;

@@ -8,9 +8,8 @@
 
 #import <VideoSubscriberAccount/VSAuthenticationToken-Protocol.h>
 
-@class NSDate, NSString;
+@class NSData, NSDate, NSString;
 
-__attribute__((visibility("hidden")))
 @interface VSOpaqueAuthenticationToken : NSObject <VSAuthenticationToken>
 {
     NSString *_body;
@@ -22,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSData *serializedData;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithSerializedData:(id)arg1;
 - (BOOL)isOpaque;
 - (BOOL)isValid;
-- (id)serializedData;
 
 @end
 

@@ -6,10 +6,12 @@
 
 #import <StoreKit/NSObject-Protocol.h>
 
-@class NSError;
+@class NSError, NSURL;
 
 @protocol SKCloudServiceSetupExtensionClientInterface <NSObject>
 - (void)didFinishLoadingWithSuccess:(BOOL)arg1 error:(NSError *)arg2;
 - (void)dismissCloudServiceSetupViewControllerAnimated:(BOOL)arg1 completion:(void (^)(void))arg2;
+- (void)dismissSafariViewControllerAnimated:(BOOL)arg1 completion:(void (^)(void))arg2;
+- (void)presentSafariViewControllerWithURL:(NSURL *)arg1 animated:(BOOL)arg2 completion:(void (^)(void))arg3;
 @end
 

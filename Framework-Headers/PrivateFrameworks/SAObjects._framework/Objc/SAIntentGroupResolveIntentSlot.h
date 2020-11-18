@@ -6,7 +6,7 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
-@class NSString, SAIntentGroupProtobufMessage;
+@class NSNumber, NSString, SAIntentGroupProtobufMessage;
 
 @interface SAIntentGroupResolveIntentSlot : SABaseClientBoundCommand
 {
@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) SAIntentGroupProtobufMessage *intent;
 @property (copy, nonatomic) NSString *intentSlotKeyPath;
+@property (copy, nonatomic) NSNumber *intentSlotValueIndex;
 
 + (id)resolveIntentSlot;
 + (id)resolveIntentSlotWithDictionary:(id)arg1 context:(id)arg2;

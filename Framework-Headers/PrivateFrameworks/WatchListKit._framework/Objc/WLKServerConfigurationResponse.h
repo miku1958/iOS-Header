@@ -15,11 +15,9 @@
     NSDictionary *_serverRoutesDictionary;
     NSDictionary *_requiredRequestKeyValuePairsDictionary;
     unsigned long long _expirationInSeconds;
-    NSDictionary *_channelsByID;
     NSArray *_orderedChannels;
 }
 
-@property (readonly, copy, nonatomic) NSDictionary *channelsByID; // @synthesize channelsByID=_channelsByID;
 @property (readonly, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property (readonly, nonatomic) NSDictionary *endpointsDictionary; // @synthesize endpointsDictionary=_endpointsDictionary;
 @property (readonly, nonatomic) unsigned long long expirationInSeconds; // @synthesize expirationInSeconds=_expirationInSeconds;

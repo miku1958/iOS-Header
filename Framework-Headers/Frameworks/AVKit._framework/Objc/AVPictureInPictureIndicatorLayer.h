@@ -6,13 +6,22 @@
 
 #import <QuartzCore/CALayer.h>
 
+@class CATextLayer, NSAttributedString;
+
 __attribute__((visibility("hidden")))
 @interface AVPictureInPictureIndicatorLayer : CALayer
 {
+    NSAttributedString *_attributedText;
     CALayer *_containerLayer;
+    struct CGRect _containerLayerUncompressedBounds;
+    CATextLayer *_textLayer;
+    struct CGPoint _textLayerUncompressedPosition;
+    struct CGRect _textLayerUncompressedBounds;
+    CALayer *_imageLayer;
 }
 
 - (void).cxx_destruct;
+- (struct CGRect)_textBoundsForSize:(struct CGSize)arg1;
 - (id)init;
 - (id)initWithTraitCollection:(id)arg1 opaque:(BOOL)arg2;
 - (void)layoutSublayers;

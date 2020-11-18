@@ -8,8 +8,8 @@
 
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
 
-@class FCMutexLock, NSCountedSet, NSHashTable, NSMapTable, NSString;
-@protocol FCFetchCoordinatorDelegate, FCOperationThrottler;
+@class FCBoostableOperationThrottler, FCMutexLock, NSCountedSet, NSHashTable, NSMapTable, NSString;
+@protocol FCFetchCoordinatorDelegate;
 
 @interface FCFetchCoordinator : NSObject <FCOperationThrottlerDelegate>
 {
@@ -19,7 +19,7 @@
     NSCountedSet *_allKeys;
     NSMapTable *_fetchOperationsByGroup;
     FCMutexLock *_accessLock;
-    id<FCOperationThrottler> _fetchThrottler;
+    FCBoostableOperationThrottler *_fetchThrottler;
 }
 
 @property (strong, nonatomic) FCMutexLock *accessLock; // @synthesize accessLock=_accessLock;
@@ -29,7 +29,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSHashTable *fetchGroups; // @synthesize fetchGroups=_fetchGroups;
 @property (strong, nonatomic) NSMapTable *fetchOperationsByGroup; // @synthesize fetchOperationsByGroup=_fetchOperationsByGroup;
-@property (strong, nonatomic) id<FCOperationThrottler> fetchThrottler; // @synthesize fetchThrottler=_fetchThrottler;
+@property (strong, nonatomic) FCBoostableOperationThrottler *fetchThrottler; // @synthesize fetchThrottler=_fetchThrottler;
 @property (readonly) unsigned long long hash;
 @property unsigned long long maxConcurrentFetchCount; // @synthesize maxConcurrentFetchCount=_maxConcurrentFetchCount;
 @property (readonly) Class superclass;

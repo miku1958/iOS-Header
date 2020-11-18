@@ -10,6 +10,7 @@
 
 @interface ISDisplayLink : NSObject
 {
+    long long _preferredFramesPerSecond;
     CDUnknownBlockType _updateHandler;
     CDUnknownBlockType _completionHandler;
     CADisplayLink *_displayLink;
@@ -17,6 +18,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
+@property (nonatomic) long long preferredFramesPerSecond; // @synthesize preferredFramesPerSecond=_preferredFramesPerSecond;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
 - (void).cxx_destruct;

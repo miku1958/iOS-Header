@@ -44,6 +44,7 @@
 - (id)_iconWithFormat:(int)arg1;
 - (id)_iconWithOutline;
 - (int)_outlineVariantForScale:(double)arg1;
+- (void)_resetIcons;
 - (id)initWithExtension:(id)arg1;
 - (BOOL)isLinkedOnOrAfterSystemVersion:(id)arg1;
 - (void)registerWidgetHost:(id)arg1;

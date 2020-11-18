@@ -10,10 +10,11 @@
 #import <PhotosPlayer/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosPlayer/UIInteractionProgressObserver-Protocol.h>
 
-@class ISLivePhotoPlaybackFilter, ISLivePhotoPlayer, NSString, UIGestureRecognizer, UILabel, UIPreviewForceInteractionProgress;
+@class ISLivePhotoPlaybackFilter, ISLivePhotoPlayer, NSString, UIGestureRecognizer, UIImpactFeedbackGenerator, UILabel, UIPreviewForceInteractionProgress;
 
 @interface ISLivePhotoUIView : ISBasePlayerUIView <UIInteractionProgressObserver, UIGestureRecognizerDelegate, ISChangeObserver>
 {
+    UIImpactFeedbackGenerator *_feedbackGenerator;
     BOOL __playingVitality;
     BOOL __useForceTouch;
     UIGestureRecognizer *_playbackGestureRecognizer;
@@ -41,11 +42,15 @@
 - (void)_dismissOverlayLabel:(long long)arg1;
 - (void)_handlePlaybackRecognizer:(id)arg1;
 - (Class)_playbackFilterClass;
+- (void)_playerDidChangeHinting;
+- (void)_playerDidChangePlaybackStyle;
 - (void)_showOverlayLabel;
 - (void)_updateForceInteractionProgress;
+- (void)_updateGestureRecognizerParameters;
 - (void)_updatePlaybackFilter;
 - (void)_updatePlaybackFilterInput;
 - (void)audioSessionDidChange;
+- (void)contentDidChange;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithCoder:(id)arg1;

@@ -22,6 +22,7 @@
 - (void)contentWithCompletion:(CDUnknownBlockType)arg1;
 - (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2;
 - (id)displayProfileOfType:(long long)arg1;
+- (id)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5;
 - (void)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (id)initWithLibrary:(id)arg1 objectUniqueID:(id)arg2;
 - (void)noteShared;

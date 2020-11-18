@@ -15,10 +15,10 @@
     NSData *_bufferData;
 }
 
-@property (strong) NSMutableArray *argumentData; // @synthesize argumentData=_argumentData;
-@property (readonly) NSMutableArray *arguments;
-@property (strong) NSData *bufferData; // @synthesize bufferData=_bufferData;
-@property (strong) NSData *bufferPrivateData; // @synthesize bufferPrivateData=_bufferPrivateData;
+@property (strong, nonatomic) NSMutableArray *argumentData; // @synthesize argumentData=_argumentData;
+@property (readonly, nonatomic) NSMutableArray *arguments;
+@property (strong, nonatomic) NSData *bufferData; // @synthesize bufferData=_bufferData;
+@property (strong, nonatomic) NSData *bufferPrivateData; // @synthesize bufferPrivateData=_bufferPrivateData;
 @property (readonly, copy) NSString *format;
 
 - (void).cxx_destruct;

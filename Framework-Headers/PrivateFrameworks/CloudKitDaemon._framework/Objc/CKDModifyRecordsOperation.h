@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     NSArray *_recordIDsToDelete;
     NSDictionary *_recordIDsToDeleteToEtags;
     NSDictionary *_conflictLosersToResolveByRecordID;
+    NSDictionary *_pluginFieldsForRecordDeletesByID;
     NSDictionary *_handlersByRecordID;
     NSDictionary *_parentsByRecordID;
     NSMutableDictionary *_modifyHandlersByZoneID;
@@ -53,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *modifyHandlersByZoneID; // @synthesize modifyHandlersByZoneID=_modifyHandlersByZoneID;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *modifyRecordsQueue; // @synthesize modifyRecordsQueue=_modifyRecordsQueue;
 @property (strong, nonatomic) NSDictionary *parentsByRecordID; // @synthesize parentsByRecordID=_parentsByRecordID;
+@property (strong, nonatomic) NSDictionary *pluginFieldsForRecordDeletesByID; // @synthesize pluginFieldsForRecordDeletesByID=_pluginFieldsForRecordDeletesByID;
 @property (readonly, nonatomic) CKDDecryptRecordsOperation *recordDecryptOperation;
 @property (strong, nonatomic) NSArray *recordIDsToDelete; // @synthesize recordIDsToDelete=_recordIDsToDelete;
 @property (strong, nonatomic) NSDictionary *recordIDsToDeleteToEtags; // @synthesize recordIDsToDeleteToEtags=_recordIDsToDeleteToEtags;
@@ -103,6 +105,8 @@ __attribute__((visibility("hidden")))
 - (void)_uploadAssets;
 - (void)_verifyRecordEncryption;
 - (id)activityCreate;
+- (void)callbackWithMetadata:(id)arg1 error:(id)arg2;
+- (void)deleteCallbackWithMetadata:(id)arg1 error:(id)arg2;
 - (void)finishWithError:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;

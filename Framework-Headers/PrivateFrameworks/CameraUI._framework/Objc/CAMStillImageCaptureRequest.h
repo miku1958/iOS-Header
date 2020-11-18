@@ -41,6 +41,8 @@
     NSString *_originalIrisIdentifier;
     NSURL *_originalLocalVideoDestinationURL;
     NSString *_originalVideoPersistenceUUID;
+    unsigned long long _userInitiationTime;
+    double _loggingVideoZoomFactor;
     id<CAMStillImageCaptureRequestDelegate> _delegate;
 }
 
@@ -56,6 +58,7 @@
 @property (readonly, copy, nonatomic) NSString *irisIdentifier; // @synthesize irisIdentifier=_irisIdentifier;
 @property (readonly, nonatomic) long long irisMode; // @synthesize irisMode=_irisMode;
 @property (readonly, copy, nonatomic) NSURL *localVideoDestinationURL; // @synthesize localVideoDestinationURL=_localVideoDestinationURL;
+@property (readonly, nonatomic) double loggingVideoZoomFactor; // @synthesize loggingVideoZoomFactor=_loggingVideoZoomFactor;
 @property (readonly, nonatomic) unsigned long long maximumBurstLength; // @synthesize maximumBurstLength=_maximumBurstLength;
 @property (readonly, copy, nonatomic) NSString *originalIrisIdentifier; // @synthesize originalIrisIdentifier=_originalIrisIdentifier;
 @property (readonly, copy, nonatomic) NSURL *originalLocalVideoDestinationURL; // @synthesize originalLocalVideoDestinationURL=_originalLocalVideoDestinationURL;
@@ -63,6 +66,7 @@
 @property (readonly, copy, nonatomic) NSString *originalVideoPersistenceUUID; // @synthesize originalVideoPersistenceUUID=_originalVideoPersistenceUUID;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *timelapseIdentifier; // @synthesize timelapseIdentifier=_timelapseIdentifier;
+@property (readonly, nonatomic) unsigned long long userInitiationTime; // @synthesize userInitiationTime=_userInitiationTime;
 @property (readonly, nonatomic) BOOL usesStillImageStabilization; // @synthesize usesStillImageStabilization=_usesStillImageStabilization;
 @property (readonly, copy, nonatomic) NSString *videoPersistenceUUID; // @synthesize videoPersistenceUUID=_videoPersistenceUUID;
 @property (readonly, nonatomic) BOOL wantsAudioForCapture; // @synthesize wantsAudioForCapture=_wantsAudioForCapture;

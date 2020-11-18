@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSMutableDictionary, NSNumber, NSString;
+@class NSDate, NSMutableDictionary, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
 @interface IDSMessageContext : NSObject
@@ -28,6 +28,7 @@
 @property (copy, nonatomic) NSString *originalDestinationDevice;
 @property (copy, nonatomic) NSString *outgoingResponseIdentifier;
 @property (nonatomic) NSNumber *priority;
+@property (readonly, nonatomic) NSDate *serverReceivedTime;
 @property (copy, nonatomic) NSString *serviceIdentifier;
 @property (copy, nonatomic) NSString *storageGuid;
 @property (copy, nonatomic) NSString *toID;
@@ -37,7 +38,9 @@
 - (void)dealloc;
 - (id)initWithDictionary:(id)arg1 boostContext:(id)arg2;
 - (id)objectForKey:(id)arg1;
+- (id)serverTimestamp;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (void)setServerTimestamp:(id)arg1;
 
 @end
 

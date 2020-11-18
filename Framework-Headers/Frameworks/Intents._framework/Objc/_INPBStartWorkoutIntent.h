@@ -42,6 +42,8 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsWorkoutGoalUnitType:(id)arg1;
+- (int)StringAsWorkoutLocationType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -49,6 +51,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)workoutGoalUnitTypeAsString:(int)arg1;
+- (id)workoutLocationTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -9,7 +9,7 @@
 #import <Home/HFHomeObserver-Protocol.h>
 #import <Home/HFSetupPairingController-Protocol.h>
 
-@class HFAccessoryBrowsingManager, HFDiscoveredAccessory, HMHome, NAFuture, NSHashTable, NSString;
+@class HFAccessoryBrowsingManager, HFDiscoveredAccessory, HMHome, HMSetupAccessoryDescription, NAFuture, NSHashTable, NSString;
 @protocol HMSetupRemoteService;
 
 @interface HFSetupSingleAccessoryPairingController : NSObject <HFHomeObserver, HFSetupPairingController>
@@ -17,6 +17,7 @@
     NSString *_setupCode;
     HFDiscoveredAccessory *_discoveredAccessoryToPair;
     id<HMSetupRemoteService> _setupRemoteService;
+    HMSetupAccessoryDescription *_setupAccessoryDescription;
     unsigned long long _phase;
     NSString *_statusText;
     HMHome *_home;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) NAFuture *pairingFuture; // @synthesize pairingFuture=_pairingFuture;
 @property (strong, nonatomic) NSHashTable *pairingObservers; // @synthesize pairingObservers=_pairingObservers;
 @property (nonatomic) unsigned long long phase; // @synthesize phase=_phase;
+@property (readonly, nonatomic) HMSetupAccessoryDescription *setupAccessoryDescription; // @synthesize setupAccessoryDescription=_setupAccessoryDescription;
 @property (strong, nonatomic) NSString *setupCode; // @synthesize setupCode=_setupCode;
 @property (weak, nonatomic) id<HMSetupRemoteService> setupRemoteService; // @synthesize setupRemoteService=_setupRemoteService;
 @property (strong, nonatomic) NSString *statusText; // @synthesize statusText=_statusText;
@@ -51,7 +53,7 @@
 - (void)addPairingObserver:(id)arg1;
 - (id)cancel;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
-- (id)initWithDiscoveredAccessory:(id)arg1 setupRemoteService:(id)arg2;
+- (id)initWithDiscoveredAccessory:(id)arg1 setupRemoteService:(id)arg2 setupAccessoryDescription:(id)arg3;
 - (void)removePairingObserver:(id)arg1;
 - (void)startWithHome:(id)arg1;
 

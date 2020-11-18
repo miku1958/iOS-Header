@@ -114,7 +114,7 @@
 - (id)navigationController;
 - (void)pinChoiceAlertDidChooseToUseDevicePasscode:(BOOL)arg1;
 - (id)preferencesApp;
-- (void)promptForDevicePasscodeChangeToPasscode:(id)arg1 overController:(id)arg2;
+- (void)promptForDevicePasscodeChangeToPasscode:(id)arg1 overController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)promptForPasswordIfCredentialsNotCachedOverController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)promptForPasswordIfNeededForWritingOverController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)promptForPasswordIfNeededOverController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

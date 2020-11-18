@@ -38,6 +38,7 @@
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)jsContextForWorld:(id)arg1;
 - (id)jsNodeForNodeHandle:(id)arg1 inWorld:(id)arg2;
+- (id)jsRangeForRangeHandle:(id)arg1 inWorld:(id)arg2;
 
 @end
 

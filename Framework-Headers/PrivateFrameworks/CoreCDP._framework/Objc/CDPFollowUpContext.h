@@ -12,6 +12,7 @@
 
 @interface CDPFollowUpContext : NSObject <NSSecureCoding>
 {
+    unsigned long long _repairType;
     BOOL _shouldNotify;
     BOOL _force;
     NSString *_followUpType;
@@ -19,9 +20,11 @@
 
 @property (copy, nonatomic) NSString *followUpType; // @synthesize followUpType=_followUpType;
 @property (nonatomic) BOOL force; // @synthesize force=_force;
+@property (nonatomic) unsigned long long repairType;
 @property (nonatomic) BOOL shouldNotify; // @synthesize shouldNotify=_shouldNotify;
 
 + (id)contextForOfflinePasscodeChange;
++ (id)contextForRecoveryKeyRepair;
 + (id)contextForStateRepair;
 + (id)contextWithType:(id)arg1;
 + (BOOL)supportsSecureCoding;

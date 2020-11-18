@@ -10,10 +10,11 @@
 #import <NewsCore/FCCacheFlushing-Protocol.h>
 #import <NewsCore/FCFetchCoordinatorDelegate-Protocol.h>
 
-@class FCCacheCoordinator, FCFetchCoordinator, FCThreadSafeMutableDictionary, FCWebArchiveStore, NSString;
+@class FCCacheCoordinator, FCFetchCoordinator, FCThreadSafeMutableDictionary, FCWebArchiveStore, NSString, NSURL;
 
 @interface FCWebArchiveSource : NSObject <FCCacheCoordinatorDelegate, FCFetchCoordinatorDelegate, FCCacheFlushing>
 {
+    NSURL *_directoryURLForCachedWebArchives;
     FCWebArchiveStore *_webArchiveStore;
     FCCacheCoordinator *_cacheCoordinator;
     FCFetchCoordinator *_fetchCoordinator;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) FCCacheCoordinator *cacheCoordinator; // @synthesize cacheCoordinator=_cacheCoordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSURL *directoryURLForCachedWebArchives; // @synthesize directoryURLForCachedWebArchives=_directoryURLForCachedWebArchives;
 @property (strong, nonatomic) FCFetchCoordinator *fetchCoordinator; // @synthesize fetchCoordinator=_fetchCoordinator;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) FCThreadSafeMutableDictionary *keysToURLs; // @synthesize keysToURLs=_keysToURLs;

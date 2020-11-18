@@ -12,6 +12,9 @@
 - (void)handleFailoversForClassNamed:(id)arg1;
 - (BOOL)safeBoolForKey:(id)arg1;
 - (double)safeCGFloatForKey:(id)arg1;
+- (struct CGPoint)safeCGPointForKey:(id)arg1;
+- (struct CGRect)safeCGRectForKey:(id)arg1;
+- (struct CGSize)safeCGSizeForKey:(id)arg1;
 - (double)safeDoubleForKey:(id)arg1;
 - (float)safeFloatForKey:(id)arg1;
 - (int)safeIntForKey:(id)arg1;

@@ -28,6 +28,7 @@
 - (BOOL)openURL:(id)arg1;
 - (void)openURL:(id)arg1 bundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)openUserActivity:(id)arg1 withApplicationProxy:(id)arg2 requireOptionKeyPromptUnlockDevice:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)overrideBlurStyle;
 - (void)placeDialRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)reduceMotionEnabled;

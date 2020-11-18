@@ -8,11 +8,12 @@
 
 #import <Message/CSSearchableIndexDelegate-Protocol.h>
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
+#import <Message/MFLibrarySearchableIndexVerifierDataSource-Protocol.h>
 
 @class CSSearchableIndex, MFCoalescer, MFLazyCache, MFWeakSet, NSMutableArray, NSMutableSet, NSString, _MFLibrarySearchableIndexPendingRemovals;
 @protocol MFLibrarySearchableIndexDataSource, OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
 
-@interface MFLibrarySearchableIndex : NSObject <MFDiagnosticsGenerator, CSSearchableIndexDelegate>
+@interface MFLibrarySearchableIndex : NSObject <MFDiagnosticsGenerator, CSSearchableIndexDelegate, MFLibrarySearchableIndexVerifierDataSource>
 {
     NSString *_indexName;
     NSObject<OS_dispatch_queue> *_queue;
@@ -52,6 +53,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=_isForeground, setter=_setForeground:) BOOL foreground;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long pendingIndexItemsCount;
 @property (readonly) Class superclass;
 @property (readonly, getter=_transaction) long long transaction;
 
@@ -99,12 +101,14 @@
 - (void)applicationWillResume;
 - (void)applicationWillSuspend;
 - (id)copyDiagnosticInformation;
+- (id)dataSamplesForSearchableIndexVerifier:(id)arg1 searchableIndex:(id)arg2;
 - (void)dealloc;
 - (id)identifiersMatchingCriterion:(id)arg1;
 - (void)indexItems:(id)arg1;
 - (id)indexedEmptySubjectIdentifers;
 - (id)init;
 - (id)initWithName:(id)arg1 dataSource:(id)arg2;
+- (id)librarySearchableIndexForSearchableIndexVerifier:(id)arg1;
 - (double)persistedRemainingIndexingBudget;
 - (void)refresh;
 - (void)removeAllItems;

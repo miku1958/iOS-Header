@@ -7,12 +7,10 @@
 #import <objc/NSObject.h>
 
 @class AKDevice, NSLock, NSXPCConnection, NSXPCListenerEndpoint;
-@protocol OS_dispatch_queue;
 
 @interface AKAnisetteProvisioningController : NSObject
 {
     NSXPCConnection *_anisetteServiceConnection;
-    NSObject<OS_dispatch_queue> *_replyHandlingQueue;
     NSLock *_connectionLock;
     NSXPCListenerEndpoint *_daemonXPCEndpoint;
     AKDevice *_targetDevice;
@@ -22,6 +20,7 @@
 - (id)_anisetteServiceConnection;
 - (id)_initForDevice:(id)arg1 daemonXPCEndpoint:(id)arg2;
 - (void)anisetteDataForURLRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)anisetteDataForURLRequest:(id)arg1 error:(id *)arg2;
 - (void)anisetteDataWithCompletion:(CDUnknownBlockType)arg1;
 - (id)anisetteDataWithError:(id *)arg1;
 - (void)dealloc;

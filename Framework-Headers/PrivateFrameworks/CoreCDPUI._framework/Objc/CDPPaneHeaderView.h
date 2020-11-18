@@ -22,6 +22,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (double)innerHeaderMaxY;
 - (void)layoutSubviews;
+- (void)makeAllTheTextFits;
 - (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
 - (void)setTitleText:(id)arg1;
 

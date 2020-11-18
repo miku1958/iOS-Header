@@ -23,6 +23,7 @@
     BOOL _undesiredMixOfItems;
     BOOL _onlyPhotosOrVideos;
     BOOL _autoAccept;
+    BOOL _hideProgress;
     BOOL _senderIsMe;
     BOOL _verifiableIdentity;
     NSString *_recordID;
@@ -74,6 +75,7 @@
 @property (readonly, copy, nonatomic) NSString *firstFileName;
 @property (readonly, copy, nonatomic) NSString *firstFileTypeDescription;
 @property (readonly, nonatomic) NSURL *firstURL;
+@property (nonatomic, getter=shouldHideProgress) BOOL hideProgress; // @synthesize hideProgress=_hideProgress;
 @property (strong, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (copy, nonatomic) NSString *itemsDescription; // @synthesize itemsDescription=_itemsDescription;
 @property (strong, nonatomic) NSDictionary *itemsDescriptionAdvanced; // @synthesize itemsDescriptionAdvanced=_itemsDescriptionAdvanced;

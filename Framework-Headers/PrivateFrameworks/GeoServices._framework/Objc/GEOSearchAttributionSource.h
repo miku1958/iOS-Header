@@ -19,11 +19,17 @@
     unsigned int _sourceVersion;
     NSMutableArray *_supportedComponentActions;
     NSString *_webBaseActionURL;
+    BOOL _enforceAppStore;
+    struct {
+        unsigned int enforceAppStore:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSMutableArray *attributionApps; // @synthesize attributionApps=_attributionApps;
 @property (readonly, nonatomic) int *attributionRequirements;
 @property (readonly, nonatomic) unsigned long long attributionRequirementsCount;
+@property (nonatomic) BOOL enforceAppStore; // @synthesize enforceAppStore=_enforceAppStore;
+@property (nonatomic) BOOL hasEnforceAppStore;
 @property (readonly, nonatomic) BOOL hasWebBaseActionURL;
 @property (strong, nonatomic) NSMutableArray *localizedAttributions; // @synthesize localizedAttributions=_localizedAttributions;
 @property (strong, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;

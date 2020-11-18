@@ -30,6 +30,8 @@
 @property (strong, nonatomic) SADistance *relativeDistance;
 @property (copy, nonatomic) NSString *stateCode;
 @property (copy, nonatomic) NSString *street;
+@property (copy, nonatomic) NSString *subAdministrativeArea;
+@property (copy, nonatomic) NSString *subLocality;
 @property (copy, nonatomic) NSString *subThoroughfare;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *thoroughfare;

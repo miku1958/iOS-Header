@@ -24,9 +24,7 @@ __attribute__((visibility("hidden")))
 
 + (id)contactKeyForVCardKey:(id)arg1;
 + (CDUnknownBlockType)contactValueTransformForVCardKey:(id)arg1;
-+ (CDUnknownBlockType)instantMessageAddressFromDictionaryTransform;
 + (id)labeledValuesWithValues:(id)arg1 transform:(CDUnknownBlockType)arg2 labels:(id)arg3 isPrimaries:(id)arg4;
-+ (CDUnknownBlockType)socialProfileFromDictionaryTransform;
 - (id)build;
 - (BOOL)canSetValueForProperty:(id)arg1;
 - (long long)contactTypeFromPersonFlags:(long long)arg1;

@@ -6,18 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView;
-
 @interface MCDProgressBarView : UIView
 {
-    UIView *_barView;
-    UIImageView *_indicatorView;
+    UIView *_overallBarView;
+    UIView *_progressBarView;
+    UIView *_indicatorView;
     double _progress;
 }
 
-@property (strong, nonatomic) UIView *barView; // @synthesize barView=_barView;
-@property (strong, nonatomic) UIImageView *indicatorView; // @synthesize indicatorView=_indicatorView;
+@property (strong, nonatomic) UIView *indicatorView; // @synthesize indicatorView=_indicatorView;
+@property (strong, nonatomic) UIView *overallBarView; // @synthesize overallBarView=_overallBarView;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
+@property (strong, nonatomic) UIView *progressBarView; // @synthesize progressBarView=_progressBarView;
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;

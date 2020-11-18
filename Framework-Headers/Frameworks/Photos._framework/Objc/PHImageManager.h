@@ -8,12 +8,13 @@
 
 #import <Photos/PHPhotoLibraryChangeObserver-Protocol.h>
 
-@class NSString;
+@class NSString, PHImageManagerSettings;
 @protocol OS_dispatch_source;
 
 @interface PHImageManager : NSObject <PHPhotoLibraryChangeObserver>
 {
     id _cachedDomain;
+    PHImageManagerSettings *_settings;
     NSObject<OS_dispatch_source> *_memoryEventSource;
     unsigned long long _managerID;
 }

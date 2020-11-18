@@ -6,10 +6,12 @@
 
 #import <FuseUI/NSObject-Protocol.h>
 
-@class MPNowPlayingContentItem, NSString;
+@class MPNowPlayingContentItem;
 
 @protocol MPNowPlayingPlaybackQueueDataSource <NSObject>
 - (MPNowPlayingContentItem *)contentItemForOffset:(long long)arg1;
-- (NSString *)contentItemIdentifierForOffset:(long long)arg1;
+
+@optional
+- (MPNowPlayingContentItem *)childContentItemAtIndex:(long long)arg1 ofItem:(MPNowPlayingContentItem *)arg2;
 @end
 

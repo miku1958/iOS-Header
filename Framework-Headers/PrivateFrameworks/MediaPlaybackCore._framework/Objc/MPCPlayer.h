@@ -6,37 +6,52 @@
 
 #import <objc/NSObject.h>
 
-@class AVPlayerLayer, MPCPlayerItem, MPCPlayerItemContainer, MPRemoteCommandCenter, NSArray, NSPointerArray, NSString;
+#import <MediaPlaybackCore/MPCMediaRemoteMuxerDelegate-Protocol.h>
 
-@interface MPCPlayer : NSObject
+@class AVPlayerLayer, MPCMediaRemoteMuxer, MPCPlayerItem, MPCPlayerItemContainer, MPRemoteCommandCenter, NSArray, NSPointerArray, NSString;
+
+@interface MPCPlayer : NSObject <MPCMediaRemoteMuxerDelegate>
 {
     NSPointerArray *_nowPlayingInfoHandlers;
     NSPointerArray *_playbackErrorObservers;
     NSPointerArray *_playbackIntentObservers;
+    BOOL _shouldRestorePlaybackState;
     BOOL _restoringPlaybackState;
+    BOOL _syncingNowPlayingInfo;
     long long _state;
     MPCPlayerItem *_currentItem;
     MPRemoteCommandCenter *_commandCenter;
     AVPlayerLayer *_videoLayer;
     NSString *_activeRouteName;
     MPCPlayerItemContainer *_currentContainer;
+    MPCMediaRemoteMuxer *_mediaRemoteMuxer;
+    NSString *_parentAppBundleID;
 }
 
 @property (readonly, copy, nonatomic) NSString *activeRouteName; // @synthesize activeRouteName=_activeRouteName;
 @property (strong, nonatomic) MPRemoteCommandCenter *commandCenter; // @synthesize commandCenter=_commandCenter;
 @property (nonatomic) MPCPlayerItemContainer *currentContainer; // @synthesize currentContainer=_currentContainer;
 @property (nonatomic) MPCPlayerItem *currentItem; // @synthesize currentItem=_currentItem;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (weak, nonatomic) MPCMediaRemoteMuxer *mediaRemoteMuxer; // @synthesize mediaRemoteMuxer=_mediaRemoteMuxer;
 @property (readonly, copy, nonatomic) NSArray *nowPlayingInfoHandlers;
+@property (copy, nonatomic) NSString *parentAppBundleID; // @synthesize parentAppBundleID=_parentAppBundleID;
 @property (readonly, copy, nonatomic) NSArray *playbackErrorObservers;
 @property (readonly, copy, nonatomic) NSArray *playbackIntentObservers;
 @property (readonly, nonatomic, getter=isRestoringPlaybackState) BOOL restoringPlaybackState; // @synthesize restoringPlaybackState=_restoringPlaybackState;
+@property (nonatomic) BOOL shouldRestorePlaybackState; // @synthesize shouldRestorePlaybackState=_shouldRestorePlaybackState;
 @property (nonatomic) long long state; // @synthesize state=_state;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isSyncingNowPlayingInfo) BOOL syncingNowPlayingInfo; // @synthesize syncingNowPlayingInfo=_syncingNowPlayingInfo;
 @property (readonly, nonatomic) AVPlayerLayer *videoLayer; // @synthesize videoLayer=_videoLayer;
 
 + (Class)queueRequestOperationClass;
 - (void).cxx_destruct;
 - (void)addPlaybackIntent:(id)arg1 withOptions:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)clearPlaybackQueueWithCompletion:(CDUnknownBlockType)arg1;
+- (id)init;
 - (void)performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)preservePlaybackStateImmediately;
 - (void)recordLyricsViewEvent:(id)arg1;
@@ -45,9 +60,12 @@
 - (void)registerPlaybackIntentObserver:(id)arg1;
 - (void)restorePlaybackStateCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)schedulePlaybackStatePreservation;
+- (void)startSyncingNowPlayingInfo;
+- (void)stopSyncingNowPlayingInfo;
 - (void)unregisterNowPlayingInfoHandler:(id)arg1;
 - (void)unregisterPlaybackErrorObserver:(id)arg1;
 - (void)unregisterPlaybackIntentObserver:(id)arg1;
+- (void)updateSupportedCommandsForCommandCenter:(id)arg1 muxer:(id)arg2 action:(SEL)arg3;
 
 @end
 

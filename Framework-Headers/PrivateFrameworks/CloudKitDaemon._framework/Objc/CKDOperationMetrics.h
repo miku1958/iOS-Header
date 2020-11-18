@@ -8,11 +8,12 @@
 
 #import <CloudKitDaemon/MMCSOperationMetric-Protocol.h>
 #import <CloudKitDaemon/NSCopying-Protocol.h>
+#import <CloudKitDaemon/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSMutableArray, NSString;
+@class NSArray, NSDate, NSMutableArray, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKDOperationMetrics : NSObject <MMCSOperationMetric, NSCopying>
+@interface CKDOperationMetrics : NSObject <MMCSOperationMetric, NSCopying, NSSecureCoding>
 {
     NSDate *_startDate;
     double _duration;
@@ -22,6 +23,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _bytesDownloaded;
     unsigned long long _connections;
     unsigned long long _connectionsCreated;
+    unsigned long long _recordsUploaded;
+    unsigned long long _recordsDownloaded;
+    unsigned long long _recordsDeleted;
+    unsigned long long _retries;
+    NSMutableSet *_requestUUIDs;
     NSMutableArray *_ranges;
 }
 
@@ -37,15 +43,24 @@ __attribute__((visibility("hidden")))
 @property double queueing; // @synthesize queueing=_queueing;
 @property (strong, nonatomic) NSMutableArray *ranges; // @synthesize ranges=_ranges;
 @property (readonly) NSArray *rangesCopy;
+@property unsigned long long recordsDeleted; // @synthesize recordsDeleted=_recordsDeleted;
+@property unsigned long long recordsDownloaded; // @synthesize recordsDownloaded=_recordsDownloaded;
+@property unsigned long long recordsUploaded; // @synthesize recordsUploaded=_recordsUploaded;
+@property (strong, nonatomic) NSMutableSet *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
+@property unsigned long long retries; // @synthesize retries=_retries;
 @property (strong) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
 - (id)_initWithStartDate:(id)arg1;
+- (void)addCKSpecificMetricsFromMetrics:(id)arg1;
 - (void)addRange:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)newRangeWithOperationState:(unsigned long long)arg1 startDate:(id)arg2 duration:(double)arg3;
 
 @end

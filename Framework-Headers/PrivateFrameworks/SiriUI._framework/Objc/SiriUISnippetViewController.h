@@ -105,6 +105,7 @@
 - (Class)transparentFooterViewClass;
 - (Class)transparentHeaderViewClass;
 - (BOOL)usePlatterStyle;
+- (BOOL)wantsToManageBackgroundColor;
 - (void)willCancel;
 - (void)willConfirm;
 

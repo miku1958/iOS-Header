@@ -6,7 +6,7 @@
 
 #import <Widgets/WGWidgetListViewControllerDelegate-Protocol.h>
 
-@class NCMaterialSettings, UIView, WGWidgetListViewController;
+@class MTMaterialSettings, UIView, WGWidgetListViewController;
 @protocol UIViewControllerTransitionCoordinator;
 
 @protocol WGWidgetListViewControllerDelegatePrivate <WGWidgetListViewControllerDelegate>
@@ -14,7 +14,7 @@
 - (long long)widgetListViewController:(WGWidgetListViewController *)arg1 columnModeForTransitionToSize:(struct CGSize)arg2 withCoordinator:(id<UIViewControllerTransitionCoordinator>)arg3;
 
 @optional
-- (NCMaterialSettings *)materialSettingsForWidgetListViewController:(WGWidgetListViewController *)arg1;
+- (MTMaterialSettings *)materialSettingsForWidgetListViewController:(WGWidgetListViewController *)arg1;
 - (UIView *)widgetListViewController:(WGWidgetListViewController *)arg1 newCustomBackgroundViewForItemInList:(id)arg2;
 @end
 

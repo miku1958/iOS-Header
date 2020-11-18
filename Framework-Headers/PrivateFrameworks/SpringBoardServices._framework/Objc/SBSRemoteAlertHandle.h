@@ -27,8 +27,12 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
++ (id)_lookupHandlesForDefinition:(id)arg1 creatingIfNone:(BOOL)arg2;
 + (id)handleWithConfiguration:(id)arg1;
 + (id)lookupHandlesForConfiguration:(id)arg1 creatingIfNone:(BOOL)arg2;
++ (id)lookupHandlesForDefinition:(id)arg1;
++ (id)lookupHandlesForDefinition:(id)arg1 creatingIfNone:(BOOL)arg2;
++ (id)newHandleWithDefinition:(id)arg1 configurationContext:(id)arg2;
 - (void).cxx_destruct;
 - (id)_initWithHandleToken:(id)arg1;
 - (void)_queue_callObserversWithBlock:(CDUnknownBlockType)arg1;

@@ -11,10 +11,11 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUserActivity, _INPBIntentResponse;
+@class NSString, NSUserActivity, _INPBGenericIntentResponse, _INPBIntentResponse;
 
 @interface INIntentResponse : NSObject <INCacheableContainer, INIntentResponseExport, NSCopying, NSSecureCoding>
 {
+    _INPBGenericIntentResponse *_responseMessagePBRepresentation;
     NSUserActivity *_userActivity;
     _INPBIntentResponse *_backingStore;
     long long _code;
@@ -47,6 +48,7 @@
 - (id)_impl;
 - (long long)_intentHandlingStatus;
 - (id)_payloadResponseMessageData;
+- (id)_responseMessagePBRepresentation;
 - (void)_setPayloadResponseMessageData:(id)arg1;
 - (id)cacheableObjects;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -55,7 +57,9 @@
 - (id)initWithBackingStore:(id)arg1;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)propertiesByName;
 - (id)protoData;
+- (void)setPropertiesByName:(id)arg1;
 
 @end
 

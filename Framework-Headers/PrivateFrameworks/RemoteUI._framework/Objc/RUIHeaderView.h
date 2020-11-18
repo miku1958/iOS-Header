@@ -8,12 +8,12 @@
 
 #import <RemoteUI/RUIHeader-Protocol.h>
 
-@class NSString, UIImageView, UILabel;
+@class NSString, RUILinkLabel, UIImageView, UILabel;
 
 @interface RUIHeaderView : UIView <RUIHeader>
 {
     UILabel *_headerLabel;
-    UILabel *_detailHeaderLabel;
+    RUILinkLabel *_detailHeaderLabel;
     UILabel *_subHeaderLabel;
     UIImageView *_iconView;
     int _imageAlignment;
@@ -30,7 +30,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_hasIcon;
-- (double)_headerOffset;
+- (double)_headerOffsetInView:(id)arg1;
 - (double)_imageTitlePaddingInView:(id)arg1;
 - (double)_titleSubtitlePaddingInView:(id)arg1;
 - (id)detailHeaderLabel;

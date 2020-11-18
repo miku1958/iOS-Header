@@ -56,8 +56,10 @@
 - (void)deprioritizeItemArtworkForPurchaseHistoryID:(unsigned long long)arg1;
 - (void)deprioritizeItemArtworkForSagaID:(unsigned long long)arg1;
 - (void)deprioritizeScreenshotForPurchaseHistoryID:(unsigned long long)arg1;
+- (void)deprioritizeScreenshotForSagaID:(unsigned long long)arg1;
 - (void)deprioritizeSubscriptionContainerArtworkForPersistentID:(long long)arg1;
 - (void)deprioritizeSubscriptionItemArtworkForPersistentID:(long long)arg1;
+- (void)deprioritizeSubscriptionScreenshotForPersistentID:(long long)arg1;
 - (void)disableJaliscoGeniusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enableJaliscoGeniusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)hasProperNetworkConditionsToPlayMedia;
@@ -69,8 +71,10 @@
 - (void)importItemArtworkForPurchaseHistoryID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)importItemArtworkForSagaID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)importScreenshotForPurchaseHistoryID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)importScreenshotForSagaID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)importSubscriptionContainerArtworkForPersistentID:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)importSubscriptionItemArtworkForPersistentID:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)importSubscriptionScreenshotForPersistentID:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;
 - (void)isAuthenticatedWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -79,7 +83,6 @@
 - (BOOL)isCellularDataRestrictedForMusic;
 - (BOOL)isCellularDataRestrictedForStoreApps;
 - (BOOL)isCellularDataRestrictedForVideos;
-- (void)isExpiredWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)jaliscoAppsImageDataForStoreID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadArtworkInfoForContainerSagaIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadArtworkInfoForPurchaseHistoryIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -6,7 +6,7 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class CKQuery, CKQueryCursor, CKRecordZoneID, NSArray;
+@class CKQuery, CKQueryCursor, CKRecordZoneID, NSArray, NSDictionary;
 
 @interface CKQueryOperation : CKDatabaseOperation
 {
@@ -20,9 +20,11 @@
     CDUnknownBlockType _recordFetchedBlock;
     CDUnknownBlockType _queryCompletionBlock;
     CKQueryCursor *_resultsCursor;
+    NSDictionary *_assetTransferOptionsByKey;
     CDUnknownBlockType _queryCursorFetchedBlock;
 }
 
+@property (strong, nonatomic) NSDictionary *assetTransferOptionsByKey; // @synthesize assetTransferOptionsByKey=_assetTransferOptionsByKey;
 @property (copy, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (nonatomic) BOOL fetchAllResults; // @synthesize fetchAllResults=_fetchAllResults;

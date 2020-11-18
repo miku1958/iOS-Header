@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _padInlineFloatingCanExpand;
     BOOL _hasExtensionCandidates;
     BOOL _hasSecondaryCandidates;
+    BOOL _forceJustifiedAlignment;
     BOOL _needsLayout;
     int _candidatesVisualStyle;
     NSArray *_candidateGroups;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long columnsCount; // @synthesize columnsCount=_columnsCount;
 @property (strong, nonatomic) NSSet *emphasizedCandidates; // @synthesize emphasizedCandidates=_emphasizedCandidates;
 @property (nonatomic) BOOL expanded; // @synthesize expanded=_expanded;
+@property (nonatomic) BOOL forceJustifiedAlignment; // @synthesize forceJustifiedAlignment=_forceJustifiedAlignment;
 @property (readonly, nonatomic) double groupBarWidth;
 @property (nonatomic) BOOL hasExtensionCandidates; // @synthesize hasExtensionCandidates=_hasExtensionCandidates;
 @property (nonatomic) BOOL hasSecondaryCandidates; // @synthesize hasSecondaryCandidates=_hasSecondaryCandidates;
@@ -68,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareLayout;
 - (id)previousCandidateIndexPathFromIndexPath:(id)arg1;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
+- (BOOL)shouldShowGroupHeaderForGroup:(id)arg1;
 
 @end
 

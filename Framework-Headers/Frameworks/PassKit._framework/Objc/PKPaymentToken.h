@@ -18,6 +18,7 @@
     NSString *_transactionIdentifier;
     NSData *_paymentData;
     NSURL *_redeemURL;
+    NSString *_retryNonce;
 }
 
 @property (copy, nonatomic) NSData *paymentData; // @synthesize paymentData=_paymentData;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) PKPaymentMethod *paymentMethod; // @synthesize paymentMethod=_paymentMethod;
 @property (copy, nonatomic) NSString *paymentNetwork; // @synthesize paymentNetwork=_paymentNetwork;
 @property (strong, nonatomic) NSURL *redeemURL; // @synthesize redeemURL=_redeemURL;
+@property (copy, nonatomic) NSString *retryNonce; // @synthesize retryNonce=_retryNonce;
 @property (copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
 
 + (id)paymentTokenWithProtobuf:(id)arg1;

@@ -21,6 +21,7 @@
 @property (strong, nonatomic) id<FCHeadlineClustering> headlineClusterer; // @synthesize headlineClusterer=_headlineClusterer;
 
 - (void).cxx_destruct;
+- (void)_buildResults;
 - (id)_joinedFeedTransformation;
 - (id)_nonEditorialFeedTransformationWithFeedContext:(id)arg1 feedItemScores:(id)arg2;
 - (id)_sortClusteredHeadlinesForDisplay:(id)arg1 withAdditionalData:(id)arg2 scoresByArticleID:(id)arg3 topicsByID:(id)arg4;

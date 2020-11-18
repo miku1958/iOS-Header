@@ -10,7 +10,6 @@
 
 @interface _SFRecentWebSearchesController : WBSRecentWebSearchesController
 {
-    NSString *_preferencesDomain;
     NSString *_pathToLegacySearchesFile;
 }
 
@@ -20,7 +19,7 @@
 - (id)_recentSearchDictionariesFromUserDefaultsUsingKey:(id)arg1;
 - (void)_removeLegacyRecentSearchesData;
 - (void)_saveRecentSearchDictionaries:(id)arg1 toUserDefaultsUsingKey:(id)arg2;
-- (id)initWithPreferencesDomain:(id)arg1 pathToLegacySearchesFile:(id)arg2;
+- (id)initWithPathToLegacySearchesFile:(id)arg1;
 
 @end
 

@@ -24,7 +24,6 @@
     BOOL _aggressivelyCachesVideoFrames;
     BOOL _reversesMoreVideoFramesInMemory;
     double _timeMultiplier;
-    double _preCrossfadeDuration;
     double _playbackTransitionBlurRadius;
     double _playbackTransitionScale;
     double _vitalityPreDuration;
@@ -54,7 +53,6 @@
 @property (nonatomic) double playbackTransitionCrossfadeDelay; // @synthesize playbackTransitionCrossfadeDelay=_playbackTransitionCrossfadeDelay;
 @property (nonatomic) double playbackTransitionDuration; // @synthesize playbackTransitionDuration=_playbackTransitionDuration;
 @property (nonatomic) double playbackTransitionScale; // @synthesize playbackTransitionScale=_playbackTransitionScale;
-@property (nonatomic) double preCrossfadeDuration; // @synthesize preCrossfadeDuration=_preCrossfadeDuration;
 @property (nonatomic) BOOL reversesMoreVideoFramesInMemory; // @synthesize reversesMoreVideoFramesInMemory=_reversesMoreVideoFramesInMemory;
 @property (nonatomic) double settleTransitionDuration; // @synthesize settleTransitionDuration=_settleTransitionDuration;
 @property (nonatomic) BOOL shouldScaleAndBlurForPlayback; // @synthesize shouldScaleAndBlurForPlayback=_shouldScaleAndBlurForPlayback;

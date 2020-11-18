@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     long long _axis;
     long long _distribution;
     NSArray *_arrangedContentViews;
+    unsigned long long _visualCornerPosition;
     UIStackView *_stackView;
     NSArray *_arrangedContentSeparatorViews;
     NSArray *_arrangedContentViewsDistributionConstraints;
@@ -26,20 +27,27 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long axis; // @synthesize axis=_axis;
 @property (nonatomic) long long distribution; // @synthesize distribution=_distribution;
 @property (readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
+@property (nonatomic) unsigned long long visualCornerPosition; // @synthesize visualCornerPosition=_visualCornerPosition;
 @property (strong, nonatomic) UIInterfaceActionVisualStyle *visualStyle; // @synthesize visualStyle=_visualStyle;
 
 - (void).cxx_destruct;
 - (void)_addSeparatorToStackAndMutableArray:(id)arg1 preferSectionStyle:(BOOL)arg2;
 - (long long)_dimensionAttributeToConstrainEqual;
 - (BOOL)_isVerticalLayout;
+- (void)_markRoundedCornerPositionOnAllCornersOfView:(id)arg1;
+- (void)_markRoundedCornerPositionOnLeadingEdgeOfView:(id)arg1;
+- (void)_markRoundedCornerPositionOnNoCornersOfView:(id)arg1;
+- (void)_markRoundedCornerPositionOnTrailingEdgeOfView:(id)arg1;
 - (void)_reloadContentDistributionConstraintsForArrangedContentViews;
 - (void)_reloadStackViewArrangement;
 - (long long)_separatorConstantSizedAxis;
 - (void)_setLayoutDebuggingIdentifier:(id)arg1;
+- (void)_setRoundedCornersOfView:(id)arg1 toCornerPosition:(unsigned long long)arg2;
 - (struct CGRect)_stackViewFrameForViewBounds:(struct CGRect)arg1;
 - (struct CGSize)_systemLayoutSizeFittingStackView;
 - (void)_updateActionRepresentationViewsOnlyKeepVisibleContentInHierarchySetting;
 - (void)_updateLayoutWithStackFrameForActionSequenceEdgeInsets;
+- (void)_updateRoundedCornerPositionForActionRepViews;
 - (void)_updateSeparatorConstantSizedAxis;
 - (struct CGRect)_viewBoundsForStackViewFrame:(struct CGRect)arg1;
 - (void)_withUnsatisfiableConstraintsLoggingSuspendedIfEngineDelegateExists:(CDUnknownBlockType)arg1;

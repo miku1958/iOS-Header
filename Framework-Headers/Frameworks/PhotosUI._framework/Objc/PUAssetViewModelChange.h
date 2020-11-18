@@ -23,13 +23,15 @@
     BOOL _accessoryViewVisibilityChanged;
     BOOL _contentOffsetChanged;
     BOOL _isInEditModeChanged;
+    BOOL _badgeInfoPromiseChanged;
     PUBrowsingVideoPlayerChange *_videoPlayerChange;
     PUBrowsingIrisPlayerChange *_irisPlayerChange;
 }
 
 @property (nonatomic, setter=_setAccessoryViewVisibilityChanged:) BOOL accessoryViewVisibilityChanged; // @synthesize accessoryViewVisibilityChanged=_accessoryViewVisibilityChanged;
 @property (nonatomic, setter=_setAssetChanged:) BOOL assetChanged; // @synthesize assetChanged=_assetChanged;
-@property (nonatomic, setter=_setBadgeInfoChanged:) BOOL badgeInfoChanged; // @synthesize badgeInfoChanged=_badgeInfoChanged;
+@property (readonly, nonatomic) BOOL badgeInfoChanged; // @synthesize badgeInfoChanged=_badgeInfoChanged;
+@property (nonatomic, setter=_setBadgeInfoPromiseChanged:) BOOL badgeInfoPromiseChanged; // @synthesize badgeInfoPromiseChanged=_badgeInfoPromiseChanged;
 @property (nonatomic, setter=_setContentOffsetChanged:) BOOL contentOffsetChanged; // @synthesize contentOffsetChanged=_contentOffsetChanged;
 @property (nonatomic, setter=_setFocusValueChanged:) BOOL focusValueChanged; // @synthesize focusValueChanged=_focusValueChanged;
 @property (nonatomic, setter=_setForceBadgesVisibleChanged:) BOOL forceBadgesVisibleChanged; // @synthesize forceBadgesVisibleChanged=_forceBadgesVisibleChanged;

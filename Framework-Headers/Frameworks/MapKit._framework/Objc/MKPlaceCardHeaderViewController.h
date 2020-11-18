@@ -59,7 +59,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_titleTrailingConstraint;
     BOOL optionTitleHasOwnSection;
     BOOL optionSmallerScreen;
-    BOOL optionForceSmallButtonText;
+    BOOL _optionForceSmallButtonText;
     BOOL _resizableViewsDisabled;
     id<_MKPlaceItem> _placeItem;
     id<GEOTransitLineItem> _lineItem;
@@ -92,13 +92,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)_areDistanceAndETAInformationAvailable;
 - (id)_buttonFont;
 - (void)_buttonStateChangedInSiri:(id)arg1;
-- (BOOL)_buttonsAreFullWidth;
 - (void)_commonInit;
 - (void)_configureETADisplayWithTransportType:(unsigned long long)arg1 travelTime:(double)arg2 distance:(double)arg3;
 - (void)_configureETAForMapItem:(id)arg1;
 - (void)_contentSizeDidChange;
 - (id)_distanceLabelContainerView;
-- (id)_formattedStringForTimeInterval:(double)arg1;
 - (BOOL)_isSmallerScreen;
 - (id)_primaryButtonColor;
 - (void)_primaryButtonSelected:(id)arg1;
@@ -114,6 +112,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateETAHandler:(id)arg1;
 - (void)_updatePrimaryButton;
 - (void)_updateRerouteButton;
+- (void)_updateRidesharingButton;
 - (void)_updateShareLocationButton;
 - (BOOL)_willShowDistance;
 - (void)configureWithNearbyMapItem:(id)arg1;

@@ -50,9 +50,9 @@
 - (id)_allPurchasedTagIDs;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_initializeAppStorePurchaseDiscoveredList;
-- (void)_notifyPurchaseListChangedWithTagIDs:(id)arg1;
 - (id)_ongoingPurchaseEntryIDForProductIdentifier:(id)arg1;
 - (id)_purchaseLookUpEntryIDForTagID:(id)arg1;
+- (void)_removeFromPurchasedChannelsListWithTagIDs:(id)arg1;
 - (id)_webAccessEntryIDForTagID:(id)arg1;
 - (void)addAppStoreDiscoveredChannelsToFavorites:(id)arg1;
 - (void)addAppStorePurchaseWithTagID:(id)arg1 purchaseID:(id)arg2;
@@ -67,6 +67,7 @@
 - (void)cleanupExpiredPurchaseLookupEntriesIfNeeded;
 - (void)cleanupStaleOngoingPurchaseEntries;
 - (void)clearAllAppStorePurchases;
+- (void)clearAllOngoingPurchaseEntries;
 - (void)clearAllPurchases;
 - (id)createPaymentQueueWithProductIdentifier:(id)arg1 tagID:(id)arg2 purchaseID:(id)arg3 webAccessOptIn:(BOOL)arg4 appAdamID:(id)arg5 storeExternalVersion:(id)arg6;
 - (void)dealloc;
@@ -101,8 +102,9 @@
 - (void)removeOngoingPurchaseEntryForProductID:(id)arg1;
 - (void)removeWebPurchaseForTagID:(id)arg1;
 - (void)saveToDisk;
-- (void)shouldShowSignedInWithDifferentiTunesAccountAlertWithCompletion:(CDUnknownBlockType)arg1;
-- (void)shouldShowiTunesSignedOutAlertWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setLastSignedInItunesAccountNameWithName:(id)arg1;
+- (void)shouldShowSignedInWithDifferentiTunesAccountAlertWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)shouldShowiTunesSignedOutAlertWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)silentRemoveFromPurchasedChannelsListWithTagIDs:(id)arg1;
 - (void)simulatePurchaseWithTagID:(id)arg1 productIdentifier:(id)arg2 purchaseID:(id)arg3 appAdamID:(id)arg4 storeExternalVersion:(id)arg5 webAccessOptIn:(BOOL)arg6;
 - (void)startPurchaseWithTagID:(id)arg1 productIdentifier:(id)arg2 purchaseID:(id)arg3 appAdamID:(id)arg4 storeExternalVersion:(id)arg5 price:(id)arg6 webAccessOptIn:(BOOL)arg7 payment:(id)arg8 completion:(CDUnknownBlockType)arg9;
@@ -111,7 +113,7 @@
 - (void)updatePurchaseEntryToExpired:(id)arg1;
 - (void)updatePurchaseEntryToExpiredForTagIDs:(id)arg1;
 - (void)updatePurchaseEntryToSubcsriptionNotSupported:(id)arg1;
-- (void)updatePurchaseEntryToValid:(id)arg1;
+- (void)updatePurchaseEntryToValid:(id)arg1 purchaseType:(unsigned long long)arg2;
 - (void)userInfo:(id)arg1 didAddAccessTokenForTagID:(id)arg2;
 - (void)userInfo:(id)arg1 didChangeAccessTokenForTagID:(id)arg2;
 - (void)verifyAccessTokenWithTagID:(id)arg1 accessToken:(id)arg2 serialCompletion:(CDUnknownBlockType)arg3 callbackQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;

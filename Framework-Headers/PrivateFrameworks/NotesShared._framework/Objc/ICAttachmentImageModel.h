@@ -19,7 +19,11 @@
 - (BOOL)hasPreviews;
 - (BOOL)hasThumbnailImage;
 - (BOOL)needToGeneratePreviews;
+- (BOOL)needsFullSizePreview;
+- (long long)previewImageOrientation;
+- (struct CGAffineTransform)previewImageOrientationTransform;
 - (BOOL)showThumbnailInNoteList;
+- (BOOL)supportsQuickLook;
 - (void)updateAttachmentSize;
 - (void)updateFileBasedAttributes;
 

@@ -10,6 +10,7 @@
 - (BOOL)aa_addAuthTokenOrBasicAuthHeaderWithAccount:(id)arg1 preferUsingPassword:(BOOL)arg2;
 - (void)aa_addBasicAuthPasswordWithAccount:(id)arg1;
 - (void)aa_addBasicAuthorizationHeaderWithAccount:(id)arg1 preferUsingPassword:(BOOL)arg2;
+- (void)aa_addContentTypeHeaders:(id)arg1;
 - (void)aa_addDeviceIDHeader;
 - (void)aa_addDeviceInternalDevHeaderIfEnabled;
 - (void)aa_addDeviceProvisioningInfoHeadersWithAccount:(id)arg1;
@@ -17,6 +18,8 @@
 - (void)aa_addDeviceProvisioningInfoHeadersWithDSID:(id)arg1 sendEmptyValues:(BOOL)arg2;
 - (BOOL)aa_addDeviceProvisioningInfoHeadersWithDSIDFromReponse:(id)arg1;
 - (BOOL)aa_addGrandSlamAuthorizationHeaderWithAccount:(id)arg1 grandslamToken:(id)arg2;
+- (BOOL)aa_addGrandslamAuthorizationHeaderWithAltDSID:(id)arg1 grandslamToken:(id)arg2;
+- (BOOL)aa_addGrandslamAuthorizationheaderWithAltDSID:(id)arg1 heartbeatToken:(id)arg2;
 - (void)aa_addLocationSharingAllowedHeader;
 - (void)aa_addLoggedInAppleIDHeaderWithAccount:(id)arg1;
 - (void)aa_addMultiUserDeviceHeaderIfEnabled;

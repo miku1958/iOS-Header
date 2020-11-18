@@ -19,5 +19,6 @@
 @optional
 - (void)coreDAVLogRequestBody:(NSData *)arg1;
 - (void)coreDAVLogResponseBody:(NSData *)arg1;
+- (void)triggerOSLogFault;
 @end
 

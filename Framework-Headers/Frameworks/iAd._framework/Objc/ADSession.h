@@ -21,10 +21,12 @@
     int _classicUnavailableToken;
     NSMutableArray *_adSpaces;
     ADAdSheetConnection *_connection;
+    NSString *_bundleIdentifier;
 }
 
 @property (strong, nonatomic) NSMutableArray *adSpaces; // @synthesize adSpaces=_adSpaces;
 @property (nonatomic) BOOL applicationCanReceiveBackgroundAds; // @synthesize applicationCanReceiveBackgroundAds=_applicationCanReceiveBackgroundAds;
+@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property BOOL canUpdateFrequencyCap; // @synthesize canUpdateFrequencyCap=_canUpdateFrequencyCap;
 @property BOOL canUpdateToroClickData; // @synthesize canUpdateToroClickData=_canUpdateToroClickData;
 @property (nonatomic) int classicUnavailableToken; // @synthesize classicUnavailableToken=_classicUnavailableToken;
@@ -36,14 +38,24 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (id)_adSpaceForIdentifier:(id)arg1;
 - (void)_appDidBecomeActive;
 - (id)_linkedOnVersion;
-- (void)_remote_heartbeatTokenDidChange:(id)arg1 expirationDate:(double)arg2 error:(id)arg3;
+- (void)_remote_actionViewControllerReadyForPresentationForAdSpaceWithIdentifier:(id)arg1;
+- (void)_remote_adImpressionDidLoadWithPublicAttributes:(id)arg1 identifier:(id)arg2;
+- (void)_remote_closeClientAdSpaceWithIdentifier:(id)arg1;
+- (void)_remote_contentProxyURLDidChange:(id)arg1;
+- (void)_remote_creativeWithAdSpaceIdentifier:(id)arg1 didFailWithError:(id)arg2;
+- (void)_remote_dismissViewControllerForAdSpaceWithIdentifier:(id)arg1;
+- (void)_remote_dismissViewControllerForAdSpaceWithIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_remote_openURL:(id)arg1 forAdSpaceWithIdentifier:(id)arg2;
 - (void)_remote_policyEngineDidIdleDisable;
-- (void)_reportAdSpaceStatusEventWithAdOpportunityIdentifier:(id)arg1 adOriginIdentifier:(id)arg2 durationInFeed:(double)arg3 responseTime:(double)arg4 firstMessage:(BOOL)arg5 screenfuls:(long long)arg6 errorCode:(long long)arg7;
-- (void)_reportAdSpaceStatusEventWithAdOpportunityIdentifier:(id)arg1 adOriginIdentifier:(id)arg2 tags:(id)arg3 durationInFeed:(double)arg4 responseTime:(double)arg5 firstMessage:(BOOL)arg6 screenfuls:(long long)arg7 errorCode:(long long)arg8;
+- (void)_remote_requestViewControllerWithClassName:(id)arg1 forAdSpaceControllerWithIdentifier:(id)arg2 forAdSpaceWithIdentifier:(id)arg3;
+- (void)_remote_setRequiresFastVisibilityTestOnly:(BOOL)arg1 withIdentifier:(id)arg2;
+- (void)_remote_updateActionViewControllerOrientation:(unsigned long long)arg1 forAdSpaceWithIdentifier:(id)arg2;
 - (void)_reportAdSubscriptionEvent:(id)arg1;
 - (void)adSheetConnectionEstablished;
+- (void)adSheetConnectionInterrupted;
 - (void)adSheetConnectionLost;
 - (id)adSheetMachServiceName;
 - (void)addClientToSegments:(id)arg1 replaceExisting:(BOOL)arg2;
@@ -54,6 +66,7 @@
 - (id)init;
 - (void)lookupAdConversionDetails:(CDUnknownBlockType)arg1;
 - (void)performWhenConnected:(CDUnknownBlockType)arg1;
+- (void)prepareForAdRequests;
 - (void)refreshTargetingData;
 - (void)registerAdSpace:(id)arg1;
 - (void)reportPrerollRequest;
@@ -65,6 +78,7 @@
 - (void)requestTrendingSearchURL:(CDUnknownBlockType)arg1;
 - (void)requestUserTargetingIdentifier:(CDUnknownBlockType)arg1;
 - (id)rpcProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)segmentDataForSignedInUserWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)shouldConnectToAdSheet;
 - (BOOL)shouldLaunchAdSheet;
 - (void)unregisterAdSpace:(id)arg1;

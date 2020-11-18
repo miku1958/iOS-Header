@@ -12,6 +12,7 @@
 {
     BOOL _reachedEnd;
     BOOL _isOffline;
+    BOOL _isNewEdition;
     NSString *_identifier;
     NSDate *_refreshDate;
     NSDate *_modificationDate;
@@ -24,6 +25,7 @@
 @property (readonly, copy, nonatomic) NSSet *activeGroupEmitterIDs; // @synthesize activeGroupEmitterIDs=_activeGroupEmitterIDs;
 @property (readonly, copy, nonatomic) NSDictionary *cursorsByGroupEmitterID; // @synthesize cursorsByGroupEmitterID=_cursorsByGroupEmitterID;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL isNewEdition; // @synthesize isNewEdition=_isNewEdition;
 @property (readonly, nonatomic) BOOL isOffline; // @synthesize isOffline=_isOffline;
 @property (readonly, nonatomic) FCFeedEdition *lastCompletedEdition; // @synthesize lastCompletedEdition=_lastCompletedEdition;
 @property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
@@ -33,6 +35,7 @@
 
 - (void).cxx_destruct;
 - (id)copyByRemovingPendingGroupIdenticalTo:(id)arg1;
+- (id)copyByRemovingPendingGroupsAtIndexes:(id)arg1;
 - (id)copyWithAdditionalPendingGroups:(id)arg1 cursors:(id)arg2;
 - (id)copyWithAllGroupEmittersExhausted;
 - (id)copyWithExhaustedGroupEmitterID:(id)arg1 cursors:(id)arg2;

@@ -6,12 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@class VSSubscriptionRegistrationCenter;
+
 @interface PSSSSubscriptionManagerInternal : NSObject
 {
+    VSSubscriptionRegistrationCenter *_registrationCenter;
 }
 
-+ (void)initialize;
+@property (strong, nonatomic) VSSubscriptionRegistrationCenter *registrationCenter; // @synthesize registrationCenter=_registrationCenter;
+
+- (void).cxx_destruct;
 - (void)getActiveSubscriptionServicesMatchingBundleIdentifiers:(id)arg1 domainIdentifiers:(id)arg2 maximumExpirationLimit:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)init;
 - (void)registerSubscriptionServiceForURL:(id)arg1 withSubscriptionInfo:(id)arg2 expirationDate:(id)arg3;
 - (void)removeSubscriptionServiceForURL:(id)arg1;
 - (void)removeWebSubscriptionServicesCreatedAfterDate:(id)arg1;

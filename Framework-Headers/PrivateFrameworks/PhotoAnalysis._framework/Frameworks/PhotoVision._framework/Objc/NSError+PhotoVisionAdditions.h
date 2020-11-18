@@ -7,6 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (PhotoVisionAdditions)
++ (id)errorForPhotoVisionCancelledOperation;
 + (id)errorForPhotoVisionErrorCode:(long long)arg1 userInfo:(id)arg2;
 + (id)errorForPhotoVisionInvalidNilParameterNamed:(id)arg1;
 + (id)errorForPhotoVisionInvalidParameterNamed:(id)arg1 integerValue:(long long)arg2;

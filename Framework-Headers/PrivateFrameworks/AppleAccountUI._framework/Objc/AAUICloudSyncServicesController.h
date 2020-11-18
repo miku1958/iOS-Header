@@ -32,18 +32,18 @@
 
 + (Class)_accountClassForAddress:(id)arg1;
 + (id)_domainFromAddress:(id)arg1;
++ (BOOL)_isRemovedSystemApplication:(id)arg1;
 + (id)_usernameFromAddress:(id)arg1;
 + (BOOL)canAutoSetupMailAccount:(id)arg1;
 + (BOOL)needSetupForMailAccount:(id)arg1;
++ (BOOL)shouldInitiallyEnableDataclass:(id)arg1 forAccount:(id)arg2;
 - (void).cxx_destruct;
 - (id)_account;
 - (void)_addDAEmailAccount:(id)arg1;
 - (void)_addMailAccount:(id)arg1;
 - (void)_createAndValidateDAMailAccountWithProperties:(id)arg1;
 - (void)_createAndValidateMailAccountWithProperties:(id)arg1;
-- (BOOL)_dataclassBoundToSingleAccountAndOnAlready:(id)arg1 withAccount:(id)arg2;
 - (void)_presentMergeConfirmationForDataclasses:(id)arg1 account:(id)arg2;
-- (BOOL)_shouldInitiallyEnableDataclass:(id)arg1 forAccount:(id)arg2;
 - (void)_validateDAAccount:(id)arg1;
 - (void)_validateExistingEmailAccount:(id)arg1 withPassword:(id)arg2;
 - (void)_validateMailAccount:(id)arg1;

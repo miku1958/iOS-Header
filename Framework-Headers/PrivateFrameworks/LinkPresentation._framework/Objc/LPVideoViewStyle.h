@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class CAMediaTimingFunction, LPImageViewStyle, LPPadding, UIColor;
+@class CAMediaTimingFunction, LPImageViewStyle, LPPadding, LPVideoPlayButtonStyle, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface LPVideoViewStyle : NSObject
 {
-    LPImageViewStyle *_playButton;
-    double _disabledPlayButtonOpacity;
+    LPVideoPlayButtonStyle *_playButton;
     LPImageViewStyle *_muteButton;
     LPPadding *_muteButtonPadding;
     double _muteButtonOpacity;
@@ -23,12 +22,11 @@ __attribute__((visibility("hidden")))
     CAMediaTimingFunction *_pulsingLoadIndicatorTimingFunction;
 }
 
-@property (nonatomic) double disabledPlayButtonOpacity; // @synthesize disabledPlayButtonOpacity=_disabledPlayButtonOpacity;
 @property (readonly, nonatomic) LPImageViewStyle *muteButton; // @synthesize muteButton=_muteButton;
 @property (nonatomic) double muteButtonHighlightedOpacity; // @synthesize muteButtonHighlightedOpacity=_muteButtonHighlightedOpacity;
 @property (nonatomic) double muteButtonOpacity; // @synthesize muteButtonOpacity=_muteButtonOpacity;
 @property (readonly, strong, nonatomic) LPPadding *muteButtonPadding; // @synthesize muteButtonPadding=_muteButtonPadding;
-@property (readonly, nonatomic) LPImageViewStyle *playButton; // @synthesize playButton=_playButton;
+@property (readonly, nonatomic) LPVideoPlayButtonStyle *playButton; // @synthesize playButton=_playButton;
 @property (strong, nonatomic) UIColor *pulsingLoadIndicatorColor; // @synthesize pulsingLoadIndicatorColor=_pulsingLoadIndicatorColor;
 @property (nonatomic) double pulsingLoadIndicatorDuration; // @synthesize pulsingLoadIndicatorDuration=_pulsingLoadIndicatorDuration;
 @property (nonatomic) double pulsingLoadIndicatorMaximumOpacity; // @synthesize pulsingLoadIndicatorMaximumOpacity=_pulsingLoadIndicatorMaximumOpacity;

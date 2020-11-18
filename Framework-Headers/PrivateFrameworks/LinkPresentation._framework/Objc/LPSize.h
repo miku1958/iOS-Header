@@ -18,12 +18,14 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) struct CGSize asSize;
-@property (strong, nonatomic) LPPointUnit *height; // @synthesize height=_height;
-@property (strong, nonatomic) LPPointUnit *width; // @synthesize width=_width;
+@property (readonly, strong, nonatomic) LPPointUnit *height; // @synthesize height=_height;
+@property (readonly, strong, nonatomic) LPPointUnit *width; // @synthesize width=_width;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 - (id)initWithSize:(struct CGSize)arg1;
+- (id)initWithSquareSize:(double)arg1;
 
 @end
 

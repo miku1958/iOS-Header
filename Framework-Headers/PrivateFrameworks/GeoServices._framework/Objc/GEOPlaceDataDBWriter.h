@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)deleteComponentForKey:(union _GEOPlaceDataComponentKey)arg1;
 - (void)deletePhoneNumberMapping;
 - (void)deletePlaceDataForMUID:(unsigned long long)arg1;
+- (void)flushPendingWritesSynchronously;
 - (id)initWithPath:(id)arg1;
 - (void)performStatementPreparationTasks;
 - (void)performTableCreationTasks;

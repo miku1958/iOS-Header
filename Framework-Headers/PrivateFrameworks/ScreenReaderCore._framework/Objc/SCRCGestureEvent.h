@@ -13,9 +13,11 @@
     unsigned long long _deviceIdentifier;
     SCRCGestureFinger *_finger[8];
     unsigned long long _fingerCount;
-    double _time;
     struct CGPoint _averageLocation;
+    double _time;
 }
+
+@property (nonatomic) double time; // @synthesize time=_time;
 
 - (void)addFingerWithIdentifier:(unsigned long long)arg1 location:(struct CGPoint)arg2 orbValue:(double)arg3;
 - (void)addStylusWithIdentifier:(unsigned long long)arg1 location:(struct CGPoint)arg2 pressure:(double)arg3 altitude:(double)arg4 azimuth:(double)arg5;
@@ -34,7 +36,6 @@
 - (BOOL)isCancelEvent;
 - (struct CGPoint)magneticLocation;
 - (void)removeFingerWithIdentifier:(unsigned long long)arg1;
-- (double)time;
 
 @end
 

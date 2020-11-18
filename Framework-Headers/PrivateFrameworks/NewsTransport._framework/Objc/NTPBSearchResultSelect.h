@@ -12,7 +12,10 @@
 
 @interface NTPBSearchResultSelect : PBCodable <NSCopying>
 {
+    NSString *_campaignId;
+    NSString *_campaignType;
     NSMutableArray *_channelResultFeedIds;
+    NSString *_creativeId;
     NSMutableArray *_nonSelectedResultFeedIds;
     int _searchExecutionMethod;
     int _searchLocation;
@@ -47,8 +50,14 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
+@property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
 @property (strong, nonatomic) NSMutableArray *channelResultFeedIds; // @synthesize channelResultFeedIds=_channelResultFeedIds;
+@property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
 @property (nonatomic) BOOL didSelectResult; // @synthesize didSelectResult=_didSelectResult;
+@property (readonly, nonatomic) BOOL hasCampaignId;
+@property (readonly, nonatomic) BOOL hasCampaignType;
+@property (readonly, nonatomic) BOOL hasCreativeId;
 @property (nonatomic) BOOL hasDidSelectResult;
 @property (nonatomic) BOOL hasSearchExecutionMethod;
 @property (nonatomic) BOOL hasSearchLocation;

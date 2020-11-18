@@ -45,7 +45,6 @@
 @property (nonatomic) BOOL flagged;
 @property (readonly, nonatomic) long long generationNumber; // @synthesize generationNumber=_generationNumber;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isVIP;
 @property (nonatomic) BOOL isVIP;
 @property (readonly, nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
 @property (nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
@@ -55,6 +54,7 @@
 @property (nonatomic) long long messageIDHash; // @synthesize messageIDHash=_messageIDHash;
 @property (readonly, nonatomic) BOOL read;
 @property (nonatomic) BOOL read;
+@property (readonly, nonatomic) BOOL senderVIP;
 @property (nonatomic) unsigned int sortDateReceivedInterval; // @synthesize sortDateReceivedInterval=_sortDateReceivedInterval;
 @property (nonatomic) unsigned int sortUid; // @synthesize sortUid=_sortUid;
 @property (readonly) Class superclass;

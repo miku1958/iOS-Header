@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Calculate/NSXMLParserDelegate-Protocol.h>
 
 @class NSDate, NSDictionary, NSMutableDictionary, NSMutableString, NSNumber, NSString;
+@protocol OS_dispatch_queue;
 
 @interface CurrencyCache : NSObject <NSXMLParserDelegate>
 {
@@ -19,6 +20,7 @@
     NSNumber *_currentRate;
     NSMutableString *_currentString;
     NSMutableDictionary *_mutableCurrencyCache;
+    NSObject<OS_dispatch_queue> *_persistenceQueue;
 }
 
 @property (strong, nonatomic) NSDictionary *currencyData; // @synthesize currencyData=_currencyData;
@@ -26,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDate *lastRefreshDate; // @synthesize lastRefreshDate=_lastRefreshDate;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *persistenceQueue; // @synthesize persistenceQueue=_persistenceQueue;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long uuid; // @synthesize uuid=_uuid;
 

@@ -6,20 +6,21 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSURL, VSFailable;
+@class NSURL, VSOptional;
 
 __attribute__((visibility("hidden")))
 @interface VSFileReadOperation : VSAsyncOperation
 {
     NSURL *_source;
-    VSFailable *_result;
+    VSOptional *_result;
 }
 
-@property (strong, nonatomic) VSFailable *result; // @synthesize result=_result;
+@property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
 @property (copy, nonatomic) NSURL *source; // @synthesize source=_source;
 
 - (void).cxx_destruct;
 - (void)executionDidBegin;
+- (id)init;
 
 @end
 

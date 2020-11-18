@@ -22,6 +22,8 @@
 
 + (id)_orderedPrefetchConditionStringsOnAssets;
 + (id)_originalResourceTypes;
++ (id)_originalResourceTypesForAsset;
++ (id)_originalResourceTypesForMaster;
 - (id)_assetPredicateForCPLResourceType:(unsigned long long)arg1 additionalAssetConditions:(id)arg2 additionalResourcePredicates:(id)arg3;
 - (BOOL)_canPrefetch;
 - (void)_checkCPLBackgroundDownloadOperations;

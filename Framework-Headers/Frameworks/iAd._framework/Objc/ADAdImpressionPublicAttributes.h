@@ -14,7 +14,8 @@
 {
     BOOL _unbranded;
     BOOL _hasAction;
-    int _contentAdServer;
+    BOOL _requiresMRAID;
+    NSString *_batchResponseIdentifier;
     NSString *_accessibilityLabel;
     double _skipThreshold;
     double _minimumIntervalBetweenPresentations;
@@ -28,18 +29,31 @@
     NSArray *_nativeMetadata;
     NSDictionary *_transparencyDetails;
     NSDictionary *_nativeMediaCreativeMetadata;
+    NSURL *_contentURL;
+    NSString *_contentString;
+    long long _maximumPretapRequestCount;
+    struct CGSize _portraitSize;
+    struct CGSize _landscapeSize;
+    struct CGSize _containerSize;
 }
 
 @property (copy, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
 @property (strong, nonatomic) NSURL *audioURL; // @synthesize audioURL=_audioURL;
-@property (nonatomic) int contentAdServer; // @synthesize contentAdServer=_contentAdServer;
+@property (copy, nonatomic) NSString *batchResponseIdentifier; // @synthesize batchResponseIdentifier=_batchResponseIdentifier;
+@property (nonatomic) struct CGSize containerSize; // @synthesize containerSize=_containerSize;
+@property (strong, nonatomic) NSString *contentString; // @synthesize contentString=_contentString;
+@property (strong, nonatomic) NSURL *contentURL; // @synthesize contentURL=_contentURL;
 @property (copy, nonatomic) NSString *descriptionForLCD; // @synthesize descriptionForLCD=_descriptionForLCD;
 @property (nonatomic) BOOL hasAction; // @synthesize hasAction=_hasAction;
 @property (copy, nonatomic) NSString *headlineForLCD; // @synthesize headlineForLCD=_headlineForLCD;
+@property (nonatomic) struct CGSize landscapeSize; // @synthesize landscapeSize=_landscapeSize;
 @property (strong, nonatomic) NSURL *logoImageURL; // @synthesize logoImageURL=_logoImageURL;
+@property (nonatomic) long long maximumPretapRequestCount; // @synthesize maximumPretapRequestCount=_maximumPretapRequestCount;
 @property (nonatomic) double minimumIntervalBetweenPresentations; // @synthesize minimumIntervalBetweenPresentations=_minimumIntervalBetweenPresentations;
 @property (strong, nonatomic) NSDictionary *nativeMediaCreativeMetadata; // @synthesize nativeMediaCreativeMetadata=_nativeMediaCreativeMetadata;
 @property (strong, nonatomic) NSArray *nativeMetadata; // @synthesize nativeMetadata=_nativeMetadata;
+@property (nonatomic) struct CGSize portraitSize; // @synthesize portraitSize=_portraitSize;
+@property (nonatomic) BOOL requiresMRAID; // @synthesize requiresMRAID=_requiresMRAID;
 @property (nonatomic) double skipThreshold; // @synthesize skipThreshold=_skipThreshold;
 @property (strong, nonatomic) NSURL *staticImageURL; // @synthesize staticImageURL=_staticImageURL;
 @property (strong, nonatomic) NSDictionary *transparencyDetails; // @synthesize transparencyDetails=_transparencyDetails;

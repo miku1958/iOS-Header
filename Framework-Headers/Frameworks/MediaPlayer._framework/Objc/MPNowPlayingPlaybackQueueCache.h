@@ -12,6 +12,7 @@
 @interface MPNowPlayingPlaybackQueueCache : NSObject
 {
     NSMutableSet *_items;
+    NSMutableDictionary *_itemLookup;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_changedItems;
     BOOL _coalescingUpdates;

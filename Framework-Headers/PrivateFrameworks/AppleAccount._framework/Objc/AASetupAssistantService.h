@@ -33,6 +33,7 @@
 - (id)_signingSession;
 - (void)authenticateWithHandler:(CDUnknownBlockType)arg1;
 - (void)createAppleIDWithParameters:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)createAppleIDWithParameters:(id)arg1 handlerWithResponse:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)downloadURLConfiguration:(CDUnknownBlockType)arg1;
 - (id)init;

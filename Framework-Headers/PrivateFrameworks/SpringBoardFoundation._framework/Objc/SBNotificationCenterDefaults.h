@@ -11,6 +11,8 @@
 }
 
 @property (readonly, nonatomic, getter=isBatteryWidgetAlwaysAvailable) BOOL batteryWidgetAlwaysAvailable; // @dynamic batteryWidgetAlwaysAvailable;
+@property (nonatomic) BOOL didPurgeNonASTCSnapshots; // @dynamic didPurgeNonASTCSnapshots;
+@property (nonatomic) BOOL didPurgeNonCAMLSnapshots; // @dynamic didPurgeNonCAMLSnapshots;
 @property (readonly, nonatomic) BOOL showInternalWidgets; // @dynamic showInternalWidgets;
 @property (readonly, nonatomic) BOOL showWidgetSnapshotDebugLabels; // @dynamic showWidgetSnapshotDebugLabels;
 @property (readonly, nonatomic) BOOL useDuetRecommendations; // @dynamic useDuetRecommendations;

@@ -16,6 +16,7 @@
     double _rivenSizeFactor;
     BOOL _lightweightFactory;
     double _scale;
+    struct CGSize _stretchFactor;
     BOOL _boldTextEnabled;
     BOOL _allowsPaddles;
     BOOL _preferStringKeycapOverImage;
@@ -30,6 +31,7 @@
 @property (nonatomic) double rivenSizeFactor; // @synthesize rivenSizeFactor=_rivenSizeFactor;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (readonly, nonatomic) NSArray *segmentTraits; // @synthesize segmentTraits=_segmentTraits;
+@property (nonatomic) struct CGSize stretchFactor; // @synthesize stretchFactor=_stretchFactor;
 
 + (id)_characterSetForGlyphSelectors;
 + (BOOL)_enabled;
@@ -63,6 +65,8 @@
 - (id)dictationKeyImageName;
 - (id)dismissKeyImageName;
 - (id)displayContentsForKey:(id)arg1;
+- (struct CGPoint)dualStringKeyBottomTextOffset:(id)arg1 keyplane:(id)arg2;
+- (struct CGPoint)dualStringKeyTopTextOffset:(id)arg1 keyplane:(id)arg2;
 - (double)emojiPopupDividerKeyOffset;
 - (long long)enabledBlendForm;
 - (id)extraPasscodePaddleTraits;
@@ -103,6 +107,7 @@
 - (id)shiftOnKeyImageName;
 - (BOOL)shouldClearBaseDisplayStringForVariants:(id)arg1;
 - (double)skinnyKeyThreshold;
+- (BOOL)supportsGestureBehaviors;
 - (BOOL)supportsInputTraits:(id)arg1 forKeyplane:(id)arg2;
 - (void)suppressLayoutSegments;
 - (id)thinKeycapsFontName;

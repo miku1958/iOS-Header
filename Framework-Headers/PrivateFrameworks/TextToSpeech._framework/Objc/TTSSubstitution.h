@@ -18,6 +18,7 @@
     BOOL _appliesToAllApps;
     BOOL _isReplacementTextAllPunctuation;
     BOOL _isReplacementTextSurroundedByPunctuation;
+    BOOL _isUserSubstitution;
     NSString *_originalString;
     NSString *_replacementString;
     NSString *_phonemes;
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL ignoreCase; // @synthesize ignoreCase=_ignoreCase;
 @property (readonly, nonatomic) BOOL isReplacementTextAllPunctuation; // @synthesize isReplacementTextAllPunctuation=_isReplacementTextAllPunctuation;
 @property (readonly, nonatomic) BOOL isReplacementTextSurroundedByPunctuation; // @synthesize isReplacementTextSurroundedByPunctuation=_isReplacementTextSurroundedByPunctuation;
+@property (nonatomic) BOOL isUserSubstitution; // @synthesize isUserSubstitution=_isUserSubstitution;
 @property (copy, nonatomic) NSSet *languages; // @synthesize languages=_languages;
 @property (copy, nonatomic) NSString *originalString; // @synthesize originalString=_originalString;
 @property (copy, nonatomic) NSString *phonemes; // @synthesize phonemes=_phonemes;

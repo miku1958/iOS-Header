@@ -74,6 +74,7 @@ __attribute__((visibility("hidden")))
     BOOL _allowTCPIOConnectionStreamTask;
     unsigned long long _customReadBufferSize;
     double _customReadBufferTimeout;
+    BOOL _preventsSystemHTTPProxyAuthentication;
     BOOL _backgroundSession;
     NSString *_disposition;
     NSURLCredentialStorage *_phskip_credStorage;
@@ -175,6 +176,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_preventsDirectWiFiAccess;
 - (BOOL)_preventsIdleSleep;
 - (BOOL)_preventsIdleSleepOnceConnected;
+- (BOOL)_preventsSystemHTTPProxyAuthentication;
 - (BOOL)_requiresClientToOpenFiles;
 - (BOOL)_requiresPowerPluggedIn;
 - (BOOL)_respectsAllowsCellularAccessForDiscretionaryTasks;
@@ -296,6 +298,7 @@ __attribute__((visibility("hidden")))
 - (void)set_preventsDirectWiFiAccess:(BOOL)arg1;
 - (void)set_preventsIdleSleep:(BOOL)arg1;
 - (void)set_preventsIdleSleepOnceConnected:(BOOL)arg1;
+- (void)set_preventsSystemHTTPProxyAuthentication:(BOOL)arg1;
 - (void)set_proxySession:(BOOL)arg1;
 - (void)set_requiresClientToOpenFiles:(BOOL)arg1;
 - (void)set_requiresPowerPluggedIn:(BOOL)arg1;

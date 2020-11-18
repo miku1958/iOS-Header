@@ -11,7 +11,7 @@
 #import <MediaPlayer/SSPurchaseManagerDelegate-Protocol.h>
 #import <MediaPlayer/UIAlertViewDelegate-Protocol.h>
 
-@class NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, SSDownloadManager, SSPurchaseManager;
+@class NSArray, NSDictionary, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, SSDownloadManager, SSPurchaseManager;
 @protocol OS_dispatch_queue;
 
 @interface MPStoreDownloadManager : NSObject <SSDownloadManagerObserver, SSPurchaseManagerDelegate, UIAlertViewDelegate, SSDownloadHandlerDelegate>
@@ -20,6 +20,7 @@
     NSArray *_activeDownloads;
     NSObject<OS_dispatch_queue> *_calloutSerialQueue;
     NSMutableArray *_blockObservers;
+    NSDictionary *_downloadKindToRequiredClientBundleIdentifiers;
     SSDownloadManager *_downloadManager;
     NSMutableArray *_downloads;
     NSMutableArray *_userDownloads;
@@ -30,6 +31,7 @@
     SSPurchaseManager *_purchaseManager;
     NSMapTable *_storeIdentifiersToDownloads;
     NSMutableDictionary *_downloadHandlers;
+    BOOL _fetchedInitialDownloads;
 }
 
 @property (readonly, nonatomic) NSArray *activeDownloads;
@@ -43,10 +45,12 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (void)_addNonCancelledDownloadsToActiveList:(id)arg1;
 - (void)_addPurchaseFinishedHandler:(CDUnknownBlockType)arg1 forDownloads:(id)arg2;
 - (void)_addStoreDownloadForRedownloadProductItem:(id)arg1;
 - (id)_existingDownloadForSSDownload:(id)arg1;
 - (id)_init;
+- (BOOL)_isActiveDownload:(id)arg1;
 - (id)_observersForAllDownloads;
 - (id)_observersForDownload:(id)arg1;
 - (void)_onQueue_addDownloadToMapTables:(id)arg1;
@@ -59,7 +63,9 @@
 - (void)_sendDownloadsDidFinishPurchasesToObserversForDownloads:(id)arg1;
 - (void)_sendDownloadsDidFinishToObserversForDownloads:(id)arg1 notifyDownloadManager:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_sendDownloadsDidProgressToObserversForDownloads:(id)arg1;
+- (BOOL)_shouldHideDownload:(id)arg1;
 - (void)_unregisterBlockObserver:(id)arg1;
+- (void)_updateActiveDownloadsWithCancelledDownloads:(id)arg1;
 - (void)_updateActiveDownloadsWithChangedActiveDownloads:(id)arg1 inactiveDownloads:(id)arg2;
 - (void)_updateDownloadsWithAdditions:(id)arg1 removals:(id)arg2;
 - (void)_updateMediaItemPropertiesForFinishedStoreDownload:(id)arg1 SSDownload:(id)arg2;
@@ -78,6 +84,7 @@
 - (void)downloadHandler:(id)arg1 handleSession:(id)arg2;
 - (void)downloadManager:(id)arg1 downloadStatesDidChange:(id)arg2;
 - (void)downloadManagerNetworkUsageDidChange:(id)arg1;
+- (BOOL)hasFetchedInitialDownloads;
 - (id)init;
 - (void)pauseDownloads:(id)arg1;
 - (void)prioritizeDownloads:(id)arg1;

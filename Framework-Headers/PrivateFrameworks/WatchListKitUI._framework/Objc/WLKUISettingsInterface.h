@@ -13,7 +13,9 @@
 }
 
 - (id)consentedBrands;
+- (id)deniedBrands;
 - (BOOL)privateModeEnabled;
+- (id)settings;
 
 @end
 

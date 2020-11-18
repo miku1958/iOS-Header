@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)_cachePlaceData:(id)arg1 forKey:(struct _GEOTileKey)arg2 shouldOptimizeWritesToDisk:(BOOL)arg3;
+- (void)_cachePlaceData:(id)arg1 forKey:(struct _GEOTileKey)arg2 shouldOptimizeWritesToDisk:(BOOL)arg3 shouldUseDefaultProviderId:(BOOL)arg4;
 - (id)_cachedPlacedForRequest:(id)arg1;
 - (void)_callHistoryRecentsClearedObserver:(id)arg1;
 - (long long)_invalidationStateForPlace:(id)arg1;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_resetPhoneNumberMapper;
 - (void)_trackPlaceData:(id)arg1 forRequest:(id)arg2;
 - (void)applyRAPUpdatedMapItems:(id)arg1;
+- (id)cacheRegister;
 - (void)calculateFreeableSpaceWithHandler:(CDUnknownBlockType)arg1;
 - (void)cancelRequest:(id)arg1;
 - (void)clearCache;

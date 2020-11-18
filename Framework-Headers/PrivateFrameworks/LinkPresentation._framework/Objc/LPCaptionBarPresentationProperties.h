@@ -36,6 +36,12 @@
 - (void).cxx_destruct;
 - (BOOL)hasAnyContent;
 - (id)init;
+- (long long)leftAccessoryType;
+- (id)leftIcon;
+- (id)leftIconMaskColor;
+- (long long)rightAccessoryType;
+- (id)rightIcon;
+- (id)rightIconMaskColor;
 
 @end
 

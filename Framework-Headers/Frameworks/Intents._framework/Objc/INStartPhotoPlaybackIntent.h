@@ -32,14 +32,20 @@
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
+- (id)domain;
 - (id)initWithDateCreated:(id)arg1 locationCreated:(id)arg2 albumName:(id)arg3 searchTerms:(id)arg4 includedAttributes:(unsigned long long)arg5 excludedAttributes:(unsigned long long)arg6 peopleInPhoto:(id)arg7;
+- (id)parametersByName;
 - (void)setAlbumName:(id)arg1;
 - (void)setDateCreated:(id)arg1;
+- (void)setDomain:(id)arg1;
 - (void)setExcludedAttributes:(unsigned long long)arg1;
 - (void)setIncludedAttributes:(unsigned long long)arg1;
 - (void)setLocationCreated:(id)arg1;
+- (void)setParametersByName:(id)arg1;
 - (void)setPeopleInPhoto:(id)arg1;
 - (void)setSearchTerms:(id)arg1;
+- (void)setVerb:(id)arg1;
+- (id)verb;
 
 @end
 

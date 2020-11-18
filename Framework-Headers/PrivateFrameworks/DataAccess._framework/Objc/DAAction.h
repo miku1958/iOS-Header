@@ -11,7 +11,7 @@
 @interface DAAction : NSObject <NSCoding>
 {
     int _changeId;
-    long long _itemChangeType;
+    unsigned long long _itemChangeType;
     id _serverId;
     id _instanceId;
     id _changedItem;
@@ -22,7 +22,7 @@
 @property (strong, nonatomic) id changedAttendees; // @synthesize changedAttendees=_changedAttendees;
 @property (strong, nonatomic, setter=_setChangedItem:) id changedItem; // @synthesize changedItem=_changedItem;
 @property (strong, nonatomic) id instanceId; // @synthesize instanceId=_instanceId;
-@property (nonatomic) long long itemChangeType; // @synthesize itemChangeType=_itemChangeType;
+@property (nonatomic) unsigned long long itemChangeType; // @synthesize itemChangeType=_itemChangeType;
 @property (strong, nonatomic) id serverId; // @synthesize serverId=_serverId;
 
 - (void).cxx_destruct;
@@ -36,12 +36,12 @@
 - (struct ASEvent *)event;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithItemChangeType:(long long)arg1 changedItem:(id)arg2 serverId:(id)arg3;
-- (id)initWithItemChangeType:(long long)arg1 changedItem:(id)arg2 serverId:(id)arg3 instanceId:(id)arg4;
+- (id)initWithItemChangeType:(unsigned long long)arg1 changedItem:(id)arg2 serverId:(id)arg3;
+- (id)initWithItemChangeType:(unsigned long long)arg1 changedItem:(id)arg2 serverId:(id)arg3 instanceId:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)message;
 - (struct ASNote *)note;
-- (id)stringForItemChangeType:(long long)arg1;
+- (id)stringForItemChangeType:(unsigned long long)arg1;
 - (struct ASToDo *)toDo;
 
 @end

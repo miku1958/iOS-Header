@@ -14,6 +14,7 @@
     BOOL _shouldStartLeaseSession;
     BOOL _shouldUseAccountLessStreaming;
     BOOL _shouldUseStreamingRedownload;
+    BOOL _streamingRental;
     MPMediaPlaybackItemMetadata *_playbackItemMetadata;
     unsigned long long _preferredAssetQuality;
     NSString *_assetSourceStoreFrontID;
@@ -23,10 +24,12 @@
     NSString *_buyParameters;
     long long _endpointType;
     long long _storeAdamID;
+    CDUnknownBlockType _downloadSessionAlternativeConfigurationOptionsBlock;
 }
 
 @property (copy, nonatomic) NSString *assetSourceStoreFrontID; // @synthesize assetSourceStoreFrontID=_assetSourceStoreFrontID;
 @property (readonly, copy, nonatomic) NSString *buyParameters; // @synthesize buyParameters=_buyParameters;
+@property (copy, nonatomic) CDUnknownBlockType downloadSessionAlternativeConfigurationOptionsBlock; // @synthesize downloadSessionAlternativeConfigurationOptionsBlock=_downloadSessionAlternativeConfigurationOptionsBlock;
 @property (readonly, nonatomic) long long endpointType; // @synthesize endpointType=_endpointType;
 @property (nonatomic) long long equivalencySourceAdamID; // @synthesize equivalencySourceAdamID=_equivalencySourceAdamID;
 @property (strong, nonatomic) MPMediaPlaybackItemMetadata *playbackItemMetadata; // @synthesize playbackItemMetadata=_playbackItemMetadata;
@@ -38,6 +41,7 @@
 @property (nonatomic) BOOL shouldUseAccountLessStreaming; // @synthesize shouldUseAccountLessStreaming=_shouldUseAccountLessStreaming;
 @property (nonatomic) BOOL shouldUseStreamingRedownload; // @synthesize shouldUseStreamingRedownload=_shouldUseStreamingRedownload;
 @property (readonly, nonatomic) long long storeAdamID; // @synthesize storeAdamID=_storeAdamID;
+@property (nonatomic, getter=isStreamingRental) BOOL streamingRental; // @synthesize streamingRental=_streamingRental;
 @property (readonly, nonatomic) BOOL usesSubscriptionLease;
 
 - (void).cxx_destruct;

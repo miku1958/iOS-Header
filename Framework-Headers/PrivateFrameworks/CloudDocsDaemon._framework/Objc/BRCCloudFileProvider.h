@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_spaceRequiredForReaders;
 - (void)_triggerImmediateReadOfDocumentAtPath:(id)arg1;
 - (void)_unregisterPresenterForKey:(id)arg1;
-- (void)_waitForDownloadOfDirectory:(id)arg1 key:(id)arg2 readingOptions:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_waitForDownloadOfDirectory:(id)arg1 key:(id)arg2 requireCurrent:(BOOL)arg3 readingOptions:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_waitForDownloadOfDocument:(id)arg1 key:(id)arg2 requireCurrent:(BOOL)arg3 readingOptions:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)boostFilePresenterForURL:(id)arg1;
 - (void)cancelAllCoordinationProviders;

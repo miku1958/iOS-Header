@@ -10,7 +10,6 @@
 + (id)uns_bundleForBundleIdentifier:(id)arg1;
 - (BOOL)_uns_isReallyInstalled;
 - (id)uns_bundle;
-- (id)uns_infoDictionary;
 - (BOOL)uns_isSystemApplication;
 - (id)uns_path;
 - (BOOL)uns_requiresLocalNotifications;

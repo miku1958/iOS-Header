@@ -12,18 +12,22 @@
 
 @interface NTPBEnvelopeBatch : PBCodable <NSCopying>
 {
+    int _envelopeDroppedCountDueToSizeLimit;
     NSMutableArray *_envelopes;
     int _majorVersion;
     int _minorVersion;
     int _patchVersion;
     struct {
+        unsigned int envelopeDroppedCountDueToSizeLimit:1;
         unsigned int majorVersion:1;
         unsigned int minorVersion:1;
         unsigned int patchVersion:1;
     } _has;
 }
 
+@property (nonatomic) int envelopeDroppedCountDueToSizeLimit; // @synthesize envelopeDroppedCountDueToSizeLimit=_envelopeDroppedCountDueToSizeLimit;
 @property (strong, nonatomic) NSMutableArray *envelopes; // @synthesize envelopes=_envelopes;
+@property (nonatomic) BOOL hasEnvelopeDroppedCountDueToSizeLimit;
 @property (nonatomic) BOOL hasMajorVersion;
 @property (nonatomic) BOOL hasMinorVersion;
 @property (nonatomic) BOOL hasPatchVersion;

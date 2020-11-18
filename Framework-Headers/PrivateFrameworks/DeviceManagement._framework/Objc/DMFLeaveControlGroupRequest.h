@@ -14,7 +14,7 @@
     NSArray *_leaderIdentifiers;
 }
 
-@property (copy, nonatomic) DMFControlGroupIdentifier *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
+@property (strong, nonatomic) DMFControlGroupIdentifier *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property (copy, nonatomic) NSArray *leaderIdentifiers; // @synthesize leaderIdentifiers=_leaderIdentifiers;
 
 + (BOOL)supportsSecureCoding;

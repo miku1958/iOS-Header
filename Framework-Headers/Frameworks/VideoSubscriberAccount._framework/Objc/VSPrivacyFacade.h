@@ -10,14 +10,12 @@
 
 @class NSArray, NSOperationQueue, NSString;
 
-__attribute__((visibility("hidden")))
 @interface VSPrivacyFacade : NSObject <VSPrivacyServiceProtocol>
 {
     NSString *_service;
     NSOperationQueue *_privateQueue;
 }
 
-@property (readonly, nonatomic, getter=isAccessRestricted) BOOL accessRestriced;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

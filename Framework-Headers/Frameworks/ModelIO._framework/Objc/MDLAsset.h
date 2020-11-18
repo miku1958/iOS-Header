@@ -9,7 +9,7 @@
 #import <ModelIO/NSCopying-Protocol.h>
 #import <ModelIO/NSFastEnumeration-Protocol.h>
 
-@class MDLVertexDescriptor, NSMutableArray, NSURL;
+@class MDLVertexDescriptor, NSArray, NSMapTable, NSMutableArray, NSURL;
 @protocol MDLMeshBufferAllocator, MDLObjectContainerComponent;
 
 @interface MDLAsset : NSObject <NSCopying, NSFastEnumeration>
@@ -19,6 +19,7 @@
     id<MDLObjectContainerComponent> _masters;
     double _startTime;
     double _endTime;
+    NSMapTable *_components;
     double _frameInterval;
     id<MDLMeshBufferAllocator> _bufferAllocator;
     MDLVertexDescriptor *_vertexDescriptor;
@@ -28,6 +29,7 @@
 @property (readonly, nonatomic) struct MDLAABB _bounds;
 @property (readonly, nonatomic) struct boundingBox;
 @property (readonly, strong, nonatomic) id<MDLMeshBufferAllocator> bufferAllocator; // @synthesize bufferAllocator=_bufferAllocator;
+@property (readonly, copy, nonatomic) NSArray *components;
 @property (readonly, nonatomic) unsigned long long count;
 @property (nonatomic) double endTime;
 @property (nonatomic) double frameInterval; // @synthesize frameInterval=_frameInterval;
@@ -44,6 +46,7 @@
 - (void)addObject:(id)arg1;
 - (struct)boundingBoxAtTime:(double)arg1;
 - (id)childObjectsOfClass:(Class)arg1;
+- (id)componentConformingToProtocol:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)enumerateChildObjectsOfClass:(Class)arg1 usingBlock:(CDUnknownBlockType)arg2 stopPointer:(BOOL *)arg3;
@@ -56,8 +59,11 @@
 - (id)initWithURL:(id)arg1 vertexDescriptor:(id)arg2 bufferAllocator:(id)arg3 preserveTopology:(BOOL)arg4 error:(id *)arg5;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
+- (id)objectForKeyedSubscript:(id)arg1;
 - (id)objects;
 - (void)removeObject:(id)arg1;
+- (void)setComponent:(id)arg1 forProtocol:(id)arg2;
+- (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 
 @end
 

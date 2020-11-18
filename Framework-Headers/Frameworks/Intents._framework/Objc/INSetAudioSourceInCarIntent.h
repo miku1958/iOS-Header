@@ -25,9 +25,15 @@
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
+- (id)domain;
 - (id)initWithAudioSource:(long long)arg1 relativeAudioSourceReference:(long long)arg2;
+- (id)parametersByName;
 - (void)setAudioSource:(long long)arg1;
+- (void)setDomain:(id)arg1;
+- (void)setParametersByName:(id)arg1;
 - (void)setRelativeAudioSourceReference:(long long)arg1;
+- (void)setVerb:(id)arg1;
+- (id)verb;
 
 @end
 

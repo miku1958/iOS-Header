@@ -16,17 +16,20 @@
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
 @property (copy, nonatomic) NSArray *actionResults;
+@property (copy, nonatomic) NSString *clientValidity;
 @property (copy, nonatomic) NSString *commandOutcome;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
+@property (copy, nonatomic) NSString *serverValidity;
 @property (readonly) Class superclass;
 
 + (id)commandCompleted;
 + (id)commandCompletedWithDictionary:(id)arg1 context:(id)arg2;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (BOOL)requiresResponse;
 
 @end
 

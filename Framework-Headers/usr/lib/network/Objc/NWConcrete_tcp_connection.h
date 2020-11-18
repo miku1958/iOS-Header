@@ -9,7 +9,7 @@
 #import <network/OS_tcp_connection-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_nw_connection, OS_nw_endpoint, OS_nw_parameters, OS_nw_path, OS_xpc_object;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_nw_connection, OS_nw_endpoint, OS_nw_parameters, OS_nw_path, OS_xpc_object;
 
 @interface NWConcrete_tcp_connection : NSObject <OS_tcp_connection>
 {
@@ -28,16 +28,12 @@
     NSObject<OS_dispatch_queue> *tc_client_queue;
     CDUnknownBlockType tc_event;
     CDUnknownBlockType tc_cancel_handler;
-    void *tc_connection_attempt_timer;
+    NSObject<OS_dispatch_source> *tc_connection_attempt_timer;
     unsigned long long tc_id;
     int tc_error;
     unsigned char tc_state;
     unsigned char tc_by;
     void *tc_internally_retained_object;
-    unsigned int tc_event_betterroute_outstanding:1;
-    unsigned int tc_event_betterroute_changed_outstanding:1;
-    unsigned int tc_event_viable_outstanding:1;
-    unsigned int tc_event_quality_changed_outstanding:1;
     unsigned int tc_event_read_close_delivered:1;
     unsigned int tc_event_write_close_delivered:1;
     unsigned int tc_event_connected_delivered:1;

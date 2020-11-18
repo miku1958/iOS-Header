@@ -26,15 +26,21 @@ __attribute__((visibility("hidden")))
 + (void)beginListening;
 + (id)cacheSalt;
 + (id)sharedInstance;
+- (void)_setAlternateIconName:(id)arg1 forIdentifier:(id)arg2;
 - (void)copyIconBitmapCacheConfigurationWithReply:(CDUnknownBlockType)arg1;
-- (BOOL)getIconBitmapDataWithResourceDirectoryURL:(id)arg1 boundContainerURL:(id)arg2 dataContainerURL:(id)arg3 bundleIdentifier:(id)arg4 iconsDictionary:(id)arg5 cacheFileName:(id)arg6 variant:(int)arg7 bitmapData:(id *)arg8;
-- (void)getIconBitmapDataWithResourceDirectoryURL:(id)arg1 boundContainerURL:(id)arg2 dataContainerURL:(id)arg3 bundleIdentifier:(id)arg4 iconsDictionary:(id)arg5 cacheFileName:(id)arg6 variant:(int)arg7 reply:(CDUnknownBlockType)arg8;
+- (id)getAlternateIconNameForIdentifier:(id)arg1;
+- (void)getAlternateIconNameForIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (BOOL)getIconBitmapDataWithResourceDirectoryURL:(id)arg1 boundContainerURL:(id)arg2 dataContainerURL:(id)arg3 bundleIdentifier:(id)arg4 iconsDictionary:(id)arg5 alternateName:(id)arg6 cacheFileName:(id)arg7 variant:(int)arg8 options:(int)arg9 bitmapData:(id *)arg10;
+- (void)getIconBitmapDataWithResourceDirectoryURL:(id)arg1 boundContainerURL:(id)arg2 dataContainerURL:(id)arg3 bundleIdentifier:(id)arg4 iconsDictionary:(id)arg5 preferredIconName:(id)arg6 cacheFileName:(id)arg7 variant:(int)arg8 options:(int)arg9 reply:(CDUnknownBlockType)arg10;
 - (BOOL)getIconBitmapDataWithResourceDirectoryURL:(id)arg1 bundleIdentifier:(id)arg2 roleIdentifier:(id)arg3 iconFiles:(id)arg4 variant:(int)arg5 options:(int)arg6 bitmapData:(id *)arg7;
 - (void)getIconBitmapDataWithResourceDirectoryURL:(id)arg1 bundleIdentifier:(id)arg2 roleIdentifier:(id)arg3 iconFiles:(id)arg4 variant:(int)arg5 options:(int)arg6 reply:(CDUnknownBlockType)arg7;
 - (id)init;
 - (void)invalidateItemsForBundeID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)invalidateItemsForBundleIdentifier:(id)arg1;
+- (BOOL)isValidAlternateIcon:(id)arg1 forIconsDict:(id)arg2;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (BOOL)setAlternateIconName:(id)arg1 forIdentifier:(id)arg2 error:(id *)arg3;
+- (void)setAlternateIconName:(id)arg1 forIdentifier:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setIconData:(id)arg1 forKey:(id)arg2;
 
 @end

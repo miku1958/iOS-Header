@@ -34,7 +34,6 @@
     FCHeadlineThumbnail *_thumbnailWidget;
     FCHeadlineThumbnail *_thumbnailWidgetHQ;
     NSString *_title;
-    NSString *_subtitle;
     NSString *_articleID;
     NSString *_referencedArticleID;
     NSString *_clusterID;
@@ -145,7 +144,6 @@
 @property (readonly, nonatomic, getter=isSponsored) BOOL sponsored; // @synthesize sponsored=_sponsored;
 @property (strong, nonatomic) FCTopStoriesStyleConfiguration *storyStyle; // @synthesize storyStyle=_storyStyle;
 @property (nonatomic) unsigned long long storyType; // @synthesize storyType=_storyType;
-@property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *surfacedByBinID; // @synthesize surfacedByBinID=_surfacedByBinID;
 @property (copy, nonatomic) NSString *surfacedByChannelID; // @synthesize surfacedByChannelID=_surfacedByChannelID;
@@ -172,6 +170,7 @@
 @property (readonly, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 
 - (void).cxx_destruct;
+- (void)applyHeadlineMetadata:(id)arg1 appConfig:(id)arg2;
 - (void)assignStoryType:(unsigned long long)arg1 withAppConfig:(id)arg2;
 - (id)contentManifestWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

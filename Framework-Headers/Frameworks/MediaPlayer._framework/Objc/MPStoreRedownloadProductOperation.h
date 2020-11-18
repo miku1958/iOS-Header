@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class MPStoreRedownloadProductResponse, NSError, NSObject, NSString, SSURLConnectionRequest;
+@class MPStoreRedownloadProductResponse, NSError, NSObject, NSString, SSVLoadURLOperation;
 @protocol OS_dispatch_queue;
 
 @interface MPStoreRedownloadProductOperation : NSOperation
@@ -15,7 +15,8 @@
     MPStoreRedownloadProductResponse *_redownloadProductResponse;
     NSError *_responseError;
     BOOL _shouldUseStreamingRedownload;
-    SSURLConnectionRequest *_URLConnectionRequest;
+    SSVLoadURLOperation *_URLOperation;
+    BOOL _streamingRental;
     NSString *_buyParameters;
     unsigned long long _endpointType;
     NSString *_requestingBundleIdentifier;
@@ -28,6 +29,7 @@
 @property (copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
 @property (copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
 @property (readonly, copy, nonatomic) NSError *responseError;
+@property (nonatomic, getter=isStreamingRental) BOOL streamingRental; // @synthesize streamingRental=_streamingRental;
 
 - (void).cxx_destruct;
 - (void)cancel;

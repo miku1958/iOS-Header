@@ -8,13 +8,14 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPPhotoWithMetadata, NSString;
+@class GEORPPhotoWithMetadata, NSData, NSString;
 
 @interface GEORPInstructionCorrection : PBCodable <NSCopying>
 {
     NSString *_comments;
     GEORPPhotoWithMetadata *_photo;
     unsigned int _routeStepIndex;
+    NSData *_routeStepScreenshotImageData;
     unsigned int _routeStepSubstepIndex;
     struct {
         unsigned int routeStepIndex:1;
@@ -26,9 +27,11 @@
 @property (readonly, nonatomic) BOOL hasComments;
 @property (readonly, nonatomic) BOOL hasPhoto;
 @property (nonatomic) BOOL hasRouteStepIndex;
+@property (readonly, nonatomic) BOOL hasRouteStepScreenshotImageData;
 @property (nonatomic) BOOL hasRouteStepSubstepIndex;
 @property (strong, nonatomic) GEORPPhotoWithMetadata *photo; // @synthesize photo=_photo;
 @property (nonatomic) unsigned int routeStepIndex; // @synthesize routeStepIndex=_routeStepIndex;
+@property (strong, nonatomic) NSData *routeStepScreenshotImageData; // @synthesize routeStepScreenshotImageData=_routeStepScreenshotImageData;
 @property (nonatomic) unsigned int routeStepSubstepIndex; // @synthesize routeStepSubstepIndex=_routeStepSubstepIndex;
 
 - (void)copyTo:(id)arg1;

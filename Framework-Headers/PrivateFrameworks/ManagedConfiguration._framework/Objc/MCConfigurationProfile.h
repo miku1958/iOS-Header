@@ -6,7 +6,7 @@
 
 #import <ManagedConfiguration/MCProfile.h>
 
-@class MCProfileServiceProfile, NSArray;
+@class MCProfileServiceProfile, NSArray, NSNumber;
 
 @interface MCConfigurationProfile : MCProfile
 {
@@ -16,11 +16,15 @@
     BOOL _isCloudLocked;
     BOOL _isMDMProfile;
     MCProfileServiceProfile *_OTAProfile;
+    NSNumber *_isCloudProfileNum;
+    NSNumber *_isCloudLockedNum;
 }
 
 @property (strong, nonatomic) MCProfileServiceProfile *OTAProfile; // @synthesize OTAProfile=_OTAProfile;
 @property (nonatomic) BOOL isCloudLocked; // @synthesize isCloudLocked=_isCloudLocked;
+@property (strong, nonatomic) NSNumber *isCloudLockedNum; // @synthesize isCloudLockedNum=_isCloudLockedNum;
 @property (nonatomic) BOOL isCloudProfile; // @synthesize isCloudProfile=_isCloudProfile;
+@property (strong, nonatomic) NSNumber *isCloudProfileNum; // @synthesize isCloudProfileNum=_isCloudProfileNum;
 @property (nonatomic) BOOL isMDMProfile; // @synthesize isMDMProfile=_isMDMProfile;
 
 - (void).cxx_destruct;

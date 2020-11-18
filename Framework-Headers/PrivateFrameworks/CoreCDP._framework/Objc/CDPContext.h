@@ -16,10 +16,11 @@
 {
     BOOL _isHSA2Account;
     BOOL _didUseSMSVerification;
+    BOOL _guestMode;
+    BOOL _supportsSkipSignIn;
     BOOL __useSecureBackupCachedPassphrase;
     BOOL __alwaysCreateEscrowRecord;
-    BOOL __guestMode;
-    BOOL __idmsRecovery;
+    BOOL _idmsRecovery;
     NSDictionary *_authenticationResults;
     NSString *_appleID;
     NSString *_password;
@@ -28,14 +29,13 @@
     long long _type;
     NSString *_cachedLocalSecret;
     unsigned long long _cachedLocalSecretType;
+    NSString *_findMyiPhoneUUID;
     id<CDPAuthProviderInternal> __authProvider;
     NSString *__recoveryToken;
 }
 
 @property (nonatomic) BOOL _alwaysCreateEscrowRecord; // @synthesize _alwaysCreateEscrowRecord=__alwaysCreateEscrowRecord;
 @property (strong, nonatomic) id<CDPAuthProviderInternal> _authProvider; // @synthesize _authProvider=__authProvider;
-@property (nonatomic) BOOL _guestMode; // @synthesize _guestMode=__guestMode;
-@property (nonatomic) BOOL _idmsRecovery; // @synthesize _idmsRecovery=__idmsRecovery;
 @property (copy, nonatomic) NSString *_recoveryToken; // @synthesize _recoveryToken=__recoveryToken;
 @property (nonatomic) BOOL _useSecureBackupCachedPassphrase; // @synthesize _useSecureBackupCachedPassphrase=__useSecureBackupCachedPassphrase;
 @property (copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
@@ -44,15 +44,21 @@
 @property (nonatomic) unsigned long long cachedLocalSecretType; // @synthesize cachedLocalSecretType=_cachedLocalSecretType;
 @property (nonatomic) BOOL didUseSMSVerification; // @synthesize didUseSMSVerification=_didUseSMSVerification;
 @property (copy, nonatomic) NSNumber *dsid; // @synthesize dsid=_dsid;
+@property (copy) NSString *findMyiPhoneUUID; // @synthesize findMyiPhoneUUID=_findMyiPhoneUUID;
+@property (nonatomic) BOOL guestMode; // @synthesize guestMode=_guestMode;
+@property (nonatomic) BOOL idmsRecovery; // @synthesize idmsRecovery=_idmsRecovery;
 @property (nonatomic) BOOL isHSA2Account; // @synthesize isHSA2Account=_isHSA2Account;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (copy, nonatomic) NSString *passwordEquivToken; // @synthesize passwordEquivToken=_passwordEquivToken;
+@property BOOL supportsSkipSignIn; // @synthesize supportsSkipSignIn=_supportsSkipSignIn;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)desiresAllRecords;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithAuthenticationResults:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)purgeResumeData;

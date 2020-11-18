@@ -25,6 +25,7 @@
     NSString *_pairingWithUUID;
     HMFExponentialBackoffTimer *_atHomeRetryTimer;
     HMFNetMonitor *_netMonitor;
+    long long _tfaState;
 }
 
 @property (strong, nonatomic) HMFExponentialBackoffTimer *atHomeRetryTimer; // @synthesize atHomeRetryTimer=_atHomeRetryTimer;
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) HMFNetServiceBrowser *serviceBrowser; // @synthesize serviceBrowser=_serviceBrowser;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableSet *targetsToProcess; // @synthesize targetsToProcess=_targetsToProcess;
+@property (nonatomic) long long tfaState; // @synthesize tfaState=_tfaState;
 
 + (id)logCategory;
 + (void)twoFactorAuthenticationEnabledForAccount:(id)arg1 altDSID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -68,6 +70,7 @@
 - (void)_startBrowser;
 - (void)_startPairingWithKeyUUID:(id)arg1 forTarget:(id)arg2;
 - (void)_stopBrowser;
+- (void)_tfaVerificationCompleteForKeyUUID:(id)arg1 forTarget:(id)arg2;
 - (void)_tryPairingWithAccessories:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)initWithHomeManager:(id)arg1;

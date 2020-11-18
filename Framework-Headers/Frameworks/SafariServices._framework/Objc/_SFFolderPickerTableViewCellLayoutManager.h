@@ -11,7 +11,9 @@
 }
 
 + (double)indentationWidth;
+- (struct UIEdgeInsets)_layoutMarginsForCell:(id)arg1;
 - (void)layoutSubviewsOfCell:(id)arg1;
+- (struct CGRect)textRectForCell:(id)arg1 rowWidth:(double)arg2;
 
 @end
 

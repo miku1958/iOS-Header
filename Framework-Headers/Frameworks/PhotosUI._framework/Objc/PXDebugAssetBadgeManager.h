@@ -31,7 +31,7 @@
 - (BOOL)_isAssetContainedInMiroCuration:(id)arg1;
 - (BOOL)_isAssetContainedInPhotosGraphCuration:(id)arg1;
 - (void)_updateAssets;
-- (unsigned long long)badgeTypeForAsset:(id)arg1;
+- (struct PXAssetBadgeInfo)badgeInfoForAsset:(id)arg1 inCollection:(id)arg2 options:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 

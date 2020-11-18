@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CUTWeakReference, NSArray, NSData, NSMutableArray, NSMutableDictionary, NSString;
 @protocol APSConnectionDelegate, OS_dispatch_queue, OS_dispatch_source, OS_xpc_object;

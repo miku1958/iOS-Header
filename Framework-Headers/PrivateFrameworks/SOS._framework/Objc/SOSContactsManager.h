@@ -50,7 +50,6 @@
 - (void)dealloc;
 - (BOOL)hasValidContactsToMessage;
 - (id)init;
-- (BOOL)notificationEnabledAndContactsExist;
 - (id)phoneNumbersToMessage;
 - (void)removeSOSFriend:(id)arg1 destinationNumber:(id)arg2;
 

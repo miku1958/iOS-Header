@@ -17,6 +17,7 @@
     double _currentDuration;
     long long _isPlaying;
     NSString *_currentNowPlayingAppDisplayID;
+    NSString *_currentNowPlayingAppParentApp;
     BOOL _hasValidCurrentNowPlayingAppDisplayID;
     BOOL _isRegisteredForNowPlayingNotifications;
     BOOL _isUpdatingNowPlayingInfo;
@@ -43,6 +44,7 @@
 @property (readonly, nonatomic) BOOL isPlaying;
 @property (readonly, nonatomic) NSString *nowPlayingAppDisplayID;
 @property (readonly, nonatomic) BOOL nowPlayingAppIsSystemMediaApp;
+@property (readonly, nonatomic) NSString *nowPlayingAppParentAppDisplayID;
 @property (nonatomic) BOOL shouldUpdateNowPlayingArtwork; // @synthesize shouldUpdateNowPlayingArtwork=_shouldUpdateNowPlayingArtwork;
 @property (nonatomic) double timeInformationUpdateInterval; // @synthesize timeInformationUpdateInterval=_timeInformationUpdateInterval;
 

@@ -12,6 +12,8 @@
 - (void)_loadAudioAccessoryViewForNotification:(UNNotification *)arg1;
 - (void)_mediaPause;
 - (void)_mediaPlay;
+- (void)_preserveInputViews;
+- (void)_restoreInputViews;
 - (void)_updateMediaPlayPauseButton;
 @end
 

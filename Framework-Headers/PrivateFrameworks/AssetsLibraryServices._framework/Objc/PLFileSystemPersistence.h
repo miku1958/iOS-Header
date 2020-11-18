@@ -21,6 +21,7 @@
 + (void)persistUInt16:(unsigned short)arg1 forKey:(id)arg2 fileURL:(id)arg3;
 + (void)persistUUIDString:(id)arg1 forKey:(id)arg2 fileURL:(id)arg3;
 + (id)persistedAttributesForFileAtURL:(id)arg1;
++ (id)persistedAttributesForFileAtURL:(id)arg1 exists:(BOOL *)arg2;
 + (id)sharedInstance;
 - (void)_backgroundWriteData:(id)arg1 toFileAtURL:(id)arg2;
 - (void)_performOnWriterQueueWithIdentifier:(const char *)arg1 block:(CDUnknownBlockType)arg2;

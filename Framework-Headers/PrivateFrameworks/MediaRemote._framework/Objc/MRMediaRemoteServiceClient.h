@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _registeredNowPlayingObservers;
     NSMutableArray *_registeredOrigins;
     MRAVRoutingClientController *_routingClientController;
-    void *_nowPlayingPlaybackQueueContext;
     NSMutableDictionary *_transactionSources;
     MSVDistributedNotificationObserver *_televisionPairedDevicesChangedObserver;
     MSVDistributedNotificationObserver *_televisionIsPairingAllowedChangedObserver;
@@ -36,7 +35,6 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSArray *externalScreenTypeNotificationObservers; // @synthesize externalScreenTypeNotificationObservers=_externalScreenTypeNotificationObservers;
 @property (strong, nonatomic) NSArray *nowPlayingNotificationObservers; // @synthesize nowPlayingNotificationObservers=_nowPlayingNotificationObservers;
-@property (nonatomic, getter=copyNowPlayingPlaybackQueueContext) void *nowPlayingPlaybackQueueContext;
 @property (strong, nonatomic) NSArray *originNotificationObservers; // @synthesize originNotificationObservers=_originNotificationObservers;
 @property (nonatomic) BOOL receivesExternalScreenTypeChangedNotifications; // @synthesize receivesExternalScreenTypeChangedNotifications=_receivesExternalScreenTypeChangedNotifications;
 @property (nonatomic) BOOL receivesOriginChangedNotifications; // @synthesize receivesOriginChangedNotifications=_receivesOriginChangedNotifications;

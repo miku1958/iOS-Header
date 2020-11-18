@@ -12,10 +12,10 @@
 {
     NSString *_searchDescription;
     NSString *_searchBase;
-    long long _scope;
+    unsigned long long _scope;
 }
 
-@property (nonatomic) long long scope; // @synthesize scope=_scope;
+@property (nonatomic) unsigned long long scope; // @synthesize scope=_scope;
 @property (strong, nonatomic) NSString *searchBase; // @synthesize searchBase=_searchBase;
 @property (strong, nonatomic) NSString *searchDescription; // @synthesize searchDescription=_searchDescription;
 

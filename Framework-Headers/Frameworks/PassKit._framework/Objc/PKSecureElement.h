@@ -16,7 +16,7 @@
     NSObject<OS_dispatch_queue> *_deletingAllAppletsTimerConcurrentQueue;
     NSObject<OS_dispatch_queue> *_deletingAllAppletsPropertyConcurrentQueue;
     NSObject<OS_dispatch_queue> *_observerConcurrentQueue;
-    NSObject<OS_dispatch_queue> *_objectDisposalQueue;
+    NSObject<OS_dispatch_queue> *_replyQueue;
     NSHashTable *_observers;
 }
 

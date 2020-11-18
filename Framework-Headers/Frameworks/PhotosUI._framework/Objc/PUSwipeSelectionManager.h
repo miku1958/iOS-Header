@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSIndexPath, PUAutoScroller, PUPhotoSelectionManager;
+@class NSIndexPath, PUPhotoSelectionManager, PXUIAutoScroller;
 @protocol PUSwipeSelectionManagerDataSource, PUSwipeSelectionManagerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     struct NSMutableDictionary *_oldIndexesPaths;
     id<PUSwipeSelectionManagerDelegate> _delegate;
     id<PUSwipeSelectionManagerDataSource> _datasource;
-    PUAutoScroller *_selectionAutoScroller;
+    PXUIAutoScroller *_selectionAutoScroller;
     long long __selectionMode;
     NSIndexPath *__startingIndexPath;
     PUPhotoSelectionManager *__restorePhotoSelectionManager;
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<PUSwipeSelectionManagerDataSource> datasource; // @synthesize datasource=_datasource;
 @property (weak, nonatomic) id<PUSwipeSelectionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) struct CGPoint screenTouchLocation; // @synthesize screenTouchLocation=_screenTouchLocation;
-@property (strong, nonatomic) PUAutoScroller *selectionAutoScroller; // @synthesize selectionAutoScroller=_selectionAutoScroller;
+@property (strong, nonatomic) PXUIAutoScroller *selectionAutoScroller; // @synthesize selectionAutoScroller=_selectionAutoScroller;
 
 - (void).cxx_destruct;
 - (struct NSMutableDictionary *)_indexesPathsRangeForIndexPath:(id)arg1;

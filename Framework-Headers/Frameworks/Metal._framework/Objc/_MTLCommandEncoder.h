@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSString, _MTLCommandBuffer;
 @protocol MTLCommandBuffer, MTLDevice;
@@ -29,6 +29,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)endEncoding;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithCommandBuffer:(id)arg1;
 - (void)insertDebugSignpost:(id)arg1;
 - (void)popDebugGroup;

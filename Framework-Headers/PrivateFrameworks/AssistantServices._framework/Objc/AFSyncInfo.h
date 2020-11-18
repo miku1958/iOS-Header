@@ -13,6 +13,7 @@
 @interface AFSyncInfo : NSObject <NSSecureCoding>
 {
     BOOL _targetIsLocal;
+    BOOL _forVerification;
     NSString *_anchor;
     NSString *_validity;
     long long _count;
@@ -23,6 +24,7 @@
 @property (copy, nonatomic) NSString *anchor; // @synthesize anchor=_anchor;
 @property (copy, nonatomic) SASyncAppMetaData *appMetadata; // @synthesize appMetadata=_appMetadata;
 @property (nonatomic) long long count; // @synthesize count=_count;
+@property (nonatomic) BOOL forVerification; // @synthesize forVerification=_forVerification;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
 @property (nonatomic) BOOL targetIsLocal; // @synthesize targetIsLocal=_targetIsLocal;
 @property (copy, nonatomic) NSString *validity; // @synthesize validity=_validity;

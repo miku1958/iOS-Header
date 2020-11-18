@@ -65,6 +65,7 @@
     UITapGestureRecognizer *_selectGestureRecognizer;
     UIView *_inputView;
     UIView *_inputAccessoryView;
+    UIView *_recentsAccessoryView;
     UISystemInputViewController *_systemInputViewController;
     UITextFieldAtomBackgroundView *_atomBackgroundView;
     struct {
@@ -140,6 +141,7 @@
 @property (nonatomic) BOOL deferBecomingResponder; // @dynamic deferBecomingResponder;
 @property (weak, nonatomic) id<UITextFieldDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDevicePasscodeEntry) BOOL devicePasscodeEntry;
 @property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (strong, nonatomic) UIImage *disabledBackground; // @synthesize disabledBackground=_disabledBackground;
@@ -177,6 +179,7 @@
 @property (nonatomic) double minimumFontSize; // @synthesize minimumFontSize=_minimumFontSize;
 @property (copy, nonatomic) NSString *placeholder;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
+@property (strong) UIView *recentsAccessoryView;
 @property (copy, nonatomic) NSString *responseContext;
 @property (nonatomic) BOOL returnKeyGoesToNextResponder;
 @property (nonatomic) long long returnKeyType; // @dynamic returnKeyType;
@@ -283,6 +286,7 @@
 - (BOOL)_isPasscodeStyle;
 - (BOOL)_isShowingPlaceholder;
 - (BOOL)_isShowingPrefix;
+- (BOOL)_labelShouldUseVibrancy;
 - (void)_layoutContent;
 - (void)_layoutLabels;
 - (struct CGSize)_leftViewOffset;

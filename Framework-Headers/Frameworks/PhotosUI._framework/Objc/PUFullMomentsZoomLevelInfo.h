@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)displayTitle;
 - (void)getPhotosDataSource:(id *)arg1 displayTitleInfo:(id *)arg2 forDetailsForVisualSection:(long long)arg3;
 - (void)headerView:(id)arg1 actionButtonPressed:(id)arg2;
+- (struct CGSize)imageRequestItemSize;
 - (id)newCollectionViewLayout;
 - (void)prepareForTransitionFromZoomLevelInfo:(id)arg1 animated:(BOOL)arg2 interactive:(BOOL)arg3;
 - (void)prepareForTransitionToZoomLevelInfo:(id)arg1 animated:(BOOL)arg2 interactive:(BOOL)arg3;
@@ -49,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)wantsAutomaticContentOffsetAdjustment;
 - (BOOL)wantsCloudStatusVisible;
 - (BOOL)wantsMagnifierNavigation;
-- (double)zoomInDuration;
 
 @end
 

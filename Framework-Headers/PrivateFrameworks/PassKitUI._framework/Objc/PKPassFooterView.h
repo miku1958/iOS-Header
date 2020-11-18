@@ -35,6 +35,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_acquireContactlessInterfaceSessionWithHandler:(CDUnknownBlockType)arg1;
 - (void)_advanceContentViewVisibilityToState:(unsigned char)arg1 animated:(BOOL)arg2;
 - (void)_advanceVisibilityToState:(unsigned char)arg1 animated:(BOOL)arg2;
 - (BOOL)_canApplyContentViewForPersonalizedApplication;

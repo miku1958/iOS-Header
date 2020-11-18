@@ -11,7 +11,7 @@
 #import <PhotosUI/PUPhotosGridTransitioningLayout-Protocol.h>
 #import <PhotosUI/PUReorderableLayout-Protocol.h>
 
-@class NSArray, NSDictionary, NSIndexPath, NSIndexSet, NSPointerArray, NSSet, NSString, PULayoutAnimationsHelper, PULayoutSampledSectioning, PUSectionedGridLayoutInvalidationContext, UICollectionViewLayoutAttributes;
+@class NSArray, NSDictionary, NSIndexPath, NSIndexSet, NSNumber, NSPointerArray, NSSet, NSString, PULayoutAnimationsHelper, PULayoutSampledSectioning, PUSectionedGridLayoutInvalidationContext, UICollectionViewLayoutAttributes;
 @protocol PUCollectionViewLayoutTransitioningDelegate, PUSectionedGridLayoutDelegate;
 
 @interface PUSectionedGridLayout : UICollectionViewLayout <PUReorderableLayout, PUPhotosGridTransitioningLayout, PUCollectionViewLayoutDelegating, PUGridLayoutProtocol>
@@ -87,6 +87,7 @@
     double _sectionBottomPadding;
     double _globalHeaderHeight;
     double _globalFooterHeight;
+    NSNumber *_cachedDefaultGlobalFooterHeight;
     NSString *_renderedStripsElementKind;
     long long _cropType;
     double _cropAmount;
@@ -97,6 +98,7 @@
     struct UIEdgeInsets _sectionContentInset;
 }
 
+@property (strong, nonatomic) NSNumber *cachedDefaultGlobalFooterHeight; // @synthesize cachedDefaultGlobalFooterHeight=_cachedDefaultGlobalFooterHeight;
 @property (nonatomic, setter=_setColumnsPerRow:) long long columnsPerRow; // @synthesize columnsPerRow=_columnsPerRow;
 @property (nonatomic) double cropAmount; // @synthesize cropAmount=_cropAmount;
 @property (nonatomic) long long cropType; // @synthesize cropType=_cropType;

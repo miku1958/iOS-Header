@@ -6,9 +6,11 @@
 
 #import <Photos/PHAssetResource.h>
 
+#import <Photos/PHCPLAssetResource-Protocol.h>
+
 @class NSString, PHSandboxExtensionWrapper;
 
-@interface PHInternalAssetResource : PHAssetResource
+@interface PHInternalAssetResource : PHAssetResource <PHCPLAssetResource>
 {
     NSString *_assetLocalIdentifier;
     unsigned long long _cplResourceType;
@@ -24,7 +26,6 @@
 + (id)resourceForType:(long long)arg1 fromAsset:(id)arg2 managedAsset:(id)arg3;
 - (void).cxx_destruct;
 - (void)_acquireSandboxExtensionIfNeeded;
-- (BOOL)_fileExists;
 - (void)_fixupOriginalFilename;
 - (void)_fixupUTI;
 - (BOOL)_inconsistentTypeAndUTIOrMissingFileWithShouldCheckFileExistence:(BOOL)arg1;
@@ -39,6 +40,7 @@
 - (id)assetLocalIdentifier;
 - (void)dealloc;
 - (id)description;
+- (BOOL)fileExists;
 - (id)initWithResourceType:(long long)arg1 fromAsset:(id)arg2 managedAsset:(id)arg3;
 - (BOOL)isLibraryAssetResource;
 - (BOOL)pin;

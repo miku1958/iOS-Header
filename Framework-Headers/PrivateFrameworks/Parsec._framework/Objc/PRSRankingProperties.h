@@ -9,15 +9,10 @@
 #import <Parsec/NSCopying-Protocol.h>
 #import <Parsec/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSNumber, NSString;
+@class NSDate, NSString;
 
 @interface PRSRankingProperties : NSObject <NSSecureCoding, NSCopying>
 {
-    BOOL _isCoreSpotlight;
-    BOOL _doesAppSupportCS;
-    BOOL _isNSUserActivityResult;
-    BOOL _csContinuationSupported;
-    BOOL _hasRecentNSUserActivity;
     long long _totalUseCount;
     long long _outgoingCount;
     long long _incomingCount;
@@ -25,21 +20,12 @@
     NSString *_keywords;
     NSString *_shortcut;
     NSString *_albumName;
-    NSArray *_whereFroms;
     NSString *_alternateNames;
-    NSArray *_resultLanguages;
-    long long _countOfRecentNSUserActivity;
-    NSString *_contentType;
     NSDate *_lastUsedDate;
     NSString *_subject;
     NSString *_authors;
     NSString *_title;
-    NSString *_domainIdentifier;
-    NSNumber *_latitude;
-    NSNumber *_longitude;
     NSDate *_interestingDate;
-    double _modelScore;
-    double _textMatchQualityScore;
     NSString *_recipients;
     NSString *_displayName;
     NSString *_artist;
@@ -50,6 +36,23 @@
     long long _launchCountLastWeek;
     long long _launchCountLastDay;
     NSString *_authorEmail;
+    long long _incomingVideoCallsLastYear;
+    long long _incomingVideoCallsLastMonth;
+    long long _incomingVideoCallsLastWeek;
+    long long _incomingVideoCallsLastDay;
+    long long _outgoingVideoCallsLastYear;
+    long long _outgoingVideoCallsLastMonth;
+    long long _outgoingVideoCallsLastWeek;
+    long long _outgoingVideoCallsLastDay;
+    long long _incomingAudioCallsLastYear;
+    long long _incomingAudioCallsLastMonth;
+    long long _incomingAudioCallsLastWeek;
+    long long _incomingAudioCallsLastDay;
+    long long _outgoingAudioCallsLastYear;
+    long long _outgoingAudioCallsLastMonth;
+    long long _outgoingAudioCallsLastWeek;
+    long long _outgoingAudioCallsLastDay;
+    long long _numFieldsMatched;
 }
 
 @property (strong, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
@@ -57,38 +60,41 @@
 @property (strong, nonatomic) NSString *artist; // @synthesize artist=_artist;
 @property (strong, nonatomic) NSString *authorEmail; // @synthesize authorEmail=_authorEmail;
 @property (strong, nonatomic) NSString *authors; // @synthesize authors=_authors;
-@property (strong, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
-@property (nonatomic) long long countOfRecentNSUserActivity; // @synthesize countOfRecentNSUserActivity=_countOfRecentNSUserActivity;
-@property BOOL csContinuationSupported; // @synthesize csContinuationSupported=_csContinuationSupported;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property BOOL doesAppSupportCS; // @synthesize doesAppSupportCS=_doesAppSupportCS;
-@property (strong, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
-@property BOOL hasRecentNSUserActivity; // @synthesize hasRecentNSUserActivity=_hasRecentNSUserActivity;
+@property (nonatomic) long long incomingAudioCallsLastDay; // @synthesize incomingAudioCallsLastDay=_incomingAudioCallsLastDay;
+@property (nonatomic) long long incomingAudioCallsLastMonth; // @synthesize incomingAudioCallsLastMonth=_incomingAudioCallsLastMonth;
+@property (nonatomic) long long incomingAudioCallsLastWeek; // @synthesize incomingAudioCallsLastWeek=_incomingAudioCallsLastWeek;
+@property (nonatomic) long long incomingAudioCallsLastYear; // @synthesize incomingAudioCallsLastYear=_incomingAudioCallsLastYear;
 @property (nonatomic) long long incomingCount; // @synthesize incomingCount=_incomingCount;
+@property (nonatomic) long long incomingVideoCallsLastDay; // @synthesize incomingVideoCallsLastDay=_incomingVideoCallsLastDay;
+@property (nonatomic) long long incomingVideoCallsLastMonth; // @synthesize incomingVideoCallsLastMonth=_incomingVideoCallsLastMonth;
+@property (nonatomic) long long incomingVideoCallsLastWeek; // @synthesize incomingVideoCallsLastWeek=_incomingVideoCallsLastWeek;
+@property (nonatomic) long long incomingVideoCallsLastYear; // @synthesize incomingVideoCallsLastYear=_incomingVideoCallsLastYear;
 @property (strong, nonatomic) NSDate *interestingDate; // @synthesize interestingDate=_interestingDate;
-@property BOOL isCoreSpotlight; // @synthesize isCoreSpotlight=_isCoreSpotlight;
-@property BOOL isNSUserActivityResult; // @synthesize isNSUserActivityResult=_isNSUserActivityResult;
 @property (strong, nonatomic) NSString *keywords; // @synthesize keywords=_keywords;
 @property (strong, nonatomic) NSDate *lastUsedDate; // @synthesize lastUsedDate=_lastUsedDate;
-@property (strong, nonatomic) NSNumber *latitude; // @synthesize latitude=_latitude;
 @property (nonatomic) long long launchCountLastDay; // @synthesize launchCountLastDay=_launchCountLastDay;
 @property (nonatomic) long long launchCountLastMonth; // @synthesize launchCountLastMonth=_launchCountLastMonth;
 @property (nonatomic) long long launchCountLastWeek; // @synthesize launchCountLastWeek=_launchCountLastWeek;
 @property (nonatomic) long long launchCountLastYear; // @synthesize launchCountLastYear=_launchCountLastYear;
-@property (strong, nonatomic) NSNumber *longitude; // @synthesize longitude=_longitude;
-@property (nonatomic) double modelScore; // @synthesize modelScore=_modelScore;
 @property (strong, nonatomic) NSString *namedLocation; // @synthesize namedLocation=_namedLocation;
+@property (nonatomic) long long numFieldsMatched; // @synthesize numFieldsMatched=_numFieldsMatched;
 @property (strong, nonatomic) NSString *organizations; // @synthesize organizations=_organizations;
+@property (nonatomic) long long outgoingAudioCallsLastDay; // @synthesize outgoingAudioCallsLastDay=_outgoingAudioCallsLastDay;
+@property (nonatomic) long long outgoingAudioCallsLastMonth; // @synthesize outgoingAudioCallsLastMonth=_outgoingAudioCallsLastMonth;
+@property (nonatomic) long long outgoingAudioCallsLastWeek; // @synthesize outgoingAudioCallsLastWeek=_outgoingAudioCallsLastWeek;
+@property (nonatomic) long long outgoingAudioCallsLastYear; // @synthesize outgoingAudioCallsLastYear=_outgoingAudioCallsLastYear;
 @property (nonatomic) long long outgoingCount; // @synthesize outgoingCount=_outgoingCount;
+@property (nonatomic) long long outgoingVideoCallsLastDay; // @synthesize outgoingVideoCallsLastDay=_outgoingVideoCallsLastDay;
+@property (nonatomic) long long outgoingVideoCallsLastMonth; // @synthesize outgoingVideoCallsLastMonth=_outgoingVideoCallsLastMonth;
+@property (nonatomic) long long outgoingVideoCallsLastWeek; // @synthesize outgoingVideoCallsLastWeek=_outgoingVideoCallsLastWeek;
+@property (nonatomic) long long outgoingVideoCallsLastYear; // @synthesize outgoingVideoCallsLastYear=_outgoingVideoCallsLastYear;
 @property (strong, nonatomic) NSString *recipients; // @synthesize recipients=_recipients;
-@property (strong, nonatomic) NSArray *resultLanguages; // @synthesize resultLanguages=_resultLanguages;
 @property (strong, nonatomic) NSString *shortcut; // @synthesize shortcut=_shortcut;
 @property (strong, nonatomic) NSString *snippet; // @synthesize snippet=_snippet;
 @property (strong, nonatomic) NSString *subject; // @synthesize subject=_subject;
-@property (nonatomic) double textMatchQualityScore; // @synthesize textMatchQualityScore=_textMatchQualityScore;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) long long totalUseCount; // @synthesize totalUseCount=_totalUseCount;
-@property (strong, nonatomic) NSArray *whereFroms; // @synthesize whereFroms=_whereFroms;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

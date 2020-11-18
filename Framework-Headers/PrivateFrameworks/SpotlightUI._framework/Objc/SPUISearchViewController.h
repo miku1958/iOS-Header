@@ -88,8 +88,15 @@
 - (BOOL)isVisible;
 - (void)numberOfRowsDidChange:(id)arg1;
 - (void)performSearchWithQuery:(id)arg1;
+- (void)performTestBlock:(CDUnknownBlockType)arg1 waitingForNotificationNamed:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)popToSpotlight;
 - (void)queryContextDidChange:(id)arg1 allowZKW:(BOOL)arg2;
 - (BOOL)queryIsPresent;
+- (void)runSpotlightScrollSearchResultsTest:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)runSpotlightShowAndScrollCardsTest:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)runTest:(id)arg1 options:(id)arg2 unlockSpringBoard:(CDUnknownBlockType)arg3 enterSpotlight:(CDUnknownBlockType)arg4 exitSpotlight:(CDUnknownBlockType)arg5;
+- (double)scrollDeltaForScrollView:(id)arg1;
+- (void)scrollScrollView:(id)arg1 iterations:(unsigned long long)arg2 initiation:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)scrollSearchTable:(id)arg1 iterations:(unsigned long long)arg2 delta:(unsigned long long)arg3;
 - (void)searchAgentClearedResults:(id)arg1;
 - (void)searchAgentReceivedSuggestions:(id)arg1;
@@ -99,6 +106,7 @@
 - (void)searchViewDidPresentFromSource:(unsigned long long)arg1;
 - (void)searchViewWillDismissWithReason:(unsigned long long)arg1;
 - (void)searchViewWillPresentFromSource:(unsigned long long)arg1;
+- (BOOL)selectCategoryNamed:(id)arg1 testName:(id)arg2;
 - (void)sendRatingFeedback;
 - (void)setInternetOverrideToDisable:(BOOL)arg1;
 - (void)settingsChanged;

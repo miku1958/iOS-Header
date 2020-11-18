@@ -19,7 +19,6 @@
     LPCaptionBarPresentationProperties *_mediaBottomCaptionBar;
     NSString *_quotedText;
     LPImage *_image;
-    LPImage *_icon;
     LPVideo *_video;
     UIColor *_backgroundColor;
     LPiTunesPlaybackInformation *_iTunesPlaybackInformation;
@@ -31,7 +30,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) LPiTunesPlaybackInformation *iTunesPlaybackInformation; // @synthesize iTunesPlaybackInformation=_iTunesPlaybackInformation;
-@property (strong, nonatomic) LPImage *icon; // @synthesize icon=_icon;
 @property (strong, nonatomic) LPImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) LPCaptionBarPresentationProperties *mediaBottomCaptionBar; // @synthesize mediaBottomCaptionBar=_mediaBottomCaptionBar;
 @property (strong, nonatomic) LPCaptionBarPresentationProperties *mediaTopCaptionBar; // @synthesize mediaTopCaptionBar=_mediaTopCaptionBar;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (unsigned long long)destinationAlphaBlendFactor;
 - (unsigned long long)destinationRGBBlendFactor;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isBlendingEnabled;

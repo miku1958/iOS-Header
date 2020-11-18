@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <Home/NSCopying-Protocol.h>
+#import <Home/NSFastEnumeration-Protocol.h>
 
 @class HMCharacteristicMetadata, NSArray, NSMutableDictionary, NSSet;
 
-@interface HFMultiStateValueSet : NSObject <NSCopying>
+@interface HFMultiStateValueSet : NSObject <NSCopying, NSFastEnumeration>
 {
     HMCharacteristicMetadata *_characteristicMetadata;
     CDUnknownBlockType _valueComparator;
@@ -19,19 +20,28 @@
 
 @property (readonly, nonatomic) NSSet *allValues;
 @property (readonly, nonatomic) HMCharacteristicMetadata *characteristicMetadata; // @synthesize characteristicMetadata=_characteristicMetadata;
+@property (readonly, nonatomic) unsigned long long count;
 @property (readonly, nonatomic) NSMutableDictionary *displayResultsByValue; // @synthesize displayResultsByValue=_displayResultsByValue;
 @property (readonly, nonatomic) NSArray *sortedValues;
 @property (copy, nonatomic) CDUnknownBlockType valueComparator; // @synthesize valueComparator=_valueComparator;
 
 - (void).cxx_destruct;
 - (BOOL)addValue:(id)arg1 displayResults:(id)arg2;
+- (void)addValuesFromArray:(id)arg1 displayResultsGenerator:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (id)description;
 - (id)displayResultsForValue:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCharacteristicMetadata:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)minusSet:(id)arg1;
+- (id)objectAtIndexedSubscript:(unsigned long long)arg1;
+- (id)objectForKeyedSubscript:(id)arg1;
 - (void)removeValue:(id)arg1;
+- (void)removeValuesFromArray:(id)arg1;
+- (void)unionSet:(id)arg1 displayResultsGenerator:(CDUnknownBlockType)arg2;
 
 @end
 

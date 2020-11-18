@@ -10,16 +10,16 @@
 
 @interface FMStopwatch : NSObject
 {
-    NSString *label;
-    NSString *comment;
-    double startTime;
-    double endTime;
+    NSString *_label;
+    NSString *_comment;
+    unsigned long long _startTime;
+    unsigned long long _endTime;
 }
 
-@property (copy, nonatomic) NSString *comment; // @synthesize comment;
-@property (nonatomic) double endTime; // @synthesize endTime;
-@property (copy, nonatomic) NSString *label; // @synthesize label;
-@property (nonatomic) double startTime; // @synthesize startTime;
+@property (copy, nonatomic) NSString *comment; // @synthesize comment=_comment;
+@property (nonatomic) unsigned long long endTime; // @synthesize endTime=_endTime;
+@property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (nonatomic) unsigned long long startTime; // @synthesize startTime=_startTime;
 
 + (void)dumpBuffer:(id)arg1;
 + (void)eventWithLabel:(id)arg1;

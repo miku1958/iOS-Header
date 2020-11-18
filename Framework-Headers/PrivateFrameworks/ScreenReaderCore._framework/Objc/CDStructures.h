@@ -29,15 +29,15 @@ struct SCRCFingerState {
     unsigned long long identifier;
     int xDirection;
     int yDirection;
-    struct SCRCMathAverageValue velocity;
-    struct SCRCMathAverageValue slopeRise;
-    struct SCRCMathAverageValue slopeRun;
-    struct SCRCMathAverageValue distance;
-    double velocityDistance;
+    struct SCRCMathAverageValue normalizedVelocityPerSample;
+    struct SCRCMathAverageValue deltaXPerSample;
+    struct SCRCMathAverageValue deltaYPerSample;
+    struct SCRCMathAverageValue distancePerSample;
+    double distanceTraveledWithInertiaApplied;
     BOOL dragStalled;
     unsigned long long type;
-    struct CGPoint startPoint;
-    struct CGPoint lastPoint;
+    struct CGPoint startTouchPoint;
+    struct CGPoint mostRecentTouchPoint;
     struct CGPoint lastDownPoint;
     double orbValue;
     double altitude;
@@ -70,4 +70,32 @@ struct __va_list_tag {
     void *_field3;
     void *_field4;
 };
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    int _field1;
+    int _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    unsigned long long _field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    BOOL _field10;
+    struct CGPoint _field11;
+    double _field12;
+    double _field13;
+    double _field14;
+    struct CGPoint _field15;
+    struct CGPoint _field16;
+    struct CGPoint _field17;
+    struct CGRect _field18;
+    struct CGRect _field19;
+    struct CGPoint _field20;
+    struct CGPoint _field21;
+    double _field22;
+    id _field23;
+} CDStruct_28ddac4e;
 

@@ -9,12 +9,14 @@
 #import <AppStoreDaemon/NSCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class NSError, NSString;
+@class NSError, NSNumber, NSString;
 
 @interface ASDJob : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_bundleID;
+    NSNumber *_externalOrderKey;
     NSError *_failureError;
+    NSNumber *_orderKey;
     double _percentComplete;
     long long _persistentID;
     long long _phase;
@@ -24,7 +26,9 @@
 }
 
 @property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (copy, nonatomic) NSNumber *externalOrderKey; // @synthesize externalOrderKey=_externalOrderKey;
 @property (copy, nonatomic) NSError *failureError; // @synthesize failureError=_failureError;
+@property (copy, nonatomic) NSNumber *orderKey; // @synthesize orderKey=_orderKey;
 @property (nonatomic) double percentComplete; // @synthesize percentComplete=_percentComplete;
 @property (nonatomic) long long persistentID; // @synthesize persistentID=_persistentID;
 @property (nonatomic) long long phase; // @synthesize phase=_phase;

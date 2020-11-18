@@ -8,7 +8,7 @@
 
 #import <AppleAccountUI/RUIObjectModelDelegate-Protocol.h>
 
-@class ACAccount, ACAccountStore, NSMutableArray, NSString, RUILoader, UIAlertView, UINavigationController, UIViewController;
+@class ACAccount, ACAccountStore, NSMutableArray, NSString, RUILoader, UINavigationController, UIViewController;
 @protocol AAUIGenericTermsRemoteUIDelegate;
 
 @interface AAUIGenericTermsRemoteUI : NSObject <RUIObjectModelDelegate>
@@ -21,13 +21,13 @@
     ACAccount *_account;
     ACAccountStore *_accountStore;
     BOOL _isModal;
-    UIAlertView *_tcConfirmationAlert;
     NSString *_agreeURL;
     BOOL _isPreferringPassword;
     id<AAUIGenericTermsRemoteUIDelegate> _delegate;
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AAUIGenericTermsRemoteUIDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -42,7 +42,6 @@
 - (void)_displayConnectionErrorAndDismiss;
 - (void)_loadRequestPreferingPassword:(BOOL)arg1;
 - (void)_popObjectModelAnimated:(BOOL)arg1;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (id)initWithAccount:(id)arg1 inStore:(id)arg2;
 - (void)loader:(id)arg1 didFailWithError:(id)arg2;
 - (void)loader:(id)arg1 receivedObjectModel:(id)arg2 actionSignal:(unsigned long long)arg3;

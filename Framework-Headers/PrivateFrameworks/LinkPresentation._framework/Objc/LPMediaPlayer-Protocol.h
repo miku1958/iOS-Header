@@ -11,7 +11,12 @@
 @property (nonatomic, getter=isActive) BOOL active;
 @property (readonly, nonatomic) BOOL isMuted;
 @property (readonly, nonatomic) BOOL isPlaying;
+@property (readonly, nonatomic) unsigned long long lastInteractionTimestamp;
+@property (readonly, nonatomic) BOOL shouldUnmuteWhenUserAdjustsVolume;
+@property (readonly, nonatomic) double unobscuredAreaFraction;
 @property (readonly, nonatomic) BOOL usesSharedAudioSession;
 
+
+@optional
 @end
 

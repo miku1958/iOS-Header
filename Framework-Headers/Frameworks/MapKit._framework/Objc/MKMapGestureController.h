@@ -10,7 +10,7 @@
 #import <MapKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <MapKit/_MKUserInteractionGestureRecognizerTouchObserver-Protocol.h>
 
-@class MKBasicMapView, MKTiltGestureRecognizer, MKTwoFingerPanGestureRecognizer, MKVariableDelayTapRecognizer, NSString, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer, VKCompoundAnimation, _MKUserInteractionGestureRecognizer, _UIDynamicValueAnimation;
+@class MKBasicMapView, MKTiltGestureRecognizer, MKTwoFingerPanGestureRecognizer, MKVariableDelayTapRecognizer, NSString, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer, VKCompoundAnimation, VKDynamicAnimation, _MKUserInteractionGestureRecognizer;
 @protocol MKMapGestureControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,15 +25,15 @@ __attribute__((visibility("hidden")))
     UIPanGestureRecognizer *_panGestureRecognizer;
     UIPanGestureRecognizer *_verticalPanGestureRecognizer;
     double _lastScale;
-    _UIDynamicValueAnimation *_pinchDecelerationAnimation;
+    VKDynamicAnimation *_pinchDecelerationAnimation;
     VKCompoundAnimation *_panDecelerationAnimationGroup;
     long long _gestureCount;
     BOOL _panWithMomentum;
     _MKUserInteractionGestureRecognizer *_touchGestureRecognizer;
     UIRotationGestureRecognizer *_rotationGestureRecognizer;
-    _UIDynamicValueAnimation *_rotationDecelerationAnimation;
+    VKDynamicAnimation *_rotationDecelerationAnimation;
     MKTiltGestureRecognizer *_tiltGestureRecognizer;
-    _UIDynamicValueAnimation *_tiltDecelerationAnimation;
+    VKDynamicAnimation *_tiltDecelerationAnimation;
     BOOL _didStartLongPress;
     MKTwoFingerPanGestureRecognizer *_twoFingerPanGestureRecognizer;
     BOOL _isPanning;

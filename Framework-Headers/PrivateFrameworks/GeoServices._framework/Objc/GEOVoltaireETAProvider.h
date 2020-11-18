@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)_setFinishedHandler:(CDUnknownBlockType)arg1;
+- (void)_setSimpleETARequestFinishedHandler:(CDUnknownBlockType)arg1;
 - (void)cancelRequest;
 - (void)dealloc;
 - (void)requester:(id)arg1 didFailWithError:(id)arg2;

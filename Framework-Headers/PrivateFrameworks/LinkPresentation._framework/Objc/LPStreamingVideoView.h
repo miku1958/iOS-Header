@@ -6,30 +6,41 @@
 
 #import <LinkPresentation/LPVideoView.h>
 
-@class AVPlayerLooper, AVQueuePlayer;
+@class AVPlayerLayer, AVPlayerLooper, AVQueuePlayer, UIView;
 
 __attribute__((visibility("hidden")))
 @interface LPStreamingVideoView : LPVideoView
 {
     AVQueuePlayer *_player;
     AVPlayerLooper *_looper;
+    UIView *_videoView;
+    AVPlayerLayer *_videoLayer;
+    CDUnknownBlockType _readyForDisplayCallback;
 }
 
 - (void).cxx_destruct;
 - (id)_platformCreateVideoPlayerView;
+- (id)createFullScreenVideoViewController;
 - (void)createPlayer;
 - (id)createPlayerItemAdjustedForLoopingWithAsset:(id)arg1;
 - (id)createVideoPlayerView;
 - (void)dealloc;
+- (void)fullScreenVideoDidPresent;
+- (void)fullScreenVideoWillDismiss;
 - (id)init;
 - (id)initWithVideo:(id)arg1 style:(id)arg2 posterFrame:(id)arg3 posterFrameStyle:(id)arg4 disablePlayback:(BOOL)arg5;
 - (BOOL)isMuted;
+- (void)layoutComponentView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)prepareForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setMuted:(BOOL)arg1;
 - (void)setPlaying:(BOOL)arg1;
+- (void)setVolume:(double)arg1;
 - (BOOL)shouldAutoPlay;
 - (BOOL)shouldShowMuteButton;
+- (BOOL)usesCustomFullScreenImplementation;
 - (BOOL)usesSharedAudioSession;
+- (double)volume;
 
 @end
 

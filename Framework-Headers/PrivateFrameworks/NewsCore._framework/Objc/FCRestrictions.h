@@ -9,8 +9,8 @@
 @interface FCRestrictions : NSObject
 {
     BOOL _testing;
-    long long _isExplicitContentAllowedOverride;
     long long _buildVersionNumber;
+    long long _isExplicitContentAllowedOverride;
 }
 
 @property (nonatomic) long long buildVersionNumber; // @synthesize buildVersionNumber=_buildVersionNumber;

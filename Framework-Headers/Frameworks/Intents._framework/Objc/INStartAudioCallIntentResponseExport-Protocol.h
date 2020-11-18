@@ -10,6 +10,7 @@
 @protocol INStartAudioCallIntentResponseExport <NSObject, JSExport>
 
 @property (readonly, nonatomic) long long code;
+@property (nonatomic) double timeToEstablishCall;
 
 @end
 

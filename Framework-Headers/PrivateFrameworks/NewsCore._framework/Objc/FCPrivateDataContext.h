@@ -10,7 +10,7 @@
 #import <NewsCore/FCPrivateChannelMembershipObserving-Protocol.h>
 #import <NewsCore/FCPrivateDataContext-Protocol.h>
 
-@class FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
+@class FCABTestingAgent, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
 @protocol FCContentContext, FCPrivateDataContextInternal, FCPushNotificationHandling;
 
 @interface FCPrivateDataContext : NSObject <FCPrivateChannelMembershipObserving, FCCKDatabaseDelegate, FCPrivateDataContext>
@@ -25,15 +25,19 @@
     NSString *_privateDataDirectory;
     FCTagSettings *_tagSettings;
     id<FCPushNotificationHandling> _privatePushNotificationHandler;
+    FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
     id<FCPrivateDataContextInternal> _internalPrivateDataContext;
     id<FCContentContext> _contentContext;
+    FCABTestingAgent *_abTestingAgent;
 }
 
+@property (strong, nonatomic) FCABTestingAgent *abTestingAgent; // @synthesize abTestingAgent=_abTestingAgent;
 @property (strong, nonatomic) id<FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<FCPrivateDataContextInternal> internalPrivateDataContext; // @synthesize internalPrivateDataContext=_internalPrivateDataContext;
+@property (readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
 @property (readonly, nonatomic) FCPersonalizationData *personalizationData; // @synthesize personalizationData=_personalizationData;
 @property (readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController; // @synthesize privateChannelMembershipController=_privateChannelMembershipController;
 @property (readonly, copy, nonatomic) NSString *privateDataDirectory; // @synthesize privateDataDirectory=_privateDataDirectory;

@@ -9,7 +9,7 @@
 #import <VideoSubscriberAccount/NSCopying-Protocol.h>
 #import <VideoSubscriberAccount/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, VSAccountMetadataRequest;
+@class NSArray, NSString, VSAccountMetadataRequest, VSOptional;
 
 __attribute__((visibility("hidden")))
 @interface VSViewServiceRequest : NSObject <NSCopying, NSSecureCoding>
@@ -17,14 +17,14 @@ __attribute__((visibility("hidden")))
     BOOL _allowsPrivacyUI;
     BOOL _requiresPrivacyUI;
     VSAccountMetadataRequest *_accountMetadataRequest;
-    NSString *_requestingAppDisplayName;
+    VSOptional *_requestingAppDisplayName;
 }
 
 @property (copy, nonatomic) VSAccountMetadataRequest *accountMetadataRequest; // @synthesize accountMetadataRequest=_accountMetadataRequest;
 @property (readonly, nonatomic) BOOL allowsAuthenticationUI;
 @property (nonatomic) BOOL allowsPrivacyUI; // @synthesize allowsPrivacyUI=_allowsPrivacyUI;
 @property (readonly, copy, nonatomic) NSString *localizedVideoTitle;
-@property (copy, nonatomic) NSString *requestingAppDisplayName; // @synthesize requestingAppDisplayName=_requestingAppDisplayName;
+@property (strong, nonatomic) VSOptional *requestingAppDisplayName; // @synthesize requestingAppDisplayName=_requestingAppDisplayName;
 @property (nonatomic) BOOL requiresPrivacyUI; // @synthesize requiresPrivacyUI=_requiresPrivacyUI;
 @property (readonly, copy, nonatomic) NSArray *supportedAccountProviderAuthenticationSchemes;
 @property (readonly, copy, nonatomic) NSArray *supportedIdentityProviderIdentifiers;

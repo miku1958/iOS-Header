@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSError, NSMutableArray, NSString, NSURL;
+@class NSArray, NSData, NSError, NSMutableArray, NSString, NSURL;
 @protocol MMCSOperationMetric;
 
 __attribute__((visibility("hidden")))
@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     BOOL _complete;
     NSError *_error;
     id<MMCSOperationMetric> _metrics;
+    NSData *_authPutRequest;
     NSArray *_tuple;
 }
 
+@property (strong, nonatomic) NSData *authPutRequest; // @synthesize authPutRequest=_authPutRequest;
 @property (nonatomic) BOOL complete; // @synthesize complete=_complete;
 @property (readonly, nonatomic) NSURL *contentBaseURL;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
@@ -27,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *owner;
 @property (readonly, nonatomic) NSString *requestor;
 @property (strong, nonatomic) NSArray *tuple; // @synthesize tuple=_tuple;
-@property (readonly, nonatomic) BOOL useAuthRequests;
+@property (readonly, nonatomic) BOOL usePerItemAuthRequests;
 
 + (id)tupleForItem:(id)arg1;
 - (void).cxx_destruct;

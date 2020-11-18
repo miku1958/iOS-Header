@@ -6,23 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString;
+@class NSString;
 
 @interface CAMPerformanceTestHarness : NSObject
 {
     NSString *_testName;
-    NSMutableArray *_modeChangeListeners;
-    CDUnknownBlockType _testCleanupBlock;
+    CDUnknownBlockType _completionHandler;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType testCleanupBlock; // @synthesize testCleanupBlock=_testCleanupBlock;
+@property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (readonly, nonatomic, getter=isRunningTest) BOOL runningTest;
+@property (readonly, copy, nonatomic) NSString *testName; // @synthesize testName=_testName;
 
 - (void).cxx_destruct;
-- (void)_finishAndCleanupConfiguredTest;
-- (void)_registerChangeBlock:(CDUnknownBlockType)arg1 forMode:(long long)arg2 devicePosition:(long long)arg3;
-- (void)didChangeToMode:(long long)arg1 device:(long long)arg2;
 - (id)initWithTestName:(id)arg1;
-- (void)runConfiguredTest;
+- (void)startSubtestWithName:(id)arg1;
+- (void)startTesting;
+- (void)stopSubtestWithName:(id)arg1;
+- (void)stopTesting;
 
 @end
 

@@ -9,6 +9,7 @@
 @class HMHome, NAFuture;
 
 @protocol HFCharacteristicWriteActionBuilderFactory <NSObject>
+- (BOOL)actionsMayRequireDeviceUnlock;
 - (BOOL)containsActionableCharacteristics;
 - (NAFuture *)currentStateActionBuildersForHome:(HMHome *)arg1;
 @end

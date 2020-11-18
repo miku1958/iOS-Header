@@ -33,6 +33,7 @@
 - (void)cameraStreamControlDidStartStream:(id)arg1;
 - (id)initWithStreamControl:(id)arg1;
 - (void)startStream;
+- (void)startStreamWithPreferences:(id)arg1;
 - (void)stopStream;
 
 @end

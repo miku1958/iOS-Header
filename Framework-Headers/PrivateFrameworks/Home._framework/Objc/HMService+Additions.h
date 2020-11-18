@@ -7,12 +7,18 @@
 #import <HomeKit/HMService.h>
 
 @interface HMService (Additions)
++ (id)hf_programmableSwitchServiceTypes;
 + (id)hf_roomsForServices:(id)arg1;
 + (id)hf_standardServices;
 - (id)hf_characteristicOfType:(id)arg1;
 - (id)hf_effectiveServiceType;
+- (unsigned long long)hf_fallbackProgrammableSwitchIndex;
 - (id)hf_iconDescriptor;
 - (BOOL)hf_isLegacyService;
+- (BOOL)hf_isProgrammableSwitch;
+- (id)hf_labelIndexCharacteristic;
+- (id)hf_labelNamespaceCharacteristic;
+- (id)hf_linkedServiceOfType:(id)arg1;
 - (id)hf_room;
 - (BOOL)hf_supportsGroups;
 - (id)hf_updateIconDescriptor:(id)arg1;

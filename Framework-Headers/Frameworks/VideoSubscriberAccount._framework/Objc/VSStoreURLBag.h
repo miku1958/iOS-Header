@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)invalidateCache;
 - (void)loadValueForKey:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 
 @end

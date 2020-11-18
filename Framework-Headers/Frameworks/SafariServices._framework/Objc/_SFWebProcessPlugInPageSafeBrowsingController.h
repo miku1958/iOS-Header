@@ -8,15 +8,16 @@
 
 #import <SafariServices/_SFSafeBrowsingWebProcessController-Protocol.h>
 
-@class NSDictionary, NSString, WBUWebProcessPlugInPageController, _SFSecurityInfo, _WKRemoteObjectInterface;
+@class NSDictionary, NSString, _SFSecurityInfo, _SFWebProcessPlugInPageController, _WKRemoteObjectInterface;
 @protocol _SFSafeBrowsingWarningResponseObserver;
 
 __attribute__((visibility("hidden")))
 @interface _SFWebProcessPlugInPageSafeBrowsingController : NSObject <_SFSafeBrowsingWebProcessController>
 {
-    WBUWebProcessPlugInPageController *_pageController;
+    _SFWebProcessPlugInPageController *_pageController;
     _WKRemoteObjectInterface *_safeBrowsingControllerInterface;
     _SFSecurityInfo *_securityInfo;
+    BOOL _canGoBack;
     CDUnknownBlockType _completionHandler;
     id<_SFSafeBrowsingWarningResponseObserver> _responseObserver;
     NSDictionary *_localizedStrings;
@@ -38,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)injectPhishingAlertBindingsForFrame:(id)arg1 inScriptWorld:(id)arg2;
 - (id)localizedStringForString:(id)arg1;
 - (void)performSafeBrowsingCheckForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)safeBrowsingCheckFinishedWithSecurityInfo:(id)arg1 localizedStrings:(id)arg2;
+- (void)safeBrowsingCheckFinishedWithSecurityInfo:(id)arg1 canGoBack:(BOOL)arg2 localizedStrings:(id)arg3;
 - (void)securityWarningPageLoaded;
 - (void)urlPassedSafeBrowsingCheck:(id)arg1 canCache:(BOOL)arg2;
 - (BOOL)urlPassesFastSafeBrowsingCheck:(id)arg1;

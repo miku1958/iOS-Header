@@ -20,6 +20,7 @@
 
 - (void)dealloc;
 - (id)initWithLanguageOptions:(id)arg1 defaultLanguageOption:(id)arg2 allowEmptySelection:(BOOL)arg3;
+- (id)initWithMRLanguageOptionGroup:(void *)arg1;
 
 @end
 

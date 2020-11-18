@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDataManager-Protocol.h>
 
-@class BBDataProviderConnection, HDProfile, NSMutableDictionary, NSMutableSet, NSNumber, NSString, SOSContactsManager;
+@class BBDataProviderConnection, FKFriendsManager, HDProfile, NSMutableDictionary, NSMutableSet, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDDataManager : NSObject <HDDiagnosticObject, HDHealthDataManager>
@@ -24,7 +24,7 @@
     NSMutableSet *_pendingSources;
     NSNumber *_lastAnchor;
     BBDataProviderConnection *_dataProviderConnection;
-    SOSContactsManager *_legacySOSContactsManager;
+    FKFriendsManager *_sosFriendsManager;
     HDProfile *_profile;
 }
 

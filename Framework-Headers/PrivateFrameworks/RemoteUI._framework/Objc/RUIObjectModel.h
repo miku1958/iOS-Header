@@ -86,6 +86,7 @@
 - (id)_firstPageForPresentation;
 - (void)_handleElementChange:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleLinkPress:(id)arg1 attributes:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_logException:(struct OpaqueJSValue *)arg1;
 - (void)_navigateBackWithPop:(BOOL)arg1 fromViewController:(id)arg2;
 - (void)_navigateToNextPageAnimated;
 - (id)_pageContainingTableView:(id)arg1;
@@ -127,6 +128,7 @@
 - (void)navigateToNextPageAnimated:(BOOL)arg1;
 - (id)newNavigationControllerForPresentation;
 - (id)objectForJSValue:(struct OpaqueJSValue *)arg1;
+- (void)openLink:(id)arg1 HTTPMethod:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)pageDidDisappear:(id)arg1;
 - (void)parseDidFinish;
 - (void)passcodeViewOM:(id)arg1 activatedElement:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -150,6 +152,7 @@
 - (void)startNavigationBarSpinnerWithTitle:(id)arg1;
 - (void)stopNavigationBarSpinner;
 - (id)stringForAttributeName:(id)arg1 withAttributes:(id)arg2;
+- (id)subElementWithID:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientationsForRUIPage:(id)arg1;
 - (id)tableFooterViewForAttributes:(id)arg1;
 - (id)tableHeaderViewForAttributes:(id)arg1;

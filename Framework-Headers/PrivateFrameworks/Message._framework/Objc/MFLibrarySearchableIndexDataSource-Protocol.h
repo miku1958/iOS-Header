@@ -6,12 +6,12 @@
 
 #import <Message/NSObject-Protocol.h>
 
-@class MFLibrarySearchableIndex, MFLibrarySearchableIndexUpdates, NSArray;
+@class MFLibrarySearchableIndex, MFLibrarySearchableIndexUpdates, NSArray, NSDictionary;
 
 @protocol MFLibrarySearchableIndexDataSource <NSObject>
 - (NSArray *)searchableIndex:(MFLibrarySearchableIndex *)arg1 assignTransaction:(long long)arg2 updates:(MFLibrarySearchableIndexUpdates *)arg3;
 - (void)searchableIndex:(MFLibrarySearchableIndex *)arg1 invalidateItemsGreaterThanTransaction:(long long)arg2;
 - (MFLibrarySearchableIndexUpdates *)updatesForSearchableIndex:(MFLibrarySearchableIndex *)arg1 count:(unsigned long long)arg2;
-- (unsigned long long)verifyRepresentativeSampleForSearchableIndex:(MFLibrarySearchableIndex *)arg1;
+- (NSDictionary *)verificationDataSamplesForSearchableIndex:(MFLibrarySearchableIndex *)arg1;
 @end
 

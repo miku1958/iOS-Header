@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class NSTimer;
 @protocol PXPeopleProgressDatasource;
 
 @interface PXPeopleProgressManager : NSObject
@@ -15,6 +16,7 @@
     double _updateInterval;
     double _progress;
     unsigned long long _processingStatus;
+    NSTimer *_statusTimer;
 }
 
 @property (strong, nonatomic) id<PXPeopleProgressDatasource> datasource; // @synthesize datasource=_datasource;
@@ -22,6 +24,7 @@
 @property (readonly) BOOL processingComplete;
 @property unsigned long long processingStatus; // @synthesize processingStatus=_processingStatus;
 @property double progress; // @synthesize progress=_progress;
+@property (strong, nonatomic) NSTimer *statusTimer; // @synthesize statusTimer=_statusTimer;
 @property (nonatomic) double updateInterval; // @synthesize updateInterval=_updateInterval;
 
 - (void).cxx_destruct;

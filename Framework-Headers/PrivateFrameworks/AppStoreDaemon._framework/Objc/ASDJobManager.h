@@ -9,7 +9,7 @@
 #import <AppStoreDaemon/ASDJobManagerClient-Protocol.h>
 #import <AppStoreDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class ASDJobManagerClientConnection, ASDJobManagerOptions, NSArray, NSHashTable, NSMutableSet, NSObject, NSString, NSXPCConnection, NSXPCListener;
+@class ASDJobManagerOptions, NSArray, NSHashTable, NSMutableSet, NSObject, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface ASDJobManager : ASDBaseClient <NSXPCListenerDelegate, ASDJobManagerClient>
@@ -18,8 +18,6 @@
     NSXPCConnection *_connection;
     NSArray *_jobs;
     int _launchNotificationToken;
-    NSXPCListener *_listener;
-    ASDJobManagerClientConnection *_clientConnection;
     NSObject<OS_dispatch_queue> *_observerQueue;
     NSHashTable *_observers;
     ASDJobManagerOptions *_options;
@@ -63,7 +61,6 @@
 - (id)init;
 - (id)initWithOptions:(id)arg1;
 - (void)invalidate;
-- (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)pauseJobsWithIDs:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)resumeJobsWithIDs:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;

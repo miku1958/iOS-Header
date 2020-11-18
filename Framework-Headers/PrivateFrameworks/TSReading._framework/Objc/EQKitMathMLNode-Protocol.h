@@ -8,6 +8,6 @@
 
 @protocol EQKitMathMLNode
 - (id)initFromXMLNode:(struct _xmlNode *)arg1 parser:(EQKitMathMLParser *)arg2;
-- (const set_386565a4 *)mathMLAttributes;
+- (const set_25e6ba53 *)mathMLAttributes;
 @end
 

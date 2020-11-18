@@ -25,7 +25,7 @@
 - (id)initWithString:(id)arg1 environment:(id)arg2;
 - (BOOL)isEmbellishedOperator;
 - (struct Schemata)layoutSchemata;
-- (const set_386565a4 *)mathMLAttributes;
+- (const set_25e6ba53 *)mathMLAttributes;
 - (id)operatorCore;
 - (unsigned short)operatorId;
 - (unsigned int)operatorUnicharOrNul;

@@ -9,14 +9,14 @@
 #import <MapKit/MKOfficialAppViewDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
-@class MKOfficialAppView, MKPlaceSectionHeaderView, NSString;
+@class MKMapItem, MKOfficialAppView, MKPlaceSectionHeaderView, NSString;
 @protocol MKOfficialAppViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MKOfficialAppViewController : MKPlaceSectionViewController <MKOfficialAppViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate>
 {
     BOOL _isShowing;
-    NSString *_url;
+    MKMapItem *_mapItem;
     id<MKOfficialAppViewControllerDelegate> _officialAppDelegate;
     MKOfficialAppView *_officialAppView;
     MKPlaceSectionHeaderView *_officialAppHeaderView;
@@ -26,17 +26,17 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isShowing; // @synthesize isShowing=_isShowing;
+@property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (weak, nonatomic) id<MKOfficialAppViewControllerDelegate> officialAppDelegate; // @synthesize officialAppDelegate=_officialAppDelegate;
 @property (strong, nonatomic) MKPlaceSectionHeaderView *officialAppHeaderView; // @synthesize officialAppHeaderView=_officialAppHeaderView;
 @property (strong, nonatomic) MKOfficialAppView *officialAppView; // @synthesize officialAppView=_officialAppView;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *url; // @synthesize url=_url;
 
 - (void).cxx_destruct;
 - (void)_beginFindingOfficialApp;
 - (void)dealloc;
 - (id)infoCardChildPossibleActions;
-- (id)initWithURLString:(id)arg1;
+- (id)initWithMKMapItem:(id)arg1;
 - (void)officialAppViewDidSelectPunchOutButton:(id)arg1;
 - (void)updateOfficialViewButtonText;
 - (void)viewDidLoad;

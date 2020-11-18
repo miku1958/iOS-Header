@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUI/PUPhotoSelectionManagerDelegate-Protocol.h>
+#import <PhotosUI/PUPhotoSelectionManagerChangeObserver-Protocol.h>
 
 @class NSOrderedSet, NSPointerArray, NSString, PUPhotoSelectionManager;
 @protocol PLAlbumProtocol;
 
-@interface PUSessionInfo : NSObject <PUPhotoSelectionManagerDelegate>
+@interface PUSessionInfo : NSObject <PUPhotoSelectionManagerChangeObserver>
 {
     NSPointerArray *_observers;
     BOOL _selectingAssets;

@@ -31,12 +31,14 @@ __attribute__((visibility("hidden")))
 - (void)_configureViewsWithStyle:(long long)arg1;
 - (id)_dimmingKnockoutBackgroundColorForBackdropStyle:(long long)arg1;
 - (id)_filterForBackdropStyle:(long long)arg1;
+- (void)_setContinuousCornerRadius:(double)arg1;
 - (id)_visualEffectForStyle:(long long)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (void)layoutSubviews;
 - (void)setAlpha:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setPressed:(BOOL)arg1;
+- (void)setRoundedCornerPosition:(unsigned long long)arg1;
 
 @end
 

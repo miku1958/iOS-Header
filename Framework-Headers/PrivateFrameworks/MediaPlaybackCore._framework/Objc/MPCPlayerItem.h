@@ -6,22 +6,22 @@
 
 #import <MediaPlaybackCore/MPCPlayerEntity.h>
 
-@class MPModelPlaylistEntry, MPModelSong, NSArray, NSString;
+@class MPModelGenericObject, NSArray, NSString;
 
 @interface MPCPlayerItem : MPCPlayerEntity
 {
     NSString *_albumName;
     NSString *_artistName;
-    MPModelSong *_modelSongRepresentation;
-    MPModelPlaylistEntry *_modelPlaylistEntryRepresentation;
+    NSString *_composerName;
+    MPModelGenericObject *_modelGenericObjectRepresentation;
     CDStruct_45e4ec31 _durationSnapshot;
 }
 
 @property (copy, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
 @property (copy, nonatomic) NSString *artistName; // @synthesize artistName=_artistName;
+@property (copy, nonatomic) NSString *composerName; // @synthesize composerName=_composerName;
 @property (readonly, nonatomic) CDStruct_45e4ec31 durationSnapshot; // @synthesize durationSnapshot=_durationSnapshot;
-@property (readonly, nonatomic) MPModelPlaylistEntry *modelPlaylistEntryRepresentation; // @synthesize modelPlaylistEntryRepresentation=_modelPlaylistEntryRepresentation;
-@property (readonly, nonatomic) MPModelSong *modelSongRepresentation; // @synthesize modelSongRepresentation=_modelSongRepresentation;
+@property (readonly, nonatomic) MPModelGenericObject *modelGenericObjectRepresentation; // @synthesize modelGenericObjectRepresentation=_modelGenericObjectRepresentation;
 @property (copy, nonatomic) NSArray *representations;
 
 - (void).cxx_destruct;

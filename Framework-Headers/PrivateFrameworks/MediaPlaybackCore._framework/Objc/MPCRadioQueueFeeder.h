@@ -7,10 +7,11 @@
 #import <MediaPlayer/MPQueueFeeder.h>
 
 #import <MediaPlaybackCore/MPCQueueBehaviorManaging-Protocol.h>
+#import <MediaPlaybackCore/MPRTCReportingItemSessionContaining-Protocol.h>
 
-@class MPAVItem, MPPlaceholderAVItem, NSArray, NSMapTable, NSString, RadioStation, RadioStationSkipController;
+@class MPAVItem, MPPlaceholderAVItem, NSArray, NSDictionary, NSMapTable, NSString, RadioStation, RadioStationSkipController;
 
-@interface MPCRadioQueueFeeder : MPQueueFeeder <MPCQueueBehaviorManaging>
+@interface MPCRadioQueueFeeder : MPQueueFeeder <MPCQueueBehaviorManaging, MPRTCReportingItemSessionContaining>
 {
     BOOL _canSeek;
     MPAVItem *_currentItem;
@@ -37,6 +38,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long playbackMode;
+@property (readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
+@property (readonly, copy, nonatomic) NSDictionary *rtcReportingSessionAdditionalUserInfo;
 @property (strong, nonatomic) RadioStation *station;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *tracks; // @synthesize tracks=_tracks;

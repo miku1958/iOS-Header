@@ -13,6 +13,7 @@
 + (double)_notificationListBottomOffset;
 + (double)_notificationListSideOffset;
 + (double)_notificationListTopPadding;
++ (double)_subTitleHeight;
 + (double)dateBaselineOffsetFromTime;
 + (double)dateLabelFontSize;
 + (double)dateViewBaselineY;

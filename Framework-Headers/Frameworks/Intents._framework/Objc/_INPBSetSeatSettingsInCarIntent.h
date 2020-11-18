@@ -47,6 +47,8 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsRelativeLevelSetting:(id)arg1;
+- (int)StringAsSeat:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -54,6 +56,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)relativeLevelSettingAsString:(int)arg1;
+- (id)seatAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

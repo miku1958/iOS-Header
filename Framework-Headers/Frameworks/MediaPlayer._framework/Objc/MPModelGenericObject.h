@@ -6,30 +6,63 @@
 
 #import <MediaPlayer/MPModelObject.h>
 
-@class MPModelAlbum, MPModelArtist, MPModelPlaylist, MPModelSong;
+@class MPModelAlbum, MPModelArtist, MPModelMediaClip, MPModelMovie, MPModelPlaylist, MPModelPlaylistEntry, MPModelSong, MPModelTVEpisode, MPModelTVSeason, MPModelTVShow;
 
 @interface MPModelGenericObject : MPModelObject
 {
     MPModelSong *_song;
     MPModelAlbum *_album;
     MPModelArtist *_artist;
+    MPModelMediaClip *_mediaClip;
     MPModelPlaylist *_playlist;
+    MPModelPlaylistEntry *_playlistEntry;
+    MPModelTVEpisode *_tvEpisode;
+    MPModelTVSeason *_season;
+    MPModelTVShow *_show;
+    MPModelMovie *_movie;
 }
 
 @property (strong, nonatomic) MPModelAlbum *album; // @synthesize album=_album;
 @property (strong, nonatomic) MPModelArtist *artist; // @synthesize artist=_artist;
+@property (strong, nonatomic) MPModelMediaClip *mediaClip; // @synthesize mediaClip=_mediaClip;
+@property (strong, nonatomic) MPModelMovie *movie; // @synthesize movie=_movie;
 @property (strong, nonatomic) MPModelPlaylist *playlist; // @synthesize playlist=_playlist;
+@property (strong, nonatomic) MPModelPlaylistEntry *playlistEntry; // @synthesize playlistEntry=_playlistEntry;
+@property (strong, nonatomic) MPModelTVSeason *season; // @synthesize season=_season;
+@property (strong, nonatomic) MPModelTVShow *show; // @synthesize show=_show;
 @property (strong, nonatomic) MPModelSong *song; // @synthesize song=_song;
+@property (strong, nonatomic) MPModelTVEpisode *tvEpisode; // @synthesize tvEpisode=_tvEpisode;
 
 + (id)__MPModelRelationshipGenericAlbum__PROPERTY;
 + (id)__MPModelRelationshipGenericArtist__PROPERTY;
++ (id)__MPModelRelationshipGenericMediaClip__PROPERTY;
++ (id)__MPModelRelationshipGenericMovie__PROPERTY;
++ (id)__MPModelRelationshipGenericPlaylistEntry__PROPERTY;
 + (id)__MPModelRelationshipGenericPlaylist__PROPERTY;
 + (id)__MPModelRelationshipGenericSong__PROPERTY;
++ (id)__MPModelRelationshipGenericTVEpisode__PROPERTY;
++ (id)__MPModelRelationshipGenericTVSeason__PROPERTY;
++ (id)__MPModelRelationshipGenericTVShow__PROPERTY;
 + (id)__album__KEY;
 + (id)__artist__KEY;
++ (id)__mediaClip__KEY;
++ (id)__movie__KEY;
++ (id)__playlistEntry__KEY;
 + (id)__playlist__KEY;
++ (id)__season__KEY;
++ (id)__show__KEY;
 + (id)__song__KEY;
++ (id)__tvEpisode__KEY;
++ (id)kindWithRelationshipKinds:(id)arg1;
++ (id)mqf_requiredPlaybackProperties;
++ (id)requiredStoreLibraryPersonalizationProperties;
 - (void).cxx_destruct;
+- (id)identifiers;
+- (id)mediaItemPropertyValues;
+- (id)mqf_playbackItemMetadataModelObject;
+- (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
+- (id)personalizationScopedPropertiesForProperties:(id)arg1;
+- (id)relativeModelObjectForStoreLibraryPersonalization;
 - (long long)type;
 
 @end

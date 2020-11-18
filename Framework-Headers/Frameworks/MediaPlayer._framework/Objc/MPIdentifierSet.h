@@ -17,6 +17,7 @@
     long long _homeSharingLibraryID;
     NSString *_globalPlaylistID;
     long long _storeAdamID;
+    NSString *_pumpkinProfileID;
     unsigned long long _storeCloudID;
     NSString *_storeCloudAlbumID;
     NSString *_storeRecommendationID;
@@ -27,13 +28,18 @@
     long long _radioStationID;
     NSString *_contentItemID;
     NSString *_lyricsID;
+    NSString *_informalMediaClipID;
+    NSString *_informalStaticAssetID;
 }
 
 @property (copy, nonatomic) NSString *contentItemID; // @synthesize contentItemID=_contentItemID;
 @property (nonatomic) long long deviceLibraryPersistentID; // @synthesize deviceLibraryPersistentID=_deviceLibraryPersistentID;
 @property (copy, nonatomic) NSString *globalPlaylistID; // @synthesize globalPlaylistID=_globalPlaylistID;
 @property (nonatomic) long long homeSharingLibraryID; // @synthesize homeSharingLibraryID=_homeSharingLibraryID;
+@property (copy, nonatomic) NSString *informalMediaClipID; // @synthesize informalMediaClipID=_informalMediaClipID;
+@property (copy, nonatomic) NSString *informalStaticAssetID; // @synthesize informalStaticAssetID=_informalStaticAssetID;
 @property (copy, nonatomic) NSString *lyricsID; // @synthesize lyricsID=_lyricsID;
+@property (copy, nonatomic) NSString *pumpkinProfileID; // @synthesize pumpkinProfileID=_pumpkinProfileID;
 @property (copy, nonatomic) NSString *radioStationHash; // @synthesize radioStationHash=_radioStationHash;
 @property (nonatomic) long long radioStationID; // @synthesize radioStationID=_radioStationID;
 @property (copy, nonatomic) NSString *radioStationStringID; // @synthesize radioStationStringID=_radioStationStringID;

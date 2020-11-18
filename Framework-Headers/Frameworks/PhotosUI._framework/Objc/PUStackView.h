@@ -26,6 +26,7 @@
     double _posterSquareCornerRadius;
     double _posterSubitemCornerRadius;
     long long _numberOfVisibleItems;
+    double _itemAlpha;
     UIImage *_emptyPlaceholderImage;
     long long __numberOfViews;
     NSArray *__photoViews;
@@ -54,6 +55,7 @@
 @property (nonatomic) double gridMargin; // @synthesize gridMargin=_gridMargin;
 @property (nonatomic) BOOL hasRoundedCorners; // @synthesize hasRoundedCorners=_hasRoundedCorners;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property (nonatomic) double itemAlpha; // @synthesize itemAlpha=_itemAlpha;
 @property (nonatomic) long long numberOfVisibleItems; // @synthesize numberOfVisibleItems=_numberOfVisibleItems;
 @property (strong, nonatomic) PUPhotoDecoration *photoDecoration; // @synthesize photoDecoration=_photoDecoration;
 @property (nonatomic) double posterSquareCornerRadius; // @synthesize posterSquareCornerRadius=_posterSquareCornerRadius;
@@ -88,10 +90,8 @@
 - (id)newLayoutAttributesForItemAtIndex:(long long)arg1 relativeToView:(id)arg2;
 - (id)newLayoutAttributesForVisbleItemsRelativeToView:(id)arg1 maxCount:(long long)arg2;
 - (void)prepareForReuse;
-- (void)setAlpha:(double)arg1 forItemAtIndex:(long long)arg2;
-- (void)setBadgeTypes:(unsigned long long)arg1 forItemAtIndex:(long long)arg2;
-- (void)setBadgeTypes:(unsigned long long)arg1 videoDuration:(double)arg2 forItemAtIndex:(long long)arg3;
-- (void)setBadgeTypes:(unsigned long long)arg1 videoDuration:(double)arg2 style:(long long)arg3 forItemAtIndex:(long long)arg4;
+- (void)setBadgeInfo:(struct PXAssetBadgeInfo)arg1 forItemAtIndex:(long long)arg2;
+- (void)setBadgeInfo:(struct PXAssetBadgeInfo)arg1 style:(long long)arg2 forItemAtIndex:(long long)arg3;
 - (void)setCollectionTileLayoutTemplate:(id)arg1 forItemAtIndex:(long long)arg2;
 - (void)setFeatureSpec:(id)arg1 forItemAtIndex:(long long)arg2;
 - (void)setHasRoundedCorners:(BOOL)arg1 withCornersBackgroundColor:(id)arg2;

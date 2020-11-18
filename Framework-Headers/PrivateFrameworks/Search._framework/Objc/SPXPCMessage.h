@@ -16,6 +16,7 @@
     NSObject<OS_xpc_object> *_x_message;
     NSObject<OS_xpc_object> *_x_rootObject;
     NSObject<OS_xpc_object> *_x_reply;
+    NSObject<OS_xpc_object> *_x_feedbackData;
     NSObject<OS_os_transaction> *_replyTransaction;
     NSString *_name;
     NSDictionary *_info;
@@ -30,8 +31,10 @@
 - (id)initWithName:(id)arg1;
 - (BOOL)needsReply;
 - (id)rootObjectOfClasses:(id)arg1;
+- (id)rootObjectOfClassesForFeedback:(id)arg1;
 - (void)sendReply:(id)arg1;
 - (void)setRootObject:(id)arg1;
+- (void)setRootObjectForFeedback:(id)arg1;
 
 @end
 

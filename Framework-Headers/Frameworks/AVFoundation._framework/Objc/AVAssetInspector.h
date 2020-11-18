@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) AVMetadataItem *creationDate;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration;
 @property (readonly, nonatomic, getter=isExportable) BOOL exportable;
+@property (readonly, nonatomic) NSString *identifyingTag;
 @property (readonly, nonatomic) NSString *identifyingTagClass;
 @property (readonly, nonatomic, getter=_instanceIdentifier) NSString *instanceIdentifier;
 @property (readonly, nonatomic) NSString *lyrics;

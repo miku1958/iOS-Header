@@ -6,27 +6,44 @@
 
 #import <MediaPlayer/MPModelObject.h>
 
-@class MPModelAlbum, MPModelPlaylist;
+@class MPModelAlbum, MPModelPlaylist, MusicForYouRecommendationGroup;
 
 @interface MusicForYouRecommendationItem : MPModelObject
 {
+    BOOL _backedByStoreItemMetadata;
     unsigned long long _itemType;
     MPModelAlbum *_album;
     MPModelPlaylist *_playlist;
+    MusicForYouRecommendationGroup *_parentGroup;
+    long long _subgroupIndex;
 }
 
 @property (strong, nonatomic) MPModelAlbum *album; // @synthesize album=_album;
+@property (nonatomic, getter=isBackedByStoreItemMetadata) BOOL backedByStoreItemMetadata; // @synthesize backedByStoreItemMetadata=_backedByStoreItemMetadata;
 @property (nonatomic) unsigned long long itemType; // @synthesize itemType=_itemType;
+@property (weak, nonatomic) MusicForYouRecommendationGroup *parentGroup; // @synthesize parentGroup=_parentGroup;
 @property (strong, nonatomic) MPModelPlaylist *playlist; // @synthesize playlist=_playlist;
+@property (readonly, nonatomic) MusicForYouRecommendationGroup *subgroup;
+@property (nonatomic) long long subgroupIndex; // @synthesize subgroupIndex=_subgroupIndex;
 
++ (id)__MusicForYouRecommendationItemPropertyBackedByStoreItemMetadata__PROPERTY;
 + (id)__MusicForYouRecommendationItemPropertyItemType__PROPERTY;
++ (id)__MusicForYouRecommendationItemPropertyParentGroup__PROPERTY;
++ (id)__MusicForYouRecommendationItemPropertySubgroupIndex__PROPERTY;
 + (id)__MusicForYouRecommendationItemRelationshipAlbum__PROPERTY;
 + (id)__MusicForYouRecommendationItemRelationshipPlaylist__PROPERTY;
 + (id)__album__KEY;
++ (id)__backedByStoreItemMetadata__KEY;
 + (id)__itemType__KEY;
++ (id)__parentGroup__KEY;
 + (id)__playlist__KEY;
++ (id)__subgroupIndex__KEY;
++ (id)requiredStoreLibraryPersonalizationProperties;
 - (void).cxx_destruct;
 - (id)descriptionWithType:(long long)arg1;
+- (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
+- (id)personalizationScopedPropertiesForProperties:(id)arg1;
+- (id)relativeModelObjectForStoreLibraryPersonalization;
 
 @end
 

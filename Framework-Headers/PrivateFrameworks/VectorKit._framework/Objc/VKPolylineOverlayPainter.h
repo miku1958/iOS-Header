@@ -26,7 +26,7 @@
     struct unique_ptr<ggl::FragmentedPool<ggl::RenderItem>, std::__1::default_delete<ggl::FragmentedPool<ggl::RenderItem>>> _debugRenderItems;
     struct unique_ptr<ggl::FragmentedPool<ggl::Debug::BasePipelineSetup>, std::__1::default_delete<ggl::FragmentedPool<ggl::Debug::BasePipelineSetup>>> _debugPipelineSetups;
     struct unique_ptr<ggl::FragmentedPool<ggl::Debug::BaseMesh>, std::__1::default_delete<ggl::FragmentedPool<ggl::Debug::BaseMesh>>> _debugUnmatchedRouteLineMeshes;
-    double _previousViewUnitsPerPoint;
+    double _builtViewUnitsPerPoint;
     int _styleZ;
     struct unordered_set<GEOComposedRouteSection *, std::__1::hash<GEOComposedRouteSection *>, std::__1::equal_to<GEOComposedRouteSection *>, std::__1::allocator<GEOComposedRouteSection *>> _selectedSections;
     struct fast_shared_ptr<md::RouteLineSection> _automobileSection;

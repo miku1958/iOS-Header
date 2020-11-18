@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class FBSSystemAppProxy;
 
@@ -16,6 +16,7 @@
 + (id)clientCallbackQueue;
 + (id)sharedService;
 - (void)_openApplication:(id)arg1 withOptions:(id)arg2 clientHandle:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)badgeValueForBundleID:(id)arg1;
 - (BOOL)canOpenApplication:(id)arg1 reason:(long long *)arg2;
 - (void)cleanupClientPort:(unsigned int)arg1;
 - (unsigned int)createClientPort;
@@ -33,6 +34,7 @@
 - (void)setBadgeValue:(id)arg1 forBundleID:(id)arg2;
 - (void)setKeyboardFocusApplicationWithBundleID:(id)arg1 pid:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)shutdown;
+- (void)shutdownWithOptions:(id)arg1;
 - (id)systemApplicationBundleIdentifier;
 - (void)terminateApplication:(id)arg1 forReason:(long long)arg2 andReport:(BOOL)arg3 withDescription:(id)arg4;
 - (void)terminateApplication:(id)arg1 forReason:(long long)arg2 andReport:(BOOL)arg3 withDescription:(id)arg4 completion:(CDUnknownBlockType)arg5;

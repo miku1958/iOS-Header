@@ -11,7 +11,7 @@
 #import <PhotosUI/PUBrowsingVideoPlayerChangeObserver-Protocol.h>
 #import <PhotosUI/PUIrisBadgeVisibilityControllerDelegate-Protocol.h>
 
-@class NSNumber, NSString, PUAssetReference, PUAssetSharedViewModel, PUAssetViewModelChange, PUBadgeInfo, PUBrowsingIrisPlayer, PUBrowsingVideoPlayer, PUIrisBadgeVisibilityController, PUMediaProvider, PUModelTileTransform, PUOperationStatus;
+@class NSNumber, NSString, PUAssetReference, PUAssetSharedViewModel, PUAssetViewModelChange, PUBadgeInfoPromise, PUBrowsingIrisPlayer, PUBrowsingVideoPlayer, PUIrisBadgeVisibilityController, PUMediaProvider, PUModelTileTransform, PUOperationStatus;
 @protocol PUDisplayAsset;
 
 @interface PUAssetViewModel : PUViewModel <PUBrowsingIrisPlayerChangeObserver, PUIrisBadgeVisibilityControllerDelegate, PUAssetSharedViewModelChangeObserver, PUBrowsingVideoPlayerChangeObserver>
@@ -34,7 +34,7 @@
     PUModelTileTransform *_modelTileTransform;
     double _focusValue;
     PUOperationStatus *_loadingStatus;
-    PUBadgeInfo *_badgeInfo;
+    PUBadgeInfoPromise *_badgeInfoPromise;
     long long _lastAccessoryViewVisibilityChangeReason;
     long long _lastContentOffsetChangeReason;
     double _contentOffsetOverrideFactor;
@@ -53,7 +53,7 @@
 @property (strong, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property (strong, nonatomic) PUAssetReference *assetReference; // @synthesize assetReference=_assetReference;
 @property (strong, nonatomic) PUAssetSharedViewModel *assetSharedViewModel; // @synthesize assetSharedViewModel=_assetSharedViewModel;
-@property (copy, nonatomic) PUBadgeInfo *badgeInfo; // @synthesize badgeInfo=_badgeInfo;
+@property (copy, nonatomic) PUBadgeInfoPromise *badgeInfoPromise; // @synthesize badgeInfoPromise=_badgeInfoPromise;
 @property (readonly, nonatomic) struct CGPoint contentOffset;
 @property (nonatomic) double contentOffsetOverrideFactor; // @synthesize contentOffsetOverrideFactor=_contentOffsetOverrideFactor;
 @property (readonly, nonatomic) PUAssetViewModelChange *currentChange;

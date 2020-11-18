@@ -55,6 +55,7 @@
 @property (copy) NSString *serverFriendlyDescription; // @synthesize serverFriendlyDescription=_serverFriendlyDescription;
 @property (copy) NSString *uniqueDeviceIdentifier; // @synthesize uniqueDeviceIdentifier=_uniqueDeviceIdentifier;
 @property (readonly) NSString *userChosenName;
+@property (readonly) NSString *userFullName;
 
 + (id)_buildNumber;
 + (id)_generateServerFriendlyDescription;

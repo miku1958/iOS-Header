@@ -11,6 +11,7 @@
 @interface HMActionSet (HFAdditions)
 
 @property (readonly, nonatomic) id<HFIconDescriptor> hf_iconDescriptor;
+@property (readonly, nonatomic) BOOL hf_requiresDeviceUnlock;
 
 + (id)hf_standardIconDescriptorForActionSetType:(id)arg1;
 - (id)hf_affectedCharacteristics;

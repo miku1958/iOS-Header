@@ -6,17 +6,29 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface WBSTabDialogInformation : NSObject
 {
-    BOOL _presented;
-    CDUnknownBlockType _presentationBlock;
     CDUnknownBlockType _dismissalBlock;
+    BOOL _isInvokingPresentationBlock;
+    CDUnknownBlockType _presentationBlock;
+    BOOL _blockingWebProcess;
+    BOOL _dismissed;
+    BOOL _presented;
+    unsigned long long _cancellationExceptions;
+    CDStruct_497cfc99 _slot;
 }
 
-@property (readonly, copy, nonatomic) CDUnknownBlockType dismissalBlock; // @synthesize dismissalBlock=_dismissalBlock;
+@property (readonly, nonatomic, getter=isBlockingWebProcess) BOOL blockingWebProcess; // @synthesize blockingWebProcess=_blockingWebProcess;
+@property (nonatomic) unsigned long long cancellationExceptions; // @synthesize cancellationExceptions=_cancellationExceptions;
+@property (readonly, nonatomic, getter=isDismissed) BOOL dismissed; // @synthesize dismissed=_dismissed;
+@property (readonly, nonatomic, getter=isPresented) BOOL presented; // @synthesize presented=_presented;
+@property (nonatomic) CDStruct_497cfc99 slot; // @synthesize slot=_slot;
 
 - (void).cxx_destruct;
-- (id)initWithPresentationBlock:(CDUnknownBlockType)arg1 dismissalBlock:(CDUnknownBlockType)arg2;
+- (id)description;
+- (void)dismissWithResponse:(id)arg1;
+- (id)initWithPresentationBlock:(CDUnknownBlockType)arg1 dismissalBlock:(CDUnknownBlockType)arg2 blocksWebProcessUntilDismissed:(BOOL)arg3;
 - (void)presentIfNeeded;
 
 @end

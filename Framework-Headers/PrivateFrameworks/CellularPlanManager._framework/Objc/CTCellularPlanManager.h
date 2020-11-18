@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CellularPlanManager/CTCellularPlanClientDelegate-Protocol.h>
 
@@ -29,27 +29,41 @@
 - (void)_ensureConnected_sync;
 - (void)_plansForRenewal:(BOOL)arg1 progress:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3 latitude:(id)arg4 longitude:(id)arg5 additionalParameters:(id)arg6;
 - (void)_reconnect;
+- (void)_remotePlansWithCsn:(id)arg1 parameters:(id)arg2 remoteCompletion:(CDUnknownBlockType)arg3;
+- (void)addNewRemotePlan:(CDUnknownBlockType)arg1;
+- (void)addNewRemotePlanWithCardData:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addNewRemotePlanWithIccid:(id)arg1 authCode:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)carrierHandoffToken:(CDUnknownBlockType)arg1;
 - (void)connectionSettings:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)deleteRemoteProfile:(id)arg1;
+- (void)didDeleteRemotePlanItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)didProvisionEsimWithIccid:(id)arg1;
 - (void)didPurchasePlanWithIccid:(id)arg1 downloadProfile:(BOOL)arg2;
+- (void)didPurchaseRemotePlanForCsn:(id)arg1 withIccid:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)didSelectPlanItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)didSelectRemotePlanItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)endSession;
 - (void)expirePlan;
+- (void)fetchRemotePlanOnly:(id)arg1 url:(id)arg2;
 - (void)getCurrentPlanType:(CDUnknownBlockType)arg1;
 - (void)getDeviceInfo:(CDUnknownBlockType)arg1;
 - (void)getESimServerURL:(CDUnknownBlockType)arg1;
 - (void)getIMEIPrefix:(CDUnknownBlockType)arg1;
+- (void)getRemoteInfo:(CDUnknownBlockType)arg1;
 - (void)getSelectedEnv:(CDUnknownBlockType)arg1;
 - (void)getSelectedProxy:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)isAddButtonEnabled:(CDUnknownBlockType)arg1;
 - (void)isMultipleDataPlanSupportAvailable:(CDUnknownBlockType)arg1;
 - (void)isNewDataPlanCapable:(CDUnknownBlockType)arg1;
+- (void)isRemotePlanCapable:(CDUnknownBlockType)arg1;
 - (void)isRoamingPlanSupportAvailable:(CDUnknownBlockType)arg1;
 - (void)latitudeLongitudeOverride:(CDUnknownBlockType)arg1;
+- (void)launchDataActivationNextWithUrl:(id)arg1;
 - (void)launchSequoia;
 - (void)manageAccountForPlan:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)manageAccountForRemotePlan:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mccMncOverride:(CDUnknownBlockType)arg1;
 - (void)openInternalUrlId:(long long)arg1;
 - (void)planInfoDidUpdate;
@@ -60,6 +74,14 @@
 - (void)plansWithCompletion:(CDUnknownBlockType)arg1 latitude:(id)arg2 longitude:(id)arg3;
 - (void)plansWithProgress:(CDUnknownBlockType)arg1 andCompletion:(CDUnknownBlockType)arg2;
 - (void)plansWithProgress:(CDUnknownBlockType)arg1 andCompletion:(CDUnknownBlockType)arg2 additionalParameters:(id)arg3;
+- (void)remotePlanItemsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remotePlanItemsWithUpdateFetch:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remotePlanLaunchInfoForCsn:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remotePlanSubscriptionStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remotePlansSignupParamsForCsn:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remoteProvisioningDidBecomeAvailable;
+- (void)remoteplansWithCsn:(id)arg1 parameters:(id)arg2 andRemoteCompletion:(CDUnknownBlockType)arg3;
+- (void)selectRemoteProfile:(id)arg1;
 - (void)setActivePlan:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setESimServerURL:(id)arg1;
 - (void)setIMEIPrefix:(id)arg1;
@@ -68,7 +90,10 @@
 - (void)setSelectedEnv:(long long)arg1;
 - (void)setSelectedProxy:(long long)arg1;
 - (void)setUserInPurchaseFlow:(BOOL)arg1;
+- (void)shouldShowAddNewRemotePlan:(CDUnknownBlockType)arg1;
+- (void)shouldShowAddNewRemotePlanWithFlowType:(CDUnknownBlockType)arg1;
 - (void)shouldShowPlanList:(CDUnknownBlockType)arg1;
+- (void)startSession;
 - (void)subscriptionDetailsForCompletion:(id)arg1;
 - (void)subscriptionDetailsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)triggerAddNewDataPlan:(CDUnknownBlockType)arg1;

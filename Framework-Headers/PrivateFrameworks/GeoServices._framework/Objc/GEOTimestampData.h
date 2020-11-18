@@ -13,6 +13,7 @@
 
 @interface GEOTimestampData : PBCodable <GEOServerFormatTokenTimeStampValue, NSCopying>
 {
+    NSString *_formatPattern;
     unsigned int _timestampVal;
     NSString *_timezone;
     BOOL _displayTimezone;
@@ -24,9 +25,11 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL displayTimeZone;
 @property (nonatomic) BOOL displayTimezone; // @synthesize displayTimezone=_displayTimezone;
+@property (readonly, nonatomic) NSString *formatPattern;
+@property (strong, nonatomic) NSString *formatPattern; // @synthesize formatPattern=_formatPattern;
 @property (nonatomic) BOOL hasDisplayTimezone;
+@property (readonly, nonatomic) BOOL hasFormatPattern;
 @property (nonatomic) BOOL hasTimestampVal;
 @property (readonly, nonatomic) BOOL hasTimezone;
 @property (readonly) unsigned long long hash;
@@ -40,6 +43,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
+- (BOOL)displayTimeZone;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

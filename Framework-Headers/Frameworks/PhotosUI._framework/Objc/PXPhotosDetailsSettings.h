@@ -49,6 +49,7 @@
     double _addToTabRotationDelay;
     double _addToTabFadeOutDelay;
     double _addToTabEndRotation;
+    struct PXAssetBadgeInfo _debugBadgeInfo;
 }
 
 @property (nonatomic) double addToTabDuration; // @synthesize addToTabDuration=_addToTabDuration;
@@ -66,6 +67,7 @@
 @property (nonatomic) BOOL allowZoomTransitions; // @synthesize allowZoomTransitions=_allowZoomTransitions;
 @property (nonatomic) double assetsWidgetPlaceholderAspectRatio; // @synthesize assetsWidgetPlaceholderAspectRatio=_assetsWidgetPlaceholderAspectRatio;
 @property (nonatomic) long long curationAlgorithm; // @synthesize curationAlgorithm=_curationAlgorithm;
+@property (nonatomic) struct PXAssetBadgeInfo debugBadgeInfo; // @synthesize debugBadgeInfo=_debugBadgeInfo;
 @property (nonatomic) double defaultPriorityWidgetsLoadingDelay; // @synthesize defaultPriorityWidgetsLoadingDelay=_defaultPriorityWidgetsLoadingDelay;
 @property (nonatomic) long long detailViewsToKeepLoaded; // @synthesize detailViewsToKeepLoaded=_detailViewsToKeepLoaded;
 @property (nonatomic) long long editorialLayoutActivityFeedItemCountThreshold; // @synthesize editorialLayoutActivityFeedItemCountThreshold=_editorialLayoutActivityFeedItemCountThreshold;

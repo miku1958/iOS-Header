@@ -7,7 +7,10 @@
 #import <UIKit/UIApplication.h>
 
 @interface UIApplication (PhotosUI)
+- (id)ppt_testDefinitions;
 - (id)pu_beginDisablingIdleTimer;
 - (void)pu_endDisablingIdleTimer:(id)arg1;
+- (void)pu_finishedAnimationSubTest:(id)arg1 forTest:(id)arg2;
+- (void)pu_startedAnimationSubTest:(id)arg1 forTest:(id)arg2;
 @end
 

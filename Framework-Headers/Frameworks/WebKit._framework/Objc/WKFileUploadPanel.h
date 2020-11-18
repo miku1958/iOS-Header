@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIPopoverController> _presentationPopover;
     struct RetainPtr<UIDocumentMenuViewController> _documentMenuController;
     struct RetainPtr<UIAlertController> _actionSheetController;
+    int _mediaCaptureType;
     id<WKFileUploadPanelDelegate> _delegate;
 }
 
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_adjustMediaCaptureType;
 - (id)_cameraButtonLabel;
 - (void)_cancel;
 - (void)_chooseFiles:(id)arg1 displayString:(id)arg2 iconImage:(id)arg3;
@@ -54,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_presentPopoverWithContentViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_processMediaInfoDictionaries:(id)arg1 atIndex:(unsigned long long)arg2 processedResults:(id)arg3 processedImageCount:(unsigned long long)arg4 processedVideoCount:(unsigned long long)arg5 successBlock:(CDUnknownBlockType)arg6 failureBlock:(CDUnknownBlockType)arg7;
 - (void)_processMediaInfoDictionaries:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
+- (BOOL)_shouldMediaCaptureOpenMediaDevice;
 - (void)_showDocumentPickerMenu;
 - (void)_showPhotoPickerWithSourceType:(long long)arg1;
 - (void)_uploadItemForImage:(id)arg1 withAssetURL:(id)arg2 successBlock:(CDUnknownBlockType)arg3 failureBlock:(CDUnknownBlockType)arg4;

@@ -33,7 +33,7 @@
     CDUnknownBlockType _timerHandler;
 }
 
-@property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (nonatomic) double interval; // @synthesize interval=_interval;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;

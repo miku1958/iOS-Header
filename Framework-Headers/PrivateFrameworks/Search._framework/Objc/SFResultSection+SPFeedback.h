@@ -8,5 +8,6 @@
 
 @interface SFResultSection (SPFeedback)
 - (id)objectForFeedback;
+- (id)objectForFeedbackWithResultsArray:(id)arg1;
 @end
 

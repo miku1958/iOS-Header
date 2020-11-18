@@ -28,6 +28,7 @@
 - (void)registerPlugInAtURL:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)registerPlugInsInBundle:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)releaseHold:(id)arg1;
+- (void)terminatePlugInsInApplication:(id)arg1 options:(long long)arg2 result:(CDUnknownBlockType)arg3;
 - (void)unregisterPlugInAtURL:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)unregisterPlugInsInBundle:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)updateExtensionStatesForPlugIns:(id)arg1 result:(CDUnknownBlockType)arg2;

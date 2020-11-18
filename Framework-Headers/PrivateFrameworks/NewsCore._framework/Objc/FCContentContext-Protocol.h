@@ -8,20 +8,24 @@
 #import <NewsCore/FCCloudKitCacheClearing-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAppConfiguration, FCArticleController, FCAssetManager, FCFlintResourceManager, FCTagController, NSString;
+@class FCAppConfiguration, FCArticleController, FCAssetManager, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCTagController, NSString, NSURL;
 @protocol FCContentContextInternal;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing, FCCloudKitCacheClearing>
 
 @property (readonly, nonatomic) FCAppConfiguration *appConfiguration;
 @property (readonly, nonatomic) FCArticleController *articleController;
+@property (readonly, nonatomic) NSURL *assetCacheDirectoryURL;
 @property (readonly, nonatomic) FCAssetManager *assetManager;
 @property (readonly, copy, nonatomic) NSString *contentDirectory;
 @property (readonly, copy, nonatomic) NSString *contentStoreFrontID;
 @property (readonly, nonatomic) FCFlintResourceManager *flintResourceManager;
 @property (readonly, nonatomic) BOOL hasBeenRateLimited;
 @property (readonly, nonatomic) id<FCContentContextInternal> internalContentContext;
+@property (readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
+@property (readonly, copy, nonatomic) NSString *supportedContentStoreFrontID;
 @property (readonly, nonatomic) FCTagController *tagController;
+@property (readonly, nonatomic) NSURL *webArchiveCacheDirectoryURL;
 
 @end
 

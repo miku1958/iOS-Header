@@ -20,6 +20,7 @@
 @property (strong, nonatomic) UIButton *setupLaterButton; // @synthesize setupLaterButton=_setupLaterButton;
 
 - (void).cxx_destruct;
+- (struct CGSize)_sizeForButton:(id)arg1 constrainedToSize:(struct CGSize)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2;
 - (BOOL)isBuddyiPad;

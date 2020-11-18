@@ -10,21 +10,28 @@
 
 @interface WBSTabDialogManager : NSObject
 {
-    NSMutableDictionary *_completionHandlers;
-    NSMutableDictionary *_webPIDToDialogQueueMap;
-    unsigned long long _maximumNumberOfBackgroundDialogs;
+    NSMutableDictionary *_webProcessIDToDialogSetMapping;
+    NSMutableDictionary *_tabIDToDialogQueueMapping;
+    unsigned long long _queueCapacity;
 }
 
 - (void).cxx_destruct;
-- (void)dismissAllDialogsForWebPIDIfNeeded:(int)arg1;
-- (void)dismissCurrentDialogForWebPID:(int)arg1 withResponse:(long long)arg2 message:(id)arg3;
-- (void)dismissDialogForWebPID:(int)arg1 withResponse:(long long)arg2 message:(id)arg3;
-- (void)dismissDialogForWebPIDIfNeeded:(int)arg1;
-- (void)enqueueOrPresentDialogForWebPID:(int)arg1 presentationBlock:(CDUnknownBlockType)arg2 dismissalBlock:(CDUnknownBlockType)arg3 andIgnoreQueueCapacity:(BOOL)arg4;
+- (id)_dialogBlockingSlot:(CDStruct_497cfc99)arg1;
+- (id)_dialogBlockingWebProcessID:(int)arg1;
+- (void)_dismissDialog:(id)arg1 withResponse:(id)arg2;
+- (long long)_enqueueDialog:(id)arg1;
+- (struct NSMutableArray *)_queueForTabID:(unsigned long long)arg1 createIfNeeded:(BOOL)arg2;
+- (struct NSMutableSet *)_setForWebProcessID:(int)arg1 createIfNeeded:(BOOL)arg2;
+- (void)cancelAllDialogsBlockingSlot:(CDStruct_497cfc99)arg1;
+- (void)cancelAllDialogsBlockingWebProcessID:(int)arg1;
+- (void)cancelAllDialogsForTabID:(unsigned long long)arg1;
+- (void)cancelAllDialogsForTabID:(unsigned long long)arg1 reason:(long long)arg2;
+- (id)description;
+- (void)dismissCurrentDialogForTabID:(unsigned long long)arg1 withResponse:(id)arg2;
+- (void)enqueueOrPresentDialog:(id)arg1 inSlot:(CDStruct_497cfc99)arg2;
+- (void)enqueueOrPresentDialogInSlot:(CDStruct_497cfc99)arg1 presentationBlock:(CDUnknownBlockType)arg2 dismissalBlock:(CDUnknownBlockType)arg3 blocksWebProcessUntilDismissed:(BOOL)arg4;
 - (id)init;
-- (void)presentNextDialogForWebPID:(int)arg1;
-- (void)registerDialogForWebPID:(int)arg1 withCompletionHandler:(id)arg2;
-- (id)unregisterDialogForWebPID:(int)arg1;
+- (void)presentNextDialogForSlot:(CDStruct_497cfc99)arg1;
 
 @end
 

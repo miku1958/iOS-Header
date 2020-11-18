@@ -55,6 +55,7 @@
 - (id)fc_firstObjectWithValue:(id)arg1 forKey:(id)arg2;
 - (unsigned long long)fc_indexOfFirstObjectWithValue:(id)arg1 forKey:(id)arg2;
 - (id)fc_indexesOfObjectsIdenticalTo:(id)arg1;
+- (BOOL)fc_isEqualToArray:(id)arg1 inRange:(struct _NSRange)arg2;
 - (BOOL)fc_isSortedUsingComparator:(CDUnknownBlockType)arg1;
 - (id)fc_onlyObject;
 - (id)fc_orderedSetByTransformingWithBlock:(CDUnknownBlockType)arg1;

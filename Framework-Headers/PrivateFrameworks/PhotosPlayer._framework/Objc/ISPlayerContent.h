@@ -6,31 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class AVPlayerItem, ISCrossfadeItem;
+@class AVPlayerItem, NSString;
 
 @interface ISPlayerContent : NSObject
 {
     BOOL _photoHasColorAdjustments;
+    BOOL _photoIsOriginal;
     int _photoEXIFOrientation;
-    float _videoCropFactor;
     struct CGImage *_photo;
-    double _photoTime;
     AVPlayerItem *_videoPlayerItem;
-    ISCrossfadeItem *_crossfadeItem;
+    NSString *_playbackStyleIdentifier;
+    CDStruct_1b6d18a9 _photoTime;
+    CDStruct_1b6d18a9 _videoDuration;
+    CDStruct_1b6d18a9 _prePhotoFrameTime;
+    CDStruct_1b6d18a9 _postPhotoFrameTime;
 }
 
-@property (readonly, nonatomic) ISCrossfadeItem *crossfadeItem; // @synthesize crossfadeItem=_crossfadeItem;
 @property (readonly, nonatomic) struct CGImage *photo; // @synthesize photo=_photo;
 @property (readonly, nonatomic) int photoEXIFOrientation; // @synthesize photoEXIFOrientation=_photoEXIFOrientation;
 @property (readonly, nonatomic) BOOL photoHasColorAdjustments; // @synthesize photoHasColorAdjustments=_photoHasColorAdjustments;
-@property (readonly, nonatomic) double photoTime; // @synthesize photoTime=_photoTime;
-@property (readonly, nonatomic) float videoCropFactor; // @synthesize videoCropFactor=_videoCropFactor;
+@property (readonly, nonatomic) BOOL photoIsOriginal; // @synthesize photoIsOriginal=_photoIsOriginal;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 photoTime; // @synthesize photoTime=_photoTime;
+@property (readonly, copy, nonatomic) NSString *playbackStyleIdentifier; // @synthesize playbackStyleIdentifier=_playbackStyleIdentifier;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 postPhotoFrameTime; // @synthesize postPhotoFrameTime=_postPhotoFrameTime;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 prePhotoFrameTime; // @synthesize prePhotoFrameTime=_prePhotoFrameTime;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 videoDuration; // @synthesize videoDuration=_videoDuration;
 @property (readonly, nonatomic) AVPlayerItem *videoPlayerItem; // @synthesize videoPlayerItem=_videoPlayerItem;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (unsigned long long)hash;
-- (id)initWithPhoto:(struct CGImage *)arg1 photoEXIFOrientation:(int)arg2 photoTime:(double)arg3 photoHasColorAdjustments:(BOOL)arg4 videoPlayerItem:(id)arg5 videoCropFactor:(float)arg6 crossfadeItem:(id)arg7;
+- (id)initWithPhoto:(struct CGImage *)arg1 photoIsOriginal:(BOOL)arg2 photoEXIFOrientation:(int)arg3 photoTime:(CDStruct_1b6d18a9)arg4 videoDuration:(CDStruct_1b6d18a9)arg5 photoHasColorAdjustments:(BOOL)arg6 videoPlayerItem:(id)arg7 prePhotoFrameTime:(CDStruct_1b6d18a9)arg8 postPhotoFrameTime:(CDStruct_1b6d18a9)arg9 playbackStyleIdentifier:(id)arg10;
 - (BOOL)isEqual:(id)arg1;
 
 @end

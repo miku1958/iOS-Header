@@ -31,8 +31,6 @@
     UIImage *startupLandscapeImage;
     UIImage *initialLaunchImage;
     id<WebClipDelegate> delegate;
-    NSString *dashcodePortName;
-    NSString *dashcodeFrameworkPath;
     NSMutableData *_customIconData;
     NSURLConnection *_iconConnection;
     NSMutableData *_customStartupImageData;
@@ -43,8 +41,6 @@
 }
 
 @property BOOL classicMode; // @synthesize classicMode;
-@property (strong) NSString *dashcodeFrameworkPath; // @synthesize dashcodeFrameworkPath;
-@property (strong) NSString *dashcodePortName; // @synthesize dashcodePortName;
 @property (weak, nonatomic) id<WebClipDelegate> delegate; // @synthesize delegate;
 @property BOOL fullScreen; // @synthesize fullScreen;
 @property (readonly, strong, nonatomic) UIImage *iconImage;

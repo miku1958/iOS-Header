@@ -37,11 +37,15 @@
 + (id)ubiquitousIdentifierWithiTunesUFeedURL:(id)arg1 feedGUID:(id)arg2;
 - (void).cxx_destruct;
 - (id)SBKUniversalPlaybackPositionMetadata;
+- (BOOL)bookmarkTimeModified;
+- (BOOL)bookmarkTimestampModified;
 - (id)copyWithValuesFromSBKUniversalPlaybackPositionMetadata:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasBeenPlayedModified;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPlaybackPositionDomain:(id)arg1 ubiquitousIdentifier:(id)arg2 foreignDatabaseEntityID:(long long)arg3;
+- (BOOL)userPlayCountModified;
 
 @end
 

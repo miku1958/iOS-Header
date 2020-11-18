@@ -28,13 +28,19 @@
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
+- (id)domain;
 - (id)initWithRecipients:(id)arg1 content:(id)arg2 groupName:(id)arg3 serviceName:(id)arg4 sender:(id)arg5;
 - (id)initWithRecipients:(id)arg1 content:(id)arg2 serviceName:(id)arg3 sender:(id)arg4;
+- (id)parametersByName;
 - (void)setContent:(id)arg1;
+- (void)setDomain:(id)arg1;
 - (void)setGroupName:(id)arg1;
+- (void)setParametersByName:(id)arg1;
 - (void)setRecipients:(id)arg1;
 - (void)setSender:(id)arg1;
 - (void)setServiceName:(id)arg1;
+- (void)setVerb:(id)arg1;
+- (id)verb;
 
 @end
 

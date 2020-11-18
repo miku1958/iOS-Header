@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSEnumerator, NSMutableSet, NSString;
+@class NSEnumerator, NSError, NSMutableSet, NSString;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
 @interface BRCRecursiveProviderTracker : NSObject
 {
     NSMutableSet *_documentIDs;
+    NSError *_lastError;
     CDUnknownBlockType _handler;
     NSString *_key;
     NSObject<OS_dispatch_group> *_group;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *key; // @synthesize key=_key;
 
 - (void).cxx_destruct;
+- (void)addCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)completeWithError:(id)arg1;
 - (CDUnknownBlockType)completionHandlerFor:(id)arg1;
 - (id)description;

@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)_runAlongsideAnimations;
 - (void)_runAlongsideCompletions;
 - (void)_runAlongsideCompletionsAfterCommit;
+- (void)_runAlongsideCompletionsAndClearAlongsideAnimations;
 - (BOOL)animateAlongsideTransition:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)animateAlongsideTransitionInView:(id)arg1 animation:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)isRotating;

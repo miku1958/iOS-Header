@@ -6,20 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class ICQLink, NSDictionary;
+@class ICQLink, NSDictionary, NSString;
 
 @interface _ICQButtonSpecification : NSObject
 {
     NSDictionary *_serverDict;
     ICQLink *_buttonLink;
+    NSString *_buttonFormat;
     NSDictionary *_linkForBundleIdentifier;
 }
 
+@property (readonly, nonatomic) NSString *buttonFormat; // @synthesize buttonFormat=_buttonFormat;
+@property (readonly, nonatomic) ICQLink *buttonLink;
 @property (strong, nonatomic) NSDictionary *linkForBundleIdentifier; // @synthesize linkForBundleIdentifier=_linkForBundleIdentifier;
 
 + (id)buttonSpecificationSampleForLevel:(long long)arg1;
 - (void).cxx_destruct;
-- (id)buttonLink;
 - (id)initWithServerDictionary:(id)arg1;
 - (id)linkForBundleIdentifier:(id)arg1;
 

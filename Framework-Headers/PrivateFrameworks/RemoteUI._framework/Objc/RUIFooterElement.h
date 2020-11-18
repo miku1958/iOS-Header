@@ -6,13 +6,18 @@
 
 #import <RemoteUI/RUIElement.h>
 
+@class RemoteUISectionFooter;
+
 @interface RUIFooterElement : RUIElement
 {
+    RemoteUISectionFooter *_footerView;
 }
 
+- (void).cxx_destruct;
 - (void)configureView:(id)arg1;
 - (long long)labelAlignment;
 - (id)linkURL;
+- (void)setEnabled:(BOOL)arg1;
 
 @end
 

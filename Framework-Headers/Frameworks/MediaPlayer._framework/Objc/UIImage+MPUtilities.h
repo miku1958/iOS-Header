@@ -9,5 +9,6 @@
 @interface UIImage (MPUtilities)
 - (id)imageWithEtchedBorderOfColor:(id)arg1 radius:(double)arg2;
 - (id)imageWithShadow:(id)arg1;
+- (id)initWithContentsOfExactFilePath:(id)arg1;
 @end
 

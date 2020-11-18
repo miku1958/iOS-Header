@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (id)describe;
 - (id)description;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithMembers:(id *)arg1 count:(unsigned long long)arg2;
 - (id)memberByName:(id)arg1;
 - (id)members;

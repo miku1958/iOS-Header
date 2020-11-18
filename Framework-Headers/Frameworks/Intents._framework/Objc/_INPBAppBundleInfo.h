@@ -31,7 +31,6 @@
 
 + (Class)intentSupportType;
 + (Class)localizedProjectsType;
-+ (id)options;
 + (Class)supportedPlatformsType;
 - (void).cxx_destruct;
 - (void)addIntentSupport:(id)arg1;

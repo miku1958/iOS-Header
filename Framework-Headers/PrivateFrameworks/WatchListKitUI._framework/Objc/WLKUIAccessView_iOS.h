@@ -8,15 +8,15 @@
 
 #import <WatchListKitUI/TVCarouselViewDataSource-Protocol.h>
 
-@class NSArray, NSString, TVCarouselView, UIButton, UILabel, UILayoutGuide, UIStackView;
+@class NSArray, NSString, TVCarouselView, UIButton, UILabel, UILayoutGuide, UIScrollView, UIStackView;
 
 @interface WLKUIAccessView_iOS : UIView <TVCarouselViewDataSource>
 {
     NSArray *_apps;
-    NSString *_accountName;
     UILayoutGuide *_titlePlacementGuide;
     UIStackView *_contentStack;
     UILabel *_titleLabel;
+    UIScrollView *_bodyScroll;
     UILabel *_bodyLabel;
     UIStackView *_logoStack;
     UIStackView *_bottomStack;
@@ -35,6 +35,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (struct CGSize)iconSize;
 - (void).cxx_destruct;
 - (id)_buildCarousel;
 - (id)_buildLogoStack;
@@ -43,13 +44,16 @@
 - (id)carouselView:(id)arg1 cellForItemAtIndex:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)disallowButton;
-- (id)initWithApps:(id)arg1 accountName:(id)arg2;
+- (id)initWithApps:(id)arg1;
 - (void)layoutSubviews;
 - (id)nackButton;
 - (unsigned long long)numberOfItemsInCarouselView:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)privacyButton;
 - (id)seeAllButton;
+- (void)setBody:(id)arg1;
+- (void)setFooter:(id)arg1;
+- (void)setTitle:(id)arg1;
 - (void)showNackScreen;
 
 @end

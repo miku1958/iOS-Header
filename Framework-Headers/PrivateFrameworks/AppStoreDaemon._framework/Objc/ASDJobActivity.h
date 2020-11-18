@@ -18,6 +18,7 @@
     BOOL _hasMessagesExtension;
     BOOL _isAutomatic;
     BOOL _isDeviceBasedVPP;
+    BOOL _isGameCenterEnabled;
     BOOL _isInQueue;
     BOOL _isFromStore;
     BOOL _isPurchasedRedownload;
@@ -41,6 +42,7 @@
     NSString *_collectionName;
     NSNumber *_divertedTrackingID;
     NSNumber *_enableExtensions;
+    NSNumber *_externalOrderKey;
     NSString *_genre;
     NSNumber *_genreID;
     NSNumber *_itemID;
@@ -84,6 +86,7 @@
 @property (copy, nonatomic) NSNumber *divertedTrackingID; // @synthesize divertedTrackingID=_divertedTrackingID;
 @property (copy, nonatomic) NSNumber *enableExtensions; // @synthesize enableExtensions=_enableExtensions;
 @property (nonatomic) BOOL explicitContent; // @synthesize explicitContent=_explicitContent;
+@property (copy, nonatomic) NSNumber *externalOrderKey; // @synthesize externalOrderKey=_externalOrderKey;
 @property (copy, nonatomic) NSString *genre; // @synthesize genre=_genre;
 @property (copy, nonatomic) NSNumber *genreID; // @synthesize genreID=_genreID;
 @property (nonatomic) BOOL hasMessagesExtension; // @synthesize hasMessagesExtension=_hasMessagesExtension;
@@ -93,6 +96,7 @@
 @property (nonatomic) BOOL isAutomatic; // @synthesize isAutomatic=_isAutomatic;
 @property (nonatomic) BOOL isDeviceBasedVPP; // @synthesize isDeviceBasedVPP=_isDeviceBasedVPP;
 @property (nonatomic) BOOL isFromStore; // @synthesize isFromStore=_isFromStore;
+@property (nonatomic) BOOL isGameCenterEnabled; // @synthesize isGameCenterEnabled=_isGameCenterEnabled;
 @property (nonatomic) BOOL isInQueue; // @synthesize isInQueue=_isInQueue;
 @property (nonatomic) BOOL isPendingApproval; // @synthesize isPendingApproval=_isPendingApproval;
 @property (nonatomic) BOOL isPurchasedRedownload; // @synthesize isPurchasedRedownload=_isPurchasedRedownload;

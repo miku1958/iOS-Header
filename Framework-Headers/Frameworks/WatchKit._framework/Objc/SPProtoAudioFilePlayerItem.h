@@ -8,7 +8,7 @@
 
 #import <WatchKit/NSCopying-Protocol.h>
 
-@class SPProtoAudioFilePlayerStatus, SPProtoAudioFilePlayerUpdateContainedIdentifier, SPProtoObjectMessage;
+@class SPProtoAudioFilePlayerItemSetCurrentTime, SPProtoAudioFilePlayerStatus, SPProtoAudioFilePlayerUpdateContainedIdentifier, SPProtoObjectMessage;
 
 @interface SPProtoAudioFilePlayerItem : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     SPProtoObjectMessage *_notifyDidPlayToEndTime;
     SPProtoObjectMessage *_notifyFailedToPlayToEndTime;
     SPProtoObjectMessage *_notifyTimeJumped;
+    SPProtoAudioFilePlayerItemSetCurrentTime *_setItemCurrentTime;
     SPProtoAudioFilePlayerStatus *_setStatus;
     SPProtoAudioFilePlayerUpdateContainedIdentifier *_upsertWithAsset;
 }
@@ -28,11 +29,13 @@
 @property (readonly, nonatomic) BOOL hasNotifyDidPlayToEndTime;
 @property (readonly, nonatomic) BOOL hasNotifyFailedToPlayToEndTime;
 @property (readonly, nonatomic) BOOL hasNotifyTimeJumped;
+@property (readonly, nonatomic) BOOL hasSetItemCurrentTime;
 @property (readonly, nonatomic) BOOL hasSetStatus;
 @property (readonly, nonatomic) BOOL hasUpsertWithAsset;
 @property (strong, nonatomic) SPProtoObjectMessage *notifyDidPlayToEndTime; // @synthesize notifyDidPlayToEndTime=_notifyDidPlayToEndTime;
 @property (strong, nonatomic) SPProtoObjectMessage *notifyFailedToPlayToEndTime; // @synthesize notifyFailedToPlayToEndTime=_notifyFailedToPlayToEndTime;
 @property (strong, nonatomic) SPProtoObjectMessage *notifyTimeJumped; // @synthesize notifyTimeJumped=_notifyTimeJumped;
+@property (strong, nonatomic) SPProtoAudioFilePlayerItemSetCurrentTime *setItemCurrentTime; // @synthesize setItemCurrentTime=_setItemCurrentTime;
 @property (strong, nonatomic) SPProtoAudioFilePlayerStatus *setStatus; // @synthesize setStatus=_setStatus;
 @property (strong, nonatomic) SPProtoAudioFilePlayerUpdateContainedIdentifier *upsertWithAsset; // @synthesize upsertWithAsset=_upsertWithAsset;
 

@@ -9,10 +9,14 @@
 __attribute__((visibility("hidden")))
 @interface UIClassicWindow : UIWindow
 {
+    BOOL _scaleForiPads;
 }
+
+@property (nonatomic) BOOL scaleForiPads; // @synthesize scaleForiPads=_scaleForiPads;
 
 - (double)_adjustedWindowLevelFromLevel:(double)arg1;
 - (BOOL)_isConstrainedByScreenJail;
+- (struct CGRect)_sceneReferenceBounds;
 - (BOOL)_shouldZoom;
 - (void)_updateTransformLayerForClassicPresentation;
 

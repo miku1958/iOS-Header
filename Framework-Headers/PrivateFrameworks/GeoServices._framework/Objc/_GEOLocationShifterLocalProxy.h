@@ -8,19 +8,22 @@
 
 #import <GeoServices/_GEOLocationShifterProxy-Protocol.h>
 
-@class NSString, _GEOLocationShiftRequester;
+@class GEOLocationShifterPersistence, NSString, _GEOLocationShiftRequester;
 
 __attribute__((visibility("hidden")))
 @interface _GEOLocationShifterLocalProxy : NSObject <_GEOLocationShifterProxy>
 {
     _GEOLocationShiftRequester *_requester;
+    int _resetPrivacyToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) GEOLocationShifterPersistence *persistentCache;
 @property (readonly) Class superclass;
 
+- (void)_prunePersistentCache;
 - (void)dealloc;
 - (id)init;
 - (void)shiftCoordinate:(CDStruct_c3b9c2ee)arg1 completionHandler:(CDUnknownBlockType)arg2;

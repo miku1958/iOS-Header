@@ -6,14 +6,46 @@
 
 #import <objc/NSObject.h>
 
-@interface CRKStudentDaemonProxy : NSObject
+#import <ClassroomKit/CATTaskClientDelegate-Protocol.h>
+
+@class CATOperationQueue, CATTaskClient, NSHashTable, NSString;
+
+@interface CRKStudentDaemonProxy : NSObject <CATTaskClientDelegate>
 {
+    CATTaskClient *mTaskClient;
+    CATOperationQueue *mOperationQueue;
+    NSHashTable *mObservers;
+    long long mConnectionAttempt;
+    BOOL mConnecting;
+    BOOL _connected;
+    long long _maxConnectionAttempts;
 }
+
+@property (nonatomic, getter=isConnected) BOOL connected; // @synthesize connected=_connected;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) long long maxConnectionAttempts; // @synthesize maxConnectionAttempts=_maxConnectionAttempts;
+@property (readonly) Class superclass;
 
 + (void)fetchResourceFromURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)setActiveStudentIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)studentDaemonConnection;
 + (void)studentDidAuthenticate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
+- (void)addObserver:(id)arg1;
+- (void)client:(id)arg1 didInterruptWithError:(id)arg2;
+- (void)client:(id)arg1 didReceiveNotificationWithName:(id)arg2 userInfo:(id)arg3;
+- (void)clientDidConnect:(id)arg1;
+- (void)clientDidDisconnect:(id)arg1;
+- (void)connect;
+- (void)dealloc;
+- (void)disconnect;
+- (void)enqueueOperation:(id)arg1;
+- (id)enqueuedOperationForRequest:(id)arg1;
+- (id)init;
+- (id)operationForRequest:(id)arg1;
+- (void)removeObserver:(id)arg1;
 
 @end
 

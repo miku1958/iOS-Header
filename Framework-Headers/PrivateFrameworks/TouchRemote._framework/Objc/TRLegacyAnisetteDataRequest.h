@@ -15,6 +15,7 @@
 
 @property (copy, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

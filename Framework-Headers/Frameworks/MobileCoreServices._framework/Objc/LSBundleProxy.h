@@ -22,7 +22,6 @@
     NSString *_localizedShortName;
     NSURL *_bundleURL;
     NSString *_bundleExecutable;
-    NSURL *_appStoreReceiptURL;
     NSString *_bundleVersion;
     NSString *_signerIdentity;
     NSUUID *_cacheGUID;
@@ -39,7 +38,7 @@
 @property (copy, nonatomic, setter=_setEnvironmentVariables:) _LSLazyPropertyList *_environmentVariables; // @synthesize _environmentVariables=__environmentVariables;
 @property (copy, nonatomic, setter=_setGroupContainers:) _LSLazyPropertyList *_groupContainers; // @synthesize _groupContainers=__groupContainers;
 @property (copy, nonatomic, setter=_setInfoDictionary:) _LSLazyPropertyList *_infoDictionary; // @synthesize _infoDictionary=__infoDictionary;
-@property (copy, nonatomic) NSURL *appStoreReceiptURL; // @synthesize appStoreReceiptURL=_appStoreReceiptURL;
+@property (readonly, nonatomic) NSURL *appStoreReceiptURL; // @dynamic appStoreReceiptURL;
 @property (readonly, nonatomic) NSURL *bundleContainerURL;
 @property (readonly, nonatomic) NSString *bundleExecutable; // @synthesize bundleExecutable=_bundleExecutable;
 @property (readonly, nonatomic) NSString *bundleIdentifier;
@@ -47,6 +46,7 @@
 @property (readonly, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
 @property (readonly, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (readonly, nonatomic) NSUUID *cacheGUID; // @synthesize cacheGUID=_cacheGUID;
+@property (readonly, nonatomic) NSString *canonicalExecutablePath;
 @property (readonly, nonatomic) NSURL *containerURL;
 @property (readonly, nonatomic) NSURL *dataContainerURL;
 @property (readonly, nonatomic) NSDictionary *entitlements;
@@ -74,11 +74,14 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)entitlementValueForKey:(id)arg1 ofClass:(Class)arg2;
 - (id)entitlementValueForKey:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;
+- (id)entitlementValuesForKeys:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)localizedValuesForKeys:(id)arg1 fromTable:(id)arg2;
 - (id)objectForInfoDictionaryKey:(id)arg1 ofClass:(Class)arg2;
 - (id)objectForInfoDictionaryKey:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;
+- (id)objectsForInfoDictionaryKeys:(id)arg1;
 - (void)setLocalizedShortName:(id)arg1;
 - (void)setPropertyListCachingStrategy:(unsigned long long)arg1;
 - (id)uniqueIdentifier;

@@ -10,7 +10,7 @@
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/GEOTileServerProxyDelegate-Protocol.h>
 
-@class GEOTileLoaderConfiguration, GEOTilePool, GEOTileServerProxy, NSMutableArray, NSMutableSet, NSObject, NSString;
+@class GEOTileLoaderConfiguration, GEOTileLoaderUsage, GEOTilePool, GEOTileServerProxy, NSMutableArray, NSMutableSet, NSObject, NSString;
 @protocol GEOTileLoaderInternalDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -35,12 +35,9 @@ __attribute__((visibility("hidden")))
     id<GEOTileLoaderInternalDelegate> _internalDelegate;
     NSObject<OS_dispatch_queue> *_internalDelegateQ;
     GEOTileLoaderConfiguration *_config;
-    NSObject<OS_dispatch_queue> *_usageIsolation;
-    struct unordered_map<_GEOTileKey, UsageData, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<std::__1::pair<const _GEOTileKey, UsageData>>> _usageData;
-    struct unique_ptr<geo::DispatchTimer, std::__1::default_delete<geo::DispatchTimer>> _usageTimer;
-    BOOL _isUsageTimerScheduled;
     int _rollingBatchId;
     struct deque<ErrorInfo, std::__1::allocator<ErrorInfo>> _recentErrors;
+    GEOTileLoaderUsage *_usage;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -58,11 +55,11 @@ __attribute__((visibility("hidden")))
 - (void)_loadedTile:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 info:(id)arg3;
 - (void)_loadedTileForLocalKey:(struct _GEOTileKey)arg1 preliminary:(BOOL)arg2 quickly:(BOOL)arg3 tileDecoder:(id)arg4 data:(id)arg5 disburseTile:(CDUnknownBlockType)arg6;
 - (void)_localeChanged:(id)arg1;
+- (void)_removeUsageDataForKey:(const struct _GEOTileKey *)arg1;
 - (void)_requestOnlineTiles;
 - (void)_tileEditionChanged:(id)arg1;
 - (void)_timerFired;
 - (void)_updateNetworkActive;
-- (void)_usageTimerFired;
 - (void)beginPreloadSessionOfSize:(unsigned long long)arg1 forClient:(id)arg2 exclusive:(BOOL)arg3;
 - (id)cachedTileForKey:(const struct _GEOTileKey *)arg1;
 - (void)calculateFreeableSizeWithCallbackQ:(id)arg1 finished:(CDUnknownBlockType)arg2;

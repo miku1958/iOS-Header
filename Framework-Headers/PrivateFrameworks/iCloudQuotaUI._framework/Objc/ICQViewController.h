@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 + (BOOL)supportsPageClassIdentifier:(id)arg1;
++ (Class)viewControllerClassForPageClassIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

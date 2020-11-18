@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSMutableSet *genericItems; // @synthesize genericItems=_genericItems;
 
 - (void).cxx_destruct;
+- (BOOL)_supportsCreatingAccessoryItemForAccessory:(id)arg1;
 - (id)initWithHome:(id)arg1;
 - (id)invalidationReasons;
 - (id)items;

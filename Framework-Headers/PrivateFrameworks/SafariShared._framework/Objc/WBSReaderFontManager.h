@@ -15,7 +15,7 @@
 }
 
 @property (readonly) NSArray *fonts;
-@property (readonly) NSString *languageTag; // @synthesize languageTag=_languageTag;
+@property (readonly, copy) NSString *languageTag; // @synthesize languageTag=_languageTag;
 
 - (void).cxx_destruct;
 - (id)defaultFontForLanguageTag:(id)arg1;

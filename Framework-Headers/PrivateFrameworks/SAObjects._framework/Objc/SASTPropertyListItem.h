@@ -8,17 +8,19 @@
 
 #import <SAObjects/SASTTemplateItem-Protocol.h>
 
-@class NSArray, NSString, SAUIDecoratedText;
+@class NSArray, NSString, SAUIDecoratedText, SAUINanoImageResource;
 
 @interface SASTPropertyListItem : AceObject <SASTTemplateItem>
 {
 }
 
+@property (copy, nonatomic) NSString *alignment;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) SAUIDecoratedText *decoratedTitle;
 @property (copy, nonatomic) NSArray *decoratedValues;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SAUINanoImageResource *imageResource;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSArray *values;

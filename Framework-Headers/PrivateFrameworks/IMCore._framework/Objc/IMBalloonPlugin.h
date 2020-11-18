@@ -58,6 +58,7 @@
 - (id)initWithBundle:(id)arg1;
 - (void)insertDataSource:(id)arg1 forGUID:(id)arg2;
 - (void)moveController:(id)arg1 toReusePoolFromChatItem:(id)arg2;
+- (void)removeController:(id)arg1 forChatItem:(id)arg2;
 - (BOOL)supportsControllerReuse;
 - (void)unloadBundle;
 

@@ -16,7 +16,7 @@
 @property (weak, nonatomic) id<MCDErrorViewDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
-- (id)initWithFrame:(struct CGRect)arg1 title:(id)arg2 buttonText:(id)arg3;
+- (id)initWithTitle:(id)arg1 buttonText:(id)arg2;
 - (void)retryButtonPressed:(id)arg1;
 
 @end

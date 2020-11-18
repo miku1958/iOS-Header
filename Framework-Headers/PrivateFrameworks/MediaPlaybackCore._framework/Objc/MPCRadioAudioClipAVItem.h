@@ -14,6 +14,8 @@
 - (id)initWithAudioClip:(id)arg1;
 - (BOOL)isLikedStateEnabled;
 - (void)loadAssetAndPlayerItem;
+- (long long)rtcReportingAssetType;
+- (id)rtcReportingServiceIdentifier;
 - (BOOL)supportsSkip;
 
 @end

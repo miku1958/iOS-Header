@@ -28,7 +28,7 @@
 }
 
 @property (nonatomic) struct CGPoint anchorPoint;
-@property (copy, nonatomic) NSDictionary *attributeValues;
+@property (copy, nonatomic) NSDictionary *attributeValues; // @dynamic attributeValues;
 @property (nonatomic) long long blendMode;
 @property (strong, nonatomic) UIColor *color;
 @property (nonatomic) double colorBlendFactor;
@@ -84,6 +84,7 @@
 - (void)setTileGroupWithoutUpdate:(id)arg1 tileDefinition:(id)arg2 forColumn:(unsigned long long)arg3 row:(unsigned long long)arg4;
 - (void)setTilesFromArray:(unsigned int *)arg1;
 - (void)setTilesFromArray:(unsigned int *)arg1 fromColumn:(unsigned long long)arg2 row:(unsigned long long)arg3 forWidth:(unsigned long long)arg4 height:(unsigned long long)arg5;
+- (void)setValue:(id)arg1 forAttributeNamed:(id)arg2;
 - (BOOL)shouldUnarchiveTileSet;
 - (unsigned long long)tileColumnIndexFromPosition:(struct CGPoint)arg1;
 - (id)tileDefinitionAtColumn:(unsigned long long)arg1 row:(unsigned long long)arg2;
@@ -93,6 +94,7 @@
 - (void)updateTileDefinitionWithoutAutomappingAtX:(unsigned long long)arg1 y:(unsigned long long)arg2;
 - (void)updateTileGroupsAtX:(unsigned long long)arg1 y:(unsigned long long)arg2;
 - (void)validateAllTiles;
+- (id)valueForAttributeNamed:(id)arg1;
 
 @end
 

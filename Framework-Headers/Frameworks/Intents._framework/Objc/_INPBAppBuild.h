@@ -23,7 +23,6 @@
 @property (readonly, nonatomic) BOOL hasBuildId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

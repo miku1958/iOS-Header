@@ -59,10 +59,9 @@ __attribute__((visibility("hidden")))
 - (id)readerURL;
 - (id)scrollPositionInformation;
 - (void)setReaderFont:(id)arg1;
-- (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(id)arg2 userVisibleWidth:(double)arg3 isViewingArchive:(BOOL)arg4;
+- (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(id)arg2 isViewingArchive:(BOOL)arg3;
 - (void)setReaderLanguageTag:(id)arg1;
 - (void)setReaderTheme:(id)arg1;
-- (void)setReaderUserVisibleWidth:(double)arg1;
 - (BOOL)shouldCreateArticleFinder;
 - (void)stopLoadingNextPage;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;

@@ -6,12 +6,17 @@
 
 #import <PhotosUI/PUSettings.h>
 
-__attribute__((visibility("hidden")))
 @interface PUPerformanceDiagnosticsSettings : PUSettings
 {
     BOOL _shouldTracePerformance;
+    double _scrollTestRampUpDuration;
+    double _scrollTestCPUWarmupDuration;
+    double _scrollTestCPUSustainDuration;
 }
 
+@property (nonatomic) double scrollTestCPUSustainDuration; // @synthesize scrollTestCPUSustainDuration=_scrollTestCPUSustainDuration;
+@property (nonatomic) double scrollTestCPUWarmupDuration; // @synthesize scrollTestCPUWarmupDuration=_scrollTestCPUWarmupDuration;
+@property (nonatomic) double scrollTestRampUpDuration; // @synthesize scrollTestRampUpDuration=_scrollTestRampUpDuration;
 @property (nonatomic) BOOL shouldTracePerformance; // @synthesize shouldTracePerformance=_shouldTracePerformance;
 
 + (id)settingsControllerModule;

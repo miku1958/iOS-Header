@@ -10,7 +10,11 @@
 - (BOOL)ml_isAUCAudioKind;
 - (BOOL)ml_isAUCItemKind;
 - (BOOL)ml_isAUCVideoKind;
+- (BOOL)ml_isMovieKind;
 - (BOOL)ml_isMusicItemKind;
+- (BOOL)ml_isMusicSongKind;
 - (BOOL)ml_isMusicVideoKind;
+- (BOOL)ml_isTVShowKind;
+- (BOOL)ml_isVideoKind;
 @end
 

@@ -6,15 +6,14 @@
 
 #import <PhotosUI/PUTilingLayout.h>
 
-@class NSMutableDictionary;
-
 @interface PUSectionedTilingLayout : PUTilingLayout
 {
     long long _numberOfSections;
-    NSMutableDictionary *_sectionInfos;
+    struct _PUSectionedTilingLayoutSectionInfo *_sectionInfos;
     struct _NSRange _computedSections;
     long long _seedSection;
     struct CGPoint _seedSectionOrigin;
+    struct _PUSectionedTilingLayoutSectionInfo *_zeroedSectionInfo;
     BOOL _leftToRight;
     struct CGSize _interSectionSpacing;
 }
@@ -23,17 +22,18 @@
 @property (nonatomic) struct CGSize interSectionSpacing; // @synthesize interSectionSpacing=_interSectionSpacing;
 @property (nonatomic) BOOL leftToRight; // @synthesize leftToRight=_leftToRight;
 
-- (void).cxx_destruct;
 - (void)_computeSeedSectionIfNeeded;
 - (void)_ensureComputedSectionsHaveBeenSeeded;
 - (void)_invalidateNumberOfSections;
+- (void)_markAllSectionInfosInvalid;
 - (long long)_numberOfSections;
 - (BOOL)_scrollsHorizontallyNotVertically;
-- (id)_sectionInfoForSection:(long long)arg1;
+- (struct _PUSectionedTilingLayoutSectionInfo *)_sectionInfoForSection:(long long)arg1;
 - (void)addLayoutInfosForTilesInRect:(struct CGRect)arg1 section:(long long)arg2 toSet:(id)arg3;
 - (struct CGRect)boundsForSection:(long long)arg1;
 - (void)computeSectionsInRect:(struct CGRect)arg1;
 - (struct CGRect)contentBounds;
+- (void)dealloc;
 - (id)init;
 - (void)invalidateLayoutForUpdateWithItems:(id)arg1;
 - (void)invalidateSectionInfos;

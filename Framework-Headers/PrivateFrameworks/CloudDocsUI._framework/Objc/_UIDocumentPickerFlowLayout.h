@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)canBeEdited;
 - (struct CGSize)collectionViewContentSize;
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 
 @end
 

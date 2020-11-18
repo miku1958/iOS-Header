@@ -18,6 +18,8 @@
     int _articleType;
     NSData *_articleViewingSessionId;
     int _backendArticleVersion;
+    int _countOfImagesExposed;
+    int _countOfImagesInGallery;
     int _feedCellSection;
     NSString *_feedId;
     int _feedType;
@@ -42,6 +44,8 @@
         unsigned int personalizationTreatmentId:1;
         unsigned int articleType:1;
         unsigned int backendArticleVersion:1;
+        unsigned int countOfImagesExposed:1;
+        unsigned int countOfImagesInGallery:1;
         unsigned int feedCellSection:1;
         unsigned int feedType:1;
         unsigned int galleryType:1;
@@ -61,6 +65,8 @@
 @property (nonatomic) int articleType; // @synthesize articleType=_articleType;
 @property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
 @property (nonatomic) int backendArticleVersion; // @synthesize backendArticleVersion=_backendArticleVersion;
+@property (nonatomic) int countOfImagesExposed; // @synthesize countOfImagesExposed=_countOfImagesExposed;
+@property (nonatomic) int countOfImagesInGallery; // @synthesize countOfImagesInGallery=_countOfImagesInGallery;
 @property (nonatomic) int feedCellSection; // @synthesize feedCellSection=_feedCellSection;
 @property (strong, nonatomic) NSString *feedId; // @synthesize feedId=_feedId;
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
@@ -72,6 +78,8 @@
 @property (nonatomic) BOOL hasArticleType;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
 @property (nonatomic) BOOL hasBackendArticleVersion;
+@property (nonatomic) BOOL hasCountOfImagesExposed;
+@property (nonatomic) BOOL hasCountOfImagesInGallery;
 @property (nonatomic) BOOL hasFeedCellSection;
 @property (readonly, nonatomic) BOOL hasFeedId;
 @property (nonatomic) BOOL hasFeedType;

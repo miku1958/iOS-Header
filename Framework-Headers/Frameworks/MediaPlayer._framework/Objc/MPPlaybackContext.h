@@ -21,6 +21,7 @@
     NSString *_requestingBundleVersion;
     NSString *_playActivityFeatureName;
     NSData *_playActivityRecommendationData;
+    NSString *_siriReferenceIdentifier;
 }
 
 @property (copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
@@ -31,6 +32,7 @@
 @property (nonatomic) BOOL shouldRestartPlayback; // @synthesize shouldRestartPlayback=_shouldRestartPlayback;
 @property (nonatomic) BOOL shouldStartPlayback; // @synthesize shouldStartPlayback=_shouldStartPlayback;
 @property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
+@property (copy, nonatomic) NSString *siriReferenceIdentifier; // @synthesize siriReferenceIdentifier=_siriReferenceIdentifier;
 @property (nonatomic) long long startIndex; // @synthesize startIndex=_startIndex;
 
 + (Class)queueFeederClass;

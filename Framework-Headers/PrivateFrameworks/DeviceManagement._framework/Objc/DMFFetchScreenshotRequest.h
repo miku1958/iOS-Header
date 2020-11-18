@@ -6,17 +6,22 @@
 
 #import <Catalyst/CATTaskRequest.h>
 
+@class NSString;
+
 @interface DMFFetchScreenshotRequest : CATTaskRequest
 {
     unsigned long long _maxWidth;
     unsigned long long _maxHeight;
+    NSString *_sessionToken;
 }
 
 @property (nonatomic) unsigned long long maxHeight; // @synthesize maxHeight=_maxHeight;
 @property (nonatomic) unsigned long long maxWidth; // @synthesize maxWidth=_maxWidth;
+@property (copy, nonatomic) NSString *sessionToken; // @synthesize sessionToken=_sessionToken;
 
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

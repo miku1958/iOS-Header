@@ -66,6 +66,7 @@
     BOOL _userPrefersUncheckedCyrillicLanguage;
     BOOL _hasUpdatedDataBundleLanguages;
     BOOL _shouldClearFoundNames;
+    BOOL _automaticTextCompletionCollapsed;
 }
 
 - (void)_addGuessesForWordBuffer:(char *)arg1 length:(unsigned long long)arg2 language:(id)arg3 connection:(struct _PR_DB_IO *)arg4 sender:(id)arg5 minAutocorrectionLength:(unsigned long long)arg6 previousLetter:(unsigned short)arg7 nextLetter:(unsigned short)arg8 basicOnly:(BOOL)arg9 toGuesses:(id)arg10;
@@ -171,6 +172,7 @@
 - (id)spellServer:(id)arg1 alternativesForPinyinInputString:(id)arg2;
 - (id)spellServer:(id)arg1 alternativesForPinyinInputString:(id)arg2 language:(id)arg3;
 - (BOOL)spellServer:(id)arg1 canChangeCaseOfFirstLetterInString:(id)arg2 toUpperCase:(BOOL)arg3 language:(id)arg4;
+- (id)spellServer:(id)arg1 candidatesForSelectedRange:(struct _NSRange)arg2 inString:(id)arg3 offset:(unsigned long long)arg4 types:(unsigned long long)arg5 options:(id)arg6 orthography:(id)arg7;
 - (struct _NSRange)spellServer:(id)arg1 checkGrammarInString:(id)arg2 language:(id)arg3 details:(id *)arg4;
 - (struct _NSRange)spellServer:(id)arg1 checkGrammarInString:(id)arg2 range:(struct _NSRange)arg3 language:(id)arg4 orthography:(id)arg5 mutableResults:(id)arg6 offset:(unsigned long long)arg7 details:(id *)arg8;
 - (id)spellServer:(id)arg1 checkString:(id)arg2 offset:(unsigned long long)arg3 types:(unsigned long long)arg4 options:(id)arg5 orthography:(id)arg6 wordCount:(long long *)arg7;
@@ -183,6 +185,7 @@
 - (struct _NSRange)spellServer:(id)arg1 findMisspelledWordInString:(id)arg2 language:(id)arg3 wordCount:(long long *)arg4 countOnly:(BOOL)arg5 correction:(id *)arg6;
 - (struct _NSRange)spellServer:(id)arg1 findMisspelledWordInString:(id)arg2 languages:(id)arg3 wordCount:(long long *)arg4 countOnly:(BOOL)arg5 correction:(id *)arg6;
 - (struct _NSRange)spellServer:(id)arg1 findMisspelledWordInString:(id)arg2 range:(struct _NSRange)arg3 languages:(id)arg4 topLanguages:(id)arg5 orthography:(id)arg6 checkOrthography:(BOOL)arg7 mutableResults:(id)arg8 offset:(unsigned long long)arg9 autocorrect:(BOOL)arg10 onlyAtInsertionPoint:(BOOL)arg11 initialCapitalize:(BOOL)arg12 autocapitalize:(BOOL)arg13 keyEventArray:(id)arg14 appIdentifier:(id)arg15 selectedRangeValue:(id)arg16 wordCount:(long long *)arg17 countOnly:(BOOL)arg18 correction:(id *)arg19;
+- (id)spellServer:(id)arg1 generateCandidatesForSelectedRange:(struct _NSRange)arg2 inString:(id)arg3 offset:(unsigned long long)arg4 types:(unsigned long long)arg5 options:(id)arg6 orthography:(id)arg7;
 - (id)spellServer:(id)arg1 modificationsForPinyinInputString:(id)arg2;
 - (id)spellServer:(id)arg1 modificationsForPinyinInputString:(id)arg2 geometryModelData:(id)arg3;
 - (id)spellServer:(id)arg1 prefixesForPinyinInputString:(id)arg2;

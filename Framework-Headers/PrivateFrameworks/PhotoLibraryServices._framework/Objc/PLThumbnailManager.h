@@ -33,6 +33,7 @@
 + (int)_configurationThumbnailFormat;
 + (int)_configurationThumbnailVersion;
 + (id)_fetchCameraPreviewWellMetadata;
++ (void)_recordRebuildThumbnailsAttempt;
 + (void)_refetchAndSaveCameraPreviewWellImage;
 + (void)_saveCameraPreviewWellImage:(struct CGImage *)arg1 assetUUID:(id)arg2;
 + (int)_supportedThumbnailFormatIDFromGeneralFormatID:(int)arg1;

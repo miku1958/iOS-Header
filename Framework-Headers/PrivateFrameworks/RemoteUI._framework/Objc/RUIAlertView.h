@@ -25,13 +25,13 @@
 @property (weak, nonatomic) RUIObjectModel<RUIAlertViewDelegate> *objectModel; // @synthesize objectModel=_objectModel;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
++ (void)_enableTestMode;
 - (void).cxx_destruct;
-- (void)addButtonWithTitle:(id)arg1 URL:(id)arg2 destructive:(BOOL)arg3 attributes:(id)arg4;
+- (void)addButtonWithTitle:(id)arg1 URL:(id)arg2 style:(long long)arg3 attributes:(id)arg4;
 - (id)alertController;
 - (void)dealloc;
-- (id)init;
+- (id)initWithAttributes:(id)arg1 parent:(id)arg2;
 - (void)runAlertInController:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)setCancelButtonTitle:(id)arg1;
 
 @end
 

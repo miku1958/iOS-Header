@@ -26,8 +26,9 @@
 @property (readonly, nonatomic) HMTrigger *trigger; // @synthesize trigger=_trigger;
 
 - (void).cxx_destruct;
-- (id)_descriptionForTrigger:(id)arg1;
+- (id)_descriptionForTrigger:(id)arg1 effectivelyEnabled:(BOOL)arg2;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)_uniqueServiceGroupForServices:(id)arg1;
 - (id)init;
 - (id)initWithHome:(id)arg1 trigger:(id)arg2;
 

@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCCloudContext, FCDateRange, FCFeedItemFeature, NSArray;
+@class FCCloudContext, FCDateRange, FCFeedItemFeature, NSArray, NSDictionary;
 
 @interface FCMyArticlesSearchOperation : FCOperation
 {
@@ -20,6 +20,7 @@
     FCDateRange *_dateRange;
     CDUnknownBlockType _searchCompletionHandler;
     NSArray *_resultFeedItems;
+    NSDictionary *_resultFeedContextByFeedID;
 }
 
 @property (nonatomic) BOOL cachedOnly; // @synthesize cachedOnly=_cachedOnly;
@@ -29,6 +30,7 @@
 @property (copy, nonatomic) FCFeedItemFeature *feature; // @synthesize feature=_feature;
 @property (nonatomic) BOOL permitStaleSubscriptions; // @synthesize permitStaleSubscriptions=_permitStaleSubscriptions;
 @property (nonatomic) BOOL purchasedChannelsOnly; // @synthesize purchasedChannelsOnly=_purchasedChannelsOnly;
+@property (copy) NSDictionary *resultFeedContextByFeedID; // @synthesize resultFeedContextByFeedID=_resultFeedContextByFeedID;
 @property (strong, nonatomic) NSArray *resultFeedItems; // @synthesize resultFeedItems=_resultFeedItems;
 @property (copy, nonatomic) CDUnknownBlockType searchCompletionHandler; // @synthesize searchCompletionHandler=_searchCompletionHandler;
 @property (nonatomic) BOOL unreadOnly; // @synthesize unreadOnly=_unreadOnly;

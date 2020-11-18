@@ -12,6 +12,7 @@
 
 @interface MSASAlbum : NSObject <NSCopying>
 {
+    BOOL _ownerIsWhitelisted;
     BOOL _isFamilySharedAlbum;
     int _relationshipState;
     NSString *_ownerEmail;
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) NSString *ownerEmail; // @synthesize ownerEmail=_ownerEmail;
 @property (strong, nonatomic) NSString *ownerFirstName; // @synthesize ownerFirstName=_ownerFirstName;
 @property (strong, nonatomic) NSString *ownerFullName; // @synthesize ownerFullName=_ownerFullName;
+@property (nonatomic) BOOL ownerIsWhitelisted; // @synthesize ownerIsWhitelisted=_ownerIsWhitelisted;
 @property (strong, nonatomic) NSString *ownerLastName; // @synthesize ownerLastName=_ownerLastName;
 @property (strong, nonatomic) NSString *ownerPersonID; // @synthesize ownerPersonID=_ownerPersonID;
 @property (strong, nonatomic) NSString *publicURLString; // @synthesize publicURLString=_publicURLString;

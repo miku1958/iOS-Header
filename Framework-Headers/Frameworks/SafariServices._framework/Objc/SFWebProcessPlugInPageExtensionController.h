@@ -7,24 +7,21 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary, WKWebProcessPlugInBrowserContextController, _WKRemoteObjectInterface;
-@protocol SFSafariExtensionEventsListener;
 
 __attribute__((visibility("hidden")))
 @interface SFWebProcessPlugInPageExtensionController : NSObject
 {
     WKWebProcessPlugInBrowserContextController *_browserContextController;
     _WKRemoteObjectInterface *_extensionControllerInterface;
-    id<SFSafariExtensionEventsListener> _safariExtensionEventsListener;
     NSMutableDictionary *_extensionToScriptWorldMap;
 }
 
 - (void).cxx_destruct;
 - (void)_clearExtensionControllerInterface;
-- (id)_extensionEventListenerProxy;
 - (void)_setUpExtensionControllerInterface;
 - (void)clearExtensionScriptWorlds;
 - (void)dealloc;
-- (void)evaluateJavaScriptForSharingExtension:(id)arg1 javaScript:(id)arg2 replyIdentifier:(id)arg3;
+- (void)evaluateJavaScriptForSharingExtension:(id)arg1 javaScript:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)finalizeJavaScriptForSharingExtension:(id)arg1 arguments:(id)arg2;
 - (id)initWithBrowserContextController:(id)arg1;
 

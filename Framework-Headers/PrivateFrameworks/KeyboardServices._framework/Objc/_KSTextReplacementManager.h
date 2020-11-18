@@ -41,6 +41,7 @@
 
 + (id)textReplacementStoreWithTestDirectory:(id)arg1 withDelegate:(id)arg2 forceMigration:(BOOL)arg3 forceCloudKitSync:(BOOL)arg4;
 - (void).cxx_destruct;
+- (void)_migrateDevice;
 - (void)_migrateEntriesSinceDate:(id)arg1 repeatCount:(unsigned long long)arg2;
 - (void)accountDidChange:(id)arg1;
 - (void)checkForMigration;
@@ -48,7 +49,7 @@
 - (BOOL)deviceDidMigrate;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithDirectoryPath:(id)arg1;
-- (id)initWithDirectoryPath:(id)arg1 forceMigration:(BOOL)arg2 forceCloudKitSync:(BOOL)arg3;
+- (id)initWithDirectoryPath:(id)arg1 ignoreMigrationBatchCheck:(BOOL)arg2 forceCloudKitSync:(BOOL)arg3;
 - (void)migrateLegacyStore;
 - (void)migrateLocallyCheckCompatibility:(BOOL)arg1;
 - (double)minimumUptimeRemaining;
@@ -58,6 +59,7 @@
 - (void)recordSyncStatus;
 - (void)requestSyncWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)resetMigrationState;
+- (void)respondToMigrationCompatibilityChange:(id)arg1;
 - (void)respondToMigrationCompletion;
 - (BOOL)shouldMigrateToCloudKit;
 

@@ -28,12 +28,18 @@
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
+- (id)domain;
 - (id)initWithRadioType:(long long)arg1 frequency:(id)arg2 stationName:(id)arg3 channel:(id)arg4 presetNumber:(id)arg5;
+- (id)parametersByName;
 - (void)setChannel:(id)arg1;
+- (void)setDomain:(id)arg1;
 - (void)setFrequency:(id)arg1;
+- (void)setParametersByName:(id)arg1;
 - (void)setPresetNumber:(id)arg1;
 - (void)setRadioType:(long long)arg1;
 - (void)setStationName:(id)arg1;
+- (void)setVerb:(id)arg1;
+- (id)verb;
 
 @end
 

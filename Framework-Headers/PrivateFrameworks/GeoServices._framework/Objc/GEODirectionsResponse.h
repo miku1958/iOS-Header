@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAlert, GEOETAServiceResponseSummary, GEOPBTransitRoutingIncidentMessage, GEORouteDisplayHints, GEOStyleAttributes, GEOTransitDecoderData, NSData, NSMutableArray, NSString;
+@class GEOAlert, GEOETAServiceResponseSummary, GEOPBTransitRoutingIncidentMessage, GEOPDDatasetABStatus, GEORouteDisplayHints, GEOStyleAttributes, GEOTransitDecoderData, NSData, NSMutableArray, NSString;
 
 @interface GEODirectionsResponse : PBCodable <NSCopying>
 {
@@ -18,6 +18,7 @@
     struct GEOProblemDetail *_problemDetails;
     unsigned long long _problemDetailsCount;
     unsigned long long _problemDetailsSpace;
+    GEOPDDatasetABStatus *_datasetAbStatus;
     GEOTransitDecoderData *_decoderData;
     NSData *_directionsResponseID;
     GEORouteDisplayHints *_displayHints;
@@ -53,6 +54,7 @@
     } _has;
 }
 
+@property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
 @property (nonatomic) unsigned long long debugLatencyMs;
 @property (strong, nonatomic) GEOTransitDecoderData *decoderData; // @synthesize decoderData=_decoderData;
 @property (strong, nonatomic) NSData *directionsResponseID; // @synthesize directionsResponseID=_directionsResponseID;
@@ -60,6 +62,7 @@
 @property (strong, nonatomic) GEOETAServiceResponseSummary *etaServiceSummary;
 @property (strong, nonatomic) GEOAlert *failureAlert; // @synthesize failureAlert=_failureAlert;
 @property (strong, nonatomic) NSData *graphV3; // @synthesize graphV3=_graphV3;
+@property (readonly, nonatomic) BOOL hasDatasetAbStatus;
 @property (nonatomic) BOOL hasDebugLatencyMs;
 @property (readonly, nonatomic) BOOL hasDecoderData;
 @property (readonly, nonatomic) BOOL hasDirectionsResponseID;

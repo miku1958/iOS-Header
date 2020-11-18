@@ -36,7 +36,6 @@
     NSLayoutConstraint *_attributeToolbarViewControllerConstraint;
 }
 
-@property (readonly, nonatomic) double additionalOffset;
 @property (strong, nonatomic) UIView *attributeToolbarContainer; // @synthesize attributeToolbarContainer=_attributeToolbarContainer;
 @property (strong, nonatomic) AKFloatingAttributePickerViewController *attributeToolbarViewController; // @synthesize attributeToolbarViewController=_attributeToolbarViewController;
 @property (strong, nonatomic) NSLayoutConstraint *attributeToolbarViewControllerConstraint; // @synthesize attributeToolbarViewControllerConstraint=_attributeToolbarViewControllerConstraint;
@@ -44,6 +43,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double heightIncludingAdditionalVisibleBars;
 @property (strong, nonatomic) UIBarButtonItem *lineStyleButton; // @synthesize lineStyleButton=_lineStyleButton;
 @property (strong, nonatomic) AKLineStylesViewController *lineStylesViewController; // @synthesize lineStylesViewController=_lineStylesViewController;
 @property (strong, nonatomic) UIGestureRecognizer *longPressGestureRecognizer; // @synthesize longPressGestureRecognizer=_longPressGestureRecognizer;
@@ -61,6 +61,7 @@
 @property (strong, nonatomic) UIBarButtonItem *textStyleButton; // @synthesize textStyleButton=_textStyleButton;
 @property (strong, nonatomic) UIBarButtonItem *undoButton; // @synthesize undoButton=_undoButton;
 @property (strong, nonatomic) AKUndoViewController *undoPopoverViewController; // @synthesize undoPopoverViewController=_undoPopoverViewController;
+@property (readonly, nonatomic) double visibleHeightOfAttributeBar;
 
 - (void).cxx_destruct;
 - (long long)_attributeTagForCurrentSelectionState;

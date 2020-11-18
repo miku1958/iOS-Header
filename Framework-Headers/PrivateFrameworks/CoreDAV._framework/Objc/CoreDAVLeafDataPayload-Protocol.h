@@ -13,7 +13,9 @@
 
 @property (readonly, nonatomic) NSArray *childrenOrder;
 @property (readonly, nonatomic) NSData *dataPayload;
+@property (strong, nonatomic) NSURL *destinationURL;
 @property (strong, nonatomic) NSURL *serverID;
+@property (strong, nonatomic) NSURL *sourceURL;
 @property (readonly, nonatomic) NSString *syncKey;
 
 - (id)initWithURL:(NSURL *)arg1 eTag:(NSString *)arg2 dataPayload:(NSData *)arg3 inContainerWithURL:(NSURL *)arg4 withAccountInfoProvider:(id<CoreDAVAccountInfoProvider>)arg5;

@@ -17,6 +17,7 @@
     NSArray *_offers;
 }
 
+@property (readonly, nonatomic) BOOL isAvailableForAnonymousDownload;
 @property (copy, nonatomic) NSArray *offers; // @synthesize offers=_offers;
 @property (copy, nonatomic) NSURL *previewURL; // @synthesize previewURL=_previewURL;
 @property (copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;

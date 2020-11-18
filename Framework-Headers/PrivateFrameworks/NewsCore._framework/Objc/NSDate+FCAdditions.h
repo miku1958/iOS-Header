@@ -12,8 +12,10 @@
 @property (readonly) double fc_timeIntervalUntilNow;
 
 + (id)dateFromString:(id)arg1 possibleFormats:(id)arg2;
++ (id)dateFromStringWithHTTPHeaderFormat:(id)arg1;
 + (id)dateFromStringWithISO8601Format:(id)arg1;
 + (id)fc_dateWithMillisecondsTimeIntervalSince1970:(unsigned long long)arg1;
++ (id)fc_earlierDateAllowingNilWithDate:(id)arg1 andDate:(id)arg2;
 - (id)fc_dateBySubtractingTimeInterval:(double)arg1;
 - (BOOL)fc_isEarlierThan:(id)arg1;
 - (BOOL)fc_isLaterThan:(id)arg1;

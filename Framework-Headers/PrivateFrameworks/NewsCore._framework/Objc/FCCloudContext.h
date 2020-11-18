@@ -11,13 +11,12 @@
 #import <NewsCore/FCPrivateDataContext-Protocol.h>
 #import <NewsCore/FCTestingContext-Protocol.h>
 
-@class FCAppConfiguration, FCArticleController, FCAssetManager, FCClientEndpointConnection, FCCommandQueue, FCFeedManager, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCNotificationController, FCNotificationsEndpointConnection, FCPersonalizationData, FCPrivateChannelMembershipController, FCPurchaseController, FCReadingHistory, FCReadingList, FCSubscriptionController, FCSubscriptionList, FCTagController, FCTagSettings, FCUserInfo, NSString;
+@class FCAppConfiguration, FCArticleController, FCAssetManager, FCClientEndpointConnection, FCCommandQueue, FCFeedManager, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCNotificationController, FCNotificationsEndpointConnection, FCPersonalizationData, FCPrivateChannelMembershipController, FCPurchaseController, FCReadingHistory, FCReadingList, FCSubscriptionController, FCSubscriptionList, FCTagController, FCTagSettings, FCUserInfo, NSString, NSURL;
 @protocol FCContentContext, FCContentContextInternal, FCFlintHelper, FCPrivateDataContext, FCPrivateDataContextInternal, FCPushNotificationHandling;
 
 @interface FCCloudContext : NSObject <FCTestingContext, FCContentContext, FCPrivateDataContext, FCCacheFlushing>
 {
     BOOL _deviceIsiPad;
-    BOOL _runningPPT;
     FCSubscriptionController *_subscriptionController;
     FCFeedManager *_feedManager;
     FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
@@ -34,6 +33,7 @@
 
 @property (readonly, nonatomic) FCAppConfiguration *appConfiguration;
 @property (readonly, nonatomic) FCArticleController *articleController;
+@property (readonly, nonatomic) NSURL *assetCacheDirectoryURL;
 @property (readonly, nonatomic) FCAssetManager *assetManager;
 @property (strong, nonatomic) id<FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property (readonly, copy, nonatomic) NSString *contentDirectory;
@@ -63,20 +63,21 @@
 @property (readonly, nonatomic) FCPurchaseController *purchaseController; // @synthesize purchaseController=_purchaseController;
 @property (readonly, nonatomic) FCReadingHistory *readingHistory;
 @property (readonly, nonatomic) FCReadingList *readingList;
-@property (nonatomic, getter=isRunningPPT) BOOL runningPPT; // @synthesize runningPPT=_runningPPT;
 @property (readonly, nonatomic) FCSubscriptionController *subscriptionController; // @synthesize subscriptionController=_subscriptionController;
 @property (readonly, nonatomic) FCSubscriptionList *subscriptionList;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *supportedContentStoreFrontID;
 @property (readonly, nonatomic) FCTagController *tagController;
 @property (readonly, nonatomic) FCTagSettings *tagSettings;
 @property (readonly, nonatomic) FCUserInfo *userInfo;
+@property (readonly, nonatomic) NSURL *webArchiveCacheDirectoryURL;
 
 + (void)initialize;
 + (id)testingContext;
 - (void).cxx_destruct;
 - (void)clearCloudKitCaches;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
-- (id)fetchEndOfArticleDataForHeadline:(id)arg1 initialRelatedHeadlineCount:(unsigned long long)arg2 initialPublisherHeadlineCount:(unsigned long long)arg3 totalRelatedHeadlineCount:(unsigned long long)arg4 totalPublisherHeadlineCount:(unsigned long long)arg5 fetchRelatedHeadline:(BOOL)arg6 fetchAllTopics:(BOOL)arg7 completion:(CDUnknownBlockType)arg8;
+- (id)fetchEndOfArticleDataForHeadline:(id)arg1 initialRelatedHeadlineCount:(unsigned long long)arg2 initialPublisherHeadlineCount:(unsigned long long)arg3 totalRelatedHeadlineCount:(unsigned long long)arg4 totalPublisherHeadlineCount:(unsigned long long)arg5 fetchRelatedHeadline:(BOOL)arg6 fetchPublisherHeadlines:(BOOL)arg7 fetchAllTopics:(BOOL)arg8 completion:(CDUnknownBlockType)arg9;
 - (void)getCoverImageForFeed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initForTesting;

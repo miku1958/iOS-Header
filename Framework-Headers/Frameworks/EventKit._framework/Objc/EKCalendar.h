@@ -13,11 +13,13 @@
     struct CGColor *_color;
     BOOL _isMain;
     unsigned int _loadFlags;
+    unsigned long long _cachedJunkStatus;
 }
 
 @property (nonatomic) struct CGColor *CGColor;
 @property (readonly, nonatomic) unsigned long long allowedEntityTypes;
 @property (readonly, nonatomic) BOOL allowsContentModifications;
+@property (nonatomic) unsigned long long cachedJunkStatus; // @synthesize cachedJunkStatus=_cachedJunkStatus;
 @property (readonly, nonatomic) NSString *calendarIdentifier;
 @property (readonly, nonatomic, getter=isImmutable) BOOL immutable;
 @property (nonatomic) BOOL isDefaultSchedulingCalendar;
@@ -51,6 +53,7 @@
 - (void)clearInvitationStatus;
 - (id)colorString;
 - (BOOL)commit:(id *)arg1;
+- (BOOL)couldBeJunk;
 - (void)dealloc;
 - (id)description;
 - (id)digest;
@@ -101,6 +104,7 @@
 - (id)selfIdentityEmail;
 - (id)selfIdentityFirstName;
 - (id)selfIdentityLastName;
+- (id)sendersEmail;
 - (void)setAlarms:(id)arg1;
 - (void)setAllAlarms:(id)arg1;
 - (void)setAllowReminders:(BOOL)arg1;
@@ -114,6 +118,7 @@
 - (void)setInvitationStatus:(unsigned long long)arg1;
 - (void)setIsIgnoringEventAlerts:(BOOL)arg1;
 - (void)setIsIgnoringSharedCalendarNotifications:(BOOL)arg1;
+- (void)setIsJunk:(BOOL)arg1;
 - (void)setIsPublished:(BOOL)arg1;
 - (void)setOwnerIdentityAddress:(id)arg1;
 - (void)setOwnerIdentityDisplayName:(id)arg1;
@@ -144,6 +149,7 @@
 - (void)snoozeAlarm:(id)arg1 withLocation:(id)arg2 proximity:(long long)arg3;
 - (void)snoozeAlarm:(id)arg1 withTimeIntervalFromNow:(double)arg2;
 - (id)subcalAccountID;
+- (BOOL)supportsJunkReporting;
 - (id)symbolicColorName;
 - (id)syncHash;
 - (BOOL)validate:(id *)arg1;

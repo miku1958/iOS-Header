@@ -20,10 +20,12 @@
     BOOL _forceFullSizeDetailLabel;
     BOOL _activityIndicatorVisible;
     RUIWebContainerView *_webContainerView;
+    struct CGSize _imageSize;
 }
 
 @property (nonatomic) BOOL activityIndicatorVisible; // @synthesize activityIndicatorVisible=_activityIndicatorVisible;
 @property (nonatomic) BOOL forceFullSizeDetailLabel; // @synthesize forceFullSizeDetailLabel=_forceFullSizeDetailLabel;
+@property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property (nonatomic) BOOL leftAlignDetailLabel; // @synthesize leftAlignDetailLabel=_leftAlignDetailLabel;
 @property (nonatomic) long long remoteUIAccessoryType; // @synthesize remoteUIAccessoryType=_remoteUIAccessoryType;
 @property (strong, nonatomic) UIView *remoteUIAccessoryView; // @synthesize remoteUIAccessoryView=_remoteUIAccessoryView;
@@ -36,6 +38,7 @@
 - (id)_disclosureChevronImage:(BOOL)arg1;
 - (void)_setRemoteUIAccessoryType:(long long)arg1 withColor:(id)arg2;
 - (void)_showActivityIndicatorAccessory;
+- (id)detailLinkButton;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setDetailLinkText:(id)arg1 handler:(CDUnknownBlockType)arg2;

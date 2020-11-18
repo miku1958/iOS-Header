@@ -8,26 +8,29 @@
 
 #import <ContactsUICore/CNUIPRLikenessProvider-Protocol.h>
 
-@class NSData, NSString, PRLikeness;
+@class CNCache, NSData, NSString;
 
 @interface CNUIPRLikenessPhotoProvider : NSObject <CNUIPRLikenessProvider>
 {
     NSData *_originalPhotoData;
-    PRLikeness *_likeness;
+    CNCache *_cache;
 }
 
+@property (readonly, nonatomic) CNCache *cache; // @synthesize cache=_cache;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) PRLikeness *likeness; // @synthesize likeness=_likeness;
 @property (readonly, nonatomic) NSData *originalPhotoData; // @synthesize originalPhotoData=_originalPhotoData;
 @property (readonly) Class superclass;
 
 + (struct CGImage *)cgImageFromData:(id)arg1;
 - (void).cxx_destruct;
-- (id)_cnui_likeness;
+- (struct CGImage *)_cnui_imageForSize:(struct CGSize)arg1 scale:(double)arg2;
+- (id)_cnui_likenessForSize:(struct CGSize)arg1;
+- (id)_cnui_likenessForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (unsigned long long)_cnui_likenessType;
 - (id)initWithPhotoData:(id)arg1;
+- (struct CGImage *)renderImageForSize:(struct CGSize)arg1 scale:(double)arg2;
 
 @end
 

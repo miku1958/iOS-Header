@@ -102,6 +102,7 @@
 - (void)gridZoomTransitionDidFinish:(BOOL)arg1;
 - (void)handleLongPressGesture:(id)arg1;
 - (long long)imageDeliveryMode;
+- (struct CGSize)imageRequestItemSize;
 - (id)imageWithSize:(struct CGSize)arg1 forIndexPath:(id)arg2;
 - (id)initWithSpec:(id)arg1 zoomLevelManager:(id)arg2 zoomLevel:(unsigned long long)arg3;
 - (void)installGestureRecognizers;
@@ -120,6 +121,7 @@
 - (void)processDataSourceChange:(id)arg1;
 - (BOOL)pu_shouldActAsTabRootViewController;
 - (BOOL)px_isSnapBackDestination;
+- (void)reclaimCollectionView;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (BOOL)scrollViewShouldScrollToTop:(id)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;

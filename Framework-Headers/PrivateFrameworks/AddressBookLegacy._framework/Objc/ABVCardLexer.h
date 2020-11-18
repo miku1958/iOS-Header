@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSMutableData;
+@class ABVCardWatchdogTimer, NSArray, NSMutableData;
 
 @interface ABVCardLexer : NSObject
 {
@@ -18,6 +18,7 @@
     BOOL _unicode;
     int _errorCount;
     NSArray *_activeTokenSets;
+    ABVCardWatchdogTimer *_timer;
 }
 
 - (BOOL)_advancePastLineFoldingSequenceIfNeeded;
@@ -39,7 +40,7 @@
 - (void)dealloc;
 - (int)errorCount;
 - (void)finalize;
-- (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 watchdogTimer:(id)arg2;
 - (id)nextArraySeperatedByToken:(int)arg1 stoppingAt:(int)arg2 inEncoding:(unsigned long long)arg3;
 - (id)nextBase64Data;
 - (id)nextBase64Line:(BOOL *)arg1;

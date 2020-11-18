@@ -63,6 +63,7 @@
 
 + (id)createArbiterConnection;
 + (BOOL)enabled;
++ (id)serviceName;
 + (id)sharedRemoteKeyboards;
 + (BOOL)useSystemService;
 - (void)_performOnDistributedControllersExceptSelf:(CDUnknownBlockType)arg1;

@@ -24,9 +24,11 @@
 @property (readonly, nonatomic) NSString *language; // @synthesize language=_language;
 
 + (id)array:(id)arg1 orderedByPattern:(id)arg2;
++ (BOOL)isSimilarPrediction:(id)arg1 in:(id)arg2;
 + (id)languageContextsWithMetricsTracker:(id)arg1 asset:(id)arg2;
 + (id)orderingPatternFromString:(id)arg1;
 + (id)unsupportedLanguageContextWithMetricsTracker:(id)arg1;
++ (id)withoutSimilarPredictions:(id)arg1 limit:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (id)emotivePhrasesPredictionsFromMessages:(id)arg1;
 - (id)init;

@@ -9,27 +9,50 @@
 #import <Sharing/NSSecureCoding-Protocol.h>
 #import <Sharing/SFXPCInterface-Protocol.h>
 
-@class NSString, NSUUID, NSXPCConnection, SFDevice;
-@protocol OS_dispatch_queue;
+@class NSString, NSUUID, NSXPCConnection, NSXPCListenerEndpoint, SFDevice;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction;
 
 @interface SFSession : NSObject <NSSecureCoding, SFXPCInterface>
 {
-    BOOL _activated;
+    BOOL _activateCalled;
+    BOOL _activateInProgress;
+    BOOL _activateCompleted;
+    struct CryptoAEADPrivate *_encryptionReadAEAD;
+    unsigned char _encryptionReadNonce[12];
+    struct CryptoAEADPrivate *_encryptionWriteAEAD;
+    unsigned char _encryptionWriteNonce[12];
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
+    unsigned long long _heartbeatLastTicks;
+    NSObject<OS_dispatch_source> *_heartbeatTimer;
+    BOOL _heartbeatWaiting;
+    CDUnknownBlockType _pairSetupCompletion;
+    BOOL _pairSetupEnded;
+    unsigned int _pairSetupFlags;
+    struct PairingSessionPrivate *_pairSetupSession;
+    CDUnknownBlockType _pairVerifyCompletion;
+    BOOL _pairVerifyEnded;
+    unsigned int _pairVerifyFlags;
+    struct PairingSessionPrivate *_pairVerifySession;
     struct NSMutableDictionary *_requestQueue;
+    NSObject<OS_os_transaction> *_transaction;
     NSXPCConnection *_xpcCnx;
+    unsigned char _serviceType;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _errorHandler;
-    CDUnknownBlockType _eventMessageHandler;
     NSUUID *_identifier;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
     SFDevice *_peerDevice;
-    CDUnknownBlockType _requestMessageHandler;
+    CDUnknownBlockType _promptForPINHandler;
+    CDUnknownBlockType _receivedObjectHandler;
     NSString *_serviceIdentifier;
+    CDUnknownBlockType _eventMessageHandler;
+    CDUnknownBlockType _requestMessageHandler;
+    CDUnknownBlockType _receivedFrameHandler;
     CDUnknownBlockType _responseMessageInternalHandler;
     NSUUID *_serviceUUID;
+    NSXPCListenerEndpoint *_testListenerEndpoint;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
@@ -39,18 +62,36 @@
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (strong, nonatomic) SFDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
+@property (copy, nonatomic) CDUnknownBlockType promptForPINHandler; // @synthesize promptForPINHandler=_promptForPINHandler;
+@property (copy, nonatomic) CDUnknownBlockType receivedFrameHandler; // @synthesize receivedFrameHandler=_receivedFrameHandler;
+@property (copy, nonatomic) CDUnknownBlockType receivedObjectHandler; // @synthesize receivedObjectHandler=_receivedObjectHandler;
 @property (copy, nonatomic) CDUnknownBlockType requestMessageHandler; // @synthesize requestMessageHandler=_requestMessageHandler;
 @property (copy, nonatomic) CDUnknownBlockType responseMessageInternalHandler; // @synthesize responseMessageInternalHandler=_responseMessageInternalHandler;
 @property (copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
+@property (nonatomic) unsigned char serviceType; // @synthesize serviceType=_serviceType;
 @property (copy, nonatomic) NSUUID *serviceUUID; // @synthesize serviceUUID=_serviceUUID;
+@property (strong, nonatomic) NSXPCListenerEndpoint *testListenerEndpoint; // @synthesize testListenerEndpoint=_testListenerEndpoint;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_activated;
+- (void)_cleanup;
 - (void)_ensureXPCStarted;
+- (void)_hearbeatTimer;
 - (void)_interrupted;
 - (void)_invalidate;
 - (void)_invalidated;
+- (void)_pairSetup:(id)arg1 start:(BOOL)arg2;
+- (void)_pairSetupCompleted:(int)arg1;
+- (void)_pairSetupTryPIN:(id)arg1;
+- (void)_pairSetupWithFlags:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_pairVerify:(id)arg1 start:(BOOL)arg2;
+- (void)_pairVerifyCompleted:(int)arg1;
+- (void)_pairVerifyWithFlags:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_sendEncryptedObject:(id)arg1;
+- (void)_sessionReceivedEncryptedData:(id)arg1;
+- (void)_sessionReceivedUnencryptedData:(id)arg1 type:(unsigned char)arg2;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)description;
@@ -58,13 +99,21 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidate;
+- (void)pairSetupTryPIN:(id)arg1;
+- (void)pairSetupWithFlags:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)pairVerifyWithFlags:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendEvent:(id)arg1;
+- (void)sendFrameType:(unsigned char)arg1 data:(id)arg2;
+- (void)sendFrameType:(unsigned char)arg1 object:(id)arg2;
 - (void)sendRequest:(id)arg1;
 - (void)sendResponse:(id)arg1;
+- (void)sendWithFlags:(unsigned int)arg1 object:(id)arg2;
 - (void)sessionError:(id)arg1;
 - (void)sessionReceivedEvent:(id)arg1;
+- (void)sessionReceivedFrameType:(unsigned char)arg1 data:(id)arg2;
 - (void)sessionReceivedRequest:(id)arg1;
 - (void)sessionReceivedResponse:(id)arg1;
+- (int)setEncryptionReadKey:(const char *)arg1 readKeyLen:(unsigned long long)arg2 writeKey:(const char *)arg3 writeKeyLen:(unsigned long long)arg4;
 
 @end
 

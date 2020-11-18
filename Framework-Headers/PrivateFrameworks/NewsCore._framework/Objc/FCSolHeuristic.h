@@ -24,9 +24,9 @@
 @property (readonly, copy, nonatomic) CDUnknownBlockType utilityBlock; // @synthesize utilityBlock=_utilityBlock;
 
 - (void).cxx_destruct;
-- (double)computeScoreWithArticles:(id)arg1 tags:(id)arg2 articlesByTag:(id)arg3;
-- (id)fillGroupsWithArticles:(id)arg1 tags:(id)arg2 articlesByTag:(id)arg3 groupSizes:(id)arg4;
-- (id)initWithOption:(long long)arg1 minClusterSize:(long long)arg2 maxClusterSize:(long long)arg3 heuristicSampleSize:(long long)arg4 utilityBlock:(CDUnknownBlockType)arg5;
+- (double)computeScoreWithSelectedTag:(id)arg1 remainingArticles:(id)arg2 remainingTags:(id)arg3 articlesByTag:(id)arg4;
+- (id)fillGroupsWithSelectedTag:(id)arg1 remainingArticles:(id)arg2 remainingTags:(id)arg3 articlesByTag:(id)arg4 groupSizes:(id)arg5;
+- (id)initWithOption:(long long)arg1 minClusterSize:(long long)arg2 maxClusterSize:(long long)arg3 minIdealClusterSize:(long long)arg4 maxIdealClusterSize:(long long)arg5 heuristicSampleSize:(long long)arg6 utilityBlock:(CDUnknownBlockType)arg7;
 
 @end
 

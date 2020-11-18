@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UserNotificationsUIKit/NCVibrantStyling.h>
+#import <MaterialKit/MTVibrantStyling.h>
 
 @class CAFilter;
 
-@interface SBUIActionViewVibrantStyling : NCVibrantStyling
+@interface SBUIActionViewVibrantStyling : MTVibrantStyling
 {
     CAFilter *_composedFilter;
 }

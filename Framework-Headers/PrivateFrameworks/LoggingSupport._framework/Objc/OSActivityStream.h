@@ -17,23 +17,26 @@
     NSString *_waitforProcessName;
     void *_deviceSearchSession;
     void *_deviceEventSession;
+    BOOL _delegateStreamErrorLess;
+    BOOL _delegateStreamWithError;
+    BOOL _delegateHasDidFail;
     id<OSDeviceDelegate> deviceDelegate;
+    id<OSActivityStreamDelegate> _delegate;
     unsigned long long _options;
     unsigned long long _eventFilter;
-    id<OSActivityStreamDelegate> _delegate;
     NSCompoundPredicate *_predicate;
     OSLogDevice *_device;
     NSMutableDictionary *_activityFilters;
 }
 
-@property NSMutableDictionary *activityFilters; // @synthesize activityFilters=_activityFilters;
-@property (weak) id<OSActivityStreamDelegate> delegate; // @synthesize delegate=_delegate;
-@property OSLogDevice *device; // @synthesize device=_device;
-@property (weak) id<OSDeviceDelegate> deviceDelegate; // @synthesize deviceDelegate;
-@property unsigned long long eventFilter; // @synthesize eventFilter=_eventFilter;
-@property unsigned long long events;
-@property unsigned long long options; // @synthesize options=_options;
-@property (copy) NSCompoundPredicate *predicate; // @synthesize predicate=_predicate;
+@property (nonatomic) NSMutableDictionary *activityFilters; // @synthesize activityFilters=_activityFilters;
+@property (weak, nonatomic) id<OSActivityStreamDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) OSLogDevice *device; // @synthesize device=_device;
+@property (weak, nonatomic) id<OSDeviceDelegate> deviceDelegate; // @synthesize deviceDelegate;
+@property (nonatomic) unsigned long long eventFilter; // @synthesize eventFilter=_eventFilter;
+@property (nonatomic) unsigned long long events;
+@property (nonatomic) unsigned long long options; // @synthesize options=_options;
+@property (copy, nonatomic) NSCompoundPredicate *predicate; // @synthesize predicate=_predicate;
 
 - (void).cxx_destruct;
 - (void)addFilterForActivity:(id)arg1 andBinary:(id)arg2;
@@ -51,6 +54,7 @@
 - (void)stop;
 - (void)stopLocal;
 - (void)stopRemote;
+- (BOOL)streamEvent:(id)arg1 error:(id)arg2;
 - (void)waitForProcessName:(id)arg1;
 
 @end

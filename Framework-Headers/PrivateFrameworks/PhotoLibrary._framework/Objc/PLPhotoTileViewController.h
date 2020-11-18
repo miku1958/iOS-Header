@@ -10,7 +10,7 @@
 #import <PhotoLibrary/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotoLibrary/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSObject, NSString, PHAsset, PHCachingImageManager, PLExpandableImageView, PLImageScrollView, PLPhotoTileBadgeView, PLTileContainerView, PLVideoView, UIGestureRecognizer, UIImage, UIImageView, UIView;
+@class NSArray, NSObject, NSString, PHAsset, PHCachingImageManager, PLExpandableImageView, PLImageScrollView, PLTileContainerView, PLVideoView, UIGestureRecognizer, UIImage, UIImageView, UIView;
 @protocol OS_dispatch_source, PLPhotoTileViewControllerDelegate, PLTilePlaceholderView;
 
 @interface PLPhotoTileViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, PLPhotoTileCloudPlaceholderViewDelegate>
@@ -23,7 +23,6 @@
     PLExpandableImageView *_imageView;
     PLVideoView *_videoView;
     UIImageView *_gradientView;
-    PLPhotoTileBadgeView *_badgeView;
     UIImageView *_reviewCheckmarkImageView;
     UIView<PLTilePlaceholderView> *_placeholderView;
     BOOL _currentTileDownloadFinished;

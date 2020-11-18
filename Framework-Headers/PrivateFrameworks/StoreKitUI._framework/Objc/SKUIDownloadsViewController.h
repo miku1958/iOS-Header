@@ -15,16 +15,17 @@
 {
     SKUIImageDataConsumer *_consumer;
     SSDownloadManager *_downloadManager;
-    NSArray *_downloads;
     NSMutableDictionary *_imageOperations;
     NSCache *_images;
     SKUIIPhoneDownloadsViewController *_iphoneViewController;
     SKUIIPadDownloadsViewController *_ipadViewController;
     UIImage *_nullImage;
+    NSArray *_downloads;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy) NSArray *downloads; // @synthesize downloads=_downloads;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

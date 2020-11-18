@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSURL, WBSSQLiteDatabase;
+@class NSMutableDictionary, NSURL, WBSSQLiteDatabase, WBSSQLiteStatement;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_databaseQueue;
     NSMutableDictionary *_tabUUIDStrings;
     NSMutableDictionary *_browserWindowDatabaseIDs;
+    WBSSQLiteStatement *_cachedTabDeleteStatement;
 }
 
 - (void).cxx_destruct;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_checkDatabaseIntegrity;
 - (void)_closeDatabase;
 - (int)_createFreshDatabaseSchema;
+- (int)_createTableForTabs;
 - (long long)_databaseIDForBrowserWindow:(id)arg1;
 - (void)_insertTabStateWithData:(id)arg1;
 - (BOOL)_isDatabaseOpen;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_migrateFromLegacyPlistWithPath:(id)arg1;
 - (int)_migrateToCurrentSchemaVersionIfNeeded;
 - (int)_migrateToSchemaVersion_2;
+- (int)_migrateToSchemaVersion_3;
 - (void)_openDatabaseAndCheckIntegrity:(BOOL)arg1;
 - (id)_readSavedSessionStateDataForTabWithUUID:(id)arg1;
 - (void)_readTabStatesWithBrowserWindowUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (PXVideoOverlayButton)
++ (void)px_preloadResourcesForVideoOverlayButtonWithStyle:(long long)arg1;
 + (struct CGSize)px_videoOverlayButtonSize;
 + (id)px_videoOverlayButtonWithStyle:(long long)arg1;
 + (id)px_videoOverlayButtonWithStyle:(long long)arg1 allowBackdropStatisticsSupression:(BOOL)arg2;

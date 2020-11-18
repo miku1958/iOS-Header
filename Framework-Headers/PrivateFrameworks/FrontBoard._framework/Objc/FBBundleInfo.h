@@ -6,13 +6,10 @@
 
 #import <Foundation/NSObject.h>
 
-@class BSCFBundle, LSApplicationProxy, NSDictionary, NSString, NSURL, NSUUID;
+@class NSDictionary, NSString, NSURL, NSUUID;
 
 @interface FBBundleInfo : NSObject
 {
-    LSApplicationProxy *_proxy;
-    BSCFBundle *_bundle;
-    NSString *_displayName;
     NSString *_bundleIdentifier;
     NSString *_bundleVersion;
     NSString *_bundleType;
@@ -22,22 +19,20 @@
     NSUUID *_cacheGUID;
 }
 
-@property (readonly, strong, nonatomic, getter=_bundle) BSCFBundle *bundle;
-@property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (copy, nonatomic) NSString *bundleType; // @synthesize bundleType=_bundleType;
-@property (strong, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
-@property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
-@property (strong, nonatomic) NSUUID *cacheGUID; // @synthesize cacheGUID=_cacheGUID;
-@property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *bundleType; // @synthesize bundleType=_bundleType;
+@property (readonly, strong, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
+@property (readonly, copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
+@property (readonly, copy, nonatomic) NSUUID *cacheGUID; // @synthesize cacheGUID=_cacheGUID;
 @property (copy, nonatomic) NSDictionary *extendedInfo; // @synthesize extendedInfo=_extendedInfo;
-@property (readonly, strong, nonatomic, getter=_proxy) LSApplicationProxy *proxy; // @synthesize proxy=_proxy;
-@property (nonatomic) unsigned long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
+@property (readonly, nonatomic) unsigned long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 
-- (id)_initWithApplicationProxy:(id)arg1;
-- (id)_initWithBundleURL:(id)arg1;
-- (void)_purgeBundle;
+- (id)_initWithBundleIdentifier:(id)arg1 url:(id)arg2;
+- (id)_initWithBundleProxy:(id)arg1 bundleIdentifier:(id)arg2 url:(id)arg3;
+- (id)_initWithBundleProxy:(id)arg1 overrideURL:(id)arg2;
 - (void)dealloc;
 - (id)extendedInfoValueForKey:(id)arg1;
+- (id)init;
 
 @end
 

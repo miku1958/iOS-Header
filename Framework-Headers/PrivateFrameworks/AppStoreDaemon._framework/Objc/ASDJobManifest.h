@@ -14,13 +14,11 @@
 @interface ASDJobManifest : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableArray *_activities;
-    NSString *_clientID;
     long long _manifestType;
     NSNumber *_purchaseID;
     NSString *_storeCorrelationID;
 }
 
-@property (copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
 @property (readonly, nonatomic) long long manifestType; // @synthesize manifestType=_manifestType;
 @property (copy, nonatomic) NSNumber *purchaseID; // @synthesize purchaseID=_purchaseID;
 @property (copy, nonatomic) NSString *storeCorrelationID; // @synthesize storeCorrelationID=_storeCorrelationID;

@@ -10,13 +10,16 @@
 
 @interface FCPPTContext : NSObject
 {
+    BOOL _runningPPT;
     NSString *_forYouFeedIDOverride;
 }
 
 @property (strong, nonatomic) NSString *forYouFeedIDOverride; // @synthesize forYouFeedIDOverride=_forYouFeedIDOverride;
+@property (nonatomic, getter=isRunningPPT) BOOL runningPPT; // @synthesize runningPPT=_runningPPT;
 
 + (id)sharedContext;
 - (void).cxx_destruct;
+- (void)d_logState;
 
 @end
 

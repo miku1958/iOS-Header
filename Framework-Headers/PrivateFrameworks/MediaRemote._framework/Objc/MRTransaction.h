@@ -6,11 +6,10 @@
 
 #import <Foundation/NSObject.h>
 
-@protocol MRTransactionDelegate, OS_dispatch_queue;
+@protocol MRTransactionDelegate;
 
 @interface MRTransaction : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
     struct _MROrigin *_origin;
     id<MRTransactionDelegate> _delegate;
     unsigned long long _name;
@@ -24,7 +23,7 @@
 - (void)_query:(id)arg1;
 - (void)_transactionEnded;
 - (void)dealloc;
-- (id)initWithName:(unsigned long long)arg1 fromMessage:(id)arg2;
+- (id)initWithName:(unsigned long long)arg1 fromMessage:(id)arg2 withDelegate:(id)arg3;
 - (void)send:(id)arg1 toConnection:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

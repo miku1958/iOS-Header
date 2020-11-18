@@ -58,15 +58,18 @@
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_forceTouchAvailabilityDidChange:(id)arg1;
 - (BOOL)_forwardRequestToLongLookIfPresented:(id)arg1 forCoalescedNotification:(id)arg2;
+- (id)_groupName;
 - (void)_handleEatenTouch:(id)arg1;
 - (void)_installTouchEater;
 - (BOOL)_isPointInWindowSpace:(struct CGPoint)arg1 insideCell:(id)arg2;
+- (id)_materialSettings;
 - (void)_performCollectionViewOperationBlock:(CDUnknownBlockType)arg1;
 - (void)_performCollectionViewOperationBlockIfNecessary:(CDUnknownBlockType)arg1;
 - (void)_reloadCollectionViewDataIfNecessary;
 - (void)_reloadRequestsAtIndices:(id)arg1;
 - (void)_removeCachedSizesForNotificationRequest:(id)arg1;
 - (void)addContentObserver:(id)arg1;
+- (id)captureOnlyMaterialViewForCurrentState;
 - (void)clearAll;
 - (void)clearAllNonPersistent;
 - (BOOL)collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;

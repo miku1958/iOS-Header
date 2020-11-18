@@ -12,9 +12,11 @@
 @interface DARefreshManager : NSObject
 {
     BOOL _persistAPSAfterShutdown;
+    BOOL _dailyRefreshInitialized;
     NSMutableDictionary *_enabledTopicWrappersByEnv;
     NSMutableDictionary *_suspendedTopicWrappersByEnv;
     NSMutableSet *_wrappers;
+    NSMutableSet *_wrappersForDailyRefresh;
     APSConnection *_connection;
     NSMutableDictionary *_apsConnections;
     NSTimer *_tokenRegistrationTimer;
@@ -23,18 +25,21 @@
 
 @property (strong, nonatomic) NSMutableDictionary *apsConnections; // @synthesize apsConnections=_apsConnections;
 @property (strong, nonatomic) APSConnection *connection; // @synthesize connection=_connection;
+@property (nonatomic) BOOL dailyRefreshInitialized; // @synthesize dailyRefreshInitialized=_dailyRefreshInitialized;
 @property (strong, nonatomic) NSMutableDictionary *enabledTopicWrappersByEnv; // @synthesize enabledTopicWrappersByEnv=_enabledTopicWrappersByEnv;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *pcQueue; // @synthesize pcQueue=_pcQueue;
 @property (nonatomic) BOOL persistAPSAfterShutdown; // @synthesize persistAPSAfterShutdown=_persistAPSAfterShutdown;
 @property (strong, nonatomic) NSMutableDictionary *suspendedTopicWrappersByEnv; // @synthesize suspendedTopicWrappersByEnv=_suspendedTopicWrappersByEnv;
 @property (strong, nonatomic) NSTimer *tokenRegistrationTimer; // @synthesize tokenRegistrationTimer=_tokenRegistrationTimer;
 @property (strong, nonatomic) NSMutableSet *wrappers; // @synthesize wrappers=_wrappers;
+@property (strong, nonatomic) NSMutableSet *wrappersForDailyRefresh; // @synthesize wrappersForDailyRefresh=_wrappersForDailyRefresh;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)_apsEnvStringForDAEnvString:(id)arg1;
 - (id)_connectionForEnv:(id)arg1;
 - (int)_currentTruePCStyleForDelegate:(id)arg1;
+- (void)_dailyRefreshActivityFired;
 - (id)_enabledTopicsForWrapper:(id)arg1;
 - (void)_fakeTokenReceive;
 - (int)_overriddenPCStyleForWrapper:(id)arg1;
@@ -56,6 +61,7 @@
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (void)dealloc;
 - (void)delegateDidCompleteRefresh:(id)arg1;
+- (void)endDailyRefreshActivityForWrapper:(id)arg1;
 - (void)establishAllApsConnections;
 - (id)init;
 - (void)pushPreferenceDidChange;
@@ -63,6 +69,7 @@
 - (void)registerDelegate:(id)arg1;
 - (void)registerTopic:(id)arg1 forDelegate:(id)arg2 inEnvironment:(id)arg3;
 - (void)retryRefreshForDelegate:(id)arg1 withCollections:(id)arg2 after:(double)arg3 originalRefreshReason:(int)arg4;
+- (void)startDailyRefreshActivityForWrapper:(id)arg1;
 - (id)stateString;
 - (void)unregisterDelegate:(id)arg1;
 - (void)unregisterTopic:(id)arg1 forDelegate:(id)arg2 inEnvironment:(id)arg3;

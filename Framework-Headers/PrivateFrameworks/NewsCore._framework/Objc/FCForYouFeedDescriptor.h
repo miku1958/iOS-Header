@@ -8,18 +8,20 @@
 
 #import <NewsCore/FCFeedPaginating-Protocol.h>
 
-@class FCForYouGroupsConfiguration, NSString;
+@class FCAppConfiguration, FCSubscriptionList, NSString;
 
 @interface FCForYouFeedDescriptor : FCMultiTagFeedDescriptor <FCFeedPaginating>
 {
     unsigned long long _trendingAndSavedStoriesCount;
-    FCForYouGroupsConfiguration *_forYouGroupsConfiguration;
+    FCAppConfiguration *_appConfiguration;
+    FCSubscriptionList *_subscriptionList;
 }
 
+@property (strong, nonatomic) FCAppConfiguration *appConfiguration; // @synthesize appConfiguration=_appConfiguration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) FCForYouGroupsConfiguration *forYouGroupsConfiguration; // @synthesize forYouGroupsConfiguration=_forYouGroupsConfiguration;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) FCSubscriptionList *subscriptionList; // @synthesize subscriptionList=_subscriptionList;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long trendingAndSavedStoriesCount; // @synthesize trendingAndSavedStoriesCount=_trendingAndSavedStoriesCount;
 
@@ -31,9 +33,11 @@
 - (id)feedPaginator;
 - (long long)feedSortMethod;
 - (id)iAdFeedID;
-- (id)initWithIdentifier:(id)arg1 trendingAndSavedStoriesCount:(long long)arg2 forYouGroupsConfiguration:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 trendingAndSavedStoriesCount:(long long)arg2 appConfiguration:(id)arg3 subscriptionList:(id)arg4;
 - (id)name;
 - (id)offlineFeedGroupEmitters;
+- (void)prepareToFilterFeedGroupEmittersWithCallbackQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)shouldFilterFeedGroupEmitter:(id)arg1;
 
 @end
 

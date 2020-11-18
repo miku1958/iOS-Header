@@ -12,6 +12,7 @@
 {
     int _state;
     NSString *_currentVersion;
+    NSString *_sourceOfUpdateRestriction;
     UILabel *_checkingStatusLabel;
     UILabel *_subtitleLabel;
     UIActivityIndicatorView *_checkingForUpdateSpinner;
@@ -20,6 +21,7 @@
 @property (strong, nonatomic) UIActivityIndicatorView *checkingForUpdateSpinner; // @synthesize checkingForUpdateSpinner=_checkingForUpdateSpinner;
 @property (strong, nonatomic) UILabel *checkingStatusLabel; // @synthesize checkingStatusLabel=_checkingStatusLabel;
 @property (strong, nonatomic) NSString *currentVersion; // @synthesize currentVersion=_currentVersion;
+@property (strong, nonatomic) NSString *sourceOfUpdateRestriction; // @synthesize sourceOfUpdateRestriction=_sourceOfUpdateRestriction;
 @property (nonatomic) int state; // @synthesize state=_state;
 @property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 

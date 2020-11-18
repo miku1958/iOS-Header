@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class WLKUIAccessViewController;
+@class NSArray, NSDictionary, WLKUIAccessViewController;
 
 @interface WLKUIOnboardingController : NSObject
 {
     WLKUIAccessViewController *_accessVC;
+    NSArray *_bundleIDs;
+    NSDictionary *_options;
     CDUnknownBlockType _completionHandler;
 }
 
@@ -22,6 +24,7 @@
 - (void)dealloc;
 - (void)dismiss;
 - (void)present;
+- (void)presentForBundleIDs:(id)arg1 withOptions:(id)arg2;
 
 @end
 

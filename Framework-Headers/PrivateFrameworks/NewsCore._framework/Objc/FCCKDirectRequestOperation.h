@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCNetworkEvent, NSArray, NSError, NSMutableArray, NSMutableDictionary, NSString;
+@class FCNetworkEvent, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString;
 
 @interface FCCKDirectRequestOperation : FCOperation
 {
@@ -15,7 +15,9 @@
     NSArray *_requests;
     NSString *_containerName;
     long long _requestType;
+    long long _networkEventType;
     double _timeoutIntervalForRequest;
+    NSDictionary *_additionalRequestHTTPHeaders;
     CDUnknownBlockType _criticalNodeFailureTest;
     CDUnknownBlockType _requestCompletionHandler;
     NSString *_requestUUID;
@@ -25,9 +27,11 @@
     NSError *_resultError;
 }
 
+@property (copy, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
 @property (copy, nonatomic) NSString *containerName; // @synthesize containerName=_containerName;
 @property (copy, nonatomic) CDUnknownBlockType criticalNodeFailureTest; // @synthesize criticalNodeFailureTest=_criticalNodeFailureTest;
 @property (strong, nonatomic) FCNetworkEvent *networkEvent; // @synthesize networkEvent=_networkEvent;
+@property (nonatomic) long long networkEventType; // @synthesize networkEventType=_networkEventType;
 @property (nonatomic) BOOL operationFailsOnRequestFailure; // @synthesize operationFailsOnRequestFailure=_operationFailsOnRequestFailure;
 @property (nonatomic) BOOL production; // @synthesize production=_production;
 @property (copy, nonatomic) CDUnknownBlockType requestCompletionHandler; // @synthesize requestCompletionHandler=_requestCompletionHandler;
@@ -40,6 +44,7 @@
 @property (nonatomic) double timeoutIntervalForRequest; // @synthesize timeoutIntervalForRequest=_timeoutIntervalForRequest;
 
 + (id)URLSession;
++ (BOOL)_enableDebugLogLevel;
 - (void).cxx_destruct;
 - (id)_errorFromHTTPResponse:(id)arg1;
 - (id)_errorFromOperationResultError:(id)arg1;

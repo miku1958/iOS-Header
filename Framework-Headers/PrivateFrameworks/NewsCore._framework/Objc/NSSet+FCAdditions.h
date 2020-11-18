@@ -19,6 +19,7 @@
 - (id)fc_onlyObject;
 - (id)fc_setByIntersectingSet:(id)arg1;
 - (id)fc_setByMinusingSet:(id)arg1;
+- (id)fc_setByRemovingObject:(id)arg1;
 - (id)fc_setByTransformingWithBlock:(CDUnknownBlockType)arg1;
 - (id)fc_setByUnioningSet:(id)arg1;
 - (id)fc_setOfObjectsPassingTest:(CDUnknownBlockType)arg1;

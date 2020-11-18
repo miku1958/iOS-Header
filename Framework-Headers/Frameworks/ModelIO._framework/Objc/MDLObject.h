@@ -8,7 +8,7 @@
 
 #import <ModelIO/MDLNamed-Protocol.h>
 
-@class NSMapTable, NSString;
+@class NSArray, NSMapTable, NSString;
 @protocol MDLObjectContainerComponent, MDLTransformComponent;
 
 @interface MDLObject : NSObject <MDLNamed>
@@ -22,6 +22,7 @@
 }
 
 @property (strong, nonatomic) id<MDLObjectContainerComponent> children; // @synthesize children=_children;
+@property (readonly, copy, nonatomic) NSArray *components;
 @property (nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
 @property (strong, nonatomic) MDLObject *instance; // @synthesize instance=_instance;
 @property (copy, nonatomic) NSString *name; // @synthesize name;
@@ -36,7 +37,10 @@
 - (void)enumerateChildObjectsOfClass:(Class)arg1 root:(id)arg2 usingBlock:(CDUnknownBlockType)arg3 stopPointer:(BOOL *)arg4;
 - (id)init;
 - (id)objectAtPath:(id)arg1;
+- (id)objectForKeyedSubscript:(id)arg1;
+- (id)primitive;
 - (void)setComponent:(id)arg1 forProtocol:(id)arg2;
+- (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 
 @end
 

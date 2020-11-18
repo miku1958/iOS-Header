@@ -10,13 +10,17 @@
 {
 }
 
++ (unsigned long long)configurationType;
 + (BOOL)createPlaceholderFileWithError:(id *)arg1;
++ (void)fetchAdHocConfiguration:(CDUnknownBlockType)arg1;
 + (void)fetchConfiguration:(CDUnknownBlockType)arg1;
 + (BOOL)isStudentdInstalled;
 + (BOOL)placeholderFileExists;
 + (id)placeholderFileURL;
 + (BOOL)removePlaceholderFileWithError:(id *)arg1;
++ (void)setAdHocConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)setConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)setOfActiveRestrictionUUIDs:(id)arg1;
 + (id)studentDaemonConnection;
 
 @end

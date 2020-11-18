@@ -14,13 +14,16 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_modsSerialQueue;
     NSXPCConnection *_xpcHelperConnection;
+    NSXPCConnection *_userNotificationsXPCConnection;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *modsSerialQueue; // @synthesize modsSerialQueue=_modsSerialQueue;
+@property (strong, nonatomic) NSXPCConnection *userNotificationsXPCConnection; // @synthesize userNotificationsXPCConnection=_userNotificationsXPCConnection;
 @property (strong, nonatomic) NSXPCConnection *xpcHelperConnection; // @synthesize xpcHelperConnection=_xpcHelperConnection;
 
 + (id)sharedCache;
 - (void).cxx_destruct;
+- (id)connectionToUserNotificationsXPC;
 - (id)connectionToXPCHelper;
 - (id)init;
 

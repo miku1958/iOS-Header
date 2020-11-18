@@ -33,6 +33,7 @@
 - (id)CKPropertiesDescriptionWithProperties:(id)arg1;
 - (id)CKXPCSuitableString;
 - (id)ckShortDescription;
+- (long long)compareToRecordID:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

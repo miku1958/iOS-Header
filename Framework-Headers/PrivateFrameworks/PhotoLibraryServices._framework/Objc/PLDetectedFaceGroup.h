@@ -13,10 +13,9 @@
 }
 
 @property (strong, nonatomic) PLPerson *associatedPerson; // @dynamic associatedPerson;
-@property (nonatomic) int faceGroupType; // @dynamic faceGroupType;
-@property (strong, nonatomic) NSSet *faces; // @dynamic faces;
+@property (strong, nonatomic) NSSet *detectedFaces; // @dynamic detectedFaces;
 @property (nonatomic) PLDetectedFace *keyFace; // @dynamic keyFace;
-@property (strong, nonatomic) PLPerson *rejectedFacesPerson; // @dynamic rejectedFacesPerson;
+@property (nonatomic) short personBuilderState; // @dynamic personBuilderState;
 @property (nonatomic) int unnamedFaceCount; // @dynamic unnamedFaceCount;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
 
@@ -24,7 +23,7 @@
 + (id)entityName;
 + (id)insertInManagedObjectContext:(id)arg1;
 - (void)awakeFromInsert;
-- (id)mutableFaces;
+- (id)mutableDetectedFaces;
 - (void)refreshFaces;
 
 @end

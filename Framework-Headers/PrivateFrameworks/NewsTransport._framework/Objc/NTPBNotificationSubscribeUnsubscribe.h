@@ -12,7 +12,10 @@
 
 @interface NTPBNotificationSubscribeUnsubscribe : PBCodable <NSCopying>
 {
+    NSString *_campaignId;
+    NSString *_campaignType;
     NSString *_channelId;
+    NSString *_creativeId;
     int _notificationSubscribeUnsubscribeLocation;
     int _userAction;
     BOOL _isPaidUserOfChannel;
@@ -23,8 +26,14 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
+@property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
 @property (strong, nonatomic) NSString *channelId; // @synthesize channelId=_channelId;
+@property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
+@property (readonly, nonatomic) BOOL hasCampaignId;
+@property (readonly, nonatomic) BOOL hasCampaignType;
 @property (readonly, nonatomic) BOOL hasChannelId;
+@property (readonly, nonatomic) BOOL hasCreativeId;
 @property (nonatomic) BOOL hasIsPaidUserOfChannel;
 @property (nonatomic) BOOL hasNotificationSubscribeUnsubscribeLocation;
 @property (nonatomic) BOOL hasUserAction;

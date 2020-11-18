@@ -6,8 +6,8 @@
 
 #import <Foundation/NSObject.h>
 
-@class CallSegment, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@class CallSegment, NSString;
+@protocol OS_dispatch_queue, VCAggregatorDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VCAggregator : NSObject
@@ -18,30 +18,56 @@ __attribute__((visibility("hidden")))
     NSString *_connectionType;
     NSString *_currentSegmentKey;
     CallSegment *_currentSegment;
-    NSMutableDictionary *_aggregatedStats;
-    int _duration;
+    int _interval;
+    int _frequency;
     unsigned int _currentWidth;
-    unsigned int _currentAudioErasures;
     BOOL _degradedVideo;
     unsigned int _degradedVideoCounter;
+    int _callTotalDurationTicks;
+    int _callAggregatedDurationTicks;
+    double _callAverageAudioErasuresRate;
+    double _callAverageTargetBitrate;
+    double _callAverageSendBitrate;
+    double _callAverageReceiveBitrate;
+    double _callPoorConnectionTotalLength;
+    double _callPoorConnectionMaxLength;
+    unsigned int _callPoorConnectionFrequency;
+    double _callTotalVideoStallTime;
+    double _callMaxVideoStallInterval;
+    double _callTotalAudioStallTime;
+    double _callMaxAudioStallInterval;
+    double _lastReportedAudioStallTime;
+    unsigned int _callMode;
+    unsigned int _callDeviceRole;
+    unsigned int _callTransportType;
+    unsigned int _callErrorCode;
+    unsigned int _callDetailedErrorCode;
+    unsigned int _numberOfSegments;
+    unsigned int _switchIntoDupCount;
+    unsigned long long _lastReportedAudioPacketSent;
+    unsigned long long _lastReportedVideoPacketSent;
     NSObject<OS_dispatch_queue> *_stateQueue;
+    id<VCAggregatorDelegate> _delegate;
 }
 
+- (unsigned int)RTPeriod;
+- (id)aggregatedCallReport;
+- (id)aggregatedSegmentReport;
 - (BOOL)changeDuplication:(BOOL)arg1;
 - (id)connectionTypeIndicator;
 - (void)dealloc;
 - (BOOL)didUpdateStringFrom:(id *)arg1 toString:(id)arg2;
 - (id)duplicationIndicator;
 - (void)flushCurrentSegment;
-- (id)init;
+- (id)initWithDelegate:(id)arg1;
 - (id)interfaceTypeIndicator:(BOOL)arg1;
 - (void)processEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
 - (void)reset;
-- (id)segments;
 - (void)startNewSegment;
-- (void)updateAudioErasure:(id)arg1;
+- (void)updateErrorCode:(id)arg1;
 - (void)updatePauseVideo:(id)arg1;
 - (void)updateRTStats:(id)arg1;
+- (void)updateRoleModeTransport:(unsigned short)arg1 deviceRole:(unsigned short)arg2 transportType:(unsigned short)arg3;
 - (void)updateVideoResolution:(id)arg1;
 
 @end

@@ -33,9 +33,13 @@
     int _feedPresentationReason;
     NSString *_feedPresentationReasonSearchString;
     NSData *_feedViewExposureId;
+    NSMutableArray *_fractionalCohortMemberships;
+    int _groupArticleCountInForYou;
+    int _groupDisplayRankInForYou;
     NSString *_groupFeedId;
     int _groupType;
     NSString *_language;
+    int _loadFailureReason;
     int _maxActiveTimeSpent;
     float _maxVerticalScrollPositionEnding;
     NSMutableArray *_namedEntities;
@@ -46,6 +50,7 @@
     NSString *_parentFeedId;
     int _parentFeedType;
     int _previousArticleHostViewTypeIfSwipe;
+    NSString *_previousArticleId;
     int _publisherArticleVersion;
     NSString *_referencedArticleId;
     NSString *_referringSourceApplication;
@@ -59,7 +64,11 @@
     NSString *_surfacedByTopicId;
     NSString *_userActivityType;
     NSString *_viewFrameInScreen;
+    int _widgetArticleRank;
+    int _widgetSection;
+    int _widgetSectionArticleRank;
     BOOL _adSupportedChannel;
+    BOOL _articleLoaded;
     BOOL _didBounce;
     BOOL _didOpenInSafari;
     BOOL _isCoverArticle;
@@ -91,7 +100,10 @@
         unsigned int displayRank:1;
         unsigned int feedCellHostType:1;
         unsigned int feedPresentationReason:1;
+        unsigned int groupArticleCountInForYou:1;
+        unsigned int groupDisplayRankInForYou:1;
         unsigned int groupType:1;
+        unsigned int loadFailureReason:1;
         unsigned int maxActiveTimeSpent:1;
         unsigned int maxVerticalScrollPositionEnding:1;
         unsigned int nextArticleAffordanceType:1;
@@ -99,7 +111,11 @@
         unsigned int parentFeedType:1;
         unsigned int previousArticleHostViewTypeIfSwipe:1;
         unsigned int publisherArticleVersion:1;
+        unsigned int widgetArticleRank:1;
+        unsigned int widgetSection:1;
+        unsigned int widgetSectionArticleRank:1;
         unsigned int adSupportedChannel:1;
+        unsigned int articleLoaded:1;
         unsigned int didBounce:1;
         unsigned int didOpenInSafari:1;
         unsigned int isCoverArticle:1;
@@ -125,6 +141,7 @@
 @property (nonatomic) int articleDisplayRankInGroup; // @synthesize articleDisplayRankInGroup=_articleDisplayRankInGroup;
 @property (nonatomic) int articleHostViewType; // @synthesize articleHostViewType=_articleHostViewType;
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
+@property (nonatomic) BOOL articleLoaded; // @synthesize articleLoaded=_articleLoaded;
 @property (strong, nonatomic) NSData *articleSessionId; // @synthesize articleSessionId=_articleSessionId;
 @property (nonatomic) int articleType; // @synthesize articleType=_articleType;
 @property (nonatomic) int articleViewPresentationReason; // @synthesize articleViewPresentationReason=_articleViewPresentationReason;
@@ -143,6 +160,9 @@
 @property (nonatomic) int feedPresentationReason; // @synthesize feedPresentationReason=_feedPresentationReason;
 @property (strong, nonatomic) NSString *feedPresentationReasonSearchString; // @synthesize feedPresentationReasonSearchString=_feedPresentationReasonSearchString;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
+@property (strong, nonatomic) NSMutableArray *fractionalCohortMemberships; // @synthesize fractionalCohortMemberships=_fractionalCohortMemberships;
+@property (nonatomic) int groupArticleCountInForYou; // @synthesize groupArticleCountInForYou=_groupArticleCountInForYou;
+@property (nonatomic) int groupDisplayRankInForYou; // @synthesize groupDisplayRankInForYou=_groupDisplayRankInForYou;
 @property (strong, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (nonatomic) BOOL hasActiveTimeSpent;
@@ -150,6 +170,7 @@
 @property (nonatomic) BOOL hasArticleDisplayRankInGroup;
 @property (nonatomic) BOOL hasArticleHostViewType;
 @property (readonly, nonatomic) BOOL hasArticleId;
+@property (nonatomic) BOOL hasArticleLoaded;
 @property (readonly, nonatomic) BOOL hasArticleSessionId;
 @property (nonatomic) BOOL hasArticleType;
 @property (nonatomic) BOOL hasArticleViewPresentationReason;
@@ -168,6 +189,8 @@
 @property (nonatomic) BOOL hasFeedPresentationReason;
 @property (readonly, nonatomic) BOOL hasFeedPresentationReasonSearchString;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
+@property (nonatomic) BOOL hasGroupArticleCountInForYou;
+@property (nonatomic) BOOL hasGroupDisplayRankInForYou;
 @property (readonly, nonatomic) BOOL hasGroupFeedId;
 @property (nonatomic) BOOL hasGroupType;
 @property (nonatomic) BOOL hasIsCoverArticle;
@@ -184,6 +207,7 @@
 @property (nonatomic) BOOL hasIsUserSubscribedToParentFeed;
 @property (nonatomic) BOOL hasIsVideoInFeed;
 @property (readonly, nonatomic) BOOL hasLanguage;
+@property (nonatomic) BOOL hasLoadFailureReason;
 @property (nonatomic) BOOL hasMaxActiveTimeSpent;
 @property (nonatomic) BOOL hasMaxVerticalScrollPositionEnding;
 @property (nonatomic) BOOL hasNextArticleAffordanceType;
@@ -194,6 +218,7 @@
 @property (nonatomic) BOOL hasParentFeedType;
 @property (nonatomic) BOOL hasPersonalizationTreatmentId;
 @property (nonatomic) BOOL hasPreviousArticleHostViewTypeIfSwipe;
+@property (readonly, nonatomic) BOOL hasPreviousArticleId;
 @property (nonatomic) BOOL hasPublisherArticleVersion;
 @property (readonly, nonatomic) BOOL hasReferencedArticleId;
 @property (readonly, nonatomic) BOOL hasReferringSourceApplication;
@@ -209,6 +234,9 @@
 @property (readonly, nonatomic) BOOL hasUserActivityType;
 @property (readonly, nonatomic) BOOL hasViewFrameInScreen;
 @property (nonatomic) BOOL hasViewFromNotificationDirectOpen;
+@property (nonatomic) BOOL hasWidgetArticleRank;
+@property (nonatomic) BOOL hasWidgetSection;
+@property (nonatomic) BOOL hasWidgetSectionArticleRank;
 @property (nonatomic) BOOL isCoverArticle; // @synthesize isCoverArticle=_isCoverArticle;
 @property (nonatomic) BOOL isDigitalReplicaAd; // @synthesize isDigitalReplicaAd=_isDigitalReplicaAd;
 @property (nonatomic) BOOL isExplorationArticle; // @synthesize isExplorationArticle=_isExplorationArticle;
@@ -223,6 +251,7 @@
 @property (nonatomic) BOOL isUserSubscribedToParentFeed; // @synthesize isUserSubscribedToParentFeed=_isUserSubscribedToParentFeed;
 @property (nonatomic) BOOL isVideoInFeed; // @synthesize isVideoInFeed=_isVideoInFeed;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
+@property (nonatomic) int loadFailureReason; // @synthesize loadFailureReason=_loadFailureReason;
 @property (nonatomic) int maxActiveTimeSpent; // @synthesize maxActiveTimeSpent=_maxActiveTimeSpent;
 @property (nonatomic) float maxVerticalScrollPositionEnding; // @synthesize maxVerticalScrollPositionEnding=_maxVerticalScrollPositionEnding;
 @property (strong, nonatomic) NSMutableArray *namedEntities; // @synthesize namedEntities=_namedEntities;
@@ -234,6 +263,7 @@
 @property (nonatomic) int parentFeedType; // @synthesize parentFeedType=_parentFeedType;
 @property (nonatomic) long long personalizationTreatmentId; // @synthesize personalizationTreatmentId=_personalizationTreatmentId;
 @property (nonatomic) int previousArticleHostViewTypeIfSwipe; // @synthesize previousArticleHostViewTypeIfSwipe=_previousArticleHostViewTypeIfSwipe;
+@property (strong, nonatomic) NSString *previousArticleId; // @synthesize previousArticleId=_previousArticleId;
 @property (nonatomic) int publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property (strong, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property (strong, nonatomic) NSString *referringSourceApplication; // @synthesize referringSourceApplication=_referringSourceApplication;
@@ -249,7 +279,11 @@
 @property (strong, nonatomic) NSString *userActivityType; // @synthesize userActivityType=_userActivityType;
 @property (strong, nonatomic) NSString *viewFrameInScreen; // @synthesize viewFrameInScreen=_viewFrameInScreen;
 @property (nonatomic) BOOL viewFromNotificationDirectOpen; // @synthesize viewFromNotificationDirectOpen=_viewFromNotificationDirectOpen;
+@property (nonatomic) int widgetArticleRank; // @synthesize widgetArticleRank=_widgetArticleRank;
+@property (nonatomic) int widgetSection; // @synthesize widgetSection=_widgetSection;
+@property (nonatomic) int widgetSectionArticleRank; // @synthesize widgetSectionArticleRank=_widgetSectionArticleRank;
 
++ (Class)fractionalCohortMembershipType;
 + (Class)namedEntitiesType;
 - (void).cxx_destruct;
 - (int)StringAsArticleType:(id)arg1;
@@ -259,14 +293,19 @@
 - (int)StringAsNextArticleAffordanceType:(id)arg1;
 - (int)StringAsPaidSubscriberToFeedType:(id)arg1;
 - (int)StringAsParentFeedType:(id)arg1;
+- (int)StringAsWidgetSection:(id)arg1;
+- (void)addFractionalCohortMembership:(id)arg1;
 - (void)addNamedEntities:(id)arg1;
 - (id)articleTypeAsString:(int)arg1;
+- (void)clearFractionalCohortMemberships;
 - (void)clearNamedEntities;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)feedCellHostTypeAsString:(int)arg1;
 - (id)feedPresentationReasonAsString:(int)arg1;
+- (id)fractionalCohortMembershipAtIndex:(unsigned long long)arg1;
+- (unsigned long long)fractionalCohortMembershipsCount;
 - (id)groupTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
@@ -277,6 +316,7 @@
 - (id)paidSubscriberToFeedTypeAsString:(int)arg1;
 - (id)parentFeedTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)widgetSectionAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

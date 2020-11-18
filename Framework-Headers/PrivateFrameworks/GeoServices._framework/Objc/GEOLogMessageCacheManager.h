@@ -39,7 +39,7 @@
 - (void)_cleanupPartiallyCreatedLogMessageCacheDBFile;
 - (void)_commitLogMessageCacheTransaction;
 - (void)_createTables;
-- (void)_deleteAllExpiredLogMessages:(double)arg1;
+- (int)_deleteAllExpiredLogMessages:(double)arg1;
 - (void)_deleteExpiredLogMessageCacheDBFile:(double)arg1;
 - (BOOL)_executeSQL:(id)arg1;
 - (long long)_getNumberOfLogMessagesInCache;

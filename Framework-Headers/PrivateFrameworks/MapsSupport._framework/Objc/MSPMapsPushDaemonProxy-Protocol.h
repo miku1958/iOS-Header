@@ -17,6 +17,7 @@
 - (void)clearTrafficIncidentBulletinWithAlertID:(NSData *)arg1;
 - (void)clearTrafficIncidentsBulletin;
 - (void)clearTransitAlightAlertBulletin;
+- (void)eraseRAPData;
 - (void)fetchCurrentAnnouncement:(void (^)(GEOAnnouncement *))arg1;
 - (void)fetchDevicePushToken:(void (^)(NSData *))arg1;
 - (void)fetchProblemStatus;

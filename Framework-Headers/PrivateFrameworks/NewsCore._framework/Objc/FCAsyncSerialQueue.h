@@ -21,8 +21,9 @@
 - (void)enqueueBlock:(CDUnknownBlockType)arg1;
 - (void)enqueueBlockForMainThread:(CDUnknownBlockType)arg1;
 - (void)enqueueOperation:(id)arg1;
-- (void)enqueueWithQualityOfService:(long long)arg1 block:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)initWithQualityOfService:(long long)arg1;
+- (void)withQualityOfService:(long long)arg1 enqueueBlockForMainThread:(CDUnknownBlockType)arg2;
 
 @end
 

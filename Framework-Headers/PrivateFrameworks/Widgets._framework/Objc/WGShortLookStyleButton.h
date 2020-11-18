@@ -6,11 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
-@class NCLookViewFontProvider, NCMaterialView, NSString, UILabel;
+@class MTMaterialView, NCLookViewFontProvider, NSString, UILabel;
 
 @interface WGShortLookStyleButton : UIControl
 {
-    NCMaterialView *_backgroundView;
+    MTMaterialView *_backgroundView;
     UILabel *_titleLabel;
     NCLookViewFontProvider *_fontProvider;
     double _dimension;

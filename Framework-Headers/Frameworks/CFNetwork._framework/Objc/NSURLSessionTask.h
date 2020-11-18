@@ -8,7 +8,7 @@
 
 #import <CFNetwork/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSError, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionTaskDependency, NSURLSessionTaskDependencyTree, NSURLSessionTaskHTTPAuthenticator;
+@class NSArray, NSData, NSDictionary, NSError, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionTaskDependency, NSURLSessionTaskDependencyTree, NSURLSessionTaskHTTPAuthenticator;
 @protocol OS_dispatch_queue;
 
 @interface NSURLSessionTask : NSObject <NSCopying>
@@ -18,6 +18,7 @@
 }
 
 @property (copy) NSDictionary *_DuetActivityProperties; // @dynamic _DuetActivityProperties;
+@property (copy) NSData *_TCPConnectionMetadata; // @dynamic _TCPConnectionMetadata;
 @property unsigned long long _allowedProtocolTypes; // @dynamic _allowedProtocolTypes;
 @property BOOL _allowsCellular; // @dynamic _allowsCellular;
 @property (copy, nonatomic) NSDictionary *_backgroundTaskTimingData; // @dynamic _backgroundTaskTimingData;
@@ -47,6 +48,7 @@
 @property (strong, nonatomic) struct __PerformanceTiming *_performanceTiming; // @dynamic _performanceTiming;
 @property unsigned int _powerAssertion; // @dynamic _powerAssertion;
 @property BOOL _preventsIdleSystemSleep; // @dynamic _preventsIdleSystemSleep;
+@property BOOL _preventsSystemHTTPProxyAuthentication; // @dynamic _preventsSystemHTTPProxyAuthentication;
 @property long long _priority; // @dynamic _priority;
 @property long long _priorityValue; // @dynamic _priorityValue;
 @property BOOL _prohibitAuthUI; // @dynamic _prohibitAuthUI;

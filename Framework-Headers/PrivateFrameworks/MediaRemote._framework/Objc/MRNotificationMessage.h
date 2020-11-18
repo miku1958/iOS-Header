@@ -6,16 +6,16 @@
 
 #import <MediaRemote/MRProtocolMessage.h>
 
-@class NSMutableArray;
+@class NSDictionary, NSString;
 
 @interface MRNotificationMessage : MRProtocolMessage
 {
 }
 
-@property (readonly, nonatomic) NSMutableArray *notifications;
+@property (readonly, nonatomic) NSString *notification;
+@property (readonly, nonatomic) NSDictionary *userInfo;
 
 - (id)initWithNotification:(id)arg1;
-- (id)initWithNotifications:(id)arg1;
 - (unsigned long long)type;
 
 @end

@@ -8,17 +8,29 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface NTPBNotificationSettingsScreenView : PBCodable <NSCopying>
 {
+    NSString *_campaignId;
+    NSString *_campaignType;
+    NSString *_creativeId;
     int _notificationSettingsScreenViewPresentationReason;
     struct {
         unsigned int notificationSettingsScreenViewPresentationReason:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
+@property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
+@property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
+@property (readonly, nonatomic) BOOL hasCampaignId;
+@property (readonly, nonatomic) BOOL hasCampaignType;
+@property (readonly, nonatomic) BOOL hasCreativeId;
 @property (nonatomic) BOOL hasNotificationSettingsScreenViewPresentationReason;
 @property (nonatomic) int notificationSettingsScreenViewPresentationReason; // @synthesize notificationSettingsScreenViewPresentationReason=_notificationSettingsScreenViewPresentationReason;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

@@ -21,7 +21,6 @@
 + (id)invalidRemoteTaskWithRequest:(id)arg1 error:(id)arg2;
 + (BOOL)isCancelable;
 - (void).cxx_destruct;
-- (BOOL)canSendNotificationWithName:(id)arg1 userInfo:(id)arg2;
 - (void)cancel;
 - (void)cancelOperationIfNeeded;
 - (void)clientFailedWithError:(id)arg1;
@@ -31,8 +30,9 @@
 - (BOOL)isAsynchronous;
 - (void)main;
 - (void)operationWillFinish;
+- (void)postNotificationWithName:(id)arg1 userInfo:(id)arg2;
 - (void)processMessage:(id)arg1;
-- (void)processNotificationMessage:(id)arg1;
+- (void)processNotificationWithName:(id)arg1 userInfo:(id)arg2;
 - (void)updateCompletedUnitCount:(long long)arg1 andTotalUnitCount:(long long)arg2;
 - (void)updateProgressWithRemoteProgress:(id)arg1;
 

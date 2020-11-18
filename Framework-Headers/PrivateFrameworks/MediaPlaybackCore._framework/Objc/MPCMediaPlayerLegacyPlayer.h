@@ -34,7 +34,7 @@
 @property (readonly, nonatomic) unsigned long long hardQueueItemCount;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL iAmTheiPod; // @synthesize iAmTheiPod=_iAmTheiPod;
-@property (readonly, nonatomic, getter=isMediaRemoteSyncing) BOOL mediaRemoteSync; // @synthesize mediaRemoteSync=_mediaRemoteSync;
+@property (nonatomic) BOOL pictureInPictureSupported;
 @property (strong, nonatomic) MPCMediaPlayerLegacyAVController *player; // @synthesize player=_player;
 @property (strong, nonatomic) MPCMediaPlayerLegacyNowPlayingObserver *playerObserver; // @synthesize playerObserver=_playerObserver;
 @property (strong, nonatomic) MPCRadioPlaybackCoordinator *radioPlaybackCoordinator; // @synthesize radioPlaybackCoordinator=_radioPlaybackCoordinator;
@@ -51,6 +51,7 @@
 - (void)_handleCreateRadioStationCommandEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleInsertIntoQueueCommandEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleSetQueueCommandEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_notifySupportedCommandsChanged;
 - (void)_playbackStateChangedNotification:(id)arg1;
 - (void)_playerDidPausePlaybackForLeaseEndNotification:(id)arg1;
 - (id)_playerItemForAVItem:(id)arg1;
@@ -60,7 +61,7 @@
 - (void)_repeatShuffleTypeChangedNotification:(id)arg1;
 - (BOOL)_shouldVendContentItemForOffset:(long long)arg1;
 - (void)_soundCheckEnabledChangedNotification:(id)arg1;
-- (void)_updateSupportedCommands;
+- (void)_updateSupportedCommandsForCommandCenter:(id)arg1 target:(id)arg2 action:(SEL)arg3;
 - (id)activeRouteName;
 - (void)addPlaybackIntent:(id)arg1 withOptions:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)clearPlaybackQueueWithCompletion:(CDUnknownBlockType)arg1;
@@ -70,7 +71,9 @@
 - (id)currentItem;
 - (void)dealloc;
 - (id)init;
+- (BOOL)isMediaRemoteSyncing;
 - (BOOL)isRestoringPlaybackState;
+- (BOOL)isSyncingNowPlayingInfo;
 - (void)performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)preservePlaybackStateImmediately;
 - (void)recordLyricsViewEvent:(id)arg1;
@@ -79,9 +82,11 @@
 - (BOOL)remoteCommand:(id)arg1 isSupportedForContentItemIdentifier:(id)arg2;
 - (void)restorePlaybackStateCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)schedulePlaybackStatePreservation;
-- (void)startMediaRemoteSync;
+- (void)startPictureInPicture;
+- (void)startSyncingNowPlayingInfo;
 - (long long)state;
-- (void)stopMediaRemoteSync;
+- (void)stopSyncingNowPlayingInfo;
+- (void)updateSupportedCommandsForCommandCenter:(id)arg1 muxer:(id)arg2 action:(SEL)arg3;
 - (id)videoLayer;
 
 @end

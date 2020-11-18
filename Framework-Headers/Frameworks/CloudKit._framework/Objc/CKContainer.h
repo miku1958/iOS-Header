@@ -134,6 +134,7 @@
 - (void)fetchShareParticipantWithUserRecordID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchUserRecordIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)findTrackedAssetByUUID:(id)arg1;
+- (void)flushOperationMetricsToPowerLog;
 - (void)getNewWebSharingIdentity:(CDUnknownBlockType)arg1;
 - (void)handleOperationCheckpoint:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationCompletion:(id)arg1 forOperationWithID:(id)arg2;
@@ -161,6 +162,7 @@
 - (void)statusGroupsForApplicationPermission:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)tossConfigWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)trackAssets:(id)arg1;
+- (void)triggerAutoBugCaptureSnapshot;
 - (void)updatePushTokens;
 - (void)wipeAllCachesAndDie;
 

@@ -14,6 +14,7 @@
 @interface SFBLEScanner : NSObject <CBCentralManagerDelegate>
 {
     BOOL _activateCalled;
+    BOOL _activeScan;
     CBCentralManager *_centralManager;
     struct NSMutableDictionary *_devices;
     BOOL _invalidateCalled;
@@ -64,6 +65,8 @@
     long long _rssiThreshold;
     long long _scanInterval;
     long long _scanRate;
+    long long _scanState;
+    CDUnknownBlockType _scanStateChangedHandler;
     long long _scanWindow;
     double _timeout;
     CDUnknownBlockType _timeoutHandler;
@@ -87,6 +90,8 @@
 @property (nonatomic) BOOL scanCache; // @synthesize scanCache=_scanCache;
 @property (nonatomic) long long scanInterval; // @synthesize scanInterval=_scanInterval;
 @property (nonatomic) long long scanRate; // @synthesize scanRate=_scanRate;
+@property (readonly, nonatomic) long long scanState; // @synthesize scanState=_scanState;
+@property (copy, nonatomic) CDUnknownBlockType scanStateChangedHandler; // @synthesize scanStateChangedHandler=_scanStateChangedHandler;
 @property (nonatomic) long long scanWindow; // @synthesize scanWindow=_scanWindow;
 @property (readonly) Class superclass;
 @property (nonatomic) double timeout; // @synthesize timeout=_timeout;
@@ -97,6 +102,7 @@
 - (void)_foundDevice:(id)arg1 advertisementData:(id)arg2 rssi:(long long)arg3 fields:(id)arg4;
 - (void)_invalidate;
 - (void)_invokeBlockActivateSafe:(CDUnknownBlockType)arg1;
+- (BOOL)_needActiveScan;
 - (BOOL)_needDups;
 - (void)_poweredOff;
 - (void)_rescanTimerFired;

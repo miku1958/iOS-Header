@@ -37,10 +37,12 @@
 + (id)copyTLVForBytes:(const char *)arg1 messageLength:(unsigned long long)arg2 type:(unsigned char)arg3 includeHeaderOffset:(BOOL)arg4 n:(int)arg5;
 + (id)errorFromMessage:(id)arg1;
 + (unsigned char)getTLVtypeForBytes:(const char *)arg1 includeHeaderOffset:(BOOL)arg2 nextTLVOffset:(unsigned int *)arg3;
++ (BOOL)isTLVValid:(char *)arg1 cursorCurrent:(char *)arg2 totalLength:(unsigned long long)arg3;
 + (unsigned int)messageIDForMessage:(id)arg1;
 + (id)parseTLVResponseForDump:(id)arg1;
 + (id)policyDumpFromData:(id)arg1;
 + (unsigned int)policyIDFromMessage:(id)arg1;
++ (id)readTLVOfType:(unsigned char)arg1 startCursor:(char *)arg2 currentCursor:(char **)arg3 totalLength:(unsigned long long)arg4 readTLVInstance:(unsigned int)arg5;
 - (void).cxx_destruct;
 - (unsigned long long)addPolicy:(id)arg1;
 - (BOOL)apply;

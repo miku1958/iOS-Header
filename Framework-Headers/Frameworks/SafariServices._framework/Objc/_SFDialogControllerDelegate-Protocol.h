@@ -11,6 +11,7 @@
 @protocol _SFDialogControllerDelegate <NSObject>
 
 @optional
+- (void)dialogController:(_SFDialogController *)arg1 didDismissDialog:(_SFDialog *)arg2;
 - (BOOL)dialogController:(_SFDialogController *)arg1 shouldSuppressDialog:(_SFDialog *)arg2;
 - (void)dialogController:(_SFDialogController *)arg1 willPresentDialog:(_SFDialog *)arg2;
 @end

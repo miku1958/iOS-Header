@@ -46,6 +46,7 @@
 @property (readonly, nonatomic) BOOL lastVisitWasHTTPNonGet;
 @property (readonly, nonatomic) NSDate *lastVisitedDate;
 @property (readonly, nonatomic) double lastVisitedTimeInterval;
+@property (readonly, nonatomic) double lastVisitedTimeIntervalOnSynchronizationQueue;
 @property (readonly, nonatomic) NSArray *redirectSourceItems;
 @property (readonly, nonatomic) BOOL shouldRecomputeDerivedVisitCountScores; // @synthesize shouldRecomputeDerivedVisitCountScores=_shouldRecomputeDerivedVisitCountScores;
 @property (readonly, nonatomic) NSString *simplifiedUserVisibleURLString;

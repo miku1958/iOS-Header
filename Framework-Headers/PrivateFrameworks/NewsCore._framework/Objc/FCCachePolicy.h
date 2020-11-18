@@ -16,6 +16,7 @@
 @property (nonatomic) double maximumCachedAge; // @synthesize maximumCachedAge=_maximumCachedAge;
 
 + (id)cachePolicyWithSoftMaxAge:(double)arg1;
++ (id)cachedOnlyCachePolicy;
 + (id)defaultCachePolicy;
 
 @end

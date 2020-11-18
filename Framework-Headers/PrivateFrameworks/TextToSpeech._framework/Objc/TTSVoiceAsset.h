@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <TextToSpeech/TTSAssetBase.h>
 
 #import <TextToSpeech/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSString;
 
-@interface TTSVoiceAsset : NSObject <NSSecureCoding>
+@interface TTSVoiceAsset : TTSAssetBase <NSSecureCoding>
 {
     BOOL _isInstalled;
     BOOL _isBuiltInVoice;
@@ -19,20 +19,14 @@
     NSArray *_languages;
     long long _gender;
     long long _footprint;
-    NSNumber *_contentVersion;
-    NSString *_masteredVersion;
-    NSString *_compatibilityVersion;
 }
 
-@property (readonly, nonatomic) NSString *compatibilityVersion; // @synthesize compatibilityVersion=_compatibilityVersion;
-@property (readonly, nonatomic) NSNumber *contentVersion; // @synthesize contentVersion=_contentVersion;
 @property (readonly, nonatomic) long long footprint; // @synthesize footprint=_footprint;
 @property (readonly, nonatomic) long long gender; // @synthesize gender=_gender;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isBuiltInVoice; // @synthesize isBuiltInVoice=_isBuiltInVoice;
 @property (readonly, nonatomic) BOOL isInstalled; // @synthesize isInstalled=_isInstalled;
 @property (readonly, nonatomic) NSArray *languages; // @synthesize languages=_languages;
-@property (readonly, nonatomic) NSString *masteredVersion; // @synthesize masteredVersion=_masteredVersion;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 
 + (BOOL)supportsSecureCoding;

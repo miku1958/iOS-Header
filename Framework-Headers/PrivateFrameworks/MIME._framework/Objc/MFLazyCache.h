@@ -27,13 +27,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)_exchangeOriginalValue:(id)arg1 forKey:(id)arg2 withValue:(id)arg3;
+- (void)_exchangeOriginalObject:(id)arg1 forKey:(id)arg2 withObject:(id)arg3;
 - (void)cache:(id)arg1 willEvictObject:(id)arg2;
 - (void)dealloc;
 - (id)init;
+- (id)initWithCountLimit:(unsigned long long)arg1;
+- (id)objectForKey:(id)arg1 generator:(CDUnknownBlockType)arg2;
 - (void)removeAllObjects;
-- (id)storedValueForKey:(id)arg1;
-- (id)valueForKey:(id)arg1 valueGenerator:(CDUnknownBlockType)arg2;
+- (void)removeObjectForKey:(id)arg1;
+- (id)storedObjectForKey:(id)arg1;
 - (long long)waiterCountForKey:(id)arg1;
 
 @end

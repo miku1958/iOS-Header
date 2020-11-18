@@ -7,16 +7,16 @@
 #import <objc/NSObject.h>
 
 @class NSDate;
-@protocol _SFTelephonyNavigationMitigationPolicyDelegate;
+@protocol _SFDialogPresenting;
 
 @interface _SFTelephonyNavigationMitigationPolicy : NSObject
 {
     long long _classification;
     NSDate *_dateUserLastDeclined;
-    id<_SFTelephonyNavigationMitigationPolicyDelegate> _delegate;
+    id<_SFDialogPresenting> _dialogPresenter;
 }
 
-@property (weak, nonatomic) id<_SFTelephonyNavigationMitigationPolicyDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<_SFDialogPresenting> dialogPresenter; // @synthesize dialogPresenter=_dialogPresenter;
 
 + (double)test_suspiciousClassificationExpirationDuration;
 - (void).cxx_destruct;

@@ -6,7 +6,7 @@
 
 #import <StoreKitUI/SKUIViewElement.h>
 
-@class NSArray, SKUILabelViewElement;
+@class NSArray, SKUIImageViewElement, SKUILabelViewElement;
 
 @interface SKUIDialogTemplateViewElement : SKUIViewElement
 {
@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) NSArray *buttons;
 @property (readonly, nonatomic) long long dialogType; // @synthesize dialogType=_dialogType;
+@property (readonly, nonatomic) SKUIImageViewElement *image;
 @property (readonly, nonatomic) SKUILabelViewElement *message;
 @property (readonly, nonatomic) SKUILabelViewElement *title;
 

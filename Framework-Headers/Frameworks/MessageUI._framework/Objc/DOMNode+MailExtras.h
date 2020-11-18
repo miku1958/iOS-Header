@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMNode.h>
+#import <WebKit/DOMNode.h>
 
 @interface DOMNode (MailExtras)
 

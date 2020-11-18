@@ -43,6 +43,7 @@
 - (id)newCommandEvent;
 - (id)newCommandEventWithCommandType:(unsigned int)arg1 options:(id)arg2;
 - (id)newCommandEventWithContentItemIdentifier:(id)arg1;
+- (id)newCommandEventWithPlaybackQueueOffset:(long long)arg1;
 - (id)newSeekCommandEventWithType:(unsigned long long)arg1;
 - (void)notifyPropagatablePropertyChanged;
 - (void)removeTarget:(id)arg1;

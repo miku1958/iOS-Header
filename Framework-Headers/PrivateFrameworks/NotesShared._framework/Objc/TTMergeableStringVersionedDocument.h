@@ -18,7 +18,7 @@
 + (unsigned int)minimumSupportedVersion;
 + (unsigned int)serializationVersion;
 - (void).cxx_destruct;
-- (id)initWithArchive:(const struct Document *)arg1 andReplicaID:(id)arg2;
+- (id)initWithArchive:(const Document_0e94f2f5 *)arg1 andReplicaID:(id)arg2;
 - (id)initWithData:(id)arg1 andReplicaID:(id)arg2;
 - (void)mergeVersion:(unsigned int)arg1 fromData:(id)arg2;
 - (unsigned long long)mergeWithStringVersionedDocument:(id)arg1;

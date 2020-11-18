@@ -20,6 +20,7 @@
 - (oneway void)loadRemoteImageDataForURL:(NSURL *)arg1 reply:(void (^)(NSData *))arg2;
 - (oneway void)localizedMessageFromDictionary:(NSDictionary *)arg1 forBundleID:(NSString *)arg2 handler:(void (^)(NSString *))arg3;
 - (oneway void)processQuickAction:(GKQuickAction *)arg1;
+- (void)resetLoginCancelCount;
 - (oneway void)setHostPID:(int)arg1 reply:(void (^)(void))arg2;
 - (oneway void)setTestGame:(GKGameInternal *)arg1 reply:(void (^)(void))arg2;
 @end

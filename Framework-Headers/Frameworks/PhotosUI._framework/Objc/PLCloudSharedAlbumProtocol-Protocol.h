@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSString *cloudOwnerFirstName;
 @property (strong, nonatomic) NSString *cloudOwnerFullName;
 @property (strong, nonatomic) NSString *cloudOwnerHashedPersonID;
+@property (nonatomic) BOOL cloudOwnerIsWhitelisted;
 @property (strong, nonatomic) NSString *cloudOwnerLastName;
 @property (strong, nonatomic) NSString *cloudPersonID;
 @property (strong, nonatomic) NSNumber *cloudPublicURLEnabled;

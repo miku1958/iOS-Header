@@ -33,7 +33,8 @@
 + (id)defaultAppLibrary;
 + (id)localizedNameForBundle:(id)arg1;
 - (void).cxx_destruct;
-- (void)_refreshAppLibraryWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_refreshAppLibrary;
+- (void)_subscriptionsDidChangeNotification:(id)arg1;
 - (id)allAppBundleIdentifiers;
 - (void)applicationsDidInstall:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;
@@ -43,7 +44,7 @@
 - (void)endIgnoringAppLibraryChanges;
 - (id)init;
 - (id)installedAppBundleIdentifiers;
-- (void)refresh;
+- (id)refresh;
 - (id)subscribedAppBundleIdentifiers;
 - (id)subscriptionInfoByBundleIdentifier;
 - (id)testAppBundleIdentifiers;

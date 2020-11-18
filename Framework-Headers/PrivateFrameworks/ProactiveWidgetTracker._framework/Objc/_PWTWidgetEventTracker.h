@@ -15,10 +15,13 @@
     PETGoalConversionEventTracker *_conversionTracker;
     PETScalarEventTracker *_updateTracker;
     PETDistributionEventTracker *_screenLingerTracker;
+    PETScalarEventTracker *_foregroundingTracker;
     BOOL _hasReceivedActiveDisplayModeChangeNotificationOnce;
     BOOL _isCurrentlyVisible;
     BOOL _willBecomeVisible;
     BOOL _didBecomeVisibleWhileLocked;
+    BOOL _widgetIsForeground;
+    BOOL _widgetWasEverForeground;
     long long _activeDisplayMode;
     double _lastAppearTime;
 }
@@ -30,6 +33,7 @@
 - (void)userEngagedWithWidget;
 - (void)widgetActiveDisplayModeDidChange:(long long)arg1 withMaximumSize:(struct CGSize)arg2;
 - (void)widgetDidAppear;
+- (void)widgetDidBecomeForeground:(BOOL)arg1;
 - (void)widgetDidDisappear;
 - (void)widgetPerformedUpdateWithResult:(unsigned long long)arg1;
 - (void)widgetWillAppear;

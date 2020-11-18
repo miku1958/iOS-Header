@@ -30,6 +30,7 @@
 + (id)sharedInputModeController;
 - (void)dealloc;
 - (id)defaultEnabledInputModesForCurrentLocale;
+- (BOOL)identifierIsValidSystemInputMode:(id)arg1;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <LinkPresentation/LPContentInsettable-Protocol.h>
 
-@class LPPlayButton, LPiTunesPlaybackInformation;
+@class LPMusicPlayButtonStyle, LPPlayButton, LPiTunesPlaybackInformation;
 
 __attribute__((visibility("hidden")))
 @interface LPiTunesPlayButtonView : LPComponentView <LPContentInsettable>
@@ -16,17 +16,19 @@ __attribute__((visibility("hidden")))
     LPPlayButton *_button;
     LPiTunesPlaybackInformation *_playbackInformation;
     struct UIEdgeInsets _contentInset;
+    LPMusicPlayButtonStyle *_style;
 }
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithPlaybackInformation:(id)arg1;
+- (id)initWithPlaybackInformation:(id)arg1 style:(id)arg2;
 - (void)installPlaceholderButton;
 - (void)installPreviewButton;
 - (void)installiTunesButton;
 - (void)layoutComponentView;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (void)updateButton;
+- (void)updateButtonForPodcast;
 - (void)updateButtonForRadio;
 - (void)updateButtonForSongOrAlbum;
 

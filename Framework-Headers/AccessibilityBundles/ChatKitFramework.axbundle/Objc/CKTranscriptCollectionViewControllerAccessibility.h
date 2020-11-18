@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySpeakThisElementsAndStrings;
+- (void)effectManager:(id)arg1 didStartEffect:(id)arg2;
 
 @end
 

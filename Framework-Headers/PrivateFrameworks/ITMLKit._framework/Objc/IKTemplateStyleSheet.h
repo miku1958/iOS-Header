@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (id)_styleComposerForNode:(id)arg1;
 - (id)initWithXMLDoc:(struct _xmlDoc *)arg1 error:(id *)arg2;
+- (void)setViewElementStylesDirty;
 - (id)styleComposerForElement:(id)arg1;
 
 @end

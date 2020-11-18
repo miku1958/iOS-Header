@@ -17,8 +17,8 @@
 #import <StoreKitUI/UINavigationControllerDelegate-Protocol.h>
 #import <StoreKitUI/UITabBarControllerDelegate-Protocol.h>
 
-@class IKAppContext, IKAppDataStorage, NSArray, NSDictionary, NSMutableArray, NSOperationQueue, NSString, NSURL, SKUIAppDeviceConfig, SKUIApplicationControllerOptions, SKUIClientContext, SKUIMetricsController, SKUIModalDocumentController, SKUINavigationDocumentController, SKUIPreviewDocumentController, SKUIScrollingTabBarController, SKUISimpleContainerViewController, SKUITabBarController, SKUIURL, SKUIURLResolver, UITabBarController, UIViewController, _SKUIApplicationShutdownHelper;
-@protocol SKUIApplicationDelegate, SKUIStatusOverlayProvider;
+@class IKAppContext, NSArray, NSDictionary, NSMutableArray, NSOperationQueue, NSString, NSURL, SKUIAppDeviceConfig, SKUIApplicationControllerOptions, SKUIClientContext, SKUIMetricsController, SKUIModalDocumentController, SKUINavigationDocumentController, SKUIPreviewDocumentController, SKUIScrollingTabBarController, SKUISimpleContainerViewController, SKUITabBarController, SKUIURL, SKUIURLResolver, UITabBarController, UIViewController, _SKUIApplicationShutdownHelper;
+@protocol IKAppDataStoring, SKUIApplicationDelegate, SKUIStatusOverlayProvider;
 
 @interface SKUIApplicationController : NSObject <SKUIModalDocumentDelegate, SKUIModalSourceViewProvider, SKUINavigationControllerDelegate, SKUINavigationDocumentDelegate, SKUITabBarControllerDelegate, SKUIURLResolverDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate, IKAppContextDelegate, IKApplication>
 {
@@ -37,7 +37,7 @@
     unsigned long long _indexOfLastTabNeedingContent;
     NSDictionary *_launchOptions;
     SKUIURL *_legacyLaunchURL;
-    IKAppDataStorage *_localStorage;
+    id<IKAppDataStoring> _localStorage;
     SKUIModalDocumentController *_modalDocumentController;
     SKUIMetricsController *_metricsController;
     BOOL _mescalPrimeEnabledForXHRRequests;
@@ -57,7 +57,7 @@
     NSArray *_tabBarItems;
     SKUINavigationDocumentController *_transientNavigationDocument;
     SKUIURLResolver *_urlResolver;
-    IKAppDataStorage *_vendorStorage;
+    id<IKAppDataStoring> _vendorStorage;
     NSMutableArray *_whenLoadedBlocks;
     SKUIApplicationControllerOptions *_options;
     SKUIScrollingTabBarController *_scrollingTabBarController;
@@ -83,6 +83,7 @@
 @property (readonly, nonatomic) UITabBarController *tabBarController; // @synthesize tabBarController=_tabBarController;
 @property (copy, nonatomic) NSArray *tabBarItems; // @synthesize tabBarItems=_tabBarItems;
 
++ (id)_referrerAppForSourceApplication:(id)arg1 launchURL:(id *)arg2;
 + (id)applicationOptionsWithLaunchOptions:(id)arg1;
 + (id)configurationPreloader;
 + (void)finishedWithConfigurationPreloader;
@@ -157,6 +158,7 @@
 - (BOOL)_usesFloatingStatusOverlayForWidth:(double)arg1;
 - (id)activeDocument;
 - (void)appContext:(id)arg1 didCompletePurchase:(id)arg2;
+- (void)appContext:(id)arg1 didCompleteSoftwarePurchase:(id)arg2;
 - (void)appContext:(id)arg1 didExitWithOptions:(id)arg2;
 - (void)appContext:(id)arg1 didFailWithError:(id)arg2;
 - (void)appContext:(id)arg1 didStartWithOptions:(id)arg2;

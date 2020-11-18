@@ -13,11 +13,11 @@
 __attribute__((visibility("hidden")))
 @interface _LSSpringBoardCall : NSObject <NSCopying>
 {
+    NSString *_schemeIfNotFileURL;
     BOOL _callCompletionHandlerWhenFullyComplete;
     BOOL _promptForSchemeApprovalIfNeeded;
-    NSString *_name;
-    NSString *_applicationIdentifier;
     NSDictionary *_launchOptions;
+    NSString *_applicationIdentifier;
     NSXPCConnection *_clientXPCConnection;
 }
 
@@ -25,17 +25,16 @@ __attribute__((visibility("hidden")))
 @property BOOL callCompletionHandlerWhenFullyComplete; // @synthesize callCompletionHandlerWhenFullyComplete=_callCompletionHandlerWhenFullyComplete;
 @property (strong) NSXPCConnection *clientXPCConnection; // @synthesize clientXPCConnection=_clientXPCConnection;
 @property (copy) NSDictionary *launchOptions; // @synthesize launchOptions=_launchOptions;
-@property (copy) NSString *name; // @synthesize name=_name;
 @property BOOL promptForSchemeApprovalIfNeeded; // @synthesize promptForSchemeApprovalIfNeeded=_promptForSchemeApprovalIfNeeded;
 
-+ (id)queue;
++ (id)springBoardQueue;
+- (void)callSpringBoardWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)callWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)debugDescription;
 - (void)lieWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)prompt:(BOOL)arg1 forSchemeApproval:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)promptForSchemeApprovalIfNeededWithCompletionHandler:(CDUnknownBlockType)arg1 didNotPromptHandler:(CDUnknownBlockType)arg2;
+- (void)promptAndCallSpringBoardWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

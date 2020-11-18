@@ -6,16 +6,19 @@
 
 #import <UIKit/UIButton.h>
 
-@class SearchUISFImage;
+@class SearchUIAppIconImage;
 
 @interface SearchUIAppIconButton : UIButton
 {
-    SearchUISFImage *_image;
+    SearchUIAppIconImage *_image;
 }
 
-@property (strong) SearchUISFImage *image; // @synthesize image=_image;
+@property (strong) SearchUIAppIconImage *image; // @synthesize image=_image;
 
 - (void).cxx_destruct;
+- (void)appIconImageDidChange:(id)arg1;
+- (void)dealloc;
+- (id)init;
 - (void)updateWithBundleID:(id)arg1;
 
 @end

@@ -11,9 +11,11 @@
 @interface NCNotificationRequest (NCUIAdditions)
 
 @property (readonly, copy, nonatomic) NSArray *defaultEnvironmentActions;
+@property (readonly, nonatomic) BOOL hasAttachments;
 @property (readonly, nonatomic) BOOL hasOnlySingleMinimalTextInputAction;
 @property (readonly, nonatomic) BOOL hasOnlySingleTextInputAction;
 @property (readonly, copy, nonatomic) NSArray *minimalEnvironmentActions;
+@property (readonly, nonatomic) BOOL showsTextInputOnAppearance;
 
 @end
 

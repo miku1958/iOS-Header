@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)objectForPropertyListKey:(id)arg1 ofClass:(Class)arg2;
 - (id)objectForPropertyListKey:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;
+- (id)objectsForPropertyListKeys:(id)arg1;
 
 @end
 

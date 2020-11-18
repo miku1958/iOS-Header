@@ -46,6 +46,8 @@
     CDStruct_1b6d18a9 *_exposureDurations;
     float *_ISOs;
     float *_exposureTargetBiases;
+    unsigned long long _stillImageUserInitiatedRequestTime;
+    CDStruct_1b6d18a9 _stillImageUserInitiatedRequestPTS;
     long long _stillImageRequestTime;
     long long _stillImageCaptureStartTime;
     double _stillImageCaptureAbsoluteStartTime;
@@ -89,6 +91,8 @@
 @property (nonatomic) double stillImageCaptureAbsoluteStartTime; // @synthesize stillImageCaptureAbsoluteStartTime=_stillImageCaptureAbsoluteStartTime;
 @property (nonatomic) long long stillImageCaptureStartTime; // @synthesize stillImageCaptureStartTime=_stillImageCaptureStartTime;
 @property (nonatomic) long long stillImageRequestTime; // @synthesize stillImageRequestTime=_stillImageRequestTime;
+@property (nonatomic) CDStruct_1b6d18a9 stillImageUserInitiatedRequestPTS; // @synthesize stillImageUserInitiatedRequestPTS=_stillImageUserInitiatedRequestPTS;
+@property (nonatomic) unsigned long long stillImageUserInitiatedRequestTime; // @synthesize stillImageUserInitiatedRequestTime=_stillImageUserInitiatedRequestTime;
 @property (copy, nonatomic) NSDictionary *vtCompressionProperties; // @synthesize vtCompressionProperties=_vtCompressionProperties;
 @property (nonatomic) int wideColorMode; // @synthesize wideColorMode=_wideColorMode;
 

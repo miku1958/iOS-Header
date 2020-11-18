@@ -51,7 +51,9 @@
 - (void)entityValueProviderDidChange;
 - (void)enumerateChildrenUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateViewElementsWithDictionary:(id)arg1 factory:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)expandableLabelElementForWidth:(double)arg1 context:(id)arg2;
 - (id)featureWithName:(id)arg1;
+- (id)firstChildForElementName:(id)arg1;
 - (id)firstChildForElementType:(unsigned long long)arg1;
 - (id)firstDescendentWithIndexBarEntryID:(id)arg1;
 - (BOOL)handlesBackgroundColorDirectly;

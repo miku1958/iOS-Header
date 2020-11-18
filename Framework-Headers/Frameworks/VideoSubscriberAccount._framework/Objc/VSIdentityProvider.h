@@ -9,15 +9,15 @@
 #import <VideoSubscriberAccount/NSCopying-Protocol.h>
 #import <VideoSubscriberAccount/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class NSArray, NSString, NSURL, VSOptional;
 
-__attribute__((visibility("hidden")))
 @interface VSIdentityProvider : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _prohibitedByStore;
     BOOL _developer;
-    NSString *_uniqueID;
-    NSString *_providerID;
+    VSOptional *_uniqueID;
+    VSOptional *_providerID;
+    VSOptional *_providerInfo;
     NSString *_nameForSorting;
     NSArray *_supportedTemplates;
     NSArray *_supportedAuthenticationSchemes;
@@ -30,15 +30,16 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSURL *appStoreRoomURL; // @synthesize appStoreRoomURL=_appStoreRoomURL;
 @property (copy, nonatomic) NSURL *authenticationURL; // @synthesize authenticationURL=_authenticationURL;
 @property (nonatomic, getter=isDeveloper) BOOL developer; // @synthesize developer=_developer;
-@property (readonly, copy, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) VSOptional *displayName;
 @property (copy, nonatomic) NSString *nameForSorting; // @synthesize nameForSorting=_nameForSorting;
 @property (nonatomic, getter=isProhibitedByStore) BOOL prohibitedByStore; // @synthesize prohibitedByStore=_prohibitedByStore;
-@property (copy, nonatomic) NSString *providerID; // @synthesize providerID=_providerID;
+@property (strong, nonatomic) VSOptional *providerID; // @synthesize providerID=_providerID;
+@property (strong, nonatomic) VSOptional *providerInfo; // @synthesize providerInfo=_providerInfo;
 @property (copy, nonatomic) NSArray *supportedAuthenticationSchemes; // @synthesize supportedAuthenticationSchemes=_supportedAuthenticationSchemes;
 @property (copy, nonatomic) NSArray *supportedTemplates; // @synthesize supportedTemplates=_supportedTemplates;
 @property (readonly, nonatomic) BOOL supportsTemplatesSufficientForCurrentPlatform;
 @property (readonly, nonatomic) BOOL supportsTemplatesSufficientForSomeKnownPlatform;
-@property (copy, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
+@property (strong, nonatomic) VSOptional *uniqueID; // @synthesize uniqueID=_uniqueID;
 
 + (id)keyPathsForValuesAffectingDisplayName;
 + (BOOL)supportsSecureCoding;

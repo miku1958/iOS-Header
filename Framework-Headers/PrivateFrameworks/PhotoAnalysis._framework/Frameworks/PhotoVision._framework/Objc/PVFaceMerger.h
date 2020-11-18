@@ -6,19 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class PVClusterer, PVContext;
+@class PVContext;
 @protocol PVCVMLIntegrating;
 
 __attribute__((visibility("hidden")))
 @interface PVFaceMerger : NSObject
 {
     PVContext *_context;
-    PVClusterer *_clusterer;
     id<PVCVMLIntegrating> _cvmlIntegration;
 }
 
-+ (double)_overlapRatioBetweenFace:(id)arg1 andFace:(id)arg2;
-+ (id)bestMatchingFaceForFace:(id)arg1 withinFaces:(id)arg2 overlapRatioThreshold:(double)arg3;
 - (void).cxx_destruct;
 - (BOOL)_alignBBoxForFaceObservations:(id)arg1 inImage:(id)arg2 withError:(id *)arg3;
 - (BOOL)_alignBBoxForPVFaces:(id)arg1 forImage:(id)arg2;
@@ -26,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)_faceObservationsWithBBoxFromPVFaces:(id)arg1 mapping:(id)arg2;
 - (id)_faceprintBasedMatchForDetectedFace:(id)arg1 withinExistingFaces:(id)arg2;
 - (id)_newCVMLRequestOptions;
-- (id)initWithContext:(id)arg1 clusterer:(id)arg2 cvmlIntegration:(id)arg3;
+- (id)initWithContext:(id)arg1 cvmlIntegration:(id)arg2;
 - (id)mergeExistingFaces:(id)arg1 withDetectedFaces:(id)arg2 forImage:(id)arg3;
 
 @end

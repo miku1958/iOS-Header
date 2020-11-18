@@ -6,7 +6,7 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCFeedGroupEmittingContext, FCFeedGroupEmittingOperation, NSString;
+@class FCAppConfiguration, FCFeedGroupEmittingContext, FCFeedGroupEmittingOperation, NSString;
 @protocol FCFeedGroupOutlining, NSCoding;
 
 @protocol FCFeedGroupEmitting <NSObject>
@@ -22,6 +22,7 @@
 - (BOOL)wantsToInsertGroup:(id<FCFeedGroupOutlining>)arg1 withContext:(FCFeedGroupEmittingContext *)arg2;
 
 @optional
+- (NSString *)backingChannelTagIDWithAppConfig:(FCAppConfiguration *)arg1;
 - (BOOL)canMergeGroupsUnconditionally;
 - (BOOL)canMergeHeadlinesFromGroup:(id<FCFeedGroupOutlining>)arg1 intoGroup:(id<FCFeedGroupOutlining>)arg2;
 - (BOOL)supportsPagination;

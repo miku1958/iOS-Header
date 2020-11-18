@@ -7,22 +7,20 @@
 #import <RemoteUI/RUIElement.h>
 
 #import <RemoteUI/RUITableViewRowDelegate-Protocol.h>
-#import <RemoteUI/RUITableViewSectionDelegate-Protocol.h>
 #import <RemoteUI/RUITopLevelPageElement-Protocol.h>
 #import <RemoteUI/RUIWebViewDelegate-Protocol.h>
 #import <RemoteUI/UITableViewDataSource-Protocol.h>
 #import <RemoteUI/UITableViewDelegate-Protocol.h>
 
-@class NSDate, NSDictionary, NSIndexPath, NSMutableArray, NSString, RUIBarButtonItem, RUIFooterElement, RUIHeaderElement, RUIObjectModel, RUIPage, RUIPhotoPicker, RUISubHeaderElement, RUITableViewRow, UIDatePicker, UIPickerView, UITableView, UIView, _UIBackdropView;
+@class NSDate, NSDictionary, NSIndexPath, NSMutableArray, NSString, RUIBarButtonItem, RUIFooterElement, RUIHeaderElement, RUIObjectModel, RUIPage, RUISubHeaderElement, RUITableViewRow, UIDatePicker, UIPickerView, UITableView, UIView, _UIBackdropView;
 @protocol RUIHeader;
 
-@interface RUITableView : RUIElement <UITableViewDataSource, UITableViewDelegate, RUITableViewRowDelegate, RUITableViewSectionDelegate, RUITopLevelPageElement, RUIWebViewDelegate>
+@interface RUITableView : RUIElement <UITableViewDataSource, UITableViewDelegate, RUITableViewRowDelegate, RUITopLevelPageElement, RUIWebViewDelegate>
 {
     NSMutableArray *_sections;
     UITableView *_tableView;
     BOOL _showSelectPicker;
     UIDatePicker *_datePicker;
-    RUIPhotoPicker *_photoPicker;
     BOOL _showDatePicker;
     _UIBackdropView *_pickerBackdrop;
     NSIndexPath *_pickerRowIndexPath;
@@ -88,18 +86,20 @@
 - (id)indexPathForPreferredFocusedViewInTableView:(id)arg1;
 - (id)indexPathForRow:(id)arg1;
 - (id)init;
+- (void)insertRow:(id)arg1 atIndexPath:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)objectModelRowForIndexPath:(id)arg1;
+- (void)performAction:(int)arg1 forElement:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)populatePostbackDictionary:(id)arg1;
 - (void)reloadHeadersAndFootersForSection:(id)arg1;
-- (void)row:(id)arg1 activatedElement:(id)arg2;
+- (void)removeRowAtIndexPath:(id)arg1;
 - (void)rowDidChange:(id)arg1 action:(int)arg2;
 - (void)rowDidEndEditing:(id)arg1;
 - (void)rowIsFirstResponder:(id)arg1;
 - (id)rowWithIdentifier:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
-- (void)section:(id)arg1 activatedElement:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setAttributes:(id)arg1;
+- (void)setEditing:(BOOL)arg1;
 - (void)setHeaderViewAttributes:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)setImageAlignment:(int)arg1;
@@ -108,13 +108,16 @@
 - (void)showPickerViewForRow:(id)arg1 animated:(BOOL)arg2;
 - (id)sourceURL;
 - (id)sourceURLForRUITableViewRow;
-- (id)sourceURLForRUITableViewSection;
+- (id)staticValues;
+- (id)subElementWithID:(id)arg1;
 - (id)subElementsWithName:(id)arg1;
 - (Class)tableCellClassForTableViewRow:(id)arg1;
 - (id)tableView;
+- (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didUpdateFocusInContext:(id)arg2 withAnimationCoordinator:(id)arg3;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;

@@ -19,6 +19,7 @@
     BOOL _detectedOneShotEndpoint;
     BOOL _detectedRecurrentEndpoint;
     BOOL _communicatedEndpointDetection;
+    BOOL _haveSeenNonZeroSamples;
     double _sampleRate;
     double _samplesSeen;
     unsigned int _frameRate;

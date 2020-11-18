@@ -32,6 +32,7 @@
     int _defaultSceneSuspendType;
     FBProcessCPUStatistics *_cpuStatistics;
     double _execTime;
+    unsigned long long _htAppIdentifier;
     BKSProcess *_bksProcess;
     BKSProcessAssertion *_launchProcessAssertion;
     BKSProcessAssertion *_continuousProcessAssertion;
@@ -48,7 +49,7 @@
 @property (readonly, strong, nonatomic, getter=_queue_cpuStatistics) FBProcessCPUStatistics *cpuStatistics; // @synthesize cpuStatistics=_cpuStatistics;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic, getter=_queue_defaultSuspendType) int defaultSuspendType;
-@property (nonatomic) id<FBApplicationProcessDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<FBApplicationProcessDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double elapsedCPUTime;
 @property (readonly, nonatomic, getter=_queue_execTime) double execTime;
@@ -64,13 +65,12 @@
 @property (readonly, nonatomic, getter=_queue_supportsSuspendOnLock) BOOL supportsSuspendOnLock; // @synthesize supportsSuspendOnLock=_supportsSuspendOnLock;
 @property (readonly, nonatomic, getter=_queue_terminationReason) long long terminationReason;
 
-+ (void)deleteAllJobs;
 - (id)GSEventPort;
 - (id)_applicationWorkspace;
 - (id)_createWorkspace;
 - (long long)_exceptionCodeForKillReason:(int)arg1;
 - (void)_queue_addAllowedLockedFilePath:(id)arg1;
-- (int)_queue_bksVisibilityForVisibility:(int)arg1;
+- (long long)_queue_bksVisibilityForVisibility:(int)arg1;
 - (BOOL)_queue_bootstrapAndExecWithContext:(id)arg1;
 - (int)_queue_calculateDefaultSceneSuspendType;
 - (void)_queue_callExitObservers;
@@ -99,7 +99,7 @@
 - (id)_queue_name;
 - (id)_queue_newWatchdogForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)_queue_noteExitedForForceQuit:(BOOL)arg1;
-- (int)_queue_ourTaskStateForBKSTaskState:(int)arg1;
+- (int)_queue_ourTaskStateForBKSTaskState:(long long)arg1;
 - (void)_queue_processDidExit;
 - (void)_queue_processReallyDidExit;
 - (void)_queue_sceneLifecycleStateChanged:(id)arg1;
@@ -108,13 +108,11 @@
 - (void)_queue_setSupportsSuspendOnLock:(BOOL)arg1;
 - (void)_queue_setTaskState:(int)arg1;
 - (void)_queue_setVisibility:(int)arg1;
-- (void)_queue_setupBKSProcess;
 - (BOOL)_queue_shouldWatchdogWithDeclineReason:(id *)arg1;
 - (void)_queue_startWatchdogTimerForContext:(id)arg1;
 - (BOOL)_queue_supportsContinuousBackgroundMode;
 - (void)_queue_takeLaunchProcessAssertion;
 - (void)_queue_terminateWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_queue_waitToExecOrExit;
 - (void)_terminateWithRequest:(id)arg1 forWatchdog:(id)arg2;
 - (BOOL)_watchdog:(id)arg1 shouldTerminateWithDeclineReason:(out id *)arg2;
 - (id)_watchdog:(id)arg1 terminationRequestForViolatedProvision:(id)arg2 error:(id)arg3;
@@ -135,9 +133,9 @@
 - (void)killForReason:(long long)arg1 andReport:(BOOL)arg2 withDescription:(id)arg3;
 - (void)killForReason:(long long)arg1 andReport:(BOOL)arg2 withDescription:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)launchIfNecessary;
-- (void)noteWorkspaceLocked:(BOOL)arg1;
+- (void)process:(id)arg1 didExitWithContext:(id)arg2;
 - (void)process:(id)arg1 isBeingDebugged:(BOOL)arg2;
-- (void)process:(id)arg1 taskStateDidChange:(int)arg2;
+- (void)process:(id)arg1 taskStateDidChange:(long long)arg2;
 - (void)processWillExpire:(id)arg1;
 - (void)setFinishedLaunching:(BOOL)arg1;
 - (void)setPendingExit:(BOOL)arg1;

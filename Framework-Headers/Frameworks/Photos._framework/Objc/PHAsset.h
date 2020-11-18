@@ -34,6 +34,7 @@
     NSDate *_modificationDate;
     double _duration;
     NSString *_burstIdentifier;
+    unsigned long long _localResourcesState;
     NSData *_locationData;
     double _curationScore;
     NSString *_uniformTypeIdentifier;
@@ -50,9 +51,7 @@
     double _faceAreaMaxX;
     double _faceAreaMinY;
     double _faceAreaMaxY;
-    unsigned long long _localResourcesState;
     long long _cloudPlaceholderKind;
-    long long _faceDetectionState;
     id _faceAdjustmentVersion;
     struct CLLocationCoordinate2D _locationCoordinate;
 }
@@ -83,7 +82,6 @@
 @property (readonly, nonatomic) double faceAreaMaxY; // @synthesize faceAreaMaxY=_faceAreaMaxY;
 @property (readonly, nonatomic) double faceAreaMinX; // @synthesize faceAreaMinX=_faceAreaMinX;
 @property (readonly, nonatomic) double faceAreaMinY; // @synthesize faceAreaMinY=_faceAreaMinY;
-@property (readonly, nonatomic) long long faceDetectionState; // @synthesize faceDetectionState=_faceDetectionState;
 @property (readonly, nonatomic) NSArray *faceRegions; // @synthesize faceRegions=_faceRegions;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite; // @synthesize favorite=_favorite;
 @property (readonly, nonatomic) NSString *filename; // @synthesize filename=_filename;
@@ -164,6 +162,8 @@
 + (id)fetchType;
 + (id)identifierCode;
 + (id)imageManagerPropertiesToFetch;
++ (BOOL)isOriginalKnownUnsupportedFormatForAsset:(id)arg1 failureInfo:(id *)arg2;
++ (BOOL)isOriginalVideoComplementKnownUnsupportedFormatForAsset:(id)arg1 failureInfo:(id *)arg2;
 + (id)locationPropertiesToFetch;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsBursts;
@@ -189,6 +189,8 @@
 - (id)_createPropertyObjectOfClass:(Class)arg1 preFetchedProperties:(id)arg2;
 - (id)_fileURLForMetadataWithExtension:(id)arg1;
 - (id)_imageRequestOptionsForBaseVersion:(long long)arg1 options:(id)arg2 progressEstimateForImageProgress:(CDUnknownBlockType)arg3;
+- (id)_inq_messagesForRequestID:(int)arg1;
+- (void)_inq_trimToMostRecent;
 - (void)_renderTemporaryVideoForObjectBuilder:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_requestRenderedVideoForVideoURL:(id)arg1 adjustmentData:(id)arg2 canHandleAdjustmentData:(BOOL)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (id)_unfetchedPropertySetsFromPropertySets:(id)arg1;
@@ -252,6 +254,7 @@
 - (short)kindSubtype;
 - (id)mainFileURL;
 - (id)managedAssetForPhotoLibrary:(id)arg1;
+- (id)messagesForRecentImageManagerRequests;
 - (id)momentProperties;
 - (int)orientation;
 - (id)originalFileName;
@@ -274,6 +277,7 @@
 - (id)photoIrisProperties;
 - (id)pl_managedAsset;
 - (id)pl_photoLibrary;
+- (void)recordImageManagerMessageForRequestID:(int)arg1 message:(id)arg2;
 - (unsigned long long)requestContentEditingInputWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)sceneAnalysisProperties;
 - (id)thumbnailIdentifier;

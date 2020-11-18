@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebKit/WebTextIterator.h>
+#import <WebKitLegacy/WebTextIterator.h>
 
 @interface WebTextIterator (DDExtensions_Private)
 - (BOOL)dd_checkCurrentRangeAgainstString:(struct __CFString *)arg1;

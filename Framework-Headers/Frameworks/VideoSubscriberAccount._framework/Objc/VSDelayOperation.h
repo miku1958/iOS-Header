@@ -6,21 +6,26 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSObject;
+@class NSDate, NSObject;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface VSDelayOperation : VSAsyncOperation
 {
     NSObject<OS_dispatch_source> *_timerSource;
+    BOOL _shouldIgnoreTolerance;
     double _delay;
     double _tolerance;
+    NSDate *_fireDate;
 }
 
 @property (readonly, nonatomic) double delay; // @synthesize delay=_delay;
+@property (readonly, copy, nonatomic) NSDate *fireDate; // @synthesize fireDate=_fireDate;
+@property (nonatomic) BOOL shouldIgnoreTolerance; // @synthesize shouldIgnoreTolerance=_shouldIgnoreTolerance;
 @property (readonly, nonatomic) double tolerance; // @synthesize tolerance=_tolerance;
 
 + (id)delayOperationWithDelay:(double)arg1;
++ (id)delayOperationWithFireDate:(id)arg1;
 - (void).cxx_destruct;
 - (void)_cancelTimer;
 - (void)cancel;
@@ -28,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)executionDidBegin;
 - (id)init;
 - (id)initWithDelay:(double)arg1 tolerance:(double)arg2;
+- (id)initWithFireDate:(id)arg1 tolerance:(double)arg2;
 
 @end
 

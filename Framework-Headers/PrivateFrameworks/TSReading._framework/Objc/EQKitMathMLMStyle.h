@@ -14,7 +14,7 @@
 - (int)isOperatorPaddingRequired;
 - (struct Schemata)layoutSchemata;
 - (id)layoutStyleNode;
-- (const set_386565a4 *)mathMLAttributes;
+- (const set_25e6ba53 *)mathMLAttributes;
 - (id)operatorCore;
 
 @end

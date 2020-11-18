@@ -28,6 +28,7 @@
     NSDictionary *_personaSpec;
     NSData *_passcodeData;
     NSData *_contextData;
+    NSDictionary *_preferencesDict;
     CDUnknownBlockType _registrationCompletionHandler;
     CDUnknownBlockType _switchCompletionHandler;
     CDUnknownBlockType _suspendQuotasCompletionHandler;
@@ -55,6 +56,7 @@
 @property (strong, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
 @property (strong, nonatomic) NSData *passcodeData; // @synthesize passcodeData=_passcodeData;
 @property (strong, nonatomic) NSDictionary *personaSpec; // @synthesize personaSpec=_personaSpec;
+@property (strong, nonatomic) NSDictionary *preferencesDict; // @synthesize preferencesDict=_preferencesDict;
 @property (copy, nonatomic) CDUnknownBlockType registrationCompletionHandler; // @synthesize registrationCompletionHandler=_registrationCompletionHandler;
 @property (weak, nonatomic) id stakeholder; // @synthesize stakeholder=_stakeholder;
 @property (nonatomic) unsigned long long stakeholderType; // @synthesize stakeholderType=_stakeholderType;
@@ -102,9 +104,11 @@
 - (void)switchToLoginUserWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)switchToLoginUserWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)switchToUser:(id)arg1 passcodeData:(id)arg2 context:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)switchToUser:(id)arg1 passcodeData:(id)arg2 context:(id)arg3 preferences:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)terminateSyncWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)unregisterStakeHolder:(id)arg1 status:(unsigned long long)arg2 reason:(id)arg3;
 - (void)uploadContentWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)userInteractionIsEnabled;
 - (void)userSwitchTaskListDidUpdate;
 - (void)willSwitchToUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

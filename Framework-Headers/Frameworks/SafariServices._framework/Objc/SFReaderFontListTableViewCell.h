@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIImageView *fontSelectionImageView; // @synthesize fontSelectionImageView=_fontSelectionImageView;
 
 - (void).cxx_destruct;
+- (void)_setUpFontSelectionImageViewIfNecessary;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 

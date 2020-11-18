@@ -7,6 +7,7 @@
 #import <SearchFoundation/SFSearchResult.h>
 
 @interface SFSearchResult (SPFeedback)
+- (BOOL)collectAnonymousFeatures;
 - (id)objectForFeedback;
 - (void)setPropertiesOnResultCopy:(id)arg1;
 @end

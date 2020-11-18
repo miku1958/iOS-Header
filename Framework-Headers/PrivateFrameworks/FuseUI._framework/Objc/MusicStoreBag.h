@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) NSArray *iOSVersionsForNoThanksUpsell;
 @property (readonly, nonatomic) NSArray *iOSVersionsForNotNowUpsell;
 @property (readonly, nonatomic) BOOL isIgnoringAddToPlaylistUserSetting;
+@property (readonly, nonatomic) NSURL *legacyForYouURL;
 @property (readonly, nonatomic) unsigned long long librarySharedPlaylistTrackCountLimit;
 @property (readonly, nonatomic) long long minimumNumberOfDaysBetweenPresentingWelcomeScreen;
 @property (readonly, nonatomic) float popularityStarThreshold;

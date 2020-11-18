@@ -26,6 +26,7 @@
     BOOL _urlKnownToBeTrusted;
     BOOL _useUserSpecificURLBag;
     BOOL _needsTermsAndConditionsAcceptance;
+    BOOL _shouldSendDSIDHeader;
     ISBiometricAuthenticationContext *_biometricAuthenticationContext;
     id<ISBiometricSessionDelegate> _biometricSessionDelegate;
 }
@@ -47,6 +48,7 @@
 @property BOOL needsTermsAndConditionsAcceptance; // @synthesize needsTermsAndConditionsAcceptance=_needsTermsAndConditionsAcceptance;
 @property BOOL needsURLBag; // @synthesize needsURLBag=_needsURLBag;
 @property BOOL performsMachineDataActions;
+@property BOOL shouldSendDSIDHeader; // @synthesize shouldSendDSIDHeader=_shouldSendDSIDHeader;
 @property BOOL shouldSendXTokenHeader;
 @property (readonly) Class superclass;
 @property BOOL urlKnownToBeTrusted; // @synthesize urlKnownToBeTrusted=_urlKnownToBeTrusted;

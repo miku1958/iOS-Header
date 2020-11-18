@@ -11,6 +11,5 @@
 + (id)sbs_dataWithValue:(id)arg1;
 + (id)sbs_objectFromData:(id)arg1;
 + (id)sbs_valueFromData:(id)arg1 ofType:(const char *)arg2;
-- (BOOL)sbs_isPlistableType;
 @end
 

@@ -25,6 +25,7 @@
     HMApplicationData *_applicationData;
     HMBulletinBoardNotification *_bulletinBoardNotificationInternal;
     NSURL *_homeObjectURLInternal;
+    NSNumber *_instanceID;
     NSArray *_linkedServiceInstanceIDs;
     HMThreadSafeMutableArrayCollection *_currentCharacteristics;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -32,7 +33,6 @@
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDelegateCaller *_delegateCaller;
-    NSNumber *_instanceID;
 }
 
 @property (weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;

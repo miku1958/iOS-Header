@@ -32,7 +32,6 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL editing; // @synthesize editing=_editing;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) long long listMode;
 @property (readonly, nonatomic) NSURL *presentedURL;
 @property (weak, nonatomic) _UIDocumentListController *rootListController; // @synthesize rootListController=_rootListController;
 @property (strong, nonatomic) NSArray *selectedItems;
@@ -44,6 +43,7 @@
 - (void).cxx_destruct;
 - (Class)_classForChildren;
 - (void)_commonInitWithModel:(id)arg1;
+- (void)_performScrollTest:(id)arg1 iterations:(int)arg2 delta:(int)arg3 listMode:(long long)arg4;
 - (void)_setContainerViewController:(id)arg1;
 - (void)_updateScrollPositionForStateRestoration;
 - (void)decodeRestorableStateWithCoder:(id)arg1;

@@ -16,9 +16,17 @@
     NSString *_proxyServer;
     NSNumber *_proxyPort;
     NSString *_authenticationType;
+    NSNumber *_defaultProtocolMask;
+    NSNumber *_allowedProtocolMask;
+    NSNumber *_allowedProtocolMaskInRoaming;
+    NSNumber *_allowedProtocolMaskInDomesticRoaming;
 }
 
+@property (strong, nonatomic) NSNumber *allowedProtocolMask; // @synthesize allowedProtocolMask=_allowedProtocolMask;
+@property (strong, nonatomic) NSNumber *allowedProtocolMaskInDomesticRoaming; // @synthesize allowedProtocolMaskInDomesticRoaming=_allowedProtocolMaskInDomesticRoaming;
+@property (strong, nonatomic) NSNumber *allowedProtocolMaskInRoaming; // @synthesize allowedProtocolMaskInRoaming=_allowedProtocolMaskInRoaming;
 @property (strong, nonatomic) NSString *authenticationType; // @synthesize authenticationType=_authenticationType;
+@property (strong, nonatomic) NSNumber *defaultProtocolMask; // @synthesize defaultProtocolMask=_defaultProtocolMask;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *password; // @synthesize password=_password;
 @property (strong, nonatomic) NSNumber *proxyPort; // @synthesize proxyPort=_proxyPort;

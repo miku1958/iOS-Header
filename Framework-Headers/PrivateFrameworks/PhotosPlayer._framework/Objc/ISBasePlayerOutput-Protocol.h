@@ -10,6 +10,7 @@
 
 @protocol ISBasePlayerOutput <NSObject>
 - (void)applyOutputInfo:(ISPlayerState *)arg1 withTransitionOptions:(ISPlayerOutputTransitionOptions *)arg2 completion:(void (^)(BOOL))arg3;
+- (void)applyScale:(double)arg1 withTransitionOptions:(ISPlayerOutputTransitionOptions *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)setContent:(ISPlayerOutputContent *)arg1;
 @end
 

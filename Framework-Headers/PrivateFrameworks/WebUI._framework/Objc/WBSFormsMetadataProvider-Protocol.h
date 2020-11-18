@@ -10,6 +10,6 @@
 
 @property (readonly, nonatomic) unsigned long long formCount;
 
-- (void)enumerateFormsUsingBlock:(void (^)(struct OpaqueFormAutoFillFrame *, NSDictionary *, BOOL *))arg1;
+- (void)enumerateFormsUsingBlock:(void (^)(struct OpaqueFormAutoFillFrame *, WBSFormMetadata *, BOOL *))arg1;
 @end
 

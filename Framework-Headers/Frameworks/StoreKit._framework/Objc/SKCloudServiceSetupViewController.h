@@ -6,18 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <StoreKit/SFSafariViewControllerDelegate-Protocol.h>
 #import <StoreKit/SKCloudServiceSetupRemoteViewControllerDelegate-Protocol.h>
 
-@class NSString, SKCloudServiceSetupConfiguration, SKCloudServiceSetupReloadContext, _UIResilientRemoteViewContainerViewController;
+@class NSString, SFSafariViewController, SKCloudServiceSetupConfiguration, SKCloudServiceSetupReloadContext, _UIResilientRemoteViewContainerViewController;
 @protocol SKCloudServiceSetupViewControllerDelegate;
 
-@interface SKCloudServiceSetupViewController : UIViewController <SKCloudServiceSetupRemoteViewControllerDelegate>
+@interface SKCloudServiceSetupViewController : UIViewController <SFSafariViewControllerDelegate, SKCloudServiceSetupRemoteViewControllerDelegate>
 {
     _UIResilientRemoteViewContainerViewController *_remoteViewContainerViewController;
     BOOL _isRemoteViewControllerReady;
     BOOL _hasInitializedServiceViewController;
     SKCloudServiceSetupReloadContext *_activeCloudServiceSetupReloadContext;
     CDUnknownBlockType _loadCompletionHandler;
+    SFSafariViewController *_safariViewController;
     id<SKCloudServiceSetupViewControllerDelegate> _delegate;
     SKCloudServiceSetupConfiguration *_configuration;
 }
@@ -35,12 +37,17 @@
 - (void)_requestRemoteViewController;
 - (void)cloudServiceSetupRemoteViewController:(id)arg1 didFinishLoadingWithSuccess:(BOOL)arg2 error:(id)arg3;
 - (void)cloudServiceSetupRemoteViewController:(id)arg1 requestsDismissalWithAnimation:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)cloudServiceSetupRemoteViewController:(id)arg1 requestsDismissingSafariViewControllerAnimated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)cloudServiceSetupRemoteViewController:(id)arg1 requestsPresentingSafariViewControllerWithURL:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dealloc;
+- (void)handleSafariScriptURL:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reloadWithContext:(id)arg1;
+- (void)safariViewController:(id)arg1 didCompleteInitialLoad:(BOOL)arg2;
+- (void)safariViewControllerDidFinish:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

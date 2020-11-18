@@ -27,5 +27,7 @@
 - (void)loadAudioAccessoryView;
 - (void)loadExtension;
 - (void)playAudioMessage;
+- (void)preserveInputViews;
+- (BOOL)restoreInputViews;
 @end
 

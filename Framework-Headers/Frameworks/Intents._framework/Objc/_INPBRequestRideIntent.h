@@ -8,7 +8,7 @@
 
 #import <Intents/NSCopying-Protocol.h>
 
-@class PBUnknownFields, _INPBDataString, _INPBInteger, _INPBIntentMetadata, _INPBLocation, _INPBPaymentMethod;
+@class PBUnknownFields, _INPBDataString, _INPBDateTimeRange, _INPBInteger, _INPBIntentMetadata, _INPBLocation, _INPBPaymentMethod;
 
 @interface _INPBRequestRideIntent : PBCodable <NSCopying>
 {
@@ -19,6 +19,7 @@
     _INPBPaymentMethod *_paymentMethod;
     _INPBLocation *_pickupLocation;
     _INPBDataString *_rideOptionName;
+    _INPBDateTimeRange *_scheduledPickupTime;
 }
 
 @property (strong, nonatomic) _INPBLocation *dropOffLocation; // @synthesize dropOffLocation=_dropOffLocation;
@@ -28,11 +29,13 @@
 @property (readonly, nonatomic) BOOL hasPaymentMethod;
 @property (readonly, nonatomic) BOOL hasPickupLocation;
 @property (readonly, nonatomic) BOOL hasRideOptionName;
+@property (readonly, nonatomic) BOOL hasScheduledPickupTime;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (strong, nonatomic) _INPBInteger *partySize; // @synthesize partySize=_partySize;
 @property (strong, nonatomic) _INPBPaymentMethod *paymentMethod; // @synthesize paymentMethod=_paymentMethod;
 @property (strong, nonatomic) _INPBLocation *pickupLocation; // @synthesize pickupLocation=_pickupLocation;
 @property (strong, nonatomic) _INPBDataString *rideOptionName; // @synthesize rideOptionName=_rideOptionName;
+@property (strong, nonatomic) _INPBDateTimeRange *scheduledPickupTime; // @synthesize scheduledPickupTime=_scheduledPickupTime;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)options;

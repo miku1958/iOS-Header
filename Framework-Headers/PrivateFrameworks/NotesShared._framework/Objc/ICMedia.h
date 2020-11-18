@@ -48,6 +48,7 @@
 + (void)purgeAllMediaInContext:(id)arg1;
 + (void)purgeMedia:(id)arg1;
 + (void)purgeMediaFilesForIdentifiers:(id)arg1;
++ (void)undeleteMedia:(id)arg1;
 - (id)containerDirectoryURL;
 - (id)data;
 - (id)dataWithoutImageMarkupMetadata:(BOOL)arg1;
@@ -58,6 +59,7 @@
 - (id)exportableContainerDirectoryURL;
 - (id)exportableMediaURL;
 - (id)exportableMediaURLWithUpdatedFileIfNecessary;
+- (void)fixBrokenReferences;
 - (BOOL)hasAllMandatoryFields;
 - (BOOL)hasFile;
 - (id)ic_loggingValues;
@@ -70,6 +72,7 @@
 - (id)mediaTarArchiveURL;
 - (id)mediaURL;
 - (void)mergeDataFromRecord:(id)arg1;
+- (BOOL)needsToBePushedToCloud;
 - (id)newlyCreatedRecord;
 - (id)objectsToBeDeletedBeforeThisObject;
 - (id)parentCloudObject;

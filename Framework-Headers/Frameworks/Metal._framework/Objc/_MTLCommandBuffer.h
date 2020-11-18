@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSDictionary, NSError, NSMutableDictionary, NSString, _MTLCommandQueue;
 @protocol MTLCommandEncoder, MTLCommandQueue;
@@ -86,12 +86,14 @@
 - (void)didSchedule:(unsigned long long)arg1 error:(id)arg2;
 - (void)didScheduleWithStartTime:(unsigned long long)arg1 endTime:(unsigned long long)arg2 error:(id)arg3;
 - (void)enqueue;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)getAndIncrementNumEncoders;
 - (id)initWithQueue:(id)arg1 retainedReferences:(BOOL)arg2;
 - (id)initWithQueue:(id)arg1 retainedReferences:(BOOL)arg2 synchronousDebugMode:(BOOL)arg3;
 - (BOOL)isCommitted;
 - (void)kernelSubmitTime;
 - (void)presentDrawable:(id)arg1;
+- (void)presentDrawable:(id)arg1 afterMinimumDuration:(double)arg2;
 - (void)presentDrawable:(id)arg1 atTime:(double)arg2;
 - (void)runPerfCounterCallbackWithBlock:(CDUnknownBlockType)arg1;
 - (void)setCommitted:(BOOL)arg1;

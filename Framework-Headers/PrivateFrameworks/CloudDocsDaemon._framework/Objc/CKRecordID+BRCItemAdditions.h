@@ -15,6 +15,7 @@
 - (BOOL)brc_isZoneRootRecordID;
 - (id)brc_itemIDOfTargetWithLibraryRowID:(id)arg1 session:(id)arg2;
 - (id)brc_itemIDWithSession:(id)arg1;
+- (id)brc_itemIDWithSession:(id)arg1 error:(id *)arg2;
 - (BOOL)brc_itemType;
 @end
 

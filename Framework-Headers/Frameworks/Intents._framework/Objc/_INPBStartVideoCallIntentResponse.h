@@ -8,13 +8,16 @@
 
 #import <Intents/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class PBUnknownFields, _INPBCallMetrics;
 
 @interface _INPBStartVideoCallIntentResponse : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    _INPBCallMetrics *_metrics;
 }
 
+@property (readonly, nonatomic) BOOL hasMetrics;
+@property (strong, nonatomic) _INPBCallMetrics *metrics; // @synthesize metrics=_metrics;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)options;

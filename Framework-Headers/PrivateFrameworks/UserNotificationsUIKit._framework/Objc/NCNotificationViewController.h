@@ -10,7 +10,7 @@
 #import <UserNotificationsUIKit/NCNotificationCustomContentDelegate-Protocol.h>
 #import <UserNotificationsUIKit/UIScrollViewDelegate-Protocol.h>
 
-@class NCMaterialSettings, NCNotificationAction, NCNotificationRequest, NSString, UIScrollView, UIView, _NCNotificationViewControllerView;
+@class MTMaterialSettings, NCNotificationAction, NCNotificationRequest, NSString, UIScrollView, UIView, _NCNotificationViewControllerView;
 @protocol NCNotificationCustomContent, NCNotificationCustomContentProviding, NCNotificationStaticContentProviding, NCNotificationViewControllerDelegate, UIViewControllerTransitionCoordinator;
 
 @interface NCNotificationViewController : UIViewController <UIScrollViewDelegate, NCNotificationCustomContentDelegate, NCContentSizeCategoryAdjusting>
@@ -24,6 +24,7 @@
     BOOL _shouldRestorePresentingShortLookOnDismiss;
     id<NCNotificationViewControllerDelegate> _delegate;
     NCNotificationRequest *_notificationRequest;
+    NSString *_groupName;
     NCNotificationAction *_presentationSourceAction;
     id<NCNotificationStaticContentProviding> _staticContentProvider;
     id<NCNotificationCustomContentProviding> _customContentProvider;
@@ -31,7 +32,8 @@
     UIView *_associatedView;
     UIScrollView *_scrollView;
     UIViewController<NCNotificationCustomContent> *_customContentProvidingViewController;
-    NCMaterialSettings *_materialSettings;
+    MTMaterialSettings *_materialSettings;
+    CDUnknownBlockType _dismissalCompletion;
 }
 
 @property (strong, nonatomic, getter=_activeTransitionCoordinator, setter=_setActiveTransitionCoordinator:) id<UIViewControllerTransitionCoordinator> activeTransitionCoordinator; // @synthesize activeTransitionCoordinator=_activeTransitionCoordinator;
@@ -43,11 +45,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NCNotificationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic, getter=_dismissalCompletion, setter=_setDismissalCompletion:) CDUnknownBlockType dismissalCompletion; // @synthesize dismissalCompletion=_dismissalCompletion;
 @property (readonly, nonatomic, getter=isDragging) BOOL dragging;
+@property (strong, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isInteractionEnabled) BOOL interactionEnabled; // @synthesize interactionEnabled=_interactionEnabled;
 @property (readonly, nonatomic, getter=isLookStyleLongLook) BOOL lookStyleLongLook;
-@property (strong, nonatomic) NCMaterialSettings *materialSettings; // @synthesize materialSettings=_materialSettings;
+@property (strong, nonatomic) MTMaterialSettings *materialSettings; // @synthesize materialSettings=_materialSettings;
 @property (strong, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
 @property (readonly, nonatomic, getter=_notificationViewControllerView) _NCNotificationViewControllerView *notificationViewControllerView;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory;
@@ -102,6 +106,7 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (BOOL)didReceiveNotificationRequest:(id)arg1;
 - (BOOL)dismissPresentedViewControllerAndClearNotification:(BOOL)arg1 animated:(BOOL)arg2;
+- (BOOL)dismissPresentedViewControllerAndClearNotification:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)expandAndPlayAudioMessage;
 - (id)initWithNotificationRequest:(id)arg1;
@@ -110,11 +115,12 @@
 - (void)loadView;
 - (long long)ncTransitionAnimationState;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
-- (void)presentLongLook:(CDUnknownBlockType)arg1;
 - (void)presentLongLookAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)preserveInputViews;
 - (void)reloadStaticContentProvider;
 - (void)removeAudioAccesoryObserver:(id)arg1;
+- (BOOL)restoreInputViews;
 - (void)setHasUpdatedContent;
 - (void)setNCTransitionAnimationState:(long long)arg1;
 - (BOOL)shouldAutorotate;

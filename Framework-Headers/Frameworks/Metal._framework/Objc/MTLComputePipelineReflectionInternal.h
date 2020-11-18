@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)builtInArguments;
 - (void)dealloc;
 - (id)description;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithSerializedData:(id)arg1 device:(id)arg2 options:(unsigned long long)arg3 flags:(CDStruct_596dc0d1)arg4;
 - (id)initWithSerializedData:(id)arg1 serializedStageInputDescriptor:(id)arg2 device:(id)arg3 options:(unsigned long long)arg4 flags:(CDStruct_596dc0d1)arg5;
 - (id)performanceStatistics;

@@ -125,6 +125,10 @@
         unsigned int dataSourceMoveItemAtIndexPathSPI:1;
         unsigned int dataSourceCanMoveItemAtIndexPath:1;
         unsigned int dataSourceMoveItemAtIndexPath:1;
+        unsigned int dataSourceSectionIndexTitlesSPI:1;
+        unsigned int dataSourceIndexPathForSectionIndexSPI:1;
+        unsigned int dataSourceIndexTitles:1;
+        unsigned int dataSourceIndexPathForIndex:1;
         unsigned int dataSourceWasNonNil:1;
         unsigned int prefetchDataSourcePrefetchItemsAtIndexPaths:1;
         unsigned int prefetchDataSourceCancelPrefetchingForItemsAtIndexPaths:1;
@@ -251,6 +255,7 @@
 - (void)_computePrefetchCandidatesForVisibleBounds:(struct CGRect)arg1 futureVisibleBounds:(struct CGRect)arg2 prefetchVector:(struct CGVector)arg3 notifyDelegateIfNeeded:(BOOL)arg4;
 - (id)_contentFocusContainerGuide;
 - (struct CGPoint)_contentOffsetForNewFrame:(struct CGRect)arg1 oldFrame:(struct CGRect)arg2 newContentSize:(struct CGSize)arg3 andOldContentSize:(struct CGSize)arg4;
+- (struct CGPoint)_contentOffsetForScrollingToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2;
 - (id)_createPreparedCellForItemAtIndexPath:(id)arg1 withLayoutAttributes:(id)arg2 applyAttributes:(BOOL)arg3;
 - (id)_createPreparedCellForItemAtIndexPath:(id)arg1 withLayoutAttributes:(id)arg2 applyAttributes:(BOOL)arg3 isFocused:(BOOL)arg4 notify:(BOOL)arg5;
 - (id)_createPreparedSupplementaryViewForElementOfKind:(id)arg1 atIndexPath:(id)arg2 withLayoutAttributes:(id)arg3 applyAttributes:(BOOL)arg4;
@@ -272,8 +277,12 @@
 - (void)_endReordering;
 - (void)_endUpdatesWithInvalidationContext:(id)arg1 tentativelyForReordering:(BOOL)arg2 animator:(id)arg3;
 - (void)_ensureViewsAreLoadedInRect:(struct CGRect)arg1;
+- (struct UIEdgeInsets)_fastScrollingIndexBarInsets;
 - (void)_finishInteractiveTransitionShouldFinish:(BOOL)arg1 finalAnimation:(BOOL)arg2;
 - (void)_finishInteractiveTransitionWithFinalAnimation:(BOOL)arg1;
+- (id)_focusFastScrollingDestinationItemAtContentEnd;
+- (id)_focusFastScrollingDestinationItemAtContentStart;
+- (id)_focusFastScrollingDestinationItemForIndexEntry:(id)arg1;
 - (void)_focusedView:(id)arg1 isMinX:(BOOL *)arg2 isMaxX:(BOOL *)arg3 isMinY:(BOOL *)arg4 isMaxY:(BOOL *)arg5;
 - (id)_fulfillPromisedFocusRegionForCell:(id)arg1;
 - (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
@@ -388,6 +397,7 @@
 - (void)_updateReorderingTargetPosition:(struct CGPoint)arg1;
 - (void)_updateReorderingTargetPosition:(struct CGPoint)arg1 forced:(BOOL)arg2;
 - (void)_updateRowsAtIndexPaths:(id)arg1 updateAction:(int)arg2;
+- (void)_updateSectionIndex;
 - (void)_updateSections:(id)arg1 updateAction:(int)arg2;
 - (void)_updateTrackedLayoutValuesWith:(id)arg1;
 - (void)_updateTransitionWithProgress:(double)arg1;

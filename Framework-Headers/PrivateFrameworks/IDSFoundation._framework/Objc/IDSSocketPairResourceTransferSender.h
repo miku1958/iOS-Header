@@ -40,6 +40,7 @@
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (nonatomic) unsigned short streamID; // @synthesize streamID=_streamID;
 
+- (void)closeFileAndMarkDone;
 - (unsigned char)command;
 - (void)dealloc;
 - (id)description;

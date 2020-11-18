@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <QuartzCore/CAAction-Protocol.h>
 #import <QuartzCore/CAMediaTiming-Protocol.h>
@@ -27,6 +27,7 @@
 @property double beginTime;
 @property (copy) NSString *beginTimeMode;
 @property (strong) id<CAAnimationDelegate> delegate;
+@property BOOL discretizesTime;
 @property double duration;
 @property (getter=isEnabled) BOOL enabled;
 @property (copy) NSString *fillMode;

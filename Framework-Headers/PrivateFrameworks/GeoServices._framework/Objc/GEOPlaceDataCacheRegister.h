@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _hasLoadedAllCaches;
 }
 
++ (id)diskCachePath;
 + (void)setDiskCachePath:(id)arg1;
 - (id)_allExistingProviderIDs;
 - (id)_cacheKeysPerSize;

@@ -16,6 +16,8 @@
 {
     NSData *_data;
     NSObject<OS_dispatch_queue> *_mediaLoadingQueue;
+    struct CGSize _intrinsicSize;
+    AVAsset *_asset;
     BOOL _hasAudio;
     NSURL *_streamingURL;
     NSURL *_youTubeURL;

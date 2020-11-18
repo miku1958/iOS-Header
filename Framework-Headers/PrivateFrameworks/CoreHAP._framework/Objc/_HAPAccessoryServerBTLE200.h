@@ -86,7 +86,7 @@
 - (void).cxx_destruct;
 - (void)_cancelAllQueuedOperationsWithError:(id)arg1;
 - (void)_cancelConnectionWithError:(id)arg1;
-- (void)_cancelDiscoveryWithError:(id)arg1;
+- (BOOL)_cancelDiscoveryWithError:(id)arg1;
 - (id)_characteristicForCBCharacteristic:(id)arg1;
 - (void)_checkForAuthPrompt;
 - (void)_createPrimaryAccessoryFromAdvertisementData;
@@ -107,6 +107,7 @@
 - (id)_getServiceInstanceID:(id)arg1;
 - (void)_handleCompletedDiscovery;
 - (void)_handleConnectionIdleTimeout;
+- (void)_handleConnectionWithError:(id)arg1;
 - (void)_handleDiscoveredCharactersitic:(id)arg1 error:(id)arg2;
 - (void)_handleDiscoveredService:(id)arg1 error:(id)arg2;
 - (void)_handleDiscoveredServices:(id)arg1 error:(id)arg2;
@@ -176,7 +177,7 @@
 - (void)discoverAccessories;
 - (void)enableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (id)getLocalPairingIdentityAndAllowCreation:(BOOL)arg1 error:(id *)arg2;
-- (void)handleConnectionWithError:(id)arg1;
+- (void)handleConnectionWithPeripheral:(id)arg1 withError:(id)arg2;
 - (void)handleDisconnectionWithError:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)hapBLEProtocolVersion;
 - (void)identifyWithCompletion:(CDUnknownBlockType)arg1;

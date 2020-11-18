@@ -23,13 +23,13 @@
 - (unsigned long long)compareTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)initWithArchive:(const struct VectorTimestamp *)arg1 andCapacity:(unsigned long long)arg2;
+- (id)initWithArchive:(const VectorTimestamp_cd1d3bcf *)arg1 andCapacity:(unsigned long long)arg2;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithData:(id)arg1 andCapacity:(unsigned long long)arg2;
 - (id)initWithTimestamps:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeWithTimestamp:(id)arg1;
-- (void)saveToArchive:(struct VectorTimestamp *)arg1;
+- (void)saveToArchive:(VectorTimestamp_cd1d3bcf *)arg1;
 - (id)serialize;
 - (void)setClock:(unsigned long long)arg1 forUUID:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)setClock:(unsigned long long)arg1 subclock:(unsigned long long)arg2 forUUID:(id)arg3 atIndex:(unsigned long long)arg4;

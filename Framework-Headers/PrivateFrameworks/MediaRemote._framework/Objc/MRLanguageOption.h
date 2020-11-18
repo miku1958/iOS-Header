@@ -4,33 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <MediaRemote/_MRLanguageOptionProtobuf.h>
 
-#import <MediaRemote/NSSecureCoding-Protocol.h>
-
-@class NSArray, NSString;
+#import <MediaRemote/NSCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface MRLanguageOption : NSObject <NSSecureCoding>
+@interface MRLanguageOption : _MRLanguageOptionProtobuf <NSCoding>
 {
-    unsigned int _languageOptionType;
-    NSString *_languageTag;
-    NSArray *_languageOptionCharacteristics;
-    NSString *_displayName;
-    NSString *_identifier;
 }
 
-@property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSArray *languageOptionCharacteristics; // @synthesize languageOptionCharacteristics=_languageOptionCharacteristics;
-@property (readonly, nonatomic) unsigned int languageOptionType; // @synthesize languageOptionType=_languageOptionType;
-@property (readonly, nonatomic) NSString *languageTag; // @synthesize languageTag=_languageTag;
-
-+ (BOOL)supportsSecureCoding;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithType:(unsigned int)arg1 languageTag:(id)arg2 characteristics:(id)arg3 displayName:(id)arg4 identifier:(id)arg5;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UIImageView, UILabel;
+@class NSArray, NSLayoutConstraint, NSString, UIColor, UIImageView, UILabel;
 
 @interface EKEventDetailsHighlightControl : UIControl
 {
@@ -15,6 +15,7 @@
     NSArray *_justSubtitleVisibleContraints;
     NSString *_actionText;
     NSString *_subtitleText;
+    UIColor *_actionColor;
     UIImageView *_iconStack;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
@@ -32,7 +33,6 @@
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (readonly, strong, nonatomic) NSLayoutConstraint *topMarginConstraint; // @synthesize topMarginConstraint=_topMarginConstraint;
 
-+ (id)actionColor;
 + (double)bottomMarginConstant;
 + (double)interLabelBaselineDeltaConstant;
 + (BOOL)requiresConstraintBasedLayout;
@@ -46,7 +46,7 @@
 - (void)contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setActionText:(id)arg1;
+- (void)setActionText:(id)arg1 color:(id)arg2;
 - (void)setIconImage:(id)arg1;
 - (void)setSubtitleAttributedText:(id)arg1;
 - (void)setSubtitleText:(id)arg1;

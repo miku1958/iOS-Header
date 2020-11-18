@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property BOOL isOpenGLQueue; // @synthesize isOpenGLQueue=_openGLQueue;
 
 - (id)description;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)init;
 - (unsigned long long)maxCommandBufferCount;
 - (unsigned long long)qosClass;

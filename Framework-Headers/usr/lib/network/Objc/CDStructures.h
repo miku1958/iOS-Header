@@ -120,6 +120,8 @@ struct nw_connection_report_s {
     unsigned int _field16;
     unsigned int _field17;
     int _field18;
+    int _field19;
+    int _field20;
 };
 
 struct nw_connection_throughput_monitor_s {

@@ -23,7 +23,7 @@
 - (id)initFromXMLNode:(struct _xmlNode *)arg1 parser:(id)arg2;
 - (BOOL)isSpaceLike;
 - (struct Schemata)layoutSchemata;
-- (const set_386565a4 *)mathMLAttributes;
+- (const set_25e6ba53 *)mathMLAttributes;
 
 @end
 

@@ -25,8 +25,10 @@
 - (void)deprioritizeItemArtworkForPurchaseHistoryID:(unsigned long long)arg1;
 - (void)deprioritizeItemArtworkForSagaID:(unsigned long long)arg1;
 - (void)deprioritizeScreenshotForPurchaseHistoryID:(unsigned long long)arg1;
+- (void)deprioritizeScreenshotForSagaID:(unsigned long long)arg1;
 - (void)deprioritizeSubscriptionContainerArtworkForPersistentID:(long long)arg1;
 - (void)deprioritizeSubscriptionItemArtworkForPersistentID:(long long)arg1;
+- (void)deprioritizeSubscriptionScreenshotForPersistentID:(long long)arg1;
 - (void)disableJaliscoGeniusWithCompletion:(void (^)(NSError *))arg1;
 - (void)enableJaliscoGeniusWithCompletion:(void (^)(NSError *))arg1;
 - (void)hasProperNetworkConditionsToPlayMediaWithCompletion:(void (^)(BOOL))arg1;
@@ -38,12 +40,13 @@
 - (void)importItemArtworkForPurchaseHistoryID:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)importItemArtworkForSagaID:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)importScreenshotForPurchaseHistoryID:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;
+- (void)importScreenshotForSagaID:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)importSubscriptionContainerArtworkForPersistentID:(long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)importSubscriptionItemArtworkForPersistentID:(long long)arg1 completion:(void (^)(NSError *))arg2;
+- (void)importSubscriptionScreenshotForPersistentID:(long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)isCellularDataRestrictedForMusicWithCompletion:(void (^)(BOOL))arg1;
 - (void)isCellularDataRestrictedForStoreAppsWithCompletion:(void (^)(BOOL))arg1;
 - (void)isCellularDataRestrictedForVideosWithCompletion:(void (^)(BOOL))arg1;
-- (void)isExpiredWithCompletion:(void (^)(NSError *, BOOL))arg1;
 - (void)jaliscoAppsImageDataForStoreID:(NSNumber *)arg1 completion:(void (^)(NSError *, NSData *))arg2;
 - (void)loadArtworkInfoForContainerSagaIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;
 - (void)loadArtworkInfoForPurchaseHistoryIDs:(NSArray *)arg1 completion:(void (^)(NSError *, NSArray *))arg2;

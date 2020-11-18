@@ -7,23 +7,25 @@
 #import <Foundation/NSObject.h>
 
 @class MRPendingMessageQueue, NSMutableDictionary;
-@protocol OS_dispatch_queue;
+@protocol MRTelevisionMessageQueueDatasource, MRTelevisionMessageQueueDelegate;
 
 @interface MRTelevisionMessageQueue : NSObject
 {
     MRPendingMessageQueue *_pendingMessageQueue;
     NSMutableDictionary *_pendingReplyQueue;
-    BOOL _stopped;
-    NSObject<OS_dispatch_queue> *_queue;
+    id<MRTelevisionMessageQueueDatasource> _datasource;
+    id<MRTelevisionMessageQueueDelegate> _delegate;
 }
 
-- (void)_processNextMessages:(CDUnknownBlockType)arg1;
+@property (nonatomic) id<MRTelevisionMessageQueueDatasource> datasource; // @synthesize datasource=_datasource;
+@property (nonatomic) id<MRTelevisionMessageQueueDelegate> delegate; // @synthesize delegate=_delegate;
+
+- (id)_dataForMessage:(id)arg1;
 - (void)dealloc;
-- (void)enqueueMessage:(id)arg1 reply:(CDUnknownBlockType)arg2 queue:(id)arg3 createDataBlock:(CDUnknownBlockType)arg4;
+- (void)enqueueMessage:(id)arg1 reply:(CDUnknownBlockType)arg2 queue:(id)arg3;
+- (void)flush;
 - (id)initWithMaxLowPriorityMessagesAllowed:(unsigned long long)arg1;
-- (void)processNextMessages:(CDUnknownBlockType)arg1;
 - (BOOL)reply:(id)arg1;
-- (void)stop;
 
 @end
 

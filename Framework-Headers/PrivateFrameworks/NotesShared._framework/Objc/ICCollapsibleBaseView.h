@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSLayoutConstraint *zeroWidthConstraint; // @synthesize zeroWidthConstraint=_zeroWidthConstraint;
 
 - (void).cxx_destruct;
+- (void)awakeFromNib;
 - (void)ic_setNeedsUpdateConstraints;
 - (void)performSetUpWithContentView:(struct UIView *)arg1;
 - (void)performSetup;

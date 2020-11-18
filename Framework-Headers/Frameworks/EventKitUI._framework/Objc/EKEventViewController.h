@@ -12,7 +12,7 @@
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKEvent, EKEventDetailItem, EKEventEditViewController, EKUIEventStatusButtonsView, EKUIRecurrenceAlertController, NSArray, NSDictionary, NSLayoutConstraint, NSString, SingleToolbarItemContainerView, UIScrollView, UITableView, UIView, _UIAccessDeniedView;
+@class EKEvent, EKEventDetailItem, EKEventEditViewController, EKUIEventStatusButtonsView, EKUIRecurrenceAlertController, NSArray, NSDictionary, NSString, SingleToolbarItemContainerView, UIScrollView, UITableView, UIView, _UIAccessDeniedView;
 @protocol EKEventViewDelegate;
 
 @interface EKEventViewController : UIViewController <EKEventTitleDetailItemDelegate, EKUIEventStatusButtonsViewDelegate, UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
@@ -57,10 +57,9 @@
     BOOL _tableIsBeingEdited;
     NSArray *_currentSections;
     int _scrollToSection;
-    UIView *_footerView;
-    UITableView *_footerTableView;
-    NSLayoutConstraint *_footerHeightConstraint;
-    NSArray *_footerSections;
+    UIView *_headerView;
+    NSArray *_headerConstraints;
+    NSArray *_tableViewTopConstraints;
     UIView *_blankFooterView;
     BOOL _showingBlankFooterView;
     UIViewController *_confirmationAlertPresentationSourceViewController;
@@ -148,10 +147,11 @@
 - (BOOL)_shouldShowEditButton;
 - (id)_statusButtons;
 - (id)_statusButtonsContainerView;
+- (id)_statusButtonsForOrb:(BOOL)arg1;
 - (id)_statusButtonsView;
 - (void)_storeChanged:(id)arg1;
 - (void)_teardownTableView;
-- (void)_updateFooterIfNeeded;
+- (void)_updateHeaderAndFooterIfNeeded;
 - (void)_updateNavBarAnimated:(BOOL)arg1;
 - (void)_updateResponse;
 - (void)_updateResponseVisibility;

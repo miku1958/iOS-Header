@@ -93,6 +93,7 @@
 - (void)_inq_stopJobsAfterConstraintOrActivityChange;
 - (void)_inq_timeoutJob:(id)arg1;
 - (void)_installMaintenanceTimer;
+- (id)_nextAdditionalJobForWorkerTypeObj:(id)arg1 scenario:(unsigned long long)arg2;
 - (void)_scheduleNextJob;
 - (id)_workerForJob:(id)arg1;
 - (void)analysisStateObserver:(id)arg1 didChangeAnalysisStateTo:(int)arg2 from:(int)arg3 assetIdentifier:(id)arg4 workerFlags:(int)arg5 workerType:(short)arg6;

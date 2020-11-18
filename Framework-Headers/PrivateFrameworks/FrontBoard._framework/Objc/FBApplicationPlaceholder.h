@@ -6,11 +6,12 @@
 
 #import <FrontBoard/FBBundleInfo.h>
 
-@class LSApplicationProxy, NSMutableSet, NSObject, NSProgress;
+@class LSApplicationProxy, NSMutableSet, NSObject, NSProgress, NSString;
 @protocol OS_dispatch_queue;
 
 @interface FBApplicationPlaceholder : FBBundleInfo
 {
+    LSApplicationProxy *_proxy;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _queue_isNewsstand;
     BOOL _queue_isRestricted;
@@ -21,6 +22,7 @@
 }
 
 @property (readonly, nonatomic, getter=isCancellable) BOOL cancellable;
+@property (readonly, copy, nonatomic) NSString *displayName;
 @property (readonly, nonatomic) unsigned long long installPhase;
 @property (readonly, nonatomic) unsigned long long installState;
 @property (readonly, nonatomic) unsigned long long installType;
@@ -34,6 +36,8 @@
 - (void)_dispatchToObservers:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)_iconDictionary;
 - (id)_initWithApplicationProxy:(id)arg1;
+- (id)_initWithBundleIdentifier:(id)arg1 url:(id)arg2;
+- (id)_initWithBundleProxy:(id)arg1 url:(id)arg2;
 - (double)_normalizedProgress:(double)arg1;
 - (void)_noteChangedSignificantly;
 - (id)_queue_observers;

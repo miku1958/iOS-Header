@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     id formDelegateForwarder;
     WebInspector *inspector;
     WebNodeHighlight *currentNodeHighlight;
+    struct RefPtr<WebCore::ValidationBubble> formValidationBubble;
     BOOL shouldMaintainInactiveSelection;
     BOOL allowsUndo;
     float zoomMultiplier;

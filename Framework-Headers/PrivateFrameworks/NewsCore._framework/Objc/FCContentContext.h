@@ -10,7 +10,7 @@
 #import <NewsCore/FCContentContext-Protocol.h>
 #import <NewsCore/FCNetworkReachabilityRequirementObserving-Protocol.h>
 
-@class FCAppConfiguration, FCArticleController, FCAssetManager, FCContentContextInternal, FCFlintResourceManager, FCTagController, NSString;
+@class FCAppConfiguration, FCArticleController, FCAssetManager, FCContentContextInternal, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCTagController, NSString, NSURL;
 @protocol FCNetworkReachabilityRequirement;
 
 @interface FCContentContext : NSObject <FCCKDatabaseDelegate, FCNetworkReachabilityRequirementObserving, FCContentContext>
@@ -20,13 +20,17 @@
     FCAssetManager *_assetManager;
     FCFlintResourceManager *_flintResourceManager;
     FCTagController *_tagController;
+    FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
     NSString *_contentDirectory;
+    NSURL *_assetCacheDirectoryURL;
+    NSURL *_webArchiveCacheDirectoryURL;
     FCContentContextInternal *_internalContentContext;
     id<FCNetworkReachabilityRequirement> _supportedCountryNetworkReachabilityRequirement;
 }
 
 @property (readonly, nonatomic) FCAppConfiguration *appConfiguration; // @synthesize appConfiguration=_appConfiguration;
 @property (readonly, nonatomic) FCArticleController *articleController; // @synthesize articleController=_articleController;
+@property (strong, nonatomic) NSURL *assetCacheDirectoryURL; // @synthesize assetCacheDirectoryURL=_assetCacheDirectoryURL;
 @property (readonly, nonatomic) FCAssetManager *assetManager; // @synthesize assetManager=_assetManager;
 @property (copy, nonatomic) NSString *contentDirectory; // @synthesize contentDirectory=_contentDirectory;
 @property (readonly, copy, nonatomic) NSString *contentStoreFrontID;
@@ -36,9 +40,12 @@
 @property (readonly, nonatomic) BOOL hasBeenRateLimited;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) FCContentContextInternal *internalContentContext; // @synthesize internalContentContext=_internalContentContext;
+@property (readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *supportedContentStoreFrontID;
 @property (strong, nonatomic) id<FCNetworkReachabilityRequirement> supportedCountryNetworkReachabilityRequirement; // @synthesize supportedCountryNetworkReachabilityRequirement=_supportedCountryNetworkReachabilityRequirement;
 @property (readonly, nonatomic) FCTagController *tagController; // @synthesize tagController=_tagController;
+@property (strong, nonatomic) NSURL *webArchiveCacheDirectoryURL; // @synthesize webArchiveCacheDirectoryURL=_webArchiveCacheDirectoryURL;
 
 + (void)initialize;
 - (void).cxx_destruct;

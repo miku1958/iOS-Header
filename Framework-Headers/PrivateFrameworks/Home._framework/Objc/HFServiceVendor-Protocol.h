@@ -10,5 +10,8 @@
 
 @protocol HFServiceVendor <HFAccessoryVendor>
 - (NSSet *)services;
+
+@optional
+- (BOOL)shouldReduceOptionItemsForNotifyingCharacteristics;
 @end
 

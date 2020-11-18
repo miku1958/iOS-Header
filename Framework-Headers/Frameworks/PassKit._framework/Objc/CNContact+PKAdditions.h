@@ -15,12 +15,12 @@
 
 + (id)contactWithABRecordRef:(void *)arg1;
 + (id)contactWithPkDictionary:(id)arg1;
-+ (id)pkContactWithNameComponents:(id)arg1 district:(id)arg2 labeledValues:(id)arg3;
-+ (id)pkContactWithNameComponents:(id)arg1 district:(id)arg2 postalAddresses:(id)arg3 emailAddresses:(id)arg4 phoneNumbers:(id)arg5;
 + (id)pkContactWithNameComponents:(id)arg1 labeledValues:(id)arg2;
++ (id)pkContactWithNameComponents:(id)arg1 postalAddresses:(id)arg2 emailAddresses:(id)arg3 phoneNumbers:(id)arg4;
 + (id)pkContactWithNameFromContact:(id)arg1 labeledValue:(id)arg2 property:(id)arg3;
 + (id)pkPassbookRequiredKeys;
 - (void *)ABPerson;
+- (id)contactWithCleanedUpDistrict;
 - (id)nameComponents;
 - (void)pkAddLabeledValues:(id)arg1 withProperty:(id)arg2;
 - (id)pkDictionaryForProperty:(id)arg1;

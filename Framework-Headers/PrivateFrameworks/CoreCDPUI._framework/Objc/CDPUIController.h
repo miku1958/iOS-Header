@@ -10,7 +10,7 @@
 #import <CoreCDPUI/CDPRemoteSecretEntryDelegate-Protocol.h>
 #import <CoreCDPUI/KeychainSyncViewControllerDelegate-Protocol.h>
 
-@class CDPContext, CDPDevicePickerViewController, CDPRemoteDeviceSecretValidator, NSArray, NSNumber, NSString, UINavigationController, UIViewController;
+@class CDPContext, CDPDevicePickerViewController, CDPRecoveryKeyEntryViewModel, CDPRemoteDeviceSecretValidator, NSArray, NSNumber, NSString, UINavigationController, UIViewController;
 @protocol CDPUIDelegate;
 
 @interface CDPUIController : CDPUIBaseController <KeychainSyncViewControllerDelegate, CDPDevicePickerDelegate, CDPRemoteSecretEntryDelegate>
@@ -25,6 +25,7 @@
     BOOL _isNumericICSC;
     NSNumber *_icscNumericLength;
     CDPContext *_activeContext;
+    CDPRecoveryKeyEntryViewModel *_recoveryKeyViewModel;
     BOOL _forceInlinePresentation;
     id<CDPUIDelegate> _delegate;
 }
@@ -37,46 +38,62 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_beginDevicePickerFlowFromEntryController:(id)arg1;
 - (void)_beginWaitingForApprovalFlow;
+- (id)_deviceLimitOfferForDevice:(id)arg1;
 - (void)_dismissPresentedViewControllerCompletion:(CDUnknownBlockType)arg1;
 - (id)_enterSecretLaterEscapeOptionWithSecret:(unsigned long long)arg1;
 - (id)_escapeOfferForDevice:(id)arg1 withMask:(unsigned long long)arg2;
 - (id)_escapeOfferForMultiApprovalWithMask:(unsigned long long)arg1;
 - (id)_escapeOfferForSingleApprovalWithMask:(unsigned long long)arg1;
-- (id)_escapeOfferForgotAllWithMask:(unsigned long long)arg1;
+- (id)_escapeOffersForgotAllWithMask:(unsigned long long)arg1 presenter:(id)arg2 devices:(id)arg3;
 - (id)_localDeviceClass;
 - (id)_newestDeviceFromDevices:(id)arg1;
 - (void)_presentRemoteApprovalViewControllerWithEscapeOfferMask:(unsigned long long)arg1;
 - (void)_presentRemoteSecretControllerWithNewestDevice:(id)arg1;
 - (void)_presentRootController:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_recoveryKeyEscapeOffer;
+- (id)_recoveryKeyEscapeOption;
+- (id)_recoveryKeyEscapeOptionWithPresentationBlock:(CDUnknownBlockType)arg1;
 - (id)_remoteApprovalEscapeOption;
 - (id)_remoteSecretControllerForDevice:(id)arg1;
 - (id)_remoteSecretControllerForNewestDevice:(id)arg1;
+- (void)_replaceViewController:(id)arg1 withNewController:(id)arg2;
 - (id)_resetAccountDataEscapeOption;
 - (void)_setupDevicePickerController:(CDUnknownBlockType)arg1;
 - (void)_showResetKeychainConfirmationAlertWithViewController:(id)arg1;
+- (id)_signInLaterEscapeOffer;
+- (id)_signInLaterEscapeOption;
 - (id)_singleICSCEscapeOfferWithMask:(unsigned long long)arg1 withController:(id)arg2;
 - (id)_waitingForApprovalEscapeOffer;
 - (void)approveFromAnotherDevice:(BOOL)arg1;
+- (void)backTappedFromRoot:(id)arg1;
 - (void)cancelRemoteApprovalTapped:(id)arg1;
-- (void)cancelSignInFromDevicePicker;
 - (void)cancelTapped:(id)arg1;
-- (void)cancelTappedFromRootViewController:(id)arg1;
 - (void)cancelledRemoteSecretEntry:(id)arg1;
+- (void)cdpContext:(id)arg1 beginRemoteApprovalWithValidator:(id)arg2;
+- (void)cdpContext:(id)arg1 confirmRecoveryKeyWithValidator:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)cdpContext:(id)arg1 presentRecoveryKeyWithValidator:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)cdpContext:(id)arg1 promptForAdoptionOfMultipleICSC:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForICSCWithIsNumeric:(BOOL)arg2 numericLength:(id)arg3 isRandom:(BOOL)arg4 validator:(id)arg5;
+- (void)cdpContext:(id)arg1 promptForInteractiveAuthenticationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForLocalSecretWithHandler:(id)arg2;
 - (void)cdpContext:(id)arg1 promptForRemoteSecretWithDevices:(id)arg2 offeringRemoteApproval:(BOOL)arg3 validator:(id)arg4;
 - (void)cdpContext:(id)arg1 promptToInformUserOfAccountLockOutWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptToInformUserOfAccountUnlockWithCompletion:(CDUnknownBlockType)arg2;
+- (void)cdpContext:(id)arg1 showError:(id)arg2 withDefaultIndex:(long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)dealloc;
 - (void)devicePicker:(id)arg1 didSelectDevice:(id)arg2;
+- (id)devicePicker:(id)arg1 escapeOffersForDevices:(id)arg2;
 - (void)dismissRecoveryFlow:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)exceededMaximumAttemptsForRemoteSecretEntry:(id)arg1;
 - (void)finishValidation:(id)arg1 withError:(id)arg2;
 - (void)keychainSyncController:(id)arg1 didFinishWithResult:(id)arg2 error:(id)arg3;
 - (void)performAccountReset:(id)arg1;
+- (void)performRecoveryKeyRecovery:(id)arg1;
 - (void)performRemoteApproval:(id)arg1;
 - (BOOL)performingAccountRecovery;
+- (id)recoveryKeyEntryControllerForCircleJoinWithCancel:(BOOL)arg1;
 - (void)remoteSecretEntry:(id)arg1 depletedRemainingAttemptsForDevice:(id)arg2;
 - (void)remoteSecretEntry:(id)arg1 didAcceptValidRemoteSecretForDevice:(id)arg2;
 

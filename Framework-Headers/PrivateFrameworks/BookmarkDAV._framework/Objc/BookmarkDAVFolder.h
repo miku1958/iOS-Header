@@ -16,6 +16,8 @@
 {
     NSDictionary *_appleAttributes;
     NSMutableArray *_childrenOrder;
+    NSURL *_sourceURL;
+    NSURL *_destinationURL;
     NSString *_bulkParsedCTag;
     NSString *_bulkParsedPTag;
     CoreDAVErrorItem *_bulkUploadErrorItem;
@@ -29,11 +31,13 @@
 @property (readonly, nonatomic) NSData *dataPayload;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isBookmarkBarFolder; // @dynamic isBookmarkBarFolder;
 @property (nonatomic) BOOL isBookmarkFolder; // @dynamic isBookmarkFolder;
 @property (nonatomic) BOOL isBookmarkMenuFolder; // @dynamic isBookmarkMenuFolder;
 @property (strong, nonatomic) NSURL *serverID;
+@property (strong, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *syncKey;
 

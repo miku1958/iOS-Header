@@ -64,7 +64,9 @@
 - (void)setShutterSound:(unsigned int)arg1;
 - (void)setSquareCropEnabled:(BOOL)arg1;
 - (void)setTurboModeEnabled:(BOOL)arg1;
+- (void)setUserInitiatedPhotoRequestTime:(unsigned long long)arg1;
 - (unsigned int)shutterSound;
+- (unsigned long long)userInitiatedPhotoRequestTime;
 
 @end
 

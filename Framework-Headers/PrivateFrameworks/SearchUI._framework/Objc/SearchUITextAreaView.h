@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/NUIContainerStackView.h>
+#import <SearchUI/SearchUIStackView.h>
 
 #import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
 @class NSMutableArray, NSString, SearchUITitleContainerView, UILabel;
 
-@interface SearchUITextAreaView : NUIContainerStackView <NUIContainerStackViewDelegate>
+@interface SearchUITextAreaView : SearchUIStackView <NUIContainerStackViewDelegate>
 {
     unsigned long long _style;
     SearchUITitleContainerView *_titleContainer;
@@ -29,8 +29,8 @@
 
 + (id)footNoteLabelFont;
 - (void).cxx_destruct;
-- (struct CGRect)containerStackView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (struct UIEdgeInsets)containerStackView:(id)arg1 minimumSpacingAdjecentToArrangedSubview:(id)arg2;
+- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (BOOL)noFootNote;
 - (BOOL)noRichTextFields;

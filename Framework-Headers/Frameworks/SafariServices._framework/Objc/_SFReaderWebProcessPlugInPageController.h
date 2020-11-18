@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBUWebProcessPlugInPageController.h>
+#import <SafariServices/_SFWebProcessPlugInPageController.h>
 
 @class WKWebProcessPlugInScriptWorld, _SFWebProcessPlugInReaderEnabledPageController;
 
-@interface _SFReaderWebProcessPlugInPageController : WBUWebProcessPlugInPageController
+@interface _SFReaderWebProcessPlugInPageController : _SFWebProcessPlugInPageController
 {
     struct unique_ptr<SafariServices::WebProcessPlugInReaderJSController, std::__1::default_delete<SafariServices::WebProcessPlugInReaderJSController>> _readerJSController;
     WKWebProcessPlugInScriptWorld *_isolatedWorldForNextPageDetection;
@@ -31,7 +31,6 @@
 - (id)printingMailingFrame;
 - (void)setReaderFont:(id)arg1;
 - (void)setReaderTheme:(id)arg1;
-- (void)setUserVisibleWidth:(double)arg1;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 globalObjectIsAvailableForFrame:(id)arg2 inScriptWorld:(id)arg3;
 - (void)willDestroyBrowserContextController:(id)arg1;
 

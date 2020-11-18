@@ -58,6 +58,7 @@
 - (void)_applyBillingInformationToPayment:(id)arg1;
 - (void)_applyShippingInformationToPayment:(id)arg1;
 - (void)_applyShippingMethodToPayment:(id)arg1;
+- (void)_applyWebServiceConfiguration;
 - (id)_createNewRemotePaymentRequest;
 - (id)_dequeuePendingCallbackParam;
 - (void)_deviceUpdateDidTimeout;
@@ -77,6 +78,7 @@
 - (void)_performCancelRemotePaymentRequest;
 - (void)_performDidAuthorizeCallbackWithParam:(id)arg1;
 - (void)_performNonceRequestWithParam:(id)arg1;
+- (void)_performPrepareTransactionDetailsRequestWithParam:(id)arg1;
 - (void)_performRedeemRequestWithParam:(id)arg1;
 - (void)_performRewrapRequestWithParam:(id)arg1;
 - (void)_performSendClientUpdateWithShippingMethods:(id)arg1 paymentSummaryItems:(id)arg2 paymentApplication:(id)arg3 status:(long long)arg4;
@@ -85,6 +87,7 @@
 - (void)_performUpdatePaymentDevices;
 - (void)_postStateMachineWillStartNotification;
 - (void)_registerForNotifications;
+- (void)_removeWebServiceConfiguration;
 - (void)_sendDidTransitionFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2 withParam:(id)arg3;
 - (void)_setState:(unsigned long long)arg1 param:(id)arg2;
 - (void)_simulatePayment;

@@ -15,10 +15,12 @@
     UIColor *_buttonRowTextColor;
     UIColor *_labelRowTextColor;
     UIColor *_selectPageDetailTextColor;
+    UIColor *_titleLabelTextColor;
     UIColor *_headerLabelTextColor;
     UIColor *_subHeaderLabelTextColor;
     UIColor *_detailHeaderLabelTextColor;
     UIColor *_footerLabelTextColor;
+    UIColor *_focusedRowTextColor;
     long long _labelRowTextAlignment;
     long long _headerLabelAlignment;
     long long _subHeaderLabelAlignment;
@@ -29,6 +31,7 @@
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) UIColor *buttonRowTextColor; // @synthesize buttonRowTextColor=_buttonRowTextColor;
 @property (strong, nonatomic) UIColor *detailHeaderLabelTextColor; // @synthesize detailHeaderLabelTextColor=_detailHeaderLabelTextColor;
+@property (strong, nonatomic) UIColor *focusedRowTextColor; // @synthesize focusedRowTextColor=_focusedRowTextColor;
 @property (nonatomic) long long footerLabelAlignment; // @synthesize footerLabelAlignment=_footerLabelAlignment;
 @property (strong, nonatomic) UIColor *footerLabelTextColor; // @synthesize footerLabelTextColor=_footerLabelTextColor;
 @property (nonatomic) long long footerLinkAlignment; // @synthesize footerLinkAlignment=_footerLinkAlignment;
@@ -41,6 +44,7 @@
 @property (strong, nonatomic) UIColor *selectPageDetailTextColor; // @synthesize selectPageDetailTextColor=_selectPageDetailTextColor;
 @property (nonatomic) long long subHeaderLabelAlignment; // @synthesize subHeaderLabelAlignment=_subHeaderLabelAlignment;
 @property (strong, nonatomic) UIColor *subHeaderLabelTextColor; // @synthesize subHeaderLabelTextColor=_subHeaderLabelTextColor;
+@property (strong, nonatomic) UIColor *titleLabelTextColor; // @synthesize titleLabelTextColor=_titleLabelTextColor;
 
 + (id)defaultStyle;
 + (id)frontRowStyle;

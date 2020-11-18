@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class UIStatusBarForegroundView, UIStatusBarItemView;
+@class NSNumber, UIStatusBarForegroundView, UIStatusBarItemView;
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarLayoutManager : NSObject
@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     BOOL _persistentAnimationsEnabled;
     BOOL _usesVerticalLayout;
     UIStatusBarForegroundView *_foregroundView;
+    NSNumber *_assignedStartPosition;
 }
 
+@property (strong, nonatomic) NSNumber *assignedStartPosition; // @synthesize assignedStartPosition=_assignedStartPosition;
 @property (weak, nonatomic) UIStatusBarForegroundView *foregroundView; // @synthesize foregroundView=_foregroundView;
 @property (nonatomic) BOOL persistentAnimationsEnabled; // @synthesize persistentAnimationsEnabled=_persistentAnimationsEnabled;
 @property (readonly, nonatomic) BOOL usesVerticalLayout; // @synthesize usesVerticalLayout=_usesVerticalLayout;

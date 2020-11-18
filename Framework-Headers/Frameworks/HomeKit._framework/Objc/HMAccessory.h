@@ -150,6 +150,7 @@
 - (BOOL)isAdditionalSetupRequired;
 - (BOOL)isFirmwareUpdateAvailable;
 - (void)notifyDelegateOfAppDataUpdateForService:(id)arg1;
+- (void)queryAdvertisementInformationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setApplicationData:(id)arg1;
 - (void)updateAccessoryInfo:(id)arg1;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

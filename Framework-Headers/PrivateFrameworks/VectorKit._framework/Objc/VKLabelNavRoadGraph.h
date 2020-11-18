@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_offRouteJunctions;
     struct PolylineCoordinate _routeUserOffset;
     BOOL _routeFeatureMapValid;
-    unordered_map_aa048f4b _routeFeatureMap;
+    unordered_map_923201b5 _routeFeatureMap;
     BOOL _simplifiedRouteValid;
     vector_e20517dc _simplifiedRoutePoints;
     unsigned long long _currentRoadStartSimplifiedPointIndex;

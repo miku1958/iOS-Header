@@ -27,9 +27,9 @@
 }
 
 @property int epid; // @synthesize epid=_epid;
-@property (readonly) NWEndpoint *localEndpoint; // @synthesize localEndpoint=_localEndpoint;
+@property (copy) NWEndpoint *localEndpoint; // @synthesize localEndpoint=_localEndpoint;
 @property int pid; // @synthesize pid=_pid;
-@property (readonly) NWEndpoint *remoteEndpoint; // @synthesize remoteEndpoint=_remoteEndpoint;
+@property (copy) NWEndpoint *remoteEndpoint; // @synthesize remoteEndpoint=_remoteEndpoint;
 @property int socketFamily; // @synthesize socketFamily=_socketFamily;
 @property int socketProtocol; // @synthesize socketProtocol=_socketProtocol;
 @property int socketType; // @synthesize socketType=_socketType;

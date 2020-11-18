@@ -7,21 +7,26 @@
 #import <objc/NSObject.h>
 
 @class NSLocale, NSUserDefaults;
+@protocol OS_dispatch_queue;
 
 @interface FMDistanceCalculator : NSObject
 {
     NSLocale *_locale;
     NSUserDefaults *_userDefaults;
+    NSObject<OS_dispatch_queue> *_calculationQueue;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *calculationQueue; // @synthesize calculationQueue=_calculationQueue;
 @property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (nonatomic) long long measurementSystem;
 @property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 
 - (void).cxx_destruct;
+- (id)_localizedDistanceFromLocation:(id)arg1 toLocation:(id)arg2;
 - (id)_localizedStringFromNumber:(id)arg1 numberStyle:(unsigned long long)arg2 fractionDigits:(unsigned long long)arg3;
 - (id)_scaledAndConvertedMin:(double)arg1 andMax:(double)arg2;
 - (double)averageDistanceFromLocation:(id)arg1 toLocation:(id)arg2;
+- (id)futureLocalizedDistanceFromLocation:(id)arg1 toLocation:(id)arg2;
 - (id)init;
 - (id)initWithDefaultsSuiteName:(id)arg1;
 - (id)localizedDistanceFromLocation:(id)arg1 toLocation:(id)arg2;

@@ -6,12 +6,12 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class NSArray, NSError;
+@class AFSpeechPackage, NSArray, NSError;
 
 @protocol AFSpeechServiceDelegate <NSObject>
 - (oneway void)speechServiceDidFinishRecognitionWithError:(NSError *)arg1;
 - (oneway void)speechServiceDidProcessAudioDuration:(double)arg1;
-- (oneway void)speechServiceDidRecognizePhrases:(NSArray *)arg1 utterances:(NSArray *)arg2;
+- (oneway void)speechServiceDidRecognizePackage:(AFSpeechPackage *)arg1;
 - (oneway void)speechServiceDidRecognizeTokens:(NSArray *)arg1;
 @end
 

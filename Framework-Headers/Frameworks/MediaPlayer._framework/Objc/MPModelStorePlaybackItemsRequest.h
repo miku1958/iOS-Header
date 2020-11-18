@@ -7,11 +7,12 @@
 #import <MediaPlayer/MPModelRequest.h>
 
 #import <MediaPlayer/MPModelRequestDetailedKeepLocalStatusRequesting-Protocol.h>
+#import <MediaPlayer/MPModelRequestRTCReporting-Protocol.h>
 #import <MediaPlayer/MPModelStorePreviousRequestStoring-Protocol.h>
 
 @class MPModelResponse, NSArray, NSString;
 
-@interface MPModelStorePlaybackItemsRequest : MPModelRequest <MPModelRequestDetailedKeepLocalStatusRequesting, MPModelStorePreviousRequestStoring>
+@interface MPModelStorePlaybackItemsRequest : MPModelRequest <MPModelRequestDetailedKeepLocalStatusRequesting, MPModelStorePreviousRequestStoring, MPModelRequestRTCReporting>
 {
     BOOL _allowsMultipleResponseHandlerCalls;
     BOOL _wantsDetailedKeepLocalRequestableResponse;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) MPModelResponse *previousResponse; // @synthesize previousResponse=_previousResponse;
 @property (copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
 @property (copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
+@property (readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
 @property (copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL wantsDetailedKeepLocalRequestableResponse; // @synthesize wantsDetailedKeepLocalRequestableResponse=_wantsDetailedKeepLocalRequestableResponse;

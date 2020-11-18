@@ -13,8 +13,6 @@
 }
 
 @property (strong, nonatomic) SAIntentGroupProtobufMessage *aceAppBundleInfo;
-@property (strong, nonatomic) SAIntentGroupProtobufMessage *aceAppIntentPolicy;
-@property (strong, nonatomic) SAIntentGroupProtobufMessage *aceAppIntentVocabulary;
 
 + (id)aceAppIntentPolicyAndVocab;
 + (id)aceAppIntentPolicyAndVocabWithDictionary:(id)arg1 context:(id)arg2;

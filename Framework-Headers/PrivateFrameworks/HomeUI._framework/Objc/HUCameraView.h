@@ -19,6 +19,7 @@
     HUCameraBadgeView *_badgeView;
     UIView *_cameraOverlayView;
     UIView *_cameraDimmingView;
+    UIView *_backgroundView;
     HUCameraErrorView *_errorView;
     HUDecayingTimer *_snapshotAgeUpdateTimer;
     NSArray *_staticConstraints;
@@ -26,6 +27,7 @@
     NSArray *_badgeInsetConstraints;
 }
 
+@property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (nonatomic) double badgeInset; // @synthesize badgeInset=_badgeInset;
 @property (strong, nonatomic) NSArray *badgeInsetConstraints; // @synthesize badgeInsetConstraints=_badgeInsetConstraints;
 @property (strong, nonatomic) id<UILayoutSupport> badgeTopLayoutGuide; // @synthesize badgeTopLayoutGuide=_badgeTopLayoutGuide;
@@ -54,10 +56,12 @@
 - (void)_updateBadgeViewReschedulingTimerIfNecessary:(BOOL)arg1;
 - (void)_updateErrorVisibilityStateAnimated:(BOOL)arg1;
 - (void)_updateMaskedCameraCorners;
+- (id)backgroundColor;
 - (void)dealloc;
 - (id)init;
 - (id)initWithBadgeView:(id)arg1;
 - (void)layoutSubviews;
+- (void)setBackgroundColor:(id)arg1;
 - (void)setCameraSource:(id)arg1 animated:(BOOL)arg2;
 - (void)setErrorContent:(id)arg1 animated:(BOOL)arg2;
 - (void)updateConstraints;

@@ -17,6 +17,8 @@
 - (BOOL)_cn_hasCaseAndDiacriticInsensitivePrefix:(id)arg1;
 - (BOOL)_cn_hasPrefix:(id)arg1;
 - (BOOL)_cn_hasPrefix:(id)arg1 options:(unsigned long long)arg2;
+- (BOOL)_cn_hasSuffix:(id)arg1;
+- (BOOL)_cn_hasSuffix:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)_cn_isBlank;
 - (id)_cn_nameComponentTokens;
 - (id)_cn_nameComponentTokensUsingLocale:(id)arg1 inferredNameOrder:(long long *)arg2;

@@ -32,6 +32,7 @@
     NSMutableArray *_didAppearCallbacks;
     BOOL _showsTitlesAsHeaderViews;
     BOOL _loading;
+    NSDictionary *_attributes;
     RUIElement<RUITopLevelPageElement> *_primaryElement;
     RUIStyle *_style;
     NSString *_backButtonTitle;
@@ -48,6 +49,7 @@
 }
 
 @property (readonly, nonatomic) NSArray *accessoryViews;
+@property (copy, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property (copy, nonatomic) NSString *backButtonTitle; // @synthesize backButtonTitle=_backButtonTitle;
 @property (readonly, nonatomic) NSArray *buttonItems;
 @property (readonly, nonatomic) NSArray *buttons;
@@ -118,6 +120,7 @@
 - (BOOL)hasTableView;
 - (BOOL)hasWebView;
 - (id)init;
+- (id)initWithAttributes:(id)arg1;
 - (void)loadView;
 - (BOOL)needsToShowToolbarInPrefsAppRoot;
 - (void)populatePostbackDictionary:(id)arg1;
@@ -126,6 +129,7 @@
 - (void)setHasToolbar;
 - (void)setLeftNavigationBarButtonItem:(id)arg1 barButtonItem:(id)arg2;
 - (void)setRightNavigationBarButtonItem:(id)arg1 barButtonItem:(id)arg2;
+- (id)subElementWithID:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

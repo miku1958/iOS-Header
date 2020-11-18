@@ -34,13 +34,13 @@
 
 - (void).cxx_destruct;
 - (long long)XPCActivityIntervalFromSystemSetting;
-- (void)_dailyRefreshActivityFired;
 - (void)_retryActivityFired;
 - (id)_stringForStyle:(int)arg1;
 - (void)cancelAllTokenRegistrations;
 - (void)cancelDailyRefreshActivity;
 - (void)cancelFetchActivity;
 - (void)cancelRetryActivity;
+- (void)dailyRefreshActivityFired;
 - (id)description;
 - (id)fetchActivityCriteriaWithInterval:(long long)arg1;
 - (const char *)fetchActivityIdentifier;
@@ -48,6 +48,7 @@
 - (BOOL)isSetToSystemFetchInterval;
 - (void)performTokenRegistrationRequestsWithToken:(id)arg1 onBehalfOf:(id)arg2;
 - (void)refreshCollections:(id)arg1 withReason:(int)arg2;
+- (const char *)retryActivityIdentifier;
 - (void)retryCollections:(id)arg1 after:(double)arg2 reason:(int)arg3;
 - (void)startDailyRefreshActivity;
 - (void)startFetchActivityForPush;

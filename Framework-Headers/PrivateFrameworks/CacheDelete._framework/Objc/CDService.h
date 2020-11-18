@@ -20,7 +20,6 @@
     BOOL _multiUserOnly;
     BOOL _noQuota;
     BOOL __inFlight;
-    BOOL __dead;
     NSString *_ID;
     NSObject<OS_dispatch_queue> *_serviceQueue;
     NSObject<OS_dispatch_queue> *_requestQueue;
@@ -29,7 +28,6 @@
 }
 
 @property (strong, nonatomic) NSString *ID; // @synthesize ID=_ID;
-@property (nonatomic) BOOL _dead; // @synthesize _dead=__dead;
 @property (nonatomic) BOOL _inFlight; // @synthesize _inFlight=__inFlight;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

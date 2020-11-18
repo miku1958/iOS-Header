@@ -27,7 +27,6 @@
 @property (readonly, nonatomic) int clientProcessID; // @synthesize clientProcessID=_clientProcessID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) long long faceGroupType;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *facesHelper; // @synthesize facesHelper=_facesHelper;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PHChangeRequestHelper *helper; // @synthesize helper=_helper;
@@ -36,6 +35,7 @@
 @property (readonly, getter=isMutated) BOOL mutated;
 @property (readonly, getter=isNew) BOOL new;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
+@property (nonatomic) long long personBuilderState;
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedFaceGroup;
 @property (readonly) Class superclass;
 @property (nonatomic) long long unnamedFaceCount;
@@ -43,7 +43,6 @@
 
 + (id)changeRequestForFaceGroup:(id)arg1;
 + (id)creationRequestForFaceGroup;
-+ (id)creationRequestForRejectedFacesFaceGroup;
 + (void)deleteFaceGroups:(id)arg1;
 - (void).cxx_destruct;
 - (id)_existentFaceObjectIDs;

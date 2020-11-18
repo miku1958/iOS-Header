@@ -17,6 +17,7 @@
 - (UIViewController *)_presentingViewControllerForWebView:(WKWebView *)arg1;
 - (NSArray *)_webView:(WKWebView *)arg1 actionsForElement:(_WKActivatedElementInfo *)arg2 defaultActions:(NSArray *)arg3;
 - (void)_webView:(WKWebView *)arg1 alternateActionForURL:(NSURL *)arg2;
+- (void)_webView:(WKWebView *)arg1 checkUserMediaPermissionForURL:(NSURL *)arg2 mainFrameURL:(NSURL *)arg3 frameIdentifier:(unsigned long long)arg4 decisionHandler:(void (^)(NSString *, BOOL))arg5;
 - (void)_webView:(WKWebView *)arg1 commitPreviewedImageWithURL:(NSURL *)arg2;
 - (void)_webView:(WKWebView *)arg1 commitPreviewedViewController:(UIViewController *)arg2;
 - (void)_webView:(WKWebView *)arg1 decideDatabaseQuotaForSecurityOrigin:(WKSecurityOrigin *)arg2 currentQuota:(unsigned long long)arg3 currentOriginUsage:(unsigned long long)arg4 currentDatabaseUsage:(unsigned long long)arg5 expectedUsage:(unsigned long long)arg6 decisionHandler:(void (^)(unsigned long long))arg7;
@@ -31,13 +32,18 @@
 - (UIViewController *)_webView:(WKWebView *)arg1 previewViewControllerForURL:(NSURL *)arg2;
 - (UIViewController *)_webView:(WKWebView *)arg1 previewViewControllerForURL:(NSURL *)arg2 defaultActions:(NSArray *)arg3 elementInfo:(_WKActivatedElementInfo *)arg4;
 - (void)_webView:(WKWebView *)arg1 printFrame:(_WKFrameHandle *)arg2;
+- (void)_webView:(WKWebView *)arg1 requestUserMediaAuthorizationForMicrophone:(BOOL)arg2 camera:(BOOL)arg3 url:(NSURL *)arg4 mainFrameURL:(NSURL *)arg5 decisionHandler:(void (^)(BOOL, BOOL))arg6;
 - (BOOL)_webView:(WKWebView *)arg1 shouldIncludeAppLinkActionsForElement:(_WKActivatedElementInfo *)arg2;
 - (BOOL)_webView:(WKWebView *)arg1 shouldRequestGeolocationAuthorizationForURL:(NSURL *)arg2 isMainFrame:(BOOL)arg3 mainFrameURL:(NSURL *)arg4;
 - (BOOL)_webView:(WKWebView *)arg1 showCustomSheetForElement:(_WKActivatedElementInfo *)arg2;
 - (void)_webView:(WKWebView *)arg1 willPreviewImageWithURL:(NSURL *)arg2;
 - (void)_webViewClose:(WKWebView *)arg1;
+- (void)_webViewDidBeginCaptureSession:(WKWebView *)arg1;
+- (void)_webViewDidEndCaptureSession:(WKWebView *)arg1;
 - (void)_webViewDidEnterFullscreen:(WKWebView *)arg1;
 - (void)_webViewDidExitFullscreen:(WKWebView *)arg1;
+- (void)_webViewDidLosePointerLock:(WKWebView *)arg1;
 - (void)_webViewFullscreenMayReturnToInline:(WKWebView *)arg1;
+- (void)_webViewRequestPointerLock:(WKWebView *)arg1;
 @end
 

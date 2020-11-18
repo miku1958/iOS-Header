@@ -7,6 +7,7 @@
 #import <Home/HFItemBuilder.h>
 
 @class HFMutableSetDiff, HFTriggerAnonymousActionSetBuilder, HMTrigger, NSArray, NSString;
+@protocol HFTriggerBuilderContextProviding;
 
 @interface HFTriggerBuilder : HFItemBuilder
 {
@@ -14,6 +15,7 @@
     NSString *_name;
     HFTriggerAnonymousActionSetBuilder *_anonymousActionSetBuilder;
     NSArray *_conditions;
+    id<HFTriggerBuilderContextProviding> _context;
     HFMutableSetDiff *_actionSetBuilders;
 }
 
@@ -21,15 +23,17 @@
 @property (readonly, nonatomic) NSArray *actionSets;
 @property (strong, nonatomic) HFTriggerAnonymousActionSetBuilder *anonymousActionSetBuilder; // @synthesize anonymousActionSetBuilder=_anonymousActionSetBuilder;
 @property (strong, nonatomic) NSArray *conditions; // @synthesize conditions=_conditions;
+@property (strong, nonatomic) id<HFTriggerBuilderContextProviding> context; // @synthesize context=_context;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) BOOL hasActions;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) BOOL requiresConfirmationToRun;
+@property (readonly, nonatomic) BOOL secureActionsRequireConfirmationToRun;
 @property (readonly, nonatomic) HMTrigger *trigger;
 
 + (Class)homeKitRepresentationClass;
 + (BOOL)supportsConditions;
-+ (id)triggerBuilderForTrigger:(id)arg1 inHome:(id)arg2;
++ (id)triggerBuilderForTrigger:(id)arg1 inHome:(id)arg2 context:(id)arg3;
 - (void).cxx_destruct;
 - (id)_performValidation;
 - (id)_updateActionSets;
@@ -43,12 +47,18 @@
 - (id)commitCreateTrigger;
 - (id)commitEditTrigger;
 - (id)commitItem;
+- (id)deleteTrigger;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
+- (id)initWithExistingObject:(id)arg1 inHome:(id)arg2 context:(id)arg3;
+- (id)initWithHome:(id)arg1;
+- (id)initWithHome:(id)arg1 context:(id)arg2;
+- (BOOL)markTriggerAsHomeAppCreated;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1;
 - (void)removeAction:(id)arg1;
 - (void)removeActionSet:(id)arg1;
 - (void)removeAllActionsAndActionSets;
 - (void)removeCondition:(id)arg1;
+- (void)setMarkTriggerAsHomeAppCreated:(BOOL)arg1;
 - (void)setTrigger:(id)arg1;
 - (void)updateAction:(id)arg1;
 - (void)updateActionSet:(id)arg1;

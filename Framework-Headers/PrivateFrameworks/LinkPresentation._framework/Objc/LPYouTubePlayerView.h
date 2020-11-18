@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
+#import <LinkPresentation/UIScrollViewDelegate-Protocol.h>
+
 @class LPYouTubePlayerScriptMessageHandler, NSString, WKWebView;
 @protocol LPYouTubePlayerDelegate;
 
-@interface LPYouTubePlayerView : UIView
+@interface LPYouTubePlayerView : UIView <UIScrollViewDelegate>
 {
     WKWebView *_webView;
     NSString *_videoID;
@@ -23,12 +25,16 @@
     double _endTime;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<LPYouTubePlayerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) double endTime; // @synthesize endTime=_endTime;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isMuted) BOOL muted; // @synthesize muted=_muted;
 @property (nonatomic) BOOL showsControls; // @synthesize showsControls=_showsControls;
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (nonatomic) BOOL startsPlayingAutomatically; // @synthesize startsPlayingAutomatically=_startsPlayingAutomatically;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_parameterScript;
@@ -36,12 +42,16 @@
 - (void)dealloc;
 - (void)didReceiveScriptMessage:(id)arg1;
 - (void)dispatchErrorForInvalidURL;
+- (void)enterFullScreen;
+- (void)exitFullScreen;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (void)loadVideoWithEmbedURL:(id)arg1;
 - (void)loadVideoWithID:(id)arg1;
 - (void)loadVideoWithURL:(id)arg1;
 - (void)pause;
 - (void)play;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)seekTo:(double)arg1;
 
 @end

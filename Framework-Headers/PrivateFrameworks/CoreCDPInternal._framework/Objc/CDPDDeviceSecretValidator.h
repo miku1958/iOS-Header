@@ -16,6 +16,7 @@
     BOOL _isAttemptingRecovery;
     unsigned long long _failedAttempts;
     NSMutableDictionary *_failedSecrets;
+    NSMutableSet *_failedRecoveryKeys;
     NSMutableSet *_failedSingleICSCs;
     NSMutableDictionary *_recoveryErrors;
     BOOL _depletedRemainingAttempts;
@@ -34,6 +35,7 @@
 
 - (void).cxx_destruct;
 - (void)_attemptToRecoverDevice:(id)arg1 withSecret:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_attemptToRecoverWithRecoveryKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_failedSecretsForDevice:(id)arg1;
 - (id)_failedSingleICSCs;
 - (void)_handleDelegateValidationError:(id)arg1;
@@ -52,6 +54,7 @@
 - (BOOL)isAttemptingRecovery;
 - (void)resetAccountCDPState;
 - (void)supportedEscapeOfferMaskCompletion:(CDUnknownBlockType)arg1;
+- (void)validateRecoveryKey:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)validateSecret:(id)arg1 devices:(id)arg2 type:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
 
 @end

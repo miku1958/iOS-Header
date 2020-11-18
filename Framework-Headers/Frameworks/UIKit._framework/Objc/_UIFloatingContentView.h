@@ -6,16 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, UIImage, _UIFloatingContentSpecialAnimatingView, _UIFocusAnimationConfiguration;
+@class NSMutableArray, UIImage, _UIFloatingContentCornerRadiusAnimatingView, _UIFloatingContentTransformView, _UIFocusAnimationConfiguration;
 @protocol _UIFloatingContentViewDelegate;
 
 @interface _UIFloatingContentView : UIView
 {
     id<_UIFloatingContentViewDelegate> _floatingContentViewDelegate;
+    _UIFloatingContentTransformView *_transformView;
+    _UIFloatingContentCornerRadiusAnimatingView *_containerView;
+    _UIFloatingContentCornerRadiusAnimatingView *_highlightView;
+    _UIFloatingContentCornerRadiusAnimatingView *_visualEffectContainerView;
     UIView *_shadowView;
-    _UIFloatingContentSpecialAnimatingView *_containerView;
-    _UIFloatingContentSpecialAnimatingView *_visualEffectContainerView;
-    _UIFloatingContentSpecialAnimatingView *_highlightView;
     UIView *_contentView;
     struct __CFDictionary *_backgroundColorsByState;
     NSMutableArray *_contentMotionEffects;
@@ -88,7 +89,6 @@
 @property (nonatomic) double visualEffectContainerViewScaleFactor; // @synthesize visualEffectContainerViewScaleFactor=_visualEffectContainerViewScaleFactor;
 
 + (id)_defaultFocusAnimationConfiguration;
-+ (Class)layerClass;
 - (void).cxx_destruct;
 - (BOOL)_applyKeyPathsAndRelativeValues:(id)arg1 forMotionEffect:(id)arg2;
 - (double)_currentShadowOpacity;
@@ -104,7 +104,7 @@
 - (BOOL)_shouldAppearToFloatForPrimaryState:(unsigned long long)arg1;
 - (BOOL)_shouldApplyCornerRadiusForPrimaryState:(unsigned long long)arg1;
 - (void)_uninstallContentMotionEffects;
-- (void)_updateBackgroundViewForPrimaryState:(unsigned long long)arg1;
+- (void)_updateContainerLayerQualityForPrimaryState:(unsigned long long)arg1;
 - (void)_updateHighlightViewForPrimaryState:(unsigned long long)arg1;
 - (void)_updateScaleFactor;
 - (void)_updateShadowContentsScaleForPrimaryState:(unsigned long long)arg1;
@@ -113,8 +113,8 @@
 - (void)_updateTransformForPrimaryState:(unsigned long long)arg1;
 - (void)addContentMotionEffect:(id)arg1;
 - (id)backgroundColorForState:(unsigned long long)arg1;
-- (BOOL)canBecomeFocused;
 - (void)dealloc;
+- (id)highlightView;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)removeContentMotionEffect:(id)arg1;

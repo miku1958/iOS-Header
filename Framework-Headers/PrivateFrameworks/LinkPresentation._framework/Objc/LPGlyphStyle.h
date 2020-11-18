@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class LPImageViewStyle, LPPadding, NSString;
+@class LPImage, LPImageViewStyle, LPPadding;
 
 __attribute__((visibility("hidden")))
 @interface LPGlyphStyle : NSObject
 {
-    NSString *_name;
+    LPImage *_image;
     LPPadding *_padding;
     double _opacity;
-    LPImageViewStyle *_image;
+    LPImageViewStyle *_imageStyle;
 }
 
-@property (readonly, nonatomic) LPImageViewStyle *image; // @synthesize image=_image;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) LPImage *image; // @synthesize image=_image;
+@property (readonly, nonatomic) LPImageViewStyle *imageStyle; // @synthesize imageStyle=_imageStyle;
 @property (nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property (readonly, strong, nonatomic) LPPadding *padding; // @synthesize padding=_padding;
 

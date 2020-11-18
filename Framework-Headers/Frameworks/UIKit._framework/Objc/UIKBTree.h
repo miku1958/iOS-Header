@@ -50,8 +50,6 @@
 - (void)addkeyToCachedKeyList:(id)arg1;
 - (BOOL)allowRetestAfterCommittingDownActions;
 - (id)alternateKeyplaneName;
-- (id)alternateStrings;
-- (BOOL)alternatesOnTop;
 - (id)attributeSet:(BOOL)arg1;
 - (id)autolocalizedKeyCacheIterator;
 - (BOOL)avoidAutoDeactivation;
@@ -61,6 +59,7 @@
 - (id)cacheDisplayString;
 - (void)cacheKey:(id)arg1;
 - (id)cacheSecondaryDisplayString;
+- (id)cachedGestureLayout;
 - (id)cachedKeysByKeyName:(id)arg1;
 - (void)centerKeys:(id)arg1 inRect:(struct CGRect)arg2 scale:(double)arg3;
 - (void)clearManualAddedKey;
@@ -94,6 +93,8 @@
 - (id)geometriesOrderedByPosition;
 - (id)geometry;
 - (id)geometrySet:(BOOL)arg1;
+- (id)gestureKey;
+- (id)gestureKeyplaneName;
 - (BOOL)ghost;
 - (long long)handBias;
 - (BOOL)hasLayoutTag:(id)arg1;
@@ -161,9 +162,8 @@
 - (id)secondaryRepresentedStrings;
 - (long long)selectedVariantIndex;
 - (void)setActiveGeometriesList:(id)arg1;
-- (void)setAlternateStrings:(id)arg1;
-- (void)setAlternatesOnTop:(BOOL)arg1;
 - (void)setAttributes:(id)arg1;
+- (void)setCachedGestureLayout:(id)arg1;
 - (void)setClipCorners:(int)arg1;
 - (void)setDisabled:(BOOL)arg1;
 - (void)setDisplayRowHint:(int)arg1;
@@ -175,6 +175,7 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setGeometriesList:(id)arg1;
 - (void)setGeometry:(id)arg1;
+- (void)setGestureKey:(id)arg1;
 - (void)setGhost:(BOOL)arg1;
 - (void)setHighlightedVariantsList:(id)arg1;
 - (void)setInteractionType:(int)arg1;
@@ -217,6 +218,7 @@
 - (long long)textAlignment;
 - (id)unhashedName;
 - (void)updateDictationKeyOnNumberPads:(BOOL)arg1;
+- (void)updateFlickKeycapOnKeys;
 - (void)updateMoreAndInternationalKeysWithOptions:(int)arg1;
 - (void)updateVariantTypeForActions:(unsigned int)arg1;
 - (BOOL)usesAdaptiveKeys;

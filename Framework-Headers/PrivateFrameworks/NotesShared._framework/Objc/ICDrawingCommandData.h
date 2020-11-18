@@ -36,9 +36,12 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithArchive:(const struct Command *)arg1 version:(unsigned int)arg2 sortedUUIDs:(id)arg3;
 - (void)invalidateBounds;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualDrawingCommandData:(id)arg1;
 - (CDStruct_4a3d0796)readPointFromArchive:(const struct Point *)arg1 deltaFrom:(const CDStruct_4a3d0796 *)arg2;
 - (double)renderCost;
 - (unsigned int)savePoint:(const CDStruct_4a3d0796 *)arg1 deltaFrom:(const CDStruct_4a3d0796 *)arg2 toArchive:(struct Point *)arg3;

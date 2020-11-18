@@ -83,12 +83,12 @@
 - (void)_queue_cancelAllExecutingFetches;
 - (void)_queue_clearChangeTokenCacheAndFriendListWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_fetchAllChangesWithPriority:(long long)arg1;
-- (BOOL)_queue_isCloudKitAccountDifferentFromLastAccount;
+- (BOOL)_queue_isLastCloudKitAddressDifferentFromNewCloudKitAddress:(id)arg1;
 - (void)_queue_notifyObserversOfStatusChanged;
 - (void)_queue_pushEnable;
-- (void)_queue_saveCloudKitAccountToKeyValueStore;
 - (void)_queue_setHasCompletedFirstFetch:(BOOL)arg1;
 - (void)_queue_startFetchAllChangesOperationWithPriority:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_saveCloudKitAddressToKeyValueStore;
 - (void)_saveSubscriptions:(id)arg1 andDeleteSubscriptionsWithIdentifiers:(id)arg2 inDatabase:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_subscribeToChangesInDatabase:(id)arg1 subscriptionPrefix:(id)arg2 recordTypes:(id)arg3 recordTypesToDelete:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_subscribeToChangesInPrivateDatabaseWithCompletion:(CDUnknownBlockType)arg1;
@@ -97,7 +97,6 @@
 - (void)acceptSharesWithURLs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addObserver:(id)arg1;
 - (void)addParticipantWithCloudKitAddress:(id)arg1 toShares:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)cloudKitAccountStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
@@ -107,6 +106,8 @@
 - (void)fetchAllChangesWithPriority:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAllChangesWithPriority:(long long)arg1 waitingForSuccessfulFetchCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchAndHandleAccountStatus;
+- (void)fetchCloudKitAccountStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchCloudKitAddressWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchOrCreateActivityDataShareWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchShareWithShareRecordID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fitnessFriendsManagerReady:(id)arg1;

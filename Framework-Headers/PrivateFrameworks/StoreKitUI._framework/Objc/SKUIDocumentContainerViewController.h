@@ -16,11 +16,12 @@
 #import <StoreKitUI/SKUIScrollingTabAppearanceStatusObserver-Protocol.h>
 #import <StoreKitUI/SKUIScrollingTabNestedPagedScrolling-Protocol.h>
 #import <StoreKitUI/SKUIToolbarControllerDelegate-Protocol.h>
+#import <StoreKitUI/SKUIViewControllerTesting-Protocol.h>
 #import <StoreKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class IKAppDocument, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSValue, SKUIMediaQueryEvaluator, SKUIMetricsDOMChangeQueue, SKUIMetricsPageRenderEvent, SKUINavigationBarController, SKUIToolbarController, SSVLoadURLOperation, UIScrollView, UIView, UIViewController;
 
-@interface SKUIDocumentContainerViewController : SKUIViewController <IKAppDocumentDelegate, SKUIMediaQueryDelegate, SKUIModalSourceViewProvider, SKUINavigationBarControllerDelegate, SKUINavigationBarDisplayConfiguring, SKUINavigationPaletteProvider, SKUIToolbarControllerDelegate, UIViewControllerTransitioningDelegate, SKUIResourceLoaderDelegate, SKUIScrollingTabAppearanceStatusObserver, SKUIScrollingTabNestedPagedScrolling>
+@interface SKUIDocumentContainerViewController : SKUIViewController <IKAppDocumentDelegate, SKUIMediaQueryDelegate, SKUIModalSourceViewProvider, SKUINavigationBarControllerDelegate, SKUINavigationBarDisplayConfiguring, SKUINavigationPaletteProvider, SKUIToolbarControllerDelegate, UIViewControllerTransitioningDelegate, SKUIResourceLoaderDelegate, SKUIViewControllerTesting, SKUIScrollingTabAppearanceStatusObserver, SKUIScrollingTabNestedPagedScrolling>
 {
     UIViewController *_beforeErrorChildViewController;
     UIViewController *_childViewController;
@@ -118,6 +119,7 @@
 - (id)navigationBarTintColor;
 - (id)navigationBarTitleTextTintColor;
 - (CDUnknownBlockType)pendingSizeTransitionCompletion;
+- (BOOL)performTestWithName:(id)arg1 options:(id)arg2;
 - (BOOL)prefersNavigationBarBackgroundViewHidden;
 - (BOOL)prefersNavigationBarHidden;
 - (id)previewMenuItems;

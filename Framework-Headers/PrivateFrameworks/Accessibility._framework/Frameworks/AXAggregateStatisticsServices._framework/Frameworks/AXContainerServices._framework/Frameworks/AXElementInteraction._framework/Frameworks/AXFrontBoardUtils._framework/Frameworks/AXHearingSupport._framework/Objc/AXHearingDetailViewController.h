@@ -31,7 +31,7 @@
 - (id)init;
 - (void)liveListenToggle:(id)arg1;
 - (struct _NSRange)programRangeForPresetId:(id)arg1;
-- (id)programSpecFromAvailablePrograms:(id)arg1 modeGroupSpec:(id)arg2;
+- (id)programSpecsFromAvailablePrograms:(id)arg1 withGroupSpec:(id)arg2 forEar:(int)arg3;
 - (struct _NSRange)programsRange;
 - (void)selectCommonProgramsForLeftAndRightDevices;
 - (id)specifierForKey:(id)arg1;

@@ -6,11 +6,14 @@
 
 #import <PhotoVision/NSObject-Protocol.h>
 
-@class CVMLFaceObservation, PVFace;
+@class NSDictionary, NSNumber, PVFace;
 
 @protocol PVFaceComparer <NSObject>
 - (float)clusterRepresentativenessOfFace:(PVFace *)arg1;
 - (BOOL)faceIsGoodRepresentativeOfItsCluster:(PVFace *)arg1;
-- (BOOL)getDistance:(float *)arg1 fromFaceObservation:(CVMLFaceObservation *)arg2 toFaceObservation:(CVMLFaceObservation *)arg3 error:(id *)arg4;
+
+@optional
+- (NSDictionary *)clusterFaceIdsForClusterId:(unsigned long long)arg1 error:(id *)arg2;
+- (NSNumber *)distanceBetweenLevel0ClusterId:(unsigned long long)arg1 andLevel0ClusterId:(unsigned long long)arg2 error:(id *)arg3;
 @end
 

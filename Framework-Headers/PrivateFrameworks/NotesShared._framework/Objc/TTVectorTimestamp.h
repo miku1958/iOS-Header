@@ -24,11 +24,11 @@
 - (id)description;
 - (void)incrementClockForUUID:(id)arg1;
 - (id)init;
-- (id)initWithArchive:(const struct VectorTimestamp *)arg1;
+- (id)initWithArchive:(const VectorTimestamp_cd1d3bcf *)arg1;
 - (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeWithTimestamp:(id)arg1;
-- (void)saveToArchive:(struct VectorTimestamp *)arg1;
+- (void)saveToArchive:(VectorTimestamp_cd1d3bcf *)arg1;
 - (id)serialize;
 - (void)setClock:(unsigned long long)arg1 forUUID:(id)arg2;
 - (void)setClock:(unsigned long long)arg1 subclock:(unsigned long long)arg2 forUUID:(id)arg3;

@@ -34,6 +34,7 @@
     NSMutableDictionary *_deletedCalendarItems;
     NSArray *_syncActions;
     NSArray *_shareeActions;
+    NSArray *_itemsToReportAsJunk;
     NSDictionary *_hrefsToModDeleteActions;
     NSDictionary *_uuidsToAddActions;
     NSMutableDictionary *_uniqueIdentifierToRecordIDMap;
@@ -82,6 +83,7 @@
 @property (nonatomic) BOOL isScheduleOutbox; // @synthesize isScheduleOutbox=_isScheduleOutbox;
 @property (nonatomic) BOOL isSubscribed;
 @property (nonatomic) BOOL isTaskContainer;
+@property (strong, nonatomic) NSArray *itemsToReportAsJunk; // @synthesize itemsToReportAsJunk=_itemsToReportAsJunk;
 @property (nonatomic) int mostRecentEventActionChangeIndex; // @synthesize mostRecentEventActionChangeIndex=_mostRecentEventActionChangeIndex;
 @property (nonatomic) int mostRecentSequenceNumber; // @synthesize mostRecentSequenceNumber=_mostRecentSequenceNumber;
 @property (nonatomic) int mostRecentShareeChangeIndex; // @synthesize mostRecentShareeChangeIndex=_mostRecentShareeChangeIndex;
@@ -139,8 +141,10 @@
 - (int)_gatherModifiedEventsInArray:(id)arg1;
 - (int)_gatherModifiedItemsFromCalChangesCall:(CDUnknownFunctionPointerType)arg1 forType:(id)arg2 inArray:(id)arg3;
 - (int)_gatherModifiedTasksInArray:(id)arg1;
+- (BOOL)_isItemJunk:(void *)arg1;
 - (id)_itemPropertyDictForItemAtIndex:(long long)arg1 withChangedIDs:(struct __CFArray *)arg2 withChangedRowids:(struct __CFArray *)arg3 withExternalIDs:(struct __CFArray *)arg4 uniqueIdentifiers:(struct __CFArray *)arg5 significantAttributeChanges:(struct __CFArray *)arg6 oldCalendarIDs:(struct __CFArray *)arg7 entityType:(int)arg8;
 - (BOOL)_removeCalendarItemWithURL:(id)arg1;
+- (id)_resourceURLsForJunkItemsInModifiedItems:(id)arg1 alreadySentItems:(id)arg2;
 - (void)_setSupportsEvents:(BOOL)arg1 supportsTodos:(BOOL)arg2;
 - (BOOL)_updateCalendarOwnerInfo;
 - (Class)appSpecificCalendarItemClass;

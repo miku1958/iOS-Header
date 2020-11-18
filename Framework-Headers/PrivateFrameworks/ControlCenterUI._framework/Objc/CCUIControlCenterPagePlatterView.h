@@ -8,15 +8,15 @@
 
 #import <ControlCenterUI/_UISettingsKeyObserver-Protocol.h>
 
-@class NCMaterialSettings, NCMaterialView, NSLayoutConstraint, NSSet, NSString, UIImageView;
+@class MTMaterialSettings, MTMaterialView, NSLayoutConstraint, NSSet, NSString, UIImageView;
 @protocol CCUIControlCenterPagePlatterViewDelegate;
 
 @interface CCUIControlCenterPagePlatterView : UIView <_UISettingsKeyObserver>
 {
     id<CCUIControlCenterPagePlatterViewDelegate> _delegate;
-    NCMaterialView *_baseMaterialView;
+    MTMaterialView *_baseMaterialView;
     UIImageView *_whiteLayerView;
-    NCMaterialSettings *_materialSettings;
+    MTMaterialSettings *_materialSettings;
     UIView *_contentView;
     NSSet *_renderedPunchOutMasks;
     NSLayoutConstraint *_topMargin;

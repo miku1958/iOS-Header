@@ -32,12 +32,16 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsName:(id)arg1;
+- (int)StringAsQualifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)nameAsString:(int)arg1;
+- (id)qualifierAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

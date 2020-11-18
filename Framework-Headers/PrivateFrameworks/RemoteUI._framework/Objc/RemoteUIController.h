@@ -59,9 +59,12 @@
 - (void)_modalNavigationWasDismissed;
 - (id)_modalObjectModels;
 - (void)_modalViewControllerWasPopped:(id)arg1;
+- (void)_objectModel:(id)arg1 receivedToken:(id)arg2;
+- (BOOL)_objectModelPageWantsHSATokens:(id)arg1;
 - (id)_objectModelStack;
 - (id)_objectModels;
 - (void)_removePreviousObjectModelsBackToIdentifier:(id)arg1;
+- (void)_replaceObjectModelWithObjectModel:(id)arg1;
 - (void)_setHandlerWithKey:(id)arg1 forElementsMatching:(CDUnknownBlockType)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)_shouldAnimate;
 - (void)_stopListeningForSMSAutoFill;
@@ -87,6 +90,7 @@
 - (id)parentViewControllerForObjectModel:(id)arg1;
 - (id)parser:(id)arg1 createPageWithName:(id)arg2 attributes:(id)arg3;
 - (id)popObjectModelAnimated:(BOOL)arg1;
+- (id)popObjectModelAnimated:(BOOL)arg1 stopListeningForHSATokens:(BOOL)arg2;
 - (void)pushObjectModel:(id)arg1 animated:(BOOL)arg2;
 - (void)refreshTopModelWithModel:(id)arg1;
 - (void)removeHandlerForKey:(id)arg1;

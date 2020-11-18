@@ -8,7 +8,7 @@
 
 #import <Intents/INRequestRideIntentExport-Protocol.h>
 
-@class CLPlacemark, INPaymentMethod, INSpeakableString, NSNumber, NSString;
+@class CLPlacemark, INDateComponentsRange, INPaymentMethod, INSpeakableString, NSNumber, NSString;
 
 @interface INRequestRideIntent : INIntent <INRequestRideIntentExport>
 {
@@ -21,19 +21,29 @@
 @property (readonly, copy, nonatomic) NSNumber *partySize;
 @property (readonly, copy, nonatomic) INPaymentMethod *paymentMethod;
 @property (readonly, copy, nonatomic) CLPlacemark *pickupLocation;
+@property (readonly, nonatomic) INDateComponentsRange *pickupTime;
 @property (readonly, copy, nonatomic) INSpeakableString *rideOptionName;
+@property (readonly, copy, nonatomic) INDateComponentsRange *scheduledPickupTime;
 @property (readonly) Class superclass;
 
 - (id)_dictionaryRepresentation;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
+- (id)domain;
 - (id)initWithPickupLocation:(id)arg1 dropOffLocation:(id)arg2 rideOptionName:(id)arg3 partySize:(id)arg4 paymentMethod:(id)arg5;
+- (id)initWithPickupLocation:(id)arg1 dropOffLocation:(id)arg2 rideOptionName:(id)arg3 partySize:(id)arg4 paymentMethod:(id)arg5 scheduledPickupTime:(id)arg6;
+- (id)parametersByName;
+- (void)setDomain:(id)arg1;
 - (void)setDropOffLocation:(id)arg1;
+- (void)setParametersByName:(id)arg1;
 - (void)setPartySize:(id)arg1;
 - (void)setPaymentMethod:(id)arg1;
 - (void)setPickupLocation:(id)arg1;
 - (void)setRideOptionName:(id)arg1;
+- (void)setScheduledPickupTime:(id)arg1;
+- (void)setVerb:(id)arg1;
+- (id)verb;
 
 @end
 

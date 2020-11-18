@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
 - (void)setPlayControlsHidden:(BOOL)arg1;
-- (BOOL)shouldPauseOnDisappear;
 - (id)timeLabelScrollView;
 - (void)transitionDidFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (void)transitionDidStart:(BOOL)arg1;

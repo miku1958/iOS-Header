@@ -13,11 +13,11 @@
 
 @interface PLPersistedPersonFaceMetadata : NSObject <NSCoding, PLFaceRebuildDescription>
 {
-    BOOL _hidden;
+    BOOL _isHidden;
     BOOL _manual;
     BOOL _representative;
     BOOL _nameSourceAuto;
-    BOOL _isHidden;
+    BOOL _hidden;
     int _faceAlgorithmVersion;
     NSString *_assetUUID;
     NSString *_assetCloudGUID;

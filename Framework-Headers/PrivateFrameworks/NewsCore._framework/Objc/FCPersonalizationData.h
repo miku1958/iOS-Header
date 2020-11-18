@@ -9,11 +9,12 @@
 #import <NewsCore/FCAppConfigurationObserving-Protocol.h>
 #import <NewsCore/FCDerivedPersonalizationData-Protocol.h>
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
+#import <NewsCore/FCUserInfoObserving-Protocol.h>
 
-@class CKRecord, FCPersonalizationTreatment, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class CKRecord, FCPersonalizationTreatment, FCUserInfo, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol FCOperationThrottler, OS_dispatch_queue;
 
-@interface FCPersonalizationData : FCPrivateZoneController <FCOperationThrottlerDelegate, FCAppConfigurationObserving, FCDerivedPersonalizationData>
+@interface FCPersonalizationData : FCPrivateZoneController <FCOperationThrottlerDelegate, FCAppConfigurationObserving, FCUserInfoObserving, FCDerivedPersonalizationData>
 {
     BOOL _attemptingUpload;
     NSMutableDictionary *_aggregates;
@@ -23,6 +24,7 @@
     NSObject<OS_dispatch_queue> *_readWriteQueue;
     FCPersonalizationTreatment *_treatment;
     id<FCOperationThrottler> _saveThrottler;
+    FCUserInfo *_userInfo;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *aggregates; // @synthesize aggregates=_aggregates;
@@ -38,6 +40,7 @@
 @property (strong, nonatomic) id<FCOperationThrottler> saveThrottler; // @synthesize saveThrottler=_saveThrottler;
 @property (readonly) Class superclass;
 @property (strong) FCPersonalizationTreatment *treatment; // @synthesize treatment=_treatment;
+@property (strong, nonatomic) FCUserInfo *userInfo; // @synthesize userInfo=_userInfo;
 
 + (long long)commandQueueUrgency;
 + (id)commandStoreFileName;
@@ -55,8 +58,10 @@
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_closeOpenChangeGroup;
 - (id)_instanceIdentifier;
+- (void)_reloadTreatment;
 - (void)_updateWithRemoteRecord:(id)arg1 profile:(id)arg2;
 - (void)_writeToLocalStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)addObserver:(id)arg1;
 - (id)aggregateForFeatureKey:(id)arg1;
 - (id)aggregatesForFeatureKeys:(id)arg1;
 - (void)appConfigurationDidChange:(id)arg1;
@@ -70,7 +75,9 @@
 - (void)loadLocalCachesFromStore;
 - (id)modifyLocalAggregatesForFeatureKeys:(id)arg1 withAction:(unsigned long long)arg2 actionCount:(unsigned long long)arg3 defaultClicks:(double)arg4 defaultImpressions:(double)arg5;
 - (void)operationThrottler:(id)arg1 performAsyncOperationWithCompletion:(CDUnknownBlockType)arg2;
+- (void)removeObserver:(id)arg1;
 - (void)syncWithCompletion:(CDUnknownBlockType)arg1;
+- (void)userInfoDidChangeFeldsparID:(id)arg1 fromCloud:(BOOL)arg2;
 
 @end
 

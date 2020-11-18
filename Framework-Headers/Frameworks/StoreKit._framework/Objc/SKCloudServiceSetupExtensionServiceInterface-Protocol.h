@@ -6,10 +6,11 @@
 
 #import <StoreKit/NSObject-Protocol.h>
 
-@class SKCloudServiceSetupConfiguration, SKCloudServiceSetupReloadContext;
+@class NSURL, SKCloudServiceSetupConfiguration, SKCloudServiceSetupReloadContext;
 
 @protocol SKCloudServiceSetupExtensionServiceInterface <NSObject>
 - (void)applyConfiguration:(SKCloudServiceSetupConfiguration *)arg1;
+- (void)handleSafariScriptURL:(NSURL *)arg1;
 - (void)reloadWithContext:(SKCloudServiceSetupReloadContext *)arg1;
 @end
 

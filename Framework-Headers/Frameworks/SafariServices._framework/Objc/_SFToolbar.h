@@ -6,26 +6,31 @@
 
 #import <UIKit/UIToolbar.h>
 
-@class NSString, UIView, _UIBackdropView;
+@class NSString, UIView, _UIBackdropView, _UIBackdropViewSettings;
 
 @interface _SFToolbar : UIToolbar
 {
     _UIBackdropView *_backgroundView;
+    _UIBackdropViewSettings *_customBackdropSettings;
     UIView *_separator;
-    BOOL _hasLightButtonTint;
-    BOOL _hasDarkBackground;
+    BOOL _usesDarkTheme;
+    BOOL _usesContainedAppearance;
     long long _placement;
+    unsigned long long _tintStyle;
 }
 
 @property (readonly, nonatomic) double URLFieldHorizontalMargin;
 @property (nonatomic) BOOL backdropComputesColorSettings;
 @property (copy, nonatomic) NSString *backdropGroupName;
-@property (nonatomic) BOOL hasDarkBackground; // @synthesize hasDarkBackground=_hasDarkBackground;
 @property (readonly, nonatomic) long long placement; // @synthesize placement=_placement;
+@property (nonatomic) unsigned long long tintStyle; // @synthesize tintStyle=_tintStyle;
 @property (readonly, nonatomic) long long toolbarSize;
+@property (nonatomic) BOOL usesContainedAppearance; // @synthesize usesContainedAppearance=_usesContainedAppearance;
 
 + (double)defaultHeight;
 - (void).cxx_destruct;
+- (id)_backdropInputSettings;
+- (BOOL)_tintUsesDarkTheme;
 - (id)initWithPlacement:(long long)arg1;
 - (void)layoutSubviews;
 - (void)updateBackdropSettings:(id)arg1;

@@ -36,7 +36,7 @@
 - (void)deactivatePlugIn:(id)arg1;
 - (void)discoverPlugInsForAttributes:(id)arg1 flags:(unsigned long long)arg2 found:(CDUnknownBlockType)arg3;
 - (id)init;
-- (void)readyPlugIns:(id)arg1 ready:(CDUnknownBlockType)arg2;
+- (void)readyPlugIns:(id)arg1 environment:(id)arg2 ready:(CDUnknownBlockType)arg3;
 - (id)rewriteDiscoveryAttributes:(id)arg1 flags:(unsigned long long)arg2;
 - (void)setElection:(long long)arg1 forPlugIn:(id)arg2;
 - (void)setExtensionState:(id)arg1 forPlugIn:(id)arg2;

@@ -14,18 +14,20 @@
 @interface ASDSoftwareUpdate : NSObject <NSCopying, NSSecureCoding>
 {
     NSDate *_installDate;
+    NSDictionary *_rawUpdateDictionary;
     NSDate *_timestamp;
-    NSDictionary *_updateDictionary;
     long long _updateState;
 }
 
 @property (readonly, nonatomic) NSString *bundleIdentifier;
+@property (readonly, nonatomic) NSString *buyParams;
 @property (readonly, nonatomic) NSNumber *externalVersionIdentifier;
 @property (copy, nonatomic) NSDate *installDate; // @synthesize installDate=_installDate;
 @property (readonly, nonatomic) long long parentalControlsRank;
+@property (readonly, nonatomic) NSDictionary *rawUpdateDictionary; // @synthesize rawUpdateDictionary=_rawUpdateDictionary;
 @property (readonly, nonatomic) long long storeItemIdentifier;
 @property (copy, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
-@property (readonly, nonatomic) NSDictionary *updateDictionary; // @synthesize updateDictionary=_updateDictionary;
+@property (readonly, nonatomic) NSDictionary *updateDictionary;
 @property (nonatomic) long long updateState; // @synthesize updateState=_updateState;
 
 + (BOOL)supportsSecureCoding;

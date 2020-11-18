@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <Message/NSCopying-Protocol.h>
+
 @class NSArray, NSIndexSet, NSString;
 
-@interface MFMessageCriterion : NSObject
+@interface MFMessageCriterion : NSObject <NSCopying>
 {
     NSString *_criterionIdentifier;
     int _qualifier;
@@ -25,14 +27,17 @@
     BOOL _preferFullTextSearch;
     BOOL _useFlaggedForUnreadCount;
     BOOL _expressionIsSanitized;
+    BOOL _includeRemoteBodyContent;
     NSIndexSet *_libraryIdentifiers;
 }
 
+@property (copy, nonatomic) NSArray *criteria;
 @property (strong, nonatomic) NSString *criterionIdentifier;
 @property (nonatomic) long long criterionType;
 @property (copy, nonatomic) NSString *expression;
 @property (nonatomic) BOOL expressionIsSanitized; // @synthesize expressionIsSanitized=_expressionIsSanitized;
 @property (nonatomic) BOOL includeRelatedMessages; // @synthesize includeRelatedMessages=_includeRelatedMessages;
+@property (nonatomic) BOOL includeRemoteBodyContent; // @synthesize includeRemoteBodyContent=_includeRemoteBodyContent;
 @property (strong, nonatomic) NSIndexSet *libraryIdentifiers; // @synthesize libraryIdentifiers=_libraryIdentifiers;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL preferFullTextSearch; // @synthesize preferFullTextSearch=_preferFullTextSearch;
@@ -104,7 +109,7 @@
 - (id)_wordQueryWithAttributes:(id)arg1 matchingValue:(id)arg2;
 - (BOOL)allCriteriaMustBeSatisfied;
 - (unsigned int)bestBaseTable;
-- (id)criteria;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)criteriaSatisfyingPredicate:(CDUnknownFunctionPointerType)arg1;
 - (id)criterionByApplyingTransform:(CDUnknownBlockType)arg1;
 - (id)criterionForSQL;
@@ -135,7 +140,6 @@
 - (BOOL)isVIPCriterion;
 - (int)messageRuleQualifierForString:(id)arg1;
 - (void)setAllCriteriaMustBeSatisfied:(BOOL)arg1;
-- (void)setCriteria:(id)arg1;
 - (void)setDateIsRelative:(BOOL)arg1;
 - (void)setDateUnits:(int)arg1;
 - (id)simplifiedCriterion;

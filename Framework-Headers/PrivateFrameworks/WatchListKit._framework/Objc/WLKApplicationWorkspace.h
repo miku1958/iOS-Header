@@ -16,7 +16,6 @@
 + (id)defaultWorkspace;
 - (void).cxx_destruct;
 - (id)_connection;
-- (id)_proxy;
 - (void)fetchApplicationsOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

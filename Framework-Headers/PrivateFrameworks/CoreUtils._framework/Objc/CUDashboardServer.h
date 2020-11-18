@@ -41,7 +41,7 @@
     NSString *_logFilePath;
 }
 
-@property (strong, nonatomic) NSString *logFilePath; // @synthesize logFilePath=_logFilePath;
+@property (copy, nonatomic) NSString *logFilePath; // @synthesize logFilePath=_logFilePath;
 
 - (void).cxx_destruct;
 - (void)_readHandler:(int)arg1;

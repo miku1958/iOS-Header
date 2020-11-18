@@ -22,6 +22,7 @@
 - (void)resetAccountCDPState;
 - (unsigned long long)supportedEscapeOfferMask;
 - (void)supportedEscapeOfferMaskCompletion:(CDUnknownBlockType)arg1;
+- (void)validateRecoveryKey:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)validateSecret:(id)arg1 devices:(id)arg2 type:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
 
 @end

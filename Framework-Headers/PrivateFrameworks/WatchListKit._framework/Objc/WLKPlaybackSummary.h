@@ -12,7 +12,6 @@
 
 @interface WLKPlaybackSummary : NSObject <NSSecureCoding>
 {
-    BOOL _isItunes;
     NSString *_bundleID;
     NSDate *_timestamp;
     NSNumber *_duration;
@@ -32,7 +31,6 @@
 @property (readonly, nonatomic) NSNumber *duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) NSNumber *elapsedTime; // @synthesize elapsedTime=_elapsedTime;
 @property (readonly, nonatomic) NSString *externalProfileID; // @synthesize externalProfileID=_externalProfileID;
-@property (readonly, nonatomic) BOOL isItunes; // @synthesize isItunes=_isItunes;
 @property (readonly, nonatomic) NSNumber *playbackRate; // @synthesize playbackRate=_playbackRate;
 @property (readonly, nonatomic) long long playbackState; // @synthesize playbackState=_playbackState;
 @property (readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
@@ -47,7 +45,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBundleId:(id)arg1 timestamp:(id)arg2 duration:(id)arg3 elapsedTime:(id)arg4 externalProfileID:(id)arg5 contentID:(id)arg6 isItunes:(BOOL)arg7 accountID:(id)arg8 playbackState:(long long)arg9 playbackRate:(id)arg10 completionState:(long long)arg11;
+- (id)initWithBundleId:(id)arg1 timestamp:(id)arg2 duration:(id)arg3 elapsedTime:(id)arg4 externalProfileID:(id)arg5 contentID:(id)arg6 accountID:(id)arg7 playbackState:(long long)arg8 playbackRate:(id)arg9 completionState:(long long)arg10;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMediaRemoteDictionary:(id)arg1 bundleID:(id)arg2 accountID:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

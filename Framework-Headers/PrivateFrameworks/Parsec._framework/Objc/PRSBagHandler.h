@@ -20,6 +20,7 @@
     BOOL _active;
     BOOL _cep_sort_of_tophits;
     BOOL _collectAnonymousData;
+    BOOL _collectScores;
     id<PRSSessionController> _client;
     long long _status;
     double _searchRenderTimeout;
@@ -31,6 +32,7 @@
     long long _cat_score_enum;
     NSSet *_appBlacklist;
     NSArray *_enabledDomains;
+    NSArray *_anonymousMetadataUndesiredBundleIDs;
     NSString *_fteLocString;
     NSString *_fteLearnMoreString;
     NSString *_fteContinueString;
@@ -43,6 +45,7 @@
 }
 
 @property (nonatomic) BOOL active; // @synthesize active=_active;
+@property (strong, nonatomic) NSArray *anonymousMetadataUndesiredBundleIDs; // @synthesize anonymousMetadataUndesiredBundleIDs=_anonymousMetadataUndesiredBundleIDs;
 @property (strong, nonatomic) NSSet *appBlacklist; // @synthesize appBlacklist=_appBlacklist;
 @property (nonatomic) long long cat_score_enum; // @synthesize cat_score_enum=_cat_score_enum;
 @property (nonatomic) long long cep_probability_factor; // @synthesize cep_probability_factor=_cep_probability_factor;
@@ -51,6 +54,7 @@
 @property (nonatomic) double cep_top_hit_threshold; // @synthesize cep_top_hit_threshold=_cep_top_hit_threshold;
 @property (weak) id<PRSSessionController> client; // @synthesize client=_client;
 @property (nonatomic) BOOL collectAnonymousData; // @synthesize collectAnonymousData=_collectAnonymousData;
+@property (nonatomic) BOOL collectScores; // @synthesize collectScores=_collectScores;
 @property (strong) NSDictionary *correctionDict; // @synthesize correctionDict=_correctionDict;
 @property (strong) NSURL *correctionDictURL; // @synthesize correctionDictURL=_correctionDictURL;
 @property (strong, nonatomic) NSArray *enabledDomains; // @synthesize enabledDomains=_enabledDomains;

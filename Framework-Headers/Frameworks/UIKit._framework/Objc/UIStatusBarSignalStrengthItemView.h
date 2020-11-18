@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (id)_stringForRSSI;
 - (id)contentsImage;
+- (double)extraLeftPadding;
 - (double)extraRightPadding;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;

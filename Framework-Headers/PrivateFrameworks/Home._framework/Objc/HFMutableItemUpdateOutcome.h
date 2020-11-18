@@ -18,6 +18,8 @@
 @property (strong, nonatomic) NSDictionary *results;
 
 - (void).cxx_destruct;
+- (void)addResultsFromDictionary:(id)arg1;
+- (void)addResultsFromOutcome:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithResults:(id)arg1 type:(unsigned long long)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;

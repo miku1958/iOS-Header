@@ -14,8 +14,12 @@
 @property (readonly, nonatomic) NSSet *hf_displayNamesForVisibleTiles;
 @property (readonly, nonatomic) BOOL hf_isBridge;
 @property (readonly, nonatomic) BOOL hf_isCamera;
+@property (readonly, nonatomic) BOOL hf_isProgrammableSwitch;
+@property (readonly, nonatomic) unsigned long long hf_numberOfProgrammableSwitches;
+@property (readonly, nonatomic) NSSet *hf_programmableSwitchNamespaceServices;
 @property (readonly, nonatomic) BOOL hf_requiresFirmwareUpdate;
 @property (readonly, nonatomic) NSSet *hf_visibleServices;
 
+- (id)hf_serviceOfType:(id)arg1;
 @end
 

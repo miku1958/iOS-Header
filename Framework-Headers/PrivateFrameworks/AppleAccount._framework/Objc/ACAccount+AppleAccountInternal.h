@@ -15,6 +15,7 @@
 - (void)_aa_clearRawPassword;
 - (void)_aa_setAltDSID:(id)arg1;
 - (void)_aa_setAppleID:(id)arg1;
+- (void)_aa_setPrimaryEmail:(id)arg1;
 - (void)aa_configureCerts;
 - (void)aa_removeCerts;
 @end

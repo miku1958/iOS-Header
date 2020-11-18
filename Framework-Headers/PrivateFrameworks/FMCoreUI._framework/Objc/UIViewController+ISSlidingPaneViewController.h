@@ -10,7 +10,7 @@
 
 @interface UIViewController (ISSlidingPaneViewController)
 
-@property (readonly, nonatomic) FMSlidingPaneViewController *slidingPaneViewController;
+@property (readonly) FMSlidingPaneViewController *slidingPaneViewController;
 
 @end
 

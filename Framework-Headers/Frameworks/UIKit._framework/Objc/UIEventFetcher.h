@@ -24,10 +24,15 @@ __attribute__((visibility("hidden")))
     CADisplayLink *_displayLink;
     long long _countOfDigitizerEventsReceivedSinceLastDisplayLinkCallback;
     BOOL _didDispatchOneMoveEventSinceLastDisplayLinkCallback;
+    double _lastImportantEventTimestamp;
+    BOOL _shouldSignalOnDisplayLink;
     id<UIEventFetcherSink> _eventFetcherSink;
+    double _commitTimeForTouchEvents;
 }
 
+@property (nonatomic) double commitTimeForTouchEvents; // @synthesize commitTimeForTouchEvents=_commitTimeForTouchEvents;
 @property (strong, nonatomic) id<UIEventFetcherSink> eventFetcherSink; // @synthesize eventFetcherSink=_eventFetcherSink;
+@property (nonatomic) BOOL shouldSignalOnDisplayLink; // @synthesize shouldSignalOnDisplayLink=_shouldSignalOnDisplayLink;
 
 - (void).cxx_destruct;
 - (void)_addHIDEventFilter:(CDUnknownBlockType)arg1;
@@ -43,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)setupForRunLoop:(id)arg1;
 - (void)setupThreadAndRun;
-- (void)signalEventsAvailable;
+- (void)signalEventsAvailableWithReason:(unsigned long long)arg1 filteredEventCount:(long long)arg2;
 - (void)threadMain;
 
 @end

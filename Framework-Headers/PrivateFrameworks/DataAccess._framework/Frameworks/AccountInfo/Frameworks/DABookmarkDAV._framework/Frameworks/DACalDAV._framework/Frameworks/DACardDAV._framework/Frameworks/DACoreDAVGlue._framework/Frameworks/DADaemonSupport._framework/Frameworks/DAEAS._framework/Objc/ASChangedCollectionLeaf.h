@@ -14,7 +14,7 @@
 {
     BOOL _isResponse;
     BOOL _validateOpeningTokens;
-    long long _changeType;
+    unsigned long long _changeType;
     NSString *_serverID;
     NSString *_instanceID;
     NSString *_clientID;
@@ -24,7 +24,7 @@
 }
 
 @property (strong, nonatomic) NSDictionary *applicationData; // @synthesize applicationData=_applicationData;
-@property (nonatomic) long long changeType; // @synthesize changeType=_changeType;
+@property (nonatomic) unsigned long long changeType; // @synthesize changeType=_changeType;
 @property (copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
 @property (strong, nonatomic) NSString *instanceID; // @synthesize instanceID=_instanceID;
 @property (nonatomic) BOOL isResponse; // @synthesize isResponse=_isResponse;

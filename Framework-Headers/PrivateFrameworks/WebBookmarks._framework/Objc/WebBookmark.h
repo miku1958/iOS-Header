@@ -36,6 +36,7 @@
     unsigned int _orderIndex;
     BOOL _inserted;
     BOOL _needsSyncUpdate;
+    unsigned long long _modifiedAttributes;
 }
 
 @property (readonly, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
@@ -58,6 +59,7 @@
 @property (strong, nonatomic) NSDictionary *localAttributes; // @synthesize localAttributes=_localAttributes;
 @property (strong, nonatomic) NSString *localPreviewText;
 @property (nonatomic) BOOL locallyAdded;
+@property (readonly, nonatomic) unsigned long long modifiedAttributes;
 @property (nonatomic) BOOL needsSyncUpdate; // @synthesize needsSyncUpdate=_needsSyncUpdate;
 @property (strong, nonatomic) NSDictionary *nextPageURLs;
 @property (readonly, nonatomic) int parentID; // @synthesize parentID=_parentID;
@@ -76,8 +78,10 @@
 + (id)_trimmedPreviewText:(id)arg1;
 + (id)_trimmedTitle:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_attributesMarkedAsModified:(unsigned long long)arg1;
 - (id)_initWithSqliteRow:(struct sqlite3_stmt *)arg1;
 - (id)_initWithSqliteRow:(struct sqlite3_stmt *)arg1 hasIcon:(BOOL)arg2;
+- (void)_markAttributesAsModified:(unsigned long long)arg1;
 - (void)_markSpecial:(int)arg1;
 - (void)_modifyExtraReadingListAttributes:(CDUnknownBlockType)arg1;
 - (void)_modifyLocalReadingListAttributes:(CDUnknownBlockType)arg1;

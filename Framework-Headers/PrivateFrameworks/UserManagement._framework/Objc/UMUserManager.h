@@ -32,7 +32,6 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_allUsersDidChange;
-- (id)_userWithUID:(unsigned int)arg1;
 - (id)allUsers;
 - (BOOL)canAccessUserProperties;
 - (void)createUser:(id)arg1 passcodeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -53,9 +52,11 @@
 - (void)switchToLoginUserWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)switchToLoginUserWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)switchToUser:(id)arg1 passcodeData:(id)arg2 context:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)switchToUser:(id)arg1 passcodeData:(id)arg2 context:(id)arg3 preferences:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)terminateSyncWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)unregisterStakeHolder:(id)arg1 status:(unsigned long long)arg2 reason:(id)arg3;
 - (BOOL)userExists:(id)arg1;
+- (void)userInteractionIsEnabled;
 - (void)userListDidUpdate;
 
 @end

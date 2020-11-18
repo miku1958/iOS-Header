@@ -15,6 +15,7 @@
 
 - (void)cancelPeekAdjustmentForScrollView:(UIScrollView *)arg1 performRollback:(BOOL)arg2;
 - (void)cancelScrollingForScrollView:(UIScrollView *)arg1;
+- (struct CGPoint)currentVelocityForScrollView:(UIScrollView *)arg1;
 - (BOOL)isAnimatingScrollView:(UIScrollView *)arg1;
 - (void)setPeekOffsetAdjustment:(struct CGPoint)arg1 forScrollView:(UIScrollView *)arg2;
 - (void)setTargetContentOffset:(struct CGPoint)arg1 forScrollView:(UIScrollView *)arg2 convergenceRate:(double)arg3 completion:(void (^)(BOOL))arg4;

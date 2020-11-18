@@ -11,6 +11,7 @@
 - (id)_safari_libraryDirectoryForHomeDirectory:(id)arg1;
 - (id)_safari_safariLibraryDirectory;
 - (id)_safari_settingsDirectoryForLibraryDirectory:(id)arg1;
+- (id)safari_createTemporaryDirectoryWithTemplate:(id)arg1;
 - (id)safari_ensureDirectoryExists:(id)arg1;
 - (id)safari_productionSafariSettingsDirectory;
 - (BOOL)safari_removeFileAtURL:(id)arg1 error:(id *)arg2;

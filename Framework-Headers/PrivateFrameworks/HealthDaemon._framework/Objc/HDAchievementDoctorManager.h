@@ -47,6 +47,7 @@
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (id)initWithProfile:(id)arg1;
+- (void)requestAchievementDoctorRun;
 
 @end
 

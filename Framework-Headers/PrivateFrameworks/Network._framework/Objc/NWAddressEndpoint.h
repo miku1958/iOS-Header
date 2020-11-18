@@ -22,7 +22,6 @@
 + (id)endpointWithAddress:(const struct sockaddr *)arg1;
 + (id)endpointWithHostname:(id)arg1 port:(id)arg2;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

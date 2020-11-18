@@ -13,8 +13,10 @@
 }
 
 @property BOOL _cellular; // @dynamic _cellular;
+@property (copy) NSString *_localAddressAndPort; // @dynamic _localAddressAndPort;
 @property BOOL _localCache; // @dynamic _localCache;
 @property unsigned int _redirected; // @dynamic _redirected;
+@property (copy) NSString *_remoteAddressAndPort; // @dynamic _remoteAddressAndPort;
 @property BOOL _secureConnection; // @dynamic _secureConnection;
 @property BOOL _serverPush; // @dynamic _serverPush;
 @property (copy) NSDate *connectEndDate; // @dynamic connectEndDate;

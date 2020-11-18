@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TextureIO/TXRParserBase.h>
+#import <objc/NSObject.h>
 
 #import <TextureIO/TXRParser-Protocol.h>
 
 @class NSString, TXRImageInfo, TXRTextureInfo;
 
-@interface TXRParserImageIO : TXRParserBase <TXRParser>
+@interface TXRParserImageIO : NSObject <TXRParser>
 {
     TXRTextureInfo *_textureInfo;
     TXRImageInfo *_imageInfo;
@@ -26,6 +26,8 @@
 + (id)decodeCGImageNonIndexed:(struct CGImage *)arg1 desiredPixelFormat:(unsigned long long)arg2 bufferAllocator:(id)arg3 options:(id)arg4 error:(id *)arg5;
 + (int)determineColorSpaceClass:(struct CGImage *)arg1 displayGamut:(unsigned long long)arg2 options:(id)arg3;
 + (BOOL)exportImage:(id)arg1 url:(id)arg2 uttype:(struct __CFString *)arg3 error:(id *)arg4;
++ (BOOL)exportTexture:(id)arg1 url:(id)arg2 error:(id *)arg3;
++ (BOOL)handlesData:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)parseData:(id)arg1 bufferAllocator:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)parsedImageAtLevel:(unsigned long long)arg1 element:(unsigned long long)arg2 face:(unsigned long long)arg3;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class NSLayoutConstraint, SFResultSection, UIButton, UILabel;
+@class NSLayoutConstraint, NSString, SFResultSection, UIButton, UILabel;
 @protocol SPUISearchTableHeaderViewDelegate;
 
 @interface SPUISearchTableHeaderView : UITableViewHeaderFooterView
@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSLayoutConstraint *moreButtonVisibleConstraint; // @synthesize moreButtonVisibleConstraint=_moreButtonVisibleConstraint;
 @property (strong, nonatomic) SFResultSection *section; // @synthesize section=_section;
 @property (readonly) unsigned long long sectionHeaderType; // @synthesize sectionHeaderType=_sectionHeaderType;
+@property (readonly) NSString *title;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;

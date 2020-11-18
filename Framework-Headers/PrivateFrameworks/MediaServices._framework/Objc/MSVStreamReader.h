@@ -14,6 +14,7 @@
 @interface MSVStreamReader : NSObject <NSStreamDelegate>
 {
     BOOL _closeOnStop;
+    BOOL _stopped;
     struct z_stream_s *_zstreamp;
     BOOL _compress;
     CDUnknownBlockType _didReadDataBlock;

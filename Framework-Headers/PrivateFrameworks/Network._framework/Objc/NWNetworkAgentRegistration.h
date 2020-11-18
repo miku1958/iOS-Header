@@ -26,10 +26,12 @@
 @property (readonly, nonatomic, getter=isRegistered) BOOL registered;
 @property (strong) NSUUID *registeredUUID; // @synthesize registeredUUID=_registeredUUID;
 @property int registrationSocket; // @synthesize registrationSocket=_registrationSocket;
+@property (nonatomic) unsigned long long useCount;
 
 + (BOOL)addActiveAssertionToNetworkAgent:(id)arg1;
 + (int)newRegistrationFileDescriptor;
 + (BOOL)removeActiveAssertionFromNetworkAgent:(id)arg1;
++ (BOOL)useNetworkAgent:(id)arg1 returnUseCount:(unsigned long long *)arg2;
 - (void).cxx_destruct;
 - (BOOL)addNetworkAgentToInterfaceNamed:(id)arg1;
 - (BOOL)assignNexusData:(id)arg1 toClient:(id)arg2;

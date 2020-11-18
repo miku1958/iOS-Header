@@ -29,6 +29,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned long long photosCount; // @synthesize photosCount=_photosCount;
 
++ (id)px_modelObjectsFromPersonItemArray:(id)arg1;
 - (void).cxx_destruct;
 
 @end

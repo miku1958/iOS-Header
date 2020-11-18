@@ -6,17 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
-
 __attribute__((visibility("hidden")))
 @interface CKDRegisterOperationInfo : NSObject
 {
-    NSDictionary *_options;
+    unsigned long long _options;
 }
 
-@property (strong, nonatomic) NSDictionary *options; // @synthesize options=_options;
+@property (nonatomic) unsigned long long options; // @synthesize options=_options;
 
-- (void).cxx_destruct;
 
 @end
 

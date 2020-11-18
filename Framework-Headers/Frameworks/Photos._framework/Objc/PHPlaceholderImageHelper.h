@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)placeholderImageDataForImageSize:(struct CGSize)arg1 qualityClass:(id)arg2 dataSpecification:(id *)arg3;
++ (id)placeholderImageDataForImageSize:(struct CGSize)arg1 qualityClass:(id)arg2 dataSpecification:(struct PHAssetResourceTableDataSpecification *)arg3;
 
 @end
 

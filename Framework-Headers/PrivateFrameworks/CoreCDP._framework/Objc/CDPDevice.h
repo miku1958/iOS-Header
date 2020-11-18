@@ -11,7 +11,7 @@
 
 @class NSDate, NSNumber, NSString;
 
-@interface CDPDevice : NSObject <NSSecureCoding, NSCopying>
+@interface CDPDevice : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_localizedName;
     NSString *_model;

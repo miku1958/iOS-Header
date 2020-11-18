@@ -11,7 +11,6 @@
 @class CVMLRequestHandler, NSLock, NSMutableArray, NSMutableSet, NSNumber, NSString, NSURL, PVCanceler, PVClustererPerformanceStats, PVContext, PVDataAccessor, PVEventManager, PVQueue, PVSuggestionRequest;
 @protocol PVCVMLIntegrating;
 
-__attribute__((visibility("hidden")))
 @interface PVClusterer : NSObject <PVFaceComparer>
 {
     id<PVCVMLIntegrating> _cvmlIntegration;
@@ -50,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
++ (BOOL)facesSyncFeatureEnabled;
 + (BOOL)removeClusteringStateCacheWithContext:(id)arg1 cacheDirectoryUrl:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (void)_appendToClusterLog:(id)arg1;
@@ -72,21 +72,22 @@ __attribute__((visibility("hidden")))
 - (void)_recordCurrentStatus:(CDStruct_56d3ddf4)arg1;
 - (void)_recordPendingFacesCount:(unsigned long long)arg1;
 - (void)_removeEmptyGroups;
-- (BOOL)_sawBadPersistedClusters;
 - (unsigned long long)_selectRepresentativeFromFaces:(id)arg1 representativenessByCSN:(id)arg2;
 - (void)_syncClustererWithPhotoLibrary:(id)arg1;
 - (void)_transitionToReadyState;
-- (BOOL)_updatePersistedAlgorithmicClusters:(id)arg1 andFaces:(id)arg2 withCanceler:(id)arg3 returningPersistedClusters:(id *)arg4 faceGroupsWithoutKeyFace:(id *)arg5 csnsToBeRemovedFromClusterState:(id)arg6 toBeReclusteredFaceIds:(id)arg7 error:(id *)arg8;
+- (BOOL)_updatePersistedAlgorithmicClusters:(id)arg1 andFaces:(id)arg2 withCanceler:(id)arg3 returningPersistedClusters:(id *)arg4 faceGroupsThatLostFaces:(id *)arg5 faceGroupsWithoutKeyFace:(id *)arg6 csnsToBeRemovedFromClusterState:(id)arg7 toBeReclusteredFaceIds:(id)arg8 error:(id *)arg9;
 - (BOOL)_updateRepresentativeFacesForClusters:(id)arg1 csnByGroupWithoutKeyFace:(id)arg2 error:(id *)arg3;
 - (BOOL)cancelAllSuggestionRequests;
 - (void)cancelClustering;
 - (BOOL)cancelSuggestionRequest:(id)arg1;
 - (void)clusterAndWait;
+- (id)clusterFaceIdsArrayForClusterid:(unsigned long long)arg1 error:(id *)arg2;
+- (id)clusterFaceIdsForClusterId:(unsigned long long)arg1 error:(id *)arg2;
 - (void)clusterIfNecessaryAndWait;
 - (float)clusterRepresentativenessOfFace:(id)arg1;
+- (id)distanceBetweenLevel0ClusterId:(unsigned long long)arg1 andLevel0ClusterId:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)faceIsGoodRepresentativeOfItsCluster:(id)arg1;
 - (void)getClusters:(id *)arg1 threshold:(double *)arg2 utilizingGPU:(BOOL *)arg3;
-- (BOOL)getDistance:(float *)arg1 fromFaceObservation:(id)arg2 toFaceObservation:(id)arg3 error:(id *)arg4;
 - (BOOL)hasAccumulatedClusterChanges;
 - (id)initWithContext:(id)arg1 dataAccessor:(id)arg2 cacheDirectoryUrl:(id)arg3 cvmlIntegration:(id)arg4;
 - (void)performClusteringWithCompletion:(CDUnknownBlockType)arg1;

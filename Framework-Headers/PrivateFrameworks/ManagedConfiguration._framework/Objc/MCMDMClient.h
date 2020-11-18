@@ -26,11 +26,15 @@
 - (BOOL)isManagedByMDM;
 - (void)migrateMDMWithContext:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)notifyNewConfiguration;
-- (void)processUserRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)processDeviceRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)processDeviceRequest:(id)arg1 outError:(id *)arg2;
+- (void)processUserRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)processUserRequest:(id)arg1 outError:(id *)arg2;
 - (void)retryNotNowResponse;
 - (void)scheduleTokenUpdate;
 - (void)scheduleTokenUpdateIfNecessary;
 - (void)simulatePush;
+- (void)simulatePushIfNetworkTetheredWithCompletion:(CDUnknownBlockType)arg1;
 - (void)uprootMDM;
 
 @end

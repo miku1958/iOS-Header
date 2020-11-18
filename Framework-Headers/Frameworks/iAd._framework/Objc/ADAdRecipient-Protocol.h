@@ -6,17 +6,19 @@
 
 #import <iAd/NSObject-Protocol.h>
 
-@class NSError, UIView, UIViewController;
+@class ADMRAIDAction, NSError, NSString, UIView, UIViewController;
 
 @protocol ADAdRecipient <NSObject>
 
+@property (copy, nonatomic) NSString *adResponseId;
 @property (readonly, nonatomic) UIView *adSpaceView;
+@property (nonatomic) BOOL displayed;
 @property (readonly, nonatomic) int internalAdType;
+@property (nonatomic) long long lastErrorCode;
 @property (readonly, nonatomic) long long options;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
+@property (nonatomic) int screenfuls;
 
-- (void)bannerTappedAtPoint:(struct CGPoint)arg1;
-- (void)changeBannerViewState:(int)arg1;
 - (void)pauseBannerMedia;
 - (void)privacyButtonWasTapped;
 - (void)resumeBannerMedia;
@@ -26,5 +28,9 @@
 - (void)serverStoryboardDidTransitionOut;
 - (BOOL)shouldTestVisibilityAtPoint:(struct CGPoint)arg1;
 - (void)storyboardViewControllerDidPresent;
+
+@optional
+- (void)creativeControllerViewWasTappedAtPoint:(struct CGPoint)arg1 withMRAIDAction:(ADMRAIDAction *)arg2;
+- (void)setViewSizeInPortrait:(struct CGSize)arg1 inLandscape:(struct CGSize)arg2;
 @end
 

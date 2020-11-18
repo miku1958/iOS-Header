@@ -35,12 +35,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct __CFString *aggregateLevelKey;
 @property (readonly, nonatomic) PUGridZoomLevelInfo *baseZoomLevelInfo; // @synthesize baseZoomLevelInfo=_baseZoomLevelInfo;
 @property (readonly, nonatomic) PHCachingImageManager *cachingImageManager; // @synthesize cachingImageManager=_cachingImageManager;
+@property (readonly, nonatomic) long long cellFillMode;
 @property (readonly, nonatomic) PUSectionedGridLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;
 @property (readonly, nonatomic) unsigned long long dateRangeFormatterPreset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *displayTitle; // @synthesize displayTitle=_displayTitle;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) struct CGSize imageRequestItemSize;
+@property (readonly, nonatomic) double itemContentScale;
 @property (nonatomic) struct CGSize lastItemPixelSize; // @synthesize lastItemPixelSize=_lastItemPixelSize;
 @property (readonly, nonatomic) long long maxRowsPerSection; // @synthesize maxRowsPerSection=_maxRowsPerSection;
 @property (nonatomic) double pendingContentWidth; // @synthesize pendingContentWidth=_pendingContentWidth;
@@ -60,10 +63,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PUZoomableGridViewController *zoomableGridViewController; // @synthesize zoomableGridViewController=_zoomableGridViewController;
 
 - (void).cxx_destruct;
+- (unsigned long long)_detailViewSourceOriginWithZoomLevel:(unsigned long long)arg1;
 - (void)_updateBackdropGroupNameForHeaderView:(id)arg1;
 - (id)assetsToDisplayInMapForVisualSection:(long long)arg1;
 - (double)cellAspectRatioHint;
-- (long long)cellFillMode;
 - (BOOL)configureGridCell:(id)arg1 forIndexPath:(id)arg2;
 - (void)configureSectionHeaderView:(id)arg1 forVisualSection:(long long)arg2;
 - (BOOL)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3 animated:(BOOL)arg4;

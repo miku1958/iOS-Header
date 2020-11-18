@@ -32,6 +32,7 @@
 @property (nonatomic, getter=isAllDay) BOOL allDay; // @synthesize allDay=_allDay;
 @property (nonatomic) BOOL attendeeReplyChanged; // @synthesize attendeeReplyChanged=_attendeeReplyChanged;
 @property (strong, nonatomic) NSArray *attendees; // @synthesize attendees=_attendees;
+@property (nonatomic) BOOL couldBeJunk;
 @property (nonatomic) BOOL dateChanged; // @synthesize dateChanged=_dateChanged;
 @property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly, nonatomic) NSString *invitedBy; // @synthesize invitedBy=_invitedBy;

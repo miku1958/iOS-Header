@@ -13,13 +13,11 @@
 
 @interface MSPMutableHistoryEntryRoute : MSPMutableHistoryEntry <MSPHistoryEntryRoute>
 {
-    BOOL _failed;
     id<MSPRouteInformationSource> _routeInformationSource;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isFailed) BOOL failed; // @synthesize failed=_failed;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=navigationWasInterrupted) BOOL navigationInterrupted;
 @property (copy, nonatomic) id<MSPRouteInformationSource> routeInformationSource; // @synthesize routeInformationSource=_routeInformationSource;

@@ -24,6 +24,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)endTimes;
 - (id)initWithCoder:(id)arg1;
+- (id)playbackContext;
 - (id)startTimes;
 
 @end

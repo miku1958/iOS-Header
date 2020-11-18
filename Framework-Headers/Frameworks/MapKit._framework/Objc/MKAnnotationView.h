@@ -164,6 +164,7 @@
 - (void)setDragState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)setHidden:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
+- (id)viewRepresentation;
 
 @end
 

@@ -6,9 +6,11 @@
 
 #import <Foundation/NSObject.h>
 
-@class GKLocalPlayer, NSDate, NSString, UIViewController;
+#import <GameCenterFoundation/RemoteUIControllerDelegate-Protocol.h>
 
-@interface GKLocalPlayerAuthenticator : NSObject
+@class GKDispatchGroup, GKLocalPlayer, NSDate, NSMutableArray, NSString, RemoteUIController, UINavigationController, UIViewController;
+
+@interface GKLocalPlayerAuthenticator : NSObject <RemoteUIControllerDelegate>
 {
     NSString *_username;
     NSString *_password;
@@ -19,18 +21,36 @@
     BOOL _forceAuthentication;
     NSDate *_lastAuthDate;
     NSString *_lastAuthPlayerID;
+    NSString *_alertTitle;
+    NSString *_alertMessage;
+    BOOL _userShouldSkipCreateAppleID;
     UIViewController *_presentingViewController;
+    RemoteUIController *_remoteU13Controller;
+    UINavigationController *_u13NavigationController;
+    NSMutableArray *_u13ObjectModels;
+    GKDispatchGroup *_u13Group;
 }
 
+@property (strong) NSString *alertMessage; // @synthesize alertMessage=_alertMessage;
+@property (strong) NSString *alertTitle; // @synthesize alertTitle=_alertTitle;
 @property (getter=isAuthenticated) BOOL authenticated; // @synthesize authenticated=_authenticated;
 @property (getter=isAuthenticating) BOOL authenticating; // @synthesize authenticating=_authenticating;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property BOOL forceAuthentication; // @synthesize forceAuthentication=_forceAuthentication;
+@property (readonly) unsigned long long hash;
 @property (strong) GKLocalPlayer *inputLocalPlayer; // @synthesize inputLocalPlayer=_inputLocalPlayer;
 @property (strong) NSDate *lastAuthDate; // @synthesize lastAuthDate=_lastAuthDate;
 @property (strong) NSString *lastAuthPlayerID; // @synthesize lastAuthPlayerID=_lastAuthPlayerID;
 @property (copy) NSString *password; // @synthesize password=_password;
 @property UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property (strong, nonatomic) RemoteUIController *remoteU13Controller; // @synthesize remoteU13Controller=_remoteU13Controller;
 @property (strong) GKLocalPlayer *resultantLocalPlayer; // @synthesize resultantLocalPlayer=_resultantLocalPlayer;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) GKDispatchGroup *u13Group; // @synthesize u13Group=_u13Group;
+@property (strong, nonatomic) UINavigationController *u13NavigationController; // @synthesize u13NavigationController=_u13NavigationController;
+@property (strong, nonatomic) NSMutableArray *u13ObjectModels; // @synthesize u13ObjectModels=_u13ObjectModels;
+@property (nonatomic) BOOL userShouldSkipCreateAppleID; // @synthesize userShouldSkipCreateAppleID=_userShouldSkipCreateAppleID;
 @property (copy) NSString *username; // @synthesize username=_username;
 
 + (id)authenticatorForExistingPlayer:(id)arg1;
@@ -38,17 +58,21 @@
 + (id)authenticatorForPlayerWithUsername:(id)arg1 password:(id)arg2;
 + (id)authenticatorForPlayerWithUsername:(id)arg1 password:(id)arg2 withPresentingViewController:(id)arg3;
 + (void)postURL:(id)arg1 postBody:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_authenticateUsingAuthUI:(BOOL)arg1 authUIDismissHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_authenticateUsingAuthUI:(BOOL)arg1 usernameEditable:(BOOL)arg2 authUIDismissHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleAuthResponse:(id)arg1 error:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)applicationDidEnterBackground:(id)arg1;
+- (void)authenticateExistingUserAuthUIWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)authenticateUsingAuthUIAllowingAppleIDCreation:(BOOL)arg1 usernameEditable:(BOOL)arg2 dismissHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)authenticateUsingAuthUIWithAuthUIDismissHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)authenticateUsingAuthUIWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)authenticateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)authenticationDidComplete;
 - (void)dealloc;
-- (id)description;
 - (id)init;
+- (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
+- (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
+- (BOOL)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3;
+- (void)remoteUIControllerDidDismiss:(id)arg1;
 - (void)reset;
 
 @end

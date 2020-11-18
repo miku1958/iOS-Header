@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)_contextToGetSectionItem:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_contextToPutItemGroup:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_contextToPutSectionItem:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)_contextToRegisterItemGroup:(id)arg1 operation:(id)arg2 fetchOnly:(BOOL)arg3 options:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)_contextToRegisterItemGroup:(id)arg1 operation:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_getRegisteredItemsGreaterThan:(unsigned long long)arg1 itemIds:(unsigned long long *)arg2 itemCount:(unsigned long long *)arg3 error:(id *)arg4;
 - (void)_logMMCSOptions:(id)arg1;
 - (id)_referenceIdentifierFromAssetKey:(id)arg1;
@@ -59,9 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)performOnRunLoop:(CDUnknownBlockType)arg1;
 - (id)putItemGroupSet:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)putSectionItem:(id)arg1 operation:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)registerItemGroupSet:(id)arg1 operation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)registerItemGroupSet:(id)arg1 operation:(id)arg2 shouldChunk:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)registerItemGroupSet:(id)arg1 operation:(id)arg2 shouldChunk:(BOOL)arg3 fetchOnly:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)registerItemGroupSet:(id)arg1 operation:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)registeredItemCount:(unsigned long long *)arg1 error:(id *)arg2;
 - (void)showRegisteredItems;
 - (void)unregisterItemIDs:(id)arg1;

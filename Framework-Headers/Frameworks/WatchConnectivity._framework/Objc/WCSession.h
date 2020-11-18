@@ -80,8 +80,9 @@
 + (id)defaultSession;
 + (BOOL)isSupported;
 - (void).cxx_destruct;
+- (void)E4BFDA635AC244FEAF9F76EF9FEB9068;
 - (id)_init;
-- (void)_onqueue_notifyOfMessageError:(id)arg1 withErrorHandler:(CDUnknownBlockType)arg2;
+- (void)_onqueue_notifyOfMessageError:(id)arg1 messageID:(id)arg2 withErrorHandler:(CDUnknownBlockType)arg3;
 - (void)_onqueue_sendResponseError:(id)arg1 identifier:(id)arg2 dictionaryMessage:(BOOL)arg3;
 - (void)activateSession;
 - (void)cancelFileTransfer:(id)arg1;

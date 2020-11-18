@@ -60,11 +60,13 @@ __attribute__((visibility("hidden")))
     NSDictionary *_legacySocketStreamProperties;
     BOOL _betterRouteDiscovered;
     NSData *__TCPConnectionMetadata;
+    NSData *__initialDataPayload;
     BOOL _didIssueCancel;
 }
 
 @property (copy) NSData *_TCPConnectionMetadata; // @synthesize _TCPConnectionMetadata=__TCPConnectionMetadata;
 @property (readonly) BOOL _goneSecure; // @synthesize _goneSecure;
+@property (copy) NSData *_initialDataPayload; // @synthesize _initialDataPayload=__initialDataPayload;
 @property long long countOfBytesExpectedToReceive; // @synthesize countOfBytesExpectedToReceive=_countOfBytesExpectedToReceive;
 @property long long countOfBytesExpectedToSend; // @synthesize countOfBytesExpectedToSend=_countOfBytesExpectedToSend;
 @property long long countOfBytesReceived; // @synthesize countOfBytesReceived=_countOfBytesReceived;

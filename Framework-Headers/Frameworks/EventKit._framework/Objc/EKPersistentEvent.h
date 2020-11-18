@@ -28,6 +28,7 @@
 @property (readonly, nonatomic, getter=isInvitation) BOOL invitation;
 @property (readonly, nonatomic) unsigned int invitationChangedProperties;
 @property (nonatomic) unsigned long long invitationStatus;
+@property (nonatomic) unsigned long long junkStatus;
 @property (nonatomic) long long locationPredictionState;
 @property (readonly, nonatomic, getter=isMeeting) BOOL meeting;
 @property (nonatomic) BOOL needsOccurrenceCacheUpdate;

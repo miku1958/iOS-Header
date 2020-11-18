@@ -113,7 +113,6 @@
 - (void)_setTypingStyle:(id)arg1 withUndoAction:(int)arg2;
 - (void)_setVisibleSize:(struct CGSize)arg1;
 - (BOOL)_shouldFlattenCompositingLayers:(struct CGContext *)arg1;
-- (id)_smartDeleteRangeForProposedRange:(id)arg1;
 - (id)_stringByEvaluatingJavaScriptFromString:(id)arg1;
 - (id)_stringByEvaluatingJavaScriptFromString:(id)arg1 forceUserGesture:(BOOL)arg2;
 - (id)_stringByEvaluatingJavaScriptFromString:(id)arg1 withGlobalObject:(struct OpaqueJSValue *)arg2 inScriptWorld:(id)arg3;

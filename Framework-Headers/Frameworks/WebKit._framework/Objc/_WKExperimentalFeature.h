@@ -17,6 +17,7 @@
 
 @property (readonly) struct Object *_apiObject;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) BOOL defaultValue;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *details;
 @property (readonly) unsigned long long hash;

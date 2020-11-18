@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     VKAnimation *_animation;
     VKAnimation *_animationForPitch;
     struct unordered_map<unsigned long long, VKPolygonGroup *, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, VKPolygonGroup *>>> _transitPolygonGroupMap;
-    unordered_map_9fd1a77d _transitNodesRouteAttributesMap;
+    unordered_map_5292d3da _transitNodesRouteAttributesMap;
 }
 
 @property (nonatomic) float alpha; // @synthesize alpha=_alpha;
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)buildMeshesWithDevice:(Device_f0710f89 *)arg1 triangulator:(id)arg2 prepareExtrusion:(BOOL)arg3;
 - (void)dealloc;
 - (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 prepareExtrusion:(BOOL)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_f0710f89 *)arg7;
-- (void)setTransitNodesRouteAttributes:(const unordered_map_9fd1a77d *)arg1;
+- (void)setTransitNodesRouteAttributes:(const unordered_map_5292d3da *)arg1;
 
 @end
 

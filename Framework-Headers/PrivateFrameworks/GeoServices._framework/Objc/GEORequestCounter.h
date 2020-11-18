@@ -30,6 +30,7 @@
 - (void)incrementForApp:(id)arg1 requestType:(unsigned char)arg2 result:(unsigned char)arg3;
 - (id)init;
 - (void)readRequestsPerAppSince:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)startPowerLogSessionWithName:(id)arg1;
 
 @end
 

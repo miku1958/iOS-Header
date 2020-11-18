@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEOComposedRouteStep, GEOComposedWaypoint, GEORouteMatch, MNNavigationSession, NSData, NSString;
+@class GEOComposedRoute, GEOComposedRouteStep, GEOComposedWaypoint, MNNavigationSession, NSData, NSString;
 @protocol MNGuidanceManagerDelegate;
 
 @interface MNGuidanceManager : NSObject
@@ -14,7 +14,6 @@
     GEOComposedRoute *_route;
     int _guidanceState;
     unsigned long long _currentStepIndex;
-    GEORouteMatch *_lastRouteMatch;
     double _distanceWhenFirstAnnouncementAllowed;
     double _distanceWhenInitialAnnounced;
     double _distanceWhenPrepareAnnounced;
@@ -115,7 +114,7 @@
 - (void)updateForReturnToRoute;
 - (void)updateGuidanceAfterReroute;
 - (void)updateGuidanceForLocation:(id)arg1 navigatorState:(int)arg2;
-- (void)updateGuidanceForProceedToRouteAtLocation:(CDStruct_2c43369c)arg1 routeMatch:(id)arg2 remainingTime:(double)arg3 distanceUntilDestination:(double)arg4;
+- (void)updateGuidanceForProceedToRouteAtLocation:(CDStruct_2c43369c)arg1 routeMatch:(id)arg2;
 
 @end
 

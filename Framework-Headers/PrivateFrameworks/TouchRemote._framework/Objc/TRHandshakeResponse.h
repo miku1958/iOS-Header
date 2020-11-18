@@ -13,6 +13,7 @@
 
 @property (nonatomic) long long protocolVersion; // @synthesize protocolVersion=_protocolVersion;
 
++ (BOOL)supportsSecureCoding;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

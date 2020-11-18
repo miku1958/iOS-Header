@@ -40,7 +40,6 @@
 - (id)cacheNumberForKey:(id)arg1;
 - (struct CGImage *)copyImageForKey:(id)arg1 inGroup:(id)arg2;
 - (void)dealloc;
-- (BOOL)findImageWithKey:(id)arg1 inGroup:(id)arg2 andInfo:(struct _img *)arg3;
 - (void)idleAfter:(double)arg1;
 - (unsigned long long)imageCount;
 - (BOOL)imageExistsForKey:(id)arg1 inGroup:(id)arg2;

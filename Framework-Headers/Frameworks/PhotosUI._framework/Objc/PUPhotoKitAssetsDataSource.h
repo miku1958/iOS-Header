@@ -25,7 +25,7 @@
 - (id)assetAtIndexPath:(id)arg1;
 - (id)assetCollectionAtIndexPath:(id)arg1;
 - (id)assetReferenceAtIndexPath:(id)arg1;
-- (id)badgeInfoForAssetAtIndexPath:(id)arg1;
+- (id)badgeInfoPromiseForAssetAtIndexPath:(id)arg1;
 - (id)convertIndexPath:(id)arg1 fromAssetsDataSource:(id)arg2;
 - (BOOL)couldAssetReferenceAppear:(id)arg1;
 - (id)indexPathForAssetCollection:(id)arg1;

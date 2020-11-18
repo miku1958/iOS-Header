@@ -17,24 +17,18 @@ __attribute__((visibility("hidden")))
 {
     SFReaderController *_readerController;
     WKPreferences *_wkPreferences;
-    BOOL _privateBrowsingEnabled;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SFReaderEnabledWebViewControllerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isSafariRestricted;
-@property (readonly, nonatomic) BOOL privateBrowsingEnabled; // @synthesize privateBrowsingEnabled=_privateBrowsingEnabled;
 @property (readonly, nonatomic) SFReaderController *readerController; // @synthesize readerController=_readerController;
 @property (readonly) Class superclass;
 
-+ (id)processPool;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)init;
 - (void)loadView;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)readerController:(id)arg1 didClickLinkInReaderWithRequest:(id)arg2;
 - (void)readerController:(id)arg1 didClickLinkRequestingNewWindowInReaderWithRequest:(id)arg2;
 - (void)readerController:(id)arg1 didDetermineReaderAvailability:(BOOL)arg2;
@@ -43,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (id)readerControllerInitialConfiguration:(id)arg1;
 - (void)setUpReaderWithReaderWebView:(id)arg1;
 - (void)webView:(id)arg1 didCommitNavigation:(id)arg2;
-- (id)webViewConfiguration;
 
 @end
 

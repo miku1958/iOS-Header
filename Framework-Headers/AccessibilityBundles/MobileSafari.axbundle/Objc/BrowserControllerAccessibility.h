@@ -27,7 +27,7 @@
 - (void)scrollViewDidScrollToTop:(id)arg1;
 - (void)setShowingReader:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)sidebarDimmingViewDismiss:(id)arg1;
-- (void)togglePrivateBrowsing;
+- (void)togglePrivateBrowsingEnabled;
 
 @end
 

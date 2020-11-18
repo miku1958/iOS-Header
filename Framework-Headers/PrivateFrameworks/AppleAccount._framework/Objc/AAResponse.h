@@ -28,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)_deviceSpecificLocalizedString:(id)arg1;
+- (void)_parseJSONResponse:(id)arg1;
 - (void)_parsePlistResponse:(id)arg1;
 - (id)_stringWithDescriptionForResponseError:(id)arg1;
 - (id)initWithHTTPResponse:(id)arg1 data:(id)arg2;

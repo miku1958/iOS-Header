@@ -17,8 +17,8 @@
 @property (readonly, nonatomic) WebFrame *webFrame; // @synthesize webFrame=_webFrame;
 
 - (void).cxx_destruct;
-- (void)annotateForm:(id)arg1 withValues:(id)arg2;
-- (void)autoFillGeneratedPassword:(id)arg1 inForm:(double)arg2;
+- (void)annotateForm:(long long)arg1 withValues:(id)arg2;
+- (void)autoFillGeneratedPassword:(id)arg1 inForm:(long long)arg2;
 - (void)autoFillValues:(id)arg1 setAutoFilled:(BOOL)arg2 andFocusFieldAfterFilling:(BOOL)arg3 fieldToFocus:(id)arg4;
 - (void)dealloc;
 - (void)fetchFormMetadataWithCompletion:(CDUnknownBlockType)arg1;

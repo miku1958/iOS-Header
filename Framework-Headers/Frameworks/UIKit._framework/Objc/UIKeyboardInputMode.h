@@ -35,6 +35,7 @@
 @property (readonly, nonatomic) BOOL isDefaultRightToLeft;
 @property (nonatomic) BOOL isDisplayed; // @synthesize isDisplayed;
 @property (readonly, nonatomic) BOOL isExtensionInputMode;
+@property (readonly, nonatomic) BOOL isStalledExtensionInputMode;
 @property (strong, nonatomic) NSString *languageWithRegion; // @synthesize languageWithRegion;
 @property (strong, nonatomic) NSArray *multilingualLanguages; // @synthesize multilingualLanguages=_multilingualLanguages;
 @property (strong, nonatomic) NSString *normalizedIdentifier; // @synthesize normalizedIdentifier;

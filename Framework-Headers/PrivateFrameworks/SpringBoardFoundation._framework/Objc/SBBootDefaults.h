@@ -15,7 +15,6 @@
 @property (nonatomic) NSDictionary *bootTransitionContext; // @dynamic bootTransitionContext;
 @property (nonatomic) BOOL comingFromUserPowerDown; // @dynamic comingFromUserPowerDown;
 @property (readonly, nonatomic) BOOL dontLockAfterCrash; // @dynamic dontLockAfterCrash;
-@property (nonatomic) BOOL fromOTASoftwareUpdate; // @dynamic fromOTASoftwareUpdate;
 @property (nonatomic) BOOL hasCompletedSynchronizingCloudCriticalData; // @dynamic hasCompletedSynchronizingCloudCriticalData;
 @property (strong, nonatomic) NSString *lastRestoreIdentifier; // @dynamic lastRestoreIdentifier;
 @property (strong, nonatomic) NSString *lastSystemBuildVersion; // @dynamic lastSystemBuildVersion;

@@ -21,7 +21,6 @@
     double _lastTimeRaisedBadIDSProtobuf;
     NSObject<OS_dispatch_queue> *_idsQueue;
     id<BLTAbstractIDSDevice> _defaultPairedDevice;
-    NSLock *_defaultPairedDeviceLock;
     NSMutableDictionary *_idsRequestMessageTypeToSelector;
     NSLock *_sequenceNumberSendLock;
     NSObject<OS_dispatch_queue> *_connectionStatusQueue;
@@ -35,7 +34,6 @@
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) id<BLTAbstractIDSDevice> defaultPairedDevice;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long lastKnownConnectionStatus; // @synthesize lastKnownConnectionStatus=_lastKnownConnectionStatus;
@@ -52,9 +50,8 @@
 - (void)_queueHandleIDSProtobuf:(id)arg1;
 - (void)_queuePerformSend:(CDUnknownBlockType)arg1 responseToRequest:(id)arg2 withTimeout:(id)arg3 withDescription:(id)arg4 shortDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(CDUnknownBlockType)arg7 andResponse:(CDUnknownBlockType)arg8;
 - (void)_queueSendMessage:(id)arg1 type:(unsigned short)arg2 responseToRequest:(id)arg3 withTimeout:(id)arg4 withDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(CDUnknownBlockType)arg7 andResponse:(CDUnknownBlockType)arg8 didQueue:(CDUnknownBlockType)arg9;
-- (void)_queueUpdateConnectionStatus;
+- (void)_queueUpdateConnectionStatusWithResetDefaulteDevice:(BOOL)arg1;
 - (void)_removeAndHandleResponseHandler:(id)arg1;
-- (void)_resetDefaultPairedDevice;
 - (void)_sendAckInitialSequenceNumberForSession:(id)arg1 sessionState:(unsigned long long)arg2;
 - (void)_sendAckInitialSequenceNumberForSession:(id)arg1 withAssert:(BOOL)arg2 sessionState:(unsigned long long *)arg3;
 - (void)_sendAssertForSession;
@@ -63,6 +60,7 @@
 - (void)_setStandaloneTestModeEnabled:(BOOL)arg1;
 - (void)_storeProtobufAction:(SEL)arg1 messageType:(unsigned short)arg2 messageSendType:(long long)arg3;
 - (void)_updateConnectionStatus;
+- (void)_updateConnectionStatusWithResetDefaulteDevice:(BOOL)arg1;
 - (id)_wrapError:(id)arg1 identifier:(id)arg2;
 - (unsigned long long)connectionStatus;
 - (void)dealloc;

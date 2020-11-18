@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NTPBAdExposureOpportunity, NTPBAlreadySubscriberSignIn, NTPBAppSessionEnd, NTPBAppSessionStart, NTPBArticleHostViewExposure, NTPBArticleLikeDislike, NTPBArticleScroll, NTPBBackgroundSubscriptionValidation, NTPBChannelMuteUnmute, NTPBComscoreEventSend, NTPBCoverArticleWidgetExposure, NTPBCoverArticleWidgetView, NTPBDiscoverMoreInterstitialExposure, NTPBEmailOptInInvite, NTPBEndOfArticleExposure, NTPBFeedCellExposure, NTPBFeedCellHostViewExposure, NTPBFeedEngagementMenuExposure, NTPBFeedSubscribeUnsubscribe, NTPBFeedViewExposure, NTPBGroupViewExposure, NTPBLinkTapArticle, NTPBLocalNotificationReceived, NTPBLocalNotificationReturn, NTPBMediaEngage, NTPBMediaEngageComplete, NTPBMediaExposure, NTPBMediaView, NTPBNoUserAction, NTPBNotificationSettingsScreenView, NTPBNotificationSubscribeUnsubscribe, NTPBPaidSubscriptionConversionPointExposure, NTPBPaidSubscriptionResult, NTPBPaidSubscriptionSheetIapFail, NTPBPaidSubscriptionSheetView, NTPBPullToRefresh, NTPBReadingListAddRemove, NTPBReadingListShow, NTPBRecommendationBrickExposure, NTPBReportConcernSubmission, NTPBRestorePaidSubscription, NTPBSearchBegin, NTPBSearchExecute, NTPBSearchResultSelect, NTPBSearchViewExposure, NTPBShareInformationScreenView, NTPBShareResult, NTPBShareSheetExposure, NTPBShareSheetIapFail, NTPBSubscriptionDetectionScreenView, NTPBUserOnboardingBegin, NTPBUserOnboardingChannelPickerComplete, NTPBUserOnboardingResult, NTPBUserOnboardingResume, NTPBUserOnboardingScreenView, NTPBWebAccessScreenView;
+@class NTPBAdExposureOpportunity, NTPBAlreadySubscriberSignIn, NTPBAppSessionEnd, NTPBAppSessionStart, NTPBArticleHostViewExposure, NTPBArticleLikeDislike, NTPBArticleScroll, NTPBArticleScrollNotw, NTPBArticleViewNotw, NTPBBackgroundSubscriptionValidation, NTPBBundleIdMappingMiss, NTPBChannelMuteUnmute, NTPBComscoreEventSend, NTPBCoverArticleWidgetExposure, NTPBCoverArticleWidgetView, NTPBDiscoverMoreInterstitialExposure, NTPBEmailOptInInvite, NTPBEndOfArticleExposure, NTPBFeedCellExposure, NTPBFeedCellHostViewExposure, NTPBFeedEngagementMenuExposure, NTPBFeedSubscribeUnsubscribe, NTPBFeedViewExposure, NTPBGroupViewExposure, NTPBLinkTapArticle, NTPBLocalNotificationReceived, NTPBLocalNotificationReturn, NTPBMediaEngage, NTPBMediaEngageComplete, NTPBMediaExposure, NTPBMediaView, NTPBNoUserAction, NTPBNotificationSettingsScreenView, NTPBNotificationSubscribeUnsubscribe, NTPBPaidSubscriptionConversionPointExposure, NTPBPaidSubscriptionResult, NTPBPaidSubscriptionSheetIapFail, NTPBPaidSubscriptionSheetView, NTPBPullToRefresh, NTPBReadingListAddRemove, NTPBReadingListShow, NTPBRecommendationBrickExposure, NTPBReportConcernSubmission, NTPBRestorePaidSubscription, NTPBSearchBegin, NTPBSearchExecute, NTPBSearchResultSelect, NTPBSearchViewExposure, NTPBShareInformationScreenView, NTPBShareResult, NTPBShareSheetExposure, NTPBShareSheetIapFail, NTPBSubscriptionDetectionScreenView, NTPBUrlMappingMiss, NTPBUserOnboardingBegin, NTPBUserOnboardingChannelPickerComplete, NTPBUserOnboardingResult, NTPBUserOnboardingResume, NTPBUserOnboardingScreenView, NTPBWebAccessScreenView;
 
 @interface NTPBEventObject : PBCodable <NSCopying>
 {
@@ -19,7 +19,10 @@
     NTPBArticleHostViewExposure *_articleHostViewExposure;
     NTPBArticleLikeDislike *_articleLikeDislike;
     NTPBArticleScroll *_articleScroll;
+    NTPBArticleScrollNotw *_articleScrollNotw;
+    NTPBArticleViewNotw *_articleViewNotw;
     NTPBBackgroundSubscriptionValidation *_backgroundSubscriptionValidation;
+    NTPBBundleIdMappingMiss *_bundleIdMappingMiss;
     NTPBChannelMuteUnmute *_channelMuteUnmute;
     NTPBComscoreEventSend *_comscoreEventSend;
     NTPBCoverArticleWidgetExposure *_coverArticleWidgetExposure;
@@ -62,6 +65,7 @@
     NTPBShareSheetExposure *_shareSheetExposure;
     NTPBShareSheetIapFail *_shareSheetIapFail;
     NTPBSubscriptionDetectionScreenView *_subscriptionDetectionScreenView;
+    NTPBUrlMappingMiss *_urlMappingMiss;
     NTPBUserOnboardingBegin *_userOnboardingBegin;
     NTPBUserOnboardingChannelPickerComplete *_userOnboardingChannelPickerComplete;
     NTPBUserOnboardingResult *_userOnboardingResult;
@@ -77,7 +81,10 @@
 @property (strong, nonatomic) NTPBArticleHostViewExposure *articleHostViewExposure; // @synthesize articleHostViewExposure=_articleHostViewExposure;
 @property (strong, nonatomic) NTPBArticleLikeDislike *articleLikeDislike; // @synthesize articleLikeDislike=_articleLikeDislike;
 @property (strong, nonatomic) NTPBArticleScroll *articleScroll; // @synthesize articleScroll=_articleScroll;
+@property (strong, nonatomic) NTPBArticleScrollNotw *articleScrollNotw; // @synthesize articleScrollNotw=_articleScrollNotw;
+@property (strong, nonatomic) NTPBArticleViewNotw *articleViewNotw; // @synthesize articleViewNotw=_articleViewNotw;
 @property (strong, nonatomic) NTPBBackgroundSubscriptionValidation *backgroundSubscriptionValidation; // @synthesize backgroundSubscriptionValidation=_backgroundSubscriptionValidation;
+@property (strong, nonatomic) NTPBBundleIdMappingMiss *bundleIdMappingMiss; // @synthesize bundleIdMappingMiss=_bundleIdMappingMiss;
 @property (strong, nonatomic) NTPBChannelMuteUnmute *channelMuteUnmute; // @synthesize channelMuteUnmute=_channelMuteUnmute;
 @property (strong, nonatomic) NTPBComscoreEventSend *comscoreEventSend; // @synthesize comscoreEventSend=_comscoreEventSend;
 @property (strong, nonatomic) NTPBCoverArticleWidgetExposure *coverArticleWidgetExposure; // @synthesize coverArticleWidgetExposure=_coverArticleWidgetExposure;
@@ -98,7 +105,10 @@
 @property (readonly, nonatomic) BOOL hasArticleHostViewExposure;
 @property (readonly, nonatomic) BOOL hasArticleLikeDislike;
 @property (readonly, nonatomic) BOOL hasArticleScroll;
+@property (readonly, nonatomic) BOOL hasArticleScrollNotw;
+@property (readonly, nonatomic) BOOL hasArticleViewNotw;
 @property (readonly, nonatomic) BOOL hasBackgroundSubscriptionValidation;
+@property (readonly, nonatomic) BOOL hasBundleIdMappingMiss;
 @property (readonly, nonatomic) BOOL hasChannelMuteUnmute;
 @property (readonly, nonatomic) BOOL hasComscoreEventSend;
 @property (readonly, nonatomic) BOOL hasCoverArticleWidgetExposure;
@@ -141,6 +151,7 @@
 @property (readonly, nonatomic) BOOL hasShareSheetExposure;
 @property (readonly, nonatomic) BOOL hasShareSheetIapFail;
 @property (readonly, nonatomic) BOOL hasSubscriptionDetectionScreenView;
+@property (readonly, nonatomic) BOOL hasUrlMappingMiss;
 @property (readonly, nonatomic) BOOL hasUserOnboardingBegin;
 @property (readonly, nonatomic) BOOL hasUserOnboardingChannelPickerComplete;
 @property (readonly, nonatomic) BOOL hasUserOnboardingResult;
@@ -176,6 +187,7 @@
 @property (strong, nonatomic) NTPBShareSheetExposure *shareSheetExposure; // @synthesize shareSheetExposure=_shareSheetExposure;
 @property (strong, nonatomic) NTPBShareSheetIapFail *shareSheetIapFail; // @synthesize shareSheetIapFail=_shareSheetIapFail;
 @property (strong, nonatomic) NTPBSubscriptionDetectionScreenView *subscriptionDetectionScreenView; // @synthesize subscriptionDetectionScreenView=_subscriptionDetectionScreenView;
+@property (strong, nonatomic) NTPBUrlMappingMiss *urlMappingMiss; // @synthesize urlMappingMiss=_urlMappingMiss;
 @property (strong, nonatomic) NTPBUserOnboardingBegin *userOnboardingBegin; // @synthesize userOnboardingBegin=_userOnboardingBegin;
 @property (strong, nonatomic) NTPBUserOnboardingChannelPickerComplete *userOnboardingChannelPickerComplete; // @synthesize userOnboardingChannelPickerComplete=_userOnboardingChannelPickerComplete;
 @property (strong, nonatomic) NTPBUserOnboardingResult *userOnboardingResult; // @synthesize userOnboardingResult=_userOnboardingResult;

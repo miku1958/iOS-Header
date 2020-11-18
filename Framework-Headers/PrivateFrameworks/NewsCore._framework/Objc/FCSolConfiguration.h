@@ -8,43 +8,39 @@
 
 @interface FCSolConfiguration : NSObject
 {
-    BOOL _filterOverflowedOrphans;
     unsigned long long _maxArticleCombos;
     unsigned long long _heuristicSampleSize;
     unsigned long long _searchBranchMultiplier;
     double _searchBranchDecay;
     double _searchTimeLimit;
     double _tagSizeCoeff;
-    double _tagPairsCoeff;
     double _tagFavoritedCoeff;
-    double _moveNewOrphansCoeff;
-    double _moveSizeCoeff;
-    double _moveAboutnessNoiseStd;
-    double _moveAboutnessWeightRatio;
+    double _tagArticleScoreCoeff;
+    double _tagPersonalizationCoeff;
+    double _articleEntityScoreWeightRatio;
     double _utilityWeightAlpha;
     double _utilityWeightBeta;
+    double _importanceScalar;
     long long _heuristicOption;
 }
 
-@property (readonly, nonatomic) BOOL filterOverflowedOrphans; // @synthesize filterOverflowedOrphans=_filterOverflowedOrphans;
+@property (readonly, nonatomic) double articleEntityScoreWeightRatio; // @synthesize articleEntityScoreWeightRatio=_articleEntityScoreWeightRatio;
 @property (readonly, nonatomic) long long heuristicOption; // @synthesize heuristicOption=_heuristicOption;
 @property (readonly, nonatomic) unsigned long long heuristicSampleSize; // @synthesize heuristicSampleSize=_heuristicSampleSize;
+@property (readonly, nonatomic) double importanceScalar; // @synthesize importanceScalar=_importanceScalar;
 @property (readonly, nonatomic) unsigned long long maxArticleCombos; // @synthesize maxArticleCombos=_maxArticleCombos;
-@property (readonly, nonatomic) double moveAboutnessNoiseStd; // @synthesize moveAboutnessNoiseStd=_moveAboutnessNoiseStd;
-@property (readonly, nonatomic) double moveAboutnessWeightRatio; // @synthesize moveAboutnessWeightRatio=_moveAboutnessWeightRatio;
-@property (readonly, nonatomic) double moveNewOrphansCoeff; // @synthesize moveNewOrphansCoeff=_moveNewOrphansCoeff;
-@property (readonly, nonatomic) double moveSizeCoeff; // @synthesize moveSizeCoeff=_moveSizeCoeff;
 @property (readonly, nonatomic) double searchBranchDecay; // @synthesize searchBranchDecay=_searchBranchDecay;
 @property (readonly, nonatomic) unsigned long long searchBranchMultiplier; // @synthesize searchBranchMultiplier=_searchBranchMultiplier;
 @property (readonly, nonatomic) double searchTimeLimit; // @synthesize searchTimeLimit=_searchTimeLimit;
+@property (readonly, nonatomic) double tagArticleScoreCoeff; // @synthesize tagArticleScoreCoeff=_tagArticleScoreCoeff;
 @property (readonly, nonatomic) double tagFavoritedCoeff; // @synthesize tagFavoritedCoeff=_tagFavoritedCoeff;
-@property (readonly, nonatomic) double tagPairsCoeff; // @synthesize tagPairsCoeff=_tagPairsCoeff;
+@property (readonly, nonatomic) double tagPersonalizationCoeff; // @synthesize tagPersonalizationCoeff=_tagPersonalizationCoeff;
 @property (readonly, nonatomic) double tagSizeCoeff; // @synthesize tagSizeCoeff=_tagSizeCoeff;
 @property (readonly, nonatomic) double utilityWeightAlpha; // @synthesize utilityWeightAlpha=_utilityWeightAlpha;
 @property (readonly, nonatomic) double utilityWeightBeta; // @synthesize utilityWeightBeta=_utilityWeightBeta;
 
 + (id)configurationWithTreatment:(id)arg1;
-- (id)initWithMaxArticleCombos:(unsigned long long)arg1 heuristicSampleSize:(unsigned long long)arg2 searchBranchMultiplier:(unsigned long long)arg3 searchBranchDecay:(double)arg4 searchTimeLimit:(double)arg5 tagSizeCoeff:(double)arg6 tagPairsCoeff:(double)arg7 tagFavoritedCoeff:(double)arg8 moveNewOrphansCoeff:(double)arg9 moveSizeCoeff:(double)arg10 moveAboutnessNoiseStd:(double)arg11 moveAboutnessWeightRatio:(double)arg12 utilityWeightAlpha:(double)arg13 utilityWeightBeta:(double)arg14 filterOverflowedOrphans:(BOOL)arg15 heuristicOption:(long long)arg16;
+- (id)initWithHeuristicSampleSize:(unsigned long long)arg1 searchBranchMultiplier:(unsigned long long)arg2 searchBranchDecay:(double)arg3 searchTimeLimit:(double)arg4 tagSizeCoeff:(double)arg5 tagFavoritedCoeff:(double)arg6 tagArticleScoreCoeff:(double)arg7 tagPersonalizationCoeff:(double)arg8 articleEntityScoreWeightRatio:(double)arg9 utilityWeightAlpha:(double)arg10 utilityWeightBeta:(double)arg11 importanceScalar:(double)arg12 heuristicOption:(long long)arg13;
 
 @end
 

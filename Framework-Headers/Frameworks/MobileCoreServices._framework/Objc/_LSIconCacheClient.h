@@ -6,11 +6,13 @@
 
 #import <MobileCoreServices/_LSIconCache.h>
 
-@class NSXPCConnection;
+@class NSObject, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _LSIconCacheClient : _LSIconCache
 {
+    NSObject<OS_dispatch_queue> *_connQueue;
     NSXPCConnection *_connection;
 }
 
@@ -18,10 +20,12 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 - (void)dealloc;
-- (id)iconBitmapDataWithResourceDirectoryURL:(id)arg1 boundContainerURL:(id)arg2 dataContainerURL:(id)arg3 bundleIdentifier:(id)arg4 iconsDictionary:(id)arg5 cacheKey:(id)arg6 variant:(int)arg7;
+- (id)getAlternateIconNameForIdentifier:(id)arg1;
+- (id)iconBitmapDataWithResourceDirectoryURL:(id)arg1 boundContainerURL:(id)arg2 dataContainerURL:(id)arg3 bundleIdentifier:(id)arg4 iconsDictionary:(id)arg5 cacheKey:(id)arg6 variant:(int)arg7 options:(int)arg8;
 - (id)iconBitmapDataWithResourceDirectoryURL:(id)arg1 bundleIdentifier:(id)arg2 roleIdentifier:(id)arg3 iconFiles:(id)arg4 variant:(int)arg5 options:(int)arg6;
 - (id)init;
 - (BOOL)invalidateItemsForBundleIdentifier:(id)arg1;
+- (void)setAlternateIconName:(id)arg1 forIdentifier:(id)arg2 withResult:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -48,7 +48,6 @@
 
 - (void).cxx_destruct;
 - (void)_addRemoteView;
-- (id)_childViewControllerForWhitePointAdaptivityStyle;
 - (void)_connectToService;
 - (void)_forwardNotificationToViewService:(id)arg1;
 - (void)_removeRemoteView;
@@ -62,7 +61,7 @@
 - (void)interactiveDismissControllerDidEnd:(id)arg1;
 - (void)loadView;
 - (long long)preferredStatusBarStyle;
-- (id)previewActions;
+- (id)previewActionItems;
 - (void)remoteViewController:(id)arg1 didFinishInitialLoad:(BOOL)arg2;
 - (void)remoteViewController:(id)arg1 executeCustomActivityProxyID:(id)arg2;
 - (void)remoteViewController:(id)arg1 fetchHostAppCustomActivitiesForURL:(id)arg2 title:(id)arg3;

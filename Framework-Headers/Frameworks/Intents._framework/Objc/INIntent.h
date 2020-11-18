@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INGenericIntent-Protocol.h>
 #import <Intents/INIntentExport-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class NSString, PBCodable;
+@class NSDictionary, NSString, PBCodable;
 
-@interface INIntent : NSObject <INIntentExport, NSCopying, NSSecureCoding>
+@interface INIntent : NSObject <INIntentExport, INGenericIntent, NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
     PBCodable *_backingStore;
@@ -21,13 +22,16 @@
 @property (copy, nonatomic) PBCodable *backingStore; // @synthesize backingStore=_backingStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *domain;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *intentId;
 @property (readonly, nonatomic) NSString *launchId;
+@property (copy, nonatomic) NSDictionary *parametersByName;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *typeName;
 @property (readonly, nonatomic) NSString *utteranceString;
+@property (copy, nonatomic) NSString *verb;
 
 + (id)intentDescription;
 + (void)load;
@@ -38,10 +42,12 @@
 - (id)_impl;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
+- (id)_typedBackingStore;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDomain:(id)arg1 verb:(id)arg2 parametersByName:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 backingStore:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)protoData;

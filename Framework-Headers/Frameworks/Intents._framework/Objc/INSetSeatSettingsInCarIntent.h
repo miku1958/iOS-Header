@@ -29,13 +29,19 @@
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
+- (id)domain;
 - (id)initWithEnableHeating:(id)arg1 enableCooling:(id)arg2 enableMassage:(id)arg3 seat:(long long)arg4 level:(id)arg5 relativeLevelSetting:(long long)arg6;
+- (id)parametersByName;
+- (void)setDomain:(id)arg1;
 - (void)setEnableCooling:(id)arg1;
 - (void)setEnableHeating:(id)arg1;
 - (void)setEnableMassage:(id)arg1;
 - (void)setLevel:(id)arg1;
+- (void)setParametersByName:(id)arg1;
 - (void)setRelativeLevelSetting:(long long)arg1;
 - (void)setSeat:(long long)arg1;
+- (void)setVerb:(id)arg1;
+- (id)verb;
 
 @end
 

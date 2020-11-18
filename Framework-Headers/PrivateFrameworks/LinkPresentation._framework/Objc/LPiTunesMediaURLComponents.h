@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *storefrontCountryCode; // @synthesize storefrontCountryCode=_storefrontCountryCode;
 
 + (id)identifierFromQueryItems:(id)arg1 pathComponent:(id)arg2;
-+ (long long)itemTypeFromPathComponent:(id)arg1;
++ (long long)itemTypeFromPathComponent:(id)arg1 queryItems:(id)arg2;
 + (id)storefrontCountryCodeFromPathComponent:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithURL:(id)arg1;

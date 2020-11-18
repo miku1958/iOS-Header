@@ -10,8 +10,10 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityUpdateChartButton:(long long)arg1;
 - (BOOL)accessibilityActivate;
 - (void)accessibilityDecrement;
 - (struct CGRect)accessibilityFrame;

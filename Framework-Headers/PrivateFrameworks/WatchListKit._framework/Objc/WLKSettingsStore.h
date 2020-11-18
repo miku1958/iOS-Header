@@ -13,22 +13,26 @@
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _privateModeEnabled;
-    unsigned long long _lastKnownBagAvailability;
+    NSString *_pushToken;
     NSString *_accountID;
     BOOL _optedIn;
     BOOL _migratediOS;
     BOOL _migratedtvOS;
     NSMutableArray *_apps;
     int _didChangeNotificationToken;
+    int _ignoreChangesCount;
+    BOOL _hasOutstandingChange;
     NSDate *_lastSyncDate;
+    NSDate *_lastSyncToCloudDate;
 }
 
-@property (nonatomic) unsigned long long lastKnownNowPlayingAvailability;
 @property (readonly, copy, nonatomic) NSDate *lastSyncDate; // @synthesize lastSyncDate=_lastSyncDate;
+@property (readonly, copy, nonatomic) NSDate *lastSyncToCloudDate; // @synthesize lastSyncToCloudDate=_lastSyncToCloudDate;
 @property (nonatomic) BOOL migratediOS;
 @property (nonatomic) BOOL migratedtvOS;
 @property (nonatomic) BOOL optedIn;
 @property (nonatomic) BOOL privateModeEnabled;
+@property (strong, nonatomic) NSString *pushToken;
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)sharedSettings;
@@ -40,15 +44,17 @@
 - (id)_dictionaryRepresentation;
 - (void)_readFromDisk;
 - (void)_removeWatchListApp:(id)arg1;
-- (void)_setWatchListApps:(id)arg1;
 - (id)_supportPath;
 - (void)_writeToDisk;
+- (void)beginIgnoringChanges;
 - (id)consentedBrands;
 - (void)dealloc;
 - (id)description;
+- (void)endIgnoringChanges;
 - (id)init;
 - (void)refresh;
 - (void)setLastSyncDate:(id)arg1;
+- (void)setLastSyncToCloudDate:(id)arg1;
 - (void)setName:(id)arg1 forChannelID:(id)arg2 externalID:(id)arg3;
 - (void)setStatus:(unsigned long long)arg1 forChannelID:(id)arg2 externalID:(id)arg3;
 - (id)settingsForChannelID:(id)arg1 externalID:(id)arg2;

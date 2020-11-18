@@ -171,6 +171,11 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
     } _field1;
 };
 
+struct entry_s {
+    unsigned int _field1;
+    unsigned int _field2;
+};
+
 struct graph_t {
     unsigned int _field1;
     unsigned int _field2;

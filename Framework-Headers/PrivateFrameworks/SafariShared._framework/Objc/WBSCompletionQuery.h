@@ -13,7 +13,6 @@
     NSString *_normalizedQueryStringForParsec;
     BOOL _forLastSearch;
     NSString *_queryString;
-    NSString *_parsecCompletionString;
     NSString *_rewrittenQueryStringFromParsec;
     long long _queryID;
     unsigned long long _triggerEvent;
@@ -29,7 +28,6 @@
 @property (nonatomic, getter=isForLastSearch) BOOL forLastSearch; // @synthesize forLastSearch=_forLastSearch;
 @property (nonatomic) unsigned long long indexInFeedbackArray; // @synthesize indexInFeedbackArray=_indexInFeedbackArray;
 @property (readonly, nonatomic) NSString *normalizedQueryStringForParsec;
-@property (copy, nonatomic) NSString *parsecCompletionString; // @synthesize parsecCompletionString=_parsecCompletionString;
 @property (copy, nonatomic) NSString *parsecFeedbackQueryIdentifier; // @synthesize parsecFeedbackQueryIdentifier=_parsecFeedbackQueryIdentifier;
 @property (nonatomic) duration_6174cf92 parsecLatency; // @synthesize parsecLatency=_parsecLatency;
 @property (copy, nonatomic) NSURLRequest *parsecSearchRequest; // @synthesize parsecSearchRequest=_parsecSearchRequest;

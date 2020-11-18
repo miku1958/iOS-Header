@@ -24,7 +24,6 @@
 {
     BOOL _deviceLost;
     BOOL _accessAllowedWhenLocked;
-    BOOL _residentEnabled;
     BOOL _cacheUseAllowed;
     BOOL _accountActive;
     BOOL _accountStatusFailedDueToNetworkFailure;
@@ -47,6 +46,7 @@
     HMDKeyTransferAgent *_keyTransferAgent;
     HMDWatchManager *_watchManager;
     HMDCompanionManager *_companionManager;
+    long long _residentEnabledState;
     NSMutableDictionary *_userPushCacheMap;
     NSUUID *_uuid;
     NSMutableArray *_homes;
@@ -176,7 +176,8 @@
 @property (nonatomic) struct __SCNetworkReachability *reachability; // @synthesize reachability=_reachability;
 @property (strong, nonatomic) HMFTimer *remoteAccessHealthMonitorTimer; // @synthesize remoteAccessHealthMonitorTimer=_remoteAccessHealthMonitorTimer;
 @property (strong, nonatomic) HMDCentralMessageDispatcher *remoteMessageDispatcher; // @synthesize remoteMessageDispatcher=_remoteMessageDispatcher;
-@property (nonatomic, getter=isResidentEnabled) BOOL residentEnabled; // @synthesize residentEnabled=_residentEnabled;
+@property (readonly, nonatomic, getter=isResidentEnabled) BOOL residentEnabled;
+@property (nonatomic) long long residentEnabledState; // @synthesize residentEnabledState=_residentEnabledState;
 @property (strong, nonatomic) HMDResidentMesh *residentMesh; // @synthesize residentMesh=_residentMesh;
 @property (nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
 @property (readonly) Class superclass;
@@ -401,7 +402,7 @@
 - (void)_updateCloudDataSyncWithAccountState:(BOOL)arg1;
 - (void)_updateHomeKitInUsePreferences;
 - (void)_updateHomesAboutNetworkConnectivity:(BOOL)arg1;
-- (void)_updateResidentEnabledOnThisDevice:(BOOL)arg1 message:(id)arg2;
+- (void)_updateResidentEnabledOnThisDevice:(BOOL)arg1 forceNotify:(BOOL)arg2 message:(id)arg3;
 - (void)_updateTransportInformationInstances:(id)arg1 remoteAccessories:(id)arg2;
 - (void)_updateUserPushCachedForUser:(id)arg1 device:(id)arg2;
 - (void)_updateiCloudSwitchState:(BOOL)arg1;
@@ -477,7 +478,7 @@
 - (void)sendUnsecureMessage:(id)arg1 target:(id)arg2 userID:(id)arg3 responseQueue:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (void)sendUserAdded:(id)arg1 destination:(id)arg2 toHome:(id)arg3;
 - (void)sendUserRemoved:(id)arg1 fromHome:(id)arg2 pairingUsername:(id)arg3 pushToCloud:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)setHomeConfigurationVersion:(unsigned long long)arg1;
+- (void)setHomekitLastSyncedAssistantConfigurationVersion:(unsigned long long)arg1;
 - (void)startLocalTransport;
 - (void)startSearchingForBridgedAccessories;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;

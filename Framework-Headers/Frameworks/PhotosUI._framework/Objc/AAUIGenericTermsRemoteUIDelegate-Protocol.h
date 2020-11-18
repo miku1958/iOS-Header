@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <PhotosUI/NSObject-Protocol.h>
+
 @class AAUIGenericTermsRemoteUI;
 
-@protocol AAUIGenericTermsRemoteUIDelegate
+@protocol AAUIGenericTermsRemoteUIDelegate <NSObject>
 - (void)genericTermsRemoteUI:(AAUIGenericTermsRemoteUI *)arg1 didFinishWithSuccess:(BOOL)arg2;
 @end
 

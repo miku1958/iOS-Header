@@ -36,13 +36,10 @@
     double _lastDegrees;
     double _startDegrees;
     double _startDistance;
-    BOOL _startedInGutter;
-    double _requireDelayBeforeTracking;
+    double _potentialTrackingStartTimestamp;
     BOOL _requireUp;
     BOOL _thumbRejectionEnabled;
-    double _thumbRejectionDistance;
     int _state;
-    int _previousState;
     int _direction;
     double _directionalSlope;
     struct SCRCFingerState _finger[2];
@@ -62,16 +59,15 @@
     } _delegate;
     SCRCTargetSelectorTimer *_trackingTimer;
     struct {
-        BOOL down;
+        BOOL isFingerCurrentlyDown;
         BOOL dead;
-        BOOL gutter;
-        unsigned long long current;
-        unsigned long long digits;
+        BOOL gutterHasBeenTouched;
+        unsigned long long numFingersInCurrentGestureEvent;
+        unsigned long long totalNumFingersInGesture;
         unsigned long long count;
         struct CGRect frame;
         struct CGPoint location[8];
         struct CGPoint locationPerTap[8];
-        unsigned long long digitsPerTap;
         double thisTime;
         double lastTime;
     } _tap;
@@ -111,6 +107,7 @@
 - (void)_updateStartWithPoint:(struct CGPoint)arg1 time:(double)arg2;
 - (void)_updateTapState;
 - (unsigned long long)absoluteFingerCount;
+- (CDStruct_28ddac4e)captureCurrentState;
 - (void)dealloc;
 - (int)direction;
 - (double)directionalSlope;
@@ -123,7 +120,7 @@
 - (double)flickSpeed;
 - (int)gestureState;
 - (id)gestureStateString;
-- (void)handleGestureEvent:(id)arg1;
+- (CDStruct_28ddac4e)handleGestureEvent:(id)arg1;
 - (id)initWithSize:(struct CGSize)arg1 delegate:(id)arg2;
 - (id)initWithSize:(struct CGSize)arg1 delegate:(id)arg2 threadKey:(id)arg3;
 - (struct CGRect)mainFrame;

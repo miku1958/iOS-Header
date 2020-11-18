@@ -9,33 +9,42 @@
 #import <LoginKit/NSCopying-Protocol.h>
 #import <LoginKit/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSMutableDictionary, NSString, NSURL;
+@class CNContact, NSDate, NSMutableDictionary, NSString, NSURL;
 
 @interface LKUser : UMMutableUser <NSSecureCoding, NSCopying>
 {
-    NSString *mPhoneticName;
-    BOOL mAttemptedPhoneticTranscription;
-    NSDate *_lastOnlineAuth;
+    BOOL _isPhoneticInfoProvidedInConfiguration;
+    BOOL _isAttemptedPhoneticTranscription;
     NSString *_passwordType;
     NSURL *_mediumImageURL;
     NSURL *_largeImageURL;
+    NSString *_identifier;
+    NSString *_phoneticGivenName;
+    NSString *_phoneticFamilyName;
+    NSDate *_lastOnlineAuth;
     NSURL *_localMediumImageURL;
     NSURL *_localLargeImageURL;
-    NSString *_identifier;
-    NSMutableDictionary *_namingSimilarityInfoByClassID;
     long long _retryCount;
+    CNContact *_contact;
+    NSMutableDictionary *_namingSimilarityInfoByClassID;
+    NSString *_tokenizedPhoneticDisplayName;
 }
 
-@property (strong) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong) NSURL *largeImageURL; // @synthesize largeImageURL=_largeImageURL;
-@property (strong) NSDate *lastOnlineAuth; // @synthesize lastOnlineAuth=_lastOnlineAuth;
+@property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
+@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL isAttemptedPhoneticTranscription; // @synthesize isAttemptedPhoneticTranscription=_isAttemptedPhoneticTranscription;
+@property (nonatomic) BOOL isPhoneticInfoProvidedInConfiguration; // @synthesize isPhoneticInfoProvidedInConfiguration=_isPhoneticInfoProvidedInConfiguration;
+@property (strong, nonatomic) NSURL *largeImageURL; // @synthesize largeImageURL=_largeImageURL;
+@property (strong, nonatomic) NSDate *lastOnlineAuth; // @synthesize lastOnlineAuth=_lastOnlineAuth;
 @property (strong, nonatomic) NSURL *localLargeImageURL; // @synthesize localLargeImageURL=_localLargeImageURL;
 @property (strong, nonatomic) NSURL *localMediumImageURL; // @synthesize localMediumImageURL=_localMediumImageURL;
-@property (strong) NSURL *mediumImageURL; // @synthesize mediumImageURL=_mediumImageURL;
-@property (strong) NSMutableDictionary *namingSimilarityInfoByClassID; // @synthesize namingSimilarityInfoByClassID=_namingSimilarityInfoByClassID;
-@property (strong) NSString *passwordType; // @synthesize passwordType=_passwordType;
-@property (strong, nonatomic) NSString *phoneticName;
+@property (strong, nonatomic) NSURL *mediumImageURL; // @synthesize mediumImageURL=_mediumImageURL;
+@property (strong, nonatomic) NSMutableDictionary *namingSimilarityInfoByClassID; // @synthesize namingSimilarityInfoByClassID=_namingSimilarityInfoByClassID;
+@property (strong, nonatomic) NSString *passwordType; // @synthesize passwordType=_passwordType;
+@property (strong, nonatomic) NSString *phoneticFamilyName; // @synthesize phoneticFamilyName=_phoneticFamilyName;
+@property (strong, nonatomic) NSString *phoneticGivenName; // @synthesize phoneticGivenName=_phoneticGivenName;
 @property (nonatomic) long long retryCount; // @synthesize retryCount=_retryCount;
+@property (strong, nonatomic) NSString *tokenizedPhoneticDisplayName; // @synthesize tokenizedPhoneticDisplayName=_tokenizedPhoneticDisplayName;
 
 + (void)setAutogeneratesPhoneticNameWithLocale:(id)arg1;
 + (BOOL)supportsSecureCoding;

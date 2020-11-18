@@ -6,25 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class FCSolConfiguration, FCSolTagID, NSMutableSet;
+@class FCHeadlineClusteringRules, FCSolTagID, NSDictionary, NSMutableSet, NSSet;
 
 @interface FCSolTag : NSObject
 {
+    BOOL _favorited;
     FCSolTagID *_tagId;
-    NSMutableSet *_articles;
-    NSMutableSet *_solos;
+    NSSet *_articles;
+    NSDictionary *_articleScores;
+    double _personalizationScore;
+    FCHeadlineClusteringRules *_rules;
+    NSMutableSet *_topArticles;
+    NSMutableSet *_orphans;
     double _score;
-    FCSolConfiguration *_config;
+    double _heuristicScore;
 }
 
-@property (strong, nonatomic) NSMutableSet *articles; // @synthesize articles=_articles;
-@property (strong, nonatomic) FCSolConfiguration *config; // @synthesize config=_config;
-@property (nonatomic) double score; // @synthesize score=_score;
-@property (strong, nonatomic) NSMutableSet *solos; // @synthesize solos=_solos;
+@property (strong, nonatomic) NSDictionary *articleScores; // @synthesize articleScores=_articleScores;
+@property (strong, nonatomic) NSSet *articles; // @synthesize articles=_articles;
+@property (nonatomic) BOOL favorited; // @synthesize favorited=_favorited;
+@property (nonatomic) double heuristicScore; // @synthesize heuristicScore=_heuristicScore;
+@property (readonly, nonatomic) NSMutableSet *orphans; // @synthesize orphans=_orphans;
+@property (nonatomic) double personalizationScore; // @synthesize personalizationScore=_personalizationScore;
+@property (strong, nonatomic) FCHeadlineClusteringRules *rules; // @synthesize rules=_rules;
+@property (readonly, nonatomic) double score; // @synthesize score=_score;
 @property (strong, nonatomic) FCSolTagID *tagId; // @synthesize tagId=_tagId;
+@property (readonly, nonatomic) NSMutableSet *topArticles; // @synthesize topArticles=_topArticles;
 
++ (id)predictBestTag:(id)arg1 ungroupedArticles:(id)arg2 ungroupedTags:(id)arg3 articlesByTag:(id)arg4 heuristic:(id)arg5;
 - (void).cxx_destruct;
-- (id)initWithTagId:(id)arg1 articles:(id)arg2;
+- (void)computeTopArticlesAndScore;
+- (id)initWithTagId:(id)arg1 personalizationScore:(double)arg2 favorited:(BOOL)arg3 articles:(id)arg4 articleScores:(id)arg5 rules:(id)arg6;
 
 @end
 

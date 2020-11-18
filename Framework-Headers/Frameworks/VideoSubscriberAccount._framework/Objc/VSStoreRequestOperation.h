@@ -6,25 +6,25 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class SSRequest, VSFailable, VSStoreRequest;
+@class SSRequest, VSOptional, VSStoreRequest;
 
-__attribute__((visibility("hidden")))
 @interface VSStoreRequestOperation : VSAsyncOperation
 {
     int _requestCompletionFlag;
     VSStoreRequest *_request;
-    VSFailable *_result;
+    VSOptional *_result;
     SSRequest *_storeServicesRequest;
 }
 
 @property (copy, nonatomic) VSStoreRequest *request; // @synthesize request=_request;
-@property (strong, nonatomic) VSFailable *result; // @synthesize result=_result;
+@property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
 @property (strong, nonatomic) SSRequest *storeServicesRequest; // @synthesize storeServicesRequest=_storeServicesRequest;
 
 - (void).cxx_destruct;
 - (BOOL)_isFirstToFinish;
 - (void)cancel;
 - (void)executionDidBegin;
+- (id)init;
 
 @end
 

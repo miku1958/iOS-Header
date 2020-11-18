@@ -18,10 +18,13 @@
 + (id)sharedScheduler;
 - (void).cxx_destruct;
 - (void)_enteredDefaultRunLoopMode;
+- (void)_performBlock:(CDUnknownBlockType)arg1;
 - (void)_performPendingBlocks;
 - (void)_performPendingBlocksIfNeeded;
 - (void)dispatchInMainTransaction:(CDUnknownBlockType)arg1;
 - (void)dispatchInMainTransactionAfterDelay:(double)arg1 block:(CDUnknownBlockType)arg2;
+- (void)dispatchOnMainThreadWhenNotScrolling:(CDUnknownBlockType)arg1;
+- (void)dispatchOnMainThreadWhenNotScrollingAfterDelay:(double)arg1 block:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)scrollViewDidScroll;
 - (void)scrollViewWillLayoutSubviews;

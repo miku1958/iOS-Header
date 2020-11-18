@@ -6,25 +6,30 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSData;
+#import <Catalyst/_CATRemoteConnectionSendContext-Protocol.h>
 
-@interface _CATRemoteConnectionSendDataContext : NSObject
+@class NSData, NSString;
+
+@interface _CATRemoteConnectionSendDataContext : NSObject <_CATRemoteConnectionSendContext>
 {
+    NSData *mEncodedData;
     NSData *_data;
-    NSData *_encodedData;
     id _userInfo;
-    long long _bytesWritten;
+    unsigned long long _bytesWritten;
 }
 
-@property (nonatomic) long long bytesWritten; // @synthesize bytesWritten=_bytesWritten;
+@property (nonatomic) unsigned long long bytesWritten; // @synthesize bytesWritten=_bytesWritten;
 @property (readonly, copy, nonatomic) NSData *data; // @synthesize data=_data;
-@property (readonly, nonatomic) NSData *encodedData; // @synthesize encodedData=_encodedData;
-@property (readonly, nonatomic) long long remainingBytes;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasBytesRemaining;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 
 - (void).cxx_destruct;
+- (id)bufferedDataWithError:(id *)arg1;
 - (id)initWithData:(id)arg1 userInfo:(id)arg2;
-- (id)remainingData;
 
 @end
 

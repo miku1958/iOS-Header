@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariShared/WBSCloudHistoryThrottlerDataStore-Protocol.h>
+#import <SafariShared/WBSCloudKitThrottlerDataStore-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSTimer, WBSCloudHistoryConfiguration, WBSCloudHistoryPushAgentProxy, WBSCloudHistoryThrottler;
+@class NSMutableDictionary, NSString, NSTimer, WBSCloudHistoryConfiguration, WBSCloudHistoryPushAgentProxy, WBSCloudKitThrottler;
 @protocol NSObject, OS_dispatch_queue, WBSCloudHistoryDataStore;
 
-@interface WBSCloudHistory : NSObject <WBSCloudHistoryThrottlerDataStore>
+@interface WBSCloudHistory : NSObject <WBSCloudKitThrottlerDataStore>
 {
     NSObject<OS_dispatch_queue> *_cloudHistoryQueue;
     BOOL _cloudHistoryEnabled;
@@ -25,9 +25,9 @@
     BOOL _replayLongLivedSaveOperationHasBeenPerformed;
     WBSCloudHistoryConfiguration *_configuration;
     id<WBSCloudHistoryDataStore> _store;
-    WBSCloudHistoryThrottler *_saveChangesThrottler;
-    WBSCloudHistoryThrottler *_fetchChangesThrottler;
-    WBSCloudHistoryThrottler *_syncCircleSizeRetrievalThrottler;
+    WBSCloudKitThrottler *_saveChangesThrottler;
+    WBSCloudKitThrottler *_fetchChangesThrottler;
+    WBSCloudKitThrottler *_syncCircleSizeRetrievalThrottler;
     NSTimer *_serverBackoffTimer;
     BOOL _saveChangesWhenBackoffTimerFires;
     BOOL _fetchChangesWhenBackoffTimerFires;

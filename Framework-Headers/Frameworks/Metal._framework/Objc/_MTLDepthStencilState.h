@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <Metal/MTLDepthStencilStateSPI-Protocol.h>
 
@@ -29,6 +29,7 @@
 @property (readonly) BOOL writesStencil;
 
 - (void)dealloc;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithDevice:(id)arg1 depthStencilDescriptor:(id)arg2;
 
 @end

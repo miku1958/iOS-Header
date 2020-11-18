@@ -6,21 +6,22 @@
 
 #import <Foundation/NSObject.h>
 
+#import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 #import <SoftwareUpdateServices/SUAutoInstallOperationClientHandler-Protocol.h>
 
 @class NSString, NSUUID, SUAutoInstallForecast, SUManagerClient;
 @protocol SUAutoInstallOperationDelegate;
 
-@interface SUAutoInstallOperation : NSObject <SUAutoInstallOperationClientHandler>
+@interface SUAutoInstallOperation : NSObject <SUAutoInstallOperationClientHandler, NSSecureCoding>
 {
     SUManagerClient *_client;
     NSUUID *_id;
     id<SUAutoInstallOperationDelegate> _delegate;
-    SUAutoInstallForecast *forecast;
+    SUAutoInstallForecast *_forecast;
     int _agreementStatus;
     BOOL _canceled;
     BOOL _expired;
-    SUAutoInstallForecast *_forecast;
+    BOOL _clientOwned;
 }
 
 @property (nonatomic) int agreementStatus; // @synthesize agreementStatus=_agreementStatus;
@@ -34,14 +35,22 @@
 @property (readonly, strong, nonatomic) NSUUID *id; // @synthesize id=_id;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
+- (id)_initWithClient:(id)arg1 clientOwned:(BOOL)arg2 id:(id)arg3 forecast:(id)arg4 agreementStatus:(int)arg5 cancelled:(BOOL)arg6 expired:(BOOL)arg7;
+- (BOOL)_isDateExpired:(id)arg1;
+- (BOOL)_isEffectivelyScheduled;
+- (BOOL)_isValidForScheduling;
+- (BOOL)_isValidTillDate:(id)arg1;
 - (void)_noteAutoInstallOperationDidConsent;
 - (void)_noteAutoInstallOperationDidExpire;
 - (void)_noteAutoInstallOperationIsReadyToInstall:(CDUnknownBlockType)arg1;
 - (void)_noteAutoInstallOperationWasCancelled;
 - (void)cancel;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithAutoInstallOperationModel:(id)arg1 client:(id)arg2;
+- (id)initWithCoder:(id)arg1;
 - (id)uniqueIdentifier;
 
 @end

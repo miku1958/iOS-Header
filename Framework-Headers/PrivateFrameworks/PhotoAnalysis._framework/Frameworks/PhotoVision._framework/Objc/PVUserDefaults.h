@@ -14,6 +14,8 @@
 + (double)_doubleValueForKey:(id)arg1 defaultValue:(double)arg2;
 + (float)_floatValueForKey:(id)arg1 defaultValue:(float)arg2;
 + (int)_intValueForKey:(id)arg1 defaultValue:(int)arg2;
++ (long long)countRenameFromThreshold;
++ (long long)countRenameToThreshold;
 + (BOOL)faceAutonamingEnabled;
 + (float)faceAutonamingThreshold;
 + (long long)faceClusteringDelay;
@@ -29,6 +31,9 @@
 + (void)initialize;
 + (long long)maxFaceCountForClustering;
 + (long long)minFaceCountToTriggerClustering;
++ (long long)percentRenameFromThreshold;
++ (long long)percentRenameToThreshold;
++ (BOOL)personMergingEnabled;
 + (BOOL)suggestionsLogEnabled;
 
 @end

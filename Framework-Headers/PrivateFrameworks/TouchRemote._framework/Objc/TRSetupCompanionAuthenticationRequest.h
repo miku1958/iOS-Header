@@ -19,6 +19,7 @@
 @property (strong, nonatomic) AKDevice *companionDevice; // @synthesize companionDevice=_companionDevice;
 @property (strong, nonatomic) NSSet *targetedAccountServices; // @synthesize targetedAccountServices=_targetedAccountServices;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

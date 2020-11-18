@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _sendAllFields;
     NSDictionary *_recordIDsToDeleteToEtags;
     NSDictionary *_conflictLosersToResolveByRecordID;
+    NSDictionary *_pluginFieldsForRecordDeletesByID;
     CDUnknownBlockType _recordPostedBlock;
     NSArray *_records;
     NSArray *_recordIDsToDelete;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSData *clientChangeTokenData; // @synthesize clientChangeTokenData=_clientChangeTokenData;
 @property (strong, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
 @property (nonatomic) BOOL oplock; // @synthesize oplock=_oplock;
+@property (strong, nonatomic) NSDictionary *pluginFieldsForRecordDeletesByID; // @synthesize pluginFieldsForRecordDeletesByID=_pluginFieldsForRecordDeletesByID;
 @property (strong, nonatomic) NSMutableDictionary *recordByRequestID; // @synthesize recordByRequestID=_recordByRequestID;
 @property (strong, nonatomic) NSMutableDictionary *recordIDByRequestID; // @synthesize recordIDByRequestID=_recordIDByRequestID;
 @property (strong, nonatomic) NSArray *recordIDsToDelete; // @synthesize recordIDsToDelete=_recordIDsToDelete;

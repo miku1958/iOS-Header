@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) long long sourceType;
 @property (readonly, nonatomic) long long strictestEventPrivateValue;
 @property (readonly, nonatomic) BOOL supportsCalendarCreation;
+@property (readonly, nonatomic) BOOL supportsJunkReporting;
 @property (readonly, nonatomic) BOOL supportsReminderActions;
 @property (strong, nonatomic) NSDate *timeOfLastExternalIdentificationCache; // @synthesize timeOfLastExternalIdentificationCache=_timeOfLastExternalIdentificationCache;
 @property (copy, nonatomic) NSString *title;

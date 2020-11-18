@@ -70,7 +70,7 @@
 - (void)_handleTargetedScanTimeout;
 - (BOOL)_hasPairedAccessoriesOfType:(unsigned long long)arg1;
 - (BOOL)_hasRecentlySeenAccessoriesWithIdentifiers:(id)arg1;
-- (void)_notifyDelegatesOfRemovedAccessoryServer:(id)arg1;
+- (void)_notifyDelegatesOfRemovedAccessoryServer:(id)arg1 error:(id)arg2;
 - (unsigned long long)_parseAdvertisementData:(id)arg1 forPeripheral:(id)arg2 name:(id *)arg3 pairingUsername:(id *)arg4 statusFlags:(id *)arg5 stateNumber:(id *)arg6 category:(id *)arg7 configNumber:(id *)arg8;
 - (void)_performTargetedScanForAccessoryWithIdentifier:(id)arg1;
 - (void)_performTimedConnectionRequestForIdentifier:(id)arg1;

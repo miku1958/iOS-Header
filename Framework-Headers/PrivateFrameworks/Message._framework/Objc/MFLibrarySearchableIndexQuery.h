@@ -22,11 +22,13 @@
     unsigned int _cancellableQuery:1;
     MDSearchQuery *_query;
     NSString *_queryString;
+    NSString *_logPrefixString;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSString *logPrefixString; // @synthesize logPrefixString=_logPrefixString;
 @property (readonly) NSProgress *progress;
 @property (readonly, copy, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 @property (readonly) Class superclass;

@@ -20,6 +20,7 @@
 + (id)styleFactoryWithMarkup:(id)arg1 styleSheet:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithMarkup:(id)arg1 styleSheet:(id)arg2;
+- (void)setViewElementStylesDirty;
 - (id)styleComposerForElement:(id)arg1 elementStyleOverrides:(id)arg2;
 
 @end

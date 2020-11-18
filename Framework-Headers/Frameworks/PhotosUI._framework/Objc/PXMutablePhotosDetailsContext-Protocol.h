@@ -18,6 +18,7 @@
 @property (strong, nonatomic) PHFetchResult *people;
 @property (nonatomic) BOOL shouldShowMovieHeader;
 @property (copy, nonatomic) NSString *titleFontName;
+@property (nonatomic) unsigned long long viewSourceOrigin;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
 
-@class NSString, PLPhotoTileBadgeView, PUAssetViewModel, PUBadgeInfo;
+@class NSString, PUAssetViewModel, PXUIAssetBadgeView;
 
 __attribute__((visibility("hidden")))
 @interface PUBadgeTileViewController : PUTileViewController <PUAssetViewModelChangeObserver>
@@ -16,37 +16,36 @@ __attribute__((visibility("hidden")))
     BOOL __needsUpdateBadgeInfo;
     BOOL __needsUpdateBadgeView;
     BOOL __isOverContent;
-    BOOL __needsUpdateIrisBadge;
+    BOOL __shouldAnimateNextBadgeViewUpdate;
     PUAssetViewModel *_assetViewModel;
-    PUBadgeInfo *__badgeInfo;
-    PLPhotoTileBadgeView *__badgeView;
+    PXUIAssetBadgeView *__badgeView;
+    struct PXAssetBadgeInfo __badgeInfo;
 }
 
-@property (copy, nonatomic, setter=_setBadgeInfo:) PUBadgeInfo *_badgeInfo; // @synthesize _badgeInfo=__badgeInfo;
-@property (readonly, nonatomic) PLPhotoTileBadgeView *_badgeView; // @synthesize _badgeView=__badgeView;
+@property (nonatomic, setter=_setBadgeInfo:) struct PXAssetBadgeInfo _badgeInfo; // @synthesize _badgeInfo=__badgeInfo;
+@property (readonly, nonatomic) PXUIAssetBadgeView *_badgeView; // @synthesize _badgeView=__badgeView;
 @property (nonatomic, setter=_setOverContent:) BOOL _isOverContent; // @synthesize _isOverContent=__isOverContent;
 @property (nonatomic, setter=_setNeedsUpdateBadgeInfo:) BOOL _needsUpdateBadgeInfo; // @synthesize _needsUpdateBadgeInfo=__needsUpdateBadgeInfo;
 @property (nonatomic, setter=_setNeedsUpdateBadgeView:) BOOL _needsUpdateBadgeView; // @synthesize _needsUpdateBadgeView=__needsUpdateBadgeView;
-@property (nonatomic, setter=_setNeedsUpdateIrisBadge:) BOOL _needsUpdateIrisBadge; // @synthesize _needsUpdateIrisBadge=__needsUpdateIrisBadge;
+@property (nonatomic, setter=_setShouldAnimateNextBadgeViewUpdate:) BOOL _shouldAnimateNextBadgeViewUpdate; // @synthesize _shouldAnimateNextBadgeViewUpdate=__shouldAnimateNextBadgeViewUpdate;
 @property (strong, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (struct CGSize)_badgeTileSizeForBadgeInfo:(id)arg1;
-+ (void)_configureBadgeView:(id)arg1 withBadgeInfo:(id)arg2 isOverContent:(BOOL)arg3;
++ (struct PXAssetBadgeInfo)_badgeInfoForAssetViewModel:(id)arg1;
++ (struct CGSize)_badgeTileSizeForBadgeInfo:(struct PXAssetBadgeInfo)arg1;
++ (void)_configureBadgeView:(id)arg1 withBadgeInfo:(struct PXAssetBadgeInfo)arg2 isOverContent:(BOOL)arg3 hideLivePhotoBadge:(BOOL)arg4 animated:(BOOL)arg5;
 + (struct CGSize)badgeTileSizeForAssetViewModel:(id)arg1;
 - (void).cxx_destruct;
 - (void)_invalidateBadgeInfo;
 - (void)_invalidateBadgeView;
-- (void)_invalidateIrisBadge;
 - (BOOL)_needsUpdate;
 - (void)_setNeedsUpdate;
 - (void)_updateBadgeInfoIfNeeded;
 - (void)_updateBadgeViewIfNeeded;
 - (void)_updateIfNeeded;
-- (void)_updateIrisBadgeIfNeeded;
 - (void)applyLayoutInfo:(id)arg1;
 - (void)becomeReusable;
 - (id)loadView;

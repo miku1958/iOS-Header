@@ -25,6 +25,7 @@
     double _attachmentVelocityDamping;
     double _attachmentMinDamping;
     double _attachmentMaxDamping;
+    double _noninteractiveDismissDuration;
 }
 
 @property double attachmentFrequencyAbove; // @synthesize attachmentFrequencyAbove=_attachmentFrequencyAbove;
@@ -38,6 +39,7 @@
 @property double bounceResistance; // @synthesize bounceResistance=_bounceResistance;
 @property double maxVelocity; // @synthesize maxVelocity=_maxVelocity;
 @property double minVelocity; // @synthesize minVelocity=_minVelocity;
+@property double noninteractiveDismissDuration; // @synthesize noninteractiveDismissDuration=_noninteractiveDismissDuration;
 @property double oldBounceFriction; // @synthesize oldBounceFriction=_oldBounceFriction;
 @property (strong) CCUIControlCenterSettingsSectionSettings *settingsSectionSettings; // @synthesize settingsSectionSettings=_settingsSectionSettings;
 @property (strong) CCUIControlCenterShortcutSectionSettings *shortcutSectionSettings; // @synthesize shortcutSectionSettings=_shortcutSectionSettings;

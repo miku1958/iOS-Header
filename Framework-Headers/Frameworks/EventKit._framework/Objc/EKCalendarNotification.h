@@ -21,12 +21,14 @@
     struct CGColor *_dotColor;
     BOOL _hiddenFromNotificationCenter;
     BOOL _alerted;
+    BOOL _couldBeJunk;
     NSString *_firstName;
     NSString *_lastName;
 }
 
 @property (strong, nonatomic) NSURL *URI; // @synthesize URI=_URI;
 @property (nonatomic) BOOL alerted; // @synthesize alerted=_alerted;
+@property (nonatomic) BOOL couldBeJunk; // @synthesize couldBeJunk=_couldBeJunk;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGColor *dotColor; // @synthesize dotColor=_dotColor;

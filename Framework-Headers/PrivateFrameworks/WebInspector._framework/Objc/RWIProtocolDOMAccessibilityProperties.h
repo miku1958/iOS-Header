@@ -23,10 +23,13 @@
 @property (nonatomic) BOOL expanded;
 @property (copy, nonatomic) NSArray *flowedNodeIds;
 @property (nonatomic) BOOL focused;
+@property (nonatomic) double headingLevel;
 @property (nonatomic) BOOL hidden;
+@property (nonatomic) double hierarchyLevel;
 @property (nonatomic) BOOL ignored;
 @property (nonatomic) BOOL ignoredByDefault;
 @property (nonatomic) long long invalid;
+@property (nonatomic) BOOL isPopUpButton;
 @property (copy, nonatomic) NSString *label;
 @property (nonatomic) BOOL liveRegionAtomic;
 @property (copy, nonatomic) NSArray *liveRegionRelevant;

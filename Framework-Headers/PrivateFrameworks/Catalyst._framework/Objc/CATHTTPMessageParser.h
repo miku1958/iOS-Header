@@ -12,17 +12,21 @@
 @interface CATHTTPMessageParser : NSObject
 {
     struct __CFHTTPMessage *mCurrentMessage;
-    NSDictionary *mAllHeaderFields;
+    NSDictionary *mCurrentHeaderFields;
+    unsigned long long mCurrentBytesReceived;
     id<CATHTTPMessageParserDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<CATHTTPMessageParserDelegate> delegate; // @synthesize delegate=_delegate;
 
-+ (id)encodeData:(id)arg1;
++ (id)encodeRequestData:(id)arg1;
++ (id)responseHeaderForContentWithLength:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (BOOL)appendBytes:(const char *)arg1 length:(unsigned long long)arg2;
 - (void)dealloc;
-- (void)delegateDidReceiveData:(id)arg1;
+- (void)delegateDidReceiveRequestData:(id)arg1;
+- (void)delegateDidReceiveRequestWithURL:(id)arg1;
+- (void)delegateDidReceiveResponseData:(id)arg1 moreComing:(BOOL)arg2;
 
 @end
 

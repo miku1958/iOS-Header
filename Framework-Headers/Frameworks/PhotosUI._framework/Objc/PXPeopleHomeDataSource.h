@@ -46,7 +46,6 @@
 - (void)imageAtIndexPath:(id)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3 fastDisplayBlock:(CDUnknownBlockType)arg4;
 - (id)indexPathForInsertingMember:(id)arg1 intoSection:(unsigned long long)arg2;
 - (id)indexPathOfMember:(id)arg1;
-- (id)indexPathOfMember:(id)arg1 ofType:(long long)arg2;
 - (id)initWithDelegate:(id)arg1;
 - (BOOL)isSectionDisclosed:(unsigned long long)arg1;
 - (void)loadAndStartListeningToLibraryNotifications;

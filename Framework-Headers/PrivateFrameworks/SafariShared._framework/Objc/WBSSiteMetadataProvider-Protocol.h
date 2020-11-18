@@ -11,6 +11,7 @@
 
 @protocol WBSSiteMetadataProvider <NSObject>
 
+@property (nonatomic, getter=isCachingDisabled) BOOL cachingDisabled;
 @property (weak, nonatomic) id<WBSSiteMetadataProviderDelegate> providerDelegate;
 
 - (BOOL)canHandleRequest:(WBSSiteMetadataRequest *)arg1;
@@ -18,7 +19,10 @@
 - (WBSSiteMetadataResponse *)responseForRequest:(WBSSiteMetadataRequest *)arg1 willProvideUpdates:(BOOL *)arg2;
 
 @optional
+- (void)emptyCaches;
 - (NSOperation *)operationForRequest:(WBSSiteMetadataRequest *)arg1;
+- (void)purgeUnneededCacheEntries;
+- (void)savePendingChangesBeforeTermination;
 - (void)stopWatchingUpdatesForRequest:(WBSSiteMetadataRequest *)arg1;
 @end
 

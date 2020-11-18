@@ -36,6 +36,7 @@
 @property (nonatomic) BOOL inverted;
 @property (readonly, nonatomic) unsigned int nodeCount; // @synthesize nodeCount=_nodeCount;
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize; // @synthesize nodeNamespaceSize=_nextNodeName;
+@property (readonly, nonatomic) unsigned int pointerSize;
 
 + (id)_archivedBytes:(const void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3;
 + (id)_archivedObject:(id)arg1 options:(unsigned long long)arg2;
@@ -54,6 +55,7 @@
 - (void)_removeEdges:(CDUnknownBlockType)arg1;
 - (void)_renameWithNodeMap:(unsigned int *)arg1 nodeNamespace:(unsigned int)arg2 edgeMap:(unsigned int *)arg3 edgeNamespace:(unsigned int)arg4;
 - (void)_renormalize;
+- (void)_reorderEdgesNaturally;
 - (void)_searchMainLoop:(unsigned int)arg1 action:(CDUnknownBlockType)arg2;
 - (unsigned int)addEdgeFromNode:(unsigned int)arg1 toNode:(unsigned int)arg2;
 - (unsigned int)addGroupNodeForNodes:(const unsigned int *)arg1 count:(unsigned int)arg2;
@@ -73,16 +75,12 @@
 - (void)invertEdges;
 - (id)invertedGraph;
 - (BOOL)isNodePresent:(unsigned int)arg1;
-- (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2;
 - (unsigned int)parentGroupForNode:(unsigned int)arg1;
 - (id)plistRepresentationWithOptions:(unsigned long long)arg1;
 - (void)removeMarkedEdges:(void *)arg1;
 - (void)removeMarkedNodes:(void *)arg1;
 - (id)renormalizedGraph;
-- (void)stronglyConnectedComponentSearch:(unsigned int)arg1 withRecorder:(CDUnknownBlockType)arg2;
 - (id)subgraphWithMarkedNodes:(void *)arg1;
-- (id)subgraphWithShortestPathsFromNode:(unsigned int)arg1 toNodes:(void *)arg2;
-- (id)subgraphWithUniquePathsFromNode:(unsigned int)arg1 toNodes:(void *)arg2;
 - (void)ungroupNode:(unsigned int)arg1;
 - (void)withEdgeMarkingMap:(CDUnknownBlockType)arg1;
 - (void)withNodeMarkingMap:(CDUnknownBlockType)arg1;

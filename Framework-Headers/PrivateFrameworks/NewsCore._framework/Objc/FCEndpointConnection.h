@@ -32,6 +32,8 @@
 + (id)_errorByUpdatingRetryStatusForError:(id)arg1;
 + (id)_errorForStatus:(long long)arg1 url:(id)arg2;
 - (void).cxx_destruct;
+- (BOOL)_hasOverrideCAPIBaseURL;
+- (id)_overrideCAPIBaseURLString;
 - (id)initWithContext:(id)arg1;
 - (void)performHTTPRequestWithURL:(id)arg1 method:(id)arg2 data:(id)arg3 contentType:(id)arg4 priority:(float)arg5 callbackQueue:(id)arg6 completion:(CDUnknownBlockType)arg7;
 

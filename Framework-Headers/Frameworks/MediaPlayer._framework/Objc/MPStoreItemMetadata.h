@@ -43,11 +43,15 @@
 @property (readonly, nonatomic) double duration;
 @property (readonly, copy, nonatomic) NSString *editorNotes;
 @property (readonly, copy, nonatomic) NSDictionary *effectiveStorePlatformDictionary;
+@property (readonly, nonatomic) long long episodeCount;
 @property (readonly, nonatomic, getter=isExplicitContent) BOOL explicitContent;
+@property (readonly, nonatomic) long long explicitRating;
 @property (readonly, copy, nonatomic) NSArray *genreNames;
+@property (readonly, copy, nonatomic) NSString *handle;
 @property (readonly, nonatomic) BOOL hasArtistBiography;
 @property (readonly, nonatomic) BOOL hasLyrics;
 @property (readonly, nonatomic) BOOL hasSocialPosts;
+@property (readonly, copy, nonatomic) NSString *iTunesBrandType;
 @property (readonly, nonatomic) BOOL isPreorder;
 @property (readonly, copy, nonatomic) NSString *itemKind;
 @property (readonly, copy, nonatomic) NSDate *lastModifiedDate;
@@ -55,32 +59,40 @@
 @property (readonly, nonatomic) long long movementCount;
 @property (readonly, copy, nonatomic) NSString *movementName;
 @property (readonly, nonatomic) long long movementNumber;
+@property (readonly, copy, nonatomic) NSArray *movieClips;
+@property (readonly, nonatomic) long long movieClipsCount;
 @property (readonly, copy, nonatomic) NSString *name;
+@property (readonly, copy, nonatomic) NSString *nameForDisplay;
 @property (readonly, copy, nonatomic) NSArray *offers;
 @property (readonly, copy, nonatomic) MPStoreItemMetadata *parentStoreItemMetadata; // @synthesize parentStoreItemMetadata=_parentStoreItemMetadata;
 @property (readonly, copy, nonatomic) NSArray *playlistIdentifiers;
 @property (readonly, copy, nonatomic) NSNumber *popularity;
+@property (readonly, copy, nonatomic) id pumpkinProfileID;
 @property (readonly, copy, nonatomic) NSDate *releaseDate;
+@property (readonly, nonatomic) long long seasonNumber;
 @property (readonly, copy, nonatomic) NSString *shortEditorNotes;
 @property (readonly, copy, nonatomic) NSString *shortName;
 @property (readonly, copy, nonatomic) NSURL *shortURL;
-@property (readonly, nonatomic) BOOL shouldBookmarkPlayPosition;
+@property (readonly, copy, nonatomic) NSNumber *shouldBookmarkPlayPosition;
 @property (readonly, nonatomic) BOOL showComposer;
 @property (readonly, copy, nonatomic) id storeID;
 @property (readonly, nonatomic) long long trackCount;
 @property (readonly, nonatomic) long long trackNumber;
 @property (readonly, copy, nonatomic) NSString *versionHash;
+@property (readonly, copy, nonatomic) NSString *videoSubtype;
 @property (readonly, copy, nonatomic) NSString *workName;
 
++ (id)artworkRequestTokenForStorePlatformArtworkValue:(id)arg1;
 + (id)storeServerCalendar;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_artworkRequestTokenForStorePlatformDictionary:(id)arg1 artworkKey:(id)arg2;
 - (id)_storePlatformLastModifiedDateFormatter;
 - (id)_storePlatformReleaseDateFormatter;
 - (id)artworkRequestTokenForEditorialArtworkKind:(id)arg1;
+- (id)artworkRequestTokenForScreenshotArtwork;
 - (id)artworkRequestTokenForStorePlatformDictionary:(id)arg1;
 - (id)artworkRequestTokenForUberArtworkKind:(id)arg1;
+- (id)avatarArtworkRequestToken;
 - (id)brickEditorialArtworkRequestToken;
 - (id)childStorePlatformDictionaryForArtworkTrackID:(id)arg1;
 - (id)childStorePlatformDictionaryForStoreID:(id)arg1;
@@ -98,6 +110,9 @@
 - (id)metadataByAppendingMetadata:(id)arg1;
 - (id)metadataWithChildStorePlatformDictionaries:(id)arg1;
 - (id)metadataWithParentMetadata:(id)arg1;
+- (id)movieArtworkRequestToken;
+- (id)tvEpisodeArtworkRequestToken;
+- (id)tvShowArtworkRequestToken;
 
 @end
 

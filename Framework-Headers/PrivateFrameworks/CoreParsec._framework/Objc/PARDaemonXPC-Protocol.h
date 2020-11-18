@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, PARRequest, PARSessionConfiguration, SFFeedback;
+@class NSData, NSString, PARRequest, PARSessionConfiguration;
+@protocol SFFeedback;
 
 @protocol PARDaemonXPC
 - (void)bag:(void (^)(PARBag *, NSError *))arg1;
@@ -13,7 +14,8 @@
 - (void)fileHandleAndAttributesForResource:(NSString *)arg1 completion:(void (^)(NSFileHandle *, NSDictionary *, NSError *))arg2;
 - (void)listSessions:(void (^)(NSArray *))arg1;
 - (void)listenToFlusher:(void (^)(NSXPCListenerEndpoint *))arg1;
-- (void)reportEvent:(NSString *)arg1 queryId:(long long)arg2 feedback:(SFFeedback *)arg3;
+- (void)reportEvent:(NSString *)arg1 queryId:(long long)arg2 feedback:(id<SFFeedback>)arg3;
+- (void)reportEvent:(NSString *)arg1 queryId:(long long)arg2 feedbackData:(NSData *)arg3;
 - (void)request:(PARRequest *)arg1 reply:(void (^)(long long, PARReply *, NSError *))arg2;
 @end
 

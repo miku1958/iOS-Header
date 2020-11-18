@@ -11,11 +11,13 @@
 @protocol WLKUIOnboardingInterface <JSExport>
 
 @property (readonly, nonatomic) NSArray *eligibleBids;
+@property (readonly, nonatomic) BOOL isShowing;
 @property (readonly, nonatomic, getter=isOptedIn) BOOL optedIn;
 @property (readonly, nonatomic, getter=isTvosMigrated) BOOL tvosMigrated;
 
 - (void)dismiss;
 - (void)migrateTvos:(JSValue *)arg1;
 - (void)show:(JSValue *)arg1;
+- (void)showForBids:(NSArray *)arg1:(JSValue *)arg2:(JSValue *)arg3;
 @end
 

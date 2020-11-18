@@ -116,7 +116,7 @@
 - (void)addAnnotations:(id)arg1;
 - (void)addOverlay:(id)arg1;
 - (void)addOverlays:(id)arg1;
-- (void)animateMapToPosition:(CDStruct_02837cd9)arg1 withInsets:(struct UIEdgeInsets)arg2 andZoom:(BOOL)arg3;
+- (void)animateMapToPosition:(CDStruct_02837cd9)arg1 withInsets:(struct UIEdgeInsets)arg2 attributionInsets:(struct UIEdgeInsets)arg3 andZoom:(BOOL)arg4;
 - (void)animateRenderingModeChange;
 - (void)animateToAllAnnotation;
 - (id)annotationsSortedByDistance;

@@ -10,6 +10,7 @@
 
 @interface MCEDUClassroomPayload : MCPayload
 {
+    BOOL _screenObservationPermissionModificationAllowed;
     NSString *_organizationUUID;
     NSString *_organizationName;
     NSString *_payloadCertificateUUID;
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) NSString *payloadCertificateUUID; // @synthesize payloadCertificateUUID=_payloadCertificateUUID;
 @property (strong, nonatomic) NSData *resourcePayloadCertificatePersistentID; // @synthesize resourcePayloadCertificatePersistentID=_resourcePayloadCertificatePersistentID;
 @property (strong, nonatomic) NSString *resourcePayloadCertificateUUID; // @synthesize resourcePayloadCertificateUUID=_resourcePayloadCertificateUUID;
+@property (nonatomic) BOOL screenObservationPermissionModificationAllowed; // @synthesize screenObservationPermissionModificationAllowed=_screenObservationPermissionModificationAllowed;
 @property (strong, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
 @property (strong, nonatomic) NSArray *users; // @synthesize users=_users;
 

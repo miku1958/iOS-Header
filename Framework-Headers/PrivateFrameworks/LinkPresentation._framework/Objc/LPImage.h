@@ -9,12 +9,14 @@
 #import <LinkPresentation/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString, NSURL, UIImage;
+@protocol OS_dispatch_group;
 
 @interface LPImage : NSObject <NSSecureCoding>
 {
     UIImage *_originalPlatformImage;
     NSData *_data;
     NSString *_MIMEType;
+    NSObject<OS_dispatch_group> *_asynchronousLoadGroup;
     BOOL _placeholderIcon;
     NSURL *_fileURL;
     UIImage *_platformImage;
@@ -32,8 +34,11 @@
 - (void).cxx_destruct;
 - (void)_createDataFromPlatformImage;
 - (id)_initWithImage:(id)arg1;
+- (id)_initWithPlatformImageGenerator:(CDUnknownBlockType)arg1;
 - (void)_mapDataFromFileURL;
+- (void)_preparePlatformImageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_shouldEncodeData;
+- (void)_waitForAsynchronouslyLoadedImageIfNeeded;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initByReferencingFileURL:(id)arg1 MIMEType:(id)arg2;

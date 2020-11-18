@@ -40,6 +40,7 @@
 - (id)_init;
 - (BOOL)_isAppleWatch;
 - (BOOL)_isApplication;
+- (BOOL)_isHidden;
 - (BOOL)_isPreferredSource;
 - (BOOL)_requiresAuthorization;
 - (void)_setBundleIdentifier:(id)arg1;

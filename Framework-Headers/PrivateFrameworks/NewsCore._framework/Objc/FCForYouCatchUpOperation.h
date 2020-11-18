@@ -46,6 +46,7 @@
 - (void)_serviceConditionWaiters;
 - (id)allFeedItemsAfterTransformation:(id)arg1;
 - (id)allNonEditorialFeedItemsAfterTransformation:(id)arg1;
+- (id)catchUpErrorForContentTypes:(long long)arg1;
 - (void)enumerateEditorialSectionsByRecencyAfterTransformation:(id)arg1 minFamilySize:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 - (id)initWithContext:(id)arg1 dateRange:(id)arg2 background:(BOOL)arg3;
 - (void)operationDidFinishWithError:(id)arg1;

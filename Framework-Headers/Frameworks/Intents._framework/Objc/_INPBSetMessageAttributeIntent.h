@@ -31,7 +31,9 @@
 + (Class)identifierType;
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsAttribute:(id)arg1;
 - (void)addIdentifier:(id)arg1;
+- (id)attributeAsString:(int)arg1;
 - (void)clearIdentifiers;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

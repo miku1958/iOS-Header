@@ -26,7 +26,7 @@
 
 @property (strong) SSURLBag *bag; // @synthesize bag=_bag;
 @property (copy) NSString *domain; // @synthesize domain=_domain;
-@property (getter=domainDisabled) BOOL domainDisabled; // @synthesize domainDisabled=_domainDisabled;
+@property BOOL domainDisabled; // @synthesize domainDisabled=_domainDisabled;
 @property double pollingIntervalInSeconds; // @synthesize pollingIntervalInSeconds=_pollingIntervalInSeconds;
 @property (strong) NSURL *pullAllKeyValueRequestURL; // @synthesize pullAllKeyValueRequestURL=_pullAllKeyValueRequestURL;
 @property (strong) NSURL *pullKeyValueRequestURL; // @synthesize pullKeyValueRequestURL=_pullKeyValueRequestURL;

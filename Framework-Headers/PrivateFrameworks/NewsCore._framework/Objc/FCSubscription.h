@@ -16,6 +16,7 @@
     unsigned long long _subscriptionType;
     NSDate *_dateAdded;
     NSString *_tagID;
+    NSString *_groupID;
     NSURL *_url;
     NSString *_title;
     NSURL *_pollingURL;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) BOOL canRetry; // @synthesize canRetry=_canRetry;
 @property (readonly, copy, nonatomic) NSDate *dateAdded; // @synthesize dateAdded=_dateAdded;
 @property (readonly, nonatomic) NSString *errorMessage; // @synthesize errorMessage=_errorMessage;
+@property (strong, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (readonly, nonatomic) BOOL notificationsEnabled; // @synthesize notificationsEnabled=_notificationsEnabled;
 @property (readonly, nonatomic) NSURL *pollingURL; // @synthesize pollingURL=_pollingURL;
 @property (readonly, copy, nonatomic) NSString *subscriptionID; // @synthesize subscriptionID=_subscriptionID;
@@ -33,13 +35,13 @@
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
-+ (id)mutedSubscriptionWithSubscriptionID:(id)arg1 tagID:(id)arg2 dateAdded:(id)arg3;
++ (id)mutedSubscriptionWithSubscriptionID:(id)arg1 tagID:(id)arg2 groupID:(id)arg3 dateAdded:(id)arg4;
 + (id)pendingSubscriptionWithSubscriptionID:(id)arg1 url:(id)arg2 title:(id)arg3 pollingURL:(id)arg4 dateAdded:(id)arg5;
 + (id)subscriptionWithSubscriptionID:(id)arg1 dictionaryRepresentation:(id)arg2;
 + (id)subscriptionWithSubscriptionID:(id)arg1 tagID:(id)arg2 dateAdded:(id)arg3 notificationsEnabled:(BOOL)arg4;
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
-- (id)initWithSubscriptionID:(id)arg1 tagID:(id)arg2 dateAdded:(id)arg3 subscriptionType:(unsigned long long)arg4 notificationsEnabled:(BOOL)arg5;
+- (id)initWithSubscriptionID:(id)arg1 tagID:(id)arg2 groupID:(id)arg3 dateAdded:(id)arg4 subscriptionType:(unsigned long long)arg5 notificationsEnabled:(BOOL)arg6;
 - (id)initWithSubscriptionID:(id)arg1 url:(id)arg2 title:(id)arg3 pollingURL:(id)arg4 dateAdded:(id)arg5;
 - (BOOL)isTypeMutedTag;
 - (BOOL)isTypePending;

@@ -37,6 +37,7 @@
 @property (copy, nonatomic) NSURL *localDestinationURL;
 @property (copy, nonatomic) NSURL *localVideoDestinationURL; // @dynamic localVideoDestinationURL;
 @property (strong, nonatomic) CLLocation *location;
+@property (nonatomic) double loggingVideoZoomFactor; // @dynamic loggingVideoZoomFactor;
 @property (nonatomic) unsigned long long maximumBurstLength; // @dynamic maximumBurstLength;
 @property (nonatomic) long long origin;
 @property (copy, nonatomic) NSString *originalIrisIdentifier; // @dynamic originalIrisIdentifier;
@@ -53,6 +54,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) long long temporaryPersistenceOptions;
 @property (copy, nonatomic) NSString *timelapseIdentifier; // @dynamic timelapseIdentifier;
+@property (nonatomic) unsigned long long userInitiationTime; // @dynamic userInitiationTime;
 @property (nonatomic) BOOL usesStillImageStabilization; // @dynamic usesStillImageStabilization;
 @property (copy, nonatomic) NSString *videoPersistenceUUID; // @dynamic videoPersistenceUUID;
 @property (nonatomic) BOOL wantsAudioForCapture; // @dynamic wantsAudioForCapture;

@@ -17,7 +17,7 @@
 
 @property (nonatomic) BOOL cancelsWhenAppEntersBackground; // @synthesize cancelsWhenAppEntersBackground=_cancelsWhenAppEntersBackground;
 
-+ (id)alertControllerWithMatches:(id)arg1 currentUser:(id)arg2 currentPassword:(id)arg3 lastGeneratedPassword:(id)arg4 formURL:(id)arg5 preferredStyle:(long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
++ (id)alertControllerWithMatchesFromFormProtectionSpace:(id)arg1 matchesFromOtherProtectionSpaces:(id)arg2 preferredStyle:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (void)viewWillDisappear:(BOOL)arg1;
 

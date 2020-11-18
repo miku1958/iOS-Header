@@ -10,7 +10,7 @@
 #import <PhotoLibraryServices/PLDerivedAlbumListOrigin-Protocol.h>
 #import <PhotoLibraryServices/PLIndexMappersDataOrigin-Protocol.h>
 
-@class NSMutableOrderedSet, NSObject, NSString;
+@class NSMutableOrderedSet, NSNumber, NSObject, NSString;
 @protocol PLIndexMappingCache;
 
 @interface PLManagedAlbumList : _PLManagedAlbumList <PLAlbumContainer, PLDerivedAlbumListOrigin, PLIndexMappersDataOrigin>
@@ -34,8 +34,10 @@
 @property (readonly, nonatomic) int filter;
 @property (readonly, nonatomic) BOOL hasAtLeastOneAlbum;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSNumber *identifier; // @dynamic identifier;
 @property (readonly, nonatomic) BOOL isFolder;
 @property (nonatomic) BOOL isRegisteredForChanges; // @synthesize isRegisteredForChanges;
+@property (copy, nonatomic) NSNumber *needsReorderingNumber; // @dynamic needsReorderingNumber;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long unreadAlbumsCount;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
@@ -66,7 +68,7 @@
 + (id)placesAlbumListInPhotoLibrary:(id)arg1;
 + (unsigned long long)priorityForAlbumKind:(int)arg1;
 + (void)pushChangesFromAlbumContainer:(id)arg1 toAlbumContainer:(id)arg2;
-+ (void)restoreAlbumListFromPersistedDataAtPath:(id)arg1 library:(id)arg2;
++ (BOOL)restoreAlbumListFromPersistedDataAtPath:(id)arg1 library:(id)arg2;
 + (id)scenesAlbumListInManagedObjectContext:(id)arg1;
 + (id)scenesAlbumListInPhotoLibrary:(id)arg1;
 + (id)wallpaperAlbumListInPhotoLibrary:(id)arg1;

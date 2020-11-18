@@ -52,6 +52,7 @@
 - (void).cxx_destruct;
 - (BOOL)addData:(id)arg1 toItemAtIndex:(unsigned long long)arg2 generation:(unsigned long long)arg3;
 - (void)clearLocalPasteboardInformation;
+- (void)dealloc;
 - (void)doClearLocalPasteboardInfo;
 - (void)fetchPasteboardDataForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchPasteboardStatus:(CDUnknownBlockType)arg1;

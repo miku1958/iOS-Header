@@ -59,7 +59,6 @@
 @property (readonly, nonatomic) BOOL duplicateAllowsPrivateMetadata; // @synthesize duplicateAllowsPrivateMetadata=_duplicateAllowsPrivateMetadata;
 @property (readonly, copy, nonatomic) NSString *editorBundleID; // @synthesize editorBundleID=_editorBundleID;
 @property (strong, nonatomic) id faceAdjustmentVersion;
-@property (nonatomic) long long faceDetectionState;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *facesHelper; // @synthesize facesHelper=_facesHelper;
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly) unsigned long long hash;

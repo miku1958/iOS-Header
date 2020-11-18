@@ -6,15 +6,15 @@
 
 #import <UIKit/UIView.h>
 
-@class UIColor;
+@class NSArray, UIColor;
 
 @interface UIView (ISCommonUI)
 
+@property (readonly, copy) NSArray *allSubviews;
 @property (strong, nonatomic) UIColor *debugHighlight;
 
 - (id)addConstraintsToFillSuperview;
 - (id)addConstraintsToSetSize:(struct CGSize)arg1;
-- (id)allSubviews;
 - (void)centerHorizontallyInSuperview;
 - (void)centerVerticallyInSuperview;
 - (id)generateImage;

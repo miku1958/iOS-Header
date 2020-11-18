@@ -24,6 +24,7 @@
     NSURL *_baseURL;
     int _parserState;
     NSMutableArray *_elementStack;
+    BOOL _foundXMLUI;
     BOOL _succeeded;
     NSData *_xmlData;
     NSError *_error;
@@ -40,6 +41,8 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSData *xmlData; // @synthesize xmlData=_xmlData;
 
++ (id)rowWithAttributeDict:(id)arg1 delegate:(id)arg2 parent:(id)arg3;
++ (id)tableRowClassForElementName:(id)arg1;
 + (long long)textAlignmentForString:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addNavigationBarWithAttributes:(id)arg1;
@@ -53,6 +56,7 @@
 - (id)_lastRow;
 - (void)_logDeprecation:(id)arg1 value:(id)arg2;
 - (id)_newRowWithAttributeDict:(id)arg1;
+- (void)_validateDocumentContent;
 - (id)actionSignal;
 - (void)dealloc;
 - (id)initWithXML:(id)arg1;

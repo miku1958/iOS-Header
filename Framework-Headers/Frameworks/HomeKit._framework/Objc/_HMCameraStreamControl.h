@@ -31,13 +31,13 @@
 - (void)_handleVideoStreamStopped:(id)arg1;
 - (void)_registerNotificationHandlers;
 - (void)_resetState:(id)arg1;
-- (void)_startStream;
+- (void)_startStreamWithPraeferences:(id)arg1;
 - (void)_stopStream;
 - (void)dealloc;
 - (void)homedRestarted;
 - (id)initWithCameraProfile:(id)arg1 service:(id)arg2 profileUniqueIdentifier:(id)arg3;
 - (void)setCameraStream:(id)arg1;
-- (void)startStream;
+- (void)startStreamWithPreferences:(id)arg1;
 - (void)stopStream;
 
 @end

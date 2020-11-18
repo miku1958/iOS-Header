@@ -6,7 +6,7 @@
 
 #import <GameCenterFoundation/GKInternalRepresentation.h>
 
-@class GKPlayerCredential, NSURL;
+@class GKPlayerCredential, NSString, NSURL;
 
 @interface GKAuthenticateResponse : GKInternalRepresentation
 {
@@ -15,8 +15,12 @@
     BOOL _shouldShowLinkAccountsUI;
     GKPlayerCredential *_credential;
     NSURL *_passwordChangeURL;
+    NSString *_alertTitle;
+    NSString *_alertMessage;
 }
 
+@property (strong, nonatomic) NSString *alertMessage; // @synthesize alertMessage=_alertMessage;
+@property (strong, nonatomic) NSString *alertTitle; // @synthesize alertTitle=_alertTitle;
 @property (strong, nonatomic) GKPlayerCredential *credential; // @synthesize credential=_credential;
 @property (nonatomic) BOOL loginDisabled; // @synthesize loginDisabled=_loginDisabled;
 @property (nonatomic) BOOL passwordChangeRequired; // @synthesize passwordChangeRequired=_passwordChangeRequired;

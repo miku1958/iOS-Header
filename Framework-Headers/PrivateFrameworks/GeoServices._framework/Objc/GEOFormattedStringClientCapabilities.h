@@ -11,13 +11,17 @@
 @interface GEOFormattedStringClientCapabilities : PBCodable <NSCopying>
 {
     BOOL _concatenatingFormatStringsSupported;
+    BOOL _timestampFormatPatternSupported;
     struct {
         unsigned int concatenatingFormatStringsSupported:1;
+        unsigned int timestampFormatPatternSupported:1;
     } _has;
 }
 
 @property (nonatomic) BOOL concatenatingFormatStringsSupported; // @synthesize concatenatingFormatStringsSupported=_concatenatingFormatStringsSupported;
 @property (nonatomic) BOOL hasConcatenatingFormatStringsSupported;
+@property (nonatomic) BOOL hasTimestampFormatPatternSupported;
+@property (nonatomic) BOOL timestampFormatPatternSupported; // @synthesize timestampFormatPatternSupported=_timestampFormatPatternSupported;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

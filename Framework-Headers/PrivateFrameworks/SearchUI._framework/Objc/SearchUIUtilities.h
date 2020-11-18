@@ -16,12 +16,14 @@
 + (id)captionFont;
 + (BOOL)deviceSupportsRotation;
 + (void)dispatchMainIfNecessary:(CDUnknownBlockType)arg1;
++ (id)footnoteBoldFont;
 + (id)hyphenatableStringForString:(id)arg1;
 + (id)imageWithColor:(id)arg1 size:(struct CGSize)arg2;
 + (id)imageWithColor:(id)arg1 size:(struct CGSize)arg2 cornersToRound:(unsigned long long)arg3 cornerRadius:(double)arg4;
 + (void)initialize;
 + (BOOL)isPortrait;
 + (BOOL)isWideScreen;
++ (id)localizedStringForKey:(id)arg1;
 + (struct CGSize)maxThumbnailSize;
 + (double)onePixelForCurrentScreenResolution;
 + (id)openOptions;

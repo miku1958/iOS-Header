@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_toggleExtendedCandidateView:(id)arg1;
 - (id)activeCandidateList;
 - (void)candidatesDidChange;
+- (int)candidatesVisualStyle;
 - (void)dealloc;
 - (double)extendedViewAnimationDuration;
 - (double)extendedViewHeight;

@@ -20,13 +20,18 @@
 - (id)_extendLaunchTest;
 - (void)_registerPreviewStartBlock:(CDUnknownBlockType)arg1;
 - (void)didChangeToMode:(long long)arg1 device:(long long)arg2;
+- (void)didCloseViewfinderForReason:(long long)arg1;
+- (void)didOpenViewfinderForReason:(long long)arg1;
 - (void)prepareForDefaultImageSnapshotForScreen:(id)arg1;
+- (BOOL)runPresentTestWithName:(id)arg1 options:(id)arg2;
 - (BOOL)runSwitchCamerasTestWithName:(id)arg1 options:(id)arg2;
 - (BOOL)runSwitchModesTestWithName:(id)arg1 options:(id)arg2;
 - (BOOL)runTakePictureTestWithFrontCamera:(id)arg1 options:(id)arg2 prototype:(id)arg3;
 - (BOOL)runTakePictureTestWithTestName:(id)arg1 options:(id)arg2 prototype:(id)arg3;
 - (BOOL)runTest:(id)arg1 options:(id)arg2;
 - (unsigned long long)supportedInterfaceOrientationsForWindow:(id)arg1;
+- (void)willCloseViewfinderForReason:(long long)arg1;
+- (void)willOpenViewfinderForReason:(long long)arg1;
 
 @end
 

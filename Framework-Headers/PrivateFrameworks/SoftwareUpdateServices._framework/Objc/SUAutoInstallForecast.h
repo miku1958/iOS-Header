@@ -9,7 +9,7 @@
 #import <SoftwareUpdateServices/NSCopying-Protocol.h>
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
-@class NSDate;
+@class NSDate, _SUAutoInstallForecastDateCache;
 
 @interface SUAutoInstallForecast : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,15 +18,23 @@
     NSDate *_suStartDate;
     NSDate *_suEndDate;
     NSDate *_firstUnlock;
+    _SUAutoInstallForecastDateCache *_lazy_forecastDateCache;
 }
 
 @property (strong, nonatomic) NSDate *firstUnlock; // @synthesize firstUnlock=_firstUnlock;
+@property (readonly, nonatomic) long long scheduleType;
 @property (strong, nonatomic) NSDate *suEndDate; // @synthesize suEndDate=_suEndDate;
 @property (strong, nonatomic) NSDate *suStartDate; // @synthesize suStartDate=_suStartDate;
 @property (strong, nonatomic) NSDate *unlockEndDate; // @synthesize unlockEndDate=_unlockEndDate;
 @property (strong, nonatomic) NSDate *unlockStartDate; // @synthesize unlockStartDate=_unlockStartDate;
 
 + (BOOL)supportsSecureCoding;
+- (id)_calendar;
+- (id)_forecastDateCache;
+- (BOOL)_isDateExpired:(id)arg1;
+- (BOOL)_isForecastLogicallyExpired;
+- (id)_roundedEndTime;
+- (id)_roundedStartTime;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

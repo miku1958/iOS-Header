@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAdditionalEnabledMarkets, GEOAutomobileOptions, GEOClientCapabilities, GEOCommonOptions, GEOLocation, GEOTFTrafficSnapshot, GEOTransitOptions, GEOWalkingOptions, GEOWaypoint, GEOWaypointTyped, NSData, NSMutableArray;
+@class GEOAdditionalEnabledMarkets, GEOAutomobileOptions, GEOClientCapabilities, GEOCommonOptions, GEOLocation, GEOPDABClientDatasetMetadata, GEOTFTrafficSnapshot, GEOTransitOptions, GEOWalkingOptions, GEOWaypoint, GEOWaypointTyped, NSData, NSMutableArray;
 
 @interface GEOETARequest : PBRequest <NSCopying>
 {
     struct GEOSessionID _sessionID;
     struct GEOTimepoint _timepoint;
+    GEOPDABClientDatasetMetadata *_abClientMetadata;
     GEOAdditionalEnabledMarkets *_additionalEnabledMarkets;
     GEOAutomobileOptions *_automobileOptions;
     GEOClientCapabilities *_clientCapabilities;
@@ -53,6 +54,7 @@
     } _has;
 }
 
+@property (strong, nonatomic) GEOPDABClientDatasetMetadata *abClientMetadata; // @synthesize abClientMetadata=_abClientMetadata;
 @property (strong, nonatomic) GEOAdditionalEnabledMarkets *additionalEnabledMarkets; // @synthesize additionalEnabledMarkets=_additionalEnabledMarkets;
 @property (nonatomic) BOOL allowPartialResults; // @synthesize allowPartialResults=_allowPartialResults;
 @property (strong, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
@@ -61,6 +63,7 @@
 @property (strong, nonatomic) NSMutableArray *destinationWaypointTypeds; // @synthesize destinationWaypointTypeds=_destinationWaypointTypeds;
 @property (strong, nonatomic) NSMutableArray *destinations; // @synthesize destinations=_destinations;
 @property (strong, nonatomic) NSMutableArray *deviceHistoricalLocations; // @synthesize deviceHistoricalLocations=_deviceHistoricalLocations;
+@property (readonly, nonatomic) BOOL hasAbClientMetadata;
 @property (readonly, nonatomic) BOOL hasAdditionalEnabledMarkets;
 @property (nonatomic) BOOL hasAllowPartialResults;
 @property (readonly, nonatomic) BOOL hasAutomobileOptions;

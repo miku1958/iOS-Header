@@ -7,8 +7,9 @@
 #import <Foundation/NSXPCInterface.h>
 
 @interface NSXPCInterface (CXCallDirectoryManagerSupport)
-+ (id)cx_callDirectoryManagerHostInterface;
++ (id)cx_callDirectoryManagerDefaultHostInterface;
++ (id)cx_callDirectoryManagerMaintenanceHostInterface;
 - (id)_cx_callDirectoryManagerAllowedClasses;
-- (void)_cx_setAllowedClassesForCallDirectoryManagerHostProtocol;
+- (void)_cx_setAllowedClassesForCallDirectoryManagerDefaultHostProtocol;
 @end
 

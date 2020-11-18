@@ -32,6 +32,7 @@
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (long long)keyContainingPoint:(struct CGPoint)arg1;
 
 @end
 

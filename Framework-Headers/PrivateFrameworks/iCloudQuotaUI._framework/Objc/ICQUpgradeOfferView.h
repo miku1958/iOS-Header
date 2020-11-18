@@ -8,7 +8,7 @@
 
 #import <iCloudQuotaUI/UITextViewDelegate-Protocol.h>
 
-@class ICQLink, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UILayoutGuide, _ICQTextView, _ICQUpgradeOfferPageSpecification;
+@class ICQLink, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UIImageView, UILabel, UILayoutGuide, _ICQTextView, _ICQUpgradeOfferPageSpecification;
 @protocol ICQPageDelegate;
 
 @interface ICQUpgradeOfferView : ICQPageView <UITextViewDelegate>
@@ -19,33 +19,39 @@
     BOOL _suppressResizingFonts;
     BOOL _isResizingFonts;
     id<ICQPageDelegate> _delegate;
+    UIImageView *_iconView;
     UILabel *_titleLabel;
     UILabel *_messageLabel;
     NSArray *_serviceViews;
-    UIButton *_purchaseButton;
     UIActivityIndicatorView *_spinner;
-    UIButton *_learnMoreButton;
+    UIButton *_purchaseButton;
+    UIButton *_bottomButton;
     _ICQTextView *_finePrintView;
     ICQLink *_purchaseLink;
-    ICQLink *_learnMoreLink;
+    ICQLink *_bottomLink;
     UILayoutGuide *_navigationBarLayoutGuide;
     UILayoutGuide *_abovePurchaseLayoutGuide;
     UILayoutGuide *_belowPurchaseLayoutGuide;
+    NSLayoutConstraint *_iconTopMarginConstraint;
     NSLayoutConstraint *_titleTopMarginConstraint;
-    double _titleTopMargin;
+    double _tippyTopMargin;
+    double _iconTitleSpacing;
     NSArray *_activeConstraints;
 }
 
 @property (readonly, nonatomic) UILayoutGuide *abovePurchaseLayoutGuide; // @synthesize abovePurchaseLayoutGuide=_abovePurchaseLayoutGuide;
 @property (strong, nonatomic) NSArray *activeConstraints; // @synthesize activeConstraints=_activeConstraints;
 @property (readonly, nonatomic) UILayoutGuide *belowPurchaseLayoutGuide; // @synthesize belowPurchaseLayoutGuide=_belowPurchaseLayoutGuide;
+@property (strong, nonatomic) UIButton *bottomButton; // @synthesize bottomButton=_bottomButton;
+@property (readonly, nonatomic) ICQLink *bottomLink; // @synthesize bottomLink=_bottomLink;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ICQPageDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _ICQTextView *finePrintView; // @synthesize finePrintView=_finePrintView;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
-@property (readonly, nonatomic) ICQLink *learnMoreLink; // @synthesize learnMoreLink=_learnMoreLink;
+@property (nonatomic) double iconTitleSpacing; // @synthesize iconTitleSpacing=_iconTitleSpacing;
+@property (readonly, nonatomic) NSLayoutConstraint *iconTopMarginConstraint; // @synthesize iconTopMarginConstraint=_iconTopMarginConstraint;
+@property (strong, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
 @property (strong, nonatomic) UILabel *messageLabel; // @synthesize messageLabel=_messageLabel;
 @property (readonly, nonatomic) UILayoutGuide *navigationBarLayoutGuide; // @synthesize navigationBarLayoutGuide=_navigationBarLayoutGuide;
 @property (strong, nonatomic) UIButton *purchaseButton; // @synthesize purchaseButton=_purchaseButton;
@@ -53,24 +59,26 @@
 @property (strong, nonatomic) NSArray *serviceViews; // @synthesize serviceViews=_serviceViews;
 @property (strong, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property (readonly) Class superclass;
+@property (nonatomic) double tippyTopMargin; // @synthesize tippyTopMargin=_tippyTopMargin;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (nonatomic) double titleTopMargin; // @synthesize titleTopMargin=_titleTopMargin;
 @property (readonly, nonatomic) NSLayoutConstraint *titleTopMarginConstraint; // @synthesize titleTopMarginConstraint=_titleTopMarginConstraint;
 @property (nonatomic) long long upgradeMode; // @synthesize upgradeMode=_upgradeMode;
 @property (strong, nonatomic) _ICQUpgradeOfferPageSpecification *upgradeOfferPageSpecification; // @synthesize upgradeOfferPageSpecification=_upgradeOfferPageSpecification;
 
 - (void).cxx_destruct;
+- (id)_imageForBundleIdentifier:(id)arg1;
+- (id)_imageForGenericCloud;
 - (void)_resetAdjustableItems;
 - (BOOL)_shrinkFontOfLabel:(id)arg1;
 - (void)_shrinkTopMargin;
 - (double)_superGetTopMargin;
+- (void)bottomButtonTapped:(id)arg1;
 - (id)finePrintAttributes;
 - (id)finePrintParagraphStyle;
 - (id)finePrintParagraphStyleAttributes;
 - (id)finePrintViewAttributedText;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)learnMoreButtonTapped:(id)arg1;
 - (void)purchaseButtonTapped:(id)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
 - (void)updateConstraints;

@@ -60,6 +60,7 @@
 - (id)_getUploadTokensURLWithBaseURL:(id)arg1;
 - (id)_getVideoURLWithBaseURL:(id)arg1;
 - (id)_putAssetsURLWithBaseURL:(id)arg1;
+- (id)_reportSpamURL;
 - (id)_serverSideConfigURL;
 - (id)_setAlbumStateURL;
 - (id)_setAssetStateURL;
@@ -92,6 +93,8 @@
 - (void)getUploadTokens:(id)arg1 forAssetCollectionWithGUID:(id)arg2 inAlbumWithGUID:(id)arg3 albumURLString:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)getVideoURL:(id)arg1 forAssetCollectionWithGUID:(id)arg2 inAlbumWithGUID:(id)arg3 albumURLString:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (id)initWithPersonID:(id)arg1;
+- (void)markAsSpamInvitationForAlbum:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)markAsSpamInvitationForToken:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)putAssetCollections:(id)arg1 intoAlbum:(id)arg2 albumURLString:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)removeSharingRelationships:(id)arg1 fromAlbum:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (BOOL)responseDict:(id)arg1 containsLimitErrorCode:(id)arg2 outMaxAllowed:(id *)arg3;

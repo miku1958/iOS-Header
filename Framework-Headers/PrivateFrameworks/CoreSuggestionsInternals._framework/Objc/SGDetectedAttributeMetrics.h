@@ -16,6 +16,7 @@
 @property (strong, nonatomic) SGMContactDetailExtraction *petGenClassInstance; // @synthesize petGenClassInstance=_petGenClassInstance;
 
 + (id)contactStore;
++ (id)findContactFromEntity:(id)arg1 withPhonenumber:(id)arg2;
 + (id)findContactFromEntity:(id)arg1 withType:(struct SGMContactDetailType_)arg2 detailValue:(id)arg3;
 + (id)instance;
 + (void)recordExtractionEventFromSource:(struct SGMDocumentType_)arg1 foundInSignature:(BOOL)arg2 detailType:(struct SGMContactDetailType_)arg3 outcome:(struct SGMContactDetailExtractionOutcome_)arg4 foundInSenderCNContact:(BOOL)arg5;

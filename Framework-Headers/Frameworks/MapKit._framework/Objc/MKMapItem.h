@@ -8,7 +8,7 @@
 
 #import <MapKit/GEOURLSerializable-Protocol.h>
 
-@class GEOAddress, GEOFeatureStyleAttributes, GEOMapItemDetourInfo, GEOMapRegion, GEOPDBusinessClaim, GEOPDFlyover, GEOPlace, MKMapItemMetadata, MKPlacemark, NSArray, NSData, NSString, NSTimeZone, NSURL, _MKMapItemPhotosAttribution, _MKMapItemPlaceAttribution, _MKMapItemReviewsAttribution, _MKPlaceReservationInfo;
+@class GEOAddress, GEOFeatureStyleAttributes, GEOMapItemDetourInfo, GEOMapRegion, GEOPDBusinessClaim, GEOPDFlyover, GEOPlace, MKMapItemMetadata, MKPlacemark, NSArray, NSData, NSNumber, NSNumberFormatter, NSString, NSTimeZone, NSURL, _MKMapItemPhotosAttribution, _MKMapItemPlaceAttribution, _MKMapItemReviewsAttribution, _MKPlaceReservationInfo;
 @protocol GEOEncyclopedicInfo, GEOMapItem, GEOMapItemPrivate, GEOMapItemTransitInfo, GEOTransitAttribution, NSObject;
 
 @interface MKMapItem : NSObject <GEOURLSerializable>
@@ -30,6 +30,7 @@
     id<NSObject> _didResolveAttributionToken;
     NSString *_shortAddress;
     NSString *_firstLocalizedCategoryName;
+    NSNumberFormatter *_numberFormatterForAdamId;
     BOOL _isTransitItem;
     MKMapItemMetadata *_metadata;
     GEOPlace *_place;
@@ -37,6 +38,7 @@
 }
 
 @property (readonly, nonatomic, getter=_acceptsApplePay) BOOL acceptsApplePay;
+@property (readonly, nonatomic, getter=_alternativeAppAdamIds) NSArray *alternativeAppAdamIds;
 @property (readonly, nonatomic, getter=_attribution) _MKMapItemPlaceAttribution *attribution; // @synthesize attribution=_attribution;
 @property (readonly, nonatomic, getter=_businessClaim) GEOPDBusinessClaim *businessClaim;
 @property (readonly, nonatomic, getter=_coordinate) struct CLLocationCoordinate2D coordinate;
@@ -99,6 +101,7 @@
 @property (readonly, nonatomic) MKPlacemark *placemark;
 @property (readonly, nonatomic, getter=_poiPinpointURLString) NSString *poiPinpointURLString;
 @property (readonly, nonatomic, getter=_poiSurveyURLString) NSString *poiSurveyURLString;
+@property (readonly, nonatomic, getter=_preferedAppAdamID) NSNumber *preferedAppAdamID;
 @property (readonly, nonatomic, getter=_priceRangeString) NSString *priceRangeString;
 @property (readonly, copy, nonatomic, getter=_providerURL) NSURL *providerURL;
 @property (strong, nonatomic) _MKPlaceReservationInfo *reservationInfo; // @synthesize reservationInfo=_reservationInfo;
@@ -168,6 +171,7 @@
 - (id)_attributionFor:(id)arg1 sourceStringFormat:(id)arg2 moreSourceStringFormat:(id)arg3 imageTintColor:(id)arg4;
 - (id)_attributionWithDisplayName:(id)arg1 attributionFormat:(id)arg2 logo:(id)arg3 isSnippetLogo:(BOOL)arg4;
 - (BOOL)_canGetDirections;
+- (id)_formatterForAdamId;
 - (id)_fullAddressWithMultiline:(BOOL)arg1;
 - (id)_getBusiness;
 - (BOOL)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;

@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)accessibilityElements;
+- (BOOL)accessibilityElementsHidden;
 - (struct CGRect)accessibilityFrame:(id)arg1;
 - (id)accessibilityLabel:(id)arg1;
 - (unsigned long long)accessibilityTraits:(id)arg1;

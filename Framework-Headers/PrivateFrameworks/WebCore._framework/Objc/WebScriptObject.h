@@ -22,9 +22,7 @@
 - (struct OpaqueJSContext *)_globalContextRef;
 - (BOOL)_hasImp;
 - (struct JSObject *)_imp;
-- (id)_init;
 - (id)_initWithJSObject:(struct JSObject *)arg1 originRootObject:(PassRefPtr_8e019d1c)arg2 rootObject:(PassRefPtr_8e019d1c)arg3;
-- (void)_initializeScriptDOMNodeImp;
 - (BOOL)_isSafeScript;
 - (struct RootObject *)_originRootObject;
 - (struct RootObject *)_rootObject;

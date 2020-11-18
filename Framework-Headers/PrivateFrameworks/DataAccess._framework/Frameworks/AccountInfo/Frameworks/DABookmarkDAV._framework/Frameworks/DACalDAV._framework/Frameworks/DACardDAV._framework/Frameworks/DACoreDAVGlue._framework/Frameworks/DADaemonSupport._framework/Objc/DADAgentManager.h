@@ -7,6 +7,7 @@
 #import <Foundation/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface DADAgentManager : NSObject
 {
@@ -18,6 +19,8 @@
     struct IONotificationPort *_pmPort;
     struct __CFRunLoopSource *_pmRunLoopSource;
     CDUnknownBlockType _startAgentsWhenSystemReadyBlock;
+    NSObject<OS_dispatch_queue> *_CTCellularUsagePolicyNotificationQ;
+    struct __CTServerConnection *_ctServerConnection;
     int _pendingAccountSetupCount;
     NSMutableArray *_subCalHandlers;
 }
@@ -35,9 +38,11 @@
 - (void)_deviceDidWake;
 - (void)_deviceWillSleep;
 - (void)_ensureHolidaySubscribedCalendarExists;
+- (void)_handleCellularDataUsageChangedNotification;
 - (BOOL)_hasDataclassWeCareAbout:(id)arg1;
 - (void)_loadAndStartMonitoringAgents;
 - (id)_phoneVersion;
+- (void)_registerForCTDataUsageNotificaiton;
 - (BOOL)_removeSubscribedCalendarsForAccountWithID:(id)arg1 inStore:(void *)arg2;
 - (void)_resetMonitoringRequestsAndLoadAgents;
 - (void)_simulateNotificationOnWatchedFolders:(id)arg1;

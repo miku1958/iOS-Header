@@ -6,10 +6,12 @@
 
 #import <WatchListKitUI/JSExport-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
 @protocol WLKUISettingsInterface <JSExport>
 - (NSArray *)consentedBrands;
+- (NSArray *)deniedBrands;
 - (BOOL)privateModeEnabled;
+- (NSDictionary *)settings;
 @end
 

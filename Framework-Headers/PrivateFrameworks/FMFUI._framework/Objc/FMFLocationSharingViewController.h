@@ -59,8 +59,8 @@
 - (void)_showHandleDetails:(id)arg1;
 - (id)_specifierForHandle:(id)arg1;
 - (void)abChanged:(id)arg1;
-- (void)addRemoveActionToPersonViewController:(id)arg1;
-- (void)addShareActionToPersonViewController:(id)arg1;
+- (void)addRemoveActionToContactViewController:(id)arg1;
+- (void)addShareActionToContactViewController:(id)arg1;
 - (id)allHandlesMatchingABCardForSelectedHandle:(id)arg1;
 - (void)dealloc;
 - (void)didChangeActiveLocationSharingDevice:(id)arg1;
@@ -71,7 +71,6 @@
 - (void)didUpdateHidingStatus:(BOOL)arg1;
 - (void)displayGenericErrorAlert;
 - (id)formatStringForHours:(long long)arg1 minutes:(long long)arg2;
-- (int)identifierOfProperty:(int)arg1 withHandleId:(id)arg2 forRecord:(void *)arg3;
 - (id)monogramForHandle:(id)arg1;
 - (void)networkReachabilityUpdated:(BOOL)arg1;
 - (BOOL)noMeDeviceSelected:(id)arg1;
@@ -85,7 +84,6 @@
 - (id)sortedFollowersWithCombinedRecords:(id)arg1;
 - (id)specifiers;
 - (id)stringByKeepingCharacterSet:(id)arg1 inString:(id)arg2;
-- (void *)unknownRecordForData:(id)arg1 property:(int)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

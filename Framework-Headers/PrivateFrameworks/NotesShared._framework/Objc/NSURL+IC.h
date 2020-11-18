@@ -14,5 +14,6 @@
 @property (readonly, nonatomic) BOOL isiTunesURL;
 @property (readonly, nonatomic) NSURL *uniquedURL;
 
+- (id)dedupedURLWithProhibitedNames:(id)arg1;
 @end
 

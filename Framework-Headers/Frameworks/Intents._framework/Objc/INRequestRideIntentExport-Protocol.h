@@ -7,7 +7,7 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class CLPlacemark, INPaymentMethod, INSpeakableString, NSNumber;
+@class CLPlacemark, INDateComponentsRange, INPaymentMethod, INSpeakableString, NSNumber;
 
 @protocol INRequestRideIntentExport <NSObject, JSExport>
 
@@ -16,6 +16,7 @@
 @property (copy, nonatomic) INPaymentMethod *paymentMethod;
 @property (copy, nonatomic) CLPlacemark *pickupLocation;
 @property (copy, nonatomic) INSpeakableString *rideOptionName;
+@property (copy, nonatomic) INDateComponentsRange *scheduledPickupTime;
 
 - (id)init;
 @end

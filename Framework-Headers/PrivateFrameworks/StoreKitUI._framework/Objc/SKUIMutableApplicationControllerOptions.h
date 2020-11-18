@@ -17,6 +17,7 @@
 @property (nonatomic) BOOL requiresLocalBootstrapScript; // @dynamic requiresLocalBootstrapScript;
 @property (nonatomic) BOOL supportsFullApplicationReload; // @dynamic supportsFullApplicationReload;
 @property (nonatomic) long long tabBarControllerStyle; // @dynamic tabBarControllerStyle;
+@property (nonatomic) BOOL useTransientStorageForTests; // @dynamic useTransientStorageForTests;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

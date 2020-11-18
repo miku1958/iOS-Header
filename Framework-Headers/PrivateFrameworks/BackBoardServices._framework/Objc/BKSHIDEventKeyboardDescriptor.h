@@ -19,7 +19,7 @@
 + (BOOL)supportsSecureCoding;
 - (id)_initWithPage:(unsigned int)arg1 usage:(unsigned int)arg2 eventType:(unsigned int)arg3;
 - (BOOL)describes:(id)arg1;
-- (id)description;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

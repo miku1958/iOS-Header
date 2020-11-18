@@ -6,17 +6,25 @@
 
 #import <SearchFoundation/SFFeedback.h>
 
-@class NSString;
+#import <CoreParsec/SFProtobufObject-Protocol.h>
 
-@interface PARSkipSearchFeedback : SFFeedback
+@class NSString, PBCodable;
+
+@interface PARSkipSearchFeedback : SFFeedback <SFProtobufObject>
 {
     unsigned long long _triggerEvent;
     NSString *_input;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *input; // @synthesize input=_input;
+@property (readonly, nonatomic) PBCodable *protobufMessage;
+@property (readonly) Class superclass;
 @property (nonatomic) unsigned long long triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 
++ (Class)protobufClass;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

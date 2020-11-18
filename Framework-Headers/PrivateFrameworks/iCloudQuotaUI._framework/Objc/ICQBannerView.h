@@ -36,9 +36,14 @@
 
 + (BOOL)shouldShowForOffer:(id)arg1;
 - (void).cxx_destruct;
+- (long long)_delegateActionForAction:(long long)arg1;
+- (id)_initWithFrame:(struct CGRect)arg1;
+- (BOOL)_legacyDelegateMethodHandlesAction:(long long)arg1;
+- (BOOL)_performLink:(id)arg1;
 - (id)attributedText;
 - (BOOL)hasTitle;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithOffer:(id)arg1;
 - (BOOL)isRTL;
 - (void)layoutSubviews;
 - (id)messageAttributes;

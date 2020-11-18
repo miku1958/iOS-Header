@@ -28,22 +28,22 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (Class)_applicationInfoClass;
++ (id)_newApplicationLibrary;
 + (void)initializeSystemServices;
 + (void)postFrontBoardInitializationHook;
 + (void)preFrontBoardInitializationHook;
 + (BOOL)registerAsSystemApp;
 + (BOOL)rendersLocally;
++ (id)sharedApplicationLibrary;
 + (BOOL)shouldCheckInWithBackboard;
 + (BOOL)shouldFixMainThreadPriority;
 + (long long)startupInterfaceOrientation;
-+ (BOOL)supportsAsynchronousApplicationLoading;
 + (BOOL)systemApplicationIsAliveForWatchdog:(id)arg1;
-+ (BOOL)systemApplicationShouldWaitForDataMigration:(id)arg1;
++ (double)systemIdleSleepInterval;
 - (long long)_interfaceOrientationRotationDirectionFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
 - (id)_newSceneForWindow:(id)arg1 oldDisplay:(id)arg2 newDisplay:(id)arg3;
-- (void)_noteApplicationDidFinishLaunching;
 - (BOOL)_openURL:(id)arg1;
+- (void)_performApplicationDidFinishLaunchingTasksWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_saveSnapshotWithName:(id)arg1;
 - (void)_setDarkBoot:(BOOL)arg1;
 - (void)_updateSceneSettingsForScene:(id)arg1 layer:(id)arg2;

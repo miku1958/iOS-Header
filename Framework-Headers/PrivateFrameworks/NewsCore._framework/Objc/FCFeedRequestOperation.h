@@ -20,7 +20,7 @@
     unsigned long long _expectedNetworkEventCount;
     CDUnknownBlockType _requestCompletionHandler;
     CDUnknownBlockType _requestCompletionHandlerWithInterestToken;
-    unsigned long long _networkEventCount;
+    NSMutableArray *_mutableNetworkEvents;
     NSDictionary *_databaseLookupsByFeedID;
     NSMutableDictionary *_resultFeedResponses;
     NSMutableArray *_resultHeldArticleAndTagRecords;
@@ -33,7 +33,8 @@
 @property (copy, nonatomic) NSArray *feedRequests; // @synthesize feedRequests=_feedRequests;
 @property (copy, nonatomic) NSArray *feedTransformations; // @synthesize feedTransformations=_feedTransformations;
 @property (nonatomic) unsigned long long maxCount; // @synthesize maxCount=_maxCount;
-@property (nonatomic) unsigned long long networkEventCount; // @synthesize networkEventCount=_networkEventCount;
+@property (strong, nonatomic) NSMutableArray *mutableNetworkEvents; // @synthesize mutableNetworkEvents=_mutableNetworkEvents;
+@property (readonly, nonatomic) NSArray *networkEvents;
 @property (nonatomic) long long options; // @synthesize options=_options;
 @property (copy, nonatomic) CDUnknownBlockType requestCompletionHandler; // @synthesize requestCompletionHandler=_requestCompletionHandler;
 @property (copy, nonatomic) CDUnknownBlockType requestCompletionHandlerWithInterestToken; // @synthesize requestCompletionHandlerWithInterestToken=_requestCompletionHandlerWithInterestToken;
@@ -44,6 +45,7 @@
 - (id)_failureResponseForRequest:(id)arg1 error:(id)arg2;
 - (void)_gatherAllFeedResponsesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_gatherAllOrderFeedResponsesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (unsigned long long)_networkEventCount;
 - (id)init;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

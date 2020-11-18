@@ -216,7 +216,7 @@
 - (void)readProperty:(unsigned long long)arg1 fromPeripheral:(id)arg2;
 - (void)readValueForCharacteristic:(id)arg1 fromPeripheral:(id)arg2;
 - (BOOL)rightAvailable;
-- (void)selectProgram:(id)arg1;
+- (void)selectProgram:(id)arg1 forEar:(int)arg2;
 - (id)selectedProgramIndexes;
 - (id)selectedPrograms;
 - (void)setBass:(BOOL)arg1 forLeft:(BOOL)arg2;

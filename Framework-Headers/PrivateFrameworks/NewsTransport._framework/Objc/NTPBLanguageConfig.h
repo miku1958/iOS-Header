@@ -13,8 +13,12 @@
 @interface NTPBLanguageConfig : PBCodable <NSCopying>
 {
     NSString *_appleEditorialChannelId;
+    NSString *_breakingNewsChannelId;
     NSString *_briefingsTagId;
     NTPBCoverArticlesConfig *_coverArticlesConfig;
+    NSString *_editorialGemsSectionId;
+    NSString *_exploreArticleId;
+    NSString *_featuredStoriesTagId;
     NSString *_forYouConfigId;
     NSString *_hiddenFeedId;
     NSString *_languageTag;
@@ -23,21 +27,35 @@
     NSMutableArray *_preSubscribedNotificationsChannelIds;
     NSMutableArray *_recommendedNotificationChannels;
     NTPBCategory *_rootCategory;
+    NSString *_savedStoriesTagId;
     NTPBTopStoriesConfig *_topStoriesConfig;
+    NSString *_trendingTagId;
+    NSString *_widgetSectionConfigId;
 }
 
 @property (strong, nonatomic) NSString *appleEditorialChannelId; // @synthesize appleEditorialChannelId=_appleEditorialChannelId;
+@property (strong, nonatomic) NSString *breakingNewsChannelId; // @synthesize breakingNewsChannelId=_breakingNewsChannelId;
 @property (strong, nonatomic) NSString *briefingsTagId; // @synthesize briefingsTagId=_briefingsTagId;
 @property (strong, nonatomic) NTPBCoverArticlesConfig *coverArticlesConfig; // @synthesize coverArticlesConfig=_coverArticlesConfig;
+@property (strong, nonatomic) NSString *editorialGemsSectionId; // @synthesize editorialGemsSectionId=_editorialGemsSectionId;
+@property (strong, nonatomic) NSString *exploreArticleId; // @synthesize exploreArticleId=_exploreArticleId;
+@property (strong, nonatomic) NSString *featuredStoriesTagId; // @synthesize featuredStoriesTagId=_featuredStoriesTagId;
 @property (strong, nonatomic) NSString *forYouConfigId; // @synthesize forYouConfigId=_forYouConfigId;
 @property (readonly, nonatomic) BOOL hasAppleEditorialChannelId;
+@property (readonly, nonatomic) BOOL hasBreakingNewsChannelId;
 @property (readonly, nonatomic) BOOL hasBriefingsTagId;
 @property (readonly, nonatomic) BOOL hasCoverArticlesConfig;
+@property (readonly, nonatomic) BOOL hasEditorialGemsSectionId;
+@property (readonly, nonatomic) BOOL hasExploreArticleId;
+@property (readonly, nonatomic) BOOL hasFeaturedStoriesTagId;
 @property (readonly, nonatomic) BOOL hasForYouConfigId;
 @property (readonly, nonatomic) BOOL hasHiddenFeedId;
 @property (readonly, nonatomic) BOOL hasLanguageTag;
 @property (readonly, nonatomic) BOOL hasRootCategory;
+@property (readonly, nonatomic) BOOL hasSavedStoriesTagId;
 @property (readonly, nonatomic) BOOL hasTopStoriesConfig;
+@property (readonly, nonatomic) BOOL hasTrendingTagId;
+@property (readonly, nonatomic) BOOL hasWidgetSectionConfigId;
 @property (strong, nonatomic) NSString *hiddenFeedId; // @synthesize hiddenFeedId=_hiddenFeedId;
 @property (strong, nonatomic) NSString *languageTag; // @synthesize languageTag=_languageTag;
 @property (strong, nonatomic) NSMutableArray *onboardingTagIds; // @synthesize onboardingTagIds=_onboardingTagIds;
@@ -45,7 +63,10 @@
 @property (strong, nonatomic) NSMutableArray *preSubscribedNotificationsChannelIds; // @synthesize preSubscribedNotificationsChannelIds=_preSubscribedNotificationsChannelIds;
 @property (strong, nonatomic) NSMutableArray *recommendedNotificationChannels; // @synthesize recommendedNotificationChannels=_recommendedNotificationChannels;
 @property (strong, nonatomic) NTPBCategory *rootCategory; // @synthesize rootCategory=_rootCategory;
+@property (strong, nonatomic) NSString *savedStoriesTagId; // @synthesize savedStoriesTagId=_savedStoriesTagId;
 @property (strong, nonatomic) NTPBTopStoriesConfig *topStoriesConfig; // @synthesize topStoriesConfig=_topStoriesConfig;
+@property (strong, nonatomic) NSString *trendingTagId; // @synthesize trendingTagId=_trendingTagId;
+@property (strong, nonatomic) NSString *widgetSectionConfigId; // @synthesize widgetSectionConfigId=_widgetSectionConfigId;
 
 + (Class)onboardingTagIdsType;
 + (Class)preSubscribedFeedIdsType;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FMCoreUI/FMDynamicTypeButton.h>
+#import <UIKit/UIButton.h>
 
 @class UIColor;
 
-@interface FMBorderedButton : FMDynamicTypeButton
+@interface FMBorderedButton : UIButton
 {
     BOOL _hairlineBorder;
     UIColor *_borderColor;

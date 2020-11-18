@@ -6,10 +6,12 @@
 
 #import <StoreKit/NSObject-Protocol.h>
 
-@class NSError, SKCloudServiceSetupRemoteViewController;
+@class NSError, NSURL, SKCloudServiceSetupRemoteViewController;
 
 @protocol SKCloudServiceSetupRemoteViewControllerDelegate <NSObject>
 - (void)cloudServiceSetupRemoteViewController:(SKCloudServiceSetupRemoteViewController *)arg1 didFinishLoadingWithSuccess:(BOOL)arg2 error:(NSError *)arg3;
 - (void)cloudServiceSetupRemoteViewController:(SKCloudServiceSetupRemoteViewController *)arg1 requestsDismissalWithAnimation:(BOOL)arg2 completion:(void (^)(void))arg3;
+- (void)cloudServiceSetupRemoteViewController:(SKCloudServiceSetupRemoteViewController *)arg1 requestsDismissingSafariViewControllerAnimated:(BOOL)arg2 completion:(void (^)(void))arg3;
+- (void)cloudServiceSetupRemoteViewController:(SKCloudServiceSetupRemoteViewController *)arg1 requestsPresentingSafariViewControllerWithURL:(NSURL *)arg2 animated:(BOOL)arg3 completion:(void (^)(void))arg4;
 @end
 

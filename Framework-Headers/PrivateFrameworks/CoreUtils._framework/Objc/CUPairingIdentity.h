@@ -12,11 +12,13 @@
 
 @interface CUPairingIdentity : NSObject <NSSecureCoding>
 {
+    NSData *_altIRK;
     NSUUID *_identifier;
     NSData *_publicKey;
     NSData *_secretKey;
 }
 
+@property (copy, nonatomic) NSData *altIRK; // @synthesize altIRK=_altIRK;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSData *publicKey; // @synthesize publicKey=_publicKey;
 @property (copy, nonatomic) NSData *secretKey; // @synthesize secretKey=_secretKey;

@@ -24,6 +24,7 @@
 @property (readonly) struct Object *_apiObject;
 @property (weak, nonatomic, setter=_setAutomationDelegate:) id<_WKAutomationDelegate> _automationDelegate;
 @property (readonly, nonatomic) _WKProcessPoolConfiguration *_configuration;
+@property (nonatomic, getter=_isCookieStoragePartitioningEnabled, setter=_setCookieStoragePartitioningEnabled:) BOOL _cookieStoragePartitioningEnabled;
 @property (weak, nonatomic, setter=_setDownloadDelegate:) id<_WKDownloadDelegate> _downloadDelegate;
 @property (readonly) WKGeolocationProviderIOS *_geolocationProvider;
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +32,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)_forceGameControllerFramework;
 + (id)_sharedProcessPool;
 + (id)_websiteDataURLForContainerWithURL:(id)arg1;
 + (id)_websiteDataURLForContainerWithURL:(id)arg1 bundleIdentifierIfNotInContainer:(id)arg2;

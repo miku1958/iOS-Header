@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSString *providerID;
 @property (readonly, nonatomic) NSString *providerName;
 @property (readonly, nonatomic) BOOL requiresAttributionInCallout;
+@property (readonly, nonatomic) BOOL shouldOpenAppStore;
 
 - (void).cxx_destruct;
 - (id)initWithGEOMapItemAttribution:(id)arg1;

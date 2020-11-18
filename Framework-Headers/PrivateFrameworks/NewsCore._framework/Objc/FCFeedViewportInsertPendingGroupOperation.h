@@ -11,6 +11,7 @@
 @interface FCFeedViewportInsertPendingGroupOperation : FCOperation
 {
     FCFeedRefreshSession *_resultRefreshSession;
+    NSArray *_resultUpdatedRefreshSessions;
     FCFeedGroup *_resultInsertedGroup;
     NSString *_resultDeletedElementID;
     FCCloudContext *_context;

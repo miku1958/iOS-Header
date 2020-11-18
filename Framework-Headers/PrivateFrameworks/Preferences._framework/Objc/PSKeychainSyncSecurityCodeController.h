@@ -10,9 +10,9 @@
 
 @interface PSKeychainSyncSecurityCodeController : PSKeychainSyncTextEntryController
 {
-    NSString *_generatedCode;
     UIButton *_footerButton;
     UILabel *_footerLabel;
+    NSString *_generatedCode;
     double _keyboardHeight;
     BOOL _showsAdvancedSettings;
     int _mode;

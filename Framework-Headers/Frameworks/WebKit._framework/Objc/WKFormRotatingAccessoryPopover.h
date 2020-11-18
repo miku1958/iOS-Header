@@ -8,12 +8,9 @@
 
 #import <WebKit/WKRotatingPopoverDelegate-Protocol.h>
 
-@class WKContentView;
-
 __attribute__((visibility("hidden")))
 @interface WKFormRotatingAccessoryPopover : WKRotatingPopover <WKRotatingPopoverDelegate>
 {
-    WKContentView *_view;
 }
 
 - (void)accessoryDone;

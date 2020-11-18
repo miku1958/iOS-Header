@@ -42,9 +42,9 @@
 + (BOOL)supportsResult:(id)arg1;
 - (void).cxx_destruct;
 - (void)buttonPressed;
-- (struct CGRect)containerStackView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
-- (struct CGSize)containerStackView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
-- (void)containerStackViewDidInvalidateIntrinsicContentSize:(id)arg1;
+- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
+- (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
+- (void)containerViewDidInvalidateIntrinsicContentSize:(id)arg1;
 - (id)fetchLocalMediaItem;
 - (BOOL)matchesNowPlayingItem;
 - (void)nowPlayingController:(id)arg1 elapsedTimeDidChange:(double)arg2;

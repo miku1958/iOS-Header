@@ -21,10 +21,15 @@
 @property (readonly, copy, nonatomic) NSData *challengeResponse; // @synthesize challengeResponse=_challengeResponse;
 @property (readonly, copy, nonatomic) NSData *publicKey; // @synthesize publicKey=_publicKey;
 
++ (id)shortDescription;
 - (void).cxx_destruct;
+- (id)debugDescription;
+- (id)description;
+- (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
 - (id)initWithPublicKey:(id)arg1 challengeIdentifier:(id)arg2 challengeResponse:(id)arg3 challengeCertificate:(id)arg4;
 - (id)serializeWithError:(id *)arg1;
+- (id)shortDescription;
 
 @end
 

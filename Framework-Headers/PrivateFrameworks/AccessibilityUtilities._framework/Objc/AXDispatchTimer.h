@@ -17,6 +17,7 @@
     BOOL _pending;
     BOOL _cancelled;
     BOOL _automaticallyCancelPendingBlockUponSchedulingNewBlock;
+    BOOL _useWallTime;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSObject<OS_dispatch_source> *_dispatchTimer;
     CDUnknownBlockType _processBlock;
@@ -37,6 +38,7 @@
 @property (nonatomic, getter=isPending) BOOL pending; // @synthesize pending=_pending;
 @property (copy, nonatomic) CDUnknownBlockType processBlock; // @synthesize processBlock=_processBlock;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useWallTime; // @synthesize useWallTime=_useWallTime;
 
 - (void)_reallyCancel;
 - (void)afterDelay:(double)arg1 processBlock:(CDUnknownBlockType)arg2;

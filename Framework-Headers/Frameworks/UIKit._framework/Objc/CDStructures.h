@@ -240,7 +240,7 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    BOOL itemIsEnabled[34];
+    BOOL itemIsEnabled[35];
     char timeString[64];
     int gsmSignalStrengthRaw;
     int gsmSignalStrengthBars;
@@ -273,10 +273,9 @@ typedef struct {
     char breadcrumbTitle[256];
     char breadcrumbSecondaryTitle[256];
     char personName[100];
-    char returnToAppBundleIdentifier[100];
     unsigned int electronicTollCollectionAvailable:1;
     unsigned int wifiLinkWarning:1;
-} CDStruct_18395a89;
+} CDStruct_19f80fdc;
 
 typedef struct {
     unsigned int val[8];
@@ -317,23 +316,9 @@ typedef struct {
 } CDStruct_39925896;
 
 typedef struct {
-    double minimum;
-    double maximum;
-} CDStruct_ef18196a;
-
-typedef struct {
     double amount;
     int unit;
 } CDStruct_73524d89;
-
-typedef struct {
-    double _field1;
-    long long _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
-} CDStruct_37aeb80e;
 
 typedef struct {
     float x;
@@ -385,7 +370,7 @@ typedef struct {
 } CDStruct_0ba2c6ed;
 
 typedef struct {
-    BOOL overrideItemIsEnabled[34];
+    BOOL overrideItemIsEnabled[35];
     unsigned int overrideTimeString:1;
     unsigned int overrideGsmSignalStrengthRaw:1;
     unsigned int overrideGsmSignalStrengthBars:1;
@@ -411,8 +396,8 @@ typedef struct {
     unsigned int overrideDisplayRawWifiSignal:1;
     unsigned int overridePersonName:1;
     unsigned int overrideWifiLinkWarning:1;
-    CDStruct_18395a89 values;
-} CDStruct_d68fcdaa;
+    CDStruct_19f80fdc values;
+} CDStruct_fcc70cc1;
 
 typedef struct {
     CDStruct_73524d89 _field1[4];
@@ -467,6 +452,16 @@ typedef struct {
     double _field3;
     double _field4;
 } CDStruct_d2b197d1;
+
+typedef struct {
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
+
+typedef struct {
+    double _x;
+    double _y;
+} CDStruct_5e2aa800;
 
 typedef struct {
     struct CGPoint _field1;

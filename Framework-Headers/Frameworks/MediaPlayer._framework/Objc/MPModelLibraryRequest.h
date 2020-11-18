@@ -6,13 +6,13 @@
 
 #import <MediaPlayer/MPModelRequest.h>
 
-#import <MediaPlayer/MPMediaLibraryEntityTranslatingContext-Protocol.h>
 #import <MediaPlayer/MPModelPlaybackRequesting-Protocol.h>
 #import <MediaPlayer/MPModelRequestDetailedKeepLocalStatusRequesting-Protocol.h>
+#import <MediaPlayer/MPModelRequestRTCReporting-Protocol.h>
 
 @class MPMediaLibrary, NSArray, NSString;
 
-@interface MPModelLibraryRequest : MPModelRequest <MPMediaLibraryEntityTranslatingContext, MPModelPlaybackRequesting, MPModelRequestDetailedKeepLocalStatusRequesting>
+@interface MPModelLibraryRequest : MPModelRequest <MPModelPlaybackRequesting, MPModelRequestRTCReporting, MPModelRequestDetailedKeepLocalStatusRequesting>
 {
     BOOL _wantsDetailedKeepLocalRequestableResponse;
     MPMediaLibrary *_mediaLibrary;
@@ -29,7 +29,7 @@
 @property (nonatomic) unsigned long long filteringOptions; // @synthesize filteringOptions=_filteringOptions;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
-@property (readonly, nonatomic, getter=isMultiQuery) BOOL multiQuery;
+@property (readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
 @property (copy, nonatomic) NSArray *scopedContainers; // @synthesize scopedContainers=_scopedContainers;
 @property (nonatomic) BOOL shouldExcludeNonShuffleItems;
 @property (readonly) Class superclass;
@@ -38,10 +38,11 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)itemTranslationContext;
 - (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;
 - (void)performWithResponseHandler:(CDUnknownBlockType)arg1;
+- (id)sectionTranslationContext;
 
 @end
 

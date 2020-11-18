@@ -55,7 +55,7 @@ struct LSBundleData {
     unsigned int machOUUIDs[4];
     unsigned long long sequenceNumber;
     unsigned long long itemID;
-    unsigned char deviceFamily[3];
+    unsigned int deviceFamily[4];
     unsigned int installType;
     unsigned int teamID;
     unsigned int identifier;
@@ -79,6 +79,8 @@ struct LSBundleData {
     unsigned long long versionIdentifier;
     unsigned long long ratingRank;
     unsigned int ratingLabel;
+    unsigned long long genreID;
+    unsigned int genre;
     unsigned int sourceAppIdentifier;
     unsigned int appVariant;
     unsigned int iconsDict;

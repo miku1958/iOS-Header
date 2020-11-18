@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPlaceGlobalResult, NSMutableArray, NSString, PBUnknownFields;
+@class GEOPDDatasetABStatus, GEOPDPlaceGlobalResult, NSMutableArray, NSString, PBUnknownFields;
 
 @interface GEOPDPlaceResponse : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
     unsigned long long _debugLatencyMs;
+    GEOPDDatasetABStatus *_datasetAbStatus;
     NSString *_debugApiKey;
     NSMutableArray *_displayLanguages;
     NSString *_displayRegion;
@@ -29,11 +30,13 @@
     } _has;
 }
 
+@property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
 @property (strong, nonatomic) NSString *debugApiKey; // @synthesize debugApiKey=_debugApiKey;
 @property (nonatomic) unsigned long long debugLatencyMs;
 @property (strong, nonatomic) NSMutableArray *displayLanguages; // @synthesize displayLanguages=_displayLanguages;
 @property (strong, nonatomic) NSString *displayRegion; // @synthesize displayRegion=_displayRegion;
 @property (strong, nonatomic) GEOPDPlaceGlobalResult *globalResult; // @synthesize globalResult=_globalResult;
+@property (readonly, nonatomic) BOOL hasDatasetAbStatus;
 @property (readonly, nonatomic) BOOL hasDebugApiKey;
 @property (nonatomic) BOOL hasDebugLatencyMs;
 @property (readonly, nonatomic) BOOL hasDisplayRegion;

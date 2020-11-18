@@ -85,6 +85,7 @@
 - (BOOL)canSkipItem:(id)arg1;
 - (void)clearQueueFeeder;
 - (void)connectPlayer;
+- (id)currentQueueUUID;
 - (void)dealloc;
 - (void)disconnectPlayer;
 - (unsigned long long)displayCountForItem:(id)arg1;
@@ -96,6 +97,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)itemForPlaylistIndex:(long long)arg1;
 - (id)metadataItemForPlaylistIndex:(long long)arg1;
+- (id)musicPlayerControllerQueueForUUID:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)player:(id)arg1 currentItemDidChangeFromItem:(id)arg2 toItem:(id)arg3;
 - (id)playlistFeederForPlaylistIndex:(long long)arg1;
@@ -115,7 +117,9 @@
 - (void)queueFeederDidInvalidateRealShuffleType:(id)arg1;
 - (void)reloadItemsKeepingCurrentItem:(BOOL)arg1;
 - (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestMusicPlayerControllerQueueWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setCurrentIndex:(long long)arg1 selectionDirection:(long long)arg2;
+- (BOOL)setMusicPlayerControllerQueue:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)setPlaylistFeeder:(id)arg1 startIndex:(long long)arg2 keepPlaying:(BOOL)arg3;
 - (void)updateForSoundCheckDefaultsChange;
 

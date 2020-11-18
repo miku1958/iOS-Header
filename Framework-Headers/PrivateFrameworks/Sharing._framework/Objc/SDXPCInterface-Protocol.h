@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, SFBLEDevice, SFCoordinatedAlertRequest, SFDeviceDiscovery, SFEventMessage, SFRemoteInteractionSession, SFRequestMessage, SFResponseMessage, SFService, SFSession;
+@class NSData, NSString, NSUUID, SFBLEDevice, SFCoordinatedAlertRequest, SFDeviceDiscovery, SFEventMessage, SFRemoteInteractionSession, SFRequestMessage, SFResponseMessage, SFService, SFSession;
 
 @protocol SDXPCInterface
 - (void)activityStateWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
@@ -29,11 +29,13 @@
 - (void)retriggerProximityPairing:(void (^)(NSError *))arg1;
 - (void)serviceActivate:(SFService *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)serviceSendEvent:(SFEventMessage *)arg1;
+- (void)serviceSendFrameType:(unsigned char)arg1 data:(NSData *)arg2 peer:(NSUUID *)arg3;
 - (void)serviceSendRequest:(SFRequestMessage *)arg1;
 - (void)serviceSendResponse:(SFResponseMessage *)arg1;
 - (void)serviceUpdate:(SFService *)arg1;
 - (void)sessionActivate:(SFSession *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)sessionSendEvent:(SFEventMessage *)arg1;
+- (void)sessionSendFrameType:(unsigned char)arg1 data:(NSData *)arg2;
 - (void)sessionSendRequest:(SFRequestMessage *)arg1;
 - (void)sessionSendResponse:(SFResponseMessage *)arg1;
 @end

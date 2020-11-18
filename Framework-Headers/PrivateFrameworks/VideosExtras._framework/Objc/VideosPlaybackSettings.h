@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPMediaItem;
+@class MPMediaItem, NSDate;
 
 @interface VideosPlaybackSettings : NSObject
 {
@@ -16,18 +16,21 @@
     BOOL _cellularDataEnabled;
     unsigned long long _networkStatus;
     unsigned long long _playbackQuality;
+    NSDate *_lastRunDate;
     MPMediaItem *_item;
 }
 
 @property (nonatomic, getter=isCellularDataEnabled) BOOL cellularDataEnabled; // @synthesize cellularDataEnabled=_cellularDataEnabled;
 @property (readonly, nonatomic, getter=areCloudPurchasesEnabled) BOOL cloudPurchasesEnabled;
 @property (strong, nonatomic) MPMediaItem *item; // @synthesize item=_item;
+@property (copy, nonatomic) NSDate *lastRunDate; // @synthesize lastRunDate=_lastRunDate;
 @property (nonatomic) unsigned long long networkStatus; // @synthesize networkStatus=_networkStatus;
 @property (nonatomic) unsigned long long playbackQuality; // @synthesize playbackQuality=_playbackQuality;
 
 + (id)sharedSettings;
 - (void).cxx_destruct;
 - (void)_networkReachabilityChanged:(id)arg1;
+- (void)_populateLastRunFromSettings;
 - (void)_populateNetworkValue;
 - (void)_populateSettings;
 - (unsigned long long)_qualityForString:(id)arg1;
@@ -35,6 +38,7 @@
 - (void)clearsCurrentSession;
 - (BOOL)clearsCurrentSessionWithMediaItem:(id)arg1;
 - (void)dealloc;
+- (BOOL)firstRunRentalImport;
 - (BOOL)hasANetworkConnection;
 - (BOOL)hasNetworkConditionsForPlayback;
 - (id)init;
@@ -45,6 +49,8 @@
 - (unsigned long long)playbackQualityForMediaItem:(id)arg1;
 - (unsigned long long)playbackQualityForMediaItem:(id)arg1 withNetworkStatus:(unsigned long long)arg2;
 - (BOOL)playbackSettingsOverriddenForMediaItem:(id)arg1;
+- (void)populateLastRunDate;
+- (void)setFirstRunRentalImport:(BOOL)arg1;
 
 @end
 

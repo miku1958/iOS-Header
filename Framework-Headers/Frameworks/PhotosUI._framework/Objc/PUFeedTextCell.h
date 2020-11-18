@@ -6,12 +6,11 @@
 
 #import <PhotosUI/PUFeedCell.h>
 
-@class NSAttributedString, PUFeedTextCellContentView, UIButton, UIImage, UIImageView, UILabel;
+@class NSAttributedString, UIButton, UIImage, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface PUFeedTextCell : PUFeedCell
 {
-    PUFeedTextCellContentView *_contentView;
     BOOL _shouldUseOpaqueBackground;
     NSAttributedString *_attributedText;
     long long _numberOfTextLines;
@@ -70,7 +69,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateDetailLabel;
 - (void)_updateIconImageView;
 - (void)_updateLabelsBackgroundColor;
-- (id)contentView;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setButtonType:(long long)arg1 animated:(BOOL)arg2;

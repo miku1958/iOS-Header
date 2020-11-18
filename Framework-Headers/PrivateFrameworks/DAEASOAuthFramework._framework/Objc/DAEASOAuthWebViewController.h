@@ -19,6 +19,9 @@
     NSExtension *_extension;
     NSError *_extensionCancellationError;
     BOOL _extensionRequestDidComplete;
+    NSString *_authURI;
+    unsigned long long _oauthType;
+    BOOL _isFirstTimeSetup;
     CDUnknownBlockType _completion;
 }
 
@@ -36,6 +39,7 @@
 - (void)_extensionRequestDidCompleteWithTokens:(id)arg1 extensionCompletion:(CDUnknownBlockType)arg2;
 - (void)_presentInternetOfflineError;
 - (void)_presentUsernameMismatchAlert;
+- (id)initWithAccount:(id)arg1 accountStore:(id)arg2 authURI:(id)arg3 accountType:(unsigned long long)arg4 userName:(id)arg5 accountDescription:(id)arg6 isFirstTimeSetup:(BOOL)arg7 presentationBlock:(CDUnknownBlockType)arg8;
 - (id)initWithAccount:(id)arg1 accountStore:(id)arg2 presentationBlock:(CDUnknownBlockType)arg3;
 - (id)initWithAccountDescription:(id)arg1 presentationBlock:(CDUnknownBlockType)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

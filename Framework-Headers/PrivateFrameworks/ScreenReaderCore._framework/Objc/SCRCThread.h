@@ -15,19 +15,24 @@
     id _queueLock;
     struct __CFRunLoopSource *_source;
     struct __CFRunLoop *_runLoop;
-    id _key;
     BOOL _isInvalid;
     BOOL _isRegistered;
     BOOL _isTimerSet;
-    double _lastStartTime;
     NSString *_description;
     BOOL _descriptionChanged;
     NSThread *_nsThread;
     BOOL _shouldStop;
     BOOL _isWaitingForStoppingThread;
+    id __key;
+    double _lastStartTime;
 }
 
+@property (nonatomic, setter=_setKey:) id _key; // @synthesize _key=__key;
+@property (nonatomic, setter=_setLastStartTime:) double lastStartTime; // @synthesize lastStartTime=_lastStartTime;
+
++ (BOOL)_addThreadToRegisteredThreads:(id)arg1 withThreadKey:(id)arg2;
 + (double)_performSelector:(SEL)arg1 withThreadKey:(id)arg2 onTarget:(id)arg3 waitTime:(double)arg4 cancelMask:(unsigned int)arg5 count:(unsigned int)arg6 firstObject:(id)arg7 moreObjects:(struct __va_list_tag [1])arg8;
++ (BOOL)_removeThreadFromRegisteredThreads:(id)arg1 withThreadKey:(id)arg2;
 + (long long)activeThreadCount;
 + (id)activity;
 + (void)initialize;
@@ -44,14 +49,12 @@
 - (void)_processQueueFromTimer;
 - (void)_runThread:(id)arg1;
 - (void)_setIsWaitingForStoppingThread:(BOOL)arg1;
-- (void)_setKey:(id)arg1;
 - (void)_setName:(id)arg1;
 - (BOOL)_shouldStop;
 - (void)_threadDidStop;
 - (void)dealloc;
 - (id)init;
 - (BOOL)isInvalid;
-- (double)lastStartTime;
 - (double)performSelector:(SEL)arg1 onTarget:(id)arg2 cancelMask:(unsigned int)arg3 count:(unsigned int)arg4 objects:(id)arg5;
 - (double)performSelector:(SEL)arg1 onTarget:(id)arg2 count:(unsigned int)arg3 objects:(id)arg4;
 - (void)setIsInvalid:(BOOL)arg1;

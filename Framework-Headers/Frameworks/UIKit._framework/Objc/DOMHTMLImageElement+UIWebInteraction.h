@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMHTMLImageElement.h>
+#import <WebKitLegacy/DOMHTMLImageElement.h>
 
 @interface DOMHTMLImageElement (UIWebInteraction)
 - (BOOL)alwaysAttemptToShowTapHighlight;

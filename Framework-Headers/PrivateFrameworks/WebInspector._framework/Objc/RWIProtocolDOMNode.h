@@ -18,9 +18,9 @@
 @property (copy, nonatomic) NSArray *children;
 @property (strong, nonatomic) RWIProtocolDOMNode *contentDocument;
 @property (copy, nonatomic) NSString *contentSecurityPolicyHash;
+@property (nonatomic) long long customElementState;
 @property (copy, nonatomic) NSString *documentURL;
 @property (copy, nonatomic) NSString *frameId;
-@property (copy, nonatomic) NSString *internalSubset;
 @property (copy, nonatomic) NSString *localName;
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) int nodeId;

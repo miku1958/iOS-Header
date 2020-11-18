@@ -13,7 +13,6 @@
 
 @interface MSPMutableHistoryEntryPlaceDisplay : MSPMutableHistoryEntry <MSPHistoryEntryPlaceDisplay>
 {
-    NSUUID *_supersededSearchStorageIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -21,13 +20,12 @@
 @property (strong, nonatomic) id<GEOMapItem> geoMapItem;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSUUID *supersededSearchStorageIdentifier; // @synthesize supersededSearchStorageIdentifier=_supersededSearchStorageIdentifier;
+@property (copy, nonatomic) NSUUID *supersededSearchStorageIdentifier;
 
 + (Class)immutableObjectClass;
 + (id)immutableObjectProtocol;
 + (Class)mutableObjectClass;
 + (id)mutableObjectProtocol;
-- (void).cxx_destruct;
 - (BOOL)_isUserVisibleDuplicateOfSameClassObject:(id)arg1;
 - (id)initWithStorage:(id)arg1;
 - (id)transferToImmutableIfValidWithError:(out id *)arg1;

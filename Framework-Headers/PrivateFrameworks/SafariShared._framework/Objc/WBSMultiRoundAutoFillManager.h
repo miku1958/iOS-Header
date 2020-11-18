@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableSet, NSSet, NSString, NSTimer;
+@class NSMutableSet, NSSet, NSString, NSTimer, WBSFormMetadata;
 
 @interface WBSMultiRoundAutoFillManager : NSObject
 {
     unsigned long long _autoFillAttemptTrigger;
-    NSDictionary *_formMetadataFromPreviousAutoFillAttempt;
+    WBSFormMetadata *_formMetadataFromPreviousAutoFillAttempt;
     BOOL _userDidInteractWithForm;
     unsigned long long _numberOfFollowUpAutoFillAttempts;
     NSTimer *_timerForFollowUpAutoFill;

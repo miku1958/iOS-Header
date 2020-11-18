@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPModelObject.h>
 
-@class MPModelAlbum, MPModelArtist, MPModelCurator, MPModelPlaylist, MPModelRadioStation, MPModelSong, NSString;
+@class MPModelAlbum, MPModelArtist, MPModelCurator, MPModelMediaClip, MPModelMovie, MPModelPlaylist, MPModelPumpkinPerson, MPModelRadioStation, MPModelSong, MPModelTVEpisode, MPModelTVSeason, MPModelTVShow, MPModelTVShowCreator, NSString;
 
 @interface MusicStoreBrowseContentItem : MPModelObject
 {
@@ -14,8 +14,15 @@
     MPModelAlbum *_album;
     MPModelArtist *_artist;
     MPModelCurator *_curator;
+    MPModelTVEpisode *_episode;
+    MPModelMediaClip *_mediaClip;
+    MPModelMovie *_movie;
     MPModelPlaylist *_playlist;
     MPModelRadioStation *_radioStation;
+    MPModelPumpkinPerson *_pumpkinPerson;
+    MPModelTVSeason *_season;
+    MPModelTVShow *_show;
+    MPModelTVShowCreator *_showCreator;
     MPModelSong *_song;
     NSString *_artistUploadedContentType;
     long long _detailedItemType;
@@ -26,9 +33,16 @@
 @property (copy, nonatomic) NSString *artistUploadedContentType; // @synthesize artistUploadedContentType=_artistUploadedContentType;
 @property (strong, nonatomic) MPModelCurator *curator; // @synthesize curator=_curator;
 @property (nonatomic) long long detailedItemType; // @synthesize detailedItemType=_detailedItemType;
+@property (strong, nonatomic) MPModelTVEpisode *episode; // @synthesize episode=_episode;
 @property (nonatomic) unsigned long long itemType; // @synthesize itemType=_itemType;
+@property (strong, nonatomic) MPModelMediaClip *mediaClip; // @synthesize mediaClip=_mediaClip;
+@property (strong, nonatomic) MPModelMovie *movie; // @synthesize movie=_movie;
 @property (strong, nonatomic) MPModelPlaylist *playlist; // @synthesize playlist=_playlist;
+@property (strong, nonatomic) MPModelPumpkinPerson *pumpkinPerson; // @synthesize pumpkinPerson=_pumpkinPerson;
 @property (strong, nonatomic) MPModelRadioStation *radioStation; // @synthesize radioStation=_radioStation;
+@property (strong, nonatomic) MPModelTVSeason *season; // @synthesize season=_season;
+@property (strong, nonatomic) MPModelTVShow *show; // @synthesize show=_show;
+@property (strong, nonatomic) MPModelTVShowCreator *showCreator; // @synthesize showCreator=_showCreator;
 @property (strong, nonatomic) MPModelSong *song; // @synthesize song=_song;
 
 + (id)__MusicStoreBrowseContentItemPropertyArtistUploadedContentType__PROPERTY;
@@ -37,17 +51,31 @@
 + (id)__MusicStoreBrowseContentItemRelationshipAlbum__PROPERTY;
 + (id)__MusicStoreBrowseContentItemRelationshipArtist__PROPERTY;
 + (id)__MusicStoreBrowseContentItemRelationshipCurator__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipMediaClip__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipMovie__PROPERTY;
 + (id)__MusicStoreBrowseContentItemRelationshipPlaylist__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipPumpkinPerson__PROPERTY;
 + (id)__MusicStoreBrowseContentItemRelationshipRadioStation__PROPERTY;
 + (id)__MusicStoreBrowseContentItemRelationshipSong__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipTVEpisode__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipTVSeason__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipTVShowCreator__PROPERTY;
++ (id)__MusicStoreBrowseContentItemRelationshipTVShow__PROPERTY;
 + (id)__album__KEY;
 + (id)__artistUploadedContentType__KEY;
 + (id)__artist__KEY;
 + (id)__curator__KEY;
 + (id)__detailedItemType__KEY;
++ (id)__episode__KEY;
 + (id)__itemType__KEY;
++ (id)__mediaClip__KEY;
++ (id)__movie__KEY;
 + (id)__playlist__KEY;
++ (id)__pumpkinPerson__KEY;
 + (id)__radioStation__KEY;
++ (id)__season__KEY;
++ (id)__showCreator__KEY;
++ (id)__show__KEY;
 + (id)__song__KEY;
 + (id)requiredStoreLibraryPersonalizationProperties;
 - (void).cxx_destruct;

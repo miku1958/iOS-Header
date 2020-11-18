@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithBundleIDs:(id)arg1 accountName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithBundleIDs:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

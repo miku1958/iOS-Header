@@ -25,6 +25,8 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsConditionalOperator:(id)arg1;
+- (id)conditionalOperatorAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

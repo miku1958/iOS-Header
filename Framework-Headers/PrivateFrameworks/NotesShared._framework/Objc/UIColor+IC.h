@@ -22,6 +22,7 @@
 + (struct UIColor *)ICYellowTodoButtonColor;
 + (struct UIColor *)ICYellowTodoButtonHighlightColor;
 + (id)ic_colorWith256Red:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
++ (id)ic_darkerAccessibilityColorForColor:(id)arg1;
 + (struct UIColor *)preferredDefaultFontColor;
 @end
 

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUICardSectionView.h>
+#import <SearchUI/SearchUILayoutFreeSectionView.h>
 
-@interface SearchUIRichTitleCardSectionView : SearchUICardSectionView
+@interface SearchUIRichTitleCardSectionView : SearchUILayoutFreeSectionView
 {
 }
 
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2;
+- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
+- (id)textContainerViewForSection:(id)arg1;
 
 @end
 

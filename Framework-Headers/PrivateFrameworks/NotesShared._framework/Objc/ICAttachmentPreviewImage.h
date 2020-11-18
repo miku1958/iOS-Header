@@ -11,15 +11,15 @@
 
 @interface ICAttachmentPreviewImage : ICCloudSyncingObject
 {
-    NSObject<OS_dispatch_queue> *_fileQueue;
-    long long _fileQueueOnceToken;
     unsigned long long _imageID;
+    NSObject<OS_dispatch_queue> *_fileQueue;
 }
 
 @property (strong, nonatomic) ICAttachment *attachment; // @dynamic attachment;
 @property (strong, nonatomic) NSData *cryptoMetadataInitializationVector; // @dynamic cryptoMetadataInitializationVector;
 @property (strong, nonatomic) NSData *cryptoMetadataTag; // @dynamic cryptoMetadataTag;
 @property (strong, nonatomic) NSData *encryptedMetadata; // @dynamic encryptedMetadata;
+@property (readonly) NSObject<OS_dispatch_queue> *fileQueue; // @synthesize fileQueue=_fileQueue;
 @property (nonatomic) double height; // @dynamic height;
 @property (strong, nonatomic) NSData *metadata; // @dynamic metadata;
 @property (strong, nonatomic) NSDate *modifiedDate; // @dynamic modifiedDate;
@@ -57,7 +57,6 @@
 - (id)decryptedImageData;
 - (void)deleteFromLocalDatabase;
 - (id)encryptedPreviewImageURL;
-- (id)fileQueue;
 - (id)ic_loggingValues;
 - (struct UIImage *)image;
 - (BOOL)imageIsValid;
@@ -66,8 +65,6 @@
 - (void)invalidateCache;
 - (void)invalidateImage;
 - (void)invalidateOrientedImage;
-- (BOOL)isMap;
-- (BOOL)isSketch;
 - (BOOL)makeSurePreviewImageDirectoryExists:(id *)arg1;
 - (BOOL)needsInitialFetchFromCloud;
 - (BOOL)needsToBeDeletedFromCloud;
@@ -88,7 +85,7 @@
 - (id)previewImageURL;
 - (void)removeItemAtURL:(id)arg1;
 - (void)saveAndClearDecryptedData;
-- (void)saveScaledImageFromImageSrc:(struct CGImageSource *)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)saveScaledImageFromImageSrc:(struct CGImageSource *)arg1 typeUTI:(struct __CFString *)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setCachedImage:(struct UIImage *)arg1;
 - (void)setCachedOrientedImage:(struct UIImage *)arg1;
 - (void)setImage:(struct UIImage *)arg1 withScale:(double)arg2 completion:(CDUnknownBlockType)arg3;

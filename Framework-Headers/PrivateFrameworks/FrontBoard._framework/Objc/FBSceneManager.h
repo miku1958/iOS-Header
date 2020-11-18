@@ -6,6 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
+#import <FrontBoard/FBDisplayManagerObserver-Protocol.h>
 #import <FrontBoard/FBSceneDelegate-Protocol.h>
 #import <FrontBoard/FBSceneLayerManagerObserver-Protocol.h>
 #import <FrontBoard/FBUISceneManager-Protocol.h>
@@ -13,7 +14,7 @@
 @class FBSSceneClientSettingsDiffInspector, FBSceneEventQueue, FBSceneManagerObserver, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSString;
 @protocol FBSceneManagerDelegate;
 
-@interface FBSceneManager : NSObject <FBSceneDelegate, FBSceneLayerManagerObserver, FBUISceneManager>
+@interface FBSceneManager : NSObject <FBSceneDelegate, FBSceneLayerManagerObserver, FBUISceneManager, FBDisplayManagerObserver>
 {
     FBSceneManagerObserver *_delegate;
     NSMutableOrderedSet *_observers;
@@ -70,6 +71,8 @@
 - (void)dealloc;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)destroyScene:(id)arg1 withTransitionContext:(id)arg2;
+- (void)displayManager:(id)arg1 didConnectDisplay:(id)arg2;
+- (void)displayManager:(id)arg1 didDisconnectDisplay:(id)arg2;
 - (void)enumerateScenesWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)invalidateSceneWorkspace:(id)arg1;

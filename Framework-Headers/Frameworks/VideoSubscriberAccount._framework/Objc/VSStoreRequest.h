@@ -11,7 +11,6 @@
 
 @class NSDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface VSStoreRequest : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_methodName;

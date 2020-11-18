@@ -8,7 +8,7 @@
 
 #import <PhotosUI/ISChangeObserver-Protocol.h>
 
-@class ISLivePhotoPlayer, NSMutableSet, NSString, PHLivePhoto, PUMediaProvider;
+@class ISLivePhotoPlayer, ISWrappedAVPlayer, NSMutableSet, NSString, PHLivePhoto, PUMediaProvider;
 @protocol PUDisplayAsset;
 
 __attribute__((visibility("hidden")))
@@ -23,9 +23,10 @@ __attribute__((visibility("hidden")))
     BOOL _isLivePhotoLoadingAllowed;
     BOOL _isLivePhotoPlaybackAllowed;
     int __livePhotoRequestID;
+    ISLivePhotoPlayer *_player;
     id<PUDisplayAsset> _asset;
     PUMediaProvider *_mediaProvider;
-    ISLivePhotoPlayer *_player;
+    ISWrappedAVPlayer *_avPlayer;
     long long _loadingTarget;
     NSMutableSet *__livePhotoLoadingDisablingReasons;
     NSMutableSet *__livePhotoPlaybackDisablingReasons;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setLivePhotoRequestID:) int _livePhotoRequestID; // @synthesize _livePhotoRequestID=__livePhotoRequestID;
 @property (nonatomic, setter=_setLivePhotoRequestState:) long long _livePhotoRequestState; // @synthesize _livePhotoRequestState=__livePhotoRequestState;
 @property (strong, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
+@property (readonly, nonatomic) ISWrappedAVPlayer *avPlayer; // @synthesize avPlayer=_avPlayer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasPendingVitalityHint; // @synthesize hasPendingVitalityHint=_hasPendingVitalityHint;
@@ -61,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidatePlayerItemLoadingTarget;
 - (BOOL)_isContentLoadingRequestInProgress;
 - (BOOL)_needsUpdate;
+- (id)_playerCreateIfNeeded:(BOOL)arg1;
 - (void)_setLivePhotoLoadingAllowed:(BOOL)arg1;
 - (void)_setLivePhotoPlaybackAllowed:(BOOL)arg1;
 - (struct CGSize)_targetSize;
@@ -77,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (id)newViewModelChange;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)playVitalityHint;
+- (id)playerCreateIfNeeded;
 - (void)registerChangeObserver:(id)arg1;
 - (void)setLivePhotoLoadingDisabled:(BOOL)arg1 forReason:(id)arg2;
 - (void)setLivePhotoPlaybackDisabled:(BOOL)arg1 forReason:(id)arg2;

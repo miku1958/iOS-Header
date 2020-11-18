@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSOperationQueue, SKUIClientContext, SKUIReviewConfiguration, UIWindow;
+@class SKUIClientContext, SKUIReviewConfiguration, UIWindow;
 
 @interface SKUIStarRatingQueue : NSObject
 {
     SKUIClientContext *_clientContext;
-    NSOperationQueue *_queue;
     SKUIReviewConfiguration *_reviewConfiguration;
     UIWindow *_window;
 }
@@ -19,10 +18,10 @@
 @property (weak, nonatomic) UIWindow *window; // @synthesize window=_window;
 
 - (void).cxx_destruct;
-- (void)_setRating:(long long)arg1 forItem:(id)arg2 account:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)_setRating:(long long)arg1 forItemID:(id)arg2 account:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithClientContext:(id)arg1 reviewConfiguration:(id)arg2;
-- (void)setRating:(long long)arg1 forItem:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)setRating:(long long)arg1 forItemID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 
 @end
 

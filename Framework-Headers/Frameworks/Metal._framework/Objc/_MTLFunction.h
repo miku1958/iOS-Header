@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <Metal/MTLFunctionSPI-Protocol.h>
 
@@ -52,6 +52,7 @@
 - (unsigned long long)bitCodeFileSize;
 - (const CDStruct_41a22ec7 *)bitCodeHash;
 - (void)dealloc;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 libraryData:(struct MTLLibraryData *)arg3 device:(id)arg4;
 - (void)newSpecializedFunctionWithConstants:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)newSpecializedFunctionWithConstants:(id)arg1 error:(id *)arg2;

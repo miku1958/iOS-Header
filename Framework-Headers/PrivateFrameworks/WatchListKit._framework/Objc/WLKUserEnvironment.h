@@ -10,6 +10,7 @@
 
 @interface WLKUserEnvironment : NSObject
 {
+    BOOL _consented;
     NSString *_DSID;
     NSString *_storeFrontIdentifier;
     NSString *_localeIdentifier;
@@ -19,6 +20,7 @@
 }
 
 @property (strong, nonatomic) NSString *DSID; // @synthesize DSID=_DSID;
+@property (nonatomic) BOOL consented; // @synthesize consented=_consented;
 @property (strong, nonatomic) NSArray *consentedBrands; // @synthesize consentedBrands=_consentedBrands;
 @property (strong, nonatomic) NSDictionary *entitlements; // @synthesize entitlements=_entitlements;
 @property (strong, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;

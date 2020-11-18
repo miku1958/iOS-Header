@@ -75,6 +75,7 @@
 - (void)_addReconfirmTimer:(id)arg1 accessoryServer:(id)arg2;
 - (void)_addUnpairedAccessoryForServer:(id)arg1;
 - (void)_btleAccessoryReachabilityProbeTimer:(BOOL)arg1;
+- (void)_cancelCurrentlyPairingAccessories:(id)arg1;
 - (void)_cancelPairingWithAccessory:(id)arg1 error:(id)arg2;
 - (void)_checkDelegatesofBlockedAccessoryServer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_discoverAccessories:(id)arg1;
@@ -97,7 +98,7 @@
 - (void)_notifyDelegatesOfNewAccessory:(id)arg1;
 - (void)_notifyDelegatesOfNewPairedAccessoryServer:(id)arg1 stateChanged:(BOOL)arg2 stateNumber:(id)arg3;
 - (void)_notifyDelegatesOfReachabilityChange:(BOOL)arg1 forBTLEAccessories:(id)arg2;
-- (void)_notifyDelegatesOfRemovedAccessoryServer:(id)arg1;
+- (void)_notifyDelegatesOfRemovedAccessoryServer:(id)arg1 error:(id)arg2;
 - (void)_notifyDelegatesOfTombstonedAccessoryServer:(id)arg1;
 - (void)_notifyDelegatesToRetrieveAccessoryServers:(id)arg1;
 - (void)_pairAccessory:(id)arg1 home:(id)arg2 password:(id)arg3 setupCodeProvider:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -134,9 +135,10 @@
 - (void)accessoryServer:(id)arg1 isBlockedWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)accessoryServer:(id)arg1 promptUserForPasswordWithType:(unsigned long long)arg2;
 - (void)accessoryServer:(id)arg1 requestUserPermission:(long long)arg2;
+- (void)accessoryServerBrowser:(id)arg1 didChangeReachability:(BOOL)arg2 forAccessoryServerWithIdentifier:(id)arg3;
 - (void)accessoryServerBrowser:(id)arg1 didFailToDiscoverAccessoryServerWithIdentifier:(id)arg2;
 - (void)accessoryServerBrowser:(id)arg1 didFindAccessoryServer:(id)arg2 stateChanged:(BOOL)arg3 stateNumber:(id)arg4;
-- (void)accessoryServerBrowser:(id)arg1 didRemoveAccessoryServer:(id)arg2;
+- (void)accessoryServerBrowser:(id)arg1 didRemoveAccessoryServer:(id)arg2 error:(id)arg3;
 - (void)accessoryServerBrowser:(id)arg1 didStartDiscoveringWithError:(id)arg2;
 - (void)accessoryServerBrowser:(id)arg1 didStopDiscoveringWithError:(id)arg2;
 - (void)accessoryServerDidUpdateStateNumber:(id)arg1;

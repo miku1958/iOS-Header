@@ -9,6 +9,6 @@
 @class PXPeoplePreviewActionViewController, PXPersonItem;
 
 @protocol PXPeoplePreviewActionViewControllerDelegate <NSObject>
-- (void)peoplePreviewActionViewController:(PXPeoplePreviewActionViewController *)arg1 wantsToChangePerson:(PXPersonItem *)arg2 ofType:(long long)arg3 toType:(long long)arg4;
+- (void)peoplePreviewActionViewController:(PXPeoplePreviewActionViewController *)arg1 wantsToChangePerson:(PXPersonItem *)arg2 toType:(long long)arg3;
 @end
 

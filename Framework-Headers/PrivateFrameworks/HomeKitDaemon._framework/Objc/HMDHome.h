@@ -299,7 +299,7 @@
 - (void)_modifyNotificationOnResident:(BOOL)arg1 ignoreDeviceUnlockRequirement:(BOOL)arg2 forCharacteristics:(id)arg3;
 - (void)_modifyNotificationsOnResidentWithPayload:(id)arg1 enableNotification:(BOOL)arg2;
 - (void)_modifyNotificationsWithPayload:(id)arg1 enableNotification:(BOOL)arg2 withResidentDevice:(id)arg3;
-- (id)_notificationPayloadForChangedCharacterisitics:(id)arg1;
+- (id)_notificationPayloadForChangedCharacterisitics:(id)arg1 destinationIsXPCTransport:(BOOL)arg2;
 - (void)_notifyChangedCharacteristics:(id)arg1 identifier:(id)arg2 multiPartResponse:(BOOL)arg3 moreMessagesInMultipart:(BOOL)arg4 requestMessage:(id)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
 - (void)_notifyChangedCharacteristics:(id)arg1 message:(id)arg2 modifiedCharacteristics:(id)arg3;
 - (void)_notifyChangedCharacteristics:(id)arg1 toUserDeviceAddress:(id)arg2;
@@ -374,7 +374,7 @@
 - (void)_subscribeForHomeNotificationsFromRemoteGateway:(BOOL)arg1;
 - (void)_subscribeForHomeNotificationsOnDirectTransports:(BOOL)arg1;
 - (void)_subscribeForNotificationFromRemoteGateway:(BOOL)arg1;
-- (void)_unconfigurePairedAccessoriesForServer:(id)arg1;
+- (void)_unconfigurePairedAccessoriesForServer:(id)arg1 updateReachability:(BOOL)arg2;
 - (void)_updateBulletinBoardOfChangedCharacteristics:(id)arg1 changedByThisDevice:(BOOL)arg2;
 - (void)_updateCloudRelaySupport;
 - (void)_updateConfigurationStateForResidentDevice:(id)arg1 desiredConfigState:(unsigned long long)arg2 message:(id)arg3;
@@ -385,7 +385,7 @@
 - (void)_updatePairedAccessoriesForServer:(id)arg1 reAddServices:(BOOL)arg2;
 - (void)_updateReachabilityChangeToRegisteredDevices:(id)arg1;
 - (void)_updateRemoteReachability:(BOOL)arg1 accessories:(id)arg2;
-- (void)_updateWoWState;
+- (void)_updateWoWState:(id)arg1;
 - (BOOL)_validateAddingNewTriggerWithName:(id)arg1 message:(id)arg2;
 - (BOOL)_verifyUserManagementPermissionForAccessory:(id)arg1 error:(id *)arg2;
 - (void)_writeCharacteristicValues:(id)arg1 requestMessage:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -398,7 +398,7 @@
 - (void)accessoryBrowser:(id)arg1 accessoryServer:(id)arg2 didUpdateValuesForCharacteristics:(id)arg3 stateNumber:(id)arg4;
 - (void)accessoryBrowser:(id)arg1 accessoryServer:(id)arg2 isBlockedWithCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)accessoryBrowser:(id)arg1 didFindAccessoryServer:(id)arg2 stateChanged:(BOOL)arg3 stateNumber:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)accessoryBrowser:(id)arg1 didRemoveAccessoryServer:(id)arg2;
+- (void)accessoryBrowser:(id)arg1 didRemoveAccessoryServer:(id)arg2 error:(id)arg3;
 - (void)accessoryBrowser:(id)arg1 didTombstoneAccessoryServer:(id)arg2;
 - (void)accessoryBrowser:(id)arg1 didUpdateReachability:(BOOL)arg2 forBTLEAccessoriesWithServerIdentifier:(id)arg3;
 - (void)accessoryBrowser:(id)arg1 discoveryFailedWithError:(id)arg2 accessoryServer:(id)arg3 linkType:(long long)arg4;
@@ -448,6 +448,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 defaultRoomUUID:(id)arg3 owner:(id)arg4 homeManager:(id)arg5;
 - (void)invalidate;
+- (BOOL)isCurrentDeviceAvaliableResident;
 - (id)logIdentifier;
 - (BOOL)mergeOutgoingInvitations:(id)arg1 dataVersion:(long long)arg2 locallyAddedUsers:(id)arg3 locallyRemovedUsers:(id)arg4;
 - (BOOL)mergeResidentFromHome:(id)arg1 dataVersion:(unsigned long long)arg2;
@@ -459,7 +460,9 @@
 - (void)notifyClientOfAccessoryInfoUpdatedForAccessories:(id)arg1;
 - (void)notifyClientOfVendorInfoUpdatedForManufacturers:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)notifyDidArriveHome;
+- (void)notifyDidEnterHomeRegion;
 - (void)notifyDidLeaveHome;
+- (void)notifyDidLeaveHomeRegion;
 - (void)notifyNewRemotePeersFound:(BOOL)arg1 remoteUsersRemoved:(id)arg2 forceRemoteNotificationRegistration:(BOOL)arg3;
 - (void)notifyOfChangedCharacteristic:(id)arg1 changedByThisDevice:(BOOL)arg2 residentShouldNotifyPeers:(BOOL)arg3 message:(id)arg4;
 - (id)pairedAccessories;
@@ -487,6 +490,8 @@
 - (id)removeName:(id)arg1;
 - (void)removeResidentCapableDevice:(id)arg1;
 - (void)removeService:(id)arg1;
+- (void)removeTrigger:(id)arg1;
+- (void)removeTriggerNoNotification:(id)arg1;
 - (void)removeTriggerOwnedActionSet:(id)arg1;
 - (void)removeUnconfiguredResidentDeviceWithUserID:(id)arg1;
 - (void)removeUser:(id)arg1;

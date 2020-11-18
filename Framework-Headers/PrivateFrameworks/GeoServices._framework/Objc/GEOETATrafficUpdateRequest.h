@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAdditionalEnabledMarkets, GEOClientCapabilities, GEOCommonOptions, GEOLocation, GEORouteAttributes, GEOTFTrafficSnapshot, NSData, NSMutableArray;
+@class GEOAdditionalEnabledMarkets, GEOClientCapabilities, GEOCommonOptions, GEOLocation, GEOPDABClientDatasetMetadata, GEORouteAttributes, GEOTFTrafficSnapshot, NSData, NSMutableArray;
 
 @interface GEOETATrafficUpdateRequest : PBRequest <NSCopying>
 {
     struct GEOSessionID _sessionID;
     struct GEOTimepoint _clientTimepoint;
+    GEOPDABClientDatasetMetadata *_abClientMetadata;
     GEOAdditionalEnabledMarkets *_additionalEnabledMarkets;
     GEOClientCapabilities *_clientCapabilities;
     GEOCommonOptions *_commonOptions;
@@ -43,6 +44,7 @@
     } _has;
 }
 
+@property (strong, nonatomic) GEOPDABClientDatasetMetadata *abClientMetadata; // @synthesize abClientMetadata=_abClientMetadata;
 @property (strong, nonatomic) GEOAdditionalEnabledMarkets *additionalEnabledMarkets; // @synthesize additionalEnabledMarkets=_additionalEnabledMarkets;
 @property (strong, nonatomic) GEOClientCapabilities *clientCapabilities; // @synthesize clientCapabilities=_clientCapabilities;
 @property (nonatomic) struct GEOTimepoint clientTimepoint;
@@ -50,6 +52,7 @@
 @property (strong, nonatomic) GEOLocation *currentUserLocation; // @synthesize currentUserLocation=_currentUserLocation;
 @property (strong, nonatomic) NSMutableArray *destinationWaypointTypeds; // @synthesize destinationWaypointTypeds=_destinationWaypointTypeds;
 @property (strong, nonatomic) NSData *directionsResponseID; // @synthesize directionsResponseID=_directionsResponseID;
+@property (readonly, nonatomic) BOOL hasAbClientMetadata;
 @property (readonly, nonatomic) BOOL hasAdditionalEnabledMarkets;
 @property (readonly, nonatomic) BOOL hasClientCapabilities;
 @property (nonatomic) BOOL hasClientTimepoint;

@@ -20,6 +20,7 @@
     double _dismissAfterTimeInterval;
     CDUnknownBlockType _completionBlock;
     id _notification;
+    NSString *_identifier;
 }
 
 @property (strong, nonatomic) NSString *alternateButtonText; // @synthesize alternateButtonText=_alternateButtonText;
@@ -28,6 +29,7 @@
 @property (nonatomic) double dismissAfterTimeInterval; // @synthesize dismissAfterTimeInterval=_dismissAfterTimeInterval;
 @property (nonatomic) BOOL displayInAppWhitelistModes; // @synthesize displayInAppWhitelistModes=_displayInAppWhitelistModes;
 @property (nonatomic) BOOL displayOnLockScreen; // @synthesize displayOnLockScreen=_displayOnLockScreen;
+@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;
 @property (strong, nonatomic) id notification; // @synthesize notification=_notification;
 @property (strong, nonatomic) NSString *otherButtonText; // @synthesize otherButtonText=_otherButtonText;

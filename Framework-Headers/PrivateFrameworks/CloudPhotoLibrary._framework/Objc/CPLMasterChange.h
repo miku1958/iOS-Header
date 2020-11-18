@@ -20,6 +20,7 @@
     NSData *_mediaMetaData;
     long long _originalOrientation;
     unsigned long long _fullSizeJPEGSource;
+    NSString *_originatingFingerprint;
 }
 
 @property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) NSData *mediaMetaData; // @synthesize mediaMetaData=_mediaMetaData;
 @property (copy, nonatomic) NSString *mediaMetaDataType; // @synthesize mediaMetaDataType=_mediaMetaDataType;
 @property (nonatomic) long long originalOrientation; // @synthesize originalOrientation=_originalOrientation;
+@property (copy, nonatomic) NSString *originatingFingerprint; // @synthesize originatingFingerprint=_originatingFingerprint;
 @property (copy, nonatomic) NSArray *resources; // @synthesize resources=_resources;
 
 - (void).cxx_destruct;

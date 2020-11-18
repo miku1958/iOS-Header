@@ -68,6 +68,7 @@
 - (void)_sendRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_startReachabilityProbe;
 - (void)_suspendAllOperations;
+- (void)_tearDownSessionWithError:(id)arg1;
 - (BOOL)addPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)continuePairingAfterAuthPrompt;
 - (void)dealloc;

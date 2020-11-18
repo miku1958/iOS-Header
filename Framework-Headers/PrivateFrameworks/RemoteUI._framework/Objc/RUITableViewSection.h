@@ -9,8 +9,8 @@
 #import <RemoteUI/RUIHeaderDelegate-Protocol.h>
 #import <RemoteUI/RUITableFooterDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSNumber, RUIDetailHeaderElement, RUIReadableContentContainer, RUISubHeaderElement, RUITableViewRow, UIView;
-@protocol RUIHeader, RUITableViewSectionDelegate, RemoteUITableFooter;
+@class NSArray, NSMutableArray, NSNumber, RUIDetailHeaderElement, RUIReadableContentContainer, RUISubHeaderElement, RUITableView, RUITableViewRow, UIView;
+@protocol RUIHeader, RemoteUITableFooter;
 
 @interface RUITableViewSection : RUIElement <RUIHeaderDelegate, RUITableFooterDelegate>
 {
@@ -20,7 +20,6 @@
     RUIReadableContentContainer *_containerizedFooterView;
     NSNumber *_drawsTopSeparator;
     BOOL _configured;
-    id<RUITableViewSectionDelegate> _delegate;
     UIView<RUIHeader> *_headerView;
     UIView<RemoteUITableFooter> *_footerView;
     double _headerHeight;
@@ -30,12 +29,12 @@
     RUISubHeaderElement *_subHeader;
     RUIDetailHeaderElement *_detailHeader;
     RUIElement *_footer;
+    RUITableView *_tableElement;
 }
 
 @property (nonatomic) BOOL configured; // @synthesize configured=_configured;
 @property (strong, nonatomic) UIView *containerizedFooterView; // @synthesize containerizedFooterView=_containerizedFooterView;
 @property (strong, nonatomic) UIView *containerizedHeaderView; // @synthesize containerizedHeaderView=_containerizedHeaderView;
-@property (weak, nonatomic) id<RUITableViewSectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) RUIDetailHeaderElement *detailHeader; // @synthesize detailHeader=_detailHeader;
 @property (nonatomic) BOOL drawTopSeparator;
 @property (strong, nonatomic) RUIElement *footer; // @synthesize footer=_footer;
@@ -47,6 +46,7 @@
 @property (readonly, nonatomic) NSArray *rows;
 @property (strong, nonatomic) RUITableViewRow *showAllRow; // @synthesize showAllRow=_showAllRow;
 @property (strong, nonatomic) RUISubHeaderElement *subHeader; // @synthesize subHeader=_subHeader;
+@property (weak, nonatomic) RUITableView *tableElement; // @synthesize tableElement=_tableElement;
 
 - (void).cxx_destruct;
 - (Class)_customFooterClass;
@@ -58,7 +58,7 @@
 - (BOOL)hasCustomHeader;
 - (BOOL)hasValueForDrawsTopSeparator;
 - (void)headerView:(id)arg1 activatedLinkWithURL:(id)arg2;
-- (id)init;
+- (id)initWithAttributes:(id)arg1 parent:(id)arg2;
 - (void)insertRow:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)populatePostbackDictionary:(id)arg1;
 - (void)removeRowAtIndex:(unsigned long long)arg1;
@@ -66,7 +66,9 @@
 - (void)setImage:(id)arg1;
 - (void)setImageAlignment:(int)arg1;
 - (void)setImageSize:(struct CGSize)arg1;
-- (id)sourceURL;
+- (id)staticFunctions;
+- (id)staticValues;
+- (id)subElementWithID:(id)arg1;
 - (id)subElementsWithName:(id)arg1;
 - (void)tappedShowAllRowWithTable:(id)arg1;
 

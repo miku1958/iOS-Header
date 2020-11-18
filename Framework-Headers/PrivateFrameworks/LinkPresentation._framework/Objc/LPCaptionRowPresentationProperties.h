@@ -19,6 +19,8 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)left;
+- (id)right;
 
 @end
 

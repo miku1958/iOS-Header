@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_createSheetWithElementActions:(id)arg1 showLinkTitle:(BOOL)arg2;
 - (struct CGRect)_presentationRectForSheetGivenPoint:(struct CGPoint)arg1 inHostView:(id)arg2;
 - (void)cleanupSheet;
+- (id)currentAvailableActionTitles;
 - (void)dealloc;
 - (RetainPtr_f649c0c3)defaultActionsForImageSheet:(id)arg1;
 - (RetainPtr_f649c0c3)defaultActionsForLinkSheet:(id)arg1;

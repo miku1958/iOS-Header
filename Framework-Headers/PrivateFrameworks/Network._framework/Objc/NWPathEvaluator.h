@@ -29,7 +29,9 @@
 + (void)savePathEvaluator:(id)arg1;
 + (id)sharedDefaultEvaluator;
 - (void).cxx_destruct;
+- (id)copyPath;
 - (void)dealloc;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithEndpoint:(id)arg1 parameters:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

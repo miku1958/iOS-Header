@@ -8,13 +8,14 @@
 
 #import <MediaPlayer/MPCQueueBehaviorManaging-Protocol.h>
 #import <MediaPlayer/MPModelObjectPlaybackItemMetadataDelegate-Protocol.h>
+#import <MediaPlayer/MPRTCReportingItemSessionContaining-Protocol.h>
 #import <MediaPlayer/MPShuffleControllerDataSource-Protocol.h>
 #import <MediaPlayer/MPStoreAVItemDownloadMetadataConsuming-Protocol.h>
 
 @class MPModelRequest, MPModelResponse, MPPlaceholderAVItem, MPShuffleController, NSDictionary, NSHashTable, NSObject, NSOperationQueue, NSString, _MPModelQueueFeederIdentifier;
 @protocol OS_dispatch_queue;
 
-@interface MPModelQueueFeeder : MPQueueFeeder <MPModelObjectPlaybackItemMetadataDelegate, MPShuffleControllerDataSource, MPStoreAVItemDownloadMetadataConsuming, MPCQueueBehaviorManaging>
+@interface MPModelQueueFeeder : MPQueueFeeder <MPModelObjectPlaybackItemMetadataDelegate, MPRTCReportingItemSessionContaining, MPShuffleControllerDataSource, MPStoreAVItemDownloadMetadataConsuming, MPCQueueBehaviorManaging>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSHashTable *_activeModelObjectPlaybackItemMetadataInstances;
@@ -30,6 +31,7 @@
     NSString *_requestingBundleIdentifier;
     NSString *_requestingBundleVersion;
     MPModelResponse *_response;
+    NSString *_rtcReportingPlayQueueSourceIdentifier;
     MPShuffleController *_shuffleController;
     _MPModelQueueFeederIdentifier *_startItemIdentifier;
     NSDictionary *_startTimeModifications;
@@ -43,9 +45,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long playbackMode;
+@property (readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
+@property (readonly, copy, nonatomic) NSDictionary *rtcReportingSessionAdditionalUserInfo;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL userCanChangeShuffleAndRepeatType;
 
++ (id)requiredPropertiesForStaticMediaClips;
 + (BOOL)supportsStateRestoration;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -57,8 +62,8 @@
 - (id)_identifierSetAtIndex:(unsigned long long)arg1;
 - (unsigned long long)_indexOfItemWithIdentifier:(id)arg1 shouldIgnoreShuffle:(BOOL)arg2;
 - (id)_modelObjectAtIndex:(unsigned long long)arg1;
-- (id)_modelObjectPlaybackItemMetadataAtIndex:(unsigned long long)arg1;
 - (id)_newModelRequest;
+- (id)_playbackItemMetadataForModelObject:(id)arg1;
 - (void)_playbackUserDefaultsMusicRepeatTypeDidChangeNotification:(id)arg1;
 - (void)_playbackUserDefaultsMusicShuffleTypeDidChangeNotification:(id)arg1;
 - (void)_registerNotificationsForResponse:(id)arg1;
@@ -86,6 +91,7 @@
 - (unsigned long long)itemCountForShuffleController:(id)arg1;
 - (long long)itemTypeForIndex:(unsigned long long)arg1;
 - (id)mediaItemAtIndex:(unsigned long long)arg1;
+- (id)mediaItemForIdentifier:(id)arg1;
 - (void)modelObjectPlaybackItemMetadataWillDeallocate:(id)arg1;
 - (id)modelPlayEvent;
 - (id)playbackInfoForIdentifier:(id)arg1;

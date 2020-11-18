@@ -24,10 +24,12 @@
     double _marqueeDelay;
     double _marqueeScrollRate;
     UIView *_viewForContentSize;
+    long long _animationDirection;
     struct CGSize _contentSize;
     struct UIEdgeInsets _fadeEdgeInsets;
 }
 
+@property (nonatomic) long long animationDirection; // @synthesize animationDirection=_animationDirection;
 @property (nonatomic) double contentGap; // @synthesize contentGap=_contentGap;
 @property (nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;

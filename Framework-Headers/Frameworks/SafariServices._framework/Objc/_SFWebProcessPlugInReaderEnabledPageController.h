@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebUI/WBUWebProcessPlugInAutoFillPageController.h>
+#import <SafariServices/_SFWebProcessPlugInAutoFillPageController.h>
 
 #import <SafariServices/RequestDesktopSiteWebProcessPlugInListener-Protocol.h>
 #import <SafariServices/SFReaderWebProcessControllerProtocol-Protocol.h>
@@ -12,7 +12,7 @@
 @class NSDictionary, NSMutableSet, NSString, SFWebProcessPlugInPageExtensionController, _SFReaderWebProcessPlugInPageController, _SFWebProcessPlugInPageSafeBrowsingController, _WKRemoteObjectInterface;
 @protocol RequestDesktopSiteUIProcessListener, SFReaderEventsListener;
 
-@interface _SFWebProcessPlugInReaderEnabledPageController : WBUWebProcessPlugInAutoFillPageController <RequestDesktopSiteWebProcessPlugInListener, SFReaderWebProcessControllerProtocol>
+@interface _SFWebProcessPlugInReaderEnabledPageController : _SFWebProcessPlugInAutoFillPageController <RequestDesktopSiteWebProcessPlugInListener, SFReaderWebProcessControllerProtocol>
 {
     struct unique_ptr<SafariServices::ReaderAvailabilityController, std::__1::default_delete<SafariServices::ReaderAvailabilityController>> _readerAvailabilityController;
     _WKRemoteObjectInterface *_availabilityControllerInterface;
@@ -27,7 +27,6 @@
     BOOL _viewingReadingListArchive;
     NSDictionary *_initalArticleScrollPositionAsDictionary;
     NSDictionary *_initialReaderConfiguration;
-    double _readerUserVisibleWidth;
     NSMutableSet *_domainsNeedingDesktopUserAgent;
 }
 
@@ -39,7 +38,6 @@
 @property (copy, nonatomic) NSDictionary *initalArticleScrollPositionAsDictionary; // @synthesize initalArticleScrollPositionAsDictionary=_initalArticleScrollPositionAsDictionary;
 @property (readonly, nonatomic) NSDictionary *initialReaderConfiguration; // @synthesize initialReaderConfiguration=_initialReaderConfiguration;
 @property (strong, nonatomic) _SFReaderWebProcessPlugInPageController *readerPageController; // @synthesize readerPageController=_readerPageController;
-@property (readonly, nonatomic) double readerUserVisibleWidth; // @synthesize readerUserVisibleWidth=_readerUserVisibleWidth;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isViewingReadingListArchive) BOOL viewingReadingListArchive; // @synthesize viewingReadingListArchive=_viewingReadingListArchive;
 
@@ -49,6 +47,7 @@
 - (void)_deferPageLoadingUntilSafeBrowsingCheckCompleteForFrame:(id)arg1;
 - (void)_detectAvailabilityAfterDelay:(double)arg1 loadEvent:(int)arg2;
 - (void)_detectReaderAvailabilityAfterSameDocumentNavigation;
+- (void)_setUpReaderActivityListenerProxy;
 - (void)_setUpReaderControllerInterface;
 - (void)collectReaderContentForMail;
 - (void)collectReadingListItemInfoWithBookmarkID:(id)arg1;
@@ -65,9 +64,8 @@
 - (void)prepareToTransitionToReader;
 - (void)readerContentIsReadyForDisplay:(id)arg1;
 - (void)setReaderFont:(id)arg1;
-- (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(id)arg2 userVisibleWidth:(double)arg3 isViewingArchive:(BOOL)arg4;
+- (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(id)arg2 isViewingArchive:(BOOL)arg3;
 - (void)setReaderTheme:(id)arg1;
-- (void)setReaderUserVisibleWidth:(double)arg1;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didCommitLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didFinishDocumentLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didFinishLoadForFrame:(id)arg2;

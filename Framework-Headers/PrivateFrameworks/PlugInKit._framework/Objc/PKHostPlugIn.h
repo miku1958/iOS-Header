@@ -36,6 +36,7 @@
     NSBundle *_embeddedBundle;
     NSDate *_beganUsingAt;
     NSDictionary *_sourceForm;
+    NSDictionary *_environment;
 }
 
 @property (strong) NSObject<OS_dispatch_queue> *_replyQueue; // @synthesize _replyQueue=__replyQueue;
@@ -54,6 +55,7 @@
 @property (strong) NSBundle *embeddedBundle; // @synthesize embeddedBundle=_embeddedBundle;
 @property (strong) id embeddedPrincipal; // @synthesize embeddedPrincipal=_embeddedPrincipal;
 @property (readonly) NSDictionary *entitlements;
+@property (strong) NSDictionary *environment; // @synthesize environment=_environment;
 @property (strong) NSDictionary *extensionState;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *identifier;

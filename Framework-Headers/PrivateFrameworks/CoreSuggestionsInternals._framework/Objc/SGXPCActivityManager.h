@@ -8,13 +8,14 @@
 
 #import <CoreSuggestionsInternals/SGXPCActivityManagerProtocol-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSMutableDictionary;
 
 @interface SGXPCActivityManager : NSObject <SGXPCActivityManagerProtocol>
 {
     NSMutableArray *_activities;
     NSMutableArray *_lastCriteria;
     NSMutableArray *_handlers;
+    NSMutableDictionary *_currentTasks;
     BOOL _registered;
     struct _opaque_pthread_mutex_t _lock;
 }
@@ -24,6 +25,7 @@
 + (void)stopUsingMockSharedInstance;
 + (void)useMockSharedInstance:(id)arg1;
 - (void).cxx_destruct;
+- (id)_taskForActivity:(id)arg1;
 - (id)activityForActivityId:(int)arg1;
 - (id)copyCriteria:(id)arg1;
 - (void)dealloc;

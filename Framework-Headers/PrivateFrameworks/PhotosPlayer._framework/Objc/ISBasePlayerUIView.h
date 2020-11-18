@@ -7,17 +7,18 @@
 #import <UIKit/UIView.h>
 
 #import <PhotosPlayer/ISBasePlayerOutput-Protocol.h>
+#import <PhotosPlayer/ISChangeObserver-Protocol.h>
 
-@class AVAudioSession, ISBasePlayer, ISCrossfadeUIView, ISVideoPlayerUIView, NSObject, NSString, UIImageView;
+@class AVAudioSession, ISBasePlayer, ISPlayerOutputContent, ISVideoPlayerUIView, NSObject, NSString, UIImageView;
 @protocol OS_dispatch_queue;
 
-@interface ISBasePlayerUIView : UIView <ISBasePlayerOutput>
+@interface ISBasePlayerUIView : UIView <ISChangeObserver, ISBasePlayerOutput>
 {
     NSObject<OS_dispatch_queue> *_audioSessionQueue;
+    ISPlayerOutputContent *_content;
     ISBasePlayer *_player;
     UIView *_customPhotoView;
     UIImageView *__photoView;
-    ISCrossfadeUIView *__crossfadeView;
     ISVideoPlayerUIView *__videoView;
     UIView *__containerView;
     AVAudioSession *_audioSession;
@@ -25,7 +26,6 @@
 }
 
 @property (readonly, nonatomic) UIView *_containerView; // @synthesize _containerView=__containerView;
-@property (readonly, nonatomic) ISCrossfadeUIView *_crossfadeView; // @synthesize _crossfadeView=__crossfadeView;
 @property (readonly, nonatomic) UIImageView *_photoView; // @synthesize _photoView=__photoView;
 @property (readonly, nonatomic) ISVideoPlayerUIView *_videoView; // @synthesize _videoView=__videoView;
 @property (strong, nonatomic, setter=_setAudioSession:) AVAudioSession *audioSession; // @synthesize audioSession=_audioSession;
@@ -40,11 +40,16 @@
 + (Class)playerClass;
 - (void).cxx_destruct;
 - (void)_performCommonInitialization;
+- (void)_updatePhotoView;
+- (void)_updatePlayerAudioSession;
 - (void)applyOutputInfo:(id)arg1 withTransitionOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)applyScale:(double)arg1 withTransitionOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)audioSessionDidChange;
+- (void)contentDidChange;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)playerDidChange;
 - (void)setContent:(id)arg1;
 - (void)setContentMode:(long long)arg1;

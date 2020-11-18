@@ -8,7 +8,7 @@
 
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKQuery, CKQueryCursor, CKRecordZoneID, NSArray;
+@class CKQuery, CKQueryCursor, CKRecordZoneID, NSArray, NSDictionary;
 
 @interface CKQueryOperationInfo : CKDatabaseOperationInfo <NSSecureCoding>
 {
@@ -19,8 +19,10 @@
     CKQueryCursor *_cursor;
     unsigned long long _resultsLimit;
     NSArray *_desiredKeys;
+    NSDictionary *_assetTransferOptionsByKey;
 }
 
+@property (strong, nonatomic) NSDictionary *assetTransferOptionsByKey; // @synthesize assetTransferOptionsByKey=_assetTransferOptionsByKey;
 @property (strong, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property (strong, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (nonatomic) BOOL fetchAllResults; // @synthesize fetchAllResults=_fetchAllResults;

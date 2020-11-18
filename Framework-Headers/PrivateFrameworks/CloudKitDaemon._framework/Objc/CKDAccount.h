@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_initWithContext:(id)arg1;
 - (id)_lockedCloudKitAuthTokenWithError:(id *)arg1;
-- (void)_lockedRenewAuthTokenWithReason:(id)arg1 failedToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_lockedRenewAuthTokenWithReason:(id)arg1 shouldForce:(BOOL)arg2 failedToken:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_lockediCloudAuthTokenWithError:(id *)arg1;
 - (id)_urlBySettingCustomBaseURL:(id)arg1 onURL:(id)arg2;
 - (id)applicationBundle;
@@ -89,7 +89,7 @@ __attribute__((visibility("hidden")))
 - (void)noteSuccessfulRequestWithNumDownloadedElements:(long long)arg1;
 - (void)noteTimeSpentInNetworking:(double)arg1;
 - (id)regionCode;
-- (void)renewAuthTokenWithReason:(id)arg1 failedToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)renewAuthTokenWithReason:(id)arg1 shouldForce:(BOOL)arg2 failedToken:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)renewMescalSessionForRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)resetMescalSession;
 - (id)serverPreferredPushEnvironment;

@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithAddedIndexes:(id)arg1 removedIndexes:(id)arg2 movedIndexesByNewIndex:(id)arg3 updatedIndexesByNewIndex:(id)arg4;
+- (long long)newIndexForOldIndex:(long long)arg1;
 
 @end
 

@@ -32,6 +32,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasRestrictionsPasscode;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long maximumMovieRating;
+@property (readonly, nonatomic) long long maximumTVShowRating;
 @property (readonly) Class superclass;
 
 + (id)sharedRestrictionsMonitor;

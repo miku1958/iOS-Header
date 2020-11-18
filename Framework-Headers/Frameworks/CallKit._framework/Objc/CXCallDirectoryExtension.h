@@ -6,25 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class LSPlugInKitProxy, NSExtension, NSString;
+#import <CallKit/NSSecureCoding-Protocol.h>
 
-@interface CXCallDirectoryExtension : NSObject
+@class LSPlugInKitProxy, NSString;
+
+@interface CXCallDirectoryExtension : NSObject <NSSecureCoding>
 {
-    NSExtension *_extension;
+    BOOL _onlyExtensionInContainingApp;
+    NSString *_identifier;
+    long long _state;
+    long long _priority;
+    NSString *_localizedName;
+    NSString *_localizedContainingAppName;
+    LSPlugInKitProxy *_plugInKitProxy;
 }
 
-@property (nonatomic, getter=isEnabled) BOOL enabled;
-@property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
-@property (readonly, copy, nonatomic) NSString *identifier;
-@property (readonly, nonatomic) NSString *localizedContainingAppName;
-@property (readonly, nonatomic) NSString *localizedName;
-@property (readonly, nonatomic) LSPlugInKitProxy *plugInKitProxy;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *localizedContainingAppName; // @synthesize localizedContainingAppName=_localizedContainingAppName;
+@property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (nonatomic, getter=isOnlyExtensionInContainingApp) BOOL onlyExtensionInContainingApp; // @synthesize onlyExtensionInContainingApp=_onlyExtensionInContainingApp;
+@property (strong, nonatomic) LSPlugInKitProxy *plugInKitProxy; // @synthesize plugInKitProxy=_plugInKitProxy;
+@property (nonatomic) long long priority; // @synthesize priority=_priority;
+@property (nonatomic) long long state; // @synthesize state=_state;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
-- (id)init;
-- (id)initWithExtension:(id)arg1;
-- (void)resetEnabledStatus;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

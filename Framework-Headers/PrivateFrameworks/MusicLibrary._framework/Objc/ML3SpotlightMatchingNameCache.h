@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface ML3SpotlightMatchingNameCache : NSObject
 {
-    unordered_set_f2692727 _matchingSet;
+    unordered_set_9227d2bb _matchingSet;
     NSString *_matchString;
     BOOL _idle;
     ML3MusicLibrary *_library;

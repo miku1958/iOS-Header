@@ -15,7 +15,7 @@
 
 @interface AAUIConfirmIdentityViewController : UIViewController <UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate>
 {
-    ACAccount *_account;
+    ACAccount *_appleAccount;
     UIScrollView *_scrollView;
     UIView *_contentView;
     UILabel *_titleLabel;
@@ -52,7 +52,7 @@
 - (void)continueButtonWasTapped:(id)arg1;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (void)imagePickerControllerDidCancel:(id)arg1;
-- (id)initWithGrandSlamSigner:(id)arg1;
+- (id)initWithAppleAccount:(id)arg1 grandSlamSigner:(id)arg2;
 - (id)instructions;
 - (void)loadView;
 - (id)pageTitle;

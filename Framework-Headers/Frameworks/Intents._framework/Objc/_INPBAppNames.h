@@ -29,7 +29,6 @@
 @property (strong, nonatomic) NSString *spotlightName; // @synthesize spotlightName=_spotlightName;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

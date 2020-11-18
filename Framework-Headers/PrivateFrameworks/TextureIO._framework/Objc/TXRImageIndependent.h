@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) MISSING_TYPE *dimensions; // @synthesize dimensions=_dimensions;
 @property (readonly, nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 
+- (BOOL)exportToURL:(id)arg1 uttype:(const struct __CFString *)arg2 error:(id *)arg3;
 - (id)initWithCGImage:(struct CGImage *)arg1 bufferAllocator:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)initWithCGImage:(struct CGImage *)arg1 pixelFormat:(unsigned long long)arg2 bufferAllocator:(id)arg3 options:(id)arg4 error:(id *)arg5;
 - (id)initWithDimensions:(unsigned long long)arg1 pixelFormat:(unsigned long long)arg2 alphaInfo:(id)arg3 bufferAllocator: /* Error: Ran out of types for this method. */;

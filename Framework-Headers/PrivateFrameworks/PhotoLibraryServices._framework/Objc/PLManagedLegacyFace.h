@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLManagedObject.h>
 
-@class NSString, PLManagedAsset;
+@class NSString, NSValue, PLManagedAsset;
 
 @interface PLManagedLegacyFace : PLManagedObject
 {
@@ -16,6 +16,7 @@
 @property (strong, nonatomic) PLManagedAsset *asset; // @dynamic asset;
 @property (nonatomic) short identifier; // @dynamic identifier;
 @property (nonatomic) struct CGRect relativeRect;
+@property (strong, nonatomic) NSValue *relativeRectValue; // @dynamic relativeRectValue;
 
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;

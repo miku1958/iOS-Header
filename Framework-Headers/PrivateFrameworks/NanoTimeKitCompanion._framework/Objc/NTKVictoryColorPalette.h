@@ -10,9 +10,10 @@
 {
 }
 
++ (BOOL)_colorIsPairedWithWhite:(unsigned long long)arg1;
 + (id)_grayColor;
 + (id)_offWhiteColor;
-+ (id)_primaryColor;
++ (id)_primaryColorForColor:(unsigned long long)arg1;
 + (id)analogComplicationsColorForColor:(unsigned long long)arg1;
 + (id)analogDotColorForColor:(unsigned long long)arg1;
 + (BOOL)colorHasWhiteElements:(unsigned long long)arg1;
@@ -21,6 +22,7 @@
 + (id)numbersColorForColor:(unsigned long long)arg1;
 + (id)platterColor;
 + (id)secondHandColorForColor:(unsigned long long)arg1;
++ (id)voltColor;
 
 @end
 

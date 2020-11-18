@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL usesLightOverlayAndTintAlpha; // @synthesize usesLightOverlayAndTintAlpha=_usesLightOverlayAndTintAlpha;
 
 - (void).cxx_destruct;
+- (id)_accessibilityQuickSpeakContent;
 - (void)_dismissMenu:(id)arg1;
 - (void)_handleLongPress:(id)arg1;
 - (void)_updateBackgroundImageAnimated:(BOOL)arg1;
@@ -45,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)pasteAndNavigate:(id)arg1;
-- (id)pasteButtonTitle;
 - (BOOL)pointMostlyInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setHighlighted:(BOOL)arg1;
 

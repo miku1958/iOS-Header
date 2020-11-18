@@ -29,7 +29,9 @@
 @property (readonly, nonatomic) NSString *serverPreferredPushEnvironment;
 @property (readonly, nonatomic) NSString *username;
 
++ (BOOL)_lockedEnsureCloudKitChildAccountOnParentAccount:(id)arg1 inStore:(id)arg2;
 + (Class)_platformBackingAccountClass;
++ (id)accountQueue;
 + (id)accountWithIdentifier:(id)arg1 inStore:(id)arg2;
 + (BOOL)ensureCloudKitChildAccountOnParentAccount:(id)arg1 inStore:(id)arg2;
 + (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2;

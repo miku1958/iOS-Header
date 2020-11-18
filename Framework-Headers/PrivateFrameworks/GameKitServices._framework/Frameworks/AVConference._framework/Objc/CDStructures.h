@@ -516,13 +516,17 @@ struct tagPlayback {
 struct tagPlaybackReportingMetrics {
     int _field1;
     int _field2;
-    float _field3;
-    float _field4;
-    float _field5;
-    float _field6;
+    int _field3;
+    int _field4;
+    int _field5;
+    int _field6;
     float _field7;
-    int _field8;
-    int _field9;
+    float _field8;
+    float _field9;
+    float _field10;
+    float _field11;
+    int _field12;
+    int _field13;
 };
 
 struct tagPlaybackStatistics {

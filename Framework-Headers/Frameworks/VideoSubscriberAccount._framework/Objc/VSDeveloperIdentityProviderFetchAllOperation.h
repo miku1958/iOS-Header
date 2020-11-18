@@ -6,17 +6,22 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class VSDeveloperServiceConnection, VSFailable;
+#import <VideoSubscriberAccount/VSIdentityProviderFetchAllResult-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface VSDeveloperIdentityProviderFetchAllOperation : VSAsyncOperation
+@class NSString, VSDeveloperServiceConnection, VSOptional;
+
+@interface VSDeveloperIdentityProviderFetchAllOperation : VSAsyncOperation <VSIdentityProviderFetchAllResult>
 {
-    VSFailable *_result;
+    VSOptional *_result;
     VSDeveloperServiceConnection *_connection;
 }
 
 @property (strong, nonatomic) VSDeveloperServiceConnection *connection; // @synthesize connection=_connection;
-@property (strong, nonatomic) VSFailable *result; // @synthesize result=_result;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)executionDidBegin;

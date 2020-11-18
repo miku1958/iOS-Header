@@ -8,18 +8,27 @@
 
 #import <CoreParsec/NSCopying-Protocol.h>
 #import <CoreParsec/NSSecureCoding-Protocol.h>
+#import <CoreParsec/SFProtobufObject-Protocol.h>
 
-@interface PARRankerFeedback : SFRankingFeedback <NSSecureCoding, NSCopying>
+@class NSString, PBCodable;
+
+@interface PARRankerFeedback : SFRankingFeedback <NSSecureCoding, NSCopying, SFProtobufObject>
 {
     BOOL _didTimeOut;
     unsigned long long _resultsRanked;
     unsigned long long _rankingDurationMilliseconds;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didTimeOut; // @synthesize didTimeOut=_didTimeOut;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) PBCodable *protobufMessage;
 @property (nonatomic) unsigned long long rankingDurationMilliseconds; // @synthesize rankingDurationMilliseconds=_rankingDurationMilliseconds;
 @property (nonatomic) unsigned long long resultsRanked; // @synthesize resultsRanked=_resultsRanked;
+@property (readonly) Class superclass;
 
++ (Class)protobufClass;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

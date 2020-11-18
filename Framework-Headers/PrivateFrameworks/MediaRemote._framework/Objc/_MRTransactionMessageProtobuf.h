@@ -8,24 +8,22 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class _MRTransactionPacketsProtobuf;
 
 @interface _MRTransactionMessageProtobuf : PBCodable <NSCopying>
 {
     unsigned long long _name;
-    NSMutableArray *_packets;
+    _MRTransactionPacketsProtobuf *_packets;
     struct {
         unsigned int name:1;
     } _has;
 }
 
 @property (nonatomic) BOOL hasName;
+@property (readonly, nonatomic) BOOL hasPackets;
 @property (nonatomic) unsigned long long name; // @synthesize name=_name;
-@property (strong, nonatomic) NSMutableArray *packets; // @synthesize packets=_packets;
+@property (strong, nonatomic) _MRTransactionPacketsProtobuf *packets; // @synthesize packets=_packets;
 
-+ (Class)packetsType;
-- (void)addPackets:(id)arg1;
-- (void)clearPackets;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -34,8 +32,6 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (id)packetsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)packetsCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

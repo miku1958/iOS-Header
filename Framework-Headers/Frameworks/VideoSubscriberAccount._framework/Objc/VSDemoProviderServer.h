@@ -11,7 +11,6 @@
 
 @class NSString, NSURL, NSUUID, VSWebServer;
 
-__attribute__((visibility("hidden")))
 @interface VSDemoProviderServer : NSObject <VSWebServerDelegate, VSWebServerConnectionDelegate>
 {
     NSURL *_cookieServerURL;

@@ -18,7 +18,7 @@
     HMDHomeKitVersion *_sourceVersion;
 }
 
-@property (readonly, nonatomic) unsigned long long restriction; // @synthesize restriction=_restriction;
+@property (nonatomic) unsigned long long restriction; // @synthesize restriction=_restriction;
 @property (nonatomic, getter=isSecure) BOOL secure; // @synthesize secure=_secure;
 @property (strong, nonatomic) HMDHomeKitVersion *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
 @property (readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;
@@ -31,6 +31,7 @@
 - (id)initWithName:(id)arg1 destination:(id)arg2 payload:(id)arg3 type:(long long)arg4 timeout:(double)arg5 secure:(BOOL)arg6;
 - (id)initWithName:(id)arg1 destination:(id)arg2 payload:(id)arg3 type:(long long)arg4 timeout:(double)arg5 secure:(BOOL)arg6 restriction:(unsigned long long)arg7;
 - (BOOL)isRemoteSource;
+- (void)setInternalResponseHandler:(CDUnknownBlockType)arg1;
 - (void)setResponseHandler:(CDUnknownBlockType)arg1;
 
 @end

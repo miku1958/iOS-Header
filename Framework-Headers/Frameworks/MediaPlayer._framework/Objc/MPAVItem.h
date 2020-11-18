@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/MPAVMetadataItem-Protocol.h>
 
-@class AVAsset, AVPlayerItem, AVPlayerItemAccessLog, MPAVController, MPAlternateTextTrack, MPAlternateTracks, MPMediaItem, MPModelObject, MPModelSong, MPQueueFeeder, MPStoreDownload, NSArray, NSDictionary, NSError, NSNumber, NSString, NSURL;
+@class AVAsset, AVPlayerItem, AVPlayerItemAccessLog, MPAVController, MPAlternateTextTrack, MPAlternateTracks, MPMediaItem, MPModelGenericObject, MPQueueFeeder, MPStoreDownload, NSArray, NSDictionary, NSError, NSNumber, NSString, NSURL;
 @protocol MPAVItemPlaylistIdentifier, MPAVItemQueueIdentifier, OS_dispatch_queue;
 
 @interface MPAVItem : NSObject <MPAVMetadataItem>
@@ -50,10 +50,9 @@
     CDStruct_1b6d18a9 _playerItemDuration;
     BOOL _didAttemptToLoadAsset;
     BOOL _canReusePlayerItem;
-    BOOL _prefersHLS;
-    BOOL _shouldUseStreamingRedownload;
     BOOL _likedStateEnabled;
     BOOL _supportsLikedState;
+    BOOL _prefersSeekOverSkip;
     BOOL _allowsAirPlayFromCloud;
     BOOL _allowsExternalPlayback;
     float _currentPlaybackRate;
@@ -70,8 +69,7 @@
     long long _storeItemInt64ID;
     long long _storeSubscriptionAdamID;
     MPMediaItem *_mediaItem;
-    MPModelSong *_modelSong;
-    MPModelObject *_modelObject;
+    MPModelGenericObject *_modelGenericObject;
     NSString *_aggregateDictionaryItemIdentifier;
 }
 
@@ -131,6 +129,7 @@
 @property BOOL isAssetLoaded; // @synthesize isAssetLoaded=_isAssetLoaded;
 @property (readonly, nonatomic) BOOL isCloudItem;
 @property (readonly, nonatomic) BOOL isStreamingLowQualityAsset;
+@property (readonly, copy, nonatomic) NSError *lastResourceLoadingError;
 @property (nonatomic) long long likedState;
 @property (readonly, nonatomic, getter=isLikedStateEnabled) BOOL likedStateEnabled; // @synthesize likedStateEnabled=_likedStateEnabled;
 @property (nonatomic) BOOL limitReadAhead;
@@ -139,8 +138,7 @@
 @property (readonly, nonatomic) NSString *lyrics;
 @property (readonly, nonatomic) NSString *mainTitle;
 @property (readonly, strong, nonatomic) MPMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
-@property (readonly, nonatomic) MPModelObject *modelObject; // @synthesize modelObject=_modelObject;
-@property (readonly, nonatomic) MPModelSong *modelSong; // @synthesize modelSong=_modelSong;
+@property (readonly, nonatomic) MPModelGenericObject *modelGenericObject; // @synthesize modelGenericObject=_modelGenericObject;
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (readonly, nonatomic) unsigned long long persistentID;
 @property (readonly, nonatomic) double playableDuration;
@@ -152,11 +150,10 @@
 @property (strong, nonatomic) id<MPAVItemPlaylistIdentifier> playlistIdentifier;
 @property (strong, nonatomic) id<MPAVItemPlaylistIdentifier> playlistIdentifier; // @synthesize playlistIdentifier=_playlistIdentifier;
 @property (readonly, nonatomic) NSURL *podcastURL;
-@property (nonatomic, setter=_setPrefersHLS:) BOOL prefersHLS; // @synthesize prefersHLS=_prefersHLS;
+@property (readonly, nonatomic) BOOL prefersSeekOverSkip; // @synthesize prefersSeekOverSkip=_prefersSeekOverSkip;
 @property (readonly, nonatomic) struct CGSize presentationSize;
 @property (strong, nonatomic) id<MPAVItemQueueIdentifier> queueIdentifier; // @synthesize queueIdentifier=_queueIdentifier;
 @property (strong, nonatomic) MPAlternateTextTrack *selectedAlternateTextTrack;
-@property (nonatomic, setter=_setShouldUseStreamingRedownload:) BOOL shouldUseStreamingRedownload; // @synthesize shouldUseStreamingRedownload=_shouldUseStreamingRedownload;
 @property (nonatomic) float soundCheckVolumeNormalization; // @synthesize soundCheckVolumeNormalization=_soundCheckVolumeNormalization;
 @property (readonly, nonatomic) long long status;
 @property (readonly, nonatomic) MPStoreDownload *storeDownload;

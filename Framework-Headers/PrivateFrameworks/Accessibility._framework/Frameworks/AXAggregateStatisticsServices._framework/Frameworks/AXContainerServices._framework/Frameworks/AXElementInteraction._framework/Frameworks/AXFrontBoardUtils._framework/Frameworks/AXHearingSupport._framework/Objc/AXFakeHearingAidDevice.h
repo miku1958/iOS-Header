@@ -31,9 +31,11 @@
     NSString *_rightHardwareVersion;
     NSDate *_leftBatteryLowDate;
     NSDate *_rightBatteryLowDate;
+    unsigned long long _excludedProperties;
 }
 
 @property (nonatomic) BOOL connected; // @synthesize connected=_connected;
+@property (nonatomic) unsigned long long excludedProperties; // @synthesize excludedProperties=_excludedProperties;
 @property (nonatomic) BOOL isConnecting; // @synthesize isConnecting=_isConnecting;
 @property (nonatomic) double leftBatteryLevel; // @synthesize leftBatteryLevel=_leftBatteryLevel;
 @property (strong, nonatomic) NSDate *leftBatteryLowDate; // @synthesize leftBatteryLowDate=_leftBatteryLowDate;
@@ -63,18 +65,23 @@
 - (BOOL)hasConnection;
 - (id)initWithDeviceType:(int)arg1;
 - (BOOL)isConnected;
+- (BOOL)isLeftConnected;
 - (BOOL)isPersistent;
+- (BOOL)isRightConnected;
 - (BOOL)leftAvailable;
 - (id)leftPrograms;
 - (id)manufacturerForType;
 - (id)modelForType;
 - (void)persist;
 - (id)persistentRepresentation;
+- (BOOL)programsListsAreEqual;
+- (BOOL)propertyIsAvailable:(unsigned long long)arg1 forEar:(int)arg2;
 - (void)registerWriteBlock:(CDUnknownBlockType)arg1;
 - (BOOL)rightAvailable;
 - (id)rightPrograms;
 - (void)setNewName:(id)arg1;
 - (void)setValue:(id)arg1 forProperty:(unsigned long long)arg2;
+- (BOOL)showCombinedPrograms;
 - (id)valueForProperty:(unsigned long long)arg1;
 - (void)writeInt:(unsigned char)arg1 toEar:(int)arg2 forProperty:(unsigned long long)arg3;
 - (void)writeSignedInt:(BOOL)arg1 toEar:(int)arg2 forProperty:(unsigned long long)arg3;

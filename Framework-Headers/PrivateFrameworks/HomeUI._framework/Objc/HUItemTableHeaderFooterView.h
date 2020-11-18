@@ -6,12 +6,16 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class NSArray, NSAttributedString, NSLayoutConstraint, NSString, UILabel;
+#import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@interface HUItemTableHeaderFooterView : UITableViewHeaderFooterView
+@class NSArray, NSAttributedString, NSLayoutConstraint, NSString, UITextView;
+@protocol HUTextInteractionHandling;
+
+@interface HUItemTableHeaderFooterView : UITableViewHeaderFooterView <UITextViewDelegate>
 {
     BOOL _includeBottomSpacing;
-    UILabel *_messageLabel;
+    id<HUTextInteractionHandling> _textInteractionHandler;
+    UITextView *_messageTextView;
     NSArray *_constraints;
     NSLayoutConstraint *_bottomSpacingConstraint;
 }
@@ -19,15 +23,21 @@
 @property (copy, nonatomic) NSAttributedString *attributedMessage;
 @property (strong, nonatomic) NSLayoutConstraint *bottomSpacingConstraint; // @synthesize bottomSpacingConstraint=_bottomSpacingConstraint;
 @property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL includeBottomSpacing; // @synthesize includeBottomSpacing=_includeBottomSpacing;
 @property (copy, nonatomic) NSString *message;
-@property (strong, nonatomic) UILabel *messageLabel; // @synthesize messageLabel=_messageLabel;
+@property (strong, nonatomic) UITextView *messageTextView; // @synthesize messageTextView=_messageTextView;
 @property (nonatomic) unsigned long long numberOfLines;
+@property (readonly) Class superclass;
+@property (weak, nonatomic) id<HUTextInteractionHandling> textInteractionHandler; // @synthesize textInteractionHandler=_textInteractionHandler;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (double)_bottomSpacing;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)updateConstraints;
 
 @end

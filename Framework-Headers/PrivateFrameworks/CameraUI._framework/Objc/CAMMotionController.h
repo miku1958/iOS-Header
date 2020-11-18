@@ -12,8 +12,10 @@
 
 @interface CAMMotionController : NSObject <BKSAccelerometerDelegate>
 {
+    BOOL __didNotifyCaptureOrientationWasInvalid;
     long long _dominantPhysicalButton;
     long long __cachedCaptureOrientation;
+    long long __fallbackCaptureOrientation;
     BKSAccelerometer *__accelerometer;
     long long __numberOfDominantPhysicalButtonObservers;
     CMMotionManager *__physicalButtonMotionManager;
@@ -21,6 +23,8 @@
 
 @property (strong, nonatomic, setter=_setAccelerometer:) BKSAccelerometer *_accelerometer; // @synthesize _accelerometer=__accelerometer;
 @property (nonatomic, setter=_setCachedCaptureOrientation:) long long _cachedCaptureOrientation; // @synthesize _cachedCaptureOrientation=__cachedCaptureOrientation;
+@property (nonatomic, setter=_setDidNotifyCaptureOrientationWasInvalid:) BOOL _didNotifyCaptureOrientationWasInvalid; // @synthesize _didNotifyCaptureOrientationWasInvalid=__didNotifyCaptureOrientationWasInvalid;
+@property (readonly, nonatomic) long long _fallbackCaptureOrientation; // @synthesize _fallbackCaptureOrientation=__fallbackCaptureOrientation;
 @property (nonatomic, setter=_setNumberOfDominantPhysicalButtonObservers:) long long _numberOfDominantPhysicalButtonObservers; // @synthesize _numberOfDominantPhysicalButtonObservers=__numberOfDominantPhysicalButtonObservers;
 @property (readonly, nonatomic) CMMotionManager *_physicalButtonMotionManager; // @synthesize _physicalButtonMotionManager=__physicalButtonMotionManager;
 @property (readonly, nonatomic) long long captureOrientation;
@@ -32,12 +36,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_debugStringForDeviceOrientation:(long long)arg1;
+- (id)_debugStringForInterfaceOrientation:(long long)arg1;
 - (void)_updatePhysicalButtonObservation;
 - (void)accelerometer:(id)arg1 didAccelerateWithTimeStamp:(double)arg2 x:(float)arg3 y:(float)arg4 z:(float)arg5 eventType:(int)arg6;
 - (void)accelerometer:(id)arg1 didChangeDeviceOrientation:(int)arg2;
 - (void)beginGeneratingDominantPhysicalButtonNotifications;
 - (void)dealloc;
-- (void)deviceDidChangeOrientation:(id)arg1;
+- (void)debugValidateCaptureOrientation;
 - (void)endGeneratingDominantPhysicalButtonNotifications;
 - (id)init;
 

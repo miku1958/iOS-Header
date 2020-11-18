@@ -35,8 +35,9 @@
 @property (copy, nonatomic) NSDictionary *userInfo;
 @property (strong, nonatomic) NSData *userInfoData; // @synthesize userInfoData=_userInfoData;
 
-+ (id)staticShortcutItemWithDictionary:(id)arg1 localizationHandler:(CDUnknownBlockType)arg2;
++ (id)_staticApplicationShortcutItemsFromInfoPlistEntry:(id)arg1;
 - (void).cxx_destruct;
+- (void)_localizeWithHandler:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;

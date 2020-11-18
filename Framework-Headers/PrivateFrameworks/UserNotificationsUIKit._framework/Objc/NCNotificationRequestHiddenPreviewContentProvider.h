@@ -15,7 +15,7 @@
     NSString *_topic;
 }
 
-@property (readonly, strong, nonatomic) NSMutableArray *coalescedNotificationRequests; // @synthesize coalescedNotificationRequests=_coalescedNotificationRequests;
+@property (strong, nonatomic) NSMutableArray *coalescedNotificationRequests; // @synthesize coalescedNotificationRequests=_coalescedNotificationRequests;
 @property (nonatomic, getter=isDeviceAuthenticated) BOOL deviceAuthenticated; // @synthesize deviceAuthenticated=_deviceAuthenticated;
 @property (copy, nonatomic) NSString *topic; // @synthesize topic=_topic;
 
@@ -27,6 +27,7 @@
 - (id)initWithNotificationRequest:(id)arg1;
 - (id)interfaceActions;
 - (id)primarySubtitleText;
+- (void)removeCoalescedNotificationRequest:(id)arg1;
 - (id)secondaryText;
 - (id)thumbnail;
 

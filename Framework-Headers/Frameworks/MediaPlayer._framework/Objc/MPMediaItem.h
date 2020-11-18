@@ -51,6 +51,7 @@
 @property (readonly, nonatomic) unsigned long long playCount;
 @property (nonatomic) unsigned long long playCountSinceSync;
 @property (readonly, nonatomic) double playbackDuration;
+@property (readonly, nonatomic) NSString *playbackStoreID;
 @property (readonly, nonatomic) unsigned long long podcastPersistentID;
 @property (readonly, nonatomic) NSString *podcastTitle;
 @property (readonly, nonatomic, getter=hasProtectedAsset) BOOL protectedAsset;

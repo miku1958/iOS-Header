@@ -16,8 +16,13 @@ __attribute__((visibility("hidden")))
     int _sourceTileZtoStencilOffset;
     int _extraStencil;
     struct ClearItem *_clearItem;
+    struct map<gss::StylesheetQuery<gss::PropertyID>*, std::__1::unique_ptr<md::RoadStyling, std::__1::default_delete<md::RoadStyling>>, std::__1::less<gss::StylesheetQuery<gss::PropertyID>*>, std::__1::allocator<std::__1::pair<gss::StylesheetQuery<gss::PropertyID>*const, std::__1::unique_ptr<md::RoadStyling, std::__1::default_delete<md::RoadStyling>>>>> _activeRoadStyles;
+    struct map<gss::StylesheetQuery<gss::PropertyID>*, std::__1::unique_ptr<md::TrafficSpeedStyling, std::__1::default_delete<md::TrafficSpeedStyling>>, std::__1::less<gss::StylesheetQuery<gss::PropertyID>*>, std::__1::allocator<std::__1::pair<gss::StylesheetQuery<gss::PropertyID>*const, std::__1::unique_ptr<md::TrafficSpeedStyling, std::__1::default_delete<md::TrafficSpeedStyling>>>>> _activeTrafficStyles;
     struct unique_ptr<md::RoadSharedResources, std::__1::default_delete<md::RoadSharedResources>> _roadSharedResources;
     struct unique_ptr<md::PatternedSharedResources, std::__1::default_delete<md::PatternedSharedResources>> _patternedSharedResources;
+    struct set<gss::StylesheetQuery<gss::PropertyID>*, std::__1::less<gss::StylesheetQuery<gss::PropertyID>*>, std::__1::allocator<gss::StylesheetQuery<gss::PropertyID>*>> _frameStyles;
+    struct set<gss::StylesheetQuery<gss::PropertyID>*, std::__1::less<gss::StylesheetQuery<gss::PropertyID>*>, std::__1::allocator<gss::StylesheetQuery<gss::PropertyID>*>> _frameInFlightStyles;
+    struct set<gss::StylesheetQuery<gss::PropertyID>*, std::__1::less<gss::StylesheetQuery<gss::PropertyID>*>, std::__1::allocator<gss::StylesheetQuery<gss::PropertyID>*>> _frameOutdatedStyles;
     BOOL _trafficEnabled;
     double _layoutTimestamp;
     unsigned long long _mapLayerPosition;
@@ -34,7 +39,8 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_setupTrafficColorsWithRoadLayoutContext:(struct RoadLayoutContext *)arg1 trafficStyleAttributes:(const struct FeatureAttributeSet *)arg2 styleZ:(float)arg3;
+- (void)assignRoadStyling:(struct RoadLayer *)arg1;
+- (void)assignTrafficStyling:(id)arg1 withContext:(struct RoadLayoutContext *)arg2;
 - (unsigned char)commandBufferId;
 - (void)dealloc;
 - (void)didReceiveMemoryWarning:(BOOL)arg1;
@@ -43,7 +49,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithTarget:(id)arg1 sharedResources:(id)arg2;
 - (void)reserveStencilRangeForScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(struct RenderQueue *)arg3;
 - (void)stylesheetDidChange;
+- (void)stylesheetDidReload;
 - (BOOL)supportsTrafficCasing;
+- (void)syncActiveStyles;
+- (BOOL)wantsCategorizedSourceTiles;
+- (void)willStartDrawingTiles:(id)arg1;
+- (void)willStopDrawingTiles:(id)arg1;
 
 @end
 

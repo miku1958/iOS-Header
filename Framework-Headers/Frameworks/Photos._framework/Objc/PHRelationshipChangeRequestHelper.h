@@ -15,6 +15,7 @@
     BOOL _allowsRemove;
     NSString *_relationshipName;
     NSString *_destinationEntityName;
+    NSString *_destinationUUIDKeyPath;
     NSArray *_originalObjectIDs;
     NSMutableArray *_mutableObjectIDsAndUUIDs;
     CDUnknownBlockType _isDestinationObjectValid;
@@ -26,6 +27,7 @@
 @property (nonatomic) BOOL allowsRemove; // @synthesize allowsRemove=_allowsRemove;
 @property (strong, nonatomic) PHChangeRequestHelper *changeRequestHelper; // @synthesize changeRequestHelper=_changeRequestHelper;
 @property (strong, nonatomic) NSString *destinationEntityName; // @synthesize destinationEntityName=_destinationEntityName;
+@property (strong, nonatomic) NSString *destinationUUIDKeyPath; // @synthesize destinationUUIDKeyPath=_destinationUUIDKeyPath;
 @property (copy, nonatomic) CDUnknownBlockType isDestinationObjectValid; // @synthesize isDestinationObjectValid=_isDestinationObjectValid;
 @property (strong, nonatomic) NSMutableArray *mutableObjectIDsAndUUIDs; // @synthesize mutableObjectIDsAndUUIDs=_mutableObjectIDsAndUUIDs;
 @property (strong, nonatomic) NSArray *originalObjectIDs; // @synthesize originalObjectIDs=_originalObjectIDs;

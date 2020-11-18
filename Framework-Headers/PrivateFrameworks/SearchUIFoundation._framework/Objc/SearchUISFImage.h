@@ -13,7 +13,7 @@
     UIImage *_uiImage;
 }
 
-@property (strong, nonatomic) UIImage *uiImage; // @synthesize uiImage=_uiImage;
+@property (strong) UIImage *uiImage; // @synthesize uiImage=_uiImage;
 
 - (void).cxx_destruct;
 

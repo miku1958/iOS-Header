@@ -80,6 +80,7 @@
 @property (readonly, nonatomic) unsigned long long versionIdentifier; // @synthesize versionIdentifier=_versionIdentifier;
 
 + (id)_curationSharedBackgroundQueue;
++ (id)_emptyAssetsFetchResult;
 - (void).cxx_destruct;
 - (BOOL)_allSectionsConsideredAccurate;
 - (id)_allowedUUIDsForAssetCollection:(id)arg1;
@@ -160,6 +161,7 @@
 - (void)pauseChangeDeliveryFor:(double)arg1;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (void)prefetchApproximateAssetsAtIndexPaths:(id)arg1;
+- (void)prefetchApproximateAssetsAtIndexPaths:(id)arg1 reverseOrder:(BOOL)arg2;
 - (void)prefetchAssetsAtIndexPaths:(id)arg1;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
 - (void)refetchResultsForAssetCollection:(id)arg1;

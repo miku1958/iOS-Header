@@ -12,7 +12,7 @@
 #import <HealthDaemon/HDFitnessFriendsIDSMessageCenterDelegate-Protocol.h>
 #import <HealthDaemon/HDFitnessFriendsManagerReadyObserver-Protocol.h>
 
-@class ACAccountStore, CNContactStore, HDFitnessAppBadgeManager, HDFitnessFriendsActivityDataManager, HDFitnessFriendsCloudKitManager, HDFitnessFriendsContactsManager, HDFitnessFriendsFriendListManager, HDFitnessFriendsGatewayManager, HDFitnessFriendsInvitationBBDataProvider, NSDictionary, NSMutableDictionary, NSString;
+@class CNContactStore, HDFitnessAppBadgeManager, HDFitnessFriendsActivityDataManager, HDFitnessFriendsCloudKitManager, HDFitnessFriendsContactsManager, HDFitnessFriendsFriendListManager, HDFitnessFriendsGatewayManager, HDFitnessFriendsInvitationBBDataProvider, NSDictionary, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDFitnessFriendsRelationshipManager : NSObject <HDFitnessFriendsIDSMessageCenterDelegate, HDFitnessFriendsBBDataProviderDelegate, HDFitnessFriendsCloudKitManagerChangesObserver, HDFitnessFriendsGatewayManagerChangesObserver, HDFitnessFriendsManagerReadyObserver>
@@ -25,7 +25,6 @@
     HDFitnessFriendsGatewayManager *_gatewayManager;
     NSDictionary *_messageCenters;
     HDFitnessFriendsInvitationBBDataProvider *_bulletinBoardInvitationDataProvider;
-    ACAccountStore *_accountStore;
     CNContactStore *_contactStore;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_friendListLockQueue;
@@ -73,7 +72,6 @@
 - (void)cloudKitManager:(id)arg1 didRecieveNewRelationships:(id)arg2 fromRecordZoneWithID:(id)arg3 moreComing:(BOOL)arg4 changesProcessedHandler:(CDUnknownBlockType)arg5;
 - (void)cloudKitManager:(id)arg1 didRecieveNewRemoteRelationships:(id)arg2 fromRecordZoneWithID:(id)arg3 moreComing:(BOOL)arg4 changesProcessedHandler:(CDUnknownBlockType)arg5;
 - (void)dealloc;
-- (id)deviceCloudKitAddress;
 - (void)fitnessFriendsManagerReady:(id)arg1;
 - (void)gatewayManagerStatusDidChange;
 - (void)ignoreInviteRequestFromFriendWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;

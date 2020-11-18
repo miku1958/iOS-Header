@@ -6,26 +6,30 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSCache, NSManagedObjectID, NSMutableArray, NSURL;
+@class NSCache, NSManagedObjectID, NSMutableArray, NSString, NSURL;
 
 @interface ICAttachmentImageLoadingOperation : NSOperation
 {
+    BOOL _forceFullSizeImage;
     short _attachmentType;
-    NSURL *_mediaURL;
+    NSString *_cacheKey;
     NSCache *_cache;
-    NSManagedObjectID *_mediaObjectID;
+    NSManagedObjectID *_attachmentObjectID;
+    NSURL *_mediaURL;
     NSMutableArray *_completionHandlers;
 }
 
+@property (strong, nonatomic) NSManagedObjectID *attachmentObjectID; // @synthesize attachmentObjectID=_attachmentObjectID;
 @property (nonatomic) short attachmentType; // @synthesize attachmentType=_attachmentType;
 @property (strong, nonatomic) NSCache *cache; // @synthesize cache=_cache;
+@property (copy, nonatomic) NSString *cacheKey; // @synthesize cacheKey=_cacheKey;
 @property (strong, nonatomic) NSMutableArray *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
-@property (strong, nonatomic) NSManagedObjectID *mediaObjectID; // @synthesize mediaObjectID=_mediaObjectID;
+@property (nonatomic) BOOL forceFullSizeImage; // @synthesize forceFullSizeImage=_forceFullSizeImage;
 @property (strong, nonatomic) NSURL *mediaURL; // @synthesize mediaURL=_mediaURL;
 
 - (void).cxx_destruct;
 - (CDUnknownBlockType)addCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithCache:(id)arg1 media:(id)arg2 attachmentType:(short)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)initWithCache:(id)arg1 attachment:(id)arg2 attachmentType:(short)arg3 forceFullSizeImage:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)main;
 - (void)removeCompletionHandler:(CDUnknownBlockType)arg1 cancelIfNoneLeft:(BOOL)arg2;
 

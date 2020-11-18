@@ -11,6 +11,7 @@
 @interface FCPrivateZoneController : NSObject
 {
     BOOL _dirty;
+    BOOL _waitingForFirstSync;
     BOOL _preparedForUse;
     BOOL _syncingEnabled;
     FCCKRecordZone *_recordZone;
@@ -42,6 +43,7 @@
 @property (strong, nonatomic) FCAsyncSerialQueue *syncQueue; // @synthesize syncQueue=_syncQueue;
 @property (readonly, nonatomic, getter=isSyncingEnabled) BOOL syncingEnabled;
 @property (nonatomic, getter=isSyncingEnabled) BOOL syncingEnabled; // @synthesize syncingEnabled=_syncingEnabled;
+@property (getter=isWaitingForFirstSync) BOOL waitingForFirstSync; // @synthesize waitingForFirstSync=_waitingForFirstSync;
 
 + (long long)commandQueueUrgency;
 + (id)commandStoreFileName;
@@ -60,6 +62,7 @@
 - (void).cxx_destruct;
 - (void)_markAsClean;
 - (void)_markAsDirty;
+- (long long)_qualityOfServiceForNextSync;
 - (void)_serialSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addCommandToCommandQueue:(id)arg1;
 - (void)addObserver:(id)arg1;

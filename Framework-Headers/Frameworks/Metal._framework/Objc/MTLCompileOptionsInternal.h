@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)debuggingEnabled;
 - (id)description;
 - (BOOL)fastMathEnabled;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (BOOL)glBufferBindPoints;
 - (unsigned long long)hash;
 - (id)init;

@@ -6,7 +6,6 @@
 
 #import <CVML/CVMLClusteringLogger.h>
 
-__attribute__((visibility("hidden")))
 @interface CVMLSuggestionsLogger : CVMLClusteringLogger
 {
 }

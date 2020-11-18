@@ -33,7 +33,7 @@
 - (void)goForward;
 - (void)goToItem:(id)arg1;
 - (id)init;
-- (id)initWithBackForwardList:(PassRefPtr_bc1f952d)arg1;
+- (id)initWithBackForwardList:(Ref_00b193fd *)arg1;
 - (id)itemAtIndex:(int)arg1;
 - (unsigned long long)pageCacheSize;
 - (void)removeItem:(id)arg1;

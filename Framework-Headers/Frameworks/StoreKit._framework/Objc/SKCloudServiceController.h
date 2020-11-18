@@ -25,6 +25,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)requestCapabilitiesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestPersonalizationTokenForClientToken:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestStorefrontIdentifierWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

@@ -14,12 +14,11 @@
 @interface WLKUIAccessView_tvOS : UIView <TVCarouselViewDataSource, TVCarouselViewDelegate>
 {
     NSArray *_apps;
-    NSString *_accountName;
     UILayoutGuide *_contentGuide;
     UIStackView *_contentStack;
-    UILabel *_headerLabel;
+    UILabel *_titleLabel;
     UIStackView *_logoStack;
-    UILabel *_explanatoryLabel;
+    UILabel *_bodyLabel;
     UIStackView *_buttonStack;
     UIButton *_allowButton;
     UIButton *_disallowButton;
@@ -35,6 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (struct CGSize)iconSize;
 - (void).cxx_destruct;
 - (id)_buildButtonStack;
 - (id)_buildCarousel;
@@ -45,12 +45,14 @@
 - (id)carouselView:(id)arg1 cellForItemAtIndex:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)disallowButton;
-- (id)initWithApps:(id)arg1 accountName:(id)arg2;
+- (id)initWithApps:(id)arg1;
 - (void)layoutSubviews;
 - (id)nackButton;
 - (unsigned long long)numberOfItemsInCarouselView:(id)arg1;
 - (id)privacyButton;
 - (id)seeAllButton;
+- (void)setBody:(id)arg1;
+- (void)setTitle:(id)arg1;
 - (void)showNackScreen;
 
 @end

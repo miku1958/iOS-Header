@@ -6,14 +6,16 @@
 
 #import <Foundation/NSObject.h>
 
-@class MPMediaLibrary, MPModelObject;
+@class MPMediaLibrary, MPModelKind, MPModelObject;
 
 @interface MPModelLibraryHasPurchasesRequest : NSObject
 {
     MPModelObject *_modelObject;
     MPMediaLibrary *_mediaLibrary;
+    MPModelKind *_itemKind;
 }
 
+@property (strong, nonatomic) MPModelKind *itemKind; // @synthesize itemKind=_itemKind;
 @property (strong, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (strong, nonatomic) MPModelObject *modelObject; // @synthesize modelObject=_modelObject;
 

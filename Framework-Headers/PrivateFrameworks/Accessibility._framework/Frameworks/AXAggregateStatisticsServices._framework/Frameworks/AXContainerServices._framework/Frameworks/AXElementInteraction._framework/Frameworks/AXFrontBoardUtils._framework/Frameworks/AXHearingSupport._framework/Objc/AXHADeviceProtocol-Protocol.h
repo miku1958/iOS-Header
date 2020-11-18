@@ -72,7 +72,7 @@
 - (void)loadRequiredProperties;
 - (NSArray *)programs;
 - (BOOL)rightAvailable;
-- (void)selectProgram:(AXHearingAidMode *)arg1;
+- (void)selectProgram:(AXHearingAidMode *)arg1 forEar:(int)arg2;
 - (NSIndexSet *)selectedProgramIndexes;
 - (NSArray *)selectedPrograms;
 - (void)setValue:(id)arg1 forProperty:(unsigned long long)arg2;

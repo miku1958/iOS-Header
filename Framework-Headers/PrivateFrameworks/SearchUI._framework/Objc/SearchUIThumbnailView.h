@@ -19,8 +19,10 @@
 @property (strong) UIView *overlayPlayButton; // @synthesize overlayPlayButton=_overlayPlayButton;
 @property (strong) SFSearchResult *result; // @synthesize result=_result;
 
++ (id)suggestedQueryIcon;
 - (void).cxx_destruct;
-- (id)appIconForResult:(id)arg1;
+- (void)appIconImageDidChange:(id)arg1;
+- (void)dealloc;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (BOOL)shouldVerticallyCenter;

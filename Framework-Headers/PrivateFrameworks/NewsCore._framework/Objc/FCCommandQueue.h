@@ -41,6 +41,7 @@
 @property (nonatomic) long long urgency; // @synthesize urgency=_urgency;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)sharedWorkQueue;
 - (void).cxx_destruct;
 - (void)_addCommand:(id)arg1 saveCompletion:(CDUnknownBlockType)arg2;
 - (void)_applicationDidEnterBackground:(id)arg1;

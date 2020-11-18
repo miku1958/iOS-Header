@@ -8,6 +8,7 @@
 
 @interface NSDate (WBSNSDateExtras)
 + (id)safari_dateOfMidnightNumberOfDaysAgo:(long long)arg1;
++ (double)safari_oneDayInSeconds;
 - (BOOL)safari_isInSameDayAsDate:(id)arg1;
 - (BOOL)safari_isInToday;
 - (BOOL)safari_isInclusivelyBetweenDate:(id)arg1 andDate:(id)arg2;

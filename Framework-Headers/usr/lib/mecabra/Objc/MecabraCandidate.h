@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) BOOL isExtensionCandidate;
 @property (readonly, nonatomic) BOOL isFuzzyMatchCandidate;
 @property (readonly, nonatomic) BOOL isLearningDictionaryCandidate;
+@property (readonly, nonatomic) BOOL isOTAWordlistCandidate;
 @property (readonly, nonatomic) BOOL isPersonName;
 @property (readonly, nonatomic) BOOL isPredictionCandidate;
 @property (readonly, nonatomic) BOOL isSyntheticCandidate;

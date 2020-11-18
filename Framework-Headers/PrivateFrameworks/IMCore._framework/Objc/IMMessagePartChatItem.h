@@ -29,7 +29,9 @@
 @property (readonly, copy, nonatomic) NSAttributedString *text; // @synthesize text=_text;
 @property (strong, nonatomic, setter=_setVisibleAssociatedMessageChatItems:) NSArray *visibleAssociatedMessageChatItems; // @synthesize visibleAssociatedMessageChatItems=_visibleAssociatedMessageChatItems;
 
++ (id)_defaultRichLinkWhiteList;
 + (id)_guidForMessage:(id)arg1 url:(id)arg2;
++ (BOOL)_isWhiteListedURL:(id)arg1;
 + (id)_messageItemWithPartsDeleted:(id)arg1 fromMessageItem:(id)arg2;
 + (id)_newMessagePartsForMessageItem:(id)arg1;
 + (id)_newMessagePartsForMessageItem:(id)arg1 shouldDisplayLink:(BOOL)arg2;

@@ -10,6 +10,16 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct Atomic<unsigned char> {
+    struct atomic<unsigned char> value;
+};
+
+struct AuxiliaryBarrier<JSC::Butterfly *> {
+    struct Butterfly *_field1;
+};
+
+struct Butterfly;
+
 struct CGPoint {
     double _field1;
     double _field2;
@@ -36,10 +46,6 @@ struct CallbackData {
     id _field8;
 };
 
-struct CopyBarrier<JSC::Butterfly> {
-    void *_field1;
-};
-
 struct HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticFunctionEntry, std::__1::default_delete<StaticFunctionEntry>>>>;
 
 struct HashMap<WTF::RefPtr<WTF::StringImpl>, std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>, WTF::StringHash, WTF::HashTraits<WTF::RefPtr<WTF::StringImpl>>, WTF::HashTraits<std::__1::unique_ptr<StaticValueEntry, std::__1::default_delete<StaticValueEntry>>>>;
@@ -54,15 +60,19 @@ struct JSObject {
     unsigned char _field3;
     unsigned char _field4;
     unsigned char _field5;
-    struct CopyBarrier<JSC::Butterfly> _field6;
+    struct AuxiliaryBarrier<JSC::Butterfly *> _field6;
 };
 
 struct JSValue {
     union EncodedValueDescriptor u;
 };
 
+struct Lock {
+    struct Atomic<unsigned char> m_byte;
+};
+
 struct OpaqueJSClass {
-    struct atomic<int> _field1;
+    struct atomic<unsigned int> _field1;
     struct OpaqueJSClass *_field2;
     struct OpaqueJSClass *_field3;
     CDUnknownFunctionPointerType _field4;
@@ -127,8 +137,12 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct atomic<int> {
-    _Atomic int _field1;
+struct atomic<unsigned char> {
+    _Atomic unsigned char __a_;
+};
+
+struct atomic<unsigned int> {
+    _Atomic unsigned int _field1;
 };
 
 struct pair<JSC::JSObject *, JSC::JSObject *> {

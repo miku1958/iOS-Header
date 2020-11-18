@@ -32,7 +32,6 @@
     CDUnknownFunctionPointerType _updateIMP;
     id<GLKViewControllerDelegate> _delegate;
     long long _screenFramesPerSecond;
-    long long _frameInterval;
     long long _preferredFramesPerSecond;
     long long _framesPerSecond;
     long long _framesDisplayed;
@@ -49,7 +48,6 @@
 @property (strong, nonatomic) GLKDisplayLinkMessenger *displayLinkMessenger; // @synthesize displayLinkMessenger=_displayLinkMessenger;
 @property (nonatomic) BOOL displayLinkPaused; // @synthesize displayLinkPaused=_displayLinkPaused;
 @property (nonatomic) BOOL firstResumeOccurred; // @synthesize firstResumeOccurred=_firstResumeOccurred;
-@property (nonatomic) long long frameInterval; // @synthesize frameInterval=_frameInterval;
 @property (readonly, nonatomic) long long framesDisplayed; // @synthesize framesDisplayed=_framesDisplayed;
 @property (readonly, nonatomic) long long framesPerSecond; // @synthesize framesPerSecond=_framesPerSecond;
 @property (readonly) unsigned long long hash;

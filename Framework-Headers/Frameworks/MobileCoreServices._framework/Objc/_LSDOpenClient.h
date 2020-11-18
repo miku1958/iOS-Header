@@ -15,15 +15,14 @@ __attribute__((visibility("hidden")))
 
 - (void)canOpenURL:(id)arg1 publicSchemes:(BOOL)arg2 privateSchemes:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)failedToOpenApplication:(id)arg1 withURL:(id)arg2;
-- (void)finishOpenOperationWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getAppLinkOpenStrategyForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)openAppLinkOpenState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)openApplicationWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)openURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)openUserActivityWithUniqueIdentifier:(id)arg1 activityData:(id)arg2 activityType:(id)arg3 bundleIdentifier:(id)arg4 options:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)performOpenOperationWithURL:(id)arg1 applicationIdentifier:(id)arg2 documentIdentifier:(id)arg3 sourceIsManaged:(BOOL)arg4 userInfo:(id)arg5 options:(id)arg6 delegate:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)resolveAppLinkForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setAppLinkOpenStrategy:(long long)arg1 forBundleIdentifier:(id)arg2;
-- (void)startOpenOperationWithURL:(id)arg1 applicationIdentifier:(id)arg2 userSpecifiedApplication:(BOOL)arg3 documentIdentifier:(id)arg4 userInfo:(id)arg5 options:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)willHandleInvocation:(id)arg1 isReply:(BOOL)arg2;
 
 @end

@@ -6,11 +6,9 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class _SFDialogController, _SFDialogView;
+@class _SFDialog;
 
 @protocol _SFDialogPresenting <NSObject>
-- (void)dismissDialogView:(_SFDialogView *)arg1 forDialogController:(_SFDialogController *)arg2;
-- (void)presentDialogView:(_SFDialogView *)arg1 forDialogController:(_SFDialogController *)arg2;
-- (int)webProcessIdentifierForDialogController:(_SFDialogController *)arg1;
+- (void)presentDialog:(_SFDialog *)arg1 sender:(id)arg2;
 @end
 

@@ -8,7 +8,6 @@
 
 @class NSString, VSPrivacyFacade;
 
-__attribute__((visibility("hidden")))
 @interface VSBundlePrivacyInfo : NSObject
 {
     struct __CFBundle *_bundle;

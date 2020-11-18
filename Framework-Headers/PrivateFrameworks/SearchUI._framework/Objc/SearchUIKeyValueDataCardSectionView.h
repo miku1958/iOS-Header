@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUICardSectionView.h>
+#import <SearchUI/SearchUILayoutFreeSectionView.h>
 
-@interface SearchUIKeyValueDataCardSectionView : SearchUICardSectionView
+@interface SearchUIKeyValueDataCardSectionView : SearchUILayoutFreeSectionView
 {
 }
 
-- (id)containerOfVerticalStrings:(id)arg1 vibrant:(BOOL)arg2;
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2;
+- (id)gridOfViewsForSection:(id)arg1;
+- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
+- (id)labelForString:(id)arg1 vibrant:(BOOL)arg2;
 
 @end
 

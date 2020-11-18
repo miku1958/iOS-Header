@@ -11,5 +11,7 @@
 - (void)fc_removeObjectsForKeysNotInSet:(id)arg1;
 - (void)fc_safelySetObject:(id)arg1 forKey:(id)arg2;
 - (void)fc_safelySetObjectAllowingNil:(id)arg1 forKey:(id)arg2;
+- (void)fc_safelySetObjectAllowingNil:(id)arg1 forKeyAllowingNil:(id)arg2;
+- (void)fc_transformValuesWithKeyAndValueBlock:(CDUnknownBlockType)arg1;
 @end
 

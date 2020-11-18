@@ -9,32 +9,33 @@
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class MPPropertySet, NSArray, NSString;
+@class MPModelKind, MPPropertySet, NSArray, NSString;
 
 @interface MPModelRequest : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _allowsDeferringExpensiveProperties;
     NSString *_label;
-    Class _itemClass;
-    Class _sectionClass;
+    MPModelKind *_sectionKind;
     MPPropertySet *_sectionProperties;
-    MPPropertySet *_itemProperties;
     NSArray *_sectionSortDescriptors;
+    MPModelKind *_itemKind;
+    MPPropertySet *_itemProperties;
     NSArray *_itemSortDescriptors;
 }
 
-@property (nonatomic) BOOL allowsDeferringExpensiveProperties; // @synthesize allowsDeferringExpensiveProperties=_allowsDeferringExpensiveProperties;
-@property (nonatomic) Class itemClass; // @synthesize itemClass=_itemClass;
+@property (nonatomic) Class itemClass;
+@property (strong, nonatomic) MPModelKind *itemKind; // @synthesize itemKind=_itemKind;
 @property (copy, nonatomic) MPPropertySet *itemProperties; // @synthesize itemProperties=_itemProperties;
 @property (copy, nonatomic) NSArray *itemSortDescriptors; // @synthesize itemSortDescriptors=_itemSortDescriptors;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
-@property (nonatomic) Class sectionClass; // @synthesize sectionClass=_sectionClass;
+@property (nonatomic) Class sectionClass;
+@property (strong, nonatomic) MPModelKind *sectionKind; // @synthesize sectionKind=_sectionKind;
 @property (copy, nonatomic) MPPropertySet *sectionProperties; // @synthesize sectionProperties=_sectionProperties;
 @property (copy, nonatomic) NSArray *sectionSortDescriptors; // @synthesize sectionSortDescriptors=_sectionSortDescriptors;
 
 + (id)sharedQueue;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_kindForClass:(Class)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;

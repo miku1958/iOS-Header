@@ -9,7 +9,6 @@
 @interface MFAttachment (PassKit)
 + (id)passPlaceholder;
 - (BOOL)isPass;
-- (id)pass;
 - (id)passWithError:(id *)arg1;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class CKDRecordCache, NSMutableDictionary, NSObject, NSSet;
+@class CKDFetchRecordsOperation, CKDRecordCache, NSDictionary, NSMutableDictionary, NSObject, NSSet;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -18,18 +18,21 @@ __attribute__((visibility("hidden")))
     BOOL _started;
     BOOL _markedToFinishByParent;
     CDUnknownBlockType _fetchAggregatorCompletionBlock;
+    NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
     NSSet *_desiredKeys;
     NSObject<OS_dispatch_source> *_recordReadySource;
     NSObject<OS_dispatch_queue> *_fetchQueue;
     NSObject<OS_dispatch_source> *_fetchSource;
     NSObject<OS_dispatch_group> *_fetchGroup;
-    NSObject<OS_dispatch_source> *_timerSource;
     NSMutableDictionary *_fetchInfosByOrder;
     unsigned long long _curFetchOrder;
     unsigned long long _highestReturnedOrder;
+    CKDFetchRecordsOperation *_currentFetchOp;
 }
 
+@property (strong, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property unsigned long long curFetchOrder; // @synthesize curFetchOrder=_curFetchOrder;
+@property (weak, nonatomic) CKDFetchRecordsOperation *currentFetchOp; // @synthesize currentFetchOp=_currentFetchOp;
 @property (strong, nonatomic) NSSet *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (copy, nonatomic) CDUnknownBlockType fetchAggregatorCompletionBlock; // @synthesize fetchAggregatorCompletionBlock=_fetchAggregatorCompletionBlock;
 @property (nonatomic) BOOL fetchAssetContents; // @synthesize fetchAssetContents=_fetchAssetContents;
@@ -43,7 +46,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) CKDRecordCache *recordCache;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *recordReadySource; // @synthesize recordReadySource=_recordReadySource;
 @property BOOL started; // @synthesize started=_started;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *timerSource; // @synthesize timerSource=_timerSource;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
@@ -53,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (void)_flushFetchedRecordsToConsumerLocked;
 - (void)_flushFetchedRecordsToConsumerNoOrderingLocked;
 - (void)_flushFetchedRecordsToConsumerOrderedLocked;
-- (void)_lockedRescheduleQueuedFetchesTimer;
 - (void)_lockedSendFetchRequest;
 - (void)_performCallbackForFetchInfoLocked:(id)arg1;
 - (void)_recordFetchesAvailable;

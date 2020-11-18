@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HAPBTLEControlOutputStream, HAPBTLETransactionIdentifier, HAPCharacteristic, HMFBlockOperation, HMFTimer, NSData;
+@class HAPBTLEControlOutputStream, HAPBTLETransactionIdentifier, HAPCharacteristic, HAPService, HMFBlockOperation, HMFTimer, NSData;
 
 @interface HAPBTLERequest : NSObject
 {
@@ -14,6 +14,7 @@
     BOOL _encrypted;
     BOOL _finished;
     HAPBTLETransactionIdentifier *_identifier;
+    HAPService *_service;
     HAPCharacteristic *_characteristic;
     NSData *_body;
     double _timeoutInterval;
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) HAPBTLETransactionIdentifier *identifier; // @synthesize identifier=_identifier;
 @property (weak, nonatomic) HMFBlockOperation *operation; // @synthesize operation=_operation;
 @property (strong, nonatomic) HMFTimer *responseTimer; // @synthesize responseTimer=_responseTimer;
+@property (readonly, nonatomic) HAPService *service; // @synthesize service=_service;
 @property (readonly, nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 @property (readonly, nonatomic) unsigned char type; // @synthesize type=_type;
 

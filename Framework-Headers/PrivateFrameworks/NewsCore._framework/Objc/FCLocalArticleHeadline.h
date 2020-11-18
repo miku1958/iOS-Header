@@ -48,7 +48,6 @@
 - (id)shortExcerpt;
 - (id)sourceChannel;
 - (id)sourceName;
-- (id)subtitle;
 - (id)surfacedByBinID;
 - (id)thumbnail;
 - (id)thumbnailAssetHandle;

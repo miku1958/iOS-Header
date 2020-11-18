@@ -13,6 +13,7 @@
     BOOL _hideSeparatorBelow;
     BOOL _fullWidthSeparator;
     SearchUICardViewController *_controller;
+    unsigned long long _style;
     NSURL *_url;
     SFCardSection *_section;
 }
@@ -21,11 +22,15 @@
 @property (nonatomic) BOOL fullWidthSeparator; // @synthesize fullWidthSeparator=_fullWidthSeparator;
 @property (nonatomic) BOOL hideSeparatorBelow; // @synthesize hideSeparatorBelow=_hideSeparatorBelow;
 @property (strong, nonatomic) SFCardSection *section; // @synthesize section=_section;
+@property unsigned long long style; // @synthesize style=_style;
 @property (strong) NSURL *url; // @synthesize url=_url;
 
 + (Class)classForSection:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithCardSection:(id)arg1 controller:(id)arg2;
+- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
+- (id)initWithCardSection:(id)arg1 style:(unsigned long long)arg2;
+- (BOOL)isAutoLayoutFree;
 - (double)separatorLeftInset;
 
 @end

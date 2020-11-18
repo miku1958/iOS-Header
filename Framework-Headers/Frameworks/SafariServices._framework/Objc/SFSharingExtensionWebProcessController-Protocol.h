@@ -6,10 +6,10 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString;
+@class NSDictionary, NSString;
 
 @protocol SFSharingExtensionWebProcessController <NSObject>
-- (void)evaluateJavaScriptForSharingExtension:(NSString *)arg1 javaScript:(NSString *)arg2 replyIdentifier:(NSNumber *)arg3;
+- (void)evaluateJavaScriptForSharingExtension:(NSString *)arg1 javaScript:(NSString *)arg2 completionHandler:(void (^)(NSDictionary *))arg3;
 - (void)finalizeJavaScriptForSharingExtension:(NSString *)arg1 arguments:(NSDictionary *)arg2;
 @end
 

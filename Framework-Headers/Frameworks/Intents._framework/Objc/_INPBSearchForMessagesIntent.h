@@ -46,8 +46,10 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsAttributes:(id)arg1;
 - (void)addAttribute:(int)arg1;
 - (int)attributeAtIndex:(unsigned long long)arg1;
+- (id)attributesAsString:(int)arg1;
 - (void)clearAttributes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

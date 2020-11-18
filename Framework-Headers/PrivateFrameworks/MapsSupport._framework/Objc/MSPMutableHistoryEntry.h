@@ -25,6 +25,7 @@
 @property (readonly, nonatomic, getter=_isImmutable) BOOL immutable; // @synthesize immutable=_immutable;
 @property (readonly, nonatomic) MSPHistoryEntryStorage *storage; // @synthesize storage=_storage;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=tracksRAPReportingOnly) BOOL tracksRAPReportingOnly;
 @property (copy, nonatomic) NSDate *usageDate; // @synthesize usageDate=_usageDate;
 
 + (Class)immutableObjectClass;

@@ -18,6 +18,7 @@
     BOOL _hasAppeared;
     BOOL _isPresenting;
     BOOL _hasCardPresented;
+    BOOL _visibleCellsOrHeadersChanged;
     id<SPUITableViewDelegate> _gestureDelegate;
     double _headerHeight;
     SPUISearchModel *_searchModel;
@@ -65,6 +66,7 @@
 @property (readonly) Class superclass;
 @property (strong) UISwipeGestureRecognizer *swipeDownRecognizer; // @synthesize swipeDownRecognizer=_swipeDownRecognizer;
 @property (strong) UISwipeGestureRecognizer *swipeUpRecognizer; // @synthesize swipeUpRecognizer=_swipeUpRecognizer;
+@property BOOL visibleCellsOrHeadersChanged; // @synthesize visibleCellsOrHeadersChanged=_visibleCellsOrHeadersChanged;
 
 + (unsigned long long)defaultStyle;
 + (unsigned long long)previewStyle;
@@ -82,7 +84,6 @@
 - (void)isPresenting:(BOOL)arg1;
 - (BOOL)isZKWExpanded;
 - (void)keyboardFrameChanged:(id)arg1;
-- (void)keyboardWillShow:(id)arg1;
 - (void)leavingSpotlight;
 - (void)numberOfRowsDidChange:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -97,21 +98,24 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (id)sectionForIndex:(unsigned long long)arg1;
 - (BOOL)sectionIsExpanded:(id)arg1;
-- (BOOL)sectionIsProactiveSuggestions:(long long)arg1;
 - (void)showViewController:(id)arg1 sender:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (void)tableView:(id)arg1 didEndDisplayingHeaderView:(id)arg2 forSection:(long long)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 editActionsForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
-- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (void)tableViewDidFinishReload:(id)arg1;
 - (void)toggleExpansionForSection:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)update;
 - (void)updateAnimated:(BOOL)arg1 whyUpdate:(unsigned long long)arg2;
+- (void)updateCellSelectedBackgroundViewForRoundedCorners:(id)arg1;
 - (void)updateDataModel:(unsigned long long)arg1;
 - (void)updateSeparator;
 - (void)viewBecomingVisible:(unsigned long long)arg1;

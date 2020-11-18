@@ -12,6 +12,7 @@
 
 @interface NTPBMediaEngage : PBCodable <NSCopying>
 {
+    long long _mediaDuration;
     long long _mediaPausePosition;
     long long _mediaResumePosition;
     long long _mediaResumeTimePlayed;
@@ -47,6 +48,7 @@
     BOOL _isUserSubscribedToFeed;
     BOOL _isVideoInFeed;
     struct {
+        unsigned int mediaDuration:1;
         unsigned int mediaPausePosition:1;
         unsigned int mediaResumePosition:1;
         unsigned int mediaResumeTimePlayed:1;
@@ -94,6 +96,7 @@
 @property (nonatomic) BOOL hasIsDigitalReplicaAd;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
 @property (nonatomic) BOOL hasIsVideoInFeed;
+@property (nonatomic) BOOL hasMediaDuration;
 @property (readonly, nonatomic) BOOL hasMediaId;
 @property (nonatomic) BOOL hasMediaPauseLocation;
 @property (nonatomic) BOOL hasMediaPauseMethod;
@@ -117,6 +120,7 @@
 @property (nonatomic) BOOL isDigitalReplicaAd; // @synthesize isDigitalReplicaAd=_isDigitalReplicaAd;
 @property (nonatomic) BOOL isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;
 @property (nonatomic) BOOL isVideoInFeed; // @synthesize isVideoInFeed=_isVideoInFeed;
+@property (nonatomic) long long mediaDuration; // @synthesize mediaDuration=_mediaDuration;
 @property (strong, nonatomic) NSString *mediaId; // @synthesize mediaId=_mediaId;
 @property (nonatomic) int mediaPauseLocation; // @synthesize mediaPauseLocation=_mediaPauseLocation;
 @property (nonatomic) int mediaPauseMethod; // @synthesize mediaPauseMethod=_mediaPauseMethod;

@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class MPMediaItem, MPMediaItemCollection, MPMediaPlaylist, MPMediaQuery, MPMusicPlayerQueueDescriptor, MPRadioStation, NSArray, NSData, NSNumber;
+@class MPMediaItem, MPMediaItemCollection, MPMediaPlaylist, MPMediaQuery, MPMusicPlayerControllerQueue, MPMusicPlayerQueueDescriptor, MPRadioStation, NSArray, NSData, NSNumber, NSUUID;
 
 @protocol MPMusicPlayerController
 
 @optional
 - (NSNumber *)allowsBackgroundVideo;
+- (void)appendQueueDescriptor:(MPMusicPlayerQueueDescriptor *)arg1;
 - (void)beginSeekingBackward;
 - (void)beginSeekingForward;
 - (NSNumber *)currentChapterIndex;
 - (NSNumber *)currentPlaybackRate;
 - (NSNumber *)currentPlaybackTime;
+- (NSUUID *)currentQueueUUID;
 - (void)endSeeking;
 - (NSNumber *)indexOfNowPlayingItem;
 - (NSNumber *)isGeniusAvailable;
@@ -31,10 +33,13 @@
 - (NSNumber *)playbackState;
 - (void)prepareQueueForPlayback;
 - (void)prepareToPlay;
+- (void)prependQueueDescriptor:(MPMusicPlayerQueueDescriptor *)arg1;
 - (MPMediaQuery *)queueAsQuery;
 - (MPRadioStation *)queueAsRadioStation;
+- (MPMusicPlayerControllerQueue *)queueWithUUID:(NSUUID *)arg1;
 - (void)registerForServerDiedNotifications;
 - (NSNumber *)repeatMode;
+- (void)requestQueue;
 - (NSNumber *)serverIsAlive;
 - (void)setAllowsBackgroundVideo:(NSNumber *)arg1;
 - (void)setCurrentChapterIndex:(NSNumber *)arg1;
@@ -42,6 +47,7 @@
 - (void)setCurrentPlaybackTime:(NSNumber *)arg1;
 - (void)setNowPlayingItem:(MPMediaItem *)arg1;
 - (void)setPlaybackSpeed:(NSNumber *)arg1;
+- (void)setQueue:(MPMusicPlayerControllerQueue *)arg1;
 - (void)setQueueWithDescriptor:(MPMusicPlayerQueueDescriptor *)arg1;
 - (void)setQueueWithGeniusMixPlaylist:(MPMediaPlaylist *)arg1;
 - (void)setQueueWithItemCollection:(MPMediaItemCollection *)arg1;

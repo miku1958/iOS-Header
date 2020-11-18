@@ -32,7 +32,6 @@
 + (BOOL)contextShouldIgnoreChangesForALAssetsGroupFilterPredicate;
 + (BOOL)contextShouldIgnoreChangesForFetchRequest;
 + (BOOL)contextShouldIgnoreChangesForFetchedAssets;
-+ (BOOL)contextShouldIgnoreChangesForFetchedAssetsSet;
 + (id)predicateForAlbumKind:(int)arg1;
 + (id)sortDescriptorsForAlbumKind:(int)arg1;
 - (id)_cachedKeyAssets;

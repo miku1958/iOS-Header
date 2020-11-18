@@ -35,7 +35,7 @@
 - (void)beginInteractiveRecoveryForDevices:(id)arg1 isUsingMultipleICSC:(BOOL)arg2 usingValidator:(id)arg3;
 - (void)beginRecovery:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)initWithContext:(id)arg1 uiProvider:(id)arg2 secureBackupController:(id)arg3;
+- (id)initWithContext:(id)arg1 uiProvider:(id)arg2 secureBackupController:(id)arg3 circleProxy:(id)arg4;
 - (id)recoveryValidatorWithDevices:(id)arg1 forMultipleICSC:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)retrieveInflatedDevices:(CDUnknownBlockType)arg1;
 - (void)secretValidator:(id)arg1 recoverSecureBackupWithContext:(id)arg2 completion:(CDUnknownBlockType)arg3;

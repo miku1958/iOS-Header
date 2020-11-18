@@ -6,7 +6,7 @@
 
 #import <CloudKit/CKDatabaseOperationInfo.h>
 
-@class NSSet;
+@class NSDictionary, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface CKRecordFetchAggregatorOperationInfo : CKDatabaseOperationInfo
@@ -14,8 +14,10 @@ __attribute__((visibility("hidden")))
     BOOL _fetchAssetContents;
     BOOL _preserveOrdering;
     NSSet *_desiredKeys;
+    NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
 }
 
+@property (strong, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property (strong, nonatomic) NSSet *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (nonatomic) BOOL fetchAssetContents; // @synthesize fetchAssetContents=_fetchAssetContents;
 @property (nonatomic) BOOL preserveOrdering; // @synthesize preserveOrdering=_preserveOrdering;

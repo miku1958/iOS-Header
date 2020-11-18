@@ -19,8 +19,8 @@
 @property (strong, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
 @property (strong, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 
-+ (id)_highlightedIconImage;
-+ (id)_iconImage;
++ (id)highlightedIconImage;
++ (id)iconImage;
 - (void)dealloc;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;

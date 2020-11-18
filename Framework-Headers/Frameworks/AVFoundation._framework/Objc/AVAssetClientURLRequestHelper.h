@@ -11,6 +11,7 @@
 @interface AVAssetClientURLRequestHelper : NSObject
 {
     AVWeakReference *_weakReferenceToSelf;
+    AVWeakReference *_weakReferenceToAsset;
     AVCMNotificationDispatcher *_figNotificationDispatcher;
     void *_URLRequestOriginator;
     CDUnknownBlockType _figAssetProvider;
@@ -22,13 +23,16 @@
 @property (copy, nonatomic) CDUnknownBlockType figAssetProvider; // @synthesize figAssetProvider=_figAssetProvider;
 @property (weak, nonatomic) AVAssetResourceLoader *resourceLoader;
 
+- (id)URLAsset;
 - (void)_finishLoadingCustomURLProviderRequestWithResponseProperties:(id)arg1 context:(id)arg2;
+- (void)_handleRequestForAsset:(id)arg1 contentKeySession:(id)arg2 request:(id)arg3 identifier:(id)arg4;
+- (void)_onUnhandledContentKeyRequest:(id)arg1;
 - (void)_startHandlingURLRequestsFromRequestOriginator:(void *)arg1;
 - (void)_stopHandlingURLRequestsFromRequestOriginator:(void *)arg1;
 - (void)dealloc;
 - (void)finalize;
 - (void)handleURLRequest:(id)arg1;
-- (id)init;
+- (id)initWithAsset:(id)arg1;
 
 @end
 

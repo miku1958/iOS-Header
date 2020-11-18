@@ -6,14 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
-#import <MediaRemote/MRDeviceInfoObserving-Protocol.h>
 #import <MediaRemote/MRTelevisionClientConnectionDelegate-Protocol.h>
 
-@class MRDeviceInfo, MRDeviceInfoObserver, MRTelevisionClientConnection, MSVDistributedNotificationObserver, NSData, NSInputStream, NSMutableDictionary, NSNetService, NSOutputStream, NSString;
+@class MRSupportedProtocolMessages, MRTelevisionClientConnection, MSVDistributedNotificationObserver, NSData, NSInputStream, NSMutableDictionary, NSNetService, NSOutputStream, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MRTelevision : NSObject <MRTelevisionClientConnectionDelegate, MRDeviceInfoObserving>
+@interface MRTelevision : NSObject <MRTelevisionClientConnectionDelegate>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_workerQueue;
@@ -21,18 +20,19 @@ __attribute__((visibility("hidden")))
     void *_playbackQueue;
     NSData *_nowPlayingArtwork;
     unsigned int _cachedServerDisconnectError;
-    MRDeviceInfoObserver *_deviceInfoObserver;
+    int _notifyRestoreClientStateForLaunch;
+    void *_commandHandlerToken;
     BOOL _wantsNowPlayingNotifications;
     BOOL _wantsNowPlayingArtworkNotifications;
     BOOL _wantsVolumeNotifications;
     BOOL _hiliteMode;
-    BOOL _isCoalescingClientStateUpdatesConfigMessages;
     BOOL _isCallingClientCallback;
     unsigned int _connectionState;
     unsigned int _gameControllerInputMode;
-    MRDeviceInfo *_deviceInfo;
+    void *_deviceInfo;
     NSNetService *_netService;
     MRTelevisionClientConnection *_connection;
+    MRSupportedProtocolMessages *_supportedMessages;
     NSMutableDictionary *_nowPlayingInfo;
     MSVDistributedNotificationObserver *_volumeControlNotificationObserver;
     CDUnknownBlockType _pairingCallback;
@@ -66,7 +66,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct _MROrigin *customOrigin;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) MRDeviceInfo *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
+@property (readonly, nonatomic) void *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
 @property (nonatomic) unsigned int gameControllerInputMode; // @synthesize gameControllerInputMode=_gameControllerInputMode;
 @property (copy, nonatomic) CDUnknownBlockType gameControllerInputModeCallback; // @synthesize gameControllerInputModeCallback=_gameControllerInputModeCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *gameControllerInputModeCallbackQueue; // @synthesize gameControllerInputModeCallbackQueue=_gameControllerInputModeCallbackQueue;
@@ -79,7 +79,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *hostName;
 @property (readonly, nonatomic) NSInputStream *inputStream;
 @property (nonatomic) BOOL isCallingClientCallback; // @synthesize isCallingClientCallback=_isCallingClientCallback;
-@property (nonatomic) BOOL isCoalescingClientStateUpdatesConfigMessages; // @synthesize isCoalescingClientStateUpdatesConfigMessages=_isCoalescingClientStateUpdatesConfigMessages;
 @property (readonly, nonatomic) NSString *name;
 @property (copy, nonatomic) CDUnknownBlockType nameCallback; // @synthesize nameCallback=_nameCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *nameCallbackQueue; // @synthesize nameCallbackQueue=_nameCallbackQueue;
@@ -88,7 +87,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *nowPlayingInfo; // @synthesize nowPlayingInfo=_nowPlayingInfo;
 @property (readonly, nonatomic) NSOutputStream *outputStream;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
-@property (readonly, nonatomic) void *pairedDevice;
 @property (copy, nonatomic) CDUnknownBlockType pairingAllowedCallback; // @synthesize pairingAllowedCallback=_pairingAllowedCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *pairingAllowedCallbackQueue; // @synthesize pairingAllowedCallbackQueue=_pairingAllowedCallbackQueue;
 @property (copy, nonatomic) CDUnknownBlockType pairingCallback; // @synthesize pairingCallback=_pairingCallback;
@@ -97,6 +95,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType recordingStateCallback; // @synthesize recordingStateCallback=_recordingStateCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *recordingStateCallbackQueue; // @synthesize recordingStateCallbackQueue=_recordingStateCallbackQueue;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) MRSupportedProtocolMessages *supportedMessages; // @synthesize supportedMessages=_supportedMessages;
 @property (copy, nonatomic) CDUnknownBlockType textInputCallback; // @synthesize textInputCallback=_textInputCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *textInputCallbackQueue; // @synthesize textInputCallbackQueue=_textInputCallbackQueue;
 @property (strong, nonatomic) MSVDistributedNotificationObserver *volumeControlNotificationObserver; // @synthesize volumeControlNotificationObserver=_volumeControlNotificationObserver;
@@ -104,8 +103,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL wantsNowPlayingNotifications; // @synthesize wantsNowPlayingNotifications=_wantsNowPlayingNotifications;
 @property (nonatomic) BOOL wantsVolumeNotifications; // @synthesize wantsVolumeNotifications=_wantsVolumeNotifications;
 
-+ (id)_deviceInfoFromTXTRecordData:(id)arg1;
-- (void)_addArtwork:(id)arg1 toNowPlayingInfo:(id)arg2;
++ (void *)createDeviceInfoFromTXTRecordData:(id)arg1;
 - (void)_callCientCustomDataCallback:(id)arg1 name:(id)arg2;
 - (void)_callCientHiliteModeCallback;
 - (void)_callClientAllowsPairingCallback;
@@ -119,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (void)_cleanUp;
 - (id)_errorForCurrentState;
 - (void)_handleCryptoPairingMessage:(id)arg1;
+- (void)_handleDeviceInfoChanged:(id)arg1;
 - (void)_handleDeviceInfoUpdateMessage:(id)arg1;
 - (void)_handleGenericMessage:(id)arg1;
 - (void)_handleHiliteModeMessage:(id)arg1;
@@ -133,12 +132,13 @@ __attribute__((visibility("hidden")))
 - (id)_initializeConnection;
 - (id)_loadDeviceInfo;
 - (id)_openSecuritySession;
-- (void)_registerPlaybackQueueCallback;
-- (void)_scheduleClientStateUpdatesConfigMessage;
+- (void)_registerCallbacks;
+- (void)_registerOriginCallbacks;
+- (void)_sendClientUpdatesConfigMessage;
 - (void)_sendTextInputMessageWithActionType:(unsigned long long)arg1 text:(id)arg2;
 - (id)_setupCustomOrigin;
-- (void)_setupCustomOriginWithReplyQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_teardownCustomOrigin;
+- (void)_tearDownCustomOrigin;
+- (void)_televisionDeviceInfoDidChange:(void *)arg1 oldDevice:(void *)arg2;
 - (void)_updateNowPlayingInfo;
 - (void)clearActiveTextEditingSessionData;
 - (void)clientConnection:(id)arg1 didReceiveMessage:(id)arg2;
@@ -151,7 +151,7 @@ __attribute__((visibility("hidden")))
 - (void)getTextEditingSessionWithReplyQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithNetService:(id)arg1;
 - (void)insertTextIntoActiveTextEditingSessionWithText:(id)arg1;
-- (void)observer:(id)arg1 didObserveNewDeviceInfo:(id)arg2;
+- (void)ping:(double)arg1 callback:(CDUnknownBlockType)arg2 withQueue:(id)arg3;
 - (void)processVoiceInputAudioDataForDeviceID:(unsigned int)arg1 withBuffer:(id)arg2 time:(CDStruct_ace97b7a)arg3 gain:(float)arg4;
 - (void)registerGameControllerWithProperties:(void *)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerTouchDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -164,6 +164,7 @@ __attribute__((visibility("hidden")))
 - (void)setConnectionState:(unsigned int)arg1 error:(id)arg2;
 - (void)setConnectionStateCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setCustomDataCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setDeviceInfo:(void *)arg1;
 - (void)setGameControllerInputModeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setGameControllerPropertiesCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setHiliteMode:(BOOL)arg1;

@@ -10,7 +10,7 @@
 #import <AuthKitUI/AKBasicLoginAlertControllerDelegate-Protocol.h>
 #import <AuthKitUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AKAppleIDServerResourceLoadDelegate, AKAppleIDServerUIDataHarvester, AKBasicLoginAlertController, NSHTTPURLResponse, NSString, RUIObjectModel, RemoteUIController, UINavigationController, UIViewController;
+@class AAUICDPStingrayRemoteUIController, AKAppleIDServerResourceLoadDelegate, AKAppleIDServerUIDataHarvester, AKBasicLoginAlertController, NSHTTPURLResponse, NSString, RUIObjectModel, RemoteUIController, UINavigationController, UIViewController;
 @protocol AKAppleIDAuthenticationInAppContextDelegate;
 
 @interface AKAppleIDAuthenticationInAppContext : AKAppleIDAuthenticationContext <AKBasicLoginAlertControllerDelegate, AKAppleIDAuthenticationUIProvider, RemoteUIControllerDelegate>
@@ -24,7 +24,9 @@
     AKAppleIDServerUIDataHarvester *_serverUIHelper;
     RUIObjectModel *_currentRemoteOM;
     NSHTTPURLResponse *_latestReadResponse;
+    NSHTTPURLResponse *_deferredResponse;
     BOOL _isPresentingServerUI;
+    AAUICDPStingrayRemoteUIController *_stingrayController;
     UIViewController *_presentingViewController;
     id<AKAppleIDAuthenticationInAppContextDelegate> _delegate;
 }
@@ -49,6 +51,7 @@
 - (void)basicLoginAlertControllerDidPresent:(id)arg1;
 - (void)basicLoginAlertControllerWillDismiss:(id)arg1;
 - (id)cdpUiProvider;
+- (void)completeWithError:(id)arg1;
 - (void)dealloc;
 - (void)dismissBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissKeepUsingUIWithCompletion:(CDUnknownBlockType)arg1;

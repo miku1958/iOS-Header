@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEOTileKeyMap, NSMutableArray, NSMutableSet, NSOperationQueue, NSString, NSURLSession;
+@class GEONSURLSharedSession, GEOTileKeyMap, NSMutableArray, NSMutableSet, NSOperationQueue, NSString;
 
 @interface GEOSimpleTileRequester : GEOTileRequester <NSURLSessionDataDelegate>
 {
@@ -19,7 +19,7 @@
     BOOL _subclassImplementsTileEdition;
     NSMutableArray *_errors;
     NSOperationQueue *_delegateQueue;
-    NSURLSession *_session;
+    GEONSURLSharedSession *_session;
 }
 
 @property (readonly, copy) NSString *debugDescription;

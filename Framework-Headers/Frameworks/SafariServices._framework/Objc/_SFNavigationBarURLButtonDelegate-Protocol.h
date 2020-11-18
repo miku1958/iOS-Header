@@ -6,12 +6,13 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class _SFNavigationBarURLButton;
+@class NSString, _SFNavigationBarURLButton;
 
 @protocol _SFNavigationBarURLButtonDelegate <NSObject>
 - (void)navigationBarURLButtonDidReceiveCopyCommand:(_SFNavigationBarURLButton *)arg1;
 - (void)navigationBarURLButtonDidReceivePasteCommand:(_SFNavigationBarURLButton *)arg1;
 - (BOOL)navigationBarURLButtonShouldCopy:(_SFNavigationBarURLButton *)arg1;
 - (BOOL)navigationBarURLButtonShouldPaste:(_SFNavigationBarURLButton *)arg1;
+- (NSString *)textForNavigationBarURLButton:(_SFNavigationBarURLButton *)arg1;
 @end
 

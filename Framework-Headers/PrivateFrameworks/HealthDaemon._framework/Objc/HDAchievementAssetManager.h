@@ -18,6 +18,7 @@
     HDProfile *_profile;
     NSHashTable *_assetObservers;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_observerQueue;
     NSNumber *_waitingToRun;
 }
 

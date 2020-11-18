@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MCDPlayModeControlView, MCDProgressView, MCDTitleView, MCDTransportControlView, NSString, UIColor, UIFocusContainerGuide, UIImageView, UILabel, UILongPressGestureRecognizer, UINavigationBar, UITapGestureRecognizer;
+@class MCDLabelButton, MCDPlayModeControlView, MCDProgressView, MCDTitleView, MCDTransportControlView, NSLayoutConstraint, NSString, UIColor, UIFocusContainerGuide, UIImageView, UILongPressGestureRecognizer, UINavigationBar, UITapGestureRecognizer;
 @protocol MCDNowPlayingViewControllerDataSource, MCDNowPlayingViewControllerDelegate;
 
 @interface MCDNowPlayingViewController : UIViewController
@@ -16,10 +16,11 @@
     UIViewController *_transportViewController;
     UIViewController *_playModeViewController;
     UINavigationBar *_navigationBar;
-    UILabel *_albumArtistLabel;
+    MCDLabelButton *_albumArtistLabelButton;
     BOOL _highTouchMode;
     UIColor *_navbarColor;
     BOOL _navbarHidesShadow;
+    BOOL _viewHasShifted;
     BOOL _handledWillAppear;
     BOOL _titleUpdated;
     MCDTransportControlView *_transportControlView;
@@ -40,8 +41,10 @@
     UIFocusContainerGuide *_controlsFocusContainerGuide;
     NSString *_previousTransportButtonImageIdentifier;
     NSString *_forwardTransportButtonImageIdentifier;
+    NSLayoutConstraint *_artistAlbumLabelConstraint;
 }
 
+@property (strong, nonatomic) NSLayoutConstraint *artistAlbumLabelConstraint; // @synthesize artistAlbumLabelConstraint=_artistAlbumLabelConstraint;
 @property (readonly, nonatomic) UIImageView *artworkView; // @synthesize artworkView=_artworkView;
 @property (readonly, nonatomic) UITapGestureRecognizer *backPressRecognizer; // @synthesize backPressRecognizer=_backPressRecognizer;
 @property (strong, nonatomic) UIFocusContainerGuide *controlsFocusContainerGuide; // @synthesize controlsFocusContainerGuide=_controlsFocusContainerGuide;
@@ -87,6 +90,7 @@
 - (void)_updateRepeatStateWithType:(long long)arg1;
 - (void)_updateShuffleStateWithType:(long long)arg1;
 - (void)_updateTransportControl:(id)arg1 withDefaultImage:(id)arg2 actionType:(long long)arg3;
+- (void)albumArtistButtonTapped:(id)arg1;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;

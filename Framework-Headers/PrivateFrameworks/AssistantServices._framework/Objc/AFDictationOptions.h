@@ -9,7 +9,7 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, STSiriContext;
+@class NSArray, NSDictionary, NSString, NSURL, STSiriContext;
 
 @interface AFDictationOptions : NSObject <NSSecureCoding, NSCopying>
 {
@@ -41,6 +41,7 @@
     NSDictionary *_voiceTriggerEventInfo;
     double _maximumRecognitionDuration;
     long long _taskHint;
+    NSURL *_originalAudioFileURL;
 }
 
 @property (copy, nonatomic) NSString *applicationName; // @synthesize applicationName=_applicationName;
@@ -57,6 +58,7 @@
 @property (nonatomic) double maximumRecognitionDuration; // @synthesize maximumRecognitionDuration=_maximumRecognitionDuration;
 @property (copy, nonatomic) NSString *microphoneIdentifier; // @synthesize microphoneIdentifier=_microphoneIdentifier;
 @property (copy, nonatomic) NSString *offlineLanguage; // @synthesize offlineLanguage=_offlineLanguage;
+@property (copy, nonatomic) NSURL *originalAudioFileURL; // @synthesize originalAudioFileURL=_originalAudioFileURL;
 @property (copy, nonatomic) NSString *orthography; // @synthesize orthography=_orthography;
 @property (copy, nonatomic) NSString *postfixText; // @synthesize postfixText=_postfixText;
 @property (copy, nonatomic) NSString *prefixText; // @synthesize prefixText=_prefixText;

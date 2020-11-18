@@ -8,23 +8,24 @@
 
 #import <NewsCore/FCFeedTransforming-Protocol.h>
 
-@class FCDateRange, NSString;
+@class NSString;
 @protocol FCFeedPersonalizing;
 
 @interface FCFeedTransformationPersonalizedLimit : NSObject <FCFeedTransforming>
 {
     id<FCFeedPersonalizing> _feedPersonalizer;
-    FCDateRange *_dateRange;
+    double _timeInterval;
 }
 
-@property (strong, nonatomic) FCDateRange *dateRange; // @synthesize dateRange=_dateRange;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<FCFeedPersonalizing> feedPersonalizer; // @synthesize feedPersonalizer=_feedPersonalizer;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) double timeInterval; // @synthesize timeInterval=_timeInterval;
 
 + (id)transformationWithPersonalizer:(id)arg1 dateRange:(id)arg2;
++ (id)transformationWithPersonalizer:(id)arg1 timeInterval:(double)arg2;
 - (void).cxx_destruct;
 - (id)transformFeedItems:(id)arg1;
 

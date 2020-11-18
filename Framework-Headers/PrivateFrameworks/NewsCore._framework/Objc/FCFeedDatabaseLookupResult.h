@@ -25,6 +25,7 @@
 @property (nonatomic) BOOL exhaustedRange; // @synthesize exhaustedRange=_exhaustedRange;
 @property (copy, nonatomic) NSArray *feedItems; // @synthesize feedItems=_feedItems;
 @property (copy, nonatomic) FCFeedRange *feedRange; // @synthesize feedRange=_feedRange;
+@property (readonly, nonatomic) BOOL hasCKCursor;
 @property (strong, nonatomic) id insertionToken; // @synthesize insertionToken=_insertionToken;
 
 - (void).cxx_destruct;

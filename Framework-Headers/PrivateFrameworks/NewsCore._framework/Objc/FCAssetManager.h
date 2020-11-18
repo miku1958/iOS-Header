@@ -10,35 +10,34 @@
 #import <NewsCore/FCCacheCoordinatorDelegate-Protocol.h>
 #import <NewsCore/FCCacheFlushing-Protocol.h>
 
-@class FCAssetStore, FCCacheCoordinator, FCKeyValueStore, FCNetworkBehaviorMonitor, NSMapTable, NSString, NSURLSession;
+@class FCAssetStore, FCCacheCoordinator, FCKeyValueStore, FCNetworkBehaviorMonitor, NSMapTable, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface FCAssetManager : NSObject <FCAssetHandleDelegate, FCCacheCoordinatorDelegate, FCCacheFlushing>
 {
     BOOL _flushUnusedAssets;
+    NSURL *_directoryURLForCachedAssets;
     FCKeyValueStore *_keyValueStore;
     FCAssetStore *_assetStore;
     FCCacheCoordinator *_cacheCoordinator;
     NSMapTable *_assetHandles;
     NSObject<OS_dispatch_queue> *_assetHandlesQueue;
     FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
-    NSURLSession *_URLSession;
 }
 
-@property (strong, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 @property (strong, nonatomic) NSMapTable *assetHandles; // @synthesize assetHandles=_assetHandles;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *assetHandlesQueue; // @synthesize assetHandlesQueue=_assetHandlesQueue;
 @property (strong, nonatomic) FCAssetStore *assetStore; // @synthesize assetStore=_assetStore;
 @property (strong, nonatomic) FCCacheCoordinator *cacheCoordinator; // @synthesize cacheCoordinator=_cacheCoordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSURL *directoryURLForCachedAssets; // @synthesize directoryURLForCachedAssets=_directoryURLForCachedAssets;
 @property (nonatomic) BOOL flushUnusedAssets; // @synthesize flushUnusedAssets=_flushUnusedAssets;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) FCKeyValueStore *keyValueStore; // @synthesize keyValueStore=_keyValueStore;
 @property (strong, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
 @property (readonly) Class superclass;
 
-+ (id)sharedURLSession;
 - (void).cxx_destruct;
 - (id)_assetKeyForRemoteURL:(id)arg1;
 - (id)assetHandleForRemoteURL:(id)arg1 lifetimeHint:(long long)arg2;

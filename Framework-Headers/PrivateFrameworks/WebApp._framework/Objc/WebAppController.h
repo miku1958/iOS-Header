@@ -11,7 +11,7 @@
 #import <WebApp/UIWebViewPrivateDelegate-Protocol.h>
 #import <WebApp/WebPolicyDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableSet, NSString, NSTimer, UIView, UIWebClip, UIWebView, UIWindow, WBUSheetController, WebUIAuthenticationManager, WebUIDownloadManager;
+@class NSArray, NSMutableArray, NSMutableSet, NSString, NSTimer, UIView, UIWebClip, UIWebView, UIWindow, WBUSheetController, WebUIAuthenticationManager, WebUIDownloadManager;
 
 @interface WebAppController : NSObject <WebPolicyDelegate, UIApplicationDelegate, UIWebViewDelegate, UIWebViewPrivateDelegate>
 {
@@ -33,7 +33,6 @@
     WebUIDownloadManager *_downloadManager;
     BOOL _isSuspended;
     struct CGRect _inputViewScreenBoundsAfterRotation;
-    NSDictionary *_connectionProperties;
     NSMutableSet *_highLevelDomainsAndPortsToUseOnlyAvailableIdentityWithoutPrompting;
 }
 
@@ -91,7 +90,6 @@
 - (void)timeLimitForLoadCompletionExpired;
 - (id)titleForError:(id)arg1;
 - (void)tryMultipleURLs:(id)arg1;
-- (id)uiWebView:(id)arg1 connectionPropertiesForResource:(id)arg2 dataSource:(id)arg3;
 - (void)uiWebView:(id)arg1 decidePolicyForGeolocationRequestFromOrigin:(id)arg2 frame:(id)arg3 listener:(id)arg4;
 - (void)uiWebView:(id)arg1 decidePolicyForMIMEType:(id)arg2 request:(id)arg3 frame:(id)arg4 decisionListener:(id)arg5;
 - (void)uiWebView:(id)arg1 didFirstLayoutInFrame:(id)arg2;

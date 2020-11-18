@@ -8,12 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSArray, NSLock, NSMutableArray;
+@class NSArray, NSMutableArray;
 
 @interface GEOLogContext : NSObject <NSCopying>
 {
     NSMutableArray *_logMsgStates;
-    NSLock *_logMsgStatesLock;
 }
 
 @property (readonly, nonatomic) NSArray *logMsgStates; // @synthesize logMsgStates=_logMsgStates;
@@ -24,7 +23,6 @@
 + (id)logContextWithDefaultTraitsForCachedContext;
 - (void)_initializeDefaultStates;
 - (void)_registerApplicationIdentifierState;
-- (void)_registerCarPlayStateWithTraits:(id)arg1;
 - (void)_registerDefaultMapUIState;
 - (void)_registerDeviceBaseStateWithTraits:(id)arg1;
 - (void)_registerDeviceConnectionState;
@@ -34,6 +32,7 @@
 - (void)_registerLogContextWithTraits:(id)arg1;
 - (void)_registerMapViewStateWithTraits:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)currentExperimentsState;
 - (void)dealloc;
 - (id)init;
 - (id)initWithDefaultStates;

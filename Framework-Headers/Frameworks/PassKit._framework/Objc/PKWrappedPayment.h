@@ -14,12 +14,14 @@
 {
     NSString *_transactionIdentifier;
     NSData *_transactionData;
+    NSData *_transactionInstructionsSignature;
     PKSecureElementCertificateSet *_certificates;
 }
 
 @property (copy, nonatomic) PKSecureElementCertificateSet *certificates; // @synthesize certificates=_certificates;
 @property (copy, nonatomic) NSData *transactionData; // @synthesize transactionData=_transactionData;
 @property (copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
+@property (copy, nonatomic) NSData *transactionInstructionsSignature; // @synthesize transactionInstructionsSignature=_transactionInstructionsSignature;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

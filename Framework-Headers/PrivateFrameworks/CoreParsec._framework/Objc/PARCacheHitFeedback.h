@@ -6,15 +6,23 @@
 
 #import <CoreParsec/PARSkipSearchFeedback.h>
 
-@class NSString;
+#import <CoreParsec/SFProtobufObject-Protocol.h>
 
-@interface PARCacheHitFeedback : PARSkipSearchFeedback
+@class NSString, PBCodable;
+
+@interface PARCacheHitFeedback : PARSkipSearchFeedback <SFProtobufObject>
 {
     NSString *_uuid;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) PBCodable *protobufMessage;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
++ (Class)protobufClass;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

@@ -16,11 +16,13 @@ __attribute__((visibility("hidden")))
 
 @property (readonly) NSXPCConnection *connection; // @synthesize connection=_connection;
 
-+ (id)sharedInstance;
++ (id)manager;
 - (void)dealloc;
 - (id)init;
+- (BOOL)install:(id)arg1 withError:(id *)arg2;
 - (BOOL)removeSystemApplicationWithBundleIdentifier:(id)arg1;
 - (BOOL)restoreSystemApplicationWithBundleIdentifier:(id)arg1;
+- (BOOL)uninstall:(id)arg1 withError:(id *)arg2;
 
 @end
 

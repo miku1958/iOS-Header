@@ -41,6 +41,8 @@
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_invalidate;
 - (int)_preparePayload:(BOOL)arg1;
+- (id)_preparePayloadNearbyAction:(int *)arg1;
+- (id)_preparePayloadNearbyInfo:(int *)arg1;
 - (void)_restartIfNeeded:(BOOL)arg1;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -50,6 +52,7 @@
 - (void)invalidate;
 - (void)setPayloadCoder:(id)arg1 fields:(id)arg2 identifier:(id)arg3;
 - (void)setPayloadData:(id)arg1;
+- (void)setPayloadFields:(id)arg1;
 
 @end
 

@@ -27,6 +27,7 @@
 + (id)rootForSamples:(id)arg1 symbolicator:(struct _CSTypeRef)arg2;
 + (id)rootForSamples:(id)arg1 symbolicator:(struct _CSTypeRef)arg2 sampler:(id)arg3 options:(unsigned long long)arg4;
 - (void)addChild:(id)arg1;
+- (void)addChildCountsIntoNode;
 - (unsigned long long)address;
 - (id)allChildren;
 - (id)browserName;
@@ -60,6 +61,8 @@
 - (unsigned int)numChildren;
 - (id)parent;
 - (void)parseNameIntoSymbol:(id *)arg1 library:(id *)arg2 loadAddress:(unsigned long long *)arg3 offset:(unsigned long long *)arg4 address:(unsigned long long *)arg5 suffix:(id *)arg6;
+- (void)printCallTree;
+- (void)printCallTreeToFile:(struct __sFILE *)arg1;
 - (id)pruneCount:(unsigned int)arg1;
 - (id)pruneMallocSize:(unsigned long long)arg1;
 - (id)pseudoName;

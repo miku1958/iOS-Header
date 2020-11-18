@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PHLivePhotoViewDelegate-Protocol.h>
 
-@class NSString, PHLivePhoto, PHLivePhotoView, PUAvalancheStackView, PUBackgroundColorView, PUPhotoDecoration, PUTextBannerView, PXAssetBadgeUIView, PXCollectionTileLayoutTemplate, PXFeatureSpec, PXRoundedCornerOverlayView, PXTitleSubtitleUILabel, UIColor, UIImage, UIImageView, UIView;
+@class NSString, PHLivePhoto, PHLivePhotoView, PUAvalancheStackView, PUBackgroundColorView, PUPhotoDecoration, PUTextBannerView, PXCollectionTileLayoutTemplate, PXFeatureSpec, PXRoundedCornerOverlayView, PXTitleSubtitleUILabel, PXUIAssetBadgeView, UIColor, UIImage, UIImageView, UIView;
 @protocol PUPhotoViewContentHelperDelegate;
 
 @interface PUPhotoViewContentHelper : NSObject <PHLivePhotoViewDelegate>
@@ -43,12 +43,11 @@
     PUPhotoDecoration *_photoDecoration;
     double _cornerRadius;
     UIColor *_overlayColor;
+    double _contentAlpha;
     UIColor *_backgroundColor;
     id<PUPhotoViewContentHelperDelegate> _delegate;
     PHLivePhoto *_livePhoto;
     struct CGColor *_avalancheStackBackgroundColor;
-    unsigned long long _badgeTypes;
-    double _videoDuration;
     long long _badgeStyle;
     PUTextBannerView *_textBannerView;
     PXFeatureSpec *_featureSpec;
@@ -62,13 +61,14 @@
     PHLivePhotoView *_livePhotoView;
     PXRoundedCornerOverlayView *_roundedCornerOverlayView;
     UIView *__highlightOverlayView;
-    PXAssetBadgeUIView *__badgeView;
+    PXUIAssetBadgeView *__badgeView;
     PXTitleSubtitleUILabel *__titleSubtitleLabel;
     struct CGSize _photoSize;
+    struct PXAssetBadgeInfo _badgeInfo;
     struct CGAffineTransform _imageTransform;
 }
 
-@property (strong, nonatomic, setter=_setBadgeView:) PXAssetBadgeUIView *_badgeView; // @synthesize _badgeView=__badgeView;
+@property (strong, nonatomic, setter=_setBadgeView:) PXUIAssetBadgeView *_badgeView; // @synthesize _badgeView=__badgeView;
 @property (strong, nonatomic) UIImageView *_crossfadeImageView; // @synthesize _crossfadeImageView=__crossfadeImageView;
 @property (strong, nonatomic, setter=_setHighlightOverlayView:) UIView *_highlightOverlayView; // @synthesize _highlightOverlayView=__highlightOverlayView;
 @property (strong, nonatomic, setter=_setTitleSubtitleUILabel:) PXTitleSubtitleUILabel *_titleSubtitleLabel; // @synthesize _titleSubtitleLabel=__titleSubtitleLabel;
@@ -79,9 +79,10 @@
 @property (nonatomic) BOOL avoidsPhotoDecoration; // @synthesize avoidsPhotoDecoration=_avoidsPhotoDecoration;
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (readonly, nonatomic) UIView *badgeContainerView;
-@property (readonly, nonatomic) long long badgeStyle; // @synthesize badgeStyle=_badgeStyle;
-@property (readonly, nonatomic) unsigned long long badgeTypes; // @synthesize badgeTypes=_badgeTypes;
+@property (nonatomic) struct PXAssetBadgeInfo badgeInfo; // @synthesize badgeInfo=_badgeInfo;
+@property (nonatomic) long long badgeStyle; // @synthesize badgeStyle=_badgeStyle;
 @property (strong, nonatomic) PXCollectionTileLayoutTemplate *collectionTileLayoutTemplate; // @synthesize collectionTileLayoutTemplate=_collectionTileLayoutTemplate;
+@property (nonatomic) double contentAlpha; // @synthesize contentAlpha=_contentAlpha;
 @property (readonly, weak, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (readonly, copy) NSString *debugDescription;
@@ -115,12 +116,12 @@
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSString *titleFontName; // @synthesize titleFontName=_titleFontName;
 @property (nonatomic) BOOL useOverlay; // @synthesize useOverlay=_useOverlay;
-@property (readonly, nonatomic) double videoDuration; // @synthesize videoDuration=_videoDuration;
 
 + (struct CGRect)_imageContentFrameForBounds:(struct CGRect)arg1 imageSize:(struct CGSize)arg2 fillMode:(long long)arg3;
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 imageSize:(struct CGSize)arg2 fillMode:(long long)arg3;
 - (void).cxx_destruct;
 - (void)_addAvalancheStackViewIfNecessary;
+- (void)_invalidateBadgeView;
 - (void)_invalidateTitleSubtitleUILabel;
 - (void)_removeAvalancheStackViewIfNecessary;
 - (void)_removePhotoImageViewIfNecessary;
@@ -146,8 +147,6 @@
 - (void)layoutSubviewsOfContentView;
 - (void)livePhotoView:(id)arg1 willBeginPlaybackWithStyle:(long long)arg2;
 - (struct CGRect)photoDecorationBorderViewFrameForImageContentFrame:(struct CGRect)arg1;
-- (void)setBadgeTypes:(unsigned long long)arg1 videoDuration:(double)arg2;
-- (void)setBadgeTypes:(unsigned long long)arg1 videoDuration:(double)arg2 style:(long long)arg3;
 - (void)setCornerRadius:(double)arg1 useOverlay:(BOOL)arg2 overlayColor:(id)arg3;
 - (void)startPlaybackWithStyle:(long long)arg1;
 - (void)stopPlayback;

@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSMutableArray *playerItemIdentifiers; // @synthesize playerItemIdentifiers=_playerItemIdentifiers;
 
++ (Class)playerItemIdentifiersType;
 - (void).cxx_destruct;
 - (void)addPlayerItemIdentifiers:(id)arg1;
 - (void)clearPlayerItemIdentifiers;

@@ -6,13 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-#import <Catalyst/CATTaskOperationNotificationDelegate-Protocol.h>
 #import <Catalyst/CATTransportDelegate-Protocol.h>
 
 @class CATStateMachine, CATTransport, NSDictionary, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSString, NSUUID;
 @protocol CATTaskClientDelegate, OS_dispatch_group;
 
-@interface CATTaskClient : NSObject <CATTransportDelegate, CATTaskOperationNotificationDelegate>
+@interface CATTaskClient : NSObject <CATTransportDelegate>
 {
     CATStateMachine *mFSM;
     CATTransport *mTransport;
@@ -42,6 +41,7 @@
 
 - (void).cxx_destruct;
 - (void)abandonTransport;
+- (void)abandonTransportClearQueuedMessagesAndCancelAllOperationsWithError:(id)arg1;
 - (void)activeOperationDidFinish:(id)arg1;
 - (id)captureTransport;
 - (void)clearQueuedMessagesAndCancelAllOperationsWithError:(id)arg1;
@@ -77,7 +77,6 @@
 - (void)sendMessageThroughTransport:(id)arg1;
 - (void)sessionDidInvalidate;
 - (void)sessionResumedWithTaskUUIDs:(id)arg1;
-- (void)taskOperation:(id)arg1 didPostNotificationWithName:(id)arg2 userInfo:(id)arg3;
 - (void)taskOperationDidFailWithInvalidTaskClient:(id)arg1;
 - (void)trackTaskOperation:(id)arg1;
 - (void)transport:(id)arg1 didFailToSendMessage:(id)arg2 error:(id)arg3;

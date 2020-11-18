@@ -41,6 +41,7 @@
 + (Class)entityNameType;
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsEntityTypes:(id)arg1;
 - (void)addEntityName:(id)arg1;
 - (void)addEntityType:(int)arg1;
 - (void)clearEntityNames;
@@ -52,6 +53,7 @@
 - (id)entityNameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entityNamesCount;
 - (int)entityTypeAtIndex:(unsigned long long)arg1;
+- (id)entityTypesAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) BOOL aa_isUsingiCloud;
 @property (copy, nonatomic, setter=aa_setLastName:) NSString *aa_lastName;
 @property (readonly, nonatomic) NSString *aa_mapsToken;
+@property (copy, nonatomic, setter=aa_setMiddleName:) NSString *aa_middleName;
 @property (readonly, nonatomic) BOOL aa_needsEmailConfiguration;
 @property (readonly, nonatomic) BOOL aa_needsRegistration;
 @property (nonatomic, setter=aa_setNeedsToVerifyTerms:) BOOL aa_needsToVerifyTerms;

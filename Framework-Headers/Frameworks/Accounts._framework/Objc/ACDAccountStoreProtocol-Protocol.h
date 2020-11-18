@@ -59,6 +59,7 @@
 - (void)removeAccountsFromPairedDeviceWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)removeCredentialItem:(ACCredentialItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)renewCredentialsForAccount:(ACAccount *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSNumber *, NSError *))arg3;
+- (void)reportTelemetryForLandmarkEvent:(void (^)(BOOL, NSError *))arg1;
 - (void)requestAccessForAccountTypeWithIdentifier:(NSString *)arg1 options:(NSDictionary *)arg2 withHandler:(void (^)(NSNumber *, NSError *))arg3;
 - (void)saveAccount:(ACAccount *)arg1 toPairedDeviceWithOptions:(NSDictionary *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)saveAccount:(ACAccount *)arg1 verify:(BOOL)arg2 dataclassActions:(NSDictionary *)arg3 completion:(void (^)(NSURL *, NSError *))arg4;

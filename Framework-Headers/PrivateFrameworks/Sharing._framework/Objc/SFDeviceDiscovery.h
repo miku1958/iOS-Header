@@ -21,7 +21,10 @@
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     BOOL _legacy;
+    BOOL _timeoutFired;
+    NSObject<OS_dispatch_source> *_timeoutTimer;
     NSXPCConnection *_xpcCnx;
+    BOOL _overrideScreenOff;
     BOOL _scanCache;
     BOOL _targetUserSession;
     unsigned int _changeFlags;
@@ -35,6 +38,10 @@
     CDUnknownBlockType _invalidationHandler;
     long long _rssiThreshold;
     long long _scanRate;
+    long long _scanState;
+    double _timeout;
+    CDUnknownBlockType _timeoutHandler;
+    CDUnknownBlockType _scanStateChangedHandler;
 }
 
 @property (nonatomic) unsigned int changeFlags; // @synthesize changeFlags=_changeFlags;
@@ -46,26 +53,33 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property (nonatomic) BOOL overrideScreenOff; // @synthesize overrideScreenOff=_overrideScreenOff;
 @property (nonatomic) long long rssiThreshold; // @synthesize rssiThreshold=_rssiThreshold;
 @property (nonatomic) BOOL scanCache; // @synthesize scanCache=_scanCache;
 @property (nonatomic) long long scanRate; // @synthesize scanRate=_scanRate;
+@property (readonly, nonatomic) long long scanState; // @synthesize scanState=_scanState;
+@property (copy, nonatomic) CDUnknownBlockType scanStateChangedHandler; // @synthesize scanStateChangedHandler=_scanStateChangedHandler;
 @property (nonatomic) BOOL targetUserSession; // @synthesize targetUserSession=_targetUserSession;
+@property (nonatomic) double timeout; // @synthesize timeout=_timeout;
+@property (copy, nonatomic) CDUnknownBlockType timeoutHandler; // @synthesize timeoutHandler=_timeoutHandler;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (int)_ensureXPCStarted;
 - (void)_interrupted;
-- (void)_invalidate;
 - (void)_invalidated;
 - (void)_invokeBlockActivateSafe:(CDUnknownBlockType)arg1;
 - (void)_retryConsole;
+- (void)_startTimeoutIfNeeded;
+- (void)_timeoutTimerFired;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)deviceDiscoveryDeviceChanged:(id)arg1 changes:(unsigned int)arg2;
 - (void)deviceDiscoveryFoundDevice:(id)arg1;
 - (void)deviceDiscoveryLostDevice:(id)arg1;
+- (void)deviceDiscoveryScanStateChanged:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

@@ -9,5 +9,7 @@
 @interface CNContactStore (MFContactUtilities)
 - (id)_contactForEmailAddress:(id)arg1 keysToFetch:(id)arg2;
 - (id)mf_fetchContactForEmailAddress:(id)arg1 keysToFetch:(id)arg2;
+- (id)mf_fetchContactForEmailAddress:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
+- (id)mf_onScheduler:(id)arg1 contactFutureForEmailAddress:(id)arg2 keysToFetch:(id)arg3;
 @end
 

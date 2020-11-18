@@ -42,15 +42,19 @@
 - (id)_faceSuggestionsForFacesWithLocalIdentifiers:(id)arg1 operation:(id)arg2 error:(id *)arg3;
 - (id)_faceSuggestionsForPersonWithLocalIdentifier:(id)arg1 toBeConfirmedFaceSuggestions:(id)arg2 toBeRejectedFaceSuggestions:(id)arg3 operation:(id)arg4 error:(id *)arg5;
 - (id)_faceSuggestionsFromKeyFaceClustSeqNums:(id)arg1 excludeFaceLocalIdentifers:(id)arg2 operation:(id)arg3 error:(id *)arg4;
+- (int)_faceWorkerTasksToPerformOnAsset:(id)arg1 accordingToAnalysisAttributes:(id)arg2;
+- (id)_facesRequiringFaceCropGenerationForAsset:(id)arg1 error:(id *)arg2;
 - (void)_finalizeSuggestionsLog;
+- (BOOL)_generateAndAssociateFaceprintedFaceForFaceCrop:(id)arg1 error:(id *)arg2;
+- (BOOL)_generateAndPersistFaceCropsOfFaces:(id)arg1 inImage:(id)arg2 forAsset:(id)arg3 error:(id *)arg4;
+- (BOOL)_generateAndPersistFaceCropsOfUserConfirmedFacesInImage:(id)arg1 forAsset:(id)arg2 error:(id *)arg3;
 - (void)_handleNilReplyBlockForSelector:(SEL)arg1;
-- (void)_interruptPhotoVision;
 - (void)_logFaceToSuggestionsLog:(id)arg1;
-- (id)_newFaceGroupsFetchOptions;
-- (id)_newFacesFetchOptions;
-- (id)_newPersonsFetchOptions;
+- (BOOL)_needToRunClusteringJobForScenario:(unsigned long long)arg1;
+- (BOOL)_needToRunFaceCropProcessingJobForScenario:(unsigned long long)arg1;
+- (BOOL)_needToRunPersonBuildingJobForScenario:(unsigned long long)arg1;
 - (void)_openSuggestionsLoggingSession;
-- (BOOL)_performFaceClusteringWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_performFaceCropProcessingWhileKeepingAliveJob:(id)arg1;
 - (void)_performForcedFaceClustering:(BOOL)arg1 whileKeepingAliveJob:(id)arg2;
 - (void)_performFullCVMLCleanup;
 - (void)_performIntermediateCVMLCleanup;
@@ -64,7 +68,7 @@
 - (BOOL)_resetFaceClusteringStateWithContext:(id)arg1 error:(id *)arg2;
 - (BOOL)_scheduleFaceProcessingOnAssetsWithLocalIdentifiers:(id)arg1 priority:(int)arg2 error:(id *)arg3;
 - (BOOL)_synchronouslyGenerateFaceTilesForFaces:(id)arg1 fromAsset:(id)arg2 assetImage:(id)arg3 error:(id *)arg4;
-- (void)_terminatePhotoVision;
+- (BOOL)_updateFaceCropFace:(id)arg1 withFaceprintForFaceCrop:(id)arg2 error:(id *)arg3;
 - (BOOL)_validateAsset:(id)arg1 error:(id *)arg2;
 - (void)_willPerformFaceClustering;
 - (unsigned long long)analyzeAssetResourceFileAtURL:(id)arg1 forAsset:(id)arg2 withAttributes:(id)arg3 error:(id *)arg4;
@@ -76,14 +80,18 @@
 - (void)handlePVNotification:(id)arg1;
 - (BOOL)hasAdditionalJobsForScenario:(unsigned long long)arg1;
 - (id)initWithPhotoAnalysisManager:(id)arg1 dataLoader:(id)arg2;
+- (void)interruptPhotoVision;
 - (BOOL)isEnabled;
-- (id)newAssetFetchOptions;
 - (id)newPhotoVisionCVMLRequestOptions;
 - (id)nextAdditionalJobWithScenario:(unsigned long long)arg1;
+- (BOOL)performFaceClusteringWithCompletion:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (void)performFaceProcessingOnAssetWithLocalIdentifier:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)performFaceProcessingOnSRGBImageData:(id)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 bytesPerRow:(unsigned long long)arg4 bitmapInfo:(unsigned int)arg5 context:(id)arg6 reply:(CDUnknownBlockType)arg7;
+- (BOOL)performPersonBuildingWithCanceler:(id)arg1 error:(id *)arg2;
 - (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;
 - (BOOL)processAsset:(id)arg1 error:(id *)arg2;
+- (BOOL)processDirtyFaceCrop:(id)arg1 error:(id *)arg2;
+- (void)processDirtyFaceCrops;
 - (void)reclusterFacesWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)renderFaceTilesForFaceLocalIdentifiers:(id)arg1 inAssetWithLocalIdentifier:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)resetFaceClusteringStateWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -93,6 +101,7 @@
 - (void)suggestFacesForFacesWithLocalIdentifiers:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)suggestFacesForPersonWithLocalIdentifier:(id)arg1 toBeConfirmedFaceSuggestions:(id)arg2 toBeRejectedFaceSuggestions:(id)arg3 context:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)suggestPersonForFaceWithLocalIdentifier:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)terminatePhotoVision;
 - (void)willCompleteJob:(id)arg1;
 
 @end

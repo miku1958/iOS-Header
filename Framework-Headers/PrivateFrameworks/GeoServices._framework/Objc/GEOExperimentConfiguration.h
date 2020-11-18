@@ -30,15 +30,19 @@
 + (void)setServerProxyClass:(Class)arg1;
 + (id)sharedConfiguration;
 - (id)_debugClientConfig;
+- (id)_debug_bucketId;
 - (id)_debug_configurationDate;
 - (id)_debug_customQuerySubstringForType:(long long)arg1 dispatcherRequestType:(int)arg2;
+- (id)_debug_datasetId;
 - (id)_debug_defaultQuerySubstringForType:(long long)arg1 dispatcherRequestType:(int)arg2;
 - (void)_debug_fetchAllAvailableExperiments:(CDUnknownBlockType)arg1;
 - (void)_debug_forEachExperimentType:(CDUnknownBlockType)arg1;
 - (void)_debug_forceUpdate;
 - (void)_debug_setActiveExperimentBranch:(id)arg1;
+- (void)_debug_setBucketIdDictionaryRepresentation:(id)arg1;
 - (void)_debug_setCustomQuerySubstring:(id)arg1 forExperimentType:(long long)arg2 dispatcherRequestType:(int)arg3;
 - (void)_fetchAllAvailableExperimentsResponse:(CDUnknownBlockType)arg1;
+- (id)_mapsAbClientMetadata;
 - (id)_parsecClientMetadata;
 - (id)_reportAProblemClientMetadata;
 - (void)_setActiveExperimentBranchDictionaryRepresentation:(id)arg1;
@@ -53,6 +57,7 @@
 - (id)experimentAssignments;
 - (id)experimentURLForURL:(id)arg1 type:(long long)arg2 dispatcherRequestType:(int)arg3;
 - (id)init;
+- (void)refreshDatasetABStatus:(id)arg1;
 - (void)removeExperimentObserver:(id)arg1;
 - (void)serverProxy:(id)arg1 didChangeExperimentsInfo:(id)arg2;
 

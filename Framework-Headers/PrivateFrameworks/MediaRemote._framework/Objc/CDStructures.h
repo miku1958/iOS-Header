@@ -33,14 +33,27 @@ struct _MRTextInputTraits {
     unsigned int spellcheckingType;
     unsigned int keyboardType;
     unsigned int returnKeyType;
-    CDStruct_627e0f85 validTextRange;
+    struct {
+        long long location;
+        long long length;
+    } validTextRange;
     BOOL enablesReturnKeyAutomatically;
     BOOL secureTextEntry;
     long long PINEntrySeparatorIndexes[10];
     unsigned long long PINEntrySeparatorIndexesCount;
 };
 
+struct _MRTransactionKeyProtobuf {
+    Class _field1;
+    id _field2;
+    id _field3;
+};
+
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    float _field1[4];
+} CDStruct_212a8bf9;
 
 typedef struct {
     unsigned int *list;
@@ -75,18 +88,6 @@ typedef struct {
     float width;
     float height;
 } CDStruct_643d22a7;
-
-typedef struct {
-    long long location;
-    long long length;
-} CDStruct_627e0f85;
-
-typedef struct {
-    CDStruct_627e0f85 _field1;
-    BOOL _field2;
-    double _field3;
-    double _field4;
-} CDStruct_c537be58;
 
 typedef struct {
     int type;

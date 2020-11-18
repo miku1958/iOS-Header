@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL allowsAnimatedImageLooping;
 @property (nonatomic) BOOL allowsAnimatedImages;
 @property (nonatomic) BOOL allowsInlineMediaPlaybackAfterFullscreen;
+@property (nonatomic) BOOL animatedImageAsyncDecodingEnabled;
 @property (nonatomic) BOOL attachmentElementEnabled;
 @property (nonatomic) BOOL autosaves;
 @property (nonatomic) unsigned long long cacheModel;
@@ -29,10 +30,12 @@
 @property (copy, nonatomic) NSString *fantasyFontFamily;
 @property (copy, nonatomic) NSString *fixedFontFamily;
 @property (readonly, copy, nonatomic) NSString *identifier;
+@property (nonatomic) BOOL intersectionObserverEnabled;
 @property (nonatomic, getter=isJavaEnabled) BOOL javaEnabled;
 @property (nonatomic) BOOL javaScriptCanOpenWindowsAutomatically;
 @property (nonatomic, getter=isJavaScriptEnabled) BOOL javaScriptEnabled;
 @property (nonatomic) BOOL javaScriptMarkupEnabled;
+@property (nonatomic) BOOL largeImageAsyncDecodingEnabled;
 @property (nonatomic) BOOL loadsImagesAutomatically;
 @property (nonatomic) BOOL mediaDataLoadsAutomatically;
 @property (nonatomic) int minimumFontSize;
@@ -46,6 +49,7 @@
 @property (nonatomic) BOOL userStyleSheetEnabled;
 @property (strong, nonatomic) NSURL *userStyleSheetLocation;
 @property (nonatomic) BOOL usesPageCache;
+@property (nonatomic) BOOL visualViewportEnabled;
 
 + (id)_IBCreatorID;
 + (void)_checkLastReferenceForIdentifier:(id)arg1;
@@ -62,7 +66,6 @@
 + (void)initialize;
 + (void)setWebKitLinkTimeVersion:(int)arg1;
 + (id)standardPreferences;
-- (BOOL)DOMIteratorEnabled;
 - (BOOL)_allowMultiElementImplicitFormSubmission;
 - (BOOL)_allowPasswordEcho;
 - (BOOL)_alwaysRequestGeolocationPermission;
@@ -122,6 +125,7 @@
 - (BOOL)allowFileAccessFromFileURLs;
 - (BOOL)allowUniversalAccessFromFileURLs;
 - (BOOL)allowsAlternateFullscreen;
+- (BOOL)allowsPageCacheWithWindowOpener;
 - (BOOL)allowsPictureInPictureMediaPlayback;
 - (long long)applicationCacheDefaultOriginQuota;
 - (long long)applicationCacheTotalQuota;
@@ -145,8 +149,10 @@
 - (BOOL)downloadAttributeEnabled;
 - (int)editableLinkBehavior;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)es6ModulesEnabled;
 - (BOOL)experimentalNotificationsEnabled;
 - (BOOL)fetchAPIEnabled;
+- (BOOL)forceLowPowerGPUForWebGL;
 - (BOOL)forceSoftwareWebGLRendering;
 - (BOOL)fullScreenEnabled;
 - (BOOL)gamepadsEnabled;
@@ -181,15 +187,19 @@
 - (BOOL)localFileContentSniffingEnabled;
 - (BOOL)localStorageEnabled;
 - (BOOL)lowPowerVideoAudioBufferSizeEnabled;
+- (BOOL)mediaCaptureRequiresSecureConnection;
 - (BOOL)mediaControlsScaleWithPageZoom;
 - (id)mediaKeysStorageDirectory;
 - (BOOL)mediaPlaybackAllowsAirPlay;
 - (BOOL)mediaPlaybackAllowsInline;
 - (BOOL)mediaPlaybackRequiresUserGesture;
 - (BOOL)mediaSourceEnabled;
+- (BOOL)mediaStreamEnabled;
 - (BOOL)metaRefreshEnabled;
 - (BOOL)mockCaptureDevicesEnabled;
 - (BOOL)mockScrollbarsEnabled;
+- (BOOL)modernMediaControlsEnabled;
+- (BOOL)needsStorageAccessFromFileURLsQuirk;
 - (BOOL)networkDataUsageTrackingEnabled;
 - (id)networkInterfaceName;
 - (BOOL)notificationsEnabled;
@@ -197,6 +207,7 @@
 - (BOOL)overrideUserGestureRequirementForMainContent;
 - (BOOL)pageCacheSupportsPlugins;
 - (BOOL)paginateDuringLayoutEnabled;
+- (BOOL)peerConnectionEnabled;
 - (id)pictographFontFamily;
 - (BOOL)plugInSnapshottingEnabled;
 - (BOOL)requestAnimationFrameEnabled;
@@ -211,6 +222,7 @@
 - (void)setAllowFileAccessFromFileURLs:(BOOL)arg1;
 - (void)setAllowUniversalAccessFromFileURLs:(BOOL)arg1;
 - (void)setAllowsAlternateFullscreen:(BOOL)arg1;
+- (void)setAllowsPageCacheWithWindowOpener:(BOOL)arg1;
 - (void)setAllowsPictureInPictureMediaPlayback:(BOOL)arg1;
 - (void)setApplicationCacheDefaultOriginQuota:(long long)arg1;
 - (void)setApplicationCacheTotalQuota:(long long)arg1;
@@ -225,7 +237,6 @@
 - (void)setCanvasUsesAcceleratedDrawing:(BOOL)arg1;
 - (void)setCustomElementsEnabled:(BOOL)arg1;
 - (void)setDNSPrefetchingEnabled:(BOOL)arg1;
-- (void)setDOMIteratorEnabled:(BOOL)arg1;
 - (void)setDOMPasteAllowed:(BOOL)arg1;
 - (void)setDOMTimersThrottlingEnabled:(BOOL)arg1;
 - (void)setDatabasesEnabled:(BOOL)arg1;
@@ -234,11 +245,13 @@
 - (void)setDiskImageCacheEnabled:(BOOL)arg1;
 - (void)setDisplayListDrawingEnabled:(BOOL)arg1;
 - (void)setDownloadAttributeEnabled:(BOOL)arg1;
+- (void)setES6ModulesEnabled:(BOOL)arg1;
 - (void)setEditableLinkBehavior:(int)arg1;
 - (void)setEnableInheritURIQueryComponent:(BOOL)arg1;
 - (void)setExperimentalNotificationsEnabled:(BOOL)arg1;
 - (void)setFetchAPIEnabled:(BOOL)arg1;
 - (void)setForceSoftwareWebGLRendering:(BOOL)arg1;
+- (void)setForceWebGLUsesLowPower:(BOOL)arg1;
 - (void)setFrameFlatteningEnabled:(BOOL)arg1;
 - (void)setFullScreenEnabled:(BOOL)arg1;
 - (void)setGamepadsEnabled:(BOOL)arg1;
@@ -257,15 +270,19 @@
 - (void)setLocalFileContentSniffingEnabled:(BOOL)arg1;
 - (void)setLocalStorageEnabled:(BOOL)arg1;
 - (void)setLowPowerVideoAudioBufferSizeEnabled:(BOOL)arg1;
+- (void)setMediaCaptureRequiresSecureConnection:(BOOL)arg1;
 - (void)setMediaControlsScaleWithPageZoom:(BOOL)arg1;
 - (void)setMediaKeysStorageDirectory:(id)arg1;
 - (void)setMediaPlaybackAllowsAirPlay:(BOOL)arg1;
 - (void)setMediaPlaybackAllowsInline:(BOOL)arg1;
 - (void)setMediaPlaybackRequiresUserGesture:(BOOL)arg1;
 - (void)setMediaSourceEnabled:(BOOL)arg1;
+- (void)setMediaStreamEnabled:(BOOL)arg1;
 - (void)setMetaRefreshEnabled:(BOOL)arg1;
 - (void)setMockCaptureDevicesEnabled:(BOOL)arg1;
 - (void)setMockScrollbarsEnabled:(BOOL)arg1;
+- (void)setModernMediaControlsEnabled:(BOOL)arg1;
+- (void)setNeedsStorageAccessFromFileURLsQuirk:(BOOL)arg1;
 - (void)setNetworkDataUsageTrackingEnabled:(BOOL)arg1;
 - (void)setNetworkInterfaceName:(id)arg1;
 - (void)setNotificationsEnabled:(BOOL)arg1;
@@ -273,6 +290,7 @@
 - (void)setOverrideUserGestureRequirementForMainContent:(BOOL)arg1;
 - (void)setPageCacheSupportsPlugins:(BOOL)arg1;
 - (void)setPaginateDuringLayoutEnabled:(BOOL)arg1;
+- (void)setPeerConnectionEnabled:(BOOL)arg1;
 - (void)setPictographFontFamily:(id)arg1;
 - (void)setPlugInSnapshottingEnabled:(BOOL)arg1;
 - (void)setQTKitEnabled:(BOOL)arg1;
@@ -293,6 +311,7 @@
 - (void)setStorageBlockingPolicy:(int)arg1;
 - (void)setStorageTrackerEnabled:(BOOL)arg1;
 - (void)setSubpixelCSSOMElementMetricsEnabled:(BOOL)arg1;
+- (void)setSubtleCryptoEnabled:(BOOL)arg1;
 - (void)setTextDirectionSubmenuInclusionBehavior:(int)arg1;
 - (void)setUseLegacyTextAlignPositionedElementBehavior:(BOOL)arg1;
 - (void)setUsePreHTML5ParserQuirks:(BOOL)arg1;
@@ -300,6 +319,7 @@
 - (void)setVideoPlaybackRequiresUserGesture:(BOOL)arg1;
 - (void)setVideoPluginProxyEnabled:(BOOL)arg1;
 - (void)setWantsBalancedSetDefersLoadingBehavior:(BOOL)arg1;
+- (void)setWebAnimationsEnabled:(BOOL)arg1;
 - (void)setWebArchiveDebugModeEnabled:(BOOL)arg1;
 - (void)setWebAudioEnabled:(BOOL)arg1;
 - (void)setWebGL2Enabled:(BOOL)arg1;
@@ -320,12 +340,14 @@
 - (int)storageBlockingPolicy;
 - (BOOL)storageTrackerEnabled;
 - (BOOL)subpixelCSSOMElementMetricsEnabled;
+- (BOOL)subtleCryptoEnabled;
 - (int)textDirectionSubmenuInclusionBehavior;
 - (BOOL)useLegacyTextAlignPositionedElementBehavior;
 - (BOOL)usePreHTML5ParserQuirks;
 - (BOOL)usesEncodingDetector;
 - (BOOL)videoPlaybackRequiresUserGesture;
 - (BOOL)wantsBalancedSetDefersLoadingBehavior;
+- (BOOL)webAnimationsEnabled;
 - (BOOL)webArchiveDebugModeEnabled;
 - (BOOL)webAudioEnabled;
 - (BOOL)webGL2Enabled;

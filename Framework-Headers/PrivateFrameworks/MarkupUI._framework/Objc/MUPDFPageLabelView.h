@@ -6,13 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-@class NSTimer, UILabel, _UIBackdropView;
+@class NSTimer, UIBlurEffect, UILabel, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface MUPDFPageLabelView : UIView
 {
     UILabel *_label;
-    _UIBackdropView *_backdropView;
+    UIVisualEffectView *_blurView;
+    UIBlurEffect *_blurEffect;
     NSTimer *_timer;
     unsigned long long currentPageIndex;
 }
@@ -23,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (double)_fadeOutDelay;
 - (double)_fadeOutDuration;
-- (void)_makeRoundedCorners;
 - (void)clearTimer;
 - (void)dealloc;
 - (void)fadeOut;

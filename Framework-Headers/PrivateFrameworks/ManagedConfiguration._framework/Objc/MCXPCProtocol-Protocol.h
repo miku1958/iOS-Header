@@ -14,7 +14,8 @@
 - (void)allowedImportFromAppBundleIDs:(NSArray *)arg1 importingAppBundleID:(NSString *)arg2 importingIsManaged:(BOOL)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
 - (void)allowedKeyboardBundleIDsAfterApplyingFilterToBundleIDs:(NSArray *)arg1 hostAppBundleID:(NSString *)arg2 accountIsManaged:(BOOL)arg3 completion:(void (^)(NSArray *))arg4;
 - (void)allowedOpenInAppBundleIDs:(NSArray *)arg1 originatingAppBundleID:(NSString *)arg2 originatingIsManaged:(BOOL)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
-- (void)applyRestrictionDictionary:(NSDictionary *)arg1 clientType:(NSString *)arg2 clientUUID:(NSString *)arg3 localizedClientDescription:(NSString *)arg4 localizedWarningMessage:(NSString *)arg5 completion:(void (^)(BOOL, BOOL, NSError *))arg6;
+- (void)applyRestrictionDictionary:(NSDictionary *)arg1 appsAndOptions:(NSArray *)arg2 clientType:(NSString *)arg3 clientUUID:(NSString *)arg4 localizedClientDescription:(NSString *)arg5 localizedWarningMessage:(NSString *)arg6 completion:(void (^)(BOOL, BOOL, NSError *))arg7;
+- (void)cancelFeaturePromptWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)changePasscode:(NSString *)arg1 oldPasscode:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)checkCarrierProfileAndForceReinstallation:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)checkInWithCompletion:(void (^)(NSError *))arg1;
@@ -56,13 +57,15 @@
 - (void)resetAllSettingsToDefaultsIsUserInitiated:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setAllowedURLStrings:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setAutoCorrectionAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
+- (void)setDictationAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setKeyboardShortcutsAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
-- (void)setParametersForSettingsByType:(NSDictionary *)arg1 toSystem:(BOOL)arg2 user:(BOOL)arg3 passcode:(NSString *)arg4 completion:(void (^)(NSError *))arg5;
+- (void)setParametersForSettingsByType:(NSDictionary *)arg1 configurationUUID:(NSString *)arg2 toSystem:(BOOL)arg3 user:(BOOL)arg4 passcode:(NSString *)arg5 completion:(void (^)(NSError *))arg6;
 - (void)setPredictiveKeyboardAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setSpellCheckAllowed:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setUserBookmarks:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setUserInfo:(NSDictionary *)arg1 forClientUUID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setupAssistantDidFinishCompletion:(void (^)(NSError *))arg1;
+- (void)showFeaturePromptForSetting:(NSString *)arg1 configurationUUID:(NSString *)arg2 promptOptions:(NSDictionary *)arg3 promptIdentifier:(NSString *)arg4 completion:(void (^)(int, NSError *))arg5;
 - (void)shutDownWithCompletion:(void (^)(NSError *))arg1;
 - (void)stashBlacklistURLStringsWithCompletion:(void (^)(NSError *))arg1;
 - (void)stashUserBookmarks:(NSArray *)arg1 withLabel:(NSString *)arg2 completion:(void (^)(NSError *))arg3;

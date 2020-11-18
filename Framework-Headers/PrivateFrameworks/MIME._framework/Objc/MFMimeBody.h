@@ -6,14 +6,24 @@
 
 #import <MIME/MFMessageBody.h>
 
-@class MFMimePart;
+#import <MIME/ECMimePart-Protocol.h>
 
-@interface MFMimeBody : MFMessageBody
+@class MFMimePart, NSString;
+
+@interface MFMimeBody : MFMessageBody <ECMimePart>
 {
     MFMimePart *_topLevelPart;
     unsigned int _preferredAlternative:16;
     unsigned int _numAlternatives:16;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *mimeSubtype;
+@property (readonly, copy, nonatomic) NSString *mimeType;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long totalTextSize;
 
 + (id)copyNewMimeBoundary;
 + (id)versionString;
@@ -25,8 +35,6 @@
 - (id)init;
 - (BOOL)isHTML;
 - (BOOL)isRich;
-- (id)mimeSubtype;
-- (id)mimeType;
 - (long long)numberOfAlternatives;
 - (unsigned int)numberOfAttachmentsSigned:(BOOL *)arg1 encrypted:(BOOL *)arg2;
 - (id)partWithNumber:(id)arg1;
@@ -36,7 +44,6 @@
 - (void)setTopLevelPart:(id)arg1;
 - (id)textHtmlPart;
 - (id)topLevelPart;
-- (unsigned long long)totalTextSize;
 
 @end
 

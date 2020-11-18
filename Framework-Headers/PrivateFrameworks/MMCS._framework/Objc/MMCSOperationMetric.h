@@ -8,7 +8,7 @@
 
 #import <MMCS/MMCSOperationMetric-Protocol.h>
 
-@class NSArray, NSDate, NSMutableArray, NSString;
+@class NSArray, NSDate, NSMutableArray, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MMCSOperationMetric : NSObject <MMCSOperationMetric>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _bytesDownloaded;
     unsigned long long _connections;
     unsigned long long _connectionsCreated;
+    NSMutableSet *_requestUUIDs;
     NSDate *_startDate;
     double _duration;
     NSMutableArray *_ranges;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property double queueing; // @synthesize queueing=_queueing;
 @property (strong, nonatomic) NSMutableArray *ranges; // @synthesize ranges=_ranges;
 @property (readonly) NSArray *rangesCopy;
+@property (readonly) NSMutableSet *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
 

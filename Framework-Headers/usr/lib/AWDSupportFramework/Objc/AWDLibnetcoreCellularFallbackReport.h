@@ -13,11 +13,7 @@
 @interface AWDLibnetcoreCellularFallbackReport : PBCodable <NSCopying>
 {
     CDStruct_95bda58d _networkEvents;
-    struct {
-        unsigned long long *list;
-        unsigned long long count;
-        unsigned long long size;
-    } _timeToNetworkEventsMsecs;
+    CDStruct_62a50c50 _timeToNetworkEventsMsecs;
     unsigned long long _fallbackTimerMsecs;
     NSMutableArray *_dataUsageSnapshotsAtNetworkEvents;
     int _denyReason;

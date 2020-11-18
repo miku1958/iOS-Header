@@ -144,6 +144,7 @@
 - (unsigned long long)paymentServiceLightweightRegistrationRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)performAction:(id)arg1 onServiceProviderPurchase:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)performServiceProviderPayment:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)prepareTransactionDetailsForMerchantSession:(id)arg1 secureElementIdentifier:(id)arg2 amount:(id)arg3 currencyCode:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (unsigned long long)provisionForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)provisionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)redeemSession:(id)arg1 remotePaymentInstrument:(id)arg2 completion:(CDUnknownBlockType)arg3;

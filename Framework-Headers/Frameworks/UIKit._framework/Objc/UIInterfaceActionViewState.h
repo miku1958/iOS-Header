@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _isPreferred;
     UIInterfaceAction *_action;
     id _actionViewStateContext;
+    unsigned long long _visualCornerPosition;
     UIColor *_legacyPresentationTintColor;
 }
 
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isHighlighted; // @synthesize isHighlighted=_isHighlighted;
 @property (readonly, nonatomic) BOOL isPreferred; // @synthesize isPreferred=_isPreferred;
 @property (readonly, nonatomic) UIColor *legacyPresentationTintColor; // @synthesize legacyPresentationTintColor=_legacyPresentationTintColor;
+@property (readonly, nonatomic) unsigned long long visualCornerPosition; // @synthesize visualCornerPosition=_visualCornerPosition;
 
 + (id)viewStateForActionRepresentationView:(id)arg1 action:(id)arg2;
 + (id)viewStateForActionRepresentationViewDescendantView:(id)arg1 action:(id)arg2;

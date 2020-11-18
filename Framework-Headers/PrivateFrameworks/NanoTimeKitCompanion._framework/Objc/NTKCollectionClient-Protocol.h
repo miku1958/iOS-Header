@@ -13,6 +13,7 @@
 - (void)flushCompleteForIdentifier:(NSString *)arg1;
 - (void)loadFullCollectionWithOrderedUUIDs:(NSArray *)arg1 selectedUUID:(NSUUID *)arg2 facesByUUID:(NSDictionary *)arg3 seqId:(NSNumber *)arg4 completion:(void (^)(void))arg5;
 - (void)removeFaceForUUID:(NSUUID *)arg1 seqId:(NSNumber *)arg2 completion:(void (^)(void))arg3;
+- (void)resetClientCollection;
 - (void)updateFaceForUUID:(NSUUID *)arg1 withConfiguration:(NTKFaceConfiguration *)arg2 seqId:(NSNumber *)arg3;
 - (void)updateFaceForUUID:(NSUUID *)arg1 withResourceDirectory:(NSString *)arg2 seqId:(NSNumber *)arg3 completion:(void (^)(void))arg4;
 - (void)updateOrderedFaceUUIDs:(NSArray *)arg1 seqId:(NSNumber *)arg2;

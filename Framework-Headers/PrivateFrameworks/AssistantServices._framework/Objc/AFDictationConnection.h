@@ -8,7 +8,7 @@
 
 #import <AssistantServices/AFNetworkAvailabilityObserver-Protocol.h>
 
-@class NSData, NSSet, NSString, NSXPCConnection;
+@class AFSpeechRequestOptions, NSData, NSMutableData, NSSet, NSString, NSXPCConnection;
 @protocol AFDictationDelegate, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
 @interface AFDictationConnection : NSObject <AFNetworkAvailabilityObserver>
@@ -24,6 +24,13 @@
     NSObject<OS_dispatch_group> *_speechCallbackGroup;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_source> *_timeoutTimer;
+    NSObject<OS_dispatch_source> *_bufferTimer;
+    BOOL _forceOfflineRecognition;
+    AFSpeechRequestOptions *_stopOptions;
+    NSMutableData *_buffer;
+    double _audioStartTime;
+    double _amountDataSent;
+    BOOL _narrowband;
     NSString *_requestIdString;
     NSObject<OS_dispatch_queue> *_delegateQueue;
 }
@@ -41,11 +48,15 @@
 + (void)getForcedOfflineDictationSupportedLanguagesWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)_availabilityChanged;
+- (void)_cancelBufferFlushTimer;
 - (void)_cancelRequestTimeout;
+- (void)_cancelTimerClearBuffer;
 - (void)_checkAndSetIsCapturingSpeech:(BOOL)arg1;
 - (void)_clearConnection;
 - (id)_connection;
 - (void)_connectionClearedForInterruption:(BOOL)arg1;
+- (void)_delayedStopSpeechWithOptions:(id)arg1;
+- (id)_dequeueAudioWithLength:(unsigned long long)arg1;
 - (id)_dictationService;
 - (id)_dictationServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)_dispatchAsync:(CDUnknownBlockType)arg1;
@@ -54,12 +65,14 @@
 - (void)_invokeRequestTimeout;
 - (void)_registerInvalidationHandlerForXPCConnection:(id)arg1;
 - (void)_scheduleRequestTimeout;
+- (void)_sendDataIfNeeded;
 - (void)_setActivationTimeOnOptionsIfNecessary:(id)arg1;
 - (void)_setLevelsWithSharedMem:(id)arg1;
 - (void)_stopLevelUpdates;
 - (void)_tellSpeechDelegateAudioFileFinished:(id)arg1 error:(id)arg2;
 - (void)_tellSpeechDelegateAvailabilityChanged;
 - (void)_tellSpeechDelegateDidProcessAudioDuration:(double)arg1;
+- (void)_tellSpeechDelegateDidRecognizePackage:(id)arg1;
 - (void)_tellSpeechDelegateDidRecognizeSpeechPhrases:(id)arg1 languageModel:(id)arg2 correctionIdentifier:(id)arg3;
 - (void)_tellSpeechDelegateDidRecognizeSpeechTokens:(id)arg1 languageModel:(id)arg2;
 - (void)_tellSpeechDelegateDidRecognizeTranscriptionObjects:(id)arg1 languageModel:(id)arg2;
@@ -70,6 +83,7 @@
 - (void)_tellSpeechDelegateRecordingDidFail:(id)arg1;
 - (void)_tellSpeechDelegateRecordingWillBegin;
 - (void)_tellSpeechDelegateSpeechRecognitionDidSucceed;
+- (void)_updateBufferFlushTimerWithDelay:(double)arg1;
 - (void)_willCancelDictation;
 - (void)_willCompleteDictation;
 - (void)_willFailDictationWithError:(id)arg1;

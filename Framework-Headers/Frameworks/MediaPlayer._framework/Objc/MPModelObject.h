@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) MPIdentifierSet *originalIdentifierSet;
 
 + (void)initialize;
++ (id)mqf_requiredPlaybackProperties;
 + (void)performWithoutEnforcement:(CDUnknownBlockType)arg1;
 + (id)requiredKeepLocalStatusObservationProperties;
 + (id)requiredLibraryAddStatusObservationProperties;
@@ -40,6 +41,10 @@
 - (BOOL)hasLoadedValueForKey:(id)arg1;
 - (BOOL)hasLoadedValuesForProperties:(id)arg1;
 - (id)initWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)mediaItemPropertyValues;
+- (void)mqf_configurePlaybackItemMetadata:(id)arg1;
+- (id)mqf_newPlaybackItemMetadata;
+- (id)mqf_playbackItemMetadataModelObject;
 - (id)newKeepLocalStatusObserverConfiguration;
 
 @end

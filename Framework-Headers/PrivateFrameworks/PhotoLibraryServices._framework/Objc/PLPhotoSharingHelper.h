@@ -20,7 +20,7 @@
 + (void)_resetServerSideConfigurationDictionary;
 + (long long)_serverLimitValueForKey:(id)arg1 withDefaultResult:(long long)arg2;
 + (id)_transactionWithName:(const char *)arg1;
-+ (void)acceptPendingInvitationForAlbum:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)acceptPendingInvitationForAlbum:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)accountMatchesEmail:(id)arg1;
 + (void)accountSettingsChanged;
 + (void)applicationIsInForeground:(BOOL)arg1;
@@ -62,6 +62,7 @@
 + (void)isMstreamdBusyPerformingSharingActivityWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (void)markAlbumGUIDAsViewed:(id)arg1 clearUnseenAssetsCount:(BOOL)arg2;
 + (void)markCommentsForAssetCollectionWithGUID:(id)arg1 asViewedWithLastViewedDate:(id)arg2;
++ (void)markPendingInvitationAsSpamForAlbum:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (long long)maxAssetsPerStream;
 + (long long)maxCharactersPerComment;
 + (long long)maxCommentsPerAsset;

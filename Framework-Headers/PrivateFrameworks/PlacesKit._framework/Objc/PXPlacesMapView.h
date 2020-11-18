@@ -26,6 +26,10 @@
 - (void)deselectAllAnnotationsAnimated:(BOOL)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (CDStruct_02837cd9)ppt_cityMapRect;
+- (void)ppt_performPlacesScrollTest:(id)arg1 iterations:(long long)arg2 screenDelta:(long long)arg3 delay:(double)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)ppt_performPlacesZoomTest:(id)arg1 iterations:(long long)arg2 delay:(double)arg3 completion:(CDUnknownBlockType)arg4;
+- (CDUnknownBlockType)ppt_visibleMapRectBlockForQueue:(id)arg1 delay:(double)arg2;
 - (double)zoomLevel;
 
 @end

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/NUIContainerStackView.h>
+#import <SearchUI/SearchUIStackView.h>
 
-@interface SearchUIStarView : NUIContainerStackView
+@interface SearchUIStarView : SearchUIStackView
 {
     double _currentStarRating;
 }
@@ -17,7 +17,6 @@
 + (id)fullStar;
 + (id)halfStar;
 + (id)starImageWithName:(id)arg1;
-- (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (id)init;
 - (void)updateStarRating:(double)arg1;
 

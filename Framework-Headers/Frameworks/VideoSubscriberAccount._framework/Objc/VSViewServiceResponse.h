@@ -11,7 +11,6 @@
 
 @class VSAccountMetadata;
 
-__attribute__((visibility("hidden")))
 @interface VSViewServiceResponse : NSObject <NSCopying, NSSecureCoding>
 {
     VSAccountMetadata *_accountMetadata;

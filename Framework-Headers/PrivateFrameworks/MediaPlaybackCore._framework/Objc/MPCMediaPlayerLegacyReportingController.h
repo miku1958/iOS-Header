@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class MPCJinglePlayActivityReportingController, MPCMediaPlayerLegacyPlayer, MPCReportingPlaybackObserver;
+@class MPCJinglePlayActivityReportingController, MPCMediaPlayerLegacyPlayer, MPCReportingPlaybackObserver, MPRTCReportingController;
 
 @interface MPCMediaPlayerLegacyReportingController : NSObject
 {
+    MPRTCReportingController *_rtcReportingController;
     MPCMediaPlayerLegacyPlayer *_player;
     MPCReportingPlaybackObserver *_reportingPlaybackObserver;
     MPCJinglePlayActivityReportingController *_jinglePlayActivityReportingController;

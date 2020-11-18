@@ -17,9 +17,7 @@
     NTPBPersonalizationTreatment *_defaultPersonalizationTreatment;
     NSMutableArray *_personalizationBuckets;
     NSMutableArray *_personalizationTreatments;
-    struct {
-        unsigned int moduloForHashing:1;
-    } _has;
+    CDStruct_3f5c4e18 _has;
 }
 
 @property (strong, nonatomic) NTPBBinningConfig *binningConfig; // @synthesize binningConfig=_binningConfig;

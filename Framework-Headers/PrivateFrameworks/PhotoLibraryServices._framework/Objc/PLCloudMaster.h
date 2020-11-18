@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSString *mediaMetadataType; // @dynamic mediaMetadataType;
 @property (strong, nonatomic) NSString *originalFilename; // @dynamic originalFilename;
 @property (nonatomic) short originalOrientation; // @dynamic originalOrientation;
+@property (copy, nonatomic) NSString *originatingAssetIdentifier; // @dynamic originatingAssetIdentifier;
 @property (strong, nonatomic) NSSet *resources; // @dynamic resources;
 @property (strong, nonatomic) NSString *uniformTypeIdentifier; // @dynamic uniformTypeIdentifier;
 

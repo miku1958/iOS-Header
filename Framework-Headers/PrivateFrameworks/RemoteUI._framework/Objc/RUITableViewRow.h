@@ -10,7 +10,7 @@
 #import <RemoteUI/UIPickerViewDelegate-Protocol.h>
 #import <RemoteUI/UITextFieldDelegate-Protocol.h>
 
-@class NSData, NSDate, NSDateFormatter, NSDictionary, NSMutableArray, NSString, RUIPage, RemoteUITableViewCell, UIControl, UISwitch, UIView;
+@class NSData, NSDate, NSDateFormatter, NSDictionary, NSMutableArray, NSString, RUIDetailButtonElement, RUIPage, RemoteUITableViewCell, UIControl, UISwitch, UIView;
 @protocol RUITableViewRowDelegate, RUITextFieldChangeObserver;
 
 @interface RUITableViewRow : RUIElement <RUIWebContainerViewDelegate, UIPickerViewDelegate, UITextFieldDelegate>
@@ -30,6 +30,7 @@
     NSDateFormatter *_datePickerFormatter;
     BOOL _configured;
     BOOL _selected;
+    BOOL _focused;
     BOOL _showingProgressIndicator;
     id<RUITableViewRowDelegate> _delegate;
     long long _datePickerMode;
@@ -37,6 +38,7 @@
     double _height;
     id<RUITextFieldChangeObserver> _textFieldChangeObserver;
     RUIPage *_linkedPage;
+    RUIDetailButtonElement *_detailButton;
     long long _alignment;
 }
 
@@ -52,8 +54,11 @@
 @property (weak, nonatomic) id<RUITableViewRowDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSDictionary *deleteAction; // @synthesize deleteAction=_deleteAction;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) RUIDetailButtonElement *detailButton; // @synthesize detailButton=_detailButton;
+@property (nonatomic, getter=isFocused) BOOL focused; // @synthesize focused=_focused;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double height; // @synthesize height=_height;
+@property (readonly, nonatomic) BOOL indentWhileEditing;
 @property (weak, nonatomic) RUIPage *linkedPage; // @synthesize linkedPage=_linkedPage;
 @property (strong, nonatomic) UIView *pickerView; // @synthesize pickerView=_pickerView;
 @property (nonatomic) BOOL rowInvalid; // @synthesize rowInvalid=_rowInvalid;
@@ -75,6 +80,7 @@
 - (id)_datePickerFormatter;
 - (void)_switchFlipped:(id)arg1;
 - (void)_updateContentForDisabledState;
+- (void)_updateTextColors;
 - (void)accessoryImageLoaded;
 - (void)clearCachedHeight;
 - (id)dateFormatterCalendarIdentifier;
@@ -94,9 +100,11 @@
 - (void)setEditableTextFieldValue:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setImage:(id)arg1;
+- (void)setImageSize:(struct CGSize)arg1;
 - (BOOL)setSelectPageRowValue:(id)arg1;
 - (void)setSelectRowValue:(id)arg1;
 - (void)setValueFromString:(id)arg1;
+- (void)setValueFromString:(id)arg1 notify:(BOOL)arg2;
 - (id)sourceURL;
 - (BOOL)supportsAutomaticSelection;
 - (void)switchCanceled;

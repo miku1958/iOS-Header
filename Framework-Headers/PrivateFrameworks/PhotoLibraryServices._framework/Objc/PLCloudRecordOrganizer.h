@@ -18,6 +18,7 @@
     NSMutableArray *_assetRecords;
     NSMutableArray *_albumRecords;
     NSMutableArray *_memoryRecords;
+    NSMutableArray *_faceCropRecords;
     NSMutableArray *_deleteRecords;
     NSMutableArray *_expungedRecords;
 }
@@ -28,6 +29,7 @@
 @property (readonly) NSMutableArray *assetRecordsWithContainerChange; // @synthesize assetRecordsWithContainerChange=_assetRecordsWithContainerChange;
 @property (readonly) NSMutableArray *deleteRecords; // @synthesize deleteRecords=_deleteRecords;
 @property (readonly) NSMutableArray *expungedRecords; // @synthesize expungedRecords=_expungedRecords;
+@property (readonly) NSMutableArray *faceCropRecords; // @synthesize faceCropRecords=_faceCropRecords;
 @property (readonly) NSMutableArray *masterRecords; // @synthesize masterRecords=_masterRecords;
 @property (readonly) NSMutableArray *memoryRecords; // @synthesize memoryRecords=_memoryRecords;
 @property (readonly) NSMutableArray *personRecords; // @synthesize personRecords=_personRecords;

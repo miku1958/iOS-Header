@@ -9,20 +9,18 @@
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class MPPropertySet, NSString;
+@class MPModelKind, MPPropertySet, NSString;
 
 @interface MPModelLibrarySearchScope : NSObject <NSCopying, NSSecureCoding>
 {
     shared_ptr_c450ebdb _coreScope;
-    unsigned long long _contentTypes;
-    Class _itemClass;
+    MPModelKind *_itemKind;
     NSString *_name;
     MPPropertySet *_itemProperties;
 }
 
-@property (readonly, nonatomic) unsigned long long contentTypes; // @synthesize contentTypes=_contentTypes;
 @property (readonly, nonatomic) shared_ptr_c450ebdb coreScope;
-@property (readonly, nonatomic) Class itemClass; // @synthesize itemClass=_itemClass;
+@property (strong, nonatomic) MPModelKind *itemKind; // @synthesize itemKind=_itemKind;
 @property (readonly, copy, nonatomic) MPPropertySet *itemProperties; // @synthesize itemProperties=_itemProperties;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 
@@ -33,7 +31,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithItemClass:(Class)arg1 contentTypes:(unsigned long long)arg2 name:(id)arg3 properties:(id)arg4;
+- (id)initWithItemKind:(id)arg1 name:(id)arg2 properties:(id)arg3;
 
 @end
 

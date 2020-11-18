@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMHTMLAnchorElement.h>
+#import <WebKitLegacy/DOMHTMLAnchorElement.h>
 
 @interface DOMHTMLAnchorElement (UIWebInteraction)
 - (BOOL)alwaysAttemptToShowTapHighlight;

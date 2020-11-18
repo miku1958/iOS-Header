@@ -8,7 +8,7 @@
 
 #import <TelephonyUtilities/TUCallProviderManagerDataSourceDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSString, TUCallProvider;
+@class NSArray, NSDictionary, NSMapTable, NSString, TUCallProvider;
 @protocol OS_dispatch_queue, TUCallProviderManagerDataSource;
 
 @interface TUCallProviderManager : NSObject <TUCallProviderManagerDataSourceDelegate>
@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) TUCallProvider *faceTimeProvider;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSArray *providers;
+@property (readonly, copy, nonatomic) NSDictionary *providersByIdentifier;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) TUCallProvider *telephonyProvider;

@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
     struct vector<NewServerListener, std::__1::allocator<NewServerListener>> mNewServerListeners;
     unsigned int mServerRefCounter;
     NSObject<OS_dispatch_queue> *mTouchServersQueue;
+    int mNotifyToken;
+    BOOL mValidToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;

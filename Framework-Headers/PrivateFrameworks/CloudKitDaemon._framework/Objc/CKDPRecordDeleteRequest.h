@@ -8,22 +8,27 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPRecordIdentifier, NSString;
+@class CKDPRecordIdentifier, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDPRecordDeleteRequest : PBRequest <NSCopying>
 {
     NSString *_etag;
+    NSMutableArray *_pluginFields;
     CKDPRecordIdentifier *_recordIdentifier;
 }
 
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
 @property (readonly, nonatomic) BOOL hasEtag;
 @property (readonly, nonatomic) BOOL hasRecordIdentifier;
+@property (strong, nonatomic) NSMutableArray *pluginFields; // @synthesize pluginFields=_pluginFields;
 @property (strong, nonatomic) CKDPRecordIdentifier *recordIdentifier; // @synthesize recordIdentifier=_recordIdentifier;
 
 + (id)options;
++ (Class)pluginFieldsType;
 - (void).cxx_destruct;
+- (void)addPluginFields:(id)arg1;
+- (void)clearPluginFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -31,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)pluginFieldsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)pluginFieldsCount;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;

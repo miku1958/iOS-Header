@@ -8,13 +8,13 @@
 
 #import <VideoSubscriberAccount/NSCopying-Protocol.h>
 
-@class NSArray, NSPredicate, VSKeychainItemKind;
+@class NSArray, NSPredicate, VSOptional;
 
 __attribute__((visibility("hidden")))
 @interface VSKeychainFetchRequest : NSObject <NSCopying>
 {
     BOOL _includesDataValues;
-    VSKeychainItemKind *_itemKind;
+    VSOptional *_itemKind;
     NSPredicate *_predicate;
     NSArray *_sortDescriptors;
     unsigned long long _fetchLimit;
@@ -22,12 +22,13 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) unsigned long long fetchLimit; // @synthesize fetchLimit=_fetchLimit;
 @property (nonatomic) BOOL includesDataValues; // @synthesize includesDataValues=_includesDataValues;
-@property (copy, nonatomic) VSKeychainItemKind *itemKind; // @synthesize itemKind=_itemKind;
+@property (strong, nonatomic) VSOptional *itemKind; // @synthesize itemKind=_itemKind;
 @property (copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 
 @end
 

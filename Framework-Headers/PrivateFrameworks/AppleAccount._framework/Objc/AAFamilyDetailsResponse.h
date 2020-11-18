@@ -17,10 +17,12 @@
     AAFamilyMember *_me;
     NSArray *_invites;
     NSArray *_pendingMembers;
+    NSString *_addMemberInstructions;
     NSString *_childAccountPrompt;
     NSString *_childAccountButtonTitle;
 }
 
+@property (readonly, nonatomic) NSString *addMemberInstructions; // @synthesize addMemberInstructions=_addMemberInstructions;
 @property (readonly, nonatomic) BOOL canAddChildMembers; // @synthesize canAddChildMembers=_canAddChildMembers;
 @property (readonly, nonatomic) BOOL canAddMembers; // @synthesize canAddMembers=_canAddMembers;
 @property (readonly, nonatomic) NSString *childAccountButtonTitle; // @synthesize childAccountButtonTitle=_childAccountButtonTitle;

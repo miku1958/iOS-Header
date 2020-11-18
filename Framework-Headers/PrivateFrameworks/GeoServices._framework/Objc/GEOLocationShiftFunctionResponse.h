@@ -16,12 +16,14 @@
     BOOL _shouldUsePolyShiftFunction;
 }
 
-@property (nonatomic) CDStruct_c3b9c2ee originalCoordinate; // @synthesize originalCoordinate=_originalCoordinate;
+@property (readonly, nonatomic) CDStruct_c3b9c2ee originalCoordinate; // @synthesize originalCoordinate=_originalCoordinate;
+@property (readonly, nonatomic) double radius; // @synthesize radius=_radius;
 
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPolyLocationShiftResponse:(id)arg1 originalCoordinate:(CDStruct_c3b9c2ee)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isValidForCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (CDStruct_c3b9c2ee)shiftedCoordinateForCoordinate:(CDStruct_c3b9c2ee)arg1 accuracy:(double *)arg2;
 

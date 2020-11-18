@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (id)initFromPromise:(id)arg1;
+- (id)initFulfilled:(id)arg1;
 - (id)then:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (id)wait:(unsigned long long)arg1;
 - (id)waitForever;

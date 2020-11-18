@@ -6,18 +6,21 @@
 
 #import <PhotosUI/PUTilingDataSource.h>
 
+@class NSIndexPath;
+
 @interface PUAssetsDataSource : PUTilingDataSource
 {
 }
 
 @property (readonly, nonatomic) BOOL containsMultipleAssets;
+@property (readonly, nonatomic) NSIndexPath *firstItemIndexPath;
 
 + (id)emptyDataSource;
 - (id)assetAtIndexPath:(id)arg1;
 - (id)assetCollectionAtIndexPath:(id)arg1;
 - (id)assetReferenceAtIndexPath:(id)arg1;
 - (id)assetReferenceForAssetReference:(id)arg1;
-- (id)badgeInfoForAssetAtIndexPath:(id)arg1;
+- (id)badgeInfoPromiseForAssetAtIndexPath:(id)arg1;
 - (id)containedAssetsDataSourceAtIndexPath:(id)arg1;
 - (id)convertIndexPath:(id)arg1 fromAssetsDataSource:(id)arg2;
 - (BOOL)couldAssetReferenceAppear:(id)arg1;

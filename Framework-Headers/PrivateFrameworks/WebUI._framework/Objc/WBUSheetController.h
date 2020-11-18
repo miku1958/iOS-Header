@@ -6,25 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <WebUI/UITableViewDataSource-Protocol.h>
-#import <WebUI/UITableViewDelegate-Protocol.h>
+@class NSMutableArray, UIAlertController, WebUIAlert;
 
-@class NSMutableArray, NSString, UIAlertController, UITableView, WebUIAlert;
-
-@interface WBUSheetController : NSObject <UITableViewDelegate, UITableViewDataSource>
+@interface WBUSheetController : NSObject
 {
     UIAlertController *_alertController;
     WebUIAlert *_alert;
     NSMutableArray *_alertInvocationQueue;
-    UITableView *_tableView;
     id _delegate;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
++ (id)alertControllerForAlert:(id)arg1 automaticallyDismiss:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)_alertDidDismissWithAction:(int)arg1;
 - (void)hideSheet;
@@ -32,9 +24,6 @@
 - (void)setDelegate:(id)arg1;
 - (void)showSheetForAlert:(id)arg1;
 - (void)showSheetForAlert:(id)arg1 inView:(id)arg2;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 
 @end
 

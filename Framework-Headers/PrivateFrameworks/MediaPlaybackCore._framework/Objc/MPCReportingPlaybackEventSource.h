@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPModelPlayEvent, MPModelSong, NSData, NSString;
+@class MPModelGenericObject, MPModelPlayEvent, NSData, NSString;
 
 @interface MPCReportingPlaybackEventSource : NSObject
 {
@@ -15,8 +15,7 @@
     double _eventDuration;
     unsigned long long _overrideItemType;
     NSString *_lyricsID;
-    MPModelSong *_modelSong;
-    NSString *_playbackSessionID;
+    MPModelGenericObject *_itemGenericObject;
     NSData *_trackInfo;
     MPModelPlayEvent *_modelPlayEvent;
     NSString *_featureName;
@@ -28,11 +27,10 @@
 @property (nonatomic) long long equivalencySourceAdamID; // @synthesize equivalencySourceAdamID=_equivalencySourceAdamID;
 @property (nonatomic) double eventDuration; // @synthesize eventDuration=_eventDuration;
 @property (copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
+@property (strong, nonatomic) MPModelGenericObject *itemGenericObject; // @synthesize itemGenericObject=_itemGenericObject;
 @property (copy, nonatomic) NSString *lyricsID; // @synthesize lyricsID=_lyricsID;
 @property (strong, nonatomic) MPModelPlayEvent *modelPlayEvent; // @synthesize modelPlayEvent=_modelPlayEvent;
-@property (strong, nonatomic) MPModelSong *modelSong; // @synthesize modelSong=_modelSong;
 @property (nonatomic) unsigned long long overrideItemType; // @synthesize overrideItemType=_overrideItemType;
-@property (copy, nonatomic) NSString *playbackSessionID; // @synthesize playbackSessionID=_playbackSessionID;
 @property (copy, nonatomic) NSData *recommendationData; // @synthesize recommendationData=_recommendationData;
 @property (copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
 @property (copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;

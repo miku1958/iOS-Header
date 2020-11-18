@@ -6,14 +6,15 @@
 
 #import <Preferences/PSListController.h>
 
+#import <PreferencesUI/AAUISignInControllerDelegate-Protocol.h>
 #import <PreferencesUI/DevicePINControllerDelegate-Protocol.h>
 #import <PreferencesUI/PSSearchControllerDelegate-Protocol.h>
 #import <PreferencesUI/RadiosPreferencesDelegate-Protocol.h>
 
-@class ACAccountStore, EAAccessory, NSArray, NSDictionary, NSObject, NSSet, NSString, PSSearchController, PSSpecifier, PSUIHomeKitVisibilityArbitrator, UIViewController, VSAccountStore;
+@class AAUIProfilePictureStore, ACAccountStore, EAAccessory, NSArray, NSDictionary, NSObject, NSSet, NSString, PSSearchController, PSSpecifier, PSUIClassroomVisibilityArbitrator, PSUIHomeKitVisibilityArbitrator, UIViewController, VSAccountStore;
 @protocol OS_dispatch_queue, PSController;
 
-@interface PSUIPrefsListController : PSListController <PSSearchControllerDelegate, RadiosPreferencesDelegate, DevicePINControllerDelegate>
+@interface PSUIPrefsListController : PSListController <PSSearchControllerDelegate, AAUISignInControllerDelegate, RadiosPreferencesDelegate, DevicePINControllerDelegate>
 {
     BOOL _didFirstLoad;
     EAAccessory *_speakerAccessory;
@@ -26,7 +27,7 @@
     PSSpecifier *_notificationsSpecifier;
     PSSpecifier *_wallpaperSpecifier;
     PSSpecifier *_passcodeSpecifier;
-    PSSpecifier *_castleSpecifier;
+    PSSpecifier *_appleAccountSpecifier;
     PSSpecifier *_twitterSpecifier;
     PSSpecifier *_facebookSpecifier;
     PSSpecifier *_flickrSpecifier;
@@ -40,6 +41,7 @@
     PSSpecifier *_siriSpecifier;
     PSSpecifier *_carrierSelectionSpecifier;
     PSSpecifier *_personalHotspotSpecifier;
+    PSSpecifier *_classroomSpecifier;
     PSSpecifier *_homeKitSpecifier;
     BOOL _wifiValueIsClean;
     BOOL _bluetoothValueIsClean;
@@ -49,8 +51,10 @@
     NSDictionary *_iconCache;
     ACAccountStore *_accountStore;
     NSString *_pendingOffsetItemName;
+    PSUIClassroomVisibilityArbitrator *_classroomVisibilityArbitrator;
     PSUIHomeKitVisibilityArbitrator *_homeKitVisibilityArbitrator;
     VSAccountStore *_videoSubscriberAccountStore;
+    AAUIProfilePictureStore *_profilePictureStore;
     BOOL _skipSelectingGeneralOnLaunch;
     PSSearchController *_searchController;
     NSString *_searchText;
@@ -82,12 +86,14 @@
 - (void)_loadThirdPartySpecifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_localeChanged;
 - (void)_newCarrierNotification;
+- (void)_presentAppleAccountSignInController:(id)arg1;
 - (id)_primarySpecifierOrdering;
+- (id)_profilePictureStore;
 - (void)_reallyLoadThirdPartySpecifiersForApps:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_setAirplaneMode:(BOOL)arg1;
-- (void)_setupiCloudSpecifier:(id)arg1;
-- (void)_setupiCloudSpecifier:(id)arg1 withPrimaryAccount:(id)arg2;
-- (void)_setupiCloudSpecifierAsync:(id)arg1;
+- (void)_setupAppleAccountSpecifier:(id)arg1;
+- (void)_setupAppleAccountSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_setupAppleAccountSpecifierAsync:(id)arg1;
 - (BOOL)_showCarrier;
 - (void)_showControllerFromSpecifier:(id)arg1;
 - (void)_showDetailTargetDidChange:(id)arg1;
@@ -137,6 +143,7 @@
 - (void)refresh3rdPartyBundles;
 - (void)reloadCellularRelatedSpecifiers;
 - (void)reloadSpecifiers;
+- (void)removeAndReload3rdPartyBundles;
 - (void)rerootNavigationController;
 - (id)rootSpecifiersForSearchController:(id)arg1;
 - (void)searchController:(id)arg1 openURL:(id)arg2;
@@ -147,12 +154,14 @@
 - (void)setDesiredVerticalContentOffsetItemNamed:(id)arg1;
 - (void)setShowsCarrierSettingsMenu:(BOOL)arg1;
 - (void)setSpeakerAccessory:(id)arg1 eqAvailable:(BOOL)arg2;
-- (void)setupAppleAccountCategory:(id)arg1;
+- (void)setupPrimaryAppleAccountGroup:(id)arg1;
 - (void)setupSearchBar;
 - (BOOL)shouldDeferPushForSpecifierID:(id)arg1;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (BOOL)shouldShowEthernetSpecifier;
 - (void)showPINSheet:(id)arg1;
+- (void)signInController:(id)arg1 didCompleteWithSuccess:(BOOL)arg2 error:(id)arg3;
+- (void)signInControllerDidCancel:(id)arg1;
 - (id)specifierForBundle:(id)arg1;
 - (id)specifiers;
 - (void)suspend;
@@ -161,6 +170,7 @@
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)updateAccountSpecifiers;
+- (void)updateClassroomSpecifier;
 - (void)updateEthernet;
 - (void)updateHomeKitSpecifier;
 - (void)updateRestrictedSettings;

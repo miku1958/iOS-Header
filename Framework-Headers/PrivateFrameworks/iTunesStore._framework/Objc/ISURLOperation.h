@@ -8,7 +8,7 @@
 
 #import <iTunesStore/SSURLSessionManagerDelegate-Protocol.h>
 
-@class ISDataProvider, ISURLRequestPerformance, NSArray, NSCountedSet, NSData, NSMutableData, NSObject, NSString, NSURLCache, NSURLRequest, NSURLResponse, NSURLSessionTask, SSAuthenticationContext, SSMutableURLRequestProperties, SSURLRequestProperties, SSURLSessionManager;
+@class ISDataProvider, ISURLRequestPerformance, NSArray, NSCountedSet, NSData, NSMutableData, NSObject, NSString, NSURLCache, NSURLRequest, NSURLResponse, NSURLSessionTask, SSAuthenticationContext, SSHTTPArchive, SSMutableURLRequestProperties, SSURLRequestProperties, SSURLSessionManager;
 @protocol ISURLOperationDelegate, OS_dispatch_queue;
 
 @interface ISURLOperation : ISOperation <SSURLSessionManagerDelegate>
@@ -26,12 +26,14 @@
     NSURLSessionTask *_urlSessionTask;
     BOOL _usesPrivateCookieStore;
     NSObject<OS_dispatch_queue> *_dataBufferAccessQueue;
+    SSHTTPArchive *_httpArchive;
     ISURLRequestPerformance *_performanceMetrics;
     BOOL _loadsHTTPFailures;
     BOOL _uploadProgressRequested;
     NSArray *_passThroughErrors;
 }
 
+@property (readonly) SSHTTPArchive *HTTPArchive;
 @property (readonly, nonatomic) NSURLCache *URLCache;
 @property (readonly, nonatomic) NSString *URLCacheID;
 @property (getter=_loadsHTTPFailures, setter=_setLoadsHTTPFailures:) BOOL _loadsHTTPFailures; // @synthesize _loadsHTTPFailures;
@@ -62,7 +64,9 @@
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)URLSession:(id)arg1 task:(id)arg2 decodedDataForResponseData:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithEvent:(id)arg3 error:(id)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCreatingHTTPArchive:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;

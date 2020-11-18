@@ -13,6 +13,9 @@
     BOOL _subscribed;
     BOOL _itunes;
     BOOL _watchListEnabled;
+    BOOL _requiresSubscriptionForConsent;
+    BOOL _requiresAccountLevelConsent;
+    BOOL _shouldPromptForConsentOnSubscriptionChange;
     BOOL _appInstalled;
     NSString *_channelID;
     NSString *_name;
@@ -32,6 +35,9 @@
 @property (readonly, nonatomic) WLKArtworkVariantListing *images; // @synthesize images=_images;
 @property (readonly, nonatomic, getter=isiTunes) BOOL itunes; // @synthesize itunes=_itunes;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) BOOL requiresAccountLevelConsent; // @synthesize requiresAccountLevelConsent=_requiresAccountLevelConsent;
+@property (readonly, nonatomic) BOOL requiresSubscriptionForConsent; // @synthesize requiresSubscriptionForConsent=_requiresSubscriptionForConsent;
+@property (readonly, nonatomic) BOOL shouldPromptForConsentOnSubscriptionChange; // @synthesize shouldPromptForConsentOnSubscriptionChange=_shouldPromptForConsentOnSubscriptionChange;
 @property (readonly, nonatomic, getter=isSubscribed) BOOL subscribed; // @synthesize subscribed=_subscribed;
 @property (readonly, nonatomic, getter=isWatchListEnabled) BOOL watchListEnabled; // @synthesize watchListEnabled=_watchListEnabled;
 

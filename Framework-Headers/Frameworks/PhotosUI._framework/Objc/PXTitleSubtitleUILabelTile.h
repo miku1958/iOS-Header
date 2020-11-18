@@ -18,8 +18,10 @@
     BOOL _rendersTextAsynchronously;
     NSString *_title;
     NSString *_subtitle;
+    long long __animationCount;
 }
 
+@property (nonatomic, setter=_setAnimationCount:) long long _animationCount; // @synthesize _animationCount=__animationCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -33,10 +35,12 @@
 - (void).cxx_destruct;
 - (void)_updateLabelTitleAndSubtitle;
 - (void)becomeReusable;
+- (void)didAnimateToGeometry:(struct PXTileGeometry)arg1 toUserData:(id)arg2 withOptions:(id)arg3;
 - (void)didApplyGeometry:(struct PXTileGeometry)arg1 withUserData:(id)arg2;
 - (id)init;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (void)prepareForReuse;
+- (void)willAnimateToGeometry:(struct PXTileGeometry)arg1 toUserData:(id)arg2 withOptions:(id)arg3;
 
 @end
 

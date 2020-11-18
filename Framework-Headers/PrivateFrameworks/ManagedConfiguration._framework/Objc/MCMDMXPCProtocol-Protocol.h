@@ -11,10 +11,12 @@
 @protocol MCMDMXPCProtocol <NSObject>
 - (void)migrateMDMWithContext:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (void)notifyNewConfigurationWithCompletion:(void (^)(NSError *))arg1;
-- (void)processUserRequest:(NSDictionary *)arg1 completionBlock:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)processDeviceRequest:(NSDictionary *)arg1 completion:(void (^)(NSError *, NSDictionary *))arg2;
+- (void)processUserRequest:(NSDictionary *)arg1 completion:(void (^)(NSError *, NSDictionary *))arg2;
 - (void)retryNotNowWithCompletion:(void (^)(NSError *))arg1;
 - (void)scheduleTokenUpdateIfNecessaryWithCompletion:(void (^)(NSError *))arg1;
 - (void)scheduleTokenUpdateWithCompletion:(void (^)(NSError *))arg1;
+- (void)simulatePushIfNetworkTetheredWithCompletion:(void (^)(NSError *))arg1;
 - (void)simulatePushWithCompletion:(void (^)(NSError *))arg1;
 - (void)uprootMDMWithCompletion:(void (^)(NSError *))arg1;
 @end

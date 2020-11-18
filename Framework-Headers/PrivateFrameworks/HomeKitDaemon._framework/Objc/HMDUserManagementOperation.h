@@ -63,6 +63,7 @@
 
 + (id)addUserManagementOperationForUser:(id)arg1 accessory:(id)arg2;
 + (id)removeUserManagementOperationForUser:(id)arg1 accessory:(id)arg2;
++ (id)shortDescription;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (long long)_accessoryInvitationState;
@@ -74,6 +75,7 @@
 - (void)_startBackoffTimer;
 - (void)addDependency:(id)arg1;
 - (void)cancel;
+- (id)descriptionWithPointer:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)executeWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;

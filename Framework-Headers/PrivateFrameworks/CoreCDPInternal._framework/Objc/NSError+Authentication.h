@@ -8,6 +8,8 @@
 
 @interface NSError (Authentication)
 
+@property (readonly, nonatomic) BOOL isAuthKitUnableToPromptDueToNetworkError;
+@property (readonly, nonatomic) BOOL isAuthKitUnableToPromptError;
 @property (readonly, nonatomic) BOOL isAuthenticationError;
 
 @end

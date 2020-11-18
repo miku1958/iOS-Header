@@ -27,6 +27,7 @@
 - (id)init;
 - (id)initWithAssetCollection:(id)arg1;
 - (id)initWithAssetCollection:(id)arg1 keyAsset:(id)arg2;
+- (BOOL)ppt_runTest:(id)arg1 options:(id)arg2;
 
 @end
 

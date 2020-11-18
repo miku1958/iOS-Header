@@ -9,7 +9,7 @@
 #import <SoftwareUpdateServices/NSCopying-Protocol.h>
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSString, SUDocumentation;
+@class NSData, NSDate, NSDictionary, NSString, SUDocumentation;
 
 @interface SUDescriptor : NSObject <NSSecureCoding, NSCopying>
 {
@@ -37,6 +37,8 @@
     NSDictionary *_systemPartitionPadding;
     NSData *_sepDigest;
     NSData *_rsepDigest;
+    NSDate *_releaseDate;
+    unsigned long long _mdmDelayInterval;
     BOOL _downloadableOverCellular;
     BOOL _streamingZipCapable;
 }
@@ -51,6 +53,7 @@
 @property (nonatomic, getter=isDownloadable) BOOL downloadable; // @synthesize downloadable=_downloadable;
 @property (nonatomic, getter=isDownloadableOverCellular) BOOL downloadableOverCellular; // @synthesize downloadableOverCellular=_downloadableOverCellular;
 @property (nonatomic) unsigned long long installationSize; // @synthesize installationSize=_installationSize;
+@property (nonatomic) unsigned long long mdmDelayInterval; // @synthesize mdmDelayInterval=_mdmDelayInterval;
 @property (nonatomic) unsigned long long minimumSystemPartitionSize; // @synthesize minimumSystemPartitionSize=_minimumSystemPartitionSize;
 @property (nonatomic, getter=_msuPrepareSize, setter=_setMsuPrepareSize:) unsigned long long msuPrepareSize; // @synthesize msuPrepareSize=_msuPrepareSize;
 @property (strong, nonatomic) NSString *productBuildVersion; // @synthesize productBuildVersion=_productBuildVersion;
@@ -58,6 +61,7 @@
 @property (strong, nonatomic) NSString *productVersion; // @synthesize productVersion=_productVersion;
 @property (strong, nonatomic) NSString *publisher; // @synthesize publisher=_publisher;
 @property (nonatomic) BOOL rampEnabled; // @synthesize rampEnabled=_rampEnabled;
+@property (strong, nonatomic) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property (strong, nonatomic) NSString *releaseType; // @synthesize releaseType=_releaseType;
 @property (strong, nonatomic, setter=setRSEPDigest:) NSData *rsepDigest; // @synthesize rsepDigest=_rsepDigest;
 @property (strong, nonatomic, setter=setSEPDigest:) NSData *sepDigest; // @synthesize sepDigest=_sepDigest;

@@ -8,17 +8,29 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface NTPBSearchViewExposure : PBCodable <NSCopying>
 {
     int _areaPresentationReason;
+    NSString *_campaignId;
+    NSString *_campaignType;
+    NSString *_creativeId;
     struct {
         unsigned int areaPresentationReason:1;
     } _has;
 }
 
 @property (nonatomic) int areaPresentationReason; // @synthesize areaPresentationReason=_areaPresentationReason;
+@property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
+@property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
+@property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
 @property (nonatomic) BOOL hasAreaPresentationReason;
+@property (readonly, nonatomic) BOOL hasCampaignId;
+@property (readonly, nonatomic) BOOL hasCampaignType;
+@property (readonly, nonatomic) BOOL hasCreativeId;
 
+- (void).cxx_destruct;
 - (int)StringAsAreaPresentationReason:(id)arg1;
 - (id)areaPresentationReasonAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

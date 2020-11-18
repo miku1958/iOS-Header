@@ -11,7 +11,7 @@
 #import <Message/MFSQLiteConnectionPoolDelegate-Protocol.h>
 
 @class MFDbJournal, MFLibrarySearchableIndex, MFMailMessageLibraryMigrator, MFSQLiteConnectionPool, MFWeakObjectCache, MFWeakSet, NSMutableSet, NSObject, NSString;
-@protocol MFMailMessageLibraryDelegate, MFMailboxPathProvider, OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
+@protocol MFMailMessageLibraryDelegate, MFMailboxPathProvider, OS_dispatch_queue, OS_dispatch_source;
 
 @interface MFMailMessageLibrary : MFMessageLibrary <MFLibrarySearchableIndexDataSource, MFSQLiteConnectionPoolDelegate, MFContentProtectionObserver>
 {
@@ -31,7 +31,6 @@
     id<MFMailMessageLibraryDelegate> _delegate;
     MFWeakSet *_middleware;
     NSObject<OS_dispatch_source> *_suspendTimer;
-    NSObject<OS_os_activity> *_spotlightVerificationActivity;
     MFLibrarySearchableIndex *_searchableIndex;
 }
 
@@ -39,6 +38,7 @@
 @property (nonatomic) id<MFMailMessageLibraryDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long pendingIndexItemsCount;
 @property (readonly, nonatomic) unsigned long long protectedDataAvailability;
 @property (strong, nonatomic) MFLibrarySearchableIndex *searchableIndex; // @synthesize searchableIndex=_searchableIndex;
 @property (readonly) Class superclass;
@@ -58,14 +58,15 @@
 - (void)_assignTransaction:(long long)arg1 forLibraryIDs:(id)arg2 missingLibraryIDIndexSet:(id *)arg3 database:(struct sqlite3 *)arg4;
 - (void)_assignTransaction:(long long)arg1 forSpotlightTombstones:(id)arg2 type:(long long)arg3 database:(struct sqlite3 *)arg4;
 - (unsigned int)_attachmentCountForAggregatedMailboxes:(id)arg1;
+- (BOOL)_canAccessProtectedData;
 - (BOOL)_canSelectMessagesWithOptions:(unsigned int)arg1 db:(struct sqlite3 *)arg2;
 - (BOOL)_checkpointDatabase;
 - (unsigned int)_computeUnreadCountForMailboxes:(id)arg1;
 - (id)_connectionForWriting:(BOOL)arg1;
 - (struct __CFDictionary *)_copyReferenceHashesWithoutMessagesForMessageWithConversation:(id)arg1;
+- (id)_emailAddressesForVerificationFromLibraryString:(id)arg1;
 - (id)_firstDateForQuery:(id)arg1 inMailbox:(id)arg2;
 - (unsigned int)_flaggedCountForAggregatedMailboxes:(id)arg1;
-- (id)_foundSampleSetForSubjects:(id)arg1 foundSubjects:(id *)arg2 queryDescription:(id *)arg3;
 - (id)_getReferencesForHashesWithOwners:(struct __CFDictionary *)arg1;
 - (void)_handleBusyError;
 - (void)_handleCorruptDatabase;
@@ -91,7 +92,6 @@
 - (id)_nonLocalAccountsClause;
 - (void)_notifyDidCompact:(BOOL)arg1 messages:(id)arg2 mailboxes:(id)arg3;
 - (void)_performTransaction:(CDUnknownBlockType)arg1 forWriting:(BOOL)arg2;
-- (void)_postCorruptSearchableIndexNotificationWithErrorLog:(id)arg1 andState:(unsigned long long)arg2;
 - (struct sqlite3_stmt *)_prepareBatchStatement:(struct sqlite3 *)arg1 pattern:(id)arg2 libraryIDs:(unsigned long long *)arg3 batchSize:(unsigned long long)arg4;
 - (struct sqlite3_stmt *)_prepareBatchStatement:(struct sqlite3 *)arg1 pattern:(id)arg2 objects:(id *)arg3 count:(unsigned long long)arg4;
 - (void)_purgeSpotlightTombstonesBeforeTransaction:(long long)arg1 database:(struct sqlite3 *)arg2;
@@ -108,6 +108,7 @@
 - (void)_setProtectedDataAvailabilityState:(unsigned long long)arg1;
 - (id)_stringsForIndexSet:(id)arg1;
 - (void)_tellMiddlewareDidAddMessages:(id)arg1;
+- (id)_verificationDataSamplesForSearchableIndex:(id)arg1 nonLocalAccountClause:(id)arg2;
 - (BOOL)_writeEmlxFile:(id)arg1 withBodyData:(id)arg2 protectionClass:(int)arg3;
 - (id)accountForMessage:(id)arg1;
 - (id)addMessages:(id)arg1 withMailbox:(id)arg2 fetchBodies:(BOOL)arg3 newMessagesByOldMessage:(id)arg4 remoteIDs:(id)arg5 setFlags:(unsigned long long)arg6 clearFlags:(unsigned long long)arg7 messageFlagsForMessages:(id)arg8 copyFiles:(BOOL)arg9 addPOPUIDs:(BOOL)arg10 dataSectionsByMessage:(id)arg11;
@@ -315,7 +316,7 @@
 - (id)updatesForSearchableIndex:(id)arg1 count:(unsigned long long)arg2;
 - (id)urlForMailboxID:(unsigned int)arg1;
 - (void)vacuumDataForObsoleteAccountURLString:(id)arg1;
-- (unsigned long long)verifyRepresentativeSampleForSearchableIndex:(id)arg1;
+- (id)verificationDataSamplesForSearchableIndex:(id)arg1;
 
 @end
 

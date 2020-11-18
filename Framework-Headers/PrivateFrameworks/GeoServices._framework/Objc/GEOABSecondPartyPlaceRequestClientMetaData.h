@@ -8,16 +8,19 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class GEOPDABClientDatasetMetadata, NSMutableArray, PBUnknownFields;
 
 @interface GEOABSecondPartyPlaceRequestClientMetaData : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
     NSMutableArray *_clientConfigs;
+    GEOPDABClientDatasetMetadata *_clientDatasetMetadata;
     NSMutableArray *_serverAbAssignments;
 }
 
 @property (strong, nonatomic) NSMutableArray *clientConfigs; // @synthesize clientConfigs=_clientConfigs;
+@property (strong, nonatomic) GEOPDABClientDatasetMetadata *clientDatasetMetadata; // @synthesize clientDatasetMetadata=_clientDatasetMetadata;
+@property (readonly, nonatomic) BOOL hasClientDatasetMetadata;
 @property (strong, nonatomic) NSMutableArray *serverAbAssignments; // @synthesize serverAbAssignments=_serverAbAssignments;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 

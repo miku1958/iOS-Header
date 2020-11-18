@@ -38,13 +38,12 @@ struct _ShortRect {
 };
 
 struct _img {
-    id _field1;
+    unsigned long long _field1;
     unsigned long long _field2;
     unsigned long long _field3;
     unsigned long long _field4;
-    unsigned long long _field5;
-    unsigned char _field6;
-    unsigned char _field7[4];
+    unsigned char _field5;
+    unsigned char _field6[4];
 };
 
 struct vector<TIHandwritingPoint, std::__1::allocator<TIHandwritingPoint>>;

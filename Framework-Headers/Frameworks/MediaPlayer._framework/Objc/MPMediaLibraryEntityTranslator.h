@@ -35,20 +35,22 @@
 - (vector_90d4f7ff)MLCorePropertiesForPropertySet:(id)arg1 withForeignPropertyBase:(struct ModelPropertyBase *)arg2;
 - (vector_11bc6599)MLCoreSortDescriptorsForModelSortDescriptors:(id)arg1;
 - (struct ModelPropertyBase *)_propertyForKeyPath:(id)arg1;
-- (map_041e1ed5)_propertyMapForKeyPath:(id)arg1 includePropertiesToSort:(BOOL)arg2;
+- (map_8b4f5bcf)_propertyMapForKeyPath:(id)arg1 includePropertiesToSort:(BOOL)arg2;
 - (id)_propertyTranslatorForKeyPath:(id)arg1;
 - (Class)classForRelationshipKey:(id)arg1;
-- (shared_ptr_e8455ceb)entityQueryForPropertySet:(id)arg1 sortDescriptors:(id)arg2 context:(id)arg3 predicate:(shared_ptr_cf7b8a22)arg4;
+- (shared_ptr_e8455ceb)entityQueryForPropertySet:(id)arg1 sortDescriptors:(id)arg2 context:(id)arg3 view:(id)arg4;
 - (id)identifiersForEntity:(shared_ptr_27513921)arg1;
-- (void)mapIdentifierMLProperties:(const map_041e1ed5 *)arg1 identifierCreationBlock:(CDUnknownBlockType)arg2;
+- (void)mapIdentifierMLProperties:(const map_8b4f5bcf *)arg1 identifierCreationBlock:(CDUnknownBlockType)arg2;
 - (void)mapPropertyKey:(id)arg1 toMLProperty:(struct ModelPropertyBase *)arg2;
-- (void)mapPropertyKey:(id)arg1 withPropertiesToFetch:(const map_041e1ed5 *)arg2 propertiesToSort:(const map_041e1ed5 *)arg3 sortTransformer:(CDUnknownBlockType)arg4 valueTransformer:(CDUnknownBlockType)arg5;
-- (void)mapPropertyKey:(id)arg1 withPropertiesToFetch:(const map_041e1ed5 *)arg2 valueTransformer:(CDUnknownBlockType)arg3;
+- (void)mapPropertyKey:(id)arg1 withPropertiesToFetch:(const map_8b4f5bcf *)arg2 propertiesToSort:(const map_8b4f5bcf *)arg3 sortTransformer:(CDUnknownBlockType)arg4 valueTransformer:(CDUnknownBlockType)arg5;
+- (void)mapPropertyKey:(id)arg1 withPropertiesToFetch:(const map_8b4f5bcf *)arg2 valueTransformer:(CDUnknownBlockType)arg3;
 - (void)mapRelationshipKey:(id)arg1 toModelClass:(Class)arg2 transient:(BOOL)arg3 usingForeignPropertyBase:(struct ModelPropertyBase *)arg4;
+- (void)mapRelationshipKey:(id)arg1 toModelClass:(Class)arg2 transient:(BOOL)arg3 usingForeignPropertyBase:(struct ModelPropertyBase *)arg4 relationshipValidationProperties:(const map_8b4f5bcf *)arg5 isValidRelationshipHandler:(CDUnknownBlockType)arg6;
 - (void)mapRelationshipKey:(id)arg1 toModelClass:(Class)arg2 usingForeignPropertyBase:(struct ModelPropertyBase *)arg3;
 - (id)objectForPropertySet:(id)arg1 entity:(shared_ptr_27513921)arg2 baseTranslator:(id)arg3 prependKeyPath:(id)arg4 context:(id)arg5;
 - (id)objectForPropertySet:(id)arg1 entity:(shared_ptr_27513921)arg2 context:(id)arg3;
-- (shared_ptr_889ae36a)propertiesQueryForPropertySet:(id)arg1 scopedContainers:(id)arg2 allowedItemIdentifiers:(id)arg3 predicate:(shared_ptr_cf7b8a22)arg4;
+- (shared_ptr_889ae36a)propertiesQueryForPropertySet:(id)arg1 scopedContainers:(id)arg2 allowedItemIdentifiers:(id)arg3 view:(id)arg4;
+- (map_8b4f5bcf)propertiesToFetchForPropertyKey:(id)arg1;
 - (id)valueForKeyPath:(id)arg1 forEntity:(shared_ptr_27513921)arg2 context:(id)arg3;
 
 @end

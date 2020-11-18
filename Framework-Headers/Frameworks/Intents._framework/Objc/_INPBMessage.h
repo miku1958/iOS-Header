@@ -40,9 +40,11 @@
 + (id)options;
 + (Class)recipientType;
 - (void).cxx_destruct;
+- (int)StringAsAttributes:(id)arg1;
 - (void)addAttribute:(int)arg1;
 - (void)addRecipient:(id)arg1;
 - (int)attributeAtIndex:(unsigned long long)arg1;
+- (id)attributesAsString:(int)arg1;
 - (void)clearAttributes;
 - (void)clearRecipients;
 - (id)copyWithZone:(struct _NSZone *)arg1;

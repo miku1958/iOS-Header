@@ -6,23 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, SSLookupItem;
+@class NSArray, NSData;
 
 @interface ML3StoreItemPlaylistData : NSObject
 {
-    SSLookupItem *_lookupItem;
+    NSArray *_lookupItems;
     NSData *_playlistData;
-    NSDictionary *_parsedPlaylistImportProperties;
+    NSArray *_parsedPlaylistsImportProperties;
 }
 
-@property (readonly, nonatomic) NSDictionary *parsedPlaylistImportProperties;
-@property (readonly, nonatomic) NSData *playlistData;
+@property (readonly, nonatomic) NSArray *parsedStorePlaylistsImportProperties;
+@property (readonly, nonatomic) unsigned long long playlistCount;
+@property (readonly, nonatomic) NSData *playlistsData;
 
 - (void).cxx_destruct;
-- (id)_playlistPropertiesForLookupItem:(id)arg1;
+- (id)_playlistPropertiesForLookupItems:(id)arg1;
 - (id)_playlistPropertiesFromPlaylistData:(id)arg1;
-- (id)initWithLookupItem:(id)arg1;
-- (id)initWithPlaylistData:(id)arg1;
+- (id)initWithLookupItems:(id)arg1;
+- (id)initWithPlaylistsData:(id)arg1;
 
 @end
 

@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) unsigned long long persistentID;
 @property (readonly, nonatomic) float playbackRate;
 @property (readonly, nonatomic) NSString *radioStationIdentifier;
+@property (readonly, nonatomic) NSString *radioStationName;
 @property (readonly, nonatomic) NSString *title;
 
 - (void).cxx_destruct;

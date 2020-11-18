@@ -4,22 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUICardSectionView.h>
+#import <SearchUI/SearchUILayoutFreeSectionView.h>
 
-@class SFRowCardSection, SearchUIImageView;
+#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@interface SearchUIRowCardSectionView : SearchUICardSectionView
+@class NSString, UIImageView, UIView;
+@protocol SearchUIWidthLimitedView;
+
+@interface SearchUIRowCardSectionView : SearchUILayoutFreeSectionView <NUIContainerStackViewDelegate>
 {
-    SearchUIImageView *_leftImageView;
+    BOOL _onlyLeftAndRightLabel;
+    BOOL _imageIsLarge;
+    UIView<SearchUIWidthLimitedView> *_leftLabel;
+    UIView<SearchUIWidthLimitedView> *_rightLabel;
+    UIImageView *_leftImageView;
 }
 
-@property (strong, nonatomic) SearchUIImageView *leftImageView; // @synthesize leftImageView=_leftImageView;
-@property (readonly, nonatomic) SFRowCardSection *section; // @dynamic section;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property BOOL imageIsLarge; // @synthesize imageIsLarge=_imageIsLarge;
+@property (strong) UIImageView *leftImageView; // @synthesize leftImageView=_leftImageView;
+@property (strong) UIView<SearchUIWidthLimitedView> *leftLabel; // @synthesize leftLabel=_leftLabel;
+@property BOOL onlyLeftAndRightLabel; // @synthesize onlyLeftAndRightLabel=_onlyLeftAndRightLabel;
+@property (strong) UIView<SearchUIWidthLimitedView> *rightLabel; // @synthesize rightLabel=_rightLabel;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)addContainerWithImage:(id)arg1 text:(id)arg2 formatter:(id)arg3 left:(BOOL)arg4;
-- (id)initWithCardSection:(id)arg1 controller:(id)arg2;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
+- (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
+- (id)initWithCardSection:(id)arg1 controller:(id)arg2 style:(unsigned long long)arg3;
+- (BOOL)isLTR;
+- (id)makeImageView:(id)arg1 formatter:(id)arg2;
+- (id)makeLabel:(id)arg1 primaryText:(BOOL)arg2 formatter:(id)arg3;
 - (double)separatorLeftInset;
+- (void)shrinkLabel:(id)arg1 withGrowingLabel:(id)arg2 sizeOfResizeLabel:(struct CGSize)arg3 leftLabel:(BOOL)arg4;
 
 @end
 

@@ -7,7 +7,7 @@
 #import <Foundation/NSObject.h>
 
 @class MPNowPlayingPlaybackQueueCache, NSDate, NSDictionary;
-@protocol MPNowPlayingPlaybackQueueDataSource, OS_dispatch_queue;
+@protocol MPNowPlayingInfoLyricsDelegate, MPNowPlayingPlaybackQueueDataSource, MPNowPlayingPlaybackQueueDelegate, OS_dispatch_queue;
 
 @interface MPNowPlayingInfoCenter : NSObject
 {
@@ -18,6 +18,8 @@
     NSObject<OS_dispatch_queue> *_queue;
     MPNowPlayingPlaybackQueueCache *_playbackQueueCache;
     id<MPNowPlayingPlaybackQueueDataSource> _playbackQueueDataSource;
+    id<MPNowPlayingPlaybackQueueDelegate> _playbackQueueDelegate;
+    id<MPNowPlayingInfoLyricsDelegate> _lyricsDelegate;
     unsigned long long _playbackState;
 }
 
@@ -26,13 +28,19 @@
 
 + (id)defaultCenter;
 - (void).cxx_destruct;
+- (void)_asynchronousRequests:(void *)arg1 forItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_init;
+- (id)_itemAtIndexPath:(id)arg1 fromRoot:(id)arg2;
 - (void)_pushNowPlayingInfoAndRetry:(BOOL)arg1;
 - (void)_registerCallbacks;
 - (id)init;
 - (void)invalidatePlaybackQueue;
+- (id)lyricsDelegate;
 - (id)playbackQueueDataSource;
+- (id)playbackQueueDelegate;
+- (void)setLyricsDelegate:(id)arg1;
 - (void)setPlaybackQueueDataSource:(id)arg1;
+- (void)setPlaybackQueueDelegate:(id)arg1;
 
 @end
 

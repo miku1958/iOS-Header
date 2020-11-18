@@ -14,7 +14,7 @@
 {
     struct CGRect _sourceRect;
     struct CGRect _targetRect;
-    id<UICoordinateSpace> _coordinateSpace;
+    NSObject<UICoordinateSpace> *_coordinateSpace;
     double _minimumScale;
     double _maximumScale;
 }

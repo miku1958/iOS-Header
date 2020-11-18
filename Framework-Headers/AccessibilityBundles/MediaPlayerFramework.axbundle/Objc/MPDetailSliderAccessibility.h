@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityCommitPositionChange;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axPostUpdate;
 - (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityDecrement;
@@ -25,6 +26,7 @@
 - (id)accessibilityValue;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)isAccessibilityElement;
+- (void)layoutSubviews;
 
 @end
 

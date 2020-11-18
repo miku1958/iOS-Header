@@ -40,10 +40,11 @@
 + (BOOL)supportsSecureCoding;
 + (void)translateCapabilities:(id)arg1;
 - (void).cxx_destruct;
+- (void)_updateWithStreamPreference:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithStreamPreference:(id)arg1;
 - (void)updateWithRemoteSettings:(id)arg1;
 
 @end

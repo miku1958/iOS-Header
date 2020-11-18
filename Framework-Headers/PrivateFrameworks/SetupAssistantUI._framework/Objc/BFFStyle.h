@@ -31,6 +31,8 @@
 - (id)headerTitleFont;
 - (double)horizontalMarginForView:(id)arg1;
 - (double)nonTableHorizontalMargin;
+- (double)screenHeaderFooterSideInsetForView:(id)arg1;
+- (double)screenHeaderHeightForView:(id)arg1;
 - (double)singleLineCellHeightForTable:(id)arg1;
 - (id)tableCellFont;
 

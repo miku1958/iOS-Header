@@ -17,6 +17,8 @@
     long long _modelDisplayCount;
     id _resourceIdentifier;
     NSOperation *_thumbnailLoadOperation;
+    BOOL _hasCachedIsAlias;
+    BOOL _cachedIsAlias;
     BOOL _pickable;
     long long _type;
     NSMapTable *_thumbnailsBySize;

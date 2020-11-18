@@ -21,6 +21,8 @@
 @property (readonly, nonatomic) BOOL allowsErotica;
 @property (readonly, nonatomic) BOOL allowsExplicit;
 @property (readonly, nonatomic) BOOL allowsITunes;
+@property (readonly, nonatomic) BOOL allowsShowingUndownloadedMovies;
+@property (readonly, nonatomic) BOOL allowsShowingUndownloadedTVShows;
 @property (readonly, nonatomic) BOOL appAnalyticsAllowed;
 @property (readonly, nonatomic) BOOL appInstallationAllowed;
 @property (readonly, copy) NSString *debugDescription;

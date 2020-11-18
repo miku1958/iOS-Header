@@ -8,7 +8,7 @@
 
 #import <VideoSubscriberAccount/VSViewServiceHostViewControllerDelegate-Protocol.h>
 
-@class NSString, NSUUID, VSFailable, VSViewServiceHostViewController, VSViewServiceRequest;
+@class NSString, NSUUID, VSOptional, VSViewServiceHostViewController, VSViewServiceRequest;
 @protocol VSViewServiceRequestOperationDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL _isPresentingViewController;
     VSViewServiceRequest *_viewServiceRequest;
     id<VSViewServiceRequestOperationDelegate> _delegate;
-    VSFailable *_result;
+    VSOptional *_result;
     VSViewServiceHostViewController *_viewServiceHostViewController;
     NSUUID *_requestID;
 }
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSUUID *requestID; // @synthesize requestID=_requestID;
-@property (strong, nonatomic) VSFailable *result; // @synthesize result=_result;
+@property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) VSViewServiceHostViewController *viewServiceHostViewController; // @synthesize viewServiceHostViewController=_viewServiceHostViewController;
 @property (readonly, copy, nonatomic) VSViewServiceRequest *viewServiceRequest; // @synthesize viewServiceRequest=_viewServiceRequest;

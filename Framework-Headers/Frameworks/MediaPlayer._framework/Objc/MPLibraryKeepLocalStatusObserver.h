@@ -6,15 +6,14 @@
 
 #import <Foundation/NSObject.h>
 
-#import <MediaPlayer/MPDownloadProgressObserver-Protocol.h>
+#import <MediaPlayer/MPMediaDownloadObserver-Protocol.h>
 #import <MediaPlayer/MPStoreDownloadManagerObserver-Protocol.h>
 
 @class MPLibraryKeepLocalStatusObserverConfiguration, NSSet, NSString;
 
-@interface MPLibraryKeepLocalStatusObserver : NSObject <MPDownloadProgressObserver, MPStoreDownloadManagerObserver>
+@interface MPLibraryKeepLocalStatusObserver : NSObject <MPStoreDownloadManagerObserver, MPMediaDownloadObserver>
 {
     NSSet *_activeDownloads;
-    BOOL _useNewProgressReporting;
     MPLibraryKeepLocalStatusObserverConfiguration *_configuration;
     CDUnknownBlockType _statusBlock;
     struct MPLibraryActiveKeepLocalStatus _currentStatus;
@@ -35,12 +34,8 @@
 - (BOOL)_updateActiveDownloadsAllowingDownloadRemoval:(BOOL)arg1;
 - (void)_updateCurrentStatus;
 - (void)dealloc;
-- (void)downloadManager:(id)arg1 didAddActiveAssetDownloads:(id)arg2 removeActiveDownloads:(id)arg3;
 - (void)downloadManager:(id)arg1 didAddActiveDownloads:(id)arg2 removeActiveDownloads:(id)arg3;
-- (void)downloadManager:(id)arg1 didEnqueueAssetDownloads:(id)arg2;
 - (void)downloadManager:(id)arg1 didFinishAsset:(id)arg2 withError:(id)arg3;
-- (void)downloadManager:(id)arg1 didRemoveAssetDownloads:(id)arg2;
-- (void)downloadManager:(id)arg1 didUpdateAssetDownloads:(id)arg2;
 - (void)downloadManager:(id)arg1 downloadsDidProgress:(id)arg2;
 - (id)init;
 

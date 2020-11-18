@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)connection:(id)arg1 willCacheResponse:(id)arg2;
 - (id)connection:(id)arg1 willSendRequest:(id)arg2 redirectResponse:(id)arg3;
 - (void)connectionDidFinishLoading:(id)arg1;
+- (void)customProtocolManagerProxyDestroyed;
 - (void)dealloc;
 - (id)initWithCustomProtocolManagerProxy:(struct CustomProtocolManagerProxy *)arg1 customProtocolID:(unsigned long long)arg2 request:(id)arg3 connection:(struct Connection *)arg4;
 

@@ -7,12 +7,14 @@
 #import <Foundation/NSObject.h>
 
 #import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKit/_UIFocusEnginePanGestureRecognizerDelegate-Protocol.h>
+#import <UIKit/_UIFocusFastScrollingRecognizerDelegate-Protocol.h>
 #import <UIKit/_UIFocusMapDelegate-Protocol.h>
 
-@class CADisplayLink, NSArray, NSMapTable, NSString, NSTimer, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, UIWindow, _UIFocusEngineJoystickGestureRecognizer, _UIFocusEnginePanGestureRecognizer, _UIFocusMovementInfo, _UIFocusPressGestureRecognizer, _UIFocusSoundPool, _UIFocusTouchDebugView;
+@class CADisplayLink, NSArray, NSHashTable, NSMapTable, NSString, NSTimer, UIMoveEvent, UIScrollView, UITapGestureRecognizer, UIView, UIWindow, _UIFocusEngineJoystickGestureRecognizer, _UIFocusEnginePanGestureRecognizer, _UIFocusFastScrollingRecognizer, _UIFocusMovementInfo, _UIFocusPressGestureRecognizer, _UIFocusSoundPool, _UIFocusTouchDebugView;
 @protocol OS_dispatch_queue, _UIFocusScrollAnimator;
 
-@interface _UIFocusEngine : NSObject <_UIFocusMapDelegate, UIGestureRecognizerDelegate>
+@interface _UIFocusEngine : NSObject <_UIFocusMapDelegate, _UIFocusEnginePanGestureRecognizerDelegate, _UIFocusFastScrollingRecognizerDelegate, UIGestureRecognizerDelegate>
 {
     _UIFocusEnginePanGestureRecognizer *_panGestureRecognizer;
     UITapGestureRecognizer *_tapGestureRecognizer;
@@ -21,6 +23,7 @@
     struct CGPoint _lastKnownTouchPoint;
     struct CGVector _progressAccumulator;
     id<_UIFocusScrollAnimator> _scrollViewAnimator;
+    _UIFocusFastScrollingRecognizer *_fastScrollingRecognizer;
     struct CGPoint _firstMomentumTouchPoint;
     struct CGPoint _lastMomentumTouchPoint;
     struct CGPoint _momentumVelocity;
@@ -36,6 +39,7 @@
     unsigned long long _joystickRepeatingHeading;
     CADisplayLink *_joystickFocusDirectionDisplayLink;
     _UIFocusMovementInfo *_previousJoystickFocusMovementInfo;
+    long long _joystickRepeatCount;
     struct CGPoint _currentFocusDirection;
     NSMapTable *_focusRollbackAnimations;
     UIScrollView *_peekingScrollView;
@@ -53,6 +57,7 @@
     _UIFocusTouchDebugView *_touchIndicatorView;
     NSMapTable *_activeScrollViewLoadingBounds;
     NSMapTable *_activeScrollViewAnimatingBounds;
+    NSHashTable *_activelyScrollingScrollViews;
     unsigned long long _inputType;
     struct {
         unsigned int isSettingFocusedView:1;
@@ -63,12 +68,14 @@
         unsigned int isJoystickInRepeatMode:1;
         unsigned int isPendingJoystickRepeat:1;
         unsigned int isPeekingScrollView:1;
+        unsigned int isFastScrolling:1;
         unsigned int shouldApplyAcceleration:1;
         unsigned int shouldShowDebugOverlays:1;
     } _flags;
     BOOL _enabled;
     BOOL _wantsScrollPeeking;
     BOOL _shouldShowDebugOverlays;
+    BOOL _supportsFastScrolling;
     BOOL _sendsFocusDirection;
     BOOL _playsSoundOnFocusChange;
     UIWindow *_targetWindow;
@@ -86,6 +93,7 @@
 @property (nonatomic, getter=_sendsFocusDirection, setter=_setSendsFocusDirection:) BOOL sendsFocusDirection; // @synthesize sendsFocusDirection=_sendsFocusDirection;
 @property (nonatomic) BOOL shouldShowDebugOverlays; // @synthesize shouldShowDebugOverlays=_shouldShowDebugOverlays;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=_supportsFastScrolling, setter=_setSupportsFastScrolling:) BOOL supportsFastScrolling; // @synthesize supportsFastScrolling=_supportsFastScrolling;
 @property (weak, nonatomic) UIWindow *targetWindow; // @synthesize targetWindow=_targetWindow;
 @property (weak, nonatomic) UIView *viewForTouchDeferredFocus; // @synthesize viewForTouchDeferredFocus=_viewForTouchDeferredFocus;
 @property (nonatomic) BOOL wantsScrollPeeking; // @synthesize wantsScrollPeeking=_wantsScrollPeeking;
@@ -106,12 +114,17 @@
 - (void)_clearVisibleRectForLoadingScrollViewContent:(id)arg1;
 - (id)_closestFocusableViewToPoint:(struct CGPoint)arg1 inView:(id)arg2;
 - (id)_closestFocusableViewToRect:(struct CGRect)arg1 inView:(id)arg2;
+- (struct CGPoint)_contentOffsetForScrollView:(id)arg1 toFocusRect:(struct CGRect)arg2 targetOffset:(struct CGPoint)arg3 targetBounds:(struct CGRect)arg4;
 - (struct CGPoint)_contentOffsetForScrollView:(id)arg1 toFocusView:(id)arg2;
 - (struct CGPoint)_contentOffsetForScrollView:(id)arg1 toFocusView:(id)arg2 targetOffset:(struct CGPoint)arg3 targetBounds:(struct CGRect)arg4;
+- (struct CGPoint)_contentOffsetForScrollView:(id)arg1 toFocusView:(id)arg2 withFrame:(struct CGRect)arg3 targetOffset:(struct CGPoint)arg4 targetBounds:(struct CGRect)arg5;
 - (void)_continueTouchWithMomentum;
+- (void)_createFastScrollingRecognizerIfNeeded;
 - (double)_effortRequiredForFocusMovement:(id)arg1 fromItem:(id)arg2;
 - (void)_ensureFocusedViewIsOnscreen:(id)arg1;
 - (void)_exitJoystickModeForReal:(id)arg1;
+- (void)_fastScrollingBeganInScrollView:(id)arg1;
+- (void)_fastScrollingEnded;
 - (id)_findFocusCandidateByExhaustivelySearchingScrollView:(id)arg1 forFocusMovement:(id)arg2 fromItem:(id)arg3 didFindSpeedBump:(out BOOL *)arg4;
 - (id)_findFocusCandidateBySearchingLinearFocusMovementSequencesForMovement:(id)arg1 fromItem:(id)arg2;
 - (id)_findFocusCandidateWithoutLoadingScrollViewContent:(id)arg1 forFocusMovement:(id)arg2 fromItem:(id)arg3 minimumSearchArea:(struct CGRect)arg4 didFindSpeedBump:(out BOOL *)arg5;
@@ -131,7 +144,6 @@
 - (void)_handleTapGesture:(id)arg1;
 - (unsigned long long)_headingForJoystickPosition:(struct CGPoint)arg1 usingMinimumRadius:(double)arg2;
 - (double)_horizontalFrictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2;
-- (BOOL)_isContinuingTouchWithMomentum;
 - (BOOL)_isScrollingScrollView:(id)arg1;
 - (BOOL)_joystickAttemptFocusMovement:(id)arg1 fromItem:(id)arg2;
 - (void)_joystickDisplayLinkHeartbeat:(id)arg1;
@@ -147,7 +159,6 @@
 - (void)_momentumHeartbeat:(id)arg1;
 - (id)_noCache_bestCandidateForNonLinearFocusMovement:(id)arg1 fromItem:(id)arg2;
 - (void)_panGestureEnd:(id)arg1;
-- (id)_panGestureRecognizer;
 - (void)_panGestureStart:(id)arg1;
 - (void)_peekScrollViewStartingAtFocusedItem:(id)arg1 progress:(struct CGVector)arg2;
 - (BOOL)_performFocusMovement:(id)arg1;
@@ -165,8 +176,6 @@
 - (void)_resetProgressAccumulatorForHeading:(unsigned long long)arg1 focusedItem:(id)arg2;
 - (void)_resetScrollViewPeek:(BOOL)arg1;
 - (void)_resetViewSearchCache;
-- (void)_runPerformanceTestWithName:(id)arg1 bySwipingAlongAxis:(int)arg2;
-- (void)_runPerformanceTestWithName:(id)arg1 fakeEvents:(CDStruct_37aeb80e *)arg2 count:(int)arg3;
 - (void)_scrollView:(id)arg1 toOffset:(struct CGPoint)arg2;
 - (id)_scrollViewToPeekFocusMovement:(id)arg1 fromItem:(id)arg2;
 - (void)_sendFocusDirectionNotificationWithDirection:(struct CGPoint)arg1;
@@ -175,10 +184,10 @@
 - (void)_sendGestureEndNotification;
 - (void)_sendMomentumEndNotificationsAndAnimateRollback:(BOOL)arg1;
 - (void)_setCachedSearchResult:(id)arg1 forHeading:(unsigned long long)arg2;
-- (void)_setPanGestureRecognizer:(id)arg1;
 - (void)_setUpSounds;
 - (void)_setVisibleRect:(struct CGRect)arg1 forLoadingScrollViewContent:(id)arg2;
 - (void)_setupDebugOverlays;
+- (BOOL)_shouldAcceptInputType:(unsigned long long)arg1;
 - (BOOL)_shouldEagerlyValidateFocusCandidates;
 - (BOOL)_shouldPerformFocusUpdateWithCurrentMomentumStatus;
 - (BOOL)_shouldRecordDestinationViewDistanceOffscreen;
@@ -190,7 +199,10 @@
 - (void)_teardownDebugOverlays;
 - (int)_touchRegionForDigitizerLocation:(struct CGPoint)arg1;
 - (struct CGSize)_touchSensitivityForView:(id)arg1;
+- (void)_uiktest_handlePanGesture:(id)arg1;
+- (id)_uiktest_panGestureRecognizer;
 - (BOOL)_uiktest_performFocusMovement:(id)arg1;
+- (void)_uiktest_setPanGestureRecognizer:(id)arg1;
 - (BOOL)_uiktest_updateFocusToItem:(id)arg1;
 - (void)_updateDebugOverlayByRemovingTouchIndicators;
 - (void)_updateDebugOverlayWithTouchAtNormalizedPoint:(struct CGPoint)arg1 navigationBoundary:(struct CGRect)arg2;
@@ -202,6 +214,8 @@
 - (BOOL)_wouldCrossSpeedBumpDuringFocusMovement:(id)arg1 fromItem:(id)arg2;
 - (BOOL)_wouldCrossSpeedBumpDuringFocusMovement:(id)arg1 fromView:(id)arg2 toView:(id)arg3;
 - (void)dealloc;
+- (void)fastScrollingRecognizer:(id)arg1 didRecognizeFastScrollingRequest:(id)arg2;
+- (BOOL)focusEnginePanGestureRecognizerShouldRecognizeImmediately:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)init;
 - (BOOL)moveInDirection:(unsigned long long)arg1;

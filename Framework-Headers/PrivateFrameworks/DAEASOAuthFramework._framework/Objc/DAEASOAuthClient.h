@@ -10,9 +10,9 @@
 {
 }
 
-+ (id)clientID;
++ (id)clientIDForOAuthType:(unsigned long long)arg1;
 + (id)clientRedirect;
-+ (id)defaultScope;
++ (id)defaultScopeForOAuthType:(unsigned long long)arg1;
 + (id)scopeForUpgradingFromBasicCreds;
 
 @end

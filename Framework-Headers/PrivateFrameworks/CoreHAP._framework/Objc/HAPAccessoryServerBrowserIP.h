@@ -61,7 +61,7 @@
 - (void)stopDiscoveringWACAccessoryServers;
 - (void)stopWACScan;
 - (void)timerDidFire:(id)arg1;
-- (void)updateFastAgeOut:(BOOL)arg1;
+- (void)updateWACAccessoryServerAgeOut:(long long)arg1;
 
 @end
 

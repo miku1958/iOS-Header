@@ -79,7 +79,6 @@
 @property (readonly, nonatomic, getter=isSponsored) BOOL sponsored;
 @property (readonly, nonatomic) FCTopStoriesStyleConfiguration *storyStyle;
 @property (readonly, nonatomic) unsigned long long storyType;
-@property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *surfacedByBinID;
 @property (readonly, copy, nonatomic) NSString *surfacedByChannelID;

@@ -12,6 +12,7 @@
 @interface PVContext : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _faceAutonamingEnabled;
+    BOOL _personMergingEnabled;
     BOOL _faceClusteringLogEnabled;
     BOOL _faceClusteringPerfLogEnabled;
     float _faceClusteringThreshold;
@@ -21,12 +22,18 @@
     float _faceMergeFaceOverlapThreshold;
     float _facePrimarySuggestionsThreshold;
     long long _faceClusteringDelay;
+    unsigned long long _countRenameFromThreshold;
+    unsigned long long _percentRenameFromThreshold;
+    unsigned long long _countRenameToThreshold;
+    unsigned long long _percentRenameToThreshold;
     long long _minFaceCountToTriggerClustering;
     long long _maxFaceCountForClustering;
     long long _faceCountToEnableFacesNamingFlow;
     long long _faceGroupCountToEnableFacesNamingFlow;
 }
 
+@property unsigned long long countRenameFromThreshold; // @synthesize countRenameFromThreshold=_countRenameFromThreshold;
+@property unsigned long long countRenameToThreshold; // @synthesize countRenameToThreshold=_countRenameToThreshold;
 @property BOOL faceAutonamingEnabled; // @synthesize faceAutonamingEnabled=_faceAutonamingEnabled;
 @property float faceAutonamingThreshold; // @synthesize faceAutonamingThreshold=_faceAutonamingThreshold;
 @property long long faceClusteringDelay; // @synthesize faceClusteringDelay=_faceClusteringDelay;
@@ -41,6 +48,9 @@
 @property float faceRecallThreshold; // @synthesize faceRecallThreshold=_faceRecallThreshold;
 @property long long maxFaceCountForClustering; // @synthesize maxFaceCountForClustering=_maxFaceCountForClustering;
 @property long long minFaceCountToTriggerClustering; // @synthesize minFaceCountToTriggerClustering=_minFaceCountToTriggerClustering;
+@property unsigned long long percentRenameFromThreshold; // @synthesize percentRenameFromThreshold=_percentRenameFromThreshold;
+@property unsigned long long percentRenameToThreshold; // @synthesize percentRenameToThreshold=_percentRenameToThreshold;
+@property BOOL personMergingEnabled; // @synthesize personMergingEnabled=_personMergingEnabled;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;

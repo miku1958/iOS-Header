@@ -69,6 +69,7 @@
 - (BOOL)supportsSettingsCommand;
 - (BOOL)syncSnoozeEvents;
 - (BOOL)useBooleanFolderItemsSyncDeletesAsMoves;
+- (BOOL)useEmptyAttendees;
 - (BOOL)useEmptyLocation;
 - (BOOL)useEmptyRecurrence;
 - (BOOL)useEmptyReminderMinutes;

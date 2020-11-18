@@ -14,6 +14,7 @@
     NSArray *_recordIDs;
     NSArray *_recordSpecs;
     NSDictionary *_knownRecordIDsToEtags;
+    NSArray *_networkEvents;
     CDUnknownBlockType _queryCompletionHandler;
     NSDictionary *_recordSpecsByType;
     NSMutableSet *_missingRecordIDs;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) NSMutableArray *fetchedRecords; // @synthesize fetchedRecords=_fetchedRecords;
 @property (strong, nonatomic) NSDictionary *knownRecordIDsToEtags; // @synthesize knownRecordIDsToEtags=_knownRecordIDsToEtags;
 @property (strong, nonatomic) NSMutableSet *missingRecordIDs; // @synthesize missingRecordIDs=_missingRecordIDs;
+@property (copy, nonatomic) NSArray *networkEvents; // @synthesize networkEvents=_networkEvents;
 @property (copy, nonatomic) CDUnknownBlockType queryCompletionHandler; // @synthesize queryCompletionHandler=_queryCompletionHandler;
 @property (strong, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property (strong, nonatomic) NSArray *recordSpecs; // @synthesize recordSpecs=_recordSpecs;

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEOSimpleTileRequester, NSData, NSMutableData, NSOperationQueue, NSString, NSURL, NSURLSession, NSURLSessionTask;
+@class GEONSURLSharedSession, GEOSimpleTileRequester, NSData, NSMutableData, NSOperationQueue, NSString, NSURL, NSURLSessionTask, NSURLSessionTaskMetrics;
 
 __attribute__((visibility("hidden")))
 @interface _GEOTileDownloadOp : NSObject <NSURLSessionDataDelegate>
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableData *_data;
     NSString *_cachedEtag;
     NSData *_cachedData;
-    NSURLSession *_session;
+    GEONSURLSharedSession *_session;
     NSURLSessionTask *_task;
     NSString *_responseEtag;
     unsigned int _priority;
@@ -40,6 +40,8 @@ __attribute__((visibility("hidden")))
     double _timeout;
     int _checksumMethod;
     long long _eTagType;
+    NSURLSessionTaskMetrics *_taskMetrics;
+    int _httpResponseStatusCode;
 }
 
 @property (strong, nonatomic) NSData *auditToken; // @synthesize auditToken=_auditToken;
@@ -56,15 +58,17 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *editionHeader; // @synthesize editionHeader=_editionHeader;
 @property (readonly, nonatomic) BOOL finished; // @synthesize finished=_finished;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) int httpResponseStatusCode;
 @property struct _GEOTileKey key; // @synthesize key=_key;
 @property (strong, nonatomic) _GEOTileDownloadOp *localizationTile; // @synthesize localizationTile=_localizationTile;
 @property (nonatomic) unsigned int priority; // @synthesize priority=_priority;
 @property (nonatomic) BOOL requireWiFi; // @synthesize requireWiFi=_requireWiFi;
 @property (strong, nonatomic) NSString *responseEtag; // @synthesize responseEtag=_responseEtag;
-@property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
+@property (strong, nonatomic) GEONSURLSharedSession *session; // @synthesize session=_session;
 @property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
+@property (strong, nonatomic) NSURLSessionTaskMetrics *taskMetrics; // @synthesize taskMetrics=_taskMetrics;
 @property unsigned int tileEdition; // @synthesize tileEdition=_tileEdition;
 @property (nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
@@ -74,6 +78,8 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
+- (void)_reportNetworkError:(id)arg1;
 - (void)cancel;
 - (void)dealloc;
 - (double)elapsed;

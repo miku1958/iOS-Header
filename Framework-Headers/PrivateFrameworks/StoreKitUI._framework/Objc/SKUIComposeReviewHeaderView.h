@@ -16,7 +16,6 @@
     id<SKUIComposeReviewHeaderDelegate> _delegate;
     SKStarRatingControl *_ratingControl;
     SKUIReviewMetadata *_review;
-    BOOL _showNicknameField;
     long long _style;
     SKUIComposeTextFieldListView *_textFieldListView;
 }
@@ -27,7 +26,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIResponder *initialFirstResponder;
-@property (readonly, nonatomic) NSString *nickname;
 @property (nonatomic) float rating;
 @property (strong, nonatomic) SKUIReviewMetadata *review; // @synthesize review=_review;
 @property (readonly) Class superclass;

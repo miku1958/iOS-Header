@@ -19,8 +19,10 @@
         unsigned int ditchAllTiles:1;
         unsigned int suspendLayout:4;
     } _tcTiledLayerFlags;
+    double _maxTileHeight;
 }
 
+@property (nonatomic) double maxTileHeight; // @synthesize maxTileHeight=_maxTileHeight;
 @property (nonatomic) BOOL usesTiledLayers;
 
 - (void)_prepareGridForBounds:(struct CGRect)arg1;

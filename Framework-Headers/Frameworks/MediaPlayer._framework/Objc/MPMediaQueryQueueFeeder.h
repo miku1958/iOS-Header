@@ -7,11 +7,12 @@
 #import <MediaPlayer/MPQueueFeeder.h>
 
 #import <MediaPlayer/MPAVRoutingControllerDelegate-Protocol.h>
+#import <MediaPlayer/MPRTCReportingItemSessionContaining-Protocol.h>
 #import <MediaPlayer/MPShuffleControllerDataSource-Protocol.h>
 
 @class MPMediaItem, MPMediaLibraryConnectionAssertion, MPMediaQuery, MPMutableBidirectionalDictionary, MPShuffleController, NSArray, NSDictionary, NSString;
 
-@interface MPMediaQueryQueueFeeder : MPQueueFeeder <MPAVRoutingControllerDelegate, MPShuffleControllerDataSource>
+@interface MPMediaQueryQueueFeeder : MPQueueFeeder <MPAVRoutingControllerDelegate, MPRTCReportingItemSessionContaining, MPShuffleControllerDataSource>
 {
     MPMediaLibraryConnectionAssertion *_connectionAssertion;
     unsigned long long _feederRevisionID;
@@ -35,6 +36,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) MPMediaQuery *query; // @synthesize query=_query;
+@property (readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
+@property (readonly, copy, nonatomic) NSDictionary *rtcReportingSessionAdditionalUserInfo;
 @property (readonly) Class superclass;
 
 + (id)_itemsForQuery:(id)arg1 shuffleType:(long long)arg2;
@@ -83,6 +86,7 @@
 - (unsigned long long)shuffleController:(id)arg1 countOfItemIdentifier:(id)arg2 withMaximumCount:(unsigned long long)arg3;
 - (id)shuffleController:(id)arg1 identifierForItemAtIndex:(unsigned long long)arg2;
 - (void)shuffleItemsWithAnchor:(unsigned long long *)arg1;
+- (BOOL)supportsAddToQueue;
 - (unsigned long long)unshuffledIndexOfAVItem:(id)arg1;
 
 @end

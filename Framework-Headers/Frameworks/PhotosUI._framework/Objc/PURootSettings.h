@@ -13,6 +13,7 @@
     NSMutableSet *_archivedSettings;
     BOOL _enforceDisableIrisUI;
     BOOL _allowIrisUI;
+    long long _livePhotoBadgingType;
     PUPhotosGridSettings *_photosGridSettings;
     PUPhotoEditProtoSettings *_photoEditingSettings;
     PUFeedSettings *_feedSettings;
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) PUFeedSettings *feedSettings; // @synthesize feedSettings=_feedSettings;
 @property (nonatomic) Class interfaceThemeClass; // @synthesize interfaceThemeClass=_interfaceThemeClass;
 @property (strong, nonatomic) PUIrisSettings *irisSettings; // @synthesize irisSettings=_irisSettings;
+@property (nonatomic) long long livePhotoBadgingType; // @synthesize livePhotoBadgingType=_livePhotoBadgingType;
 @property (strong, nonatomic) PULoggingSettings *loggingSettings; // @synthesize loggingSettings=_loggingSettings;
 @property (strong, nonatomic) PUMedusaSettings *medusaSettings; // @synthesize medusaSettings=_medusaSettings;
 @property (strong, nonatomic) PUMemoriesSettings *memoriesSettings; // @synthesize memoriesSettings=_memoriesSettings;
@@ -60,6 +62,7 @@
 + (id)_debugRowsForViewControllerStack:(id)arg1;
 + (void)_deleteAllDiagnosticFiles;
 + (id)_memoriesRelatedSettings;
++ (id)_photoKitSettings;
 + (id)_photosUICoreSettings;
 + (void)_setCurrentAsset:(id)arg1;
 + (void)_setDebugRows:(id)arg1;

@@ -160,7 +160,7 @@
 - (BOOL)programsListsAreEqual;
 - (BOOL)propertyIsAvailable:(unsigned long long)arg1 forEar:(int)arg2;
 - (BOOL)rightAvailable;
-- (void)selectProgram:(id)arg1;
+- (void)selectProgram:(id)arg1 forEar:(int)arg2;
 - (id)selectedProgramIndexes;
 - (id)selectedPrograms;
 - (void)setValue:(id)arg1 forProperty:(unsigned long long)arg2;

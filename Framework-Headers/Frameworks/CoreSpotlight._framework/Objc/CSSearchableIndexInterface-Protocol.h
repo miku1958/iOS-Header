@@ -21,6 +21,7 @@
 @optional
 - (void)_forceAppWithBundleID:(NSString *)arg1 toPerformJob:(CSIndexJob *)arg2;
 - (void)_issueCommand:(NSString *)arg1 completionHandler:(void (^)(NSData *, NSError *))arg2;
+- (void)addInteraction:(INInteraction *)arg1 bundleID:(NSString *)arg2 protectionClass:(NSString *)arg3;
 - (void)addInteraction:(INInteraction *)arg1 bundleID:(NSString *)arg2 protectionClass:(NSString *)arg3 options:(long long)arg4 completionHandler:(void (^)(NSError *))arg5;
 - (void)checkInWithProtectionClass:(NSString *)arg1 completionHandler:(void (^)(CSIndexJob *, NSError *))arg2;
 - (void)deleteAllInteractionsWithBundleID:(NSString *)arg1 protectionClass:(NSString *)arg2 options:(long long)arg3 completionHandler:(void (^)(NSError *))arg4;

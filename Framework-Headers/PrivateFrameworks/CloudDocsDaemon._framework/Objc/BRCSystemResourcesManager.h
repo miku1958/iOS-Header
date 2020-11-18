@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRReachabilityObserver-Protocol.h>
 
-@class BRReachabilityMonitor, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
+@class BRReachabilityMonitor, NSDate, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
     int _powerNotifyToken;
     BOOL _powerLevelOK;
     NSObject<OS_dispatch_source> *_powerLevelOKTimer;
+    BOOL _connectedToPowerSource;
+    NSDate *_connectedToPowerSourceCheckedDate;
     NSMutableSet *_lowDiskSet;
     NSMutableDictionary *_lowDiskDict;
     NSObject<OS_dispatch_source> *_lowDiskSource;
@@ -77,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)addProcessMonitor:(id)arg1 forProcessID:(int)arg2;
 - (void)addReachabilityObserver:(id)arg1;
 - (void)close;
+- (BOOL)connectedToPowerSource;
 - (void)dealloc;
 - (BOOL)hasEnoughSpaceForDevice:(int)arg1;
 - (id)init;

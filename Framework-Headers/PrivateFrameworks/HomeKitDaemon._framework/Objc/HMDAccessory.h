@@ -179,6 +179,7 @@
 - (void)_handleCharacteristicsChangedNotification:(id)arg1;
 - (void)_handleDiscoverBridgedAccessories:(id)arg1 startDiscovery:(BOOL)arg2;
 - (void)_handleDiscoveryBackoffTimerFired;
+- (void)_handleGetAccessoryAdvertisingParams:(id)arg1;
 - (void)_handleIdentify:(id)arg1;
 - (void)_handleMultipleCharacteristicsUpdated:(id)arg1 message:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleRename:(id)arg1;
@@ -400,13 +401,14 @@
 - (id)transportInformationInstances;
 - (void)unblockWithMessageIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)unconfigure;
-- (void)unconfigureAccessoryWithServerIdentifier:(id)arg1 linkType:(long long)arg2;
+- (void)unconfigureAccessoryWithServerIdentifier:(id)arg1 linkType:(long long)arg2 updateReachability:(BOOL)arg3;
 - (void)updateAccessoryFlags:(id)arg1;
 - (void)updateAccessoryFlagsAndNotifyClients:(id)arg1;
 - (void)updateAccessoryInformation:(id)arg1;
 - (void)updateCategory:(id)arg1;
 - (void)updateManufacturer:(id)arg1 model:(id)arg2 firmwareVersion:(id)arg3 serialNumber:(id)arg4;
 - (void)updateName:(id)arg1;
+- (void)updateNotificationEnabled:(BOOL)arg1 forCharacteristics:(id)arg2 onBehalfOf:(id)arg3;
 - (void)updateReachability;
 - (void)updateRoom:(id)arg1;
 - (BOOL)updateTimeInformationCharacteristicsForAccessory:(id)arg1;

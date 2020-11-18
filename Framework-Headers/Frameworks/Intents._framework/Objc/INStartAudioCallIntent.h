@@ -29,9 +29,15 @@
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
+- (id)domain;
 - (id)initWithContacts:(id)arg1;
+- (id)parametersByName;
 - (void)setContacts:(id)arg1;
+- (void)setDomain:(id)arg1;
+- (void)setParametersByName:(id)arg1;
 - (void)setUseSpeaker:(BOOL)arg1;
+- (void)setVerb:(id)arg1;
+- (id)verb;
 
 @end
 

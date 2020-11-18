@@ -9,7 +9,6 @@
 @class PVTimingStats;
 @protocol PVPersistenceDelegate;
 
-__attribute__((visibility("hidden")))
 @interface PVDataAccessor : NSObject
 {
     PVTimingStats *_timingStats;
@@ -25,13 +24,13 @@ __attribute__((visibility("hidden")))
 - (id)allAlgorithmicFaceGroups:(id *)arg1;
 - (id)allAlgorithmicFaceGroupsAsClusterSequenceNumbers:(id *)arg1;
 - (void)autonameFaceClusters:(id)arg1 faceComparer:(id)arg2 recallThreshold:(float)arg3;
+- (void)buildPersonsWithFaceComparer:(id)arg1 canceler:(id)arg2 context:(id)arg3;
 - (id)clusterSequenceNumbersOfKeyFacesFromAlgorithmicGroupsContainingFacesWithLocalIdentifiers:(id)arg1 includeSingletons:(BOOL)arg2 error:(id *)arg3;
 - (unsigned long long)countOfAlgorithmicFaceGroups:(id *)arg1;
 - (unsigned long long)countOfClusteringEligibleFaces;
 - (unsigned long long)countOfFaces;
-- (BOOL)deleteEmptyGroupsOfType:(long long)arg1 error:(id *)arg2;
-- (BOOL)deleteFaceGroupsOfType:(long long)arg1 error:(id *)arg2;
-- (BOOL)deleteSingletonAndEmptyGroupsOfType:(long long)arg1 error:(id *)arg2;
+- (BOOL)deleteEmptyGroupsAndReturnError:(id *)arg1;
+- (BOOL)deleteFaceGroupsAndReturnError:(id *)arg1;
 - (id)facesAlgorithmicallyGroupedWithFacesWithClusterSequenceNumbers:(id)arg1 includeSingletons:(BOOL)arg2 error:(id *)arg3;
 - (id)facesByFaceLocalIdentifiers:(id)arg1 withFaceprintVersion:(unsigned int)arg2 excludeClustered:(BOOL)arg3;
 - (id)facesForClusteringWithFaceprintVersion:(unsigned int)arg1 excludeClustered:(BOOL)arg2 maxCount:(unsigned long long)arg3 error:(id *)arg4;
@@ -43,7 +42,8 @@ __attribute__((visibility("hidden")))
 - (id)keyFacesFromAlgorithmicGroupsContainingFacesWithClusterSequenceNumbers:(id)arg1 includeSingletons:(BOOL)arg2 error:(id *)arg3;
 - (id)localIdentifiersOfFacesAlgorithmicallyGroupedWithFacesWithLocalIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)localIdentifiersOfKeyFacesFromAlgorithmicGroupsContainingFacesWithLocalIdentifiers:(id)arg1 error:(id *)arg2;
-- (BOOL)persistChangesToAlgorithmicFaceGroups:(id)arg1 andFaces:(id)arg2 withCanceler:(id)arg3 returningPersistedClusters:(id *)arg4 faceGroupsWithoutKeyFace:(id *)arg5 csnsToBeRemovedFromClusterState:(id)arg6 toBeReclusteredFaceIds:(id)arg7 error:(id *)arg8;
+- (BOOL)persistChangesToAlgorithmicFaceGroups:(id)arg1 andFaces:(id)arg2 withCanceler:(id)arg3 returningPersistedClusters:(id *)arg4 faceGroupsThatLostFaces:(id *)arg5 faceGroupsWithoutKeyFace:(id *)arg6 csnsToBeRemovedFromClusterState:(id)arg7 toBeReclusteredFaceIds:(id)arg8 error:(id *)arg9;
+- (BOOL)persistGeneratedFaceCrops:(id)arg1 error:(id *)arg2;
 - (id)personForLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)personWithFaceLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)personsForLocalIdentifiers:(id)arg1 error:(id *)arg2;

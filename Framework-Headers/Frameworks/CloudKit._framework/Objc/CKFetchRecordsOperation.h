@@ -21,6 +21,7 @@
     NSMutableSet *_packagesToDestroy;
     NSMutableDictionary *_assetInfoByArrayIndexByRecordKeyByRecordID;
     NSMutableDictionary *_signaturesOfAssetsByRecordIDAndKey;
+    NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
     NSMutableDictionary *_recordIDsToRecords;
     NSMutableDictionary *_recordErrors;
     NSDictionary *_desiredPackageFileIndices;
@@ -30,6 +31,7 @@
 }
 
 @property (strong, nonatomic) NSMutableDictionary *assetInfoByArrayIndexByRecordKeyByRecordID; // @synthesize assetInfoByArrayIndexByRecordKeyByRecordID=_assetInfoByArrayIndexByRecordKeyByRecordID;
+@property (strong, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (copy, nonatomic) NSDictionary *desiredPackageFileIndices; // @synthesize desiredPackageFileIndices=_desiredPackageFileIndices;
 @property (copy, nonatomic) CDUnknownBlockType fetchRecordsCompletionBlock; // @synthesize fetchRecordsCompletionBlock=_fetchRecordsCompletionBlock;

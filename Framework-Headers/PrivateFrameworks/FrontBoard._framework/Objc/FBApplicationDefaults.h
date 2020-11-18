@@ -11,6 +11,7 @@
 @interface FBApplicationDefaults : NSObject
 {
     long long _interfaceOrientation;
+    BOOL _canChangeBackgroundStyle;
     long long _backgroundStyle;
     long long _statusBarStyle;
     BOOL _statusBarHidden;
@@ -19,6 +20,7 @@
 }
 
 @property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
+@property (nonatomic) BOOL canChangeBackgroundStyle; // @synthesize canChangeBackgroundStyle=_canChangeBackgroundStyle;
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (copy, nonatomic) NSString *launchImageFile; // @synthesize launchImageFile=_launchImageFile;
 @property (nonatomic) BOOL statusBarHidden; // @synthesize statusBarHidden=_statusBarHidden;

@@ -7,12 +7,13 @@
 #import <NewsCore/FCCloudKitCacheClearing-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCKeyValueStore, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
+@class FCKeyValueStore, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
 @protocol FCPrivateDataContextInternal, FCPushNotificationHandling;
 
 @protocol FCPrivateDataContext <NSObject, FCCloudKitCacheClearing>
 
 @property (readonly, nonatomic) id<FCPrivateDataContextInternal> internalPrivateDataContext;
+@property (readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
 @property (readonly, nonatomic) FCPersonalizationData *personalizationData;
 @property (readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController;
 @property (readonly, copy, nonatomic) NSString *privateDataDirectory;

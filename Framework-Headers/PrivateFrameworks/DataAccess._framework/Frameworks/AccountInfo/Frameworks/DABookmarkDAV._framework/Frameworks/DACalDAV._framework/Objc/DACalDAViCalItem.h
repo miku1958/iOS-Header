@@ -38,6 +38,7 @@
 @property (strong, nonatomic) NSData *dataPayload; // @synthesize dataPayload=_dataPayload;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSURL *destinationURL;
 @property (strong, nonatomic) ICSDocument *document; // @synthesize document=_document;
 @property (strong, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property (readonly) unsigned long long hash;
@@ -47,6 +48,7 @@
 @property (strong, nonatomic) CalDAVCalendarServerScheduleChangesItem *scheduleChanges; // @synthesize scheduleChanges=_scheduleChanges;
 @property (strong, nonatomic) NSString *scheduleTag;
 @property (strong, nonatomic) NSURL *serverID; // @synthesize serverID=_serverID;
+@property (strong, nonatomic) NSURL *sourceURL;
 @property (nonatomic) BOOL statusChanged; // @synthesize statusChanged=_statusChanged;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *syncKey; // @synthesize syncKey=_syncKey;

@@ -22,6 +22,7 @@
 - (id)_initWithMessageSender:(struct MessageSender *)arg1;
 - (void)_invalidate;
 - (void)_invokeMethod:(const struct RemoteObjectInvocation *)arg1;
+- (void)_releaseReplyWithID:(unsigned long long)arg1;
 - (void)_sendInvocation:(id)arg1 interface:(id)arg2;
 - (void)registerExportedObject:(id)arg1 interface:(id)arg2;
 - (id)remoteObjectProxyWithInterface:(id)arg1;

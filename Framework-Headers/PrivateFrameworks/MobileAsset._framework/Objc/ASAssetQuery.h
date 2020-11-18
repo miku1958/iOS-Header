@@ -27,6 +27,7 @@
 - (void)dealloc;
 - (id)initWithAssetType:(id)arg1;
 - (id)runQueryAndReturnError:(id *)arg1;
+- (id)runQueryForInfoReturnError:(id *)arg1;
 - (void)startQuery:(CDUnknownBlockType)arg1;
 - (void)stopQuery;
 

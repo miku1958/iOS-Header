@@ -32,6 +32,8 @@
     NSNumber *_minimumVerifiedFaceCountNumber;
     NSNumber *_minimumUnverifiedFaceCountNumber;
     NSNumber *_includeNonvisibleFacesNumber;
+    NSNumber *_includeOnlyFacesNeedingFaceCropNumber;
+    NSNumber *_isExclusivePredicateNumber;
     NSMutableSet *_propertySets;
     NSNumber *_shouldPrefetchCountNumber;
     NSPredicate *_predicate;
@@ -57,6 +59,7 @@
 @property (nonatomic) BOOL includeFavoriteMemoriesCollectionList;
 @property (nonatomic) BOOL includeHiddenAssets;
 @property (nonatomic) BOOL includeNonvisibleFaces;
+@property (nonatomic) BOOL includeOnlyFacesNeedingFaceCrop;
 @property (nonatomic) BOOL includePendingMemories;
 @property (nonatomic) BOOL includePlacesSmartAlbum;
 @property (nonatomic) BOOL includeRejectedMemories;
@@ -65,6 +68,7 @@
 @property (strong, nonatomic) NSPredicate *internalInclusionPredicate; // @synthesize internalInclusionPredicate=_internalInclusionPredicate;
 @property (strong, nonatomic) NSPredicate *internalPredicate; // @synthesize internalPredicate=_internalPredicate;
 @property (strong, nonatomic) NSArray *internalSortDescriptors; // @synthesize internalSortDescriptors=_internalSortDescriptors;
+@property (nonatomic) BOOL isExclusivePredicate;
 @property (nonatomic) unsigned long long minimumUnverifiedFaceCount;
 @property (nonatomic) unsigned long long minimumVerifiedFaceCount;
 @property (nonatomic) long long personContext;

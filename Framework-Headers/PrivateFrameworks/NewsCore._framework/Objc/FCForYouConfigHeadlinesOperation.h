@@ -11,12 +11,15 @@
 
 @interface FCForYouConfigHeadlinesOperation : FCOperation
 {
+    BOOL _shouldFetchEditorialSectionTags;
     id<FCContentContext> _context;
     NSString *_forYouConfigID;
     long long _fields;
     NSArray *_additionalArticleListIDs;
+    NSArray *_additionalTagIDs;
     FCCachePolicy *_forYouConfigCachePolicy;
     FCCachePolicy *_articleListCachePolicy;
+    FCCachePolicy *_editorialSectionTagCachePolicy;
     CDUnknownBlockType _headlinesCompletionHandler;
     FCForYouConfig *_resultForYouConfig;
     NSDictionary *_resultArticleListsByID;
@@ -24,8 +27,10 @@
 }
 
 @property (copy, nonatomic) NSArray *additionalArticleListIDs; // @synthesize additionalArticleListIDs=_additionalArticleListIDs;
+@property (copy, nonatomic) NSArray *additionalTagIDs; // @synthesize additionalTagIDs=_additionalTagIDs;
 @property (strong, nonatomic) FCCachePolicy *articleListCachePolicy; // @synthesize articleListCachePolicy=_articleListCachePolicy;
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
+@property (strong, nonatomic) FCCachePolicy *editorialSectionTagCachePolicy; // @synthesize editorialSectionTagCachePolicy=_editorialSectionTagCachePolicy;
 @property (nonatomic) long long fields; // @synthesize fields=_fields;
 @property (strong, nonatomic) FCCachePolicy *forYouConfigCachePolicy; // @synthesize forYouConfigCachePolicy=_forYouConfigCachePolicy;
 @property (copy, nonatomic) NSString *forYouConfigID; // @synthesize forYouConfigID=_forYouConfigID;
@@ -33,6 +38,7 @@
 @property (strong, nonatomic) NSDictionary *resultArticleListsByID; // @synthesize resultArticleListsByID=_resultArticleListsByID;
 @property (strong, nonatomic) FCForYouConfig *resultForYouConfig; // @synthesize resultForYouConfig=_resultForYouConfig;
 @property (strong, nonatomic) NSDictionary *resultHeadlinesByArticleListID; // @synthesize resultHeadlinesByArticleListID=_resultHeadlinesByArticleListID;
+@property (nonatomic) BOOL shouldFetchEditorialSectionTags; // @synthesize shouldFetchEditorialSectionTags=_shouldFetchEditorialSectionTags;
 
 - (void).cxx_destruct;
 - (void)operationWillFinishWithError:(id)arg1;

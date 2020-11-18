@@ -41,18 +41,24 @@
 - (id)contentPredicate;
 - (id)contents;
 - (long long)contentsOperator;
+- (id)domain;
 - (id)initWithRecipients:(id)arg1 senders:(id)arg2 contents:(id)arg3 attributes:(unsigned long long)arg4 dateTimeRange:(id)arg5 identifiers:(id)arg6;
 - (id)initWithRecipients:(id)arg1 senders:(id)arg2 contents:(id)arg3 attributes:(unsigned long long)arg4 dateTimeRange:(id)arg5 identifiers:(id)arg6 notificationIdentifiers:(id)arg7;
 - (id)initWithRecipients:(id)arg1 senders:(id)arg2 searchTerms:(id)arg3 attributes:(unsigned long long)arg4 dateTimeRange:(id)arg5 identifiers:(id)arg6 notificationIdentifiers:(id)arg7 groupNames:(id)arg8;
+- (id)parametersByName;
 - (void)setAttributes:(unsigned long long)arg1;
 - (void)setContents:(id)arg1;
 - (void)setDateTimeRange:(id)arg1;
+- (void)setDomain:(id)arg1;
 - (void)setGroupNames:(id)arg1;
 - (void)setIdentifiers:(id)arg1;
 - (void)setNotificationIdentifiers:(id)arg1;
+- (void)setParametersByName:(id)arg1;
 - (void)setRecipients:(id)arg1;
 - (void)setSearchTerms:(id)arg1;
 - (void)setSenders:(id)arg1;
+- (void)setVerb:(id)arg1;
+- (id)verb;
 
 @end
 

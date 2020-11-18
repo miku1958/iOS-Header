@@ -144,12 +144,16 @@
 - (id)addAttachment;
 - (id)addAttachmentWithData:(id)arg1 filename:(id)arg2;
 - (id)addAttachmentWithFileURL:(id)arg1;
+- (id)addAttachmentWithFileURL:(id)arg1 updateFileBasedAttributes:(BOOL)arg2;
 - (id)addAttachmentWithFileWrapper:(id)arg1;
 - (id)addAttachmentWithIdentifier:(id)arg1;
 - (id)addAttachmentWithRemoteFileURL:(id)arg1;
+- (id)addAttachmentWithUTI:(id)arg1;
 - (id)addAttachmentWithUTI:(id)arg1 data:(id)arg2 filename:(id)arg3;
+- (id)addAttachmentWithUTI:(id)arg1 data:(id)arg2 filename:(id)arg3 updateFileBasedAttributes:(BOOL)arg4;
 - (id)addAttachmentWithUTI:(id)arg1 data:(id)arg2 filenameExtension:(id)arg3;
 - (id)addAttachmentWithUTI:(id)arg1 withURL:(id)arg2;
+- (id)addAttachmentWithUTI:(id)arg1 withURL:(id)arg2 updateFileBasedAttributes:(BOOL)arg3;
 - (void)addNotificationCenterObserversIfNecessary;
 - (void)addShareParticipantsToAttributeSet:(id)arg1;
 - (id)addURLAttachmentWithURL:(id)arg1;
@@ -170,7 +174,6 @@
 - (BOOL)canAddAttachment;
 - (BOOL)canAddAttachments:(unsigned long long)arg1;
 - (BOOL)canBeSharedViaICloud;
-- (void)checkPreviewImagesIntegrityAndGeneratePreviewIfNeeded;
 - (id)checklistStyleAccessibilityDescriptionForRange:(struct _NSRange)arg1;
 - (id)childCloudObjects;
 - (id)cloudAccount;
@@ -203,7 +206,6 @@
 - (BOOL)isHiddenFromSearch;
 - (BOOL)isInICloudAccount;
 - (BOOL)isSharedViaICloud;
-- (BOOL)isTooLargeForPasswordProtection;
 - (BOOL)isVisible;
 - (void)markForDeletion;
 - (struct _NSRange)markedTextRange;
@@ -300,6 +302,7 @@
 - (id)uuid;
 - (long long)visibilityTestingType;
 - (id)visibleAttachments;
+- (id)visibleTopLevelAttachments;
 - (void)willSave;
 - (void)willTurnIntoFault;
 

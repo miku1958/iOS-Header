@@ -13,26 +13,26 @@
 
 @interface LKClass : NSObject <LKStudentProviding, NSSecureCoding>
 {
-    NSMutableDictionary *_avatarNameSimilarityDictionary;
-    NSMutableDictionary *_givenNameSimilarityDictionary;
     NSArray *_students;
     NSString *_classDescription;
     NSString *_className;
     NSString *_classImageURL;
     NSNumber *_classID;
     NSArray *_instructors;
-    NSString *_sortDescriptor;
+    NSMutableDictionary *_avatarNameSimilarityDictionary;
+    NSMutableDictionary *_givenNameSimilarityDictionary;
 }
 
-@property (strong) NSString *classDescription; // @synthesize classDescription=_classDescription;
-@property (strong) NSNumber *classID; // @synthesize classID=_classID;
-@property (strong) NSString *classImageURL; // @synthesize classImageURL=_classImageURL;
-@property (strong) NSString *className; // @synthesize className=_className;
+@property (strong, nonatomic) NSMutableDictionary *avatarNameSimilarityDictionary; // @synthesize avatarNameSimilarityDictionary=_avatarNameSimilarityDictionary;
+@property (strong, nonatomic) NSString *classDescription; // @synthesize classDescription=_classDescription;
+@property (strong, nonatomic) NSNumber *classID; // @synthesize classID=_classID;
+@property (strong, nonatomic) NSString *classImageURL; // @synthesize classImageURL=_classImageURL;
+@property (strong, nonatomic) NSString *className; // @synthesize className=_className;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSMutableDictionary *givenNameSimilarityDictionary; // @synthesize givenNameSimilarityDictionary=_givenNameSimilarityDictionary;
 @property (readonly) unsigned long long hash;
-@property (strong) NSArray *instructors; // @synthesize instructors=_instructors;
-@property (strong) NSString *sortDescriptor; // @synthesize sortDescriptor=_sortDescriptor;
+@property (strong, nonatomic) NSArray *instructors; // @synthesize instructors=_instructors;
 @property (copy, nonatomic) NSArray *students; // @synthesize students=_students;
 @property (readonly) Class superclass;
 

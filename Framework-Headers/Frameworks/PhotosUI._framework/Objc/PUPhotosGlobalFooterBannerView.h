@@ -6,26 +6,28 @@
 
 #import <UIKit/UIView.h>
 
-@class ICQBannerView, NSArray, UIColor;
+@class ICQOffer, PUPhotosICQWrapperBannerView, UIColor;
 @protocol ICQBannerViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotosGlobalFooterBannerView : UIView
 {
     UIView *_separatorLine;
-    ICQBannerView *_bannerView;
-    double separatorHeight;
-    NSArray *_constraints;
+    PUPhotosICQWrapperBannerView *_bannerView;
+    double _separatorHeight;
+    ICQOffer *_offer;
     UIColor *_lineColor;
     id<ICQBannerViewDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<ICQBannerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIColor *lineColor; // @synthesize lineColor=_lineColor;
+@property (strong, nonatomic) ICQOffer *offer; // @synthesize offer=_offer;
 
 - (void).cxx_destruct;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)updateConstraints;
+- (id)initWithOffer:(id)arg1;
+- (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

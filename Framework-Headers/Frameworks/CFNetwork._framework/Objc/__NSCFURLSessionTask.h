@@ -6,7 +6,7 @@
 
 #import <CFNetwork/NSURLSessionTask.h>
 
-@class NSArray, NSDictionary, NSError, NSMutableArray, NSObject, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionConfiguration, NSURLSessionTaskDependency, NSURLSessionTaskDependencyTree, NSURLSessionTaskHTTPAuthenticator;
+@class NSArray, NSData, NSDictionary, NSError, NSMutableArray, NSObject, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionConfiguration, NSURLSessionTaskDependency, NSURLSessionTaskDependencyTree, NSURLSessionTaskHTTPAuthenticator;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_workQueue;
     NSString *_ledBellyServiceIdentifier;
     NSURL *_ledBellyFallbackURL;
+    NSData *__TCPConnectionMetadata;
     float _priorityHint;
     long long _priorityValue;
     double _loadingPriorityValue;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_backgroundTaskTimingData;
     BOOL _shouldSkipPreferredClientCertificateLookup;
     BOOL _cacheOnly;
+    BOOL _preventsSystemHTTPProxyAuthentication;
     NSDictionary *_legacySocketStreamProperties;
     struct _CFHSTSPolicy *_cfHSTS;
     struct _CFURLCache *_cfCache;
@@ -86,6 +88,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)supportsSecureCoding;
 - (id)_DuetActivityProperties;
+- (id)_TCPConnectionMetadata;
 - (unsigned long long)_allowedProtocolTypes;
 - (BOOL)_allowsCellular;
 - (id)_backgroundTaskTimingData;
@@ -131,6 +134,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)_powerAssertion;
 - (void)_prepareNewTimingDataContainer;
 - (BOOL)_preventsIdleSystemSleep;
+- (BOOL)_preventsSystemHTTPProxyAuthentication;
 - (long long)_priority;
 - (long long)_priorityValue;
 - (BOOL)_prohibitAuthUI;
@@ -204,6 +208,7 @@ __attribute__((visibility("hidden")))
 - (void)setTaskDescription:(id)arg1;
 - (void)setTaskIdentifier:(unsigned long long)arg1;
 - (void)set_DuetActivityProperties:(id)arg1;
+- (void)set_TCPConnectionMetadata:(id)arg1;
 - (void)set_allowedProtocolTypes:(unsigned long long)arg1;
 - (void)set_allowsCellular:(BOOL)arg1;
 - (void)set_backgroundTaskTimingData:(id)arg1;
@@ -232,6 +237,7 @@ __attribute__((visibility("hidden")))
 - (void)set_performanceTiming:(struct __PerformanceTiming *)arg1;
 - (void)set_powerAssertion:(unsigned int)arg1;
 - (void)set_preventsIdleSystemSleep:(BOOL)arg1;
+- (void)set_preventsSystemHTTPProxyAuthentication:(BOOL)arg1;
 - (void)set_priority:(long long)arg1;
 - (void)set_priorityValue:(long long)arg1;
 - (void)set_prohibitAuthUI:(BOOL)arg1;

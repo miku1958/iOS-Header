@@ -34,7 +34,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKGroupsControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKGroupsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL reorderingEnabled; // @synthesize reorderingEnabled=_reorderingEnabled;
@@ -47,7 +47,7 @@
 - (void)_fixIndex:(unsigned long long)arg1;
 - (void)_fixIndicesFrom:(unsigned long long)arg1;
 - (void)_fixIndicesFrom:(unsigned long long)arg1 through:(unsigned long long)arg2;
-- (void)_getPassesAndCatalogWithHandler:(CDUnknownBlockType)arg1;
+- (void)_getPassesAndCatalogSynchronously:(BOOL)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_groupIDIsNew:(id)arg1;
 - (id)_groupsExcludingPayment;
 - (unsigned long long)_indexOfGroupID:(id)arg1;

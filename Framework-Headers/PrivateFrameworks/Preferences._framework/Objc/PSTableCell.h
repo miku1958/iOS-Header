@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSString, PSSpecifier, PSTableCellHighlightContext, UIImageView, UILongPressGestureRecognizer;
+@class NSString, NSURL, NSURLSession, PSSpecifier, PSTableCellHighlightContext, UIImageView, UILongPressGestureRecognizer;
 
 @interface PSTableCell : UITableViewCell
 {
@@ -27,6 +27,8 @@
     NSString *_lazyIconAppID;
     BOOL _reusedCell;
     PSTableCellHighlightContext *_customHighlightContext;
+    NSURLSession *_urlSession;
+    NSURL *_lazyIconURL;
     BOOL _forceHideDisclosureIndicator;
     BOOL _isCopyable;
     UILongPressGestureRecognizer *_longTapRecognizer;
@@ -55,6 +57,7 @@
 - (id)_disclosureChevronImage:(BOOL)arg1;
 - (void)_invalidateHighlightContext;
 - (void)_updateAccessoryTypeForSpecifier:(id)arg1;
+- (id)_urlSession;
 - (SEL)action;
 - (id)blankIcon;
 - (BOOL)canBeChecked;

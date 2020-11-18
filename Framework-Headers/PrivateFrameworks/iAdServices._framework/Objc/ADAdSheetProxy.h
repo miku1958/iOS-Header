@@ -17,12 +17,14 @@
     BOOL _openApplicationInProgress;
     double _lastLaunchTimestamp;
     long long _unexpectedTerminationCount;
+    long long _interruptionCount;
     double _nextScheduledLaunch;
     NSMutableSet *_launchAssertions;
     NSObject<OS_dispatch_queue> *_proxyQueue;
 }
 
 @property (weak, nonatomic) id<ADAdSheetProxyDelegate> delegate;
+@property (nonatomic) long long interruptionCount; // @synthesize interruptionCount=_interruptionCount;
 @property (nonatomic) double lastLaunchTimestamp; // @synthesize lastLaunchTimestamp=_lastLaunchTimestamp;
 @property (strong, nonatomic) NSMutableSet *launchAssertions; // @synthesize launchAssertions=_launchAssertions;
 @property (nonatomic) double nextScheduledLaunch; // @synthesize nextScheduledLaunch=_nextScheduledLaunch;
@@ -39,6 +41,7 @@
 - (void)considerLaunchingAdSheet;
 - (id)init;
 - (void)releaseLaunchAssertion:(id)arg1;
+- (void)reportAdSheetInterruption;
 - (void)reportAdSheetUnexpectedTermination;
 - (void)resetAdSheetThrottle;
 - (void)takeLaunchAssertion:(id)arg1;

@@ -37,9 +37,11 @@
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)encodedData;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEncodedData:(id)arg1;
 - (id)initWithEndpoint:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)resolveEndpointWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

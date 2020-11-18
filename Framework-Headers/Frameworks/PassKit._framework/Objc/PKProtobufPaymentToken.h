@@ -17,6 +17,7 @@
     NSData *_paymentData;
     PKProtobufPaymentMethod *_paymentMethod;
     NSString *_redeemURL;
+    NSString *_retryNonce;
     NSString *_transactionIdentifier;
 }
 
@@ -25,12 +26,14 @@
 @property (readonly, nonatomic) BOOL hasPaymentData;
 @property (readonly, nonatomic) BOOL hasPaymentMethod;
 @property (readonly, nonatomic) BOOL hasRedeemURL;
+@property (readonly, nonatomic) BOOL hasRetryNonce;
 @property (readonly, nonatomic) BOOL hasTransactionIdentifier;
 @property (strong, nonatomic) NSString *instrumentName; // @synthesize instrumentName=_instrumentName;
 @property (strong, nonatomic) NSString *network; // @synthesize network=_network;
 @property (strong, nonatomic) NSData *paymentData; // @synthesize paymentData=_paymentData;
 @property (strong, nonatomic) PKProtobufPaymentMethod *paymentMethod; // @synthesize paymentMethod=_paymentMethod;
 @property (strong, nonatomic) NSString *redeemURL; // @synthesize redeemURL=_redeemURL;
+@property (strong, nonatomic) NSString *retryNonce; // @synthesize retryNonce=_retryNonce;
 @property (strong, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
 
 - (void).cxx_destruct;

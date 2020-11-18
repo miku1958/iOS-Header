@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AXSpeechManager/TTSSpeechSynthesizerDelegate-Protocol.h>
 
@@ -45,6 +45,7 @@
 + (id)pauseMarkupString:(id)arg1;
 + (id)remapLanguageCode:(id)arg1;
 + (id)spellOutMarkupString:(id)arg1;
++ (void)test_actionStartTap:(CDUnknownBlockType)arg1;
 + (void)test_setAvailableVoices:(id)arg1;
 + (void)test_setUnitTestMode:(BOOL)arg1;
 - (void)__speechJobFinished:(id)arg1;

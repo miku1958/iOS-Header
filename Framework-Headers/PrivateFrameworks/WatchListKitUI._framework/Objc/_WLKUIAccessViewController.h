@@ -6,16 +6,17 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, NSString, WLKSpinnerView, WLKUIAccessView_iOS;
+@class NSArray, NSDictionary, WLKSpinnerView, WLKUIAccessView_iOS;
 
 @interface _WLKUIAccessViewController : UIViewController
 {
     WLKUIAccessView_iOS *_accessView;
     WLKSpinnerView *_loadingView;
     NSArray *_bundleIDs;
-    NSString *_accountName;
+    NSDictionary *_options;
     BOOL _hasCalledCompletion;
     NSArray *_appInfos;
+    NSArray *_appChannels;
     BOOL _hasOptedIn;
     CDUnknownBlockType _completionHandler;
 }
@@ -26,6 +27,7 @@
 - (void).cxx_destruct;
 - (void)_allow:(id)arg1;
 - (void)_disallow:(id)arg1;
+- (void)_fetchRemoteAppInfo;
 - (void)_handleMenuGesture:(id)arg1;
 - (void)_handleNackButton:(id)arg1;
 - (void)_handlePrivacyButton:(id)arg1;
@@ -34,12 +36,13 @@
 - (void)_init;
 - (void)_presentGenericErrorWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_runOnboarding;
+- (void)_setupAccessViews;
 - (BOOL)_synchronizeSettingsFromCloudIfNeeded;
 - (void)_toggleLoadingScreen;
 - (id)_watchListAppIcon;
 - (void)dealloc;
 - (id)init;
-- (id)initWithBundleIDs:(id)arg1 accountName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithBundleIDs:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)viewDidLoad;
 
 @end

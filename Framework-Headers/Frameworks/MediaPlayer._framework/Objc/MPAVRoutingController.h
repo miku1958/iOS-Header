@@ -13,6 +13,7 @@
 {
     NSArray *_cachedRoutes;
     MPAVRoute *_cachedPickedRoute;
+    MPAVRoute *_legacyCachedRoute;
     NSMutableArray *_asyncFetchingCompletionHandlers;
     BOOL _asyncFetchingRoutes;
     long long _externalScreenType;

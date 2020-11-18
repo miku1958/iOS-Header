@@ -6,26 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class VSPrivacyFacade;
+#import <VideoSubscriberAccount/MCProfileConnectionObserver-Protocol.h>
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSPrivacyInfoCenter : NSObject
+@interface VSPrivacyInfoCenter : NSObject <MCProfileConnectionObserver>
 {
     int _registrationToken;
-    VSPrivacyFacade *_privacyFacade;
-    unsigned long long _privacyAccessStatus;
+    long long _accountAccessStatus;
 }
 
-@property (readonly, nonatomic) long long accountAccessStatus;
-@property (nonatomic) unsigned long long privacyAccessStatus; // @synthesize privacyAccessStatus=_privacyAccessStatus;
-@property (strong, nonatomic) VSPrivacyFacade *privacyFacade; // @synthesize privacyFacade=_privacyFacade;
+@property (nonatomic) long long accountAccessStatus; // @synthesize accountAccessStatus=_accountAccessStatus;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) int registrationToken; // @synthesize registrationToken=_registrationToken;
+@property (readonly) Class superclass;
 
 + (id)sharedPrivacyInfoCenter;
-- (void).cxx_destruct;
 - (void)_invalidateAccountAccessStatus;
 - (void)dealloc;
 - (id)init;
+- (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (id)updateAccountAccessStatusWithError:(id)arg1;
 - (void)updateAccountAccessStatusWithResponse:(id)arg1;
 

@@ -11,15 +11,21 @@
 __attribute__((visibility("hidden")))
 @interface LPiTunesMediaOffer : NSObject
 {
+    BOOL _hasAudio;
+    BOOL _hasVideo;
     NSURL *_previewURL;
     NSString *_type;
 }
 
+@property (readonly, nonatomic) BOOL hasAudio; // @synthesize hasAudio=_hasAudio;
+@property (readonly, nonatomic) BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
 @property (readonly, copy, nonatomic) NSURL *previewURL; // @synthesize previewURL=_previewURL;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 
-+ (id)_previewURLForOffer:(id)arg1;
-+ (id)_typeForOffer:(id)arg1;
++ (BOOL)hasAudioForOffer:(id)arg1;
++ (BOOL)hasVideoForOffer:(id)arg1;
++ (id)previewURLForOffer:(id)arg1;
++ (id)typeForOffer:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
 

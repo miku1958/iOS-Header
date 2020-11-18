@@ -36,6 +36,7 @@
 - (id)initWithPathToVideo:(id)arg1 pathToImage:(id)arg2;
 - (id)initWithPathToVideo:(id)arg1 pathToImage:(id)arg2 imageDisplayTime:(CDStruct_1b6d18a9)arg3 pairingIdentifier:(id)arg4;
 - (id)initWithPropertyList:(id)arg1;
+- (BOOL)linkOrCopyPath:(id)arg1 toPath:(id)arg2 forceCopy:(BOOL)arg3 error:(id *)arg4;
 - (id)propertyListRepresentation;
 - (BOOL)writeToBundleAtURL:(id)arg1 error:(id *)arg2;
 

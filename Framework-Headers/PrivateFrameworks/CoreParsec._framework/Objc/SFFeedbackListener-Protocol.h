@@ -6,7 +6,7 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class SFCardSectionEngagementFeedback, SFCardViewDisappearFeedback, SFClearInputFeedback, SFCustomFeedback, SFDidGoToSiteFeedback, SFEndSearchFeedback, SFErrorFeedback, SFLateSectionsAppendedFeedback, SFRankingFeedback, SFResultEngagementFeedback, SFResultsReceivedAfterTimeoutFeedback, SFSearchViewAppearFeedback, SFSearchViewDisappearFeedback, SFSectionEngagementFeedback, SFStartSearchFeedback, SFSuggestionEngagementFeedback, SFVisibleResultsFeedback, SFVisibleSectionHeaderFeedback, SFVisibleSuggestionsFeedback;
+@class SFCardSectionEngagementFeedback, SFCardViewDisappearFeedback, SFClearInputFeedback, SFCustomFeedback, SFDidGoToSearchFeedback, SFDidGoToSiteFeedback, SFEndSearchFeedback, SFErrorFeedback, SFLateSectionsAppendedFeedback, SFRankingFeedback, SFResultEngagementFeedback, SFResultGradingFeedback, SFResultsReceivedAfterTimeoutFeedback, SFSearchViewAppearFeedback, SFSearchViewDisappearFeedback, SFSectionEngagementFeedback, SFStartSearchFeedback, SFSuggestionEngagementFeedback, SFVisibleResultsFeedback, SFVisibleSectionHeaderFeedback, SFVisibleSuggestionsFeedback;
 
 @protocol SFFeedbackListener <NSObject>
 
@@ -20,7 +20,9 @@
 - (void)didEngageSection:(SFSectionEngagementFeedback *)arg1;
 - (void)didEngageSuggestion:(SFSuggestionEngagementFeedback *)arg1;
 - (void)didErrorOccur:(SFErrorFeedback *)arg1;
+- (void)didGoToSearch:(SFDidGoToSearchFeedback *)arg1;
 - (void)didGoToSite:(SFDidGoToSiteFeedback *)arg1;
+- (void)didGradeResultRelevancy:(SFResultGradingFeedback *)arg1;
 - (void)didRankSections:(SFRankingFeedback *)arg1;
 - (void)didReceiveResultsAfterTimeout:(SFResultsReceivedAfterTimeoutFeedback *)arg1;
 - (void)didStartSearch:(SFStartSearchFeedback *)arg1;

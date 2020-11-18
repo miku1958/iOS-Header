@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) BOOL needsQuickLookDocumentView; // @synthesize needsQuickLookDocumentView=_needsQuickLookDocumentView;
 @property (copy, nonatomic) NSString *savedPath; // @synthesize savedPath=_savedPath;
 @property (copy, nonatomic) NSString *savedPathWithProperExtension; // @synthesize savedPathWithProperExtension=_savedPathWithProperExtension;
+@property (readonly, copy, nonatomic) NSURL *savedURLWithProperExtension;
 @property (readonly, nonatomic) BOOL shouldUnzipByUIDocumentInteractionController;
 @property (strong, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
 @property (copy, nonatomic) NSString *uti; // @synthesize uti=_uti;

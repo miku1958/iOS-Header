@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObject.h>
 
-@class NSArray, NSString, PSIDatabase;
+@class NSString, PSIDatabase;
 @protocol OS_dispatch_queue;
 
 @interface PSIQuery : NSObject
@@ -19,14 +19,12 @@
     BOOL _isWildcardQuery;
     int _queryId;
     NSString *_searchText;
-    NSArray *_searchTokens;
 }
 
 @property (readonly, getter=isCanceled) BOOL canceled;
 @property (readonly, nonatomic) BOOL isWildcardQuery; // @synthesize isWildcardQuery=_isWildcardQuery;
 @property (readonly, nonatomic) int queryId; // @synthesize queryId=_queryId;
 @property (readonly, copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
-@property (strong, nonatomic) NSArray *searchTokens; // @synthesize searchTokens=_searchTokens;
 
 - (void).cxx_destruct;
 - (void)cancel;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <Metal/MTLSamplerState-Protocol.h>
 
@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 - (void)dealloc;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithDevice:(id)arg1 samplerDescriptor:(id)arg2;
 
 @end

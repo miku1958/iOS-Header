@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMHTMLOptionElement.h>
+#import <WebKitLegacy/DOMHTMLOptionElement.h>
 
 @interface DOMHTMLOptionElement (UIWebFormExtensions)
 - (id)createPickerCell;

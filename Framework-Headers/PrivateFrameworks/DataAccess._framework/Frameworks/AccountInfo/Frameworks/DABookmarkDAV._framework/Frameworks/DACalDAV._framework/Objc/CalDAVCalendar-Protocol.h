@@ -37,6 +37,7 @@
 @property (nonatomic) BOOL isScheduleOutbox;
 @property (nonatomic) BOOL isSubscribed;
 @property (nonatomic) BOOL isTaskContainer;
+@property (readonly, nonatomic) NSArray *itemsToReportAsJunk;
 @property (readonly, nonatomic) BOOL needsPublishUpdate;
 @property (nonatomic) BOOL needsResync;
 @property (strong, nonatomic) NSString *notes;

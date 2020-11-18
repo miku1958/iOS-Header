@@ -6,15 +6,18 @@
 
 #import <PhotosUI/PUFeedCell.h>
 
-@class NSString, UIButton, UILabel, UIView;
+#import <PhotosUI/UITextViewDelegate-Protocol.h>
+
+@class NSString, UIButton, UITextView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface PUFeedInvitationCell : PUFeedCell
+@interface PUFeedInvitationCell : PUFeedCell <UITextViewDelegate>
 {
     NSString *_title;
-    NSString *_subtitle;
-    UILabel *__titleLabel;
-    UILabel *__subtitleLabel;
+    NSString *_inviterDisplayName;
+    NSString *_inviteeDisplayName;
+    BOOL _offerToReportAsJunk;
+    UITextView *__textView;
     UIButton *__acceptButon;
     UIButton *__declineButton;
     UIView *__bottomSeparatorView;
@@ -23,17 +26,22 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setAcceptButton:) UIButton *_acceptButon; // @synthesize _acceptButon=__acceptButon;
 @property (strong, nonatomic, setter=_setBottomSeparatorView:) UIView *_bottomSeparatorView; // @synthesize _bottomSeparatorView=__bottomSeparatorView;
 @property (strong, nonatomic, setter=_setDeclineButton:) UIButton *_declineButton; // @synthesize _declineButton=__declineButton;
-@property (strong, nonatomic, setter=_setSubtitleLabel:) UILabel *_subtitleLabel; // @synthesize _subtitleLabel=__subtitleLabel;
-@property (strong, nonatomic, setter=_setTitleLabel:) UILabel *_titleLabel; // @synthesize _titleLabel=__titleLabel;
-@property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic, setter=_setTextView:) UITextView *_textView; // @synthesize _textView=__textView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_delegate;
 - (void)_replyButtonAction:(id)arg1;
+- (void)_reportJunkButtonAction:(id)arg1;
+- (void)_updateTextView;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setTitle:(id)arg1 inviterDisplayName:(id)arg2 inviteeDisplayName:(id)arg3 offerToReportAsJunk:(BOOL)arg4;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
 
 @end
 

@@ -37,12 +37,18 @@
     NSString *_primaryOpenApplication;
     NSString *_secondaryOpenApplication;
     NSArray *_installedApplications;
+    NSString *_stagedAdHocIdentityCertificateFingerprint;
+    NSArray *_trustedAnchorCertificateFingerprints;
     NSString *_userIdentifier;
     NSString *_userDisplayName;
     NSString *_userGivenName;
+    NSString *_userPhoneticGivenName;
     NSString *_userFamilyName;
+    NSString *_userPhoneticFamilyName;
     NSString *_userImageURL;
     long long _loginState;
+    NSString *_studentImageIdentifier;
+    NSString *_instructorImageIdentifier;
     NSDictionary *_activeAirPlayRoute;
     NSArray *_availableAirPlayRoutes;
     NSString *_managementLockPasscode;
@@ -59,6 +65,7 @@
 @property (nonatomic, getter=isEphemeralMultiUser) BOOL ephemeralMultiUser; // @synthesize ephemeralMultiUser=_ephemeralMultiUser;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSArray *installedApplications; // @synthesize installedApplications=_installedApplications;
+@property (copy, nonatomic) NSString *instructorImageIdentifier; // @synthesize instructorImageIdentifier=_instructorImageIdentifier;
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (nonatomic) long long lockState; // @synthesize lockState=_lockState;
 @property (nonatomic) long long loginState; // @synthesize loginState=_loginState;
@@ -72,14 +79,19 @@
 @property (nonatomic) long long screenState; // @synthesize screenState=_screenState;
 @property (copy, nonatomic) NSString *secondaryOpenApplication; // @synthesize secondaryOpenApplication=_secondaryOpenApplication;
 @property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
+@property (copy, nonatomic) NSString *stagedAdHocIdentityCertificateFingerprint; // @synthesize stagedAdHocIdentityCertificateFingerprint=_stagedAdHocIdentityCertificateFingerprint;
+@property (copy, nonatomic) NSString *studentImageIdentifier; // @synthesize studentImageIdentifier=_studentImageIdentifier;
 @property (nonatomic, getter=isSupervised) BOOL supervised; // @synthesize supervised=_supervised;
 @property (copy, nonatomic) NSString *systemName; // @synthesize systemName=_systemName;
 @property (copy, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
+@property (copy, nonatomic) NSArray *trustedAnchorCertificateFingerprints; // @synthesize trustedAnchorCertificateFingerprints=_trustedAnchorCertificateFingerprints;
 @property (copy, nonatomic) NSString *userDisplayName; // @synthesize userDisplayName=_userDisplayName;
 @property (copy, nonatomic) NSString *userFamilyName; // @synthesize userFamilyName=_userFamilyName;
 @property (copy, nonatomic) NSString *userGivenName; // @synthesize userGivenName=_userGivenName;
 @property (copy, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
 @property (copy, nonatomic) NSString *userImageURL; // @synthesize userImageURL=_userImageURL;
+@property (copy, nonatomic) NSString *userPhoneticFamilyName; // @synthesize userPhoneticFamilyName=_userPhoneticFamilyName;
+@property (copy, nonatomic) NSString *userPhoneticGivenName; // @synthesize userPhoneticGivenName=_userPhoneticGivenName;
 @property (nonatomic) float volume; // @synthesize volume=_volume;
 
 + (id)allPropertyKeys;

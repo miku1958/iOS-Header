@@ -15,8 +15,10 @@
     BOOL _wasDropped;
     NSString *_feedID;
     NSArray *_feedItemAndArticleRecords;
+    unsigned long long _extent;
 }
 
+@property (nonatomic) unsigned long long extent; // @synthesize extent=_extent;
 @property (copy, nonatomic) NSString *feedID; // @synthesize feedID=_feedID;
 @property (copy, nonatomic) NSArray *feedItemAndArticleRecords; // @synthesize feedItemAndArticleRecords=_feedItemAndArticleRecords;
 @property (nonatomic) BOOL reachedEnd; // @synthesize reachedEnd=_reachedEnd;

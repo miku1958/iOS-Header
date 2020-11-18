@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLManagedAsset.h>
 
-@class NSDictionary, NSString, NSURL, UIImage;
+@class NSData, NSDictionary, NSString, NSURL, UIImage;
 
 @interface PLWallpaperAsset : PLManagedAsset
 {
@@ -15,13 +15,18 @@
 @property (readonly, nonatomic) UIImage *image;
 @property (readonly, nonatomic) NSString *imageName;
 @property (strong, nonatomic) NSURL *imageURL;
+@property (strong, nonatomic) NSData *imageURLData; // @dynamic imageURLData;
 @property (readonly, nonatomic) UIImage *thumbnailImage;
 @property (strong, nonatomic) NSURL *thumbnailURL;
+@property (strong, nonatomic) NSData *thumbnailURLData; // @dynamic thumbnailURLData;
 @property (strong, nonatomic) NSDictionary *wallpaperOptions;
+@property (strong, nonatomic) NSData *wallpaperOptionsData; // @dynamic wallpaperOptionsData;
 
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 withImageURL:(id)arg2 thumbnailURL:(id)arg3;
+- (void)_setURL:(id)arg1 forKey:(id)arg2;
+- (id)_urlForKey:(id)arg1;
 - (BOOL)allowsWallpaperEditing;
 - (void)awakeFromInsert;
 - (id)imageWithFormat:(int)arg1;
@@ -30,8 +35,6 @@
 - (BOOL)isIncludedInMoments;
 - (id)newFullScreenImage:(const struct __CFDictionary **)arg1;
 - (void)prepareForDeletion;
-- (void)setURL:(id)arg1 forKey:(id)arg2;
-- (id)urlForKey:(id)arg1;
 - (id)wallpaperFullScreenImage;
 
 @end

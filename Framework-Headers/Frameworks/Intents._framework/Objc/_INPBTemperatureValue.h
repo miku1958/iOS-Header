@@ -16,10 +16,7 @@
     double _magnitude;
     int _unit;
     _INPBValueMetadata *_valueMetadata;
-    struct {
-        unsigned int magnitude:1;
-        unsigned int unit:1;
-    } _has;
+    CDStruct_74078a21 _has;
 }
 
 @property (nonatomic) BOOL hasMagnitude;
@@ -32,6 +29,7 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsUnit:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -39,6 +37,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)unitAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

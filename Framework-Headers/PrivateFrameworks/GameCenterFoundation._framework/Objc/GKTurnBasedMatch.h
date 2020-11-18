@@ -92,7 +92,7 @@
 - (void)participantQuitOutOfTurnWithOutcome:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)rematchWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)reserveShareParticipantSlots:(long long)arg1 andInvitePlayers:(id)arg2 withMessage:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)reserveShareParticipantSlots:(long long)arg1 minPlayerCount:(long long)arg2 maxPlayerCount:(long long)arg3 andInvitePlayers:(id)arg4 withMessage:(id)arg5 handler:(CDUnknownBlockType)arg6;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (void)saveCurrentTurnWithMatchData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveMergedMatchData:(id)arg1 withResolvedExchanges:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

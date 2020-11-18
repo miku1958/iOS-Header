@@ -6,22 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSString;
 
 @interface WLKApplicationProxy : NSObject
 {
+    BOOL _isEntitled;
     BOOL _isBetaApp;
     BOOL _isSystemApp;
     BOOL _supportsTVApp;
     NSString *_bundleIdentifier;
     NSString *_localizedName;
     NSString *_version;
-    NSDictionary *_entitlements;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (readonly, copy, nonatomic) NSDictionary *entitlements; // @synthesize entitlements=_entitlements;
 @property (readonly, nonatomic) BOOL isBetaApp; // @synthesize isBetaApp=_isBetaApp;
+@property (readonly, nonatomic) BOOL isEntitled; // @synthesize isEntitled=_isEntitled;
 @property (readonly, nonatomic) BOOL isSystemApp; // @synthesize isSystemApp=_isSystemApp;
 @property (readonly, copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, nonatomic) BOOL supportsTVApp; // @synthesize supportsTVApp=_supportsTVApp;

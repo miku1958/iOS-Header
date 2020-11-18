@@ -4,19 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CalendarDaemon/CADPredicate.h>
+#import <CalendarDaemon/EKPredicate.h>
 
 #import <CalendarDaemon/EKDefaultPropertiesLoading-Protocol.h>
 #import <CalendarDaemon/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSString, NSTimeZone;
+@class NSArray, NSString;
 
-@interface CADEventsForAssistantSearchPredicate : CADPredicate <EKDefaultPropertiesLoading, NSSecureCoding>
+@interface CADEventsForAssistantSearchPredicate : EKPredicate <EKDefaultPropertiesLoading, NSSecureCoding>
 {
-    NSTimeZone *_timeZone;
-    NSDate *_startDate;
-    NSDate *_endDate;
-    NSString *_title;
     NSString *_location;
     NSString *_notes;
     NSArray *_participants;
@@ -25,16 +21,12 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long limit; // @synthesize limit=_limit;
 @property (copy, nonatomic) NSString *location; // @synthesize location=_location;
 @property (copy, nonatomic) NSString *notes; // @synthesize notes=_notes;
 @property (copy, nonatomic) NSArray *participants; // @synthesize participants=_participants;
-@property (copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

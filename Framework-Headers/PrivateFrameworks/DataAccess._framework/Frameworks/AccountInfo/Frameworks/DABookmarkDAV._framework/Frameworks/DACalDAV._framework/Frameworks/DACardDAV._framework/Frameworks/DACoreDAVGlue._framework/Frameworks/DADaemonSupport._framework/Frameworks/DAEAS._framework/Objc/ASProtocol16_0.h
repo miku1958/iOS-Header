@@ -20,6 +20,7 @@
 - (BOOL)sendUID;
 - (unsigned char)shortProtocolVersion;
 - (BOOL)syncSnoozeEvents;
+- (BOOL)useEmptyAttendees;
 - (BOOL)useEmptyLocation;
 - (BOOL)useEmptyRecurrence;
 - (BOOL)useEmptyReminderMinutes;

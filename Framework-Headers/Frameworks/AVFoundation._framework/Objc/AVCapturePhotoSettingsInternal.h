@@ -18,6 +18,7 @@
     BOOL autoShallowDepthOfFieldEffectEnabled;
     BOOL originalPhotoDeliveryEnabled;
     BOOL autoStillImageStabilizationEnabled;
+    BOOL autoDualCameraFusionEnabled;
     BOOL highResolutionPhotoEnabled;
     NSURL *livePhotoMovieFileURL;
     NSURL *livePhotoMovieFileURLForOriginalPhoto;
@@ -27,7 +28,7 @@
     BOOL squareCropEnabled;
     unsigned int shutterSound;
     BOOL turboModeEnabled;
-    BOOL autoDualCameraFusionEnabled;
+    unsigned long long userInitiatedPhotoRequestTime;
     NSString *livePhotoContentIdentifier;
     NSString *livePhotoContentIdentifierForOriginalPhoto;
 }

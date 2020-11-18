@@ -24,5 +24,6 @@
 - (id)da_urlBySettingScheme:(id)arg1;
 - (id)da_urlBySettingScheme:(id)arg1 keepUsername:(BOOL)arg2;
 - (id)da_urlBySettingUsername:(id)arg1;
+- (id)da_urlForLogging;
 @end
 

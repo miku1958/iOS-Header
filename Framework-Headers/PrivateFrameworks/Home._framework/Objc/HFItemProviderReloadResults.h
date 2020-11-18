@@ -27,6 +27,7 @@
 - (id)description;
 - (id)init;
 - (id)initWithAddedItems:(id)arg1 removedItems:(id)arg2 existingItems:(id)arg3;
+- (id)resultsByMergingWithResults:(id)arg1;
 
 @end
 

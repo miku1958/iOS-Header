@@ -12,13 +12,20 @@
 {
     NSDictionary *_responseDictionary;
     BOOL _usesCurrentAccountIfAvailable;
+    NSURL *_fallbackStreamingKeyServerURL;
+    NSURL *_fallbackStreamingKeyCertificateURL;
 }
 
+@property (readonly, nonatomic) NSURL *HLSKeyCertificateURL;
+@property (readonly, nonatomic) NSURL *HLSKeyServerURL;
 @property (readonly, nonatomic) NSURL *HLSPlaylistURL;
 @property (readonly, copy, nonatomic) NSArray *allFlavors;
 @property (readonly, nonatomic) MPStoreRedownloadProductItemAsset *asset;
+@property (copy, nonatomic) NSURL *fallbackStreamingKeyCertificateURL; // @synthesize fallbackStreamingKeyCertificateURL=_fallbackStreamingKeyCertificateURL;
+@property (copy, nonatomic) NSURL *fallbackStreamingKeyServerURL; // @synthesize fallbackStreamingKeyServerURL=_fallbackStreamingKeyServerURL;
 @property (readonly, copy, nonatomic) NSString *fileExtension;
 @property (readonly, nonatomic) MPStoreRedownloadProductItemAsset *firstAsset;
+@property (readonly, nonatomic, getter=isiTunesStoreStream) BOOL iTunesStoreStream;
 @property (readonly, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
 @property (nonatomic) BOOL usesCurrentAccountIfAvailable; // @synthesize usesCurrentAccountIfAvailable=_usesCurrentAccountIfAvailable;
 

@@ -12,7 +12,6 @@
 
 @property (readonly, nonatomic) BOOL allowsErotica;
 @property (readonly, nonatomic) BOOL allowsExplicit;
-@property (readonly, nonatomic) BOOL allowsITunes;
 @property (readonly, nonatomic) long long maxMovieRank;
 @property (readonly, nonatomic) long long maxTVShowRank;
 

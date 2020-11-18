@@ -55,6 +55,7 @@
 - (BOOL)isOnDarkBackground;
 - (void)linkWithKeyboardController:(id)arg1;
 - (id)nextResponder;
+- (BOOL)searchFieldIsFocused;
 - (void)searchForSuggestedQuery:(id)arg1;
 - (void)setRoundedCornerVisible:(BOOL)arg1;
 - (void)showCancelButton:(BOOL)arg1 animated:(BOOL)arg2;

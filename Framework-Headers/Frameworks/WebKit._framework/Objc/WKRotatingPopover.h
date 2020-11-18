@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIPopoverController *popoverController;
 @property (nonatomic) struct CGPoint presentationPoint; // @synthesize presentationPoint=_presentationPoint;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) WKContentView *view; // @synthesize view=_view;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

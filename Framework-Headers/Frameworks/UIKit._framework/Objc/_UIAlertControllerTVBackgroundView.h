@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 + (struct CGSize)backgroundInsetAmount;
 - (void).cxx_destruct;
 - (double)_alphaForHighlighted:(BOOL)arg1 pressed:(BOOL)arg2;
+- (void)_setContinuousCornerRadius:(double)arg1;
 - (double)alphaForState:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)setCornerRadius:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setPressed:(BOOL)arg1;
+- (void)setRoundedCornerPosition:(unsigned long long)arg1;
 - (void)tintColorDidChange;
 
 @end

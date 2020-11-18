@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSTimer, NSURL;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@protocol OS_dispatch_group, OS_dispatch_queue, WBSCoalescedAsynchronousWriterDelegate;
 
 @interface WBSCoalescedAsynchronousWriter : NSObject
 {
@@ -21,12 +21,16 @@
     NSObject<OS_dispatch_group> *_writeGroup;
     struct unique_ptr<SafariShared::SuddenTerminationDisabler, std::__1::default_delete<SafariShared::SuddenTerminationDisabler>> _suddenTerminationDisabler;
     BOOL _done;
+    id<WBSCoalescedAsynchronousWriterDelegate> _delegate;
 }
+
+@property (weak, nonatomic) id<WBSCoalescedAsynchronousWriterDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_cancelPendingWriteSynchronouslyLeavingSuddenTerminationIntact;
 - (id)_dataFromDataSource;
+- (id)_initWithName:(id)arg1 fileURL:(id)arg2 writerBlock:(CDUnknownBlockType)arg3 dataSourceBlock:(CDUnknownBlockType)arg4;
 - (void)_invalidateTimer;
 - (void)_scheduleTimer;
 - (void)_timerFired:(id)arg1;
@@ -37,6 +41,7 @@
 - (void)completePendingWriteSynchronously;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 fileURL:(id)arg2 dataSourceBlock:(CDUnknownBlockType)arg3;
+- (id)initWithName:(id)arg1 writerBlock:(CDUnknownBlockType)arg2 dataSourceBlock:(CDUnknownBlockType)arg3;
 - (void)scheduleWrite;
 - (void)startScheduledWriteNow;
 

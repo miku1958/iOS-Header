@@ -7,8 +7,13 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (IC)
+
+@property (readonly, nonatomic) NSString *ic_sanitizedFilenameString;
+@property (readonly, nonatomic) NSString *ic_trimmedString;
+
 - (void)enumerateContentLineRangesInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateParagraphsInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)ic_stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
 - (id)ic_stringByReplacingNewlineCharactersWithWhiteSpace;
 - (id)ic_substringFromIndex:(unsigned long long)arg1;
 - (id)ic_substringToIndex:(unsigned long long)arg1;

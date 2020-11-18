@@ -24,7 +24,7 @@
 
 - (void).cxx_destruct;
 - (void)_clearSomeGlobalEntityTemporaryReferences;
-- (map_e2c539ba *)_entityMapForDataProviderEntityClass:(Class)arg1;
+- (map_2a6257c2 *)_entityMapForDataProviderEntityClass:(Class)arg1;
 - (id)_entityWithIdentifier:(long long)arg1 mediaEntityType:(long long)arg2 collectionGroupingType:(long long)arg3 loadEntityBlock:(CDUnknownBlockType)arg4;
 - (void)_performWithExclusiveAccessForDataProviderEntityClass:(Class)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_performWithSharedAccessForDataProviderEntityClass:(Class)arg1 block:(CDUnknownBlockType)arg2;

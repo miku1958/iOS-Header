@@ -23,8 +23,11 @@ __attribute__((visibility("hidden")))
     unsigned int _numberOfAvailableExtensions;
     GEOLatLng *_originBlurred;
     NSString *_rideAppId;
+    NSString *_rideAppVersion;
     NSString *_rideBookingSessionId;
     NSString *_rideType;
+    int _statusIssue;
+    BOOL _comparedRideOptions;
     BOOL _exploredOtherOptions;
     BOOL _installedApp;
     BOOL _movedPickupLocation;
@@ -39,6 +42,8 @@ __attribute__((visibility("hidden")))
         unsigned int endState:1;
         unsigned int endView:1;
         unsigned int numberOfAvailableExtensions:1;
+        unsigned int statusIssue:1;
+        unsigned int comparedRideOptions:1;
         unsigned int exploredOtherOptions:1;
         unsigned int installedApp:1;
         unsigned int movedPickupLocation:1;
@@ -49,6 +54,7 @@ __attribute__((visibility("hidden")))
     } _has;
 }
 
+@property (nonatomic) BOOL comparedRideOptions; // @synthesize comparedRideOptions=_comparedRideOptions;
 @property (strong, nonatomic) GEOLatLng *destinationBlurred; // @synthesize destinationBlurred=_destinationBlurred;
 @property (nonatomic) double distanceToPickupInMeters; // @synthesize distanceToPickupInMeters=_distanceToPickupInMeters;
 @property (nonatomic) double durationOfSessionInSeconds; // @synthesize durationOfSessionInSeconds=_durationOfSessionInSeconds;
@@ -56,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int endView; // @synthesize endView=_endView;
 @property (strong, nonatomic) NSMutableArray *errorMessages; // @synthesize errorMessages=_errorMessages;
 @property (nonatomic) BOOL exploredOtherOptions; // @synthesize exploredOtherOptions=_exploredOtherOptions;
+@property (nonatomic) BOOL hasComparedRideOptions;
 @property (readonly, nonatomic) BOOL hasDestinationBlurred;
 @property (nonatomic) BOOL hasDistanceToPickupInMeters;
 @property (nonatomic) BOOL hasDurationOfSessionInSeconds;
@@ -68,9 +75,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasOriginBlurred;
 @property (nonatomic) BOOL hasPaymentIsApplePay;
 @property (readonly, nonatomic) BOOL hasRideAppId;
+@property (readonly, nonatomic) BOOL hasRideAppVersion;
 @property (readonly, nonatomic) BOOL hasRideBookingSessionId;
 @property (readonly, nonatomic) BOOL hasRideType;
 @property (nonatomic) BOOL hasShowedSurgePricingAlert;
+@property (nonatomic) BOOL hasStatusIssue;
 @property (nonatomic) BOOL hasSwitchedApp;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasUnavailable;
@@ -80,9 +89,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOLatLng *originBlurred; // @synthesize originBlurred=_originBlurred;
 @property (nonatomic) BOOL paymentIsApplePay; // @synthesize paymentIsApplePay=_paymentIsApplePay;
 @property (strong, nonatomic) NSString *rideAppId; // @synthesize rideAppId=_rideAppId;
+@property (strong, nonatomic) NSString *rideAppVersion; // @synthesize rideAppVersion=_rideAppVersion;
 @property (strong, nonatomic) NSString *rideBookingSessionId; // @synthesize rideBookingSessionId=_rideBookingSessionId;
 @property (strong, nonatomic) NSString *rideType; // @synthesize rideType=_rideType;
 @property (nonatomic) BOOL showedSurgePricingAlert; // @synthesize showedSurgePricingAlert=_showedSurgePricingAlert;
+@property (nonatomic) int statusIssue; // @synthesize statusIssue=_statusIssue;
 @property (nonatomic) BOOL switchedApp; // @synthesize switchedApp=_switchedApp;
 @property (nonatomic) long long timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) BOOL unavailable; // @synthesize unavailable=_unavailable;
@@ -90,6 +101,7 @@ __attribute__((visibility("hidden")))
 + (Class)errorMessageType;
 - (int)StringAsEndState:(id)arg1;
 - (int)StringAsEndView:(id)arg1;
+- (int)StringAsStatusIssue:(id)arg1;
 - (void)addErrorMessage:(id)arg1;
 - (void)clearErrorMessages;
 - (void)copyTo:(id)arg1;
@@ -105,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)statusIssueAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -11,9 +11,11 @@
 
 @protocol MDLObjectContainerComponent <MDLComponent, NSFastEnumeration>
 
+@property (readonly) unsigned long long count;
 @property (readonly, strong, nonatomic) NSArray *objects;
 
 - (void)addObject:(MDLObject *)arg1;
+- (MDLObject *)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (void)removeObject:(MDLObject *)arg1;
 @end
 

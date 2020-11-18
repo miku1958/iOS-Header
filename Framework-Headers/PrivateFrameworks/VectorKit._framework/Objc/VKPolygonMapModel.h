@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
     struct shared_ptr<ggl::ConstantDataTyped<ggl::AnimatableTexture::Variant>> _variantData;
     struct RenderItemBatcher _batcher;
     VKRouteContext *_routeContext;
-    unordered_map_9fd1a77d _transitNodesRouteAttributesMap;
+    unordered_map_5292d3da _transitNodesRouteAttributesMap;
     BOOL _buildingsAre3D;
     struct CommandBufferIdSet _commandBufferIds;
     unsigned long long _mapLayerPosition;

@@ -66,6 +66,7 @@
     BOOL _expanded;
     BOOL _usesUnscaledBackdrop;
     BOOL _backdropGroupDisabled;
+    BOOL _usesContainedAppearance;
     BOOL _suppressesBlur;
     _SFNavigationBarItem *_item;
     unsigned long long _tintStyle;
@@ -111,6 +112,7 @@
 @property (readonly, nonatomic) _SFToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property (nonatomic) BOOL unifiedFieldShowsProgressView; // @synthesize unifiedFieldShowsProgressView=_unifiedFieldShowsProgressView;
 @property (nonatomic) BOOL updatesBackdrop;
+@property (nonatomic) BOOL usesContainedAppearance; // @synthesize usesContainedAppearance=_usesContainedAppearance;
 @property (nonatomic) BOOL usesNarrowLayout; // @synthesize usesNarrowLayout=_usesNarrowLayout;
 @property (nonatomic) BOOL usesUnscaledBackdrop; // @synthesize usesUnscaledBackdrop=_usesUnscaledBackdrop;
 @property (nonatomic, getter=isUsingLightControls) BOOL usingLightControls; // @synthesize usingLightControls=_usingLightControls;
@@ -211,9 +213,10 @@
 - (void)setExpanded:(BOOL)arg1 textFieldSelectionRange:(struct _NSRange)arg2;
 - (void)setTextFieldPlaceHolderColor:(id)arg1;
 - (void)squishExternalView:(id)arg1 withUntransformedFrame:(struct CGRect)arg2 minimumScale:(double)arg3;
+- (id)textForNavigationBarURLButton:(id)arg1;
 - (void)tintColorDidChange;
 - (id)toolbarPlacedOnTop;
-- (void)updateToobarTintColor;
+- (void)updateToolbarTintColor;
 
 @end
 

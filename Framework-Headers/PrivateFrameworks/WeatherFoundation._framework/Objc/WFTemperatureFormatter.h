@@ -10,6 +10,7 @@
 
 @interface WFTemperatureFormatter : NSFormatter
 {
+    BOOL _includeDegreeSymbol;
     int _inputUnit;
     int _outputUnit;
     struct UAMeasureFormat *_measureFormatter;
@@ -20,6 +21,7 @@
 }
 
 @property (copy, nonatomic) NSString *fallbackTemperatureString; // @synthesize fallbackTemperatureString=_fallbackTemperatureString;
+@property (nonatomic) BOOL includeDegreeSymbol; // @synthesize includeDegreeSymbol=_includeDegreeSymbol;
 @property (nonatomic) int inputUnit; // @synthesize inputUnit=_inputUnit;
 @property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (nonatomic) unsigned long long maximumFractionDigits; // @synthesize maximumFractionDigits=_maximumFractionDigits;

@@ -39,12 +39,14 @@
 + (id)serviceItemForService:(id)arg1 valueSource:(id)arg2;
 - (void).cxx_destruct;
 - (id)_aggregatedValueSource;
+- (id)_augmentedStandardResultsForUpdateResponse:(id)arg1;
 - (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
 - (id)_initForCopyWithValueSource:(id)arg1 service:(id)arg2 controlItemsByIdentifier:(id)arg3;
 - (void)_setupControlItems;
 - (void)_setupControlItemsWithControlItemsByIdentifier:(id)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;
+- (BOOL)actionsMayRequireDeviceUnlock;
 - (BOOL)containsActionableCharacteristics;
 - (id)controlDescriptionForCharacteristic:(id)arg1 withValue:(id)arg2;
 - (id)controlPanelItemWithControlIdentifiers:(id)arg1 displayResults:(id)arg2;
@@ -57,10 +59,10 @@
 - (id)incrementalStateIconDescriptorForPrimaryState:(long long)arg1 incrementalValue:(id)arg2;
 - (id)init;
 - (id)initWithValueSource:(id)arg1 service:(id)arg2;
+- (id)performStandardUpdateWithCharacteristicTypes:(id)arg1 options:(id)arg2;
 - (id)readValuesForCharacteristicTypes:(id)arg1;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)services;
-- (id)standardResultsWithDisplayMetadata:(id)arg1 readCharacteristics:(id)arg2 updateOptions:(id)arg3;
 - (BOOL)supportsControlWithCharacteristicTypes:(id)arg1;
 - (id)updateWithOptions:(id)arg1;
 

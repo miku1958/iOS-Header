@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 #import <IMDaemonCore/IMConnectionMonitorDelegate-Protocol.h>
 #import <IMDaemonCore/IMServiceSessionProtocol-Protocol.h>
@@ -244,6 +244,8 @@
 - (void)invitePerson:(id)arg1 withMessage:(id)arg2 toChat:(id)arg3 style:(unsigned char)arg4;
 - (void)invitePersonInfo:(id)arg1 withMessage:(id)arg2 toChat:(id)arg3 style:(unsigned char)arg4;
 - (void)invitePersonInfo:(id)arg1 withMessage:(id)arg2 toChatID:(id)arg3 identifier:(id)arg4 style:(unsigned char)arg5;
+- (void)invitePersonInfoToiMessageChat:(id)arg1 withMessage:(id)arg2 toChat:(id)arg3 style:(unsigned char)arg4;
+- (void)invitePersonInfoToiMessageChat:(id)arg1 withMessage:(id)arg2 toChatID:(id)arg3 identifier:(id)arg4 style:(unsigned char)arg5;
 - (BOOL)isAwaitingStorageTimer;
 - (BOOL)isChatRegistered:(id)arg1 style:(unsigned char)arg2;
 - (void)joinChat:(id)arg1 handleInfo:(id)arg2 style:(unsigned char)arg3 groupID:(id)arg4 joinProperties:(id)arg5;
@@ -253,6 +255,8 @@
 - (void)leaveAllChats;
 - (void)leaveChat:(id)arg1 style:(unsigned char)arg2;
 - (void)leaveChatID:(id)arg1 identifier:(id)arg2 style:(unsigned char)arg3;
+- (void)leaveiMessageChat:(id)arg1 style:(unsigned char)arg2;
+- (void)leaveiMessageChatID:(id)arg1 identifier:(id)arg2 style:(unsigned char)arg3;
 - (id)localPropertiesOfBuddy:(id)arg1;
 - (id)localProperty:(id)arg1 ofBuddy:(id)arg2;
 - (void)login;
@@ -294,6 +298,7 @@
 - (void)removeChat:(id)arg1 style:(unsigned char)arg2;
 - (void)removeChatID:(id)arg1 identifier:(id)arg2 style:(unsigned char)arg3;
 - (void)removePersonInfo:(id)arg1 chatID:(id)arg2 identifier:(id)arg3 style:(unsigned char)arg4;
+- (void)removePersonInfoFromiMessageChat:(id)arg1 chatID:(id)arg2 identifier:(id)arg3 style:(unsigned char)arg4;
 - (void)renameGroup:(id)arg1 to:(id)arg2;
 - (void)replayMessage:(id)arg1;
 - (void)requestGroups;

@@ -111,6 +111,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)removeOverlay;
 - (void)showOverlay;
+- (void)toolbarNotification:(id)arg1;
 - (void)updateOverlayBoundsAndBackingScale:(id)arg1;
 - (void)updateStrokeAttributes;
 

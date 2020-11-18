@@ -47,6 +47,9 @@
 + (id)options;
 + (Class)propertiesType;
 - (void).cxx_destruct;
+- (int)StringAsDestinationType:(id)arg1;
+- (int)StringAsEntityTypes:(id)arg1;
+- (int)StringAsSourceType:(id)arg1;
 - (void)addEntityName:(id)arg1;
 - (void)addEntityType:(int)arg1;
 - (void)addProperties:(id)arg1;
@@ -56,10 +59,12 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)destinationTypeAsString:(int)arg1;
 - (id)dictionaryRepresentation;
 - (id)entityNameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entityNamesCount;
 - (int)entityTypeAtIndex:(unsigned long long)arg1;
+- (id)entityTypesAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
@@ -67,6 +72,7 @@
 - (unsigned long long)propertiesCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)setEntityTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (id)sourceTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

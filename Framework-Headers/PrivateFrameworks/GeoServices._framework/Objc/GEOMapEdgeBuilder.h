@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     Matrix_8746f91e _lastTilePoint;
     GEOMapTileFinder *_currentTileFinder;
     CDUnknownBlockType _edgeHandler;
-    unordered_set_4cb294f7 _tileKeysSeen;
+    unordered_set_deaadd3a _tileKeysSeen;
     BOOL _searchDirection;
     unsigned long long _buildDirection;
 }

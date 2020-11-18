@@ -14,7 +14,7 @@
 }
 
 @property (nonatomic, getter=isAntialiased) BOOL antialiased;
-@property (copy, nonatomic) NSDictionary *attributeValues;
+@property (copy, nonatomic) NSDictionary *attributeValues; // @dynamic attributeValues;
 @property (nonatomic) long long blendMode;
 @property (strong, nonatomic) UIColor *fillColor;
 @property (strong, nonatomic) SKShader *fillShader;
@@ -53,6 +53,8 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqualToNode:(id)arg1;
+- (void)setValue:(id)arg1 forAttributeNamed:(id)arg2;
+- (id)valueForAttributeNamed:(id)arg1;
 
 @end
 

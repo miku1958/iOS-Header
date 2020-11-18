@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isMuted) BOOL muted;
 @property (readonly) Class superclass;
 
 + (id)ruleDictionaryForStyle:(id)arg1;

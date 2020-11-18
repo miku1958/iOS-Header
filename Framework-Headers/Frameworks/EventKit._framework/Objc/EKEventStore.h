@@ -186,7 +186,7 @@
 - (id)ownedSources;
 - (id)predicateForAllRemindersDueBeforeOrOnDueDate:(id)arg1 calendars:(id)arg2;
 - (id)predicateForAllRemindersWithDueDate:(id)arg1 calendars:(id)arg2;
-- (id)predicateForAssistantEventSearchWithTimeZone:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 title:(id)arg4 location:(id)arg5 notes:(id)arg6 participants:(id)arg7 limit:(long long)arg8;
+- (id)predicateForAssistantEventSearchWithTimeZone:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 title:(id)arg4 location:(id)arg5 notes:(id)arg6 participants:(id)arg7 calendars:(id)arg8 limit:(long long)arg9;
 - (id)predicateForCompletedRemindersWithCalendars:(id)arg1;
 - (id)predicateForCompletedRemindersWithCompletionDateStarting:(id)arg1 ending:(id)arg2 calendars:(id)arg3;
 - (id)predicateForCompletedRemindersWithDueDate:(id)arg1 calendars:(id)arg2 sortOrder:(int)arg3;
@@ -264,6 +264,7 @@
 - (BOOL)setInvitationStatus:(unsigned long long)arg1 forEvents:(id)arg2 error:(id *)arg3;
 - (void)setSourceAccountManagement:(int)arg1;
 - (id)sharedCalendarInvitationsForEntityTypes:(unsigned long long)arg1;
+- (BOOL)shouldWhitelistOrganizerEmailFromJunkChecks:(id)arg1;
 - (id)sourceWithIdentifier:(id)arg1;
 - (id)travelEligibleEventsInCalendars:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (void)vehicleTriggerAlarmOccurrencesWithCompletion:(CDUnknownBlockType)arg1;

@@ -13,5 +13,6 @@
 - (BOOL)isLoginHardLimit;
 - (BOOL)isLoginSoftLimit;
 - (BOOL)isRecoveryPETHardLimitError;
+- (BOOL)isRecoveryPETSoftLimitError;
 @end
 

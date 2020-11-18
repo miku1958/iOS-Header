@@ -13,6 +13,7 @@
 - (void)ifSearch:(void (^)(id<MSPHistoryEntrySearch>))arg1 ifRoute:(void (^)(id<MSPHistoryEntryRoute>))arg2 ifPlaceDisplay:(void (^)(id<MSPHistoryEntryPlaceDisplay>))arg3 ifTransitLineItem:(void (^)(id<MSPHistoryEntryTransitLineItem>))arg4;
 - (BOOL)isFailed;
 - (BOOL)isUserVisibleDuplicateOfEntry:(id<MSPHistoryEntry>)arg1;
+- (BOOL)tracksRAPReportingOnly;
 - (NSDate *)usageDate;
 @end
 

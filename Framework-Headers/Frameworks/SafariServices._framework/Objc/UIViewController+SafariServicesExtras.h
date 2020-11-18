@@ -10,6 +10,7 @@
 
 @property (readonly, nonatomic) UIViewController *_sf_viewControllerToPresentFrom;
 
+- (void)_sf_animateAlongsideTransitionOrPerform:(CDUnknownBlockType)arg1;
 - (void)_sf_presentViewControllerOnTopOfPresentedViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 @end
 

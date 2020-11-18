@@ -23,7 +23,6 @@
 - (void)_fetchHeadlinesForFeedItems:(id)arg1 feedContextByFeedID:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)_fetchTagForSourceChannelIdentifier:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)alwaysShowExpiredGroups;
-- (BOOL)disableMinimumGroupSize;
 - (void)performOperation;
 - (BOOL)unlimitedBackfill;
 

@@ -14,17 +14,28 @@
 @interface DAEASOAuthFlowController : NSObject <SL_OOPAuthFlowDelegate, UIWebViewDelegate>
 {
     CDUnknownBlockType _completion;
+    unsigned long long _oauthType;
+    NSString *_tokenRequestURI;
+    NSString *_oauthURI;
+    NSString *_username;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long oauthType; // @synthesize oauthType=_oauthType;
+@property (copy, nonatomic) NSString *oauthURI; // @synthesize oauthURI=_oauthURI;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSString *tokenRequestURI; // @synthesize tokenRequestURI=_tokenRequestURI;
+@property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
 - (void).cxx_destruct;
+- (id)_accountDescription;
 - (void)_exchangeAuthCode:(id)arg1 forTokensAndUsernameWithCompletion:(CDUnknownBlockType)arg2;
 - (void)_exchangeAuthCode:(id)arg1 forTokensWithCompletion:(CDUnknownBlockType)arg2;
+- (id)_urlRequestForOAuthTokenFromAuthCode:(id)arg1;
 - (id)authURLForUsername:(id)arg1;
+- (id)initWithOAuthType:(unsigned long long)arg1 authURI:(id)arg2 username:(id)arg3;
 - (id)initialRedirectURL;
 - (id)requestForAuthURL:(id)arg1;
 - (void)setAuthFlowCompletion:(CDUnknownBlockType)arg1;

@@ -14,6 +14,11 @@
 @interface ISLivePhotoPlayer : ISBasePlayer <ISLivePhotoSettleBehaviorDelegate, ISChangeObserver>
 {
     NSMutableSet *_playbackFilters;
+    _Atomic int _fadeInRequestID;
+    struct {
+        BOOL scale;
+    } _isValid;
+    double _lastAppliedScale;
     BOOL _playingVitality;
     BOOL _hinting;
     BOOL _immediatelyShowsPhotoWhenPlaybackEnds;
@@ -55,29 +60,35 @@
 - (long long)_coalescedPlaybackFilterState;
 - (void)_configurePlaybackFilter:(id)arg1;
 - (void)_configurePlaybackFilters;
+- (void)_fadeInAudio;
 - (void)_handlePlaybackFilterDidChange;
 - (void)_handleVitalityFilterDidChange:(id)arg1;
 - (long long)_incrementedPlaybackIdentifier;
+- (void)_invalidateScale;
 - (double)_photoTransitionDuration;
 - (void)_playIfNeeded;
 - (void)_prepareForVitalityIfNeeded;
 - (void)_resetPlaybackFilters;
 - (void)_updateHintingAndVitality;
 - (void)_updatePlayerItemLoadingTarget;
+- (void)_updateScaleIfNeeded;
 - (void)activeBehaviorDidChange;
 - (void)addPlaybackFilter:(id)arg1;
 - (void)configurePlayerItem;
+- (void)didPerformChanges;
 - (id)init;
+- (double)lastAppliedScale;
+- (void)livePhotoPlaybackBehaviorDidBeginPlaying:(id)arg1;
 - (void)livePhotoPlaybackBehaviorDidFinish:(id)arg1;
 - (void)livePhotoSettleBehaviorDidFinish:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)playHintWhenReady;
 - (void)playVitality;
+- (void)playbackStyleIdentifierDidChange;
 - (void)playerItemDidChange;
 - (void)prepareForHintWhenReady;
 - (void)prepareForVitality;
 - (void)removePlaybackFilter:(id)arg1;
-- (void)showPlaybackHintWithProgress:(float)arg1;
 - (void)startPlaybackWithStyle:(long long)arg1;
 - (void)startPlaybackWithStyle:(long long)arg1 settleAutomatically:(BOOL)arg2;
 - (void)startPlaybackWithStyleWhenReady:(long long)arg1;
@@ -88,6 +99,7 @@
 - (double)videoWillPlayToEndInterval;
 - (void)vitalityBehaviorDidBeginPlaying:(id)arg1;
 - (void)vitalityBehaviorDidEndPlaying:(id)arg1;
+- (BOOL)vitalityBehaviorShouldEndPlayingAtPhoto:(id)arg1;
 
 @end
 

@@ -17,11 +17,13 @@
     NSDictionary *_rawBag;
 }
 
+@property (readonly, nonatomic) NSArray *anonymousMetadataPreference;
 @property (readonly, copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, nonatomic) BOOL collectAnonymousMetadata;
 @property (readonly, nonatomic) BOOL collectScores;
 @property (readonly, nonatomic) NSURL *crowdsourcingURL;
 @property (readonly, copy, nonatomic) NSString *customFlight;
+@property (readonly, nonatomic) NSArray *downloadResourcesList;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, copy, nonatomic) NSArray *enabledDomains;
 @property (readonly, nonatomic) BOOL feedbackEnabled;
@@ -48,6 +50,7 @@
 @property (readonly, nonatomic) double subscriptionTTL;
 @property (readonly, nonatomic) NSArray *supportedGeoLocationSources;
 @property (readonly, nonatomic) double timeoutIntervalForRequest;
+@property (readonly, nonatomic) NSDictionary *tuscanyConfiguration;
 @property (readonly, copy, nonatomic) NSString *userAgent; // @synthesize userAgent=_userAgent;
 @property (readonly, copy, nonatomic) NSString *version;
 @property (readonly, nonatomic) NSURL *warmURL;

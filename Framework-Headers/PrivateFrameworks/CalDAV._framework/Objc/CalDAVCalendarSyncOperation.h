@@ -15,6 +15,7 @@
     NSString *_nextCtag;
     NSString *_nextSyncToken;
     id<CalDAVCalendar> _calendar;
+    NSError *_reportJunkError;
     BOOL _getScheduleTags;
     BOOL _getScheduleChanges;
 }
@@ -27,6 +28,8 @@
 - (id)_distantFutureEndDate;
 - (void)_finishWithError:(id)arg1;
 - (void)_processAddedOrModified:(id)arg1 removed:(id)arg2;
+- (void)_reportJunk;
+- (void)_syncCalendar;
 - (void)_syncEventsForMerge;
 - (void)containerSyncTask:(id)arg1 completedWithNewCTag:(id)arg2 newSyncToken:(id)arg3 addedOrModified:(id)arg4 removed:(id)arg5 error:(id)arg6;
 - (void)containerSyncTask:(id)arg1 retrievedAddedOrModifiedActions:(id)arg2 removed:(id)arg3;

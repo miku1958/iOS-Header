@@ -10,7 +10,7 @@
 #import <MapKit/MKStackingViewControllerFixedHeightAware-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
-@class MKMapItem, MKPlaceAttributionCell, NSArray, NSAttributedString, NSString;
+@class MKMapItem, MKPlaceAttributionCell, NSArray, NSAttributedString, NSString, _MKMapItemAttribution;
 @protocol MKPlaceAttributionProvider;
 
 __attribute__((visibility("hidden")))
@@ -22,10 +22,10 @@ __attribute__((visibility("hidden")))
     id<MKPlaceAttributionProvider> _attributionProvider;
     NSAttributedString *_attributionString;
     MKPlaceAttributionCell *_attributionCell;
-    NSArray *_apps;
+    _MKMapItemAttribution *_attribution;
 }
 
-@property (copy, nonatomic) NSArray *apps; // @synthesize apps=_apps;
+@property (strong, nonatomic) _MKMapItemAttribution *attribution; // @synthesize attribution=_attribution;
 @property (strong) MKPlaceAttributionCell *attributionCell; // @synthesize attributionCell=_attributionCell;
 @property (weak, nonatomic) id<MKPlaceAttributionProvider> attributionProvider; // @synthesize attributionProvider=_attributionProvider;
 @property (copy, nonatomic) NSAttributedString *attributionString; // @synthesize attributionString=_attributionString;

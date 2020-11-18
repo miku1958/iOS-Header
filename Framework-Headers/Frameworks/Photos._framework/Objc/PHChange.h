@@ -45,6 +45,7 @@
 - (BOOL)contentOrThumbnailChangedForPHAssetOID:(id)arg1;
 - (id)deletedObjectIDs;
 - (id)description;
+- (BOOL)favoriteStateChangedForPHAssetOID:(id)arg1;
 - (BOOL)hiddenStateChangedForPHAssetOID:(id)arg1;
 - (id)init;
 - (id)initWithChangedIdentifiers:(id)arg1 unknownMergeEvent:(BOOL)arg2;

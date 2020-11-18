@@ -27,16 +27,25 @@
     NSMutableArray *_paidSubscriptionChannelIds;
     NSString *_referringSourceApplication;
     NSString *_referringUrl;
+    int _sessionStartMethod;
+    NSMutableArray *_subscribedFeedIds;
     int _topicSubscriptionCount;
     NSString *_userActivityType;
     NSMutableArray *_visibleViews;
+    int _widgetArticleRank;
+    int _widgetSection;
+    int _widgetSectionArticleRank;
     BOOL _startedFromNotification;
     struct {
         unsigned int lastAppSessionTimestamp:1;
         unsigned int channelSubscriptionCount:1;
         unsigned int notificationEnabledChannelsCount:1;
         unsigned int notitificationsEnabledChannelsCount:1;
+        unsigned int sessionStartMethod:1;
         unsigned int topicSubscriptionCount:1;
+        unsigned int widgetArticleRank:1;
+        unsigned int widgetSection:1;
+        unsigned int widgetSectionArticleRank:1;
         unsigned int startedFromNotification:1;
     } _has;
 }
@@ -58,9 +67,13 @@
 @property (nonatomic) BOOL hasNotitificationsEnabledChannelsCount;
 @property (readonly, nonatomic) BOOL hasReferringSourceApplication;
 @property (readonly, nonatomic) BOOL hasReferringUrl;
+@property (nonatomic) BOOL hasSessionStartMethod;
 @property (nonatomic) BOOL hasStartedFromNotification;
 @property (nonatomic) BOOL hasTopicSubscriptionCount;
 @property (readonly, nonatomic) BOOL hasUserActivityType;
+@property (nonatomic) BOOL hasWidgetArticleRank;
+@property (nonatomic) BOOL hasWidgetSection;
+@property (nonatomic) BOOL hasWidgetSectionArticleRank;
 @property (nonatomic) long long lastAppSessionTimestamp; // @synthesize lastAppSessionTimestamp=_lastAppSessionTimestamp;
 @property (strong, nonatomic) NSString *notificationArticleId; // @synthesize notificationArticleId=_notificationArticleId;
 @property (strong, nonatomic) NSMutableArray *notificationChannelIds; // @synthesize notificationChannelIds=_notificationChannelIds;
@@ -72,20 +85,29 @@
 @property (strong, nonatomic) NSMutableArray *paidSubscriptionChannelIds; // @synthesize paidSubscriptionChannelIds=_paidSubscriptionChannelIds;
 @property (strong, nonatomic) NSString *referringSourceApplication; // @synthesize referringSourceApplication=_referringSourceApplication;
 @property (strong, nonatomic) NSString *referringUrl; // @synthesize referringUrl=_referringUrl;
+@property (nonatomic) int sessionStartMethod; // @synthesize sessionStartMethod=_sessionStartMethod;
 @property (nonatomic) BOOL startedFromNotification; // @synthesize startedFromNotification=_startedFromNotification;
+@property (strong, nonatomic) NSMutableArray *subscribedFeedIds; // @synthesize subscribedFeedIds=_subscribedFeedIds;
 @property (nonatomic) int topicSubscriptionCount; // @synthesize topicSubscriptionCount=_topicSubscriptionCount;
 @property (strong, nonatomic) NSString *userActivityType; // @synthesize userActivityType=_userActivityType;
 @property (strong, nonatomic) NSMutableArray *visibleViews; // @synthesize visibleViews=_visibleViews;
+@property (nonatomic) int widgetArticleRank; // @synthesize widgetArticleRank=_widgetArticleRank;
+@property (nonatomic) int widgetSection; // @synthesize widgetSection=_widgetSection;
+@property (nonatomic) int widgetSectionArticleRank; // @synthesize widgetSectionArticleRank=_widgetSectionArticleRank;
 
 + (Class)notificationChannelIdsType;
 + (Class)paidSubscriptionChannelIdsType;
++ (Class)subscribedFeedIdsType;
 + (Class)visibleViewsType;
 - (void).cxx_destruct;
+- (int)StringAsWidgetSection:(id)arg1;
 - (void)addNotificationChannelIds:(id)arg1;
 - (void)addPaidSubscriptionChannelIds:(id)arg1;
+- (void)addSubscribedFeedIds:(id)arg1;
 - (void)addVisibleViews:(id)arg1;
 - (void)clearNotificationChannelIds;
 - (void)clearPaidSubscriptionChannelIds;
+- (void)clearSubscribedFeedIds;
 - (void)clearVisibleViews;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -98,8 +120,11 @@
 - (id)paidSubscriptionChannelIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)paidSubscriptionChannelIdsCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)subscribedFeedIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)subscribedFeedIdsCount;
 - (id)visibleViewsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)visibleViewsCount;
+- (id)widgetSectionAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

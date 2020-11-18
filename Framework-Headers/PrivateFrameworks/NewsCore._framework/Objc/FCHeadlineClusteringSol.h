@@ -18,6 +18,8 @@
     NSDictionary *_articlesByTag;
     NSDictionary *_tagsByArticle;
     NSDictionary *_articleScoresByTag;
+    NSDictionary *_weightedArticleScoresByTag;
+    NSDictionary *_tagScores;
     NSDictionary *_headlinesById;
     NSSet *_groupableTags;
     NSSet *_hardOrphans;
@@ -37,28 +39,21 @@
 @property (strong, nonatomic) FCHeadlineClusteringRules *rules; // @synthesize rules=_rules;
 @property (strong, nonatomic) NSSet *subscribedTagIDs; // @synthesize subscribedTagIDs=_subscribedTagIDs;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSDictionary *tagScores; // @synthesize tagScores=_tagScores;
 @property (strong, nonatomic) NSDictionary *tagsByArticle; // @synthesize tagsByArticle=_tagsByArticle;
+@property (strong, nonatomic) NSDictionary *weightedArticleScoresByTag; // @synthesize weightedArticleScoresByTag=_weightedArticleScoresByTag;
 
 - (void).cxx_destruct;
-- (id)assignArticles:(id)arg1 groups:(id)arg2 maxClusterSize:(long long)arg3;
-- (id)clusterHeadlinesByTopic:(id)arg1 subscribedTopicIDs:(id)arg2 rules:(id)arg3;
-- (id)computeBestGrouping:(id)arg1 subscribedTagIDs:(id)arg2 articleScoresByTag:(id)arg3 headlinesById:(id)arg4;
-- (id)computeBestMoveWithTag:(id)arg1 groupableArticles:(id)arg2 solos:(id)arg3 ungroupedArticles:(id)arg4 remainingTags:(id)arg5 groups:(id)arg6 topK:(double)arg7;
+- (id)clusterHeadlinesByTopic:(id)arg1 subscribedTopicIDs:(id)arg2 blacklistedTopicIDs:(id)arg3 rules:(id)arg4 tagScoreProvider:(CDUnknownBlockType)arg5;
+- (id)computeBestGrouping:(id)arg1 subscribedTagIDs:(id)arg2 articleScoresByTag:(id)arg3 tagScores:(id)arg4 headlinesById:(id)arg5;
 - (void)computeGrouping:(id)arg1 topK:(double)arg2;
 - (double)computeGroupingUtility:(id)arg1;
-- (id)computeNewOrphansWithUngroupedArticles:(id)arg1 remainingTags:(id)arg2;
-- (void)createMoveWithTag:(id)arg1 articles:(id)arg2 remainingTags:(id)arg3 ungroupedArticles:(id)arg4 moves:(id)arg5 groups:(id)arg6;
 - (void)filterOverflowedOrphans:(id)arg1;
-- (id)generateCombosWithSet:(id)arg1 tag:(id)arg2 chooseSize:(long long)arg3;
-- (void)mergeGroups:(id)arg1;
-- (double)normalizedAboutnessForArticle:(id)arg1 tag:(id)arg2;
 - (void)optimizeForLayout:(id)arg1;
 - (double)personalizationScoreForArticle:(id)arg1;
-- (BOOL)reassignedArticleInGroups:(id)arg1 withTag:(id)arg2;
-- (void)regroupOrphans:(id)arg1;
+- (double)rawScoreForArticle:(id)arg1 tag:(id)arg2;
 - (id)scoredArticleWithID:(id)arg1 tag:(id)arg2;
 - (id)sortedScoredArticles:(id)arg1 tag:(id)arg2 length:(long long)arg3 asc:(BOOL)arg4;
-- (double)weightedScoreForArticle:(id)arg1 tag:(id)arg2;
 
 @end
 

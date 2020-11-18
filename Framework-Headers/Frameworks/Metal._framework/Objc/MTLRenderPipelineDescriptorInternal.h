@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)depthAttachmentPixelFormat;
 - (id)description;
 - (id)fastBlendDescriptorAtIndex:(unsigned long long)arg1;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned int)fragmentDepthCompareClampMask;
 - (id)fragmentFunction;
 - (unsigned long long)hash;

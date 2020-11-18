@@ -25,6 +25,8 @@
 @property (nonatomic) long long userRating; // @synthesize userRating=_userRating;
 
 - (void).cxx_destruct;
+- (double)_unfilledStarsMinX;
+- (double)_unfilledStarsWidth;
 - (void)_updateUserRatingWithTouch:(id)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;

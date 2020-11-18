@@ -9,19 +9,21 @@
 #import <WebKit/WKObject-Protocol.h>
 
 @class NSString, WKBrowsingContextHandle, WKDOMDocument, WKDOMRange, WKWebProcessPlugInFrame, WKWebProcessPlugInPageGroup, _WKRemoteObjectRegistry;
-@protocol WKWebProcessPlugInFormDelegatePrivate, WKWebProcessPlugInLoadDelegate;
+@protocol WKWebProcessPlugInEditingDelegate, WKWebProcessPlugInFormDelegatePrivate, WKWebProcessPlugInLoadDelegate;
 
 @interface WKWebProcessPlugInBrowserContextController : NSObject <WKObject>
 {
     struct ObjectStorage<WebKit::WebPage> _page;
     struct WeakObjCPtr<id<WKWebProcessPlugInLoadDelegate>> _loadDelegate;
     struct WeakObjCPtr<id<WKWebProcessPlugInFormDelegatePrivate>> _formDelegate;
+    struct WeakObjCPtr<id<WKWebProcessPlugInEditingDelegate>> _editingDelegate;
     struct RetainPtr<_WKRemoteObjectRegistry> _remoteObjectRegistry;
 }
 
 @property (readonly) struct Object *_apiObject;
 @property (readonly, nonatomic) struct OpaqueWKBundlePage *_bundlePageRef;
 @property (nonatomic, setter=_setDefersLoading:) BOOL _defersLoading;
+@property (weak, setter=_setEditingDelegate:) id<WKWebProcessPlugInEditingDelegate> _editingDelegate;
 @property (weak, setter=_setFormDelegate:) id<WKWebProcessPlugInFormDelegatePrivate> _formDelegate;
 @property (readonly, nonatomic) _WKRemoteObjectRegistry *_remoteObjectRegistry;
 @property (readonly, nonatomic) BOOL _usesNonPersistentWebsiteDataStore;

@@ -24,6 +24,7 @@
 + (id)recentInputAtPath:(id)arg1;
 + (id)recentInputForIdentifier:(id)arg1;
 + (void)recentInputForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)removeInput:(id)arg1 forSystemIdentifier:(id)arg2;
 + (void)requestLexiconForRecentInputIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)requestRemovalOfLexiconForRecentInputIdentifier:(id)arg1;
 + (void)storeInput:(id)arg1 forLocalIdentifier:(id)arg2;
@@ -31,6 +32,7 @@
 + (void)storeInput:(id)arg1 forSystemIdentifier:(id)arg2 atPath:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)lexiconByRemovingEntry:(id)arg1;
 - (id)lexiconWithAdditionalEntry:(id)arg1 maximumSize:(long long)arg2;
 - (void)storeIfNecessary;
 

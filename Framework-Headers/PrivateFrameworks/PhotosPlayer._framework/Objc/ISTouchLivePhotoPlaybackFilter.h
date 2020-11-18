@@ -25,6 +25,7 @@
 - (void)_handleDisplayLink;
 - (long long)_nextPlaybackRequestID;
 - (void)didPerformChanges;
+- (void)reset;
 
 @end
 

@@ -6,13 +6,17 @@
 
 #import <Foundation/NSObject.h>
 
-@class MPStoreRedownloadProductItem, NSDictionary;
+@class MPStoreRedownloadProductItem, NSDictionary, NSURL;
 
 @interface MPStoreRedownloadProductResponse : NSObject
 {
     NSDictionary *_responseDictionary;
+    NSURL *_fallbackStreamingKeyServerURL;
+    NSURL *_fallbackStreamingKeyCertificateURL;
 }
 
+@property (copy, nonatomic) NSURL *fallbackStreamingKeyCertificateURL; // @synthesize fallbackStreamingKeyCertificateURL=_fallbackStreamingKeyCertificateURL;
+@property (copy, nonatomic) NSURL *fallbackStreamingKeyServerURL; // @synthesize fallbackStreamingKeyServerURL=_fallbackStreamingKeyServerURL;
 @property (readonly, nonatomic) MPStoreRedownloadProductItem *item;
 @property (readonly, copy, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
 

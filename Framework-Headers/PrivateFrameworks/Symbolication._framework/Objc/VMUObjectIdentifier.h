@@ -12,9 +12,10 @@
 {
     unsigned int _task;
     struct _CSTypeRef _symbolicator;
+    BOOL _targetUsesObjc2runtime;
     CDUnknownBlockType _memoryReader;
     struct libSwiftRemoteMirrorWrapper *_swiftMirror;
-    NSArray *_openDylibHandles;
+    void *_libSwiftRemoteMirrorHandle;
     NSArray *_swiftMirrorMachOSections;
     VMUClassInfoMap *_realizedIsaToClassInfo;
     VMUClassInfoMap *_unrealizedClassInfos;
@@ -26,14 +27,14 @@
     unsigned long long _cfClassCount;
     CDUnknownBlockType _isaTranslator;
     BOOL _fragileNonPointerIsas;
-    void *_remoteObjectBuffer;
-    unsigned long long _remoteObjectBufferSize;
     NSMapTable *_isaToObjectLabelHandlerMap;
     NSMapTable *_itemCountToLabelStringUniquingMap;
     struct VMULabelUniquingDataForStringType *_stringToLabelStringUniquingData;
     NSMutableSet *_stringUniquingSet;
     NSHashTable *_objcRuntimeMallocBlocksHash;
     VMUNonOverlappingRangeArray *_targetProcessVMranges;
+    unsigned long long _cfBooleanTrueAddress;
+    unsigned long long _cfBooleanFalseAddress;
 }
 
 @property (readonly, nonatomic) CDUnknownBlockType memoryReader; // @synthesize memoryReader=_memoryReader;
@@ -44,9 +45,11 @@
 - (unsigned long long)SwiftClassCount;
 - (id)_classInfoWithNonobjectType:(id)arg1 binaryPath:(id)arg2;
 - (void *)_dlopenLibSwiftRemoteMirrorFromDir:(id)arg1;
+- (void *)_dlopenLibSwiftRemoteMirrorNearLibSwiftCoreWithSymbolicator:(struct _CSTypeRef)arg1 avoidSystem:(BOOL)arg2;
 - (void *)_dlopenLibSwiftRemoteMirrorWithSymbolicator:(struct _CSTypeRef)arg1;
-- (id)_faultClass:(unsigned long long)arg1 ofType:(int)arg2;
+- (void)_faultClass:(unsigned long long)arg1 ofType:(int)arg2;
 - (int)_populateSwiftReflectionInfo:(struct libSwiftRemoteMirrorWrapper *)arg1 withTask:(unsigned int)arg2;
+- (id)_returnFaultedClass:(unsigned long long)arg1 ofType:(int)arg2;
 - (struct _CSTypeRef)_symbolicator;
 - (unsigned long long)addressOfSymbol:(const char *)arg1 inLibrary:(const char *)arg2;
 - (void)buildIsaToObjectLabelHandlerMap;
@@ -85,7 +88,14 @@
 - (id)labelForNSString:(id)arg1;
 - (id)labelForNSString:(id)arg1 mappedSize:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3 printDetail:(BOOL)arg4;
 - (id)labelForNSURL:(id)arg1;
+- (id)labelForNSXPCConnection:(id)arg1;
+- (id)labelForNSXPCInterface:(id)arg1;
+- (id)labelForOSDispatchMach:(id)arg1;
+- (id)labelForOSDispatchQueue:(id)arg1;
 - (id)labelForOSTransaction:(id)arg1;
+- (id)labelForOSXPCConnection:(id)arg1;
+- (id)labelForProtocol:(id)arg1;
+- (id)labelForTaggedPointer:(void *)arg1;
 - (id)labelFor__NSMallocBlock__:(id)arg1;
 - (id)objcRuntimeMallocBlocksHash;
 - (id)objectLabelHandlerForRemoteIsa:(unsigned long long)arg1;

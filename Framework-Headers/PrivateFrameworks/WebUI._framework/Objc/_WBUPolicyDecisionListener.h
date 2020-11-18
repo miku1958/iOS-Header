@@ -8,14 +8,14 @@
 
 #import <WebUI/WebPolicyDecisionListener-Protocol.h>
 
-@class NSDictionary, NSString, WebFrame;
+@class NSString, WBSFormMetadata, WebFrame;
 @protocol WebPolicyDecisionListener;
 
 @interface _WBUPolicyDecisionListener : NSObject <WebPolicyDecisionListener>
 {
     WebFrame *_frame;
     long long _navigationType;
-    NSDictionary *_formMetadata;
+    WBSFormMetadata *_formMetadata;
     id<WebPolicyDecisionListener> _originalListener;
 }
 

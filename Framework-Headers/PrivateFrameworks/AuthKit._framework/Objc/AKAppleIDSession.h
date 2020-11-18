@@ -29,6 +29,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 task:(id)arg2 getAppleIDHeadersForResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)_generateAppleIDHeadersForRequest:(id)arg1 error:(id *)arg2;
 - (void)_generateAppleIDHeadersForRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleURLResponse:(id)arg1 forRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)_nativeAnisetteController;

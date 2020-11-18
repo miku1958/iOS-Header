@@ -6,17 +6,17 @@
 
 #import <UIKit/UIControl.h>
 
-@class NCMaterialButton, NCMaterialView, UIButton;
+@class MTMaterialView, NCMaterialButton, UIButton;
 
 @interface NCMediaPlayPauseButton : UIControl
 {
     long long _type;
     NCMaterialButton *_button;
     UIButton *_invisibleButton;
-    NCMaterialView *_backgroundCircle;
+    MTMaterialView *_backgroundCircle;
 }
 
-@property (strong, nonatomic) NCMaterialView *backgroundCircle; // @synthesize backgroundCircle=_backgroundCircle;
+@property (strong, nonatomic) MTMaterialView *backgroundCircle; // @synthesize backgroundCircle=_backgroundCircle;
 @property (strong, nonatomic) NCMaterialButton *button; // @synthesize button=_button;
 @property (strong, nonatomic) UIButton *invisibleButton; // @synthesize invisibleButton=_invisibleButton;
 @property (nonatomic) long long type; // @synthesize type=_type;

@@ -109,7 +109,7 @@
 - (double)playbackDurationForNowPlayingViewController:(id)arg1;
 - (double)playbackElapsedTimeForNowPlayingViewController:(id)arg1;
 - (BOOL)playbackIsLiveStreamForNowPlayingViewController:(id)arg1;
-- (id)preferredFocusedItem;
+- (id)preferredFocusEnvironments;
 - (long long)repeatTypeForNowPlayingViewController:(id)arg1;
 - (void)setRightTitle:(id)arg1;
 - (long long)shuffleTypeForNowPlayingViewController:(id)arg1;

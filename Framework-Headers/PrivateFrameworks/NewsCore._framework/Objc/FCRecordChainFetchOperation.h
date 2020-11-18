@@ -6,11 +6,12 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCHeldRecords, NSArray, NSDictionary, NSMutableSet;
+@class FCHeldRecords, NSArray, NSDictionary, NSMutableArray, NSMutableSet;
 @protocol FCContentContext;
 
 @interface FCRecordChainFetchOperation : FCOperation
 {
+    BOOL _shouldReturnErrorWhenSomeRecordsMissing;
     id<FCContentContext> _context;
     NSArray *_topLevelRecordIDs;
     NSDictionary *_linkKeysByRecordType;
@@ -20,6 +21,7 @@
     FCHeldRecords *_cachedRecords;
     NSMutableSet *_actualTopLevelRecordIDs;
     NSDictionary *_resultHeldRecordsByType;
+    NSMutableArray *_mutableNetworkEvents;
 }
 
 @property (strong, nonatomic) NSMutableSet *actualTopLevelRecordIDs; // @synthesize actualTopLevelRecordIDs=_actualTopLevelRecordIDs;
@@ -28,18 +30,24 @@
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
 @property (copy, nonatomic) CDUnknownBlockType dynamicCachePolicyBlock; // @synthesize dynamicCachePolicyBlock=_dynamicCachePolicyBlock;
 @property (copy, nonatomic) NSDictionary *linkKeysByRecordType; // @synthesize linkKeysByRecordType=_linkKeysByRecordType;
+@property (strong, nonatomic) NSMutableArray *mutableNetworkEvents; // @synthesize mutableNetworkEvents=_mutableNetworkEvents;
+@property (readonly, copy, nonatomic) NSArray *networkEvents;
 @property (copy, nonatomic) CDUnknownBlockType recordChainCompletionHandler; // @synthesize recordChainCompletionHandler=_recordChainCompletionHandler;
 @property (strong, nonatomic) NSDictionary *resultHeldRecordsByType; // @synthesize resultHeldRecordsByType=_resultHeldRecordsByType;
+@property (nonatomic) BOOL shouldReturnErrorWhenSomeRecordsMissing; // @synthesize shouldReturnErrorWhenSomeRecordsMissing=_shouldReturnErrorWhenSomeRecordsMissing;
 @property (copy, nonatomic) NSArray *topLevelRecordIDs; // @synthesize topLevelRecordIDs=_topLevelRecordIDs;
 
 - (void).cxx_destruct;
 - (void)_collectActualTopLevelRecordIDsFromRecordIDs:(id)arg1;
 - (void)_collectCachedRecordsFromRecordIDs:(id)arg1;
+- (id)_errorForMissingRecordNames:(id)arg1;
 - (void)_filterOrphansFromCachedRecords;
 - (void)_finalizeResultFromCachedRecords;
 - (void)_issueCloudRequestIfNeeded;
+- (id)_partialErrorForMissingRecordName:(id)arg1;
 - (int)_pbRecordTypeForRecordID:(id)arg1;
 - (int)_pbRecordTypeForRecordType:(id)arg1;
+- (id)_recordIDsMissingFromCachedRecords;
 - (id)_recordSourceForRecordType:(id)arg1;
 - (id)_recordTypeForPBRecordType:(int)arg1;
 - (id)_recordTypeForRecordID:(id)arg1;

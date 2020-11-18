@@ -15,6 +15,7 @@
 
 @property (copy, nonatomic) NSData *simData; // @synthesize simData=_simData;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

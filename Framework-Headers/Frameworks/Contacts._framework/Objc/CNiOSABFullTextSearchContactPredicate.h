@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)_predicateWithAddressBook:(void *)arg1;
+- (id)_predicatesWithAddressBook:(void *)arg1;
 - (struct __CFArray *)cn_copyPeopleInAddressBook:(void *)arg1 withSortOrder:(unsigned int)arg2 matchInfos:(id *)arg3 options:(unsigned long long)arg4 error:(struct __CFError **)arg5;
 - (id)cn_fetchPeopleInAddressBook:(void *)arg1 withSortOrder:(unsigned int)arg2 options:(unsigned long long)arg3 progressiveResults:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (BOOL)cn_supportsNativeSorting;

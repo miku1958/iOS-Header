@@ -8,7 +8,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface LPYouTubeURLComponents : NSObject
 {
     NSString *_videoID;
@@ -18,6 +17,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (copy, nonatomic) NSString *videoID; // @synthesize videoID=_videoID;
 
++ (id)formatAsYouTubeTime:(double)arg1;
++ (BOOL)parseYouTubeTimeFormat:(id)arg1 outTime:(double *)arg2;
 - (void).cxx_destruct;
 
 @end

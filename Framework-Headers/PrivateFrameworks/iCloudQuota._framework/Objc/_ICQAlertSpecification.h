@@ -14,12 +14,16 @@
     BOOL _disableLockScreenAlert;
     NSString *_title;
     NSString *_message;
+    NSString *_altMessage;
     NSString *_lockScreenTitle;
     NSString *_lockScreenMessage;
+    NSString *_altLockScreenMessage;
     long long _defaultButtonIndex;
     NSMutableDictionary *_linkForButtonIndex;
 }
 
+@property (strong, nonatomic) NSString *altLockScreenMessage; // @synthesize altLockScreenMessage=_altLockScreenMessage;
+@property (strong, nonatomic) NSString *altMessage; // @synthesize altMessage=_altMessage;
 @property (nonatomic) long long defaultButtonIndex; // @synthesize defaultButtonIndex=_defaultButtonIndex;
 @property (nonatomic) BOOL disableLockScreenAlert; // @synthesize disableLockScreenAlert=_disableLockScreenAlert;
 @property (strong) NSMutableDictionary *linkForButtonIndex; // @synthesize linkForButtonIndex=_linkForButtonIndex;
@@ -29,7 +33,6 @@
 @property (strong, nonatomic) NSDictionary *serverDict;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
-+ (id)alertSpecificationSampleForLevel:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_setLinks:(id)arg1 defaultIndex:(unsigned long long)arg2;
 - (id)init;

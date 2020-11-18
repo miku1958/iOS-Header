@@ -124,6 +124,7 @@
 - (void)_handleTileAnimationCompletionWithIndex:(unsigned long long)arg1;
 - (id)_indexesOfVisibleTilesInRect:(struct CGRect)arg1 withOptions:(id)arg2;
 - (void)_invalidateAllCachedRects;
+- (void)_invalidateCachesOutsideRect:(struct CGRect)arg1;
 - (void)_invalidateLayoutMetrics;
 - (void)_invalidateLayoutPosition;
 - (void)_invalidateLayoutPreferredVisibleOrigin;

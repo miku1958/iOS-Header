@@ -38,7 +38,7 @@
 - (void)postUserSwitchContextHasBeenUsed;
 - (void)recoverEMCSWithCompletion:(CDUnknownBlockType)arg1;
 - (void)runSilentLoginUpgradeIfNeededWithCompletion:(CDUnknownBlockType)arg1;
-- (void)switchToLoginWindowDueToError:(id)arg1;
+- (void)switchToLoginWindowDueToError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)userSwitchContextHasBeenUsed;
 - (void)writeAccountConfigurationIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 

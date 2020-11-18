@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)depthAttachment;
 - (id)description;
+- (BOOL)fineGrainedBackgroundVisibilityEnabled;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)framebufferHeight;
 - (unsigned long long)framebufferWidth;
 - (unsigned long long)hash;
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)openGLModeEnabled;
 - (void)setDepthAttachment:(id)arg1;
 - (void)setDitherEnabled:(BOOL)arg1;
+- (void)setFineGrainedBackgroundVisibilityEnabled:(BOOL)arg1;
 - (void)setFramebufferHeight:(unsigned long long)arg1;
 - (void)setFramebufferWidth:(unsigned long long)arg1;
 - (void)setOpenGLModeEnabled:(BOOL)arg1;

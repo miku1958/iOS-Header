@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_currentTest;
     int _axis;
     CADisplayLink *_displayLink;
+    CDUnknownBlockType _extraResultsBlock;
 }
 
 @property (nonatomic) int axis; // @synthesize axis=_axis;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int delta; // @synthesize delta=_delta;
 @property (strong, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
 @property (readonly, nonatomic) float endOffset;
+@property (copy, nonatomic) CDUnknownBlockType extraResultsBlock; // @synthesize extraResultsBlock=_extraResultsBlock;
 @property (nonatomic) int iterations; // @synthesize iterations=_iterations;
 @property (nonatomic) int scrollLength; // @synthesize scrollLength=_scrollLength;
 @property (nonatomic) float startOffset; // @synthesize startOffset=_startOffset;

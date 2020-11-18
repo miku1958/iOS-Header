@@ -23,6 +23,7 @@
     CDUnknownBlockType _ak_forgotPasswordAction;
     NSString *_ak_username;
     NSString *_ak_password;
+    NSString *_ak_title;
     NSString *_ak_reason;
     NSString *_ak_authenticateButtonTitle;
     CDUnknownBlockType _ak_regenerateCodeAction;
@@ -35,6 +36,7 @@
 @property (nonatomic) long long alertStyle;
 @property (copy, nonatomic) CDUnknownBlockType authenticateAction; // @synthesize authenticateAction=_ak_authenticateAction;
 @property (copy, nonatomic) NSString *authenticateButtonTitle; // @synthesize authenticateButtonTitle=_ak_authenticateButtonTitle;
+@property (copy, nonatomic) NSString *authenticateTitle; // @synthesize authenticateTitle=_ak_title;
 @property (copy, nonatomic) CDUnknownBlockType codeEnteredAction; // @synthesize codeEnteredAction=_ak_codeEnteredAction;
 @property (copy, nonatomic) CDUnknownBlockType createIDAction; // @synthesize createIDAction=_ak_createIDAction;
 @property (readonly, copy) NSString *debugDescription;

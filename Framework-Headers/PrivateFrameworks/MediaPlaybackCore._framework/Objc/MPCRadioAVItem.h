@@ -6,13 +6,15 @@
 
 #import <MediaPlayer/MPAVItem.h>
 
-@class MPModelResponse, MPModelSong, NSArray, NSString, RadioArtworkCollection, RadioStation, RadioTrack;
+#import <MediaPlaybackCore/MPRTCReportingItemSessionCreating-Protocol.h>
 
-@interface MPCRadioAVItem : MPAVItem
+@class MPModelGenericObject, MPModelResponse, NSArray, NSString, RadioArtworkCollection, RadioStation, RadioTrack;
+
+@interface MPCRadioAVItem : MPAVItem <MPRTCReportingItemSessionCreating>
 {
     NSArray *_buyOffers;
     MPModelResponse *_modelSongPersonalizationResponse;
-    MPModelSong *_modelSong;
+    MPModelGenericObject *_modelGenericObject;
     RadioTrack *_radioTrack;
     BOOL _isInWishList;
     BOOL _heartbeatInvalid;
@@ -21,27 +23,34 @@
     long long _stationID;
     NSString *_stationName;
     NSString *_stationStringID;
+    id _rtcReportingParentHierarchyToken;
 }
 
 @property (readonly, copy, nonatomic) RadioArtworkCollection *_artworkCollection;
 @property (readonly, nonatomic) double _expectedDuration;
 @property (readonly, nonatomic) BOOL _hasLyrics;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHeartbeatInvalid) BOOL heartbeatInvalid; // @synthesize heartbeatInvalid=_heartbeatInvalid;
 @property (nonatomic) BOOL isInWishList; // @synthesize isInWishList=_isInWishList;
+@property (readonly, nonatomic) long long rtcReportingAssetType;
+@property (strong, nonatomic) id rtcReportingParentHierarchyToken; // @synthesize rtcReportingParentHierarchyToken=_rtcReportingParentHierarchyToken;
+@property (readonly, copy, nonatomic) NSString *rtcReportingServiceIdentifier;
 @property (strong, nonatomic) RadioStation *station; // @synthesize station=_station;
 @property (readonly, nonatomic) NSString *stationHash; // @synthesize stationHash=_stationHash;
 @property (readonly, nonatomic) long long stationID; // @synthesize stationID=_stationID;
 @property (readonly, nonatomic) NSString *stationName; // @synthesize stationName=_stationName;
 @property (readonly, nonatomic) NSString *stationStringID; // @synthesize stationStringID=_stationStringID;
+@property (readonly) Class superclass;
 
-+ (id)_supportedModelSongProperties;
 - (void).cxx_destruct;
 - (void)_applyLoudnessInfoForVolumeNormalization;
 - (void)_beginUsingPlaybackLease;
 - (void)_contentTasteControllerDidChangeNotification:(id)arg1;
 - (void)_handleUpdatedLikedState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_internalIsInWishlistDidChangeNotification:(id)arg1;
-- (void)_invalidateModelSong;
+- (void)_invalidateModelGenericObject;
 - (BOOL)_isSubscriptionEligible;
 - (void)_loadMediaItemWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_modelSongPersonalizationResponseDidInvalidateNotification:(id)arg1;
@@ -60,8 +69,6 @@
 - (id)chapterTimeMarkers;
 - (id)copyrightText;
 - (void)dealloc;
-- (id)description;
-- (unsigned long long)hash;
 - (id)initWithRadioTrack:(id)arg1;
 - (BOOL)isCloudItem;
 - (BOOL)isEqual:(id)arg1;
@@ -74,7 +81,7 @@
 - (id)localizedPositionInPlaylistString;
 - (id)mainTitle;
 - (id)mediaItem;
-- (id)modelSong;
+- (id)modelGenericObject;
 - (unsigned long long)mpcReporting_itemType;
 - (BOOL)mpcReporting_shouldReportPlayEventsToStore;
 - (id)mpcReporting_trackInfo;

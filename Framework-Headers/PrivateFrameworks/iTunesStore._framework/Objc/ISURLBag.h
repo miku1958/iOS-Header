@@ -53,7 +53,6 @@
 - (void)_writeNetworkConstraintsCacheFile;
 - (void)_writeURLResolutionCacheFile;
 - (id)copyExtraHeadersForURL:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithRawDictionary:(id)arg1;

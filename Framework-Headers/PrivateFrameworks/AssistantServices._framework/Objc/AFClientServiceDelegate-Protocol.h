@@ -17,6 +17,8 @@
 - (oneway void)audioSessionDidEndInterruption:(BOOL)arg1;
 - (oneway void)audioSessionIDChanged:(unsigned int)arg1;
 - (oneway void)cacheImage:(INImage *)arg1;
+- (oneway void)extensionRequestFinishedForApplication:(NSString *)arg1 error:(NSError *)arg2;
+- (oneway void)extensionRequestWillStartForApplication:(NSString *)arg1;
 - (oneway void)getBulletinContext:(void (^)(NSArray *))arg1;
 - (oneway void)invalidateCurrentUserActivity;
 - (oneway void)musicWasDetected;
@@ -44,5 +46,6 @@
 - (oneway void)speechRecordingStartpointDetected;
 - (oneway void)speechRecordingWillBeginRecognitionUpdateForTask:(NSString *)arg1;
 - (oneway void)speechRecordingWillBeginWithLevelsSharedMem:(AFXPCWrapper *)arg1;
+- (oneway void)startUIRequestWithText:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 @end
 

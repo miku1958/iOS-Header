@@ -4,27 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchFoundation/SFEndNetworkSearchFeedback.h>
+#import <CoreParsec/_CPCPEndNetworkSearchFeedback.h>
 
-@class NSString;
-
-@interface PAREndNetworkSearchFeedback : SFEndNetworkSearchFeedback
+@interface PAREndNetworkSearchFeedback : _CPCPEndNetworkSearchFeedback
 {
-    NSString *_parsecStatus;
-    NSString *_fbq;
-    double _duration;
-    NSString *_partialClientIp;
 }
 
-@property (nonatomic) double duration; // @synthesize duration=_duration;
-@property (copy, nonatomic) NSString *fbq; // @synthesize fbq=_fbq;
-@property (copy, nonatomic) NSString *parsecStatus; // @synthesize parsecStatus=_parsecStatus;
-@property (copy, nonatomic) NSString *partialClientIp; // @synthesize partialClientIp=_partialClientIp;
-
-+ (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithStartSearch:(id)arg1 responseSize:(long long)arg2 statusCode:(long long)arg3 parsecStatus:(id)arg4 parsecDuration:(double)arg5 fbq:(id)arg6 partialClientIp:(id)arg7 networkTimingData:(id)arg8;
 
 @end

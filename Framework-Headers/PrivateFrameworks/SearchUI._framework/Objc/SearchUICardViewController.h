@@ -8,7 +8,7 @@
 
 #import <SearchUI/UIViewControllerPreviewingDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, SFSearchResult, UIColor;
+@class NSArray, NSIndexPath, NSMutableDictionary, NSString, SFSearchResult, UIColor;
 @protocol SearchUIFeedbackDelegate, UIViewControllerPreviewing;
 
 @interface SearchUICardViewController : SearchUITableViewController <UIViewControllerPreviewingDelegate>
@@ -19,9 +19,11 @@
     id<UIViewControllerPreviewing> _previewingContext;
     NSIndexPath *_forceTouchIndexPath;
     id<SearchUIFeedbackDelegate> _feedbackDelegate;
+    NSMutableDictionary *_cellCache;
 }
 
 @property (strong) NSArray *cardSectionViews; // @synthesize cardSectionViews=_cardSectionViews;
+@property (strong) NSMutableDictionary *cellCache; // @synthesize cellCache=_cellCache;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
@@ -37,7 +39,6 @@
 + (id)cardViewControllerForResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 + (double)separatorHeight;
 - (void).cxx_destruct;
-- (void)createCardSectionViewsForSections:(id)arg1;
 - (BOOL)didHandlePunchout:(id)arg1 fromSection:(id)arg2;
 - (id)initWithResult:(id)arg1 style:(unsigned long long)arg2;
 - (id)initWithResult:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;

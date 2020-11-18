@@ -8,7 +8,7 @@
 
 #import <LinkPresentation/LPiTunesMediaUnresolvedMetadata-Protocol.h>
 
-@class LPiTunesMediaAsset, NSArray, NSString;
+@class LPiTunesMediaAsset, NSArray, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface LPiTunesMediaSoftwareUnresolvedMetadata : NSObject <LPiTunesMediaUnresolvedMetadata>
@@ -18,15 +18,21 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     NSString *_genre;
     NSString *_platform;
+    NSNumber *_isHiddenFromSpringboard;
+    NSNumber *_hasMessagesExtension;
     LPiTunesMediaAsset *_icon;
+    LPiTunesMediaAsset *_messagesAppIcon;
     NSArray *_screenshots;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *genre; // @synthesize genre=_genre;
+@property (copy, nonatomic) NSNumber *hasMessagesExtension; // @synthesize hasMessagesExtension=_hasMessagesExtension;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) LPiTunesMediaAsset *icon; // @synthesize icon=_icon;
+@property (copy, nonatomic) NSNumber *isHiddenFromSpringboard; // @synthesize isHiddenFromSpringboard=_isHiddenFromSpringboard;
+@property (strong, nonatomic) LPiTunesMediaAsset *messagesAppIcon; // @synthesize messagesAppIcon=_messagesAppIcon;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *platform; // @synthesize platform=_platform;
 @property (strong, nonatomic) NSArray *screenshots; // @synthesize screenshots=_screenshots;

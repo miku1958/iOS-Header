@@ -133,6 +133,7 @@
 @property (readonly, nonatomic) struct CGSize remoteScreenAspectRatio; // @synthesize remoteScreenAspectRatio=_remoteScreenAspectRatio;
 @property (readonly, nonatomic) long long remoteScreenOrientation;
 @property (readonly, nonatomic) struct CGRect remoteVideoContentRect;
+@property (nonatomic) BOOL requiresRemoteVideo;
 @property (nonatomic) BOOL ringtoneSuppressedRemotely; // @synthesize ringtoneSuppressedRemotely=_ringtoneSuppressedRemotely;
 @property (readonly, nonatomic) int service;
 @property (readonly, nonatomic) BOOL shouldDisplayLocationIfAvailable;

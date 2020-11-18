@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (id)description;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)fragmentArguments;
 - (id)initWithVertexData:(id)arg1 fragmentData:(id)arg2 serializedVertexDescriptor:(id)arg3 device:(id)arg4 options:(unsigned long long)arg5 flags:(CDStruct_fc7baa39)arg6;
 - (id)performanceStatistics;

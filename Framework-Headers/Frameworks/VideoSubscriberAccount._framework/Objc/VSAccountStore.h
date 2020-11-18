@@ -6,23 +6,28 @@
 
 #import <objc/NSObject.h>
 
+#import <VideoSubscriberAccount/MCProfileConnectionObserver-Protocol.h>
 #import <VideoSubscriberAccount/VSRemoteNotifierDelegate-Protocol.h>
 
-@class NSArray, NSString, VSKeychainEditingContext, VSRemoteNotifier;
+@class MCProfileConnection, NSArray, NSString, VSKeychainEditingContext, VSRemoteNotifier;
 
-@interface VSAccountStore : NSObject <VSRemoteNotifierDelegate>
+@interface VSAccountStore : NSObject <MCProfileConnectionObserver, VSRemoteNotifierDelegate>
 {
+    BOOL _accountModificationAllowed;
+    MCProfileConnection *_profileConnection;
     VSKeychainEditingContext *_keychainEditingContext;
     id _changeObserver;
     VSRemoteNotifier *_remoteNotifier;
 }
 
+@property (nonatomic, getter=isAcountModificationAllowed) BOOL accountModificationAllowed; // @synthesize accountModificationAllowed=_accountModificationAllowed;
 @property (readonly, copy, nonatomic) NSArray *accounts;
 @property (weak, nonatomic) id changeObserver; // @synthesize changeObserver=_changeObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VSKeychainEditingContext *keychainEditingContext; // @synthesize keychainEditingContext=_keychainEditingContext;
+@property (strong, nonatomic) MCProfileConnection *profileConnection; // @synthesize profileConnection=_profileConnection;
 @property (strong, nonatomic) VSRemoteNotifier *remoteNotifier; // @synthesize remoteNotifier=_remoteNotifier;
 @property (readonly) Class superclass;
 
@@ -32,9 +37,11 @@
 - (id)_keychainItemsWithLimit:(unsigned long long)arg1;
 - (void)_sendLocalNotification;
 - (void)_sendRemoteNotification;
+- (void)_updateAccountModificationAllowed;
 - (void)dealloc;
 - (id)firstAccount;
 - (id)init;
+- (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)remoteNotifier:(id)arg1 didReceiveRemoteNotificationWithUserInfo:(id)arg2;
 - (void)removeAccount:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)saveAccount:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

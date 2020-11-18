@@ -6,15 +6,19 @@
 
 #import <StoreKitUI/SKUIPlayButton.h>
 
+@class LPMusicPlayButtonStyle;
+
 __attribute__((visibility("hidden")))
 @interface LPPlayButton : SKUIPlayButton
 {
+    LPMusicPlayButtonStyle *_style;
 }
 
+- (void).cxx_destruct;
 - (float)buttonCornerRadius;
 - (struct CGSize)buttonSize;
 - (id)cancelImage;
-- (id)init;
+- (id)initWithStyle:(id)arg1;
 - (void)layoutSubviews;
 - (id)mainColor;
 - (id)outerBorderColor;

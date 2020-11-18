@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebGeolocationPositionInternal : NSObject
 {
-    struct RefPtr<WebCore::GeolocationPosition> _position;
+    RefPtr_f6a7fd22 _position;
 }
 
 - (id).cxx_construct;

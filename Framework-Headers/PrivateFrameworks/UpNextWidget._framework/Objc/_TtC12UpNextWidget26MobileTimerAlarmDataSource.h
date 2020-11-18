@@ -15,6 +15,7 @@
     MISSING_TYPE *alarmTable;
     MISSING_TYPE *manager;
     MISSING_TYPE *callbackQueue;
+    MISSING_TYPE *workQueue;
 }
 
 @end

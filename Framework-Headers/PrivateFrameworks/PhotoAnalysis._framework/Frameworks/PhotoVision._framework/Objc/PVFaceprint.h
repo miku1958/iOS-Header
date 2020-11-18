@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSData *faceprintData; // @synthesize faceprintData=_faceprintData;
 @property (nonatomic) unsigned int faceprintVersion; // @synthesize faceprintVersion=_faceprintVersion;
 
++ (id)faceprintWithFaceprintData:(id)arg1;
++ (id)faceprintWithFaceprintData:(id)arg1 fromAlgorithmVersion:(unsigned int)arg2;
 - (void).cxx_destruct;
 - (void)_setPropertiesFrom:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

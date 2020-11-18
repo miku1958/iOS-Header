@@ -28,7 +28,7 @@
 - (id)_updateTimeZone;
 - (id)commitCreateTrigger;
 - (id)commitEditTrigger;
-- (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
+- (id)initWithExistingObject:(id)arg1 inHome:(id)arg2 context:(id)arg3;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1;
 
 @end

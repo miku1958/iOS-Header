@@ -16,10 +16,12 @@
     NSString *_requestingBundleIdentifier;
     NSString *_requestingBundleVersion;
     NSNumber *_timeoutInterval;
+    NSString *_platform;
 }
 
 @property (nonatomic) BOOL allowLocalEquivalencies; // @synthesize allowLocalEquivalencies=_allowLocalEquivalencies;
 @property (copy, nonatomic) NSArray *itemIdentifiers; // @synthesize itemIdentifiers=_itemIdentifiers;
+@property (copy, nonatomic) NSString *platform; // @synthesize platform=_platform;
 @property (nonatomic) unsigned long long reason; // @synthesize reason=_reason;
 @property (copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
 @property (copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;

@@ -8,7 +8,7 @@
 
 #import <NotesShared/ICNoteContainer-Protocol.h>
 
-@class ICAccountUtilities, ICNote, ICNotesCrossProcessChangeCoordinator, ICSelectorDelayer, NSError, NSManagedObjectContext, NSMutableSet, NSNumber, NSPersistentStoreCoordinator, NSString, NSTimer;
+@class ICAccountUtilities, ICNote, ICNotesCrossProcessChangeCoordinator, ICSelectorDelayer, NSError, NSManagedObjectContext, NSNumber, NSPersistentStoreCoordinator, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
 @interface ICNoteContext : NSObject <ICNoteContainer>
@@ -23,7 +23,6 @@
     NSError *_databaseOpenError;
     ICSelectorDelayer *_resumeIndexingDelayer;
     NSTimer *_updateAttachmentLocationsTimer;
-    NSMutableSet *_attachmentIdentifersAlreadyCheckedForUpdate;
     unsigned long long _contextOptions;
     NSPersistentStoreCoordinator *_persistentStoreCoordinator;
     NSManagedObjectContext *_nextIdContext;
@@ -35,7 +34,6 @@
 }
 
 @property (strong, nonatomic) ICAccountUtilities *accountUtilities; // @synthesize accountUtilities=_accountUtilities;
-@property (strong, nonatomic) NSMutableSet *attachmentIdentifersAlreadyCheckedForUpdate; // @synthesize attachmentIdentifersAlreadyCheckedForUpdate=_attachmentIdentifersAlreadyCheckedForUpdate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *backgroundTaskQueue; // @synthesize backgroundTaskQueue=_backgroundTaskQueue;
 @property (nonatomic) unsigned long long changeTrackingDisableLevel; // @synthesize changeTrackingDisableLevel=_changeTrackingDisableLevel;
 @property (nonatomic) unsigned long long contextOptions; // @synthesize contextOptions=_contextOptions;

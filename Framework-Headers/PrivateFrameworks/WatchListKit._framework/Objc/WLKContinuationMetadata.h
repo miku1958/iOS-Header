@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, WLKBasicContentMetadata, WLKPlayEvent;
+@class NSString, WLKBasicContentMetadata, WLKPlayEvent, WLKPlayable;
 
 @interface WLKContinuationMetadata : NSObject
 {
     BOOL _isRental;
     BOOL _isPurchase;
     WLKPlayEvent *_playEvent;
+    WLKPlayable *_playable;
     WLKBasicContentMetadata *_movieOrShowContent;
     WLKBasicContentMetadata *_currentEpisode;
     WLKBasicContentMetadata *_showParent;
@@ -29,6 +30,7 @@
 @property (readonly, copy, nonatomic) NSString *localizedContext; // @synthesize localizedContext=_localizedContext;
 @property (readonly, nonatomic) WLKBasicContentMetadata *movieOrShowContent; // @synthesize movieOrShowContent=_movieOrShowContent;
 @property (readonly, nonatomic) WLKPlayEvent *playEvent; // @synthesize playEvent=_playEvent;
+@property (readonly, nonatomic) WLKPlayable *playable; // @synthesize playable=_playable;
 @property (readonly, nonatomic) WLKBasicContentMetadata *showParent; // @synthesize showParent=_showParent;
 
 - (void).cxx_destruct;

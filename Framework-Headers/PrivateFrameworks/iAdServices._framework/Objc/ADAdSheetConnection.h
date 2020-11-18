@@ -26,6 +26,7 @@
 - (void)considerConnectingToAdSheet;
 - (void)dealloc;
 - (id)init;
+- (void)invalidate;
 - (void)performWhenConnected:(CDUnknownBlockType)arg1;
 - (id)rpcProxy;
 - (id)rpcProxyWithErrorHandler:(CDUnknownBlockType)arg1;

@@ -8,6 +8,31 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
+#pragma mark Named Structures
+
+struct ml_model_parameters_s {
+    short _field1[160000];
+    short _field2[80000];
+    short _field3[20000];
+    short _field4[500];
+    short _field5[10];
+    short _field6[400];
+    short _field7[200];
+    short _field8[100];
+    short _field9[5];
+    short _field10[2];
+    unsigned int _field11[400];
+    int _field12[400];
+    char _field13;
+};
+
+struct ml_model_resources_s {
+    char _field1[128];
+    struct ml_model_parameters_s _field2;
+    unsigned long long _field3;
+    char _field4[0];
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {

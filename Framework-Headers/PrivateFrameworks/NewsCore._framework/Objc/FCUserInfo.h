@@ -6,19 +6,17 @@
 
 #import <NewsCore/FCPrivateZoneController.h>
 
-#import <NewsCore/FCAppConfigurationObserving-Protocol.h>
 #import <NewsCore/FCTagSettingsDelegate-Protocol.h>
 
-@class FCTagSettings, NSDate, NSNumber, NSString, NTPBWidgetConfig;
+@class FCTagSettings, NSDate, NSNumber, NSString;
 
-@interface FCUserInfo : FCPrivateZoneController <FCTagSettingsDelegate, FCAppConfigurationObserving>
+@interface FCUserInfo : FCPrivateZoneController <FCTagSettingsDelegate>
 {
     BOOL _useParsecResults;
     BOOL _iCloudAccountChanged;
     FCTagSettings *_tagSettings;
     NSNumber *_totalMeteredCount;
     NSDate *_dateLastResetMeteredCount;
-    NTPBWidgetConfig *_widgetConfiguration;
 }
 
 @property (copy, nonatomic) NSDate *dateLastOpened;
@@ -28,17 +26,16 @@
 @property (copy, nonatomic) NSString *feldsparID;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL iCloudAccountChanged; // @synthesize iCloudAccountChanged=_iCloudAccountChanged;
+@property (readonly, nonatomic) BOOL mightNeedToUpdateOnboardingVersion;
 @property (copy, nonatomic) NSNumber *monthlyMeteredCount;
 @property (readonly, copy, nonatomic) NSString *notificationsUserID;
 @property (copy, nonatomic) NSNumber *onboardingVersionNumber;
-@property (readonly, nonatomic) long long personalizationTreatmentID;
 @property (readonly, nonatomic) BOOL shouldShowDefaultForYou;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) FCTagSettings *tagSettings; // @synthesize tagSettings=_tagSettings;
 @property (copy, nonatomic) NSNumber *totalMeteredCount; // @synthesize totalMeteredCount=_totalMeteredCount;
 @property (readonly, nonatomic) BOOL useParsecResults; // @synthesize useParsecResults=_useParsecResults;
 @property (copy, nonatomic) NSDate *userStartDate;
-@property (strong, nonatomic) NTPBWidgetConfig *widgetConfiguration; // @synthesize widgetConfiguration=_widgetConfiguration;
 
 + (long long)commandQueueUrgency;
 + (id)commandStoreFileName;
@@ -57,7 +54,6 @@
 - (void)accessTokenDidChangeForTagID:(id)arg1;
 - (void)addModifyTagSettingsCommandToCommandQueue:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (void)appConfigurationDidChange:(id)arg1;
 - (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
 - (void)handleSyncWithUserInfoRecord:(id)arg1;
 - (void)incrementMonthlyMeteredCountByOneWithArticleID:(id)arg1;

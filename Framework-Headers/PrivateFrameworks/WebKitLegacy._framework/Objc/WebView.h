@@ -161,7 +161,6 @@
 - (BOOL)_canShowMIMEType:(id)arg1;
 - (BOOL)_canZoomIn:(BOOL)arg1;
 - (BOOL)_canZoomOut:(BOOL)arg1;
-- (void)_clearBackForwardCache;
 - (void)_clearCredentials;
 - (void)_clearDelegates;
 - (void)_clearMainFrameName;
@@ -170,6 +169,7 @@
 - (void)_closeWindow;
 - (void)_closeWithFastTeardown;
 - (void)_commonInitializationWithFrameName:(id)arg1 groupName:(id)arg2;
+- (id)_contentsOfUserInterfaceItem:(id)arg1;
 - (struct CGSize)_contentsSizeRespectingOverflow;
 - (BOOL)_continuousCheckingAllowed;
 - (struct CGPoint)_convertPointFromRootView:(struct CGPoint)arg1;
@@ -180,6 +180,7 @@
 - (id)_deviceOrientationProvider;
 - (void)_didCommitLoadForFrame:(id)arg1;
 - (void)_didFinishScrollingOrZooming;
+- (void)_didScrollDocumentInFrameView:(id)arg1;
 - (void)_dispatchPendingLoadRequests;
 - (void)_dispatchTileDidDraw:(id)arg1;
 - (void)_dispatchUnloadEvent;
@@ -406,6 +407,7 @@
 - (BOOL)goForward;
 - (void)goForward:(id)arg1;
 - (BOOL)goToBackForwardItem:(id)arg1;
+- (void)hideFormValidationMessage;
 - (id)historyDelegate;
 - (void)ignoreSpelling:(id)arg1;
 - (void)indent:(id)arg1;
@@ -498,6 +500,8 @@
 - (void)pasteAsRichText:(id)arg1;
 - (void)pasteFont:(id)arg1;
 - (void)performFindPanelAction:(id)arg1;
+- (void)prepareForMouseDown;
+- (void)prepareForMouseUp;
 - (id)previousValidKeyView;
 - (id)quickLookContentForURL:(id)arg1;
 - (id)rectsForTextMatches;
@@ -560,6 +564,7 @@
 - (BOOL)shouldClose;
 - (BOOL)shouldRequestCandidates;
 - (void)showCandidates:(id)arg1 forString:(id)arg2 inRect:(struct CGRect)arg3 forSelectedRange:(struct _NSRange)arg4 view:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)showFormValidationMessage:(id)arg1 withAnchorRect:(struct CGRect)arg2;
 - (void)showGuessPanel:(id)arg1;
 - (void)startSpeaking:(id)arg1;
 - (void)stopLoading:(id)arg1;
@@ -587,13 +592,12 @@
 - (void)unscheduleFromRunLoop:(id)arg1 forMode:(id)arg2;
 - (void)unscript:(id)arg1;
 - (void)updateLayoutIgnorePendingStyleSheets;
-- (void)updateWebViewAdditions;
+- (void)updateTouchBar;
 - (void)uppercaseWord:(id)arg1;
 - (id)userAgentForURL:(id)arg1;
 - (BOOL)usesPageCache;
 - (int)validationMessageTimerMagnification;
 - (void)viewDidMoveToWindow;
-- (void)webViewAdditionsWillDestroyView;
 - (void)yank:(id)arg1;
 - (void)yankAndSelect:(id)arg1;
 - (void)zoomPageIn:(id)arg1;

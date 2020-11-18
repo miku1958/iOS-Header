@@ -11,9 +11,13 @@
 
 @protocol MTLCommandBuffer <NSObject>
 
+@property (readonly) double GPUEndTime;
+@property (readonly) double GPUStartTime;
 @property (readonly) id<MTLCommandQueue> commandQueue;
 @property (readonly) id<MTLDevice> device;
 @property (readonly) NSError *error;
+@property (readonly) double kernelEndTime;
+@property (readonly) double kernelStartTime;
 @property (copy) NSString *label;
 @property (readonly) BOOL retainedReferences;
 @property (readonly) unsigned long long status;
@@ -26,6 +30,7 @@
 - (void)enqueue;
 - (id<MTLParallelRenderCommandEncoder>)parallelRenderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1;
 - (void)presentDrawable:(id<MTLDrawable>)arg1;
+- (void)presentDrawable:(id<MTLDrawable>)arg1 afterMinimumDuration:(double)arg2;
 - (void)presentDrawable:(id<MTLDrawable>)arg1 atTime:(double)arg2;
 - (id<MTLRenderCommandEncoder>)renderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1;
 - (void)waitUntilCompleted;

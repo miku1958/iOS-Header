@@ -16,8 +16,11 @@
 @property (readonly, nonatomic) unsigned long long lifecycleState;
 
 + (id)startContactlessInterfaceSessionWithCompletion:(CDUnknownBlockType)arg1;
++ (id)startContactlessInterfaceSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 + (id)startInAppSessionWithCompletion:(CDUnknownBlockType)arg1;
++ (id)startInAppSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 + (id)startReaderSessionWithCompletion:(CDUnknownBlockType)arg1;
++ (id)startReaderSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 - (void).cxx_destruct;
 - (void)invalidateSession;
 - (void)invalidateSessionWithCompletion:(CDUnknownBlockType)arg1;

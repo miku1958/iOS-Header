@@ -15,7 +15,7 @@
 {
     BOOL _renameOnCollision;
     unsigned int _taskId;
-    long long _changeType;
+    unsigned long long _changeType;
     NSString *_folderId;
     NSString *_parentFolderId;
     NSString *_displayName;
@@ -23,7 +23,7 @@
     id<DAFolderChangeConsumer> _consumer;
 }
 
-@property (nonatomic) long long changeType; // @synthesize changeType=_changeType;
+@property (nonatomic) unsigned long long changeType; // @synthesize changeType=_changeType;
 @property (weak, nonatomic) id<DAFolderChangeConsumer> consumer; // @synthesize consumer=_consumer;
 @property (nonatomic) long long dataclass; // @synthesize dataclass=_dataclass;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
@@ -36,7 +36,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initFolderChangeWithChangeType:(long long)arg1 folderId:(id)arg2 parentFolderId:(id)arg3 displayName:(id)arg4 dataclass:(long long)arg5 consumer:(id)arg6;
+- (id)initFolderChangeWithChangeType:(unsigned long long)arg1 folderId:(id)arg2 parentFolderId:(id)arg3 displayName:(id)arg4 dataclass:(long long)arg5 consumer:(id)arg6;
 - (id)initWithCoder:(id)arg1;
 
 @end

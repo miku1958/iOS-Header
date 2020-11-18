@@ -9,7 +9,7 @@
 #import <SafariServices/RequestDesktopSiteUIProcessListener-Protocol.h>
 #import <SafariServices/SFContentBlockerManagerObserver-Protocol.h>
 
-@class NSMutableSet, NSString, WBUInjectedJavaScriptController, WKWebView, _WKRemoteObjectInterface;
+@class NSMutableSet, NSString, WKWebView, _SFInjectedJavaScriptController, _WKRemoteObjectInterface;
 @protocol RequestDesktopSiteWebProcessPlugInListener;
 
 @interface _SFReloadOptionsController : NSObject <RequestDesktopSiteUIProcessListener, SFContentBlockerManagerObserver>
@@ -19,10 +19,10 @@
     NSMutableSet *_domainsNeedingDesktopUserAgent;
     WKWebView *_webView;
     BOOL _hasEnabledContentBlockers;
-    WBUInjectedJavaScriptController *_activityJSController;
+    _SFInjectedJavaScriptController *_activityJSController;
 }
 
-@property (readonly, nonatomic) WBUInjectedJavaScriptController *activityJSController; // @synthesize activityJSController=_activityJSController;
+@property (readonly, nonatomic) _SFInjectedJavaScriptController *activityJSController; // @synthesize activityJSController=_activityJSController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasEnabledContentBlockers; // @synthesize hasEnabledContentBlockers=_hasEnabledContentBlockers;

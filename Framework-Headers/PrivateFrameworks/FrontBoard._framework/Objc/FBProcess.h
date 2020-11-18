@@ -11,7 +11,7 @@
 #import <FrontBoard/FBSProcessInternal-Protocol.h>
 #import <FrontBoard/FBUIProcess-Protocol.h>
 
-@class BSMachPortTaskNameRight, BSProcessDeathWatcher, FBProcessState, FBSProcessHandle, FBWorkspace, NSHashTable, NSNumber, NSString;
+@class BSMachPortTaskNameRight, BSProcessDeathWatcher, BSProcessHandle, FBProcessState, FBSProcessHandle, FBWorkspace, NSHashTable, NSString;
 @protocol FBProcessDelegate, OS_dispatch_queue;
 
 @interface FBProcess : NSObject <BSDescriptionProviding, FBUIProcess, FBSProcessInternal, FBSProcessIdentity>
@@ -21,7 +21,8 @@
     NSString *_name;
     NSString *_jobLabel;
     NSString *_bundleIdentifier;
-    FBSProcessHandle *_handle;
+    NSString *_executablePath;
+    BSProcessHandle *_handle;
     NSObject<OS_dispatch_queue> *_callOutQueue;
     FBWorkspace *_workspace;
     NSHashTable *_observers;
@@ -30,7 +31,7 @@
     BOOL _running;
     BSProcessDeathWatcher *_processDeathObserver;
     BOOL _updatingState;
-    NSNumber *_executablePartitionNumber;
+    long long _executableOnSystemPartition;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier;
@@ -44,6 +45,7 @@
 @property (readonly, copy, nonatomic) NSString *jobLabel;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
+@property (copy, nonatomic, getter=_queue_executablePath, setter=_queue_setExecutablePath:) NSString *queue_executablePath;
 @property (copy, nonatomic, getter=_queue_jobLabel, setter=_queue_setJobLabel:) NSString *queue_jobLabel;
 @property (copy, nonatomic, getter=_queue_name, setter=_queue_setName:) NSString *queue_name;
 @property (nonatomic, getter=_queue_pid, setter=_queue_setPid:) int queue_pid;
@@ -57,12 +59,14 @@
 @property (readonly, nonatomic) long long type;
 @property (readonly, strong, nonatomic) FBWorkspace *workspace; // @synthesize workspace=_workspace;
 
+- (void).cxx_destruct;
 - (id)_createWorkspace;
 - (id)_queue;
 - (void)_queue_callExitObservers;
 - (void)_queue_configureWithHandle:(id)arg1;
 - (int)_queue_effectiveVisibilityForVisibility:(int)arg1;
 - (void)_queue_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_queue_executableLivesOnSystemPartition;
 - (BOOL)_queue_isForeground;
 - (id)_queue_newWatchdogForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_processDidExit;

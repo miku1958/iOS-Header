@@ -35,21 +35,21 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setProgressController:) PUActivityProgressController *_progressController; // @synthesize _progressController=__progressController;
 @property (readonly, nonatomic) BOOL shouldUseAlertController;
 
-+ (void)_showDuplicationWasInterruptedWithItemCount:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)_presentDuplicationWasInterruptedWithItemCount:(long long)arg1 hasPhotos:(BOOL)arg2 hasVideos:(BOOL)arg3;
 + (BOOL)canPerformDuplicateActionOnAssets:(id)arg1 orAssetsByAssetCollection:(id)arg2;
 - (void).cxx_destruct;
 - (void)_checkDuplicateCapabilities;
+- (void)_checkHasPhotos:(BOOL *)arg1 hasVideos:(BOOL *)arg2;
 - (void)_downloadResourcesForDuplicateAction:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_finishedDownloadWithSuccess:(BOOL)arg1;
 - (void)_finishedDuplicationWithSuccess:(BOOL)arg1;
-- (void)_handleDownloadResourcesCompletionForRequest:(id)arg1 error:(id)arg2;
-- (void)_handleDownloadResourcesCompletionForRequest:(id)arg1 withError:(id)arg2;
 - (void)_handleOperationCompletionWithError:(id)arg1;
 - (void)_handlePhotoLibraryDuplicationCompletionWithSuccess:(BOOL)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_handleProgressUserCancellation;
 - (void)_overallProgressFractionCompletedDidChange;
 - (void)_overallProgressIsCancelledDidChange;
 - (void)_performPhotoLibraryChangeForAction:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_validateOriginalAssetResourcesForDuplicateAction:(long long)arg1;
 - (id)alertControllerForDuplicateActionWithUserConfirmationHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;

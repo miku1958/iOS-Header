@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@protocol UINavigationControllerDelegate;
+@protocol BFFNavigationControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface BFFNavigationObserver : NSObject
 {
-    id<UINavigationControllerDelegate> _observer;
+    id<BFFNavigationControllerDelegate> _observer;
 }
 
-@property (weak, nonatomic) id<UINavigationControllerDelegate> observer; // @synthesize observer=_observer;
+@property (weak, nonatomic) id<BFFNavigationControllerDelegate> observer; // @synthesize observer=_observer;
 
 + (id)observerWithObserver:(id)arg1;
 - (void).cxx_destruct;

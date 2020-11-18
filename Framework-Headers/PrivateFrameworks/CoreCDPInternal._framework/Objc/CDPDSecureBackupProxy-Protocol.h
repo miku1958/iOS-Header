@@ -11,11 +11,10 @@
 @protocol CDPDSecureBackupProxy <NSObject>
 - (NSDictionary *)accountInfoWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (void)backOffDateWithInfo:(NSDictionary *)arg1 completionBlock:(void (^)(NSDictionary *, NSError *))arg2;
+- (NSError *)disableWithInfo:(NSDictionary *)arg1;
 - (void)disableWithInfo:(NSDictionary *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (NSError *)enableWithInfo:(NSDictionary *)arg1;
-- (void)enableWithInfo:(NSDictionary *)arg1 completionBlock:(void (^)(NSError *))arg2;
-- (void)getAccountInfoWithInfo:(NSDictionary *)arg1 completionBlockWithResults:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)recoverWithInfo:(NSDictionary *)arg1 completionBlockWithResults:(void (^)(NSDictionary *, NSError *))arg2;
+- (NSDictionary *)recoverWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (void)setBackOffDateWithInfo:(NSDictionary *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (void)uncachePassphraseWithInfo:(NSDictionary *)arg1 completionBlock:(void (^)(NSError *))arg2;
 @end

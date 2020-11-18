@@ -46,7 +46,6 @@
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_setContactHandlersForPreference:(id)arg1;
 - (void)_showAddressEditorForPreference:(id)arg1 contact:(id)arg2;
-- (BOOL)_showChinaDistrictAddressFlowIfRequiredForPreference:(id)arg1 contact:(id)arg2 labeledValue:(id)arg3;
 - (void)_showContactsPickerForPreference:(id)arg1;
 - (void)_updateContactName;
 - (void)_updateNavigationBarButtons;

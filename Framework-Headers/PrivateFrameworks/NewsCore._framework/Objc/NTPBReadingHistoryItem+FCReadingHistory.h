@@ -17,6 +17,9 @@
 @property (readonly, nonatomic) unsigned long long articleLikingStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSDate *firstSeenAt;
+@property (readonly, copy, nonatomic) NSDate *firstSeenAtOfMaxVersionSeen;
+@property (readonly, nonatomic) unsigned long long flags;
 @property (readonly, nonatomic) BOOL hasArticleBeenConsumed;
 @property (readonly, nonatomic) BOOL hasArticleBeenMarkedOffensive;
 @property (readonly, nonatomic) BOOL hasArticleBeenRead;
@@ -25,6 +28,7 @@
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, copy, nonatomic) NSDate *lastVisitedAt;
 @property (readonly, nonatomic) unsigned long long maxVersionRead;
+@property (readonly, nonatomic) unsigned long long maxVersionSeen;
 @property (readonly) Class superclass;
 
 + (int)keyValuePairType;
@@ -32,6 +36,8 @@
 + (id)readingHistoryItemWithCKRecord:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)setArticleLikingStatus:(unsigned long long)arg1;
+- (void)setFirstSeenAt:(id)arg1;
+- (void)setFirstSeenAtOfMaxVersionSeen:(id)arg1;
 - (void)setHasArticleBeenConsumed:(BOOL)arg1;
 - (void)setHasArticleBeenMarkedOffensive:(BOOL)arg1;
 - (void)setHasArticleBeenRead:(BOOL)arg1;

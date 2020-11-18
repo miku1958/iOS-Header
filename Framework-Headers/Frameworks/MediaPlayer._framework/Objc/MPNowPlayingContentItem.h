@@ -7,9 +7,13 @@
 #import <MediaPlayer/MPContentItem.h>
 
 @class NSDate, NSString;
+@protocol MPNowPlayingContentItemDescriptionDataSource, MPNowPlayingContentItemLanguageOptionDataSource, MPNowPlayingContentItemLyricsDataSource;
 
 @interface MPNowPlayingContentItem : MPContentItem
 {
+    id<MPNowPlayingContentItemLyricsDataSource> _lyricsDataSource;
+    id<MPNowPlayingContentItemDescriptionDataSource> _descriptionDataSource;
+    id<MPNowPlayingContentItemLanguageOptionDataSource> _languageOptionDataSource;
 }
 
 @property (copy, nonatomic) NSString *albumArtistName;
@@ -20,20 +24,47 @@
 @property (nonatomic) long long episodeNumber;
 @property (nonatomic, getter=isExplicitItem) BOOL explicitItem;
 @property (copy, nonatomic) NSString *localizedContentRating;
+@property (nonatomic) unsigned long long numberOfChildren;
 @property (nonatomic) long long playCount;
 @property (copy, nonatomic) NSString *profileIdentifier;
 @property (copy, nonatomic) NSDate *releaseDate;
 @property (nonatomic) long long seasonNumber;
 @property (copy, nonatomic) NSString *trackArtistName;
 
+- (void).cxx_destruct;
+- (unsigned int)_convertFromEditingStyleFlags:(long long)arg1;
 - (unsigned int)_convertFromPlaylistType:(long long)arg1;
-- (int)_convertFromRadioStationType:(long long)arg1;
+- (unsigned int)_convertFromRadioStationType:(long long)arg1;
+- (long long)_convertToEditingStyleFlags:(unsigned int)arg1;
 - (long long)_convertToPlaylistType:(unsigned int)arg1;
-- (long long)_convertToRadioStationType:(int)arg1;
+- (long long)_convertToRadioStationType:(unsigned int)arg1;
+- (id)availableLanguageOptions;
+- (id)currentLanguageOptions;
+- (id)descriptionDataSource;
+- (long long)editingStyleFlags;
+- (id)info;
+- (id)initWithIdentifier:(id)arg1;
+- (id)languageOptionDataSource;
+- (id)lyrics;
+- (id)lyricsDataSource;
 - (long long)playlistType;
 - (long long)radioStationType;
+- (id)sections;
+- (id)seriesName;
+- (void)setAvailableLanguageOptions:(id)arg1;
+- (void)setCurrentLanguageOptions:(id)arg1;
+- (void)setDescriptionDataSource:(id)arg1;
+- (void)setEditingStyleFlags:(long long)arg1;
+- (void)setInfo:(id)arg1;
+- (void)setLanguageOptionDataSource:(id)arg1;
+- (void)setLyrics:(id)arg1;
+- (void)setLyricsDataSource:(id)arg1;
 - (void)setPlaylistType:(long long)arg1;
 - (void)setRadioStationType:(long long)arg1;
+- (void)setSections:(id)arg1;
+- (void)setSeriesName:(id)arg1;
+- (void)setStartTime:(double)arg1;
+- (double)startTime;
 
 @end
 

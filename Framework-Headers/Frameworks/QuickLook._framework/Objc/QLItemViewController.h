@@ -39,6 +39,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *toolbarButtons; // @synthesize toolbarButtons=_toolbarButtons;
 
++ (BOOL)shouldBeRemoteForMediaContentType:(id)arg1;
 - (void).cxx_destruct;
 - (id)_cancelTouchToken;
 - (void)_scrollScrollViewByPercentualOffset:(double)arg1;

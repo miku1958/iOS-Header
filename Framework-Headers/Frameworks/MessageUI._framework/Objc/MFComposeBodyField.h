@@ -29,10 +29,13 @@
     int _preventLayout;
     BOOL _prefersFirstLineSelection;
     unsigned long long _imageCount;
+    unsigned long long _attachmentSequenceNumber;
     NSArray *_attachmentURLsToReplaceWithFilenames;
     UIBarButtonItemGroup *_inputAssistantItemGroup;
+    BOOL _createAttachmentsForUnknownDataTypes;
 }
 
+@property (readonly, nonatomic) BOOL canPaste;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

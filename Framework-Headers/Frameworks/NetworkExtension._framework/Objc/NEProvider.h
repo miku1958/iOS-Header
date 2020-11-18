@@ -41,6 +41,7 @@
 - (void)displayMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)observerHelperHandler:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)setdefaultPathObserver:(id)arg1;
 - (void)sleepWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)wake;
 

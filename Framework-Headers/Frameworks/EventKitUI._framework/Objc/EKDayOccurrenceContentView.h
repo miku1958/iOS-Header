@@ -30,8 +30,6 @@
     double _minimumCachedLineHeight;
     UIFont *_cachedSecondaryFont;
     double _cachedSecondaryLineHeight;
-    double _cachedPrimaryFontTopOutset;
-    double _cachedPrimaryFontBottomOutset;
     BOOL _facebook;
     BOOL _birthday;
     BOOL _allDay;
@@ -70,6 +68,7 @@
 @property (strong, nonatomic) UIColor *titleTextColor;
 @property (nonatomic) BOOL usesSmallText; // @synthesize usesSmallText=_usesSmallText;
 
++ (void)_getLanguageAwareOutsets;
 + (id)defaultPrimaryTextFont;
 + (id)defaultSecondaryTextFont;
 + (id)defaultSmallPrimaryTextFont;
@@ -77,7 +76,6 @@
 - (void).cxx_destruct;
 - (double)_attributedStringMinimumLineHeightBasedOnCurrentFontMetrics;
 - (struct CGRect)_frameForText;
-- (void)_getLanguageAwareOutsets;
 - (void)_invalidateCachedFonts;
 - (void)_invalidateMetrics;
 - (double)_minimumPrimaryFontLineHeight;
@@ -110,7 +108,6 @@
 - (id)statusTextColor;
 - (id)strikethroughColor;
 - (id)stringDrawingContext;
-- (double)textNaturalWidth;
 - (double)topTextOutset;
 
 @end

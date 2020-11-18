@@ -41,8 +41,11 @@
 - (void)importOperationWithIdentifier:(id)arg1 didUpdateWithProgress:(float)arg2;
 - (id)init;
 - (void)lockDatabaseForReason:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)performBackupOfDatabaseAtPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)performDatabaseOperation:(unsigned long long)arg1 withAttributes:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)performImport:(id)arg1 fromSource:(unsigned long long)arg2 withProgressBlock:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)performMaintenanceTasksForDatabaseAtPath:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)performRestoreOfLatestBackupForDatabaseAtPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)recreateDatabaseAtPath:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)serviceTerminatedTransactionWithIdentifier:(id)arg1 error:(id)arg2;
 - (void)setDeviceSharedLibraryPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

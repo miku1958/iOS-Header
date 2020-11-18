@@ -8,7 +8,7 @@
 
 #import <PassKitCore/PKPaymentValidating-Protocol.h>
 
-@class CNContact, NSArray, NSDecimalNumber, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, PKPassLibrary, PKPaymentApplication, PKPaymentOptionsDefaults, PKPaymentOptionsRecents, PKPaymentPass, PKPaymentRequest, PKPaymentTransaction, PKRemoteDevice, PKRemotePaymentInstrument, PKShippingMethod;
+@class CNContact, NSArray, NSDecimalNumber, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, PKPassLibrary, PKPaymentApplication, PKPaymentInstructions, PKPaymentOptionsDefaults, PKPaymentOptionsRecents, PKPaymentPass, PKPaymentRequest, PKPaymentTransaction, PKRemoteDevice, PKRemotePaymentInstrument, PKShippingMethod;
 
 @interface PKPaymentAuthorizationDataModel : NSObject <PKPaymentValidating>
 {
@@ -43,6 +43,7 @@
     PKPaymentTransaction *_pendingTransaction;
     CDUnknownBlockType _updateHandler;
     PKPaymentApplication *_paymentApplication;
+    PKPaymentInstructions *_instructions;
     PKRemotePaymentInstrument *_remotePaymentInstrument;
     PKRemotePaymentInstrument *_initialRemotePaymentInstrument;
     NSSet *_allAcceptedRemotePaymentInstruments;
@@ -66,6 +67,7 @@
 @property (strong, nonatomic) NSString *hostAppLocalizedName; // @synthesize hostAppLocalizedName=_hostAppLocalizedName;
 @property (strong, nonatomic) NSString *hostApplicationIdentifier; // @synthesize hostApplicationIdentifier=_hostApplicationIdentifier;
 @property (strong, nonatomic) PKRemotePaymentInstrument *initialRemotePaymentInstrument; // @synthesize initialRemotePaymentInstrument=_initialRemotePaymentInstrument;
+@property (strong, nonatomic) PKPaymentInstructions *instructions; // @synthesize instructions=_instructions;
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (strong, nonatomic) PKPassLibrary *library; // @synthesize library=_library;
 @property (readonly, nonatomic) NSString *merchantName;
@@ -92,6 +94,7 @@
 @property (readonly, nonatomic) NSDecimalNumber *transactionAmount;
 @property (readonly, nonatomic) NSArray *unavailablePasses;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
+@property (readonly, nonatomic) BOOL wantsInstructions;
 
 - (void).cxx_destruct;
 - (void)_ensureItemForClass:(Class)arg1;

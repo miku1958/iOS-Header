@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUGridCellProtocol-Protocol.h>
 
-@class HFItem, HUColoredButton, HUGridCellLayoutOptions, NSArray, NSString, UILabel;
+@class HFItem, HUChevronButton, HUColoredButton, HUGridCellLayoutOptions, NSArray, NSString, UILabel;
 @protocol HUGridEmptyHomeCellDelegate;
 
 @interface HUGridEmptyHomeCell : UICollectionViewCell <HUGridCellProtocol>
@@ -19,6 +19,7 @@
     id<HUGridEmptyHomeCellDelegate> _delegate;
     UILabel *_instructionsLabel;
     HUColoredButton *_addAccessoryButton;
+    HUChevronButton *_storeButton;
     NSArray *_constraints;
 }
 
@@ -33,13 +34,14 @@
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
 @property (strong, nonatomic) HUGridCellLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property (nonatomic, getter=isRearranging) BOOL rearranging;
+@property (strong, nonatomic) HUChevronButton *storeButton; // @synthesize storeButton=_storeButton;
 @property (readonly) Class superclass;
 
-+ (double)instructionsLabelBaselineToButtonConstant;
 + (Class)layoutOptionsClass;
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)_addNewAccessory:(id)arg1;
+- (void)_openStore:(id)arg1;
 - (void)_setupCommonCellAppearance;
 - (void)didMoveToSuperview;
 - (id)initWithCoder:(id)arg1;

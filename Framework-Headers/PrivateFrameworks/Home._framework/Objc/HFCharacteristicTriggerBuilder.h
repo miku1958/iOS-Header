@@ -6,27 +6,40 @@
 
 #import <Home/HFTriggerBuilder.h>
 
-@class NSSet;
+@class NSMutableSet, NSSet;
 @protocol NSCopying;
 
 @interface HFCharacteristicTriggerBuilder : HFTriggerBuilder
 {
-    NSSet *_characteristics;
-    id<NSCopying> _triggerValue;
+    BOOL _markTriggerAsHomeAppCreated;
+    NSMutableSet *_characteristicEvents;
 }
 
-@property (strong, nonatomic) NSSet *characteristics; // @synthesize characteristics=_characteristics;
-@property (copy, nonatomic) id<NSCopying> triggerValue; // @synthesize triggerValue=_triggerValue;
+@property (strong, nonatomic) NSMutableSet *characteristicEvents; // @synthesize characteristicEvents=_characteristicEvents;
+@property (readonly, nonatomic) NSSet *characteristics;
+@property (nonatomic) BOOL markTriggerAsHomeAppCreated; // @synthesize markTriggerAsHomeAppCreated=_markTriggerAsHomeAppCreated;
+@property (readonly, nonatomic) id<NSCopying> mostCommonTriggerValue;
+@property (readonly, nonatomic) NSSet *triggerValues;
 
 + (BOOL)supportsConditions;
 - (void).cxx_destruct;
 - (id)_allTriggerValuesForCharacteristic:(id)arg1 similarToValue:(id)arg2;
+- (id)_lazilyMarkTriggerAsHomeAppCreated;
 - (id)_performValidation;
+- (id)_triggerEventForCharacteristic:(id)arg1;
 - (id)_updateEvents;
 - (id)commitCreateTrigger;
 - (id)commitEditTrigger;
-- (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
+- (id)commitItem;
+- (id)deleteTrigger;
+- (id)initWithExistingObject:(id)arg1 inHome:(id)arg2 context:(id)arg3;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1;
+- (void)removeAllCharacteristics;
+- (void)removeCharacteristic:(id)arg1;
+- (void)removeCharacteristics:(id)arg1;
+- (void)reset;
+- (void)setCharacteristic:(id)arg1 triggerValue:(id)arg2;
+- (void)setCharacteristics:(id)arg1 triggerValue:(id)arg2;
 
 @end
 

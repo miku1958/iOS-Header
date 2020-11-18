@@ -10,11 +10,11 @@
 
 @interface PLPersistedAlbumMetadata : NSObject
 {
+    BOOL _isFolder;
     BOOL _pinned;
     BOOL _inTrash;
     BOOL _customSortAscending;
-    BOOL _allowsOverwite;
-    BOOL _isFolder;
+    BOOL _allowsOverwrite;
     int _customSortKey;
     NSString *_title;
     NSString *_uuid;
@@ -26,7 +26,7 @@
     NSURL *_metadataURL;
 }
 
-@property (nonatomic) BOOL allowsOverwite; // @synthesize allowsOverwite=_allowsOverwite;
+@property (nonatomic) BOOL allowsOverwrite; // @synthesize allowsOverwrite=_allowsOverwrite;
 @property (strong, nonatomic) NSMutableOrderedSet *assetUUIDs; // @synthesize assetUUIDs=_assetUUIDs;
 @property (strong, nonatomic) NSString *cloudGUID; // @synthesize cloudGUID=_cloudGUID;
 @property (strong, nonatomic) NSString *customKeyAssetUUID; // @synthesize customKeyAssetUUID=_customKeyAssetUUID;
@@ -41,16 +41,11 @@
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
-+ (BOOL)_isAlbumMetadataExtension:(id)arg1;
-+ (BOOL)_isFolderMetadataExtension:(id)arg1;
-+ (BOOL)isAlbumMetadataPath:(id)arg1;
-+ (BOOL)isFolderMetadataPath:(id)arg1;
 + (BOOL)isValidPath:(id)arg1;
-- (void)_readMetadata;
+- (BOOL)_readMetadata;
 - (void)_saveMetadata;
 - (void)dealloc;
 - (id)description;
-- (id)extensionForKind:(id)arg1;
 - (id)init;
 - (id)initWithPLGenericAlbum:(id)arg1;
 - (id)initWithPersistedDataAtURL:(id)arg1;

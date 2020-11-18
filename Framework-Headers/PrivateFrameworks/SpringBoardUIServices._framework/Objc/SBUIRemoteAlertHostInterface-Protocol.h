@@ -8,7 +8,6 @@
 
 @protocol SBUIRemoteAlertHostInterface
 - (void)dismiss;
-- (void)dismissAndLockUIIfNecessary;
 - (void)setAllowsAlertStacking:(BOOL)arg1;
 - (void)setAllowsBanners:(BOOL)arg1;
 - (void)setAllowsMenuButtonDismissal:(BOOL)arg1;

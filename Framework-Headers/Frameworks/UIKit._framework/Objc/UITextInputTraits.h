@@ -22,6 +22,7 @@
     long long returnKeyType;
     BOOL enablesReturnKeyAutomatically;
     BOOL secureTextEntry;
+    BOOL devicePasscodeEntry;
     NSString *textContentType;
     struct __CFCharacterSet *textTrimmingSet;
     UIColor *insertionPointColor;
@@ -59,6 +60,7 @@
     struct _NSRange validTextRange;
     long long textScriptType;
     UIInputContextHistory *inputContextHistory;
+    BOOL manageRecentInputs;
     BOOL hasDefaultContents;
     BOOL displaySecureEditsUsingPlainText;
     NSIndexSet *PINEntrySeparatorIndexes;
@@ -77,6 +79,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder; // @synthesize deferBecomingResponder;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDevicePasscodeEntry) BOOL devicePasscodeEntry; // @synthesize devicePasscodeEntry;
 @property (readonly, nonatomic) long long dictationInfoKeyboardType;
 @property (readonly, nonatomic) long long dictationKeyboardType;
 @property (nonatomic) BOOL disableInputBars; // @synthesize disableInputBars;
@@ -100,6 +103,7 @@
 @property (nonatomic) long long keyboardAppearance; // @synthesize keyboardAppearance;
 @property (nonatomic) long long keyboardType; // @synthesize keyboardType;
 @property (nonatomic) BOOL learnsCorrections; // @synthesize learnsCorrections;
+@property (nonatomic) BOOL manageRecentInputs; // @synthesize manageRecentInputs;
 @property (copy, nonatomic) NSString *recentInputIdentifier; // @synthesize recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext; // @synthesize responseContext;
 @property (nonatomic) BOOL returnKeyGoesToNextResponder; // @synthesize returnKeyGoesToNextResponder;

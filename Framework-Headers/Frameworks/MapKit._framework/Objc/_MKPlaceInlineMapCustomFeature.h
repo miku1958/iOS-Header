@@ -14,10 +14,7 @@ __attribute__((visibility("hidden")))
 @interface _MKPlaceInlineMapCustomFeature : NSObject <MKCustomFeatureAnnotation>
 {
     VKCustomFeature *_feature;
-    struct {
-        double latitude;
-        double longitude;
-    } _coordinate;
+    CDStruct_2c43369c _coordinate;
 }
 
 @property (nonatomic) CDStruct_c3b9c2ee coordinate;

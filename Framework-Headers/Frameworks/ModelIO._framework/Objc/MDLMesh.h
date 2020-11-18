@@ -34,6 +34,7 @@
 + (id)newEllipticalConeWithHeight:(float)arg1 radii:(unsigned long long)arg2 radialSegments:(unsigned long long)arg3 verticalSegments:(long long)arg4 geometryType:(BOOL)arg5 inwardNormals:(id)arg6 allocator: /* Error: Ran out of types for this method. */;
 + (id)newIcosahedronWithRadius:(float)arg1 inwardNormals:(BOOL)arg2 allocator:(id)arg3;
 + (id)newIcosahedronWithRadius:(float)arg1 inwardNormals:(BOOL)arg2 geometryType:(long long)arg3 allocator:(id)arg4;
++ (id)newMeshWithPrimitive:(id)arg1 segments:(BOOL)arg2 inwardNormals:(long long)arg3 geometryType:(id)arg4 allocator: /* Error: Ran out of types for this method. */;
 + (id)newPlaneWithDimensions:(long long)arg1 segments:(id)arg2 geometryType:allocator: /* Error: Ran out of types for this method. */;
 + (id)newSubdividedMesh:(id)arg1 submeshIndex:(unsigned long long)arg2 subdivisionLevels:(unsigned long long)arg3;
 - (id).cxx_construct;
@@ -49,6 +50,7 @@
 - (void)addTangentBasisForTextureCoordinateAttributeNamed:(id)arg1 normalAttributeNamed:(id)arg2 tangentAttributeNamed:(id)arg3;
 - (void)addTangentBasisForTextureCoordinateAttributeNamed:(id)arg1 tangentAttributeNamed:(id)arg2 bitangentAttributeNamed:(id)arg3;
 - (void)addUnwrappedTextureCoordinatesForAttributeNamed:(id)arg1;
+- (long long)addVertexBuffer:(id)arg1;
 - (id)controlNodeForINdex:(unsigned long long)arg1;
 - (void)copyDataVector:(vector_f9ed6fc8 *)arg1 toAttr:(id)arg2;
 - (void)createSourceDataVector:(vector_f9ed6fc8 *)arg1 attr:(id)arg2 srcElementCount:(int)arg3 dstElementCount:(int)arg4;
@@ -62,12 +64,13 @@
 - (BOOL)generateLightMapTextureWithTextureSize:(id)arg1 lightsToConsider:(id)arg2 objectsToConsider:(id)arg3 vertexAttributeNamed:(id)arg4 materialPropertyNamed: /* Error: Ran out of types for this method. */;
 - (BOOL)generateLightMapVertexColorsWithLightsToConsider:(id)arg1 objectsToConsider:(id)arg2 vertexAttributeNamed:(id)arg3;
 - (id)initBoxWithExtent:(BOOL)arg1 segments:(long long)arg2 inwardNormals:(id)arg3 geometryType:allocator: /* Error: Ran out of types for this method. */;
-- (id)initCapsuleWithExtent:(unsigned int)arg1 cylinderSegments:(BOOL)arg2 hemisphereSegments:(long long)arg3 inwardNormals:(id)arg4 geometryType:allocator: /* Error: Ran out of types for this method. */;
+- (id)initCapsuleWithExtent:(int)arg1 cylinderSegments:(BOOL)arg2 hemisphereSegments:(long long)arg3 inwardNormals:(id)arg4 geometryType:allocator: /* Error: Ran out of types for this method. */;
 - (id)initConeWithExtent:(BOOL)arg1 segments:(BOOL)arg2 inwardNormals:(long long)arg3 cap:(id)arg4 geometryType:allocator: /* Error: Ran out of types for this method. */;
 - (id)initCylinderWithExtent:(BOOL)arg1 segments:(BOOL)arg2 inwardNormals:(BOOL)arg3 topCap:(long long)arg4 bottomCap:(id)arg5 geometryType:allocator: /* Error: Ran out of types for this method. */;
 - (id)initHemisphereWithExtent:(BOOL)arg1 segments:(BOOL)arg2 inwardNormals:(long long)arg3 cap:(id)arg4 geometryType:allocator: /* Error: Ran out of types for this method. */;
 - (id)initIcosahedronWithExtent:(BOOL)arg1 inwardNormals:(long long)arg2 geometryType:(id)arg3 allocator: /* Error: Ran out of types for this method. */;
 - (id)initMeshBySubdividingMesh:(id)arg1 submeshIndex:(int)arg2 subdivisionLevels:(unsigned int)arg3 allocator:(id)arg4;
+- (id)initMeshWithPrimitive:(id)arg1 segments:(BOOL)arg2 inwardNormals:(long long)arg3 geometryType:(id)arg4 allocator: /* Error: Ran out of types for this method. */;
 - (id)initPlaneWithExtent:(long long)arg1 segments:(id)arg2 geometryType:allocator: /* Error: Ran out of types for this method. */;
 - (id)initSphereWithExtent:(BOOL)arg1 segments:(long long)arg2 inwardNormals:(id)arg3 geometryType:allocator: /* Error: Ran out of types for this method. */;
 - (id)initWithBufferAllocator:(id)arg1;

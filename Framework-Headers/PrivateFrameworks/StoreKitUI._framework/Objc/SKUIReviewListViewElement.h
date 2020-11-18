@@ -12,7 +12,7 @@
 {
 }
 
-@property (readonly, nonatomic) NSArray *reviews;
+@property (readonly, nonatomic) NSArray *items;
 
 - (long long)pageComponentType;
 

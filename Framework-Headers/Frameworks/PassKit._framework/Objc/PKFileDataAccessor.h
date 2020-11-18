@@ -6,11 +6,13 @@
 
 #import <PassKitCore/PKDataAccessor.h>
 
-@class NSObject, NSURL, PKRemoteAssetManager;
+@class NSLock, NSObject, NSURL, PKRemoteAssetManager;
 @protocol OS_dispatch_queue;
 
 @interface PKFileDataAccessor : PKDataAccessor
 {
+    NSLock *_remoteAssetManagerLock;
+    BOOL _remoteAssetManagerAccessed;
     PKRemoteAssetManager *_remoteAssetManager;
     NSObject<OS_dispatch_queue> *_processingQueue;
     NSURL *_fileURL;
@@ -27,7 +29,9 @@
 - (void)dictionaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)displayProfileOfType:(long long)arg1;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5;
 - (void)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5 withCompletion:(CDUnknownBlockType)arg6;
+- (id)init;
 - (id)initWithFileURL:(id)arg1 error:(id *)arg2;
 - (id)initWithFileURL:(id)arg1 error:(id *)arg2 processingQueue:(id)arg3;
 - (id)manifestHash;

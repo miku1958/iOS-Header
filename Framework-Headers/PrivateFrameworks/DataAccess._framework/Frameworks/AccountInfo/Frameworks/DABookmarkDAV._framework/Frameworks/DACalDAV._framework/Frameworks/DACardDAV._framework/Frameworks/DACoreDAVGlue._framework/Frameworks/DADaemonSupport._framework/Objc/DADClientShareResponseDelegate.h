@@ -12,7 +12,6 @@
 
 @interface DADClientShareResponseDelegate : DADClientDelegate <DAEventsCalendarSharingResponseConsumer>
 {
-    long long _response;
     NSString *_calendarID;
     NSString *_shareID;
 }
@@ -21,15 +20,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) long long response; // @synthesize response=_response;
 @property (strong, nonatomic) NSString *shareID; // @synthesize shareID=_shareID;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_doResponseWithBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)finishWithError:(id)arg1;
-- (id)initWithAccountID:(id)arg1 client:(id)arg2 response:(long long)arg3 calendarID:(id)arg4;
-- (void)respondToShareRequest;
+- (id)initWithAccountID:(id)arg1 client:(id)arg2 calendarID:(id)arg3;
+- (void)reportAsJunk;
+- (void)respondToShareRequestWithResponse:(long long)arg1;
 - (void)shareResponseFinishedWithError:(id)arg1;
 
 @end

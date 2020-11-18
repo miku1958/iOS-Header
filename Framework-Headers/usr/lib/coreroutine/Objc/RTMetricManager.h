@@ -41,7 +41,7 @@
 - (void)_fetchDiagnosticsEnabled:(CDUnknownBlockType)arg1;
 - (BOOL)_isDiagnosticsSubmissionAllowed;
 - (void)_registerQueriableMetric:(unsigned long long)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)_releaseMetricPlaceholderForMetricId:(unsigned int)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)_releaseMetricPlaceholderForMetric:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_routineConfiguredForMetric:(id)arg1;
 - (void)_setupWithConfiguredClasses:(id)arg1;
 - (void)_submitMetric:(id)arg1 withHandler:(CDUnknownBlockType)arg2;

@@ -7,8 +7,10 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (WBNSDictionaryExtras)
+- (id)wb_URLForKey:(id)arg1 isValid:(BOOL *)arg2;
 - (id)wb_arrayForKey:(id)arg1 isValid:(BOOL *)arg2;
 - (BOOL)wb_boolForKey:(id)arg1;
+- (id)wb_dateForKey:(id)arg1 isValid:(BOOL *)arg2;
 - (id)wb_dictionaryForKey:(id)arg1 isValid:(BOOL *)arg2;
 - (id)wb_numberForKey:(id)arg1;
 - (id)wb_numberForKey:(id)arg1 isValid:(BOOL *)arg2;

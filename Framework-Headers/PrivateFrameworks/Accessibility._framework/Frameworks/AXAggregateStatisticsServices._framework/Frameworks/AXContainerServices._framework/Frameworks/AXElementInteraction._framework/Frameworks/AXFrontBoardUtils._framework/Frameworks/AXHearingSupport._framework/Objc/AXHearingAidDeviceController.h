@@ -74,6 +74,7 @@
 - (void)forgetDevice:(id)arg1;
 - (id)hearingAidForDeviceID:(id)arg1;
 - (id)hearingAidForPeripheral:(id)arg1;
+- (id)hearingAidsForPeripheral:(id)arg1;
 - (id)hearingAidsForUUID:(id)arg1;
 - (id)init;
 - (BOOL)isBluetoothAvailable;

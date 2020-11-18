@@ -8,7 +8,7 @@
 
 #import <SafariServices/WBSFluidProgressControllerDelegate-Protocol.h>
 
-@class UIColor, UIImageView, WBSFluidProgressState;
+@class NSString, UIColor, UIImageView, WBSFluidProgressState;
 @protocol _SFFluidProgressViewDelegate;
 
 @interface _SFFluidProgressView : UIView <WBSFluidProgressControllerDelegate>
@@ -17,18 +17,20 @@
     UIView *_clippingView;
     WBSFluidProgressState *_state;
     BOOL _progressAnimationSuppressed;
-    float _progress;
     id<_SFFluidProgressViewDelegate> _delegate;
     UIColor *_progressBarFillColor;
     double _cornerRadius;
 }
 
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_SFFluidProgressViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) float progress; // @synthesize progress=_progress;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL progressAnimationSuppressed; // @synthesize progressAnimationSuppressed=_progressAnimationSuppressed;
 @property (strong, nonatomic) UIColor *progressBarFillColor; // @synthesize progressBarFillColor=_progressBarFillColor;
 @property (readonly, nonatomic, getter=isShowingProgress) BOOL showingProgress;
+@property (readonly) Class superclass;
 
 + (double)defaultHeight;
 - (void).cxx_destruct;

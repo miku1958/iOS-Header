@@ -10,9 +10,11 @@
 
 @interface CARSession : NSObject
 {
+    BOOL _authenticated;
     CARSessionConfiguration *_configuration;
 }
 
+@property (readonly, nonatomic, getter=isAuthenticated) BOOL authenticated; // @synthesize authenticated=_authenticated;
 @property (readonly, nonatomic) CARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy, nonatomic) NSNumber *electronicTollCollectionAvailable;
 @property (readonly, copy, nonatomic) NSNumber *limitUserInterfaces;

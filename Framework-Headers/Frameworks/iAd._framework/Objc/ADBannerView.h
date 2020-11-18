@@ -9,30 +9,33 @@
 #import <iAd/ADAdRecipient-Protocol.h>
 #import <iAd/ADDimmerViewDelegate-Protocol.h>
 
-@class ADAdSpace, ADDimmerView, ADPrivacyButton, NSString, NSTimer, NSURL, UIViewController;
+@class ADAdSpace, ADDimmerView, ADPrivacyButton, NSDate, NSString, NSTimer, NSURL, UILabel, UIViewController;
 @protocol ADBannerViewDelegate, ADBannerViewInternalDelegate;
 
 @interface ADBannerView : UIView <ADAdRecipient, ADDimmerViewDelegate>
 {
     id<ADBannerViewDelegate> _weakDelegate;
     id<ADBannerViewInternalDelegate> _weakInternalDelegate;
+    BOOL _displayed;
+    BOOL _bannerLoaded;
     BOOL _bannerViewActionInProgress;
     BOOL _createdForIBInternal;
     BOOL _dimmed;
     BOOL _determiningConstraintBasedWidth;
     BOOL _inSecondConstraintsPass;
-    BOOL _displayed;
     BOOL _scrolling;
-    BOOL _debugHighlightEnabled;
     BOOL _imageUpdateEnabled;
+    BOOL _debugHighlightEnabled;
+    int _screenfuls;
     int _internalAdType;
-    int _displayMode;
-    int _state;
+    NSString *_adResponseId;
+    long long _lastErrorCode;
     long long _options;
     long long _adType;
     NSString *_advertisingSection;
     UIView *_highlightClippedView;
     UIView *_highlightHittableView;
+    UILabel *_idLbl;
     NSTimer *_highlightUpdateTimer;
     ADPrivacyButton *_privacyButton;
     NSString *_authenticationUserName;
@@ -40,15 +43,24 @@
     ADAdSpace *_adSpace;
     ADDimmerView *_dimmerView;
     double _constraintBasedWidth;
-    CDUnknownBlockType _stateChangedBlock;
+    NSString *_originID;
+    NSDate *_adDisplayDate;
+    NSDate *_loadStartTime;
+    NSDate *_loadEndTime;
+    double _bannerLoadTime;
+    struct CGSize _portraitSize;
+    struct CGSize _landscapeSize;
 }
 
+@property (copy, nonatomic) NSDate *adDisplayDate; // @synthesize adDisplayDate=_adDisplayDate;
+@property (copy, nonatomic) NSString *adResponseId; // @synthesize adResponseId=_adResponseId;
 @property (strong, nonatomic) ADAdSpace *adSpace; // @synthesize adSpace=_adSpace;
 @property (readonly, nonatomic) UIView *adSpaceView;
 @property (readonly, nonatomic) long long adType; // @synthesize adType=_adType;
 @property (copy, nonatomic) NSString *advertisingSection; // @synthesize advertisingSection=_advertisingSection;
 @property (copy, nonatomic) NSString *authenticationUserName; // @synthesize authenticationUserName=_authenticationUserName;
-@property (readonly, nonatomic, getter=isBannerLoaded) BOOL bannerLoaded;
+@property (nonatomic) double bannerLoadTime; // @synthesize bannerLoadTime=_bannerLoadTime;
+@property (readonly, nonatomic, getter=isBannerLoaded) BOOL bannerLoaded; // @synthesize bannerLoaded=_bannerLoaded;
 @property (nonatomic, getter=isBannerViewActionInProgress) BOOL bannerViewActionInProgress; // @synthesize bannerViewActionInProgress=_bannerViewActionInProgress;
 @property (nonatomic) double constraintBasedWidth; // @synthesize constraintBasedWidth=_constraintBasedWidth;
 @property (readonly, nonatomic) BOOL createdForIBInternal; // @synthesize createdForIBInternal=_createdForIBInternal;
@@ -59,22 +71,27 @@
 @property (nonatomic) BOOL determiningConstraintBasedWidth; // @synthesize determiningConstraintBasedWidth=_determiningConstraintBasedWidth;
 @property (nonatomic) BOOL dimmed; // @synthesize dimmed=_dimmed;
 @property (strong, nonatomic) ADDimmerView *dimmerView; // @synthesize dimmerView=_dimmerView;
-@property (nonatomic) int displayMode; // @synthesize displayMode=_displayMode;
 @property (nonatomic) BOOL displayed; // @synthesize displayed=_displayed;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *highlightClippedView; // @synthesize highlightClippedView=_highlightClippedView;
 @property (strong, nonatomic) UIView *highlightHittableView; // @synthesize highlightHittableView=_highlightHittableView;
 @property (strong, nonatomic) NSTimer *highlightUpdateTimer; // @synthesize highlightUpdateTimer=_highlightUpdateTimer;
+@property (strong, nonatomic) UILabel *idLbl; // @synthesize idLbl=_idLbl;
 @property (nonatomic) BOOL imageUpdateEnabled; // @synthesize imageUpdateEnabled=_imageUpdateEnabled;
 @property (nonatomic) BOOL inSecondConstraintsPass; // @synthesize inSecondConstraintsPass=_inSecondConstraintsPass;
 @property (readonly, nonatomic) int internalAdType; // @synthesize internalAdType=_internalAdType;
+@property (nonatomic) struct CGSize landscapeSize; // @synthesize landscapeSize=_landscapeSize;
+@property (nonatomic) long long lastErrorCode; // @synthesize lastErrorCode=_lastErrorCode;
+@property (copy, nonatomic) NSDate *loadEndTime; // @synthesize loadEndTime=_loadEndTime;
+@property (copy, nonatomic) NSDate *loadStartTime; // @synthesize loadStartTime=_loadStartTime;
 @property (readonly, nonatomic) long long options; // @synthesize options=_options;
+@property (copy, nonatomic) NSString *originID; // @synthesize originID=_originID;
+@property (nonatomic) struct CGSize portraitSize; // @synthesize portraitSize=_portraitSize;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
 @property (strong, nonatomic) ADPrivacyButton *privacyButton; // @synthesize privacyButton=_privacyButton;
+@property (nonatomic) int screenfuls; // @synthesize screenfuls=_screenfuls;
 @property (nonatomic) BOOL scrolling; // @synthesize scrolling=_scrolling;
 @property (copy, nonatomic) NSURL *serverURL; // @synthesize serverURL=_serverURL;
-@property (nonatomic) int state; // @synthesize state=_state;
-@property (copy, nonatomic) CDUnknownBlockType stateChangedBlock; // @synthesize stateChangedBlock=_stateChangedBlock;
 @property (readonly) Class superclass;
 
 + (struct CGRect)_adWindowBounds;
@@ -101,22 +118,23 @@
 - (void)bannerDidAppear;
 - (void)bannerDidDisappear;
 - (void)bannerTappedAtPoint:(struct CGPoint)arg1;
+- (void)bannerTappedAtPoint:(struct CGPoint)arg1 withMRAIDAction:(id)arg2;
 - (void)beginAction;
 - (void)cancelBannerViewAction;
 - (void)cancelScheduledAd;
-- (void)changeBannerViewState:(int)arg1;
 - (id)context;
+- (void)creativeControllerViewWasTappedAtPoint:(struct CGPoint)arg1 withMRAIDAction:(id)arg2;
 - (id)currentContentSizeIdentifier;
 - (void)cycleImpressionImmediately;
 - (void)dealloc;
-- (id)descriptionForLCD;
 - (void)didMoveToWindow;
 - (void)dimmerView:(id)arg1 didReceiveTouchUpAtPoint:(struct CGPoint)arg2;
+- (void)displayBannerView;
+- (void)displayCreativeView;
 - (BOOL)enableDimmerView:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasAction;
 - (BOOL)hasTransparencyDetails;
-- (id)headlineForLCD;
 - (id)identifier;
 - (id)initFromIBWithFrame:(struct CGRect)arg1;
 - (id)initFromIBWithFrame:(struct CGRect)arg1 adType:(long long)arg2;
@@ -125,10 +143,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)internalDelegate;
 - (struct CGSize)intrinsicContentSize;
-- (BOOL)isiAdContentServer;
 - (void)layoutSubviews;
-- (void)loadAd:(id)arg1;
-- (id)logoImageURL;
 - (id)nativeMetadata;
 - (void)pauseBannerMedia;
 - (void)playbackFailed:(id)arg1;
@@ -141,8 +156,10 @@
 - (void)prerollDidStop;
 - (void)privacyButtonWasTapped;
 - (id)publicImpressionAttributes;
+- (void)removeCreativeView;
 - (void)reportNativeClickEvent;
 - (id)requiredContentSizeIdentifiers;
+- (BOOL)requiresMRAID;
 - (void)resizeWithOldSuperviewSize:(struct CGSize)arg1;
 - (void)resumeBannerMedia;
 - (void)resumeImpressionCycling;
@@ -163,16 +180,15 @@
 - (void)setInternalDelegate:(id)arg1;
 - (void)setRequiredContentSizeIdentifiers:(id)arg1;
 - (void)setTransform:(struct CGAffineTransform)arg1;
+- (void)setViewSizeInPortrait:(struct CGSize)arg1 inLandscape:(struct CGSize)arg2;
 - (BOOL)shouldTestVisibilityAtPoint:(struct CGPoint)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)skipThreshold;
-- (id)staticImageURL;
 - (void)storyboardViewControllerDidPresent;
 - (void)suspendImpressionCycling;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)uniqueIdentifier;
 - (void)updateConstraints;
-- (void)updatePlaceholderImage;
 - (void)userDidSkipPreroll;
 - (id)videoAssets;
 

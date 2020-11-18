@@ -23,6 +23,7 @@
 @property (readonly, strong, nonatomic) BKSEventFocusDeferralProperties *properties; // @synthesize properties=_properties;
 
 + (BOOL)supportsSecureCoding;
+- (id)conciseDescription;
 - (void)dealloc;
 - (id)deferredPropertiesForProperties:(id)arg1;
 - (BOOL)defersProperties:(id)arg1;

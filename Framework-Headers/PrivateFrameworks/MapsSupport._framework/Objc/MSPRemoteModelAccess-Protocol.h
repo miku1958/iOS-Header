@@ -11,7 +11,8 @@
 @protocol MSPRemoteModelAccess <NSObject>
 - (void)commitFavoritesSerializedRepresentation:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)commitHistorySerializedRepresentation:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)fetchFavoritesSerializedRepresentationWithCompletion:(void (^)(NSData *, NSError *))arg1;
-- (void)fetchHistorySerializedRepresentationWithCompletion:(void (^)(NSData *, NSError *))arg1;
+- (void)fetchFavoritesSerializedRepresentationFileHandleWithCompletion:(void (^)(NSFileHandle *, NSError *))arg1;
+- (void)fetchHistorySerializedRepresentationFileHandleWithCompletion:(void (^)(NSFileHandle *, NSError *))arg1;
+- (void)testByNotingHistoryChangedOnDisk;
 @end
 

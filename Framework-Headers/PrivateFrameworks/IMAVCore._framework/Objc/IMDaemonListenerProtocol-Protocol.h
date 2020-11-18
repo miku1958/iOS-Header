@@ -60,6 +60,7 @@
 - (void)chat:(NSString *)arg1 propertiesUpdated:(NSDictionary *)arg2;
 - (void)chat:(NSString *)arg1 updated:(NSDictionary *)arg2;
 - (void)chatLoadedWithChatIdentifier:(NSString *)arg1 chats:(NSArray *)arg2;
+- (void)databaseChatSpamUpdated:(NSString *)arg1;
 - (void)databaseFull;
 - (void)databaseNoLongerFull;
 - (void)databaseUpdated;

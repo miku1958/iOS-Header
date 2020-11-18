@@ -9,6 +9,6 @@
 @class FCClusteredHeadlines, FCHeadlineClusteringRules, NSArray, NSSet;
 
 @protocol FCHeadlineClustering <NSObject>
-- (FCClusteredHeadlines *)clusterHeadlinesByTopic:(NSArray *)arg1 subscribedTopicIDs:(NSSet *)arg2 rules:(FCHeadlineClusteringRules *)arg3;
+- (FCClusteredHeadlines *)clusterHeadlinesByTopic:(NSArray *)arg1 subscribedTopicIDs:(NSSet *)arg2 blacklistedTopicIDs:(NSSet *)arg3 rules:(FCHeadlineClusteringRules *)arg4 tagScoreProvider:(NSDictionary * (^)(NSArray *))arg5;
 @end
 

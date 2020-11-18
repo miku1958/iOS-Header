@@ -6,7 +6,7 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSArray, SAHAFilter;
+@class NSArray, NSString, SAHAFilter;
 
 @interface SAHACommand : SADomainCommand
 {
@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSArray *actions;
 @property (strong, nonatomic) SAHAFilter *filter;
+@property (copy, nonatomic) NSString *serverValidity;
 
 + (id)command;
 + (id)commandWithDictionary:(id)arg1 context:(id)arg2;

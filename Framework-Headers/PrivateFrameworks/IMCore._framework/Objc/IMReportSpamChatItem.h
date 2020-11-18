@@ -8,9 +8,12 @@
 
 @interface IMReportSpamChatItem : IMTranscriptChatItem
 {
+    BOOL _wasReportedAsSpam;
 }
 
-- (id)_initWithItem:(id)arg1;
+@property (readonly, nonatomic) BOOL wasReportedAsSpam; // @synthesize wasReportedAsSpam=_wasReportedAsSpam;
+
+- (id)_initWithItem:(id)arg1 wasReportedAsSpam:(BOOL)arg2;
 
 @end
 

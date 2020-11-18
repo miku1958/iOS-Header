@@ -15,27 +15,43 @@
     unsigned long long _protocolVersion;
     NSString *_applicationBundleIdentifier;
     NSString *_applicationBundleVersion;
+    unsigned int _lastSupportedMessageType;
     NSString *_localizedModelName;
     NSString *_name;
     NSString *_systemBuildVersion;
     NSString *_uniqueIdentifier;
+    BOOL _allowsPairing;
+    BOOL _connected;
+    BOOL _supportsSystemPairing;
     struct {
         unsigned int protocolVersion:1;
+        unsigned int lastSupportedMessageType:1;
+        unsigned int allowsPairing:1;
+        unsigned int connected:1;
+        unsigned int supportsSystemPairing:1;
     } _has;
 }
 
+@property (nonatomic) BOOL allowsPairing; // @synthesize allowsPairing=_allowsPairing;
 @property (strong, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
 @property (strong, nonatomic) NSString *applicationBundleVersion; // @synthesize applicationBundleVersion=_applicationBundleVersion;
+@property (nonatomic) BOOL connected; // @synthesize connected=_connected;
+@property (nonatomic) BOOL hasAllowsPairing;
 @property (readonly, nonatomic) BOOL hasApplicationBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasApplicationBundleVersion;
+@property (nonatomic) BOOL hasConnected;
+@property (nonatomic) BOOL hasLastSupportedMessageType;
 @property (readonly, nonatomic) BOOL hasLocalizedModelName;
 @property (readonly, nonatomic) BOOL hasName;
 @property (nonatomic) BOOL hasProtocolVersion;
+@property (nonatomic) BOOL hasSupportsSystemPairing;
 @property (readonly, nonatomic) BOOL hasSystemBuildVersion;
 @property (readonly, nonatomic) BOOL hasUniqueIdentifier;
+@property (nonatomic) unsigned int lastSupportedMessageType; // @synthesize lastSupportedMessageType=_lastSupportedMessageType;
 @property (strong, nonatomic) NSString *localizedModelName; // @synthesize localizedModelName=_localizedModelName;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned long long protocolVersion; // @synthesize protocolVersion=_protocolVersion;
+@property (nonatomic) BOOL supportsSystemPairing; // @synthesize supportsSystemPairing=_supportsSystemPairing;
 @property (strong, nonatomic) NSString *systemBuildVersion; // @synthesize systemBuildVersion=_systemBuildVersion;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 

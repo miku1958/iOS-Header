@@ -6,8 +6,6 @@
 
 #import <SpringBoardFoundation/SBAbstractSpringBoardDefaultDomain.h>
 
-@class NSDictionary, NSString;
-
 @interface SBSoftwareUpdateDefaults : SBAbstractSpringBoardDefaultDomain
 {
 }
@@ -15,12 +13,9 @@
 @property (nonatomic, getter=hasDeveloperInstallBrickAlertShown3DayWarning) BOOL developerInstallBrickAlertShown3DayWarning; // @dynamic developerInstallBrickAlertShown3DayWarning;
 @property (nonatomic, getter=hasDeveloperInstallBrickAlertShown7DayWarning) BOOL developerInstallBrickAlertShown7DayWarning; // @dynamic developerInstallBrickAlertShown7DayWarning;
 @property (nonatomic, getter=hasDeveloperInstallBrickAlertShownTomorrowWarning) BOOL developerInstallBrickAlertShownTomorrowWarning; // @dynamic developerInstallBrickAlertShownTomorrowWarning;
-@property (strong, nonatomic) NSString *lastOSVersion; // @dynamic lastOSVersion;
-@property (strong, nonatomic) NSDictionary *softwareUpdateState; // @dynamic softwareUpdateState;
 
 - (void)_bindAndRegisterDefaults;
 - (void)clearDeveloperInstallBrickAlerts;
-- (void)clearLegacyBadgePreference;
 
 @end
 

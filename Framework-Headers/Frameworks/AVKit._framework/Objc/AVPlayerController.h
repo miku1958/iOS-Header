@@ -49,6 +49,7 @@
     id _deviceBatteryStateDidChangeObserver;
     BOOL _deviceBatteryMonitoringWasEnabled;
     BOOL _playingOnSecondScreen;
+    long long _allowsIdleSleepPreventionCount;
     BOOL _atMaxTime;
     BOOL _atMinTime;
     BOOL _scrubbing;
@@ -71,7 +72,6 @@
     CDStruct_1b6d18a9 _seekToTimeInternal;
 }
 
-@property (nonatomic) BOOL CALayerDestinationIsTVOut;
 @property (nonatomic, getter=isAtMaxTime) BOOL atMaxTime; // @synthesize atMaxTime=_atMaxTime;
 @property (nonatomic, getter=isAtMinTime) BOOL atMinTime; // @synthesize atMinTime=_atMinTime;
 @property (strong, nonatomic) NSArray *availableMetadataFormats; // @synthesize availableMetadataFormats=_availableMetadataFormats;
@@ -159,6 +159,7 @@
 - (void)_updateScanningForwardRate;
 - (void)actuallySeekToTime;
 - (BOOL)allowsExternalPlayback;
+- (BOOL)allowsIdleSleepPrevention;
 - (id)audioMediaSelectionOptions;
 - (id)audioOptions;
 - (void)autoplay:(id)arg1;
@@ -260,6 +261,8 @@
 - (void)setRateWithForce:(double)arg1;
 - (void)setVolume:(double)arg1;
 - (void)skipBackwardThirtySeconds:(id)arg1;
+- (void)startAllowingIdleSleepPrevention;
+- (void)stopAllowingIdleSleepPrevention;
 - (void)throttledSeekToTime:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3;
 - (void)toggleMuted:(id)arg1;
 - (void)togglePlayback:(id)arg1;

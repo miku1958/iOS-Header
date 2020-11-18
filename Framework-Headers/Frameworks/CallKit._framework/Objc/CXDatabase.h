@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_sqlQueryToStatements;
 }
 
+@property (readonly, nonatomic) int countOfRecordsModifiedByLastQuery;
 @property (nonatomic) struct sqlite3 *database; // @synthesize database=_database;
 @property (readonly, nonatomic) long long lastInsertedRowID;
 @property (strong, nonatomic) NSMutableDictionary *sqlQueryToStatements; // @synthesize sqlQueryToStatements=_sqlQueryToStatements;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)executeSQL:(id)arg1 withStatementPreparationBlock:(CDUnknownBlockType)arg2 transient:(BOOL)arg3 error:(id *)arg4;
 - (id)init;
 - (id)initWithURL:(id)arg1 readOnly:(BOOL)arg2 error:(id *)arg3;
+- (id)namesOfColumnsInTableWithName:(id)arg1 error:(id *)arg2;
 - (BOOL)performTransactionWithBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (BOOL)rollbackTransactionWithError:(id *)arg1;
 - (BOOL)selectSQL:(id)arg1 withBindings:(id)arg2 expectedColumnCount:(long long)arg3 resultRowHandler:(CDUnknownBlockType)arg4 error:(id *)arg5;

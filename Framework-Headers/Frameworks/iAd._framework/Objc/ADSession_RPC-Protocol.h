@@ -4,10 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSError;
+@class ADAdImpressionPublicAttributes, NSError, NSString, NSURL;
 
 @protocol ADSession_RPC
-- (void)_remote_heartbeatTokenDidChange:(NSData *)arg1 expirationDate:(double)arg2 error:(NSError *)arg3;
+- (void)_remote_actionViewControllerReadyForPresentationForAdSpaceWithIdentifier:(NSString *)arg1;
+- (void)_remote_adImpressionDidLoadWithPublicAttributes:(ADAdImpressionPublicAttributes *)arg1 identifier:(NSString *)arg2;
+- (void)_remote_closeClientAdSpaceWithIdentifier:(NSString *)arg1;
+- (void)_remote_contentProxyURLDidChange:(NSURL *)arg1;
+- (void)_remote_creativeWithAdSpaceIdentifier:(NSString *)arg1 didFailWithError:(NSError *)arg2;
+- (void)_remote_dismissViewControllerForAdSpaceWithIdentifier:(NSString *)arg1;
+- (void)_remote_dismissViewControllerForAdSpaceWithIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(void))arg2;
+- (void)_remote_openURL:(NSURL *)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 - (void)_remote_policyEngineDidIdleDisable;
+- (void)_remote_requestViewControllerWithClassName:(NSString *)arg1 forAdSpaceControllerWithIdentifier:(NSString *)arg2 forAdSpaceWithIdentifier:(NSString *)arg3;
+- (void)_remote_setRequiresFastVisibilityTestOnly:(BOOL)arg1 withIdentifier:(NSString *)arg2;
+- (void)_remote_updateActionViewControllerOrientation:(unsigned long long)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 @end
 

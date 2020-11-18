@@ -16,6 +16,7 @@
 @property (nonatomic) BOOL failed;
 @property (copy, nonatomic) NSString *mimeType;
 @property (copy, nonatomic) NSString *sourceMapURL;
+@property (copy, nonatomic) NSString *targetId;
 @property (nonatomic) long long type;
 @property (copy, nonatomic) NSString *url;
 

@@ -6,29 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class CNContact, NSArray, NSString;
+@class NSArray, NSString;
 
 @interface WBUAutoFillDisplayData : NSObject
 {
     NSString *_label;
-    CNContact *_contact;
     NSArray *_fillMatches;
-    NSArray *_skipMatches;
 }
 
-@property (readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-@property (readonly, nonatomic) NSString *displayString;
 @property (readonly, copy, nonatomic) NSArray *fillMatches; // @synthesize fillMatches=_fillMatches;
-@property (readonly, nonatomic) NSString *headerString;
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
-@property (readonly, copy, nonatomic) NSArray *skipMatches; // @synthesize skipMatches=_skipMatches;
+@property (readonly, nonatomic) NSString *property;
 @property (readonly, nonatomic) NSString *valueString;
-@property (readonly, nonatomic) NSString *valueWithLabelString;
 
 - (void).cxx_destruct;
 - (id)addressStringForLabel:(id)arg1;
-- (id)fillAndSkipString;
-- (id)initWithLabel:(id)arg1 contact:(id)arg2 fillMatches:(id)arg3 skipMatches:(id)arg4;
+- (id)initWithLabel:(id)arg1 fillMatches:(id)arg2;
 
 @end
 

@@ -4,21 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CameraUI/CAMPerformanceTestHarness.h>
+#import <CameraUI/CAMModeAndDeviceConfigurationTestHarness.h>
 
 @class CAMViewfinderViewController;
 
-@interface CAMDeviceSwitchTestHarness : CAMPerformanceTestHarness
+@interface CAMDeviceSwitchTestHarness : CAMModeAndDeviceConfigurationTestHarness
 {
-    CAMViewfinderViewController *_viewfinder;
+    BOOL _testingAnimation;
+    CAMViewfinderViewController *_viewfinderViewController;
     long long _desiredDevicePosition;
 }
 
-+ (id)harnessWithTestName:(id)arg1 viewfinder:(id)arg2 devicePosition:(long long)arg3;
+@property (readonly, nonatomic) long long desiredDevicePosition; // @synthesize desiredDevicePosition=_desiredDevicePosition;
+@property (readonly, nonatomic, getter=isTestingAnimation) BOOL testingAnimation; // @synthesize testingAnimation=_testingAnimation;
+@property (readonly, nonatomic) CAMViewfinderViewController *viewfinderViewController; // @synthesize viewfinderViewController=_viewfinderViewController;
+
 - (void).cxx_destruct;
-- (void)ensureCaptureDevicePosition:(long long)arg1 thenPerform:(CDUnknownBlockType)arg2;
-- (id)initWithTestName:(id)arg1 viewfinder:(id)arg2 devicePosition:(long long)arg3;
-- (void)runConfiguredTest;
+- (void)_ensureCaptureDevicePosition:(long long)arg1 thenPerform:(CDUnknownBlockType)arg2;
+- (void)handleDidOpenViewfinderForReason:(long long)arg1;
+- (id)initWithTestName:(id)arg1 viewfinderViewController:(id)arg2 devicePosition:(long long)arg3 testingAnimation:(BOOL)arg4;
+- (void)startTesting;
 
 @end
 

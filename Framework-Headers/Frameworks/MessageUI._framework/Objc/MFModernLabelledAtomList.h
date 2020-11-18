@@ -9,30 +9,31 @@
 #import <MessageUI/MFModernAddressAtomDelegate-Protocol.h>
 #import <MessageUI/MFPassthroughViewProvider-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString, UIColor, UILabel;
+@class NSArray, NSMutableArray, NSString, UIColor, UILabel;
 @protocol MFModernLabelledAtomListDelegate;
 
 @interface MFModernLabelledAtomList : UIView <MFPassthroughViewProvider, MFModernAddressAtomDelegate>
 {
-    UILabel *_label;
     void *_addressBook;
-    id<MFModernLabelledAtomListDelegate> _delegate;
-    NSArray *_addresses;
     NSMutableArray *_addressAtoms;
     NSString *_title;
-    UIColor *_labelTextColor;
-    NSDictionary *_recipients;
     BOOL _labelVisible;
     unsigned int _needsReflow:1;
     double _previousWidth;
+    UILabel *_label;
     UILabel *_lastBaselineDeceptionLabel;
     BOOL _primary;
-    unsigned long long _numberOfRows;
+    UIColor *_labelTextColor;
     double _lineSpacing;
+    unsigned long long _numberOfRows;
     NSArray *_viewsToDodge;
+    id<MFModernLabelledAtomListDelegate> _delegate;
+    NSArray *_addresses;
 }
 
+@property (copy, nonatomic) NSArray *addresses; // @synthesize addresses=_addresses;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<MFModernLabelledAtomListDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UILabel *label; // @synthesize label=_label;
@@ -49,6 +50,7 @@
 + (id)defaultLabelTextColor;
 + (id)primaryLabelFont;
 + (double)spaceBetweenColonAndFirstAtomNaturalEdge;
+- (void).cxx_destruct;
 - (struct CGRect)_frameForAtomAtIndex:(unsigned long long)arg1 withStartingPoint:(struct CGPoint)arg2 row:(inout unsigned long long *)arg3;
 - (void)_reflow;
 - (void)_reflowIfNeeded;
@@ -62,7 +64,7 @@
 - (void)crossFadeLabelVisibility:(BOOL)arg1 atomSeparatorStyle:(int)arg2 withAnimationCoordinator:(id)arg3;
 - (void)dealloc;
 - (void)enumerateAddressAtomsUsingBlock:(CDUnknownBlockType)arg1;
-- (id)initWithLabel:(id)arg1 title:(id)arg2 addressBook:(void *)arg3;
+- (id)initWithLabel:(id)arg1 title:(id)arg2 addressBook:(const void *)arg3;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGRect)labelFrame;
 - (id)labelText;
@@ -75,7 +77,6 @@
 - (void)setAddressAtomsArePrimary:(BOOL)arg1;
 - (void)setAddresses:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setAtomAlpha:(double)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)setOpaque:(BOOL)arg1;
 - (void)setOverrideFont:(id)arg1;
 - (id)title;

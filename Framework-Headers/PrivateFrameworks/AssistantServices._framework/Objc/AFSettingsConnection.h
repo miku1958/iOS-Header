@@ -42,8 +42,6 @@
 - (void)deleteAccountWithIdentifier:(id)arg1;
 - (void)disableDESWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchEventRecordsFromAnalyticsStoreAtPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)fetchSiriDisabledAppIDsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)fetchSiriIntegrationEnabledForAppID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchSupportedLanguageCodes:(CDUnknownBlockType)arg1;
 - (void)getAvailableVoicesForLanguage:(id)arg1 includeAssetInfo:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getAvailableVoicesForRecognitionLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -57,6 +55,7 @@
 - (void)runAdaptationRecipeEvaluation:(id)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)runLiveAdaptationRecipeEvaluationWithBaseURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveAccount:(id)arg1 setActive:(BOOL)arg2;
+- (void)sendMetricsToServerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setActiveAccountIdentifier:(id)arg1;
 - (void)setAssistantEnabled:(BOOL)arg1;
 - (void)setDESLotteryWinOverrideEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
@@ -69,7 +68,6 @@
 - (void)setOfflineDictationProfileOverridePath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setOutputVoice:(id)arg1;
 - (void)setOutputVoice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)setSiriAccess:(BOOL)arg1 forAppID:(id)arg2;
 - (void)startRemoteRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startUIRequest:(id)arg1;
 

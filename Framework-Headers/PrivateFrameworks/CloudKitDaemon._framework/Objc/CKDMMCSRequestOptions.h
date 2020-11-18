@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDMMCSRequestOptions : NSObject
@@ -18,6 +18,9 @@ __attribute__((visibility("hidden")))
     NSString *_applicationSecondaryID;
     NSString *_containerID;
     NSArray *_zoneNames;
+    NSString *_deviceHardwareID;
+    NSData *_authPutResponse;
+    NSDictionary *_authPutResponseHeaders;
     long long _qualityOfService;
     NSDictionary *_MMCSRequestOptions;
 }
@@ -27,7 +30,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL allowsPowerNapScheduling; // @synthesize allowsPowerNapScheduling=_allowsPowerNapScheduling;
 @property (strong, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
 @property (strong, nonatomic) NSString *applicationSecondaryID; // @synthesize applicationSecondaryID=_applicationSecondaryID;
+@property (strong, nonatomic) NSData *authPutResponse; // @synthesize authPutResponse=_authPutResponse;
+@property (strong, nonatomic) NSDictionary *authPutResponseHeaders; // @synthesize authPutResponseHeaders=_authPutResponseHeaders;
 @property (strong, nonatomic) NSString *containerID; // @synthesize containerID=_containerID;
+@property (strong, nonatomic) NSString *deviceHardwareID; // @synthesize deviceHardwareID=_deviceHardwareID;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (nonatomic) BOOL usesBackgroundSession; // @synthesize usesBackgroundSession=_usesBackgroundSession;
 @property (strong, nonatomic) NSArray *zoneNames; // @synthesize zoneNames=_zoneNames;

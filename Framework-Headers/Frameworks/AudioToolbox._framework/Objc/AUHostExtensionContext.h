@@ -27,6 +27,7 @@
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
+- (id)_derivedExtensionAuxiliaryHostProtocol;
 - (void)dealloc;
 - (void)propertiesChanged:(id)arg1;
 - (void)syncParameter:(unsigned long long)arg1 value:(float)arg2 extOriginator:(unsigned long long)arg3 hostTime:(unsigned long long)arg4 eventType:(unsigned int)arg5;

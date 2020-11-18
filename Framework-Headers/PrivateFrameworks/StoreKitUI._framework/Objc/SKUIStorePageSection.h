@@ -91,6 +91,7 @@
 - (void)prefetchResourcesWithReason:(long long)arg1;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)productPageOverlayDidDismiss:(id)arg1;
+- (void)registerContextActionsForCell:(id)arg1 indexPath:(id)arg2 viewController:(id)arg3;
 - (void)reloadCellWithIndexPath:(id)arg1 reason:(long long)arg2;
 - (void)reloadVisibleCellsWithReason:(long long)arg1;
 - (BOOL)requestLayoutWithReloadReason:(long long)arg1;
@@ -99,6 +100,7 @@
 - (void)showPageWithLink:(id)arg1;
 - (void)showProductViewControllerWithItem:(id)arg1;
 - (id)targetScrollingIndexPathForElementWithIndexBarEntryID:(id)arg1 relativeSectionIndex:(long long)arg2;
+- (void)unregisterContextActionsForCell:(id)arg1 indexPath:(id)arg2 viewController:(id)arg3;
 - (BOOL)updateCellWithIndexPath:(id)arg1 itemState:(id)arg2 animated:(BOOL)arg3;
 - (long long)updateWithContext:(id)arg1 pageComponent:(id)arg2;
 - (void)willAppearInContext:(id)arg1;

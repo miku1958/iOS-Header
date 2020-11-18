@@ -9,12 +9,12 @@
 #import <VideoSubscriberAccount/NSXPCListenerDelegate-Protocol.h>
 #import <VideoSubscriberAccount/VSServiceConnectionHandlerDelegate-Protocol.h>
 
-@class NSMutableSet, NSString, NSXPCInterface;
+@class NSArray, NSMutableSet, NSString, NSXPCInterface;
 
 __attribute__((visibility("hidden")))
 @interface VSServiceListener : NSObject <VSServiceConnectionHandlerDelegate, NSXPCListenerDelegate>
 {
-    NSString *_entitlementName;
+    NSArray *_entitlementNames;
     NSXPCInterface *_exportedInterface;
     id _exportedObject;
     NSMutableSet *_connectionHandlers;
@@ -23,13 +23,15 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableSet *connectionHandlers; // @synthesize connectionHandlers=_connectionHandlers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) NSString *entitlementName; // @synthesize entitlementName=_entitlementName;
+@property (copy, nonatomic) NSArray *entitlementNames; // @synthesize entitlementNames=_entitlementNames;
 @property (strong, nonatomic) NSXPCInterface *exportedInterface; // @synthesize exportedInterface=_exportedInterface;
 @property (strong, nonatomic) id exportedObject; // @synthesize exportedObject=_exportedObject;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addConnectionHandler:(id)arg1;
+- (void)_removeConnectionHandler:(id)arg1;
 - (void)connectionHandlerDidFinish:(id)arg1;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

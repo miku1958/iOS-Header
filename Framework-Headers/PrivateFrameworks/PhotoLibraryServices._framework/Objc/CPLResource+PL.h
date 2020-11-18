@@ -7,6 +7,8 @@
 #import <CloudPhotoLibrary/CPLResource.h>
 
 @interface CPLResource (PL)
++ (id)imageDerivativeTypes;
++ (id)videoDerivativeTypes;
 - (BOOL)deleteAfterUpload;
 - (void)setDeleteAfterUpload:(BOOL)arg1;
 @end

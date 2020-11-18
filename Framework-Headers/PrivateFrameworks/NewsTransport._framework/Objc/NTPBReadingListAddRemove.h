@@ -22,6 +22,8 @@
     int _characterCount;
     NSString *_creativeId;
     int _feedType;
+    NSString *_groupFeedId;
+    int _groupType;
     NSString *_language;
     NSMutableArray *_namedEntities;
     int _nextArticleAffordanceType;
@@ -39,6 +41,7 @@
     BOOL _isCoverArticle;
     BOOL _isDigitalReplicaAd;
     BOOL _isFreeArticle;
+    BOOL _isGroupedArticle;
     BOOL _isNotificationArticle;
     BOOL _isPaidSubscriberToSourceChannel;
     BOOL _isUserSubscribedToFeed;
@@ -49,6 +52,7 @@
         unsigned int backendArticleVersion:1;
         unsigned int characterCount:1;
         unsigned int feedType:1;
+        unsigned int groupType:1;
         unsigned int nextArticleAffordanceType:1;
         unsigned int publisherArticleVersion:1;
         unsigned int userAction:1;
@@ -56,6 +60,7 @@
         unsigned int isCoverArticle:1;
         unsigned int isDigitalReplicaAd:1;
         unsigned int isFreeArticle:1;
+        unsigned int isGroupedArticle:1;
         unsigned int isNotificationArticle:1;
         unsigned int isPaidSubscriberToSourceChannel:1;
         unsigned int isUserSubscribedToFeed:1;
@@ -72,6 +77,8 @@
 @property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
 @property (nonatomic) int feedType; // @synthesize feedType=_feedType;
 @property (nonatomic) BOOL fromNextArticleAffordanceTap; // @synthesize fromNextArticleAffordanceTap=_fromNextArticleAffordanceTap;
+@property (strong, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
+@property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (nonatomic) BOOL hasAddRemoveReadingListLocation;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (nonatomic) BOOL hasArticleType;
@@ -82,9 +89,12 @@
 @property (readonly, nonatomic) BOOL hasCreativeId;
 @property (nonatomic) BOOL hasFeedType;
 @property (nonatomic) BOOL hasFromNextArticleAffordanceTap;
+@property (readonly, nonatomic) BOOL hasGroupFeedId;
+@property (nonatomic) BOOL hasGroupType;
 @property (nonatomic) BOOL hasIsCoverArticle;
 @property (nonatomic) BOOL hasIsDigitalReplicaAd;
 @property (nonatomic) BOOL hasIsFreeArticle;
+@property (nonatomic) BOOL hasIsGroupedArticle;
 @property (nonatomic) BOOL hasIsNotificationArticle;
 @property (nonatomic) BOOL hasIsPaidSubscriberToSourceChannel;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
@@ -104,6 +114,7 @@
 @property (nonatomic) BOOL isCoverArticle; // @synthesize isCoverArticle=_isCoverArticle;
 @property (nonatomic) BOOL isDigitalReplicaAd; // @synthesize isDigitalReplicaAd=_isDigitalReplicaAd;
 @property (nonatomic) BOOL isFreeArticle; // @synthesize isFreeArticle=_isFreeArticle;
+@property (nonatomic) BOOL isGroupedArticle; // @synthesize isGroupedArticle=_isGroupedArticle;
 @property (nonatomic) BOOL isNotificationArticle; // @synthesize isNotificationArticle=_isNotificationArticle;
 @property (nonatomic) BOOL isPaidSubscriberToSourceChannel; // @synthesize isPaidSubscriberToSourceChannel=_isPaidSubscriberToSourceChannel;
 @property (nonatomic) BOOL isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;
@@ -126,6 +137,7 @@
 - (void).cxx_destruct;
 - (int)StringAsArticleType:(id)arg1;
 - (int)StringAsFeedType:(id)arg1;
+- (int)StringAsGroupType:(id)arg1;
 - (int)StringAsNextArticleAffordanceType:(id)arg1;
 - (void)addNamedEntities:(id)arg1;
 - (id)articleTypeAsString:(int)arg1;
@@ -134,6 +146,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)feedTypeAsString:(int)arg1;
+- (id)groupTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

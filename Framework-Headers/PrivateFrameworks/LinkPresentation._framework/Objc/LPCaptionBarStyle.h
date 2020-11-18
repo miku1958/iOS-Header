@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionBarAccessoryStyle, LPImageViewStyle, LPPadding, LPPlayButtonStyle, LPPointUnit, LPVerticalTextStackViewStyle;
+@class LPCaptionBarAccessoryStyle, LPImageViewStyle, LPMusicPlayButtonStyle, LPPadding, LPPointUnit, LPVerticalTextStackViewStyle;
 
 __attribute__((visibility("hidden")))
 @interface LPCaptionBarStyle : NSObject
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     LPVerticalTextStackViewStyle *_textStack;
     LPPointUnit *_minimumWidth;
     LPImageViewStyle *_placeholderIcon;
-    LPPlayButtonStyle *_playButton;
+    LPMusicPlayButtonStyle *_playButton;
     LPPadding *_playButtonPadding;
 }
 
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) LPImageViewStyle *leadingIcon; // @synthesize leadingIcon=_leadingIcon;
 @property (strong, nonatomic) LPPointUnit *minimumWidth; // @synthesize minimumWidth=_minimumWidth;
 @property (readonly, nonatomic) LPImageViewStyle *placeholderIcon; // @synthesize placeholderIcon=_placeholderIcon;
-@property (readonly, nonatomic) LPPlayButtonStyle *playButton; // @synthesize playButton=_playButton;
+@property (readonly, nonatomic) LPMusicPlayButtonStyle *playButton; // @synthesize playButton=_playButton;
 @property (readonly, strong, nonatomic) LPPadding *playButtonPadding; // @synthesize playButtonPadding=_playButtonPadding;
 @property (readonly, nonatomic) LPVerticalTextStackViewStyle *textStack; // @synthesize textStack=_textStack;
 @property (readonly, nonatomic) LPCaptionBarAccessoryStyle *trailingAccessory; // @synthesize trailingAccessory=_trailingAccessory;
@@ -34,6 +34,10 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithPlatform:(long long)arg1;
+- (id)leftAccessory;
+- (id)leftIcon;
+- (id)rightAccessory;
+- (id)rightIcon;
 
 @end
 

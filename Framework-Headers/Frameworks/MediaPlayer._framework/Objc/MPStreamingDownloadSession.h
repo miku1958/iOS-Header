@@ -13,6 +13,7 @@
 @interface MPStreamingDownloadSession : NSObject <NSCopying>
 {
     BOOL _didStartLeaseSession;
+    BOOL _iTunesStoreStream;
     BOOL _isHLSAsset;
     NSString *_assetFlavor;
     unsigned long long _assetQuality;
@@ -21,6 +22,8 @@
     NSDictionary *_purchaseBundle;
     NSDictionary *_responseAssetDictionary;
     NSURL *_sourceURL;
+    NSURL *_streamingKeyServerURL;
+    NSURL *_streamingKeyCertificateURL;
     NSURL *_alternateSourceURL;
 }
 
@@ -29,11 +32,14 @@
 @property (nonatomic) unsigned long long assetQuality; // @synthesize assetQuality=_assetQuality;
 @property (nonatomic) BOOL didStartLeaseSession; // @synthesize didStartLeaseSession=_didStartLeaseSession;
 @property (nonatomic) unsigned long long downloadToken; // @synthesize downloadToken=_downloadToken;
+@property (nonatomic, getter=isiTunesStoreStream) BOOL iTunesStoreStream; // @synthesize iTunesStoreStream=_iTunesStoreStream;
 @property (nonatomic) BOOL isHLSAsset; // @synthesize isHLSAsset=_isHLSAsset;
 @property (nonatomic) unsigned long long protectionType; // @synthesize protectionType=_protectionType;
 @property (copy, nonatomic) NSDictionary *purchaseBundle; // @synthesize purchaseBundle=_purchaseBundle;
 @property (strong, nonatomic) NSDictionary *responseAssetDictionary; // @synthesize responseAssetDictionary=_responseAssetDictionary;
 @property (copy, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
+@property (copy, nonatomic) NSURL *streamingKeyCertificateURL; // @synthesize streamingKeyCertificateURL=_streamingKeyCertificateURL;
+@property (copy, nonatomic) NSURL *streamingKeyServerURL; // @synthesize streamingKeyServerURL=_streamingKeyServerURL;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

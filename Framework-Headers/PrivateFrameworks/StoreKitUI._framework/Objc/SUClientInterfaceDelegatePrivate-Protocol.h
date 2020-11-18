@@ -11,10 +11,12 @@
 @protocol SUClientInterfaceDelegatePrivate <SUClientInterfaceDelegate>
 
 @optional
+- (void)clientInterface:(SUClientInterface *)arg1 dismissSafariViewControllerAnimated:(BOOL)arg2 fromViewController:(UIViewController *)arg3 completion:(void (^)(void))arg4;
 - (void)clientInterface:(SUClientInterface *)arg1 dismissViewController:(UIViewController *)arg2 animated:(BOOL)arg3 completion:(void (^)(void))arg4;
 - (void)clientInterface:(SUClientInterface *)arg1 dispatchOnPageResponseWithData:(NSData *)arg2 response:(NSHTTPURLResponse *)arg3;
 - (void)clientInterface:(SUClientInterface *)arg1 dispatchXEvent:(NSDictionary *)arg2 completionBlock:(void (^)(BOOL))arg3;
 - (BOOL)clientInterface:(SUClientInterface *)arg1 isAllowedToOpenExternalURL:(NSURL *)arg2;
+- (void)clientInterface:(SUClientInterface *)arg1 presentSafariViewControllerWithURL:(NSURL *)arg2 fromViewController:(UIViewController *)arg3 animated:(BOOL)arg4 completion:(void (^)(void))arg5;
 - (void)clientInterface:(SUClientInterface *)arg1 willDismissViewController:(UIViewController *)arg2;
 - (void)clientInterface:(SUClientInterface *)arg1 willPresentViewController:(UIViewController *)arg2;
 @end

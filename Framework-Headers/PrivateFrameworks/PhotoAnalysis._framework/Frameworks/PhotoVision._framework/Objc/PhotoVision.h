@@ -23,9 +23,11 @@
     NSURL *_cacheDirUrl;
 }
 
++ (unsigned int)activeFaceprintVersion;
++ (BOOL)facesSyncFeatureEnabled;
 - (void).cxx_destruct;
-- (unsigned int)activeFaceprintVersion;
 - (id)analyzeImage:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)buildPersonsWithCanceler:(id)arg1 error:(id *)arg2;
 - (BOOL)cancelAllSuggestionRequests;
 - (void)cancelFaceClustering;
 - (BOOL)cancelSuggestionRequest:(id)arg1;
@@ -33,6 +35,7 @@
 - (void)configurePhotoVisionContextWithParams:(id)arg1;
 - (id)context;
 - (void)drawFaceboxes:(id)arg1 inImage:(id)arg2 outputFilename:(id)arg3;
+- (void)dropFaceClusterSequenceNumbers:(id)arg1;
 - (BOOL)faceClusteringIsNeeded;
 - (BOOL)getFaceClusters:(id *)arg1 clusteringThreshold:(double *)arg2 utilizingGPU:(BOOL *)arg3 error:(id *)arg4;
 - (id)initWithPersistenceDelegate:(id)arg1 notificationListener:(id)arg2 options:(id)arg3;

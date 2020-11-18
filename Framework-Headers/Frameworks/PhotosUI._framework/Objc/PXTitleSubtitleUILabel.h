@@ -14,6 +14,7 @@
 {
     BOOL _needsUpdateLayerPromise;
     BOOL _rendersTextAsynchronously;
+    BOOL _shouldRasterizeTextLayer;
     BOOL _diagnosticsEnabled;
     NSString *_titleText;
     NSString *_subtitleText;
@@ -32,6 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double lastBaseline;
 @property (nonatomic) BOOL rendersTextAsynchronously; // @synthesize rendersTextAsynchronously=_rendersTextAsynchronously;
+@property (nonatomic) BOOL shouldRasterizeTextLayer; // @synthesize shouldRasterizeTextLayer=_shouldRasterizeTextLayer;
 @property (strong, nonatomic) PXTitleSubtitleLabelSpec *spec; // @synthesize spec=_spec;
 @property (copy, nonatomic) NSString *subtitleText; // @synthesize subtitleText=_subtitleText;
 @property (readonly) Class superclass;

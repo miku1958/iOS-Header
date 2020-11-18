@@ -8,7 +8,7 @@
 
 #import <WebUI/WBUFormAutoFillWebView-Protocol.h>
 
-@class NSString, UIView;
+@class NSString, UIViewController;
 
 @interface UIWebBrowserView (WebUIExtras) <WBUFormAutoFillWebView>
 
@@ -17,8 +17,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (copy, nonatomic, setter=webui_setLastGeneratedPasswordForCurrentBackForwardItem:) NSString *webui_lastGeneratedPasswordForCurrentBackForwardItem;
+@property (readonly, nonatomic) UIViewController *webui_presentingViewController;
 @property (readonly, nonatomic) BOOL webui_privateBrowsingEnabled;
-@property (readonly, nonatomic) UIView *webui_viewForAutoFillPrompt;
 
 - (id)_frameToFormMetadataForLastPasswordGenerationOrSubmitEvent;
 - (void)enumerateUnsubmittedFormsUsingBlock:(CDUnknownBlockType)arg1;

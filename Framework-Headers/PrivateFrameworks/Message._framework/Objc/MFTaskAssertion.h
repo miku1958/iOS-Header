@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class BKSProcessAssertion, NSString;
+@class BKSProcessAssertion;
 @protocol OS_dispatch_source;
 
 @interface MFTaskAssertion : NSObject
 {
     BKSProcessAssertion *_assertion;
     NSObject<OS_dispatch_source> *_timer;
-    NSString *_name;
 }
 
 - (void)cancelTimer;
 - (void)dealloc;
-- (id)init;
 - (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 expiration:(double)arg2 preventIdleSleep:(BOOL)arg3;
 - (id)initWithName:(id)arg1 preventIdleSleep:(BOOL)arg2;

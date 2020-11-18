@@ -45,11 +45,12 @@
 - (void *)_copyDefaultExchangeEventsCalendar:(BOOL)arg1;
 - (void *)_copyExchangeCalendarStore:(BOOL)arg1;
 - (id)_defaultMailFolderWithDefaultType:(int)arg1 fallbackType:(int)arg2 fallbackName:(id)arg3;
+- (id)_easEndPointFQDNFromURL:(id)arg1;
 - (void)_explodeEmailAddress:(id)arg1 outUsername:(id *)arg2 outEmailAddress:(id *)arg3;
 - (void)_fillOutActionsArray:(id)arg1 responseArray:(id)arg2 withTask:(id)arg3 added:(id)arg4 removed:(id)arg5 modified:(id)arg6 preserved:(id)arg7 addedResponse:(id)arg8 modifiedResponse:(id)arg9 removedResponse:(id)arg10 fetchedResponse:(id)arg11;
 - (id)_folderHierarchy;
 - (BOOL)_generateAutodiscoverURLsForEmailAddress:(id)arg1 explicitUsername:(id)arg2 withConsumer:(id)arg3;
-- (void)_getContextElementsForItemChangeType:(long long)arg1 dataclass:(long long)arg2 nativeContext:(id)arg3 outContext:(id *)arg4 outServerId:(id *)arg5;
+- (void)_getContextElementsForItemChangeType:(unsigned long long)arg1 dataclass:(long long)arg2 nativeContext:(id)arg3 outContext:(id *)arg4 outServerId:(id *)arg5;
 - (id)_newPolicyManager;
 - (void)_reallyCancelAllSearchQueries;
 - (void)_reallyCancelPendingSearchQuery:(id)arg1;
@@ -60,6 +61,7 @@
 - (BOOL)_shouldEditNotesSupportOnProtocolChange;
 - (BOOL)_shouldSaveLastKnownProtocolVersion;
 - (void)_silentlyTearDownAutodiscoveryTasks;
+- (BOOL)_submitAutoDV2TaskForEmailAddress:(id)arg1 withConsumer:(id)arg2;
 - (id)_visibleASFolders;
 - (void)account:(id)arg1 isValid:(BOOL)arg2 validationError:(id)arg3;
 - (void)accountDidUpdateProtocolVersion;
@@ -69,7 +71,9 @@
 - (id)asFolderHierarchyTaskManager:(id)arg1;
 - (id)asFolderWithId:(id)arg1;
 - (BOOL)autodiscoverAccountConfigurationWithConsumer:(id)arg1;
+- (BOOL)autodiscoverOAuthAccountWithConsumer:(id)arg1;
 - (void)autodiscoverTask:(id)arg1 completedWithStatus:(long long)arg2 accountInfo:(id)arg3 shouldRetryWithEmail:(id)arg4 error:(id)arg5;
+- (void)autodiscoverV2Task:(id)arg1 completedWithStatus:(long long)arg2 authorizationURI:(id)arg3 easEndPoint:(id)arg4 error:(id)arg5;
 - (void)blowAwayFolderCache;
 - (id)calendarConstraintsPath;
 - (void)cancelCalendarDirectorySearchWithID:(id)arg1;

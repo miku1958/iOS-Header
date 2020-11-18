@@ -154,6 +154,7 @@
 - (void)addItemWithProductID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addLibraryFilterPredicate:(id)arg1;
 - (void)addNonLibraryOwnedPlaylistWithGlobalID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addNonLibraryOwnedPlaylistsWithGlobalIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addPlaylistStoreItemsWithMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)addPlaylistWithName:(id)arg1;
 - (id)addPlaylistWithName:(id)arg1 activeGeniusPlaylist:(BOOL)arg2;
@@ -267,6 +268,7 @@
 - (void)setLibraryFilterPredicates;
 - (void)setSyncPlaylistId:(unsigned long long)arg1;
 - (BOOL)setValue:(id)arg1 forDatabaseProperty:(id)arg2;
+- (void)setValues:(id)arg1 forProperties:(id)arg2 forItemPersistentIDs:(id)arg3;
 - (long long)status;
 - (unsigned long long)syncGenerationID;
 - (unsigned long long)syncPlaylistId;

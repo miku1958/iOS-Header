@@ -6,13 +6,21 @@
 
 #import <StoreKitUI/SKUIViewElement.h>
 
+@class NSArray, NSString, NSURL;
+
 @interface SKUIReportAConcernTemplateViewElement : SKUIViewElement
 {
-    long long _concernType;
+    NSURL *_reportConcernURL;
+    long long _itemIdentifier;
+    NSString *_reportConcernExplanation;
 }
 
-@property (readonly, nonatomic) long long concernType; // @synthesize concernType=_concernType;
+@property (readonly, nonatomic) long long itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
+@property (readonly, copy, nonatomic) NSArray *reasonElements;
+@property (readonly, copy, nonatomic) NSString *reportConcernExplanation; // @synthesize reportConcernExplanation=_reportConcernExplanation;
+@property (readonly, copy, nonatomic) NSURL *reportConcernURL; // @synthesize reportConcernURL=_reportConcernURL;
 
+- (void).cxx_destruct;
 - (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;
 
 @end

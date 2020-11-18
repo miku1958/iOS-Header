@@ -6,19 +6,23 @@
 
 #import <Foundation/NSObject.h>
 
-@class CNContactStore;
+@class CNContactStore, CNReputationStore;
 
 @interface CalContactsProvider : NSObject
 {
     CNContactStore *_store;
+    CNReputationStore *_reputationStore;
 }
 
+@property (strong) CNReputationStore *reputationStore; // @synthesize reputationStore=_reputationStore;
 @property (strong) CNContactStore *store; // @synthesize store=_store;
 
 + (id)defaultProvider;
++ (BOOL)shouldWhiteListOrganizerEmailFromJunkChecks:(id)arg1 inReputationStore:(id)arg2;
 - (void).cxx_destruct;
 - (id)_meWithKeys:(id)arg1;
 - (void)contactDidChange:(id)arg1;
+- (id)contactStore;
 - (void)donateEncodedLikenessString:(id)arg1 forEmailAddress:(id)arg2;
 - (id)init;
 - (void)meCardDidChange:(id)arg1;
@@ -26,6 +30,7 @@
 - (id)myFullName;
 - (id)myNameWithStyle:(long long)arg1;
 - (id)myShortDisplayName;
+- (BOOL)shouldWhiteListOrganizerEmailFromJunkChecks:(id)arg1;
 - (id)unifiedContactWithIdentifier:(id)arg1 keysToFetch:(id)arg2;
 - (id)unifiedContactsMatchingPredicate:(id)arg1 keysToFetch:(id)arg2;
 

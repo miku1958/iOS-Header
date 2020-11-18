@@ -11,7 +11,6 @@
 
 @class NSNumber, NSString, NSURL, VSWebServer;
 
-__attribute__((visibility("hidden")))
 @interface VSCookieServer : NSObject <VSWebServerDelegate, VSWebServerConnectionDelegate>
 {
     NSString *_cookieName;

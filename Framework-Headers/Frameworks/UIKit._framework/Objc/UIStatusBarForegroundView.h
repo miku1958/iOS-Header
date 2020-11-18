@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, UIStatusBarComposedData, UIStatusBarForegroundStyleAttributes, UIStatusBarLayoutManager;
+@class NSMutableArray, UIStatusBar, UIStatusBarComposedData, UIStatusBarForegroundStyleAttributes, UIStatusBarLayoutManager;
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarForegroundView : UIView
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) UIStatusBarForegroundStyleAttributes *foregroundStyle; // @synthesize foregroundStyle=_foregroundStyle;
 @property (nonatomic) long long idiom; // @synthesize idiom=_idiom;
+@property (readonly, nonatomic) UIStatusBar *statusBar;
 
 - (void).cxx_destruct;
 - (void)_animateUnlockCompletionBlock:(CDUnknownBlockType)arg1;

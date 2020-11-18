@@ -92,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)newSearchResultsControllerWithSpec:(id)arg1 searchResults:(id)arg2 orAlbum:(struct NSObject *)arg3 title:(id)arg4;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)ppt_prepareForScrollingTestWithSearchText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)pu_debugRows;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)searchBarSearchButtonClicked:(id)arg1;

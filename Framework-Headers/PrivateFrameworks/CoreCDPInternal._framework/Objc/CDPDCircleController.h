@@ -33,7 +33,6 @@
 - (void)_requestToJoinWithRequestBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resetCicleToResolvePendingAfterRecoveryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)applyToJoinCircleWithJoinHandler:(CDUnknownBlockType)arg1;
-- (int)authenticatedCircleStatus:(id *)arg1;
 - (void)cancelApplicationToJoinCircle;
 - (int)circleStatus;
 - (void)dealloc;

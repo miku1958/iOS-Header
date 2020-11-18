@@ -9,7 +9,6 @@
 @class NSDistributedNotificationCenter, NSString;
 @protocol VSRemoteNotifierDelegate;
 
-__attribute__((visibility("hidden")))
 @interface VSRemoteNotifier : NSObject
 {
     NSString *_remoteNotificationName;

@@ -11,26 +11,20 @@
 @interface ISPlayerState : NSObject
 {
     NSString *_diagnosticLabel;
-    double _scale;
     double _photoBlurRadius;
     double _videoAlpha;
     double _videoBlurRadius;
-    double _crossfadeAlpha;
-    double _crossfadeBlurRadius;
 }
 
-@property (readonly, nonatomic) double crossfadeAlpha; // @synthesize crossfadeAlpha=_crossfadeAlpha;
-@property (readonly, nonatomic) double crossfadeBlurRadius; // @synthesize crossfadeBlurRadius=_crossfadeBlurRadius;
 @property (readonly, nonatomic) NSString *diagnosticLabel; // @synthesize diagnosticLabel=_diagnosticLabel;
 @property (readonly, nonatomic) double photoBlurRadius; // @synthesize photoBlurRadius=_photoBlurRadius;
-@property (readonly, nonatomic) double scale; // @synthesize scale=_scale;
 @property (readonly, nonatomic) double videoAlpha; // @synthesize videoAlpha=_videoAlpha;
 @property (readonly, nonatomic) double videoBlurRadius; // @synthesize videoBlurRadius=_videoBlurRadius;
 
-+ (id)outputInfoWithScale:(double)arg1 photoBlurRadius:(double)arg2 videoAlpha:(double)arg3 videoBlurRadius:(double)arg4 crossfadeAlpha:(double)arg5 crossfadeBlurRadius:(double)arg6 label:(id)arg7;
++ (id)outputInfoWithPhotoBlurRadius:(double)arg1 videoAlpha:(double)arg2 videoBlurRadius:(double)arg3 label:(id)arg4;
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithScale:(double)arg1 photoBlurRadius:(double)arg2 videoAlpha:(double)arg3 videoBlurRadius:(double)arg4 crossfadeAlpha:(double)arg5 crossfadeBlurRadius:(double)arg6 label:(id)arg7;
+- (id)initWithPhotoBlurRadius:(double)arg1 videoAlpha:(double)arg2 videoBlurRadius:(double)arg3 label:(id)arg4;
 
 @end
 

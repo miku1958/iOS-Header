@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class CAContext, HMDAccessory, HMDNotificationRegistration, HMDSnapshotFile, HMFMessageDispatcher, NSMapTable, NSMutableArray, NSString, NSUUID;
+@class HMDAccessory, HMDNotificationRegistration, HMDSnapshotFile, HMFMessageDispatcher, NSMapTable, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDSnapshotSlotManager : NSObject <HMFLogging>
@@ -16,7 +16,6 @@
     NSUUID *_uniqueIdentifier;
     HMDSnapshotFile *_mostRecentSnapshot;
     NSMapTable *_snapshotSlots;
-    CAContext *_snapshotContext;
     HMDAccessory *_accessory;
     NSString *_logID;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -39,7 +38,6 @@
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property (strong, nonatomic) CAContext *snapshotContext; // @synthesize snapshotContext=_snapshotContext;
 @property (readonly, nonatomic) NSMapTable *snapshotSlots; // @synthesize snapshotSlots=_snapshotSlots;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;

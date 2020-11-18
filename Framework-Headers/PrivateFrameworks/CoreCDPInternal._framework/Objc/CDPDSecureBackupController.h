@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSDictionary *cachedAccountInfo; // @synthesize cachedAccountInfo=_cachedAccountInfo;
 @property (strong, nonatomic) NSDictionary *cachedAccountLockoutInfo; // @synthesize cachedAccountLockoutInfo=_cachedAccountLockoutInfo;
 @property (strong, nonatomic) CDPDSecureBackupConfiguration *configuration; // @synthesize configuration=_configuration;
-@property (readonly, nonatomic) CDPContext *context; // @synthesize context=_context;
+@property (strong, nonatomic) CDPContext *context; // @synthesize context=_context;
 @property (readonly, weak, nonatomic) id<CDPDSecureBackupDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL fakeNearlyDepletedRecords; // @synthesize fakeNearlyDepletedRecords=_fakeNearlyDepletedRecords;
 @property (strong, nonatomic) id<CDPDSecureBackupProxy> secureBackupProxy; // @synthesize secureBackupProxy=_secureBackupProxy;
@@ -32,36 +32,39 @@
 
 + (id)_sanitizedInfoDictionary:(id)arg1;
 - (void).cxx_destruct;
-- (void)_accountInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_accountInfo:(id *)arg1;
 - (void)_accountLockoutInfoWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_authenticatedEnableSecureBackupWithSecret:(id)arg1 secretType:(unsigned long long)arg2 useCachedSecret:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_authenticatedEnableSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_clientMetadataWithSecretType:(unsigned long long)arg1 length:(unsigned long long)arg2;
 - (id)_currentAnisetteData;
 - (id)_dateWithSecureBackupDateString:(id)arg1;
 - (void)_deleteAllBackupRecordsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deleteSingleICSCBackupWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_disableSecureBackupWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_disableThenEnableWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_enableSecureBackupWithSecret:(id)arg1 secretType:(unsigned long long)arg2 useCachedSecret:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_disableSecureBackup:(id *)arg1;
+- (BOOL)_disableThenEnableWithInfo:(id)arg1 error:(id *)arg2;
+- (void)_enableSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_getBackupRecordDevicesIncludingUnrecoverableRecords:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_recoverBackupDictionaryWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_recoverBackupDictionaryWithContext:(id)arg1 error:(id *)arg2;
 - (id)_recoveryInfoDictionaryFromContext:(id)arg1;
 - (void)_setBackoffDate:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)_stashedPRK;
 - (void)accountInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)accountLockoutInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)authenticatedEnableSecureBackupWithRecoveryKey:(id)arg1 error:(id *)arg2;
 - (void)backupRecordsArePresentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cdpBackupRecordsArePresentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)checkForExistingRecord:(CDUnknownBlockType)arg1;
 - (void)checkForExistingRecordMatchingPredicate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)checkForExistingRecordWithPeerId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)clearAccountInfoCache;
 - (void)deleteAllBackupRecordsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deleteSingleICSCBackupWithCompletion:(CDUnknownBlockType)arg1;
 - (void)disableSecureBackupWithCompletion:(CDUnknownBlockType)arg1;
-- (void)enableSecureBackupRemovingExistingRecordWithSecret:(id)arg1 secretType:(unsigned long long)arg2 useCachedSecret:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)enableSecureBackupWithSecret:(id)arg1 secretType:(unsigned long long)arg2 useCachedSecret:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)enableSecureBackupRemovingExistingRecordWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)enableSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)enableSecureBackupWithRecoveryKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getBackupRecordDevicesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)initWithContext:(id)arg1 proxy:(id)arg2;
 - (id)initWithContext:(id)arg1 uiProvider:(id)arg2 delegate:(id)arg3;
 - (void)isAccountLockedWithShouldReset:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isEligibleForCDPWithCompletion:(CDUnknownBlockType)arg1;
@@ -69,6 +72,8 @@
 - (void)recoverSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resetAccountLockOutWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setBackoffDate:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)stashedPRK;
+- (BOOL)supportsRecoveryKeyRecovery;
 - (void)synchronizeKeyValueStoreWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

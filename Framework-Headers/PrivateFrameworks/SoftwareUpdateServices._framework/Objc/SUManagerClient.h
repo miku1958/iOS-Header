@@ -6,12 +6,13 @@
 
 #import <Foundation/NSObject.h>
 
+#import <SoftwareUpdateServices/SUInstallationConstraintObserverDelegate-Protocol.h>
 #import <SoftwareUpdateServices/SUManagerClientInterface-Protocol.h>
 
-@class NSMutableDictionary, NSXPCConnection, SUDescriptor;
+@class NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection, SUDescriptor;
 @protocol SUManagerClientDelegate;
 
-@interface SUManagerClient : NSObject <SUManagerClientInterface>
+@interface SUManagerClient : NSObject <SUManagerClientInterface, SUInstallationConstraintObserverDelegate>
 {
     NSXPCConnection *_serverConnection;
     id<SUManagerClientDelegate> _delegate;
@@ -22,17 +23,26 @@
     SUDescriptor *_installDescriptor;
     SUDescriptor *_scanDescriptor;
     NSMutableDictionary *_installOperationIDsToOperationHandler;
+    NSMutableSet *_installationConstraintObservers;
 }
 
 @property (nonatomic) int clientType; // @synthesize clientType=_clientType;
-@property (nonatomic) id<SUManagerClientDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<SUManagerClientDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SUDescriptor *installDescriptor; // @synthesize installDescriptor=_installDescriptor;
 @property (strong, nonatomic) SUDescriptor *scanDescriptor; // @synthesize scanDescriptor=_scanDescriptor;
+@property (readonly) Class superclass;
 
 + (BOOL)_shouldDisallowAvailabilityNotifications;
+- (void).cxx_destruct;
 - (void)_cancelAutoInstallOperation:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)_consentAutoInstallOperation:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (id)_getExistingAutoInstallOperationFromModel:(id)arg1;
+- (void)_invalidateAllInstallationConstraintObserversForDownload;
 - (void)_invalidateConnection;
+- (void)_invalidateConstraintObserver:(id)arg1 withError:(id)arg2;
 - (void)_registerAutoInstallOperationClientHandler:(id)arg1;
 - (id)_remoteInterface;
 - (id)_remoteInterfaceWithErrorHandler:(CDUnknownBlockType)arg1;
@@ -53,8 +63,10 @@
 - (void)dealloc;
 - (void)deviceHasSufficientSpaceForDownload:(CDUnknownBlockType)arg1;
 - (void)download:(CDUnknownBlockType)arg1;
+- (void)downloadAndInstallState:(CDUnknownBlockType)arg1;
 - (void)downloadDidFail:(id)arg1 withError:(id)arg2;
 - (void)downloadDidFinish:(id)arg1;
+- (void)downloadDidFinish:(id)arg1 withInstallPolicy:(id)arg2;
 - (void)downloadDidStart:(id)arg1;
 - (void)downloadProgressDidChange:(id)arg1;
 - (void)downloadWasInvalidatedForNewUpdateAvailable:(id)arg1;
@@ -65,7 +77,11 @@
 - (void)installDidFail:(id)arg1 withError:(id)arg2;
 - (void)installDidFinish:(id)arg1;
 - (void)installDidStart:(id)arg1;
+- (void)installPolicyDidChange:(id)arg1;
 - (void)installUpdate:(CDUnknownBlockType)arg1;
+- (void)installUpdateWithOptions:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (void)installationConstraintMonitor:(id)arg1 constraintsDidChange:(unsigned long long)arg2;
+- (void)installationConstraintObserverDidRemoveAllObserverBlocks:(id)arg1;
 - (void)invalidate;
 - (void)isDownloading:(CDUnknownBlockType)arg1;
 - (BOOL)isInstallationKeybagRequired;
@@ -73,6 +89,7 @@
 - (void)isUpdateReadyForInstallation:(CDUnknownBlockType)arg1;
 - (void)noteConnectionDropped;
 - (void)noteServerExiting;
+- (id)observeInstallationConstraintChangesForDownload:(id)arg1 observer:(CDUnknownBlockType)arg2;
 - (void)pauseDownload:(CDUnknownBlockType)arg1;
 - (void)purgeDownload:(CDUnknownBlockType)arg1;
 - (void)resumeDownload:(CDUnknownBlockType)arg1;

@@ -6,8 +6,13 @@
 
 #import <MediaPlayer/MPStoreModelObjectBuilder.h>
 
+@class MPPropertySet, MPStoreModelPlaybackPositionBuilder, MPStoreModelStoreAssetBuilder;
+
 @interface MPStoreModelSongBuilder : MPStoreModelObjectBuilder
 {
+    MPStoreModelPlaybackPositionBuilder *_playbackPositionBuilder;
+    MPStoreModelStoreAssetBuilder *_storeAssetBuilder;
+    MPPropertySet *_storeAssetProperties;
     struct {
         unsigned int initialized:1;
         unsigned int title:1;
@@ -22,20 +27,11 @@
         unsigned int copyrightText:1;
         unsigned int keepLocalEnableState:1;
         unsigned int keepLocalManagedStatus:1;
-        unsigned int localNetworkFileURL:1;
         unsigned int hasCloudSyncSource:1;
-        unsigned int homeSharingAssetAvailable:1;
         unsigned int localFileAsset:1;
         unsigned int libraryAdded:1;
         unsigned int libraryAddEligible:1;
-        unsigned int playbackEndpointType:1;
-        unsigned int protectedContentSupportStorageFilePath:1;
-        unsigned int storeRedownloadParameters:1;
-        unsigned int storeAccountIdentifier:1;
-        unsigned int shouldRememberBookmarkTime:1;
-        unsigned int shouldReportPlayEventsToStore:1;
         unsigned int shouldShowComposer:1;
-        unsigned int storeRedownloadable:1;
         unsigned int volumeNormalization:1;
         unsigned int year:1;
         unsigned int userRating:1;
@@ -55,6 +51,9 @@
         CDStruct_63a3d127 genre;
         struct {
             unsigned int identifiers:1;
+        } homeSharingAsset;
+        struct {
+            unsigned int identifiers:1;
             unsigned int text:1;
             unsigned int hasStoreLyrics:1;
         } lyrics;
@@ -62,6 +61,7 @@
 }
 
 + (id)allSupportedProperties;
+- (void).cxx_destruct;
 - (id)modelObjectWithStoreItemMetadata:(id)arg1;
 
 @end

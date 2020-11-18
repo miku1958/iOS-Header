@@ -22,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SAUILocalImageResource *localImageResource;
+@property (copy, nonatomic) NSString *position;
 @property (readonly) Class superclass;
 
 + (id)buttonItem;

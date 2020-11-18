@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) NSString *passcode;
 @property (nonatomic) BOOL playsKeypadSounds;
 @property (nonatomic, getter=isScreenOn) BOOL screenOn;
+@property (nonatomic) BOOL showsCancelButton;
 @property (nonatomic) BOOL showsEmergencyCallButton;
 @property (nonatomic) BOOL showsStatusField;
 @property (readonly, nonatomic) int style;

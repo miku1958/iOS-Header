@@ -16,7 +16,9 @@
 @interface CNPostalAddress : NSObject <CNObjectValidation, NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSString *_street;
+    NSString *_subLocality;
     NSString *_city;
+    NSString *_subAdministrativeArea;
     NSString *_state;
     NSString *_postalCode;
     NSString *_country;
@@ -34,6 +36,8 @@
 @property (copy, nonatomic) NSString *postalCode; // @synthesize postalCode=_postalCode;
 @property (copy, nonatomic) NSString *state; // @synthesize state=_state;
 @property (copy, nonatomic) NSString *street; // @synthesize street=_street;
+@property (copy, nonatomic) NSString *subAdministrativeArea; // @synthesize subAdministrativeArea=_subAdministrativeArea;
+@property (copy, nonatomic) NSString *subLocality; // @synthesize subLocality=_subLocality;
 @property (readonly) Class superclass;
 
 + (id)localizedStringForKey:(id)arg1;

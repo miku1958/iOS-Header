@@ -25,6 +25,7 @@
     int _deferredFlamesViewState;
     SiriUIConfiguration *_configuration;
     BOOL _flamesViewDeferred;
+    BOOL _inUITrackingMode;
     long long _mode;
     double _disabledMicOpacity;
     id<SiriUISiriStatusViewDelegate> _delegate;
@@ -41,6 +42,7 @@
 @property (nonatomic) BOOL flamesViewDeferred; // @synthesize flamesViewDeferred=_flamesViewDeferred;
 @property (nonatomic) double flamesViewWidth; // @synthesize flamesViewWidth=_flamesViewWidth;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isInUITrackingMode) BOOL inUITrackingMode; // @synthesize inUITrackingMode=_inUITrackingMode;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (readonly) Class superclass;
 

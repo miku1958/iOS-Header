@@ -65,6 +65,12 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsAirCirculationMode:(id)arg1;
+- (int)StringAsClimateZone:(id)arg1;
+- (int)StringAsRelativeFanSpeedSetting:(id)arg1;
+- (int)StringAsRelativeTemperatureSetting:(id)arg1;
+- (id)airCirculationModeAsString:(int)arg1;
+- (id)climateZoneAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -72,6 +78,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)relativeFanSpeedSettingAsString:(int)arg1;
+- (id)relativeTemperatureSettingAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

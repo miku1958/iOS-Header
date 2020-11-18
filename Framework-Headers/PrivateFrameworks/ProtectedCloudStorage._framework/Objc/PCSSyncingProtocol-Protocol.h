@@ -7,12 +7,15 @@
 @class NSDictionary;
 
 @protocol PCSSyncingProtocol
-- (void)checkBackupWithReply:(void (^)(NSString *, NSDate *, NSError *))arg1;
+- (void)deleteThisDevice:(NSDictionary *)arg1 withReply:(void (^)(NSError *))arg2;
+- (void)escrowRecordIDs:(NSDictionary *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
+- (void)fetchAllDeviceKeys:(NSDictionary *)arg1 withReply:(void (^)(NSString *, NSData *, NSData *, NSArray *, NSError *))arg2;
+- (void)fetchStats:(void (^)(UserRegistryStats *))arg1;
 - (void)getAllClients:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getPCSKeyHash:(void (^)(NSData *, NSError *))arg1;
-- (void)performBackupWithReply:(void (^)(NSError *))arg1;
 - (void)requestKeys:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)syncKeys:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)triggerDaily:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)triggerUserRegistryCheck:(NSDictionary *)arg1 withReply:(void (^)(NSError *))arg2;
 @end
 

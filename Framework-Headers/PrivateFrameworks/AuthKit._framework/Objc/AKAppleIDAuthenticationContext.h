@@ -30,6 +30,7 @@
     AKDevice *_companionDevice;
     NSDictionary *_recoveryInfo;
     BOOL _isProxyingForApp;
+    BOOL _shouldSendIdentityTokenForRemoteUI;
     BOOL _isPasswordEditable;
     BOOL _isUsernameEditable;
     BOOL _shouldAllowAppleIDCreation;
@@ -43,6 +44,7 @@
     BOOL _shouldUpdatePersistentServiceTokens;
     BOOL _shouldPreventInteractiveAuth;
     BOOL _shouldForceInteractiveAuth;
+    BOOL _shouldRequestRecoveryPET;
     BOOL _shouldRequestShortLivedToken;
     BOOL _shouldRequestConfigurationInfo;
     BOOL _supportsPiggybacking;
@@ -92,6 +94,7 @@
 @property (copy, nonatomic, setter=_setProxiedAppBundleID:) NSString *_proxiedAppBundleID; // @synthesize _proxiedAppBundleID;
 @property (copy, nonatomic, setter=_setProxiedAppName:) NSString *_proxiedAppName; // @synthesize _proxiedAppName;
 @property (copy, nonatomic, setter=_setShortLivedToken:) NSString *_shortLivedToken; // @synthesize _shortLivedToken;
+@property (nonatomic) BOOL _shouldSendIdentityTokenForRemoteUI; // @synthesize _shouldSendIdentityTokenForRemoteUI;
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (copy, nonatomic) id<AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
 @property (nonatomic) BOOL anticipateEscrowAttempt; // @synthesize anticipateEscrowAttempt=_anticipateEscrowAttempt;
@@ -137,6 +140,7 @@
 @property (nonatomic) BOOL shouldPreventInteractiveAuth; // @synthesize shouldPreventInteractiveAuth=_shouldPreventInteractiveAuth;
 @property (nonatomic) BOOL shouldPromptForPasswordOnly; // @synthesize shouldPromptForPasswordOnly=_shouldPromptForPasswordOnly;
 @property (nonatomic) BOOL shouldRequestConfigurationInfo; // @synthesize shouldRequestConfigurationInfo=_shouldRequestConfigurationInfo;
+@property (nonatomic) BOOL shouldRequestRecoveryPET; // @synthesize shouldRequestRecoveryPET=_shouldRequestRecoveryPET;
 @property (nonatomic) BOOL shouldRequestShortLivedToken; // @synthesize shouldRequestShortLivedToken=_shouldRequestShortLivedToken;
 @property (nonatomic) BOOL shouldSkipSettingsLaunchAlert; // @synthesize shouldSkipSettingsLaunchAlert=_shouldSkipSettingsLaunchAlert;
 @property (nonatomic) BOOL shouldUpdatePersistentServiceTokens; // @synthesize shouldUpdatePersistentServiceTokens=_shouldUpdatePersistentServiceTokens;
@@ -149,6 +153,7 @@
 - (void).cxx_destruct;
 - (void)_handleSecondFactorCodeEntry;
 - (id)_initWithIdentifier:(id)arg1;
+- (BOOL)_localUserHasEmptyPassword;
 - (id)_mapICSCRecoveryResultsToAuthKit:(id)arg1;
 - (id)_sanitizedCopy;
 - (id)_secondFactorQueue;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, NSUUID, SUDownloadMetadata, SUScanOptions;
+@class NSArray, NSString, NSUUID, SUDownloadMetadata, SUScanOptions;
 
 @protocol SUManagerServerInterface
 - (void)cancelAutoInstallOperation:(NSUUID *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
@@ -13,9 +13,10 @@
 - (void)createInstallationKeybag:(NSString *)arg1 forUnattendedInstall:(BOOL)arg2 withResult:(void (^)(BOOL, NSError *))arg3;
 - (void)currentAutoInstallOperation:(BOOL)arg1 withResult:(void (^)(_SUAutoInstallOperationModel *, NSError *))arg2;
 - (void)deviceHasSufficientSpaceForDownload:(void (^)(BOOL, NSError *))arg1;
-- (void)download:(void (^)(SUDownload *, NSError *))arg1;
+- (void)downloadAndInstallState:(void (^)(SUDownload *, SUInstallPolicy *, _SUAutoInstallOperationModel *, NSError *))arg1;
 - (void)extraSpaceNeededForDownloadWithoutAppPurging:(void (^)(NSNumber *, NSError *))arg1;
 - (void)installUpdate:(void (^)(BOOL, NSError *))arg1;
+- (void)installUpdateWithOptions:(NSArray *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
 - (void)isDownloading:(void (^)(BOOL, NSError *))arg1;
 - (void)isInstallationKeybagRequired:(void (^)(BOOL, NSError *))arg1;
 - (void)isScanning:(void (^)(BOOL, NSError *))arg1;

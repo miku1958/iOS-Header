@@ -9,7 +9,7 @@
 #import <UserNotificationsUIKit/NCContentSizeCategoryAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/SBDateLabelDelegate-Protocol.h>
 
-@class NCLookViewFontProvider, NSDate, NSString, NSTimeZone, UIButton, UIImage, UILabel;
+@class NCLookViewFontProvider, NSDate, NSString, NSTimeZone, UIButton, UIImage, UIImageView, UILabel;
 @protocol NCNotificationDateLabel;
 
 @interface NCLookHeaderContentView : UIView <SBDateLabelDelegate, NCContentSizeCategoryAdjusting>
@@ -17,6 +17,7 @@
     NCLookViewFontProvider *_fontProvider;
     UILabel<NCNotificationDateLabel> *_dateLabel;
     UIButton *_iconButton;
+    UIImageView *_iconButtonShadow;
     UIButton *_utilityButton;
     BOOL _adjustsFontForContentSizeCategory;
     BOOL _dateAllDay;
@@ -56,8 +57,9 @@
 - (void).cxx_destruct;
 - (void)_configureDateLabelForShortLook;
 - (void)_configureDateLabelIfNecessary;
-- (void)_configureIconButtonForLongLook;
+- (void)_configureIconButtonForLongLookWithIcon:(id)arg1;
 - (void)_configureIconButtonIfNecessary;
+- (void)_configureIconButtonIfNecessaryWithIcon:(id)arg1;
 - (void)_configureTitleLabel:(id)arg1 forStyle:(long long)arg2;
 - (void)_configureTitleLabelForLongLook:(id)arg1;
 - (void)_configureTitleLabelForShortLook:(id)arg1;
@@ -67,6 +69,7 @@
 - (id)_fontProvider;
 - (double)_headerHeight;
 - (double)_headerHeightForStyle:(long long)arg1;
+- (id)_iconShadowImageForIcon:(id)arg1;
 - (void)_layoutDateLabelForLongLookWithScale:(double)arg1;
 - (void)_layoutDateLabelForShortLookWithScale:(double)arg1;
 - (void)_layoutDateLabelForStyle:(long long)arg1 withScale:(double)arg2;

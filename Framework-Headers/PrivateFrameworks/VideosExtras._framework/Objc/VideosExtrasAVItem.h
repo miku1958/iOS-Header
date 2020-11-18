@@ -6,13 +6,13 @@
 
 #import <MediaPlayer/MPStoreAVItem.h>
 
-#import <VideosExtras/AVAssetResourceLoaderDelegate-Protocol.h>
-
 @class IKAssetElement, NSString;
 
-@interface VideosExtrasAVItem : MPStoreAVItem <AVAssetResourceLoaderDelegate>
+@interface VideosExtrasAVItem : MPStoreAVItem
 {
     BOOL _loadedHLS;
+    id _rtcReportingParentHierarchyToken;
+    NSString *_rtcReportingServiceIdentifier;
     BOOL _background;
     IKAssetElement *_assetElement;
     unsigned long long _mediaType;
@@ -20,21 +20,21 @@
 
 @property (readonly, nonatomic) IKAssetElement *assetElement; // @synthesize assetElement=_assetElement;
 @property (readonly, nonatomic, getter=isBackground) BOOL background; // @synthesize background=_background;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long mediaType; // @synthesize mediaType=_mediaType;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (long long)_expectedPlaybackMode;
 - (void)_networkSettingsChanged:(id)arg1;
+- (BOOL)allowsStoreBagStreamingKeyURLsFallback;
 - (void)dealloc;
 - (id)initWithAssetElement:(id)arg1 mediaType:(unsigned long long)arg2 isBackground:(BOOL)arg3;
 - (BOOL)isAssetURLValid;
 - (BOOL)isValidPlayerSubstituteForItem:(id)arg1;
+- (BOOL)isiTunesStoreStream;
 - (void)loadAssetAndPlayerItem;
-- (BOOL)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
+- (id)rtcReportingParentHierarchyToken;
+- (id)rtcReportingServiceIdentifier;
+- (id)rtcReportingServiceIdentifierWithAssetURL:(id)arg1;
 - (void)setPlaybackStoppedTime:(double)arg1;
 - (unsigned long long)streamType;
 - (long long)type;

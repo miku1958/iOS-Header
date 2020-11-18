@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long layoutOrientation;
 @property (nonatomic) struct _NSRange markedRange;
 @property (nonatomic) struct CGSize maxSize; // @synthesize maxSize=_maxSize;
+@property (nonatomic) double maxTileHeight;
 @property (nonatomic) struct CGSize minSize; // @synthesize minSize=_minSize;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) NSTextContainer *textContainer; // @synthesize textContainer=_textContainer;

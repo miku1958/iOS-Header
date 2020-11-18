@@ -8,31 +8,36 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, _MRTransactionKeyProtobuf;
 
 @interface _MRTransactionPacketProtobuf : PBCodable <NSCopying>
 {
     unsigned long long _totalLength;
-    NSData *_data;
+    unsigned long long _totalWritePosition;
     NSString *_identifier;
-    NSString *_key;
+    _MRTransactionKeyProtobuf *_key;
+    NSData *_packetData;
     struct {
         unsigned int totalLength:1;
+        unsigned int totalWritePosition:1;
     } _has;
 }
 
-@property (strong, nonatomic) NSData *data; // @synthesize data=_data;
-@property (readonly, nonatomic) BOOL hasData;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasKey;
+@property (readonly, nonatomic) BOOL hasPacketData;
 @property (nonatomic) BOOL hasTotalLength;
+@property (nonatomic) BOOL hasTotalWritePosition;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSString *key; // @synthesize key=_key;
+@property (strong, nonatomic) _MRTransactionKeyProtobuf *key; // @synthesize key=_key;
+@property (strong, nonatomic) NSData *packetData; // @synthesize packetData=_packetData;
 @property (nonatomic) unsigned long long totalLength; // @synthesize totalLength=_totalLength;
+@property (nonatomic) unsigned long long totalWritePosition; // @synthesize totalWritePosition=_totalWritePosition;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)description;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

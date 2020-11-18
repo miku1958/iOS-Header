@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
 - (void)configureAsAccessoryViewContainerForPreviewCollection:(id)arg1;
 - (void)configureWithNumberOfItems:(long long)arg1 currentPreviewItemIndex:(unsigned long long)arg2 itemProvider:(id)arg3 stateManager:(id)arg4;
 - (void)getPreviewCollectionUUIDWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)hostApplicationDidBecomeActive;
+- (void)hostApplicationDidEnterBackground:(BOOL)arg1;
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)invalidatePreviewCollection;
 - (BOOL)isRemote;

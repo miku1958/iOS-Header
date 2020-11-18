@@ -6,10 +6,11 @@
 
 #import <AppleAccount/AARequest.h>
 
-@class AAGrandSlamSigner;
+@class AAGrandSlamSigner, ACAccount;
 
 @interface AAFamilyRequest : AARequest
 {
+    ACAccount *_appleAccount;
     AAGrandSlamSigner *_grandSlamSigner;
 }
 

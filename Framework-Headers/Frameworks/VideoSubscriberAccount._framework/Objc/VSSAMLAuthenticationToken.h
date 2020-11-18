@@ -8,26 +8,25 @@
 
 #import <VideoSubscriberAccount/VSAuthenticationToken-Protocol.h>
 
-@class NSDate, NSString;
+@class NSData, NSDate, NSString;
 
-__attribute__((visibility("hidden")))
 @interface VSSAMLAuthenticationToken : NSObject <VSAuthenticationToken>
 {
-    NSString *_body;
+    NSData *_serializedData;
 }
 
-@property (copy, nonatomic) NSString *body; // @synthesize body=_body;
+@property (copy, nonatomic) NSString *body;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSDate *expirationDate;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSData *serializedData; // @synthesize serializedData=_serializedData;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)initWithSerializedData:(id)arg1;
 - (BOOL)isOpaque;
 - (BOOL)isValid;
-- (id)serializedData;
 
 @end
 

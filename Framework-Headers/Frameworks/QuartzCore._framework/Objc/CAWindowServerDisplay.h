@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSObject.h>
 
 @class NSSet, NSString;
 
@@ -25,14 +25,13 @@
 @property (copy, nonatomic) NSString *colorMode;
 @property float contrast;
 @property (readonly) NSString *deviceName;
+@property BOOL disabled;
 @property BOOL disablesUpdates;
 @property (readonly) unsigned int displayId;
 @property (getter=isGrayscale) BOOL grayscale;
 @property float idealRefreshRate;
 @property BOOL invertsColors;
 @property float maximumBrightness;
-@property float maximumRefreshRate;
-@property float minimumRefreshRate;
 @property (getter=isMirroringEnabled) BOOL mirroringEnabled; // @synthesize mirroringEnabled=_mirroringEnabled;
 @property (readonly) NSString *name;
 @property (copy) NSString *orientation;
@@ -59,10 +58,14 @@
 - (id)description;
 - (void)freeze;
 - (void)invalidate;
+- (float)maximumRefreshRate;
+- (float)minimumRefreshRate;
 - (void)removeAllClones;
 - (void)removeClone:(id)arg1;
 - (void)setAccessibilityColorMatrix:(float *)arg1 scale:(float)arg2;
 - (void)setColorMatrix:(float *)arg1 scale:(float)arg2 rampDuration:(double)arg3;
+- (void)setMaximumRefreshRate:(float)arg1;
+- (void)setMinimumRefreshRate:(float)arg1;
 - (unsigned int)taskPortOfContextId:(unsigned int)arg1;
 - (void)update;
 - (void)willUnblank;

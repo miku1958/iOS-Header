@@ -6,31 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, VSAccountStore, VSKeychainGenericPassword;
-@protocol VSAuthenticationToken;
+@class NSString, VSAccountStore, VSOptional;
 
 @interface VSAccount : NSObject
 {
     VSAccountStore *_accountStore;
     NSString *_accountTypeDescription;
     NSString *_accountDescription;
-    NSString *_identityProviderDisplayName;
-    NSString *_identityProviderID;
+    VSOptional *_optionalIdentityProviderDisplayName;
+    VSOptional *_identityProviderID;
     NSString *_username;
-    id<VSAuthenticationToken> _authenticationToken;
+    VSOptional *_authenticationToken;
 }
 
 @property (copy, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
 @property (weak, nonatomic) VSAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (copy, nonatomic) NSString *accountTypeDescription; // @synthesize accountTypeDescription=_accountTypeDescription;
-@property (strong, nonatomic) id<VSAuthenticationToken> authenticationToken; // @synthesize authenticationToken=_authenticationToken;
-@property (copy, nonatomic) NSString *identityProviderDisplayName; // @synthesize identityProviderDisplayName=_identityProviderDisplayName;
-@property (copy, nonatomic) NSString *identityProviderID; // @synthesize identityProviderID=_identityProviderID;
-@property (strong, nonatomic) VSKeychainGenericPassword *keychainItem;
+@property (strong, nonatomic) VSOptional *authenticationToken; // @synthesize authenticationToken=_authenticationToken;
+@property (readonly, nonatomic) NSString *identityProviderDisplayName;
+@property (strong, nonatomic) VSOptional *identityProviderID; // @synthesize identityProviderID=_identityProviderID;
+@property (strong, nonatomic) VSOptional *keychainItem;
+@property (strong, nonatomic) VSOptional *optionalIdentityProviderDisplayName; // @synthesize optionalIdentityProviderDisplayName=_optionalIdentityProviderDisplayName;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)init;
 
 @end
 

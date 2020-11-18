@@ -9,7 +9,7 @@
 #import <WebKit/NSCoding-Protocol.h>
 #import <WebKit/NSCopying-Protocol.h>
 
-@class NSString, WKPreferences, WKProcessPool, WKUserContentController, WKWebView, WKWebViewContentProviderRegistry, WKWebsiteDataStore, _WKVisitedLinkProvider, _WKVisitedLinkStore, _WKWebsiteDataStore;
+@class NSString, WKPreferences, WKProcessPool, WKUserContentController, WKWebView, WKWebViewContentProviderRegistry, WKWebsiteDataStore, _WKVisitedLinkStore, _WKWebsiteDataStore;
 
 @interface WKWebViewConfiguration : NSObject <NSCoding, NSCopying>
 {
@@ -20,12 +20,12 @@
     struct LazyInitialized<WTF::RetainPtr<WKWebsiteDataStore>> _websiteDataStore;
     struct WeakObjCPtr<WKWebView> _relatedWebView;
     struct WeakObjCPtr<WKWebView> _alternateWebViewForNavigationGestures;
-    BOOL _treatsSHA1SignedCertificatesAsInsecure;
     struct RetainPtr<NSString> _groupIdentifier;
     struct LazyInitialized<WTF::RetainPtr<NSString>> _applicationNameForUserAgent;
+    double _incrementalRenderingSuppressionTimeout;
+    BOOL _treatsSHA1SignedCertificatesAsInsecure;
     BOOL _respectsImageOrientation;
     BOOL _printsBackgrounds;
-    double _incrementalRenderingSuppressionTimeout;
     BOOL _allowsJavaScriptMarkup;
     BOOL _convertsPositionStyleOnCopy;
     BOOL _allowsMetaRefresh;
@@ -40,7 +40,11 @@
     BOOL _attachmentElementEnabled;
     BOOL _mainContentUserGestureOverrideEnabled;
     BOOL _initialCapitalizationEnabled;
+    BOOL _waitsForPaintAfterViewDidMoveToWindow;
+    BOOL _controlledByAutomation;
     BOOL _applePayEnabled;
+    BOOL _needsStorageAccessFromFileURLsQuirk;
+    NSString *_overrideContentSecurityPolicy;
     BOOL _suppressesIncrementalRendering;
     BOOL _allowsAirPlayForMediaPlayback;
     BOOL _allowsPictureInPictureMediaPlayback;
@@ -59,6 +63,7 @@
 @property (nonatomic, setter=_setApplePayEnabled:) BOOL _applePayEnabled;
 @property (nonatomic, setter=_setAttachmentElementEnabled:) BOOL _attachmentElementEnabled;
 @property (nonatomic, setter=_setContentProviderRegistry:) WKWebViewContentProviderRegistry *_contentProviderRegistry;
+@property (nonatomic, getter=_isControlledByAutomation, setter=_setControlledByAutomation:) BOOL _controlledByAutomation;
 @property (nonatomic, setter=_setConvertsPositionStyleOnCopy:) BOOL _convertsPositionStyleOnCopy;
 @property (copy, nonatomic, setter=_setGroupIdentifier:) NSString *_groupIdentifier;
 @property (nonatomic, setter=_setIncrementalRenderingSuppressionTimeout:) double _incrementalRenderingSuppressionTimeout;
@@ -67,14 +72,16 @@
 @property (nonatomic, setter=_setInvisibleAutoplayNotPermitted:) BOOL _invisibleAutoplayNotPermitted;
 @property (nonatomic, setter=_setMainContentUserGestureOverrideEnabled:) BOOL _mainContentUserGestureOverrideEnabled;
 @property (nonatomic, setter=_setMediaDataLoadsAutomatically:) BOOL _mediaDataLoadsAutomatically;
+@property (nonatomic, setter=_setNeedsStorageAccessFromFileURLsQuirk:) BOOL _needsStorageAccessFromFileURLsQuirk;
+@property (nonatomic, setter=_setOverrideContentSecurityPolicy:) NSString *_overrideContentSecurityPolicy;
 @property (nonatomic, setter=_setPrintsBackgrounds:) BOOL _printsBackgrounds;
 @property (weak, nonatomic, setter=_setRelatedWebView:) WKWebView *_relatedWebView;
 @property (nonatomic, setter=_setRequiresUserActionForAudioPlayback:) BOOL _requiresUserActionForAudioPlayback;
 @property (nonatomic, setter=_setRequiresUserActionForVideoPlayback:) BOOL _requiresUserActionForVideoPlayback;
 @property (nonatomic, setter=_setRespectsImageOrientation:) BOOL _respectsImageOrientation;
 @property (nonatomic, setter=_setTreatsSHA1SignedCertificatesAsInsecure:) BOOL _treatsSHA1SignedCertificatesAsInsecure;
-@property (strong, nonatomic, setter=_setVisitedLinkProvider:) _WKVisitedLinkProvider *_visitedLinkProvider;
 @property (strong, nonatomic, setter=_setVisitedLinkStore:) _WKVisitedLinkStore *_visitedLinkStore;
+@property (nonatomic, setter=_setWaitsForPaintAfterViewDidMoveToWindow:) BOOL _waitsForPaintAfterViewDidMoveToWindow;
 @property (strong, nonatomic, setter=_setWebsiteDataStore:) _WKWebsiteDataStore *_websiteDataStore;
 @property (nonatomic) BOOL allowsAirPlayForMediaPlayback; // @synthesize allowsAirPlayForMediaPlayback=_allowsAirPlayForMediaPlayback;
 @property (nonatomic) BOOL allowsInlineMediaPlayback; // @synthesize allowsInlineMediaPlayback=_allowsInlineMediaPlayback;
@@ -95,7 +102,9 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_setVisitedLinkProvider:(id)arg1;
 - (void)_validate;
+- (id)_visitedLinkProvider;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

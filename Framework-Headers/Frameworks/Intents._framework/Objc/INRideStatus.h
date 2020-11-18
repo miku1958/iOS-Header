@@ -11,7 +11,7 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class CLPlacemark, INRideCompletionStatus, INRideDriver, INRideOption, INRideVehicle, NSArray, NSDate, NSString, NSUserActivity;
+@class CLPlacemark, INDateComponentsRange, INRideCompletionStatus, INRideDriver, INRideOption, INRideVehicle, NSArray, NSDate, NSString, NSUserActivity;
 
 @interface INRideStatus : NSObject <INCacheableContainer, INRideStatusExport, NSCopying, NSSecureCoding>
 {
@@ -23,6 +23,7 @@
     NSDate *_estimatedPickupDate;
     NSDate *_estimatedDropOffDate;
     NSDate *_estimatedPickupEndDate;
+    INDateComponentsRange *_scheduledPickupTime;
     CLPlacemark *_pickupLocation;
     NSArray *_waypoints;
     CLPlacemark *_dropOffLocation;
@@ -48,6 +49,7 @@
 @property (copy, nonatomic) CLPlacemark *pickupLocation; // @synthesize pickupLocation=_pickupLocation;
 @property (copy, nonatomic) NSString *rideIdentifier; // @synthesize rideIdentifier=_rideIdentifier;
 @property (copy, nonatomic) INRideOption *rideOption; // @synthesize rideOption=_rideOption;
+@property (copy, nonatomic) INDateComponentsRange *scheduledPickupTime; // @synthesize scheduledPickupTime=_scheduledPickupTime;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUserActivity *userActivityForCancelingInApplication; // @synthesize userActivityForCancelingInApplication=_userActivityForCancelingInApplication;

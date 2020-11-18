@@ -6,29 +6,35 @@
 
 #import <StoreKitUI/SKUIStorePageSection.h>
 
-@class SKUIReviewListPageComponent, SKUIViewElementLayoutContext;
+@class NSMutableDictionary, SKUIReviewListPageComponent, SKUIViewElementLayoutContext;
 
 @interface SKUIReviewListPageSection : SKUIStorePageSection
 {
     SKUIViewElementLayoutContext *_cellLayoutContext;
+    NSMutableDictionary *_contextActionsRegistration;
 }
 
+@property (copy, nonatomic) NSMutableDictionary *contextActionsRegistration; // @synthesize contextActionsRegistration=_contextActionsRegistration;
 @property (readonly, nonatomic) SKUIReviewListPageComponent *pageComponent; // @dynamic pageComponent;
 
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)_contentInsetForReviewIndex:(long long)arg1;
+- (id)_contextActionRegistrationKeyWithCell:(id)arg1 indexPath:(id)arg2;
 - (void)_requestCellLayout;
 - (void)addImpressionsForIndexPath:(id)arg1 toSession:(id)arg2;
 - (id)cellForIndexPath:(id)arg1;
 - (struct CGSize)cellSizeForIndexPath:(id)arg1;
 - (void)collectionViewDidEndDisplayingCellForItemAtIndexPath:(id)arg1;
 - (void)collectionViewDidSelectItemAtIndexPath:(id)arg1;
+- (BOOL)collectionViewShouldHighlightItemAtIndexPath:(id)arg1;
 - (void)collectionViewWillApplyLayoutAttributes:(id)arg1;
 - (void)collectionViewWillDisplayCellForItemAtIndexPath:(id)arg1;
 - (void)entityProvider:(id)arg1 didInvalidateWithContext:(id)arg2;
 - (id)initWithPageComponent:(id)arg1;
 - (long long)numberOfCells;
+- (void)registerContextActionsForCell:(id)arg1 indexPath:(id)arg2 viewController:(id)arg3;
 - (void)reloadCellWithIndexPath:(id)arg1 reason:(long long)arg2;
+- (void)unregisterContextActionsForCell:(id)arg1 indexPath:(id)arg2 viewController:(id)arg3;
 - (void)willAppearInContext:(id)arg1;
 - (void)willTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

@@ -8,7 +8,6 @@
 
 @class NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface CVMLClusteringLogger : NSObject
 {
     BOOL _logEnabled;
@@ -28,11 +27,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithOptions:(id)arg1 logEnabled:(BOOL)arg2;
 - (id)initWithOptions:(id)arg1 logEnabled:(BOOL)arg2 logFileNameBase:(id)arg3;
-- (void)logClusterLookupMapL0:(const map_5ea8f2d2 *)arg1;
-- (void)logClusterLookupMapL1:(const map_5ea8f2d2 *)arg1;
-- (void)logClusterMap:(const map_5ea8f2d2 *)arg1 level:(id)arg2;
-- (void)logClusterMapL0:(const map_5ea8f2d2 *)arg1;
-- (void)logClusterMapL1:(const map_5ea8f2d2 *)arg1;
+- (void)logClusterLookupMapL0:(const map_2e2a8070 *)arg1;
+- (void)logClusterLookupMapL1:(const map_2e2a8070 *)arg1;
+- (void)logClusterMap:(const map_2e2a8070 *)arg1 level:(id)arg2;
+- (void)logClusterMapL0:(const map_2e2a8070 *)arg1;
+- (void)logClusterMapL1:(const map_2e2a8070 *)arg1;
 - (void)logString:(id)arg1;
 - (void)resetFileNameURLWithCurentDateTime;
 

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<MUImageScrollViewDelegate> delegate; // @dynamic delegate;
 
 - (void)_centerContentIfNecessaryAdjustingContentOffset:(BOOL)arg1;
+- (void)centerContentIgnoringInsets;
 
 @end
 

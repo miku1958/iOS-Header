@@ -14,6 +14,7 @@
 @interface NWConcrete_nw_resolver : NSObject <OS_nw_resolver>
 {
     int status;
+    struct os_unfair_lock_s lock;
     char resolver_activity[0];
     NSObject<OS_nw_parameters> *parameters;
     NSObject<OS_nw_endpoint> *endpoint;

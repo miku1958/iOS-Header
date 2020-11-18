@@ -18,6 +18,7 @@
     BOOL _bootstrapScriptFallbackEnabled;
     double _bootstrapScriptFallbackMaximumAge;
     double _bootstrapScriptTimeoutInterval;
+    BOOL _useTransientStorageForTests;
 }
 
 @property (readonly, nonatomic, getter=isBootstrapScriptFallbackEnabled) BOOL bootstrapScriptFallbackEnabled;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) BOOL requiresLocalBootstrapScript;
 @property (readonly, nonatomic) BOOL supportsFullApplicationReload;
 @property (readonly, nonatomic) long long tabBarControllerStyle;
+@property (readonly, nonatomic) BOOL useTransientStorageForTests;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

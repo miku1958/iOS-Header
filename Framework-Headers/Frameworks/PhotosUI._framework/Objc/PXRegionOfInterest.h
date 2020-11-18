@@ -13,7 +13,7 @@
 
 @interface PXRegionOfInterest : NSObject <NSCopying>
 {
-    id<UICoordinateSpace> _coordinateSpace;
+    NSObject<UICoordinateSpace> *_coordinateSpace;
     PXImageRequester *_imageRequester;
     PXViewSpec *_imageViewSpec;
     NSString *_title;
@@ -24,7 +24,7 @@
     struct CGRect _imageContentsRect;
 }
 
-@property (readonly, nonatomic) id<UICoordinateSpace> coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
+@property (readonly, nonatomic) NSObject<UICoordinateSpace> *coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
 @property (nonatomic) struct CGRect imageContentsRect; // @synthesize imageContentsRect=_imageContentsRect;
 @property (strong, nonatomic) PXImageRequester *imageRequester; // @synthesize imageRequester=_imageRequester;
 @property (strong, nonatomic) PXViewSpec *imageViewSpec; // @synthesize imageViewSpec=_imageViewSpec;

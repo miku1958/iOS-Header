@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebKit/WebFrame.h>
+#import <WebKitLegacy/WebFrame.h>
 
 #import <WebUI/WBUFormAutoFillFrameHandle-Protocol.h>
 

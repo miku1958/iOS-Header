@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXWidget-Protocol.h>
 
-@class PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXZoomAnimationCoordinator, UIFocusUpdateContext, UITraitCollection, UIViewController;
+@class NSObject, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXZoomAnimationCoordinator, UIFocusUpdateContext, UITraitCollection, UIViewController;
 @protocol UICoordinateSpace;
 
 @protocol PXUIWidget <PXWidget>
@@ -16,7 +16,7 @@
 
 @optional
 - (void)commitPreviewViewController:(UIViewController *)arg1;
-- (BOOL)containsPoint:(struct CGPoint)arg1 forCoordinateSpace:(id<UICoordinateSpace>)arg2;
+- (BOOL)containsPoint:(struct CGPoint)arg1 forCoordinateSpace:(NSObject<UICoordinateSpace> *)arg2;
 - (void)controllerTraitCollectionDidChangeFrom:(UITraitCollection *)arg1 to:(UITraitCollection *)arg2;
 - (void)didDismissPreviewViewController:(UIViewController *)arg1 committing:(BOOL)arg2;
 - (void)environmentDidUpdateFocusInContext:(UIFocusUpdateContext *)arg1;

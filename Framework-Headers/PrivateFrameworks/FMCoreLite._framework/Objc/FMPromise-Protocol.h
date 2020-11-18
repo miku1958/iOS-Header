@@ -12,6 +12,7 @@
 - (void (^)(id, NSError *))completionHandlerAdapter;
 - (void (^)(NSError *))errorOnlyCompletionHandlerAdapter;
 - (BOOL)finishWithError:(NSError *)arg1;
+- (BOOL)finishWithNoResult;
 - (BOOL)finishWithResult:(id)arg1;
 - (BOOL)finishWithResult:(id)arg1 error:(NSError *)arg2;
 @end

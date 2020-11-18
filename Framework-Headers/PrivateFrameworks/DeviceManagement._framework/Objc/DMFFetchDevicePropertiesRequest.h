@@ -13,7 +13,7 @@
     NSArray *_propertyKeys;
 }
 
-@property (strong) NSArray *propertyKeys; // @synthesize propertyKeys=_propertyKeys;
+@property (copy, nonatomic) NSArray *propertyKeys; // @synthesize propertyKeys=_propertyKeys;
 
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;

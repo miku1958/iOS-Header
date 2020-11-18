@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithSnapshotData:(id)arg1 videoResolution:(id)arg2 snapshotDataTrasaction:(id)arg3;
+- (id)initWithSnapshotFile:(id)arg1 videoResolution:(id)arg2;
 
 @end
 

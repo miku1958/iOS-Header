@@ -76,6 +76,7 @@ __attribute__((visibility("hidden")))
     BOOL audioIsPaused;
     struct _opaque_pthread_mutex_t pauseLock;
     NSObject<OS_dispatch_queue> *videoQueue;
+    NSObject<OS_dispatch_queue> *videoAsyncQueue;
     NSArray *mutedPeers;
     int bandwidthUpstream;
     int bandwidthDownstream;

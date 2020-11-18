@@ -11,8 +11,8 @@
 
 @interface MRTransactionSource : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_originSources;
+    NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _name;
 }
 

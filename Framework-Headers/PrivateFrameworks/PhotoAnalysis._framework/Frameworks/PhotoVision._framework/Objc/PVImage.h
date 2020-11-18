@@ -48,6 +48,7 @@
 + (id)imageWithURL:(id)arg1 assetWidth:(unsigned long long)arg2 assetHeight:(unsigned long long)arg3 imageCreationOptions:(id)arg4;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (struct CGRect)imageRectForNormalizedRect:(struct CGRect)arg1;
 - (id)initWithCGImage:(struct CGImage *)arg1 orientation:(unsigned long long)arg2 modelId:(long long)arg3 adjustmentVersion:(id)arg4;
 - (id)initWithCIImage:(id)arg1 assetWidth:(unsigned long long)arg2 assetHeight:(unsigned long long)arg3 orientation:(unsigned long long)arg4;
 - (id)initWithData:(id)arg1 imageCreationOptions:(id)arg2 assetWidth:(unsigned long long)arg3 assetHeight:(unsigned long long)arg4;

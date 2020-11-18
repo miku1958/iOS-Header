@@ -14,7 +14,9 @@
 - (void)appDidEnterBackgroundWithPID:(int)arg1;
 - (void)appWillEnterForeground;
 - (void)appWillEnterForegroundWithPID:(int)arg1;
+- (void)controllerWithUDID:(unsigned long long)arg1 setArrayValue:(CDStruct_212a8bf9)arg2 forElement:(int)arg3 forward:(BOOL)arg4;
 - (void)controllerWithUDID:(unsigned long long)arg1 setValue:(float)arg2 forElement:(int)arg3 forward:(BOOL)arg4;
+- (void)microControllerWithUDID:(unsigned long long)arg1 setDigitizerX:(float)arg2 digitizerY:(float)arg3 withTimeStamp:(unsigned long long)arg4 touchDown:(BOOL)arg5;
 - (void)ping;
 - (void)removeController:(GCController *)arg1 forward:(BOOL)arg2;
 - (void)requestConnectedHosts;

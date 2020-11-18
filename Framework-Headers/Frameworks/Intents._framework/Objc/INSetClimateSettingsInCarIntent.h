@@ -34,18 +34,24 @@
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
+- (id)domain;
 - (id)initWithEnableFan:(id)arg1 enableAirConditioner:(id)arg2 enableClimateControl:(id)arg3 enableAutoMode:(id)arg4 airCirculationMode:(long long)arg5 fanSpeedIndex:(id)arg6 fanSpeedPercentage:(id)arg7 relativeFanSpeedSetting:(long long)arg8 temperature:(id)arg9 relativeTemperatureSetting:(long long)arg10 climateZone:(long long)arg11;
+- (id)parametersByName;
 - (void)setAirCirculationMode:(long long)arg1;
 - (void)setClimateZone:(long long)arg1;
+- (void)setDomain:(id)arg1;
 - (void)setEnableAirConditioner:(id)arg1;
 - (void)setEnableAutoMode:(id)arg1;
 - (void)setEnableClimateControl:(id)arg1;
 - (void)setEnableFan:(id)arg1;
 - (void)setFanSpeedIndex:(id)arg1;
 - (void)setFanSpeedPercentage:(id)arg1;
+- (void)setParametersByName:(id)arg1;
 - (void)setRelativeFanSpeedSetting:(long long)arg1;
 - (void)setRelativeTemperatureSetting:(long long)arg1;
 - (void)setTemperature:(id)arg1;
+- (void)setVerb:(id)arg1;
+- (id)verb;
 
 @end
 

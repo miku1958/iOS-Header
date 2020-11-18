@@ -9,18 +9,21 @@
 #import <Catalyst/CATRemoteConnectionDelegate-Protocol.h>
 
 @class CATRemoteConnection, NSMutableDictionary, NSString;
+@protocol CATRemoteTransportDelegate;
 
 @interface CATRemoteTransport : CATTransport <CATRemoteConnectionDelegate>
 {
     CATRemoteConnection *mConnection;
     NSMutableDictionary *mOperationByUUID;
     BOOL mConnectionHasOpened;
+    id<CATRemoteTransportDelegate> _remoteTransportDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct __SecTrust *peerTrust;
+@property (weak, nonatomic) id<CATRemoteTransportDelegate> remoteTransportDelegate; // @synthesize remoteTransportDelegate=_remoteTransportDelegate;
 @property (readonly) Class superclass;
 
 + (void)createRemoteTransportPairWithTransport:(id *)arg1 andTransport:(id *)arg2;
@@ -30,7 +33,10 @@
 - (void)connection:(id)arg1 didInterruptWithError:(id)arg2;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2;
 - (void)connection:(id)arg1 didSendData:(id)arg2 userInfo:(id)arg3;
+- (void)connection:(id)arg1 encounteredTrustDecisionWhileTryingToSecure:(id)arg2;
 - (void)connectionDidClose:(id)arg1;
+- (void)connectionDidSecure:(id)arg1;
+- (void)connectionWillSecure:(id)arg1;
 - (id)init;
 - (id)initWithRemoteConnection:(id)arg1;
 - (void)invalidateConnection;

@@ -7,11 +7,11 @@
 #import <Foundation/NSAttributedString.h>
 
 @interface NSAttributedString (NSAttributedStringPersistenceAdditions)
-+ (id)TT_attributedStringWithArchive:(const struct String *)arg1 createNewAttachmentsInNote:(id)arg2 error:(id *)arg3;
-+ (id)TT_attributedStringWithData:(id)arg1 createNewAttachmentsInNote:(id)arg2 error:(id *)arg3;
++ (id)TT_attributedStringWithArchive:(const struct String *)arg1 dataPersister:(id)arg2 createNewAttachmentsInNote:(id)arg3 error:(id *)arg4;
++ (id)TT_attributedStringWithData:(id)arg1 dataPersister:(id)arg2 createNewAttachmentsInNote:(id)arg3 error:(id *)arg4;
 - (unsigned long long)TT_approximateAttachmentsSizeIncludingPreviews:(BOOL)arg1;
 - (BOOL)TT_isCopyableSize;
-- (void)TT_saveToArchive:(struct String *)arg1 flags:(unsigned long long)arg2 managedObjectContext:(id)arg3;
-- (id)TT_serializeWithFlags:(unsigned long long)arg1 managedObjectContext:(id)arg2;
+- (void)TT_saveToArchive:(struct String *)arg1 flags:(unsigned long long)arg2 dataPersister:(id)arg3 managedObjectContext:(id)arg4;
+- (id)TT_serializeWithFlags:(unsigned long long)arg1 dataPersister:(id)arg2 managedObjectContext:(id)arg3;
 @end
 

@@ -25,6 +25,7 @@
 @property (copy, nonatomic) NSString *addIdentificationEntriesInsertLabelsSQL; // @synthesize addIdentificationEntriesInsertLabelsSQL=_addIdentificationEntriesInsertLabelsSQL;
 @property (copy, nonatomic) NSString *addIdentificationEntriesInsertPhoneNumberIdentificationEntrySQL; // @synthesize addIdentificationEntriesInsertPhoneNumberIdentificationEntrySQL=_addIdentificationEntriesInsertPhoneNumberIdentificationEntrySQL;
 @property (copy, nonatomic) NSString *addPhoneNumbersSQL; // @synthesize addPhoneNumbersSQL=_addPhoneNumbersSQL;
+@property (readonly, nonatomic, getter=isCorrupt) BOOL corrupt;
 @property (strong, nonatomic) CXDatabase *database; // @synthesize database=_database;
 @property (nonatomic) long long lastAddBlockingEntriesCount; // @synthesize lastAddBlockingEntriesCount=_lastAddBlockingEntriesCount;
 @property (nonatomic) long long lastAddIdentificationEntriesCount; // @synthesize lastAddIdentificationEntriesCount=_lastAddIdentificationEntriesCount;
@@ -35,7 +36,7 @@
 
 + (id)databaseTemplateURL;
 + (id)databaseURLUsingTemporaryDirectory:(BOOL)arg1 error:(id *)arg2;
-+ (BOOL)initializeDatabaseIfNecessaryWithURL:(id)arg1 error:(id *)arg2;
++ (BOOL)initializeDatabaseIfNecessaryAtURL:(id)arg1 usingTemplateAtURL:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (BOOL)_addBlockingEntriesWithData:(id)arg1 startIndex:(unsigned long long)arg2 count:(unsigned long long)arg3 extensionID:(long long)arg4 error:(id *)arg5;
 - (BOOL)_addIdentificationEntriesWithData:(id)arg1 startIndex:(unsigned long long)arg2 count:(unsigned long long)arg3 extensionID:(long long)arg4 error:(id *)arg5;
@@ -44,7 +45,6 @@
 - (long long)_findOrCreateIDForPhoneNumber:(long long)arg1 error:(id *)arg2;
 - (id)_firstIdentificationEntriesForSQL:(id)arg1 bindings:(id)arg2 error:(id *)arg3;
 - (id)_firstIdentificationEntryForSQL:(id)arg1 bindings:(id)arg2 error:(id *)arg3;
-- (id)_identificationEntriesForSQL:(id)arg1 bindings:(id)arg2 error:(id *)arg3;
 - (BOOL)_parseFirstIdentificationEntriesForSQL:(id)arg1 bindings:(id)arg2 handler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (BOOL)_parseIdentificationEntriesForSQL:(id)arg1 bindings:(id)arg2 handler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (BOOL)_removeUnreferencedLabelsWithError:(id *)arg1;
@@ -61,28 +61,38 @@
 - (BOOL)addIdentificationEntriesWithData:(id)arg1 extensionID:(long long)arg2 error:(id *)arg3;
 - (BOOL)addIdentificationEntryWithPhoneNumber:(long long)arg1 labelID:(long long)arg2 extensionID:(long long)arg3 error:(id *)arg4;
 - (long long)addLabel:(id)arg1 error:(id *)arg2;
+- (BOOL)containsBlockingEntryForEnabledExtensionWithPhoneNumber:(id)arg1 error:(id *)arg2;
+- (BOOL)containsBlockingEntryForEnabledExtensionWithPhoneNumberInArray:(id)arg1 error:(id *)arg2;
 - (BOOL)containsBlockingEntryWithPhoneNumber:(id)arg1 error:(id *)arg2;
 - (BOOL)containsBlockingEntryWithPhoneNumberInArray:(id)arg1 error:(id *)arg2;
-- (BOOL)containsExtensionWithIdentifier:(id)arg1 priority:(long long *)arg2 error:(id *)arg3;
+- (BOOL)containsExtensionWithIdentifier:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)description;
+- (id)extensionWithIdentifier:(id)arg1 error:(id *)arg2;
+- (id)firstIdentificationEntriesForEnabledExtensionsWithPhoneNumbers:(id)arg1 error:(id *)arg2;
 - (id)firstIdentificationEntriesForPhoneNumbers:(id)arg1 error:(id *)arg2;
+- (id)firstIdentificationEntryForEnabledExtensionWithPhoneNumber:(id)arg1 error:(id *)arg2;
 - (id)firstIdentificationEntryForPhoneNumber:(id)arg1 error:(id *)arg2;
 - (long long)idForExtensionWithIdentifier:(id)arg1 error:(id *)arg2;
 - (long long)idForLabel:(id)arg1 error:(id *)arg2;
 - (long long)idForPhoneNumber:(long long)arg1 error:(id *)arg2;
-- (id)identificationEntriesForPhoneNumber:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)initForReadingAndWritingWithError:(id *)arg1;
 - (id)initForReadingWithError:(id *)arg1;
 - (id)initReadOnly:(BOOL)arg1 temporary:(BOOL)arg2 error:(id *)arg3;
+- (id)initWithTemplateURL:(id)arg1 readOnly:(BOOL)arg2 temporary:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)performTransactionWithBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)prioritizedExtensionIdentifiersWithError:(id *)arg1;
+- (id)prioritizedExtensionsWithError:(id *)arg1;
 - (BOOL)removeBlockingEntriesForExtensionWithID:(long long)arg1 error:(id *)arg2;
 - (BOOL)removeExtensionWithIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)removeIdentificationEntriesForExtensionWithID:(long long)arg1 error:(id *)arg2;
 - (BOOL)removeUnreferencedRecordsWithError:(id *)arg1;
+- (long long)schemaVersionWithError:(id *)arg1;
 - (BOOL)setPrioritizedExtensionIdentifiers:(id)arg1 error:(id *)arg2;
+- (BOOL)setState:(long long)arg1 forExtensionWithID:(long long)arg2 error:(id *)arg3;
+- (BOOL)setState:(long long)arg1 forExtensionWithIdentifier:(id)arg2 error:(id *)arg3;
+- (BOOL)setStateForAllExtensions:(long long)arg1 error:(id *)arg2;
 - (BOOL)vacuumWithError:(id *)arg1;
 
 @end

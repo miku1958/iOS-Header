@@ -8,7 +8,7 @@
 
 #import <FrontBoard/FBApplicationDataStoreRepository-Protocol.h>
 
-@class FBSqliteDatabaseConnection, NSString, NSURL;
+@class BSSqliteDatabaseConnection, NSString, NSURL;
 @protocol FBApplicationDataStoreRepositoryDelegate, FBApplicationDataStoreRepositoryReadingDelegate, OS_dispatch_queue;
 
 @interface FBSqliteApplicationDataStoreRepository : NSObject <FBApplicationDataStoreRepository>
@@ -16,7 +16,7 @@
     NSURL *_storeURL;
     id<FBApplicationDataStoreRepositoryDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_dbQueue;
-    FBSqliteDatabaseConnection *_dbQueue_dbConnection;
+    BSSqliteDatabaseConnection *_dbQueue_dbConnection;
     unsigned long long _dbQueue_batchDepth;
     int _dbQueue_firstUnlockToken;
     NSObject<OS_dispatch_queue> *_calloutQueue;
@@ -48,9 +48,11 @@
 - (id)_dbQueue_objectsForKeys:(id)arg1;
 - (id)_dbQueue_openDatabase;
 - (void)_dbQueue_performWithSavepoint:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (BOOL)_dbQueue_setAsideDamagedDatabase;
+- (BOOL)_dbQueue_truncateDamagedDatabase;
+- (BOOL)_dbQueue_tryPreserveDamagedDatabase;
+- (BOOL)_inAlternateSystemApp;
 - (BOOL)_isEligibleForSaving:(id)arg1;
-- (BOOL)_setAsideFileAtURL:(id)arg1;
+- (BOOL)_preserveFileAtURL:(id)arg1;
 - (id)applicationIdentifiersWithState;
 - (void)beginBatchedUpdate;
 - (void)close;

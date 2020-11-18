@@ -6,39 +6,41 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SafariServices/WBUFormAutoFillControllerDelegate-Protocol.h>
+#import <SafariServices/SFFormAutoFillControllerDelegate-Protocol.h>
 #import <SafariServices/WKNavigationDelegatePrivate-Protocol.h>
 #import <SafariServices/WKUIDelegatePrivate-Protocol.h>
 #import <SafariServices/_SFDialogControllerDelegate-Protocol.h>
-#import <SafariServices/_WKFormDelegate-Protocol.h>
+#import <SafariServices/_SFDialogPresenting-Protocol.h>
+#import <SafariServices/_SFDialogViewControllerPresenting-Protocol.h>
+#import <SafariServices/_WKInputDelegate-Protocol.h>
 
-@class NSString, WBUFormAutoFillController, WKWebView, _SFDialogController;
+@class NSString, WKWebView, WKWebViewConfiguration, _SFDialogController, _SFFormAutoFillController;
 @protocol SFWebViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFWebViewController : UIViewController <WBUFormAutoFillControllerDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, _SFDialogControllerDelegate, _WKFormDelegate>
+@interface SFWebViewController : UIViewController <SFFormAutoFillControllerDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, _SFDialogControllerDelegate, _SFDialogViewControllerPresenting, _WKInputDelegate, _SFDialogPresenting>
 {
-    WBUFormAutoFillController *_autoFillController;
+    _SFFormAutoFillController *_autoFillController;
+    _SFDialogController *_dialogController;
     BOOL _didFirstLayout;
     BOOL _didFinishDocumentLoad;
     BOOL _shouldSuppressDialogsThatBlockWebProcess;
     BOOL _loading;
     BOOL _didFirstVisuallyNonEmptyLayout;
     id<SFWebViewControllerDelegate> _delegate;
-    _SFDialogController *_dialogController;
+    WKWebViewConfiguration *_webViewConfiguration;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SFWebViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) _SFDialogController *dialogController; // @synthesize dialogController=_dialogController;
 @property (readonly, nonatomic) BOOL didFirstVisuallyNonEmptyLayout; // @synthesize didFirstVisuallyNonEmptyLayout=_didFirstVisuallyNonEmptyLayout;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) WKWebView *webView;
+@property (readonly, nonatomic) WKWebViewConfiguration *webViewConfiguration; // @synthesize webViewConfiguration=_webViewConfiguration;
 
-+ (id)processPool;
 - (void).cxx_destruct;
 - (id)_actionsForElement:(id)arg1 defaultActions:(id)arg2 isPreviewing:(BOOL)arg3;
 - (id)_presentingViewControllerForWebView:(id)arg1;
@@ -47,20 +49,27 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 commitPreviewedViewController:(id)arg2;
 - (void)_webView:(id)arg1 didStartInputSession:(id)arg2;
 - (void)_webView:(id)arg1 insertTextSuggestion:(id)arg2 inInputSession:(id)arg3;
+- (void)_webView:(id)arg1 navigation:(id)arg2 didSameDocumentNavigation:(long long)arg3;
 - (void)_webView:(id)arg1 navigationDidFinishDocumentLoad:(id)arg2;
 - (id)_webView:(id)arg1 previewViewControllerForURL:(id)arg2 defaultActions:(id)arg3 elementInfo:(id)arg4;
 - (void)_webView:(id)arg1 renderingProgressDidChange:(unsigned long long)arg2;
 - (BOOL)_webView:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
 - (void)_webView:(id)arg1 willSubmitFormValues:(id)arg2 userObject:(id)arg3 submissionHandler:(CDUnknownBlockType)arg4;
+- (void)_webViewDidEndNavigationGesture:(id)arg1 withNavigationToBackForwardListItem:(id)arg2;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
 - (void)dealloc;
+- (void)dialogController:(id)arg1 didDismissDialog:(id)arg2;
+- (void)dialogController:(id)arg1 dismissViewController:(id)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
+- (void)dialogController:(id)arg1 presentViewController:(id)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
 - (BOOL)dialogController:(id)arg1 shouldSuppressDialog:(id)arg2;
 - (void)dialogController:(id)arg1 willPresentDialog:(id)arg2;
 - (BOOL)formAutoFillControllerCanPrefillForm:(id)arg1;
 - (BOOL)formAutoFillControllerShouldDisableAutoFill:(id)arg1;
 - (id)formAutoFillControllerURLForFormAutoFill:(id)arg1;
+- (id)initWithWebViewConfiguration:(id)arg1;
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)presentDialog:(id)arg1 sender:(id)arg2;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)webView:(id)arg1 createWebViewWithConfiguration:(id)arg2 forNavigationAction:(id)arg3 windowFeatures:(id)arg4;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
@@ -75,7 +84,6 @@ __attribute__((visibility("hidden")))
 - (void)webView:(id)arg1 runJavaScriptAlertPanelWithMessage:(id)arg2 initiatedByFrame:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)webView:(id)arg1 runJavaScriptConfirmPanelWithMessage:(id)arg2 initiatedByFrame:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)webView:(id)arg1 runJavaScriptTextInputPanelWithPrompt:(id)arg2 defaultText:(id)arg3 initiatedByFrame:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)webViewConfiguration;
 - (void)willActivateWebViewController;
 - (void)willBeginUserInitiatedNavigation;
 

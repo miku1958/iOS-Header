@@ -6,14 +6,17 @@
 
 #import <Foundation/NSObject.h>
 
+@class NSString;
 @protocol MCJobQueueObserver, OS_dispatch_group, OS_dispatch_queue;
 
 @interface MCJobQueue : NSObject
 {
+    unsigned int _nextJobSequenceNumber;
     NSObject<OS_dispatch_queue> *_executionQueue;
     id<MCJobQueueObserver> _observer;
     NSObject<OS_dispatch_queue> *_jobQueue;
     NSObject<OS_dispatch_group> *_jobGroup;
+    NSString *_queueID;
     CDUnknownBlockType _executionQueueAbortCompletionBlock;
 }
 
@@ -21,13 +24,16 @@
 @property (copy, nonatomic) CDUnknownBlockType executionQueueAbortCompletionBlock; // @synthesize executionQueueAbortCompletionBlock=_executionQueueAbortCompletionBlock;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *jobGroup; // @synthesize jobGroup=_jobGroup;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *jobQueue; // @synthesize jobQueue=_jobQueue;
+@property unsigned int nextJobSequenceNumber; // @synthesize nextJobSequenceNumber=_nextJobSequenceNumber;
 @property (weak, nonatomic) id<MCJobQueueObserver> observer; // @synthesize observer=_observer;
+@property (strong, nonatomic) NSString *queueID; // @synthesize queueID=_queueID;
 
 - (void).cxx_destruct;
 - (void)abortEnqueuedJobsCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)enqueueJob:(CDUnknownBlockType)arg1;
+- (void)dealloc;
+- (void)fromFunction:(const char *)arg1 enqueueJob:(CDUnknownBlockType)arg2;
 - (id)init;
-- (void)jobDidFinish;
+- (void)jobDidFinishFromFunction:(const char *)arg1;
 - (void)waitForEnqueuedJobsToCompleteCompletionBlock:(CDUnknownBlockType)arg1;
 
 @end

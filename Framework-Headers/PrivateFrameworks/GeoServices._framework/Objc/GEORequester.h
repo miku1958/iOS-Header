@@ -47,10 +47,9 @@
 - (id)logRequestToFile;
 - (id)logResponseToFile;
 - (id)newMutableURLRequestWithURL:(id)arg1;
-- (id)newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2;
-- (id)newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2 connectionProperties:(id)arg3;
 - (id)persistentSessionConfig;
 - (id)requestPreamble;
+- (id)sessionWithConnectionProperties:(id)arg1;
 - (void)setNeedsCancel;
 - (void)start;
 - (void)startWithConnectionProperties:(id)arg1;

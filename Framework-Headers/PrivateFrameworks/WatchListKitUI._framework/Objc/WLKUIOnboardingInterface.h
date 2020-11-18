@@ -16,9 +16,11 @@
     BOOL _hasSynced;
     NSNumber *_lastReportedOptedInValue;
     BOOL _suppressUpdates;
+    BOOL _isShowing;
 }
 
 @property (readonly, nonatomic) NSArray *eligibleBids;
+@property (readonly, nonatomic) BOOL isShowing;
 @property (readonly, nonatomic, getter=isOptedIn) BOOL optedIn;
 @property (readonly, nonatomic, getter=isTvosMigrated) BOOL tvosMigrated;
 
@@ -29,6 +31,7 @@
 - (void)migrateTvos:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)show:(id)arg1;
+- (void)showForBids:(id)arg1:(id)arg2:(id)arg3;
 
 @end
 

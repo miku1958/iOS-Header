@@ -8,7 +8,7 @@
 
 #import <PhotosUI/ICQBannerViewDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, PLSyncProgressView, PUPhotosGlobalFooterBannerView, UILabel, UIStackView;
+@class ICQOffer, NSString, PLSyncProgressView, PUPhotosGlobalFooterBannerView, UILabel;
 @protocol PUPhotosGlobalFooterViewDelegate;
 
 @interface PUPhotosGlobalFooterView : UICollectionReusableView <ICQBannerViewDelegate>
@@ -22,9 +22,6 @@
     UILabel *_subtitleLabel;
     PLSyncProgressView *_syncProgressView;
     PUPhotosGlobalFooterBannerView *_cloudBannerView;
-    UIStackView *_stackView;
-    NSArray *_constraints;
-    NSLayoutConstraint *_centeringConstraint;
     BOOL _needsUpdateCloudOffer;
     BOOL _isUpdatingCloudOffer;
     double _referenceWidth;
@@ -35,33 +32,33 @@
     BOOL _shouldShowCloudBanner;
     BOOL __shouldHighlightSubtitle;
     BOOL __shouldHideCloudStatus;
-    BOOL __wantsCloudBannerWithCurrentOffer;
     long long _style;
     NSString *_subtitle;
     id<PUPhotosGlobalFooterViewDelegate> _delegate;
+    ICQOffer *__offer;
 }
 
+@property (strong, nonatomic, setter=_setOffer:) ICQOffer *_offer; // @synthesize _offer=__offer;
 @property (nonatomic, setter=_setShouldHideCloudStatus:) BOOL _shouldHideCloudStatus; // @synthesize _shouldHideCloudStatus=__shouldHideCloudStatus;
 @property (nonatomic, setter=_setShouldHighlightSubtitle:) BOOL _shouldHighlightSubtitle; // @synthesize _shouldHighlightSubtitle=__shouldHighlightSubtitle;
-@property (nonatomic, setter=_setWantsCloudBannerWithCurrentOffer:) BOOL _wantsCloudBannerWithCurrentOffer; // @synthesize _wantsCloudBannerWithCurrentOffer=__wantsCloudBannerWithCurrentOffer;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUPhotosGlobalFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) double preferredHeight;
 @property (nonatomic) BOOL shouldShowCloudBanner; // @synthesize shouldShowCloudBanner=_shouldShowCloudBanner;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_completeOfferUpdateWithOffer:(id)arg1 shouldShowBannerForOffer:(BOOL)arg2;
+- (void)_completeOfferUpdateWithOffer:(id)arg1;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)_handleCloudOfferChangedNotification:(id)arg1;
 - (void)_showPurchaseFlow;
 - (void)_updateCloudOfferIfNeeded;
 - (void)_updateFonts;
 - (void)_updateSubviews;
+- (void)_updateSubviewsOrdering;
 - (void)bannerView:(id)arg1 action:(long long)arg2 parameters:(id)arg3 dismiss:(BOOL)arg4;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -70,7 +67,7 @@
 - (void)setImageCount:(unsigned long long)arg1 videoCount:(unsigned long long)arg2 otherCount:(unsigned long long)arg3;
 - (void)setPendingCount:(unsigned long long)arg1 importOperation:(int)arg2;
 - (void)setSubtitle:(id)arg1 shouldHightlight:(BOOL)arg2;
-- (void)updateConstraints;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

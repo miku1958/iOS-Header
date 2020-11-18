@@ -45,6 +45,7 @@
     BOOL __nextCommentsActionShouldBeginEditing;
     BOOL __isDisplayInfoLoadingScheduled;
     BOOL __needsUpdateChromeVisibility;
+    BOOL __lastChromeVisibility;
     PUBrowsingSession *_browsingSession;
     double _maximumToolbarHeight;
     NSString *__scrubbingIdentifier;
@@ -71,6 +72,7 @@
 @property (readonly, nonatomic) NSCache *_cachedDisplayInfosByAssetReference; // @synthesize _cachedDisplayInfosByAssetReference=__cachedDisplayInfosByAssetReference;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_displayInfoLoadingIsolationQueue; // @synthesize _displayInfoLoadingIsolationQueue=__displayInfoLoadingIsolationQueue;
 @property (nonatomic, setter=_setDisplayInfoLoadingScheduled:) BOOL _isDisplayInfoLoadingScheduled; // @synthesize _isDisplayInfoLoadingScheduled=__isDisplayInfoLoadingScheduled;
+@property (nonatomic, setter=_setLastChromeVisibility:) BOOL _lastChromeVisibility; // @synthesize _lastChromeVisibility=__lastChromeVisibility;
 @property (strong, nonatomic, setter=_setLeftNavBarButtonIdentifiers:) NSMutableIndexSet *_leftNavBarButtonIdentifiers; // @synthesize _leftNavBarButtonIdentifiers=__leftNavBarButtonIdentifiers;
 @property (strong, nonatomic, setter=_setLeftNavBarButtonItemCollection:) PUBarButtonItemCollection *_leftNavBarButtonItemCollection; // @synthesize _leftNavBarButtonItemCollection=__leftNavBarButtonItemCollection;
 @property (nonatomic, setter=_setNeedsUpdateChromeVisibility:) BOOL _needsUpdateChromeVisibility; // @synthesize _needsUpdateChromeVisibility=__needsUpdateChromeVisibility;

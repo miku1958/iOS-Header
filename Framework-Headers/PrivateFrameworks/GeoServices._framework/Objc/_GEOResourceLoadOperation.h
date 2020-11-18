@@ -9,7 +9,7 @@
 #import <GeoServices/GEOResourceLoadOperation-Protocol.h>
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class NSData, NSLock, NSMutableData, NSString, NSURL, NSURLSession, NSURLSessionTask;
+@class GEONSURLSharedSession, NSData, NSLock, NSMutableData, NSString, NSURL, NSURLSessionTask;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSURL *_url;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_dispatch_queue> *_callbackQueue;
-    NSURLSession *_session;
+    GEONSURLSharedSession *_session;
     NSURLSessionTask *_task;
     NSMutableData *_data;
     BOOL _expectsPartialContent;

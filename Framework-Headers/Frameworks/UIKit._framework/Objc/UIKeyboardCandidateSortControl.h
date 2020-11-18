@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly) UISegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
+@property (readonly) BOOL shouldShowTitles;
 @property (strong, nonatomic) UIKBThemedView *themedView; // @synthesize themedView=_themedView;
 
 + (BOOL)_preventsAppearanceProxyCustomization;

@@ -21,7 +21,6 @@
 
 + (id)confirmationRequiredWithCurrencyAmountToConfirm:(id)arg1;
 + (id)disambiguationWithCurrencyAmountsToDisambiguate:(id)arg1;
-+ (id)needsMoreDetailsForCurrencyAmount:(id)arg1;
 + (id)successWithResolvedCurrencyAmount:(id)arg1;
 
 @end

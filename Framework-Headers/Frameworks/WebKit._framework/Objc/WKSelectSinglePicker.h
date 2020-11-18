@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)pickerView:(id)arg1 attributedTitleForRow:(long long)arg2 forComponent:(long long)arg3;
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
+- (void)selectRow:(long long)arg1 inComponent:(long long)arg2 extendingSelection:(BOOL)arg3;
 
 @end
 

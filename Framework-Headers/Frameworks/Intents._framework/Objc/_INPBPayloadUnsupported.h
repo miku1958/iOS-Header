@@ -28,6 +28,7 @@
 + (Class)conflictingParametersType;
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsReason:(id)arg1;
 - (void)addConflictingParameters:(id)arg1;
 - (void)clearConflictingParameters;
 - (id)conflictingParametersAtIndex:(unsigned long long)arg1;
@@ -39,6 +40,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)reasonAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

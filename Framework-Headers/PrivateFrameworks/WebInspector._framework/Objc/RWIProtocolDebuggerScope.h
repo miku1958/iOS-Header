@@ -12,6 +12,7 @@
 {
 }
 
+@property (nonatomic) BOOL empty;
 @property (strong, nonatomic) RWIProtocolDebuggerLocation *location;
 @property (copy, nonatomic) NSString *name;
 @property (strong, nonatomic) RWIProtocolRuntimeRemoteObject *object;

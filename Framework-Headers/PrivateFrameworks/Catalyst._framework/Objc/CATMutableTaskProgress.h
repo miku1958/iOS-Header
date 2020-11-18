@@ -21,6 +21,7 @@
 @property (nonatomic) long long totalUnitCount; // @dynamic totalUnitCount;
 @property (strong, nonatomic) NSDictionary *userInfo; // @dynamic userInfo;
 
+- (id)initWithCoder:(id)arg1;
 - (id)initWithOperationUUID:(id)arg1;
 - (id)initWithOperationUUID:(id)arg1 requestClass:(Class)arg2;
 - (void)setProgress:(id)arg1;

@@ -7,58 +7,59 @@
 #import <objc/NSObject.h>
 
 #import <iCloudQuotaUI/ICQPageDelegate-Protocol.h>
-#import <iCloudQuotaUI/PSCloudStorageOffersManagerDelegate-Protocol.h>
 #import <iCloudQuotaUI/UINavigationControllerDelegate-Protocol.h>
 
-@class ICQOffer, ICQUpgradeNavigationController, ICQUpgradeOfferViewController, NSString, NSURLSession, PSCloudStorageOffersManager;
+@class ICQAlertController, ICQOffer, ICQUpgradeOfferViewController, NSString, UINavigationController;
 @protocol ICQUpgradeFlowManagerDelegate;
 
-@interface ICQUpgradeFlowManager : NSObject <UINavigationControllerDelegate, ICQPageDelegate, PSCloudStorageOffersManagerDelegate>
+@interface ICQUpgradeFlowManager : NSObject <UINavigationControllerDelegate, ICQPageDelegate>
 {
-    NSURLSession *_buyProductSession;
     ICQUpgradeOfferViewController *_busyOfferViewController;
+    BOOL _shouldNavigationControllerBeDismissed;
     ICQOffer *_offer;
     id<ICQUpgradeFlowManagerDelegate> _delegate;
-    PSCloudStorageOffersManager *_storageOffersManager;
-    ICQUpgradeNavigationController *_upgradeNavigationController;
+    UINavigationController *_hostingNavigationController;
+    ICQAlertController *_upgradeAlertController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ICQUpgradeFlowManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UINavigationController *hostingNavigationController; // @synthesize hostingNavigationController=_hostingNavigationController;
 @property (readonly, nonatomic) ICQOffer *offer; // @synthesize offer=_offer;
-@property (strong, nonatomic) PSCloudStorageOffersManager *storageOffersManager; // @synthesize storageOffersManager=_storageOffersManager;
+@property (nonatomic) BOOL shouldNavigationControllerBeDismissed; // @synthesize shouldNavigationControllerBeDismissed=_shouldNavigationControllerBeDismissed;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) ICQUpgradeNavigationController *upgradeNavigationController; // @synthesize upgradeNavigationController=_upgradeNavigationController;
+@property (strong, nonatomic) ICQAlertController *upgradeAlertController; // @synthesize upgradeAlertController=_upgradeAlertController;
 
++ (id)activeFlowManagers;
++ (void)addActiveFlowManager:(id)arg1;
++ (void)needsToRunWithCompletion:(CDUnknownBlockType)arg1;
++ (void)removeActiveFlowManager:(id)arg1;
 + (BOOL)shouldShowForOffer:(id)arg1;
++ (BOOL)shouldSubclassShowForOffer:(id)arg1;
++ (Class)subclassForOfferType:(long long)arg1;
 - (void).cxx_destruct;
-- (void)_adoptRemoteUI;
-- (void)_adoptRemoteUIWithPurchaseToken:(id)arg1 buyParameters:(id)arg2 requestHeaders:(id)arg3;
-- (id)_buyProductQueryDictionary;
-- (id)_buyProductQueryFragment;
-- (id)_buyProductQueryItems;
-- (id)_buyProductQueryKeySet;
-- (id)_buyProductRequestWithAccount:(id)arg1 token:(id)arg2;
-- (void)_buyProductShouldUseToken:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)_buyProductURL;
+- (void)_addAlertActionForAlertSpec:(id)arg1 buttonIndex:(long long)arg2;
+- (void)_cancelFlow;
 - (void)_clearBusyOfferViewController;
-- (void)_performPurchase;
-- (void)_performPurchaseUsingSettingsUI;
-- (void)_performPurchaseUsingTouchID;
+- (void)_openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performPageButtonActionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_presentPageWithSpecification:(id)arg1;
 - (void)_presentUpgradeComplete;
+- (void)_sendDelegateCancel;
+- (void)_sendDelegateComplete;
+- (void)_sendDelegateDidPresentViewController:(id)arg1;
 - (void)_setBusyOfferViewController:(id)arg1;
-- (id)_storageContextHeaderDictionary;
-- (id)_storageContextJSONString;
+- (void)_tappedAlertLink:(id)arg1;
 - (void)beginFlowWithPresentingViewController:(id)arg1;
-- (void)cancelFlow;
 - (id)init;
+- (id)initBaseclassWithOffer:(id)arg1;
+- (id)initSubclassWithOffer:(id)arg1;
 - (id)initWithOffer:(id)arg1;
-- (void)manager:(id)arg1 loadDidFailWithError:(id)arg2;
-- (void)manager:(id)arg1 willPresentViewController:(id)arg2;
-- (void)managerDidCancel:(id)arg1;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
+- (BOOL)needsNetwork;
+- (void)presentFlowHostedInNavigationController:(id)arg1;
 - (void)sender:(id)arg1 action:(long long)arg2 parameters:(id)arg3;
 - (double)senderGetTopMargin:(id)arg1;
 

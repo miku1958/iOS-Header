@@ -12,7 +12,7 @@
 #import <MusicCarDisplayUI/UITableViewDataSource-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDelegate-Protocol.h>
 
-@class AVExternalDevice, MCDErrorLoadingView, MCDLoadingContentView, MCDNowPlayingButton, MCDPCContainer, MPWeakTimer, NSIndexPath, NSObject, NSString, UIActivityIndicatorView, UITableView, UIView, _MCDBrowsableContentTableViewPreloader, _UIFilteredDataSource;
+@class AVExternalDevice, MCDNowPlayingButton, MCDPCContainer, MPWeakTimer, NSIndexPath, NSObject, NSString, UIActivityIndicatorView, UITableView, UIView, _MCDBrowsableContentTableViewPreloader, _UIFilteredDataSource;
 @protocol OS_dispatch_queue;
 
 @interface MCDBrowsableContentTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, MCDPCContainerDelegate, MCDErrorViewDelegate>
@@ -27,8 +27,6 @@
     NSIndexPath *_reselectIndexPath;
     MPWeakTimer *_loadingTimer;
     MPWeakTimer *_delayTimer;
-    MCDLoadingContentView *_loadingContentView;
-    MCDErrorLoadingView *_failedLoadView;
     UIView *_MCD_tableView;
     NSObject<OS_dispatch_queue> *_serialQueue;
     _MCDBrowsableContentTableViewPreloader *_selectionPreloader;
@@ -40,12 +38,14 @@
     BOOL _hasTabbedBrowsing;
     BOOL _visible;
     NSIndexPath *_selectedIndexPath;
+    UIView *_placeholderView;
 }
 
 @property (readonly, nonatomic) MCDPCContainer *container; // @synthesize container=_container;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIView *placeholderView; // @synthesize placeholderView=_placeholderView;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
@@ -58,6 +58,7 @@
 - (void)_limitedUIChanged:(id)arg1;
 - (void)_nowPlayingButtonTapped:(id)arg1;
 - (void)_nowPlayingDidChange:(id)arg1;
+- (void)_replacePlaceholderViewWithView:(id)arg1;
 - (void)_showLoadingScreen;
 - (void)_showTimeoutScreen;
 - (void)_updateNowPlayingButtonVisibility;
@@ -70,7 +71,7 @@
 - (id)initWithContainer:(id)arg1;
 - (id)initWithContainer:(id)arg1 tabbedBrowsing:(BOOL)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)preferredFocusedItem;
+- (id)preferredFocusEnvironments;
 - (void)reloadTable;
 - (void)reloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)showActivity:(BOOL)arg1 inCell:(id)arg2;

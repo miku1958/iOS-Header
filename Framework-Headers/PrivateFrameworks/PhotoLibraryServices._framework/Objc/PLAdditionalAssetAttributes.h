@@ -50,6 +50,7 @@
 @property (strong, nonatomic) NSNumber *originalOrientation; // @dynamic originalOrientation;
 @property (strong, nonatomic) NSNumber *originalResourceChoice; // @dynamic originalResourceChoice;
 @property (strong, nonatomic) NSNumber *originalWidth; // @dynamic originalWidth;
+@property (copy, nonatomic) NSString *originatingAssetIdentifier; // @dynamic originatingAssetIdentifier;
 @property (nonatomic) long long pendingPlayCount; // @dynamic pendingPlayCount;
 @property (nonatomic) long long pendingShareCount; // @dynamic pendingShareCount;
 @property (nonatomic) long long pendingViewCount; // @dynamic pendingViewCount;

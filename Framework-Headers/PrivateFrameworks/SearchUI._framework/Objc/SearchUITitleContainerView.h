@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/NUIContainerStackView.h>
+#import <AppSupportUI/NUIContainerStackView.h>
 
 #import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 

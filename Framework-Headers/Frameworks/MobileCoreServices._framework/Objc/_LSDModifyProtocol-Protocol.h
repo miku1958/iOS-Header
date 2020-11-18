@@ -7,6 +7,7 @@
 @class LSRegistrationInfo, NSData, NSDictionary, NSString, NSURL;
 
 @protocol _LSDModifyProtocol
+- (void)installApplication:(NSString *)arg1 atURL:(NSURL *)arg2 withOptions:(NSDictionary *)arg3 reply:(void (^)(BOOL, NSError *))arg4;
 - (void)rebuildApplicationDatabasesForSystem:(BOOL)arg1 internal:(BOOL)arg2 user:(BOOL)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)registerExtensionPoint:(NSString *)arg1 withInfo:(NSDictionary *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)registerItemInfo:(LSRegistrationInfo *)arg1 alias:(NSData *)arg2 diskImageAlias:(NSData *)arg3 bundleURL:(NSURL *)arg4 installationPlist:(NSDictionary *)arg5 completionHandler:(void (^)(BOOL, unsigned int, NSArray *, BOOL, NSError *))arg6;
@@ -18,6 +19,7 @@
 - (void)setHandler:(NSString *)arg1 version:(unsigned long long)arg2 roles:(unsigned int)arg3 forContentType:(NSString *)arg4 completionHandler:(void (^)(BOOL, NSError *))arg5;
 - (void)setHandlerOptions:(unsigned int)arg1 forContentType:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)synchronizeWithMobileInstallation;
+- (void)uninstallApplication:(NSString *)arg1 withOptions:(NSDictionary *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)updateContainerUnit:(unsigned int)arg1 completionHandler:(void (^)(NSData *, NSError *))arg2;
 - (void)updateRecordForApp:(NSString *)arg1 withSINF:(NSDictionary *)arg2 iTunesMetadata:(NSDictionary *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 @end

@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange;
 - (void)_updateConstraintValues;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (id)initWithReuseIdentifier:(id)arg1;
 
 @end
 

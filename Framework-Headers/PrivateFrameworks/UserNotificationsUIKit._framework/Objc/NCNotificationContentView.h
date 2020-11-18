@@ -8,7 +8,7 @@
 
 #import <UserNotificationsUIKit/NCContentSizeCategoryAdjusting-Protocol.h>
 
-@class NCLookViewFontProvider, NSString, UIImage, UIImageView, UILabel;
+@class NCLookViewFontProvider, NSMapTable, NSMutableDictionary, NSString, UIImage, UIImageView, UILabel;
 
 @interface NCNotificationContentView : UIView <NCContentSizeCategoryAdjusting>
 {
@@ -18,7 +18,8 @@
     UIView *_contentView;
     UILabel *_hintTextLabel;
     UIImageView *_thumbnailImageView;
-    long long _calculatedSecondaryTextNumberOfLines;
+    NSMapTable *_labelsToDrawingContexts;
+    NSMutableDictionary *_secondaryLabelWidthToMeasuredNumLines;
     BOOL _adjustsFontForContentSizeCategory;
     NSString *_preferredContentSizeCategory;
     UIView *_accessoryView;
@@ -59,6 +60,7 @@
 - (struct CGRect)_frameForThumbnailInRect:(struct CGRect)arg1;
 - (double)_hintTextBaselineOffset;
 - (id)_hintTextLabel;
+- (struct CGRect)_hintTextLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2;
 - (id)_lazyHintTextLabel;
 - (id)_lazyOutgoingPrimaryLabel;
 - (id)_lazyOutgoingPrimarySubtitleLabel;
@@ -71,12 +73,16 @@
 - (id)_newPrimaryLabel;
 - (id)_newSecondaryLabel;
 - (long long)_numberOfLinesForLabel:(id)arg1 inRectWithSize:(struct CGSize)arg2;
-- (long long)_numberOfLinesInSecondaryLabelInBounds:(struct CGRect)arg1;
+- (struct CGRect)_primaryLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2;
+- (struct CGRect)_primarySubtitleLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2;
 - (double)_primarySubtitleTextBaselineOffsetForCurrentStyle;
 - (double)_primaryTextBaselineOffsetWithBaseValue:(double)arg1;
+- (struct CGRect)_secondaryLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(double)arg3;
+- (long long)_secondaryLabelNumberOfLinesWithMeasuredNumberOfLines:(long long)arg1;
 - (double)_secondaryTextBaselineOffsetForCurrentStyle;
 - (double)_secondaryTextBaselineOffsetFromBottomWithBaseValue:(double)arg1;
 - (double)_secondaryTextBaselineOffsetWithBaseValue:(double)arg1;
+- (long long)_secondaryTextMeasuredNumberOfLinesForWidth:(double)arg1;
 - (void)_setFontProvider:(id)arg1;
 - (void)_setText:(id)arg1 withFinalLabel:(id)arg2 setter:(CDUnknownBlockType)arg3 andTransitionLabel:(id)arg4 setter:(CDUnknownBlockType)arg5;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2;
@@ -84,6 +90,8 @@
 - (void)_updateFontForPrimaryLabel:(id)arg1 withStyle:(long long)arg2;
 - (void)_updateFontForSecondaryLabel:(id)arg1 withStyle:(long long)arg2;
 - (BOOL)adjustForContentSizeCategoryChange;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

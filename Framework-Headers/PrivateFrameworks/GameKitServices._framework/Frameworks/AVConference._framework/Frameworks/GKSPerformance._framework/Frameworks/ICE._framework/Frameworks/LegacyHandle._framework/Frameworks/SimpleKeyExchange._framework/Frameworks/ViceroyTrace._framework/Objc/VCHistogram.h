@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)bucketValueAtIndex:(unsigned int)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)initWithType:(int)arg1;
+- (id)initWithType:(int)arg1 bucketValues:(id)arg2;
 - (BOOL)merge:(id)arg1;
 - (void)reset;
 

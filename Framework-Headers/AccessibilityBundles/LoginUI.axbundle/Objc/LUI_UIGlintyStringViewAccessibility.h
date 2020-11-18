@@ -13,9 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilitySupportsActivateAction;
-- (BOOL)accessibilityActivate;
-- (struct CGRect)accessibilityFrame;
 - (unsigned long long)accessibilityTraits;
 
 @end

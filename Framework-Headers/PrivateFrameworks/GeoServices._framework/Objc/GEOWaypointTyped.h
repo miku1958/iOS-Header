@@ -17,18 +17,22 @@
     GEOWaypointPlace *_waypointPlace;
     int _waypointType;
     BOOL _isCurrentLocation;
+    BOOL _isLocationOfInterest;
     struct {
         unsigned int waypointType:1;
         unsigned int isCurrentLocation:1;
+        unsigned int isLocationOfInterest:1;
     } _has;
 }
 
 @property (nonatomic) BOOL hasIsCurrentLocation;
+@property (nonatomic) BOOL hasIsLocationOfInterest;
 @property (readonly, nonatomic) BOOL hasWaypointId;
 @property (readonly, nonatomic) BOOL hasWaypointLocation;
 @property (readonly, nonatomic) BOOL hasWaypointPlace;
 @property (nonatomic) BOOL hasWaypointType;
 @property (nonatomic) BOOL isCurrentLocation; // @synthesize isCurrentLocation=_isCurrentLocation;
+@property (nonatomic) BOOL isLocationOfInterest; // @synthesize isLocationOfInterest=_isLocationOfInterest;
 @property (strong, nonatomic) GEOWaypointID *waypointId; // @synthesize waypointId=_waypointId;
 @property (strong, nonatomic) GEOWaypointLocation *waypointLocation; // @synthesize waypointLocation=_waypointLocation;
 @property (strong, nonatomic) GEOWaypointPlace *waypointPlace; // @synthesize waypointPlace=_waypointPlace;

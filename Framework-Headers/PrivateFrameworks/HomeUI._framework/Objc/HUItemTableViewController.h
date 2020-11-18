@@ -50,6 +50,8 @@
 - (id)childViewControllersToPreload;
 - (id)currentTextForTextField:(id)arg1 item:(id)arg2;
 - (id)defaultTextForTextField:(id)arg1 item:(id)arg2;
+- (void)highlightItemAnimated:(id)arg1;
+- (void)highlightItemAnimated:(id)arg1 duration:(double)arg2;
 - (id)hu_preloadContent;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (id)initWithStyle:(long long)arg1;

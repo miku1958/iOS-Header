@@ -23,7 +23,9 @@
 - (id)attributeValueForKey:(id)arg1;
 - (id)attributedSubstringFromRange:(struct _NSRange)arg1;
 - (id)attributesAtIndex:(long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (id)axAttributedStringByReplacingOccurrencesOfString:(id)arg1 withString:(id)arg2;
 - (id)axAttributedStringDescription;
+- (id)axStringByReplacingCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (const struct __CFAttributedString *)cfAttributedString;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (id)coalescedAttributes;

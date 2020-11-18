@@ -16,8 +16,8 @@
 @property (readonly, weak, nonatomic) id<UIFocusItem> item; // @synthesize item=_item;
 
 - (void).cxx_destruct;
-- (BOOL)_shouldBeOccludedByRegion:(id)arg1;
-- (BOOL)_shouldOccludeRegion:(id)arg1;
+- (BOOL)_canBeOccludedByRegionsAbove;
+- (BOOL)_canOccludeRegionsBelow;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithFrame:(struct CGRect)arg1 item:(id)arg2;

@@ -14,5 +14,6 @@
 - (void)removePairedPeer:(CUPairedPeer *)arg1 options:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)savePairedPeer:(CUPairedPeer *)arg1 options:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)showWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (void)startMonitoringWithOptions:(unsigned long long)arg1;
 @end
 

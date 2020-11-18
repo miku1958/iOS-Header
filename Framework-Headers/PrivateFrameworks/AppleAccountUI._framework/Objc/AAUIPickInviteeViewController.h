@@ -22,7 +22,6 @@
     NSArray *_searchResults;
     UIView *_separator;
     UITableView *_resultsTableView;
-    NSString *_searchQuery;
     UIView *_container;
     UIView *_contactSearchBarContainer;
     UITextField *_contactSearchBar;
@@ -34,13 +33,16 @@
     UIBarButtonItem *_nextButton;
     void *_addressBook;
     id<AAUIPickInviteeDelegate> _delegate;
+    NSString *_searchQuery;
     NSString *_inviteeEmail;
     NSString *_inviteeShortName;
     NSString *_inviteeCompositeName;
+    NSString *_addFamilyMemberInstructions;
     NSString *_createChildAccountButtonTitle;
     NSString *_createChildAccountInstructions;
 }
 
+@property (copy, nonatomic) NSString *addFamilyMemberInstructions; // @synthesize addFamilyMemberInstructions=_addFamilyMemberInstructions;
 @property (copy, nonatomic) NSString *createChildAccountButtonTitle; // @synthesize createChildAccountButtonTitle=_createChildAccountButtonTitle;
 @property (copy, nonatomic) NSString *createChildAccountInstructions; // @synthesize createChildAccountInstructions=_createChildAccountInstructions;
 @property (readonly, copy) NSString *debugDescription;
@@ -50,6 +52,7 @@
 @property (readonly, nonatomic) NSString *inviteeCompositeName; // @synthesize inviteeCompositeName=_inviteeCompositeName;
 @property (readonly, nonatomic) NSString *inviteeEmail; // @synthesize inviteeEmail=_inviteeEmail;
 @property (readonly, nonatomic) NSString *inviteeShortName; // @synthesize inviteeShortName=_inviteeShortName;
+@property (readonly, nonatomic) NSString *searchQuery; // @synthesize searchQuery=_searchQuery;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     UIInputSwitcherView *m_switcherView;
     double m_lastGlobeKeyUpTime;
     NSString *_newMode;
+    BOOL _otherKeyPressedDuringShiftDown;
     NSString *_loadedIdentifier;
 }
 
 @property (copy, nonatomic) NSString *loadedIdentifier; // @synthesize loadedIdentifier=_loadedIdentifier;
+@property (nonatomic) BOOL otherKeyPressedDuringShiftDown; // @synthesize otherKeyPressedDuringShiftDown=_otherKeyPressedDuringShiftDown;
 
 + (id)activeInstance;
 + (id)sharedInstance;

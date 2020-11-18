@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAdditionalEnabledMarkets, GEOClientCapabilities, GEOCommonOptions, GEODirectionsRequestFeedback, GEOLocation, GEOMapRegion, GEOOriginalRoute, GEORouteAttributes, GEOTFTrafficSnapshot, NSData, NSMutableArray, NSString;
+@class GEOAdditionalEnabledMarkets, GEOClientCapabilities, GEOCommonOptions, GEODirectionsRequestFeedback, GEOLocation, GEOMapRegion, GEOOriginalRoute, GEOPDABClientDatasetMetadata, GEORouteAttributes, GEOTFTrafficSnapshot, NSData, NSMutableArray, NSString;
 
 @interface GEODirectionsRequest : PBRequest <NSCopying>
 {
@@ -17,6 +17,7 @@
     unsigned long long _maxGraphVersion;
     double _requestTime;
     unsigned long long _sharedLibraryVersion;
+    GEOPDABClientDatasetMetadata *_abClientMetadata;
     GEOAdditionalEnabledMarkets *_additionalEnabledMarkets;
     GEOClientCapabilities *_clientCapabilities;
     GEOCommonOptions *_commonOptions;
@@ -61,6 +62,7 @@
     } _has;
 }
 
+@property (strong, nonatomic) GEOPDABClientDatasetMetadata *abClientMetadata; // @synthesize abClientMetadata=_abClientMetadata;
 @property (strong, nonatomic) GEOAdditionalEnabledMarkets *additionalEnabledMarkets; // @synthesize additionalEnabledMarkets=_additionalEnabledMarkets;
 @property (strong, nonatomic) GEOClientCapabilities *clientCapabilities; // @synthesize clientCapabilities=_clientCapabilities;
 @property (strong, nonatomic) GEOCommonOptions *commonOptions; // @synthesize commonOptions=_commonOptions;
@@ -69,6 +71,7 @@
 @property (nonatomic) int departureTime; // @synthesize departureTime=_departureTime;
 @property (strong, nonatomic) GEODirectionsRequestFeedback *feedback; // @synthesize feedback=_feedback;
 @property (nonatomic) BOOL getRouteForZilchPoints; // @synthesize getRouteForZilchPoints=_getRouteForZilchPoints;
+@property (readonly, nonatomic) BOOL hasAbClientMetadata;
 @property (readonly, nonatomic) BOOL hasAdditionalEnabledMarkets;
 @property (readonly, nonatomic) BOOL hasClientCapabilities;
 @property (readonly, nonatomic) BOOL hasCommonOptions;

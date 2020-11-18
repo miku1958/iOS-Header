@@ -86,6 +86,9 @@
 - (void)markAlbumGUIDAsViewed:(id)arg1 personID:(id)arg2;
 - (void)markAlbumGUIDAsViewed:(id)arg1 personID:(id)arg2 info:(id)arg3;
 - (void)markAlbumGUIDAsViewed:(id)arg1 personID:(id)arg2 moveLastViewedAssetCollectionMarker:(BOOL)arg3 info:(id)arg4;
+- (void)markAsSpamAlbumWithGUID:(id)arg1 personID:(id)arg2;
+- (void)markAsSpamInvitationWithGUID:(id)arg1 personID:(id)arg2;
+- (void)markAsSpamInvitationWithToken:(id)arg1 personID:(id)arg2;
 - (void)markCommentsForAssetCollectionWithGUID:(id)arg1 asViewedWithLastViewedDate:(id)arg2 personID:(id)arg3;
 - (void)markCommentsForAssetCollectionWithGUID:(id)arg1 asViewedWithLastViewedDate:(id)arg2 personID:(id)arg3 info:(id)arg4;
 - (id)modelForPersonID:(id)arg1;
@@ -131,6 +134,7 @@
 - (void)subscribeToAlbumWithGUID:(id)arg1 personID:(id)arg2 info:(id)arg3;
 - (void)unsubscribeFromAlbumWithGUID:(id)arg1 personID:(id)arg2;
 - (void)unsubscribeFromAlbumWithGUID:(id)arg1 personID:(id)arg2 info:(id)arg3;
+- (void)updateOwnerReputationScoreForAlbum:(id)arg1;
 - (void)willDestroyStateMachineForPersonID:(id)arg1;
 - (void)workQueueForgetEverythingAboutPersonID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)workQueueForgetEverythingAboutPersonIDs:(id)arg1 index:(unsigned long long)arg2 completionBlock:(CDUnknownBlockType)arg3;

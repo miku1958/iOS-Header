@@ -28,6 +28,8 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsAttributeType:(id)arg1;
+- (id)attributeTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

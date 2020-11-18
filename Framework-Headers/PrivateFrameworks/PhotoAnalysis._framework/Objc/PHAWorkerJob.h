@@ -13,6 +13,7 @@
 
 @interface PHAWorkerJob : NSObject <NSCopying>
 {
+    BOOL _disableReactionCheck;
     BOOL _ignoreFurtherResults;
     BOOL _treatMissingResultsAsFailures;
     BOOL _isReactionJob;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) float completionScore; // @dynamic completionScore;
 @property (nonatomic) unsigned long long countOfFailedStarts; // @synthesize countOfFailedStarts=_countOfFailedStarts;
 @property (weak, nonatomic) id<PHAWorkerJobDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL disableReactionCheck; // @synthesize disableReactionCheck=_disableReactionCheck;
 @property (readonly, nonatomic) BOOL finished;
 @property (nonatomic) BOOL ignoreFurtherResults; // @synthesize ignoreFurtherResults=_ignoreFurtherResults;
 @property (readonly) double intervalSinceLastReport; // @dynamic intervalSinceLastReport;

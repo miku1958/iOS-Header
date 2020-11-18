@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     BOOL _didFetchData;
     BOOL _wasFetchedFromCache;
     BOOL _shouldRetry;
+    BOOL _pcsDataInvalidated;
     int _numRetries;
     NSObject<OS_dispatch_group> *_fetchGroup;
     CKDPCSCache *_cache;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int numRetries; // @synthesize numRetries=_numRetries;
 @property (strong, nonatomic) CKDRecordPCSData *parentPCSData; // @synthesize parentPCSData=_parentPCSData;
 @property (strong, nonatomic) CKDPCSData *pcsData; // @synthesize pcsData=_pcsData;
+@property (getter=isPCSDataInvalidated) BOOL pcsDataInvalidated; // @synthesize pcsDataInvalidated=_pcsDataInvalidated;
 @property (nonatomic) BOOL shouldRetry; // @synthesize shouldRetry=_shouldRetry;
 @property (nonatomic) BOOL wasFetchedFromCache; // @synthesize wasFetchedFromCache=_wasFetchedFromCache;
 

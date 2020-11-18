@@ -10,8 +10,10 @@
 
 @protocol LSIconCacheServiceProtocol <NSObject>
 - (void)copyIconBitmapCacheConfigurationWithReply:(void (^)(NSURL *, NSString *, NSString *))arg1;
-- (void)getIconBitmapDataWithResourceDirectoryURL:(NSURL *)arg1 boundContainerURL:(NSURL *)arg2 dataContainerURL:(NSURL *)arg3 bundleIdentifier:(NSString *)arg4 iconsDictionary:(NSDictionary *)arg5 cacheFileName:(NSString *)arg6 variant:(int)arg7 reply:(void (^)(BOOL, NSData *))arg8;
+- (void)getAlternateIconNameForIdentifier:(NSString *)arg1 reply:(void (^)(NSString *, NSError *))arg2;
+- (void)getIconBitmapDataWithResourceDirectoryURL:(NSURL *)arg1 boundContainerURL:(NSURL *)arg2 dataContainerURL:(NSURL *)arg3 bundleIdentifier:(NSString *)arg4 iconsDictionary:(NSDictionary *)arg5 preferredIconName:(NSString *)arg6 cacheFileName:(NSString *)arg7 variant:(int)arg8 options:(int)arg9 reply:(void (^)(BOOL, NSData *))arg10;
 - (void)getIconBitmapDataWithResourceDirectoryURL:(NSURL *)arg1 bundleIdentifier:(NSString *)arg2 roleIdentifier:(NSString *)arg3 iconFiles:(NSArray *)arg4 variant:(int)arg5 options:(int)arg6 reply:(void (^)(BOOL, NSData *))arg7;
 - (void)invalidateItemsForBundeID:(NSString *)arg1 reply:(void (^)(BOOL))arg2;
+- (void)setAlternateIconName:(NSString *)arg1 forIdentifier:(NSString *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 @end
 

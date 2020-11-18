@@ -90,7 +90,7 @@
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (id)replicaUUIDForCharacterAtIndex:(unsigned long long)arg1;
 - (void)saveDeltaSinceTimestamp:(id)arg1 toArchive:(struct String *)arg2;
-- (void)saveSubstrings:(vector_6c07be0f *)arg1 archiveSet:(unordered_set_cb0b1a0f *)arg2 linkSet:(unordered_set_cb0b1a0f *)arg3 archivedString:(id *)arg4 toArchive:(struct String *)arg5;
+- (void)saveSubstrings:(vector_6c07be0f *)arg1 archiveSet:(unordered_set_0f32d0a8 *)arg2 linkSet:(unordered_set_0f32d0a8 *)arg3 archivedString:(id *)arg4 toArchive:(struct String *)arg5;
 - (void)saveToArchive:(struct String *)arg1;
 - (BOOL)selection:(id)arg1 wasModifiedAfter:(id)arg2;
 - (id)selectionForCharacterRanges:(id)arg1;

@@ -12,6 +12,9 @@
 
 + (id)appIconForBundleID:(id)arg1 variant:(unsigned long long)arg2;
 + (id)appIconForResult:(id)arg1 variant:(unsigned long long)arg2;
++ (void)appIconImageDidChange:(id)arg1;
++ (BOOL)appIconIsCachedForBundleID:(id)arg1 variant:(unsigned long long)arg2;
++ (id)keyStringWithBundleID:(id)arg1 variant:(unsigned long long)arg2;
 
 @end
 

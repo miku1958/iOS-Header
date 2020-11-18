@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface GSStorageManager : NSObject
 {
@@ -18,6 +18,7 @@
 - (id)additionForItemAtURL:(id)arg1 forPersistentIdentifier:(id)arg2 error:(id *)arg3;
 - (BOOL)deallocateDocumentIDOfItemAtURL:(id)arg1 error:(id *)arg2;
 - (BOOL)isItemAtURLInsidePermanentStorage:(id)arg1 error:(id *)arg2;
+- (BOOL)isItemAtURLValidInsidePermanentStorage:(id)arg1 error:(id *)arg2;
 - (BOOL)isPermanentStorageSupportedAtURL:(id)arg1 error:(id *)arg2;
 - (id)permanentStorageForItemAtURL:(id)arg1 allocateIfNone:(BOOL)arg2 error:(id *)arg3;
 - (id)persistentIdentifierInStorage:(struct NSObject *)arg1 forAdditionNamed:(id)arg2 inNameSpace:(id)arg3;

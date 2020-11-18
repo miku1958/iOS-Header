@@ -12,5 +12,6 @@
 - (void)_ICSEscapePropertyValue;
 - (void)_ICSRemoveCharactersFromSet:(id)arg1;
 - (void)_ICSStripControlChracters;
+- (id)controlCharacterSet;
 @end
 

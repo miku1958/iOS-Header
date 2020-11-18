@@ -15,6 +15,7 @@
 
 @property (copy, nonatomic) AKAnisetteData *anisetteData; // @synthesize anisetteData=_anisetteData;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

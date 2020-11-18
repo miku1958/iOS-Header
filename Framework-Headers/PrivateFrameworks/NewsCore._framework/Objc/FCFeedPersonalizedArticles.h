@@ -12,8 +12,10 @@
 {
     NSArray *_articlesToShow;
     NSMapTable *_personalizedScores;
+    NSMapTable *_agedPersonalizedScores;
 }
 
+@property (strong, nonatomic) NSMapTable *agedPersonalizedScores; // @synthesize agedPersonalizedScores=_agedPersonalizedScores;
 @property (strong, nonatomic) NSArray *articlesToShow; // @synthesize articlesToShow=_articlesToShow;
 @property (strong, nonatomic) NSMapTable *personalizedScores; // @synthesize personalizedScores=_personalizedScores;
 

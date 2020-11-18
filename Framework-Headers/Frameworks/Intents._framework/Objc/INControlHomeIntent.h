@@ -25,9 +25,15 @@
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
+- (id)domain;
 - (id)initWithEntities:(id)arg1 attribute:(id)arg2;
+- (id)parametersByName;
 - (void)setAttribute:(id)arg1;
+- (void)setDomain:(id)arg1;
 - (void)setEntities:(id)arg1;
+- (void)setParametersByName:(id)arg1;
+- (void)setVerb:(id)arg1;
+- (id)verb;
 
 @end
 

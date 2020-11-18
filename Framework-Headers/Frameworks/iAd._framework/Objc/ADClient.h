@@ -14,7 +14,9 @@
 - (void)addClientToSegments:(id)arg1 replaceExisting:(BOOL)arg2;
 - (void)determineAppInstallationAttributionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)lookupAdConversionDetails:(CDUnknownBlockType)arg1;
+- (void)prepareForAdRequests;
 - (void)requestAttributionDetailsWithBlock:(CDUnknownBlockType)arg1;
+- (void)segmentDataForSignedInUserWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

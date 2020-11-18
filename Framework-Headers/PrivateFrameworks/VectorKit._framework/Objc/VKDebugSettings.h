@@ -121,6 +121,8 @@
     BOOL _showNavCameraDebugOverlay;
     BOOL _disableStylesheetAnimations;
     BOOL _trackingCameraZoomFurther;
+    float _routeRefineThreshold;
+    float _routeCoarsenThreshold;
     CDStruct_7a997382 _landmark2DStrokeSettings;
     shared_ptr_a3c46825 _debugStyleManager;
 }
@@ -223,6 +225,8 @@
 @property (nonatomic) BOOL realisticWireframeEnabled; // @synthesize realisticWireframeEnabled=_realisticWireframeEnabled;
 @property (nonatomic) BOOL renderInSeparateThread; // @synthesize renderInSeparateThread=_renderInSeparateThread;
 @property (nonatomic) float ribbonCrispness; // @synthesize ribbonCrispness=_ribbonCrispness;
+@property (nonatomic) float routeCoarsenThreshold; // @synthesize routeCoarsenThreshold=_routeCoarsenThreshold;
+@property (nonatomic) float routeRefineThreshold; // @synthesize routeRefineThreshold=_routeRefineThreshold;
 @property (nonatomic) BOOL shouldUseTestTileLoader; // @synthesize shouldUseTestTileLoader=_shouldUseTestTileLoader;
 @property (nonatomic) BOOL showNavCameraDebugConsole; // @synthesize showNavCameraDebugConsole=_showNavCameraDebugConsole;
 @property (nonatomic) BOOL showNavCameraDebugConsoleAttributes; // @synthesize showNavCameraDebugConsoleAttributes=_showNavCameraDebugConsoleAttributes;

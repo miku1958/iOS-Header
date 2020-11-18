@@ -74,6 +74,7 @@
         CDUnknownFunctionPointerType resumeRequest_f;
         CDUnknownFunctionPointerType resumeResponse_f;
     } _pairingDelegate;
+    CDUnknownBlockType _progressHandler;
 }
 
 @property (copy, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
@@ -83,6 +84,7 @@
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL pausesAfterApply; // @synthesize pausesAfterApply=_pausesAfterApply;
+@property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 
 + (id)deviceWithInfo:(id)arg1;
 + (id)deviceWithScanRecord:(id)arg1;
@@ -106,7 +108,7 @@
 - (void)_postConfigCheckCompletion:(struct HTTPMessagePrivate *)arg1;
 - (void)_postConfigCheckStart:(id)arg1;
 - (void)_postNote:(id)arg1 info:(id)arg2;
-- (void)_postProgress:(int)arg1;
+- (void)_postProgress:(int)arg1 info:(id)arg2;
 - (void)_postProgress:(int)arg1 withResponse:(id)arg2;
 - (int)_setupClient:(id)arg1;
 - (void)_start;

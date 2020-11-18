@@ -71,6 +71,10 @@ struct unique_ptr<RWIAugmentableInspectorControllerClient, std::__1::default_del
 
 #pragma mark Typedef'd Structures
 
+typedef struct {
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
+
 // Template types
 typedef struct RefPtr<Inspector::InspectorArray> {
     struct InspectorArray *_field1;

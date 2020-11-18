@@ -6,12 +6,13 @@
 
 #import <UIKit/UIButton.h>
 
-@class NSString, _UILegibilitySettings;
+@class NSCache, NSString, _UILegibilitySettings;
 
 @interface WGNewWidgetsButton : UIButton
 {
     UIButton *_vibrantButton;
     UIButton *_overlayButton;
+    NSCache *_numberAttributedStringCache;
     unsigned long long _badgeNumber;
     _UILegibilitySettings *_legibilitySettings;
     NSString *_text;

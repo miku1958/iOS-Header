@@ -15,6 +15,7 @@
     BOOL _launchUsingSiri;
     BOOL _supportsPlayableContent;
     BOOL _supportsMessaging;
+    BOOL _supportsCalling;
     NSString *_bundleIdentifier;
     NSSet *_autoMakerProtocols;
 }
@@ -23,12 +24,16 @@
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (nonatomic) BOOL launchUsingSiri; // @synthesize launchUsingSiri=_launchUsingSiri;
 @property (nonatomic) BOOL requiresGeoSupport; // @synthesize requiresGeoSupport=_requiresGeoSupport;
+@property (nonatomic) BOOL supportsCalling; // @synthesize supportsCalling=_supportsCalling;
 @property (nonatomic) BOOL supportsMessaging; // @synthesize supportsMessaging=_supportsMessaging;
 @property (nonatomic) BOOL supportsPlayableContent; // @synthesize supportsPlayableContent=_supportsPlayableContent;
 @property (nonatomic, getter=isSystemApp) BOOL systemApp; // @synthesize systemApp=_systemApp;
 
 + (id)declarationForAppProxy:(id)arg1;
 + (id)declarationForBundleIdentifier:(id)arg1 entitlements:(id)arg2 infoPlist:(id)arg3;
++ (id)declarationForBundleIdentifier:(id)arg1 info:(id)arg2 entitlements:(id)arg3;
++ (id)requiredEntitlementKeys;
++ (id)requiredInfoKeys;
 - (void).cxx_destruct;
 
 @end

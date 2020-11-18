@@ -42,6 +42,8 @@
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)cancelCurrentEndpoint;
+- (id)copyCurrentPath;
+- (id)copyError;
 - (void)dumpTimestamps;
 - (void)forceCancel;
 - (int)getConnectedSocket;

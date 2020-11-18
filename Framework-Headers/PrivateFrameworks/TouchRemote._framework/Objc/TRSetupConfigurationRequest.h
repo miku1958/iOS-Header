@@ -15,6 +15,7 @@
 
 @property (copy, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

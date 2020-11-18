@@ -6,10 +6,12 @@
 
 #import <Foundation/NSObject.h>
 
-@class GEOLogContext, NSHashTable, NSLock;
+#import <GeoServices/GEOExperimentConfigurationObserver-Protocol.h>
+
+@class GEOLogContext, NSHashTable, NSLock, NSString;
 @protocol OS_dispatch_queue;
 
-@interface GEOLogger : NSObject
+@interface GEOLogger : NSObject <GEOExperimentConfigurationObserver>
 {
     GEOLogContext *_cachedLogContext;
     NSHashTable *_logContextDelegates;
@@ -19,6 +21,11 @@
     void *_loggerQueueIdentityValue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (void)registerGEOLogFacility;
 + (id)sharedLogger;
 - (id)_cachedStateOfType:(int)arg1;
@@ -27,6 +34,7 @@
 - (void)captureLogMsgEvent:(id)arg1;
 - (void)captureLogMsgEvent:(id)arg1 withLogContext:(id)arg2;
 - (void)dealloc;
+- (void)experimentConfigurationDidChange:(id)arg1;
 - (id)init;
 - (void)registerLogContextDelegate:(id)arg1;
 - (void)registerLogMsgState:(id)arg1;

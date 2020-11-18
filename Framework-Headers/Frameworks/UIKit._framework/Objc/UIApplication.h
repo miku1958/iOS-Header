@@ -189,6 +189,7 @@
 @property (readonly) long long _virtualHorizontalSizeClass; // @synthesize _virtualHorizontalSizeClass;
 @property (readonly) long long _virtualVerticalSizeClass; // @synthesize _virtualVerticalSizeClass;
 @property (readonly) struct CGSize _virtualWindowSizeInSceneReferenceSpace; // @synthesize _virtualWindowSizeInSceneReferenceSpace;
+@property (readonly, nonatomic) NSString *alternateIconName;
 @property (nonatomic) long long applicationIconBadgeNumber;
 @property (readonly, nonatomic) long long applicationState;
 @property (nonatomic) BOOL applicationSupportsShakeToEdit;
@@ -217,6 +218,7 @@
 @property (readonly, nonatomic) double statusBarOrientationAnimationDuration;
 @property (readonly, nonatomic) long long statusBarStyle;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsAlternateIcons;
 @property (readonly, nonatomic) long long userInterfaceLayoutDirection;
 @property (readonly, nonatomic) NSArray *windows;
 
@@ -243,6 +245,7 @@
 + (BOOL)registerAsSystemApp;
 + (void)registerObjectForStateRestoration:(id)arg1 restorationIdentifier:(id)arg2;
 + (BOOL)rendersLocally;
++ (BOOL)runStatusBarServer;
 + (long long)runningInStoreDemoModeFProgramNumber;
 + (id)sharedApplication;
 + (BOOL)shouldBackgroundMainThreadOnSuspendedLaunch;
@@ -351,7 +354,6 @@
 - (unsigned char)_getIOHIDKeyboardTypeForGSKeyboardType:(unsigned char)arg1;
 - (void)_getScheduledLocalNotificationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)_getSpringBoardOrientation;
-- (void *)_getSymbol:(id)arg1 forFramework:(id)arg2;
 - (void)_getUserNotificationCategorieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_getUserNotificationTypesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_handleApplicationActivationWithScene:(id)arg1 transitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -445,7 +447,6 @@
 - (void)_openURL:(id)arg1 originatingView:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_overrideDefaultInterfaceOrientationWithOrientation:(long long)arg1;
 - (BOOL)_overridesDynamicCaret;
-- (id)_pathForFrameworkName:(id)arg1 inPrivate:(BOOL)arg2;
 - (void)_performBlockAfterCATransactionCommitSynchronizes:(CDUnknownBlockType)arg1;
 - (void)_performBlockAfterCATransactionCommits:(CDUnknownBlockType)arg1;
 - (void)_performChanges:(CDUnknownBlockType)arg1 withTransitionContext:(id)arg2;
@@ -472,6 +473,7 @@
 - (void)_registerEstimatedTouches:(id)arg1 event:(id)arg2 forTouchable:(id)arg3;
 - (void)_registerForAlertItemStateChangeNotification;
 - (void)_registerForBackgroundRefreshStatusChangedNotification;
+- (void)_registerForHangTracerEnabledStateChangedNotification;
 - (void)_registerForKeyBagLockStatusNotification;
 - (void)_registerForLanguageChangedNotification;
 - (void)_registerForLocaleChangedNotification;
@@ -524,6 +526,7 @@
 - (void)_sendMoveEventWithPhysicalButtonsEvent:(id)arg1;
 - (void)_sendRemoteControlEvent:(long long)arg1;
 - (void)_sendWillEnterForegroundCallbacks;
+- (void)_setAlternateIconName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setAlwaysHitTestsForMainScreen:(BOOL)arg1;
 - (void)_setAmbiguousControlCenterActivationMargin:(double)arg1;
 - (void)_setApplicationBackdropStyle:(long long)arg1;
@@ -568,6 +571,7 @@
 - (BOOL)_shouldAttemptOpenURL:(id)arg1;
 - (BOOL)_shouldBigify;
 - (BOOL)_shouldDelayTouchesForControlCenter;
+- (BOOL)_shouldForceClassicForExtensions;
 - (BOOL)_shouldForceClassicMode;
 - (BOOL)_shouldHandleTestURL:(id)arg1;
 - (BOOL)_shouldIgnoreHeadsetClicks;
@@ -700,7 +704,6 @@
 - (void)emitPPTEndTracePointForTestName:(id)arg1 identifier:(unsigned long long)arg2;
 - (void)emitPPTStartTracePointForSubTestName:(id)arg1 identifier:(unsigned long long)arg2 testIdentifier:(unsigned long long)arg3;
 - (void)emitPPTStartTracePointForTestName:(id)arg1 identifier:(unsigned long long)arg2;
-- (void)enableFramebufferStatisticsGathering;
 - (unsigned long long)enabledRemoteNotificationTypes;
 - (void)endBackgroundTask:(unsigned long long)arg1;
 - (void)endIgnoringInteractionEvents;
@@ -814,6 +817,7 @@
 - (id)resultsForTest:(id)arg1;
 - (void)ringerChanged:(int)arg1;
 - (BOOL)rotateIfNeeded:(long long)arg1;
+- (void)rotateIfNeeded:(long long)arg1 before:(CDUnknownBlockType)arg2 after:(CDUnknownBlockType)arg3;
 - (void)rotateIfNeeded:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)runModal:(id)arg1;
 - (void)runTest:(id)arg1 forAnimation:(id)arg2;
@@ -830,6 +834,7 @@
 - (BOOL)sendAction:(SEL)arg1 to:(id)arg2 from:(id)arg3 forEvent:(id)arg4;
 - (BOOL)sendAction:(SEL)arg1 toTarget:(id)arg2 fromSender:(id)arg3 forEvent:(id)arg4;
 - (void)sendEvent:(id)arg1;
+- (void)setAlternateIconName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setApplicationBadgeString:(id)arg1;
 - (void)setBacklightLevel:(float)arg1;
 - (void)setDoubleHeightMode:(int)arg1;

@@ -28,6 +28,8 @@
 + (BOOL)isExternalID:(id)arg1 equalToExternalID:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)JSONDictionary;
+- (id)_statusStrings;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

@@ -12,11 +12,11 @@
 @interface DASearchQuery : NSObject
 {
     int _timeLimit;
-    int _state;
     NSString *_searchString;
     NSPredicate *_searchPredicate;
     id<DASearchQueryConsumer> _consumer;
     NSString *_searchID;
+    unsigned long long _state;
     struct _NSRange _range;
 }
 
@@ -26,7 +26,7 @@
 @property (copy, nonatomic) NSString *searchID; // @synthesize searchID=_searchID;
 @property (copy, nonatomic) NSPredicate *searchPredicate; // @synthesize searchPredicate=_searchPredicate;
 @property (copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
-@property (nonatomic) int state; // @synthesize state=_state;
+@property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (nonatomic) int timeLimit; // @synthesize timeLimit=_timeLimit;
 
 + (id)searchQueryWithSearchString:(id)arg1 consumer:(id)arg2;

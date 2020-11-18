@@ -30,6 +30,15 @@ struct CLLocationCoordinate2D {
     double longitude;
 };
 
+struct PHAssetResourceTableDataSpecification {
+    int _field1;
+    int _field2;
+    int _field3;
+    int _field4;
+    int _field5;
+    int _field6;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;

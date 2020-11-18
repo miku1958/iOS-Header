@@ -134,7 +134,7 @@
 - (void)_createViewControllers:(id)arg1;
 - (void)_didResolveAttribution:(id)arg1;
 - (void)_dismissModalViewController;
-- (void)_launchAttributionURLs:(id)arg1 withAttributionApps:(id)arg2 mapItem:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_launchAttributionURLs:(id)arg1 withAttribution:(id)arg2 mapItem:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_mapTableKeyForSectionPosition:(long long)arg1;
 - (void)_openInfoAttribtion;
 - (void)_performWhenViewHasAppeared:(CDUnknownBlockType)arg1;
@@ -209,6 +209,7 @@
 - (void)placeCardWillCloseFromClientType:(unsigned long long)arg1;
 - (void)placeCardheaderHeaderViewControllerDidSelectDirectionsButton:(id)arg1 withTransportTypePreference:(id)arg2;
 - (void)placeCardheaderHeaderViewControllerDidSelectRerouteButton:(id)arg1;
+- (void)placeCardheaderHeaderViewControllerDidSelectRidesharingButton:(id)arg1;
 - (void)placeCardheaderHeaderViewControllerDidSelectShareLocationButton:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (void)removeAdditionalViewController:(id)arg1;

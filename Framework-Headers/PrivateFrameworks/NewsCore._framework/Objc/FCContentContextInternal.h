@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCContentContextInternal-Protocol.h>
 
-@class CKContainer, FCArticleListRecordSource, FCArticleRecordSource, FCCKDatabase, FCChannelMembershipController, FCFeedDatabase, FCForYouConfigRecordSource, FCPurchaseLookupRecordSource, FCResourceRecordSource, FCTagRecordSource, FCWebArchiveSource, NSString;
+@class CKContainer, FCArticleListRecordSource, FCArticleRecordSource, FCCKDatabase, FCChannelMembershipController, FCFeedDatabase, FCForYouConfigRecordSource, FCPurchaseLookupRecordSource, FCResourceRecordSource, FCTagRecordSource, FCWebArchiveSource, FCWidgetSectionConfigRecordSource, NSString;
 
 @interface FCContentContextInternal : NSObject <FCContentContextInternal>
 {
@@ -20,6 +20,7 @@
     FCArticleListRecordSource *_articleListRecordSource;
     FCPurchaseLookupRecordSource *_purchaseLookupRecordSource;
     FCForYouConfigRecordSource *_forYouConfigRecordSource;
+    FCWidgetSectionConfigRecordSource *_widgetSectionConfigRecordSource;
     FCFeedDatabase *_feedDatabase;
     FCCKDatabase *_contentDatabase;
     CKContainer *_contentContainer;
@@ -40,6 +41,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) FCTagRecordSource *tagRecordSource; // @synthesize tagRecordSource=_tagRecordSource;
 @property (strong, nonatomic) FCWebArchiveSource *webArchiveSource; // @synthesize webArchiveSource=_webArchiveSource;
+@property (strong, nonatomic) FCWidgetSectionConfigRecordSource *widgetSectionConfigRecordSource; // @synthesize widgetSectionConfigRecordSource=_widgetSectionConfigRecordSource;
 
 - (void).cxx_destruct;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;

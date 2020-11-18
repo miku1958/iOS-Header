@@ -15,14 +15,15 @@
     const struct __CFData *_persistentRef;
 }
 
-@property (copy) NSString *accessGroup;
-@property (copy) NSString *accessibility;
-@property (copy) NSString *account;
-@property (copy) NSDictionary *metadata;
-@property (readonly) const struct __CFData *persistentRef; // @synthesize persistentRef=_persistentRef;
-@property (copy) NSString *service;
-@property BOOL synchronizable;
-@property long long version;
+@property (readonly, nonatomic) struct __SecAccessControl *accessControlRef;
+@property (copy, nonatomic) NSString *accessGroup;
+@property (copy, nonatomic) NSString *accessibility;
+@property (copy, nonatomic) NSString *account;
+@property (copy, nonatomic) NSDictionary *metadata;
+@property (readonly, nonatomic) const struct __CFData *persistentRef; // @synthesize persistentRef=_persistentRef;
+@property (copy, nonatomic) NSString *service;
+@property (nonatomic) BOOL synchronizable;
+@property (nonatomic) long long version;
 
 - (void).cxx_destruct;
 - (void)_clearDirtyProperties;

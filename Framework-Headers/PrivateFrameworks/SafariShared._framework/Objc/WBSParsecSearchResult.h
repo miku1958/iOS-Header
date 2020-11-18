@@ -25,6 +25,7 @@
     NSString *_sectionHeader;
     NSString *_iTunesItemIdentifier;
     NSString *_completion;
+    NSString *_query;
     unsigned long long _type;
     NSString *_typeString;
     unsigned long long _minimumRankOfTopHitToSuppressResult;
@@ -71,6 +72,7 @@
 @property (readonly, copy, nonatomic) NSString *mediaKind; // @synthesize mediaKind=_mediaKind;
 @property (readonly, nonatomic) unsigned long long minimumRankOfTopHitToSuppressResult; // @synthesize minimumRankOfTopHitToSuppressResult=_minimumRankOfTopHitToSuppressResult;
 @property (readonly, nonatomic) NSString *parsecDomainIdentifier;
+@property (readonly, copy, nonatomic) NSString *query; // @synthesize query=_query;
 @property (readonly, copy, nonatomic) NSString *referrerForLoadingResult; // @synthesize referrerForLoadingResult=_referrerForLoadingResult;
 @property (readonly, nonatomic) NSURL *reportProblemURL;
 @property (readonly, nonatomic) NSString *sectionHeader; // @synthesize sectionHeader=_sectionHeader;

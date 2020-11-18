@@ -8,10 +8,11 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString, NTPBCacheCoordinatorHints, NTPBDate, NTPBNetworkSessionList, NTPBPersonalizationLocalData, NTPBReadingHistoryItem;
+@class NSData, NSString, NTPBAppConfigurationResource, NTPBCacheCoordinatorHints, NTPBDate, NTPBNetworkSessionList, NTPBPersonalizationLocalData, NTPBReadingHistoryItem;
 
 @interface NTPBKeyValuePair : PBCodable <NSCopying>
 {
+    NTPBAppConfigurationResource *_appConfigurationResource;
     NTPBCacheCoordinatorHints *_cacheCoordinatorHintsValue;
     NSData *_dataValue;
     NTPBDate *_dateValue;
@@ -27,9 +28,11 @@
     } _has;
 }
 
+@property (strong, nonatomic) NTPBAppConfigurationResource *appConfigurationResource; // @synthesize appConfigurationResource=_appConfigurationResource;
 @property (strong, nonatomic) NTPBCacheCoordinatorHints *cacheCoordinatorHintsValue; // @synthesize cacheCoordinatorHintsValue=_cacheCoordinatorHintsValue;
 @property (strong, nonatomic) NSData *dataValue; // @synthesize dataValue=_dataValue;
 @property (strong, nonatomic) NTPBDate *dateValue; // @synthesize dateValue=_dateValue;
+@property (readonly, nonatomic) BOOL hasAppConfigurationResource;
 @property (readonly, nonatomic) BOOL hasCacheCoordinatorHintsValue;
 @property (readonly, nonatomic) BOOL hasDataValue;
 @property (readonly, nonatomic) BOOL hasDateValue;

@@ -46,6 +46,7 @@
 - (void)_playbackErrorPostedNotification:(id)arg1;
 - (void)_playbackStateDidChangeNotification:(id)arg1;
 - (void)_prepareQueueIfNecessary;
+- (void)_queueDidInvalidateNotification:(id)arg1;
 - (void)_registerClientPort:(unsigned int)arg1 forProcessID:(int)arg2 hasAudioBackgroundMode:(BOOL)arg3;
 - (void)_setQueuePrepared:(BOOL)arg1;
 - (void)_setQueueWithQuery:(id)arg1;
@@ -53,11 +54,13 @@
 - (void)_tvOutCapabilityDidChangeNotification:(id)arg1;
 - (void)_updateVideoView;
 - (id)allowsBackgroundVideo;
+- (void)appendQueueDescriptor:(id)arg1;
 - (void)beginSeekingBackward;
 - (void)beginSeekingForward;
 - (id)currentChapterIndex;
 - (id)currentPlaybackRate;
 - (id)currentPlaybackTime;
+- (id)currentQueueUUID;
 - (void)dealloc;
 - (void)endSeeking;
 - (id)indexOfNowPlayingItem;
@@ -76,10 +79,13 @@
 - (id)playbackState;
 - (void)prepareQueueForPlayback;
 - (void)prepareToPlay;
+- (void)prependQueueDescriptor:(id)arg1;
 - (id)queueAsQuery;
 - (id)queueAsRadioStation;
+- (id)queueWithUUID:(id)arg1;
 - (void)registerForServerDiedNotifications;
 - (id)repeatMode;
+- (void)requestQueue;
 - (id)serverIsAlive;
 - (void)setAllowsBackgroundVideo:(id)arg1;
 - (void)setCurrentChapterIndex:(id)arg1;
@@ -87,6 +93,7 @@
 - (void)setCurrentPlaybackTime:(id)arg1;
 - (void)setNowPlayingItem:(id)arg1;
 - (void)setPlaybackSpeed:(id)arg1;
+- (void)setQueue:(id)arg1;
 - (void)setQueueWithDescriptor:(id)arg1;
 - (void)setQueueWithGeniusMixPlaylist:(id)arg1;
 - (void)setQueueWithItemCollection:(id)arg1;

@@ -6,37 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariServices/SFSafariExtensionEventsListener-Protocol.h>
-
-@class NSMutableDictionary, NSString, NSTimer, WKWebView, _WKRemoteObjectInterface;
+@class WKWebView;
 @protocol SFSharingExtensionWebProcessController;
 
-@interface _SFSafariSharingExtensionController : NSObject <SFSafariExtensionEventsListener>
+@interface _SFSafariSharingExtensionController : NSObject
 {
     WKWebView *_webView;
     id<SFSharingExtensionWebProcessController> _extensionControllerProxy;
-    _WKRemoteObjectInterface *_extensionEventListenerInterface;
-    NSMutableDictionary *_replyIdentifierToCompletionMap;
-    NSTimer *_expirationTimer;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
 - (void).cxx_destruct;
-- (void)_evaluateJavaScriptFinishedWithResult:(id)arg1 replyIdentifier:(id)arg2 error:(id)arg3;
-- (void)_expirationTimerFired:(id)arg1;
 - (id)_extensionControllerProxy;
-- (void)_invalidateExpirationTimer;
-- (void)_setUpExtensionEventsListenerInterface;
-- (void)_startExpirationTimerForReplyIdentifier:(id)arg1;
-- (void)dealloc;
-- (void)didEvaluateJavaScriptForSharingExtensionWithResult:(id)arg1 replyIdentifier:(id)arg2;
 - (void)finalizeJavaScriptForSharingExtension:(id)arg1 arguments:(id)arg2;
 - (id)initWithWebView:(id)arg1;
-- (void)invalidate;
 - (void)runJavaScriptForSharingExtension:(id)arg1 javaScript:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

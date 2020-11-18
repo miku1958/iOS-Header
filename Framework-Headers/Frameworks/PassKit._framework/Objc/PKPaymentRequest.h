@@ -23,19 +23,23 @@
     NSString *_currencyCode;
     unsigned long long _requiredBillingAddressFields;
     PKContact *_billingContact;
-    const void *_billingAddress;
     unsigned long long _requiredShippingAddressFields;
     PKContact *_shippingContact;
-    const void *_shippingAddress;
     NSArray *_shippingMethods;
     unsigned long long _shippingType;
     NSData *_applicationData;
+    const void *_shippingAddress;
+    const void *_billingAddress;
     NSArray *_thumbnailURLs;
     NSURL *_originatingURL;
+    NSString *_sourceApplicationBundleIdentifier;
+    NSString *_sourceApplicationSecondaryIdentifier;
+    NSString *_CTDataConnectionServiceType;
     NSString *_shippingEditableMessage;
     PKPaymentMerchantSession *_merchantSession;
 }
 
+@property (strong, nonatomic) NSString *CTDataConnectionServiceType; // @synthesize CTDataConnectionServiceType=_CTDataConnectionServiceType;
 @property (copy, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
 @property (nonatomic) const void *billingAddress; // @synthesize billingAddress=_billingAddress;
 @property (strong, nonatomic) PKContact *billingContact; // @synthesize billingContact=_billingContact;
@@ -56,6 +60,8 @@
 @property (copy, nonatomic) NSString *shippingEditableMessage; // @synthesize shippingEditableMessage=_shippingEditableMessage;
 @property (copy, nonatomic) NSArray *shippingMethods; // @synthesize shippingMethods=_shippingMethods;
 @property (nonatomic) unsigned long long shippingType; // @synthesize shippingType=_shippingType;
+@property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
+@property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
 @property (copy, nonatomic) NSArray *supportedNetworks; // @synthesize supportedNetworks=_supportedNetworks;
 @property (strong, nonatomic) NSArray *thumbnailURLs; // @synthesize thumbnailURLs=_thumbnailURLs;
 

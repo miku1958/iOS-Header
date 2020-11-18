@@ -13,43 +13,62 @@
 @interface GEOCarInfo : PBCodable <NSCopying>
 {
     struct GEOScreenResolution _screenResolution;
+    CDStruct_95bda58d _engineTypes;
     int _deviceConnection;
     int _interactionModel;
     NSString *_manufacturer;
     NSString *_model;
+    int _navAidedDrivingStatus;
+    BOOL _destinationSharingEnabled;
     struct {
         unsigned int screenResolution:1;
         unsigned int deviceConnection:1;
         unsigned int interactionModel:1;
+        unsigned int navAidedDrivingStatus:1;
+        unsigned int destinationSharingEnabled:1;
     } _has;
 }
 
+@property (nonatomic) BOOL destinationSharingEnabled; // @synthesize destinationSharingEnabled=_destinationSharingEnabled;
 @property (nonatomic) int deviceConnection; // @synthesize deviceConnection=_deviceConnection;
+@property (readonly, nonatomic) int *engineTypes;
+@property (readonly, nonatomic) unsigned long long engineTypesCount;
+@property (nonatomic) BOOL hasDestinationSharingEnabled;
 @property (nonatomic) BOOL hasDeviceConnection;
 @property (nonatomic) BOOL hasInteractionModel;
 @property (readonly, nonatomic) BOOL hasManufacturer;
 @property (readonly, nonatomic) BOOL hasModel;
+@property (nonatomic) BOOL hasNavAidedDrivingStatus;
 @property (nonatomic) BOOL hasScreenResolution;
 @property (nonatomic) int interactionModel; // @synthesize interactionModel=_interactionModel;
 @property (strong, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (strong, nonatomic) NSString *model; // @synthesize model=_model;
+@property (nonatomic) int navAidedDrivingStatus; // @synthesize navAidedDrivingStatus=_navAidedDrivingStatus;
 @property (nonatomic) struct GEOScreenResolution screenResolution; // @synthesize screenResolution=_screenResolution;
 
 + (id)carInfoWithTraits:(id)arg1;
 - (int)StringAsDeviceConnection:(id)arg1;
+- (int)StringAsEngineTypes:(id)arg1;
 - (int)StringAsInteractionModel:(id)arg1;
+- (int)StringAsNavAidedDrivingStatus:(id)arg1;
+- (void)addEngineType:(int)arg1;
+- (void)clearEngineTypes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)deviceConnectionAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (int)engineTypeAtIndex:(unsigned long long)arg1;
+- (id)engineTypesAsString:(int)arg1;
 - (unsigned long long)hash;
 - (id)initWithTraits:(id)arg1;
 - (id)interactionModelAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)navAidedDrivingStatusAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setEngineTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

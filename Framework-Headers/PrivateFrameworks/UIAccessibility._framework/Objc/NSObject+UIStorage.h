@@ -38,6 +38,7 @@
 - (void)_accessibilitySetActionBlock:(CDUnknownBlockType)arg1 withValue:(id)arg2 forKey:(unsigned int)arg3;
 - (void)_accessibilitySetIgnoreDelegate:(BOOL)arg1;
 - (BOOL)_accessibilitySetNativeFocus;
+- (BOOL)_accessibilityShouldBeExplorerElementWithoutSystemFocus;
 - (BOOL)_accessibilityShouldIgnoreSoundForFailedMoveAttempt;
 - (BOOL)_accessibilityShouldSpeakExplorerElementsAfterFocus;
 - (id)_accessibilitySiriContentElementsWithSemanticContext;

@@ -8,7 +8,7 @@
 
 #import <iAd/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class ADMRAIDAction, NSString;
 
 @interface ADAdActionPublicAttributes : NSObject <NSSecureCoding>
 {
@@ -19,8 +19,10 @@
     unsigned long long _actionViewControllerPresentationOrientationMask;
     long long _modalPresentationStyle;
     NSString *_actionURLString;
+    ADMRAIDAction *_MRAIDAction;
 }
 
+@property (copy, nonatomic) ADMRAIDAction *MRAIDAction; // @synthesize MRAIDAction=_MRAIDAction;
 @property (nonatomic) int action; // @synthesize action=_action;
 @property (nonatomic) BOOL actionLeavesApplication; // @synthesize actionLeavesApplication=_actionLeavesApplication;
 @property (copy, nonatomic) NSString *actionURLString; // @synthesize actionURLString=_actionURLString;

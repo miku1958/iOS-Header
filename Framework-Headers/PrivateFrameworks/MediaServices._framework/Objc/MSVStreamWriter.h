@@ -13,6 +13,7 @@
 
 @interface MSVStreamWriter : NSObject <NSStreamDelegate>
 {
+    BOOL _stopped;
     BOOL _closeOnStop;
     struct z_stream_s *_zstreamp;
     BOOL _compressed;
@@ -44,7 +45,6 @@
 
 - (void).cxx_destruct;
 - (id)_decompressData:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithOutputStream:(id)arg1 queue:(id)arg2;
 - (id)initWithQueue:(id)arg1;

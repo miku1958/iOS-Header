@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _highlighted;
     BOOL _onlyKeepVisibleContentInHierarchy;
     UIInterfaceAction *_action;
+    unsigned long long _visualCornerPosition;
     id _actionViewStateContext;
     UIView<UIInterfaceActionVisualBackgroundDisplaying> *_backgroundHighlightView;
     NSLayoutConstraint *_minimumWidthConstraint;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *viewsToDisappearWhenHighlighted; // @synthesize viewsToDisappearWhenHighlighted=_viewsToDisappearWhenHighlighted;
+@property (nonatomic) unsigned long long visualCornerPosition; // @synthesize visualCornerPosition=_visualCornerPosition;
 @property (readonly, nonatomic) UIInterfaceActionVisualStyle *visualStyle;
 
 - (void).cxx_destruct;

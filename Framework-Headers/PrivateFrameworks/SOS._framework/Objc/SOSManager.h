@@ -28,10 +28,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)_beginSOSCallWithCompletion:(CDUnknownBlockType)arg1;
++ (BOOL)_hidesSOSTriggerAlert;
++ (void)_logSOSAlertResponseAlertReason:(int)arg1 withUUID:(id)arg2;
++ (void)_triggerSOSWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (BOOL)deviceSupportsSOS;
 + (id)sharedInstance;
 + (void)triggerSOS;
 + (void)triggerSOSWithCompletion:(CDUnknownBlockType)arg1;
++ (void)triggerSOSWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)_resetStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_waitForInitialState;

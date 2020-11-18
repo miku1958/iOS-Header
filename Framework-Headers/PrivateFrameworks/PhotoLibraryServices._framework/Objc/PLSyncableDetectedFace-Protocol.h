@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <PhotoLibraryServices/CVMLPhotosFaceRepresentation-Protocol.h>
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
 @class NSDate, NSSet;
 @protocol PLSyncablePerson;
 
-@protocol PLSyncableDetectedFace <NSObject>
+@protocol PLSyncableDetectedFace <NSObject, CVMLPhotosFaceRepresentation>
 
 @property (copy, nonatomic) NSDate *adjustmentVersion;
 @property (nonatomic) double centerX;
@@ -18,10 +19,10 @@
 @property (nonatomic) int faceAlgorithmVersion;
 @property (nonatomic) BOOL hidden;
 @property (nonatomic) BOOL manual;
-@property (nonatomic) BOOL nameSourceAuto;
+@property (nonatomic) BOOL nameSourceUser;
 @property (strong, nonatomic) id<PLSyncablePerson> person;
 @property (strong, nonatomic) id<PLSyncablePerson> personBeingKeyFace;
-@property (strong, nonatomic) NSSet *rejectedPeople;
+@property (strong, nonatomic) NSSet *rejectedPersons;
 @property (nonatomic) double size;
 @property (nonatomic) int sourceHeight;
 @property (nonatomic) int sourceWidth;

@@ -106,7 +106,9 @@
 - (void)didCompleteSession;
 - (void)didStartSession;
 - (id)encodeSYChangeForBackwardCompatibility:(id)arg1 protocolVersion:(long long)arg2;
+- (BOOL)hasRejectedPeerSession;
 - (id)initWithService:(id)arg1;
+- (void)setHasRejectedPeerSession:(BOOL)arg1;
 - (void)start:(CDUnknownBlockType)arg1;
 
 @end

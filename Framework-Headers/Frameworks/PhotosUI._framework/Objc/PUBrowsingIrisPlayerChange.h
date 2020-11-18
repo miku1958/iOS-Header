@@ -16,15 +16,23 @@ __attribute__((visibility("hidden")))
     BOOL _hasPendingVitalityHintDidChange;
     BOOL _isLivePhotoLoadingAllowedDidChange;
     BOOL _isLivePhotoPlaybackAllowedDidChange;
+    BOOL _activatedDidChange;
+    BOOL _scrubbingPhotoTimeDidChange;
+    BOOL _currentlyDisplayedTimesDidChange;
+    BOOL _preferredTimesDidChange;
 }
 
+@property (nonatomic, setter=_setActivatedDidChange:) BOOL activatedDidChange; // @synthesize activatedDidChange=_activatedDidChange;
+@property (nonatomic, setter=_setCurrentlyDisplayedTimesDidChange:) BOOL currentlyDisplayedTimesDidChange; // @synthesize currentlyDisplayedTimesDidChange=_currentlyDisplayedTimesDidChange;
 @property (nonatomic, setter=_setHasPendingVitalityHintDidChange:) BOOL hasPendingVitalityHintDidChange; // @synthesize hasPendingVitalityHintDidChange=_hasPendingVitalityHintDidChange;
 @property (nonatomic, setter=_setLivePhotoLoadingAllowedDidChange:) BOOL isLivePhotoLoadingAllowedDidChange; // @synthesize isLivePhotoLoadingAllowedDidChange=_isLivePhotoLoadingAllowedDidChange;
 @property (nonatomic, setter=_setLivePhotoPlaybackAllowedDidChange:) BOOL isLivePhotoPlaybackAllowedDidChange; // @synthesize isLivePhotoPlaybackAllowedDidChange=_isLivePhotoPlaybackAllowedDidChange;
 @property (readonly, nonatomic) BOOL livePhotoLoadingAllowedDidChange; // @synthesize livePhotoLoadingAllowedDidChange=_livePhotoLoadingAllowedDidChange;
 @property (readonly, nonatomic) BOOL livePhotoPlaybackAllowedDidChange; // @synthesize livePhotoPlaybackAllowedDidChange=_livePhotoPlaybackAllowedDidChange;
 @property (nonatomic, setter=_setPlaybackStateDidChange:) BOOL playbackStateDidChange; // @synthesize playbackStateDidChange=_playbackStateDidChange;
-@property (readonly, nonatomic) BOOL playerDidChange; // @synthesize playerDidChange=_playerDidChange;
+@property (nonatomic, setter=_setPlayerDidChange:) BOOL playerDidChange; // @synthesize playerDidChange=_playerDidChange;
+@property (nonatomic, setter=_setPreferredTimesDidChange:) BOOL preferredTimesDidChange; // @synthesize preferredTimesDidChange=_preferredTimesDidChange;
+@property (nonatomic, setter=_setScrubbingPhotoTimeDidChange:) BOOL scrubbingPhotoTimeDidChange; // @synthesize scrubbingPhotoTimeDidChange=_scrubbingPhotoTimeDidChange;
 
 - (BOOL)hasChanges;
 

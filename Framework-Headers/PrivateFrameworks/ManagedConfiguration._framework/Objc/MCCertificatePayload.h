@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSData *certificatePersistentID; // @synthesize certificatePersistentID=_certificatePersistentID;
 @property (readonly, strong, nonatomic) NSDate *expiry;
 @property (copy, nonatomic) NSString *installedOnDeviceID; // @synthesize installedOnDeviceID=_installedOnDeviceID;
+@property (readonly, nonatomic) BOOL isFullyTrustedRootCert;
 @property (readonly, nonatomic) BOOL isIdentity;
 @property (readonly, nonatomic) BOOL isRoot;
 @property (readonly, nonatomic) BOOL isSigned;

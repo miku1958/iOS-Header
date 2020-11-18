@@ -14,6 +14,7 @@
 @property (nonatomic) struct __SecTask *currentTask; // @synthesize currentTask=_currentTask;
 
 + (id)currentProcessInfo;
++ (BOOL)isSandboxed;
 - (BOOL)boolValueForEntitlement:(id)arg1;
 - (void)dealloc;
 - (id)init;

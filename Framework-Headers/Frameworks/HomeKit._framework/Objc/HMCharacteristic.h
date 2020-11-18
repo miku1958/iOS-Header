@@ -26,10 +26,10 @@
     NSDate *_notificationEnabledTime;
     HMService *_service;
     HMCharacteristicMetadata *_metadata;
+    NSNumber *_instanceID;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDelegateCaller *_delegateCaller;
-    NSNumber *_instanceID;
 }
 
 @property (copy, nonatomic) NSString *characteristicType; // @synthesize characteristicType=_characteristicType;

@@ -16,7 +16,6 @@
 
 - (void).cxx_destruct;
 - (struct SGMEventICSSourceType_)accountTypeFor:(id)arg1;
-- (BOOL)array:(id)arg1 hasIntersectionWith:(id)arg2;
 - (void)dissectInternal:(id)arg1 inContext:(id)arg2;
 - (id)downloadedCalendarAttachmentsFrom:(id)arg1;
 - (BOOL)hasCalendarAccountForOneOf:(id)arg1;

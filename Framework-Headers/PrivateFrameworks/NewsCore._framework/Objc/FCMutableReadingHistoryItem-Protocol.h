@@ -12,6 +12,8 @@
 
 @property (copy, nonatomic) NSString *articleID;
 @property (nonatomic) unsigned long long articleLikingStatus;
+@property (copy, nonatomic) NSDate *firstSeenAt;
+@property (copy, nonatomic) NSDate *firstSeenAtOfMaxVersionSeen;
 @property (nonatomic) BOOL hasArticleBeenConsumed;
 @property (nonatomic) BOOL hasArticleBeenMarkedOffensive;
 @property (nonatomic) BOOL hasArticleBeenRead;
@@ -19,6 +21,7 @@
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSDate *lastVisitedAt;
 @property (nonatomic) unsigned long long maxVersionRead;
+@property (nonatomic) unsigned long long maxVersionSeen;
 
 @end
 

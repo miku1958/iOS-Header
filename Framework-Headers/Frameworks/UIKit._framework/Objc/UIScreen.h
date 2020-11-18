@@ -49,6 +49,11 @@
         unsigned int screenCreatedFBSDisplay:1;
         unsigned int rightHandDrive:1;
     } _screenFlags;
+    struct {
+        unsigned int isKnown:1;
+        unsigned int isSupported:1;
+        unsigned int isInRange:1;
+    } _carPlayHumanPresenceStatus;
     BOOL _performingSystemSnapshot;
     BOOL _wantsSoftwareDimming;
     float _lastNotifiedBacklightLevel;
@@ -85,6 +90,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, getter=_lastNotifiedTraitCollection, setter=_setLastNotifiedTraitCollection:) UITraitCollection *lastNotifiedTraitCollection; // @synthesize lastNotifiedTraitCollection=_lastNotifiedTraitCollection;
 @property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
+@property (readonly) long long maximumFramesPerSecond;
 @property (readonly, nonatomic) UIScreen *mirroredScreen;
 @property (readonly, nonatomic) struct CGRect nativeBounds;
 @property (readonly, nonatomic) double nativeScale;
@@ -147,6 +153,7 @@
 - (struct CGRect)_boundsForInterfaceOrientation:(long long)arg1;
 - (id)_capabilities;
 - (id)_capabilityForKey:(id)arg1;
+- (void)_clearCarPlayHumanPresenceState;
 - (void)_computeMetrics;
 - (void)_computeMetrics:(BOOL)arg1;
 - (void)_connectScreen;
@@ -160,6 +167,7 @@
 - (void)_enableScreenUpdates;
 - (void)_endObservingBacklightLevelNotifications;
 - (void)_enumerateWindowsWithBlock:(CDUnknownBlockType)arg1;
+- (void)_fetchInitialCarPlayHumanPresenceStatusIfNeeded;
 - (void)_focusEnvironmentWillDisappear:(id)arg1;
 - (id)_focusedItem;
 - (long long)_forceTouchCapability;
@@ -171,6 +179,7 @@
 - (unsigned int)_integerDisplayID;
 - (long long)_interfaceOrientation;
 - (struct CGRect)_interfaceOrientedMainSceneBounds;
+- (BOOL)_isCarPlayHumanPresenceInRange;
 - (BOOL)_isCarScreen;
 - (BOOL)_isExternal;
 - (BOOL)_isMainScreen;
@@ -206,6 +215,7 @@
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (unsigned int)_seed;
 - (void)_setCapability:(id)arg1 forKey:(id)arg2;
+- (void)_setCarPlayHumanPresenceInRange:(BOOL)arg1;
 - (void)_setDefaultTraitCollection:(id)arg1 notify:(BOOL)arg2;
 - (void)_setExternalDeviceShouldInputText:(BOOL)arg1;
 - (void)_setInterfaceOrientation:(long long)arg1;
@@ -221,6 +231,7 @@
 - (BOOL)_shouldSearchForFocusRegionsInContext:(id)arg1;
 - (id)_snapshotExcludingWindows:(id)arg1 withRect:(struct CGRect)arg2;
 - (BOOL)_supportsBrightness;
+- (BOOL)_supportsCarPlayHumanPresence;
 - (BOOL)_supportsDeferredFocus;
 - (double)_touchRadiusScaleFactor;
 - (double)_touchScaleFactor;

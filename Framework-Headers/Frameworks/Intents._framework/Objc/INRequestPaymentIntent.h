@@ -26,10 +26,16 @@
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
+- (id)domain;
 - (id)initWithPayer:(id)arg1 currencyAmount:(id)arg2 note:(id)arg3;
+- (id)parametersByName;
 - (void)setCurrencyAmount:(id)arg1;
+- (void)setDomain:(id)arg1;
 - (void)setNote:(id)arg1;
+- (void)setParametersByName:(id)arg1;
 - (void)setPayer:(id)arg1;
+- (void)setVerb:(id)arg1;
+- (id)verb;
 
 @end
 

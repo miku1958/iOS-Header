@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (id)_connection;
 - (void)_resetConnection;
+- (void)_sendFeedbackMessage:(id)arg1 object:(id)arg2 info:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)_sendMessage:(id)arg1 object:(id)arg2 info:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)activate;
 - (void)cancelQuery:(id)arg1;

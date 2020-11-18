@@ -37,10 +37,12 @@
     BOOL _subscriptionAvailable;
     unsigned long long _subscriptionAvailabilityObservationCount;
     unsigned long long _subscriptionLeaseUsageCount;
+    NSOperationQueue *_subscriptionOperationQueue;
     unsigned long long _subscriptionStatusObservationCount;
     unsigned long long _URLBagObservationCount;
 }
 
+@property (readonly, nonatomic) SSVPlaybackLease *_existingPlaybackLease; // @dynamic _existingPlaybackLease;
 @property (readonly, nonatomic, getter=isCloudLibraryEnabled) BOOL cloudLibraryEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -72,9 +74,11 @@
 - (void)_getCurrentFairPlaySubscriptionStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_networkReachabilityDidChangeNotification:(id)arg1;
 - (void)_setHasSubscriptionLease:(BOOL)arg1 endReasonType:(unsigned long long)arg2;
+- (id)_subscriptionOperationQueue;
 - (void)_subscriptionStatusDidChangeNotification:(id)arg1;
 - (void)_updateForNetworkReachabilityObserversCountChange;
 - (void)_updateMatchStatus;
+- (void)_updateSubscriptionInformationWithEndReasonType:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateWithURLBagDictionary:(id)arg1;
 - (void)acquireSubscriptionLeaseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)bagDidChange:(id)arg1;
@@ -97,15 +101,16 @@
 - (void)endObservingSubscriptionAvailability;
 - (void)endObservingSubscriptionLease;
 - (void)endObservingSubscriptionStatus;
-- (void)endSubscriptionLease;
 - (void)getFairPlaySubscriptionStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getSubscriptionAssetWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getSubscriptionStatusWithOptions:(id)arg1 statusBlock:(CDUnknownBlockType)arg2;
 - (id)init;
+- (void)performSubscriptionSecureKeyDeliveryRequestOperation:(id)arg1;
 - (void)playbackLease:(id)arg1 automaticRefreshDidFinishWithResponse:(id)arg2 error:(id)arg3;
 - (void)playbackLease:(id)arg1 didEndWithReasonType:(unsigned long long)arg2;
 - (void)preheatSubscriptionLeaseRequestsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)refreshSubscriptionLeaseWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)updateWithExternalLeaseResponseError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

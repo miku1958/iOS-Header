@@ -27,7 +27,7 @@
 - (void)addTrafficRerouteFeedback:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)endFeedbackSession;
+- (void)endFeedbackSessionWithTracePath:(id)arg1;
 - (void)reset;
 - (void)setAudioFeedback:(struct GEONavigationAudioFeedback *)arg1;
 - (void)setFinalLocation:(id)arg1 asArrival:(BOOL)arg2;

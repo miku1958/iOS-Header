@@ -180,7 +180,7 @@
 @property (nonatomic) BOOL ubiquitousBookkeepingEnabled;
 @property (nonatomic) BOOL useAirPlayMusicMode; // @synthesize useAirPlayMusicMode=_useAirPlayMusicMode;
 @property (nonatomic) BOOL useApplicationAudioSession;
-@property (nonatomic) BOOL usesAudioOnlyModeForExternalPlayback;
+@property (nonatomic) BOOL usesAudioOnlyModeForExternalPlayback; // @synthesize usesAudioOnlyModeForExternalPlayback=_usesAudioOnlyModeForExternalPlayback;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 @property (readonly, nonatomic) AVPlayerLayer *videoLayer;
 @property (readonly, nonatomic) MPVideoView *videoView;
@@ -284,6 +284,7 @@
 - (void)_sizeDidChange:(id)arg1;
 - (void)_streamBufferFull:(id)arg1;
 - (void)_streamLikelyToKeepUp:(id)arg1;
+- (void)_streamLimitExceeded;
 - (void)_streamRanDry:(id)arg1;
 - (void)_streamUnlikelyToKeepUp:(id)arg1;
 - (void)_timeHasJumpedNotification:(id)arg1;

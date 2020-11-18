@@ -22,6 +22,7 @@
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSMutableSet *_tokens;
     NSMutableDictionary *_requestsToRequestInfos;
+    BOOL _providerCachesDisabled;
     NSURL *_injectedBundleURL;
 }
 
@@ -29,6 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSURL *injectedBundleURL; // @synthesize injectedBundleURL=_injectedBundleURL;
+@property (nonatomic, getter=areProviderCachesDisabled) BOOL providerCachesDisabled; // @synthesize providerCachesDisabled=_providerCachesDisabled;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isSuspended) BOOL suspended;
 
@@ -51,12 +53,15 @@
 - (BOOL)_updateOperationForRequestIfPossible:(id)arg1;
 - (void)cancelRequestWithToken:(id)arg1;
 - (void)cancelRequestsWithTokens:(id)arg1;
+- (void)emptyProviderCaches;
 - (id)init;
 - (id)initWithInjectedBundleURL:(id)arg1;
 - (void)preloadRequest:(id)arg1 withPriority:(long long)arg2;
+- (void)purgeUnneededProviderCacheEntries;
 - (id)registerOneTimeRequest:(id)arg1 priority:(long long)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (id)registerRequest:(id)arg1 priority:(long long)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)registerSiteMetadataProvider:(id)arg1;
+- (void)savePendingProviderChangesBeforeTermination;
 - (void)setPriority:(long long)arg1 ofRequestWithToken:(id)arg2;
 - (void)setPriority:(long long)arg1 ofRequestsWithTokens:(id)arg2;
 - (void)siteMetadataProvider:(id)arg1 cancelRequestsWithTokens:(id)arg2;

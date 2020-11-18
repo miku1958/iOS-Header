@@ -14,7 +14,6 @@
     MPMediaItemArtwork *_artwork;
     double _artworkWidthHint;
     double _artworkHeightHint;
-    BOOL _artworkingLoading;
 }
 
 @property (strong, nonatomic) MPMediaItemArtwork *artwork;
@@ -29,15 +28,15 @@
 
 - (void).cxx_destruct;
 - (id)_initWithMediaRemoteContentItem:(struct _MRContentItem *)arg1;
+- (void)_loadArtwork:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (struct _MRContentItem *)_mediaRemoteContentItem;
 - (id)_notification;
 - (void)_postItemChangedNotification;
-- (void)_setArtworkSize:(double)arg1 height:(double)arg2;
+- (void)_setArtworkSize:(double)arg1 height:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1;
-- (BOOL)isArtworkReady;
 
 @end
 

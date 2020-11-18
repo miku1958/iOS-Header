@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<WKFocusedElementInfo> _focusedElementInfo;
     struct RetainPtr<UIView> _customInputView;
     struct RetainPtr<NSArray<UITextSuggestion *>> _suggestions;
-    struct RetainPtr<NSString> _textContentType;
     BOOL _accessoryViewShouldNotShow;
     BOOL _forceSecureTextEntry;
 }
@@ -34,7 +33,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *suggestions;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *textContentType;
 @property (readonly, nonatomic) NSObject<NSSecureCoding> *userObject;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 

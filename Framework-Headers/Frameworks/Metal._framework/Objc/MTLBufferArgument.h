@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)bufferDataType;
 - (id)bufferStructType;
 - (void)dealloc;
-- (id)describe;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 access:(unsigned long long)arg3 isActive:(BOOL)arg4 locationIndex:(unsigned long long)arg5 arraySize:(unsigned long long)arg6 dataType:(unsigned long long)arg7 dataSize:(unsigned long long)arg8 alignment:(unsigned long long)arg9;
 - (BOOL)isVertexDescriptorBuffer;
 - (void)setStructType:(id)arg1;

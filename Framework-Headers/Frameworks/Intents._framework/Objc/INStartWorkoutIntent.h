@@ -28,12 +28,18 @@
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1;
 - (id)_typedBackingStore;
+- (id)domain;
 - (id)initWithWorkoutName:(id)arg1 goalValue:(id)arg2 workoutGoalUnitType:(long long)arg3 workoutLocationType:(long long)arg4 isOpenEnded:(id)arg5;
+- (id)parametersByName;
+- (void)setDomain:(id)arg1;
 - (void)setGoalValue:(id)arg1;
 - (void)setIsOpenEnded:(id)arg1;
+- (void)setParametersByName:(id)arg1;
+- (void)setVerb:(id)arg1;
 - (void)setWorkoutGoalUnitType:(long long)arg1;
 - (void)setWorkoutLocationType:(long long)arg1;
 - (void)setWorkoutName:(id)arg1;
+- (id)verb;
 
 @end
 

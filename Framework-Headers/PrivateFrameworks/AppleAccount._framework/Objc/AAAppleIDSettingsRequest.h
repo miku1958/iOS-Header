@@ -10,14 +10,17 @@
 
 @interface AAAppleIDSettingsRequest : AARequest
 {
-    ACAccount *_appleAccount;
-    ACAccount *_grandSlamAccount;
     ACAccountStore *_store;
+    BOOL _forceGSToken;
+    ACAccount *_grandSlamAccount;
 }
+
+@property (nonatomic) BOOL forceGSToken; // @synthesize forceGSToken=_forceGSToken;
+@property (readonly, nonatomic) ACAccount *grandSlamAccount; // @synthesize grandSlamAccount=_grandSlamAccount;
 
 + (Class)responseClass;
 - (void).cxx_destruct;
-- (id)initWithAppleAccount:(id)arg1 grandSlamAccount:(id)arg2 accountStore:(id)arg3;
+- (id)initWithGrandSlamAccount:(id)arg1 accountStore:(id)arg2;
 - (id)urlRequest;
 
 @end

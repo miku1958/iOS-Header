@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)setCornerRadius:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setPressed:(BOOL)arg1;
+- (void)setRoundedCornerPosition:(unsigned long long)arg1;
 
 @end
 

@@ -10,6 +10,7 @@
 - (void)MCDeepCopyEntriesFromDictionary:(id)arg1;
 - (void)MCDeepCopyMissingEntriesFromDictionary:(id)arg1;
 - (void)MCDeleteBoolRestriction:(id)arg1;
+- (void)MCFilterRestrictionPayloadKeys:(id)arg1;
 - (void)MCSetBoolRestriction:(id)arg1 value:(BOOL)arg2;
 - (void)MCSetIntersectionRestriction:(id)arg1 values:(id)arg2;
 - (void)MCSetIntersectionSetting:(id)arg1 values:(id)arg2;

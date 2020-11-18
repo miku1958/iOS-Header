@@ -9,7 +9,7 @@
 #import <CoreCDPUI/UITableViewDataSource-Protocol.h>
 #import <CoreCDPUI/UITableViewDelegate-Protocol.h>
 
-@class CDPPaneHeaderView, NSString, UITableView, UIView;
+@class BFFPaneHeaderView, NSString, UITableView, UIView;
 
 @interface CDPTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
@@ -18,7 +18,7 @@
     CDUnknownBlockType _completionHandler;
     UIView *_containerView;
     UITableView *_tableView;
-    CDPPaneHeaderView *_headerView;
+    BFFPaneHeaderView *_headerView;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
@@ -29,7 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *headerSubTitle; // @synthesize headerSubTitle=_headerSubTitle;
 @property (copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
-@property (strong, nonatomic) CDPPaneHeaderView *headerView; // @synthesize headerView=_headerView;
+@property (strong, nonatomic) BFFPaneHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (readonly, nonatomic) BOOL isIPad;
 @property (readonly, nonatomic) BOOL isiPhone5OrSmaller;
 @property (readonly) Class superclass;

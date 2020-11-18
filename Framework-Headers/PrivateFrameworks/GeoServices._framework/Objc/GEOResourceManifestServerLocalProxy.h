@@ -10,7 +10,7 @@
 #import <GeoServices/GEOResourceManifestServerProxy-Protocol.h>
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEOActiveTileGroup, GEOResourceFiltersManager, GEOResourceLoader, GEOResourceManifestConfiguration, GEOResourceManifestDownload, NSError, NSLock, NSMutableArray, NSMutableData, NSString, NSTimer, NSURLSession, NSURLSessionTask;
+@class GEOActiveTileGroup, GEOResourceFiltersManager, GEOResourceLoader, GEOResourceManifestConfiguration, GEOResourceManifestDownload, NSError, NSLock, NSMutableArray, NSMutableData, NSString, NSTimer, NSURLSession, NSURLSessionTask, NSURLSessionTaskMetrics;
 @protocol GEOResourceManifestServerProxyDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSURLSessionTask *_task;
     NSMutableData *_responseData;
     NSString *_responseETag;
+    int _httpResponseStatusCode;
     GEOResourceManifestConfiguration *_configuration;
     BOOL _wantsManifestUpdateOnReachabilityChange;
     NSTimer *_manifestUpdateTimer;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_manifestUpdateCompletionHandlers;
     double _lastManifestRequestStartTime;
     GEOResourceFiltersManager *_filtersManager;
+    NSURLSessionTaskMetrics *_taskMetrics;
 }
 
 @property (readonly, nonatomic) GEOActiveTileGroup *activeTileGroup;
@@ -53,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (void)_activeTileGroupOverridesChanged:(id)arg1;
 - (void)_cancelSession;
 - (void)_changeActiveTileGroup:(id)arg1 activeScales:(id)arg2 activeScenarios:(id)arg3 loadedResources:(id)arg4 unloadedConditionalResources:(id)arg5 flushTileCache:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;

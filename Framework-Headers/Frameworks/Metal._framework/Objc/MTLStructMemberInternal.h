@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)arrayType;
 - (unsigned long long)dataType;
 - (void)dealloc;
-- (id)describe;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithName:(id)arg1 offset:(unsigned long long)arg2 dataType:(unsigned long long)arg3 details:(id)arg4;
 - (id)name;
 - (unsigned long long)offset;

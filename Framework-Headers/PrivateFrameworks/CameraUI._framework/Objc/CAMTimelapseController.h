@@ -10,7 +10,7 @@
 #import <CameraUI/CAMStillImageCaptureRequestDelegate-Protocol.h>
 #import <CameraUI/UIAlertViewDelegate-Protocol.h>
 
-@class CAMFocusResult, CAMLocationController, CAMLowDiskSpaceAlertView, CAMMotionController, CAMNebulaDaemonProxyManager, CAMPersistenceController, CAMTimelapseState, CUCaptureController, NSCountedSet, NSDate, NSMutableSet, NSString;
+@class CAMFocusResult, CAMLocationController, CAMMotionController, CAMNebulaDaemonProxyManager, CAMPersistenceController, CAMTimelapseState, CUCaptureController, NSCountedSet, NSDate, NSMutableSet, NSString;
 @protocol CAMTimelapseControllerDelegate, OS_dispatch_source;
 
 @interface CAMTimelapseController : NSObject <CAMStillImageCaptureRequestDelegate, UIAlertViewDelegate, CAMNebulaDaemonTimelapseClientProtocol>
@@ -27,7 +27,6 @@
     NSObject<OS_dispatch_source> *__captureTimer;
     NSCountedSet *__inFlightTimelapseUUIDs;
     NSMutableSet *__pendingCompletedStates;
-    CAMLowDiskSpaceAlertView *__diskSpaceAlert;
     CUCaptureController *__captureController;
     CAMLocationController *__locationController;
     CAMMotionController *__motionController;
@@ -38,7 +37,6 @@
 @property (nonatomic, setter=_setBackendRecoveryNeeded:) BOOL _backendRecoveryNeeded; // @synthesize _backendRecoveryNeeded=__backendRecoveryNeeded;
 @property (readonly, nonatomic) CUCaptureController *_captureController; // @synthesize _captureController=__captureController;
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *_captureTimer; // @synthesize _captureTimer=__captureTimer;
-@property (readonly, nonatomic) CAMLowDiskSpaceAlertView *_diskSpaceAlert; // @synthesize _diskSpaceAlert=__diskSpaceAlert;
 @property (nonatomic, getter=_isFocusAndExposureAdjusted, setter=_setFocusAndExposureAdjusted:) BOOL _focusAndExposureAdjusted; // @synthesize _focusAndExposureAdjusted=__focusAndExposureAdjusted;
 @property (readonly, nonatomic) BOOL _ignoringTimerCallbacksForTearDown; // @synthesize _ignoringTimerCallbacksForTearDown=__ignoringTimerCallbacksForTearDown;
 @property (readonly, nonatomic) BOOL _ignoringTimerCallbacksWaitingForCaptureResponse; // @synthesize _ignoringTimerCallbacksWaitingForCaptureResponse=__ignoringTimerCallbacksWaitingForCaptureResponse;
@@ -68,7 +66,6 @@
 - (void)_captureTimerFired;
 - (id)_createThumbnailImageFromPlaceholderResult:(id)arg1;
 - (void)_deviceStarted:(id)arg1;
-- (void)_dismissDiskSpaceAlert;
 - (BOOL)_enqueueCaptureRequest;
 - (void)_notifyAGGDForDidStopCapturingWithState:(id)arg1;
 - (void)_notifyInsufficientDiskSpaceForContinuingCapture;
@@ -91,7 +88,6 @@
 - (void)_updateFocusAndExposureForStartCapturing;
 - (void)_updateFocusLensPosition:(float)arg1 forTimelapseUUID:(id)arg2 forceUpdate:(BOOL)arg3;
 - (void)_updateLocationIfNecessary;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)dealloc;
 - (void)forceStopTimelapseCaptureWithReasons:(long long)arg1;
 - (id)init;

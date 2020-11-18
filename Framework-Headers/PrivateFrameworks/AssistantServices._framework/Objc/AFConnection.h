@@ -77,6 +77,7 @@
 - (void)_setShouldSpeak:(BOOL)arg1;
 - (void)_speechRecordingDidFailWithError:(id)arg1;
 - (void)_startRequestWithInfo:(id)arg1 analyticsEventProvider:(CDUnknownBlockType)arg2;
+- (void)_startUIRequestWithText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_stopLevelUpdates;
 - (void)_tellDelegateAudioSessionDidBeginInterruption;
 - (void)_tellDelegateAudioSessionDidEndInterruption:(BOOL)arg1;
@@ -84,6 +85,8 @@
 - (void)_tellDelegateCacheImage:(id)arg1;
 - (void)_tellDelegateDidDetectMusic;
 - (void)_tellDelegateDidFinishAcousticIDRequestWithSuccess:(BOOL)arg1;
+- (void)_tellDelegateExtensionRequestFinishedForApplication:(id)arg1 error:(id)arg2;
+- (void)_tellDelegateExtensionRequestWillStartForApplication:(id)arg1;
 - (void)_tellDelegateInvalidateCurrentUserActivity;
 - (void)_tellDelegateRequestFailed:(id)arg1 requestClass:(id)arg2;
 - (void)_tellDelegateRequestFinished;
@@ -130,6 +133,7 @@
 - (void)getCachedObjectsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getDeferredObjectsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (void)invalidate;
 - (float)peakPower;
 - (void)preheatWithStyle:(long long)arg1;
 - (void)preheatWithStyle:(long long)arg1 forOptions:(id)arg2;
@@ -139,6 +143,7 @@
 - (void)requestBarrier:(CDUnknownBlockType)arg1;
 - (void)rollbackClearContext;
 - (void)rollbackRequest;
+- (void)sendFeedbackToAppPreferencesPredictorForMetricsContext:(id)arg1 selectedBundleId:(id)arg2;
 - (void)sendGenericAceCommand:(id)arg1;
 - (void)sendGenericAceCommand:(id)arg1 conflictHandler:(CDUnknownBlockType)arg2;
 - (void)sendReplyCommand:(id)arg1;

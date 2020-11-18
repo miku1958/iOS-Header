@@ -6,15 +6,18 @@
 
 #import <AVFoundation/AVAsset.h>
 
+#import <AVFoundation/AVContentKeyRecipient-Protocol.h>
+
 @class AVAssetResourceLoader, AVURLAssetInternal, NSString, NSURL;
 
-@interface AVURLAsset : AVAsset
+@interface AVURLAsset : AVAsset <AVContentKeyRecipient>
 {
     AVURLAssetInternal *_URLAsset;
 }
 
 @property (readonly, copy, nonatomic) NSURL *URL;
 @property (readonly, nonatomic) NSString *cacheKey;
+@property (readonly, nonatomic) BOOL mayRequireContentKeysForMediaDataProcessing;
 @property (readonly, nonatomic) AVAssetResourceLoader *resourceLoader;
 @property (readonly, nonatomic) BOOL shouldMatchDataInCacheByURLPathComponentOnly;
 @property (readonly, nonatomic) BOOL shouldMatchDataInCacheByURLWithoutQueryComponent;
@@ -45,6 +48,8 @@
 - (void)_addFigAssetNotifications;
 - (id)_assetInspector;
 - (id)_assetInspectorLoader;
+- (void)_attachToContentKeySession:(id)arg1;
+- (BOOL)_attachedToExternalContentKeySession;
 - (Class)_classForAssetTracks;
 - (Class)_classForFigAssetInspectorLoader;
 - (Class)_classForTrackInspectors;
@@ -64,12 +69,15 @@
 - (void)_tracksDidChange;
 - (id)assetCache;
 - (void)cancelLoading;
+- (id)contentKeySession;
 - (id)creationOptions;
 - (void)dealloc;
 - (id)description;
 - (id)downloadDestinationURL;
 - (unsigned long long)downloadToken;
+- (void)expire;
 - (void)finalize;
+- (id)identifyingTag;
 - (id)identifyingTagClass;
 - (id)init;
 - (id)initWithURL:(id)arg1 options:(id)arg2;

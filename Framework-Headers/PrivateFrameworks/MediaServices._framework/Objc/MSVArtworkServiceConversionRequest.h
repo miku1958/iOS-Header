@@ -16,7 +16,7 @@
     double _destinationCompressionQuality;
 }
 
-@property (readonly, nonatomic) double destinationCompressionQuality; // @synthesize destinationCompressionQuality=_destinationCompressionQuality;
+@property (nonatomic) double destinationCompressionQuality; // @synthesize destinationCompressionQuality=_destinationCompressionQuality;
 @property (nonatomic) long long destinationFormat; // @synthesize destinationFormat=_destinationFormat;
 @property (copy, nonatomic) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property (copy, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;

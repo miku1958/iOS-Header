@@ -6,21 +6,20 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSXPCConnection, VSFailable, VSIdentityProvider;
+@class NSXPCConnection, VSIdentityProvider, VSOptional;
 
-__attribute__((visibility("hidden")))
 @interface VSDeveloperIdentityProviderChangeOperation : VSAsyncOperation
 {
     VSIdentityProvider *_identityProvider;
     long long _changeKind;
-    VSFailable *_result;
+    VSOptional *_result;
     NSXPCConnection *_connection;
 }
 
 @property (nonatomic) long long changeKind; // @synthesize changeKind=_changeKind;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (strong, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
-@property (strong, nonatomic) VSFailable *result; // @synthesize result=_result;
+@property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
 
 - (void).cxx_destruct;
 - (id)_serviceWithErrorHandler:(CDUnknownBlockType)arg1;

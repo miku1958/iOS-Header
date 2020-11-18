@@ -195,6 +195,7 @@ __attribute__((visibility("hidden")))
 - (void)rebuildConstraints:(id)arg1 forView:(id)arg2 toMatchView:(id)arg3;
 - (void)registerPowerLogEvent:(BOOL)arg1;
 - (void)resetVerticalConstraint;
+- (id)screenSnapshotOfView:(id)arg1;
 - (id)scrollDismissController;
 - (void)setAccessoryViewVisible:(BOOL)arg1 delay:(double)arg2;
 - (void)setInputView:(id)arg1 accessoryView:(id)arg2 assistantView:(id)arg3;

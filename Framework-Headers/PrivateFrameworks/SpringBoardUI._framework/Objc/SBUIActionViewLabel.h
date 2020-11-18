@@ -26,8 +26,8 @@
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)nc_applyVibrantStyling:(id)arg1;
-- (void)nc_removeAllVibrantStyling;
+- (void)mt_applyVibrantStyling:(id)arg1;
+- (void)mt_removeAllVibrantStyling;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

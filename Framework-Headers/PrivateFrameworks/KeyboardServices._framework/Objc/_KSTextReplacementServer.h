@@ -55,6 +55,7 @@
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)queryTextReplacementsWithCallback:(CDUnknownBlockType)arg1;
 - (void)queryTextReplacementsWithPredicate:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)reachabilityDidChange:(id)arg1;
 - (void)registerForPushNotifications;
 - (void)removeAllEntries;
 - (void)requestPeriodicSync;

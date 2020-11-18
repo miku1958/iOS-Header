@@ -119,6 +119,10 @@
 + (id)__trackCount__KEY;
 + (id)__volumeNormalization__KEY;
 + (id)__year__KEY;
++ (id)kindWithSongKind:(id)arg1;
++ (id)kindWithSongKind:(id)arg1 options:(unsigned long long)arg2;
++ (id)kindWithVariants:(unsigned long long)arg1 songKind:(id)arg2;
++ (id)kindWithVariants:(unsigned long long)arg1 songKind:(id)arg2 options:(unsigned long long)arg3;
 + (id)requiredKeepLocalStatusObservationProperties;
 + (id)requiredLibraryAddStatusObservationProperties;
 + (id)requiredLibraryRemovalProperties;

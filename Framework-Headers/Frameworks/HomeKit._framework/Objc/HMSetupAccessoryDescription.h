@@ -16,18 +16,20 @@
     BOOL _addAndSetupAccessories;
     NSUUID *_accessoryUUID;
     NSString *_accessoryName;
+    NSString *_appIdentifier;
 }
 
 @property (readonly, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
 @property (readonly, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
 @property (readonly, nonatomic) BOOL addAndSetupAccessories; // @synthesize addAndSetupAccessories=_addAndSetupAccessories;
+@property (readonly, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initToSetupAccessories;
-- (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2;
+- (id)initToSetupAccessories:(id)arg1;
+- (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2 appID:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 
 @end

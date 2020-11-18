@@ -15,6 +15,6 @@
 
 - (void)deleteFaces:(id<NSFastEnumeration>)arg1;
 - (id<PLSyncableDetectedFace>)makeFace;
-- (id<PLSyncablePerson>)personForUUID:(NSString *)arg1 createIfMissing:(BOOL)arg2;
+- (id<PLSyncablePerson>)personForUUID:(NSString *)arg1;
 @end
 

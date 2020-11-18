@@ -6,9 +6,11 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXUIAutoScroller;
+@class PXAutoScroller;
 
 @protocol PXAutoScrollerDelegate <NSObject>
-- (void)autoScrollerDidUpdate:(PXUIAutoScroller *)arg1;
+
+@optional
+- (void)autoScroller:(PXAutoScroller *)arg1 didAutoscrollWithTimestamp:(double)arg2;
 @end
 

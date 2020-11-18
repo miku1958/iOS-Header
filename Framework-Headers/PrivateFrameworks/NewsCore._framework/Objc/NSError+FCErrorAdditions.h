@@ -9,8 +9,10 @@
 @interface NSError (FCErrorAdditions)
 + (id)fc_belowMinimumVersionError;
 + (id)fc_canaryDownError;
++ (id)fc_errorWithCode:(long long)arg1 description:(id)arg2;
 + (id)fc_errorWithCode:(long long)arg1 description:(id)arg2 additionalUserInfo:(id)arg3;
 + (id)fc_feedDroppedError;
++ (id)fc_missingAppConfigErrorWithUnderlyingError:(id)arg1;
 + (id)fc_notAvailableError;
 + (id)fc_notCachedError;
 + (id)fc_offlineErrorWithReason:(long long)arg1;

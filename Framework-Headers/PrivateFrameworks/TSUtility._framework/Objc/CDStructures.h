@@ -79,9 +79,7 @@ struct _NSRange {
 };
 
 struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUFlushableObjectInfo *, void *>>> {
-    struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-        struct __tree_node_base<void *> *_field1;
-    } _field1;
+    struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
 };
 
 struct __sbuf {
@@ -89,7 +87,9 @@ struct __sbuf {
     int _field2;
 };
 
-struct __tree_node<TSUFlushableObjectInfo *, void *>;
+struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
+    struct __tree_node_base<void *> *_field1;
+};
 
 struct __va_list_tag {
     unsigned int _field1;
@@ -143,7 +143,7 @@ struct internal_state;
 
 struct set<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerFlushingOrderLess, std::__1::allocator<TSUFlushableObjectInfo *>> {
     struct __tree<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerFlushingOrderLess, std::__1::allocator<TSUFlushableObjectInfo *>> {
-        struct __tree_node<TSUFlushableObjectInfo *, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUFlushableObjectInfo *, void *>>> _field2;
         struct __compressed_pair<unsigned long, TSUFlushableObjectInfoPointerFlushingOrderLess> {
             unsigned long long _field1;
@@ -153,7 +153,7 @@ struct set<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerFlushingOrderL
 
 struct set<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerTimeStampLess, std::__1::allocator<TSUFlushableObjectInfo *>> {
     struct __tree<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerTimeStampLess, std::__1::allocator<TSUFlushableObjectInfo *>> {
-        struct __tree_node<TSUFlushableObjectInfo *, void *> *_field1;
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
         struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUFlushableObjectInfo *, void *>>> _field2;
         struct __compressed_pair<unsigned long, TSUFlushableObjectInfoPointerTimeStampLess> {
             unsigned long long _field1;

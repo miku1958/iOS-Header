@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     TIImageCacheClient *_store;
     NSSet *_layouts;
+    int _renderCountForTesting;
 }
 
 + (BOOL)enabled;
@@ -22,9 +23,12 @@ __attribute__((visibility("hidden")))
 - (void)clearNonPersistentCache;
 - (void)commitTransaction;
 - (void)dealloc;
+- (void)decrementExpectedRender;
 - (id)displayImagesForView:(id)arg1 fromLayout:(id)arg2 imageFlags:(id)arg3;
 - (void)drawCachedImage:(id)arg1 alpha:(double)arg2 inContext:(struct CGContext *)arg3;
+- (void)incrementExpectedRender;
 - (id)init;
+- (void)purge;
 - (id)uniqueLayoutsFromInputModes:(id)arg1;
 - (void)updateCacheForInputModes:(id)arg1;
 

@@ -74,6 +74,7 @@
 - (long long)_createUnprotectedKeyValueTableWithError:(id *)arg1;
 - (long long)_dropDataSessionActivitiesTableWithError:(id *)arg1;
 - (long long)_dropMenstruationTable:(id *)arg1;
+- (long long)_erie_removeBadTurkeyTrotAchievementsWithError:(id *)arg1;
 - (long long)_fixDanglingSourcesAndProvenancesWithError:(id *)arg1;
 - (long long)_fixDataProvenanceProductTypeAgainWithError:(id *)arg1;
 - (long long)_fixDataProvenanceProductTypeWithError:(id *)arg1;
@@ -134,6 +135,8 @@
 - (id)corryUnprotectedMigrationSteps;
 - (id)eagleProtectedMigrationSteps;
 - (id)eagleUnprotectedMigrationSteps;
+- (id)erieProtectedMigrationSteps;
+- (id)erieUnprotectedMigrationSteps;
 - (BOOL)executeSQL:(id)arg1 error:(id *)arg2;
 - (BOOL)executeSQLStatements:(id)arg1 error:(id *)arg2;
 - (long long)fatalStatusForVersion:(long long)arg1 errorMessage:(id)arg2 error:(id *)arg3;

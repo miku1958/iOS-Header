@@ -168,7 +168,7 @@
 - (void)_notifyTileIsReadyWithTimeOut:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_performNavigationToAssetDisplayDescriptor:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_presentAlertForError:(id)arg1;
-- (void)_presentErrorAlertForUnplayableAssetReference:(id)arg1;
+- (void)_presentAlertForUnplayableAssetReference:(id)arg1;
 - (void)_scheduleTimedChromeAutoHide;
 - (void)_setAccessoryVisible:(BOOL)arg1;
 - (void)_setNeedsUpdate;
@@ -271,6 +271,7 @@
 - (id)overOneUpPresentationSessionViewController:(id)arg1;
 - (double)playButtonTileViewController:(id)arg1 delayForButtonAnimation:(BOOL)arg2;
 - (void)playButtonTileViewController:(id)arg1 didTapButton:(BOOL)arg2;
+- (void)ppt_playCurrentLivePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)ppt_toggleAccessoryView;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (long long)preferredStatusBarUpdateAnimation;

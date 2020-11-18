@@ -19,6 +19,7 @@
 @property (strong, nonatomic, getter=_connection, setter=_setConnection:) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (strong, nonatomic, getter=_strongReference, setter=_setStrongReference:) NCWidgetController *strongReference; // @synthesize strongReference=_strongReference;
 
++ (id)widgetContentUnavailableViewWithButtonTitle:(id)arg1 buttonAction:(CDUnknownBlockType)arg2;
 + (id)widgetContentUnavailableViewWithTitle:(id)arg1;
 + (id)widgetController;
 - (void).cxx_destruct;

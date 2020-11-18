@@ -10,6 +10,7 @@
 
 @interface MCResourceProgressObserver : NSObject
 {
+    BOOL _progressObserversSet;
     NSString *_name;
     NSProgress *_progress;
     CDUnknownBlockType _cancelHandler;

@@ -18,7 +18,7 @@
     unsigned long long _frontmostPassIndex;
 }
 
-@property (nonatomic) id<PKGroupDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKGroupDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) unsigned long long frontmostPassIndex; // @synthesize frontmostPassIndex=_frontmostPassIndex;
 @property (readonly, nonatomic) NSNumber *groupID;
 @property (nonatomic, getter=isLocal) BOOL local; // @synthesize local=_local;

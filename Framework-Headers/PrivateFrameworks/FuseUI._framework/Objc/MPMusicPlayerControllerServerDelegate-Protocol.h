@@ -6,17 +6,21 @@
 
 #import <FuseUI/NSObject-Protocol.h>
 
-@class MPAVController, MPMediaItem, MPMediaPlaylist, MPMediaQuery, MPMusicPlayerControllerServer, MPRadioStation, NSArray, NSDictionary, NSString;
+@class MPAVController, MPMediaItem, MPMediaPlaylist, MPMediaQuery, MPMusicPlayerControllerQueue, MPMusicPlayerControllerServer, MPMusicPlayerQueueDescriptor, MPRadioStation, NSArray, NSDictionary, NSString, NSUUID;
 
 @protocol MPMusicPlayerControllerServerDelegate <NSObject>
 - (MPMediaQuery *)currentMediaQueryForMusicPlayerServer:(MPMusicPlayerControllerServer *)arg1;
+- (NSUUID *)currentQueueUUIDForMusicPlayerServer:(MPMusicPlayerControllerServer *)arg1;
 - (MPRadioStation *)currentRadioStationForMusicPlayerServer:(MPMusicPlayerControllerServer *)arg1;
 - (unsigned long long)indexOfNowPlayingItemForMusicPlayerServer:(MPMusicPlayerControllerServer *)arg1;
 - (BOOL)isNowPlayingItemFromGeniusMixForMusicPlayerServer:(MPMusicPlayerControllerServer *)arg1;
+- (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 appendQueueDescriptor:(MPMusicPlayerQueueDescriptor *)arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 prepareQueueWithGeniusMixPlaylist:(MPMediaPlaylist *)arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 prepareQueueWithQuery:(MPMediaQuery *)arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 prepareQueueWithRadioStation:(MPRadioStation *)arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 prepareQueueWithStoreIDs:(NSArray *)arg2;
+- (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 prependQueueDescriptor:(MPMusicPlayerQueueDescriptor *)arg2;
+- (MPMusicPlayerControllerQueue *)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 queueForUUID:(NSUUID *)arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 registerForRepeatModeChangesWithChangeHandler:(void (^)(long long))arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 registerForShuffleModeChangesWithChangeHandler:(void (^)(long long))arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 setAssetStoreFrontOverrides:(NSDictionary *)arg2;
@@ -24,12 +28,14 @@
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 setFirstItemIdentifier:(NSString *)arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 setNowPlayingItem:(MPMediaItem *)arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 setPlaybackSpeed:(long long)arg2;
+- (BOOL)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 setQueue:(MPMusicPlayerControllerQueue *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 setShuffleMode:(long long)arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 setTimeModifications:(NSDictionary *)arg2;
 - (void)musicPlayerServer:(MPMusicPlayerControllerServer *)arg1 setUserQueueModificationsDisabled:(BOOL)arg2;
 - (MPMediaItem *)nowPlayingItemForMusicPlayerServer:(MPMusicPlayerControllerServer *)arg1;
 - (long long)playbackSpeedForMusicPlayerServer:(MPMusicPlayerControllerServer *)arg1;
 - (MPAVController *)playerForMusicPlayerServer:(MPMusicPlayerControllerServer *)arg1 usingApplicationSpecificQueue:(BOOL)arg2;
+- (void)requestQueueForMusicPlayerServer:(MPMusicPlayerControllerServer *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (unsigned long long)unshuffledIndexOfNowPlayingItemForMusicPlayerServer:(MPMusicPlayerControllerServer *)arg1;
 - (BOOL)userQueueModificationsDisabledForMusicPlayerServer:(MPMusicPlayerControllerServer *)arg1;
 @end

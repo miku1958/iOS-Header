@@ -9,7 +9,7 @@
 #import <StoreKitUI/ASDJobManagerObserver-Protocol.h>
 #import <StoreKitUI/SSDownloadManagerObserver-Protocol.h>
 
-@class ASDJobManager, ASDSoftwareUpdatesStore, NSCountedSet, NSDate, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, SKUIPendingRentalCenter, SKUIStoreItemRelationshipCounsellor, SSAppPurchaseHistoryDatabase, SSDownloadManager, SSSoftwareUpdatesStore;
+@class ASDJobManager, ASDSoftwareUpdatesStore, NSCountedSet, NSDate, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, SKUIStoreItemRelationshipCounsellor, SSAppPurchaseHistoryDatabase, SSDownloadManager, SSSoftwareUpdatesStore;
 @protocol OS_dispatch_queue;
 
 @interface SKUIItemStateCenter : NSObject <SSDownloadManagerObserver, ASDJobManagerObserver>
@@ -18,7 +18,6 @@
     BOOL _appInstallRestricted;
     ASDSoftwareUpdatesStore *_appstoredUpdatesStore;
     ASDJobManager *_jobManager;
-    SSSoftwareUpdatesStore *_appUpdatesStore;
     BOOL _canAccessAppUpdates;
     BOOL _canAccessPurchaseHistory;
     SSDownloadManager *_downloadManager;
@@ -36,7 +35,6 @@
     SSAppPurchaseHistoryDatabase *_purchaseHistoryDatabase;
     SKUIStoreItemRelationshipCounsellor *_relationshipCouncellor;
     BOOL _runningInStoreDemoMode;
-    SKUIPendingRentalCenter *_pendingRentalsCenter;
 }
 
 @property (readonly) SSSoftwareUpdatesStore *appUpdatesStore;
@@ -47,14 +45,12 @@
 @property (readonly, nonatomic, getter=isGratisEligible) BOOL gratisEligible;
 @property (readonly) unsigned long long hash;
 @property (readonly) long long parentalControlsRank;
-@property (readonly) SKUIPendingRentalCenter *pendingRentalsCenter; // @synthesize pendingRentalsCenter=_pendingRentalsCenter;
 @property (readonly, getter=isRunningInStoreDemoMode) BOOL runningInStoreDemoMode;
 @property (readonly) Class superclass;
 
 + (id)defaultCenter;
 - (void).cxx_destruct;
 - (id)_addState:(unsigned long long)arg1 forItemIdentifier:(id)arg2;
-- (id)_appUpdatesStore;
 - (id)_appstoredUpdatesStore;
 - (void)_appstoredUpdatesStoreChangeNotification:(id)arg1;
 - (id)_copyItemsStatesForLibraryItems:(id)arg1;
@@ -66,16 +62,18 @@
 - (id)_jobManager;
 - (void)_mediaLibraryDidChangeNotification:(id)arg1;
 - (id)_newPurchaseWithItem:(id)arg1 offer:(id)arg2;
+- (id)_newPurchasesForSoftwareWithBundleItem:(id)arg1 bundleOffer:(id)arg2;
 - (id)_newPurchasesWithBundleItem:(id)arg1 bundleOffer:(id)arg2;
 - (id)_newPurchasesWithItems:(id)arg1;
+- (id)_newSoftwarePurchaseWithItem:(id)arg1 offer:(id)arg2;
 - (void)_notifyObserversOfMediaLibraryChange;
 - (void)_notifyObserversOfPurchasesResponses:(id)arg1;
 - (void)_notifyObserversOfRestrictionsChange;
+- (void)_notifyObserversOfSoftwarePurchasesResponses:(id)arg1;
 - (void)_notifyObserversOfStateChange:(id)arg1;
 - (void)_notifyObserversOfStateChanges:(id)arg1;
-- (void)_pendingRentalAdded:(id)arg1;
-- (void)_pendingRentalRemoved:(id)arg1;
 - (void)_performPurchases:(id)arg1 hasBundlePurchase:(BOOL)arg2 withClientContext:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)_performSoftwarePurchases:(id)arg1 withClientContext:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)_purchaseHistoryDatabase;
 - (void)_reloadAppUpdatesStore;
 - (void)_reloadDownloadManager;
@@ -89,7 +87,6 @@
 - (void)_replacePurchasingItem:(id)arg1 withDownloadIDs:(id)arg2;
 - (void)_restrictionsChangedNotification:(id)arg1;
 - (void)_setAvailableAppstoredUpdatesWithUpdates:(id)arg1 decrementLoadCount:(BOOL)arg2;
-- (void)_setAvailableUpdatesWithUpdates:(id)arg1 decrementLoadCount:(BOOL)arg2;
 - (void)_setDownloads:(id)arg1;
 - (void)_setFirstPartyRemovableItemsIdentifiers:(id)arg1;
 - (void)_setGratisIdentifiers:(id)arg1 error:(id)arg2;
@@ -100,6 +97,7 @@
 - (id)_setStateFlag:(unsigned long long)arg1 forItemsWithIdentifiers:(id)arg2 sendNotification:(BOOL)arg3;
 - (id)_setStateFlag:(unsigned long long)arg1 forOnlyItemsWithIdentifiers:(id)arg2 sendNotification:(BOOL)arg3;
 - (void)_storefrontDidChangeNotification:(id)arg1;
+- (void)_updatesSoftwarePurchasingItemsForPurchases:(id)arg1 purchaseWasSuccessful:(BOOL)arg2;
 - (void)_updatesStoreChangeNotification:(id)arg1;
 - (void)addDownloads:(id)arg1;
 - (void)addManifestDownloadWithURL:(id)arg1 placeholderMetadata:(id)arg2;
@@ -111,7 +109,6 @@
 - (void)dealloc;
 - (void)downloadManager:(id)arg1 downloadStatesDidChange:(id)arg2;
 - (void)downloadManagerDownloadsDidChange:(id)arg1;
-- (void)downloadRentalForItem:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)endObservingLibraryItems:(id)arg1;
 - (void)evaluatePurchaseResponseForRentals:(id)arg1;
 - (void)findLibraryItemsForContentIdentifiers:(id)arg1 options:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -126,13 +123,16 @@
 - (void)jobManager:(id)arg1 updatedProgressOfJobs:(id)arg2;
 - (void)jobManager:(id)arg1 updatedStateOfJobs:(id)arg2;
 - (id)metricsActionTypeForItem:(id)arg1;
+- (id)performActionForItem:(id)arg1 clientContext:(id)arg2;
 - (id)performActionForItem:(id)arg1 clientContext:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)performActionForItem:(id)arg1 offer:(id)arg2 clientContext:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)performActionForItem:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)performActionForLibraryItem:(id)arg1;
+- (id)performActionForSoftwareItem:(id)arg1 offer:(id)arg2 clientContext:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)purchaseItem:(id)arg1 offer:(id)arg2 clientContext:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)purchaseItems:(id)arg1 withClientContext:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)purchaseItems:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)purchaseSoftwareItem:(id)arg1 offer:(id)arg2 clientContext:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)purchaseTone:(id)arg1 withProperties:(id)arg2 clientContext:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)reloadFromServer;
 - (void)reloadFromServerWithCompletionBlock:(CDUnknownBlockType)arg1;

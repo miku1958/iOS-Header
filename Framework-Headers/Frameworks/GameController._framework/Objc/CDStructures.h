@@ -48,6 +48,10 @@ struct __IOHIDEvent {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    float _field1[4];
+} CDStruct_212a8bf9;
+
+typedef struct {
     double x;
     double y;
     double z;

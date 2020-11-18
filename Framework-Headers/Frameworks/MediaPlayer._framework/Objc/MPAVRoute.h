@@ -15,6 +15,7 @@
     NSDictionary *_avRouteDescription;
     MPAVRoute *_wirelessDisplayRoute;
     long long _displayRouteType;
+    id _notificationToken;
     BOOL _pickedOnPairedDevice;
     BOOL _playingOnPairedDevice;
     BOOL _requiresPassword;

@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) BOOL requiresForYouCatchUpOperation;
 @property (readonly) Class superclass;
 
+- (id)backingChannelTagIDWithAppConfig:(id)arg1;
 - (BOOL)canEmitGroupsWithType:(long long)arg1;
 - (id)initWithMinPrecedingTopicGroups:(unsigned long long)arg1 desiredArticlesCount:(long long)arg2;
 - (id)operationToEmitGroupWithContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;

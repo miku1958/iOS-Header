@@ -16,6 +16,8 @@
     UIView *_floatingOverlayView;
     struct UIEdgeInsets _floatingInsets;
     BOOL _hasParallax;
+    unsigned long long _animationFlags;
+    UIView *_snapshotView;
     BOOL _floatingViewEnabled;
     BOOL _animating;
     BOOL _floatingRotationEnabled;
@@ -51,6 +53,7 @@
 - (void)_updateSubviewsOrdering;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setAnimating:(BOOL)arg1 withFlags:(unsigned long long)arg2;
 - (void)setContentMode:(long long)arg1;
 - (void)setFloatingOverlay:(id)arg1 withInsets:(struct UIEdgeInsets)arg2 parallax:(BOOL)arg3;
 - (void)traitCollectionDidChange:(id)arg1;

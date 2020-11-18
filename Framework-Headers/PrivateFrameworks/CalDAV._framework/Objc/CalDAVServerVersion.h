@@ -35,6 +35,7 @@
     BOOL _supportsCalendarNoTimezone;
     BOOL _supportsCalendarRecurrenceSplit;
     BOOL _alwaysSupportsFreebusyOnOutbox;
+    BOOL _supportsCalendarAudit;
     double _version;
     NSString *_supportedCalendarComponentSets;
     NSSet *_complianceClasses;
@@ -46,6 +47,7 @@
 @property (copy, nonatomic) NSString *serverHeader; // @synthesize serverHeader=_serverHeader;
 @property (copy, nonatomic) NSString *supportedCalendarComponentSets; // @synthesize supportedCalendarComponentSets=_supportedCalendarComponentSets;
 @property (nonatomic) BOOL supportsAutoSchedule; // @synthesize supportsAutoSchedule=_supportsAutoSchedule;
+@property (nonatomic) BOOL supportsCalendarAudit; // @synthesize supportsCalendarAudit=_supportsCalendarAudit;
 @property (nonatomic) BOOL supportsCalendarHomeSync; // @synthesize supportsCalendarHomeSync=_supportsCalendarHomeSync;
 @property (nonatomic) BOOL supportsCalendarNoTimezone; // @synthesize supportsCalendarNoTimezone=_supportsCalendarNoTimezone;
 @property (nonatomic) BOOL supportsCalendarProxy; // @synthesize supportsCalendarProxy=_supportsCalendarProxy;

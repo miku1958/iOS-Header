@@ -8,16 +8,19 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, NTPBIAdConfig, NTPBPaidSubscriptionConfig, NTPBPersonalizationConfig, NTPBPrefetchConfig, NTPBWidgetConfig;
+@class NSMutableArray, NSString, NTPBBinningConfig, NTPBIAdConfig, NTPBPaidSubscriptionConfig, NTPBPersonalizationConfig, NTPBPersonalizationTreatment, NTPBPrefetchConfig, NTPBWidgetConfig;
 
 @interface NTPBConfig : PBCodable <NSCopying>
 {
+    long long _analyticsEndpointMaxPayloadSize;
     long long _appConfigRefreshRate;
     double _articleDiversitySimilarityExpectationEnd;
     double _articleDiversitySimilarityExpectationStart;
     long long _articleRapidUpdatesTimeout;
     long long _autoScrollToTopFeedTimeout;
     double _batchedFeedTimeout;
+    long long _corryBarMaxArticleCountForArticleList;
+    long long _corryBarMaxArticleCountForSingleArticle;
     long long _endOfArticleMaxInaccessiblePaidArticles;
     double _endOfArticleMinPaidHeadlineRatio;
     long long _expiredPaidSubscriptionGroupCutoffTime;
@@ -47,32 +50,48 @@
     long long _subscriptionsGracePeriodForTokenVerificationSeconds;
     long long _subscriptionsPlacardGlobalMaxPerDay;
     long long _subscriptionsPlacardPublisherFrequencyDays;
+    long long _subscriptionsPlacardPublisherFrequencySeconds;
     double _tileProminenceScoreBalanceValue;
     long long _timeBetweenSameWidgetReinsertion;
     long long _timeBetweenWidgetInsertions;
+    long long _treatmentId;
     long long _trendingTopicsRefreshRate;
     NTPBWidgetConfig *_alternativeButlerWidgetConfig;
     NSString *_anfEmbedConfigurationAsset;
+    NTPBBinningConfig *_binningConfig;
     NTPBWidgetConfig *_butlerWidgetConfig;
+    unsigned int _enabledPrivateDataEncryptionLevel;
     NSMutableArray *_endpointConfigs;
     NSString *_fallbackLanguageTag;
     NSString *_forYouNonPersonalizedGroupsOrder;
     NTPBIAdConfig *_iadConfig;
     NSMutableArray *_languageConfigs;
     NTPBPaidSubscriptionConfig *_paidSubscriptionConfig;
+    NSString *_personalizationBundleIdMappingResourceId;
     NTPBPersonalizationConfig *_personalizationConfig;
+    NSString *_personalizationPublisherFavorabilityScoresResourceId;
+    NTPBPersonalizationTreatment *_personalizationTreatment;
+    NSString *_personalizationUrlMappingResourceId;
+    NSString *_personalizationWhitelistResourceId;
+    NSString *_personalizationWidgetSectionMappingResourceId;
     NTPBPrefetchConfig *_prefetchConfig;
     NTPBWidgetConfig *_widgetConfig;
+    NTPBWidgetConfig *_widgetConfig2;
     BOOL _alternativeButlerWidgetConfigEnabled;
+    BOOL _corryBarHideDiscoverMoreInterstitialForNonOnboardedUsers;
     BOOL _newsletterSubscriptionChecked;
+    BOOL _orderFeedEndpointEnabled;
     BOOL _universalLinksEnabled;
     struct {
+        unsigned int analyticsEndpointMaxPayloadSize:1;
         unsigned int appConfigRefreshRate:1;
         unsigned int articleDiversitySimilarityExpectationEnd:1;
         unsigned int articleDiversitySimilarityExpectationStart:1;
         unsigned int articleRapidUpdatesTimeout:1;
         unsigned int autoScrollToTopFeedTimeout:1;
         unsigned int batchedFeedTimeout:1;
+        unsigned int corryBarMaxArticleCountForArticleList:1;
+        unsigned int corryBarMaxArticleCountForSingleArticle:1;
         unsigned int endOfArticleMaxInaccessiblePaidArticles:1;
         unsigned int endOfArticleMinPaidHeadlineRatio:1;
         unsigned int expiredPaidSubscriptionGroupCutoffTime:1;
@@ -102,18 +121,24 @@
         unsigned int subscriptionsGracePeriodForTokenVerificationSeconds:1;
         unsigned int subscriptionsPlacardGlobalMaxPerDay:1;
         unsigned int subscriptionsPlacardPublisherFrequencyDays:1;
+        unsigned int subscriptionsPlacardPublisherFrequencySeconds:1;
         unsigned int tileProminenceScoreBalanceValue:1;
         unsigned int timeBetweenSameWidgetReinsertion:1;
         unsigned int timeBetweenWidgetInsertions:1;
+        unsigned int treatmentId:1;
         unsigned int trendingTopicsRefreshRate:1;
+        unsigned int enabledPrivateDataEncryptionLevel:1;
         unsigned int alternativeButlerWidgetConfigEnabled:1;
+        unsigned int corryBarHideDiscoverMoreInterstitialForNonOnboardedUsers:1;
         unsigned int newsletterSubscriptionChecked:1;
+        unsigned int orderFeedEndpointEnabled:1;
         unsigned int universalLinksEnabled:1;
     } _has;
 }
 
 @property (strong, nonatomic) NTPBWidgetConfig *alternativeButlerWidgetConfig; // @synthesize alternativeButlerWidgetConfig=_alternativeButlerWidgetConfig;
 @property (nonatomic) BOOL alternativeButlerWidgetConfigEnabled; // @synthesize alternativeButlerWidgetConfigEnabled=_alternativeButlerWidgetConfigEnabled;
+@property (nonatomic) long long analyticsEndpointMaxPayloadSize; // @synthesize analyticsEndpointMaxPayloadSize=_analyticsEndpointMaxPayloadSize;
 @property (strong, nonatomic) NSString *anfEmbedConfigurationAsset; // @synthesize anfEmbedConfigurationAsset=_anfEmbedConfigurationAsset;
 @property (nonatomic) long long appConfigRefreshRate; // @synthesize appConfigRefreshRate=_appConfigRefreshRate;
 @property (nonatomic) double articleDiversitySimilarityExpectationEnd; // @synthesize articleDiversitySimilarityExpectationEnd=_articleDiversitySimilarityExpectationEnd;
@@ -121,7 +146,12 @@
 @property (nonatomic) long long articleRapidUpdatesTimeout; // @synthesize articleRapidUpdatesTimeout=_articleRapidUpdatesTimeout;
 @property (nonatomic) long long autoScrollToTopFeedTimeout; // @synthesize autoScrollToTopFeedTimeout=_autoScrollToTopFeedTimeout;
 @property (nonatomic) double batchedFeedTimeout; // @synthesize batchedFeedTimeout=_batchedFeedTimeout;
+@property (strong, nonatomic) NTPBBinningConfig *binningConfig; // @synthesize binningConfig=_binningConfig;
 @property (strong, nonatomic) NTPBWidgetConfig *butlerWidgetConfig; // @synthesize butlerWidgetConfig=_butlerWidgetConfig;
+@property (nonatomic) BOOL corryBarHideDiscoverMoreInterstitialForNonOnboardedUsers; // @synthesize corryBarHideDiscoverMoreInterstitialForNonOnboardedUsers=_corryBarHideDiscoverMoreInterstitialForNonOnboardedUsers;
+@property (nonatomic) long long corryBarMaxArticleCountForArticleList; // @synthesize corryBarMaxArticleCountForArticleList=_corryBarMaxArticleCountForArticleList;
+@property (nonatomic) long long corryBarMaxArticleCountForSingleArticle; // @synthesize corryBarMaxArticleCountForSingleArticle=_corryBarMaxArticleCountForSingleArticle;
+@property (nonatomic) unsigned int enabledPrivateDataEncryptionLevel; // @synthesize enabledPrivateDataEncryptionLevel=_enabledPrivateDataEncryptionLevel;
 @property (nonatomic) long long endOfArticleMaxInaccessiblePaidArticles; // @synthesize endOfArticleMaxInaccessiblePaidArticles=_endOfArticleMaxInaccessiblePaidArticles;
 @property (nonatomic) double endOfArticleMinPaidHeadlineRatio; // @synthesize endOfArticleMinPaidHeadlineRatio=_endOfArticleMinPaidHeadlineRatio;
 @property (strong, nonatomic) NSMutableArray *endpointConfigs; // @synthesize endpointConfigs=_endpointConfigs;
@@ -130,6 +160,7 @@
 @property (strong, nonatomic) NSString *forYouNonPersonalizedGroupsOrder; // @synthesize forYouNonPersonalizedGroupsOrder=_forYouNonPersonalizedGroupsOrder;
 @property (readonly, nonatomic) BOOL hasAlternativeButlerWidgetConfig;
 @property (nonatomic) BOOL hasAlternativeButlerWidgetConfigEnabled;
+@property (nonatomic) BOOL hasAnalyticsEndpointMaxPayloadSize;
 @property (readonly, nonatomic) BOOL hasAnfEmbedConfigurationAsset;
 @property (nonatomic) BOOL hasAppConfigRefreshRate;
 @property (nonatomic) BOOL hasArticleDiversitySimilarityExpectationEnd;
@@ -137,7 +168,12 @@
 @property (nonatomic) BOOL hasArticleRapidUpdatesTimeout;
 @property (nonatomic) BOOL hasAutoScrollToTopFeedTimeout;
 @property (nonatomic) BOOL hasBatchedFeedTimeout;
+@property (readonly, nonatomic) BOOL hasBinningConfig;
 @property (readonly, nonatomic) BOOL hasButlerWidgetConfig;
+@property (nonatomic) BOOL hasCorryBarHideDiscoverMoreInterstitialForNonOnboardedUsers;
+@property (nonatomic) BOOL hasCorryBarMaxArticleCountForArticleList;
+@property (nonatomic) BOOL hasCorryBarMaxArticleCountForSingleArticle;
+@property (nonatomic) BOOL hasEnabledPrivateDataEncryptionLevel;
 @property (nonatomic) BOOL hasEndOfArticleMaxInaccessiblePaidArticles;
 @property (nonatomic) BOOL hasEndOfArticleMinPaidHeadlineRatio;
 @property (nonatomic) BOOL hasExpiredPaidSubscriptionGroupCutoffTime;
@@ -159,8 +195,15 @@
 @property (nonatomic) BOOL hasNotificationArticleWithRapidUpdatesCacheTimeout;
 @property (nonatomic) BOOL hasNotificationEnabledChannelsRefreshFrequency;
 @property (nonatomic) BOOL hasNumberOfScreenfulsScrolledToBypassWidgetTimeLimit;
+@property (nonatomic) BOOL hasOrderFeedEndpointEnabled;
 @property (readonly, nonatomic) BOOL hasPaidSubscriptionConfig;
+@property (readonly, nonatomic) BOOL hasPersonalizationBundleIdMappingResourceId;
 @property (readonly, nonatomic) BOOL hasPersonalizationConfig;
+@property (readonly, nonatomic) BOOL hasPersonalizationPublisherFavorabilityScoresResourceId;
+@property (readonly, nonatomic) BOOL hasPersonalizationTreatment;
+@property (readonly, nonatomic) BOOL hasPersonalizationUrlMappingResourceId;
+@property (readonly, nonatomic) BOOL hasPersonalizationWhitelistResourceId;
+@property (readonly, nonatomic) BOOL hasPersonalizationWidgetSectionMappingResourceId;
 @property (readonly, nonatomic) BOOL hasPrefetchConfig;
 @property (nonatomic) BOOL hasPrerollLoadingTimeout;
 @property (nonatomic) BOOL hasPublisherDiversitySlope;
@@ -174,12 +217,15 @@
 @property (nonatomic) BOOL hasSubscriptionsGracePeriodForTokenVerificationSeconds;
 @property (nonatomic) BOOL hasSubscriptionsPlacardGlobalMaxPerDay;
 @property (nonatomic) BOOL hasSubscriptionsPlacardPublisherFrequencyDays;
+@property (nonatomic) BOOL hasSubscriptionsPlacardPublisherFrequencySeconds;
 @property (nonatomic) BOOL hasTileProminenceScoreBalanceValue;
 @property (nonatomic) BOOL hasTimeBetweenSameWidgetReinsertion;
 @property (nonatomic) BOOL hasTimeBetweenWidgetInsertions;
+@property (nonatomic) BOOL hasTreatmentId;
 @property (nonatomic) BOOL hasTrendingTopicsRefreshRate;
 @property (nonatomic) BOOL hasUniversalLinksEnabled;
 @property (readonly, nonatomic) BOOL hasWidgetConfig;
+@property (readonly, nonatomic) BOOL hasWidgetConfig2;
 @property (strong, nonatomic) NTPBIAdConfig *iadConfig; // @synthesize iadConfig=_iadConfig;
 @property (nonatomic) long long initialArticlesFromNewFavorite; // @synthesize initialArticlesFromNewFavorite=_initialArticlesFromNewFavorite;
 @property (nonatomic) double interstitialAdLoadDelay; // @synthesize interstitialAdLoadDelay=_interstitialAdLoadDelay;
@@ -197,8 +243,15 @@
 @property (nonatomic) long long notificationArticleWithRapidUpdatesCacheTimeout; // @synthesize notificationArticleWithRapidUpdatesCacheTimeout=_notificationArticleWithRapidUpdatesCacheTimeout;
 @property (nonatomic) long long notificationEnabledChannelsRefreshFrequency; // @synthesize notificationEnabledChannelsRefreshFrequency=_notificationEnabledChannelsRefreshFrequency;
 @property (nonatomic) long long numberOfScreenfulsScrolledToBypassWidgetTimeLimit; // @synthesize numberOfScreenfulsScrolledToBypassWidgetTimeLimit=_numberOfScreenfulsScrolledToBypassWidgetTimeLimit;
+@property (nonatomic) BOOL orderFeedEndpointEnabled; // @synthesize orderFeedEndpointEnabled=_orderFeedEndpointEnabled;
 @property (strong, nonatomic) NTPBPaidSubscriptionConfig *paidSubscriptionConfig; // @synthesize paidSubscriptionConfig=_paidSubscriptionConfig;
+@property (strong, nonatomic) NSString *personalizationBundleIdMappingResourceId; // @synthesize personalizationBundleIdMappingResourceId=_personalizationBundleIdMappingResourceId;
 @property (strong, nonatomic) NTPBPersonalizationConfig *personalizationConfig; // @synthesize personalizationConfig=_personalizationConfig;
+@property (strong, nonatomic) NSString *personalizationPublisherFavorabilityScoresResourceId; // @synthesize personalizationPublisherFavorabilityScoresResourceId=_personalizationPublisherFavorabilityScoresResourceId;
+@property (strong, nonatomic) NTPBPersonalizationTreatment *personalizationTreatment; // @synthesize personalizationTreatment=_personalizationTreatment;
+@property (strong, nonatomic) NSString *personalizationUrlMappingResourceId; // @synthesize personalizationUrlMappingResourceId=_personalizationUrlMappingResourceId;
+@property (strong, nonatomic) NSString *personalizationWhitelistResourceId; // @synthesize personalizationWhitelistResourceId=_personalizationWhitelistResourceId;
+@property (strong, nonatomic) NSString *personalizationWidgetSectionMappingResourceId; // @synthesize personalizationWidgetSectionMappingResourceId=_personalizationWidgetSectionMappingResourceId;
 @property (strong, nonatomic) NTPBPrefetchConfig *prefetchConfig; // @synthesize prefetchConfig=_prefetchConfig;
 @property (nonatomic) double prerollLoadingTimeout; // @synthesize prerollLoadingTimeout=_prerollLoadingTimeout;
 @property (nonatomic) double publisherDiversitySlope; // @synthesize publisherDiversitySlope=_publisherDiversitySlope;
@@ -212,12 +265,15 @@
 @property (nonatomic) long long subscriptionsGracePeriodForTokenVerificationSeconds; // @synthesize subscriptionsGracePeriodForTokenVerificationSeconds=_subscriptionsGracePeriodForTokenVerificationSeconds;
 @property (nonatomic) long long subscriptionsPlacardGlobalMaxPerDay; // @synthesize subscriptionsPlacardGlobalMaxPerDay=_subscriptionsPlacardGlobalMaxPerDay;
 @property (nonatomic) long long subscriptionsPlacardPublisherFrequencyDays; // @synthesize subscriptionsPlacardPublisherFrequencyDays=_subscriptionsPlacardPublisherFrequencyDays;
+@property (nonatomic) long long subscriptionsPlacardPublisherFrequencySeconds; // @synthesize subscriptionsPlacardPublisherFrequencySeconds=_subscriptionsPlacardPublisherFrequencySeconds;
 @property (nonatomic) double tileProminenceScoreBalanceValue; // @synthesize tileProminenceScoreBalanceValue=_tileProminenceScoreBalanceValue;
 @property (nonatomic) long long timeBetweenSameWidgetReinsertion; // @synthesize timeBetweenSameWidgetReinsertion=_timeBetweenSameWidgetReinsertion;
 @property (nonatomic) long long timeBetweenWidgetInsertions; // @synthesize timeBetweenWidgetInsertions=_timeBetweenWidgetInsertions;
+@property (nonatomic) long long treatmentId; // @synthesize treatmentId=_treatmentId;
 @property (nonatomic) long long trendingTopicsRefreshRate; // @synthesize trendingTopicsRefreshRate=_trendingTopicsRefreshRate;
 @property (nonatomic) BOOL universalLinksEnabled; // @synthesize universalLinksEnabled=_universalLinksEnabled;
 @property (strong, nonatomic) NTPBWidgetConfig *widgetConfig; // @synthesize widgetConfig=_widgetConfig;
+@property (strong, nonatomic) NTPBWidgetConfig *widgetConfig2; // @synthesize widgetConfig2=_widgetConfig2;
 
 + (Class)endpointConfigsType;
 + (Class)languageConfigsType;

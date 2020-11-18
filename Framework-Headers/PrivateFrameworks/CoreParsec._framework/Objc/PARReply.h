@@ -8,22 +8,24 @@
 
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSURLRequest, NSURLResponse, PARTask;
+@class NSArray, NSData, NSString, NSURLRequest, NSURLResponse, PARTask;
 
 @interface PARReply : NSObject <NSSecureCoding>
 {
+    NSArray *_rawResponse;
     NSURLRequest *_httpRequest;
     NSURLResponse *_httpResponse;
-    NSArray *_rawResponse;
+    NSData *_data;
     PARTask *_task;
     double _scale;
     NSString *_geoSessionEntityString;
 }
 
+@property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (copy, nonatomic) NSString *geoSessionEntityString; // @synthesize geoSessionEntityString=_geoSessionEntityString;
 @property (strong, nonatomic) NSURLRequest *httpRequest; // @synthesize httpRequest=_httpRequest;
 @property (strong, nonatomic) NSURLResponse *httpResponse; // @synthesize httpResponse=_httpResponse;
-@property (strong, nonatomic) NSArray *rawResponse; // @synthesize rawResponse=_rawResponse;
+@property (strong, nonatomic) NSArray *rawResponse;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (weak, nonatomic) PARTask *task; // @synthesize task=_task;
 

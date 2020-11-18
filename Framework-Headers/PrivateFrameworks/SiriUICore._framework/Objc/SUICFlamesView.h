@@ -54,20 +54,26 @@
     BOOL _showAura;
     BOOL _reduceFrameRate;
     BOOL _renderInBackground;
+    BOOL _paused;
+    BOOL _accelerateTransitions;
     int _mode;
     int _state;
     id<SUICFlamesViewDelegate> _delegate;
     UIImage *_overlayImage;
     UIColor *_dictationColor;
+    double _horizontalScaleFactor;
     struct CGRect _activeFrame;
 }
 
+@property (nonatomic) BOOL accelerateTransitions; // @synthesize accelerateTransitions=_accelerateTransitions;
 @property (nonatomic) struct CGRect activeFrame; // @synthesize activeFrame=_activeFrame;
 @property (weak, nonatomic) id<SUICFlamesViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIColor *dictationColor; // @synthesize dictationColor=_dictationColor;
+@property (nonatomic) double horizontalScaleFactor; // @synthesize horizontalScaleFactor=_horizontalScaleFactor;
 @property (readonly, nonatomic) BOOL isRenderingEnabled;
 @property (nonatomic) int mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) UIImage *overlayImage; // @synthesize overlayImage=_overlayImage;
+@property (nonatomic) BOOL paused; // @synthesize paused=_paused;
 @property (nonatomic) BOOL reduceFrameRate; // @synthesize reduceFrameRate=_reduceFrameRate;
 @property (nonatomic) BOOL renderInBackground; // @synthesize renderInBackground=_renderInBackground;
 @property (nonatomic) BOOL showAura; // @synthesize showAura=_showAura;
@@ -92,6 +98,7 @@
 - (BOOL)_resizeFromLayer:(id)arg1;
 - (void)_restoreCurrentContext;
 - (BOOL)_setCurrentContext;
+- (void)_setPreferredFramesPerSecond;
 - (void)_setValuesForFidelity:(int)arg1;
 - (void)_setupDisplayLink;
 - (BOOL)_setupFramebuffer;
@@ -99,6 +106,8 @@
 - (BOOL)_setupVertexBuffer;
 - (void)_tearDownDisplayLink;
 - (void)_updateCurveLayer:(id)arg1;
+- (void)_updateDisplayLinkPausedState;
+- (void)_updateDisplayLinkPausedStateFromSuccess:(BOOL)arg1;
 - (void)_updateOrthoProjection;
 - (void)dealloc;
 - (void)didMoveToSuperview;

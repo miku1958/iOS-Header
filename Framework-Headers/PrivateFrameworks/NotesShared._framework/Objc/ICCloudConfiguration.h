@@ -14,6 +14,7 @@
     double _pollingInterval;
     unsigned long long _maxInlineAssetSizeBytes;
     unsigned long long _maxAttachmentsPerNote;
+    unsigned long long _maxSubAttachmentsPerAttachment;
     unsigned long long _resultsLimitPerSyncOperation;
     NSNumber *_maximumAttachmentSizeMB;
     NSString *_minimumClientVersion;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) NSTimer *downloadTimer; // @synthesize downloadTimer=_downloadTimer;
 @property (nonatomic) unsigned long long maxAttachmentsPerNote; // @synthesize maxAttachmentsPerNote=_maxAttachmentsPerNote;
 @property (nonatomic) unsigned long long maxInlineAssetSizeBytes; // @synthesize maxInlineAssetSizeBytes=_maxInlineAssetSizeBytes;
+@property (nonatomic) unsigned long long maxSubAttachmentsPerAttachment; // @synthesize maxSubAttachmentsPerAttachment=_maxSubAttachmentsPerAttachment;
 @property (strong, nonatomic) NSNumber *maximumAttachmentSizeMB; // @synthesize maximumAttachmentSizeMB=_maximumAttachmentSizeMB;
 @property (copy, nonatomic) NSString *minimumClientVersion; // @synthesize minimumClientVersion=_minimumClientVersion;
 @property (nonatomic) double pollingInterval; // @synthesize pollingInterval=_pollingInterval;

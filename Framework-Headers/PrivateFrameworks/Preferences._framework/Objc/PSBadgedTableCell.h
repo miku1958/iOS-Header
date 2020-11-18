@@ -15,11 +15,9 @@
     long long _badgeInt;
 }
 
-+ (id)badgeNumberLabelHighlightedTextColor;
 + (id)badgeNumberLabelTextColor;
 + (double)badgePadding;
 + (id)reuseIdentifierForClassAndType:(long long)arg1;
-+ (id)unreadBubbleHighlightedImage;
 + (id)unreadBubbleImage;
 - (void).cxx_destruct;
 - (BOOL)_shouldUseRoundStyle;

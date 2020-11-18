@@ -7,20 +7,23 @@
 #import <Foundation/NSObject.h>
 
 @class GCController, MRGameControllerDaemonProxy;
+@protocol MREmulatedGameControllerDelegate;
 
 @interface MREmulatedGameController : NSObject
 {
-    GCController *_controller;
     MRGameControllerDaemonProxy *_remote;
     int _profile;
-    unsigned long long _controllerID;
     double _buttonAUpDelay;
+    id<MREmulatedGameControllerDelegate> _delegate;
+    GCController *_controller;
 }
 
 @property (nonatomic) double buttonAUpDelay; // @synthesize buttonAUpDelay=_buttonAUpDelay;
-@property (readonly, nonatomic) unsigned long long controllerID; // @synthesize controllerID=_controllerID;
+@property (strong, nonatomic) GCController *controller; // @synthesize controller=_controller;
+@property (nonatomic) id<MREmulatedGameControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) int profile; // @synthesize profile=_profile;
 
+- (void)_handleGameControllerDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithProperties:(void *)arg1;
 - (void)sendGameControllerEvent:(CDStruct_06eb3966 *)arg1;

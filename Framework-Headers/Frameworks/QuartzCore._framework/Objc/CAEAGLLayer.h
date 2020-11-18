@@ -17,6 +17,7 @@
 
 @property (getter=isAsynchronous) BOOL asynchronous;
 @property (copy) NSDictionary *drawableProperties;
+@property double inputTime;
 @property BOOL lowLatency;
 @property (readonly) struct _EAGLWindowObject *nativeWindow;
 @property BOOL presentsWithTransaction;

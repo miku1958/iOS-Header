@@ -6,14 +6,17 @@
 
 #import <AuthKit/NSObject-Protocol.h>
 
-@class AKAppleIDAuthenticationContext, AKCircleRequestContext, NSDictionary, NSHTTPURLResponse, NSNumber, NSString;
+@class AKAppleIDAuthenticationContext, AKCircleRequestContext, AKFollowUpTearDownContext, NSArray, NSHTTPURLResponse, NSNumber, NSString;
+@protocol NSSecureCoding;
 
 @protocol AKAppleIDAuthenticationDaemonProtocol <NSObject>
 - (void)activeLoginCode:(void (^)(NSString *, NSError *))arg1;
 - (void)authenticateWithContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)checkInWithAuthenticationServerForAppleID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)checkSecurityUpgradeEligibilityForAppleID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)configurationInfoWithIdentifiers:(NSArray *)arg1 forAltDSID:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)emailsForAltDSID:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)fetchUserInformationForAltDSID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)generateLoginCodeWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)getServerUILoadDelegateForAltDSID:(NSString *)arg1 completion:(void (^)(AKAppleIDServerResourceLoadDelegate *, NSError *))arg2;
 - (void)getServerUILoadDelegateWithContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(AKAppleIDServerResourceLoadDelegate *, NSError *))arg2;
@@ -24,7 +27,9 @@
 - (void)reportSignOutForAppleID:(NSString *)arg1 service:(long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)setAppleIDWithAltDSID:(NSString *)arg1 inUse:(BOOL)arg2 forService:(long long)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)setAppleIDWithDSID:(NSNumber *)arg1 inUse:(BOOL)arg2 forService:(long long)arg3 completion:(void (^)(BOOL, NSError *))arg4;
-- (void)setConfigurationInfo:(NSDictionary *)arg1 forIdentifier:(NSString *)arg2 forAltDSID:(NSString *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
+- (void)setConfigurationInfo:(id<NSSecureCoding>)arg1 forIdentifier:(NSString *)arg2 forAltDSID:(NSString *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
+- (void)synchronizeFollowUpItemsForContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)teardownFollowUpWithContext:(AKFollowUpTearDownContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)updateStateWithExternalAuthenticationResponse:(NSHTTPURLResponse *)arg1 forAppleID:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)updateStateWithExternalAuthenticationResponse:(NSHTTPURLResponse *)arg1 forContext:(AKAppleIDAuthenticationContext *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)validateLoginCode:(unsigned long long)arg1 forAppleID:(NSString *)arg2 withCompletion:(void (^)(BOOL, NSError *))arg3;

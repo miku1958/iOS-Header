@@ -11,10 +11,10 @@
 
 @interface MPUbiquitousPlaybackPositionController : NSObject
 {
-    BOOL _databaseHasBookmarkableContents;
     BOOL _isServiceActive;
     BOOL _externallyActive;
     BOOL _beganUsingPlaybackPositionMetadata;
+    BOOL _databaseHasBookmarkableContents;
     BOOL _applicationBecomingActive;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_serviceQueue;
@@ -38,20 +38,20 @@
 - (void)_applicationDidEnterForegroundNotification:(id)arg1;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (void)_defaultMediaLibraryDidChangeNotification:(id)arg1;
-- (void)_mediaLibraryDidChangeNotification:(id)arg1;
 - (BOOL)_onQueue_isEnabled;
 - (BOOL)_onQueue_shouldBeActive;
 - (void)_onServiceQueue_becomeActiveService;
 - (id)_onServiceQueue_connectedUPPServiceProxy;
 - (void)_onServiceQueue_resignActiveService;
-- (void)_onServiceQueue_setDatabaseHasBookmarkableContents:(BOOL)arg1;
 - (void)_onServiceQueue_updateActiveServiceIfNeeded;
-- (void)_onServiceQueue_updateBoomkarkabilityState;
 - (id)_playbackPositionEntityWithValuesFromMusicLibraryTrackPersistentID:(long long)arg1;
 - (void)beginUsingPlaybackPositionMetadata;
 - (void)dealloc;
 - (id)init;
 - (void)noteChangedPlaybackPositionMetadataForTrackPersistentID:(long long)arg1 isCheckpoint:(BOOL)arg2;
+- (void)persistPlaybackPositionMetadataEntity:(id)arg1 isCheckpoint:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)playbackPositionForLocalEntityIdentifier:(id)arg1;
+- (id)playbackPositionForLocalEntityIdentifiers:(id)arg1;
 
 @end
 

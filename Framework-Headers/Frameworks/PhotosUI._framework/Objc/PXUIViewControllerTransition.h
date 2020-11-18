@@ -15,6 +15,7 @@
 {
     UIViewController *_internalMasterViewController;
     UIViewController *_internalDetailViewController;
+    CDUnknownBlockType _transitionAnimationCompletionHandler;
     BOOL _supportsEdgeSwipeBackGesture;
     BOOL _interactive;
     id __pauseToken;
@@ -39,8 +40,10 @@
 - (void)didEndTransition;
 - (id)init;
 - (id)initWithMasterViewController:(id)arg1 detailViewController:(id)arg2;
+- (void)installTransitionAnimationCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)startInteractiveTransition:(id)arg1;
 - (double)transitionDuration:(id)arg1;
+- (void)willEndTransition;
 - (void)willStartTransition;
 
 @end

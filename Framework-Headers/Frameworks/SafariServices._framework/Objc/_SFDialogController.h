@@ -8,34 +8,48 @@
 
 #import <SafariServices/_SFDialogViewDelegate-Protocol.h>
 
-@class NSString, _SFDialogView;
-@protocol _SFDialogControllerDelegate, _SFDialogPresenting;
+@class NSString, UIViewController, WBSTabDialogManager, _SFDialog, _SFDialogView;
+@protocol _SFDialogControllerDelegate, _SFDialogViewControllerPresenting, _SFDialogViewPresenting;
 
 @interface _SFDialogController : NSObject <_SFDialogViewDelegate>
 {
+    WBSTabDialogManager *_dialogManager;
     _SFDialogView *_dialogView;
-    int _webProcessIdentifier;
+    UIViewController *_dialogViewController;
+    int _webProcessID;
     id<_SFDialogControllerDelegate> _delegate;
-    id<_SFDialogPresenting> _dialogPresenter;
+    id<_SFDialogViewPresenting> _dialogPresenter;
+    id<_SFDialogViewControllerPresenting> _viewControllerPresenter;
+    _SFDialog *_presentedDialog;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_SFDialogControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (weak, nonatomic) id<_SFDialogPresenting> dialogPresenter; // @synthesize dialogPresenter=_dialogPresenter;
+@property (weak, nonatomic) id<_SFDialogViewPresenting> dialogPresenter; // @synthesize dialogPresenter=_dialogPresenter;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) _SFDialog *presentedDialog; // @synthesize presentedDialog=_presentedDialog;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) id<_SFDialogViewControllerPresenting> viewControllerPresenter; // @synthesize viewControllerPresenter=_viewControllerPresenter;
 
-+ (void)initialize;
 - (void).cxx_destruct;
-- (int)_currentWebProcessIdentifier;
-- (void)_dismissDialog;
+- (CDStruct_fca5f1f5)_currentSlot;
+- (int)_currentWebProcessID;
+- (void)_dismissCurrentDialogWithResponse:(id)arg1;
+- (void)_dismissDialogWithAdditionalAnimations:(CDUnknownBlockType)arg1;
+- (id)_initWithDialogManager:(id)arg1;
 - (BOOL)_isPresentingDialog;
-- (void)_presentDialog:(id)arg1 forWebProcessIdentifier:(int)arg2;
-- (void)dialogView:(id)arg1 didSelectPrimaryAction:(BOOL)arg2 withPromptText:(id)arg3;
-- (void)dismissAllDialogsIfNeeded;
+- (void)_presentDialog:(id)arg1 forWebProcessID:(int)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
+- (unsigned long long)_tabID;
+- (void)cancelPresentedDialogIfNeeded;
+- (void)dialogView:(id)arg1 didSelectPrimaryAction:(BOOL)arg2 withInputText:(id)arg3 passwordText:(id)arg4;
+- (id)init;
+- (void)owningTabWillClose;
+- (void)owningWebViewDidChangeProcessID;
 - (void)owningWebViewWillBecomeActive;
-- (void)showDialog:(id)arg1;
+- (void)owningWebViewWillNavigate;
+- (void)presentDialog:(id)arg1;
+- (void)presentDialog:(id)arg1 animateAlongsidePresentation:(CDUnknownBlockType)arg2 dismissal:(CDUnknownBlockType)arg3;
 
 @end
 

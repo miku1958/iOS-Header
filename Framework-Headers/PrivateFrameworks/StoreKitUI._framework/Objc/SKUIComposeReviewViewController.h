@@ -7,38 +7,49 @@
 #import <iTunesStoreUI/SUNavigationController.h>
 
 #import <StoreKitUI/SKUIComposeReviewFormDelegate-Protocol.h>
-#import <StoreKitUI/UIAlertViewDelegate-Protocol.h>
+#import <StoreKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSString, SKUIComposeReviewFormViewController, SKUIReviewMetadata, SUPlaceholderViewController;
+@class NSString, SKUIComposeReviewFormViewController, SKUIReviewMetadata, SKUIWriteAReviewTemplateViewElement, SUPlaceholderViewController, UIAlertAction;
 @protocol SKUIComposeReviewDelegate;
 
-@interface SKUIComposeReviewViewController : SUNavigationController <SKUIComposeReviewFormDelegate, UIAlertViewDelegate>
+@interface SKUIComposeReviewViewController : SUNavigationController <SKUIComposeReviewFormDelegate, UITextFieldDelegate>
 {
     SKUIComposeReviewFormViewController *_formViewController;
     SUPlaceholderViewController *_placeholderViewController;
+    NSString *_nickname;
+    UIAlertAction *_nicknameOKAction;
+    BOOL _edit;
+    SKUIWriteAReviewTemplateViewElement *_templateViewElement;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SKUIComposeReviewDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isEdit) BOOL edit; // @synthesize edit=_edit;
 @property (readonly, copy, nonatomic) SKUIReviewMetadata *editedReviewMetadata;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) SKUIWriteAReviewTemplateViewElement *templateViewElement; // @synthesize templateViewElement=_templateViewElement;
 
++ (BOOL)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
+- (void)_attemptReviewSubmission;
 - (void)_cancelAction:(id)arg1;
 - (void)_finishLoadWithOutput:(id)arg1 error:(id)arg2;
 - (void)_loadReviewWithURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)_promptForNickname;
 - (void)_sendDidCancel;
 - (void)_sendDidSubmit;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
+- (void)_setNickname:(id)arg1;
 - (void)composeReviewFormDidCancel:(id)arg1;
 - (void)composeReviewFormDidSubmit:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)loadReviewWithURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (long long)preferredStatusBarStyle;
 - (void)setRating:(float)arg1;
 - (void)submitReview;
+- (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 
 @end
 

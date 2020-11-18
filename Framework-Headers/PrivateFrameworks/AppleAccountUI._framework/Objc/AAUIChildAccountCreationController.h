@@ -8,12 +8,13 @@
 
 #import <AppleAccountUI/RUIObjectModelDelegate-Protocol.h>
 
-@class AAGrandSlamSigner, AASetupAssistantService, NSArray, NSHTTPURLResponse, NSMutableArray, NSString, NSURL, RUILoader, UIActivityIndicatorView, UIBarButtonItem, UINavigationController, UINavigationItem, UIToolbar;
+@class AAGrandSlamSigner, AASetupAssistantService, ACAccount, NSArray, NSHTTPURLResponse, NSMutableArray, NSString, NSURL, RUILoader, UIActivityIndicatorView, UIBarButtonItem, UINavigationController, UINavigationItem, UIToolbar;
 @protocol AAUIChildAccountCreationDelegate;
 
 @interface AAUIChildAccountCreationController : NSObject <RUIObjectModelDelegate>
 {
     AASetupAssistantService *_setupService;
+    ACAccount *_appleAccount;
     AAGrandSlamSigner *_grandSlamSigner;
     NSURL *_launchingURL;
     NSMutableArray *_objectModels;
@@ -29,8 +30,10 @@
     BOOL _isPendingDismissal;
     id<AAUIChildAccountCreationDelegate> _delegate;
     UINavigationController *_navigationController;
+    NSString *_continuationData;
 }
 
+@property (copy, nonatomic) NSString *continuationData; // @synthesize continuationData=_continuationData;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AAUIChildAccountCreationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -42,6 +45,7 @@
 - (void)_addHeadersToRequest:(id)arg1;
 - (void)_cancel;
 - (void)_cleanupRemoteUILoader;
+- (void)_createAppleIDWithParameters:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_createChildAccount;
 - (void)_displayConnectionErrorAndCancel;
 - (void)_hideActivitySpinner;
@@ -53,7 +57,7 @@
 - (void)_showActivitySpinnerInToolbar:(id)arg1;
 - (id)_spinnerView;
 - (void)_startRemoteUILoaderWithRequest:(id)arg1;
-- (id)initWithGrandSlamSigner:(id)arg1;
+- (id)initWithAppleAccount:(id)arg1 grandSlamSigner:(id)arg2;
 - (void)loadRemoteUI;
 - (void)loader:(id)arg1 didFailWithError:(id)arg2;
 - (void)loader:(id)arg1 didReceiveHTTPResponse:(id)arg2;

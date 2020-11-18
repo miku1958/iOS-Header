@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
     struct fast_shared_ptr<md::RouteLineSection> _userLocationSection;
     struct PolylineCoordinate _userLocationIndex;
     Matrix_8746f91e _userLocation;
-    double _lastUserLocationMatchTimestamp;
     double _lastTrafficTimeStamp;
     NSSet *_retainedTiles;
     VKPolylineOverlayRenderRegion *_renderRegion;

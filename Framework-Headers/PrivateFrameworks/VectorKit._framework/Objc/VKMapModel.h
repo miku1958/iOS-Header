@@ -109,7 +109,6 @@ __attribute__((visibility("hidden")))
     float _navigationPuckSize;
     struct ClearItem _clearItem;
     struct FeatureAttributeSet _mapFeatureStyleAttributes;
-    shared_ptr_c5d816ee _styleQuery;
     int _metroArea;
     BOOL _forceMapDrawStyleUpdate;
     NSMutableSet *_polylineOverlays;
@@ -228,6 +227,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)debugHighlightFeatureMarker:(const shared_ptr_430519ce *)arg1;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
+- (id)debugLabelString:(BOOL)arg1;
 - (id)debugModel;
 - (void)deselectLabelMarker;
 - (void)deselectTransitLineMarker;
@@ -257,7 +257,6 @@ __attribute__((visibility("hidden")))
 - (void)insertRasterOverlay:(id)arg1 belowOverlay:(id)arg2;
 - (BOOL)isRoadClassDisabled:(int)arg1;
 - (BOOL)isShowingNoDataPlaceholders;
-- (id)labelDebugString;
 - (shared_ptr_2d33c5e4)labelMarkerForCustomFeatureAnnotation:(id)arg1 dataSource:(id)arg2;
 - (shared_ptr_2d33c5e4)labelMarkerForSelectionAtPoint:(struct CGPoint)arg1 selectableLabelsOnly:(BOOL)arg2;
 - (vector_af4a736d)labelMarkers;

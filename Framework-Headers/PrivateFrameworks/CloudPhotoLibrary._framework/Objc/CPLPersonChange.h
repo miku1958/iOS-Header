@@ -6,21 +6,29 @@
 
 #import <CloudPhotoLibrary/CPLRecordChange.h>
 
-@class NSString;
+#import <CloudPhotoLibrary/NSCopying-Protocol.h>
+#import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
-@interface CPLPersonChange : CPLRecordChange
+@class NSData, NSDictionary, NSString;
+
+@interface CPLPersonChange : CPLRecordChange <NSSecureCoding, NSCopying>
 {
     NSString *_fullName;
-    NSString *_personID;
     long long _personType;
     long long _manualSortOrder;
+    NSString *_displayName;
+    NSData *_contactDescriptor;
 }
 
+@property (copy, nonatomic) NSData *contactDescriptor; // @synthesize contactDescriptor=_contactDescriptor;
+@property (copy, nonatomic) NSDictionary *contactMatchingDictionary;
+@property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
 @property (nonatomic) long long manualSortOrder; // @synthesize manualSortOrder=_manualSortOrder;
-@property (copy, nonatomic) NSString *personID; // @synthesize personID=_personID;
 @property (nonatomic) long long personType; // @synthesize personType=_personType;
 
++ (BOOL)cplShouldIgnorePropertyForCoding:(id)arg1;
++ (BOOL)cplShouldIgnorePropertyForEquality:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)supportsDeletion;
 

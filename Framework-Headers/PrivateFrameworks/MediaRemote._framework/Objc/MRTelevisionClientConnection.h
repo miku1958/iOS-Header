@@ -6,13 +6,15 @@
 
 #import <Foundation/NSObject.h>
 
+#import <MediaRemote/MRTelevisionMessageQueueDatasource-Protocol.h>
+#import <MediaRemote/MRTelevisionMessageQueueDelegate-Protocol.h>
 #import <MediaRemote/MSVMessageParserDelegate-Protocol.h>
 #import <MediaRemote/NSStreamDelegate-Protocol.h>
 
 @class MRCryptoPairingSession, MRTelevisionMessageQueue, MSVMessageParser, NSInputStream, NSOutputStream, NSRunLoop, NSString;
 @protocol MRTelevisionClientConnectionDelegate;
 
-@interface MRTelevisionClientConnection : NSObject <NSStreamDelegate, MSVMessageParserDelegate>
+@interface MRTelevisionClientConnection : NSObject <NSStreamDelegate, MSVMessageParserDelegate, MRTelevisionMessageQueueDelegate, MRTelevisionMessageQueueDatasource>
 {
     MSVMessageParser *_parser;
     NSRunLoop *_runLoop;
@@ -20,7 +22,6 @@
     unsigned long long _firstClientNanoseconds;
     unsigned long long _firstDeviceTicks;
     BOOL _disconnected;
-    BOOL _useSSL;
     BOOL _registeredToNowPlayingUpdates;
     BOOL _registeredToNowPlayingArtworkUpdates;
     BOOL _registeredVolumeControlAvailabilityUpdates;
@@ -45,18 +46,23 @@
 @property (nonatomic) BOOL registeredVolumeControlAvailabilityUpdates; // @synthesize registeredVolumeControlAvailabilityUpdates=_registeredVolumeControlAvailabilityUpdates;
 @property (readonly, nonatomic) BOOL streamsAreValid;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL useSSL; // @synthesize useSSL=_useSSL;
 @property (nonatomic) unsigned int voiceRecordingState; // @synthesize voiceRecordingState=_voiceRecordingState;
 
 - (void)_adjustTimestamp:(id)arg1;
+- (void)_closeStream:(id)arg1;
 - (void)_disconnectClient;
 - (void)_flush;
+- (void)_notifyDelegateClientDidDisconnect;
+- (void)_notifyDelegateClientDidRecieveMessage:(id)arg1;
 - (void)_openStream:(id)arg1;
+- (void)_parseMessageData:(id)arg1;
 - (void)_preProcessMessage:(id)arg1 data:(id)arg2;
+- (void)_sendMessage:(id)arg1 queue:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)_setQOSPropertiesOnStream:(id)arg1;
 - (void)dealloc;
-- (void)forceDisconnect;
 - (id)initWithInputStream:(id)arg1 outputStream:(id)arg2 runLoop:(id)arg3;
+- (id)messageQueue:(id)arg1 dataForMessage:(id)arg2;
+- (unsigned long long)messageQueue:(id)arg1 processData:(id)arg2 atReadPosition:(long long)arg3;
 - (void)parser:(id)arg1 didParseMessage:(id)arg2;
 - (void)sendMessage:(id)arg1;
 - (void)sendMessage:(id)arg1 queue:(id)arg2 reply:(CDUnknownBlockType)arg3;

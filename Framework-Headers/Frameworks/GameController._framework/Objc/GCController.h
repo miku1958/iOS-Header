@@ -11,7 +11,6 @@
 
 @interface GCController : NSObject
 {
-    NSString *_physicalDeviceUniqueID;
 }
 
 @property (readonly, nonatomic, getter=isAttachedToDevice) BOOL attachedToDevice;
@@ -22,7 +21,7 @@
 @property (readonly, strong, nonatomic) NSArray *hidServices;
 @property (readonly, strong, nonatomic) GCMicroGamepad *microGamepad;
 @property (readonly, strong, nonatomic) GCMotion *motion;
-@property (strong, nonatomic) NSString *physicalDeviceUniqueID; // @synthesize physicalDeviceUniqueID=_physicalDeviceUniqueID;
+@property (strong, nonatomic) NSString *physicalDeviceUniqueID;
 @property (nonatomic) long long playerIndex;
 @property (strong, nonatomic) id<GCNamedProfile> profile;
 @property (readonly, nonatomic) unsigned int service;
@@ -44,7 +43,6 @@
 + (void)handleUIEvent:(id)arg1;
 + (void)startWirelessControllerDiscoveryWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)stopWirelessControllerDiscovery;
-- (void).cxx_destruct;
 - (void)addServiceRefs:(id)arg1;
 - (void *)createInputBufferForDevice:(struct __IOHIDDevice *)arg1 withSize:(unsigned long long)arg2;
 - (unsigned long long)deviceHash;

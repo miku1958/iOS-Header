@@ -21,6 +21,7 @@
     void *_mediaRemoteCommandHandler;
     BOOL _scheduledSupportedCommandsChangedNotification;
     BOOL _canBeNowPlayingApplication;
+    BOOL _handlingPlaybackQueueCommands;
     MPRemoteCommand *_pauseCommand;
     MPRemoteCommand *_playCommand;
     MPRemoteCommand *_stopCommand;
@@ -54,6 +55,7 @@
     MPInsertIntoPlaybackQueueCommand *_insertIntoPlaybackQueueCommand;
     MPRemoteCommand *_removeFromPlaybackQueueCommand;
     MPReorderQueueCommand *_reorderQueueCommand;
+    MPRemoteCommand *_playItemInQueueCommand;
     MPFeedbackCommand *_addNowPlayingItemToLibraryCommand;
     MPFeedbackCommand *_addItemToLibraryCommand;
     MPChangePlaybackProgressCommand *_changePlaybackProgressCommand;
@@ -85,6 +87,7 @@
 @property (readonly, nonatomic) MPRemoteCommand *nextTrackCommand; // @synthesize nextTrackCommand=_nextTrackCommand;
 @property (readonly, nonatomic) MPRemoteCommand *pauseCommand; // @synthesize pauseCommand=_pauseCommand;
 @property (readonly, nonatomic) MPRemoteCommand *playCommand; // @synthesize playCommand=_playCommand;
+@property (readonly, nonatomic) MPRemoteCommand *playItemInQueueCommand; // @synthesize playItemInQueueCommand=_playItemInQueueCommand;
 @property (readonly, nonatomic) MPPurchaseCommand *preOrderAlbumCommand; // @synthesize preOrderAlbumCommand=_preOrderAlbumCommand;
 @property (readonly, nonatomic) MPRemoteCommand *previousTrackCommand; // @synthesize previousTrackCommand=_previousTrackCommand;
 @property (readonly, nonatomic) MPRatingCommand *ratingCommand; // @synthesize ratingCommand=_ratingCommand;
@@ -106,6 +109,10 @@
 - (void)_commandTargetsDidChangeNotification:(id)arg1;
 - (struct __CFArray *)_copySupportedCommands;
 - (id)_createRemoteCommandWithConcreteClass:(Class)arg1 mediaRemoteType:(unsigned int)arg2;
+- (long long)_handlePlayItemCommand:(id)arg1;
+- (long long)_handleRemoveCommand:(id)arg1;
+- (long long)_handleReorderCommand:(id)arg1;
+- (void)_playbackQueueDelegateDidChangeNotification:(id)arg1;
 - (id)_pushMediaRemoteCommand:(unsigned int)arg1 withOptions:(struct __CFDictionary *)arg2;
 - (void)_pushMediaRemoteCommand:(unsigned int)arg1 withOptions:(struct __CFDictionary *)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_scheduleSupportedCommandsChanged;
@@ -117,6 +124,8 @@
 - (void)dispatchCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithOrigin:(id)arg1 bundle:(id)arg2;
 - (void)remoteCommandDidMutatePropagatableProperty:(id)arg1;
+- (void)startMediaRemoteSync;
+- (void)stopMediaRemoteSync;
 
 @end
 

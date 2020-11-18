@@ -14,5 +14,6 @@
 - (id)mf_flatMap:(CDUnknownBlockType)arg1;
 - (id)mf_flatten;
 - (id)mf_map:(CDUnknownBlockType)arg1;
+- (id)mf_partition:(CDUnknownBlockType)arg1;
 @end
 

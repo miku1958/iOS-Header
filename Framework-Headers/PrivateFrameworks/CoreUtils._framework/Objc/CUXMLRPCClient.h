@@ -26,7 +26,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
-@property (strong, nonatomic) NSString *label; // @synthesize label=_label;
+@property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

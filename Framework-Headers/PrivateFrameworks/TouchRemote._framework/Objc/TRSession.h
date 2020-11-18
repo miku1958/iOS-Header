@@ -39,13 +39,14 @@
 - (CDUnknownBlockType)_handlerForRequestClass:(Class)arg1;
 - (id)_messageHandlerForMessageClass:(Class)arg1;
 - (void)_respondToRequest:(id)arg1 withError:(id)arg2;
-- (void)_sendHeartbeat;
+- (void)_sendHeartbeats;
 - (void)_sendResponse:(id)arg1 forRequest:(id)arg2;
 - (void)_setMessageHandler:(id)arg1 forMessageClass:(Class)arg2;
 - (void)disconnect;
 - (id)init;
 - (id)initWithNearbyDevice:(id)arg1;
 - (void)sendEvent:(id)arg1;
+- (void)sendHeartbeatWithResponseHandler:(CDUnknownBlockType)arg1;
 - (void)sendRequest:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
 - (void)setEventHandler:(CDUnknownBlockType)arg1 forEventClass:(Class)arg2;
 - (void)setRequestHandler:(CDUnknownBlockType)arg1 forRequestClass:(Class)arg2;

@@ -19,6 +19,7 @@
     LPLinkMetadata *_metadata;
     BOOL _complete;
     BOOL _fetchingFromExistingWebView;
+    BOOL _hasStartedFetching;
     NSMutableArray *_pendingResolvers;
     long long _specializationState;
     LPMetadataProviderSpecialization *_specializedMetadataProvider;
@@ -44,7 +45,6 @@
 + (id)_copyDefaultWebViewConfiguration;
 + (id)_defaultUserAgent;
 + (id)_incompleteMetadataRequests;
-+ (id)_metadataExtractorScript;
 + (id)requestMetadataForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)requestMetadataForWebView:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;

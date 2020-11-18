@@ -19,6 +19,8 @@
 @property (copy, nonatomic) NSString *postalCode; // @dynamic postalCode;
 @property (copy, nonatomic) NSString *state; // @dynamic state;
 @property (copy, nonatomic) NSString *street; // @dynamic street;
+@property (copy, nonatomic) NSString *subAdministrativeArea; // @dynamic subAdministrativeArea;
+@property (copy, nonatomic) NSString *subLocality; // @dynamic subLocality;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)freeze;

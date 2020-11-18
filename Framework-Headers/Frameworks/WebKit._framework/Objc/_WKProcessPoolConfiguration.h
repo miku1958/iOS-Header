@@ -16,8 +16,10 @@
     struct ObjectStorage<API::ProcessPoolConfiguration> _processPoolConfiguration;
 }
 
+@property (copy, nonatomic) NSString *CTDataConnectionServiceType;
 @property (readonly) struct Object *_apiObject;
 @property (copy, nonatomic) NSArray *alwaysRevalidatedURLSchemes;
+@property (nonatomic) BOOL alwaysRunsAtBackgroundPriority;
 @property (copy, nonatomic) NSArray *cachePartitionedURLSchemes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -27,6 +29,8 @@
 @property (nonatomic) BOOL ignoreSynchronousMessagingTimeoutsForTesting;
 @property (copy, nonatomic) NSURL *injectedBundleURL;
 @property (nonatomic) unsigned long long maximumProcessCount;
+@property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier;
+@property (copy, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (readonly) Class superclass;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -14,12 +14,12 @@
 @property (nonatomic) double connectStart;
 @property (nonatomic) double domainLookupEnd;
 @property (nonatomic) double domainLookupStart;
-@property (nonatomic) double navigationStart;
 @property (nonatomic) double requestStart;
 @property (nonatomic) double responseStart;
 @property (nonatomic) double secureConnectionStart;
+@property (nonatomic) double startTime;
 
-- (id)initWithNavigationStart:(double)arg1 domainLookupStart:(double)arg2 domainLookupEnd:(double)arg3 connectStart:(double)arg4 connectEnd:(double)arg5 secureConnectionStart:(double)arg6 requestStart:(double)arg7 responseStart:(double)arg8;
+- (id)initWithStartTime:(double)arg1 domainLookupStart:(double)arg2 domainLookupEnd:(double)arg3 connectStart:(double)arg4 connectEnd:(double)arg5 secureConnectionStart:(double)arg6 requestStart:(double)arg7 responseStart:(double)arg8;
 
 @end
 

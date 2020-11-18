@@ -135,6 +135,7 @@
 + (BOOL)isSmartAlbumForKind:(int)arg1;
 + (id)keyPathsForValuesAffectingKindValue;
 + (id)keyPathsForValuesAffectingName;
++ (id)localizedRecoveredTitle;
 + (id)localizedTitleForAlbumKind:(int)arg1;
 + (id)otaRestoreProgressAlbumInLibrary:(id)arg1;
 + (void)removeAllUserAlbumsAndFoldersInLibrary:(id)arg1;
@@ -152,6 +153,7 @@
 - (id)_itemIdentifier;
 - (id)_kindDescription;
 - (id)_prettyDescription;
+- (void)_repairTitleIfEmpty;
 - (void)applyPropertiesFromAlbumChange:(id)arg1;
 - (void)applyTrashedState:(short)arg1 cascade:(BOOL)arg2;
 - (id)assetsByObjectIDAtIndexes:(id)arg1;
@@ -174,10 +176,12 @@
 - (void)reducePendingItemsCountBy:(unsigned long long)arg1;
 - (void)registerDerivedAlbum:(struct NSObject *)arg1;
 - (void)registerForChanges;
+- (void)repairUuidAndTitleWithRecoveryReason:(const char *)arg1;
 - (BOOL)supportsCloudUpload;
 - (void)unregisterAllDerivedAlbums;
 - (void)unregisterForChanges;
 - (void)updateAlbumFolderRelation:(id)arg1 inLibrary:(id)arg2;
+- (void)willSave;
 - (void)willTurnIntoFault;
 
 @end

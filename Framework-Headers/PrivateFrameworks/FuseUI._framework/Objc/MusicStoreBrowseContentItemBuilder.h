@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPStoreModelObjectBuilder.h>
 
-@class MPStoreModelAlbumBuilder, MPStoreModelArtistBuilder, MPStoreModelCuratorBuilder, MPStoreModelPlaylistBuilder, MPStoreModelRadioStationBuilder, MPStoreModelSongBuilder;
+@class MPStoreModelAlbumBuilder, MPStoreModelArtistBuilder, MPStoreModelCuratorBuilder, MPStoreModelMovieBuilder, MPStoreModelPlaylistBuilder, MPStoreModelPumpkinPersonBuilder, MPStoreModelRadioStationBuilder, MPStoreModelSongBuilder, MPStoreModelTVEpisodeBuilder, MPStoreModelTVSeasonBuilder, MPStoreModelTVShowBuilder, MPStoreModelTVShowCreatorBuilder;
 
 @interface MusicStoreBrowseContentItemBuilder : MPStoreModelObjectBuilder
 {
@@ -17,17 +17,30 @@
         unsigned int artist:1;
         unsigned int album:1;
         unsigned int curator:1;
+        unsigned int episode:1;
+        unsigned int movie:1;
         unsigned int playlist:1;
         unsigned int radioStation:1;
+        unsigned int pumpkinPerson:1;
         unsigned int song:1;
+        unsigned int season:1;
+        unsigned int show:1;
+        unsigned int showCreator:1;
         unsigned int aucType:1;
     } _requestedBrowseContentItemProperties;
     MPStoreModelAlbumBuilder *_albumBuilder;
     MPStoreModelArtistBuilder *_artistBuilder;
     MPStoreModelCuratorBuilder *_curatorBuilder;
+    MPStoreModelTVEpisodeBuilder *_episodeBuilder;
+    MPStoreModelMovieBuilder *_movieBuilder;
     MPStoreModelRadioStationBuilder *_radioStationBuilder;
+    MPStoreModelPumpkinPersonBuilder *_pumpkinPersonBuilder;
     MPStoreModelPlaylistBuilder *_playlistBuilder;
+    MPStoreModelTVSeasonBuilder *_seasonBuilder;
     MPStoreModelSongBuilder *_songBuilder;
+    MPStoreModelTVShowBuilder *_showBuilder;
+    MPStoreModelTVShowCreatorBuilder *_showCreatorBuilder;
+    BOOL _shouldFakeEpisodes;
     BOOL _allowsRadioStations;
     BOOL _allowsVideoContent;
 }
@@ -41,6 +54,7 @@
 - (long long)contentItemTypeForRawResponseKindIdentifiers:(id)arg1;
 - (long long)contentItemTypeForStoreItemMetadata:(id)arg1;
 - (id)initWithRequestedPropertySet:(id)arg1;
+- (id)modelObjectWithPumpkinProfileMetadata:(id)arg1;
 - (id)modelObjectWithStoreItemMetadata:(id)arg1;
 
 @end

@@ -38,6 +38,7 @@
 - (void)cancelInteractiveTransition;
 - (void)completeTransition:(BOOL)arg1;
 - (id)containerView;
+- (void)didCompleteTransitionAnimation;
 - (struct CGRect)finalFromViewFrame;
 - (struct CGRect)finalToViewFrame;
 - (void)finishInteractiveTransition;

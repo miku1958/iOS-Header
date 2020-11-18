@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_close;
 - (void)_describe:(id)arg1 zone:(id)arg2 now:(long long)arg3 context:(id)arg4;
+- (void)_fixupCZMAliasTargetWithAlias:(id)arg1 target:(id)arg2;
 - (void)_handleWatchingFaults;
 - (void)_rescheduleThrottle:(long long)arg1 forZone:(id)arg2 state:(int)arg3;
 - (void)_retriedThrottleID:(long long)arg1 zone:(id)arg2 kind:(unsigned int)arg3;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithAccountSession:(id)arg1;
 - (void)monitorFaultingForContainer:(id)arg1;
 - (void)repopulateThrottlesForZone:(id)arg1;
+- (void)rescheduleMissingTargetAliasesWithTarget:(id)arg1;
 - (void)rescheduleSuspendedThrottlesForZone:(id)arg1 state:(int)arg2;
 - (void)schedule;
 - (BOOL)startWriteCoordinationInAppLibrary:(id)arg1;

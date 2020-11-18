@@ -18,6 +18,7 @@
 - (id<AXBackBoardServerInstanceDelegate>)delegate;
 - (void)disableBrightnessFilters;
 - (void)forceLoadGAXBundle;
+- (void)resetAccessibilityFeatures;
 - (void)restoreCachedBrightnessFilters;
 - (BOOL)supportsAdaptation;
 - (BOOL)supportsBlueLightReduction;

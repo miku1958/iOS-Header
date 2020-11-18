@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebKit/WebFrame.h>
+#import <WebKitLegacy/WebFrame.h>
 
 @interface WebFrame (DataDetectorsOperationExtensions)
 - (id)dd_newOperation;

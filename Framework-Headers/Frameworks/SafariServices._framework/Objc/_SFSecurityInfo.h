@@ -28,6 +28,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithURL:(id)arg1 result:(id)arg2 hasWarnedUser:(BOOL)arg3;
 - (BOOL)isKnownToBeUnsafe;
+- (id)provider;
 - (id)securityTypeDescription;
 
 @end

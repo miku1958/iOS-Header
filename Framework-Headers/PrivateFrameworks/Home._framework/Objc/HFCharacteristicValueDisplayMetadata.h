@@ -24,7 +24,7 @@
 @property (nonatomic) long long transitioningPrimaryState; // @synthesize transitioningPrimaryState=_transitioningPrimaryState;
 
 + (long long)_unknownStatePriorityForServiceType:(id)arg1;
-+ (id)displayMetadataForBridgeAccessory:(id)arg1 withContextProvider:(id)arg2;
++ (id)displayMetadataForAccessory:(id)arg1 withContextProvider:(id)arg2;
 + (id)displayMetadataForServiceType:(id)arg1 characteristicReadResponse:(id)arg2;
 - (void).cxx_destruct;
 - (void)parseCurrentTargetPositionForServiceType:(id)arg1 response:(id)arg2;
@@ -32,6 +32,7 @@
 - (void)parseInformationalSensorWithServiceType:(id)arg1 response:(id)arg2;
 - (void)parseLockMechanismResponse:(id)arg1;
 - (void)parsePowerStateForServiceType:(id)arg1 response:(id)arg2;
+- (void)parseProgammableSwitchOfType:(id)arg1 response:(id)arg2;
 - (void)parseSecuritySystemResponse:(id)arg1;
 - (void)parseThermostatResponse:(id)arg1;
 - (void)parseWarningSensorWithServiceType:(id)arg1 response:(id)arg2;

@@ -33,6 +33,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
+- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)matchesPath:(id)arg1;
 - (void)updateStateWithPath:(id)arg1;

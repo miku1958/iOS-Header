@@ -35,9 +35,7 @@
 - (id)initWithTargetDiscoveringHelper:(id)arg1 rankingHelper:(id)arg2 defaultActionFetcher:(id)arg3 discoveringEnvironment:(id)arg4;
 - (id)modelsWithContact:(id)arg1 actionType:(id)arg2;
 - (id)modelsWithDefaultAction:(id)arg1 actions:(id)arg2 recentActions:(id)arg3 directoryServiceActions:(id)arg4 foundOnDeviceActions:(id)arg5 sorts:(BOOL)arg6 throttles:(BOOL)arg7;
-- (id)recentActionChangedObservable;
 - (id)recentActionsFromActions:(id)arg1;
-- (id)recentActionsFromActions:(id)arg1 trackingChanges:(BOOL)arg2;
 - (id)schedulerProvider;
 - (void)setContactStore:(id)arg1;
 - (id)sortActionsOnModel:(id)arg1;

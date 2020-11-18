@@ -24,6 +24,7 @@
 @property (copy, nonatomic) NSDictionary *startTimeModifications; // @synthesize startTimeModifications=_startTimeModifications;
 
 + (Class)queueFeederClass;
++ (id)requiredPropertiesForStaticMediaClips;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

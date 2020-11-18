@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSMutableArray *assets; // @synthesize assets=_assets;
 
++ (Class)assetsType;
 - (void).cxx_destruct;
 - (void)addAssets:(id)arg1;
 - (id)assetsAtIndex:(unsigned long long)arg1;

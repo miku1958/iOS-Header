@@ -36,8 +36,8 @@
 - (void)_browsableContentEndpointChanged:(id)arg1;
 - (void)_contentItemChangedNotification:(id)arg1;
 - (BOOL)_contentItemWasSentToMediaRemote:(id)arg1;
-- (void)_enqueueArtworkUpdate:(id)arg1 forContentItem:(id)arg2 width:(double)arg3 height:(double)arg4 withCompletion:(CDUnknownBlockType)arg5;
-- (void)_enqueueArtworkUpdate:(id)arg1 forContentItem:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_enqueueArtworkUpdate:(id)arg1 width:(double)arg2 height:(double)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)_enqueueArtworkUpdate:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handlePlaybackInitializationCompletedWithContext:(id)arg1 error:(id)arg2;
 - (id)_init;
 - (void)_limitedUIChanged:(id)arg1;

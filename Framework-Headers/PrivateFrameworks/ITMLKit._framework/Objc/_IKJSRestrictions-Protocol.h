@@ -11,6 +11,9 @@
 @protocol _IKJSRestrictions <JSExport>
 
 @property (readonly, nonatomic) BOOL allowArtistActivity;
+@property (readonly, nonatomic) BOOL allowsITunes;
+@property (readonly, nonatomic) BOOL allowsShowingUndownloadedMovies;
+@property (readonly, nonatomic) BOOL allowsShowingUndownloadedTVShows;
 @property (readonly, nonatomic) BOOL appAnalyticsAllowed;
 @property (readonly, nonatomic) BOOL appInstallationAllowed;
 @property (readonly, nonatomic) long long maxAppRank;

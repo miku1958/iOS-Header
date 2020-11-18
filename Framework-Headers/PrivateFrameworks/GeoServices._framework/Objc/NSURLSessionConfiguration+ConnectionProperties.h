@@ -8,6 +8,7 @@
 
 @interface NSURLSessionConfiguration (ConnectionProperties)
 + (id)_geo_ephemeralSessionConfiguration;
++ (id)auditTokenFromNSURLConnectionProperties:(id)arg1;
 - (void)applyNSURLConnectionProperties:(id)arg1;
 @end
 

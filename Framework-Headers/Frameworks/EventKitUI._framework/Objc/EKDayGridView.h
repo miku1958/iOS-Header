@@ -9,7 +9,7 @@
 #import <EventKitUI/EKCurrentTimeMarkerViewUpdating-Protocol.h>
 #import <EventKitUI/EKUITintColorUpdateDelegate-Protocol.h>
 
-@class EKCurrentTimeMarkerView, EKUIVisualEffectView, NSMutableArray, NSString, UIColor, UIImageView, UIVisualEffect;
+@class EKCurrentTimeMarkerView, NSMutableArray, NSMutableDictionary, NSString, UIColor, UIImageView, UIVisualEffect;
 
 __attribute__((visibility("hidden")))
 @interface EKDayGridView : UIView <EKUITintColorUpdateDelegate, EKCurrentTimeMarkerViewUpdating>
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
     UIImageView *_timeDot;
     UIView *_highlightedDayBackground;
     UIView *_fadingHighlightedDayBackground;
-    EKUIVisualEffectView *_gridParentView;
+    NSMutableDictionary *_gridParentViews;
     BOOL _rightBorderInsetsOccurrences;
     BOOL _showsTimeLine;
     BOOL _showsTimeMarker;

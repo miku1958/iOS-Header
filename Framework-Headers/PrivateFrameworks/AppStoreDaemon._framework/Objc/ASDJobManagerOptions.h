@@ -9,17 +9,15 @@
 #import <AppStoreDaemon/NSCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class NSString, NSXPCListenerEndpoint;
+@class NSString;
 
 @interface ASDJobManagerOptions : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _shouldFilterExternalOriginatedDownloads;
     BOOL _shouldReportDownloadProgress;
     NSString *_persistenceIdentifier;
-    NSXPCListenerEndpoint *_listenerEndpoint;
 }
 
-@property (strong, nonatomic) NSXPCListenerEndpoint *listenerEndpoint; // @synthesize listenerEndpoint=_listenerEndpoint;
 @property (copy, nonatomic) NSString *persistenceIdentifier; // @synthesize persistenceIdentifier=_persistenceIdentifier;
 @property (nonatomic) BOOL shouldFilterExternalOriginatedDownloads; // @synthesize shouldFilterExternalOriginatedDownloads=_shouldFilterExternalOriginatedDownloads;
 @property (nonatomic) BOOL shouldReportDownloadProgress; // @synthesize shouldReportDownloadProgress=_shouldReportDownloadProgress;
@@ -28,7 +26,6 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

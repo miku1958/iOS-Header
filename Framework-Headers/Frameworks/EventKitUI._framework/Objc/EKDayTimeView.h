@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <EventKitUI/EKUIVisualEffectView.h>
+#import <UIKit/UIView.h>
 
 #import <EventKitUI/EKCurrentTimeMarkerViewUpdating-Protocol.h>
+#import <EventKitUI/EKUITintColorUpdateDelegate-Protocol.h>
 
-@class EKCurrentTimeMarkerView, NSMutableArray, NSString, UIColor, UIView;
+@class EKCurrentTimeMarkerView, NSMutableArray, NSMutableDictionary, NSString, UIColor, UIVisualEffect;
 @protocol EKDayTimeViewDelegate;
 
-@interface EKDayTimeView : EKUIVisualEffectView <EKCurrentTimeMarkerViewUpdating>
+@interface EKDayTimeView : UIView <EKCurrentTimeMarkerViewUpdating, EKUITintColorUpdateDelegate>
 {
     NSMutableArray *_contentViews;
+    NSMutableDictionary *_visualEffectViews;
     unsigned int _leftBorder:1;
     unsigned int _rightBorder:1;
     double _highlightedHour;
@@ -28,6 +30,7 @@
     BOOL _usesLightText;
     UIColor *_timeColor;
     double _hoursToPad;
+    UIVisualEffect *_visualEffect;
     double _hourHeightScale;
     double _hourHeight;
     id<EKDayTimeViewDelegate> _delegate;
@@ -52,6 +55,7 @@
 @property (strong, nonatomic) UIColor *timeColor; // @synthesize timeColor=_timeColor;
 @property (readonly, nonatomic) EKCurrentTimeMarkerView *timeMarker;
 @property (nonatomic) BOOL usesLightText; // @synthesize usesLightText=_usesLightText;
+@property (strong, nonatomic) UIVisualEffect *visualEffect; // @synthesize visualEffect=_visualEffect;
 
 + (id)_boldFontForOrientation:(long long)arg1;
 + (void)_calculateWidthForOrientation:(long long)arg1 excludeCurrentTime:(BOOL)arg2;
@@ -98,10 +102,10 @@
 - (void)setOrientation:(long long)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)subTintColorUpdatedToColor:(id)arg1;
 - (void)tintColorDidChange;
 - (double)topPadding;
 - (void)updateMarkerPosition;
+- (void)viewTintColorDidChangeForView:(id)arg1 toColor:(id)arg2;
 
 @end
 

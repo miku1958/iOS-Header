@@ -8,16 +8,19 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOABClientConfig, GEOABExperimentAssignment;
+@class GEOABClientConfig, GEOABExperimentAssignment, GEOPDDatasetABStatus;
 
 @interface GEOLogMsgStateExperiments : PBCodable <NSCopying>
 {
     GEOABClientConfig *_clientAbExperimentAssignment;
+    GEOPDDatasetABStatus *_datasetAbStatus;
     GEOABExperimentAssignment *_tilesAbExperimentAssignment;
 }
 
 @property (strong, nonatomic) GEOABClientConfig *clientAbExperimentAssignment; // @synthesize clientAbExperimentAssignment=_clientAbExperimentAssignment;
+@property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
 @property (readonly, nonatomic) BOOL hasClientAbExperimentAssignment;
+@property (readonly, nonatomic) BOOL hasDatasetAbStatus;
 @property (readonly, nonatomic) BOOL hasTilesAbExperimentAssignment;
 @property (strong, nonatomic) GEOABExperimentAssignment *tilesAbExperimentAssignment; // @synthesize tilesAbExperimentAssignment=_tilesAbExperimentAssignment;
 

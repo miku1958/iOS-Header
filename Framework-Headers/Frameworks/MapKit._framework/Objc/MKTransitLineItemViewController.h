@@ -77,6 +77,7 @@
 - (void)placeCardheaderHeaderViewControllerDidSelectDirectionsButton:(id)arg1 withTransportTypePreference:(id)arg2;
 - (void)placeCardheaderHeaderViewControllerDidSelectOpenContactButton:(id)arg1;
 - (void)placeCardheaderHeaderViewControllerDidSelectRerouteButton:(id)arg1;
+- (void)placeCardheaderHeaderViewControllerDidSelectRidesharingButton:(id)arg1;
 - (void)placeCardheaderHeaderViewControllerDidSelectShareLocationButton:(id)arg1;
 - (void)resetNearestStation;
 - (void)scrollViewDidScroll:(id)arg1;

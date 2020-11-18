@@ -25,6 +25,9 @@ __attribute__((visibility("hidden")))
     unsigned int mAUPBRefCounter;
     struct unique_ptr<TestAUProcessingBlock, std::__1::default_delete<TestAUProcessingBlock>> mTestBlock;
     unsigned int mAUHandleCntr;
+    int mNotifyToken;
+    BOOL mValidToken;
+    BOOL mPrevRegistrarNeeded;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -42,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (struct AUProcessingBlock *)aupbFromRef:(struct OpaqueAUPB *)arg1;
 - (id)autorelease;
 - (void)blockListChanged;
+- (void)checkConnectRegistrar;
 - (void)copyProcessingBlock:(unsigned int)arg1 property:(unsigned int)arg2 intoReply:(CDUnknownBlockType)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

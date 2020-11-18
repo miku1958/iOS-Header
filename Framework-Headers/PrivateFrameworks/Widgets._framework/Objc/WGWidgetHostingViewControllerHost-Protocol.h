@@ -13,9 +13,13 @@
 @optional
 - (long long)largestAvailableDisplayModeForWidget:(WGWidgetHostingViewController *)arg1;
 - (BOOL)shouldPurgeArchivedSnapshotsForWidget:(WGWidgetHostingViewController *)arg1;
+- (BOOL)shouldPurgeNonASTCSnapshotsForWidget:(WGWidgetHostingViewController *)arg1;
+- (BOOL)shouldPurgeNonCAMLSnapshotsForWidget:(WGWidgetHostingViewController *)arg1;
+- (BOOL)shouldRemoveSnapshotWhenNotVisibleForWidget:(WGWidgetHostingViewController *)arg1;
 - (long long)userSpecifiedDisplayModeForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)widget:(WGWidgetHostingViewController *)arg1 didChangeLargestAvailableDisplayMode:(long long)arg2;
 - (void)widget:(WGWidgetHostingViewController *)arg1 didChangeUserSpecifiedDisplayMode:(long long)arg2;
 - (void)widget:(WGWidgetHostingViewController *)arg1 didEncounterProblematicSnapshotAtURL:(NSURL *)arg2;
+- (void)widget:(WGWidgetHostingViewController *)arg1 didRemoveSnapshotAtURL:(NSURL *)arg2;
 @end
 

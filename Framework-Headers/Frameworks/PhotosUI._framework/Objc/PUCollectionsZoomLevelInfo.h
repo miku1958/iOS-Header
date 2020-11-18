@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)displayTitle;
 - (void)getPhotosDataSource:(id *)arg1 displayTitleInfo:(id *)arg2 forDetailsForVisualSection:(long long)arg3;
 - (long long)imageDeliveryMode;
+- (struct CGSize)imageRequestItemSize;
 - (id)initWithZoomLevel:(unsigned long long)arg1 zoomLevelManager:(id)arg2 baseZoomLevelInfo:(id)arg3;
 - (long long)maxRowsPerSection;
 - (void)modelDidChange:(id)arg1;

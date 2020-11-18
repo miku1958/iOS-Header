@@ -6,11 +6,11 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class NSTimeZone;
+@class NSString, NSTimeZone;
 
 @protocol GEOServerFormatTokenTimeStampValue <NSObject>
 
-@property (readonly, nonatomic) BOOL displayTimeZone;
+@property (readonly, nonatomic) NSString *formatPattern;
 @property (readonly, nonatomic) double timeStamp;
 @property (readonly, nonatomic) NSTimeZone *timeZone;
 

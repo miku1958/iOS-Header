@@ -8,7 +8,7 @@
 
 #import <Intents/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields, _INPBLocationValue, _INPBRideCompletionStatus, _INPBRideDriver, _INPBRideOption, _INPBRideVehicle, _INPBTimestamp, _INPBUserActivity;
+@class NSMutableArray, NSString, PBUnknownFields, _INPBDateTimeRangeValue, _INPBLocationValue, _INPBRideCompletionStatus, _INPBRideDriver, _INPBRideOption, _INPBRideVehicle, _INPBTimestamp, _INPBUserActivity;
 
 @interface _INPBRideStatus : PBCodable <NSCopying>
 {
@@ -24,6 +24,7 @@
     _INPBLocationValue *_pickupLocation;
     NSString *_rideIdentifier;
     _INPBRideOption *_rideOption;
+    _INPBDateTimeRangeValue *_scheduledPickupTime;
     _INPBUserActivity *_userActivityForCancelingInApplication;
     _INPBRideVehicle *_vehicle;
     NSMutableArray *_waypoints;
@@ -49,12 +50,14 @@
 @property (readonly, nonatomic) BOOL hasPickupLocation;
 @property (readonly, nonatomic) BOOL hasRideIdentifier;
 @property (readonly, nonatomic) BOOL hasRideOption;
+@property (readonly, nonatomic) BOOL hasScheduledPickupTime;
 @property (readonly, nonatomic) BOOL hasUserActivityForCancelingInApplication;
 @property (readonly, nonatomic) BOOL hasVehicle;
 @property (nonatomic) int phase; // @synthesize phase=_phase;
 @property (strong, nonatomic) _INPBLocationValue *pickupLocation; // @synthesize pickupLocation=_pickupLocation;
 @property (strong, nonatomic) NSString *rideIdentifier; // @synthesize rideIdentifier=_rideIdentifier;
 @property (strong, nonatomic) _INPBRideOption *rideOption; // @synthesize rideOption=_rideOption;
+@property (strong, nonatomic) _INPBDateTimeRangeValue *scheduledPickupTime; // @synthesize scheduledPickupTime=_scheduledPickupTime;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) _INPBUserActivity *userActivityForCancelingInApplication; // @synthesize userActivityForCancelingInApplication=_userActivityForCancelingInApplication;
 @property (strong, nonatomic) _INPBRideVehicle *vehicle; // @synthesize vehicle=_vehicle;
@@ -64,6 +67,7 @@
 + (id)options;
 + (Class)waypointsType;
 - (void).cxx_destruct;
+- (int)StringAsPhase:(id)arg1;
 - (void)addAdditionalActionItems:(id)arg1;
 - (void)addWaypoints:(id)arg1;
 - (id)additionalActionItemsAtIndex:(unsigned long long)arg1;
@@ -76,6 +80,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)phaseAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)waypointsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)waypointsCount;

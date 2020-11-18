@@ -27,7 +27,6 @@
 - (void)setReaderFont:(NSString *)arg1;
 - (void)setReaderLanguageTag:(NSString *)arg1;
 - (void)setReaderTheme:(NSString *)arg1;
-- (void)setReaderUserVisibleWidth:(double)arg1;
 - (BOOL)shouldCreateArticleFinder;
 - (void)stopLoadingNextPage;
 @end

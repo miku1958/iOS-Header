@@ -8,12 +8,9 @@
 
 #import <WebKit/WKFormControl-Protocol.h>
 
-@class WKContentView;
-
 __attribute__((visibility("hidden")))
 @interface WKSelectPopover : WKFormRotatingAccessoryPopover <WKFormControl>
 {
-    WKContentView *_view;
     struct RetainPtr<WKSelectTableViewController> _tableViewController;
 }
 
@@ -25,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)controlView;
 - (void)dealloc;
 - (id)initWithView:(id)arg1 hasGroups:(BOOL)arg2;
+- (void)selectRow:(long long)arg1 inComponent:(long long)arg2 extendingSelection:(BOOL)arg3;
 
 @end
 

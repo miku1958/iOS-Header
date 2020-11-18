@@ -49,6 +49,7 @@
 - (void)setIdentity;
 - (void)setLocalTransform:(CDStruct_14d5dc5e)arg1;
 - (void)setLocalTransform:(CDStruct_14d5dc5e)arg1 forTime:(double)arg2;
+- (void)setMatrix:(CDStruct_14d5dc5e)arg1 forTime:(double)arg2;
 - (void)setRotation:(double)arg1 forTime: /* Error: Ran out of types for this method. */;
 - (void)setScale:(double)arg1 forTime: /* Error: Ran out of types for this method. */;
 - (void)setShear:(double)arg1 forTime: /* Error: Ran out of types for this method. */;

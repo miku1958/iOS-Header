@@ -8,10 +8,11 @@
 
 #import <AppleAccountUI/AAUIAccountRepairRemoteUIDelegate-Protocol.h>
 #import <AppleAccountUI/AAUIGenericTermsRemoteUIDelegate-Protocol.h>
+#import <AppleAccountUI/AAUISignInOperationDelegate-Protocol.h>
 
 @class AAUIAccountRepairRemoteUI, AAUIGenericTermsRemoteUI, ACAccountStore, ACAccountType, NSLock, NSMutableDictionary, NSString, UIViewController;
 
-@interface AAUISignInFlowController : NSObject <AAUIAccountRepairRemoteUIDelegate, AAUIGenericTermsRemoteUIDelegate>
+@interface AAUISignInFlowController : NSObject <AAUIAccountRepairRemoteUIDelegate, AAUIGenericTermsRemoteUIDelegate, AAUISignInOperationDelegate>
 {
     ACAccountStore *_accountStore;
     ACAccountType *_appleAccountType;
@@ -21,9 +22,11 @@
     NSMutableDictionary *_cdpContextsByAccountID;
     NSLock *_cdpContextsByAccountIDLock;
     BOOL _shouldAutomaticallySaveSignInResults;
+    BOOL __shouldHideActivationLockAlert;
     UIViewController *_presentingViewController;
 }
 
+@property (nonatomic, setter=_setShouldHideActivationLockAlert:) BOOL _shouldHideActivationLockAlert; // @synthesize _shouldHideActivationLockAlert=__shouldHideActivationLockAlert;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -33,19 +36,24 @@
 
 - (void).cxx_destruct;
 - (id)_appleAccountType;
+- (BOOL)_carrierBundleSaysHideFindMyiPhone;
+- (void)_hasActivationLockSupportedWatchWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadAccountRepairRemoteUIWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentExistingAccountAlert:(id)arg1;
 - (void)_presentUnableToSaveAccountAlert;
 - (void)_presentValidationErrorAlert:(id)arg1 forAccount:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_promptToEnableFindMyIfPossibleWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_saveAccount:(id)arg1 withAllDataclassesEnabledIfPossibleWithCompletion:(CDUnknownBlockType)arg2;
 - (void)_showGenericTermsUIforAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_showSecondFactorUIForAccount:(id)arg1 loginResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_titleForError:(id)arg1 account:(id)arg2;
+- (void)_updateAppleAccountIfNecessary:(id)arg1 withAltDSID:(id)arg2 rawPassword:(id)arg3;
 - (void)_validateCDPStateForAccount:(id)arg1 withCDPContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_verifyLoginResponseForiCloudAccount:(id)arg1 withSuccess:(BOOL)arg2 response:(id)arg3 error:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)accountRepairRemoteUI:(id)arg1 account:(id)arg2 didFinishWithSuccess:(BOOL)arg3;
 - (void)genericTermsRemoteUI:(id)arg1 didFinishWithSuccess:(BOOL)arg2;
 - (id)init;
+- (void)signInOperationManager:(id)arg1 didSaveAccount:(id)arg2 error:(id)arg3;
 - (void)signInWithIDMSAuthenticationResults:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

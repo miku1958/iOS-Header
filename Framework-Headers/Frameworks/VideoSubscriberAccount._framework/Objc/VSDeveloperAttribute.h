@@ -8,7 +8,6 @@
 
 @class NSString, NSValueTransformer;
 
-__attribute__((visibility("hidden")))
 @interface VSDeveloperAttribute : NSObject
 {
     NSString *_displayName;

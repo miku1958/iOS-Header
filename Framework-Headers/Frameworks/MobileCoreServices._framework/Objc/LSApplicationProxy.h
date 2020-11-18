@@ -23,6 +23,8 @@
     NSNumber *_itemID;
     NSString *_vendorName;
     NSString *_itemName;
+    NSString *_genre;
+    NSNumber *_genreID;
     NSString *_minimumSystemVersion;
     NSString *_sdkVersion;
     NSString *_shortVersionString;
@@ -75,6 +77,10 @@
 @property (readonly, nonatomic) NSNumber *externalVersionIdentifier; // @dynamic externalVersionIdentifier;
 @property (readonly, nonatomic) NSNumber *familyID; // @synthesize familyID=_familyID;
 @property (readonly, nonatomic) BOOL fileSharingEnabled;
+@property (readonly, nonatomic, getter=isGameCenterEnabled) BOOL gameCenterEnabled;
+@property (readonly, nonatomic) BOOL gameCenterEverEnabled;
+@property (readonly, nonatomic) NSString *genre; // @synthesize genre=_genre;
+@property (readonly, nonatomic) NSNumber *genreID; // @synthesize genreID=_genreID;
 @property (readonly) BOOL hasComplication;
 @property (readonly, nonatomic) BOOL hasCustomNotification;
 @property (readonly, nonatomic) BOOL hasGlance;
@@ -115,8 +121,10 @@
 @property (readonly, nonatomic) BOOL shouldSkipWatchAppInstall;
 @property (readonly, nonatomic) NSString *sourceAppIdentifier; // @synthesize sourceAppIdentifier=_sourceAppIdentifier;
 @property (readonly, nonatomic) NSNumber *staticDiskUsage;
+@property (readonly, nonatomic) NSArray *staticShortcutItems;
 @property (readonly, nonatomic) NSString *storeCohortMetadata;
 @property (readonly, nonatomic) NSNumber *storeFront; // @synthesize storeFront=_storeFront;
+@property (readonly, nonatomic) NSArray *subgenres;
 @property (readonly) NSArray *supportedComplicationFamilies; // @synthesize supportedComplicationFamilies=_supportedComplicationFamilies;
 @property (readonly, nonatomic) BOOL supportsAudiobooks;
 @property (readonly, nonatomic) BOOL supportsExternallyPlayableContent;
@@ -135,14 +143,18 @@
 + (id)applicationProxyForIdentifier:(id)arg1 placeholder:(BOOL)arg2;
 + (id)applicationProxyForItemID:(id)arg1;
 + (id)applicationProxyWithBundleUnitID:(unsigned int)arg1;
++ (id)iconQueue;
 + (BOOL)supportsSecureCoding;
 - (BOOL)UPPValidated;
 - (id)_initWithBundleUnit:(unsigned int)arg1 applicationIdentifier:(id)arg2;
+- (id)alternateIconName;
 - (void)clearAdvertisingIdentifier;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)iconDataForVariant:(int)arg1;
+- (id)iconDataForVariant:(int)arg1 preferredIconName:(id)arg2 withOptions:(int)arg3;
+- (id)iconDataForVariant:(int)arg1 withOptions:(int)arg2;
 - (id)iconStyleDomain;
 - (id)initWithCoder:(id)arg1;
 - (id)installProgressSync;
@@ -150,8 +162,10 @@
 - (id)localizedName;
 - (id)localizedNameForContext:(id)arg1;
 - (id)localizedShortName;
+- (id)primaryIconDataForVariant:(int)arg1;
 - (BOOL)profileValidated;
 - (id)resourcesDirectoryURL;
+- (void)setAlternateIconName:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (id)uniqueIdentifier;
 
 @end

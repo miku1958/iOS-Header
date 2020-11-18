@@ -409,6 +409,7 @@
 - (void)_collapseSecondaryViewController:(id)arg1 forSplitViewController:(id)arg2 withTransitionCoordinator:(id)arg3;
 - (void)_commitPreviewTransitionAsDetailOfSplitViewController:(id)arg1 withDelegate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (CDUnknownBlockType)_completionBlock;
+- (void)_containingAlertControllerDidChangeVisualStyle:(id)arg1;
 - (BOOL)_containsFirstResponder;
 - (struct UIEdgeInsets)_contentInsetsInWindow;
 - (double)_contentMarginForChildViewController:(id)arg1;
@@ -713,6 +714,7 @@
 - (BOOL)_viewHostsLayoutEngine;
 - (id)_viewsWithDisabledInteractionGivenTransitionContext:(id)arg1;
 - (id)_visibleView;
+- (id)_visualStyleOfContainingAlertController;
 - (void)_willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 forwardToChildControllers:(BOOL)arg3 skipSelf:(BOOL)arg4;
 - (void)_willAppearInRemoteViewController;
 - (void)_willAppearInRemoteViewController:(id)arg1;

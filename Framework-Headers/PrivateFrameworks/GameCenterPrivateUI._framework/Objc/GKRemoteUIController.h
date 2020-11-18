@@ -22,6 +22,7 @@
     BOOL _isServerAuthenticated;
     int _layoutStyle;
     UINavigationController *_navigationControllerWeak;
+    NSString *_appleID;
     CDUnknownBlockType _completionHandler;
     NSError *_error;
     NSMutableArray *_objectModels;
@@ -33,7 +34,7 @@
     NSDictionary *_authInfo;
     NSString *_authToken;
     NSData *_pushToken;
-    NSString *_appleID;
+    NSString *_altDSID;
     NSString *_playerID;
     NSString *_firstName;
     NSString *_lastName;
@@ -42,6 +43,7 @@
 }
 
 @property (strong, nonatomic) NSString *alias; // @synthesize alias=_alias;
+@property (strong, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (strong, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property (strong, nonatomic) NSDictionary *authInfo; // @synthesize authInfo=_authInfo;
 @property (strong, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;

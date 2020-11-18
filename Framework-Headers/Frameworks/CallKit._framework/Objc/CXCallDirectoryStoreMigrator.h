@@ -11,12 +11,17 @@
 @interface CXCallDirectoryStoreMigrator : NSObject
 {
     CXCallDirectoryStore *_store;
+    CDUnknownBlockType _storeCreationBlock;
+    CDUnknownBlockType _retrieveExtensionBlock;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType retrieveExtensionBlock; // @synthesize retrieveExtensionBlock=_retrieveExtensionBlock;
 @property (strong, nonatomic) CXCallDirectoryStore *store; // @synthesize store=_store;
+@property (copy, nonatomic) CDUnknownBlockType storeCreationBlock; // @synthesize storeCreationBlock=_storeCreationBlock;
 
 - (void).cxx_destruct;
 - (id)_performMigrationsStartingAtSchemaVersion:(long long)arg1 error:(id *)arg2;
+- (id)init;
 - (id)performMigrationsWithError:(id *)arg1;
 
 @end

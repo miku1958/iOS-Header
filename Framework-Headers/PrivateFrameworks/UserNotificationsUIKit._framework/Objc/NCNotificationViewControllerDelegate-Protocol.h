@@ -6,7 +6,7 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCMaterialSettings, NCNotificationAction, NCNotificationViewController, NSDictionary, UIView, UIViewController;
+@class MTMaterialSettings, NCNotificationAction, NCNotificationViewController, NSDictionary, UIView, UIViewController;
 @protocol UIViewControllerTransitionCoordinator;
 
 @protocol NCNotificationViewControllerDelegate <NSObject>
@@ -17,7 +17,7 @@
 - (UIView *)customBackgroundViewForNotificationViewController:(NCNotificationViewController *)arg1;
 - (void)longLookWillDismissForNotificationViewController:(NCNotificationViewController *)arg1;
 - (void)longLookWillPresentForNotificationViewController:(NCNotificationViewController *)arg1;
-- (NCMaterialSettings *)materialSettingsForNotificationViewController:(NCNotificationViewController *)arg1;
+- (MTMaterialSettings *)materialSettingsForNotificationViewController:(NCNotificationViewController *)arg1;
 - (struct CGRect)notificationViewController:(NCNotificationViewController *)arg1 convertRect:(struct CGRect)arg2 toLocalWindowSpaceFromView:(UIView *)arg3;
 - (void)notificationViewController:(NCNotificationViewController *)arg1 didCommitToLongLookPresentation:(BOOL)arg2 withCoordinator:(id<UIViewControllerTransitionCoordinator>)arg3;
 - (void)notificationViewController:(NCNotificationViewController *)arg1 didCommitToShortLookPresentation:(BOOL)arg2 withCoordinator:(id<UIViewControllerTransitionCoordinator>)arg3;

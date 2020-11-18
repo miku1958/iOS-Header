@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebKit/WebDefaultPolicyDelegate.h>
+#import <WebKitLegacy/WebDefaultPolicyDelegate.h>
 
 @interface WBUPolicyDelegate : WebDefaultPolicyDelegate
 {

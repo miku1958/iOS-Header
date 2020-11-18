@@ -17,13 +17,14 @@
 @property (readonly, nonatomic) ICQLink *link; // @synthesize link=_link;
 @property (strong, nonatomic) ICQOffer *offer;
 
-+ (id)attributedStringWithFormat:(id)arg1 attributes:(id)arg2 links:(id)arg3;
++ (id)attributedStringWithFormat:(id)arg1 attributes:(id)arg2 buttonLinkAttributes:(id)arg3 links:(id)arg4;
 + (id)buttonWithType:(long long)arg1;
 + (BOOL)shouldShowForOffer:(id)arg1;
 + (id)spaceArrowAttributedStringWithBaseAttributes:(id)arg1;
 + (id)upgradeButton;
 - (void).cxx_destruct;
 - (id)buttonAttributes;
+- (id)buttonLinkAttributes;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

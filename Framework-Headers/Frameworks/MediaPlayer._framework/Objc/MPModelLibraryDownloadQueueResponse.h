@@ -6,11 +6,11 @@
 
 #import <MediaPlayer/MPModelResponse.h>
 
-#import <MediaPlayer/MPStoreDownloadManagerObserver-Protocol.h>
+#import <MediaPlayer/MPMediaDownloadObserver-Protocol.h>
 
 @class NSString;
 
-@interface MPModelLibraryDownloadQueueResponse : MPModelResponse <MPStoreDownloadManagerObserver>
+@interface MPModelLibraryDownloadQueueResponse : MPModelResponse <MPMediaDownloadObserver>
 {
 }
 
@@ -20,7 +20,8 @@
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (void)downloadManager:(id)arg1 didAddDownloads:(id)arg2 removeDownloads:(id)arg3;
+- (void)downloadManager:(id)arg1 didEnqueueAssetDownloads:(id)arg2 didRemoveAssetDownloads:(id)arg3;
+- (void)downloadManager:(id)arg1 didFinishAsset:(id)arg2 withError:(id)arg3;
 - (void)getChangeDetailsFromPreviousResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithRequest:(id)arg1;
 

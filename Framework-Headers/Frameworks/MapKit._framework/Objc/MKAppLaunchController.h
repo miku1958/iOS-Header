@@ -18,9 +18,10 @@
 @property (strong, nonatomic) SSLookupRequest *storeRequest; // @synthesize storeRequest=_request;
 @property (strong, nonatomic) NSURL *webURL; // @synthesize webURL;
 
++ (void)launchAttributionURLs:(id)arg1 withAttribution:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)launchAttributionURLs:(id)arg1 withAttribution:(id)arg2 mapItem:(id)arg3;
++ (void)launchAttributionURLs:(id)arg1 withAttribution:(id)arg2 mapItem:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (void)launchAttributionURLs:(id)arg1 withAttributionApps:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (void)launchAttributionURLs:(id)arg1 withAttributionApps:(id)arg2 mapItem:(id)arg3;
-+ (void)launchAttributionURLs:(id)arg1 withAttributionApps:(id)arg2 mapItem:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)sharedController;
 - (void).cxx_destruct;
 - (void)dealloc;

@@ -11,7 +11,6 @@
     BOOL _enableUI;
     BOOL _enableFeedbackUI;
     BOOL _enableFeedbackComboUI;
-    BOOL _enableFeedbackBannerUI;
     BOOL _enableMemoryBlurryHeader;
     double _refreshPhotoKitTimeout;
     double _widgetRefreshTimeInterval;
@@ -22,7 +21,6 @@
 }
 
 @property (nonatomic) unsigned long long deleteBehavior; // @synthesize deleteBehavior=_deleteBehavior;
-@property (nonatomic) BOOL enableFeedbackBannerUI; // @synthesize enableFeedbackBannerUI=_enableFeedbackBannerUI;
 @property (nonatomic) BOOL enableFeedbackComboUI; // @synthesize enableFeedbackComboUI=_enableFeedbackComboUI;
 @property (nonatomic) BOOL enableFeedbackUI; // @synthesize enableFeedbackUI=_enableFeedbackUI;
 @property (nonatomic) BOOL enableMemoryBlurryHeader; // @synthesize enableMemoryBlurryHeader=_enableMemoryBlurryHeader;

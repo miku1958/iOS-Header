@@ -15,6 +15,7 @@
     long long _behavior;
     double _preDuration;
     double _postDuration;
+    double _startSeekTolerance;
     double _maximumRate;
     double _maximumDeceleration;
     double _relativeStart;
@@ -43,6 +44,7 @@
 @property (nonatomic) double preDuration; // @synthesize preDuration=_preDuration;
 @property (nonatomic) double relativeEnd; // @synthesize relativeEnd=_relativeEnd;
 @property (nonatomic) double relativeStart; // @synthesize relativeStart=_relativeStart;
+@property (nonatomic) double startSeekTolerance; // @synthesize startSeekTolerance=_startSeekTolerance;
 @property (readonly) Class superclass;
 
 + (id)settingsControllerModule;

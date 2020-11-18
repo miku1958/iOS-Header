@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) UIView *flamesContainerView;
 @property (nonatomic) BOOL flamesViewDeferred;
 @property (nonatomic) double flamesViewWidth;
+@property (nonatomic, getter=isInUITrackingMode) BOOL inUITrackingMode;
 @property (nonatomic) long long mode;
 
 - (void)forceMicVisible:(BOOL)arg1;

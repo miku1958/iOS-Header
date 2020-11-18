@@ -6,42 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class CXCallDirectoryManager, NSArray;
+@class CXCallDirectoryManager;
 @protocol CXCallDirectoryExtensionManagerDelegate, OS_dispatch_queue;
 
 @interface CXCallDirectoryExtensionManager : NSObject
 {
+    int _storeExtensionsChangedNotifyToken;
     CXCallDirectoryManager *_manager;
     NSObject<OS_dispatch_queue> *_queue;
     id<CXCallDirectoryExtensionManagerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
-    id _extensionMatchingContext;
-    NSArray *_nsExtensions;
 }
 
 @property (weak, nonatomic) id<CXCallDirectoryExtensionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-@property (strong, nonatomic) id extensionMatchingContext; // @synthesize extensionMatchingContext=_extensionMatchingContext;
-@property (readonly, copy, nonatomic) NSArray *extensions;
 @property (readonly, nonatomic) CXCallDirectoryManager *manager; // @synthesize manager=_manager;
-@property (strong, nonatomic, setter=setNSExtensions:) NSArray *nsExtensions; // @synthesize nsExtensions=_nsExtensions;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (nonatomic) int storeExtensionsChangedNotifyToken; // @synthesize storeExtensionsChangedNotifyToken=_storeExtensionsChangedNotifyToken;
 
 - (void).cxx_destruct;
-- (id)_baseExtensionMatchingAttributes;
-- (void)_beginMatchingExtensionsIfNecessary;
-- (id)_extensionsFromNSExtensions:(id)arg1;
-- (void)_extensionsUpdated;
-- (void)_nsExtensionForIdentifier:(id)arg1 containingAppBundleURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_prioritizedExtensionsFromUnprioritizedExtensions:(id)arg1 usingProrities:(id)arg2;
-- (void)beginMatchingExtensions;
+- (void)_extensionsChanged;
+- (void)beginObservingExtensions;
 - (void)dealloc;
-- (id)extensionWithIdentifier:(id)arg1;
-- (void)extensionWithIdentifier:(id)arg1 inContainingAppWithProcessIdentifier:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)extensionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (BOOL)isOnlyExtensionInContainingApp:(id)arg1;
-- (void)prioritizedExtensionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)setEnabled:(BOOL)arg1 forExtension:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPrioritizedExtensionIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

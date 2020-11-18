@@ -32,11 +32,11 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)setAttributedText:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1;
 - (void)setContentSize:(struct CGSize)arg1;
 - (void)setFont:(id)arg1;
-- (void)setText:(id)arg1;
 - (void)setTextAlignment:(long long)arg1;
 
 @end

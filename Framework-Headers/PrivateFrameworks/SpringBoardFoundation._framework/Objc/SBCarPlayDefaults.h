@@ -6,13 +6,15 @@
 
 #import <SpringBoardFoundation/SBAbstractSpringBoardDefaultDomain.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface SBCarPlayDefaults : SBAbstractSpringBoardDefaultDomain
 {
 }
 
+@property (nonatomic) BOOL carPlayEnableAllStatusBarItemsOverride; // @dynamic carPlayEnableAllStatusBarItemsOverride;
 @property (strong, nonatomic) NSString *carPlayEndApplicationIdentifier; // @dynamic carPlayEndApplicationIdentifier;
+@property (strong, nonatomic) NSArray *carPlayRecentlyUsedApplicationIdentifiers; // @dynamic carPlayRecentlyUsedApplicationIdentifiers;
 @property (strong, nonatomic) NSString *carPlayStartApplicationIdentifier; // @dynamic carPlayStartApplicationIdentifier;
 
 - (void)_bindAndRegisterDefaults;

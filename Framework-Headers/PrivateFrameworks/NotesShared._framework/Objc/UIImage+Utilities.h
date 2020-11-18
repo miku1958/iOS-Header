@@ -9,14 +9,19 @@
 @interface UIImage (Utilities)
 + (id)UIImageFromCIImage:(id)arg1;
 + (struct UIImage *)fileIconForURL:(id)arg1 withPreferredSize:(struct CGSize)arg2;
++ (struct CGRect)ic_aspectFitImageFrameForViewWithFrame:(struct CGRect)arg1 imageSize:(struct CGSize)arg2;
 + (struct UIImage *)ic_imageWithColor:(struct UIColor *)arg1 size:(struct CGSize)arg2;
 + (struct UIImage *)ic_imageWithContentsOfURL:(id)arg1;
 + (struct UIImage *)imageNamed:(id)arg1 withTint:(struct UIColor *)arg2;
++ (id)orientationMetadataFromImageOrientation:(long long)arg1;
++ (struct UIImage *)orientedImageFromCGImage:(struct CGImage *)arg1 scale:(double)arg2 transform:(struct CGAffineTransform)arg3;
++ (struct CGAffineTransform)transformFromImageOrientation:(long long)arg1 imageSize:(struct CGSize)arg2;
 - (struct UIImage *)decodeInBackground;
 - (void)decodeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)ic_JPEGData;
+- (id)ic_JPEGDataWithOrientation:(long long)arg1;
 - (id)ic_PNGData;
-- (id)ic_imageDataWithUTType:(id)arg1;
+- (id)ic_imageDataWithUTType:(id)arg1 metadata:(id)arg2;
 - (struct UIImage *)imageFromRect:(struct CGRect)arg1;
 - (struct UIImage *)scaledImageMaxDimension:(double)arg1 scale:(double)arg2;
 - (struct UIImage *)scaledImageMinDimension:(double)arg1 scale:(double)arg2;

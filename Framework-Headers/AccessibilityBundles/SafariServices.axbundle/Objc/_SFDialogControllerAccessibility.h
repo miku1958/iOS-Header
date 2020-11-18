@@ -13,8 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_dismissDialog;
-- (void)_presentDialog:(id)arg1 forWebProcessIdentifier:(int)arg2;
+- (void)_dismissDialogWithAdditionalAnimations:(CDUnknownBlockType)arg1;
+- (void)_presentDialog:(id)arg1 forWebProcessID:(int)arg2 withAdditionalAnimations:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (unsigned long long)depthPlane;
 - (id)description;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

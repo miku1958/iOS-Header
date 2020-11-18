@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) unsigned int requirementsMask; // @synthesize requirementsMask=_attributionRequirementsMask;
+@property (readonly, nonatomic) BOOL shouldOpenInAppStore;
 @property (readonly, nonatomic) GEOSearchAttributionSource *source; // @synthesize source=_source;
 @property (readonly, nonatomic) unsigned int version;
 @property (readonly, nonatomic) NSString *webBaseActionURL;

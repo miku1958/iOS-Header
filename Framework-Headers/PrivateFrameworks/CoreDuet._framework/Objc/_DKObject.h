@@ -8,16 +8,18 @@
 
 #import <CoreDuet/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSUUID;
+@class NSDictionary, NSUUID, _DKSource;
 
 @interface _DKObject : NSObject <NSSecureCoding>
 {
     NSUUID *_UUID;
     NSDictionary *_metadata;
+    _DKSource *_source;
 }
 
 @property (strong) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property (copy) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (strong) _DKSource *source; // @synthesize source=_source;
 
 + (id)entityName;
 + (id)fetchObjectWithUUID:(id)arg1 context:(id)arg2;

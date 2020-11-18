@@ -27,8 +27,12 @@
 @property (strong, nonatomic) RUIStyle *style; // @synthesize style=_style;
 
 - (void).cxx_destruct;
+- (struct OpaqueJSValue *)JSValueForContext:(struct OpaqueJSContext *)arg1;
 - (id)URLAttributeForImageName:(id)arg1 getScale:(double *)arg2;
+- (struct OpaqueJSClass *)_JSClass;
 - (int)_horizontalAlignmentForString:(id)arg1;
+- (id)_ruielement_staticFunctions;
+- (id)_ruielement_staticValues;
 - (void)configureView:(id)arg1;
 - (void)dealloc;
 - (BOOL)hasImage;
@@ -37,11 +41,16 @@
 - (id)initWithAttributes:(id)arg1 parent:(id)arg2;
 - (BOOL)loadImage;
 - (id)mutableAttributes;
+- (void)performAction:(int)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performAction:(int)arg1 forElement:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)populatePostbackDictionary:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)setImageAlignment:(int)arg1;
 - (void)setImageSize:(struct CGSize)arg1;
 - (id)sourceURL;
+- (id)staticFunctions;
+- (id)staticValues;
+- (id)subElementWithID:(id)arg1;
 - (id)subElementsWithName:(id)arg1;
 
 @end

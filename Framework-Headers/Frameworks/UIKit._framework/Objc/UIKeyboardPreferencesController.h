@@ -6,20 +6,27 @@
 
 #import <Foundation/NSObject.h>
 
+@protocol TIPreferencesControllerActions;
+
 @interface UIKeyboardPreferencesController : NSObject
 {
 }
 
 @property long long handBias;
+@property (readonly, nonatomic) UIKeyboardPreferencesController<TIPreferencesControllerActions> *preferencesActions;
 
 + (id)sharedPreferencesController;
 - (void)_configurePreferences;
+- (BOOL)allEnabledInputModesAreValid;
 - (BOOL)boolForKey:(int)arg1;
 - (BOOL)boolForPreferenceKey:(id)arg1;
 - (void)dealloc;
+- (void)forwardInvocation:(id)arg1;
 - (id)init;
 - (BOOL)isPreferenceKeyLockedDown:(id)arg1;
+- (id)methodSignatureForSelector:(SEL)arg1;
 - (void)preferencesControllerChanged:(id)arg1;
+- (BOOL)respondsToSelector:(SEL)arg1;
 - (double)rivenSizeFactor:(double)arg1;
 - (void)saveInputModes:(id)arg1;
 - (void)setLanguageAwareInputModeLastUsed:(id)arg1;

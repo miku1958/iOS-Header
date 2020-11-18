@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CDPDevice, CDPDevicePickerViewController;
+@class CDPDevice, CDPDevicePickerViewController, NSArray;
 
 @protocol CDPDevicePickerDelegate
 - (void)devicePicker:(CDPDevicePickerViewController *)arg1 didSelectDevice:(CDPDevice *)arg2;
+- (NSArray *)devicePicker:(CDPDevicePickerViewController *)arg1 escapeOffersForDevices:(NSArray *)arg2;
 @end
 

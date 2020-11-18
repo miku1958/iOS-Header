@@ -8,7 +8,7 @@
 
 #import <Intents/NSCopying-Protocol.h>
 
-@class PBUnknownFields, _INPBIntentResponsePayloadFailure, _INPBIntentResponsePayloadSuccess;
+@class PBUnknownFields, _INPBIntentResponsePayloadFailure, _INPBIntentResponsePayloadSuccess, _INPBUserActivity;
 
 @interface _INPBIntentResponse : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     _INPBIntentResponsePayloadFailure *_PayloadFailure;
     _INPBIntentResponsePayloadSuccess *_PayloadSuccess;
     int _type;
+    _INPBUserActivity *_userActivity;
     CDStruct_f953fb60 _has;
 }
 
@@ -24,10 +25,13 @@
 @property (readonly, nonatomic) BOOL hasPayloadFailure;
 @property (readonly, nonatomic) BOOL hasPayloadSuccess;
 @property (nonatomic) BOOL hasType;
+@property (readonly, nonatomic) BOOL hasUserActivity;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) _INPBUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -35,6 +39,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

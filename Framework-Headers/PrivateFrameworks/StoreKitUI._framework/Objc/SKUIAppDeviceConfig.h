@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)currentSizeClasses;
 - (BOOL)isTimeZoneSet;
 - (unsigned long long)preferredVideoFormat;
 - (unsigned long long)preferredVideoPreviewFormat;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WebCore/DOMHTMLOptGroupElement.h>
+#import <WebKitLegacy/DOMHTMLOptGroupElement.h>
 
 @interface DOMHTMLOptGroupElement (UIWebFormExtensions)
 - (id)createPickerCell;

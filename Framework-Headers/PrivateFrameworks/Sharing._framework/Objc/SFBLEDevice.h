@@ -41,14 +41,15 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) double pairCheckTime; // @synthesize pairCheckTime=_pairCheckTime;
 @property (nonatomic) BOOL paired; // @synthesize paired=_paired;
-@property (readonly, nonatomic) long long rssi; // @synthesize rssi=_rssi;
-@property (readonly, nonatomic) long long rssiCeiling; // @synthesize rssiCeiling=_rssiCeiling;
-@property (readonly, nonatomic) long long rssiFloor; // @synthesize rssiFloor=_rssiFloor;
-@property (readonly, nonatomic) long long smoothedRSSI; // @synthesize smoothedRSSI=_smoothedRSSI;
+@property (nonatomic) long long rssi; // @synthesize rssi=_rssi;
+@property (nonatomic) long long rssiCeiling; // @synthesize rssiCeiling=_rssiCeiling;
+@property (nonatomic) long long rssiFloor; // @synthesize rssiFloor=_rssiFloor;
+@property (nonatomic) long long smoothedRSSI; // @synthesize smoothedRSSI=_smoothedRSSI;
 
 + (void)setRSSIEstimatorInfo:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

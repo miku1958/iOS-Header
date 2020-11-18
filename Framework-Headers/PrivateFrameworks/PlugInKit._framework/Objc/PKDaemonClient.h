@@ -31,7 +31,7 @@
 - (void)holdPlugins:(id)arg1 flags:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithServiceName:(const char *)arg1;
 - (void)matchPlugIns:(id)arg1 flags:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)readyPlugIns:(id)arg1 flags:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)readyPlugIns:(id)arg1 flags:(unsigned long long)arg2 environment:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)releaseHold:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)removePlugIns:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)request:(const char *)arg1;

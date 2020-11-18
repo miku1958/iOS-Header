@@ -28,7 +28,9 @@
 + (id)_mediaDirectoryPath;
 - (id)_addAssetWithURL:(id)arg1 existingOID:(id)arg2;
 - (BOOL)_setupPhotoAsset:(id)arg1 withURL:(id)arg2;
+- (BOOL)_setupPhotoAsset:(id)arg1 withURL:(id)arg2 unknownType:(BOOL)arg3;
 - (BOOL)_setupPhotoAssetAsPhotoIrisIfNeeded:(id)arg1;
+- (BOOL)_setupUnknownAsset:(id)arg1 withURL:(id)arg2;
 - (BOOL)_setupVideoAsset:(id)arg1 withURL:(id)arg2;
 - (id)addAssetWithURLs:(id)arg1 forceInsert:(BOOL)arg2 forceUpdate:(BOOL)arg3 fixAddedDate:(BOOL)arg4;
 - (void)addAvailableThumbnailIndex:(unsigned long long)arg1;

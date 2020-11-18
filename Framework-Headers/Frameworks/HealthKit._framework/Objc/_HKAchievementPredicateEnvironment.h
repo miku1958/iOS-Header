@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) _HKAchievementPredicateDatesEnvironment *dates; // @synthesize dates=_dates;
 @property (readonly, nonatomic) _HKAchievementPredicateWorkoutsEnvironment *workouts; // @synthesize workouts=_workouts;
 
++ (id)pairedWatchCountryCode;
 - (void).cxx_destruct;
 - (id)initWithActivityDataEnvironment:(id)arg1 datesEnvironment:(id)arg2 workoutsEnvironment:(id)arg3;
 - (void)setCurrentDefinitionIdentifier:(id)arg1;

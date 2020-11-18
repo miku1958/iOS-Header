@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <BaseBoard/BSEventQueueEvent.h>
+#import <FrontBoardServices/BSEventQueueEvent.h>
 
 @interface FBWorkspaceEvent : BSEventQueueEvent
 {

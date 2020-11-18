@@ -23,7 +23,7 @@
     unsigned long long _particleRenderOrder;
 }
 
-@property (copy, nonatomic) NSDictionary *attributeValues;
+@property (copy, nonatomic) NSDictionary *attributeValues; // @dynamic attributeValues;
 @property (nonatomic) double emissionAngle;
 @property (nonatomic) double emissionAngleRange;
 @property (nonatomic) unsigned int fieldBitMask;
@@ -107,10 +107,12 @@
 - (void)setParticleSpeedSequence:(id)arg1;
 - (void)setPhysicsWorld:(id)arg1;
 - (void)setUsesPointSprites:(BOOL)arg1;
+- (void)setValue:(id)arg1 forAttributeNamed:(id)arg2;
 - (void)setWantsNewParticles:(BOOL)arg1;
 - (void)setZPosition:(double)arg1;
 - (id)subEmitterNode;
 - (BOOL)usesPointSprites;
+- (id)valueForAttributeNamed:(id)arg1;
 - (BOOL)wantsNewParticles;
 
 @end

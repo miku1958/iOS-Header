@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)globalEmojiKeyImageName;
 - (id)globalKeyImageName;
 - (double)hintNoneKeyFontSize;
+- (BOOL)iPadFudgeLayout;
 - (struct CGPoint)internationalKeyOffset;
 - (BOOL)isTallPopup;
 - (struct CGPoint)leftArrowKeyOffset;

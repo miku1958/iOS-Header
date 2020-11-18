@@ -59,8 +59,8 @@
 - (void)enumerateRowsUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)equalsCellRange:(CDStruct_5f1f7aa9)arg1;
 - (BOOL)equalsCellRegion:(id)arg1;
-- (void)fillCellRangeColMajorSet:(set_1b864098 *)arg1 leftToRight:(BOOL)arg2;
-- (void)fillCellRangeRowMajorSet:(set_bf64ed85 *)arg1 leftToRight:(BOOL)arg2;
+- (void)fillCellRangeColMajorSet:(set_79f671e2 *)arg1 leftToRight:(BOOL)arg2;
+- (void)fillCellRangeRowMajorSet:(set_87729393 *)arg1 leftToRight:(BOOL)arg2;
 - (id)init;
 - (id)intersectingColumnsIndexSet;
 - (id)intersectingRowsIndexSet;

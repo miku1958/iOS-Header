@@ -18,7 +18,7 @@
 - (void)doCopyDynamicUserActivitiesString:(NSDictionary *)arg1 completionHandler:(void (^)(NSString *))arg2;
 - (void)doCopyEnabledUUIDsWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)doCopySimulatorStatusString:(NSDictionary *)arg1 completionHandler:(void (^)(NSString *))arg2;
-- (void)doCopyStatusString:(NSDictionary *)arg1 completionHandler:(void (^)(NSString *))arg2;
+- (void)doCopyStatusString:(NSString *)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(NSString *))arg3;
 - (void)doFindMatchingUserActivityForString:(NSString *)arg1 withCompletionHandler:(void (^)(NSUUID *))arg2;
 - (void)doGetCurrentAdvertisedItemUUID:(void (^)(NSUUID *))arg1;
 - (void)doInjectBTLE:(NSUUID *)arg1 type:(unsigned long long)arg2 identifier:(NSString *)arg3 title:(NSString *)arg4 activityPayload:(NSData *)arg5 frameworkPayload:(NSData *)arg6 payloadDelay:(double)arg7;

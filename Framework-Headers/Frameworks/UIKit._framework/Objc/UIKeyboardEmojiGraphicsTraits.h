@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     double _sectionOffset;
     double _categoryHeaderHeight;
     double _categoryHeaderLeftPadding;
-    double _categorySelectedCirPadding;
     double _categorySelectedCirWidth;
     double _scrubViewTopPadding;
     double _categoryHeaderFontSize;
@@ -32,7 +31,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double categoryHeaderFontSize; // @synthesize categoryHeaderFontSize=_categoryHeaderFontSize;
 @property (readonly, nonatomic) double categoryHeaderHeight; // @synthesize categoryHeaderHeight=_categoryHeaderHeight;
 @property (readonly, nonatomic) double categoryHeaderLeftPadding; // @synthesize categoryHeaderLeftPadding=_categoryHeaderLeftPadding;
-@property (readonly, nonatomic) double categorySelectedCirPadding; // @synthesize categorySelectedCirPadding=_categorySelectedCirPadding;
 @property (readonly, nonatomic) double categorySelectedCirWidth; // @synthesize categorySelectedCirWidth=_categorySelectedCirWidth;
 @property (readonly, nonatomic) double columnOffset; // @synthesize columnOffset=_columnOffset;
 @property (readonly, nonatomic) double emojiKeyWidth; // @synthesize emojiKeyWidth=_emojiKeyWidth;

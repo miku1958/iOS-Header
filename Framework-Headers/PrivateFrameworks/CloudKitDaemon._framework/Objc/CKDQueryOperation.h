@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/CKDOperationPipelining-Protocol.h>
 
-@class CKDRecordFetchAggregator, CKQuery, CKQueryCursor, CKRecordZoneID, NSMutableArray, NSObject, NSSet, NSString;
+@class CKDRecordFetchAggregator, CKQuery, CKQueryCursor, CKRecordZoneID, NSDictionary, NSMutableArray, NSObject, NSSet, NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -29,8 +29,10 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_group> *_fetchRecordsGroup;
     unsigned long long _numRequestsSent;
     NSMutableArray *_requestInfos;
+    NSDictionary *_assetTransferOptionsByKey;
 }
 
+@property (strong, nonatomic) NSDictionary *assetTransferOptionsByKey; // @synthesize assetTransferOptionsByKey=_assetTransferOptionsByKey;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue;
 @property (readonly, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property (readonly, copy) NSString *debugDescription;

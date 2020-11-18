@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface _LSCanOpenURLManager : NSObject
 {
     NSMutableDictionary *_canOpenURLsMap;
-    NSObject<OS_dispatch_queue> *_canOpenURLsQueue;
+    NSObject<OS_dispatch_queue> *_canOpenURLsMapQueue;
     int _saveFlag;
 }
 

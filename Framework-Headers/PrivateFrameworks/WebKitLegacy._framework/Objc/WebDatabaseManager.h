@@ -10,13 +10,9 @@
 {
 }
 
-+ (void)didFinishLastTransaction;
-+ (void)endBackgroundTask;
 + (void)removeEmptyDatabaseFiles;
 + (void)scheduleEmptyDatabaseRemoval;
 + (id)sharedWebDatabaseManager;
-+ (void)startBackgroundTask;
-+ (void)willBeginFirstTransaction;
 - (id)databasesWithOrigin:(id)arg1;
 - (void)deleteAllDatabases;
 - (void)deleteAllIndexedDatabases;
